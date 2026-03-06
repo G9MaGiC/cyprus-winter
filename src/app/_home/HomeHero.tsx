@@ -12,6 +12,7 @@ export default function HomeHero() {
         fill
         className="object-cover object-center"
         priority
+        loading="eager"
         sizes="100vw"
       />
       <div className={HERO.overlayVignette} aria-hidden />
