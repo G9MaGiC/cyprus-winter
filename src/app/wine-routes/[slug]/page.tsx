@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { wineries } from "@/data/wineries";
+import { WINE_ROUTES } from "@/data/wine-routes";
+import { LAYOUT } from "@/lib/design-tokens";
+import { SITE_URL } from "@/lib/site-url";
+import AttractionCard from "@/components/AttractionCard";
+import PageHeader from "@/components/PageHeader";
+
+export function generateStaticParams() {
+  return WINE_ROUTES.map((r) => ({ slug: r.slug }));
+}
+
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const route = WINE_ROUTES.find((r) => r.slug === slug);
+  if (!route)
+    return {
+      title: "Wine route not found | Cyprus Winter",
+      description: "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings.",
+    };
+
+  const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
+  return {
+    title: `${route.title} Wine Route Cyprus Winter | Wineries & Tastings`,
+    description: `${route.description} ${count} wineries open for winter tastings. Book ahead.`,
+    alternates: { canonical: `${SITE_URL}/wine-routes/${slug}` },
+  };
+}
+
+export default async function WineRoutePage({ params }: Props) {
+  const { slug } = await params;
+  const route = WINE_ROUTES.find((r) => r.slug === slug);
+  if (!route) notFound();
+
+  const routeWineries = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug);
+
+  return (
+    <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
+      <PageHeader
+        backHref="/wineries"
+        backLabel="Wineries"
+        title={`${route.title} Wine Route`}
+        description={route.description}
+      />
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {routeWineries.map((w) => (
+          <AttractionCard key={w.id} a={w} />
+        ))}
+      </div>
+
+      <p className="mt-12 text-center text-olive/70 text-sm">
+        <Link href="/wineries" className="text-aegean hover:underline">
+          All Cyprus wineries
+        </Link>
+        {" · "}
+        <Link href="/plan" className="text-aegean hover:underline">
+          Plan your trip
+        </Link>
+      </p>
+    </div>
+  );
+}

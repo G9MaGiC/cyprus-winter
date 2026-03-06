@@ -1,0 +1,96 @@
+"use client";
+
+import Link from "next/link";
+import { CARD } from "@/lib/design-tokens";
+import type { PlanItem } from "@/data";
+
+function TypeBadge({ type }: { type: PlanItem["type"] }) {
+  const style: Record<PlanItem["type"], string> = {
+    trail: "bg-aegean/15 text-aegean",
+    winery: "bg-terracotta/15 text-terracotta",
+    attraction: "bg-sage/15 text-olive",
+    event: "bg-golden/15 text-golden",
+    restaurant: "bg-golden/15 text-charcoal",
+  };
+  const label: Record<PlanItem["type"], string> = {
+    trail: "Trail",
+    winery: "Winery",
+    attraction: "Place",
+    event: "Event",
+    restaurant: "Eat",
+  };
+  return (
+    <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${style[type]}`}>{label[type]}</span>
+  );
+}
+
+export default function ItineraryCard({
+  place,
+  onRemove,
+  lastAdded,
+  index,
+  cardRef,
+  inTimeline,
+}: {
+  place: PlanItem;
+  onRemove: () => void;
+  lastAdded: boolean;
+  index: number;
+  cardRef?: React.RefObject<HTMLDivElement | null>;
+  inTimeline?: boolean;
+}) {
+  const href =
+    place.type === "trail"
+      ? `/trails/${place.id}`
+      : place.type === "event"
+        ? `/events#${place.id}`
+        : `/discover/${place.id}`;
+
+  return (
+    <div
+      ref={lastAdded && !inTimeline ? cardRef : undefined}
+      className={`group flex items-center gap-4 ${CARD.content} ${CARD.base} transition-all duration-200 ${
+        lastAdded
+          ? "ring-2 ring-terracotta/40 border-terracotta/30 shadow-md"
+          : CARD.hover
+      }`}
+    >
+      {!inTimeline && (
+        <span className="shrink-0 w-8 h-8 rounded-full bg-sand-200/80 text-olive/70 font-semibold text-sm flex items-center justify-center">
+          {index}
+        </span>
+      )}
+      <div className="flex-1 min-w-0">
+        <div className="flex flex-wrap items-center gap-2 mb-1">
+          <TypeBadge type={place.type} />
+          <span className="text-xs text-olive/50">·</span>
+          <span className="text-xs text-olive/60 truncate">{place.region}</span>
+        </div>
+        <Link
+          href={href}
+          className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors block truncate min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50"
+        >
+          {place.name}
+        </Link>
+      </div>
+      <div className="flex items-center gap-2 shrink-0">
+        {place.type === "winery" && (
+          <Link
+            href={`/book/winery/${place.id}`}
+            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Book a tasting
+          </Link>
+        )}
+        <button
+          type="button"
+          onClick={onRemove}
+          className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          aria-label={`Remove ${place.name} from itinerary`}
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  );
+}

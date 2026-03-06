@@ -1,0 +1,51 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getSupabase, hasSupabase } from "@/lib/supabase";
+import { rateLimit } from "@/lib/rate-limit";
+import { jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+
+// Health check must run at request time (Supabase connectivity, env)
+export const dynamic = "force-dynamic";
+
+export async function GET(req: NextRequest) {
+  const limitResult = rateLimit(req, 60);
+  if (!limitResult.ok) {
+    return jsonRateLimitedFromResult("Too many health checks", limitResult.resetAt);
+  }
+  const ai = !!process.env.MOONSHOT_API_KEY;
+  const emailConfigured = !!process.env.RESEND_API_KEY;
+  let storage: "supabase" | "memory" = hasSupabase() ? "supabase" : "memory";
+  let supabaseOk = true;
+
+  if (hasSupabase()) {
+    try {
+      const supabase = getSupabase();
+      if (supabase) {
+        const { error } = await supabase.from("bookings").select("id").limit(1);
+        supabaseOk = !error;
+      }
+    } catch {
+      supabaseOk = false;
+      storage = "memory";
+    }
+  }
+
+  const ok = !hasSupabase() || supabaseOk;
+
+  const headers: HeadersInit = {
+    ...rateLimitSuccessHeaders(limitResult.remaining, 60),
+    "Cache-Control": ok ? "public, s-maxage=60, stale-while-revalidate=120" : "no-store",
+  };
+  return NextResponse.json(
+    {
+      ok,
+      message: ok
+        ? "Cyprus Winter is up. Trails, villages, wine. We're here."
+        : "Supabase unreachable",
+      ai,
+      storage,
+      email: emailConfigured,
+      supabase: hasSupabase() ? (supabaseOk ? "ok" : "error") : "not configured",
+    },
+    { status: ok ? 200 : 503, headers }
+  );
+}

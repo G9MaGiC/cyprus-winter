@@ -1,0 +1,38 @@
+---
+description: Use App Experts team when building or extending Cyprus Winter features
+alwaysApply: true
+---
+
+# App Experts for Building
+
+When the user asks to **build**, **develop**, **add**, or **extend** features for Cyprus Winter, use the App Experts team.
+
+## How to invoke
+
+Use `mcp_task` with `subagent_type: "TEAM-AGENTS"` and specify the expert in the prompt. Always reference `.cursor/skills/cyprus-tourism-app/SKILL.md` and `.cursor/TEAM_APP_EXPERTS.md`.
+
+## Lead expert by task
+
+| Task | Lead | Support |
+|------|------|---------|
+| Add attraction/winery/trail | content-polish | senior-software-engineer, branding-redesign |
+| Add new page | senior-software-engineer | branding-redesign, content-polish |
+| New API route | senior-software-engineer | shell |
+| Improve conversion funnel | ux-polish | content-polish |
+| Refactor components | senior-software-engineer | branding-redesign |
+| Content audit | content-polish | audit-explore |
+| Pre-launch checklist | audit-explore | All |
+
+## Example
+
+```javascript
+mcp_task({
+  subagent_type: "TEAM-AGENTS",
+  description: "Add new attraction page",
+  prompt: "You are the architecture expert for Cyprus Winter. Reference .cursor/skills/cyprus-tourism-app/SKILL.md and .cursor/TEAM_APP_EXPERTS.md. Task: [user's task]. Use src/data/ as source of truth, follow existing patterns (PlanItem, getPlaceById), preserve type safety."
+})
+```
+
+## Fallback
+
+If `mcp_task` or TEAM-AGENTS is unavailable, simulate App Experts: consider Architecture, UX, Design, Content, and Audit concerns; reference the skill file; implement accordingly.

@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+:root {
+  /* Cyprus Winter — terracotta + aegean, clean typography */
+  --background: #fafaf9;
+  --foreground: #1e293b;
+  --terracotta: #e07a5f;
+  --terracotta-muted: #c96f52;
+  --olive: #334155;
+  --olive-muted: #64748b;
+  --golden: #d97706;
+  --charcoal: #1e293b;
+  --aegean: #0f766e;
+  --sage: #64748b;
+  --cloud: #fafaf9;
+  --sand: #fafaf9;
+  --sand-mid: #f5f5f4;
+  --sand-dark: #e7e5e4;
+}
+
+@theme inline {
+  --color-background: var(--cloud);
+  --color-foreground: var(--charcoal);
+  --color-terracotta: #e07a5f;
+  --color-terracotta-muted: #c96f52;
+  --color-olive: #334155;
+  --color-olive-muted: #64748b;
+  --color-golden: #d97706;
+  --color-charcoal: #1e293b;
+  --color-aegean: #0f766e;
+  --color-sage: #64748b;
+  --color-sage-muted: #94a3b8;
+  --color-cloud: #fafaf9;
+  --color-sand: #fafaf9;
+  --color-sand-100: #f5f5f4;
+  --color-sand-200: #e7e5e4;
+  --color-sand-300: #d6d3d1;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* 16px base prevents iOS zoom on input focus */
+  font-size: 16px;
+  /* Subtle tap highlight for touch */
+  -webkit-tap-highlight-color: rgba(224, 122, 95, 0.15);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+*:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+
+.font-display {
+  font-family: var(--font-display), "Fraunces", ui-serif, serif;
+}
+
+/* 2026 typographic scale — clear hierarchy */
+.prose-intro {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.prose-body {
+  line-height: 1.7;
+}
+.prose-quote {
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+.prose-label {
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+::selection {
+  background: rgba(224, 122, 95, 0.2);
+  color: var(--charcoal);
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary::marker {
+  display: none;
+}
+
+/* Footer ShareLinks — white on dark (avoids Turbopack parser issues with arbitrary variants) */
+.share-links-footer {
+  color: rgba(255, 255, 255, 0.8);
+}
+.share-links-footer a {
+  color: rgba(255, 255, 255, 0.8);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.share-links-footer a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* AI Chat v2 — panel entrance, reduced-motion aware */
+.ai-chat-panel-enter {
+  animation: ai-chat-panel-enter 0.25s ease-out forwards;
+}
+.ai-chat-trigger-pulse {
+  animation: ai-chat-trigger-pulse 2s ease-in-out infinite;
+}
+@keyframes ai-chat-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes ai-chat-trigger-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(224, 122, 95, 0.25); }
+  50% { box-shadow: 0 0 0 8px rgba(224, 122, 95, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-chat-panel-enter {
+    animation: none;
+    opacity: 1;
+  }
+  .ai-chat-trigger-pulse {
+    animation: none;
+  }
+}

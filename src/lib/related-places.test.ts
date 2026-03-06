@@ -1,0 +1,50 @@
+import { describe, it, expect } from "vitest";
+import { getRelatedPlaces } from "./related-places";
+import { allAttractions } from "@/data";
+import { trails } from "@/data/trails";
+import { wineries } from "@/data/wineries";
+
+describe("getRelatedPlaces", () => {
+  it("returns empty array for empty ids", () => {
+    expect(getRelatedPlaces([])).toEqual([]);
+  });
+
+  it("returns places for known attraction ids", () => {
+    const result = getRelatedPlaces(["omodos"]);
+    expect(result.length).toBe(1);
+    expect(result[0].name).toContain("Omodos");
+    expect(result[0].href).toBe("/discover/omodos");
+  });
+
+  it("returns trails for known trail ids", () => {
+    const result = getRelatedPlaces(["artemis"]);
+    expect(result.length).toBe(1);
+    expect(result[0].name).toContain("Artemis");
+    expect(result[0].href).toBe("/trails/artemis");
+    expect(result[0].type).toBe("trail");
+  });
+
+  it("skips unknown ids", () => {
+    const result = getRelatedPlaces(["unknown-id-xyz"]);
+    expect(result).toEqual([]);
+  });
+});
+
+describe("combineWith validation", () => {
+  it("all combineWith IDs resolve to valid places", () => {
+    const allIds = new Set<string>();
+    for (const a of allAttractions) {
+      if (a.combineWith) for (const id of a.combineWith) allIds.add(id);
+    }
+    for (const t of trails) {
+      if (t.combineWith) for (const id of t.combineWith) allIds.add(id);
+    }
+    for (const w of wineries) {
+      if (w.combineWith) for (const id of w.combineWith) allIds.add(id);
+    }
+    for (const id of allIds) {
+      const places = getRelatedPlaces([id]);
+      expect(places, `combineWith id "${id}" should resolve to a place`).toHaveLength(1);
+    }
+  });
+});

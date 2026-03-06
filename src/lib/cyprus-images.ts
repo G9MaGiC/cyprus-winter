@@ -1,0 +1,168 @@
+/**
+ * Curated Cyprus image URLs. Local AI-generated images + verified Unsplash.
+ * next.config allows images.unsplash.com.
+ */
+const US = (id: string, w = 800) =>
+  `https://images.unsplash.com/photo-${id}?w=${w}&q=80`;
+
+const U = {
+  coast: "1539650116574-8efeb43e2750",
+  ruins: "1552832230-c0197dd311b5",
+  village: "1568322446-0503a976ec5d",
+  monastery: "1548013146-72479768bada",
+  nature: "1551632811-561732d1e306",
+  dining: "1550962992-2b5b0be9e0f4",
+};
+
+const local = "/images/cyprus";
+
+/** Map attraction id to image URL. */
+export function getAttractionImage(id: string, type: string): string {
+  const map: Record<string, string> = {
+    "nissi-beach": `${local}/cyprus-beach-nissi.jpg`,
+    "fig-tree-bay": `${local}/cyprus-fig-tree-bay.jpg`,
+    "konnos-bay": `${local}/cyprus-konnos-bay.jpg`,
+    "coral-bay": `${local}/cyprus-coral-bay.jpg`,
+    "lara-bay": `${local}/cyprus-lara-bay.jpg`,
+    "ayia-napa-sea-caves": `${local}/cyprus-sea-caves.jpg`,
+    "governors-beach": `${local}/cyprus-governors-beach.jpg`,
+    "pafos-mosaics": `${local}/cyprus-pafos-mosaics.jpg`,
+    kourion: `${local}/cyprus-ancient-kourion.jpg`,
+    "tomb-of-kings": `${local}/cyprus-tomb-of-kings.jpg`,
+    salamis: `${local}/cyprus-salamis.jpg`,
+    "st-hilarion": `${local}/cyprus-st-hilarion.jpg`,
+    amahti: US(U.ruins),
+    choirokoitia: US(U.ruins),
+    kolossi: US(U.ruins),
+    palaipafos: US(U.ruins),
+    buffavento: US(U.monastery),
+    "cyprus-museum": US(U.ruins),
+    bellapais: `${local}/cyprus-bellapais.jpg`,
+    "leventis-museum": US(U.ruins),
+    "paphos-castle": US(U.ruins),
+    idalion: US(U.ruins),
+    kalopanagiotis: `${local}/cyprus-village-omodos.jpg`,
+    lefkara: `${local}/cyprus-lefkara.jpg`,
+    polis: `${local}/cyprus-polis.jpg`,
+    omodos: `${local}/cyprus-village-omodos.jpg`,
+    kakopetria: `${local}/cyprus-village-omodos.jpg`,
+    lania: `${local}/cyprus-village-omodos.jpg`,
+    lefke: `${local}/cyprus-village-omodos.jpg`,
+    foini: `${local}/cyprus-village-omodos.jpg`,
+    pedoulas: `${local}/cyprus-village-omodos.jpg`,
+    platres: `${local}/cyprus-village-omodos.jpg`,
+    "pera-pedi": `${local}/cyprus-village-omodos.jpg`,
+    agros: `${local}/cyprus-village-omodos.jpg`,
+    fikardou: `${local}/cyprus-village-omodos.jpg`,
+    koilani: `${local}/cyprus-village-omodos.jpg`,
+    "lefkara-kato": `${local}/cyprus-lefkara.jpg`,
+    vavla: `${local}/cyprus-village-omodos.jpg`,
+    galata: `${local}/cyprus-village-omodos.jpg`,
+    zodiakos: `${local}/cyprus-village-omodos.jpg`,
+    "kato-drys": `${local}/cyprus-village-omodos.jpg`,
+    louvaras: `${local}/cyprus-village-omodos.jpg`,
+    kykkos: `${local}/cyprus-monastery-kykkos.jpg`,
+    "st-neophytos": `${local}/cyprus-monastery-kykkos.jpg`,
+    trooditissa: `${local}/cyprus-monastery-kykkos.jpg`,
+    machairas: `${local}/cyprus-monastery-kykkos.jpg`,
+    chrysorrogiatissa: `${local}/cyprus-monastery-kykkos.jpg`,
+    "st-john-lampadistis": `${local}/cyprus-monastery-kykkos.jpg`,
+    "panagia-tou-araka": `${local}/cyprus-monastery-kykkos.jpg`,
+    "st-george-alamanou": `${local}/cyprus-monastery-kykkos.jpg`,
+    stavrovouni: `${local}/cyprus-monastery-kykkos.jpg`,
+    "archangelos-michail": `${local}/cyprus-monastery-kykkos.jpg`,
+    "st-nicholas-roof": `${local}/cyprus-monastery-kykkos.jpg`,
+    "panagia-tou-moutoulla": `${local}/cyprus-monastery-kykkos.jpg`,
+    "st-sozomenos": `${local}/cyprus-st-hilarion.jpg`,
+    "zygi-tavernas": US(U.coast),
+    "governors-beach-tavernas": `${local}/cyprus-governors-beach.jpg`,
+    "polis-harbour": US(U.coast),
+    "psilo-dendro": `${local}/cyprus-village-omodos.jpg`,
+    "kakopetria-trout": `${local}/cyprus-village-omodos.jpg`,
+    "kouklia-cafe": `${local}/cyprus-ancient-kourion.jpg`,
+    "kiti-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "platres-trout": `${local}/cyprus-village-omodos.jpg`,
+    "latsi-harbour": US(U.coast),
+    "nicosia-tavernas": US(U.village),
+    "pissouri-tavernas": US(U.coast),
+    "omodos-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "limassol-marina": US(U.coast),
+    "protaras-tavernas": US(U.coast),
+    "larnaca-old-town": US(U.coast),
+    "pafos-harbour": US(U.coast),
+    "agros-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "lefkara-tavernas": `${local}/cyprus-lefkara.jpg`,
+    "kathikas-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "limassol-old-town": US(U.village),
+    "kyrenia-tavernas": US(U.coast),
+    "ayia-napa-tavernas": US(U.coast),
+    "troodos-square": `${local}/cyprus-village-omodos.jpg`,
+    "solea-valley": `${local}/cyprus-village-omodos.jpg`,
+    "zygi-mikri": US(U.coast),
+    "kourion-tavernas": `${local}/cyprus-ancient-kourion.jpg`,
+  };
+  const fallbacks: Record<string, string> = {
+    beach: US(U.coast),
+    ancient: US(U.ruins),
+    village: US(U.village),
+    monastery: US(U.monastery),
+    winery: `${local}/cyprus-winery-troodos.jpg`,
+    nature: US(U.nature),
+    restaurant: US(U.dining),
+  };
+  const wineryImages: Record<string, string> = {
+    "domes-sergiou": `${local}/domes-sergiou-hero.png`,
+  };
+  if (type === "winery") return wineryImages[id] ?? fallbacks.winery;
+  if (type === "restaurant") return map[id] ?? fallbacks.restaurant;
+  return map[id] ?? fallbacks[type] ?? US(U.nature);
+}
+
+const trailImages: Record<string, string> = {
+  artemis: `${local}/cyprus-trail-troodos.jpg`,
+  atalante: `${local}/cyprus-trail-troodos.jpg`,
+  persephone: `${local}/cyprus-trail-troodos.jpg`,
+  "olympus-summit": `${local}/cyprus-trail-troodos.jpg`,
+  "madari-ridge": `${local}/cyprus-trail-troodos.jpg`,
+  horteri: `${local}/cyprus-trail-troodos.jpg`,
+  "caledonia-falls": `${local}/cyprus-trail-waterfall.jpg`,
+  "millomeris-falls": `${local}/cyprus-trail-waterfall.jpg`,
+  "caledonia-alternative": `${local}/cyprus-trail-waterfall.jpg`,
+  "cape-greco": `${local}/cyprus-trail-coastal.jpg`,
+  "avakas-gorge": `${local}/cyprus-trail-gorge.jpg`,
+  adonis: `${local}/cyprus-trail-gorge.jpg`,
+  aphrodite: `${local}/cyprus-trail-coastal.jpg`,
+  "petra-tou-romiou": `${local}/cyprus-trail-coastal.jpg`,
+  smigies: `${local}/cyprus-trail-gorge.jpg`,
+  "stavros-tis-psokas": `${local}/cyprus-trail-troodos.jpg`,
+  "kampos-tou-livadiou": `${local}/cyprus-trail-troodos.jpg`,
+  pissouromoutti: `${local}/cyprus-trail-gorge.jpg`,
+  "e4-troodos-platres": `${local}/cyprus-trail-troodos.jpg`,
+  "vavatsinia-honeybee": `${local}/cyprus-village-omodos.jpg`,
+  "vouni-panagias": `${local}/cyprus-trail-troodos.jpg`,
+  "mnimata-piskopon": `${local}/cyprus-trail-troodos.jpg`,
+  "kryos-potamos-loop": `${local}/cyprus-trail-waterfall.jpg`,
+  "loumata-ton-aeton": `${local}/cyprus-trail-troodos.jpg`,
+  "panagia-tis-amasgou": `${local}/cyprus-village-omodos.jpg`,
+  "xyliatos-dam": `${local}/cyprus-trail-troodos.jpg`,
+  "selladi-stavros": `${local}/cyprus-trail-troodos.jpg`,
+  "machairas-forest": `${local}/cyprus-trail-troodos.jpg`,
+  "horteri-extended": `${local}/cyprus-trail-troodos.jpg`,
+  "agia-irini": `${local}/cyprus-trail-gorge.jpg`,
+  "livadi-trail": `${local}/cyprus-trail-troodos.jpg`,
+  mylikouri: `${local}/cyprus-trail-troodos.jpg`,
+  "persephone-extended": `${local}/cyprus-trail-troodos.jpg`,
+  "dwarf-oaks": `${local}/cyprus-trail-troodos.jpg`,
+  "lefkara-path": `${local}/cyprus-village-omodos.jpg`,
+  "potamia-dam": `${local}/cyprus-trail-troodos.jpg`,
+  kionia: `${local}/cyprus-trail-troodos.jpg`,
+  "trees-of-woe": `${local}/cyprus-trail-troodos.jpg`,
+  "kalidonia-alt": `${local}/cyprus-trail-waterfall.jpg`,
+  pentadaktylos: `${local}/cyprus-trail-troodos.jpg`,
+  "larnaca-salt-lake": `${local}/cyprus-trail-coastal.jpg`,
+};
+
+/** Map trail id to image URL. */
+export function getTrailImage(trailId: string): string {
+  return trailImages[trailId] ?? `${local}/cyprus-trail-troodos.jpg`;
+}
