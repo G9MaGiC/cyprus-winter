@@ -40,7 +40,7 @@ export default function CategoryChips() {
           aria-label="Browse by category"
         >
           {primary.map((c) => (
-            <Link key={c.href} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+            <Link key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
               {c.label}
             </Link>
           ))}
@@ -55,7 +55,7 @@ export default function CategoryChips() {
         <p className="text-center text-sage text-sm mb-3">Also: Culture, Coasts, Monasteries</p>
         <div className="flex flex-wrap justify-center gap-2">
           {also.map((c) => (
-            <Link key={c.href} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+            <Link key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
               {c.label}
             </Link>
           ))}
