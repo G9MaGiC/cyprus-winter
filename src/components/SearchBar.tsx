@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { search, type SearchResult } from "@/lib/search";
 
 type SearchBarProps = {
@@ -22,6 +22,7 @@ export default function SearchBar({
   syncUrl = false,
 }: SearchBarProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [query, setQuery] = useState(initialQuery);
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -45,12 +46,12 @@ export default function SearchBar({
       const q = query.trim();
       if (q.length >= 2) {
         router.replace(`/search?q=${encodeURIComponent(q)}`, { scroll: false });
-      } else if (q.length === 0) {
+      } else if (q.length === 0 && pathname === "/search") {
         router.replace("/search", { scroll: false });
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [query, syncUrl, router]);
+  }, [query, syncUrl, router, pathname]);
 
   const showDropdown = focused && results.length > 0;
   const hasResults = results.length > 0;
