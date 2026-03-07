@@ -94,9 +94,13 @@ export function rateLimit(req: Request, limit: number): RateLimitResult {
 }
 
 /** Build headers for a successful rate-limited response. */
-export function rateLimitHeaders(remaining: number, resetAt: number, bypassed?: boolean): HeadersInit {
+export function rateLimitHeaders(
+  remaining: number,
+  resetAt: number,
+  bypassed?: boolean
+): Record<string, string> {
   const retryAfter = Math.ceil((resetAt - Date.now()) / 1000);
-  const headers: HeadersInit = {
+  const headers: Record<string, string> = {
     "X-RateLimit-Remaining": String(Math.max(0, remaining)),
     "Retry-After": String(Math.max(1, retryAfter)),
   };

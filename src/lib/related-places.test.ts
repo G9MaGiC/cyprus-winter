@@ -55,8 +55,6 @@ describe("combineWith validation", () => {
   });
 });
 
-import { getCombineWith } from "./related-places";
-
 describe("getCombineWith", () => {
   it("returns empty array for place without combineWith", () => {
     const ids = getCombineWith("unknown-xyz");

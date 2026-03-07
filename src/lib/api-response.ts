@@ -62,8 +62,12 @@ export function jsonRateLimitedFromResult(
 }
 
 /** Headers for successful rate-limited responses (200). Include on all rate-limited routes. */
-export function rateLimitSuccessHeaders(remaining: number, limit: number, bypassed?: boolean): HeadersInit {
-  const headers: HeadersInit = {
+export function rateLimitSuccessHeaders(
+  remaining: number,
+  limit: number,
+  bypassed?: boolean
+): Record<string, string> {
+  const headers: Record<string, string> = {
     "X-RateLimit-Remaining": String(Math.max(0, remaining)),
     "X-RateLimit-Limit": String(limit),
   };
