@@ -628,3 +628,30 @@ Fixed — added "Use my location instead" link in region picker.
 - BUG-047: Cron rate limiting — CRON_SECRET auth; rate limit redundant
 - BUG-049: Right-now fail-open — availability over strict rate limit when Redis fails
 - BUG-041: Redis — documented in VERCEL_DEPLOY_CHECKLIST; config, not code
+
+---
+
+## QA Run — (padded) Layout Refactor Verification (Mar 8, 2026)
+
+*Post refactor: non-home routes in app/(padded)/ with nav clearance; home pt-0 for hero flush.*
+
+### Automated checks
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| npm run lint | Pass | 0 errors |
+| npm run test | Pass | 150 tests |
+| npm run build | Pass | Next.js 16.1.6 |
+
+### (padded) layout structure verified
+
+| Route | Layout chain | Nav clearance |
+|-------|--------------|---------------|
+| / (root home) | Root layout (main pt-0) | Hero flush under nav ✓ |
+| /discover, /trails, /plan (root) | Root → (padded) layout (div pt) | Correct ✓ |
+| /en, /el, etc. (locale home) | [locale] layout (main pt) | Correct ✓ |
+| /en/discover, /en/trails, etc. | [locale] layout (main pt) | Correct ✓ |
+
+### Fix status
+
+No bugs found. All QA_BUGS entries remain Fixed. Layout refactor verified; discover, trails, plan pages use correct spacing via (padded) or [locale] main padding.
