@@ -1,1 +1,1 @@
-export { default } from "@/app/weather/[month]/page";
+export { default, generateMetadata } from "@/app/weather/[month]/page";

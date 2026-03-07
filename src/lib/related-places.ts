@@ -83,6 +83,7 @@ export function getSimilarDiscoverPlaces(
   region: string,
   limit = 4
 ): RelatedPlace[] {
+  // allAttractions already includes wineries; add restaurants only to avoid duplicates
   const all: { id: string; name: string; region: string; type: string }[] = [
     ...allAttractions.map((a: Attraction) => ({
       id: a.id,
@@ -90,14 +91,16 @@ export function getSimilarDiscoverPlaces(
       region: a.region,
       type: a.type,
     })),
-    ...wineries.map((w) => ({ id: w.id, name: w.name, region: w.region, type: "winery" })),
     ...restaurants.map((r) => ({ id: r.id, name: r.name, region: r.region, type: "restaurant" })),
   ];
+  const seen = new Set<string>();
   const sameTypeAndRegion = all.filter(
     (p) =>
       p.id !== currentId &&
       p.type === type &&
-      sameRegion(p.region, region)
+      sameRegion(p.region, region) &&
+      !seen.has(p.id) &&
+      (seen.add(p.id), true)
   );
   return getRelatedPlaces(sameTypeAndRegion.slice(0, limit).map((p) => p.id));
 }

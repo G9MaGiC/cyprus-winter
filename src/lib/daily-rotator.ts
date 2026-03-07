@@ -50,3 +50,26 @@ export function pickDailySafe<T>(items: T[], key?: string, seed?: string): T | n
   const idx = hash % items.length;
   return items[idx];
 }
+
+/**
+ * Pick one item with boosted probability for promoted IDs.
+ * Promoted items are duplicated in the pool (boostWeight times) before picking.
+ * Use for Place of Day etc. when certain places should appear more often.
+ */
+export function pickDailySafeWithBoost<T extends { id: string }>(
+  items: T[],
+  promotedIds: string[],
+  key: string,
+  boostWeight = 5,
+  seed?: string
+): T | null {
+  if (items.length === 0) return null;
+  const idSet = new Set(promotedIds);
+  const promoted = items.filter((i) => idSet.has(i.id));
+  const extra = promoted.flatMap((p) => Array(boostWeight - 1).fill(p));
+  const pool = [...items, ...extra];
+  const s = `${seed ?? getDailySeed()}-${key}`;
+  const hash = djb2Hash(s);
+  const idx = hash % pool.length;
+  return pool[idx];
+}

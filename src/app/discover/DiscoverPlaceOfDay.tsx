@@ -5,7 +5,8 @@ import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { getAttractionImage } from "@/lib/cyprus-images";
-import { pickDailySafe } from "@/lib/daily-rotator";
+import { pickDailySafeWithBoost } from "@/lib/daily-rotator";
+import { PROMOTED_PLACE_IDS } from "@/data/promoted";
 import {
   beaches,
   natureSites,
@@ -31,7 +32,12 @@ const allDiscoverItems = [
 
 function getDiscoverPlaceOfDay() {
   if (allDiscoverItems.length === 0) return null;
-  const picked = pickDailySafe(allDiscoverItems, "discover-place-of-day");
+  const picked = pickDailySafeWithBoost(
+    allDiscoverItems,
+    PROMOTED_PLACE_IDS,
+    "discover-place-of-day",
+    5
+  );
   if (!picked) return null;
 
   const desc = picked.description;

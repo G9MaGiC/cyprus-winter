@@ -21,8 +21,8 @@ const DAY_COMBOS: DayCombo[] = [
     ids: ["omodos", "tsiakkas"],
   },
   {
-    label: "Larnaca lace & ancient",
-    ids: ["lefkara", "choirokoitia"],
+    label: "Larnaca corridor · lace, ancient & wine",
+    ids: ["lefkara", "choirokoitia", "domes-sergiou"],
   },
 ];
 

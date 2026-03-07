@@ -23,7 +23,7 @@ type Props = {
 };
 
 export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon" }: Props) {
-  const [status, setStatus] = useState<"idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error" | "notConfigured">("idle");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -52,15 +52,20 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
         return;
       }
 
-      const reg = await navigator.serviceWorker.register("/sw.js");
+      const reg = await navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" });
       await navigator.serviceWorker.ready;
 
       const vapidRes = await fetch("/api/push/vapid");
       if (!vapidRes.ok) {
-        setStatus("error");
+        setStatus(vapidRes.status === 503 ? "notConfigured" : "error");
         return;
       }
-      const { publicKey } = (await vapidRes.json()) as { publicKey: string };
+      const vapidJson = (await vapidRes.json()) as { publicKey?: string };
+      const publicKey = vapidJson?.publicKey;
+      if (!publicKey) {
+        setStatus("notConfigured");
+        return;
+      }
 
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
@@ -80,7 +85,7 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
       });
 
       if (!res.ok) {
-        setStatus("error");
+        setStatus(res.status === 503 ? "notConfigured" : "error");
         return;
       }
 
@@ -91,7 +96,7 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
     }
   }, [tripStartDate, onSubscribed]);
 
-  if (!mounted || status === "unsupported" || status === "denied") return null;
+  if (!mounted || status === "unsupported" || status === "denied" || status === "notConfigured") return null;
   if (status === "subscribed") {
     return (
       <p className="text-sm text-sage mt-2">

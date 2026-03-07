@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getRelatedPlaces, getCombineWith } from "./related-places";
+import { getRelatedPlaces, getCombineWith, getSimilarDiscoverPlaces } from "./related-places";
 import { allAttractions } from "@/data";
 import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
@@ -73,6 +73,20 @@ describe("getCombineWith", () => {
   it("returns combineWith IDs for place that has them", () => {
     const ids = getCombineWith("artemis");
     expect(Array.isArray(ids)).toBe(true);
+  });
+});
+
+describe("getSimilarDiscoverPlaces", () => {
+  it("returns empty for non-existent region", () => {
+    const result = getSimilarDiscoverPlaces("omodos", "village", "NowhereLand");
+    expect(result).toEqual([]);
+  });
+
+  it("returns similar places without duplicates and excludes current", () => {
+    const result = getSimilarDiscoverPlaces("domes-sergiou", "winery", "Skarinou (Larnaca)", 6);
+    const ids = result.map((p) => p.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids).not.toContain("domes-sergiou");
   });
 });
 

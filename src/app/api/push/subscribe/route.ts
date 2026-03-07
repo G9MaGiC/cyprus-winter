@@ -43,17 +43,31 @@ export async function POST(req: NextRequest) {
       return jsonError("VALIDATION_ERROR", msg, 400);
     }
 
-    const { clientId, subscription, tripStartDate, pushTripCountdown = true, pushWeatherDigest = false } = parsed.data;
+    const { clientId, subscription, tripStartDate, pushTripCountdown, pushWeatherDigest } = parsed.data;
     const id = `ps-${clientId}`;
+
+    // Fetch existing row to merge preferences (don't overwrite trip countdown / weather digest)
+    const { data: existing } = await supabase
+      .from("push_subscriptions")
+      .select("push_trip_countdown, push_weather_digest, trip_start_date")
+      .eq("id", id)
+      .single();
+
+    // Merge: never turn off an opt-in from a different form (trip vs weather)
+    const merged = {
+      push_trip_countdown: pushTripCountdown === true || (existing?.push_trip_countdown ?? pushTripCountdown ?? true),
+      push_weather_digest: pushWeatherDigest === true || (existing?.push_weather_digest ?? pushWeatherDigest ?? false),
+      trip_start_date: tripStartDate ?? existing?.trip_start_date ?? null,
+    };
 
     const { error } = await supabase.from("push_subscriptions").upsert(
       {
         id,
         client_id: clientId,
         subscription: subscription as unknown as Record<string, unknown>,
-        trip_start_date: tripStartDate ?? null,
-        push_trip_countdown: pushTripCountdown,
-        push_weather_digest: pushWeatherDigest,
+        trip_start_date: merged.trip_start_date,
+        push_trip_countdown: merged.push_trip_countdown,
+        push_weather_digest: merged.push_weather_digest,
         updated_at: new Date().toISOString(),
       },
       { onConflict: "id" }
