@@ -61,21 +61,49 @@ export function getRegionShortLabel(slug: RegionSlug): string {
   }
 }
 
-/** Match winery region string to a region slug (winery.region is like "Pelendri (Limassol)" or "Kathikas (Paphos)"). */
-export function wineryMatchesRegion(wineryRegion: string, slug: RegionSlug): boolean {
-  const r = wineryRegion.toLowerCase();
+/** Filter attractions/trails/restaurants by region (simple region string match). */
+export function filterByRegion<T extends { region: string }>(
+  items: T[],
+  slug: RegionSlug
+): T[] {
   switch (slug) {
     case "troodos":
-      return /troodos|platres|kyperounta|omodos|koilani|pera pedi|pelendri|kyperounta|pitsilia|odou/i.test(r);
+      return items.filter((i) => i.region === "Troodos");
     case "paphos":
-      return r.includes("paphos");
-    case "larnaca":
-      return r.includes("larnaca");
-    case "limassol":
-      return r.includes("limassol") || r.includes("lemesos");
+      return items.filter((i) => i.region === "Paphos");
     case "ayia-napa":
-      return false; // no wineries in Ayia Napa
+      return items.filter((i) =>
+        ["Ayia Napa", "Cape Greco", "Protaras"].includes(i.region)
+      );
+    case "larnaca":
+      return items.filter((i) => i.region === "Larnaca");
+    case "limassol":
+      return items.filter((i) => i.region === "Limassol");
+    default:
+      return [];
+  }
+}
+
+/** Match region string to a region slug. Handles attractions ("Paphos"), wineries ("Kathikas (Paphos)"), restaurants ("Platres"). */
+export function itemMatchesRegion(regionStr: string, slug: RegionSlug): boolean {
+  const r = regionStr.toLowerCase();
+  switch (slug) {
+    case "troodos":
+      return r === "troodos" || /platres|kyperounta|omodos|koilani|pera pedi|pelendri|pitsilia|odou/i.test(r);
+    case "paphos":
+      return r === "paphos" || r.includes("paphos");
+    case "larnaca":
+      return r === "larnaca" || r.includes("larnaca");
+    case "limassol":
+      return r === "limassol" || r.includes("limassol") || r.includes("lemesos");
+    case "ayia-napa":
+      return ["ayia napa", "cape greco", "protaras"].includes(r);
     default:
       return false;
   }
+}
+
+/** Match winery region string to a region slug (winery.region is like "Pelendri (Limassol)" or "Kathikas (Paphos)"). */
+export function wineryMatchesRegion(wineryRegion: string, slug: RegionSlug): boolean {
+  return itemMatchesRegion(wineryRegion, slug);
 }

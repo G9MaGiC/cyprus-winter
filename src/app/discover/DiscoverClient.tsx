@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
@@ -9,12 +9,15 @@ import FilterChips from "@/components/FilterChips";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
+import { REGION_CONFIGS, getRegionShortLabel, itemMatchesRegion } from "@/data/regions";
 import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
+import type { RegionSlug } from "@/data/regions";
 
 const moods = [
   { href: "/trails", label: "Active", ariaLabel: "Active adventures — trails, hiking" },
+  { href: "/discover?filter=beach", label: "Coasts", ariaLabel: "Coasts — beaches, winter walks" },
   { href: "/discover?filter=ancient", label: "Culture", ariaLabel: "Culture — ancient sites, ruins" },
   { href: "/discover?filter=winery", label: "Wine", ariaLabel: "Wine — wineries, tastings" },
   { href: "/discover?filter=quiet", label: "Quiet escapes", ariaLabel: "Quiet escapes — off the beaten path" },
@@ -25,6 +28,7 @@ const moods = [
 
 const filterToSectionId: Record<string, string> = {
   beach: "beach",
+  nature: "nature",
   ancient: "ancient",
   village: "village",
   winery: "winery",
@@ -32,13 +36,24 @@ const filterToSectionId: Record<string, string> = {
   eat: "eat",
   restaurant: "eat",
   monastery: "monastery",
-  nature: "beach",
   family: "family",
   quiet: "quiet",
   "off-beaten-path": "quiet",
 };
 
 type Section = { id: string; title: string; items: (Attraction | Winery | Restaurant)[] };
+
+function filterSectionsByRegion(
+  sections: Section[],
+  regionSlug: RegionSlug
+): Section[] {
+  return sections.map((sec) => ({
+    ...sec,
+    items: sec.items.filter((item) => itemMatchesRegion(item.region, regionSlug)),
+  }));
+}
+
+const VALID_REGION_SLUGS = REGION_CONFIGS.map((c) => c.slug);
 
 export default function DiscoverClient({
   sections,
@@ -47,12 +62,26 @@ export default function DiscoverClient({
 }) {
   const searchParams = useSearchParams();
   const filterParam = searchParams?.get("filter") ?? "";
+  const regionParam = searchParams?.get("region") ?? "";
+  const regionSlug = VALID_REGION_SLUGS.includes(regionParam as RegionSlug)
+    ? (regionParam as RegionSlug)
+    : null;
   const filter = filterToSectionId[filterParam];
   const sectionExists = filter && sections.some((s) => s.id === filter);
-  const sectionsToShow = sectionExists
+  const baseSectionsToShow = sectionExists
     ? sections.filter((s) => s.id === filter)
     : sections;
+  const sectionsToShow = useMemo(
+    () =>
+      regionSlug
+        ? filterSectionsByRegion(baseSectionsToShow, regionSlug)
+        : baseSectionsToShow,
+    [baseSectionsToShow, regionSlug]
+  );
   const firstSectionRef = useRef<HTMLElement>(null);
+  const hasWineriesInView = sectionsToShow.some((s) =>
+    s.items.some((i) => i.type === "winery")
+  );
 
   const chips = [
     { id: "", label: "All categories" },
@@ -75,7 +104,7 @@ export default function DiscoverClient({
           <div className="flex flex-wrap items-baseline gap-x-2 text-sm mb-3">
             <span className="font-medium text-olive">
               {sections.find((s) => s.id === filter)!.title}
-              {filterParam === "nature" && " (Nature & coasts)"}
+              {regionSlug && ` in ${getRegionShortLabel(regionSlug)}`}
             </span>
             <span className="text-olive/60">— {totalCount} places</span>
             <span className="text-olive/40" aria-hidden>·</span>
@@ -90,13 +119,10 @@ export default function DiscoverClient({
         <FilterChips
           chips={chips}
           isActive={(chip) => (chip.id === "" ? !filter : filter === chip.id)}
-          getHref={(chip) =>
-            chip.id === ""
-              ? "/discover"
-              : filter === chip.id
-                ? "/discover"
-                : `/discover?filter=${chip.id}`
-          }
+          getHref={(chip) => {
+            const base = chip.id === "" || filter === chip.id ? "/discover" : `/discover?filter=${chip.id}`;
+            return regionSlug ? `${base}${base.includes("?") ? "&" : "?"}region=${regionSlug}` : base;
+          }}
           ariaLabel="Filter by category"
         />
         {filterParam && !sectionExists && (
@@ -114,16 +140,63 @@ export default function DiscoverClient({
           <Link href="/plan" className={CTA.primaryCompact}>
             Plan your trip
           </Link>
+          <Link href="/plan?template=classic" className={CTA.secondaryCompact}>
+            Start with a template
+          </Link>
           <Link href="/trails" className={CTA.secondaryCompact}>
             Trails
           </Link>
-          {filter === "winery" && (
+          {hasWineriesInView && (
             <Link href="/bookings" className={CTA.secondaryCompact}>
               Book tastings
             </Link>
           )}
         </div>
       </div>
+
+      <section
+        aria-labelledby="discover-region-heading"
+        className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
+      >
+        <div className={`${LAYOUT.list} mx-auto`}>
+          <h2
+            id="discover-region-heading"
+            className={`${TYPE.sectionTitle} text-center ${SECTION.headingGap}`}
+          >
+            Browse by region
+          </h2>
+          <div
+            className="flex flex-wrap justify-center gap-2 sm:gap-3"
+            role="navigation"
+            aria-label="Filter by region"
+          >
+            <Link
+              href={filterParam ? `/discover?filter=${filterParam}` : "/discover"}
+              className={`${CTA.chipSecondary} rounded-xl ${!regionParam ? "ring-2 ring-terracotta/50" : ""}`}
+              aria-current={!regionParam ? "page" : undefined}
+            >
+              All
+            </Link>
+            {REGION_CONFIGS.map((r) => {
+              const regionHref = regionParam === r.slug
+                ? (filterParam ? `/discover?filter=${filterParam}` : "/discover")
+                : filterParam
+                  ? `/discover?filter=${filterParam}&region=${r.slug}`
+                  : `/discover?region=${r.slug}`;
+              return (
+                <Link
+                  key={r.slug}
+                  href={regionHref}
+                  className={`${CTA.chipSecondary} rounded-xl ${regionParam === r.slug ? "ring-2 ring-terracotta/50" : ""}`}
+                  aria-current={regionParam === r.slug ? "page" : undefined}
+                >
+                  {getRegionShortLabel(r.slug)}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <section
         aria-labelledby="discover-mood-heading"
@@ -201,10 +274,13 @@ export default function DiscoverClient({
       </div>
       <div className="mt-16 sm:mt-20 pt-8 sm:pt-10 pb-[calc(4.5rem+env(safe-area-inset-bottom))] sm:pb-0 border-t border-sand-200/80 text-center relative">
         <div id="discover-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-        <p className="text-sm text-olive/70 mb-3">Start with one place. Pair it with a trail or a tasting. Or tap Ask AI—it knows the island in winter.</p>
+        <p className="text-sm text-olive/70 mb-3">Start with one place, or a pre-built itinerary. Pair it with a trail or a tasting. Or tap Ask AI—it knows the island in winter.</p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/plan" className={CTA.primaryCompact}>
             Add to your plan
+          </Link>
+          <Link href="/plan?template=short-stay" className={CTA.secondaryCompact}>
+            48-hour template
           </Link>
           <Link href="/trails" className={CTA.secondaryCompact}>
             Explore trails

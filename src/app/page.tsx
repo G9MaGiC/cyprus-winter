@@ -1,22 +1,24 @@
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import AppLink from "@/components/AppLink";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
+import BackToTopLink from "@/components/BackToTopLink";
 import { CARD, LAYOUT, SECTION, STRIP, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import HomeHero from "@/app/_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
-import StartHereStrip from "@/app/_home/StartHereStrip";
+import StartHereWithExplore from "@/app/_home/StartHereWithExplore";
+import HomeTemplateLinks from "@/app/_home/HomeTemplateLinks";
 import HomeSection from "@/app/_home/HomeSection";
-import CategoryChips from "@/app/_home/CategoryChips";
 import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
-import EditorsPicks from "@/app/_home/EditorsPicks";
-import BookTastings from "@/app/_home/BookTastings";
 import HomeInsiderTip from "@/app/_home/HomeInsiderTip";
 import HomePlaceOfDay from "@/app/_home/HomePlaceOfDay";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
-import HomeMoodStrip from "@/app/_home/HomeMoodStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
+
+const EditorsPicks = dynamic(() => import("@/app/_home/EditorsPicks"), { loading: () => <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-h-[200px]" aria-hidden /> });
+const BookTastings = dynamic(() => import("@/app/_home/BookTastings"), { loading: () => <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 min-h-[200px]" aria-hidden /> });
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
@@ -61,24 +63,15 @@ export default function Home() {
           <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive mb-3`}>
             Where to today?
           </h2>
-          <SearchBar placeholder="Where to today?" className="max-w-xl mx-auto" />
+          <SearchBar placeholder="Find a place, trail, or event" className="max-w-xl mx-auto" />
         </div>
       </section>
       <HomeTrailConditionsStrip />
-      <StartHereStrip />
+      <StartHereWithExplore />
+      <HomeTemplateLinks />
       <RightNowNearYou />
       <RecentlyViewedStrip />
-      <HomeMoodStrip />
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
-      <HomeSection
-        id="explore-heading"
-        title="Explore"
-        subtitle="From ancient ruins to village tastings — start anywhere."
-        alt
-      >
-        <CategoryChips />
-      </HomeSection>
-
       <HomePlaceOfDay />
 
       <HomeSection
@@ -94,7 +87,7 @@ export default function Home() {
       <HomeSection
         id="editors-picks-heading"
         title="Editor’s picks"
-        subtitle="Four places we keep coming back to in winter. Save them to your plan."
+        subtitle="Our team's favorites. Save them to your plan."
         alt
       >
         <EditorsPicks />
@@ -103,7 +96,7 @@ export default function Home() {
       <HomeSection
         id="book-tastings-heading"
         title="Book tastings"
-        subtitle="A few winter-friendly wineries to reserve first."
+        subtitle="Winter-friendly wineries. Reserve ahead for weekends."
       >
         <BookTastings />
       </HomeSection>
@@ -169,7 +162,7 @@ export default function Home() {
           </h2>
           <p className="text-white/90 font-semibold text-lg">Share Cyprus Winter</p>
           <p className="text-white/80 text-sm mt-3 max-w-lg mx-auto leading-relaxed prose-body">
-            Planning ahead or already here? Tap the chat bubble. We&apos;re here to help.
+            Planning ahead or already here? Tap the chat bubble. Add places as you browse—your plan saves automatically.
           </p>
           <p className="text-white/80 text-xs font-medium uppercase tracking-wider mt-6 mb-2 prose-label">
             Share with someone heading to Cyprus
@@ -181,6 +174,9 @@ export default function Home() {
               ariaLabel="Share via"
               className="share-links-footer"
             />
+          </div>
+          <div className="mt-6 pt-4 border-t border-white/20">
+            <BackToTopLink />
           </div>
         </div>
       </section>

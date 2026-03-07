@@ -165,6 +165,9 @@ export default function AirportPage() {
         <Link href="/plan?template=short-stay" className={CTA.primaryCompact}>
           48-hour itinerary
         </Link>
+        <Link href="/plan?template=classic-7" className={CTA.secondaryCompact}>
+          Plan your first week
+        </Link>
         <Link href="/discover" className={CTA.secondaryCompact}>
           Start exploring
         </Link>

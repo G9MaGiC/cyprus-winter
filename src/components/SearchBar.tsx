@@ -120,22 +120,34 @@ export default function SearchBar({
           className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/70 max-h-96 overflow-y-auto z-50"
         >
           {results.map((r, i) => (
-            <Link
+            <div
               key={`${r.kind}-${r.item.id}`}
-              href={r.href}
               role="option"
               data-index={i}
               aria-selected={i === activeIndex}
-              className={`block px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
+              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
                 i === activeIndex ? "bg-terracotta/10" : ""
               }`}
             >
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-medium text-olive truncate">{r.item.name}</span>
-                <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
-              </div>
-              <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
-            </Link>
+              <Link
+                href={r.href}
+                className="flex-1 min-w-0"
+                tabIndex={-1}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-medium text-olive truncate">{r.item.name}</span>
+                  <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
+                </div>
+                <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
+              </Link>
+              <Link
+                href={`/plan?add=${encodeURIComponent(r.item.id)}`}
+                onClick={(e) => e.stopPropagation()}
+                className="shrink-0 text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-2 py-1 -mx-2 -my-1"
+              >
+                Add to plan
+              </Link>
+            </div>
           ))}
         </div>
       )}

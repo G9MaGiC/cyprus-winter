@@ -2,6 +2,7 @@ import { allAttractions } from "@/data";
 import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
+import type { Attraction } from "@/data/attractions";
 
 /** Get place IDs that pair well with this place (trails, wineries, villages, restaurants). */
 export function getCombineWith(id: string): string[] {
@@ -62,4 +63,41 @@ export function getRelatedPlaces(ids: string[]): RelatedPlace[] {
     }
   }
   return result;
+}
+
+/** Normalize region for comparison (e.g. "Pelendri (Limassol)" → "Limassol"). */
+function primaryRegion(region: string): string {
+  const m = region.match(/\(([^)]+)\)/);
+  return m ? m[1].trim() : region.trim();
+}
+
+/** Region strings match if they share the same primary region. */
+function sameRegion(a: string, b: string): boolean {
+  return primaryRegion(a).toLowerCase() === primaryRegion(b).toLowerCase();
+}
+
+/** Get similar discover places: same type, same region, excluding current. Max 4. */
+export function getSimilarDiscoverPlaces(
+  currentId: string,
+  type: string,
+  region: string,
+  limit = 4
+): RelatedPlace[] {
+  const all: { id: string; name: string; region: string; type: string }[] = [
+    ...allAttractions.map((a: Attraction) => ({
+      id: a.id,
+      name: a.name,
+      region: a.region,
+      type: a.type,
+    })),
+    ...wineries.map((w) => ({ id: w.id, name: w.name, region: w.region, type: "winery" })),
+    ...restaurants.map((r) => ({ id: r.id, name: r.name, region: r.region, type: "restaurant" })),
+  ];
+  const sameTypeAndRegion = all.filter(
+    (p) =>
+      p.id !== currentId &&
+      p.type === type &&
+      sameRegion(p.region, region)
+  );
+  return getRelatedPlaces(sameTypeAndRegion.slice(0, limit).map((p) => p.id));
 }

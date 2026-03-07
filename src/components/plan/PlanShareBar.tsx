@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import ShareLinks from "@/components/ShareLinks";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
-import { MAX_DAYS } from "@/hooks/useItinerary";
 
 type PlanShareBarProps = {
   totalPlaces: number;
   activeDaysCount: number;
+  displayDaysCount: number;
   copied: boolean;
   linkCopied: boolean;
   sharePath: string;
@@ -18,6 +18,7 @@ type PlanShareBarProps = {
 export default function PlanShareBar({
   totalPlaces,
   activeDaysCount,
+  displayDaysCount,
   copied,
   linkCopied,
   sharePath,
@@ -49,8 +50,8 @@ export default function PlanShareBar({
     <div className={`${STRIP.py} bg-sand/60 border-b border-sand-200/80 -mx-4 sm:-mx-6 px-4 sm:px-6`}>
       <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-3`}>
         <p className="text-sm text-olive/70" aria-live="polite" role="status">
-          <span className="font-semibold text-terracotta tabular-nums">{totalPlaces}</span> places ·{" "}
-          <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/{MAX_DAYS} days · Auto-saved
+          <span className="font-semibold text-terracotta tabular-nums">{totalPlaces}</span> places in{" "}
+          <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/{displayDaysCount} days · Auto-saved
         </p>
         <div className="relative" ref={shareMenuRef}>
           <button

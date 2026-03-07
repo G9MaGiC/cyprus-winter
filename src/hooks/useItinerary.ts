@@ -5,51 +5,23 @@ import { useSearchParams } from "next/navigation";
 import { getPlaceById, type PlanItem } from "@/data";
 import { decodeItinerary, buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { toAbsoluteUrl } from "@/lib/site-url";
+import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 
 const STORAGE_KEY = "cyprus-winter-itinerary";
 
 export { MAX_DAYS };
+export { ITINERARY_TEMPLATES, type TemplateKey };
+
+/** @deprecated Use getTemplateDays or ITINERARY_TEMPLATES */
+export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object.fromEntries(
+  ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
+);
 
 function emptyDays(): Record<number, string[]> {
   const out: Record<number, string[]> = {};
   for (let d = 1; d <= MAX_DAYS; d++) out[d] = [];
   return out;
 }
-
-export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = {
-  classic: {
-    1: ["kourion", "pafos-mosaics"],
-    2: ["artemis", "platres"],
-    3: ["kykkos", "omodos"],
-    4: ["lefkara", "tsiakkas"],
-    5: ["adonis", "kolios"],
-  },
-  mountain: {
-    1: ["artemis", "platres"],
-    2: ["atalante", "omodos"],
-    3: ["caledonia-falls", "kakopetria"],
-    4: ["kykkos", "tsiakkas"],
-    5: ["persephone", "pedoulas"],
-  },
-  "coast-culture": {
-    1: ["pafos-mosaics", "tomb-of-kings"],
-    2: ["adonis", "kolios"],
-    3: ["kourion", "governors-beach"],
-    4: ["lefkara", "cape-greco"],
-    5: ["omodos", "tsiakkas"],
-  },
-  family: {
-    1: ["fig-tree-bay", "coral-bay"],
-    2: ["choirokoitia", "lefkara"],
-    3: ["caledonia-falls", "kakopetria"],
-    4: ["artemis", "platres"],
-    5: ["sterna-boutique", "pafos-mosaics"],
-  },
-  "short-stay": {
-    1: ["kourion", "pafos-mosaics"],
-    2: ["artemis", "omodos", "tsiakkas"],
-  },
-};
 
 function loadItinerary(): Record<number, string[]> {
   if (typeof window === "undefined") return emptyDays();
@@ -130,8 +102,8 @@ export function useItinerary() {
     ids.some((id) => getPlace(id)?.type === "winery")
   );
 
-  const applyTemplate = useCallback((key: keyof typeof WINTER_TEMPLATES, mode: "replace" | "merge" = "replace") => {
-    const template = WINTER_TEMPLATES[key];
+  const applyTemplate = useCallback((key: TemplateKey, mode: "replace" | "merge" = "replace") => {
+    const template = getTemplateDays(key);
     if (!template) return;
     setDays((prev) => {
       const next = emptyDays();
@@ -146,7 +118,7 @@ export function useItinerary() {
     });
   }, []);
 
-  const applyTemplateReplace = useCallback((key: keyof typeof WINTER_TEMPLATES, skipConfirm?: boolean) => {
+  const applyTemplateReplace = useCallback((key: TemplateKey, skipConfirm?: boolean) => {
     if (!hasContent || skipConfirm) {
       applyTemplate(key, "replace");
       return;
@@ -158,7 +130,7 @@ export function useItinerary() {
     if (choice) applyTemplate(key, "replace");
   }, [hasContent, applyTemplate]);
 
-  const mergeTemplate = useCallback((key: keyof typeof WINTER_TEMPLATES) => {
+  const mergeTemplate = useCallback((key: TemplateKey) => {
     applyTemplate(key, "merge");
   }, [applyTemplate]);
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import {
   beaches,
+  natureSites,
   ancientSites,
   villages,
   monasteries,
@@ -14,6 +15,8 @@ import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
 import DiscoverEditorPicks from "./DiscoverEditorPicks";
+import DiscoverDayCombos from "./DiscoverDayCombos";
+import DiscoverMapSection from "./DiscoverMapSection";
 import DiscoverClient from "./DiscoverClient";
 
 export const metadata: Metadata = {
@@ -53,6 +56,7 @@ const quietItems = allDiscoverItems.filter(isOffBeatenPath);
 
 const sections = [
   { id: "beach", title: "Beaches", items: beaches },
+  { id: "nature", title: "Nature & coasts", items: natureSites },
   { id: "ancient", title: "Ancient sites", items: ancientSites },
   { id: "village", title: "Villages", items: villages },
   { id: "winery", title: "Wineries", items: wineries },
@@ -112,7 +116,7 @@ export default function DiscoverPage() {
           <h2 id="discover-search-heading" className="text-center text-olive font-display text-xl sm:text-2xl font-semibold mb-3">
             Find a place
           </h2>
-          <SearchBar placeholder="Search places, trails, wineries…" className="max-w-xl mx-auto" />
+          <SearchBar placeholder="Search places, trails, wineries…" className="max-w-xl mx-auto" syncUrl />
         </div>
       </section>
 
@@ -129,6 +133,10 @@ export default function DiscoverPage() {
           <DiscoverEditorPicks />
         </div>
       </section>
+
+      <DiscoverDayCombos />
+
+      <DiscoverMapSection />
 
       <DiscoverClient sections={sections} />
     </div>

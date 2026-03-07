@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
@@ -84,15 +84,17 @@ export default function HomePlaceOfDay() {
 
   return (
     <section
+      id="place-of-day"
       aria-labelledby="place-of-day-heading"
-      className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
+      className={`${SECTION.pySub} ${LAYOUT.safeAreaX} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div
-          className={`rounded-xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
+          className={`rounded-xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row ring-2 ring-aegean/15 shadow-lg`}
         >
           <Link
             href={place.href}
+            prefetch="auto"
             className="block sm:w-1/3 shrink-0 relative aspect-[4/3] sm:aspect-square"
             aria-label={`Open ${place.name}`}
           >
@@ -120,6 +122,7 @@ export default function HomePlaceOfDay() {
             </p>
             <Link
               href={place.href}
+              prefetch="auto"
               className="font-display text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5"
             >
               {place.name}
@@ -132,6 +135,7 @@ export default function HomePlaceOfDay() {
               <AddToItineraryButton placeId={place.id} label="Add to plan" />
               <Link
                 href={place.href}
+                prefetch="auto"
                 className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors"
               >
                 See details →

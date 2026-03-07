@@ -1,7 +1,6 @@
 "use client";
 
 import { LAYOUT } from "@/lib/design-tokens";
-import { MAX_DAYS } from "@/hooks/useItinerary";
 import type { PlanItem } from "@/data";
 
 type DaySelectorProps = {
@@ -9,6 +8,7 @@ type DaySelectorProps = {
   activeDay: number;
   setActiveDay: (day: number) => void;
   activeDaysCount: number;
+  displayDaysCount: number;
   getPlace: (id: string) => PlanItem | undefined;
   hasContent: boolean;
 };
@@ -18,6 +18,7 @@ export default function DaySelector({
   activeDay,
   setActiveDay,
   activeDaysCount,
+  displayDaysCount,
   getPlace,
   hasContent,
 }: DaySelectorProps) {
@@ -40,10 +41,10 @@ export default function DaySelector({
           const next =
             e.key === "ArrowLeft" || e.key === "ArrowUp"
               ? activeDay <= 1
-                ? MAX_DAYS
+                ? displayDaysCount
                 : activeDay - 1
               : e.key === "ArrowRight" || e.key === "ArrowDown"
-                ? activeDay >= MAX_DAYS
+                ? activeDay >= displayDaysCount
                   ? 1
                   : activeDay + 1
                 : null;
@@ -54,7 +55,7 @@ export default function DaySelector({
           }
         }}
       >
-        {(hasContent ? Array.from({ length: MAX_DAYS }, (_, i) => i + 1) : [1]).map((d) => {
+        {Array.from({ length: displayDaysCount }, (_, i) => i + 1).map((d) => {
           const count = (days[d] ?? []).length;
           const isActive = activeDay === d;
           return (
@@ -90,7 +91,7 @@ export default function DaySelector({
             </span>
           </summary>
           <div className="mt-3 space-y-2">
-            {Array.from({ length: MAX_DAYS }, (_, i) => i + 1).map((d) => {
+            {Array.from({ length: displayDaysCount }, (_, i) => i + 1).map((d) => {
               const items = days[d] ?? [];
               const summary = items.map((id) => getPlace(id)?.name ?? "…").join(" → ") || "Add places to get going";
               const isActive = activeDay === d;

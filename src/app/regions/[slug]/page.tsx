@@ -11,7 +11,7 @@ import {
 import { wineries } from "@/data/wineries";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
-import { REGION_CONFIGS, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
+import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
 import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
@@ -24,28 +24,6 @@ import type { Winery } from "@/data/wineries";
 
 export function generateStaticParams() {
   return REGION_CONFIGS.map((c) => ({ slug: c.slug }));
-}
-
-function filterByRegion<T extends { region: string }>(
-  items: T[],
-  slug: RegionSlug
-): T[] {
-  switch (slug) {
-    case "troodos":
-      return items.filter((i) => i.region === "Troodos");
-    case "paphos":
-      return items.filter((i) => i.region === "Paphos");
-    case "ayia-napa":
-      return items.filter((i) =>
-        ["Ayia Napa", "Cape Greco", "Protaras"].includes(i.region)
-      );
-    case "larnaca":
-      return items.filter((i) => i.region === "Larnaca");
-    case "limassol":
-      return items.filter((i) => i.region === "Limassol");
-    default:
-      return [];
-  }
 }
 
 type Props = { params: Promise<{ slug: string }> };

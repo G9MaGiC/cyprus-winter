@@ -5,6 +5,7 @@ import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { CARD, TYPE } from "@/lib/design-tokens";
+import AddToItineraryButton from "@/components/AddToItineraryButton";
 
 export default function AttractionCard({ a }: { a: Attraction | Winery | Restaurant }) {
   const typeColors: Record<string, string> = {
@@ -21,6 +22,14 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
   const badgeLabel = a.type === "restaurant" ? "Eat" : a.type;
 
   const isWinery = a.type === "winery";
+  const winterTip = "winterTip" in a ? a.winterTip : undefined;
+  const bestTime = "bestTimeToVisit" in a ? a.bestTimeToVisit : undefined;
+  const tease =
+    winterTip && winterTip.length > 0
+      ? winterTip.length > 100
+        ? winterTip.slice(0, 97) + "…"
+        : winterTip
+      : a.description;
 
   return (
     <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} active:scale-[0.99] motion-reduce:active:scale-100 transition-transform`}>
@@ -64,8 +73,13 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             {a.name}
           </h3>
           <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">
-            {a.description}
+            {tease}
           </p>
+          {bestTime && (
+            <p className="text-xs text-sage mt-1.5 break-words" title="Best time to visit">
+              {bestTime}
+            </p>
+          )}
           <div className="flex flex-wrap gap-2 mt-3">
             {a.highlights.slice(0, 3).map((h) => (
               <span
@@ -78,8 +92,8 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           </div>
         </div>
       </Link>
-      {isWinery && (
-        <div className="px-5 sm:px-6 pb-5 sm:pb-6 -mt-2">
+      <div className="px-5 sm:px-6 pb-5 sm:pb-6 -mt-2 flex flex-wrap items-center gap-3">
+        {isWinery && (
           <Link
             href={`/book/winery/${a.id}`}
             className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -87,8 +101,9 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           >
             Book a tasting
           </Link>
-        </div>
-      )}
+        )}
+        <AddToItineraryButton placeId={a.id} label="Add to plan" className="text-sm" />
+      </div>
     </div>
   );
 }

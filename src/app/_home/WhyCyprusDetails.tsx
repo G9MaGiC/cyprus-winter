@@ -2,7 +2,7 @@ import { CARD } from "@/lib/design-tokens";
 
 export default function WhyCyprusDetails() {
   return (
-    <details className="group">
+    <details className="group" open>
       <summary className="list-none cursor-pointer min-h-[48px] py-4 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl transition-colors hover:text-terracotta">
         <h2
           id="why-cyprus-heading"

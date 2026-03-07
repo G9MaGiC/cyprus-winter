@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, TYPE } from "@/lib/design-tokens";
-import { discoverEditorsPicks } from "@/data/home";
+import { getDiscoverEditorsPicks } from "@/data/home";
 
 export default function DiscoverEditorPicks() {
+  const picks = getDiscoverEditorsPicks();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {discoverEditorsPicks.map((item) => (
+      {picks.map((item) => (
         <div
           key={item.id}
           className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}

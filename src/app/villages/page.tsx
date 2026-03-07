@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import { villages } from "@/data/attractions";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -52,7 +52,11 @@ export default function VillagesPage() {
         backLabel="Discover"
         title="Cyprus Villages in Winter"
         description="Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
-      />
+      >
+        <Link href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+          Plan your trip
+        </Link>
+      </PageHeader>
 
       <h2 id="villages-list" className="sr-only">
         Cyprus winter villages

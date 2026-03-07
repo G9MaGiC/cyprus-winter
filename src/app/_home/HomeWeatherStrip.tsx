@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { weatherByMonth } from "@/data/weather";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
 import { getLiveWeather } from "@/lib/weather-live";

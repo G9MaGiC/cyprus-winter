@@ -130,6 +130,12 @@ export default async function WeatherMonthPage({ params }: Props) {
                       <p className="text-xs text-olive/70 mt-2">{e.dates}</p>
                     )}
                   </Link>
+                  <Link
+                    href={`/plan?add=${encodeURIComponent(e.id)}`}
+                    className="mt-2 inline-flex text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
+                  >
+                    Add to plan
+                  </Link>
                 </li>
               ))}
             </ul>

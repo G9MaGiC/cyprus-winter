@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { homeFeaturedWineries } from "@/data/home";
 import { wineries } from "@/data/wineries";
@@ -18,7 +18,7 @@ export default function BookTastings() {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
       {featured.map((w) => (
         <div key={w.wineryId} className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}>
-          <Link href={`/discover/${w.wineryId}`} className={`${CARD.link} flex-1`} aria-label={`View ${w.name}`}>
+          <Link href={`/discover/${w.wineryId}`} prefetch="auto" className={`${CARD.link} flex-1`} aria-label={`View ${w.name}`}>
             <div className={CARD.media}>
               <Image
                 src={w.image}
@@ -42,6 +42,7 @@ export default function BookTastings() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href={`/book/winery/${w.wineryId}`}
+                prefetch="auto"
                 className={CTA.primaryCompact}
                 aria-label={`Book a tasting at ${w.name}`}
               >
@@ -49,6 +50,7 @@ export default function BookTastings() {
               </Link>
               <Link
                 href="/wineries"
+                prefetch="auto"
                 className="text-sm text-sage hover:text-terracotta transition-colors"
                 aria-label="Explore all wineries"
               >

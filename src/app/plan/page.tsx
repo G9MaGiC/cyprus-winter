@@ -14,19 +14,16 @@ import QuickStartSection from "@/components/plan/QuickStartSection";
 import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
 import { useSearchParams } from "next/navigation";
 import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
-import { useItinerary } from "@/hooks/useItinerary";
+import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { usePlanUrlActions } from "@/hooks/usePlanUrlActions";
 import { useTripDates } from "@/hooks/useTripDates";
+import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import PushOptIn from "@/components/PushOptIn";
 import SectionCard from "@/components/SectionCard";
 
-const TEMPLATE_LABELS: Record<string, string> = {
-  classic: "Classic",
-  mountain: "Mountain",
-  "coast-culture": "Coast & Culture",
-  family: "Family",
-  "short-stay": "Short stay",
-};
+const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
+  ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
+);
 
 export default function PlanPage() {
   const searchParams = useSearchParams();
@@ -34,7 +31,7 @@ export default function PlanPage() {
   const [templateChoice, setTemplateChoice] = useState<string | null>(null);
   const [showBrowseModal, setShowBrowseModal] = useState(false);
 
-  const { dates, setTripDates, hydrated: datesHydrated, daysUntil, withinSevenDays } = useTripDates();
+  const { dates, setTripDates, hydrated: datesHydrated, daysUntil, withinSevenDays, tripLength } = useTripDates();
   const {
     days,
     activeDay,
@@ -59,6 +56,7 @@ export default function PlanPage() {
   const activeItems = days[activeDay] ?? [];
   const totalPlaces = Object.values(days).flat().length;
   const activeDaysCount = Object.keys(days).filter((d) => (days[Number(d)] ?? []).length > 0).length;
+  const displayDaysCount = tripLength ?? (hasContent ? MAX_DAYS : 1);
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
@@ -70,7 +68,6 @@ export default function PlanPage() {
     }
   }, [lastAddedId]);
 
-  type TemplateKey = "classic" | "mountain" | "coast-culture" | "family" | "short-stay";
   const handleTemplateClick = (key: string) => {
     if (!hasContent) {
       applyTemplate(key as TemplateKey);
@@ -164,6 +161,7 @@ export default function PlanPage() {
           <PlanShareBar
             totalPlaces={totalPlaces}
             activeDaysCount={activeDaysCount}
+            displayDaysCount={displayDaysCount}
             copied={copied}
             linkCopied={linkCopied}
             sharePath={sharePath}
@@ -250,6 +248,7 @@ export default function PlanPage() {
               activeDay={activeDay}
               setActiveDay={setActiveDay}
               activeDaysCount={activeDaysCount}
+              displayDaysCount={displayDaysCount}
               getPlace={getPlace}
               hasContent={hasContent}
             />
@@ -263,6 +262,7 @@ export default function PlanPage() {
               addToDay={addToDay}
               onTemplateClick={handleTemplateClick}
               hasContent={hasContent}
+              tripLength={tripLength}
             />
           </div>
         </div>

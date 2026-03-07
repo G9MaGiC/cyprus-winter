@@ -3,18 +3,21 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { allPlaces, getPlaceById } from "@/data";
 
-type TabId = "winery" | "trail" | "attraction" | "restaurant";
-
 const wineries = allPlaces.filter((p) => p.type === "winery");
 const trails = allPlaces.filter((p) => p.type === "trail");
 const attractions = allPlaces.filter((p) => p.type === "attraction");
 const restaurants = allPlaces.filter((p) => p.type === "restaurant");
+const events = allPlaces.filter((p) => p.type === "event");
+
+type TabId = "all" | "winery" | "trail" | "attraction" | "restaurant" | "event";
 
 const TABS: { id: TabId; label: string }[] = [
+  { id: "all", label: "All" },
   { id: "winery", label: "Wineries" },
   { id: "trail", label: "Trails" },
   { id: "attraction", label: "Attractions" },
   { id: "restaurant", label: "Eat" },
+  { id: "event", label: "Events" },
 ];
 
 type Place = { id: string; name: string; region: string };
@@ -29,18 +32,21 @@ function inferPreferredTab(ids: string[]): TabId {
   let hasWinery = false;
   let hasAttraction = false;
   let hasRestaurant = false;
+  let hasEvent = false;
   for (const id of ids) {
     const p = getPlaceById(id);
     if (p?.type === "trail") hasTrail = true;
     if (p?.type === "winery") hasWinery = true;
     if (p?.type === "attraction") hasAttraction = true;
     if (p?.type === "restaurant") hasRestaurant = true;
+    if (p?.type === "event") hasEvent = true;
   }
   if (hasTrail) return "trail";
   if (hasWinery) return "winery";
   if (hasAttraction) return "attraction";
   if (hasRestaurant) return "restaurant";
-  return "winery";
+  if (hasEvent) return "event";
+  return "all";
 }
 
 function filterPlaces(items: Place[], query: string): Place[] {
@@ -58,7 +64,7 @@ export default function PlacePicker({
   onAdd,
 }: PlacePickerProps) {
   const preferred = useMemo(() => inferPreferredTab(activeDayItems), [activeDayItems]);
-  const [tab, setTab] = useState<TabId>("winery");
+  const [tab, setTab] = useState<TabId>("all");
   const [search, setSearch] = useState("");
   const prevCountRef = useRef(0);
 
@@ -70,10 +76,15 @@ export default function PlacePicker({
     prevCountRef.current = count;
   }, [activeDayItems.length, preferred]);
 
+  const allFiltered = useMemo(
+    () => filterPlaces([...wineries, ...trails, ...attractions, ...restaurants, ...events], search),
+    [search]
+  );
   const wineriesFiltered = useMemo(() => filterPlaces(wineries, search), [search]);
   const trailsFiltered = useMemo(() => filterPlaces(trails, search), [search]);
   const attractionsFiltered = useMemo(() => filterPlaces(attractions, search), [search]);
   const restaurantsFiltered = useMemo(() => filterPlaces(restaurants, search), [search]);
+  const eventsFiltered = useMemo(() => filterPlaces(events, search), [search]);
 
   const renderList = (items: Place[], tabLabel: string) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
@@ -162,6 +173,20 @@ export default function PlacePicker({
       </div>
       <div
         role="tabpanel"
+        id="tabpanel-all"
+        aria-labelledby="tab-all"
+        hidden={tab !== "all"}
+        className={tab !== "all" ? "hidden" : ""}
+      >
+        {tab === "all" && (
+          <>
+            <p className="text-xs text-olive/60 mb-2">Wineries, trails, villages, events. Pick what fits your day.</p>
+            {renderList(allFiltered, "places")}
+          </>
+        )}
+      </div>
+      <div
+        role="tabpanel"
         id="tabpanel-winery"
         aria-labelledby="tab-winery"
         hidden={tab !== "winery"}
@@ -213,6 +238,20 @@ export default function PlacePicker({
           <>
             <p className="text-xs text-olive/60 mb-2">Tavernas, fish spots, fine dining. Reserve ahead in winter for popular places.</p>
             {renderList(restaurantsFiltered, "restaurants")}
+          </>
+        )}
+      </div>
+      <div
+        role="tabpanel"
+        id="tabpanel-event"
+        aria-labelledby="tab-event"
+        hidden={tab !== "event"}
+        className={tab !== "event" ? "hidden" : ""}
+      >
+        {tab === "event" && (
+          <>
+            <p className="text-xs text-olive/60 mb-2">Epiphany, carnival, markets. Dates may shift year to year—check official sources.</p>
+            {renderList(eventsFiltered, "events")}
           </>
         )}
       </div>

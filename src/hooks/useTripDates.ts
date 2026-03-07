@@ -35,6 +35,22 @@ function saveTripDates(dates: TripDates) {
   }
 }
 
+const MAX_TRIP_DAYS = 14;
+
+/**
+ * Trip length in days (start to end inclusive). Null if invalid range or dates missing.
+ */
+export function tripLengthFromDates(start: string | null, end: string | null): number | null {
+  if (!start || !end) return null;
+  const a = new Date(start);
+  const b = new Date(end);
+  a.setHours(0, 0, 0, 0);
+  b.setHours(0, 0, 0, 0);
+  if (b.getTime() < a.getTime()) return null;
+  const days = Math.ceil((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+  return Math.min(MAX_TRIP_DAYS, Math.max(1, days));
+}
+
 /**
  * Days until trip start (0 = today, 1 = tomorrow, negative = past).
  * Returns null if no start date.
@@ -67,6 +83,7 @@ export function useTripDates() {
 
   const daysUntil = daysUntilTrip(dates.start);
   const withinSevenDays = daysUntil !== null && daysUntil >= 0 && daysUntil <= 7;
+  const tripLength = tripLengthFromDates(dates.start, dates.end);
 
-  return { dates, setTripDates, hydrated, daysUntil, withinSevenDays };
+  return { dates, setTripDates, hydrated, daysUntil, withinSevenDays, tripLength };
 }

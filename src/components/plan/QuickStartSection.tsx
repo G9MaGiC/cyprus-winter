@@ -2,26 +2,8 @@
 
 import Link from "next/link";
 import { CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
-import { WINTER_TEMPLATES } from "@/hooks/useItinerary";
+import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import type { PlanItem } from "@/data";
-
-function getTemplateScope(key: string): string {
-  const t = WINTER_TEMPLATES[key];
-  if (!t) return "";
-  const dayCount = Object.keys(t).length;
-  const placeCount = Object.values(t).flat().length;
-  return `${dayCount} days · ${placeCount} places`;
-}
-
-const TEMPLATES = [
-  { key: "classic" as const, label: "Classic", sub: "Coast, culture, hill villages" },
-  { key: "mountain" as const, label: "Mountain", sub: "Troodos trails & stone villages" },
-  { key: "coast-culture" as const, label: "Coast & Culture", sub: "Beaches, ruins, wine" },
-  { key: "family" as const, label: "Family", sub: "Gentle pace, 2–3 stops a day" },
-  { key: "short-stay" as const, label: "Short stay", sub: "48 hours: trail, village, wine" },
-] as const;
-
-type TemplateKey = (typeof TEMPLATES)[number]["key"];
 
 type QuickStartSectionProps = {
   activeDay: number;
@@ -30,7 +12,26 @@ type QuickStartSectionProps = {
   addToDay: (id: string) => void;
   onTemplateClick: (key: TemplateKey) => void;
   hasContent: boolean;
+  tripLength: number | null;
 };
+
+function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tripLength: number): boolean {
+  return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
+}
+
+function getPreviewSnippet(template: (typeof ITINERARY_TEMPLATES)[number], getPlace: (id: string) => PlanItem | undefined): string {
+  const dayKeys = Object.keys(template.days)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .slice(0, 3);
+  const parts: string[] = [];
+  for (const d of dayKeys) {
+    const ids = template.days[d] ?? [];
+    const names = ids.map((id) => getPlace(id)?.name).filter(Boolean) as string[];
+    if (names.length > 0) parts.push(`Day ${d}: ${names.slice(0, 2).join(", ")}`);
+  }
+  return parts.length > 0 ? parts.join(" · ") : "";
+}
 
 const QUICK_ADD_PLACES = [
   { id: "artemis", label: "Artemis Trail" },
@@ -46,8 +47,60 @@ export default function QuickStartSection({
   addToDay,
   onTemplateClick,
   hasContent,
+  tripLength,
 }: QuickStartSectionProps) {
   const activeDayItems = days[activeDay] ?? [];
+
+  const recommended =
+    tripLength != null
+      ? ITINERARY_TEMPLATES.filter((t) => isRecommendedForTrip(t, tripLength))
+      : [];
+  const others =
+    tripLength != null && recommended.length > 0
+      ? ITINERARY_TEMPLATES.filter((t) => !isRecommendedForTrip(t, tripLength))
+      : ITINERARY_TEMPLATES;
+
+  const renderTemplateCard = (template: (typeof ITINERARY_TEMPLATES)[number], isRecommended: boolean) => {
+    const placeCount = Object.values(template.days).flat().length;
+    const preview = getPreviewSnippet(template, getPlace);
+    return (
+      <button
+        key={template.key}
+        type="button"
+        onClick={() => onTemplateClick(template.key)}
+        className={`text-left min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
+          isRecommended ? "border-aegean/30 bg-aegean/5" : ""
+        }`}
+        aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places.`}
+      >
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1">
+            <span className="font-display font-semibold text-olive block break-words group-hover:text-terracotta transition-colors">
+              {template.label}
+            </span>
+            {isRecommended && (
+              <span className="text-xs text-aegean font-medium mt-0.5 block">Best match for your {tripLength}-day trip</span>
+            )}
+          </div>
+          <span
+            className="shrink-0 rounded-md bg-aegean/15 px-2 py-0.5 text-xs font-medium text-aegean tabular-nums"
+            aria-hidden
+          >
+            {template.duration}d
+          </span>
+        </div>
+        <span className="text-xs text-olive/60 mt-0.5 block break-words">{template.description}</span>
+        {preview && (
+          <span className="text-xs text-olive/50 mt-1 block line-clamp-2" title={preview}>
+            {preview}
+          </span>
+        )}
+        {template.seasonalNote && (
+          <span className="text-xs text-sage mt-1 block">{template.seasonalNote}</span>
+        )}
+      </button>
+    );
+  };
 
   return (
     <section aria-labelledby="quick-start-heading">
@@ -100,25 +153,19 @@ export default function QuickStartSection({
       )}
 
       <div>
-        <span className={`${TYPE.kicker} block mb-2`}>Pre-built itineraries</span>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-          {TEMPLATES.map(({ key, label, sub }) => {
-            const scope = getTemplateScope(key);
-            return (
-              <button
-                key={key}
-                type="button"
-                onClick={() => onTemplateClick(key)}
-                className={`text-left min-h-[72px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group`}
-              >
-                <span className="font-display font-semibold text-olive block break-words group-hover:text-terracotta transition-colors">
-                  {label}
-                </span>
-                <span className="text-xs text-olive/60 mt-0.5 block break-words">{sub}</span>
-                {scope && <span className="text-xs text-olive/50 mt-0.5 block tabular-nums">{scope}</span>}
-              </button>
-            );
-          })}
+        {recommended.length > 0 && (
+          <div className="mb-8">
+            <span className={`${TYPE.kicker} block mb-2`}>Recommended for your {tripLength}-day trip</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {recommended.map((template) => renderTemplateCard(template, true))}
+            </div>
+          </div>
+        )}
+        <span className={`${TYPE.kicker} block mb-2`}>
+          {recommended.length > 0 ? "Other itineraries" : "Pre-built itineraries"}
+        </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {others.map((template) => renderTemplateCard(template, false))}
         </div>
       </div>
     </section>

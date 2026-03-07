@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import type { SearchResult } from "@/lib/search";
 import { CARD, TYPE } from "@/lib/design-tokens";
@@ -22,22 +24,32 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
   const badge = kindBadge[kind] ?? "bg-sand-100 text-olive/80";
 
   return (
-    <Link
-      href={result.href}
-      className={`block group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.content}`}
-      aria-label={`${name}, ${kindLabels[kind]} in ${region}`}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
-            {name}
-          </h3>
-          <p className="text-sm text-olive/70 mt-0.5 truncate">{sublabel}</p>
+    <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.content}`}>
+      <Link
+        href={result.href}
+        className="block"
+        aria-label={`${name}, ${kindLabels[kind]} in ${region}`}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
+              {name}
+            </h3>
+            <p className="text-sm text-olive/70 mt-0.5 truncate">{sublabel}</p>
+          </div>
+          <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
+            {kindLabels[kind]}
+          </span>
         </div>
-        <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
-          {kindLabels[kind]}
-        </span>
+      </Link>
+      <div className="mt-3 pt-3 border-t border-sand-200/60">
+        <Link
+          href={`/plan?add=${encodeURIComponent(result.item.id)}`}
+          className="inline-flex items-center min-h-[36px] text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
+        >
+          Add to plan
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }

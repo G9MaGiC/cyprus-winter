@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, TYPE } from "@/lib/design-tokens";
 import { homeEditorsPicks } from "@/data/home";
@@ -12,7 +12,7 @@ export default function EditorsPicks() {
           key={item.id}
           className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
         >
-          <Link href={item.href} className={`block flex-1 ${CARD.link}`} aria-label={`Open ${item.title}`}>
+          <Link href={item.href} prefetch="auto" className={`block flex-1 ${CARD.link}`} aria-label={`Open ${item.title}`}>
             <div className={CARD.media}>
               <Image
                 src={item.image}

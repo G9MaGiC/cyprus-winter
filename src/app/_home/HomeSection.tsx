@@ -12,7 +12,7 @@ export default function HomeSection({ id, title, subtitle, alt, children }: Home
   return (
     <section aria-labelledby={id} className={`${SECTION.py} ${alt ? SECTION.alt : ""} ${LAYOUT.safeAreaX}`}>
       <div className={`${LAYOUT.list} mx-auto`}>
-        <h2 id={id} className={`${TYPE.sectionTitle} text-center ${SECTION.titleGap}`}>
+        <h2 id={id} className={`${TYPE.sectionTitle} text-center ${SECTION.titleGap} scroll-mt-24`}>
           {title}
         </h2>
         {subtitle ? (

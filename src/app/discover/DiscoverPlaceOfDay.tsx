@@ -8,6 +8,7 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { pickDailySafe } from "@/lib/daily-rotator";
 import {
   beaches,
+  natureSites,
   ancientSites,
   villages,
   monasteries,
@@ -20,6 +21,7 @@ import type { Restaurant } from "@/data/restaurants";
 
 const allDiscoverItems = [
   ...beaches,
+  ...natureSites,
   ...ancientSites,
   ...villages,
   ...wineries,
@@ -58,6 +60,17 @@ function getDiscoverPlaceOfDay() {
     restaurant: "Cosy in winter",
   };
 
+  const combineWith = "combineWith" in picked && picked.combineWith && picked.combineWith.length > 0
+    ? picked.combineWith[0]
+    : undefined;
+  const pairPlace = combineWith ? getPlaceById(combineWith) : undefined;
+  const pairHref =
+    pairPlace?.type === "trail"
+      ? `/trails/${pairPlace.id}`
+      : pairPlace
+        ? `/discover/${pairPlace.id}`
+        : undefined;
+
   return {
     id: picked.id,
     name: picked.name,
@@ -67,6 +80,7 @@ function getDiscoverPlaceOfDay() {
     imageAlt: `${picked.name}, ${picked.region} — Cyprus winter`,
     tease: shortTease,
     overlay: overlayByType[picked.type] ?? "Worth a visit",
+    pairWith: pairPlace && pairHref ? { name: pairPlace.name, href: pairHref } : undefined,
   };
 }
 
@@ -103,6 +117,9 @@ export default function DiscoverPlaceOfDay() {
             <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-md">
               {place.overlay}
             </span>
+            <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-medium bg-white/90 text-charcoal">
+              Winter pick
+            </span>
           </Link>
           <div className="flex-1 flex flex-col p-5 sm:p-6">
             <p
@@ -120,6 +137,17 @@ export default function DiscoverPlaceOfDay() {
             <p className="text-sm text-olive/90 mt-1 leading-relaxed flex-1">
               {place.tease}
             </p>
+            {place.pairWith && (
+              <p className="text-sm text-olive/80 mt-2">
+                Pair with{" "}
+                <Link
+                  href={place.pairWith.href}
+                  className="font-medium text-terracotta hover:text-terracotta-muted transition-colors underline"
+                >
+                  {place.pairWith.name}
+                </Link>
+              </p>
+            )}
             <div className="mt-4 flex flex-wrap items-center gap-3">
               {planItem && <NavigateButton place={planItem} />}
               <AddToItineraryButton placeId={place.id} label="Add to plan" />

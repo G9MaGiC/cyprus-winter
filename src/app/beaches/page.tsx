@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import { beaches } from "@/data/attractions";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -52,7 +52,11 @@ export default function BeachesPage() {
         backLabel="Discover"
         title="Cyprus Beaches in Winter"
         description="Empty sand, mild light. The sea is cold for swimming; winter beaches are for walks, coffee, and the light."
-      />
+      >
+        <Link href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+          Plan your trip
+        </Link>
+      </PageHeader>
 
       <h2 id="beaches-list" className="sr-only">
         Beaches in Cyprus winter

@@ -3,17 +3,23 @@
 import { useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { PlanItem } from "@/data";
+import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
 
 type UsePlanUrlActionsParams = {
   hydrated: boolean;
   hasContent: boolean;
   getPlace: (id: string) => PlanItem | undefined;
   addToDay: (id: string) => void;
-  applyTemplate: (key: "short-stay") => void;
+  applyTemplate: (key: TemplateKey) => void;
 };
+
+function isValidTemplate(value: string | null): value is TemplateKey {
+  return value !== null && (TEMPLATE_KEYS as readonly string[]).includes(value);
+}
 
 /**
  * Handles URL params ?add= and ?template= for the Plan page.
+ * Supports all templates: ?template=short-stay, ?template=classic, ?template=classic-7, etc.
  * Uses refs internally to avoid processing the same param twice.
  * Returns nothing — side effects only.
  */
@@ -32,25 +38,28 @@ export function usePlanUrlActions({
   useEffect(() => {
     if (!hydrated) return;
     const template = searchParams.get("template");
-    if (template !== "short-stay" || processedTemplateRef.current === "short-stay") return;
+    if (!isValidTemplate(template) || processedTemplateRef.current === template) return;
     if (!hasContent) {
-      processedTemplateRef.current = "short-stay";
-      applyTemplate("short-stay");
+      processedTemplateRef.current = template;
+      applyTemplate(template);
       router.replace("/plan", { scroll: false });
     }
   }, [hydrated, searchParams, hasContent, applyTemplate, router]);
 
   useEffect(() => {
     if (!hydrated) return;
-    const addId = searchParams.get("add");
-    if (!addId || addId === "failed" || processedAddRef.current === addId) return;
-    processedAddRef.current = addId;
-    const place = getPlace(addId);
-    if (!place) {
+    const addParam = searchParams.get("add");
+    if (!addParam || addParam === "failed" || processedAddRef.current === addParam) return;
+    processedAddRef.current = addParam;
+    const ids = addParam.split(",").map((s) => s.trim()).filter(Boolean);
+    const places = ids.map((id) => getPlace(id)).filter((p): p is PlanItem => !!p);
+    if (places.length === 0) {
       router.replace("/plan?add=failed", { scroll: false });
       return;
     }
-    addToDay(place.id);
+    for (const place of places) {
+      addToDay(place.id);
+    }
     router.replace("/plan", { scroll: false });
   }, [hydrated, searchParams, addToDay, getPlace, router]);
 }

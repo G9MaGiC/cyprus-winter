@@ -18,6 +18,7 @@ import NavigateButton from "@/components/NavigateButton";
 import StickyAddToPlanBar from "@/components/StickyAddToPlanBar";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getSecretsForPlace } from "@/data/secret-gems";
+import { getSimilarDiscoverPlaces } from "@/lib/related-places";
 import TrackView from "@/components/TrackView";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -491,6 +492,39 @@ export default async function AttractionPage({
                 showAddToItinerary
               />
             )}
+
+            {(() => {
+              const similar = getSimilarDiscoverPlaces(a.id, a.type, a.region);
+              if (similar.length === 0) return null;
+              const typeLabel =
+                a.type === "winery" ? "Wineries" :
+                a.type === "restaurant" ? "Eat & drink" :
+                a.type === "beach" ? "Beaches" :
+                a.type === "ancient" ? "Ancient sites" :
+                a.type === "village" ? "Villages" :
+                a.type === "monastery" ? "Monasteries" :
+                a.type === "nature" ? "Nature & coasts" :
+                "Places";
+              return (
+                <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
+                  <h2 className="prose-label text-olive/70 mb-3">
+                    More {typeLabel.toLowerCase()} in {a.region}
+                  </h2>
+                  <ul className="flex flex-wrap gap-2">
+                    {similar.map((r) => (
+                      <li key={r.id}>
+                        <Link
+                          href={r.href}
+                          className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:text-terracotta-muted hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+                        >
+                          {r.name} →
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              );
+            })()}
 
             <footer className="pt-8 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label="Place actions">
               <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />

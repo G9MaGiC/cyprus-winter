@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, TYPE } from "@/lib/design-tokens";
 import { winterEvents } from "@/data/events";
@@ -86,6 +86,7 @@ export default async function ThisWeekGrid() {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
       <Link
         href="/weather"
+        prefetch="auto"
         className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean flex flex-col group`}
       >
         <div className={CARD.content}>
@@ -126,6 +127,7 @@ export default async function ThisWeekGrid() {
             <AddToItineraryButton placeId={featuredTrailId} label="Add to plan" className="text-sm" />
             <Link
               href="/trails"
+              prefetch="auto"
               className="text-sm text-aegean hover:text-aegean/80 font-medium transition-colors"
             >
               View all conditions →
@@ -136,6 +138,7 @@ export default async function ThisWeekGrid() {
 
       <Link
         href={eventHighlight ? `/events#${eventHighlight.id}` : "/events"}
+        prefetch="auto"
         className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-golden flex flex-col group`}
       >
         <div className={CARD.content}>
