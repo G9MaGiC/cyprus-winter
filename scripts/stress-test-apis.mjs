@@ -38,6 +38,18 @@ const ENDPOINTS = [
     name: "Create Booking",
     weight: 3,
   },
+  {
+    path: "/api/trail-reports",
+    method: "POST",
+    body: {
+      trailId: "artemis",
+      status: "open",
+      surface: "dry",
+      note: "Stress test",
+    },
+    name: "Trail Report",
+    weight: 2,
+  },
 ];
 
 // Chat excluded by default (rate limits, cost) - use STRESS_INCLUDE_CHAT=1 to add

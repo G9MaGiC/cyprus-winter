@@ -15,6 +15,7 @@ export default function WineryBookingForm({
 }) {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
@@ -64,6 +65,7 @@ export default function WineryBookingForm({
       }
 
       setDone(true);
+      setStorageMode(data.storage ?? null);
       form.reset();
 
       track("booking_complete", {
@@ -98,6 +100,9 @@ export default function WineryBookingForm({
         </h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
           Your tasting request for {wineryName} is on its way. The winery will confirm by email. If you don&apos;t hear back within a day or two, give them a call — they&apos;re usually happy to help.
+          {storageMode === "memory" && (
+            <> Enter your email on <Link href="/bookings" className="text-terracotta underline hover:no-underline">My Bookings</Link> to view your request across devices.</>
+          )}
         </p>
         <p className="text-olive/70 text-sm mt-3 break-words">
           Ask about Commandaria and the indigenous grapes when you&apos;re there. They&apos;re proud of them.

@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import { createBooking, getBookingsByEmail } from "@/lib/bookings";
+import { hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { sendBookingConfirmation, sendBookingRequestToWinery } from "@/lib/email";
 import { createBookingSchema } from "@/lib/booking-schema";
@@ -79,6 +80,7 @@ export async function POST(req: NextRequest) {
       {
         booking,
         message: "Booking request sent. The winery will be in touch.",
+        storage: hasSupabase() ? "database" : "memory",
         emailStatus: {
           confirmationSent,
           ...(winery.isVerified && winery.partnerEmail?.trim()

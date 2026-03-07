@@ -23,6 +23,11 @@ export type RelatedPlace = {
   type: "attraction" | "trail" | "winery" | "restaurant";
 };
 
+/**
+ * Resolves combineWith IDs to related places. Unknown IDs are silently skipped
+ * (no broken links); "Combine your day" may show fewer items if data has stale IDs.
+ * Run data validation/lint to catch orphan combineWith references.
+ */
 export function getRelatedPlaces(ids: string[]): RelatedPlace[] {
   const result: RelatedPlace[] = [];
   for (const id of ids) {

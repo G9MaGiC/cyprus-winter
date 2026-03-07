@@ -40,7 +40,7 @@ export default function BottomNav() {
             className="flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
           >
             <span
-              className={`text-xs font-medium ${isActive(pathname, link.href) ? "text-golden" : "text-white/70"}`}
+              className={`text-xs font-medium ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
               {link.label}
             </span>
@@ -54,7 +54,7 @@ export default function BottomNav() {
             aria-haspopup="true"
             aria-label="More navigation"
             className={`flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
-              isOverflowActive ? "text-golden" : "text-white/70"
+              isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
             <span className="text-xs font-medium">More</span>

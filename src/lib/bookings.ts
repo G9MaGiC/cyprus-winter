@@ -57,7 +57,10 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
       created_at: createdAt,
       lead_fee_eur: leadFeeEur ?? null,
     });
-    if (error) throw new Error(error.message);
+    if (error) {
+      console.error("Booking DB insert failed:", error.message, { id, providerId: input.providerId });
+      throw new Error(error.message);
+    }
     return booking;
   }
 

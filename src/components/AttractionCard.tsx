@@ -40,12 +40,12 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
           <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2">
             <span
-              className={`px-2.5 py-1 rounded-md text-xs font-medium capitalize ${badge}`}
+              className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}
             >
               {badgeLabel}
             </span>
             {isSustainable && (
-              <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-sage/20 text-olive/80">
+              <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-sage/20 text-olive/80">
                 Local
               </span>
             )}
@@ -65,7 +65,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             {a.highlights.slice(0, 3).map((h) => (
               <span
                 key={h}
-                className="text-xs px-2.5 py-1 rounded-md bg-sand-200/70 text-olive/80 truncate min-w-0 max-w-[140px]"
+                className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-olive/80 truncate min-w-0 max-w-[140px]"
               >
                 {h}
               </span>

@@ -333,7 +333,7 @@ export default function AIAssistant() {
               </span>
               <div>
                 <h2 id="ai-dialog-title" className="font-display font-semibold text-base truncate">Cyprus Winter AI</h2>
-                <p className="text-xs text-white/70">Ask or speak</p>
+                <p className="text-xs text-white/80">Ask or speak</p>
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">

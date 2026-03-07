@@ -71,7 +71,10 @@ export default function DiscoverClient({
         {(filter && sectionExists) && (
           <p className="text-sm text-olive/70 mt-3 break-words">
             Showing{" "}
-            <strong>{sections.find((s) => s.id === filter)!.title}</strong>
+            <strong>
+              {sections.find((s) => s.id === filter)!.title}
+              {filterParam === "nature" && " (Nature & coasts)"}
+            </strong>
             {" · "}
             <Link
               href="/discover"

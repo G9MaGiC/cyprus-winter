@@ -116,6 +116,12 @@ export default function PlanPage() {
           </div>
         )}
 
+        {searchParams.get("add") && !hydrated && (
+          <p className="text-sm text-olive/70 mb-4" role="status" aria-live="polite">
+            Adding to your plan…
+          </p>
+        )}
+
         <header role="banner">
           <ListPageHero
             backHref="/"

@@ -114,7 +114,7 @@ export default function Home() {
           <p className="text-white/80 text-sm mt-3 max-w-lg mx-auto leading-relaxed prose-body">
             Planning ahead or already here? Tap the chat bubble. We&apos;re here to help.
           </p>
-          <p className="text-white/70 text-xs font-medium uppercase tracking-wider mt-6 mb-2 prose-label">
+          <p className="text-white/80 text-xs font-medium uppercase tracking-wider mt-6 mb-2 prose-label">
             Share with friends
           </p>
           <div className="flex justify-center gap-4">
