@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { LAYOUT } from "@/lib/design-tokens";
+import { CTA, LAYOUT } from "@/lib/design-tokens";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 
@@ -73,7 +73,7 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
     >
       <Link
         href="/plan"
-        className="inline-flex items-center justify-center min-h-[48px] w-full max-w-md px-6 py-3 rounded-xl bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className={`${CTA.primary} max-w-md`}
       >
         Plan your trip
       </Link>

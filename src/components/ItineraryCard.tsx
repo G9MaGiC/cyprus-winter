@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, CTA } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import NavigateButton from "@/components/NavigateButton";
 
@@ -65,11 +65,12 @@ export default function ItineraryCard({
         <div className="flex flex-wrap items-center gap-2 mb-1">
           <TypeBadge type={place.type} />
           <span className="text-xs text-olive/50">·</span>
-          <span className="text-xs text-olive/60 truncate">{place.region}</span>
+          <span className="text-xs text-olive/60 truncate" title={place.region}>{place.region}</span>
         </div>
         <Link
           href={href}
           className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors block truncate min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50"
+          title={place.name}
         >
           {place.name}
         </Link>
@@ -77,10 +78,7 @@ export default function ItineraryCard({
       <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
         <NavigateButton place={place} />
         {place.type === "winery" && (
-          <Link
-            href={`/book/winery/${place.id}`}
-            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
+          <Link href={`/book/winery/${place.id}`} className={CTA.primaryCompact} aria-label={`Book a tasting at ${place.name}`}>
             Book a tasting
           </Link>
         )}

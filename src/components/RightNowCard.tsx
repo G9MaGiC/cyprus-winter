@@ -44,7 +44,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent sm:from-charcoal/60"
             aria-hidden
           />
-          <span className="absolute bottom-1 left-1 right-1 text-white text-[10px] sm:text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2">
+          <span className="absolute bottom-1 left-1 right-1 text-white text-[10px] sm:text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2" title={badge}>
             {badge}
           </span>
         </div>
@@ -52,10 +52,10 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
           <h3 className="font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors truncate">
             {item.name}
           </h3>
-          <p className="text-xs text-olive/80 mt-0.5 truncate">
+          <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm} km`}>
             {item.region} · {item.distanceKm} km
           </p>
-          <p className="hidden sm:block text-xs text-olive/90 mt-0.5 leading-snug line-clamp-2">
+          <p className="hidden sm:block text-xs text-olive/90 mt-0.5 leading-relaxed line-clamp-2 break-words">
             {item.tease}
           </p>
         </div>

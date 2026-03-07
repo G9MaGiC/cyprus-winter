@@ -64,7 +64,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
               </span>
             )}
           </div>
-          <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block">
+          <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block" title={a.region}>
             {a.region}
           </span>
         </div>
@@ -85,6 +85,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
               <span
                 key={h}
                 className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-olive/80 truncate min-w-0 max-w-[140px]"
+                title={h}
               >
                 {h}
               </span>

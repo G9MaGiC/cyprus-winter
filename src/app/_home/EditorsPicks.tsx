@@ -24,8 +24,8 @@ export default function EditorsPicks() {
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
             </div>
             <div className={CARD.content}>
-              <h3 className={`${TYPE.cardTitle} text-charcoal`}>{item.title}</h3>
-              <p className="text-sm text-sage mt-1 leading-relaxed">{item.desc}</p>
+              <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={item.title}>{item.title}</h3>
+              <p className="text-sm text-sage mt-1 leading-relaxed line-clamp-2 break-words">{item.desc}</p>
             </div>
           </Link>
           <div className={CARD.footer}>

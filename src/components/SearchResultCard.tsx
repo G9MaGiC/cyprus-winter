@@ -35,7 +35,7 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
             <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
               {name}
             </h3>
-            <p className="text-sm text-olive/70 mt-0.5 truncate">{sublabel}</p>
+            <p className="text-sm text-olive/70 mt-0.5 truncate" title={sublabel}>{sublabel}</p>
           </div>
           <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
             {kindLabels[kind]}

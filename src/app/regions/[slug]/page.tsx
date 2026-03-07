@@ -64,7 +64,7 @@ function TrailCard({ trail }: { trail: Trail }) {
         </div>
       </div>
       <div className={CARD.content}>
-        <h3 className="font-display font-semibold text-olive group-hover:text-terracotta">
+        <h3 className={`${TYPE.cardTitle} truncate`} title={trail.name}>
           {trail.name}
         </h3>
         <p className="text-sm text-olive/70">
@@ -97,10 +97,10 @@ function PlaceCard({
         />
       </div>
       <div className={CARD.content}>
-        <h3 className="font-display font-semibold text-olive group-hover:text-terracotta">
+        <h3 className={`${TYPE.cardTitle} truncate`} title={item.name}>
           {item.name}
         </h3>
-        <p className="text-sm text-olive/70 line-clamp-1">{item.description}</p>
+        <p className="text-sm text-olive/70 line-clamp-2 break-words">{item.description}</p>
       </div>
     </Link>
   );

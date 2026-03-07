@@ -108,16 +108,10 @@ export default function WineryBookingForm({
           Ask about Commandaria and the indigenous grapes when you&apos;re there. They&apos;re proud of them.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link
-            href="/bookings"
-            className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}
-          >
+          <Link href="/bookings" className={CTA.primaryCompact}>
             View my bookings
           </Link>
-          <Link
-            href="/discover"
-            className={`gap-2 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}
-          >
+          <Link href="/discover" className={CTA.secondaryCompact}>
             Discover more
           </Link>
         </div>

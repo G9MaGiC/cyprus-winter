@@ -103,7 +103,7 @@ export default async function ThisWeekGrid() {
       >
         <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} ${CARD.content}`}>
           <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Trails</p>
-          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5`}>
+          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={trailName}>
             {trailName}
           </p>
           <p className="inline-flex items-center gap-1.5 text-sm text-sage mt-0.5">
@@ -145,14 +145,14 @@ export default async function ThisWeekGrid() {
           <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">
             What&apos;s on
           </p>
-          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5`}>
+          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={eventHighlight ? eventHighlight.name : "Events"}>
             {eventHighlight
               ? eventHighlight.name
               : winterEvents.length > 0
                 ? "Browse winter events"
                 : "Events"}
           </p>
-          <p className="text-sm text-sage mt-0.5 line-clamp-2">
+          <p className="text-sm text-sage mt-0.5 line-clamp-2 break-words">
             {eventHighlight
               ? eventHighlight.dates ?? eventHighlight.venue ?? ""
               : winterEvents.length > 0

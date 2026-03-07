@@ -31,11 +31,11 @@ export default function BookTastings() {
             </div>
             <div className={CARD.content}>
               <p className={`${TYPE.kicker} mb-2`}>Book tastings</p>
-              <h3 className={`${TYPE.cardTitle} text-charcoal`}>
+              <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={w.name}>
                 {w.name}
               </h3>
               <p className="text-sm text-olive/70 mt-1">{w.region}</p>
-              <p className="text-sm text-sage mt-3 leading-relaxed">{w.subtitle}</p>
+              <p className="text-sm text-sage mt-3 leading-relaxed line-clamp-2 break-words">{w.subtitle}</p>
             </div>
           </Link>
           <div className={CARD.footer}>
