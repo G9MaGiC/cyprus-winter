@@ -557,3 +557,45 @@ Fixed — BUG-040, BUG-042 (sanitizeMarkdownLinks in sanitize.ts); BUG-043 (chat
 | # | Action | Status |
 |---|--------|--------|
 | 5 | Health: Resend connectivity check | Added optional fetch to api.resend.com/domains; returns resend: ok\|error\|not configured |
+
+---
+
+## Right Now Near You Bug Fixes (Mar 7, 2026)
+
+### BUG-051 — useEffect re-runs when toggling Closer/Farther
+
+**Severity:** High
+**Area:** Functional
+**Page/Component:** RightNowNearYou
+
+**Reproduction**
+1. Consent, use location, load feed
+2. Toggle "Farther"
+
+**Expected**
+Refetch with expanded radius only; no geolocation re-prompt
+
+**Actual**
+`handleUseLocation` in effect deps; effect re-ran on `distanceMode` change and triggered geolocation again
+
+**Fix status**
+Fixed — effect deps changed to `[]`; runs only on mount for consent check.
+
+### BUG-052 — No way back from region picker to use location
+
+**Severity:** Medium
+**Area:** UX
+**Page/Component:** RightNowNearYou
+
+**Reproduction**
+1. Click "Pick a region"
+2. See region chips; want to use GPS instead
+
+**Expected**
+Option to switch to "Use my location"
+
+**Actual**
+No escape; must refresh or pick a region
+
+**Fix status**
+Fixed — added "Use my location instead" link in region picker.

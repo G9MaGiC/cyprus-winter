@@ -217,7 +217,10 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
     } catch {
       queueMicrotask(() => setState("consent"));
     }
-  }, [handleUseLocation]);
+    // Run only on mount — handleUseLocation changes when distanceMode changes;
+    // we must not re-trigger geolocation when user toggles Closer/Farther
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (state === "consent") {
     return (
@@ -252,7 +255,7 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
       <SectionShell title={title}>
         <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
           <p className="text-olive/80 text-sm mb-3">Choose a region to explore.</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-3">
             {REGION_CONFIGS.map((config) => (
               <button
                 key={config.slug}
@@ -264,6 +267,13 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
               </button>
             ))}
           </div>
+          <button
+            type="button"
+            onClick={handleUseLocation}
+            className="text-sm text-olive/70 hover:text-olive"
+          >
+            Use my location instead
+          </button>
         </div>
       </SectionShell>
     );

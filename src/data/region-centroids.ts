@@ -3,6 +3,8 @@
  * Used when places lack exact coordinates (attractions, restaurants, most wineries, events).
  * Fallback for place-coords resolver.
  */
+import type { RegionSlug } from "@/data/regions";
+
 export const REGION_CENTROIDS: Record<string, { lat: number; lng: number }> = {
   Troodos: { lat: 34.93, lng: 32.87 },
   Platres: { lat: 34.88, lng: 32.87 },
@@ -29,13 +31,6 @@ const REGION_ALIASES: Record<string, string> = {
   Famagusta: "Famagusta",
   "Ayia Napa": "Ayia Napa",
 };
-
-/**
- * Resolve a region string to centroid. Handles:
- * - Direct match: "Limassol", "Troodos", "Paphos"
- * - Winery/restaurant format: "Pelendri (Limassol)", "Kathikas (Paphos)"
- */
-import type { RegionSlug } from "@/data/regions";
 
 /** Map region slug to centroid for Right Now region picker */
 export const REGION_CENTROID_BY_SLUG: Record<RegionSlug, { lat: number; lng: number }> = {
