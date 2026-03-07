@@ -25,7 +25,7 @@ Use this when configuring the Cyprus Winter project in Vercel.
 
 Local `npm run lint` and `npm run build` pass. Vercel will run the same build.
 
-If you see `ENOENT: pages-manifest.json` locally, run `npm run build:clean` (clears `.next` and rebuilds). Vercel uses clean environments, so this won't affect deploys.
+If you see `ENOENT: pages-manifest.json` or `No such file or directory` for moved files (e.g. `book/guide/[id]/GuideBookingForm.tsx`) after a route refactor, run `npm run build:clean` (clears `.next` and rebuilds). Stale cache references old paths. Vercel uses clean environments, so this won't affect deploys.
 
 ---
 
