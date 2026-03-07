@@ -68,6 +68,12 @@ export default function PlanPage() {
     }
   }, [lastAddedId]);
 
+  useEffect(() => {
+    if (activeDay > displayDaysCount) {
+      setActiveDay(displayDaysCount);
+    }
+  }, [activeDay, displayDaysCount, setActiveDay]);
+
   const handleTemplateClick = (key: string) => {
     if (!hasContent) {
       applyTemplate(key as TemplateKey);
