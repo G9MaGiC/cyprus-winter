@@ -31,7 +31,7 @@ export default function BookTastings() {
             </div>
             <div className={CARD.content}>
               <p className={`${TYPE.kicker} mb-2`}>Book tastings</p>
-              <h3 className="font-display text-lg font-semibold text-charcoal group-hover:text-terracotta transition-colors">
+              <h3 className={`${TYPE.cardTitle} text-charcoal`}>
                 {w.name}
               </h3>
               <p className="text-sm text-olive/70 mt-1">{w.region}</p>

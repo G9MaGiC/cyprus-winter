@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import { villages } from "@/data/attractions";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -63,8 +63,9 @@ export default function VillagesPage() {
         ))}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto relative">
+      <div className={`${SECTION.footerBlock} relative`}>
         <span id="villages-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
+        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
         Combine a village visit with a trail or winery.{" "}
         <Link href="/discover" className="text-aegean hover:underline">
           See all places
@@ -74,6 +75,7 @@ export default function VillagesPage() {
           Plan your day
         </Link>
       </p>
+      </div>
       <StickyPlanBarBlock sentinelId="villages-plan-sentinel" />
     </div>
   );

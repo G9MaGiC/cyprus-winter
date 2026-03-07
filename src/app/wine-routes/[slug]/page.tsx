@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
@@ -56,15 +56,17 @@ export default async function WineRoutePage({ params }: Props) {
         ))}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm">
-        <Link href="/wineries" className="text-aegean hover:underline">
-          All Cyprus wineries
-        </Link>
-        {" · "}
-        <Link href="/plan" className="text-aegean hover:underline">
-          Plan your trip
-        </Link>
-      </p>
+      <div className={SECTION.footerBlock}>
+        <p className="text-center text-olive/70 text-sm">
+          <Link href="/wineries" className="text-aegean hover:underline">
+            All Cyprus wineries
+          </Link>
+          {" · "}
+          <Link href="/plan" className="text-aegean hover:underline">
+            Plan your trip
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

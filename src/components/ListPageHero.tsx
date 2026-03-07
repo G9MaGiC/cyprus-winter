@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CARD, HERO, LAYOUT } from "@/lib/design-tokens";
+import { CARD, HERO, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 
 type ListPageHeroProps = {
   backHref?: string;
@@ -27,7 +27,7 @@ export default function ListPageHero({
   hasWidgetStrip = false,
   children,
 }: ListPageHeroProps) {
-  const textMb = hasWidgetStrip ? "mb-8 sm:mb-10" : "mb-12 sm:mb-14";
+  const textMb = hasWidgetStrip ? "mb-8 sm:mb-10" : SECTION.headingMarginLarge;
   const content = (
     <div className={textMb}>
       <Link
@@ -36,7 +36,7 @@ export default function ListPageHero({
       >
         ← {backLabel}
       </Link>
-      <h1 className="font-display text-3xl sm:text-4xl font-bold text-olive mt-3 sm:mt-4 leading-tight break-words">
+      <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
         {title}
       </h1>
       <p className="text-olive/70 mt-2 max-w-xl prose-body break-words leading-relaxed">
@@ -69,7 +69,7 @@ export default function ListPageHero({
             >
               ← {backLabel}
             </Link>
-            <h1 className="font-display text-3xl sm:text-4xl font-bold mt-2 leading-tight break-words drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+            <h1 className={`${TYPE.pageTitle} mt-2 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
               {title}
             </h1>
             <p className="text-white/90 mt-1 max-w-xl text-sm sm:text-base break-words leading-relaxed">

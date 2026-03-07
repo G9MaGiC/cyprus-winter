@@ -204,7 +204,7 @@ Fixed — updated to match actual limits (chat 20/min, bookings 10 POST / 15 GET
 | Components | HomeHero locale CTAs | Use CTA.secondary, CTA.ghost |
 | Empty | ErrorState.tsx:42 | Align with EMPTY_STATE/CARD |
 
-**Fix status:** Partial — Continuation 4–5. Breadcrumbs + ErrorState: retry manually if needed.
+**Fix status:** Fixed — Breadcrumbs min-h-[44px] and ErrorState CARD tokens applied.
 
 ---
 
@@ -214,7 +214,7 @@ Fixed — updated to match actual limits (chat 20/min, bookings 10 POST / 15 GET
 |----------|-------|-----------|
 | P0 | 8 | Fixed (Continuation 2) |
 | P1 | 7 | Fixed (Continuation 3) |
-| P2 | 11 | Partial (Continuations 4–6) |
+| P2 | 11 | Fixed (Continuations 4–6) |
 
 Continuation 6 (A11y): Admin input aria-label added; root footer emergency numbers bolded.
 
@@ -599,3 +599,32 @@ No escape; must refresh or pick a region
 
 **Fix status**
 Fixed — added "Use my location instead" link in region picker.
+
+---
+
+## CTO Verification (Mar 7, 2026)
+
+*Act-as-CTO pass: lint, test, build; deferred items confirmed.*
+
+### Automated baseline
+
+| Check | Result |
+|-------|--------|
+| npm run lint | Pass |
+| npm run test | Pass (148 tests) |
+| npm run build | Pass (Next.js 16.1.6) |
+
+### Verified fixed
+
+- BUG-045: Health Resend connectivity — implemented (api/health fetches api.resend.com/domains)
+- Breadcrumbs: min-h-[44px] on Link present
+- ContextualHelp: min-h-[44px] on dismiss button present
+- ErrorState: CARD.base, CARD.content, IconAccent
+- TrailDetailStickyActions: bottom offset above BottomNav on mobile
+- Right Now: BUG-051, BUG-052 fixed
+
+### Deferred (by design)
+
+- BUG-047: Cron rate limiting — CRON_SECRET auth; rate limit redundant
+- BUG-049: Right-now fail-open — availability over strict rate limit when Redis fails
+- BUG-041: Redis — documented in VERCEL_DEPLOY_CHECKLIST; config, not code

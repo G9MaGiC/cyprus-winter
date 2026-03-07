@@ -15,7 +15,10 @@
     "lint": "eslint .",
     "test": "vitest run",
     "stress:api": "node scripts/stress-test-apis.mjs",
-    "vapid-keys": "npx web-push generate-vapid-keys"
+    "vapid-keys": "npx web-push generate-vapid-keys",
+    "android:sync": "cap sync android",
+    "android:build:debug": "cd android && ./gradlew assembleDebug",
+    "android:build:release": "cap build android --androidreleasetype AAB"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.98.0",
@@ -34,6 +37,9 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@capacitor/android": "^7.3.0",
+    "@capacitor/cli": "^7.3.0",
+    "@capacitor/core": "^7.3.0",
     "@tailwindcss/postcss": "^4",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^20",

@@ -43,6 +43,24 @@ export const REGION_CONFIGS: RegionConfig[] = [
   },
 ];
 
+/** Chip-friendly display label for region picker and subtitles. */
+export function getRegionShortLabel(slug: RegionSlug): string {
+  switch (slug) {
+    case "troodos":
+      return "Troodos";
+    case "paphos":
+      return "Paphos";
+    case "limassol":
+      return "Limassol";
+    case "larnaca":
+      return "Larnaca";
+    case "ayia-napa":
+      return "Ayia Napa & Cape Greco";
+    default:
+      return slug;
+  }
+}
+
 /** Match winery region string to a region slug (winery.region is like "Pelendri (Limassol)" or "Kathikas (Paphos)"). */
 export function wineryMatchesRegion(wineryRegion: string, slug: RegionSlug): boolean {
   const r = wineryRegion.toLowerCase();

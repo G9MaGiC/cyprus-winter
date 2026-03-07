@@ -23,7 +23,7 @@
 | Check | Command | Coverage | Notes |
 |-------|---------|----------|-------|
 | **Lint** | `npm run lint` | Style, unused vars, imports | Fix all before manual QA |
-| **Tests** | `npm run test` | 22 tests: format, booking-schema, related-places, data, search | Expand coverage for API routes, hooks |
+| **Tests** | `npm run test` | 148 tests: format, booking-schema, related-places, data, search, API routes (bookings, chat, trail-reports, health), sanitize, rate-limit | Expand coverage for hooks, E2E |
 | **Build** | `npm run build` | Compile, SSG/SSR, routing | Must pass; prebuild catches `.next` ownership |
 | **Typecheck** | `npx tsc --noEmit` | Type errors | Add to CI if not already |
 | **API stress** | `npm run stress:api` | Rate limits, error handling | Verify chat + bookings under load |
@@ -217,9 +217,9 @@ Open | In progress | Fixed | Won't fix
 
 | Area | Current | Recommended |
 |------|---------|-------------|
-| **API routes** | None | POST /api/bookings, POST /api/chat, POST /api/trail-reports |
+| **API routes** | bookings, chat, trail-reports, health | — |
 | **Hooks** | None | useItinerary (add, remove, template, clear) |
-| **Data helpers** | related-places, data/index | getPlaceById, getAttractionById, isWinery |
+| **Data helpers** | related-places, data/index, format, sanitize | — |
 | **E2E** | None | Playwright: Plan→Book flow, Discover→Detail |
 
 ---

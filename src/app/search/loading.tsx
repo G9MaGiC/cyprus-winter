@@ -1,4 +1,4 @@
-import { LAYOUT, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
 
 export default function SearchLoading() {
   return (
@@ -10,17 +10,17 @@ export default function SearchLoading() {
       aria-label="Loading search"
     >
       <div className="animate-pulse">
-        <div className="h-4 w-16 bg-sand-200/80 rounded mb-6" />
-        <div className="h-8 w-52 bg-olive/20 rounded mb-2" />
-        <div className="h-4 max-w-md bg-sand-200/80 rounded mb-8" />
-        <div className="h-12 max-w-xl bg-sand-200/80 rounded-lg mb-8" />
+        <div className={`h-4 w-16 ${SKELETON.block} mb-6`} />
+        <div className={`h-8 w-52 ${SKELETON.bar} mb-2`} />
+        <div className={`h-4 max-w-md ${SKELETON.block} mb-8`} />
+        <div className={`h-12 max-w-xl ${SKELETON.block} mb-8`} />
         <div className="space-y-3">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className={`${CARD.base} ${CARD.content} flex items-center gap-4`}>
-              <div className="h-14 w-20 shrink-0 rounded-lg bg-sand-200/80" />
+              <div className={`h-14 w-20 shrink-0 ${SKELETON.block}`} />
               <div className="flex-1 min-w-0">
-                <div className="h-5 w-32 bg-olive/20 rounded mb-2" />
-                <div className="h-4 w-full max-w-xs bg-sand-200/60 rounded" />
+                <div className={`h-5 w-32 ${SKELETON.bar} mb-2`} />
+                <div className={`h-4 w-full max-w-xs ${SKELETON.block}`} />
               </div>
             </div>
           ))}

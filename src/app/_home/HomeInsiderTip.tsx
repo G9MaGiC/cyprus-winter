@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { winterTipsGeneral, winterTipsHiking, winterTipsPractical } from "@/data/winter-tips";
-import { CALLOUT, SECTION, LAYOUT } from "@/lib/design-tokens";
+import { CALLOUT, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 
 const allTips = [...winterTipsGeneral, ...winterTipsHiking, ...winterTipsPractical];
@@ -28,7 +28,7 @@ export default function HomeInsiderTip() {
           >
             Winter insider tip
           </h2>
-          <h3 className="font-display text-lg font-semibold text-charcoal mb-2">
+          <h3 className={`${TYPE.cardTitle} text-charcoal mb-2`}>
             {tip.title}
           </h3>
           <p className="text-olive/90 text-sm leading-relaxed mb-4">

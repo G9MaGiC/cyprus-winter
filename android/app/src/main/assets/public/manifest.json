@@ -4,6 +4,20 @@
   "description": "Cyprus winter: trails, villages, heritage, events. Plan your trip or explore when you land. Trail conditions, winery tastings, local secrets.",
   "start_url": "/",
   "display": "standalone",
+  "shortcuts": [
+    {
+      "name": "Right now",
+      "short_name": "Right now",
+      "description": "What's good near you — weather and location-based suggestions",
+      "url": "/#right-now"
+    },
+    {
+      "name": "Plan",
+      "short_name": "Plan",
+      "description": "Your itinerary",
+      "url": "/plan"
+    }
+  ],
   "background_color": "#f4f1de",
   "theme_color": "#e07a5f",
   "orientation": "portrait-primary",

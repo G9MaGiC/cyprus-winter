@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { TYPE } from "@/lib/design-tokens";
 import { useTrapFocus } from "@/lib/useTrapFocus";
 import PlacePicker from "@/components/PlacePicker";
 
@@ -50,7 +51,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
         className="w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] flex flex-col bg-background rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden"
       >
         <div className="flex items-center justify-between shrink-0 px-5 py-4 border-b border-sand-200/80">
-          <h2 id="browse-places-title" className="font-display text-lg font-semibold text-olive">
+          <h2 id="browse-places-title" className={TYPE.cardTitle}>
             Browse all places
           </h2>
           <button

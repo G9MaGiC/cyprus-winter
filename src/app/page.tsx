@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import AppLink from "@/components/AppLink";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
-import { CARD, LAYOUT, SECTION, STRIP } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, STRIP, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import HomeHero from "@/app/_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
@@ -58,7 +58,7 @@ export default function Home() {
       <TripReminderBanner />
       <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub}`}>
         <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="home-search-heading" className="text-center text-olive font-display text-xl sm:text-2xl font-semibold mb-3">
+          <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive mb-3`}>
             Where to today?
           </h2>
           <SearchBar placeholder="Where to today?" className="max-w-xl mx-auto" />

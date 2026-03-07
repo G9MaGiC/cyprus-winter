@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 
 type Props = {
   templateLabel: string;
@@ -34,7 +34,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
         ref={modalRef}
         className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
       >
-        <h2 id="template-choice-title" className="font-display text-lg font-semibold text-olive mb-2">
+        <h2 id="template-choice-title" className={`${TYPE.cardTitle} mb-2`}>
           Apply {templateLabel} template?
         </h2>
         <p className="text-olive/80 text-sm mb-6 break-words">

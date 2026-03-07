@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Cyprus Winter</string>
+    <string name="title_activity_main">Cyprus Winter</string>
+    <string name="package_name">com.cypruswinter.app</string>
+    <string name="custom_url_scheme">com.cypruswinter.app</string>
+</resources>

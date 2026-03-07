@@ -1,4 +1,4 @@
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 
 type BorderAccent = "terracotta" | "aegean" | "golden" | "sage";
 
@@ -24,7 +24,7 @@ export default function SectionCard({
 }: SectionCardProps) {
   return (
     <section className={`${CARD.base} ${CARD.contentLg} border-l-4 ${accentClasses[borderAccent]} ${className}`}>
-      <h2 className="font-display font-semibold text-olive mb-4 text-lg">{title}</h2>
+      <h2 className={`${TYPE.cardTitle} mb-4`}>{title}</h2>
       {children}
     </section>
   );

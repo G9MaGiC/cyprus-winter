@@ -74,6 +74,11 @@ export const SECTION = {
   /** Space between major sections (list/detail pages) */
   blockGap: "space-y-16 sm:space-y-20",
   alt: "bg-sand/80",
+  /** Bottom margin after page header/hero (back link + title + description) */
+  headingMargin: "mb-10 sm:mb-12",
+  headingMarginLarge: "mb-12 sm:mb-14",
+  /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
+  footerBlock: "mt-12 pt-8 border-t border-sand-200/80",
 } as const;
 
 /** Shared CTA classes — design-token only, no hex. Used by homepage and other pages. */
@@ -134,8 +139,12 @@ export const CARD = {
 
 /** Shared type ramp — reduces repeated class strings. */
 export const TYPE = {
+  /** Page-level h1 (PageHeader, ListPageHero) */
+  pageTitle: "font-display text-3xl sm:text-4xl font-bold text-olive leading-tight break-words",
+  /** Section h2 (Explore, This week, etc.) */
   sectionTitle: "font-display text-2xl sm:text-3xl font-semibold text-charcoal leading-tight",
   sectionSubtitle: "text-sage text-sm sm:text-base leading-relaxed",
+  /** Card h3 titles */
   cardTitle: "font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors",
   kicker: "prose-label text-sage",
   kickerOnDark: "prose-label text-white/80",
@@ -161,6 +170,14 @@ export const CALLOUT = {
   tip: "rounded-xl bg-golden/5 border-l-4 border-l-golden/50 border border-golden/20",
   /** Terracotta CTA-style accent (compose with CARD.base for book & contact blocks). */
   cta: "border-l-4 border-l-terracotta/40",
+} as const;
+
+/** Skeleton loading — pulse + palette. Compose with h-* w-* for dimensions. */
+export const SKELETON = {
+  bar: "animate-pulse rounded bg-olive/20",
+  block: "animate-pulse rounded-lg bg-sand-200/70",
+  media: "aspect-[4/3] bg-sand-200/70 animate-pulse",
+  card: "rounded-xl bg-white/90 border border-sand-200/80",
 } as const;
 
 /** Pill/puck UI (chips, category rails, compact CTAs). */

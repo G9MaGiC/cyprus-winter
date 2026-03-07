@@ -6,6 +6,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { SKELETON } from "@/lib/design-tokens";
 
 interface SkeletonProps {
   className?: string;
@@ -15,7 +16,7 @@ export function Skeleton({ className }: SkeletonProps) {
   return (
     <div
       className={cn(
-        "animate-pulse rounded-lg bg-sand-200/70",
+        SKELETON.block,
         className
       )}
     />
@@ -24,7 +25,7 @@ export function Skeleton({ className }: SkeletonProps) {
 
 export function CardSkeleton({ className }: SkeletonProps) {
   return (
-    <div className={cn("rounded-xl bg-white/90 border border-sand-200/80 p-5", className)}>
+    <div className={cn(SKELETON.card, "p-5", className)}>
       <Skeleton className="h-40 w-full mb-4" />
       <Skeleton className="h-6 w-3/4 mb-2" />
       <Skeleton className="h-4 w-1/2" />
@@ -50,7 +51,7 @@ export function TextSkeleton({ lines = 3, className }: { lines?: number; classNa
 
 export function BookingCardSkeleton() {
   return (
-    <div className="rounded-xl bg-white/90 border border-sand-200/80 p-5">
+    <div className={cn(SKELETON.card, "p-5")}>
       <div className="flex items-center gap-2 mb-3">
         <Skeleton className="h-6 w-20 rounded-full" />
         <Skeleton className="h-4 w-16" />

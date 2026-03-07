@@ -4,7 +4,7 @@ import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
 import { getAttractionImage } from "@/lib/cyprus-images";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 
 export default function AttractionCard({ a }: { a: Attraction | Winery | Restaurant }) {
   const typeColors: Record<string, string> = {
@@ -60,7 +60,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           </span>
         </div>
         <div className={CARD.content}>
-          <h3 className="font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors duration-200 truncate" title={a.name}>
+          <h3 className={`${TYPE.cardTitle} truncate duration-200`} title={a.name}>
             {a.name}
           </h3>
           <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">

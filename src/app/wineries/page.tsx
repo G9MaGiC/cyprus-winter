@@ -86,16 +86,17 @@ export default function WineriesPage() {
         ))}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto relative">
+      <div className={`${SECTION.footerBlock} relative`}>
         <span id="wineries-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-        Pair a winery visit with a trail or village.{" "}
-        <Link href="/plan" className="text-aegean hover:underline">
-          Plan your day
-        </Link>
-      </p>
-      <StickyPlanBarBlock sentinelId="wineries-plan-sentinel" />
-      <p className="mt-6 text-center text-olive/70 text-sm max-w-md mx-auto">
-        Explore wine routes:{" "}
+        <div className="space-y-4">
+          <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
+            Pair a winery visit with a trail or village.{" "}
+            <Link href="/plan" className="text-aegean hover:underline">
+              Plan your day
+            </Link>
+          </p>
+          <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
+            Explore wine routes:{" "}
         <Link href="/wine-routes/krasochoria" className="text-aegean hover:underline">
           Krasochoria
         </Link>
@@ -112,6 +113,9 @@ export default function WineriesPage() {
           Commandaria
         </Link>
       </p>
+        </div>
+      </div>
+      <StickyPlanBarBlock sentinelId="wineries-plan-sentinel" />
     </div>
   );
 }

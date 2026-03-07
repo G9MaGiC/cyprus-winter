@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, EMPTY_STATE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -74,7 +74,7 @@ export default function AccountPage() {
           description="Sign in (coming soon) will sync your plan and bookings across devices."
         />
 
-        <div className="mt-12 p-8 rounded-lg bg-sand-100/90 border border-sand-200/70 text-center">
+        <div className={`${EMPTY_STATE} mt-12`}>
           <p className="text-olive font-semibold">Sign in coming soon</p>
           <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
             Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device.
@@ -99,7 +99,7 @@ export default function AccountPage() {
         description="Sign in to sync your plan and bookings across devices."
       />
 
-      <div className="mt-12 p-8 rounded-lg bg-sand-100/90 border border-sand-200/70 text-center">
+      <div className={`${EMPTY_STATE} mt-12`}>
         <p className="text-olive font-semibold">Save your plan across devices</p>
         <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
           Create a free account and your itinerary and bookings will follow you wherever you go.

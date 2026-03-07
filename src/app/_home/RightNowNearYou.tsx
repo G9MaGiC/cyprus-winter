@@ -1,32 +1,14 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
 import { LAYOUT, TYPE } from "@/lib/design-tokens";
-import RightNowCard, { type RightNowItem } from "@/components/RightNowCard";
+import RightNowCard from "@/components/RightNowCard";
 import AppLink from "@/components/AppLink";
-import { REGION_CONFIGS, type RegionSlug } from "@/data/regions";
-import { getCentroidBySlug } from "@/data/region-centroids";
+import LocationActionButtons from "@/components/LocationActionButtons";
+import RegionPickerChips from "@/components/RegionPickerChips";
+import { getRegionShortLabel } from "@/data/regions";
+import { useRightNowFeed } from "@/hooks/useRightNowFeed";
 
-const CONSENT_KEY = "cyprus-winter:location-consent";
-const LARNACA = { lat: 34.92, lng: 33.63 };
-const MAX_KM_NEAR = 25;
-
-type State = "consent" | "region-picker" | "loading" | "loaded" | "denied" | "error" | "empty";
-type ErrorCode = "rate_limited" | null;
 type DistanceMode = "less" | "more";
-type SourceMode = "gps" | "region";
-
-function getRegionLabel(slug: RegionSlug): string {
-  const c = REGION_CONFIGS.find((r) => r.slug === slug);
-  if (c) {
-    if (slug === "troodos") return "Troodos";
-    if (slug === "paphos") return "Paphos";
-    if (slug === "limassol") return "Limassol";
-    if (slug === "larnaca") return "Larnaca";
-    if (slug === "ayia-napa") return "Ayia Napa & Cape Greco";
-  }
-  return slug;
-}
 
 function SectionShell({
   children,
@@ -44,10 +26,7 @@ function SectionShell({
       className={`py-5 sm:py-6 ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <h2
-          id="right-now-heading"
-          className={`${TYPE.sectionTitle} mb-3`}
-        >
+        <h2 id="right-now-heading" className={`${TYPE.sectionTitle} mb-3`}>
           {title}
         </h2>
         {subtitle && (
@@ -74,7 +53,11 @@ function DistanceToggle({
     >
       <button
         type="button"
-        onClick={() => onChange("less")}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onChange("less");
+        }}
         className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors ${
           value === "less"
             ? "bg-white text-olive shadow-sm"
@@ -85,7 +68,11 @@ function DistanceToggle({
       </button>
       <button
         type="button"
-        onClick={() => onChange("more")}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onChange("more");
+        }}
         className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors ${
           value === "more"
             ? "bg-white text-olive shadow-sm"
@@ -100,127 +87,21 @@ function DistanceToggle({
 
 type RightNowNearYouProps = { title?: string };
 
-export default function RightNowNearYou({ title = "Right now near you" }: RightNowNearYouProps) {
-  const [state, setState] = useState<State>("consent");
-  const [items, setItems] = useState<RightNowItem[]>([]);
-  const [lastErrorCode, setLastErrorCode] = useState<ErrorCode>(null);
-  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
-  const [distanceMode, setDistanceMode] = useState<DistanceMode>("less");
-  const [sourceMode, setSourceMode] = useState<SourceMode>("gps");
-  const [selectedRegion, setSelectedRegion] = useState<RegionSlug | null>(null);
-
-  const fetchFeed = useCallback(
-    async (
-      lat: number,
-      lng: number,
-      nearOnly: boolean,
-      mode: SourceMode,
-      region: RegionSlug | null
-    ) => {
-      setState("loading");
-      setItems([]);
-      setLastErrorCode(null);
-      setCoords({ lat, lng });
-      setSourceMode(mode);
-      setSelectedRegion(region);
-      try {
-        const maxQuery = nearOnly ? `&maxDistance=${MAX_KM_NEAR}` : "";
-        const res = await fetch(
-          `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}`
-        );
-        if (!res.ok) {
-          const data = await res.json().catch(() => ({}));
-          if (res.status === 429) {
-            setLastErrorCode("rate_limited");
-            setState("error");
-            return;
-          }
-          if (res.status === 400 && data.error?.message) {
-            setLastErrorCode(null);
-            setState("error");
-            return;
-          }
-          setLastErrorCode(null);
-          setState("error");
-          return;
-        }
-        const data = await res.json();
-        const list = data.items ?? [];
-        setItems(list);
-        setState(list.length > 0 ? "loaded" : "empty");
-      } catch {
-        setLastErrorCode(null);
-        setState("error");
-      }
-    },
-    []
-  );
-
-  const handleUseLocation = useCallback(() => {
-    if (typeof window === "undefined") return;
-    try {
-      localStorage.setItem(CONSENT_KEY, "true");
-    } catch {}
-    const doFetch = (lat: number, lng: number) =>
-      fetchFeed(lat, lng, distanceMode === "less", "gps", null);
-    if (!navigator.geolocation) {
-      doFetch(LARNACA.lat, LARNACA.lng);
-      return;
-    }
-    setState("loading");
-    navigator.geolocation.getCurrentPosition(
-      (pos) => doFetch(pos.coords.latitude, pos.coords.longitude),
-      (err) => {
-        if (err.code === 1) setState("denied");
-        else doFetch(LARNACA.lat, LARNACA.lng);
-      },
-      { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
-    );
-  }, [fetchFeed, distanceMode]);
-
-  const handlePickRegion = useCallback(() => {
-    if (typeof window !== "undefined") {
-      try {
-        localStorage.setItem(CONSENT_KEY, "true");
-      } catch {}
-    }
-    setState("region-picker");
-  }, []);
-
-  const handleRegionSelect = useCallback(
-    (slug: RegionSlug) => {
-      const centroid = getCentroidBySlug(slug);
-      fetchFeed(centroid.lat, centroid.lng, distanceMode === "less", "region", slug);
-    },
-    [fetchFeed, distanceMode]
-  );
-
-  const handleDistanceChange = useCallback(
-    (mode: DistanceMode) => {
-      setDistanceMode(mode);
-      if (coords && (state === "loaded" || state === "empty")) {
-        const region = selectedRegion;
-        const src = sourceMode;
-        fetchFeed(coords.lat, coords.lng, mode === "less", src, region);
-      }
-    },
-    [coords, state, selectedRegion, sourceMode, fetchFeed]
-  );
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const consented = localStorage.getItem(CONSENT_KEY) === "true";
-      if (consented) {
-        queueMicrotask(() => handleUseLocation());
-      }
-    } catch {
-      queueMicrotask(() => setState("consent"));
-    }
-    // Run only on mount — handleUseLocation changes when distanceMode changes;
-    // we must not re-trigger geolocation when user toggles Closer/Farther
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+export default function RightNowNearYou({
+  title = "Right now near you",
+}: RightNowNearYouProps) {
+  const {
+    state,
+    items,
+    lastErrorCode,
+    distanceMode,
+    sourceMode,
+    selectedRegion,
+    handleUseLocation,
+    handlePickRegion,
+    handleRegionSelect,
+    handleDistanceChange,
+  } = useRightNowFeed();
 
   if (state === "consent") {
     return (
@@ -229,22 +110,13 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
           <p className="text-olive/80 text-sm">
             Suggestions based on where you are, the time, and the weather.
           </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={handleUseLocation}
-              className="px-3 py-1.5 rounded-md bg-terracotta text-white text-sm font-medium hover:bg-terracotta-muted transition-colors min-h-[44px]"
-            >
-              Use my location
-            </button>
-            <button
-              type="button"
-              onClick={handlePickRegion}
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-md text-olive/70 text-sm hover:text-olive transition-colors"
-            >
-              Pick a region
-            </button>
-          </div>
+          <LocationActionButtons
+            primaryLabel="Use my location"
+            onPrimary={handleUseLocation}
+            onSecondary={handlePickRegion}
+            secondaryLabel="Pick a region"
+            className="mt-3"
+          />
         </div>
       </SectionShell>
     );
@@ -255,25 +127,10 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
       <SectionShell title={title}>
         <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
           <p className="text-olive/80 text-sm mb-3">Choose a region to explore.</p>
-          <div className="flex flex-wrap gap-2 mb-3">
-            {REGION_CONFIGS.map((config) => (
-              <button
-                key={config.slug}
-                type="button"
-                onClick={() => handleRegionSelect(config.slug)}
-                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 bg-white text-olive text-sm font-medium hover:bg-sand-50/60 transition-colors"
-              >
-                {getRegionLabel(config.slug)}
-              </button>
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={handleUseLocation}
-            className="text-sm text-olive/70 hover:text-olive"
-          >
-            Use my location instead
-          </button>
+          <RegionPickerChips
+            onSelect={handleRegionSelect}
+            onUseLocation={handleUseLocation}
+          />
         </div>
       </SectionShell>
     );
@@ -312,22 +169,13 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
       <SectionShell title={title}>
         <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
           <p className="text-olive/80 text-sm">{errorMessage}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={handleUseLocation}
-              className="px-3 py-1.5 rounded-md bg-terracotta text-white text-sm font-medium hover:bg-terracotta-muted transition-colors min-h-[44px]"
-            >
-              Try again
-            </button>
-            <button
-              type="button"
-              onClick={handlePickRegion}
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-md text-olive/70 text-sm hover:text-olive transition-colors"
-            >
-              Pick a region
-            </button>
-          </div>
+          <LocationActionButtons
+            primaryLabel="Try again"
+            onPrimary={handleUseLocation}
+            onSecondary={handlePickRegion}
+            secondaryLabel="Pick a region"
+            className="mt-3"
+          />
         </div>
       </SectionShell>
     );
@@ -336,20 +184,25 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
   if (state === "empty") {
     const subtitle =
       sourceMode === "region" && selectedRegion
-        ? `Suggestions in ${getRegionLabel(selectedRegion)}`
+        ? `Suggestions in ${getRegionShortLabel(selectedRegion)}`
         : undefined;
     return (
       <SectionShell title={title} subtitle={subtitle}>
         <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
           <p className="text-olive/80 text-sm">
-            No suggestions for {sourceMode === "region" ? "this region" : "now"} right now.
+            No suggestions for {sourceMode === "region" ? "this region" : "now"}{" "}
+            right now.
           </p>
           <div className="mt-3 flex flex-wrap gap-3">
             {sourceMode === "region" && (
               <button
                 type="button"
-                onClick={handlePickRegion}
-                className="px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handlePickRegion();
+                }}
+                className="px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2"
               >
                 Change region
               </button>
@@ -368,7 +221,7 @@ export default function RightNowNearYou({ title = "Right now near you" }: RightN
 
   const loadedSubtitle =
     sourceMode === "region" && selectedRegion
-      ? `Suggestions in ${getRegionLabel(selectedRegion)}`
+      ? `Suggestions in ${getRegionShortLabel(selectedRegion)}`
       : "Suggestions near you";
 
   return (

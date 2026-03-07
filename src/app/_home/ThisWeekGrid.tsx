@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 import { winterEvents } from "@/data/events";
 import { weatherByMonth } from "@/data/weather";
 import { trails } from "@/data/trails";
@@ -102,7 +102,7 @@ export default async function ThisWeekGrid() {
       >
         <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} ${CARD.content}`}>
           <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Trails</p>
-          <p className="font-display text-lg font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5">
+          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5`}>
             {trailName}
           </p>
           <p className="inline-flex items-center gap-1.5 text-sm text-sage mt-0.5">
@@ -142,7 +142,7 @@ export default async function ThisWeekGrid() {
           <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">
             What&apos;s on
           </p>
-          <p className="font-display text-lg font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5">
+          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5`}>
             {eventHighlight
               ? eventHighlight.name
               : winterEvents.length > 0

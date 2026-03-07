@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
-import { LAYOUT, CARD, EMPTY_STATE, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 
@@ -95,13 +95,15 @@ export default function SecretsPage() {
         })}
       </div>
       )}
-      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto relative">
+      <div className={`${SECTION.footerBlock} relative`}>
         <span id="secrets-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
+        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
         Pair with trails and villages.{" "}
         <Link href="/plan" className="text-aegean hover:underline">
           Plan your day
         </Link>
       </p>
+      </div>
       <StickyPlanBarBlock sentinelId="secrets-plan-sentinel" />
     </div>
   );

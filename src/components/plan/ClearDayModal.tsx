@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 
 type Props = {
   activeDay: number;
@@ -34,7 +34,7 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
         ref={modalRef}
         className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
       >
-        <h2 id="clear-day-title" className="font-display text-lg font-semibold text-olive mb-2">
+        <h2 id="clear-day-title" className={`${TYPE.cardTitle} mb-2`}>
           Clear Day {activeDay}?
         </h2>
         <p className="text-olive/80 text-sm mb-6 break-words">

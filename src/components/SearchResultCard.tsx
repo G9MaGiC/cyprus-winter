@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { SearchResult } from "@/lib/search";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 
 const kindLabels: Record<string, string> = {
   place: "Place",
@@ -29,7 +29,7 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors truncate" title={name}>
+          <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
             {name}
           </h3>
           <p className="text-sm text-olive/70 mt-0.5 truncate">{sublabel}</p>

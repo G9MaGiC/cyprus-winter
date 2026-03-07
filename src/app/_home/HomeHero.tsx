@@ -12,7 +12,7 @@ export default function HomeHero() {
         fill
         className="object-cover object-center"
         priority
-        loading="eager"
+        fetchPriority="high"
         sizes="100vw"
       />
       <div className={HERO.overlay} aria-hidden />

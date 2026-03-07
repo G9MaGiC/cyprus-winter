@@ -1,6 +1,6 @@
 import Link from "next/link";
 import BackLink from "@/components/BackLink";
-import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -57,11 +57,11 @@ export default function InstallPage() {
         <BackLink href="/" label="Back to Cyprus Winter" />
       </div>
 
-      <header className="mb-12">
+      <header className={SECTION.headingMarginLarge}>
         <p className="text-golden text-sm font-medium tracking-[0.15em] uppercase mb-2">
           Deployment guide
         </p>
-        <h1 className="font-display text-3xl sm:text-4xl font-bold text-charcoal tracking-tight leading-tight">
+        <h1 className={`${TYPE.pageTitle} text-charcoal mt-2`}>
           Install on SiteGround
         </h1>
         <p className="mt-3 text-olive/80 text-base leading-relaxed max-w-xl">
@@ -70,7 +70,7 @@ export default function InstallPage() {
       </header>
 
       <section aria-labelledby="requirements" className="mb-12">
-        <h2 id="requirements" className="font-display text-xl font-semibold text-charcoal mb-4">
+        <h2 id="requirements" className={`${TYPE.sectionTitle} mb-4`}>
           Requirements
         </h2>
         <ul className={`${CARD.base} ${CARD.content} space-y-2 text-olive/90`}>
@@ -80,8 +80,8 @@ export default function InstallPage() {
         </ul>
       </section>
 
-      <section aria-labelledby="steps" className="space-y-10">
-        <h2 id="steps" className="font-display text-xl font-semibold text-charcoal mb-6">
+      <section aria-labelledby="steps" className="space-y-10 mt-16 sm:mt-20">
+        <h2 id="steps" className={`${TYPE.sectionTitle} mb-6`}>
           Steps
         </h2>
 
@@ -91,7 +91,7 @@ export default function InstallPage() {
             className={`${CARD.base} ${CARD.hover} ${CARD.contentLg}`}
             aria-labelledby={`step-${i}`}
           >
-            <h3 id={`step-${i}`} className="font-display text-lg font-semibold text-charcoal mb-3">
+            <h3 id={`step-${i}`} className={`${TYPE.cardTitle} text-charcoal mb-3`}>
               {step.title}
             </h3>
             <p className="text-olive/90 text-sm sm:text-base leading-relaxed mb-4">
@@ -115,8 +115,8 @@ export default function InstallPage() {
         ))}
       </section>
 
-      <section aria-labelledby="troubleshooting" className="mt-14 pt-8 border-t border-sand-200/80">
-        <h2 id="troubleshooting" className="font-display text-xl font-semibold text-charcoal mb-4">
+      <section aria-labelledby="troubleshooting" className={SECTION.footerBlock}>
+        <h2 id="troubleshooting" className={`${TYPE.sectionTitle} mb-4`}>
           Troubleshooting
         </h2>
         <ul className="space-y-3 text-olive/90 text-sm">
@@ -132,7 +132,7 @@ export default function InstallPage() {
         </ul>
       </section>
 
-      <div className="mt-12 flex flex-wrap gap-4">
+      <div className="mt-16 sm:mt-20 flex flex-wrap gap-4">
         <Link href="/" className={`px-8 py-3 rounded-xl ${CTA.primaryCompact}`}>
           Back to app
         </Link>

@@ -309,7 +309,8 @@ export default async function RegionPage({ params }: Props) {
         )}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm">
+      <div className={SECTION.footerBlock}>
+        <p className="text-center text-olive/70 text-sm">
         <Link href="/weather" className="text-aegean hover:underline">
           Weather by month
         </Link>
@@ -318,6 +319,7 @@ export default async function RegionPage({ params }: Props) {
           Plan your trip
         </Link>
       </p>
+      </div>
     </div>
   );
 }

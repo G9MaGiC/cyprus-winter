@@ -45,7 +45,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <div className="mb-8">
         <BackLink href="/" label="Home" />
       </div>
-      <h1 className="font-display text-2xl font-semibold text-charcoal mb-2">
+      <h1 className={`${TYPE.sectionTitle} mb-2`}>
         Find a place or trail
       </h1>
       <p className="text-olive/70 text-sm mb-8">
@@ -83,7 +83,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </div>
       )}
       {showBrowse && (
-        <div className="mt-10 pt-8 border-t border-sand-200/80">
+        <div className={SECTION.footerBlock}>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">Or browse by category</p>
           <div className="flex flex-wrap gap-2">
             {BROWSE_LINKS.map((link) => (

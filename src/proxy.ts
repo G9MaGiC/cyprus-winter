@@ -1,25 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Simple nonce generator for CSP
-function generateNonce(): string {
-  return Buffer.from(crypto.randomUUID()).toString("base64");
-}
-
 // Security headers proxy handler
 export default function proxy(request: NextRequest): NextResponse {
-  const nonce = generateNonce();
-  
   // Build CSP header
   const cspHeader = [
     "default-src 'self'",
     // Allow scripts from self, nonce, strict-dynamic for Next.js, and unsafe-inline as fallback
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https: 'unsafe-inline'`,
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
     // Allow styles from self and unsafe-inline (required for Tailwind)
     "style-src 'self' 'unsafe-inline'",
     // Images from self, blob, data, and external sources
     "img-src 'self' blob: data: https://images.unsplash.com https://cdn.shopify.com",
     // Fonts from self
-    "font-src 'self'",
+    "font-src 'self' https://fonts.gstatic.com",
     // Connect to self and external APIs
     "connect-src 'self' https://api.moonshot.ai https://*.supabase.co",
     // No frames allowed
@@ -32,15 +25,7 @@ export default function proxy(request: NextRequest): NextResponse {
     "upgrade-insecure-requests",
   ].join("; ");
 
-  // Create response with security headers
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-nonce", nonce);
-  
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+  const response = NextResponse.next();
 
   // Add security headers
   response.headers.set("Content-Security-Policy", cspHeader);
