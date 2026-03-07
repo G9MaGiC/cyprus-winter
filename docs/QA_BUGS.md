@@ -655,3 +655,39 @@ Fixed — added "Use my location instead" link in region picker.
 ### Fix status
 
 No bugs found. All QA_BUGS entries remain Fixed. Layout refactor verified; discover, trails, plan pages use correct spacing via (padded) or [locale] main padding.
+
+---
+
+## QA Run — Bug Audit (Mar 8, 2026)
+
+*Per plan: shell (lint/test/build) + bug pattern scan. Team: bug-fix.*
+
+### Automated checks
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| npm run lint | Pass | 0 errors |
+| npm run test | Pass | 150 tests |
+| npm run build | Pass | Next.js 16.1.6 |
+| npx tsc --noEmit | Pass | Fixed (see below) |
+
+### Bug pattern scan
+
+| Pattern | Result |
+|---------|--------|
+| Broken imports | None — all imports resolve correctly |
+| console.error leaks | API routes/lib only (acceptable); components clean |
+| Type errors | Fixed: tsconfig exclude for `.next/dev/types/app` |
+| Hydration | suppressHydrationWarning on body (intentional) |
+| Broken links | None — no /trip; all hrefs point to valid routes |
+
+### Fix applied
+
+**tsconfig.json — tsc failing on .next/dev/types**
+
+- **Cause:** Next.js 16 generated `.next/dev/types/app/**` files reference paths like `src/app/airport/page.js`; routes live under `(padded)/`, so those paths don't exist.
+- **Fix:** Added `.next/dev/types/app` to tsconfig `exclude` so `npx tsc --noEmit` passes. Build unaffected (Next.js uses its own checker).
+
+### QA_BUGS status
+
+No Open or In progress bugs. All prior entries Fixed.
