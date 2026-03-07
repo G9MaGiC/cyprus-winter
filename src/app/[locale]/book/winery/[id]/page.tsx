@@ -1,1 +1,1 @@
-export { default } from "@/app/book/winery/[id]/page";
+export { default } from "@/app/(padded)/book/winery/[id]/page";

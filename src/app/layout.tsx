@@ -85,6 +85,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${plusJakarta.variable} ${fraunces.variable} font-sans antialiased min-h-screen bg-background`}
+        suppressHydrationWarning
       >
         {/* JavaScript disabled warning */}
         <noscript>
@@ -104,7 +105,7 @@ export default function RootLayout({
           <ConversionTracker />
           <ScrollToTop />
           <Nav />
-          <main id="main-content" className="pt-[calc(3.5rem+env(safe-area-inset-top,0px))] min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+          <main id="main-content" className="pt-0 min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
             {children}
           </main>
           <BottomNav />

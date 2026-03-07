@@ -1,1 +1,1 @@
-export { default } from "@/app/regions/[slug]/page";
+export { default } from "@/app/(padded)/regions/[slug]/page";

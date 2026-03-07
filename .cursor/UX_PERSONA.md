@@ -8,9 +8,9 @@
 
 **Cyprus secret — premium, quiet confidence**
 
-- **High-premium feel** — Typography and whitespace carry the mood. No emojis, no playful icons. Warm card backgrounds (sand/cream), rounded-lg not pills, text links over button overload. Editorial, not app-style.
-- **Best-kept secret** — We know something special; we share it quietly. No FOMO, no neon CTAs, no hustle.
-- **Discovery, not selling** — Invite users to explore. "Pair with…" not "Buy now." Suggest, don't push.
+- **Best-kept secret** — Something precious, shared quietly. No FOMO, no neon CTAs, no hustle.
+- **High-premium feel** — Typography and whitespace carry the mood. Warm card backgrounds (sand/cream), rounded-lg not pills. Editorial, not app-style.
+- **Discovery, not selling** — Invite users to explore. "Pair with…" not "Buy now." Suggest, don’t push.
 - **Mediterranean warmth** — Soft gradients, golden light, olive and terracotta. Cozy, not cold. The island rewards the curious.
 - **Local, authentic** — Villages, kafenions, fireside tastings. Real places, real tips. The stove is lit and nobody hurries.
 

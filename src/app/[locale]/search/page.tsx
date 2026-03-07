@@ -1,1 +1,1 @@
-export { default } from "@/app/search/page";
+export { default } from "@/app/(padded)/search/page";

@@ -1,1 +1,1 @@
-export { default } from "@/app/wine-routes/[slug]/page";
+export { default } from "@/app/(padded)/wine-routes/[slug]/page";

@@ -1,1 +1,1 @@
-export { default } from "@/app/trails/page";
+export { default } from "@/app/(padded)/trails/page";

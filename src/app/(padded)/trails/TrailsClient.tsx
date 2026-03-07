@@ -8,7 +8,7 @@ import { LAYOUT, SECTION, CTA, EMPTY_STATE_LARGE, TYPE, STRIP } from "@/lib/desi
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
-import TrailFilters from "@/app/trails/TrailFilters";
+import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
 import Link from "next/link";
 

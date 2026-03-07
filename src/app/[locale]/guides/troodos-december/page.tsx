@@ -1,1 +1,1 @@
-export { default } from "@/app/guides/troodos-december/page";
+export { default } from "@/app/(padded)/guides/troodos-december/page";
