@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { LAYOUT } from "@/lib/design-tokens";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 import LocaleSelector from "./LocaleSelector";
@@ -22,22 +22,22 @@ export default function SiteFooter() {
 
         <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-x-12 gap-y-6 mb-10">
           <nav aria-label="Plan and essentials" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm">
-            <Link href="/discover" className={footerLinkClass}>Discover</Link>
-            <Link href="/plan" className={footerLinkClass}>Plan</Link>
-            <Link href="/weather" className={footerLinkClass}>Weather</Link>
-            <Link href="/bookings" className={footerLinkClass}>Bookings</Link>
-            <Link href="/airport" className={footerLinkClass}>Arriving</Link>
+            <AppLink href="/discover" className={footerLinkClass}>Discover</AppLink>
+            <AppLink href="/plan" className={footerLinkClass}>Plan</AppLink>
+            <AppLink href="/weather" className={footerLinkClass}>Weather</AppLink>
+            <AppLink href="/bookings" className={footerLinkClass}>Bookings</AppLink>
+            <AppLink href="/airport" className={footerLinkClass}>Arriving</AppLink>
           </nav>
-          <nav aria-label="Explore by type" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm sm:border-l sm:border-sand-200 sm:pl-12">
-            <Link href="/beaches" className={footerLinkClass}>Beaches</Link>
-            <Link href="/wineries" className={footerLinkClass}>Wineries</Link>
-            <Link href="/villages" className={footerLinkClass}>Villages</Link>
-            <Link href="/regions/troodos" className={footerLinkClass}>Troodos</Link>
-            <Link href="/regions/paphos" className={footerLinkClass}>Paphos</Link>
+          <nav aria-label="Explore by type" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm sm:border-l sm:border-sand-200/80 sm:pl-12">
+            <AppLink href="/beaches" className={footerLinkClass}>Beaches</AppLink>
+            <AppLink href="/wineries" className={footerLinkClass}>Wineries</AppLink>
+            <AppLink href="/villages" className={footerLinkClass}>Villages</AppLink>
+            <AppLink href="/regions/troodos" className={footerLinkClass}>Troodos</AppLink>
+            <AppLink href="/regions/paphos" className={footerLinkClass}>Paphos</AppLink>
           </nav>
         </div>
 
-        <div className="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200 mb-6 text-xs text-olive/80 mx-auto w-fit">
+        <div className="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 mb-6 text-xs text-olive/80 mx-auto w-fit">
           <span>Emergency <strong className="text-charcoal font-semibold">112</strong></span>
           <span>Tourist info <strong className="text-charcoal font-semibold">1460</strong></span>
           <span>Ambulance <strong className="text-charcoal font-semibold">199</strong></span>

@@ -42,7 +42,7 @@ export default function AddToItineraryButton({
         <span aria-hidden>✓</span> In your plan
         <Link
           href="/plan"
-          className="inline-flex items-center min-h-[44px] py-2 -my-2 text-aegean/90 hover:text-aegean underline text-sm font-medium"
+          className="inline-flex items-center min-h-[44px] min-w-[44px] py-2 px-2 -my-2 -mx-1 text-aegean/90 hover:text-aegean underline text-sm font-medium rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           View plan →
         </Link>

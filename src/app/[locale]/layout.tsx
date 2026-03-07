@@ -131,7 +131,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                   <Link href="/bookings" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.bookings")}</Link>
                   <Link href="/airport" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.arriving")}</Link>
                 </nav>
-                <nav aria-label="Explore by type" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm sm:border-l sm:border-sand-200 sm:pl-12">
+                <nav aria-label="Explore by type" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm sm:border-l sm:border-sand-200/80 sm:pl-12">
                   <Link href="/beaches" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.beaches")}</Link>
                   <Link href="/wineries" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.wineries")}</Link>
                   <Link href="/villages" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.villages")}</Link>
@@ -139,7 +139,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                   <Link href="/regions/paphos" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.paphos")}</Link>
                 </nav>
               </div>
-              <div className="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200 mb-6 text-xs text-olive/80 mx-auto w-fit">
+              <div className="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 mb-6 text-xs text-olive/80 mx-auto w-fit">
                 <span>Emergency <strong className="text-charcoal font-semibold">112</strong></span>
                 <span>Tourist info <strong className="text-charcoal font-semibold">1460</strong></span>
                 <span>Ambulance <strong className="text-charcoal font-semibold">199</strong></span>

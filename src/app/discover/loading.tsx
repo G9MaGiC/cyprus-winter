@@ -28,10 +28,10 @@ export default function DiscoverLoading() {
       aria-label="Loading discover"
     >
       <div className="animate-pulse mb-10">
-        <div className="h-4 w-20 bg-sand-200 rounded mb-4" />
+        <div className="h-4 w-20 bg-sand-200/80 rounded mb-4" />
         <div className="h-9 w-48 bg-olive/20 rounded mb-3" />
-        <div className="h-4 w-full max-w-xl bg-sand-200 rounded mb-2" />
-        <div className="h-4 w-3/4 max-w-lg bg-sand-200 rounded" />
+        <div className="h-4 w-full max-w-xl bg-sand-200/80 rounded mb-2" />
+        <div className="h-4 w-3/4 max-w-lg bg-sand-200/80 rounded" />
       </div>
       <div className="flex gap-2 overflow-x-auto overflow-y-hidden pb-1 mb-6 scrollbar-none sm:flex-wrap">
         {[1, 2, 3, 4, 5, 6].map((i) => (

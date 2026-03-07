@@ -7,10 +7,18 @@ import { getLatestReportsByTrail } from "./trail-reports";
 
 const CACHE_KEY = "trail_summary";
 const MEMORY_TTL_MS = 10 * 60 * 1000; // 10 minutes
+const FETCH_TIMEOUT_MS = 5000; // 5s to avoid blocking page on Vercel
 
 const FEATURED_TRAILS = ["artemis", "caledonia-falls", "atalante", "olympus-summit"] as const;
 
 let memoryCache: { data: TrailSummary; updatedAt: number } | null = null;
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  const timeout = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error("timeout")), ms)
+  );
+  return Promise.race([promise, timeout]);
+}
 
 export type TrailSummaryEntry = {
   status: "open" | "caution" | "closed";
@@ -29,19 +37,23 @@ export async function getTrailSummary(): Promise<TrailSummary | null> {
   const supabase = getSupabase();
   if (!supabase) return memoryCache?.data ?? null;
 
-  const { data, error } = await supabase
-    .from("cache")
-    .select("value")
-    .eq("key", CACHE_KEY)
-    .single();
+  try {
+    const result = await withTimeout(
+      supabase.from("cache").select("value").eq("key", CACHE_KEY).single(),
+      FETCH_TIMEOUT_MS
+    );
+    const { data, error } = result as { data: { value: TrailSummary } | null; error: Error | null };
 
-  if (!error && data?.value) {
-    const summary = data.value as TrailSummary;
-    memoryCache = { data: summary, updatedAt: now };
-    return summary;
+    if (!error && data?.value) {
+      const summary = data.value as TrailSummary;
+      memoryCache = { data: summary, updatedAt: now };
+      return summary;
+    }
+
+    return memoryCache?.data ?? null;
+  } catch {
+    return memoryCache?.data ?? null;
   }
-
-  return memoryCache?.data ?? null;
 }
 
 export async function refreshTrailSummary(): Promise<TrailSummary> {

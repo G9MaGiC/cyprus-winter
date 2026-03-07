@@ -47,7 +47,7 @@ export function ErrorState({
       aria-live="polite"
     >
       <IconAccent type={icon} />
-      <h3 className="font-display text-lg font-semibold text-olive mb-2">
+      <h3 className="font-display text-lg font-semibold text-charcoal mb-2">
         {title}
       </h3>
       <p className="text-sm text-olive/70 mb-4 max-w-md mx-auto break-words">

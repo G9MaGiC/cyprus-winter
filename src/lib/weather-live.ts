@@ -15,17 +15,30 @@ export type LiveWeather = {
 
 let cache: { data: LiveWeather; updatedAt: number } | null = null;
 
+const FETCH_TIMEOUT_MS = 6000; // 6s to avoid blocking page on Vercel
+
 async function fetchOpenMeteo(lat: number, lng: number): Promise<{ min: number; max: number } | null> {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=temperature_2m_min,temperature_2m_max&timezone=Europe/Nicosia&forecast_days=1`;
-  const res = await fetch(url, { next: { revalidate: 3600 } });
-  if (!res.ok) return null;
-  const json = (await res.json()) as {
-    daily?: { temperature_2m_min?: number[]; temperature_2m_max?: number[] };
-  };
-  const min = json.daily?.temperature_2m_min?.[0];
-  const max = json.daily?.temperature_2m_max?.[0];
-  if (min == null || max == null) return null;
-  return { min, max };
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      next: { revalidate: 3600 },
+    });
+    clearTimeout(timeout);
+    if (!res.ok) return null;
+    const json = (await res.json()) as {
+      daily?: { temperature_2m_min?: number[]; temperature_2m_max?: number[] };
+    };
+    const min = json.daily?.temperature_2m_min?.[0];
+    const max = json.daily?.temperature_2m_max?.[0];
+    if (min == null || max == null) return null;
+    return { min, max };
+  } catch {
+    clearTimeout(timeout);
+    return null;
+  }
 }
 
 export async function getLiveWeather(): Promise<LiveWeather | null> {

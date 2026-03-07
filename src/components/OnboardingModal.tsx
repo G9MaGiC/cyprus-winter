@@ -14,32 +14,17 @@ const ONBOARDING_KEY = "cyprus-winter-onboarded";
 const steps = [
   {
     title: "Welcome to Cyprus Winter",
-    description: "The Mediterranean's best-kept secret. Trails, villages, wineries—plan as you go.",
+    description: "Trails, villages, wineries—plan as you go. No account needed.",
     accent: "terracotta",
   },
   {
-    title: "Discover Places",
-    description: "Places that feel real. Beaches, ruins, villages, wineries.",
+    title: "Discover & Plan",
+    description: "Explore places. Add to your plan. Book tastings.",
     accent: "terracotta",
   },
   {
-    title: "Build Your Plan",
-    description: "Add places to your plan. No account needed—it saves as you go.",
-    accent: "terracotta",
-  },
-  {
-    title: "Book Tastings",
-    description: "Book tastings and experiences as you plan.",
-    accent: "terracotta",
-  },
-  {
-    title: "Ask AI for Help",
-    description: "Tap Ask AI for tips on trails, wineries, villages.",
-    accent: "terracotta",
-  },
-  {
-    title: "Save Across Devices",
-    description: "Create an account to sync your plan. Or explore now—no account needed.",
+    title: "Ask AI, Save Anywhere",
+    description: "Tap Ask AI for tips. Create an account to sync across devices—or explore now.",
     accent: "sage",
   },
 ];
@@ -124,9 +109,9 @@ export default function OnboardingModal() {
           </p>
         </div>
 
-        {/* Actions — primary: explore first; account optional on last step */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          {currentStep > 0 && (
+        {/* Actions — last step: Explore now primary; Create account secondary; Sign in tertiary. Stack vertically. */}
+        <div className={isLast ? "flex flex-col gap-3" : "flex flex-col sm:flex-row gap-3"}>
+          {currentStep > 0 && !isLast && (
             <button
               type="button"
               onClick={() => setCurrentStep((s) => s - 1)}
@@ -143,11 +128,11 @@ export default function OnboardingModal() {
                 type="button"
                 onClick={dismiss}
                 className={`${CTA.primaryCompact} w-full`}
-                aria-label="Get started and explore the app"
+                aria-label="Explore now without account"
               >
-                Get started
+                Explore now
               </button>
-              <div className="flex gap-3 w-full" role="group" aria-label="Account options">
+              <div className="flex flex-col sm:flex-row gap-3 w-full" role="group" aria-label="Account options">
                 <Link
                   href="/register"
                   onClick={dismiss}
@@ -159,7 +144,7 @@ export default function OnboardingModal() {
                 <Link
                   href="/login"
                   onClick={dismiss}
-                  className="text-sm text-olive/70 hover:text-terracotta transition-colors min-h-[44px] px-4 inline-flex items-center justify-center rounded-lg border border-sand-200/80 hover:border-terracotta/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg text-sm font-medium text-olive/70 hover:text-terracotta border border-sand-200/80 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label="Sign in to existing account"
                 >
                   Sign in
@@ -167,14 +152,16 @@ export default function OnboardingModal() {
               </div>
             </>
           ) : (
-            <button
-              type="button"
-              onClick={() => setCurrentStep((s) => s + 1)}
-              className={`${CTA.primaryCompact} flex-1`}
-              aria-label="Next step"
-            >
-              Next
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={() => setCurrentStep((s) => s + 1)}
+                className={`${CTA.primaryCompact} flex-1`}
+                aria-label="Next step"
+              >
+                Next
+              </button>
+            </>
           )}
         </div>
 

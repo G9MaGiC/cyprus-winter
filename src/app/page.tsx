@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Suspense } from "react";
+import AppLink from "@/components/AppLink";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
@@ -18,11 +19,40 @@ import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
 
+function WeatherStripSkeleton() {
+  return (
+    <section
+      aria-hidden
+      className={`${LAYOUT.safeAreaX} py-4 bg-sand/60 border-b border-sand-200/80`}
+    >
+      <div className={`${LAYOUT.list} mx-auto flex justify-center`}>
+        <div className="h-6 w-40 bg-olive/20 rounded animate-pulse" />
+      </div>
+    </section>
+  );
+}
+
+function ThisWeekSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" aria-hidden>
+      {[1, 2, 3].map((i) => (
+        <div key={i} className={`${CARD.content} ${CARD.base} border-l-4 border-l-aegean/30`}>
+          <div className="h-4 w-20 bg-olive/20 rounded mb-2" />
+          <div className="h-8 w-32 bg-olive/30 rounded mt-1" />
+          <div className="h-4 w-full bg-sand-200/80 rounded mt-2" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="relative overflow-hidden bg-background">
       <HomeHero />
-      <HomeWeatherStrip />
+      <Suspense fallback={<WeatherStripSkeleton />}>
+        <HomeWeatherStrip />
+      </Suspense>
       <TripReminderBanner />
       <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} py-4`}>
         <div className={`${LAYOUT.list} mx-auto`}>
@@ -52,7 +82,9 @@ export default function Home() {
         title="This week"
         subtitle="Coast is often mild; Troodos is cooler. Hike, taste, or see what’s on."
       >
-        <ThisWeekGrid />
+        <Suspense fallback={<ThisWeekSkeleton />}>
+          <ThisWeekGrid />
+        </Suspense>
       </HomeSection>
 
       <HomeSection
@@ -82,7 +114,7 @@ export default function Home() {
             Planning and essentials
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
-            <Link
+            <AppLink
               href="/plan"
               className={`block ${CARD.contentLg} rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
             >
@@ -92,8 +124,8 @@ export default function Home() {
               <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
                 Build your itinerary. Add places from Discover—saves as you go.
               </p>
-            </Link>
-            <Link
+            </AppLink>
+            <AppLink
               href="/events"
               className={`block ${CARD.contentLg} rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
             >
@@ -103,7 +135,7 @@ export default function Home() {
               <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
                 Epiphany, carnival, tastings. What&apos;s on when.
               </p>
-            </Link>
+            </AppLink>
           </div>
         </div>
         <StickyPlanBar sentinelId="plan-sentinel" />

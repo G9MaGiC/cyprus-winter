@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { CTA, HERO, LAYOUT, TYPE } from "@/lib/design-tokens";
 
@@ -32,17 +32,17 @@ export default function HomeHero() {
           <p className="text-sm text-white/80 mb-8">Often sixteen degrees when home is six.</p>
 
           <div className="flex flex-col items-center gap-5 sm:gap-6">
-            <Link href="/discover" className={CTA.primary} aria-label="Discover places, villages, and wineries">
+            <AppLink href="/discover" className={CTA.primary} aria-label="Discover places, villages, and wineries">
               Discover
-            </Link>
+            </AppLink>
 
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/plan" className={CTA.secondary} aria-label="Build a simple itinerary">
+              <AppLink href="/plan" className={CTA.secondary} aria-label="Build a simple itinerary">
                 Plan trip
-              </Link>
-              <Link href="/airport" className={CTA.ghost} aria-label="Transport from airport, tips">
+              </AppLink>
+              <AppLink href="/airport" className={CTA.ghost} aria-label="Transport from airport, tips">
                 Just arrived?
-              </Link>
+              </AppLink>
               <AIAssistantTrigger variant="tertiaryOnDark" label="Ask your guide" />
             </div>
           </div>
