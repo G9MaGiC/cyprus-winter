@@ -1,6 +1,6 @@
-import { getLiveWeather } from "@/lib/weather-live";
+import { getLiveWeather, getWeatherAtCoords } from "@/lib/weather-live";
 import { rateLimit } from "@/lib/rate-limit";
-import { rateLimitSuccessHeaders } from "@/lib/api-response";
+import { jsonError, rateLimitSuccessHeaders } from "@/lib/api-response";
 
 export const dynamic = "force-dynamic";
 
@@ -18,12 +18,35 @@ export async function GET(req: Request) {
     );
   }
   try {
+    const { searchParams } = new URL(req.url);
+    const lat = searchParams.get("lat");
+    const lng = searchParams.get("lng");
+    if (lat != null && lng != null) {
+      const latNum = parseFloat(lat);
+      const lngNum = parseFloat(lng);
+      const valid =
+        !Number.isNaN(latNum) &&
+        !Number.isNaN(lngNum) &&
+        latNum >= -90 &&
+        latNum <= 90 &&
+        lngNum >= -180 &&
+        lngNum <= 180;
+      if (!valid) {
+        return jsonError("VALIDATION_ERROR", "Invalid lat/lng", 400);
+      }
+      const weather = await getWeatherAtCoords(latNum, lngNum);
+      if (weather) {
+        return Response.json(weather, {
+          headers: {
+            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
+            ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
+          },
+        });
+      }
+    }
     const weather = await getLiveWeather();
     if (!weather) {
-      return Response.json(
-        { error: "Weather unavailable" },
-        { status: 503 }
-      );
+      return jsonError("SERVICE_UNAVAILABLE", "Weather unavailable", 503);
     }
     return Response.json(weather, {
       headers: {
@@ -33,9 +56,6 @@ export async function GET(req: Request) {
     });
   } catch (err) {
     console.error("Weather API error:", err);
-    return Response.json(
-      { error: "Weather unavailable" },
-      { status: 500 }
-    );
+    return jsonError("SERVER_ERROR", "Weather unavailable", 500);
   }
 }

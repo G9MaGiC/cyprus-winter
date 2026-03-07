@@ -2,8 +2,12 @@
   "name": "cyprus-winter",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbopack": "next dev",
     "prebuild": "node scripts/check-build-dir.mjs",
     "build": "next build",
     "build:clean": "rm -rf dist .next .next-build && npm run build",

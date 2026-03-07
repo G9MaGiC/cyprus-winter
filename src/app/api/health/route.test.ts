@@ -6,7 +6,7 @@ function req(url = "http://localhost:3000/api/health") {
 }
 
 describe("GET /api/health", () => {
-  it("returns 200 with ok, ai, storage, email fields", async () => {
+  it("returns 200 with ok, ai, storage, email, resend fields", async () => {
     const res = await GET(req());
     expect(res.status).toBe(200);
     const data = await res.json();
@@ -14,6 +14,8 @@ describe("GET /api/health", () => {
     expect(data).toHaveProperty("ai");
     expect(data).toHaveProperty("storage");
     expect(data).toHaveProperty("email");
+    expect(data).toHaveProperty("resend");
+    expect(["ok", "error", "not configured"]).toContain(data.resend);
     expect(typeof data.ok).toBe("boolean");
   });
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { weatherByMonth } from "@/data/weather";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, STRIP } from "@/lib/design-tokens";
 import { getLiveWeather } from "@/lib/weather-live";
 
 const MONTH_TO_WEATHER: Record<number, number> = {
@@ -31,7 +31,12 @@ function getWeatherPrompt(w: (typeof weatherByMonth)[number]): string {
 }
 
 export default async function HomeWeatherStrip() {
-  const live = await getLiveWeather();
+  let live: Awaited<ReturnType<typeof getLiveWeather>> = null;
+  try {
+    live = await getLiveWeather();
+  } catch {
+    live = null;
+  }
   const w = getCurrentMonthWeather();
   const coastMid = live
     ? Math.round((live.coast.minC + live.coast.maxC) / 2)
@@ -44,7 +49,7 @@ export default async function HomeWeatherStrip() {
   return (
     <section
       aria-labelledby="home-weather-heading"
-      className={`${LAYOUT.safeAreaX} py-4 bg-sand/60 border-b border-sand-200/80`}
+      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-sand/60 border-b border-sand-200/80`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <Link

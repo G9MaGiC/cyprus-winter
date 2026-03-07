@@ -38,10 +38,8 @@ export async function getTrailSummary(): Promise<TrailSummary | null> {
   if (!supabase) return memoryCache?.data ?? null;
 
   try {
-    const result = await withTimeout(
-      supabase.from("cache").select("value").eq("key", CACHE_KEY).single(),
-      FETCH_TIMEOUT_MS
-    );
+    const query = supabase.from("cache").select("value").eq("key", CACHE_KEY).single();
+    const result = await withTimeout(Promise.resolve(query), FETCH_TIMEOUT_MS);
     const { data, error } = result as { data: { value: TrailSummary } | null; error: Error | null };
 
     if (!error && data?.value) {

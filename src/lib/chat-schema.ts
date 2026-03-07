@@ -9,8 +9,8 @@ export const chatRequestSchema = z.object({
   messages: z.array(messageSchema).min(1),
   context: z
     .object({
-      path: z.string().optional(),
-      lastPlace: z.string().optional(),
+      path: z.string().max(256).optional(),
+      lastPlace: z.string().max(256).optional(),
     })
     .optional(),
 });

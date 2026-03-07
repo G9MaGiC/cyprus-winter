@@ -30,7 +30,7 @@ export default function ListPageWidgetStrip({
       <div
         className={
           sticky
-            ? `sticky top-0 z-10 ${LAYOUT.stickyBarX} pt-2 pb-4 -mt-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/80`
+            ? `sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:top-0 z-10 ${LAYOUT.stickyBarX} pt-2 sm:pt-0 pb-3 sm:pb-4 -mt-2 bg-background/95 backdrop-blur-sm border-b border-sand-200/80`
             : ""
         }
         role="region"

@@ -5,8 +5,11 @@ import { winterEvents } from "@/data/events";
 import { weatherByMonth } from "@/data/weather";
 import { trails } from "@/data/trails";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
-import { getTrailSummary } from "@/lib/trail-summary-cache";
-import { getLiveWeather } from "@/lib/weather-live";
+import {
+  getTrailSummary,
+  type TrailSummary,
+} from "@/lib/trail-summary-cache";
+import { getLiveWeather, type LiveWeather } from "@/lib/weather-live";
 
 const FEATURED_TRAIL_IDS = ["artemis", "caledonia-falls", "atalante", "olympus-summit"];
 
@@ -42,11 +45,23 @@ function formatTrailStatus(status: string, surface: string): string {
   return `${s} · ${surf}`;
 }
 
+const FETCH_TIMEOUT_MS = 8000; // Max wait to avoid blocking page
+
 export default async function ThisWeekGrid() {
-  const [trailSummary, liveWeather] = await Promise.all([
-    getTrailSummary(),
-    getLiveWeather(),
-  ]);
+  let trailSummary: TrailSummary | null = null;
+  let liveWeather: LiveWeather | null = null;
+  try {
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("thisweek_timeout")), FETCH_TIMEOUT_MS)
+    );
+    [trailSummary, liveWeather] = await Promise.race([
+      Promise.all([getTrailSummary(), getLiveWeather()]),
+      timeout,
+    ]);
+  } catch {
+    trailSummary = null;
+    liveWeather = null;
+  }
   const w = weatherByMonth[MONTH_TO_WEATHER[new Date().getMonth()] ?? 1];
   const coastMid = liveWeather
     ? Math.round((liveWeather.coast.minC + liveWeather.coast.maxC) / 2)
@@ -71,23 +86,28 @@ export default async function ThisWeekGrid() {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
       <Link
         href="/weather"
-        className={`${CARD.content} ${CARD.base} border-l-4 border-l-aegean ${CARD.hover} ${CARD.link} ${CARD.interactive} group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean flex flex-col group`}
       >
-        <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Weather</p>
-        <p className="text-2xl font-display font-bold text-charcoal mt-0.5 group-hover:text-terracotta transition-colors text-balance">
-          Coast {coastMid}°C · Troodos {troodosMid}°C
-        </p>
-        <p className="text-sm text-sage mt-0.5">{tip}</p>
+        <div className={CARD.content}>
+          <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Weather</p>
+          <p className="text-2xl font-display font-bold text-charcoal mt-0.5 group-hover:text-terracotta transition-colors text-balance">
+            Coast {coastMid}°C · Troodos {troodosMid}°C
+          </p>
+          <p className="text-sm text-sage mt-0.5">{tip}</p>
+        </div>
       </Link>
 
-      <div className={`${CARD.content} ${CARD.base} border-l-4 border-l-aegean ${CARD.hover} ${CARD.interactive} group flex flex-col`}>
-        <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} -m-5 sm:-m-6 p-5 sm:p-6`}>
-          <p className="font-display font-semibold text-charcoal group-hover:text-terracotta transition-colors">
+      <div
+        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group`}
+      >
+        <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} ${CARD.content}`}>
+          <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Trails</p>
+          <p className="font-display text-lg font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5">
             {trailName}
           </p>
-          <p className="inline-flex items-center gap-1.5 text-sm text-aegean mt-0.5">
+          <p className="inline-flex items-center gap-1.5 text-sm text-sage mt-0.5">
             <span
-              className={`w-2 h-2 rounded-full ${
+              className={`w-2 h-2 rounded-full shrink-0 ${
                 featuredStatus?.status === "open"
                   ? "bg-aegean/70"
                   : featuredStatus?.status === "caution"
@@ -101,35 +121,42 @@ export default async function ThisWeekGrid() {
             {trailLabel}
           </p>
         </Link>
-        <div className="-mt-1 pt-1 flex flex-wrap items-center gap-2">
-          <AddToItineraryButton placeId={featuredTrailId} label="Add to plan" className="text-sm" />
-          <Link href="/trails" className="text-sm text-aegean hover:text-aegean/80 font-medium transition-colors">
-            View all conditions →
-          </Link>
+        <div className={CARD.footer}>
+          <div className="flex flex-wrap items-center gap-2">
+            <AddToItineraryButton placeId={featuredTrailId} label="Add to plan" className="text-sm" />
+            <Link
+              href="/trails"
+              className="text-sm text-aegean hover:text-aegean/80 font-medium transition-colors"
+            >
+              View all conditions →
+            </Link>
+          </div>
         </div>
       </div>
 
       <Link
         href={eventHighlight ? `/events#${eventHighlight.id}` : "/events"}
-        className={`${CARD.content} ${CARD.base} border-l-4 border-l-golden ${CARD.hover} ${CARD.link} ${CARD.interactive} group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-golden flex flex-col group`}
       >
-        <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">
-          What&apos;s on
-        </p>
-        <p className="font-display font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5">
-          {eventHighlight
-            ? eventHighlight.name
-            : winterEvents.length > 0
-              ? "Browse winter events"
-              : "Events"}
-        </p>
-        <p className="text-sm text-sage mt-0.5 line-clamp-2">
-          {eventHighlight
-            ? eventHighlight.dates ?? eventHighlight.venue ?? ""
-            : winterEvents.length > 0
-              ? winterEvents.slice(0, 2).map((e) => e.name).join(" · ") + "…"
-              : ""}
-        </p>
+        <div className={CARD.content}>
+          <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">
+            What&apos;s on
+          </p>
+          <p className="font-display text-lg font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5">
+            {eventHighlight
+              ? eventHighlight.name
+              : winterEvents.length > 0
+                ? "Browse winter events"
+                : "Events"}
+          </p>
+          <p className="text-sm text-sage mt-0.5 line-clamp-2">
+            {eventHighlight
+              ? eventHighlight.dates ?? eventHighlight.venue ?? ""
+              : winterEvents.length > 0
+                ? winterEvents.slice(0, 2).map((e) => e.name).join(" · ") + "…"
+                : ""}
+          </p>
+        </div>
       </Link>
     </div>
   );

@@ -141,6 +141,24 @@ export const beaches: Attraction[] = [
   },
 ];
 
+export const natureSites: Attraction[] = [
+  {
+    id: "limassol-marina",
+    name: "Limassol Marina",
+    region: "Limassol",
+    description: "Waterfront promenade, superyachts, and Mediterranean dining. The marina sits between the old town and the sea. In winter the crowds thin; the cafés stay open. A stroll here pairs well with Kolossi or Kourion. Urban Cyprus at its best.",
+    type: "nature",
+    highlights: ["Waterfront", "Marina", "Dining & shops"],
+    bestFor: ["Coastal stroll", "City vibe", "Winter sun"],
+    winterTip: "Fewer crowds than summer. Mild evenings. The promenade cafés stay open. Pair with Kolossi, Kourion, or the old town.",
+    bestTimeToVisit: "Dec to Mar, late afternoon for golden light",
+    localSecret: "Urban Cyprus by the sea. The promenade. A coffee, a stroll, the yachts. Winter evenings are mild.",
+    transport: "Central Limassol. Walk from old town; bus to Marina",
+    parking: "Underground and surface car parks",
+    combineWith: ["kolossi", "kourion", "governors-beach", "limassol-marina-restaurants"],
+  },
+];
+
 export const ancientSites: Attraction[] = [
   {
     id: "pafos-mosaics",

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
@@ -6,7 +6,7 @@ import { jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-re
 // Health check must run at request time (Supabase connectivity, env)
 export const dynamic = "force-dynamic";
 
-export async function GET(req: NextRequest) {
+export async function GET(req: Request) {
   const limitResult = await rateLimit(req, 60, "health");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many health checks", limitResult.resetAt);
@@ -22,6 +22,7 @@ export async function GET(req: NextRequest) {
   const emailConfigured = !!process.env.RESEND_API_KEY;
   let storage: "supabase" | "memory" = hasSupabase() ? "supabase" : "memory";
   let supabaseOk = true;
+  let resendStatus: "ok" | "error" | "not configured" = "not configured";
 
   if (hasSupabase()) {
     try {
@@ -33,6 +34,18 @@ export async function GET(req: NextRequest) {
     } catch {
       supabaseOk = false;
       storage = "memory";
+    }
+  }
+
+  if (emailConfigured && process.env.RESEND_API_KEY) {
+    try {
+      const res = await fetch("https://api.resend.com/domains", {
+        headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}` },
+        signal: AbortSignal.timeout(5000),
+      });
+      resendStatus = res.ok ? "ok" : "error";
+    } catch {
+      resendStatus = "error";
     }
   }
 
@@ -51,6 +64,7 @@ export async function GET(req: NextRequest) {
       ai,
       storage,
       email: emailConfigured,
+      resend: resendStatus,
       supabase: hasSupabase() ? (supabaseOk ? "ok" : "error") : "not configured",
     },
     { status: ok ? 200 : 503, headers }

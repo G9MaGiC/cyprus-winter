@@ -1,0 +1,32 @@
+import type { PlanItem } from "@/data";
+import { getRegionCentroid } from "@/data/region-centroids";
+import { trails } from "@/data/trails";
+import { wineries } from "@/data/wineries";
+import type { Winery } from "@/data/wineries";
+import type { Trail } from "@/data/trails";
+
+export type Coords = { lat: number; lng: number };
+
+/**
+ * Resolve coordinates for a place. Used for distance calculations in Right Now feed.
+ * - Trails: trailheadCoords
+ * - Wineries: latitude/longitude or region centroid
+ * - Attractions, restaurants, events: region centroid
+ */
+export function getPlaceCoords(place: PlanItem): Coords | null {
+  if (place.type === "trail") {
+    const trail = trails.find((t) => t.id === place.id) as Trail | undefined;
+    if (trail?.trailheadCoords) return trail.trailheadCoords;
+    return getRegionCentroid(place.region);
+  }
+
+  if (place.type === "winery") {
+    const winery = wineries.find((w) => w.id === place.id) as Winery | undefined;
+    if (winery && typeof winery.latitude === "number" && typeof winery.longitude === "number") {
+      return { lat: winery.latitude, lng: winery.longitude };
+    }
+    return getRegionCentroid(place.region);
+  }
+
+  return getRegionCentroid(place.region);
+}

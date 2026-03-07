@@ -7,11 +7,20 @@ import PageHeader from "@/components/PageHeader";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import Link from "next/link";
 
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+
 export const metadata: Metadata = {
   title: "Just Landed? | Cyprus Winter Airport Guide",
   description:
     "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here. Free Cyprus Winter guide.",
   alternates: { canonical: `${SITE_URL}/airport` },
+  openGraph: {
+    title: "Just Landed? | Cyprus Winter Airport Guide",
+    description: "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers.",
+    url: `${SITE_URL}/airport`,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter — Larnaca and Paphos airport guide" }],
+  },
 };
 
 const CITY_GREEK: Record<string, string> = {

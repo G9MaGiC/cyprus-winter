@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
-import { allPlaces, getAttractionById } from "@/data";
+import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { trails } from "@/data/trails";
@@ -78,6 +79,7 @@ function getPlaceOfDayData() {
 
 export default function HomePlaceOfDay() {
   const place = getPlaceOfDayData();
+  const planItem = place ? getPlaceById(place.id) : undefined;
   if (!place) return null;
 
   return (
@@ -87,7 +89,7 @@ export default function HomePlaceOfDay() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div
-          className={`rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
+          className={`rounded-xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
         >
           <Link
             href={place.href}
@@ -105,11 +107,11 @@ export default function HomePlaceOfDay() {
               className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
               aria-hidden
             />
-            <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-md">
+            <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
           </Link>
-          <div className="flex-1 flex flex-col p-5 sm:p-6">
+          <div className={`flex-1 flex flex-col ${CARD.content}`}>
             <p
               id="place-of-day-heading"
               className="text-xs font-medium uppercase tracking-wider text-sage prose-label"
@@ -126,6 +128,7 @@ export default function HomePlaceOfDay() {
               {place.tease}
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
+              {planItem && <NavigateButton place={planItem} />}
               <AddToItineraryButton placeId={place.id} label="Add to plan" />
               <Link
                 href={place.href}

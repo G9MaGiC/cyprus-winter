@@ -1,7 +1,7 @@
 import Image from "next/image";
 import DetailHero from "@/components/DetailHero";
 import type { Metadata } from "next";
-import { allAttractions, getDiscoverPlaceById } from "@/data";
+import { allAttractions, getDiscoverPlaceById, getPlaceById } from "@/data";
 import { restaurants } from "@/data/restaurants";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
@@ -14,6 +14,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import NavigateButton from "@/components/NavigateButton";
 import StickyAddToPlanBar from "@/components/StickyAddToPlanBar";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getSecretsForPlace } from "@/data/secret-gems";
@@ -151,7 +152,7 @@ export default async function AttractionPage({
 
             {/* Highlights + Great for — quick scan */}
             <section>
-              <h2 className="prose-label text-olive/70 mb-3">
+              <h2 className="prose-label text-olive/70 mb-4">
                 Highlights
               </h2>
               <ul className="flex flex-wrap gap-2">
@@ -184,10 +185,50 @@ export default async function AttractionPage({
               )}
             </section>
 
+            {/* Multi-venue: dining and shops */}
+            {isRestaurant(a) && ((a.diningVenues && a.diningVenues.length > 0) || (a.shops && a.shops.length > 0)) && (
+              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-4`}>
+                {a.diningVenues && a.diningVenues.length > 0 && (
+                  <div>
+                    <h2 className="prose-label text-olive/70 mb-3">
+                      Dining
+                    </h2>
+                    <ul className="flex flex-wrap gap-2">
+                      {a.diningVenues.map((v) => (
+                        <li
+                          key={v}
+                          className="px-3 py-1.5 rounded-md text-sm font-medium bg-white/90 border border-sand-200/80 text-olive/90"
+                        >
+                          {v}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {a.shops && a.shops.length > 0 && (
+                  <div>
+                    <h2 className="prose-label text-olive/70 mb-3">
+                      Shops
+                    </h2>
+                    <ul className="flex flex-wrap gap-2">
+                      {a.shops.map((s) => (
+                        <li
+                          key={s}
+                          className="px-3 py-1.5 rounded-md text-sm font-medium bg-white/90 border border-sand-200/80 text-olive/80"
+                        >
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            )}
+
             {/* Winery: Tasting + Book CTA early */}
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className="prose-label text-olive/70 mb-3">
+                <h2 className="prose-label text-olive/70 mb-4">
                   Visit & taste
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.tastingInfo}</p>
@@ -322,7 +363,7 @@ export default async function AttractionPage({
                 <h2 className="prose-label text-olive/70 mb-4">
                   Our wines
                 </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
                   {a.signatureWines.map((wine, i) => (
                     <div
                       key={i}
@@ -395,7 +436,7 @@ export default async function AttractionPage({
                 <h2 className="prose-label text-olive/70 mb-4">
                   Location
                 </h2>
-            <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video bg-olive/5">
+            <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
               <iframe
                 title={`Map: ${a.name}`}
                 src={`https://www.openstreetmap.org/export/embed.html?bbox=${a.longitude - 0.02}%2C${a.latitude - 0.015}%2C${a.longitude + 0.02}%2C${a.latitude + 0.015}&layer=mapnik&marker=${a.latitude}%2C${a.longitude}`}
@@ -456,9 +497,15 @@ export default async function AttractionPage({
               <p className="text-olive/70 text-sm break-words">
                 Add this place to your plan and pair it with a trail or village nearby.
               </p>
-              <TrackOnClick event="plan_add" properties={{ placeId: a.id, placeType: a.type }}>
-                <AddToItineraryButton placeId={a.id} className="sm:shrink-0" />
-              </TrackOnClick>
+              <div className="flex flex-wrap items-center gap-3">
+                {(() => {
+                  const place = getPlaceById(a.id);
+                  return place ? <NavigateButton place={place} /> : null;
+                })()}
+                <TrackOnClick event="plan_add" properties={{ placeId: a.id, placeType: a.type }}>
+                  <AddToItineraryButton placeId={a.id} className="sm:shrink-0" />
+                </TrackOnClick>
+              </div>
             </footer>
           </div>
         </article>

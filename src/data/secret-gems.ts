@@ -129,6 +129,15 @@ export const secretGems: SecretGem[] = [
     href: "/discover/louvaras",
     type: "timing",
   },
+  {
+    id: "marina-far-end",
+    title: "The far end of the marina",
+    body: "Everyone clusters near the entrance. Walk to the far end, toward the old fort. Fewer tourists, same views. The superyachts, the water. Order a coffee first. Sit. Let the marina settle. Then choose a restaurant. Don't rush the approach. The promenade rewards the walk. In winter the light hits the water at four.",
+    region: "Limassol",
+    placeId: "limassol-marina-restaurants",
+    href: "/discover/limassol-marina-restaurants",
+    type: "spot",
+  },
 
   // ——— Nicosia ———
   {

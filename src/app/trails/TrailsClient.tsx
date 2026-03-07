@@ -2,27 +2,23 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { trails, trailConditions, TRAIL_COUNT } from "@/data/trails";
+import { trails, trailConditions, TRAIL_COUNT, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, SECTION, CTA, EMPTY_STATE_LARGE, CARD, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, CTA, EMPTY_STATE_LARGE, TYPE, STRIP } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
-import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
-import FilterChips from "@/components/FilterChips";
+import TrailFilters from "@/app/trails/TrailFilters";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
 import Link from "next/link";
-
-const REGIONS = ["Troodos", "Paphos", "Ayia Napa", "Famagusta", "Larnaca", "Limassol", "Nicosia", "Kyrenia"] as const;
-const DIFFICULTIES = ["easy", "moderate", "hard", "expert"] as const;
 
 export default function TrailsClient() {
   const searchParams = useSearchParams();
   const difficultyFilter = searchParams.get("difficulty") ?? undefined;
   const regionFilter = searchParams.get("region") ?? undefined;
 
-  const validDifficulty = !difficultyFilter || DIFFICULTIES.includes(difficultyFilter as (typeof DIFFICULTIES)[number]);
-  const validRegion = !regionFilter || REGIONS.includes(regionFilter as (typeof REGIONS)[number]);
+  const validDifficulty = !difficultyFilter || TRAIL_DIFFICULTIES.includes(difficultyFilter as (typeof TRAIL_DIFFICULTIES)[number]);
+  const validRegion = !regionFilter || TRAIL_REGIONS.includes(regionFilter as (typeof TRAIL_REGIONS)[number]);
   const safeDifficulty = validDifficulty ? difficultyFilter : undefined;
   const safeRegion = validRegion ? regionFilter : undefined;
 
@@ -49,206 +45,167 @@ export default function TrailsClient() {
     .slice(0, 3);
 
   const hasFilters = Boolean(safeDifficulty || safeRegion);
+  const hasInvalidFilter = (difficultyFilter && !validDifficulty) || (regionFilter && !validRegion);
   const [filtersExpanded, setFiltersExpanded] = useState(hasFilters);
-  const difficultyChips = [
-    { id: "", label: "All" },
-    ...DIFFICULTIES.map((d) => ({ id: d, label: d.charAt(0).toUpperCase() + d.slice(1) })),
-  ];
-  const regionChips = [{ id: "", label: "All" }, ...REGIONS.map((r) => ({ id: r, label: r }))];
+  const [mapOpen, setMapOpen] = useState(false);
+  const [tipsOpen, setTipsOpen] = useState(false);
+
   const filterSummary =
     hasFilters
       ? [safeDifficulty, safeRegion].filter(Boolean).map((v) => (v ? v.charAt(0).toUpperCase() + v.slice(1) : "")).join(", ")
       : "All";
 
+  const statusLabel =
+    openCount > 0 && closedCount === 0 && cautionCount === 0
+      ? "Good to go"
+      : cautionCount > 0 && closedCount === 0
+        ? "Check before you go"
+        : closedCount > 0
+          ? "Some trails closed"
+          : filtered.length > 0
+            ? "Report conditions"
+            : "";
+
   return (
     <div className="min-h-screen bg-sand">
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
+      {/* Mobile-first: compact container, full bleed on small screens */}
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pb-28 sm:pb-0 ${LAYOUT.pagePy}`}>
+        {/* Compact hero — shorter on mobile */}
         <ListPageHero
-          title="Cyprus Winter Trails"
-          description="Troodos, Paphos, Ayia Napa. Pine forest, ridge views, empty paths. Check conditions before you go."
-          descriptionSecondary={`${TRAIL_COUNT} trails across 8 regions.`}
+          title="Winter Trails"
+          description="Pine forest, ridge views, empty paths."
+          descriptionSecondary={`${TRAIL_COUNT} trails · 8 regions`}
           backHref="/"
           backLabel="Home"
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
-          backgroundImageAlt="Troodos pine forest trail, Cyprus winter hiking"
+          backgroundImageAlt="Troodos pine forest trail, Cyprus winter"
           hasWidgetStrip
         >
-          <Link href="/plan" className="inline-flex items-center min-h-[44px] mt-4 text-white/90 hover:text-golden text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded">
-            Plan your trip
-          </Link>
+          <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
+            <Link href="/plan" className={CTA.tertiaryOnDark}>
+              Plan trip
+            </Link>
+            <Link href="/weather" className={CTA.ghost}>
+              Weather
+            </Link>
+          </div>
         </ListPageHero>
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
 
-        <ListPageWidgetStrip sticky sentinelId="trails-plan-sentinel" ariaLabel="Filters and stats">
-          <div className={`flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 mb-4 rounded-xl ${CARD.base} ${CARD.content}`}>
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-2xl font-display font-bold text-olive">{filtered.length}</span>
-              <span className="text-sm text-olive/70">trails</span>
-            </div>
-            <span className="w-full sm:w-px sm:h-6 sm:min-h-0 h-px bg-sand-200" aria-hidden />
-            <div className="flex flex-wrap gap-x-6 gap-y-2 sm:gap-6">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-aegean shrink-0" aria-hidden />
-                <span className="text-lg font-display font-semibold text-aegean">{openCount}</span>
-                <span className="text-sm text-olive/70">open</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-golden shrink-0" aria-hidden />
-                <span className="text-lg font-display font-semibold text-charcoal">{cautionCount}</span>
-                <span className="text-sm text-olive/70">caution</span>
-              </div>
-              {closedCount > 0 && (
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-terracotta shrink-0" aria-hidden />
-                  <span className="text-lg font-display font-semibold text-terracotta">{closedCount}</span>
-                  <span className="text-sm text-olive/70">closed</span>
-                </div>
-              )}
-            </div>
+        {/* Status strip — horizontal pills, mobile-first */}
+        <section
+          aria-label="Trail conditions summary"
+          className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} border-b border-sand-200/80 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0`}
+        >
+          <div className="flex items-center gap-3 overflow-x-auto scrollbar-none -mx-1 px-1 scroll-smooth">
+            <span className="text-sm font-medium text-olive shrink-0">{statusLabel}</span>
+            <span className="text-olive/30 shrink-0" aria-hidden>·</span>
+            <span className="flex items-center gap-1.5 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-aegean" aria-hidden />
+              <span className="text-sm text-aegean font-medium">{openCount} open</span>
+            </span>
+            <span className="flex items-center gap-1.5 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-golden" aria-hidden />
+              <span className="text-sm text-olive/80">{cautionCount} caution</span>
+            </span>
+            {closedCount > 0 && (
+              <span className="flex items-center gap-1.5 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-terracotta" aria-hidden />
+                <span className="text-sm text-terracotta">{closedCount} closed</span>
+              </span>
+            )}
           </div>
-          <section aria-label="Filter trails" className="mb-10 sm:mb-12">
-            {/* Mobile: collapsible filter bar */}
-            <div className="sm:hidden">
-              <button
-                type="button"
-                onClick={() => setFiltersExpanded((v) => !v)}
-                className="flex items-center justify-between w-full min-h-[44px] px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                aria-expanded={filtersExpanded}
-                aria-controls="trail-filters"
-                id="trail-filters-toggle"
-              >
-                <span className="text-sm">Filters: {filterSummary}</span>
-                <span className="text-olive/60 text-xs" aria-hidden>
-                  {filtersExpanded ? "Hide" : "Show"}
-                </span>
-              </button>
-              <div
-                id="trail-filters"
-                role="region"
-                aria-labelledby="trail-filters-toggle"
-                hidden={!filtersExpanded}
-                className="mt-3 flex flex-col gap-4"
-              >
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-medium text-olive/60 uppercase tracking-wider w-full">Difficulty</span>
-                  <FilterChips
-                    chips={difficultyChips}
-                    isActive={(chip) => (chip.id === "" ? !safeDifficulty : safeDifficulty === chip.id)}
-                    getHref={(chip) => {
-                      const q = new URLSearchParams();
-                      if (chip.id) q.set("difficulty", chip.id);
-                      if (safeRegion) q.set("region", safeRegion);
-                      return q.toString() ? `/trails?${q.toString()}` : "/trails";
-                    }}
-                    ariaLabel="Filter by difficulty"
-                  />
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-medium text-olive/60 uppercase tracking-wider w-full">Region</span>
-                  <FilterChips
-                    chips={regionChips}
-                    isActive={(chip) => (chip.id === "" ? !safeRegion : safeRegion === chip.id)}
-                    getHref={(chip) => {
-                      const q = new URLSearchParams();
-                      if (safeDifficulty) q.set("difficulty", safeDifficulty);
-                      if (chip.id) q.set("region", chip.id);
-                      return q.toString() ? `/trails?${q.toString()}` : "/trails";
-                    }}
-                    ariaLabel="Filter by region"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Desktop: always visible filters */}
-            <div className="hidden sm:flex flex-wrap items-center gap-4">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs font-medium text-olive/60 uppercase tracking-wider">Difficulty</span>
-                <FilterChips
-                  chips={difficultyChips}
-                  isActive={(chip) => (chip.id === "" ? !safeDifficulty : safeDifficulty === chip.id)}
-                  getHref={(chip) => {
-                    const q = new URLSearchParams();
-                    if (chip.id) q.set("difficulty", chip.id);
-                    if (safeRegion) q.set("region", safeRegion);
-                    return q.toString() ? `/trails?${q.toString()}` : "/trails";
-                  }}
-                  ariaLabel="Filter by difficulty"
-                />
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs font-medium text-olive/60 uppercase tracking-wider">Region</span>
-                <FilterChips
-                  chips={regionChips}
-                  isActive={(chip) => (chip.id === "" ? !safeRegion : safeRegion === chip.id)}
-                  getHref={(chip) => {
-                    const q = new URLSearchParams();
-                    if (safeDifficulty) q.set("difficulty", safeDifficulty);
-                    if (chip.id) q.set("region", chip.id);
-                    return q.toString() ? `/trails?${q.toString()}` : "/trails";
-                  }}
-                  ariaLabel="Filter by region"
-                />
-              </div>
-            </div>
-          </section>
-        </ListPageWidgetStrip>
+        </section>
 
+        {/* Filters — always visible horizontal chips on mobile, no toggle */}
+        <div className={`${LAYOUT.safeAreaX} pt-4 pb-5 sm:pt-6 sm:pb-6 border-b border-sand-200/80`}>
+          <div className="flex flex-wrap items-baseline gap-x-2 mb-2 sm:mb-3">
+            <p className="text-xs font-medium text-olive/60 uppercase tracking-wider">
+              {filtered.length} trails
+            </p>
+            {hasInvalidFilter && (
+              <span className="text-xs text-olive/60" role="status">
+                — Unknown filter, showing all
+              </span>
+            )}
+          </div>
+          <TrailFilters
+            difficultyFilter={safeDifficulty}
+            regionFilter={safeRegion}
+            filtersExpanded={filtersExpanded}
+            onToggleExpand={() => setFiltersExpanded((v) => !v)}
+            filterSummary={filterSummary}
+            alwaysVisible
+          />
+        </div>
+
+        {/* Best right now — first on mobile (most relevant) */}
         {bestNow.length > 0 && !hasFilters && (
-          <section aria-labelledby="best-now" className="mb-12 sm:mb-16">
-            <h2 id="best-now" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+          <section
+            aria-labelledby="best-now"
+            aria-describedby="best-now-desc"
+            role="complementary"
+            className="pt-6 pb-8 sm:pt-10 sm:pb-12"
+          >
+            <h2 id="best-now" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
               Best right now
             </h2>
-            <p className={`text-sm text-olive/70 ${SECTION.headingGap}`}>
-              Open, dry, good conditions. Start here.
+            <p id="best-now-desc" className="text-sm text-olive/70 mb-4 sm:mb-6">
+              Open, dry, good conditions.
             </p>
-            <div className="space-y-4">
+            <div className="flex gap-3 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none sm:gap-6">
               {bestNow.map((trail) => (
-                <TrailCard
-                  key={trail.id}
-                  trail={trail}
-                  conditions={trailConditions[trail.id]}
-                  featured
-                />
+                <div key={trail.id} className="shrink-0 w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none snap-start">
+                  <TrailCard
+                    trail={trail}
+                    conditions={trailConditions[trail.id]}
+                    featured
+                  />
+                </div>
               ))}
             </div>
           </section>
         )}
 
-        <section aria-labelledby="trails-map" className="mb-12 sm:mb-16">
-          <div className="flex items-center justify-between mb-4">
-            <h2 id="trails-map" className={`${TYPE.sectionTitle}`}>
-              On the map
+        {/* Trail list — primary content, single column on mobile */}
+        <section aria-labelledby="trail-list-heading" className="pt-4 sm:pt-8 pb-8 sm:pb-12" id="trail-list">
+          <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
+            <h2 id="trail-list-heading" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}>
+              {hasFilters ? `${filtered.length} trails` : "All trails"}
             </h2>
-            <span className="text-xs text-olive/50">{filtered.length} trails</span>
+            {hasFilters && (
+              <Link
+                href="/trails"
+                className="text-sm font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded shrink-0"
+              >
+                Clear
+              </Link>
+            )}
           </div>
-          <div className="rounded-xl overflow-hidden border border-sand-200/80 shadow-sm h-[300px] sm:h-[360px]">
-            <AllTrailsMapClient trails={filtered} />
-          </div>
-        </section>
-
-        <section aria-labelledby="trail-list" className="mb-0">
-          <h2 id="trail-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-            {hasFilters ? `Trails (${filtered.length})` : "All trails"}
-          </h2>
 
           {filtered.length === 0 ? (
             <div className={`${EMPTY_STATE_LARGE} max-w-md mx-auto`} role="status" aria-live="polite">
-              <p className="text-olive/80 leading-relaxed break-words mb-8">
-                No trails match. Try a different difficulty or region—Artemis, Caledonia, coastal paths.
+              <p className="text-olive/80 leading-relaxed break-words mb-6">
+                No trails match. Try a different difficulty or region.
               </p>
-              <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
-                Clear filters
-              </Link>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
+                  All trails
+                </Link>
+                <Link href="/discover" className={CTA.secondaryCompact}>
+                  Discover
+                </Link>
+              </div>
             </div>
           ) : (
-            <div className="space-y-10 sm:space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {openTrails.length > 0 && (
                 <div>
-                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 sm:mb-4">
+                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3">
                     <span className="w-2 h-2 rounded-full bg-aegean" aria-hidden />
                     Open ({openTrails.length})
                   </h3>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {openTrails.map((trail) => (
                       <TrailCard
                         key={trail.id}
@@ -262,11 +219,11 @@ export default function TrailsClient() {
               )}
               {cautionTrails.length > 0 && (
                 <div>
-                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 sm:mb-4">
+                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3">
                     <span className="w-2 h-2 rounded-full bg-golden" aria-hidden />
                     Caution ({cautionTrails.length})
                   </h3>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {cautionTrails.map((trail) => (
                       <TrailCard
                         key={trail.id}
@@ -280,11 +237,11 @@ export default function TrailsClient() {
               )}
               {closedTrails.length > 0 && (
                 <div>
-                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 sm:mb-4">
+                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3">
                     <span className="w-2 h-2 rounded-full bg-terracotta" aria-hidden />
                     Closed ({closedTrails.length})
                   </h3>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {closedTrails.map((trail) => (
                       <TrailCard
                         key={trail.id}
@@ -298,11 +255,11 @@ export default function TrailsClient() {
               )}
               {unknownTrails.length > 0 && (
                 <div>
-                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 sm:mb-4">
+                  <h3 className="flex items-center gap-2 text-sm font-medium text-olive/80 mb-3">
                     <span className="w-2 h-2 rounded-full bg-sand-300" aria-hidden />
-                    No report yet—be the first ({unknownTrails.length})
+                    No report ({unknownTrails.length})
                   </h3>
-                  <div className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {unknownTrails.map((trail) => (
                       <TrailCard
                         key={trail.id}
@@ -313,19 +270,12 @@ export default function TrailsClient() {
                     ))}
                   </div>
                   <p className="mt-4 text-sm text-olive/70">
-                    Been there? Report conditions to help others.
-                    {unknownTrails.length > 0 && (
-                      <>
-                        {" "}
-                        <Link
-                          href={`/trails/${unknownTrails[0].id}/report`}
-                          className="font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-                        >
-                          Report {unknownTrails[0].name} now
-                        </Link>
-                        {unknownTrails.length > 1 ? " or any other trail." : "."}
-                      </>
-                    )}
+                    <Link
+                      href={`/trails/${unknownTrails[0].id}/report`}
+                      className="font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
+                    >
+                      Report conditions
+                    </Link>
                   </p>
                 </div>
               )}
@@ -333,50 +283,94 @@ export default function TrailsClient() {
           )}
         </section>
 
-        <section
-          className="mt-12 sm:mt-16 rounded-xl overflow-hidden border border-sand-200/80 bg-white/90 shadow-sm"
-          aria-labelledby="winter-hiking"
-        >
-          <div className="px-6 py-4 bg-sand-100/80 border-b border-sand-200/80">
-            <h2 id="winter-hiking" className="font-display font-semibold text-olive">
-              Winter hiking
+        {/* Map — collapsible on mobile, always visible on desktop */}
+        <section aria-labelledby="trails-map-heading" className="pt-6 pb-8 sm:pt-10 sm:pb-12 border-t border-sand-200/80">
+          <button
+            type="button"
+            onClick={() => setMapOpen((v) => !v)}
+            className="flex items-center justify-between w-full text-left mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg sm:mb-6 sm:cursor-default sm:pointer-events-none"
+            aria-expanded={mapOpen}
+            aria-controls="trails-map-region"
+          >
+            <h2 id="trails-map-heading" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}>
+              On the map
             </h2>
-            <p className="text-sm text-olive/70 mt-0.5">What to know before you go</p>
-          </div>
-          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80">
-            {winterTipsHiking.slice(0, 4).map((tip) => (
-              <div key={tip.id} className="px-6 py-4 sm:p-5">
-                <h3 className="font-display font-medium text-olive text-sm">{tip.title}</h3>
-                <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">{tip.body}</p>
-              </div>
-            ))}
-          </div>
-          {winterTipsHiking.length > 4 && (
-            <div className="px-6 py-3 bg-sand-100/50 border-t border-sand-200/80">
-              <Link
-                href="/plan"
-                className="text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-              >
-                Build your day → add trails to your plan
-              </Link>
+            <span className="text-sm text-olive/60 shrink-0 ml-2 sm:hidden">
+              {mapOpen ? "Hide" : "Show"} ({filtered.length})
+            </span>
+          </button>
+          <div
+            id="trails-map-region"
+            className={`overflow-hidden ${!mapOpen ? "hidden sm:block" : ""}`}
+          >
+            <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">
+              <AllTrailsMapClient trails={filtered} />
             </div>
-          )}
+          </div>
         </section>
 
-        <div className={`mt-12 sm:mt-16 ${CARD.base} ${CARD.contentLg} bg-aegean/10 border border-aegean/20 text-center`}>
-          <p className="text-sm text-olive/90 font-medium mb-2">
-            Just back from a trail?
-          </p>
-          <p className="text-sm text-olive/70 mb-4">
-            Report conditions and help others decide. Quick form on each trail page.
-          </p>
+        {/* Before you go — collapsible on mobile, expanded on desktop */}
+        <section aria-labelledby="tips-heading" className="pt-6 pb-8 sm:pt-10 sm:pb-12 border-t border-sand-200/80">
+          <button
+            type="button"
+            onClick={() => setTipsOpen((v) => !v)}
+            className="flex items-center justify-between w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg sm:pointer-events-none sm:cursor-default"
+            aria-expanded={tipsOpen}
+            aria-controls="trails-tips-region"
+          >
+            <h2 id="tips-heading" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}>
+              Before you go
+            </h2>
+            <span className="text-sm text-olive/60 shrink-0 ml-2 sm:hidden">
+              {tipsOpen ? "Hide" : "Show"}
+            </span>
+          </button>
+          <div
+            id="trails-tips-region"
+            className={`mt-4 rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6 ${!tipsOpen ? "hidden sm:block" : ""}`}
+          >
+            <p className="text-sm text-olive/70 mb-4">Winter hiking tips</p>
+            <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80">
+              {winterTipsHiking.slice(0, 4).map((tip) => (
+                <div key={tip.id} className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0">
+                  <h3 className="font-display font-medium text-olive text-sm">{tip.title}</h3>
+                  <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">{tip.body}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 pt-4 border-t border-sand-200/80">
+              <Link href="/plan" className="text-sm font-medium text-terracotta hover:underline">
+                Add trails to your plan →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Report CTA */}
+        <section className="pt-6 pb-8 sm:pt-10 sm:pb-12 border-t border-sand-200/80 text-center">
+          <p className="text-sm text-olive/70 mb-3">Been there? Report conditions.</p>
           <Link
             href={filtered.length > 0 && (unknownTrails[0] ?? filtered[0]) ? `/trails/${(unknownTrails[0] ?? filtered[0])!.id}/report` : "/trails"}
-            className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg bg-aegean text-white font-medium hover:bg-aegean/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg bg-aegean text-white font-medium hover:bg-aegean/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean focus-visible:ring-offset-2"
           >
             Report conditions
           </Link>
-        </div>
+        </section>
+
+        {/* Sticky bottom CTA — mobile only */}
+        {filtered.length > 0 && (
+          <div
+            className="fixed bottom-0 left-0 right-0 z-20 flex items-center justify-center py-3 px-4 bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden"
+            style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0px))" }}
+          >
+            <Link
+              href="/plan"
+              className={`flex-1 max-w-sm flex justify-center items-center min-h-[48px] px-6 rounded-xl ${CTA.primaryCompact}`}
+            >
+              Add to plan
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

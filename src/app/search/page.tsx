@@ -9,11 +9,20 @@ import { search } from "@/lib/search";
 
 type SearchPageProps = { searchParams: Promise<{ q?: string }> };
 
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+
 export const metadata: Metadata = {
   title: "Search Cyprus Winter | Trails, Wineries, Places",
   description:
     "Search Cyprus winter: trails, wineries, villages, beaches, ancient sites. Find Troodos hikes, Paphos mosaics, Lefkara. Plan or explore when you land. Free search.",
   alternates: { canonical: `${SITE_URL}/search` },
+  openGraph: {
+    title: "Search Cyprus Winter | Trails, Wineries, Places",
+    description: "Search Cyprus winter: trails, wineries, villages, beaches. Find Troodos hikes, Paphos mosaics, Lefkara.",
+    url: `${SITE_URL}/search`,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter — find trails and places" }],
+  },
 };
 
 const BROWSE_LINKS = [

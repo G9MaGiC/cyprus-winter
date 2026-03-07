@@ -8,15 +8,15 @@ import { accessSync, constants } from 'fs';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
-const nextDir = join(process.cwd(), 'dist/next');
+const nextDir = join(process.cwd(), '.next');
 if (!existsSync(nextDir)) process.exit(0); // No .next yet; build will create it
 
 try {
   accessSync(nextDir, constants.W_OK);
 } catch (err) {
   if (err.code === 'EACCES') {
-    console.error('\n\x1b[31mError:\x1b[0m dist/next is not writable (likely root-owned).');
-    console.error('Fix: sudo chown -R $(whoami) dist .next .next-build 2>/dev/null');
+    console.error('\n\x1b[31mError:\x1b[0m .next is not writable (likely root-owned).');
+    console.error('Fix: sudo chown -R $(whoami) .next .next-build 2>/dev/null');
     console.error('     rm -rf dist .next .next-build');
     console.error('     npm run build\n');
     process.exit(1);

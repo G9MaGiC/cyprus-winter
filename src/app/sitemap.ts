@@ -1,110 +1,110 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { allAttractions } from "@/data";
 import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
+import { REGION_CONFIGS } from "@/data/regions";
+import { WINE_ROUTES } from "@/data/wine-routes";
 import { SITE_URL } from "@/lib/site-url";
 
+const WEATHER_MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
+
 export const dynamic = "force-static";
+
+type ChangeFreq = "daily" | "weekly" | "monthly";
+
+function entry(
+  base: string,
+  path: string,
+  priority: number,
+  changeFreq: ChangeFreq = "weekly",
+  lastModified: string
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: `${base}${path}`,
+    changeFrequency: changeFreq,
+    priority,
+    lastModified,
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE_URL;
   const now = new Date().toISOString();
+  const e = (path: string, priority: number, changeFreq?: ChangeFreq) =>
+    entry(base, path, priority, changeFreq, now);
 
-  // Core — homepage, main hubs
-  const corePages: MetadataRoute.Sitemap = [
-    { url: base, changeFrequency: "weekly" as const, priority: 1, lastModified: now },
-    { url: `${base}/discover`, changeFrequency: "weekly" as const, priority: 0.9, lastModified: now },
-    { url: `${base}/trails`, changeFrequency: "daily" as const, priority: 0.9, lastModified: now },
-    { url: `${base}/events`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/plan`, changeFrequency: "monthly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/search`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/airport`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/bookings`, changeFrequency: "monthly" as const, priority: 0.6, lastModified: now },
+  const hub: MetadataRoute.Sitemap = [
+    e("/", 1),
+    e("/discover", 0.9),
+    e("/trails", 0.9, "daily"),
+    e("/plan", 0.8, "monthly"),
+    e("/events", 0.8),
   ];
 
-  // Discover sections — beaches, wineries, villages, secrets
-  const discoverSectionPages: MetadataRoute.Sitemap = [
-    { url: `${base}/secrets`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/beaches`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/wineries`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/villages`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
+  const secondary: MetadataRoute.Sitemap = [
+    e("/weather", 0.8, "monthly"),
+    e("/bookings", 0.6, "monthly"),
+    e("/airport", 0.7, "monthly"),
+    e("/search", 0.7, "monthly"),
+    e("/secrets", 0.8),
   ];
 
-  // Weather — index + monthly
-  const weatherPages: MetadataRoute.Sitemap = [
-    { url: `${base}/weather`, changeFrequency: "monthly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/weather/december`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/weather/january`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/weather/february`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/weather/march`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
+  const discoverSections: MetadataRoute.Sitemap = [
+    e("/beaches", 0.8),
+    e("/wineries", 0.8),
+    e("/villages", 0.8),
   ];
 
-  // Regions
-  const regionPages: MetadataRoute.Sitemap = [
-    { url: `${base}/regions/troodos`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/regions/paphos`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/regions/ayia-napa`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/regions/larnaca`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
-    { url: `${base}/regions/limassol`, changeFrequency: "weekly" as const, priority: 0.8, lastModified: now },
+  const regions: MetadataRoute.Sitemap = REGION_CONFIGS.map((c) =>
+    entry(base, `/regions/${c.slug}`, 0.8, "weekly", now)
+  );
+
+  const weatherMonths: MetadataRoute.Sitemap = [
+    ...WEATHER_MONTH_SLUGS.map((slug) =>
+      entry(base, `/weather/${slug}`, 0.7, "monthly", now)
+    ),
   ];
 
-  // Wine routes
-  const wineRoutePages: MetadataRoute.Sitemap = [
-    { url: `${base}/wine-routes/krasochoria`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/wine-routes/laona`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/wine-routes/akamas`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/wine-routes/commandaria`, changeFrequency: "monthly" as const, priority: 0.7, lastModified: now },
+  const wineRoutes: MetadataRoute.Sitemap = WINE_ROUTES.map((r) =>
+    entry(base, `/wine-routes/${r.slug}`, 0.7, "monthly", now)
+  );
+
+  const support: MetadataRoute.Sitemap = [
+    e("/team", 0.5, "monthly"),
+    e("/guides/troodos-december", 0.7),
+    e("/install", 0.4, "monthly"),
   ];
 
-  // Guides, team, install
-  const miscPages: MetadataRoute.Sitemap = [
-    { url: `${base}/guides/troodos-december`, changeFrequency: "weekly" as const, priority: 0.7, lastModified: now },
-    { url: `${base}/team`, changeFrequency: "monthly" as const, priority: 0.5, lastModified: now },
-    { url: `${base}/install`, changeFrequency: "monthly" as const, priority: 0.4, lastModified: now },
+  const discoverIds = [
+    ...new Set([...allAttractions.map((a) => a.id), ...restaurants.map((r) => r.id)]),
   ];
+  const discoverPages: MetadataRoute.Sitemap = discoverIds.map((id) =>
+    entry(base, `/discover/${id}`, 0.8, "weekly", now)
+  );
 
-  const staticPages = [...corePages, ...discoverSectionPages, ...weatherPages, ...regionPages, ...wineRoutePages, ...miscPages];
+  const trailPages: MetadataRoute.Sitemap = trails.map((t) =>
+    entry(base, `/trails/${t.id}`, 0.8, "daily", now)
+  );
 
-  // Discover detail pages — attractions + restaurants (all resolve at /discover/[id])
-  const discoverIds = [...new Set([
-    ...allAttractions.map((a) => a.id),
-    ...restaurants.map((r) => r.id),
-  ])];
-  const discoverPages: MetadataRoute.Sitemap = discoverIds.map((id) => ({
-    url: `${base}/discover/${id}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-    lastModified: now,
-  }));
-
-  const trailPages: MetadataRoute.Sitemap = trails.map((t) => ({
-    url: `${base}/trails/${t.id}`,
-    changeFrequency: "daily" as const,
-    priority: 0.8,
-    lastModified: now,
-  }));
-
-  const wineryBookingPages: MetadataRoute.Sitemap = wineries.map((w) => ({
-    url: `${base}/book/winery/${w.id}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-    lastModified: now,
-  }));
+  const wineryBookingPages: MetadataRoute.Sitemap = wineries.map((w) =>
+    entry(base, `/book/winery/${w.id}`, 0.6, "monthly", now)
+  );
 
   const guideBookingPages: MetadataRoute.Sitemap = [
-    { url: `${base}/book/guide`, changeFrequency: "monthly" as const, priority: 0.6, lastModified: now },
-    ...guides.map((g) => ({
-      url: `${base}/book/guide/${g.id}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-      lastModified: now,
-    })),
+    entry(base, "/book/guide", 0.6, "monthly", now),
+    ...guides.map((g) => entry(base, `/book/guide/${g.id}`, 0.6, "monthly", now)),
   ];
 
   return [
-    ...staticPages,
+    ...hub,
+    ...secondary,
+    ...discoverSections,
+    ...regions,
+    ...weatherMonths,
+    ...wineRoutes,
+    ...support,
     ...discoverPages,
     ...trailPages,
     ...wineryBookingPages,

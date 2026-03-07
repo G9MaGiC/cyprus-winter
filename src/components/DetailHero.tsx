@@ -23,7 +23,7 @@ export default function DetailHero({
   rounded = false,
 }: DetailHeroProps) {
   return (
-    <header className={`relative ${LAYOUT.heroBleedX} mt-6 mb-10 sm:mb-14`}>
+    <header className={`relative ${LAYOUT.heroBleedX} mt-6 mb-10 sm:mb-12`}>
       <div
         className={`relative aspect-[4/3] sm:aspect-video overflow-hidden bg-olive/10 ${
           rounded ? "rounded-lg sm:rounded-xl" : ""

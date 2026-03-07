@@ -7,12 +7,12 @@ export function getDailySeed(): string {
   return `${d.getUTCFullYear()}-${d.getUTCMonth()}-${d.getUTCDate()}`;
 }
 
-/** Simple string hash for deterministic indexing. */
-function simpleHash(str: string): number {
-  let h = 0;
+/** djb2-style string hash for deterministic indexing with good distribution. */
+function djb2Hash(str: string): number {
+  let h = 5381;
   for (let i = 0; i < str.length; i++) {
     const c = str.charCodeAt(i);
-    h = (h << 5) - h + c;
+    h = ((h << 5) + h) + c;
     h |= 0;
   }
   return Math.abs(h);
@@ -24,7 +24,7 @@ function simpleHash(str: string): number {
 export function pickDaily<T>(items: T[], seed?: string): T {
   if (items.length === 0) throw new Error("pickDaily: items array is empty");
   const s = seed ?? getDailySeed();
-  const hash = simpleHash(s);
+  const hash = djb2Hash(s);
   const idx = hash % items.length;
   return items[idx];
 }
@@ -35,7 +35,7 @@ export function pickDaily<T>(items: T[], seed?: string): T {
 export function pickDailyWithKey<T>(items: T[], key: string, seed?: string): T {
   if (items.length === 0) throw new Error("pickDailyWithKey: items array is empty");
   const s = `${seed ?? getDailySeed()}-${key}`;
-  const hash = simpleHash(s);
+  const hash = djb2Hash(s);
   const idx = hash % items.length;
   return items[idx];
 }
@@ -46,7 +46,7 @@ export function pickDailyWithKey<T>(items: T[], key: string, seed?: string): T {
 export function pickDailySafe<T>(items: T[], key?: string, seed?: string): T | null {
   if (items.length === 0) return null;
   const s = key ? `${seed ?? getDailySeed()}-${key}` : (seed ?? getDailySeed());
-  const hash = simpleHash(s);
+  const hash = djb2Hash(s);
   const idx = hash % items.length;
   return items[idx];
 }

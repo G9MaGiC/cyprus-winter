@@ -1,5 +1,6 @@
 /**
  * Client-side search over places, trails, and events.
+ * Results are relevance-ranked: exact/prefix match on name > region > description.
  */
 import { allPlaces, type PlanItem } from "@/data";
 import { trails } from "@/data/trails";
@@ -18,43 +19,91 @@ function normalize(s: string): string {
     .trim();
 }
 
-function matches(query: string, ...texts: string[]): boolean {
-  const q = normalize(query);
-  if (q.length < 2) return false;
-  return texts.some((t) => normalize(t).includes(q));
+type ScoredResult = SearchResult & { score: number };
+
+/** Score for a single token: exact id > exact name > prefix name > contains name > prefix region > contains region > description. */
+function tokenScore(
+  token: string,
+  fields: { id?: string; name: string; region?: string; description?: string; venue?: string }
+): number {
+  const t = normalize(token);
+  if (t.length < 2) return 0;
+
+  const n = (s: string) => normalize(s ?? "");
+  const nameNorm = n(fields.name);
+  const regionNorm = n(fields.region ?? "");
+  const descNorm = n((fields.description ?? "") + " " + (fields.venue ?? ""));
+
+  if (fields.id && n(fields.id) === t) return 100;
+  if (nameNorm === t) return 90;
+  if (nameNorm.startsWith(t)) return 80;
+  if (nameNorm.includes(t)) return 70;
+  if (regionNorm === t) return 50;
+  if (regionNorm.startsWith(t)) return 45;
+  if (regionNorm.includes(t)) return 40;
+  if (descNorm.includes(t)) return 25;
+  return 0;
+}
+
+/** Multi-word: all tokens must match. Returns sum of per-token scores or 0 if any token fails. */
+function matchScore(
+  query: string,
+  fields: { id?: string; name: string; region?: string; description?: string; venue?: string }
+): number {
+  const tokens = query.trim().split(/\s+/).filter(Boolean);
+  if (tokens.length === 0) return 0;
+
+  let total = 0;
+  for (const token of tokens) {
+    const s = tokenScore(token, fields);
+    if (s === 0) return 0;
+    total += s;
+  }
+  return total;
+}
+
+function toSearchResult(p: PlanItem): SearchResult {
+  const href = p.type === "trail" ? `/trails/${p.id}` : p.type === "event" ? "/events" : `/discover/${p.id}`;
+  if (p.type === "trail") {
+    return { kind: "trail", item: { id: p.id, name: p.name, region: p.region }, href };
+  }
+  if (p.type === "event") {
+    const e = winterEvents.find((x) => x.id === p.id);
+    return { kind: "event", item: { id: p.id, name: p.name, region: p.region, month: e?.month ?? "" }, href };
+  }
+  return { kind: "place", item: p, href };
 }
 
 export function search(query: string, limit = 20): SearchResult[] {
-  const results: SearchResult[] = [];
   const q = query.trim();
-  if (q.length < 2) return results;
+  if (q.length < 2) return [];
+
+  const scored: ScoredResult[] = [];
 
   for (const p of allPlaces) {
-    if (matches(q, p.name, p.region)) {
-      const href = p.type === "trail" ? `/trails/${p.id}` : `/discover/${p.id}`;
-      results.push({ kind: "place", item: p, href });
-      if (results.length >= limit) return results;
+    const fields: { id?: string; name: string; region?: string; description?: string; venue?: string } = {
+      id: p.id,
+      name: p.name,
+      region: p.region,
+    };
+    if (p.type === "trail") {
+      const t = trails.find((x) => x.id === p.id);
+      if (t) fields.description = t.description;
+    } else if (p.type === "event") {
+      const e = winterEvents.find((x) => x.id === p.id);
+      if (e) {
+        fields.description = e.description;
+        fields.venue = e.venue ?? "";
+      }
     }
+    const score = matchScore(q, fields);
+    if (score > 0) scored.push({ ...toSearchResult(p), score });
   }
 
-  for (const t of trails) {
-    if (results.some((r) => r.item.id === t.id)) continue;
-    if (matches(q, t.name, t.region, t.description)) {
-      results.push({ kind: "trail", item: { id: t.id, name: t.name, region: t.region }, href: `/trails/${t.id}` });
-      if (results.length >= limit) return results;
-    }
-  }
-
-  for (const e of winterEvents) {
-    if (matches(q, e.name, e.region, e.description, e.venue ?? "")) {
-      results.push({
-        kind: "event",
-        item: { id: e.id, name: e.name, region: e.region, month: e.month },
-        href: "/events",
-      });
-      if (results.length >= limit) return results;
-    }
-  }
-
-  return results;
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, limit).map((r) => {
+    const { score: _score, ...rest } = r;
+    void _score;
+    return rest as SearchResult;
+  });
 }

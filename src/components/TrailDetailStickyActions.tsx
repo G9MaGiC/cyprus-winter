@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { getPlaceById } from "@/data";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import NavigateButton from "@/components/NavigateButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { LAYOUT } from "@/lib/design-tokens";
 
@@ -34,11 +36,15 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
 
   return (
     <div
-      className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-lg bottom-0 md:bottom-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+      className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm bottom-0 md:bottom-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
       role="complementary"
       aria-label="Quick actions"
     >
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} py-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4`}>
+        {(() => {
+          const place = getPlaceById(trailId);
+          return place ? <NavigateButton place={place} className="shrink-0" /> : null;
+        })()}
         <TrackOnClick event="plan_add" properties={{ placeId: trailId, placeType: "trail", source: "sticky" }}>
           <AddToItineraryButton placeId={trailId} label="Add to plan" className="shrink-0" />
         </TrackOnClick>

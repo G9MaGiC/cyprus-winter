@@ -1,0 +1,21 @@
+# Tests and dev tooling
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__
+coverage
+.vitest
+*.local
+
+# Docs and plans (not needed at runtime)
+docs/
+.cursor/
+*.md
+!README.md
+
+# IDE and misc
+.git
+.gitignore
+.env.example
+.DS_Store

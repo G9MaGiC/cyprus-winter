@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CARD } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
+import NavigateButton from "@/components/NavigateButton";
 
 function TypeBadge({ type }: { type: PlanItem["type"] }) {
   const style: Record<PlanItem["type"], string> = {
@@ -73,7 +74,8 @@ export default function ItineraryCard({
           {place.name}
         </Link>
       </div>
-      <div className="flex items-center gap-2 shrink-0">
+      <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
+        <NavigateButton place={place} />
         {place.type === "winery" && (
           <Link
             href={`/book/winery/${place.id}`}

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "View and manage your Cyprus Winter winery tastings and experiences. All bookings in one place. Sync from any device. Confirmations by email.",
   alternates: { canonical: `${SITE_URL}/bookings` },
+  robots: { index: false, follow: true },
 };
 
 export default function BookingsLayout({

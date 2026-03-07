@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Trail } from "@/data/trails";
-import { TOKENS } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM } from "@/lib/design-tokens";
 
 // Fix default marker icons in Next.js
 const trailheadIcon = L.divIcon({
@@ -19,7 +19,7 @@ const trailheadIcon = L.divIcon({
     border-radius: 50%;
     font-weight: 700;
     font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: ${MAP_ICON_SHADOW};
     border: 3px solid white;
   ">▶</span>`,
   className: "custom-marker",
@@ -40,7 +40,7 @@ function waypointIcon(index: number) {
       border-radius: 50%;
       font-weight: 700;
       font-size: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+      box-shadow: ${MAP_ICON_SHADOW_SM};
       border: 2px solid white;
     ">${index}</span>`,
     className: "custom-marker",

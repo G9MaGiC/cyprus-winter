@@ -104,7 +104,9 @@ export default function RootLayout({
           <ConversionTracker />
           <ScrollToTop />
           <Nav />
-          <main id="main-content" className="pt-[calc(3.5rem+env(safe-area-inset-top,0px))] min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">{children}</main>
+          <main id="main-content" className="pt-[calc(3.5rem+env(safe-area-inset-top,0px))] min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+            {children}
+          </main>
           <BottomNav />
           <SiteFooter />
         </Providers>

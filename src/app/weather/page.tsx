@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LAYOUT } from "@/lib/design-tokens";
+import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
@@ -14,11 +15,20 @@ const MONTH_TO_SLUG: Record<string, string> = {
   April: "april",
 };
 
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+
 export const metadata: Metadata = {
   title: "Cyprus Winter Weather by Month | Coast & Troodos",
   description:
     "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six. Free guide.",
   alternates: { canonical: `${SITE_URL}/weather` },
+  openGraph: {
+    title: "Cyprus Winter Weather by Month | Coast & Troodos",
+    description: "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
+    url: `${SITE_URL}/weather`,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter weather guide" }],
+  },
 };
 
 export default function WeatherPage() {
@@ -76,6 +86,8 @@ export default function WeatherPage() {
           </tbody>
         </table>
       </div>
+
+      <WeatherPushOptIn />
 
       <div className="mt-12 space-y-4 text-olive/80 text-sm max-w-2xl">
         <p>

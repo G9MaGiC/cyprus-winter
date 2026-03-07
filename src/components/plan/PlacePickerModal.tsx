@@ -62,7 +62,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
             ✕
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto overscroll-contain p-5">
+        <div className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6">
           <PlacePicker activeDayItems={activeDayItems} onAdd={handleAdd} />
         </div>
       </div>

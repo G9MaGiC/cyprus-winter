@@ -1,9 +1,20 @@
 import type { NextConfig } from "next";
 import path from "path";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   turbopack: { root: path.resolve(__dirname) },
   distDir: ".next",
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.watchOptions = {
+        ignored: ["**/node_modules/**", "**/.git/**", "**/.next/**", "**/coverage/**"],
+      };
+    }
+    return config;
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -20,8 +31,7 @@ const nextConfig: NextConfig = {
     ],
   },
   // i18n configuration for next-intl
-  // Note: Locale routing is handled by next-intl middleware pattern
   // Locale paths are defined in src/i18n/routing.ts
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

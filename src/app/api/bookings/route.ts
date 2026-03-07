@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import { createBooking, getBookingsByEmail } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
@@ -11,7 +10,7 @@ import { z } from "zod";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import { sanitizeForStorage } from "@/lib/sanitize";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const limitResult = await rateLimit(req, 10, "bookings");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
@@ -161,7 +160,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(req: Request) {
   const limitResult = await rateLimit(req, 15, "bookings-lookup");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(

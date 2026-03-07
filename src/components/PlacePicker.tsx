@@ -88,7 +88,7 @@ export default function PlacePicker({
             key={item.id}
             type="button"
             onClick={() => onAdd(item.id)}
-            className={`text-left p-3 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+            className={`text-left p-3 sm:p-4 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               isAdded
                 ? "border-terracotta/10 bg-terracotta/10"
                 : "border-sand-200/80 bg-white hover:border-terracotta/30"

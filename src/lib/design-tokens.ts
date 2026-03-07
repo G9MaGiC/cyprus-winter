@@ -24,6 +24,10 @@ export const TOKENS = {
   sageMuted: "#94a3b8",
 } as const;
 
+/** Box shadow for map markers (Leaflet inline styles) — charcoal-based */
+export const MAP_ICON_SHADOW = "0 2px 6px rgba(30,41,59,0.25)";
+export const MAP_ICON_SHADOW_SM = "0 2px 4px rgba(30,41,59,0.25)";
+
 /** Bottom nav (mobile) — shared values for main padding, sticky bars, footer clearance */
 export const BOTTOM_NAV = {
   height: "4.5rem",
@@ -51,12 +55,18 @@ export const LAYOUT = {
   heroBleedX: "-mx-4 sm:-mx-6",
 } as const;
 
+/** Strip sections (Weather, Right Now, Trail Conditions). */
+export const STRIP = {
+  py: "py-4 sm:py-5",
+  pyCompact: "py-3 sm:py-4",
+} as const;
+
 /** Section rhythm — 2026 generous whitespace. */
 export const SECTION = {
   /** Main section padding */
   py: "py-16 sm:py-24",
-  /** Subsection (e.g. within a card or split layout) */
-  pySub: "py-6 sm:py-8",
+  /** Subsection (e.g. within a card or split layout, Place of Day, Mood, Insider Tip) */
+  pySub: "py-8 sm:py-10",
   /** Space between section heading and subtitle/intro */
   titleGap: "mb-2",
   /** Space between section heading and content block */
@@ -99,15 +109,22 @@ export const EMPTY_STATE_COMPACT = "py-6 px-6 rounded-xl bg-sand-100/80 border b
 /** Empty-state with larger vertical padding — e.g. trails "no results" with CTA. */
 export const EMPTY_STATE_LARGE = "py-20 px-6 text-center rounded-xl bg-sand-100/80 border border-sand-200/70" as const;
 
-/** Cards — warmth, subtle depth, less boxy. */
+/** Cards — warmth, subtle depth, less boxy. All cards use rounded-xl. */
 export const CARD = {
   base: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
   hover: "hover:border-terracotta/30 hover:shadow-md transition-all duration-200",
   interactive: "active:scale-[0.99] motion-reduce:active:scale-100 transition-transform",
-  featured:
-    "border-2 border-aegean/30 hover:border-aegean/50 hover:shadow-lg bg-gradient-to-br from-white/95 to-sand-100/70",
-  link: "block transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  /** Media cards (EditorsPicks, BookTastings, PlaceOfDay): image-first, gradient overlay */
   media: "aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0",
+  /** Info cards (ThisWeekGrid, StartHereStrip): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
+  info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
+  /** Action cards (Plan, Events, StartHereStrip primary): larger padding, strong CTA */
+  action: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm hover:border-terracotta/30 hover:shadow-lg transition-all duration-200",
+  /** Compact cards (RightNowCard, RecentlyViewedStrip): smaller, horizontal-friendly */
+  compact: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
+  /** Featured media cards: subtle aegean border, no gradient — use with CARD.base + CARD.hover */
+  featured: "border-2 border-aegean/20 hover:border-aegean/40",
+  link: "block transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   /** Card body padding — use for content area inside cards */
   content: "p-5 sm:p-6",
   /** Content-heavy sections (code blocks, long text) */

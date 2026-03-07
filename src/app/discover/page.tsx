@@ -9,8 +9,11 @@ import {
 } from "@/data/attractions";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
-import { CTA, LAYOUT } from "@/lib/design-tokens";
+import { CTA, LAYOUT, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
+import SearchBar from "@/components/SearchBar";
+import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
+import DiscoverEditorPicks from "./DiscoverEditorPicks";
 import DiscoverClient from "./DiscoverClient";
 
 export const metadata: Metadata = {
@@ -91,16 +94,43 @@ export default function DiscoverPage() {
         backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
         backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
       >
-        <Link href="/plan" className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}>
-          Plan your trip
-        </Link>
+        <div className="flex flex-wrap items-center gap-3 mt-4">
+          <Link href="/plan" className={CTA.tertiaryOnDark}>
+            Plan your trip
+          </Link>
+          <Link href="/weather" className={CTA.tertiaryOnDark}>
+            Weather
+          </Link>
+          <Link href="/trails" className={CTA.tertiaryOnDark}>
+            Trails
+          </Link>
+        </div>
       </ListPageHero>
 
-      <DiscoverClient sections={sections} />
+      <section aria-labelledby="discover-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub}`}>
+        <div className={`${LAYOUT.list} mx-auto`}>
+          <h2 id="discover-search-heading" className="text-center text-olive font-display text-xl sm:text-2xl font-semibold mb-3">
+            Find a place
+          </h2>
+          <SearchBar placeholder="Search places, trails, wineries…" className="max-w-xl mx-auto" />
+        </div>
+      </section>
 
-      <p className="mt-12 sm:mt-16 text-center text-olive/70 text-sm max-w-md mx-auto prose-body break-words">
-        Start with one place. Pair it with a trail or a tasting. Or tap Ask AI—it knows the island in winter.
-      </p>
+      <DiscoverPlaceOfDay />
+
+      <section aria-labelledby="discover-editors-picks-heading" className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}>
+        <div className={`${LAYOUT.list} mx-auto`}>
+          <h2 id="discover-editors-picks-heading" className="text-center font-display text-2xl sm:text-3xl font-semibold text-charcoal mb-2">
+            Editor&apos;s picks
+          </h2>
+          <p className="text-sage text-sm sm:text-base text-center max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+            Four places we keep coming back to in winter. Save them to your plan.
+          </p>
+          <DiscoverEditorPicks />
+        </div>
+      </section>
+
+      <DiscoverClient sections={sections} />
     </div>
   );
 }

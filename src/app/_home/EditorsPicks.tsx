@@ -19,9 +19,9 @@ export default function EditorsPicks() {
                 alt={item.imageAlt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 640px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
             </div>
             <div className={CARD.content}>
               <h3 className={`${TYPE.cardTitle} text-charcoal`}>{item.title}</h3>

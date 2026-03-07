@@ -15,7 +15,7 @@ export default function HomeMoodStrip() {
   return (
     <section
       aria-labelledby="mood-heading"
-      className={`py-6 sm:py-8 ${LAYOUT.safeAreaX}`}
+      className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2

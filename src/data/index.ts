@@ -3,6 +3,7 @@ import {
   ancientSites,
   villages,
   monasteries,
+  natureSites,
 } from "@/data/attractions";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
@@ -14,6 +15,7 @@ import type { Restaurant } from "@/data/restaurants";
 
 export const allAttractions: Attraction[] = [
   ...beaches,
+  ...natureSites,
   ...ancientSites,
   ...villages,
   ...monasteries,
@@ -27,7 +29,7 @@ export type PlanItem = {
   type: "attraction" | "trail" | "winery" | "event" | "restaurant";
 };
 
-const baseAttractions = [...beaches, ...ancientSites, ...villages, ...monasteries];
+const baseAttractions = [...beaches, ...natureSites, ...ancientSites, ...villages, ...monasteries];
 
 export const allPlaces: PlanItem[] = [
   ...baseAttractions.map((a) => ({

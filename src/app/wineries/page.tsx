@@ -7,16 +7,46 @@ import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
+
+const wineriesItemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Cyprus Winter Wineries",
+  description: "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars.",
+  url: `${SITE_URL}/wineries`,
+  numberOfItems: wineries.length,
+  itemListElement: wineries.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Winery",
+      name: item.name,
+      description: item.description.slice(0, 160),
+      url: `${SITE_URL}/discover/${item.id}`,
+      address: { "@type": "PostalAddress", addressLocality: item.region, addressCountry: "CY" },
+    },
+  })),
+};
+
 export const metadata: Metadata = {
   title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
   description:
     "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six. Free guide.",
   alternates: { canonical: `${SITE_URL}/wineries` },
+  openGraph: {
+    title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
+    description: "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
+    url: `${SITE_URL}/wineries`,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winery village, winter" }],
+  },
 };
 
 export default function WineriesPage() {
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wineriesItemListSchema) }} />
       <PageHeader
         backHref="/discover"
         backLabel="Discover"

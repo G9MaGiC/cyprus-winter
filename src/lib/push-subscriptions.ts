@@ -10,7 +10,9 @@ export type PushSubscriptionRow = {
   subscription: PushSubscriptionJson;
   trip_start_date: string | null;
   push_trip_countdown: boolean;
+  push_weather_digest?: boolean;
   last_push_at: string | null;
+  last_weather_push_at?: string | null;
 };
 
 /** Subscribers due for trip countdown (1–3 days before trip), not yet sent today. */
@@ -64,4 +66,39 @@ export async function deletePushSubscription(id: string): Promise<void> {
   const supabase = getSupabase();
   if (!supabase) return;
   await supabase.from("push_subscriptions").delete().eq("id", id);
+}
+
+/** Subscribers who want weather digest and haven't received one in the last 6 hours. */
+export async function getSubscribersForWeatherDigest(): Promise<PushSubscriptionRow[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
+  const { data, error } = await supabase
+    .from("push_subscriptions")
+    .select("*")
+    .eq("push_weather_digest", true);
+
+  if (error) {
+    console.error("Weather digest subscribers query error:", error);
+    return [];
+  }
+
+  const rows = (data ?? []) as PushSubscriptionRow[];
+  const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString();
+  return rows.filter(
+    (r) =>
+      r.last_weather_push_at == null || r.last_weather_push_at < sixHoursAgo
+  );
+}
+
+export async function markWeatherPushSent(id: string): Promise<void> {
+  const supabase = getSupabase();
+  if (!supabase) return;
+  await supabase
+    .from("push_subscriptions")
+    .update({
+      last_weather_push_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", id);
 }

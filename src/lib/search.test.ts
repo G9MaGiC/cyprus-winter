@@ -55,4 +55,18 @@ describe("search", () => {
     expect(results.length).toBeGreaterThan(0);
   });
 
+  it("ranks by relevance: exact name match first", () => {
+    const results = search("omodos", 20);
+    expect(results.length).toBeGreaterThan(0);
+    const first = results[0];
+    expect(first.item.name.toLowerCase()).toContain("omodos");
+  });
+
+  it("supports multi-word queries", () => {
+    const results = search("artemis trail", 10);
+    expect(results.length).toBeLessThanOrEqual(10);
+    if (results.length > 0) {
+      expect(results.some((r) => r.item.name.toLowerCase().includes("artemis"))).toBe(true);
+    }
+  });
 });

@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import OpenAI from "openai";
 import { buildAIContext } from "@/lib/ai-context";
 import { rateLimit } from "@/lib/rate-limit";
@@ -60,7 +59,7 @@ Winter in Cyprus is 16 to 20°C. Coast mild, Troodos cooler. Perfect for hiking 
 
 const CHAT_LIMIT = process.env.NODE_ENV === "development" ? 60 : 20;
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const limitResult = await rateLimit(req, CHAT_LIMIT, "chat");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(

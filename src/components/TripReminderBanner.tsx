@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTripDates } from "@/hooks/useTripDates";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, STRIP } from "@/lib/design-tokens";
 
 export default function TripReminderBanner() {
   const { hydrated, daysUntil, withinSevenDays } = useTripDates();
@@ -12,7 +12,7 @@ export default function TripReminderBanner() {
   return (
     <div
       role="status"
-      className={`${LAYOUT.safeAreaX} py-3 bg-aegean/10 border-b border-aegean/20`}
+      className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} bg-aegean/10 border-b border-aegean/20`}
     >
       <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm font-medium text-olive">

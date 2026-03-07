@@ -5,7 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
 import type { Trail } from "@/data/trails";
-import { TOKENS } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
 
 const trailIcon = L.divIcon({
   html: `<span style="
@@ -19,7 +19,7 @@ const trailIcon = L.divIcon({
     border-radius: 50%;
     font-weight: 700;
     font-size: 11px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    box-shadow: ${MAP_ICON_SHADOW};
     border: 2px solid white;
   ">⛰</span>`,
   className: "custom-marker",
@@ -39,12 +39,12 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
   if (withCoords.length === 0) return null;
 
   return (
-    <div className={`overflow-hidden rounded-xl border border-sand-200/70 bg-sand-100/50 ${className}`}>
+    <div className={`flex flex-col h-full min-h-[280px] overflow-hidden rounded-xl border border-sand-200/70 bg-sand-100/50 ${className}`}>
       <MapContainer
         center={CYPRUS_CENTER}
         zoom={8}
         scrollWheelZoom={true}
-        className="h-[280px] sm:h-[320px] w-full z-0"
+        className="flex-1 min-h-[280px] w-full z-0"
         attributionControl={true}
       >
         <TileLayer
@@ -77,7 +77,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
           </Marker>
         ))}
       </MapContainer>
-      <div className="px-4 py-2.5 bg-sand-100/80 border-t border-sand-200/70">
+      <div className="shrink-0 px-4 py-2.5 bg-sand-100/80 border-t border-sand-200/70">
         <p className="text-xs text-olive/70">
           {withCoords.length} trail{withCoords.length !== 1 ? "s" : ""} on map. Tap a marker to explore.
         </p>

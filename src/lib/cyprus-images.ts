@@ -93,6 +93,7 @@ export function getAttractionImage(id: string, type: string): string {
     "pissouri-tavernas": US(U.coast),
     "omodos-tavernas": `${local}/cyprus-village-omodos.jpg`,
     "limassol-marina": US(U.coast),
+    "limassol-marina-restaurants": US(U.coast),
     "protaras-tavernas": US(U.coast),
     "larnaca-old-town": US(U.coast),
     "pafos-harbour": US(U.coast),

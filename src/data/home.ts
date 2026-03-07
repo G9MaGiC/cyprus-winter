@@ -52,6 +52,42 @@ export type HomeFeaturedWinery = {
   imageAlt: string;
 };
 
+/** Discover-only editor picks (no trails) — used on Discover page. */
+export const discoverEditorsPicks: HomeEditorialPick[] = [
+  {
+    id: "omodos",
+    href: "/discover/omodos",
+    image: getAttractionImage("omodos", "village"),
+    imageAlt: "Omodos village, wine heartland, cobbled streets—Cyprus winter",
+    title: "Omodos",
+    desc: "Cobbled streets, zivania, coffee in the wine heartland",
+  },
+  {
+    id: "pafos-mosaics",
+    href: "/discover/pafos-mosaics",
+    image: getAttractionImage("pafos-mosaics", "ancient"),
+    imageAlt: "Pafos Roman mosaics in soft winter light—Cyprus",
+    title: "Pafos mosaics",
+    desc: "Roman mosaics in soft winter light",
+  },
+  {
+    id: "kourion",
+    href: "/discover/kourion",
+    image: getAttractionImage("kourion", "ancient"),
+    imageAlt: "Kourion Greco-Roman ruins above Mediterranean, Cyprus winter",
+    title: "Kourion",
+    desc: "Roman ruins, sunset over the sea",
+  },
+  {
+    id: "tsiakkas",
+    href: "/discover/tsiakkas",
+    image: getAttractionImage("tsiakkas", "winery"),
+    imageAlt: "Tsiakkas winery, Troodos foothills, Cyprus winter",
+    title: "Tsiakkas",
+    desc: "Troodos foothills · heaters on the terrace · book ahead",
+  },
+];
+
 export const homeFeaturedWineries: HomeFeaturedWinery[] = [
   {
     wineryId: "tsiakkas",

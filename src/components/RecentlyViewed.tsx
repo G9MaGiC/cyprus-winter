@@ -8,7 +8,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getRecentlyViewed } from "@/lib/recently-viewed";
-import { CARD, TYPE, LAYOUT } from "@/lib/design-tokens";
+import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 
 const typeLabels: Record<string, string> = {
   beach: "Beach",
@@ -42,10 +42,15 @@ export function RecentlyViewedStrip() {
   if (!isClient || items.length === 0) return null;
 
   return (
-    <section className={`${LAYOUT.safeAreaX} py-6 bg-sand-100/50 border-y border-sand-200/50`}>
+    <section
+      aria-labelledby="recently-viewed-heading"
+      className={`${LAYOUT.safeAreaX} ${SECTION.pySub} bg-sand-100/50 border-y border-sand-200/50`}
+    >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className="flex items-center justify-between mb-3">
-          <h2 className={`${TYPE.kicker} text-olive/70`}>Recently viewed</h2>
+          <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-olive/70`}>
+            Recently viewed
+          </h2>
           <button
             type="button"
             onClick={() => {
@@ -64,11 +69,13 @@ export function RecentlyViewedStrip() {
             <Link
               key={item.id}
               href={getItemPath(item)}
-              className={`${CARD.base} ${CARD.hover} shrink-0 snap-start p-3 rounded-xl min-w-[160px] max-w-[200px]`}
+              className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
             >
-              <p className="text-xs text-olive/50 mb-1">{typeLabels[item.type] || item.type}</p>
-              <p className="font-medium text-olive text-sm truncate">{item.name}</p>
-              <p className="text-xs text-olive/60 truncate">{item.region}</p>
+              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
+              <p className="font-display font-semibold text-olive text-sm truncate group-hover:text-terracotta transition-colors">
+                {item.name}
+              </p>
+              <p className="text-xs text-sage mt-0.5 truncate">{item.region}</p>
             </Link>
           ))}
         </div>

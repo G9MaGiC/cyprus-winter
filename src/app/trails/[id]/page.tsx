@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { trails, trailConditions } from "@/data/trails";
-import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CTA } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
@@ -17,6 +17,7 @@ import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatReportedAgo } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { guides } from "@/data/guides";
+import SectionCard from "@/components/SectionCard";
 
 export async function generateMetadata({
   params,
@@ -39,31 +40,6 @@ export async function generateMetadata({
     },
   };
 }
-
-const SectionCard = ({
-  title,
-  children,
-  className = "",
-  borderAccent = "terracotta",
-}: {
-  title: string;
-  children: React.ReactNode;
-  className?: string;
-  borderAccent?: "terracotta" | "aegean" | "golden" | "sage";
-}) => {
-  const accent = {
-    terracotta: "border-l-terracotta/40",
-    aegean: "border-l-aegean/40",
-    golden: "border-l-golden/40",
-    sage: "border-l-sage/40",
-  }[borderAccent];
-  return (
-    <section className={`${CARD.base} ${CARD.contentLg} border-l-4 ${accent} ${className}`}>
-      <h2 className="font-display font-semibold text-olive mb-4 text-lg">{title}</h2>
-      {children}
-    </section>
-  );
-};
 
 export default async function TrailPage({
   params,

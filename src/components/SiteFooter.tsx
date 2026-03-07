@@ -1,7 +1,7 @@
 import AppLink from "@/components/AppLink";
 import { LAYOUT } from "@/lib/design-tokens";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
-import LocaleSelector from "./LocaleSelector";
+import LocaleLinks from "./LocaleLinks";
 
 const footerLinkClass =
   "min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded";
@@ -47,7 +47,7 @@ export default function SiteFooter() {
           Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.
         </p>
 
-        <LocaleSelector variant="footer" />
+        <LocaleLinks />
       </div>
     </footer>
   );

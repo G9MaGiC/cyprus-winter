@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import { createTrailReport } from "@/lib/trail-reports";
 import { rateLimit } from "@/lib/rate-limit";
 import { trails } from "@/data/trails";
@@ -18,7 +17,7 @@ const reportSchema = z.object({
   reporterEmail: z.string().email().max(254).optional(),
 });
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const limitResult = await rateLimit(req, 10, "trail-reports");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(

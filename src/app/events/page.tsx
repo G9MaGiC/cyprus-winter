@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useId } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
-import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE } from "@/lib/design-tokens";
+import FilterChips from "@/components/FilterChips";
+import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
@@ -57,10 +58,10 @@ function EventCard({
   return (
     <article
       id={event.id}
-      className={`${CARD.base} ${CARD.hover} ${CARD.content} border-l-4 ${
+      className={`${CARD.base} ${CARD.hover} ${CARD.content} ${
         variant === "highlight"
-          ? "border-golden/50 border-l-golden/50 bg-white"
-          : "border-l-terracotta/40"
+          ? "border-2 border-golden/40 bg-white"
+          : "border-l-4 border-l-terracotta/40"
       }`}
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -128,8 +129,6 @@ export default function EventsPage() {
   const searchParams = useSearchParams();
   const typeFromUrl = searchParams.get("type") ?? "";
   const regionFromUrl = searchParams.get("region") ?? "";
-  const typeLabelId = useId();
-  const regionLabelId = useId();
 
   const typeFilter = ["festival", "market", "concert", "food", "culture", "sport"].includes(typeFromUrl) ? typeFromUrl : "";
   const regionFilter = REGIONS_LIST.includes(regionFromUrl) ? regionFromUrl : "";
@@ -169,6 +168,41 @@ export default function EventsPage() {
     return q.toString() ? `/events?${q.toString()}` : "/events";
   };
 
+  const hasFilters = Boolean(typeFilter || regionFilter);
+  const [filtersExpanded, setFiltersExpanded] = useState(hasFilters);
+
+  const typeChips = [
+    { id: "", label: "All" },
+    ...Object.entries(TYPE_LABELS).map(([id, label]) => ({ id, label })),
+  ];
+  const regionChips = [
+    { id: "", label: "All" },
+    ...REGIONS_LIST.map((r) => ({ id: r, label: r })),
+  ];
+
+  const filterGroup = (
+    <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-4 lg:gap-6">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="prose-label text-olive/60 w-full sm:w-auto shrink-0">Type</span>
+        <FilterChips
+          chips={typeChips}
+          isActive={(c) => (c.id === "" ? !typeFilter : typeFilter === c.id)}
+          getHref={(c) => buildFilterHref(c.id, regionFilter)}
+          ariaLabel="Filter by type"
+        />
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="prose-label text-olive/60 w-full sm:w-auto shrink-0">Region</span>
+        <FilterChips
+          chips={regionChips}
+          isActive={(c) => (c.id === "" ? !regionFilter : regionFilter === c.id)}
+          getHref={(c) => buildFilterHref(typeFilter, c.id)}
+          ariaLabel="Filter by region"
+        />
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-sand">
       <div
@@ -183,15 +217,13 @@ export default function EventsPage() {
           backgroundImageAlt="Kykkos monastery, Troodos—Cyprus winter culture and events"
           hasWidgetStrip
         >
-          <div className="mt-4">
-            <Link
-              href="/plan"
-              className={`px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}
-            >
-              Plan your trip
-            </Link>
-          </div>
-          <p className="text-sm text-olive/60 mt-2 break-words">
+          <Link
+            href="/plan"
+            className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}
+          >
+            Plan your trip
+          </Link>
+          <p className="text-sm text-white/80 mt-2 break-words">
             Dates may shift year to year. Check official sources before you
             travel.
           </p>
@@ -200,76 +232,35 @@ export default function EventsPage() {
         <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
 
         <ListPageWidgetStrip sticky sentinelId="events-plan-sentinel" ariaLabel="Filter events">
-          {/* Filters — collapsible on mobile, single row on lg */}
-          <section
-            aria-label="Filter events"
-            className="mb-0"
-          >
-          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-4 lg:gap-6">
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 flex-1 min-w-0">
-              <span
-                id={typeLabelId}
-                className="prose-label text-olive/60 w-full sm:w-auto shrink-0"
-              >
-                Type
-              </span>
-              <div
-                className="flex flex-wrap gap-2"
-                role="group"
-                aria-labelledby={typeLabelId}
-              >
-                <Link
-                  href={buildFilterHref("", regionFilter)}
-                  aria-pressed={!typeFilter}
-                  className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${!typeFilter ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
+          <section aria-label="Filter events" className="mb-0">
+            <div className={`${CARD.base} ${CARD.content}`}>
+              <div className="sm:hidden">
+                <button
+                  type="button"
+                  onClick={() => setFiltersExpanded((v) => !v)}
+                  className="flex items-center justify-between w-full min-h-[44px] px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-expanded={filtersExpanded}
+                  aria-controls="event-filters"
+                  id="event-filters-toggle"
                 >
-                  All
-                </Link>
-                {Object.entries(TYPE_LABELS).map(([id, label]) => (
-                  <Link
-                    key={id}
-                    href={buildFilterHref(typeFilter === id ? "" : id, regionFilter)}
-                    aria-pressed={typeFilter === id}
-                    className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${typeFilter === id ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
-                  >
-                    {label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 flex-1 min-w-0">
-              <span
-                id={regionLabelId}
-                className="prose-label text-olive/60 w-full sm:w-auto shrink-0"
-              >
-                Region
-              </span>
-              <div
-                className="flex flex-wrap gap-2"
-                role="group"
-                aria-labelledby={regionLabelId}
-              >
-                <Link
-                  href={buildFilterHref(typeFilter, "")}
-                  aria-pressed={!regionFilter}
-                  className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${!regionFilter ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
+                  <span className="text-sm">Filters: {hasFilters ? [typeFilter ? TYPE_LABELS[typeFilter] : null, regionFilter].filter(Boolean).join(", ") : "All"}</span>
+                  <span className="text-olive/60 text-xs" aria-hidden>
+                    {filtersExpanded ? "Hide" : "Show"}
+                  </span>
+                </button>
+                <div
+                  id="event-filters"
+                  role="region"
+                  aria-labelledby="event-filters-toggle"
+                  hidden={!filtersExpanded}
+                  className="mt-3 flex flex-col gap-4"
                 >
-                  All
-                </Link>
-                {REGIONS_LIST.map((r) => (
-                  <Link
-                    key={r}
-                    href={buildFilterHref(typeFilter, regionFilter === r ? "" : r)}
-                    aria-pressed={regionFilter === r}
-                    className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${regionFilter === r ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
-                  >
-                    {r}
-                  </Link>
-                ))}
+                  {filterGroup}
+                </div>
               </div>
+              <div className="hidden sm:block">{filterGroup}</div>
             </div>
-          </div>
-        </section>
+          </section>
         </ListPageWidgetStrip>
 
         {filtered.length === 0 ? (
@@ -294,7 +285,7 @@ export default function EventsPage() {
             {monthNavMonths.length > 0 && (
               <nav
                 aria-label="Jump to month"
-                className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 ${LAYOUT.stickyBarX} py-3 mb-8 -mt-2 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80`}
+                className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
               >
                 <p className="prose-label text-olive/60 mb-3">Jump to month</p>
                 <div className="flex flex-wrap gap-2">
@@ -315,33 +306,28 @@ export default function EventsPage() {
             {highlights.length > 0 && (
               <section
                 aria-labelledby="dont-miss"
-                className="mb-12 sm:mb-16"
+                className={SECTION.blockGap}
               >
                 <h2
                   id="dont-miss"
-                  className={`${TYPE.sectionTitle} mb-3 sm:mb-4`}
+                  className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}
                 >
                   Don&apos;t miss
                 </h2>
-                <p className="text-sm text-olive/70 mb-6 max-w-xl break-words">
+                <p className={`text-sm text-olive/70 max-w-xl break-words ${SECTION.headingGap}`}>
                   Epiphany and Carnival are when the island shows its soul. Get
                   there early. Wrap up warm.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {highlights.map((e) => (
-                    <div
-                      key={e.id}
-                      className="rounded-xl overflow-hidden border border-golden/30 bg-white shadow-sm"
-                    >
-                      <EventCard event={e} variant="highlight" />
-                    </div>
+                    <EventCard key={e.id} event={e} variant="highlight" />
                   ))}
                 </div>
               </section>
             )}
 
             {/* Events by month */}
-            <div className="space-y-12">
+            <div className={SECTION.blockGap}>
               {MONTH_ORDER.map((month) => {
                 const events = byMonth[month];
                 if (!events?.length) return null;
@@ -353,11 +339,11 @@ export default function EventsPage() {
                   >
                     <h2
                       id={`heading-${month}`}
-                      className="font-display text-xl font-semibold text-terracotta mb-1"
+                      className={`font-display text-xl font-semibold text-terracotta ${SECTION.titleGap}`}
                     >
                       {month}
                     </h2>
-                    <p className="text-sm text-olive/60 mb-5">
+                    <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>
                       {MONTH_FULL[month]}
                     </p>
                     <ul className="space-y-6" role="list">
@@ -374,12 +360,12 @@ export default function EventsPage() {
 
             {/* Planning tips */}
             <section
-              className={`mt-12 sm:mt-16 ${CARD.base} ${CARD.contentLg} bg-sand-100/80 border-sand-200/70`}
+              className={`mt-16 sm:mt-20 ${CARD.base} ${CARD.contentLg} bg-sand-100/80 border-sand-200/70`}
               aria-labelledby="event-tips"
             >
               <h2
                 id="event-tips"
-                className={`${TYPE.sectionTitle} mb-4`}
+                className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
               >
                 Planning tips
               </h2>

@@ -35,7 +35,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
           <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2">
@@ -60,7 +60,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           </span>
         </div>
         <div className={CARD.content}>
-          <h3 className="font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors truncate" title={a.name}>
+          <h3 className="font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors duration-200 truncate" title={a.name}>
             {a.name}
           </h3>
           <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">

@@ -5,12 +5,13 @@ import { useTrapFocus } from "@/lib/useTrapFocus";
 import { CARD } from "@/lib/design-tokens";
 
 type Props = {
+  templateLabel: string;
   onClose: () => void;
   onAddToPlan: () => void;
   onReplace: () => void;
 };
 
-export default function TemplateChoiceModal({ onClose, onAddToPlan, onReplace }: Props) {
+export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPlan, onReplace }: Props) {
   const trapFocus = useTrapFocus();
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +35,7 @@ export default function TemplateChoiceModal({ onClose, onAddToPlan, onReplace }:
         className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
       >
         <h2 id="template-choice-title" className="font-display text-lg font-semibold text-olive mb-2">
-          Apply this template?
+          Apply {templateLabel} template?
         </h2>
         <p className="text-olive/80 text-sm mb-6 break-words">
           Replace what you have, add to it, or keep building. Your call.

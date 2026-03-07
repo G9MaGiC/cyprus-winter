@@ -2,6 +2,10 @@ export type TrailStatus = "open" | "caution" | "closed";
 export type TrailSurface = "dry" | "muddy" | "snow" | "icy";
 export type TrailDifficulty = "easy" | "moderate" | "hard" | "expert";
 
+/** Regions used for trail filtering. Keep in sync with trail data. */
+export const TRAIL_REGIONS = ["Troodos", "Paphos", "Ayia Napa", "Famagusta", "Larnaca", "Limassol", "Nicosia", "Kyrenia"] as const;
+export const TRAIL_DIFFICULTIES: readonly TrailDifficulty[] = ["easy", "moderate", "hard", "expert"];
+
 export type TrailRouteType = "loop" | "out-and-back" | "point-to-point";
 
 export type Trail = {

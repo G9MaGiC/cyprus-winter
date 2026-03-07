@@ -417,3 +417,143 @@ Continuation 6 (A11y): Admin input aria-label added; root footer emergency numbe
 **Note:** Search, Discover, Events, Plan (Book tastings), Trail detail (Book a guide), Trail report success, Wineries already had Plan/Book CTAs. Home hero already has "Often sixteen degrees when home is six." Breadcrumbs links already have min-h-[44px]. ErrorState uses CARD tokens. Emergency numbers use `<strong>` on airport, not-found, error, trails pages.
 
 **Verification:** `npm run lint` passes. `npm run build` may hit Next.js 16 pages-manifest.json ENOENT (pre-existing; investigate separately).
+
+---
+
+## QA Run — Routes & Bugs (Mar 7, 2026)
+
+*Per plan: shell (lint/test/build) + audit-explore + senior-software-engineer. Focus: API routes and bugs.*
+
+### Automated checks
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| npm run lint | Pass | 1 warning (unused CTA import in discover/page.tsx) — fixed |
+| npm run test | Pass | 146 tests |
+| npm run build | Pass | Next.js 16.1.6 |
+
+### P0 — Critical
+
+| ID | Source | Issue | File |
+|----|--------|-------|------|
+| BUG-040 | sse | AI output: `javascript:` links only partially mitigated — server-side `sanitizeText` does not strip dangerous protocols in markdown links | src/lib/sanitize.ts, src/components/AIAssistant.tsx |
+
+### P1 — High
+
+| ID | Source | Issue | File |
+|----|--------|-------|------|
+| BUG-041 | audit | Redis in production — set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN for shared rate limiting | docs/QA_PLAN.md, src/lib/rate-limit.ts |
+| BUG-042 | sse | `sanitizeText` does not strip dangerous protocols in markdown links (e.g. `[Click](javascript:alert(1))`) | src/lib/sanitize.ts:7-15 |
+| BUG-043 | sse | Chat context `path` and `lastPlace` lack `.max()` — very long values could increase latency/cost | src/lib/chat-schema.ts:10-15 |
+| BUG-044 | sse | Weather API: invalid lat/lng returns 200 with fallback instead of 400 | src/app/api/weather/route.ts:23-37 |
+
+### P2 — Medium
+
+| ID | Source | Issue | File |
+|----|--------|-------|------|
+| BUG-045 | audit | Health does not check Resend connectivity | src/app/api/health/route.ts:21-52 |
+| BUG-046 | audit | Cron 500 responses expose `err.message` in production | src/app/api/cron/weather-digest/route.ts:76, src/app/api/cron/daily/route.ts:75 |
+| BUG-047 | audit | Cron routes have no rate limiting (CRON_SECRET auth only) | src/app/api/cron/* |
+| BUG-048 | audit | Push subscribe: `p256dh` and `auth` have no max length | src/app/api/push/subscribe/route.ts:8-21 |
+| BUG-049 | audit | Right-now: fail-open on rate limit error (allow request if Redis fails) | src/app/api/right-now/route.ts:52-56 |
+| BUG-050 | audit | Response shape inconsistency — Weather/right-now use different error shape vs jsonError() | src/app/api/weather/route.ts, src/app/api/right-now/route.ts |
+
+### Verified (no change needed)
+
+| Check | Status |
+|-------|--------|
+| Booking lookup exact match | OK |
+| Chat rate limit 20/min prod | OK |
+| Bookings rate limit (10 POST / 15 GET) | OK |
+| Trail reports Zod validation | OK |
+| Resend email escaping | OK |
+| Admin stats 401 without secret | OK |
+| AI client-side `isSafeUrl` for links | OK |
+| Chat 500 hides internals in production | OK |
+
+### Fix status
+
+Fixed — BUG-040, BUG-042 (sanitizeMarkdownLinks in sanitize.ts); BUG-043 (chat-schema path/lastPlace .max(256)); BUG-044, BUG-050 (weather API 400 for invalid lat/lng, jsonError for 503/500); BUG-046 (cron routes hide err.message in prod); BUG-048 (push subscribe p256dh/auth .max(200)). BUG-041 documented in VERCEL_DEPLOY_CHECKLIST and .env.example. BUG-045, BUG-047, BUG-049 deferred per plan.
+
+---
+
+## SERP Flows Quality Audit (Mar 7, 2026)
+
+*Plan: SERP Flows and Page Ordering — 200% Quality. Team: seo-copywriter, content-polish, audit-explore, ux-polish, senior-software-engineer.*
+
+### Implemented
+
+| Phase | Change | File(s) |
+|-------|--------|---------|
+| 1 | OpenGraph for beaches, villages, wineries, search, airport, secrets, weather | beaches/page.tsx, villages/page.tsx, wineries/page.tsx, search/page.tsx, airport/page.tsx, secrets/page.tsx, weather/page.tsx |
+| 1 | Bookings noindex (user dashboard) | bookings/layout.tsx |
+| 2 | ItemList LD+JSON for beaches, villages, wineries | beaches/page.tsx, villages/page.tsx, wineries/page.tsx |
+| 2 | Events OpenGraph; ItemList schema already present | events/layout.tsx |
+| 3 | Remove bookings from sitemap (noindex) | sitemap.ts |
+| 3 | robots.txt: disallow auth paths | robots.ts |
+| 4 | Remove unused HomeRightNowStrip | _home/HomeRightNowStrip.tsx (deleted) |
+| 6 | Fix unused CARD import | trails/TrailsClient.tsx |
+
+### Decisions
+
+- **Search:** Kept indexable — "search Cyprus winter" intent; base /search is useful landing page.
+- **HomeRightNowStrip:** Deleted; page uses RightNowNearYou (consent-first design).
+
+### Verification
+
+| Check | Result |
+|-------|--------|
+| npm run lint | Pass (0 warnings) |
+| npm run test | Pass (146 tests) |
+| npm run build | Pass (Next.js 16.1.6) |
+
+**Fix status:** Complete.
+
+---
+
+## CTO Project Review — Mar 2026
+
+*Plan: CTO Project Review and Action Plan. Phases 1–6 + P0 actions.*
+
+### Phase 1 — Automated Baseline
+
+| Check | Result |
+|-------|--------|
+| npm run lint | Pass |
+| npm run test | Pass (148 tests) |
+| npm run build | Pass (Next.js 16.1.6) |
+| npx tsc --noEmit | Pass (excluded .next/dev/types/validator.ts) |
+| npm run stress:api | Run (requires dev server; rate limits verified) |
+
+### Phase 2–3 — Architecture & Security
+
+- New components (RightNowNearYou, HomeTrailConditionsStrip, TrailFilters) use LAYOUT, STRIP, design tokens
+- Booking lookup: exact match via .eq("guest_email", emailNormalized)
+- Sanitization: sanitizeMarkdownLinks blocks javascript:, data: in AI output
+- rate-limit-shared: STRESS_TEST_TOKEN bypass disabled when NODE_ENV=production
+
+### Phase 4 — Functional Flows
+
+- Section order in page.tsx matches HOME_REDESIGN_SPEC §1
+- Discover→Detail, Plan→Book, Trails→Report, Bookings sync, AI chat, Search, RightNow flows implemented
+
+### Phase 5–6 — UX & Docs
+
+- RecentlyViewedStrip: aria-labelledby present
+- VERCEL_DEPLOY_CHECKLIST: P0 launch blockers (Redis, STRESS_TEST_TOKEN) documented
+- .env.example: STRESS_TEST_TOKEN "Never set in production" note added
+
+### P0 Actions Implemented
+
+| # | Action | Status |
+|---|--------|--------|
+| 1 | Redis config | Documented in VERCEL_DEPLOY_CHECKLIST §5 |
+| 2 | HOME_REDESIGN_SPEC §1 | Section order already correct |
+| 3 | HomeRightNowStrip | Already deleted (uses RightNowNearYou) |
+| 4 | STRESS_TEST_TOKEN | Code returns false in prod; .env.example clarified |
+
+### P1 Implemented
+
+| # | Action | Status |
+|---|--------|--------|
+| 5 | Health: Resend connectivity check | Added optional fetch to api.resend.com/domains; returns resend: ok\|error\|not configured |

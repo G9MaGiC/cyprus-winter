@@ -10,13 +10,14 @@ const subscribeSchema = z.object({
   subscription: z.object({
     endpoint: z.string().url(),
     keys: z.object({
-      p256dh: z.string(),
-      auth: z.string(),
+      p256dh: z.string().max(200),
+      auth: z.string().max(200),
     }),
     expirationTime: z.number().nullable().optional(),
   }),
   tripStartDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().nullable(),
   pushTripCountdown: z.boolean().optional(),
+  pushWeatherDigest: z.boolean().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -42,7 +43,7 @@ export async function POST(req: NextRequest) {
       return jsonError("VALIDATION_ERROR", msg, 400);
     }
 
-    const { clientId, subscription, tripStartDate, pushTripCountdown = true } = parsed.data;
+    const { clientId, subscription, tripStartDate, pushTripCountdown = true, pushWeatherDigest = false } = parsed.data;
     const id = `ps-${clientId}`;
 
     const { error } = await supabase.from("push_subscriptions").upsert(
@@ -52,6 +53,7 @@ export async function POST(req: NextRequest) {
         subscription: subscription as unknown as Record<string, unknown>,
         trip_start_date: tripStartDate ?? null,
         push_trip_countdown: pushTripCountdown,
+        push_weather_digest: pushWeatherDigest,
         updated_at: new Date().toISOString(),
       },
       { onConflict: "id" }

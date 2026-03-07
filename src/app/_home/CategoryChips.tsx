@@ -51,7 +51,7 @@ export default function CategoryChips() {
         />
       </div>
 
-      <div className="mt-8 pt-6 border-t border-sand-200/80">
+      <div className={`mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-sand-200/80`}>
         <p className="text-center text-sage text-sm mb-3">Also: Culture, Coasts, Monasteries</p>
         <div className="flex flex-wrap justify-center gap-2">
           {also.map((c) => (

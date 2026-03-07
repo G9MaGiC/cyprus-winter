@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import AppLink from "@/components/AppLink";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
-import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, STRIP } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import HomeHero from "@/app/_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
@@ -14,7 +14,9 @@ import EditorsPicks from "@/app/_home/EditorsPicks";
 import BookTastings from "@/app/_home/BookTastings";
 import HomeInsiderTip from "@/app/_home/HomeInsiderTip";
 import HomePlaceOfDay from "@/app/_home/HomePlaceOfDay";
+import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import HomeMoodStrip from "@/app/_home/HomeMoodStrip";
+import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
@@ -23,7 +25,7 @@ function WeatherStripSkeleton() {
   return (
     <section
       aria-hidden
-      className={`${LAYOUT.safeAreaX} py-4 bg-sand/60 border-b border-sand-200/80`}
+      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-sand/60 border-b border-sand-200/80`}
     >
       <div className={`${LAYOUT.list} mx-auto flex justify-center`}>
         <div className="h-6 w-40 bg-olive/20 rounded animate-pulse" />
@@ -54,15 +56,17 @@ export default function Home() {
         <HomeWeatherStrip />
       </Suspense>
       <TripReminderBanner />
-      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} py-4`}>
+      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub}`}>
         <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="home-search-heading" className="sr-only">
+          <h2 id="home-search-heading" className="text-center text-olive font-display text-xl sm:text-2xl font-semibold mb-3">
             Where to today?
           </h2>
           <SearchBar placeholder="Where to today?" className="max-w-xl mx-auto" />
         </div>
       </section>
+      <HomeTrailConditionsStrip />
       <StartHereStrip />
+      <RightNowNearYou />
       <RecentlyViewedStrip />
       <HomeMoodStrip />
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
@@ -116,7 +120,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 gap-6">
             <AppLink
               href="/plan"
-              className={`block ${CARD.contentLg} rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
+              className={`block ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-lg hover:border-terracotta/30 transition-all duration-200`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Plan your trip
@@ -127,7 +131,7 @@ export default function Home() {
             </AppLink>
             <AppLink
               href="/events"
-              className={`block ${CARD.contentLg} rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
+              className={`block ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-lg hover:border-terracotta/30 transition-all duration-200`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Winter events
@@ -157,7 +161,7 @@ export default function Home() {
       {/* Share — home-only (site footer is in layout) */}
       <section
         aria-labelledby="home-share-heading"
-        className="bg-charcoal text-white py-16 sm:py-24 pb-[max(3rem,env(safe-area-inset-bottom))] text-center"
+        className={`bg-charcoal text-white ${SECTION.py} pb-[max(3rem,env(safe-area-inset-bottom))] text-center`}
       >
         <div className={`${LAYOUT.safeAreaX} ${LAYOUT.listNarrow} mx-auto`}>
           <h2 id="home-share-heading" className="sr-only">

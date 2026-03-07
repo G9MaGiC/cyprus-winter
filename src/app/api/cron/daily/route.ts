@@ -72,9 +72,8 @@ export async function GET(req: NextRequest) {
     });
   } catch (err) {
     console.error("Cron daily error:", err);
-    return Response.json(
-      { ok: false, error: err instanceof Error ? err.message : "Unknown error" },
-      { status: 500 }
-    );
+    const errorMsg =
+      process.env.NODE_ENV === "production" ? "Internal error" : err instanceof Error ? err.message : "Unknown error";
+    return Response.json({ ok: false, error: errorMsg }, { status: 500 });
   }
 }

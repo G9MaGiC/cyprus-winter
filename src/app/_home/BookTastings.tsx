@@ -25,9 +25,9 @@ export default function BookTastings() {
                 alt={w.imageAlt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 640px) 100vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
             </div>
             <div className={CARD.content}>
               <p className={`${TYPE.kicker} mb-2`}>Book tastings</p>
@@ -39,11 +39,19 @@ export default function BookTastings() {
             </div>
           </Link>
           <div className={CARD.footer}>
-            <div className="flex flex-wrap gap-2">
-              <Link href={`/book/winery/${w.wineryId}`} className={CTA.primaryCompact} aria-label={`Book a tasting at ${w.name}`}>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href={`/book/winery/${w.wineryId}`}
+                className={CTA.primaryCompact}
+                aria-label={`Book a tasting at ${w.name}`}
+              >
                 Book a tasting
               </Link>
-              <Link href="/wineries" className={CTA.secondaryCompact} aria-label="Explore all wineries">
+              <Link
+                href="/wineries"
+                className="text-sm text-sage hover:text-terracotta transition-colors"
+                aria-label="Explore all wineries"
+              >
                 Explore wineries
               </Link>
             </div>

@@ -15,29 +15,31 @@ export default function EventsLoading() {
       <div className="h-4 w-full max-w-xl bg-sand-200 rounded mb-2" />
       <div className="h-4 w-72 bg-sand-200/80 rounded mb-10" />
 
-      {/* Filter skeletons — Type + Region */}
-      <div className="flex flex-wrap gap-4 lg:gap-6 mb-10">
-        <div className="flex flex-wrap items-center gap-2 min-w-0">
-          <div className="h-3 w-10 bg-sand-200 rounded" />
-          <div className="flex flex-wrap gap-2">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-11 w-16 sm:w-20 bg-sand-200/90 rounded-lg" />
-            ))}
+      {/* Filter skeletons — Type + Region (CARD wrapper) */}
+      <div className={`${CARD.base} ${CARD.content} mb-6 sm:mb-8`}>
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 lg:gap-6">
+          <div className="flex flex-wrap items-center gap-2 min-w-0">
+            <div className="h-3 w-10 bg-sand-200 rounded" />
+            <div className="flex flex-wrap gap-2">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="h-11 w-16 sm:w-20 bg-sand-200/90 rounded-lg" />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="flex flex-wrap items-center gap-2 min-w-0">
-          <div className="h-3 w-14 bg-sand-200 rounded" />
-          <div className="flex flex-wrap gap-2">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-11 w-20 sm:w-24 bg-sand-200/90 rounded-lg" />
-            ))}
+          <div className="flex flex-wrap items-center gap-2 min-w-0">
+            <div className="h-3 w-14 bg-sand-200 rounded" />
+            <div className="flex flex-wrap gap-2">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-11 w-20 sm:w-24 bg-sand-200/90 rounded-lg" />
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Month jump skeleton */}
       <div className="h-3 w-24 bg-sand-200 rounded mb-3" />
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
         {[1, 2, 3, 4, 5].map((i) => (
           <div key={i} className="h-11 w-14 bg-sand-200/90 rounded-lg" />
         ))}

@@ -27,7 +27,7 @@ export default function ListPageHero({
   hasWidgetStrip = false,
   children,
 }: ListPageHeroProps) {
-  const textMb = hasWidgetStrip ? "mb-8 sm:mb-10" : "mb-10 sm:mb-12";
+  const textMb = hasWidgetStrip ? "mb-8 sm:mb-10" : "mb-12 sm:mb-14";
   const content = (
     <div className={textMb}>
       <Link

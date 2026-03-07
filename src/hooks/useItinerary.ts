@@ -102,18 +102,17 @@ export function useItinerary() {
   const [lastAddedId, setLastAddedId] = useState<string | null>(null);
 
   const addToDay = useCallback((id: string) => {
-    const isAdding = !days[activeDay].includes(id);
-    setDays((prev) => ({
-      ...prev,
-      [activeDay]: prev[activeDay].includes(id)
-        ? prev[activeDay].filter((x) => x !== id)
-        : [...prev[activeDay], id],
-    }));
-    if (isAdding) {
-      setLastAddedId(id);
-      setTimeout(() => setLastAddedId(null), 600);
-    }
-  }, [activeDay, days]);
+    setDays((prev) => {
+      const current = prev[activeDay] ?? [];
+      const isAdding = !current.includes(id);
+      const nextDay = isAdding ? [...current, id] : current.filter((x) => x !== id);
+      if (isAdding) {
+        setLastAddedId(id);
+        setTimeout(() => setLastAddedId(null), 600);
+      }
+      return { ...prev, [activeDay]: nextDay };
+    });
+  }, [activeDay]);
 
   const removeFromDay = useCallback((id: string) => {
     setDays((prev) => ({
@@ -134,16 +133,18 @@ export function useItinerary() {
   const applyTemplate = useCallback((key: keyof typeof WINTER_TEMPLATES, mode: "replace" | "merge" = "replace") => {
     const template = WINTER_TEMPLATES[key];
     if (!template) return;
-    const next = emptyDays();
-    for (let d = 1; d <= MAX_DAYS; d++) {
-      const existing = days[d] ?? [];
-      const fromTemplate = template[d] ?? [];
-      next[d] = mode === "merge"
-        ? [...new Set([...existing, ...fromTemplate])]
-        : [...fromTemplate];
-    }
-    setDays(next);
-  }, [days]);
+    setDays((prev) => {
+      const next = emptyDays();
+      for (let d = 1; d <= MAX_DAYS; d++) {
+        const existing = prev[d] ?? [];
+        const fromTemplate = template[d] ?? [];
+        next[d] = mode === "merge"
+          ? [...new Set([...existing, ...fromTemplate])]
+          : [...fromTemplate];
+      }
+      return next;
+    });
+  }, []);
 
   const applyTemplateReplace = useCallback((key: keyof typeof WINTER_TEMPLATES, skipConfirm?: boolean) => {
     if (!hasContent || skipConfirm) {

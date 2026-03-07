@@ -27,6 +27,14 @@ export type Restaurant = {
   /** € | €€ | €€€ */
   priceRange?: string;
   image?: string;
+  /** Transport options (bus, taxi, walk) */
+  transport?: string;
+  /** Parking info */
+  parking?: string;
+  /** Dining venues (restaurants, cafés, bars) at multi-venue locations */
+  diningVenues?: string[];
+  /** Shops and boutiques at multi-venue locations */
+  shops?: string[];
 };
 
 export const restaurants: Restaurant[] = [
@@ -333,21 +341,53 @@ export const restaurants: Restaurant[] = [
     priceRange: "€€",
   },
   {
-    id: "limassol-marina",
+    id: "limassol-marina-restaurants",
     name: "Limassol Marina Restaurants",
     region: "Limassol",
     description:
-      "Waterfront dining in Limassol. The marina has a mix—fish tavernas, Mediterranean, Italian. Winter evenings: mild, fewer crowds than summer. Combine with Kolossi, Kourion, or a city explore. The promenade is pleasant for a stroll. Reserve for popular spots. A different vibe from the villages—urban Cyprus by the sea.",
+      "Superyachts. Cobbled promenade. The marina sits between the old town and the sea—Mediterranean, fish, Italian, sushi. In winter the crowds thin and the light on the water is golden. The cafés and restaurants stay open; sit outside with a blanket on mild December evenings. This is urban Cyprus at its best. Not the villages—the city pulse, the marina buzz, the promenade stroll. Reserve for waterfront tables; the popular spots fill. Pair with Kolossi or Kourion in the morning, then come here for dinner. The contrast hits.",
     type: "restaurant",
     cuisine: "mediterranean",
-    highlights: ["Marina", "Waterfront", "City dining"],
-    bestFor: ["City dinner", "Coastal", "Special evening"],
+    highlights: ["Superyacht marina", "Waterfront promenade", "Mediterranean & fish", "Winter terrace dining"],
+    bestFor: ["City dinner", "Special evening", "Winter waterfront", "Urban Cyprus"],
     winterOpen: true,
-    winterTip: "Mild winter evenings. Waterfront stroll. Urban Cyprus.",
-    bestTimeToVisit: "Dinner; reserve for popular spots",
-    localSecret: "Urban Cyprus. The marina promenade. Fish, Mediterranean, the city pulse.",
-    combineWith: ["kolossi", "kourion", "governors-beach"],
+    openingHours: "Most venues 10–23; some close 22. Varies by restaurant—check individual listings.",
+    winterTip: "Fewer crowds than summer. Mild December evenings: sit outside with a blanket. The light on the water at dusk. Reserve waterfront tables for popular spots.",
+    bestTimeToVisit: "Dinner; sunset from the promenade. Reserve ahead for weekend waterfront tables.",
+    localSecret: "The far end of the promenade, toward the old fort. Fewer tourists, same views. Order a coffee first. Walk the marina. Then eat. Don't rush the approach.",
+    combineWith: ["limassol-marina", "kolossi", "kourion", "governors-beach", "limassol-old-town"],
     priceRange: "€€€",
+    transport: "Walk from old town (10 min). Bus 30 to Marina; taxi from centre.",
+    parking: "Underground marina car park; surface spaces along the promenade.",
+    bookingUrl: "https://www.limassolmarina.com/restaurants",
+    diningVenues: [
+      "Café Calma",
+      "Caffè Nero",
+      "Cigar Lounge",
+      "Delta Resto Bar",
+      "Epsilon Resto Bar",
+      "Gazebo Mare",
+      "Jamie Oliver Kitchen",
+      "Marina Breeze",
+      "MATA",
+      "PAUL",
+      "Pyxida",
+      "TGI Fridays",
+      "Wagamama",
+    ],
+    shops: [
+      "Après Ski",
+      "Comar Marine",
+      "Cybarco",
+      "Diesel",
+      "Dora Theophilou Est. 1978",
+      "ERA More than Gold",
+      "ISAIA",
+      "iStorm",
+      "La Plage Marine",
+      "Moda In",
+      "Via Del Mare",
+    ],
   },
   {
     id: "protaras-tavernas",

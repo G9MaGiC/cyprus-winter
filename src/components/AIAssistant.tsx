@@ -10,6 +10,10 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { getPlaceById } from "@/data";
 import { isSafeUrl } from "@/lib/safe-url";
 import { OPEN_AI_EVENT } from "./AIAssistantTrigger";
+import { LAYOUT } from "@/lib/design-tokens";
+
+/** Horizontal padding matching LAYOUT.safeAreaX for panel sections */
+const PANEL_PX = LAYOUT.safeAreaX;
 
 type Message = { role: "user" | "assistant"; content: string; isRetryable?: boolean; is503?: boolean };
 
@@ -355,7 +359,7 @@ export default function AIAssistant() {
         onClick={() => setOpen(true)}
         aria-label="Ask your guide"
         aria-expanded={open}
-        className="fixed right-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:right-6 md:bottom-6 z-40 min-h-[48px] min-w-[48px] w-14 h-14 rounded-full bg-terracotta text-white shadow-lg hover:bg-terracotta-muted hover:shadow-xl active:scale-[0.97] transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ai-chat-trigger-pulse"
+        className="fixed right-[max(1.5rem,env(safe-area-inset-right))] sm:right-6 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] sm:bottom-6 z-40 min-h-[48px] min-w-[48px] w-14 h-14 rounded-full bg-terracotta text-white shadow-lg hover:bg-terracotta-muted hover:shadow-xl active:scale-[0.97] transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ai-chat-trigger-pulse"
       >
         <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -363,16 +367,24 @@ export default function AIAssistant() {
       </button>
 
       {open && (
-        <div
-          ref={panelRef}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="ai-dialog-title"
-          aria-label="Cyprus Winter guide"
-          className="fixed inset-0 z-50 flex flex-col bg-background sm:inset-auto sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto sm:w-[420px] sm:max-h-[calc(100vh-5rem)] sm:rounded-2xl sm:shadow-2xl sm:border sm:border-sand-200/80 overflow-hidden min-h-[100dvh] sm:min-h-0 ai-chat-panel-enter"
-        >
+        <>
+          {/* Backdrop — mobile only, tap to dismiss */}
+          <div
+            className="fixed inset-0 z-50 bg-charcoal/10 sm:hidden"
+            onClick={() => setOpen(false)}
+            onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
+            aria-hidden
+          />
+          <div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="ai-dialog-title"
+            aria-label="Cyprus Winter guide"
+            className="fixed inset-0 z-[51] flex flex-col bg-background sm:inset-auto sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto sm:w-[min(420px,calc(100vw-2rem))] sm:max-h-[calc(100vh-5rem)] lg:max-h-[min(560px,calc(100vh-6rem))] sm:rounded-2xl sm:shadow-2xl sm:border sm:border-sand-200/80 sm:backdrop-blur-sm overflow-hidden min-h-[100dvh] sm:min-h-0 ai-chat-panel-enter"
+          >
           {/* Header — charcoal + terracotta accent, Mediterranean warmth */}
-          <header className="flex items-center justify-between gap-2 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-charcoal text-white shrink-0 border-b border-white/10">
+          <header className={`flex items-center justify-between gap-2 ${PANEL_PX} py-3 sm:py-4 pt-[max(1rem,env(safe-area-inset-top))] bg-charcoal text-white shrink-0 border-b border-white/10`}>
             <div className="min-w-0 flex items-center gap-2">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-terracotta/20 text-terracotta" aria-hidden>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -412,7 +424,7 @@ export default function AIAssistant() {
 
           {/* Messages - flex-1, scrollable, fills available space */}
           <div
-            className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 space-y-4"
+            className={`flex-1 min-h-0 overflow-y-auto overscroll-contain ${PANEL_PX} py-5 sm:py-6 space-y-5`}
             aria-live="polite"
             aria-busy={loading}
             role="log"
@@ -424,13 +436,13 @@ export default function AIAssistant() {
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[90%] sm:max-w-[85%] rounded-xl px-4 py-3 border ${
+                  className={`max-w-[88%] rounded-xl px-5 py-3.5 border ${
                     m.role === "user"
                       ? "bg-terracotta text-white border-terracotta/80 rounded-br-md shadow-sm"
                       : "bg-sand-100 text-olive border-l-4 border-l-terracotta/30 border border-sand-200/80 rounded-bl-md"
                   }`}
                 >
-                  <div className="text-base sm:text-sm leading-relaxed whitespace-pre-wrap [&_a]:text-sage [&_a]:underline [&_a]:break-all">
+                  <div className="text-[15px] sm:text-base leading-relaxed whitespace-pre-wrap [&_a]:text-sage [&_a]:underline [&_a]:break-all">
                     {m.role === "assistant" ? (
                       <AssistantMessage
                         content={m.content}
@@ -453,7 +465,7 @@ export default function AIAssistant() {
             ))}
             {loading && (
               <div className="flex justify-start" aria-live="polite">
-                <div className="bg-sand-100 border-l-4 border-l-terracotta/30 border border-sand-200/80 rounded-xl rounded-bl-md px-4 py-3 flex items-center gap-2">
+                <div className="bg-sand-100 border-l-4 border-l-terracotta/30 border border-sand-200/80 rounded-xl rounded-bl-md px-5 py-3.5 flex items-center gap-2">
                   <span className="flex gap-1 motion-reduce:animate-none" aria-hidden>
                     <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:0ms]" />
                     <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:150ms]" />
@@ -469,7 +481,7 @@ export default function AIAssistant() {
           {/* Voice: listening strip — aegean accent, clear feedback */}
           {listening && (
             <div
-              className="shrink-0 px-4 py-3 bg-aegean/10 border-y border-aegean/20 flex items-center gap-3"
+              className={`shrink-0 ${PANEL_PX} py-3 bg-aegean/10 border-y border-aegean/20 flex items-center gap-3`}
               role="status"
               aria-live="polite"
               aria-label="Listening for your question"
@@ -499,9 +511,9 @@ export default function AIAssistant() {
 
           {/* Suggestions — PILL neutral, terracotta hover */}
           {messages.length <= 2 && !listening && (
-            <div className="shrink-0 px-4 pb-2">
+            <div className={`shrink-0 ${PANEL_PX} pb-3`}>
               <p className="text-xs text-olive-muted mb-2 prose-label">Try one, or ask your own</p>
-              <div className="flex gap-2.5 sm:gap-2 overflow-x-auto pb-1 -mx-1 scrollbar-none snap-x snap-mandatory overscroll-x-contain scroll-touch">
+              <div className="flex gap-3 overflow-x-auto pb-1 -mx-1 scrollbar-none snap-x snap-mandatory overscroll-x-contain scroll-touch [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
                 {getSuggestions(pathname).slice(0, 6).map((s) => (
                   <button
                     key={s}
@@ -519,7 +531,7 @@ export default function AIAssistant() {
 
           {/* Voice error — sand surface, clear dismiss */}
           {voiceError && (
-            <div className="shrink-0 px-4 py-3 flex items-center justify-between gap-3 bg-sand-100 border-t border-sand-200/80" role="alert">
+            <div className={`shrink-0 ${PANEL_PX} py-3 flex items-center justify-between gap-3 bg-sand-100 border-t border-sand-200/80`} role="alert">
               <p className="text-sm text-olive break-words flex-1 min-w-0">{voiceError}</p>
               <button
                 type="button"
@@ -535,7 +547,7 @@ export default function AIAssistant() {
           {/* Input bar — terracotta primary, design tokens */}
           <form
             onSubmit={handleSubmit}
-            className="shrink-0 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-sand-200/80 flex gap-2 items-end bg-background"
+            className={`shrink-0 ${PANEL_PX} py-5 sm:py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-sand-200/80 flex gap-3 items-end bg-background`}
           >
             <div className="flex-1 min-w-0 relative flex items-end">
               <textarea
@@ -552,7 +564,7 @@ export default function AIAssistant() {
                 placeholder="Ask about trails, wineries, villages…"
                 rows={1}
                 disabled={loading}
-                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta/50 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
+                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base leading-relaxed text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta/50 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
               />
               <button
                 type="button"
@@ -577,6 +589,7 @@ export default function AIAssistant() {
             </button>
           </form>
         </div>
+        </>
       )}
     </>
   );
@@ -653,12 +666,14 @@ function AssistantMessage({
           <span className="flex flex-wrap gap-2">
             <Link
               href="/discover"
+              prefetch="auto"
               className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
             >
               Browse Discover
             </Link>
             <Link
               href="/trails"
+              prefetch="auto"
               className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
             >
               View trails

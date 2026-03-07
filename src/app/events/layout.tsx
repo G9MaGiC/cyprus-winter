@@ -2,11 +2,20 @@ import type { Metadata } from "next";
 import { winterEvents } from "@/data/events";
 import { SITE_URL } from "@/lib/site-url";
 
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+
 export const metadata: Metadata = {
   title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
   description:
     "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit. Free guide.",
   alternates: { canonical: `${SITE_URL}/events` },
+  openGraph: {
+    title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
+    description: "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here.",
+    url: `${SITE_URL}/events`,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter events" }],
+  },
 };
 
 export default function EventsLayout({
