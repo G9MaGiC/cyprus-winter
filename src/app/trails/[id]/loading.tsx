@@ -1,4 +1,4 @@
-import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { LAYOUT, SKELETON } from "@/lib/design-tokens";
 
 export default function TrailLoading() {
   return (

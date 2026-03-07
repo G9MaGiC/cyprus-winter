@@ -82,6 +82,8 @@ export function getAttractionImage(id: string, type: string): string {
     "st-sozomenos": `${local}/cyprus-st-hilarion.jpg`,
     "zygi-tavernas": US(U.coast),
     "governors-beach-tavernas": `${local}/cyprus-governors-beach.jpg`,
+    "the-polo": US(U.dining),
+    "the-farmyard": US(U.village),
     "polis-harbour": US(U.coast),
     "psilo-dendro": `${local}/cyprus-village-omodos.jpg`,
     "kakopetria-trout": `${local}/cyprus-village-omodos.jpg`,
@@ -107,6 +109,10 @@ export function getAttractionImage(id: string, type: string): string {
     "solea-valley": `${local}/cyprus-village-omodos.jpg`,
     "zygi-mikri": US(U.coast),
     "kourion-tavernas": `${local}/cyprus-ancient-kourion.jpg`,
+    "cor-gastronomy": US(U.dining),
+    "sentio": US(U.dining),
+    "santo-restaurant": US(U.coast),
+    "seasons-oriental": US(U.dining),
   };
   const fallbacks: Record<string, string> = {
     beach: US(U.coast),

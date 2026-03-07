@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Security headers proxy handler
+// Security headers proxy handler (request required by Next.js proxy signature)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- required param
 export default function proxy(request: NextRequest): NextResponse {
   // Build CSP header
   const cspHeader = [
