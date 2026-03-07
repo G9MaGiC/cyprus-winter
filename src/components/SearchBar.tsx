@@ -46,7 +46,7 @@ export default function SearchBar({
       const q = query.trim();
       if (q.length >= 2) {
         router.replace(`/search?q=${encodeURIComponent(q)}`, { scroll: false });
-      } else if (q.length === 0 && pathname === "/search") {
+      } else if (q.length === 0 && pathname?.startsWith("/search")) {
         router.replace("/search", { scroll: false });
       }
     }, 300);

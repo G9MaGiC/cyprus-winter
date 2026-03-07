@@ -99,7 +99,7 @@ export default function DiscoverClient({
   return (
     <div id="discover-content" aria-label="Discover places in Cyprus">
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
-      <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:top-0 z-10 pt-2 sm:pt-0 pb-3 sm:pb-4 bg-background/95 backdrop-blur-sm border-b border-sand-200/50 ${LAYOUT.stickyBarX}`}>
+      <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 pt-2 sm:pt-0 pb-3 sm:pb-4 bg-background/95 backdrop-blur-sm border-b border-sand-200/50 ${LAYOUT.stickyBarX}`}>
         {(filter && sectionExists) && (
           <div className="flex flex-wrap items-baseline gap-x-2 text-sm mb-3">
             <span className="font-medium text-olive">

@@ -27,7 +27,7 @@ export default function ListPageHero({
   hasWidgetStrip = false,
   children,
 }: ListPageHeroProps) {
-  const textMb = hasWidgetStrip ? "mb-8 sm:mb-10" : SECTION.headingMarginLarge;
+  const textMb = hasWidgetStrip ? "mb-6 sm:mb-8" : SECTION.headingMarginLarge;
   const content = (
     <div className={textMb}>
       <Link
@@ -51,8 +51,8 @@ export default function ListPageHero({
 
   if (backgroundImage) {
     return (
-      <section className={`relative ${LAYOUT.heroBleedX} -mt-4 sm:-mt-6 ${textMb} overflow-hidden`}>
-        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[200px] sm:min-h-[240px]">
+      <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
+        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[180px] sm:min-h-[200px]">
           <Image
             src={backgroundImage}
             alt={backgroundImageAlt ?? "Page hero image"}
@@ -69,7 +69,7 @@ export default function ListPageHero({
             >
               ← {backLabel}
             </Link>
-            <h1 className={`${TYPE.pageTitle} mt-2 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
+            <h1 className={`${TYPE.pageTitle} mt-1.5 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
               {title}
             </h1>
             <p className="text-white/90 mt-1 max-w-xl text-sm sm:text-base break-words leading-relaxed">

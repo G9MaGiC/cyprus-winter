@@ -35,6 +35,9 @@ export const BOTTOM_NAV = {
   clearance: "calc(4.5rem+env(safe-area-inset-bottom))",
 } as const;
 
+/** Nav bar height (h-14) + safe area. Use for spacing content below fixed nav. */
+export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
+
 /** Max-width class names for consistent page layout. */
 export const LAYOUT = {
   list: "max-w-5xl",
@@ -46,9 +49,9 @@ export const LAYOUT = {
   form: "max-w-2xl",
   formNarrow: "max-w-xl",
   /** Vertical padding for list/form pages — use with LAYOUT.safeAreaX */
-  pagePy: "py-12 sm:py-16",
+  pagePy: "py-8 sm:py-12",
   /** Vertical padding for detail pages — tighter for content-heavy layouts */
-  pagePyDetail: "py-8 sm:py-12",
+  pagePyDetail: "py-6 sm:py-10",
   /** Sticky bar edge-to-edge: negative margin + padding for safe area. Use for sticky filter/day bars. */
   stickyBarX: "-ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))]",
   /** Hero components that bleed to viewport edges */
@@ -61,24 +64,24 @@ export const STRIP = {
   pyCompact: "py-3 sm:py-4",
 } as const;
 
-/** Section rhythm — 2026 generous whitespace. */
+/** Section rhythm */
 export const SECTION = {
   /** Main section padding */
-  py: "py-16 sm:py-24",
+  py: "py-12 sm:py-20",
   /** Subsection (e.g. within a card or split layout, Place of Day, Mood, Insider Tip) */
-  pySub: "py-8 sm:py-10",
+  pySub: "py-6 sm:py-8",
   /** Space between section heading and subtitle/intro */
   titleGap: "mb-2",
   /** Space between section heading and content block */
-  headingGap: "mb-6 sm:mb-8",
+  headingGap: "mb-4 sm:mb-6",
   /** Space between major sections (list/detail pages) */
-  blockGap: "space-y-16 sm:space-y-20",
+  blockGap: "space-y-12 sm:space-y-16",
   alt: "bg-sand/80",
   /** Bottom margin after page header/hero (back link + title + description) */
-  headingMargin: "mb-10 sm:mb-12",
-  headingMarginLarge: "mb-12 sm:mb-14",
+  headingMargin: "mb-8 sm:mb-10",
+  headingMarginLarge: "mb-8 sm:mb-10",
   /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
-  footerBlock: "mt-12 pt-8 border-t border-sand-200/80",
+  footerBlock: "mt-10 pt-6 border-t border-sand-200/80",
 } as const;
 
 /** Shared CTA classes — design-token only, no hex. Used by homepage and other pages. */

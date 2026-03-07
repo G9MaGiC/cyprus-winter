@@ -19,7 +19,7 @@ export default function ListPageWidgetStrip({
   className = "",
 }: ListPageWidgetStripProps) {
   return (
-    <div className={`mb-6 sm:mb-8 ${className}`}>
+    <div className={`mb-4 sm:mb-6 ${className}`}>
       {sentinelId && (
         <div
           id={sentinelId}
@@ -30,7 +30,7 @@ export default function ListPageWidgetStrip({
       <div
         className={
           sticky
-            ? `sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:top-0 z-10 ${LAYOUT.stickyBarX} pt-2 sm:pt-0 pb-3 sm:pb-4 -mt-2 bg-background/95 backdrop-blur-sm border-b border-sand-200/80`
+            ? `sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 ${LAYOUT.stickyBarX} pt-2 sm:pt-0 pb-3 sm:pb-4 -mt-2 bg-background/95 backdrop-blur-sm border-b border-sand-200/80`
             : ""
         }
         role="region"
