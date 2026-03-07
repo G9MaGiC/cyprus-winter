@@ -96,7 +96,7 @@ export default function PlanPage() {
 
   return (
     <div className="min-h-screen bg-sand">
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} ${SECTION.blockGap} pb-24 sm:pb-16`}>
+        <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 ${SECTION.blockGap}`}>
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
             Itinerary copied to clipboard

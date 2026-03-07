@@ -69,7 +69,7 @@ export default function TrailsClient() {
   return (
     <div className="min-h-screen bg-sand">
       {/* Mobile-first: compact container, full bleed on small screens */}
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pb-28 sm:pb-0 ${LAYOUT.pagePy}`}>
+        <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-28 sm:pt-12 sm:pb-0`}>
         {/* Compact hero — shorter on mobile */}
         <ListPageHero
           title="Winter Trails"

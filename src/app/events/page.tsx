@@ -206,7 +206,7 @@ export default function EventsPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst}`}
       >
         <ListPageHero
           title="Winter events"

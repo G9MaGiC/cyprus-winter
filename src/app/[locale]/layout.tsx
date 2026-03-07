@@ -5,7 +5,7 @@ import { getMessages, setRequestLocale, getTranslations } from "next-intl/server
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { LAYOUT, TOKENS } from "@/lib/design-tokens";
+import { TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
@@ -14,6 +14,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { SerwistProvider } from "../serwist";
 import { Link } from "@/i18n/navigation";
 import LocaleSelector from "@/components/LocaleSelector";
+import SiteFooter from "@/components/SiteFooter";
 
 const AIAssistant = dynamic(() => import("@/components/AIAssistant"), { loading: () => null });
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
@@ -117,39 +118,24 @@ export default async function LocaleLayout({ children, params }: Props) {
               {children}
             </main>
             <BottomNav />
-          <footer role="contentinfo" aria-label="Site footer" className={`border-t border-sand-200/80 bg-sand-100/80 ${LAYOUT.safeAreaX} pb-[max(calc(5rem+env(safe-area-inset-bottom)),1.5rem)] md:pb-[max(1.5rem,env(safe-area-inset-bottom))]`}>
-            <div id="footer-sentinel" className="h-px -mt-px" aria-hidden />
-            <div className={`${LAYOUT.listNarrow} mx-auto py-12 sm:py-16`}>
-              <p className="font-display text-lg sm:text-xl text-charcoal/90 mb-8 sm:mb-10 text-center max-w-lg mx-auto">
-                {t("footer.tagline")}
-              </p>
-              <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-x-12 gap-y-6 mb-10">
-                <nav aria-label="Plan and essentials" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm">
-                  <Link href="/discover" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.discover")}</Link>
-                  <Link href="/plan" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.plan")}</Link>
-                  <Link href="/weather" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.weather")}</Link>
-                  <Link href="/bookings" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.bookings")}</Link>
-                  <Link href="/airport" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.arriving")}</Link>
-                </nav>
-                <nav aria-label="Explore by type" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm sm:border-l sm:border-sand-200/80 sm:pl-12">
-                  <Link href="/beaches" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.beaches")}</Link>
-                  <Link href="/wineries" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.wineries")}</Link>
-                  <Link href="/villages" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.villages")}</Link>
-                  <Link href="/regions/troodos" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.troodos")}</Link>
-                  <Link href="/regions/paphos" prefetch="auto" className="min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.paphos")}</Link>
-                </nav>
-              </div>
-              <div className="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 mb-6 text-xs text-olive/80 mx-auto w-fit">
-                <span>Emergency <strong className="text-charcoal font-semibold">112</strong></span>
-                <span>Tourist info <strong className="text-charcoal font-semibold">1460</strong></span>
-                <span>Ambulance <strong className="text-charcoal font-semibold">199</strong></span>
-              </div>
-              <p className="text-xs text-olive/60 max-w-md mx-auto text-center leading-relaxed mb-8">
-                {t("footer.practical")}
-              </p>
-              <LocaleSelector variant="footer" />
-            </div>
-          </footer>
+          <SiteFooter
+            labels={{
+              tagline: t("footer.tagline"),
+              discover: t("footer.discover"),
+              plan: t("footer.plan"),
+              weather: t("footer.weather"),
+              bookings: t("footer.bookings"),
+              arriving: t("footer.arriving"),
+              beaches: t("footer.beaches"),
+              wineries: t("footer.wineries"),
+              villages: t("footer.villages"),
+              troodos: t("footer.troodos"),
+              paphos: t("footer.paphos"),
+              practical: t("footer.practical"),
+            }}
+            localeSwitcher={<LocaleSelector variant="footer" />}
+            LinkComponent={Link}
+          />
           </StickyPlanBarProvider>
           <AIAssistant />
         </>

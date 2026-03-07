@@ -6,36 +6,81 @@ import LocaleLinks from "./LocaleLinks";
 const footerLinkClass =
   "min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded";
 
-export default function SiteFooter() {
+export type SiteFooterProps = {
+  /** Translated labels (from getTranslations). Omit for root layout (English). */
+  labels?: {
+    tagline: string;
+    discover: string;
+    plan: string;
+    weather: string;
+    bookings: string;
+    arriving: string;
+    beaches: string;
+    wineries: string;
+    villages: string;
+    troodos: string;
+    paphos: string;
+    practical: string;
+  };
+  /** Locale switcher (e.g. LocaleSelector). Omit for root layout (LocaleLinks). */
+  localeSwitcher?: React.ReactNode;
+  /** Use next-intl Link for locale-prefixed hrefs. Pass Link when in [locale] layout. */
+  LinkComponent?: React.ComponentType<React.PropsWithChildren<{ href: string; prefetch?: "auto" | boolean; className?: string }>>;
+};
+
+const DEFAULT_LABELS = {
+  tagline: "Cyprus in winter: mild, uncrowded, real. Trails, villages, heritage.",
+  discover: "Discover",
+  plan: "Plan",
+  weather: "Weather",
+  bookings: "Bookings",
+  arriving: "Arriving",
+  beaches: "Beaches",
+  wineries: "Wineries",
+  villages: "Villages",
+  troodos: "Troodos",
+  paphos: "Paphos",
+  practical: "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
+};
+
+const FOOTER_LINKS: { href: string; key: keyof typeof DEFAULT_LABELS }[] = [
+  { href: "/discover", key: "discover" },
+  { href: "/plan", key: "plan" },
+  { href: "/weather", key: "weather" },
+  { href: "/bookings", key: "bookings" },
+  { href: "/airport", key: "arriving" },
+  { href: "/beaches", key: "beaches" },
+  { href: "/wineries", key: "wineries" },
+  { href: "/villages", key: "villages" },
+  { href: "/regions/troodos", key: "troodos" },
+  { href: "/regions/paphos", key: "paphos" },
+];
+
+export default function SiteFooter({ labels, localeSwitcher, LinkComponent = AppLink }: SiteFooterProps) {
+  const L = labels ?? DEFAULT_LABELS;
+
   return (
     <footer
       role="contentinfo"
       aria-label="Site footer"
       className={`border-t border-sand-200/80 bg-sand-100/80 ${LAYOUT.safeAreaX} pb-[max(calc(5rem+env(safe-area-inset-bottom)),1.5rem)] md:pb-[max(1.5rem,env(safe-area-inset-bottom))]`}
     >
-      {/* Sentinel: when in view, sticky bars hide to prevent overlap */}
       <div id={FOOTER_SENTINEL_ID} className="h-px -mt-px" aria-hidden />
       <div className={`${LAYOUT.listNarrow} mx-auto py-12 sm:py-16`}>
         <p className="font-display text-lg sm:text-xl text-charcoal/90 mb-8 sm:mb-10 text-center max-w-lg mx-auto">
-          Cyprus in winter: mild, uncrowded, real. Trails, villages, heritage.
+          {L.tagline}
         </p>
 
-        <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-x-12 gap-y-6 mb-10">
-          <nav aria-label="Plan and essentials" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm">
-            <AppLink href="/discover" className={footerLinkClass}>Discover</AppLink>
-            <AppLink href="/plan" className={footerLinkClass}>Plan</AppLink>
-            <AppLink href="/weather" className={footerLinkClass}>Weather</AppLink>
-            <AppLink href="/bookings" className={footerLinkClass}>Bookings</AppLink>
-            <AppLink href="/airport" className={footerLinkClass}>Arriving</AppLink>
-          </nav>
-          <nav aria-label="Explore by type" className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-1 text-sm sm:border-l sm:border-sand-200/80 sm:pl-12">
-            <AppLink href="/beaches" className={footerLinkClass}>Beaches</AppLink>
-            <AppLink href="/wineries" className={footerLinkClass}>Wineries</AppLink>
-            <AppLink href="/villages" className={footerLinkClass}>Villages</AppLink>
-            <AppLink href="/regions/troodos" className={footerLinkClass}>Troodos</AppLink>
-            <AppLink href="/regions/paphos" className={footerLinkClass}>Paphos</AppLink>
-          </nav>
-        </div>
+        <nav
+          aria-label="Plan, explore, and essentials"
+          className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm mb-10"
+        >
+          {FOOTER_LINKS.map(({ href, key }) => (
+            <LinkComponent key={href} href={href} prefetch="auto" className={footerLinkClass}>
+              {L[key]}
+            </LinkComponent>
+          ))}
+        </nav>
 
         <div className="inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 mb-6 text-xs text-olive/80 mx-auto w-fit">
           <span>Emergency <strong className="text-charcoal font-semibold">112</strong></span>
@@ -44,10 +89,10 @@ export default function SiteFooter() {
         </div>
 
         <p className="text-xs text-olive/60 max-w-md mx-auto text-center leading-relaxed mb-8">
-          Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.
+          {L.practical}
         </p>
 
-        <LocaleLinks />
+        {localeSwitcher ?? <LocaleLinks />}
       </div>
     </footer>
   );

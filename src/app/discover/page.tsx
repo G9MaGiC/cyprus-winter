@@ -88,7 +88,7 @@ const discoverItemListSchema = {
 
 export default function DiscoverPage() {
   return (
-    <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} overflow-x-hidden`}>
+    <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(discoverItemListSchema) }} />
       <ListPageHero
         backHref="/"

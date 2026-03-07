@@ -50,6 +50,8 @@ export const LAYOUT = {
   formNarrow: "max-w-xl",
   /** Vertical padding for list/form pages — use with LAYOUT.safeAreaX */
   pagePy: "py-8 sm:py-12",
+  /** Pages with hero image first: no top padding on mobile so hero sits under nav */
+  pagePyHeroFirst: "pt-0 pb-8 sm:py-12",
   /** Vertical padding for detail pages — tighter for content-heavy layouts */
   pagePyDetail: "py-6 sm:py-10",
   /** Sticky bar edge-to-edge: negative margin + padding for safe area. Use for sticky filter/day bars. */
