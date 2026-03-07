@@ -1,19 +1,6 @@
 /**
- * Curated Cyprus image URLs. Local AI-generated images + verified Unsplash.
- * next.config allows images.unsplash.com.
+ * Curated Cyprus image URLs. Local images only (no Unsplash) for reliability.
  */
-const US = (id: string, w = 800) =>
-  `https://images.unsplash.com/photo-${id}?w=${w}&q=80`;
-
-const U = {
-  coast: "1539650116574-8efeb43e2750",
-  ruins: "1552832230-c0197dd311b5",
-  village: "1568322446-0503a976ec5d",
-  monastery: "1548013146-72479768bada",
-  nature: "1551632811-561732d1e306",
-  dining: "1550962992-2b5b0be9e0f4",
-};
-
 const local = "/images/cyprus";
 
 /** Map attraction id to image URL. */
@@ -31,16 +18,16 @@ export function getAttractionImage(id: string, type: string): string {
     "tomb-of-kings": `${local}/cyprus-tomb-of-kings.jpg`,
     salamis: `${local}/cyprus-salamis.jpg`,
     "st-hilarion": `${local}/cyprus-st-hilarion.jpg`,
-    amahti: US(U.ruins),
-    choirokoitia: US(U.ruins),
-    kolossi: US(U.ruins),
-    palaipafos: US(U.ruins),
-    buffavento: US(U.monastery),
-    "cyprus-museum": US(U.ruins),
+    amahti: `${local}/cyprus-ancient-kourion.jpg`,
+    choirokoitia: `${local}/cyprus-ancient-kourion.jpg`,
+    kolossi: `${local}/cyprus-ancient-kourion.jpg`,
+    palaipafos: `${local}/cyprus-ancient-kourion.jpg`,
+    buffavento: `${local}/cyprus-monastery-kykkos.jpg`,
+    "cyprus-museum": `${local}/cyprus-ancient-kourion.jpg`,
     bellapais: `${local}/cyprus-bellapais.jpg`,
-    "leventis-museum": US(U.ruins),
-    "paphos-castle": US(U.ruins),
-    idalion: US(U.ruins),
+    "leventis-museum": `${local}/cyprus-ancient-kourion.jpg`,
+    "paphos-castle": `${local}/cyprus-ancient-kourion.jpg`,
+    idalion: `${local}/cyprus-ancient-kourion.jpg`,
     kalopanagiotis: `${local}/cyprus-village-omodos.jpg`,
     lefkara: `${local}/cyprus-lefkara.jpg`,
     polis: `${local}/cyprus-polis.jpg`,
@@ -66,7 +53,7 @@ export function getAttractionImage(id: string, type: string): string {
     koili: `${local}/cyprus-village-omodos.jpg`,
     "kritou-terra": `${local}/cyprus-village-omodos.jpg`,
     kormakitis: `${local}/cyprus-village-omodos.jpg`,
-    angeloktisti: US(U.ruins),
+    angeloktisti: `${local}/cyprus-ancient-kourion.jpg`,
     kykkos: `${local}/cyprus-monastery-kykkos.jpg`,
     "st-neophytos": `${local}/cyprus-monastery-kykkos.jpg`,
     trooditissa: `${local}/cyprus-monastery-kykkos.jpg`,
@@ -80,55 +67,55 @@ export function getAttractionImage(id: string, type: string): string {
     "st-nicholas-roof": `${local}/cyprus-monastery-kykkos.jpg`,
     "panagia-tou-moutoulla": `${local}/cyprus-monastery-kykkos.jpg`,
     "st-sozomenos": `${local}/cyprus-st-hilarion.jpg`,
-    "zygi-tavernas": US(U.coast),
+    "zygi-tavernas": `${local}/cyprus-governors-beach.jpg`,
     "governors-beach-tavernas": `${local}/cyprus-governors-beach.jpg`,
-    "the-polo": US(U.dining),
-    "the-farmyard": US(U.village),
-    "polis-harbour": US(U.coast),
+    "the-polo": `${local}/cyprus-village-omodos.jpg`,
+    "the-farmyard": `${local}/cyprus-village-omodos.jpg`,
+    "polis-harbour": `${local}/cyprus-governors-beach.jpg`,
     "psilo-dendro": `${local}/cyprus-village-omodos.jpg`,
     "kakopetria-trout": `${local}/cyprus-village-omodos.jpg`,
     "kouklia-cafe": `${local}/cyprus-ancient-kourion.jpg`,
     "kiti-tavernas": `${local}/cyprus-village-omodos.jpg`,
     "platres-trout": `${local}/cyprus-village-omodos.jpg`,
-    "latsi-harbour": US(U.coast),
-    "nicosia-tavernas": US(U.village),
-    "pissouri-tavernas": US(U.coast),
+    "latsi-harbour": `${local}/cyprus-governors-beach.jpg`,
+    "nicosia-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "pissouri-tavernas": `${local}/cyprus-governors-beach.jpg`,
     "omodos-tavernas": `${local}/cyprus-village-omodos.jpg`,
-    "limassol-marina": US(U.coast),
-    "limassol-marina-restaurants": US(U.coast),
-    "protaras-tavernas": US(U.coast),
-    "larnaca-old-town": US(U.coast),
-    "pafos-harbour": US(U.coast),
+    "limassol-marina": `${local}/cyprus-governors-beach.jpg`,
+    "limassol-marina-restaurants": `${local}/cyprus-governors-beach.jpg`,
+    "protaras-tavernas": `${local}/cyprus-governors-beach.jpg`,
+    "larnaca-old-town": `${local}/cyprus-governors-beach.jpg`,
+    "pafos-harbour": `${local}/cyprus-governors-beach.jpg`,
     "agros-tavernas": `${local}/cyprus-village-omodos.jpg`,
     "lefkara-tavernas": `${local}/cyprus-lefkara.jpg`,
     "kathikas-tavernas": `${local}/cyprus-village-omodos.jpg`,
-    "limassol-old-town": US(U.village),
-    "kyrenia-tavernas": US(U.coast),
-    "ayia-napa-tavernas": US(U.coast),
+    "limassol-old-town": `${local}/cyprus-village-omodos.jpg`,
+    "kyrenia-tavernas": `${local}/cyprus-governors-beach.jpg`,
+    "ayia-napa-tavernas": `${local}/cyprus-governors-beach.jpg`,
     "troodos-square": `${local}/cyprus-village-omodos.jpg`,
     "solea-valley": `${local}/cyprus-village-omodos.jpg`,
-    "zygi-mikri": US(U.coast),
+    "zygi-mikri": `${local}/cyprus-governors-beach.jpg`,
     "kourion-tavernas": `${local}/cyprus-ancient-kourion.jpg`,
-    "cor-gastronomy": US(U.dining),
-    "sentio": US(U.dining),
-    "santo-restaurant": US(U.coast),
-    "seasons-oriental": US(U.dining),
+    "cor-gastronomy": `${local}/cyprus-village-omodos.jpg`,
+    "sentio": `${local}/cyprus-village-omodos.jpg`,
+    "santo-restaurant": `${local}/cyprus-governors-beach.jpg`,
+    "seasons-oriental": `${local}/cyprus-village-omodos.jpg`,
   };
   const fallbacks: Record<string, string> = {
-    beach: US(U.coast),
-    ancient: US(U.ruins),
-    village: US(U.village),
-    monastery: US(U.monastery),
+    beach: `${local}/cyprus-governors-beach.jpg`,
+    ancient: `${local}/cyprus-ancient-kourion.jpg`,
+    village: `${local}/cyprus-village-omodos.jpg`,
+    monastery: `${local}/cyprus-monastery-kykkos.jpg`,
     winery: `${local}/cyprus-winery-troodos.jpg`,
-    nature: US(U.nature),
-    restaurant: US(U.dining),
+    nature: `${local}/cyprus-trail-troodos.jpg`,
+    restaurant: `${local}/cyprus-village-omodos.jpg`,
   };
   const wineryImages: Record<string, string> = {
     "domes-sergiou": `${local}/domes-sergiou-hero.png`,
   };
   if (type === "winery") return wineryImages[id] ?? fallbacks.winery;
   if (type === "restaurant") return map[id] ?? fallbacks.restaurant;
-  return map[id] ?? fallbacks[type] ?? US(U.nature);
+  return map[id] ?? fallbacks[type] ?? `${local}/cyprus-trail-troodos.jpg`;
 }
 
 const trailImages: Record<string, string> = {

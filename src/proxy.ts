@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { routing } from "@/i18n/routing";
 
-// Security headers proxy handler (request required by Next.js proxy signature)
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- required param
+const intlMiddleware = createIntlMiddleware(routing);
+
+// Chain next-intl (locale routing) with security headers
 export default function proxy(request: NextRequest): NextResponse {
+  const response = intlMiddleware(request);
+
   // Build CSP header
   const cspHeader = [
     "default-src 'self'",
@@ -26,8 +31,6 @@ export default function proxy(request: NextRequest): NextResponse {
     "upgrade-insecure-requests",
   ].join("; ");
 
-  const response = NextResponse.next();
-
   // Add security headers
   response.headers.set("Content-Security-Policy", cspHeader);
   response.headers.set("X-Frame-Options", "DENY");
@@ -43,15 +46,5 @@ export default function proxy(request: NextRequest): NextResponse {
 
 // Configure proxy to run on all routes except static files
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - manifest.json (PWA manifest)
-     * - icon-*.png (PWA icons)
-     */
-    "/((?!_next/static|_next/image|favicon.ico|manifest.json|icon-).*)",
-  ],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

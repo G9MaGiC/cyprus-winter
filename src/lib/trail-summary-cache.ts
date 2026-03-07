@@ -7,7 +7,7 @@ import { getLatestReportsByTrail } from "./trail-reports";
 
 const CACHE_KEY = "trail_summary";
 const MEMORY_TTL_MS = 10 * 60 * 1000; // 10 minutes
-const FETCH_TIMEOUT_MS = 5000; // 5s to avoid blocking page on Vercel
+const FETCH_TIMEOUT_MS = 3000; // 3s to avoid blocking page
 
 const FEATURED_TRAILS = ["artemis", "caledonia-falls", "atalante", "olympus-summit"] as const;
 

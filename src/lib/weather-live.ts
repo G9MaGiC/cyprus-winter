@@ -15,7 +15,7 @@ export type LiveWeather = {
 
 let cache: { data: LiveWeather; updatedAt: number } | null = null;
 
-const FETCH_TIMEOUT_MS = 6000; // 6s to avoid blocking page on Vercel
+const FETCH_TIMEOUT_MS = 3000; // 3s to avoid blocking page
 
 /** Weather at specific coordinates (for Right Now feed). */
 export type WeatherAtCoords = {
@@ -56,7 +56,7 @@ async function fetchOpenMeteo(lat: number, lng: number): Promise<{ min: number; 
   }
 }
 
-const OVERALL_TIMEOUT_MS = 8000; // Max wait to avoid blocking page on Vercel
+const OVERALL_TIMEOUT_MS = 4000; // Max wait to avoid blocking page
 
 export async function getLiveWeather(): Promise<LiveWeather | null> {
   const now = Date.now();

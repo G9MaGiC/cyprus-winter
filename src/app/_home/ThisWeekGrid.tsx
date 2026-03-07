@@ -45,7 +45,7 @@ function formatTrailStatus(status: string, surface: string): string {
   return `${s} · ${surf}`;
 }
 
-const FETCH_TIMEOUT_MS = 8000; // Max wait to avoid blocking page
+const FETCH_TIMEOUT_MS = 4000; // Max wait to avoid blocking page
 
 export default async function ThisWeekGrid() {
   let trailSummary: TrailSummary | null = null;
