@@ -1,0 +1,46 @@
+{
+  "footer": {
+    "discover": "Entdecken",
+    "plan": "Planen",
+    "airport": "Flughafen",
+    "weather": "Wetter",
+    "bookings": "Buchungen",
+    "tagline": "Cyprus Winter — Ihr Inselführer von der Landung bis zum Sonnenuntergang.",
+    "tips": "Notfall: 112 · Touristeninformation: 1460"
+  },
+  "nav": {
+    "discover": "Entdecken",
+    "plan": "Planen",
+    "trails": "Wanderwege",
+    "events": "Veranstaltungen",
+    "airport": "Flughafen"
+  },
+  "home": {
+    "title": "Cyprus Winter",
+    "subtitle": "Trails, Kultur & Dörfer",
+    "cta": {
+      "arriving": "Gerade angekommen? Hier starten",
+      "explore": "Entdecken Sie"
+    }
+  },
+  "common": {
+    "nav": {
+      "discover": "Entdecken",
+      "trip": "Reiseplan",
+      "airport": "Flughafen"
+    }
+  },
+  "ui": {
+    "hero": {
+      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
+    },
+    "app__home_HomeHero": {
+      "text_13": "Winter auf Zypern",
+      "text_14": "Wanderwege, Dörfer, Wein",
+      "text_16": "Planen Sie im Voraus oder starten Sie die Erkundung nach der Landung.",
+      "aria-label_10": "Zu Entdecken gehen",
+      "aria-label_11": "Ihren Reiseplan anzeigen",
+      "aria-label_12": "Transport vom Flughafen, Tipps"
+    }
+  }
+}

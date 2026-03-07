@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
     }
     return Response.json(
       { ok: true },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 120) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 120, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Track API error:", err);

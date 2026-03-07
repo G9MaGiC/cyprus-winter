@@ -6,7 +6,8 @@ import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import PageHeader from "@/components/PageHeader";
 import type { Booking } from "@/lib/bookings";
-import { loadLocalBookings, saveLocalBookings } from "@/lib/bookings-storage";
+import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/bookings-storage";
+
 import { formatDate, daysUntil, getUpcomingDateGroup } from "@/lib/format";
 import BookingsEmailLookup from "@/components/BookingsEmailLookup";
 
@@ -69,15 +70,7 @@ export default function BookingsPage() {
       }
       const apiBookings = (data.bookings ?? []) as Booking[];
       const local = loadLocalBookings();
-      const seen = new Set(local.map((b) => b.id));
-      const merged = [...local];
-      for (const b of apiBookings) {
-        if (!seen.has(b.id)) {
-          merged.push(b);
-          seen.add(b.id);
-        }
-      }
-      merged.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
+      const merged = mergeBookings(local, apiBookings);
       saveLocalBookings(merged);
       setBookings(merged);
       if (apiBookings.length === 0) {

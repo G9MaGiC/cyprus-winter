@@ -89,16 +89,19 @@
 ### 1.3 Phase-Based Architecture
 
 **Phase 1 (MVP — Current → Nov 2026):**
-- Static/semi-static: `src/data/*.ts` for content
-- Itinerary in `localStorage` only
-- No auth, no backend
+- Static content: `src/data/*.ts` + Supabase for user-generated data
+- Itinerary: `localStorage` primary; optional Supabase trips sync for signed-in users
+- Backend: Supabase for bookings, trail reports, trips, conversion tracking
+- Email: Resend for booking confirmation and winery notifications (optional; skipped if `RESEND_API_KEY` not set)
 - PWA shell with offline content
 
+Data flow: `localStorage` = device cache; Supabase = canonical for bookings; merge on "Load by email" for cross-device sync.
+
 **Phase 2 (Winter Growth — Dec 2026):**
-- PostgreSQL for itineraries, trail reports, reviews
+- Itineraries and trail reports in PostgreSQL (partially in place)
 - Auth (anonymous + optional account)
 - Weather API + cached trail conditions
-- Basic booking redirect (external links)
+- In-app booking already live; Phase 2 adds payment, richer flows
 
 **Phase 3 (Full Winter Mode — Q1 2027):**
 - In-app booking, payment
@@ -119,6 +122,8 @@
 | Styling | Tailwind CSS | 4.x |
 | Language | TypeScript | 5.x |
 | Fonts | Fraunces (headings), Inter (body) | Google Fonts |
+
+**Currently in use (Phase 1):** Supabase (bookings, trail reports, trips, auth), Resend (transactional email), Leaflet/OpenStreetMap (maps).
 
 ### 2.2 Proposed Additions (Phase 2+)
 
@@ -547,6 +552,34 @@ export async function markReportHelpful(reportId: string) { ... }
 | Trail report submit | 5 req/hour per user |
 | Itinerary mutations | 60 req/min per user |
 | Booking | 10 req/min per user |
+
+### 4.5 Stress Testing
+
+**Command:**
+```bash
+# Basic test (respects rate limits)
+npm run stress:api
+
+# With rate limit bypass (development only)
+STRESS_BYPASS=1 node scripts/stress-test-apis.mjs http://localhost:3000 30 60
+
+# With chat API included
+STRESS_INCLUDE_CHAT=1 STRESS_BYPASS=1 node scripts/stress-test-apis.mjs
+```
+
+**Configuration:**
+- `STRESS_BYPASS=1` - Adds `x-stress-test: bypass` header to bypass rate limits
+- `STRESS_TEST_TOKEN=<token>` - Production bypass token (set in environment)
+- Concurrency and duration: `node scripts/stress-test-apis.mjs <url> <concurrency> <durationSec>`
+
+**Current Performance (30 concurrent users):**
+| Endpoint | RPS | Success Rate | Avg Latency |
+|----------|-----|--------------|-------------|
+| Health | 219 | 100% | 136ms |
+| Get Bookings | 163 | 100% | 183ms |
+| Create Booking | 188 | 100% | 159ms |
+
+See `docs/STRESS_TEST_RESULTS.md` for detailed analysis.
 
 ---
 

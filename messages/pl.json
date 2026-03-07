@@ -1,0 +1,46 @@
+{
+  "footer": {
+    "discover": "Odkrywaj",
+    "plan": "Planuj",
+    "airport": "Lotnisko",
+    "weather": "Pogoda",
+    "bookings": "Rezerwacje",
+    "tagline": "Cyprus Winter — Twój przewodnik po wyspie od przylotu do zachodu słońca.",
+    "tips": "Numer alarmowy: 112 · Informacja turystyczna: 1460"
+  },
+  "nav": {
+    "discover": "Odkrywaj",
+    "plan": "Planuj",
+    "trails": "Szlaki",
+    "events": "Wydarzenia",
+    "airport": "Lotnisko"
+  },
+  "home": {
+    "title": "Cyprus Winter",
+    "subtitle": "Szlaki, Dziedzictwo & Wioski",
+    "cta": {
+      "arriving": "Właśnie przyleciałeś? Zacznij tutaj",
+      "explore": "Zacznij odkrywać"
+    }
+  },
+  "common": {
+    "nav": {
+      "discover": "Odkrywaj",
+      "trip": "Plan podróży",
+      "airport": "Lotnisko"
+    }
+  },
+  "ui": {
+    "hero": {
+      "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
+    },
+    "app__home_HomeHero": {
+      "text_13": "Zima na Cyprze",
+      "text_14": "Szlaki, wioski, wino",
+      "text_16": "Planuj z wyprzedzeniem lub zacznij odkrywać po wylądowaniu.",
+      "aria-label_10": "Przejdź do Odkrywaj",
+      "aria-label_11": "Zobacz plan podróży",
+      "aria-label_12": "Transport z lotniska, wskazówki"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "footer": {
+    "discover": "Discover",
+    "plan": "Plan",
+    "airport": "Airport",
+    "weather": "Weather",
+    "bookings": "Bookings",
+    "tagline": "Cyprus Winter — Your island guide from touchdown to sunset.",
+    "tips": "Emergency: 112 · Tourist info: 1460"
+  },
+  "nav": {
+    "discover": "Discover",
+    "plan": "Plan",
+    "trails": "Trails",
+    "events": "Events",
+    "airport": "Airport"
+  },
+  "home": {
+    "title": "Cyprus Winter",
+    "subtitle": "Trails, Heritage & Villages",
+    "cta": {
+      "arriving": "Just arrived? Start here",
+      "explore": "Start exploring"
+    }
+  },
+  "common": {
+    "nav": {
+      "discover": "Discover",
+      "trip": "Itinerary",
+      "airport": "Airport"
+    }
+  },
+  "ui": {
+    "hero": {
+      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+    },
+    "app__home_HomeHero": {
+      "text_13": "Winter in Cyprus",
+      "text_14": "Trails, villages, wine",
+      "text_16": "Plan ahead or start exploring when you land.",
+      "aria-label_10": "Go to Discover",
+      "aria-label_11": "View your itinerary",
+      "aria-label_12": "Transport from airport, tips"
+    }
+  }
+}

@@ -56,24 +56,37 @@ export async function POST(req: NextRequest) {
       leadFeeEur: winery.partnerLeadFeeEur,
     });
 
-    // Optional: send confirmation to guest (no-op if RESEND_API_KEY not set)
-    sendBookingConfirmation(booking).catch((e) => {
+    let confirmationSent = false;
+    let wineryNotificationSent = false;
+    try {
+      confirmationSent = await sendBookingConfirmation(booking);
+    } catch (e) {
       console.error("Guest email send failed:", e);
-    });
+    }
 
-    // Verified partners: notify winery so they can confirm
     if (winery.isVerified && winery.partnerEmail?.trim()) {
-      sendBookingRequestToWinery(booking, {
-        name: winery.name,
-        partnerEmail: winery.partnerEmail.trim(),
-      }).catch((e) => {
+      try {
+        wineryNotificationSent = await sendBookingRequestToWinery(booking, {
+          name: winery.name,
+          partnerEmail: winery.partnerEmail.trim(),
+        });
+      } catch (e) {
         console.error("Winery notification send failed:", e);
-      });
+      }
     }
 
     return Response.json(
-      { booking, message: "Booking request sent. The winery will be in touch." },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 10) }
+      {
+        booking,
+        message: "Booking request sent. The winery will be in touch.",
+        emailStatus: {
+          confirmationSent,
+          ...(winery.isVerified && winery.partnerEmail?.trim()
+            ? { wineryNotificationSent }
+            : {}),
+        },
+      },
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Booking API error:", err);
@@ -108,7 +121,7 @@ export async function GET(req: NextRequest) {
     const bookings = await getBookingsByEmail(parsed.data);
     return Response.json(
       { bookings },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 15) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 15, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Bookings GET error:", err);

@@ -3,7 +3,7 @@ import path from "path";
 
 const nextConfig: NextConfig = {
   turbopack: { root: path.resolve(__dirname) },
-  distDir: "dist/next",
+  distDir: ".next",
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // i18n configuration for next-intl
+  // Note: Locale routing is handled by next-intl middleware pattern
+  // Locale paths are defined in src/i18n/routing.ts
 };
 
 export default nextConfig;

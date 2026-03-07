@@ -1,0 +1,12 @@
+{
+	"appId": "com.cypruswinter.app",
+	"appName": "Cyprus Winter",
+	"webDir": "public",
+	"server": {
+		"url": "https://cypruswinter.com",
+		"cleartext": false
+	},
+	"android": {
+		"allowMixedContent": false
+	}
+}

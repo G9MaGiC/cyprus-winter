@@ -32,4 +32,27 @@ describe("search", () => {
     const results = search("cyprus", 3);
     expect(results.length).toBeLessThanOrEqual(3);
   });
+  it("returns empty array when no matches", () => {
+    const results = search("xyznonexistent123", 10);
+    expect(results).toEqual([]);
+  });
+
+  it("trims leading/trailing whitespace", () => {
+    const results = search("  omodos  ", 5);
+    expect(results.length).toBeGreaterThan(0);
+  });
+
+  it("returns results with kind and href", () => {
+    const results = search("omodos", 1);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0]).toHaveProperty("kind");
+    expect(results[0]).toHaveProperty("href");
+    expect(results[0].href).toMatch(/^\//);
+  });
+
+  it("matches case-insensitively", () => {
+    const results = search("KOURION", 5);
+    expect(results.length).toBeGreaterThan(0);
+  });
+
 });

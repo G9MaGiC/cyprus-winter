@@ -63,7 +63,7 @@ export async function GET(req: NextRequest) {
         funnelCounts,
         storage: usesDb ? "supabase" : "memory",
       },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 30) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 30, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Stats API error:", err);

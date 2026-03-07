@@ -17,6 +17,8 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyAddToPlanBar from "@/components/StickyAddToPlanBar";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getSecretsForPlace } from "@/data/secret-gems";
+import TrackView from "@/components/TrackView";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -110,6 +112,8 @@ export default async function AttractionPage({
       {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
+        <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
+        <Breadcrumbs />
         <BackLink href="/discover" label="Back to Discover" />
 
         <article aria-label={`${a.name}, ${a.type} in ${a.region}`}>

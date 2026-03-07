@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
 
     return Response.json(
       { reply },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 20) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 20, limitResult.bypassed) }
     );
   } catch (err) {
     const message = err instanceof Error ? err.message : "Something went wrong.";

@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
   const ok = !hasSupabase() || supabaseOk;
 
   const headers: HeadersInit = {
-    ...rateLimitSuccessHeaders(limitResult.remaining, 60),
+    ...rateLimitSuccessHeaders(limitResult.remaining, 60, limitResult.bypassed),
     "Cache-Control": ok ? "public, s-maxage=60, stale-while-revalidate=120" : "no-store",
   };
   return NextResponse.json(

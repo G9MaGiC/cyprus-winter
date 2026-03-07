@@ -16,10 +16,26 @@ describe("createBookingSchema", () => {
     expect(result.success).toBe(true);
   });
 
+  it("rejects wrong type", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      type: "restaurant",
+    });
+    expect(result.success).toBe(false);
+  });
+
   it("rejects invalid date format", () => {
     const result = createBookingSchema.safeParse({
       ...valid,
       date: "15-03-2026",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects guestEmail over 254 chars", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      guestEmail: "a".repeat(250) + "@b.co",
     });
     expect(result.success).toBe(false);
   });
@@ -39,4 +55,52 @@ describe("createBookingSchema", () => {
     });
     expect(result.success).toBe(false);
   });
+  it("rejects empty providerId", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      providerId: "",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects party size 0", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      partySize: 0,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects notes over 500 chars", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      notes: "x".repeat(501),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects partySize over 20", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      partySize: 21,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects guestName over 200 chars", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      guestName: "x".repeat(201),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts optional notes", () => {
+    const result = createBookingSchema.safeParse({
+      ...valid,
+      notes: "Window seat please",
+    });
+    expect(result.success).toBe(true);
+  });
+
 });

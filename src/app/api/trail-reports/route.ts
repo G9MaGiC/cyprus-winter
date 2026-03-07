@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
         report,
         message: "Thanks for the report. It helps other hikers.",
       },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 10) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Trail report API error:", err);

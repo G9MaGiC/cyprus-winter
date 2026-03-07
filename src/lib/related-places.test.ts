@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getRelatedPlaces } from "./related-places";
+import { getRelatedPlaces, getCombineWith } from "./related-places";
 import { allAttractions } from "@/data";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
@@ -22,6 +22,12 @@ describe("getRelatedPlaces", () => {
     expect(result[0].name).toContain("Artemis");
     expect(result[0].href).toBe("/trails/artemis");
     expect(result[0].type).toBe("trail");
+  });
+
+  it("returns restaurant for known restaurant id", () => {
+    const result = getRelatedPlaces(["zygi-tavernas"]);
+    expect(result.length).toBe(1);
+    expect(result[0].type).toBe("restaurant");
   });
 
   it("skips unknown ids", () => {
@@ -48,3 +54,23 @@ describe("combineWith validation", () => {
     }
   });
 });
+
+import { getCombineWith } from "./related-places";
+
+describe("getCombineWith", () => {
+  it("returns empty array for place without combineWith", () => {
+    const ids = getCombineWith("unknown-xyz");
+    expect(ids).toEqual([]);
+  });
+
+  it("returns multiple places for multiple ids", () => {
+    const result = getRelatedPlaces(["omodos", "artemis", "unknown"]);
+    expect(result.length).toBe(2);
+  });
+
+  it("returns combineWith IDs for place that has them", () => {
+    const ids = getCombineWith("artemis");
+    expect(Array.isArray(ids)).toBe(true);
+  });
+});
+

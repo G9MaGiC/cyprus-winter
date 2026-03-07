@@ -11,6 +11,7 @@ import ConversionTracker from "@/components/ConversionTracker";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const AIAssistant = dynamic(() => import("@/components/AIAssistant"), { loading: () => null });
+const OnboardingModal = dynamic(() => import("@/components/OnboardingModal"), { loading: () => null });
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -77,6 +78,14 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.variable} ${fraunces.variable} font-sans antialiased min-h-screen bg-background`}
       >
+        {/* JavaScript disabled warning */}
+        <noscript>
+          <div className="bg-terracotta text-white px-4 py-3 text-center text-sm">
+            <strong>JavaScript is required</strong> for full functionality. 
+            You can still browse trails and places, but features like the itinerary planner and AI assistant require JavaScript.
+          </div>
+        </noscript>
+        
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[9999] min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-terracotta text-white rounded-full font-medium -translate-y-[200%] focus-visible:translate-y-0 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -104,6 +113,7 @@ export default function RootLayout({
           </div>
         </footer>
         <AIAssistant />
+        <OnboardingModal />
       </body>
     </html>
   );

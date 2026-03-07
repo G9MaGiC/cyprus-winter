@@ -10,12 +10,14 @@ import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
 import EditorsPicks from "@/app/_home/EditorsPicks";
 import BookTastings from "@/app/_home/BookTastings";
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
+import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 
 export default function Home() {
   return (
     <div className="relative overflow-hidden bg-background">
       <HomeHero />
       <StartHereStrip />
+      <RecentlyViewedStrip />
       <div id="plan-sentinel" className="h-px" aria-hidden />
       <StickyPlanBar sentinelId="plan-sentinel" />
 
