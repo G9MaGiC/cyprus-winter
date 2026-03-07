@@ -17,7 +17,7 @@ for (const dir of dirs) {
   try {
     execSync(`rm -rf "${path}"`, { cwd, stdio: 'inherit' });
     console.log(`Removed ${dir}/`);
-  } catch (err) {
+  } catch {
     console.error(`\nPermission denied on ${dir}. Run:`);
     console.error('  sudo rm -rf dist .next .next-build');
     console.error('  sudo chown -R $(whoami) .');
