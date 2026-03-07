@@ -38,12 +38,21 @@ export default function BeforeYouGoChecklist({
   className = "",
 }: BeforeYouGoChecklistProps) {
   const ids = useMemo(() => tips.map((t) => t.id), [tips]);
-  const idsKey = ids.join(",");
-  const [checked, setChecked] = useState<Set<string>>(() => loadChecked(ids));
+  const [checked, setChecked] = useState<Set<string>>(() => new Set());
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    saveChecked(checked, ids);
-  }, [checked, ids, idsKey]);
+    const data = loadChecked(ids);
+    const raf = requestAnimationFrame(() => {
+      setChecked(data);
+      setHydrated(true);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [ids]);
+
+  useEffect(() => {
+    if (hydrated) saveChecked(checked, ids);
+  }, [checked, ids, hydrated]);
 
   const toggle = (id: string) => {
     setChecked((prev) => {

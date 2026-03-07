@@ -10,7 +10,7 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 export const metadata: Metadata = {
   title: "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
   description:
-    "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six.",
+    "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six. Free.",
   alternates: { canonical: `${SITE_URL}/villages` },
 };
 

@@ -110,7 +110,7 @@ export default async function AttractionPage({
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-sand">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(attractionSchema) }} />
       {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -151,7 +151,7 @@ export default async function AttractionPage({
 
             {/* Highlights + Great for — quick scan */}
             <section>
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-3">
+              <h2 className="prose-label text-olive/70 mb-3">
                 Highlights
               </h2>
               <ul className="flex flex-wrap gap-2">
@@ -165,7 +165,7 @@ export default async function AttractionPage({
                 ))}
               </ul>
               <div className="mt-4">
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-olive/60 mb-1">
+                <h3 className="prose-label text-olive/70 mb-1">
                   Great for
                 </h3>
                 <p className="text-olive/80 text-base break-words">{a.bestFor.join(" · ")}</p>
@@ -187,7 +187,7 @@ export default async function AttractionPage({
             {/* Winery: Tasting + Book CTA early */}
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-3">
+                <h2 className="prose-label text-olive/70 mb-3">
                   Visit & taste
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.tastingInfo}</p>
@@ -227,7 +227,7 @@ export default async function AttractionPage({
           a.contactPhone ||
           ("shopUrl" in a && a.shopUrl)) && (
           <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-1">
+            <h2 className="prose-label text-olive/70 mb-1">
               Book & contact
             </h2>
             {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
@@ -319,7 +319,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
-                <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
+                <h2 className="prose-label text-olive/70 mb-4">
                   Our wines
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -356,7 +356,7 @@ export default async function AttractionPage({
 
             {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
-                <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
+                <h2 className="prose-label text-olive/70 mb-4">
                   Local secret
                 </h2>
             {a.winterTip && (
@@ -377,7 +377,7 @@ export default async function AttractionPage({
 
             {"backstory" in a && a.backstory && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
+                <h2 className="prose-label text-olive/70 mb-4">
                   Backstory
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.backstory}</p>
@@ -392,7 +392,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
-                <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
+                <h2 className="prose-label text-olive/70 mb-4">
                   Location
                 </h2>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video bg-olive/5">
@@ -451,7 +451,7 @@ export default async function AttractionPage({
               />
             )}
 
-            <footer className="pt-8 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative">
+            <footer className="pt-8 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label="Place actions">
               <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-olive/70 text-sm break-words">
                 Add this place to your plan and pair it with a trail or village nearby.

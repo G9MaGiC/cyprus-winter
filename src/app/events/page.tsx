@@ -1,12 +1,14 @@
 "use client";
 
-import { useMemo, useState, useId } from "react";
+import { useMemo, useId } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
-import { LAYOUT, CARD, EMPTY_STATE, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
+import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
 
 const TYPE_LABELS: Record<string, string> = {
@@ -37,6 +39,10 @@ const MONTH_FULL: Record<string, string> = {
 };
 
 const HIGHLIGHT_IDS = ["epiphany-cyprus", "limassol-carnival"];
+
+const REGIONS_LIST = Array.from(new Set(winterEvents.map((e) => e.region)))
+  .filter((r) => r !== "All")
+  .sort();
 
 
 function EventCard({
@@ -119,10 +125,14 @@ function EventCard({
 }
 
 export default function EventsPage() {
-  const [typeFilter, setTypeFilter] = useState<string>("");
-  const [regionFilter, setRegionFilter] = useState<string>("");
+  const searchParams = useSearchParams();
+  const typeFromUrl = searchParams.get("type") ?? "";
+  const regionFromUrl = searchParams.get("region") ?? "";
   const typeLabelId = useId();
   const regionLabelId = useId();
+
+  const typeFilter = ["festival", "market", "concert", "food", "culture", "sport"].includes(typeFromUrl) ? typeFromUrl : "";
+  const regionFilter = REGIONS_LIST.includes(regionFromUrl) ? regionFromUrl : "";
 
   const filtered = useMemo(() => {
     return winterEvents.filter((e) => {
@@ -150,15 +160,14 @@ export default function EventsPage() {
     return acc;
   }, [regular]);
 
-  const regions = useMemo(
-    () =>
-      Array.from(new Set(winterEvents.map((e) => e.region)))
-        .filter((r) => r !== "All")
-        .sort(),
-    []
-  );
-
   const monthNavMonths = MONTH_ORDER.filter((m) => byMonth[m]?.length);
+
+  const buildFilterHref = (type: string, region: string) => {
+    const q = new URLSearchParams();
+    if (type) q.set("type", type);
+    if (region) q.set("region", region);
+    return q.toString() ? `/events?${q.toString()}` : "/events";
+  };
 
   return (
     <div className="min-h-screen bg-sand">
@@ -172,6 +181,7 @@ export default function EventsPage() {
           backLabel="Home"
           backgroundImage="/images/cyprus/cyprus-monastery-kykkos.jpg"
           backgroundImageAlt="Kykkos monastery, Troodos—Cyprus winter culture and events"
+          hasWidgetStrip
         >
           <div className="mt-4">
             <Link
@@ -187,16 +197,14 @@ export default function EventsPage() {
           </p>
         </ListPageHero>
 
-        <div className="mt-4 relative">
-          <div id="events-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-        </div>
         <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
 
-        {/* Filters — collapsible on mobile, single row on lg */}
-        <section
-          aria-label="Filter events"
-          className="mb-10 sm:mb-12"
-        >
+        <ListPageWidgetStrip sticky sentinelId="events-plan-sentinel" ariaLabel="Filter events">
+          {/* Filters — collapsible on mobile, single row on lg */}
+          <section
+            aria-label="Filter events"
+            className="mb-0"
+          >
           <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-4 lg:gap-6">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 flex-1 min-w-0">
               <span
@@ -210,24 +218,22 @@ export default function EventsPage() {
                 role="group"
                 aria-labelledby={typeLabelId}
               >
-                <button
-                  type="button"
-                  onClick={() => setTypeFilter("")}
+                <Link
+                  href={buildFilterHref("", regionFilter)}
                   aria-pressed={!typeFilter}
-                  className={!typeFilter ? CTA.chipPrimary : CTA.chipSecondary}
+                  className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${!typeFilter ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
                 >
                   All
-                </button>
+                </Link>
                 {Object.entries(TYPE_LABELS).map(([id, label]) => (
-                  <button
+                  <Link
                     key={id}
-                    type="button"
-                    onClick={() => setTypeFilter(typeFilter === id ? "" : id)}
+                    href={buildFilterHref(typeFilter === id ? "" : id, regionFilter)}
                     aria-pressed={typeFilter === id}
-                    className={typeFilter === id ? CTA.chipPrimary : CTA.chipSecondary}
+                    className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${typeFilter === id ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
                   >
                     {label}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -243,31 +249,28 @@ export default function EventsPage() {
                 role="group"
                 aria-labelledby={regionLabelId}
               >
-                <button
-                  type="button"
-                  onClick={() => setRegionFilter("")}
+                <Link
+                  href={buildFilterHref(typeFilter, "")}
                   aria-pressed={!regionFilter}
-                  className={!regionFilter ? CTA.chipPrimary : CTA.chipSecondary}
+                  className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${!regionFilter ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
                 >
                   All
-                </button>
-                {regions.map((r) => (
-                  <button
+                </Link>
+                {REGIONS_LIST.map((r) => (
+                  <Link
                     key={r}
-                    type="button"
-                    onClick={() =>
-                      setRegionFilter(regionFilter === r ? "" : r)
-                    }
+                    href={buildFilterHref(typeFilter, regionFilter === r ? "" : r)}
                     aria-pressed={regionFilter === r}
-                    className={regionFilter === r ? CTA.chipPrimary : CTA.chipSecondary}
+                    className={`min-w-[44px] min-h-[44px] inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${regionFilter === r ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"}`}
                   >
                     {r}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
         </section>
+        </ListPageWidgetStrip>
 
         {filtered.length === 0 ? (
           <div
@@ -278,16 +281,12 @@ export default function EventsPage() {
             <p className="text-olive/80 break-words max-w-sm mx-auto">
               Nothing matches these filters. Try a different type or region.
             </p>
-            <button
-              type="button"
-              onClick={() => {
-                setTypeFilter("");
-                setRegionFilter("");
-              }}
-              className={`mt-5 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}
+            <Link
+              href="/events"
+              className={`mt-5 inline-flex ${CTA.secondaryCompact}`}
             >
               Clear filters
-            </button>
+            </Link>
           </div>
         ) : (
           <>
@@ -320,7 +319,7 @@ export default function EventsPage() {
               >
                 <h2
                   id="dont-miss"
-                  className="font-display text-xl font-semibold text-olive mb-3 sm:mb-4"
+                  className={`${TYPE.sectionTitle} mb-3 sm:mb-4`}
                 >
                   Don&apos;t miss
                 </h2>
@@ -380,7 +379,7 @@ export default function EventsPage() {
             >
               <h2
                 id="event-tips"
-                className="font-display font-semibold text-olive mb-4"
+                className={`${TYPE.sectionTitle} mb-4`}
               >
                 Planning tips
               </h2>

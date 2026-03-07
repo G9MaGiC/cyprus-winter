@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 
 type StickyAddToPlanBarProps = {
   placeId: string;
@@ -12,6 +13,7 @@ type StickyAddToPlanBarProps = {
 /**
  * Shows a sticky bottom bar with "Add to plan" on mobile when
  * the main CTA in the footer scrolls out of view.
+ * Hides when footer is in view to prevent overlap.
  */
 export default function StickyAddToPlanBar({
   placeId,
@@ -22,17 +24,39 @@ export default function StickyAddToPlanBar({
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
+    const footerSentinel = document.getElementById(FOOTER_SENTINEL_ID);
     if (!sentinel) return;
 
-    const observer = new IntersectionObserver(
+    let addBarVisible = false;
+    let footerInView = false;
+
+    const updateShow = () => setShow(addBarVisible && !footerInView);
+
+    const addObserver = new IntersectionObserver(
       ([entry]) => {
-        setShow(!entry.isIntersecting);
+        addBarVisible = !entry.isIntersecting;
+        updateShow();
       },
       { threshold: 0 }
     );
 
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+    const footerObserver = footerSentinel
+      ? new IntersectionObserver(
+          ([entry]) => {
+            footerInView = entry.isIntersecting;
+            updateShow();
+          },
+          { threshold: 0 }
+        )
+      : null;
+
+    addObserver.observe(sentinel);
+    if (footerSentinel && footerObserver) footerObserver.observe(footerSentinel);
+
+    return () => {
+      addObserver.disconnect();
+      footerObserver?.disconnect();
+    };
   }, [sentinelId]);
 
   if (!show) return null;

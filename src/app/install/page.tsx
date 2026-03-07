@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Install on SiteGround | Cyprus Winter",
   description: "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup.",
+  robots: { index: false, follow: false },
 };
 
 const steps = [

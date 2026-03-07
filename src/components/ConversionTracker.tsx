@@ -15,6 +15,7 @@ export default function ConversionTracker() {
     const isDiscover = pathname === "/discover";
     const isDiscoverDetail = pathname.startsWith("/discover/") && pathname !== "/discover";
     const isWineryBook = pathname.startsWith("/book/winery/");
+    const isGuideBook = pathname.startsWith("/book/guide/");
 
     track("page_view", { path: pathname });
 
@@ -31,6 +32,10 @@ export default function ConversionTracker() {
     if (isWineryBook && pathname !== prevPath.current) {
       const id = pathname.replace("/book/winery/", "");
       track("booking_start", { wineryId: id });
+    }
+    if (isGuideBook && pathname !== prevPath.current) {
+      const id = pathname.replace("/book/guide/", "").replace(/\?.*$/, "");
+      if (id) track("booking_start", { guideId: id });
     }
 
     prevPath.current = pathname;

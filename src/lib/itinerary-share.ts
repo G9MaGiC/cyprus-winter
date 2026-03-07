@@ -7,10 +7,13 @@ import { getPlaceById } from "@/data";
 
 export type ItineraryDays = Record<number, string[]>;
 
+/** Max days in the itinerary (supports Claire's 10–14 day stays). */
+export const MAX_DAYS = 14;
+
 /** Encode itinerary to URL-safe string. Skips invalid place IDs. */
 export function encodeItinerary(days: ItineraryDays): string {
   const parts: string[] = [];
-  for (let d = 1; d <= 5; d++) {
+  for (let d = 1; d <= MAX_DAYS; d++) {
     const ids = days[d] ?? [];
     const valid = ids.filter((id) => getPlaceById(id));
     if (valid.length > 0) {
@@ -26,14 +29,16 @@ export function decodeItinerary(param: string | null): ItineraryDays | null {
   const trimmed = param.trim();
   if (!trimmed) return null;
 
-  const out: ItineraryDays = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+  const out: ItineraryDays = Object.fromEntries(
+    Array.from({ length: MAX_DAYS }, (_, i) => [i + 1, [] as string[]])
+  ) as ItineraryDays;
   const dayParts = trimmed.split("|");
 
   for (const part of dayParts) {
     const colon = part.indexOf(":");
     if (colon < 1) continue;
     const day = parseInt(part.slice(0, colon), 10);
-    if (day < 1 || day > 5) continue;
+    if (day < 1 || day > MAX_DAYS) continue;
     const ids = part
       .slice(colon + 1)
       .split(",")

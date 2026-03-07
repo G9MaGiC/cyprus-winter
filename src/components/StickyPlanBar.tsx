@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LAYOUT } from "@/lib/design-tokens";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
+import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 
 type StickyPlanBarProps = {
   sentinelId: string;
@@ -12,6 +13,7 @@ type StickyPlanBarProps = {
 /**
  * Shows a sticky bottom bar with "Plan your trip" on mobile when
  * the sentinel scrolls out of view. Surfaces Plan CTA without reordering sections.
+ * Hides when footer is in view to prevent overlap.
  */
 export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
   const [show, setShow] = useState(false);
@@ -19,20 +21,41 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
+    const footerSentinel = document.getElementById(FOOTER_SENTINEL_ID);
     if (!sentinel) return;
 
-    const observer = new IntersectionObserver(
+    let passedPlan = false;
+    let footerInView = false;
+
+    const updateShow = () => {
+      setShow(passedPlan && !footerInView);
+    };
+
+    const planObserver = new IntersectionObserver(
       ([entry]) => {
-        // Only show after the user has scrolled past the sentinel (sentinel above viewport),
-        // not when the sentinel is simply below the fold on initial load.
-        const passedSentinel = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-        setShow(passedSentinel);
+        passedPlan = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        updateShow();
       },
       { threshold: 0 }
     );
 
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+    const footerObserver = footerSentinel
+      ? new IntersectionObserver(
+          ([entry]) => {
+            footerInView = entry.isIntersecting;
+            updateShow();
+          },
+          { threshold: 0 }
+        )
+      : null;
+
+    planObserver.observe(sentinel);
+    if (footerSentinel && footerObserver) footerObserver.observe(footerSentinel);
+
+    return () => {
+      planObserver.disconnect();
+      footerObserver?.disconnect();
+    };
   }, [sentinelId]);
 
   useEffect(() => {

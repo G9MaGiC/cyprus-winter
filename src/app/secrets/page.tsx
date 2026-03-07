@@ -10,7 +10,7 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 export const metadata: Metadata = {
   title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
   description:
-    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips for your trip.",
+    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips. Free guide.",
   alternates: { canonical: `${SITE_URL}/secrets` },
 };
 
@@ -30,7 +30,11 @@ export default function SecretsPage() {
         backLabel="Back to home"
         title="Cyprus Winter Local Secrets"
         description="Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place."
-      />
+      >
+        <Link href="/plan" className={`mt-4 px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+          Plan your trip
+        </Link>
+      </PageHeader>
 
       <h2 className="sr-only">Insider tips by region and type</h2>
       {secretGems.length === 0 ? (

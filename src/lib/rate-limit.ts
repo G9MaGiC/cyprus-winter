@@ -26,7 +26,9 @@ export type RateLimitScope =
   | "track"
   | "health"
   | "stats"
-  | "push-subscribe";
+  | "push-subscribe"
+  | "weather"
+  | "vapid";
 
 function hasRedisEnv(): boolean {
   return !!(

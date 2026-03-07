@@ -54,7 +54,7 @@ export function RecentlyViewedStrip() {
                 setItems([]);
               });
             }}
-            className="inline-flex items-center min-h-[44px] py-2 text-xs text-olive/50 hover:text-terracotta transition-colors"
+            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] py-2 px-3 -m-2 text-xs text-olive/50 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
           >
             Clear
           </button>

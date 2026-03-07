@@ -215,10 +215,10 @@ async function extractLib(out: Record<string, string>): Promise<void> {
   add(out, "common.footer.airport", "Arriving");
   add(out, "common.footer.weather", "Weather");
   add(out, "common.footer.bookings", "Bookings");
-  add(out, "common.footer.tagline", "Whether you found us from a Google search or at the airport: trails, villages, wine. Olive groves, kafenions, Commandaria. Emergency 112 · Tourist info 1460 · Ambulance 199.");
+  add(out, "common.footer.tagline", "Whether you found us from a Google search or at the airport: trails, villages, heritage. Olive groves, kafenions, Commandaria. Emergency 112 · Tourist info 1460 · Ambulance 199.");
   add(out, "common.footer.tips", "Drive on the left. Pack layers. The island rewards the curious. Winter November to March. Questions? Tap Ask AI.");
   add(out, "ui.hero.kicker", "Winter in Cyprus");
-  add(out, "ui.hero.headline", "Trails, villages, wine");
+  add(out, "ui.hero.headline", "Trails, villages, heritage");
   add(out, "ui.hero.intro", "Nature, heritage, and slow discovery. One trail, one village, one tasting.");
   add(out, "ui.hero.subtext", "Plan ahead or start exploring when you land.");
   add(out, "ui.hero.discoverAria", "Go to Discover");
@@ -303,7 +303,7 @@ function extractHomeHero(out: Record<string, string>): void {
     "ui.app__home_HomeHero.aria-label_11": "View your itinerary",
     "ui.app__home_HomeHero.aria-label_12": "Transport from airport, tips",
     "ui.app__home_HomeHero.text_13": "Winter in Cyprus",
-    "ui.app__home_HomeHero.text_14": "Trails, villages, wine",
+    "ui.app__home_HomeHero.text_14": "Trails, villages, heritage",
     "ui.app__home_HomeHero.text_16": "Often sixteen degrees when home is six. Plan ahead or start exploring when you land.",
   };
   for (const [k, v] of Object.entries(keys)) {

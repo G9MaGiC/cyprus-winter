@@ -8,7 +8,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "Team | Cyprus Winter — Trails, Villages, Wineries",
   description:
-    "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more than a one-line mention. Meet the team who built this guide.",
+    "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six.",
   alternates: { canonical: `${SITE_URL}/team` },
 };
 

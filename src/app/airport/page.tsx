@@ -10,7 +10,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Just Landed? | Cyprus Winter Airport Guide",
   description:
-    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers, tips. Just landed? Start here. Cyprus Winter.",
+    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here. Free Cyprus Winter guide.",
   alternates: { canonical: `${SITE_URL}/airport` },
 };
 

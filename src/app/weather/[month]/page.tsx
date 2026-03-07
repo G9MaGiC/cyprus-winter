@@ -81,7 +81,7 @@ export default async function WeatherMonthPage({ params }: Props) {
   if (!row) notFound();
 
   return (
-    <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
+    <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/weather"
         backLabel="Weather"
@@ -89,7 +89,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         description={`Coast ${row.coastMinC}–${row.coastMaxC}°C, Troodos ${row.troodosMinC}–${row.troodosMaxC}°C. ${row.coastDesc}`}
       />
 
-      <div className="space-y-10">
+      <div className="space-y-10 sm:space-y-14">
         <section aria-labelledby="conditions">
           <h2 id="conditions" className="font-display text-xl font-semibold text-olive mb-4">
             What to expect
@@ -119,7 +119,7 @@ export default async function WeatherMonthPage({ params }: Props) {
             </h2>
             <ul className="space-y-3">
               {events.map((e) => (
-                <li key={e.id} className="rounded-lg border border-sand-200/80 bg-white p-4">
+                <li key={e.id} className={`${CARD.base} ${CARD.content}`}>
                   <Link
                     href={`/events#${e.id}`}
                     className="block group"
@@ -156,6 +156,10 @@ export default async function WeatherMonthPage({ params }: Props) {
         {" · "}
         <Link href="/regions/troodos" className="text-aegean hover:underline">
           Troodos winter
+        </Link>
+        {" · "}
+        <Link href="/plan" className="text-aegean hover:underline">
+          Plan your trip
         </Link>
       </p>
     </div>

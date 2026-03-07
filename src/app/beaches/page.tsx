@@ -10,7 +10,7 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 export const metadata: Metadata = {
   title: "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
   description:
-    "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit.",
+    "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit. Free.",
   alternates: { canonical: `${SITE_URL}/beaches` },
 };
 

@@ -16,6 +16,7 @@ import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatReportedAgo } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
+import { guides } from "@/data/guides";
 
 export async function generateMetadata({
   params,
@@ -151,10 +152,10 @@ export default async function TrailPage({
             )}
           </DetailHero>
 
-          <div className="space-y-8">
+          <div className="space-y-10 sm:space-y-14">
             {/* Description */}
             <section>
-              <p className="text-olive/90 text-lg leading-relaxed break-words">{trail.description}</p>
+              <p className="prose-intro text-olive/90 text-lg leading-relaxed break-words">{trail.description}</p>
             </section>
 
             {/* Conditions / Report — key info above the fold */}
@@ -204,12 +205,27 @@ export default async function TrailPage({
                   {(() => {
                     const status = (latestReport?.status ?? conditions?.status) ?? "open";
                     if (status === "caution" || status === "closed") {
+                      const guideForTrail = guides.find(
+                        (g) => g.isVerified && g.trailIds.includes(trail.id)
+                      );
+                      const linkClass =
+                        "inline-flex items-center min-h-[44px] gap-2 px-4 py-3 rounded-lg text-sm font-medium border-2 border-aegean/60 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+                      if (guideForTrail) {
+                        return (
+                          <Link
+                            href={`/book/guide/${guideForTrail.id}?trail=${trail.id}`}
+                            className={linkClass}
+                          >
+                            Book a guide
+                          </Link>
+                        );
+                      }
                       return (
                         <a
                           href="https://www.cyprusactivetours.com/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center min-h-[44px] gap-2 px-4 py-3 rounded-lg text-sm font-medium border-2 border-aegean/60 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                          className={linkClass}
                         >
                           Book a guide
                         </a>
@@ -349,13 +365,11 @@ export default async function TrailPage({
 
             {/* Related places */}
             {trail.combineWith && trail.combineWith.length > 0 && (
-              <div className="rounded-xl overflow-hidden border border-sand-200/80 shadow-sm">
-                <RelatedPlacesBlock
-                  ids={trail.combineWith}
-                  description="Hike in the morning, village or winery in the afternoon. Start by 9am."
-                  showAddToItinerary
-                />
-              </div>
+              <RelatedPlacesBlock
+                ids={trail.combineWith}
+                description="Hike in the morning, village or winery in the afternoon. Start by 9am."
+                showAddToItinerary
+              />
             )}
 
             {/* Footer CTA */}

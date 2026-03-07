@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/site-url";
 export const metadata: Metadata = {
   title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
   description:
-    "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit.",
+    "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit. Free guide.",
   alternates: { canonical: `${SITE_URL}/events` },
 };
 

@@ -278,8 +278,8 @@ export const secretGems: SecretGem[] = [
     title: "Lofou: before Omodos",
     body: "Lofou sits above Omodos on the wine route. Fewer tour buses. Stone houses, a quiet square, and kafenions that locals actually use. Stop for a coffee on the way to or from Omodos. The village doesn't perform. It just is. Winter weekday mornings you might have the square to yourself. Krasas winery and Monagri are nearby. The road between Lofou and Omodos is one of the prettiest in the Krasochoria.",
     region: "Limassol",
-    placeId: "omodos",
-    href: "/discover/omodos",
+    placeId: "lofou",
+    href: "/discover/lofou",
     type: "spot",
   },
   {
@@ -287,7 +287,8 @@ export const secretGems: SecretGem[] = [
     title: "Zygi: the fishing village",
     body: "Between Larnaca and Limassol. No ruins, no lace. Just fish. The tavernas line the harbour; they serve what the boats brought in that morning. Locals eat here. Tourists rarely find it. Winter lunch on the waterfront—octopus, sea bream, calamari. The pace is slow. The coffee after is obligatory. Combine with Kiti and the Angeloktisti church, or Choirokoitia. Zygi is where Cypriots go for Sunday fish. You should too.",
     region: "Larnaca",
-    href: "/discover?filter=village",
+    placeId: "zygi-tavernas",
+    href: "/discover/zygi-tavernas",
     type: "spot",
   },
   {
@@ -322,8 +323,8 @@ export const secretGems: SecretGem[] = [
     title: "Kritou Terra: the Akamas village",
     body: "Before Polis, before the Baths of Aphrodite. Kritou Terra sits in the hills above the Akamas. A few hundred people. A kafenion. No tour buses. The views run down to the coast. Stop for a coffee if you're driving to Lara or the Adonis trailhead. The village doesn't expect you. That's the point. The road through is scenic. Take it slow.",
     region: "Paphos",
-    placeId: "polis",
-    href: "/discover/polis",
+    placeId: "kritou-terra",
+    href: "/discover/kritou-terra",
     type: "spot",
   },
   {
@@ -331,8 +332,8 @@ export const secretGems: SecretGem[] = [
     title: "Kormakitis: the Maronite village",
     body: "North Cyprus. Kormakitis is one of four Maronite villages—Arabic-speaking Cypriots who've been here since the 12th century. The church, the square, the sense of a culture that has survived. It's not on the main tourist loop. You need a car. But if you're exploring the north—Bellapais, St Hilarion, Kyrenia—add Kormakitis. The village speaks a different Cyprus. Winter mornings are quiet. The light on the stone is worth the drive.",
     region: "Kyrenia",
-    placeId: "bellapais",
-    href: "/discover/bellapais",
+    placeId: "kormakitis",
+    href: "/discover/kormakitis",
     type: "spot",
   },
   {
@@ -349,7 +350,8 @@ export const secretGems: SecretGem[] = [
     title: "Kiti: the church the buses miss",
     body: "Kiti village, near Larnaca airport. The church of Angeloktisti—built by angels, the legend says—holds a 6th-century mosaic of the Virgin and Child. One of the oldest surviving Byzantine mosaics in the eastern Mediterranean. Most tour buses skip it. The village is quiet. The church is small, intimate. Allow forty minutes. Combine with Zygi for fish lunch, or Larnaca. It's the kind of detour that changes your sense of the island.",
     region: "Larnaca",
-    href: "/discover?filter=ancient",
+    placeId: "angeloktisti",
+    href: "/discover/angeloktisti",
     type: "spot",
   },
 ];

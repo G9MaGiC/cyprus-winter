@@ -21,7 +21,7 @@ function CardSkeleton() {
 export default function DiscoverLoading() {
   return (
     <div
-      className={`min-h-screen bg-background ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
+      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"

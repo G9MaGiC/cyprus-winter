@@ -20,6 +20,12 @@ interface ErrorStateProps {
   icon?: "error" | "warning" | "rate-limit" | "network";
 }
 
+/** Minimal accent bar per icon type — no emojis (UX persona) */
+function IconAccent({ type }: { type: ErrorStateProps["icon"] }) {
+  const color = type === "rate-limit" ? "bg-golden/60" : type === "network" ? "bg-aegean/60" : "bg-terracotta/60";
+  return <div className={cn("h-1 w-12 mx-auto mb-3 rounded-full", color)} aria-hidden />;
+}
+
 export function ErrorState({
   title = "Something went wrong",
   message,
@@ -29,13 +35,6 @@ export function ErrorState({
   className,
   icon = "error",
 }: ErrorStateProps) {
-  const icons = {
-    error: "⚠️",
-    warning: "⚡",
-    "rate-limit": "⏱️",
-    network: "📡",
-  };
-
   return (
     <div
       className={cn(
@@ -47,9 +46,7 @@ export function ErrorState({
       role="alert"
       aria-live="polite"
     >
-      <div className="text-4xl mb-3" aria-hidden>
-        {icons[icon]}
-      </div>
+      <IconAccent type={icon} />
       <h3 className="font-display text-lg font-semibold text-olive mb-2">
         {title}
       </h3>
@@ -109,7 +106,7 @@ export function RateLimitError({
       message={
         canRetry
           ? "You can try again now."
-          : `Please wait ${countdown} second${countdown === 1 ? "" : "s"} before trying again. This helps us keep the service running smoothly for everyone.`
+          : `Wait ${countdown} second${countdown === 1 ? "" : "s"}, then try again.`
       }
       retry={canRetry ? onRetry : undefined}
       retryLabel={canRetry ? "Try again" : `Wait ${countdown}s`}
@@ -154,8 +151,8 @@ export function NetworkError({ onRetry, className }: NetworkErrorProps) {
       title={isOnline ? "Connection issue" : "You're offline"}
       message={
         isOnline
-          ? "We're having trouble connecting. Check your connection and try again."
-          : "Connect to the internet to browse trails, wineries, and plan your trip. Your saved bookings are still available."
+          ? "Connection trouble. Try again, or tap Ask AI."
+          : "You're offline. Connect to browse trails and plan your trip."
       }
       retry={onRetry}
       retryLabel={isOnline ? "Try again" : "Check connection"}

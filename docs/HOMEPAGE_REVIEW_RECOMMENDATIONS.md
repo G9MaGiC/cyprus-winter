@@ -72,7 +72,7 @@ The homepage has a clear discovery-first structure with good touch targets and a
 
 | Element | Current | Recommended | Rationale |
 |---------|---------|-------------|-----------|
-| Intro | Trails, villages, wine, events. Plan from home or start when you land. | Trails, villages, wine, events. Plan ahead or start when you land. | Shorter, warmer |
+| Intro | Trails, villages, heritage, events. Plan from home or start when you land. | Trails, villages, heritage, events. Plan ahead or start when you land. | Shorter, warmer |
 | Editor's picks sub | Four places we keep coming back to. | Our favorites. Four we keep coming back to. | Clearer ownership |
 | More chips label | More: Culture, Coasts, Monasteries | Also: Culture, Coasts, Monasteries | Softer, less list-like |
 
@@ -120,7 +120,7 @@ Matches current order; add sticky Plan CTA and "Add to plan" on cards to improve
 | Element | Warmer | Direct | Editorial |
 |---------|--------|--------|-----------|
 | Eyebrow | The Mediterranean's best-kept secret | Cyprus in winter — plan & explore | A quiet season |
-| Intro | Hikes, ruins, villages. Plan ahead or discover on arrival. | Trails, villages, wine. Plan it — or wing it. | Plan from home. Or just land and explore. |
+| Intro | Hikes, ruins, villages. Plan ahead or discover on arrival. | Trails, villages, heritage. Plan it — or wing it. | Plan from home. Or just land and explore. |
 | Primary CTA | Start exploring | Discover | Discover |
 
 ---
@@ -131,3 +131,9 @@ Matches current order; add sticky Plan CTA and "Add to plan" on cards to improve
 2. **Conversion:** Sticky Plan CTA (mobile), "Add to plan" on cards
 3. **Structure:** Editor's picks 2-col, CTA to design-tokens, SECTION.headingGap
 4. **Optional:** Right now copy tweaks, hero height test, horizontal scroll
+
+---
+
+## Implementation notes (v2.0)
+
+**Local secrets missing from hero (P1):** Documented removal. Local secrets is not a hero CTA; access via Nav → More → Local secrets and homepage mood/Editor's picks. Hero kept minimal (Discover, Plan trip, Just arrived?, Ask your guide) per conversion focus.

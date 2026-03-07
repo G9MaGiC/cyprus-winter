@@ -52,4 +52,19 @@ describe("chatRequestSchema", () => {
     });
     expect(result.success).toBe(true);
   });
+
+  it("accepts optional context with path and lastPlace", () => {
+    const result = chatRequestSchema.safeParse({
+      messages: [{ role: "user", content: "Best trail?" }],
+      context: { path: "/trails", lastPlace: "omodos" },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts messages without context (backward compatible)", () => {
+    const result = chatRequestSchema.safeParse({
+      messages: [{ role: "user", content: "Hi" }],
+    });
+    expect(result.success).toBe(true);
+  });
 });

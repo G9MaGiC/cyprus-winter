@@ -25,7 +25,7 @@ Ideal Customer Profiles define *who* uses Cyprus Winter and *why*—from the use
 | **Goals** | Visit archaeological sites without heat/crowds; authentic village experiences; moderate hiking; wine culture immersion. |
 | **Discovery** | Pre-trip research (BBC Travel, CNT); 6–8 weeks planning; heavy app use 3+ weeks pre-trip; builds detailed 10-day itinerary. |
 | **Usage** | Plans 10–14 day stays; books 4–5 guided experiences; shares "Cyprus Wrapped"; reviews 8+ attractions post-trip. |
-| **Value proposition** | Real places, real winters. No tourist traps. Curated trails, sites, villages, and wine. |
+| **Value proposition** | Real places, real winters. No tourist traps. Curated trails, sites, villages, and heritage. |
 | **Messaging hook** | *"Real places. Real winters. No tourist traps."* (MESSAGING.md) |
 | **Priority** | **Primary** |
 | **LTV** | €85 (highest value segment) |
@@ -61,8 +61,8 @@ Ideal Customer Profiles define *who* uses Cyprus Winter and *why*—from the use
 | **Goals** | Establish productive routine; weekend exploration; build local network; learn basic Greek. |
 | **Discovery** | Nomad List, Facebook groups, coworking reviews; 1–3 month stays; negotiates long-term rates. |
 | **Usage** | Weekend planning; nomad meetups; tips for long-stay logistics; refers other nomads (viral growth). |
-| **Value proposition** | Work from 16°C. Weekend trails, villages, wine. Community and logistics. |
-| **Messaging hook** | *"Work from 16°C. Weekend trails, villages, wine."* (MESSAGING.md) |
+| **Value proposition** | Work from 16°C. Weekend trails, villages, heritage. Community and logistics. |
+| **Messaging hook** | *"Work from 16°C. Weekend trails, villages, heritage."* (MESSAGING.md) |
 | **Priority** | **Primary** |
 | **LTV** | €120 (highest retention, 3+ visits/year) |
 
@@ -137,7 +137,7 @@ Ideal Customer Profiles define *who* uses Cyprus Winter and *why*—from the use
 | **Goals** | One or two standout experiences; easy logistics; wine/restaurant recommendations; airport/taxi guidance. |
 | **Discovery** | Work trip booking; last-minute search; LinkedIn/travel tools; airport arrivals page. |
 | **Usage** | Quick itineraries; airport page; "Just arrived?" CTA; 1–2 curated experiences. |
-| **Value proposition** | Limited time? Trails, villages, wine. Curated for short stays. |
+| **Value proposition** | Limited time? Trails, villages, heritage. Curated for short stays. |
 | **Messaging hook** | *"Just arrived? One trail. One village. One evening."* |
 | **Priority** | **Emerging** |
 | **LTV** | €30–50 (per trip; potential repeat if work brings them back) |
@@ -150,7 +150,7 @@ Ideal Customer Profiles define *who* uses Cyprus Winter and *why*—from the use
 |-----|----------|------------|--------------|-----------|----------------|-----|
 | Cultural Explorer Claire | Primary | Authentic culture, no tourist traps | Fear of nothing to do in winter | Pre-trip, 6–8 weeks | Real places. Real winters. No tourist traps. | €85 |
 | Active Adventurer Anders | Primary | Sun + hiking, escape dark winters | Unclear trail conditions | Trail forums, weather-driven | Troodos trails. Winter sun. Check conditions. | €45 |
-| Digital Nomad Nadia | Primary | Warm, affordable work base | WiFi, isolation | Nomad List, groups | Work from 16°C. Weekend trails, villages, wine. | €120 |
+| Digital Nomad Nadia | Primary | Warm, affordable work base | WiFi, isolation | Nomad List, groups | Work from 16°C. Weekend trails, villages, heritage. | €120 |
 | Winter Sun Family | Primary | Affordable outdoor family time | Will kids stay engaged? | Mumsnet, school holidays | Mild weather. Beaches, ruins, markets. Family-friendly. | €60 |
 | Local Resident | Secondary | Weekend discovery, share with visitors | Tourist-centric content | Word of mouth, social | Your island in winter. Fewer crowds. Same light. | €15–25 |
 | Expat Resident | Secondary | Explore beyond default spots | Tourist content misfit | Expat forums, groups | Beyond the usual. Villages, trails, events. | €25–40 |

@@ -85,7 +85,7 @@ Cyprus Winter targets travelers who choose the island in November–March for **
 | **Urgency-light** | Fewer crowds. Same Mediterranean. Better light. |
 | **CTA** | Plan your winter escape · Add to itinerary |
 
-**Value prop (30 words):** *Plan your Cyprus winter with curated trails, villages, and wine. Book cultural experiences and avoid the crowds. Sixteen degrees when home is six.*
+**Value prop (30 words):** *Plan your Cyprus winter with curated trails, villages, and heritage. Book cultural experiences and avoid the crowds. Sixteen degrees when home is six.*
 
 ---
 
@@ -216,7 +216,7 @@ Cyprus Winter targets travelers who choose the island in November–March for **
 
 | Channel | Hook |
 |---------|------|
-| **Primary** | Work from 16°C. Weekend trails, villages, wine. |
+| **Primary** | Work from 16°C. Weekend trails, villages, heritage. |
 | **Discovery** | Cyprus winter: mild, affordable, connected. |
 | **Social proof** | "Three months in Cyprus—I'm already planning my return." |
 | **CTA** | Plan your base · See weekend escapes |
@@ -331,7 +331,7 @@ We do *not* target: summer beach-only travelers, party seekers, or ultra-budget 
 |-----|---------------|-------------|
 | Cultural Explorer | Real places. Real winters. No tourist traps. | Plan your winter escape |
 | Active Adventurer | Troodos trails. Winter sun. Check conditions before you go. | View trail conditions |
-| Digital Nomad | Work from 16°C. Weekend trails, villages, wine. | Plan your base |
+| Digital Nomad | Work from 16°C. Weekend trails, villages, heritage. | Plan your base |
 | Winter Sun Family | Mild weather. Beaches, ruins, markets. Family-friendly Cyprus. | Family-friendly picks |
 
 ---
@@ -511,10 +511,10 @@ One value prop per ICP for hero or segmented landing. Keep short; let typography
 |-----|-------------------------|
 | **Cultural Explorer Claire** | Ancient sites without crowds. Villages, wine, stories to take home. |
 | **Active Adventurer Anders** | Troodos trails in winter sun. Check conditions before you go. |
-| **Digital Nomad Nadia** | Work from 16°C. Weekend trails, villages, wine. |
+| **Digital Nomad Nadia** | Work from 16°C. Weekend trails, villages, heritage. |
 | **Winter Sun Family** | Mild weather. Beaches, ruins, markets. Family-friendly Cyprus. |
 
-**Universal fallback (current):** *Trails, villages, wine, events. Plan from home or start when you land.*
+**Universal fallback (current):** *Real places. Mediterranean winter. Discover and plan as you go.*
 
 ---
 

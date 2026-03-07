@@ -36,7 +36,7 @@ function buildShareUrl(
 
 export default function ShareLinks({
   path = "/",
-  text = "Cyprus Winter — trails, villages, wine. Your local guide.",
+  text = "Cyprus Winter — trails, villages, heritage. Your local guide.",
   ariaLabel = "Share via",
   className = "",
 }: ShareLinksProps) {

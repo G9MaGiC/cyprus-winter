@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD } from "@/lib/design-tokens";
-import { getPlaceById } from "@/data";
+import { getPlaceById, getGuideById } from "@/data";
 import PageHeader from "@/components/PageHeader";
 import type { Booking } from "@/lib/bookings";
 import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/bookings-storage";
@@ -74,7 +74,7 @@ export default function BookingsPage() {
       saveLocalBookings(merged);
       setBookings(merged);
       if (apiBookings.length === 0) {
-        setEmailSuccess("No bookings for that address. Try another, or book from Discover.");
+        setEmailSuccess("No bookings for that email. Try another, or book from Discover.");
       } else {
         const added = merged.length - local.length;
         setEmailSuccess(added > 0 ? `Loaded ${added} booking${added === 1 ? "" : "s"}.` : "All set. No new bookings to load.");
@@ -191,12 +191,10 @@ export default function BookingsPage() {
         ) : bookings.length === 0 ? (
           <div className="space-y-8" role="region" aria-label="Empty bookings state">
             <div className={`${EMPTY_STATE_DASHED} bg-white/80`}>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-sand-200/80 flex items-center justify-center text-2xl text-olive/40" aria-hidden>
-                🍷
-              </div>
+              <div className="w-12 h-1 mx-auto mb-4 rounded-full bg-terracotta/40" aria-hidden />
               <h2 className="font-display font-semibold text-olive mb-1">No bookings yet</h2>
               <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
-                Book a tasting from Discover, or load bookings from another device.
+                Book a tasting or guided hike from Discover and Trails, or load bookings from another device.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
@@ -204,6 +202,12 @@ export default function BookingsPage() {
                   className={`w-full sm:w-auto justify-center px-6 py-3 rounded-lg ${CTA.primaryCompact}`}
                 >
                   Browse wineries
+                </Link>
+                <Link
+                  href="/book/guide"
+                  className={`w-full sm:w-auto justify-center px-6 py-3 rounded-lg ${CTA.chipTertiary}`}
+                >
+                  Book a guided hike
                 </Link>
                 {!showSync && (
                   <button
@@ -273,7 +277,7 @@ export default function BookingsPage() {
                   Tomorrow — {tomorrowBookings.map((b) => b.providerName).join(" · ")} — directions ready.
                 </p>
                 <p className="text-xs text-olive/70 mt-1">
-                  View winery details below or add to your plan.
+                  View details below or add to your plan.
                 </p>
               </div>
             )}
@@ -290,7 +294,16 @@ export default function BookingsPage() {
                       {upcomingByGroup[key].map((b) => {
                         const days = daysUntil(b.date);
                         const isTodayOrTomorrow = days === 0 || days === 1;
-                        const providerValid = !!getPlaceById(b.providerId);
+                        const isGuide = b.type === "guide_tour";
+                        const placeValid = !!getPlaceById(b.providerId);
+                        const guideValid = !!getGuideById(b.providerId);
+                        const providerValid = placeValid || guideValid;
+                        const viewHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
+                        const viewLabel = isGuide ? "View trails" : "View winery";
+                        const modifyHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}`;
+                        const todayCopy = isGuide
+                          ? "Your guided hike is today — see details below."
+                          : "Your tasting is today — see winery details below.";
                         return (
                           <li key={b.id}>
                             <div className={`${CARD.content} rounded-xl ${CARD.base} border-l-4 border-l-aegean/50 hover:shadow-md transition-shadow`}>
@@ -304,39 +317,28 @@ export default function BookingsPage() {
                                       </span>
                                     )}
                                   </div>
-                                  {providerValid ? (
-                                    <Link
-                                      href={`/discover/${b.providerId}`}
-                                      className="font-display font-semibold text-olive hover:text-terracotta transition-colors block truncate"
-                                    >
-                                      {b.providerName}
-                                    </Link>
-                                  ) : (
-                                    <span className="font-display font-semibold text-olive block truncate">
-                                      {b.providerName}
-                                    </span>
-                                  )}
+                                  <span className="font-display font-semibold text-olive block truncate">
+                                    {b.providerName}
+                                  </span>
                                   <p className="text-sm text-olive/70 mt-1 break-words">
                                     {formatDate(b.date)} · {b.partySize} {b.partySize === 1 ? "person" : "people"}
                                   </p>
                                   {isTodayOrTomorrow && (
                                     <p className="text-xs text-olive/60 mt-2" role="status">
-                                      {days === 0
-                                        ? "Your tasting is today — see winery details below."
-                                        : "Tomorrow — set a reminder if you like."}
+                                      {days === 0 ? todayCopy : "Tomorrow — set a reminder if you like."}
                                     </p>
                                   )}
                                 </div>
                                 {providerValid && (
                                   <div className="flex flex-wrap gap-2 shrink-0">
                                     <Link
-                                      href={`/discover/${b.providerId}`}
+                                      href={viewHref}
                                       className={`px-4 py-2 rounded-lg ${CTA.secondaryCompact}`}
                                     >
-                                      View winery
+                                      {viewLabel}
                                     </Link>
                                     <Link
-                                      href={`/book/winery/${b.providerId}`}
+                                      href={modifyHref}
                                       className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
                                     >
                                       Modify
@@ -361,46 +363,37 @@ export default function BookingsPage() {
                 </h2>
                 <ul className="space-y-4">
                   {past.map((b) => {
-                    const providerValid = !!getPlaceById(b.providerId);
+                    const isGuide = b.type === "guide_tour";
+                    const placeValid = !!getPlaceById(b.providerId);
+                    const guideValid = !!getGuideById(b.providerId);
+                    const providerValid = placeValid || guideValid;
+                    const bookAgainHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}`;
+                    const secondaryHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
+                    const secondaryLabel = isGuide ? "Browse trails" : "Visit winery page";
                     return (
-                    <li key={b.id}>
-                      <div className={`${CARD.content} rounded-xl bg-sand-100/60 border border-sand-200/80 opacity-90`}>
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <StatusBadge status={b.status} />
-                        </div>
-                        {providerValid ? (
-                          <Link
-                            href={`/discover/${b.providerId}`}
-                            className="font-display font-semibold text-olive/80 hover:text-terracotta transition-colors block truncate"
-                          >
-                            {b.providerName}
-                          </Link>
-                        ) : (
+                      <li key={b.id}>
+                        <div className={`${CARD.content} rounded-xl bg-sand-100/60 border border-sand-200/80 opacity-90`}>
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <StatusBadge status={b.status} />
+                          </div>
                           <span className="font-display font-semibold text-olive/80 block truncate">
                             {b.providerName}
                           </span>
-                        )}
-                        <p className="text-sm text-olive/60 mt-1 break-words">
-                          {formatDate(b.date)} · {b.partySize} {b.partySize === 1 ? "person" : "people"}
-                        </p>
-                        {providerValid && (
-                        <div className="mt-3 flex flex-wrap gap-3">
-                          <Link
-                            href={`/book/winery/${b.providerId}`}
-                            className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
-                          >
-                            Book again
-                          </Link>
-                          <Link
-                            href={`/discover/${b.providerId}`}
-                            className={`${CTA.chipTertiary} px-4 py-2 rounded-lg`}
-                          >
-                            Visit winery page
-                          </Link>
+                          <p className="text-sm text-olive/60 mt-1 break-words">
+                            {formatDate(b.date)} · {b.partySize} {b.partySize === 1 ? "person" : "people"}
+                          </p>
+                          {providerValid && (
+                            <div className="mt-3 flex flex-wrap gap-3">
+                              <Link href={bookAgainHref} className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}>
+                                Book again
+                              </Link>
+                              <Link href={secondaryHref} className={`${CTA.chipTertiary} px-4 py-2 rounded-lg`}>
+                                {secondaryLabel}
+                              </Link>
+                            </div>
+                          )}
                         </div>
-                        )}
-                      </div>
-                    </li>
+                      </li>
                     );
                   })}
                 </ul>
@@ -427,10 +420,10 @@ export default function BookingsPage() {
               >
                 Browse wineries
               </Link>
-              <Link
-                href="/discover"
-                className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}
-              >
+              <Link href="/book/guide" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
+                Book a guided hike
+              </Link>
+              <Link href="/discover" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
                 Discover all
               </Link>
             </div>

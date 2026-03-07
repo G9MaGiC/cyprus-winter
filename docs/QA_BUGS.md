@@ -311,10 +311,109 @@ Continuation 6 (A11y): Admin input aria-label added; root footer emergency numbe
 | Remove px-4 sm:px-6 override on search section | page.tsx |
 | Remove py-2 from AddToItineraryButton (preserve 44px touch target) | EditorsPicks, ThisWeekGrid |
 
-### Deferred (write denied)
+### Deferred — now fixed
 
 | Fix | File |
 |-----|------|
-| Clear button min-h-[44px] touch target | RecentlyViewed.tsx — apply manually if needed |
+| Clear button 44px touch target | RecentlyViewed.tsx — added min-w-[44px], px-3, focus-visible ring |
 
 **Verify:** lint, test, build all pass.
+
+---
+
+## Project Review and Soul (Mar 2026)
+
+*Plan: project_review_and_soul. Team: audit-explore, senior-software-engineer, ux-polish, branding-redesign, content-polish.*
+
+### Phase 1 — Audit findings (summary)
+
+- **Security P1:** Redis for rate limiting in production (UPSTASH_REDIS_REST_*)
+- **Security P0:** Weather/VAPID routes lack rate limiting; bookings lookup by email without auth
+- **Content/UX:** ErrorState emojis, onboarding copy, AI error messages, empty states
+
+### Phase 2–3 — Soul fixes applied
+
+| Fix | File |
+|-----|------|
+| Remove emojis; use IconAccent (colored bar) | ErrorState.tsx |
+| Shorten rate-limit and network error copy | ErrorState.tsx |
+| Warmer onboarding step descriptions | OnboardingModal.tsx |
+| Shorten AI greeting; user-facing auth/rate-limit errors | AIAssistant.tsx |
+| "Type at least 2 characters" | SearchBar.tsx |
+| Softer plan add=failed message | plan/page.tsx |
+| "No bookings for that email" (not address) | bookings/page.tsx |
+| Remove wine emoji; use accent bar | bookings/page.tsx |
+| Search no-results: echo query | search/page.tsx |
+| PlacePicker empty: Troodos, Omodos hint | PlacePicker.tsx |
+| Discover empty: Add Ask AI button | DiscoverClient.tsx |
+
+### Deferred / backlog
+
+- P1: Configure Redis in production
+- P0: Add rate limiting to Weather/VAPID
+- P2: Lint (BeforeYouGoChecklist, OnboardingModal effect deps)
+
+---
+
+## UX/UI Top Areas Polish (Mar 2026)
+
+*Plan: ux_ui_top_areas_polish. Team: ux-polish + branding-redesign.*
+
+### Applied
+
+| Fix | File(s) |
+|-----|---------|
+| Search results block (critical bug fix) | search/page.tsx, SearchResultCard.tsx |
+| Discover hero CTA, TYPE.sectionTitle for section headings | discover/page.tsx, DiscoverClient.tsx |
+| Home StartHereStrip overlap reduced, HomeMoodStrip TYPE.sectionTitle | StartHereStrip.tsx, HomeMoodStrip.tsx |
+| Plan quick-add chips PILL tokens, Start here TYPE.sectionTitle | plan/page.tsx |
+| Trails hero CTA, stats card spacing, TYPE.sectionTitle | TrailsClient.tsx |
+| Events filter URL params (?type=&region=), TYPE.sectionTitle | events/page.tsx |
+| Regions section titles TYPE.sectionTitle + SECTION.headingGap | regions/[slug]/page.tsx |
+
+**Verification:** lint pass, build pass. Cross-page: hero CTAs on Discover/Trails/Events; section titles use TYPE.sectionTitle; Search results render when q.length>=2.
+
+---
+
+## Next Priority Decision (Mar 2026)
+
+*Plan: next_priority_decision. Post–UX Polish priorities.*
+
+### Batch 1 — Lint debt (P2)
+
+| Fix | File |
+|-----|------|
+| setState in effect — use queueMicrotask to defer | BeforeYouGoChecklist.tsx, OnboardingModal.tsx |
+| Add ids to useEffect deps | BeforeYouGoChecklist.tsx |
+
+**Fix status:** Fixed — lint passes with zero warnings.
+
+### Batch 2 — Weather/VAPID rate limiting (P0)
+
+| Fix | File |
+|-----|------|
+| Add rate limit 30/min | api/weather/route.ts |
+| Add rate limit 10/min | api/push/vapid/route.ts |
+| Add scopes "weather", "vapid" | lib/rate-limit.ts |
+
+**Fix status:** Fixed — both routes protected.
+
+---
+
+## CPO + Design App Completion (Mar 2026)
+
+*Plan: cpo_and_design_app_completion. CPO conversion, Plan CTA parity, messaging, design tokens, loading polish.*
+
+### Implemented
+
+| Batch | Fix | File(s) |
+|-------|-----|---------|
+| 1 | Install page noindex | install/page.tsx — `robots: { index: false, follow: false }` |
+| 2 | Secrets Plan CTA in header | secrets/page.tsx — added "Plan your trip" in PageHeader children |
+| 5 | Loading for dynamic routes | wine-routes/[slug]/loading.tsx, regions/[slug]/loading.tsx, weather/[month]/loading.tsx |
+| 5 | PlacePicker empty-state copy | PlacePicker.tsx — contextual copy for search vs category-empty |
+| 5 | Bottom nav parity | nav-links.ts — added Secrets and Team to bottomOverflowLinks |
+
+**Note:** Search, Discover, Events, Plan (Book tastings), Trail detail (Book a guide), Trail report success, Wineries already had Plan/Book CTAs. Home hero already has "Often sixteen degrees when home is six." Breadcrumbs links already have min-h-[44px]. ErrorState uses CARD tokens. Emergency numbers use `<strong>` on airport, not-found, error, trails pages.
+
+**Verification:** `npm run lint` passes. `npm run build` may hit Next.js 16 pages-manifest.json ENOENT (pre-existing; investigate separately).

@@ -31,8 +31,11 @@ export const bottomPrimaryLinks: readonly NavLink[] = [
 export const bottomOverflowLinks: readonly NavLink[] = [
   { href: "/search", label: "Search" },
   { href: "/bookings", label: "Bookings" },
+  { href: "/book/guide", label: "Guides" },
   { href: "/events", label: "Events" },
   { href: "/airport", label: "Arriving" },
+  { href: "/secrets", label: "Local secrets" },
+  { href: "/team", label: "Team" },
   { href: "/account", label: "Account" },
 ];
 

@@ -24,6 +24,13 @@ export const TOKENS = {
   sageMuted: "#94a3b8",
 } as const;
 
+/** Bottom nav (mobile) — shared values for main padding, sticky bars, footer clearance */
+export const BOTTOM_NAV = {
+  height: "4.5rem",
+  /** For use in Tailwind: bottom-[...] or pb-[...] with env(safe-area-inset-bottom) */
+  clearance: "calc(4.5rem+env(safe-area-inset-bottom))",
+} as const;
+
 /** Max-width class names for consistent page layout. */
 export const LAYOUT = {
   list: "max-w-5xl",
@@ -121,10 +128,12 @@ export const TYPE = {
 export const HERO = {
   section:
     "relative isolate overflow-hidden min-h-[72vh] min-[400px]:min-h-[76vh] sm:min-h-[86vh] flex flex-col items-center justify-end sm:justify-center pb-16 sm:pb-24 text-center w-full",
-  overlayVignette:
-    "absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(30,41,59,0.35)_65%,rgba(30,41,59,0.70)_100%)]",
-  overlayBottom:
-    "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal/90 via-charcoal/45 to-charcoal/0",
+  /** Single gradient overlay (simplified per Design review). */
+  overlay:
+    "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/5",
+  /** List page hero image overlay — readable text on variable images. */
+  listOverlay:
+    "absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60 pointer-events-none",
   panel:
     "relative rounded-2xl bg-charcoal/30 backdrop-blur-md ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-6 sm:p-10",
 } as const;

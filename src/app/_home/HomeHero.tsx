@@ -15,8 +15,7 @@ export default function HomeHero() {
         loading="eager"
         sizes="100vw"
       />
-      <div className={HERO.overlayVignette} aria-hidden />
-      <div className={HERO.overlayBottom} aria-hidden />
+      <div className={HERO.overlay} aria-hidden />
 
       <div className={`relative z-10 w-full ${LAYOUT.form} lg:max-w-3xl mx-auto`}>
         <div className={`${HERO.panel} lg:p-12`}>
@@ -28,7 +27,7 @@ export default function HomeHero() {
             Cyprus Winter
           </h1>
           <p className="text-base sm:text-lg text-white/90 max-w-lg mx-auto font-light mb-2 prose-intro text-balance">
-            Trails, ruins, villages, wine, events. Discover first. Plan as you go.
+            Real places. Real winters. Discover ruins, trails, villages, heritage—plan as you go.
           </p>
           <p className="text-sm text-white/80 mb-8">Often sixteen degrees when home is six.</p>
 

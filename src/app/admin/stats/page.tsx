@@ -147,7 +147,7 @@ export default function AdminStatsPage() {
 
       <section className="mb-10">
         <h2 className="font-display text-lg font-semibold text-olive mb-4">Bookings (this month)</h2>
-        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200/80 mb-6">
+        <div className="p-6 rounded-lg bg-olive/5 border border-olive/10 mb-6">
           <p className="text-3xl font-bold text-olive">{bookings}</p>
           <p className="text-sm text-olive/70 mt-1">Total bookings</p>
         </div>
@@ -155,7 +155,7 @@ export default function AdminStatsPage() {
 
       <section className="mb-10">
         <h2 className="font-display text-lg font-semibold text-olive mb-4">Partner revenue (this month)</h2>
-        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200/80">
+        <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-3xl font-bold text-olive">{revenue.toFixed(2)} €</p>
           <p className="text-sm text-olive/70 mt-1">Partner revenue share (lead fees)</p>
           {byWinery.length > 0 && (
@@ -173,7 +173,7 @@ export default function AdminStatsPage() {
 
       <section className="mb-10">
         <h2 className="font-display text-lg font-semibold text-olive mb-4">Conversion funnel (this month)</h2>
-        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200/80">
+        <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">First touch to booking and revenue</p>
           <table className="w-full text-left text-sm">
             <thead>

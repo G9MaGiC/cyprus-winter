@@ -3,9 +3,18 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { getPlaceById, type PlanItem } from "@/data";
-import { decodeItinerary, buildPlanSharePath } from "@/lib/itinerary-share";
+import { decodeItinerary, buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
+import { toAbsoluteUrl } from "@/lib/site-url";
 
 const STORAGE_KEY = "cyprus-winter-itinerary";
+
+export { MAX_DAYS };
+
+function emptyDays(): Record<number, string[]> {
+  const out: Record<number, string[]> = {};
+  for (let d = 1; d <= MAX_DAYS; d++) out[d] = [];
+  return out;
+}
 
 export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = {
   classic: {
@@ -43,32 +52,31 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = {
 };
 
 function loadItinerary(): Record<number, string[]> {
-  if (typeof window === "undefined") return { 1: [], 2: [], 3: [], 4: [], 5: [] };
+  if (typeof window === "undefined") return emptyDays();
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored) as Record<string, string[]>;
-      const out: Record<number, string[]> = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+      const out = emptyDays();
       for (const [k, v] of Object.entries(parsed)) {
         const d = parseInt(k, 10);
-        if (d >= 1 && d <= 5 && Array.isArray(v)) out[d] = v;
+        if (d >= 1 && d <= MAX_DAYS && Array.isArray(v)) out[d] = v;
       }
       return out;
     }
   } catch {
     // ignore
   }
-  return { 1: [], 2: [], 3: [], 4: [], 5: [] };
+  return emptyDays();
 }
 
 export function useItinerary() {
   const searchParams = useSearchParams();
-  const [days, setDays] = useState<Record<number, string[]>>({
-    1: [], 2: [], 3: [], 4: [], 5: [],
-  });
+  const [days, setDays] = useState<Record<number, string[]>>(emptyDays);
   const [activeDay, setActiveDay] = useState(1);
   const [hydrated, setHydrated] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -84,7 +92,7 @@ export function useItinerary() {
     if (!hydrated) return;
     try {
       const toStore: Record<string, string[]> = {};
-      for (let d = 1; d <= 5; d++) toStore[String(d)] = days[d] ?? [];
+      for (let d = 1; d <= MAX_DAYS; d++) toStore[String(d)] = days[d] ?? [];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
     } catch {
       // ignore
@@ -126,8 +134,8 @@ export function useItinerary() {
   const applyTemplate = useCallback((key: keyof typeof WINTER_TEMPLATES, mode: "replace" | "merge" = "replace") => {
     const template = WINTER_TEMPLATES[key];
     if (!template) return;
-    const next: Record<number, string[]> = { 1: [], 2: [], 3: [], 4: [], 5: [] };
-    for (let d = 1; d <= 5; d++) {
+    const next = emptyDays();
+    for (let d = 1; d <= MAX_DAYS; d++) {
       const existing = days[d] ?? [];
       const fromTemplate = template[d] ?? [];
       next[d] = mode === "merge"
@@ -159,7 +167,7 @@ export function useItinerary() {
 
   const copyItinerary = useCallback(async () => {
     const lines: string[] = ["Cyprus Winter Itinerary", ""];
-    for (let d = 1; d <= 5; d++) {
+    for (let d = 1; d <= MAX_DAYS; d++) {
       const items = days[d] ?? [];
       if (items.length === 0) continue;
       lines.push(`Day ${d}:`);
@@ -181,6 +189,17 @@ export function useItinerary() {
 
   const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
 
+  const copyShareLink = useCallback(async () => {
+    const url = toAbsoluteUrl(sharePath);
+    try {
+      await navigator.clipboard.writeText(url);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch {
+      // clipboard not available
+    }
+  }, [sharePath]);
+
   return {
     days,
     lastAddedId,
@@ -188,6 +207,8 @@ export function useItinerary() {
     setActiveDay,
     hydrated,
     copied,
+    linkCopied,
+    copyShareLink,
     addToDay,
     removeFromDay,
     getPlace,

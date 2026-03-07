@@ -47,6 +47,12 @@
 - **Helpful, not pushy.** "Pair with a trail or village nearby." Not "You should also book..."
 - **Local flavor where it fits.** "The stove is lit and nobody hurries." Not generic travel copy.
 
+### Content Guidelines (All Copy)
+
+- **Natural tone.** Write as a knowledgeable friend would speak. No robotic phrasing, no AI-style hedging.
+- **Grammar and typography.** Use en dashes for ranges (10–14 days), proper apostrophes, Oxford commas where clarity needs them.
+- **Direct and affirmative.** Prefer clear statements over double negatives or hedging. Say what something is, not what it is not.
+
 ---
 
 ## When in Doubt

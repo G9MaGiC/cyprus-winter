@@ -2,9 +2,11 @@ import { NextRequest } from "next/server";
 import { createBooking, getBookingsByEmail } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
-import { sendBookingConfirmation, sendBookingRequestToWinery } from "@/lib/email";
+import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequestToGuide } from "@/lib/email";
 import { createBookingSchema } from "@/lib/booking-schema";
 import { wineries } from "@/data/wineries";
+import { guides } from "@/data/guides";
+import { trails } from "@/data/trails";
 import { z } from "zod";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import { sanitizeForStorage } from "@/lib/sanitize";
@@ -28,6 +30,7 @@ export async function POST(req: NextRequest) {
       guestEmail: body.guestEmail,
       guestName: body.guestName,
       notes: body.notes,
+      trailId: body.trailId,
     });
 
     if (!parsed.success) {
@@ -35,61 +38,119 @@ export async function POST(req: NextRequest) {
       return jsonError("VALIDATION_ERROR", msg, 400);
     }
 
-    const { providerId, date, partySize, guestEmail, guestName, notes } = parsed.data;
-    const winery = wineries.find((w) => w.id === providerId);
-    if (!winery) {
-      return jsonError("NOT_FOUND", "Winery not found", 404);
-    }
-
+    const { type, providerId, date, partySize, guestEmail, guestName, notes, trailId } = parsed.data;
     const safeGuestName = sanitizeForStorage(guestName);
     if (!safeGuestName) {
       return jsonError("VALIDATION_ERROR", "Guest name is required", 400);
     }
-    const booking = await createBooking({
-      type: "winery_tasting",
-      providerId,
-      providerName: winery.name,
-      date,
-      partySize,
-      guestEmail,
-      guestName: safeGuestName,
-      notes: notes != null ? sanitizeForStorage(notes) : undefined,
-      leadFeeEur: winery.partnerLeadFeeEur,
-    });
 
-    let confirmationSent = false;
-    let wineryNotificationSent = false;
-    try {
-      confirmationSent = await sendBookingConfirmation(booking);
-    } catch (e) {
-      console.error("Guest email send failed:", e);
-    }
-
-    if (winery.isVerified && winery.partnerEmail?.trim()) {
-      try {
-        wineryNotificationSent = await sendBookingRequestToWinery(booking, {
-          name: winery.name,
-          partnerEmail: winery.partnerEmail.trim(),
-        });
-      } catch (e) {
-        console.error("Winery notification send failed:", e);
+    if (type === "winery_tasting") {
+      const winery = wineries.find((w) => w.id === providerId);
+      if (!winery) {
+        return jsonError("NOT_FOUND", "Winery not found", 404);
       }
+      const booking = await createBooking({
+        type: "winery_tasting",
+        providerId,
+        providerName: winery.name,
+        date,
+        partySize,
+        guestEmail,
+        guestName: safeGuestName,
+        notes: notes != null ? sanitizeForStorage(notes) : undefined,
+        leadFeeEur: winery.partnerLeadFeeEur,
+      });
+
+      let confirmationSent = false;
+      let wineryNotificationSent = false;
+      try {
+        confirmationSent = await sendBookingConfirmation(booking);
+      } catch (e) {
+        console.error("Guest email send failed:", e);
+      }
+      if (winery.isVerified && winery.partnerEmail?.trim()) {
+        try {
+          wineryNotificationSent = await sendBookingRequestToWinery(booking, {
+            name: winery.name,
+            partnerEmail: winery.partnerEmail.trim(),
+          });
+        } catch (e) {
+          console.error("Winery notification send failed:", e);
+        }
+      }
+      return Response.json(
+        {
+          booking,
+          message: "Booking request sent. The winery will be in touch.",
+          storage: hasSupabase() ? "database" : "memory",
+          emailStatus: {
+            confirmationSent,
+            ...(winery.isVerified && winery.partnerEmail?.trim()
+              ? { wineryNotificationSent }
+              : {}),
+          },
+        },
+        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+      );
     }
 
-    return Response.json(
-      {
-        booking,
-        message: "Booking request sent. The winery will be in touch.",
-        storage: hasSupabase() ? "database" : "memory",
-        emailStatus: {
-          confirmationSent,
-          ...(winery.isVerified && winery.partnerEmail?.trim()
-            ? { wineryNotificationSent }
-            : {}),
+    if (type === "guide_tour") {
+      const guide = guides.find((g) => g.id === providerId);
+      if (!guide) {
+        return jsonError("NOT_FOUND", "Guide not found", 404);
+      }
+      const trail = trailId ? trails.find((t) => t.id === trailId || t.slug === trailId) : undefined;
+      const notesWithTrail =
+        trailId && trail
+          ? (notes ? `${notes}\nTrail: ${trail.name}` : `Trail: ${trail.name}`)
+          : notes;
+      const booking = await createBooking({
+        type: "guide_tour",
+        providerId,
+        providerName: guide.name,
+        date,
+        partySize,
+        guestEmail,
+        guestName: safeGuestName,
+        notes: notesWithTrail != null ? sanitizeForStorage(notesWithTrail) : undefined,
+        leadFeeEur: guide.partnerLeadFeeEur,
+      });
+
+      let confirmationSent = false;
+      let guideNotificationSent = false;
+      try {
+        confirmationSent = await sendBookingConfirmation(booking);
+      } catch (e) {
+        console.error("Guest email send failed:", e);
+      }
+      if (guide.isVerified && guide.partnerEmail?.trim()) {
+        try {
+          guideNotificationSent = await sendBookingRequestToGuide(
+            booking,
+            { name: guide.name, partnerEmail: guide.partnerEmail.trim() },
+            trail?.name
+          );
+        } catch (e) {
+          console.error("Guide notification send failed:", e);
+        }
+      }
+      return Response.json(
+        {
+          booking,
+          message: "Booking request sent. The guide will be in touch.",
+          storage: hasSupabase() ? "database" : "memory",
+          emailStatus: {
+            confirmationSent,
+            ...(guide.isVerified && guide.partnerEmail?.trim()
+              ? { guideNotificationSent }
+              : {}),
+          },
         },
-      },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
-    );
+        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+      );
+    }
+
+    return jsonError("VALIDATION_ERROR", "Invalid booking type", 400);
   } catch (err) {
     console.error("Booking API error:", err);
     return jsonError(

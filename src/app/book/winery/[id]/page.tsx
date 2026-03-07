@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!winery) return { title: "Not found" };
   return {
     title: `Book a tasting | ${winery.name} | Cyprus Winter`,
-    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Cyprus Winter.`,
+    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`,
     alternates: { canonical: `${SITE_URL}/book/winery/${id}` },
   };
 }
@@ -35,7 +35,7 @@ export default async function WineryBookPage({
   if (!winery) notFound();
 
   return (
-    <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
+    <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <BackLink href={`/discover/${id}`} label={`Back to ${winery.name}`} />
 
       <div className="mt-6">

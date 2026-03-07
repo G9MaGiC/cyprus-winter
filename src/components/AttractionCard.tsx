@@ -49,6 +49,11 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
                 Local
               </span>
             )}
+            {isWinery && (a as Winery).isVerified && (
+              <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean" title="Verified partner: receives booking requests directly">
+                Verified partner
+              </span>
+            )}
           </div>
           <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block">
             {a.region}

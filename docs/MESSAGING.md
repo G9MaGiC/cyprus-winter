@@ -8,7 +8,7 @@
 
 ## Positioning
 
-**One-liner:** The Mediterranean's best-kept secret — Cyprus in winter. Trails, ruins, villages, wine. Plan and book.
+**One-liner:** The Mediterranean's best-kept secret — Cyprus in winter. Real places, real winters. Discover trails, ruins, villages, heritage. Plan and book.
 
 **Tone:** Warm, understated, Mediterranean. Practical over hype. Specific over generic.
 
@@ -28,7 +28,7 @@
 
 ## Subheads & Taglines
 
-- Sixteen degrees when home is six. Trails, ruins, villages, wine.
+- Sixteen degrees when home is six. Discover ruins, trails, villages, heritage.
 - The island doesn't shut down when the sun dips.
 - Winter Cyprus: hikes, history, fireside wine.
 - Fewer crowds. Same Mediterranean. Better light.
@@ -40,8 +40,8 @@
 
 | Page | Copy |
 |------|------|
-| Home | Cyprus in winter. Trails, villages, wineries, ancient sites. Plan your trip. Fewer crowds, milder weather. |
-| Discover | Beaches, villages, monasteries, wineries. Explore Cyprus in winter. Curated places and insider tips. |
+| Home | Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land. |
+| Discover | Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries. Sixteen degrees when home is six. |
 | Trails | Troodos, Paphos, Akamas. Trail conditions, winter hiking tips. Check before you go. |
 | Plan | Build your Cyprus winter itinerary. Add trails, villages, wineries. Save as you go. |
 | Events | Epiphany, carnival, markets, tastings. What's on in Cyprus November–March. |
@@ -54,7 +54,7 @@
 ### Instagram / Pinterest captions
 
 **Option A (short)**  
-Cyprus in winter. 16°C. Trails, villages, wine. The Mediterranean's best-kept secret.  
+The Mediterranean's best-kept secret. Cyprus in winter—16°C, real places. Trails, villages, heritage.  
 👉 Link in bio
 
 **Option B (story)**  
@@ -79,7 +79,7 @@ Cyprus winter tourism is growing — 30% YoY. Longer stays, higher spend, authen
 **Headline 2:** Winter Hiking Cyprus  
 **Headline 3:** Cyprus Wine Villages  
 
-**Description:** Plan your Cyprus winter trip. Trails, villages, wineries, ancient sites. Fewer crowds. 16–20°C. Discover and book.
+**Description:** Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries, ancient sites. 16–20°C. Plan or explore when you land.
 
 ### Meta / Social (primary text)
 
@@ -93,7 +93,7 @@ Cyprus in winter: 16°C when home is 6°C. Hiking trails, ancient ruins, village
 |---------|------|
 | Cultural Explorer | Real places. Real winters. No tourist traps. |
 | Active Adventurer | Troodos trails. Winter sun. Check conditions before you go. |
-| Digital Nomad | Work from 16°C. Weekend trails, villages, wine. |
+| Digital Nomad | Work from 16°C. Weekend trails, villages, heritage. |
 | Winter Sun Family | Mild weather. Beaches, ruins, markets. Family-friendly Cyprus. |
 | Local Resident | Your island in winter. Fewer crowds. Same light. |
 | Expat Resident | Beyond the usual. Villages, trails, events. |
@@ -107,7 +107,7 @@ Cyprus in winter: 16°C when home is 6°C. Hiking trails, ancient ruins, village
 ### For Short Stays
 
 - Limited time? One trail. One village. One evening.
-- 48-hour itinerary: Kourion, Artemis, Omodos, wine.
+- 48-hour itinerary: Kourion, Artemis, Omodos, tastings.
 
 ---
 
@@ -139,4 +139,4 @@ Cyprus in winter: 16°C when home is 6°C. Hiking trails, ancient ruins, village
 **Brand:** Cyprus Winter  
 **Positioning:** Mediterranean winter discovery app  
 **Tagline:** Escape the cold. Explore.  
-**Proof:** 16–20°C, fewer crowds, trails + villages + wine
+**Proof:** 16–20°C, fewer crowds, Mediterranean escape; discover trails, villages, heritage

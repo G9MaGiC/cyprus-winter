@@ -7,9 +7,20 @@ import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@
 import { sanitizeText } from "@/lib/sanitize";
 
 // Providers in priority order. Each is tried until one succeeds (handles 429, timeouts, etc.).
+// AI Gateway (Vercel) first: single key, multi-provider routing. https://vercel.com/docs/ai-gateway/getting-started
 type Provider = { client: OpenAI; model: string };
 function buildProviders(): Provider[] {
   const providers: Provider[] = [];
+  if (process.env.AI_GATEWAY_API_KEY) {
+    const model = process.env.AI_GATEWAY_MODEL || "openai/gpt-4o-mini";
+    providers.push({
+      client: new OpenAI({
+        apiKey: process.env.AI_GATEWAY_API_KEY,
+        baseURL: "https://ai-gateway.vercel.sh/v1",
+      }),
+      model,
+    });
+  }
   if (process.env.XAI_API_KEY) {
     providers.push({ client: new OpenAI({ apiKey: process.env.XAI_API_KEY, baseURL: "https://api.x.ai/v1" }), model: "grok-3-mini" });
   }
@@ -40,7 +51,7 @@ function isRetryableError(err: unknown): boolean {
   );
 }
 
-const SYSTEM_PROMPT = `You are the Cyprus Winter AI assistant: helpful, warm, and knowledgeable about winter travel in Cyprus.
+const SYSTEM_PROMPT = `You are the Cyprus Winter guide: warm, knowledgeable about winter travel in Cyprus. Write like a local who knows the island.
 You have access to trails, wineries, ancient sites, villages, monasteries, and beaches.
 Answer concisely (2-4 sentences unless the user asks for more). When suggesting places, mention them by name and offer to share more.
 Format links as markdown: [Trail name](/trails/id), [Winery name](/discover/id).
@@ -61,7 +72,7 @@ export async function POST(req: NextRequest) {
   if (providers.length === 0) {
     return jsonError(
       "SERVICE_UNAVAILABLE",
-      "Add XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY to your .env.local.",
+      "Add AI_GATEWAY_API_KEY, XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY to your .env.local.",
       503
     );
   }
@@ -84,6 +95,15 @@ export async function POST(req: NextRequest) {
     content: sanitizeText(m.content, 10000),
   }));
 
+  const ctx = parsed.data.context;
+  let pageHint = "";
+  if (ctx?.path || ctx?.lastPlace) {
+    const parts: string[] = [];
+    if (ctx.path) parts.push(`User is on page: ${ctx.path}`);
+    if (ctx.lastPlace) parts.push(`User recently viewed: ${ctx.lastPlace}`);
+    pageHint = `\n### Current context (use to personalize)\n${parts.join(". ")}\nWhen relevant, tailor your answer to the page they're on or the place they've viewed. E.g. on /trails/artemis-trail suggest nearby villages or wineries; on /discover/omodos suggest trails or tastings nearby.\n`;
+  }
+
   let context: string;
   try {
     context = buildAIContext();
@@ -91,7 +111,7 @@ export async function POST(req: NextRequest) {
     console.error("buildAIContext error:", ctxErr);
     context = "Trails, wineries, and attractions data available.";
   }
-  const systemWithContext = `${SYSTEM_PROMPT}\n\n${context}`;
+  const systemWithContext = `${SYSTEM_PROMPT}\n\n${pageHint}${context}`;
 
   let lastErr: unknown = null;
   for (const { client, model } of providers) {
@@ -99,7 +119,7 @@ export async function POST(req: NextRequest) {
       const completion = await client.chat.completions.create({
         model,
         messages: [{ role: "system", content: systemWithContext }, ...messages],
-        max_tokens: 500,
+        max_tokens: 800,
       });
       const raw = completion.choices[0]?.message?.content ?? "I couldn't put that together. Try again, or browse Discover and Trails for real places and tips.";
       const reply = sanitizeText(raw, 10000);

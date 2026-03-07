@@ -4,9 +4,10 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import AttractionCard from "@/components/AttractionCard";
+import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import FilterChips from "@/components/FilterChips";
 import StickyPlanBar from "@/components/StickyPlanBar";
-import { SECTION, CTA, EMPTY_STATE, LAYOUT } from "@/lib/design-tokens";
+import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
@@ -22,6 +23,8 @@ const filterToSectionId: Record<string, string> = {
   monastery: "monastery",
   nature: "beach",
   family: "family",
+  quiet: "quiet",
+  "off-beaten-path": "quiet",
 };
 
 type Section = { id: string; title: string; items: (Attraction | Winery | Restaurant)[] };
@@ -114,7 +117,7 @@ export default function DiscoverClient({
             ref={idx === 0 ? firstSectionRef : undefined}
             aria-labelledby={`section-${section.id}`}
           >
-            <h2 id={`section-${section.id}`} className={`font-display text-2xl font-semibold text-olive leading-tight break-words ${SECTION.headingGap}`}>
+            <h2 id={`section-${section.id}`} className={`${TYPE.sectionTitle} break-words ${SECTION.headingGap}`}>
               {section.title}
             </h2>
             {section.items.length === 0 ? (
@@ -123,10 +126,19 @@ export default function DiscoverClient({
                 role="status"
                 aria-live="polite"
               >
-                <p className="text-olive/80 mb-4">Nothing here yet. Switch filters or tap Ask AI—it knows Troodos to coast.</p>
-                <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}>
-                  Browse all categories
-                </Link>
+                <p className="text-olive/80 mb-4">Nothing here yet. Switch filters or ask AI—it knows Troodos to coast.</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <button
+                    type="button"
+                    onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
+                    className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
+                  >
+                    Ask AI
+                  </button>
+                  <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}>
+                    Browse all categories
+                  </Link>
+                </div>
               </div>
             ) : (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

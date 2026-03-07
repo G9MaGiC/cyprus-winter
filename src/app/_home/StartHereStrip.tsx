@@ -12,7 +12,7 @@ type StartHereItem = {
 const items: StartHereItem[] = [
   {
     title: "Discover",
-    desc: "Villages, ruins, coasts, wineries.",
+    desc: "Places that feel real. Ruins, coasts, villages, heritage.",
     href: "/discover",
     cta: "Start exploring",
     variant: "primary",
@@ -35,7 +35,7 @@ const items: StartHereItem[] = [
 
 export default function StartHereStrip() {
   return (
-    <section aria-label="Start here" className={`${LAYOUT.safeAreaX} -mt-10 sm:-mt-14 relative z-20`}>
+    <section aria-label="Start here" className={`${LAYOUT.safeAreaX} -mt-6 sm:-mt-8 relative z-20 min-h-0`}>
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {items.map((item) => (

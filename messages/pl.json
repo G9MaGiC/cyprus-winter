@@ -6,8 +6,13 @@
     "arriving": "Przylot",
     "weather": "Pogoda",
     "bookings": "Rezerwacje",
-    "tagline": "Czy znalazłeś nas w Google czy na lotnisku—szlaki, wioski, wino. Numer alarmowy <strong>112</strong> · Informacja turystyczna <strong>1460</strong> · Ambulans <strong>199</strong>.",
-    "practical": "Ruch lewostronny. Zapakuj warstwy. Wyspa nagradza ciekawskich. Zima od listopada do marca. Pytania? Naciśnij Ask AI.",
+    "beaches": "Plaże",
+    "wineries": "Winnice",
+    "villages": "Wioski",
+    "troodos": "Troodos",
+    "paphos": "Pafos",
+    "tagline": "Łagodny, spokojny, autentyczny. Szlaki, wioski, dziedzictwo. Wyspa nagradza ciekawskich.",
+    "practical": "Ruch lewostronny. Zapakuj warstwy. Wyspa nagradza ciekawskich. Naciśnij Ask AI.",
     "planYourTrip": "Zaplanuj wycieczkę"
   },
   "nav": {
@@ -38,7 +43,7 @@
     },
     "app__home_HomeHero": {
       "text_13": "Zima na Cyprze",
-      "text_14": "Szlaki, wioski, wino",
+      "text_14": "Szlaki, wioski, dziedzictwo",
       "text_subtitle": "Często szesnaście stopni, gdy w domu jest sześć.",
       "text_16": "Planuj z wyprzedzeniem lub zacznij odkrywać po wylądowaniu.",
       "aria-label_10": "Przejdź do Odkrywaj",

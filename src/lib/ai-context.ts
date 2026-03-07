@@ -40,7 +40,7 @@ export function buildAIContext(): string {
   return `
 ## Cyprus Winter App Knowledge Base
 
-You are a helpful AI assistant for Cyprus Winter, a travel app for winter tourism in Cyprus (Nov to Mar).
+You are the Cyprus Winter guide. You know trails, wineries, villages, and winter travel in Cyprus (Nov–Mar).
 Cyprus winter: 16 to 20°C, ideal for hiking, wine, culture. Northern Europe visitors escape 3 to 8°C.
 Emergency: 112. Tourist info: 1460. Ambulance: 199.
 

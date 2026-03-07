@@ -13,17 +13,59 @@ import { OPEN_AI_EVENT } from "./AIAssistantTrigger";
 
 type Message = { role: "user" | "assistant"; content: string; isRetryable?: boolean; is503?: boolean };
 
-const SUGGESTIONS = [
+const SUGGESTIONS_HOME = [
   "Plan my 3-day winter trip",
   "Best wineries with a view",
   "Artemis Trail conditions",
   "Omodos and Commandaria tasting",
-  "What should I do in Omodos?",
-  "Hike plus wine in one day",
-  "Quiet villages for a slow day",
-  "Where's the best winter light?",
   "I'm arriving tomorrow. Where do I start?",
+  "Hike plus wine in one day",
 ];
+
+const SUGGESTIONS_DISCOVER = [
+  "Best wineries with a view",
+  "Quiet villages for a slow day",
+  "What pairs with Kourion?",
+  "Omodos and nearby tastings",
+  "Family-friendly places in winter",
+  "Where's the best winter light?",
+];
+
+const SUGGESTIONS_TRAILS = [
+  "Artemis Trail conditions",
+  "Best trail for this week?",
+  "Easy trails for beginners",
+  "Troodos snow—what to expect?",
+  "Combine a trail with a village",
+  "What to wear for winter hiking?",
+];
+
+const SUGGESTIONS_PLAN = [
+  "Add a winery near Omodos",
+  "Best route for Day 2?",
+  "Fill a day with culture and wine",
+  "Trails near my hotel in Platres",
+  "Book tastings ahead—which wineries?",
+  "Short stay: 48 hours, what to do?",
+];
+
+const SUGGESTIONS_DETAIL = [
+  "What pairs well with this place?",
+  "Best time to visit?",
+  "Nearby trails or villages",
+  "Winter tips for here",
+  "Add this to my plan",
+];
+
+function getSuggestions(pathname: string | null): string[] {
+  if (!pathname) return SUGGESTIONS_HOME;
+  if (pathname.startsWith("/trails/") && pathname !== "/trails") return SUGGESTIONS_DETAIL;
+  if (pathname.startsWith("/discover/") || pathname.startsWith("/book/winery/")) return SUGGESTIONS_DETAIL;
+  if (pathname.startsWith("/trails")) return SUGGESTIONS_TRAILS;
+  if (pathname.startsWith("/discover")) return SUGGESTIONS_DISCOVER;
+  if (pathname.startsWith("/plan")) return SUGGESTIONS_PLAN;
+  return SUGGESTIONS_HOME;
+}
 
 export default function AIAssistant() {
   const pathname = usePathname();
@@ -32,7 +74,7 @@ export default function AIAssistant() {
     {
       role: "assistant",
       content:
-        "Hi. I'm your Cyprus Winter guide. Ask about trails, wineries, villages, or how to plan your trip. Tap a suggestion, type, or use the mic. I'll point you to real places (Troodos, Omodos, Nissi) and practical tips.",
+        "Hi. I know the island—trails, wineries, villages. Ask anything. Tap a suggestion, type, or use the mic.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -187,11 +229,9 @@ export default function AIAssistant() {
       const isAuth = msg.includes("401") || /invalid authentication|auth failed|api key/i.test(msg);
       const isRateLimit = msg === "RATE_LIMIT" || msg === "PROVIDER_LIMIT" || msg.includes("429") || /quota|usage limit/i.test(msg);
       const fallback = "Something hiccuped. Try again in a moment, or browse Discover and Trails for ideas.";
-      const content503 = "Assistant isn't available right now. Browse Discover or Trails for ideas.";
-      const contentAuth = "API key issue. Check XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY in .env.local and restart the dev server.";
-      const contentRateLimit = msg === "RATE_LIMIT"
-        ? "Too many messages. Please wait a moment, then try again."
-        : "We've hit a usage limit. Wait a minute or add credits to your API account, then try again.";
+      const content503 = "Can't reach the guide right now. Browse Discover or Trails for ideas.";
+      const contentAuth = "Can't reach the guide right now. Try again later, or browse Discover and Trails for ideas.";
+      const contentRateLimit = "Too many messages. Wait a moment, then try again.";
       setMessages((m) => [
         ...m,
         {
@@ -308,14 +348,14 @@ export default function AIAssistant() {
 
   return (
     <>
-      {/* Floating trigger — Mediterranean bubble, pulse hint, 44px+ touch target */}
+      {/* Floating trigger — terracotta primary, Mediterranean warmth */}
       <button
         ref={triggerButtonRef}
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Open AI assistant"
+        aria-label="Ask your guide"
         aria-expanded={open}
-        className="fixed right-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:right-6 md:bottom-6 z-40 min-h-[48px] min-w-[48px] w-14 h-14 rounded-full bg-sage text-white shadow-lg hover:bg-sage/90 hover:shadow-xl active:scale-[0.97] transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ai-chat-trigger-pulse"
+        className="fixed right-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:right-6 md:bottom-6 z-40 min-h-[48px] min-w-[48px] w-14 h-14 rounded-full bg-terracotta text-white shadow-lg hover:bg-terracotta-muted hover:shadow-xl active:scale-[0.97] transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ai-chat-trigger-pulse"
       >
         <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -328,19 +368,19 @@ export default function AIAssistant() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="ai-dialog-title"
-          aria-label="Cyprus Winter AI assistant"
+          aria-label="Cyprus Winter guide"
           className="fixed inset-0 z-50 flex flex-col bg-background sm:inset-auto sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto sm:w-[420px] sm:max-h-[calc(100vh-5rem)] sm:rounded-2xl sm:shadow-2xl sm:border sm:border-sand-200/80 overflow-hidden min-h-[100dvh] sm:min-h-0 ai-chat-panel-enter"
         >
-          {/* Header — charcoal + aegean accent, Mediterranean feel */}
-          <header className="flex items-center justify-between gap-2 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-[var(--surface-dark)] text-white shrink-0 border-b border-white/10">
+          {/* Header — charcoal + terracotta accent, Mediterranean warmth */}
+          <header className="flex items-center justify-between gap-2 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-charcoal text-white shrink-0 border-b border-white/10">
             <div className="min-w-0 flex items-center gap-2">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-aegean/30 text-sage" aria-hidden>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-terracotta/20 text-terracotta" aria-hidden>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </span>
               <div>
-                <h2 id="ai-dialog-title" className="font-display font-semibold text-base truncate">Cyprus Winter AI</h2>
+                <h2 id="ai-dialog-title" className="font-display font-semibold text-base truncate">Cyprus Winter</h2>
                 <p className="text-xs text-white/80">Ask or speak</p>
               </div>
             </div>
@@ -350,7 +390,7 @@ export default function AIAssistant() {
                 onClick={() => setMessages([{
                   role: "assistant",
                   content:
-                    "Hi. I'm your Cyprus Winter guide. Ask about trails, wineries, villages, or how to plan your trip. Tap a suggestion, type, or use the mic. I'll point you to real places (Troodos, Omodos, Nissi) and practical tips.",
+                    "Hi. I know the island—trails, wineries, villages. Ask anything. Tap a suggestion, type, or use the mic.",
                 }])}
                 className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center px-3 py-2 rounded-xl text-xs font-medium text-white/90 hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation"
                 aria-label="New chat"
@@ -384,10 +424,10 @@ export default function AIAssistant() {
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[90%] sm:max-w-[85%] rounded-2xl px-4 py-3 border ${
+                  className={`max-w-[90%] sm:max-w-[85%] rounded-xl px-4 py-3 border ${
                     m.role === "user"
-                      ? "bg-sage text-white border-sage/80 rounded-br-md shadow-sm"
-                      : "bg-sand-100 text-olive border-sand-200/80 rounded-bl-md"
+                      ? "bg-terracotta text-white border-terracotta/80 rounded-br-md shadow-sm"
+                      : "bg-sand-100 text-olive border-l-4 border-l-terracotta/30 border border-sand-200/80 rounded-bl-md"
                   }`}
                 >
                   <div className="text-base sm:text-sm leading-relaxed whitespace-pre-wrap [&_a]:text-sage [&_a]:underline [&_a]:break-all">
@@ -413,11 +453,11 @@ export default function AIAssistant() {
             ))}
             {loading && (
               <div className="flex justify-start" aria-live="polite">
-                <div className="bg-sand-100 border border-sand-200/80 rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
+                <div className="bg-sand-100 border-l-4 border-l-terracotta/30 border border-sand-200/80 rounded-xl rounded-bl-md px-4 py-3 flex items-center gap-2">
                   <span className="flex gap-1 motion-reduce:animate-none" aria-hidden>
-                    <span className="w-2 h-2 rounded-full bg-sage/70 animate-bounce [animation-delay:0ms]" />
-                    <span className="w-2 h-2 rounded-full bg-sage/70 animate-bounce [animation-delay:150ms]" />
-                    <span className="w-2 h-2 rounded-full bg-sage/70 animate-bounce [animation-delay:300ms]" />
+                    <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:0ms]" />
+                    <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:150ms]" />
+                    <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:300ms]" />
                   </span>
                   <span className="text-sm text-olive/80">Thinking…</span>
                 </div>
@@ -426,22 +466,22 @@ export default function AIAssistant() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Voice: listening strip — Mediterranean accent, clear feedback */}
+          {/* Voice: listening strip — aegean accent, clear feedback */}
           {listening && (
             <div
-              className="shrink-0 px-4 py-3 bg-aegean/10 border-y border-aegean/25 flex items-center gap-3"
+              className="shrink-0 px-4 py-3 bg-aegean/10 border-y border-aegean/20 flex items-center gap-3"
               role="status"
               aria-live="polite"
               aria-label="Listening for your question"
             >
-              <span className="flex shrink-0 w-10 h-10 rounded-full bg-sage/20 items-center justify-center motion-reduce:animate-none" aria-hidden>
+              <span className="flex shrink-0 w-10 h-10 rounded-full bg-aegean/20 items-center justify-center motion-reduce:animate-none" aria-hidden>
                 <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-sage" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aegean opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-aegean" />
                 </span>
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-sage">Listening…</p>
+                <p className="text-sm font-medium text-aegean">Listening…</p>
                 {interimTranscript && (
                   <p className="text-sm text-olive/80 truncate mt-0.5">&ldquo;{interimTranscript}&rdquo;</p>
                 )}
@@ -449,7 +489,7 @@ export default function AIAssistant() {
               <button
                 type="button"
                 onClick={stopListening}
-                className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl bg-sage text-white text-sm font-medium hover:bg-sage/90 active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
+                className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl bg-aegean text-white text-sm font-medium hover:bg-aegean/90 active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
                 aria-label="Stop listening"
               >
                 Stop
@@ -457,18 +497,18 @@ export default function AIAssistant() {
             </div>
           )}
 
-          {/* Suggestions — chip style, horizontal scroll, hover feedback */}
+          {/* Suggestions — PILL neutral, terracotta hover */}
           {messages.length <= 2 && !listening && (
             <div className="shrink-0 px-4 pb-2">
               <p className="text-xs text-olive-muted mb-2 prose-label">Try one, or ask your own</p>
               <div className="flex gap-2.5 sm:gap-2 overflow-x-auto pb-1 -mx-1 scrollbar-none snap-x snap-mandatory overscroll-x-contain scroll-touch">
-                {SUGGESTIONS.slice(0, 6).map((s) => (
+                {getSuggestions(pathname).slice(0, 6).map((s) => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => sendMessage(s)}
                     disabled={loading}
-                    className="shrink-0 snap-start min-h-[44px] px-4 py-2.5 rounded-full text-sm font-medium bg-sand-100 text-olive border border-sand-200/80 hover:border-terracotta/30 hover:bg-terracotta/10 hover:text-terracotta active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
+                    className="shrink-0 snap-start min-h-[44px] px-4 py-2.5 rounded-full text-sm font-medium bg-sand-200/80 text-olive border border-sand-200/80 hover:border-terracotta/30 hover:bg-terracotta/10 hover:text-terracotta active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
                   >
                     {s}
                   </button>
@@ -484,7 +524,7 @@ export default function AIAssistant() {
               <button
                 type="button"
                 onClick={() => setVoiceError(null)}
-                className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-olive hover:text-sage rounded-xl hover:bg-sage/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
+                className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-olive hover:text-terracotta rounded-xl hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
                 aria-label="Dismiss"
               >
                 Dismiss
@@ -492,7 +532,7 @@ export default function AIAssistant() {
             </div>
           )}
 
-          {/* Input bar — Mediterranean tokens, safe area, send feedback */}
+          {/* Input bar — terracotta primary, design tokens */}
           <form
             onSubmit={handleSubmit}
             className="shrink-0 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-sand-200/80 flex gap-2 items-end bg-background"
@@ -512,15 +552,15 @@ export default function AIAssistant() {
                 placeholder="Ask about trails, wineries, villages…"
                 rows={1}
                 disabled={loading}
-                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
+                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta/50 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
               />
               <button
                 type="button"
                 onClick={listening ? stopListening : startListening}
-                className={`absolute right-2 bottom-2 flex items-center justify-center rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[44px] min-w-[44px] touch-manipulation ${
+                className={`absolute right-2 bottom-2 flex items-center justify-center rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[44px] min-w-[44px] touch-manipulation ${
                   listening
-                    ? "bg-sage/20 text-sage hover:bg-sage/30 active:scale-[0.97]"
-                    : "bg-sand-200 text-olive hover:bg-sage/10 hover:text-sage active:scale-[0.97]"
+                    ? "bg-terracotta/20 text-terracotta hover:bg-terracotta/30 active:scale-[0.97]"
+                    : "bg-sand-200 text-olive hover:bg-terracotta/10 hover:text-terracotta active:scale-[0.97]"
                 }`}
                 aria-label={listening ? "Stop listening" : "Tap to speak"}
               >
@@ -530,7 +570,7 @@ export default function AIAssistant() {
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="shrink-0 min-h-[44px] px-5 py-2.5 rounded-xl bg-sage text-white font-medium text-sm hover:bg-sage/90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
+              className="shrink-0 min-h-[44px] px-5 py-2.5 rounded-xl bg-terracotta text-white font-medium text-sm hover:bg-terracotta-muted active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
               aria-label="Send message"
             >
               Send
@@ -579,7 +619,7 @@ function AssistantMessage({
   const plainText = content.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
   return (
     <div>
-      <span className="[&_a]:text-sage [&_a]:underline [&_a]:break-all [&_p]:mb-1 last:[&_p]:mb-0">
+      <span className="[&_a]:text-terracotta [&_a]:underline [&_a]:break-all [&_p]:mb-1 last:[&_p]:mb-0">
         <ReactMarkdown
           components={{
             a: ({ href, children }) => {
@@ -593,7 +633,7 @@ function AssistantMessage({
                     href={safe ? url : "#"}
                     rel={url.startsWith("http") ? "noopener noreferrer" : undefined}
                     target={url.startsWith("http") ? "_blank" : undefined}
-                    className="text-sage underline underline-offset-2 hover:text-sage/90 break-all transition-colors"
+                    className="text-terracotta underline underline-offset-2 hover:text-terracotta-muted break-all transition-colors"
                   >
                     {children}
                   </a>
@@ -613,13 +653,13 @@ function AssistantMessage({
           <span className="flex flex-wrap gap-2">
             <Link
               href="/discover"
-              className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-sage hover:bg-sage/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-1"
+              className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
             >
               Browse Discover
             </Link>
             <Link
               href="/trails"
-              className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-sage hover:bg-sage/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-1"
+              className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
             >
               View trails
             </Link>
@@ -629,7 +669,7 @@ function AssistantMessage({
           <button
             type="button"
             onClick={onRetry}
-            className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-sage hover:bg-sage/10 active:scale-[0.98] transition-all touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-1"
+            className="min-h-[44px] inline-flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-medium text-terracotta hover:bg-terracotta/10 active:scale-[0.98] transition-all touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
           >
             Retry
           </button>
@@ -637,7 +677,7 @@ function AssistantMessage({
         <button
           type="button"
           onClick={() => (speaking ? onStopSpeak() : onSpeak(plainText))}
-          className="min-h-[44px] inline-flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-olive/80 hover:text-sage hover:bg-sage/5 active:scale-[0.98] transition-all touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-1"
+          className="min-h-[44px] inline-flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-olive/80 hover:text-terracotta hover:bg-terracotta/5 active:scale-[0.98] transition-all touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
           aria-label={speaking ? "Stop speaking" : "Listen to response"}
         >
           {speaking ? (

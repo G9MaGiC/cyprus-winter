@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import {
   beaches,
@@ -8,15 +9,21 @@ import {
 } from "@/data/attractions";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
-import { LAYOUT } from "@/lib/design-tokens";
+import { CTA, LAYOUT } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import DiscoverClient from "./DiscoverClient";
 
 export const metadata: Metadata = {
   title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
   description:
-    "Beaches, ancient sites, villages, wineries, monasteries. Curated Cyprus winter places—Nissi, Paphos mosaics, Lefkara, Troodos. Plan or explore when you land. Sixteen degrees when home is six.",
+    "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—Nissi, Paphos mosaics, Lefkara. Sixteen degrees when home is six. Free guide.",
   alternates: { canonical: `${SITE_URL}/discover` },
+  openGraph: {
+    title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
+    description: "Cyprus in winter: curated places that feel real. Beaches, villages, wineries, ancient sites. Free guide.",
+    url: `${SITE_URL}/discover`,
+    type: "website",
+  },
 };
 
 const allDiscoverItems = [
@@ -33,6 +40,14 @@ const isFamilyFriendly = (item: { bestFor?: string[] }) =>
   ) ?? false;
 const familyItems = allDiscoverItems.filter(isFamilyFriendly);
 
+const isOffBeatenPath = (item: { bestFor?: string[]; localSecret?: string }) =>
+  item.bestFor?.some(
+    (b) =>
+      b.toLowerCase().includes("off-the-beaten-path") ||
+      b.toLowerCase().includes("hidden gem")
+  ) || !!item.localSecret;
+const quietItems = allDiscoverItems.filter(isOffBeatenPath);
+
 const sections = [
   { id: "beach", title: "Beaches", items: beaches },
   { id: "ancient", title: "Ancient sites", items: ancientSites },
@@ -41,6 +56,7 @@ const sections = [
   { id: "eat", title: "Eat & drink", items: restaurants },
   { id: "monastery", title: "Monasteries & culture", items: monasteries },
   { id: "family", title: "Family-friendly", items: familyItems },
+  { id: "quiet", title: "Off the beaten path", items: quietItems },
 ];
 
 const discoverItemListSchema = {
@@ -71,10 +87,14 @@ export default function DiscoverPage() {
         backHref="/"
         backLabel="Home"
         title="Discover Cyprus Winter"
-        description="Beaches, ruins, villages, wineries, monasteries. What to pair each place with—your guide, not a brochure."
+        description="Places that feel real. What to pair each place with—your guide, not a brochure."
         backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
         backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
-      />
+      >
+        <Link href="/plan" className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}>
+          Plan your trip
+        </Link>
+      </ListPageHero>
 
       <DiscoverClient sections={sections} />
 

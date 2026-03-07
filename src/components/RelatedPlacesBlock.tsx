@@ -15,7 +15,7 @@ export default function RelatedPlacesBlock({ ids, description, showAddToItinerar
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-3 flex items-center gap-2">
+      <h2 className="prose-label text-olive/70 mb-3 flex items-center gap-2">
         Pair well with
       </h2>
       <p className="text-olive/80 text-base mb-4 leading-relaxed break-words">

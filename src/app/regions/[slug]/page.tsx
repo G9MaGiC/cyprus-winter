@@ -12,7 +12,7 @@ import { wineries } from "@/data/wineries";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { REGION_CONFIGS, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
-import { LAYOUT, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
@@ -159,7 +159,7 @@ export default async function RegionPage({ params }: Props) {
         );
 
   return (
-    <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
+    <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
         title={config.title}
@@ -171,7 +171,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="trails">
             <h2
               id="trails"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Trails
             </h2>
@@ -197,7 +197,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="villages">
             <h2
               id="villages"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Villages
             </h2>
@@ -213,7 +213,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="beaches">
             <h2
               id="beaches"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Beaches
             </h2>
@@ -229,7 +229,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="ancient">
             <h2
               id="ancient"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Ancient sites
             </h2>
@@ -245,7 +245,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="wineries">
             <h2
               id="wineries"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Wineries
             </h2>
@@ -271,7 +271,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="events">
             <h2
               id="events"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Winter events
             </h2>
@@ -279,7 +279,7 @@ export default async function RegionPage({ params }: Props) {
               {regionEvents.map((e) => (
                 <li
                   key={e.id}
-                  className="rounded-lg border border-sand-200/80 bg-white p-4"
+                  className={`${CARD.base} ${CARD.content}`}
                 >
                   <h3 className="font-medium text-olive">{e.name}</h3>
                   <p className="text-sm text-olive/80 mt-1">{e.description}</p>
@@ -296,7 +296,7 @@ export default async function RegionPage({ params }: Props) {
           <section aria-labelledby="monasteries">
             <h2
               id="monasteries"
-              className="font-display text-2xl font-semibold text-olive mb-6 sm:mb-8"
+              className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
               Monasteries & churches
             </h2>

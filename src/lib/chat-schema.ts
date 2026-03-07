@@ -7,6 +7,12 @@ const messageSchema = z.object({
 
 export const chatRequestSchema = z.object({
   messages: z.array(messageSchema).min(1),
+  context: z
+    .object({
+      path: z.string().optional(),
+      lastPlace: z.string().optional(),
+    })
+    .optional(),
 });
 
 export type ChatRequest = z.infer<typeof chatRequestSchema>;

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ListPageHero from "@/components/ListPageHero";
+import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import ItineraryCard from "@/components/ItineraryCard";
 import ClearDayModal from "@/components/plan/ClearDayModal";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
@@ -11,8 +12,8 @@ import SuggestedForDay from "@/components/SuggestedForDay";
 import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
 import ShareLinks from "@/components/ShareLinks";
 import { useSearchParams, useRouter } from "next/navigation";
-import { LAYOUT, SECTION, CARD, CTA, EMPTY_STATE_DASHED } from "@/lib/design-tokens";
-import { useItinerary } from "@/hooks/useItinerary";
+import { LAYOUT, SECTION, CARD, CTA, EMPTY_STATE_DASHED, TYPE, PILL, CALLOUT } from "@/lib/design-tokens";
+import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { useTripDates } from "@/hooks/useTripDates";
 import PushOptIn from "@/components/PushOptIn";
 
@@ -67,6 +68,8 @@ export default function PlanPage() {
     mergeTemplate,
     clearDay,
     copyItinerary,
+    copyShareLink,
+    linkCopied,
     sharePath,
   } = useItinerary();
 
@@ -139,6 +142,11 @@ export default function PlanPage() {
             Itinerary copied to clipboard
           </div>
         )}
+        {linkCopied && (
+          <div className="sr-only" role="status" aria-live="polite">
+            Share link copied to clipboard
+          </div>
+        )}
 
         {searchParams.get("add") && !hydrated && (
           <p className="text-sm text-olive/70 mb-4" role="status" aria-live="polite">
@@ -152,7 +160,15 @@ export default function PlanPage() {
             role="alert"
             aria-live="assertive"
           >
-            Place not found—link may be broken. Browse Discover or Trails to add places.
+            <p className="mb-3">That place isn&apos;t in our list anymore.</p>
+            <div className="flex flex-wrap gap-2">
+              <Link href="/discover" className={CTA.secondaryCompact}>
+                Browse Discover
+              </Link>
+              <Link href="/trails" className={CTA.secondaryCompact}>
+                View trails
+              </Link>
+            </div>
           </div>
         )}
 
@@ -162,6 +178,9 @@ export default function PlanPage() {
             backLabel="Home"
             title="Plan your Cyprus winter trip"
             description="Pick a template or add places. Your plan saves as you go."
+            backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
+            backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter trip"
+            hasWidgetStrip
           >
             <div
               className={`mt-3 sm:mt-8 ${CARD.contentLg} ${
@@ -181,7 +200,7 @@ export default function PlanPage() {
                 <div className="flex flex-wrap items-center justify-between gap-3 mt-2">
                   <p className="text-sm text-olive/70" aria-live="polite" role="status">
                     <span className="font-semibold text-terracotta tabular-nums">{totalPlaces}</span> places ·{" "}
-                    <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/5 days · Auto-saved
+                    <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/{MAX_DAYS} days · Auto-saved
                   </p>
                   <div className="relative" ref={shareMenuRef}>
                     <button
@@ -201,13 +220,24 @@ export default function PlanPage() {
                           ref={shareMenuFirstItemRef}
                           type="button"
                           onClick={() => {
+                            copyShareLink();
+                            setShareMenuOpen(false);
+                            requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
+                          }}
+                          className="w-full min-h-[44px] px-4 py-2 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+                        >
+                          {linkCopied ? "Link copied" : "Copy link"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
                             copyItinerary();
                             setShareMenuOpen(false);
                             requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                           }}
                           className="w-full min-h-[44px] px-4 py-2 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
                         >
-                          {copied ? "Copied" : "Copy itinerary"}
+                          {copied ? "Copied" : "Copy itinerary (text)"}
                         </button>
                         <div
                           className="px-4 py-2 border-t border-sand-200/80"
@@ -246,7 +276,7 @@ export default function PlanPage() {
         )}
 
         {datesHydrated && (
-          <div className="mb-6">
+          <ListPageWidgetStrip ariaLabel="Trip dates">
             <div className={`${CARD.base} ${CARD.content}`}>
               <p className="text-sm font-medium text-olive mb-2">When are you traveling?</p>
               <div className="flex flex-wrap gap-3">
@@ -273,11 +303,11 @@ export default function PlanPage() {
             {dates.start && (
               <PushOptIn tripStartDate={dates.start} variant={withinSevenDays ? "soon" : "far"} />
             )}
-          </div>
+          </ListPageWidgetStrip>
         )}
 
         {hasWineries && hydrated && (
-          <div className={`${CARD.base} ${CARD.content} bg-terracotta/5 border-terracotta/20 mb-8 sm:mb-10`}>
+          <div className={`${CARD.base} ${CARD.content} ${CALLOUT.cta} bg-terracotta/5 border-terracotta/30 shadow-sm mb-8 sm:mb-10`}>
             <p className="text-sm font-medium text-olive mb-4">You've added wineries. Book tastings ahead—many run lean in winter.</p>
             <div className="flex flex-wrap items-center gap-3">
               <Link href="/bookings" className={CTA.primaryCompact}>
@@ -316,9 +346,9 @@ export default function PlanPage() {
               if (t.getAttribute("role") !== "tab") return;
               const next =
                 e.key === "ArrowLeft" || e.key === "ArrowUp"
-                  ? activeDay <= 1 ? 5 : activeDay - 1
+                  ? activeDay <= 1 ? MAX_DAYS : activeDay - 1
                   : e.key === "ArrowRight" || e.key === "ArrowDown"
-                    ? activeDay >= 5 ? 1 : activeDay + 1
+                    ? activeDay >= MAX_DAYS ? 1 : activeDay + 1
                     : null;
               if (next != null) {
                 e.preventDefault();
@@ -327,7 +357,7 @@ export default function PlanPage() {
               }
             }}
           >
-            {[1, 2, 3, 4, 5].map((d) => {
+            {Array.from({ length: MAX_DAYS }, (_, i) => i + 1).map((d) => {
               const count = (days[d] ?? []).length;
               const isActive = activeDay === d;
               return (
@@ -361,7 +391,7 @@ export default function PlanPage() {
                 </span>
               </summary>
               <div className="mt-3 space-y-2">
-                {[1, 2, 3, 4, 5].map((d) => {
+                {Array.from({ length: MAX_DAYS }, (_, i) => i + 1).map((d) => {
                   const items = days[d] ?? [];
                   const summary = items.map((id) => getPlace(id)?.name ?? "…").join(" → ") || "Add places to get going";
                   const isActive = activeDay === d;
@@ -388,7 +418,7 @@ export default function PlanPage() {
           <div className={hasContent ? "order-2" : "order-1"}>
             {/* Quick start */}
             <section ref={quickStartRef} aria-labelledby="quick-start-heading">
-          <h2 id="quick-start-heading" className={`font-display text-lg font-semibold text-olive ${SECTION.titleGap}`}>
+          <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             Start here
           </h2>
           <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
@@ -418,10 +448,10 @@ export default function PlanPage() {
                     type="button"
                     onClick={() => addToDay(id)}
                     disabled={inDay}
-                    className={`inline-flex items-center shrink-0 min-h-[44px] px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:active:scale-100 ${
+                    className={`${PILL.base} rounded-xl disabled:active:scale-100 ${
                       inDay
                         ? "bg-sand-200/80 text-olive/50 cursor-default"
-                        : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"
+                        : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta border border-sand-200/80 hover:border-terracotta/30"
                     }`}
                     aria-pressed={inDay}
                     aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
@@ -668,10 +698,10 @@ export default function PlanPage() {
                         type="button"
                         onClick={() => addToDay(id)}
                         disabled={inDay}
-                        className={`inline-flex items-center shrink-0 min-h-[44px] px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:active:scale-100 ${
+                        className={`${PILL.base} rounded-xl disabled:active:scale-100 ${
                           inDay
                             ? "bg-sand-200/80 text-olive/50 cursor-default"
-                            : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"
+                            : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta border border-sand-200/80 hover:border-terracotta/30"
                         }`}
                         aria-pressed={inDay}
                         aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}

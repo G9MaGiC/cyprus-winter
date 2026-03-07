@@ -6,8 +6,14 @@ import { trails } from "@/data/trails";
 export const metadata: Metadata = {
   title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
   description:
-    "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
+    "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike. Free trail guide.",
   alternates: { canonical: `${SITE_URL}/trails` },
+  openGraph: {
+    title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
+    description: "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Free trail guide.",
+    url: `${SITE_URL}/trails`,
+    type: "website",
+  },
 };
 
 const trailsItemListSchema = {

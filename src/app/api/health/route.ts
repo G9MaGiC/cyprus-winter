@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
     return jsonRateLimitedFromResult("Too many health checks", limitResult.resetAt);
   }
   const ai = !!(
+    process.env.AI_GATEWAY_API_KEY ||
     process.env.XAI_API_KEY ||
     process.env.GROQ_API_KEY ||
     process.env.OLLAMA_BASE_URL ||
@@ -45,7 +46,7 @@ export async function GET(req: NextRequest) {
     {
       ok,
       message: ok
-        ? "Cyprus Winter is up. Trails, villages, wine. We're here."
+        ? "Cyprus Winter is up. Mediterranean winter escape—we're here."
         : "Supabase unreachable",
       ai,
       storage,

@@ -35,10 +35,11 @@ export default function Home() {
       <StartHereStrip />
       <RecentlyViewedStrip />
       <HomeMoodStrip />
+      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomeSection
         id="explore-heading"
         title="Explore"
-        subtitle="Villages, wineries, trails, and winter events — start anywhere."
+        subtitle="From ancient ruins to village tastings — start anywhere."
         alt
       >
         <CategoryChips />
@@ -76,7 +77,6 @@ export default function Home() {
         aria-labelledby="planning-heading"
         className={`${SECTION.py} bg-background ${LAYOUT.safeAreaX} relative`}
       >
-        <div id="plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <div className={`${LAYOUT.list} mx-auto`}>
           <h2 id="planning-heading" className="sr-only">
             Planning and essentials
@@ -90,7 +90,7 @@ export default function Home() {
                 Plan your trip
               </h3>
               <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
-                Build your itinerary. Add trails and wineries from Discover. Saves as you go.
+                Build your itinerary. Add places from Discover—saves as you go.
               </p>
             </Link>
             <Link
@@ -141,7 +141,7 @@ export default function Home() {
           <div className="flex justify-center gap-4">
             <ShareLinks
               path="/"
-              text="Cyprus Winter — trails, villages, wine. Plan ahead or start exploring when you land."
+              text="Cyprus Winter — the Mediterranean's best-kept secret. Trails, villages, heritage. Often sixteen degrees when home is six."
               ariaLabel="Share via"
               className="share-links-footer"
             />

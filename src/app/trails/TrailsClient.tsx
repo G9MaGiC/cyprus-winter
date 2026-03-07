@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { trails, trailConditions } from "@/data/trails";
+import { trails, trailConditions, TRAIL_COUNT } from "@/data/trails";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, SECTION, CTA, EMPTY_STATE_LARGE, CARD } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, CTA, EMPTY_STATE_LARGE, CARD, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
+import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import FilterChips from "@/components/FilterChips";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
 import Link from "next/link";
 
-const REGIONS = ["Troodos", "Paphos", "Ayia Napa"] as const;
+const REGIONS = ["Troodos", "Paphos", "Ayia Napa", "Famagusta", "Larnaca", "Limassol", "Nicosia", "Kyrenia"] as const;
 const DIFFICULTIES = ["easy", "moderate", "hard", "expert"] as const;
 
 export default function TrailsClient() {
@@ -65,25 +66,21 @@ export default function TrailsClient() {
         <ListPageHero
           title="Cyprus Winter Trails"
           description="Troodos, Paphos, Ayia Napa. Pine forest, ridge views, empty paths. Check conditions before you go."
+          descriptionSecondary={`${TRAIL_COUNT} trails across 8 regions.`}
           backHref="/"
           backLabel="Home"
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
           backgroundImageAlt="Troodos pine forest trail, Cyprus winter hiking"
-        />
-        <div className="mb-6 relative">
-          <div id="trails-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-          <Link href="/plan" className={`${CTA.primaryCompact}`}>
+          hasWidgetStrip
+        >
+          <Link href="/plan" className="inline-flex items-center min-h-[44px] mt-4 text-white/90 hover:text-golden text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded">
             Plan your trip
           </Link>
-        </div>
+        </ListPageHero>
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
 
-        <div
-          className={`sticky top-0 z-10 ${LAYOUT.stickyBarX} pt-2 pb-4 -mt-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90`}
-          role="region"
-          aria-label="Filters and stats"
-        >
-            <div className={`flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 mb-6 rounded-xl ${CARD.base} ${CARD.content}`}>
+        <ListPageWidgetStrip sticky sentinelId="trails-plan-sentinel" ariaLabel="Filters and stats">
+          <div className={`flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-6 mb-4 rounded-xl ${CARD.base} ${CARD.content}`}>
             <div className="flex items-center gap-2 shrink-0">
               <span className="text-2xl font-display font-bold text-olive">{filtered.length}</span>
               <span className="text-sm text-olive/70">trails</span>
@@ -194,11 +191,11 @@ export default function TrailsClient() {
               </div>
             </div>
           </section>
-        </div>
+        </ListPageWidgetStrip>
 
         {bestNow.length > 0 && !hasFilters && (
           <section aria-labelledby="best-now" className="mb-12 sm:mb-16">
-            <h2 id="best-now" className={`font-display text-lg font-semibold text-olive ${SECTION.titleGap}`}>
+            <h2 id="best-now" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
               Best right now
             </h2>
             <p className={`text-sm text-olive/70 ${SECTION.headingGap}`}>
@@ -219,7 +216,7 @@ export default function TrailsClient() {
 
         <section aria-labelledby="trails-map" className="mb-12 sm:mb-16">
           <div className="flex items-center justify-between mb-4">
-            <h2 id="trails-map" className="font-display text-lg font-semibold text-olive">
+            <h2 id="trails-map" className={`${TYPE.sectionTitle}`}>
               On the map
             </h2>
             <span className="text-xs text-olive/50">{filtered.length} trails</span>
@@ -230,7 +227,7 @@ export default function TrailsClient() {
         </section>
 
         <section aria-labelledby="trail-list" className="mb-0">
-          <h2 id="trail-list" className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>
+          <h2 id="trail-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
             {hasFilters ? `Trails (${filtered.length})` : "All trails"}
           </h2>
 

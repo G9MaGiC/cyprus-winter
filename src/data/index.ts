@@ -8,6 +8,7 @@ import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
+import { guides, getGuideById } from "@/data/guides";
 import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
 
@@ -88,3 +89,5 @@ export function getDiscoverPlaceById(id: string): Attraction | Restaurant | unde
   if (attraction) return attraction;
   return getRestaurantById(id);
 }
+
+export { guides, getGuideById };

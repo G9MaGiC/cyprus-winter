@@ -5,9 +5,11 @@ import { getSupabase, hasSupabase } from "./supabase";
 
 export type BookingStatus = "pending" | "confirmed" | "cancelled";
 
+export type BookingType = "winery_tasting" | "guide_tour";
+
 export type Booking = {
   id: string;
-  type: "winery_tasting";
+  type: BookingType;
   providerId: string;
   providerName: string;
   date: string;
@@ -87,9 +89,10 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
 }
 
 function rowToBooking(row: Record<string, unknown>): Booking {
+  const type = row.type === "guide_tour" ? "guide_tour" : "winery_tasting";
   return {
     id: String(row.id),
-    type: "winery_tasting",
+    type,
     providerId: String(row.provider_id),
     providerName: String(row.provider_name),
     date: String(row.date),

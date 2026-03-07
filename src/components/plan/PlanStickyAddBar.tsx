@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
+import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 
 type PlanStickyAddBarProps = {
   sentinelId: string;
@@ -14,6 +15,7 @@ type PlanStickyAddBarProps = {
  * Shows a sticky bottom bar with "Add place" on mobile when the add-places
  * section scrolls out of view. Clicking opens the add flow (modal) or scrolls to add area.
  * When visible, hides Plan tab in BottomNav to avoid duplicate CTAs.
+ * Hides when footer is in view to prevent overlap.
  */
 export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlaceClick }: PlanStickyAddBarProps) {
   const [show, setShow] = useState(false);
@@ -21,17 +23,39 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
+    const footerSentinel = document.getElementById(FOOTER_SENTINEL_ID);
     if (!sentinel) return;
 
-    const observer = new IntersectionObserver(
+    let addBarVisible = false;
+    let footerInView = false;
+
+    const updateShow = () => setShow(addBarVisible && !footerInView);
+
+    const addObserver = new IntersectionObserver(
       ([entry]) => {
-        setShow(!entry.isIntersecting);
+        addBarVisible = !entry.isIntersecting;
+        updateShow();
       },
       { threshold: 0 }
     );
 
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+    const footerObserver = footerSentinel
+      ? new IntersectionObserver(
+          ([entry]) => {
+            footerInView = entry.isIntersecting;
+            updateShow();
+          },
+          { threshold: 0 }
+        )
+      : null;
+
+    addObserver.observe(sentinel);
+    if (footerSentinel && footerObserver) footerObserver.observe(footerSentinel);
+
+    return () => {
+      addObserver.disconnect();
+      footerObserver?.disconnect();
+    };
   }, [sentinelId]);
 
   useEffect(() => {

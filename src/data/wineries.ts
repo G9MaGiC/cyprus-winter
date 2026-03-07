@@ -70,6 +70,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar, 11am to 2pm (book ahead)",
     localSecret: "Pair with halloumi from the village; they'll point you to the best local cheese shop.",
     combineWith: ["omodos", "artemis", "lania"],
+    isVerified: true,
+    partnerEmail: "bookings+tsiakkas@cyprus-winter.example",
+    partnerLeadFeeEur: 5,
   },
   {
     id: "vouni-panayia",
@@ -90,6 +93,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Feb, combine with a Laona village lunch",
     localSecret: "The Panayia village church nearby has a miraculous icon; locals combine winery visit with a quick stop.",
     combineWith: ["pafos-mosaics", "palaipafos", "polis"],
+    isVerified: true,
+    partnerEmail: "bookings+vouni-panayia@cyprus-winter.example",
+    partnerLeadFeeEur: 5,
   },
   {
     id: "zambartas",
@@ -110,6 +116,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar, 2 to 4pm (quietest)",
     localSecret: "The family often pours at the counter; ask about their experimental small batches.",
     combineWith: ["kourion", "kolossi", "governors-beach"],
+    isVerified: true,
+    partnerEmail: "bookings+zambartas@cyprus-winter.example",
+    partnerLeadFeeEur: 5,
   },
   {
     id: "kolios",
@@ -129,6 +138,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar, late morning before Adonis hike",
     localSecret: "Their Commandaria is aged in traditional style. Ask to compare with a modern interpretation.",
     combineWith: ["adonis", "pafos-mosaics", "polis"],
+    isVerified: true,
+    partnerEmail: "bookings+kolios@cyprus-winter.example",
+    partnerLeadFeeEur: 5,
   },
   {
     id: "kyperounta",
@@ -168,6 +180,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar, lunch (12 to 2pm) or sunset tasting",
     localSecret: "Their Ayios Onoufrios red pairs well with Cypriot meze. Ask for a wine-paired lunch.",
     combineWith: ["kourion", "governors-beach"],
+    isVerified: true,
+    partnerEmail: "bookings+santo@cyprus-winter.example",
+    partnerLeadFeeEur: 8,
   },
   {
     id: "tsangarides",
@@ -781,6 +796,9 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar, book ahead",
     localSecret: "Their Atypon 02 (Assyrtiko & Xynisteri blend) and Rosé Maratheftiko 2024 surprise people who think they know Cypriot wine. Ask about the Atypon range; the name means 'unexpected'.",
     combineWith: ["lefkara", "kolossi", "governors-beach", "choirokoitia", "kourion", "cape-greco", "kato-drys", "vavla", "lefkara-kato"],
+    isVerified: true,
+    partnerEmail: "bookings+domes-sergiou@cyprus-winter.example",
+    partnerLeadFeeEur: 5,
     signatureWines: [
       {
         name: "Xynisteri 2023",
@@ -814,7 +832,6 @@ export const wineries: Winery[] = [
     instagramHandle: "domeswinery",
     latitude: 34.8192,
     longitude: 33.3589,
-    partnerLeadFeeEur: 5,
   },
   {
     id: "mystes",
@@ -1143,23 +1160,6 @@ export const wineries: Winery[] = [
     winterTip: "Small and personal. Call ahead. Chrysorrogiatissa Monastery nearby.",
     localSecret: "Low-intervention. The family often leads the tasting. Unhurried.",
     combineWith: ["chrysorrogiatissa", "vouni-panayia", "pafos-mosaics"],
-  },
-  {
-    id: "chrysoroyiatissa-winery",
-    name: "Chrysoroyiatissa Winery",
-    region: "Panayia (Paphos)",
-    description:
-      "Winery at the monastery estate. The monks of Chrysorrogiatissa have made wine for centuries; today the winery operates alongside the monastery. Commandaria, dry whites, reds. Tours and tastings; book ahead. The drive up to Panayia is spectacular. Combine with the monastery visit, Vouni Panayia, or a full Laona wine day. Winter: the hills are green, the crowds thin.",
-    type: "winery",
-    highlights: ["Monastery estate", "Commandaria", "Heritage"],
-    image: "/images/cyprus/cyprus-winery-troodos.jpg",
-    bestFor: ["Heritage", "Monastery combo", "Commandaria"],
-    wineRoute: "Laona",
-    tastingInfo: "Tours and tastings; book ahead",
-    winterOpen: true,
-    winterTip: "Monastery and wine in one stop. Book ahead. Laona at its best.",
-    localSecret: "Wine and faith. The monks have made wine here for centuries.",
-    combineWith: ["chrysorrogiatissa", "vouni-panayia", "povis"],
   },
   {
     id: "lambouri",

@@ -636,7 +636,7 @@ See `docs/STRESS_TEST_RESULTS.md` for detailed analysis.
 {
   "name": "Cyprus Winter — Your Island Guide",
   "short_name": "Cyprus Winter",
-  "description": "Discover Cyprus in winter: trails, ancient sites, villages, wine",
+  "description": "Discover Cyprus in winter: trails, ancient sites, villages, heritage",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f4f1de",

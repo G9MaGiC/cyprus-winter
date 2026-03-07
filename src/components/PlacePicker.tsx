@@ -75,10 +75,12 @@ export default function PlacePicker({
   const attractionsFiltered = useMemo(() => filterPlaces(attractions, search), [search]);
   const restaurantsFiltered = useMemo(() => filterPlaces(restaurants, search), [search]);
 
-  const renderList = (items: Place[]) => (
+  const renderList = (items: Place[], tabLabel: string) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
-        <p className="text-sm text-olive/60 col-span-full py-4">No matches. Try another search or category.</p>
+        <p className="text-sm text-olive/60 col-span-full py-4">
+          {search.trim() ? "No matches for that search. Try Troodos, Omodos, or another region." : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
+        </p>
       ) : items.map((item) => {
         const isAdded = activeDayItems.includes(item.id);
         return (
@@ -168,7 +170,7 @@ export default function PlacePicker({
         {tab === "winery" && (
           <>
             <p className="text-xs text-olive/60 mb-2">Book ahead in winter. You&apos;ll often get the owner pouring.</p>
-            {renderList(wineriesFiltered)}
+            {renderList(wineriesFiltered, "wineries")}
           </>
         )}
       </div>
@@ -182,7 +184,7 @@ export default function PlacePicker({
         {tab === "trail" && (
           <>
             <p className="text-xs text-olive/60 mb-2">Start by 9am. Check conditions before you go.</p>
-            {renderList(trailsFiltered)}
+            {renderList(trailsFiltered, "trails")}
           </>
         )}
       </div>
@@ -196,7 +198,7 @@ export default function PlacePicker({
         {tab === "attraction" && (
           <>
             <p className="text-xs text-olive/60 mb-2">Villages, ruins, monasteries. Weekday mornings are quietest. Winter light is softer. Plan for morning or late afternoon.</p>
-            {renderList(attractionsFiltered)}
+            {renderList(attractionsFiltered, "attractions")}
           </>
         )}
       </div>
@@ -210,7 +212,7 @@ export default function PlacePicker({
         {tab === "restaurant" && (
           <>
             <p className="text-xs text-olive/60 mb-2">Tavernas, fish spots, fine dining. Reserve ahead in winter for popular places.</p>
-            {renderList(restaurantsFiltered)}
+            {renderList(restaurantsFiltered, "restaurants")}
           </>
         )}
       </div>

@@ -71,6 +71,11 @@ export const routing = defineRouting({
       de: "/wetter",
       pl: "/pogoda",
     },
+    "/beaches": "/beaches",
+    "/wineries": "/wineries",
+    "/villages": "/villages",
+    "/regions/troodos": "/regions/troodos",
+    "/regions/paphos": "/regions/paphos",
   },
 });
 

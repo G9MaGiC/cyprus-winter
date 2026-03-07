@@ -12,7 +12,7 @@ import type { Trail } from "@/data/trails";
 export const metadata: Metadata = {
   title: "Best Troodos Trails December | Cyprus Winter Hiking",
   description:
-    "Best Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, thin crowds. What to pack, conditions, snow tips. Cyprus winter hiking guide.",
+    "Best Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, thin crowds. What to pack, conditions, snow tips. Cyprus winter hiking guide. Free.",
   alternates: { canonical: `${SITE_URL}/guides/troodos-december` },
 };
 

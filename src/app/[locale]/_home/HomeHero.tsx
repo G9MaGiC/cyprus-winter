@@ -17,7 +17,7 @@ export default async function HomeHero() {
         loading="eager"
         sizes="100vw"
       />
-      <div className={HERO.overlayVignette} aria-hidden />
+      <div className={HERO.overlay} aria-hidden />
 
       <div className={`relative z-10 w-full ${LAYOUT.form} lg:max-w-3xl mx-auto`}>
         <div className={`${HERO.panel} lg:p-12`}>

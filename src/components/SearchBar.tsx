@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { search, type SearchResult } from "@/lib/search";
 
 type SearchBarProps = {
@@ -9,6 +10,8 @@ type SearchBarProps = {
   autoFocus?: boolean;
   className?: string;
   initialQuery?: string;
+  /** When true, syncs query to URL /search?q= for shareability */
+  syncUrl?: boolean;
 };
 
 export default function SearchBar({
@@ -16,7 +19,9 @@ export default function SearchBar({
   autoFocus = false,
   className = "",
   initialQuery = "",
+  syncUrl = false,
 }: SearchBarProps) {
+  const router = useRouter();
   const [query, setQuery] = useState(initialQuery);
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -33,6 +38,19 @@ export default function SearchBar({
       el?.scrollIntoView({ block: "nearest" });
     }
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (!syncUrl) return;
+    const t = setTimeout(() => {
+      const q = query.trim();
+      if (q.length >= 2) {
+        router.replace(`/search?q=${encodeURIComponent(q)}`, { scroll: false });
+      } else if (q.length === 0) {
+        router.replace("/search", { scroll: false });
+      }
+    }, 300);
+    return () => clearTimeout(t);
+  }, [query, syncUrl, router]);
 
   const showDropdown = focused && results.length > 0;
   const hasResults = results.length > 0;
@@ -124,7 +142,7 @@ export default function SearchBar({
 
       {focused && query.length > 0 && query.length < 2 && (
         <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/70 z-50 text-olive/60 text-sm">
-          Enter at least 2 characters to search
+          Type at least 2 characters
         </div>
       )}
       {query.length >= 2 && !hasResults && (

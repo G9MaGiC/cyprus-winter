@@ -239,7 +239,13 @@ The app includes an AI-powered chat assistant with voice input/output. To enable
 
 **Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
 
-**Production rate limiting:** The app uses in-memory rate limiting by default. For multi-instance deployments (e.g. Vercel), set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to enable Upstash Redis for shared limits. See `src/lib/rate-limit.ts`.
+**Redis (production rate limiting):** By default, rate limits use in-memory counters (per serverless instance). For Vercel or other multi-instance deploys, configure Upstash Redis so limits are shared:
+
+1. Create a database at [console.upstash.com](https://console.upstash.com)
+2. Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in your environment
+3. Deploy
+
+Full setup: [docs/REDIS_SETUP.md](docs/REDIS_SETUP.md)
 
 ## Run
 

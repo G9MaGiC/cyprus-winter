@@ -5,7 +5,7 @@
  * Short, warm tour. Discovery-first. No emojis, no hustle.
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { CTA, CARD } from "@/lib/design-tokens";
 
@@ -14,44 +14,47 @@ const ONBOARDING_KEY = "cyprus-winter-onboarded";
 const steps = [
   {
     title: "Welcome to Cyprus Winter",
-    description: "Trails, villages, wineries, and winter experiences. Start exploring.",
+    description: "The Mediterranean's best-kept secret. Trails, villages, wineries—plan as you go.",
     accent: "terracotta",
   },
   {
     title: "Discover Places",
-    description: "Beaches, ancient sites, villages, wineries. Filter by region and interest.",
+    description: "Places that feel real. Beaches, ruins, villages, wineries.",
     accent: "terracotta",
   },
   {
     title: "Build Your Plan",
-    description: "Add places to your itinerary. No account needed—it saves as you go.",
+    description: "Add places to your plan. No account needed—it saves as you go.",
     accent: "terracotta",
   },
   {
     title: "Book Tastings",
-    description: "Reserve winery tastings and experiences in the app.",
+    description: "Book tastings and experiences as you plan.",
     accent: "terracotta",
   },
   {
     title: "Ask AI for Help",
-    description: "Tap the chat button for personalized recommendations.",
+    description: "Tap Ask AI for tips on trails, wineries, villages.",
     accent: "terracotta",
   },
   {
-    title: "Optional: Save Across Devices",
-    description: "Create a free account to sync your plan. Or explore now—no account needed.",
+    title: "Save Across Devices",
+    description: "Create an account to sync your plan. Or explore now—no account needed.",
     accent: "sage",
   },
 ];
 
-function getInitialOnboardingState(): boolean {
-  if (typeof window === "undefined") return false;
-  return !localStorage.getItem(ONBOARDING_KEY);
-}
-
 export function useOnboarding() {
-  const [showOnboarding, setShowOnboarding] = useState(getInitialOnboardingState);
-  const isClient = typeof window !== "undefined";
+  const [mounted, setMounted] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      setMounted(true);
+      setShowOnboarding(!localStorage.getItem(ONBOARDING_KEY));
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   const dismiss = () => {
     localStorage.setItem(ONBOARDING_KEY, "true");
@@ -63,7 +66,7 @@ export function useOnboarding() {
     setShowOnboarding(true);
   };
 
-  return { showOnboarding, dismiss, reset, isClient };
+  return { showOnboarding, dismiss, reset, isClient: mounted };
 }
 
 export default function OnboardingModal() {

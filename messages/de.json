@@ -6,8 +6,13 @@
     "arriving": "Ankunft",
     "weather": "Wetter",
     "bookings": "Buchungen",
-    "tagline": "Ob Sie uns per Google-Suche oder am Flughafen gefunden haben—Wanderwege, Dörfer, Wein. Notfall <strong>112</strong> · Touristeninformation <strong>1460</strong> · Krankenwagen <strong>199</strong>.",
-    "practical": "Links fahren. Warme Kleidung einpacken. Die Insel belohnt die Neugierigen. Winter von November bis März. Fragen? Tippen Sie auf Ask AI.",
+    "beaches": "Strände",
+    "wineries": "Weingüter",
+    "villages": "Dörfer",
+    "troodos": "Troodos",
+    "paphos": "Paphos",
+    "tagline": "Mild, unberührt, echt. Wanderwege, Dörfer, Kulturerbe. Die Insel belohnt die Neugierigen.",
+    "practical": "Links fahren. Warme Kleidung einpacken. Die Insel belohnt die Neugierigen. Tippen Sie auf Ask AI.",
     "planYourTrip": "Reise planen"
   },
   "nav": {
@@ -38,7 +43,7 @@
     },
     "app__home_HomeHero": {
       "text_13": "Winter auf Zypern",
-      "text_14": "Wanderwege, Dörfer, Wein",
+      "text_14": "Wanderwege, Dörfer, Kulturerbe",
       "text_subtitle": "Oft sechzehn Grad, wenn daheim sechs sind.",
       "text_16": "Planen Sie im Voraus oder starten Sie die Erkundung nach der Landung.",
       "aria-label_10": "Zu Entdecken gehen",
