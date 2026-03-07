@@ -45,10 +45,10 @@ export default function WeatherPage() {
           <thead>
             <tr className="border-b-2 border-sand-200/80">
               <th className="py-3 px-4 font-display font-semibold text-olive">Month</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive">Coast (°C)</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive">Coast</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive">Troodos (°C)</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive">Troodos</th>
+              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Coast (°C)</th>
+              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Conditions</th>
+              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Troodos (°C)</th>
+              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Conditions</th>
             </tr>
           </thead>
           <tbody>
