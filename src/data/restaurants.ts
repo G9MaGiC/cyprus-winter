@@ -60,7 +60,7 @@ export const restaurants: Restaurant[] = [
     winterOpen: true,
     winterTip: "Sit outside with a blanket on mild December days. The cliff tavernas stay open. Ruins in the morning, fish at lunch.",
     localSecret: "Find a cove. Or settle at a taverna. The white cliffs and dark sand. On a mild December afternoon, sit outside. Watch the sea.",
-    combineWith: ["governors-beach", "kourion", "amathi"],
+    combineWith: ["governors-beach", "kourion", "amahti"],
     priceRange: "€€",
   },
   {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { trails, trailConditions } from "@/data/trails";
 import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import Link from "next/link";
@@ -28,10 +28,14 @@ export async function generateMetadata({
   const prefix = `${trail.region}. ${trail.lengthKm}km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length; // leave room for ellipsis
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
+  const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
   return {
     title: `${trail.name} | Cyprus Winter Trails`,
     description: prefix + desc,
     alternates: { canonical: `${SITE_URL}/trails/${id}` },
+    openGraph: {
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region}—${trail.lengthKm}km trail in Cyprus winter` }],
+    },
   };
 }
 
@@ -74,8 +78,7 @@ export default async function TrailPage({
   const latestReport = reports[0];
 
   const canonicalUrl = `${SITE_URL}/trails/${trail.id}`;
-  const trailImagePath = getTrailImage(trail.id);
-  const trailImageUrl = trailImagePath.startsWith("http") ? trailImagePath : `${SITE_URL}${trailImagePath.startsWith("/") ? trailImagePath : `/${trailImagePath}`}`;
+  const trailImageUrl = toAbsoluteUrl(getTrailImage(trail.id));
 
   const trailSchema = {
     "@context": "https://schema.org",
@@ -356,7 +359,8 @@ export default async function TrailPage({
             )}
 
             {/* Footer CTA */}
-            <footer className="pt-8 flex flex-col gap-4" aria-label="Trail actions">
+            <footer className="pt-8 flex flex-col gap-4 relative" aria-label="Trail actions">
+              <div id="trail-add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-olive/70 text-sm break-words">
                 Add this trail to your plan and pair with a village or winery in the afternoon.
               </p>
@@ -375,7 +379,7 @@ export default async function TrailPage({
           </div>
         </article>
       </div>
-      <TrailDetailStickyActions trailId={trail.id} />
+      <TrailDetailStickyActions trailId={trail.id} sentinelId="trail-add-to-plan-sentinel" />
     </div>
   );
 }

@@ -54,7 +54,7 @@ export function RecentlyViewedStrip() {
                 setItems([]);
               });
             }}
-            className="text-xs text-olive/50 hover:text-terracotta transition-colors"
+            className="inline-flex items-center min-h-[44px] py-2 text-xs text-olive/50 hover:text-terracotta transition-colors"
           >
             Clear
           </button>

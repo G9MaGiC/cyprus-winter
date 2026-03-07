@@ -25,9 +25,9 @@ export default function BookingsEmailLookup({
   onRetry,
 }: Props) {
   const inputClasses =
-    "flex-1 min-w-0 min-h-[44px] rounded-lg border border-sand-200 px-4 py-2.5 text-sm text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:border-terracotta/50 disabled:opacity-50";
+    "flex-1 min-w-0 min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-2.5 text-sm text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:border-terracotta/50 disabled:opacity-50";
   const buttonClasses =
-    "inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg bg-terracotta text-white text-sm font-medium hover:bg-terracotta/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+    "inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg bg-terracotta text-white text-sm font-medium hover:bg-terracotta-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background";
   const isStacked = layout === "stacked";
 
   return (

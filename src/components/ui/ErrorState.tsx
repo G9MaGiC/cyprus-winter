@@ -7,7 +7,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useSyncExternalStore } from "react";
-import { CTA } from "@/lib/design-tokens";
+import { CARD, CTA } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";
 
 interface ErrorStateProps {
@@ -39,8 +39,9 @@ export function ErrorState({
   return (
     <div
       className={cn(
-        "rounded-xl border p-6 text-center",
-        "bg-terracotta/5 border-terracotta/20",
+        CARD.base,
+        CARD.content,
+        "text-center bg-terracotta/5 border-terracotta/20",
         className
       )}
       role="alert"

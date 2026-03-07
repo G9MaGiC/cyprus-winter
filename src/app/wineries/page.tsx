@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site-url";
 import { wineries } from "@/data/wineries";
 import { LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
@@ -9,7 +10,8 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 export const metadata: Metadata = {
   title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
   description:
-    "Cyprus wine routes winter: Krasochoria, Laona, Commandaria. Winter tastings, cosy cellars. Book ahead. Fewer crowds, same wine.",
+    "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
+  alternates: { canonical: `${SITE_URL}/wineries` },
 };
 
 export default function WineriesPage() {
@@ -26,20 +28,23 @@ export default function WineriesPage() {
         </Link>
       </PageHeader>
 
-      <StickyPlanBarBlock sentinelId="wineries-plan-sentinel" />
-
+      <h2 id="wineries-list" className="sr-only">
+        Cyprus winter wineries
+      </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {wineries.map((winery) => (
           <AttractionCard key={winery.id} a={winery} />
         ))}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto">
+      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto relative">
+        <span id="wineries-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         Pair a winery visit with a trail or village.{" "}
         <Link href="/plan" className="text-aegean hover:underline">
           Plan your day
         </Link>
       </p>
+      <StickyPlanBarBlock sentinelId="wineries-plan-sentinel" />
       <p className="mt-6 text-center text-olive/70 text-sm max-w-md mx-auto">
         Explore wine routes:{" "}
         <Link href="/wine-routes/krasochoria" className="text-aegean hover:underline">

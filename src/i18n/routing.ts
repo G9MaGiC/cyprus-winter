@@ -53,6 +53,18 @@ export const routing = defineRouting({
       de: "/konto",
       pl: "/konto",
     },
+    "/login": {
+      en: "/login",
+      el: "/eisodos",
+      de: "/anmelden",
+      pl: "/logowanie",
+    },
+    "/register": {
+      en: "/register",
+      el: "/eggrafi",
+      de: "/registrieren",
+      pl: "/rejestracja",
+    },
     "/weather": {
       en: "/weather",
       el: "/kairos",

@@ -47,6 +47,9 @@ export default async function WineRoutePage({ params }: Props) {
         description={route.description}
       />
 
+      <h2 id="wineries-list" className="sr-only">
+        Wineries on this route
+      </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {routeWineries.map((w) => (
           <AttractionCard key={w.id} a={w} />

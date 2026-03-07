@@ -55,11 +55,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
+  const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
   return {
     title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
     description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
     alternates: { canonical: `${SITE_URL}/weather/${slug}` },
+    openGraph: {
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `Cyprus winter coast—${monthName} weather` }],
+    },
   };
 }
 
@@ -115,7 +119,7 @@ export default async function WeatherMonthPage({ params }: Props) {
             </h2>
             <ul className="space-y-3">
               {events.map((e) => (
-                <li key={e.id} className="rounded-lg border border-sand-200 bg-white p-4">
+                <li key={e.id} className="rounded-lg border border-sand-200/80 bg-white p-4">
                   <Link
                     href={`/events#${e.id}`}
                     className="block group"

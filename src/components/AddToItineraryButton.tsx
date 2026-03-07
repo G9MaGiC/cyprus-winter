@@ -26,7 +26,7 @@ export default function AddToItineraryButton({
     return (
       <Link
         href={`/plan?add=${placeId}`}
-        className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta/90 transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
+        className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
       >
         {label} →
       </Link>
@@ -53,7 +53,7 @@ export default function AddToItineraryButton({
   return (
     <Link
       href={`/plan?add=${placeId}`}
-      className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta/90 transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
+      className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
     >
       {label} →
     </Link>

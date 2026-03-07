@@ -2,25 +2,39 @@ import Link from "next/link";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
+import SearchBar from "@/components/SearchBar";
 import HomeHero from "@/app/_home/HomeHero";
+import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
 import StartHereStrip from "@/app/_home/StartHereStrip";
 import HomeSection from "@/app/_home/HomeSection";
 import CategoryChips from "@/app/_home/CategoryChips";
 import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
 import EditorsPicks from "@/app/_home/EditorsPicks";
 import BookTastings from "@/app/_home/BookTastings";
+import HomeInsiderTip from "@/app/_home/HomeInsiderTip";
+import HomePlaceOfDay from "@/app/_home/HomePlaceOfDay";
+import HomeMoodStrip from "@/app/_home/HomeMoodStrip";
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
+import TripReminderBanner from "@/components/TripReminderBanner";
 
 export default function Home() {
   return (
     <div className="relative overflow-hidden bg-background">
       <HomeHero />
+      <HomeWeatherStrip />
+      <TripReminderBanner />
+      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} py-4`}>
+        <div className={`${LAYOUT.list} mx-auto`}>
+          <h2 id="home-search-heading" className="sr-only">
+            Where to today?
+          </h2>
+          <SearchBar placeholder="Where to today?" className="max-w-xl mx-auto" />
+        </div>
+      </section>
       <StartHereStrip />
       <RecentlyViewedStrip />
-      <div id="plan-sentinel" className="h-px" aria-hidden />
-      <StickyPlanBar sentinelId="plan-sentinel" />
-
+      <HomeMoodStrip />
       <HomeSection
         id="explore-heading"
         title="Explore"
@@ -29,6 +43,8 @@ export default function Home() {
       >
         <CategoryChips />
       </HomeSection>
+
+      <HomePlaceOfDay />
 
       <HomeSection
         id="this-week-heading"
@@ -58,8 +74,9 @@ export default function Home() {
       {/* Plan + Events — primary actions */}
       <section
         aria-labelledby="planning-heading"
-        className={`${SECTION.py} bg-background ${LAYOUT.safeAreaX}`}
+        className={`${SECTION.py} bg-background ${LAYOUT.safeAreaX} relative`}
       >
+        <div id="plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <div className={`${LAYOUT.list} mx-auto`}>
           <h2 id="planning-heading" className="sr-only">
             Planning and essentials
@@ -67,7 +84,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 gap-6">
             <Link
               href="/plan"
-              className={`block p-6 sm:p-8 rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
+              className={`block ${CARD.contentLg} rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Plan your trip
@@ -78,7 +95,7 @@ export default function Home() {
             </Link>
             <Link
               href="/events"
-              className={`block p-6 sm:p-8 rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
+              className={`block ${CARD.contentLg} rounded-xl min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-md hover:border-terracotta/30 transition-all duration-200`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Winter events
@@ -89,7 +106,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <StickyPlanBar sentinelId="plan-sentinel" />
       </section>
+
+      {/* Winter Insider Tip */}
+      <HomeInsiderTip />
 
       {/* Why Cyprus — collapsible */}
       <section
@@ -115,7 +136,7 @@ export default function Home() {
             Planning ahead or already here? Tap the chat bubble. We&apos;re here to help.
           </p>
           <p className="text-white/80 text-xs font-medium uppercase tracking-wider mt-6 mb-2 prose-label">
-            Share with friends
+            Share with someone heading to Cyprus
           </p>
           <div className="flex justify-center gap-4">
             <ShareLinks

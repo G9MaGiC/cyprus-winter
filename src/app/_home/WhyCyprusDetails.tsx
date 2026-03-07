@@ -16,7 +16,7 @@ export default function WhyCyprusDetails() {
       </summary>
 
       <div className="mt-10 max-w-2xl mx-auto">
-        <div className={`${CARD.base} ${CARD.content} rounded-2xl`}>
+        <div className={`${CARD.base} ${CARD.content}`}>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-olive/80">
             <span className="inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-terracotta/70" aria-hidden />

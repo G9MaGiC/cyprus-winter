@@ -193,7 +193,7 @@ export default function TrailReportClient() {
             onChange={(e) => setNote(e.target.value)}
             rows={3}
             maxLength={500}
-            className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
             placeholder="e.g. Muddy near the stream crossing. Microspikes helped."
           />
           <p className="mt-1 text-xs text-olive/60">{note.length}/500</p>
@@ -209,7 +209,7 @@ export default function TrailReportClient() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
             placeholder="your@email.com"
           />
         </div>

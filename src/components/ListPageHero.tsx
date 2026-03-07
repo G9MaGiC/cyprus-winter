@@ -49,7 +49,7 @@ export default function ListPageHero({
         <div className="relative aspect-[3/1] min-h-[140px] sm:min-h-[180px]">
           <Image
             src={backgroundImage}
-            alt={backgroundImageAlt ?? ""}
+            alt={backgroundImageAlt ?? "Page hero image"}
             fill
             className="object-cover"
             sizes="100vw"

@@ -8,25 +8,31 @@ Runbooks and fallbacks for technical risks: AI dependency (Moonshot), Supabase c
 
 ---
 
-## 1. AI Dependency (Moonshot)
+## 1. AI Dependency (Groq, Ollama, Moonshot, OpenAI)
 
 ### Risk
 
-The chat assistant depends on `MOONSHOT_API_KEY`. If the key is missing, invalid, rate-limited, or Moonshot is down, AI chat fails.
+The chat assistant depends on an AI provider. If no provider is configured (missing key/URL), invalid, rate-limited, or the provider is down, AI chat fails.
+
+Supported providers (priority order): **xAI Grok** (grok-3-mini), **Groq** (free, Llama), **Ollama** (local/self-hosted), **Moonshot** (Kimi), **OpenAI** (gpt-4o-mini).
 
 ### Current Behavior
 
 | Condition | Response |
 |-----------|----------|
-| No key | 503, message: "Add MOONSHOT_API_KEY to your environment" |
+| No provider configured | 503, message: "Add XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY to your .env.local" |
 | Rate limit (20 req/min) | 429, message: "Please wait a moment before trying again" |
-| Moonshot error | 500, message: error.message (no stack) |
+| Provider error | 500, message: error.message (no stack) |
 | Quota exceeded | User sees "We've hit a usage limit for now" |
 
-### Required Env Var
+### Required Env Var (one of)
 
 ```
+XAI_API_KEY=<your-key>            # xAI Grok at console.x.ai
+GROQ_API_KEY=<your-key>           # Free at console.groq.com, Llama models
+OLLAMA_BASE_URL=http://localhost:11434/v1   # For local/self-hosted Ollama
 MOONSHOT_API_KEY=<your-key>
+OPENAI_API_KEY=sk-...
 ```
 
 ### Health Check
@@ -38,25 +44,32 @@ curl -s https://<your-domain>/api/health | jq '.ai'
 
 ### Runbook: AI Chat 503 or Down
 
-1. **Verify key exists**
+1. **Verify a provider is configured**
    ```bash
    # In deployment env (Vercel, Docker, etc.)
+   echo $XAI_API_KEY | head -c 8
+   echo $GROQ_API_KEY | head -c 8
+   echo $OLLAMA_BASE_URL
    echo $MOONSHOT_API_KEY | head -c 8
+   echo $OPENAI_API_KEY | head -c 8
    ```
-   If empty: add `MOONSHOT_API_KEY` to env and redeploy.
+   At least one must be set. If all empty: add `GROQ_API_KEY` (free at [console.groq.com](https://console.groq.com)) or another provider to env and redeploy.
 
-2. **Verify Moonshot status**
-   - Check [Moonshot status](https://status.moonshot.ai) or provider docs.
+2. **Verify provider status**
+   - xAI Grok: [console.x.ai](https://console.x.ai)
+   - Groq: [console.groq.com/docs](https://console.groq.com/docs)
+   - Ollama: ensure the server at `OLLAMA_BASE_URL` is running
+   - Moonshot: [Moonshot status](https://status.moonshot.ai) or provider docs
    - If outage: no code change needed. App degrades gracefully.
 
 3. **Quota / rate limit**
    - Chat returns 429 or quota message.
    - User can still use Discover, Trails, Plan, Bookings.
-   - Consider increasing Moonshot quota or rate-limit threshold in `src/lib/rate-limit.ts`.
+   - Consider increasing provider quota or rate-limit threshold in `src/lib/rate-limit.ts`.
 
 ### Fallback
 
-The app does **not** require AI. If Moonshot is down:
+The app does **not** require AI. If the provider is down:
 - Chat button remains; users get a friendly error.
 - All other features (discover, trails, plan, bookings) work.
 - Consider hiding or disabling the AI button in future if AI is consistently unavailable (product decision).
@@ -180,7 +193,7 @@ If you can’t fix ownership (e.g. shared host):
 
 | Issue | Check | Fix |
 |-------|-------|-----|
-| AI 503 | `curl /api/health` → `ai: false` | Add `MOONSHOT_API_KEY` |
+| AI 503 | `curl /api/health` → `ai: false` | Add `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` |
 | Supabase down | `curl /api/health` → `supabase: "error"` | Check URL/key, Supabase status |
 | Build EACCES | Pre-build fails on output dir | `sudo chown -R $(whoami) dist .next .next-build 2>/dev/null` then `npm run build:clean` |
 

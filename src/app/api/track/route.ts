@@ -77,7 +77,7 @@ function normalizeProperties(
 }
 
 export async function POST(req: NextRequest) {
-  const limitResult = rateLimit(req, 120);
+  const limitResult = await rateLimit(req, 120, "track");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
   }
@@ -97,9 +97,10 @@ export async function POST(req: NextRequest) {
       return jsonError("BAD_REQUEST", "Invalid event", 400);
     }
 
+    let stored = false;
     const supabase = getSupabase();
     if (supabase) {
-      await supabase.from("conversion_events").insert({
+      const { error } = await supabase.from("conversion_events").insert({
         event,
         properties: {
           ...propertiesResult.value,
@@ -107,9 +108,11 @@ export async function POST(req: NextRequest) {
         },
         session_id: sessionIdResult.value,
       });
+      stored = !error;
+      if (error) console.error("Track API storage error:", error);
     }
     return Response.json(
-      { ok: true },
+      { ok: true, stored },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 120, limitResult.bypassed) }
     );
   } catch (err) {

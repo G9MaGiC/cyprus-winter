@@ -38,7 +38,7 @@ export default function AirportLoading() {
             </div>
           ))}
         </div>
-        <div className="mt-10 p-5 rounded-xl bg-sand/80 border border-sand-200">
+        <div className={`mt-10 ${CARD.content} rounded-xl bg-sand/80 border border-sand-200/80`}>
           <div className="h-5 w-28 bg-olive/20 rounded mb-4" />
           <div className="space-y-3">
             {[1, 2, 3].map((i) => (

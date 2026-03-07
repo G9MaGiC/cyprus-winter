@@ -17,7 +17,7 @@ export default function BookTastings() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
       {featured.map((w) => (
-        <div key={w.wineryId} className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}>
+        <div key={w.wineryId} className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}>
           <Link href={`/discover/${w.wineryId}`} className={`${CARD.link} flex-1`} aria-label={`View ${w.name}`}>
             <div className={CARD.media}>
               <Image

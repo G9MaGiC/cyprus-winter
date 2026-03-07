@@ -129,6 +129,14 @@ export const HERO = {
     "relative rounded-2xl bg-charcoal/30 backdrop-blur-md ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-6 sm:p-10",
 } as const;
 
+/** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */
+export const CALLOUT = {
+  /** Golden tip style (local secrets, buffer zone, insider tips). */
+  tip: "rounded-xl bg-golden/5 border-l-4 border-l-golden/50 border border-golden/20",
+  /** Terracotta CTA-style accent (compose with CARD.base for book & contact blocks). */
+  cta: "border-l-4 border-l-terracotta/40",
+} as const;
+
 /** Pill/puck UI (chips, category rails, compact CTAs). */
 export const PILL = {
   base:

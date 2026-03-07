@@ -1,18 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 
 type PlanStickyAddBarProps = {
   sentinelId: string;
   scrollTargetId: string;
+  /** When provided, clicking the bar opens this action (e.g. Browse modal) instead of scrolling */
+  onAddPlaceClick?: () => void;
 };
 
 /**
  * Shows a sticky bottom bar with "Add place" on mobile when the add-places
- * section scrolls out of view. Clicking scrolls back to the Pair with / Browse area.
+ * section scrolls out of view. Clicking opens the add flow (modal) or scrolls to add area.
+ * When visible, hides Plan tab in BottomNav to avoid duplicate CTAs.
  */
-export default function PlanStickyAddBar({ sentinelId, scrollTargetId }: PlanStickyAddBarProps) {
+export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlaceClick }: PlanStickyAddBarProps) {
   const [show, setShow] = useState(false);
+  const { setStickyPlanVisible } = useStickyPlanBar();
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
@@ -29,7 +34,16 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId }: PlanSti
     return () => observer.disconnect();
   }, [sentinelId]);
 
+  useEffect(() => {
+    setStickyPlanVisible(show);
+    return () => setStickyPlanVisible(false);
+  }, [show, setStickyPlanVisible]);
+
   const handleClick = () => {
+    if (onAddPlaceClick) {
+      onAddPlaceClick();
+      return;
+    }
     const target = document.getElementById(scrollTargetId);
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -45,7 +59,7 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId }: PlanSti
       <button
         type="button"
         onClick={handleClick}
-        className="w-full max-w-md min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold bg-terracotta text-white hover:bg-terracotta/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:active:scale-100"
+        className="w-full max-w-md min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold bg-terracotta text-white hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:active:scale-100"
       >
         Add place
       </button>

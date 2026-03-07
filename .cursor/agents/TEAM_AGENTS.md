@@ -12,6 +12,7 @@ Map each team member to a subagent type and invoke with role-specific prompts.
 - `.cursor/TEAM_SEO.md` — Top SEO team for meta tags, headings, keywords, technical audit
 - `.cursor/TEAM_TRAFFIC.md` — **Organic Traffic Growth** team (scale to thousands/week)
 - `.cursor/TEAM_VISUAL_QA.md` — Visual QA team for finding design anomalies
+- `.cursor/TEAM_QA.md` — Full QA team and iterative improvement runbook
 - `.cursor/agents/seo-copywriter.md` — SEO copywriter agent for meta tags, headings, keywords
 
 ---

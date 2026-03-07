@@ -304,7 +304,7 @@ function extractHomeHero(out: Record<string, string>): void {
     "ui.app__home_HomeHero.aria-label_12": "Transport from airport, tips",
     "ui.app__home_HomeHero.text_13": "Winter in Cyprus",
     "ui.app__home_HomeHero.text_14": "Trails, villages, wine",
-    "ui.app__home_HomeHero.text_16": "Plan ahead or start exploring when you land.",
+    "ui.app__home_HomeHero.text_16": "Often sixteen degrees when home is six. Plan ahead or start exploring when you land.",
   };
   for (const [k, v] of Object.entries(keys)) {
     add(out, k, v);

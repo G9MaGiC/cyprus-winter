@@ -1,0 +1,29 @@
+---
+description: Use QA team when running quality assurance, pre-launch checks, or QA passes
+alwaysApply: true
+---
+
+# App Experts for QA
+
+When the user asks to **run QA**, **QA pass**, **pre-launch check**, **quality audit**, or similar QA-related tasks for Cyprus Winter, use the QA team.
+
+## How to invoke
+
+Use `mcp_task` with the agents defined in `.cursor/TEAM_QA.md`. Reference `docs/QA_PLAN.md` for phases and bug templates.
+
+## Triggers
+
+| User says | Action |
+|-----------|--------|
+| run QA, QA pass | Full QA: shell (lint/test/build) + parallel audit, code, UX, visual, content |
+| pre-launch check | Full QA + phases A–F from docs/QA_PLAN.md |
+| quick QA | shell + audit-explore |
+| visual QA | TEAM_VISUAL_QA (branding-redesign, ux-polish, explore) |
+
+## Iterative improvement
+
+After each QA run: log findings to docs/QA_BUGS.md, fix, re-run, and add recurring issues to TEAM_VISUAL_QA or docs/QA_PLAN.md checklists so future runs improve.
+
+## Fallback
+
+If `mcp_task` is unavailable: run shell (lint, test, build), then simulate audit-explore + senior-software-engineer + ux-polish by reviewing codebase for gaps, security, and UX issues per docs/QA_PLAN.md.

@@ -2,17 +2,28 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { triggerAIAssistant } from "./AIAssistantTrigger";
 import { LAYOUT } from "@/lib/design-tokens";
 import { isActive } from "@/lib/nav";
 import { navMoreLinks, navPrimaryLinks } from "@/lib/nav-links";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
-  const allLinks = [...navPrimaryLinks, ...navMoreLinks];
+  const { user } = useAuth();
+  const moreLinksResolved = useMemo(
+    () =>
+      navMoreLinks.map((l) =>
+        l.href === "/account" && !user
+          ? { href: "/login", label: "Sign in" }
+          : l
+      ),
+    [user]
+  );
+  const allLinks = [...navPrimaryLinks, ...moreLinksResolved];
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -70,7 +81,7 @@ export default function Nav() {
               aria-haspopup="true"
               aria-controls="more-menu"
               className={`inline-flex items-center min-h-[44px] min-w-[44px] justify-center px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
-                navMoreLinks.some((l) => isActive(pathname, l.href))
+                moreLinksResolved.some((l) => isActive(pathname, l.href))
                   ? "text-golden"
                   : "text-white/80 hover:text-golden"
               }`}
@@ -86,7 +97,7 @@ export default function Nav() {
                   tabIndex={-1}
                 />
                 <div id="more-menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-50 min-w-[120px]">
-                  {navMoreLinks.map((link) => (
+                  {moreLinksResolved.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}

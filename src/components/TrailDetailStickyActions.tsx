@@ -8,30 +8,33 @@ import { LAYOUT } from "@/lib/design-tokens";
 
 type TrailDetailStickyActionsProps = {
   trailId: string;
+  /** ID of sentinel element—bar appears when sentinel scrolls out of view (avoids duplicate with in-page CTA) */
+  sentinelId: string;
 };
 
 /**
  * Sticky CTA bar on trail detail: Add to plan + Report conditions.
- * Appears when user scrolls past the hero; 44px touch targets, focus-visible.
+ * Appears when the footer CTA scrolls out of view; 44px touch targets, focus-visible.
  */
-export default function TrailDetailStickyActions({ trailId }: TrailDetailStickyActionsProps) {
+export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailDetailStickyActionsProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      const heroHeight = typeof window !== "undefined" ? window.innerHeight * 0.6 : 400;
-      setVisible(window.scrollY > heroHeight);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const sentinel = document.getElementById(sentinelId);
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [sentinelId]);
 
   if (!visible) return null;
 
   return (
     <div
-      className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] bottom-0 md:bottom-0 max-md:bottom-[calc(3.5rem+env(safe-area-inset-bottom))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+      className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-lg bottom-0 md:bottom-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
       role="complementary"
       aria-label="Quick actions"
     >

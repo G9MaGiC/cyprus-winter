@@ -3,10 +3,11 @@
     "discover": "Discover",
     "plan": "Plan",
     "airport": "Airport",
+    "arriving": "Arriving",
     "weather": "Weather",
     "bookings": "Bookings",
-    "tagline": "Cyprus Winter — Your island guide from touchdown to sunset.",
-    "tips": "Emergency: 112 · Tourist info: 1460"
+    "tagline": "Whether you found us from a Google search or at the airport—trails, villages, wine. Emergency <strong>112</strong> · Tourist info <strong>1460</strong> · Ambulance <strong>199</strong>.",
+    "practical": "Drive on the left. Pack layers. The island rewards the curious. Winter runs November to March. Questions? Tap Ask AI."
   },
   "nav": {
     "discover": "Discover",
@@ -37,6 +38,7 @@
     "app__home_HomeHero": {
       "text_13": "Winter in Cyprus",
       "text_14": "Trails, villages, wine",
+      "text_subtitle": "Often sixteen degrees when home is six.",
       "text_16": "Plan ahead or start exploring when you land.",
       "aria-label_10": "Go to Discover",
       "aria-label_11": "View your itinerary",

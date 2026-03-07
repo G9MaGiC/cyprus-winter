@@ -166,9 +166,13 @@ export default function AIAssistant() {
 
       if (!res.ok) {
         if (res.status === 503) throw new Error("AI_503");
-        const msg = data.reply || data.error || `Request failed (${res.status})`;
-        if (msg.includes("429") || msg.toLowerCase().includes("quota")) {
-          throw new Error("We've hit a usage limit for now. Try again later.");
+        if (res.status === 429) throw new Error("RATE_LIMIT");
+        const d = data as { reply?: string; error?: unknown; message?: string };
+        const raw = d.reply ?? (typeof d.error === "object" ? (d.error as { message?: string })?.message : d.error) ?? d.message ?? `Request failed (${res.status})`;
+        const msg: string = typeof raw === "string" ? raw : String(raw ?? "");
+        if (/429|quota|usage limit/i.test(msg)) throw new Error("PROVIDER_LIMIT");
+        if (msg.includes("401") || /invalid authentication|api key/i.test(msg)) {
+          throw new Error("Auth failed. Check that your API key is valid and has credits.");
         }
         throw new Error(msg);
       }
@@ -178,24 +182,28 @@ export default function AIAssistant() {
         { role: "assistant", content: data.reply ?? "Didn't get that one. Try again, or browse Discover and Trails for Troodos, Lefkara, Kourion." },
       ]);
     } catch (err) {
-      const is429 = err instanceof Error && (
-        err.message.includes("429") ||
-        err.message.toLowerCase().includes("quota") ||
-        err.message.toLowerCase().includes("limit")
-      );
-      const is503 = err instanceof Error && err.message === "AI_503";
+      const msg = err instanceof Error ? err.message : "";
+      const is503 = msg === "AI_503";
+      const isAuth = msg.includes("401") || /invalid authentication|auth failed|api key/i.test(msg);
+      const isRateLimit = msg === "RATE_LIMIT" || msg === "PROVIDER_LIMIT" || msg.includes("429") || /quota|usage limit/i.test(msg);
       const fallback = "Something hiccuped. Try again in a moment, or browse Discover and Trails for ideas.";
       const content503 = "Assistant isn't available right now. Browse Discover or Trails for ideas.";
+      const contentAuth = "API key issue. Check XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY in .env.local and restart the dev server.";
+      const contentRateLimit = msg === "RATE_LIMIT"
+        ? "Too many messages. Please wait a moment, then try again."
+        : "We've hit a usage limit. Wait a minute or add credits to your API account, then try again.";
       setMessages((m) => [
         ...m,
         {
           role: "assistant",
           content: is503
             ? content503
-            : is429 && err instanceof Error
-              ? `Sorry: ${err.message}`
-              : (err instanceof Error ? fallback : "Something went wrong. Try again."),
-          isRetryable: is429,
+            : isAuth
+              ? contentAuth
+              : isRateLimit
+                ? contentRateLimit
+                : msg || fallback,
+          isRetryable: isRateLimit,
           is503,
         },
       ]);
@@ -321,7 +329,7 @@ export default function AIAssistant() {
           aria-modal="true"
           aria-labelledby="ai-dialog-title"
           aria-label="Cyprus Winter AI assistant"
-          className="fixed inset-0 z-50 flex flex-col bg-background sm:inset-auto sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto sm:w-[420px] sm:max-h-[calc(100vh-5rem)] sm:rounded-2xl sm:shadow-2xl sm:border sm:border-sand-200 overflow-hidden min-h-[100dvh] sm:min-h-0 ai-chat-panel-enter"
+          className="fixed inset-0 z-50 flex flex-col bg-background sm:inset-auto sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto sm:w-[420px] sm:max-h-[calc(100vh-5rem)] sm:rounded-2xl sm:shadow-2xl sm:border sm:border-sand-200/80 overflow-hidden min-h-[100dvh] sm:min-h-0 ai-chat-panel-enter"
         >
           {/* Header — charcoal + aegean accent, Mediterranean feel */}
           <header className="flex items-center justify-between gap-2 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-[var(--surface-dark)] text-white shrink-0 border-b border-white/10">
@@ -379,7 +387,7 @@ export default function AIAssistant() {
                   className={`max-w-[90%] sm:max-w-[85%] rounded-2xl px-4 py-3 border ${
                     m.role === "user"
                       ? "bg-sage text-white border-sage/80 rounded-br-md shadow-sm"
-                      : "bg-sand-100 text-olive border-sand-200 rounded-bl-md"
+                      : "bg-sand-100 text-olive border-sand-200/80 rounded-bl-md"
                   }`}
                 >
                   <div className="text-base sm:text-sm leading-relaxed whitespace-pre-wrap [&_a]:text-sage [&_a]:underline [&_a]:break-all">
@@ -405,7 +413,7 @@ export default function AIAssistant() {
             ))}
             {loading && (
               <div className="flex justify-start" aria-live="polite">
-                <div className="bg-sand-100 border border-sand-200 rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
+                <div className="bg-sand-100 border border-sand-200/80 rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
                   <span className="flex gap-1 motion-reduce:animate-none" aria-hidden>
                     <span className="w-2 h-2 rounded-full bg-sage/70 animate-bounce [animation-delay:0ms]" />
                     <span className="w-2 h-2 rounded-full bg-sage/70 animate-bounce [animation-delay:150ms]" />
@@ -460,7 +468,7 @@ export default function AIAssistant() {
                     type="button"
                     onClick={() => sendMessage(s)}
                     disabled={loading}
-                    className="shrink-0 snap-start min-h-[44px] px-4 py-2.5 rounded-full text-sm font-medium bg-sand-100 text-olive border border-sand-200/80 hover:border-sage/30 hover:bg-sage/5 hover:text-sage active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
+                    className="shrink-0 snap-start min-h-[44px] px-4 py-2.5 rounded-full text-sm font-medium bg-sand-100 text-olive border border-sand-200/80 hover:border-terracotta/30 hover:bg-terracotta/10 hover:text-terracotta active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
                   >
                     {s}
                   </button>
@@ -471,7 +479,7 @@ export default function AIAssistant() {
 
           {/* Voice error — sand surface, clear dismiss */}
           {voiceError && (
-            <div className="shrink-0 px-4 py-3 flex items-center justify-between gap-3 bg-sand-100 border-t border-sand-200" role="alert">
+            <div className="shrink-0 px-4 py-3 flex items-center justify-between gap-3 bg-sand-100 border-t border-sand-200/80" role="alert">
               <p className="text-sm text-olive break-words flex-1 min-w-0">{voiceError}</p>
               <button
                 type="button"
@@ -487,7 +495,7 @@ export default function AIAssistant() {
           {/* Input bar — Mediterranean tokens, safe area, send feedback */}
           <form
             onSubmit={handleSubmit}
-            className="shrink-0 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-sand-200 flex gap-2 items-end bg-background"
+            className="shrink-0 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-sand-200/80 flex gap-2 items-end bg-background"
           >
             <div className="flex-1 min-w-0 relative flex items-end">
               <textarea
@@ -504,7 +512,7 @@ export default function AIAssistant() {
                 placeholder="Ask about trails, wineries, villages…"
                 rows={1}
                 disabled={loading}
-                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200 bg-sand-100/50 px-4 py-3 pr-14 text-base text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
+                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
               />
               <button
                 type="button"
@@ -590,7 +598,7 @@ function AssistantMessage({
                     {children}
                   </a>
                   {place && (
-                    <AddToItineraryButton placeId={place.id} label="Add" className="!py-1.5 !px-2 text-xs" />
+                    <AddToItineraryButton placeId={place.id} label="Add" className="min-h-[44px] min-w-[44px] justify-center px-4 py-2.5 text-sm" />
                   )}
                 </span>
               );

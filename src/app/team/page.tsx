@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site-url";
 import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
@@ -7,7 +8,8 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "Team | Cyprus Winter — Trails, Villages, Wineries",
   description:
-    "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more than a one-line mention. Meet the team.",
+    "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more than a one-line mention. Meet the team who built this guide.",
+  alternates: { canonical: `${SITE_URL}/team` },
 };
 
 export default function TeamPage() {
@@ -32,9 +34,9 @@ export default function TeamPage() {
                 .map((n) => n[0])
                 .join("")}
             </div>
-            <h2 className="font-display text-xl font-semibold text-olive group-hover:text-terracotta transition-colors truncate">
+            <h3 className="font-display text-xl font-semibold text-olive group-hover:text-terracotta transition-colors truncate">
               {member.name}
-            </h2>
+            </h3>
             <p className="text-terracotta font-medium text-sm mt-0.5 truncate" title={member.role}>
               {member.role}
             </p>

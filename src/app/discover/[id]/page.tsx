@@ -7,8 +7,8 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
-import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { LAYOUT, CTA, CARD, CALLOUT } from "@/lib/design-tokens";
+import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -50,10 +50,14 @@ export async function generateMetadata({
   const maxDesc = 154 - prefix.length;
   const desc = a.description.slice(0, maxDesc).trim();
   const snippet = prefix + desc + (a.description.length > maxDesc ? "…" : "");
+  const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
   return {
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
     alternates: { canonical: `${SITE_URL}/discover/${id}` },
+    openGraph: {
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
+    },
   };
 }
 
@@ -68,15 +72,14 @@ export default async function AttractionPage({
   if (!a) notFound();
 
   const canonicalUrl = `${SITE_URL}/discover/${id}`;
-  const imgPath = getAttractionImage(a.id, a.type);
-  const imageUrl = imgPath.startsWith("http") ? imgPath : `${SITE_URL}${imgPath.startsWith("/") ? imgPath : `/${imgPath}`}`;
+  const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
 
   const attractionSchema = {
     "@context": "https://schema.org",
     "@type": isRestaurant(a) ? "Restaurant" : "TouristAttraction",
     name: a.name,
     description: a.description.slice(0, 160),
-    image: imageUrl.startsWith("http") ? imageUrl : `${SITE_URL}${imageUrl}`,
+    image: imageUrl,
     url: canonicalUrl,
     address: { "@type": "PostalAddress", addressLocality: a.region, addressCountry: "CY" },
     ...(isRestaurant(a) && a.cuisine && { servesCuisine: a.cuisine }),
@@ -88,7 +91,7 @@ export default async function AttractionPage({
         "@type": "Winery",
         name: a.name,
         description: a.description.slice(0, 160),
-        image: imageUrl.startsWith("http") ? imageUrl : `${SITE_URL}${imageUrl}`,
+        image: imageUrl,
         url: canonicalUrl,
         address: { "@type": "PostalAddress", addressLocality: a.region, addressCountry: "CY" },
         ...(a.openingHours && { openingHours: a.openingHours }),
@@ -130,8 +133,6 @@ export default async function AttractionPage({
             subtitle={a.region}
           />
 
-          <div id="add-to-plan-sentinel" aria-hidden className="h-px -mt-1" />
-
           {/* Content */}
           <div className="space-y-10 sm:space-y-14">
 
@@ -140,7 +141,7 @@ export default async function AttractionPage({
             </section>
 
             {"culturalNote" in a && a.culturalNote && /buffer zone/i.test(a.culturalNote) && (
-              <div className="p-5 sm:p-6 rounded-xl bg-golden/5 border-l-4 border-l-golden/50 border border-golden/20" role="note">
+              <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
                 <p className="text-sm font-medium text-charcoal flex items-start gap-2">
                   <span className="text-golden shrink-0" aria-hidden>⚠</span>
                   <span>Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).</span>
@@ -185,7 +186,7 @@ export default async function AttractionPage({
 
             {/* Winery: Tasting + Book CTA early */}
             {isWinery(a) && a.tastingInfo && (
-              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/70`}>
+              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-3">
                   Visit & taste
                 </h2>
@@ -200,7 +201,7 @@ export default async function AttractionPage({
 
             {/* Practical info — before booking so logistics come first */}
             {(a.openingHours || ("transport" in a && a.transport) || ("parking" in a && a.parking) || ("accessibility" in a && a.accessibility)) && (
-              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/70 space-y-3`}>
+              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-3`}>
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
                   Practical info
                 </h2>
@@ -225,7 +226,7 @@ export default async function AttractionPage({
           (a.type === "restaurant" && (a.bookingUrl || a.contactPhone)) ||
           a.contactPhone ||
           ("shopUrl" in a && a.shopUrl)) && (
-          <section className={`${CARD.base} ${CARD.contentLg} border-l-4 border-l-terracotta/40 border-sand-200/70`}>
+          <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
             <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-1">
               Book & contact
             </h2>
@@ -304,7 +305,7 @@ export default async function AttractionPage({
                       href={`https://www.instagram.com/${(a as Winery).instagramHandle}/`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center min-h-[44px] gap-2 px-4 py-2.5 rounded-lg border border-sand-200/70 text-olive font-medium text-sm hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="inline-flex items-center min-h-[44px] gap-2 px-4 py-2.5 rounded-lg border border-sand-200/80 text-olive font-medium text-sm hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       aria-label={`Follow @${a.instagramHandle} on Instagram (opens in new tab)`}
                     >
                       Instagram @{a.instagramHandle}
@@ -325,7 +326,7 @@ export default async function AttractionPage({
                   {a.signatureWines.map((wine, i) => (
                     <div
                       key={i}
-                      className="rounded-xl bg-white/90 border border-sand-200/70 hover:border-terracotta/20 transition-all duration-200 overflow-hidden group shadow-sm"
+                      className="rounded-xl bg-white/90 border border-sand-200/80 hover:border-terracotta/20 transition-all duration-200 overflow-hidden group shadow-sm"
                     >
                   {wine.image && (
                     <div className="aspect-[3/4] relative bg-sand-100 overflow-hidden">
@@ -354,7 +355,7 @@ export default async function AttractionPage({
             )}
 
             {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
-              <section className={`${CARD.base} ${CARD.contentLg} bg-golden/5 border-l-4 border-l-golden/50 border-golden/20 space-y-4`}>
+              <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
                   Local secret
                 </h2>
@@ -375,7 +376,7 @@ export default async function AttractionPage({
             )}
 
             {"backstory" in a && a.backstory && (
-              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/70`}>
+              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
                   Backstory
                 </h2>
@@ -394,7 +395,7 @@ export default async function AttractionPage({
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
                   Location
                 </h2>
-            <div className="rounded-xl overflow-hidden border border-sand-200/70 aspect-video bg-olive/5">
+            <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video bg-olive/5">
               <iframe
                 title={`Map: ${a.name}`}
                 src={`https://www.openstreetmap.org/export/embed.html?bbox=${a.longitude - 0.02}%2C${a.latitude - 0.015}%2C${a.longitude + 0.02}%2C${a.latitude + 0.015}&layer=mapnik&marker=${a.latitude}%2C${a.longitude}`}
@@ -418,7 +419,7 @@ export default async function AttractionPage({
             )}
 
             {getSecretsForPlace(a.id).length > 0 && (
-              <section className={`${CARD.base} ${CARD.contentLg} bg-golden/5 border-l-4 border-l-golden/50 border-golden/20`}>
+              <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip}`}>
                 <h2 className="text-xs font-semibold uppercase tracking-widest text-olive/70 mb-4">
                   Local secrets
                 </h2>
@@ -450,7 +451,8 @@ export default async function AttractionPage({
               />
             )}
 
-            <footer className="pt-8 border-t border-sand-200 flex flex-col sm:flex-row sm:items-center gap-4">
+            <footer className="pt-8 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative">
+              <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-olive/70 text-sm break-words">
                 Add this place to your plan and pair it with a trail or village nearby.
               </p>

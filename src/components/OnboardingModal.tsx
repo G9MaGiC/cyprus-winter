@@ -2,39 +2,45 @@
 
 /**
  * First-time user onboarding modal
- * Shows key features and how to use the app
+ * Short, warm tour. Discovery-first. No emojis, no hustle.
  */
 
 import { useState } from "react";
-import { CTA } from "@/lib/design-tokens";
+import Link from "next/link";
+import { CTA, CARD } from "@/lib/design-tokens";
 
 const ONBOARDING_KEY = "cyprus-winter-onboarded";
 
 const steps = [
   {
     title: "Welcome to Cyprus Winter",
-    description: "Your guide to trails, villages, wineries, and winter experiences in Cyprus.",
-    icon: "🏔️",
+    description: "Trails, villages, wineries, and winter experiences. Start exploring.",
+    accent: "terracotta",
   },
   {
     title: "Discover Places",
-    description: "Browse beaches, ancient sites, villages, and wineries. Filter by region and interest.",
-    icon: "🔍",
+    description: "Beaches, ancient sites, villages, wineries. Filter by region and interest.",
+    accent: "terracotta",
   },
   {
     title: "Build Your Plan",
-    description: "Add places to your itinerary. No account needed—your plan saves automatically.",
-    icon: "📋",
+    description: "Add places to your itinerary. No account needed—it saves as you go.",
+    accent: "terracotta",
   },
   {
     title: "Book Tastings",
-    description: "Reserve winery tastings and experiences directly through the app.",
-    icon: "🍷",
+    description: "Reserve winery tastings and experiences in the app.",
+    accent: "terracotta",
   },
   {
     title: "Ask AI for Help",
-    description: "Stuck? Tap the chat button for personalized recommendations and tips.",
-    icon: "💬",
+    description: "Tap the chat button for personalized recommendations.",
+    accent: "terracotta",
+  },
+  {
+    title: "Optional: Save Across Devices",
+    description: "Create a free account to sync your plan. Or explore now—no account needed.",
+    accent: "sage",
   },
 ];
 
@@ -75,73 +81,107 @@ export default function OnboardingModal() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="onboarding-title"
+      aria-describedby="onboarding-description"
     >
-      <div className="bg-sand rounded-2xl max-w-md w-full p-6 shadow-2xl">
-        {/* Progress dots */}
-        <div className="flex justify-center gap-2 mb-6">
+      <div className={`${CARD.base} max-w-md w-full p-6 sm:p-8 shadow-xl`}>
+        {/* Progress dots — 44px touch targets */}
+        <div className="flex justify-center gap-1 mb-6" role="tablist" aria-label="Onboarding steps">
           {steps.map((_, i) => (
             <button
               key={i}
               type="button"
+              role="tab"
+              aria-selected={i === currentStep}
+              aria-label={`Step ${i + 1} of ${steps.length}`}
               onClick={() => setCurrentStep(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                i === currentStep ? "bg-terracotta" : "bg-sand-300"
-              }`}
-              aria-label={`Go to step ${i + 1}`}
-            />
+              className="flex items-center justify-center min-w-[44px] min-h-[44px] -m-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <span
+                className={`block w-2 h-2 rounded-full transition-colors ${
+                  i === currentStep ? "bg-terracotta" : "bg-sand-300"
+                }`}
+              />
+            </button>
           ))}
         </div>
 
-        {/* Content */}
+        {/* Content — typography-led, no emojis */}
         <div className="text-center mb-8">
-          <div className="text-6xl mb-4" aria-hidden>{step.icon}</div>
+          <div
+            className={`h-0.5 w-8 mx-auto mb-5 rounded-full ${
+              step.accent === "terracotta" ? "bg-terracotta/40" : "bg-sage/40"
+            }`}
+            aria-hidden
+          />
           <h2 id="onboarding-title" className="font-display text-2xl font-bold text-charcoal mb-3">
             {step.title}
           </h2>
-          <p className="text-olive/70 leading-relaxed">
+          <p id="onboarding-description" className="text-olive/70 leading-relaxed text-base">
             {step.description}
           </p>
         </div>
 
-        {/* Actions */}
-        <div className="flex gap-3">
+        {/* Actions — primary: explore first; account optional on last step */}
+        <div className="flex flex-col sm:flex-row gap-3">
           {currentStep > 0 && (
             <button
               type="button"
               onClick={() => setCurrentStep((s) => s - 1)}
               className={`${CTA.secondaryCompact} flex-1`}
+              aria-label="Previous step"
             >
               Back
             </button>
           )}
-          
+
           {isLast ? (
             <>
               <button
                 type="button"
                 onClick={dismiss}
-                className={`${CTA.primaryCompact} flex-1`}
+                className={`${CTA.primaryCompact} w-full`}
+                aria-label="Get started and explore the app"
               >
                 Get started
               </button>
+              <div className="flex gap-3 w-full" role="group" aria-label="Account options">
+                <Link
+                  href="/register"
+                  onClick={dismiss}
+                  className={`${CTA.secondaryCompact} flex-1 text-center`}
+                  aria-label="Create account to save your plan"
+                >
+                  Create account
+                </Link>
+                <Link
+                  href="/login"
+                  onClick={dismiss}
+                  className="text-sm text-olive/70 hover:text-terracotta transition-colors min-h-[44px] px-4 inline-flex items-center justify-center rounded-lg border border-sand-200/80 hover:border-terracotta/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  aria-label="Sign in to existing account"
+                >
+                  Sign in
+                </Link>
+              </div>
             </>
           ) : (
             <button
               type="button"
               onClick={() => setCurrentStep((s) => s + 1)}
               className={`${CTA.primaryCompact} flex-1`}
+              aria-label="Next step"
             >
               Next
             </button>
           )}
         </div>
 
-        {/* Skip */}
+        {/* Skip — 44px touch target */}
         {!isLast && (
           <button
             type="button"
             onClick={dismiss}
-            className="w-full mt-4 text-sm text-olive/50 hover:text-terracotta transition-colors"
+            className="w-full mt-4 min-h-[44px] text-sm text-olive/50 hover:text-terracotta transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background flex items-center justify-center"
+            aria-label="Skip onboarding tour"
           >
             Skip tour
           </button>

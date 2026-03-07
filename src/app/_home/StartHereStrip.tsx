@@ -42,7 +42,7 @@ export default function StartHereStrip() {
             <Link
               key={item.title}
               href={item.href}
-              className={`group ${CARD.base} ${CARD.hover} ${CARD.interactive} ${CARD.link} ${CARD.content} rounded-2xl`}
+              className={`group ${CARD.base} ${CARD.hover} ${CARD.interactive} ${CARD.link} ${CARD.content}`}
               aria-label={`${item.title}: ${item.desc}`}
             >
               <p className={`${TYPE.kicker} mb-2`}>Start here</p>

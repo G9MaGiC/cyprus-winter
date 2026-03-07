@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site-url";
 import { LAYOUT, CTA, EMPTY_STATE_COMPACT } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import BackLink from "@/components/BackLink";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: "Search Cyprus Winter | Trails, Wineries, Places",
   description:
     "Search Cyprus winter: trails, wineries, villages, beaches, ancient sites. Find Troodos hikes, Paphos mosaics, Lefkara. Plan your trip or explore now.",
+  alternates: { canonical: `${SITE_URL}/search` },
 };
 
 const BROWSE_LINKS = [
@@ -34,18 +36,18 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <BackLink href="/" label="Home" />
       </div>
       <h1 className="font-display text-2xl font-semibold text-charcoal mb-2">
-        Search Cyprus Winter
+        Find a place or trail
       </h1>
       <p className="text-olive/70 text-sm mb-8">
-        Search villages, wineries, beaches, trails, and winter events.
+        Villages, wineries, beaches, trails, events.
       </p>
       <SearchBar placeholder="e.g. Omodos, Artemis, carnival" autoFocus initialQuery={q} className="max-w-xl" />
       {hasNoResults && (
         <div className={`mt-6 ${EMPTY_STATE_COMPACT}`}>
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">No results — try exploring</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">No matches—try browsing</p>
           <div className="flex flex-wrap gap-2">
             <Link href="/discover" className={`${CTA.chipTertiary} rounded-xl`}>
-              Browse Discover
+              Browse places
             </Link>
             <Link href="/trails" className={`${CTA.chipTertiary} rounded-xl`}>
               View all trails
@@ -58,7 +60,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       )}
       {showBrowse && (
         <div className="mt-10 pt-8 border-t border-sand-200/80">
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">Or browse</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">Or browse by category</p>
           <div className="flex flex-wrap gap-2">
             {BROWSE_LINKS.map((link) => (
               <Link

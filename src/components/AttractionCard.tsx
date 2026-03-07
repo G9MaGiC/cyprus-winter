@@ -77,7 +77,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
         <div className="px-5 sm:px-6 pb-5 sm:pb-6 -mt-2">
           <Link
             href={`/book/winery/${a.id}`}
-            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={`Book a tasting at ${a.name}`}
           >
             Book a tasting

@@ -76,7 +76,7 @@ export default function PlacePicker({
   const restaurantsFiltered = useMemo(() => filterPlaces(restaurants, search), [search]);
 
   const renderList = (items: Place[]) => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[320px] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
         <p className="text-sm text-olive/60 col-span-full py-4">No matches. Try another search or category.</p>
       ) : items.map((item) => {

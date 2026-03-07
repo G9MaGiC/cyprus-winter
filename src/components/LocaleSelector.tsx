@@ -14,9 +14,9 @@ export default function LocaleSelector({ variant = "default" }: LocaleSelectorPr
   const baseClasses = "text-sm font-medium rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sage/50";
   
   const variantClasses = {
-    default: "px-3 py-1.5 bg-sand-200 hover:bg-sand-300 text-olive",
-    footer: "px-2 py-1 text-olive/70 hover:text-olive bg-transparent hover:bg-sand-200/50",
-    mobile: "px-4 py-2 bg-sand-100 hover:bg-sand-200 text-olive w-full text-center",
+    default: "px-3 py-1.5 min-h-[44px] bg-sand-200 hover:bg-sand-300 text-olive",
+    footer: "px-3 py-2 min-h-[44px] text-olive/70 hover:text-olive bg-transparent hover:bg-sand-200/50",
+    mobile: "px-4 py-2 min-h-[44px] bg-sand-100 hover:bg-sand-200 text-olive w-full text-center",
   };
 
   const localeNames: Record<string, string> = {

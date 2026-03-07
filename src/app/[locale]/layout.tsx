@@ -5,7 +5,7 @@ import { getMessages, setRequestLocale, getTranslations } from "next-intl/server
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
@@ -16,6 +16,11 @@ import { Link } from "@/i18n/navigation";
 import LocaleSelector from "@/components/LocaleSelector";
 
 const AIAssistant = dynamic(() => import("@/components/AIAssistant"), { loading: () => null });
+const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
+const StickyPlanBarProvider = dynamic(
+  () => import("@/contexts/StickyPlanBarContext").then((m) => ({ default: m.StickyPlanBarProvider })),
+  { ssr: true }
+);
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
@@ -63,7 +68,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export const viewport: Viewport = {
-  themeColor: "#242528",
+  themeColor: TOKENS.charcoal,
 };
 
 export function generateStaticParams() {
@@ -88,6 +93,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider messages={messages}>
       <SerwistProvider swUrl="/serwist/sw.js">
+        <Providers>
         <>
           {/* JavaScript disabled warning */}
           <noscript>
@@ -99,37 +105,40 @@ export default async function LocaleLayout({ children, params }: Props) {
           
           <a
             href="#main-content"
-            className="fixed left-4 top-4 z-[9999] min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-sage text-white rounded-full font-medium -translate-y-[200%] focus-visible:translate-y-0 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="fixed left-4 top-4 z-[9999] min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-terracotta text-white rounded-full font-medium -translate-y-[200%] focus-visible:translate-y-0 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             Skip to main content
           </a>
-          <ConversionTracker />
-          <ScrollToTop />
-          <Nav />
-          <main id="main-content" className="pt-[calc(3.5rem+env(safe-area-inset-top,0px))] min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
-            {children}
-          </main>
-          <BottomNav />
-          <footer role="contentinfo" aria-label="Site footer" className={`border-t border-sand-200 bg-sand-100/80 py-10 ${LAYOUT.safeAreaX} pb-[max(calc(5rem+env(safe-area-inset-bottom)),1.5rem)] md:pb-[max(1.5rem,env(safe-area-inset-bottom))]`}>
+          <StickyPlanBarProvider>
+            <ConversionTracker />
+            <ScrollToTop />
+            <Nav />
+            <main id="main-content" className="pt-[calc(3.5rem+env(safe-area-inset-top,0px))] min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+              {children}
+            </main>
+            <BottomNav />
+          <footer role="contentinfo" aria-label="Site footer" className={`border-t border-sand-200/80 bg-sand-100/80 py-10 ${LAYOUT.safeAreaX} pb-[max(calc(5rem+env(safe-area-inset-bottom)),1.5rem)] md:pb-[max(1.5rem,env(safe-area-inset-bottom))]`}>
             <div className={`${LAYOUT.listNarrow} mx-auto text-center`}>
               <nav aria-label="Essentials" className="flex flex-wrap justify-center gap-6 text-sm font-medium text-olive/80 mb-4">
-                <Link href="/discover" className="hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 rounded">{t("footer.discover")}</Link>
-                <Link href="/plan" className="hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 rounded">{t("footer.plan")}</Link>
-                <Link href="/airport" className="hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 rounded">{t("footer.airport")}</Link>
-                <Link href="/weather" className="hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 rounded">{t("footer.weather")}</Link>
-                <Link href="/bookings" className="hover:text-sage transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50 rounded">{t("footer.bookings")}</Link>
+                <Link href="/discover" className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.discover")}</Link>
+                <Link href="/plan" className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.plan")}</Link>
+                <Link href="/airport" className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.arriving")}</Link>
+                <Link href="/weather" className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.weather")}</Link>
+                <Link href="/bookings" className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{t("footer.bookings")}</Link>
               </nav>
               <p className="text-sm text-olive/70 prose-body max-w-md mx-auto break-words">
-                {t("footer.tagline")}
+                {t.rich("footer.tagline", { strong: (chunks) => <strong>{chunks}</strong> })}
               </p>
               <p className="text-xs text-olive/70 mt-3 max-w-md mx-auto leading-relaxed break-words">
-                {t("footer.tips")}
+                {t("footer.practical")}
               </p>
               <LocaleSelector variant="footer" />
             </div>
           </footer>
+          </StickyPlanBarProvider>
           <AIAssistant />
         </>
+        </Providers>
       </SerwistProvider>
     </NextIntlClientProvider>
   );

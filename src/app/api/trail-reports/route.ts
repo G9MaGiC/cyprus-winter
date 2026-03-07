@@ -19,7 +19,7 @@ const reportSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-  const limitResult = rateLimit(req, 10);
+  const limitResult = await rateLimit(req, 10, "trail-reports");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Too many reports. Please wait before submitting another.",

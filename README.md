@@ -214,7 +214,7 @@ This section outlines design patterns that increase **stickiness, return visits,
 - **Styling:** Tailwind CSS v4
 - **Data:** Static TypeScript in `src/data/` for attractions, trails, wineries, etc.
 - **Backend:** Supabase (bookings, trail reports, conversion tracking); API routes at `/api/bookings`, `/api/trail-reports`, `/api/chat`, `/api/track`, etc. Deploy to Vercel or any Node host—API routes require a server.
-- **AI:** Moonshot (Kimi) API (chat), Web Speech API (voice in/out)
+- **AI:** Groq (Llama), Ollama, Moonshot, or OpenAI (chat); Web Speech API (voice in/out)
 
 ---
 
@@ -223,7 +223,12 @@ This section outlines design patterns that increase **stickiness, return visits,
 The app includes an AI-powered chat assistant with voice input/output. To enable it:
 
 1. Copy `.env.example` to `.env.local` and fill in required vars
-2. Add your [Moonshot API key](https://platform.moonshot.ai/console/api-keys): `MOONSHOT_API_KEY=sk-...`
+2. Add **one** of:
+   - `XAI_API_KEY=...` ([xAI Grok](https://console.x.ai), model: grok-3-mini)
+   - `GROQ_API_KEY=...` ([Groq](https://console.groq.com) — free tier, Llama models)
+   - `OLLAMA_BASE_URL=http://localhost:11434/v1` (local [Ollama](https://ollama.com); optional `OLLAMA_MODEL=llama3.2`)
+   - `MOONSHOT_API_KEY=sk-...` ([Moonshot](https://platform.moonshot.ai/console/api-keys))
+   - `OPENAI_API_KEY=sk-...` ([OpenAI](https://platform.openai.com/api-keys), uses gpt-4o-mini)
 3. Restart the dev server
 
  Voice uses the browser’s Web Speech API (Chrome/Edge/Safari).
@@ -232,9 +237,9 @@ The app includes an AI-powered chat assistant with voice input/output. To enable
 
 **Admin stats** (`/admin/stats`): Set `ADMIN_SECRET` in your environment. The page prompts for it and sends it via `Authorization: Bearer`. Without it, the stats API returns 401.
 
-**Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `MOONSHOT_API_KEY`, `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
+**Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
 
-**Production rate limiting:** The app uses in-memory rate limiting. For multi-instance deployments (e.g. Vercel), use Upstash Redis or Vercel KV for shared limits. See `src/lib/rate-limit.ts`.
+**Production rate limiting:** The app uses in-memory rate limiting by default. For multi-instance deployments (e.g. Vercel), set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to enable Upstash Redis for shared limits. See `src/lib/rate-limit.ts`.
 
 ## Run
 

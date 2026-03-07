@@ -1,4 +1,4 @@
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, CARD } from "@/lib/design-tokens";
 
 export default function EventsLoading() {
   return (
@@ -46,7 +46,7 @@ export default function EventsLoading() {
       {/* Event card skeletons */}
       <div className="space-y-6">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="rounded-xl bg-sand-200/90 h-40" />
+          <div key={i} className={`${CARD.base} h-40 animate-pulse`} />
         ))}
       </div>
     </div>

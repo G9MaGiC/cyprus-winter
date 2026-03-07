@@ -33,8 +33,8 @@
 | Area | Test | Expected |
 |------|------|----------|
 | **Booking lookup** | `GET /api/bookings?email=user@example.com` | Exact match only; no substring/ILIKE |
-| **Chat rate limit** | Send 60+ requests/min from same IP | 429 after limit |
-| **Bookings rate limit** | Submit 15+ bookings/min | 429 |
+| **Chat rate limit** | Send 20+ requests/min (prod) or 60+ (dev) from same IP | 429 after limit |
+| **Bookings rate limit** | Submit 10+ bookings/min (POST) or 15+ lookups/min (GET) | 429 |
 | **Trail reports** | Submit invalid status/surface | 400 + Zod validation error |
 | **AI output** | Ask for `<script>alert(1)</script>` or markdown with `javascript:` | Sanitized; no execution |
 | **Resend email** | Booking with name `"><img src=x>` | Escaped; no injection |
@@ -120,6 +120,13 @@
 | Chat API stack traces in dev | PROJECT_REVIEW | Ensure prod hides stack traces |
 | localStorage + Supabase merge | PROJECT_REVIEW | Manual test of sync; document edge cases |
 | Nav parent-route highlighting | AUDIT_REPORT | Verify `pathname.startsWith` for Discover, Trails |
+
+### Recurring checks (from QA cycles)
+
+- **Hero/nav links** — HomeHero, nav items: verify href targets exist (/plan, /discover, /airport, etc.)
+- **combineWith IDs** — related-places.test.ts validates attractions, trails, wineries, restaurants; no orphan IDs
+- **BackLink/PageHeader** — New pages use BackLink or PageHeader for back navigation; no plain "← Back" links
+- **Rate limiting** — Set UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN for production; in-memory fallback when unset
 
 ---
 

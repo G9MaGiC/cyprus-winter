@@ -104,6 +104,8 @@ export default function BookingsPage() {
     this_week: upcoming.filter((b) => getUpcomingDateGroup(b.date) === "this_week"),
     later: upcoming.filter((b) => getUpcomingDateGroup(b.date) === "later"),
   };
+  const tomorrowBookings = upcoming.filter((b) => daysUntil(b.date) === 1);
+
   const groupLabels: { key: keyof typeof upcomingByGroup; label: string }[] = [
     { key: "today", label: "Today" },
     { key: "this_week", label: "This week" },
@@ -258,6 +260,21 @@ export default function BookingsPage() {
                     Browse wineries
                   </Link>
                 </div>
+              </div>
+            )}
+
+            {/* Tomorrow highlight */}
+            {tomorrowBookings.length > 0 && (
+              <div
+                role="status"
+                className="mb-6 p-4 rounded-xl bg-aegean/10 border border-aegean/20"
+              >
+                <p className="text-sm font-medium text-olive">
+                  Tomorrow — {tomorrowBookings.map((b) => b.providerName).join(" · ")} — directions ready.
+                </p>
+                <p className="text-xs text-olive/70 mt-1">
+                  View winery details below or add to your plan.
+                </p>
               </div>
             )}
 

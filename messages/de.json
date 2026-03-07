@@ -3,10 +3,12 @@
     "discover": "Entdecken",
     "plan": "Planen",
     "airport": "Flughafen",
+    "arriving": "Ankunft",
     "weather": "Wetter",
     "bookings": "Buchungen",
-    "tagline": "Cyprus Winter — Ihr Inselführer von der Landung bis zum Sonnenuntergang.",
-    "tips": "Notfall: 112 · Touristeninformation: 1460"
+    "tagline": "Ob Sie uns per Google-Suche oder am Flughafen gefunden haben—Wanderwege, Dörfer, Wein. Notfall <strong>112</strong> · Touristeninformation <strong>1460</strong> · Krankenwagen <strong>199</strong>.",
+    "practical": "Links fahren. Warme Kleidung einpacken. Die Insel belohnt die Neugierigen. Winter von November bis März. Fragen? Tippen Sie auf Ask AI.",
+    "planYourTrip": "Reise planen"
   },
   "nav": {
     "discover": "Entdecken",
@@ -37,6 +39,7 @@
     "app__home_HomeHero": {
       "text_13": "Winter auf Zypern",
       "text_14": "Wanderwege, Dörfer, Wein",
+      "text_subtitle": "Oft sechzehn Grad, wenn daheim sechs sind.",
       "text_16": "Planen Sie im Voraus oder starten Sie die Erkundung nach der Landung.",
       "aria-label_10": "Zu Entdecken gehen",
       "aria-label_11": "Ihren Reiseplan anzeigen",

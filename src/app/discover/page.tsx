@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site-url";
 import {
   beaches,
   ancientSites,
@@ -14,7 +15,8 @@ import DiscoverClient from "./DiscoverClient";
 export const metadata: Metadata = {
   title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
   description:
-    "Beaches, ancient sites, villages, wineries, monasteries. Curated Cyprus winter places—Nissi, Paphos mosaics, Lefkara, Troodos. Plan or explore. Sixteen degrees when home is six.",
+    "Beaches, ancient sites, villages, wineries, monasteries. Curated Cyprus winter places—Nissi, Paphos mosaics, Lefkara, Troodos. Plan or explore when you land. Sixteen degrees when home is six.",
+  alternates: { canonical: `${SITE_URL}/discover` },
 };
 
 const allDiscoverItems = [
@@ -41,14 +43,35 @@ const sections = [
   { id: "family", title: "Family-friendly", items: familyItems },
 ];
 
+const discoverItemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Discover Cyprus Winter",
+  description: "Beaches, ancient sites, villages, wineries, monasteries. Curated Cyprus winter places.",
+  url: `${SITE_URL}/discover`,
+  numberOfItems: allDiscoverItems.length,
+  itemListElement: allDiscoverItems.slice(0, 50).map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "TouristAttraction",
+      name: item.name,
+      description: item.description.slice(0, 160),
+      url: `${SITE_URL}/discover/${item.id}`,
+      address: { "@type": "PostalAddress", addressLocality: item.region, addressCountry: "CY" },
+    },
+  })),
+};
+
 export default function DiscoverPage() {
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} overflow-x-hidden`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(discoverItemListSchema) }} />
       <ListPageHero
         backHref="/"
         backLabel="Home"
         title="Discover Cyprus Winter"
-        description="Sixteen degrees when home is six. Beaches, ruins, villages, wineries, monasteries—what to pair each place with. Your guide, not a brochure."
+        description="Beaches, ruins, villages, wineries, monasteries. What to pair each place with—your guide, not a brochure."
         backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
         backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
       />
@@ -56,7 +79,7 @@ export default function DiscoverPage() {
       <DiscoverClient sections={sections} />
 
       <p className="mt-12 sm:mt-16 text-center text-olive/70 text-sm max-w-md mx-auto prose-body break-words">
-        Start with one place. Add a trail or a tasting. Or ask the AI—it knows the island in winter.
+        Start with one place. Pair it with a trail or a tasting. Or tap Ask AI—it knows the island in winter.
       </p>
     </div>
   );

@@ -7,11 +7,17 @@ import { jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-re
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  const limitResult = rateLimit(req, 60);
+  const limitResult = await rateLimit(req, 60, "health");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many health checks", limitResult.resetAt);
   }
-  const ai = !!process.env.MOONSHOT_API_KEY;
+  const ai = !!(
+    process.env.XAI_API_KEY ||
+    process.env.GROQ_API_KEY ||
+    process.env.OLLAMA_BASE_URL ||
+    process.env.MOONSHOT_API_KEY ||
+    process.env.OPENAI_API_KEY
+  );
   const emailConfigured = !!process.env.RESEND_API_KEY;
   let storage: "supabase" | "memory" = hasSupabase() ? "supabase" : "memory";
   let supabaseOk = true;

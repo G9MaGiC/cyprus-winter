@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "My Bookings | Cyprus Winter",
   description:
-    "View your winery tastings and experiences. Cyprus Winter bookings in one place.",
+    "View and manage your Cyprus Winter winery tastings and experiences. All bookings in one place. Sync from any device.",
+  alternates: { canonical: `${SITE_URL}/bookings` },
 };
 
 export default function BookingsLayout({

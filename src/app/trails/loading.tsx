@@ -1,4 +1,4 @@
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, CARD } from "@/lib/design-tokens";
 
 export default function TrailsLoading() {
   return (
@@ -7,7 +7,7 @@ export default function TrailsLoading() {
         <div className="h-4 w-20 bg-sand-200/80 rounded mb-4" />
         <div className="h-9 w-64 bg-olive/20 rounded mb-2" />
         <div className="h-4 w-full max-w-lg bg-sand-200/80 rounded mb-8" />
-        <div className="flex flex-wrap gap-4 p-5 rounded-xl bg-white/90 border border-sand-200/80 mb-8">
+        <div className={`flex flex-wrap gap-4 ${CARD.content} rounded-xl bg-white/90 border border-sand-200/80 mb-8`}>
           <div className="h-8 w-24 bg-sand-200/80 rounded" />
           <div className="h-8 w-20 bg-sand-200/80 rounded" />
           <div className="h-8 w-24 bg-sand-200/80 rounded" />

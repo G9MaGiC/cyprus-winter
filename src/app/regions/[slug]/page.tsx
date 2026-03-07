@@ -279,7 +279,7 @@ export default async function RegionPage({ params }: Props) {
               {regionEvents.map((e) => (
                 <li
                   key={e.id}
-                  className="rounded-lg border border-sand-200 bg-white p-4"
+                  className="rounded-lg border border-sand-200/80 bg-white p-4"
                 >
                   <h3 className="font-medium text-olive">{e.name}</h3>
                   <p className="text-sm text-olive/80 mt-1">{e.description}</p>

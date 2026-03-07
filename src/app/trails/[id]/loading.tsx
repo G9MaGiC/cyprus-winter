@@ -1,4 +1,4 @@
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, CARD } from "@/lib/design-tokens";
 
 export default function TrailLoading() {
   return (
@@ -17,7 +17,7 @@ export default function TrailLoading() {
         </div>
         <div className="h-9 w-56 bg-olive/20 rounded mb-2" />
         <div className="h-4 w-32 bg-sand-200/80 rounded mb-6" />
-        <div className="aspect-video rounded-lg bg-sand-200/80 mb-6" />
+        <div className={`${CARD.base} aspect-video mb-6 overflow-hidden`} />
         <div className="h-4 w-full bg-sand-200/80 rounded mb-2" />
         <div className="h-4 w-3/4 bg-sand-200/60 rounded" />
       </div>

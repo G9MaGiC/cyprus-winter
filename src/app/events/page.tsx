@@ -187,6 +187,9 @@ export default function EventsPage() {
           </p>
         </ListPageHero>
 
+        <div className="mt-4 relative">
+          <div id="events-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
+        </div>
         <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
 
         {/* Filters — collapsible on mobile, single row on lg */}

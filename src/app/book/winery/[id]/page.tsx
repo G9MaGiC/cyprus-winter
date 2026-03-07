@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!winery) return { title: "Not found" };
   return {
     title: `Book a tasting | ${winery.name} | Cyprus Winter`,
-    description: `${winery.region}. Winter tastings are cosy. Book ahead and you'll often get the owner pouring.`,
+    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Cyprus Winter.`,
     alternates: { canonical: `${SITE_URL}/book/winery/${id}` },
   };
 }

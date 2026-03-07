@@ -10,7 +10,7 @@ import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@
 import { sanitizeForStorage } from "@/lib/sanitize";
 
 export async function POST(req: NextRequest) {
-  const limitResult = rateLimit(req, 10);
+  const limitResult = await rateLimit(req, 10, "bookings");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before making another booking.",
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  const limitResult = rateLimit(req, 15);
+  const limitResult = await rateLimit(req, 15, "bookings-lookup");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before checking your bookings again.",

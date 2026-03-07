@@ -142,7 +142,7 @@ export default function ContextualHelp({
       className={cn("absolute z-50", positionClasses[tip.position || "bottom"], className)}
       role="tooltip"
     >
-      <div className="relative bg-white rounded-xl shadow-lg border border-sand-200 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2">
+      <div className="relative bg-white rounded-xl shadow-lg border border-sand-200/80 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2">
         {/* Arrow */}
         <div
           className={cn("absolute w-0 h-0 border-8", arrowClasses[tip.position || "bottom"])}
@@ -154,7 +154,7 @@ export default function ContextualHelp({
         <button
           type="button"
           onClick={handleDismiss}
-          className="absolute top-2 right-2 p-1 rounded hover:bg-sand-100 transition-colors"
+          className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-sand-100 transition-colors touch-manipulation"
           aria-label="Dismiss tip"
         >
           <svg className="w-4 h-4 text-olive/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">

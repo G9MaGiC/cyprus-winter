@@ -16,7 +16,7 @@ export default function SearchLoading() {
         <div className="h-12 max-w-xl bg-sand-200/80 rounded-lg mb-8" />
         <div className="space-y-3">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className={`${CARD.base} p-4 flex items-center gap-4`}>
+            <div key={i} className={`${CARD.base} ${CARD.content} flex items-center gap-4`}>
               <div className="h-14 w-20 shrink-0 rounded-lg bg-sand-200/80" />
               <div className="flex-1 min-w-0">
                 <div className="h-5 w-32 bg-olive/20 rounded mb-2" />

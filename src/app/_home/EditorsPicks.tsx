@@ -10,7 +10,7 @@ export default function EditorsPicks() {
       {homeEditorsPicks.map((item) => (
         <div
           key={item.id}
-          className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
+          className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
         >
           <Link href={item.href} className={`block flex-1 ${CARD.link}`} aria-label={`Open ${item.title}`}>
             <div className={CARD.media}>
@@ -29,7 +29,7 @@ export default function EditorsPicks() {
             </div>
           </Link>
           <div className={CARD.footer}>
-            <AddToItineraryButton placeId={item.id} label="Add to plan" className="text-sm py-2" />
+            <AddToItineraryButton placeId={item.id} label="Add to plan" className="text-sm" />
           </div>
         </div>
       ))}

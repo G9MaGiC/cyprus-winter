@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { getRelatedPlaces, getCombineWith } from "./related-places";
 import { allAttractions } from "@/data";
+import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
 
@@ -47,6 +48,9 @@ describe("combineWith validation", () => {
     }
     for (const w of wineries) {
       if (w.combineWith) for (const id of w.combineWith) allIds.add(id);
+    }
+    for (const r of restaurants) {
+      if (r.combineWith) for (const id of r.combineWith) allIds.add(id);
     }
     for (const id of allIds) {
       const places = getRelatedPlaces([id]);

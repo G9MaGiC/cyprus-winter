@@ -1,0 +1,320 @@
+# Cyprus Winter — QA Bug Log
+
+**Purpose:** Track QA findings, fix status, and regressions. Alternative to GitHub Issues for local traceability.
+
+**Template:** Use the format in `docs/QA_PLAN.md` Section 5.
+
+---
+
+## Bug Report Format
+
+```markdown
+## [BUG-XXX] Short title
+
+**Severity:** Critical | High | Medium | Low
+**Area:** Security | Functional | A11y | Mobile | Performance | Visual
+**Page/Component:** e.g. /plan, AIAssistant, PlacePicker
+
+### Reproduction
+1. Step 1
+2. Step 2
+3. Step 3
+
+### Expected
+What should happen.
+
+### Actual
+What happens.
+
+### Environment
+Browser, viewport, device (if relevant)
+
+### Fix status
+Open | In progress | Fixed | Won't fix
+```
+
+---
+
+## Active Bugs
+
+### [BUG-001] Broken /trip link on homepage hero
+
+**Severity:** Critical
+**Area:** Functional
+**Page/Component:** HomeHero, /
+
+**Reproduction**
+1. Go to homepage
+2. Click "Trip" link in hero
+
+**Expected**
+Navigation to trip planning or discover page
+
+**Actual**
+404 — /trip does not exist
+
+**Fix status**
+Fixed — changed link to /plan
+
+---
+
+### [BUG-002] Orphan combineWith ID "amathi" in restaurants
+
+**Severity:** High
+**Area:** Data
+**Page/Component:** src/data/restaurants.ts:63
+
+**Reproduction**
+1. View governors-beach-tavernas or any place showing "Combine your day" with this restaurant
+2. Or call getRelatedPlaces(["amathi"])
+
+**Expected**
+Resolves to Amathus (Amahti) attraction
+
+**Actual**
+"amathi" never resolves — correct ID is "amahti"
+
+**Fix status**
+Fixed — corrected typo amathi → amahti
+
+---
+
+### [BUG-003] Restaurants combineWith not validated in tests
+
+**Severity:** High
+**Area:** Testing
+**Page/Component:** src/lib/related-places.test.ts
+
+**Reproduction**
+Run related-places tests — they pass despite orphan IDs in restaurants.combineWith
+
+**Expected**
+Tests validate all data sources (attractions, trails, wineries, restaurants)
+
+**Actual**
+Only allAttractions, trails, wineries included in combineWith validation
+
+**Fix status**
+Fixed — added restaurants to test loop
+
+---
+
+### [BUG-004] In-memory rate limits on Vercel serverless
+
+**Severity:** High
+**Area:** Security
+**Page/Component:** src/lib/rate-limit.ts
+
+**Reproduction**
+Multiple serverless instances; each has separate in-memory store
+
+**Expected**
+Per-user/IP limits enforced across instances
+
+**Actual**
+Per-instance limits; can be bypassed by hitting different instances
+
+**Fix status**
+Fixed — Optional Upstash Redis support added. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN to enable shared rate limiting. Falls back to in-memory when unset. Per-route scopes (chat, bookings, etc.) isolate limits.
+
+---
+
+### [BUG-005] Admin stats uses plain back link
+
+**Severity:** Medium
+**Area:** UX
+**Page/Component:** src/app/admin/stats/page.tsx:98
+
+**Fix status**
+Fixed — use BackLink component
+
+---
+
+### [BUG-006] Chat API does not sanitize model reply server-side
+
+**Severity:** Medium
+**Area:** Security
+**Page/Component:** src/app/api/chat/route.ts:76
+
+**Fix status**
+Fixed — sanitize raw reply before returning
+
+---
+
+### [BUG-007] QA_PLAN rate limit numbers mismatch
+
+**Severity:** Low
+**Area:** Documentation
+**Page/Component:** docs/QA_PLAN.md vs api routes
+
+**Fix status**
+Fixed — updated to match actual limits (chat 20/min, bookings 10 POST / 15 GET)
+
+---
+
+## Visual QA — Continuation 1 (Mar 2026)
+
+*From `docs/UX_IMPROVEMENT_PLAN.md` Continuation 1. Team: branding-redesign + ux-polish.*
+
+### P0 — CTA hover inconsistency
+
+| ID | File:Line | Issue | Fix |
+|----|-----------|-------|-----|
+| BUG-008 | AddToItineraryButton.tsx:29,56 | `hover:bg-terracotta/90` | `hover:bg-terracotta-muted` |
+| BUG-009 | AttractionCard.tsx:80 | Same | Same |
+| BUG-010 | ItineraryCard.tsx:80 | Same | Same |
+| BUG-011 | PlanStickyAddBar.tsx:48 | Same | Same |
+| BUG-012 | TemplateChoiceModal.tsx:60 | Same | Same |
+| BUG-013 | ClearDayModal.tsx:54 | Same | Same |
+| BUG-014 | BookingsEmailLookup.tsx:30 | Same | Same |
+| BUG-015 | admin/stats/page.tsx:91 | Same | Same |
+
+**Fix status:** Fixed — all 8 files updated to `hover:bg-terracotta-muted`
+
+---
+
+### P1 — Design system / layout
+
+| ID | File:Line | Issue | Fix |
+|----|-----------|-------|-----|
+| BUG-016 | [locale]/layout.tsx:66 | `themeColor: "#242528"` hardcoded | Use TOKENS.charcoal |
+| BUG-017 | admin/stats/page.tsx:75,130 | Headings lack `font-display` | Add `font-display` |
+| BUG-018 | AIAssistant.tsx:463 | Chips use `sage` hover | Use terracotta to match PILL |
+| BUG-019 | FilterChips.tsx:20 | Active style differs from PILL | Align with PILL.active or document |
+| BUG-020 | HomeHero.tsx:46,53 | Links `min-h-[40px]` | Change to 44px |
+| BUG-021 | layout.tsx:102-104, [locale]:115-119 | Footer nav links < 44px | Add min-h-[44px] py-2 inline-flex |
+| BUG-022 | search/loading.tsx:19 | Skeleton uses p-4 | Use CARD.content |
+
+**Fix status:** Fixed — themeColor, font-display, AI chips, FilterChips, touch targets (HomeHero, footer), search skeleton
+
+---
+
+### P2 — Minor polish
+
+| Category | File:Line | Issue |
+|----------|-----------|-------|
+| Colors | TrailDetailStickyActions.tsx:34 | Shadow hardcoded; use token |
+| Typography | admin/stats, TrailReportClient | Add font-display to headings |
+| Components | RelatedPlacesBlock, events, admin stats | Card border/callout consistency |
+| Chips | FilterChips ring-offset, plan chips | Align with PILL tokens |
+| Emergency | airport.ts:48,80; layout footer | "112 · 1460 · 199" format; bold numbers |
+| Touch | Breadcrumbs.tsx:103 | Add min-h-[44px] |
+| Spacing | admin/stats, HomeHero locales | Use SECTION tokens |
+| Footer | layout vs [locale] | Unify hover (terracotta vs sage) |
+| Components | HomeHero locale CTAs | Use CTA.secondary, CTA.ghost |
+| Empty | ErrorState.tsx:42 | Align with EMPTY_STATE/CARD |
+
+**Fix status:** Partial — Continuation 4–5. Breadcrumbs + ErrorState: retry manually if needed.
+
+---
+
+### Summary
+
+| Severity | Count | Next step |
+|----------|-------|-----------|
+| P0 | 8 | Fixed (Continuation 2) |
+| P1 | 7 | Fixed (Continuation 3) |
+| P2 | 11 | Partial (Continuations 4–6) |
+
+Continuation 6 (A11y): Admin input aria-label added; root footer emergency numbers bolded.
+
+---
+
+## Visual QA — Phase 1 (Mar 2026, Best Team UX/UI)
+
+*From UX/UI improvement plan. Team: branding-redesign + ux-polish.*
+
+### P0 — Critical (fix first)
+
+| ID | File | Issue | Fix |
+|----|------|-------|-----|
+| BUG-023 | messages/en.json:9 | footer.tips missing "· Ambulance 199" | Add full format |
+| BUG-024 | messages/de.json:9 | Same | Add "· Krankenwagen 199" |
+| BUG-025 | messages/el.json:9 | Same | Add "· Ασθενοφόρο 199" |
+| BUG-026 | messages/pl.json:9 | Same | Add "· Ambulans 199" |
+
+**Fix status:** Fixed — footer.tips has full format with bold 112/1460/199 via t.rich.
+
+### P1 — Design system / UX
+
+| ID | File:Line | Issue | Fix |
+|----|-----------|-------|-----|
+| BUG-027 | layout.tsx:16-25 | Fonts missing `display: 'swap'` | Add to Plus_Jakarta_Sans and Fraunces |
+| BUG-028 | regions/[slug]/page.tsx:282, weather/[month]:118, ContextualHelp:145 | border-sand-200 | Use border-sand-200/80 |
+| BUG-029 | AIAssistant.tsx (multiple) | border-sand-200 | Use border-sand-200/80 |
+| BUG-030 | airport/page.tsx:40-42 | font-bold vs `<strong>` | Align with footer pattern |
+| BUG-031 | [locale]/layout.tsx:124 | Locale footer tips vs root | Ensure tips includes 112/1460/199 | Fixed — t.rich with bold |
+| BUG-032 | LocaleSelector.tsx:32-50 | Footer select < 44px | Add min-h-[44px] | Fixed — variantClasses already min-h-[44px] |
+
+### P2 — Minor polish
+
+| Category | File:Line | Issue |
+|----------|-----------|-------|
+| Colors | AllTrailsMap, TrailMap | rgba shadows → design token |
+| Typography | install, search, OnboardingModal, _home | text-charcoal vs text-olive consistency |
+| Components | airport, discover/[id], BookingsEmailLookup | border-sand-200/80 |
+| Tip/Callout | discover/[id] | Define shared CALLOUT token |
+| Emergency | airport vs layout | Unify bold pattern |
+| Touch | LocaleSelector | 44px touch target |
+| Loading | discover/loading.tsx | Skeleton match FilterChips min-h |
+| Spacing | HomeHero, install, PageHeader, events | mb-10 vs mb-8, SECTION tokens |
+| Card | plan, ErrorState, admin stats | Use CARD.content |
+
+**Fix status:** P0 fixed. P1 done. Phases 4–6 done. ErrorState CARD tokens fixed. Footer/sticky CTA duplication fixed — StickyPlanBarContext hides Plan in BottomNav when sticky bar visible (see docs/FOOTER_STICKY_AUDIT.md). Phase 6/7 verified: skip link (href="#main-content", min-h-[44px]) and main id present; footer emergency format (112/1460/199); touch targets (44px+) on nav, footer, BottomNav, AIAssistantTrigger). Breadcrumbs and ContextualHelp min-h/touch fixes had write denied (manual). Phase 8: lint, test, build all pass.
+
+---
+
+## QA Run — Post UX/UI (Mar 2026)
+
+*Full QA per .cursor/TEAM_QA.md. Shell (lint/test/build) + audit-explore + senior-software-engineer + ux-polish.*
+
+### P0 — None
+
+### P1 — Fix before launch
+
+| ID | Source | Issue | File |
+|----|--------|-------|------|
+| BUG-033 | audit | Home screen differs from PRD §3.2 (weather-first, trail status, mood) | PRD vs implementation |
+| BUG-034 | audit | No API route tests; no E2E tests | — |
+| BUG-035 | sse | Chat API exposes `err.message` in 500 responses | api/chat/route.ts:84 |
+| BUG-036 | sse | STRESS_TEST_TOKEN bypass in prod if set | rate-limit-shared.ts |
+| BUG-037 | ux | Plan `?add=` invalid id → silent redirect, no feedback | plan/page.tsx |
+| BUG-038 | ux | AddToItineraryButton touch targets &lt; 44px ("View plan →", AI inline Add) | AddToItineraryButton.tsx |
+| BUG-039 | ux | TrailDetailStickyActions may overlap BottomNav on mobile | TrailDetailStickyActions.tsx |
+
+### P2 — Backlog
+
+| Source | Issue |
+|--------|-------|
+| audit | Chat API may leak internal details in 500 (P2) |
+| audit | ~~PRD typography: Inter vs Plus Jakarta Sans~~ | Fixed — PRD updated |
+| audit | Root vs [locale] layout — intentional: root for default routes, [locale] for i18n; documented in layout |
+| sse | ~~Track API returns 200 when Supabase unavailable~~ | Fixed — returns stored: boolean |
+| sse | ~~LD+JSON schema fields~~ — documented in src/lib/schema-ldjson.ts; fields from src/data/ |
+| ux | ~~Unknown `?filter=` shows all without feedback~~ | Fixed — shows "Unknown category — showing all" |
+
+**Fix status:** BUG-035–039 fixed. BUG-034 fixed. BUG-033 fixed — PRD §3.2 home alignment: weather strip, search ("Where to today?"), Explore by mood, Winter Insider Tip. This week + Editor's picks cover Today's Picks; StickyPlanBar = Your Itinerary.
+
+---
+
+## Home Page Visual Fixes (Mar 2026)
+
+*Plan: home_page_visual_fixes. Team: branding-redesign + ux-polish.*
+
+### Applied
+
+| Fix | File |
+|-----|------|
+| Remove rounded-2xl (align with CARD.base rounded-xl) | StartHereStrip, ThisWeekGrid, EditorsPicks, BookTastings, WhyCyprusDetails |
+| Use CALLOUT.tip for Winter Insider Tip | HomeInsiderTip.tsx |
+| Add LAYOUT.safeAreaX for notched devices | TripReminderBanner.tsx |
+| Remove px-4 sm:px-6 override on search section | page.tsx |
+| Remove py-2 from AddToItineraryButton (preserve 44px touch target) | EditorsPicks, ThisWeekGrid |
+
+### Deferred (write denied)
+
+| Fix | File |
+|-----|------|
+| Clear button min-h-[44px] touch target | RecentlyViewed.tsx — apply manually if needed |
+
+**Verify:** lint, test, build all pass.

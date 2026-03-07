@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { airports } from "@/data/airport";
+import { SITE_URL } from "@/lib/site-url";
 import { winterTipsPractical } from "@/data/winter-tips";
 import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
@@ -9,7 +10,8 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Just Landed? | Cyprus Winter Airport Guide",
   description:
-    "Larnaca & Paphos arrivals. Taxis, buses, car hire. Coast mild; mountains need layers.",
+    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers, tips. Just landed? Start here. Cyprus Winter.",
+  alternates: { canonical: `${SITE_URL}/airport` },
 };
 
 const CITY_GREEK: Record<string, string> = {
@@ -37,9 +39,7 @@ export default function AirportPage() {
           Essential numbers
         </h2>
         <p className="text-aegean font-semibold text-sm">
-          Emergency <strong className="font-bold">112</strong> · Tourist info{" "}
-          <strong className="font-bold">1460</strong> · Ambulance{" "}
-          <strong className="font-bold">199</strong>
+          Emergency <strong>112</strong> · Tourist info <strong>1460</strong> · Ambulance <strong>199</strong>
         </p>
         <p className="text-olive/70 text-xs mt-1">Save these. Hope you never need them.</p>
       </section>
@@ -90,7 +90,7 @@ export default function AirportPage() {
                   {airport.transport.map((t) => (
                     <li
                       key={t.type}
-                      className="flex flex-col sm:flex-row sm:items-start gap-2 p-4 rounded-lg bg-sand/50 border border-sand-200"
+                      className="flex flex-col sm:flex-row sm:items-start gap-2 p-4 rounded-lg bg-sand/50 border border-sand-200/80"
                     >
                       <span
                         className="font-semibold text-terracotta sm:w-28 shrink-0"

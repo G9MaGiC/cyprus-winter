@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BackLink from "@/components/BackLink";
 import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
 import type { Metadata } from "next";
 
@@ -51,12 +52,9 @@ RewriteRule . /index.html [L]`,
 export default function InstallPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 text-sm font-medium text-olive/70 hover:text-terracotta transition-colors mb-8 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-      >
-        <span aria-hidden>←</span> Back to Cyprus Winter
-      </Link>
+      <div className="mb-8">
+        <BackLink href="/" label="Back to Cyprus Winter" />
+      </div>
 
       <header className="mb-12">
         <p className="text-golden text-sm font-medium tracking-[0.15em] uppercase mb-2">
@@ -116,7 +114,7 @@ export default function InstallPage() {
         ))}
       </section>
 
-      <section aria-labelledby="troubleshooting" className="mt-14 pt-8 border-t border-sand-200">
+      <section aria-labelledby="troubleshooting" className="mt-14 pt-8 border-t border-sand-200/80">
         <h2 id="troubleshooting" className="font-display text-xl font-semibold text-charcoal mb-4">
           Troubleshooting
         </h2>

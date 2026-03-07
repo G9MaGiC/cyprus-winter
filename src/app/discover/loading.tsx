@@ -21,7 +21,7 @@ function CardSkeleton() {
 export default function DiscoverLoading() {
   return (
     <div
-      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
+      className={`min-h-screen bg-background ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"
@@ -35,7 +35,7 @@ export default function DiscoverLoading() {
       </div>
       <div className="flex gap-2 overflow-x-auto overflow-y-hidden pb-1 mb-6 scrollbar-none sm:flex-wrap">
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className="h-10 w-24 bg-sand-200/90 rounded-lg shrink-0" />
+          <div key={i} className="min-h-[44px] h-11 w-24 bg-sand-200/90 rounded-lg shrink-0" />
         ))}
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

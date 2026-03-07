@@ -33,5 +33,6 @@ export const bottomOverflowLinks: readonly NavLink[] = [
   { href: "/bookings", label: "Bookings" },
   { href: "/events", label: "Events" },
   { href: "/airport", label: "Arriving" },
+  { href: "/account", label: "Account" },
 ];
 

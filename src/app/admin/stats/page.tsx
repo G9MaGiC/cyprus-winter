@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
+import BackLink from "@/components/BackLink";
 import { LAYOUT } from "@/lib/design-tokens";
 
 const ADMIN_KEY_STORAGE = "cyprus-admin-key";
@@ -72,7 +72,7 @@ export default function AdminStatsPage() {
   if (!adminKey) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <h1 className="text-2xl font-bold text-olive mb-4">Admin stats</h1>
+        <h1 className="font-display text-2xl font-bold text-olive mb-4">Admin stats</h1>
         <p className="text-sm text-olive/70 mb-6">
           Enter your admin key to view traction metrics. Set ADMIN_SECRET in your environment.
         </p>
@@ -83,20 +83,21 @@ export default function AdminStatsPage() {
             onChange={(e) => { setKeyInput(e.target.value); setKeyError(null); }}
             placeholder="Admin key"
             autoComplete="current-password"
-            className="flex-1 min-h-[44px] rounded-lg border border-sand-200 px-4 py-2 text-sm text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30"
+            aria-label="Admin key"
+            className="flex-1 min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-2 text-sm text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30"
           />
           <button
             type="submit"
             disabled={!keyInput.trim()}
-            className="min-h-[44px] px-5 py-2 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta/90 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="min-h-[44px] px-5 py-2 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Access
           </button>
         </form>
         {keyError && <p className="text-sm text-terracotta mt-2">{keyError}</p>}
-        <Link href="/" className="inline-block mt-8 text-sm text-terracotta font-medium hover:underline">
-          ← Back to home
-        </Link>
+        <div className="mt-8">
+          <BackLink href="/" label="Back to home" />
+        </div>
       </div>
     );
   }
@@ -127,7 +128,7 @@ export default function AdminStatsPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-        <h1 className="text-2xl font-bold text-olive">Admin stats</h1>
+        <h1 className="font-display text-2xl font-bold text-olive">Admin stats</h1>
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -140,23 +141,21 @@ export default function AdminStatsPage() {
           >
             Sign out
           </button>
-          <Link href="/" className="inline-flex items-center min-h-[44px] text-sm text-terracotta font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">
-            ← Home
-          </Link>
+          <BackLink href="/" label="Home" />
         </div>
       </div>
 
       <section className="mb-10">
-        <h2 className="text-lg font-semibold text-olive mb-4">Bookings (this month)</h2>
-        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200 mb-6">
+        <h2 className="font-display text-lg font-semibold text-olive mb-4">Bookings (this month)</h2>
+        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200/80 mb-6">
           <p className="text-3xl font-bold text-olive">{bookings}</p>
           <p className="text-sm text-olive/70 mt-1">Total bookings</p>
         </div>
       </section>
 
       <section className="mb-10">
-        <h2 className="text-lg font-semibold text-olive mb-4">Partner revenue (this month)</h2>
-        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200">
+        <h2 className="font-display text-lg font-semibold text-olive mb-4">Partner revenue (this month)</h2>
+        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200/80">
           <p className="text-3xl font-bold text-olive">{revenue.toFixed(2)} €</p>
           <p className="text-sm text-olive/70 mt-1">Partner revenue share (lead fees)</p>
           {byWinery.length > 0 && (
@@ -173,12 +172,12 @@ export default function AdminStatsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-lg font-semibold text-olive mb-4">Conversion funnel (this month)</h2>
-        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200">
+        <h2 className="font-display text-lg font-semibold text-olive mb-4">Conversion funnel (this month)</h2>
+        <div className="p-6 rounded-lg bg-olive/5 border border-sand-200/80">
           <p className="text-sm text-olive/70 mb-4">First touch to booking and revenue</p>
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-sand-200">
+              <tr className="border-b border-sand-200/80">
                 <th className="py-2 font-medium text-olive">Event</th>
                 <th className="py-2 font-medium text-olive text-right">Count</th>
               </tr>

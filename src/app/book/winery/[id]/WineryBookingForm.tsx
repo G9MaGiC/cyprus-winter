@@ -142,7 +142,7 @@ export default function WineryBookingForm({
           type="date"
           required
           min={new Date().toISOString().split("T")[0]}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
         />
       </div>
 
@@ -154,7 +154,7 @@ export default function WineryBookingForm({
           id="partySize"
           name="partySize"
           required
-          className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
         >
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
             <option key={n} value={n}>
@@ -177,7 +177,7 @@ export default function WineryBookingForm({
           required
           maxLength={200}
           placeholder="John Smith"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
         />
       </div>
 
@@ -192,7 +192,7 @@ export default function WineryBookingForm({
           autoComplete="email"
           required
           placeholder="john@example.com"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
         />
       </div>
 
@@ -207,7 +207,7 @@ export default function WineryBookingForm({
           rows={3}
           maxLength={500}
           placeholder="Allergies, special occasion, fireside or terrace — whatever helps them welcome you"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0 resize-none"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0 resize-none"
         />
       </div>
 

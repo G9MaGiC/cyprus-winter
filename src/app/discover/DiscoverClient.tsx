@@ -53,7 +53,6 @@ export default function DiscoverClient({
 
   return (
     <div id="discover-content" aria-label="Discover places in Cyprus">
-      <div id="discover-plan-sentinel" className="h-px" aria-hidden />
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
       <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] sm:top-0 z-10 pt-3 sm:pt-0 pb-4 mb-6 sm:mb-8 bg-background/95 backdrop-blur-sm ${LAYOUT.stickyBarX}`}>
         <FilterChips
@@ -68,6 +67,17 @@ export default function DiscoverClient({
           }
           ariaLabel="Filter by category"
         />
+        {filterParam && !sectionExists && (
+          <p className="text-sm text-olive/70 mt-3 break-words">
+            That filter doesn&apos;t exist—showing all places.{" "}
+            <Link
+              href="/discover"
+              className="inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+            >
+              See all categories
+            </Link>
+          </p>
+        )}
         {(filter && sectionExists) && (
           <p className="text-sm text-olive/70 mt-3 break-words">
             Showing{" "}
@@ -113,7 +123,7 @@ export default function DiscoverClient({
                 role="status"
                 aria-live="polite"
               >
-                <p className="text-olive/80 mb-4">Nothing in this category yet. Switch filters or ask the AI—it knows Troodos to coast.</p>
+                <p className="text-olive/80 mb-4">Nothing here yet. Switch filters or tap Ask AI—it knows Troodos to coast.</p>
                 <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}>
                   Browse all categories
                 </Link>
@@ -128,7 +138,8 @@ export default function DiscoverClient({
           </section>
         ))}
       </div>
-      <div className="mt-12 pt-8 border-t border-sand-200/80 text-center">
+      <div className="mt-12 pt-8 border-t border-sand-200/80 text-center relative">
+        <div id="discover-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <Link href="/plan" className={CTA.primaryCompact}>
           Plan your trip
         </Link>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site-url";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { LAYOUT, CARD, EMPTY_STATE, CTA } from "@/lib/design-tokens";
@@ -9,7 +10,8 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 export const metadata: Metadata = {
   title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
   description:
-    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. What to pair with trails and villages.",
+    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips for your trip.",
+  alternates: { canonical: `${SITE_URL}/secrets` },
 };
 
 const typeLabels: Record<string, string> = {
@@ -29,8 +31,6 @@ export default function SecretsPage() {
         title="Cyprus Winter Local Secrets"
         description="Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place."
       />
-
-      <StickyPlanBarBlock sentinelId="secrets-plan-sentinel" />
 
       <h2 className="sr-only">Insider tips by region and type</h2>
       {secretGems.length === 0 ? (
@@ -82,6 +82,14 @@ export default function SecretsPage() {
         })}
       </div>
       )}
+      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto relative">
+        <span id="secrets-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
+        Pair with trails and villages.{" "}
+        <Link href="/plan" className="text-aegean hover:underline">
+          Plan your day
+        </Link>
+      </p>
+      <StickyPlanBarBlock sentinelId="secrets-plan-sentinel" />
     </div>
   );
 }

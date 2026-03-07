@@ -34,7 +34,7 @@ const FUNNEL_ORDER = [
  * Requires ADMIN_SECRET in Authorization: Bearer <secret> or x-admin-token header.
  */
 export async function GET(req: NextRequest) {
-  const limitResult = rateLimit(req, 30);
+  const limitResult = await rateLimit(req, 30, "stats");
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
   }

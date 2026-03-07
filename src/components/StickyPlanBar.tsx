@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LAYOUT } from "@/lib/design-tokens";
+import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 
 type StickyPlanBarProps = {
   sentinelId: string;
@@ -14,6 +15,7 @@ type StickyPlanBarProps = {
  */
 export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
   const [show, setShow] = useState(false);
+  const { setStickyPlanVisible } = useStickyPlanBar();
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
@@ -32,6 +34,11 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
     observer.observe(sentinel);
     return () => observer.disconnect();
   }, [sentinelId]);
+
+  useEffect(() => {
+    setStickyPlanVisible(show);
+    return () => setStickyPlanVisible(false);
+  }, [show, setStickyPlanVisible]);
 
   if (!show) return null;
 

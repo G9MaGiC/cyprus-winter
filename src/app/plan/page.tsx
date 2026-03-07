@@ -6,19 +6,21 @@ import ListPageHero from "@/components/ListPageHero";
 import ItineraryCard from "@/components/ItineraryCard";
 import ClearDayModal from "@/components/plan/ClearDayModal";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
-import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
-import PlacePicker from "@/components/PlacePicker";
+import PlacePickerModal from "@/components/plan/PlacePickerModal";
 import SuggestedForDay from "@/components/SuggestedForDay";
+import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
 import ShareLinks from "@/components/ShareLinks";
 import { useSearchParams, useRouter } from "next/navigation";
 import { LAYOUT, SECTION, CARD, CTA, EMPTY_STATE_DASHED } from "@/lib/design-tokens";
 import { useItinerary } from "@/hooks/useItinerary";
+import { useTripDates } from "@/hooks/useTripDates";
+import PushOptIn from "@/components/PushOptIn";
 
 const TEMPLATES = [
-  { key: "classic" as const, label: "Classic", sub: "Coast, culture, villages" },
-  { key: "mountain" as const, label: "Mountain", sub: "Trails & Troodos" },
+  { key: "classic" as const, label: "Classic", sub: "Coast, culture, hill villages" },
+  { key: "mountain" as const, label: "Mountain", sub: "Troodos trails & stone villages" },
   { key: "coast-culture" as const, label: "Coast & Culture", sub: "Beaches, ruins, wine" },
-  { key: "family" as const, label: "Family", sub: "2–3 activities/day, gentle pace" },
+  { key: "family" as const, label: "Family", sub: "Gentle pace, 2–3 stops a day" },
   { key: "short-stay" as const, label: "Short stay", sub: "48 hours: trail, village, wine" },
 ];
 
@@ -27,6 +29,28 @@ export default function PlanPage() {
   const router = useRouter();
   const [showClearModal, setShowClearModal] = useState(false);
   const [templateChoice, setTemplateChoice] = useState<string | null>(null);
+  const [showBrowseModal, setShowBrowseModal] = useState(false);
+  const [shareMenuOpen, setShareMenuOpen] = useState(false);
+  const shareMenuRef = useRef<HTMLDivElement>(null);
+  const shareMenuTriggerRef = useRef<HTMLButtonElement>(null);
+  const shareMenuFirstItemRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!shareMenuOpen) return;
+    const close = (e: MouseEvent) => {
+      if (shareMenuRef.current && !shareMenuRef.current.contains(e.target as Node)) {
+        setShareMenuOpen(false);
+        requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
+      }
+    };
+    document.addEventListener("click", close, { capture: true });
+    return () => document.removeEventListener("click", close, { capture: true });
+  }, [shareMenuOpen]);
+
+  useEffect(() => {
+    if (shareMenuOpen) shareMenuFirstItemRef.current?.focus();
+  }, [shareMenuOpen]);
+  const { dates, setTripDates, hydrated: datesHydrated, daysUntil, withinSevenDays } = useTripDates();
   const {
     days,
     activeDay,
@@ -74,11 +98,11 @@ export default function PlanPage() {
   useEffect(() => {
     if (!hydrated) return;
     const addId = searchParams.get("add");
-    if (!addId || processedAddRef.current === addId) return;
+    if (!addId || addId === "failed" || processedAddRef.current === addId) return;
     processedAddRef.current = addId;
     const place = getPlace(addId);
     if (!place) {
-      router.replace("/plan", { scroll: false });
+      router.replace("/plan?add=failed", { scroll: false });
       return;
     }
     addToDay(place.id);
@@ -109,7 +133,7 @@ export default function PlanPage() {
 
   return (
     <div className="min-h-screen bg-sand">
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} ${SECTION.blockGap}`}>
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} ${SECTION.blockGap} pb-24 sm:pb-16`}>
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
             Itinerary copied to clipboard
@@ -122,127 +146,138 @@ export default function PlanPage() {
           </p>
         )}
 
+        {searchParams.get("add") === "failed" && (
+          <div
+            className="mb-4 p-4 rounded-xl bg-terracotta/10 border border-terracotta/30 text-sm text-olive"
+            role="alert"
+            aria-live="assertive"
+          >
+            Place not found—link may be broken. Browse Discover or Trails to add places.
+          </div>
+        )}
+
         <header role="banner">
           <ListPageHero
             backHref="/"
             backLabel="Home"
             title="Plan your Cyprus winter trip"
-            description="Pick a template or add places one by one. Your plan saves as you go."
+            description="Pick a template or add places. Your plan saves as you go."
           >
             <div
-              className={`mt-6 sm:mt-8 ${CARD.contentLg} ${
+              className={`mt-3 sm:mt-8 ${CARD.contentLg} ${
                 hasContent ? `${CARD.base}` : "border-0 shadow-none bg-transparent"
               }`}
             >
+              {!hasContent && (
+                <button
+                      type="button"
+                      onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                      className={`mb-4 sm:mb-0 sm:mt-6 ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
+                    >
+                  Pick a template or add your first place
+                </button>
+              )}
               {hasContent && hydrated && (
-                <div className="shrink-0 mb-4" aria-live="polite" role="status">
-                  <div className="flex items-center gap-5 mb-2">
-                    <span>
-                      <span className="text-xl sm:text-2xl font-display font-bold text-terracotta tabular-nums">
-                        {totalPlaces}
-                      </span>
-                      <span className="text-xs text-olive/60 ml-1">places</span>
-                    </span>
-                    <span>
-                      <span className="text-xl sm:text-2xl font-display font-bold text-aegean tabular-nums">
-                        {activeDaysCount}
-                      </span>
-                      <span className="text-xs text-olive/60 ml-1">
-                        of 5 days planned
-                      </span>
-                    </span>
-                    <span className="text-xs text-sage font-medium">Auto-saved</span>
-                  </div>
-                  <div
-                    className="h-1.5 w-full max-w-xs rounded-full bg-sand-200/80 overflow-hidden flex"
-                    aria-hidden
-                  >
-                    {[1, 2, 3, 4, 5].map((d) => (
-                      <div
-                        key={d}
-                        className={`flex-1 ${d <= activeDaysCount ? "bg-aegean" : "bg-transparent"}`}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-xs text-olive/50 mt-1">
-                    Your trip: {activeDaysCount}/5 days with activities
+                <div className="flex flex-wrap items-center justify-between gap-3 mt-2">
+                  <p className="text-sm text-olive/70" aria-live="polite" role="status">
+                    <span className="font-semibold text-terracotta tabular-nums">{totalPlaces}</span> places ·{" "}
+                    <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/5 days · Auto-saved
                   </p>
+                  <div className="relative" ref={shareMenuRef}>
+                    <button
+                      ref={shareMenuTriggerRef}
+                      type="button"
+                      onClick={() => setShareMenuOpen((v) => !v)}
+                      className="min-h-[44px] inline-flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta hover:bg-terracotta/5 border border-sand-200/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+                      aria-expanded={shareMenuOpen}
+                      aria-haspopup="true"
+                    >
+                      Copy & share
+                      <span className={`text-olive/50 transition-transform ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>▾</span>
+                    </button>
+                    {shareMenuOpen && (
+                      <div className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-background border border-sand-200/80 shadow-lg min-w-[180px] z-10">
+                        <button
+                          ref={shareMenuFirstItemRef}
+                          type="button"
+                          onClick={() => {
+                            copyItinerary();
+                            setShareMenuOpen(false);
+                            requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
+                          }}
+                          className="w-full min-h-[44px] px-4 py-2 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+                        >
+                          {copied ? "Copied" : "Copy itinerary"}
+                        </button>
+                        <div
+                          className="px-4 py-2 border-t border-sand-200/80"
+                          onClick={() => {
+                            setShareMenuOpen(false);
+                            requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
+                          }}
+                        >
+                          <ShareLinks path={sharePath} text="My Cyprus Winter itinerary —" ariaLabel="Share via" className="flex flex-wrap gap-2" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
-
-              {hasContent && (
-              <nav
-                aria-label="Plan steps"
-                className="mt-6 sm:mt-8 pt-6 border-t border-sand-200/80"
-              >
-                <ol className="flex items-center gap-3 sm:gap-6">
-                  {[
-                    { label: "Choose a starting point", done: true },
-                    { label: "Add places", done: true },
-                    { label: "Copy & share", done: copied },
-                  ].map(({ label, done }, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-2 min-w-0"
-                      aria-current={i === 2 && !copied ? "step" : undefined}
-                    >
-                      <span
-                        className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${
-                          done ? "bg-terracotta text-white" : "bg-sand-200/80 text-olive/40"
-                        }`}
-                        aria-hidden
-                      >
-                        {done ? "✓" : i + 1}
-                      </span>
-                      <span
-                        className={`text-xs truncate hidden sm:inline ${done ? "text-olive/80" : "text-olive/40"}`}
-                      >
-                        {label}
-                      </span>
-                      {i < 2 && (
-                        <span
-                          className="hidden sm:block shrink-0 w-6 h-0.5 rounded bg-terracotta/40"
-                          aria-hidden
-                        />
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
-
-            {hasContent ? (
-              <div className="mt-6 sm:mt-8 pt-6 border-t border-sand-200/80 flex flex-wrap items-center gap-3 sm:gap-4">
-                <button
-                  type="button"
-                  onClick={copyItinerary}
-                  className={`${CTA.primaryCompact} shadow-sm hover:shadow-md active:scale-[0.98] motion-reduce:active:scale-100`}
-                  aria-label="Copy itinerary to clipboard"
-                >
-                  {copied ? "Copied" : "Copy itinerary"}
-                </button>
-                <ShareLinks
-                  path={sharePath}
-                  text="My Cyprus Winter itinerary —"
-                  ariaLabel="Share via"
-                  className="inline-flex"
-                />
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                className={`mt-6 ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}
-              >
-                Pick a template or add your first place
-              </button>
-            )}
             </div>
           </ListPageHero>
         </header>
 
+        {datesHydrated && withinSevenDays && daysUntil !== null && (
+          <div
+            role="status"
+            className="mb-6 p-4 rounded-xl bg-aegean/10 border border-aegean/20"
+          >
+            <p className="text-sm font-medium text-olive">
+              {daysUntil === 0
+                ? "Your trip is today — your Day 1 plan is ready."
+                : daysUntil === 1
+                  ? "Tomorrow you are here — your Day 1 plan is ready."
+                  : `${daysUntil} days until you are here — your Day 1 plan is ready.`}
+            </p>
+            <p className="text-xs text-olive/70 mt-1">
+              {daysUntil === 0 ? "Have a great day." : daysUntil === 1 ? "Have a safe journey." : "Review your itinerary below."}
+            </p>
+          </div>
+        )}
+
+        {datesHydrated && (
+          <div className="mb-6">
+            <div className={`${CARD.base} ${CARD.content}`}>
+              <p className="text-sm font-medium text-olive mb-2">When are you traveling?</p>
+              <div className="flex flex-wrap gap-3">
+                <label className="flex flex-col gap-1">
+                  <span className="text-xs text-olive/60">Start</span>
+                  <input
+                    type="date"
+                    value={dates.start ?? ""}
+                    onChange={(e) => setTripDates(e.target.value || null, dates.end)}
+                    className="min-h-[44px] px-3 py-2 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50"
+                  />
+                </label>
+                <label className="flex flex-col gap-1">
+                  <span className="text-xs text-olive/60">End</span>
+                  <input
+                    type="date"
+                    value={dates.end ?? ""}
+                    onChange={(e) => setTripDates(dates.start, e.target.value || null)}
+                    className="min-h-[44px] px-3 py-2 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50"
+                  />
+                </label>
+              </div>
+            </div>
+            {dates.start && (
+              <PushOptIn tripStartDate={dates.start} variant={withinSevenDays ? "soon" : "far"} />
+            )}
+          </div>
+        )}
+
         {hasWineries && hydrated && (
-          <div className={`${CARD.base} p-5 sm:p-6 bg-terracotta/5 border-terracotta/20 mb-8 sm:mb-10`}>
+          <div className={`${CARD.base} ${CARD.content} bg-terracotta/5 border-terracotta/20 mb-8 sm:mb-10`}>
             <p className="text-sm font-medium text-olive mb-4">You've added wineries. Book tastings ahead—many run lean in winter.</p>
             <div className="flex flex-wrap items-center gap-3">
               <Link href="/bookings" className={CTA.primaryCompact}>
@@ -268,7 +303,7 @@ export default function PlanPage() {
             aria-label="Select day"
             className={`mb-8 sm:mb-10 ${
               hasContent
-                ? ["sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-3 pb-4 -mt-3 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/80"].join(" ")
+                ? ["sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-3 pb-4 -mt-3 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/80"].join(" ")
                 : ""
             }`}
           >
@@ -305,19 +340,13 @@ export default function PlanPage() {
                   aria-controls="day-panel"
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveDay(d)}
-                  className={`shrink-0 snap-start min-w-[3.5rem] sm:min-w-[4.5rem] px-3 sm:px-4 py-3 rounded-xl font-semibold transition-all duration-200 min-h-[48px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  className={`shrink-0 snap-start min-w-[4rem] sm:min-w-[5.5rem] px-3 sm:px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                     isActive
                       ? "bg-terracotta text-white shadow-md ring-2 ring-terracotta/20"
                       : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:bg-sand-100/50 hover:shadow-sm"
                   }`}
                 >
-                  <span className="sm:hidden">{d}</span>
-                  <span className="hidden sm:inline">Day {d}</span>
-                  {count > 0 && (
-                    <span className={`block text-xs font-normal mt-0.5 ${isActive ? "text-white/90" : "text-olive/60"}`}>
-                      {count} {count === 1 ? "place" : "places"}
-                    </span>
-                  )}
+                  {count > 0 ? `Day ${d} · ${count}` : `Day ${d}`}
                 </button>
               );
             })}
@@ -392,7 +421,7 @@ export default function PlanPage() {
                     className={`inline-flex items-center shrink-0 min-h-[44px] px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:active:scale-100 ${
                       inDay
                         ? "bg-sand-200/80 text-olive/50 cursor-default"
-                        : "bg-sand-200/80 text-olive hover:bg-terracotta/20 hover:text-terracotta"
+                        : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"
                     }`}
                     aria-pressed={inDay}
                     aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
@@ -421,13 +450,13 @@ export default function PlanPage() {
             <span className="text-xs font-semibold uppercase tracking-wider text-olive/50 block mb-2 prose-label">
               Pre-built itineraries
             </span>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <div className="flex gap-3 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible scrollbar-none snap-x snap-mandatory">
               {TEMPLATES.map(({ key, label, sub }) => (
                 <button
                   key={key}
                   type="button"
                   onClick={() => handleTemplateClick(key)}
-                  className={`text-left min-h-[60px] ${CARD.content} ${CARD.base} ${CARD.hover} active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group`}
+                  className={`shrink-0 snap-start w-[min(180px,70vw)] sm:w-auto text-left min-h-[60px] ${CARD.content} ${CARD.base} ${CARD.hover} active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group`}
                 >
                   <span className="font-display font-semibold text-olive block break-words group-hover:text-terracotta transition-colors">{label}</span>
                   <span className="text-xs text-olive/60 mt-0.5 block break-words">{sub}</span>
@@ -606,9 +635,6 @@ export default function PlanPage() {
                             ))}
                           </div>
                         )}
-                        <p className="mt-4 text-xs text-olive/50 flex items-center gap-2">
-                          <span className="text-terracotta">+</span> Add next stop below
-                        </p>
                       </div>
                     );
                   })()
@@ -617,40 +643,58 @@ export default function PlanPage() {
             </div>
 
             <div id="plan-add-sentinel" aria-hidden className="h-0" />
-            {/* Add places — Pair with (suggestions), collapsible */}
-            <details
-              id="plan-add-places"
-              open={activeItems.length > 0}
-              className={`${CARD.base} overflow-hidden group`}
+            {/* Inline Add next stop — chips + Browse all */}
+            <div
+              id="plan-inline-add"
+              className={`${CARD.base} overflow-hidden`}
             >
-              <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-t-xl">
-                <h3 className="font-display font-semibold text-olive py-4 px-5 sm:px-6 flex items-center gap-2 min-h-[44px] [&::-webkit-details-marker]:hidden">
-                  <span className="w-6 h-6 rounded-full bg-aegean/20 text-aegean flex items-center justify-center text-xs font-bold shrink-0" aria-hidden>◇</span>
-                  Pair with…
-                  <span className="text-olive/50 ml-auto transition-transform group-open:rotate-180" aria-hidden>▾</span>
-                </h3>
-              </summary>
-              <div className={`${CARD.content} pt-0 border-t border-sand-200/80`}>
-                <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
+              <div className={`${CARD.content} pt-4`}>
+                <span className="text-xs font-semibold uppercase tracking-wider text-olive/50 block mb-3 prose-label">
+                  Add next stop
+                </span>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {[
+                    { id: "artemis", label: "Artemis Trail" },
+                    { id: "kourion", label: "Kourion" },
+                    { id: "domes-sergiou", label: "Dómes Sergiou" },
+                    { id: "omodos", label: "Omodos" },
+                  ].map(({ id, label }) => {
+                    const inDay = (days[activeDay] ?? []).includes(id);
+                    const place = getPlace(id);
+                    if (!place) return null;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        onClick={() => addToDay(id)}
+                        disabled={inDay}
+                        className={`inline-flex items-center shrink-0 min-h-[44px] px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:active:scale-100 ${
+                          inDay
+                            ? "bg-sand-200/80 text-olive/50 cursor-default"
+                            : "bg-sand-200/80 text-olive hover:bg-terracotta/10 hover:text-terracotta"
+                        }`}
+                        aria-pressed={inDay}
+                        aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
+                      >
+                        {inDay ? "✓ " : ""}{label}
+                      </button>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    onClick={() => setShowBrowseModal(true)}
+                    className={`shrink-0 rounded-xl ${CTA.secondaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}
+                  >
+                    Browse all
+                  </button>
+                </div>
+                {activeItems.length > 0 && (
+                  <div className="mt-4 pt-4 border-t border-sand-200/80">
+                    <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
+                  </div>
+                )}
               </div>
-            </details>
-
-            {/* Add places — Browse all, collapsible */}
-            <details
-              open={activeItems.length === 0}
-              className={`${CARD.base} overflow-hidden group`}
-            >
-              <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-t-xl">
-                <h3 className="font-display font-semibold text-olive py-4 px-5 sm:px-6 flex items-center gap-2 min-h-[44px] [&::-webkit-details-marker]:hidden">
-                  <span className="w-6 h-6 rounded-full bg-terracotta/20 text-terracotta flex items-center justify-center text-xs font-bold shrink-0" aria-hidden>+</span>
-                  Browse all places
-                  <span className="text-olive/50 ml-auto transition-transform group-open:rotate-180" aria-hidden>▾</span>
-                </h3>
-              </summary>
-              <div className={`${CARD.content} pt-0 border-t border-sand-200/80`}>
-                <PlacePicker activeDayItems={activeItems} onAdd={addToDay} />
-              </div>
-            </details>
+            </div>
           </div>
         </section>
 
@@ -670,7 +714,19 @@ export default function PlanPage() {
           />
         )}
 
-        <PlanStickyAddBar sentinelId="plan-add-sentinel" scrollTargetId="plan-add-places" />
+        <PlanStickyAddBar
+          sentinelId="plan-add-sentinel"
+          scrollTargetId="plan-inline-add"
+          onAddPlaceClick={() => setShowBrowseModal(true)}
+        />
+
+        {showBrowseModal && (
+          <PlacePickerModal
+            activeDayItems={activeItems}
+            onAdd={addToDay}
+            onClose={() => setShowBrowseModal(false)}
+          />
+        )}
 
         {templateChoice && hasContent && (
           <TemplateChoiceModal

@@ -70,12 +70,13 @@ export default function TrailsClient() {
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
           backgroundImageAlt="Troodos pine forest trail, Cyprus winter hiking"
         />
-        <div id="trails-plan-sentinel" className="h-px" aria-hidden />
+        <div className="mb-6 relative">
+          <div id="trails-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
+          <Link href="/plan" className={`${CTA.primaryCompact}`}>
+            Plan your trip
+          </Link>
+        </div>
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
-
-        <Link href="/plan" className={`mb-6 ${CTA.primaryCompact}`}>
-          Plan your trip
-        </Link>
 
         <div
           className={`sticky top-0 z-10 ${LAYOUT.stickyBarX} pt-2 pb-4 -mt-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90`}

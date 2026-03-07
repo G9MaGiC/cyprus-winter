@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LAYOUT } from "@/lib/design-tokens";
+import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 
@@ -16,7 +17,8 @@ const MONTH_TO_SLUG: Record<string, string> = {
 export const metadata: Metadata = {
   title: "Cyprus Winter Weather by Month | Coast & Troodos",
   description:
-    "Cyprus winter weather: coast 18–20°C, Troodos 8–12°C in December. What to pack. November to April by month. Plan trails and wineries.",
+    "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six. Free guide.",
+  alternates: { canonical: `${SITE_URL}/weather` },
 };
 
 export default function WeatherPage() {
@@ -31,7 +33,7 @@ export default function WeatherPage() {
       <div className="overflow-x-auto">
         <table className="w-full min-w-[600px] border-collapse text-left">
           <thead>
-            <tr className="border-b-2 border-sand-200">
+            <tr className="border-b-2 border-sand-200/80">
               <th className="py-3 px-4 font-display font-semibold text-olive">Month</th>
               <th className="py-3 px-4 font-display font-semibold text-olive">Coast (°C)</th>
               <th className="py-3 px-4 font-display font-semibold text-olive">Coast</th>

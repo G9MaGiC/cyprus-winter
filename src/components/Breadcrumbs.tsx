@@ -40,6 +40,10 @@ function useBreadcrumbs(): BreadcrumbItem[] {
     beaches: "Beaches",
     team: "Team",
     account: "Account",
+    login: "Sign in",
+    register: "Create account",
+    "forgot-password": "Reset password",
+    "reset-password": "Set new password",
     search: "Search",
     secrets: "Local Secrets",
     book: "Book",
@@ -100,7 +104,7 @@ export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
               ) : (
                 <Link
                   href={item.href}
-                  className="hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded px-1 -mx-1"
+                  className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded px-1 -mx-1"
                 >
                   {item.label}
                 </Link>

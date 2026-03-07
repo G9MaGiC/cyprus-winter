@@ -1,6 +1,6 @@
 "use client";
 
-import { SITE_URL } from "@/lib/site-url";
+import { toAbsoluteUrl } from "@/lib/site-url";
 
 export type ShareLinksProps = {
   /** Page path (e.g. "/plan", "/discover/omodos") */
@@ -17,10 +17,9 @@ function buildShareUrl(
   url: string,
   text: string
 ): string {
-  const fullUrl = url.startsWith("http") ? url : `${SITE_URL}${url}`;
-  const message = text ? `${text} ${fullUrl}` : fullUrl;
+  const message = text ? `${text} ${url}` : url;
   const encoded = encodeURIComponent(message);
-  const encodedUrl = encodeURIComponent(fullUrl);
+  const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(text || "");
 
   switch (platform) {
@@ -31,7 +30,7 @@ function buildShareUrl(
     case "viber":
       return `viber://forward?text=${encoded}`;
     default:
-      return fullUrl;
+      return url;
   }
 }
 
@@ -41,7 +40,7 @@ export default function ShareLinks({
   ariaLabel = "Share via",
   className = "",
 }: ShareLinksProps) {
-  const url = path.startsWith("http") ? path : `${SITE_URL}${path}`;
+  const url = toAbsoluteUrl(path);
 
   const links = [
     {

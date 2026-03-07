@@ -228,7 +228,7 @@ Cyprus Winter Mode owns the **"European Winter Escape"** niche—positioning aga
 
 **Typography:**
 - **Headlines:** Fraunces (editorial, warm)
-- **Body:** Inter (modern, highly legible)
+- **Body:** Plus Jakarta Sans (modern, highly legible)
 - **Greek Accents:** Local place names in Greek script (Λάρνακα, Τρόοδος) for authenticity
 
 **Iconography:**

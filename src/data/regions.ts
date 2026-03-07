@@ -15,31 +15,31 @@ export const REGION_CONFIGS: RegionConfig[] = [
     slug: "troodos",
     title: "Troodos Mountains in Winter",
     description:
-      "Trails, villages, wineries, monasteries. Ski resort on Olympus, Commandaria in the Krasochoria, painted churches, black pine forest.",
+      "Troodos Mountains in winter: trails, villages, wineries, Commandaria. Ski resort on Olympus, painted churches, black pine forest. Cyprus winter hiking hub. Plan your visit.",
   },
   {
     slug: "paphos",
     title: "Paphos Winter",
     description:
-      "Beaches, ancient sites, villages, trails, wineries. Coral Bay, Pafos mosaics, Adonis Trail, Akamas wine route.",
+      "Beaches, ancient sites, villages, trails, wineries. Coral Bay, Pafos mosaics, Adonis Trail, Akamas wine route. Sixteen degrees when home is six. Plan your trip.",
   },
   {
     slug: "ayia-napa",
     title: "Ayia Napa & Cape Greco Winter",
     description:
-      "East coast beaches, Cape Greco Coastal Path, sea caves. Nissi, Fig Tree Bay, Konnos. Mild winter sun.",
+      "East coast beaches, Cape Greco Coastal Path, sea caves. Nissi, Fig Tree Bay, Konnos. Mild winter sun. Sixteen degrees when home is six. Plan your visit.",
   },
   {
     slug: "larnaca",
     title: "Larnaca Winter",
     description:
-      "Lefkara village, Kition, Hala Sultan. Lace, archaeology, winter events. Day trips to Limassol and Troodos.",
+      "Lefkara village, Kition, Hala Sultan. Lace, archaeology, winter events. Day trips to Limassol and Troodos. Sixteen degrees when home is six. Plan your trip.",
   },
   {
     slug: "limassol",
     title: "Limassol Winter",
     description:
-      "Kourion, Kolossi, Governor's Beach. Krasochoria wine villages, Commandaria. Carnival, marathon, coast and hills.",
+      "Kourion, Kolossi, Governor's Beach. Krasochoria wine villages, Commandaria. Carnival, marathon, coast and hills. Sixteen degrees when home is six.",
   },
 ];
 

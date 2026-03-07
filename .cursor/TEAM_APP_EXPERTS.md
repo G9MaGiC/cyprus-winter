@@ -126,6 +126,7 @@ Fix any errors or warnings. Report bundle size or perf concerns.
 | Refactor components | Architecture | Design |
 | Content audit | Content | Audit |
 | Pre-launch checklist | Audit | All |
+| **QA run** | Audit | All — see `.cursor/TEAM_QA.md` |
 
 ---
 
