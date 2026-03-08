@@ -12,7 +12,7 @@ export function buildAIContext(): string {
     .map((t) => {
       const cond = trailConditions[t.id];
       const status = cond ? cond.status : "unknown";
-      return `- ${t.name} (id: ${t.id}, ${t.region}): ${t.difficulty}, ${t.lengthKm}km. ${status}.`;
+      return `- ${t.name} (id: ${t.id}, ${t.region}): ${t.difficulty}, ${t.lengthKm} km. ${status}.`;
     })
     .join("\n");
 

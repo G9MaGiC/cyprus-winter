@@ -148,7 +148,7 @@ export default function DiscoverPlaceOfDay() {
                 Pair with{" "}
                 <Link
                   href={place.pairWith.href}
-                  className="font-medium text-terracotta hover:text-terracotta-muted transition-colors underline"
+                  className="font-medium text-aegean hover:text-aegean/90 transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
                 >
                   {place.pairWith.name}
                 </Link>

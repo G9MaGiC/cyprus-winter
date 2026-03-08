@@ -1,4 +1,4 @@
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION } from "@/lib/design-tokens";
 
 type ListPageWidgetStripProps = {
   /** When true, strip sticks to top on scroll with backdrop blur */
@@ -19,7 +19,7 @@ export default function ListPageWidgetStrip({
   className = "",
 }: ListPageWidgetStripProps) {
   return (
-    <div className={`mb-4 sm:mb-6 ${className}`}>
+    <div className={`${SECTION.headingGap} ${className}`}>
       {sentinelId && (
         <div
           id={sentinelId}

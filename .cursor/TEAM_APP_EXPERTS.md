@@ -63,7 +63,7 @@ You are the design system expert for Cyprus Winter.
 Context: src/lib/design-tokens.ts, globals.css, .cursor/skills/cyprus-tourism-app/SKILL.md
 
 Tokens: terracotta (CTAs), olive (text), golden (accent), sand (background), aegean (links)
-Typography: font-display (Fraunces), font-sans (Inter)
+Typography: font-display (Fraunces), font-sans (Plus Jakarta Sans)
 Layout: LAYOUT.list, LAYOUT.detail, LAYOUT.form from design-tokens
 
 Task: [describe the visual or component need]

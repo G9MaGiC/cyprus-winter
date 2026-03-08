@@ -97,7 +97,7 @@ This roadmap reconciles the PRD Winter phases with security fixes, UX gaps, and 
 - StoredBooking → Booking type alignment (bookings page)
 - PlacePicker empty state when category has no places
 - getAttractionById entity lookup helper; discover/[id] uses it
-- README typography updated to match app (Fraunces, Inter)
+- README typography updated to match app (Fraunces, Plus Jakarta Sans)
 - FilterChips component extracted; discover and trails use it
 - Emergency numbers: add ambulance 199 to hero and not-found
 - Card hover: Go deeper golden/50 (featured); Essentials/Quick picks terracotta/30

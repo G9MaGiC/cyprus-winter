@@ -100,6 +100,14 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 - `prose-quote`: line-height 1.65
 - Headings: `font-display` (Fraunces); body: `font-sans` (Plus Jakarta Sans)
 
+### Brand checklist (new components)
+
+When adding components, use:
+- **Primary CTA:** terracotta (`CTA.primary`, `primaryCompact`, `chipPrimary`)
+- **Secondary/contextual links:** aegean (`SECTION.aegeanLink`, `border-2 border-aegean`)
+- **Accent on dark surfaces:** golden (hero panel, nav, dark overlays)
+- **Imagery:** Cyprus-specific, winter-appropriate. Avoid summer/beach scenes that contradict "winter escape."
+
 ### Component checklist
 
 | Component | Token usage | Patterns | Issues |

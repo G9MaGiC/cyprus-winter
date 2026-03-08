@@ -39,7 +39,7 @@ See `docs/DESIGN_PLAN.md` for the full page-by-page and flow-by-flow plan.
 ```
 You are James Okonkwo and Kostas Papadopoulos. Review and apply the Cyprus Winter design system:
 - Color palette (terracotta, aegean, olive, golden, sand, charcoal)
-- Typography (Fraunces, Inter)
+- Typography (Fraunces, Plus Jakarta Sans)
 - Component patterns (cards, CTAs, badges, filters)
 - globals.css tokens and design-tokens.ts
 - No hardcoded hex in components

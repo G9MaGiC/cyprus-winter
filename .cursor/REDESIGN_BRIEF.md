@@ -78,7 +78,7 @@
 | sand | #fafaf9 | Background |
 | sage | #64748b | Muted text |
 
-**Typography:** Inter (body), Fraunces (headings)
+**Typography:** Plus Jakarta Sans (body), Fraunces (headings)
 
 ---
 

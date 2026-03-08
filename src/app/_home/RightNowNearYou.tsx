@@ -143,7 +143,7 @@ export default function RightNowNearYou({
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="rounded-lg overflow-hidden border border-sand-200/60 bg-white flex sm:block"
+              className="rounded-xl overflow-hidden border border-sand-200/60 bg-white flex sm:block"
               aria-hidden
             >
               <div className="w-20 h-20 sm:w-full sm:aspect-[4/3] shrink-0 bg-olive/10 animate-pulse" />
@@ -202,14 +202,14 @@ export default function RightNowNearYou({
                   e.stopPropagation();
                   handlePickRegion();
                 }}
-                className="px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2"
+                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2"
               >
                 Change region
               </button>
             )}
             <AppLink
               href="/discover"
-              className="inline-block text-sm text-olive/70 hover:text-olive"
+              className="inline-flex items-center min-h-[44px] text-sm text-olive/70 hover:text-olive"
             >
               See more in Discover →
             </AppLink>
@@ -230,7 +230,7 @@ export default function RightNowNearYou({
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink
           href="/discover"
-          className="text-xs text-olive/70 hover:text-olive"
+          className="inline-flex items-center min-h-[44px] text-xs text-olive/70 hover:text-olive"
         >
           See more →
         </AppLink>

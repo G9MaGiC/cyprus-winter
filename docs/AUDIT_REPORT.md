@@ -33,10 +33,10 @@
 
 | Issue | File:Line | Severity |
 |-------|-----------|----------|
-| ~~PRD specifies Playfair Display; layout uses Fraunces~~ | layout.tsx | **Resolved** — PRD updated to Fraunces, Inter |
+| ~~PRD specifies Playfair Display; layout uses Fraunces~~ | layout.tsx | **Resolved** — PRD updated to Fraunces, Plus Jakarta Sans |
 | Hex values only in design-tokens.ts and globals.css (no hardcoded hex in components) | — | **Low** ✓ |
 
-**Detail:** PRD was updated to match implementation (Fraunces, Inter).
+**Detail:** PRD was updated to match implementation (Fraunces, Plus Jakarta Sans).
 
 ---
 
@@ -67,7 +67,7 @@
 | Issue | File:Line | Severity |
 |-------|-----------|----------|
 | README says "Data: Static TypeScript in src/data/ (no backend/DB)" — Supabase and APIs exist | README.md | **High** |
-| ~~PRD typography~~ | — | **Resolved** — PRD aligned with Fraunces, Inter |
+| ~~PRD typography~~ | — | **Resolved** — PRD aligned with Fraunces, Plus Jakarta Sans |
 | README feature table omits Trails, Events, Discover filters, Trail reports, Winery booking from Discover | README.md:39–43 | **Medium** |
 
 **Detail:** README feature table lists `/airport`, `/discover`, `/plan`, `/book/winery/[id]`, `/bookings`, `/account` but does not mention Trails, Events, trail reports, or Discover filter behavior.
@@ -107,6 +107,6 @@ No broken internal links identified.
 
 1. **Nav highlighting:** Use `pathname.startsWith(link.href)` (or similar) for parent routes — ✅ Done (Nav.tsx).
 2. **README:** Add Supabase/backend, update feature table — ✅ Data/tech section updated.
-3. **Typography:** PRD updated to match implementation (Fraunces, Inter) — ✅ Done.
+3. **Typography:** PRD updated to match implementation (Fraunces, Plus Jakarta Sans) — ✅ Done.
 4. **Attraction images:** `image` marked optional and deprecated; rendering uses `getAttractionImage(id, type)` — ✅ Done.
 5. **combineWith validation:** Test added in `related-places.test.ts` to ensure all `combineWith` IDs resolve to valid places — ✅ Done.

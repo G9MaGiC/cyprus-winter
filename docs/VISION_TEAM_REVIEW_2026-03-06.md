@@ -202,7 +202,7 @@ Update `.cursor/skills/cyprus-tourism-app/SKILL.md` so token hex values match `g
 | Account page back link — acceptable but minimal |
 | Sitemap overlap between discoverPages and restaurantPages |
 | SECTION token underused |
-| PRD typography vs implementation (Inter vs Plus Jakarta Sans) |
+| PRD typography vs implementation (resolved: Plus Jakarta Sans) |
 
 ---
 

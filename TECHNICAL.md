@@ -121,7 +121,7 @@ Data flow: `localStorage` = device cache; Supabase = canonical for bookings; mer
 | React | React | 19.x |
 | Styling | Tailwind CSS | 4.x |
 | Language | TypeScript | 5.x |
-| Fonts | Fraunces (headings), Inter (body) | Google Fonts |
+| Fonts | Fraunces (headings), Plus Jakarta Sans (body) | Google Fonts |
 
 **Currently in use (Phase 1):** Supabase (bookings, trail reports, trips, auth), Resend (transactional email), Leaflet/OpenStreetMap (maps).
 

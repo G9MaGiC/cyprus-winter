@@ -42,7 +42,7 @@ AI subagent reviews from the team (designers and developers). Run subagents via 
 
 ### Strengths
 - Consistent tokens (terracotta, olive, golden, aegean, charcoal)
-- Typography: Fraunces + Inter, clear hierarchy
+- Typography: Fraunces + Plus Jakarta Sans, clear hierarchy
 - Cards, CTAs, badges follow shared patterns
 - Mediterranean palette and winter copy
 

@@ -1,6 +1,9 @@
 /**
  * Design tokens — Cyprus Winter (Mediterranean warmth).
  * Primary: terracotta. Secondary: aegean. Accents: golden, sage. Fraunces + Plus Jakarta Sans.
+ *
+ * Brand checklist (new components): terracotta = primary CTA; aegean = secondary/contextual;
+ * golden = accent on dark surfaces (nav, hero); imagery = Cyprus-specific, winter-appropriate.
  */
 export const TOKENS = {
   /** Base neutrals — warm sand/cream */

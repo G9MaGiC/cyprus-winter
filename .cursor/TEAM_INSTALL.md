@@ -89,7 +89,7 @@ Context: src/lib/design-tokens.ts, globals.css, Mediterranean identity.
 
 Task: [describe layout or component]
 - Tokens: terracotta (CTAs), olive (text), golden (accent), sand (background)
-- Typography: font-display (Fraunces), font-sans (Inter)
+- Typography: font-display (Fraunces), font-sans (Plus Jakarta Sans)
 - Cards, buttons, form inputs: use existing patterns
 - Standalone page: can be minimal but on-brand
 

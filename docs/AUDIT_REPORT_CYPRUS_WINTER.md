@@ -82,7 +82,7 @@
 | **Winter visual identity — Primary color** — PRD §3.1: Terracotta `#E07A5F`. App uses teal `#0d9488`. Direct conflict with "Winter Visual Identity System". | `src/app/globals.css`, `src/lib/design-tokens.ts` | **High** |
 | **Weather-first home** — PRD §3.2: "Weather-first: Temperature prominently displayed". Home and nav do not prominently feature weather; Weather is in footer and linked from content. | `src/app/page.tsx`, `src/components/Nav.tsx` | **Medium** |
 | **Phase 1 scope** — PRD §9: 25 winter attractions, basic trail conditions, 10 partner integrations, itinerary with winter templates. Implementation has many attractions, trail conditions (data + reports), winery booking, plan with templates; exact counts and "10 partners" not verified. | PRD.md §9 vs `src/data/`, `src/app/plan/`, `src/app/book/` | **Low** |
-| **Typography** — PRD: Fraunces (headings), Inter (body). README: Fraunces, Plus Jakarta Sans. Implementation uses Plus Jakarta Sans. Minor doc/code mismatch. | README.md, `src/app/layout.tsx` 13–22 | **Low** |
+| **Typography** — PRD and implementation: Fraunces (headings), Plus Jakarta Sans (body). Docs aligned. | README.md, PRD.md, `src/app/layout.tsx` | **Resolved** |
 
 ---
 
@@ -110,7 +110,7 @@
 3. **Low**
    - Share a single nav config (e.g. in `src/lib/nav.ts` or a small constants module) for Nav and BottomNav.
    - Set explicit `backLabel` (e.g. "Home") on regions and weather `PageHeader`.
-   - Align README typography with layout (Plus Jakarta Sans vs Inter).
+   - Typography docs aligned: Fraunces + Plus Jakarta Sans.
 
 ---
 

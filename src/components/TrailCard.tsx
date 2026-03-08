@@ -39,7 +39,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
         >
           <Image
             src={getTrailImage(trail.id)}
-            alt={`${trail.name}, ${trail.region}—${trail.lengthKm}km ${trail.difficulty} trail in Cyprus winter`}
+            alt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} trail in Cyprus winter`}
             fill
             className="object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}

@@ -28,7 +28,7 @@ export async function generateMetadata({
   const { id } = await params;
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) return { title: "Not found" };
-  const prefix = `${trail.region}. ${trail.lengthKm}km, ${trail.difficulty}. `;
+  const prefix = `${trail.region}. ${trail.lengthKm} km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length; // leave room for ellipsis
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
@@ -37,7 +37,7 @@ export async function generateMetadata({
     description: prefix + desc,
     alternates: { canonical: `${SITE_URL}/trails/${id}` },
     openGraph: {
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region}—${trail.lengthKm}km trail in Cyprus winter` }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region} — ${trail.lengthKm} km trail in Cyprus winter` }],
     },
   };
 }
@@ -103,7 +103,7 @@ export default async function TrailPage({
         <article>
           <DetailHero
             image={getTrailImage(trail.id)}
-            imageAlt={`${trail.name}, ${trail.region}—${trail.lengthKm}km ${trail.difficulty} trail in Cyprus winter`}
+            imageAlt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} trail in Cyprus winter`}
             badge={
               <div className="flex flex-wrap items-center gap-2">
                 {(latestReport || conditions) && (

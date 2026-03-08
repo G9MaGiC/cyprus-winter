@@ -36,7 +36,7 @@
 
 | Issue | File:Line | Severity |
 |-------|-----------|----------|
-| PRD §3.1 typography: "Body: Inter" vs actual Plus Jakarta Sans | PRD.md:233, layout.tsx:16 | **P2** |
+| PRD §3.1 typography: body font (now aligned: Plus Jakarta Sans) | PRD.md:231, layout.tsx:16 | **Resolved** |
 | PRD §3.2 Winter Home: "Weather-first", "Trail status", "Mood-based navigation" vs current CategoryChips / EditorsPicks / ThisWeekGrid layout | PRD.md:243-270 | **P1** |
 | PRD Phase 1 "25 winter attractions" — current allAttractions count exceeds 25; scope alignment unclear | PRD.md:548 | P2 |
 

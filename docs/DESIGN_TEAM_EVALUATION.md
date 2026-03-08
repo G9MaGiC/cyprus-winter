@@ -16,7 +16,7 @@ The app has a strong Mediterranean identity and clear hierarchy. The design syst
 
 ### Strengths
 - **Palette** — Terracotta, olive, golden, charcoal read as Mediterranean winter; sand background is calm and distinctive
-- **Typography** — Fraunces for headings and Inter for body is clear; font-display adds warmth
+- **Typography** — Fraunces for headings and Plus Jakarta Sans for body is clear; font-display adds warmth
 - **Cards** — Rounded corners (2xl), soft borders, hover states are coherent
 - **Hero** — Gradient overlay, terracotta/golden blur orbs, white text on dark works well
 

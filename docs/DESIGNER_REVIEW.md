@@ -58,7 +58,7 @@
 | # | Question | Pass / Fail | Notes |
 |---|----------|-------------|-------|
 | B1 | Headings use `font-display` (Fraunces)? | | |
-| B2 | Body uses default `font-sans` (Inter)? | | |
+| B2 | Body uses default `font-sans` (Plus Jakarta Sans)? | | |
 | B3 | H1/H2/H3 hierarchy consistent per section type? | | |
 | B4 | Muted text uses olive/70, olive/80, olive/90? | | |
 
@@ -76,7 +76,7 @@
 | # | Question | Pass / Fail | Notes |
 |---|----------|-------------|-------|
 | D1 | Cards: rounded-2xl, border-sand-200, hover-terracotta? | | |
-| D2 | Primary CTA: bg-terracotta rounded-full min-h-44px? | | |
+| D2 | Primary CTA: bg-terracotta rounded-xl or rounded-lg min-h-44px? (Chip-style: rounded-full) | | |
 | D3 | Badges: px-2.5 py-1 rounded-full bg-sand-100? | | |
 | D4 | Callout boxes: bg-olive/5 or bg-golden/5, border-olive/10? | | |
 | D5 | FilterChips active: terracotta with ring? | | |
@@ -98,6 +98,7 @@
 | F2 | Winter identity clear (no summer imagery/messaging conflict)? | | |
 | F3 | Images use consistent aspect ratios (4:3, aspect-video)? | | |
 | F4 | No off-brand elements? | | |
+| F5 | Imagery audit: Cyprus-specific, winter-appropriate? (Avoid generic/ summer scenes.) | | |
 
 ### G. Accessibility (Design)
 

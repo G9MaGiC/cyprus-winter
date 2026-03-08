@@ -34,7 +34,7 @@ function TrailCard({ trail }: { trail: Trail }) {
         <div className="sm:shrink-0 relative aspect-video sm:w-48 sm:aspect-square overflow-hidden bg-olive/10">
           <Image
             src={getTrailImage(trail.id)}
-            alt={`${trail.name}, ${trail.region}—${trail.lengthKm}km ${trail.difficulty} trail`}
+            alt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} trail`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 640px) 100vw, 192px"
@@ -48,7 +48,7 @@ function TrailCard({ trail }: { trail: Trail }) {
             {trail.name}
           </h3>
           <p className="text-sm text-olive/70 mt-0.5">
-            {trail.lengthKm}km · ~{durationH}h
+            {trail.lengthKm} km · ~{durationH}h
           </p>
           <p className="text-sm text-olive/80 mt-2 line-clamp-2">
             {trail.winterNotes ?? trail.description}

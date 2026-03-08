@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { trails, trailConditions, TRAIL_COUNT, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP, BOTTOM_NAV } from "@/lib/design-tokens";
+import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
@@ -100,7 +100,7 @@ export default function TrailsClient() {
           aria-label="Trail conditions summary"
           aria-live="polite"
           aria-atomic="true"
-          className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} border-b border-sand-200/80 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0`}
+          className={`${LAYOUT.stickyBarX} ${STRIP.pyCompact} border-b border-sand-200/80 sm:ml-0 sm:mr-0 sm:pl-0 sm:pr-0`}
         >
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none -mx-1 px-1 scroll-smooth text-sm">
             {statusLabel && <span className="font-medium text-olive shrink-0">{statusLabel}</span>}
@@ -320,11 +320,7 @@ export default function TrailsClient() {
         {/* Sticky bottom CTA — mobile only */}
         {filtered.length > 0 && (
           <div
-            className="fixed left-0 right-0 z-30 flex items-center justify-center py-3 px-4 bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden"
-            style={{
-              bottom: BOTTOM_NAV.clearance,
-              paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0px))",
-            }}
+            className={`fixed left-0 right-0 z-30 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden ${LAYOUT.fixedBottomClearance}`}
           >
             <Link
               href="/plan"
