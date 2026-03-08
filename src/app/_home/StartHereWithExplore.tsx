@@ -26,9 +26,9 @@ const startItems: StartHereItem[] = [
   },
   {
     title: "Plan",
-    desc: "Save picks as you go. No account needed.",
+    desc: "Build a day or pick a template. Saves as you go.",
     href: "/plan",
-    cta: "Build itinerary",
+    cta: "Build a day",
     variant: "secondary",
   },
   {

@@ -101,7 +101,7 @@ export default function DiscoverPage() {
         backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
         breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Discover", href: "/discover", isCurrent: true }]}
       >
-        <Link href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`}>
+        <Link href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`} aria-label="Build a day or pick a template">
           Plan your trip
         </Link>
       </ListPageHero>
@@ -116,6 +116,7 @@ export default function DiscoverPage() {
       </section>
 
       <DiscoverPlaceOfDay />
+      <div id="discover-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
       <DiscoverClient sections={sections} />
 

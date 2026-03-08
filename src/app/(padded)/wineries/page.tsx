@@ -58,9 +58,14 @@ export default function WineriesPage() {
           { label: "Wineries", href: "/wineries", isCurrent: true },
         ]}
       >
-        <Link href="/bookings" className={`mt-4 px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
-          Book a tasting
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link href="/bookings" className={CTA.primaryCompact}>
+            Book a tasting
+          </Link>
+          <Link href="/plan" className={CTA.secondaryCompact} aria-label="Build a day or pick a template">
+            Plan your trip
+          </Link>
+        </div>
       </PageHeader>
 
       {(() => {
@@ -82,6 +87,8 @@ export default function WineriesPage() {
         ) : null;
       })()}
 
+      <div id="wineries-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
+
       <h2 id="wineries-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
         All wineries
       </h2>
@@ -91,13 +98,12 @@ export default function WineriesPage() {
         ))}
       </div>
 
-      <div className={`${SECTION.footerBlock} relative`}>
-        <span id="wineries-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
+      <div className={`${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} relative`}>
         <div className="space-y-4">
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
             Pair a winery visit with a trail or village.{" "}
             <Link href="/plan" className={SECTION.aegeanLink}>
-              Plan your day
+              Build a day
             </Link>
           </p>
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">

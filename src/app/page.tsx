@@ -99,11 +99,11 @@ export default function Home() {
       </section>
       <HomeTrailConditionsStrip />
       <StartHereWithExplore />
+      <HomePlaceOfDay />
+      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomeTemplateLinks />
       <RightNowNearYou />
       <RecentlyViewedStrip />
-      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
-      <HomePlaceOfDay />
 
       <HomeSection
         id="this-week-heading"
@@ -150,7 +150,7 @@ export default function Home() {
                 Plan your trip
               </h3>
               <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
-                Build your itinerary. Add places from Discover—saves as you go.
+                Build a day or pick a template. Add places as you browse—saves as you go.
               </p>
             </AppLink>
             <AppLink

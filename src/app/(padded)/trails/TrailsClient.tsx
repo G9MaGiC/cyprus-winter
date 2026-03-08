@@ -7,6 +7,7 @@ import { winterTipsHiking } from "@/data/winter-tips";
 import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP, TRANSITION, BOTTOM_NAV } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
+import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import ListPageHero from "@/components/ListPageHero";
 import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
@@ -82,7 +83,7 @@ export default function TrailsClient() {
           breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Trails", href: "/trails", isCurrent: true }]}
         >
           <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
-            <Link href="/plan" className={CTA.tertiaryOnDark}>
+            <Link href="/plan" className={CTA.tertiaryOnDark} aria-label="Build a day or pick a template">
               Plan your trip
             </Link>
             <Link href="/weather" className={CTA.ghost}>
@@ -90,7 +91,6 @@ export default function TrailsClient() {
             </Link>
           </div>
         </ListPageHero>
-        <div id="trails-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
 
         {/* Status strip */}
@@ -166,6 +166,8 @@ export default function TrailsClient() {
           </section>
         )}
 
+        <div id="trails-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
+
         {/* Trail list */}
         <section aria-labelledby="trail-list-heading" className="pt-6 sm:pt-8 pb-8 sm:pb-12" id="trail-list">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
@@ -186,6 +188,13 @@ export default function TrailsClient() {
                 <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
                   All trails
                 </Link>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
+                  className={CTA.secondaryCompact}
+                >
+                  Ask AI
+                </button>
                 <Link href="/discover" className={CTA.secondaryCompact}>
                   Discover
                 </Link>
@@ -297,7 +306,7 @@ export default function TrailsClient() {
                     </Link>
                   )}
                 </div>
-                <p className="text-xs text-olive/60">Build your day → add trails to your plan</p>
+                <p className="text-xs text-olive/60">Build a day — add trails to your plan</p>
                 <Link href="/guides/troodos-december" className={`text-sm ${SECTION.aegeanLink}`}>
                   Troodos December guide →
                 </Link>

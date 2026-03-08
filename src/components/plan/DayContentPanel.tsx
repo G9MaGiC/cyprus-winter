@@ -46,10 +46,10 @@ export default function DayContentPanel({
         <div className={`${CARD.base} overflow-hidden ${CARD.hover}`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="font-display text-xl font-semibold text-olive">
+              <h3 className="font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight">
                 Day {activeDay}
                 {activeItems.length > 0 && (
-                  <span className="ml-2 text-sm font-normal text-olive/60">
+                  <span className="ml-2 text-sm font-normal text-olive/70">
                     — {activeItems.length} {activeItems.length === 1 ? "place" : "places"}
                   </span>
                 )}
@@ -66,19 +66,19 @@ export default function DayContentPanel({
               )}
             </div>
             {activeItems.length >= 3 && (
-              <p className="text-sm text-olive/80" role="status">
-                Day {activeDay} full — add another stop below or switch to another day above.
+              <p className="text-sm text-olive/70 leading-relaxed" role="status">
+                Add another stop below or switch day above.
               </p>
             )}
           </div>
 
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
-              <div className={`${EMPTY_STATE_DASHED} py-12 sm:py-16 px-4 bg-sand-100/30 transition-colors duration-200`}>
-                <p className="font-display font-semibold text-olive mb-1.5">Start your Day {activeDay}</p>
-                <p className="text-sm text-olive/70 mb-4">Add your first place — trail, village, or winery.</p>
-                <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                  <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}>
+              <div className={`${EMPTY_STATE_DASHED} py-14 sm:py-20 px-6 bg-sand-100/40 transition-colors duration-200`}>
+                <p className="font-display text-lg font-semibold text-olive mb-2">Start Day {activeDay}</p>
+                <p className="text-sm text-olive/70 mb-5 leading-relaxed">Add your first place — trail, village, or winery.</p>
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                  <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}>
                     Add place
                   </button>
                   <Link href="/discover" className={CTA.secondaryCompact}>
@@ -93,8 +93,8 @@ export default function DayContentPanel({
                 <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="mb-4">
-                      <span className={`${TYPE.kicker} text-olive/60`}>Morning</span>
+                    <div className="mb-3 pt-1">
+                      <span className={`${TYPE.kicker} text-olive/70`}>Morning</span>
                     </div>
                     <div className="space-y-0">
                       {morningIds.map((itemId, i) => (
@@ -154,7 +154,7 @@ export default function DayContentPanel({
         </div>
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
-        <div id="plan-inline-add">
+        <div id="plan-inline-add" className="transition-opacity duration-200">
           <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all." : undefined} borderAccent="terracotta">
             <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x scrollbar-none [scrollbar-width:none]">
               {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
@@ -179,7 +179,7 @@ export default function DayContentPanel({
               <button
                 type="button"
                 onClick={onBrowseAll}
-                className={`shrink-0 snap-start rounded-xl ${CTA.secondaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}
+                className={`shrink-0 snap-start rounded-xl ${CTA.secondaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
               >
                 Browse all
               </button>

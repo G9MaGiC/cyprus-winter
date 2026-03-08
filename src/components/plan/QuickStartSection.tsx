@@ -52,7 +52,7 @@ export default function QuickStartSection({
         key={template.key}
         type="button"
         onClick={() => onTemplateClick(template.key)}
-        className={`text-left min-h-[72px] sm:min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
+        className={`text-left min-h-[72px] sm:min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
           isRecommended ? "border-aegean/30 bg-aegean/5" : ""
         }`}
         aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
@@ -63,7 +63,7 @@ export default function QuickStartSection({
               {template.label}
             </span>
             {isRecommended && (
-              <span className="text-xs text-aegean font-medium mt-0.5 block">Best fit for a {tripLength}-day trip</span>
+              <span className="text-xs text-aegean font-medium mt-0.5 block">Best fit for {tripLength} days</span>
             )}
           </div>
           <span
@@ -73,7 +73,7 @@ export default function QuickStartSection({
             {template.duration}d
           </span>
         </div>
-        <span className="text-xs text-olive/60 mt-0.5 block break-words line-clamp-2">{template.description}</span>
+        <span className="text-xs text-olive/70 mt-0.5 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
       </button>
     );
   };
@@ -84,11 +84,11 @@ export default function QuickStartSection({
         <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
           Start here
         </h2>
-        <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
+        <p className={`text-sm text-olive/70 max-w-xl break-words leading-relaxed ${SECTION.headingGap}`}>
           {hasContent ? "Add more or swap templates." : "Pick a template or add places."}
         </p>
         {!hasContent && tripLength == null && (
-          <p className="text-xs text-olive/50 max-w-xl break-words mt-1 mb-4">
+          <p className="text-xs text-olive/60 max-w-xl break-words mt-1 mb-4">
             Set your dates above to see templates that match your trip length.
           </p>
         )}
@@ -108,7 +108,7 @@ export default function QuickStartSection({
                   type="button"
                   onClick={() => addToDay(id)}
                   disabled={inDay}
-                  className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+                  className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
                   aria-pressed={inDay}
                   aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
                 >

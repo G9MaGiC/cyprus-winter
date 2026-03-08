@@ -98,7 +98,7 @@ export default function PlanPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 ${SECTION.blockGap}`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 flex flex-col gap-12 sm:gap-16`}
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
@@ -135,7 +135,7 @@ export default function PlanPage() {
           </div>
         )}
 
-        <header role="banner">
+        <header role="banner" className="space-y-0">
           <ListPageHero
             backHref="/"
             backLabel="Home"
@@ -152,7 +152,7 @@ export default function PlanPage() {
                 <button
                   type="button"
                   onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                  className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
+                  className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
                 >
                   Build a day or pick a template
                 </button>

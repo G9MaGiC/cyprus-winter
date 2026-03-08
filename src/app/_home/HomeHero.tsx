@@ -51,8 +51,8 @@ export default function HomeHero() {
             </AppLink>
 
             <div className="flex flex-wrap justify-center gap-3">
-              <AppLink href="/plan" className={CTA.secondary} aria-label="Build a simple itinerary">
-                Plan trip
+              <AppLink href="/plan" className={CTA.secondary} aria-label="Build a day or pick a template">
+                Plan your trip
               </AppLink>
               <AppLink href="/airport" className={CTA.ghost} aria-label="Transport from airport, tips">
                 Just arrived?

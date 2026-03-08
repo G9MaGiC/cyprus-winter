@@ -34,6 +34,9 @@ export type Attraction = {
   parking?: string;
   /** Accessibility notes */
   accessibility?: string;
+  /** Approximate coords for Right Now distance calculation */
+  latitude?: number;
+  longitude?: number;
 };
 
 export const beaches: Attraction[] = [
@@ -52,6 +55,8 @@ export const beaches: Attraction[] = [
     localSecret: "Order a coffee. Sit. The rock islet, the sandbar, the horizon. In winter you might have it to yourself. The light is different.",
     transport: "~5 km from Ayia Napa centre. Taxi or car.",
     parking: "Beach car parks; quieter in winter.",
+    latitude: 34.987,
+    longitude: 34.001,
     combineWith: ["cape-greco", "ayia-napa-sea-caves", "protaras-tavernas"],
   },
   {
@@ -69,6 +74,8 @@ export const beaches: Attraction[] = [
     localSecret: "Walk the length of the bay. The swim-to islet. Protected from the north wind. In winter you realise you've been sitting for an hour without checking your phone.",
     transport: "Protaras waterfront. ~45 min from Larnaca.",
     parking: "Bay and promenade.",
+    latitude: 35.013,
+    longitude: 34.058,
     combineWith: ["cape-greco", "protaras-tavernas", "konnos-bay"],
   },
   {
@@ -86,6 +93,8 @@ export const beaches: Attraction[] = [
     localSecret: "Walk the coastal path, drop down here for a break. White sand, emerald water. In winter you might have it to yourself. The cliffs funnel the breeze. The light on the water is worth it.",
     transport: "10 min from Ayia Napa. Cape Greco road.",
     parking: "Car park above the bay",
+    latitude: 34.965,
+    longitude: 34.068,
     combineWith: ["cape-greco", "ayia-napa-sea-caves", "protaras-tavernas", "fig-tree-bay"],
   },
   {
@@ -103,6 +112,8 @@ export const beaches: Attraction[] = [
     localSecret: "Sit with a coffee or a beer. Watch the light change. Winter sunsets around five. The sky does the work. You came for an hour. You'll stay for three.",
     transport: "15 min from Paphos. Bus 615.",
     parking: "Beach car parks",
+    latitude: 34.848,
+    longitude: 32.368,
     combineWith: ["pafos-mosaics", "tomb-of-kings", "pafos-harbour", "pissouri-tavernas"],
   },
   {
@@ -137,6 +148,8 @@ export const beaches: Attraction[] = [
     localSecret: "The limestone glows amber when the sun is low. Pirates, treasure, smuggler's romance. Bring your camera. The cliffs catch the breeze. The light does the rest.",
     transport: "5 min from Ayia Napa centre",
     parking: "Free at cliff top",
+    latitude: 34.978,
+    longitude: 33.997,
     combineWith: ["konnos-bay", "cape-greco", "protaras-tavernas", "fig-tree-bay"],
   },
   {
@@ -154,6 +167,8 @@ export const beaches: Attraction[] = [
     localSecret: "The white cliffs and dark sand. Find a cove. Or settle at a taverna. The fish is fresh. On a mild December afternoon, sit outside with a blanket. Watch the sea.",
     transport: "25 min from Limassol. East of the city",
     parking: "Free along the coast",
+    latitude: 34.641,
+    longitude: 33.146,
     combineWith: ["kourion", "amahti", "zambartas", "domes-sergiou", "governors-beach-tavernas"],
   },
 ];
@@ -172,6 +187,8 @@ export const natureSites: Attraction[] = [
     localSecret: "Urban Cyprus by the sea. The promenade. A coffee, a stroll, the yachts. Winter evenings are mild.",
     transport: "Central Limassol. Walk from old town; bus to Marina",
     parking: "Underground and surface car parks",
+    latitude: 34.672,
+    longitude: 33.05,
     combineWith: ["kolossi", "kourion", "governors-beach", "limassol-marina-restaurants"],
   },
 ];
@@ -196,6 +213,8 @@ export const ancientSites: Attraction[] = [
     transport: "Bus 610/615 from Paphos harbour; car park on site",
     parking: "Free parking at main entrance",
     accessibility: "Paved paths in parts; some uneven ground. House of Dionysus has ramp access.",
+    latitude: 34.756,
+    longitude: 32.407,
   },
   {
     id: "kourion",
@@ -216,6 +235,8 @@ export const ancientSites: Attraction[] = [
     transport: "Bus 16 from Limassol; 25 min drive from city centre",
     parking: "Free car park at entrance",
     accessibility: "Steep paths; theatre steps. Cliff edge unfenced; supervise children.",
+    latitude: 34.665,
+    longitude: 32.887,
   },
   {
     id: "tomb-of-kings",
@@ -233,6 +254,8 @@ export const ancientSites: Attraction[] = [
     transport: "15 min north of Paphos harbour. Bus 615",
     parking: "Free on-site parking",
     accessibility: "Uneven ground; steep steps into tombs. Shade limited.",
+    latitude: 34.767,
+    longitude: 32.402,
   },
   {
     id: "salamis",
@@ -249,6 +272,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Daily 9 to 17 (north Cyprus; may vary)",
     transport: "10 min from Famagusta. North Cyprus",
     parking: "On-site parking",
+    latitude: 35.185,
+    longitude: 33.902,
   },
   {
     id: "st-hilarion",
@@ -266,6 +291,8 @@ export const ancientSites: Attraction[] = [
     transport: "20 min from Kyrenia. Steep mountain road",
     parking: "Car park below castle; climb to entrance",
     accessibility: "Steep climbs; many steps. Not suitable for limited mobility.",
+    latitude: 35.312,
+    longitude: 33.282,
   },
   {
     id: "amahti",
@@ -282,6 +309,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Daily 8:30 to 17:00 (winter)",
     transport: "15 min east of Limassol. Bus 30",
     parking: "On-site parking",
+    latitude: 34.712,
+    longitude: 33.143,
     combineWith: ["governors-beach", "kourion", "zambartas"],
   },
   {
@@ -303,6 +332,8 @@ export const ancientSites: Attraction[] = [
     transport: "30 min drive from Larnaca. Bus 429 from Larnaca to Tochni, then taxi",
     parking: "Free parking at site",
     accessibility: "Uneven paths; steep climb to hilltop. Allow 1 to 1.5 hours.",
+    latitude: 34.796,
+    longitude: 33.342,
   },
   {
     id: "kolossi",
@@ -323,6 +354,8 @@ export const ancientSites: Attraction[] = [
     transport: "10 min from Limassol. Bus 17; easy drive",
     parking: "Free parking beside castle",
     accessibility: "Steep spiral stairs to roof. Ground floor accessible.",
+    latitude: 34.665,
+    longitude: 32.933,
   },
   {
     id: "palaipafos",
@@ -339,6 +372,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Daily 8:30 to 17:00 (winter)",
     transport: "25 min from Paphos. Bus 631",
     parking: "Free at site",
+    latitude: 34.707,
+    longitude: 32.574,
     combineWith: ["pafos-mosaics", "tomb-of-kings", "kouklia-cafe", "pafos-harbour"],
   },
   {
@@ -355,6 +390,8 @@ export const ancientSites: Attraction[] = [
     transport: "30 min from Kyrenia. Mountain road",
     parking: "Car park; steep walk to castle",
     accessibility: "Strenuous climb; many steps. Not for limited mobility.",
+    latitude: 35.274,
+    longitude: 33.409,
   },
   {
     id: "cyprus-museum",
@@ -371,6 +408,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Tue to Fri 8 to 18, Sat 9 to 17, Sun 10 to 13; closed Mon",
     transport: "Central Nicosia. Bus to Museum stop; 10 min walk from Ledra Street",
     parking: "Street parking; paid zones nearby",
+    latitude: 35.173,
+    longitude: 33.362,
     accessibility: "Ground floor accessible; some galleries via stairs.",
   },
   {
@@ -499,6 +538,8 @@ export const villages: Attraction[] = [
     transport: "30 min from Larnaca. Bus 429 to Lefkara",
     parking: "Free at village entrance; fills on weekends",
     accessibility: "Steep cobbled streets. Main square and some shops accessible.",
+    latitude: 34.868,
+    longitude: 33.305,
   },
   {
     id: "polis",
@@ -515,6 +556,8 @@ export const villages: Attraction[] = [
     openingHours: "Tavernas 12 to 22; shops 9 to 18",
     transport: "45 min from Paphos. Bus 645",
     parking: "Town centre; free",
+    latitude: 35.035,
+    longitude: 32.425,
     combineWith: ["adonis", "aphrodite", "vasilikon", "polis-harbour", "smigies"],
   },
   {
@@ -536,6 +579,8 @@ export const villages: Attraction[] = [
     transport: "45 min from Limassol. Scenic mountain drive via Pera Pedi",
     parking: "Main square car park; fills at weekends",
     accessibility: "Cobbles throughout; some steep alleys. Main square is level.",
+    latitude: 34.847,
+    longitude: 32.808,
   },
   {
     id: "kakopetria",
@@ -556,6 +601,8 @@ export const villages: Attraction[] = [
     transport: "1 hr from Nicosia. Bus 404 from Nicosia to Kakopetria",
     parking: "Old Quarter car park; limited spaces",
     accessibility: "Narrow cobbled paths; river crossings. Old Quarter involves steps.",
+    latitude: 34.988,
+    longitude: 32.902,
   },
   {
     id: "lania",
@@ -570,6 +617,8 @@ export const villages: Attraction[] = [
     localSecret: "Wander without a plan. The studios are often open. Ask. The artists like to talk. A coffee in the square. Then the wine.",
     nameEl: "Λάνια",
     culturalNote: "Combine with Tsiakkas or Zambartas; both are a short drive away. Lunch at a village taverna between tastings.",
+    latitude: 34.82,
+    longitude: 32.86,
   },
   {
     id: "lefke",
@@ -634,6 +683,8 @@ export const villages: Attraction[] = [
     transport: "1 hr from Limassol. Bus 405 from Limassol; seasonal ski buses",
     parking: "Multiple car parks; free. Gets busy weekends Jan to Mar",
     accessibility: "Hilly village; some steep streets. Main road and square are manageable.",
+    latitude: 34.88,
+    longitude: 32.87,
   },
   {
     id: "pera-pedi",
@@ -650,6 +701,8 @@ export const villages: Attraction[] = [
     localSecret: "Start here, end at Omodos. Or the reverse. Pera Pedi is the pause. The village that doesn't rush. Commandaria in the blood.",
     transport: "40 min from Limassol. En route to Omodos",
     parking: "Village square",
+    latitude: 34.84,
+    longitude: 32.85,
     combineWith: ["omodos", "koilani", "hadjipavlou"],
   },
   {
@@ -883,6 +936,8 @@ export const monasteries: Attraction[] = [
     transport: "1.5 hr from Nicosia. Mountain road via Pedoulas",
     parking: "Large car park; free",
     accessibility: "Main areas accessible; museum has steps.",
+    latitude: 34.984,
+    longitude: 32.741,
   },
   {
     id: "st-neophytos",
@@ -899,6 +954,8 @@ export const monasteries: Attraction[] = [
     openingHours: "Daily 9 to 13, 14 to 18 (winter)",
     transport: "20 min from Paphos. Signed from Tala road",
     parking: "Monastery car park; free",
+    latitude: 34.845,
+    longitude: 32.448,
     combineWith: ["pafos-mosaics", "tsangarides", "vouni-panayia"],
   },
   {
@@ -931,6 +988,8 @@ export const monasteries: Attraction[] = [
     openingHours: "Daily 8 to 12, 14 to 18",
     transport: "45 min from Nicosia. Mountain road via Deftera",
     parking: "Monastery car park; free",
+    latitude: 34.937,
+    longitude: 33.192,
     combineWith: ["kykkos", "cyprus-museum"],
   },
   {
@@ -949,6 +1008,8 @@ export const monasteries: Attraction[] = [
     openingHours: "Daily 9 to 12, 15 to 18 (winter); museum 9 to 13, 14 to 17",
     transport: "45 min from Paphos. Scenic mountain drive",
     parking: "Monastery car park; free",
+    latitude: 34.92,
+    longitude: 32.62,
     combineWith: ["vouni-panayia", "pafos-mosaics", "tsangarides"],
   },
   {

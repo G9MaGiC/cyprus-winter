@@ -95,7 +95,7 @@ export default function DiscoverClient({
           <p className="text-sm text-olive/70 mt-3 break-words">
             That filter doesn&apos;t exist—showing all places.{" "}
             <Link href="/discover" className={SECTION.aegeanLink}>
-              See all categories
+              All categories
             </Link>
           </p>
         )}
@@ -110,6 +110,8 @@ export default function DiscoverClient({
           )}
         </div>
       </div>
+
+      <RightNowNearYou title="Right now near you" />
 
       <div className={`pt-6 sm:pt-8 ${SECTION.blockGap}`}>
         {sectionsToShow.map((section, idx) => (
@@ -129,7 +131,7 @@ export default function DiscoverClient({
                 role="status"
                 aria-live="polite"
               >
-                <p className="text-olive/80 mb-4">Nothing in this category yet. Browse all or ask AI—it knows the island.</p>
+                <p className="text-olive/80 mb-4">No places in this category. Try another filter or ask AI—it knows the island.</p>
                 <div className="flex flex-wrap gap-3 justify-center">
                   <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}>
                     All categories
@@ -153,10 +155,8 @@ export default function DiscoverClient({
           </section>
         ))}
       </div>
-      <RightNowNearYou />
 
       <div className={`mt-16 sm:mt-20 ${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} text-center relative`}>
-        <div id="discover-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <p className="text-sm text-olive/70 mb-3">Add to your plan — or ask AI. It knows the island in winter.</p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/plan" className={CTA.primaryCompact}>

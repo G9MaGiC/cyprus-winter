@@ -28,9 +28,10 @@ export default function DaySelector({
       className={`${
         hasContent
           ? [
-              `${LAYOUT.stickyTopSm} z-10`,
+              "sticky z-10",
+              LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
-              "pt-3 pb-3 sm:pt-4 sm:pb-4 mb-6 sm:mb-8 bg-sand-100/90 backdrop-blur-sm supports-[backdrop-filter]:bg-sand-100/80 border-b border-sand-200/80 shadow-[0_1px_0_0_rgba(234,230,223,0.6)]",
+              "pt-3 pb-3 sm:pt-4 sm:pb-4 mb-6 sm:mb-8 bg-sand-100/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand-100/90 border-b border-sand-200/80",
             ].join(" ")
           : "mb-4 sm:mb-6"
       }`}
@@ -87,7 +88,7 @@ export default function DaySelector({
       {hasContent && (
         <details className="group mt-3 sm:mt-4 hidden sm:block">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
-            <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/80 hover:text-olive min-h-[44px] py-2.5 rounded-lg transition-colors duration-200">
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/80 hover:text-olive min-h-[44px] py-2.5 rounded-lg transition-colors duration-200 [&::-webkit-details-marker]:hidden">
               {activeDaysCount > 1 ? `View all ${activeDaysCount} days` : "View all days"}
               <span className="text-olive/50 group-open:rotate-180 transition-transform" aria-hidden>
                 ▾

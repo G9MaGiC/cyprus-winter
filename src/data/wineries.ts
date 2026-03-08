@@ -1482,6 +1482,8 @@ export const wineries: Winery[] = [
     contactPhone: "+357 26 722210",
     winterTip: "Small and personal. Call ahead. Chrysorrogiatissa Monastery nearby.",
     localSecret: "Low-intervention. The family often leads the tasting. Unhurried.",
+    latitude: 34.92,
+    longitude: 32.62,
     combineWith: ["chrysorrogiatissa", "vouni-panayia", "pafos-mosaics"],
   },
   {
@@ -1590,6 +1592,8 @@ export const wineries: Winery[] = [
     openingHours: "By appointment.",
     transport: "Nicosia hills. ~45 min from capital.",
     parking: "On-site.",
+    latitude: 35.05,
+    longitude: 33.25,
     combineWith: ["agros", "machairas", "kalopanagiotis"],
   },
   {
@@ -1611,6 +1615,8 @@ export const wineries: Winery[] = [
     openingHours: "By appointment.",
     transport: "Pitsilia. ~50 min from Limassol.",
     parking: "On-site.",
+    latitude: 34.92,
+    longitude: 33.0,
     combineWith: ["kykkos", "pedoulas", "artemis"],
   },
   {
@@ -1675,6 +1681,8 @@ export const wineries: Winery[] = [
     openingHours: "By appointment.",
     transport: "Kato Platres. ~45 min from Limassol.",
     parking: "On-site.",
+    latitude: 34.87,
+    longitude: 32.86,
     combineWith: ["platres", "caledonia-falls", "artemis", "psilo-dendro"],
   },
   {
@@ -1695,6 +1703,8 @@ export const wineries: Winery[] = [
     openingHours: "By appointment.",
     transport: "Vouni village, Krasochoria. ~40 min from Limassol.",
     parking: "On-site.",
+    latitude: 34.82,
+    longitude: 32.77,
     combineWith: ["omodos", "lania", "silikou-museum"],
   },
   {
@@ -1715,6 +1725,8 @@ export const wineries: Winery[] = [
     openingHours: "By appointment.",
     transport: "Fikardou village, UNESCO site. ~50 min from Nicosia.",
     parking: "On-site.",
+    latitude: 34.97,
+    longitude: 33.18,
     combineWith: ["fikardou", "machairas", "agros"],
   },
   {
