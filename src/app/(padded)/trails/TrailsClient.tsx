@@ -72,7 +72,7 @@ export default function TrailsClient() {
         {/* Compact hero — shorter on mobile */}
         <ListPageHero
           title="Winter Trails"
-          description="Pine forest, ridge views, empty paths."
+          description="Pine forest, ridge views, empty paths. Sixteen degrees when home is six."
           descriptionSecondary={`${TRAIL_COUNT} trails · 8 regions`}
           backHref="/"
           backLabel="Home"
@@ -125,7 +125,7 @@ export default function TrailsClient() {
         {/* Filters — collapsible on mobile */}
         <div className={`${LAYOUT.safeAreaX} pt-4 pb-4 sm:pt-6 sm:pb-6 border-b border-sand-200/80`}>
           <div className="flex flex-wrap items-baseline gap-x-2 mb-2 sm:mb-3">
-            <p className="text-xs font-medium text-olive/60 uppercase tracking-wider">{filtered.length} trails</p>
+            <p className="prose-label text-olive/60">{filtered.length} trails</p>
             {hasInvalidFilter && (
               <span className="text-xs text-olive/60" role="status">— Showing all</span>
             )}
@@ -147,6 +147,7 @@ export default function TrailsClient() {
             role="complementary"
             className="pt-6 pb-6 sm:pt-8 sm:pb-8"
           >
+            <p id="best-now-kicker" className="prose-label text-sage mb-1">Ideal right now</p>
             <h2 id="best-now" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-3 sm:mb-4`}>
               Best now
             </h2>
@@ -165,7 +166,7 @@ export default function TrailsClient() {
         )}
 
         {/* Trail list */}
-        <section aria-labelledby="trail-list-heading" className="pt-4 sm:pt-6 pb-6 sm:pb-10" id="trail-list">
+        <section aria-labelledby="trail-list-heading" className="pt-6 sm:pt-8 pb-8 sm:pb-12" id="trail-list">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
             <h2 id="trail-list-heading" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}>
               {hasFilters ? `${filtered.length} trails` : "All trails"}
@@ -179,7 +180,7 @@ export default function TrailsClient() {
 
           {filtered.length === 0 ? (
             <div className={`${EMPTY_STATE_LARGE} max-w-md mx-auto`} role="status" aria-live="polite">
-              <p className="text-olive/80 leading-relaxed break-words mb-6">No trails match. Try a different filter.</p>
+              <p className="text-olive/80 leading-relaxed break-words mb-6">No trails match. Switch filters or ask the AI—it knows Troodos to coast.</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
                   All trails
@@ -260,7 +261,7 @@ export default function TrailsClient() {
         </section>
 
         {/* Map */}
-        <section aria-labelledby="trails-map-heading" className="pt-6 pb-6 sm:pt-8 sm:pb-8 border-t border-sand-200/80">
+        <section aria-labelledby="trails-map-heading" className="pt-8 pb-8 sm:pt-10 sm:pb-10 border-t border-sand-200/80">
           <Disclosure id="trails-map-heading" summary={`Map (${filtered.length})`} defaultOpen>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">
               <AllTrailsMapClient trails={filtered} />
@@ -269,29 +270,35 @@ export default function TrailsClient() {
         </section>
 
         {/* Tips + Report CTA */}
-        <section aria-labelledby="tips-heading" className="pt-6 pb-6 sm:pt-8 sm:pb-8 border-t border-sand-200/80">
+        <section aria-labelledby="tips-heading" className="pt-8 pb-8 sm:pt-10 sm:pb-10 border-t border-sand-200/80">
           <Disclosure id="tips-heading" summary="Before you go" defaultOpen={false}>
             <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6">
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80 gap-4">
                 {winterTipsHiking.slice(0, 4).map((tip) => (
                   <div key={tip.id} className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0">
-                    <h3 className="font-display font-medium text-olive text-sm">{tip.title}</h3>
+                    <h3 className="prose-label text-olive">{tip.title}</h3>
                     <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">{tip.body}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-4 pt-4 border-t border-sand-200/80 flex flex-wrap items-center justify-between gap-3">
-                <Link href="/plan" className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">
-                  Add to plan →
-                </Link>
-                {filtered.length > 0 && (unknownTrails[0] ?? filtered[0]) && (
-                  <Link
-                    href={`/trails/${(unknownTrails[0] ?? filtered[0])!.id}/report`}
-                    className={`text-sm font-medium ${SECTION.aegeanLink}`}
-                  >
-                    Report conditions
+              <div className="mt-4 pt-4 border-t border-sand-200/80 space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <Link href="/plan" className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">
+                    Add to plan →
                   </Link>
-                )}
+                  {filtered.length > 0 && (unknownTrails[0] ?? filtered[0]) && (
+                    <Link
+                      href={`/trails/${(unknownTrails[0] ?? filtered[0])!.id}/report`}
+                      className={`text-sm font-medium ${SECTION.aegeanLink}`}
+                    >
+                      Report conditions
+                    </Link>
+                  )}
+                </div>
+                <p className="text-xs text-olive/60">Build your day → add trails to your plan</p>
+                <Link href="/guides/troodos-december" className={`text-sm ${SECTION.aegeanLink}`}>
+                  Troodos December guide →
+                </Link>
               </div>
             </div>
           </Disclosure>

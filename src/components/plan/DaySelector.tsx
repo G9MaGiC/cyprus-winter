@@ -97,7 +97,7 @@ export default function DaySelector({
           <div className="mt-3 space-y-2">
             {Array.from({ length: displayDaysCount }, (_, i) => i + 1).map((d) => {
               const items = days[d] ?? [];
-              const summary = items.map((id) => getPlace(id)?.name ?? "…").join(" → ") || "Add places to get going";
+              const summary = items.map((id) => getPlace(id)?.name ?? "…").join(" → ") || "Add places to start";
               const isActive = activeDay === d;
               return (
                 <button

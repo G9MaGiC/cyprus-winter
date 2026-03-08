@@ -4,6 +4,7 @@ type BorderAccent = "terracotta" | "aegean" | "golden" | "sage";
 
 type SectionCardProps = {
   title: string;
+  subtitle?: string;
   children: React.ReactNode;
   className?: string;
   borderAccent?: BorderAccent;
@@ -18,13 +19,15 @@ const accentClasses: Record<BorderAccent, string> = {
 
 export default function SectionCard({
   title,
+  subtitle,
   children,
   className = "",
   borderAccent = "terracotta",
 }: SectionCardProps) {
   return (
     <section className={`${CARD.base} ${CARD.contentLg} border-l-4 ${accentClasses[borderAccent]} ${className}`}>
-      <h2 className={`${TYPE.cardTitle} mb-4`}>{title}</h2>
+      <h2 className={`${TYPE.cardTitle} ${subtitle ? "mb-1.5" : "mb-4"}`}>{title}</h2>
+      {subtitle && <p className="text-sm text-olive/60 mb-4">{subtitle}</p>}
       {children}
     </section>
   );

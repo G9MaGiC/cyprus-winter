@@ -81,7 +81,8 @@ export default function DayContentPanel({
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
               <div className={`${EMPTY_STATE_DASHED} py-12 sm:py-16 px-4 bg-sand-100/30 transition-colors duration-200`}>
-                <p className="font-display font-semibold text-olive mb-3">Add your first place</p>
+                <p className="font-display font-semibold text-olive mb-1.5">Start your Day {activeDay}</p>
+                <p className="text-sm text-olive/70 mb-4">Add a place above or browse to build your itinerary.</p>
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                   <button type="button" onClick={onScrollToQuickStart} className={CTA.primaryCompact}>
                     Add place
@@ -160,7 +161,7 @@ export default function DayContentPanel({
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
         <div id="plan-inline-add">
-          <SectionCard title="Add another stop" borderAccent="terracotta">
+          <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all places." : undefined} borderAccent="terracotta">
             <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x scrollbar-none [scrollbar-width:none]">
               {QUICK_ADD_PLACES.map(({ id, label }) => {
                 const inDay = activeDayItems.includes(id);

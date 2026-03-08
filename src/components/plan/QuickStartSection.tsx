@@ -69,7 +69,7 @@ export default function QuickStartSection({
               {template.label}
             </span>
             {isRecommended && (
-              <span className="text-xs text-aegean font-medium mt-0.5 block">Best match for your {tripLength}-day trip</span>
+              <span className="text-xs text-aegean font-medium mt-0.5 block">Best fit for a {tripLength}-day trip</span>
             )}
           </div>
           <span

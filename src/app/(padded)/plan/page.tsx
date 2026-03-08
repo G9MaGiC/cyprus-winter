@@ -154,7 +154,7 @@ export default function PlanPage() {
                   onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
                 >
-                  Pick a template or add your first place
+                  Start with a template or add your first place
                 </button>
               </div>
             )}
@@ -250,7 +250,7 @@ export default function PlanPage() {
             />
           </div>
 
-          <div ref={quickStartRef} className={hasContent ? "order-2" : "order-1"}>
+          <div ref={quickStartRef} className={`${hasContent ? "order-2" : "order-1"} flex flex-col gap-12 sm:gap-16`}>
             <QuickStartSection
               activeDay={activeDay}
               days={days}
@@ -279,7 +279,7 @@ export default function PlanPage() {
 
         <footer className={SECTION.footerBlock}>
           <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-4">
-            Daylight ends ~5pm in winter. Start trails by 10am. Book tastings 24–48h ahead.
+            Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
           </p>
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
             {hasWineries && (

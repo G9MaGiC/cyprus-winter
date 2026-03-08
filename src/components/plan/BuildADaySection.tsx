@@ -48,12 +48,12 @@ export default function BuildADaySection() {
           return (
             <div
               key={combo.label}
-              className={`${CARD.base} ${CARD.content} ${CARD.hover} bg-sand-100/90 border-sand-200/80`}
+              className={`${CARD.base} ${CARD.content} ${CARD.hover} bg-sand-100/90 border-sand-200/80 flex flex-col`}
             >
               <h3 className="font-display font-semibold text-charcoal text-sm mb-3">
                 {combo.label}
               </h3>
-                <ul className="space-y-2 mb-4">
+              <ul className="space-y-2 mb-4 flex-1">
                 {places.map((p) => (
                   <li key={p.id}>
                     <Link
@@ -67,7 +67,7 @@ export default function BuildADaySection() {
               </ul>
               <Link
                 href={`/plan?add=${addIds}`}
-                className={`text-sm ${CTA.primaryCompact}`}
+                className={`w-full ${CTA.primaryCompact}`}
                 aria-label={`Add ${combo.label} to plan`}
               >
                 Add to plan
