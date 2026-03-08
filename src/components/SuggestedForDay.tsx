@@ -44,9 +44,7 @@ export default function SuggestedForDay({
   const content = (
     <>
       {!embedded && (
-        <h4 className="text-sm font-semibold text-olive mb-2">
-          Pair with…
-        </h4>
+        <span className="text-xs font-semibold text-aegean uppercase tracking-wider block mb-2">Pair with…</span>
       )}
       <p className="text-xs text-olive/70 mb-3">
         Works well with what you&apos;ve added. Tap to add.

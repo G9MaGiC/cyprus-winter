@@ -223,7 +223,7 @@ export default function PlanPage() {
           <div
             role="region"
             aria-label="Winery bookings"
-            className="flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px] py-2"
+            className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-sand-100/60 p-4 sm:p-5 flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px]"
           >
             <Link href="/bookings" className={CTA.primaryCompact}>
               Book tastings
