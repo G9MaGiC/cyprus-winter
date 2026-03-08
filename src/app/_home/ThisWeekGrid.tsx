@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { CARD, TYPE } from "@/lib/design-tokens";
+import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import { winterEvents } from "@/data/events";
 import { weatherByMonth } from "@/data/weather";
 import { trails } from "@/data/trails";
@@ -128,7 +128,7 @@ export default async function ThisWeekGrid() {
             <Link
               href="/trails"
               prefetch="auto"
-              className="text-sm text-aegean hover:text-aegean/80 font-medium transition-colors"
+              className={`text-sm font-medium transition-colors ${SECTION.aegeanLink}`}
             >
               View all conditions →
             </Link>

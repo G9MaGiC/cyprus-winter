@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { trails, trailConditions, TRAIL_COUNT, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, CTA, EMPTY_STATE_LARGE, TYPE, STRIP } from "@/lib/design-tokens";
+import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
@@ -169,10 +169,7 @@ export default function TrailsClient() {
               {hasFilters ? `${filtered.length} trails` : "All trails"}
             </h2>
             {hasFilters && (
-              <Link
-                href="/trails"
-                className="text-sm font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded shrink-0"
-              >
+              <Link href="/trails" className={`text-sm font-medium shrink-0 ${SECTION.aegeanLink}`}>
                 Clear
               </Link>
             )}
@@ -249,7 +246,7 @@ export default function TrailsClient() {
                   <p className="mt-4 text-sm text-olive/70">
                     <Link
                       href={`/trails/${unknownTrails[0].id}/report`}
-                      className="font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
+                      className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
                     >
                       Report conditions
                     </Link>
@@ -282,13 +279,13 @@ export default function TrailsClient() {
                 ))}
               </div>
               <div className="mt-4 pt-4 border-t border-sand-200/80 flex flex-wrap items-center justify-between gap-3">
-                <Link href="/plan" className="text-sm font-medium text-terracotta hover:underline">
+                <Link href="/plan" className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">
                   Add to plan →
                 </Link>
                 {filtered.length > 0 && (unknownTrails[0] ?? filtered[0]) && (
                   <Link
                     href={`/trails/${(unknownTrails[0] ?? filtered[0])!.id}/report`}
-                    className="text-sm font-medium text-aegean hover:underline"
+                    className={`text-sm font-medium ${SECTION.aegeanLink}`}
                   >
                     Report conditions
                   </Link>

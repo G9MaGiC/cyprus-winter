@@ -92,10 +92,7 @@ export default function DiscoverClient({
         {filterParam && !sectionExists && (
           <p className="text-sm text-olive/70 mt-3 break-words">
             That filter doesn&apos;t exist—showing all places.{" "}
-            <Link
-              href="/discover"
-              className="inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
-            >
+            <Link href="/discover" className={SECTION.aegeanLink}>
               See all categories
             </Link>
           </p>
