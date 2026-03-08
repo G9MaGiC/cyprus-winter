@@ -97,7 +97,7 @@ export default function QuickStartSection({
       {!hasContent && (
         <div className="space-y-3">
           <span className={`${TYPE.kicker} block`}>Day {activeDay}</span>
-          <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] min-h-[44px] items-center">
+          <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] min-h-[44px] items-center touch-pan-x">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);

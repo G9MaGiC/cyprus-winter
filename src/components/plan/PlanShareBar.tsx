@@ -52,8 +52,8 @@ export default function PlanShareBar({
       aria-label="Itinerary summary and share"
       className={`${STRIP.py} bg-sand-100/70 border-y border-sand-200/80 ${LAYOUT.stickyBarX}`}
     >
-      <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-4`}>
-        <p className="text-sm text-olive/80 leading-relaxed" aria-live="polite" role="status">
+      <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-3 min-[400px]:gap-4`}>
+        <p className="text-sm text-olive/80 leading-relaxed min-w-0 flex-1 min-[400px]:flex-initial" aria-live="polite" role="status">
           <span className="font-semibold text-terracotta tabular-nums">{totalPlaces}</span> places in{" "}
           <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/{displayDaysCount} days · Auto-saved
         </p>

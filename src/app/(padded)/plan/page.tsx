@@ -98,7 +98,7 @@ export default function PlanPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 flex flex-col gap-10 sm:gap-14`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 flex flex-col gap-8 min-[400px]:gap-10 sm:gap-14`}
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">

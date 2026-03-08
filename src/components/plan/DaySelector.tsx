@@ -73,7 +73,7 @@ export default function DaySelector({
               aria-controls="day-panel"
               tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveDay(d)}
-              className={`shrink-0 snap-center min-w-[3.5rem] sm:min-w-[4.5rem] px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
+              className={`shrink-0 snap-center min-w-[3.25rem] min-[400px]:min-w-[3.5rem] sm:min-w-[4.5rem] px-2.5 min-[360px]:px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                 isActive
                   ? "bg-terracotta text-white shadow-sm border border-terracotta/80"
                   : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/25 hover:bg-sand-100/60"
