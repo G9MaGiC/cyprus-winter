@@ -34,7 +34,7 @@ export default function BuildADaySection() {
   return (
     <section
       aria-labelledby="build-a-day-heading"
-      className={`${SECTION.pySub} rounded-2xl ${SECTION.alt}`}
+      className={`${SECTION.pySub} px-5 sm:px-6 rounded-2xl ${SECTION.alt}`}
     >
       <header>
         <p id="build-a-day-kicker" className={`${TYPE.kicker} mb-1.5`}>

@@ -223,7 +223,7 @@ export default function PlanPage() {
           <div
             role="region"
             aria-label="Winery bookings"
-            className="flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px] py-1"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px] py-2"
           >
             <Link href="/bookings" className={CTA.primaryCompact}>
               Book tastings
@@ -295,10 +295,10 @@ export default function PlanPage() {
         />
 
         <footer className={`${SECTION.footerBlock} pt-8 pb-[env(safe-area-inset-bottom)] sm:pt-10 sm:pb-0`}>
-          <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-4 max-w-xl mx-auto">
+          <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-5 max-w-xl mx-auto">
             Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
           </p>
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-3 text-sm">
             {hasWineries && (
               <Link href="/bookings" className={SECTION.aegeanLink}>
                 Book tastings

@@ -79,8 +79,8 @@ export default function QuickStartSection({
   };
 
   return (
-    <section aria-labelledby="quick-start-heading" className={`${SECTION.pySub} rounded-2xl ${SECTION.alt}`}>
-      <div className="space-y-5 sm:space-y-8">
+    <section aria-labelledby="quick-start-heading" className={`${SECTION.pySub} px-5 sm:px-6 rounded-2xl ${SECTION.alt}`}>
+      <div className="space-y-6 sm:space-y-8">
       <header>
         <p id="quick-start-kicker" className={`${TYPE.kicker} mb-1.5`}>
           Templates & quick add
@@ -101,7 +101,7 @@ export default function QuickStartSection({
       {!hasContent && (
         <div className="space-y-3">
           <span className={`${TYPE.kicker} block`}>Day {activeDay}</span>
-          <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
+          <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
@@ -139,7 +139,7 @@ export default function QuickStartSection({
 
       <div className="space-y-6 sm:space-y-8">
         {recommended.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-3 sm:space-y-4">
             <span className={`${TYPE.kicker} block`}>For your {tripLength}-day trip</span>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
               {recommended.map((template) => (
@@ -150,7 +150,7 @@ export default function QuickStartSection({
             </div>
           </div>
         )}
-        <div className="space-y-3">
+        <div className="space-y-3 sm:space-y-4">
           <span className={`${TYPE.kicker} block`}>
             {recommended.length > 0 ? "Other templates" : "Templates"}
           </span>

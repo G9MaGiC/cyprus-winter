@@ -44,7 +44,7 @@ export default function DayContentPanel({
     <section aria-label="Your itinerary" className="space-y-5 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-5 sm:space-y-8">
         <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
-          <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1`}>
+          <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1 sm:space-y-2`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight">
                 Day {activeDay}
@@ -93,7 +93,7 @@ export default function DayContentPanel({
               <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="pt-1 mb-3">
+                    <div className="pt-1 mb-3 pl-12">
                       <span className={`${TYPE.kicker} text-olive/70`}>Morning</span>
                     </div>
                     <div className="space-y-0">
@@ -112,7 +112,7 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className="mt-6 mb-3">
+                        <div className="mt-6 mb-3 pl-12">
                           <span className={`${TYPE.kicker} text-olive/60`}>Afternoon</span>
                         </div>
                         <div className="space-y-0">
@@ -185,7 +185,7 @@ export default function DayContentPanel({
               </button>
             </div>
             {activeItems.length > 0 && (
-              <div className="mt-4 pt-4 border-t border-sand-200/80">
+              <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-sand-200/80">
                 <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
               </div>
             )}
