@@ -81,7 +81,7 @@ The homepage has a clear discovery-first structure with good touch targets and a
 | Finding | Recommendation | Source |
 |---------|----------------|--------|
 | Editor's picks card hover | Align with CARD tokens or add CARD.imageCard variant; avoid overriding CARD.hover | Design |
-| Section header spacing | Use SECTION.headingGap consistently (mb-6 sm:mb-8) instead of mixed mb-8, mb-10 sm:mb-12 | Design |
+| Section header spacing | Use SECTION.headingGap consistently (mb-4 sm:mb-6 per design-tokens) instead of mixed mb-8, mb-10 sm:mb-12 | Design |
 
 ---
 

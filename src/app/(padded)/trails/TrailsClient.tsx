@@ -147,9 +147,9 @@ export default function TrailsClient() {
           <section
             aria-labelledby="best-now"
             role="complementary"
-            className="pt-6 pb-6 sm:pt-8 sm:pb-8"
+            className={SECTION.pySub}
           >
-            <h2 id="best-now" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-3 sm:mb-4`}>
+            <h2 id="best-now" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.headingGap}`}>
               Best now
             </h2>
             <div className="flex gap-3 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none sm:gap-6">
@@ -169,8 +169,8 @@ export default function TrailsClient() {
         <div id="trails-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
         {/* Trail list */}
-        <section aria-labelledby="trail-list-heading" className="pt-6 sm:pt-8 pb-8 sm:pb-12" id="trail-list">
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
+        <section aria-labelledby="trail-list-heading" className={`${SECTION.pySub} pb-8 sm:pb-12`} id="trail-list">
+          <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
             <h2 id="trail-list-heading" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}>
               {hasFilters ? `${filtered.length} trails` : "All trails"}
             </h2>
@@ -271,7 +271,7 @@ export default function TrailsClient() {
         </section>
 
         {/* Map */}
-        <section aria-labelledby="trails-map-heading" className="pt-8 pb-8 sm:pt-10 sm:pb-10 border-t border-sand-200/80">
+        <section aria-labelledby="trails-map-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
           <Disclosure id="trails-map-heading" summary={`Map (${filtered.length})`} defaultOpen>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">
               <AllTrailsMapClient trails={filtered} />
@@ -280,7 +280,7 @@ export default function TrailsClient() {
         </section>
 
         {/* Tips + Report CTA */}
-        <section aria-labelledby="tips-heading" className="pt-8 pb-8 sm:pt-10 sm:pb-10 border-t border-sand-200/80">
+        <section aria-labelledby="tips-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
           <Disclosure id="tips-heading" summary="Before you go" defaultOpen={false}>
             <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6">
               <p className="text-sm text-olive/80 mb-4 break-words">Layer up, check conditions, tell someone your route.</p>

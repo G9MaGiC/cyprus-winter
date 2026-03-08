@@ -3,7 +3,7 @@ import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
 export default function WineRouteLoading() {
   return (
     <div
-      className={`min-h-screen bg-sand ${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} py-12 sm:py-16`}
+      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"

@@ -80,6 +80,8 @@ export const LAYOUT = {
   pagePy: "py-8 sm:py-12",
   /** Pages with hero image first: no top padding on mobile so hero sits under nav */
   pagePyHeroFirst: "pt-0 pb-8 sm:py-12",
+  /** Plan page: hero-first + extra bottom clearance for mobile nav (StickyPlanBar). */
+  pagePyPlan: "pt-0 pb-24 sm:pt-12 sm:pb-16",
   /** Vertical padding for detail pages — tighter for content-heavy layouts */
   pagePyDetail: "py-6 sm:py-10",
   /** Sticky bar edge-to-edge: negative margin + padding for safe area. Use for sticky filter/day bars. */
@@ -108,7 +110,7 @@ export const SECTION = {
   titleGap: "mb-2",
   /** Space between section heading and content block */
   headingGap: "mb-4 sm:mb-6",
-  /** Space between major sections (list/detail pages) */
+  /** Space between major sections (list/detail pages). Use on regions, events, and similar list pages. */
   blockGap: "space-y-12 sm:space-y-16",
   alt: "bg-sand/80",
   /** Bottom margin after page header/hero (back link + title + description) */

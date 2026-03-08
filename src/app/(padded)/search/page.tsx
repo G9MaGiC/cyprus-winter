@@ -59,7 +59,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <SearchBar placeholder="e.g. Omodos, Artemis, carnival" autoFocus initialQuery={q} syncUrl className="max-w-xl" />
       {results.length > 0 && (
         <div className={`mt-8 ${SECTION.headingGap}`}>
-          <h2 className={`${TYPE.sectionTitle} mb-4`}>Results for &ldquo;{q}&rdquo;</h2>
+          <h2 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>Results for &ldquo;{q}&rdquo;</h2>
           <ul className="grid gap-4 sm:grid-cols-2" role="list">
             {results.map((r) => (
               <li key={`${r.kind}-${r.item.id}`}>

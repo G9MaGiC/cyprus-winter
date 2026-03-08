@@ -149,7 +149,7 @@ export default async function RegionPage({ params }: Props) {
         ]}
       />
 
-      <div className="space-y-16 sm:space-y-20">
+      <div className={SECTION.blockGap}>
         {regionTrails.length > 0 && (
           <section aria-labelledby="trails">
             <h2

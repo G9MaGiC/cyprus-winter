@@ -85,7 +85,7 @@ export default function TroodosDecemberPage() {
       </div>
 
       <section aria-labelledby="december-picks">
-        <h2 id="december-picks" className="font-display text-xl font-semibold text-olive mb-4">
+        <h2 id="december-picks" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
           December picks
         </h2>
         <div className="space-y-4">
@@ -96,7 +96,7 @@ export default function TroodosDecemberPage() {
       </section>
 
       <section aria-labelledby="all-troodos" className="mt-12">
-        <h2 id="all-troodos" className="font-display text-xl font-semibold text-olive mb-4">
+        <h2 id="all-troodos" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
           All Troodos trails
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">

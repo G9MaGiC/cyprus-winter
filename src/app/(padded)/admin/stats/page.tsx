@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import BackLink from "@/components/BackLink";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION } from "@/lib/design-tokens";
 
 const ADMIN_KEY_STORAGE = "cyprus-admin-key";
 
@@ -72,7 +72,7 @@ export default function AdminStatsPage() {
   if (!adminKey) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <h1 className="font-display text-2xl font-bold text-olive mb-4">Admin stats</h1>
+        <h1 className={`font-display text-2xl font-bold text-olive ${SECTION.headingGap}`}>Admin stats</h1>
         <p className="text-sm text-olive/70 mb-6">
           Enter your admin key to view traction metrics. Set ADMIN_SECRET in your environment.
         </p>
@@ -146,7 +146,7 @@ export default function AdminStatsPage() {
       </div>
 
       <section className="mb-10">
-        <h2 className="font-display text-lg font-semibold text-olive mb-4">Bookings (this month)</h2>
+        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Bookings (this month)</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10 mb-6">
           <p className="text-3xl font-bold text-olive">{bookings}</p>
           <p className="text-sm text-olive/70 mt-1">Total bookings</p>
@@ -154,7 +154,7 @@ export default function AdminStatsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="font-display text-lg font-semibold text-olive mb-4">Partner revenue (this month)</h2>
+        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Partner revenue (this month)</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-3xl font-bold text-olive">{revenue.toFixed(2)} €</p>
           <p className="text-sm text-olive/70 mt-1">Partner revenue share (lead fees)</p>
@@ -172,7 +172,7 @@ export default function AdminStatsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="font-display text-lg font-semibold text-olive mb-4">Conversion funnel (this month)</h2>
+        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Conversion funnel (this month)</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">First touch to booking and revenue</p>
           <table className="w-full text-left text-sm">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { trails, trailConditions } from "@/data/trails";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -137,7 +137,7 @@ export default async function TrailPage({
             )}
           </DetailHero>
 
-          <div className="space-y-10 sm:space-y-14">
+          <div className={SECTION.blockGap}>
             {/* Description */}
             <section>
               <p className="prose-intro text-olive/90 text-lg leading-relaxed break-words">{trail.description}</p>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
 import PageHeader from "@/components/PageHeader";
 import type { Booking } from "@/lib/bookings";
@@ -288,7 +288,7 @@ export default function BookingsPage() {
               ({ key, label }) =>
                 upcomingByGroup[key].length > 0 && (
                   <section key={key} aria-labelledby={`upcoming-${key}`}>
-                    <h2 id={`upcoming-${key}`} className="font-display text-lg font-semibold text-olive mb-4">
+                    <h2 id={`upcoming-${key}`} className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>
                       {label}
                     </h2>
                     <ul className="space-y-4">
@@ -359,7 +359,7 @@ export default function BookingsPage() {
             {/* Past / Cancelled */}
             {past.length > 0 && (
               <section aria-labelledby="past-heading">
-                <h2 id="past-heading" className="font-display text-lg font-semibold text-olive mb-4">
+                <h2 id="past-heading" className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>
                   Past & cancelled
                 </h2>
                 <ul className="space-y-4">
@@ -406,7 +406,7 @@ export default function BookingsPage() {
         {/* Book more — only when user has bookings; copy varies by context */}
         {bookings.length > 0 && (
           <section className={`mt-12 rounded-xl ${CARD.base} ${CARD.content}`} aria-labelledby="book-more">
-            <h2 id="book-more" className="font-display font-semibold text-olive mb-3">
+            <h2 id="book-more" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
               {upcoming.length === 0 ? "Plan your next visit" : "Book more"}
             </h2>
             <p className="text-sm text-olive/70 mb-4 break-words">

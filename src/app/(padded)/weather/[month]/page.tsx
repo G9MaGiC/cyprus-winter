@@ -94,9 +94,9 @@ export default async function WeatherMonthPage({ params }: Props) {
         ]}
       />
 
-      <div className="space-y-10 sm:space-y-14">
+      <div className={SECTION.blockGap}>
         <section aria-labelledby="conditions">
-          <h2 id="conditions" className="font-display text-xl font-semibold text-olive mb-4">
+          <h2 id="conditions" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
             What to expect
           </h2>
           <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50 space-y-4`}>
@@ -119,7 +119,7 @@ export default async function WeatherMonthPage({ params }: Props) {
 
         {events.length > 0 && (
           <section aria-labelledby="events">
-            <h2 id="events" className="font-display text-xl font-semibold text-olive mb-4">
+            <h2 id="events" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
               Winter events in {monthName}
             </h2>
             <ul className="space-y-3">

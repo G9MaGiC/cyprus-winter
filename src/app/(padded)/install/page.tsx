@@ -75,7 +75,7 @@ export default function InstallPage() {
       </header>
 
       <section aria-labelledby="requirements" className="mb-12">
-        <h2 id="requirements" className={`${TYPE.sectionTitle} mb-4`}>
+        <h2 id="requirements" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
           Requirements
         </h2>
         <ul className={`${CARD.base} ${CARD.content} space-y-2 text-olive/90`}>
@@ -86,7 +86,7 @@ export default function InstallPage() {
       </section>
 
       <section aria-labelledby="steps" className="space-y-10 mt-16 sm:mt-20">
-        <h2 id="steps" className={`${TYPE.sectionTitle} mb-6`}>
+        <h2 id="steps" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
           Steps
         </h2>
 
@@ -121,7 +121,7 @@ export default function InstallPage() {
       </section>
 
       <section aria-labelledby="troubleshooting" className={SECTION.footerBlock}>
-        <h2 id="troubleshooting" className={`${TYPE.sectionTitle} mb-4`}>
+        <h2 id="troubleshooting" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
           Troubleshooting
         </h2>
         <ul className="space-y-3 text-olive/90 text-sm">
