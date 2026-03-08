@@ -84,6 +84,22 @@ curl -s "http://localhost:3000/api/right-now?lat=34.92&lng=33.63&limit=4&maxDist
 
 ---
 
+## Coordinate coverage
+
+Distance calculations use `getPlaceCoords` (`src/lib/place-coords.ts`):
+
+| Place type | Source | Count |
+|------------|--------|-------|
+| Trails | `trailheadCoords` | 63 |
+| Wineries | `latitude`/`longitude` | 63 |
+| Restaurants | `latitude`/`longitude` | 34 |
+| Attractions | `latitude`/`longitude` | 62 |
+| Events | `latitude`/`longitude` | 11 |
+
+When a place lacks explicit coords, `getRegionCentroid(place.region)` is used. Region centroids: `src/data/region-centroids.ts`.
+
+---
+
 ## Files
 
 | File | Role |
@@ -94,5 +110,5 @@ curl -s "http://localhost:3000/api/right-now?lat=34.92&lng=33.63&limit=4&maxDist
 | `src/components/RegionPickerChips.tsx` | Region chips + "Use my location instead" |
 | `src/app/api/right-now/route.ts` | API: weather + scoring + items |
 | `src/lib/right-now-scoring.ts` | Scoring, diversification (max 1 per type in top 4) |
-| `src/lib/place-coords.ts` | Coords: trails (trailhead), wineries/restaurants (lat/lng or region centroid) |
+| `src/lib/place-coords.ts` | Coords: trails (trailhead), wineries, restaurants, attractions, events (lat/lng or region centroid) |
 | `src/data/region-centroids.ts` | Region centroids for distance calculation |

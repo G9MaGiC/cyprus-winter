@@ -1,5 +1,6 @@
 import type { PlanItem } from "@/data";
 import { getAttractionById } from "@/data";
+import { winterEvents } from "@/data/events";
 import { getRegionCentroid } from "@/data/region-centroids";
 import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
@@ -15,7 +16,7 @@ export type Coords = { lat: number; lng: number };
  * - Wineries: latitude/longitude or region centroid
  * - Restaurants: latitude/longitude or region centroid
  * - Attractions: latitude/longitude or region centroid
- * - Events: region centroid
+ * - Events: latitude/longitude or region centroid
  */
 export function getPlaceCoords(place: PlanItem): Coords | null {
   if (place.type === "attraction") {
@@ -44,6 +45,14 @@ export function getPlaceCoords(place: PlanItem): Coords | null {
     const restaurant = restaurants.find((r) => r.id === place.id);
     if (restaurant && typeof restaurant.latitude === "number" && typeof restaurant.longitude === "number") {
       return { lat: restaurant.latitude, lng: restaurant.longitude };
+    }
+    return getRegionCentroid(place.region);
+  }
+
+  if (place.type === "event") {
+    const event = winterEvents.find((e) => e.id === place.id);
+    if (event && typeof event.latitude === "number" && typeof event.longitude === "number") {
+      return { lat: event.latitude, lng: event.longitude };
     }
     return getRegionCentroid(place.region);
   }

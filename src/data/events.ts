@@ -9,6 +9,9 @@ export type WinterEvent = {
   dates?: string;
   venue?: string;
   url?: string;
+  /** Approximate coords for Right Now distance calculation */
+  latitude?: number;
+  longitude?: number;
 };
 
 export const winterEvents: WinterEvent[] = [
@@ -23,6 +26,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Feb",
     dates: "2 weeks before Lent (late Feb / early Mar)",
     venue: "Limassol old town & seafront",
+    latitude: 34.68,
+    longitude: 33.04,
   },
   {
     id: "nicosia-winter-festival",
@@ -34,6 +39,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Dec",
     dates: "Weekends in December",
     venue: "Eleftheria Square",
+    latitude: 35.17,
+    longitude: 33.36,
   },
   {
     id: "pafos-xmas-market",
@@ -45,6 +52,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Dec",
     dates: "Weekends Dec 1 to 22",
     venue: "Paphos Harbour",
+    latitude: 34.755,
+    longitude: 32.408,
   },
   {
     id: "commandaria-festival",
@@ -57,6 +66,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Dec",
     dates: "First weekend of December",
     venue: "Koilani, Pera Pedi, other Krasochoria",
+    latitude: 34.823,
+    longitude: 32.892,
   },
   {
     id: "troodos-ski-season",
@@ -69,6 +80,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Jan",
     dates: "Jan to Mar (weather-dependent)",
     venue: "Troodos Ski Resort, Mt Olympus",
+    latitude: 34.94,
+    longitude: 32.86,
   },
   {
     id: "lefkara-lace-festival",
@@ -80,6 +93,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Mar",
     dates: "Usually second Sunday of March",
     venue: "Lefkara village",
+    latitude: 34.868,
+    longitude: 33.305,
   },
   {
     id: "bellapais-concerts",
@@ -91,6 +106,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Dec",
     dates: "Selected dates Dec to Jan",
     venue: "Bellapais Abbey",
+    latitude: 35.06,
+    longitude: 33.28,
   },
   {
     id: "agros-rose-festival-prep",
@@ -102,6 +119,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Jan",
     dates: "Various weekends Jan to Feb",
     venue: "Agros village",
+    latitude: 34.92,
+    longitude: 33.0,
   },
   {
     id: "larnaca-xmas-village",
@@ -113,6 +132,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Dec",
     dates: "Mid-Nov to early Jan",
     venue: "Finikoudes Promenade",
+    latitude: 34.92,
+    longitude: 33.63,
   },
   {
     id: "cyprus-marathon",
@@ -124,6 +145,8 @@ export const winterEvents: WinterEvent[] = [
     month: "Dec",
     dates: "Usually first Sunday of December",
     venue: "Limassol seafront",
+    latitude: 34.68,
+    longitude: 33.04,
   },
   {
     id: "epiphany-cyprus",
@@ -136,5 +159,7 @@ export const winterEvents: WinterEvent[] = [
     month: "Jan",
     dates: "6 January",
     venue: "Coastal towns",
+    latitude: 34.95,
+    longitude: 33.2,
   },
 ];

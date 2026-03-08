@@ -88,8 +88,9 @@ export async function GET(req: Request) {
     const fetchLimit = Math.min(Math.max(limit * 3, 12), DEFAULT_ITEM_LIMIT);
     let scored = scoreAndRank(lat, lng, weather, fetchLimit);
     if (maxDistanceKm != null && !Number.isNaN(maxDistanceKm) && maxDistanceKm > 0) {
-      scored = scored.filter((item) => item.distanceKm <= maxDistanceKm).slice(0, limit);
+      scored = scored.filter((item) => item.distanceKm <= maxDistanceKm);
     }
+    scored = scored.slice(0, limit);
     const withBadges = assignDiscoveryBadges(scored, weather);
 
     const timeUsed = new Date().toISOString();
