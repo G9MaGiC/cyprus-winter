@@ -37,6 +37,27 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-XXX] ConversionTracker wrong place/winery/guide ID on locale routes
+
+**Severity:** High
+**Area:** Functional / Analytics
+**Page/Component:** ConversionTracker.tsx
+
+**Reproduction**
+1. Visit a locale route, e.g. /el/discover/omodos or /de/book/winery/tsiakkas
+2. ConversionTracker extracts ID via pathname.replace("/discover/", "")
+
+**Expected**
+Place ID "omodos", winery ID "tsiakkas" — correct analytics events (winery_detail_view, booking_start)
+
+**Actual**
+ID extracted as "el/omodos" or "de/tsiakkas" — getPlaceById fails; no winery_detail_view tracked on non-default locales
+
+**Fix status**
+Fixed — use path.split("/").filter(Boolean).pop() for ID; use path.includes() for route detection (handles /el/discover/, etc.)
+
+---
+
 ### [BUG-001] Broken /trip link on homepage hero
 
 **Severity:** Critical
