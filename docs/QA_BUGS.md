@@ -795,3 +795,23 @@ No P0 fixes applied (none identified). P1/P2 documented for backlog.
 | **BUG-057** | AIAssistant: when `!isSafeUrl`, render `<span>` instead of `<a href="#">` |
 | **BUG-059** | DiscoverClient "All categories" link now uses `SECTION.aegeanLink` |
 | **BUG-065** | No fix — focus trap already implemented (Tab/Shift+Tab + focusin) |
+
+---
+
+## Bug Fix Run — Build Failure (Mar 8, 2026)
+
+*Per plan: shell (lint/test/build) + bug scan. Team: bug-fix.*
+
+### Build failure fixed
+
+| ID | Severity | Issue | Fix |
+|----|----------|-------|-----|
+| **BUG-066** | Critical | Prerender `/en/events`: `ReferenceError: ConversionTracker is not defined` | ConversionTracker client component referenced during SSG; wrapped in ConversionTrackerClient that dynamically imports with `ssr: false`. Created `src/components/ConversionTrackerClient.tsx`; root layout now imports and renders ConversionTrackerClient. |
+
+### Verification
+
+| Check | Result |
+|-------|--------|
+| npm run lint | Pass |
+| npm run test | Pass (150 tests) |
+| npm run build | Pass (Next.js 16.1.6, 523 static pages) |

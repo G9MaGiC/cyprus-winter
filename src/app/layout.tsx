@@ -7,7 +7,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
 import SiteFooter from "@/components/SiteFooter";
-import ConversionTracker from "@/components/ConversionTracker";
+import ConversionTrackerClient from "@/components/ConversionTrackerClient";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const AIAssistant = dynamic(() => import("@/components/AIAssistant"), { loading: () => null });
@@ -103,7 +103,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Providers>
-          <ConversionTracker />
+          <ConversionTrackerClient />
           <ScrollToTop />
           <Nav />
           <main id="main-content" className="pt-0 min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
