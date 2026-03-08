@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import RightNowCard from "@/components/RightNowCard";
 import AppLink from "@/components/AppLink";
 import LocationActionButtons from "@/components/LocationActionButtons";
@@ -23,14 +23,14 @@ function SectionShell({
     <section
       id="right-now"
       aria-labelledby="right-now-heading"
-      className={`py-5 sm:py-6 ${LAYOUT.safeAreaX}`}
+      className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <h2 id="right-now-heading" className={`${TYPE.sectionTitle} mb-3`}>
+        <h2 id="right-now-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
           {title}
         </h2>
         {subtitle && (
-          <p className="text-sm text-olive/80 mb-3">{subtitle}</p>
+          <p className={`text-sm text-olive/80 ${SECTION.headingGap}`}>{subtitle}</p>
         )}
         {children}
       </div>
@@ -106,8 +106,8 @@ export default function RightNowNearYou({
   if (state === "consent") {
     return (
       <SectionShell title={title}>
-        <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
-          <p className="text-olive/80 text-sm">
+        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <p className="text-olive/80 text-sm mb-4">
             Suggestions based on where you are, the time, and the weather.
           </p>
           <LocationActionButtons
@@ -115,7 +115,7 @@ export default function RightNowNearYou({
             onPrimary={handleUseLocation}
             onSecondary={handlePickRegion}
             secondaryLabel="Pick a region"
-            className="mt-3"
+            className="mt-0"
           />
         </div>
       </SectionShell>
@@ -125,8 +125,8 @@ export default function RightNowNearYou({
   if (state === "region-picker") {
     return (
       <SectionShell title={title}>
-        <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
-          <p className="text-olive/80 text-sm mb-3">Choose a region to explore.</p>
+        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <p className="text-olive/80 text-sm mb-4">Choose a region to explore.</p>
           <RegionPickerChips
             onSelect={handleRegionSelect}
             onUseLocation={handleUseLocation}
@@ -138,8 +138,8 @@ export default function RightNowNearYou({
 
   if (state === "loading") {
     return (
-      <SectionShell>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
+      <SectionShell title={title}>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
@@ -167,14 +167,14 @@ export default function RightNowNearYou({
           : "Couldn't load. Try again shortly.";
     return (
       <SectionShell title={title}>
-        <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
-          <p className="text-olive/80 text-sm">{errorMessage}</p>
+        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <p className="text-olive/80 text-sm mb-4">{errorMessage}</p>
           <LocationActionButtons
             primaryLabel="Try again"
             onPrimary={handleUseLocation}
             onSecondary={handlePickRegion}
             secondaryLabel="Pick a region"
-            className="mt-3"
+            className="mt-0"
           />
         </div>
       </SectionShell>
@@ -188,12 +188,12 @@ export default function RightNowNearYou({
         : undefined;
     return (
       <SectionShell title={title} subtitle={subtitle}>
-        <div className="rounded-lg border border-sand-200/50 py-4 px-4 bg-sand-50/50">
-          <p className="text-olive/80 text-sm">
+        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <p className="text-olive/80 text-sm mb-4">
             No suggestions for {sourceMode === "region" ? "this region" : "now"}{" "}
             right now.
           </p>
-          <div className="mt-3 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3">
             {sourceMode === "region" && (
               <button
                 type="button"
@@ -226,7 +226,7 @@ export default function RightNowNearYou({
 
   return (
     <SectionShell title={title} subtitle={loadedSubtitle}>
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink
           href="/discover"
@@ -235,7 +235,7 @@ export default function RightNowNearYou({
           See more →
         </AppLink>
       </div>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
         {items.map((item) => (
           <RightNowCard key={item.id} item={item} />
         ))}

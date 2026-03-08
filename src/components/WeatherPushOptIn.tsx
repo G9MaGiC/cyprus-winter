@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, SECTION } from "@/lib/design-tokens";
 
 const CLIENT_ID_KEY = "cyprus-winter-push-client-id";
 
@@ -114,7 +114,7 @@ export default function WeatherPushOptIn() {
   return (
     <div className={`${CARD.base} ${CARD.content} mt-6 bg-sage/10 border-sage/30`}>
       <p className="text-sm font-medium text-olive mb-2">Weather digest</p>
-      <p className="text-xs text-olive/80 mb-3">
+      <p className={`text-xs text-olive/80 ${SECTION.titleGap}`}>
         Get short updates (morning, midday, evening) — coast and Troodos temps. No spam.
       </p>
       <button

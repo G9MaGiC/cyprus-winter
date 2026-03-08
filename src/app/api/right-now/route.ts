@@ -70,8 +70,13 @@ export async function GET(req: Request) {
   const lngParam = searchParams.get("lng");
   const limitParam = searchParams.get("limit");
   const maxDistanceParam = searchParams.get("maxDistance");
+  const regionParam = searchParams.get("region");
   const limit = Math.min(DEFAULT_ITEM_LIMIT, Math.max(1, parseInt(limitParam ?? "", 10) || DEFAULT_ITEM_LIMIT));
   const maxDistanceKm = maxDistanceParam != null ? parseFloat(maxDistanceParam) : null;
+  const region =
+    regionParam && ["troodos", "paphos", "ayia-napa", "larnaca", "limassol"].includes(regionParam)
+      ? (regionParam as "troodos" | "paphos" | "ayia-napa" | "larnaca" | "limassol")
+      : null;
 
   const lat = latParam != null ? parseFloat(latParam) : NaN;
   const lng = lngParam != null ? parseFloat(lngParam) : NaN;
@@ -86,7 +91,7 @@ export async function GET(req: Request) {
   try {
     const weather = await getWeatherAtCoords(lat, lng);
     const fetchLimit = Math.min(Math.max(limit * 3, 12), DEFAULT_ITEM_LIMIT);
-    let scored = scoreAndRank(lat, lng, weather, fetchLimit);
+    let scored = scoreAndRank(lat, lng, weather, fetchLimit, region);
     if (maxDistanceKm != null && !Number.isNaN(maxDistanceKm) && maxDistanceKm > 0) {
       scored = scored.filter((item) => item.distanceKm <= maxDistanceKm);
     }

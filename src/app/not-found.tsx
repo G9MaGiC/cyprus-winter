@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 export default function NotFound() {
   return (
@@ -9,10 +9,10 @@ export default function NotFound() {
         <h1 className="font-display text-2xl font-bold text-olive mb-2">
           Page not found
         </h1>
-        <p className="text-olive/80 mb-6 leading-relaxed prose-body break-words">
+        <p className={`text-olive/80 leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
           No worries. This page doesn&apos;t exist or has been moved. These things happen. The island&apos;s still here. The trails, villages, and tastings are waiting. Head home or start exploring.
         </p>
-        <p className="text-olive/60 text-sm mb-6">
+        <p className={`text-olive/70 text-sm ${SECTION.headingGap}`}>
           Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you&apos;re not sure where to start.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

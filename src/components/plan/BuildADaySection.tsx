@@ -66,7 +66,7 @@ export default function BuildADaySection() {
               <h3 className={`${TYPE.cardTitle} text-base sm:text-lg mb-2`}>
                 {combo.label}
               </h3>
-              <p className="text-sm text-olive/70 mb-4 leading-relaxed">
+              <p className={`text-sm text-olive/70 ${SECTION.headingGap} leading-relaxed`}>
                 {combo.why}
               </p>
               {combo.tip && (

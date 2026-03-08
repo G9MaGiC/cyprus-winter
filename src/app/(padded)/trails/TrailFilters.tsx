@@ -2,7 +2,7 @@
 
 import FilterChips from "@/components/FilterChips";
 import { TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
-import { TRANSITION } from "@/lib/design-tokens";
+import { SECTION, TRANSITION } from "@/lib/design-tokens";
 
 export type TrailFiltersProps = {
   difficultyFilter?: string;
@@ -69,7 +69,7 @@ export default function TrailFilters({
   );
 
   return (
-    <section aria-label="Filter trails" className={alwaysVisible ? "" : "mb-6 sm:mb-8"}>
+    <section aria-label="Filter trails" className={alwaysVisible ? "" : SECTION.headingGap}>
       {alwaysVisible ? (
         <>
           <div className="sm:hidden">

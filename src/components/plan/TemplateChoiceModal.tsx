@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
-import { CARD, TYPE } from "@/lib/design-tokens";
+import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
 
 type Props = {
   templateLabel: string;
@@ -34,10 +34,10 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
         ref={modalRef}
         className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
       >
-        <h2 id="template-choice-title" className={`${TYPE.cardTitle} mb-2`}>
+        <h2 id="template-choice-title" className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>
           Apply {templateLabel} template?
         </h2>
-        <p className="text-olive/80 text-sm mb-6 break-words">
+        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words`}>
           Replace what you have, add to it, or keep building. Your call.
         </p>
         <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end">

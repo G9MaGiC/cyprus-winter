@@ -96,10 +96,10 @@ export default function InstallPage() {
             className={`${CARD.base} ${CARD.hover} ${CARD.contentLg}`}
             aria-labelledby={`step-${i}`}
           >
-            <h3 id={`step-${i}`} className={`${TYPE.cardTitle} text-charcoal mb-3`}>
+            <h3 id={`step-${i}`} className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
               {step.title}
             </h3>
-            <p className="text-olive/90 text-sm sm:text-base leading-relaxed mb-4">
+            <p className={`text-olive/90 text-sm sm:text-base leading-relaxed ${SECTION.headingGap}`}>
               {step.body}
             </p>
             {step.code && (

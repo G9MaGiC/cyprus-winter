@@ -62,7 +62,7 @@ export default function DayContentPanel({
                 <button
                   type="button"
                   onClick={onClearDay}
-                  className="min-h-[36px] inline-flex items-center px-3 py-1.5 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label={`Clear all places from Day ${activeDay}`}
                 >
                   Clear day

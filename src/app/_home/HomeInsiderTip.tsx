@@ -28,10 +28,10 @@ export default function HomeInsiderTip() {
           >
             Winter insider tip
           </h2>
-          <h3 className={`${TYPE.cardTitle} text-charcoal mb-2`}>
+          <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
             {tip.title}
           </h3>
-          <p className="text-olive/90 text-sm leading-relaxed mb-4">
+          <p className={`text-olive/90 text-sm leading-relaxed ${SECTION.headingGap}`}>
             {tip.body}
           </p>
           <Link

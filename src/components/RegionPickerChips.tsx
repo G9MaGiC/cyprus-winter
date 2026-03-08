@@ -1,6 +1,7 @@
 "use client";
 
 import { REGION_CONFIGS, getRegionShortLabel, type RegionSlug } from "@/data/regions";
+import { SECTION } from "@/lib/design-tokens";
 
 type RegionPickerChipsProps = {
   onSelect: (slug: RegionSlug) => void;
@@ -13,7 +14,7 @@ export default function RegionPickerChips({
 }: RegionPickerChipsProps) {
   return (
     <>
-      <div className="flex flex-wrap gap-2 mb-3">
+      <div className={`flex flex-wrap gap-2 ${SECTION.headingGap}`}>
         {REGION_CONFIGS.map((config) => (
           <button
             key={config.slug}

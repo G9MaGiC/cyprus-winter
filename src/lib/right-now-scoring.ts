@@ -1,5 +1,6 @@
 import type { PlanItem } from "@/data";
 import { getPlaceCoords } from "@/lib/place-coords";
+import { itemMatchesRegion, type RegionSlug } from "@/data/regions";
 import { getTimeBucket, getPlaceTimeSignals, matchesTimeBucket, isAdjacentBucket, type TimeBucket } from "@/lib/right-now-buckets";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import type { WeatherAtCoords } from "@/lib/weather-live";
@@ -148,17 +149,22 @@ export type ScoredPlace = ScorablePlace & {
 /**
  * Score and rank all eligible places.
  * Returns sorted by score descending.
+ * When region is provided (region-picker mode), only places in that region are considered.
  */
 export function scoreAndRank(
   userLat: number,
   userLng: number,
   weather: WeatherAtCoords | null,
-  limit = 12
+  limit = 12,
+  region: RegionSlug | null = null
 ): ScoredPlace[] {
   const currentBucket = getTimeBucket();
-  const places = allPlaces.filter((p) =>
+  let places = allPlaces.filter((p) =>
     ELIGIBLE_TYPES.includes(p.type as (typeof ELIGIBLE_TYPES)[number])
   );
+  if (region) {
+    places = places.filter((p) => itemMatchesRegion(p.region, region));
+  }
   const enriched = places.map(enrichPlace);
   const withCoords = enriched
     .map((p) => {

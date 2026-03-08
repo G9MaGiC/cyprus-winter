@@ -18,7 +18,7 @@ export default function HomeTemplateLinks() {
         <p id="templates-heading" className={`${TYPE.kicker} mb-2`}>
           Pre-built itineraries
         </p>
-        <p className="text-sm text-olive/70 mb-3">
+        <p className={`text-sm text-olive/70 ${SECTION.headingGap}`}>
           Curated by local experts—realistic pacing, winery tips, seasonal advice. Start here, then tweak.
         </p>
         <div className="flex flex-wrap gap-2 sm:gap-3">

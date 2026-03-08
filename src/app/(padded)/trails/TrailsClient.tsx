@@ -204,10 +204,10 @@ export default function TrailsClient() {
             <div className="space-y-6 sm:space-y-8">
               {openTrails.length > 0 && (
                 <details className="group" open>
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-aegean shrink-0" aria-hidden />
                     Open ({openTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {openTrails.map((trail) => (
@@ -218,10 +218,10 @@ export default function TrailsClient() {
               )}
               {cautionTrails.length > 0 && (
                 <details className="group" open={cautionTrails.length <= 4}>
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-golden shrink-0" aria-hidden />
                     Caution ({cautionTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {cautionTrails.map((trail) => (
@@ -232,10 +232,10 @@ export default function TrailsClient() {
               )}
               {closedTrails.length > 0 && (
                 <details className="group">
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-terracotta shrink-0" aria-hidden />
                     Closed ({closedTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {closedTrails.map((trail) => (
@@ -246,10 +246,10 @@ export default function TrailsClient() {
               )}
               {unknownTrails.length > 0 && (
                 <details className="group">
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-sand-300 shrink-0" aria-hidden />
                     No report ({unknownTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {unknownTrails.map((trail) => (
@@ -283,7 +283,7 @@ export default function TrailsClient() {
         <section aria-labelledby="tips-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
           <Disclosure id="tips-heading" summary="Before you go" defaultOpen={false}>
             <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6">
-              <p className="text-sm text-olive/80 mb-4 break-words">Layer up, check conditions, tell someone your route.</p>
+              <p className={`text-sm text-olive/80 ${SECTION.headingGap} break-words`}>Layer up, check conditions, tell someone your route.</p>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80 gap-4">
                 {winterTipsHiking.slice(0, 4).map((tip) => (
                   <div key={tip.id} className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0">

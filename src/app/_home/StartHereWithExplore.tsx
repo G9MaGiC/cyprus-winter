@@ -138,7 +138,7 @@ export default function StartHereWithExplore() {
 
         {/* Region quick links */}
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-6 sm:mb-8">
-          <p className="text-center text-sage text-sm mb-3">Plan by region</p>
+          <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Plan by region</p>
           <div className="flex flex-wrap justify-center gap-2">
             {[
               { slug: "larnaca", label: "Larnaca" },
@@ -160,7 +160,7 @@ export default function StartHereWithExplore() {
 
         {/* Also explore */}
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
-          <p className="text-center text-sage text-sm mb-3">Also explore: Culture, Coasts, Monasteries</p>
+          <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Also explore: Culture, Coasts, Monasteries</p>
           <div className="flex flex-wrap justify-center gap-2">
             {alsoChips.map((c) => (
               <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
@@ -172,7 +172,7 @@ export default function StartHereWithExplore() {
 
         {/* Explore by mood */}
         <div>
-          <p className={`${TYPE.kicker} text-center mb-3`}>Explore by mood</p>
+          <p className={`${TYPE.kicker} text-center ${SECTION.titleGap}`}>Explore by mood</p>
           <div
             className="flex flex-wrap justify-center gap-2 sm:gap-3"
             role="navigation"

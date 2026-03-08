@@ -47,7 +47,7 @@ export function RecentlyViewedStrip() {
       className={`${LAYOUT.safeAreaX} ${SECTION.pySub} bg-sand-100/50 border-y border-sand-200/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <div className="flex items-center justify-between mb-3">
+        <div className={`flex items-center justify-between ${SECTION.titleGap}`}>
           <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-olive/70`}>
             Recently viewed
           </h2>

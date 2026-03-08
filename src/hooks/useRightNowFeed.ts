@@ -6,7 +6,6 @@ import { getCentroidBySlug } from "@/data/region-centroids";
 import type { RegionSlug } from "@/data/regions";
 
 const CONSENT_KEY = "cyprus-winter:location-consent";
-const LARNACA = { lat: 34.92, lng: 33.63 };
 const MAX_KM_NEAR = 25;
 
 export type RightNowState =
@@ -61,10 +60,12 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
       setSelectedRegion(region);
       try {
         const maxQuery = nearOnly ? `&maxDistance=${MAX_KM_NEAR}` : "";
+        const regionQuery =
+          mode === "region" && region ? `&region=${encodeURIComponent(region)}` : "";
         const url =
           typeof window !== "undefined"
-            ? `${window.location.origin}/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}`
-            : `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}`;
+            ? `${window.location.origin}/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`
+            : `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`;
         const res = await fetch(url);
         if (!res.ok) {
           await res.json().catch(() => ({})); // consume body
@@ -103,9 +104,9 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
     try {
       if (!navigator.geolocation) {
         if (process.env.NODE_ENV === "development") {
-          console.warn("[RightNow] navigator.geolocation unavailable, using Larnaca fallback");
+          console.warn("[RightNow] navigator.geolocation unavailable");
         }
-        doFetch(LARNACA.lat, LARNACA.lng);
+        setState("region-picker");
         return;
       }
       navigator.geolocation.getCurrentPosition(
@@ -117,16 +118,16 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
           if (err.code === 1) {
             setState("denied");
           } else {
-            doFetch(LARNACA.lat, LARNACA.lng);
+            setState("region-picker");
           }
         },
         { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
       );
     } catch (e) {
       if (process.env.NODE_ENV === "development") {
-        console.warn("[RightNow] geolocation threw, using Larnaca fallback:", e);
+        console.warn("[RightNow] geolocation threw:", e);
       }
-      doFetch(LARNACA.lat, LARNACA.lng);
+      setState("region-picker");
     }
   }, [fetchFeed, distanceMode]);
 

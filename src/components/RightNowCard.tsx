@@ -52,8 +52,8 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
           <h3 className="font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors truncate">
             {item.name}
           </h3>
-          <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm} km`}>
-            {item.region} · {item.distanceKm} km
+          <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm < 0.5 ? "< 1 km" : `${item.distanceKm} km`}`}>
+            {item.region} · {item.distanceKm < 0.5 ? "< 1 km" : `${item.distanceKm} km`}
           </p>
           <p className="hidden sm:block text-xs text-olive/90 mt-0.5 leading-relaxed line-clamp-2 break-words">
             {item.tease}

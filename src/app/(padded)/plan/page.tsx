@@ -122,7 +122,7 @@ export default function PlanPage() {
             role="alert"
             aria-live="assertive"
           >
-            <p className="mb-3">That place isn&apos;t in our list anymore.</p>
+            <p className={SECTION.titleGap}>That place isn&apos;t in our list anymore.</p>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               <Link href="/discover" className={CTA.secondaryCompact}>
                 Browse Discover

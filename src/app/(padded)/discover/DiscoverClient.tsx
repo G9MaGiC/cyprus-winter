@@ -67,7 +67,7 @@ export default function DiscoverClient({
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
       <div className={`sticky ${LAYOUT.stickyTop} z-10 pt-2 sm:pt-0 pb-3 sm:pb-4 bg-sand/95 backdrop-blur-sm border-b border-sand-200/50 ${LAYOUT.stickyBarX}`}>
         {(filter && sectionExists) && (
-          <div className="flex flex-wrap items-baseline gap-x-2 text-sm mb-3">
+          <div className={`flex flex-wrap items-baseline gap-x-2 text-sm ${SECTION.titleGap}`}>
             <span className="font-medium text-olive">
               {filterParam === "nature"
                 ? "Nature & coasts (beaches)"
@@ -131,7 +131,7 @@ export default function DiscoverClient({
                 role="status"
                 aria-live="polite"
               >
-                <p className="text-olive/80 mb-4">No places in this category. Try another filter or ask AI—it knows the island.</p>
+                <p className={`text-olive/80 ${SECTION.headingGap}`}>No places in this category. Try another filter or ask AI—it knows the island.</p>
                 <div className="flex flex-wrap gap-3 justify-center">
                   <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}>
                     All categories
@@ -157,7 +157,7 @@ export default function DiscoverClient({
       </div>
 
       <div className={`mt-16 sm:mt-20 ${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} text-center relative`}>
-        <p className="text-sm text-olive/70 mb-3">Add to your plan — or ask AI. It knows the island in winter.</p>
+        <p className={`text-sm text-olive/70 ${SECTION.titleGap}`}>Add to your plan — or ask AI. It knows the island in winter.</p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/plan" className={CTA.primaryCompact}>
             Add to your plan

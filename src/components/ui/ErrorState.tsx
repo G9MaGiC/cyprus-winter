@@ -7,7 +7,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useSyncExternalStore } from "react";
-import { CARD, CTA } from "@/lib/design-tokens";
+import { CARD, CTA, SECTION } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";
 
 interface ErrorStateProps {
@@ -23,7 +23,7 @@ interface ErrorStateProps {
 /** Minimal accent bar per icon type — no emojis (UX persona) */
 function IconAccent({ type }: { type: ErrorStateProps["icon"] }) {
   const color = type === "rate-limit" ? "bg-golden/60" : type === "network" ? "bg-aegean/60" : "bg-terracotta/60";
-  return <div className={cn("h-1 w-12 mx-auto mb-3 rounded-full", color)} aria-hidden />;
+  return <div className={cn("h-1 w-12 mx-auto rounded-full", SECTION.titleGap, color)} aria-hidden />;
 }
 
 export function ErrorState({
@@ -50,7 +50,7 @@ export function ErrorState({
       <h3 className="font-display text-lg font-semibold text-charcoal mb-2">
         {title}
       </h3>
-      <p className="text-sm text-olive/80 mb-4 max-w-md mx-auto break-words">
+      <p className={`text-sm text-olive/80 ${SECTION.headingGap} max-w-md mx-auto break-words`}>
         {message}
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">

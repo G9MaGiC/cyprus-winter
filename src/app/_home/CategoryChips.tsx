@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CTA } from "@/lib/design-tokens";
+import { CTA, SECTION } from "@/lib/design-tokens";
 
 type Chip = {
   href: string;
@@ -52,7 +52,7 @@ export default function CategoryChips() {
       </div>
 
       <div className={`mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-sand-200/80`}>
-        <p className="text-center text-sage text-sm mb-3">Also: Culture, Coasts, Monasteries</p>
+        <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Also: Culture, Coasts, Monasteries</p>
         <div className="flex flex-wrap justify-center gap-2">
           {also.map((c) => (
             <Link key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>

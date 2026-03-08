@@ -91,7 +91,7 @@ export default function Home() {
       <TripReminderBanner />
       <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub} section-reveal`}>
         <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive mb-3`}>
+          <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive ${SECTION.titleGap}`}>
             Where to today?
           </h2>
           <SearchBar placeholder="Find a place, trail, or event" className="max-w-xl mx-auto" />

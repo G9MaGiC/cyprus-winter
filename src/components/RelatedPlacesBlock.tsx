@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, SECTION } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 
 type RelatedPlacesBlockProps = {
@@ -15,10 +15,10 @@ export default function RelatedPlacesBlock({ ids, description, showAddToItinerar
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-      <h2 className="prose-label text-olive/70 mb-3 flex items-center gap-2">
+      <h2 className={`prose-label text-olive/70 ${SECTION.titleGap} flex items-center gap-2`}>
         Pair well with
       </h2>
-      <p className="text-olive/80 text-base mb-4 leading-relaxed break-words">
+      <p className={`text-olive/80 text-base ${SECTION.headingGap} leading-relaxed break-words`}>
         {description}
       </p>
       <ul className="flex flex-wrap gap-2">

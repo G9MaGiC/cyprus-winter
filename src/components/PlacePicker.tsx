@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef } from "react";
+import { SECTION } from "@/lib/design-tokens";
 import { allPlaces, getPlaceById } from "@/data";
 
 const wineries = allPlaces.filter((p) => p.type === "winery");
@@ -118,7 +119,7 @@ export default function PlacePicker({
 
   return (
     <div>
-      <div className="mb-3">
+      <div className={SECTION.titleGap}>
         <label htmlFor="place-search" className="sr-only">
           Search places by name or region
         </label>
@@ -135,7 +136,7 @@ export default function PlacePicker({
       <div
         role="tablist"
         aria-label="Place categories"
-        className="flex gap-2 mb-3 overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory"
+        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory`}
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t?.getAttribute?.("role") !== "tab") return;

@@ -79,7 +79,7 @@ export default function SecretsPage() {
                   <span aria-hidden>→</span>
                 </Link>
               )}
-              <h3 className="font-display text-lg font-semibold text-charcoal mb-3">
+              <h3 className={`font-display text-lg font-semibold text-charcoal ${SECTION.titleGap}`}>
                 {g.title}
               </h3>
               <p className="text-olive/80 text-sm leading-relaxed mb-4">{g.body}</p>

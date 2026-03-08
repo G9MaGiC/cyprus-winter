@@ -192,7 +192,7 @@ export default function BookingsPage() {
         ) : bookings.length === 0 ? (
           <div className="space-y-8" role="region" aria-label="Empty bookings state">
             <div className={`${EMPTY_STATE_DASHED} bg-white/80`}>
-              <div className="w-12 h-1 mx-auto mb-4 rounded-full bg-terracotta/40" aria-hidden />
+              <div className={`w-12 h-1 mx-auto rounded-full bg-terracotta/40 ${SECTION.headingGap}`} aria-hidden />
               <h2 className="font-display font-semibold text-olive mb-1">No bookings yet</h2>
               <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
                 Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.
@@ -409,7 +409,7 @@ export default function BookingsPage() {
             <h2 id="book-more" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
               {upcoming.length === 0 ? "Plan your next visit" : "Book more"}
             </h2>
-            <p className="text-sm text-olive/70 mb-4 break-words">
+            <p className={`text-sm text-olive/70 ${SECTION.headingGap} break-words`}>
               {upcoming.length === 0
                 ? "All your tastings are in the past. Book another for your next trip."
                 : "Add another tasting to your winter trip."}

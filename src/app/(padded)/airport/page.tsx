@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { airports } from "@/data/airport";
 import { SITE_URL } from "@/lib/site-url";
 import { winterTipsPractical } from "@/data/winter-tips";
-import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import Link from "next/link";
@@ -95,7 +95,7 @@ export default function AirportPage() {
 
             <div className="p-6 space-y-6">
               <div>
-                <h3 className="font-display font-semibold text-olive mb-3">Transport</h3>
+                <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>Transport</h3>
                 <ul className="space-y-3" role="list">
                   {airport.transport.map((t) => (
                     <li
@@ -132,7 +132,7 @@ export default function AirportPage() {
               </div>
 
               <div>
-                <h3 className="font-display font-semibold text-olive mb-3">Things to know</h3>
+                <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>Things to know</h3>
                 <ul className="space-y-2" role="list">
                   {airport.tips.map((tip, i) => (
                     <li

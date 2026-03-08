@@ -7,7 +7,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { CTA, CARD } from "@/lib/design-tokens";
+import { CTA, CARD, SECTION } from "@/lib/design-tokens";
 
 const ONBOARDING_KEY = "cyprus-winter-onboarded";
 
@@ -96,7 +96,7 @@ export default function OnboardingModal() {
         {/* Content — typography-led, no emojis */}
         <div className="text-center mb-8">
           <div
-            className={`h-0.5 w-8 mx-auto mb-5 rounded-full ${
+            className={`h-0.5 w-8 mx-auto rounded-full ${SECTION.headingGap} ${
               step.accent === "terracotta" ? "bg-terracotta/40" : "bg-sage/40"
             }`}
             aria-hidden
