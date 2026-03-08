@@ -48,6 +48,11 @@ export default function QuickStartSection({
 
   const renderTemplateCard = (template: (typeof ITINERARY_TEMPLATES)[number], isRecommended: boolean) => {
     const placeCount = Object.values(template.days).flat().length;
+    const preview = (() => {
+      const ids = Object.values(template.days).flat();
+      const names = ids.slice(0, 4).map((id) => getPlace(id)?.name ?? id).join(", ");
+      return ids.length > 4 ? `${names}…` : names;
+    })();
     return (
       <button
         key={template.key}
