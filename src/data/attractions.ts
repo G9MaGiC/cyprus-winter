@@ -429,6 +429,8 @@ export const ancientSites: Attraction[] = [
     transport: "15 min from Kyrenia. Car or taxi",
     parking: "Village car park; short walk to abbey",
     accessibility: "Uneven flagstones; cloister has steps.",
+    latitude: 35.06,
+    longitude: 33.28,
   },
   {
     id: "leventis-museum",
@@ -446,6 +448,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Tue to Sun 10 to 16:30; closed Mon",
     transport: "Old Nicosia, near Ledra Street",
     parking: "Street parking; paid zones",
+    latitude: 35.176,
+    longitude: 33.365,
   },
   {
     id: "paphos-castle",
@@ -461,6 +465,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Daily 8:30 to 17:00 (winter)",
     transport: "Paphos harbour; central",
     parking: "Harbour car parks",
+    latitude: 34.755,
+    longitude: 32.408,
     combineWith: ["pafos-mosaics", "tomb-of-kings", "coral-bay", "kouklia-cafe", "pafos-harbour"],
   },
   {
@@ -480,6 +486,8 @@ export const ancientSites: Attraction[] = [
     transport: "15 min from Larnaca airport. Near Kiti village",
     parking: "Village square; short walk",
     combineWith: ["zygi-tavernas", "lefkara", "kiti-tavernas", "choirokoitia", "lefkara-path"],
+    latitude: 34.84,
+    longitude: 33.57,
   },
   {
     id: "idalion",
@@ -496,6 +504,8 @@ export const ancientSites: Attraction[] = [
     openingHours: "Tue to Sun 8:30 to 17:00 (winter)",
     transport: "30 min from Nicosia. Near Dali village",
     parking: "On-site",
+    latitude: 34.99,
+    longitude: 33.41,
   },
 ];
 
@@ -518,6 +528,8 @@ export const villages: Attraction[] = [
     transport: "1.5 hr from Nicosia. Scenic drive via Pedoulas",
     parking: "Village car parks; near bridge",
     accessibility: "Valley village; some slopes. Bridge has steps.",
+    latitude: 34.992,
+    longitude: 32.82,
   },
   {
     id: "lefkara",
@@ -632,6 +644,8 @@ export const villages: Attraction[] = [
     winterTip: "Citrus harvest Dec to Mar. The smell of oranges. Off the main track. The Venetian aqueduct is the star. Find it. Wander. No plan needed.",
     localSecret: "The aqueduct. Find it first. The rest unfolds. Lefke is quiet. Ottoman heritage. Citrus groves. The kind of place you discover by accident.",
     nameEl: "Λεύκα",
+    latitude: 35.11,
+    longitude: 32.85,
   },
   {
     id: "foini",
@@ -649,6 +663,8 @@ export const villages: Attraction[] = [
     openingHours: "Museum 9 to 16 (check for winter hours); workshops vary",
     transport: "45 min from Limassol via Platres",
     parking: "Village square; free",
+    latitude: 34.91,
+    longitude: 32.79,
   },
   {
     id: "pedoulas",
@@ -664,6 +680,8 @@ export const villages: Attraction[] = [
     transport: "1 hr from Nicosia. En route to Kykkos",
     parking: "Village centre; free",
     combineWith: ["archangelos-michail", "kykkos", "kalopanagiotis"],
+    latitude: 34.97,
+    longitude: 32.82,
   },
   {
     id: "platres",
@@ -721,6 +739,8 @@ export const villages: Attraction[] = [
     openingHours: "Rose factory 8 to 17; tours by arrangement",
     transport: "1 hr from Limassol. Mountain road via Troodos",
     parking: "Village centre; free",
+    latitude: 34.92,
+    longitude: 33.0,
   },
   {
     id: "fikardou",
@@ -737,6 +757,8 @@ export const villages: Attraction[] = [
     openingHours: "Museum 9 to 16; village always open",
     transport: "45 min from Nicosia. Mountain road via Gourri",
     parking: "Village entrance; free",
+    latitude: 34.97,
+    longitude: 33.18,
   },
   {
     id: "koilani",
@@ -755,6 +777,8 @@ export const villages: Attraction[] = [
     transport: "50 min from Limassol. Krasochoria route",
     parking: "Village square; free",
     combineWith: ["vlassides", "omodos", "pera-pedi"],
+    latitude: 34.823,
+    longitude: 32.892,
   },
   {
     id: "lefkara-kato",
@@ -770,6 +794,8 @@ export const villages: Attraction[] = [
     nameEl: "Κάτω Λεύκαρα",
     culturalNote: "Same Lefkaritiko lace as Pano; often better prices and more time to browse.",
     combineWith: ["lefkara", "choirokoitia", "domes-sergiou"],
+    latitude: 34.865,
+    longitude: 33.31,
   },
   {
     id: "vavla",
@@ -784,6 +810,8 @@ export const villages: Attraction[] = [
     localSecret: "Stay a night. You'll want two. The lanes. The pace. Vavla sits between worlds. Use it as a base. Or just pass through. But stay if you can.",
     nameEl: "Βαυλά",
     combineWith: ["lefkara", "choirokoitia", "domes-sergiou"],
+    latitude: 34.87,
+    longitude: 33.27,
   },
   {
     id: "galata",
@@ -797,6 +825,8 @@ export const villages: Attraction[] = [
     localSecret: "Panagia Podithou. UNESCO. The key. Ask. The frescoes are worth the hunt. The Cold River runs through. Stand on the bridge. Breathe.",
     nameEl: "Γαλάτα",
     bestFor: ["Byzantine art", "Troodos villages", "Culture"],
+    latitude: 34.99,
+    longitude: 32.89,
   },
   {
     id: "zodiakos",
@@ -811,6 +841,8 @@ export const villages: Attraction[] = [
     localSecret: "Stand in the square. Look west. The coast. On a clear winter day the light is magic. Zodiakos doesn't ask for much. A moment. That's all.",
     nameEl: "Ζωδιακός",
     combineWith: ["vasilikon", "vouni-panayia", "adonis"],
+    latitude: 34.94,
+    longitude: 32.42,
   },
   {
     id: "kato-drys",
@@ -826,6 +858,8 @@ export const villages: Attraction[] = [
     nameEl: "Κάτω Δρύς",
     culturalNote: "Lefkaritiko-style lace; often less crowded than Lefkara. Combine with Choirokoitia for a Larnaca hinterland day.",
     combineWith: ["lefkara", "choirokoitia", "stavrovouni", "domes-sergiou"],
+    latitude: 34.851,
+    longitude: 33.304,
   },
   {
     id: "louvaras",
@@ -840,6 +874,8 @@ export const villages: Attraction[] = [
     localSecret: "Start here and work your way up to Omodos and Koilani. Or do it backwards. The road rewards both directions.",
     nameEl: "Λούβαρας",
     combineWith: ["omodos", "koilani", "pera-pedi"],
+    latitude: 34.84,
+    longitude: 32.88,
   },
   {
     id: "lofou",
@@ -854,6 +890,8 @@ export const villages: Attraction[] = [
     localSecret: "Fewer tour buses than Omodos. The kafenions that locals use. The road between Lofou and Omodos is one of the prettiest in the Krasochoria.",
     nameEl: "Λόφου",
     combineWith: ["omodos", "krasas", "monagri"],
+    latitude: 34.86,
+    longitude: 32.87,
   },
   {
     id: "kampi-farmaka",
@@ -870,6 +908,8 @@ export const villages: Attraction[] = [
     transport: "55 km from Nicosia. Mountain road",
     parking: "Village centre",
     combineWith: ["pedoulas", "kykkos"],
+    latitude: 34.98,
+    longitude: 33.12,
   },
   {
     id: "koili",
@@ -884,6 +924,8 @@ export const villages: Attraction[] = [
     localSecret: "Ancient olives. A thousand years. The square. Backgammon. The village refuses to modernise. That's the gift.",
     nameEl: "Κοίλι",
     combineWith: ["chrysorrogiatissa", "polis", "vouni-panayia"],
+    latitude: 34.88,
+    longitude: 32.51,
   },
   {
     id: "kritou-terra",
@@ -899,6 +941,8 @@ export const villages: Attraction[] = [
     nameEl: "Κρήτου Τέρρα",
     transport: "Above Polis. Scenic road to Akamas",
     combineWith: ["adonis", "aphrodite", "polis", "lara-bay"],
+    latitude: 35.05,
+    longitude: 32.44,
   },
   {
     id: "kormakitis",
@@ -915,6 +959,8 @@ export const villages: Attraction[] = [
     transport: "North Cyprus. Car required",
     parking: "Village square",
     combineWith: ["bellapais", "st-hilarion"],
+    latitude: 35.34,
+    longitude: 33.06,
   },
 ];
 

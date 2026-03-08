@@ -32,7 +32,7 @@ export default function TimelineRow({
           <span className="w-8 h-8 rounded-full bg-sand-200/80 text-olive/50 flex items-center justify-center text-sm font-semibold">
             {index}
           </span>
-          {showConnector && <span className="w-0.5 h-4 sm:h-6 bg-sand-200/80 mt-2 shrink-0" aria-hidden />}
+          {showConnector && <span className="w-px h-4 sm:h-5 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
         </div>
         <div className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}>
           <span className="text-sm text-olive/60 italic">This place was removed from our list</span>
@@ -50,10 +50,10 @@ export default function TimelineRow({
   }
   const isLastAdded = lastAddedId === id;
   return (
-    <div ref={isLastAdded ? lastAddedCardRef : undefined} className="flex gap-4">
+    <div ref={isLastAdded ? lastAddedCardRef : undefined} className="flex gap-4 transition-opacity duration-200">
       <div className="flex flex-col items-center shrink-0">
         <span
-          className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 ${
+          className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
             isLastAdded
               ? "bg-terracotta text-white ring-2 ring-terracotta/40 ring-offset-2 ring-offset-white"
               : "bg-sand-200/80 text-olive/70"
@@ -61,7 +61,7 @@ export default function TimelineRow({
         >
           {index}
         </span>
-        {showConnector && <span className="w-0.5 h-4 sm:h-6 bg-sand-200/80 mt-2 shrink-0" aria-hidden />}
+        {showConnector && <span className="w-px h-4 sm:h-5 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
       </div>
       <div className="flex-1 min-w-0 py-1">
         <ItineraryCard

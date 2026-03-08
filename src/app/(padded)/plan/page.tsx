@@ -98,7 +98,7 @@ export default function PlanPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 flex flex-col gap-12 sm:gap-16`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 flex flex-col gap-10 sm:gap-14`}
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
@@ -119,12 +119,12 @@ export default function PlanPage() {
 
         {searchParams.get("add") === "failed" && (
           <div
-            className="mb-4 p-4 rounded-xl bg-terracotta/10 border border-terracotta/30 text-sm text-olive"
+            className="p-4 sm:p-5 rounded-xl bg-terracotta/5 border border-terracotta/25 text-sm text-olive"
             role="alert"
             aria-live="assertive"
           >
             <p className="mb-3">That place isn&apos;t in our list anymore.</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               <Link href="/discover" className={CTA.secondaryCompact}>
                 Browse Discover
               </Link>
@@ -135,7 +135,7 @@ export default function PlanPage() {
           </div>
         )}
 
-        <header role="banner" className="space-y-0">
+        <header role="banner">
           <ListPageHero
             backHref="/"
             backLabel="Home"
@@ -177,7 +177,7 @@ export default function PlanPage() {
         {datesHydrated && withinSevenDays && daysUntil !== null && (
           <div
             role="status"
-            className={`${CALLOUT.tip} px-4 py-3 sm:px-5 sm:py-4`}
+            className={`${CALLOUT.tip} px-4 py-3 sm:px-5 sm:py-4 transition-opacity duration-200`}
           >
             <p className="text-sm font-medium text-olive">
               {daysUntil === 0
@@ -223,7 +223,7 @@ export default function PlanPage() {
           <div
             role="region"
             aria-label="Winery bookings"
-            className="flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px]"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px] py-1"
           >
             <Link href="/bookings" className={CTA.primaryCompact}>
               Book tastings
@@ -294,8 +294,8 @@ export default function PlanPage() {
           onScrollToQuickStart={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
 
-        <footer className={SECTION.footerBlock}>
-          <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-4">
+        <footer className={`${SECTION.footerBlock} pt-8 sm:pt-10`}>
+          <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-4 max-w-xl mx-auto">
             Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
           </p>
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">

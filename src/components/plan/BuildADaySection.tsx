@@ -37,10 +37,10 @@ export default function BuildADaySection() {
       className={`${SECTION.pySub} rounded-2xl ${SECTION.alt}`}
     >
       <header>
-        <p id="build-a-day-kicker" className={`${TYPE.kicker} mb-1`}>
+        <p id="build-a-day-kicker" className={`${TYPE.kicker} mb-1.5`}>
           Curated combos
         </p>
-        <h2 id="build-a-day-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+        <h2 id="build-a-day-heading" className={`${TYPE.sectionTitle} tracking-tight ${SECTION.titleGap}`}>
           Build a day
         </h2>
         <p className={`text-sm text-olive/70 max-w-xl break-words leading-relaxed ${SECTION.headingGap}`}>
@@ -55,9 +55,9 @@ export default function BuildADaySection() {
           return (
             <article
               key={combo.label}
-              className={`${CARD.base} ${CARD.content} ${CARD.hover} bg-white/95 border-sand-200/80 flex flex-col group`}
+              className={`${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} bg-white/95 border-sand-200/80 flex flex-col group transition-all duration-200`}
             >
-              <h3 className="font-display font-semibold text-charcoal text-base mb-1.5 group-hover:text-terracotta transition-colors">
+              <h3 className="font-display font-semibold text-charcoal text-base mb-1.5 group-hover:text-terracotta transition-colors duration-200">
                 {combo.label}
               </h3>
               <p className="text-sm text-olive/70 mb-3 leading-relaxed">
@@ -88,7 +88,7 @@ export default function BuildADaySection() {
               </ul>
               <Link
                 href={`/plan?add=${addIds}`}
-                className={`w-full ${CTA.primaryCompact}`}
+                className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100`}
                 aria-label={`Add ${combo.label} to plan`}
               >
                 Add to plan

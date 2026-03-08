@@ -31,7 +31,7 @@ export default function DaySelector({
               "sticky z-10",
               LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
-              "pt-3 pb-3 sm:pt-4 sm:pb-4 mb-6 sm:mb-8 bg-sand-100/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand-100/90 border-b border-sand-200/80",
+              "pt-3 pb-3 sm:pt-4 sm:pb-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-md supports-[backdrop-filter]:bg-sand/95 border-b border-sand-200/80 shadow-[0_1px_0_0_rgba(234,230,223,0.5)]",
             ].join(" ")
           : "mb-4 sm:mb-6"
       }`}

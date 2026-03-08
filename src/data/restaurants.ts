@@ -65,6 +65,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["choirokoitia", "lefkara", "lefkara-path", "angeloktisti", "cape-greco", "lefkara-kato"],
     transport: "Zygi harbour, between Larnaca and Limassol. ~25 min from Larnaca.",
     parking: "Harbour area.",
+    latitude: 34.73,
+    longitude: 33.35,
     priceRange: "€€",
   },
   {
@@ -85,6 +87,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["governors-beach", "kourion", "kolossi", "kourion-tavernas", "zambartas"],
     transport: "Governor's Beach, between Limassol and Larnaca. ~20 min from Limassol.",
     parking: "Cliff and beach parking.",
+    latitude: 34.641,
+    longitude: 33.146,
     priceRange: "€€",
   },
   {
@@ -103,6 +107,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Dinner; book well ahead",
     localSecret: "The Polo has held the top spot for two consecutive years. Balanced flavours, impeccable technique.",
     combineWith: ["kourion", "kolossi", "governors-beach"],
+    latitude: 34.672,
+    longitude: 33.05,
     priceRange: "€€€",
   },
   {
@@ -123,6 +129,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["adonis", "aphrodite", "smigies", "vasilikon", "sygkrasi", "kathikas-tavernas"],
     transport: "Kathikas village. On the Akamas–Laona loop. ~35 min from Paphos.",
     parking: "Village parking; book ahead.",
+    latitude: 34.839,
+    longitude: 32.382,
     priceRange: "€€€",
   },
   {
@@ -143,6 +151,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["artemis", "caledonia-falls", "platres", "atalante", "persephone"],
     transport: "Platres village, by the Kryos Potamos. ~45 min from Limassol.",
     parking: "Village parking; walk to the river.",
+    latitude: 34.88,
+    longitude: 32.87,
     priceRange: "€€",
   },
   {
@@ -163,6 +173,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["adonis", "aphrodite", "smigies", "vasilikon", "polis", "latsi-harbour"],
     transport: "Polis harbour, Akamas gateway. ~45 min from Paphos.",
     parking: "Harbour area; fills at weekend lunch.",
+    latitude: 35.035,
+    longitude: 32.425,
     priceRange: "€€",
   },
   {
@@ -180,6 +192,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Dinner; book ahead",
     localSecret: "French-inspired with Mediterranean fusion. Top-tier execution. Winter terrace.",
     combineWith: ["kourion", "kolossi", "governors-beach"],
+    latitude: 34.68,
+    longitude: 33.04,
     priceRange: "€€€",
   },
   {
@@ -197,6 +211,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Lunch or dinner; combine with museum",
     localSecret: "When the coast doesn't call. Nicosia has its own scene. Sentio leads it.",
     combineWith: ["leventis-museum", "cyprus-museum"],
+    latitude: 35.18,
+    longitude: 33.38,
     priceRange: "€€€",
   },
   {
@@ -217,6 +233,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["caledonia-falls", "kampos-tou-livadiou", "kryos-potamos-loop", "kakopetria"],
     transport: "Kakopetria village, Solea Valley. ~55 min from Limassol.",
     parking: "Village parking; some tavernas by the river.",
+    latitude: 34.988,
+    longitude: 32.902,
     priceRange: "€€",
   },
   {
@@ -234,6 +252,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Lunch; 12 to 2pm or sunset",
     localSecret: "Their Ayios Onoufrios red pairs with Cypriot meze. Ask for a wine-paired lunch.",
     combineWith: ["santo", "kourion", "governors-beach"],
+    latitude: 34.72,
+    longitude: 33.05,
     priceRange: "€€",
   },
   {
@@ -254,6 +274,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["palaipafos", "tomb-of-kings", "pafos-mosaics", "petra-tou-romiou"],
     transport: "Kouklia village, near Palaipafos. ~25 min from Paphos.",
     parking: "Village; near ancient site.",
+    latitude: 34.707,
+    longitude: 32.574,
     priceRange: "€",
   },
   {
@@ -271,6 +293,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Dinner; book well ahead",
     localSecret: "Cantonese-based, head chef Guan Ruijiong. A different flavour to Mediterranean Cyprus.",
     combineWith: ["kourion", "kolossi", "governors-beach"],
+    latitude: 34.683,
+    longitude: 33.045,
     priceRange: "€€€",
   },
   {
@@ -291,6 +315,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["angeloktisti", "lefkara", "zygi-tavernas", "choirokoitia", "larnaca-salt-lake"],
     transport: "Kiti village, near Larnaca airport. ~15 min from Larnaca.",
     parking: "Village; near church.",
+    latitude: 34.84,
+    longitude: 33.57,
     priceRange: "€",
   },
   {
@@ -311,6 +337,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["artemis", "caledonia-falls", "atalante", "platres", "psilo-dendro", "kampos-tou-livadiou"],
     transport: "Platres village. ~45 min from Limassol.",
     parking: "Village parking; walk to river tavernas.",
+    latitude: 34.88,
+    longitude: 32.87,
     priceRange: "€€",
   },
   {
@@ -331,6 +359,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["adonis", "aphrodite", "smigies", "polis", "polis-harbour", "vasilikon"],
     transport: "Latsi harbour, north of Polis. ~40 min from Paphos.",
     parking: "Harbour area.",
+    latitude: 35.05,
+    longitude: 32.38,
     priceRange: "€€",
   },
   {
@@ -348,6 +378,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Lunch or dinner; reserve for popular spots",
     localSecret: "The old town rhythm. Meze, halloumi, the pace of the capital.",
     combineWith: ["leventis-museum", "cyprus-museum", "sentio"],
+    latitude: 35.18,
+    longitude: 33.38,
     priceRange: "€€",
   },
   {
@@ -390,6 +422,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["omodos", "tsiakkas", "oenou-yi", "lania", "loukas", "artemis"],
     transport: "Omodos village, Krasochoria. ~40 min from Limassol.",
     parking: "Village square; fills at weekends.",
+    latitude: 34.847,
+    longitude: 32.808,
     priceRange: "€€",
   },
   {
@@ -447,6 +481,8 @@ export const restaurants: Restaurant[] = [
     id: "protaras-tavernas",
     name: "Protaras Tavernas",
     region: "Famagusta",
+    latitude: 35.01,
+    longitude: 34.06,
     description:
       "Protaras waterfront and inland. Fish tavernas by the sea; village meze spots. Winter: fewer crowds, mild evenings. Do the Cape Greco trail in the morning, Protaras for lunch. Fig Tree Bay and Konnos are nearby. The pace is slower than summer. Reserve for popular spots.",
     type: "restaurant",
@@ -477,6 +513,8 @@ export const restaurants: Restaurant[] = [
     winterTip: "Mild winter. Finikoudes and backstreets. Salt Lake flamingos nearby.",
     localSecret: "Seafront and old town. Meze, fish. The city rhythm.",
     combineWith: ["larnaca-salt-lake", "kiti-tavernas", "choirokoitia", "zygi-tavernas"],
+    latitude: 34.92,
+    longitude: 33.63,
     priceRange: "€€",
   },
   {
@@ -493,6 +531,8 @@ export const restaurants: Restaurant[] = [
     winterTip: "Harbour views. Winter sunsets. Castle lights at dusk.",
     localSecret: "Harbour and castle. Fish, meze. Dusk is the hour.",
     combineWith: ["pafos-mosaics", "tomb-of-kings", "coral-bay"],
+    latitude: 34.755,
+    longitude: 32.408,
     priceRange: "€€",
   },
   {
@@ -513,6 +553,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["agros", "machairas", "xyliatos-dam", "machairas-forest", "fikardou"],
     transport: "Agros village, Pitsilia. ~50 min from Limassol.",
     parking: "Village parking.",
+    latitude: 34.92,
+    longitude: 33.0,
     priceRange: "€€",
   },
   {
@@ -537,6 +579,8 @@ export const restaurants: Restaurant[] = [
     bestTimeToVisit: "Lunch after lace shopping; weekday mornings for fewer crowds. March for the Lace Festival.",
     localSecret: "Start in Kato Lefkara. Quieter. Same lace, often better prices. Walk up to Pano when ready. Both have tavernas. The stone rewards slow wandering.",
     combineWith: ["lefkara", "lefkara-path", "lefkara-kato", "lefkara-lace-festival", "choirokoitia", "zygi-tavernas"],
+    latitude: 34.868,
+    longitude: 33.305,
     priceRange: "€€",
     transport: "30 min from Larnaca. Bus 429 to Lefkara.",
     parking: "Free at village entrance; fills on weekends and during the Lace Festival.",
@@ -576,6 +620,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["adonis", "aphrodite", "smigies", "the-farmyard", "vasilikon", "sygkrasi"],
     transport: "Kathikas village. On the Akamas–Laona loop. ~35 min from Paphos.",
     parking: "Village parking.",
+    latitude: 34.839,
+    longitude: 32.382,
     priceRange: "€€",
   },
   {
@@ -610,6 +656,8 @@ export const restaurants: Restaurant[] = [
     winterTip: "Harbour and castle. Mild in winter. Check access.",
     localSecret: "Harbour heart. Fish, views. Bellapais and St Hilarion nearby.",
     combineWith: ["bellapais", "st-hilarion", "pentadaktylos"],
+    latitude: 35.34,
+    longitude: 33.32,
     priceRange: "€€",
   },
   {
@@ -626,6 +674,8 @@ export const restaurants: Restaurant[] = [
     winterTip: "Off-season Ayia Napa. Village square, harbour. Another side.",
     localSecret: "Beyond the clubs. Village square, fish. Winter reveals authenticity.",
     combineWith: ["ayia-napa-sea-caves", "cape-greco", "nissi-beach"],
+    latitude: 34.99,
+    longitude: 34.0,
     priceRange: "€€",
   },
   {
@@ -646,6 +696,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["artemis", "atalante", "persephone", "livadi-trail", "olympus-summit"],
     transport: "Troodos Square, 1,750m. ~1hr from Limassol.",
     parking: "Square and visitor centre; fills at weekends.",
+    latitude: 34.93,
+    longitude: 32.87,
     priceRange: "€",
   },
   {
@@ -666,6 +718,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["kakopetria", "mylikouri", "kampos-tou-livadiou", "kryos-potamos-loop", "st-nicholas-roof"],
     transport: "Solea Valley. Kakopetria ~55 min from Limassol.",
     parking: "Village parking.",
+    latitude: 34.98,
+    longitude: 32.91,
     priceRange: "€€",
   },
   {
@@ -682,6 +736,8 @@ export const restaurants: Restaurant[] = [
     winterTip: "Back-street Zygi. Locals' Sunday. Less touristy.",
     localSecret: "Mikri marina. The locals' Zygi. Slow pace, fresh fish.",
     combineWith: ["choirokoitia", "lefkara", "zygi-tavernas"],
+    latitude: 34.72,
+    longitude: 33.36,
     priceRange: "€€",
   },
   {
@@ -702,6 +758,8 @@ export const restaurants: Restaurant[] = [
     combineWith: ["kourion", "kolossi", "governors-beach", "zambartas", "governors-beach-tavernas"],
     transport: "Episkopi village, near Kourion. ~25 min from Limassol.",
     parking: "Village and near Kourion.",
+    latitude: 34.67,
+    longitude: 32.89,
     priceRange: "€€",
   },
 ];

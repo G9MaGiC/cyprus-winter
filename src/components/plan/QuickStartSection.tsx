@@ -52,7 +52,7 @@ export default function QuickStartSection({
         key={template.key}
         type="button"
         onClick={() => onTemplateClick(template.key)}
-        className={`text-left min-h-[72px] sm:min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
+        className={`text-left min-h-[72px] sm:min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
           isRecommended ? "border-aegean/30 bg-aegean/5" : ""
         }`}
         aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
@@ -81,7 +81,7 @@ export default function QuickStartSection({
   return (
     <section aria-labelledby="quick-start-heading" className="space-y-6 sm:space-y-8">
       <header>
-        <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+        <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} tracking-tight ${SECTION.titleGap}`}>
           Start here
         </h2>
         <p className={`text-sm text-olive/70 max-w-xl break-words leading-relaxed ${SECTION.headingGap}`}>

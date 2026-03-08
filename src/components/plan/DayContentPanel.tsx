@@ -41,9 +41,9 @@ export default function DayContentPanel({
   const activeDayItems = activeItems;
 
   return (
-    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-8">
+    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
-        <div className={`${CARD.base} overflow-hidden ${CARD.hover}`}>
+        <div className={`${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight">
@@ -74,9 +74,9 @@ export default function DayContentPanel({
 
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
-              <div className={`${EMPTY_STATE_DASHED} py-14 sm:py-20 px-6 bg-sand-100/40 transition-colors duration-200`}>
-                <p className="font-display text-lg font-semibold text-olive mb-2">Start Day {activeDay}</p>
-                <p className="text-sm text-olive/70 mb-5 leading-relaxed">Add your first place — trail, village, or winery.</p>
+              <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-6 bg-sand-100/50 transition-colors duration-200`}>
+                <p className="font-display text-xl font-semibold text-olive mb-2 tracking-tight">Start Day {activeDay}</p>
+                <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">Add your first place — trail, village, or winery.</p>
                 <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                   <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}>
                     Add place
@@ -154,7 +154,7 @@ export default function DayContentPanel({
         </div>
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
-        <div id="plan-inline-add" className="transition-opacity duration-200">
+        <div id="plan-inline-add">
           <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all." : undefined} borderAccent="terracotta">
             <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x scrollbar-none [scrollbar-width:none]">
               {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {

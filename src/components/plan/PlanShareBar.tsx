@@ -50,20 +50,19 @@ export default function PlanShareBar({
     <div
       role="region"
       aria-label="Itinerary summary and share"
-      className={`${STRIP.py} bg-sand-100/60 border-y border-sand-200/80 ${LAYOUT.stickyBarX}`}
+      className={`${STRIP.py} bg-sand-100/70 border-y border-sand-200/80 ${LAYOUT.stickyBarX}`}
     >
       <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-4`}>
-        <p className="text-sm text-olive/70" aria-live="polite" role="status">
+        <p className="text-sm text-olive/80 leading-relaxed" aria-live="polite" role="status">
           <span className="font-semibold text-terracotta tabular-nums">{totalPlaces}</span> places in{" "}
-          <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/
-          {displayDaysCount} days · Auto-saved
+          <span className="font-semibold text-aegean tabular-nums">{activeDaysCount}</span>/{displayDaysCount} days · Auto-saved
         </p>
         <div className="relative" ref={shareMenuRef}>
           <button
             ref={shareMenuTriggerRef}
             type="button"
             onClick={() => setShareMenuOpen((v) => !v)}
-            className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta hover:bg-terracotta/5 border border-sand-200/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta hover:bg-terracotta/5 border border-sand-200/80 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-expanded={shareMenuOpen}
             aria-haspopup="true"
           >
@@ -73,7 +72,7 @@ export default function PlanShareBar({
             </span>
           </button>
           {shareMenuOpen && (
-            <div className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-background border border-sand-200/80 shadow-lg min-w-[180px] z-10">
+            <div className="absolute right-0 top-full mt-1 py-2 rounded-xl bg-background border border-sand-200/80 shadow-lg min-w-[200px] z-10 section-reveal">
               <button
                 ref={shareMenuFirstItemRef}
                 type="button"
