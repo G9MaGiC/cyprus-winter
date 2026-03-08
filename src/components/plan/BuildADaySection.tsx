@@ -47,7 +47,7 @@ export default function BuildADaySection() {
           Morning at one place, afternoon at another. These flow.
         </p>
       </header>
-      <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {DAY_COMBOS.map((combo) => {
           const places = getRelatedPlaces(combo.ids);
           if (places.length === 0) return null;
@@ -55,25 +55,25 @@ export default function BuildADaySection() {
           return (
             <article
               key={combo.label}
-              className={`${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} bg-white/95 border-sand-200/80 flex flex-col group transition-all duration-200`}
+              className={`${CARD.planCombo} ${CARD.interactive} p-5 sm:p-6 flex flex-col group transition-all duration-200`}
             >
-              <h3 className={`${TYPE.cardTitle} mb-1.5`}>
+              <h3 className={`${TYPE.cardTitle} text-base sm:text-lg mb-2`}>
                 {combo.label}
               </h3>
-              <p className="text-sm text-olive/70 mb-3 leading-relaxed">
+              <p className="text-sm text-olive/70 mb-4 leading-relaxed">
                 {combo.why}
               </p>
               {combo.tip && (
-                <p className="text-xs text-olive/60 mb-3 italic border-l-2 border-l-golden/40 pl-2.5">
+                <p className="text-xs text-olive/60 mb-4 italic border-l-2 border-l-golden/40 pl-3">
                   {combo.tip}
                 </p>
               )}
-              <div className="flex items-center gap-1.5 text-xs text-olive/50 mb-3 uppercase tracking-wider" aria-hidden>
+              <div className="flex items-center gap-1.5 text-xs text-olive/50 mb-4 uppercase tracking-wider" aria-hidden>
                 <span>Morning</span>
                 <span aria-hidden>→</span>
                 <span>Afternoon</span>
               </div>
-              <ul className="space-y-2 mb-4 flex-1">
+              <ul className="space-y-2.5 mb-5 flex-1 min-h-0">
                 {places.map((p) => (
                   <li key={p.id} className="flex items-start gap-2 min-w-0">
                     {typeBadge(p.type)}

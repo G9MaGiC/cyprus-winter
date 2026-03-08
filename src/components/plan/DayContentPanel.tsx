@@ -43,7 +43,7 @@ export default function DayContentPanel({
   return (
     <section aria-label="Your itinerary" className="space-y-5 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-5 sm:space-y-8">
-        <div className={`${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
+        <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight">

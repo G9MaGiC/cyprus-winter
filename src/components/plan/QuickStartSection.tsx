@@ -52,7 +52,7 @@ export default function QuickStartSection({
         key={template.key}
         type="button"
         onClick={() => onTemplateClick(template.key)}
-        className={`text-left min-h-[72px] sm:min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
+        className={`text-left min-h-[88px] sm:min-h-[96px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
           isRecommended ? "border-aegean/30 bg-aegean/5" : ""
         }`}
         aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
@@ -141,9 +141,9 @@ export default function QuickStartSection({
         {recommended.length > 0 && (
           <div className="space-y-3">
             <span className={`${TYPE.kicker} block`}>For your {tripLength}-day trip</span>
-            <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
+            <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
               {recommended.map((template) => (
-                <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
+                <div key={template.key} className="shrink-0 w-[88vw] max-w-[320px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
                   {renderTemplateCard(template, true)}
                 </div>
               ))}
@@ -154,9 +154,9 @@ export default function QuickStartSection({
           <span className={`${TYPE.kicker} block`}>
             {recommended.length > 0 ? "Other templates" : "Templates"}
           </span>
-          <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
+          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
           {others.map((template) => (
-            <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
+            <div key={template.key} className="shrink-0 w-[88vw] max-w-[320px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
               {renderTemplateCard(template, false)}
             </div>
           ))}

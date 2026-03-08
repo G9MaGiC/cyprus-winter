@@ -177,6 +177,12 @@ export const CARD = {
   content: "p-5 sm:p-6",
   /** Content-heavy sections (code blocks, long text) */
   contentLg: "p-6 sm:p-8",
+  /** Plan page combo cards — larger, softer */
+  planCombo:
+    "rounded-2xl bg-white/98 border border-sand-200/80 shadow-[0_2px_16px_rgba(37,39,48,0.06)] hover:border-terracotta/25 hover:shadow-[0_8px_28px_rgba(37,39,48,0.1)]",
+  /** Plan page template cards — compact but tap-friendly */
+  planTemplate:
+    "rounded-2xl bg-white/98 border border-sand-200/80 shadow-[0_2px_12px_rgba(37,39,48,0.05)] hover:border-terracotta/25 hover:shadow-[0_6px_20px_rgba(37,39,48,0.08)]",
   footer: "px-5 sm:px-6 pb-5 sm:pb-6 -mt-2",
 } as const;
 

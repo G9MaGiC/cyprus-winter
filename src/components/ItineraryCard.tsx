@@ -21,7 +21,7 @@ function TypeBadge({ type }: { type: PlanItem["type"] }) {
     restaurant: "Eat",
   };
   return (
-    <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${style[type]}`}>{label[type]}</span>
+    <span className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium ${style[type]}`}>{label[type]}</span>
   );
 }
 
@@ -50,7 +50,7 @@ export default function ItineraryCard({
   return (
     <div
       ref={lastAdded && !inTimeline ? cardRef : undefined}
-      className={`group flex items-center gap-4 ${CARD.content} ${CARD.base} transition-all duration-200 ${
+      className={`group flex items-center gap-4 rounded-2xl ${CARD.content} ${CARD.base} transition-all duration-200 ${
         lastAdded
           ? "ring-2 ring-terracotta/40 border-terracotta/30 shadow-md"
           : CARD.hover
@@ -69,7 +69,7 @@ export default function ItineraryCard({
         </div>
         <Link
           href={href}
-          className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors block truncate min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50"
+          className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors block break-words min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50"
           title={place.name}
         >
           {place.name}
