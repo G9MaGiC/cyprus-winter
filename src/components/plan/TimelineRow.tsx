@@ -32,7 +32,7 @@ export default function TimelineRow({
           <span className="w-8 h-8 rounded-full bg-sand-200/80 text-olive/50 flex items-center justify-center text-sm font-semibold">
             {index}
           </span>
-          {showConnector && <span className="w-px h-4 sm:h-5 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
+          {showConnector && <span className="w-px h-5 sm:h-6 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
         </div>
         <div className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}>
           <span className="text-sm text-olive/60 italic">This place was removed from our list</span>
@@ -61,7 +61,7 @@ export default function TimelineRow({
         >
           {index}
         </span>
-        {showConnector && <span className="w-px h-4 sm:h-5 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
+        {showConnector && <span className="w-px h-5 sm:h-6 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
       </div>
       <div className="flex-1 min-w-0 py-1">
         <ItineraryCard

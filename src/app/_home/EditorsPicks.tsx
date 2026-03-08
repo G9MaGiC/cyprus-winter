@@ -6,11 +6,11 @@ import { homeEditorsPicks } from "@/data/home";
 
 export default function EditorsPicks() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
       {homeEditorsPicks.map((item) => (
         <div
           key={item.id}
-          className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
+          className={`overflow-hidden rounded-2xl ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
         >
           <Link href={item.href} prefetch="auto" className={`block flex-1 ${CARD.link}`} aria-label={`Open ${item.title}`}>
             <div className={CARD.media}>

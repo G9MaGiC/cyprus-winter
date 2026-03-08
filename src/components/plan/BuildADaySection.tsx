@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { DAY_COMBOS } from "@/data/day-combos";
 import type { RelatedPlace } from "@/lib/related-places";
@@ -22,7 +22,7 @@ function typeBadge(type: RelatedPlace["type"]) {
   const label = labels[type];
   return (
     <span
-      className={`shrink-0 px-2 py-0.5 rounded text-xs font-medium uppercase tracking-wider ${cls[type]}`}
+      className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium uppercase tracking-wider ${cls[type]}`}
       aria-hidden
     >
       {label}
@@ -34,22 +34,20 @@ export default function BuildADaySection() {
   return (
     <section
       aria-labelledby="build-a-day-heading"
-      className={`${SECTION.pySub} px-5 sm:px-6 rounded-2xl ${SECTION.alt}`}
+      className="space-y-6 sm:space-y-8"
     >
       <header>
-        <div className="flex items-center gap-2 mb-2">
-          <span
-            id="build-a-day-kicker"
-            className="inline-flex items-center min-h-[28px] px-2.5 rounded-md bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
-            aria-hidden
-          >
-            Curated combos
-          </span>
-        </div>
-        <h2 id="build-a-day-heading" className={`font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight mb-1`}>
+        <span
+          id="build-a-day-kicker"
+          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
+          aria-hidden
+        >
+          Curated combos
+        </span>
+        <h2 id="build-a-day-heading" className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2">
           Build a day
         </h2>
-        <p className={`text-sm text-olive/70 max-w-xl break-words leading-relaxed ${SECTION.headingGap}`}>
+        <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
           Morning at one place, afternoon at another. These flow.
         </p>
       </header>
@@ -66,7 +64,7 @@ export default function BuildADaySection() {
               <h3 className={`${TYPE.cardTitle} text-base sm:text-lg mb-2`}>
                 {combo.label}
               </h3>
-              <p className={`text-sm text-olive/70 ${SECTION.headingGap} leading-relaxed`}>
+              <p className={`text-sm text-olive/70 mb-3 leading-relaxed`}>
                 {combo.why}
               </p>
               {combo.tip && (

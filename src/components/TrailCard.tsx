@@ -21,9 +21,9 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
 
   return (
     <div
-      className={`group rounded-xl overflow-hidden transition-all duration-300 ${
+      className={`group rounded-xl overflow-hidden transition-all ${
         featured
-          ? `${CARD.base} ${CARD.featured} ${CARD.hover}`
+          ? `${CARD.base} ${CARD.featured} ${CARD.hover} border-sage/20`
           : `${CARD.base} ${CARD.hover}`
       }`}
     >
@@ -68,7 +68,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
           <p className="text-sm text-olive/70 mt-1 line-clamp-1 break-words">
             {teaser}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-olive/60">
+          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-sage/80">
             <span>{trail.lengthKm} km</span>
             <span aria-hidden>·</span>
             <span>{trail.elevationGainM}m gain</span>

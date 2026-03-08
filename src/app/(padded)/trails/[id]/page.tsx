@@ -292,7 +292,7 @@ export default async function TrailPage({
               </SectionCard>
             )}
 
-            {/* Highlights + Best season + What to bring */}
+            {/* Highlights + Best season + What to bring — sage for trail/nature */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <SectionCard title="Highlights" borderAccent="sage">
                 <ul className="flex flex-wrap gap-2">

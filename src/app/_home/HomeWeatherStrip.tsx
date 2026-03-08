@@ -49,15 +49,15 @@ export default async function HomeWeatherStrip() {
   return (
     <section
       aria-labelledby="home-weather-heading"
-      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-sand/60 border-b border-sand-200/80`}
+      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-sand-100/80 border-b border-sand-200/70`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <Link
           href="/weather"
-          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center min-h-[44px] py-2"
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center min-h-[44px] py-2 group"
           aria-label="Cyprus winter weather — Coast and Troodos temperatures. Check weather."
         >
-          <span id="home-weather-heading" className="font-display font-semibold text-olive">
+          <span id="home-weather-heading" className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors">
             {coastMid}°C coast · {troodosMid}°C Troodos
           </span>
           <span className="text-sage text-sm">— {prompt}</span>

@@ -50,13 +50,17 @@ export default function PlanShareBar({
     <div
       role="region"
       aria-label="Itinerary summary and share"
-      className={`${STRIP.py} bg-sand-100/50 border-b border-sand-200/80 ${LAYOUT.stickyBarX}`}
+      className={`${STRIP.py} py-5 sm:py-6 bg-sand-100/60 border-b border-sand-200/80 ${LAYOUT.stickyBarX}`}
     >
-      <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-3 min-[400px]:gap-4`}>
-        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-olive/80 leading-relaxed min-w-0 flex-1 min-[400px]:flex-initial" aria-live="polite" role="status">
-          <span className="inline-flex items-center min-h-[24px] px-2 rounded-md bg-terracotta/10 text-terracotta font-semibold tabular-nums">{totalPlaces}</span>
+      <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-4`}>
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-olive/80 leading-relaxed min-w-0 flex-1 min-[400px]:flex-initial" aria-live="polite" role="status">
+          <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-terracotta/10 text-terracotta font-semibold tabular-nums">
+            {totalPlaces}
+          </span>
           <span className="text-olive/60">places</span>
-          <span className="inline-flex items-center min-h-[24px] px-2 rounded-md bg-aegean/10 text-aegean font-semibold tabular-nums">{activeDaysCount}/{displayDaysCount}</span>
+          <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-aegean/10 text-aegean font-semibold tabular-nums">
+            {activeDaysCount}/{displayDaysCount}
+          </span>
           <span className="text-olive/60">days</span>
           <span className="text-olive/50">· Auto-saved</span>
         </p>
@@ -65,7 +69,7 @@ export default function PlanShareBar({
             ref={shareMenuTriggerRef}
             type="button"
             onClick={() => setShareMenuOpen((v) => !v)}
-            className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta/10 text-terracotta hover:bg-terracotta/20 border border-terracotta/20 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta/10 text-terracotta hover:bg-terracotta/15 border border-terracotta/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-expanded={shareMenuOpen}
             aria-haspopup="true"
           >
@@ -76,7 +80,7 @@ export default function PlanShareBar({
           </button>
           {shareMenuOpen && (
             <div
-              className="absolute right-0 top-full mt-1 py-2 rounded-xl bg-background border border-sand-200/80 shadow-lg min-w-[200px] z-10 section-reveal"
+              className="absolute right-0 top-full mt-2 py-2 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10"
               onKeyDown={(e) => {
                 if (e.key === "Escape") {
                   setShareMenuOpen(false);
@@ -92,7 +96,7 @@ export default function PlanShareBar({
                   setShareMenuOpen(false);
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                 }}
-                className="w-full min-h-[44px] px-4 py-2 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
                 {linkCopied ? "Link copied" : "Copy link"}
               </button>
@@ -103,12 +107,12 @@ export default function PlanShareBar({
                   setShareMenuOpen(false);
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                 }}
-                className="w-full min-h-[44px] px-4 py-2 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
                 {copied ? "Copied" : "Copy itinerary (text)"}
               </button>
               <div
-                className="px-4 py-2 border-t border-sand-200/80"
+                className="px-4 py-3 mt-2 border-t border-sand-200/80"
                 onClick={() => {
                   setShareMenuOpen(false);
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());

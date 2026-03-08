@@ -83,11 +83,11 @@ export default async function ThisWeekGrid() {
     : "View trail reports";
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
       <Link
         href="/weather"
         prefetch="auto"
-        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean flex flex-col group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean rounded-xl group`}
       >
         <div className={CARD.content}>
           <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Weather</p>

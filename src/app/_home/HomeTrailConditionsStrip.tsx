@@ -31,7 +31,7 @@ export default function HomeTrailConditionsStrip() {
   return (
     <section
       aria-labelledby="trail-conditions-heading"
-      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-aegean/5 border-b border-sand-200/80`}
+      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-aegean/5 border-b border-sand-200/70`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <Link
@@ -39,29 +39,20 @@ export default function HomeTrailConditionsStrip() {
           className="flex flex-wrap items-center justify-between gap-2 min-h-[44px] py-1 group"
           aria-label="Troodos trail conditions — check status before you go"
         >
-          <div className="flex items-center gap-3">
-            <span
-              id="trail-conditions-heading"
-              className="font-display font-semibold text-olive"
-            >
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span id="trail-conditions-heading" className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors">
               Trails today
             </span>
-            <span className="flex items-center gap-2 text-sm">
-              {open > 0 && (
-                <span className="text-sage font-medium">{open} open</span>
-              )}
-              {caution > 0 && (
-                <span className="text-golden font-medium">{caution} caution</span>
-              )}
-              {closed > 0 && (
-                <span className="text-terracotta font-medium">{closed} closed</span>
-              )}
+            <span className="flex items-center gap-2 text-sm text-olive/80">
+              {open > 0 && <span className="text-sage font-medium">{open} open</span>}
+              {caution > 0 && <span className="text-golden font-medium">{caution} caution</span>}
+              {closed > 0 && <span className="text-terracotta font-medium">{closed} closed</span>}
               {open === 0 && caution === 0 && closed === 0 && (
-                <span className="text-olive/70">Check reports</span>
+                <span className="text-olive/60">Check reports</span>
               )}
             </span>
           </div>
-          <span className="text-sage text-sm group-hover:text-terracotta transition-colors">
+          <span className="text-sage text-sm group-hover:text-terracotta transition-colors shrink-0">
             {label}
           </span>
         </Link>

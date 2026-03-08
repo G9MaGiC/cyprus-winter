@@ -18,10 +18,10 @@ export default function HomeInsiderTip() {
   return (
     <section
       aria-labelledby="insider-tip-heading"
-      className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
+      className={`${SECTION.pySub} ${LAYOUT.safeAreaX} bg-sand/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <div className={`${CALLOUT.tip} px-5 sm:px-6 py-5 sm:py-6`}>
+        <div className={`${CALLOUT.tip} rounded-2xl px-5 sm:px-6 py-5 sm:py-6`}>
           <h2
             id="insider-tip-heading"
             className="font-display text-sm font-semibold uppercase tracking-wider text-golden mb-2"

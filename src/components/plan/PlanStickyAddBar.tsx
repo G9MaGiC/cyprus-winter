@@ -8,7 +8,6 @@ import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 type PlanStickyAddBarProps = {
   sentinelId: string;
   scrollTargetId: string;
-  /** When provided, clicking the bar opens this action (e.g. Browse modal) instead of scrolling */
   onAddPlaceClick?: () => void;
 };
 
@@ -77,14 +76,15 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
 
   return (
     <div
-      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomClearance} z-30 flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden section-reveal`}
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomClearance} z-30 flex items-center justify-center px-5 py-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/98 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
       aria-label="Add place"
     >
       <button
         type="button"
         onClick={handleClick}
-        className="w-full max-w-md min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold bg-terracotta text-white hover:bg-terracotta-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:active:scale-100"
+        className="w-full max-w-md min-h-[44px] px-6 py-3 rounded-xl text-base font-semibold bg-terracotta text-white hover:bg-terracotta-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:active:scale-100"
+        aria-label="Add a place to your itinerary"
       >
         Add place
       </button>

@@ -90,34 +90,31 @@ export default function HomePlaceOfDay() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div
-          className={`rounded-xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row ring-2 ring-aegean/15 shadow-lg`}
+          className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row border-2 border-aegean/15 shadow-[0_4px_20px_rgba(37,39,48,0.08)]`}
         >
           <Link
             href={place.href}
             prefetch="auto"
-            className="block sm:w-1/3 shrink-0 relative aspect-[4/3] sm:aspect-square"
+            className="block sm:w-2/5 shrink-0 relative aspect-[4/3] sm:aspect-square"
             aria-label={`Open ${place.name}`}
           >
             <Image
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 640px) 100vw, 33vw"
+              className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent"
               aria-hidden
             />
             <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
           </Link>
-          <div className={`flex-1 flex flex-col ${CARD.content}`}>
-            <p
-              id="place-of-day-heading"
-              className="text-xs font-medium uppercase tracking-wider text-sage prose-label"
-            >
+          <div className={`flex-1 flex flex-col ${CARD.content} sm:p-6 lg:p-8`}>
+            <p id="place-of-day-heading" className={`text-sage prose-label mb-1`}>
               Place of the day
             </p>
             <Link

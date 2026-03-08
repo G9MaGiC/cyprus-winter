@@ -32,15 +32,15 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
     >
       <div
         ref={modalRef}
-        className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
+        className={`w-full max-w-md ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl rounded-2xl`}
       >
-        <h2 id="template-choice-title" className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>
+        <h2 id="template-choice-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           Apply {templateLabel}?
         </h2>
-        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words`}>
-          Add to your plan or replace what you have. Your choice.
+        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
+          Add to your plan or replace what you have.
         </p>
-        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-end">
+        <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end pt-2">
           <button
             type="button"
             onClick={onClose}
@@ -58,7 +58,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
           <button
             type="button"
             onClick={onAddToPlan}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
+            className="min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
           >
             Add to my plan
           </button>

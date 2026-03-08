@@ -32,26 +32,26 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
     >
       <div
         ref={modalRef}
-        className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
+        className={`w-full max-w-md ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl rounded-2xl`}
       >
-        <h2 id="clear-day-title" className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>
+        <h2 id="clear-day-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           Clear Day {activeDay}?
         </h2>
-        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words`}>
-          Remove all {placeCount} {placeCount === 1 ? "place" : "places"} from Day {activeDay}? You can add them back anytime.
+        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
+          Remove all {placeCount} {placeCount === 1 ? "place" : "places"} from Day {activeDay}. You can add them back anytime.
         </p>
-        <div className="flex flex-col-reverse sm:flex-row gap-3 justify-end">
+        <div className="flex flex-col-reverse sm:flex-row gap-3 justify-end pt-2">
           <button
             type="button"
             onClick={onClose}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={onConfirm}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
           >
             Clear day
           </button>

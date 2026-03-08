@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 
 type DaySelectorProps = {
@@ -25,21 +25,21 @@ export default function DaySelector({
   return (
     <section
       aria-label="Select day"
-      className={`${
+      className={
         hasContent
           ? [
               "sticky z-10",
               LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
-              "pt-3 pb-3 sm:pt-4 sm:pb-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-md supports-[backdrop-filter]:bg-sand/95 border-b border-sand-200/80 shadow-[0_1px_0_0_rgba(234,230,223,0.5)]",
+              "pt-4 pb-4 sm:pt-5 sm:pb-5 mb-6 sm:mb-8 bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",
             ].join(" ")
-          : SECTION.headingGap
-      }`}
+          : "mb-6 sm:mb-8"
+      }
     >
       <div
         role="tablist"
         aria-label="Select day"
-        className="flex gap-1.5 sm:gap-2 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x"
+        className="flex gap-2 sm:gap-2.5 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x"
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t.getAttribute("role") !== "tab") return;
@@ -73,10 +73,10 @@ export default function DaySelector({
               aria-controls="day-panel"
               tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveDay(d)}
-              className={`shrink-0 snap-center min-w-[3.25rem] min-[400px]:min-w-[3.5rem] sm:min-w-[4.5rem] px-2.5 min-[360px]:px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
+              className={`shrink-0 snap-center min-w-[3.5rem] min-[400px]:min-w-[3.75rem] sm:min-w-[4.5rem] px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                 isActive
-                  ? "bg-terracotta text-white shadow-sm border border-terracotta/80"
-                  : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/25 hover:bg-sand-100/60"
+                  ? "bg-terracotta text-white shadow-sm"
+                  : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/60"
               }`}
             >
               {count > 0 ? `Day ${d} · ${count}` : `Day ${d}`}
@@ -86,7 +86,7 @@ export default function DaySelector({
       </div>
 
       {hasContent && (
-        <details className="group mt-3 sm:mt-4 hidden sm:block">
+        <details className="group mt-4 sm:mt-5 hidden sm:block">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl">
             <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/70 hover:text-terracotta min-h-[44px] py-2.5 px-3 rounded-xl hover:bg-terracotta/5 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
               {activeDaysCount > 1 ? `View all ${activeDaysCount} days` : "View all days"}
@@ -105,7 +105,7 @@ export default function DaySelector({
                   key={d}
                   type="button"
                   onClick={() => setActiveDay(d)}
-                  className={`w-full min-h-[44px] text-left px-4 py-3 rounded-lg text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  className={`w-full min-h-[44px] text-left px-4 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     isActive ? "bg-terracotta/10 text-terracotta font-medium" : "bg-sand-100/60 text-olive/80 hover:bg-sand-200/60"
                   }`}
                 >

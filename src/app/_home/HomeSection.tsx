@@ -4,20 +4,29 @@ type HomeSectionProps = {
   id: string;
   title: string;
   subtitle?: string;
+  kicker?: string;
   alt?: boolean;
   children: React.ReactNode;
 };
 
-export default function HomeSection({ id, title, subtitle, alt, children }: HomeSectionProps) {
+export default function HomeSection({ id, title, subtitle, kicker, alt, children }: HomeSectionProps) {
   return (
-    <section aria-labelledby={id} className={`${SECTION.py} ${alt ? SECTION.alt : ""} ${LAYOUT.safeAreaX}`}>
+    <section
+      aria-labelledby={id}
+      className={`${SECTION.py} ${alt ? SECTION.alt : "bg-background"} ${LAYOUT.safeAreaX} scroll-mt-24`}
+    >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <h2 id={id} className={`${TYPE.sectionTitle} text-center ${SECTION.titleGap} scroll-mt-24`}>
-          {title}
-        </h2>
-        {subtitle ? (
-          <p className={`${TYPE.sectionSubtitle} text-center max-w-xl mx-auto ${SECTION.headingGap}`}>{subtitle}</p>
-        ) : null}
+        <header className="text-center mb-8 sm:mb-10">
+          {kicker ? (
+            <p className={`${TYPE.kicker} text-sage mb-2`}>{kicker}</p>
+          ) : null}
+          <h2 id={id} className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+            {title}
+          </h2>
+          {subtitle ? (
+            <p className={`${TYPE.sectionSubtitle} max-w-xl mx-auto ${SECTION.headingGap}`}>{subtitle}</p>
+          ) : null}
+        </header>
         {children}
       </div>
     </section>

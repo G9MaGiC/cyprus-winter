@@ -24,15 +24,15 @@ function SectionShell({
     <section
       id="right-now"
       aria-labelledby="right-now-heading"
-      className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
+      className={`${SECTION.pySub} ${LAYOUT.safeAreaX} bg-sand/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <h2 id="right-now-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
-          {title}
-        </h2>
-        {subtitle && (
-          <p className={`text-sm text-olive/80 ${SECTION.headingGap}`}>{subtitle}</p>
-        )}
+        <header className="mb-4 sm:mb-5">
+          <h2 id="right-now-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+            {title}
+          </h2>
+          {subtitle && <p className="text-sm text-olive/70">{subtitle}</p>}
+        </header>
         {children}
       </div>
     </section>
@@ -109,7 +109,7 @@ export default function RightNowNearYou({
   if (state === "consent") {
     return (
       <SectionShell title={title}>
-        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             Suggestions based on where you are, the time, and the weather.
           </p>
@@ -128,7 +128,7 @@ export default function RightNowNearYou({
   if (state === "region-picker") {
     return (
       <SectionShell title={title}>
-        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">Choose a region to explore.</p>
           <RegionPickerChips
             onSelect={handleRegionSelect}
@@ -171,7 +171,7 @@ export default function RightNowNearYou({
           : "Couldn't load. Try again shortly.";
     return (
       <SectionShell title={title}>
-        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">{errorMessage}</p>
           <LocationActionButtons
             primaryLabel="Try again"
@@ -192,7 +192,7 @@ export default function RightNowNearYou({
         : undefined;
     return (
       <SectionShell title={title} subtitle={subtitle}>
-        <div className="rounded-xl border border-sand-200/80 p-4 sm:p-5 bg-sand-50/50">
+          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             No suggestions for {sourceMode === "region" ? "this region" : "now"}{" "}
             right now.

@@ -54,6 +54,7 @@ export default function DiscoverMapSection() {
   const places = getDiscoverMapPlaces();
   return (
     <section
+      id="discover-map"
       aria-labelledby="discover-map-heading"
       className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
     >
@@ -64,7 +65,9 @@ export default function DiscoverMapSection() {
         >
           Explore on map
         </h2>
-        <DiscoverMapClient places={places} />
+        <div className="rounded-2xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
+          <DiscoverMapClient places={places} />
+        </div>
       </div>
     </section>
   );

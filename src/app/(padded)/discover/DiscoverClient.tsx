@@ -55,6 +55,7 @@ export default function DiscoverClient({
       items: sortDiscoverItemsByInterests(section.items, prefs.interests),
     }));
   }, [sections, filter, sectionExists, hydrated, prefs.interests]);
+
   const firstSectionRef = useRef<HTMLElement>(null);
   const hasWineriesInView = sectionsToShow.some((s) =>
     s.items.some((i) => "type" in i && i.type === "winery")
@@ -72,115 +73,161 @@ export default function DiscoverClient({
   }, [filter]);
 
   const totalCount = sectionsToShow.reduce((sum, s) => sum + s.items.length, 0);
+  const activeSection = sections.find((s) => s.id === filter);
+
+  const scrollToMap = () => {
+    document.getElementById("discover-map")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div id="discover-content" aria-label="Discover places in Cyprus">
+    <div id="discover-content" aria-label="Discover places in Cyprus" className="-mt-4 sm:-mt-6">
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
-      <div className={`sticky ${LAYOUT.stickyTop} z-10 pt-2 sm:pt-0 pb-3 sm:pb-4 bg-sand/95 backdrop-blur-sm border-b border-sand-200/50 ${LAYOUT.stickyBarX}`}>
-        {(filter && sectionExists) && (
-          <div className={`flex flex-wrap items-baseline gap-x-2 text-sm ${SECTION.titleGap}`}>
-            <span className="font-medium text-olive">
-              {filterParam === "nature"
-                ? "Nature & coasts (beaches)"
-                : (sections.find((s) => s.id === filter)?.title ?? "Places")}
-            </span>
-            <span className="text-olive/70">— {totalCount} places</span>
-            <span className="text-olive/40" aria-hidden>·</span>
-            <Link
-              href="/discover"
-              className={`text-sm font-medium ${SECTION.aegeanLink}`}
-            >
-              All categories
-            </Link>
-          </div>
-        )}
-        <FilterChips
-          chips={chips}
-          isActive={(chip) => (chip.id === "" ? !filter : filter === chip.id)}
-          getHref={(chip) =>
-            chip.id === "" || filter === chip.id ? "/discover" : `/discover?filter=${chip.id}`
-          }
-          ariaLabel="Filter by category"
-        />
-        {filterParam && !sectionExists && (
-          <p className="text-sm text-olive/70 mt-3 break-words">
-            That filter doesn&apos;t exist—showing all places.{" "}
-            <Link href="/discover" className={SECTION.aegeanLink}>
-              All categories
-            </Link>
-          </p>
-        )}
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <Link href="/plan" className={CTA.primaryCompact}>
-            Plan your trip
-          </Link>
-          {hasWineriesInView && (
-            <Link href="/bookings" className={CTA.secondaryCompact}>
-              Book tastings
-            </Link>
-          )}
-        </div>
-      </div>
 
-      <RightNowNearYou title="Right now near you" />
-
-      <div className={`pt-6 sm:pt-8 ${SECTION.blockGap}`}>
-        {sectionsToShow.map((section, idx) => (
-          <section
-            key={section.id}
-            id={section.id}
-            ref={idx === 0 ? firstSectionRef : undefined}
-            aria-labelledby={`section-${section.id}`}
-            className={`py-12 sm:py-16 ${idx % 2 === 1 ? `${SECTION.alt} ${LAYOUT.stickyBarX}` : ""}`}
-          >
-            <h2 id={`section-${section.id}`} className={`${TYPE.sectionTitle} break-words ${SECTION.headingGap}`}>
-              {section.title}
-            </h2>
-            {section.items.length === 0 ? (
-              <div
-                className={EMPTY_STATE}
-                role="status"
-                aria-live="polite"
+      <div
+        className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
+      >
+        <div className={`${LAYOUT.list} mx-auto space-y-3`}>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="prose-label text-olive/60 uppercase tracking-wider">
+              {filter && sectionExists
+                ? `${filterParam === "nature" ? "Nature & coasts" : activeSection?.title ?? "Places"} · ${totalCount} places`
+                : "Browse by category"}
+            </p>
+            {filter && sectionExists && (
+              <Link
+                href="/discover"
+                className={`text-xs font-medium ${SECTION.aegeanLink}`}
               >
-                <p className={`text-olive/80 ${SECTION.headingGap}`}>No places in this category. Try another filter or ask AI—it knows the island.</p>
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}>
-                    All categories
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-                    className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
-                  >
-                    Ask AI
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-                {section.items.map((item) => (
-                  <AttractionCard key={item.id} a={item} />
-                ))}
-              </div>
+                Clear filter
+              </Link>
             )}
-          </section>
-        ))}
+          </div>
+
+          <FilterChips
+            chips={chips}
+            isActive={(chip) => (chip.id === "" ? !filter : filter === chip.id)}
+            getHref={(chip) =>
+              chip.id === "" || filter === chip.id
+                ? "/discover"
+                : `/discover?filter=${chip.id}`
+            }
+            ariaLabel="Filter by category"
+          />
+
+          {filterParam && !sectionExists && (
+            <p className="text-sm text-olive/70 break-words">
+              That filter doesn&apos;t exist—showing all places.{" "}
+              <Link href="/discover" className={SECTION.aegeanLink}>
+                All categories
+              </Link>
+            </p>
+          )}
+
+          <div className="flex flex-wrap items-center gap-2">
+            <Link href="/plan" className={CTA.primaryCompact}>
+              Plan your trip
+            </Link>
+            {hasWineriesInView && (
+              <Link href="/bookings" className={CTA.secondaryCompact}>
+                Book tastings
+              </Link>
+            )}
+            <button
+              type="button"
+              onClick={scrollToMap}
+              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            >
+              View on map
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className={`mt-16 sm:mt-20 ${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} text-center relative`}>
-        <p className={`text-sm text-olive/70 ${SECTION.titleGap}`}>Add to your plan — or ask AI. It knows the island in winter.</p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <Link href="/plan" className={CTA.primaryCompact}>
-            Add to your plan
-          </Link>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-            className={CTA.secondaryCompact}
-          >
-            Ask AI
-          </button>
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX}`}>
+        <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
+          Beaches, villages, wineries—curated for winter.
+        </p>
+
+        <div className={`pt-2 ${SECTION.blockGap}`}>
+          {sectionsToShow.map((section, idx) => (
+            <section
+              key={section.id}
+              id={section.id}
+              ref={idx === 0 ? firstSectionRef : undefined}
+              aria-labelledby={`section-${section.id}`}
+              className={`py-10 sm:py-14 ${idx % 2 === 1 ? `${SECTION.alt} ${LAYOUT.stickyBarX}` : ""}`}
+            >
+              <h2
+                id={`section-${section.id}`}
+                className={`${TYPE.sectionTitle} break-words ${SECTION.headingGap}`}
+              >
+                {section.title}
+              </h2>
+
+              {section.items.length === 0 ? (
+                <div
+                  className={`${EMPTY_STATE} ${SECTION.headingGap}`}
+                  role="status"
+                  aria-live="polite"
+                >
+                  <p className="text-olive/80 mb-4">
+                    No places in this category. Try another filter or ask the AI—it
+                    knows the island.
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Link
+                      href="/discover"
+                      className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}
+                    >
+                      All categories
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
+                      }
+                      className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
+                    >
+                      Ask AI
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                  {section.items.map((item) => (
+                    <AttractionCard key={item.id} a={item} />
+                  ))}
+                </div>
+              )}
+            </section>
+          ))}
         </div>
+
+        <RightNowNearYou
+          title="Right now near you"
+        />
+
+        <footer
+          className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 ${LAYOUT.footerBottomClearance} text-center`}
+        >
+          <p className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}>
+            Add to your plan—or ask the AI. It knows the island in winter.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link href="/plan" className={CTA.primaryCompact}>
+              Add to your plan
+            </Link>
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
+              }
+              className={CTA.secondaryCompact}
+            >
+              Ask AI
+            </button>
+          </div>
+        </footer>
       </div>
     </div>
   );

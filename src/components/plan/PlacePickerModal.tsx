@@ -50,17 +50,17 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
         ref={modalRef}
         className="w-full max-w-2xl max-h-[90dvh] sm:max-h-[85vh] flex flex-col bg-background rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden sm:mt-0 mt-auto"
       >
-        <div className="flex items-center justify-between shrink-0 px-5 py-4 border-b border-sand-200/80">
-          <h2 id="browse-places-title" className={TYPE.cardTitle}>
-            Browse all places
+        <div className="flex items-center justify-between shrink-0 px-5 py-4 sm:py-5 border-b border-sand-200/80">
+          <h2 id="browse-places-title" className={`${TYPE.cardTitle} text-lg sm:text-xl`}>
+            Browse places
           </h2>
           <button
             type="button"
             onClick={handleClose}
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg text-olive/70 hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl text-olive/70 hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
             aria-label="Close"
           >
-            ✕
+            <span className="text-lg font-medium" aria-hidden>×</span>
           </button>
         </div>
         <div className="flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6 sm:pb-6">

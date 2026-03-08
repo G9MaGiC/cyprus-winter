@@ -1,7 +1,6 @@
 "use client";
 
 import { type RefObject } from "react";
-import Link from "next/link";
 import TimelineRow from "@/components/plan/TimelineRow";
 import SuggestedForDay from "@/components/SuggestedForDay";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, TYPE } from "@/lib/design-tokens";
@@ -40,14 +39,14 @@ export default function DayContentPanel({
   const activeDayItems = activeItems;
 
   return (
-    <section aria-label="Your itinerary" className="space-y-5 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
-      <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-5 sm:space-y-8">
-        <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
-          <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50`}>
+    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
+      <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
+        <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} shadow-[0_2px_12px_rgba(37,39,48,0.05)]`}>
+          <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/40`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3 flex-wrap">
                 <span
-                  className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg bg-terracotta/10 text-terracotta font-semibold text-sm"
+                  className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-xl bg-terracotta/10 text-terracotta font-semibold text-sm"
                   aria-hidden
                 >
                   Day {activeDay}
@@ -62,7 +61,7 @@ export default function DayContentPanel({
                 <button
                   type="button"
                   onClick={onClearDay}
-                  className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label={`Clear all places from Day ${activeDay}`}
                 >
                   Clear day
@@ -70,7 +69,7 @@ export default function DayContentPanel({
               )}
             </div>
             {activeItems.length >= 3 && (
-              <p className="text-sm text-olive/60 mt-2 leading-relaxed" role="status">
+              <p className="text-sm text-olive/60 mt-3 leading-relaxed" role="status">
                 Add another stop below or switch day above.
               </p>
             )}
@@ -78,26 +77,35 @@ export default function DayContentPanel({
 
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
-              <div className={`${EMPTY_STATE_DASHED} py-14 min-[400px]:py-16 sm:py-24 px-4 min-[360px]:px-6 bg-sand-100/50 transition-colors duration-200`}>
-                <p className="font-display text-xl font-semibold text-olive mb-2 tracking-tight">Start Day {activeDay}</p>
-                <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">Add your first place — trail, village, or winery.</p>
+              <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-5 sm:px-6 bg-sand-100/30`}>
+                <p className="font-display text-xl sm:text-2xl font-semibold text-olive mb-2 tracking-tight">
+                  Day {activeDay} is empty
+                </p>
+                <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
+                  Add your first place below, or pick a template further down to fill the day in one go.
+                </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                  <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}>
-                    Add place
+                  <button
+                    type="button"
+                    onClick={onBrowseAll}
+                    className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+                  >
+                    Browse places
                   </button>
-                  <Link href="/discover" className={CTA.secondaryCompact}>
-                    Browse
-                  </Link>
-                  <Link href="/trails" className={CTA.secondaryCompact}>
-                    Trails
-                  </Link>
+                  <button
+                    type="button"
+                    onClick={onScrollToQuickStart}
+                    className={CTA.secondaryCompact}
+                  >
+                    See templates
+                  </button>
                 </div>
               </div>
             ) : (
               <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="pt-1 mb-3 pl-12">
+                    <div className="pt-1 mb-4 pl-12 sm:pl-14">
                       <span className={`${TYPE.kicker} text-olive/70`}>Morning</span>
                     </div>
                     <div className="space-y-0">
@@ -116,7 +124,7 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className="mt-6 mb-3 pl-12">
+                        <div className="mt-8 mb-4 pl-12 sm:pl-14">
                           <span className={`${TYPE.kicker} text-olive/60`}>Afternoon</span>
                         </div>
                         <div className="space-y-0">
@@ -136,22 +144,22 @@ export default function DayContentPanel({
                       </>
                     )}
                   </>
-              ) : (
-                <div className="space-y-0">
-                  {activeItems.map((itemId, i) => (
-                    <TimelineRow
-                      key={itemId}
-                      id={itemId}
-                      index={i + 1}
-                      showConnector={i < activeItems.length - 1}
-                      lastAddedId={lastAddedId}
-                      lastAddedCardRef={lastAddedCardRef}
-                      getPlace={getPlace}
-                      removeFromDay={removeFromDay}
-                    />
-                  ))}
-                </div>
-              )}
+                ) : (
+                  <div className="space-y-0">
+                    {activeItems.map((itemId, i) => (
+                      <TimelineRow
+                        key={itemId}
+                        id={itemId}
+                        index={i + 1}
+                        showConnector={i < activeItems.length - 1}
+                        lastAddedId={lastAddedId}
+                        lastAddedCardRef={lastAddedCardRef}
+                        getPlace={getPlace}
+                        removeFromDay={removeFromDay}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -160,10 +168,10 @@ export default function DayContentPanel({
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
         <div
           id="plan-inline-add"
-          className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-sand-100/60 p-5 sm:p-6 transition-colors hover:border-terracotta/20"
+          className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
         >
-          <p className="text-sm font-medium text-olive/80 mb-3">
-            {activeItems.length > 0 ? "Add another stop" : "Add a stop"}
+          <p className="text-sm font-medium text-olive/80 mb-4">
+            {activeItems.length > 0 ? "Add another stop to Day " + activeDay : "Add a stop to Day " + activeDay}
           </p>
           <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
@@ -180,21 +188,20 @@ export default function DayContentPanel({
                   aria-pressed={inDay}
                   aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
                 >
-                  {inDay ? "✓ " : ""}
-                  {label}
+                  {inDay ? "Added " : ""}{label}
                 </button>
               );
             })}
             <button
               type="button"
               onClick={onBrowseAll}
-              className={`shrink-0 snap-start rounded-xl ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+              className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
             >
-              Browse all
+              Browse places
             </button>
           </div>
           {activeItems.length > 0 && (
-            <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-sand-200/80">
+            <div className="mt-6 pt-6 border-t border-sand-200/80">
               <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
             </div>
           )}

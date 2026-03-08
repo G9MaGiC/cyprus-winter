@@ -97,7 +97,7 @@ export default function PlanPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyPlan} flex flex-col gap-6 min-[400px]:gap-8 sm:gap-12 md:gap-14`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyPlan} flex flex-col gap-8 sm:gap-12 md:gap-16`}
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
@@ -118,12 +118,12 @@ export default function PlanPage() {
 
         {searchParams.get("add") === "failed" && (
           <div
-            className="p-4 sm:p-5 rounded-xl bg-terracotta/5 border border-terracotta/25 text-sm text-olive"
+            className="p-5 sm:p-6 rounded-2xl bg-terracotta/5 border border-terracotta/20 text-sm text-olive"
             role="alert"
             aria-live="assertive"
           >
-            <p className={SECTION.titleGap}>That place isn&apos;t in our list anymore.</p>
-            <div className="flex flex-wrap gap-2 sm:gap-3">
+            <p className={SECTION.titleGap}>That place is no longer in our list.</p>
+            <div className="flex flex-wrap gap-3">
               <Link href="/discover" className={CTA.secondaryCompact}>
                 Browse Discover
               </Link>
@@ -138,22 +138,27 @@ export default function PlanPage() {
           <ListPageHero
             backHref="/"
             backLabel="Home"
-            title="Plan your Cyprus winter trip"
-            description={hasContent ? "Your itinerary — add more or share." : "Pick a template or build day by day."}
-            descriptionSecondary={!hasContent ? "Saves as you go." : undefined}
+            title="Plan your Cyprus winter"
+            description={
+              hasContent
+                ? "Your itinerary. Add more, share, or tweak below."
+                : "Build your winter itinerary. Pick a template or add places day by day."
+            }
+            descriptionSecondary={!hasContent ? "Saves automatically." : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
-            backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter trip"
+            backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter"
             hasWidgetStrip={hasContent}
             breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Plan", href: "/plan", isCurrent: true }]}
           >
             {!hasContent && (
-              <div className="mt-3 sm:mt-4">
+              <div className="mt-4 sm:mt-5">
                 <button
                   type="button"
                   onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
+                  aria-label="Scroll to templates"
                 >
-                  Pick a template or build a day
+                  See templates
                 </button>
               </div>
             )}
@@ -176,13 +181,13 @@ export default function PlanPage() {
         {datesHydrated && withinSevenDays && daysUntil !== null && (
           <div
             role="status"
-            className="rounded-xl border-2 border-dashed border-golden/30 bg-golden/5 px-4 py-3.5 sm:px-5 sm:py-4 transition-opacity duration-200"
+            className="rounded-2xl border-2 border-dashed border-golden/25 bg-golden/5 px-5 py-4 sm:px-6 sm:py-5"
           >
             <p className="text-sm font-medium text-olive">
               {daysUntil === 0
-                ? "Trip today — Day 1 is ready."
+                ? "You're here. Day 1 is ready."
                 : daysUntil === 1
-                  ? "Tomorrow — Day 1 is ready."
+                  ? "Tomorrow. Day 1 is ready."
                   : `${daysUntil} days to go — review below.`}
             </p>
           </div>
@@ -190,25 +195,25 @@ export default function PlanPage() {
 
         {datesHydrated && (
           <ListPageWidgetStrip ariaLabel="Trip dates">
-            <div className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-sand-100/60 p-5 sm:p-6 transition-colors hover:border-aegean/20">
-              <p className="text-sm font-semibold text-olive mb-4">When are you traveling?</p>
-              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 mb-5">
-                <label className="flex flex-col gap-1.5">
+            <div className="rounded-2xl border border-sand-200/90 bg-white/90 p-6 sm:p-7 shadow-sm">
+              <h2 className="text-base font-semibold text-olive mb-4">When are you traveling?</h2>
+              <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 mb-5">
+                <label className="flex flex-col gap-2">
                   <span className="prose-label text-olive/60">Start</span>
                   <input
                     type="date"
                     value={dates.start ?? ""}
                     onChange={(e) => setTripDates(e.target.value || null, dates.end)}
-                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
+                    className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:ring-offset-2 focus:ring-offset-background"
                   />
                 </label>
-                <label className="flex flex-col gap-1.5">
+                <label className="flex flex-col gap-2">
                   <span className="prose-label text-olive/60">End</span>
                   <input
                     type="date"
                     value={dates.end ?? ""}
                     onChange={(e) => setTripDates(dates.start, e.target.value || null)}
-                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
+                    className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:ring-offset-2 focus:ring-offset-background"
                   />
                 </label>
               </div>
@@ -223,7 +228,7 @@ export default function PlanPage() {
           <div
             role="region"
             aria-label="Winery bookings"
-            className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-sand-100/60 p-4 sm:p-5 flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px]"
+            className="rounded-2xl border border-sand-200/90 bg-white/90 p-5 sm:p-6 flex flex-wrap items-center gap-3 sm:gap-4 min-h-[44px] shadow-sm"
           >
             <Link href="/bookings" className={CTA.primaryCompact}>
               Book tastings
@@ -237,51 +242,18 @@ export default function PlanPage() {
           </div>
         )}
 
-        <div className="flex flex-col">
-          <div className={hasContent ? "order-1" : "order-2"}>
-            <DaySelector
-              days={days}
-              activeDay={activeDay}
-              setActiveDay={setActiveDay}
-              activeDaysCount={activeDaysCount}
-              displayDaysCount={displayDaysCount}
-              getPlace={getPlace}
-              hasContent={hasContent}
-            />
-          </div>
+        <div className="flex flex-col gap-10 sm:gap-14">
+          <DaySelector
+            days={days}
+            activeDay={activeDay}
+            setActiveDay={setActiveDay}
+            activeDaysCount={activeDaysCount}
+            displayDaysCount={displayDaysCount}
+            getPlace={getPlace}
+            hasContent={hasContent}
+          />
 
-          <div ref={quickStartRef} className={`${hasContent ? "order-2" : "order-1"} flex flex-col gap-10 sm:gap-14 md:gap-16`}>
-            {!hasContent ? (
-              <>
-                <QuickStartSection
-                  activeDay={activeDay}
-                  days={days}
-                  getPlace={getPlace}
-                  addToDay={addToDay}
-                  onTemplateClick={handleTemplateClick}
-                  hasContent={hasContent}
-                  tripLength={tripLength}
-                />
-                <BuildADaySection />
-              </>
-            ) : (
-              <>
-                <QuickStartSection
-                  activeDay={activeDay}
-                  days={days}
-                  getPlace={getPlace}
-                  addToDay={addToDay}
-                  onTemplateClick={handleTemplateClick}
-                  hasContent={hasContent}
-                  tripLength={tripLength}
-                />
-                <BuildADaySection />
-              </>
-            )}
-          </div>
-        </div>
-
-        <DayContentPanel
+          <DayContentPanel
           activeDay={activeDay}
           activeItems={activeItems}
           getPlace={getPlace}
@@ -294,21 +266,39 @@ export default function PlanPage() {
           onScrollToQuickStart={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
 
-        <footer className={`${SECTION.footerBlock} pt-8 pb-[env(safe-area-inset-bottom)] sm:pt-10 sm:pb-0`}>
-          <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-5 max-w-xl mx-auto">
+        <div
+          ref={quickStartRef}
+          className="flex flex-col gap-12 sm:gap-16 md:gap-20"
+          aria-label="Add places or use templates"
+        >
+          <QuickStartSection
+            activeDay={activeDay}
+            days={days}
+            getPlace={getPlace}
+            addToDay={addToDay}
+            onTemplateClick={handleTemplateClick}
+            hasContent={hasContent}
+            tripLength={tripLength}
+          />
+          <BuildADaySection />
+        </div>
+        </div>
+
+        <footer className={`${SECTION.footerBlock} pt-12 pb-[env(safe-area-inset-bottom)] sm:pt-14 sm:pb-0`}>
+          <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
             Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
           </p>
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-3 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
             {hasWineries && (
               <Link href="/bookings" className={SECTION.aegeanLink}>
                 Book tastings
               </Link>
             )}
             <Link href="/discover" className={SECTION.aegeanLink}>
-              Discover places
+              Discover
             </Link>
             <Link href="/trails" className={SECTION.aegeanLink}>
-              Explore trails
+              Trails
             </Link>
             <Link href="/weather" className={SECTION.aegeanLink}>
               Weather

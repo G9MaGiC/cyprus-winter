@@ -12,21 +12,23 @@ export default function HomeTemplateLinks() {
   return (
     <section
       aria-labelledby="templates-heading"
-      className={`${LAYOUT.safeAreaX} ${SECTION.pySub} pt-0`}
+      className={`${LAYOUT.safeAreaX} ${SECTION.pySub} bg-sand/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <p id="templates-heading" className={`${TYPE.kicker} mb-2`}>
-          Pre-built itineraries
-        </p>
-        <p className={`text-sm text-olive/70 ${SECTION.headingGap}`}>
-          Curated by local experts—realistic pacing, winery tips, seasonal advice. Start here, then tweak.
-        </p>
+        <header className="mb-4 sm:mb-5">
+          <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
+            Pre-built itineraries
+          </p>
+          <p className="text-sm text-olive/70">
+            Expert-curated. Realistic pacing. Start here, then tweak.
+          </p>
+        </header>
         <div className="flex flex-wrap gap-2 sm:gap-3">
           {TEMPLATE_LINKS.map(({ label, href, hint }) => (
             <Link
               key={href}
               href={href}
-              className="inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-lg border border-sand-300 text-olive font-medium hover:border-terracotta/50 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <span>{label}</span>
               {hint && <span className="text-xs text-olive/60 font-normal">{hint}</span>}

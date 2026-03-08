@@ -46,7 +46,7 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
   if (places.length === 0) return null;
 
   return (
-    <div className={`flex flex-col h-full min-h-[280px] overflow-hidden rounded-xl border border-sand-200/70 bg-sand-100/50 ${className}`}>
+    <div className={`flex flex-col h-full min-h-[280px] overflow-hidden ${className}`}>
       <MapContainer
         center={CYPRUS_CENTER}
         zoom={8}
@@ -80,8 +80,8 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
           </Marker>
         ))}
       </MapContainer>
-      <div className="shrink-0 px-4 py-2.5 bg-sand-100/80 border-t border-sand-200/70">
-        <p className="text-xs text-olive/70">
+      <div className="shrink-0 px-4 py-3 bg-sand/60 border-t border-sand-200/70">
+        <p className="text-sm text-olive/70">
           {places.length} place{places.length !== 1 ? "s" : ""} on map. Tap a marker to explore.
         </p>
       </div>

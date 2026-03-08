@@ -4,7 +4,7 @@ import AppLink from "@/components/AppLink";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import BackToTopLink from "@/components/BackToTopLink";
-import { CARD, LAYOUT, SECTION, SKELETON, STRIP, TYPE } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, SKELETON, STRIP } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import HomeHero from "@/app/_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
@@ -89,26 +89,34 @@ export default function Home() {
         <HomeWeatherStrip />
       </Suspense>
       <TripReminderBanner />
-      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub} section-reveal`}>
+      <section
+        aria-labelledby="home-search-heading"
+        className={`${LAYOUT.safeAreaX} py-8 sm:py-10 bg-background`}
+      >
         <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive ${SECTION.titleGap}`}>
-            Where to today?
+          <h2 id="home-search-heading" className="sr-only">
+            Search places and trails
           </h2>
-          <SearchBar placeholder="Find a place, trail, or event" className="max-w-xl mx-auto" />
+          <div className="max-w-xl mx-auto">
+            <p className="text-center text-sage text-sm font-medium uppercase tracking-wider mb-3 prose-label">
+              Where to today?
+            </p>
+            <SearchBar placeholder="Find a place, trail, or event" className="w-full" />
+          </div>
         </div>
       </section>
       <HomeTrailConditionsStrip />
+      <RightNowNearYou />
+      <RecentlyViewedStrip />
       <StartHereWithExplore />
       <HomePlaceOfDay />
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
-      <HomeTemplateLinks />
-      <RightNowNearYou />
-      <RecentlyViewedStrip />
 
       <HomeSection
         id="this-week-heading"
         title="This week"
-        subtitle="Coast is often mild; Troodos is cooler. Hike, taste, or see what’s on."
+        kicker="Weather · trails · events"
+        subtitle="Coast mild; Troodos cooler. Hike, taste, or see what’s on."
       >
         <Suspense fallback={<ThisWeekSkeleton />}>
           <ThisWeekGrid />
@@ -118,7 +126,8 @@ export default function Home() {
       <HomeSection
         id="editors-picks-heading"
         title="Editor’s picks"
-        subtitle="Our team's favorites. Save them to your plan."
+        kicker="Curated"
+        subtitle="Our favorites. Add to your plan."
         alt
       >
         <EditorsPicks />
@@ -127,12 +136,12 @@ export default function Home() {
       <HomeSection
         id="book-tastings-heading"
         title="Book tastings"
-        subtitle="Winter-friendly wineries. Reserve ahead for weekends."
+        kicker="Wineries"
+        subtitle="Reserve ahead for weekends."
       >
         <BookTastings />
       </HomeSection>
 
-      {/* Plan + Events — primary actions */}
       <section
         aria-labelledby="planning-heading"
         className={`${SECTION.py} bg-background ${LAYOUT.safeAreaX} relative`}
@@ -141,26 +150,26 @@ export default function Home() {
           <h2 id="planning-heading" className="sr-only">
             Planning and essentials
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
             <AppLink
               href="/plan"
-              className={`block ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-lg hover:border-terracotta/30 transition-all duration-200`}
+              className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Plan your trip
               </h3>
-              <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
-                Build a day or pick a template. Add places as you browse—saves as you go.
+              <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
+                Build a day or pick a template. Saves as you go.
               </p>
             </AppLink>
             <AppLink
               href="/events"
-              className={`block ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-lg hover:border-terracotta/30 transition-all duration-200`}
+              className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Winter events
               </h3>
-              <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
+              <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
                 Epiphany, carnival, tastings. What&apos;s on when.
               </p>
             </AppLink>
@@ -169,18 +178,19 @@ export default function Home() {
         <StickyPlanBar sentinelId="plan-sentinel" />
       </section>
 
-      {/* Winter Insider Tip */}
-      <HomeInsiderTip />
-
-      {/* Why Cyprus — collapsible */}
-      <section
-        aria-labelledby="why-cyprus-heading"
-        className={`${SECTION.py} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
-      >
-        <div className={`${LAYOUT.list} mx-auto`}>
-          <WhyCyprusDetails />
+      <footer role="contentinfo" className={`${SECTION.alt} ${LAYOUT.safeAreaX}`}>
+        <div className={`${LAYOUT.list} mx-auto ${SECTION.blockGap}`}>
+          <div className={`${SECTION.py}`}>
+            <WhyCyprusDetails />
+          </div>
+          <div className={`${SECTION.pySub} pt-0`}>
+            <HomeInsiderTip />
+          </div>
+          <div className={`${SECTION.pySub} pt-0`}>
+            <HomeTemplateLinks />
+          </div>
         </div>
-      </section>
+      </footer>
 
       {/* Share — home-only (site footer is in layout) */}
       <section

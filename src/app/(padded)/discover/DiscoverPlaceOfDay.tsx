@@ -101,67 +101,69 @@ export default function DiscoverPlaceOfDay() {
       className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
+        <h2
+          id="discover-place-of-day-heading"
+          className="text-olive/70 text-sm font-semibold uppercase tracking-wider mb-3"
+        >
+          Today&apos;s pick
+        </h2>
         <div
-          className={`rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
+          className={`rounded-2xl overflow-hidden ${CARD.planCombo} ${CARD.interactive} group flex flex-col sm:flex-row`}
         >
           <Link
             href={place.href}
-            className="block sm:w-1/3 shrink-0 relative aspect-[4/3] sm:aspect-square"
+            className="block sm:w-2/5 shrink-0 relative aspect-[4/3] sm:aspect-square"
             aria-label={`Open ${place.name}`}
           >
             <Image
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 640px) 100vw, 33vw"
+              className="object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
+              sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent pointer-events-none"
               aria-hidden
             />
-            <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-md">
+            <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
-            <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-medium bg-white/90 text-charcoal">
-              Winter pick
+            <span className="absolute top-4 right-4 px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider bg-white/95 text-charcoal">
+              Place of the day
             </span>
           </Link>
-          <div className="flex-1 flex flex-col p-5 sm:p-6">
-            <p
-              id="discover-place-of-day-heading"
-              className="prose-label text-sage"
-            >
-              Place of the day
-            </p>
-            <Link
-              href={place.href}
-              className="font-display text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5"
-            >
-              {place.name}
-            </Link>
-            <p className="text-sm text-olive/90 mt-1 leading-relaxed flex-1">
-              {place.tease}
-            </p>
-            {place.pairWith && (
-              <p className="text-sm text-olive/80 mt-2">
-                Pair with{" "}
-                <Link
-                  href={place.pairWith.href}
-                  className="font-medium text-aegean hover:text-aegean/90 transition-colors underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
-                >
-                  {place.pairWith.name}
-                </Link>
+          <div className={`flex-1 flex flex-col ${CARD.content} justify-between`}>
+            <div>
+              <Link
+                href={place.href}
+                className="font-display text-2xl sm:text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors block"
+              >
+                {place.name}
+              </Link>
+              <p className="text-sm text-olive/90 mt-2 leading-relaxed">
+                {place.tease}
               </p>
-            )}
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+              {place.pairWith && (
+                <p className="text-sm text-olive/80 mt-3">
+                  Pair with{" "}
+                  <Link
+                    href={place.pairWith.href}
+                    className="font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+                  >
+                    {place.pairWith.name}
+                  </Link>
+                </p>
+              )}
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               {planItem && <NavigateButton place={planItem} />}
               <AddToItineraryButton placeId={place.id} label="Add to plan" />
               <Link
                 href={place.href}
-                className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors"
+                className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors min-h-[44px] inline-flex items-center"
               >
-                See details →
+                See details
               </Link>
             </div>
           </div>

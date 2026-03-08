@@ -79,14 +79,16 @@ export default function StartHereWithExplore() {
       className={`${LAYOUT.safeAreaX} ${SECTION.py} ${SECTION.alt}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} text-center ${SECTION.titleGap}`}>
-          Start here
-        </h2>
-        <p className={`${TYPE.sectionSubtitle} text-center max-w-xl mx-auto ${SECTION.headingGap}`}>
-          From ancient ruins to village tastings — start anywhere.
-        </p>
+        <header className="text-center mb-8 sm:mb-10">
+          <p className={`${TYPE.kicker} text-sage mb-2`}>Primary path</p>
+          <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+            Start here
+          </h2>
+          <p className={`${TYPE.sectionSubtitle} max-w-xl mx-auto ${SECTION.headingGap}`}>
+            Ruins to village tastings. Start anywhere.
+          </p>
+        </header>
 
-        {/* Start Here cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
           {startItems.map((item) => (
             <Link
@@ -117,8 +119,8 @@ export default function StartHereWithExplore() {
           ))}
         </div>
 
-        {/* Category chips */}
         <div className="relative mb-6 sm:mb-8">
+          <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>Browse by category</p>
           <div
             className="flex flex-nowrap sm:flex-wrap overflow-x-auto scroll-smooth scroll-touch sm:overflow-visible justify-start sm:justify-center gap-3 pb-2 -mx-1 sm:mx-0 px-1 sm:px-0 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="navigation"
@@ -136,9 +138,8 @@ export default function StartHereWithExplore() {
           />
         </div>
 
-        {/* Region quick links */}
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-6 sm:mb-8">
-          <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Plan by region</p>
+          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Plan by region</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {[
               { slug: "larnaca", label: "Larnaca" },
@@ -158,9 +159,8 @@ export default function StartHereWithExplore() {
           </div>
         </div>
 
-        {/* Also explore */}
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
-          <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Also explore: Culture, Coasts, Monasteries</p>
+          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Culture, coasts, monasteries</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {alsoChips.map((c) => (
               <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
@@ -170,9 +170,8 @@ export default function StartHereWithExplore() {
           </div>
         </div>
 
-        {/* Explore by mood */}
         <div>
-          <p className={`${TYPE.kicker} text-center ${SECTION.titleGap}`}>Explore by mood</p>
+          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore by mood</p>
           <div
             className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
             role="navigation"

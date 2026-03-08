@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import BackToTopLink from "@/components/BackToTopLink";
-import { CARD, LAYOUT, SECTION, STRIP, TYPE } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, STRIP } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import HomeHero from "./_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
@@ -15,6 +15,7 @@ import HomePlaceOfDay from "@/app/_home/HomePlaceOfDay";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
+import HomeTemplateLinks from "@/app/_home/HomeTemplateLinks";
 
 const EditorsPicks = dynamic(() => import("@/app/_home/EditorsPicks"), { loading: () => <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-h-[200px]" aria-hidden /> });
 const BookTastings = dynamic(() => import("@/app/_home/BookTastings"), { loading: () => <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 min-h-[200px]" aria-hidden /> });
@@ -63,25 +64,34 @@ export default async function LocaleHomePage({ params }: Props) {
         <HomeWeatherStrip />
       </Suspense>
       <TripReminderBanner />
-      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub}`}>
+      <section
+        aria-labelledby="home-search-heading"
+        className={`${LAYOUT.safeAreaX} py-8 sm:py-10 bg-background`}
+      >
         <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive ${SECTION.titleGap}`}>
-            Where to today?
+          <h2 id="home-search-heading" className="sr-only">
+            Search places and trails
           </h2>
-          <SearchBar placeholder="Find a place, trail, or event" className="max-w-xl mx-auto" />
+          <div className="max-w-xl mx-auto">
+            <p className="text-center text-sage text-sm font-medium uppercase tracking-wider mb-3 prose-label">
+              Where to today?
+            </p>
+            <SearchBar placeholder="Find a place, trail, or event" className="w-full" />
+          </div>
         </div>
       </section>
       <HomeTrailConditionsStrip />
-      <StartHereWithExplore />
       <RightNowNearYou />
       <RecentlyViewedStrip />
-      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
+      <StartHereWithExplore />
       <HomePlaceOfDay />
+      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
 
       <HomeSection
         id="this-week-heading"
         title="This week"
-        subtitle="Coast is often mild; Troodos is cooler. Hike, taste, or see what's on."
+        kicker="Weather · trails · events"
+        subtitle="Coast mild; Troodos cooler. Hike, taste, or see what's on."
       >
         <Suspense fallback={<ThisWeekSkeleton />}>
           <ThisWeekGrid />
@@ -91,7 +101,8 @@ export default async function LocaleHomePage({ params }: Props) {
       <HomeSection
         id="editors-picks-heading"
         title="Editor's picks"
-        subtitle="Our team's favorites. Save them to your plan."
+        kicker="Curated"
+        subtitle="Our favorites. Add to your plan."
         alt
       >
         <EditorsPicks />
@@ -100,7 +111,8 @@ export default async function LocaleHomePage({ params }: Props) {
       <HomeSection
         id="book-tastings-heading"
         title="Book tastings"
-        subtitle="Winter-friendly wineries. Reserve ahead for weekends."
+        kicker="Wineries"
+        subtitle="Reserve ahead for weekends."
       >
         <BookTastings />
       </HomeSection>
@@ -113,28 +125,28 @@ export default async function LocaleHomePage({ params }: Props) {
           <h2 id="planning-heading" className="sr-only">
             Planning and essentials
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
             <Link
               href="/plan"
               prefetch="auto"
-              className={`block ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-lg hover:border-terracotta/30 transition-all duration-200`}
+              className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Plan your trip
               </h3>
-              <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
+              <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
                 Build your itinerary. Add places from Discover—saves as you go.
               </p>
             </Link>
             <Link
               href="/events"
               prefetch="auto"
-              className={`block ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group shadow-sm hover:shadow-lg hover:border-terracotta/30 transition-all duration-200`}
+              className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group`}
             >
               <h3 className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors">
                 Winter events
               </h3>
-              <p className="text-sm sm:text-base text-sage mt-2 leading-relaxed">
+              <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
                 Epiphany, carnival, tastings. What&apos;s on when.
               </p>
             </Link>
@@ -143,16 +155,19 @@ export default async function LocaleHomePage({ params }: Props) {
         <StickyPlanBar sentinelId="plan-sentinel" />
       </section>
 
-      <HomeInsiderTip />
-
-      <section
-        aria-labelledby="why-cyprus-heading"
-        className={`${SECTION.py} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
-      >
-        <div className={`${LAYOUT.list} mx-auto`}>
-          <WhyCyprusDetails />
+      <footer role="contentinfo" className={`${SECTION.alt} ${LAYOUT.safeAreaX}`}>
+        <div className={`${LAYOUT.list} mx-auto ${SECTION.blockGap}`}>
+          <div className={SECTION.py}>
+            <WhyCyprusDetails />
+          </div>
+          <div className={`${SECTION.pySub} pt-0`}>
+            <HomeInsiderTip />
+          </div>
+          <div className={`${SECTION.pySub} pt-0`}>
+            <HomeTemplateLinks />
+          </div>
         </div>
-      </section>
+      </footer>
 
       <section
         aria-labelledby="home-share-heading"
