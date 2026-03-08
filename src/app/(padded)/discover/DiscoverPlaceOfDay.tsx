@@ -130,7 +130,7 @@ export default function DiscoverPlaceOfDay() {
           <div className="flex-1 flex flex-col p-5 sm:p-6">
             <p
               id="discover-place-of-day-heading"
-              className="text-xs font-medium uppercase tracking-wider text-sage prose-label"
+              className="prose-label text-sage"
             >
               Place of the day
             </p>

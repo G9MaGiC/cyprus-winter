@@ -16,6 +16,8 @@ export type ScorablePlace = PlanItem & {
   winterTip?: string;
   localSecret?: string;
   winterOpen?: boolean;
+  /** For attractions, the actual subtype (beach, ancient, village, etc.); otherwise same as type */
+  effectiveType?: string;
 };
 
 export type DiscoveryBadge =
@@ -87,12 +89,14 @@ function livenessScore(place: ScorablePlace): number {
 function enrichPlace(place: PlanItem): ScorablePlace {
   const base: ScorablePlace = { ...place };
   if (place.type === "trail") {
+    base.effectiveType = place.type;
     const t = trails.find((x) => x.id === place.id);
     if (t) {
       base.bestTimeToVisit = t.winterNotes;
       base.localSecret = t.localSecret;
     }
   } else if (place.type === "winery") {
+    base.effectiveType = place.type;
     const w = wineries.find((x) => x.id === place.id);
     if (w) {
       base.bestTimeToVisit = w.bestTimeToVisit;
@@ -102,6 +106,7 @@ function enrichPlace(place: PlanItem): ScorablePlace {
       base.winterOpen = w.winterOpen;
     }
   } else if (place.type === "restaurant") {
+    base.effectiveType = place.type;
     const r = getRestaurantById(place.id);
     if (r) {
       base.bestTimeToVisit = r.bestTimeToVisit;
@@ -113,12 +118,16 @@ function enrichPlace(place: PlanItem): ScorablePlace {
   } else if (place.type === "attraction") {
     const a = getAttractionById(place.id);
     if (a) {
+      base.effectiveType = a.type;
       base.bestTimeToVisit = a.bestTimeToVisit;
       base.openingHours = a.openingHours;
       base.winterTip = a.winterTip;
       base.localSecret = a.localSecret;
+    } else {
+      base.effectiveType = place.type;
     }
   } else if (place.type === "event") {
+    base.effectiveType = place.type;
     const e = winterEvents.find((x) => x.id === place.id);
     if (e) base.bestTimeToVisit = e.dates;
   }
@@ -158,11 +167,11 @@ export function scoreAndRank(
       const km = haversineKm(userLat, userLng, coords.lat, coords.lng);
       const preferredBuckets = getPlaceTimeSignals(
         p.bestTimeToVisit ?? p.winterTip ?? p.openingHours,
-        p.type
+        p.effectiveType ?? p.type
       );
       const timeScore = timeMatchScore(preferredBuckets, currentBucket);
       const distScore = distanceScore(km);
-      const weatherScore = weatherMatchScore(p.type, weather);
+      const weatherScore = weatherMatchScore(p.effectiveType ?? p.type, weather);
       const liveScore = livenessScore(p);
       const score =
         0.25 * timeScore + 0.3 * distScore + 0.25 * weatherScore + 0.2 * liveScore;
@@ -200,7 +209,8 @@ export function assignDiscoveryBadges(
 
   return items.map((item) => {
     if (item.id === trendingId) return { ...item, discoveryBadge: "Trending today" as const };
-    if (current === "sunset" && clearWeather && ["beach", "restaurant", "ancient", "village", "nature"].includes(item.type)) {
+    const effectiveType = item.effectiveType ?? item.type;
+    if (current === "sunset" && clearWeather && ["beach", "restaurant", "ancient", "village", "nature"].includes(effectiveType)) {
       return { ...item, discoveryBadge: "Perfect for sunset today" as const };
     }
     if (item.localSecret) {

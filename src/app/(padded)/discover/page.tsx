@@ -10,7 +10,7 @@ import {
 } from "@/data/attractions";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
-import { CTA, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
@@ -108,7 +108,7 @@ export default function DiscoverPage() {
 
       <section aria-labelledby="discover-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub} section-reveal`}>
         <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="discover-search-heading" className="text-center text-olive font-display text-xl sm:text-2xl font-semibold mb-3">
+          <h2 id="discover-search-heading" className={`text-center ${TYPE.sectionTitle} ${SECTION.headingGap}`}>
             Find a place
           </h2>
           <SearchBar placeholder="Search places, trails, wineries…" className="max-w-xl mx-auto" syncUrl />

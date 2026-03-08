@@ -5,15 +5,9 @@ import Link from "next/link";
 import TimelineRow from "@/components/plan/TimelineRow";
 import SuggestedForDay from "@/components/SuggestedForDay";
 import SectionCard from "@/components/SectionCard";
-import { CARD, CTA, EMPTY_STATE_DASHED, PILL } from "@/lib/design-tokens";
+import { CARD, CTA, EMPTY_STATE_DASHED, PILL, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
-
-const QUICK_ADD_PLACES = [
-  { id: "artemis", label: "Artemis Trail" },
-  { id: "kourion", label: "Kourion" },
-  { id: "domes-sergiou", label: "Dómes Sergiou" },
-  { id: "omodos", label: "Omodos" },
-];
+import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 
 type DayContentPanelProps = {
   activeDay: number;
@@ -73,7 +67,7 @@ export default function DayContentPanel({
             </div>
             {activeItems.length >= 3 && (
               <p className="text-sm text-terracotta font-medium" role="status">
-                Day full. Add next stop below.
+                Full — add next stop below.
               </p>
             )}
           </div>
@@ -82,9 +76,9 @@ export default function DayContentPanel({
             {activeItems.length === 0 ? (
               <div className={`${EMPTY_STATE_DASHED} py-12 sm:py-16 px-4 bg-sand-100/30 transition-colors duration-200`}>
                 <p className="font-display font-semibold text-olive mb-1.5">Start your Day {activeDay}</p>
-                <p className="text-sm text-olive/70 mb-4">Add a place above or browse to build your itinerary.</p>
+                <p className="text-sm text-olive/70 mb-4">Add from above or browse places.</p>
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                  <button type="button" onClick={onScrollToQuickStart} className={CTA.primaryCompact}>
+                  <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}>
                     Add place
                   </button>
                   <Link href="/discover" className={CTA.secondaryCompact}>
@@ -100,7 +94,7 @@ export default function DayContentPanel({
                 {useBlocks ? (
                   <>
                     <div className="mb-4">
-                      <span className="prose-label text-olive/60">Morning</span>
+                      <span className={`${TYPE.kicker} text-olive/60`}>Morning</span>
                     </div>
                     <div className="space-y-0">
                       {morningIds.map((itemId, i) => (
@@ -119,7 +113,7 @@ export default function DayContentPanel({
                     {afternoonIds.length > 0 && (
                       <>
                         <div className="mt-6 mb-4">
-                          <span className="prose-label text-olive/60">Afternoon</span>
+                          <span className={`${TYPE.kicker} text-olive/60`}>Afternoon</span>
                         </div>
                         <div className="space-y-0">
                           {afternoonIds.map((itemId, i) => (
@@ -161,9 +155,9 @@ export default function DayContentPanel({
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
         <div id="plan-inline-add">
-          <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all places." : undefined} borderAccent="terracotta">
+          <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all." : undefined} borderAccent="terracotta">
             <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x scrollbar-none [scrollbar-width:none]">
-              {QUICK_ADD_PLACES.map(({ id, label }) => {
+              {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
                 const inDay = activeDayItems.includes(id);
                 const place = getPlace(id);
                 if (!place) return null;

@@ -8,9 +8,13 @@ import type { RegionSlug } from "@/data/regions";
 export const REGION_CENTROIDS: Record<string, { lat: number; lng: number }> = {
   Troodos: { lat: 34.93, lng: 32.87 },
   Platres: { lat: 34.88, lng: 32.87 },
+  "Kato Platres": { lat: 34.87, lng: 32.86 },
+  Omodos: { lat: 34.847, lng: 32.808 },
+  Koilani: { lat: 34.823, lng: 32.892 },
+  Kathikas: { lat: 34.839, lng: 32.382 },
+  Lemesos: { lat: 34.68, lng: 33.04 },
   Paphos: { lat: 34.77, lng: 32.42 },
   Limassol: { lat: 34.68, lng: 33.04 },
-  Lemesos: { lat: 34.68, lng: 33.04 },
   Larnaca: { lat: 34.92, lng: 33.63 },
   "Ayia Napa": { lat: 34.99, lng: 34.0 },
   Protaras: { lat: 35.01, lng: 34.06 },
@@ -48,15 +52,18 @@ export function getCentroidBySlug(slug: RegionSlug): { lat: number; lng: number 
 /**
  * Resolve a region string to centroid. Handles:
  * - Direct match: "Limassol", "Troodos", "Paphos"
- * - Winery/restaurant format: "Pelendri (Limassol)", "Kathikas (Paphos)"
+ * - Winery/restaurant format: "Platres (Limassol)", "Kathikas (Paphos)"
+ *   Prefers the specific location (before parens) when it has a centroid, else uses district.
  */
 export function getRegionCentroid(region: string): { lat: number; lng: number } | null {
   const r = region.trim();
   if (REGION_CENTROIDS[r]) return REGION_CENTROIDS[r];
 
-  const parenMatch = r.match(/\(([^)]+)\)/);
+  const parenMatch = r.match(/^([^(]+)\s*\(([^)]+)\)\s*$/);
   if (parenMatch) {
-    const parent = parenMatch[1].trim();
+    const specific = parenMatch[1].trim();
+    const parent = parenMatch[2].trim();
+    if (REGION_CENTROIDS[specific]) return REGION_CENTROIDS[specific];
     if (REGION_CENTROIDS[parent]) return REGION_CENTROIDS[parent];
     if (REGION_ALIASES[parent] && REGION_CENTROIDS[REGION_ALIASES[parent]]) {
       return REGION_CENTROIDS[REGION_ALIASES[parent]];

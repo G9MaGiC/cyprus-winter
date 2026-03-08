@@ -2,6 +2,7 @@
 
 import FilterChips from "@/components/FilterChips";
 import { TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
+import { TRANSITION } from "@/lib/design-tokens";
 
 export type TrailFiltersProps = {
   difficultyFilter?: string;
@@ -47,7 +48,7 @@ export default function TrailFilters({
   const filterGroup = (
     <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium text-olive/60 uppercase tracking-wider sm:w-auto w-full mb-0.5 sm:mb-0">Difficulty</span>
+        <span className="prose-label text-olive/60 sm:w-auto w-full mb-0.5 sm:mb-0">Difficulty</span>
         <FilterChips
           chips={difficultyChips}
           isActive={(chip) => (chip.id === "" ? !safeDifficulty : safeDifficulty === chip.id)}
@@ -56,7 +57,7 @@ export default function TrailFilters({
         />
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium text-olive/60 uppercase tracking-wider sm:w-auto w-full mb-0.5 sm:mb-0">Region</span>
+        <span className="prose-label text-olive/60 sm:w-auto w-full mb-0.5 sm:mb-0">Region</span>
         <FilterChips
           chips={regionChips}
           isActive={(chip) => (chip.id === "" ? !safeRegion : safeRegion === chip.id)}
@@ -79,7 +80,7 @@ export default function TrailFilters({
             >
               <summary className="list-none cursor-pointer min-h-[44px] flex items-center justify-between px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
                 <span className="text-sm">Filters: {filterSummary}</span>
-                <span className="text-olive/60 text-xs transition-transform duration-200 group-open:rotate-180" aria-hidden>
+                <span className="text-olive/60 text-xs group-open:rotate-180" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>
                   ▾
                 </span>
               </summary>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { trails, trailConditions, TRAIL_COUNT, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP } from "@/lib/design-tokens";
+import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP, TRANSITION, BOTTOM_NAV } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
@@ -83,7 +83,7 @@ export default function TrailsClient() {
         >
           <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
             <Link href="/plan" className={CTA.tertiaryOnDark}>
-              Plan trip
+              Plan your trip
             </Link>
             <Link href="/weather" className={CTA.ghost}>
               Weather
@@ -96,6 +96,8 @@ export default function TrailsClient() {
         {/* Status strip */}
         <section
           aria-label="Trail conditions summary"
+          aria-live="polite"
+          aria-atomic="true"
           className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} border-b border-sand-200/80 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0`}
         >
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none -mx-1 px-1 scroll-smooth text-sm">
@@ -147,7 +149,6 @@ export default function TrailsClient() {
             role="complementary"
             className="pt-6 pb-6 sm:pt-8 sm:pb-8"
           >
-            <p id="best-now-kicker" className="prose-label text-sage mb-1">Ideal right now</p>
             <h2 id="best-now" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-3 sm:mb-4`}>
               Best now
             </h2>
@@ -180,7 +181,7 @@ export default function TrailsClient() {
 
           {filtered.length === 0 ? (
             <div className={`${EMPTY_STATE_LARGE} max-w-md mx-auto`} role="status" aria-live="polite">
-              <p className="text-olive/80 leading-relaxed break-words mb-6">No trails match. Switch filters or ask the AI—it knows Troodos to coast.</p>
+              <p className="text-olive/80 leading-relaxed break-words mb-6">No trails match. Try different filters or ask the AI—it knows Troodos to coast.</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
                   All trails
@@ -197,7 +198,7 @@ export default function TrailsClient() {
                   <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-aegean shrink-0" aria-hidden />
                     Open ({openTrails.length})
-                    <span className="text-olive/50 transition-transform duration-200 group-open:rotate-180 ml-1" aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {openTrails.map((trail) => (
@@ -211,7 +212,7 @@ export default function TrailsClient() {
                   <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-golden shrink-0" aria-hidden />
                     Caution ({cautionTrails.length})
-                    <span className="text-olive/50 transition-transform duration-200 group-open:rotate-180 ml-1" aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {cautionTrails.map((trail) => (
@@ -225,7 +226,7 @@ export default function TrailsClient() {
                   <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-terracotta shrink-0" aria-hidden />
                     Closed ({closedTrails.length})
-                    <span className="text-olive/50 transition-transform duration-200 group-open:rotate-180 ml-1" aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {closedTrails.map((trail) => (
@@ -239,7 +240,7 @@ export default function TrailsClient() {
                   <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-sand-300 shrink-0" aria-hidden />
                     No report ({unknownTrails.length})
-                    <span className="text-olive/50 transition-transform duration-200 group-open:rotate-180 ml-1" aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: `transform ${TRANSITION.smooth}` }} aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {unknownTrails.map((trail) => (
@@ -273,6 +274,7 @@ export default function TrailsClient() {
         <section aria-labelledby="tips-heading" className="pt-8 pb-8 sm:pt-10 sm:pb-10 border-t border-sand-200/80">
           <Disclosure id="tips-heading" summary="Before you go" defaultOpen={false}>
             <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6">
+              <p className="text-sm text-olive/80 mb-4 break-words">Layer up, check conditions, tell someone your route.</p>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80 gap-4">
                 {winterTipsHiking.slice(0, 4).map((tip) => (
                   <div key={tip.id} className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0">
@@ -307,8 +309,11 @@ export default function TrailsClient() {
         {/* Sticky bottom CTA — mobile only */}
         {filtered.length > 0 && (
           <div
-            className="fixed left-0 right-0 z-30 flex items-center justify-center py-3 px-4 bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden bottom-0 md:bottom-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))]"
-            style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0px))" }}
+            className="fixed left-0 right-0 z-30 flex items-center justify-center py-3 px-4 bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden"
+            style={{
+              bottom: BOTTOM_NAV.clearance,
+              paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0px))",
+            }}
           >
             <Link
               href="/plan"

@@ -140,7 +140,7 @@ export default function PlanPage() {
             backHref="/"
             backLabel="Home"
             title="Plan your Cyprus winter trip"
-            description={hasContent ? "Your itinerary — add more or share." : "Start with a template or build day by day."}
+            description={hasContent ? "Your itinerary — add more or share." : "Pick a template or build day by day."}
             descriptionSecondary={!hasContent ? "Saves as you go." : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
             backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter trip"
@@ -154,7 +154,7 @@ export default function PlanPage() {
                   onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
                 >
-                  Start with a template or add your first place
+                  Pick a template or add places
                 </button>
               </div>
             )}

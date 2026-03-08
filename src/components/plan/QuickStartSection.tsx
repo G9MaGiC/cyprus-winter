@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
+import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 import type { PlanItem } from "@/data";
 
 type QuickStartSectionProps = {
@@ -18,13 +19,6 @@ type QuickStartSectionProps = {
 function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tripLength: number): boolean {
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
-
-const QUICK_ADD_PLACES = [
-  { id: "artemis", label: "Artemis Trail" },
-  { id: "kourion", label: "Kourion" },
-  { id: "domes-sergiou", label: "Dómes Sergiou" },
-  { id: "omodos", label: "Omodos" },
-];
 
 export default function QuickStartSection({
   activeDay,
@@ -99,7 +93,7 @@ export default function QuickStartSection({
         <div className="space-y-3">
           <span className={`${TYPE.kicker} block`}>Day {activeDay}</span>
           <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] min-h-[44px] items-center">
-            {QUICK_ADD_PLACES.map(({ id, label }) => {
+            {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
               if (!place) return null;
