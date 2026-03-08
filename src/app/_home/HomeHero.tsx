@@ -43,7 +43,7 @@ export default function HomeHero() {
             Real places. Real winters. Discover ruins, trails, villages, heritage—plan as you go.
           </p>
           <p className="text-sm text-white/80 mb-1">{getSeasonalLine()}</p>
-          <p className="text-sm text-white/70 mb-8">Often sixteen degrees when home is six.</p>
+          <p className="text-sm text-white/80 mb-8">Often sixteen degrees when home is six.</p>
 
           <div className="flex flex-col items-center gap-5 sm:gap-6">
             <AppLink href="/discover" className={CTA.primary} aria-label="Discover places, villages, and wineries">

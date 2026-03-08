@@ -2,7 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { triggerAIAssistant } from "./AIAssistantTrigger";
 import { LAYOUT } from "@/lib/design-tokens";
 import { isActive } from "@/lib/nav";
@@ -13,6 +13,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const moreMenuRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
   const moreLinksResolved = useMemo(
     () =>
@@ -35,6 +36,32 @@ export default function Nav() {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
+
+  useEffect(() => {
+    if (!moreOpen || !moreMenuRef.current) return;
+    const menu = moreMenuRef.current;
+    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    if (focusables.length === 0) return;
+    (focusables[0] as HTMLElement).focus();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const first = focusables[0] as HTMLElement;
+      const last = focusables[focusables.length - 1] as HTMLElement;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    menu.addEventListener("keydown", handleKeyDown);
+    return () => menu.removeEventListener("keydown", handleKeyDown);
+  }, [moreOpen]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -96,11 +123,12 @@ export default function Nav() {
                   aria-hidden
                   tabIndex={-1}
                 />
-                <div id="more-menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-50 min-w-[120px]">
+                <div id="more-menu" ref={moreMenuRef} role="menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-50 min-w-[120px]">
                   {moreLinksResolved.map((link) => (
                     <AppLink
                       key={link.href}
                       href={link.href}
+                      role="menuitem"
                       aria-current={isActive(pathname, link.href) ? "page" : undefined}
                       onClick={() => setMoreOpen(false)}
                       className={`block min-h-[44px] px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${

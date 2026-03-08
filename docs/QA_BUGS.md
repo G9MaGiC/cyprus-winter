@@ -837,3 +837,64 @@ Filter runs on array; no crash.
 
 **Fix status**
 Fixed — use `(prev[activeDay] ?? []).filter(...)` to guard against undefined.
+
+---
+
+## QA Run — CTO Lead (Mar 8, 2026)
+
+*Per plan: shell (lint/test/build) + top-bar overlap audit + list pages review + accessibility check.*
+
+### 1. Automated checks
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| npm run lint | Pass | 0 errors |
+| npm run test | Pass | 150 tests |
+| npm run build | Pass | Next.js 16.1.6, 523 static pages |
+
+### 2. Top-bar overlap on mobile — audit of recent fixes
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| **ListPageHero** | ✓ Fixed | Overlay content uses `pt-[calc(3.5rem+env(safe-area-inset-top,0px))]` so back link, title, description sit below nav |
+| **ListPageWidgetStrip** | ✓ Fixed | Sticky strip uses `top-[calc(3.5rem+env(safe-area-inset-top,0px))]` when `sticky` |
+| **DaySelector** | ✓ Fixed | Sticky uses `sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))]` when `hasContent` |
+| **TrailDetailStickyActions** | ✓ Fixed | `max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))]` sits above BottomNav |
+| **(padded) layout** | ✓ OK | `pt-[calc(3.5rem+env(safe-area-inset-top,0px))]` for nav clearance |
+
+No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applied consistently.
+
+### 3. List pages (events, discover, trails, plan) — visual/UX issues
+
+| Page | Finding | Severity |
+|------|---------|----------|
+| **Trails** | BUG-068: `trails-plan-sentinel` is never rendered. StickyPlanBar observes it; sentinel missing → StickyPlanBar never shows. | Medium |
+| **Trails** | BUG-069: Fixed bottom "Add to plan" bar is at `z-20`; BottomNav is `z-40`. Bar is hidden behind BottomNav on mobile. User sees redundant Plan in BottomNav but prominent CTA is obscured. | Medium |
+| **Events** | Month jump links use CTA.chipTertiary (44px) ✓; filters collapsible with aria-expanded ✓ | — |
+| **Discover** | Sticky bar and sentinel (discover-plan-sentinel) present ✓ | — |
+| **Plan** | DaySelector sticky, ListPageWidgetStrip, sentinels OK ✓ | — |
+
+### 4. Accessibility (focus, aria, contrast)
+
+| Check | Result |
+|-------|--------|
+| **Touch targets** | CTA, FilterChips, ListPageHero back link, DaySelector tabs use min-h-[44px] ✓ |
+| **Focus** | focus-visible rings on buttons, links; focus order follows DOM ✓ |
+| **ARIA** | Events: aria-expanded, aria-controls, aria-labelledby on filters and sections ✓; aria-live on empty states ✓ |
+| **Contrast** | Design tokens (olive on sand) — verify with axe DevTools; recommend Lighthouse a11y pass |
+
+**P2 note:** Events "Jump to month" links use `CTA.chipTertiary` — no explicit aria-label on individual links; href to `#month-X` is self-describing.
+
+### 5. Summary
+
+| Category | Result |
+|----------|--------|
+| **Automated** | All pass |
+| **Top-bar overlap** | No regressions; fixes verified |
+| **List pages** | 2 issues on Trails (missing sentinel, bar overlap) |
+| **Accessibility** | Touch targets and ARIA generally good; contrast not instrument-tested |
+
+**Fix status**
+
+- BUG-068: Fixed — added `<div id="trails-plan-sentinel">` after hero so StickyPlanBar can observe scroll.
+- BUG-069: Fixed — trails fixed bar now uses `bottom-[calc(5.5rem+env(safe-area-inset-bottom))]` on mobile (above BottomNav) and `z-30` for correct stacking.

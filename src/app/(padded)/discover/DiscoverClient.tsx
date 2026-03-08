@@ -69,7 +69,7 @@ export default function DiscoverClient({
         {(filter && sectionExists) && (
           <div className="flex flex-wrap items-baseline gap-x-2 text-sm mb-3">
             <span className="font-medium text-olive">
-              {sections.find((s) => s.id === filter)!.title}
+              {sections.find((s) => s.id === filter)?.title ?? "Places"}
             </span>
             <span className="text-olive/60">— {totalCount} places</span>
             <span className="text-olive/40" aria-hidden>·</span>

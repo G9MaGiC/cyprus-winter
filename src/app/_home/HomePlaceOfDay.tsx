@@ -102,7 +102,7 @@ export default function HomePlaceOfDay() {
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
               sizes="(max-width: 640px) 100vw, 33vw"
             />
             <div

@@ -43,7 +43,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             src={getAttractionImage(a.id, a.type)}
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
             fill
-            className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+            className="object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
             sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
           />
           <div className={CARD.mediaOverlay} aria-hidden />

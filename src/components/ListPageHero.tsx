@@ -62,7 +62,7 @@ export default function ListPageHero({
             priority
           />
           <div className={HERO.listOverlay} aria-hidden />
-          <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} pt-[calc(3.5rem+env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>
+          <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} pt-[calc(4.5rem+env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>
             <Link
               href={backHref}
               className="inline-flex items-center min-h-[44px] py-2 text-white/90 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded w-fit"

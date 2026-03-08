@@ -36,7 +36,7 @@ function TrailCard({ trail }: { trail: Trail }) {
             src={getTrailImage(trail.id)}
             alt={`${trail.name}, ${trail.region}—${trail.lengthKm}km ${trail.difficulty} trail`}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 640px) 100vw, 192px"
           />
           <div className="absolute bottom-3 left-3">

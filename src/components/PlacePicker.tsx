@@ -90,7 +90,7 @@ export default function PlacePicker({
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
         <p className="text-sm text-olive/60 col-span-full py-4">
-          {search.trim() ? "No matches for that search. Try Troodos, Omodos, or another region." : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
+          {search.trim() ? "No matches for that. Try another search, or pick a different tab." : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
         </p>
       ) : items.map((item) => {
         const isAdded = activeDayItems.includes(item.id);

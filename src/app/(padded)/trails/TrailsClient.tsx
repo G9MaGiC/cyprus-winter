@@ -89,6 +89,7 @@ export default function TrailsClient() {
             </Link>
           </div>
         </ListPageHero>
+        <div id="trails-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
 
         {/* Status strip */}
@@ -298,7 +299,7 @@ export default function TrailsClient() {
         {/* Sticky bottom CTA — mobile only */}
         {filtered.length > 0 && (
           <div
-            className="fixed bottom-0 left-0 right-0 z-20 flex items-center justify-center py-3 px-4 bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden"
+            className="fixed left-0 right-0 z-30 flex items-center justify-center py-3 px-4 bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden bottom-0 md:bottom-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))]"
             style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom, 0px))" }}
           >
             <Link

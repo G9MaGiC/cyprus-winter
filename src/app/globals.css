@@ -12,6 +12,7 @@
   --charcoal: #252730;
   --aegean: #1a6b7c;
   --sage: #6b8f7a;
+  /* cloud and sand share same hex — use sand for surfaces, cloud for body/background */
   --cloud: #faf8f5;
   --sand: #faf8f5;
   --sand-mid: #f5f2ed;
