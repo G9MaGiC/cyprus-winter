@@ -4,6 +4,8 @@ import Link from "next/link";
 import { CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
+import { useUserPreferences } from "@/hooks/useUserPreferences";
+import { getRecommendedTemplates } from "@/lib/personalization";
 import type { PlanItem } from "@/data";
 
 type QuickStartSectionProps = {
@@ -30,17 +32,31 @@ export default function QuickStartSection({
   tripLength,
 }: QuickStartSectionProps) {
   const activeDayItems = days[activeDay] ?? [];
+  const { prefs, hydrated } = useUserPreferences();
+
+  const forYou = hydrated && (prefs.interests.length > 0 || prefs.travelerType != null)
+    ? getRecommendedTemplates(ITINERARY_TEMPLATES, prefs.interests, prefs.travelerType)
+    : [];
+  const forYouKeys = new Set(forYou.map((t) => t.key));
 
   const recommended =
     tripLength != null
-      ? ITINERARY_TEMPLATES.filter((t) => isRecommendedForTrip(t, tripLength))
+      ? ITINERARY_TEMPLATES.filter(
+          (t) => isRecommendedForTrip(t, tripLength) && !forYouKeys.has(t.key)
+        )
       : [];
   const others =
-    tripLength != null && recommended.length > 0
-      ? ITINERARY_TEMPLATES.filter((t) => !isRecommendedForTrip(t, tripLength))
-      : ITINERARY_TEMPLATES;
+    tripLength != null && (recommended.length > 0 || forYou.length > 0)
+      ? ITINERARY_TEMPLATES.filter(
+          (t) => !isRecommendedForTrip(t, tripLength) && !forYouKeys.has(t.key)
+        )
+      : ITINERARY_TEMPLATES.filter((t) => !forYouKeys.has(t.key));
 
-  const renderTemplateCard = (template: (typeof ITINERARY_TEMPLATES)[number], isRecommended: boolean) => {
+  const renderTemplateCard = (
+    template: (typeof ITINERARY_TEMPLATES)[number],
+    isRecommended: boolean,
+    isForYou: boolean
+  ) => {
     const placeCount = Object.values(template.days).flat().length;
     const preview = (() => {
       const ids = Object.values(template.days).flat();
@@ -53,7 +69,7 @@ export default function QuickStartSection({
         type="button"
         onClick={() => onTemplateClick(template.key)}
         className={`text-left min-h-[88px] sm:min-h-[96px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
-          isRecommended ? "border-aegean/30 bg-aegean/5" : ""
+          isForYou ? "border-terracotta/25 bg-terracotta/5" : isRecommended ? "border-aegean/30 bg-aegean/5" : ""
         }`}
         aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
       >
@@ -62,7 +78,10 @@ export default function QuickStartSection({
             <span className={`${TYPE.cardTitle} block break-words`}>
               {template.label}
             </span>
-            {isRecommended && (
+            {isForYou && (
+              <span className="text-sm text-terracotta font-medium mt-0.5 block">For you</span>
+            )}
+            {!isForYou && isRecommended && (
               <span className="text-sm text-aegean font-medium mt-0.5 block">Best fit for {tripLength} days</span>
             )}
           </div>
@@ -143,13 +162,25 @@ export default function QuickStartSection({
       )}
 
       <div className="space-y-6 sm:space-y-8">
+        {forYou.length > 0 && (
+          <div className="space-y-3 sm:space-y-4">
+            <span className="text-xs font-semibold text-terracotta uppercase tracking-wider block">For you</span>
+            <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
+              {forYou.map((template) => (
+                <div key={template.key} className="shrink-0 w-[88vw] max-w-[320px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
+                  {renderTemplateCard(template, false, true)}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         {recommended.length > 0 && (
           <div className="space-y-3 sm:space-y-4">
             <span className="text-xs font-semibold text-aegean uppercase tracking-wider block">For your {tripLength}-day trip</span>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
               {recommended.map((template) => (
                 <div key={template.key} className="shrink-0 w-[88vw] max-w-[320px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
-                  {renderTemplateCard(template, true)}
+                  {renderTemplateCard(template, true, false)}
                 </div>
               ))}
             </div>
@@ -157,12 +188,12 @@ export default function QuickStartSection({
         )}
         <div className="space-y-3 sm:space-y-4">
           <span className="text-xs font-semibold text-olive/70 uppercase tracking-wider block">
-            {recommended.length > 0 ? "Other templates" : "Templates"}
+            {recommended.length > 0 || forYou.length > 0 ? "Other templates" : "Templates"}
           </span>
           <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
           {others.map((template) => (
             <div key={template.key} className="shrink-0 w-[88vw] max-w-[320px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
-              {renderTemplateCard(template, false)}
+              {renderTemplateCard(template, false, false)}
             </div>
           ))}
           </div>

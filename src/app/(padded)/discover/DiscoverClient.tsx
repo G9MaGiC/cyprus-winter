@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
@@ -9,6 +9,8 @@ import FilterChips from "@/components/FilterChips";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
+import { useUserPreferences } from "@/hooks/useUserPreferences";
+import { sortDiscoverItemsByInterests } from "@/lib/personalization";
 import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
@@ -38,12 +40,21 @@ export default function DiscoverClient({
   sections: Section[];
 }) {
   const searchParams = useSearchParams();
+  const { prefs, hydrated } = useUserPreferences();
   const filterParam = searchParams?.get("filter") ?? "";
   const filter = filterToSectionId[filterParam];
   const sectionExists = filter && sections.some((s) => s.id === filter);
-  const sectionsToShow = sectionExists
-    ? sections.filter((s) => s.id === filter)
-    : sections;
+
+  const sectionsToShow = useMemo(() => {
+    const raw = sectionExists
+      ? sections.filter((s) => s.id === filter)
+      : sections;
+    if (!hydrated || prefs.interests.length === 0) return raw;
+    return raw.map((section) => ({
+      ...section,
+      items: sortDiscoverItemsByInterests(section.items, prefs.interests),
+    }));
+  }, [sections, filter, sectionExists, hydrated, prefs.interests]);
   const firstSectionRef = useRef<HTMLElement>(null);
   const hasWineriesInView = sectionsToShow.some((s) =>
     s.items.some((i) => "type" in i && i.type === "winery")
