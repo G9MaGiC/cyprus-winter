@@ -1018,6 +1018,8 @@ export const monasteries: Attraction[] = [
     openingHours: "Daily 8 to 12, 14 to 17",
     transport: "30 min from Platres. Mountain road; snow possible Jan to Feb",
     parking: "Small car park; free",
+    latitude: 34.92,
+    longitude: 32.86,
   },
   {
     id: "machairas",
@@ -1072,6 +1074,8 @@ export const monasteries: Attraction[] = [
     transport: "In Kalopanagiotis village; 1.5 hr from Nicosia",
     parking: "Village car park",
     combineWith: ["kalopanagiotis", "kykkos", "trooditissa"],
+    latitude: 34.992,
+    longitude: 32.82,
   },
   {
     id: "panagia-tou-araka",
@@ -1084,6 +1088,8 @@ export const monasteries: Attraction[] = [
     backstory: "The Virgin of the Pea. Araka. The church stands near Lagoudera, small and intimate. The frescoes are dated 1192; the finest Komnenian work in Cyprus. Look up at the dome. The Pantokrator fills it: Christ as ruler of all, stern, magnificent. The Virgin and Child in the apse. The saints along the walls. The key is kept in the village. Dress modestly. Allow time. These frescoes reward slow looking. The light is low. The colours have held for over eight hundred years. Lagoudera is off the main Troodos track. Fewer visitors find it. That’s part of the gift. You stand in the nave, alone or nearly so, and the 12th century is right there.",
     nameEl: "Παναγία του Άρακος",
     culturalNote: "Key from Lagoudera village. Dress modestly. Allow time; the frescoes reward slow looking.",
+    latitude: 34.96,
+    longitude: 33.08,
   },
   {
     id: "st-george-alamanou",
@@ -1097,6 +1103,8 @@ export const monasteries: Attraction[] = [
     nameEl: "Αγιος Γεώργιος Αλαμάνου",
     transport: "Near Cape Greco; 15 min from Ayia Napa",
     parking: "Monastery car park",
+    latitude: 34.98,
+    longitude: 34.07,
   },
   {
     id: "stavrovouni",
@@ -1112,6 +1120,8 @@ export const monasteries: Attraction[] = [
     openingHours: "Men: 8 to 12, 15 to 17; chapel at base: ask locally",
     transport: "25 min from Larnaca. Mountain road",
     parking: "Car park below monastery",
+    latitude: 34.8,
+    longitude: 33.44,
   },
   {
     id: "archangelos-michail",
@@ -1136,6 +1146,8 @@ export const monasteries: Attraction[] = [
     backstory: "St Nicholas of the Roof. Stegis. The timber roof that gives the church its name protects the structure; a rare survival in Cyprus, where so much was lost to fire and decay. The frescoes inside span six centuries, from the 11th to the 17th. You can trace the shift in style across the walls. The church sits above Kakopetria, in the fold of the valley. The key is kept in the village. Ask at the Old Quarter. The drive up is short. The church appears among the trees. In winter the light is low. The colours glow. Allow an hour. Then drop down to Kakopetria for lunch. The trout tavernas by the river know how to warm you up. Caledonia Falls is just up the road. The day writes itself.",
     nameEl: "Άγιος Νικόλαος της Στέγης",
     combineWith: ["kakopetria", "caledonia-falls", "st-john-lampadistis"],
+    latitude: 34.99,
+    longitude: 32.89,
   },
   {
     id: "panagia-tou-moutoulla",
@@ -1148,6 +1160,8 @@ export const monasteries: Attraction[] = [
     backstory: "Dated 1280. The oldest of the Troodos painted churches. Compact, with a timber roof that has sheltered the frescoes for seven and a half centuries. The paintings mark the transition from Komnenian to Palaiologan style; the moment when Byzantine art in Cyprus found its own voice. The Virgin in the apse. The Pantokrator in the dome. The saints along the walls. Moutoullas is a small village. The church sits above it. The key is kept locally. Dress modestly. Allow time. You're standing in the oldest of the painted churches. The weight of that hits you. Kykkos is an hour away. Pedoulas. Kalopanagiotis. You can string them together. Or you can stop here. Breathe. Let the 13th century settle.",
     nameEl: "Παναγία του Μουτουλλά",
     combineWith: ["kykkos", "pedoulas", "kalopanagiotis"],
+    latitude: 34.97,
+    longitude: 32.87,
   },
   {
     id: "st-sozomenos",
@@ -1168,5 +1182,7 @@ export const monasteries: Attraction[] = [
     parking: "Unpaved area near the village entrance; park respectfully.",
     accessibility: "Uneven terrain; ruined buildings. Wear sturdy shoes.",
     combineWith: ["leventis-museum", "cyprus-museum", "choirokoitia"],
+    latitude: 35.04,
+    longitude: 33.41,
   },
 ];
