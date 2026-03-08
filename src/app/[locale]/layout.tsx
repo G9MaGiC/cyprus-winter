@@ -5,7 +5,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { TOKENS } from "@/lib/design-tokens";
+import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { SerwistProvider } from "../serwist";
 
@@ -87,7 +87,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <SerwistProvider swUrl="/serwist/sw.js">
         <Providers>
           <StickyPlanBarProvider>
-            <div className="pt-[calc(3.5rem+env(safe-area-inset-top,0px))]">
+            <div className={LAYOUT.paddedTop}>
               {children}
             </div>
           </StickyPlanBarProvider>

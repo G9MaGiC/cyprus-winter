@@ -154,7 +154,7 @@ export default function PlanPage() {
                   onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
                 >
-                  Pick a template or add places
+                  Build a day or pick a template
                 </button>
               </div>
             )}
@@ -251,16 +251,33 @@ export default function PlanPage() {
           </div>
 
           <div ref={quickStartRef} className={`${hasContent ? "order-2" : "order-1"} flex flex-col gap-12 sm:gap-16`}>
-            <QuickStartSection
-              activeDay={activeDay}
-              days={days}
-              getPlace={getPlace}
-              addToDay={addToDay}
-              onTemplateClick={handleTemplateClick}
-              hasContent={hasContent}
-              tripLength={tripLength}
-            />
-            <BuildADaySection />
+            {!hasContent ? (
+              <>
+                <BuildADaySection />
+                <QuickStartSection
+                  activeDay={activeDay}
+                  days={days}
+                  getPlace={getPlace}
+                  addToDay={addToDay}
+                  onTemplateClick={handleTemplateClick}
+                  hasContent={hasContent}
+                  tripLength={tripLength}
+                />
+              </>
+            ) : (
+              <>
+                <QuickStartSection
+                  activeDay={activeDay}
+                  days={days}
+                  getPlace={getPlace}
+                  addToDay={addToDay}
+                  onTemplateClick={handleTemplateClick}
+                  hasContent={hasContent}
+                  tripLength={tripLength}
+                />
+                <BuildADaySection />
+              </>
+            )}
           </div>
         </div>
 

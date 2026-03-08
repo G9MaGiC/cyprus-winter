@@ -93,3 +93,6 @@ curl -s "http://localhost:3000/api/right-now?lat=34.92&lng=33.63&limit=4&maxDist
 | `src/components/LocationActionButtons.tsx` | Use my location / Pick a region buttons |
 | `src/components/RegionPickerChips.tsx` | Region chips + "Use my location instead" |
 | `src/app/api/right-now/route.ts` | API: weather + scoring + items |
+| `src/lib/right-now-scoring.ts` | Scoring, diversification (max 1 per type in top 4) |
+| `src/lib/place-coords.ts` | Coords: trails (trailhead), wineries/restaurants (lat/lng or region centroid) |
+| `src/data/region-centroids.ts` | Region centroids for distance calculation |

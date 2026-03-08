@@ -1,5 +1,6 @@
 import type { PlanItem } from "@/data";
 import { getRegionCentroid } from "@/data/region-centroids";
+import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
 import type { Winery } from "@/data/wineries";
@@ -24,6 +25,14 @@ export function getPlaceCoords(place: PlanItem): Coords | null {
     const winery = wineries.find((w) => w.id === place.id) as Winery | undefined;
     if (winery && typeof winery.latitude === "number" && typeof winery.longitude === "number") {
       return { lat: winery.latitude, lng: winery.longitude };
+    }
+    return getRegionCentroid(place.region);
+  }
+
+  if (place.type === "restaurant") {
+    const restaurant = restaurants.find((r) => r.id === place.id);
+    if (restaurant && typeof restaurant.latitude === "number" && typeof restaurant.longitude === "number") {
+      return { lat: restaurant.latitude, lng: restaurant.longitude };
     }
     return getRegionCentroid(place.region);
   }

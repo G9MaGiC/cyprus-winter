@@ -65,7 +65,7 @@ export default function DiscoverClient({
   return (
     <div id="discover-content" aria-label="Discover places in Cyprus">
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
-      <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 pt-2 sm:pt-0 pb-3 sm:pb-4 bg-sand/95 backdrop-blur-sm border-b border-sand-200/50 ${LAYOUT.stickyBarX}`}>
+      <div className={`sticky ${LAYOUT.stickyTop} z-10 pt-2 sm:pt-0 pb-3 sm:pb-4 bg-sand/95 backdrop-blur-sm border-b border-sand-200/50 ${LAYOUT.stickyBarX}`}>
         {(filter && sectionExists) && (
           <div className="flex flex-wrap items-baseline gap-x-2 text-sm mb-3">
             <span className="font-medium text-olive">
@@ -155,7 +155,7 @@ export default function DiscoverClient({
       </div>
       <RightNowNearYou />
 
-      <div className={`mt-16 sm:mt-20 ${SECTION.footerBlock} pb-[calc(4.5rem+env(safe-area-inset-bottom))] sm:pb-0 text-center relative`}>
+      <div className={`mt-16 sm:mt-20 ${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} text-center relative`}>
         <div id="discover-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <p className="text-sm text-olive/70 mb-3">Add to your plan — or ask AI. It knows the island in winter.</p>
         <div className="flex flex-wrap justify-center gap-3">

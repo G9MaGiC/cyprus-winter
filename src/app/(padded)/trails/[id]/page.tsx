@@ -88,7 +88,7 @@ export default async function TrailPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trailSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}>
-        <nav className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`} aria-label="Page navigation">
+        <nav className={`sticky ${LAYOUT.stickyTop} z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`} aria-label="Page navigation">
           <BackLink href="/trails" label="Back to Trails" />
           <Breadcrumbs
             items={[

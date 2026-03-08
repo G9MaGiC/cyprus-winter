@@ -36,7 +36,7 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
 
   return (
     <div
-      className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm bottom-0 md:bottom-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+      className={`fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm bottom-0 md:bottom-0 ${LAYOUT.fixedBottomAboveNavMaxMd} py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
       role="complementary"
       aria-label="Quick actions"
     >

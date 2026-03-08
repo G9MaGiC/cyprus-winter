@@ -9,6 +9,7 @@ import BottomNav from "@/components/BottomNav";
 import SiteFooter from "@/components/SiteFooter";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
 import ScrollToTop from "@/components/ScrollToTop";
+import { LAYOUT } from "@/lib/design-tokens";
 
 const AIAssistant = dynamic(() => import("@/components/AIAssistant"), { loading: () => null });
 const OnboardingModal = dynamic(() => import("@/components/OnboardingModal"), { loading: () => null });
@@ -106,7 +107,7 @@ export default function RootLayout({
           <ConversionTrackerClient />
           <ScrollToTop />
           <Nav />
-          <main id="main-content" className="pt-0 min-h-screen pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
+          <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
             {children}
           </main>
           <BottomNav />

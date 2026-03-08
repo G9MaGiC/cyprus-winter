@@ -67,7 +67,7 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
 
   return (
     <div
-      className={`fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-30 flex items-center justify-center pt-4 ${LAYOUT.safeAreaX} pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomClearance} z-30 flex items-center justify-center pt-4 ${LAYOUT.safeAreaX} pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
       aria-label="Plan your trip"
     >

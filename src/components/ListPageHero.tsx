@@ -88,7 +88,7 @@ export default function ListPageHero({
             priority
           />
           <div className={HERO.listOverlay} aria-hidden />
-          <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} pt-[calc(4.5rem+env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>
+          <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} ${LAYOUT.heroContentTop} pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>
             <nav className="flex flex-col gap-1" aria-label="Page navigation">
               {navBlock}
             </nav>

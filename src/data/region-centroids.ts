@@ -8,6 +8,7 @@ import type { RegionSlug } from "@/data/regions";
 export const REGION_CENTROIDS: Record<string, { lat: number; lng: number }> = {
   /* Main regions */
   All: { lat: 34.95, lng: 33.2 }, // Island-wide events: central Cyprus
+  Pissouri: { lat: 34.67, lng: 32.70 }, // Pissouri Bay, west of Limassol
   Troodos: { lat: 34.93, lng: 32.87 },
   Paphos: { lat: 34.77, lng: 32.42 },
   Limassol: { lat: 34.68, lng: 33.04 },

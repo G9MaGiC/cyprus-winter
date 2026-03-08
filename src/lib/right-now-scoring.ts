@@ -191,7 +191,28 @@ export function scoreAndRank(
     if (Math.abs(d) > 0.5) return d;
     return b.score - a.score;
   });
-  return withCoords.slice(0, limit);
+
+  // Diversify: avoid showing 4 of the same type. Max 1 per type for first 4 slots, then 2 per type for rest.
+  const maxPerTypeFirst = 1;
+  const maxPerTypeRest = 2;
+  const picked: ScoredPlace[] = [];
+  const typeCounts: Record<string, number> = {};
+  for (const p of withCoords) {
+    if (picked.length >= limit) break;
+    const t = p.type;
+    const count = typeCounts[t] ?? 0;
+    const cap = picked.length < 4 ? maxPerTypeFirst : maxPerTypeRest;
+    if (count < cap) {
+      picked.push(p);
+      typeCounts[t] = count + 1;
+    }
+  }
+  // Fill remaining slots with next-best by score if we didn't hit limit (e.g. only 2 restaurant types exist)
+  for (const p of withCoords) {
+    if (picked.length >= limit) break;
+    if (!picked.includes(p)) picked.push(p);
+  }
+  return picked.slice(0, limit);
 }
 
 /**

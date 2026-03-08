@@ -66,8 +66,8 @@ export default function DayContentPanel({
               )}
             </div>
             {activeItems.length >= 3 && (
-              <p className="text-sm text-terracotta font-medium" role="status">
-                Full — add next stop below.
+              <p className="text-sm text-olive/80" role="status">
+                Day {activeDay} full — add another stop below or switch to another day above.
               </p>
             )}
           </div>
@@ -76,7 +76,7 @@ export default function DayContentPanel({
             {activeItems.length === 0 ? (
               <div className={`${EMPTY_STATE_DASHED} py-12 sm:py-16 px-4 bg-sand-100/30 transition-colors duration-200`}>
                 <p className="font-display font-semibold text-olive mb-1.5">Start your Day {activeDay}</p>
-                <p className="text-sm text-olive/70 mb-4">Add from above or browse places.</p>
+                <p className="text-sm text-olive/70 mb-4">Add your first place — trail, village, or winery.</p>
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                   <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}>
                     Add place

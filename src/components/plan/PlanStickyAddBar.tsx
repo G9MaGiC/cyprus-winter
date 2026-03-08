@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
+import { LAYOUT } from "@/lib/design-tokens";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 
 type PlanStickyAddBarProps = {
@@ -76,7 +77,7 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
 
   return (
     <div
-      className="fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-30 flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden"
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomClearance} z-30 flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
       aria-label="Add place"
     >

@@ -87,6 +87,11 @@ export default function QuickStartSection({
         <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
           {hasContent ? "Add more or swap templates." : "Pick a template or add places."}
         </p>
+        {!hasContent && tripLength == null && (
+          <p className="text-xs text-olive/50 max-w-xl break-words mt-1 mb-4">
+            Set your dates above to see templates that match your trip length.
+          </p>
+        )}
       </header>
 
       {!hasContent && (

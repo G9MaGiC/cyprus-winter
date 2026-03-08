@@ -286,7 +286,7 @@ export default function EventsPage() {
             {monthNavMonths.length > 0 && (
               <nav
                 aria-label="Jump to month"
-                className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
+                className={`sticky ${LAYOUT.stickyTop} z-10 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
               >
                 <p className="prose-label text-olive/60 mb-3">Jump to month</p>
                 <div className="flex flex-wrap gap-2">

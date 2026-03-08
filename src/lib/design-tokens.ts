@@ -48,8 +48,26 @@ export const BOTTOM_NAV = {
 /** Nav bar height (h-14) + safe area. Use for spacing content below fixed nav. */
 export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
 
-/** Max-width class names for consistent page layout. */
+/** Max-width and structural layout classes. */
 export const LAYOUT = {
+  /** Top padding for (padded) pages — clears fixed nav. Complements NAV_OFFSET. */
+  paddedTop: "pt-[calc(3.5rem+env(safe-area-inset-top,0px))]",
+  /** Sticky top — for elements that stick below fixed nav. Use with sticky. */
+  stickyTop: "top-[calc(3.5rem+env(safe-area-inset-top,0px))]",
+  /** Sticky top (sm and up only) — for elements that stick on desktop only. */
+  stickyTopSm: "sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))]",
+  /** Main content bottom padding — clears bottom nav on mobile. Complements BOTTOM_NAV. */
+  mainPaddingBottom: "pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0",
+  /** Fixed/sticky bottom — for elements above bottom nav. Use with fixed. */
+  fixedBottomClearance: "bottom-[calc(4.5rem+env(safe-area-inset-bottom))]",
+  /** Footer section bottom padding — clears bottom nav on mobile. */
+  footerBottomClearance: "pb-[calc(4.5rem+env(safe-area-inset-bottom))] sm:pb-0",
+  /** Hero content overlay top padding — clears nav with extra buffer. */
+  heroContentTop: "pt-[calc(4.5rem+env(safe-area-inset-top,0px))]",
+  /** Fixed bar above bottom nav — for bars that stack (e.g. trail actions). */
+  fixedBottomAboveNav: "bottom-[calc(5.5rem+env(safe-area-inset-bottom))]",
+  /** Same as fixedBottomAboveNav, but only on mobile (max-md). */
+  fixedBottomAboveNavMaxMd: "max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))]",
   list: "max-w-5xl",
   listNarrow: "max-w-4xl",
   /** Horizontal padding with safe area (notch devices). Use with px-6 equivalent. */

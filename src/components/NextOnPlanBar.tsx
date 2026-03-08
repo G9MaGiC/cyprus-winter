@@ -56,7 +56,7 @@ export default function NextOnPlanBar() {
     <div
       role="complementary"
       aria-label="Next on your plan"
-      className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-20 flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
+      className={`sticky ${LAYOUT.stickyTop} z-20 flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
     >
       <span className="text-xs font-medium text-white/80 shrink-0">Next up</span>
       <Link

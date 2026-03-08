@@ -41,6 +41,9 @@ export type Restaurant = {
   culturalNote?: string;
   /** Greek name for display (e.g. in hero) */
   nameEl?: string;
+  /** Approximate coords for Right Now distance calculation */
+  latitude?: number;
+  longitude?: number;
 };
 
 export const restaurants: Restaurant[] = [
@@ -350,7 +353,9 @@ export const restaurants: Restaurant[] = [
   {
     id: "pissouri-tavernas",
     name: "Pissouri Bay Tavernas",
-    region: "Limassol",
+    region: "Pissouri (Limassol)",
+    latitude: 34.67,
+    longitude: 32.7,
     description:
       "Cliff tavernas above Pissouri Bay. Sunset views over the curve of the coast. Meze, fish, local wine. Winter sunsets around five. The bay stays mild when the mountains are cold. Combine with Petra tou Romiou coastal path, Kourion ruins, or Avakas Gorge. A west-Limassol lunch or dinner.",
     type: "restaurant",
@@ -370,7 +375,7 @@ export const restaurants: Restaurant[] = [
   {
     id: "omodos-tavernas",
     name: "Omodos Village Tavernas",
-    region: "Limassol",
+    region: "Omodos (Limassol)",
     description:
       "The cobbled square of Omodos. Tavernas under the plane trees. Meze, kleftiko, halloumi, local wine. After a Krasochoria winery loop—Tsiakkas, Oenou Yi, Lania, Loukas—or the Artemis trail, Omodos is the natural lunch stop. The monastery overlooks the village. Winter sun on the square. The pace is slow. Reserve on weekends.",
     type: "restaurant",
@@ -391,6 +396,8 @@ export const restaurants: Restaurant[] = [
     id: "limassol-marina-restaurants",
     name: "Limassol Marina Restaurants",
     region: "Limassol",
+    latitude: 34.672,
+    longitude: 33.05,
     description:
       "Superyachts. Cobbled promenade. The marina sits between the old town and the sea—Mediterranean, fish, Italian, sushi. In winter the crowds thin and the light on the water is golden. The cafés and restaurants stay open; sit outside with a blanket on mild December evenings. This is urban Cyprus at its best. Not the villages—the city pulse, the marina buzz, the promenade stroll. Reserve for waterfront tables; the popular spots fill. Pair with Kolossi or Kourion in the morning, then come here for dinner. The contrast hits.",
     type: "restaurant",
@@ -575,6 +582,8 @@ export const restaurants: Restaurant[] = [
     id: "limassol-old-town",
     name: "Limassol Old Town Tavernas",
     region: "Limassol",
+    latitude: 34.683,
+    longitude: 33.045,
     description:
       "Limassol old town and Saripolou Square. Tavernas, meze, souvlaki. The castle area. Winter: mild; the old town has a different pulse. Combine with Kolossi, Kourion, or the marina. Urban Cyprus.",
     type: "restaurant",
@@ -654,7 +663,7 @@ export const restaurants: Restaurant[] = [
     winterTip: "Solea Valley. Trout, fireplaces. Do Mylikouri or Kampos in the morning, Kakopetria or Galata for lunch.",
     bestTimeToVisit: "Lunch; after morning trail",
     localSecret: "Kakopetria, Galata, Kalopanagiotis. River and mountain. Cosy in winter. The valley rewards slow drives.",
-    combineWith: ["kakopetria", "mylikouri", "kampos-tou-livadiou", "kryos-potamos-loop", "agios-nikolaos-tis-stegis"],
+    combineWith: ["kakopetria", "mylikouri", "kampos-tou-livadiou", "kryos-potamos-loop", "st-nicholas-roof"],
     transport: "Solea Valley. Kakopetria ~55 min from Limassol.",
     parking: "Village parking.",
     priceRange: "€€",
