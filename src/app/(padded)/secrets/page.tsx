@@ -72,7 +72,7 @@ export default function SecretsPage() {
               {place && (
                 <Link
                   href={place.href}
-                  className="inline-flex items-center min-h-[44px] gap-1.5 text-xs font-medium text-aegean hover:text-aegean/80 mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+                  className={`${SECTION.aegeanLink} gap-1.5 text-xs mb-2`}
                 >
                   <span>{place.type === "trail" ? "Trail" : "Place"}:</span>
                   <span>{place.name}</span>

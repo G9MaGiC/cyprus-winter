@@ -33,8 +33,36 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | Muted text | `olive-muted`, `olive/70` | #6B7280 | Labels, captions |
 | Text, headings | `charcoal` | #252730 | Same as olive for contrast |
 | Accent (golden hour) | `golden` | #D4A853 | Nav, hero CTA |
-| Sea/water accent | `aegean` | #1A6B7C | Status open, secondary CTAs |
+| Sea/water accent | `aegean` | #1A6B7C | Status open, secondary links, opt-in, navigation bars |
 | Earth accent | `sage` | #6B8F7A | Trail markers, sustainable badges |
+
+### CTA hierarchy
+
+| Context | Color | Token(s) | Use case |
+|---------|-------|----------|----------|
+| Primary | Terracotta | `CTA.primary`, `primaryCompact`, `chipPrimary` | Main actions: Explore, Plan, Book, Add to plan |
+| Secondary on dark | Golden | `CTA.secondary`, `tertiaryOnDark`, `ghost` | Hero panel, dark overlays; white text, hover golden |
+| Secondary on light | Aegean or Terracotta outline | `CTA.secondaryCompact`, `SECTION.aegeanLink`, `border-2 border-aegean` | Contextual links, alternate hierarchy when primary is terracotta |
+
+### Aegean usage
+
+| Pattern | Use case | Examples |
+|---------|----------|----------|
+| Links | Secondary/contextual links on light backgrounds | `SECTION.aegeanLink`, "Pair with", "See also" |
+| Pair with / contextual suggestions | SuggestedForDay, QuickStart, related places | `text-aegean`, `bg-aegean/5` |
+| Opt-in / secondary actions | PushOptIn, TemplateChoiceModal | `bg-aegean`, `border-aegean` |
+| Navigation bars / contextual strips | NextOnPlanBar | `bg-aegean/95` |
+| Status / badges | Open, confirmed, trail difficulty easy | TrailBadges, bookings status |
+| Navigate / wayfinding | NavigateButton (default), Add to plan variant | Border aegean |
+
+### One-off components (aegean usage)
+
+| Component | Current | Semantic role |
+|-----------|---------|---------------|
+| NavigateButton (default) | `text-aegean border-aegean/30` | Navigation/wayfinding helper — aegean for secondary navigation |
+| NavigateButton (light) | `text-white border-white/50` | On dark bar (NextOnPlanBar) — light variant for dark context |
+| PushOptIn | `bg-aegean` CTA | Opt-in, non-primary — aegean for secondary/opt-in actions |
+| NextOnPlanBar | `bg-aegean/95` | Contextual "next on plan" strip — aegean for contextual nav bar |
 | Sage muted | `sage-muted` | #8FA99A | — |
 
 **Spacing:** Tailwind default scale (p-2, p-4, gap-2, etc.). Layout: `LAYOUT.safeAreaX`, `LAYOUT.pagePy`, `LAYOUT.pagePyDetail`, `SECTION.py`, `SECTION.pySub`.

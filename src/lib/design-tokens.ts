@@ -116,13 +116,18 @@ export const SECTION = {
   /** Bottom margin after page header/hero (back link + title + description) */
   headingMargin: "mb-8 sm:mb-10",
   headingMarginLarge: "mb-8 sm:mb-10",
-  /** Secondary aegean link — 44px touch target, use for inline/secondary links */
+  /** Secondary aegean link — 44px touch target. Use for inline/secondary links (see Aegean usage: links, Pair with, See also). */
   aegeanLink: "inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded",
   /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
   footerBlock: "mt-10 pt-6 border-t border-sand-200/80",
 } as const;
 
-/** Shared CTA classes — design-token only, no hex. Used by homepage and other pages. */
+/**
+ * CTA Hierarchy:
+ * - Primary: terracotta (Explore, Plan, Book, main actions) — primary, primaryCompact, chipPrimary
+ * - Secondary on dark (hero): golden — secondary, tertiaryOnDark, ghost (white text, hover golden)
+ * - Secondary on light: aegean (links) or terracotta outline — secondaryCompact, SECTION.aegeanLink, border-2 border-aegean
+ */
 export const CTA = {
   primary:
     "inline-flex items-center justify-center min-h-[44px] w-full sm:w-auto sm:min-w-[180px] px-8 py-3.5 rounded-xl bg-terracotta text-white font-semibold hover:bg-terracotta-muted active:scale-[0.99] transition-all duration-200 ease-out text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation",
