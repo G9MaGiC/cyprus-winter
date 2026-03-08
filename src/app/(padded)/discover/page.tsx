@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 
 const allDiscoverItems = [
   ...beaches,
+  ...natureSites,
   ...ancientSites,
   ...villages,
   ...wineries,
@@ -111,7 +112,7 @@ export default function DiscoverPage() {
         </div>
       </ListPageHero>
 
-      <section aria-labelledby="discover-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub}`}>
+      <section aria-labelledby="discover-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub} section-reveal`}>
         <div className={`${LAYOUT.list} mx-auto`}>
           <h2 id="discover-search-heading" className="text-center text-olive font-display text-xl sm:text-2xl font-semibold mb-3">
             Find a place

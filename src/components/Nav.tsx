@@ -42,7 +42,7 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/96 backdrop-blur-xl border-b border-white/5 pt-[env(safe-area-inset-top)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
       <div className={`${LAYOUT.nav} mx-auto flex items-center justify-between h-14 ${LAYOUT.safeAreaX}`}>
         <AppLink href="/" className="font-display text-xl font-bold text-golden min-h-[44px] inline-flex items-center">
           Cyprus Winter

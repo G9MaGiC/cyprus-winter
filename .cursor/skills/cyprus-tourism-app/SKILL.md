@@ -33,7 +33,7 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | Muted text | `olive-muted`, `olive/70` | #6B7280 | Labels, captions |
 | Text, headings | `charcoal` | #252730 | Same as olive for contrast |
 | Accent (golden hour) | `golden` | #D4A853 | Nav, hero CTA |
-| Sea/water accent | `aegean` | #1D6B85 | Status open, secondary CTAs |
+| Sea/water accent | `aegean` | #1A6B7C | Status open, secondary CTAs |
 | Earth accent | `sage` | #6B8F7A | Trail markers, sustainable badges |
 | Sage muted | `sage-muted` | #8FA99A | — |
 

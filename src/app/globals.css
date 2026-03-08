@@ -1,40 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  /* Cyprus Winter — terracotta + aegean, clean typography */
-  --background: #fafaf9;
-  --foreground: #1e293b;
-  --terracotta: #e07a5f;
-  --terracotta-muted: #c96f52;
-  --olive: #334155;
-  --olive-muted: #64748b;
-  --golden: #d97706;
-  --charcoal: #1e293b;
-  --aegean: #0f766e;
-  --sage: #64748b;
-  --cloud: #fafaf9;
-  --sand: #fafaf9;
-  --sand-mid: #f5f5f4;
-  --sand-dark: #e7e5e4;
+  /* Cyprus Winter — Mediterranean warmth: terracotta, aegean, golden, sand */
+  --background: #faf8f5;
+  --foreground: #252730;
+  --terracotta: #c96f52;
+  --terracotta-muted: #b85d42;
+  --olive: #4a5162;
+  --olive-muted: #6b7280;
+  --golden: #d4a853;
+  --charcoal: #252730;
+  --aegean: #1a6b7c;
+  --sage: #6b8f7a;
+  --cloud: #faf8f5;
+  --sand: #faf8f5;
+  --sand-mid: #f5f2ed;
+  --sand-dark: #eae6df;
+  /* Mobile-first: 44px touch target, thumb zone */
+  --touch-target: 44px;
+  --transition-smooth: 0.2s ease;
+  --transition-medium: 0.3s ease;
 }
 
 @theme inline {
   --color-background: var(--cloud);
   --color-foreground: var(--charcoal);
-  --color-terracotta: #e07a5f;
-  --color-terracotta-muted: #c96f52;
-  --color-olive: #334155;
-  --color-olive-muted: #64748b;
-  --color-golden: #d97706;
-  --color-charcoal: #1e293b;
-  --color-aegean: #0f766e;
-  --color-sage: #64748b;
-  --color-sage-muted: #94a3b8;
-  --color-cloud: #fafaf9;
-  --color-sand: #fafaf9;
-  --color-sand-100: #f5f5f4;
-  --color-sand-200: #e7e5e4;
-  --color-sand-300: #d6d3d1;
+  --color-terracotta: #c96f52;
+  --color-terracotta-muted: #b85d42;
+  --color-olive: #4a5162;
+  --color-olive-muted: #6b7280;
+  --color-golden: #d4a853;
+  --color-charcoal: #252730;
+  --color-aegean: #1a6b7c;
+  --color-sage: #6b8f7a;
+  --color-sage-muted: #8fa99a;
+  --color-cloud: #faf8f5;
+  --color-sand: #faf8f5;
+  --color-sand-100: #f5f2ed;
+  --color-sand-200: #eae6df;
+  --color-sand-300: #d4cfc5;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), ui-serif, Georgia, serif;
 }
@@ -43,8 +47,8 @@ html {
   scroll-behavior: smooth;
   /* 16px base prevents iOS zoom on input focus */
   font-size: 16px;
-  /* Subtle tap highlight for touch */
-  -webkit-tap-highlight-color: rgba(224, 122, 95, 0.15);
+  /* Subtle tap highlight for touch — terracotta tint */
+  -webkit-tap-highlight-color: rgba(201, 111, 82, 0.12);
 }
 
 body {
@@ -105,7 +109,7 @@ a:focus-visible {
 }
 
 ::selection {
-  background: rgba(224, 122, 95, 0.2);
+  background: rgba(201, 111, 82, 0.18);
   color: var(--charcoal);
 }
 
@@ -175,8 +179,17 @@ details summary::marker {
   }
 }
 @keyframes ai-chat-trigger-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(224, 122, 95, 0.25); }
-  50% { box-shadow: 0 0 0 8px rgba(224, 122, 95, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 111, 82, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 111, 82, 0); }
+}
+
+/* Section reveal — subtle fade-in for premium feel */
+.section-reveal {
+  animation: section-reveal 0.5s ease-out both;
+}
+@keyframes section-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
   .ai-chat-panel-enter {
@@ -185,5 +198,9 @@ details summary::marker {
   }
   .ai-chat-trigger-pulse {
     animation: none;
+  }
+  .section-reveal {
+    animation: none;
+    opacity: 1;
   }
 }

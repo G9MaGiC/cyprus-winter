@@ -511,6 +511,42 @@ Fixed — BUG-040, BUG-042 (sanitizeMarkdownLinks in sanitize.ts); BUG-043 (chat
 
 ---
 
+## Anomaly Audit (Mar 8, 2026)
+
+*Per plan: audit src/ for inconsistencies, data integrity, design tokens, duplicate patterns.*
+
+### BUG-053 — natureSites omitted from allDiscoverItems
+
+**Severity:** Medium
+**Area:** Data
+**Page/Component:** src/app/(padded)/discover/page.tsx
+
+**Reproduction**
+1. Open /discover
+2. Filter by "Family-friendly" or "Off the beaten path"
+3. Check which places appear
+
+**Expected**
+Family-friendly or off-beaten-path nature sites (e.g. Cape Greco, Lara Bay) appear in those sections.
+
+**Actual**
+`allDiscoverItems` excluded `natureSites`, so `familyItems` and `quietItems` were built without nature sites. Nature section worked (it uses `natureSites` directly), but Family-friendly and Quiet escapes missed nature sites. JSON-LD schema also omitted nature sites.
+
+**Fix status**
+Fixed — added `natureSites` to `allDiscoverItems` array.
+
+### Audit summary
+
+| Check | Result |
+|-------|--------|
+| Design tokens | OK — TOKENS, LAYOUT, CARD used; hex only in design-tokens.ts and globals.css |
+| combineWith IDs | OK — related-places.test.ts validates all sources |
+| Filter params | OK — filterToSectionId matches discover sections |
+| Slugs | OK — wine-routes, regions slugs validated |
+| Duplicate chip data | Low — CategoryChips and StartHereWithExplore share similar arrays; acceptable |
+
+---
+
 ## CTO Project Review — Mar 2026
 
 *Plan: CTO Project Review and Action Plan. Phases 1–6 + P0 actions.*
@@ -691,3 +727,71 @@ No bugs found. All QA_BUGS entries remain Fixed. Layout refactor verified; disco
 ### QA_BUGS status
 
 No Open or In progress bugs. All prior entries Fixed.
+
+---
+
+## Audit — Comprehensive Issue Scan (Mar 8, 2026)
+
+*Per plan: audit-explore. Categories: Bugs, Accessibility, Inconsistencies, Performance, Security, Data, UX, SEO.*
+
+### P0 — Critical (fix first)
+
+| ID | File | Issue |
+|----|------|-------|
+| — | — | No P0 issues found |
+
+### P1 — High
+
+| ID | Category | File | Issue |
+|----|----------|------|-------|
+| BUG-054 | SEO | src/app/layout.tsx | Root layout metadata lacks `alternates: { canonical: SITE_URL }`; home `/` has no canonical |
+| BUG-055 | Accessibility | Multiple | Footer/secondary `Link` with `text-aegean hover:underline` lack `min-h-[44px]` (wine-routes, regions, book/guide, guides, secrets, beaches, villages, wineries) |
+| BUG-056 | Accessibility | plan/page.tsx:295–305 | Inline "Or" links (`font-medium text-aegean hover:underline`) lack min-h-[44px] |
+| BUG-057 | UX | AIAssistant.tsx:645 | AI markdown links with `href="#"` when `!isSafeUrl` — renders as link but navigates nowhere; consider hiding or showing as plain text |
+
+### P2 — Medium
+
+| ID | Category | File | Issue |
+|----|----------|------|-------|
+| BUG-058 | Inconsistency | PageHeader vs BackLink | PageHeader uses plain Link with back styling; BackLink is separate component — both acceptable but pattern differs |
+| BUG-059 | Inconsistency | DiscoverClient:133 | "Clear region" link has `min-h-[44px]`; "Unknown category" link at 113 lacks it |
+| BUG-060 | Performance | page.tsx | EditorsPicks, BookTastings dynamically imported with loading skeletons — OK |
+| BUG-061 | Security | .env.example | API keys documented; no hardcoded secrets in src/ |
+| BUG-062 | Data | related-places.test.ts | combineWith validation covers all sources; no orphan IDs found |
+| BUG-063 | UX | plan/page.tsx | `?add=failed` shows alert; `?add=` with invalid id redirects to failed — OK |
+| BUG-064 | SEO | layout.tsx | Root has openGraph.url; sub-pages have canonical — home canonical missing (see BUG-054) |
+| BUG-065 | Accessibility | AIAssistant | Modal has aria-modal, aria-labelledby; backdrop tap dismiss on mobile — no focus trap (Escape closes); consider focus trap for keyboard users |
+| BUG-066 | Design | globals.css, design-tokens.ts | Hex only in design system files — OK |
+
+### Verified (no change needed)
+
+| Check | Status |
+|-------|--------|
+| combineWith IDs | related-places.test.ts validates attractions, trails, wineries, restaurants |
+| filterToSectionId | Matches discover sections (beach, nature, ancient, village, winery, eat, monastery, family, quiet) |
+| Back navigation | PageHeader or BackLink on detail pages; PageHeader on list pages (secrets, discover, wine-routes, etc.) |
+| sanitizeText + sanitizeMarkdownLinks | Chat API applies before returning; AIAssistant uses isSafeUrl for href |
+| Rate limiting | Chat, bookings, weather, vapid documented; STRESS_TEST_TOKEN disabled in prod |
+| Touch targets (CTAs) | AddToItineraryButton, CTA tokens, Nav, BottomNav, BackLink use min-h-[44px] |
+| LD+JSON | Static schema from data; dangerouslySetInnerHTML with JSON.stringify — safe (no user input) |
+
+### Fix status
+
+No P0 fixes applied (none identified). P1/P2 documented for backlog.
+
+---
+
+## Bug Fix Run — P1 Accessibility & UX (Mar 8, 2026)
+
+*Fix BUG-054, BUG-055, BUG-056, BUG-057, BUG-059.*
+
+### Fixes applied
+
+| ID | Fix |
+|----|-----|
+| **BUG-054** | Added `alternates: { canonical: SITE_URL }` to root layout metadata |
+| **BUG-055** | Added `SECTION.aegeanLink` token (44px touch target) and applied to guides, villages, wineries, book/guide, secrets, wine-routes, beaches, regions, weather, register; footer already had min-h-[44px] |
+| **BUG-056** | Plan page "Or" links now use `SECTION.aegeanLink` |
+| **BUG-057** | AIAssistant: when `!isSafeUrl`, render `<span>` instead of `<a href="#">` |
+| **BUG-059** | DiscoverClient "All categories" link now uses `SECTION.aegeanLink` |
+| **BUG-065** | No fix — focus trap already implemented (Tab/Shift+Tab + focusin) |

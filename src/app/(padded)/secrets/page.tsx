@@ -99,7 +99,7 @@ export default function SecretsPage() {
         <span id="secrets-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
         Pair with trails and villages.{" "}
-        <Link href="/plan" className="text-aegean hover:underline">
+        <Link href="/plan" className={SECTION.aegeanLink}>
           Plan your day
         </Link>
       </p>

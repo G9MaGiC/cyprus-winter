@@ -1,6 +1,7 @@
 import { allAttractions } from "@/data";
 import { restaurants } from "@/data/restaurants";
 import { trails } from "@/data/trails";
+import { winterEvents } from "@/data/events";
 import { wineries } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
 
@@ -21,7 +22,7 @@ export type RelatedPlace = {
   id: string;
   name: string;
   href: string;
-  type: "attraction" | "trail" | "winery" | "restaurant";
+  type: "attraction" | "trail" | "winery" | "restaurant" | "event";
 };
 
 /**
@@ -59,6 +60,16 @@ export function getRelatedPlaces(ids: string[]): RelatedPlace[] {
         name: restaurant.name,
         href: `/discover/${restaurant.id}`,
         type: "restaurant",
+      });
+      continue;
+    }
+    const event = winterEvents.find((e) => e.id === id);
+    if (event) {
+      result.push({
+        id: event.id,
+        name: event.name,
+        href: `/events#${event.id}`,
+        type: "event",
       });
     }
   }

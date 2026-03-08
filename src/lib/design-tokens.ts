@@ -1,32 +1,42 @@
 /**
- * Design tokens — Cyprus Winter (terracotta + aegean).
- * Primary: terracotta. Secondary: aegean. Accents: golden. Clean typography, WCAG AA contrast.
+ * Design tokens — Cyprus Winter (Mediterranean warmth).
+ * Primary: terracotta. Secondary: aegean. Accents: golden, sage. Fraunces + Plus Jakarta Sans.
  */
 export const TOKENS = {
-  /** Base neutrals */
-  cloud: "#fafaf9",
-  sand: "#fafaf9",
-  sandMid: "#f5f5f4",
-  sandDark: "#e7e5e4",
-  /** Text — slate tones */
-  charcoal: "#1e293b",
-  olive: "#334155",
-  oliveMuted: "#64748b",
-  /** Primary CTAs — terracotta */
-  terracotta: "#E07A5F",
-  terracottaMuted: "#C96F52",
-  /** Accents — amber */
-  golden: "#d97706",
-  /** Secondary brand — dark teal */
-  aegean: "#0f766e",
-  /** Muted text */
-  sage: "#64748b",
-  sageMuted: "#94a3b8",
+  /** Base neutrals — warm sand/cream */
+  cloud: "#faf8f5",
+  sand: "#faf8f5",
+  sandMid: "#f5f2ed",
+  sandDark: "#eae6df",
+  /** Text — earthy slate */
+  charcoal: "#252730",
+  olive: "#4a5162",
+  oliveMuted: "#6b7280",
+  /** Primary CTAs — terracotta clay */
+  terracotta: "#c96f52",
+  terracottaMuted: "#b85d42",
+  /** Accents — golden hour */
+  golden: "#d4a853",
+  /** Secondary brand — Aegean sea */
+  aegean: "#1a6b7c",
+  /** Earth accent — trails, sustainable */
+  sage: "#6b8f7a",
+  sageMuted: "#8fa99a",
 } as const;
 
+/** Mobile-first: 44px touch target (Apple HIG, WCAG). Use min-h-[44px], min-w-[44px]. */
+export const TOUCH_TARGET = "44px";
+
 /** Box shadow for map markers (Leaflet inline styles) — charcoal-based */
-export const MAP_ICON_SHADOW = "0 2px 6px rgba(30,41,59,0.25)";
-export const MAP_ICON_SHADOW_SM = "0 2px 4px rgba(30,41,59,0.25)";
+export const MAP_ICON_SHADOW = "0 2px 6px rgba(37,39,48,0.2)";
+export const MAP_ICON_SHADOW_SM = "0 2px 4px rgba(37,39,48,0.2)";
+
+/** Micro-interaction timing — smooth, not rushed */
+export const TRANSITION = {
+  fast: "150ms ease",
+  smooth: "0.2s ease",
+  medium: "0.3s ease",
+} as const;
 
 /** Bottom nav (mobile) — shared values for main padding, sticky bars, footer clearance */
 export const BOTTOM_NAV = {
@@ -82,6 +92,8 @@ export const SECTION = {
   /** Bottom margin after page header/hero (back link + title + description) */
   headingMargin: "mb-8 sm:mb-10",
   headingMarginLarge: "mb-8 sm:mb-10",
+  /** Secondary aegean link — 44px touch target, use for inline/secondary links */
+  aegeanLink: "inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded",
   /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
   footerBlock: "mt-10 pt-6 border-t border-sand-200/80",
 } as const;
@@ -89,7 +101,7 @@ export const SECTION = {
 /** Shared CTA classes — design-token only, no hex. Used by homepage and other pages. */
 export const CTA = {
   primary:
-    "inline-flex items-center justify-center min-h-[48px] w-full sm:w-auto sm:min-w-[180px] px-8 py-3.5 rounded-xl bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors duration-200 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal",
+    "inline-flex items-center justify-center min-h-[44px] w-full sm:w-auto sm:min-w-[180px] px-8 py-3.5 rounded-xl bg-terracotta text-white font-semibold hover:bg-terracotta-muted active:scale-[0.99] transition-all duration-200 ease-out text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation",
   secondary:
     "inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-xl border-2 border-white/80 text-white/95 font-medium hover:border-golden hover:text-golden hover:bg-white/10 transition-colors duration-200 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal",
   /** Tertiary actions on dark (hero/support links). */
@@ -119,13 +131,15 @@ export const EMPTY_STATE_COMPACT = "py-6 px-6 rounded-xl bg-sand-100/80 border b
 /** Empty-state with larger vertical padding — e.g. trails "no results" with CTA. */
 export const EMPTY_STATE_LARGE = "py-20 px-6 text-center rounded-xl bg-sand-100/80 border border-sand-200/70" as const;
 
-/** Cards — warmth, subtle depth, less boxy. All cards use rounded-xl. */
+/** Cards — warmth, subtle depth, Mediterranean feel. All cards use rounded-xl. */
 export const CARD = {
-  base: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
-  hover: "hover:border-terracotta/30 hover:shadow-md transition-all duration-200",
-  interactive: "active:scale-[0.99] motion-reduce:active:scale-100 transition-transform",
-  /** Media cards (EditorsPicks, BookTastings, PlaceOfDay): image-first, gradient overlay */
+  base: "rounded-xl bg-white/95 border border-sand-200/80 shadow-[0_2px_12px_rgba(37,39,48,0.06)]",
+  hover: "hover:border-terracotta/25 hover:shadow-[0_8px_24px_rgba(37,39,48,0.1)] transition-all duration-300 ease-out",
+  interactive: "active:scale-[0.99] motion-reduce:active:scale-100 transition-transform duration-150",
+  /** Media cards: image-first, gradient overlay for text legibility */
   media: "aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0",
+  /** Card image gradient — warm Mediterranean feel */
+  mediaOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
   /** Info cards (ThisWeekGrid, StartHereStrip): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
   info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
   /** Action cards (Plan, Events, StartHereStrip primary): larger padding, strong CTA */
@@ -159,14 +173,15 @@ export const TYPE = {
 export const HERO = {
   section:
     "relative isolate overflow-hidden min-h-[72vh] min-[400px]:min-h-[76vh] sm:min-h-[86vh] flex flex-col items-center justify-end sm:justify-center pb-16 sm:pb-24 text-center w-full",
-  /** Single gradient overlay (simplified per Design review). */
+  /** Mediterranean warmth overlay — golden-terracotta tint at bottom */
   overlay:
-    "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/5",
-  /** List page hero image overlay — readable text on variable images. */
+    "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/60 via-charcoal/30 to-transparent",
+  /** List page hero — readable text on variable images */
   listOverlay:
-    "absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60 pointer-events-none",
+    "absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none",
+  /** Panel depth — subtle Mediterranean warmth in shadow */
   panel:
-    "relative rounded-2xl bg-charcoal/30 backdrop-blur-md ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-6 sm:p-10",
+    "relative rounded-2xl bg-charcoal/35 backdrop-blur-md ring-1 ring-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.4)] p-6 sm:p-10 transition-shadow duration-300",
 } as const;
 
 /** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */

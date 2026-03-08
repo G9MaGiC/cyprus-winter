@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
@@ -96,14 +96,14 @@ export default function WeatherPage() {
         <p>
           <Link
             href="/trails"
-            className="text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+            className={SECTION.aegeanLink}
           >
             Check trail conditions
           </Link>{" "}
           before heading up.{" "}
           <Link
             href="/discover?filter=winery"
-            className="text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+            className={SECTION.aegeanLink}
           >
             Winter wineries
           </Link>{" "}

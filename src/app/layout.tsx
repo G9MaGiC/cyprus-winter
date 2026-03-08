@@ -56,6 +56,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Cyprus Winter",
   },
+  alternates: { canonical: SITE_URL },
 };
 
 const webSiteSchema = {

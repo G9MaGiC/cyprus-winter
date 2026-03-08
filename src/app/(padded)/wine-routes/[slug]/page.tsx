@@ -58,11 +58,11 @@ export default async function WineRoutePage({ params }: Props) {
 
       <div className={SECTION.footerBlock}>
         <p className="text-center text-olive/70 text-sm">
-          <Link href="/wineries" className="text-aegean hover:underline">
+          <Link href="/wineries" className={SECTION.aegeanLink}>
             All Cyprus wineries
           </Link>
           {" · "}
-          <Link href="/plan" className="text-aegean hover:underline">
+          <Link href="/plan" className={SECTION.aegeanLink}>
             Plan your trip
           </Link>
         </p>

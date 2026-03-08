@@ -58,7 +58,7 @@ export default function Home() {
         <HomeWeatherStrip />
       </Suspense>
       <TripReminderBanner />
-      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub}`}>
+      <section aria-labelledby="home-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub} section-reveal`}>
         <div className={`${LAYOUT.list} mx-auto`}>
           <h2 id="home-search-heading" className={`${TYPE.sectionTitle} text-center text-olive mb-3`}>
             Where to today?

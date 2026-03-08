@@ -636,20 +636,24 @@ function AssistantMessage({
         <ReactMarkdown
           components={{
             a: ({ href, children }) => {
-              const url = href ?? "#";
+              const url = href ?? "";
               const safe = isSafeUrl(url);
               const placeMatch = url.match(/^\/(trails|discover)\/([^/?#]+)/);
               const place = placeMatch ? getPlaceById(placeMatch[2]) : undefined;
               return (
                 <span className="inline-flex flex-wrap items-center gap-1.5">
-                  <a
-                    href={safe ? url : "#"}
-                    rel={url.startsWith("http") ? "noopener noreferrer" : undefined}
-                    target={url.startsWith("http") ? "_blank" : undefined}
-                    className="text-terracotta underline underline-offset-2 hover:text-terracotta-muted break-all transition-colors"
-                  >
-                    {children}
-                  </a>
+                  {safe ? (
+                    <a
+                      href={url}
+                      rel={url.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={url.startsWith("http") ? "_blank" : undefined}
+                      className="text-terracotta underline underline-offset-2 hover:text-terracotta-muted break-all transition-colors"
+                    >
+                      {children}
+                    </a>
+                  ) : (
+                    <span className="text-olive/80 break-all">{children}</span>
+                  )}
                   {place && (
                     <AddToItineraryButton placeId={place.id} label="Add" className="min-h-[44px] min-w-[44px] justify-center px-4 py-2.5 text-sm" />
                   )}

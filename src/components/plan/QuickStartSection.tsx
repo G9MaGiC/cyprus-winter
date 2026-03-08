@@ -98,6 +98,9 @@ export default function QuickStartSection({
         {template.seasonalNote && (
           <span className="text-xs text-sage mt-1 block">{template.seasonalNote}</span>
         )}
+        {template.bookingNote && (
+          <span className="text-xs text-terracotta/90 mt-1 block">Book ahead: {template.bookingNote}</span>
+        )}
       </button>
     );
   };
@@ -110,7 +113,7 @@ export default function QuickStartSection({
       <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
         {hasContent
           ? "Add more places or swap templates. Saves as you go."
-          : "Pick a template or add one place. Kourion, Artemis, Omodos—start wherever feels right."}
+          : "Pick a template or build from scratch. Every itinerary includes pacing tips and winery booking reminders."}
       </p>
 
       {!hasContent && (

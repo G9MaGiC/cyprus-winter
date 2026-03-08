@@ -35,6 +35,12 @@ export type Restaurant = {
   diningVenues?: string[];
   /** Shops and boutiques at multi-venue locations */
   shops?: string[];
+  /** Longer backstory or historical context */
+  backstory?: string;
+  /** Cultural note or local custom */
+  culturalNote?: string;
+  /** Greek name for display (e.g. in hero) */
+  nameEl?: string;
 };
 
 export const restaurants: Restaurant[] = [
@@ -456,18 +462,45 @@ export const restaurants: Restaurant[] = [
   {
     id: "lefkara-tavernas",
     name: "Lefkara Village Tavernas",
+    nameEl: "Λεύκαρα",
     region: "Larnaca",
     description:
-      "Pano and Kato Lefkara. Lace village lunch. Tavernas in stone buildings. Meze, local wine. After the Lefkara path or lace shopping. Combine with Choirokoitia, Zygi, or Stavrovouni. Winter: mild; the villages are quieter.",
+      "The lace village. UNESCO-recognised Lefkaritiko since the Venetians. Tavernas in stone buildings, silver workshops, lacemakers in doorways. Meze, local wine, village pace. Pano and Kato Lefkara—two villages, one tradition. Winter light on the cobbles; fewer tour buses; the craft comes first.",
     type: "restaurant",
     cuisine: "taverna",
-    highlights: ["Lace village", "Stone buildings", "Meze"],
-    bestFor: ["Lefkara", "Lace combo", "Village lunch"],
+    highlights: [
+      "UNESCO Lefkaritiko lace",
+      "Silver filigree",
+      "Lefkara Path",
+      "Stone architecture",
+      "Village events",
+    ],
+    bestFor: ["Lace village", "Craft & culture", "Village lunch", "Lefkara Path combo"],
     winterOpen: true,
-    winterTip: "Lace and stone. Village lunch. Choirokoitia and Zygi nearby.",
-    localSecret: "After lace, lunch. Stone and meze. The village rewards.",
-    combineWith: ["lefkara", "lefkara-path", "choirokoitia", "zygi-tavernas"],
+    winterTip: "Winter is ideal: mild, quiet, lacemakers in doorways. March brings the Lefkara Lace Festival—the square fills with demonstrations, workshops, stalls. Book lunch if you come then. Otherwise, weekday mornings are tranquil.",
+    bestTimeToVisit: "Lunch after lace shopping; weekday mornings for fewer crowds. March for the Lace Festival.",
+    localSecret: "Start in Kato Lefkara. Quieter. Same lace, often better prices. Walk up to Pano when ready. Both have tavernas. The stone rewards slow wandering.",
+    combineWith: ["lefkara", "lefkara-path", "lefkara-kato", "lefkara-lace-festival", "choirokoitia", "zygi-tavernas"],
     priceRange: "€€",
+    transport: "30 min from Larnaca. Bus 429 to Lefkara.",
+    parking: "Free at village entrance; fills on weekends and during the Lace Festival.",
+    openingHours: "Tavernas typically 12–15:30, 19–22; some close Mon or Tue",
+    diningVenues: [
+      "Village square tavernas",
+      "Stone-built meze spots",
+      "Kafenions with light bites",
+      "Panoramic terrace cafés",
+    ],
+    shops: [
+      "Lefkaritiko lace workshops",
+      "Silver filigree ateliers",
+      "Lace & embroidery boutiques",
+      "Local crafts & souvenirs",
+    ],
+    backstory:
+      "Lefkaritiko lace has been made in these hills since the Venetians ruled Cyprus. UNESCO inscribed it in 2009 as Intangible Cultural Heritage. Legend says Leonardo da Vinci bought an altar cloth here for Milan Cathedral. Whether true or not, the craft is ancient: grandmothers teach granddaughters the same geometric patterns, stitch by stitch. The village sits at 700m, stone houses climbing the slope, views across the valley. Pano Lefkara is the main village; Kato Lefkara below shares the tradition but stays quieter. The tavernas fit the rhythm—meze, local wine, stone walls, no rush. Lace in the morning, lunch at noon. That's how Lefkara works.",
+    culturalNote:
+      "Ti kánis? (Τι κάνεις); how are you? It's the customary greeting before you browse. Don't be shy about asking how the lace is made; the artisans are proud and often happy to explain. Kalí órexi before you eat—enjoy your meal.",
   },
   {
     id: "kathikas-tavernas",

@@ -162,7 +162,7 @@ export default async function RegionPage({ params }: Props) {
               <p className="mt-4">
                 <Link
                   href="/guides/troodos-december"
-                  className="text-aegean hover:underline text-sm font-medium"
+                  className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
                   Best Troodos trails in December →
                 </Link>
@@ -236,7 +236,7 @@ export default async function RegionPage({ params }: Props) {
               <p className="mt-4">
                 <Link
                   href="/wineries"
-                  className="text-aegean hover:underline text-sm font-medium"
+                  className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
                   All Cyprus wineries →
                 </Link>
@@ -289,11 +289,11 @@ export default async function RegionPage({ params }: Props) {
 
       <div className={SECTION.footerBlock}>
         <p className="text-center text-olive/70 text-sm">
-        <Link href="/weather" className="text-aegean hover:underline">
+        <Link href="/weather" className={SECTION.aegeanLink}>
           Weather by month
         </Link>
         {" · "}
-        <Link href="/plan" className="text-aegean hover:underline">
+        <Link href="/plan" className={SECTION.aegeanLink}>
           Plan your trip
         </Link>
       </p>

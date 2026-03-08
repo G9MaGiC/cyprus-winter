@@ -1,5 +1,6 @@
 /**
  * Pre-built itinerary templates: metadata + place IDs per day.
+ * Designed by Cyprus tour-operator expertise: realistic pacing, seasonal tips, winery bookings.
  * Used by Plan page, QuickStartSection, and URL ?template= param.
  */
 
@@ -9,7 +10,10 @@ export type ItineraryTemplateMeta = {
   description: string;
   duration: number;
   bestFor: string[];
+  /** Tour operator tip: pacing, driving, or booking */
   seasonalNote?: string;
+  /** Booking or logistics reminder when relevant */
+  bookingNote?: string;
   hasWineries: boolean;
   /** Place IDs by day */
   days: Record<number, string[]>;
@@ -19,10 +23,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "short-stay",
     label: "Short stay",
-    description: "48 hours: trail, village, wine",
+    description: "48 hours: ancient coast, Troodos trail, village wine",
     duration: 2,
-    bestFor: ["Bleisure", "Weekend", "Quick trip"],
-    seasonalNote: "Daylight ~5pm. Start early.",
+    bestFor: ["Bleisure", "Weekend", "Stopover"],
+    seasonalNote: "Daylight ends ~5pm. Start Kourion by 10am.",
+    bookingNote: "Book Tsiakkas tasting—winter slots fill.",
     hasWineries: true,
     days: {
       1: ["kourion", "pafos-mosaics"],
@@ -32,9 +37,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "classic",
     label: "Classic",
-    description: "Coast, culture, hill villages",
+    description: "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace",
     duration: 5,
-    bestFor: ["Culture", "First visit"],
+    bestFor: ["Culture", "First visit", "Balanced pace"],
+    seasonalNote: "2–3 stops/day. Group Kourion + mosaics (same coast).",
+    bookingNote: "Reserve Tsiakkas and Kolios tastings 24–48h ahead.",
     hasWineries: true,
     days: {
       1: ["kourion", "pafos-mosaics"],
@@ -47,10 +54,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "mountain",
     label: "Mountain",
-    description: "Troodos trails & stone villages",
+    description: "Troodos loops and stone villages—Artemis, Caledonia, Kykkos",
     duration: 5,
-    bestFor: ["Hiking", "Villages"],
-    seasonalNote: "Pack layers. Trails can be icy.",
+    bestFor: ["Hiking", "Villages", "Winter trails"],
+    seasonalNote: "Pack layers. Trails can be icy; check conditions.",
+    bookingNote: "Tsiakkas after Kykkos—perfect end-of-day pairing.",
     hasWineries: true,
     days: {
       1: ["artemis", "platres"],
@@ -63,9 +71,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "coast-culture",
     label: "Coast & Culture",
-    description: "Beaches, ruins, wine",
+    description: "Beaches, UNESCO sites, wineries—east to west",
     duration: 5,
     bestFor: ["Beaches", "History", "Wine"],
+    seasonalNote: "Gentle coast; combine Kourion + Governor's Beach (nearby).",
+    bookingNote: "Book Omodos/Tsiakkas tastings; winter hours limited.",
     hasWineries: true,
     days: {
       1: ["pafos-mosaics", "tomb-of-kings"],
@@ -78,9 +88,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "family",
     label: "Family",
-    description: "Gentle pace, 2–3 stops a day",
+    description: "Gentle pace, 2 stops/day—beaches, villages, waterfall",
     duration: 5,
-    bestFor: ["Families", "Kids"],
+    bestFor: ["Families", "Kids", "Relaxed"],
+    seasonalNote: "Caledonia: waterproof boots. Sterna Boutique: call ahead.",
+    bookingNote: "Sterna Boutique—reserve family tasting.",
     hasWineries: true,
     days: {
       1: ["fig-tree-bay", "coral-bay"],
@@ -93,10 +105,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "classic-7",
     label: "Classic Culture (7 days)",
-    description: "Larnaca to Paphos: coasts, cities, Troodos",
+    description: "Larnaca → Nicosia → Troodos → Paphos—full island sweep",
     duration: 7,
     bestFor: ["Culture", "First visit", "1-week trip"],
-    seasonalNote: "Dec: Christmas villages. Jan: Almond blossoms.",
+    seasonalNote: "Dec: Christmas villages. Jan: Almond blossoms. Start Nicosia museums early.",
+    bookingNote: "Multiple winery stops—book ahead; lean staffing in winter.",
     hasWineries: true,
     days: {
       1: ["fig-tree-bay", "larnaca-salt-lake"],
@@ -111,10 +124,11 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
   {
     key: "mountain-10",
     label: "Mountain Explorer (10 days)",
-    description: "Troodos base, Pitsilia, Machairas, Paphos",
+    description: "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion",
     duration: 10,
-    bestFor: ["Hiking", "Deep immersion"],
-    seasonalNote: "Jan–Mar: Snow possible on Olympus. Check trail conditions.",
+    bestFor: ["Hiking", "Deep immersion", "Serious trekkers"],
+    seasonalNote: "Jan–Mar: Snow on Olympus. Check trail conditions daily.",
+    bookingNote: "Vouni Panayia: book tasting. Days 8–10: coast wind-down.",
     hasWineries: true,
     days: {
       1: ["artemis", "platres"],

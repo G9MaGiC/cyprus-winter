@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
@@ -156,15 +156,15 @@ export default async function WeatherMonthPage({ params }: Props) {
       </div>
 
       <p className="mt-12 text-olive/70 text-sm">
-        <Link href="/weather" className="text-aegean hover:underline">
+        <Link href="/weather" className={SECTION.aegeanLink}>
           All months
         </Link>
         {" · "}
-        <Link href="/regions/troodos" className="text-aegean hover:underline">
+        <Link href="/regions/troodos" className={SECTION.aegeanLink}>
           Troodos winter
         </Link>
         {" · "}
-        <Link href="/plan" className="text-aegean hover:underline">
+        <Link href="/plan" className={SECTION.aegeanLink}>
           Plan your trip
         </Link>
       </p>

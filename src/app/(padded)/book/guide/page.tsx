@@ -73,11 +73,11 @@ export default function GuidesListPage() {
       </div>
 
       <p className="mt-12 text-center text-olive/70 text-sm">
-        <Link href="/trails" className="text-aegean hover:underline">
+        <Link href="/trails" className={SECTION.aegeanLink}>
           Browse all trails
         </Link>
         {" · "}
-        <Link href="/bookings" className="text-aegean hover:underline">
+        <Link href="/bookings" className={SECTION.aegeanLink}>
           My bookings
         </Link>
       </p>

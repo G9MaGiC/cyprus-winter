@@ -32,7 +32,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
       : a.description;
 
   return (
-    <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} active:scale-[0.99] motion-reduce:active:scale-100 transition-transform`}>
+    <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive}`}>
       <Link
         href={`/discover/${a.id}`}
         className={`block ${CARD.link}`}
@@ -43,10 +43,10 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             src={getAttractionImage(a.id, a.type)}
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
             sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" />
+          <div className={CARD.mediaOverlay} aria-hidden />
           <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2">
             <span
               className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}

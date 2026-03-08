@@ -89,7 +89,7 @@ export default function DayContentPanel({
                 </div>
                 <p className="font-display font-semibold text-olive mb-1">Add your first place</p>
                 <p className="text-sm text-olive/60 max-w-sm mx-auto break-words mb-5 sm:mb-6">
-                  Start with a beach or a trail. Add Artemis, Kourion, Omodos—or browse Discover for more.
+                  Use a template above or add spots like Artemis, Kourion, Omodos. Winery tastings—book ahead in winter.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <button type="button" onClick={onScrollToQuickStart} className={CTA.primaryCompact}>

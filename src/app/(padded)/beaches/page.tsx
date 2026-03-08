@@ -71,11 +71,11 @@ export default function BeachesPage() {
         <span id="beaches-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
         Combine a beach walk with ancient ruins or a village lunch.{" "}
-        <Link href="/discover" className="text-aegean hover:underline">
+        <Link href="/discover" className={SECTION.aegeanLink}>
           See all places
         </Link>
         {" · "}
-        <Link href="/plan" className="text-aegean hover:underline">
+        <Link href="/plan" className={SECTION.aegeanLink}>
           Plan your day
         </Link>
       </p>

@@ -91,25 +91,25 @@ export default function WineriesPage() {
         <div className="space-y-4">
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
             Pair a winery visit with a trail or village.{" "}
-            <Link href="/plan" className="text-aegean hover:underline">
+            <Link href="/plan" className={SECTION.aegeanLink}>
               Plan your day
             </Link>
           </p>
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
             Explore wine routes:{" "}
-        <Link href="/wine-routes/krasochoria" className="text-aegean hover:underline">
+        <Link href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
           Krasochoria
         </Link>
         {" · "}
-        <Link href="/wine-routes/laona" className="text-aegean hover:underline">
+        <Link href="/wine-routes/laona" className={SECTION.aegeanLink}>
           Laona
         </Link>
         {" · "}
-        <Link href="/wine-routes/akamas" className="text-aegean hover:underline">
+        <Link href="/wine-routes/akamas" className={SECTION.aegeanLink}>
           Akamas
         </Link>
         {" · "}
-        <Link href="/wine-routes/commandaria" className="text-aegean hover:underline">
+        <Link href="/wine-routes/commandaria" className={SECTION.aegeanLink}>
           Commandaria
         </Link>
       </p>

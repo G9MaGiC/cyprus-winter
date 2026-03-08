@@ -44,7 +44,7 @@ export default function BottomNav() {
     <nav
       role="navigation"
       aria-label="Bottom navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-charcoal/96 backdrop-blur-xl border-t border-white/5 pb-[env(safe-area-inset-bottom)] pt-2 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]"
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-3 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]"
     >
       <div className="flex items-center justify-around max-w-lg mx-auto">
         {otherLinks.map((link) => (
@@ -52,7 +52,7 @@ export default function BottomNav() {
             key={link.href}
             href={link.href}
             aria-current={isActive(pathname, link.href) ? "page" : undefined}
-            className="flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+            className="flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
             <span
               className={`text-xs font-medium ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
@@ -68,7 +68,7 @@ export default function BottomNav() {
             aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
             aria-hidden={stickyPlanVisible}
             tabIndex={stickyPlanVisible ? -1 : undefined}
-            className={`flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
+            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               stickyPlanVisible ? "invisible pointer-events-none" : ""
             }`}
           >
@@ -86,7 +86,7 @@ export default function BottomNav() {
             aria-expanded={moreOpen}
             aria-haspopup="true"
             aria-label="More navigation"
-            className={`flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
+            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
@@ -94,7 +94,7 @@ export default function BottomNav() {
           </button>
           {moreOpen && (
             <div
-              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 min-w-[140px] py-2 rounded-lg bg-charcoal border border-white/10 shadow-xl"
+              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 min-w-[140px] py-2 rounded-xl bg-charcoal/98 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-sm"
               role="menu"
             >
               {overflowLinksResolved.map((link) => (

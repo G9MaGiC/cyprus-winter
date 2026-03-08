@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
 import Image from "next/image";
 import { trails } from "@/data/trails";
-import { LAYOUT, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CARD, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
@@ -72,7 +72,7 @@ export default function TroodosDecemberPage() {
       <div className="prose prose-olive max-w-none mb-12">
         <p className="text-olive/80">
           December is the sweet spot: ski season hasn&apos;t fully started, trails are usually clear, and the mountain villages are quiet. Pack layers—temperatures can dip to 2°C at elevation. Check{" "}
-          <Link href="/trails" className="text-aegean hover:underline">
+          <Link href="/trails" className={SECTION.aegeanLink}>
             trail conditions
           </Link>{" "}
           before you go; after cold snaps, higher trails can be icy.
@@ -102,11 +102,11 @@ export default function TroodosDecemberPage() {
       </section>
 
       <p className="mt-12 text-center text-olive/70 text-sm">
-        <Link href="/regions/troodos" className="text-aegean hover:underline">
+        <Link href="/regions/troodos" className={SECTION.aegeanLink}>
           Troodos region hub
         </Link>
         {" · "}
-        <Link href="/weather" className="text-aegean hover:underline">
+        <Link href="/weather" className={SECTION.aegeanLink}>
           Weather by month
         </Link>
       </p>

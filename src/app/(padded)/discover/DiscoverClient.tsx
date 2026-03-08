@@ -110,7 +110,7 @@ export default function DiscoverClient({
             <span className="text-olive/40" aria-hidden>·</span>
             <Link
               href="/discover"
-              className="text-sm font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+              className={`text-sm font-medium ${SECTION.aegeanLink}`}
             >
               All categories
             </Link>

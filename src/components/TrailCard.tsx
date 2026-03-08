@@ -41,10 +41,10 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
             src={getTrailImage(trail.id)}
             alt={`${trail.name}, ${trail.region}—${trail.lengthKm}km ${trail.difficulty} trail in Cyprus winter`}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" aria-hidden />
+          <div className={CARD.mediaOverlay} aria-hidden />
           <div className="absolute top-3 left-3 flex flex-wrap items-center gap-2">
             {conditions && <StatusBadge status={conditions.status} />}
             <DifficultyBadge difficulty={trail.difficulty} />

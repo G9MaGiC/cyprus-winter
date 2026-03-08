@@ -136,7 +136,7 @@ export default function RegisterPage() {
               <div role="alert" className={`p-4 rounded-xl border text-sm ${isAlreadyRegistered ? "bg-aegean/5 border-aegean/30 text-olive" : "bg-terracotta/5 border-terracotta/20 text-olive"}`}>
                 <p>{error}</p>
                 {isAlreadyRegistered && (
-                  <Link href="/login" className="mt-3 inline-flex font-medium text-aegean hover:text-aegean/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
+                  <Link href="/login" className={`mt-3 inline-flex font-medium min-h-[44px] items-center py-2 text-aegean hover:text-aegean/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded`}>
                     Sign in instead →
                   </Link>
                 )}

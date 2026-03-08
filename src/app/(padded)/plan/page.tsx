@@ -13,13 +13,13 @@ import PlacePickerModal from "@/components/plan/PlacePickerModal";
 import QuickStartSection from "@/components/plan/QuickStartSection";
 import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
 import { useSearchParams } from "next/navigation";
-import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { usePlanUrlActions } from "@/hooks/usePlanUrlActions";
 import { useTripDates } from "@/hooks/useTripDates";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import PushOptIn from "@/components/PushOptIn";
 import SectionCard from "@/components/SectionCard";
+import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -137,7 +137,7 @@ export default function PlanPage() {
             backHref="/"
             backLabel="Home"
             title="Plan your Cyprus winter trip"
-            description="Pick a template or add places. Your plan saves as you go."
+            description="Curated itineraries from local experts. Start with a template or build day by day—saves as you go."
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
             backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter trip"
             hasWidgetStrip={hasContent}
@@ -226,7 +226,7 @@ export default function PlanPage() {
 
         {hasWineries && hydrated && (
           <SectionCard
-            title="You've added wineries. Book tastings ahead—many run lean in winter."
+            title="Tour operator tip: Book tastings 24–48h ahead. Winter staffing is lean; slots fill."
             borderAccent="terracotta"
             className="bg-terracotta/5 border-terracotta/30 mb-6 sm:mb-8"
           >
@@ -288,21 +288,21 @@ export default function PlanPage() {
 
         <div className="mt-10 sm:mt-12 pt-8 border-t border-sand-200/80 text-center">
           <p className="text-olive/60 text-sm break-words px-4 mb-4">
-            Daylight ends around 5pm. Start early, save when you&apos;re ready.
+            Tour operator tip: Daylight ends around 5pm in winter. Start trails and coast by 9–10am. Winery tastings—book 24–48h ahead; many run lean in winter.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             {hasWineries && (
-              <Link href="/bookings" className="font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded">
+              <Link href="/bookings" className={SECTION.aegeanLink}>
                 Book tastings
               </Link>
             )}
-            <Link href="/discover" className="font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded">
+            <Link href="/discover" className={SECTION.aegeanLink}>
               Discover places
             </Link>
-            <Link href="/trails" className="font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded">
+            <Link href="/trails" className={SECTION.aegeanLink}>
               Explore trails
             </Link>
-            <Link href="/weather" className="font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded">
+            <Link href="/weather" className={SECTION.aegeanLink}>
               Weather
             </Link>
           </div>
