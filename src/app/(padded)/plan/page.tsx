@@ -153,7 +153,7 @@ export default function PlanPage() {
                   onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
                 >
-                  Build a day or pick a template
+                  Pick a template or build a day
                 </button>
               </div>
             )}
@@ -253,7 +253,6 @@ export default function PlanPage() {
           <div ref={quickStartRef} className={`${hasContent ? "order-2" : "order-1"} flex flex-col gap-10 sm:gap-14 md:gap-16`}>
             {!hasContent ? (
               <>
-                <BuildADaySection />
                 <QuickStartSection
                   activeDay={activeDay}
                   days={days}
@@ -263,6 +262,7 @@ export default function PlanPage() {
                   hasContent={hasContent}
                   tripLength={tripLength}
                 />
+                <BuildADaySection />
               </>
             ) : (
               <>

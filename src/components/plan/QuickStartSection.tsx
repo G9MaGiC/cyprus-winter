@@ -117,7 +117,7 @@ export default function QuickStartSection({
         </p>
         {!hasContent && tripLength == null && (
           <p className="text-sm text-olive/60 max-w-xl break-words mt-1 mb-4">
-            Set your dates above to see templates that match your trip length.
+            Set your travel dates to see templates that match your trip length.
           </p>
         )}
       </header>

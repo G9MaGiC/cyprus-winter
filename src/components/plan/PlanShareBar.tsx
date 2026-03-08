@@ -75,7 +75,15 @@ export default function PlanShareBar({
             </span>
           </button>
           {shareMenuOpen && (
-            <div className="absolute right-0 top-full mt-1 py-2 rounded-xl bg-background border border-sand-200/80 shadow-lg min-w-[200px] z-10 section-reveal">
+            <div
+              className="absolute right-0 top-full mt-1 py-2 rounded-xl bg-background border border-sand-200/80 shadow-lg min-w-[200px] z-10 section-reveal"
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  setShareMenuOpen(false);
+                  shareMenuTriggerRef.current?.focus();
+                }
+              }}
+            >
               <button
                 ref={shareMenuFirstItemRef}
                 type="button"

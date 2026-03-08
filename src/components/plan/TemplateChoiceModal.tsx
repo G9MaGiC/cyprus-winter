@@ -35,32 +35,32 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
         className={`w-full max-w-md ${CARD.base} ${CARD.content} shadow-2xl`}
       >
         <h2 id="template-choice-title" className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>
-          Apply {templateLabel} template?
+          Apply {templateLabel}?
         </h2>
         <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words`}>
-          Replace what you have, add to it, or keep building. Your call.
+          Add to your plan or replace what you have. Your choice.
         </p>
-        <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-end">
           <button
             type="button"
             onClick={onClose}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background order-last sm:order-none w-full sm:w-auto"
           >
             Cancel
           </button>
           <button
             type="button"
-            onClick={onAddToPlan}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-aegean text-aegean hover:bg-aegean/10 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            onClick={onReplace}
+            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
           >
-            Add to my plan
+            Replace (clears current)
           </button>
           <button
             type="button"
-            onClick={onReplace}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            onClick={onAddToPlan}
+            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
           >
-            Replace my plan (clears current)
+            Add to my plan
           </button>
         </div>
       </div>
