@@ -35,10 +35,10 @@ export default function HomeHero() {
             Cyprus Winter
           </h1>
           <p className="text-base sm:text-lg text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
-            Ruins, trails, villages. Plan as you go.
+            Escape the cold. Ruins, trails, villages. Plan as you go.
           </p>
           <p className="text-sm text-white/75 max-w-lg mx-auto mb-6">
-            {getSeasonalLine()} Often sixteen degrees when home is six.
+            {getSeasonalLine()} Sixteen degrees when home is six.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
