@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { trails, trailConditions, TRAIL_COUNT, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP, TRANSITION, BOTTOM_NAV } from "@/lib/design-tokens";
+import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE, STRIP, BOTTOM_NAV } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
@@ -49,6 +49,8 @@ export default function TrailsClient() {
   const hasFilters = Boolean(safeDifficulty || safeRegion);
   const hasInvalidFilter = (difficultyFilter && !validDifficulty) || (regionFilter && !validRegion);
   const [filtersExpanded, setFiltersExpanded] = useState(hasFilters);
+
+  const summaryClasses = `list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center`;
 
   const filterSummary =
     hasFilters
@@ -204,10 +206,10 @@ export default function TrailsClient() {
             <div className="space-y-6 sm:space-y-8">
               {openTrails.length > 0 && (
                 <details className="group" open>
-                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={summaryClasses}>
                     <span className="w-2 h-2 rounded-full bg-aegean shrink-0" aria-hidden />
                     Open ({openTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {openTrails.map((trail) => (
@@ -218,10 +220,10 @@ export default function TrailsClient() {
               )}
               {cautionTrails.length > 0 && (
                 <details className="group" open={cautionTrails.length <= 4}>
-                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={summaryClasses}>
                     <span className="w-2 h-2 rounded-full bg-golden shrink-0" aria-hidden />
                     Caution ({cautionTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {cautionTrails.map((trail) => (
@@ -232,10 +234,10 @@ export default function TrailsClient() {
               )}
               {closedTrails.length > 0 && (
                 <details className="group">
-                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={summaryClasses}>
                     <span className="w-2 h-2 rounded-full bg-terracotta shrink-0" aria-hidden />
                     Closed ({closedTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {closedTrails.map((trail) => (
@@ -246,10 +248,10 @@ export default function TrailsClient() {
               )}
               {unknownTrails.length > 0 && (
                 <details className="group">
-                  <summary className={`list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 ${SECTION.titleGap} [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className={summaryClasses}>
                     <span className="w-2 h-2 rounded-full bg-sand-300 shrink-0" aria-hidden />
                     No report ({unknownTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1" style={{ transition: "transform " + TRANSITION.smooth }} aria-hidden>▾</span>
+                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
                   </summary>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     {unknownTrails.map((trail) => (

@@ -19,40 +19,30 @@ export default async function HomeHero() {
       />
       <div className={HERO.overlay} aria-hidden />
 
-      <div className={`relative z-10 w-full ${LAYOUT.form} lg:max-w-3xl mx-auto`}>
-        <div className={`${HERO.panel} lg:p-12`}>
-          <p className={`${TYPE.kickerOnDark} mb-3`}>{t("ui.app__home_HomeHero.text_13")}</p>
+      <div className="relative z-10 w-full max-w-2xl mx-auto px-1">
+        <div className={HERO.panel}>
+          <p className={`${TYPE.kickerOnDark} mb-4`}>{t("ui.app__home_HomeHero.text_13")}</p>
           <h1
             id="hero-heading"
-            className="font-display text-5xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-[0.95] mb-4 text-balance"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[0.95] text-balance mb-4"
           >
             {t("ui.app__home_HomeHero.text_14")}
           </h1>
-          <p className="text-base sm:text-lg text-white/90 max-w-lg mx-auto font-light mb-2 prose-intro text-balance">
-            {t("ui.app__home_HomeHero.text_subtitle")}
-          </p>
-          <p className="text-sm text-white/80 mb-10">
-            {t("ui.app__home_HomeHero.text_16")}
+          <p className="text-base sm:text-lg text-white/95 max-w-xl mx-auto font-light prose-intro text-balance mb-6">
+            {t("ui.app__home_HomeHero.text_subtitle")} {t("ui.app__home_HomeHero.text_16")}
           </p>
 
           <div className="flex flex-col items-center gap-4 sm:gap-5">
-            <Link href="/discover" className={CTA.primary} aria-label={t("ui.app__home_HomeHero.aria-label_10")}>
-              {t("common.nav.discover")}
-            </Link>
-
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 text-sm">
-              <Link
-                href="/plan"
-                className="text-white/80 hover:text-sage min-h-[44px] px-3 py-2 text-sm font-medium rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
-                aria-label={t("ui.app__home_HomeHero.aria-label_11")}
-              >
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto sm:flex-wrap sm:justify-center">
+              <Link href="/discover" className={`${CTA.primary} w-full sm:w-auto`} aria-label={t("ui.app__home_HomeHero.aria-label_10")}>
+                {t("common.nav.discover")}
+              </Link>
+              <Link href="/plan" className={CTA.secondary} aria-label={t("ui.app__home_HomeHero.aria-label_11")}>
                 {t("common.nav.trip")}
               </Link>
-              <Link
-                href="/airport"
-                className="text-white/80 hover:text-sage min-h-[44px] px-3 py-2 text-sm font-medium rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
-                aria-label={t("ui.app__home_HomeHero.aria-label_12")}
-              >
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm">
+              <Link href="/airport" className={CTA.ghost} aria-label={t("ui.app__home_HomeHero.aria-label_12")}>
                 {t("common.nav.airport")}
               </Link>
               <AIAssistantTrigger variant="tertiaryOnDark" label="Ask your guide" />

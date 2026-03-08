@@ -201,17 +201,18 @@ export const TYPE = {
 
 /** Homepage hero primitives (server components compose these). */
 export const HERO = {
+  /** Shorter on mobile for faster discovery; taller on desktop for impact */
   section:
-    "relative isolate overflow-hidden min-h-[72vh] min-[400px]:min-h-[76vh] sm:min-h-[86vh] flex flex-col items-center justify-end sm:justify-center pb-16 sm:pb-24 text-center w-full",
-  /** Mediterranean warmth overlay — golden-terracotta tint at bottom */
+    "relative isolate overflow-hidden min-h-[68vh] min-[400px]:min-h-[72vh] sm:min-h-[84vh] flex flex-col items-center justify-end sm:justify-center pb-14 sm:pb-20 text-center w-full",
+  /** Simplified overlay — legibility without muddying the image */
   overlay:
-    "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/60 via-charcoal/30 to-transparent",
+    "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/5",
   /** List page hero — readable text on variable images */
   listOverlay:
     "absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none",
-  /** Panel depth — subtle Mediterranean warmth in shadow */
+  /** Panel — frosted glass over hero, Mediterranean warmth */
   panel:
-    "relative rounded-2xl bg-charcoal/35 backdrop-blur-md ring-1 ring-white/10 shadow-[0_24px_64px_rgba(0,0,0,0.4)] p-6 sm:p-10 transition-shadow duration-300",
+    "relative rounded-2xl bg-charcoal/40 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-6 sm:p-10 lg:p-12 transition-shadow duration-300",
 } as const;
 
 /** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */
