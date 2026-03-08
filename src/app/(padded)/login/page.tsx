@@ -120,7 +120,7 @@ export default function LoginPage() {
           <h1 className="font-display text-2xl sm:text-3xl font-bold text-charcoal mb-2">
             Welcome back
           </h1>
-          <p className="text-olive/70 text-base leading-relaxed mb-8">
+          <p className="text-olive/80 text-base leading-relaxed mb-8">
             Your plan and bookings follow you across devices.
           </p>
 

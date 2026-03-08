@@ -118,8 +118,17 @@ export default async function AttractionPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
         <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
-        <Breadcrumbs />
-        <BackLink href="/discover" label="Back to Discover" />
+        <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+          <BackLink href="/discover" label="Back to Discover" />
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Discover", href: "/discover" },
+              { label: a.name, href: canonicalUrl, isCurrent: true },
+            ]}
+            className="py-1 px-0 text-xs text-olive/60"
+          />
+        </nav>
 
         <article aria-label={`${a.name}, ${a.type} in ${a.region}`}>
           <DetailHero

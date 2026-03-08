@@ -29,7 +29,7 @@ export default function PageHeader({
       <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
         {title}
       </h1>
-      <p className="text-olive/70 mt-2 max-w-xl prose-body break-words">{description}</p>
+      <p className="text-olive/80 mt-2 max-w-xl prose-body break-words">{description}</p>
       {descriptionSecondary && (
         <p className="text-olive/60 text-sm mt-2 max-w-xl break-words">{descriptionSecondary}</p>
       )}

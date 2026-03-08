@@ -50,7 +50,7 @@ export function ErrorState({
       <h3 className="font-display text-lg font-semibold text-charcoal mb-2">
         {title}
       </h3>
-      <p className="text-sm text-olive/70 mb-4 max-w-md mx-auto break-words">
+      <p className="text-sm text-olive/80 mb-4 max-w-md mx-auto break-words">
         {message}
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">

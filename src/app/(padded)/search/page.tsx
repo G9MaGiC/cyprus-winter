@@ -48,7 +48,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <h1 className={`${TYPE.sectionTitle} mb-2`}>
         Find a place or trail
       </h1>
-      <p className="text-olive/70 text-sm mb-8">
+      <p className="text-olive/80 text-sm mb-8">
         Places that feel real. Villages, wineries, beaches, trails, events.
       </p>
       <SearchBar placeholder="e.g. Omodos, Artemis, carnival" autoFocus initialQuery={q} syncUrl className="max-w-xl" />
@@ -66,9 +66,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       )}
       {hasNoResults && (
         <div className={`mt-6 ${EMPTY_STATE_COMPACT}`}>
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">
             No matches for &ldquo;{q}&rdquo;. Try Troodos, Nissi, Omodos, or browse Discover.
           </p>
+          <p className="text-sm text-olive/80 mb-3">Or tap Ask AI to find something.</p>
           <div className="flex flex-wrap gap-2">
             <Link href="/discover" className={`${CTA.chipTertiary} rounded-xl`}>
               Browse places

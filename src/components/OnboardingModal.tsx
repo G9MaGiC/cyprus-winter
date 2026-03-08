@@ -104,7 +104,7 @@ export default function OnboardingModal() {
           <h2 id="onboarding-title" className="font-display text-2xl font-bold text-charcoal mb-3">
             {step.title}
           </h2>
-          <p id="onboarding-description" className="text-olive/70 leading-relaxed text-base">
+          <p id="onboarding-description" className="text-olive/80 leading-relaxed text-base">
             {step.description}
           </p>
         </div>

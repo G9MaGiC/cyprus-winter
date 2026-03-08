@@ -39,7 +39,7 @@ export default function ListPageHero({
       <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
         {title}
       </h1>
-      <p className="text-olive/70 mt-2 max-w-xl prose-body break-words leading-relaxed">
+      <p className="text-olive/80 mt-2 max-w-xl prose-body break-words leading-relaxed">
         {description}
       </p>
       {descriptionSecondary && (

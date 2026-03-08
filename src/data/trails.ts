@@ -209,7 +209,7 @@ export const trails: Trail[] = [
     elevationGainM: 320,
     durationMin: 210,
     description:
-      "Starts at Baths of Aphrodite; winds through the peninsula. Kefalovrysia spring, Queen's Tower ruins. Mediterranean scrub, wild herbs. December and January: ideal temps. Well-marked. Allow three to four hours. Combine with Kolios or Vasilikon winery.",
+      "Starts at Baths of Aphrodite; winds through the peninsula. Kefalovrysia spring, Queen's Tower ruins. Mediterranean scrub, wild herbs. December and January: ideal temps. Well-marked. Allow three to four hours. Combine with Vasilikon winery (Akamas loop) or Chrysorrogiatissa and Kolios (Paphos hills).",
     highlights: ["Baths of Aphrodite", "Queen's Tower", "Coastal views"],
     winterNotes: "Best season for this trail. Cool temps, fewer crowds. Some muddy patches after rain.",
     bestSeason: ["winter", "spring", "autumn"],
@@ -226,7 +226,7 @@ export const trails: Trail[] = [
     ],
     winterSafety: "Winter is ideal; avoid summer heat. Some muddy patches after rain. Stay on marked path; Akamas has unexploded ordnance in places.",
     localSecret: "Refill at Kefalovrysia spring. The Baths of Aphrodite café at the trailhead does a good post-hike coffee. Combine with Kolios or Vasilikon winery on the loop back.",
-    combineWith: ["smigies", "aphrodite", "kolios", "polis", "polis-harbour"],
+    combineWith: ["smigies", "aphrodite", "vasilikon", "polis", "polis-harbour"],
   },
   {
     id: "aphrodite",
@@ -254,7 +254,7 @@ export const trails: Trail[] = [
     ],
     winterSafety: "Ideal winter coastal hike. Cool temps, wildflowers Feb to Mar. Carry wind layer; exposed ridge.",
     localSecret: "Moutti tis Sotiras is the high point. Stop there. The bay views open out. The Baths of Aphrodite café awaits when you're done. You've earned it.",
-    combineWith: ["smigies", "adonis", "kolios", "polis", "polis-harbour"],
+    combineWith: ["smigies", "adonis", "vasilikon", "polis", "polis-harbour"],
   },
   {
     id: "avakas-gorge",
@@ -465,7 +465,7 @@ export const trails: Trail[] = [
     elevationGainM: 180,
     durationMin: 150,
     description:
-      "A circular trail at Smigies picnic site, five kilometres from Neo Chorio in the centre of the Akamas peninsula. Dense forest, old disused magnesium mines with abandoned kilns, and a connection with the Adonis Trail at Kefalovrysia. Views of Lara Bay, Chrysochou Bay, Latsi, Polis, and the Paphos Forest. Endemic flora and fauna—Cyprus germander, Cyprus viper. Winter temps are ideal; cooler than summer, fewer crowds. The long route rewards with forest solitude. Allow two to three hours. Combine with Kolios or Sterna winery and Polis for lunch.",
+      "A circular trail at Smigies picnic site, five kilometres from Neo Chorio in the centre of the Akamas peninsula. Dense forest, old disused magnesium mines with abandoned kilns, and a connection with the Adonis Trail at Kefalovrysia. Views of Lara Bay, Chrysochou Bay, Latsi, Polis, and the Paphos Forest. Endemic flora and fauna—Cyprus germander, Cyprus viper. Winter temps are ideal; cooler than summer, fewer crowds. The long route rewards with forest solitude. Allow two to three hours. Combine with Vasilikon or Sterna winery and Polis for lunch.",
     highlights: ["Akamas forest", "Magnesium mines", "Bay views"],
     winterNotes: "Ideal winter hike. Cool temps, forest shade. Some muddy patches after rain.",
     bestSeason: ["winter", "spring", "autumn"],
@@ -473,7 +473,7 @@ export const trails: Trail[] = [
     trailhead: "Smigies picnic site, near Neo Chorio",
     bring: ["Water", "Snacks", "Sturdy shoes"],
     localSecret: "The long route passes the abandoned kilns; a slice of Akamas history. Connect with Adonis at Kefalovrysia if you want a longer day.",
-    combineWith: ["adonis", "aphrodite", "kolios", "polis"],
+    combineWith: ["adonis", "aphrodite", "vasilikon", "polis"],
     trailheadCoords: { lat: 35.075, lng: 32.365 },
   },
   {
@@ -528,7 +528,7 @@ export const trails: Trail[] = [
     elevationGainM: 130,
     durationMin: 100,
     description:
-      "Short loop from Smigies picnic site. Pissouromoutti peak at 420 metres. Pine forest, scenic views over the Akamas peninsula and Chrysochou Bay. Nearly a third of the trail is shaded; kid-friendly. May cross a riverbed after rain. Winter temps are ideal. Combine with Smigies long route or Adonis for a full Akamas day. Polis and Kolios winery on the loop back.",
+      "Short loop from Smigies picnic site. Pissouromoutti peak at 420 metres. Pine forest, scenic views over the Akamas peninsula and Chrysochou Bay. Nearly a third of the trail is shaded; kid-friendly. May cross a riverbed after rain. Winter temps are ideal. Combine with Smigies long route or Adonis for a full Akamas day. Polis and Vasilikon winery on the loop back.",
     highlights: ["Summit views", "Pine forest", "Kid-friendly"],
     winterNotes: "Ideal winter hike. Cool, shaded sections. Riverbed may be wet after rain.",
     bestSeason: ["winter", "spring", "autumn"],
@@ -536,7 +536,7 @@ export const trails: Trail[] = [
     trailhead: "Smigies picnic site",
     bring: ["Water", "Snacks", "Sturdy shoes"],
     localSecret: "The summit views open out at 420m. Combine with Smigies long route for a full morning. Polis for lunch.",
-    combineWith: ["smigies", "adonis", "kolios", "polis"],
+    combineWith: ["smigies", "adonis", "vasilikon", "polis"],
     trailheadCoords: { lat: 35.075, lng: 32.365 },
   },
   {
@@ -1636,7 +1636,7 @@ export const trailConditions: Record<string, TrailConditions> = {
     surface: "dry",
     temperatureC: 17,
     lastReportedAt: "2026-03-04T10:00:00Z",
-    tip: "Short loop from Smigies. Combine with Kolios and Polis for lunch.",
+    tip: "Short loop from Smigies. Combine with Vasilikon and Polis for lunch.",
   },
   "e4-troodos-platres": {
     trailId: "e4-troodos-platres",
