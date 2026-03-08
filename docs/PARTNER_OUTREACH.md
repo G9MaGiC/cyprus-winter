@@ -28,7 +28,7 @@ Prioritized by: (a) has `bookingUrl` or strong contact info, (b) `winterOpen`, (
 
 | Winery | Region | Contact | Notes |
 |--------|--------|---------|-------|
-| Kolios | Kathikas (Paphos) | +357 26 632127 | Akamas route, by appointment |
+| Kolios | Statos-Ayios Fotios (Paphos) | [kolioswinery.com.cy](https://www.kolioswinery.com.cy/book-a-table/), +357 26 724090 | Laona route, lunch + tasting, book ahead |
 | Kyperounta | Kyperounta (Troodos) | +357 25 452123 | High altitude, call ahead (snow) |
 | Tsangarides | Lemona (Paphos) | +357 26 732222 | Organic, Laona |
 | Fikardos | Stroumbi (Paphos) | +357 26 632145 | Boutique, terrace |

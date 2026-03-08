@@ -40,7 +40,44 @@ export default function WeatherPage() {
         description="Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries."
       />
 
-      <div className="overflow-x-auto">
+      {/* Mobile: card layout avoids horizontal scroll */}
+      <div className="md:hidden space-y-3">
+        {weatherByMonth.map((row) => {
+          const slug = MONTH_TO_SLUG[row.month];
+          const content = (
+              <div className="rounded-xl border border-sand-200/80 bg-white/90 p-4 shadow-sm">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-display font-semibold text-olive">{row.month}</span>
+                  {slug && (
+                    <span className="text-xs font-medium text-terracotta">Details →</span>
+                  )}
+                </div>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <p className="text-olive/60 text-xs">Coast</p>
+                    <p className="text-olive font-medium">{row.coastMinC}–{row.coastMaxC}°C</p>
+                    <p className="text-olive/80 text-xs mt-0.5 line-clamp-2">{row.coastDesc}</p>
+                  </div>
+                  <div>
+                    <p className="text-olive/60 text-xs">Troodos</p>
+                    <p className="text-olive font-medium">{row.troodosMinC}–{row.troodosMaxC}°C</p>
+                    <p className="text-olive/80 text-xs mt-0.5 line-clamp-2">{row.troodosDesc}</p>
+                  </div>
+                </div>
+              </div>
+          );
+          return slug ? (
+            <Link key={row.month} href={`/weather/${slug}`} className="block">
+              {content}
+            </Link>
+          ) : (
+            <div key={row.month}>{content}</div>
+          );
+        })}
+      </div>
+
+      {/* Desktop: table */}
+      <div className="hidden md:block overflow-x-auto">
         <table className="w-full min-w-[600px] border-collapse text-left">
           <thead>
             <tr className="border-b-2 border-sand-200/80">

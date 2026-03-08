@@ -55,7 +55,7 @@ export default function BottomNav() {
             className="flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
             <span
-              className={`text-xs font-medium ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[11px] font-medium ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
               {link.label}
             </span>
@@ -73,7 +73,7 @@ export default function BottomNav() {
             }`}
           >
             <span
-              className={`text-xs font-medium ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[11px] font-medium ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
               {planLink.label}
             </span>
@@ -90,7 +90,7 @@ export default function BottomNav() {
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
-            <span className="text-xs font-medium">More</span>
+            <span className="text-xs max-[400px]:text-[11px] font-medium">More</span>
           </button>
           {moreOpen && (
             <div

@@ -52,7 +52,7 @@ export default function ListPageHero({
   if (backgroundImage) {
     return (
       <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
-        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[180px] sm:min-h-[200px]">
+        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[260px] sm:min-h-[200px]">
           <Image
             src={backgroundImage}
             alt={backgroundImageAlt ?? "Page hero image"}

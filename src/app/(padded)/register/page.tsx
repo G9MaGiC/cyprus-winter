@@ -113,7 +113,7 @@ export default function RegisterPage() {
   }
 
   const inputBase =
-    "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/40 focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:border-terracotta/50 transition-colors";
+    "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:border-terracotta/50 transition-colors";
 
   return (
     <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">

@@ -45,7 +45,8 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
       <div className="mt-3 pt-3 border-t border-sand-200/60">
         <Link
           href={`/plan?add=${encodeURIComponent(result.item.id)}`}
-          className="inline-flex items-center min-h-[36px] text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
+          className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
+          aria-label={`Add ${name} to your plan`}
         >
           Add to plan
         </Link>

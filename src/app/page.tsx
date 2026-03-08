@@ -4,7 +4,7 @@ import AppLink from "@/components/AppLink";
 import ShareLinks from "@/components/ShareLinks";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import BackToTopLink from "@/components/BackToTopLink";
-import { CARD, LAYOUT, SECTION, STRIP, TYPE } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, SKELETON, STRIP, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import HomeHero from "@/app/_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
@@ -17,8 +17,39 @@ import HomePlaceOfDay from "@/app/_home/HomePlaceOfDay";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 
-const EditorsPicks = dynamic(() => import("@/app/_home/EditorsPicks"), { loading: () => <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-h-[200px]" aria-hidden /> });
-const BookTastings = dynamic(() => import("@/app/_home/BookTastings"), { loading: () => <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 min-h-[200px]" aria-hidden /> });
+function EditorsPicksSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" aria-hidden>
+      {[1, 2].map((i) => (
+        <div key={i} className={`${CARD.base} overflow-hidden`}>
+          <div className={`${SKELETON.media} rounded-t-xl`} />
+          <div className={`${CARD.content} space-y-2`}>
+            <div className={`h-5 w-3/4 ${SKELETON.block}`} />
+            <div className={`h-4 w-full ${SKELETON.block}`} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+function BookTastingsSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" aria-hidden>
+      {[1, 2, 3].map((i) => (
+        <div key={i} className={`${CARD.base} overflow-hidden`}>
+          <div className={`${SKELETON.media} rounded-t-xl`} />
+          <div className={`${CARD.content} space-y-2`}>
+            <div className={`h-5 w-2/3 ${SKELETON.block}`} />
+            <div className={`h-4 w-full ${SKELETON.block}`} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const EditorsPicks = dynamic(() => import("@/app/_home/EditorsPicks"), { loading: EditorsPicksSkeleton });
+const BookTastings = dynamic(() => import("@/app/_home/BookTastings"), { loading: BookTastingsSkeleton });
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";

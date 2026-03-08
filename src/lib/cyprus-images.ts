@@ -112,6 +112,7 @@ export function getAttractionImage(id: string, type: string): string {
   };
   const wineryImages: Record<string, string> = {
     "domes-sergiou": `${local}/domes-sergiou-hero.png`,
+    kolios: `${local}/cyprus-winery-troodos.jpg`, // Mountain winery: Statos Agios Fotios, 3000ft
   };
   if (type === "winery") return wineryImages[id] ?? fallbacks.winery;
   if (type === "restaurant") return map[id] ?? fallbacks.restaurant;

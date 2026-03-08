@@ -108,7 +108,7 @@ export default function SearchBar({
           aria-expanded={showDropdown}
           aria-controls="search-results"
           id="search-input"
-          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/70 bg-sand-100/50 text-olive placeholder:text-olive/60 focus:outline-none focus:border-terracotta/50 focus:ring-2 focus:ring-terracotta/20"
+          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus:outline-none focus:border-terracotta/50 focus:ring-2 focus:ring-terracotta/20"
         />
       </div>
 
@@ -118,7 +118,7 @@ export default function SearchBar({
           ref={listRef}
           role="listbox"
           aria-labelledby="search-input"
-          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/70 max-h-96 overflow-y-auto z-50"
+          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-50"
         >
           {results.map((r, i) => (
             <div
@@ -154,12 +154,12 @@ export default function SearchBar({
       )}
 
       {focused && query.length > 0 && query.length < 2 && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/70 z-50 text-olive/60 text-sm">
+        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-olive/60 text-sm">
           Type at least 2 characters
         </div>
       )}
       {query.length >= 2 && !hasResults && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/70 z-50 text-center text-olive/70 text-sm">
+        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-center text-olive/70 text-sm">
           <p className="mb-4">Nothing for &ldquo;{query}&rdquo;. Try Troodos, Nissi, Omodos, or browse Discover.</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">Or explore</p>
           <div className="flex flex-wrap justify-center gap-2">

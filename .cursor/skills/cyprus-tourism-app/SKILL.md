@@ -74,8 +74,14 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | error.tsx, not-found.tsx | ✓ LAYOUT.safeAreaX, pagePy, CTA | Centered full-screen layout | None |
 | TrailDetailStickyActions | ✓ LAYOUT.detail, safeAreaX | Sticky bar with Add to plan, Report | None |
 
+### Transitions (TRANSITION from design-tokens)
+- `TRANSITION.fast`: 150ms — micro-feedback (button active)
+- `TRANSITION.smooth`: 0.2s — hover, focus
+- `TRANSITION.medium`: 0.3s — card hover, panel reveal. Prefer these over arbitrary `duration-200`/`duration-300` for consistency.
+- `CARD.featured`: hero/featured cards — `border-2 border-aegean/20`; compose with `CARD.base` + `CARD.hover`.
+
 ### UI Patterns
-- Cards: use `CARD` from design-tokens — `CARD.base` + `CARD.hover`, `CARD.link`; use `CARD.content` (p-5 sm:p-6) for card body padding
+- Cards: use `CARD` from design-tokens — `CARD.base` + `CARD.hover`, `CARD.link`; use `CARD.content` (p-5 sm:p-6) for card body padding. `CARD.featured` for hero/featured cards (aegean border accent).
 - Primary CTA: `bg-terracotta text-white rounded-lg px-8 py-3 font-semibold`
 - Secondary CTA: `border-2 border-aegean text-aegean` or `border border-terracotta/80 text-terracotta` + `rounded-lg`
 - Badges/tags: `rounded-md text-xs px-2.5 py-1` + semantic colors (e.g. `bg-aegean/20 text-aegean`, `bg-sand-100 text-olive/80`)

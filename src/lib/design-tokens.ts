@@ -76,9 +76,13 @@ export const STRIP = {
   pyCompact: "py-3 sm:py-4",
 } as const;
 
-/** Section rhythm */
+/** Section rhythm
+ * - SECTION.py: Major hub sections (home Explore, This week). Use for full-width blocks.
+ * - py-12 sm:py-16: List page sections (LAYOUT.pagePy). Use for list/detail page vertical padding.
+ * - headingMargin vs headingMarginLarge: Both mb-8 sm:mb-10; use headingMargin as default.
+ */
 export const SECTION = {
-  /** Main section padding */
+  /** Main section padding — hub pages (home, list intros) */
   py: "py-12 sm:py-20",
   /** Subsection (e.g. within a card or split layout, Place of Day, Mood, Insider Tip) */
   pySub: "py-6 sm:py-8",
