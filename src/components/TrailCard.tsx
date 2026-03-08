@@ -88,7 +88,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
             )}
           </div>
           {conditions?.tip && (
-            <p className={`mt-3 text-xs text-olive/80 line-clamp-1 break-words px-3 py-2 ${CALLOUT.tip}`}>
+            <p className={`mt-3 text-sm text-olive/90 break-words px-4 py-3 ${CALLOUT.tip}`}>
               {conditions.tip}
             </p>
           )}
