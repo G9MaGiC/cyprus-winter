@@ -19,7 +19,7 @@ export default function PageHeader({
   children,
 }: PageHeaderProps) {
   return (
-    <div className={SECTION.headingMargin}>
+    <div className={SECTION.headingMarginLarge}>
       <Link
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"

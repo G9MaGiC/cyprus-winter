@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: "/trip", destination: "/plan", permanent: true },
+    ];
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
