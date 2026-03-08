@@ -75,11 +75,11 @@ export default function BuildADaySection() {
               </div>
               <ul className="space-y-2.5 mb-5 flex-1 min-h-0">
                 {places.map((p) => (
-                  <li key={p.id} className="flex items-start gap-2 min-w-0">
+                  <li key={p.id} className="flex items-center gap-2 min-w-0">
                     {typeBadge(p.type)}
                     <Link
                       href={p.href}
-                      className="min-w-0 flex-1 break-words text-sm text-olive/90 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded min-h-[44px] inline-flex items-center py-1 -my-1"
+                      className="min-w-0 flex-1 break-words text-sm text-olive/90 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded min-h-[44px] flex items-center py-1 -my-1"
                     >
                       {p.name}
                     </Link>
