@@ -59,7 +59,7 @@ export default function TeamPage() {
       </div>
 
       <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-l-4 border-l-terracotta/20 text-center`}>
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <Link href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
             Start planning
           </Link>

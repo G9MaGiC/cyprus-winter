@@ -25,7 +25,7 @@ export default function HomeMoodStrip() {
           Explore by mood
         </h2>
         <div
-          className="flex flex-wrap justify-center gap-2 sm:gap-3"
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
           role="navigation"
           aria-label="Explore by how you feel"
         >

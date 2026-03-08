@@ -162,7 +162,7 @@ export default function SearchBar({
         <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-center text-olive/70 text-sm">
           <p className="mb-4">Nothing for &ldquo;{query}&rdquo;. Try Troodos, Nissi, Omodos, or browse Discover.</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">Or explore</p>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <Link
               href="/discover"
               className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"

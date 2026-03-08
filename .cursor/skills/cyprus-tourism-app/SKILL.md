@@ -63,9 +63,21 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | NavigateButton (light) | `text-white border-white/50` | On dark bar (NextOnPlanBar) — light variant for dark context |
 | PushOptIn | `bg-aegean` CTA | Opt-in, non-primary — aegean for secondary/opt-in actions |
 | NextOnPlanBar | `bg-aegean/95` | Contextual "next on plan" strip — aegean for contextual nav bar |
-| Sage muted | `sage-muted` | #8FA99A | — |
 
-**Spacing:** Tailwind default scale (p-2, p-4, gap-2, etc.). Layout: `LAYOUT.safeAreaX`, `LAYOUT.pagePy`, `LAYOUT.pagePyDetail`, `SECTION.py`, `SECTION.pySub`.
+### Flex / grid alignment
+
+| Pattern | Use case | Examples |
+|---------|----------|----------|
+| `flex items-center` | Horizontal row, vertically centered | Nav links, inline badges, chip rows |
+| `flex items-center justify-between` | Row with space between ends | Disclosure summary, strip headers |
+| `flex flex-wrap items-center gap-2` | Wrapping row, consistent spacing | CTA groups, chips, action buttons |
+| `flex flex-col gap-4` | Vertical stack | Hero CTAs, form sections, card content |
+| `flex flex-col sm:flex-row items-center gap-3 sm:gap-4` | Responsive: column on mobile, row on desktop | Hero button group, modal actions |
+| `grid gap-4 sm:grid-cols-2 sm:gap-6` | Card grids | StartHereStrip, plan templates, discover list |
+
+**Spacing (gap):** Prefer Tailwind scale: `gap-2` (8px) for tight inline, `gap-3` (12px) for buttons/chips, `gap-4` (16px) for sections, `gap-6` (24px) for major blocks. Use `gap-x-4 gap-y-1` for inline links with minimal vertical gap.
+
+**Layout:** Tailwind default scale (p-2, p-4, gap-2, etc.). Structural: `LAYOUT.safeAreaX`, `LAYOUT.pagePy`, `LAYOUT.pagePyDetail`, `SECTION.py`, `SECTION.pySub`.
 
 **Layout usage:**
 - `LAYOUT.list` (max-w-5xl): list pages (Discover, Trails, Plan, Events, etc.)

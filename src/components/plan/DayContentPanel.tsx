@@ -45,7 +45,7 @@ export default function DayContentPanel({
         <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 flex-wrap">
+              <div className="flex items-center gap-3 flex-wrap">
                 <span
                   className="inline-flex items-center min-h-[36px] px-3 rounded-lg bg-terracotta/10 text-terracotta font-semibold text-sm"
                   aria-hidden
@@ -81,7 +81,7 @@ export default function DayContentPanel({
               <div className={`${EMPTY_STATE_DASHED} py-14 min-[400px]:py-16 sm:py-24 px-4 min-[360px]:px-6 bg-sand-100/50 transition-colors duration-200`}>
                 <p className="font-display text-xl font-semibold text-olive mb-2 tracking-tight">Start Day {activeDay}</p>
                 <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">Add your first place — trail, village, or winery.</p>
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                   <button type="button" onClick={onScrollToQuickStart} className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}>
                     Add place
                   </button>

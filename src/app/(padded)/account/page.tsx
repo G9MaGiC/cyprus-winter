@@ -81,7 +81,7 @@ export default function AccountPage() {
           <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
             Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Link href="/bookings" className={`px-6 py-3 ${CTA.primaryCompact}`}>
               View my bookings
             </Link>

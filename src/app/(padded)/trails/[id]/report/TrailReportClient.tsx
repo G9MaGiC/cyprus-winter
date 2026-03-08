@@ -97,7 +97,7 @@ export default function TrailReportClient() {
             Thanks for reporting.
           </p>
           <p className="text-sm text-olive/70 mt-2">Hikers heading to {trail.region} will use this. Every report counts.</p>
-          <div className="flex flex-wrap justify-center gap-3 mt-6">
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
             <Link
               ref={successLinkRef}
               href={`/trails/${trail.id}`}

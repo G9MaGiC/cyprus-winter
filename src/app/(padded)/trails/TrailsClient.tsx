@@ -186,7 +186,7 @@ export default function TrailsClient() {
           {filtered.length === 0 ? (
             <div className={`${EMPTY_STATE_LARGE} max-w-md mx-auto`} role="status" aria-live="polite">
               <p className="text-olive/80 leading-relaxed break-words mb-6">No trails match. Try different filters or ask the AI—it knows Troodos to coast.</p>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
                   All trails
                 </Link>

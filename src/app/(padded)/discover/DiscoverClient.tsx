@@ -132,7 +132,7 @@ export default function DiscoverClient({
                 aria-live="polite"
               >
                 <p className={`text-olive/80 ${SECTION.headingGap}`}>No places in this category. Try another filter or ask AI—it knows the island.</p>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div className="flex flex-wrap items-center justify-center gap-3">
                   <Link href="/discover" className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}>
                     All categories
                   </Link>
@@ -158,7 +158,7 @@ export default function DiscoverClient({
 
       <div className={`mt-16 sm:mt-20 ${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} text-center relative`}>
         <p className={`text-sm text-olive/70 ${SECTION.titleGap}`}>Add to your plan — or ask AI. It knows the island in winter.</p>
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <Link href="/plan" className={CTA.primaryCompact}>
             Add to your plan
           </Link>
