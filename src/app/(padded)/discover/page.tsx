@@ -14,8 +14,6 @@ import { CTA, LAYOUT, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
-import DiscoverEditorPicks from "./DiscoverEditorPicks";
-import DiscoverDayCombos from "./DiscoverDayCombos";
 import DiscoverMapSection from "./DiscoverMapSection";
 import DiscoverClient from "./DiscoverClient";
 
@@ -55,16 +53,19 @@ const isOffBeatenPath = (item: { bestFor?: string[]; localSecret?: string }) =>
   ) || !!item.localSecret;
 const quietItems = allDiscoverItems.filter(isOffBeatenPath);
 
+const coastsItems = [...beaches, ...natureSites];
+const wineAndFoodItems = [...wineries, ...restaurants];
+const hiddenGemsItems = [...familyItems, ...quietItems].filter(
+  (item, i, arr) => arr.findIndex((x) => x.id === item.id) === i
+);
+
 const sections = [
-  { id: "beach", title: "Beaches", items: beaches },
-  { id: "nature", title: "Nature & coasts", items: natureSites },
+  { id: "coasts", title: "Coasts", items: coastsItems },
   { id: "ancient", title: "Ancient sites", items: ancientSites },
   { id: "village", title: "Villages", items: villages },
-  { id: "winery", title: "Wineries", items: wineries },
-  { id: "eat", title: "Eat & drink", items: restaurants },
+  { id: "wine", title: "Wine & food", items: wineAndFoodItems },
   { id: "monastery", title: "Monasteries & culture", items: monasteries },
-  { id: "family", title: "Family-friendly", items: familyItems },
-  { id: "quiet", title: "Off the beaten path", items: quietItems },
+  { id: "hidden", title: "Hidden gems", items: hiddenGemsItems },
 ];
 
 const discoverItemListSchema = {
@@ -99,17 +100,9 @@ export default function DiscoverPage() {
         backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
         backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
       >
-        <div className="flex flex-wrap items-center gap-3 mt-4">
-          <Link href="/plan" className={CTA.tertiaryOnDark}>
-            Plan your trip
-          </Link>
-          <Link href="/weather" className={CTA.tertiaryOnDark}>
-            Weather
-          </Link>
-          <Link href="/trails" className={CTA.tertiaryOnDark}>
-            Trails
-          </Link>
-        </div>
+        <Link href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`}>
+          Plan your trip
+        </Link>
       </ListPageHero>
 
       <section aria-labelledby="discover-search-heading" className={`${LAYOUT.safeAreaX} ${SECTION.pySub} section-reveal`}>
@@ -123,23 +116,9 @@ export default function DiscoverPage() {
 
       <DiscoverPlaceOfDay />
 
-      <section aria-labelledby="discover-editors-picks-heading" className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}>
-        <div className={`${LAYOUT.list} mx-auto`}>
-          <h2 id="discover-editors-picks-heading" className="text-center font-display text-2xl sm:text-3xl font-semibold text-charcoal mb-2">
-            Editor&apos;s picks
-          </h2>
-          <p className="text-sage text-sm sm:text-base text-center max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-            Four places we keep coming back to in winter. Save them to your plan.
-          </p>
-          <DiscoverEditorPicks />
-        </div>
-      </section>
-
-      <DiscoverDayCombos />
+      <DiscoverClient sections={sections} />
 
       <DiscoverMapSection />
-
-      <DiscoverClient sections={sections} />
     </div>
   );
 }

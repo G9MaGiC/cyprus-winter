@@ -19,20 +19,6 @@ function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tr
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
 
-function getPreviewSnippet(template: (typeof ITINERARY_TEMPLATES)[number], getPlace: (id: string) => PlanItem | undefined): string {
-  const dayKeys = Object.keys(template.days)
-    .map(Number)
-    .sort((a, b) => a - b)
-    .slice(0, 3);
-  const parts: string[] = [];
-  for (const d of dayKeys) {
-    const ids = template.days[d] ?? [];
-    const names = ids.map((id) => getPlace(id)?.name).filter(Boolean) as string[];
-    if (names.length > 0) parts.push(`Day ${d}: ${names.slice(0, 2).join(", ")}`);
-  }
-  return parts.length > 0 ? parts.join(" · ") : "";
-}
-
 const QUICK_ADD_PLACES = [
   { id: "artemis", label: "Artemis Trail" },
   { id: "kourion", label: "Kourion" },
@@ -62,16 +48,15 @@ export default function QuickStartSection({
 
   const renderTemplateCard = (template: (typeof ITINERARY_TEMPLATES)[number], isRecommended: boolean) => {
     const placeCount = Object.values(template.days).flat().length;
-    const preview = getPreviewSnippet(template, getPlace);
     return (
       <button
         key={template.key}
         type="button"
         onClick={() => onTemplateClick(template.key)}
-        className={`text-left min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
+        className={`text-left min-h-[72px] sm:min-h-[88px] ${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
           isRecommended ? "border-aegean/30 bg-aegean/5" : ""
         }`}
-        aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places.`}
+        aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
       >
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0 flex-1">
@@ -89,18 +74,7 @@ export default function QuickStartSection({
             {template.duration}d
           </span>
         </div>
-        <span className="text-xs text-olive/60 mt-0.5 block break-words">{template.description}</span>
-        {preview && (
-          <span className="text-xs text-olive/50 mt-1 block line-clamp-2" title={preview}>
-            {preview}
-          </span>
-        )}
-        {template.seasonalNote && (
-          <span className="text-xs text-sage mt-1 block">{template.seasonalNote}</span>
-        )}
-        {template.bookingNote && (
-          <span className="text-xs text-terracotta/90 mt-1 block">Book ahead: {template.bookingNote}</span>
-        )}
+        <span className="text-xs text-olive/60 mt-0.5 block break-words line-clamp-2">{template.description}</span>
       </button>
     );
   };
@@ -111,15 +85,13 @@ export default function QuickStartSection({
         Start here
       </h2>
       <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
-        {hasContent
-          ? "Add more places or swap templates. Saves as you go."
-          : "Pick a template or build from scratch. Every itinerary includes pacing tips and winery booking reminders."}
+        {hasContent ? "Add more or swap templates." : "Pick a template or add places."}
       </p>
 
       {!hasContent && (
-        <div className="mb-6 sm:mb-8">
-          <span className={`${TYPE.kicker} block mb-2`}>Add to Day {activeDay}</span>
-          <div className="flex flex-wrap gap-2 sm:gap-3">
+        <div className="mb-4 sm:mb-6">
+          <span className={`${TYPE.kicker} block mb-1.5`}>Day {activeDay}</span>
+          <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]">
             {QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
@@ -130,7 +102,7 @@ export default function QuickStartSection({
                   type="button"
                   onClick={() => addToDay(id)}
                   disabled={inDay}
-                  className={`${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+                  className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
                   aria-pressed={inDay}
                   aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
                 >
@@ -139,16 +111,16 @@ export default function QuickStartSection({
                 </button>
               );
             })}
-            <Link href="/discover" className={`${PILL.base} ${PILL.neutral}`}>
+            <Link href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
               Discover
             </Link>
-            <Link href="/trails" className={`${PILL.base} ${PILL.neutral}`}>
+            <Link href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
               Trails
             </Link>
-            <Link href="/discover?filter=winery" className={`${PILL.base} ${PILL.neutral}`}>
+            <Link href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
               Wineries
             </Link>
-            <Link href="/events" className={`${PILL.base} ${PILL.neutral}`}>
+            <Link href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
               What&apos;s on
             </Link>
           </div>
@@ -157,18 +129,26 @@ export default function QuickStartSection({
 
       <div>
         {recommended.length > 0 && (
-          <div className="mb-8">
-            <span className={`${TYPE.kicker} block mb-2`}>Recommended for your {tripLength}-day trip</span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {recommended.map((template) => renderTemplateCard(template, true))}
+          <div className="mb-4 sm:mb-6">
+            <span className={`${TYPE.kicker} block mb-1.5`}>For your {tripLength}-day trip</span>
+            <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
+              {recommended.map((template) => (
+                <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
+                  {renderTemplateCard(template, true)}
+                </div>
+              ))}
             </div>
           </div>
         )}
-        <span className={`${TYPE.kicker} block mb-2`}>
-          {recommended.length > 0 ? "Other itineraries" : "Pre-built itineraries"}
+        <span className={`${TYPE.kicker} block mb-1.5`}>
+          {recommended.length > 0 ? "Other templates" : "Templates"}
         </span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {others.map((template) => renderTemplateCard(template, false))}
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
+          {others.map((template) => (
+            <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
+              {renderTemplateCard(template, false)}
+            </div>
+          ))}
         </div>
       </div>
     </section>

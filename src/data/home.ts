@@ -130,7 +130,8 @@ export const discoverEditorsPicksPool: HomeEditorialPick[] = [
   },
 ];
 
-/** Four editor picks rotated daily from the pool. Promoted items appear ~2/7 days in a reserved slot. */
+/** Four editor picks rotated daily from the pool. Promoted items appear ~2/7 days in a reserved slot.
+ * @deprecated Editor's picks section removed in Discover UX overhaul. Use Place of the day on Discover page. */
 export function getDiscoverEditorsPicks(): HomeEditorialPick[] {
   const pool = discoverEditorsPicksPool;
   if (pool.length < 4) return pool;

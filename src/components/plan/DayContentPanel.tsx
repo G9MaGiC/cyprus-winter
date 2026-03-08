@@ -73,33 +73,24 @@ export default function DayContentPanel({
             </div>
             {activeItems.length >= 3 && (
               <p className="text-sm text-terracotta font-medium" role="status">
-                Day {activeDay} is full. Add your next stop below.
+                Day full. Add next stop below.
               </p>
             )}
           </div>
 
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
-              <div className={`${EMPTY_STATE_DASHED} bg-sand-100/30 transition-colors duration-200`}>
-                <div
-                  className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 rounded-full bg-sand-200/80 flex items-center justify-center text-2xl text-olive/40"
-                  aria-hidden
-                >
-                  +
-                </div>
-                <p className="font-display font-semibold text-olive mb-1">Add your first place</p>
-                <p className="text-sm text-olive/60 max-w-sm mx-auto break-words mb-5 sm:mb-6">
-                  Use a template above or add spots like Artemis, Kourion, Omodos. Winery tastings—book ahead in winter.
-                </p>
-                <div className="flex flex-wrap justify-center gap-3">
+              <div className={`${EMPTY_STATE_DASHED} py-10 sm:py-14 px-4 bg-sand-100/30 transition-colors duration-200`}>
+                <p className="font-display font-semibold text-olive mb-3">Add your first place</p>
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                   <button type="button" onClick={onScrollToQuickStart} className={CTA.primaryCompact}>
-                    Add your first place
+                    Add place
                   </button>
                   <Link href="/discover" className={CTA.secondaryCompact}>
-                    Browse places
+                    Browse
                   </Link>
                   <Link href="/trails" className={CTA.secondaryCompact}>
-                    View trails
+                    Trails
                   </Link>
                 </div>
               </div>
@@ -171,8 +162,8 @@ export default function DayContentPanel({
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
         <div id="plan-inline-add">
-          <SectionCard title="Add another stop — quick picks or browse all" borderAccent="terracotta">
-            <div className="flex flex-wrap gap-2 sm:gap-3">
+          <SectionCard title="Add another stop" borderAccent="terracotta">
+            <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x scrollbar-none [scrollbar-width:none]">
               {QUICK_ADD_PLACES.map(({ id, label }) => {
                 const inDay = activeDayItems.includes(id);
                 const place = getPlace(id);
@@ -183,7 +174,7 @@ export default function DayContentPanel({
                     type="button"
                     onClick={() => addToDay(id)}
                     disabled={inDay}
-                    className={`${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+                    className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
                     aria-pressed={inDay}
                     aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
                   >
@@ -195,7 +186,7 @@ export default function DayContentPanel({
               <button
                 type="button"
                 onClick={onBrowseAll}
-                className={`shrink-0 rounded-xl ${CTA.secondaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}
+                className={`shrink-0 snap-start rounded-xl ${CTA.secondaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`}
               >
                 Browse all
               </button>

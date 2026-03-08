@@ -25,16 +25,16 @@ export default function DaySelector({
   return (
     <section
       aria-label="Select day"
-      className={`mb-6 sm:mb-10 ${
+      className={`mb-4 sm:mb-6 ${
         hasContent
-          ? ["sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-2 pb-3 sm:pt-3 sm:pb-4 -mt-3 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/60"].join(" ")
+          ? ["sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-2 pb-2 sm:pt-3 sm:pb-3 -mt-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/60"].join(" ")
           : ""
       }`}
     >
       <div
         role="tablist"
         aria-label="Select day"
-        className="flex gap-2 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none"
+        className="flex gap-1.5 sm:gap-2 overflow-x-auto scroll-smooth scroll-touch pb-1 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]"
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t.getAttribute("role") !== "tab") return;
@@ -68,7 +68,7 @@ export default function DaySelector({
               aria-controls="day-panel"
               tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveDay(d)}
-              className={`shrink-0 snap-start min-w-[4.5rem] sm:min-w-[5.5rem] px-3 sm:px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
+              className={`shrink-0 snap-center min-w-[3.5rem] sm:min-w-[4.5rem] px-2.5 sm:px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                 isActive
                   ? "bg-terracotta text-white shadow-sm"
                   : "bg-white/80 border border-sand-200/60 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/40"
@@ -81,7 +81,7 @@ export default function DaySelector({
       </div>
 
       {hasContent && (
-        <details className="group mt-3">
+        <details className="group mt-2 sm:mt-3 hidden sm:block">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
             <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/80 hover:text-olive min-h-[44px] py-2 rounded-lg transition-colors duration-200">
               {activeDaysCount > 1 ? `View all ${activeDaysCount} days` : "View all days"}

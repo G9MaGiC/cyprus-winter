@@ -11,6 +11,7 @@ import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlacePickerModal from "@/components/plan/PlacePickerModal";
 import QuickStartSection from "@/components/plan/QuickStartSection";
+import BuildADaySection from "@/components/plan/BuildADaySection";
 import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
 import { useSearchParams } from "next/navigation";
 import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
@@ -96,7 +97,7 @@ export default function PlanPage() {
 
   return (
     <div className="min-h-screen bg-sand">
-        <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 ${SECTION.blockGap}`}>
+        <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 space-y-8 sm:space-y-10`}>
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
             Itinerary copied to clipboard
@@ -137,29 +138,23 @@ export default function PlanPage() {
             backHref="/"
             backLabel="Home"
             title="Plan your Cyprus winter trip"
-            description="Curated itineraries from local experts. Start with a template or build day by day—saves as you go."
+            description={hasContent ? "Your itinerary — add more or share." : "Start with a template or build day by day."}
+            descriptionSecondary={!hasContent ? "Saves as you go." : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
             backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter trip"
             hasWidgetStrip={hasContent}
           >
-            <div
-              className={`mt-2 ${hasContent ? "" : "mt-4"}`}
-            >
-              {!hasContent && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                    className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
-                  >
-                    Pick a template or add your first place
-                  </button>
-                  <p className="text-sm text-white/80 mt-2">
-                    No account needed. Plan saves as you go.
-                  </p>
-                </>
-              )}
-            </div>
+            {!hasContent && (
+              <div className="mt-3 sm:mt-4">
+                <button
+                  type="button"
+                  onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto`}
+                >
+                  Pick a template or add your first place
+                </button>
+              </div>
+            )}
           </ListPageHero>
         </header>
 
@@ -177,21 +172,16 @@ export default function PlanPage() {
         )}
 
         {datesHydrated && withinSevenDays && daysUntil !== null && (
-          <div
+          <p
             role="status"
-            className="mb-6 p-4 rounded-xl bg-aegean/10 border border-aegean/20"
+            className="text-sm font-medium text-olive mb-4 p-3 rounded-lg bg-aegean/10 border border-aegean/20"
           >
-            <p className="text-sm font-medium text-olive">
-              {daysUntil === 0
-                ? "Your trip is today — your Day 1 plan is ready."
-                : daysUntil === 1
-                  ? "Tomorrow you are here — your Day 1 plan is ready."
-                  : `${daysUntil} days until you are here — your Day 1 plan is ready.`}
-            </p>
-            <p className="text-xs text-olive/70 mt-1">
-              {daysUntil === 0 ? "Have a great day." : daysUntil === 1 ? "Have a safe journey." : "Review your itinerary below."}
-            </p>
-          </div>
+            {daysUntil === 0
+              ? "Trip today — Day 1 is ready."
+              : daysUntil === 1
+                ? "Tomorrow — Day 1 is ready."
+                : `${daysUntil} days to go — review below.`}
+          </p>
         )}
 
         {datesHydrated && (
@@ -225,26 +215,20 @@ export default function PlanPage() {
         )}
 
         {hasWineries && hydrated && (
-          <SectionCard
-            title="Tour operator tip: Book tastings 24–48h ahead. Winter staffing is lean; slots fill."
-            borderAccent="terracotta"
-            className="bg-terracotta/5 border-terracotta/30 mb-6 sm:mb-8"
-          >
-            <div className="flex flex-wrap items-center gap-3">
-              <Link href="/bookings" className={CTA.primaryCompact}>
-                Book your tastings
-              </Link>
-              <Link href="/discover?filter=winery" className={CTA.secondaryCompact}>
-                Browse wineries
-              </Link>
-              <Link
-                href="/bookings"
-                className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-olive/80 font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                My bookings
-              </Link>
-            </div>
-          </SectionCard>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <Link href="/bookings" className={CTA.primaryCompact}>
+              Book tastings
+            </Link>
+            <Link href="/discover?filter=winery" className={CTA.secondaryCompact}>
+              Browse wineries
+            </Link>
+            <Link
+              href="/bookings"
+              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm text-olive/70 font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            >
+              My bookings
+            </Link>
+          </div>
         )}
 
         <div className="flex flex-col">
@@ -270,6 +254,7 @@ export default function PlanPage() {
               hasContent={hasContent}
               tripLength={tripLength}
             />
+            <BuildADaySection />
           </div>
         </div>
 
@@ -286,11 +271,11 @@ export default function PlanPage() {
           onScrollToQuickStart={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
 
-        <div className="mt-10 sm:mt-12 pt-8 border-t border-sand-200/80 text-center">
-          <p className="text-olive/60 text-sm break-words px-4 mb-4">
-            Tour operator tip: Daylight ends around 5pm in winter. Start trails and coast by 9–10am. Winery tastings—book 24–48h ahead; many run lean in winter.
+        <div className="mt-8 sm:mt-10 pt-6 border-t border-sand-200/80 text-center">
+          <p className="text-olive/60 text-xs sm:text-sm break-words px-2 mb-3">
+            Daylight ends ~5pm in winter. Start trails by 10am. Book tastings 24–48h ahead.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 text-sm">
             {hasWineries && (
               <Link href="/bookings" className={SECTION.aegeanLink}>
                 Book tastings

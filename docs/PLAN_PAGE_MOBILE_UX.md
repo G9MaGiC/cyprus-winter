@@ -1,6 +1,6 @@
 # Plan Page — Mobile-First UX Improvements
 
-**Status:** P0–P2 implemented (Mar 2026).
+**Status:** P0–P2 implemented. Refinements (Mar 2026): LESS — minimal, Mediterranean warmth, sliders.
 
 **Context:** `/plan` is well designed but felt desktop-first. Users on mobile encounter layout and hierarchy that prioritizes desktop patterns.
 
@@ -65,3 +65,28 @@ The plan content area needs padding so the last cards and "Browse all" summary a
 - **Sticky day selector:** Use `sticky` only from `sm:` up. On mobile, day tabs stay in flow so content gets more room.
 - **Template row on mobile:** `flex overflow-x-auto snap-x gap-3` for templates on mobile instead of `grid`.
 - **Primary CTA order:** When `!hasContent`, render the CTA button or template strip before the stats block.
+
+---
+
+## Mar 2026 Refinements (1000% UX — LESS)
+
+### Summary
+
+- **Less is more:** Reduced visual noise, simpler hero, one primary CTA, fewer sections, less copy.
+- **Sliders/carousels:** Day selector, templates, and quick-add pills use horizontal scroll with snap on mobile.
+- **Mobile-first:** Primary CTA above fold; day tabs compact; more room for itinerary content.
+
+### Changes
+
+| Component | Change |
+|-----------|--------|
+| **plan/page.tsx** | Shorter hero copy; compact trip-countdown strip; winery tip → inline links; tighter block spacing (`space-y-8 sm:space-y-10`); condensed footer tip. |
+| **DaySelector** | Compact tabs (`min-w-[3.5rem]` mobile); `snap-center` for slider feel; "View all days" details hidden on mobile; less vertical padding. |
+| **QuickStartSection** | Less copy; quick-add pills → horizontal scroll with snap; templates → horizontal carousel on mobile (`w-[85vw] max-w-[280px]`), grid on sm+; template cards trim (no preview/seasonal/booking lines). |
+| **DayContentPanel** | Simpler empty state (no icon, shorter copy, fewer CTAs); quick-add pills → horizontal scroll on mobile; shorter labels. |
+
+### Design Tokens & Accessibility
+
+- 44px touch targets preserved (PILL.base, CTA, buttons).
+- Focus-visible rings, ARIA labels unchanged.
+- Semantic HTML and tablist/tabpanel roles preserved.
