@@ -72,7 +72,7 @@ export default function TrailFilters({
       {alwaysVisible ? (
         <>
           <div className="sm:hidden">
-            <details className="group" open={filtersExpanded}>
+            <details className="group" open={filtersExpanded} onToggle={onToggleExpand}>
               <summary className="list-none cursor-pointer min-h-[44px] flex items-center justify-between px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
                 <span className="text-sm">Filters: {filterSummary}</span>
                 <span className="text-olive/60 text-xs transition-transform duration-200 group-open:rotate-180" aria-hidden>

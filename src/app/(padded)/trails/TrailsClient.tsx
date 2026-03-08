@@ -91,26 +91,30 @@ export default function TrailsClient() {
         </ListPageHero>
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
 
-        {/* Status strip — horizontal pills, mobile-first */}
+        {/* Status strip */}
         <section
           aria-label="Trail conditions summary"
           className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} border-b border-sand-200/80 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0`}
         >
-          <div className="flex items-center gap-3 overflow-x-auto scrollbar-none -mx-1 px-1 scroll-smooth">
-            <span className="text-sm font-medium text-olive shrink-0">{statusLabel}</span>
-            <span className="text-olive/30 shrink-0" aria-hidden>·</span>
-            <span className="flex items-center gap-1.5 shrink-0">
-              <span className="w-2 h-2 rounded-full bg-aegean" aria-hidden />
-              <span className="text-sm text-aegean font-medium">{openCount} open</span>
-            </span>
-            <span className="flex items-center gap-1.5 shrink-0">
-              <span className="w-2 h-2 rounded-full bg-golden" aria-hidden />
-              <span className="text-sm text-olive/80">{cautionCount} caution</span>
-            </span>
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none -mx-1 px-1 scroll-smooth text-sm">
+            {statusLabel && <span className="font-medium text-olive shrink-0">{statusLabel}</span>}
+            {statusLabel && (openCount > 0 || cautionCount > 0 || closedCount > 0) && <span className="text-olive/30 shrink-0" aria-hidden>·</span>}
+            {openCount > 0 && (
+              <span className="flex items-center gap-1.5 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-aegean" aria-hidden />
+                <span className="text-aegean font-medium">{openCount} open</span>
+              </span>
+            )}
+            {cautionCount > 0 && (
+              <span className="flex items-center gap-1.5 shrink-0 text-olive/80">
+                <span className="w-2 h-2 rounded-full bg-golden" aria-hidden />
+                {cautionCount} caution
+              </span>
+            )}
             {closedCount > 0 && (
               <span className="flex items-center gap-1.5 shrink-0">
                 <span className="w-2 h-2 rounded-full bg-terracotta" aria-hidden />
-                <span className="text-sm text-terracotta">{closedCount} closed</span>
+                <span className="text-terracotta">{closedCount} closed</span>
               </span>
             )}
           </div>
