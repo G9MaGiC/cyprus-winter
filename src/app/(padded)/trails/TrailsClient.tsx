@@ -10,6 +10,7 @@ import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
 import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
+import Disclosure from "@/components/Disclosure";
 import Link from "next/link";
 
 export default function TrailsClient() {
@@ -47,8 +48,6 @@ export default function TrailsClient() {
   const hasFilters = Boolean(safeDifficulty || safeRegion);
   const hasInvalidFilter = (difficultyFilter && !validDifficulty) || (regionFilter && !validRegion);
   const [filtersExpanded, setFiltersExpanded] = useState(hasFilters);
-  const [mapOpen, setMapOpen] = useState(false);
-  const [tipsOpen, setTipsOpen] = useState(false);
 
   const filterSummary =
     hasFilters

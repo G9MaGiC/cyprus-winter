@@ -70,7 +70,22 @@ export default function TrailFilters({
   return (
     <section aria-label="Filter trails" className={alwaysVisible ? "" : "mb-6 sm:mb-8"}>
       {alwaysVisible ? (
-        <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-6">{filterGroup}</div>
+        <>
+          <div className="sm:hidden">
+            <details className="group" open={filtersExpanded}>
+              <summary className="list-none cursor-pointer min-h-[44px] flex items-center justify-between px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+                <span className="text-sm">Filters: {filterSummary}</span>
+                <span className="text-olive/60 text-xs transition-transform duration-200 group-open:rotate-180" aria-hidden>
+                  ▾
+                </span>
+              </summary>
+              <div id="trail-filters" className="mt-3 flex flex-col gap-4" role="region">
+                {filterGroup}
+              </div>
+            </details>
+          </div>
+          <div className="hidden sm:block">{filterGroup}</div>
+        </>
       ) : (
         <>
           <div className="sm:hidden">
