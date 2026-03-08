@@ -216,6 +216,7 @@ export default function EventsPage() {
           backgroundImage="/images/cyprus/cyprus-monastery-kykkos.jpg"
           backgroundImageAlt="Kykkos monastery, Troodos—Cyprus winter culture and events"
           hasWidgetStrip
+          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Events", href: "/events", isCurrent: true }]}
         >
           <Link
             href="/plan"

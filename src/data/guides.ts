@@ -19,7 +19,7 @@ export const guides: Guide[] = [
     name: "Cyprus Active Tours",
     region: "Troodos & Paphos",
     description:
-      "Guided hiking and cultural tours in Troodos and Paphos. Winter specialists: Artemis, Caledonia Falls, Atalante. Small groups, experienced guides. Pack layers—they know the mountain.",
+      "Winter hiking and cultural tours across Troodos and Paphos. Artemis, Caledonia Falls, Atalante—small groups, experienced leaders. They know the mountain; pack layers and let them lead.",
     trailIds: ["artemis", "caledonia-falls", "atalante", "persephone", "adonis", "aphrodite"],
     contactPhone: "+357 99 123456",
     bookingUrl: "https://www.cyprusactivetours.com/",
@@ -32,7 +32,7 @@ export const guides: Guide[] = [
     name: "Troodos Mountain Guides",
     region: "Troodos",
     description:
-      "Local Troodos guides. Artemis, Atalante, Caledonia Falls, Olympus. Winter conditions expertise. Private and small-group hikes.",
+      "Local mountain guides for Troodos. Artemis, Atalante, Caledonia Falls, Olympus. Winter conditions know-how. Private and small-group hikes.",
     trailIds: ["artemis", "atalante", "caledonia-falls", "olympus-summit", "madari-ridge"],
     contactPhone: "+357 25 421123",
     isVerified: true,
@@ -44,7 +44,7 @@ export const guides: Guide[] = [
     name: "Akamas Explorer",
     region: "Paphos & Akamas",
     description:
-      "Akamas Peninsula and Paphos coast. Adonis, Aphrodite, Avakas. Sea views and coastal trails. Winter-friendly—avoid summer heat.",
+      "Akamas Peninsula and Paphos coast trails. Adonis, Aphrodite, Avakas—sea views, coastal paths. Winter is the sweet spot; no summer heat.",
     trailIds: ["adonis", "aphrodite", "avakas-gorge"],
     contactPhone: "+357 26 654321",
     isVerified: true,

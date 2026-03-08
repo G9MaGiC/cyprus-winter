@@ -85,18 +85,20 @@ export default function QuickStartSection({
   };
 
   return (
-    <section aria-labelledby="quick-start-heading">
-      <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
-        Start here
-      </h2>
-      <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
-        {hasContent ? "Add more or swap templates." : "Pick a template or add places."}
-      </p>
+    <section aria-labelledby="quick-start-heading" className="space-y-6 sm:space-y-8">
+      <header>
+        <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+          Start here
+        </h2>
+        <p className={`text-sm text-olive/60 max-w-xl break-words ${SECTION.headingGap}`}>
+          {hasContent ? "Add more or swap templates." : "Pick a template or add places."}
+        </p>
+      </header>
 
       {!hasContent && (
-        <div className="mb-4 sm:mb-6">
-          <span className={`${TYPE.kicker} block mb-1.5`}>Day {activeDay}</span>
-          <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]">
+        <div className="space-y-3">
+          <span className={`${TYPE.kicker} block`}>Day {activeDay}</span>
+          <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] min-h-[44px] items-center">
             {QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
@@ -132,10 +134,10 @@ export default function QuickStartSection({
         </div>
       )}
 
-      <div>
+      <div className="space-y-6 sm:space-y-8">
         {recommended.length > 0 && (
-          <div className="mb-4 sm:mb-6">
-            <span className={`${TYPE.kicker} block mb-1.5`}>For your {tripLength}-day trip</span>
+          <div className="space-y-3">
+            <span className={`${TYPE.kicker} block`}>For your {tripLength}-day trip</span>
             <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
               {recommended.map((template) => (
                 <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
@@ -145,15 +147,17 @@ export default function QuickStartSection({
             </div>
           </div>
         )}
-        <span className={`${TYPE.kicker} block mb-1.5`}>
-          {recommended.length > 0 ? "Other templates" : "Templates"}
-        </span>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
+        <div className="space-y-3">
+          <span className={`${TYPE.kicker} block`}>
+            {recommended.length > 0 ? "Other templates" : "Templates"}
+          </span>
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
           {others.map((template) => (
             <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
               {renderTemplateCard(template, false)}
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>

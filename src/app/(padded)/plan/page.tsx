@@ -20,7 +20,7 @@ import { useTripDates } from "@/hooks/useTripDates";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import PushOptIn from "@/components/PushOptIn";
 import SectionCard from "@/components/SectionCard";
-import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
+import { CALLOUT, LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -97,7 +97,9 @@ export default function PlanPage() {
 
   return (
     <div className="min-h-screen bg-sand">
-        <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 space-y-8 sm:space-y-10`}>
+      <div
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} pt-0 pb-24 sm:pt-12 sm:pb-16 ${SECTION.blockGap}`}
+      >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
             Itinerary copied to clipboard
@@ -143,6 +145,7 @@ export default function PlanPage() {
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
             backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter trip"
             hasWidgetStrip={hasContent}
+            breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Plan", href: "/plan", isCurrent: true }]}
           >
             {!hasContent && (
               <div className="mt-3 sm:mt-4">
@@ -172,38 +175,40 @@ export default function PlanPage() {
         )}
 
         {datesHydrated && withinSevenDays && daysUntil !== null && (
-          <p
+          <div
             role="status"
-            className="text-sm font-medium text-olive mb-4 p-3 rounded-lg bg-aegean/10 border border-aegean/20"
+            className={`${CALLOUT.tip} px-4 py-3 sm:px-5 sm:py-4`}
           >
-            {daysUntil === 0
-              ? "Trip today — Day 1 is ready."
-              : daysUntil === 1
-                ? "Tomorrow — Day 1 is ready."
-                : `${daysUntil} days to go — review below.`}
-          </p>
+            <p className="text-sm font-medium text-olive">
+              {daysUntil === 0
+                ? "Trip today — Day 1 is ready."
+                : daysUntil === 1
+                  ? "Tomorrow — Day 1 is ready."
+                  : `${daysUntil} days to go — review below.`}
+            </p>
+          </div>
         )}
 
         {datesHydrated && (
           <ListPageWidgetStrip ariaLabel="Trip dates">
             <SectionCard title="When are you traveling?" borderAccent="aegean">
-              <div className="flex flex-wrap gap-3 mb-4">
-                <label className="flex flex-col gap-1">
-                  <span className="text-xs text-olive/60">Start</span>
+              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 mb-5">
+                <label className="flex flex-col gap-1.5">
+                  <span className="text-xs font-medium text-olive/60 uppercase tracking-wider">Start</span>
                   <input
                     type="date"
                     value={dates.start ?? ""}
                     onChange={(e) => setTripDates(e.target.value || null, dates.end)}
-                    className="min-h-[44px] px-3 py-2 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50"
+                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
                   />
                 </label>
-                <label className="flex flex-col gap-1">
-                  <span className="text-xs text-olive/60">End</span>
+                <label className="flex flex-col gap-1.5">
+                  <span className="text-xs font-medium text-olive/60 uppercase tracking-wider">End</span>
                   <input
                     type="date"
                     value={dates.end ?? ""}
                     onChange={(e) => setTripDates(dates.start, e.target.value || null)}
-                    className="min-h-[44px] px-3 py-2 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50"
+                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
                   />
                 </label>
               </div>
@@ -215,17 +220,18 @@ export default function PlanPage() {
         )}
 
         {hasWineries && hydrated && (
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div
+            role="region"
+            aria-label="Winery bookings"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 min-h-[44px]"
+          >
             <Link href="/bookings" className={CTA.primaryCompact}>
               Book tastings
             </Link>
             <Link href="/discover?filter=winery" className={CTA.secondaryCompact}>
               Browse wineries
             </Link>
-            <Link
-              href="/bookings"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm text-olive/70 font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
-            >
+            <Link href="/bookings" className={SECTION.aegeanLink}>
               My bookings
             </Link>
           </div>
@@ -271,11 +277,11 @@ export default function PlanPage() {
           onScrollToQuickStart={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
 
-        <div className="mt-8 sm:mt-10 pt-6 border-t border-sand-200/80 text-center">
-          <p className="text-olive/60 text-xs sm:text-sm break-words px-2 mb-3">
+        <footer className={SECTION.footerBlock}>
+          <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-4">
             Daylight ends ~5pm in winter. Start trails by 10am. Book tastings 24–48h ahead.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
             {hasWineries && (
               <Link href="/bookings" className={SECTION.aegeanLink}>
                 Book tastings
@@ -291,7 +297,7 @@ export default function PlanPage() {
               Weather
             </Link>
           </div>
-        </div>
+        </footer>
 
         {showClearModal && (
           <ClearDayModal

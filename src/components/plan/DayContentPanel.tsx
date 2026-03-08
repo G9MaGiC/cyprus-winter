@@ -47,9 +47,9 @@ export default function DayContentPanel({
   const activeDayItems = activeItems;
 
   return (
-    <section aria-label="Your itinerary" className="space-y-6">
+    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-8">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
-        <div className={`${CARD.base} overflow-hidden`}>
+        <div className={`${CARD.base} overflow-hidden ${CARD.hover}`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-display text-xl font-semibold text-olive">
@@ -80,7 +80,7 @@ export default function DayContentPanel({
 
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
-              <div className={`${EMPTY_STATE_DASHED} py-10 sm:py-14 px-4 bg-sand-100/30 transition-colors duration-200`}>
+              <div className={`${EMPTY_STATE_DASHED} py-12 sm:py-16 px-4 bg-sand-100/30 transition-colors duration-200`}>
                 <p className="font-display font-semibold text-olive mb-3">Add your first place</p>
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                   <button type="button" onClick={onScrollToQuickStart} className={CTA.primaryCompact}>
@@ -95,11 +95,11 @@ export default function DayContentPanel({
                 </div>
               </div>
             ) : (
-              <div className="space-y-0">
+                <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="mb-3">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-olive/50">Morning</span>
+                    <div className="mb-4">
+                      <span className="prose-label text-olive/60">Morning</span>
                     </div>
                     <div className="space-y-0">
                       {morningIds.map((itemId, i) => (
@@ -117,10 +117,8 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className="mt-6 mb-3">
-                          <span className="text-xs font-semibold uppercase tracking-wider text-olive/50">
-                            Afternoon
-                          </span>
+                        <div className="mt-6 mb-4">
+                          <span className="prose-label text-olive/60">Afternoon</span>
                         </div>
                         <div className="space-y-0">
                           {afternoonIds.map((itemId, i) => (

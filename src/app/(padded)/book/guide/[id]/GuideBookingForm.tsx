@@ -109,7 +109,7 @@ export default function GuideBookingForm({
       >
         <h2 className="font-display text-xl font-semibold text-olive">Request sent</h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
-          Your guided hike request for {guide.name} is on its way. The guide will confirm by email. If you
+          Your hike request for {guide.name} is on its way. They&apos;ll confirm by email. If you
           don&apos;t hear back within a day or two, give them a call.
           {storageMode === "memory" && (
             <>
@@ -123,7 +123,7 @@ export default function GuideBookingForm({
           )}
         </p>
         <p className="text-olive/70 text-sm mt-3 break-words">
-          Pack layers and water. Tell someone your route. The mountains reward the prepared.
+          Pack layers and water. Tell someone your route.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
@@ -155,7 +155,7 @@ export default function GuideBookingForm({
         <label htmlFor="date" className="block text-sm font-medium text-olive mb-1">
           Preferred date
         </label>
-        <p className="text-xs text-olive/60 mb-2">Winter days are short. Book ahead for your preferred slot.</p>
+        <p className="text-xs text-olive/60 mb-2">Winter days are short; book ahead for your preferred slot.</p>
         <input
           id="date"
           name="date"
@@ -171,7 +171,7 @@ export default function GuideBookingForm({
           <label htmlFor="trailId" className="block text-sm font-medium text-olive mb-1">
             Trail <span className="text-olive/50">(optional)</span>
           </label>
-          <p className="text-xs text-olive/60 mb-2">Which trail do you have in mind?</p>
+          <p className="text-xs text-olive/60 mb-2">Optional. Helps the guide plan.</p>
           <select
             id="trailId"
             name="trailId"
@@ -250,7 +250,7 @@ export default function GuideBookingForm({
           Notes <span className="text-olive/50">(optional)</span>
         </label>
         <p className="text-xs text-olive/60 mb-2">
-          Fitness level, experience, or a specific trail — whatever helps the guide plan.
+          Fitness level, experience, trail preference—whatever helps them plan.
         </p>
         <textarea
           id="notes"
@@ -274,7 +274,7 @@ export default function GuideBookingForm({
         )}
         {loading ? "Sending…" : "Request guided hike"}
       </button>
-      <p className="text-xs text-olive/50 mt-3 text-center break-words">The guide will confirm by email.</p>
+      <p className="text-xs text-olive/50 mt-3 text-center break-words">They&apos;ll confirm by email.</p>
     </form>
   );
 }

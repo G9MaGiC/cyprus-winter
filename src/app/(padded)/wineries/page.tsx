@@ -32,7 +32,7 @@ const wineriesItemListSchema = {
 export const metadata: Metadata = {
   title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
   description:
-    "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six. Free guide.",
+    "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
   alternates: { canonical: `${SITE_URL}/wineries` },
   openGraph: {
     title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
@@ -52,6 +52,11 @@ export default function WineriesPage() {
         backLabel="Discover"
         title="Cyprus Wineries in Winter"
         description="Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter."
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Discover", href: "/discover" },
+          { label: "Wineries", href: "/wineries", isCurrent: true },
+        ]}
       >
         <Link href="/bookings" className={`mt-4 px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
           Book a tasting

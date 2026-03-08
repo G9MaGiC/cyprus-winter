@@ -87,6 +87,11 @@ export default async function WeatherMonthPage({ params }: Props) {
         backLabel="Weather"
         title={`Cyprus Winter Weather: ${monthName}`}
         description={`Coast ${row.coastMinC}–${row.coastMaxC}°C, Troodos ${row.troodosMinC}–${row.troodosMaxC}°C. ${row.coastDesc}`}
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Weather", href: "/weather" },
+          { label: monthName, href: `/weather/${slug}`, isCurrent: true },
+        ]}
       />
 
       <div className="space-y-10 sm:space-y-14">

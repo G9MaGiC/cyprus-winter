@@ -12,7 +12,7 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 export const metadata: Metadata = {
   title: "Just Landed? | Cyprus Winter Airport Guide",
   description:
-    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here. Free Cyprus Winter guide.",
+    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here.",
   alternates: { canonical: `${SITE_URL}/airport` },
   openGraph: {
     title: "Just Landed? | Cyprus Winter Airport Guide",
@@ -37,6 +37,7 @@ export default function AirportPage() {
         title="Just landed?"
         description="Transport from Larnaca and Paphos. Taxis, buses, car hire."
         descriptionSecondary="Coast mild, Troodos cooler—pack layers."
+        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Arriving", href: "/airport", isCurrent: true }]}
       />
 
       {/* Essentials strip — scannable, high visibility for jetlagged users */}

@@ -20,11 +20,11 @@ import DiscoverClient from "./DiscoverClient";
 export const metadata: Metadata = {
   title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
   description:
-    "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—Nissi, Paphos mosaics, Lefkara. Sixteen degrees when home is six. Free guide.",
+    "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—Nissi, Paphos mosaics, Lefkara. Sixteen degrees when home is six.",
   alternates: { canonical: `${SITE_URL}/discover` },
   openGraph: {
     title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
-    description: "Cyprus in winter: curated places that feel real. Beaches, villages, wineries, ancient sites. Free guide.",
+    description: "Cyprus in winter: curated places that feel real. Beaches, villages, wineries, ancient sites.",
     url: `${SITE_URL}/discover`,
     type: "website",
   },
@@ -99,6 +99,7 @@ export default function DiscoverPage() {
         description="Places that feel real. What to pair each place with—your guide, not a brochure."
         backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
         backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
+        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Discover", href: "/discover", isCurrent: true }]}
       >
         <Link href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`}>
           Plan your trip

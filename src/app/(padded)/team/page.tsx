@@ -20,6 +20,7 @@ export default function TeamPage() {
         backLabel="Home"
         title="Our Team"
         description="Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
+        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Team", href: "/team", isCurrent: true }]}
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">

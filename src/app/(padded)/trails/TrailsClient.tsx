@@ -79,6 +79,7 @@ export default function TrailsClient() {
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
           backgroundImageAlt="Troodos pine forest trail, Cyprus winter"
           hasWidgetStrip
+          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Trails", href: "/trails", isCurrent: true }]}
         >
           <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
             <Link href="/plan" className={CTA.tertiaryOnDark}>

@@ -12,7 +12,7 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
 export const metadata: Metadata = {
   title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
   description:
-    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips. Free guide.",
+    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips.",
   alternates: { canonical: `${SITE_URL}/secrets` },
   openGraph: {
     title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
@@ -36,9 +36,10 @@ export default function SecretsPage() {
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Back to home"
+        backLabel="Home"
         title="Cyprus Winter Local Secrets"
         description="Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place."
+        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Local Secrets", href: "/secrets", isCurrent: true }]}
       >
         <Link href="/plan" className={`mt-4 px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
           Plan your trip

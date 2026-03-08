@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { LAYOUT, CTA, EMPTY_STATE_COMPACT, SECTION, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import SearchResultCard from "@/components/SearchResultCard";
 import { search } from "@/lib/search";
 
@@ -42,9 +43,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const hasNoResults = q.length >= 2 && results.length === 0;
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <div className="mb-8">
+      <nav className="flex flex-col gap-1 mb-8" aria-label="Page navigation">
         <BackLink href="/" label="Home" />
-      </div>
+        <Breadcrumbs
+          items={[{ label: "Home", href: "/" }, { label: "Search", href: "/search", isCurrent: true }]}
+          className="py-1 px-0 text-xs text-olive/60"
+        />
+      </nav>
       <h1 className={`${TYPE.sectionTitle} mb-2`}>
         Find a place or trail
       </h1>

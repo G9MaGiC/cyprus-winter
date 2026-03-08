@@ -52,6 +52,11 @@ export default function BeachesPage() {
         backLabel="Discover"
         title="Cyprus Beaches in Winter"
         description="Empty sand, mild light. The sea is cold for swimming; winter beaches are for walks, coffee, and the light."
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Discover", href: "/discover" },
+          { label: "Beaches", href: "/beaches", isCurrent: true },
+        ]}
       >
         <Link href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
           Plan your trip

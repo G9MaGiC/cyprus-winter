@@ -20,7 +20,7 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 export const metadata: Metadata = {
   title: "Cyprus Winter Weather by Month | Coast & Troodos",
   description:
-    "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six. Free guide.",
+    "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
   alternates: { canonical: `${SITE_URL}/weather` },
   openGraph: {
     title: "Cyprus Winter Weather by Month | Coast & Troodos",
@@ -36,8 +36,10 @@ export default function WeatherPage() {
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
+        backLabel="Home"
         title="Cyprus Winter Weather by Month"
         description="Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries."
+        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Weather", href: "/weather", isCurrent: true }]}
       />
 
       {/* Mobile: card layout avoids horizontal scroll */}

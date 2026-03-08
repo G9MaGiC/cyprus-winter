@@ -10,9 +10,9 @@ import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
 
 export const metadata: Metadata = {
-  title: "Best Troodos Trails December | Cyprus Winter Hiking",
+  title: "Best Troodos Trails in December | Cyprus Winter",
   description:
-    "Best Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, thin crowds. What to pack, conditions, snow tips. Cyprus winter hiking guide. Free.",
+    "Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, quiet slopes. What to pack, conditions, snow notes. Cyprus winter hiking guide.",
   alternates: { canonical: `${SITE_URL}/guides/troodos-december` },
 };
 
@@ -66,12 +66,17 @@ export default function TroodosDecemberPage() {
         backHref="/trails"
         backLabel="Trails"
         title="Best Troodos Trails in December"
-        description="December in Troodos: crisp air, thin crowds, trails often clear before peak snow. Atalante and Artemis stay open when higher trails might have snow; Caledonia Falls runs strong after rain."
+        description="December in Troodos: crisp air, quiet trails, often clear before peak snow. Atalante and Artemis stay open when higher routes hold snow; Caledonia Falls runs strong after rain."
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Trails", href: "/trails" },
+          { label: "Troodos December", href: "/guides/troodos-december", isCurrent: true },
+        ]}
       />
 
       <div className="prose prose-olive max-w-none mb-12">
         <p className="text-olive/80">
-          December is the sweet spot: ski season hasn&apos;t fully started, trails are usually clear, and the mountain villages are quiet. Pack layers—temperatures can dip to 2°C at elevation. Check{" "}
+          December hits the sweet spot: ski season hasn&apos;t fully started, trails are usually clear, and the villages are quiet. Pack layers—temps can dip to 2°C at elevation. Check{" "}
           <Link href="/trails" className={SECTION.aegeanLink}>
             trail conditions
           </Link>{" "}
@@ -103,7 +108,7 @@ export default function TroodosDecemberPage() {
 
       <p className="mt-12 text-center text-olive/70 text-sm">
         <Link href="/regions/troodos" className={SECTION.aegeanLink}>
-          Troodos region hub
+          Troodos region
         </Link>
         {" · "}
         <Link href="/weather" className={SECTION.aegeanLink}>

@@ -19,7 +19,7 @@ const steps = [
   },
   {
     title: "Discover & Plan",
-    description: "Explore places. Add to your plan. Book tastings.",
+    description: "Explore places. Add to your plan. Book tastings and guided hikes.",
     accent: "terracotta",
   },
   {

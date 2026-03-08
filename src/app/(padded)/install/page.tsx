@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Metadata } from "next";
 
@@ -53,9 +54,13 @@ RewriteRule . /index.html [L]`,
 export default function InstallPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <div className="mb-8">
+      <nav className="flex flex-col gap-1 mb-8" aria-label="Page navigation">
         <BackLink href="/" label="Back to Cyprus Winter" />
-      </div>
+        <Breadcrumbs
+          items={[{ label: "Home", href: "/" }, { label: "Install", href: "/install", isCurrent: true }]}
+          className="py-1 px-0 text-xs text-olive/60"
+        />
+      </nav>
 
       <header className={SECTION.headingMarginLarge}>
         <p className="text-golden text-sm font-medium tracking-[0.15em] uppercase mb-2">

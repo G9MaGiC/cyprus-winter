@@ -3,6 +3,7 @@ import { wineries } from "@/data/wineries";
 import { LAYOUT } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import WineryBookingForm from "./WineryBookingForm";
 
@@ -34,9 +35,22 @@ export default async function WineryBookPage({
   const winery = wineries.find((w) => w.id === id);
   if (!winery) notFound();
 
+  const canonicalUrl = `${SITE_URL}/book/winery/${id}`;
+
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <BackLink href={`/discover/${id}`} label={`Back to ${winery.name}`} />
+      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+        <BackLink href={`/discover/${id}`} label={`Back to ${winery.name}`} />
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Discover", href: "/discover" },
+            { label: winery.name, href: `/discover/${id}` },
+            { label: "Book tasting", href: canonicalUrl, isCurrent: true },
+          ]}
+          className="py-1 px-0 text-xs text-olive/60"
+        />
+      </nav>
 
       <div className="mt-6">
         <div className="flex flex-wrap items-center gap-2">

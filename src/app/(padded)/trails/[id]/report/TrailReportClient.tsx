@@ -6,6 +6,7 @@ import { useParams, notFound } from "next/navigation";
 import { trails } from "@/data/trails";
 import { LAYOUT, CTA } from "@/lib/design-tokens";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const STATUS_OPTIONS = [
   { value: "open", label: "Open", desc: "Good to go" },
@@ -126,16 +127,18 @@ export default function TrailReportClient() {
 
   return (
     <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav aria-label="Breadcrumb" className="text-sm text-olive/70">
-        <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-0">
-          <li><Link href="/trails" className="hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">Trails</Link></li>
-          <li aria-hidden>/</li>
-          <li><Link href={`/trails/${trail.id}`} className="hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded">{trail.name}</Link></li>
-          <li aria-hidden>/</li>
-          <li className="text-olive font-medium" aria-current="page">Report</li>
-        </ol>
+      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+        <BackLink href={`/trails/${trail.id}`} label={`Back to ${trail.name}`} />
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Trails", href: "/trails" },
+            { label: trail.name, href: `/trails/${trail.id}` },
+            { label: "Report conditions", href: `/trails/${trail.id}/report`, isCurrent: true },
+          ]}
+          className="py-1 px-0 text-xs text-olive/60"
+        />
       </nav>
-      <BackLink href={`/trails/${trail.id}`} label={`Back to ${trail.name}`} />
       <h1 className="font-display text-2xl font-bold text-olive mt-4">
         Report conditions
       </h1>

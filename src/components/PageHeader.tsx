@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { SECTION, TYPE } from "@/lib/design-tokens";
+import Breadcrumbs from "@/components/Breadcrumbs";
+
+export type BreadcrumbItem = { label: string; href: string; isCurrent?: boolean };
 
 type PageHeaderProps = {
   backHref?: string;
@@ -7,6 +10,7 @@ type PageHeaderProps = {
   title: string;
   description: string;
   descriptionSecondary?: string;
+  breadcrumbItems?: BreadcrumbItem[];
   children?: React.ReactNode;
 };
 
@@ -16,16 +20,22 @@ export default function PageHeader({
   title,
   description,
   descriptionSecondary,
+  breadcrumbItems,
   children,
 }: PageHeaderProps) {
   return (
     <div className={SECTION.headingMarginLarge}>
+      <nav aria-label="Page navigation" className="flex flex-col gap-1">
       <Link
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
       >
         ← {backLabel}
       </Link>
+      {breadcrumbItems && breadcrumbItems.length > 1 && (
+        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-olive/60" />
+      )}
+      </nav>
       <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
         {title}
       </h1>

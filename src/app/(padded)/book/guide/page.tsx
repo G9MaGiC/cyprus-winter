@@ -4,12 +4,13 @@ import { guides } from "@/data/guides";
 import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { trails } from "@/data/trails";
 
 export const metadata: Metadata = {
   title: "Book a Guided Hike | Cyprus Winter",
   description:
-    "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis, and more. Book ahead. Cyprus Winter.",
+    "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis, and more. Small groups, winter expertise. Book ahead and they'll confirm by email.",
   alternates: { canonical: `${SITE_URL}/book/guide` },
 };
 
@@ -23,13 +24,23 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
 export default function GuidesListPage() {
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <BackLink href="/trails" label="Back to trails" />
+      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+        <BackLink href="/trails" label="Back to Trails" />
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Trails", href: "/trails" },
+            { label: "Book a guide", href: "/book/guide", isCurrent: true },
+          ]}
+          className="py-1 px-0 text-xs text-olive/60"
+        />
+      </nav>
 
       <div className="mb-8">
         <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>Book a guided hike</h1>
         <p className="text-olive/70 max-w-2xl">
-          Local guides for Troodos, Paphos, and Akamas. Winter conditions expertise. Small groups, experienced
-          leaders. Book ahead and they&apos;ll confirm by email.
+          Local guides for Troodos, Paphos, and Akamas. Winter conditions know-how, small groups, experienced
+          leaders. Request a hike and they&apos;ll confirm by email.
         </p>
       </div>
 

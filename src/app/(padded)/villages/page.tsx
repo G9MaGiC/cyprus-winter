@@ -52,6 +52,11 @@ export default function VillagesPage() {
         backLabel="Discover"
         title="Cyprus Villages in Winter"
         description="Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Discover", href: "/discover" },
+          { label: "Villages", href: "/villages", isCurrent: true },
+        ]}
       >
         <Link href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
           Plan your trip

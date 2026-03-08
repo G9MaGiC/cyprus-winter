@@ -7,7 +7,7 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 export const metadata: Metadata = {
   title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
   description:
-    "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit. Free guide.",
+    "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit.",
   alternates: { canonical: `${SITE_URL}/events` },
   openGraph: {
     title: "Cyprus Winter Events | Epiphany, Carnival, Markets",

@@ -140,8 +140,13 @@ export default async function RegionPage({ params }: Props) {
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
+        backLabel="Home"
         title={config.title}
         description={config.description}
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: config.title, href: `/regions/${config.slug}`, isCurrent: true },
+        ]}
       />
 
       <div className="space-y-16 sm:space-y-20">
@@ -164,7 +169,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/guides/troodos-december"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  Best Troodos trails in December →
+                  Troodos trails in December →
                 </Link>
               </p>
             )}

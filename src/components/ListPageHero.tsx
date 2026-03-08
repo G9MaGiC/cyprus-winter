@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CARD, HERO, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import Breadcrumbs from "@/components/Breadcrumbs";
+
+export type BreadcrumbItem = { label: string; href: string; isCurrent?: boolean };
 
 type ListPageHeroProps = {
   backHref?: string;
@@ -8,10 +11,9 @@ type ListPageHeroProps = {
   title: string;
   description: string;
   descriptionSecondary?: string;
-  /** Optional background image for hero treatment */
+  breadcrumbItems?: BreadcrumbItem[];
   backgroundImage?: string;
   backgroundImageAlt?: string;
-  /** When true, slightly tighter bottom margin for use with widget strip below */
   hasWidgetStrip?: boolean;
   children?: React.ReactNode;
 };
@@ -22,20 +24,44 @@ export default function ListPageHero({
   title,
   description,
   descriptionSecondary,
+  breadcrumbItems,
   backgroundImage,
   backgroundImageAlt,
   hasWidgetStrip = false,
   children,
 }: ListPageHeroProps) {
   const textMb = hasWidgetStrip ? "mb-6 sm:mb-8" : SECTION.headingMarginLarge;
-  const content = (
-    <div className={textMb}>
+  const navBlock = (
+    <>
+      <Link
+        href={backHref}
+        className="inline-flex items-center min-h-[44px] py-2 text-white/90 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded w-fit"
+      >
+        ← {backLabel}
+      </Link>
+      {breadcrumbItems && breadcrumbItems.length > 1 && (
+        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/70" />
+      )}
+    </>
+  );
+  const navBlockLight = (
+    <>
       <Link
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
       >
         ← {backLabel}
       </Link>
+      {breadcrumbItems && breadcrumbItems.length > 1 && (
+        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-olive/60" />
+      )}
+    </>
+  );
+  const content = (
+    <div className={textMb}>
+      <nav className="flex flex-col gap-1" aria-label="Page navigation">
+        {navBlockLight}
+      </nav>
       <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
         {title}
       </h1>
@@ -63,12 +89,9 @@ export default function ListPageHero({
           />
           <div className={HERO.listOverlay} aria-hidden />
           <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} pt-[calc(4.5rem+env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>
-            <Link
-              href={backHref}
-              className="inline-flex items-center min-h-[44px] py-2 text-white/90 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded w-fit"
-            >
-              ← {backLabel}
-            </Link>
+            <nav className="flex flex-col gap-1" aria-label="Page navigation">
+              {navBlock}
+            </nav>
             <h1 className={`${TYPE.pageTitle} mt-1.5 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
               {title}
             </h1>

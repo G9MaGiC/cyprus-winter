@@ -25,10 +25,14 @@ export default function DaySelector({
   return (
     <section
       aria-label="Select day"
-      className={`mb-4 sm:mb-6 ${
+      className={`${
         hasContent
-          ? ["sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-2 pb-2 sm:pt-3 sm:pb-3 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/60"].join(" ")
-          : ""
+          ? [
+              "sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10",
+              LAYOUT.stickyBarX,
+              "pt-3 pb-3 sm:pt-4 sm:pb-4 mb-6 sm:mb-8 bg-sand-100/90 backdrop-blur-sm supports-[backdrop-filter]:bg-sand-100/80 border-b border-sand-200/80 shadow-[0_1px_0_0_rgba(234,230,223,0.6)]",
+            ].join(" ")
+          : "mb-4 sm:mb-6"
       }`}
     >
       <div
@@ -68,10 +72,10 @@ export default function DaySelector({
               aria-controls="day-panel"
               tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveDay(d)}
-              className={`shrink-0 snap-center min-w-[3.5rem] sm:min-w-[4.5rem] px-2.5 sm:px-3 py-2 rounded-lg font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
+              className={`shrink-0 snap-center min-w-[3.5rem] sm:min-w-[4.5rem] px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                 isActive
-                  ? "bg-terracotta text-white shadow-sm"
-                  : "bg-white/80 border border-sand-200/60 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/40"
+                  ? "bg-terracotta text-white shadow-sm border border-terracotta/80"
+                  : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/25 hover:bg-sand-100/60"
               }`}
             >
               {count > 0 ? `Day ${d} · ${count}` : `Day ${d}`}
@@ -81,9 +85,9 @@ export default function DaySelector({
       </div>
 
       {hasContent && (
-        <details className="group mt-2 sm:mt-3 hidden sm:block">
+        <details className="group mt-3 sm:mt-4 hidden sm:block">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
-            <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/80 hover:text-olive min-h-[44px] py-2 rounded-lg transition-colors duration-200">
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/80 hover:text-olive min-h-[44px] py-2.5 rounded-lg transition-colors duration-200">
               {activeDaysCount > 1 ? `View all ${activeDaysCount} days` : "View all days"}
               <span className="text-olive/50 group-open:rotate-180 transition-transform" aria-hidden>
                 ▾

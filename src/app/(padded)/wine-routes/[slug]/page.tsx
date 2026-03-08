@@ -45,6 +45,11 @@ export default async function WineRoutePage({ params }: Props) {
         backLabel="Wineries"
         title={`${route.title} Wine Route`}
         description={route.description}
+        breadcrumbItems={[
+          { label: "Home", href: "/" },
+          { label: "Wineries", href: "/wineries" },
+          { label: `${route.title} Route`, href: `/wine-routes/${slug}`, isCurrent: true },
+        ]}
       />
 
       <h2 id="wineries-list" className="sr-only">

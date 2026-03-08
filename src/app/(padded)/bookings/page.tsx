@@ -120,6 +120,7 @@ export default function BookingsPage() {
           description="Your tastings and experiences. All in one place."
           backHref="/"
           backLabel="Home"
+          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "My bookings", href: "/bookings", isCurrent: true }]}
         />
 
         {/* Stats bar */}
@@ -194,7 +195,7 @@ export default function BookingsPage() {
               <div className="w-12 h-1 mx-auto mb-4 rounded-full bg-terracotta/40" aria-hidden />
               <h2 className="font-display font-semibold text-olive mb-1">No bookings yet</h2>
               <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
-                Book a tasting or guided hike from Discover and Trails, or load bookings from another device.
+                Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
@@ -245,7 +246,7 @@ export default function BookingsPage() {
             {/* No upcoming — suggest sync or browse */}
             {bookings.length > 0 && upcoming.length === 0 && (
               <div className="p-5 rounded-xl bg-aegean/10 border border-aegean/20" role="status" aria-live="polite">
-                <p className="text-sm font-medium text-olive mb-1">No upcoming tastings</p>
+                <p className="text-sm font-medium text-olive mb-1">No upcoming bookings</p>
                 <p className="text-sm text-olive/70 mb-4">Load bookings from another device or plan your next visit.</p>
                 <div className="flex flex-wrap gap-3">
                   {!showSync && (

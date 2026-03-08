@@ -4,6 +4,7 @@ import { trails, trailConditions } from "@/data/trails";
 import { LAYOUT, CTA } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -87,9 +88,17 @@ export default async function TrailPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trailSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}>
-        <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0`}>
+        <nav className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`} aria-label="Page navigation">
           <BackLink href="/trails" label="Back to Trails" />
-        </div>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Trails", href: "/trails" },
+              { label: trail.name, href: canonicalUrl, isCurrent: true },
+            ]}
+            className="py-1 px-0 text-xs text-olive/60"
+          />
+        </nav>
 
         <article>
           <DetailHero

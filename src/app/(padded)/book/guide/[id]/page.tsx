@@ -3,6 +3,7 @@ import { guides } from "@/data/guides";
 import { LAYOUT } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import GuideBookingForm from "./GuideBookingForm";
 
@@ -20,7 +21,7 @@ export async function generateMetadata({
   if (!guide) return { title: "Not found" };
   return {
     title: `Book a guided hike | ${guide.name} | Cyprus Winter`,
-    description: `Book a guided winter hike with ${guide.name} in ${guide.region}. Troodos, Akamas, Paphos. Small groups, local expertise. Confirmation by email. Cyprus Winter.`,
+    description: `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`,
     alternates: { canonical: `${SITE_URL}/book/guide/${id}` },
   };
 }
@@ -39,7 +40,18 @@ export default async function GuideBookPage({
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <BackLink href="/trails" label="Back to trails" />
+      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+        <BackLink href="/book/guide" label="Back to guides" />
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Trails", href: "/trails" },
+            { label: "Book a guide", href: "/book/guide" },
+            { label: guide.name, href: `/book/guide/${id}`, isCurrent: true },
+          ]}
+          className="py-1 px-0 text-xs text-olive/60"
+        />
+      </nav>
 
       <div className="mt-6">
         <div className="flex flex-wrap items-center gap-2">
@@ -74,9 +86,9 @@ export default async function GuideBookPage({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta font-medium hover:underline hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
-                aria-label="Book on the guide website (opens in new tab)"
+                aria-label="Book on the guide's website (opens in new tab)"
               >
-                book on their website
+                book directly on their site
               </a>
             </p>
           )}

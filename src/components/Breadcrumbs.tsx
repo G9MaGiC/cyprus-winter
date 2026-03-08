@@ -47,6 +47,7 @@ function useBreadcrumbs(): BreadcrumbItem[] {
     search: "Search",
     secrets: "Local Secrets",
     book: "Book",
+    guide: "Guided hike",
     "wine-routes": "Wine Routes",
     regions: "Regions",
     "troodos-december": "Troodos December Guide",

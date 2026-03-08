@@ -20,7 +20,7 @@ export default function AccountPage() {
   if (isLoading) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <PageHeader title="My account" description="Loading…" />
+        <PageHeader title="My account" description="Loading…" breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]} />
         <div className="mt-8 h-32 rounded-xl bg-sand-100/80 animate-pulse" aria-hidden />
       </div>
     );
@@ -34,6 +34,7 @@ export default function AccountPage() {
         <PageHeader
           title="My account"
           description="Your plan and bookings, synced across devices."
+          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]}
         />
 
         <div className={`${CARD.base} ${CARD.content} mt-8`}>
@@ -72,6 +73,7 @@ export default function AccountPage() {
         <PageHeader
           title="My account"
           description="Sign in (coming soon) will sync your plan and bookings across devices."
+          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]}
         />
 
         <div className={`${EMPTY_STATE} mt-12`}>
@@ -97,6 +99,7 @@ export default function AccountPage() {
       <PageHeader
         title="My account"
         description="Sign in to sync your plan and bookings across devices."
+        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]}
       />
 
       <div className={`${EMPTY_STATE} mt-12`}>
