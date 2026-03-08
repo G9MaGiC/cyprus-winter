@@ -59,11 +59,11 @@ export default function QuickStartSection({
       >
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0 flex-1">
-            <span className="font-display font-semibold text-olive block break-words group-hover:text-terracotta transition-colors">
+            <span className={`${TYPE.cardTitle} block break-words`}>
               {template.label}
             </span>
             {isRecommended && (
-              <span className="text-xs text-aegean font-medium mt-0.5 block">Best fit for {tripLength} days</span>
+              <span className="text-sm text-aegean font-medium mt-0.5 block">Best fit for {tripLength} days</span>
             )}
           </div>
           <span
@@ -73,14 +73,18 @@ export default function QuickStartSection({
             {template.duration}d
           </span>
         </div>
-        <span className="text-xs text-olive/70 mt-0.5 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
+        <span className="text-sm text-olive/70 mt-0.5 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
       </button>
     );
   };
 
   return (
-    <section aria-labelledby="quick-start-heading" className="space-y-6 sm:space-y-8">
+    <section aria-labelledby="quick-start-heading" className={`${SECTION.pySub} rounded-2xl ${SECTION.alt}`}>
+      <div className="space-y-5 sm:space-y-8">
       <header>
+        <p id="quick-start-kicker" className={`${TYPE.kicker} mb-1.5`}>
+          Templates & quick add
+        </p>
         <h2 id="quick-start-heading" className={`${TYPE.sectionTitle} tracking-tight ${SECTION.titleGap}`}>
           Start here
         </h2>
@@ -88,7 +92,7 @@ export default function QuickStartSection({
           {hasContent ? "Add more or swap templates." : "Pick a template or add places."}
         </p>
         {!hasContent && tripLength == null && (
-          <p className="text-xs text-olive/60 max-w-xl break-words mt-1 mb-4">
+          <p className="text-sm text-olive/60 max-w-xl break-words mt-1 mb-4">
             Set your dates above to see templates that match your trip length.
           </p>
         )}
@@ -97,7 +101,7 @@ export default function QuickStartSection({
       {!hasContent && (
         <div className="space-y-3">
           <span className={`${TYPE.kicker} block`}>Day {activeDay}</span>
-          <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] min-h-[44px] items-center touch-pan-x">
+          <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
@@ -137,7 +141,7 @@ export default function QuickStartSection({
         {recommended.length > 0 && (
           <div className="space-y-3">
             <span className={`${TYPE.kicker} block`}>For your {tripLength}-day trip</span>
-            <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none]">
+            <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain">
               {recommended.map((template) => (
                 <div key={template.key} className="shrink-0 w-[85vw] max-w-[280px] sm:w-auto sm:max-w-none sm:shrink sm:min-w-0">
                   {renderTemplateCard(template, true)}
@@ -158,6 +162,7 @@ export default function QuickStartSection({
           ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

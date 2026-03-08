@@ -38,7 +38,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col sm:items-center sm:justify-center p-4 sm:p-6 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50"
+      className="fixed inset-0 z-50 flex flex-col sm:items-center sm:justify-center p-4 pb-[env(safe-area-inset-bottom)] sm:p-6 sm:pb-6 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50"
       role="dialog"
       aria-modal="true"
       aria-labelledby="browse-places-title"
@@ -48,7 +48,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
       <div
         onClick={(e) => e.stopPropagation()}
         ref={modalRef}
-        className="w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] flex flex-col bg-background rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden"
+        className="w-full max-w-2xl max-h-[90dvh] sm:max-h-[85vh] flex flex-col bg-background rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden sm:mt-0 mt-auto"
       >
         <div className="flex items-center justify-between shrink-0 px-5 py-4 border-b border-sand-200/80">
           <h2 id="browse-places-title" className={TYPE.cardTitle}>
@@ -63,7 +63,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
             ✕
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6">
+        <div className="flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6 sm:pb-6">
           <PlacePicker activeDayItems={activeDayItems} onAdd={handleAdd} />
         </div>
       </div>

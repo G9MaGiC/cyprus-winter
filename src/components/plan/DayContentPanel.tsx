@@ -41,8 +41,8 @@ export default function DayContentPanel({
   const activeDayItems = activeItems;
 
   return (
-    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
-      <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
+    <section aria-label="Your itinerary" className="space-y-5 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
+      <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-5 sm:space-y-8">
         <div className={`${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -90,10 +90,10 @@ export default function DayContentPanel({
                 </div>
               </div>
             ) : (
-                <div className="space-y-0">
+              <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="mb-3 pt-1">
+                    <div className="pt-1 mb-3">
                       <span className={`${TYPE.kicker} text-olive/70`}>Morning</span>
                     </div>
                     <div className="space-y-0">
@@ -112,7 +112,7 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className="mt-6 mb-4">
+                        <div className="mt-6 mb-3">
                           <span className={`${TYPE.kicker} text-olive/60`}>Afternoon</span>
                         </div>
                         <div className="space-y-0">
@@ -132,22 +132,22 @@ export default function DayContentPanel({
                       </>
                     )}
                   </>
-                ) : (
-                  <div className="space-y-0">
-                    {activeItems.map((itemId, i) => (
-                      <TimelineRow
-                        key={itemId}
-                        id={itemId}
-                        index={i + 1}
-                        showConnector={i < activeItems.length - 1}
-                        lastAddedId={lastAddedId}
-                        lastAddedCardRef={lastAddedCardRef}
-                        getPlace={getPlace}
-                        removeFromDay={removeFromDay}
-                      />
-                    ))}
-                  </div>
-                )}
+              ) : (
+                <div className="space-y-0">
+                  {activeItems.map((itemId, i) => (
+                    <TimelineRow
+                      key={itemId}
+                      id={itemId}
+                      index={i + 1}
+                      showConnector={i < activeItems.length - 1}
+                      lastAddedId={lastAddedId}
+                      lastAddedCardRef={lastAddedCardRef}
+                      getPlace={getPlace}
+                      removeFromDay={removeFromDay}
+                    />
+                  ))}
+                </div>
+              )}
               </div>
             )}
           </div>
@@ -156,7 +156,7 @@ export default function DayContentPanel({
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
         <div id="plan-inline-add">
           <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all." : undefined} borderAccent="terracotta">
-            <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] touch-pan-x">
+            <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
               {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
                 const inDay = activeDayItems.includes(id);
                 const place = getPlace(id);

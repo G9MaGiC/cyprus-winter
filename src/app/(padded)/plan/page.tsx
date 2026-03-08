@@ -98,7 +98,7 @@ export default function PlanPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyPlan} flex flex-col gap-8 min-[400px]:gap-10 sm:gap-14`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyPlan} flex flex-col gap-6 min-[400px]:gap-8 sm:gap-12 md:gap-14`}
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
@@ -177,7 +177,7 @@ export default function PlanPage() {
         {datesHydrated && withinSevenDays && daysUntil !== null && (
           <div
             role="status"
-            className={`${CALLOUT.tip} px-4 py-3 sm:px-5 sm:py-4 transition-opacity duration-200`}
+            className={`${CALLOUT.tip} px-4 py-3.5 sm:px-5 sm:py-4 transition-opacity duration-200`}
           >
             <p className="text-sm font-medium text-olive">
               {daysUntil === 0
@@ -194,21 +194,21 @@ export default function PlanPage() {
             <SectionCard title="When are you traveling?" borderAccent="aegean">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 mb-5">
                 <label className="flex flex-col gap-1.5">
-                  <span className="text-xs font-medium text-olive/60 uppercase tracking-wider">Start</span>
+                  <span className="prose-label text-olive/60">Start</span>
                   <input
                     type="date"
                     value={dates.start ?? ""}
                     onChange={(e) => setTripDates(e.target.value || null, dates.end)}
-                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
+                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
                   />
                 </label>
                 <label className="flex flex-col gap-1.5">
-                  <span className="text-xs font-medium text-olive/60 uppercase tracking-wider">End</span>
+                  <span className="prose-label text-olive/60">End</span>
                   <input
                     type="date"
                     value={dates.end ?? ""}
                     onChange={(e) => setTripDates(dates.start, e.target.value || null)}
-                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
+                    className="min-h-[44px] w-full px-3 py-2.5 rounded-lg border border-sand-300 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-1"
                   />
                 </label>
               </div>
@@ -250,7 +250,7 @@ export default function PlanPage() {
             />
           </div>
 
-          <div ref={quickStartRef} className={`${hasContent ? "order-2" : "order-1"} flex flex-col gap-12 sm:gap-16`}>
+          <div ref={quickStartRef} className={`${hasContent ? "order-2" : "order-1"} flex flex-col gap-10 sm:gap-14 md:gap-16`}>
             {!hasContent ? (
               <>
                 <BuildADaySection />
@@ -294,7 +294,7 @@ export default function PlanPage() {
           onScrollToQuickStart={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
         />
 
-        <footer className={`${SECTION.footerBlock} pt-8 sm:pt-10`}>
+        <footer className={`${SECTION.footerBlock} pt-8 pb-[env(safe-area-inset-bottom)] sm:pt-10 sm:pb-0`}>
           <p className="text-olive/60 text-xs sm:text-sm break-words text-center mb-4 max-w-xl mx-auto">
             Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
           </p>

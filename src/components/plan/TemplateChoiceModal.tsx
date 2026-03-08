@@ -24,7 +24,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:pb-4 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50"
       role="dialog"
       aria-modal="true"
       aria-labelledby="template-choice-title"
@@ -40,7 +40,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
         <p className="text-olive/80 text-sm mb-6 break-words">
           Replace what you have, add to it, or keep building. Your call.
         </p>
-        <div className="flex flex-wrap gap-3 justify-end">
+        <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end">
           <button
             type="button"
             onClick={onClose}

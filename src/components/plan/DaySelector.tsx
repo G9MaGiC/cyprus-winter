@@ -39,7 +39,7 @@ export default function DaySelector({
       <div
         role="tablist"
         aria-label="Select day"
-        className="flex gap-1.5 sm:gap-2 overflow-x-auto scroll-smooth scroll-touch pb-1 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]"
+        className="flex gap-1.5 sm:gap-2 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x"
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t.getAttribute("role") !== "tab") return;
