@@ -19,8 +19,7 @@ import { usePlanUrlActions } from "@/hooks/usePlanUrlActions";
 import { useTripDates } from "@/hooks/useTripDates";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import PushOptIn from "@/components/PushOptIn";
-import SectionCard from "@/components/SectionCard";
-import { CALLOUT, LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -177,7 +176,7 @@ export default function PlanPage() {
         {datesHydrated && withinSevenDays && daysUntil !== null && (
           <div
             role="status"
-            className={`${CALLOUT.tip} px-4 py-3.5 sm:px-5 sm:py-4 transition-opacity duration-200`}
+            className="rounded-xl border-2 border-dashed border-golden/30 bg-golden/5 px-4 py-3.5 sm:px-5 sm:py-4 transition-opacity duration-200"
           >
             <p className="text-sm font-medium text-olive">
               {daysUntil === 0
@@ -191,7 +190,8 @@ export default function PlanPage() {
 
         {datesHydrated && (
           <ListPageWidgetStrip ariaLabel="Trip dates">
-            <SectionCard title="When are you traveling?" borderAccent="aegean">
+            <div className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-sand-100/60 p-5 sm:p-6 transition-colors hover:border-aegean/20">
+              <p className="text-sm font-semibold text-olive mb-4">When are you traveling?</p>
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 mb-5">
                 <label className="flex flex-col gap-1.5">
                   <span className="prose-label text-olive/60">Start</span>
@@ -215,7 +215,7 @@ export default function PlanPage() {
               {dates.start && (
                 <PushOptIn tripStartDate={dates.start} variant={withinSevenDays ? "soon" : "far"} />
               )}
-            </SectionCard>
+            </div>
           </ListPageWidgetStrip>
         )}
 

@@ -37,10 +37,16 @@ export default function BuildADaySection() {
       className={`${SECTION.pySub} px-5 sm:px-6 rounded-2xl ${SECTION.alt}`}
     >
       <header>
-        <p id="build-a-day-kicker" className={`${TYPE.kicker} mb-1.5`}>
-          Curated combos
-        </p>
-        <h2 id="build-a-day-heading" className={`${TYPE.sectionTitle} tracking-tight ${SECTION.titleGap}`}>
+        <div className="flex items-center gap-2 mb-2">
+          <span
+            id="build-a-day-kicker"
+            className="inline-flex items-center min-h-[28px] px-2.5 rounded-md bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
+            aria-hidden
+          >
+            Curated combos
+          </span>
+        </div>
+        <h2 id="build-a-day-heading" className={`font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight mb-1`}>
           Build a day
         </h2>
         <p className={`text-sm text-olive/70 max-w-xl break-words leading-relaxed ${SECTION.headingGap}`}>

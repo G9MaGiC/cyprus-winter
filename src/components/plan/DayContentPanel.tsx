@@ -4,7 +4,6 @@ import { type RefObject } from "react";
 import Link from "next/link";
 import TimelineRow from "@/components/plan/TimelineRow";
 import SuggestedForDay from "@/components/SuggestedForDay";
-import SectionCard from "@/components/SectionCard";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
@@ -44,21 +43,26 @@ export default function DayContentPanel({
     <section aria-label="Your itinerary" className="space-y-5 sm:space-y-8 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-5 sm:space-y-8">
         <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} transition-shadow duration-200`}>
-          <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50 space-y-1 sm:space-y-2`}>
+          <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/50`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="font-display text-xl sm:text-2xl font-semibold text-olive tracking-tight">
-                Day {activeDay}
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <span
+                  className="inline-flex items-center min-h-[36px] px-3 rounded-lg bg-terracotta/10 text-terracotta font-semibold text-sm"
+                  aria-hidden
+                >
+                  Day {activeDay}
+                </span>
                 {activeItems.length > 0 && (
-                  <span className="ml-2 text-sm font-normal text-olive/70">
-                    — {activeItems.length} {activeItems.length === 1 ? "place" : "places"}
+                  <span className="text-sm text-olive/70">
+                    {activeItems.length} {activeItems.length === 1 ? "place" : "places"}
                   </span>
                 )}
-              </h3>
+              </div>
               {activeItems.length > 0 && (
                 <button
                   type="button"
                   onClick={onClearDay}
-                  className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm font-medium text-olive/60 hover:text-terracotta rounded-lg hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="min-h-[36px] inline-flex items-center px-3 py-1.5 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label={`Clear all places from Day ${activeDay}`}
                 >
                   Clear day
@@ -66,7 +70,7 @@ export default function DayContentPanel({
               )}
             </div>
             {activeItems.length >= 3 && (
-              <p className="text-sm text-olive/70 leading-relaxed" role="status">
+              <p className="text-sm text-olive/60 mt-2 leading-relaxed" role="status">
                 Add another stop below or switch day above.
               </p>
             )}
@@ -154,42 +158,46 @@ export default function DayContentPanel({
         </div>
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
-        <div id="plan-inline-add">
-          <SectionCard title="Add another stop" subtitle={activeItems.length > 0 ? "Quick picks or browse all." : undefined} borderAccent="terracotta">
-            <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
-              {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
-                const inDay = activeDayItems.includes(id);
-                const place = getPlace(id);
-                if (!place) return null;
-                return (
-                  <button
-                    key={id}
-                    type="button"
-                    onClick={() => addToDay(id)}
-                    disabled={inDay}
-                    className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
-                    aria-pressed={inDay}
-                    aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
-                  >
-                    {inDay ? "✓ " : ""}
-                    {label}
-                  </button>
-                );
-              })}
-              <button
-                type="button"
-                onClick={onBrowseAll}
-                className={`shrink-0 snap-start rounded-xl ${CTA.secondaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
-              >
-                Browse all
-              </button>
+        <div
+          id="plan-inline-add"
+          className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-sand-100/60 p-5 sm:p-6 transition-colors hover:border-terracotta/20"
+        >
+          <p className="text-sm font-medium text-olive/80 mb-3">
+            {activeItems.length > 0 ? "Add another stop" : "Add a stop"}
+          </p>
+          <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
+            {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
+              const inDay = activeDayItems.includes(id);
+              const place = getPlace(id);
+              if (!place) return null;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => addToDay(id)}
+                  disabled={inDay}
+                  className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+                  aria-pressed={inDay}
+                  aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
+                >
+                  {inDay ? "✓ " : ""}
+                  {label}
+                </button>
+              );
+            })}
+            <button
+              type="button"
+              onClick={onBrowseAll}
+              className={`shrink-0 snap-start rounded-xl ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+            >
+              Browse all
+            </button>
+          </div>
+          {activeItems.length > 0 && (
+            <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-sand-200/80">
+              <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
             </div>
-            {activeItems.length > 0 && (
-              <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-sand-200/80">
-                <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
-              </div>
-            )}
-          </SectionCard>
+          )}
         </div>
       </div>
     </section>
