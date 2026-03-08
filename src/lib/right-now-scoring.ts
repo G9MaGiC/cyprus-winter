@@ -176,7 +176,12 @@ export function scoreAndRank(
       } as ScoredPlace;
     })
     .filter((x): x is ScoredPlace => x != null);
-  withCoords.sort((a, b) => b.score - a.score);
+  // Sort by distance first (nearest = "near you"), then by composite score as tiebreaker
+  withCoords.sort((a, b) => {
+    const d = a.distanceKm - b.distanceKm;
+    if (Math.abs(d) > 0.5) return d;
+    return b.score - a.score;
+  });
   return withCoords.slice(0, limit);
 }
 
