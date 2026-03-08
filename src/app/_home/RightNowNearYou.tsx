@@ -5,8 +5,9 @@ import RightNowCard from "@/components/RightNowCard";
 import AppLink from "@/components/AppLink";
 import LocationActionButtons from "@/components/LocationActionButtons";
 import RegionPickerChips from "@/components/RegionPickerChips";
-import { getRegionShortLabel } from "@/data/regions";
+import { getRegionShortLabel, type RegionSlug } from "@/data/regions";
 import { useRightNowFeed } from "@/hooks/useRightNowFeed";
+import { useUserPreferences } from "@/hooks/useUserPreferences";
 
 type DistanceMode = "less" | "more";
 
@@ -102,6 +103,8 @@ export default function RightNowNearYou({
     handleRegionSelect,
     handleDistanceChange,
   } = useRightNowFeed();
+  const { prefs, hydrated } = useUserPreferences();
+  const suggestedRegion = hydrated && prefs.favoriteRegions[0] ? (prefs.favoriteRegions[0] as RegionSlug) : null;
 
   if (state === "consent") {
     return (
@@ -130,6 +133,7 @@ export default function RightNowNearYou({
           <RegionPickerChips
             onSelect={handleRegionSelect}
             onUseLocation={handleUseLocation}
+            suggestedRegion={suggestedRegion}
           />
         </div>
       </SectionShell>

@@ -62,6 +62,9 @@ export default function AccountPage() {
           <Link href="/bookings" className={`${CTA.secondaryCompact}`}>
             View my bookings
           </Link>
+          <Link href="/account/settings" className={`${CTA.chipTertiary}`}>
+            Settings
+          </Link>
         </div>
       </div>
     );
@@ -87,6 +90,9 @@ export default function AccountPage() {
             </Link>
             <Link href="/plan" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
               My plan
+            </Link>
+            <Link href="/account/settings" className={`px-6 py-3 ${CTA.chipTertiary}`}>
+              Settings
             </Link>
           </div>
         </div>
