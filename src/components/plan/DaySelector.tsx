@@ -27,7 +27,7 @@ export default function DaySelector({
       aria-label="Select day"
       className={`mb-4 sm:mb-6 ${
         hasContent
-          ? ["sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-2 pb-2 sm:pt-3 sm:pb-3 -mt-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/60"].join(" ")
+          ? ["sm:sticky sm:top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10", LAYOUT.stickyBarX, "pt-2 pb-2 sm:pt-3 sm:pb-3 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 border-b border-sand-200/60"].join(" ")
           : ""
       }`}
     >
