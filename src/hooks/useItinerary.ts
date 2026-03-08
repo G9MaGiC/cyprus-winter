@@ -89,7 +89,7 @@ export function useItinerary() {
   const removeFromDay = useCallback((id: string) => {
     setDays((prev) => ({
       ...prev,
-      [activeDay]: prev[activeDay].filter((x) => x !== id),
+      [activeDay]: (prev[activeDay] ?? []).filter((x) => x !== id),
     }));
   }, [activeDay]);
 

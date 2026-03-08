@@ -815,3 +815,25 @@ No P0 fixes applied (none identified). P1/P2 documented for backlog.
 | npm run lint | Pass |
 | npm run test | Pass (150 tests) |
 | npm run build | Pass (Next.js 16.1.6, 523 static pages) |
+
+---
+
+## CTO Fix Run (Mar 8, 2026)
+
+### BUG-067 — useItinerary removeFromDay crash when prev[activeDay] undefined
+
+**Severity:** High  
+**Area:** Functional  
+**Page/Component:** src/hooks/useItinerary.ts:92
+
+**Reproduction**
+Edge case: removeFromDay called when day was never populated (state corruption or race).
+
+**Expected**
+Filter runs on array; no crash.
+
+**Actual**
+`prev[activeDay].filter` throws when prev[activeDay] is undefined.
+
+**Fix status**
+Fixed — use `(prev[activeDay] ?? []).filter(...)` to guard against undefined.
