@@ -19,10 +19,13 @@ type AuthState = {
   needsPasswordReset?: boolean;
 };
 
+export type OAuthProvider = "google" | "apple";
+
 type AuthContextValue = AuthState & {
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signUp: (email: string, password: string, name?: string) => Promise<{ error: string | null }>;
   signInWithOtp: (email: string) => Promise<{ error: string | null }>;
+  signInWithOAuth: (provider: OAuthProvider, redirectTo?: string) => Promise<{ error: string | null }>;
   resetPassword: (email: string) => Promise<{ error: string | null }>;
   updatePassword: (password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
@@ -113,6 +116,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: error?.message ?? null };
   }, []);
 
+  const signInWithOAuth = useCallback(async (provider: OAuthProvider, redirectTo?: string) => {
+    const supabase = getSupabaseBrowser();
+    if (!supabase) return { error: "Auth is not configured." };
+    const to = redirectTo ?? (typeof window !== "undefined" ? window.location.origin + "/account" : undefined);
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: to ? { redirectTo: to } : undefined,
+    });
+    if (error) return { error: error.message };
+    if (data?.url) window.location.href = data.url;
+    return { error: null };
+  }, []);
+
   const resetPassword = useCallback(async (email: string) => {
     const supabase = getSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
@@ -139,6 +155,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signIn,
     signUp,
     signInWithOtp,
+    signInWithOAuth,
     resetPassword,
     updatePassword,
     signOut,

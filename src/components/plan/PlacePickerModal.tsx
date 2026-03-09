@@ -48,7 +48,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
       <div
         onClick={(e) => e.stopPropagation()}
         ref={modalRef}
-        className="w-full max-w-2xl max-h-[90dvh] sm:max-h-[85vh] flex flex-col bg-background rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden sm:mt-0 mt-auto"
+        className="w-full max-w-2xl max-h-[90dvh] sm:max-h-[85vh] flex flex-col bg-background rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden sm:mt-0 mt-auto animate-in slide-in-from-bottom duration-300 sm:animate-none"
       >
         <div className="flex items-center justify-between shrink-0 px-5 py-4 sm:py-5 border-b border-sand-200/80">
           <h2 id="browse-places-title" className={`${TYPE.cardTitle} text-lg sm:text-xl`}>

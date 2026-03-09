@@ -75,14 +75,14 @@ export default function PlanShareBar({
             aria-label="Copy and share options"
           >
             Copy & share
-            <span className={`text-terracotta/70 transition-transform ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
+            <span className={`text-terracotta/70 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
               ▾
             </span>
           </button>
           {shareMenuOpen && (
             <div
               role="menu"
-              className="absolute right-0 top-full mt-2 py-2 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10"
+              className="absolute right-0 top-full mt-2 py-2 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10 animate-in fade-in slide-in-from-top-2 duration-200"
               onKeyDown={(e) => {
                 if (e.key === "Escape") {
                   setShareMenuOpen(false);

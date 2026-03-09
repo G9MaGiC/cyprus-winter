@@ -7,6 +7,105 @@ import { CARD, CTA, EMPTY_STATE_DASHED, PILL, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 
+function EmptyDayState({
+  activeDay,
+  onBrowseAll,
+  onScrollToQuickStart,
+}: {
+  activeDay: number;
+  onBrowseAll: () => void;
+  onScrollToQuickStart: () => void;
+}) {
+  return (
+      <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-5 sm:px-6 bg-sand-100/30 hover:border-terracotta/20 transition-colors`}>
+      <p className="font-display text-xl sm:text-2xl font-semibold text-olive mb-2 tracking-tight">
+        Day {activeDay} is empty
+      </p>
+      <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
+        Add your first place below, or pick a template further down to fill the day in one go.
+      </p>
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <button
+          type="button"
+          onClick={onBrowseAll}
+          className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 hover:border-terracotta/20`}
+          aria-label="Browse places to add to your day"
+        >
+          Browse places
+        </button>
+        <button
+          type="button"
+          onClick={onScrollToQuickStart}
+          className={`${CTA.secondaryCompact} hover:border-terracotta/20`}
+          aria-label="Scroll to templates section"
+        >
+          See templates
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function DayAddSection({
+  activeDay,
+  activeItems,
+  getPlace,
+  addToDay,
+  onBrowseAll,
+}: {
+  activeDay: number;
+  activeItems: string[];
+  getPlace: (id: string) => PlanItem | undefined;
+  addToDay: (id: string) => void;
+  onBrowseAll: () => void;
+}) {
+  return (
+    <div
+      id="plan-inline-add"
+      role="region"
+      aria-label={`Add a stop to Day ${activeDay}`}
+      className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
+    >
+      <p className="text-sm font-medium text-olive/80 mb-4">
+        {activeItems.length > 0 ? "Add another stop to Day " + activeDay : "Add a stop to Day " + activeDay}
+      </p>
+      <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
+        {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
+          const inDay = activeItems.includes(id);
+          const place = getPlace(id);
+          if (!place) return null;
+          return (
+            <button
+              key={id}
+              type="button"
+              onClick={() => addToDay(id)}
+              disabled={inDay}
+              className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+              aria-pressed={inDay}
+              aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
+            >
+              {inDay ? "Added " : ""}{label}
+            </button>
+          );
+        })}
+        <button
+          type="button"
+          onClick={onBrowseAll}
+          className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+          aria-label="Browse places to add to your day"
+        >
+          Browse places
+        </button>
+      </div>
+      {activeItems.length > 0 && (
+        <div className="mt-6 pt-6 border-t border-sand-200/80">
+          <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
+        </div>
+      )}
+    </div>
+  );
+}
+
 type DayContentPanelProps = {
   activeDay: number;
   activeItems: string[];
@@ -36,7 +135,6 @@ export default function DayContentPanel({
   const mid = Math.ceil(activeItems.length / 2);
   const morningIds = useBlocks ? activeItems.slice(0, mid) : activeItems;
   const afternoonIds = useBlocks ? activeItems.slice(mid) : [];
-  const activeDayItems = activeItems;
 
   return (
     <section aria-label="Your itinerary" className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
@@ -70,44 +168,23 @@ export default function DayContentPanel({
             </div>
             {activeItems.length >= 3 && (
               <p className="text-sm text-olive/60 mt-3 leading-relaxed" role="status">
-                Add another stop below or switch day above.
+                Add another stop, or switch day above.
               </p>
             )}
           </div>
 
           <div className={CARD.content}>
             {activeItems.length === 0 ? (
-              <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-5 sm:px-6 bg-sand-100/30`}>
-                <p className="font-display text-xl sm:text-2xl font-semibold text-olive mb-2 tracking-tight">
-                  Day {activeDay} is empty
-                </p>
-                <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
-                  Add your first place below, or pick a template further down to fill the day in one go.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                  <button
-                    type="button"
-                    onClick={onBrowseAll}
-                    className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
-                    aria-label="Browse places to add to your day"
-                  >
-                    Browse places
-                  </button>
-                  <button
-                    type="button"
-                    onClick={onScrollToQuickStart}
-                    className={CTA.secondaryCompact}
-                    aria-label="Scroll to templates section"
-                  >
-                    See templates
-                  </button>
-                </div>
-              </div>
+              <EmptyDayState
+                activeDay={activeDay}
+                onBrowseAll={onBrowseAll}
+                onScrollToQuickStart={onScrollToQuickStart}
+              />
             ) : (
               <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="pt-1 mb-4 pl-12 sm:pl-14">
+                    <div className="pt-1 mb-4 pl-12">
                       <span className={`${TYPE.kicker} text-olive/70`}>Morning</span>
                     </div>
                     <div className="space-y-0">
@@ -126,7 +203,7 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className="mt-8 mb-4 pl-12 sm:pl-14">
+                        <div className="mt-8 mb-4 pl-12">
                           <span className={`${TYPE.kicker} text-olive/60`}>Afternoon</span>
                         </div>
                         <div className="space-y-0">
@@ -168,49 +245,13 @@ export default function DayContentPanel({
         </div>
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
-        <div
-          id="plan-inline-add"
-          role="region"
-          aria-label={`Add a stop to Day ${activeDay}`}
-          className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
-        >
-          <p className="text-sm font-medium text-olive/80 mb-4">
-            {activeItems.length > 0 ? "Add another stop to Day " + activeDay : "Add a stop to Day " + activeDay}
-          </p>
-          <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
-            {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
-              const inDay = activeDayItems.includes(id);
-              const place = getPlace(id);
-              if (!place) return null;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => addToDay(id)}
-                  disabled={inDay}
-                  className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
-                  aria-pressed={inDay}
-                  aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
-                >
-                  {inDay ? "Added " : ""}{label}
-                </button>
-              );
-            })}
-            <button
-              type="button"
-              onClick={onBrowseAll}
-              className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
-              aria-label="Browse places to add to your day"
-            >
-              Browse places
-            </button>
-          </div>
-          {activeItems.length > 0 && (
-            <div className="mt-6 pt-6 border-t border-sand-200/80">
-              <SuggestedForDay activeDayItems={activeItems} onAdd={addToDay} embedded />
-            </div>
-          )}
-        </div>
+        <DayAddSection
+          activeDay={activeDay}
+          activeItems={activeItems}
+          getPlace={getPlace}
+          addToDay={addToDay}
+          onBrowseAll={onBrowseAll}
+        />
       </div>
     </section>
   );

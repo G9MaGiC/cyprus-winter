@@ -49,11 +49,11 @@ export default function HomeHero() {
             >
               Explore
             </AppLink>
-            <AppLink href="/plan" className={CTA.secondary} aria-label="Build a day or pick a template">
+            <AppLink href="/plan" className={`${CTA.secondary} sm:min-w-[140px] justify-center`} aria-label="Build a day or pick a template">
               Plan your trip
             </AppLink>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-4 pt-2 border-t border-white/15">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-5 pt-2 border-t border-white/15">
             <AppLink href="/airport" className={CTA.ghost} aria-label="Transport from airport, tips">
               Just arrived?
             </AppLink>

@@ -226,7 +226,7 @@ The app includes an AI-powered chat assistant with voice input/output. To enable
 2. Add **one** of:
    - `XAI_API_KEY=...` ([xAI Grok](https://console.x.ai), model: grok-3-mini)
    - `GROQ_API_KEY=...` ([Groq](https://console.groq.com) — free tier, Llama models)
-   - `OLLAMA_BASE_URL=http://localhost:11434/v1` (local [Ollama](https://ollama.com); optional `OLLAMA_MODEL=llama3.2`)
+   - `OLLAMA_BASE_URL=http://localhost:11434/v1` (local [Ollama](https://ollama.com); optional `OLLAMA_MODEL=llama3.2`, `OLLAMA_TIMEOUT_MS=60000`; recommended models: llama3.2, llama3.1, qwen2.5:7b, mistral — run `ollama pull <model>` before setting OLLAMA_MODEL; in development, Ollama is tried first when configured)
    - `MOONSHOT_API_KEY=sk-...` ([Moonshot](https://platform.moonshot.ai/console/api-keys))
    - `OPENAI_API_KEY=sk-...` ([OpenAI](https://platform.openai.com/api-keys), uses gpt-4o-mini)
 3. Restart the dev server
@@ -237,7 +237,7 @@ The app includes an AI-powered chat assistant with voice input/output. To enable
 
 **Admin stats** (`/admin/stats`): Set `ADMIN_SECRET` in your environment. The page prompts for it and sends it via `Authorization: Bearer`. Without it, the stats API returns 401.
 
-**Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
+**Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, `OLLAMA_TIMEOUT_MS`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
 
 **Redis (production rate limiting):** By default, rate limits use in-memory counters (per serverless instance). For Vercel or other multi-instance deploys, configure Upstash Redis so limits are shared:
 

@@ -93,3 +93,4 @@ export function getDiscoverPlaceById(id: string): Attraction | Restaurant | unde
 }
 
 export { guides, getGuideById };
+export { allDiscoverItems, allDiscoverIds } from "./discover";

@@ -69,7 +69,12 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
       return;
     }
     const target = document.getElementById(scrollTargetId);
-    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const behavior =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth";
+    target?.scrollIntoView({ behavior, block: "start" });
   };
 
   if (!show) return null;

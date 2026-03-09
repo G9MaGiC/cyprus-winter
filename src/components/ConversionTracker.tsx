@@ -24,19 +24,27 @@ export default function ConversionTracker() {
       track("discover_view");
     }
     if (isDiscoverDetail && pathname !== prevPath.current) {
-      const id = path.split("/").filter(Boolean).pop() ?? "";
-      const place = getPlaceById(id);
+      const segments = path.split("/").filter(Boolean);
+      const id = segments[segments.length - 1] ?? "";
+      const isValidId = /^[a-z0-9-]+$/i.test(id) && id.length <= 80;
+      const place = isValidId ? getPlaceById(id) : undefined;
       if (place?.type === "winery") {
         track("winery_detail_view", { placeId: id });
       }
     }
     if (isWineryBook && pathname !== prevPath.current) {
-      const id = path.split("/").filter(Boolean).pop() ?? "";
-      track("booking_start", { wineryId: id });
+      const segments = path.split("/").filter(Boolean);
+      const id = segments[segments.length - 1] ?? "";
+      if (/^[a-z0-9-]+$/i.test(id) && id.length <= 80) {
+        track("booking_start", { wineryId: id });
+      }
     }
     if (isGuideBook && pathname !== prevPath.current) {
-      const id = path.split("/").filter(Boolean).pop() ?? "";
-      if (id) track("booking_start", { guideId: id });
+      const segments = path.split("/").filter(Boolean);
+      const id = segments[segments.length - 1] ?? "";
+      if (id && /^[a-z0-9-]+$/i.test(id) && id.length <= 80) {
+        track("booking_start", { guideId: id });
+      }
     }
 
     prevPath.current = pathname;

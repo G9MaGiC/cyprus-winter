@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import type { LinkProps } from "@/app/_home/types";
 import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { allPlaces, getAttractionById, getPlaceById } from "@/data";
@@ -77,7 +78,12 @@ function getPlaceOfDayData() {
   };
 }
 
-export default function HomePlaceOfDay() {
+export default function HomePlaceOfDay({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   const place = getPlaceOfDayData();
   const planItem = place ? getPlaceById(place.id) : undefined;
   if (!place) return null;
@@ -86,11 +92,11 @@ export default function HomePlaceOfDay() {
     <section
       id="place-of-day"
       aria-labelledby="place-of-day-heading"
-      className={`${SECTION.pySub} ${LAYOUT.safeAreaX} scroll-mt-24`}
+      className={`${SECTION.pySub} bg-background ${LAYOUT.safeAreaX} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div
-          className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row border-2 border-aegean/15 shadow-[0_4px_20px_rgba(37,39,48,0.08)]`}
+          className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
         >
           <Link
             href={place.href}
@@ -105,17 +111,14 @@ export default function HomePlaceOfDay() {
               className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
               sizes="(max-width: 640px) 100vw, 40vw"
             />
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent"
-              aria-hidden
-            />
+            <div className={CARD.mediaOverlay} aria-hidden />
             <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
           </Link>
-          <div className={`flex-1 flex flex-col ${CARD.content} sm:p-6 lg:p-8`}>
+          <div className={`flex-1 flex flex-col ${CARD.contentLg}`}>
             <p id="place-of-day-heading" className={`text-sage prose-label mb-1`}>
-              Place of the day
+              Today&apos;s pick — one place worth the drive
             </p>
             <Link
               href={place.href}
@@ -133,7 +136,7 @@ export default function HomePlaceOfDay() {
               <Link
                 href={place.href}
                 prefetch="auto"
-                className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors"
+                className="text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline underline-offset-2 transition-colors"
               >
                 See details →
               </Link>

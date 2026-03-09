@@ -2,6 +2,7 @@
 
 import FilterChips from "@/components/FilterChips";
 import { TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
+import { buildTrailHref } from "@/lib/trail-url";
 import type { TrailStatus } from "@/data/trails";
 
 export type TrailFiltersProps = {
@@ -12,18 +13,6 @@ export type TrailFiltersProps = {
   cautionCount: number;
   closedCount: number;
 };
-
-function buildTrailHref(params: {
-  status?: TrailStatus;
-  difficulty?: string;
-  region?: string;
-}): string {
-  const q = new URLSearchParams();
-  if (params.status) q.set("status", params.status);
-  if (params.difficulty) q.set("difficulty", params.difficulty);
-  if (params.region) q.set("region", params.region);
-  return q.toString() ? `/trails?${q.toString()}` : "/trails";
-}
 
 export default function TrailFilters({
   statusFilter: safeStatus,

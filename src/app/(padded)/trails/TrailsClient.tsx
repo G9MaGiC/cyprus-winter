@@ -1,87 +1,87 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { trails, trailConditions, TRAIL_COUNT, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
-import { winterTipsHiking } from "@/data/winter-tips";
-import { LAYOUT, CTA, EMPTY_STATE_LARGE, SECTION, TYPE } from "@/lib/design-tokens";
+import Link from "next/link";
+import { useEffect } from "react";
+import { trailConditions } from "@/data/trails";
+import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import ListPageHero from "@/components/ListPageHero";
-import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
-import Disclosure from "@/components/Disclosure";
-import Link from "next/link";
-import type { TrailStatus } from "@/data/trails";
-
-const STATUS_OPTIONS: { id: TrailStatus | ""; label: string }[] = [
-  { id: "", label: "All status" },
-  { id: "open", label: "Open" },
-  { id: "caution", label: "Caution" },
-  { id: "closed", label: "Closed" },
-];
+import SearchBar from "@/components/SearchBar";
+import { useTrailsFilter } from "@/hooks/useTrailsFilter";
+import TrailsPlaceOfDay from "@/app/(padded)/trails/TrailsPlaceOfDay";
+import TrailsSectionList from "@/app/(padded)/trails/TrailsSectionList";
+import TrailsFooter from "@/app/(padded)/trails/TrailsFooter";
+import TrailsConditionsStrip from "@/app/(padded)/trails/TrailsConditionsStrip";
+import TrailsQuickFilters from "@/app/(padded)/trails/TrailsQuickFilters";
+import TrailsFilterBar from "@/app/(padded)/trails/TrailsFilterBar";
+import BestConditionsNow from "@/app/(padded)/trails/BestConditionsNow";
+import TrailsEmptyState from "@/app/(padded)/trails/TrailsEmptyState";
+import TrailStatusGroup from "@/app/(padded)/trails/TrailStatusGroup";
+import TrailsTipsSection from "@/app/(padded)/trails/TrailsTipsSection";
 
 export default function TrailsClient() {
-  const searchParams = useSearchParams();
-  const difficultyFilter = searchParams.get("difficulty") ?? undefined;
-  const regionFilter = searchParams.get("region") ?? undefined;
-  const statusFilter = (searchParams.get("status") ?? undefined) as TrailStatus | undefined;
+  const {
+    filtered,
+    openTrails,
+    cautionTrails,
+    closedTrails,
+    unknownTrails,
+    bestNow,
+    counts,
+    safeDifficulty,
+    safeRegion,
+    safeStatus,
+    hasFilters,
+    hasInvalidFilter,
+  } = useTrailsFilter();
 
-  const validDifficulty = !difficultyFilter || TRAIL_DIFFICULTIES.includes(difficultyFilter as (typeof TRAIL_DIFFICULTIES)[number]);
-  const validRegion = !regionFilter || TRAIL_REGIONS.includes(regionFilter as (typeof TRAIL_REGIONS)[number]);
-  const validStatus = !statusFilter || STATUS_OPTIONS.some((s) => s.id === statusFilter);
-  const safeDifficulty = validDifficulty ? difficultyFilter : undefined;
-  const safeRegion = validRegion ? regionFilter : undefined;
-  const safeStatus = validStatus ? statusFilter : undefined;
+  const reportTrail = unknownTrails[0] ?? filtered[0] ?? null;
 
-  const filtered = trails.filter((t) => {
-    if (safeDifficulty && t.difficulty !== safeDifficulty) return false;
-    if (safeRegion && t.region !== safeRegion) return false;
-    if (safeStatus) {
-      const s = trailConditions[t.id]?.status;
-      if (s !== safeStatus) return false;
+  const scrollBehavior = () =>
+    (typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      ? "auto"
+      : "smooth";
+
+  const scrollToMap = () => {
+    document
+      .getElementById("trails-map")
+      ?.scrollIntoView({ behavior: scrollBehavior() });
+  };
+
+  useEffect(() => {
+    if (!hasFilters) return;
+    const el = document.getElementById("trail-list");
+    const heading = document.getElementById("trail-list-heading");
+    if (el) el.scrollIntoView({ behavior: scrollBehavior() });
+    if (heading instanceof HTMLElement) {
+      heading.focus({ preventScroll: true });
     }
-    return true;
-  });
+  }, [hasFilters, safeStatus, safeDifficulty, safeRegion]);
 
-  const openTrails = filtered.filter((t) => trailConditions[t.id]?.status === "open");
-  const cautionTrails = filtered.filter((t) => trailConditions[t.id]?.status === "caution");
-  const closedTrails = filtered.filter((t) => trailConditions[t.id]?.status === "closed");
-  const unknownTrails = filtered.filter((t) => !trailConditions[t.id]?.status);
-
-  const openCount = trails.filter((t) => {
-    if (safeDifficulty && t.difficulty !== safeDifficulty) return false;
-    if (safeRegion && t.region !== safeRegion) return false;
-    return trailConditions[t.id]?.status === "open";
-  }).length;
-  const cautionCount = trails.filter((t) => {
-    if (safeDifficulty && t.difficulty !== safeDifficulty) return false;
-    if (safeRegion && t.region !== safeRegion) return false;
-    return trailConditions[t.id]?.status === "caution";
-  }).length;
-  const closedCount = trails.filter((t) => {
-    if (safeDifficulty && t.difficulty !== safeDifficulty) return false;
-    if (safeRegion && t.region !== safeRegion) return false;
-    return trailConditions[t.id]?.status === "closed";
-  }).length;
-
-  const bestNow = filtered
-    .filter((t) => {
-      const c = trailConditions[t.id];
-      return c?.status === "open" && (c.surface === "dry" || !c.surface) && (c.temperatureC == null || c.temperatureC >= 10);
-    })
-    .slice(0, 3);
-
-  const hasFilters = Boolean(safeDifficulty || safeRegion || safeStatus);
-  const hasInvalidFilter = (difficultyFilter && !validDifficulty) || (regionFilter && !validRegion) || (statusFilter && !validStatus);
+  const filterAnnouncement = hasFilters
+    ? `Showing ${filtered.length} trails`
+    : "Showing all trails by category";
 
   return (
     <div className="min-h-screen bg-sand">
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}>
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+        role="status"
+      >
+        {filterAnnouncement}
+      </div>
+      <div
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
+      >
         <ListPageHero
           title="Winter Trails"
           description="Pine forest, ridge views, empty paths. Sixteen degrees when home is six."
-          descriptionSecondary={`${TRAIL_COUNT} trails · 8 regions`}
+          descriptionSecondary={`${counts.open} open · ${counts.caution} caution · 8 regions`}
           backHref="/"
           backLabel="Home"
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
@@ -99,225 +99,149 @@ export default function TrailsClient() {
         </ListPageHero>
 
         <div id="trails-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
-
         <StickyPlanBar sentinelId="trails-plan-sentinel" />
 
-        {/* Sticky filter bar — Discover-style */}
-        <div
-          role="region"
-          aria-label="Trail filters"
-          className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
+        <section
+          aria-labelledby="trails-search-heading"
+          role="search"
+          className={`${LAYOUT.safeAreaX} -mt-4`}
         >
-          <div className={`${LAYOUT.list} mx-auto space-y-4`}>
-            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span className="prose-label text-olive/60 uppercase tracking-wider">
-                Filter trails
-              </span>
-              <span className="text-olive/60 text-sm">{filtered.length} trails</span>
-              {hasFilters && (
-                <Link href="/trails" className={`text-sm font-medium ${SECTION.aegeanLink} ml-auto sm:ml-2`}>
-                  Clear filters
-                </Link>
-              )}
-              {hasInvalidFilter && (
-                <span className="text-xs text-olive/60" role="status">— Showing all</span>
-              )}
-            </div>
-            <TrailFilters
-              statusFilter={safeStatus}
-              difficultyFilter={safeDifficulty}
-              regionFilter={safeRegion}
-              openCount={openCount}
-              cautionCount={cautionCount}
-              closedCount={closedCount}
+          <div className={`${LAYOUT.list} mx-auto`}>
+            <h2 id="trails-search-heading" className="sr-only">
+              Search trails
+            </h2>
+            <SearchBar
+              placeholder="Search trails by name, region, difficulty…"
+              className="max-w-2xl mx-auto"
             />
           </div>
-        </div>
+        </section>
 
-        {/* Best now — sage accent for trail/nature */}
-        {bestNow.length > 0 && !hasFilters && (
-          <section
-            aria-labelledby="best-now"
-            role="complementary"
-            className={`${SECTION.pySub} pl-6 sm:pl-8 border-l-4 border-sage/50`}
-          >
-            <h2 id="best-now" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.headingGap}`}>
-              Best conditions now
-            </h2>
-            <div className="flex gap-3 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none sm:gap-6">
-              {bestNow.map((trail) => (
-                <div key={trail.id} className="shrink-0 w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none snap-start">
-                  <TrailCard
-                    trail={trail}
-                    conditions={trailConditions[trail.id]}
-                    featured
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
+        <TrailsConditionsStrip
+          openCount={counts.open}
+          cautionCount={counts.caution}
+          closedCount={counts.closed}
+        />
+
+        <TrailsFilterBar
+          filteredCount={filtered.length}
+          hasFilters={hasFilters}
+          hasInvalidFilter={hasInvalidFilter}
+          statusFilter={safeStatus}
+          difficultyFilter={safeDifficulty}
+          regionFilter={safeRegion}
+          openCount={counts.open}
+          cautionCount={counts.caution}
+          closedCount={counts.closed}
+        />
+
+        {!hasFilters && (
+          <div className={`${LAYOUT.list} mx-auto ${SECTION.headingGap}`}>
+            <TrailsQuickFilters />
+          </div>
         )}
 
-        {/* Trail list */}
-        <section aria-labelledby="trail-list-heading" className={`${SECTION.pySub} pb-8 sm:pb-12`} id="trail-list">
-          <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
-            <h2 id="trail-list-heading" className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}>
-              {hasFilters ? `${filtered.length} trails` : "All trails"}
-            </h2>
-            {hasFilters && (
+        {!hasFilters && <TrailsPlaceOfDay />}
+
+        {bestNow.length > 0 && !hasFilters && <BestConditionsNow trails={bestNow} />}
+
+        {hasFilters ? (
+          <section
+            aria-labelledby="trail-list-heading"
+            className={`${SECTION.pySub} pb-8 sm:pb-12`}
+            id="trail-list"
+          >
+            <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
+              <h2
+                id="trail-list-heading"
+                tabIndex={-1}
+                className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}
+              >
+                {filtered.length} trails
+              </h2>
               <Link href="/trails" className={`text-sm font-medium shrink-0 ${SECTION.aegeanLink}`}>
                 Clear
               </Link>
-            )}
-          </div>
+            </div>
 
-          {filtered.length === 0 ? (
-            <div className={`${EMPTY_STATE_LARGE} max-w-md mx-auto`} role="status" aria-live="polite">
-              <p className="text-olive/80 leading-relaxed break-words mb-6">
-                No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
-                  All trails
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-                  className={CTA.secondaryCompact}
-                  aria-label="Ask AI for trail suggestions"
-                >
-                  Ask AI
-                </button>
-                <Link href="/discover" className={CTA.secondaryCompact}>
-                  Discover
-                </Link>
-              </div>
-            </div>
-          ) : safeStatus ? (
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              {filtered.map((trail) => (
-                <TrailCard key={trail.id} trail={trail} conditions={trailConditions[trail.id]} featured={false} />
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-6 sm:space-y-8">
-              {openTrails.length > 0 && (
-                <details className="group" open>
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
-                    <span className="w-2 h-2 rounded-full bg-aegean shrink-0" aria-hidden />
-                    Open ({openTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
-                  </summary>
-                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                    {openTrails.map((trail) => (
-                      <TrailCard key={trail.id} trail={trail} conditions={trailConditions[trail.id]} featured={false} />
-                    ))}
-                  </div>
-                </details>
-              )}
-              {cautionTrails.length > 0 && (
-                <details className="group" open={cautionTrails.length <= 4}>
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
-                    <span className="w-2 h-2 rounded-full bg-golden shrink-0" aria-hidden />
-                    Caution ({cautionTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
-                  </summary>
-                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                    {cautionTrails.map((trail) => (
-                      <TrailCard key={trail.id} trail={trail} conditions={trailConditions[trail.id]} featured={false} />
-                    ))}
-                  </div>
-                </details>
-              )}
-              {closedTrails.length > 0 && (
-                <details className="group">
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
-                    <span className="w-2 h-2 rounded-full bg-terracotta shrink-0" aria-hidden />
-                    Closed ({closedTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
-                  </summary>
-                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                    {closedTrails.map((trail) => (
-                      <TrailCard key={trail.id} trail={trail} conditions={trailConditions[trail.id]} featured={false} />
-                    ))}
-                  </div>
-                </details>
-              )}
-              {unknownTrails.length > 0 && (
-                <details className="group">
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
-                    <span className="w-2 h-2 rounded-full bg-sand-300 shrink-0" aria-hidden />
-                    No report ({unknownTrails.length})
-                    <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
-                  </summary>
-                  <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                    {unknownTrails.map((trail) => (
-                      <TrailCard key={trail.id} trail={trail} conditions={undefined} featured={false} />
-                    ))}
-                  </div>
-                  <p className="mt-4 text-sm text-olive/70">
-                    <Link
-                      href={`/trails/${unknownTrails[0].id}/report`}
-                      className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-                    >
-                      Report conditions
-                    </Link>
-                  </p>
-                </details>
-              )}
-            </div>
-          )}
-        </section>
-
-        {/* Map */}
-        <section aria-labelledby="trails-map-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
-          <Disclosure id="trails-map-heading" summary={`Map (${filtered.length})`} defaultOpen>
-            <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">
-              <AllTrailsMapClient trails={filtered} />
-            </div>
-          </Disclosure>
-        </section>
-
-        {/* Tips + Report CTA */}
-        <section aria-labelledby="tips-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
-          <Disclosure id="tips-heading" summary="Before you go" defaultOpen={false}>
-            <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6 border-l-4 border-l-sage/50">
-              <p className={`text-sm text-olive/80 ${SECTION.headingGap} break-words`}>Layers, conditions check, tell someone your route.</p>
-              <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80 gap-4">
-                {winterTipsHiking.slice(0, 4).map((tip) => (
-                  <div key={tip.id} className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0">
-                    <h3 className="prose-label text-olive">{tip.title}</h3>
-                    <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">{tip.body}</p>
-                  </div>
+            {filtered.length === 0 ? (
+              <TrailsEmptyState />
+            ) : safeStatus ? (
+              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                {filtered.map((trail) => (
+                  <TrailCard
+                    key={trail.id}
+                    trail={trail}
+                    conditions={trailConditions[trail.id]}
+                    featured={false}
+                  />
                 ))}
               </div>
-              <div className="mt-4 pt-4 border-t border-sand-200/80 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <Link href="/plan" className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded">
-                    Add to plan →
-                  </Link>
-                  {filtered.length > 0 && (unknownTrails[0] ?? filtered[0]) && (
-                    <Link
-                      href={`/trails/${(unknownTrails[0] ?? filtered[0])!.id}/report`}
-                      className={`text-sm font-medium ${SECTION.aegeanLink}`}
-                    >
-                      Report conditions
-                    </Link>
-                  )}
-                </div>
-                <p className="text-xs text-olive/60">Build a day — add trails to your plan</p>
-                <Link href="/guides/troodos-december" className={`text-sm ${SECTION.aegeanLink}`}>
-                  Troodos December guide →
-                </Link>
+            ) : (
+              <div className="space-y-6 sm:space-y-8">
+                <TrailStatusGroup
+                  label="Open"
+                  trails={openTrails}
+                  dotColor="bg-aegean"
+                  defaultOpen
+                />
+                <TrailStatusGroup
+                  label="Caution"
+                  trails={cautionTrails}
+                  dotColor="bg-golden"
+                  defaultOpen={cautionTrails.length <= 4}
+                />
+                <TrailStatusGroup
+                  label="Closed"
+                  trails={closedTrails}
+                  dotColor="bg-terracotta"
+                />
+                <TrailStatusGroup
+                  label="No report"
+                  trails={unknownTrails}
+                  dotColor="bg-sand-300"
+                  reportTrailId={unknownTrails[0]?.id}
+                  noConditions
+                />
               </div>
-            </div>
-          </Disclosure>
+            )}
+          </section>
+        ) : (
+          <section
+            aria-labelledby="trail-sections-heading"
+            className={`${SECTION.pySub} pb-8 sm:pb-12`}
+            id="trail-list"
+          >
+            <h2 id="trail-sections-heading" className="sr-only">
+              Browse trails by category
+            </h2>
+            <TrailsSectionList />
+          </section>
+        )}
+
+        <section
+          id="trails-map"
+          aria-labelledby="trails-map-heading"
+          className={`${SECTION.pySub} border-t border-sand-200/80`}
+        >
+          <h2 id="trails-map-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
+            Map ({filtered.length})
+          </h2>
+          <p className="text-xs text-olive/60 -mt-2 mb-3">
+            Updated from local reports.
+          </p>
+          <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">
+            <AllTrailsMapClient trails={filtered} />
+          </div>
         </section>
 
-        {/* Sticky bottom CTA — mobile only */}
+        <TrailsTipsSection reportTrail={reportTrail} />
+
+        <TrailsFooter reportTrailId={reportTrail?.id} onScrollToMap={scrollToMap} />
+
         {filtered.length > 0 && (
           <div
-            className={`fixed left-0 right-0 z-30 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden ${LAYOUT.fixedBottomClearance}`}
+            className={`fixed left-0 right-0 z-50 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden ${LAYOUT.fixedBottomClearance}`}
           >
             <Link
               href="/plan"

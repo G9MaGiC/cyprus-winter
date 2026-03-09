@@ -34,7 +34,10 @@ export const TOUCH_TARGET = "44px";
 export const MAP_ICON_SHADOW = "0 2px 6px rgba(37,39,48,0.2)";
 export const MAP_ICON_SHADOW_SM = "0 2px 4px rgba(37,39,48,0.2)";
 
-/** Micro-interaction timing — smooth, not rushed */
+/**
+ * Micro-interaction timing — smooth, not rushed.
+ * Tailwind mapping: duration-150 = fast, duration-200 = smooth, duration-300 = medium.
+ */
 export const TRANSITION = {
   fast: "150ms ease",
   smooth: "0.2s ease",
@@ -172,9 +175,9 @@ export const CARD = {
   media: "aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0",
   /** Card image gradient — warm Mediterranean feel */
   mediaOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
-  /** Info cards (ThisWeekGrid, StartHereStrip): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
+  /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
   info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
-  /** Action cards (Plan, Events, StartHereStrip primary): larger padding, strong CTA */
+  /** Action cards (Plan, Events, StartHereWithExplore primary): larger padding, strong CTA */
   action: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm hover:border-terracotta/30 hover:shadow-lg transition-all duration-200",
   /** Compact cards (RightNowCard, RecentlyViewedStrip): smaller, horizontal-friendly */
   compact: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",

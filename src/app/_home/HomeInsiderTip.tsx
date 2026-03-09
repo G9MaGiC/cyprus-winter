@@ -1,5 +1,6 @@
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import { winterTipsGeneral, winterTipsHiking, winterTipsPractical } from "@/data/winter-tips";
+import type { LinkProps } from "@/app/_home/types";
 import { CALLOUT, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 
@@ -11,7 +12,12 @@ function getCtaForCategory(category: string): { href: string; label: string } {
   return { href: "/discover", label: "Explore places" };
 }
 
-export default function HomeInsiderTip() {
+export default function HomeInsiderTip({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   const tip = pickDailyWithKey(allTips, "insider-tip");
   const cta = getCtaForCategory(tip.category);
 

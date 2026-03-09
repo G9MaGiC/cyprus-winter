@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { winterEvents } from "@/data/events";
 import { SITE_URL } from "@/lib/site-url";
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-monastery-kykkos.jpg`;
 
 export const metadata: Metadata = {
   title: "Cyprus Winter Events | Epiphany, Carnival, Markets",

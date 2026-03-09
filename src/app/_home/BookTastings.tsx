@@ -1,10 +1,17 @@
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import { CARD, CTA, TYPE } from "@/lib/design-tokens";
+import type { ComponentType } from "react";
+import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+
 import { homeFeaturedWineries } from "@/data/home";
 import { wineries } from "@/data/wineries";
+import type { LinkProps } from "@/app/_home/types";
 
-export default function BookTastings() {
+export default function BookTastings({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   const featured = homeFeaturedWineries.map((w) => {
     const full = wineries.find((x) => x.id === w.wineryId);
     return {
@@ -29,7 +36,7 @@ export default function BookTastings() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
             </div>
-            <div className={CARD.content}>
+            <div className={`${CARD.content} min-h-[120px]`}>
               <p className={`${TYPE.kicker} mb-2`}>Book tastings</p>
               <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={w.name}>
                 {w.name}
@@ -51,7 +58,7 @@ export default function BookTastings() {
               <Link
                 href="/wineries"
                 prefetch="auto"
-                className="text-sm text-sage hover:text-terracotta transition-colors"
+                className={`text-sm ${SECTION.aegeanLink}`}
                 aria-label="Explore all wineries"
               >
                 Explore wineries

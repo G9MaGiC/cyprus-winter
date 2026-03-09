@@ -1,5 +1,6 @@
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import type { LinkProps } from "@/app/_home/types";
 
 const TEMPLATE_LINKS = [
   { key: "short-stay", label: "48 hours", href: "/plan?template=short-stay", hint: "Trail, village, wine" },
@@ -8,7 +9,12 @@ const TEMPLATE_LINKS = [
   { key: "mountain-10", label: "10 days", href: "/plan?template=mountain-10", hint: "Hiker immersion" },
 ] as const;
 
-export default function HomeTemplateLinks() {
+export default function HomeTemplateLinks({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   return (
     <section
       aria-labelledby="templates-heading"

@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
-import { LAST_PLACE_KEY } from "@/lib/local-storage-keys";
+import { LAST_PLACE_KEY, CHAT_SESSION_KEY } from "@/lib/local-storage-keys";
+import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { getSupabaseBrowser } from "@/lib/supabase-browser";
 import ReactMarkdown from "react-markdown";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -61,6 +62,41 @@ const SUGGESTIONS_DETAIL = [
   "Add this to my plan",
 ];
 
+const INITIAL_MESSAGE: Message = {
+  role: "assistant",
+  content:
+    "Hi. I know the island—trails, wineries, villages. Ask anything. Tap a suggestion, type, or use the mic.",
+};
+
+const MAX_PERSISTED_MESSAGES = 20;
+
+function loadPersistedMessages(): Message[] | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = sessionStorage.getItem(CHAT_SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed) || parsed.length === 0) return null;
+    const valid = parsed.filter(
+      (m): m is Message =>
+        m && typeof m === "object" && (m.role === "user" || m.role === "assistant") && typeof m.content === "string"
+    );
+    return valid.length > 0 ? valid : null;
+  } catch {
+    return null;
+  }
+}
+
+function persistMessages(messages: Message[]) {
+  if (typeof window === "undefined") return;
+  try {
+    const toSave = messages.slice(-MAX_PERSISTED_MESSAGES);
+    sessionStorage.setItem(CHAT_SESSION_KEY, JSON.stringify(toSave));
+  } catch {
+    // ignore quota or parse errors
+  }
+}
+
 function getSuggestions(pathname: string | null): string[] {
   if (!pathname) return SUGGESTIONS_HOME;
   if (pathname.startsWith("/trails/") && pathname !== "/trails") return SUGGESTIONS_DETAIL;
@@ -74,13 +110,13 @@ function getSuggestions(pathname: string | null): string[] {
 export default function AIAssistant() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content:
-        "Hi. I know the island—trails, wineries, villages. Ask anything. Tap a suggestion, type, or use the mic.",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(() => {
+    if (typeof window !== "undefined") {
+      const persisted = loadPersistedMessages();
+      if (persisted) return persisted;
+    }
+    return [INITIAL_MESSAGE];
+  });
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [listening, setListening] = useState(false);
@@ -114,6 +150,12 @@ export default function AIAssistant() {
   useEffect(() => {
     scrollToBottom();
   }, [messages, scrollToBottom]);
+
+  useEffect(() => {
+    if (messages.length > 0 && (messages.length > 1 || messages[0]?.content !== INITIAL_MESSAGE.content)) {
+      persistMessages(messages);
+    }
+  }, [messages]);
 
   useEffect(() => {
     const handler = () => setOpen(true);
@@ -192,7 +234,10 @@ export default function AIAssistant() {
 
     setInput("");
     setInterimTranscript("");
-    setMessages((prev) => (isRetry ? prev.slice(0, -1) : [...prev, { role: "user" as const, content: trimmed }]));
+    setMessages((prev) => {
+      const withUser = isRetry ? prev.slice(0, -1) : [...prev, { role: "user" as const, content: trimmed }];
+      return [...withUser, { role: "assistant" as const, content: "" }];
+    });
     setLoading(true);
 
     try {
@@ -212,6 +257,7 @@ export default function AIAssistant() {
           context: {
             path: pathname ?? undefined,
             lastPlace: lastPlace ?? undefined,
+            itinerary: getItineraryForChat(),
           },
         }),
         signal: ac.signal,
@@ -219,20 +265,17 @@ export default function AIAssistant() {
 
       if (!isMountedRef.current) return;
 
-      let data: { reply?: string; message?: string; error?: string } = {};
-      try {
-        data = await res.json();
-      } catch {
-        if (res.status === 503) throw new Error("AI_503");
-        throw new Error(`Request failed (${res.status})`);
-      }
-
-      if (!isMountedRef.current) return;
-
       if (!res.ok) {
+        const errData: { reply?: string; message?: string; error?: unknown } = {};
+        try {
+          Object.assign(errData, await res.json());
+        } catch {
+          if (res.status === 503) throw new Error("AI_503");
+          throw new Error(`Request failed (${res.status})`);
+        }
         if (res.status === 503) throw new Error("AI_503");
         if (res.status === 429) throw new Error("RATE_LIMIT");
-        const d = data as { reply?: string; error?: unknown; message?: string };
+        const d = errData;
         const raw = d.reply ?? (typeof d.error === "object" ? (d.error as { message?: string })?.message : d.error) ?? d.message ?? `Request failed (${res.status})`;
         const msg: string = typeof raw === "string" ? raw : String(raw ?? "");
         if (/429|quota|usage limit/i.test(msg)) throw new Error("PROVIDER_LIMIT");
@@ -244,10 +287,99 @@ export default function AIAssistant() {
 
       if (!isMountedRef.current) return;
 
-      setMessages((m) => [
-        ...m,
-        { role: "assistant", content: data.reply ?? "Didn't get that one. Try again, or browse Discover and Trails for Troodos, Lefkara, Kourion." },
-      ]);
+      const contentType = res.headers.get("content-type") ?? "";
+      if (contentType.includes("text/event-stream") && res.body) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let accumulated = "";
+        let flushTimer: ReturnType<typeof setTimeout> | null = null;
+
+        const flush = () => {
+          flushTimer = null;
+          if (accumulated && isMountedRef.current) {
+            const toAdd = accumulated;
+            accumulated = "";
+            setMessages((prev) => {
+              const next = [...prev];
+              const last = next[next.length - 1];
+              if (last?.role === "assistant") {
+                next[next.length - 1] = { ...last, content: last.content + toAdd };
+              }
+              return next;
+            });
+          }
+        };
+
+        const scheduleFlush = () => {
+          if (!flushTimer) flushTimer = setTimeout(flush, 50);
+        };
+
+        let streamError: Error | null = null;
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split("\n");
+            buffer = lines.pop() ?? "";
+            for (const line of lines) {
+              if (!line.startsWith("data: ")) continue;
+              const raw = line.slice(6).trim();
+              if (!raw || raw === "[DONE]") continue;
+              try {
+                const obj = JSON.parse(raw) as { delta?: string; done?: boolean; error?: string };
+                if (obj.error) {
+                  streamError = new Error(obj.error);
+                  break;
+                }
+                if (obj.delta) {
+                  accumulated += obj.delta;
+                  scheduleFlush();
+                } else if (obj.done) {
+                  if (flushTimer) clearTimeout(flushTimer);
+                  flush();
+                  break;
+                }
+              } catch (parseErr) {
+                if (!(parseErr instanceof SyntaxError)) throw parseErr;
+              }
+            }
+          }
+          if (flushTimer) clearTimeout(flushTimer);
+          flush();
+          if (streamError) throw streamError;
+        } catch (innerErr) {
+          if (flushTimer) clearTimeout(flushTimer);
+          flush();
+          if (innerErr instanceof Error && innerErr.name === "AbortError") {
+            reader.releaseLock();
+            return;
+          }
+          throw innerErr;
+        } finally {
+          reader.releaseLock();
+        }
+
+        if (!isMountedRef.current) return;
+        setMessages((m) => {
+          const last = m[m.length - 1];
+          if (last?.role === "assistant" && !last.content.trim()) {
+            return [
+              ...m.slice(0, -1),
+              { ...last, content: "Didn't get that one. Try again, or browse Discover and Trails for Troodos, Lefkara, Kourion." },
+            ];
+          }
+          return m;
+        });
+      } else {
+        const data = (await res.json()) as { reply?: string };
+        if (!isMountedRef.current) return;
+        setMessages((m) => [
+          ...m.slice(0, -1),
+          { role: "assistant", content: data.reply ?? "Didn't get that one. Try again, or browse Discover and Trails for Troodos, Lefkara, Kourion." },
+        ]);
+      }
     } catch (err) {
       if (!isMountedRef.current) return;
       if (err instanceof Error && err.name === "AbortError") return;
@@ -260,21 +392,26 @@ export default function AIAssistant() {
       const content503 = "Can't reach the guide right now. Browse Discover or Trails for ideas.";
       const contentAuth = "Can't reach the guide right now. Try again later, or browse Discover and Trails for ideas.";
       const contentRateLimit = "Too many messages. Wait a moment, then try again.";
-      setMessages((m) => [
-        ...m,
-        {
-          role: "assistant",
-          content: is503
-            ? content503
-            : isAuth
-              ? contentAuth
-              : isRateLimit
-                ? contentRateLimit
-                : msg || fallback,
-          isRetryable: isRateLimit,
-          is503,
-        },
-      ]);
+      const errorContent =
+        is503 ? content503
+        : isAuth ? contentAuth
+        : isRateLimit ? contentRateLimit
+        : msg || fallback;
+
+      setMessages((m) => {
+        const last = m[m.length - 1];
+        const hasPartialStream = last?.role === "assistant" && last.content.trim();
+        if (hasPartialStream) {
+          return [
+            ...m.slice(0, -1),
+            { ...last, content: last.content + "\n\n" + errorContent, isRetryable: isRateLimit || !is503, is503 },
+          ];
+        }
+        return [
+          ...m,
+          { role: "assistant", content: errorContent, isRetryable: isRateLimit, is503 },
+        ];
+      });
     } finally {
       if (isMountedRef.current) setLoading(false);
     }
@@ -417,17 +554,16 @@ export default function AIAssistant() {
               </span>
               <div>
                 <h2 id="ai-dialog-title" className="font-display font-semibold text-base truncate">Cyprus Winter</h2>
-                <p className="text-xs text-white/80">Ask or speak</p>
+                <p className="text-xs text-white/80">Ask or speak. For guidance only—verify important info.</p>
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">
               <button
                 type="button"
-                onClick={() => setMessages([{
-                  role: "assistant",
-                  content:
-                    "Hi. I know the island—trails, wineries, villages. Ask anything. Tap a suggestion, type, or use the mic.",
-                }])}
+                onClick={() => {
+                  if (typeof window !== "undefined") sessionStorage.removeItem(CHAT_SESSION_KEY);
+                  setMessages([INITIAL_MESSAGE]);
+                }}
                 className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center px-3 py-2 rounded-xl text-xs font-medium text-white/90 hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation"
                 aria-label="New chat"
               >
@@ -495,7 +631,11 @@ export default function AIAssistant() {
                     <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:150ms]" />
                     <span className="w-2 h-2 rounded-full bg-terracotta/70 animate-bounce [animation-delay:300ms]" />
                   </span>
-                  <span className="text-sm text-olive/80">Thinking…</span>
+                  <span className="text-sm text-olive/80">
+                    {messages[messages.length - 1]?.role === "assistant" && messages[messages.length - 1]?.content
+                      ? "Writing…"
+                      : "Thinking…"}
+                  </span>
                 </div>
               </div>
             )}
@@ -588,7 +728,7 @@ export default function AIAssistant() {
                 placeholder="Ask about trails, wineries, villages…"
                 rows={1}
                 disabled={loading}
-                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base leading-relaxed text-olive placeholder:text-olive-muted focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:border-terracotta/50 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
+                className="w-full min-h-[44px] max-h-32 resize-none rounded-xl border border-sand-200/80 bg-sand-100/50 px-4 py-3 pr-14 text-base leading-relaxed text-olive placeholder:text-olive-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:border-terracotta/50 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation transition-colors"
               />
               <button
                 type="button"
@@ -616,6 +756,37 @@ export default function AIAssistant() {
         </>
       )}
     </>
+  );
+}
+
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard not available
+    }
+  }, [text]);
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="min-h-[44px] inline-flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-olive/80 hover:text-terracotta hover:bg-terracotta/5 active:scale-[0.98] transition-all touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1"
+      aria-label="Copy response"
+    >
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+        />
+      </svg>
+      {copied ? "Copied" : "Copy"}
+    </button>
   );
 }
 
@@ -717,6 +888,7 @@ function AssistantMessage({
             Retry
           </button>
         )}
+        <CopyButton text={plainText} />
         <button
           type="button"
           onClick={() => (speaking ? onStopSpeak() : onSpeak(plainText))}

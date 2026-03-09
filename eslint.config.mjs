@@ -20,6 +20,11 @@ const eslintConfig = defineConfig([
     "build/**",
     "dist/**",
     "next-env.d.ts",
+    // Capacitor-generated Android files
+    "android/**",
+    // Playwright output (generated artifacts)
+    "playwright-report/**",
+    "test-results/**",
   ]),
 ]);
 

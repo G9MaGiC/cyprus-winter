@@ -131,7 +131,7 @@ export default function PlacePicker({
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by name or region…"
           aria-label="Search places by name or region"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-3 py-2 text-sm text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-3 py-2 text-sm text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
       <div

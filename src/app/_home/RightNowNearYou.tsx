@@ -3,6 +3,7 @@
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import RightNowCard from "@/components/RightNowCard";
 import AppLink from "@/components/AppLink";
+import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import LocationActionButtons from "@/components/LocationActionButtons";
 import RegionPickerChips from "@/components/RegionPickerChips";
 import { getRegionShortLabel, type RegionSlug } from "@/data/regions";
@@ -24,7 +25,7 @@ function SectionShell({
     <section
       id="right-now"
       aria-labelledby="right-now-heading"
-      className={`${SECTION.pySub} ${LAYOUT.safeAreaX} bg-sand/50`}
+      className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="mb-4 sm:mb-5">
@@ -50,10 +51,11 @@ function DistanceToggle({
     <div
       role="group"
       aria-label="Distance"
-      className="inline-flex rounded-lg border border-sand-200/80 bg-sand-50/60 p-0.5 gap-px"
+      className="inline-flex rounded-lg border border-sand-200/80 bg-white/80 p-0.5 gap-px"
     >
       <button
         type="button"
+        aria-pressed={value === "less"}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -69,6 +71,7 @@ function DistanceToggle({
       </button>
       <button
         type="button"
+        aria-pressed={value === "more"}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -108,7 +111,7 @@ export default function RightNowNearYou({
 
   if (state === "consent") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={title} subtitle="What makes sense where you are">
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             Suggestions based on where you are, the time, and the weather.
@@ -197,7 +200,7 @@ export default function RightNowNearYou({
             No suggestions for {sourceMode === "region" ? "this region" : "now"}{" "}
             right now.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {sourceMode === "region" && (
               <button
                 type="button"
@@ -211,12 +214,10 @@ export default function RightNowNearYou({
                 Change region
               </button>
             )}
-            <AppLink
-              href="/discover"
-              className="inline-flex items-center min-h-[44px] text-sm text-olive/70 hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-            >
+            <AppLink href="/discover" className={SECTION.aegeanLink}>
               See more in Discover →
             </AppLink>
+            <AIAssistantTrigger label="Or ask the AI for suggestions" />
           </div>
         </div>
       </SectionShell>
@@ -225,17 +226,14 @@ export default function RightNowNearYou({
 
   const loadedSubtitle =
     sourceMode === "region" && selectedRegion
-      ? `Suggestions in ${getRegionShortLabel(selectedRegion)}`
-      : "Suggestions near you";
+      ? `What makes sense in ${getRegionShortLabel(selectedRegion)}`
+      : "What makes sense where you are";
 
   return (
     <SectionShell title={title} subtitle={loadedSubtitle}>
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
-        <AppLink
-          href="/discover"
-          className="inline-flex items-center min-h-[44px] text-xs text-olive/70 hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-        >
+        <AppLink href="/discover" className={SECTION.aegeanLink}>
           See more →
         </AppLink>
       </div>

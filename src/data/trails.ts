@@ -40,6 +40,10 @@ export type Trail = {
   winterSafety?: string;
   /** Max elevation in metres */
   elevationMaxM?: number;
+  /** Location for display/SEO (e.g. "Platres, Limassol") */
+  locationText?: string;
+  /** 1–3 main attractions (e.g. "Caledonia Falls") */
+  topSights?: string[];
 };
 
 export type TrailConditions = {
@@ -63,7 +67,7 @@ export const trails: Trail[] = [
     elevationGainM: 350,
     durationMin: 240,
     description:
-      "Seven-kilometre loop through Troodos National Forest Park. Black pine, golden oak, ridge views. In winter the air is crisp, the crowds thin. Eastern section: best vistas before lunch. Well-marked; weather changes fast—pack layers.",
+      "Winter Troodos favorite. Seven-kilometre loop through Troodos National Forest Park. Black pine, golden oak, ridge views. In winter the air is crisp, the crowds thin. Eastern section: best vistas before lunch. Well-marked; weather changes fast—pack layers.",
     highlights: ["Circular route", "Panoramic views", "Black pine forest"],
     winterNotes:
       "Best conditions Dec to Mar. Can be icy at higher elevation after cold snaps; check conditions before starting.",
@@ -75,6 +79,8 @@ export const trails: Trail[] = [
     combineWith: ["omodos", "tsiakkas", "platres", "atalante"],
     nameEl: "Μονοπάτι Αρτέμιδος",
     trailheadCoords: { lat: 34.9346, lng: 32.8711 },
+    locationText: "Troodos, Nicosia",
+    topSights: ["Eastern ridge views", "Black pine forest"],
     waypoints: [
       { name: "Trailhead (Troodos Square)", km: 0, note: "Start here, go anti-clockwise", lat: 34.9346, lng: 32.8711 },
       { name: "Eastern ridge", km: 1.5, note: "First panoramic views", lat: 34.939, lng: 32.878 },
@@ -94,7 +100,7 @@ export const trails: Trail[] = [
     elevationGainM: 180,
     durationMin: 90,
     description:
-      "Short trail to Cyprus's highest falls. Follow the Cold River up through mossy banks. Flow peaks in late winter; forest green, air cool. Fifteen metres into a pool. Wear waterproof boots. Ask in Platres about rainfall.",
+      "Best winter waterfall hike. Short trail to Cyprus's highest falls. Follow the Cold River up through mossy banks. Flow peaks in late winter; forest green, air cool. Fifteen metres into a pool. Wear waterproof boots. Ask in Platres about rainfall.",
     highlights: ["Waterfall", "Stream hike", "Forest path"],
     winterNotes:
       "Muddy sections possible after rain. Wear waterproof boots. Waterfall flow peaks in late winter/spring.",
@@ -106,6 +112,8 @@ export const trails: Trail[] = [
     combineWith: ["kakopetria", "platres", "persephone"],
     nameEl: "Καταρράκτες Καληδονίας",
     trailheadCoords: { lat: 34.8772, lng: 32.8694 },
+    locationText: "Platres, Limassol",
+    topSights: ["Caledonia Falls"],
     waypoints: [
       { name: "Psilo Dendro trailhead", km: 0, note: "Park at Psilo Dendro; follow Kryos Potamos", lat: 34.8772, lng: 32.8694 },
       { name: "Stream crossing", km: 0.8, note: "Rocks may be slippery after rain", lat: 34.881, lng: 32.873 },
@@ -124,7 +132,7 @@ export const trails: Trail[] = [
     elevationGainM: 120,
     durationMin: 120,
     description:
-      "The Atalante Trail is the gentle one. Four kilometres, easy grade, well-marked. It loops through ancient black pines and opens onto views of Mount Olympus. Ideal for families, or for anyone who wants a taste of Troodos without a full mountain workout. In winter it often stays clear when higher trails have snow. Fit hikers sometimes combine it with Artemis in one day; the junction is signed. Start from Troodos Square. Bring layers. The mountain weather can shift, but this trail forgives. You'll be back at the car in a couple of hours, ready for a village lunch.",
+      "Gentle winter hike. The Atalante Trail—four kilometres, easy grade, well-marked. Loops through ancient black pines and opens onto views of Mount Olympus. Ideal for families, or for anyone who wants a taste of Troodos without a full mountain workout. In winter it often stays clear when higher trails have snow. Fit hikers sometimes combine it with Artemis in one day; the junction is signed. Start from Troodos Square. Bring layers. The mountain weather can shift, but this trail forgives. You'll be back at the car in a couple of hours, ready for a village lunch.",
     highlights: ["Family-friendly", "Easy grade", "Mountain views"],
     winterNotes: "Often clear even when higher trails have snow. Great first winter hike.",
     bestSeason: ["winter", "spring", "autumn"],
@@ -209,7 +217,7 @@ export const trails: Trail[] = [
     elevationGainM: 320,
     durationMin: 210,
     description:
-      "Starts at Baths of Aphrodite; winds through the peninsula. Kefalovrysia spring, Queen's Tower ruins. Mediterranean scrub, wild herbs. December and January: ideal temps. Well-marked. Allow three to four hours. Combine with Vasilikon winery (Akamas loop) or Chrysorrogiatissa and Kolios (Paphos hills).",
+      "Winter Akamas favorite. Starts at Baths of Aphrodite; winds through the peninsula. Kefalovrysia spring, Queen's Tower ruins. Mediterranean scrub, wild herbs. December and January: ideal temps. Well-marked. Allow three to four hours. Combine with Vasilikon winery (Akamas loop) or Chrysorrogiatissa and Kolios (Paphos hills).",
     highlights: ["Baths of Aphrodite", "Queen's Tower", "Coastal views"],
     winterNotes: "Best season for this trail. Cool temps, fewer crowds. Some muddy patches after rain.",
     bestSeason: ["winter", "spring", "autumn"],

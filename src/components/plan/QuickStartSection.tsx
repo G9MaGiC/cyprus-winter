@@ -52,6 +52,7 @@ export default function QuickStartSection({
         )
       : ITINERARY_TEMPLATES.filter((t) => !forYouKeys.has(t.key));
 
+  const templateCardClass = "shrink-0 snap-center w-[85vw] max-w-[280px] sm:w-full sm:max-w-none";
   const renderTemplateCard = (
     template: (typeof ITINERARY_TEMPLATES)[number],
     isRecommended: boolean,
@@ -116,7 +117,7 @@ export default function QuickStartSection({
         </p>
         {!hasContent && tripLength == null && (
           <p className="text-sm text-olive/60 max-w-xl mt-2">
-            Set your travel dates above to see templates that match your trip length.
+            Set your dates above to see templates that fit your trip.
           </p>
         )}
       </header>
@@ -163,9 +164,9 @@ export default function QuickStartSection({
         {forYou.length > 0 && (
           <div className="space-y-4">
             <h3 className="text-xs font-semibold text-terracotta uppercase tracking-wider">For you</h3>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6">
+            <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
               {forYou.map((template) => (
-                <div key={template.key}>
+                <div key={template.key} className={templateCardClass}>
                   {renderTemplateCard(template, false, true)}
                 </div>
               ))}
@@ -175,9 +176,9 @@ export default function QuickStartSection({
         {recommended.length > 0 && (
           <div className="space-y-4">
             <h3 className="text-xs font-semibold text-aegean uppercase tracking-wider">For your {tripLength}-day trip</h3>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6">
+            <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
               {recommended.map((template) => (
-                <div key={template.key}>
+                <div key={template.key} className={templateCardClass}>
                   {renderTemplateCard(template, true, false)}
                 </div>
               ))}
@@ -188,9 +189,9 @@ export default function QuickStartSection({
           <h3 className="text-xs font-semibold text-olive/70 uppercase tracking-wider">
             {recommended.length > 0 || forYou.length > 0 ? "More templates" : "Templates"}
           </h3>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6">
+          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
             {others.map((template) => (
-              <div key={template.key}>
+              <div key={template.key} className={templateCardClass}>
                 {renderTemplateCard(template, false, false)}
               </div>
             ))}

@@ -9,9 +9,9 @@ export default function WhyCyprusDetails() {
           className={`${TYPE.sectionTitle} inline-flex items-center justify-center gap-2`}
         >
           Why Cyprus in winter
-          <span className="text-sage text-lg transition-transform duration-200 group-open:rotate-180" aria-hidden>
-            ▾
-          </span>
+          <svg className="w-5 h-5 text-sage transition-transform duration-200 group-open:rotate-180 shrink-0" aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </h2>
       </summary>
 
@@ -38,6 +38,9 @@ export default function WhyCyprusDetails() {
           </blockquote>
           <p className="mt-6 text-center text-sm text-sage">
             A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.
+          </p>
+          <p className="mt-4 text-center text-sm font-medium text-olive/90">
+            You came for the warmth. Stay for the pace.
           </p>
         </div>
       </div>

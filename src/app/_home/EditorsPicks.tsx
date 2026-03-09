@@ -1,10 +1,16 @@
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import type { LinkProps } from "@/app/_home/types";
 import { CARD, TYPE } from "@/lib/design-tokens";
 import { homeEditorsPicks } from "@/data/home";
 
-export default function EditorsPicks() {
+export default function EditorsPicks({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
       {homeEditorsPicks.map((item) => (

@@ -1,7 +1,8 @@
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import { weatherByMonth } from "@/data/weather";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
 import { getLiveWeather } from "@/lib/weather-live";
+import type { LinkProps } from "@/app/_home/types";
 
 const MONTH_TO_WEATHER: Record<number, number> = {
   0: 2,  // Jan -> January
@@ -30,7 +31,12 @@ function getWeatherPrompt(w: (typeof weatherByMonth)[number]): string {
   return "Pack layers for the mountain.";
 }
 
-export default async function HomeWeatherStrip() {
+export default async function HomeWeatherStrip({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   let live: Awaited<ReturnType<typeof getLiveWeather>> = null;
   try {
     live = await getLiveWeather();

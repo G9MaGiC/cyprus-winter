@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
-import { addBookingToLocal } from "@/lib/bookings-storage";
+import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
+import { addMutation } from "@/lib/offline-queue";
 import { trails } from "@/data/trails";
 import type { Guide } from "@/data/guides";
 
@@ -49,20 +50,22 @@ export default function GuideBookingForm({
     const notes = formData.get("notes") as string;
     const trailId = (formData.get("trailId") as string) || undefined;
 
+    const body = JSON.stringify({
+      type: "guide_tour",
+      providerId: guide.id,
+      date,
+      partySize: Number(partySize),
+      guestName,
+      guestEmail,
+      notes: notes || undefined,
+      trailId: trailId || undefined,
+    });
+
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "guide_tour",
-          providerId: guide.id,
-          date,
-          partySize: Number(partySize),
-          guestName,
-          guestEmail,
-          notes: notes || undefined,
-          trailId: trailId || undefined,
-        }),
+        body,
       });
 
       const data = await res.json();
@@ -84,14 +87,26 @@ export default function GuideBookingForm({
         trailId: trailId || undefined,
         partySize: Number(partySize),
       });
+      if (loadLocalBookings().length === 0) {
+        track("first_booking", { guideId: guide.id });
+      }
 
       addBookingToLocal(data.booking);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
+      const isNetworkError = /failed to fetch|network error/i.test(msg);
+      if (isNetworkError && typeof navigator !== "undefined") {
+        addMutation({ type: "guide_booking", url: "/api/bookings", method: "POST", body });
+      }
       const fallback = "Something went wrong — check your connection and try again.";
-      setError(msg && !/failed to fetch|network error/i.test(msg) ? msg : fallback);
+      setError(msg && !isNetworkError ? msg : fallback);
       setTimeout(() => {
-        errorRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const behavior =
+          typeof window !== "undefined" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth";
+        errorRef.current?.scrollIntoView({ behavior, block: "nearest" });
       }, 0);
     } finally {
       setLoading(false);
@@ -103,7 +118,7 @@ export default function GuideBookingForm({
       <div
         ref={successRef}
         tabIndex={-1}
-        className="mt-8 p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-aegean/40 focus:outline-none focus:ring-2 focus:ring-aegean/50 focus:ring-offset-2"
+        className="mt-8 p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-aegean/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
         role="status"
         aria-live="polite"
       >
@@ -162,7 +177,7 @@ export default function GuideBookingForm({
           type="date"
           required
           min={new Date().toISOString().split("T")[0]}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
@@ -181,7 +196,7 @@ export default function GuideBookingForm({
                 return match ? match.id : "";
               })()
             }
-            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
           >
             <option value="">Select a trail (optional)</option>
             {trailOptions.map((t) =>
@@ -203,7 +218,7 @@ export default function GuideBookingForm({
           id="partySize"
           name="partySize"
           required
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         >
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
             <option key={n} value={n}>
@@ -226,7 +241,7 @@ export default function GuideBookingForm({
           required
           maxLength={200}
           placeholder="John Smith"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
@@ -241,7 +256,7 @@ export default function GuideBookingForm({
           autoComplete="email"
           required
           placeholder="john@example.com"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
@@ -258,7 +273,7 @@ export default function GuideBookingForm({
           rows={3}
           maxLength={500}
           placeholder="First winter hike, want to see waterfalls, need an early start — whatever helps"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0 resize-none"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
       </div>
 
@@ -274,7 +289,12 @@ export default function GuideBookingForm({
         )}
         {loading ? "Sending…" : "Request guided hike"}
       </button>
-      <p className="text-xs text-olive/50 mt-3 text-center break-words">They&apos;ll confirm by email.</p>
+      <p className="text-xs text-olive/50 mt-3 text-center break-words">
+        This is a request, not a confirmed reservation. They&apos;ll confirm by email. By submitting, you agree to our{" "}
+        <Link href="/terms" className="text-olive/70 hover:underline">Terms</Link>
+        {" "}and{" "}
+        <Link href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</Link>.
+      </p>
     </form>
   );
 }

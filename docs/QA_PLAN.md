@@ -23,7 +23,8 @@
 | Check | Command | Coverage | Notes |
 |-------|---------|----------|-------|
 | **Lint** | `npm run lint` | Style, unused vars, imports | Fix all before manual QA |
-| **Tests** | `npm run test` | 148 tests: format, booking-schema, related-places, data, search, API routes (bookings, chat, trail-reports, health), sanitize, rate-limit | Expand coverage for hooks, E2E |
+| **Tests** | `npm run test` | 175+ unit tests: format, booking-schema, related-places, data, search, API routes, sanitize, rate-limit | |
+| **E2E** | `npm run test:e2e` (dev) or `npm run test:e2e:ci` | Discover→Detail flow | Playwright; add Plan, Bookings flows |
 | **Build** | `npm run build` | Compile, SSG/SSR, routing | Must pass; prebuild catches `.next` ownership |
 | **Typecheck** | `npx tsc --noEmit` | Type errors | Add to CI if not already |
 | **API stress** | `npm run stress:api` | Rate limits, error handling | Verify chat + bookings under load |
@@ -137,6 +138,7 @@
 - [ ] `npm run lint` — zero errors  
 - [ ] `npm run test` — all pass  
 - [ ] `npm run build` — success  
+- [ ] `npm run test:e2e:ci` — E2E pass (optional, ~35s)  
 - [ ] `npx tsc --noEmit` — no type errors  
 - [ ] `npm run stress:api` — rate limits behave as expected  
 - [ ] Lighthouse (mobile + desktop) — record baseline scores  

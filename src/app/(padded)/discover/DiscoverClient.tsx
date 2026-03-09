@@ -2,45 +2,30 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef } from "react";
-import Link from "next/link";
-import AttractionCard from "@/components/AttractionCard";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
-import FilterChips from "@/components/FilterChips";
 import StickyPlanBar from "@/components/StickyPlanBar";
+import { useTranslations } from "next-intl";
+import { useOnboardingContext } from "@/contexts/OnboardingContext";
+import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
-import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
+import { LAYOUT } from "@/lib/design-tokens";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { sortDiscoverItemsByInterests } from "@/lib/personalization";
-import type { Attraction } from "@/data/attractions";
-import type { Winery } from "@/data/wineries";
-import type { Restaurant } from "@/data/restaurants";
+import { filterToSectionId } from "@/lib/discover-sections";
+import type { DiscoverSection } from "@/lib/discover-sections";
+import DiscoverFilterBar from "./DiscoverFilterBar";
+import DiscoverSectionList from "./DiscoverSectionList";
+import DiscoverFooter from "./DiscoverFooter";
 
-const filterToSectionId: Record<string, string> = {
-  beach: "coasts",
-  nature: "coasts",
-  coasts: "coasts",
-  ancient: "ancient",
-  village: "village",
-  winery: "wine",
-  wine: "wine",
-  eat: "wine",
-  restaurant: "wine",
-  monastery: "monastery",
-  family: "hidden",
-  quiet: "hidden",
-  hidden: "hidden",
-  "off-beaten-path": "hidden",
+type DiscoverClientProps = {
+  sections: DiscoverSection[];
+  children?: React.ReactNode;
 };
 
-type Section = { id: string; title: string; items: (Attraction | Winery | Restaurant)[] };
-
-export default function DiscoverClient({
-  sections,
-}: {
-  sections: Section[];
-}) {
+export default function DiscoverClient({ sections, children }: DiscoverClientProps) {
   const searchParams = useSearchParams();
   const { prefs, hydrated } = useUserPreferences();
+  const { showTipDiscoverFilter, dismissTipDiscoverFilter } = useOnboardingContext();
+  const t = useTranslations("onboarding");
   const filterParam = searchParams?.get("filter") ?? "";
   const filter = filterToSectionId[filterParam];
   const sectionExists = filter && sections.some((s) => s.id === filter);
@@ -56,189 +41,93 @@ export default function DiscoverClient({
     }));
   }, [sections, filter, sectionExists, hydrated, prefs.interests]);
 
-  const firstSectionRef = useRef<HTMLElement>(null);
+  const firstSectionRef = useRef<HTMLElement | null>(null);
   const hasWineriesInView = sectionsToShow.some((s) =>
     s.items.some((i) => "type" in i && i.type === "winery")
   );
 
-  const chips = [
-    { id: "", label: "All" },
-    { id: "nature", label: "Nature & coasts" },
-    ...sections.filter((s) => s.id !== "coasts").map((s) => ({ id: s.id, label: s.title })),
-  ];
+  const totalCount = sectionsToShow.reduce(
+    (sum, s) => sum + s.items.length,
+    0
+  );
+  const activeSection = sections.find((s) => s.id === filter);
+  const activeSectionTitle =
+    filterParam === "nature"
+      ? "Nature & coasts"
+      : activeSection?.title ?? "Places";
+
+  const scrollBehavior = () =>
+    (typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      ? "auto"
+      : "smooth";
+
+  const scrollToMap = () => {
+    document
+      .getElementById("discover-map")
+      ?.scrollIntoView({ behavior: scrollBehavior() });
+  };
 
   useEffect(() => {
     if (filter && firstSectionRef.current) {
-      firstSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      firstSectionRef.current.scrollIntoView({ behavior: scrollBehavior() });
+      const heading = firstSectionRef.current.querySelector("h2");
+      if (heading instanceof HTMLElement) {
+        heading.focus({ preventScroll: true });
+      }
     }
   }, [filter]);
 
-  const totalCount = sectionsToShow.reduce((sum, s) => sum + s.items.length, 0);
-  const activeSection = sections.find((s) => s.id === filter);
-
-  const scrollToMap = () => {
-    document.getElementById("discover-map")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const filterAnnouncement =
+    filter && sectionExists
+      ? `Showing ${activeSectionTitle}, ${totalCount} places`
+      : "Showing all places";
 
   return (
-    <div id="discover-content" aria-label="Discover places in Cyprus" className="-mt-4 sm:-mt-6">
+    <div
+      id="discover-content"
+      aria-label="Discover places in Cyprus"
+      className="-mt-4 sm:-mt-6"
+    >
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+        role="status"
+      >
+        {filterAnnouncement}
+      </div>
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
 
-      <div
-        className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
-      >
-        <div className={`${LAYOUT.list} mx-auto space-y-3`}>
-          <div role="group" aria-labelledby="discover-filter-label" className="space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-2 gap-y-1">
-              <span className="prose-label text-olive/60 uppercase tracking-wider" id="discover-filter-label">
-                {filter && sectionExists
-                  ? `${filterParam === "nature" ? "Nature & coasts" : activeSection?.title ?? "Places"} · ${totalCount} places`
-                  : "Filter by category"}
-              </span>
-              {filter && sectionExists && (
-                <Link
-                  href="/discover"
-                  className={`text-sm font-medium ${SECTION.aegeanLink}`}
-                >
-                  Clear filter
-                </Link>
-              )}
-            </div>
+      <DiscoverFilterBar
+        sections={sections}
+        filterParam={filterParam}
+        filter={filter}
+        sectionExists={!!sectionExists}
+        totalCount={totalCount}
+        activeSectionTitle={activeSectionTitle}
+        hasWineriesInView={hasWineriesInView}
+        onScrollToMap={scrollToMap}
+      />
 
-            <FilterChips
-              chips={chips}
-              isActive={(chip) => {
-                if (chip.id === "") return !filter;
-                if (chip.id === "nature") return filter === "coasts" || filterParam === "nature";
-                return filter === chip.id;
-              }}
-              getHref={(chip) =>
-                chip.id === "" || filter === chip.id
-                  ? "/discover"
-                  : `/discover?filter=${chip.id}`
-              }
-              ariaLabel="Filter by category"
-            />
-
-            {filterParam && !sectionExists && (
-              <p className="text-sm text-olive/70 break-words" role="alert">
-                That filter doesn&apos;t exist—showing all places.{" "}
-                <Link href="/discover" className={SECTION.aegeanLink}>
-                  All categories
-                </Link>
-              </p>
-            )}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <Link href="/plan" className={CTA.primaryCompact}>
-              Plan your trip
-            </Link>
-            {hasWineriesInView && (
-              <Link href="/bookings" className={CTA.secondaryCompact}>
-                Book tastings
-              </Link>
-            )}
-            <button
-              type="button"
-              onClick={scrollToMap}
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              aria-label="Scroll to map of places"
-            >
-              View on map
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX}`}>
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} flex flex-col gap-4`}>
+        {filter && sectionExists && showTipDiscoverFilter && (
+          <OnboardingContextualTip
+            message={t("tipDiscoverFilter")}
+            onDismiss={dismissTipDiscoverFilter}
+          />
+        )}
         <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
-          Beaches, villages, wineries—curated for winter.
+          Curated for winter. Add to your plan as you browse.
         </p>
 
-        <div className={`pt-2 ${SECTION.blockGap}`}>
-          {sectionsToShow.map((section, idx) => (
-            <section
-              key={section.id}
-              id={section.id}
-              ref={idx === 0 ? firstSectionRef : undefined}
-              aria-labelledby={`section-${section.id}`}
-              className={`py-10 sm:py-14 ${idx % 2 === 1 ? `${SECTION.alt} ${LAYOUT.stickyBarX}` : ""}`}
-            >
-              <h2
-                id={`section-${section.id}`}
-                className={`${TYPE.sectionTitle} break-words ${SECTION.headingGap}`}
-              >
-                {section.title}
-              </h2>
+        <DiscoverSectionList ref={firstSectionRef} sections={sectionsToShow} />
 
-              {section.items.length === 0 ? (
-                <div
-                  className={`${EMPTY_STATE} ${SECTION.headingGap}`}
-                  role="status"
-                  aria-live="polite"
-                >
-                  <p className="text-olive/80 mb-4">
-                    No places in this category. Try another filter or ask the AI—it
-                    knows the island.
-                  </p>
-                  <div className="flex flex-wrap items-center justify-center gap-3">
-                    <Link
-                      href="/discover"
-                      className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}
-                    >
-                      All categories
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
-                      }
-                      className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
-                      aria-label="Ask AI for recommendations"
-                    >
-                      Ask AI
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-                  {section.items.map((item) => (
-                    <AttractionCard key={item.id} a={item} />
-                  ))}
-                </div>
-              )}
-            </section>
-          ))}
-        </div>
+        {children}
 
-        <RightNowNearYou
-          title="Right now near you"
-        />
+        <RightNowNearYou title="Right now near you" />
 
-        <footer
-          className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 ${LAYOUT.footerBottomClearance} text-center`}
-          aria-label="Discover actions"
-        >
-          <p className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}>
-            Add to your plan—or ask the AI. It knows the island in winter.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/plan" className={CTA.primaryCompact}>
-              Add to your plan
-            </Link>
-            <button
-              type="button"
-              onClick={() =>
-                window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
-              }
-              className={CTA.secondaryCompact}
-              aria-label="Ask AI for trip suggestions"
-            >
-              Ask AI
-            </button>
-          </div>
-        </footer>
+        <DiscoverFooter onScrollToMap={scrollToMap} />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { jsonError } from "@/lib/api-response";
 import { getLiveWeather } from "@/lib/weather-live";
 import {
   getSubscribersForWeatherDigest,
@@ -75,6 +76,6 @@ export async function GET(req: NextRequest) {
     console.error("Weather digest cron error:", err);
     const errorMsg =
       process.env.NODE_ENV === "production" ? "Internal error" : err instanceof Error ? err.message : "Unknown error";
-    return Response.json({ ok: false, error: errorMsg }, { status: 500 });
+    return jsonError("SERVER_ERROR", errorMsg, 500);
   }
 }

@@ -5,6 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
 import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import AddToItineraryButton from "@/components/AddToItineraryButton";
 
 export type DiscoverMapPlace = {
   id: string;
@@ -61,20 +62,23 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
         {places.map((p) => (
           <Marker key={p.id} position={[p.lat, p.lng]} icon={placeIcon}>
             <Popup>
-              <div className="min-w-[180px]">
+              <div className="min-w-[200px]">
                 <Link
                   href={p.href}
                   className="font-semibold text-charcoal hover:text-terracotta block mb-1"
                 >
                   {p.name}
                 </Link>
-                <p className="text-xs text-olive/70 mb-2">{p.region}</p>
-                <Link
-                  href={p.href}
-                  className="text-sm font-medium text-terracotta hover:underline"
-                >
-                  View →
-                </Link>
+                <p className="text-xs text-olive/70 mb-3">{p.region}</p>
+                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
+                  <AddToItineraryButton placeId={p.id} label="Add to plan" className="text-sm min-h-[40px] px-4 py-2" />
+                  <Link
+                    href={p.href}
+                    className="text-sm font-medium text-terracotta hover:underline"
+                  >
+                    View →
+                  </Link>
+                </div>
               </div>
             </Popup>
           </Marker>

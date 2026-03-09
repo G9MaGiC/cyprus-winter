@@ -9,11 +9,13 @@ Use this when configuring the Cyprus Winter project in Vercel.
 | Check | Status |
 |-------|--------|
 | Lint | ✓ `npm run lint` |
-| Tests | ✓ `npm run test` (148 tests) |
+| Tests | ✓ `npm run test` (175+ tests) |
 | Build | ✓ `npm run build` (Next.js 16.1.6) |
 | Node | `>=18.18.0` (package.json engines) |
 | Framework | Next.js (Vercel auto-detects) |
 | Crons | `/api/cron/daily` (06:00 UTC), `/api/cron/weather-digest` (06:00, 12:00, 17:00 UTC) |
+
+**E2E:** `npm run test:e2e:ci` (optional pre-deploy; requires build, ~35s).
 
 **Before first deploy:** Set all required env vars in Vercel dashboard. Build will fail or features will break without Supabase, Resend, and at least one AI key.
 
@@ -55,17 +57,24 @@ Add these in **Vercel → Project → Settings → Environment Variables** (Prod
 | `XAI_API_KEY` | xAI Grok |
 | `MOONSHOT_API_KEY` | Moonshot |
 
+### Required for production (P0)
+
+| Variable | Purpose |
+|----------|---------|
+| `UPSTASH_REDIS_REST_URL` | Shared rate limiting across serverless instances |
+| `UPSTASH_REDIS_REST_TOKEN` | From Upstash Redis at [console.upstash.com](https://console.upstash.com) |
+
+Without Redis, rate limits are per-instance only; under load, limits are effectively weaker. See [docs/REDIS_SETUP.md](REDIS_SETUP.md).
+
 ### Optional
 
 | Variable | Purpose |
 |----------|---------|
-| `UPSTASH_REDIS_REST_URL` | Production rate limiting (shared) |
-| `UPSTASH_REDIS_REST_TOKEN` | From Upstash Redis |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
+| `CRON_SECRET` | Protects /api/cron/daily and /api/cron/weather-digest |
 | `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | Push notifications |
 | `VAPID_PRIVATE_KEY` | Push notifications |
 | `VAPID_MAILTO` | mailto for push metadata |
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
-| `CRON_SECRET` | Protects /api/cron/daily and /api/cron/weather-digest |
 
 ---
 

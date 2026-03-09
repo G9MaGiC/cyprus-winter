@@ -141,7 +141,7 @@ export default function AccountSettingsPage() {
               type="checkbox"
               checked={prefs.notifyTrailConditions}
               onChange={(e) => update({ notifyTrailConditions: e.target.checked })}
-              className="h-5 w-5 rounded border-sand-300 text-terracotta focus:ring-terracotta/50"
+              className="h-5 w-5 rounded border-sand-300 text-terracotta focus-visible:ring-terracotta/50"
             />
             <span className="text-olive">Trail condition updates (Troodos, etc.)</span>
           </label>
@@ -150,7 +150,7 @@ export default function AccountSettingsPage() {
               type="checkbox"
               checked={prefs.notifyEvents}
               onChange={(e) => update({ notifyEvents: e.target.checked })}
-              className="h-5 w-5 rounded border-sand-300 text-terracotta focus:ring-terracotta/50"
+              className="h-5 w-5 rounded border-sand-300 text-terracotta focus-visible:ring-terracotta/50"
             />
             <span className="text-olive">Winter events and festivals</span>
           </label>
@@ -160,10 +160,10 @@ export default function AccountSettingsPage() {
       {/* Data & privacy */}
       <section className={`${CARD.base} ${CARD.content} mt-8`}>
         <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
-          Data
+          Data & privacy
         </h2>
         <p className="text-sm text-olive/80 mb-4">
-          Control what we keep on this device.
+          Control what we keep on this device. For data we hold (bookings, trail reports), you can request export or deletion.
         </p>
         <div className="flex flex-wrap gap-3">
           <button
@@ -173,7 +173,26 @@ export default function AccountSettingsPage() {
           >
             {cleared ? "Recently viewed cleared" : "Clear recently viewed"}
           </button>
+          <a
+            href="mailto:privacy@cypruswinter.com?subject=Data%20export%20request"
+            className={`${CTA.chipTertiary}`}
+          >
+            Request data export
+          </a>
+          <a
+            href="mailto:privacy@cypruswinter.com?subject=Data%20deletion%20request"
+            className={`${CTA.chipTertiary}`}
+          >
+            Request deletion
+          </a>
         </div>
+        <p className="text-xs text-olive/60 mt-3">
+          Include the email used for bookings or trail reports. We respond within 30 days. See our{" "}
+          <Link href="/privacy" className="text-terracotta hover:underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </section>
 
       <div className="mt-10 flex justify-start">

@@ -7,7 +7,7 @@ import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-beach-nissi.jpg`;
 
 const beachesItemListSchema = {
   "@context": "https://schema.org",

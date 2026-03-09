@@ -282,13 +282,21 @@ export default function EventsPage() {
             <p className="text-olive/80 break-words max-w-sm mx-auto">
               Nothing matches these filters. Try a different type or region.
             </p>
-            <Link
-              href="/events"
-              className={`mt-5 inline-flex ${CTA.secondaryCompact}`}
-              aria-label="Clear filters and show all events"
-            >
-              Clear filters
-            </Link>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/events"
+                className={CTA.secondaryCompact}
+                aria-label="Clear filters and show all events"
+              >
+                Clear filters
+              </Link>
+              <Link href="/discover" className={CTA.chipTertiary}>
+                Browse Discover
+              </Link>
+              <Link href="/plan" className={CTA.chipTertiary}>
+                Plan your trip
+              </Link>
+            </div>
           </div>
         ) : (
           <>

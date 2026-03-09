@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import type { RightNowItem } from "@/components/RightNowCard";
 import { getCentroidBySlug } from "@/data/region-centroids";
 import type { RegionSlug } from "@/data/regions";
 
 const CONSENT_KEY = "cyprus-winter:location-consent";
 const MAX_KM_NEAR = 25;
+const STALE_MS = 5 * 60 * 1000; // 5 min shared cache
 
 export type RightNowState =
   | "consent"
@@ -33,11 +35,37 @@ export type UseRightNowFeedReturn = {
   handleDistanceChange: (mode: DistanceMode) => void;
 };
 
+async function fetchRightNow(
+  lat: number,
+  lng: number,
+  nearOnly: boolean,
+  region: RegionSlug | null
+): Promise<RightNowItem[]> {
+  const maxQuery = nearOnly ? `&maxDistance=${MAX_KM_NEAR}` : "";
+  const regionQuery =
+    region ? `&region=${encodeURIComponent(region)}` : "";
+  const url =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`
+      : `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    await res.json().catch(() => ({}));
+    const err = new Error("Right Now fetch failed") as Error & { status?: number };
+    err.status = res.status;
+    throw err;
+  }
+  const data = await res.json();
+  return data.items ?? [];
+}
+
 export function useRightNowFeed(): UseRightNowFeedReturn {
   const isMountedRef = useRef(true);
   const [state, setState] = useState<RightNowState>("consent");
-  const [items, setItems] = useState<RightNowItem[]>([]);
-  const [lastErrorCode, setLastErrorCode] = useState<"rate_limited" | null>(null);
+  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [distanceMode, setDistanceMode] = useState<DistanceMode>("less");
+  const [sourceMode, setSourceMode] = useState<SourceMode>("gps");
+  const [selectedRegion, setSelectedRegion] = useState<RegionSlug | null>(null);
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -45,72 +73,45 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
       isMountedRef.current = false;
     };
   }, []);
-  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(
-    null
-  );
-  const [distanceMode, setDistanceMode] = useState<DistanceMode>("less");
-  const [sourceMode, setSourceMode] = useState<SourceMode>("gps");
-  const [selectedRegion, setSelectedRegion] = useState<RegionSlug | null>(null);
 
-  const fetchFeed = useCallback(
-    async (
-      lat: number,
-      lng: number,
-      nearOnly: boolean,
-      mode: SourceMode,
-      region: RegionSlug | null
-    ) => {
-      setState("loading");
-      setItems([]);
-      setLastErrorCode(null);
-      setCoords({ lat, lng });
-      setSourceMode(mode);
-      setSelectedRegion(region);
-      try {
-        const maxQuery = nearOnly ? `&maxDistance=${MAX_KM_NEAR}` : "";
-        const regionQuery =
-          mode === "region" && region ? `&region=${encodeURIComponent(region)}` : "";
-        const url =
-          typeof window !== "undefined"
-            ? `${window.location.origin}/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`
-            : `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`;
-        const res = await fetch(url);
-        if (!isMountedRef.current) return;
-        if (!res.ok) {
-          await res.json().catch(() => ({})); // consume body
-          if (isMountedRef.current) {
-            if (res.status === 429) {
-              setLastErrorCode("rate_limited");
-            } else {
-              setLastErrorCode(null);
-            }
-            setState("error");
-          }
-          return;
-        }
-        const data = await res.json();
-        if (!isMountedRef.current) return;
-        const list = data.items ?? [];
-        setItems(list);
-        setState(list.length > 0 ? "loaded" : "empty");
-      } catch (err) {
-        if (process.env.NODE_ENV === "development") {
-          console.warn("[RightNow] fetch error:", err);
-        }
-        if (isMountedRef.current) {
-          setLastErrorCode(null);
-          setState("error");
-        }
-      }
-    },
-    []
-  );
+  const queryEnabled =
+    coords !== null && typeof window !== "undefined";
+  const nearOnly = distanceMode === "less";
+
+  const {
+    data: items = [],
+    isLoading: queryLoading,
+    isError: queryError,
+    error: queryErr,
+  } = useQuery({
+    queryKey: ["right-now", coords?.lat, coords?.lng, nearOnly, selectedRegion ?? ""],
+    queryFn: () =>
+      fetchRightNow(
+        coords!.lat,
+        coords!.lng,
+        nearOnly,
+        sourceMode === "region" ? selectedRegion : null
+      ),
+    enabled: queryEnabled,
+    staleTime: STALE_MS,
+  });
+
+  const lastErrorCode: "rate_limited" | null =
+    queryError && queryErr && "status" in queryErr && queryErr.status === 429
+      ? "rate_limited"
+      : null;
+
+  // Derive state from query + pre-query UI
+  useEffect(() => {
+    if (!queryEnabled) return;
+    if (queryLoading) setState("loading");
+    else if (queryError) setState("error");
+    else setState(items.length > 0 ? "loaded" : "empty");
+  }, [queryEnabled, queryLoading, queryError, items.length]);
 
   const handleUseLocation = useCallback(() => {
     if (typeof window === "undefined") return;
     setState("loading");
-    const doFetch = (lat: number, lng: number) =>
-      fetchFeed(lat, lng, distanceMode === "less", "gps", null);
     try {
       localStorage.setItem(CONSENT_KEY, "true");
     } catch {}
@@ -124,18 +125,18 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
       }
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          if (isMountedRef.current) doFetch(pos.coords.latitude, pos.coords.longitude);
+          if (isMountedRef.current) {
+            setSourceMode("gps");
+            setSelectedRegion(null);
+            setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+          }
         },
         (err) => {
           if (process.env.NODE_ENV === "development") {
             console.warn("[RightNow] geolocation error:", err.code, err.message);
           }
           if (isMountedRef.current) {
-            if (err.code === 1) {
-              setState("denied");
-            } else {
-              setState("region-picker");
-            }
+            setState(err.code === 1 ? "denied" : "region-picker");
           }
         },
         { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
@@ -146,7 +147,7 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
       }
       if (isMountedRef.current) setState("region-picker");
     }
-  }, [fetchFeed, distanceMode]);
+  }, []);
 
   const handlePickRegion = useCallback(() => {
     if (typeof window !== "undefined") {
@@ -157,34 +158,19 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
     setState("region-picker");
   }, []);
 
-  const handleRegionSelect = useCallback(
-    (slug: RegionSlug) => {
-      const centroid = getCentroidBySlug(slug);
-      fetchFeed(
-        centroid.lat,
-        centroid.lng,
-        distanceMode === "less",
-        "region",
-        slug
-      );
-    },
-    [fetchFeed, distanceMode]
-  );
+  const handleRegionSelect = useCallback((slug: RegionSlug) => {
+    const centroid = getCentroidBySlug(slug);
+    setSourceMode("region");
+    setSelectedRegion(slug);
+    setCoords({ lat: centroid.lat, lng: centroid.lng });
+  }, []);
 
   const handleDistanceChange = useCallback(
     (mode: DistanceMode) => {
       setDistanceMode(mode);
-      if (coords && (state === "loaded" || state === "empty")) {
-        fetchFeed(
-          coords.lat,
-          coords.lng,
-          mode === "less",
-          sourceMode,
-          selectedRegion
-        );
-      }
+      // Coords already set; query key change triggers refetch via React Query
     },
-    [coords, state, selectedRegion, sourceMode, fetchFeed]
+    []
   );
 
   useEffect(() => {

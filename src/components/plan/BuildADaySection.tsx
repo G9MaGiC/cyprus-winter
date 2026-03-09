@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
@@ -30,7 +32,12 @@ function typeBadge(type: RelatedPlace["type"]) {
   );
 }
 
-export default function BuildADaySection() {
+type BuildADaySectionProps = {
+  hasContent: boolean;
+  onComboClick?: (ids: string[], label: string) => void;
+};
+
+export default function BuildADaySection({ hasContent, onComboClick }: BuildADaySectionProps) {
   return (
     <section
       aria-labelledby="build-a-day-heading"
@@ -90,13 +97,24 @@ export default function BuildADaySection() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href={`/plan?add=${addIds}`}
-                className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100`}
-                aria-label={`Add ${combo.label} to plan`}
-              >
-                Add to plan
-              </Link>
+              {hasContent && onComboClick ? (
+                <button
+                  type="button"
+                  onClick={() => onComboClick(places.map((p) => p.id), combo.label)}
+                  className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
+                  aria-label={`Add ${combo.label} to plan`}
+                >
+                  Add to plan
+                </button>
+              ) : (
+                <Link
+                  href={`/plan?add=${addIds}`}
+                  className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 block text-center`}
+                  aria-label={`Add ${combo.label} to plan`}
+                >
+                  Add to plan
+                </Link>
+              )}
             </article>
           );
         })}

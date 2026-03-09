@@ -53,10 +53,7 @@ export async function GET(req: Request) {
   try {
     limitResult = await rateLimit(req, RIGHT_NOW_LIMIT, "right-now");
   } catch {
-    return Response.json(
-      { error: { code: "SERVICE_UNAVAILABLE" as const, message: "Rate limiting unavailable. Try again in a moment." } },
-      { status: 503 }
-    );
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
   }
   if (!limitResult.ok) {
     return Response.json(

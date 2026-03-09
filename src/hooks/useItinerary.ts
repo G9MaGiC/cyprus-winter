@@ -80,20 +80,42 @@ export function useItinerary() {
     }
   }, [days, hydrated]);
 
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY && e.newValue != null && isMountedRef.current) {
+        try {
+          const parsed = JSON.parse(e.newValue) as Record<string, string[]>;
+          const out = emptyDays();
+          for (const [k, v] of Object.entries(parsed)) {
+            const d = parseInt(k, 10);
+            if (d >= 1 && d <= MAX_DAYS && Array.isArray(v)) out[d] = v;
+          }
+          setDays(out);
+        } catch {
+          // ignore parse errors from other tabs
+        }
+      }
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
   const [lastAddedId, setLastAddedId] = useState<string | null>(null);
 
   const addToDay = useCallback((id: string) => {
+    let added = false;
     setDays((prev) => {
       const current = prev[activeDay] ?? [];
       const isAdding = !current.includes(id);
+      added = isAdding;
       const nextDay = isAdding ? [...current, id] : current.filter((x) => x !== id);
-      if (isAdding) {
-        setLastAddedId(id);
-        const t = setTimeout(() => setLastAddedId(null), 600);
-        timeoutRefs.current.push(t);
-      }
       return { ...prev, [activeDay]: nextDay };
     });
+    if (added) {
+      setLastAddedId(id);
+      const t = setTimeout(() => setLastAddedId(null), 600);
+      timeoutRefs.current.push(t);
+    }
   }, [activeDay]);
 
   const removeFromDay = useCallback((id: string) => {

@@ -1,6 +1,7 @@
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
+import type { LinkProps } from "@/app/_home/types";
 import { winterEvents } from "@/data/events";
 import { weatherByMonth } from "@/data/weather";
 import { trails } from "@/data/trails";
@@ -47,7 +48,12 @@ function formatTrailStatus(status: string, surface: string): string {
 
 const FETCH_TIMEOUT_MS = 4000; // Max wait to avoid blocking page
 
-export default async function ThisWeekGrid() {
+export default async function ThisWeekGrid({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   let trailSummary: TrailSummary | null = null;
   let liveWeather: LiveWeather | null = null;
   try {
@@ -91,7 +97,7 @@ export default async function ThisWeekGrid() {
         className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean rounded-xl group`}
       >
         <div className={CARD.content}>
-          <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Weather</p>
+          <p className={`${TYPE.kicker} text-sage`}>Weather</p>
           <p className="text-2xl font-display font-bold text-charcoal mt-0.5 group-hover:text-terracotta transition-colors text-balance">
             Coast {coastMid}°C · Troodos {troodosMid}°C
           </p>
@@ -103,7 +109,7 @@ export default async function ThisWeekGrid() {
         className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group`}
       >
         <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} ${CARD.content}`}>
-          <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">Trails</p>
+          <p className={`${TYPE.kicker} text-sage`}>Trails</p>
           <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={trailName}>
             {trailName}
           </p>
@@ -143,7 +149,7 @@ export default async function ThisWeekGrid() {
         className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-golden flex flex-col group`}
       >
         <div className={CARD.content}>
-          <p className="text-xs font-medium uppercase tracking-wider text-sage prose-label">
+          <p className={`${TYPE.kicker} text-sage`}>
             What&apos;s on
           </p>
           <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={eventHighlight ? eventHighlight.name : "Events"}>

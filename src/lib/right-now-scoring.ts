@@ -3,12 +3,19 @@ import { getPlaceCoords } from "@/lib/place-coords";
 import { itemMatchesRegion, type RegionSlug } from "@/data/regions";
 import { getTimeBucket, getPlaceTimeSignals, matchesTimeBucket, isAdjacentBucket, type TimeBucket } from "@/lib/right-now-buckets";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
+import { getPlaceOfDayIds } from "@/lib/place-of-day-ids";
 import type { WeatherAtCoords } from "@/lib/weather-live";
 import { allPlaces } from "@/data";
 import { getAttractionById, getRestaurantById } from "@/data";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
 import { winterEvents } from "@/data/events";
+
+/**
+ * Right Now scoring — ranks places by live circumstances and curation.
+ * Signals: distance (nearby first), weather (type match), time-of-day, liveness,
+ * place-of-day (home + discover featured picks).
+ */
 
 /** Input for scoring: place + resolved entity fields */
 export type ScorablePlace = PlanItem & {
@@ -86,6 +93,13 @@ function livenessScore(place: ScorablePlace): number {
   return Math.min(1, s);
 }
 
+/** Place-of-day boost: curated picks from home and discover get a lift when nearby */
+const PLACE_OF_DAY_BOOST = 0.15;
+
+function placeOfDayScore(placeId: string, placeOfDayIds: Set<string>): number {
+  return placeOfDayIds.has(placeId) ? PLACE_OF_DAY_BOOST : 0;
+}
+
 /** Enrich PlanItem with entity fields for scoring */
 function enrichPlace(place: PlanItem): ScorablePlace {
   const base: ScorablePlace = { ...place };
@@ -148,7 +162,7 @@ export type ScoredPlace = ScorablePlace & {
 
 /**
  * Score and rank all eligible places.
- * Returns sorted by score descending.
+ * Signals: distance, weather, time-of-day, liveness, place-of-day.
  * When region is provided (region-picker mode), only places in that region are considered.
  */
 export function scoreAndRank(
@@ -159,6 +173,7 @@ export function scoreAndRank(
   region: RegionSlug | null = null
 ): ScoredPlace[] {
   const currentBucket = getTimeBucket();
+  const placeOfDayIds = getPlaceOfDayIds();
   let places = allPlaces.filter((p) =>
     ELIGIBLE_TYPES.includes(p.type as (typeof ELIGIBLE_TYPES)[number])
   );
@@ -179,8 +194,9 @@ export function scoreAndRank(
       const distScore = distanceScore(km);
       const weatherScore = weatherMatchScore(p.effectiveType ?? p.type, weather);
       const liveScore = livenessScore(p);
+      const placeOfDay = placeOfDayScore(p.id, placeOfDayIds);
       const score =
-        0.25 * timeScore + 0.3 * distScore + 0.25 * weatherScore + 0.2 * liveScore;
+        0.23 * timeScore + 0.28 * distScore + 0.23 * weatherScore + 0.18 * liveScore + placeOfDay;
       return {
         ...p,
         score,

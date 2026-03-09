@@ -7,7 +7,7 @@ import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
 const wineriesItemListSchema = {
   "@context": "https://schema.org",
@@ -51,7 +51,7 @@ export default function WineriesPage() {
         backHref="/discover"
         backLabel="Discover"
         title="Cyprus Wineries in Winter"
-        description="Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter."
+        description="Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
         breadcrumbItems={[
           { label: "Home", href: "/" },
           { label: "Discover", href: "/discover" },

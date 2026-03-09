@@ -1,12 +1,47 @@
 "use client";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { StickyPlanBarProvider } from "@/contexts/StickyPlanBarContext";
+import { OnboardingProvider } from "@/contexts/OnboardingContext";
+import OfflineQueueProcessor from "@/components/OfflineQueueProcessor";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+type ProvidersProps = {
+  children: React.ReactNode;
+  /** Omit OnboardingProvider when nested under root (e.g. locale layout) to avoid duplication */
+  includeOnboarding?: boolean;
+};
+
+export default function Providers({ children, includeOnboarding = true }: ProvidersProps) {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 5 * 60 * 1000, // 5 minutes
+          },
+        },
+      })
+  );
+
   return (
-    <AuthProvider>
-      <StickyPlanBarProvider>{children}</StickyPlanBarProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <StickyPlanBarProvider>
+          {includeOnboarding ? (
+            <OnboardingProvider>
+              <OfflineQueueProcessor />
+              {children}
+            </OnboardingProvider>
+          ) : (
+            <>
+              <OfflineQueueProcessor />
+              {children}
+            </>
+          )}
+        </StickyPlanBarProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }

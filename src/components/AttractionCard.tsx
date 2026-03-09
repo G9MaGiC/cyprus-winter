@@ -43,7 +43,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             src={getAttractionImage(a.id, a.type)}
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
             fill
-            className="object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
+            className="object-cover group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out"
             sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
           />
           <div className={CARD.mediaOverlay} aria-hidden />
@@ -54,7 +54,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
               {badgeLabel}
             </span>
             {isSustainable && (
-              <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-sage/20 text-olive/80">
+              <span className="max-[360px]:hidden px-2.5 py-1 rounded-full text-xs font-medium bg-sage/20 text-olive/80">
                 Local
               </span>
             )}
@@ -81,10 +81,10 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             </p>
           )}
           <div className="flex flex-wrap gap-2 mt-3">
-            {a.highlights.slice(0, 3).map((h) => (
+            {(a.highlights ?? []).slice(0, 3).map((h, i) => (
               <span
-                key={h}
-                className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-olive/80 truncate min-w-0 max-w-[140px]"
+                key={`${h}-${i}`}
+                className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-olive/80 line-clamp-2 min-w-0 max-w-[180px] sm:max-w-[200px] break-words"
                 title={h}
               >
                 {h}

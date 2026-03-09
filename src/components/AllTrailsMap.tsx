@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import Link from "next/link";
 import type { Trail } from "@/data/trails";
 import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import AddToItineraryButton from "@/components/AddToItineraryButton";
 
 const trailIcon = L.divIcon({
   html: `<span style="
@@ -65,13 +66,16 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
                 >
                   {trail.name}
                 </Link>
-                <p className="text-xs text-olive/70 mb-2">{trail.region} · {trail.lengthKm} km</p>
-                <Link
-                  href={`/trails/${trail.id}`}
-                  className="text-sm font-medium text-terracotta hover:underline"
-                >
-                  View trail →
-                </Link>
+                <p className="text-xs text-olive/70 mb-3">{trail.region} · {trail.lengthKm} km</p>
+                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
+                  <AddToItineraryButton placeId={trail.id} label="Add to plan" className="text-sm min-h-[40px] px-4 py-2" />
+                  <Link
+                    href={`/trails/${trail.id}`}
+                    className="text-sm font-medium text-terracotta hover:underline"
+                  >
+                    View trail →
+                  </Link>
+                </div>
               </div>
             </Popup>
           </Marker>

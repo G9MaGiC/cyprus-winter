@@ -4,96 +4,11 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
-import { getAttractionImage } from "@/lib/cyprus-images";
-import { pickDailyMultipleWithTypeDiversity } from "@/lib/daily-rotator";
-import { PROMOTED_PLACE_IDS } from "@/data/promoted";
-import {
-  beaches,
-  natureSites,
-  ancientSites,
-  villages,
-  monasteries,
-} from "@/data/attractions";
-import { wineries } from "@/data/wineries";
-import { restaurants } from "@/data/restaurants";
-import type { Attraction } from "@/data/attractions";
-import type { Winery } from "@/data/wineries";
-import type { Restaurant } from "@/data/restaurants";
-
-const allDiscoverItems = [
-  ...beaches,
-  ...natureSites,
-  ...ancientSites,
-  ...villages,
-  ...wineries,
-  ...restaurants,
-  ...monasteries,
-] as (Attraction | Winery | Restaurant)[];
-
-function getDiscoverPlaceOfDayPicks() {
-  if (allDiscoverItems.length === 0) return [];
-  const picks = pickDailyMultipleWithTypeDiversity(
-    allDiscoverItems,
-    PROMOTED_PLACE_IDS,
-    "discover-place-of-day",
-    3,
-    5
-  );
-  return picks.map((picked) => {
-  const desc = picked.description ?? "";
-  const fallbackByType: Record<string, string> = {
-    winery: "Heaters on the terrace.",
-    village: "Cobbles to yourself midweek.",
-    monastery: "Quiet this week.",
-    nature: "Clear today.",
-    ancient: "Best light in afternoon.",
-    beach: "Quiet in winter.",
-    restaurant: "Cosy in winter.",
-  };
-  const tease =
-    "winterTip" in picked && picked.winterTip
-      ? picked.winterTip
-      : desc.split(".")[0] + "." || fallbackByType[picked.type] || `${picked.region}. Worth a visit.`;
-  const shortTease = tease.length > 100 ? tease.slice(0, 97) + "…" : tease;
-
-  const overlayByType: Record<string, string> = {
-    winery: "Quiet this week",
-    village: "Quiet this week",
-    monastery: "Quiet this week",
-    nature: "Clear today",
-    ancient: "Best light in afternoon",
-    beach: "Best light in afternoon",
-    restaurant: "Cosy in winter",
-  };
-
-  const combineWith = "combineWith" in picked && picked.combineWith && picked.combineWith.length > 0
-    ? picked.combineWith[0]
-    : undefined;
-  const pairPlace = combineWith ? getPlaceById(combineWith) : undefined;
-  const pairHref =
-    pairPlace?.type === "trail"
-      ? `/trails/${pairPlace.id}`
-      : pairPlace
-        ? `/discover/${pairPlace.id}`
-        : undefined;
-
-  return {
-    id: picked.id,
-    name: picked.name,
-    region: picked.region,
-    type: picked.type,
-    href: `/discover/${picked.id}`,
-    image: getAttractionImage(picked.id, picked.type),
-    imageAlt: `${picked.name}, ${picked.region} — Cyprus winter`,
-    tease: shortTease,
-    overlay: overlayByType[picked.type] ?? "Worth a visit",
-    pairWith: pairPlace && pairHref ? { name: pairPlace.name, href: pairHref } : undefined,
-  };
-  });
-}
+import { allDiscoverItems } from "@/data/discover";
+import { getDiscoverPlaceOfDayPicks } from "@/lib/discover-place-of-day";
 
 export default function DiscoverPlaceOfDay() {
-  const picks = getDiscoverPlaceOfDayPicks();
+  const picks = getDiscoverPlaceOfDayPicks(allDiscoverItems);
   const place = picks[0] ?? null;
   const alsoWorth = picks.slice(1, 3);
   const planItem = place ? getPlaceById(place.id) : undefined;
@@ -123,7 +38,7 @@ export default function DiscoverPlaceOfDay() {
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
+              className="object-cover group-hover:scale-[1.02] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out"
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div
@@ -133,7 +48,7 @@ export default function DiscoverPlaceOfDay() {
             <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
-            <span className="absolute top-4 right-4 px-3 py-1.5 rounded-lg prose-label bg-white/95 text-charcoal">
+            <span className="absolute top-4 right-4 px-3 py-1.5 rounded-lg prose-label bg-white/95 backdrop-blur-sm text-charcoal">
               Place of the day
             </span>
           </Link>
@@ -141,7 +56,7 @@ export default function DiscoverPlaceOfDay() {
             <div>
               <Link
                 href={place.href}
-                className="font-display text-2xl sm:text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1"
+                className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1"
               >
                 {place.name}
               </Link>

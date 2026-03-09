@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
+import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 
 export const metadata: Metadata = {
   title: "Team | Cyprus Winter — Trails, Villages, Wineries",
@@ -59,7 +60,9 @@ export default function TeamPage() {
       </div>
 
       <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-l-4 border-l-terracotta/20 text-center`}>
+        <p className="text-sm text-olive/80 mb-4">Meet the team behind your trip — and ask them anything.</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
+          <AIAssistantTrigger label="Ask AI" />
           <Link href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
             Start planning
           </Link>

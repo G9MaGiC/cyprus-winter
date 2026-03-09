@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { schemaForLdJson } from "@/lib/schema-ldjson";
 import { SITE_URL } from "@/lib/site-url";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
-import SiteFooter from "@/components/SiteFooter";
+import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
+import WebVitalsReporter from "@/components/WebVitalsReporter";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LAYOUT } from "@/lib/design-tokens";
 
-const AIAssistant = dynamic(() => import("@/components/AIAssistant"), { loading: () => null });
+const AIAssistantWithBoundary = dynamic(
+  () => import("@/components/AIAssistantWithBoundary"),
+  { loading: () => null }
+);
 const OnboardingModal = dynamic(() => import("@/components/OnboardingModal"), { loading: () => null });
+const CookieConsentBanner = dynamic(() => import("@/components/CookieConsentBanner"), { loading: () => null });
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
 
@@ -71,12 +78,15 @@ const webSiteSchema = {
 /**
  * Root layout for non-locale routes (/, /discover, /trails, etc.).
  * Locale routes (/en, /de, etc.) use [locale]/layout.tsx with i18n.
+ * NextIntlClientProvider enables translations for Nav, Footer on all routes.
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const messages = await getMessages();
+
   return (
     <html lang="en">
       <head>
@@ -103,18 +113,22 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <NextIntlClientProvider messages={messages}>
         <Providers>
           <ConversionTrackerClient />
+          <WebVitalsReporter />
           <ScrollToTop />
           <Nav />
           <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
             {children}
           </main>
           <BottomNav />
-          <SiteFooter />
+          <FooterWithTranslations />
         </Providers>
-        <AIAssistant />
+        <AIAssistantWithBoundary />
         <OnboardingModal />
+        <CookieConsentBanner />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

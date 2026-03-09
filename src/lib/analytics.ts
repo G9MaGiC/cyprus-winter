@@ -1,7 +1,10 @@
 /**
  * Client-side conversion tracking. Sends events to /api/track.
  * Funnel: page_view → discover_view → winery_detail_view → booking_start → booking_complete
+ * Non-essential: requires cookie consent (EU). Does not track until user accepts analytics.
  */
+import { hasAnalyticsConsent } from "@/lib/cookie-consent";
+
 const TRACK_ENDPOINT = "/api/track";
 
 export type EventName =
@@ -11,7 +14,14 @@ export type EventName =
   | "booking_start"
   | "booking_complete"
   | "shop_click"
-  | "plan_add";
+  | "plan_add"
+  | "onboarding_started"
+  | "onboarding_dismissed"
+  | "onboarding_intent_planning"
+  | "onboarding_intent_exploring"
+  | "onboarding_intent_browsing"
+  | "first_add_to_plan"
+  | "first_booking";
 
 type EventProps = Record<string, string | number | boolean | undefined>;
 
@@ -27,6 +37,7 @@ function getSessionId(): string {
 
 export function track(event: EventName, properties?: EventProps): void {
   if (typeof window === "undefined") return;
+  if (!hasAnalyticsConsent()) return;
   const payload = {
     event,
     properties: { ...properties, path: window.location.pathname },

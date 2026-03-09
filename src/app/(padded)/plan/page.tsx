@@ -1,25 +1,32 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import ListPageHero from "@/components/ListPageHero";
-import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import ClearDayModal from "@/components/plan/ClearDayModal";
 import DayContentPanel from "@/components/plan/DayContentPanel";
 import DaySelector from "@/components/plan/DaySelector";
+import PlanAddFailedAlert from "@/components/plan/PlanAddFailedAlert";
+import PlanDaysUntilBanner from "@/components/plan/PlanDaysUntilBanner";
+import PlanFooter from "@/components/plan/PlanFooter";
+import PlanMapClient from "@/components/plan/PlanMapClient";
 import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
+import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
+import PlanWineryBar from "@/components/plan/PlanWineryBar";
 import PlacePickerModal from "@/components/plan/PlacePickerModal";
 import QuickStartSection from "@/components/plan/QuickStartSection";
 import BuildADaySection from "@/components/plan/BuildADaySection";
+import ComboChoiceModal from "@/components/plan/ComboChoiceModal";
 import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
-import { useSearchParams } from "next/navigation";
-import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
-import { usePlanUrlActions } from "@/hooks/usePlanUrlActions";
-import { useTripDates } from "@/hooks/useTripDates";
-import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
-import PushOptIn from "@/components/PushOptIn";
-import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
+import { usePlanPage } from "@/hooks/usePlanPage";
+import { useOnboardingContext } from "@/contexts/OnboardingContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
+import { track } from "@/lib/analytics";
+import OnboardingContextualTip from "@/components/OnboardingContextualTip";
+import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
+import { LAYOUT, CTA } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -27,15 +34,42 @@ const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
 
 export default function PlanPage() {
   const searchParams = useSearchParams();
-  const [showClearModal, setShowClearModal] = useState(false);
-  const [templateChoice, setTemplateChoice] = useState<string | null>(null);
-  const [showBrowseModal, setShowBrowseModal] = useState(false);
+  const plan = usePlanPage();
+  const { setPlanItemCount, showTipPlanEmpty, dismissTipPlanEmpty, showTipFirstAdd, dismissTipFirstAdd } =
+    useOnboardingContext();
+  const { user } = useAuth();
+  const t = useTranslations("onboarding");
 
-  const { dates, setTripDates, hydrated: datesHydrated, daysUntil, withinSevenDays, tripLength } = useTripDates();
+  const hasTrackedFirstAdd = useRef(false);
+  useEffect(() => {
+    if (plan.hydrated) setPlanItemCount(plan.totalPlaces);
+  }, [plan.hydrated, plan.totalPlaces, setPlanItemCount]);
+  useEffect(() => {
+    if (plan.hydrated && plan.totalPlaces >= 1 && !hasTrackedFirstAdd.current) {
+      hasTrackedFirstAdd.current = true;
+      track("first_add_to_plan", { count: plan.totalPlaces });
+    }
+  }, [plan.hydrated, plan.totalPlaces]);
+
   const {
+    showClearModal,
+    setShowClearModal,
+    templateChoice,
+    setTemplateChoice,
+    comboChoice,
+    setComboChoice,
+    showBrowseModal,
+    setShowBrowseModal,
+    dates,
+    setTripDates,
+    datesHydrated,
+    daysUntil,
+    withinSevenDays,
+    tripLength,
     days,
     activeDay,
     setActiveDay,
+    activeItems,
     hydrated,
     copied,
     addToDay,
@@ -44,55 +78,24 @@ export default function PlanPage() {
     lastAddedId,
     hasContent,
     hasWineries,
-    applyTemplate,
-    mergeTemplate,
-    clearDay,
     copyItinerary,
     copyShareLink,
     linkCopied,
     sharePath,
-  } = useItinerary();
-
-  const activeItems = days[activeDay] ?? [];
-  const totalPlaces = Object.values(days).flat().length;
-  const activeDaysCount = Object.keys(days).filter((d) => (days[Number(d)] ?? []).length > 0).length;
-  const displayDaysCount = tripLength ?? (hasContent ? MAX_DAYS : 1);
-  const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
-  const quickStartRef = useRef<HTMLDivElement | null>(null);
-
-  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDay, applyTemplate });
-
-  useEffect(() => {
-    if (lastAddedId && lastAddedCardRef.current) {
-      lastAddedCardRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-  }, [lastAddedId]);
-
-  useEffect(() => {
-    if (activeDay > displayDaysCount) {
-      setActiveDay(displayDaysCount);
-    }
-  }, [activeDay, displayDaysCount, setActiveDay]);
-
-  const handleTemplateClick = (key: string) => {
-    if (!hasContent) {
-      applyTemplate(key as TemplateKey);
-      return;
-    }
-    setTemplateChoice(key);
-  };
-
-  const handleReplaceTemplate = () => {
-    if (!templateChoice) return;
-    applyTemplate(templateChoice as TemplateKey, true);
-    setTemplateChoice(null);
-  };
-
-  const handleAddTemplate = () => {
-    if (!templateChoice) return;
-    mergeTemplate(templateChoice as TemplateKey);
-    setTemplateChoice(null);
-  };
+    totalPlaces,
+    activeDaysCount,
+    displayDaysCount,
+    lastAddedCardRef,
+    quickStartRef,
+    handleTemplateClick,
+    handleReplaceTemplate,
+    handleAddTemplate,
+    handleComboClick,
+    handleAddCombo,
+    handleReplaceCombo,
+    handleClearDayConfirm,
+    scrollToQuickStart,
+  } = plan;
 
   return (
     <div className="min-h-screen bg-sand">
@@ -116,23 +119,7 @@ export default function PlanPage() {
           </p>
         )}
 
-        {searchParams.get("add") === "failed" && (
-          <div
-            className="p-5 sm:p-6 rounded-2xl bg-terracotta/5 border border-terracotta/20 text-sm text-olive"
-            role="alert"
-            aria-live="assertive"
-          >
-            <p className={SECTION.titleGap}>That place is no longer in our list.</p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/discover" className={CTA.secondaryCompact} aria-label="Browse Discover to find places">
-                Browse Discover
-              </Link>
-              <Link href="/trails" className={CTA.secondaryCompact} aria-label="View trails">
-                View trails
-              </Link>
-            </div>
-          </div>
-        )}
+        {searchParams.get("add") === "failed" && <PlanAddFailedAlert />}
 
         <header role="banner">
           <ListPageHero
@@ -154,7 +141,7 @@ export default function PlanPage() {
               <div className="mt-4 sm:mt-5">
                 <button
                   type="button"
-                  onClick={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onClick={scrollToQuickStart}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
                   aria-label="Scroll to templates"
                 >
@@ -164,6 +151,13 @@ export default function PlanPage() {
             )}
           </ListPageHero>
         </header>
+
+        {hasContent && totalPlaces === 1 && showTipFirstAdd && (
+          <OnboardingContextualTip
+            message={t("tipFirstAdd")}
+            onDismiss={dismissTipFirstAdd}
+          />
+        )}
 
         {hasContent && hydrated && (
           <PlanShareBar
@@ -179,68 +173,18 @@ export default function PlanPage() {
         )}
 
         {datesHydrated && withinSevenDays && daysUntil !== null && (
-          <div
-            role="status"
-            className="rounded-2xl border-2 border-dashed border-golden/25 bg-golden/5 px-5 py-4 sm:px-6 sm:py-5"
-          >
-            <p className="text-sm font-medium text-olive">
-              {daysUntil === 0
-                ? "You're here. Day 1 is ready."
-                : daysUntil === 1
-                  ? "Tomorrow. Day 1 is ready."
-                  : `${daysUntil} days to go — review below.`}
-            </p>
-          </div>
+          <PlanDaysUntilBanner daysUntil={daysUntil} />
         )}
 
         {datesHydrated && (
-          <ListPageWidgetStrip ariaLabel="Trip dates">
-            <div className="rounded-2xl border border-sand-200/90 bg-white/90 p-6 sm:p-7 shadow-sm">
-              <h2 className="text-base font-semibold text-olive mb-4">When are you traveling?</h2>
-              <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 mb-5">
-                <label className="flex flex-col gap-2">
-                  <span className="prose-label text-olive/60">Start</span>
-                  <input
-                    type="date"
-                    value={dates.start ?? ""}
-                    onChange={(e) => setTripDates(e.target.value || null, dates.end)}
-                    className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:ring-offset-2 focus:ring-offset-background"
-                  />
-                </label>
-                <label className="flex flex-col gap-2">
-                  <span className="prose-label text-olive/60">End</span>
-                  <input
-                    type="date"
-                    value={dates.end ?? ""}
-                    onChange={(e) => setTripDates(dates.start, e.target.value || null)}
-                    className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus:outline-none focus:ring-2 focus:ring-terracotta/40 focus:ring-offset-2 focus:ring-offset-background"
-                  />
-                </label>
-              </div>
-              {dates.start && (
-                <PushOptIn tripStartDate={dates.start} variant={withinSevenDays ? "soon" : "far"} />
-              )}
-            </div>
-          </ListPageWidgetStrip>
+          <PlanTripDatesWidget
+            dates={dates}
+            setTripDates={setTripDates}
+            withinSevenDays={withinSevenDays}
+          />
         )}
 
-        {hasWineries && hydrated && (
-          <div
-            role="region"
-            aria-label="Winery bookings"
-            className="rounded-2xl border border-sand-200/90 bg-white/90 p-5 sm:p-6 flex flex-wrap items-center gap-3 sm:gap-4 min-h-[44px] shadow-sm"
-          >
-            <Link href="/bookings" className={CTA.primaryCompact}>
-              Book tastings
-            </Link>
-            <Link href="/discover?filter=winery" className={CTA.secondaryCompact}>
-              Browse wineries
-            </Link>
-            <Link href="/bookings" className={SECTION.aegeanLink}>
-              My bookings
-            </Link>
-          </div>
-        )}
+        {hasWineries && hydrated && <PlanWineryBar />}
 
         <div className="flex flex-col gap-10 sm:gap-14">
           <DaySelector
@@ -254,67 +198,72 @@ export default function PlanPage() {
           />
 
           <DayContentPanel
-          activeDay={activeDay}
-          activeItems={activeItems}
-          getPlace={getPlace}
-          addToDay={addToDay}
-          removeFromDay={removeFromDay}
-          lastAddedId={lastAddedId}
-          lastAddedCardRef={lastAddedCardRef}
-          onClearDay={() => setShowClearModal(true)}
-          onBrowseAll={() => setShowBrowseModal(true)}
-          onScrollToQuickStart={() => quickStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-        />
-
-        <div
-          ref={quickStartRef}
-          className="flex flex-col gap-12 sm:gap-16 md:gap-20"
-          aria-label="Add places or use templates"
-        >
-          <QuickStartSection
             activeDay={activeDay}
-            days={days}
+            activeItems={activeItems}
             getPlace={getPlace}
             addToDay={addToDay}
-            onTemplateClick={handleTemplateClick}
-            hasContent={hasContent}
-            tripLength={tripLength}
+            removeFromDay={removeFromDay}
+            lastAddedId={lastAddedId}
+            lastAddedCardRef={lastAddedCardRef}
+            onClearDay={() => setShowClearModal(true)}
+            onBrowseAll={() => setShowBrowseModal(true)}
+            onScrollToQuickStart={scrollToQuickStart}
           />
-          <BuildADaySection />
-        </div>
+
+          {hasContent && (
+            <section
+              id="plan-map"
+              aria-labelledby="plan-map-heading"
+              className="border-t border-sand-200/80 pt-10 sm:pt-12"
+            >
+              <h2
+                id="plan-map-heading"
+                className="text-xl sm:text-2xl font-display font-semibold text-charcoal mb-1"
+              >
+                Your itinerary on the map
+              </h2>
+              <p className="text-xs text-olive/60 mb-4">Saves automatically.</p>
+              <PlanMapClient />
+            </section>
+          )}
+
+          <div
+            ref={quickStartRef}
+            className="flex flex-col gap-12 sm:gap-16 md:gap-20"
+            aria-label="Add places or use templates"
+          >
+            {!hasContent && hydrated && showTipPlanEmpty && (
+              <OnboardingContextualTip
+                message={t("tipPlanEmpty")}
+                onDismiss={dismissTipPlanEmpty}
+                href="/discover"
+                hrefLabel={t("tipPlanEmptyLink")}
+              />
+            )}
+            <QuickStartSection
+              activeDay={activeDay}
+              days={days}
+              getPlace={getPlace}
+              addToDay={addToDay}
+              onTemplateClick={handleTemplateClick}
+              hasContent={hasContent}
+              tripLength={tripLength}
+            />
+            <BuildADaySection
+              hasContent={hasContent}
+              onComboClick={handleComboClick}
+            />
+          </div>
         </div>
 
-        <footer className={`${SECTION.footerBlock} pt-12 pb-[env(safe-area-inset-bottom)] sm:pt-14 sm:pb-0`}>
-          <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
-            Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
-          </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm" role="navigation" aria-label="Plan quick links">
-            {hasWineries && (
-              <Link href="/bookings" className={SECTION.aegeanLink}>
-                Book tastings
-              </Link>
-            )}
-            <Link href="/discover" className={SECTION.aegeanLink}>
-              Discover
-            </Link>
-            <Link href="/trails" className={SECTION.aegeanLink}>
-              Trails
-            </Link>
-            <Link href="/weather" className={SECTION.aegeanLink}>
-              Weather
-            </Link>
-          </div>
-        </footer>
+        <PlanFooter hasWineries={hasWineries} showAccountCTA={!user && totalPlaces >= 2} />
 
         {showClearModal && (
           <ClearDayModal
             activeDay={activeDay}
             placeCount={activeItems.length}
             onClose={() => setShowClearModal(false)}
-            onConfirm={() => {
-              clearDay();
-              setShowClearModal(false);
-            }}
+            onConfirm={handleClearDayConfirm}
           />
         )}
 
@@ -338,6 +287,15 @@ export default function PlanPage() {
             onClose={() => setTemplateChoice(null)}
             onAddToPlan={handleAddTemplate}
             onReplace={handleReplaceTemplate}
+          />
+        )}
+
+        {comboChoice && (
+          <ComboChoiceModal
+            comboLabel={comboChoice.label}
+            onClose={() => setComboChoice(null)}
+            onAddToPlan={handleAddCombo}
+            onReplace={handleReplaceCombo}
           />
         )}
       </div>

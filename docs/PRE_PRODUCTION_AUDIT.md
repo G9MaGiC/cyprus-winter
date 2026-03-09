@@ -1,19 +1,24 @@
 # Cyprus Winter — Pre-Production Audit
 
 **Date:** 2025-03-09  
+**Last re-run:** 2026-03-09 — All P1/P2 items verified closed (spot-check: AIAssistant, BookingsPage, usePlanUrlActions, track route — fixes in place)  
 **Scope:** Runtime errors, hidden bugs, logical flaws, architectural weaknesses  
 **Assumption:** Production with real users and unpredictable inputs
 
 ---
 
+**System design follow-up completed (March 2026):** Cross-tab sync, provider consolidation, React Query, error boundaries, offline mutation queue, E2E tests, cron monitoring. See [CHANGELOG](CHANGELOG.md) and [SYSTEM_DESIGN_REVIEW](SYSTEM_DESIGN_REVIEW.md).
+
+---
+
 ## Executive Summary
 
-The codebase is generally well-structured with solid patterns (Zod validation, sanitization, rate limiting). However, several areas require attention before production:
+The codebase is generally well-structured with solid patterns (Zod validation, sanitization, rate limiting). All high and medium items have been fixed (verified 2026-03-09):
 
 - **Critical:** None
-- **High:** 3 issues (AIAssistant setState-after-unmount, BookingsPage timer leak, unbounded user-agent storage)
-- **Medium:** 12+ issues across API, hooks, and components
-- **Low:** Multiple minor improvements
+- **High:** 0 open — 3 items fixed (AIAssistant setState-after-unmount, BookingsPage timer leak, track user-agent truncation)
+- **Medium:** 0 open — All fixed (usePlanUrlActions cap, mounted checks, useItinerary, AIAssistant AbortController, rate-limit proxy documented)
+- **Low:** Multiple minor improvements (Toast inner setTimeout; see P3)
 
 ---
 

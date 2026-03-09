@@ -91,7 +91,7 @@ function ToastItem({
           setIsExiting(true);
           scheduleRemove();
         }}
-        className="shrink-0 min-h-[32px] min-w-[32px] inline-flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors"
+        className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors"
         aria-label="Dismiss notification"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

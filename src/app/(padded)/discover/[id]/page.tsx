@@ -1,8 +1,7 @@
 import Image from "next/image";
 import DetailHero from "@/components/DetailHero";
 import type { Metadata } from "next";
-import { allAttractions, getDiscoverPlaceById, getPlaceById } from "@/data";
-import { restaurants } from "@/data/restaurants";
+import { allDiscoverIds, getDiscoverPlaceById, getPlaceById } from "@/data";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
@@ -29,11 +28,6 @@ function isWinery(a: Attraction | Restaurant): a is Winery {
 function isRestaurant(a: Attraction | Restaurant): a is Restaurant {
   return a.type === "restaurant";
 }
-
-const allDiscoverIds = [
-  ...allAttractions.map((a) => a.id),
-  ...restaurants.map((r) => r.id),
-];
 
 export function generateStaticParams() {
   return allDiscoverIds.map((id) => ({ id }));

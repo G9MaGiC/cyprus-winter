@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
-import {
-  beaches,
-  natureSites,
-  ancientSites,
-  villages,
-  monasteries,
-} from "@/data/attractions";
-import { wineries } from "@/data/wineries";
-import { restaurants } from "@/data/restaurants";
+import { allDiscoverItems } from "@/data/discover";
+import { buildDiscoverSections } from "@/lib/discover-sections";
+import { buildDiscoverItemListSchema } from "@/lib/discover-schema";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
@@ -30,63 +24,8 @@ export const metadata: Metadata = {
   },
 };
 
-const allDiscoverItems = [
-  ...beaches,
-  ...natureSites,
-  ...ancientSites,
-  ...villages,
-  ...wineries,
-  ...restaurants,
-  ...monasteries,
-];
-const isFamilyFriendly = (item: { bestFor?: string[] }) =>
-  item.bestFor?.some(
-    (b) => b.toLowerCase().includes("famil") || b.toLowerCase().includes("family")
-  ) ?? false;
-const familyItems = allDiscoverItems.filter(isFamilyFriendly);
-
-const isOffBeatenPath = (item: { bestFor?: string[]; localSecret?: string }) =>
-  item.bestFor?.some(
-    (b) =>
-      b.toLowerCase().includes("off-the-beaten-path") ||
-      b.toLowerCase().includes("hidden gem")
-  ) || !!item.localSecret;
-const quietItems = allDiscoverItems.filter(isOffBeatenPath);
-
-const coastsItems = [...beaches, ...natureSites];
-const wineAndFoodItems = [...wineries, ...restaurants];
-const hiddenGemsItems = [...familyItems, ...quietItems].filter(
-  (item, i, arr) => arr.findIndex((x) => x.id === item.id) === i
-);
-
-const sections = [
-  { id: "coasts", title: "Coasts", items: coastsItems },
-  { id: "ancient", title: "Ancient sites", items: ancientSites },
-  { id: "village", title: "Villages", items: villages },
-  { id: "wine", title: "Wine & food", items: wineAndFoodItems },
-  { id: "monastery", title: "Monasteries & culture", items: monasteries },
-  { id: "hidden", title: "Hidden gems", items: hiddenGemsItems },
-];
-
-const discoverItemListSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Discover Cyprus Winter",
-  description: "Beaches, ancient sites, villages, wineries, monasteries. Curated Cyprus winter places.",
-  url: `${SITE_URL}/discover`,
-  numberOfItems: allDiscoverItems.length,
-  itemListElement: allDiscoverItems.slice(0, 50).map((item, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "TouristAttraction",
-      name: item.name,
-      description: item.description.slice(0, 160),
-      url: `${SITE_URL}/discover/${item.id}`,
-      address: { "@type": "PostalAddress", addressLocality: item.region, addressCountry: "CY" },
-    },
-  })),
-};
+const sections = buildDiscoverSections(allDiscoverItems);
+const discoverItemListSchema = buildDiscoverItemListSchema(allDiscoverItems, SITE_URL);
 
 export default function DiscoverPage() {
   return (
@@ -119,7 +58,6 @@ export default function DiscoverPage() {
             <SearchBar
               placeholder="Search places, trails, wineries…"
               className="max-w-2xl mx-auto"
-              syncUrl
             />
           </div>
         </section>
@@ -128,9 +66,9 @@ export default function DiscoverPage() {
 
         <div id="discover-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
-        <DiscoverClient sections={sections} />
-
-        <DiscoverMapSection />
+        <DiscoverClient sections={sections}>
+          <DiscoverMapSection />
+        </DiscoverClient>
       </div>
     </div>
   );

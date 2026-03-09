@@ -84,7 +84,7 @@ export default function AdminStatsPage() {
             placeholder="Admin key"
             autoComplete="current-password"
             aria-label="Admin key"
-            className="flex-1 min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-2 text-sm text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30"
+            className="flex-1 min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-2 text-sm text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30"
           />
           <button
             type="submit"

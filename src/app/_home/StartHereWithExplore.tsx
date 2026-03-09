@@ -1,5 +1,6 @@
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import { CARD, CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import type { LinkProps } from "@/app/_home/types";
 
 type StartHereItem = {
   title: string;
@@ -43,14 +44,19 @@ const startItems: StartHereItem[] = [
 const categoryChips: Chip[] = [
   { href: "/discover?filter=village", label: "Villages", ariaLabel: "Villages", variant: "primary" },
   { href: "/discover?filter=winery", label: "Wineries", ariaLabel: "Wineries", variant: "primary" },
-  { href: "/trails", label: "Trails", ariaLabel: "Trails", variant: "secondary" },
+  { href: "/trails", label: "Trails", ariaLabel: "Trails and conditions", variant: "secondary" },
   { href: "/events", label: "Events", ariaLabel: "Events", variant: "secondary" },
   { href: "/discover?filter=family", label: "Family-friendly", ariaLabel: "Family-friendly", variant: "secondary" },
-  { href: "/trails", label: "Trail conditions", ariaLabel: "Trail conditions", variant: "secondary" },
   { href: "/discover", label: "All", ariaLabel: "See all", variant: "secondary" },
 ];
 
-const alsoChips: Chip[] = [
+/** Region + culture/coasts/monasteries merged into one "Explore more" group. */
+const exploreMoreChips: Chip[] = [
+  { href: "/regions/larnaca", label: "Larnaca", ariaLabel: "Larnaca region", variant: "tertiary" },
+  { href: "/regions/paphos", label: "Paphos", ariaLabel: "Paphos region", variant: "tertiary" },
+  { href: "/regions/limassol", label: "Limassol", ariaLabel: "Limassol region", variant: "tertiary" },
+  { href: "/regions/troodos", label: "Troodos", ariaLabel: "Troodos region", variant: "tertiary" },
+  { href: "/regions/ayia-napa", label: "Ayia Napa", ariaLabel: "Ayia Napa region", variant: "tertiary" },
   { href: "/discover?filter=ancient", label: "Culture", ariaLabel: "Culture", variant: "tertiary" },
   { href: "/discover?filter=beach", label: "Coasts", ariaLabel: "Coasts", variant: "tertiary" },
   { href: "/discover?filter=monastery", label: "Monasteries", ariaLabel: "Monasteries", variant: "tertiary" },
@@ -58,11 +64,8 @@ const alsoChips: Chip[] = [
 
 const moodChips: Chip[] = [
   { href: "/trails", label: "Active", ariaLabel: "Active adventures — trails, hiking", variant: "secondary" },
-  { href: "/discover?filter=ancient", label: "Culture", ariaLabel: "Culture — ancient sites, ruins", variant: "secondary" },
-  { href: "/discover?filter=winery", label: "Wine", ariaLabel: "Wine — wineries, tastings", variant: "secondary" },
   { href: "/discover?filter=quiet", label: "Quiet escapes", ariaLabel: "Quiet escapes — villages, hidden gems", variant: "secondary" },
   { href: "/trails", label: "Mountains", ariaLabel: "Mountains — Troodos trails", variant: "secondary" },
-  { href: "/discover?filter=village", label: "Villages", ariaLabel: "Villages — cobbled streets, kafenions", variant: "secondary" },
   { href: "/discover?filter=monastery", label: "Wellness", ariaLabel: "Wellness — monasteries, quiet spaces", variant: "secondary" },
 ];
 
@@ -72,20 +75,27 @@ function chipClass(v: Chip["variant"]) {
   return CTA.chipTertiary;
 }
 
-export default function StartHereWithExplore() {
+export default function StartHereWithExplore({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   return (
     <section
+      id="start-here"
       aria-labelledby="start-here-explore-heading"
-      className={`${LAYOUT.safeAreaX} ${SECTION.py} ${SECTION.alt}`}
+      className={`${LAYOUT.safeAreaX} ${SECTION.py} ${SECTION.alt} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="text-center mb-8 sm:mb-10">
+          <p className="text-sm text-olive/80 mb-4">So — where do you want to go first?</p>
           <p className={`${TYPE.kicker} text-sage mb-2`}>Primary path</p>
           <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             Start here
           </h2>
           <p className={`${TYPE.sectionSubtitle} max-w-xl mx-auto ${SECTION.headingGap}`}>
-            Ruins to village tastings. Start anywhere.
+            Just landed or still planning? Ruins to village tastings — start anywhere.
           </p>
         </header>
 
@@ -138,31 +148,10 @@ export default function StartHereWithExplore() {
           />
         </div>
 
-        <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-6 sm:mb-8">
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Plan by region</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {[
-              { slug: "larnaca", label: "Larnaca" },
-              { slug: "paphos", label: "Paphos" },
-              { slug: "limassol", label: "Limassol" },
-            ].map(({ slug, label }) => (
-              <Link
-                key={slug}
-                href={`/regions/${slug}`}
-                prefetch="auto"
-                className={CTA.chipTertiary}
-                aria-label={`${label} region — places and trips`}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Culture, coasts, monasteries</p>
+          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore more</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
-            {alsoChips.map((c) => (
+            {exploreMoreChips.map((c) => (
               <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
                 {c.label}
               </Link>
@@ -182,7 +171,7 @@ export default function StartHereWithExplore() {
                 key={m.href + m.label}
                 href={m.href}
                 prefetch="auto"
-                className={`${CTA.chipSecondary} rounded-xl`}
+                className={CTA.chipSecondary}
                 aria-label={m.ariaLabel}
               >
                 {m.label}

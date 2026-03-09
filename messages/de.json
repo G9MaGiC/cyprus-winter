@@ -13,29 +13,163 @@
     "paphos": "Paphos",
     "tagline": "Mild, unberührt, echt. Wanderwege, Dörfer, Kulturerbe. Die Insel belohnt die Neugierigen.",
     "practical": "Links fahren. Warme Kleidung einpacken. Die Insel belohnt die Neugierigen. Tippen Sie auf Ask AI.",
-    "planYourTrip": "Reise planen"
+    "emergency": "Notfall",
+    "touristInfo": "Touristeninfo",
+    "ambulance": "Rettung",
+    "planYourTrip": "Reise planen",
+    "privacy": "Datenschutz",
+    "terms": "AGB"
   },
   "nav": {
     "discover": "Entdecken",
     "plan": "Planen",
     "trails": "Wanderwege",
     "events": "Veranstaltungen",
-    "airport": "Flughafen"
-  },
-  "home": {
-    "title": "Cyprus Winter",
-    "subtitle": "Trails, Kultur & Dörfer",
-    "cta": {
-      "arriving": "Gerade angekommen? Hier starten",
-      "explore": "Entdecken Sie"
-    }
+    "airport": "Flughafen",
+    "home": "Start",
+    "weather": "Wetter",
+    "bookings": "Buchungen",
+    "secrets": "Lokale Geheimtipps",
+    "account": "Konto",
+    "team": "Team",
+    "search": "Suche",
+    "more": "Mehr",
+    "askAI": "Ask AI",
+    "searchAria": "Orte und Wanderwege suchen",
+    "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
   },
   "common": {
     "nav": {
       "discover": "Entdecken",
       "trip": "Reiseplan",
       "airport": "Flughafen"
-    }
+    },
+    "skipToContent": "Zum Hauptinhalt",
+    "addToPlan": "Zum Plan hinzufügen",
+    "bookTasting": "Verkostung buchen",
+    "clearFilters": "Filter zurücksetzen",
+    "submitReport": "Bericht absenden",
+    "goHome": "Zur Startseite",
+    "tryAgain": "Erneut versuchen",
+    "explore": "Entdecken",
+    "place": "Ort",
+    "trail": "Wanderweg",
+    "winery": "Weingut",
+    "event": "Veranstaltung",
+    "eat": "Essen"
+  },
+  "home": {
+    "title": "Cyprus Winter",
+    "subtitle": "Wanderwege, Kultur & Dörfer",
+    "kicker": "Das bestgehütete Geheimnis des Mittelmeers",
+    "headline": "Dem Winter entfliehen. Ruinen, Wanderwege, Dörfer. Planen Sie unterwegs.",
+    "seasonal": {
+      "lateYear": "Küste mild. Wege frei. Ideal zum Wandern.",
+      "earlyYear": "Küste mild. Troodos mit Schnee. Warme Kleidung einpacken.",
+      "march": "Bester Wander-Monat. Wege geöffnet.",
+      "spring": "Küste mild. Berge kühler. Planen Sie unterwegs."
+    },
+    "degreesLine": "Sechzehn Grad, wenn daheim sechs sind.",
+    "cta": {
+      "arriving": "Gerade gelandet? Hier starten",
+      "explore": "Entdecken",
+      "planTrip": "Reise planen",
+      "askGuide": "Ask AI"
+    },
+    "aria": {
+      "discover": "Orte, Dörfer und Weingüter entdecken",
+      "plan": "Tag planen oder Vorlage wählen",
+      "airport": "Transfer vom Flughafen, Tipps"
+    },
+    "thisWeek": "Diese Woche",
+    "thisWeekSubtitle": "Wetter · Wanderwege · Veranstaltungen",
+    "thisWeekDesc": "Küste mild; Troodos kühler. Wandern, verkosten oder schauen, was los ist.",
+    "editorsPicks": "Redaktions-Tipps",
+    "editorsPicksKicker": "Kuratierte Auswahl",
+    "rightNowNearYou": "Jetzt in Ihrer Nähe",
+    "discoverCurated": "Kuratierte Winter-Auswahl. Fügen Sie beim Stöbern zu Ihrem Plan hinzu.",
+    "natureAndCoasts": "Natur & Küste",
+    "places": "Orte"
+  },
+  "error": {
+    "title": "Ein kleines Problem",
+    "body": "Ein kleines Problem. Versuchen Sie es erneut oder gehen Sie zur Startseite—Wanderwege, Dörfer und Verkostungen warten auf Sie.",
+    "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI—wir zeigen Ihnen Nissi, Troodos, Lefkara."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Keine Sorge. Diese Seite existiert nicht oder wurde verschoben. Das passiert. Die Insel ist noch da. Wanderwege, Dörfer und Verkostungen warten. Zurück zur Startseite oder Entdecken.",
+    "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI, wenn Sie nicht wissen, wo Sie anfangen sollen.",
+    "discoverCyprus": "Zypern entdecken"
+  },
+  "discover": {
+    "addToPlan": "Zum Plan hinzufügen",
+    "bookTasting": "Verkostung buchen",
+    "seeEverything": "Alles anzeigen"
+  },
+  "trails": {
+    "addToPlan": "Zum Plan hinzufügen",
+    "submitReport": "Bericht absenden",
+    "submitting": "Wird gesendet…",
+    "noMatch": "Keine Wanderwege passen zu Ihren Filtern. Ändern Sie Status, Schwierigkeit oder Region—oder fragen Sie die AI. Sie kennt Troodos bis Küste.",
+    "allTrails": "Alle Wanderwege",
+    "askAI": "Ask AI",
+    "clearFilters": "Filter zurücksetzen",
+    "reportError": "Nicht gespeichert. Erneut versuchen oder zurück zum Weg.",
+    "reportAria": "Wegbedingungen-Bericht absenden"
+  },
+  "plan": {
+    "addToPlan": "Zum Plan hinzufügen",
+    "addFirstPlace": "Ersten Ort hinzufügen",
+    "emptyDay": "Beginnen Sie mit einem Ort. Oder fragen Sie die AI—Troodos, Lefkara, Kourion. Sie kennt die Insel.",
+    "clearDay": "Tag leeren",
+    "buildADay": "Tag planen",
+    "curatedCombos": "Kuratierte Kombinationen",
+    "curatedCombosDesc": "Vormittags hier, nachmittags dort. Es ergibt sich.",
+    "morning": "Vormittag",
+    "afternoon": "Nachmittag"
+  },
+  "bookings": {
+    "title": "Meine Buchungen",
+    "empty": "Noch keine Buchungen",
+    "emptyBody": "Buchen Sie eine Verkostung unter Entdecken oder laden Sie Buchungen von einem anderen Gerät.",
+    "browseWineries": "Weingüter durchsuchen",
+    "loadFromEmail": "Buchungen von anderem Gerät laden",
+    "noMatch": "Keine Buchungen für diese E-Mail. Andere E-Mail versuchen oder unter Entdecken buchen.",
+    "bookMore": "Verkostung oder geführte Wanderung unter Entdecken und Wanderwege buchen. Oder Buchungen von anderem Gerät laden."
+  },
+  "search": {
+    "placeholder": "Ort oder Wanderweg suchen",
+    "noResults": "Nichts für \"{query}\". Troodos, Nissi oder Omodos versuchen bzw. Entdecken durchsuchen.",
+    "browseDiscover": "Entdecken durchsuchen",
+    "viewTrails": "Alle Wanderwege",
+    "planTrip": "Reise planen"
+  },
+  "events": {
+    "clearFilters": "Filter zurücksetzen",
+    "clearFiltersAria": "Filter zurücksetzen und alle Veranstaltungen anzeigen",
+    "noMatch": "Keine Veranstaltungen passen zu diesen Filtern. Anderen Typ oder Region versuchen."
+  },
+  "onboarding": {
+    "welcome": "Cyprus Winter",
+    "description": "Wanderwege, Dörfer, Weingüter. Planen Sie unterwegs — kein Konto nötig.",
+    "cta": "Entdecken",
+    "skip": "Überspringen",
+    "intentQuestion": "Was ist Ihnen gerade am wichtigsten?",
+    "intentPlanning": "Reise planen",
+    "intentExploring": "Orte erkunden",
+    "intentBrowsing": "Nur stöbern",
+    "tipPlanEmpty": "Fügen Sie Ihren ersten Ort hinzu — aus Entdecken oder mit einer Vorlage.",
+    "tipPlanEmptyLink": "Entdecken durchsuchen",
+    "tipFirstAdd": "In Ihrem Plan. Mehr hinzufügen oder Ihre Reise teilen.",
+    "tipDiscoverFilter": "Filtern nach Dörfern, Weingütern oder Wanderwegen.",
+    "savePlan": "Plan speichern — Konto erstellen zum Synchronisieren"
+  },
+  "meta": {
+    "homeTitle": "Cyprus Winter | Mittelmeer im Winter",
+    "homeDescription": "Zypern im Winter: mild, unberührt, echt. Troodos-Wanderwege, Dörfer, Weingüter, antike Stätten. Sechzehn Grad, wenn daheim sechs sind. Planen Sie im Voraus oder erkunden Sie bei Ankunft."
   },
   "ui": {
     "hero": {

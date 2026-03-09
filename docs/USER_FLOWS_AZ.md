@@ -49,7 +49,8 @@ Audit of all user flows in Cyprus Winter. Verify each path end-to-end.
 ### Bottom nav (mobile)
 | Flow | Link | Target |
 |------|------|--------|
-| Search, Discover, Trails, Plan, Bookings, Events | Icons | Respective pages |
+| Primary | Home, Discover, Trails, Plan | /, /discover, /trails, /plan |
+| More | Search, Weather, Events, Bookings, Arriving, Local secrets, Team, Account | Respective pages (overflow menu) |
 
 ---
 
@@ -186,10 +187,11 @@ Audit of all user flows in Cyprus Winter. Verify each path end-to-end.
 ## Verification (one by one)
 
 ### 1. All Nav + BottomNav links resolve
-- **Nav** primaryLinks: /, /discover, /trails, /events, /plan, /bookings, /airport ✓
-- **Nav** moreLinks: /secrets, /account, /team ✓
-- **Nav** Search: /search ✓
-- **BottomNav**: /search, /discover, /trails, /plan, /bookings, /events ✓
+- **Nav** primaryLinks: /, /discover, /trails, /plan (navPrimaryLinks) ✓
+- **Nav** moreLinks: /weather, /events, /bookings, /airport, /secrets, /account, /team (navMoreLinks) ✓
+- **Nav** Search: /search (separate) ✓
+- **BottomNav** primary: Home, Discover, Trails, Plan (bottomPrimaryLinks) ✓
+- **BottomNav** overflow (More): Search, Weather, Events, Bookings, Arriving, Local secrets, Team, Account (bottomOverflowLinks) ✓
 - **Result**: ✓ All routes exist (`src/app/` has page.tsx for each)
 
 ### 2. All homepage CTAs resolve

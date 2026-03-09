@@ -11,3 +11,12 @@ export const PROMOTED_PLACE_IDS: string[] = [
   "kykkos",
   "pafos-mosaics",
 ];
+
+/** Promoted trail IDs — boost for Trail of the Day, BestConditionsNow. */
+export const PROMOTED_TRAIL_IDS: string[] = [
+  "artemis",
+  "atalante",
+  "adonis",
+  "cape-greco",
+  "caledonia-falls",
+];

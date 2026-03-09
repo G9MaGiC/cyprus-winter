@@ -90,7 +90,13 @@ async function extractData(out: Record<string, string>): Promise<void> {
       winterTipsPractical,
     } = await import(importPath(path.join(SRC, "data/winter-tips.ts")));
     const { team } = await import(importPath(path.join(SRC, "data/team.ts")));
-    const { BADGES } = await import(importPath(path.join(SRC, "data/badges.ts")));
+    const BADGES: Record<string, { name?: string; description?: string }> = {};
+    try {
+      const mod = await import(importPath(path.join(SRC, "data/badges.ts")));
+      Object.assign(BADGES, mod.BADGES || {});
+    } catch {
+      /* badges.ts optional */
+    }
     const { secretGems } = await import(importPath(path.join(SRC, "data/secret-gems.ts")));
     const { REGION_CONFIGS } = await import(importPath(path.join(SRC, "data/regions.ts")));
     const { WINE_ROUTES } = await import(importPath(path.join(SRC, "data/wine-routes.ts")));

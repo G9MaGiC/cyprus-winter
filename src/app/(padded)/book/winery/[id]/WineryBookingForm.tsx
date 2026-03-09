@@ -4,7 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
-import { addBookingToLocal } from "@/lib/bookings-storage";
+import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
+import { addMutation } from "@/lib/offline-queue";
 
 export default function WineryBookingForm({
   wineryId,
@@ -39,19 +40,21 @@ export default function WineryBookingForm({
     const guestEmail = formData.get("guestEmail") as string;
     const notes = formData.get("notes") as string;
 
+    const body = JSON.stringify({
+      type: "winery_tasting",
+      providerId: wineryId,
+      date,
+      partySize: Number(partySize),
+      guestName,
+      guestEmail,
+      notes: notes || undefined,
+    });
+
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "winery_tasting",
-          providerId: wineryId,
-          date,
-          partySize: Number(partySize),
-          guestName,
-          guestEmail,
-          notes: notes || undefined,
-        }),
+        body,
       });
 
       const data = await res.json();
@@ -72,14 +75,31 @@ export default function WineryBookingForm({
         wineryId,
         partySize: Number(partySize),
       });
+      if (loadLocalBookings().length === 0) {
+        track("first_booking", { wineryId });
+      }
 
       addBookingToLocal(data.booking);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
+      const isNetworkError = /failed to fetch|network error/i.test(msg);
+      if (isNetworkError && typeof navigator !== "undefined") {
+        addMutation({
+          type: "winery_booking",
+          url: "/api/bookings",
+          method: "POST",
+          body,
+        });
+      }
       const fallback = "Something went wrong — check your connection and try again.";
-      setError(msg && !/failed to fetch|network error/i.test(msg) ? msg : fallback);
+      setError(msg && !isNetworkError ? msg : fallback);
       setTimeout(() => {
-        errorRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const behavior =
+          typeof window !== "undefined" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth";
+        errorRef.current?.scrollIntoView({ behavior, block: "nearest" });
       }, 0);
     } finally {
       setLoading(false);
@@ -91,7 +111,7 @@ export default function WineryBookingForm({
       <div
         ref={successRef}
         tabIndex={-1}
-        className="mt-8 p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-terracotta/30 focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-2"
+        className="mt-8 p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-terracotta/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
         role="status"
         aria-live="polite"
       >
@@ -136,7 +156,7 @@ export default function WineryBookingForm({
           type="date"
           required
           min={new Date().toISOString().split("T")[0]}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
@@ -148,7 +168,7 @@ export default function WineryBookingForm({
           id="partySize"
           name="partySize"
           required
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         >
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
             <option key={n} value={n}>
@@ -171,7 +191,7 @@ export default function WineryBookingForm({
           required
           maxLength={200}
           placeholder="John Smith"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
@@ -186,7 +206,7 @@ export default function WineryBookingForm({
           autoComplete="email"
           required
           placeholder="john@example.com"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
@@ -201,7 +221,7 @@ export default function WineryBookingForm({
           rows={3}
           maxLength={500}
           placeholder="Allergies, special occasion, fireside or terrace — whatever helps them welcome you"
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0 resize-none"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
       </div>
 
@@ -218,7 +238,10 @@ export default function WineryBookingForm({
         {loading ? "Sending…" : "Request booking"}
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
-        The winery will confirm by email.
+        This is a request, not a confirmed reservation. The winery will confirm by email. By submitting, you agree to our{" "}
+        <Link href="/terms" className="text-olive/70 hover:underline">Terms</Link>
+        {" "}and{" "}
+        <Link href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</Link>.
       </p>
     </form>
   );

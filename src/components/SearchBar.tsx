@@ -107,8 +107,9 @@ export default function SearchBar({
           aria-autocomplete="list"
           aria-expanded={showDropdown}
           aria-controls="search-results"
+          aria-activedescendant={showDropdown && activeIndex >= 0 ? `search-option-${activeIndex}` : undefined}
           id="search-input"
-          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus:outline-none focus:border-terracotta/50 focus:ring-2 focus:ring-terracotta/20"
+          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
         />
       </div>
 
@@ -123,6 +124,7 @@ export default function SearchBar({
           {results.map((r, i) => (
             <div
               key={`${r.kind}-${r.item.id}`}
+              id={`search-option-${i}`}
               role="option"
               data-index={i}
               aria-selected={i === activeIndex}

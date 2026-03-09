@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { PlanItem } from "@/data";
 import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
+import { parseAddParam } from "@/lib/plan-url-params";
 
 type UsePlanUrlActionsParams = {
   hydrated: boolean;
@@ -51,14 +52,15 @@ export function usePlanUrlActions({
     const addParam = searchParams.get("add");
     if (!addParam || addParam === "failed" || processedAddRef.current === addParam) return;
     processedAddRef.current = addParam;
-    const ids = addParam.split(",").map((s) => s.trim()).filter(Boolean).slice(0, 50);
+    const ids = parseAddParam(addParam);
     const places = ids.map((id) => getPlace(id)).filter((p): p is PlanItem => !!p);
     if (places.length === 0) {
       router.replace("/plan?add=failed", { scroll: false });
       return;
     }
-    for (const place of places) {
-      addToDay(place.id);
+    const uniqueIds = [...new Set(places.map((p) => p.id))];
+    for (const id of uniqueIds) {
+      addToDay(id);
     }
     router.replace("/plan", { scroll: false });
   }, [hydrated, searchParams, addToDay, getPlace, router]);

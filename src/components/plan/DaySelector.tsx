@@ -28,7 +28,7 @@ export default function DaySelector({
       className={
         hasContent
           ? [
-              "sticky z-10",
+              "sm:sticky z-10",
               LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
               "pt-4 pb-4 sm:pt-5 sm:pb-5 mb-6 sm:mb-8 bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",

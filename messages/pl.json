@@ -13,29 +13,163 @@
     "paphos": "Pafos",
     "tagline": "Łagodny, spokojny, autentyczny. Szlaki, wioski, dziedzictwo. Wyspa nagradza ciekawskich.",
     "practical": "Ruch lewostronny. Zapakuj warstwy. Wyspa nagradza ciekawskich. Naciśnij Ask AI.",
-    "planYourTrip": "Zaplanuj wycieczkę"
+    "emergency": "Nagły wypadek",
+    "touristInfo": "Informacja turystyczna",
+    "ambulance": "Pogotowie",
+    "planYourTrip": "Zaplanuj wycieczkę",
+    "privacy": "Prywatność",
+    "terms": "Regulamin"
   },
   "nav": {
     "discover": "Odkrywaj",
     "plan": "Planuj",
     "trails": "Szlaki",
     "events": "Wydarzenia",
-    "airport": "Lotnisko"
-  },
-  "home": {
-    "title": "Cyprus Winter",
-    "subtitle": "Szlaki, Dziedzictwo & Wioski",
-    "cta": {
-      "arriving": "Właśnie przyleciałeś? Zacznij tutaj",
-      "explore": "Zacznij odkrywać"
-    }
+    "airport": "Lotnisko",
+    "home": "Start",
+    "weather": "Pogoda",
+    "bookings": "Rezerwacje",
+    "secrets": "Lokalne sekrety",
+    "account": "Konto",
+    "team": "Zespół",
+    "search": "Szukaj",
+    "more": "Więcej",
+    "askAI": "Zapytaj AI",
+    "searchAria": "Szukaj miejsc i szlaków",
+    "askAIAria": "Zapytaj AI o szlaki, winnice i pomysły na wycieczkę",
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu"
   },
   "common": {
     "nav": {
       "discover": "Odkrywaj",
       "trip": "Plan podróży",
       "airport": "Lotnisko"
-    }
+    },
+    "skipToContent": "Przejdź do treści",
+    "addToPlan": "Dodaj do planu",
+    "bookTasting": "Zarezerwuj degustację",
+    "clearFilters": "Wyczyść filtry",
+    "submitReport": "Wyślij raport",
+    "goHome": "Strona główna",
+    "tryAgain": "Spróbuj ponownie",
+    "explore": "Odkrywaj",
+    "place": "Miejsce",
+    "trail": "Szlak",
+    "winery": "Winnica",
+    "event": "Wydarzenie",
+    "eat": "Jedzenie"
+  },
+  "home": {
+    "title": "Cyprus Winter",
+    "subtitle": "Szlaki, Dziedzictwo & Wioski",
+    "kicker": "Najlepiej strzeżony sekret Morza Śródziemnego",
+    "headline": "Ucieknij przed zimnem. Ruiny, szlaki, wioski. Planuj w drodze.",
+    "seasonal": {
+      "lateYear": "Wybrzeże łagodne. Szlaki przejezdne. Idealnie do wędrówek.",
+      "earlyYear": "Wybrzeże łagodne. Troodos ze śniegiem. Zapakuj warstwy.",
+      "march": "Najlepszy miesiąc na wędrówki. Szlaki otwarte.",
+      "spring": "Wybrzeże łagodne. W górach chłodniej. Planuj w drodze."
+    },
+    "degreesLine": "Szesnaście stopni, gdy w domu jest sześć.",
+    "cta": {
+      "arriving": "Właśnie przyleciałeś? Zacznij tutaj",
+      "explore": "Odkrywaj",
+      "planTrip": "Zaplanuj wycieczkę",
+      "askGuide": "Zapytaj przewodnika"
+    },
+    "aria": {
+      "discover": "Odkryj miejsca, wioski i winnice",
+      "plan": "Zaplanuj dzień lub wybierz szablon",
+      "airport": "Transfer z lotniska, wskazówki"
+    },
+    "thisWeek": "W tym tygodniu",
+    "thisWeekSubtitle": "Pogoda · szlaki · wydarzenia",
+    "thisWeekDesc": "Wybrzeże łagodne; Troodos chłodniej. Wędrówki, degustacje albo zobacz co się dzieje.",
+    "editorsPicks": "Polecane przez redakcję",
+    "editorsPicksKicker": "Kuratowane",
+    "rightNowNearYou": "Teraz blisko Ciebie",
+    "discoverCurated": "Kuratowane na zimę. Dodawaj do planu podczas przeglądania.",
+    "natureAndCoasts": "Natura i wybrzeże",
+    "places": "Miejsca"
+  },
+  "error": {
+    "title": "Drobna usterka",
+    "body": "Drobna usterka. Spróbuj ponownie lub wróć na stronę główną—szlaki, wioski i degustacje nadal na Ciebie czekają.",
+    "hint": "Użyj menu Odkrywaj, Szlaki lub Plan. Lub naciśnij Ask AI—wskażemy Nissi, Troodos, Lefkara."
+  },
+  "notFound": {
+    "title": "Strona nie znaleziona",
+    "body": "Spokojnie. Ta strona nie istnieje lub została przeniesiona. Tak bywa. Wyspa jest nadal tutaj. Szlaki, wioski i degustacje czekają. Wróć na start lub zacznij odkrywać.",
+    "hint": "Użyj menu Odkrywaj, Szlaki lub Plan. Lub naciśnij Ask AI, jeśli nie wiesz od czego zacząć.",
+    "discoverCyprus": "Odkryj Cypr"
+  },
+  "discover": {
+    "addToPlan": "Dodaj do planu",
+    "bookTasting": "Zarezerwuj degustację",
+    "seeEverything": "Zobacz wszystko"
+  },
+  "trails": {
+    "addToPlan": "Dodaj do planu",
+    "submitReport": "Wyślij raport",
+    "submitting": "Wysyłanie…",
+    "noMatch": "Żaden szlak nie pasuje do filtrów. Spróbuj inny status, trudność lub region—albo zapytaj AI. Zna Troodos od gór po wybrzeże.",
+    "allTrails": "Wszystkie szlaki",
+    "askAI": "Zapytaj AI",
+    "clearFilters": "Wyczyść filtry",
+    "reportError": "Nie zapisano. Spróbuj ponownie lub wróć do szlaku.",
+    "reportAria": "Wyślij raport o warunkach na szlaku"
+  },
+  "plan": {
+    "addToPlan": "Dodaj do planu",
+    "addFirstPlace": "Dodaj pierwsze miejsce",
+    "emptyDay": "Zacznij od jednego miejsca. Lub zapytaj AI—Troodos, Lefkara, Kourion. Zna wyspę.",
+    "clearDay": "Wyczyść dzień",
+    "buildADay": "Zaplanuj dzień",
+    "curatedCombos": "Kuratowane zestawienia",
+    "curatedCombosDesc": "Rano w jednym miejscu, popołudnie w drugim. Łączą się naturalnie.",
+    "morning": "Rano",
+    "afternoon": "Popołudnie"
+  },
+  "bookings": {
+    "title": "Moje rezerwacje",
+    "empty": "Brak rezerwacji",
+    "emptyBody": "Zarezerwuj degustację w Odkrywaj lub wczytaj rezerwacje z innego urządzenia.",
+    "browseWineries": "Przeglądaj winnice",
+    "loadFromEmail": "Wczytaj rezerwacje z innego urządzenia",
+    "noMatch": "Brak rezerwacji dla tego adresu. Spróbuj inny lub zarezerwuj w Odkrywaj.",
+    "bookMore": "Zarezerwuj degustację lub wycieczkę z przewodnikiem w Odkrywaj i Szlaki. Lub wczytaj rezerwacje z innego urządzenia."
+  },
+  "search": {
+    "placeholder": "Znajdź miejsce lub szlak",
+    "noResults": "Nic dla \"{query}\". Spróbuj Troodos, Nissi, Omodos lub przeglądaj Odkrywaj.",
+    "browseDiscover": "Przeglądaj Odkrywaj",
+    "viewTrails": "Wszystkie szlaki",
+    "planTrip": "Zaplanuj wycieczkę"
+  },
+  "events": {
+    "clearFilters": "Wyczyść filtry",
+    "clearFiltersAria": "Wyczyść filtry i pokaż wszystkie wydarzenia",
+    "noMatch": "Żadne wydarzenie nie pasuje do filtrów. Spróbuj inny typ lub region."
+  },
+  "onboarding": {
+    "welcome": "Cyprus Winter",
+    "description": "Szlaki, wioski, winnice. Planuj w drodze — bez konta.",
+    "cta": "Odkrywaj",
+    "skip": "Pomiń",
+    "intentQuestion": "Co jest teraz najważniejsze?",
+    "intentPlanning": "Planowanie podróży",
+    "intentExploring": "Odkrywanie miejsc",
+    "intentBrowsing": "Tylko przeglądam",
+    "tipPlanEmpty": "Dodaj pierwsze miejsce — wybierz z Odkrywaj lub użyj szablonu.",
+    "tipPlanEmptyLink": "Przejrzyj Odkrywaj",
+    "tipFirstAdd": "W twoim planie. Dodaj więcej lub udostępnij trasę.",
+    "tipDiscoverFilter": "Filtruj według wiosek, winnic lub szlaków.",
+    "savePlan": "Zapisz plan — załóż konto, aby synchronizować"
+  },
+  "meta": {
+    "homeTitle": "Cyprus Winter | Morze Śródziemne zimą",
+    "homeDescription": "Cypr zimą: łagodny, spokojny, autentyczny. Szlaki Troodos, wioski, winnice, starożytne miejsca. Szesnaście stopni, gdy w domu jest sześć. Planuj z wyprzedzeniem lub odkrywaj po wylądowaniu."
   },
   "ui": {
     "hero": {

@@ -12,29 +12,164 @@
     "troodos": "Troodos",
     "paphos": "Paphos",
     "tagline": "Mild, uncrowded, real. Trails, villages, heritage. The island rewards the curious.",
-    "practical": "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime."
+    "practical": "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
+    "emergency": "Emergency",
+    "touristInfo": "Tourist info",
+    "ambulance": "Ambulance",
+    "planYourTrip": "Plan your trip",
+    "privacy": "Privacy",
+    "terms": "Terms"
   },
   "nav": {
     "discover": "Discover",
     "plan": "Plan",
     "trails": "Trails",
     "events": "Events",
-    "airport": "Airport"
-  },
-  "home": {
-    "title": "Cyprus Winter",
-    "subtitle": "Trails, Heritage & Villages",
-    "cta": {
-      "arriving": "Just arrived? Start here",
-      "explore": "Start exploring"
-    }
+    "airport": "Airport",
+    "home": "Home",
+    "weather": "Weather",
+    "bookings": "Bookings",
+    "secrets": "Local secrets",
+    "account": "Account",
+    "team": "Team",
+    "search": "Search",
+    "more": "More",
+    "askAI": "Ask AI",
+    "searchAria": "Search places and trails",
+    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "common": {
     "nav": {
       "discover": "Discover",
       "trip": "Itinerary",
       "airport": "Airport"
-    }
+    },
+    "skipToContent": "Skip to main content",
+    "addToPlan": "Add to plan",
+    "bookTasting": "Book a tasting",
+    "clearFilters": "Clear filters",
+    "submitReport": "Submit report",
+    "goHome": "Go home",
+    "tryAgain": "Try again",
+    "explore": "Explore",
+    "place": "Place",
+    "trail": "Trail",
+    "winery": "Winery",
+    "event": "Event",
+    "eat": "Eat"
+  },
+  "home": {
+    "title": "Cyprus Winter",
+    "subtitle": "Trails, Heritage & Villages",
+    "kicker": "The Mediterranean's best-kept secret",
+    "headline": "Escape the cold. Ruins, trails, villages. Plan as you go.",
+    "seasonal": {
+      "lateYear": "Coast mild. Trails clear. Best for hiking.",
+      "earlyYear": "Coast mild. Troodos with snow. Pack layers.",
+      "march": "Best hiking month. Trails open.",
+      "spring": "Coast mild. Mountains cooler. Plan as you go."
+    },
+    "degreesLine": "Sixteen degrees when home is six.",
+    "cta": {
+      "arriving": "Just arrived? Start here",
+      "explore": "Explore",
+      "planTrip": "Plan your trip",
+      "askGuide": "Ask your guide"
+    },
+    "aria": {
+      "discover": "Discover places, villages, and wineries",
+      "plan": "Build a day or pick a template",
+      "airport": "Transport from airport, tips"
+    },
+    "thisWeek": "This week",
+    "thisWeekSubtitle": "Weather · trails · events",
+    "thisWeekDesc": "Coast mild; Troodos cooler. Hike, taste, or see what's on.",
+    "editorsPicks": "Editor's picks",
+    "editorsPicksKicker": "Curated",
+    "rightNowNearYou": "Right now near you",
+    "discoverCurated": "Curated for winter. Add to your plan as you browse.",
+    "natureAndCoasts": "Nature & coasts",
+    "places": "Places"
+  },
+  "error": {
+    "title": "A small glitch",
+    "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
+    "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "No worries. This page doesn't exist or has been moved. These things happen. The island's still here. The trails, villages, and tastings are waiting. Head home or start exploring.",
+    "hint": "Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you're not sure where to start.",
+    "discoverCyprus": "Discover Cyprus"
+  },
+  "discover": {
+    "addToPlan": "Add to plan",
+    "bookTasting": "Book a tasting",
+    "seeEverything": "See everything"
+  },
+  "trails": {
+    "addToPlan": "Add to plan",
+    "submitReport": "Submit report",
+    "submitting": "Submitting…",
+    "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
+    "allTrails": "All trails",
+    "askAI": "Ask AI",
+    "clearFilters": "Clear filters",
+    "reportError": "Didn't save. Try again or head back to the trail.",
+    "reportAria": "Submit trail conditions report"
+  },
+  "plan": {
+    "addToPlan": "Add to plan",
+    "addFirstPlace": "Add your first place",
+    "emptyDay": "Start with one place. Or ask the AI—Troodos, Lefkara, Kourion. It knows the island.",
+    "clearDay": "Clear day",
+    "buildADay": "Build a day",
+    "curatedCombos": "Curated combos",
+    "curatedCombosDesc": "Morning at one place, afternoon at another. These flow.",
+    "morning": "Morning",
+    "afternoon": "Afternoon"
+  },
+  "bookings": {
+    "title": "My Bookings",
+    "empty": "No bookings yet",
+    "emptyBody": "Book a tasting from Discover, or load bookings from another device.",
+    "browseWineries": "Browse wineries",
+    "loadFromEmail": "Load bookings from another device",
+    "noMatch": "No bookings for that email. Try another, or book from Discover.",
+    "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device."
+  },
+  "search": {
+    "placeholder": "Find a place or trail",
+    "noResults": "Nothing for \"{query}\". Try Troodos, Nissi, Omodos, or browse Discover.",
+    "browseDiscover": "Browse Discover",
+    "viewTrails": "View all trails",
+    "planTrip": "Plan your trip"
+  },
+  "events": {
+    "clearFilters": "Clear filters",
+    "clearFiltersAria": "Clear filters and show all events",
+    "noMatch": "Nothing matches these filters. Try a different type or region."
+  },
+  "onboarding": {
+    "welcome": "Cyprus Winter",
+    "description": "Trails, villages, wineries. Plan as you go — no account needed.",
+    "cta": "Explore",
+    "skip": "Skip",
+    "intentQuestion": "What matters most right now?",
+    "intentPlanning": "Planning my trip",
+    "intentExploring": "Exploring places",
+    "intentBrowsing": "Just browsing",
+    "tipPlanEmpty": "Add your first place — pick from Discover or use a template below.",
+    "tipPlanEmptyLink": "Browse Discover",
+    "tipFirstAdd": "In your plan. Add more or share your itinerary.",
+    "tipDiscoverFilter": "Filter by villages, wineries, or trails.",
+    "savePlan": "Save your plan — create account to sync"
+  },
+  "meta": {
+    "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
+    "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land."
   },
   "ui": {
     "hero": {

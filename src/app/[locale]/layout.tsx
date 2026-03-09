@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+// Alias setRequestLocale to avoid "defined multiple times" with Turbopack
+import { getMessages, getTranslations, setRequestLocale as setLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -10,16 +11,13 @@ import { SITE_URL } from "@/lib/site-url";
 import { SerwistProvider } from "../serwist";
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
-const StickyPlanBarProvider = dynamic(
-  () => import("@/contexts/StickyPlanBarContext").then((m) => ({ default: m.StickyPlanBarProvider })),
-  { ssr: true }
-);
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
-// Generate metadata with hreflang support
+// Generate metadata with hreflang support and locale-specific copy
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations("meta");
   
   // Build alternate language links for SEO
   const languages: Record<string, string> = {};
@@ -29,9 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   
   return {
     metadataBase: new URL(SITE_URL),
-    title: "Cyprus Winter | Trails, Heritage & Villages",
-    description:
-      "Cyprus winter guide: Troodos trails, heritage, villages. Trail conditions, ancient stone, olive groves. Plan or explore when you land. Sixteen degrees when home is six.",
+    title: t("homeTitle"),
+    description: t("homeDescription"),
     manifest: "/manifest.json",
     keywords: ["Cyprus winter", "winter in Cyprus", "Cyprus trails", "Cyprus wineries", "Troodos hiking", "winter sun Europe", "Cyprus trip planning", "what to do Cyprus winter", "Cyprus ski", "Cyprus winter events", "Cyprus winter family", "Cyprus Venetian bridges", "Cyprus waterfalls winter"],
     alternates: {
@@ -39,8 +36,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       languages,
     },
     openGraph: {
-      title: "Cyprus Winter | Trails, Heritage & Villages",
-      description: "Cyprus winter: Troodos trails, heritage, villages. Trail conditions, ancient stone, olive groves. Plan or explore when you land.",
+      title: t("homeTitle"),
+      description: t("homeDescription"),
       type: "website",
       url: SITE_URL,
       locale,
@@ -48,8 +45,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
       card: "summary_large_image",
-      title: "Cyprus Winter | Trails, Heritage & Villages",
-      description: "Cyprus winter: Troodos trails, heritage, villages. Trail conditions, ancient stone. Plan or explore when you land.",
+      title: t("homeTitle"),
+      description: t("homeDescription"),
       images: [ogImage],
     },
     appleWebApp: {
@@ -78,19 +75,17 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
-  setRequestLocale(locale);
+  setLocale(locale);
 
   const messages = await getMessages();
 
   return (
     <NextIntlClientProvider messages={messages}>
       <SerwistProvider swUrl="/serwist/sw.js">
-        <Providers>
-          <StickyPlanBarProvider>
-            <div className={LAYOUT.paddedTop}>
-              {children}
-            </div>
-          </StickyPlanBarProvider>
+        <Providers includeOnboarding={false}>
+          <div className={LAYOUT.paddedTop}>
+            {children}
+          </div>
         </Providers>
       </SerwistProvider>
     </NextIntlClientProvider>

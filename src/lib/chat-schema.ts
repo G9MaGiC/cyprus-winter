@@ -11,6 +11,10 @@ export const chatRequestSchema = z.object({
     .object({
       path: z.string().max(256).optional(),
       lastPlace: z.string().max(256).optional(),
+      itinerary: z
+        .array(z.object({ day: z.number().int().min(1), placeIds: z.array(z.string().max(128)) }))
+        .max(14)
+        .optional(),
     })
     .optional(),
 });

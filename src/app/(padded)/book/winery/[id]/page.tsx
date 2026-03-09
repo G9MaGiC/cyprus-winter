@@ -73,6 +73,9 @@ export default async function WineryBookPage({
         <p className="text-sm text-olive/70 mt-3 max-w-lg break-words prose-body">
           Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they&apos;ll confirm by email.
         </p>
+        <p className="text-xs text-olive/60 mt-2 break-words">
+          For adults of legal drinking age. Drink responsibly.
+        </p>
       </div>
 
       <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />

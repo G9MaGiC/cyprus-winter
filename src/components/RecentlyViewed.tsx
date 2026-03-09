@@ -53,6 +53,7 @@ export function RecentlyViewedStrip() {
           </h2>
           <button
             type="button"
+            aria-label="Clear recently viewed"
             onClick={() => {
               import("@/lib/recently-viewed").then(({ clearRecentlyViewed }) => {
                 clearRecentlyViewed();

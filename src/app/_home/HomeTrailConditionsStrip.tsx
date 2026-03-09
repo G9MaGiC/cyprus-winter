@@ -1,6 +1,7 @@
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import { trailConditions } from "@/data/trails";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import type { LinkProps } from "@/app/_home/types";
 
 const TROODOS_TRAILS = ["artemis", "atalante", "caledonia-falls", "olympus-summit", "persephone"] as const;
 
@@ -24,7 +25,12 @@ function getGoNoGoLabel() {
   return "Check trail conditions before Troodos";
 }
 
-export default function HomeTrailConditionsStrip() {
+export default function HomeTrailConditionsStrip({
+  LinkComponent,
+}: {
+  LinkComponent: ComponentType<LinkProps>;
+}) {
+  const Link = LinkComponent;
   const { open, caution, closed } = getStatusCounts();
   const label = getGoNoGoLabel();
 
@@ -36,7 +42,7 @@ export default function HomeTrailConditionsStrip() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <Link
           href="/trails"
-          className="flex flex-wrap items-center justify-between gap-2 min-h-[44px] py-1 group"
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[44px] py-2 group"
           aria-label="Troodos trail conditions — check status before you go"
         >
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">

@@ -28,7 +28,8 @@ export async function generateMetadata({
   const { id } = await params;
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) return { title: "Not found" };
-  const prefix = `${trail.region}. ${trail.lengthKm} km, ${trail.difficulty}. `;
+  const loc = trail.locationText ?? trail.region;
+  const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length; // leave room for ellipsis
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
@@ -119,13 +120,15 @@ export default async function TrailPage({
             }
             title={trail.name}
             titleEl={trail.nameEl}
-            subtitle={trail.region}
+            subtitle={trail.locationText ?? trail.region}
             rounded
           >
             <div className="flex flex-wrap gap-4 mt-2 text-sm text-white/85">
               <span>{trail.lengthKm} km</span>
               <span>{trail.elevationGainM}m gain</span>
-              <span>~{Math.round(trail.durationMin / 60)}h</span>
+              <span>
+                ~{Math.floor(trail.durationMin / 60)}h{trail.durationMin % 60 ? ` ${trail.durationMin % 60}m` : ""}
+              </span>
               {trail.elevationMaxM != null && (
                 <span>Max {trail.elevationMaxM}m</span>
               )}
@@ -133,19 +136,65 @@ export default async function TrailPage({
             {trail.trailhead && (
               <p className="text-sm text-white/80 mt-2 break-words">
                 Trailhead: {trail.trailhead}
+                {trail.trailheadCoords && (
+                  <>
+                    {" · "}
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${trail.trailheadCoords.lat},${trail.trailheadCoords.lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-2 hover:text-white transition-colors"
+                    >
+                      Navigate to trailhead →
+                    </a>
+                  </>
+                )}
               </p>
             )}
           </DetailHero>
 
+          <nav
+            className="flex flex-wrap gap-x-4 gap-y-1 py-3 text-sm border-b border-sand-200/70 -mx-1 px-1 overflow-x-auto"
+            aria-label="Jump to section"
+          >
+            <a href="#trail-description" className="text-aegean hover:underline">Overview</a>
+            <a href="#trail-conditions" className="text-aegean hover:underline">Conditions</a>
+            {(trail.trailheadCoords || trail.waypoints?.some((w) => w.lat != null && w.lng != null)) && (
+              <a href="#trail-map" className="text-aegean hover:underline">Map</a>
+            )}
+            {trail.waypoints && trail.waypoints.length > 0 && (
+              <a href="#trail-waypoints" className="text-aegean hover:underline">Waypoints</a>
+            )}
+            {trail.combineWith && trail.combineWith.length > 0 && (
+              <a href="#trail-pair-with" className="text-aegean hover:underline">Pair with</a>
+            )}
+          </nav>
+
           <div className={SECTION.blockGap}>
+            {/* Top sights */}
+            {trail.topSights && trail.topSights.length > 0 && (
+              <SectionCard title="Top sights" borderAccent="sage">
+                <ul className="flex flex-wrap gap-2">
+                  {trail.topSights.map((s) => (
+                    <li
+                      key={s}
+                      className="px-2.5 py-1 rounded-md text-sm font-medium bg-sage/15 text-olive break-words"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </SectionCard>
+            )}
+
             {/* Description */}
-            <section>
+            <section id="trail-description">
               <p className="prose-intro text-olive/90 text-lg leading-relaxed break-words">{trail.description}</p>
             </section>
 
             {/* Conditions / Report — key info above the fold */}
             {(latestReport || conditions) && (
-              <SectionCard title={latestReport ? "Latest from hikers" : "Current conditions"} borderAccent="aegean">
+              <SectionCard id="trail-conditions" title={latestReport ? "Latest from hikers" : "Current conditions"} borderAccent="aegean">
                 {latestReport ? (
                   <>
                     <div className="flex flex-wrap gap-4 text-sm text-olive/80">
@@ -223,7 +272,7 @@ export default async function TrailPage({
             )}
 
             {!latestReport && !conditions && (
-              <SectionCard title="Trail conditions" borderAccent="aegean">
+              <SectionCard id="trail-conditions" title="Trail conditions" borderAccent="aegean">
                 <p className="text-sm text-olive/70 mb-4">No recent conditions for this trail. Just back? Share what you saw—it takes a minute.</p>
                 <Link href={`/trails/${trail.id}/report`} className={`gap-2 ${CTA.primaryCompact}`}>
                   Be the first to report
@@ -247,7 +296,7 @@ export default async function TrailPage({
 
             {/* Route map */}
             {(trail.trailheadCoords || trail.waypoints?.some((w) => w.lat != null && w.lng != null)) && (
-              <SectionCard title="Route map" borderAccent="aegean">
+              <SectionCard id="trail-map" title="Route map" borderAccent="aegean">
                 <TrailMapClient trail={trail} />
               </SectionCard>
             )}
@@ -261,7 +310,7 @@ export default async function TrailPage({
 
             {/* Waypoints */}
             {trail.waypoints && trail.waypoints.length > 0 && (
-              <SectionCard title="Key stops" borderAccent="terracotta">
+              <SectionCard id="trail-waypoints" title="Key stops" borderAccent="terracotta">
                 <ol className="space-y-4">
                   {trail.waypoints.map((w, i) => (
                     <li key={i} className="flex items-start gap-4">
@@ -350,16 +399,21 @@ export default async function TrailPage({
 
             {/* Related places */}
             {trail.combineWith && trail.combineWith.length > 0 && (
+              <div id="trail-pair-with">
               <RelatedPlacesBlock
                 ids={trail.combineWith}
                 description="Hike in the morning, village or winery in the afternoon. Start by 9am."
                 showAddToItinerary
               />
+              </div>
             )}
 
             {/* Footer CTA */}
             <footer className="pt-8 flex flex-col gap-4 relative" aria-label="Trail actions">
               <div id="trail-add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
+              <p className="text-xs text-olive/60 italic break-words">
+                Conditions are crowd-sourced. Hiking involves inherent risks — use your judgement and follow local advice.
+              </p>
               <p className="text-olive/70 text-sm break-words">
                 Add this trail to your plan and pair with a village or winery in the afternoon.
               </p>

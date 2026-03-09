@@ -54,6 +54,16 @@ export default function BookingsPage() {
     refreshBookings();
   }, [refreshBookings]);
 
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === "cyprus-bookings" && isMountedRef.current) {
+        refreshBookings();
+      }
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, [refreshBookings]);
+
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
 
   const fetchByEmail = async (e: React.FormEvent) => {

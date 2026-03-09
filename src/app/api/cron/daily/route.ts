@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { jsonError } from "@/lib/api-response";
 import { refreshTrailSummary } from "@/lib/trail-summary-cache";
 import {
   getSubscribersForTripCountdown,
@@ -74,6 +75,6 @@ export async function GET(req: NextRequest) {
     console.error("Cron daily error:", err);
     const errorMsg =
       process.env.NODE_ENV === "production" ? "Internal error" : err instanceof Error ? err.message : "Unknown error";
-    return Response.json({ ok: false, error: errorMsg }, { status: 500 });
+    return jsonError("SERVER_ERROR", errorMsg, 500);
   }
 }

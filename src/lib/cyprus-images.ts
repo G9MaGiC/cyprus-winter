@@ -1,7 +1,15 @@
 /**
  * Curated Cyprus image URLs. Local images only (no Unsplash) for reliability.
+ *
+ * Mapping principles:
+ * - Use place-specific images where available (e.g. lefkara → cyprus-lefkara.jpg)
+ * - Fallbacks: beach=south coast, ancient=Kourion, village=Troodos, monastery=Kykkos
+ * - Region match: Polis/Latsi → polis; Kyrenia/Pentadaktylos → bellapais or st-hilarion
  */
 const local = "/images/cyprus";
+
+/** Auth pages hero — warm, winter-appropriate (village/ruins). */
+export const AUTH_HERO_IMAGE = `${local}/cyprus-village-omodos.jpg`;
 
 /** Map attraction id to image URL. */
 export function getAttractionImage(id: string, type: string): string {
@@ -22,7 +30,7 @@ export function getAttractionImage(id: string, type: string): string {
     choirokoitia: `${local}/cyprus-ancient-kourion.jpg`,
     kolossi: `${local}/cyprus-ancient-kourion.jpg`,
     palaipafos: `${local}/cyprus-ancient-kourion.jpg`,
-    buffavento: `${local}/cyprus-monastery-kykkos.jpg`,
+    buffavento: `${local}/cyprus-st-hilarion.jpg`, // castle on Pentadaktylos, not monastery
     "cyprus-museum": `${local}/cyprus-ancient-kourion.jpg`,
     bellapais: `${local}/cyprus-bellapais.jpg`,
     "leventis-museum": `${local}/cyprus-ancient-kourion.jpg`,
@@ -66,32 +74,32 @@ export function getAttractionImage(id: string, type: string): string {
     "archangelos-michail": `${local}/cyprus-monastery-kykkos.jpg`,
     "st-nicholas-roof": `${local}/cyprus-monastery-kykkos.jpg`,
     "panagia-tou-moutoulla": `${local}/cyprus-monastery-kykkos.jpg`,
-    "st-sozomenos": `${local}/cyprus-st-hilarion.jpg`,
+    "st-sozomenos": `${local}/cyprus-village-omodos.jpg`, // abandoned village, Nicosia district
     "zygi-tavernas": `${local}/cyprus-governors-beach.jpg`,
     "governors-beach-tavernas": `${local}/cyprus-governors-beach.jpg`,
-    "the-polo": `${local}/cyprus-village-omodos.jpg`,
-    "the-farmyard": `${local}/cyprus-village-omodos.jpg`,
-    "polis-harbour": `${local}/cyprus-governors-beach.jpg`,
+    "the-polo": `${local}/cyprus-governors-beach.jpg`, // Limassol
+    "the-farmyard": `${local}/cyprus-polis.jpg`, // Kathikas, Paphos wine region
+    "polis-harbour": `${local}/cyprus-polis.jpg`,
     "psilo-dendro": `${local}/cyprus-village-omodos.jpg`,
     "kakopetria-trout": `${local}/cyprus-village-omodos.jpg`,
     "kouklia-cafe": `${local}/cyprus-ancient-kourion.jpg`,
-    "kiti-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "kiti-tavernas": `${local}/cyprus-governors-beach.jpg`, // Larnaca south coast
     "platres-trout": `${local}/cyprus-village-omodos.jpg`,
-    "latsi-harbour": `${local}/cyprus-governors-beach.jpg`,
-    "nicosia-tavernas": `${local}/cyprus-village-omodos.jpg`,
+    "latsi-harbour": `${local}/cyprus-polis.jpg`, // Latsi is Polis harbour
+    "nicosia-tavernas": `${local}/cyprus-ancient-kourion.jpg`, // capital, historic fallback
     "pissouri-tavernas": `${local}/cyprus-governors-beach.jpg`,
     "omodos-tavernas": `${local}/cyprus-village-omodos.jpg`,
     "limassol-marina": `${local}/cyprus-governors-beach.jpg`,
     "limassol-marina-restaurants": `${local}/cyprus-governors-beach.jpg`,
-    "protaras-tavernas": `${local}/cyprus-governors-beach.jpg`,
-    "larnaca-old-town": `${local}/cyprus-governors-beach.jpg`,
-    "pafos-harbour": `${local}/cyprus-governors-beach.jpg`,
+    "protaras-tavernas": `${local}/cyprus-fig-tree-bay.jpg`, // Protaras / east coast
+    "larnaca-old-town": `${local}/cyprus-governors-beach.jpg`, // south coast
+    "pafos-harbour": `${local}/cyprus-pafos-mosaics.jpg`, // Paphos region
     "agros-tavernas": `${local}/cyprus-village-omodos.jpg`,
     "lefkara-tavernas": `${local}/cyprus-lefkara.jpg`,
-    "kathikas-tavernas": `${local}/cyprus-village-omodos.jpg`,
-    "limassol-old-town": `${local}/cyprus-village-omodos.jpg`,
-    "kyrenia-tavernas": `${local}/cyprus-governors-beach.jpg`,
-    "ayia-napa-tavernas": `${local}/cyprus-governors-beach.jpg`,
+    "kathikas-tavernas": `${local}/cyprus-polis.jpg`, // Paphos wine region, near Polis
+    "limassol-old-town": `${local}/cyprus-governors-beach.jpg`, // Limassol coastal
+    "kyrenia-tavernas": `${local}/cyprus-bellapais.jpg`, // north coast region
+    "ayia-napa-tavernas": `${local}/cyprus-sea-caves.jpg`, // Ayia Napa area
     "troodos-square": `${local}/cyprus-village-omodos.jpg`,
     "solea-valley": `${local}/cyprus-village-omodos.jpg`,
     "zygi-mikri": `${local}/cyprus-governors-beach.jpg`,
@@ -99,16 +107,16 @@ export function getAttractionImage(id: string, type: string): string {
     "cor-gastronomy": `${local}/cyprus-village-omodos.jpg`,
     "sentio": `${local}/cyprus-village-omodos.jpg`,
     "santo-restaurant": `${local}/cyprus-governors-beach.jpg`,
-    "seasons-oriental": `${local}/cyprus-village-omodos.jpg`,
+    "seasons-oriental": `${local}/cyprus-governors-beach.jpg`, // Four Seasons Limassol
   };
   const fallbacks: Record<string, string> = {
-    beach: `${local}/cyprus-governors-beach.jpg`,
-    ancient: `${local}/cyprus-ancient-kourion.jpg`,
-    village: `${local}/cyprus-village-omodos.jpg`,
+    beach: `${local}/cyprus-governors-beach.jpg`,     // south coast
+    ancient: `${local}/cyprus-ancient-kourion.jpg`,   // Kourion ruins
+    village: `${local}/cyprus-village-omodos.jpg`,    // Troodos village
     monastery: `${local}/cyprus-monastery-kykkos.jpg`,
     winery: `${local}/cyprus-winery-troodos.jpg`,
     nature: `${local}/cyprus-trail-troodos.jpg`,
-    restaurant: `${local}/cyprus-village-omodos.jpg`,
+    restaurant: `${local}/cyprus-village-omodos.jpg`, // taverna/coastal fallback
   };
   const wineryImages: Record<string, string> = {
     "domes-sergiou": `${local}/domes-sergiou-hero.png`,
@@ -154,16 +162,16 @@ const trailImages: Record<string, string> = {
   mylikouri: `${local}/cyprus-trail-troodos.jpg`,
   "persephone-extended": `${local}/cyprus-trail-troodos.jpg`,
   "dwarf-oaks": `${local}/cyprus-trail-troodos.jpg`,
-  "lefkara-path": `${local}/cyprus-village-omodos.jpg`,
+  "lefkara-path": `${local}/cyprus-lefkara.jpg`,
   "potamia-dam": `${local}/cyprus-trail-troodos.jpg`,
   kionia: `${local}/cyprus-trail-troodos.jpg`,
   "trees-of-woe": `${local}/cyprus-trail-troodos.jpg`,
   "kalidonia-alt": `${local}/cyprus-trail-waterfall.jpg`,
-  pentadaktylos: `${local}/cyprus-trail-troodos.jpg`,
+  pentadaktylos: `${local}/cyprus-st-hilarion.jpg`, // Pentadaktylos range, north Cyprus
   "larnaca-salt-lake": `${local}/cyprus-trail-coastal.jpg`,
 };
 
 /** Map trail id to image URL. */
 export function getTrailImage(trailId: string): string {
-  return trailImages[trailId] ?? `${local}/cyprus-trail-troodos.jpg`;
+  return trailImages[trailId] ?? `${local}/cyprus-trail-troodos.jpg`; // Troodos fallback
 }

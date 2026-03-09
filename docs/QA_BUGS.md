@@ -969,6 +969,6 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 - **BUG-070:** Fixed — decode HTML entities in sanitize.ts and safe-url.ts; regex consumes trailing `)+`; tests added.
 - **BUG-072:** Fixed — right-now API returns 503 when rateLimit() throws.
 - **BUG-073:** Fixed — Track API Zod schema (trackBodySchema); z.record(key, value); error.issues.
-- **BUG-074:** Pending — Toast dismiss: set to `min-h-[44px] min-w-[44px]` in Toast.tsx:79 (apply manually if needed).
+- **BUG-074:** Fixed — Toast dismiss button now uses `min-h-[44px] min-w-[44px]` (CTO fix run).
 - **BUG-075:** Fixed — Account Skip link has min-h-[44px] and focus-visible ring.
 - **BUG-076:** Fixed — Admin stats loading uses SKELETON and sr-only status.

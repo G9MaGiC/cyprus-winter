@@ -1,5 +1,6 @@
 import OpenAI from "openai";
-import { buildAIContext } from "@/lib/ai-context";
+import { buildAIContext, buildAIContextRelevant } from "@/lib/ai-context";
+import { getPlaceById } from "@/data";
 import { rateLimit } from "@/lib/rate-limit";
 import { chatRequestSchema } from "@/lib/chat-schema";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
@@ -8,7 +9,7 @@ import { sanitizeText } from "@/lib/sanitize";
 
 // Providers in priority order. Each is tried until one succeeds (handles 429, timeouts, etc.).
 // AI Gateway (Vercel) first: single key, multi-provider routing. https://vercel.com/docs/ai-gateway/getting-started
-type Provider = { client: OpenAI; model: string };
+type Provider = { client: OpenAI; model: string; isOllama?: boolean };
 function buildProviders(): Provider[] {
   const providers: Provider[] = [];
   if (process.env.AI_GATEWAY_API_KEY) {
@@ -28,7 +29,16 @@ function buildProviders(): Provider[] {
     providers.push({ client: new OpenAI({ apiKey: process.env.GROQ_API_KEY, baseURL: "https://api.groq.com/openai/v1" }), model: "llama-3.1-8b-instant" });
   }
   if (process.env.OLLAMA_BASE_URL) {
-    providers.push({ client: new OpenAI({ apiKey: "ollama", baseURL: process.env.OLLAMA_BASE_URL }), model: process.env.OLLAMA_MODEL || "llama3.2" });
+    const ollamaTimeout = Number(process.env.OLLAMA_TIMEOUT_MS) || 60000;
+    providers.push({
+      client: new OpenAI({
+        apiKey: "ollama",
+        baseURL: process.env.OLLAMA_BASE_URL,
+        timeout: ollamaTimeout,
+      }),
+      model: process.env.OLLAMA_MODEL || "llama3.2",
+      isOllama: true,
+    });
   }
   if (process.env.MOONSHOT_API_KEY) {
     providers.push({ client: new OpenAI({ apiKey: process.env.MOONSHOT_API_KEY, baseURL: "https://api.moonshot.ai/v1" }), model: "moonshot-v1-8k" });
@@ -36,10 +46,26 @@ function buildProviders(): Provider[] {
   if (process.env.OPENAI_API_KEY) {
     providers.push({ client: new OpenAI({ apiKey: process.env.OPENAI_API_KEY }), model: "gpt-4o-mini" });
   }
+  // In development, when Ollama is configured, try it first (local inference)
+  if (process.env.NODE_ENV === "development" && process.env.OLLAMA_BASE_URL) {
+    const ollamaIdx = providers.findIndex((p) => p.isOllama);
+    if (ollamaIdx > 0) {
+      const [ollama] = providers.splice(ollamaIdx, 1);
+      providers.unshift(ollama);
+    }
+  }
   return providers;
 }
 
 const providers = buildProviders();
+
+function getOllamaModelNotFoundHint(err: unknown, model: string): string | null {
+  const msg = err instanceof Error ? err.message : String(err);
+  if (/model.*not found|not found.*model/i.test(msg)) {
+    return ` Run: ollama pull ${model}`;
+  }
+  return null;
+}
 
 function isRetryableError(err: unknown): boolean {
   const msg = err instanceof Error ? err.message : String(err);
@@ -101,47 +127,126 @@ export async function POST(req: Request) {
   }));
 
   const ctx = parsed.data.context;
-  let pageHint = "";
-  if (ctx?.path || ctx?.lastPlace) {
-    const parts: string[] = [];
-    if (ctx.path) parts.push(`User is on page: ${ctx.path}`);
-    if (ctx.lastPlace) parts.push(`User recently viewed: ${ctx.lastPlace}`);
-    pageHint = `\n### Current context (use to personalize)\n${parts.join(". ")}\nWhen relevant, tailor your answer to the page they're on or the place they've viewed. E.g. on /trails/artemis-trail suggest nearby villages or wineries; on /discover/omodos suggest trails or tastings nearby.\n`;
+  const parts: string[] = [];
+  if (ctx?.path) parts.push(`User is on page: ${ctx.path}`);
+  if (ctx?.lastPlace) parts.push(`User recently viewed: ${ctx.lastPlace}`);
+  if (ctx?.itinerary?.length) {
+    const dayLines = ctx.itinerary
+      .sort((a, b) => a.day - b.day)
+      .map(({ day, placeIds }) => {
+        const names = placeIds
+          .map((id) => getPlaceById(id)?.name ?? id)
+          .filter(Boolean);
+        return `Day ${day}: ${names.join(", ")}`;
+      });
+    parts.push(`User's plan: ${dayLines.join("; ")}. Use this to suggest nearby places, timing, route tips, or pairing ideas.`);
   }
+  const pageHint = parts.length
+    ? `\n### Current context (use to personalize)\n${parts.join(". ")}\nWhen relevant, tailor your answer to the page they're on, the place they've viewed, or their plan. E.g. on /trails/artemis-trail suggest nearby villages or wineries; on /discover/omodos suggest trails or tastings; for a plan with Artemis and Omodos, suggest Tsiakkas or timing tips.\n`
+    : "";
 
   let context: string;
   try {
-    context = buildAIContext();
+    const itineraryIds = ctx?.itinerary?.flatMap((e) => e.placeIds) ?? [];
+    context = buildAIContextRelevant({
+      path: ctx?.path,
+      lastPlace: ctx?.lastPlace,
+      itineraryPlaceIds: itineraryIds.length > 0 ? itineraryIds : undefined,
+    });
   } catch (ctxErr) {
-    console.error("buildAIContext error:", ctxErr);
-    context = "Trails, wineries, and attractions data available.";
+    console.error("buildAIContextRelevant error:", ctxErr);
+    try {
+      context = buildAIContext();
+    } catch {
+      context = "Trails, wineries, and attractions data available.";
+    }
   }
   const systemWithContext = `${SYSTEM_PROMPT}\n\n${pageHint}${context}`;
 
+  const encoder = new TextEncoder();
+  const baseHeaders: Record<string, string> = {
+    "Content-Type": "text/event-stream",
+    "Cache-Control": "no-cache",
+    "Connection": "keep-alive",
+    ...rateLimitSuccessHeaders(limitResult.remaining, CHAT_LIMIT, limitResult.bypassed),
+  };
+
+  const sendStream = (stream: ReadableStream) =>
+    new Response(stream, { headers: baseHeaders });
+
+  const emitChunk = (obj: unknown) => `data: ${JSON.stringify(obj)}\n\n`;
+
   let lastErr: unknown = null;
-  for (const { client, model } of providers) {
+  let lastProvider: Provider | null = null;
+  for (const provider of providers) {
+    const { client, model } = provider;
+    const apiMessages = [{ role: "system" as const, content: systemWithContext }, ...messages];
+
+    // Try streaming first
     try {
       const completion = await client.chat.completions.create({
         model,
-        messages: [{ role: "system", content: systemWithContext }, ...messages],
+        messages: apiMessages,
         max_tokens: 800,
+        stream: true,
       });
-      const raw = completion.choices[0]?.message?.content ?? "I couldn't put that together. Try again, or browse Discover and Trails for real places and tips.";
-      const reply = sanitizeText(raw, 10000);
-      return Response.json(
-        { reply },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, CHAT_LIMIT, limitResult.bypassed) }
-      );
+
+      const stream = new ReadableStream({
+        async start(controller) {
+          try {
+            for await (const chunk of completion) {
+              const content = chunk.choices[0]?.delta?.content;
+              if (content) {
+                controller.enqueue(encoder.encode(emitChunk({ delta: content })));
+              }
+            }
+            controller.enqueue(encoder.encode(emitChunk({ done: true })));
+            controller.close();
+          } catch (streamErr) {
+            const msg = streamErr instanceof Error ? streamErr.message : String(streamErr);
+            controller.enqueue(encoder.encode(emitChunk({ error: msg })));
+            controller.close();
+          }
+        },
+      });
+      return sendStream(stream);
     } catch (err) {
-      lastErr = err;
       if (!isRetryableError(err)) {
-        break; // Auth errors, validation etc — don't retry
+        lastErr = err;
+        lastProvider = provider;
+        break;
       }
-      console.warn(`Chat provider failed (${model}), trying next:`, err instanceof Error ? err.message : err);
+      // Fall back to non-streaming for this provider
+      try {
+        const completion = await client.chat.completions.create({
+          model,
+          messages: apiMessages,
+          max_tokens: 800,
+        });
+        const raw = completion.choices[0]?.message?.content ?? "I couldn't put that together. Try again, or browse Discover and Trails for real places and tips.";
+        const reply = sanitizeText(raw, 10000);
+
+        const stream = new ReadableStream({
+          start(controller) {
+            controller.enqueue(encoder.encode(emitChunk({ delta: reply })));
+            controller.enqueue(encoder.encode(emitChunk({ done: true })));
+            controller.close();
+          },
+        });
+        return sendStream(stream);
+      } catch (fallbackErr) {
+        lastErr = fallbackErr;
+        lastProvider = provider;
+        console.warn(`Chat provider failed (${model}), trying next:`, err instanceof Error ? err.message : err);
+      }
     }
   }
 
-  const msg = lastErr instanceof Error ? lastErr.message : "Something went wrong.";
+  let msg = lastErr instanceof Error ? lastErr.message : "Something went wrong.";
+  if (lastProvider?.isOllama) {
+    const hint = getOllamaModelNotFoundHint(lastErr, lastProvider.model);
+    if (hint) msg += hint;
+  }
   const is401 = msg.includes("401") || /invalid authentication|invalid api key/i.test(msg);
   const message = process.env.NODE_ENV === "production" && !is401 ? "Something went wrong. Please try again." : msg;
   console.error("Chat API error (all providers failed):", lastErr);

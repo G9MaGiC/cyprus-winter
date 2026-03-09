@@ -5,10 +5,10 @@ export default function NotFound() {
   return (
     <main className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}>
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
-        <p className="text-olive/60 text-sm mb-2">404</p>
         <h1 className="font-display text-2xl font-bold text-olive mb-2">
           Page not found
         </h1>
+        <p className="text-olive/60 text-sm mb-2" aria-hidden="true">404</p>
         <p className={`text-olive/80 leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
           No worries. This page doesn&apos;t exist or has been moved. These things happen. The island&apos;s still here. The trails, villages, and tastings are waiting. Head home or start exploring.
         </p>

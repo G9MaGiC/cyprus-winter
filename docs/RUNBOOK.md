@@ -4,7 +4,7 @@
 **Last updated:** March 2026  
 **Audience:** DevOps, on-call, CTO
 
-Runbooks and fallbacks for technical risks: AI dependency (Moonshot), Supabase config, and build directory ownership.
+Runbooks and fallbacks for technical risks: AI dependency (Moonshot), Supabase config, build directory ownership, and cron monitoring.
 
 ---
 
@@ -31,9 +31,13 @@ Supported providers (priority order): **xAI Grok** (grok-3-mini), **Groq** (free
 XAI_API_KEY=<your-key>            # xAI Grok at console.x.ai
 GROQ_API_KEY=<your-key>           # Free at console.groq.com, Llama models
 OLLAMA_BASE_URL=http://localhost:11434/v1   # For local/self-hosted Ollama
+OLLAMA_MODEL=llama3.2             # Optional; default llama3.2. Run: ollama pull <model>
+OLLAMA_TIMEOUT_MS=60000           # Optional; default 60000 (Ollama can be slower)
 MOONSHOT_API_KEY=<your-key>
 OPENAI_API_KEY=sk-...
 ```
+
+**Ollama:** In development, when `OLLAMA_BASE_URL` is set, Ollama is tried first. Recommended models: llama3.2, llama3.1, qwen2.5:7b, mistral. Use `ollama pull <model>` before setting OLLAMA_MODEL.
 
 ### Health Check
 
@@ -58,7 +62,7 @@ curl -s https://<your-domain>/api/health | jq '.ai'
 2. **Verify provider status**
    - xAI Grok: [console.x.ai](https://console.x.ai)
    - Groq: [console.groq.com/docs](https://console.groq.com/docs)
-   - Ollama: ensure the server at `OLLAMA_BASE_URL` is running
+   - Ollama: ensure the server at `OLLAMA_BASE_URL` is running; if "model not found", run `ollama pull <model>`
    - Moonshot: [Moonshot status](https://status.moonshot.ai) or provider docs
    - If outage: no code change needed. App degrades gracefully.
 
@@ -87,7 +91,15 @@ Bookings, trail reports, and conversion tracking use Supabase. If env vars are m
 | Variable | Purpose | Required For |
 |----------|---------|--------------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL | Bookings, trail reports, tracking |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Anon key (client) | Auth (login, signup, OAuth) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Service role key (server-only) | Write access to tables |
+
+**Optional — OAuth (login/register):** Set to `"true"` to show social sign-in buttons. Requires Supabase Auth providers configured in the dashboard.
+
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_AUTH_GOOGLE_ENABLED` | Show Google sign-in when Supabase Google provider is configured |
+| `NEXT_PUBLIC_AUTH_APPLE_ENABLED` | Show Apple sign-in when Supabase Apple provider is configured |
 
 ### Current Fallback
 
@@ -189,13 +201,106 @@ If you can’t fix ownership (e.g. shared host):
 
 ---
 
+## 4. Cron Jobs (Monitoring & Alerting)
+
+### Risk
+
+Cron jobs (`/api/cron/daily`, `/api/cron/weather-digest`) run on a schedule. If they fail, there is no built-in alerting. Trail summary and push notifications can go stale.
+
+### Configured Crons (Vercel)
+
+| Path | Schedule (UTC) | Purpose |
+|------|----------------|---------|
+| `/api/cron/daily` | 06:00 daily | Refresh trail summary cache; send trip countdown push notifications |
+| `/api/cron/weather-digest` | 12:00 daily | Send weather digest push notifications |
+
+### Authentication
+
+Both routes require `Authorization: Bearer <CRON_SECRET>`. Vercel injects this automatically. For manual runs:
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" https://<your-domain>/api/cron/daily
+curl -H "Authorization: Bearer $CRON_SECRET" https://<your-domain>/api/cron/weather-digest
+```
+
+### Monitoring Options
+
+1. **Vercel dashboard**  
+   Project → Logs / Functions. Filter by `/api/cron/*`. Check for 500s or timeouts.
+
+2. **External cron monitor**  
+   Use a service (e.g. [cron-job.org](https://cron-job.org), [Better Uptime](https://betteruptime.com), [Vercel Cron Monitoring](https://vercel.com/docs/cron-jobs/monitoring)) to:
+   - Hit `GET /api/cron/daily` and `GET /api/cron/weather-digest` with `Authorization: Bearer <CRON_SECRET>`
+   - Expect 200; alert on 4xx/5xx or timeout
+   - Run slightly after Vercel’s schedule (e.g. 06:05, 12:05) to confirm completion
+
+3. **Log aggregation**  
+   If using Datadog, Sentry, or similar: create alerts on errors from `/api/cron/*` paths.
+
+### Runbook: Cron Job Failing
+
+1. **Check Vercel logs**  
+   Inspect the failing cron invocation (error message, stack).
+
+2. **Common causes**
+   - Missing `CRON_SECRET` → 401
+   - Weather API timeout (daily, weather-digest) → 500
+   - Trail summary fetch failure (daily) → 500
+   - Push service (web-push) error → partial failure; some pushes may still succeed
+
+3. **Manual retry**
+   ```bash
+   curl -v -H "Authorization: Bearer $CRON_SECRET" https://<your-domain>/api/cron/daily
+   ```
+
+4. **Impact**
+   - Trail summary: app falls back to stale or empty data; Right Now and trail pages still work.
+   - Push notifications: users miss that run; next run will retry.
+
+### Recommended: Set Up Basic Alerting
+
+Before launch, configure at least one of:
+
+- Vercel → Project Settings → Notifications (deployment failures)
+- External cron monitor hitting the cron URLs and alerting on non-2xx
+- Log-based alerting (e.g. Sentry) for 500s from `/api/cron/*`
+
+---
+
+## 5. Capacitor Android App (Production Stance)
+
+### Risk
+
+The Android app loads the web app from a remote URL (`server.url` in `capacitor.config.ts`). By default this is `https://cyprus-winter.vercel.app`. Capacitor docs note this is **not intended for production**; live-update or bundled content is preferred long term.
+
+### Current Setup
+
+- **URL:** `CAPACITOR_SERVER_URL` env or fallback `https://cyprus-winter.vercel.app`
+- **Error page:** `errorPath: "error.html"` shows when load fails (subject to WebView behavior; not all failure types trigger it)
+- **Limitations:** App depends on Vercel uptime and network; cold start when offline may hang; `errorPath` does not reliably cover DNS/TLS failures
+
+### Runbook: App Shows Blank or "Can't Connect"
+
+1. **Check Vercel deployment** — Ensure the site is live at the configured URL.
+2. **Check network** — User may be offline; `error.html` will show if WebView invokes it.
+3. **Update server URL** — Set `CAPACITOR_SERVER_URL` and run `npm run android:sync` before building.
+
+### Migration Path (Post-Launch)
+
+- Consider bundled web content or [Capawesome Live Updates](https://capawesome.io/cloud/live-updates/) for updates without store releases.
+- When switching to production domain, set `CAPACITOR_SERVER_URL=https://cypruswinter.com` (or your domain) and sync.
+
+---
+
 ## Quick Reference
 
 | Issue | Check | Fix |
 |-------|-------|-----|
 | AI 503 | `curl /api/health` → `ai: false` | Add `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` |
+| Android app blank | Vercel URL reachable? | Check deployment; user may be offline; see §5 |
 | Supabase down | `curl /api/health` → `supabase: "error"` | Check URL/key, Supabase status |
 | Build EACCES | Pre-build fails on output dir | `sudo chown -R $(whoami) dist .next .next-build 2>/dev/null` then `npm run build:clean` |
+| Cron 500 | Vercel logs, external monitor | Check logs; retry manually; see §4 |
 
 ---
 

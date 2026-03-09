@@ -209,7 +209,7 @@ export default function TrailReportClient() {
             onChange={(e) => setNote(e.target.value)}
             rows={3}
             maxLength={500}
-            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
             placeholder="e.g. Muddy near the stream crossing. Microspikes helped."
           />
           <p className="mt-1 text-xs text-olive/60">{note.length}/500</p>
@@ -225,7 +225,7 @@ export default function TrailReportClient() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta/30 focus:ring-offset-0"
+            className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
             placeholder="your@email.com"
           />
         </div>
@@ -235,7 +235,7 @@ export default function TrailReportClient() {
             id="report-error"
             ref={errorRef}
             tabIndex={-1}
-            className="p-4 rounded-lg bg-terracotta/10 border border-terracotta/20 focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-2"
+            className="p-4 rounded-lg bg-terracotta/10 border border-terracotta/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
             role="alert"
           >
             <p className="text-sm text-olive/90 break-words">{error}</p>

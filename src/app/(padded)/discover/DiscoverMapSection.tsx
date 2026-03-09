@@ -1,27 +1,9 @@
 import { getPlaceById } from "@/data";
 import { getPlaceCoords } from "@/lib/place-coords";
-import {
-  beaches,
-  natureSites,
-  ancientSites,
-  villages,
-  monasteries,
-} from "@/data/attractions";
-import { wineries } from "@/data/wineries";
-import { restaurants } from "@/data/restaurants";
+import { allDiscoverItems } from "@/data/discover";
 import { SECTION, TYPE, LAYOUT } from "@/lib/design-tokens";
 import type { DiscoverMapPlace } from "./DiscoverMap";
 import DiscoverMapClient from "./DiscoverMapClient";
-
-const allDiscoverItems = [
-  ...beaches,
-  ...natureSites,
-  ...ancientSites,
-  ...villages,
-  ...wineries,
-  ...restaurants,
-  ...monasteries,
-];
 
 function getDiscoverMapPlaces(): DiscoverMapPlace[] {
   const results: DiscoverMapPlace[] = [];
@@ -63,10 +45,20 @@ export default function DiscoverMapSection() {
           id="discover-map-heading"
           className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
         >
-          Explore on map
+          {places.length > 0 ? `Places on map (${places.length})` : "Places on map"}
         </h2>
+        <p className="text-xs text-olive/60 -mt-2 mb-3">
+          Curated by the Cyprus Winter team.
+        </p>
         <div className="rounded-xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
-          <DiscoverMapClient places={places} />
+          {places.length === 0 ? (
+            <div className="min-h-[280px] flex flex-col items-center justify-center gap-2 py-12 px-6 text-center">
+              <p className="text-sm text-olive/70">No places with coordinates to display.</p>
+              <p className="text-xs text-olive/60">Browse the list above to explore places.</p>
+            </div>
+          ) : (
+            <DiscoverMapClient places={places} />
+          )}
         </div>
       </div>
     </section>

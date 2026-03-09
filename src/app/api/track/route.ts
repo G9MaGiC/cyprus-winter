@@ -24,6 +24,7 @@ const trackBodySchema = z.object({
 });
 
 const ALLOWED_EVENTS = new Set([
+  "web_vital",
   "page_view",
   "discover_view",
   "winery_detail_view",
@@ -31,6 +32,13 @@ const ALLOWED_EVENTS = new Set([
   "booking_complete",
   "shop_click",
   "plan_add",
+  "onboarding_started",
+  "onboarding_dismissed",
+  "onboarding_intent_planning",
+  "onboarding_intent_exploring",
+  "onboarding_intent_browsing",
+  "first_add_to_plan",
+  "first_booking",
 ]);
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {

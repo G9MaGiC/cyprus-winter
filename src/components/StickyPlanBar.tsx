@@ -26,9 +26,10 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
 
     let passedPlan = false;
     let footerInView = false;
+    let isMounted = true;
 
     const updateShow = () => {
-      setShow(passedPlan && !footerInView);
+      if (isMounted) setShow(passedPlan && !footerInView);
     };
 
     const planObserver = new IntersectionObserver(
@@ -53,6 +54,7 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
     if (footerSentinel && footerObserver) footerObserver.observe(footerSentinel);
 
     return () => {
+      isMounted = false;
       planObserver.disconnect();
       footerObserver?.disconnect();
     };

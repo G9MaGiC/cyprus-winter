@@ -21,6 +21,8 @@ export type SiteFooterProps = {
     troodos: string;
     paphos: string;
     practical: string;
+    privacy: string;
+    terms: string;
   };
   /** Locale switcher (e.g. LocaleSelector). Omit for root layout (LocaleLinks). */
   localeSwitcher?: React.ReactNode;
@@ -41,6 +43,8 @@ const DEFAULT_LABELS = {
   troodos: "Troodos",
   paphos: "Paphos",
   practical: "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
+  privacy: "Privacy",
+  terms: "Terms",
 };
 
 const FOOTER_LINKS: { href: string; key: keyof typeof DEFAULT_LABELS }[] = [
@@ -80,6 +84,18 @@ export default function SiteFooter({ labels, localeSwitcher, LinkComponent = App
               {L[key]}
             </LinkComponent>
           ))}
+        </nav>
+
+        <nav
+          aria-label="Legal"
+          className={`flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-olive/70 ${SECTION.headingGap}`}
+        >
+          <LinkComponent href="/privacy" prefetch="auto" className={footerLinkClass}>
+            {L.privacy}
+          </LinkComponent>
+          <LinkComponent href="/terms" prefetch="auto" className={footerLinkClass}>
+            {L.terms}
+          </LinkComponent>
         </nav>
 
         <div className={`inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 text-xs text-olive/80 mx-auto w-fit ${SECTION.headingGap}`}>
