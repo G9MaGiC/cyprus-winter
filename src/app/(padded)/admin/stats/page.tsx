@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import BackLink from "@/components/BackLink";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, SKELETON } from "@/lib/design-tokens";
 
 const ADMIN_KEY_STORAGE = "cyprus-admin-key";
 
@@ -105,7 +105,16 @@ export default function AdminStatsPage() {
   if (loading) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <p className="text-olive/70">Loading…</p>
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <h1 className="font-display text-2xl font-bold text-olive">Admin stats</h1>
+          <BackLink href="/" label="Back to home" />
+        </div>
+        <div className="space-y-6">
+          <div className={`h-8 w-48 ${SKELETON.bar}`} aria-hidden />
+          <div className={`h-24 ${SKELETON.block}`} aria-hidden />
+          <div className={`h-32 ${SKELETON.block}`} aria-hidden />
+        </div>
+        <p className="sr-only" role="status" aria-live="polite">Loading…</p>
       </div>
     );
   }

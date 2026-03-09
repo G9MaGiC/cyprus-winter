@@ -106,6 +106,7 @@ function EventCard({
           <Link
             href={`/search?q=${encodeURIComponent(event.region)}`}
             className={`px-4 py-2.5 rounded-lg ${CTA.secondaryCompact}`}
+            aria-label={`Explore ${event.region}`}
           >
             Explore {event.region} →
           </Link>
@@ -116,6 +117,7 @@ function EventCard({
             target="_blank"
             rel="noopener noreferrer"
             className={`px-4 py-2.5 rounded-lg ${CTA.chipTertiary}`}
+            aria-label={`Learn more about ${event.name}`}
           >
             Learn more
           </a>
@@ -169,6 +171,7 @@ export default function EventsPage() {
   };
 
   const hasFilters = Boolean(typeFilter || regionFilter);
+  const hasInvalidFilter = (typeFromUrl && !typeFilter) || (regionFromUrl && !regionFilter);
   const [filtersExpanded, setFiltersExpanded] = useState(hasFilters);
 
   const typeChips = [
@@ -221,6 +224,7 @@ export default function EventsPage() {
           <Link
             href="/plan"
             className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}
+            aria-label="Plan your trip"
           >
             Plan your trip
           </Link>
@@ -235,6 +239,11 @@ export default function EventsPage() {
         <ListPageWidgetStrip sticky sentinelId="events-plan-sentinel" ariaLabel="Filter events">
           <section aria-label="Filter events" className="mb-0">
             <div className={`${CARD.base} ${CARD.content}`}>
+              {hasInvalidFilter && (
+                <p className="text-sm text-olive/70 mb-4" role="status">
+                  Unknown filter — showing all events.
+                </p>
+              )}
               <div className="sm:hidden">
                 <button
                   type="button"
@@ -276,6 +285,7 @@ export default function EventsPage() {
             <Link
               href="/events"
               className={`mt-5 inline-flex ${CTA.secondaryCompact}`}
+              aria-label="Clear filters and show all events"
             >
               Clear filters
             </Link>
@@ -295,6 +305,7 @@ export default function EventsPage() {
                       key={month}
                       href={`#month-${month}`}
                       className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
+                      aria-label={`Jump to ${month}`}
                     >
                       {month}
                     </a>

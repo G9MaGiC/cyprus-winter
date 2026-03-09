@@ -3,6 +3,7 @@ import { getSupabase } from "@/lib/supabase";
 import { isPushConfigured } from "@/lib/push";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
 import { z } from "zod";
 
 const subscribeSchema = z.object({
@@ -25,7 +26,12 @@ export async function POST(req: NextRequest) {
     return jsonError("SERVICE_UNAVAILABLE", "Push is not configured", 503);
   }
 
-  const limitResult = await rateLimit(req, 5, "push-subscribe");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 5, "push-subscribe");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Please wait before subscribing again.", limitResult.resetAt);
   }

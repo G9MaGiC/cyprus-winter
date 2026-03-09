@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 function getTrailNames(guide: (typeof guides)[0]): string[] {
   return guide.trailIds
     .map((tid) => trails.find((t) => t.id === tid || t.slug === tid))
-    .filter(Boolean)
-    .map((t) => t!.name);
+    .filter((t): t is NonNullable<typeof t> => t != null)
+    .map((t) => t.name);
 }
 
 export default function GuidesListPage() {

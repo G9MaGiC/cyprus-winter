@@ -62,8 +62,9 @@ export default function DiscoverClient({
   );
 
   const chips = [
-    { id: "", label: "All categories" },
-    ...sections.map((s) => ({ id: s.id, label: s.title })),
+    { id: "", label: "All" },
+    { id: "nature", label: "Nature & coasts" },
+    ...sections.filter((s) => s.id !== "coasts").map((s) => ({ id: s.id, label: s.title })),
   ];
 
   useEffect(() => {
@@ -87,41 +88,47 @@ export default function DiscoverClient({
         className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
       >
         <div className={`${LAYOUT.list} mx-auto space-y-3`}>
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="prose-label text-olive/60 uppercase tracking-wider">
-              {filter && sectionExists
-                ? `${filterParam === "nature" ? "Nature & coasts" : activeSection?.title ?? "Places"} · ${totalCount} places`
-                : "Browse by category"}
-            </p>
-            {filter && sectionExists && (
-              <Link
-                href="/discover"
-                className={`text-xs font-medium ${SECTION.aegeanLink}`}
-              >
-                Clear filter
-              </Link>
+          <div role="group" aria-labelledby="discover-filter-label" className="space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 gap-y-1">
+              <span className="prose-label text-olive/60 uppercase tracking-wider" id="discover-filter-label">
+                {filter && sectionExists
+                  ? `${filterParam === "nature" ? "Nature & coasts" : activeSection?.title ?? "Places"} · ${totalCount} places`
+                  : "Filter by category"}
+              </span>
+              {filter && sectionExists && (
+                <Link
+                  href="/discover"
+                  className={`text-sm font-medium ${SECTION.aegeanLink}`}
+                >
+                  Clear filter
+                </Link>
+              )}
+            </div>
+
+            <FilterChips
+              chips={chips}
+              isActive={(chip) => {
+                if (chip.id === "") return !filter;
+                if (chip.id === "nature") return filter === "coasts" || filterParam === "nature";
+                return filter === chip.id;
+              }}
+              getHref={(chip) =>
+                chip.id === "" || filter === chip.id
+                  ? "/discover"
+                  : `/discover?filter=${chip.id}`
+              }
+              ariaLabel="Filter by category"
+            />
+
+            {filterParam && !sectionExists && (
+              <p className="text-sm text-olive/70 break-words" role="alert">
+                That filter doesn&apos;t exist—showing all places.{" "}
+                <Link href="/discover" className={SECTION.aegeanLink}>
+                  All categories
+                </Link>
+              </p>
             )}
           </div>
-
-          <FilterChips
-            chips={chips}
-            isActive={(chip) => (chip.id === "" ? !filter : filter === chip.id)}
-            getHref={(chip) =>
-              chip.id === "" || filter === chip.id
-                ? "/discover"
-                : `/discover?filter=${chip.id}`
-            }
-            ariaLabel="Filter by category"
-          />
-
-          {filterParam && !sectionExists && (
-            <p className="text-sm text-olive/70 break-words">
-              That filter doesn&apos;t exist—showing all places.{" "}
-              <Link href="/discover" className={SECTION.aegeanLink}>
-                All categories
-              </Link>
-            </p>
-          )}
 
           <div className="flex flex-wrap items-center gap-2">
             <Link href="/plan" className={CTA.primaryCompact}>
@@ -135,7 +142,8 @@ export default function DiscoverClient({
             <button
               type="button"
               onClick={scrollToMap}
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label="Scroll to map of places"
             >
               View on map
             </button>
@@ -187,6 +195,7 @@ export default function DiscoverClient({
                         window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
                       }
                       className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
+                      aria-label="Ask AI for recommendations"
                     >
                       Ask AI
                     </button>
@@ -209,6 +218,7 @@ export default function DiscoverClient({
 
         <footer
           className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 ${LAYOUT.footerBottomClearance} text-center`}
+          aria-label="Discover actions"
         >
           <p className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}>
             Add to your plan—or ask the AI. It knows the island in winter.
@@ -223,6 +233,7 @@ export default function DiscoverClient({
                 window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
               }
               className={CTA.secondaryCompact}
+              aria-label="Ask AI for trip suggestions"
             >
               Ask AI
             </button>

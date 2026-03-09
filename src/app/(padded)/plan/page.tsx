@@ -124,10 +124,10 @@ export default function PlanPage() {
           >
             <p className={SECTION.titleGap}>That place is no longer in our list.</p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/discover" className={CTA.secondaryCompact}>
+              <Link href="/discover" className={CTA.secondaryCompact} aria-label="Browse Discover to find places">
                 Browse Discover
               </Link>
-              <Link href="/trails" className={CTA.secondaryCompact}>
+              <Link href="/trails" className={CTA.secondaryCompact} aria-label="View trails">
                 View trails
               </Link>
             </div>
@@ -288,7 +288,7 @@ export default function PlanPage() {
           <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
             Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
           </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm" role="navigation" aria-label="Plan quick links">
             {hasWineries && (
               <Link href="/bookings" className={SECTION.aegeanLink}>
                 Book tastings

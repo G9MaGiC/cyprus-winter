@@ -1,5 +1,5 @@
 import { getLiveWeather, getWeatherAtCoords } from "@/lib/weather-live";
-import { rateLimit } from "@/lib/rate-limit";
+import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
 import { jsonError, rateLimitSuccessHeaders } from "@/lib/api-response";
 
 export const dynamic = "force-dynamic";
@@ -7,7 +7,12 @@ export const dynamic = "force-dynamic";
 const WEATHER_LIMIT = 30;
 
 export async function GET(req: Request) {
-  const limitResult = await rateLimit(req, WEATHER_LIMIT, "weather");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, WEATHER_LIMIT, "weather");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return Response.json(
       { error: { code: "RATE_LIMITED" as const, message: "Too many requests. Try again in a minute." } },

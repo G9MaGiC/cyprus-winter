@@ -59,7 +59,7 @@ function DistanceToggle({
           e.stopPropagation();
           onChange("less");
         }}
-        className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+        className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
           value === "less"
             ? "bg-white text-olive shadow-sm"
             : "text-olive/70 hover:text-olive"
@@ -74,7 +74,7 @@ function DistanceToggle({
           e.stopPropagation();
           onChange("more");
         }}
-        className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+        className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
           value === "more"
             ? "bg-white text-olive shadow-sm"
             : "text-olive/70 hover:text-olive"
@@ -206,14 +206,14 @@ export default function RightNowNearYou({
                   e.stopPropagation();
                   handlePickRegion();
                 }}
-                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2"
+                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 Change region
               </button>
             )}
             <AppLink
               href="/discover"
-              className="inline-flex items-center min-h-[44px] text-sm text-olive/70 hover:text-olive"
+              className="inline-flex items-center min-h-[44px] text-sm text-olive/70 hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
             >
               See more in Discover →
             </AppLink>
@@ -234,7 +234,7 @@ export default function RightNowNearYou({
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink
           href="/discover"
-          className="inline-flex items-center min-h-[44px] text-xs text-olive/70 hover:text-olive"
+          className="inline-flex items-center min-h-[44px] text-xs text-olive/70 hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
         >
           See more →
         </AppLink>

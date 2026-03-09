@@ -1,7 +1,27 @@
 import { NextRequest } from "next/server";
+import { z } from "zod";
 import { getSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
+
+const trackBodySchema = z.object({
+  event: z.string().min(1).max(64),
+  sessionId: z.string().max(128).regex(/^[A-Za-z0-9_-]*$/).optional().nullable(),
+  properties: z
+    .record(z.string(), z.union([z.string().max(200), z.number().finite(), z.boolean(), z.null()]))
+    .optional()
+    .refine(
+      (v) => {
+        if (!v) return true;
+        const keys = Object.keys(v);
+        if (keys.length > 30) return false;
+        if (JSON.stringify(v).length > 2048) return false;
+        return keys.every((k) => k.length >= 1 && k.length <= 64 && /^[A-Za-z0-9_.-]+$/.test(k));
+      },
+      { message: "Invalid properties" }
+    ),
+});
 
 const ALLOWED_EVENTS = new Set([
   "page_view",
@@ -77,24 +97,34 @@ function normalizeProperties(
 }
 
 export async function POST(req: NextRequest) {
-  const limitResult = await rateLimit(req, 120, "track");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 120, "track");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
   }
   try {
-    const body = await req.json();
-    const event = String(body.event ?? "").trim();
-    const sessionIdResult = normalizeSessionId(body.sessionId);
+    const raw = await req.json();
+    const parsed = trackBodySchema.safeParse(raw);
+    if (!parsed.success) {
+      const msg = parsed.error.issues.map((e) => e.message).join("; ") || "Invalid request body";
+      return jsonError("BAD_REQUEST", msg, 400);
+    }
+    const { event: eventVal, sessionId: sessionIdVal, properties: propertiesVal } = parsed.data;
+    const event = eventVal.trim();
+    if (!event || !ALLOWED_EVENTS.has(event)) {
+      return jsonError("BAD_REQUEST", "Invalid event", 400);
+    }
+    const sessionIdResult = normalizeSessionId(sessionIdVal ?? null);
     if (!sessionIdResult.ok) {
       return jsonError("BAD_REQUEST", sessionIdResult.error, 400);
     }
-    const propertiesResult = normalizeProperties(body.properties);
+    const propertiesResult = normalizeProperties(propertiesVal ?? {});
     if (!propertiesResult.ok) {
       return jsonError("BAD_REQUEST", propertiesResult.error, 400);
-    }
-
-    if (!event || !ALLOWED_EVENTS.has(event)) {
-      return jsonError("BAD_REQUEST", "Invalid event", 400);
     }
 
     let stored = false;
@@ -104,7 +134,7 @@ export async function POST(req: NextRequest) {
         event,
         properties: {
           ...propertiesResult.value,
-          user_agent: req.headers.get("user-agent") ?? undefined,
+          user_agent: (req.headers.get("user-agent") ?? "").slice(0, 200) || undefined,
         },
         session_id: sessionIdResult.value,
       });

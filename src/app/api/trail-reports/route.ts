@@ -3,6 +3,7 @@ import { rateLimit } from "@/lib/rate-limit";
 import { trails } from "@/data/trails";
 import { z } from "zod";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
 
 export const dynamic = "force-dynamic";
@@ -18,7 +19,12 @@ const reportSchema = z.object({
 });
 
 export async function POST(req: Request) {
-  const limitResult = await rateLimit(req, 10, "trail-reports");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 10, "trail-reports");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Too many reports. Please wait before submitting another.",

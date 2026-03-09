@@ -8,10 +8,16 @@ import { guides } from "@/data/guides";
 import { trails } from "@/data/trails";
 import { z } from "zod";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
 
 export async function POST(req: Request) {
-  const limitResult = await rateLimit(req, 10, "bookings");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 10, "bookings");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before making another booking.",
@@ -161,7 +167,12 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  const limitResult = await rateLimit(req, 15, "bookings-lookup");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 15, "bookings-lookup");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before checking your bookings again.",

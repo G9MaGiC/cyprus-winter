@@ -109,6 +109,7 @@ export default function DiscoverPage() {
 
         <section
           aria-labelledby="discover-search-heading"
+          role="search"
           className={`${LAYOUT.safeAreaX} -mt-4`}
         >
           <div className={`${LAYOUT.list} mx-auto`}>

@@ -330,6 +330,7 @@ export default async function AttractionPage({
                   <a
                     href={`tel:${a.contactPhone}`}
                     className={`gap-2 ${CTA.secondaryCompact}`}
+                    aria-label={`Call ${a.contactPhone}`}
                   >
                     Call {a.contactPhone}
                   </a>
@@ -463,6 +464,7 @@ export default async function AttractionPage({
               target="_blank"
               rel="noopener noreferrer"
               className={`gap-2 mt-3 ${CTA.secondaryCompact}`}
+              aria-label="Get directions (opens in new tab)"
             >
               Get directions →
             </a>
@@ -524,7 +526,7 @@ export default async function AttractionPage({
                       <li key={r.id}>
                         <Link
                           href={r.href}
-                          className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:text-terracotta-muted hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+                          className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:text-terracotta-muted hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                           {r.name} →
                         </Link>
@@ -535,7 +537,7 @@ export default async function AttractionPage({
               );
             })()}
 
-            <footer className="pt-8 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label="Place actions">
+            <footer className="pt-8 pb-4 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label="Place actions">
               <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-olive/70 text-sm break-words">
                 Add this place to your plan and pair it with a trail or village nearby.

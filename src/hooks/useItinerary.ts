@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { getPlaceById, type PlanItem } from "@/data";
 import { decodeItinerary, buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
@@ -44,7 +44,16 @@ function loadItinerary(): Record<number, string[]> {
 
 export function useItinerary() {
   const searchParams = useSearchParams();
+  const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const isMountedRef = useRef(true);
   const [days, setDays] = useState<Record<number, string[]>>(emptyDays);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
   const [activeDay, setActiveDay] = useState(1);
   const [hydrated, setHydrated] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -80,7 +89,8 @@ export function useItinerary() {
       const nextDay = isAdding ? [...current, id] : current.filter((x) => x !== id);
       if (isAdding) {
         setLastAddedId(id);
-        setTimeout(() => setLastAddedId(null), 600);
+        const t = setTimeout(() => setLastAddedId(null), 600);
+        timeoutRefs.current.push(t);
       }
       return { ...prev, [activeDay]: nextDay };
     });
@@ -153,8 +163,12 @@ export function useItinerary() {
     const text = lines.join("\n").trim() || "Your Cyprus Winter plan. Add places from Discover or Trails to get going.";
     try {
       await navigator.clipboard.writeText(text);
+      if (!isMountedRef.current) return;
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      const t = setTimeout(() => {
+        if (isMountedRef.current) setCopied(false);
+      }, 2000);
+      timeoutRefs.current.push(t);
     } catch {
       // clipboard not available
     }
@@ -166,12 +180,23 @@ export function useItinerary() {
     const url = toAbsoluteUrl(sharePath);
     try {
       await navigator.clipboard.writeText(url);
+      if (!isMountedRef.current) return;
       setLinkCopied(true);
-      setTimeout(() => setLinkCopied(false), 2000);
+      const t = setTimeout(() => {
+        if (isMountedRef.current) setLinkCopied(false);
+      }, 2000);
+      timeoutRefs.current.push(t);
     } catch {
       // clipboard not available
     }
   }, [sharePath]);
+
+  useEffect(() => {
+    return () => {
+      for (const t of timeoutRefs.current) clearTimeout(t);
+      timeoutRefs.current = [];
+    };
+  }, []);
 
   return {
     days,

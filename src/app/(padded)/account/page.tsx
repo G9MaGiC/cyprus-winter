@@ -120,7 +120,7 @@ export default function AccountPage() {
           <Link href="/login" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
             Sign in
           </Link>
-          <Link href="/plan" className="px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors">
+          <Link href="/plan" className="inline-flex items-center min-h-[44px] px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
             Skip — use my plan on this device
           </Link>
         </div>

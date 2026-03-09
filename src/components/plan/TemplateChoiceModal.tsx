@@ -28,6 +28,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
       role="dialog"
       aria-modal="true"
       aria-labelledby="template-choice-title"
+      aria-describedby="template-choice-desc"
       onKeyDown={(e) => trapFocus(e, modalRef.current, onClose)}
     >
       <div
@@ -37,7 +38,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
         <h2 id="template-choice-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           Apply {templateLabel}?
         </h2>
-        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
+        <p id="template-choice-desc" className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
           Add to your plan or replace what you have.
         </p>
         <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end pt-2">

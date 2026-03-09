@@ -90,7 +90,7 @@ export default function PlacePicker({
   const renderList = (items: Place[], tabLabel: string) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
-        <p className="text-sm text-olive/60 col-span-full py-4">
+        <p className="text-sm text-olive/60 col-span-full py-4" role="status">
           {search.trim() ? "No matches for that. Try another search, or pick a different tab." : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
         </p>
       ) : items.map((item) => {
@@ -100,6 +100,7 @@ export default function PlacePicker({
             key={item.id}
             type="button"
             onClick={() => onAdd(item.id)}
+            aria-label={isAdded ? `${item.name} (added to plan)` : `Add ${item.name} to plan`}
             className={`text-left p-3 sm:p-4 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               isAdded
                 ? "border-terracotta/10 bg-terracotta/10"

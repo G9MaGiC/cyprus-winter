@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sanitizeText, sanitizeForStorage } from "./sanitize";
+import { sanitizeText, sanitizeForStorage, sanitizeMarkdownLinks } from "./sanitize";
 
 describe("sanitizeText", () => {
   it("returns empty string for non-string input", () => {
@@ -31,6 +31,22 @@ describe("sanitizeText", () => {
 
   it("truncates to maxLength when provided", () => {
     expect(sanitizeText("hello world", 5)).toBe("hello");
+  });
+});
+
+describe("sanitizeMarkdownLinks", () => {
+  it("strips javascript: links", () => {
+    expect(sanitizeMarkdownLinks("[click](javascript:alert(1))")).toBe("click");
+  });
+
+  it("strips entity-encoded javascript: links (XSS bypass)", () => {
+    expect(sanitizeMarkdownLinks("[click](&#106;avascript:alert(1))")).toBe("click");
+    expect(sanitizeMarkdownLinks("[x](&#x6a;avascript:void(0))")).toBe("x");
+  });
+
+  it("keeps safe links", () => {
+    expect(sanitizeMarkdownLinks("[ok](https://example.com)")).toBe("[ok](https://example.com)");
+    expect(sanitizeMarkdownLinks("[rel](/path)")).toBe("[rel](/path)");
   });
 });
 

@@ -27,7 +27,7 @@ export function encodeItinerary(days: ItineraryDays): string {
 export function decodeItinerary(param: string | null): ItineraryDays | null {
   if (!param || typeof param !== "string") return null;
   const trimmed = param.trim();
-  if (!trimmed) return null;
+  if (!trimmed || trimmed.length > 2000) return null;
 
   const out: ItineraryDays = Object.fromEntries(
     Array.from({ length: MAX_DAYS }, (_, i) => [i + 1, [] as string[]])

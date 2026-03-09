@@ -72,9 +72,10 @@ export default async function ThisWeekGrid() {
   const tip = getWeatherTip();
   const eventHighlight = getEventHighlight();
   const trailIdsWithData = trailSummary
-    ? FEATURED_TRAIL_IDS.filter((id) => trailSummary[id])
+    ? FEATURED_TRAIL_IDS.filter((id) => trailSummary![id])
     : ["artemis"];
-  const featuredTrailId = pickDailyWithKey(trailIdsWithData, "featured-trail");
+  const featuredTrailIds = trailIdsWithData.length > 0 ? trailIdsWithData : ["artemis"];
+  const featuredTrailId = pickDailyWithKey(featuredTrailIds, "featured-trail");
   const featuredStatus = trailSummary?.[featuredTrailId];
   const featuredTrail = trails.find((t) => t.id === featuredTrailId);
   const trailName = featuredTrail?.name ?? "Artemis Trail";

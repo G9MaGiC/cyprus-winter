@@ -28,6 +28,7 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
       role="dialog"
       aria-modal="true"
       aria-labelledby="clear-day-title"
+      aria-describedby="clear-day-desc"
       onKeyDown={(e) => trapFocus(e, modalRef.current, onClose)}
     >
       <div
@@ -37,7 +38,7 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
         <h2 id="clear-day-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           Clear Day {activeDay}?
         </h2>
-        <p className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
+        <p id="clear-day-desc" className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
           Remove all {placeCount} {placeCount === 1 ? "place" : "places"} from Day {activeDay}. You can add them back anytime.
         </p>
         <div className="flex flex-col-reverse sm:flex-row gap-3 justify-end pt-2">

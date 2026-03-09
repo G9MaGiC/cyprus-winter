@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
@@ -27,7 +27,17 @@ function StatusBadge({ status }: { status: Booking["status"] }) {
 }
 
 export default function BookingsPage() {
+  const isMountedRef = useRef(true);
+  const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+    };
+  }, []);
   const [loading, setLoading] = useState(true);
   const [emailLookup, setEmailLookup] = useState("");
   const [emailLoading, setEmailLoading] = useState(false);
@@ -56,6 +66,7 @@ export default function BookingsPage() {
     try {
       const res = await fetch(`/api/bookings?email=${encodeURIComponent(email)}`);
       const data = await res.json();
+      if (!isMountedRef.current) return;
       if (res.status === 429) {
         setEmailError("Too many requests. Wait a moment and try again.");
         setEmailLoading(false);
@@ -72,21 +83,27 @@ export default function BookingsPage() {
       const local = loadLocalBookings();
       const merged = mergeBookings(local, apiBookings);
       saveLocalBookings(merged);
+      if (!isMountedRef.current) return;
       setBookings(merged);
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
       if (apiBookings.length === 0) {
         setEmailSuccess("No bookings for that email. Try another, or book from Discover.");
       } else {
         const added = merged.length - local.length;
         setEmailSuccess(added > 0 ? `Loaded ${added} booking${added === 1 ? "" : "s"}.` : "All set. No new bookings to load.");
       }
-      setTimeout(() => setEmailSuccess(null), 5000);
+      successTimerRef.current = setTimeout(() => {
+        successTimerRef.current = null;
+        if (isMountedRef.current) setEmailSuccess(null);
+      }, 5000);
     } catch (err) {
+      if (!isMountedRef.current) return;
       const msg = err instanceof Error ? err.message : "";
       setEmailError(
         msg && !/failed to fetch|network/i.test(msg) ? msg : "Couldn't load your bookings. Check your connection and try again."
       );
     } finally {
-      setEmailLoading(false);
+      if (isMountedRef.current) setEmailLoading(false);
     }
   };
 

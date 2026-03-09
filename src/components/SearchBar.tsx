@@ -144,7 +144,7 @@ export default function SearchBar({
               <Link
                 href={`/plan?add=${encodeURIComponent(r.item.id)}`}
                 onClick={(e) => e.stopPropagation()}
-                className="shrink-0 text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-2 py-1 -mx-2 -my-1"
+                className="shrink-0 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-3 py-2"
               >
                 Add to plan
               </Link>
@@ -154,7 +154,7 @@ export default function SearchBar({
       )}
 
       {focused && query.length > 0 && query.length < 2 && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-olive/60 text-sm">
+        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-olive/60 text-sm" role="status">
           Type at least 2 characters
         </div>
       )}
@@ -165,19 +165,19 @@ export default function SearchBar({
           <div className="flex flex-wrap items-center justify-center gap-2">
             <Link
               href="/discover"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Browse Discover
             </Link>
             <Link
               href="/trails"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               View all trails
             </Link>
             <Link
               href="/plan"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Plan your trip
             </Link>

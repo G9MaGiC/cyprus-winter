@@ -65,7 +65,7 @@ export default function DiscoverMapSection() {
         >
           Explore on map
         </h2>
-        <div className="rounded-2xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
+        <div className="rounded-xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
           <DiscoverMapClient places={places} />
         </div>
       </div>

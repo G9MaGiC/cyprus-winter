@@ -1,13 +1,19 @@
 import { NextResponse } from "next/server";
 import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
-import { jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
 
 // Health check must run at request time (Supabase connectivity, env)
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
-  const limitResult = await rateLimit(req, 60, "health");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 60, "health");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many health checks", limitResult.resetAt);
   }

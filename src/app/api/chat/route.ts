@@ -3,6 +3,7 @@ import { buildAIContext } from "@/lib/ai-context";
 import { rateLimit } from "@/lib/rate-limit";
 import { chatRequestSchema } from "@/lib/chat-schema";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 
 // Providers in priority order. Each is tried until one succeeds (handles 429, timeouts, etc.).
@@ -60,7 +61,12 @@ Winter in Cyprus is 16 to 20°C. Coast mild, Troodos cooler. Perfect for hiking 
 const CHAT_LIMIT = process.env.NODE_ENV === "development" ? 60 : 20;
 
 export async function POST(req: Request) {
-  const limitResult = await rateLimit(req, CHAT_LIMIT, "chat");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, CHAT_LIMIT, "chat");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait a moment before trying again.",

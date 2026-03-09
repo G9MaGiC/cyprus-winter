@@ -19,6 +19,8 @@ Use this when configuring the Cyprus Winter project in Vercel.
 
 **P0 before launch:** Set Redis (`UPSTASH_REDIS_REST_*`) for shared rate limiting. Never set `STRESS_TEST_TOKEN` in production.
 
+**Rate limiting:** Relies on `x-forwarded-for` / `x-real-ip` for client identification. Vercel (and typical reverse proxies) set these. If deploying behind a custom proxy, ensure it overwrites these headers so they cannot be spoofed by clients.
+
 ---
 
 ## 1. Build ✓

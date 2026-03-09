@@ -333,7 +333,7 @@ export default async function TrailPage({
                 </p>
                 <div className="space-y-4">
                   {getSecretsForPlace(trail.id).map((s) => (
-                    <div key={s.id} className="p-4 rounded-lg bg-white/80 border border-sand-200/80">
+                    <div key={s.id} className="p-4 rounded-xl bg-white/80 border border-sand-200/80">
                       <h3 className="font-display font-semibold text-olive mb-1">{s.title}</h3>
                       <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
                     </div>

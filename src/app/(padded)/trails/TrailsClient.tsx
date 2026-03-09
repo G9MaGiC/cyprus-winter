@@ -92,7 +92,7 @@ export default function TrailsClient() {
             <Link href="/plan" className={CTA.tertiaryOnDark} aria-label="Build a day or pick a template">
               Plan your trip
             </Link>
-            <Link href="/weather" className={CTA.ghost}>
+            <Link href="/weather" className={CTA.ghost} aria-label="View weather forecast">
               Weather
             </Link>
           </div>
@@ -104,6 +104,8 @@ export default function TrailsClient() {
 
         {/* Sticky filter bar — Discover-style */}
         <div
+          role="region"
+          aria-label="Trail filters"
           className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
         >
           <div className={`${LAYOUT.list} mx-auto space-y-4`}>
@@ -182,6 +184,7 @@ export default function TrailsClient() {
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
                   className={CTA.secondaryCompact}
+                  aria-label="Ask AI for trail suggestions"
                 >
                   Ask AI
                 </button>
@@ -200,7 +203,7 @@ export default function TrailsClient() {
             <div className="space-y-6 sm:space-y-8">
               {openTrails.length > 0 && (
                 <details className="group" open>
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-aegean shrink-0" aria-hidden />
                     Open ({openTrails.length})
                     <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
@@ -214,7 +217,7 @@ export default function TrailsClient() {
               )}
               {cautionTrails.length > 0 && (
                 <details className="group" open={cautionTrails.length <= 4}>
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-golden shrink-0" aria-hidden />
                     Caution ({cautionTrails.length})
                     <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
@@ -228,7 +231,7 @@ export default function TrailsClient() {
               )}
               {closedTrails.length > 0 && (
                 <details className="group">
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-terracotta shrink-0" aria-hidden />
                     Closed ({closedTrails.length})
                     <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
@@ -242,7 +245,7 @@ export default function TrailsClient() {
               )}
               {unknownTrails.length > 0 && (
                 <details className="group">
-                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] items-center">
+                  <summary className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center">
                     <span className="w-2 h-2 rounded-full bg-sand-300 shrink-0" aria-hidden />
                     No report ({unknownTrails.length})
                     <span className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200" aria-hidden>▾</span>
@@ -255,7 +258,7 @@ export default function TrailsClient() {
                   <p className="mt-4 text-sm text-olive/70">
                     <Link
                       href={`/trails/${unknownTrails[0].id}/report`}
-                      className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
+                      className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                     >
                       Report conditions
                     </Link>
@@ -290,7 +293,7 @@ export default function TrailsClient() {
               </div>
               <div className="mt-4 pt-4 border-t border-sand-200/80 space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <Link href="/plan" className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">
+                  <Link href="/plan" className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded">
                     Add to plan →
                   </Link>
                   {filtered.length > 0 && (unknownTrails[0] ?? filtered[0]) && (
@@ -319,6 +322,7 @@ export default function TrailsClient() {
             <Link
               href="/plan"
               className={`flex-1 max-w-sm flex justify-center items-center min-h-[48px] px-6 rounded-xl ${CTA.primaryCompact}`}
+              aria-label="Add trails to your plan"
             >
               Add to plan
             </Link>

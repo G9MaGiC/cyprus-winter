@@ -71,7 +71,8 @@ export default function PlanShareBar({
             onClick={() => setShareMenuOpen((v) => !v)}
             className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta/10 text-terracotta hover:bg-terracotta/15 border border-terracotta/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-expanded={shareMenuOpen}
-            aria-haspopup="true"
+            aria-haspopup="menu"
+            aria-label="Copy and share options"
           >
             Copy & share
             <span className={`text-terracotta/70 transition-transform ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
@@ -80,6 +81,7 @@ export default function PlanShareBar({
           </button>
           {shareMenuOpen && (
             <div
+              role="menu"
               className="absolute right-0 top-full mt-2 py-2 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10"
               onKeyDown={(e) => {
                 if (e.key === "Escape") {
@@ -91,6 +93,7 @@ export default function PlanShareBar({
               <button
                 ref={shareMenuFirstItemRef}
                 type="button"
+                role="menuitem"
                 onClick={() => {
                   copyShareLink();
                   setShareMenuOpen(false);
@@ -102,6 +105,7 @@ export default function PlanShareBar({
               </button>
               <button
                 type="button"
+                role="menuitem"
                 onClick={() => {
                   copyItinerary();
                   setShareMenuOpen(false);

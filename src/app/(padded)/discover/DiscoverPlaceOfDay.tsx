@@ -5,7 +5,7 @@ import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { getAttractionImage } from "@/lib/cyprus-images";
-import { pickDailySafeWithBoost } from "@/lib/daily-rotator";
+import { pickDailyMultipleWithTypeDiversity } from "@/lib/daily-rotator";
 import { PROMOTED_PLACE_IDS } from "@/data/promoted";
 import {
   beaches,
@@ -30,17 +30,17 @@ const allDiscoverItems = [
   ...monasteries,
 ] as (Attraction | Winery | Restaurant)[];
 
-function getDiscoverPlaceOfDay() {
-  if (allDiscoverItems.length === 0) return null;
-  const picked = pickDailySafeWithBoost(
+function getDiscoverPlaceOfDayPicks() {
+  if (allDiscoverItems.length === 0) return [];
+  const picks = pickDailyMultipleWithTypeDiversity(
     allDiscoverItems,
     PROMOTED_PLACE_IDS,
     "discover-place-of-day",
+    3,
     5
   );
-  if (!picked) return null;
-
-  const desc = picked.description;
+  return picks.map((picked) => {
+  const desc = picked.description ?? "";
   const fallbackByType: Record<string, string> = {
     winery: "Heaters on the terrace.",
     village: "Cobbles to yourself midweek.",
@@ -81,6 +81,7 @@ function getDiscoverPlaceOfDay() {
     id: picked.id,
     name: picked.name,
     region: picked.region,
+    type: picked.type,
     href: `/discover/${picked.id}`,
     image: getAttractionImage(picked.id, picked.type),
     imageAlt: `${picked.name}, ${picked.region} — Cyprus winter`,
@@ -88,10 +89,13 @@ function getDiscoverPlaceOfDay() {
     overlay: overlayByType[picked.type] ?? "Worth a visit",
     pairWith: pairPlace && pairHref ? { name: pairPlace.name, href: pairHref } : undefined,
   };
+  });
 }
 
 export default function DiscoverPlaceOfDay() {
-  const place = getDiscoverPlaceOfDay();
+  const picks = getDiscoverPlaceOfDayPicks();
+  const place = picks[0] ?? null;
+  const alsoWorth = picks.slice(1, 3);
   const planItem = place ? getPlaceById(place.id) : undefined;
   if (!place) return null;
 
@@ -103,7 +107,7 @@ export default function DiscoverPlaceOfDay() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2
           id="discover-place-of-day-heading"
-          className="text-olive/70 text-sm font-semibold uppercase tracking-wider mb-3"
+          className={`prose-label text-olive/70 ${SECTION.headingGap}`}
         >
           Today&apos;s pick
         </h2>
@@ -129,7 +133,7 @@ export default function DiscoverPlaceOfDay() {
             <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
-            <span className="absolute top-4 right-4 px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider bg-white/95 text-charcoal">
+            <span className="absolute top-4 right-4 px-3 py-1.5 rounded-lg prose-label bg-white/95 text-charcoal">
               Place of the day
             </span>
           </Link>
@@ -137,7 +141,7 @@ export default function DiscoverPlaceOfDay() {
             <div>
               <Link
                 href={place.href}
-                className="font-display text-2xl sm:text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors block"
+                className="font-display text-2xl sm:text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1"
               >
                 {place.name}
               </Link>
@@ -149,10 +153,26 @@ export default function DiscoverPlaceOfDay() {
                   Pair with{" "}
                   <Link
                     href={place.pairWith.href}
-                    className="font-medium text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded"
+                    className={`font-medium ${SECTION.aegeanLink}`}
                   >
                     {place.pairWith.name}
                   </Link>
+                </p>
+              )}
+              {alsoWorth.length > 0 && (
+                <p className="text-sm text-olive/80 mt-3">
+                  Also worth a visit:{" "}
+                  {alsoWorth.map((p, i) => (
+                    <span key={p.id}>
+                      {i > 0 && ", "}
+                      <Link
+                        href={p.href}
+                        className={`font-medium ${SECTION.aegeanLink}`}
+                      >
+                        {p.name}
+                      </Link>
+                    </span>
+                  ))}
                 </p>
               )}
             </div>
@@ -161,7 +181,7 @@ export default function DiscoverPlaceOfDay() {
               <AddToItineraryButton placeId={place.id} label="Add to plan" />
               <Link
                 href={place.href}
-                className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors min-h-[44px] inline-flex items-center"
+                className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
               >
                 See details
               </Link>

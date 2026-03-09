@@ -55,6 +55,7 @@ export default function SuggestedForDay({
             key={r.id}
             type="button"
             onClick={() => onAdd(r.id)}
+            aria-label={`Add ${r.name} to day`}
             className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2 rounded-lg text-sm font-medium bg-white border border-sand-200/80 text-olive hover:border-aegean/40 hover:bg-aegean/10 hover:text-aegean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <span className="truncate max-w-[140px]">{r.name}</span>

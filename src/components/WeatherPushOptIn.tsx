@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { CARD, SECTION } from "@/lib/design-tokens";
 
 const CLIENT_ID_KEY = "cyprus-winter-push-client-id";
@@ -27,6 +27,14 @@ function urlBase64ToUint8Array(base64: string): Uint8Array {
 export default function WeatherPushOptIn() {
   const [status, setStatus] = useState<"idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error" | "notConfigured">("idle");
   const [mounted, setMounted] = useState(false);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -53,6 +61,7 @@ export default function WeatherPushOptIn() {
     setStatus("loading");
     try {
       const perm = await Notification.requestPermission();
+      if (!isMountedRef.current) return;
       if (perm !== "granted") {
         setStatus("denied");
         return;
@@ -60,23 +69,26 @@ export default function WeatherPushOptIn() {
 
       const reg = await navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" });
       await navigator.serviceWorker.ready;
+      if (!isMountedRef.current) return;
 
       const vapidRes = await fetch("/api/push/vapid");
       if (!vapidRes.ok) {
-        setStatus(vapidRes.status === 503 ? "notConfigured" : "error");
+        if (isMountedRef.current) setStatus(vapidRes.status === 503 ? "notConfigured" : "error");
         return;
       }
       const vapidJson = (await vapidRes.json()) as { publicKey?: string };
       const publicKey = vapidJson?.publicKey;
       if (!publicKey) {
-        setStatus("notConfigured");
+        if (isMountedRef.current) setStatus("notConfigured");
         return;
       }
+      if (!isMountedRef.current) return;
 
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(publicKey) as BufferSource,
       });
+      if (!isMountedRef.current) return;
 
       const clientId = getOrCreateClientId();
       const res = await fetch("/api/push/subscribe", {
@@ -92,13 +104,13 @@ export default function WeatherPushOptIn() {
       });
 
       if (!res.ok) {
-        setStatus(res.status === 503 ? "notConfigured" : "error");
+        if (isMountedRef.current) setStatus(res.status === 503 ? "notConfigured" : "error");
         return;
       }
 
-      setStatus("subscribed");
+      if (isMountedRef.current) setStatus("subscribed");
     } catch {
-      setStatus("error");
+      if (isMountedRef.current) setStatus("error");
     }
   }, []);
 

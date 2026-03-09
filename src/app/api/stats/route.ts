@@ -5,13 +5,14 @@ import { getPartnerRevenueThisMonth } from "@/lib/partner-revenue";
 import { getFunnelCountsThisMonth } from "@/lib/funnel";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import type { RateLimitResult } from "@/lib/rate-limit";
 
 // Must be dynamic: fetches live bookings, revenue, funnel data
 export const dynamic = "force-dynamic";
 
 function isAdminAuthorized(req: NextRequest): boolean {
   const secret = process.env.ADMIN_SECRET;
-  if (!secret) return false;
+  if (!secret || secret.length === 0) return false;
   const authHeader = req.headers.get("authorization");
   const token = authHeader?.startsWith("Bearer ")
     ? authHeader.slice(7)
@@ -34,7 +35,12 @@ const FUNNEL_ORDER = [
  * Requires ADMIN_SECRET in Authorization: Bearer <secret> or x-admin-token header.
  */
 export async function GET(req: NextRequest) {
-  const limitResult = await rateLimit(req, 30, "stats");
+  let limitResult: RateLimitResult;
+  try {
+    limitResult = await rateLimit(req, 30, "stats");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
   if (!limitResult.ok) {
     return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
   }

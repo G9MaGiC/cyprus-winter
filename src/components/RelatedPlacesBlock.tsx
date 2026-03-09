@@ -26,7 +26,7 @@ export default function RelatedPlacesBlock({ ids, description, showAddToItinerar
           <li key={r.id} className="min-w-0 flex flex-wrap items-center gap-2">
             <Link
               href={r.href}
-              className="group inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:bg-terracotta-muted hover:text-white hover:border-terracotta/30 transition-colors duration-150 max-w-full min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-xl bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:bg-terracotta-muted hover:text-white hover:border-terracotta/30 transition-colors duration-150 max-w-full min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <span className="truncate">{r.name}</span>
               <span className="text-terracotta/80 group-hover:text-white shrink-0 transition-colors" aria-hidden>→</span>

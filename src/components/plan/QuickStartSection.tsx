@@ -143,16 +143,16 @@ export default function QuickStartSection({
                 </button>
               );
             })}
-            <Link href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
+            <Link href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Discover places">
               Discover
             </Link>
-            <Link href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
+            <Link href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse trails">
               Trails
             </Link>
-            <Link href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
+            <Link href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse wineries">
               Wineries
             </Link>
-            <Link href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}>
+            <Link href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="See what's on">
               What&apos;s on
             </Link>
           </div>

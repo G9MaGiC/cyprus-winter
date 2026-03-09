@@ -73,3 +73,70 @@ export function pickDailySafeWithBoost<T extends { id: string }>(
   const idx = hash % pool.length;
   return pool[idx];
 }
+
+/** Type for items with a type/category field */
+export type WithType = { id: string; type?: string };
+
+/**
+ * Pick multiple items with type diversity. Primary pick from one type; secondary
+ * picks from other types when possible. Uses promoted boost. Deterministic.
+ */
+export function pickDailyMultipleWithTypeDiversity<T extends WithType>(
+  items: T[],
+  promotedIds: string[],
+  key: string,
+  count: number,
+  boostWeight = 5,
+  seed?: string
+): T[] {
+  if (items.length === 0 || count <= 0) return [];
+  const baseSeed = seed ?? getDailySeed();
+  const idSet = new Set(promotedIds);
+  const promoted = items.filter((i) => idSet.has(i.id));
+  const extra = promoted.flatMap((p) => Array(boostWeight - 1).fill(p));
+  const pool = [...items, ...extra];
+
+  const byType = new Map<string, T[]>();
+  for (const item of pool) {
+    const t = item.type ?? "other";
+    let arr = byType.get(t);
+    if (!arr) {
+      arr = [];
+      byType.set(t, arr);
+    }
+    arr.push(item);
+  }
+  const types = Array.from(byType.keys());
+
+  const result: T[] = [];
+  const seenIds = new Set<string>();
+  const usedTypes = new Set<string>();
+
+  for (let i = 0; i < count && result.length < count; i++) {
+    const slotSeed = `${baseSeed}-${key}-${i}`;
+    const hash = djb2Hash(slotSeed);
+
+    let candidates: T[];
+    if (i === 0) {
+      const typeIdx = hash % types.length;
+      candidates = byType.get(types[typeIdx]) ?? pool;
+    } else {
+      const available = types.filter((t) => !usedTypes.has(t));
+      const typeList = available.length > 0 ? available : types;
+      const typeIdx = hash % typeList.length;
+      candidates = byType.get(typeList[typeIdx]) ?? pool;
+    }
+
+    const available = candidates.filter((c) => !seenIds.has(c.id));
+    const pickPool = available.length > 0 ? available : pool.filter((c) => !seenIds.has(c.id));
+    if (pickPool.length === 0) break;
+
+    const idx = (hash >>> 0) % pickPool.length;
+    const picked = pickPool[idx];
+    result.push(picked);
+    seenIds.add(picked.id);
+    if (picked.type) usedTypes.add(picked.type);
+  }
+
+  return result;
+}

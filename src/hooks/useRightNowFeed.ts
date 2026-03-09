@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import type { RightNowItem } from "@/components/RightNowCard";
 import { getCentroidBySlug } from "@/data/region-centroids";
 import type { RegionSlug } from "@/data/regions";
@@ -34,9 +34,17 @@ export type UseRightNowFeedReturn = {
 };
 
 export function useRightNowFeed(): UseRightNowFeedReturn {
+  const isMountedRef = useRef(true);
   const [state, setState] = useState<RightNowState>("consent");
   const [items, setItems] = useState<RightNowItem[]>([]);
   const [lastErrorCode, setLastErrorCode] = useState<"rate_limited" | null>(null);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(
     null
   );
@@ -67,18 +75,21 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
             ? `${window.location.origin}/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`
             : `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`;
         const res = await fetch(url);
+        if (!isMountedRef.current) return;
         if (!res.ok) {
           await res.json().catch(() => ({})); // consume body
-          if (res.status === 429) {
-            setLastErrorCode("rate_limited");
+          if (isMountedRef.current) {
+            if (res.status === 429) {
+              setLastErrorCode("rate_limited");
+            } else {
+              setLastErrorCode(null);
+            }
             setState("error");
-            return;
           }
-          setLastErrorCode(null);
-          setState("error");
           return;
         }
         const data = await res.json();
+        if (!isMountedRef.current) return;
         const list = data.items ?? [];
         setItems(list);
         setState(list.length > 0 ? "loaded" : "empty");
@@ -86,8 +97,10 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
         if (process.env.NODE_ENV === "development") {
           console.warn("[RightNow] fetch error:", err);
         }
-        setLastErrorCode(null);
-        setState("error");
+        if (isMountedRef.current) {
+          setLastErrorCode(null);
+          setState("error");
+        }
       }
     },
     []
@@ -106,19 +119,23 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
         if (process.env.NODE_ENV === "development") {
           console.warn("[RightNow] navigator.geolocation unavailable");
         }
-        setState("region-picker");
+        if (isMountedRef.current) setState("region-picker");
         return;
       }
       navigator.geolocation.getCurrentPosition(
-        (pos) => doFetch(pos.coords.latitude, pos.coords.longitude),
+        (pos) => {
+          if (isMountedRef.current) doFetch(pos.coords.latitude, pos.coords.longitude);
+        },
         (err) => {
           if (process.env.NODE_ENV === "development") {
             console.warn("[RightNow] geolocation error:", err.code, err.message);
           }
-          if (err.code === 1) {
-            setState("denied");
-          } else {
-            setState("region-picker");
+          if (isMountedRef.current) {
+            if (err.code === 1) {
+              setState("denied");
+            } else {
+              setState("region-picker");
+            }
           }
         },
         { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
@@ -127,7 +144,7 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
       if (process.env.NODE_ENV === "development") {
         console.warn("[RightNow] geolocation threw:", e);
       }
-      setState("region-picker");
+      if (isMountedRef.current) setState("region-picker");
     }
   }, [fetchFeed, distanceMode]);
 

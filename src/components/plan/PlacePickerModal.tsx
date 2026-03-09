@@ -57,7 +57,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
           <button
             type="button"
             onClick={handleClose}
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl text-olive/70 hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl text-olive/70 hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label="Close"
           >
             <span className="text-lg font-medium" aria-hidden>×</span>

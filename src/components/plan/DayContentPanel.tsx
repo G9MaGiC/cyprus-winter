@@ -89,6 +89,7 @@ export default function DayContentPanel({
                     type="button"
                     onClick={onBrowseAll}
                     className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+                    aria-label="Browse places to add to your day"
                   >
                     Browse places
                   </button>
@@ -96,6 +97,7 @@ export default function DayContentPanel({
                     type="button"
                     onClick={onScrollToQuickStart}
                     className={CTA.secondaryCompact}
+                    aria-label="Scroll to templates section"
                   >
                     See templates
                   </button>
@@ -168,6 +170,8 @@ export default function DayContentPanel({
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
         <div
           id="plan-inline-add"
+          role="region"
+          aria-label={`Add a stop to Day ${activeDay}`}
           className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
         >
           <p className="text-sm font-medium text-olive/80 mb-4">
@@ -196,6 +200,7 @@ export default function DayContentPanel({
               type="button"
               onClick={onBrowseAll}
               className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+              aria-label="Browse places to add to your day"
             >
               Browse places
             </button>

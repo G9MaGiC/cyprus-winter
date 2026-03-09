@@ -5,7 +5,7 @@
  * Non-blocking, auto-dismissible notifications
  */
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 type ToastType = "success" | "error" | "warning" | "info";
@@ -44,15 +44,30 @@ function ToastItem({
   onRemove: (id: string) => void;
 }) {
   const [isExiting, setIsExiting] = useState(false);
+  const innerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const outerTimer = setTimeout(() => {
       setIsExiting(true);
-      setTimeout(() => onRemove(toast.id), 300);
+      innerTimerRef.current = setTimeout(() => onRemove(toast.id), 300);
     }, toast.duration || 5000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(outerTimer);
+      if (innerTimerRef.current) {
+        clearTimeout(innerTimerRef.current);
+        innerTimerRef.current = null;
+      }
+    };
   }, [toast, onRemove]);
+
+  const scheduleRemove = useCallback(() => {
+    if (innerTimerRef.current) {
+      clearTimeout(innerTimerRef.current);
+      innerTimerRef.current = null;
+    }
+    innerTimerRef.current = setTimeout(() => onRemove(toast.id), 300);
+  }, [toast.id, onRemove]);
 
   return (
     <div
@@ -74,7 +89,7 @@ function ToastItem({
         type="button"
         onClick={() => {
           setIsExiting(true);
-          setTimeout(() => onRemove(toast.id), 300);
+          scheduleRemove();
         }}
         className="shrink-0 min-h-[32px] min-w-[32px] inline-flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors"
         aria-label="Dismiss notification"

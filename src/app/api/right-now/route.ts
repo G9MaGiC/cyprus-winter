@@ -5,7 +5,7 @@ import { getAttractionById, getRestaurantById } from "@/data";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
-import { rateLimitSuccessHeaders } from "@/lib/api-response";
+import { jsonError, rateLimitSuccessHeaders } from "@/lib/api-response";
 
 export const dynamic = "force-dynamic";
 
@@ -49,11 +49,14 @@ function getTease(place: { id: string; type: string; localSecret?: string; winte
 }
 
 export async function GET(req: Request) {
-  let limitResult: RateLimitResult = { ok: true, remaining: RIGHT_NOW_LIMIT, resetAt: Date.now() + 60000, bypassed: true };
+  let limitResult: RateLimitResult;
   try {
     limitResult = await rateLimit(req, RIGHT_NOW_LIMIT, "right-now");
   } catch {
-    // Fail open: allow request if rate limiting errors
+    return Response.json(
+      { error: { code: "SERVICE_UNAVAILABLE" as const, message: "Rate limiting unavailable. Try again in a moment." } },
+      { status: 503 }
+    );
   }
   if (!limitResult.ok) {
     return Response.json(
@@ -71,8 +74,12 @@ export async function GET(req: Request) {
   const limitParam = searchParams.get("limit");
   const maxDistanceParam = searchParams.get("maxDistance");
   const regionParam = searchParams.get("region");
-  const limit = Math.min(DEFAULT_ITEM_LIMIT, Math.max(1, parseInt(limitParam ?? "", 10) || DEFAULT_ITEM_LIMIT));
-  const maxDistanceKm = maxDistanceParam != null ? parseFloat(maxDistanceParam) : null;
+  const rawLimit = parseInt(limitParam ?? "", 10);
+  const limit = Number.isNaN(rawLimit) || rawLimit < 1 ? DEFAULT_ITEM_LIMIT : Math.min(rawLimit, DEFAULT_ITEM_LIMIT);
+  const maxDistanceKm =
+    maxDistanceParam != null && !Number.isNaN(parseFloat(maxDistanceParam))
+      ? parseFloat(maxDistanceParam)
+      : null;
   const region =
     regionParam && ["troodos", "paphos", "ayia-napa", "larnaca", "limassol"].includes(regionParam)
       ? (regionParam as "troodos" | "paphos" | "ayia-napa" | "larnaca" | "limassol")
@@ -132,10 +139,7 @@ export async function GET(req: Request) {
     );
   } catch (err) {
     console.error("Right Now API error:", err);
-    return Response.json(
-      { error: { code: "INTERNAL_ERROR" as const, message: "Could not load suggestions" } },
-      { status: 500 }
-    );
+    return jsonError("SERVER_ERROR", "Could not load suggestions", 500);
   }
 }
 

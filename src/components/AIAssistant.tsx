@@ -93,6 +93,16 @@ export default function AIAssistant() {
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
+  const isMountedRef = useRef(true);
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+      abortControllerRef.current?.abort();
+    };
+  }, []);
 
   const scrollToBottom = useCallback(() => {
     const el = messagesEndRef.current;
@@ -172,6 +182,10 @@ export default function AIAssistant() {
     const trimmed = text.trim();
     if (!trimmed || loading) return;
 
+    abortControllerRef.current?.abort();
+    const ac = new AbortController();
+    abortControllerRef.current = ac;
+
     const messagesToSend = isRetry
       ? messages.slice(0, -1)
       : [...messages, { role: "user" as const, content: trimmed }];
@@ -200,7 +214,10 @@ export default function AIAssistant() {
             lastPlace: lastPlace ?? undefined,
           },
         }),
+        signal: ac.signal,
       });
+
+      if (!isMountedRef.current) return;
 
       let data: { reply?: string; message?: string; error?: string } = {};
       try {
@@ -209,6 +226,8 @@ export default function AIAssistant() {
         if (res.status === 503) throw new Error("AI_503");
         throw new Error(`Request failed (${res.status})`);
       }
+
+      if (!isMountedRef.current) return;
 
       if (!res.ok) {
         if (res.status === 503) throw new Error("AI_503");
@@ -223,11 +242,16 @@ export default function AIAssistant() {
         throw new Error(msg);
       }
 
+      if (!isMountedRef.current) return;
+
       setMessages((m) => [
         ...m,
         { role: "assistant", content: data.reply ?? "Didn't get that one. Try again, or browse Discover and Trails for Troodos, Lefkara, Kourion." },
       ]);
     } catch (err) {
+      if (!isMountedRef.current) return;
+      if (err instanceof Error && err.name === "AbortError") return;
+
       const msg = err instanceof Error ? err.message : "";
       const is503 = msg === "AI_503";
       const isAuth = msg.includes("401") || /invalid authentication|auth failed|api key/i.test(msg);
@@ -252,7 +276,7 @@ export default function AIAssistant() {
         },
       ]);
     } finally {
-      setLoading(false);
+      if (isMountedRef.current) setLoading(false);
     }
   };
 

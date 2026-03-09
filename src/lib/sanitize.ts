@@ -4,13 +4,22 @@
  * Server-only or shared: safe to use in API routes and server actions.
  */
 
-/** Strip dangerous protocols from markdown links [text](url). Replaces with plain link text. */
+/** Decode HTML numeric/hex entities (e.g. &#106; &#x6a;) to prevent protocol bypass. */
+function decodeHtmlEntities(str: string): string {
+  return str.replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10))).replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)));
+}
+
+const DANGEROUS_PROTOCOLS = /^(javascript|data|vbscript|file):/i;
+
+/** Strip dangerous protocols from markdown links [text](url). Replaces with plain link text. Handles entity-encoded URLs. */
 export function sanitizeMarkdownLinks(input: string): string {
   if (typeof input !== "string") return "";
-  return input.replace(
-    /\[([^\]]*)\]\((javascript|data|vbscript|file):[^)]*\)/gi,
-    "$1"
-  );
+  // URL in [text](url) may contain ) e.g. javascript:alert(1)); capture trailing )+ so we replace the whole link
+  return input.replace(/\[([^\]]*)\]\(([^)]*)(\)+)/g, (fullMatch, text: string, url: string) => {
+    const decoded = decodeHtmlEntities(url.trim());
+    if (DANGEROUS_PROTOCOLS.test(decoded)) return text;
+    return fullMatch;
+  });
 }
 
 /** Strip HTML tags and normalize whitespace. Safe for display in text nodes. */

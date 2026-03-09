@@ -51,6 +51,7 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
         <Link
           href={`/trails/${trailId}/report`}
           className="inline-flex items-center justify-center min-h-[44px] px-5 py-3 rounded-lg border-2 border-aegean text-aegean font-medium hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean focus-visible:ring-offset-2 focus-visible:ring-offset-background shrink-0"
+          aria-label="Report conditions for this trail"
         >
           Report conditions
         </Link>

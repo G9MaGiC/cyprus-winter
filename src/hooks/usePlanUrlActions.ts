@@ -51,7 +51,7 @@ export function usePlanUrlActions({
     const addParam = searchParams.get("add");
     if (!addParam || addParam === "failed" || processedAddRef.current === addParam) return;
     processedAddRef.current = addParam;
-    const ids = addParam.split(",").map((s) => s.trim()).filter(Boolean);
+    const ids = addParam.split(",").map((s) => s.trim()).filter(Boolean).slice(0, 50);
     const places = ids.map((id) => getPlace(id)).filter((p): p is PlanItem => !!p);
     if (places.length === 0) {
       router.replace("/plan?add=failed", { scroll: false });

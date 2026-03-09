@@ -87,7 +87,7 @@ export default function DaySelector({
 
       {hasContent && (
         <details className="group mt-4 sm:mt-5 hidden sm:block">
-          <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl">
+          <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl min-h-[44px] flex items-center">
             <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/70 hover:text-terracotta min-h-[44px] py-2.5 px-3 rounded-xl hover:bg-terracotta/5 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
               {activeDaysCount > 1 ? `View all ${activeDaysCount} days` : "View all days"}
               <span className="text-olive/50 group-open:rotate-180 transition-transform" aria-hidden>

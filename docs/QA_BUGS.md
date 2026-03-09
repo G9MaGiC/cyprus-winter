@@ -919,3 +919,56 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 
 - BUG-068: Fixed — added `<div id="trails-plan-sentinel">` after hero so StickyPlanBar can observe scroll.
 - BUG-069: Fixed — trails fixed bar now uses `bottom-[calc(5.5rem+env(safe-area-inset-bottom))]` on mobile (above BottomNav) and `z-30` for correct stacking.
+
+---
+
+## QA Run — QA Experts Team (Mar 9, 2026)
+
+*Per .cursor/TEAM_QA.md. Shell (lint/test/build) + audit-explore + senior-software-engineer + ux-polish.*
+
+### Automated baseline
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| npm run lint | Pass | 0 errors (fixed daily-rotator.test.ts readonly type + unused var) |
+| npm run test | Pass | 172 tests |
+| npm run build | Pass | Next.js 16.1.6 |
+| npx tsc --noEmit | Pass | Fixed daily-rotator.test.ts items typing |
+
+### Fix applied (automated)
+
+- **daily-rotator.test.ts** — items array: removed `as const`, typed as `{ id: string; type: string }[]`; removed unused `promoted` var. Resolves tsc errors and lint warning.
+
+### P0 — Critical
+
+| ID | Source | Issue | File |
+|----|--------|-------|------|
+| BUG-070 | sse | XSS via entity-encoded markdown links — `[x](&#106;avascript:alert(1))` bypasses sanitization | src/lib/sanitize.ts, src/lib/safe-url.ts |
+
+### P1 — High
+
+| ID | Source | Issue | File |
+|----|--------|-------|------|
+| BUG-071 | audit | Redis not configured in production — in-memory rate limits per-instance | src/lib/rate-limit.ts |
+| BUG-072 | sse | right-now fail-open on rate-limit error — allows request when Redis fails | api/right-now/route.ts |
+| BUG-073 | sse | Track API lacks Zod validation for body | api/track/route.ts |
+| BUG-074 | ux | Toast dismiss button 32×32px (below 44px) | src/components/ui/Toast.tsx:79 |
+| BUG-075 | ux | account "Skip — use my plan" link lacks min-h-[44px] | account/page.tsx:123 |
+| BUG-076 | ux | admin/stats loading state text-only, no skeleton | admin/stats/page.tsx:107-108 |
+
+### P2 — Medium (backlog)
+
+| Source | Issue |
+|--------|-------|
+| audit | USER_FLOWS_AZ.md primaryLinks outdated vs nav-links |
+| audit | ACTION_PLAN manual QA, partner outreach pending |
+| ux | SiteFooter emergency numbers format vs error/not-found |
+
+### Fix status (Mar 9, 2026)
+
+- **BUG-070:** Fixed — decode HTML entities in sanitize.ts and safe-url.ts; regex consumes trailing `)+`; tests added.
+- **BUG-072:** Fixed — right-now API returns 503 when rateLimit() throws.
+- **BUG-073:** Fixed — Track API Zod schema (trackBodySchema); z.record(key, value); error.issues.
+- **BUG-074:** Pending — Toast dismiss: set to `min-h-[44px] min-w-[44px]` in Toast.tsx:79 (apply manually if needed).
+- **BUG-075:** Fixed — Account Skip link has min-h-[44px] and focus-visible ring.
+- **BUG-076:** Fixed — Admin stats loading uses SKELETON and sr-only status.

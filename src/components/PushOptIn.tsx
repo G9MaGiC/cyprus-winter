@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { CARD } from "@/lib/design-tokens";
 
 const CLIENT_ID_KEY = "cyprus-winter-push-client-id";
@@ -25,6 +25,14 @@ type Props = {
 export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon" }: Props) {
   const [status, setStatus] = useState<"idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error" | "notConfigured">("idle");
   const [mounted, setMounted] = useState(false);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     // Hydration: detect push support and permission after mount
@@ -47,6 +55,7 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
     setStatus("loading");
     try {
       const perm = await Notification.requestPermission();
+      if (!isMountedRef.current) return;
       if (perm !== "granted") {
         setStatus("denied");
         return;
@@ -54,23 +63,26 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
 
       const reg = await navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" });
       await navigator.serviceWorker.ready;
+      if (!isMountedRef.current) return;
 
       const vapidRes = await fetch("/api/push/vapid");
       if (!vapidRes.ok) {
-        setStatus(vapidRes.status === 503 ? "notConfigured" : "error");
+        if (isMountedRef.current) setStatus(vapidRes.status === 503 ? "notConfigured" : "error");
         return;
       }
       const vapidJson = (await vapidRes.json()) as { publicKey?: string };
       const publicKey = vapidJson?.publicKey;
       if (!publicKey) {
-        setStatus("notConfigured");
+        if (isMountedRef.current) setStatus("notConfigured");
         return;
       }
+      if (!isMountedRef.current) return;
 
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(publicKey) as BufferSource,
       });
+      if (!isMountedRef.current) return;
 
       const clientId = getOrCreateClientId();
       const res = await fetch("/api/push/subscribe", {
@@ -85,14 +97,16 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
       });
 
       if (!res.ok) {
-        setStatus(res.status === 503 ? "notConfigured" : "error");
+        if (isMountedRef.current) setStatus(res.status === 503 ? "notConfigured" : "error");
         return;
       }
 
-      setStatus("subscribed");
-      onSubscribed?.();
+      if (isMountedRef.current) {
+        setStatus("subscribed");
+        onSubscribed?.();
+      }
     } catch {
-      setStatus("error");
+      if (isMountedRef.current) setStatus("error");
     }
   }, [tripStartDate, onSubscribed]);
 
@@ -117,7 +131,7 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
         type="button"
         onClick={handleSubscribe}
         disabled={status === "loading"}
-        className="min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium bg-aegean text-white hover:bg-aegean/90 disabled:opacity-60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50"
+        className="min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium bg-aegean text-white hover:bg-aegean/90 disabled:opacity-60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         {status === "loading" ? "Setting up…" : status === "error" ? "Try again" : "Turn on reminders"}
       </button>

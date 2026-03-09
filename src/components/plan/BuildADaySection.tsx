@@ -83,7 +83,7 @@ export default function BuildADaySection() {
                     {typeBadge(p.type)}
                     <Link
                       href={p.href}
-                      className="min-w-0 flex-1 break-words text-sm text-olive/90 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded min-h-[44px] flex items-center py-1 -my-1"
+                      className="min-w-0 flex-1 break-words text-sm text-olive/90 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] flex items-center py-1 -my-1"
                     >
                       {p.name}
                     </Link>

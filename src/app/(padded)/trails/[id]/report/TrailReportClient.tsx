@@ -24,7 +24,7 @@ const SURFACE_OPTIONS = [
 export default function TrailReportClient() {
   const params = useParams();
   const id = params?.id as string;
-  const trail = trails.find((t) => t.id === id || t.slug === id);
+  const trail = typeof id === "string" ? trails.find((t) => t.id === id || t.slug === id) : undefined;
 
   const [status, setStatus] = useState<"open" | "caution" | "closed">("open");
   const [surface, setSurface] = useState<"dry" | "muddy" | "snow" | "icy">("dry");
@@ -36,8 +36,14 @@ export default function TrailReportClient() {
 
   const successLinkRef = useRef<HTMLAnchorElement>(null);
   const errorRef = useRef<HTMLDivElement>(null);
+  const isMountedRef = useRef(true);
 
-  if (!trail) notFound();
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (done && successLinkRef.current) {
@@ -50,6 +56,12 @@ export default function TrailReportClient() {
       errorRef.current.focus({ preventScroll: true });
     }
   }, [error]);
+
+  useEffect(() => {
+    if (!trail) notFound();
+  }, [id, trail]);
+
+  if (!trail) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,6 +80,7 @@ export default function TrailReportClient() {
         }),
       });
       const data = await res.json();
+      if (!isMountedRef.current) return;
       if (!res.ok) {
         const msg =
           data.message ??
@@ -77,9 +90,9 @@ export default function TrailReportClient() {
       }
       setDone(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Didn't save. Try again or head back to the trail.");
+      if (isMountedRef.current) setError(err instanceof Error ? err.message : "Didn't save. Try again or head back to the trail.");
     } finally {
-      setLoading(false);
+      if (isMountedRef.current) setLoading(false);
     }
   };
 
