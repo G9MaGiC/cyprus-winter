@@ -2,6 +2,10 @@
   "name": "cyprus-winter",
   "version": "2.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/G9MaGiC/cyprus-winter.git"
+  },
   "engines": {
     "node": ">=18.18.0"
   },
