@@ -154,3 +154,38 @@ export async function sendBookingRequestToGuide(
     return false;
   }
 }
+
+export async function sendBookingLookupTokenEmail(
+  email: string,
+  token: string
+): Promise<boolean> {
+  if (!resend) return false;
+
+  const safeEmail = escapeHtml(email);
+  const lookupUrl = `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: email,
+      subject: "Your secure bookings lookup link | Cyprus Winter",
+      html: `
+        <h2>Your secure booking lookup link</h2>
+        <p>We received a request to view bookings for <strong>${safeEmail}</strong>.</p>
+        <p>Use this secure link within 15 minutes:</p>
+        <p><a href="${lookupUrl}">View my bookings</a></p>
+        <p>If you didn't request this, you can ignore this email.</p>
+        <p>Cyprus Winter</p>
+      `,
+    });
+
+    if (error) {
+      console.error("Resend booking lookup email error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Booking lookup email send error:", err);
+    return false;
+  }
+}
