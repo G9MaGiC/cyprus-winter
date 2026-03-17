@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { DAY_COMBOS } from "@/data/day-combos";
@@ -88,12 +88,12 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 {places.map((p) => (
                   <li key={p.id} className="flex items-center gap-2 min-w-0">
                     {typeBadge(p.type)}
-                    <Link
+                    <AppLink
                       href={p.href}
                       className="min-w-0 flex-1 break-words text-sm text-olive/90 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] flex items-center py-1 -my-1"
                     >
                       {p.name}
-                    </Link>
+                    </AppLink>
                   </li>
                 ))}
               </ul>
@@ -107,13 +107,13 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                   Add to plan
                 </button>
               ) : (
-                <Link
+                <AppLink
                   href={`/plan?add=${addIds}`}
                   className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 block text-center`}
                   aria-label={`Add ${combo.label} to plan`}
                 >
                   Add to plan
-                </Link>
+                </AppLink>
               )}
             </article>
           );

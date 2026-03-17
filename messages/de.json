@@ -26,6 +26,8 @@
     "trails": "Wanderwege",
     "events": "Veranstaltungen",
     "airport": "Flughafen",
+    "arriving": "Ankunft",
+    "signIn": "Anmelden",
     "home": "Start",
     "weather": "Wetter",
     "bookings": "Buchungen",
@@ -59,6 +61,73 @@
     "winery": "Weingut",
     "event": "Veranstaltung",
     "eat": "Essen"
+    ,
+    "timelineRemovedPlace": "Dieser Ort wurde aus unserer Liste entfernt",
+    "ai": {
+      "title": "Cyprus Guide",
+      "subtitle": "Fragen Sie nach Wanderwegen, Weingütern, Dörfern",
+      "clear": "Leeren",
+      "closeAria": "Chat schließen",
+      "inputPlaceholder": "Fragen Sie nach Zypern…",
+      "sendAria": "Nachricht senden",
+      "startVoice": "Sprach­eingabe starten",
+      "stopVoice": "Sprach­eingabe stoppen"
+    },
+    "back": "Zurück",
+    "backTo": "Zurück zu {label}"
+    ,
+    "peopleCount": "{count, plural, one {# Person} other {# Personen}}"
+    ,
+    "breadcrumbs": {
+      "privacy": "Datenschutz",
+      "terms": "AGB",
+      "settings": "Einstellungen",
+      "reportConditions": "Bedingungen melden",
+      "bookGuide": "Guide buchen",
+      "bookTasting": "Verkostung buchen",
+      "troodosDecember": "Troodos Dezember"
+    },
+    "inYourPlan": "In deinem Plan",
+    "viewPlan": "Plan ansehen",
+    "local": "Lokal",
+    "verifiedPartner": "Verifizierter Partner",
+    "verifiedPartnerTitle": "Verifizierter Partner: erhält Buchungsanfragen direkt",
+    "wineTasting": "Weinverkostung",
+    "guidedHike": "Geführte Wanderung",
+    "bookHike": "Wanderung buchen",
+    "reportConditions": "Bedingungen melden",
+    "reportAnotherTrail": "Einen weiteren Weg melden",
+    "thanksForReporting": "Danke fürs Melden."
+    ,
+    "remove": "Entfernen",
+    "bookTastings": "Verkostungen buchen",
+    "exploreWineries": "Weingüter entdecken",
+    "allCategories": "Alle Kategorien",
+    "filterPlaces": "Orte filtern",
+    "clearFilter": "Filter zurücksetzen",
+    "viewOnMap": "Auf der Karte ansehen",
+    "scrollToMap": "Zur Karte scrollen",
+    "askAI": "Ask AI",
+    "askAITrailsAria": "Ask AI nach Trail-Vorschlägen",
+    "askAIRecommendationsAria": "Ask AI nach Empfehlungen",
+    "planYourTrip": "Reise planen",
+    "winterHikingGuide": "Winter-Wanderführer",
+    "seeMap": "Karte ansehen",
+    "emergency112": "Notfall 112",
+    "trailsFooterDisclaimer": "Bedingungen sind crowd-sourced. Nutzen Sie Ihr Urteilsvermögen und folgen Sie lokalen Hinweisen.",
+    "discoverEmptyTitle": "Keine Orte hier.",
+    "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel."
+    ,
+    "skipTo": {
+      "editorsPicks": "Zu Redaktions-Tipps springen",
+      "plan": "Zum Plan springen"
+    }
+    ,
+    "cancel": "Abbrechen",
+    "clearDay": "Tag leeren",
+    "clearDayTitle": "Tag {day} leeren?"
+    ,
+    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -91,12 +160,150 @@
     "rightNowNearYou": "Jetzt in Ihrer Nähe",
     "discoverCurated": "Kuratierte Winter-Auswahl. Fügen Sie beim Stöbern zu Ihrem Plan hinzu.",
     "natureAndCoasts": "Natur & Küste",
-    "places": "Orte"
+    "places": "Orte",
+    "startHere": {
+      "prompt": "Also — wo möchten Sie zuerst hin?",
+      "primaryPath": "Hauptweg",
+      "title": "Hier starten",
+      "subtitle": "Gerade gelandet oder noch am Planen? Von Ruinen bis Dorf‑Verkostungen — starten Sie überall.",
+      "card": {
+        "discoverTitle": "Entdecken",
+        "discoverDesc": "Orte, die sich echt anfühlen. Ruinen, Küsten, Dörfer, Kulturerbe.",
+        "discoverCta": "Jetzt entdecken",
+        "planTitle": "Planen",
+        "planDesc": "Tag bauen oder Vorlage wählen. Speichert automatisch.",
+        "planCta": "Tag planen",
+        "bookTitle": "Buchen",
+        "bookDesc": "Verkostungen reservieren, bevor Wochenenden voll sind.",
+        "bookCta": "Verkostungen buchen"
+      },
+      "browseByCategory": "Nach Kategorie stöbern",
+      "exploreMore": "Mehr entdecken",
+      "exploreByMood": "Nach Stimmung entdecken",
+      "aria": {
+        "browseByCategory": "Nach Kategorie stöbern",
+        "exploreByMood": "Entdecken nach Gefühl"
+      },
+      "chip": {
+        "villages": "Dörfer",
+        "wineries": "Weingüter",
+        "trails": "Wanderwege",
+        "trailsAria": "Wanderwege und Bedingungen",
+        "events": "Veranstaltungen",
+        "familyFriendly": "Familienfreundlich",
+        "all": "Alle",
+        "seeAll": "Alles ansehen",
+        "culture": "Kultur",
+        "coasts": "Küsten",
+        "monasteries": "Klöster",
+        "active": "Aktiv",
+        "activeAria": "Aktiv — Trails, Wandern",
+        "quietEscapes": "Ruhige Auszeiten",
+        "quietEscapesAria": "Ruhig — Dörfer, Geheimtipps",
+        "mountains": "Berge",
+        "mountainsAria": "Berge — Troodos‑Trails",
+        "wellness": "Wellness",
+        "wellnessAria": "Wellness — Klöster, stille Orte",
+        "regionAria": "Region {region}"
+      }
+    }
+    ,
+    "hero": {
+      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
+    },
+    "search": {
+      "srHeading": "Orte und Wanderwege suchen",
+      "kicker": "Noch unsicher, wo Sie anfangen sollen? Finden Sie einen Ort, einen Trail — oder fragen Sie die Insel.",
+      "placeholder": "Ort, Wanderweg oder Event finden"
+    },
+    "weatherStrip": {
+      "aria": "Zypern-Winterwetter — Temperaturen an Küste und im Troodos. Wetter ansehen.",
+      "heading": "{coast}°C Küste · {troodos}°C Troodos",
+      "prompts": {
+        "november": "Trails frei. Ideal zum Wandern.",
+        "december": "Vor Troodos Trail-Bedingungen prüfen.",
+        "january": "Schichten einpacken. In Weingütern ist es warm.",
+        "february": "Skisaison läuft. Für höhere Trails Microspikes einpacken.",
+        "march": "Bester Wander-Monat. Trails offen.",
+        "april": "Alle Trails offen. Frühlingsklarheit.",
+        "fallback": "Schichten für die Berge einpacken."
+      }
+    },
+    "bookTastings": {
+      "kicker": "Weingüter",
+      "subtitle": "Verkostungen am Kamin, oft schenkt der Besitzer ein. Für Wochenenden besser reservieren."
+    },
+    "rightNow": {
+      "subtitleConsent": "Was passt gerade bei Ihnen?",
+      "subtitleRegion": "Vorschläge in {region}",
+      "subtitleLoadedRegion": "Was passt in {region}?",
+      "subtitleLoadedLocation": "Was passt gerade bei Ihnen?",
+      "consent": {
+        "body": "Vorschläge basierend auf Ihrem Standort, der Tageszeit und dem Wetter.",
+        "cta": {
+          "useLocation": "Meinen Standort verwenden",
+          "pickRegion": "Region auswählen"
+        }
+      },
+      "regionPicker": {
+        "body": "Wählen Sie eine Region zum Entdecken."
+      },
+      "empty": {
+        "scopeRegion": "diese Region",
+        "scopeNow": "jetzt",
+        "body": "Gerade keine Vorschläge für {scope}.",
+        "changeRegion": "Region ändern",
+        "seeMoreDiscover": "Mehr in Entdecken →",
+        "askAI": "Oder Ask AI nach Vorschlägen fragen"
+      },
+      "loaded": {
+        "seeMore": "Mehr →"
+      },
+      "distance": {
+        "aria": "Entfernung",
+        "closer": "Näher",
+        "farther": "Weiter"
+      }
+    }
   },
   "error": {
     "title": "Ein kleines Problem",
     "body": "Ein kleines Problem. Versuchen Sie es erneut oder gehen Sie zur Startseite—Wanderwege, Dörfer und Verkostungen warten auf Sie.",
     "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI—wir zeigen Ihnen Nissi, Troodos, Lefkara."
+  },
+  "errors": {
+    "common": {
+      "title": "Etwas ist schiefgelaufen",
+      "tryAgainCta": "Erneut versuchen"
+    },
+    "rateLimited": {
+      "title": "Zu viele Anfragen",
+      "canRetry": "Sie können es jetzt erneut versuchen.",
+      "waitThenRetry": "{seconds, plural, one {Warten Sie # Sekunde, dann versuchen Sie es erneut.} other {Warten Sie # Sekunden, dann versuchen Sie es erneut.}}",
+      "retryNow": "Erneut versuchen",
+      "retryIn": "Warten {seconds}s"
+    },
+    "network": {
+      "titleOnline": "Verbindungsproblem",
+      "titleOffline": "Sie sind offline",
+      "messageOnline": "Verbindungsprobleme. Versuchen Sie es erneut oder tippen Sie auf Ask AI.",
+      "messageOffline": "Sie sind offline. Verbinden Sie sich, um Trails zu sehen und Ihre Reise zu planen.",
+      "checkConnection": "Verbindung prüfen"
+    },
+    "chat": {
+      "rateLimited": "Zu viele Anfragen. Bitte warten Sie kurz.",
+      "unavailable": "Ich kann gerade nicht verbinden. Bitte versuchen Sie es gleich noch einmal.",
+      "failed": "Ich kann gerade nicht verbinden. Bitte versuchen Sie es gleich noch einmal."
+    },
+    "rightNow": {
+      "locationDenied": "Standort aktivieren oder eine Region auswählen."
+    },
+    "api": {
+      "SERVICE_UNAVAILABLE": "Bitte versuchen Sie es gleich noch einmal.",
+      "RATE_LIMITED": "Zu viele Anfragen. Bitte warten Sie kurz.",
+      "SERVER_ERROR": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "VALIDATION_ERROR": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    }
   },
   "notFound": {
     "title": "Seite nicht gefunden",
@@ -118,7 +325,112 @@
     "askAI": "Ask AI",
     "clearFilters": "Filter zurücksetzen",
     "reportError": "Nicht gespeichert. Erneut versuchen oder zurück zum Weg.",
-    "reportAria": "Wegbedingungen-Bericht absenden"
+    "reportAria": "Wegbedingungen-Bericht absenden",
+    "tips": {
+      "summary": "Bevor Sie losgehen",
+      "disclaimer": "Bedingungen stammen aus Community-Berichten, nicht garantiert. Wandern birgt Risiken — bereiten Sie sich auf das Wetter vor, packen Sie Schichten ein und folgen Sie lokalen Hinweisen.",
+      "shortChecklist": "Schichten, Bedingungen prüfen, jemandem Ihre Route sagen.",
+      "addToPlan": "Zum Plan hinzufügen →",
+      "reportConditions": "Bedingungen melden",
+      "buildDayHint": "Einen Tag bauen — Wanderwege zu Ihrem Plan hinzufügen",
+      "troodosGuide": "Troodos Dezember-Guide →"
+    },
+    "detail": {
+      "hero": {
+        "elevationGain": "{meters}m Anstieg",
+        "elevationMax": "Max. {meters}m",
+        "trailheadLabel": "Startpunkt: {name}",
+        "navigateToTrailhead": "Zum Startpunkt navigieren →"
+      },
+      "nav": {
+        "overview": "Überblick",
+        "conditions": "Bedingungen",
+        "map": "Karte",
+        "waypoints": "Wegpunkte",
+        "pairWith": "Kombinieren mit"
+      },
+      "topSightsTitle": "Top-Spots",
+      "conditions": {
+        "latestFromHikers": "Aktuelles von Wandernden",
+        "currentConditions": "Aktuelle Bedingungen",
+        "titleNoData": "Trail-Bedingungen",
+        "noRecentBody": "Keine aktuellen Bedingungen für diesen Weg. Gerade zurück? Teilen Sie, was Sie gesehen haben – es dauert nur eine Minute.",
+        "shareWhatYouSaw": "Erlebnis teilen",
+        "beFirst": "Als Erste:r melden",
+        "recentReportsCount": "{count} aktuelle Berichte",
+        "surfaceLabel": "Untergrund: {surface}",
+        "temperatureAtTrailhead": "{temperature}°C am Startpunkt",
+        "windAtTrailhead": "{wind} km/h Wind"
+      },
+      "safety": {
+        "title": "Sicherheit & Essentials",
+        "body": "Notruf 112 · Touristeninfo 1460 · Rettung 199. Schichten, Wasser, geladenes Handy. Bedingungen prüfen, bevor Sie losgehen."
+      },
+      "winterSafetyTitle": "Sicherheit im Winter",
+      "routeMapTitle": "Routenkarte",
+      "winterNotesTitle": "Winter-Hinweise",
+      "keyStopsTitle": "Wichtige Stopps",
+      "localSecretTitle": "Geheimtipp",
+      "highlightsTitle": "Highlights",
+      "bestSeasonTitle": "Beste Saison",
+      "whatToBringTitle": "Was mitnehmen",
+      "localSecrets": {
+        "title": "Geheimtipps",
+        "intro": "Insider-Tipps für diesen Weg. Kombinationen, Zeiten, was Sie danach planen können.",
+        "seeAll": "Alle Geheimtipps ansehen →"
+      },
+      "relatedPlaces": {
+        "description": "Wanderung am Morgen, Dorf oder Weingut am Nachmittag. Starten Sie am besten bis 9 Uhr."
+      },
+      "footer": {
+        "addToPlanBody": "Fügen Sie diesen Weg zu Ihrem Plan hinzu und kombinieren Sie ihn nachmittags mit einem Dorf oder Weingut.",
+        "viewAllTrails": "Alle Wanderwege ansehen"
+      }
+    },
+    "conditionsStrip": {
+      "heading": "Bedingungen heute",
+      "openCount": "{count} geöffnet",
+      "cautionCount": "{count} mit Vorsicht",
+      "closedCount": "{count} gesperrt",
+      "noReports": "Berichte prüfen",
+      "goodToGo": "Alles bereit",
+      "cautionOnly": "{count} Wege erfordern Vorsicht",
+      "withClosed": "{count} Wege gesperrt — vorher prüfen",
+      "checkConditions": "Trail-Bedingungen prüfen"
+    },
+    "page": {
+      "hero": {
+        "title": "Winter-Wanderwege",
+        "description": "Pinienwald, Grate, leere Pfade. Sechzehn Grad, wenn daheim sechs sind.",
+        "descriptionSecondary": "{open} geöffnet · {caution} mit Vorsicht · 8 Regionen",
+        "imageAlt": "Troodos-Pinienwald-Wanderweg im Winter auf Zypern",
+        "weatherAria": "Wettervorhersage ansehen"
+      },
+      "search": {
+        "heading": "Wanderwege suchen",
+        "placeholder": "Wanderwege nach Name, Region, Schwierigkeit suchen…"
+      },
+      "list": {
+        "filteredHeading": "{count} Wanderwege"
+      },
+      "groups": {
+        "open": "Geöffnet",
+        "caution": "Vorsicht",
+        "closed": "Gesperrt",
+        "noReport": "Keine Meldung"
+      },
+      "map": {
+        "heading": "Karte ({count})",
+        "caption": "Aktualisiert aus lokalen Berichten."
+      },
+      "bottomBar": {
+        "aria": "Wanderwege zu Ihrem Plan hinzufügen"
+      },
+      "sr": {
+        "filtered": "{count} Wanderwege werden angezeigt",
+        "allByCategory": "Alle Wanderwege nach Kategorie werden angezeigt"
+      }
+    }
   },
   "plan": {
     "addToPlan": "Zum Plan hinzufügen",
@@ -129,7 +441,36 @@
     "curatedCombos": "Kuratierte Kombinationen",
     "curatedCombosDesc": "Vormittags hier, nachmittags dort. Es ergibt sich.",
     "morning": "Vormittag",
-    "afternoon": "Nachmittag"
+    "afternoon": "Nachmittag",
+    "pageTitle": "Planen Sie Ihren Zypern-Winter",
+    "pageDescHasContent": "Ihr Reiseplan. Fügen Sie mehr hinzu, teilen Sie ihn oder passen Sie ihn unten an.",
+    "pageDescEmpty": "Erstellen Sie Ihren Winter-Reiseplan. Wählen Sie eine Vorlage oder fügen Sie Orte Tag für Tag hinzu.",
+    "pageDescSecondaryEmpty": "Wird automatisch gespeichert.",
+    "daysUntilBanner": "{days, plural, =0 {Du bist da. Tag 1 ist bereit.} =1 {Morgen. Tag 1 ist bereit.} other {Noch # Tage — unten prüfen.}}",
+    "tripReminderBanner": "{days, plural, =0 {Deine Reise ist heute — dein Tag-1-Plan ist bereit.} =1 {Morgen bist du da — dein Tag-1-Plan ist bereit.} other {Noch # Tage bis du da bist — dein Tag-1-Plan ist bereit.}}",
+    "reviewPlan": "Plan prüfen",
+    "addingToPlan": "Wird zum Plan hinzugefügt…",
+    "addedToDayBanner": "{name} zu Tag {day} hinzugefügt.",
+    "dayEmptyTitle": "Tag {day} ist leer",
+    "dayEmptyBody": "Fügen Sie unten Ihren ersten Ort hinzu oder wählen Sie weiter unten eine Vorlage, um den Tag auf einmal zu füllen.",
+    "browsePlaces": "Orte durchsuchen",
+    "seeTemplates": "Vorlagen ansehen"
+  },
+  "planQuick": {
+    "kickerEmpty": "Vorlagen",
+    "kickerHasContent": "Ideen",
+    "titleEmpty": "Mit einer Vorlage starten",
+    "titleHasContent": "Mehr zu Ihrem Plan hinzufügen",
+    "descEmpty": "Vorgefertigte Routen von Küste bis Berge. Ein Klick füllt Tag 1.",
+    "descHasContent": "Nutzen Sie eine Vorlage, um Stopps hinzuzufügen oder zu ersetzen. Oder tippen Sie unten auf einen Ort.",
+    "setDatesHint": "Legen Sie oben Ihre Reisedaten fest, um passende Vorlagen zu sehen.",
+    "quickAddLabel": "Schnell hinzufügen zu Tag {day}",
+    "quickAddAriaAdded": "{label} hinzugefügt",
+    "quickAddAriaAdd": "{label} zu Tag {day} hinzufügen",
+    "browsePlacesCta": "Orte durchsuchen",
+    "browsePlacesAria": "Orte durchsuchen, um sie zu Ihrem Tag hinzuzufügen",
+    "forYou": "Für Sie",
+    "forTrip": "Für Ihre Reise mit {days} Tagen"
   },
   "bookings": {
     "title": "Meine Buchungen",
@@ -138,19 +479,238 @@
     "browseWineries": "Weingüter durchsuchen",
     "loadFromEmail": "Buchungen von anderem Gerät laden",
     "noMatch": "Keine Buchungen für diese E-Mail. Andere E-Mail versuchen oder unter Entdecken buchen.",
-    "bookMore": "Verkostung oder geführte Wanderung unter Entdecken und Wanderwege buchen. Oder Buchungen von anderem Gerät laden."
+    "bookMore": "Verkostung oder geführte Wanderung unter Entdecken und Wanderwege buchen. Oder Buchungen von anderem Gerät laden.",
+    "status": {
+      "confirmed": "bestätigt",
+      "pending": "ausstehend",
+      "cancelled": "storniert"
+    },
+    "errors": {
+      "rateLimited": "Zu viele Anfragen. Warten Sie kurz und versuchen Sie es erneut.",
+      "failedToLoad": "Konnte nicht geladen werden",
+      "connection": "Ihre Buchungen konnten nicht geladen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+    },
+    "emailLookup": {
+      "noMatch": "Keine Buchungen für diese E-Mail. Andere E-Mail versuchen oder unter Entdecken buchen.",
+      "loadedCount": "{count, plural, one {# Buchung geladen.} other {# Buchungen geladen.}}",
+      "allSet": "Alles bereit. Keine neuen Buchungen zum Laden."
+    },
+    "page": {
+      "title": "Meine Buchungen",
+      "description": "Ihre Verkostungen und Erlebnisse. Alles an einem Ort.",
+      "stats": {
+        "totalBookings": "{count, plural, one {Buchung} other {Buchungen}}",
+        "upcoming": "bevorstehend",
+        "confirmedCount": "{count} bestätigt"
+      },
+      "sync": {
+        "toggle": "Auf anderem Gerät gebucht? Per E-Mail laden",
+        "submit": "Buchungen laden",
+        "loadByEmail": "Per E-Mail laden",
+        "mergeHint": "Wir führen alle Buchungen mit diesem Gerät zusammen."
+      },
+      "loading": {
+        "aria": "Buchungen werden geladen",
+        "sr": "Buchungen werden geladen…"
+      },
+      "empty": {
+        "aria": "Leerer Buchungszustand",
+        "cta": {
+          "bookGuidedHike": "Geführte Wanderung buchen"
+        }
+      },
+      "noUpcoming": {
+        "title": "Keine bevorstehenden Buchungen",
+        "body": "Laden Sie Buchungen von einem anderen Gerät oder planen Sie Ihren nächsten Besuch."
+      },
+      "tomorrowHighlight": {
+        "title": "Morgen — {providers} — Wegbeschreibung bereit.",
+        "body": "Details unten ansehen oder zum Plan hinzufügen."
+      },
+      "groups": {
+        "today": "Heute",
+        "thisWeek": "Diese Woche",
+        "later": "Später"
+      },
+      "relative": {
+        "today": "Heute",
+        "tomorrow": "Morgen",
+        "inDays": "In {count} Tagen"
+      },
+      "today": {
+        "guidedHike": "Ihre geführte Wanderung ist heute — Details unten ansehen.",
+        "tasting": "Ihre Verkostung ist heute — Details zum Weingut unten ansehen."
+      },
+      "tomorrow": {
+        "reminder": "Morgen — stellen Sie auf Wunsch eine Erinnerung ein."
+      },
+      "cta": {
+        "viewTrails": "Wanderwege ansehen",
+        "viewWinery": "Weingut ansehen",
+        "modify": "Ändern",
+        "bookAgain": "Erneut buchen",
+        "browseTrails": "Wanderwege entdecken",
+        "visitWineryPage": "Zur Weingut-Seite",
+        "discoverAll": "Alles entdecken"
+      },
+      "past": {
+        "heading": "Vergangen & storniert"
+      },
+      "bookMore": {
+        "title": "Mehr buchen",
+        "titleNoUpcoming": "Nächsten Besuch planen",
+        "body": "Fügen Sie Ihrer Winterreise eine weitere Verkostung hinzu.",
+        "bodyNoUpcoming": "Alle Ihre Verkostungen liegen in der Vergangenheit. Buchen Sie eine neue für Ihre nächste Reise."
+      }
+    }
+  },
+  "account": {
+    "title": "Mein Konto",
+    "loading": "Wird geladen…",
+    "signedIn": {
+      "description": "Ihr Plan und Ihre Buchungen — geräteübergreifend synchronisiert.",
+      "signOut": "Abmelden",
+      "cta": {
+        "plan": "Mein Plan",
+        "bookings": "Meine Buchungen ansehen",
+        "settings": "Einstellungen"
+      }
+    },
+    "signedOut": {
+      "title": "Plan auf allen Geräten speichern",
+      "description": "Melden Sie sich an, um Plan und Buchungen geräteübergreifend zu synchronisieren.",
+      "body": "Erstellen Sie ein kostenloses Konto — Ihr Reiseplan und Ihre Buchungen begleiten Sie überallhin.",
+      "cta": {
+        "create": "Konto erstellen",
+        "signIn": "Anmelden",
+        "skip": "Überspringen — Plan nur auf diesem Gerät nutzen"
+      }
+    },
+    "notConfigured": {
+      "title": "Anmeldung bald verfügbar",
+      "description": "Anmelden (bald verfügbar) synchronisiert Ihren Plan und Ihre Buchungen geräteübergreifend.",
+      "body": "Ihr Plan und Ihre Buchungen befinden sich auf diesem Gerät. Nutzen Sie die E‑Mail‑Suche auf der Buchungsseite, um Reservierungen von einem anderen Gerät zu laden."
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "loading": "Wird geladen…",
+      "description": "Passen Sie Ihr Erlebnis an. Wir verwenden diese Angaben, um Orte und Wanderwege zu zeigen, die zu Ihrem Stil passen.",
+      "interests": {
+        "title": "Interessen",
+        "body": "Wählen Sie, was Sie begeistert. Entdecken, Right Now und Plan‑Vorschläge orientieren sich daran.",
+        "labels": {
+          "active": "Wandern & Trails",
+          "culture": "Geschichte & Archäologie",
+          "wine": "Wein & Verkostungen",
+          "wellness": "Wellness & Entspannung",
+          "villages": "Bergdörfer"
+        }
+      },
+      "travelStyle": {
+        "title": "Reisestil",
+        "body": "Hilft, Empfehlungen anzupassen (z. B. familienfreundlich, Auszeiten zu zweit).",
+        "labels": {
+          "solo": "Allein",
+          "couple": "Zu zweit",
+          "family": "Familie",
+          "group": "Gruppe",
+          "nomad": "Digitaler Nomade"
+        }
+      },
+      "regions": {
+        "title": "Lieblingsregionen",
+        "body": "Wir heben Inhalte aus diesen Regionen in Entdecken und Right Now hervor."
+      },
+      "notifications": {
+        "title": "Benachrichtigungen",
+        "body": "Wenn Sie Push aktivieren, verwenden wir diese Einstellungen für Hinweise.",
+        "trails": "Updates zu Trail‑Bedingungen (Troodos usw.)",
+        "events": "Winter‑Events und Festivals"
+      },
+      "privacy": {
+        "title": "Daten & Datenschutz",
+        "body": "Steuern Sie, was wir auf diesem Gerät speichern. Für Daten, die wir halten (Buchungen, Trail‑Reports), können Sie Export oder Löschung anfordern.",
+        "clear": "Zuletzt angesehen löschen",
+        "cleared": "Zuletzt angesehen gelöscht",
+        "requestExport": "Datenexport anfordern",
+        "requestDeletion": "Löschung anfordern",
+        "footer": {
+          "prefix": "Geben Sie die E‑Mail an, die für Buchungen oder Trail‑Reports verwendet wurde. Wir antworten innerhalb von 30 Tagen. Siehe unsere",
+          "privacyPolicy": "Datenschutzerklärung",
+          "suffix": "."
+        }
+      },
+      "backToAccount": "← Zurück zum Konto"
+    }
   },
   "search": {
+    "title": "Ort oder Wanderweg finden",
+    "intro": "Orte, die sich echt anfühlen. Dörfer, Weingüter, Strände, Wanderwege, Events.",
+    "resultsFor": "Ergebnisse für „{query}“",
     "placeholder": "Ort oder Wanderweg suchen",
+    "typeAtLeastTwo": "Mindestens 2 Zeichen eingeben",
     "noResults": "Nichts für \"{query}\". Troodos, Nissi oder Omodos versuchen bzw. Entdecken durchsuchen.",
     "browseDiscover": "Entdecken durchsuchen",
     "viewTrails": "Alle Wanderwege",
-    "planTrip": "Reise planen"
+    "planTrip": "Reise planen",
+    "noResultsHint": "Oder tippen Sie auf Ask AI, um etwas zu finden.",
+    "browseByCategory": "Oder nach Kategorie stöbern",
+    "category": {
+      "trails": "Wanderwege",
+      "discover": "Entdecken",
+      "wineries": "Weingüter",
+      "events": "Veranstaltungen",
+      "villages": "Dörfer",
+      "beaches": "Strände"
+    }
   },
   "events": {
     "clearFilters": "Filter zurücksetzen",
     "clearFiltersAria": "Filter zurücksetzen und alle Veranstaltungen anzeigen",
     "noMatch": "Keine Veranstaltungen passen zu diesen Filtern. Anderen Typ oder Region versuchen."
+  },
+  "weather": {
+    "page": {
+      "title": "Zypern-Winterwetter nach Monaten",
+      "description": "Küsten- und Troodos-Temperaturen Monat für Monat. Planen Sie Schichten, Wanderungen und Weingüter.",
+      "table": {
+        "month": "Monat",
+        "coast": "Küste (°C)",
+        "coastConditions": "Bedingungen",
+        "troodos": "Troodos (°C)",
+        "troodosConditions": "Bedingungen"
+      },
+      "mobile": {
+        "details": "Details →"
+      },
+      "body": {
+        "coastTroodos": "Küste bedeutet Larnaka, Limassol, Pafos — milde mediterrane Winter. Troodos ist das Gebirge: Dörfer wie Platres und Omodos sowie das Skigebiet am Olymp. Packen Sie Schichten ein; zwischen Küste und Bergen können 10 °C Unterschied liegen.",
+        "linkTrails": "Trail-Bedingungen prüfen",
+        "linkTrailsSuffix": "bevor Sie hinauffahren.",
+        "linkWineries": "Winterliche Weingüter",
+        "linkWineriesSuffix": "— Verkostungen am Kamin, besser vorab reservieren."
+      }
+    },
+    "month": {
+      "pageHeaderTitle": "Zypern-Winterwetter: {month}",
+      "pageHeaderDescription": "Küste {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
+      "meta": {
+        "notFoundTitle": "Wetter nicht gefunden | Cyprus Winter",
+        "notFoundDescription": "Zypern-Winterwetter nach Monaten: Dezember, Januar, Februar, März. Temperaturen an Küste und im Troodos."
+      },
+      "conditionsHeading": "Was Sie erwartet",
+      "conditionsCoastTitle": "Küste (Larnaka, Limassol, Pafos)",
+      "conditionsTroodosTitle": "Troodos (Gebirge, Dörfer)",
+      "eventsHeading": "Winter-Events im {month}",
+      "cta": {
+        "trailConditions": "Trail-Bedingungen",
+        "winterWineries": "Winterliche Weingüter"
+      },
+      "footer": {
+        "allMonths": "Alle Monate",
+        "troodosWinter": "Troodos im Winter"
+      }
+    }
   },
   "onboarding": {
     "welcome": "Cyprus Winter",
@@ -166,6 +726,146 @@
     "tipFirstAdd": "In Ihrem Plan. Mehr hinzufügen oder Ihre Reise teilen.",
     "tipDiscoverFilter": "Filtern nach Dörfern, Weingütern oder Wanderwegen.",
     "savePlan": "Plan speichern — Konto erstellen zum Synchronisieren"
+  },
+  "help": {
+    "planEmpty": "Tippen Sie auf „Orte hinzufügen“, um Ihren Reiseplan aus Entdecken oder Wanderwegen zu starten.",
+    "planFirstItem": "Guter Start. Fügen Sie weitere Orte hinzu oder wechseln Sie die Tage, um die ganze Reise zu planen.",
+    "discoverFilter": "Nutzen Sie Filter, um genau das zu finden, was Sie suchen—Weingüter, Wanderwege, Strände und mehr.",
+    "bookingForm": "Geben Sie Ihre Daten ein und das Weingut bestätigt per E‑Mail. Die meisten antworten innerhalb von 24 Stunden.",
+    "aiAssistant": "Fragen Sie mich alles—beste Wanderwege, Weingut-Empfehlungen oder Hilfe bei der Tagesplanung."
+  },
+  "auth": {
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Ihr Plan und Ihre Buchungen folgen Ihnen. Wanderwege, Dörfer, Weingüter — alles an einem Ort.",
+      "errorInvalidCredentials": "E‑Mail oder Passwort stimmt nicht. Versuchen Sie es erneut oder nutzen Sie einen Magic Link.",
+      "errorConfirmEmail": "Bitte bestätigen Sie zuerst Ihre E‑Mail. Prüfen Sie Ihren Posteingang auf den Aktivierungslink.",
+      "errorGeneric": "Etwas ist schiefgelaufen. Versuchen Sie es gleich noch einmal.",
+      "ctaSignIn": "Anmelden",
+      "ctaSendMagicLink": "Magic Link senden",
+      "ctaUseMagic": "Magic Link verwenden",
+      "ctaUsePassword": "Passwort verwenden",
+      "magicSentTitle": "Link gesendet",
+      "magicSentSubtitle": "Wir haben einen Anmeldelink an <strong>{email}</strong> gesendet. Klicken Sie darauf, um sich auf diesem Gerät anzumelden.",
+      "ctaUseDifferentMethod": "Andere Methode verwenden"
+    },
+    "register": {
+      "title": "Cyprus Winter beitreten",
+      "subtitle": "Planen Sie Wanderwege, Weingüter, Dörfer. Synchronisieren Sie Ihren Plan über Geräte hinweg.",
+      "errorEmailExists": "Ein Konto mit dieser E‑Mail existiert bereits.",
+      "errorPasswordTooShort": "Ihr Passwort ist zu kurz. Verwenden Sie mindestens 6 Zeichen.",
+      "errorInvalidEmail": "Bitte geben Sie eine gültige E‑Mail-Adresse ein.",
+      "errorPasswordsDontMatch": "Passwörter stimmen nicht überein. Bitte beide Felder prüfen.",
+      "errorGeneric": "Etwas ist schiefgelaufen. Versuchen Sie es gleich noch einmal.",
+      "passwordHint": "Mindestens 6 Zeichen",
+      "successTitle": "Fast geschafft",
+      "successSubtitle": "Wir haben einen Bestätigungslink an <strong>{email}</strong> gesendet. Klicken Sie darauf, um Ihr Konto zu aktivieren, und melden Sie sich dann an.",
+      "ctaSignIn": "Anmelden",
+      "ctaCreate": "Konto erstellen"
+    },
+    "forgot": {
+      "title": "Passwort vergessen?",
+      "subtitle": "Geben Sie Ihre E‑Mail ein und wir senden Ihnen einen Link, um ein neues Passwort festzulegen.",
+      "errorInvalidEmail": "Bitte geben Sie eine gültige E‑Mail-Adresse ein.",
+      "errorGeneric": "Etwas ist schiefgelaufen. Versuchen Sie es gleich noch einmal.",
+      "successTitle": "Reset-Link gesendet",
+      "successSubtitle": "Wir haben einen Passwort-Reset-Link an <strong>{email}</strong> gesendet. Klicken Sie darauf, um ein neues Passwort festzulegen.",
+      "ctaSend": "Reset-Link senden",
+      "ctaSending": "Wird gesendet…"
+    },
+    "reset": {
+      "inlinePasswordHint": "Mindestens 6 Zeichen",
+      "errorPasswordsDontMatch": "Passwörter stimmen nicht überein. Bitte beide Felder prüfen.",
+      "errorPasswordTooShort": "Ihr Passwort ist zu kurz. Verwenden Sie mindestens 6 Zeichen.",
+      "errorGeneric": "Etwas ist schiefgelaufen. Versuchen Sie es gleich noch einmal.",
+      "invalidLinkTitle": "Ungültiger oder abgelaufener Link",
+      "invalidLinkSubtitle": "Dieser Reset-Link ist möglicherweise abgelaufen. Fordern Sie einen neuen an, um Ihr Passwort festzulegen.",
+      "configTitle": "Neues Passwort festlegen",
+      "configSubtitle": "Auth wird eingerichtet. Verwenden Sie den Reset-Link aus Ihrer E‑Mail, sobald er bereit ist.",
+      "successTitle": "Passwort aktualisiert",
+      "successSubtitle": "Ihr Passwort wurde festgelegt. Sie können sich jetzt mit Ihrem neuen Passwort anmelden.",
+      "ctaUpdate": "Passwort aktualisieren",
+      "ctaUpdating": "Wird aktualisiert…"
+    }
+  },
+  "account": {
+    "title": "Mein Konto",
+    "loading": "Wird geladen…",
+    "signedIn": {
+      "description": "Ihr Plan und Ihre Buchungen — geräteübergreifend synchronisiert.",
+      "signOut": "Abmelden",
+      "cta": {
+        "plan": "Mein Plan",
+        "bookings": "Meine Buchungen",
+        "settings": "Einstellungen"
+      }
+    },
+    "signedOut": {
+      "title": "Plan auf mehreren Geräten speichern",
+      "description": "Melden Sie sich an, um Plan und Buchungen über Geräte hinweg zu synchronisieren.",
+      "body": "Erstellen Sie kostenlos ein Konto — Ihr Reiseplan und Ihre Buchungen sind dann überall verfügbar.",
+      "cta": {
+        "create": "Konto erstellen",
+        "signIn": "Anmelden",
+        "skip": "Überspringen — Plan nur auf diesem Gerät nutzen"
+      }
+    },
+    "notConfigured": {
+      "title": "Anmeldung kommt bald",
+      "description": "Anmelden (bald verfügbar) synchronisiert Plan und Buchungen über Geräte hinweg.",
+      "body": "Ihr Plan und Ihre Buchungen sind auf diesem Gerät gespeichert. Nutzen Sie die E‑Mail-Suche auf der Buchungsseite, um Reservierungen von einem anderen Gerät zu laden."
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "loading": "Wird geladen…",
+      "description": "Personalisieren Sie Ihr Erlebnis. Damit zeigen wir Orte und Wanderwege, die zu Ihrem Stil passen.",
+      "interests": {
+        "title": "Interessen",
+        "body": "Wählen Sie, was Sie begeistert. Entdecken, Right Now und Vorschläge richten sich danach.",
+        "labels": {
+          "active": "Wandern & Trails",
+          "culture": "Geschichte & Archäologie",
+          "wine": "Wein & Verkostungen",
+          "wellness": "Wellness & Entspannung",
+          "villages": "Bergdörfer"
+        }
+      },
+      "travelStyle": {
+        "title": "Reisestil",
+        "body": "Hilft, Vorschläge anzupassen (z. B. familienfreundlich, Auszeit zu zweit).",
+        "labels": {
+          "solo": "Allein",
+          "couple": "Zu zweit",
+          "family": "Familien",
+          "group": "Gruppe",
+          "nomad": "Digital Nomad"
+        }
+      },
+      "regions": {
+        "title": "Lieblingsregionen",
+        "body": "Wir zeigen Inhalte aus diesen Regionen häufiger in Entdecken und Right Now."
+      },
+      "notifications": {
+        "title": "Benachrichtigungen",
+        "body": "Wenn Sie Push aktivieren, nutzen wir diese Einstellungen für Hinweise.",
+        "trails": "Updates zu Trail-Bedingungen (Troodos usw.)",
+        "events": "Winter-Events und Festivals"
+      },
+      "privacy": {
+        "title": "Daten & Datenschutz",
+        "body": "Steuern Sie, was wir auf diesem Gerät speichern. Für Daten, die wir halten (Buchungen, Trail-Reports), können Sie Export oder Löschung anfordern.",
+        "clear": "Kürzlich angesehen löschen",
+        "cleared": "Kürzlich angesehen gelöscht",
+        "requestExport": "Datenexport anfordern",
+        "requestDeletion": "Löschung anfordern",
+        "footer": {
+          "prefix": "Bitte die E‑Mail angeben, die für Buchungen oder Trail-Reports verwendet wurde. Wir antworten innerhalb von 30 Tagen. Siehe unsere",
+          "privacyPolicy": "Datenschutzerklärung",
+          "suffix": "."
+        }
+      },
+      "backToAccount": "← Zurück zum Konto"
+    }
   },
   "meta": {
     "homeTitle": "Cyprus Winter | Mittelmeer im Winter",

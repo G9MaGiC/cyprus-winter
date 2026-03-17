@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Team | Cyprus Winter — Trails, Villages, Wineries",
@@ -13,15 +14,16 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/team` },
 };
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
+        backLabel={tNav("home")}
         title="Our Team"
         description="Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
-        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Team", href: "/team", isCurrent: true }]}
+        breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("team"), href: "/team", isCurrent: true }]}
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -63,12 +65,12 @@ export default function TeamPage() {
         <p className="text-sm text-olive/80 mb-4">Meet the team behind your trip — and ask them anything.</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <AIAssistantTrigger label="Ask AI" />
-          <Link href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
+          <AppLink href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
             Start planning
-          </Link>
-          <Link href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
+          </AppLink>
+          <AppLink href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
             Discover places
-          </Link>
+          </AppLink>
         </div>
       </div>
 

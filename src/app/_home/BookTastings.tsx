@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ComponentType } from "react";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 import { homeFeaturedWineries } from "@/data/home";
 import { wineries } from "@/data/wineries";
@@ -11,6 +12,7 @@ export default function BookTastings({
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const tCommon = useTranslations("common");
   const Link = LinkComponent;
   const featured = homeFeaturedWineries.map((w) => {
     const full = wineries.find((x) => x.id === w.wineryId);
@@ -37,7 +39,7 @@ export default function BookTastings({
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
             </div>
             <div className={`${CARD.content} min-h-[120px]`}>
-              <p className={`${TYPE.kicker} mb-2`}>Book tastings</p>
+              <p className={`${TYPE.kicker} mb-2`}>{tCommon("bookTastings")}</p>
               <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={w.name}>
                 {w.name}
               </h3>
@@ -51,17 +53,17 @@ export default function BookTastings({
                 href={`/book/winery/${w.wineryId}`}
                 prefetch="auto"
                 className={CTA.primaryCompact}
-                aria-label={`Book a tasting at ${w.name}`}
+                aria-label={`${tCommon("bookTasting")} — ${w.name}`}
               >
-                Book a tasting
+                {tCommon("bookTasting")}
               </Link>
               <Link
                 href="/wineries"
                 prefetch="auto"
                 className={`text-sm ${SECTION.aegeanLink}`}
-                aria-label="Explore all wineries"
+                aria-label={tCommon("exploreWineries")}
               >
-                Explore wineries
+                {tCommon("exploreWineries")}
               </Link>
             </div>
           </div>

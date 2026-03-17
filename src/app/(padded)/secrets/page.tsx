@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
+import { getTranslations } from "next-intl/server";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
 
@@ -31,28 +32,29 @@ const typeLabels: Record<string, string> = {
   spot: "Spot",
 };
 
-export default function SecretsPage() {
+export default async function SecretsPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
+        backLabel={tNav("home")}
         title="Cyprus Winter Local Secrets"
         description="Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place."
-        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Local Secrets", href: "/secrets", isCurrent: true }]}
+        breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("secrets"), href: "/secrets", isCurrent: true }]}
       >
-        <Link href="/plan" className={`mt-4 px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+        <AppLink href="/plan" className={`mt-4 px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
           Plan your trip
-        </Link>
+        </AppLink>
       </PageHeader>
 
       <h2 className="sr-only">Insider tips by region and type</h2>
       {secretGems.length === 0 ? (
         <div className={`mt-10 ${EMPTY_STATE}`} role="status" aria-live="polite">
           <p className="text-olive/80 mb-4">No secrets added yet.</p>
-          <Link href="/discover" className={CTA.secondaryCompact}>
+          <AppLink href="/discover" className={CTA.secondaryCompact}>
             Discover places
-          </Link>
+          </AppLink>
         </div>
       ) : (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
@@ -70,26 +72,26 @@ export default function SecretsPage() {
                 <span className="text-xs text-olive/60">{typeLabels[g.type] ?? g.type}</span>
               </div>
               {place && (
-                <Link
+                <AppLink
                   href={place.href}
                   className={`${SECTION.aegeanLink} gap-1.5 text-xs mb-2`}
                 >
                   <span>{place.type === "trail" ? "Trail" : "Place"}:</span>
                   <span>{place.name}</span>
                   <span aria-hidden>→</span>
-                </Link>
+                </AppLink>
               )}
               <h3 className={`font-display text-lg font-semibold text-charcoal ${SECTION.titleGap}`}>
                 {g.title}
               </h3>
               <p className="text-olive/80 text-sm leading-relaxed mb-4">{g.body}</p>
               {g.href && (
-                <Link
+                <AppLink
                   href={g.href}
                   className={`inline-flex items-center text-sm font-medium text-terracotta hover:text-terracotta/80 ${CARD.link}`}
                 >
                   Go there →
-                </Link>
+                </AppLink>
               )}
             </article>
           );
@@ -100,9 +102,9 @@ export default function SecretsPage() {
         <span id="secrets-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
         Pair with trails and villages.{" "}
-        <Link href="/plan" className={SECTION.aegeanLink}>
+        <AppLink href="/plan" className={SECTION.aegeanLink}>
           Plan your day
-        </Link>
+        </AppLink>
       </p>
       </div>
       <StickyPlanBarBlock sentinelId="secrets-plan-sentinel" />

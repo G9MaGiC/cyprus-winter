@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { CTA, HERO, LAYOUT, TYPE } from "@/lib/design-tokens";
 
@@ -36,17 +36,17 @@ export default async function HomeHero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
-              <Link href="/discover" className={`${CTA.primary} w-full sm:w-auto sm:min-w-[160px] justify-center`} aria-label={t("ui.app__home_HomeHero.aria-label_10")}>
+              <AppLink href="/discover" className={`${CTA.primary} w-full sm:w-auto sm:min-w-[160px] justify-center`} aria-label={t("ui.app__home_HomeHero.aria-label_10")}>
                 {t("common.nav.discover")}
-              </Link>
-              <Link href="/plan" className={CTA.secondary} aria-label={t("ui.app__home_HomeHero.aria-label_11")}>
+              </AppLink>
+              <AppLink href="/plan" className={CTA.secondary} aria-label={t("ui.app__home_HomeHero.aria-label_11")}>
                 {t("common.nav.trip")}
-              </Link>
+              </AppLink>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-4 pt-2 border-t border-white/15 text-sm">
-              <Link href="/airport" className={CTA.ghost} aria-label={t("ui.app__home_HomeHero.aria-label_12")}>
+              <AppLink href="/airport" className={CTA.ghost} aria-label={t("ui.app__home_HomeHero.aria-label_12")}>
                 {t("common.nav.airport")}
-              </Link>
+              </AppLink>
               <AIAssistantTrigger variant="tertiaryOnDark" label="Ask your guide" />
             </div>
         </div>

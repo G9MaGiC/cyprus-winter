@@ -9,7 +9,7 @@ import type { Restaurant } from "@/data/restaurants";
 import { LAYOUT, CTA, CARD, CALLOUT, SECTION } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -20,6 +20,9 @@ import { getSecretsForPlace } from "@/data/secret-gems";
 import { getSimilarDiscoverPlaces } from "@/lib/related-places";
 import TrackView from "@/components/TrackView";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { getLocalizedName } from "@/lib/localize";
+import { getTranslations } from "next-intl/server";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -61,9 +64,10 @@ export async function generateMetadata({
 export default async function AttractionPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale?: string }>;
 }) {
-  const { id } = await params;
+  const { id, locale = "en" } = await params;
+  const tNav = await getTranslations({ locale, namespace: "nav" });
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
 
@@ -98,26 +102,26 @@ export default async function AttractionPage({
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
+      itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Discover", item: `${SITE_URL}/discover` },
-      { "@type": "ListItem", position: 3, name: a.name, item: canonicalUrl },
+      { "@type": "ListItem", position: 3, name: getLocalizedName(a, locale), item: canonicalUrl },
     ],
   };
 
   return (
     <div className="min-h-screen bg-sand">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(attractionSchema) }} />
-      {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(attractionSchema) }} />
+      {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(localBusinessSchema) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
         <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
         <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
-          <BackLink href="/discover" label="Back to Discover" />
+          <BackLink href="/discover" label={tNav("discover")} />
           <Breadcrumbs
             items={[
-              { label: "Home", href: "/" },
-              { label: "Discover", href: "/discover" },
+              { label: tNav("home"), href: "/" },
+              { label: tNav("discover"), href: "/discover" },
               { label: a.name, href: canonicalUrl, isCurrent: true },
             ]}
             className="py-1 px-0 text-xs text-olive/60"
@@ -133,8 +137,7 @@ export default async function AttractionPage({
                 {a.type === "restaurant" ? "Eat" : a.type}
               </span>
             }
-            title={a.name}
-            titleEl={"nameEl" in a ? a.nameEl : undefined}
+            title={getLocalizedName(a, locale)}
             subtitle={a.region}
           />
 
@@ -282,9 +285,9 @@ export default async function AttractionPage({
               <div className="flex flex-wrap gap-3">
                 {isWinery(a) && (
                   <>
-                    <Link href={`/book/winery/${a.id}`} className={`gap-2 ${CTA.primaryCompact}`}>
+                    <AppLink href={`/book/winery/${a.id}`} className={`gap-2 ${CTA.primaryCompact}`}>
                       Book a tasting →
-                    </Link>
+                    </AppLink>
                     {a.bookingUrl && (
                       <a
                         href={a.bookingUrl}
@@ -481,12 +484,12 @@ export default async function AttractionPage({
                     </div>
                   ))}
                 </div>
-                <Link
+                <AppLink
                   href="/secrets"
                   className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
                   See all local secrets →
-                </Link>
+                </AppLink>
               </section>
             )}
 
@@ -518,12 +521,12 @@ export default async function AttractionPage({
                   <ul className="flex flex-wrap gap-2">
                     {similar.map((r) => (
                       <li key={r.id}>
-                        <Link
+                        <AppLink
                           href={r.href}
                           className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:text-terracotta-muted hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                           {r.name} →
-                        </Link>
+                        </AppLink>
                       </li>
                     ))}
                   </ul>

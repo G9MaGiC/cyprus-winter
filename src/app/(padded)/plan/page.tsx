@@ -23,7 +23,7 @@ import { usePlanPage } from "@/hooks/usePlanPage";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTranslations } from "next-intl";
-import { track } from "@/lib/analytics";
+import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 import { LAYOUT, CTA } from "@/lib/design-tokens";
@@ -39,6 +39,9 @@ export default function PlanPage() {
     useOnboardingContext();
   const { user } = useAuth();
   const t = useTranslations("onboarding");
+  const tPlan = useTranslations("plan");
+  const tNav = useTranslations("nav");
+  const hasTrackedPlanView = useRef(false);
 
   const hasTrackedFirstAdd = useRef(false);
   useEffect(() => {
@@ -50,6 +53,16 @@ export default function PlanPage() {
       track("first_add_to_plan", { count: plan.totalPlaces });
     }
   }, [plan.hydrated, plan.totalPlaces]);
+
+  useEffect(() => {
+    if (!plan.hydrated || hasTrackedPlanView.current) return;
+    hasTrackedPlanView.current = true;
+    trackProduct("plan_view", {
+      item_count: plan.totalPlaces,
+      day_count: plan.activeDaysCount,
+      has_content: plan.hasContent,
+    });
+  }, [plan.hydrated, plan.totalPlaces, plan.activeDaysCount, plan.hasContent]);
 
   const {
     showClearModal,
@@ -72,7 +85,7 @@ export default function PlanPage() {
     activeItems,
     hydrated,
     copied,
-    addToDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -115,7 +128,7 @@ export default function PlanPage() {
 
         {searchParams.get("add") && !hydrated && (
           <p className="text-sm text-olive/70 mb-4" role="status" aria-live="polite">
-            Adding to your plan…
+            {tPlan("addingToPlan")}
           </p>
         )}
 
@@ -124,18 +137,18 @@ export default function PlanPage() {
         <header role="banner">
           <ListPageHero
             backHref="/"
-            backLabel="Home"
-            title="Plan your Cyprus winter"
+            backLabel={tNav("home")}
+            title={tPlan("pageTitle")}
             description={
               hasContent
-                ? "Your itinerary. Add more, share, or tweak below."
-                : "Build your winter itinerary. Pick a template or add places day by day."
+                ? tPlan("pageDescHasContent")
+                : tPlan("pageDescEmpty")
             }
-            descriptionSecondary={!hasContent ? "Saves automatically." : undefined}
+            descriptionSecondary={!hasContent ? tPlan("pageDescSecondaryEmpty") : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
             backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter"
             hasWidgetStrip={hasContent}
-            breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Plan", href: "/plan", isCurrent: true }]}
+            breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("plan"), href: "/plan", isCurrent: true }]}
           >
             {!hasContent && (
               <div className="mt-4 sm:mt-5">
@@ -201,7 +214,7 @@ export default function PlanPage() {
             activeDay={activeDay}
             activeItems={activeItems}
             getPlace={getPlace}
-            addToDay={addToDay}
+            addToDay={addToDayIfMissing}
             removeFromDay={removeFromDay}
             lastAddedId={lastAddedId}
             lastAddedCardRef={lastAddedCardRef}
@@ -244,7 +257,7 @@ export default function PlanPage() {
               activeDay={activeDay}
               days={days}
               getPlace={getPlace}
-              addToDay={addToDay}
+              addToDay={addToDayIfMissing}
               onTemplateClick={handleTemplateClick}
               hasContent={hasContent}
               tripLength={tripLength}
@@ -276,7 +289,7 @@ export default function PlanPage() {
         {showBrowseModal && (
           <PlacePickerModal
             activeDayItems={activeItems}
-            onAdd={addToDay}
+            onAdd={addToDayIfMissing}
             onClose={() => setShowBrowseModal(false)}
           />
         )}

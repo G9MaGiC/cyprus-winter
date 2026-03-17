@@ -6,11 +6,12 @@
  */
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 type HelpTip = {
   id: string;
-  message: string;
+  messageKey: string;
   position?: "top" | "bottom" | "left" | "right";
   delay?: number;
 };
@@ -18,31 +19,31 @@ type HelpTip = {
 const helpTips: Record<string, HelpTip> = {
   "plan-empty": {
     id: "plan-empty",
-    message: "Tap 'Add places' to start building your itinerary from Discover or Trails.",
+    messageKey: "help.planEmpty",
     position: "bottom",
     delay: 500,
   },
   "plan-first-item": {
     id: "plan-first-item",
-    message: "Great start! Add more places or switch days to plan your whole trip.",
+    messageKey: "help.planFirstItem",
     position: "bottom",
     delay: 0,
   },
   "discover-filter": {
     id: "discover-filter",
-    message: "Use filters to find exactly what you're looking for—wineries, trails, beaches, and more.",
+    messageKey: "help.discoverFilter",
     position: "top",
     delay: 1000,
   },
   "booking-form": {
     id: "booking-form",
-    message: "Fill in your details and the winery will confirm by email. Most respond within 24 hours.",
+    messageKey: "help.bookingForm",
     position: "top",
     delay: 500,
   },
   "ai-assistant": {
     id: "ai-assistant",
-    message: "Ask me anything—best trails, winery recommendations, or help planning your day.",
+    messageKey: "help.aiAssistant",
     position: "left",
     delay: 2000,
   },
@@ -86,6 +87,7 @@ export default function ContextualHelp({
   className,
 }: ContextualHelpProps) {
   const tip = helpTips[context];
+  const t = useTranslations("common");
   const [isVisible, setIsVisible] = useState(false);
   const [canShow, setCanShow] = useState(false);
   const isClient = typeof window !== "undefined";
@@ -139,7 +141,7 @@ export default function ContextualHelp({
 
   return (
     <div
-      className={cn("absolute z-50", positionClasses[tip.position || "bottom"], className)}
+      className={cn("absolute z-[45]", positionClasses[tip.position || "bottom"], className)}
       role="tooltip"
     >
       <div className="relative bg-white rounded-xl shadow-lg border border-sand-200/80 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2">
@@ -148,9 +150,7 @@ export default function ContextualHelp({
           className={cn("absolute w-0 h-0 border-8", arrowClasses[tip.position || "bottom"])}
           aria-hidden
         />
-        
-        <p className="text-sm text-olive pr-6">{tip.message}</p>
-        
+        <p className="text-sm text-olive pr-6">{t(tip.messageKey)}</p>
         <button
           type="button"
           onClick={handleDismiss}

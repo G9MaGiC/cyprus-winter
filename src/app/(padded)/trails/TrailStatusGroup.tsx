@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import TrailCard from "@/components/TrailCard";
 import { trailConditions } from "@/data/trails";
 import type { Trail, TrailConditions } from "@/data/trails";
@@ -55,12 +55,12 @@ export default function TrailStatusGroup({
       </div>
       {reportTrailId && (
         <p className="mt-4 text-sm text-olive/70">
-          <Link
+          <AppLink
             href={`/trails/${reportTrailId}/report`}
             className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
           >
             Report conditions
-          </Link>
+          </AppLink>
         </p>
       )}
     </details>

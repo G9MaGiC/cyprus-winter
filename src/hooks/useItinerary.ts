@@ -2,12 +2,21 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
+import { useLocale } from "next-intl";
 import { getPlaceById, type PlanItem } from "@/data";
-import { decodeItinerary, buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
+import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { toAbsoluteUrl } from "@/lib/site-url";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
+import { trackProduct } from "@/lib/analytics";
+import {
+  emptyDays,
+  loadItineraryFromStorage,
+  loadItineraryFromUrl,
+  persistItineraryToStorage,
+  getItineraryStorageKey,
+} from "@/lib/itinerary-storage";
 
-const STORAGE_KEY = "cyprus-winter-itinerary";
+const STORAGE_KEY = getItineraryStorageKey();
 
 export { MAX_DAYS };
 export { ITINERARY_TEMPLATES, type TemplateKey };
@@ -17,35 +26,12 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
   ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
 );
 
-function emptyDays(): Record<number, string[]> {
-  const out: Record<number, string[]> = {};
-  for (let d = 1; d <= MAX_DAYS; d++) out[d] = [];
-  return out;
-}
-
-function loadItinerary(): Record<number, string[]> {
-  if (typeof window === "undefined") return emptyDays();
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored) as Record<string, string[]>;
-      const out = emptyDays();
-      for (const [k, v] of Object.entries(parsed)) {
-        const d = parseInt(k, 10);
-        if (d >= 1 && d <= MAX_DAYS && Array.isArray(v)) out[d] = v;
-      }
-      return out;
-    }
-  } catch {
-    // ignore
-  }
-  return emptyDays();
-}
-
 export function useItinerary() {
   const searchParams = useSearchParams();
+  const locale = useLocale();
   const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
   const isMountedRef = useRef(true);
+  const daysRef = useRef<Record<number, string[]>>(emptyDays());
   const [days, setDays] = useState<Record<number, string[]>>(emptyDays);
 
   useEffect(() => {
@@ -61,8 +47,8 @@ export function useItinerary() {
 
   useEffect(() => {
     queueMicrotask(() => {
-      const fromUrl = decodeItinerary(searchParams.get("plan"));
-      const fromStorage = loadItinerary();
+      const fromUrl = loadItineraryFromUrl(searchParams);
+      const fromStorage = loadItineraryFromStorage();
       // URL param wins (shared link); otherwise use localStorage
       setDays(fromUrl ?? fromStorage);
       setHydrated(true);
@@ -71,14 +57,12 @@ export function useItinerary() {
 
   useEffect(() => {
     if (!hydrated) return;
-    try {
-      const toStore: Record<string, string[]> = {};
-      for (let d = 1; d <= MAX_DAYS; d++) toStore[String(d)] = days[d] ?? [];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
-    } catch {
-      // ignore
-    }
+    persistItineraryToStorage(days);
   }, [days, hydrated]);
+
+  useEffect(() => {
+    daysRef.current = days;
+  }, [days]);
 
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
@@ -102,28 +86,42 @@ export function useItinerary() {
 
   const [lastAddedId, setLastAddedId] = useState<string | null>(null);
 
-  const addToDay = useCallback((id: string) => {
-    let added = false;
+  const setLastAdded = useCallback((id: string) => {
+    setLastAddedId(id);
+    const t = setTimeout(() => setLastAddedId(null), 600);
+    timeoutRefs.current.push(t);
+  }, []);
+
+  const toggleInDay = useCallback((id: string) => {
+    const current = daysRef.current[activeDay] ?? [];
+    const isAdding = !current.includes(id);
     setDays((prev) => {
-      const current = prev[activeDay] ?? [];
-      const isAdding = !current.includes(id);
-      added = isAdding;
-      const nextDay = isAdding ? [...current, id] : current.filter((x) => x !== id);
+      const prevCurrent = prev[activeDay] ?? [];
+      const shouldAdd = !prevCurrent.includes(id);
+      const nextDay = shouldAdd ? [...prevCurrent, id] : prevCurrent.filter((x) => x !== id);
       return { ...prev, [activeDay]: nextDay };
     });
-    if (added) {
-      setLastAddedId(id);
-      const t = setTimeout(() => setLastAddedId(null), 600);
-      timeoutRefs.current.push(t);
-    }
-  }, [activeDay]);
+    if (isAdding) setLastAdded(id);
+  }, [activeDay, setLastAdded]);
+
+  const addToDayIfMissing = useCallback((id: string) => {
+    const current = daysRef.current[activeDay] ?? [];
+    if (current.includes(id)) return;
+    setDays((prev) => {
+      const prevCurrent = prev[activeDay] ?? [];
+      if (prevCurrent.includes(id)) return prev;
+      return { ...prev, [activeDay]: [...prevCurrent, id] };
+    });
+    setLastAdded(id);
+  }, [activeDay, setLastAdded]);
 
   const removeFromDay = useCallback((id: string) => {
     setDays((prev) => ({
       ...prev,
       [activeDay]: (prev[activeDay] ?? []).filter((x) => x !== id),
     }));
-  }, [activeDay]);
+    trackProduct("plan_remove", { item_id: id, locale });
+  }, [activeDay, locale]);
 
   const getPlace = useCallback((id: string): PlanItem | undefined => {
     return getPlaceById(id);
@@ -148,7 +146,8 @@ export function useItinerary() {
       }
       return next;
     });
-  }, []);
+    trackProduct("plan_template_apply", { template: key, mode, locale });
+  }, [locale]);
 
   const applyTemplateReplace = useCallback((key: TemplateKey, skipConfirm?: boolean) => {
     if (!hasContent || skipConfirm) {
@@ -187,6 +186,9 @@ export function useItinerary() {
       await navigator.clipboard.writeText(text);
       if (!isMountedRef.current) return;
       setCopied(true);
+      const itemCount = Object.values(days).flat().length;
+      const dayCount = Object.values(days).filter((v) => v.length > 0).length;
+      trackProduct("plan_share", { share_method: "copy_text", item_count: itemCount, day_count: dayCount, locale });
       const t = setTimeout(() => {
         if (isMountedRef.current) setCopied(false);
       }, 2000);
@@ -194,7 +196,7 @@ export function useItinerary() {
     } catch {
       // clipboard not available
     }
-  }, [days, getPlace]);
+  }, [days, getPlace, locale]);
 
   const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
 
@@ -204,6 +206,9 @@ export function useItinerary() {
       await navigator.clipboard.writeText(url);
       if (!isMountedRef.current) return;
       setLinkCopied(true);
+      const itemCount = Object.values(days).flat().length;
+      const dayCount = Object.values(days).filter((v) => v.length > 0).length;
+      trackProduct("plan_share", { share_method: "copy_link", item_count: itemCount, day_count: dayCount, locale });
       const t = setTimeout(() => {
         if (isMountedRef.current) setLinkCopied(false);
       }, 2000);
@@ -211,7 +216,7 @@ export function useItinerary() {
     } catch {
       // clipboard not available
     }
-  }, [sharePath]);
+  }, [sharePath, days, locale]);
 
   useEffect(() => {
     return () => {
@@ -229,7 +234,8 @@ export function useItinerary() {
     copied,
     linkCopied,
     copyShareLink,
-    addToDay,
+    toggleInDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     hasContent,

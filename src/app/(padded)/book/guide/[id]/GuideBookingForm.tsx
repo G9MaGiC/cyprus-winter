@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useSearchParams } from "next/navigation";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
@@ -130,9 +130,9 @@ export default function GuideBookingForm({
             <>
               {" "}
               Enter your email on{" "}
-              <Link href="/bookings" className="text-terracotta underline hover:no-underline">
+              <AppLink href="/bookings" className="text-terracotta underline hover:no-underline">
                 My Bookings
-              </Link>{" "}
+              </AppLink>{" "}
               to view your request across devices.
             </>
           )}
@@ -141,12 +141,12 @@ export default function GuideBookingForm({
           Pack layers and water. Tell someone your route.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
+          <AppLink href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
             View my bookings
-          </Link>
-          <Link href="/trails" className={`gap-2 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}>
+          </AppLink>
+          <AppLink href="/trails" className={`gap-2 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}>
             Browse trails
-          </Link>
+          </AppLink>
         </div>
       </div>
     );
@@ -291,9 +291,9 @@ export default function GuideBookingForm({
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
         This is a request, not a confirmed reservation. They&apos;ll confirm by email. By submitting, you agree to our{" "}
-        <Link href="/terms" className="text-olive/70 hover:underline">Terms</Link>
+        <AppLink href="/terms" className="text-olive/70 hover:underline">Terms</AppLink>
         {" "}and{" "}
-        <Link href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</Link>.
+        <AppLink href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</AppLink>.
       </p>
     </form>
   );

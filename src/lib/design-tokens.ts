@@ -54,6 +54,18 @@ export const BOTTOM_NAV = {
 /** Nav bar height (h-14) + safe area. Use for spacing content below fixed nav. */
 export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
 
+/** Layering scale — keeps overlays/banners predictable. */
+export const LAYER = {
+  /** Persistent chrome like `BottomNav` and cookie banner. */
+  chrome: "z-40",
+  /** Popovers/menus/tooltips that should sit above chrome but below modals. */
+  popover: "z-[45]",
+  /** Standard modal/dialog overlay. */
+  modal: "z-50",
+  /** Topmost global overlays (e.g. AI assistant) that must beat banners. */
+  topOverlay: "z-[70]",
+} as const;
+
 /** Max-width and structural layout classes. */
 export const LAYOUT = {
   /** Top padding for (padded) pages — clears fixed nav. Complements NAV_OFFSET. */
@@ -236,9 +248,9 @@ export const CALLOUT = {
 
 /** Skeleton loading — pulse + palette. Compose with h-* w-* for dimensions. */
 export const SKELETON = {
-  bar: "animate-pulse rounded bg-olive/20",
-  block: "animate-pulse rounded-lg bg-sand-200/70",
-  media: "aspect-[4/3] bg-sand-200/70 animate-pulse",
+  bar: "animate-pulse rounded bg-olive/30",
+  block: "animate-pulse rounded-lg bg-sand-300/60",
+  media: "aspect-[4/3] bg-sand-300/60 animate-pulse",
   card: "rounded-xl bg-white/90 border border-sand-200/80",
 } as const;
 

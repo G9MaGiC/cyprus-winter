@@ -37,6 +37,45 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-i18n-PLAN-URL] Plan `?add=` drops locale on `[locale]/plan`
+
+**Severity:** High  
+**Area:** i18n / Functional  
+**Page/Component:** `src/hooks/usePlanUrlActions.ts`
+
+**Reproduction**
+1. Visit `/de/discover/<id>`
+2. Click “Add to plan” (goes to `/de/plan?add=<id>`)
+3. Wait for URL param processing
+
+**Expected**
+Remains on `/de/plan` after adding.
+
+**Actual**
+Redirects to `/plan` (English/root) because `router.replace("/plan")` used the Next.js router without locale awareness.
+
+**Fix status**
+Fixed — switched to `useRouter` from `@/i18n/navigation` so `router.replace("/plan")` preserves locale.
+
+### [BUG-i18n-SEARCH-SYNC] SearchBar URL sync drops locale on `[locale]/search`
+
+**Severity:** High  
+**Area:** i18n / Functional  
+**Page/Component:** `src/components/SearchBar.tsx`
+
+**Reproduction**
+1. Visit `/de/search`
+2. Type a query (SearchBar `syncUrl` updates the URL)
+
+**Expected**
+URL updates to `/de/search?q=...` and stays in the same locale.
+
+**Actual**
+URL updates to `/search` / `/search?q=...` (drops locale) when using Next.js router.
+
+**Fix status**
+Fixed — switched SearchBar routing to `useRouter` + `usePathname` from `@/i18n/navigation`, and replaced `window.location.href = ...` with `router.push(...)` for keyboard selection.
+
 ### [BUG-XXX] ConversionTracker wrong place/winery/guide ID on locale routes
 
 **Severity:** High

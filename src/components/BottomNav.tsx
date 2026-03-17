@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
-import Link from "next/link";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
+import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
 import { isActive } from "@/lib/nav";
 import { bottomOverflowLinks, bottomPrimaryLinks } from "@/lib/nav-links";
@@ -10,15 +11,18 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const t = useTranslations("nav");
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
+  const moreMenuRef = useRef<HTMLDivElement>(null);
   const { stickyPlanVisible } = useStickyPlanBar();
   const { user } = useAuth();
   const overflowLinksResolved = useMemo(
     () =>
       bottomOverflowLinks.map((l) =>
         l.href === "/account" && !user
-          ? { href: "/login", label: "Sign in" }
+          ? { href: "/login", labelKey: "signIn" as const }
           : l
       ),
     [user]
@@ -26,19 +30,60 @@ export default function BottomNav() {
 
   const planLink = bottomPrimaryLinks.find((l) => l.href === "/plan");
   const otherLinks = bottomPrimaryLinks.filter((l) => l.href !== "/plan");
-  const isOverflowActive = overflowLinksResolved.some((l) => isActive(pathname, l.href));
+  const isOverflowActive = overflowLinksResolved.some((l) =>
+    isActive(pathname, l.href)
+  );
+
+  const closeMore = useCallback(() => {
+    setMoreOpen(false);
+    moreButtonRef.current?.focus?.();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setMoreOpen(false);
+        closeMore();
       }
     };
     if (moreOpen) {
       document.addEventListener("click", handleClickOutside);
     }
     return () => document.removeEventListener("click", handleClickOutside);
-  }, [moreOpen]);
+  }, [moreOpen, closeMore]);
+
+  useEffect(() => {
+    if (!moreOpen) return;
+    const menu = moreMenuRef.current;
+    if (!menu) return;
+    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    if (focusables.length === 0) return;
+    (focusables[0] as HTMLElement).focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMore();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const first = focusables[0] as HTMLElement;
+      const last = focusables[focusables.length - 1] as HTMLElement;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    menu.addEventListener("keydown", onKeyDown);
+    return () => menu.removeEventListener("keydown", onKeyDown);
+  }, [moreOpen, closeMore]);
 
   return (
     <nav
@@ -48,7 +93,7 @@ export default function BottomNav() {
     >
       <div className="flex items-center justify-around max-w-lg mx-auto">
         {otherLinks.map((link) => (
-          <Link
+          <AppLink
             key={link.href}
             href={link.href}
             aria-current={isActive(pathname, link.href) ? "page" : undefined}
@@ -57,12 +102,12 @@ export default function BottomNav() {
             <span
               className={`text-xs max-[400px]:text-[11px] font-medium ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
-              {link.label}
+              {t(link.labelKey)}
             </span>
-          </Link>
+          </AppLink>
         ))}
         {planLink && (
-          <Link
+          <AppLink
             key={planLink.href}
             href={planLink.href}
             aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
@@ -75,12 +120,13 @@ export default function BottomNav() {
             <span
               className={`text-xs max-[400px]:text-[11px] font-medium ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
-              {planLink.label}
+              {t(planLink.labelKey)}
             </span>
-          </Link>
+          </AppLink>
         )}
         <div className="relative" ref={moreRef}>
           <button
+            ref={moreButtonRef}
             type="button"
             onClick={() => setMoreOpen((v) => !v)}
             aria-expanded={moreOpen}
@@ -90,24 +136,27 @@ export default function BottomNav() {
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
-            <span className="text-xs max-[400px]:text-[11px] font-medium">More</span>
+            <span className="text-xs max-[400px]:text-[11px] font-medium">
+              {t("more")}
+            </span>
           </button>
           {moreOpen && (
             <div
+              ref={moreMenuRef}
               className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 min-w-[140px] py-2 rounded-xl bg-charcoal/98 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-sm"
               role="menu"
             >
               {overflowLinksResolved.map((link) => (
-                <Link
+                <AppLink
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMoreOpen(false)}
+                  onClick={closeMore}
                   role="menuitem"
                   aria-current={isActive(pathname, link.href) ? "page" : undefined}
                   className="block min-h-[44px] px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 rounded mx-1"
                 >
-                  {link.label}
-                </Link>
+                  {t(link.labelKey)}
+                </AppLink>
               ))}
             </div>
           )}

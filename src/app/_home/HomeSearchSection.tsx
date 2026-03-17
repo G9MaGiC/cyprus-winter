@@ -1,7 +1,9 @@
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
+import { getTranslations } from "next-intl/server";
 
-export default function HomeSearchSection() {
+export default async function HomeSearchSection() {
+  const tHome = await getTranslations("home");
   return (
     <section
       aria-labelledby="home-search-heading"
@@ -9,13 +11,13 @@ export default function HomeSearchSection() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2 id="home-search-heading" className="sr-only">
-          Search places and trails
+          {tHome("search.srHeading")}
         </h2>
         <div className="max-w-xl mx-auto">
           <p className={`text-center ${TYPE.kicker} mb-3`}>
-            Not sure where to start? Find a place, trail, or ask the island.
+            {tHome("search.kicker")}
           </p>
-          <SearchBar placeholder="Find a place, trail, or event" className="w-full" />
+          <SearchBar placeholder={tHome("search.placeholder")} className="w-full" />
         </div>
       </div>
     </section>

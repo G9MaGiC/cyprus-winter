@@ -3,6 +3,7 @@ import { weatherByMonth } from "@/data/weather";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
 import { getLiveWeather } from "@/lib/weather-live";
 import type { LinkProps } from "@/app/_home/types";
+import { getTranslations } from "next-intl/server";
 
 const MONTH_TO_WEATHER: Record<number, number> = {
   0: 2,  // Jan -> January
@@ -20,15 +21,24 @@ function getCurrentMonthWeather() {
 }
 
 /** Short actionable prompt from current month. */
-function getWeatherPrompt(w: (typeof weatherByMonth)[number]): string {
+function getWeatherPromptKey(
+  w: (typeof weatherByMonth)[number]
+):
+  | "november"
+  | "december"
+  | "january"
+  | "february"
+  | "march"
+  | "april"
+  | "fallback" {
   const m = w.month.toLowerCase();
-  if (m.includes("nov")) return "Trails clear. Best for hiking.";
-  if (m.includes("dec")) return "Check trail conditions before Troodos.";
-  if (m.includes("jan")) return "Pack layers. Wineries warm inside.";
-  if (m.includes("feb")) return "Ski season continues. Pack microspikes for higher trails.";
-  if (m.includes("mar")) return "Best hiking month. Trails open.";
-  if (m.includes("apr")) return "All trails open. Spring clarity.";
-  return "Pack layers for the mountain.";
+  if (m.includes("nov")) return "november";
+  if (m.includes("dec")) return "december";
+  if (m.includes("jan")) return "january";
+  if (m.includes("feb")) return "february";
+  if (m.includes("mar")) return "march";
+  if (m.includes("apr")) return "april";
+  return "fallback";
 }
 
 export default async function HomeWeatherStrip({
@@ -36,6 +46,7 @@ export default async function HomeWeatherStrip({
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const tHome = await getTranslations("home");
   const Link = LinkComponent;
   let live: Awaited<ReturnType<typeof getLiveWeather>> = null;
   try {
@@ -50,7 +61,7 @@ export default async function HomeWeatherStrip({
   const troodosMid = live
     ? Math.round((live.troodos.minC + live.troodos.maxC) / 2)
     : Math.round((w.troodosMinC + w.troodosMaxC) / 2);
-  const prompt = getWeatherPrompt(w);
+  const prompt = tHome(`weatherStrip.prompts.${getWeatherPromptKey(w)}`);
 
   return (
     <section
@@ -61,10 +72,13 @@ export default async function HomeWeatherStrip({
         <Link
           href="/weather"
           className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center min-h-[44px] py-2 group"
-          aria-label="Cyprus winter weather — Coast and Troodos temperatures. Check weather."
+          aria-label={tHome("weatherStrip.aria")}
         >
           <span id="home-weather-heading" className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors">
-            {coastMid}°C coast · {troodosMid}°C Troodos
+            {tHome("weatherStrip.heading", {
+              coast: coastMid,
+              troodos: troodosMid,
+            })}
           </span>
           <span className="text-sage text-sm">— {prompt}</span>
         </Link>

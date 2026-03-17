@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
@@ -121,19 +121,19 @@ export default function WineryBookingForm({
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
           Your tasting request for {wineryName} is on its way. The winery will confirm by email. If you don&apos;t hear back within a day or two, give them a call — they&apos;re usually happy to help.
           {storageMode === "memory" && (
-            <> Enter your email on <Link href="/bookings" className="text-terracotta underline hover:no-underline">My Bookings</Link> to view your request across devices.</>
+            <> Enter your email on <AppLink href="/bookings" className="text-terracotta underline hover:no-underline">My Bookings</AppLink> to view your request across devices.</>
           )}
         </p>
         <p className="text-olive/70 text-sm mt-3 break-words">
           Ask about Commandaria and the indigenous grapes when you&apos;re there. They&apos;re proud of them.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link href="/bookings" className={CTA.primaryCompact}>
+          <AppLink href="/bookings" className={CTA.primaryCompact}>
             View my bookings
-          </Link>
-          <Link href="/discover" className={CTA.secondaryCompact}>
+          </AppLink>
+          <AppLink href="/discover" className={CTA.secondaryCompact}>
             Discover more
-          </Link>
+          </AppLink>
         </div>
       </div>
     );
@@ -239,9 +239,9 @@ export default function WineryBookingForm({
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
         This is a request, not a confirmed reservation. The winery will confirm by email. By submitting, you agree to our{" "}
-        <Link href="/terms" className="text-olive/70 hover:underline">Terms</Link>
+        <AppLink href="/terms" className="text-olive/70 hover:underline">Terms</AppLink>
         {" "}and{" "}
-        <Link href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</Link>.
+        <AppLink href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</AppLink>.
       </p>
     </form>
   );

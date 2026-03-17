@@ -5,10 +5,11 @@
  * Includes retry functionality and helpful messaging
  */
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useState, useEffect, useSyncExternalStore } from "react";
 import { CARD, CTA, SECTION } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface ErrorStateProps {
   title?: string;
@@ -27,14 +28,19 @@ function IconAccent({ type }: { type: ErrorStateProps["icon"] }) {
 }
 
 export function ErrorState({
-  title = "Something went wrong",
+  title,
   message,
   retry,
-  retryLabel = "Try again",
+  retryLabel,
   showHomeLink = true,
   className,
   icon = "error",
 }: ErrorStateProps) {
+  const tErrors = useTranslations("errors");
+  const tCommon = useTranslations("common");
+  const resolvedTitle = title ?? tErrors("common.title");
+  const resolvedRetryLabel = retryLabel ?? tCommon("tryAgain");
+
   return (
     <div
       className={cn(
@@ -48,7 +54,7 @@ export function ErrorState({
     >
       <IconAccent type={icon} />
       <h3 className="font-display text-lg font-semibold text-charcoal mb-2">
-        {title}
+        {resolvedTitle}
       </h3>
       <p className={`text-sm text-olive/80 ${SECTION.headingGap} max-w-md mx-auto break-words`}>
         {message}
@@ -60,16 +66,16 @@ export function ErrorState({
             onClick={retry}
             className={`${CTA.primaryCompact} min-h-[44px]`}
           >
-            {retryLabel}
+            {resolvedRetryLabel}
           </button>
         )}
         {showHomeLink && (
-          <Link
+          <AppLink
             href="/"
             className={`${CTA.secondaryCompact} min-h-[44px]`}
           >
-            Go home
-          </Link>
+            {tCommon("goHome")}
+          </AppLink>
         )}
       </div>
     </div>
@@ -89,6 +95,7 @@ export function RateLimitError({
 }: RateLimitErrorProps) {
   const initialCount = retryAfter || 60;
   const [countdown, setCountdown] = useState(initialCount);
+  const tErrors = useTranslations("errors");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -102,14 +109,18 @@ export function RateLimitError({
 
   return (
     <ErrorState
-      title="Too many requests"
+      title={tErrors("rateLimited.title")}
       message={
         canRetry
-          ? "You can try again now."
-          : `Wait ${countdown} second${countdown === 1 ? "" : "s"}, then try again.`
+          ? tErrors("rateLimited.canRetry")
+          : tErrors("rateLimited.waitThenRetry", { seconds: countdown })
       }
       retry={canRetry ? onRetry : undefined}
-      retryLabel={canRetry ? "Try again" : `Wait ${countdown}s`}
+      retryLabel={
+        canRetry
+          ? tErrors("rateLimited.retryNow")
+          : tErrors("rateLimited.retryIn", { seconds: countdown })
+      }
       icon="rate-limit"
       className={className}
     />
@@ -140,6 +151,8 @@ interface NetworkErrorProps {
 }
 
 export function NetworkError({ onRetry, className }: NetworkErrorProps) {
+  const tErrors = useTranslations("errors");
+  const tCommon = useTranslations("common");
   const isOnline = useSyncExternalStore(
     subscribeOnline,
     getOnlineSnapshot,
@@ -148,14 +161,14 @@ export function NetworkError({ onRetry, className }: NetworkErrorProps) {
 
   return (
     <ErrorState
-      title={isOnline ? "Connection issue" : "You're offline"}
+      title={isOnline ? tErrors("network.titleOnline") : tErrors("network.titleOffline")}
       message={
         isOnline
-          ? "Connection trouble. Try again, or tap Ask AI."
-          : "You're offline. Connect to browse trails and plan your trip."
+          ? tErrors("network.messageOnline")
+          : tErrors("network.messageOffline")
       }
       retry={onRetry}
-      retryLabel={isOnline ? "Try again" : "Check connection"}
+      retryLabel={isOnline ? tCommon("tryAgain") : tErrors("network.checkConnection")}
       icon="network"
       className={className}
     />

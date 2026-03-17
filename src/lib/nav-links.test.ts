@@ -7,12 +7,12 @@ import {
 } from "./nav-links";
 
 describe("nav links", () => {
-  const assertNavLinks = (links: readonly { href: string; label: string }[]) => {
+  const assertNavLinks = (links: readonly { href: string; labelKey: string }[]) => {
     expect(links.length).toBeGreaterThan(0);
     for (const link of links) {
       expect(link.href).toMatch(/^\//);
-      expect(typeof link.label).toBe("string");
-      expect(link.label.length).toBeGreaterThan(0);
+      expect(typeof link.labelKey).toBe("string");
+      expect(link.labelKey.length).toBeGreaterThan(0);
     }
   };
 

@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import { CARD, CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import type { LinkProps } from "@/app/_home/types";
+import { useTranslations } from "next-intl";
 
 type StartHereItem = {
   title: string;
@@ -17,58 +18,6 @@ type Chip = {
   variant: "primary" | "secondary" | "tertiary";
 };
 
-const startItems: StartHereItem[] = [
-  {
-    title: "Discover",
-    desc: "Places that feel real. Ruins, coasts, villages, heritage.",
-    href: "/discover",
-    cta: "Start exploring",
-    variant: "primary",
-  },
-  {
-    title: "Plan",
-    desc: "Build a day or pick a template. Saves as you go.",
-    href: "/plan",
-    cta: "Build a day",
-    variant: "secondary",
-  },
-  {
-    title: "Book",
-    desc: "Reserve tastings before weekends fill.",
-    href: "/wineries",
-    cta: "Book tastings",
-    variant: "secondary",
-  },
-];
-
-const categoryChips: Chip[] = [
-  { href: "/discover?filter=village", label: "Villages", ariaLabel: "Villages", variant: "primary" },
-  { href: "/discover?filter=winery", label: "Wineries", ariaLabel: "Wineries", variant: "primary" },
-  { href: "/trails", label: "Trails", ariaLabel: "Trails and conditions", variant: "secondary" },
-  { href: "/events", label: "Events", ariaLabel: "Events", variant: "secondary" },
-  { href: "/discover?filter=family", label: "Family-friendly", ariaLabel: "Family-friendly", variant: "secondary" },
-  { href: "/discover", label: "All", ariaLabel: "See all", variant: "secondary" },
-];
-
-/** Region + culture/coasts/monasteries merged into one "Explore more" group. */
-const exploreMoreChips: Chip[] = [
-  { href: "/regions/larnaca", label: "Larnaca", ariaLabel: "Larnaca region", variant: "tertiary" },
-  { href: "/regions/paphos", label: "Paphos", ariaLabel: "Paphos region", variant: "tertiary" },
-  { href: "/regions/limassol", label: "Limassol", ariaLabel: "Limassol region", variant: "tertiary" },
-  { href: "/regions/troodos", label: "Troodos", ariaLabel: "Troodos region", variant: "tertiary" },
-  { href: "/regions/ayia-napa", label: "Ayia Napa", ariaLabel: "Ayia Napa region", variant: "tertiary" },
-  { href: "/discover?filter=ancient", label: "Culture", ariaLabel: "Culture", variant: "tertiary" },
-  { href: "/discover?filter=beach", label: "Coasts", ariaLabel: "Coasts", variant: "tertiary" },
-  { href: "/discover?filter=monastery", label: "Monasteries", ariaLabel: "Monasteries", variant: "tertiary" },
-];
-
-const moodChips: Chip[] = [
-  { href: "/trails", label: "Active", ariaLabel: "Active adventures — trails, hiking", variant: "secondary" },
-  { href: "/discover?filter=quiet", label: "Quiet escapes", ariaLabel: "Quiet escapes — villages, hidden gems", variant: "secondary" },
-  { href: "/trails", label: "Mountains", ariaLabel: "Mountains — Troodos trails", variant: "secondary" },
-  { href: "/discover?filter=monastery", label: "Wellness", ariaLabel: "Wellness — monasteries, quiet spaces", variant: "secondary" },
-];
-
 function chipClass(v: Chip["variant"]) {
   if (v === "primary") return CTA.chipPrimary;
   if (v === "secondary") return CTA.chipSecondary;
@@ -80,7 +29,59 @@ export default function StartHereWithExplore({
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const tHome = useTranslations("home");
   const Link = LinkComponent;
+  const startItems: StartHereItem[] = [
+    {
+      title: tHome("startHere.card.discoverTitle"),
+      desc: tHome("startHere.card.discoverDesc"),
+      href: "/discover",
+      cta: tHome("startHere.card.discoverCta"),
+      variant: "primary",
+    },
+    {
+      title: tHome("startHere.card.planTitle"),
+      desc: tHome("startHere.card.planDesc"),
+      href: "/plan",
+      cta: tHome("startHere.card.planCta"),
+      variant: "secondary",
+    },
+    {
+      title: tHome("startHere.card.bookTitle"),
+      desc: tHome("startHere.card.bookDesc"),
+      href: "/wineries",
+      cta: tHome("startHere.card.bookCta"),
+      variant: "secondary",
+    },
+  ];
+
+  const categoryChips: Chip[] = [
+    { href: "/discover?filter=village", label: tHome("startHere.chip.villages"), ariaLabel: tHome("startHere.chip.villages"), variant: "primary" },
+    { href: "/discover?filter=winery", label: tHome("startHere.chip.wineries"), ariaLabel: tHome("startHere.chip.wineries"), variant: "primary" },
+    { href: "/trails", label: tHome("startHere.chip.trails"), ariaLabel: tHome("startHere.chip.trailsAria"), variant: "secondary" },
+    { href: "/events", label: tHome("startHere.chip.events"), ariaLabel: tHome("startHere.chip.events"), variant: "secondary" },
+    { href: "/discover?filter=family", label: tHome("startHere.chip.familyFriendly"), ariaLabel: tHome("startHere.chip.familyFriendly"), variant: "secondary" },
+    { href: "/discover", label: tHome("startHere.chip.all"), ariaLabel: tHome("startHere.chip.seeAll"), variant: "secondary" },
+  ];
+
+  /** Region + culture/coasts/monasteries merged into one "Explore more" group. */
+  const exploreMoreChips: Chip[] = [
+    { href: "/regions/larnaca", label: "Larnaca", ariaLabel: tHome("startHere.chip.regionAria", { region: "Larnaca" }), variant: "tertiary" },
+    { href: "/regions/paphos", label: "Paphos", ariaLabel: tHome("startHere.chip.regionAria", { region: "Paphos" }), variant: "tertiary" },
+    { href: "/regions/limassol", label: "Limassol", ariaLabel: tHome("startHere.chip.regionAria", { region: "Limassol" }), variant: "tertiary" },
+    { href: "/regions/troodos", label: "Troodos", ariaLabel: tHome("startHere.chip.regionAria", { region: "Troodos" }), variant: "tertiary" },
+    { href: "/regions/ayia-napa", label: "Ayia Napa", ariaLabel: tHome("startHere.chip.regionAria", { region: "Ayia Napa" }), variant: "tertiary" },
+    { href: "/discover?filter=ancient", label: tHome("startHere.chip.culture"), ariaLabel: tHome("startHere.chip.culture"), variant: "tertiary" },
+    { href: "/discover?filter=beach", label: tHome("startHere.chip.coasts"), ariaLabel: tHome("startHere.chip.coasts"), variant: "tertiary" },
+    { href: "/discover?filter=monastery", label: tHome("startHere.chip.monasteries"), ariaLabel: tHome("startHere.chip.monasteries"), variant: "tertiary" },
+  ];
+
+  const moodChips: Chip[] = [
+    { href: "/trails", label: tHome("startHere.chip.active"), ariaLabel: tHome("startHere.chip.activeAria"), variant: "secondary" },
+    { href: "/discover?filter=quiet", label: tHome("startHere.chip.quietEscapes"), ariaLabel: tHome("startHere.chip.quietEscapesAria"), variant: "secondary" },
+    { href: "/trails", label: tHome("startHere.chip.mountains"), ariaLabel: tHome("startHere.chip.mountainsAria"), variant: "secondary" },
+    { href: "/discover?filter=monastery", label: tHome("startHere.chip.wellness"), ariaLabel: tHome("startHere.chip.wellnessAria"), variant: "secondary" },
+  ];
   return (
     <section
       id="start-here"
@@ -89,13 +90,13 @@ export default function StartHereWithExplore({
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="text-center mb-8 sm:mb-10">
-          <p className="text-sm text-olive/80 mb-4">So — where do you want to go first?</p>
-          <p className={`${TYPE.kicker} text-sage mb-2`}>Primary path</p>
+          <p className="text-sm text-olive/80 mb-4">{tHome("startHere.prompt")}</p>
+          <p className={`${TYPE.kicker} text-sage mb-2`}>{tHome("startHere.primaryPath")}</p>
           <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
-            Start here
+            {tHome("startHere.title")}
           </h2>
           <p className={`${TYPE.sectionSubtitle} max-w-xl mx-auto ${SECTION.headingGap}`}>
-            Just landed or still planning? Ruins to village tastings — start anywhere.
+            {tHome("startHere.subtitle")}
           </p>
         </header>
 
@@ -130,11 +131,11 @@ export default function StartHereWithExplore({
         </div>
 
         <div className="relative mb-6 sm:mb-8">
-          <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>Browse by category</p>
+          <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>{tHome("startHere.browseByCategory")}</p>
           <div
             className="flex flex-nowrap sm:flex-wrap overflow-x-auto scroll-smooth scroll-touch sm:overflow-visible justify-start sm:justify-center gap-3 pb-2 -mx-1 sm:mx-0 px-1 sm:px-0 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="navigation"
-            aria-label="Browse by category"
+            aria-label={tHome("startHere.aria.browseByCategory")}
           >
             {categoryChips.map((c) => (
               <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
@@ -149,7 +150,7 @@ export default function StartHereWithExplore({
         </div>
 
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore more</p>
+          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreMore")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {exploreMoreChips.map((c) => (
               <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
@@ -160,11 +161,11 @@ export default function StartHereWithExplore({
         </div>
 
         <div>
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore by mood</p>
+          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreByMood")}</p>
           <div
             className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
             role="navigation"
-            aria-label="Explore by how you feel"
+            aria-label={tHome("startHere.aria.exploreByMood")}
           >
             {moodChips.map((m) => (
               <Link

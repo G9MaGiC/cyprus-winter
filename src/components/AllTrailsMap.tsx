@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import type { Trail } from "@/data/trails";
 import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -60,21 +60,21 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
           >
             <Popup>
               <div className="min-w-[200px]">
-                <Link
+                <AppLink
                   href={`/trails/${trail.id}`}
                   className="font-semibold text-charcoal hover:text-terracotta block mb-1"
                 >
                   {trail.name}
-                </Link>
+                </AppLink>
                 <p className="text-xs text-olive/70 mb-3">{trail.region} · {trail.lengthKm} km</p>
                 <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
                   <AddToItineraryButton placeId={trail.id} label="Add to plan" className="text-sm min-h-[40px] px-4 py-2" />
-                  <Link
+                  <AppLink
                     href={`/trails/${trail.id}`}
                     className="text-sm font-medium text-terracotta hover:underline"
                   >
                     View trail →
-                  </Link>
+                  </AppLink>
                 </div>
               </div>
             </Popup>

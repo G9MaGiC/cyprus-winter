@@ -6,6 +6,7 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import WineryBookingForm from "./WineryBookingForm";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -34,6 +35,8 @@ export default async function WineryBookPage({
   const { id } = await params;
   const winery = wineries.find((w) => w.id === id);
   if (!winery) notFound();
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
 
   const canonicalUrl = `${SITE_URL}/book/winery/${id}`;
 
@@ -43,10 +46,10 @@ export default async function WineryBookPage({
         <BackLink href={`/discover/${id}`} label={`Back to ${winery.name}`} />
         <Breadcrumbs
           items={[
-            { label: "Home", href: "/" },
-            { label: "Discover", href: "/discover" },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("discover"), href: "/discover" },
             { label: winery.name, href: `/discover/${id}` },
-            { label: "Book tasting", href: canonicalUrl, isCurrent: true },
+            { label: tCommon("breadcrumbs.bookTasting"), href: canonicalUrl, isCurrent: true },
           ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
@@ -55,16 +58,19 @@ export default async function WineryBookPage({
       <div className="mt-6">
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/20 text-terracotta">
-            Wine tasting
+            {tCommon("wineTasting")}
           </span>
           {winery.isVerified && (
-            <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean" title="Verified partner: receives booking requests directly">
-              Verified partner
+            <span
+              className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean"
+              title={tCommon("verifiedPartnerTitle")}
+            >
+              {tCommon("verifiedPartner")}
             </span>
           )}
         </div>
         <h1 className="font-display text-3xl font-bold text-olive mt-3">
-          Book a tasting
+          {tCommon("bookTasting")}
         </h1>
         <p className="text-olive/80 mt-1 break-words">{winery.name} · {winery.region}</p>
         {winery.tastingInfo && (

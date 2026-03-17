@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { winterEvents } from "@/data/events";
 import { SITE_URL } from "@/lib/site-url";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-monastery-kykkos.jpg`;
 
@@ -48,7 +49,7 @@ export default function EventsLayout({
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(eventListSchema) }} />
       {children}
     </>
   );

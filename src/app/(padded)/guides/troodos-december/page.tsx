@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import Image from "next/image";
 import { trails } from "@/data/trails";
@@ -8,6 +8,7 @@ import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Best Troodos Trails in December | Cyprus Winter",
@@ -26,7 +27,7 @@ const decemberPicks = troodosTrails.filter((t) =>
 function TrailCard({ trail }: { trail: Trail }) {
   const durationH = Math.round(trail.durationMin / 60);
   return (
-    <Link
+    <AppLink
       href={`/trails/${trail.id}`}
       className={`block rounded-xl overflow-hidden group ${CARD.base} ${CARD.hover} ${CARD.link}`}
     >
@@ -55,31 +56,33 @@ function TrailCard({ trail }: { trail: Trail }) {
           </p>
         </div>
       </div>
-    </Link>
+    </AppLink>
   );
 }
 
-export default function TroodosDecemberPage() {
+export default async function TroodosDecemberPage() {
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/trails"
-        backLabel="Trails"
+        backLabel={tNav("trails")}
         title="Best Troodos Trails in December"
         description="December in Troodos: crisp air, quiet trails, often clear before peak snow. Atalante and Artemis stay open when higher routes hold snow; Caledonia Falls runs strong after rain."
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Trails", href: "/trails" },
-          { label: "Troodos December", href: "/guides/troodos-december", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tNav("trails"), href: "/trails" },
+          { label: tCommon("breadcrumbs.troodosDecember"), href: "/guides/troodos-december", isCurrent: true },
         ]}
       />
 
       <div className="prose prose-olive max-w-none mb-12">
         <p className="text-olive/80">
           December hits the sweet spot: ski season hasn&apos;t fully started, trails are usually clear, and the villages are quiet. Pack layers—temps can dip to 2°C at elevation. Check{" "}
-          <Link href="/trails" className={SECTION.aegeanLink}>
+          <AppLink href="/trails" className={SECTION.aegeanLink}>
             trail conditions
-          </Link>{" "}
+          </AppLink>{" "}
           before you go; after cold snaps, higher trails can be icy.
         </p>
       </div>
@@ -107,13 +110,13 @@ export default function TroodosDecemberPage() {
       </section>
 
       <p className="mt-12 text-center text-olive/70 text-sm">
-        <Link href="/regions/troodos" className={SECTION.aegeanLink}>
+        <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
           Troodos region
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/weather" className={SECTION.aegeanLink}>
+        <AppLink href="/weather" className={SECTION.aegeanLink}>
           Weather by month
-        </Link>
+        </AppLink>
       </p>
     </div>
   );

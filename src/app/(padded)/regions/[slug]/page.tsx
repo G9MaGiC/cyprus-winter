@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
@@ -21,6 +21,7 @@ import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
 import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return REGION_CONFIGS.map((c) => ({ slug: c.slug }));
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function TrailCard({ trail }: { trail: Trail }) {
   const durationH = Math.round(trail.durationMin / 60);
   return (
-    <Link
+    <AppLink
       href={`/trails/${trail.id}`}
       className={`block rounded-xl overflow-hidden group ${CARD.base} ${CARD.hover} ${CARD.link}`}
     >
@@ -71,7 +72,7 @@ function TrailCard({ trail }: { trail: Trail }) {
           {trail.lengthKm} km · ~{durationH}h
         </p>
       </div>
-    </Link>
+    </AppLink>
   );
 }
 
@@ -83,7 +84,7 @@ function PlaceCard({
   type: "village" | "monastery" | "winery" | "beach" | "ancient";
 }) {
   return (
-    <Link
+    <AppLink
       href={`/discover/${item.id}`}
       className={`block rounded-xl overflow-hidden group ${CARD.base} ${CARD.hover} ${CARD.link}`}
     >
@@ -102,7 +103,7 @@ function PlaceCard({
         </h3>
         <p className="text-sm text-olive/70 line-clamp-2 break-words">{item.description}</p>
       </div>
-    </Link>
+    </AppLink>
   );
 }
 
@@ -110,6 +111,7 @@ export default async function RegionPage({ params }: Props) {
   const { slug } = await params;
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
   if (!config) notFound();
+  const tNav = await getTranslations("nav");
 
   const regionSlug = config.slug as RegionSlug;
 
@@ -140,11 +142,11 @@ export default async function RegionPage({ params }: Props) {
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
+        backLabel={tNav("home")}
         title={config.title}
         description={config.description}
         breadcrumbItems={[
-          { label: "Home", href: "/" },
+          { label: tNav("home"), href: "/" },
           { label: config.title, href: `/regions/${config.slug}`, isCurrent: true },
         ]}
       />
@@ -165,12 +167,12 @@ export default async function RegionPage({ params }: Props) {
             </div>
             {regionSlug === "troodos" && (
               <p className="mt-4">
-                <Link
+                <AppLink
                   href="/guides/troodos-december"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
                   Troodos trails in December →
-                </Link>
+                </AppLink>
               </p>
             )}
           </section>
@@ -239,12 +241,12 @@ export default async function RegionPage({ params }: Props) {
             </div>
             {regionWineries.length > 9 && (
               <p className="mt-4">
-                <Link
+                <AppLink
                   href="/wineries"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
                   All Cyprus wineries →
-                </Link>
+                </AppLink>
               </p>
             )}
           </section>
@@ -294,13 +296,13 @@ export default async function RegionPage({ params }: Props) {
 
       <div className={SECTION.footerBlock}>
         <p className="text-center text-olive/70 text-sm">
-        <Link href="/weather" className={SECTION.aegeanLink}>
+        <AppLink href="/weather" className={SECTION.aegeanLink}>
           Weather by month
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/plan" className={SECTION.aegeanLink}>
+        <AppLink href="/plan" className={SECTION.aegeanLink}>
           Plan your trip
-        </Link>
+        </AppLink>
       </p>
       </div>
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -11,6 +10,8 @@ import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION } from "@/lib/design-toke
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const TYPE_LABELS: Record<string, string> = {
   festival: "Festival",
@@ -128,6 +129,7 @@ function EventCard({
 }
 
 export default function EventsPage() {
+  const tNav = useTranslations("nav");
   const searchParams = useSearchParams();
   const typeFromUrl = searchParams.get("type") ?? "";
   const regionFromUrl = searchParams.get("region") ?? "";
@@ -215,11 +217,11 @@ export default function EventsPage() {
           title="Winter events"
           description="Epiphany, carnival, markets, tastings. The island fills the short days with light and noise. November to March."
           backHref="/"
-          backLabel="Home"
+          backLabel={tNav("home")}
           backgroundImage="/images/cyprus/cyprus-monastery-kykkos.jpg"
           backgroundImageAlt="Kykkos monastery, Troodos—Cyprus winter culture and events"
           hasWidgetStrip
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Events", href: "/events", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("events"), href: "/events", isCurrent: true }]}
         >
           <Link
             href="/plan"

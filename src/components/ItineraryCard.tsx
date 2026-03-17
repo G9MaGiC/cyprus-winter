@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CARD, CTA } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import NavigateButton from "@/components/NavigateButton";
+import { useTranslations } from "next-intl";
 
 function TypeBadge({ type }: { type: PlanItem["type"] }) {
   const style: Record<PlanItem["type"], string> = {
@@ -40,6 +41,7 @@ export default function ItineraryCard({
   cardRef?: React.RefObject<HTMLDivElement | null>;
   inTimeline?: boolean;
 }) {
+  const tCommon = useTranslations("common");
   const href =
     place.type === "trail"
       ? `/trails/${place.id}`
@@ -67,20 +69,24 @@ export default function ItineraryCard({
           <span className="text-xs text-olive/50">·</span>
           <span className="text-xs text-olive/60 truncate" title={place.region}>{place.region}</span>
         </div>
-        <Link
+        <AppLink
           href={href}
           className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors block break-words min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50"
           title={place.name}
         >
           {place.name}
-        </Link>
+        </AppLink>
       </div>
       <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
         <NavigateButton place={place} />
         {place.type === "winery" && (
-          <Link href={`/book/winery/${place.id}`} className={CTA.primaryCompact} aria-label={`Book a tasting at ${place.name}`}>
-            Book a tasting
-          </Link>
+          <AppLink
+            href={`/book/winery/${place.id}`}
+            className={CTA.primaryCompact}
+            aria-label={`${tCommon("bookTasting")} — ${place.name}`}
+          >
+            {tCommon("bookTasting")}
+          </AppLink>
         )}
         <button
           type="button"
@@ -88,7 +94,7 @@ export default function ItineraryCard({
           className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label={`Remove ${place.name} from itinerary`}
         >
-          Remove
+          {tCommon("remove")}
         </button>
       </div>
     </div>

@@ -14,6 +14,8 @@ type AIAssistantTriggerProps = {
 };
 
 export default function AIAssistantTrigger({ variant = "default", label = "Ask AI" }: AIAssistantTriggerProps) {
+  // Intentionally leave the default label as-is; callers can pass localized `label`.
+  // (Nav uses `nav.askAI` already; this component is used in a few legacy spots.)
   const className =
     variant === "tertiaryOnDark"
       ? "inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-white/90 hover:text-golden hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation"

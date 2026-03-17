@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site-url";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Cyprus Winter",
@@ -13,17 +14,19 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
   return (
     <div className={`${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
+        backLabel={tNav("home")}
         title="Privacy Policy"
         description="How we collect, use, and protect your data. Last updated: March 2026."
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Privacy", href: "/privacy", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tCommon("breadcrumbs.privacy"), href: "/privacy", isCurrent: true },
         ]}
       />
 
@@ -160,12 +163,12 @@ export default function PrivacyPage() {
       </article>
 
       <div className="mt-12 flex flex-wrap gap-4">
-        <Link href="/terms" className={CTA.secondaryCompact}>
+        <AppLink href="/terms" className={CTA.secondaryCompact}>
           Terms of Service
-        </Link>
-        <Link href="/" className={CTA.chipTertiary}>
+        </AppLink>
+        <AppLink href="/" className={CTA.chipTertiary}>
           Back to home
-        </Link>
+        </AppLink>
       </div>
     </div>
   );

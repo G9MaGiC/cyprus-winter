@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site-url";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Terms of Service — Cyprus Winter",
@@ -13,17 +14,19 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
   return (
     <div className={`${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
+        backLabel={tNav("home")}
         title="Terms of Service"
         description="Terms governing your use of Cyprus Winter. Last updated: March 2026."
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Terms", href: "/terms", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tCommon("breadcrumbs.terms"), href: "/terms", isCurrent: true },
         ]}
       />
 
@@ -33,7 +36,7 @@ export default function TermsPage() {
             1. Acceptance
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            By using Cyprus Winter (&quot;the service&quot;), you agree to these Terms of Service and our <Link href="/privacy" className="text-terracotta hover:underline">Privacy Policy</Link>. If you do not agree, do not use the service.
+            By using Cyprus Winter (&quot;the service&quot;), you agree to these Terms of Service and our <AppLink href="/privacy" className="text-terracotta hover:underline">Privacy Policy</AppLink>. If you do not agree, do not use the service.
           </p>
         </section>
 
@@ -130,12 +133,12 @@ export default function TermsPage() {
       </article>
 
       <div className="mt-12 flex flex-wrap gap-4">
-        <Link href="/privacy" className={CTA.secondaryCompact}>
+        <AppLink href="/privacy" className={CTA.secondaryCompact}>
           Privacy Policy
-        </Link>
-        <Link href="/" className={CTA.chipTertiary}>
+        </AppLink>
+        <AppLink href="/" className={CTA.chipTertiary}>
           Back to home
-        </Link>
+        </AppLink>
       </div>
     </div>
   );

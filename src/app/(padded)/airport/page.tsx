@@ -5,7 +5,8 @@ import { winterTipsPractical } from "@/data/winter-tips";
 import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
+import { getTranslations } from "next-intl/server";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
 
@@ -35,7 +36,8 @@ const FIRST_HOUR_STEPS = [
   { step: "4", label: "You're out" },
 ];
 
-export default function AirportPage() {
+export default async function AirportPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className="min-h-screen bg-sand">
       <div
@@ -43,21 +45,21 @@ export default function AirportPage() {
       >
         <ListPageHero
           backHref="/"
-          backLabel="Home"
+          backLabel={tNav("home")}
           title="Just landed?"
           description="Transport from Larnaca and Paphos. Taxis, buses, car hire—you're sorted."
           descriptionSecondary="Coast mild, Troodos cooler. Pack layers."
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Arriving", href: "/airport", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("arriving"), href: "/airport", isCurrent: true }]}
           backgroundImage="/images/cyprus/cyprus-airport-coast.jpg"
           backgroundImageAlt="Cyprus coast, Mediterranean bay—welcome to the island"
         >
-          <Link
+          <AppLink
             href="/plan?template=short-stay"
             className={`${CTA.tertiaryOnDark} mt-4 inline-block`}
             aria-label="Plan your first 48 hours"
           >
             Plan your first 48 hours
-          </Link>
+          </AppLink>
         </ListPageHero>
 
         {/* Essentials — tappable numbers for mobile */}
@@ -217,18 +219,18 @@ export default function AirportPage() {
             The island isn&apos;t going anywhere.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">
-            <Link href="/plan?template=short-stay" className={CTA.primaryCompact}>
+            <AppLink href="/plan?template=short-stay" className={CTA.primaryCompact}>
               Plan your first 48 hours
-            </Link>
-            <Link href="/plan?template=classic-7" className={CTA.secondaryCompact}>
+            </AppLink>
+            <AppLink href="/plan?template=classic-7" className={CTA.secondaryCompact}>
               Plan your first week
-            </Link>
-            <Link href="/discover" className={CTA.secondaryCompact}>
+            </AppLink>
+            <AppLink href="/discover" className={CTA.secondaryCompact}>
               Discover places
-            </Link>
-            <Link href="/weather" className={CTA.secondaryCompact}>
+            </AppLink>
+            <AppLink href="/weather" className={CTA.secondaryCompact}>
               Check weather
-            </Link>
+            </AppLink>
           </div>
         </footer>
       </div>

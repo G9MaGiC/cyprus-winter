@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import BackLink from "@/components/BackLink";
 import { LAYOUT, SECTION, SKELETON } from "@/lib/design-tokens";
+import { useLocale, useTranslations } from "next-intl";
 
 const ADMIN_KEY_STORAGE = "cyprus-admin-key";
 
@@ -19,6 +20,8 @@ type StatsData = {
 };
 
 export default function AdminStatsPage() {
+  const tNav = useTranslations("nav");
+  const locale = useLocale();
   const [data, setData] = useState<StatsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [adminKey, setAdminKey] = useState<string | null>(null);
@@ -96,7 +99,7 @@ export default function AdminStatsPage() {
         </form>
         {keyError && <p className="text-sm text-terracotta mt-2">{keyError}</p>}
         <div className="mt-8">
-          <BackLink href="/" label="Back to home" />
+          <BackLink href="/" label={tNav("home")} />
         </div>
       </div>
     );
@@ -107,7 +110,7 @@ export default function AdminStatsPage() {
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <h1 className="font-display text-2xl font-bold text-olive">Admin stats</h1>
-          <BackLink href="/" label="Back to home" />
+          <BackLink href="/" label={tNav("home")} />
         </div>
         <div className="space-y-6">
           <div className={`h-8 w-48 ${SKELETON.bar}`} aria-hidden />
@@ -133,6 +136,8 @@ export default function AdminStatsPage() {
   const revenue = d.partnerRevenueEur ?? 0;
   const byWinery = d.partnerRevenueByWinery ?? [];
   const funnel = d.funnel ?? [];
+  const currency = new Intl.NumberFormat(locale, { style: "currency", currency: "EUR" });
+  const number = new Intl.NumberFormat(locale);
 
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -150,14 +155,14 @@ export default function AdminStatsPage() {
           >
             Sign out
           </button>
-          <BackLink href="/" label="Home" />
+          <BackLink href="/" label={tNav("home")} />
         </div>
       </div>
 
       <section className="mb-10">
         <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Bookings (this month)</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10 mb-6">
-          <p className="text-3xl font-bold text-olive">{bookings}</p>
+          <p className="text-3xl font-bold text-olive">{number.format(bookings)}</p>
           <p className="text-sm text-olive/70 mt-1">Total bookings</p>
         </div>
       </section>
@@ -165,14 +170,14 @@ export default function AdminStatsPage() {
       <section className="mb-10">
         <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Partner revenue (this month)</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
-          <p className="text-3xl font-bold text-olive">{revenue.toFixed(2)} €</p>
+          <p className="text-3xl font-bold text-olive">{currency.format(revenue)}</p>
           <p className="text-sm text-olive/70 mt-1">Partner revenue share (lead fees)</p>
           {byWinery.length > 0 && (
             <ul className="mt-4 space-y-2 text-sm">
               {byWinery.map((w) => (
                 <li key={w.providerId} className="flex justify-between">
                   <span className="text-olive">{w.providerName}</span>
-                  <span className="text-olive/80">{w.bookingCount} × {w.totalFeeEur.toFixed(2)} €</span>
+                  <span className="text-olive/80">{number.format(w.bookingCount)} × {currency.format(w.totalFeeEur)}</span>
                 </li>
               ))}
             </ul>
@@ -195,7 +200,7 @@ export default function AdminStatsPage() {
               {funnel.map((row) => (
                 <tr key={row.event} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.event}</td>
-                  <td className="py-2 text-olive/80 text-right">{row.count.toLocaleString()}</td>
+                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>

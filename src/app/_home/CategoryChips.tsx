@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CTA, SECTION } from "@/lib/design-tokens";
 
 type Chip = {
@@ -40,9 +40,9 @@ export default function CategoryChips() {
           aria-label="Browse by category"
         >
           {primary.map((c) => (
-            <Link key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+            <AppLink key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
               {c.label}
-            </Link>
+            </AppLink>
           ))}
         </div>
         <div
@@ -55,9 +55,9 @@ export default function CategoryChips() {
         <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Also: Culture, Coasts, Monasteries</p>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {also.map((c) => (
-            <Link key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+            <AppLink key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
               {c.label}
-            </Link>
+            </AppLink>
           ))}
         </div>
       </div>

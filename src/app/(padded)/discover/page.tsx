@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems } from "@/data/discover";
 import { buildDiscoverSections } from "@/lib/discover-sections";
@@ -10,6 +10,8 @@ import SearchBar from "@/components/SearchBar";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
 import DiscoverMapSection from "./DiscoverMapSection";
 import DiscoverClient from "./DiscoverClient";
+import { getTranslations } from "next-intl/server";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 export const metadata: Metadata = {
   title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
@@ -27,23 +29,24 @@ export const metadata: Metadata = {
 const sections = buildDiscoverSections(allDiscoverItems);
 const discoverItemListSchema = buildDiscoverItemListSchema(allDiscoverItems, SITE_URL);
 
-export default function DiscoverPage() {
+export default async function DiscoverPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className="min-h-screen bg-sand">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(discoverItemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(discoverItemListSchema) }} />
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16 md:gap-20`}>
         <ListPageHero
           backHref="/"
-          backLabel="Home"
+          backLabel={tNav("home")}
           title="Discover Cyprus Winter"
           description="Curated places, real feel. Beaches, villages, wineries—what to pair with what."
           backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
           backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Discover", href: "/discover", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("discover"), href: "/discover", isCurrent: true }]}
         >
-          <Link href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`} aria-label="Build a day or pick a template">
+          <AppLink href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`} aria-label="Build a day or pick a template">
             Plan your trip
-          </Link>
+          </AppLink>
         </ListPageHero>
 
         <section

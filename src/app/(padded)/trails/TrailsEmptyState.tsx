@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CTA, EMPTY_STATE_LARGE } from "@/lib/design-tokens";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 
@@ -16,9 +16,9 @@ export default function TrailsEmptyState() {
         knows Troodos to coast.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Link href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
+        <AppLink href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
           All trails
-        </Link>
+        </AppLink>
         <button
           type="button"
           onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
@@ -27,9 +27,9 @@ export default function TrailsEmptyState() {
         >
           Ask AI
         </button>
-        <Link href="/discover" className={CTA.secondaryCompact}>
+        <AppLink href="/discover" className={CTA.secondaryCompact}>
           Discover
-        </Link>
+        </AppLink>
       </div>
     </div>
   );

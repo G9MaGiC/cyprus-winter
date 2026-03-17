@@ -77,14 +77,65 @@ function isRetryableError(err: unknown): boolean {
   );
 }
 
-const SYSTEM_PROMPT = `You are the Cyprus Winter guide: warm, knowledgeable about winter travel in Cyprus. Write like a local who knows the island.
+const SYSTEM_PROMPT_BASE = `You are the Cyprus Winter guide: warm, knowledgeable about winter travel in Cyprus. Write like a local who knows the island.
 You have access to trails, wineries, ancient sites, villages, monasteries, and beaches.
 Answer concisely (2-4 sentences unless the user asks for more). When suggesting places, mention them by name and offer to share more.
 Format links as markdown: [Trail name](/trails/id), [Winery name](/discover/id).
 Write in natural prose. Avoid "etc.", bullet-heavy lists, or generic phrasing. Be specific and conversational. Add a practical tip when relevant: best time of day, what to pair with, a village kafenion, layer up for the mountain. A warm closing or unexpected detail (a café, a viewpoint, a local secret) makes the answer feel human. The island rewards the curious.
 Winter in Cyprus is 16 to 20°C. Coast mild, Troodos cooler. Perfect for hiking and wine.`;
 
+function buildSystemPrompt(locale?: string): string {
+  const langHint =
+    locale && locale !== "en"
+      ? `\n\nLanguage: If the user writes in German, Greek, or Polish, respond in the same language. Otherwise write in English.`
+      : "";
+  return SYSTEM_PROMPT_BASE + langHint;
+}
+
 const CHAT_LIMIT = process.env.NODE_ENV === "development" ? 60 : 20;
+
+function isSafeInternalPath(path: string): boolean {
+  if (!path.startsWith("/")) return false;
+  if (path.startsWith("//")) return false;
+  if (path.includes("\\")) return false;
+  if (path.length > 256) return false;
+  return true;
+}
+
+function normalizeChatContext(ctx: unknown) {
+  if (!ctx || typeof ctx !== "object") return {};
+  const obj = ctx as Record<string, unknown>;
+
+  const pathRaw = typeof obj.path === "string" ? sanitizeText(obj.path, 256) : undefined;
+  const path = pathRaw && isSafeInternalPath(pathRaw) ? pathRaw : undefined;
+
+  const lastPlaceRaw = typeof obj.lastPlace === "string" ? sanitizeText(obj.lastPlace, 128) : undefined;
+  const lastPlace = lastPlaceRaw && getPlaceById(lastPlaceRaw) ? lastPlaceRaw : undefined;
+
+  const itineraryRaw = Array.isArray(obj.itinerary) ? obj.itinerary : undefined;
+  const itinerary =
+    itineraryRaw
+      ?.slice(0, 14)
+      .map((e) => {
+        if (!e || typeof e !== "object") return null;
+        const entry = e as Record<string, unknown>;
+        const day = typeof entry.day === "number" ? entry.day : NaN;
+        const placeIds = Array.isArray(entry.placeIds) ? entry.placeIds : [];
+        const normalizedIds = placeIds
+          .filter((id): id is string => typeof id === "string")
+          .slice(0, 20)
+          .map((id) => sanitizeText(id, 128))
+          .filter((id) => Boolean(id) && Boolean(getPlaceById(id)));
+        if (!Number.isInteger(day) || day < 1 || day > 14) return null;
+        if (normalizedIds.length === 0) return null;
+        return { day, placeIds: normalizedIds };
+      })
+      .filter((e): e is { day: number; placeIds: string[] } => Boolean(e)) ?? undefined;
+
+  const locale = typeof obj.locale === "string" ? obj.locale : undefined;
+
+  return { path, lastPlace, itinerary, locale };
+}
 
 export async function POST(req: Request) {
   let limitResult: RateLimitResult;
@@ -126,7 +177,7 @@ export async function POST(req: Request) {
     content: sanitizeText(m.content, 10000),
   }));
 
-  const ctx = parsed.data.context;
+  const ctx = normalizeChatContext(parsed.data.context);
   const parts: string[] = [];
   if (ctx?.path) parts.push(`User is on page: ${ctx.path}`);
   if (ctx?.lastPlace) parts.push(`User recently viewed: ${ctx.lastPlace}`);
@@ -161,7 +212,8 @@ export async function POST(req: Request) {
       context = "Trails, wineries, and attractions data available.";
     }
   }
-  const systemWithContext = `${SYSTEM_PROMPT}\n\n${pageHint}${context}`;
+  const systemPrompt = buildSystemPrompt(ctx?.locale);
+  const systemWithContext = `${systemPrompt}\n\n${pageHint}${context}`;
 
   const encoder = new TextEncoder();
   const baseHeaders: Record<string, string> = {
@@ -204,7 +256,11 @@ export async function POST(req: Request) {
             controller.close();
           } catch (streamErr) {
             const msg = streamErr instanceof Error ? streamErr.message : String(streamErr);
-            controller.enqueue(encoder.encode(emitChunk({ error: msg })));
+            const safeMessage =
+              process.env.NODE_ENV === "production"
+                ? "Something went wrong. Please try again."
+                : msg;
+            controller.enqueue(encoder.encode(emitChunk({ error: safeMessage })));
             controller.close();
           }
         },

@@ -6,6 +6,27 @@ export default defineConfig({
     environment: "node",
     setupFiles: ["./src/test/setup.ts"],
     exclude: ["**/node_modules/**", "**/e2e/**"],
+    env: {
+      MOONSHOT_API_KEY: "unit-test-placeholder-not-a-real-key",
+    },
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+      exclude: [
+        "**/node_modules/**",
+        "**/test/**",
+        "**/*.d.ts",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "src/data/**", // Static data files
+      ],
+      thresholds: {
+        lines: 60,
+        functions: 60,
+        branches: 50,
+        statements: 60,
+      },
+    },
   },
   resolve: {
     alias: {

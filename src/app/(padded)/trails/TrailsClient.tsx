@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useEffect } from "react";
 import { trailConditions } from "@/data/trails";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
@@ -20,8 +20,13 @@ import BestConditionsNow from "@/app/(padded)/trails/BestConditionsNow";
 import TrailsEmptyState from "@/app/(padded)/trails/TrailsEmptyState";
 import TrailStatusGroup from "@/app/(padded)/trails/TrailStatusGroup";
 import TrailsTipsSection from "@/app/(padded)/trails/TrailsTipsSection";
+import { useTranslations } from "next-intl";
+import { SRStatus } from "@/components/SRStatus";
 
 export default function TrailsClient() {
+  const tNav = useTranslations("nav");
+  const tTrailsPage = useTranslations("trails.page");
+  const tCommon = useTranslations("common");
   const {
     filtered,
     openTrails,
@@ -36,6 +41,8 @@ export default function TrailsClient() {
     hasFilters,
     hasInvalidFilter,
   } = useTrailsFilter();
+
+  const hasAnyTrails = filtered.length > 0;
 
   const reportTrail = unknownTrails[0] ?? filtered[0] ?? null;
 
@@ -62,39 +69,46 @@ export default function TrailsClient() {
   }, [hasFilters, safeStatus, safeDifficulty, safeRegion]);
 
   const filterAnnouncement = hasFilters
-    ? `Showing ${filtered.length} trails`
-    : "Showing all trails by category";
+    ? tTrailsPage("sr.filtered", { count: filtered.length })
+    : tTrailsPage("sr.allByCategory");
 
   return (
     <div className="min-h-screen bg-sand">
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only"
-        role="status"
-      >
-        {filterAnnouncement}
-      </div>
+      <SRStatus message={filterAnnouncement} />
       <div
         className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
       >
         <ListPageHero
-          title="Winter Trails"
-          description="Pine forest, ridge views, empty paths. Sixteen degrees when home is six."
-          descriptionSecondary={`${counts.open} open · ${counts.caution} caution · 8 regions`}
+          title={tTrailsPage("hero.title")}
+          description={tTrailsPage("hero.description")}
+          descriptionSecondary={tTrailsPage("hero.descriptionSecondary", {
+            open: counts.open,
+            caution: counts.caution,
+          })}
           backHref="/"
-          backLabel="Home"
+          backLabel={tNav("home")}
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
-          backgroundImageAlt="Troodos pine forest trail, Cyprus winter"
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Trails", href: "/trails", isCurrent: true }]}
+          backgroundImageAlt={tTrailsPage("hero.imageAlt")}
+          breadcrumbItems={[
+            { label: tNav("home"), href: "/" },
+            { label: tNav("trails"), href: "/trails", isCurrent: true },
+          ]}
         >
           <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
-            <Link href="/plan" className={CTA.tertiaryOnDark} aria-label="Build a day or pick a template">
-              Plan your trip
-            </Link>
-            <Link href="/weather" className={CTA.ghost} aria-label="View weather forecast">
-              Weather
-            </Link>
+            <AppLink
+              href="/plan"
+              className={CTA.tertiaryOnDark}
+              aria-label={tCommon("aria.planCta")}
+            >
+              {tCommon("planYourTrip")}
+            </AppLink>
+            <AppLink
+              href="/weather"
+              className={CTA.ghost}
+              aria-label={tTrailsPage("hero.weatherAria")}
+            >
+              {tNav("weather")}
+            </AppLink>
           </div>
         </ListPageHero>
 
@@ -108,10 +122,10 @@ export default function TrailsClient() {
         >
           <div className={`${LAYOUT.list} mx-auto`}>
             <h2 id="trails-search-heading" className="sr-only">
-              Search trails
+              {tTrailsPage("search.heading")}
             </h2>
             <SearchBar
-              placeholder="Search trails by name, region, difficulty…"
+              placeholder={tTrailsPage("search.placeholder")}
               className="max-w-2xl mx-auto"
             />
           </div>
@@ -157,11 +171,11 @@ export default function TrailsClient() {
                 tabIndex={-1}
                 className={`${TYPE.sectionTitle} text-xl sm:text-2xl mb-0`}
               >
-                {filtered.length} trails
+                {tTrailsPage("list.filteredHeading", { count: filtered.length })}
               </h2>
-              <Link href="/trails" className={`text-sm font-medium shrink-0 ${SECTION.aegeanLink}`}>
-                Clear
-              </Link>
+              <AppLink href="/trails" className={`text-sm font-medium shrink-0 ${SECTION.aegeanLink}`}>
+                {tCommon("clearFilters")}
+              </AppLink>
             </div>
 
             {filtered.length === 0 ? (
@@ -180,24 +194,24 @@ export default function TrailsClient() {
             ) : (
               <div className="space-y-6 sm:space-y-8">
                 <TrailStatusGroup
-                  label="Open"
+                  label={tTrailsPage("groups.open")}
                   trails={openTrails}
                   dotColor="bg-aegean"
                   defaultOpen
                 />
                 <TrailStatusGroup
-                  label="Caution"
+                  label={tTrailsPage("groups.caution")}
                   trails={cautionTrails}
                   dotColor="bg-golden"
                   defaultOpen={cautionTrails.length <= 4}
                 />
                 <TrailStatusGroup
-                  label="Closed"
+                  label={tTrailsPage("groups.closed")}
                   trails={closedTrails}
                   dotColor="bg-terracotta"
                 />
                 <TrailStatusGroup
-                  label="No report"
+                  label={tTrailsPage("groups.noReport")}
                   trails={unknownTrails}
                   dotColor="bg-sand-300"
                   reportTrailId={unknownTrails[0]?.id}
@@ -225,10 +239,10 @@ export default function TrailsClient() {
           className={`${SECTION.pySub} border-t border-sand-200/80`}
         >
           <h2 id="trails-map-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-            Map ({filtered.length})
+            {tTrailsPage("map.heading", { count: filtered.length })}
           </h2>
           <p className="text-xs text-olive/60 -mt-2 mb-3">
-            Updated from local reports.
+            {tTrailsPage("map.caption")}
           </p>
           <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">
             <AllTrailsMapClient trails={filtered} />
@@ -239,17 +253,17 @@ export default function TrailsClient() {
 
         <TrailsFooter reportTrailId={reportTrail?.id} onScrollToMap={scrollToMap} />
 
-        {filtered.length > 0 && (
+        {hasAnyTrails && (
           <div
-            className={`fixed left-0 right-0 z-50 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden ${LAYOUT.fixedBottomClearance}`}
+            className="fixed left-0 right-0 z-40 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))]"
           >
-            <Link
+            <AppLink
               href="/plan"
               className={`flex-1 max-w-sm flex justify-center items-center min-h-[48px] px-6 rounded-xl ${CTA.primaryCompact}`}
-              aria-label="Add trails to your plan"
+              aria-label={tTrailsPage("bottomBar.aria")}
             >
-              Add to plan
-            </Link>
+              {tCommon("addToPlan")}
+            </AppLink>
           </div>
         )}
       </div>
