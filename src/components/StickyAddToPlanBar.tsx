@@ -65,7 +65,7 @@ export default function StickyAddToPlanBar({
     <div
       className={`fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] z-30 flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
-      aria-label="Add to plan"
+      aria-label={label}
     >
       <AddToItineraryButton placeId={placeId} label={label} className="w-full max-w-md" />
     </div>

@@ -13,6 +13,7 @@ export default function ResetPasswordPage() {
   const { user, needsPasswordReset, updatePassword, isConfigured, isLoading } = useAuth();
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tAuth = useTranslations("auth");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -32,8 +33,12 @@ export default function ResetPasswordPage() {
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
-            <h1 className="font-display text-xl font-semibold text-charcoal mb-2">Set new password</h1>
-            <p className="text-olive/80 text-sm leading-relaxed mb-6">Auth is being set up. Use the reset link from your email when ready.</p>
+            <h1 className="font-display text-xl font-semibold text-charcoal mb-2">
+              {tAuth("reset.configTitle")}
+            </h1>
+            <p className="text-olive/80 text-sm leading-relaxed mb-6">
+              {tAuth("reset.configSubtitle")}
+            </p>
             <AppLink href="/login" className={CTA.primaryCompact}>
               {tCommon("backTo", { label: tNav("signIn") })}
             </AppLink>
@@ -47,18 +52,21 @@ export default function ResetPasswordPage() {
     e.preventDefault();
     setError(null);
     if (password !== confirm) {
-      setError("Passwords don't match.");
+      setError(tAuth("reset.errorPasswordsDontMatch"));
       return;
     }
     if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
+      setError(tAuth("reset.errorPasswordTooShort"));
       return;
     }
     setLoading(true);
     try {
       const { error: err } = await updatePassword(password);
-      if (err) setError(err);
-      else setSuccess(true);
+      if (err) {
+        setError(tAuth("reset.errorGeneric"));
+      } else {
+        setSuccess(true);
+      }
     } finally {
       setLoading(false);
     }
@@ -70,11 +78,17 @@ export default function ResetPasswordPage() {
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/account" label={tCommon("backTo", { label: tNav("account") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-aegean/50`}>
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aegean mb-2">Done</p>
-            <h1 className="font-display text-2xl font-bold text-charcoal mb-2">Password updated</h1>
-            <p className="text-olive/80 text-base leading-relaxed mb-6">Your password has been set. You can now sign in with your new password.</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aegean mb-2">
+              Done
+            </p>
+            <h1 className="font-display text-2xl font-bold text-charcoal mb-2">
+              {tAuth("reset.successTitle")}
+            </h1>
+            <p className="text-olive/80 text-base leading-relaxed mb-6">
+              {tAuth("reset.successSubtitle")}
+            </p>
             <AppLink href="/account" className={CTA.primaryCompact}>
-              Go to account
+              {tCommon("backTo", { label: tNav("account") })}
             </AppLink>
           </div>
         </div>
@@ -99,10 +113,14 @@ export default function ResetPasswordPage() {
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
-            <h1 className="font-display text-xl font-semibold text-charcoal mb-2">Invalid or expired link</h1>
-            <p className="text-olive/80 text-sm leading-relaxed mb-6">This reset link may have expired. Request a new one to set your password.</p>
+            <h1 className="font-display text-xl font-semibold text-charcoal mb-2">
+              {tAuth("reset.invalidLinkTitle")}
+            </h1>
+            <p className="text-olive/80 text-sm leading-relaxed mb-6">
+              {tAuth("reset.invalidLinkSubtitle")}
+            </p>
             <AppLink href="/forgot-password" className={CTA.primaryCompact}>
-              Reset password
+              {tCommon("backTo", { label: tNav("signIn") })}
             </AppLink>
           </div>
         </div>
@@ -119,9 +137,15 @@ export default function ResetPasswordPage() {
         <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
 
         <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-l-4 border-l-terracotta/50 shadow-md`}>
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">Set new password</p>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-charcoal mb-2">Choose a new password</h1>
-          <p className="text-olive/80 text-base leading-relaxed mb-8">Enter your new password below.</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">
+            Set new password
+          </p>
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-charcoal mb-2">
+            Choose a new password
+          </h1>
+          <p className="text-olive/80 text-base leading-relaxed mb-8">
+            Enter your new password below.
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             {error && (
@@ -132,7 +156,9 @@ export default function ResetPasswordPage() {
 
             <div>
               <label htmlFor="reset-password" className="block text-sm font-medium text-olive mb-2">New password</label>
-              <p id="reset-password-hint" className="text-xs text-olive/60 mb-1.5">At least 6 characters</p>
+              <p id="reset-password-hint" className="text-xs text-olive/60 mb-1.5">
+                {tAuth("reset.inlinePasswordHint")}
+              </p>
               <div className="relative">
                 <input
                   id="reset-password"
@@ -183,7 +209,7 @@ export default function ResetPasswordPage() {
               disabled={loading || !password || !confirm || password !== confirm}
               className={`${CTA.primaryCompact} w-full min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed`}
             >
-              {loading ? "Updating…" : "Update password"}
+              {loading ? tAuth("reset.ctaUpdating") : tAuth("reset.ctaUpdate")}
             </button>
           </form>
         </div>

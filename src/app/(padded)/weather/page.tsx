@@ -33,14 +33,17 @@ export const metadata: Metadata = {
 };
 
 export default async function WeatherPage() {
-  const tNav = await getTranslations("nav");
+  const [tNav, tWeather] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("weather.page"),
+  ]);
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
         backLabel={tNav("home")}
-        title="Cyprus Winter Weather by Month"
-        description="Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries."
+        title={tWeather("title")}
+        description={tWeather("description")}
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("weather"), href: "/weather", isCurrent: true }]}
       />
 
@@ -53,17 +56,23 @@ export default async function WeatherPage() {
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-display font-semibold text-olive">{row.month}</span>
                   {slug && (
-                    <span className="text-xs font-medium text-terracotta">Details →</span>
+                    <span className="text-xs font-medium text-terracotta">
+                      {tWeather("mobile.details")}
+                    </span>
                   )}
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="text-olive/60 text-xs">Coast</p>
+                    <p className="text-olive/60 text-xs">
+                      {tWeather("table.coast")}
+                    </p>
                     <p className="text-olive font-medium">{row.coastMinC}–{row.coastMaxC}°C</p>
                     <p className="text-olive/80 text-xs mt-0.5 line-clamp-2">{row.coastDesc}</p>
                   </div>
                   <div>
-                    <p className="text-olive/60 text-xs">Troodos</p>
+                    <p className="text-olive/60 text-xs">
+                      {tWeather("table.troodos")}
+                    </p>
                     <p className="text-olive font-medium">{row.troodosMinC}–{row.troodosMaxC}°C</p>
                     <p className="text-olive/80 text-xs mt-0.5 line-clamp-2">{row.troodosDesc}</p>
                   </div>
@@ -85,11 +94,33 @@ export default async function WeatherPage() {
         <table className="w-full min-w-[600px] border-collapse text-left">
           <thead>
             <tr className="border-b-2 border-sand-200/80">
-              <th className="py-3 px-4 font-display font-semibold text-olive">Month</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Coast (°C)</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Conditions</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Troodos (°C)</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Conditions</th>
+              <th className="py-3 px-4 font-display font-semibold text-olive">
+                {tWeather("table.month")}
+              </th>
+              <th
+                className="py-3 px-4 font-display font-semibold text-olive"
+                scope="col"
+              >
+                {tWeather("table.coast")}
+              </th>
+              <th
+                className="py-3 px-4 font-display font-semibold text-olive"
+                scope="col"
+              >
+                {tWeather("table.coastConditions")}
+              </th>
+              <th
+                className="py-3 px-4 font-display font-semibold text-olive"
+                scope="col"
+              >
+                {tWeather("table.troodos")}
+              </th>
+              <th
+                className="py-3 px-4 font-display font-semibold text-olive"
+                scope="col"
+              >
+                {tWeather("table.troodosConditions")}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -131,24 +162,19 @@ export default async function WeatherPage() {
       <WeatherPushOptIn />
 
       <div className="mt-12 space-y-4 text-olive/80 text-sm max-w-2xl">
+        <p>{tWeather("body.coastTroodos")}</p>
         <p>
-          Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.
-        </p>
-        <p>
-          <AppLink
-            href="/trails"
-            className={SECTION.aegeanLink}
-          >
-            Check trail conditions
+          <AppLink href="/trails" className={SECTION.aegeanLink}>
+            {tWeather("body.linkTrails")}
           </AppLink>{" "}
-          before heading up.{" "}
+          {tWeather("body.linkTrailsSuffix")}{" "}
           <AppLink
             href="/discover?filter=winery"
             className={SECTION.aegeanLink}
           >
-            Winter wineries
+            {tWeather("body.linkWineries")}
           </AppLink>{" "}
-          — fireside tastings, book ahead.
+          {tWeather("body.linkWineriesSuffix")}
         </p>
       </div>
     </div>

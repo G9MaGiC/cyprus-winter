@@ -12,25 +12,12 @@ import { CTA, SECTION } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTranslations } from "next-intl";
 
-function formatSignUpError(raw: string): { message: string; isAlreadyRegistered: boolean } {
-  const lower = raw.toLowerCase();
-  if (lower.includes("already") || lower.includes("already registered") || lower.includes("user already exists")) {
-    return { message: "An account with that email already exists.", isAlreadyRegistered: true };
-  }
-  if (lower.includes("password") && (lower.includes("6") || lower.includes("least"))) {
-    return { message: "Password must be at least 6 characters.", isAlreadyRegistered: false };
-  }
-  if (lower.includes("invalid") && lower.includes("email")) {
-    return { message: "Please enter a valid email address.", isAlreadyRegistered: false };
-  }
-  return { message: raw || "Something went wrong. Try again.", isAlreadyRegistered: false };
-}
-
 export default function RegisterPage() {
   const router = useRouter();
   const { signUp, user, isLoading, isConfigured } = useAuth();
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tAuth = useTranslations("auth");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -72,20 +59,28 @@ export default function RegisterPage() {
     setError(null);
     setIsAlreadyRegistered(false);
     if (password !== confirmPassword) {
-      setError("Passwords don't match.");
+      setError(tAuth("register.errorPasswordsDontMatch"));
       return;
     }
     if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
+      setError(tAuth("register.errorPasswordTooShort"));
       return;
     }
     setLoading(true);
     try {
       const { error: err } = await signUp(email.trim(), password, name.trim() || undefined);
       if (err) {
-        const { message, isAlreadyRegistered: already } = formatSignUpError(err);
-        setError(message);
-        setIsAlreadyRegistered(already);
+        const lower = err.toLowerCase();
+        if (lower.includes("already") || lower.includes("already registered") || lower.includes("user already exists")) {
+          setError(tAuth("register.errorEmailExists"));
+          setIsAlreadyRegistered(true);
+        } else if (lower.includes("password") && (lower.includes("6") || lower.includes("least"))) {
+          setError(tAuth("register.errorPasswordTooShort"));
+        } else if (lower.includes("invalid") && lower.includes("email")) {
+          setError(tAuth("register.errorInvalidEmail"));
+        } else {
+          setError(tAuth("register.errorGeneric"));
+        }
       } else {
         setSuccess(true);
       }
@@ -98,18 +93,19 @@ export default function RegisterPage() {
     return (
       <AuthLayout
         variant="success"
-        kicker="Check your email"
-        title="Almost there"
+        kicker={tAuth("register.successTitle")}
+        title={tAuth("register.successTitle")}
         subtitle={
-          <>
-            We sent a confirmation link to <strong className="text-charcoal">{email}</strong>. Click it to activate your account, then sign in.
-          </>
+          tAuth.rich("register.successSubtitle", {
+            email,
+            strong: (chunks) => <strong className="text-charcoal">{chunks}</strong>,
+          })
         }
         backHref="/"
         backLabel={tCommon("backTo", { label: tNav("home") })}
       >
         <AppLink href="/login" className={CTA.primaryCompact}>
-          Sign in
+          {tAuth("register.ctaSignIn")}
         </AppLink>
       </AuthLayout>
     );
@@ -118,9 +114,9 @@ export default function RegisterPage() {
   return (
     <AuthLayout
       variant="register"
-      kicker="Create account"
-      title="Join Cyprus Winter"
-      subtitle="Plan trails, wineries, villages. Sync your itinerary across devices."
+        kicker={tAuth("register.ctaCreate")}
+        title={tAuth("register.title")}
+        subtitle={tAuth("register.subtitle")}
       backHref="/account"
       backLabel={tCommon("backTo", { label: tNav("account") })}
       footer={
@@ -130,7 +126,7 @@ export default function RegisterPage() {
             href="/login"
             className="text-terracotta font-medium hover:text-terracotta-muted transition-colors"
           >
-            Sign in
+            {tAuth("register.ctaSignIn")}
           </AppLink>
         </>
       }
@@ -174,7 +170,7 @@ export default function RegisterPage() {
         <AuthPasswordInput
           id="reg-password"
           label="Password"
-          hint="At least 6 characters"
+          hint={tAuth("register.passwordHint")}
           showStrength
           value={password}
           onChange={setPassword}
@@ -205,7 +201,7 @@ export default function RegisterPage() {
           }
           className={`${CTA.primaryCompact} w-full min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed`}
         >
-          {loading ? "Creating account…" : "Create account"}
+          {loading ? "Creating account…" : tAuth("register.ctaCreate")}
         </button>
 
         <SocialLoginButtons intent="signup" />

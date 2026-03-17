@@ -9,6 +9,8 @@ import RegionPickerChips from "@/components/RegionPickerChips";
 import { getRegionShortLabel, type RegionSlug } from "@/data/regions";
 import { useRightNowFeed } from "@/hooks/useRightNowFeed";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
+import { useTranslations } from "next-intl";
+import { RateLimitError, NetworkError } from "@/components/ui/ErrorState";
 
 type DistanceMode = "less" | "more";
 
@@ -47,10 +49,11 @@ function DistanceToggle({
   value: DistanceMode;
   onChange: (v: DistanceMode) => void;
 }) {
+  const tHome = useTranslations("home");
   return (
     <div
       role="group"
-      aria-label="Distance"
+      aria-label={tHome("rightNow.distance.aria")}
       className="inline-flex rounded-lg border border-sand-200/80 bg-white/80 p-0.5 gap-px"
     >
       <button
@@ -67,7 +70,7 @@ function DistanceToggle({
             : "text-olive/70 hover:text-olive"
         }`}
       >
-        Closer
+        {tHome("rightNow.distance.closer")}
       </button>
       <button
         type="button"
@@ -83,7 +86,7 @@ function DistanceToggle({
             : "text-olive/70 hover:text-olive"
         }`}
       >
-        Farther
+        {tHome("rightNow.distance.farther")}
       </button>
     </div>
   );
@@ -94,10 +97,13 @@ type RightNowNearYouProps = { title?: string };
 export default function RightNowNearYou({
   title = "Right now near you",
 }: RightNowNearYouProps) {
+  const tHome = useTranslations("home");
+  const tErrors = useTranslations("errors");
   const {
     state,
     items,
     lastErrorCode,
+    lastRetryAfterSeconds,
     distanceMode,
     sourceMode,
     selectedRegion,
@@ -111,16 +117,16 @@ export default function RightNowNearYou({
 
   if (state === "consent") {
     return (
-      <SectionShell title={title} subtitle="What makes sense where you are">
+      <SectionShell title={title} subtitle={tHome("rightNow.subtitleConsent")}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
-            Suggestions based on where you are, the time, and the weather.
+            {tHome("rightNow.consent.body")}
           </p>
           <LocationActionButtons
-            primaryLabel="Use my location"
+            primaryLabel={tHome("rightNow.consent.cta.useLocation")}
             onPrimary={handleUseLocation}
             onSecondary={handlePickRegion}
-            secondaryLabel="Pick a region"
+            secondaryLabel={tHome("rightNow.consent.cta.pickRegion")}
             className="mt-0"
           />
         </div>
@@ -132,7 +138,9 @@ export default function RightNowNearYou({
     return (
       <SectionShell title={title}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className="text-olive/80 text-sm mb-4">Choose a region to explore.</p>
+          <p className="text-olive/80 text-sm mb-4">
+            {tHome("rightNow.regionPicker.body")}
+          </p>
           <RegionPickerChips
             onSelect={handleRegionSelect}
             onUseLocation={handleUseLocation}
@@ -166,21 +174,30 @@ export default function RightNowNearYou({
   }
 
   if (state === "denied" || state === "error") {
-    const errorMessage =
-      state === "denied"
-        ? "Enable location or pick a region."
-        : lastErrorCode === "rate_limited"
-          ? "Too many requests. Try again in a minute."
-          : "Couldn't load. Try again shortly.";
     return (
       <SectionShell title={title}>
-          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className="text-olive/80 text-sm mb-4">{errorMessage}</p>
+        <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
+          {state === "denied" ? (
+            <p className="text-olive/80 text-sm mb-4">
+              {tErrors("rightNow.locationDenied")}
+            </p>
+          ) : lastErrorCode === "RATE_LIMITED" ? (
+            <RateLimitError
+              retryAfter={lastRetryAfterSeconds}
+              onRetry={handleUseLocation}
+              className="bg-transparent border-0 shadow-none p-0"
+            />
+          ) : (
+            <NetworkError
+              onRetry={handleUseLocation}
+              className="bg-transparent border-0 shadow-none p-0"
+            />
+          )}
           <LocationActionButtons
-            primaryLabel="Try again"
+            primaryLabel={tErrors("common.tryAgainCta")}
             onPrimary={handleUseLocation}
             onSecondary={handlePickRegion}
-            secondaryLabel="Pick a region"
+            secondaryLabel={tHome("rightNow.consent.cta.pickRegion")}
             className="mt-0"
           />
         </div>
@@ -191,14 +208,17 @@ export default function RightNowNearYou({
   if (state === "empty") {
     const subtitle =
       sourceMode === "region" && selectedRegion
-        ? `Suggestions in ${getRegionShortLabel(selectedRegion)}`
+        ? tHome("rightNow.subtitleRegion", {
+            region: getRegionShortLabel(selectedRegion),
+          })
         : undefined;
     return (
       <SectionShell title={title} subtitle={subtitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
-            No suggestions for {sourceMode === "region" ? "this region" : "now"}{" "}
-            right now.
+            {tHome("rightNow.empty.body", {
+              scope: sourceMode === "region" ? tHome("rightNow.empty.scopeRegion") : tHome("rightNow.empty.scopeNow"),
+            })}
           </p>
           <div className="flex flex-wrap items-center gap-3">
             {sourceMode === "region" && (
@@ -211,13 +231,13 @@ export default function RightNowNearYou({
                 }}
                 className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                Change region
+                {tHome("rightNow.empty.changeRegion")}
               </button>
             )}
             <AppLink href="/discover" className={SECTION.aegeanLink}>
-              See more in Discover →
+              {tHome("rightNow.empty.seeMoreDiscover")}
             </AppLink>
-            <AIAssistantTrigger label="Or ask the AI for suggestions" />
+            <AIAssistantTrigger label={tHome("rightNow.empty.askAI")} />
           </div>
         </div>
       </SectionShell>
@@ -226,15 +246,17 @@ export default function RightNowNearYou({
 
   const loadedSubtitle =
     sourceMode === "region" && selectedRegion
-      ? `What makes sense in ${getRegionShortLabel(selectedRegion)}`
-      : "What makes sense where you are";
+      ? tHome("rightNow.subtitleLoadedRegion", {
+          region: getRegionShortLabel(selectedRegion),
+        })
+      : tHome("rightNow.subtitleLoadedLocation");
 
   return (
     <SectionShell title={title} subtitle={loadedSubtitle}>
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink href="/discover" className={SECTION.aegeanLink}>
-          See more →
+          {tHome("rightNow.loaded.seeMore")}
         </AppLink>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">

@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
@@ -105,6 +105,7 @@ function getSuggestions(pathname: string): string[] {
 export function useAIChat() {
   const pathname = usePathname();
   const locale = useLocale();
+  const tErrors = useTranslations("errors");
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -177,12 +178,18 @@ export function useAIChat() {
         if (!res.ok) {
           const isRateLimited = res.status === 429;
           const is503 = res.status === 503;
+          const data = await res.json().catch(() => ({} as unknown));
+          const apiCode =
+            typeof data === "object" && data !== null
+              ? ((data as { error?: { code?: unknown } }).error?.code as unknown)
+              : undefined;
+          const code = typeof apiCode === "string" ? apiCode : undefined;
           throw new Error(
             isRateLimited
-              ? "Too many requests. Please wait a moment."
+              ? "RATE_LIMITED"
               : is503
               ? "SERVICE_UNAVAILABLE"
-              : "Failed to send message"
+              : code ?? "SERVER_ERROR"
           );
         }
 
@@ -228,13 +235,19 @@ export function useAIChat() {
       } catch (err) {
         if ((err as Error).name === "AbortError") return;
 
-        const is503 = (err as Error).message === "SERVICE_UNAVAILABLE";
+        const msg = err instanceof Error ? err.message : "";
+        const is503 = msg === "SERVICE_UNAVAILABLE";
+        const isRateLimited = msg === "RATE_LIMITED";
+        const content = isRateLimited
+          ? tErrors("chat.rateLimited")
+          : is503
+            ? tErrors("chat.unavailable")
+            : tErrors("chat.failed");
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant" as const,
-            content:
-              "I'm having trouble connecting. Please try again in a moment.",
+            content,
             isRetryable: true,
             is503,
           },
@@ -244,7 +257,7 @@ export function useAIChat() {
         abortRef.current = null;
       }
     },
-    [loading, pathname, locale]
+    [loading, pathname, locale, tErrors]
   );
 
   const clearChat = useCallback(() => {

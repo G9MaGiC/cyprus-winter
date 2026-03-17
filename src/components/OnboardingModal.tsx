@@ -66,6 +66,8 @@ export default function OnboardingModal() {
   const { showOnboarding, dismiss, isClient } = useOnboarding();
   const [visible, setVisible] = useState(false);
   const [ready, setReady] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!isClient || !showOnboarding) return;
@@ -94,9 +96,25 @@ export default function OnboardingModal() {
     return () => cancelAnimationFrame(raf);
   }, [ready, showOnboarding]);
 
+  // Move focus into the onboarding panel when it becomes visible and restore on dismiss
+  useEffect(() => {
+    if (!visible) return;
+    previouslyFocusedRef.current = (document.activeElement as HTMLElement | null) ?? null;
+    const raf = requestAnimationFrame(() => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      const firstAction = panel.querySelector<HTMLElement>(
+        'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+      );
+      (firstAction ?? panel).focus?.();
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [visible]);
+
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");
     dismiss();
+    previouslyFocusedRef.current?.focus?.();
   }, [dismiss]);
 
   if (!isClient || !showOnboarding) return null;
@@ -107,11 +125,14 @@ export default function OnboardingModal() {
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
       role="dialog"
-      aria-modal="true"
+      aria-modal="false"
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-description"
     >
-      <div className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}>
+      <div
+        ref={panelRef}
+        className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}
+      >
         {/* Hero image strip with gradient overlay */}
         <div className="relative h-24 sm:h-28 w-full bg-sand-200">
           <Image

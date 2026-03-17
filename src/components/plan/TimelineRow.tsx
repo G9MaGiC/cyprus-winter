@@ -36,8 +36,10 @@ export default function TimelineRow({
           </span>
           {showConnector && <span className="w-px h-5 sm:h-6 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
         </div>
-        <div className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}>
-          <span className="text-sm text-olive/60 italic">This place was removed from our list</span>
+        <div
+          className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}
+        >
+          <span className="text-sm text-olive/60 italic">{tCommon("timelineRemovedPlace")}</span>
           <button
             type="button"
             onClick={() => removeFromDay(id)}

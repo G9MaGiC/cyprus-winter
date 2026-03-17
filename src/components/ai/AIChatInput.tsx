@@ -2,6 +2,7 @@
 
 import { useRef, useState, useCallback } from "react";
 import { Send, Mic, MicOff } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface AIChatInputProps {
   input: string;
@@ -18,6 +19,7 @@ export function AIChatInput({
   loading,
   suggestions,
 }: AIChatInputProps) {
+  const tCommon = useTranslations("common");
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -115,7 +117,7 @@ export function AIChatInput({
                   ? "bg-terracotta text-white animate-pulse"
                   : "text-olive hover:bg-sand-200"
               }`}
-              aria-label={isListening ? "Stop listening" : "Start voice input"}
+              aria-label={isListening ? tCommon("ai.stopVoice") : tCommon("ai.startVoice")}
             >
               {isListening ? <MicOff size={18} /> : <Mic size={18} />}
             </button>
@@ -124,7 +126,7 @@ export function AIChatInput({
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about Cyprus..."
+            placeholder={tCommon("ai.inputPlaceholder")}
             className="flex-1 bg-transparent border-none outline-none text-sm sm:text-base text-olive placeholder:text-olive/50"
             disabled={loading}
           />
@@ -133,7 +135,7 @@ export function AIChatInput({
             disabled={!input.trim() || loading}
             className="shrink-0 p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-muted 
                        disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            aria-label="Send message"
+            aria-label={tCommon("ai.sendAria")}
           >
             <Send size={18} />
           </button>

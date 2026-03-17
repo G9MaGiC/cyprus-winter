@@ -51,7 +51,7 @@ export default function HomePageContent({
     <div className="relative overflow-hidden bg-background">
       <nav
         aria-label={tCommon("skipToContent")}
-        className="absolute left-4 top-4 z-50 flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2"
+        className="absolute left-4 top-4 z-[45] flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2"
       >
         <AppLink
           href="#editors-picks-heading"
@@ -104,8 +104,8 @@ export default function HomePageContent({
       <HomeSection
         id="book-tastings-heading"
         title={tCommon("bookTastings")}
-        kicker="Wineries"
-        subtitle="Fireside tastings, often the owner pouring. Reserve ahead for weekends."
+        kicker={tHome("bookTastings.kicker")}
+        subtitle={tHome("bookTastings.subtitle")}
       >
         <BookTastings LinkComponent={LinkComponent} />
       </HomeSection>

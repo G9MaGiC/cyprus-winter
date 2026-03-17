@@ -30,6 +30,9 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
       aria-labelledby="clear-day-title"
       aria-describedby="clear-day-desc"
       onKeyDown={(e) => trapFocus(e, modalRef.current, onClose)}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div
         ref={modalRef}

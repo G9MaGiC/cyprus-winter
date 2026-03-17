@@ -25,6 +25,7 @@ export default function AccountSettingsPage() {
   const [cleared, setCleared] = useState(false);
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tSettings = useTranslations("account.settings");
 
   const handleClearRecentlyViewed = () => {
     clearRecentlyViewed();
@@ -35,8 +36,8 @@ export default function AccountSettingsPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <PageHeader
-          title="Settings"
-          description="Loading…"
+          title={tSettings("title")}
+          description={tSettings("loading")}
           backHref="/account"
           backLabel={tNav("account")}
           breadcrumbItems={[
@@ -53,8 +54,8 @@ export default function AccountSettingsPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
-        title="Settings"
-        description="Personalize your experience. We use these to surface places and trails that match your style."
+        title={tSettings("title")}
+        description={tSettings("description")}
         backHref="/account"
         backLabel={tNav("account")}
         breadcrumbItems={[
@@ -67,10 +68,10 @@ export default function AccountSettingsPage() {
       {/* Interests */}
       <section className={`mt-10 ${SECTION.blockGap}`}>
         <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
-          Interests
+          {tSettings("interests.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
-          Pick what excites you. Discover, Right Now, and plan suggestions will lean toward these.
+          {tSettings("interests.body")}
         </p>
         <div className="flex flex-wrap gap-2.5">
           {(Object.keys(INTEREST_LABELS) as Interest[]).map((interest) => (
@@ -80,7 +81,7 @@ export default function AccountSettingsPage() {
               onClick={() => toggleInterest(interest)}
               className={`${chipBase} ${prefs.interests.includes(interest) ? chipActive : chipInactive}`}
             >
-              {INTEREST_LABELS[interest]}
+              {tSettings(`interests.labels.${interest}`)}
             </button>
           ))}
         </div>
@@ -89,10 +90,10 @@ export default function AccountSettingsPage() {
       {/* Traveler type */}
       <section className="mt-10">
         <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
-          Travel style
+          {tSettings("travelStyle.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
-          Helps tailor suggestions (e.g. family-friendly spots, couples retreats).
+          {tSettings("travelStyle.body")}
         </p>
         <div className="flex flex-wrap gap-2.5">
           {(Object.keys(TRAVELER_LABELS) as TravelerType[]).map((type) => (
@@ -102,7 +103,7 @@ export default function AccountSettingsPage() {
               onClick={() => update({ travelerType: prefs.travelerType === type ? null : type })}
               className={`${chipBase} ${prefs.travelerType === type ? chipActive : chipInactive}`}
             >
-              {TRAVELER_LABELS[type]}
+              {tSettings(`travelStyle.labels.${type}`)}
             </button>
           ))}
         </div>
@@ -111,10 +112,10 @@ export default function AccountSettingsPage() {
       {/* Favorite regions */}
       <section className="mt-10">
         <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
-          Favorite regions
+          {tSettings("regions.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
-          We&apos;ll boost content from these areas in Discover and Right Now.
+          {tSettings("regions.body")}
         </p>
         <div className="flex flex-wrap gap-2.5">
           {REGION_CONFIGS.map((r) => (
@@ -133,10 +134,10 @@ export default function AccountSettingsPage() {
       {/* Notifications */}
       <section className={`${CARD.base} ${CARD.content} mt-10`}>
         <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
-          Notifications
+          {tSettings("notifications.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
-          If you enable push, we&apos;ll use these preferences for alerts.
+          {tSettings("notifications.body")}
         </p>
         <div className="space-y-4">
           <label className="flex items-center gap-3 cursor-pointer">
@@ -146,7 +147,9 @@ export default function AccountSettingsPage() {
               onChange={(e) => update({ notifyTrailConditions: e.target.checked })}
               className="h-5 w-5 rounded border-sand-300 text-terracotta focus-visible:ring-terracotta/50"
             />
-            <span className="text-olive">Trail condition updates (Troodos, etc.)</span>
+            <span className="text-olive">
+              {tSettings("notifications.trails")}
+            </span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer">
             <input
@@ -155,7 +158,9 @@ export default function AccountSettingsPage() {
               onChange={(e) => update({ notifyEvents: e.target.checked })}
               className="h-5 w-5 rounded border-sand-300 text-terracotta focus-visible:ring-terracotta/50"
             />
-            <span className="text-olive">Winter events and festivals</span>
+            <span className="text-olive">
+              {tSettings("notifications.events")}
+            </span>
           </label>
         </div>
       </section>
@@ -163,10 +168,10 @@ export default function AccountSettingsPage() {
       {/* Data & privacy */}
       <section className={`${CARD.base} ${CARD.content} mt-8`}>
         <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
-          Data & privacy
+          {tSettings("privacy.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
-          Control what we keep on this device. For data we hold (bookings, trail reports), you can request export or deletion.
+          {tSettings("privacy.body")}
         </p>
         <div className="flex flex-wrap gap-3">
           <button
@@ -174,33 +179,33 @@ export default function AccountSettingsPage() {
             onClick={handleClearRecentlyViewed}
             className={`${CTA.chipTertiary}`}
           >
-            {cleared ? "Recently viewed cleared" : "Clear recently viewed"}
+            {cleared ? tSettings("privacy.cleared") : tSettings("privacy.clear")}
           </button>
           <a
             href="mailto:privacy@cypruswinter.com?subject=Data%20export%20request"
             className={`${CTA.chipTertiary}`}
           >
-            Request data export
+            {tSettings("privacy.requestExport")}
           </a>
           <a
             href="mailto:privacy@cypruswinter.com?subject=Data%20deletion%20request"
             className={`${CTA.chipTertiary}`}
           >
-            Request deletion
+            {tSettings("privacy.requestDeletion")}
           </a>
         </div>
         <p className="text-xs text-olive/60 mt-3">
-          Include the email used for bookings or trail reports. We respond within 30 days. See our{" "}
+          {tSettings("privacy.footer.prefix")}{" "}
           <Link href="/privacy" className="text-terracotta hover:underline">
-            Privacy Policy
+            {tSettings("privacy.footer.privacyPolicy")}
           </Link>
-          .
+          {tSettings("privacy.footer.suffix")}
         </p>
       </section>
 
       <div className="mt-10 flex justify-start">
         <Link href="/account" className={`${CTA.secondaryCompact}`}>
-          ← Back to account
+          {tSettings("backToAccount")}
         </Link>
       </div>
     </div>

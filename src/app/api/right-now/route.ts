@@ -5,7 +5,11 @@ import { getAttractionById, getRestaurantById } from "@/data";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
-import { jsonError, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+} from "@/lib/api-response";
 import { logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
@@ -54,15 +58,16 @@ export async function GET(req: Request) {
   try {
     limitResult = await rateLimit(req, RIGHT_NOW_LIMIT, "right-now");
   } catch {
-    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+    return jsonError(
+      "SERVICE_UNAVAILABLE",
+      "Rate limiting unavailable. Try again in a moment.",
+      503
+    );
   }
   if (!limitResult.ok) {
-    return Response.json(
-      { error: { code: "RATE_LIMITED" as const, message: "Too many requests. Try again in a minute." } },
-      {
-        status: 429,
-        headers: { "Retry-After": String(Math.ceil((limitResult.resetAt - Date.now()) / 1000)) },
-      }
+    return jsonRateLimitedFromResult(
+      "Too many requests. Try again in a minute.",
+      limitResult.resetAt
     );
   }
 
@@ -87,9 +92,10 @@ export async function GET(req: Request) {
   const lng = lngParam != null ? parseFloat(lngParam) : NaN;
 
   if (Number.isNaN(lat) || Number.isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
-    return Response.json(
-      { error: { code: "VALIDATION_ERROR" as const, message: "lat and lng are required and must be valid" } },
-      { status: 400 }
+    return jsonError(
+      "VALIDATION_ERROR",
+      "lat and lng are required and must be valid",
+      400
     );
   }
 

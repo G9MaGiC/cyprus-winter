@@ -71,7 +71,7 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
       <div className={`${LAYOUT.nav} mx-auto flex items-center justify-between h-14 ${LAYOUT.safeAreaX}`}>
         <AppLink href="/" className="font-display text-xl font-bold text-golden min-h-[44px] inline-flex items-center">
           Cyprus Winter
@@ -125,7 +125,7 @@ export default function Nav() {
                   aria-hidden
                   tabIndex={-1}
                 />
-                <div id="more-menu" ref={moreMenuRef} role="menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-50 min-w-[120px]">
+                <div id="more-menu" ref={moreMenuRef} role="menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-[45] min-w-[120px]">
                   {moreLinksResolved.map((link) => (
                     <AppLink
                       key={link.href}

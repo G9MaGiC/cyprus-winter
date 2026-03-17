@@ -54,6 +54,18 @@ export const BOTTOM_NAV = {
 /** Nav bar height (h-14) + safe area. Use for spacing content below fixed nav. */
 export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
 
+/** Layering scale — keeps overlays/banners predictable. */
+export const LAYER = {
+  /** Persistent chrome like `BottomNav` and cookie banner. */
+  chrome: "z-40",
+  /** Popovers/menus/tooltips that should sit above chrome but below modals. */
+  popover: "z-[45]",
+  /** Standard modal/dialog overlay. */
+  modal: "z-50",
+  /** Topmost global overlays (e.g. AI assistant) that must beat banners. */
+  topOverlay: "z-[70]",
+} as const;
+
 /** Max-width and structural layout classes. */
 export const LAYOUT = {
   /** Top padding for (padded) pages — clears fixed nav. Complements NAV_OFFSET. */

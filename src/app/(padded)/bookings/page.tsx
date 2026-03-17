@@ -13,6 +13,7 @@ import BookingsEmailLookup from "@/components/BookingsEmailLookup";
 import { useLocale, useTranslations } from "next-intl";
 
 function StatusBadge({ status }: { status: Booking["status"] }) {
+  const tBookings = useTranslations("bookings");
   const style =
     status === "confirmed"
       ? "bg-aegean/15 text-aegean"
@@ -22,7 +23,7 @@ function StatusBadge({ status }: { status: Booking["status"] }) {
   return (
     <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${style}`}>
       {status === "confirmed" && <span className="w-1.5 h-1.5 rounded-full bg-aegean" aria-hidden />}
-      {status}
+      {tBookings(`status.${status}`)}
     </span>
   );
 }
@@ -30,6 +31,8 @@ function StatusBadge({ status }: { status: Booking["status"] }) {
 export default function BookingsPage() {
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tBookings = useTranslations("bookings");
+  const tBookingsPage = useTranslations("bookings.page");
   const locale = useLocale();
   const isMountedRef = useRef(true);
   const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -82,7 +85,7 @@ export default function BookingsPage() {
       const data = await res.json();
       if (!isMountedRef.current) return;
       if (res.status === 429) {
-        setEmailError("Too many requests. Wait a moment and try again.");
+        setEmailError(tBookings("errors.rateLimited"));
         setEmailLoading(false);
         return;
       }
@@ -90,7 +93,7 @@ export default function BookingsPage() {
         const msg =
           data.message ??
           (typeof data.error === "string" ? data.error : data.error?.message) ??
-          "Failed to load";
+          tBookings("errors.failedToLoad");
         throw new Error(msg);
       }
       const apiBookings = (data.bookings ?? []) as Booking[];
@@ -101,10 +104,14 @@ export default function BookingsPage() {
       setBookings(merged);
       if (successTimerRef.current) clearTimeout(successTimerRef.current);
       if (apiBookings.length === 0) {
-        setEmailSuccess("No bookings for that email. Try another, or book from Discover.");
+        setEmailSuccess(tBookings("emailLookup.noMatch"));
       } else {
         const added = merged.length - local.length;
-        setEmailSuccess(added > 0 ? `Loaded ${added} booking${added === 1 ? "" : "s"}.` : "All set. No new bookings to load.");
+        setEmailSuccess(
+          added > 0
+            ? tBookings("emailLookup.loadedCount", { count: added })
+            : tBookings("emailLookup.allSet")
+        );
       }
       successTimerRef.current = setTimeout(() => {
         successTimerRef.current = null;
@@ -114,7 +121,9 @@ export default function BookingsPage() {
       if (!isMountedRef.current) return;
       const msg = err instanceof Error ? err.message : "";
       setEmailError(
-        msg && !/failed to fetch|network/i.test(msg) ? msg : "Couldn't load your bookings. Check your connection and try again."
+        msg && !/failed to fetch|network/i.test(msg)
+          ? msg
+          : tBookings("errors.connection")
       );
     } finally {
       if (isMountedRef.current) setEmailLoading(false);
@@ -138,17 +147,17 @@ export default function BookingsPage() {
   const tomorrowBookings = upcoming.filter((b) => daysUntil(b.date) === 1);
 
   const groupLabels: { key: keyof typeof upcomingByGroup; label: string }[] = [
-    { key: "today", label: "Today" },
-    { key: "this_week", label: "This week" },
-    { key: "later", label: "Later" },
+    { key: "today", label: tBookingsPage("groups.today") },
+    { key: "this_week", label: tBookingsPage("groups.thisWeek") },
+    { key: "later", label: tBookingsPage("groups.later") },
   ];
 
   return (
     <div className="min-h-screen bg-sand">
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <PageHeader
-          title="My bookings"
-          description="Your tastings and experiences. All in one place."
+          title={tBookingsPage("title")}
+          description={tBookingsPage("description")}
           backHref="/"
           backLabel={tNav("home")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("bookings"), href: "/bookings", isCurrent: true }]}
@@ -160,7 +169,7 @@ export default function BookingsPage() {
             <div className="flex items-center gap-3">
               <span className="text-2xl font-display font-bold text-terracotta">{bookings.length}</span>
               <span className="text-sm text-olive/70">
-                {bookings.length === 1 ? "booking" : "bookings"}
+                {tBookingsPage("stats.totalBookings", { count: bookings.length })}
               </span>
             </div>
             {upcoming.length > 0 && (
@@ -168,14 +177,18 @@ export default function BookingsPage() {
                 <span className="w-px h-6 bg-sand-200" aria-hidden />
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-display font-bold text-aegean">{upcoming.length}</span>
-                  <span className="text-sm text-olive/70">upcoming</span>
+                  <span className="text-sm text-olive/70">
+                    {tBookingsPage("stats.upcoming")}
+                  </span>
                 </div>
               </>
             )}
             {confirmedCount > 0 && (
               <>
                 <span className="w-px h-6 bg-sand-200" aria-hidden />
-                <span className="text-sm text-aegean font-medium">{confirmedCount} confirmed</span>
+                <span className="text-sm text-aegean font-medium">
+                  {tBookingsPage("stats.confirmedCount", { count: confirmedCount })}
+                </span>
               </>
             )}
           </div>
@@ -192,7 +205,7 @@ export default function BookingsPage() {
             className="flex items-center justify-center min-h-[44px] gap-2 text-sm font-medium text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded w-full sm:w-auto py-2"
           >
             <span aria-hidden className="text-olive/60">{showSync ? "▾" : "▸"}</span>
-            Booked on another device? Load by email
+            {tBookingsPage("sync.toggle")}
           </button>
           {showSync && (
             <div id="bookings-sync-panel" className={`mt-3 rounded-xl ${CARD.base} ${CARD.content}`} role="region" aria-labelledby="bookings-sync-toggle">
@@ -206,7 +219,7 @@ export default function BookingsPage() {
                 error={emailError}
                 success={emailSuccess}
                 onSubmit={fetchByEmail}
-                submitLabel="Load bookings"
+                submitLabel={tBookingsPage("sync.submit")}
                 onRetry={emailError ? () => setEmailError(null) : undefined}
               />
             </div>
@@ -214,32 +227,40 @@ export default function BookingsPage() {
         </div>
 
         {loading ? (
-          <div className="space-y-4" role="status" aria-live="polite" aria-busy="true" aria-label="Loading your bookings">
-            <p className="sr-only">Loading your bookings…</p>
+          <div
+            className="space-y-4"
+            role="status"
+            aria-live="polite"
+            aria-busy="true"
+            aria-label={tBookingsPage("loading.aria")}
+          >
+            <p className="sr-only">{tBookingsPage("loading.sr")}</p>
             {[1, 2, 3].map((i) => (
               <div key={i} className="h-28 rounded-xl bg-white/80 border border-sand-200/80 animate-pulse" />
             ))}
           </div>
         ) : bookings.length === 0 ? (
-          <div className="space-y-8" role="region" aria-label="Empty bookings state">
+          <div className="space-y-8" role="region" aria-label={tBookingsPage("empty.aria")}>
             <div className={`${EMPTY_STATE_DASHED} bg-white/80`}>
               <div className={`w-12 h-1 mx-auto rounded-full bg-terracotta/40 ${SECTION.headingGap}`} aria-hidden />
-              <h2 className="font-display font-semibold text-olive mb-1">No bookings yet</h2>
+              <h2 className="font-display font-semibold text-olive mb-1">
+                {tBookings("empty")}
+              </h2>
               <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
-                Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.
+                {tBookings("bookMore")}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <AppLink
                   href="/discover?filter=winery"
                   className={`w-full sm:w-auto justify-center px-6 py-3 rounded-lg ${CTA.primaryCompact}`}
                 >
-                  Browse wineries
+                  {tBookings("browseWineries")}
                 </AppLink>
                 <AppLink
                   href="/book/guide"
                   className={`w-full sm:w-auto justify-center px-6 py-3 rounded-lg ${CTA.chipTertiary}`}
                 >
-                  Book a guided hike
+                  {tBookingsPage("empty.cta.bookGuidedHike")}
                 </AppLink>
                 {!showSync && (
                   <button
@@ -247,13 +268,15 @@ export default function BookingsPage() {
                     onClick={() => setShowSync(true)}
                     className={`${CTA.chipTertiary} w-full sm:w-auto justify-center px-5 py-2.5 rounded-lg`}
                   >
-                    Load by email
+                    {tBookingsPage("sync.loadByEmail")}
                   </button>
                 )}
               </div>
               {showSync && (
                 <div className="pt-4 border-t border-sand-200/80">
-                  <p className="text-xs text-olive/50 mb-3">We’ll merge any bookings with this device.</p>
+                  <p className="text-xs text-olive/50 mb-3">
+                    {tBookingsPage("sync.mergeHint")}
+                  </p>
                   <BookingsEmailLookup
                     email={emailLookup}
                     onEmailChange={(v) => {
@@ -264,7 +287,7 @@ export default function BookingsPage() {
                     error={emailError}
                     success={emailSuccess}
                     onSubmit={fetchByEmail}
-                    submitLabel="Load bookings"
+                    submitLabel={tBookingsPage("sync.submit")}
                     layout="stacked"
                     onRetry={emailError ? () => setEmailError(null) : undefined}
                   />
@@ -277,8 +300,12 @@ export default function BookingsPage() {
             {/* No upcoming — suggest sync or browse */}
             {bookings.length > 0 && upcoming.length === 0 && (
               <div className="p-5 rounded-xl bg-aegean/10 border border-aegean/20" role="status" aria-live="polite">
-                <p className="text-sm font-medium text-olive mb-1">No upcoming bookings</p>
-                <p className="text-sm text-olive/70 mb-4">Load bookings from another device or plan your next visit.</p>
+                <p className="text-sm font-medium text-olive mb-1">
+                  {tBookingsPage("noUpcoming.title")}
+                </p>
+                <p className="text-sm text-olive/70 mb-4">
+                  {tBookingsPage("noUpcoming.body")}
+                </p>
                 <div className="flex flex-wrap gap-3">
                   {!showSync && (
                     <button
@@ -286,14 +313,14 @@ export default function BookingsPage() {
                       onClick={() => setShowSync(true)}
                       className="inline-flex items-center min-h-[44px] px-4 py-2.5 rounded-lg text-sm font-medium text-aegean hover:bg-aegean/10 border border-aegean/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                      Load by email
+                      {tBookingsPage("sync.loadByEmail")}
                     </button>
                   )}
                   <AppLink
                     href="/discover?filter=winery"
                     className={`px-4 py-2.5 rounded-lg ${CTA.primaryCompact}`}
                   >
-                    Browse wineries
+                    {tBookings("browseWineries")}
                   </AppLink>
                 </div>
               </div>
@@ -306,10 +333,12 @@ export default function BookingsPage() {
                 className="mb-6 p-4 rounded-xl bg-aegean/10 border border-aegean/20"
               >
                 <p className="text-sm font-medium text-olive">
-                  Tomorrow — {tomorrowBookings.map((b) => b.providerName).join(" · ")} — directions ready.
+                  {tBookingsPage("tomorrowHighlight.title", {
+                    providers: tomorrowBookings.map((b) => b.providerName).join(" · "),
+                  })}
                 </p>
                 <p className="text-xs text-olive/70 mt-1">
-                  View details below or add to your plan.
+                  {tBookingsPage("tomorrowHighlight.body")}
                 </p>
               </div>
             )}
@@ -331,11 +360,13 @@ export default function BookingsPage() {
                         const guideValid = !!getGuideById(b.providerId);
                         const providerValid = placeValid || guideValid;
                         const viewHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
-                        const viewLabel = isGuide ? "View trails" : "View winery";
+                        const viewLabel = isGuide
+                          ? tBookingsPage("cta.viewTrails")
+                          : tBookingsPage("cta.viewWinery");
                         const modifyHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}`;
                         const todayCopy = isGuide
-                          ? "Your guided hike is today — see details below."
-                          : "Your tasting is today — see winery details below.";
+                          ? tBookingsPage("today.guidedHike")
+                          : tBookingsPage("today.tasting");
                         return (
                           <li key={b.id}>
                             <div className={`${CARD.content} rounded-xl ${CARD.base} border-l-4 border-l-aegean/50 hover:shadow-md transition-shadow`}>
@@ -345,7 +376,11 @@ export default function BookingsPage() {
                                     <StatusBadge status={b.status} />
                                     {days >= 0 && days <= 7 && (
                                       <span className="text-xs font-medium text-aegean">
-                                        {days === 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`}
+                                        {days === 0
+                                          ? tBookingsPage("relative.today")
+                                          : days === 1
+                                            ? tBookingsPage("relative.tomorrow")
+                                            : tBookingsPage("relative.inDays", { count: days })}
                                       </span>
                                     )}
                                   </div>
@@ -357,7 +392,9 @@ export default function BookingsPage() {
                                   </p>
                                   {isTodayOrTomorrow && (
                                     <p className="text-xs text-olive/60 mt-2" role="status">
-                                      {days === 0 ? todayCopy : "Tomorrow — set a reminder if you like."}
+                                      {days === 0
+                                        ? todayCopy
+                                        : tBookingsPage("tomorrow.reminder")}
                                     </p>
                                   )}
                                 </div>
@@ -373,7 +410,7 @@ export default function BookingsPage() {
                                       href={modifyHref}
                                       className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
                                     >
-                                      Modify
+                                      {tBookingsPage("cta.modify")}
                                     </AppLink>
                                   </div>
                                 )}
@@ -391,7 +428,7 @@ export default function BookingsPage() {
             {past.length > 0 && (
               <section aria-labelledby="past-heading">
                 <h2 id="past-heading" className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>
-                  Past & cancelled
+                  {tBookingsPage("past.heading")}
                 </h2>
                 <ul className="space-y-4">
                   {past.map((b) => {
@@ -401,7 +438,9 @@ export default function BookingsPage() {
                     const providerValid = placeValid || guideValid;
                     const bookAgainHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}`;
                     const secondaryHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
-                    const secondaryLabel = isGuide ? "Browse trails" : "Visit winery page";
+                    const secondaryLabel = isGuide
+                      ? tBookingsPage("cta.browseTrails")
+                      : tBookingsPage("cta.visitWineryPage");
                     return (
                       <li key={b.id}>
                         <div className={`${CARD.content} rounded-xl bg-sand-100/60 border border-sand-200/80 opacity-90`}>
@@ -417,7 +456,7 @@ export default function BookingsPage() {
                           {providerValid && (
                             <div className="mt-3 flex flex-wrap gap-3">
                               <AppLink href={bookAgainHref} className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}>
-                                Book again
+                                {tBookingsPage("cta.bookAgain")}
                               </AppLink>
                               <AppLink href={secondaryHref} className={`${CTA.chipTertiary} px-4 py-2 rounded-lg`}>
                                 {secondaryLabel}
@@ -438,25 +477,27 @@ export default function BookingsPage() {
         {bookings.length > 0 && (
           <section className={`mt-12 rounded-xl ${CARD.base} ${CARD.content}`} aria-labelledby="book-more">
             <h2 id="book-more" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
-              {upcoming.length === 0 ? "Plan your next visit" : "Book more"}
+              {upcoming.length === 0
+                ? tBookingsPage("bookMore.titleNoUpcoming")
+                : tBookingsPage("bookMore.title")}
             </h2>
             <p className={`text-sm text-olive/70 ${SECTION.headingGap} break-words`}>
               {upcoming.length === 0
-                ? "All your tastings are in the past. Book another for your next trip."
-                : "Add another tasting to your winter trip."}
+                ? tBookingsPage("bookMore.bodyNoUpcoming")
+                : tBookingsPage("bookMore.body")}
             </p>
             <div className="flex flex-wrap gap-3">
               <AppLink
                 href="/discover?filter=winery"
                 className={`px-5 py-3 rounded-lg ${CTA.primaryCompact}`}
               >
-                Browse wineries
+                {tBookings("browseWineries")}
               </AppLink>
               <AppLink href="/book/guide" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
-                Book a guided hike
+                {tBookingsPage("empty.cta.bookGuidedHike")}
               </AppLink>
               <AppLink href="/discover" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
-                Discover all
+                {tBookingsPage("cta.discoverAll")}
               </AppLink>
             </div>
           </section>

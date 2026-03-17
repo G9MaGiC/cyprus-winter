@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { AIChatMessages } from "./AIChatMessages";
 import { AIChatInput } from "./AIChatInput";
 import { useAIChat } from "./hooks/useAIChat";
@@ -11,6 +12,7 @@ const OPEN_AI_EVENT = "open-ai-assistant";
 
 export function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
+  const tCommon = useTranslations("common");
   const {
     messages,
     input,
@@ -65,21 +67,21 @@ export function AIAssistant() {
         <div className="flex items-center justify-between px-4 py-3 border-b border-sand-200">
           <div>
             <h2 id="ai-chat-title" className="font-display text-lg font-semibold text-olive">
-              Cyprus Guide
+              {tCommon("ai.title")}
             </h2>
-            <p className="text-xs text-sage">Ask about trails, wineries, villages</p>
+            <p className="text-xs text-sage">{tCommon("ai.subtitle")}</p>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={clearChat}
               className="text-xs text-olive/70 hover:text-terracotta px-2 py-1"
             >
-              Clear
+              {tCommon("ai.clear")}
             </button>
             <button
               onClick={handleClose}
               className="p-2 text-olive hover:bg-sand-100 rounded-full transition-colors"
-              aria-label="Close chat"
+              aria-label={tCommon("ai.closeAria")}
             >
               <X size={20} />
             </button>

@@ -31,7 +31,7 @@ export default function SearchBar({
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   const results = useMemo(() =>
     query.length >= 2 ? search(query, 12) : [],
@@ -59,6 +59,9 @@ export default function SearchBar({
 
   const showDropdown = focused && results.length > 0;
   const hasResults = results.length > 0;
+  const activeId = showDropdown && activeIndex >= 0 && results[activeIndex]
+    ? `search-option-${activeIndex}`
+    : undefined;
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!showDropdown) return;
@@ -111,38 +114,39 @@ export default function SearchBar({
           aria-expanded={showDropdown}
           aria-controls="search-results"
           aria-autocomplete="list"
+          aria-activedescendant={activeId}
           id="search-input"
           className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
         />
       </div>
 
       {showDropdown && (
-        <div
+        <ul
           id="search-results"
           ref={listRef}
           aria-labelledby="search-input"
-          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-50"
+          role="listbox"
+          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-[45]"
         >
           {results.map((r, i) => (
-            <div
+            <li
               key={`${r.kind}-${r.item.id}`}
               data-index={i}
+              id={`search-option-${i}`}
+              role="option"
+              aria-selected={i === activeIndex}
               onClick={() => router.push(r.href)}
               className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
                 i === activeIndex ? "bg-terracotta/10" : ""
               }`}
             >
-              <AppLink
-                href={r.href}
-                className="flex-1 min-w-0"
-                tabIndex={-1}
-              >
+              <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-medium text-olive truncate">{r.item.name}</span>
                   <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
                 </div>
                 <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
-              </AppLink>
+              </div>
               <AppLink
                 href={`/plan?add=${encodeURIComponent(r.item.id)}`}
                 onClick={(e) => e.stopPropagation()}
@@ -150,18 +154,18 @@ export default function SearchBar({
               >
                 {tCommon("addToPlan")}
               </AppLink>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {focused && query.length > 0 && query.length < 2 && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-olive/60 text-sm" role="status">
+        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-[45] text-olive/60 text-sm" role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
       {query.length >= 2 && !hasResults && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-center text-olive/70 text-sm">
+        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-[45] text-center text-olive/70 text-sm">
           <p className="mb-4">{tSearch("noResults", { query })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">

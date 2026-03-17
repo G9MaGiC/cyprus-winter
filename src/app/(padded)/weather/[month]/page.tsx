@@ -6,7 +6,7 @@ import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 const MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
 type MonthSlug = (typeof MONTH_SLUGS)[number];
@@ -40,18 +40,21 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { month } = await params;
   const slug = month.toLowerCase() as MonthSlug;
+  const locale = await getLocale();
+  const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
+
   if (!MONTH_SLUGS.includes(slug))
     return {
-      title: "Weather not found | Cyprus Winter",
-      description: "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
+      title: tWeatherMonth("meta.notFoundTitle"),
+      description: tWeatherMonth("meta.notFoundDescription"),
     };
 
   const monthName = SLUG_TO_WEATHER[slug];
   const row = weatherByMonth.find((r) => r.month === monthName);
   if (!row)
     return {
-      title: "Weather not found | Cyprus Winter",
-      description: "Cyprus winter weather by month. Plan trails and wineries.",
+      title: tWeatherMonth("meta.notFoundTitle"),
+      description: tWeatherMonth("meta.notFoundDescription"),
     };
 
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
@@ -73,7 +76,11 @@ export default async function WeatherMonthPage({ params }: Props) {
   const slug = month.toLowerCase() as MonthSlug;
 
   if (!MONTH_SLUGS.includes(slug)) notFound();
-  const tNav = await getTranslations("nav");
+  const [tNav, tWeatherMonth, tCommon] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("weather.month"),
+    getTranslations("common"),
+  ]);
 
   const monthName = SLUG_TO_WEATHER[slug];
   const row = weatherByMonth.find((r) => r.month === monthName);
@@ -87,8 +94,14 @@ export default async function WeatherMonthPage({ params }: Props) {
       <PageHeader
         backHref="/weather"
         backLabel={tNav("weather")}
-        title={`Cyprus Winter Weather: ${monthName}`}
-        description={`Coast ${row.coastMinC}–${row.coastMaxC}°C, Troodos ${row.troodosMinC}–${row.troodosMaxC}°C. ${row.coastDesc}`}
+        title={tWeatherMonth("pageHeaderTitle", { month: monthName })}
+        description={tWeatherMonth("pageHeaderDescription", {
+          coastMin: row.coastMinC,
+          coastMax: row.coastMaxC,
+          troodosMin: row.troodosMinC,
+          troodosMax: row.troodosMaxC,
+          coastDesc: row.coastDesc,
+        })}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
           { label: tNav("weather"), href: "/weather" },
@@ -99,18 +112,22 @@ export default async function WeatherMonthPage({ params }: Props) {
       <div className={SECTION.blockGap}>
         <section aria-labelledby="conditions">
           <h2 id="conditions" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
-            What to expect
+            {tWeatherMonth("conditionsHeading")}
           </h2>
           <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50 space-y-4`}>
             <div>
-              <h3 className="font-medium text-olive mb-1">Coast (Larnaca, Limassol, Paphos)</h3>
+              <h3 className="font-medium text-olive mb-1">
+                {tWeatherMonth("conditionsCoastTitle")}
+              </h3>
               <p className="text-olive/80 text-sm">{row.coastDesc}</p>
               <p className="text-olive font-medium mt-1">
                 {row.coastMinC}–{row.coastMaxC}°C
               </p>
             </div>
             <div>
-              <h3 className="font-medium text-olive mb-1">Troodos (mountains, villages)</h3>
+              <h3 className="font-medium text-olive mb-1">
+                {tWeatherMonth("conditionsTroodosTitle")}
+              </h3>
               <p className="text-olive/80 text-sm">{row.troodosDesc}</p>
               <p className="text-olive font-medium mt-1">
                 {row.troodosMinC}–{row.troodosMaxC}°C
@@ -122,7 +139,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         {events.length > 0 && (
           <section aria-labelledby="events">
             <h2 id="events" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
-              Winter events in {monthName}
+              {tWeatherMonth("eventsHeading", { month: monthName })}
             </h2>
             <ul className="space-y-3">
               {events.map((e) => (
@@ -141,7 +158,7 @@ export default async function WeatherMonthPage({ params }: Props) {
                     href={`/plan?add=${encodeURIComponent(e.id)}`}
                     className="mt-2 inline-flex text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
                   >
-                    Add to plan
+                    {tCommon("addToPlan")}
                   </AppLink>
                 </li>
               ))}
@@ -151,28 +168,28 @@ export default async function WeatherMonthPage({ params }: Props) {
 
         <div className="flex flex-wrap gap-4">
           <AppLink href="/trails" className={`px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
-            Trail conditions
+            {tWeatherMonth("cta.trailConditions")}
           </AppLink>
           <AppLink href="/discover?filter=winery" className={`px-5 py-2.5 rounded-lg ${CTA.secondaryCompact}`}>
-            Winter wineries
+            {tWeatherMonth("cta.winterWineries")}
           </AppLink>
           <AppLink href="/plan" className={`px-5 py-2.5 rounded-lg ${CTA.chipTertiary}`}>
-            Plan your trip
+            {tCommon("planYourTrip")}
           </AppLink>
         </div>
       </div>
 
       <p className="mt-12 text-olive/70 text-sm">
         <AppLink href="/weather" className={SECTION.aegeanLink}>
-          All months
+          {tWeatherMonth("footer.allMonths")}
         </AppLink>
         {" · "}
         <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
-          Troodos winter
+          {tWeatherMonth("footer.troodosWinter")}
         </AppLink>
         {" · "}
         <AppLink href="/plan" className={SECTION.aegeanLink}>
-          Plan your trip
+          {tCommon("planYourTrip")}
         </AppLink>
       </p>
     </div>

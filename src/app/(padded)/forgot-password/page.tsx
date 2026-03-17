@@ -13,6 +13,7 @@ export default function ForgotPasswordPage() {
   const { resetPassword, isConfigured } = useAuth();
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tAuth = useTranslations("auth");
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -46,8 +47,15 @@ export default function ForgotPasswordPage() {
     setLoading(true);
     try {
       const { error: err } = await resetPassword(email.trim());
-      if (err) setError(err.includes("valid") ? "Please enter a valid email address." : err);
-      else setSent(true);
+      if (err) {
+        if (err.toLowerCase().includes("valid")) {
+          setError(tAuth("forgot.errorInvalidEmail"));
+        } else {
+          setError(tAuth("forgot.errorGeneric"));
+        }
+      } else {
+        setSent(true);
+      }
     } finally {
       setLoading(false);
     }
@@ -57,12 +65,13 @@ export default function ForgotPasswordPage() {
     return (
       <AuthLayout
         variant="success"
-        kicker="Check your email"
-        title="Reset link sent"
+        kicker={tAuth("forgot.successTitle")}
+        title={tAuth("forgot.successTitle")}
         subtitle={
-          <>
-            We sent a password reset link to <strong className="text-charcoal">{email}</strong>. Click it to set a new password.
-          </>
+          tAuth.rich("forgot.successSubtitle", {
+            email,
+            strong: (chunks) => <strong className="text-charcoal">{chunks}</strong>,
+          })
         }
         backHref="/login"
         backLabel={tCommon("backTo", { label: tNav("signIn") })}
@@ -77,9 +86,9 @@ export default function ForgotPasswordPage() {
   return (
     <AuthLayout
       variant="forgot"
-      kicker="Reset password"
-      title="Forgot your password?"
-      subtitle="Enter your email and we'll send you a link to set a new password."
+        kicker={tAuth("forgot.title")}
+        title={tAuth("forgot.title")}
+        subtitle={tAuth("forgot.subtitle")}
       backHref="/login"
       backLabel={tCommon("backTo", { label: tNav("signIn") })}
       footer={
@@ -113,7 +122,7 @@ export default function ForgotPasswordPage() {
           disabled={loading || !email.trim()}
           className={`${CTA.primaryCompact} w-full min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed`}
         >
-          {loading ? "Sending…" : "Send reset link"}
+          {loading ? tAuth("forgot.ctaSending") : tAuth("forgot.ctaSend")}
         </button>
       </form>
     </AuthLayout>

@@ -61,6 +61,7 @@ function DayAddSection({
   addToDay: (id: string) => void;
   onBrowseAll: () => void;
 }) {
+  const tPlanQuick = useTranslations("planQuick");
   return (
     <div
       id="plan-inline-add"
@@ -69,7 +70,7 @@ function DayAddSection({
       className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
     >
       <p className="text-sm font-medium text-olive/80 mb-4">
-        {activeItems.length > 0 ? "Add another stop to Day " + activeDay : "Add a stop to Day " + activeDay}
+        {tPlanQuick("quickAddLabel", { day: activeDay })}
       </p>
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
         {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
@@ -84,9 +85,14 @@ function DayAddSection({
               disabled={inDay}
               className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
               aria-pressed={inDay}
-              aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
+              aria-label={
+                inDay
+                  ? tPlanQuick("quickAddAriaAdded", { label })
+                  : tPlanQuick("quickAddAriaAdd", { label, day: activeDay })
+              }
             >
-              {inDay ? "Added " : ""}{label}
+              {inDay ? `${tPlanQuick("quickAddAriaAdded", { label })} ` : ""}
+              {label}
             </button>
           );
         })}
@@ -94,9 +100,9 @@ function DayAddSection({
           type="button"
           onClick={onBrowseAll}
           className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
-          aria-label="Browse places to add to your day"
+          aria-label={tPlanQuick("browsePlacesAria")}
         >
-          Browse places
+          {tPlanQuick("browsePlacesCta")}
         </button>
       </div>
       {activeItems.length > 0 && (

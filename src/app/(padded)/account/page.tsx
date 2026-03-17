@@ -12,6 +12,7 @@ export default function AccountPage() {
   const router = useRouter();
   const { user, isLoading, isConfigured, signOut, needsPasswordReset } = useAuth();
   const tNav = useTranslations("nav");
+  const tAccount = useTranslations("account");
 
   useEffect(() => {
     if (user && needsPasswordReset) router.replace("/reset-password");
@@ -23,8 +24,8 @@ export default function AccountPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <PageHeader
-          title="My account"
-          description="Loading…"
+          title={tAccount("title")}
+          description={tAccount("loading")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
         />
         <div className="mt-8 h-32 rounded-xl bg-sand-100/80 animate-pulse" aria-hidden />
@@ -38,8 +39,8 @@ export default function AccountPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <PageHeader
-          title="My account"
-          description="Your plan and bookings, synced across devices."
+          title={tAccount("title")}
+          description={tAccount("signedIn.description")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
         />
 
@@ -56,20 +57,20 @@ export default function AccountPage() {
               onClick={() => signOut()}
               className={`${CTA.chipTertiary} w-full sm:w-auto min-h-[44px] shrink-0`}
             >
-              Sign out
+              {tAccount("signedIn.signOut")}
             </button>
           </div>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <AppLink href="/plan" className={`${CTA.primaryCompact}`}>
-            My plan
+            {tAccount("signedIn.cta.plan")}
           </AppLink>
           <AppLink href="/bookings" className={`${CTA.secondaryCompact}`}>
-            View my bookings
+            {tAccount("signedIn.cta.bookings")}
           </AppLink>
           <AppLink href="/account/settings" className={`${CTA.chipTertiary}`}>
-            Settings
+            {tAccount("signedIn.cta.settings")}
           </AppLink>
         </div>
       </div>
@@ -80,25 +81,27 @@ export default function AccountPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <PageHeader
-          title="My account"
-          description="Sign in (coming soon) will sync your plan and bookings across devices."
+          title={tAccount("title")}
+          description={tAccount("notConfigured.description")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
         />
 
         <div className={`${EMPTY_STATE} mt-12`}>
-          <p className="text-olive font-semibold">Sign in coming soon</p>
+          <p className="text-olive font-semibold">
+            {tAccount("notConfigured.title")}
+          </p>
           <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
-            Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device.
+            {tAccount("notConfigured.body")}
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <AppLink href="/bookings" className={`px-6 py-3 ${CTA.primaryCompact}`}>
-              View my bookings
+              {tAccount("signedIn.cta.bookings")}
             </AppLink>
             <AppLink href="/plan" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
-              My plan
+              {tAccount("signedIn.cta.plan")}
             </AppLink>
             <AppLink href="/account/settings" className={`px-6 py-3 ${CTA.chipTertiary}`}>
-              Settings
+              {tAccount("signedIn.cta.settings")}
             </AppLink>
           </div>
         </div>
@@ -109,25 +112,27 @@ export default function AccountPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
-        title="My account"
-        description="Sign in to sync your plan and bookings across devices."
+        title={tAccount("title")}
+        description={tAccount("signedOut.description")}
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
       />
 
       <div className={`${EMPTY_STATE} mt-12`}>
-        <p className="text-olive font-semibold">Save your plan across devices</p>
+        <p className="text-olive font-semibold">
+          {tAccount("signedOut.title")}
+        </p>
         <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
-          Create a free account and your itinerary and bookings will follow you wherever you go.
+          {tAccount("signedOut.body")}
         </p>
         <div className="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
           <AppLink href="/register" className={`px-6 py-3 ${CTA.primaryCompact}`}>
-            Create account
+            {tAccount("signedOut.cta.create")}
           </AppLink>
           <AppLink href="/login" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
-            Sign in
+            {tAccount("signedOut.cta.signIn")}
           </AppLink>
           <AppLink href="/plan" className="inline-flex items-center min-h-[44px] px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
-            Skip — use my plan on this device
+            {tAccount("signedOut.cta.skip")}
           </AppLink>
         </div>
       </div>

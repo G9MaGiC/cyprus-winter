@@ -20,17 +20,6 @@ function isSafeInternalRedirect(path: string): boolean {
   return true;
 }
 
-function formatLoginError(raw: string): string {
-  const lower = raw.toLowerCase();
-  if (lower.includes("invalid") || lower.includes("credentials")) {
-    return "Email or password doesn't match. Try again or use magic link.";
-  }
-  if (lower.includes("email not confirmed") || lower.includes("confirm")) {
-    return "Please confirm your email first. Check your inbox for the activation link.";
-  }
-  return raw || "Something went wrong. Try again.";
-}
-
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -39,6 +28,7 @@ export default function LoginPage() {
   const { signIn, signInWithOtp, user, isLoading, isConfigured } = useAuth();
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tAuth = useTranslations("auth");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mode, setMode] = useState<"password" | "magic">("password");
@@ -60,8 +50,8 @@ export default function LoginPage() {
     return (
       <AuthLayout
         variant="login"
-        kicker="Sign in"
-        title="Sign in"
+        kicker={tAuth("login.ctaSignIn")}
+        title={tAuth("login.ctaSignIn")}
         subtitle="Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device."
         backHref="/account"
         backLabel={tCommon("backTo", { label: tNav("account") })}
@@ -80,11 +70,29 @@ export default function LoginPage() {
     try {
       if (mode === "magic") {
         const { error: err } = await signInWithOtp(email.trim());
-        if (err) setError(formatLoginError(err));
+        if (err) {
+          const lower = err.toLowerCase();
+          if (lower.includes("invalid") || lower.includes("credentials")) {
+            setError(tAuth("login.errorInvalidCredentials"));
+          } else if (lower.includes("email not confirmed") || lower.includes("confirm")) {
+            setError(tAuth("login.errorConfirmEmail"));
+          } else {
+            setError(tAuth("login.errorGeneric"));
+          }
+        }
         else setMagicSent(true);
       } else {
         const { error: err } = await signIn(email.trim(), password);
-        if (err) setError(formatLoginError(err));
+        if (err) {
+          const lower = err.toLowerCase();
+          if (lower.includes("invalid") || lower.includes("credentials")) {
+            setError(tAuth("login.errorInvalidCredentials"));
+          } else if (lower.includes("email not confirmed") || lower.includes("confirm")) {
+            setError(tAuth("login.errorConfirmEmail"));
+          } else {
+            setError(tAuth("login.errorGeneric"));
+          }
+        }
         else router.replace(redirect);
       }
     } finally {
@@ -96,12 +104,13 @@ export default function LoginPage() {
     return (
       <AuthLayout
         variant="success"
-        kicker="Check your email"
-        title="Link sent"
+        kicker={tAuth("login.magicSentTitle")}
+        title={tAuth("login.magicSentTitle")}
         subtitle={
-          <>
-            We sent a sign-in link to <strong className="text-charcoal">{email}</strong>. Click it to sign in.
-          </>
+          tAuth.rich("login.magicSentSubtitle", {
+            email,
+            strong: (chunks) => <strong className="text-charcoal">{chunks}</strong>,
+          })
         }
         backHref="/account"
         backLabel={tCommon("backTo", { label: tNav("account") })}
@@ -114,7 +123,7 @@ export default function LoginPage() {
           }}
           className={CTA.secondaryCompact}
         >
-          Use a different method
+          {tAuth("login.ctaUseDifferentMethod")}
         </button>
       </AuthLayout>
     );
@@ -123,9 +132,9 @@ export default function LoginPage() {
   return (
     <AuthLayout
       variant="login"
-      kicker="Sign in"
-      title="Welcome back"
-      subtitle="Your plan and bookings follow you. Trails, villages, wineries — all in one place."
+        kicker={tAuth("login.ctaSignIn")}
+        title={tAuth("login.title")}
+        subtitle={tAuth("login.subtitle")}
       backHref="/account"
       backLabel={tCommon("backTo", { label: tNav("account") })}
       footer={
@@ -135,7 +144,7 @@ export default function LoginPage() {
             href="/register"
             className="text-terracotta font-medium hover:text-terracotta-muted transition-colors"
           >
-            Create one
+            {tAuth("register.ctaCreate")}
           </Link>
         </>
       }
@@ -183,7 +192,11 @@ export default function LoginPage() {
             disabled={loading || isLoading || !email.trim()}
             className={`${CTA.primaryCompact} w-full min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed`}
           >
-            {loading ? "Signing in…" : mode === "password" ? "Sign in" : "Send magic link"}
+            {loading
+              ? "Signing in…"
+              : mode === "password"
+              ? tAuth("login.ctaSignIn")
+              : tAuth("login.ctaSendMagicLink")}
           </button>
           <button
             type="button"
@@ -193,7 +206,7 @@ export default function LoginPage() {
             }}
             className={`${CTA.chipTertiary} w-full min-h-[44px]`}
           >
-            {mode === "password" ? "Use magic link" : "Use password"}
+            {mode === "password" ? tAuth("login.ctaUseMagic") : tAuth("login.ctaUsePassword")}
           </button>
 
           <SocialLoginButtons redirectPath={redirect} intent="signin" />
