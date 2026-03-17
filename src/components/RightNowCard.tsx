@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD } from "@/lib/design-tokens";
 
@@ -31,7 +31,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
     <div
       className={`group overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive} flex flex-row sm:flex-col`}
     >
-      <Link
+      <AppLink
         href={item.href}
         className={`block ${CARD.link} flex-1 flex flex-row sm:flex-col min-w-0`}
         aria-label={`${item.name}, ${item.region}`}
@@ -63,7 +63,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             {item.tease}
           </p>
         </div>
-      </Link>
+      </AppLink>
       <div className="flex sm:block shrink-0 p-2 sm:p-3 sm:-mt-1 self-center sm:self-stretch">
         <AddToItineraryButton placeId={item.id} label="Add" />
       </div>

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { wineries } from "@/data/wineries";
 import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
+import { getTranslations } from "next-intl/server";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
@@ -43,28 +45,29 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WineriesPage() {
+export default async function WineriesPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(wineriesItemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(wineriesItemListSchema) }} />
       <PageHeader
         backHref="/discover"
-        backLabel="Discover"
+        backLabel={tNav("discover")}
         title="Cyprus Wineries in Winter"
         description="Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Discover", href: "/discover" },
-          { label: "Wineries", href: "/wineries", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tNav("discover"), href: "/discover" },
+          { label: tNav("wineries"), href: "/wineries", isCurrent: true },
         ]}
       >
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link href="/bookings" className={CTA.primaryCompact}>
+          <AppLink href="/bookings" className={CTA.primaryCompact}>
             Book a tasting
-          </Link>
-          <Link href="/plan" className={CTA.secondaryCompact} aria-label="Build a day or pick a template">
+          </AppLink>
+          <AppLink href="/plan" className={CTA.secondaryCompact} aria-label="Build a day or pick a template">
             Plan your trip
-          </Link>
+          </AppLink>
         </div>
       </PageHeader>
 
@@ -102,27 +105,27 @@ export default function WineriesPage() {
         <div className="space-y-4">
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
             Pair a winery visit with a trail or village.{" "}
-            <Link href="/plan" className={SECTION.aegeanLink}>
+            <AppLink href="/plan" className={SECTION.aegeanLink}>
               Build a day
-            </Link>
+            </AppLink>
           </p>
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
             Explore wine routes:{" "}
-        <Link href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
+        <AppLink href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
           Krasochoria
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/wine-routes/laona" className={SECTION.aegeanLink}>
+        <AppLink href="/wine-routes/laona" className={SECTION.aegeanLink}>
           Laona
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/wine-routes/akamas" className={SECTION.aegeanLink}>
+        <AppLink href="/wine-routes/akamas" className={SECTION.aegeanLink}>
           Akamas
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/wine-routes/commandaria" className={SECTION.aegeanLink}>
+        <AppLink href="/wine-routes/commandaria" className={SECTION.aegeanLink}>
           Commandaria
-        </Link>
+        </AppLink>
       </p>
         </div>
       </div>

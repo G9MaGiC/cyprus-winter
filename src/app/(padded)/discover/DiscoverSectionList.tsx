@@ -1,11 +1,12 @@
 "use client";
 
 import { forwardRef, useEffect, useState } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
+import { useTranslations } from "next-intl";
 
 type DiscoverSectionListProps = {
   sections: DiscoverSection[];
@@ -13,6 +14,7 @@ type DiscoverSectionListProps = {
 
 const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListProps>(
   function DiscoverSectionList({ sections }, ref) {
+    const tCommon = useTranslations("common");
     const [shouldAnimate, setShouldAnimate] = useState(true);
     useEffect(() => {
       const t = setTimeout(() => setShouldAnimate(false), 700);
@@ -45,24 +47,24 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                 aria-live="polite"
               >
                 <p className="text-olive/80 mb-4">
-                  No places here. Try another filter or ask the AI—it knows the island.
+                  {tCommon("discoverEmptyBody")}
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link
+                  <AppLink
                     href="/discover"
                     className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}
                   >
-                    All categories
-                  </Link>
+                    {tCommon("allCategories")}
+                  </AppLink>
                   <button
                     type="button"
                     onClick={() =>
                       window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
                     }
                     className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
-                    aria-label="Ask AI for recommendations"
+                    aria-label={tCommon("askAIRecommendationsAria")}
                   >
-                    Ask AI
+                    {tCommon("askAI")}
                   </button>
                 </div>
               </div>

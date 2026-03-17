@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
 import PageHeader from "@/components/PageHeader";
@@ -10,6 +10,7 @@ import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/booki
 
 import { formatDate, daysUntil, getUpcomingDateGroup } from "@/lib/format";
 import BookingsEmailLookup from "@/components/BookingsEmailLookup";
+import { useLocale, useTranslations } from "next-intl";
 
 function StatusBadge({ status }: { status: Booking["status"] }) {
   const style =
@@ -27,6 +28,9 @@ function StatusBadge({ status }: { status: Booking["status"] }) {
 }
 
 export default function BookingsPage() {
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
+  const locale = useLocale();
   const isMountedRef = useRef(true);
   const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -146,8 +150,8 @@ export default function BookingsPage() {
           title="My bookings"
           description="Your tastings and experiences. All in one place."
           backHref="/"
-          backLabel="Home"
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "My bookings", href: "/bookings", isCurrent: true }]}
+          backLabel={tNav("home")}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("bookings"), href: "/bookings", isCurrent: true }]}
         />
 
         {/* Stats bar */}
@@ -225,18 +229,18 @@ export default function BookingsPage() {
                 Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-                <Link
+                <AppLink
                   href="/discover?filter=winery"
                   className={`w-full sm:w-auto justify-center px-6 py-3 rounded-lg ${CTA.primaryCompact}`}
                 >
                   Browse wineries
-                </Link>
-                <Link
+                </AppLink>
+                <AppLink
                   href="/book/guide"
                   className={`w-full sm:w-auto justify-center px-6 py-3 rounded-lg ${CTA.chipTertiary}`}
                 >
                   Book a guided hike
-                </Link>
+                </AppLink>
                 {!showSync && (
                   <button
                     type="button"
@@ -285,12 +289,12 @@ export default function BookingsPage() {
                       Load by email
                     </button>
                   )}
-                  <Link
+                  <AppLink
                     href="/discover?filter=winery"
                     className={`px-4 py-2.5 rounded-lg ${CTA.primaryCompact}`}
                   >
                     Browse wineries
-                  </Link>
+                  </AppLink>
                 </div>
               </div>
             )}
@@ -349,7 +353,7 @@ export default function BookingsPage() {
                                     {b.providerName}
                                   </span>
                                   <p className="text-sm text-olive/70 mt-1 break-words">
-                                    {formatDate(b.date)} · {b.partySize} {b.partySize === 1 ? "person" : "people"}
+                                    {formatDate(b.date, locale)} · {tCommon("peopleCount", { count: b.partySize })}
                                   </p>
                                   {isTodayOrTomorrow && (
                                     <p className="text-xs text-olive/60 mt-2" role="status">
@@ -359,18 +363,18 @@ export default function BookingsPage() {
                                 </div>
                                 {providerValid && (
                                   <div className="flex flex-wrap gap-2 shrink-0">
-                                    <Link
+                                    <AppLink
                                       href={viewHref}
                                       className={`px-4 py-2 rounded-lg ${CTA.secondaryCompact}`}
                                     >
                                       {viewLabel}
-                                    </Link>
-                                    <Link
+                                    </AppLink>
+                                    <AppLink
                                       href={modifyHref}
                                       className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
                                     >
                                       Modify
-                                    </Link>
+                                    </AppLink>
                                   </div>
                                 )}
                               </div>
@@ -408,16 +412,16 @@ export default function BookingsPage() {
                             {b.providerName}
                           </span>
                           <p className="text-sm text-olive/60 mt-1 break-words">
-                            {formatDate(b.date)} · {b.partySize} {b.partySize === 1 ? "person" : "people"}
+                            {formatDate(b.date, locale)} · {tCommon("peopleCount", { count: b.partySize })}
                           </p>
                           {providerValid && (
                             <div className="mt-3 flex flex-wrap gap-3">
-                              <Link href={bookAgainHref} className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}>
+                              <AppLink href={bookAgainHref} className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}>
                                 Book again
-                              </Link>
-                              <Link href={secondaryHref} className={`${CTA.chipTertiary} px-4 py-2 rounded-lg`}>
+                              </AppLink>
+                              <AppLink href={secondaryHref} className={`${CTA.chipTertiary} px-4 py-2 rounded-lg`}>
                                 {secondaryLabel}
-                              </Link>
+                              </AppLink>
                             </div>
                           )}
                         </div>
@@ -442,18 +446,18 @@ export default function BookingsPage() {
                 : "Add another tasting to your winter trip."}
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link
+              <AppLink
                 href="/discover?filter=winery"
                 className={`px-5 py-3 rounded-lg ${CTA.primaryCompact}`}
               >
                 Browse wineries
-              </Link>
-              <Link href="/book/guide" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
+              </AppLink>
+              <AppLink href="/book/guide" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
                 Book a guided hike
-              </Link>
-              <Link href="/discover" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
+              </AppLink>
+              <AppLink href="/discover" className={`${CTA.chipTertiary} px-5 py-3 rounded-lg`}>
                 Discover all
-              </Link>
+              </AppLink>
             </div>
           </section>
         )}

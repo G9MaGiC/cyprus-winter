@@ -6,6 +6,7 @@ import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
 import { jsonError, rateLimitSuccessHeaders } from "@/lib/api-response";
+import { logger } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 
@@ -135,7 +136,7 @@ export async function GET(req: Request) {
       }
     );
   } catch (err) {
-    console.error("Right Now API error:", err);
+    logger.error("Right Now API error", err);
     return jsonError("SERVER_ERROR", "Could not load suggestions", 500);
   }
 }

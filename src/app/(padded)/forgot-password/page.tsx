@@ -1,15 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import AuthLayout from "@/components/auth/AuthLayout";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthErrorAlert from "@/components/auth/AuthErrorAlert";
 import { CTA } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 
 export default function ForgotPasswordPage() {
   const { resetPassword, isConfigured } = useAuth();
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -28,11 +31,11 @@ export default function ForgotPasswordPage() {
         title="Reset password"
         subtitle="Auth is being set up. Contact support if you need help."
         backHref="/login"
-        backLabel="Back to sign in"
+        backLabel={tCommon("backTo", { label: tNav("signIn") })}
       >
-        <Link href="/login" className={CTA.primaryCompact}>
-          Back to sign in
-        </Link>
+        <AppLink href="/login" className={CTA.primaryCompact}>
+          {tCommon("backTo", { label: tNav("signIn") })}
+        </AppLink>
       </AuthLayout>
     );
   }
@@ -62,11 +65,11 @@ export default function ForgotPasswordPage() {
           </>
         }
         backHref="/login"
-        backLabel="Back to sign in"
+        backLabel={tCommon("backTo", { label: tNav("signIn") })}
       >
-        <Link href="/login" className={CTA.primaryCompact}>
-          Back to sign in
-        </Link>
+        <AppLink href="/login" className={CTA.primaryCompact}>
+          {tCommon("backTo", { label: tNav("signIn") })}
+        </AppLink>
       </AuthLayout>
     );
   }
@@ -78,14 +81,14 @@ export default function ForgotPasswordPage() {
       title="Forgot your password?"
       subtitle="Enter your email and we'll send you a link to set a new password."
       backHref="/login"
-      backLabel="Back to sign in"
+      backLabel={tCommon("backTo", { label: tNav("signIn") })}
       footer={
-        <Link
+        <AppLink
           href="/login"
           className="text-terracotta font-medium hover:text-terracotta-muted transition-colors"
         >
-          Back to sign in
-        </Link>
+          {tCommon("backTo", { label: tNav("signIn") })}
+        </AppLink>
       }
     >
       <form onSubmit={handleSubmit} className="space-y-6" noValidate>

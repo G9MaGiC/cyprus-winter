@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
 
@@ -20,9 +20,9 @@ export default function DiscoverFooter({ onScrollToMap }: DiscoverFooterProps) {
         Add places to your plan—or ask the AI. It knows the island in winter.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Link href="/plan" className={CTA.primaryCompact}>
+        <AppLink href="/plan" className={CTA.primaryCompact}>
           Add places to your plan
-        </Link>
+        </AppLink>
         <button
           type="button"
           onClick={() =>

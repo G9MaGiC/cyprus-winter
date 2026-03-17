@@ -4,24 +4,11 @@
  * Non-essential: requires cookie consent (EU). Does not track until user accepts analytics.
  */
 import { hasAnalyticsConsent } from "@/lib/cookie-consent";
+import { PRODUCT_EVENTS, type ProductEventName, type TrackEventName } from "@/lib/track-events";
 
 const TRACK_ENDPOINT = "/api/track";
 
-export type EventName =
-  | "page_view"
-  | "discover_view"
-  | "winery_detail_view"
-  | "booking_start"
-  | "booking_complete"
-  | "shop_click"
-  | "plan_add"
-  | "onboarding_started"
-  | "onboarding_dismissed"
-  | "onboarding_intent_planning"
-  | "onboarding_intent_exploring"
-  | "onboarding_intent_browsing"
-  | "first_add_to_plan"
-  | "first_booking";
+export type EventName = TrackEventName;
 
 type EventProps = Record<string, string | number | boolean | undefined>;
 
@@ -35,11 +22,18 @@ function getSessionId(): string {
   return id;
 }
 
-export function track(event: EventName, properties?: EventProps): void {
+function getEventId(): string {
+  if (typeof window === "undefined") return "";
+  return typeof crypto !== "undefined" && "randomUUID" in crypto
+    ? crypto.randomUUID()
+    : `e_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+}
+
+function postTrack(event: string, properties?: EventProps): void {
   if (typeof window === "undefined") return;
-  if (!hasAnalyticsConsent()) return;
   const payload = {
     event,
+    eventId: getEventId(),
     properties: { ...properties, path: window.location.pathname },
     sessionId: getSessionId(),
   };
@@ -49,4 +43,20 @@ export function track(event: EventName, properties?: EventProps): void {
     body: JSON.stringify(payload),
     keepalive: true,
   }).catch(() => {});
+}
+
+export function track(event: EventName, properties?: EventProps): void {
+  if (typeof window === "undefined") return;
+  if (!hasAnalyticsConsent()) return;
+  postTrack(event, properties);
+}
+
+/**
+ * Product analytics (plan creation) – always on.
+ * Keep properties small and avoid PII.
+ */
+export function trackProduct(event: ProductEventName, properties?: EventProps): void {
+  // Keep “always-on” events constrained to the product events allowlist.
+  if (!(PRODUCT_EVENTS as readonly string[]).includes(event)) return;
+  postTrack(event, properties);
 }

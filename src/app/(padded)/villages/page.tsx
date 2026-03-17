@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { villages } from "@/data/attractions";
 import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
+import { getTranslations } from "next-intl/server";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
 
@@ -43,24 +45,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function VillagesPage() {
+export default async function VillagesPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(villagesItemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(villagesItemListSchema) }} />
       <PageHeader
         backHref="/discover"
-        backLabel="Discover"
+        backLabel={tNav("discover")}
         title="Cyprus Villages in Winter"
         description="Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Discover", href: "/discover" },
-          { label: "Villages", href: "/villages", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tNav("discover"), href: "/discover" },
+          { label: tNav("villages"), href: "/villages", isCurrent: true },
         ]}
       >
-        <Link href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+        <AppLink href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
           Plan your trip
-        </Link>
+        </AppLink>
       </PageHeader>
 
       <h2 id="villages-list" className="sr-only">
@@ -76,13 +79,13 @@ export default function VillagesPage() {
         <span id="villages-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
         <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
         Combine a village visit with a trail or winery.{" "}
-        <Link href="/discover" className={SECTION.aegeanLink}>
+        <AppLink href="/discover" className={SECTION.aegeanLink}>
           See all places
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/plan" className={SECTION.aegeanLink}>
+        <AppLink href="/plan" className={SECTION.aegeanLink}>
           Plan your day
-        </Link>
+        </AppLink>
       </p>
       </div>
       <StickyPlanBarBlock sentinelId="villages-plan-sentinel" />

@@ -6,6 +6,7 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import GuideBookingForm from "./GuideBookingForm";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ id: g.id }));
@@ -37,16 +38,18 @@ export default async function GuideBookPage({
   const { trail } = await searchParams;
   const guide = guides.find((g) => g.id === id);
   if (!guide) notFound();
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
-        <BackLink href="/book/guide" label="Back to guides" />
+        <BackLink href="/book/guide" label={tCommon("backTo", { label: tCommon("breadcrumbs.bookGuide") })} />
         <Breadcrumbs
           items={[
-            { label: "Home", href: "/" },
-            { label: "Trails", href: "/trails" },
-            { label: "Book a guide", href: "/book/guide" },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("trails"), href: "/trails" },
+            { label: tCommon("breadcrumbs.bookGuide"), href: "/book/guide" },
             { label: guide.name, href: `/book/guide/${id}`, isCurrent: true },
           ]}
           className="py-1 px-0 text-xs text-olive/60"

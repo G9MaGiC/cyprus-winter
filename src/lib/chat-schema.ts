@@ -9,6 +9,7 @@ export const chatRequestSchema = z.object({
   messages: z.array(messageSchema).min(1),
   context: z
     .object({
+      locale: z.enum(["en", "el", "de", "pl"]).optional(),
       path: z.string().max(256).optional(),
       lastPlace: z.string().max(256).optional(),
       itinerary: z

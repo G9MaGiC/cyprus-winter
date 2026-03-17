@@ -6,8 +6,9 @@
  * Otherwise shows generic back
  */
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useSearchParams, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface SmartBackLinkProps {
@@ -21,6 +22,8 @@ export default function SmartBackLink({
   fallbackLabel = "Back",
   className,
 }: SmartBackLinkProps) {
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const searchParams = useSearchParams();
   const pathname = usePathname();
   
@@ -29,27 +32,27 @@ export default function SmartBackLink({
   const query = searchParams.get("q");
   
   let href = fallbackHref;
-  let label = fallbackLabel;
+  let label = fallbackLabel === "Back" ? tCommon("back") : fallbackLabel;
   
   if (from === "search" && query) {
     href = `/search?q=${encodeURIComponent(query)}`;
-    label = `Back to "${query}"`;
+    label = tCommon("backTo", { label: `“${query}”` });
   } else if (from === "discover") {
     href = "/discover";
-    label = "Back to Discover";
+    label = tCommon("backTo", { label: tNav("discover") });
   } else if (from === "plan") {
     href = "/plan";
-    label = "Back to Plan";
+    label = tCommon("backTo", { label: tNav("plan") });
   } else if (from === "trails") {
     href = "/trails";
-    label = "Back to Trails";
+    label = tCommon("backTo", { label: tNav("trails") });
   }
   
   // Don't show if we're at the root
   if (pathname === "/") return null;
 
   return (
-    <Link
+    <AppLink
       href={href}
       className={cn(
         "inline-flex items-center gap-1 text-sm text-olive/70 hover:text-terracotta transition-colors",
@@ -61,7 +64,7 @@ export default function SmartBackLink({
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
       </svg>
       <span className="truncate max-w-[200px]">{label}</span>
-    </Link>
+    </AppLink>
   );
 }
 

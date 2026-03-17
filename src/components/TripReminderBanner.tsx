@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useTripDates } from "@/hooks/useTripDates";
 import { LAYOUT, SECTION, STRIP } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function TripReminderBanner() {
   const { hydrated, daysUntil, withinSevenDays } = useTripDates();
+  const tPlan = useTranslations("plan");
 
   if (!hydrated || !withinSevenDays || daysUntil === null) return null;
 
@@ -16,15 +18,11 @@ export default function TripReminderBanner() {
     >
       <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm font-medium text-olive">
-          {daysUntil === 0
-            ? "Your trip is today — your Day 1 plan is ready."
-            : daysUntil === 1
-              ? "Tomorrow you are here — your Day 1 plan is ready."
-              : `${daysUntil} days until you are here — your Day 1 plan is ready.`}
+          {tPlan("tripReminderBanner", { days: daysUntil })}
         </p>
-        <Link href="/plan" className={`text-sm ${SECTION.aegeanLink}`}>
-          Review plan
-        </Link>
+        <AppLink href="/plan" className={`text-sm ${SECTION.aegeanLink}`}>
+          {tPlan("reviewPlan")}
+        </AppLink>
       </div>
     </div>
   );

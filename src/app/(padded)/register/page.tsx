@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import AppLink from "@/components/AppLink";
+import { useRouter } from "@/i18n/navigation";
 import AuthLayout from "@/components/auth/AuthLayout";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthPasswordInput from "@/components/auth/AuthPasswordInput";
@@ -10,6 +10,7 @@ import AuthErrorAlert from "@/components/auth/AuthErrorAlert";
 import SocialLoginButtons from "@/components/auth/SocialLoginButtons";
 import { CTA, SECTION } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 
 function formatSignUpError(raw: string): { message: string; isAlreadyRegistered: boolean } {
   const lower = raw.toLowerCase();
@@ -28,6 +29,8 @@ function formatSignUpError(raw: string): { message: string; isAlreadyRegistered:
 export default function RegisterPage() {
   const router = useRouter();
   const { signUp, user, isLoading, isConfigured } = useAuth();
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -55,11 +58,11 @@ export default function RegisterPage() {
         title="Create account"
         subtitle="Auth is being set up. You can still use the app—your plan saves on this device. Check back soon."
         backHref="/account"
-        backLabel="Back to account"
+        backLabel={tCommon("backTo", { label: tNav("account") })}
       >
-        <Link href="/account" className={CTA.primaryCompact}>
-          Back to account
-        </Link>
+        <AppLink href="/account" className={CTA.primaryCompact}>
+          {tCommon("backTo", { label: tNav("account") })}
+        </AppLink>
       </AuthLayout>
     );
   }
@@ -103,11 +106,11 @@ export default function RegisterPage() {
           </>
         }
         backHref="/"
-        backLabel="Back to home"
+        backLabel={tCommon("backTo", { label: tNav("home") })}
       >
-        <Link href="/login" className={CTA.primaryCompact}>
+        <AppLink href="/login" className={CTA.primaryCompact}>
           Sign in
-        </Link>
+        </AppLink>
       </AuthLayout>
     );
   }
@@ -119,16 +122,16 @@ export default function RegisterPage() {
       title="Join Cyprus Winter"
       subtitle="Plan trails, wineries, villages. Sync your itinerary across devices."
       backHref="/account"
-      backLabel="Back to account"
+      backLabel={tCommon("backTo", { label: tNav("account") })}
       footer={
         <>
           Already have an account?{" "}
-          <Link
+          <AppLink
             href="/login"
             className="text-terracotta font-medium hover:text-terracotta-muted transition-colors"
           >
             Sign in
-          </Link>
+          </AppLink>
         </>
       }
     >
@@ -136,9 +139,9 @@ export default function RegisterPage() {
         {error && (
           <AuthErrorAlert message={error} variant={isAlreadyRegistered ? "aegean" : "terracotta"}>
             {isAlreadyRegistered && (
-              <Link href="/login" className={SECTION.aegeanLink}>
+              <AppLink href="/login" className={SECTION.aegeanLink}>
                 Sign in instead →
-              </Link>
+              </AppLink>
             )}
           </AuthErrorAlert>
         )}

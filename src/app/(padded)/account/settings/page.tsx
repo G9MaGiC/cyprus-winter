@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { LAYOUT, CTA, CARD, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
+import { Link } from "@/i18n/navigation";
 import {
   INTEREST_LABELS,
   TRAVELER_LABELS,
@@ -13,6 +13,7 @@ import {
 } from "@/lib/user-preferences";
 import { REGION_CONFIGS, getRegionShortLabel } from "@/data/regions";
 import { clearRecentlyViewed } from "@/lib/recently-viewed";
+import { useTranslations } from "next-intl";
 
 const chipBase =
   "inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -22,6 +23,8 @@ const chipActive = "bg-terracotta text-white border border-terracotta/30 shadow-
 export default function AccountSettingsPage() {
   const { prefs, update, toggleInterest, toggleFavoriteRegion, hydrated } = useUserPreferences();
   const [cleared, setCleared] = useState(false);
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
 
   const handleClearRecentlyViewed = () => {
     clearRecentlyViewed();
@@ -35,11 +38,11 @@ export default function AccountSettingsPage() {
           title="Settings"
           description="Loading…"
           backHref="/account"
-          backLabel="Account"
+          backLabel={tNav("account")}
           breadcrumbItems={[
-            { label: "Home", href: "/" },
-            { label: "Account", href: "/account" },
-            { label: "Settings", href: "/account/settings", isCurrent: true },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("account"), href: "/account" },
+            { label: tCommon("breadcrumbs.settings"), href: "/account/settings", isCurrent: true },
           ]}
         />
         <div className="mt-8 h-32 rounded-xl bg-sand-100/80 animate-pulse" aria-hidden />
@@ -53,11 +56,11 @@ export default function AccountSettingsPage() {
         title="Settings"
         description="Personalize your experience. We use these to surface places and trails that match your style."
         backHref="/account"
-        backLabel="Account"
+        backLabel={tNav("account")}
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Account", href: "/account" },
-          { label: "Settings", href: "/account/settings", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tNav("account"), href: "/account" },
+          { label: tCommon("breadcrumbs.settings"), href: "/account/settings", isCurrent: true },
         ]}
       />
 

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CTA, SECTION } from "@/lib/design-tokens";
 
 export default function PlanAddFailedAlert() {
@@ -10,12 +10,12 @@ export default function PlanAddFailedAlert() {
     >
       <p className={SECTION.titleGap}>That place is no longer in our list.</p>
       <div className="flex flex-wrap gap-3">
-        <Link href="/discover" className={CTA.secondaryCompact} aria-label="Browse Discover to find places">
+        <AppLink href="/discover" className={CTA.secondaryCompact} aria-label="Browse Discover to find places">
           Browse Discover
-        </Link>
-        <Link href="/trails" className={CTA.secondaryCompact} aria-label="View trails">
+        </AppLink>
+        <AppLink href="/trails" className={CTA.secondaryCompact} aria-label="View trails">
           View trails
-        </Link>
+        </AppLink>
       </div>
     </div>
   );

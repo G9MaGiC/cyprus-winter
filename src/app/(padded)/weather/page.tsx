@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
+import { getTranslations } from "next-intl/server";
 
 const MONTH_TO_SLUG: Record<string, string> = {
   November: "november",
@@ -31,15 +32,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WeatherPage() {
+export default async function WeatherPage() {
+  const tNav = await getTranslations("nav");
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
+        backLabel={tNav("home")}
         title="Cyprus Winter Weather by Month"
         description="Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries."
-        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Weather", href: "/weather", isCurrent: true }]}
+        breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("weather"), href: "/weather", isCurrent: true }]}
       />
 
       {/* Mobile: card layout avoids horizontal scroll */}
@@ -69,9 +71,9 @@ export default function WeatherPage() {
               </div>
           );
           return slug ? (
-            <Link key={row.month} href={`/weather/${slug}`} className="block">
+            <AppLink key={row.month} href={`/weather/${slug}`} className="block">
               {content}
-            </Link>
+            </AppLink>
           ) : (
             <div key={row.month}>{content}</div>
           );
@@ -97,12 +99,12 @@ export default function WeatherPage() {
               <tr key={row.month} className="border-b border-sand-100">
                 <td className="py-4 px-4">
                   {slug ? (
-                    <Link
+                    <AppLink
                       href={`/weather/${slug}`}
                       className="font-medium text-olive hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] inline-flex items-center"
                     >
                       {row.month}
-                    </Link>
+                    </AppLink>
                   ) : (
                     <span className="font-medium text-olive">{row.month}</span>
                   )}
@@ -133,19 +135,19 @@ export default function WeatherPage() {
           Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.
         </p>
         <p>
-          <Link
+          <AppLink
             href="/trails"
             className={SECTION.aegeanLink}
           >
             Check trail conditions
-          </Link>{" "}
+          </AppLink>{" "}
           before heading up.{" "}
-          <Link
+          <AppLink
             href="/discover?filter=winery"
             className={SECTION.aegeanLink}
           >
             Winter wineries
-          </Link>{" "}
+          </AppLink>{" "}
           — fireside tastings, book ahead.
         </p>
       </div>

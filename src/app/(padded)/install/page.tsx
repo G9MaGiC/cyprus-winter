@@ -1,8 +1,9 @@
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Install on SiteGround | Cyprus Winter",
@@ -51,13 +52,18 @@ RewriteRule . /index.html [L]`,
   },
 ];
 
-export default function InstallPage() {
+export default async function InstallPage() {
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <nav className="flex flex-col gap-1 mb-8" aria-label="Page navigation">
-        <BackLink href="/" label="Back to Cyprus Winter" />
+        <BackLink href="/" label={tCommon("backTo", { label: "Cyprus Winter" })} />
         <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Install", href: "/install", isCurrent: true }]}
+          items={[
+            { label: tNav("home"), href: "/" },
+            { label: "Install", href: "/install", isCurrent: true },
+          ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
       </nav>
@@ -138,9 +144,9 @@ export default function InstallPage() {
       </section>
 
       <div className="mt-16 sm:mt-20 flex flex-wrap gap-4">
-        <Link href="/" className={`px-8 py-3 rounded-xl ${CTA.primaryCompact}`}>
-          Back to app
-        </Link>
+        <AppLink href="/" className={`px-8 py-3 rounded-xl ${CTA.primaryCompact}`}>
+          {tCommon("backTo", { label: "app" })}
+        </AppLink>
       </div>
     </div>
   );

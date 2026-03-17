@@ -6,7 +6,7 @@
  */
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 
@@ -67,7 +67,7 @@ export function RecentlyViewedStrip() {
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none snap-x">
           {items.map((item) => (
-            <Link
+            <AppLink
               key={item.id}
               href={getItemPath(item)}
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
@@ -77,7 +77,7 @@ export function RecentlyViewedStrip() {
                 {item.name}
               </p>
               <p className="text-xs text-sage mt-0.5 truncate">{item.region}</p>
-            </Link>
+            </AppLink>
           ))}
         </div>
       </div>

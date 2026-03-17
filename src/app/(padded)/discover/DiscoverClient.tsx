@@ -15,6 +15,7 @@ import type { DiscoverSection } from "@/lib/discover-sections";
 import DiscoverFilterBar from "./DiscoverFilterBar";
 import DiscoverSectionList from "./DiscoverSectionList";
 import DiscoverFooter from "./DiscoverFooter";
+import { SRStatus } from "@/components/SRStatus";
 
 type DiscoverClientProps = {
   sections: DiscoverSection[];
@@ -89,14 +90,7 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
       aria-label="Discover places in Cyprus"
       className="-mt-4 sm:-mt-6"
     >
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only"
-        role="status"
-      >
-        {filterAnnouncement}
-      </div>
+      <SRStatus message={filterAnnouncement} />
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
 
       <DiscoverFilterBar

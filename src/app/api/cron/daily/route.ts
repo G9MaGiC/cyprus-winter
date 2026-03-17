@@ -18,15 +18,12 @@ function getCountdownCopy(daysUntil: number): { title: string; body: string } {
       body: "Tomorrow you're here. Your Day 1 plan is ready.",
     };
   }
-  if (daysUntil === 2) {
-    return {
-      title: "Cyprus Winter",
-      body: "Two days until you're here. Your Day 1 plan is ready.",
-    };
-  }
+
+  const plural = new Intl.PluralRules("en").select(daysUntil);
+  const unit = plural === "one" ? "day" : "days";
   return {
     title: "Cyprus Winter",
-    body: "Three days until you're here. Your Day 1 plan is ready.",
+    body: `${daysUntil} ${unit} until you're here. Your Day 1 plan is ready.`,
   };
 }
 

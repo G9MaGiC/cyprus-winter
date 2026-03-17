@@ -6,6 +6,7 @@ import SuggestedForDay from "@/components/SuggestedForDay";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
+import { useTranslations } from "next-intl";
 
 function EmptyDayState({
   activeDay,
@@ -16,13 +17,14 @@ function EmptyDayState({
   onBrowseAll: () => void;
   onScrollToQuickStart: () => void;
 }) {
+  const tPlan = useTranslations("plan");
   return (
       <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-5 sm:px-6 bg-sand-100/30 hover:border-terracotta/20 transition-colors`}>
       <p className="font-display text-xl sm:text-2xl font-semibold text-olive mb-2 tracking-tight">
-        Day {activeDay} is empty
+        {tPlan("dayEmptyTitle", { day: activeDay })}
       </p>
       <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
-        Add your first place below, or pick a template further down to fill the day in one go.
+        {tPlan("dayEmptyBody")}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
         <button
@@ -31,7 +33,7 @@ function EmptyDayState({
           className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 hover:border-terracotta/20`}
           aria-label="Browse places to add to your day"
         >
-          Browse places
+          {tPlan("browsePlaces")}
         </button>
         <button
           type="button"
@@ -39,7 +41,7 @@ function EmptyDayState({
           className={`${CTA.secondaryCompact} hover:border-terracotta/20`}
           aria-label="Scroll to templates section"
         >
-          See templates
+          {tPlan("seeTemplates")}
         </button>
       </div>
     </div>
@@ -131,14 +133,25 @@ export default function DayContentPanel({
   onBrowseAll,
   onScrollToQuickStart,
 }: DayContentPanelProps) {
+  const tPlan = useTranslations("plan");
   const useBlocks = activeItems.length >= 3;
   const mid = Math.ceil(activeItems.length / 2);
   const morningIds = useBlocks ? activeItems.slice(0, mid) : activeItems;
   const afternoonIds = useBlocks ? activeItems.slice(mid) : [];
+  const lastAddedPlace = lastAddedId ? getPlace(lastAddedId) : undefined;
 
   return (
     <section aria-label="Your itinerary" className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
+        {lastAddedPlace && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="rounded-2xl border border-aegean/20 bg-aegean/10 px-4 py-3 text-sm text-aegean font-medium"
+          >
+            {tPlan("addedToDayBanner", { name: lastAddedPlace.name, day: activeDay })}
+          </div>
+        )}
         <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} shadow-[0_2px_12px_rgba(37,39,48,0.05)]`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/40`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -162,7 +175,7 @@ export default function DayContentPanel({
                   className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label={`Clear all places from Day ${activeDay}`}
                 >
-                  Clear day
+                  {tPlan("clearDay")}
                 </button>
               )}
             </div>

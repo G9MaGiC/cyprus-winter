@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useItinerary } from "@/hooks/useItinerary";
+import { CTA, SECTION } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 type AddToItineraryButtonProps = {
   placeId: string;
@@ -15,21 +17,23 @@ type AddToItineraryButtonProps = {
  */
 export default function AddToItineraryButton({
   placeId,
-  label = "Add to plan",
+  label,
   className = "",
 }: AddToItineraryButtonProps) {
+  const tCommon = useTranslations("common");
   const { days, hydrated } = useItinerary();
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(placeId);
+  const resolvedLabel = label ?? tCommon("addToPlan");
 
   if (!hydrated) {
     return (
-      <Link
+      <AppLink
         href={`/plan?add=${placeId}`}
-        className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
+        className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
       >
-        {label} →
-      </Link>
+        {resolvedLabel} →
+      </AppLink>
     );
   }
 
@@ -39,24 +43,24 @@ export default function AddToItineraryButton({
         className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
         aria-label={`${placeId} is in your itinerary`}
       >
-        <span aria-hidden>✓</span> In your plan
-        <Link
+        <span aria-hidden>✓</span> {tCommon("inYourPlan")}
+        <AppLink
           href="/plan"
-          className="inline-flex items-center min-h-[44px] min-w-[44px] py-3 px-3 -my-3 -mx-1 text-aegean/90 hover:text-aegean underline text-sm font-medium rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
+          className={`${SECTION.aegeanLink} min-w-[44px] px-3 -my-3 -mx-1 text-sm font-medium touch-manipulation`}
           aria-label="View your plan"
         >
-          View plan →
-        </Link>
+          {tCommon("viewPlan")} →
+        </AppLink>
       </span>
     );
   }
 
   return (
-    <Link
+    <AppLink
       href={`/plan?add=${placeId}`}
-      className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
+      className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
     >
-      {label} →
-    </Link>
+      {resolvedLabel} →
+    </AppLink>
   );
 }

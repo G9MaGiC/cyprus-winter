@@ -5,9 +5,11 @@
  * Shows path from home to current page
  */
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { getPathWithoutLocale } from "@/lib/nav";
 
 type BreadcrumbItem = {
   label: string;
@@ -23,29 +25,29 @@ interface BreadcrumbsProps {
 // Auto-generate breadcrumbs based on pathname
 function useBreadcrumbs(): BreadcrumbItem[] {
   const pathname = usePathname();
+  const tNav = useTranslations("nav");
   
-  const segments = pathname.split("/").filter(Boolean);
+  const normalized = getPathWithoutLocale(pathname);
+  const segments = normalized.split("/").filter(Boolean);
   
   // Map of path segments to readable labels
   const labelMap: Record<string, string> = {
-    discover: "Discover",
-    trails: "Trails",
-    plan: "Plan",
-    bookings: "Bookings",
-    weather: "Weather",
-    events: "Events",
-    airport: "Airport",
-    wineries: "Wineries",
-    villages: "Villages",
-    beaches: "Beaches",
-    team: "Team",
-    account: "Account",
-    login: "Sign in",
+    discover: tNav("discover"),
+    trails: tNav("trails"),
+    plan: tNav("plan"),
+    bookings: tNav("bookings"),
+    weather: tNav("weather"),
+    events: tNav("events"),
+    airport: tNav("airport"),
+    team: tNav("team"),
+    account: tNav("account"),
+    login: tNav("signIn"),
+    search: tNav("search"),
+    secrets: tNav("secrets"),
+    // Non-nav segments (keep English for now unless we add message keys)
     register: "Create account",
     "forgot-password": "Reset password",
     "reset-password": "Set new password",
-    search: "Search",
-    secrets: "Local Secrets",
     book: "Book",
     guide: "Guided hike",
     "wine-routes": "Wine Routes",
@@ -54,7 +56,7 @@ function useBreadcrumbs(): BreadcrumbItem[] {
     install: "Install App",
   };
   
-  const items: BreadcrumbItem[] = [{ label: "Home", href: "/" }];
+  const items: BreadcrumbItem[] = [{ label: tNav("home"), href: "/" }];
   
   let currentPath = "";
   segments.forEach((segment, index) => {
@@ -103,12 +105,12 @@ export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
                   {item.label}
                 </span>
               ) : (
-                <Link
+                <AppLink
                   href={item.href}
                   className="min-h-[44px] py-2 inline-flex items-center hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded px-1 -mx-1"
                 >
                   {item.label}
-                </Link>
+                </AppLink>
               )}
             </li>
           );

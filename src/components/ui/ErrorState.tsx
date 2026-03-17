@@ -5,7 +5,7 @@
  * Includes retry functionality and helpful messaging
  */
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useState, useEffect, useSyncExternalStore } from "react";
 import { CARD, CTA, SECTION } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";
@@ -64,12 +64,12 @@ export function ErrorState({
           </button>
         )}
         {showHomeLink && (
-          <Link
+          <AppLink
             href="/"
             className={`${CTA.secondaryCompact} min-h-[44px]`}
           >
             Go home
-          </Link>
+          </AppLink>
         )}
       </div>
     </div>

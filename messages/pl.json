@@ -26,6 +26,8 @@
     "trails": "Szlaki",
     "events": "Wydarzenia",
     "airport": "Lotnisko",
+    "arriving": "Przylot",
+    "signIn": "Zaloguj się",
     "home": "Start",
     "weather": "Pogoda",
     "bookings": "Rezerwacje",
@@ -59,6 +61,62 @@
     "winery": "Winnica",
     "event": "Wydarzenie",
     "eat": "Jedzenie"
+    ,
+    "back": "Wróć",
+    "backTo": "Wróć do {label}"
+    ,
+    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}"
+    ,
+    "breadcrumbs": {
+      "privacy": "Prywatność",
+      "terms": "Regulamin",
+      "settings": "Ustawienia",
+      "reportConditions": "Zgłoś warunki",
+      "bookGuide": "Zarezerwuj przewodnika",
+      "bookTasting": "Zarezerwuj degustację",
+      "troodosDecember": "Troodos — grudzień"
+    },
+    "inYourPlan": "W Twoim planie",
+    "viewPlan": "Zobacz plan",
+    "local": "Lokalne",
+    "verifiedPartner": "Zweryfikowany partner",
+    "verifiedPartnerTitle": "Zweryfikowany partner: otrzymuje prośby o rezerwację bezpośrednio",
+    "wineTasting": "Degustacja wina",
+    "guidedHike": "Wędrówka z przewodnikiem",
+    "bookHike": "Zarezerwuj wędrówkę",
+    "reportConditions": "Zgłoś warunki",
+    "reportAnotherTrail": "Zgłoś kolejny szlak",
+    "thanksForReporting": "Dzięki za zgłoszenie."
+    ,
+    "remove": "Usuń",
+    "bookTastings": "Zarezerwuj degustacje",
+    "exploreWineries": "Przeglądaj winnice",
+    "allCategories": "Wszystkie kategorie",
+    "filterPlaces": "Filtruj miejsca",
+    "clearFilter": "Wyczyść filtr",
+    "viewOnMap": "Zobacz na mapie",
+    "scrollToMap": "Przewiń do mapy",
+    "askAI": "Zapytaj AI",
+    "askAITrailsAria": "Zapytaj AI o propozycje szlaków",
+    "askAIRecommendationsAria": "Zapytaj AI o rekomendacje",
+    "planYourTrip": "Zaplanuj wycieczkę",
+    "winterHikingGuide": "Przewodnik po zimowych wędrówkach",
+    "seeMap": "Zobacz mapę",
+    "emergency112": "Nagły wypadek 112",
+    "trailsFooterDisclaimer": "Warunki są zgłaszane przez użytkowników. Kieruj się rozsądkiem i stosuj do lokalnych zaleceń.",
+    "discoverEmptyTitle": "Brak miejsc tutaj.",
+    "discoverEmptyBody": "Spróbuj innego filtra albo zapytaj AI—zna wyspę."
+    ,
+    "skipTo": {
+      "editorsPicks": "Przejdź do polecanych przez redakcję",
+      "plan": "Przejdź do Planu"
+    }
+    ,
+    "cancel": "Anuluj",
+    "clearDay": "Wyczyść dzień",
+    "clearDayTitle": "Wyczyścić Dzień {day}?"
+    ,
+    "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -129,7 +187,20 @@
     "curatedCombos": "Kuratowane zestawienia",
     "curatedCombosDesc": "Rano w jednym miejscu, popołudnie w drugim. Łączą się naturalnie.",
     "morning": "Rano",
-    "afternoon": "Popołudnie"
+    "afternoon": "Popołudnie",
+    "pageTitle": "Zaplanuj zimę na Cyprze",
+    "pageDescHasContent": "Twój plan. Dodaj więcej, udostępnij lub popraw poniżej.",
+    "pageDescEmpty": "Zbuduj zimowy plan podróży. Wybierz szablon lub dodawaj miejsca dzień po dniu.",
+    "pageDescSecondaryEmpty": "Zapisuje się automatycznie.",
+    "daysUntilBanner": "{days, plural, =0 {Już jesteś. Dzień 1 jest gotowy.} =1 {Jutro. Dzień 1 jest gotowy.} one {Za # dzień — sprawdź poniżej.} few {Za # dni — sprawdź poniżej.} many {Za # dni — sprawdź poniżej.} other {Za # dni — sprawdź poniżej.}}",
+    "tripReminderBanner": "{days, plural, =0 {Twoja podróż jest dziś — plan Dnia 1 jest gotowy.} =1 {Jutro jesteś na miejscu — plan Dnia 1 jest gotowy.} one {Za # dzień będziesz na miejscu — plan Dnia 1 jest gotowy.} few {Za # dni będziesz na miejscu — plan Dnia 1 jest gotowy.} many {Za # dni będziesz na miejscu — plan Dnia 1 jest gotowy.} other {Za # dni będziesz na miejscu — plan Dnia 1 jest gotowy.}}",
+    "reviewPlan": "Sprawdź plan",
+    "addingToPlan": "Dodawanie do planu…",
+    "addedToDayBanner": "Dodano {name} do Dnia {day}.",
+    "dayEmptyTitle": "Dzień {day} jest pusty",
+    "dayEmptyBody": "Dodaj pierwsze miejsce poniżej albo wybierz szablon dalej, aby wypełnić dzień jednym ruchem.",
+    "browsePlaces": "Przeglądaj miejsca",
+    "seeTemplates": "Zobacz szablony"
   },
   "bookings": {
     "title": "Moje rezerwacje",
@@ -141,11 +212,25 @@
     "bookMore": "Zarezerwuj degustację lub wycieczkę z przewodnikiem w Odkrywaj i Szlaki. Lub wczytaj rezerwacje z innego urządzenia."
   },
   "search": {
+    "title": "Znajdź miejsce lub szlak",
+    "intro": "Miejsca, które czujesz jako prawdziwe. Wioski, winnice, plaże, szlaki, wydarzenia.",
+    "resultsFor": "Wyniki dla „{query}”",
     "placeholder": "Znajdź miejsce lub szlak",
+    "typeAtLeastTwo": "Wpisz co najmniej 2 znaki",
     "noResults": "Nic dla \"{query}\". Spróbuj Troodos, Nissi, Omodos lub przeglądaj Odkrywaj.",
+    "noResultsHint": "Albo naciśnij Zapytaj AI, żeby coś znaleźć.",
     "browseDiscover": "Przeglądaj Odkrywaj",
     "viewTrails": "Wszystkie szlaki",
-    "planTrip": "Zaplanuj wycieczkę"
+    "planTrip": "Zaplanuj wycieczkę",
+    "browseByCategory": "Albo przeglądaj według kategorii",
+    "category": {
+      "trails": "Szlaki",
+      "discover": "Odkrywaj",
+      "wineries": "Winnice",
+      "events": "Wydarzenia",
+      "villages": "Wioski",
+      "beaches": "Plaże"
+    }
   },
   "events": {
     "clearFilters": "Wyczyść filtry",

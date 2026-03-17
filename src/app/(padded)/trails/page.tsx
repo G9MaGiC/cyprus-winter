@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import TrailsClient from "./TrailsClient";
 import { SITE_URL } from "@/lib/site-url";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 export const metadata: Metadata = {
   title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 export default function TrailsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getTrailsItemListSchema()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(getTrailsItemListSchema()) }} />
       <TrailsClient />
     </>
   );

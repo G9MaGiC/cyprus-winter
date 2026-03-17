@@ -21,7 +21,7 @@ function CardSkeleton() {
 function HeroSkeleton() {
   return (
     <section className={`relative -mx-4 sm:-mx-6 overflow-hidden ${SECTION.headingMarginLarge}`}>
-      <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[260px] sm:min-h-[200px] bg-sand-200/70 animate-pulse" />
+      <div className={`relative aspect-[3/1] sm:aspect-[16/9] min-h-[260px] sm:min-h-[200px] ${SKELETON.block}`} />
       <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pt-[calc(4.5rem+env(safe-area-inset-top,0px))]">
         <div className={`h-4 w-16 ${SKELETON.block} mb-2`} />
         <div className={`h-9 w-56 ${SKELETON.bar} mb-2`} />
@@ -37,7 +37,7 @@ function PlaceOfDaySkeleton() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`h-3 w-24 ${SKELETON.block} ${SECTION.headingGap}`} />
         <div className={`rounded-2xl overflow-hidden ${CARD.planCombo} flex flex-col sm:flex-row`}>
-          <div className="sm:w-2/5 shrink-0 aspect-[4/3] sm:aspect-square bg-sand-200/70 animate-pulse" />
+          <div className={`sm:w-2/5 shrink-0 aspect-[4/3] sm:aspect-square ${SKELETON.block}`} />
           <div className={`flex-1 ${CARD.content} flex flex-col justify-between gap-4`}>
             <div>
               <div className={`h-7 w-3/4 ${SKELETON.block}`} />
@@ -58,7 +58,7 @@ function PlaceOfDaySkeleton() {
 export default function DiscoverLoading() {
   return (
     <div
-      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
+      className={`min-h-screen bg-background ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
       aria-busy
       aria-live="polite"
       role="status"

@@ -26,6 +26,8 @@
     "trails": "Wanderwege",
     "events": "Veranstaltungen",
     "airport": "Flughafen",
+    "arriving": "Ankunft",
+    "signIn": "Anmelden",
     "home": "Start",
     "weather": "Wetter",
     "bookings": "Buchungen",
@@ -59,6 +61,62 @@
     "winery": "Weingut",
     "event": "Veranstaltung",
     "eat": "Essen"
+    ,
+    "back": "Zurück",
+    "backTo": "Zurück zu {label}"
+    ,
+    "peopleCount": "{count, plural, one {# Person} other {# Personen}}"
+    ,
+    "breadcrumbs": {
+      "privacy": "Datenschutz",
+      "terms": "AGB",
+      "settings": "Einstellungen",
+      "reportConditions": "Bedingungen melden",
+      "bookGuide": "Guide buchen",
+      "bookTasting": "Verkostung buchen",
+      "troodosDecember": "Troodos Dezember"
+    },
+    "inYourPlan": "In deinem Plan",
+    "viewPlan": "Plan ansehen",
+    "local": "Lokal",
+    "verifiedPartner": "Verifizierter Partner",
+    "verifiedPartnerTitle": "Verifizierter Partner: erhält Buchungsanfragen direkt",
+    "wineTasting": "Weinverkostung",
+    "guidedHike": "Geführte Wanderung",
+    "bookHike": "Wanderung buchen",
+    "reportConditions": "Bedingungen melden",
+    "reportAnotherTrail": "Einen weiteren Weg melden",
+    "thanksForReporting": "Danke fürs Melden."
+    ,
+    "remove": "Entfernen",
+    "bookTastings": "Verkostungen buchen",
+    "exploreWineries": "Weingüter entdecken",
+    "allCategories": "Alle Kategorien",
+    "filterPlaces": "Orte filtern",
+    "clearFilter": "Filter zurücksetzen",
+    "viewOnMap": "Auf der Karte ansehen",
+    "scrollToMap": "Zur Karte scrollen",
+    "askAI": "Ask AI",
+    "askAITrailsAria": "Ask AI nach Trail-Vorschlägen",
+    "askAIRecommendationsAria": "Ask AI nach Empfehlungen",
+    "planYourTrip": "Reise planen",
+    "winterHikingGuide": "Winter-Wanderführer",
+    "seeMap": "Karte ansehen",
+    "emergency112": "Notfall 112",
+    "trailsFooterDisclaimer": "Bedingungen sind crowd-sourced. Nutzen Sie Ihr Urteilsvermögen und folgen Sie lokalen Hinweisen.",
+    "discoverEmptyTitle": "Keine Orte hier.",
+    "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel."
+    ,
+    "skipTo": {
+      "editorsPicks": "Zu Redaktions-Tipps springen",
+      "plan": "Zum Plan springen"
+    }
+    ,
+    "cancel": "Abbrechen",
+    "clearDay": "Tag leeren",
+    "clearDayTitle": "Tag {day} leeren?"
+    ,
+    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -129,7 +187,20 @@
     "curatedCombos": "Kuratierte Kombinationen",
     "curatedCombosDesc": "Vormittags hier, nachmittags dort. Es ergibt sich.",
     "morning": "Vormittag",
-    "afternoon": "Nachmittag"
+    "afternoon": "Nachmittag",
+    "pageTitle": "Planen Sie Ihren Zypern-Winter",
+    "pageDescHasContent": "Ihr Reiseplan. Fügen Sie mehr hinzu, teilen Sie ihn oder passen Sie ihn unten an.",
+    "pageDescEmpty": "Erstellen Sie Ihren Winter-Reiseplan. Wählen Sie eine Vorlage oder fügen Sie Orte Tag für Tag hinzu.",
+    "pageDescSecondaryEmpty": "Wird automatisch gespeichert.",
+    "daysUntilBanner": "{days, plural, =0 {Du bist da. Tag 1 ist bereit.} =1 {Morgen. Tag 1 ist bereit.} other {Noch # Tage — unten prüfen.}}",
+    "tripReminderBanner": "{days, plural, =0 {Deine Reise ist heute — dein Tag-1-Plan ist bereit.} =1 {Morgen bist du da — dein Tag-1-Plan ist bereit.} other {Noch # Tage bis du da bist — dein Tag-1-Plan ist bereit.}}",
+    "reviewPlan": "Plan prüfen",
+    "addingToPlan": "Wird zum Plan hinzugefügt…",
+    "addedToDayBanner": "{name} zu Tag {day} hinzugefügt.",
+    "dayEmptyTitle": "Tag {day} ist leer",
+    "dayEmptyBody": "Fügen Sie unten Ihren ersten Ort hinzu oder wählen Sie weiter unten eine Vorlage, um den Tag auf einmal zu füllen.",
+    "browsePlaces": "Orte durchsuchen",
+    "seeTemplates": "Vorlagen ansehen"
   },
   "bookings": {
     "title": "Meine Buchungen",
@@ -141,11 +212,25 @@
     "bookMore": "Verkostung oder geführte Wanderung unter Entdecken und Wanderwege buchen. Oder Buchungen von anderem Gerät laden."
   },
   "search": {
+    "title": "Ort oder Wanderweg finden",
+    "intro": "Orte, die sich echt anfühlen. Dörfer, Weingüter, Strände, Wanderwege, Events.",
+    "resultsFor": "Ergebnisse für „{query}“",
     "placeholder": "Ort oder Wanderweg suchen",
+    "typeAtLeastTwo": "Mindestens 2 Zeichen eingeben",
     "noResults": "Nichts für \"{query}\". Troodos, Nissi oder Omodos versuchen bzw. Entdecken durchsuchen.",
     "browseDiscover": "Entdecken durchsuchen",
     "viewTrails": "Alle Wanderwege",
-    "planTrip": "Reise planen"
+    "planTrip": "Reise planen",
+    "noResultsHint": "Oder tippen Sie auf Ask AI, um etwas zu finden.",
+    "browseByCategory": "Oder nach Kategorie stöbern",
+    "category": {
+      "trails": "Wanderwege",
+      "discover": "Entdecken",
+      "wineries": "Weingüter",
+      "events": "Veranstaltungen",
+      "villages": "Dörfer",
+      "beaches": "Strände"
+    }
   },
   "events": {
     "clearFilters": "Filter zurücksetzen",

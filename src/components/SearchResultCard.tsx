@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import type { SearchResult } from "@/lib/search";
 import { CARD, TYPE } from "@/lib/design-tokens";
 
@@ -25,7 +25,7 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
 
   return (
     <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.content}`}>
-      <Link
+      <AppLink
         href={result.href}
         className="block"
         aria-label={`${name}, ${kindLabels[kind]} in ${region}`}
@@ -41,15 +41,15 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
             {kindLabels[kind]}
           </span>
         </div>
-      </Link>
+      </AppLink>
       <div className="mt-3 pt-3 border-t border-sand-200/60">
-        <Link
+        <AppLink
           href={`/plan?add=${encodeURIComponent(result.item.id)}`}
           className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
           aria-label={`Add ${name} to your plan`}
         >
           Add to plan
-        </Link>
+        </AppLink>
       </div>
     </div>
   );

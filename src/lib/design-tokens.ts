@@ -236,9 +236,9 @@ export const CALLOUT = {
 
 /** Skeleton loading — pulse + palette. Compose with h-* w-* for dimensions. */
 export const SKELETON = {
-  bar: "animate-pulse rounded bg-olive/20",
-  block: "animate-pulse rounded-lg bg-sand-200/70",
-  media: "aspect-[4/3] bg-sand-200/70 animate-pulse",
+  bar: "animate-pulse rounded bg-olive/30",
+  block: "animate-pulse rounded-lg bg-sand-300/60",
+  media: "aspect-[4/3] bg-sand-300/60 animate-pulse",
   card: "rounded-xl bg-white/90 border border-sand-200/80",
 } as const;
 

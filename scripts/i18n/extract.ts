@@ -180,23 +180,47 @@ async function extractData(out: Record<string, string>): Promise<void> {
 }
 
 async function extractLib(out: Record<string, string>): Promise<void> {
-  const { navPrimaryLinks, navMoreLinks, bottomPrimaryLinks, mobileMenuGroups } = await import(
+  const { navPrimaryLinks, navMoreLinks, bottomPrimaryLinks } = await import(
     importPath(path.join(SRC, "lib/nav-links.ts"))
   );
-  const { BEST_FOR_OPTIONS } = await import(importPath(path.join(SRC, "lib/best-for.ts")));
-  const { JOURNEY_CONFIG } = await import(importPath(path.join(SRC, "lib/discovery-journeys.ts")));
+  let BEST_FOR_OPTIONS: { slug: string; label: string }[] = [];
+  try {
+    const mod = await import(importPath(path.join(SRC, "lib/best-for.ts")));
+    BEST_FOR_OPTIONS = mod.BEST_FOR_OPTIONS ?? [];
+  } catch {
+    /* best-for.ts optional */
+  }
+  let JOURNEY_CONFIG: Record<string, { label?: string; sub?: string }> = {};
+  try {
+    const mod = await import(importPath(path.join(SRC, "lib/discovery-journeys.ts")));
+    JOURNEY_CONFIG = mod.JOURNEY_CONFIG ?? {};
+  } catch {
+    /* discovery-journeys.ts optional */
+  }
 
-  const addNav = (link: { href: string; label: string }) => {
+  const labelKeyToLabel: Record<string, string> = {
+    home: "Home",
+    discover: "Discover",
+    trails: "Trails",
+    plan: "Plan",
+    weather: "Weather",
+    events: "Events",
+    bookings: "Bookings",
+    arriving: "Arriving",
+    airport: "Airport",
+    secrets: "Local secrets",
+    account: "Account",
+    team: "Team",
+    search: "Search",
+  };
+  const addNav = (link: { href: string; labelKey: string }) => {
     const k = link.href === "/" ? "home" : link.href.replace(/\//g, "_").replace(/^_/, "");
-    add(out, `common.nav.${k}`, link.label);
+    const label = labelKeyToLabel[link.labelKey] ?? link.labelKey;
+    add(out, `common.nav.${k}`, label);
   };
   navPrimaryLinks.forEach(addNav);
   navMoreLinks.forEach(addNav);
   bottomPrimaryLinks.forEach(addNav);
-  for (const g of mobileMenuGroups) {
-    add(out, `common.nav.group.${g.title.toLowerCase().replace(/\s+/g, "_")}`, g.title);
-    g.links.forEach(addNav);
-  }
 
   for (const opt of BEST_FOR_OPTIONS) {
     add(out, `common.bestFor.${opt.slug}`, opt.label);

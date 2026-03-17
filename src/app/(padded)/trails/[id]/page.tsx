@@ -6,7 +6,7 @@ import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -19,6 +19,9 @@ import { formatReportedAgo } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { guides } from "@/data/guides";
 import SectionCard from "@/components/SectionCard";
+import { getLocalizedName } from "@/lib/localize";
+import { getTranslations } from "next-intl/server";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 export async function generateMetadata({
   params,
@@ -46,9 +49,10 @@ export async function generateMetadata({
 export default async function TrailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale?: string }>;
 }) {
-  const { id } = await params;
+  const { id, locale = "en" } = await params;
+  const tNav = await getTranslations({ locale, namespace: "nav" });
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) notFound();
 
@@ -80,22 +84,22 @@ export default async function TrailPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Trails", item: `${SITE_URL}/trails` },
-      { "@type": "ListItem", position: 3, name: trail.name, item: canonicalUrl },
+      { "@type": "ListItem", position: 3, name: getLocalizedName(trail, locale), item: canonicalUrl },
     ],
   };
 
   return (
     <div className="min-h-screen bg-sand pb-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trailSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(trailSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}>
         <nav className={`sticky ${LAYOUT.stickyTop} z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`} aria-label="Page navigation">
-          <BackLink href="/trails" label="Back to Trails" />
+          <BackLink href="/trails" label={tNav("trails")} />
           <Breadcrumbs
             items={[
-              { label: "Home", href: "/" },
-              { label: "Trails", href: "/trails" },
-              { label: trail.name, href: canonicalUrl, isCurrent: true },
+              { label: tNav("home"), href: "/" },
+              { label: tNav("trails"), href: "/trails" },
+              { label: getLocalizedName(trail, locale), href: canonicalUrl, isCurrent: true },
             ]}
             className="py-1 px-0 text-xs text-olive/60"
           />
@@ -118,8 +122,7 @@ export default async function TrailPage({
                 )}
               </div>
             }
-            title={trail.name}
-            titleEl={trail.nameEl}
+            title={getLocalizedName(trail, locale)}
             subtitle={trail.locationText ?? trail.region}
             rounded
           >
@@ -205,7 +208,7 @@ export default async function TrailPage({
                         <span>{latestReport.windKmh} km/h wind</span>
                       )}
                       <span className="capitalize">Surface: {latestReport.surface}</span>
-                      <span className="text-olive/60">{formatReportedAgo(latestReport.reportedAt)}</span>
+                      <span className="text-olive/60">{formatReportedAgo(latestReport.reportedAt, locale)}</span>
                     </div>
                     {latestReport.note && (
                       <p className="mt-3 text-sm text-olive/90 italic break-words">
@@ -233,9 +236,9 @@ export default async function TrailPage({
                   </>
                 ) : null}
                 <div className="flex flex-wrap gap-3 mt-4">
-                  <Link href={`/trails/${trail.id}/report`} className={`gap-2 ${CTA.secondaryCompact}`}>
+                  <AppLink href={`/trails/${trail.id}/report`} className={`gap-2 ${CTA.secondaryCompact}`}>
                     Share what you saw
-                  </Link>
+                  </AppLink>
                   {(() => {
                     const status = (latestReport?.status ?? conditions?.status) ?? "open";
                     if (status === "caution" || status === "closed") {
@@ -246,12 +249,12 @@ export default async function TrailPage({
                         "inline-flex items-center min-h-[44px] gap-2 px-4 py-3 rounded-lg text-sm font-medium border-2 border-aegean/60 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
                       if (guideForTrail) {
                         return (
-                          <Link
+                          <AppLink
                             href={`/book/guide/${guideForTrail.id}?trail=${trail.id}`}
                             className={linkClass}
                           >
                             Book a guide
-                          </Link>
+                          </AppLink>
                         );
                       }
                       return (
@@ -274,9 +277,9 @@ export default async function TrailPage({
             {!latestReport && !conditions && (
               <SectionCard id="trail-conditions" title="Trail conditions" borderAccent="aegean">
                 <p className="text-sm text-olive/70 mb-4">No recent conditions for this trail. Just back? Share what you saw—it takes a minute.</p>
-                <Link href={`/trails/${trail.id}/report`} className={`gap-2 ${CTA.primaryCompact}`}>
+                <AppLink href={`/trails/${trail.id}/report`} className={`gap-2 ${CTA.primaryCompact}`}>
                   Be the first to report
-                </Link>
+                </AppLink>
               </SectionCard>
             )}
 
@@ -388,12 +391,12 @@ export default async function TrailPage({
                     </div>
                   ))}
                 </div>
-                <Link
+                <AppLink
                   href="/secrets"
                   className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
                   See all local secrets →
-                </Link>
+                </AppLink>
               </SectionCard>
             )}
 
@@ -421,12 +424,12 @@ export default async function TrailPage({
                 <TrackOnClick event="plan_add" properties={{ placeId: trail.id, placeType: "trail" }}>
                   <AddToItineraryButton placeId={trail.id} />
                 </TrackOnClick>
-                <Link
+                <AppLink
                   href="/trails"
                   className="inline-flex items-center justify-center min-h-[44px] min-w-[120px] gap-2 px-5 py-3 rounded-lg border-2 border-aegean/60 text-aegean font-medium hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   View all trails
-                </Link>
+                </AppLink>
               </div>
             </footer>
           </div>

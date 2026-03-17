@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 
@@ -63,21 +63,21 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
           <Marker key={p.id} position={[p.lat, p.lng]} icon={placeIcon}>
             <Popup>
               <div className="min-w-[200px]">
-                <Link
+                <AppLink
                   href={p.href}
                   className="font-semibold text-charcoal hover:text-terracotta block mb-1"
                 >
                   {p.name}
-                </Link>
+                </AppLink>
                 <p className="text-xs text-olive/70 mb-3">{p.region}</p>
                 <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
                   <AddToItineraryButton placeId={p.id} label="Add to plan" className="text-sm min-h-[40px] px-4 py-2" />
-                  <Link
+                  <AppLink
                     href={p.href}
                     className="text-sm font-medium text-terracotta hover:underline"
                   >
                     View →
-                  </Link>
+                  </AppLink>
                 </div>
               </div>
             </Popup>

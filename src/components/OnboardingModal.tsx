@@ -103,7 +103,7 @@ export default function OnboardingModal() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-[100] transition-all duration-300 ease-out ${
+      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] z-[100] transition-all duration-300 ease-out ${
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
       role="dialog"

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
 import { useItinerary } from "@/hooks/useItinerary";
 import { useTripDates } from "@/hooks/useTripDates";
@@ -59,12 +59,12 @@ export default function NextOnPlanBar() {
       className={`sticky ${LAYOUT.stickyTop} z-20 flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
     >
       <span className="text-xs font-medium text-white/80 shrink-0">Next up</span>
-      <Link
+      <AppLink
         href={href}
         className="flex-1 min-w-0 truncate font-semibold hover:underline text-sm"
       >
         {place.name}
-      </Link>
+      </AppLink>
       <NavigateButton place={place} label="Navigate" variant="light" className="shrink-0" />
     </div>
   );

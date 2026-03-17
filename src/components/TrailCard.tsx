@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CARD, TYPE, CALLOUT } from "@/lib/design-tokens";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { formatReportedAgo } from "@/lib/format";
 import type { Trail, TrailConditions } from "@/data/trails";
+import { useLocale } from "next-intl";
 
 type Props = {
   trail: Trail;
@@ -16,18 +17,19 @@ type Props = {
 };
 
 export default function TrailCard({ trail, conditions, featured }: Props) {
+  const locale = useLocale();
   const durationH = Math.round(trail.durationMin / 60);
   const teaser = trail.highlights?.[0] ?? trail.description;
 
   return (
     <div
-      className={`group rounded-xl overflow-hidden transition-all ${
+      className={`group rounded-xl overflow-hidden ${CARD.interactive} ${
         featured
           ? `${CARD.base} ${CARD.featured} ${CARD.hover} border-sage/20`
           : `${CARD.base} ${CARD.hover}`
       }`}
     >
-      <Link
+      <AppLink
         href={`/trails/${trail.id}`}
         className={`block ${CARD.link}`}
         aria-label={`${trail.name}, ${trail.lengthKm} km ${trail.difficulty} trail in ${trail.region}`}
@@ -83,7 +85,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
             {conditions?.lastReportedAt && (
               <>
                 <span aria-hidden>·</span>
-                <span>{formatReportedAgo(conditions.lastReportedAt)}</span>
+                <span>{formatReportedAgo(conditions.lastReportedAt, locale)}</span>
               </>
             )}
           </div>
@@ -93,7 +95,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
             </p>
           )}
         </div>
-      </Link>
+      </AppLink>
       <div className={CARD.footer}>
         <AddToItineraryButton placeId={trail.id} label="Add to plan" className="text-sm" />
       </div>

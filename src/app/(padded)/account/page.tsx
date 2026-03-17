@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import AppLink from "@/components/AppLink";
+import { useRouter } from "@/i18n/navigation";
 import { LAYOUT, CTA, CARD, EMPTY_STATE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 
 export default function AccountPage() {
   const router = useRouter();
   const { user, isLoading, isConfigured, signOut, needsPasswordReset } = useAuth();
+  const tNav = useTranslations("nav");
 
   useEffect(() => {
     if (user && needsPasswordReset) router.replace("/reset-password");
@@ -20,7 +22,11 @@ export default function AccountPage() {
   if (isLoading) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <PageHeader title="My account" description="Loading…" breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]} />
+        <PageHeader
+          title="My account"
+          description="Loading…"
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
+        />
         <div className="mt-8 h-32 rounded-xl bg-sand-100/80 animate-pulse" aria-hidden />
       </div>
     );
@@ -34,7 +40,7 @@ export default function AccountPage() {
         <PageHeader
           title="My account"
           description="Your plan and bookings, synced across devices."
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
         />
 
         <div className={`${CARD.base} ${CARD.content} mt-8`}>
@@ -56,15 +62,15 @@ export default function AccountPage() {
         </div>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/plan" className={`${CTA.primaryCompact}`}>
+          <AppLink href="/plan" className={`${CTA.primaryCompact}`}>
             My plan
-          </Link>
-          <Link href="/bookings" className={`${CTA.secondaryCompact}`}>
+          </AppLink>
+          <AppLink href="/bookings" className={`${CTA.secondaryCompact}`}>
             View my bookings
-          </Link>
-          <Link href="/account/settings" className={`${CTA.chipTertiary}`}>
+          </AppLink>
+          <AppLink href="/account/settings" className={`${CTA.chipTertiary}`}>
             Settings
-          </Link>
+          </AppLink>
         </div>
       </div>
     );
@@ -76,7 +82,7 @@ export default function AccountPage() {
         <PageHeader
           title="My account"
           description="Sign in (coming soon) will sync your plan and bookings across devices."
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
         />
 
         <div className={`${EMPTY_STATE} mt-12`}>
@@ -85,15 +91,15 @@ export default function AccountPage() {
             Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/bookings" className={`px-6 py-3 ${CTA.primaryCompact}`}>
+            <AppLink href="/bookings" className={`px-6 py-3 ${CTA.primaryCompact}`}>
               View my bookings
-            </Link>
-            <Link href="/plan" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
+            </AppLink>
+            <AppLink href="/plan" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
               My plan
-            </Link>
-            <Link href="/account/settings" className={`px-6 py-3 ${CTA.chipTertiary}`}>
+            </AppLink>
+            <AppLink href="/account/settings" className={`px-6 py-3 ${CTA.chipTertiary}`}>
               Settings
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>
@@ -105,7 +111,7 @@ export default function AccountPage() {
       <PageHeader
         title="My account"
         description="Sign in to sync your plan and bookings across devices."
-        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Account", href: "/account", isCurrent: true }]}
+        breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
       />
 
       <div className={`${EMPTY_STATE} mt-12`}>
@@ -114,15 +120,15 @@ export default function AccountPage() {
           Create a free account and your itinerary and bookings will follow you wherever you go.
         </p>
         <div className="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
-          <Link href="/register" className={`px-6 py-3 ${CTA.primaryCompact}`}>
+          <AppLink href="/register" className={`px-6 py-3 ${CTA.primaryCompact}`}>
             Create account
-          </Link>
-          <Link href="/login" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
+          </AppLink>
+          <AppLink href="/login" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
             Sign in
-          </Link>
-          <Link href="/plan" className="inline-flex items-center min-h-[44px] px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
+          </AppLink>
+          <AppLink href="/plan" className="inline-flex items-center min-h-[44px] px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
             Skip — use my plan on this device
-          </Link>
+          </AppLink>
         </div>
       </div>
     </div>

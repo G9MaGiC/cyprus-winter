@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useParams, notFound } from "next/navigation";
 import { trails } from "@/data/trails";
 import { LAYOUT, CTA } from "@/lib/design-tokens";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
 
 const STATUS_OPTIONS = [
   { value: "open", label: "Open", desc: "Good to go" },
@@ -22,6 +23,8 @@ const SURFACE_OPTIONS = [
 ] as const;
 
 export default function TrailReportClient() {
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const params = useParams();
   const id = params?.id as string;
   const trail = typeof id === "string" ? trails.find((t) => t.id === id || t.slug === id) : undefined;
@@ -107,31 +110,31 @@ export default function TrailReportClient() {
         >
           <p className="text-lg font-semibold text-olive flex items-center justify-center gap-2">
             <span className="w-8 h-8 rounded-full bg-terracotta/20 text-terracotta flex items-center justify-center text-sm" aria-hidden>✓</span>
-            Thanks for reporting.
+            {tCommon("thanksForReporting")}
           </p>
           <p className="text-sm text-olive/70 mt-2">Hikers heading to {trail.region} will use this. Every report counts.</p>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
-            <Link
+            <AppLink
               ref={successLinkRef}
               href={`/trails/${trail.id}`}
               className={`min-w-[140px] justify-center ${CTA.primaryCompact}`}
               title={`Back to ${trail.name}`}
             >
               Back to {trail.name}
-            </Link>
-            <Link
+            </AppLink>
+            <AppLink
               href={`/plan?add=${trail.id}`}
               className={`min-w-[140px] justify-center ${CTA.secondaryCompact}`}
               title={`Add ${trail.name} to your plan`}
             >
               Add {trail.name} to your plan
-            </Link>
-            <Link
+            </AppLink>
+            <AppLink
               href="/trails"
               className={`min-w-[140px] justify-center ${CTA.chipTertiary}`}
             >
-              Report another trail
-            </Link>
+              {tCommon("reportAnotherTrail")}
+            </AppLink>
           </div>
         </div>
       </div>
@@ -144,16 +147,16 @@ export default function TrailReportClient() {
         <BackLink href={`/trails/${trail.id}`} label={`Back to ${trail.name}`} />
         <Breadcrumbs
           items={[
-            { label: "Home", href: "/" },
-            { label: "Trails", href: "/trails" },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("trails"), href: "/trails" },
             { label: trail.name, href: `/trails/${trail.id}` },
-            { label: "Report conditions", href: `/trails/${trail.id}/report`, isCurrent: true },
+            { label: tCommon("breadcrumbs.reportConditions"), href: `/trails/${trail.id}/report`, isCurrent: true },
           ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
       </nav>
       <h1 className="font-display text-2xl font-bold text-olive mt-4">
-        Report conditions
+        {tCommon("reportConditions")}
       </h1>
       <p className="text-olive/70 text-sm mt-1" id="report-context">
         Reporting: <strong className="text-olive/90">{trail.name}</strong>. Help others by sharing what you saw. Quick and anonymous if you prefer.

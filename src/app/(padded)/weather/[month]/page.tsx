@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
+import { getTranslations } from "next-intl/server";
 
 const MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
 type MonthSlug = (typeof MONTH_SLUGS)[number];
@@ -72,6 +73,7 @@ export default async function WeatherMonthPage({ params }: Props) {
   const slug = month.toLowerCase() as MonthSlug;
 
   if (!MONTH_SLUGS.includes(slug)) notFound();
+  const tNav = await getTranslations("nav");
 
   const monthName = SLUG_TO_WEATHER[slug];
   const row = weatherByMonth.find((r) => r.month === monthName);
@@ -84,12 +86,12 @@ export default async function WeatherMonthPage({ params }: Props) {
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/weather"
-        backLabel="Weather"
+        backLabel={tNav("weather")}
         title={`Cyprus Winter Weather: ${monthName}`}
         description={`Coast ${row.coastMinC}–${row.coastMaxC}°C, Troodos ${row.troodosMinC}–${row.troodosMaxC}°C. ${row.coastDesc}`}
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Weather", href: "/weather" },
+          { label: tNav("home"), href: "/" },
+          { label: tNav("weather"), href: "/weather" },
           { label: monthName, href: `/weather/${slug}`, isCurrent: true },
         ]}
       />
@@ -125,7 +127,7 @@ export default async function WeatherMonthPage({ params }: Props) {
             <ul className="space-y-3">
               {events.map((e) => (
                 <li key={e.id} className={`${CARD.base} ${CARD.content}`}>
-                  <Link
+                  <AppLink
                     href={`/events#${e.id}`}
                     className="block group"
                   >
@@ -134,13 +136,13 @@ export default async function WeatherMonthPage({ params }: Props) {
                     {e.dates && (
                       <p className="text-xs text-olive/70 mt-2">{e.dates}</p>
                     )}
-                  </Link>
-                  <Link
+                  </AppLink>
+                  <AppLink
                     href={`/plan?add=${encodeURIComponent(e.id)}`}
                     className="mt-2 inline-flex text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
                   >
                     Add to plan
-                  </Link>
+                  </AppLink>
                 </li>
               ))}
             </ul>
@@ -148,30 +150,30 @@ export default async function WeatherMonthPage({ params }: Props) {
         )}
 
         <div className="flex flex-wrap gap-4">
-          <Link href="/trails" className={`px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+          <AppLink href="/trails" className={`px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
             Trail conditions
-          </Link>
-          <Link href="/discover?filter=winery" className={`px-5 py-2.5 rounded-lg ${CTA.secondaryCompact}`}>
+          </AppLink>
+          <AppLink href="/discover?filter=winery" className={`px-5 py-2.5 rounded-lg ${CTA.secondaryCompact}`}>
             Winter wineries
-          </Link>
-          <Link href="/plan" className={`px-5 py-2.5 rounded-lg ${CTA.chipTertiary}`}>
+          </AppLink>
+          <AppLink href="/plan" className={`px-5 py-2.5 rounded-lg ${CTA.chipTertiary}`}>
             Plan your trip
-          </Link>
+          </AppLink>
         </div>
       </div>
 
       <p className="mt-12 text-olive/70 text-sm">
-        <Link href="/weather" className={SECTION.aegeanLink}>
+        <AppLink href="/weather" className={SECTION.aegeanLink}>
           All months
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/regions/troodos" className={SECTION.aegeanLink}>
+        <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
           Troodos winter
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/plan" className={SECTION.aegeanLink}>
+        <AppLink href="/plan" className={SECTION.aegeanLink}>
           Plan your trip
-        </Link>
+        </AppLink>
       </p>
     </div>
   );

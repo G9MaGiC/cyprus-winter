@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import AuthLayout from "@/components/auth/AuthLayout";
 import AuthInput from "@/components/auth/AuthInput";
 import AuthPasswordInput from "@/components/auth/AuthPasswordInput";
@@ -10,6 +10,15 @@ import AuthErrorAlert from "@/components/auth/AuthErrorAlert";
 import SocialLoginButtons from "@/components/auth/SocialLoginButtons";
 import { CTA } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
+
+function isSafeInternalRedirect(path: string): boolean {
+  if (!path.startsWith("/")) return false;
+  if (path.startsWith("//")) return false;
+  if (path.includes("\\")) return false;
+  if (path.length > 2048) return false;
+  return true;
+}
 
 function formatLoginError(raw: string): string {
   const lower = raw.toLowerCase();
@@ -25,8 +34,11 @@ function formatLoginError(raw: string): string {
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") ?? "/account";
+  const rawRedirect = searchParams.get("redirect") ?? "/account";
+  const redirect = isSafeInternalRedirect(rawRedirect) ? rawRedirect : "/account";
   const { signIn, signInWithOtp, user, isLoading, isConfigured } = useAuth();
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mode, setMode] = useState<"password" | "magic">("password");
@@ -52,10 +64,10 @@ export default function LoginPage() {
         title="Sign in"
         subtitle="Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device."
         backHref="/account"
-        backLabel="Back to account"
+        backLabel={tCommon("backTo", { label: tNav("account") })}
       >
         <Link href="/account" className={`${CTA.primaryCompact} inline-block`}>
-          Back to account
+          {tCommon("backTo", { label: tNav("account") })}
         </Link>
       </AuthLayout>
     );
@@ -92,7 +104,7 @@ export default function LoginPage() {
           </>
         }
         backHref="/account"
-        backLabel="Back to account"
+        backLabel={tCommon("backTo", { label: tNav("account") })}
       >
         <button
           type="button"
@@ -115,7 +127,7 @@ export default function LoginPage() {
       title="Welcome back"
       subtitle="Your plan and bookings follow you. Trails, villages, wineries — all in one place."
       backHref="/account"
-      backLabel="Back to account"
+      backLabel={tCommon("backTo", { label: tNav("account") })}
       footer={
         <>
           No account?{" "}

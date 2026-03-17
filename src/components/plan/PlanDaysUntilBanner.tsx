@@ -1,14 +1,14 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 type PlanDaysUntilBannerProps = {
   daysUntil: number;
 };
 
 export default function PlanDaysUntilBanner({ daysUntil }: PlanDaysUntilBannerProps) {
-  const message =
-    daysUntil === 0
-      ? "You're here. Day 1 is ready."
-      : daysUntil === 1
-        ? "Tomorrow. Day 1 is ready."
-        : `${daysUntil} days to go — review below.`;
+  const tPlan = useTranslations("plan");
+  const message = tPlan("daysUntilBanner", { days: daysUntil });
 
   return (
     <div

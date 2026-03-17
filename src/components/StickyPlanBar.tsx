@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useEffect, useState } from "react";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
@@ -69,16 +69,16 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
 
   return (
     <div
-      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomClearance} z-30 flex items-center justify-center pt-4 ${LAYOUT.safeAreaX} pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
+      className={`fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] z-30 flex items-center justify-center pt-4 ${LAYOUT.safeAreaX} pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
       aria-label="Plan your trip"
     >
-      <Link
+      <AppLink
         href="/plan"
         className={`${CTA.primary} max-w-md`}
       >
         Plan your trip
-      </Link>
+      </AppLink>
     </div>
   );
 }

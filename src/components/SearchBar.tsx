@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import AppLink from "@/components/AppLink";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { search, type SearchResult } from "@/lib/search";
+import { useTranslations } from "next-intl";
 
 type SearchBarProps = {
   placeholder?: string;
@@ -15,7 +16,7 @@ type SearchBarProps = {
 };
 
 export default function SearchBar({
-  placeholder = "Find a place or trail",
+  placeholder,
   autoFocus = false,
   className = "",
   initialQuery = "",
@@ -23,7 +24,10 @@ export default function SearchBar({
 }: SearchBarProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [query, setQuery] = useState(initialQuery);
+  const tSearch = useTranslations("search");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+  const [query, setQuery] = useState(initialQuery ?? "");
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -43,7 +47,7 @@ export default function SearchBar({
   useEffect(() => {
     if (!syncUrl) return;
     const t = setTimeout(() => {
-      const q = query.trim();
+      const q = (query ?? "").trim();
       if (q.length >= 2) {
         router.replace(`/search?q=${encodeURIComponent(q)}`, { scroll: false });
       } else if (q.length === 0 && pathname?.startsWith("/search")) {
@@ -66,7 +70,7 @@ export default function SearchBar({
       setActiveIndex((i) => (i > 0 ? i - 1 : -1));
     } else if (e.key === "Enter" && activeIndex >= 0 && results[activeIndex]) {
       e.preventDefault();
-      window.location.href = results[activeIndex].href;
+      router.push(results[activeIndex].href);
     } else if (e.key === "Escape") {
       setFocused(false);
       setActiveIndex(-1);
@@ -77,12 +81,12 @@ export default function SearchBar({
   const typeLabel = (r: SearchResult) => {
     if (r.kind === "place") {
       const t = r.item.type;
-      if (t === "trail") return "Trail";
-      if (t === "winery") return "Winery";
-      return "Place";
+      if (t === "trail") return tCommon("trail");
+      if (t === "winery") return tCommon("winery");
+      return tCommon("place");
     }
-    if (r.kind === "trail") return "Trail";
-    return "Event";
+    if (r.kind === "trail") return tCommon("trail");
+    return tCommon("event");
   };
 
   return (
@@ -95,19 +99,18 @@ export default function SearchBar({
           ref={inputRef}
           type="search"
           value={query}
-          onChange={(e) => { setQuery(e.target.value); setActiveIndex(-1); }}
+          onChange={(e) => { setQuery(e.target.value ?? ""); setActiveIndex(-1); }}
           onFocus={() => setFocused(true)}
           onBlur={() => setTimeout(() => setFocused(false), 150)}
           onKeyDown={handleKeyDown}
           autoFocus={autoFocus}
           autoComplete="off"
-          placeholder={placeholder}
-          aria-label="Search places, trails, and events"
+          placeholder={placeholder ?? tSearch("placeholder")}
+          aria-label={tNav("searchAria")}
           role="combobox"
-          aria-autocomplete="list"
           aria-expanded={showDropdown}
           aria-controls="search-results"
-          aria-activedescendant={showDropdown && activeIndex >= 0 ? `search-option-${activeIndex}` : undefined}
+          aria-autocomplete="list"
           id="search-input"
           className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
         />
@@ -117,22 +120,19 @@ export default function SearchBar({
         <div
           id="search-results"
           ref={listRef}
-          role="listbox"
           aria-labelledby="search-input"
           className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-50"
         >
           {results.map((r, i) => (
             <div
               key={`${r.kind}-${r.item.id}`}
-              id={`search-option-${i}`}
-              role="option"
               data-index={i}
-              aria-selected={i === activeIndex}
+              onClick={() => router.push(r.href)}
               className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
                 i === activeIndex ? "bg-terracotta/10" : ""
               }`}
             >
-              <Link
+              <AppLink
                 href={r.href}
                 className="flex-1 min-w-0"
                 tabIndex={-1}
@@ -142,14 +142,14 @@ export default function SearchBar({
                   <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
                 </div>
                 <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
-              </Link>
-              <Link
+              </AppLink>
+              <AppLink
                 href={`/plan?add=${encodeURIComponent(r.item.id)}`}
                 onClick={(e) => e.stopPropagation()}
                 className="shrink-0 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-3 py-2"
               >
-                Add to plan
-              </Link>
+                {tCommon("addToPlan")}
+              </AppLink>
             </div>
           ))}
         </div>
@@ -157,32 +157,32 @@ export default function SearchBar({
 
       {focused && query.length > 0 && query.length < 2 && (
         <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-olive/60 text-sm" role="status">
-          Type at least 2 characters
+          {tSearch("typeAtLeastTwo")}
         </div>
       )}
       {query.length >= 2 && !hasResults && (
         <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-center text-olive/70 text-sm">
-          <p className="mb-4">Nothing for &ldquo;{query}&rdquo;. Try Troodos, Nissi, Omodos, or browse Discover.</p>
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">Or explore</p>
+          <p className="mb-4">{tSearch("noResults", { query })}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <Link
+            <AppLink
               href="/discover"
               className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              Browse Discover
-            </Link>
-            <Link
+              {tSearch("browseDiscover")}
+            </AppLink>
+            <AppLink
               href="/trails"
               className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              View all trails
-            </Link>
-            <Link
+              {tSearch("viewTrails")}
+            </AppLink>
+            <AppLink
               href="/plan"
               className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              Plan your trip
-            </Link>
+              {tSearch("planTrip")}
+            </AppLink>
           </div>
         </div>
       )}

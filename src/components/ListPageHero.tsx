@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import Image from "next/image";
 import { CARD, HERO, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -33,12 +33,12 @@ export default function ListPageHero({
   const textMb = hasWidgetStrip ? "mb-6 sm:mb-8" : SECTION.headingMarginLarge;
   const navBlock = (
     <>
-      <Link
+      <AppLink
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-white/90 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded w-fit"
       >
         ← {backLabel}
-      </Link>
+      </AppLink>
       {breadcrumbItems && breadcrumbItems.length > 1 && (
         <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/70" />
       )}
@@ -46,12 +46,12 @@ export default function ListPageHero({
   );
   const navBlockLight = (
     <>
-      <Link
+      <AppLink
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
       >
         ← {backLabel}
-      </Link>
+      </AppLink>
       {breadcrumbItems && breadcrumbItems.length > 1 && (
         <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-olive/60" />
       )}

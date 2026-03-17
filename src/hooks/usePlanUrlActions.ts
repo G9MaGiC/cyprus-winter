@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
 import type { PlanItem } from "@/data";
 import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
 import { parseAddParam } from "@/lib/plan-url-params";
+import { trackProduct } from "@/lib/analytics";
 
 type UsePlanUrlActionsParams = {
   hydrated: boolean;
   hasContent: boolean;
   getPlace: (id: string) => PlanItem | undefined;
-  addToDay: (id: string) => void;
+  addToDayIfMissing: (id: string) => void;
   applyTemplate: (key: TemplateKey) => void;
 };
 
@@ -28,11 +31,12 @@ export function usePlanUrlActions({
   hydrated,
   hasContent,
   getPlace,
-  addToDay,
+  addToDayIfMissing,
   applyTemplate,
 }: UsePlanUrlActionsParams) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const locale = useLocale();
   const processedAddRef = useRef<string | null>(null);
   const processedTemplateRef = useRef<string | null>(null);
 
@@ -60,8 +64,14 @@ export function usePlanUrlActions({
     }
     const uniqueIds = [...new Set(places.map((p) => p.id))];
     for (const id of uniqueIds) {
-      addToDay(id);
+      addToDayIfMissing(id);
     }
+    trackProduct("plan_add", {
+      source: "url_add",
+      locale,
+      count: uniqueIds.length,
+      item_id: uniqueIds.length === 1 ? uniqueIds[0] : undefined,
+    });
     router.replace("/plan", { scroll: false });
-  }, [hydrated, searchParams, addToDay, getPlace, router]);
+  }, [hydrated, searchParams, addToDayIfMissing, getPlace, router, locale]);
 }

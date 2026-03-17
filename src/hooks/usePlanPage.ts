@@ -22,7 +22,7 @@ export function usePlanPage() {
     setActiveDay,
     hydrated,
     copied,
-    addToDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -46,7 +46,7 @@ export function usePlanPage() {
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDay, applyTemplate });
+  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDayIfMissing, applyTemplate });
 
   const scrollBehavior = useCallback(
     () =>
@@ -98,26 +98,26 @@ export function usePlanPage() {
   const handleComboClick = useCallback(
     (ids: string[], label: string) => {
       if (!hasContent) {
-        for (const id of ids) addToDay(id);
+        for (const id of ids) addToDayIfMissing(id);
         return;
       }
       setComboChoice({ label, ids });
     },
-    [hasContent, addToDay]
+    [hasContent, addToDayIfMissing]
   );
 
   const handleAddCombo = useCallback(() => {
     if (!comboChoice) return;
-    for (const id of comboChoice.ids) addToDay(id);
+    for (const id of comboChoice.ids) addToDayIfMissing(id);
     setComboChoice(null);
-  }, [comboChoice, addToDay]);
+  }, [comboChoice, addToDayIfMissing]);
 
   const handleReplaceCombo = useCallback(() => {
     if (!comboChoice) return;
     clearDay();
-    for (const id of comboChoice.ids) addToDay(id);
+    for (const id of comboChoice.ids) addToDayIfMissing(id);
     setComboChoice(null);
-  }, [comboChoice, clearDay, addToDay]);
+  }, [comboChoice, clearDay, addToDayIfMissing]);
 
   const handleClearDayConfirm = useCallback(() => {
     clearDay();
@@ -155,7 +155,7 @@ export function usePlanPage() {
     activeItems,
     hydrated,
     copied,
-    addToDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     lastAddedId,

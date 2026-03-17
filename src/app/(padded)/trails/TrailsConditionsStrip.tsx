@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
 
 type TrailsConditionsStripProps = {
@@ -31,7 +31,7 @@ export default function TrailsConditionsStrip({
       className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-aegean/5 border-b border-sand-200/70`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <Link
+        <AppLink
           href="#trail-list"
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[44px] py-2 group"
           aria-label="Trail conditions today — view list"
@@ -67,7 +67,7 @@ export default function TrailsConditionsStrip({
           <span className="text-sage text-sm group-hover:text-terracotta transition-colors shrink-0">
             {label}
           </span>
-        </Link>
+        </AppLink>
       </div>
     </section>
   );

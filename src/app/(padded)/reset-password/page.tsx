@@ -1,15 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import AppLink from "@/components/AppLink";
+import { useRouter } from "@/i18n/navigation";
 import BackLink from "@/components/BackLink";
 import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
   const { user, needsPasswordReset, updatePassword, isConfigured, isLoading } = useAuth();
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -27,13 +30,13 @@ export default function ResetPasswordPage() {
     return (
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-          <BackLink href="/login" label="Back to sign in" />
+          <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
             <h1 className="font-display text-xl font-semibold text-charcoal mb-2">Set new password</h1>
             <p className="text-olive/80 text-sm leading-relaxed mb-6">Auth is being set up. Use the reset link from your email when ready.</p>
-            <Link href="/login" className={CTA.primaryCompact}>
-              Back to sign in
-            </Link>
+            <AppLink href="/login" className={CTA.primaryCompact}>
+              {tCommon("backTo", { label: tNav("signIn") })}
+            </AppLink>
           </div>
         </div>
       </div>
@@ -65,14 +68,14 @@ export default function ResetPasswordPage() {
     return (
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-          <BackLink href="/account" label="Go to account" />
+          <BackLink href="/account" label={tCommon("backTo", { label: tNav("account") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-aegean/50`}>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aegean mb-2">Done</p>
             <h1 className="font-display text-2xl font-bold text-charcoal mb-2">Password updated</h1>
             <p className="text-olive/80 text-base leading-relaxed mb-6">Your password has been set. You can now sign in with your new password.</p>
-            <Link href="/account" className={CTA.primaryCompact}>
+            <AppLink href="/account" className={CTA.primaryCompact}>
               Go to account
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>
@@ -83,7 +86,7 @@ export default function ResetPasswordPage() {
     return (
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-          <BackLink href="/login" label="Back to sign in" />
+          <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className="mt-10 h-48 rounded-xl bg-sand-100/80 animate-pulse" aria-hidden />
         </div>
       </div>
@@ -94,13 +97,13 @@ export default function ResetPasswordPage() {
     return (
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-          <BackLink href="/login" label="Back to sign in" />
+          <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
             <h1 className="font-display text-xl font-semibold text-charcoal mb-2">Invalid or expired link</h1>
             <p className="text-olive/80 text-sm leading-relaxed mb-6">This reset link may have expired. Request a new one to set your password.</p>
-            <Link href="/forgot-password" className={CTA.primaryCompact}>
+            <AppLink href="/forgot-password" className={CTA.primaryCompact}>
               Reset password
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>
@@ -113,7 +116,7 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
       <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <BackLink href="/login" label="Back to sign in" />
+        <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
 
         <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-l-4 border-l-terracotta/50 shadow-md`}>
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">Set new password</p>
@@ -186,9 +189,9 @@ export default function ResetPasswordPage() {
         </div>
 
         <p className="mt-8 text-center text-sm text-olive/70">
-          <Link href="/login" className="text-terracotta font-medium hover:text-terracotta-muted transition-colors">
-            Back to sign in
-          </Link>
+          <AppLink href="/login" className="text-terracotta font-medium hover:text-terracotta-muted transition-colors">
+            {tCommon("backTo", { label: tNav("signIn") })}
+          </AppLink>
         </p>
       </div>
     </div>

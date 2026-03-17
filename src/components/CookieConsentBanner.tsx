@@ -1,16 +1,18 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-import Link from "next/link";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import AppLink from "@/components/AppLink";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import { setCookieConsent, COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
 
 function subscribe(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
   window.addEventListener("cookie-consent-change", callback);
   return () => window.removeEventListener("cookie-consent-change", callback);
 }
 
 function getSnapshot(): string | null {
+  if (typeof window === "undefined") return null;
   const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
   return stored === "all" || stored === "essential" ? stored : null;
 }
@@ -21,13 +23,35 @@ function getServerSnapshot() {
 
 export default function CookieConsentBanner() {
   const choice = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  if (choice !== null) return null;
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (choice !== null) return;
+    const el = bannerRef.current;
+    if (!el) return;
+
+    const apply = () => {
+      const h = Math.ceil(el.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--cw-cookie-banner-offset", `${h}px`);
+    };
+    apply();
+
+    const ro = new ResizeObserver(() => apply());
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.documentElement.style.setProperty("--cw-cookie-banner-offset", "0px");
+    };
+  }, [choice]);
 
   const handleAccept = () => setCookieConsent("all");
   const handleReject = () => setCookieConsent("essential");
 
+  if (choice !== null) return null;
+
   return (
     <div
+      ref={bannerRef}
       role="dialog"
       aria-live="polite"
       aria-label="Cookie consent"
@@ -37,9 +61,9 @@ export default function CookieConsentBanner() {
       <div className={`${LAYOUT.listNarrow} mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4`}>
         <p className="text-sm text-olive/90">
           We use essential cookies for the service and optional analytics to improve it. By clicking &quot;Accept&quot; you allow analytics.{" "}
-          <Link href="/privacy#cookies" className="text-terracotta hover:underline">
+          <AppLink href="/privacy#cookies" className="text-terracotta hover:underline">
             Learn more
-          </Link>
+          </AppLink>
         </p>
         <div className="flex flex-wrap gap-3 shrink-0">
           <button

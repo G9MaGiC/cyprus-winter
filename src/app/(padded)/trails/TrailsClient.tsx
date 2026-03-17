@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { useEffect } from "react";
 import { trailConditions } from "@/data/trails";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
@@ -20,8 +20,11 @@ import BestConditionsNow from "@/app/(padded)/trails/BestConditionsNow";
 import TrailsEmptyState from "@/app/(padded)/trails/TrailsEmptyState";
 import TrailStatusGroup from "@/app/(padded)/trails/TrailStatusGroup";
 import TrailsTipsSection from "@/app/(padded)/trails/TrailsTipsSection";
+import { useTranslations } from "next-intl";
+import { SRStatus } from "@/components/SRStatus";
 
 export default function TrailsClient() {
+  const tNav = useTranslations("nav");
   const {
     filtered,
     openTrails,
@@ -67,14 +70,7 @@ export default function TrailsClient() {
 
   return (
     <div className="min-h-screen bg-sand">
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only"
-        role="status"
-      >
-        {filterAnnouncement}
-      </div>
+      <SRStatus message={filterAnnouncement} />
       <div
         className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
       >
@@ -83,18 +79,18 @@ export default function TrailsClient() {
           description="Pine forest, ridge views, empty paths. Sixteen degrees when home is six."
           descriptionSecondary={`${counts.open} open · ${counts.caution} caution · 8 regions`}
           backHref="/"
-          backLabel="Home"
+          backLabel={tNav("home")}
           backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
           backgroundImageAlt="Troodos pine forest trail, Cyprus winter"
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Trails", href: "/trails", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("trails"), href: "/trails", isCurrent: true }]}
         >
           <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4">
-            <Link href="/plan" className={CTA.tertiaryOnDark} aria-label="Build a day or pick a template">
+            <AppLink href="/plan" className={CTA.tertiaryOnDark} aria-label="Build a day or pick a template">
               Plan your trip
-            </Link>
-            <Link href="/weather" className={CTA.ghost} aria-label="View weather forecast">
+            </AppLink>
+            <AppLink href="/weather" className={CTA.ghost} aria-label="View weather forecast">
               Weather
-            </Link>
+            </AppLink>
           </div>
         </ListPageHero>
 
@@ -159,9 +155,9 @@ export default function TrailsClient() {
               >
                 {filtered.length} trails
               </h2>
-              <Link href="/trails" className={`text-sm font-medium shrink-0 ${SECTION.aegeanLink}`}>
+              <AppLink href="/trails" className={`text-sm font-medium shrink-0 ${SECTION.aegeanLink}`}>
                 Clear
-              </Link>
+              </AppLink>
             </div>
 
             {filtered.length === 0 ? (
@@ -241,15 +237,15 @@ export default function TrailsClient() {
 
         {filtered.length > 0 && (
           <div
-            className={`fixed left-0 right-0 z-50 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden ${LAYOUT.fixedBottomClearance}`}
+            className={`fixed left-0 right-0 z-50 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))]`}
           >
-            <Link
+            <AppLink
               href="/plan"
               className={`flex-1 max-w-sm flex justify-center items-center min-h-[48px] px-6 rounded-xl ${CTA.primaryCompact}`}
               aria-label="Add trails to your plan"
             >
               Add to plan
-            </Link>
+            </AppLink>
           </div>
         )}
       </div>

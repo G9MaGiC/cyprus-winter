@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { CARD, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
@@ -144,18 +144,18 @@ export default function QuickStartSection({
                 </button>
               );
             })}
-            <Link href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Discover places">
+            <AppLink href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Discover places">
               Discover
-            </Link>
-            <Link href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse trails">
+            </AppLink>
+            <AppLink href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse trails">
               Trails
-            </Link>
-            <Link href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse wineries">
+            </AppLink>
+            <AppLink href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse wineries">
               Wineries
-            </Link>
-            <Link href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="See what's on">
+            </AppLink>
+            <AppLink href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="See what's on">
               What&apos;s on
-            </Link>
+            </AppLink>
           </div>
         </div>
       )}

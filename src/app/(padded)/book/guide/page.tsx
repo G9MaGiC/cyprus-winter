@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { guides } from "@/data/guides";
 import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { trails } from "@/data/trails";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Book a Guided Hike | Cyprus Winter",
@@ -21,23 +22,25 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
     .map((t) => t.name);
 }
 
-export default function GuidesListPage() {
+export default async function GuidesListPage() {
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
-        <BackLink href="/trails" label="Back to Trails" />
+        <BackLink href="/trails" label={tCommon("backTo", { label: tNav("trails") })} />
         <Breadcrumbs
           items={[
-            { label: "Home", href: "/" },
-            { label: "Trails", href: "/trails" },
-            { label: "Book a guide", href: "/book/guide", isCurrent: true },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("trails"), href: "/trails" },
+            { label: tCommon("breadcrumbs.bookGuide"), href: "/book/guide", isCurrent: true },
           ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
       </nav>
 
       <div className="mb-8">
-        <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>Book a guided hike</h1>
+        <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
         <p className="text-olive/70 max-w-2xl">
           Local guides for Troodos, Paphos, and Akamas. Winter conditions know-how, small groups, experienced
           leaders. Request a hike and they&apos;ll confirm by email.
@@ -54,11 +57,11 @@ export default function GuidesListPage() {
             >
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
-                  Guided hike
+                  {tCommon("guidedHike")}
                 </span>
                 {guide.isVerified && (
                   <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
-                    Verified partner
+                    {tCommon("verifiedPartner")}
                   </span>
                 )}
               </div>
@@ -71,26 +74,26 @@ export default function GuidesListPage() {
                   {trailNames.length > 4 ? ` +${trailNames.length - 4} more` : ""}
                 </p>
               )}
-              <Link
+              <AppLink
                 href={`/book/guide/${guide.id}`}
                 className={`w-full justify-center ${CTA.primaryCompact}`}
                 aria-label={`Book a guided hike with ${guide.name}`}
               >
-                Book a hike
-              </Link>
+                {tCommon("bookHike")}
+              </AppLink>
             </div>
           );
         })}
       </div>
 
       <p className="mt-12 text-center text-olive/70 text-sm">
-        <Link href="/trails" className={SECTION.aegeanLink}>
+        <AppLink href="/trails" className={SECTION.aegeanLink}>
           Browse all trails
-        </Link>
+        </AppLink>
         {" · "}
-        <Link href="/bookings" className={SECTION.aegeanLink}>
+        <AppLink href="/bookings" className={SECTION.aegeanLink}>
           My bookings
-        </Link>
+        </AppLink>
       </p>
     </div>
   );

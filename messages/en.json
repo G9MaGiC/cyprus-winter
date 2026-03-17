@@ -26,6 +26,8 @@
     "trails": "Trails",
     "events": "Events",
     "airport": "Airport",
+    "arriving": "Arriving",
+    "signIn": "Sign in",
     "home": "Home",
     "weather": "Weather",
     "bookings": "Bookings",
@@ -59,6 +61,62 @@
     "winery": "Winery",
     "event": "Event",
     "eat": "Eat"
+    ,
+    "back": "Back",
+    "backTo": "Back to {label}"
+    ,
+    "peopleCount": "{count, plural, one {# person} other {# people}}"
+    ,
+    "breadcrumbs": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "settings": "Settings",
+      "reportConditions": "Report conditions",
+      "bookGuide": "Book a guide",
+      "bookTasting": "Book tasting",
+      "troodosDecember": "Troodos December"
+    },
+    "inYourPlan": "In your plan",
+    "viewPlan": "View plan",
+    "local": "Local",
+    "verifiedPartner": "Verified partner",
+    "verifiedPartnerTitle": "Verified partner: receives booking requests directly",
+    "wineTasting": "Wine tasting",
+    "guidedHike": "Guided hike",
+    "bookHike": "Book a hike",
+    "reportConditions": "Report conditions",
+    "reportAnotherTrail": "Report another trail",
+    "thanksForReporting": "Thanks for reporting."
+    ,
+    "remove": "Remove",
+    "bookTastings": "Book tastings",
+    "exploreWineries": "Explore wineries",
+    "allCategories": "All categories",
+    "filterPlaces": "Filter places",
+    "clearFilter": "Clear filter",
+    "viewOnMap": "View on map",
+    "scrollToMap": "Scroll to map",
+    "askAI": "Ask AI",
+    "askAITrailsAria": "Ask AI for trail suggestions",
+    "askAIRecommendationsAria": "Ask AI for recommendations",
+    "planYourTrip": "Plan your trip",
+    "winterHikingGuide": "Winter hiking guide",
+    "seeMap": "See map",
+    "emergency112": "Emergency 112",
+    "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "discoverEmptyTitle": "No places here.",
+    "discoverEmptyBody": "Try another filter or ask the AI—it knows the island."
+    ,
+    "skipTo": {
+      "editorsPicks": "Skip to Editor's picks",
+      "plan": "Skip to Plan"
+    }
+    ,
+    "cancel": "Cancel",
+    "clearDay": "Clear day",
+    "clearDayTitle": "Clear Day {day}?"
+    ,
+    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -129,7 +187,20 @@
     "curatedCombos": "Curated combos",
     "curatedCombosDesc": "Morning at one place, afternoon at another. These flow.",
     "morning": "Morning",
-    "afternoon": "Afternoon"
+    "afternoon": "Afternoon",
+    "pageTitle": "Plan your Cyprus winter",
+    "pageDescHasContent": "Your itinerary. Add more, share, or tweak below.",
+    "pageDescEmpty": "Build your winter itinerary. Pick a template or add places day by day.",
+    "pageDescSecondaryEmpty": "Saves automatically.",
+    "daysUntilBanner": "{days, plural, =0 {You're here. Day 1 is ready.} =1 {Tomorrow. Day 1 is ready.} other {# days to go — review below.}}",
+    "tripReminderBanner": "{days, plural, =0 {Your trip is today — your Day 1 plan is ready.} =1 {Tomorrow you are here — your Day 1 plan is ready.} other {# days until you are here — your Day 1 plan is ready.}}",
+    "reviewPlan": "Review plan",
+    "addingToPlan": "Adding to your plan…",
+    "addedToDayBanner": "Added {name} to Day {day}.",
+    "dayEmptyTitle": "Day {day} is empty",
+    "dayEmptyBody": "Add your first place below, or pick a template further down to fill the day in one go.",
+    "browsePlaces": "Browse places",
+    "seeTemplates": "See templates"
   },
   "bookings": {
     "title": "My Bookings",
@@ -141,11 +212,25 @@
     "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device."
   },
   "search": {
+    "title": "Find a place or trail",
+    "intro": "Places that feel real. Villages, wineries, beaches, trails, events.",
+    "resultsFor": "Results for “{query}”",
     "placeholder": "Find a place or trail",
+    "typeAtLeastTwo": "Type at least 2 characters",
     "noResults": "Nothing for \"{query}\". Try Troodos, Nissi, Omodos, or browse Discover.",
+    "noResultsHint": "Or tap Ask AI to find something.",
     "browseDiscover": "Browse Discover",
     "viewTrails": "View all trails",
-    "planTrip": "Plan your trip"
+    "planTrip": "Plan your trip",
+    "browseByCategory": "Or browse by category",
+    "category": {
+      "trails": "Trails",
+      "discover": "Discover",
+      "wineries": "Wineries",
+      "events": "Events",
+      "villages": "Villages",
+      "beaches": "Beaches"
+    }
   },
   "events": {
     "clearFilters": "Clear filters",

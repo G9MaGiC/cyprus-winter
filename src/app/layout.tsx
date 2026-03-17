@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -14,14 +15,8 @@ import WebVitalsReporter from "@/components/WebVitalsReporter";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LAYOUT } from "@/lib/design-tokens";
 
-const AIAssistantWithBoundary = dynamic(
-  () => import("@/components/AIAssistantWithBoundary"),
-  { loading: () => null }
-);
-const OnboardingModal = dynamic(() => import("@/components/OnboardingModal"), { loading: () => null });
-const CookieConsentBanner = dynamic(() => import("@/components/CookieConsentBanner"), { loading: () => null });
-
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
+import ClientComponents from "@/components/ClientComponents";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -86,9 +81,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const messages = await getMessages();
+  const locale = await getLocale();
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <script
           type="application/ld+json"
@@ -125,9 +121,7 @@ export default async function RootLayout({
           <BottomNav />
           <FooterWithTranslations />
         </Providers>
-        <AIAssistantWithBoundary />
-        <OnboardingModal />
-        <CookieConsentBanner />
+        <ClientComponents />
         </NextIntlClientProvider>
       </body>
     </html>
