@@ -232,12 +232,78 @@
     "bookTastings": {
       "kicker": "Weingüter",
       "subtitle": "Verkostungen am Kamin, oft schenkt der Besitzer ein. Für Wochenenden besser reservieren."
+    },
+    "rightNow": {
+      "subtitleConsent": "Was passt gerade bei Ihnen?",
+      "subtitleRegion": "Vorschläge in {region}",
+      "subtitleLoadedRegion": "Was passt in {region}?",
+      "subtitleLoadedLocation": "Was passt gerade bei Ihnen?",
+      "consent": {
+        "body": "Vorschläge basierend auf Ihrem Standort, der Tageszeit und dem Wetter.",
+        "cta": {
+          "useLocation": "Meinen Standort verwenden",
+          "pickRegion": "Region auswählen"
+        }
+      },
+      "regionPicker": {
+        "body": "Wählen Sie eine Region zum Entdecken."
+      },
+      "empty": {
+        "scopeRegion": "diese Region",
+        "scopeNow": "jetzt",
+        "body": "Gerade keine Vorschläge für {scope}.",
+        "changeRegion": "Region ändern",
+        "seeMoreDiscover": "Mehr in Entdecken →",
+        "askAI": "Oder Ask AI nach Vorschlägen fragen"
+      },
+      "loaded": {
+        "seeMore": "Mehr →"
+      },
+      "distance": {
+        "aria": "Entfernung",
+        "closer": "Näher",
+        "farther": "Weiter"
+      }
     }
   },
   "error": {
     "title": "Ein kleines Problem",
     "body": "Ein kleines Problem. Versuchen Sie es erneut oder gehen Sie zur Startseite—Wanderwege, Dörfer und Verkostungen warten auf Sie.",
     "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI—wir zeigen Ihnen Nissi, Troodos, Lefkara."
+  },
+  "errors": {
+    "common": {
+      "title": "Etwas ist schiefgelaufen",
+      "tryAgainCta": "Erneut versuchen"
+    },
+    "rateLimited": {
+      "title": "Zu viele Anfragen",
+      "canRetry": "Sie können es jetzt erneut versuchen.",
+      "waitThenRetry": "{seconds, plural, one {Warten Sie # Sekunde, dann versuchen Sie es erneut.} other {Warten Sie # Sekunden, dann versuchen Sie es erneut.}}",
+      "retryNow": "Erneut versuchen",
+      "retryIn": "Warten {seconds}s"
+    },
+    "network": {
+      "titleOnline": "Verbindungsproblem",
+      "titleOffline": "Sie sind offline",
+      "messageOnline": "Verbindungsprobleme. Versuchen Sie es erneut oder tippen Sie auf Ask AI.",
+      "messageOffline": "Sie sind offline. Verbinden Sie sich, um Trails zu sehen und Ihre Reise zu planen.",
+      "checkConnection": "Verbindung prüfen"
+    },
+    "chat": {
+      "rateLimited": "Zu viele Anfragen. Bitte warten Sie kurz.",
+      "unavailable": "Ich kann gerade nicht verbinden. Bitte versuchen Sie es gleich noch einmal.",
+      "failed": "Ich kann gerade nicht verbinden. Bitte versuchen Sie es gleich noch einmal."
+    },
+    "rightNow": {
+      "locationDenied": "Standort aktivieren oder eine Region auswählen."
+    },
+    "api": {
+      "SERVICE_UNAVAILABLE": "Bitte versuchen Sie es gleich noch einmal.",
+      "RATE_LIMITED": "Zu viele Anfragen. Bitte warten Sie kurz.",
+      "SERVER_ERROR": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "VALIDATION_ERROR": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    }
   },
   "notFound": {
     "title": "Seite nicht gefunden",

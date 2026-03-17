@@ -232,12 +232,78 @@
     "bookTastings": {
       "kicker": "Winnice",
       "subtitle": "Degustacje przy kominku, często serwuje właściciel. Na weekendy lepiej rezerwować wcześniej."
+    },
+    "rightNow": {
+      "subtitleConsent": "Co ma sens tam, gdzie jesteś",
+      "subtitleRegion": "Sugestie w regionie {region}",
+      "subtitleLoadedRegion": "Co ma sens w regionie {region}",
+      "subtitleLoadedLocation": "Co ma sens tam, gdzie jesteś",
+      "consent": {
+        "body": "Sugestie na podstawie Twojej lokalizacji, pory dnia i pogody.",
+        "cta": {
+          "useLocation": "Użyj mojej lokalizacji",
+          "pickRegion": "Wybierz region"
+        }
+      },
+      "regionPicker": {
+        "body": "Wybierz region do odkrywania."
+      },
+      "empty": {
+        "scopeRegion": "tego regionu",
+        "scopeNow": "teraz",
+        "body": "Brak sugestii dla {scope} w tym momencie.",
+        "changeRegion": "Zmień region",
+        "seeMoreDiscover": "Zobacz więcej w Odkrywaj →",
+        "askAI": "Albo zapytaj AI o sugestie"
+      },
+      "loaded": {
+        "seeMore": "Zobacz więcej →"
+      },
+      "distance": {
+        "aria": "Dystans",
+        "closer": "Bliżej",
+        "farther": "Dalej"
+      }
     }
   },
   "error": {
     "title": "Drobna usterka",
     "body": "Drobna usterka. Spróbuj ponownie lub wróć na stronę główną—szlaki, wioski i degustacje nadal na Ciebie czekają.",
     "hint": "Użyj menu Odkrywaj, Szlaki lub Plan. Lub naciśnij Ask AI—wskażemy Nissi, Troodos, Lefkara."
+  },
+  "errors": {
+    "common": {
+      "title": "Coś poszło nie tak",
+      "tryAgainCta": "Spróbuj ponownie"
+    },
+    "rateLimited": {
+      "title": "Za dużo zapytań",
+      "canRetry": "Możesz spróbować ponownie teraz.",
+      "waitThenRetry": "{seconds, plural, one {Poczekaj # sekundę i spróbuj ponownie.} few {Poczekaj # sekundy i spróbuj ponownie.} many {Poczekaj # sekund i spróbuj ponownie.} other {Poczekaj # sekundy i spróbuj ponownie.}}",
+      "retryNow": "Spróbuj ponownie",
+      "retryIn": "Czekaj {seconds}s"
+    },
+    "network": {
+      "titleOnline": "Problem z połączeniem",
+      "titleOffline": "Jesteś offline",
+      "messageOnline": "Problemy z połączeniem. Spróbuj ponownie lub naciśnij Ask AI.",
+      "messageOffline": "Jesteś offline. Połącz się, aby przeglądać szlaki i planować podróż.",
+      "checkConnection": "Sprawdź połączenie"
+    },
+    "chat": {
+      "rateLimited": "Za dużo zapytań. Odczekaj chwilę.",
+      "unavailable": "Mam problem z połączeniem. Spróbuj ponownie za chwilę.",
+      "failed": "Mam problem z połączeniem. Spróbuj ponownie za chwilę."
+    },
+    "rightNow": {
+      "locationDenied": "Włącz lokalizację albo wybierz region."
+    },
+    "api": {
+      "SERVICE_UNAVAILABLE": "Spróbuj ponownie za chwilę.",
+      "RATE_LIMITED": "Za dużo zapytań. Odczekaj chwilę.",
+      "SERVER_ERROR": "Coś poszło nie tak. Spróbuj ponownie.",
+      "VALIDATION_ERROR": "Coś poszło nie tak. Spróbuj ponownie."
+    }
   },
   "notFound": {
     "title": "Strona nie znaleziona",

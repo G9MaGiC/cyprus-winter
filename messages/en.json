@@ -232,12 +232,78 @@
     "bookTastings": {
       "kicker": "Wineries",
       "subtitle": "Fireside tastings, often the owner pouring. Reserve ahead for weekends."
+    },
+    "rightNow": {
+      "subtitleConsent": "What makes sense where you are",
+      "subtitleRegion": "Suggestions in {region}",
+      "subtitleLoadedRegion": "What makes sense in {region}",
+      "subtitleLoadedLocation": "What makes sense where you are",
+      "consent": {
+        "body": "Suggestions based on where you are, the time, and the weather.",
+        "cta": {
+          "useLocation": "Use my location",
+          "pickRegion": "Pick a region"
+        }
+      },
+      "regionPicker": {
+        "body": "Choose a region to explore."
+      },
+      "empty": {
+        "scopeRegion": "this region",
+        "scopeNow": "now",
+        "body": "No suggestions for {scope} right now.",
+        "changeRegion": "Change region",
+        "seeMoreDiscover": "See more in Discover →",
+        "askAI": "Or ask the AI for suggestions"
+      },
+      "loaded": {
+        "seeMore": "See more →"
+      },
+      "distance": {
+        "aria": "Distance",
+        "closer": "Closer",
+        "farther": "Farther"
+      }
     }
   },
   "error": {
     "title": "A small glitch",
     "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
     "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+  },
+  "errors": {
+    "common": {
+      "title": "Something went wrong",
+      "tryAgainCta": "Try again"
+    },
+    "rateLimited": {
+      "title": "Too many requests",
+      "canRetry": "You can try again now.",
+      "waitThenRetry": "{seconds, plural, one {Wait # second, then try again.} other {Wait # seconds, then try again.}}",
+      "retryNow": "Try again",
+      "retryIn": "Wait {seconds}s"
+    },
+    "network": {
+      "titleOnline": "Connection issue",
+      "titleOffline": "You're offline",
+      "messageOnline": "Connection trouble. Try again, or tap Ask AI.",
+      "messageOffline": "You're offline. Connect to browse trails and plan your trip.",
+      "checkConnection": "Check connection"
+    },
+    "chat": {
+      "rateLimited": "Too many requests. Please wait a moment.",
+      "unavailable": "I'm having trouble connecting. Please try again in a moment.",
+      "failed": "I'm having trouble connecting. Please try again in a moment."
+    },
+    "rightNow": {
+      "locationDenied": "Enable location or pick a region."
+    },
+    "api": {
+      "SERVICE_UNAVAILABLE": "Please try again in a moment.",
+      "RATE_LIMITED": "Too many requests. Please wait a moment.",
+      "SERVER_ERROR": "Something went wrong. Please try again.",
+      "VALIDATION_ERROR": "Something went wrong. Please try again."
+    }
   },
   "notFound": {
     "title": "Page not found",
