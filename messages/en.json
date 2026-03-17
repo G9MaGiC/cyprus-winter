@@ -62,6 +62,17 @@
     "event": "Event",
     "eat": "Eat"
     ,
+    "timelineRemovedPlace": "This place was removed from our list",
+    "ai": {
+      "title": "Cyprus Guide",
+      "subtitle": "Ask about trails, wineries, villages",
+      "clear": "Clear",
+      "closeAria": "Close chat",
+      "inputPlaceholder": "Ask about Cyprus…",
+      "sendAria": "Send message",
+      "startVoice": "Start voice input",
+      "stopVoice": "Stop listening"
+    },
     "back": "Back",
     "backTo": "Back to {label}"
     ,
@@ -149,7 +160,79 @@
     "rightNowNearYou": "Right now near you",
     "discoverCurated": "Curated for winter. Add to your plan as you browse.",
     "natureAndCoasts": "Nature & coasts",
-    "places": "Places"
+    "places": "Places",
+    "startHere": {
+      "prompt": "So — where do you want to go first?",
+      "primaryPath": "Primary path",
+      "title": "Start here",
+      "subtitle": "Just landed or still planning? Ruins to village tastings — start anywhere.",
+      "card": {
+        "discoverTitle": "Discover",
+        "discoverDesc": "Places that feel real. Ruins, coasts, villages, heritage.",
+        "discoverCta": "Start exploring",
+        "planTitle": "Plan",
+        "planDesc": "Build a day or pick a template. Saves as you go.",
+        "planCta": "Build a day",
+        "bookTitle": "Book",
+        "bookDesc": "Reserve tastings before weekends fill.",
+        "bookCta": "Book tastings"
+      },
+      "browseByCategory": "Browse by category",
+      "exploreMore": "Explore more",
+      "exploreByMood": "Explore by mood",
+      "aria": {
+        "browseByCategory": "Browse by category",
+        "exploreByMood": "Explore by how you feel"
+      },
+      "chip": {
+        "villages": "Villages",
+        "wineries": "Wineries",
+        "trails": "Trails",
+        "trailsAria": "Trails and conditions",
+        "events": "Events",
+        "familyFriendly": "Family-friendly",
+        "all": "All",
+        "seeAll": "See all",
+        "culture": "Culture",
+        "coasts": "Coasts",
+        "monasteries": "Monasteries",
+        "active": "Active",
+        "activeAria": "Active adventures — trails, hiking",
+        "quietEscapes": "Quiet escapes",
+        "quietEscapesAria": "Quiet escapes — villages, hidden gems",
+        "mountains": "Mountains",
+        "mountainsAria": "Mountains — Troodos trails",
+        "wellness": "Wellness",
+        "wellnessAria": "Wellness — monasteries, quiet spaces",
+        "regionAria": "{region} region"
+      }
+    }
+    ,
+    "hero": {
+      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+    },
+    "search": {
+      "srHeading": "Search places and trails",
+      "kicker": "Not sure where to start? Find a place, trail, or ask the island.",
+      "placeholder": "Find a place, trail, or event"
+    },
+    "weatherStrip": {
+      "aria": "Cyprus winter weather — Coast and Troodos temperatures. Check weather.",
+      "heading": "{coast}°C coast · {troodos}°C Troodos",
+      "prompts": {
+        "november": "Trails clear. Best for hiking.",
+        "december": "Check trail conditions before Troodos.",
+        "january": "Pack layers. Wineries warm inside.",
+        "february": "Ski season continues. Pack microspikes for higher trails.",
+        "march": "Best hiking month. Trails open.",
+        "april": "All trails open. Spring clarity.",
+        "fallback": "Pack layers for the mountain."
+      }
+    },
+    "bookTastings": {
+      "kicker": "Wineries",
+      "subtitle": "Fireside tastings, often the owner pouring. Reserve ahead for weekends."
+    }
   },
   "error": {
     "title": "A small glitch",
@@ -176,7 +259,112 @@
     "askAI": "Ask AI",
     "clearFilters": "Clear filters",
     "reportError": "Didn't save. Try again or head back to the trail.",
-    "reportAria": "Submit trail conditions report"
+    "reportAria": "Submit trail conditions report",
+    "tips": {
+      "summary": "Before you go",
+      "disclaimer": "Conditions are crowd-sourced, not guaranteed. Hiking involves risks — prepare for weather, pack layers, and follow local advice.",
+      "shortChecklist": "Layers, conditions check, tell someone your route.",
+      "addToPlan": "Add to plan →",
+      "reportConditions": "Report conditions",
+      "buildDayHint": "Build a day — add trails to your plan",
+      "troodosGuide": "Troodos December guide →"
+    },
+    "detail": {
+      "hero": {
+        "elevationGain": "{meters}m gain",
+        "elevationMax": "Max {meters}m",
+        "trailheadLabel": "Trailhead: {name}",
+        "navigateToTrailhead": "Navigate to trailhead →"
+      },
+      "nav": {
+        "overview": "Overview",
+        "conditions": "Conditions",
+        "map": "Map",
+        "waypoints": "Waypoints",
+        "pairWith": "Pair with"
+      },
+      "topSightsTitle": "Top sights",
+      "conditions": {
+        "latestFromHikers": "Latest from hikers",
+        "currentConditions": "Current conditions",
+        "titleNoData": "Trail conditions",
+        "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
+        "shareWhatYouSaw": "Share what you saw",
+        "beFirst": "Be the first to report",
+        "recentReportsCount": "{count} recent reports",
+        "surfaceLabel": "Surface: {surface}",
+        "temperatureAtTrailhead": "{temperature}°C at trailhead",
+        "windAtTrailhead": "{wind} km/h wind"
+      },
+      "safety": {
+        "title": "Safety & essentials",
+        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go."
+      },
+      "winterSafetyTitle": "Winter safety",
+      "routeMapTitle": "Route map",
+      "winterNotesTitle": "Winter notes",
+      "keyStopsTitle": "Key stops",
+      "localSecretTitle": "Local secret",
+      "highlightsTitle": "Highlights",
+      "bestSeasonTitle": "Best season",
+      "whatToBringTitle": "What to bring",
+      "localSecrets": {
+        "title": "Local secrets",
+        "intro": "Insider tips for this trail. Pairings, timings, what to do after.",
+        "seeAll": "See all local secrets →"
+      },
+      "relatedPlaces": {
+        "description": "Hike in the morning, village or winery in the afternoon. Start by 9am."
+      },
+      "footer": {
+        "addToPlanBody": "Add this trail to your plan and pair with a village or winery in the afternoon.",
+        "viewAllTrails": "View all trails"
+      }
+    },
+    "conditionsStrip": {
+      "heading": "Conditions today",
+      "openCount": "{count} open",
+      "cautionCount": "{count} caution",
+      "closedCount": "{count} closed",
+      "noReports": "Check reports",
+      "goodToGo": "Good to go",
+      "cautionOnly": "{count} trails need caution",
+      "withClosed": "{count} trails closed — check before you go",
+      "checkConditions": "Check trail conditions"
+    },
+    "page": {
+      "hero": {
+        "title": "Winter Trails",
+        "description": "Pine forest, ridge views, empty paths. Sixteen degrees when home is six.",
+        "descriptionSecondary": "{open} open · {caution} caution · 8 regions",
+        "imageAlt": "Troodos pine forest trail, Cyprus winter",
+        "weatherAria": "View weather forecast"
+      },
+      "search": {
+        "heading": "Search trails",
+        "placeholder": "Search trails by name, region, difficulty…"
+      },
+      "list": {
+        "filteredHeading": "{count} trails"
+      },
+      "groups": {
+        "open": "Open",
+        "caution": "Caution",
+        "closed": "Closed",
+        "noReport": "No report"
+      },
+      "map": {
+        "heading": "Map ({count})",
+        "caption": "Updated from local reports."
+      },
+      "bottomBar": {
+        "aria": "Add trails to your plan"
+      },
+      "sr": {
+        "filtered": "Showing {count} trails",
+        "allByCategory": "Showing all trails by category"
+      }
+    }
   },
   "plan": {
     "addToPlan": "Add to plan",
@@ -202,6 +390,22 @@
     "browsePlaces": "Browse places",
     "seeTemplates": "See templates"
   },
+  "planQuick": {
+    "kickerEmpty": "Templates",
+    "kickerHasContent": "Ideas",
+    "titleEmpty": "Pick a template to start",
+    "titleHasContent": "Add more to your plan",
+    "descEmpty": "Pre-built routes from coast to mountains. One click fills Day 1.",
+    "descHasContent": "Use a template to add or replace stops. Or tap a place below.",
+    "setDatesHint": "Set your dates above to see templates that fit your trip.",
+    "quickAddLabel": "Quick add to Day {day}",
+    "quickAddAriaAdded": "{label} added",
+    "quickAddAriaAdd": "Add {label} to Day {day}",
+    "browsePlacesCta": "Browse places",
+    "browsePlacesAria": "Browse places to add to your day",
+    "forYou": "For you",
+    "forTrip": "For your {days}-day trip"
+  },
   "bookings": {
     "title": "My Bookings",
     "empty": "No bookings yet",
@@ -209,7 +413,169 @@
     "browseWineries": "Browse wineries",
     "loadFromEmail": "Load bookings from another device",
     "noMatch": "No bookings for that email. Try another, or book from Discover.",
-    "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device."
+    "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.",
+    "status": {
+      "confirmed": "confirmed",
+      "pending": "pending",
+      "cancelled": "cancelled"
+    },
+    "errors": {
+      "rateLimited": "Too many requests. Wait a moment and try again.",
+      "failedToLoad": "Failed to load",
+      "connection": "Couldn't load your bookings. Check your connection and try again."
+    },
+    "emailLookup": {
+      "noMatch": "No bookings for that email. Try another, or book from Discover.",
+      "loadedCount": "{count, plural, one {Loaded # booking.} other {Loaded # bookings.}}",
+      "allSet": "All set. No new bookings to load."
+    },
+    "page": {
+      "title": "My bookings",
+      "description": "Your tastings and experiences. All in one place.",
+      "stats": {
+        "totalBookings": "{count, plural, one {booking} other {bookings}}",
+        "upcoming": "upcoming",
+        "confirmedCount": "{count} confirmed"
+      },
+      "sync": {
+        "toggle": "Booked on another device? Load by email",
+        "submit": "Load bookings",
+        "loadByEmail": "Load by email",
+        "mergeHint": "We’ll merge any bookings with this device."
+      },
+      "loading": {
+        "aria": "Loading your bookings",
+        "sr": "Loading your bookings…"
+      },
+      "empty": {
+        "aria": "Empty bookings state",
+        "cta": {
+          "bookGuidedHike": "Book a guided hike"
+        }
+      },
+      "noUpcoming": {
+        "title": "No upcoming bookings",
+        "body": "Load bookings from another device or plan your next visit."
+      },
+      "tomorrowHighlight": {
+        "title": "Tomorrow — {providers} — directions ready.",
+        "body": "View details below or add to your plan."
+      },
+      "groups": {
+        "today": "Today",
+        "thisWeek": "This week",
+        "later": "Later"
+      },
+      "relative": {
+        "today": "Today",
+        "tomorrow": "Tomorrow",
+        "inDays": "In {count} days"
+      },
+      "today": {
+        "guidedHike": "Your guided hike is today — see details below.",
+        "tasting": "Your tasting is today — see winery details below."
+      },
+      "tomorrow": {
+        "reminder": "Tomorrow — set a reminder if you like."
+      },
+      "cta": {
+        "viewTrails": "View trails",
+        "viewWinery": "View winery",
+        "modify": "Modify",
+        "bookAgain": "Book again",
+        "browseTrails": "Browse trails",
+        "visitWineryPage": "Visit winery page",
+        "discoverAll": "Discover all"
+      },
+      "past": {
+        "heading": "Past & cancelled"
+      },
+      "bookMore": {
+        "title": "Book more",
+        "titleNoUpcoming": "Plan your next visit",
+        "body": "Add another tasting to your winter trip.",
+        "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
+      }
+    }
+  },
+  "account": {
+    "title": "My account",
+    "loading": "Loading…",
+    "signedIn": {
+      "description": "Your plan and bookings, synced across devices.",
+      "signOut": "Sign out",
+      "cta": {
+        "plan": "My plan",
+        "bookings": "View my bookings",
+        "settings": "Settings"
+      }
+    },
+    "signedOut": {
+      "title": "Save your plan across devices",
+      "description": "Sign in to sync your plan and bookings across devices.",
+      "body": "Create a free account and your itinerary and bookings will follow you wherever you go.",
+      "cta": {
+        "create": "Create account",
+        "signIn": "Sign in",
+        "skip": "Skip — use my plan on this device"
+      }
+    },
+    "notConfigured": {
+      "title": "Sign in coming soon",
+      "description": "Sign in (coming soon) will sync your plan and bookings across devices.",
+      "body": "Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device."
+    },
+    "settings": {
+      "title": "Settings",
+      "loading": "Loading…",
+      "description": "Personalize your experience. We use these to surface places and trails that match your style.",
+      "interests": {
+        "title": "Interests",
+        "body": "Pick what excites you. Discover, Right Now, and plan suggestions will lean toward these.",
+        "labels": {
+          "active": "Hiking & trails",
+          "culture": "History & archaeology",
+          "wine": "Wine & tastings",
+          "wellness": "Wellness & relaxation",
+          "villages": "Mountain villages"
+        }
+      },
+      "travelStyle": {
+        "title": "Travel style",
+        "body": "Helps tailor suggestions (e.g. family-friendly spots, couples retreats).",
+        "labels": {
+          "solo": "Solo",
+          "couple": "Couple",
+          "family": "Families",
+          "group": "Group",
+          "nomad": "Digital nomad"
+        }
+      },
+      "regions": {
+        "title": "Favorite regions",
+        "body": "We'll boost content from these areas in Discover and Right Now."
+      },
+      "notifications": {
+        "title": "Notifications",
+        "body": "If you enable push, we'll use these preferences for alerts.",
+        "trails": "Trail condition updates (Troodos, etc.)",
+        "events": "Winter events and festivals"
+      },
+      "privacy": {
+        "title": "Data & privacy",
+        "body": "Control what we keep on this device. For data we hold (bookings, trail reports), you can request export or deletion.",
+        "clear": "Clear recently viewed",
+        "cleared": "Recently viewed cleared",
+        "requestExport": "Request data export",
+        "requestDeletion": "Request deletion",
+        "footer": {
+          "prefix": "Include the email used for bookings or trail reports. We respond within 30 days. See our",
+          "privacyPolicy": "Privacy Policy",
+          "suffix": "."
+        }
+      },
+      "backToAccount": "← Back to account"
+    }
   },
   "search": {
     "title": "Find a place or trail",
@@ -237,6 +603,49 @@
     "clearFiltersAria": "Clear filters and show all events",
     "noMatch": "Nothing matches these filters. Try a different type or region."
   },
+  "weather": {
+    "page": {
+      "title": "Cyprus Winter Weather by Month",
+      "description": "Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries.",
+      "table": {
+        "month": "Month",
+        "coast": "Coast (°C)",
+        "coastConditions": "Conditions",
+        "troodos": "Troodos (°C)",
+        "troodosConditions": "Conditions"
+      },
+      "mobile": {
+        "details": "Details →"
+      },
+      "body": {
+        "coastTroodos": "Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.",
+        "linkTrails": "Check trail conditions",
+        "linkTrailsSuffix": "before heading up.",
+        "linkWineries": "Winter wineries",
+        "linkWineriesSuffix": "— fireside tastings, book ahead."
+      }
+    },
+    "month": {
+      "pageHeaderTitle": "Cyprus Winter Weather: {month}",
+      "pageHeaderDescription": "Coast {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
+      "meta": {
+        "notFoundTitle": "Weather not found | Cyprus Winter",
+        "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures."
+      },
+      "conditionsHeading": "What to expect",
+      "conditionsCoastTitle": "Coast (Larnaca, Limassol, Paphos)",
+      "conditionsTroodosTitle": "Troodos (mountains, villages)",
+      "eventsHeading": "Winter events in {month}",
+      "cta": {
+        "trailConditions": "Trail conditions",
+        "winterWineries": "Winter wineries"
+      },
+      "footer": {
+        "allMonths": "All months",
+        "troodosWinter": "Troodos winter"
+      }
+    }
+  },
   "onboarding": {
     "welcome": "Cyprus Winter",
     "description": "Trails, villages, wineries. Plan as you go — no account needed.",
@@ -251,6 +660,67 @@
     "tipFirstAdd": "In your plan. Add more or share your itinerary.",
     "tipDiscoverFilter": "Filter by villages, wineries, or trails.",
     "savePlan": "Save your plan — create account to sync"
+  },
+  "help": {
+    "planEmpty": "Tap “Add places” to start building your itinerary from Discover or Trails.",
+    "planFirstItem": "Great start. Add more places or switch days to plan your whole trip.",
+    "discoverFilter": "Use filters to find exactly what you're looking for—wineries, trails, beaches, and more.",
+    "bookingForm": "Fill in your details and the winery will confirm by email. Most respond within 24 hours.",
+    "aiAssistant": "Ask me anything—best trails, winery recommendations, or help planning your day."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Your plan and bookings follow you. Trails, villages, wineries — all in one place.",
+      "errorInvalidCredentials": "Email or password doesn’t match. Try again or use a magic link.",
+      "errorConfirmEmail": "Please confirm your email first. Check your inbox for the activation link.",
+      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "ctaSignIn": "Sign in",
+      "ctaSendMagicLink": "Send magic link",
+      "ctaUseMagic": "Use magic link",
+      "ctaUsePassword": "Use password",
+      "magicSentTitle": "Link sent",
+      "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
+      "ctaUseDifferentMethod": "Use a different method"
+    },
+    "register": {
+      "title": "Join Cyprus Winter",
+      "subtitle": "Plan trails, wineries, villages. Sync your itinerary across devices.",
+      "errorEmailExists": "An account with that email already exists.",
+      "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
+      "errorInvalidEmail": "Please enter a valid email address.",
+      "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
+      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "passwordHint": "At least 6 characters",
+      "successTitle": "Almost there",
+      "successSubtitle": "We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account, then sign in.",
+      "ctaSignIn": "Sign in",
+      "ctaCreate": "Create account"
+    },
+    "forgot": {
+      "title": "Forgot your password?",
+      "subtitle": "Enter your email and we’ll send you a link to set a new password.",
+      "errorInvalidEmail": "Please enter a valid email address.",
+      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "successTitle": "Reset link sent",
+      "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
+      "ctaSend": "Send reset link",
+      "ctaSending": "Sending…"
+    },
+    "reset": {
+      "inlinePasswordHint": "At least 6 characters",
+      "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
+      "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
+      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "invalidLinkTitle": "Invalid or expired link",
+      "invalidLinkSubtitle": "This reset link may have expired. Request a new one to set your password.",
+      "configTitle": "Set new password",
+      "configSubtitle": "Auth is being set up. Use the reset link from your email when ready.",
+      "successTitle": "Password updated",
+      "successSubtitle": "Your password has been set. You can now sign in with your new password.",
+      "ctaUpdate": "Update password",
+      "ctaUpdating": "Updating…"
+    }
   },
   "meta": {
     "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",

@@ -7,6 +7,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const importPath = (p: string) => pathToFileURL(p).href;
@@ -22,6 +23,10 @@ function add(out: Record<string, string>, key: string, value: string): void {
   const v = value.trim();
   if (v.length < 2 || /^[\d\s\-\.]+$/.test(v)) return;
   out[key] = v;
+}
+
+function stableId(input: string): string {
+  return createHash("sha1").update(input).digest("hex").slice(0, 10);
 }
 
 /** Extract from data files via dynamic import (requires tsx) */
@@ -281,7 +286,6 @@ function extractTSX(out: Record<string, string>): void {
 
   const translatableAttrs = ["alt", "aria-label", "title", "placeholder"];
   const files = [...walk(path.join(SRC, "app")), ...walk(path.join(SRC, "components"))];
-  let keyIndex = 0;
 
   for (const file of files) {
     const rel = path
@@ -297,14 +301,14 @@ function extractTSX(out: Record<string, string>): void {
       while ((m = re.exec(content)) !== null) {
         const val = m[1].replace(/\\"/g, '"').trim();
         if (val.length > 2) {
-          add(out, `ui.${rel}.${attr}_${keyIndex++}`, val);
+          add(out, `ui.${rel}.${attr}.${stableId(val)}`, val);
         }
       }
       const re2 = new RegExp(`${attr}={\\s*["']([^"']{3,}?)["']\\s*}`, "g");
       while ((m = re2.exec(content)) !== null) {
         const val = m[1].replace(/\\"/g, '"').trim();
         if (val.length > 2) {
-          add(out, `ui.${rel}.${attr}_${keyIndex++}`, val);
+          add(out, `ui.${rel}.${attr}.${stableId(val)}`, val);
         }
       }
     }
@@ -320,7 +324,7 @@ function extractTSX(out: Record<string, string>): void {
         !val.startsWith("{") &&
         !val.includes("className")
       ) {
-        add(out, `ui.${rel}.text_${keyIndex++}`, val);
+        add(out, `ui.${rel}.text.${stableId(val)}`, val);
       }
     }
   }

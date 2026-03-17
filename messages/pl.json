@@ -62,6 +62,17 @@
     "event": "Wydarzenie",
     "eat": "Jedzenie"
     ,
+    "timelineRemovedPlace": "To miejsce zostało usunięte z naszej listy",
+    "ai": {
+      "title": "Przewodnik po Cyprze",
+      "subtitle": "Pytaj o szlaki, winnice, wioski",
+      "clear": "Wyczyść",
+      "closeAria": "Zamknij czat",
+      "inputPlaceholder": "Zapytaj o Cypr…",
+      "sendAria": "Wyślij wiadomość",
+      "startVoice": "Włącz wprowadzanie głosowe",
+      "stopVoice": "Zatrzymaj nasłuchiwanie"
+    },
     "back": "Wróć",
     "backTo": "Wróć do {label}"
     ,
@@ -149,7 +160,79 @@
     "rightNowNearYou": "Teraz blisko Ciebie",
     "discoverCurated": "Kuratowane na zimę. Dodawaj do planu podczas przeglądania.",
     "natureAndCoasts": "Natura i wybrzeże",
-    "places": "Miejsca"
+    "places": "Miejsca",
+    "startHere": {
+      "prompt": "No dobrze — dokąd chcesz najpierw?",
+      "primaryPath": "Główna ścieżka",
+      "title": "Zacznij tutaj",
+      "subtitle": "Właśnie przyleciałeś czy jeszcze planujesz? Od ruin po degustacje w wioskach — zacznij gdzie chcesz.",
+      "card": {
+        "discoverTitle": "Odkrywaj",
+        "discoverDesc": "Miejsca, które czujesz jako prawdziwe. Ruiny, wybrzeża, wioski, dziedzictwo.",
+        "discoverCta": "Zacznij odkrywać",
+        "planTitle": "Planuj",
+        "planDesc": "Ułóż dzień lub wybierz szablon. Zapisuje się na bieżąco.",
+        "planCta": "Ułóż dzień",
+        "bookTitle": "Rezerwuj",
+        "bookDesc": "Rezerwuj degustacje zanim weekendy się zapełnią.",
+        "bookCta": "Zarezerwuj degustacje"
+      },
+      "browseByCategory": "Przeglądaj kategorie",
+      "exploreMore": "Odkrywaj więcej",
+      "exploreByMood": "Odkrywaj według nastroju",
+      "aria": {
+        "browseByCategory": "Przeglądaj według kategorii",
+        "exploreByMood": "Odkrywaj według tego, jak się czujesz"
+      },
+      "chip": {
+        "villages": "Wioski",
+        "wineries": "Winnice",
+        "trails": "Szlaki",
+        "trailsAria": "Szlaki i warunki",
+        "events": "Wydarzenia",
+        "familyFriendly": "Dla rodzin",
+        "all": "Wszystko",
+        "seeAll": "Zobacz wszystko",
+        "culture": "Kultura",
+        "coasts": "Wybrzeża",
+        "monasteries": "Klasztory",
+        "active": "Aktywnie",
+        "activeAria": "Aktywnie — szlaki, wędrówki",
+        "quietEscapes": "Spokojne miejsca",
+        "quietEscapesAria": "Spokojnie — wioski, ukryte perełki",
+        "mountains": "Góry",
+        "mountainsAria": "Góry — szlaki Troodos",
+        "wellness": "Wellness",
+        "wellnessAria": "Wellness — klasztory, ciche miejsca",
+        "regionAria": "Region {region}"
+      }
+    }
+    ,
+    "hero": {
+      "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
+    },
+    "search": {
+      "srHeading": "Szukaj miejsc i szlaków",
+      "kicker": "Nie wiesz od czego zacząć? Znajdź miejsce, szlak — albo zapytaj wyspę.",
+      "placeholder": "Znajdź miejsce, szlak lub wydarzenie"
+    },
+    "weatherStrip": {
+      "aria": "Zimowa pogoda na Cyprze — temperatury na wybrzeżu i w Troodos. Zobacz pogodę.",
+      "heading": "{coast}°C wybrzeże · {troodos}°C Troodos",
+      "prompts": {
+        "november": "Szlaki przejezdne. Idealnie do wędrówek.",
+        "december": "Sprawdź warunki na szlakach przed Troodos.",
+        "january": "Zapakuj warstwy. W winnicach jest ciepło.",
+        "february": "Sezon narciarski trwa. Zabierz microspikes na wyższe szlaki.",
+        "march": "Najlepszy miesiąc na wędrówki. Szlaki otwarte.",
+        "april": "Wszystkie szlaki otwarte. Wiosenna przejrzystość.",
+        "fallback": "Zapakuj warstwy na góry."
+      }
+    },
+    "bookTastings": {
+      "kicker": "Winnice",
+      "subtitle": "Degustacje przy kominku, często serwuje właściciel. Na weekendy lepiej rezerwować wcześniej."
+    }
   },
   "error": {
     "title": "Drobna usterka",
@@ -176,7 +259,112 @@
     "askAI": "Zapytaj AI",
     "clearFilters": "Wyczyść filtry",
     "reportError": "Nie zapisano. Spróbuj ponownie lub wróć do szlaku.",
-    "reportAria": "Wyślij raport o warunkach na szlaku"
+    "reportAria": "Wyślij raport o warunkach na szlaku",
+    "tips": {
+      "summary": "Zanim wyruszysz",
+      "disclaimer": "Warunki pochodzą z raportów użytkowników, nie są gwarantowane. Wędrówki wiążą się z ryzykiem — przygotuj się na pogodę, zabierz warstwy i stosuj się do lokalnych zaleceń.",
+      "shortChecklist": "Warstwy, sprawdzenie warunków, poinformuj kogoś o trasie.",
+      "addToPlan": "Dodaj do planu →",
+      "reportConditions": "Zgłoś warunki",
+      "buildDayHint": "Zbuduj dzień — dodaj szlaki do swojego planu",
+      "troodosGuide": "Przewodnik Troodos w grudniu →"
+    },
+    "detail": {
+      "hero": {
+        "elevationGain": "{meters}m przewyższenia",
+        "elevationMax": "Maks. {meters}m",
+        "trailheadLabel": "Początek trasy: {name}",
+        "navigateToTrailhead": "Nawiguj do początku trasy →"
+      },
+      "nav": {
+        "overview": "Opis",
+        "conditions": "Warunki",
+        "map": "Mapa",
+        "waypoints": "Punkty",
+        "pairWith": "Połącz z"
+      },
+      "topSightsTitle": "Najciekawsze miejsca",
+      "conditions": {
+        "latestFromHikers": "Najnowsze od wędrowców",
+        "currentConditions": "Aktualne warunki",
+        "titleNoData": "Warunki na szlaku",
+        "noRecentBody": "Brak ostatnich zgłoszeń dla tego szlaku. Wróciłeś właśnie? Podziel się tym, co widziałeś — to minuta roboty.",
+        "shareWhatYouSaw": "Podziel się warunkami",
+        "beFirst": "Bądź pierwszą osobą, która zgłosi",
+        "recentReportsCount": "{count} ostatnich zgłoszeń",
+        "surfaceLabel": "Nawierzchnia: {surface}",
+        "temperatureAtTrailhead": "{temperature}°C przy początku trasy",
+        "windAtTrailhead": "{wind} km/h wiatr"
+      },
+      "safety": {
+        "title": "Bezpieczeństwo i podstawy",
+        "body": "Numer alarmowy 112 · Informacja turystyczna 1460 · Pogotowie 199. Warstwy, woda, naładowany telefon. Sprawdź warunki przed wyjściem."
+      },
+      "winterSafetyTitle": "Bezpieczeństwo zimą",
+      "routeMapTitle": "Mapa trasy",
+      "winterNotesTitle": "Uwagi zimowe",
+      "keyStopsTitle": "Kluczowe przystanki",
+      "localSecretTitle": "Lokalny sekret",
+      "highlightsTitle": "Najważniejsze",
+      "bestSeasonTitle": "Najlepszy sezon",
+      "whatToBringTitle": "Co zabrać",
+      "localSecrets": {
+        "title": "Lokalne sekrety",
+        "intro": "Wskazówki insiderów dla tego szlaku. Połączenia, godziny, co robić później.",
+        "seeAll": "Zobacz wszystkie lokalne sekrety →"
+      },
+      "relatedPlaces": {
+        "description": "Wędrówka rano, wioska albo winnica po południu. Wyrusz najpóźniej o 9:00."
+      },
+      "footer": {
+        "addToPlanBody": "Dodaj ten szlak do planu i połącz go z wioską lub winnicą po południu.",
+        "viewAllTrails": "Zobacz wszystkie szlaki"
+      }
+    },
+    "conditionsStrip": {
+      "heading": "Warunki dzisiaj",
+      "openCount": "{count} otwartych",
+      "cautionCount": "{count} z ostrożnością",
+      "closedCount": "{count} zamkniętych",
+      "noReports": "Sprawdź raporty",
+      "goodToGo": "Można ruszać",
+      "cautionOnly": "{count} szlaki wymagają ostrożności",
+      "withClosed": "{count} szlaków zamkniętych — sprawdź zanim wyruszysz",
+      "checkConditions": "Sprawdź warunki na szlakach"
+    },
+    "page": {
+      "hero": {
+        "title": "Zimowe szlaki",
+        "description": "Sosnowe lasy, widoki z grani, puste ścieżki. Szesnaście stopni, gdy w domu jest sześć.",
+        "descriptionSecondary": "{open} otwartych · {caution} z ostrożnością · 8 regionów",
+        "imageAlt": "Szlak w sosnowym lesie w Troodos, zima na Cyprze",
+        "weatherAria": "Zobacz prognozę pogody"
+      },
+      "search": {
+        "heading": "Szukaj szlaków",
+        "placeholder": "Szukaj szlaków po nazwie, regionie, trudności…"
+      },
+      "list": {
+        "filteredHeading": "{count} szlaki"
+      },
+      "groups": {
+        "open": "Otwarte",
+        "caution": "Ostrożnie",
+        "closed": "Zamknięte",
+        "noReport": "Brak raportu"
+      },
+      "map": {
+        "heading": "Mapa ({count})",
+        "caption": "Aktualizowana na podstawie lokalnych zgłoszeń."
+      },
+      "bottomBar": {
+        "aria": "Dodaj szlaki do swojego planu"
+      },
+      "sr": {
+        "filtered": "Wyświetlanych {count} szlaków",
+        "allByCategory": "Wyświetlane wszystkie szlaki według kategorii"
+      }
+    }
   },
   "plan": {
     "addToPlan": "Dodaj do planu",
@@ -202,6 +390,22 @@
     "browsePlaces": "Przeglądaj miejsca",
     "seeTemplates": "Zobacz szablony"
   },
+  "planQuick": {
+    "kickerEmpty": "Szablony",
+    "kickerHasContent": "Pomysły",
+    "titleEmpty": "Zacznij od szablonu",
+    "titleHasContent": "Dodaj więcej do swojego planu",
+    "descEmpty": "Gotowe trasy od wybrzeża po góry. Jeden klik wypełnia Dzień 1.",
+    "descHasContent": "Użyj szablonu, aby dodać lub podmienić postoje. Albo stuknij w miejsce poniżej.",
+    "setDatesHint": "Ustaw daty powyżej, żeby zobaczyć szablony dopasowane do Twojej podróży.",
+    "quickAddLabel": "Szybkie dodanie do Dnia {day}",
+    "quickAddAriaAdded": "Dodano {label}",
+    "quickAddAriaAdd": "Dodaj {label} do Dnia {day}",
+    "browsePlacesCta": "Przeglądaj miejsca",
+    "browsePlacesAria": "Przeglądaj miejsca, aby dodać je do swojego dnia",
+    "forYou": "Dla Ciebie",
+    "forTrip": "Na Twoją podróż na {days} dni"
+  },
   "bookings": {
     "title": "Moje rezerwacje",
     "empty": "Brak rezerwacji",
@@ -209,7 +413,90 @@
     "browseWineries": "Przeglądaj winnice",
     "loadFromEmail": "Wczytaj rezerwacje z innego urządzenia",
     "noMatch": "Brak rezerwacji dla tego adresu. Spróbuj inny lub zarezerwuj w Odkrywaj.",
-    "bookMore": "Zarezerwuj degustację lub wycieczkę z przewodnikiem w Odkrywaj i Szlaki. Lub wczytaj rezerwacje z innego urządzenia."
+    "bookMore": "Zarezerwuj degustację lub wycieczkę z przewodnikiem w Odkrywaj i Szlaki. Lub wczytaj rezerwacje z innego urządzenia.",
+    "status": {
+      "confirmed": "potwierdzona",
+      "pending": "oczekująca",
+      "cancelled": "anulowana"
+    },
+    "errors": {
+      "rateLimited": "Za dużo zapytań. Odczekaj chwilę i spróbuj ponownie.",
+      "failedToLoad": "Nie udało się wczytać",
+      "connection": "Nie udało się wczytać Twoich rezerwacji. Sprawdź połączenie i spróbuj ponownie."
+    },
+    "emailLookup": {
+      "noMatch": "Brak rezerwacji dla tego adresu. Spróbuj inny lub zarezerwuj w Odkrywaj.",
+      "loadedCount": "{count, plural, one {Wczytano # rezerwację.} few {Wczytano # rezerwacje.} many {Wczytano # rezerwacji.} other {Wczytano # rezerwacji.}}",
+      "allSet": "Gotowe. Brak nowych rezerwacji do wczytania."
+    },
+    "page": {
+      "title": "Moje rezerwacje",
+      "description": "Twoje degustacje i doświadczenia. Wszystko w jednym miejscu.",
+      "stats": {
+        "totalBookings": "{count, plural, one {rezerwacja} few {rezerwacje} many {rezerwacji} other {rezerwacji}}",
+        "upcoming": "nadchodzące",
+        "confirmedCount": "{count} potwierdzone"
+      },
+      "sync": {
+        "toggle": "Zarezerwowano na innym urządzeniu? Wczytaj przez email",
+        "submit": "Wczytaj rezerwacje",
+        "loadByEmail": "Wczytaj przez email",
+        "mergeHint": "Połączymy rezerwacje z tym urządzeniem."
+      },
+      "loading": {
+        "aria": "Wczytywanie rezerwacji",
+        "sr": "Wczytywanie rezerwacji…"
+      },
+      "empty": {
+        "aria": "Stan pustych rezerwacji",
+        "cta": {
+          "bookGuidedHike": "Zarezerwuj wędrówkę z przewodnikiem"
+        }
+      },
+      "noUpcoming": {
+        "title": "Brak nadchodzących rezerwacji",
+        "body": "Wczytaj rezerwacje z innego urządzenia lub zaplanuj kolejną wizytę."
+      },
+      "tomorrowHighlight": {
+        "title": "Jutro — {providers} — wskazówki dojazdu gotowe.",
+        "body": "Zobacz szczegóły poniżej lub dodaj do planu."
+      },
+      "groups": {
+        "today": "Dziś",
+        "thisWeek": "W tym tygodniu",
+        "later": "Później"
+      },
+      "relative": {
+        "today": "Dziś",
+        "tomorrow": "Jutro",
+        "inDays": "Za {count} dni"
+      },
+      "today": {
+        "guidedHike": "Twoja wędrówka z przewodnikiem jest dziś — zobacz szczegóły poniżej.",
+        "tasting": "Twoja degustacja jest dziś — zobacz szczegóły winnicy poniżej."
+      },
+      "tomorrow": {
+        "reminder": "Jutro — ustaw przypomnienie, jeśli chcesz."
+      },
+      "cta": {
+        "viewTrails": "Zobacz szlaki",
+        "viewWinery": "Zobacz winnicę",
+        "modify": "Zmień",
+        "bookAgain": "Zarezerwuj ponownie",
+        "browseTrails": "Przeglądaj szlaki",
+        "visitWineryPage": "Strona winnicy",
+        "discoverAll": "Odkrywaj wszystko"
+      },
+      "past": {
+        "heading": "Minione i anulowane"
+      },
+      "bookMore": {
+        "title": "Zarezerwuj więcej",
+        "titleNoUpcoming": "Zaplanuj kolejną wizytę",
+        "body": "Dodaj kolejną degustację do zimowej podróży.",
+        "bodyNoUpcoming": "Wszystkie degustacje masz już za sobą. Zarezerwuj kolejną na następny wyjazd."
+      }
+    }
   },
   "search": {
     "title": "Znajdź miejsce lub szlak",
@@ -237,6 +524,128 @@
     "clearFiltersAria": "Wyczyść filtry i pokaż wszystkie wydarzenia",
     "noMatch": "Żadne wydarzenie nie pasuje do filtrów. Spróbuj inny typ lub region."
   },
+  "weather": {
+    "page": {
+      "title": "Zimowa pogoda na Cyprze według miesięcy",
+      "description": "Temperatury na wybrzeżu i w Troodos miesiąc po miesiącu. Zaplanuj warstwy, szlaki i wizyty w winnicach.",
+      "table": {
+        "month": "Miesiąc",
+        "coast": "Wybrzeże (°C)",
+        "coastConditions": "Warunki",
+        "troodos": "Troodos (°C)",
+        "troodosConditions": "Warunki"
+      },
+      "mobile": {
+        "details": "Szczegóły →"
+      },
+      "body": {
+        "coastTroodos": "Wybrzeże to Larnaka, Limassol, Pafos — łagodne, śródziemnomorskie zimy. Troodos to góry: wioski jak Platres i Omodos oraz ośrodek narciarski na Olimpie. Zapakuj warstwy; różnica między wybrzeżem a górami może sięgać 10°C.",
+        "linkTrails": "Sprawdź warunki na szlakach",
+        "linkTrailsSuffix": "zanim ruszysz w górę.",
+        "linkWineries": "Zimowe winnice",
+        "linkWineriesSuffix": "— degustacje przy kominku, rezerwuj wcześniej."
+      }
+    },
+    "month": {
+      "pageHeaderTitle": "Zimowa pogoda na Cyprze: {month}",
+      "pageHeaderDescription": "Wybrzeże {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
+      "meta": {
+        "notFoundTitle": "Nie znaleziono pogody | Cyprus Winter",
+        "notFoundDescription": "Zimowa pogoda na Cyprze według miesięcy: grudzień, styczeń, luty, marzec. Temperatury na wybrzeżu i w Troodos."
+      },
+      "conditionsHeading": "Czego się spodziewać",
+      "conditionsCoastTitle": "Wybrzeże (Larnaka, Limassol, Pafos)",
+      "conditionsTroodosTitle": "Troodos (góry, wioski)",
+      "eventsHeading": "Zimowe wydarzenia w {month}",
+      "cta": {
+        "trailConditions": "Warunki na szlakach",
+        "winterWineries": "Zimowe winnice"
+      },
+      "footer": {
+        "allMonths": "Wszystkie miesiące",
+        "troodosWinter": "Troodos zimą"
+      }
+    }
+  },
+  "account": {
+    "title": "Moje konto",
+    "loading": "Wczytywanie…",
+    "signedIn": {
+      "description": "Twój plan i rezerwacje, zsynchronizowane między urządzeniami.",
+      "signOut": "Wyloguj się",
+      "cta": {
+        "plan": "Mój plan",
+        "bookings": "Zobacz moje rezerwacje",
+        "settings": "Ustawienia"
+      }
+    },
+    "signedOut": {
+      "title": "Zapisz plan na wszystkich urządzeniach",
+      "description": "Zaloguj się, aby synchronizować plan i rezerwacje między urządzeniami.",
+      "body": "Utwórz darmowe konto, a Twój plan podróży i rezerwacje będą z Tobą wszędzie.",
+      "cta": {
+        "create": "Utwórz konto",
+        "signIn": "Zaloguj się",
+        "skip": "Pomiń — używaj planu tylko na tym urządzeniu"
+      }
+    },
+    "notConfigured": {
+      "title": "Logowanie wkrótce",
+      "description": "Logowanie (wkrótce) będzie synchronizować plan i rezerwacje między urządzeniami.",
+      "body": "Twój plan i rezerwacje są na tym urządzeniu. Użyj wyszukiwania po emailu na stronie rezerwacji, aby wczytać rezerwacje z innego urządzenia."
+    },
+    "settings": {
+      "title": "Ustawienia",
+      "loading": "Wczytywanie…",
+      "description": "Dostosuj doświadczenie. Używamy tych ustawień, aby podsuwać miejsca i szlaki pasujące do Twojego stylu.",
+      "interests": {
+        "title": "Zainteresowania",
+        "body": "Wybierz, co Cię kręci. Odkrywaj, Right Now i sugestie planu będą się do tego dopasowywać.",
+        "labels": {
+          "active": "Wędrówki i szlaki",
+          "culture": "Historia i archeologia",
+          "wine": "Wino i degustacje",
+          "wellness": "Wellness i relaks",
+          "villages": "Górskie wioski"
+        }
+      },
+      "travelStyle": {
+        "title": "Styl podróży",
+        "body": "Pomaga dopasować sugestie (np. miejsca dla rodzin, wyjazdy dla par).",
+        "labels": {
+          "solo": "Solo",
+          "couple": "Para",
+          "family": "Rodziny",
+          "group": "Grupa",
+          "nomad": "Cyfrowy nomada"
+        }
+      },
+      "regions": {
+        "title": "Ulubione regiony",
+        "body": "Będziemy promować treści z tych regionów w Odkrywaj i Right Now."
+      },
+      "notifications": {
+        "title": "Powiadomienia",
+        "body": "Jeśli włączysz push, użyjemy tych preferencji do alertów.",
+        "trails": "Aktualizacje warunków na szlakach (Troodos itp.)",
+        "events": "Zimowe wydarzenia i festiwale"
+      },
+      "privacy": {
+        "title": "Dane i prywatność",
+        "body": "Kontroluj, co przechowujemy na tym urządzeniu. Dla danych, które posiadamy (rezerwacje, raporty szlaków), możesz poprosić o eksport lub usunięcie.",
+        "clear": "Wyczyść ostatnio oglądane",
+        "cleared": "Ostatnio oglądane wyczyszczone",
+        "requestExport": "Poproś o eksport danych",
+        "requestDeletion": "Poproś o usunięcie",
+        "footer": {
+          "prefix": "Podaj email użyty do rezerwacji lub raportów szlaków. Odpowiadamy w ciągu 30 dni. Zobacz naszą",
+          "privacyPolicy": "Politykę prywatności",
+          "suffix": "."
+        }
+      },
+      "backToAccount": "← Wróć do konta"
+    }
+  },
   "onboarding": {
     "welcome": "Cyprus Winter",
     "description": "Szlaki, wioski, winnice. Planuj w drodze — bez konta.",
@@ -251,6 +660,67 @@
     "tipFirstAdd": "W twoim planie. Dodaj więcej lub udostępnij trasę.",
     "tipDiscoverFilter": "Filtruj według wiosek, winnic lub szlaków.",
     "savePlan": "Zapisz plan — załóż konto, aby synchronizować"
+  },
+  "help": {
+    "planEmpty": "Kliknij „Dodaj miejsca”, aby zacząć budować plan z Odkrywaj lub Szlaków.",
+    "planFirstItem": "Dobry start. Dodaj kolejne miejsca lub zmień dzień, żeby zaplanować całą podróż.",
+    "discoverFilter": "Użyj filtrów, aby znaleźć dokładnie to, czego szukasz—winnice, szlaki, plaże i więcej.",
+    "bookingForm": "Uzupełnij dane, a winnica potwierdzi mailem. Zwykle odpowiadają w ciągu 24 godzin.",
+    "aiAssistant": "Pytaj o wszystko—najlepsze szlaki, winnice albo pomoc w ułożeniu dnia."
+  },
+  "auth": {
+    "login": {
+      "title": "Witaj ponownie",
+      "subtitle": "Twój plan i rezerwacje są zawsze z Tobą. Szlaki, wioski, winnice — wszystko w jednym miejscu.",
+      "errorInvalidCredentials": "Email lub hasło nie pasuje. Spróbuj ponownie albo użyj magicznego linku.",
+      "errorConfirmEmail": "Najpierw potwierdź swój email. Sprawdź skrzynkę odbiorczą i link aktywacyjny.",
+      "errorGeneric": "Coś poszło nie tak. Spróbuj ponownie za chwilę.",
+      "ctaSignIn": "Zaloguj się",
+      "ctaSendMagicLink": "Wyślij magiczny link",
+      "ctaUseMagic": "Użyj magicznego linku",
+      "ctaUsePassword": "Użyj hasła",
+      "magicSentTitle": "Link wysłany",
+      "magicSentSubtitle": "Wysłaliśmy link do logowania na <strong>{email}</strong>. Kliknij go, aby zalogować się na tym urządzeniu.",
+      "ctaUseDifferentMethod": "Użyj innej metody"
+    },
+    "register": {
+      "title": "Dołącz do Cyprus Winter",
+      "subtitle": "Planuj szlaki, winnice i wioski. Synchronizuj plan podróży między urządzeniami.",
+      "errorEmailExists": "Konto z tym adresem email już istnieje.",
+      "errorPasswordTooShort": "Hasło jest za krótkie. Użyj co najmniej 6 znaków.",
+      "errorInvalidEmail": "Wpisz poprawny adres email.",
+      "errorPasswordsDontMatch": "Hasła nie pasują. Upewnij się, że oba pola są takie same.",
+      "errorGeneric": "Coś poszło nie tak. Spróbuj ponownie za chwilę.",
+      "passwordHint": "Co najmniej 6 znaków",
+      "successTitle": "Prawie gotowe",
+      "successSubtitle": "Wysłaliśmy link potwierdzający na <strong>{email}</strong>. Kliknij go, aby aktywować konto, a potem się zaloguj.",
+      "ctaSignIn": "Zaloguj się",
+      "ctaCreate": "Utwórz konto"
+    },
+    "forgot": {
+      "title": "Nie pamiętasz hasła?",
+      "subtitle": "Wpisz swój email, a wyślemy link do ustawienia nowego hasła.",
+      "errorInvalidEmail": "Wpisz poprawny adres email.",
+      "errorGeneric": "Coś poszło nie tak. Spróbuj ponownie za chwilę.",
+      "successTitle": "Link do resetu wysłany",
+      "successSubtitle": "Wysłaliśmy link do resetu hasła na <strong>{email}</strong>. Kliknij go, aby ustawić nowe hasło.",
+      "ctaSend": "Wyślij link do resetu",
+      "ctaSending": "Wysyłanie…"
+    },
+    "reset": {
+      "inlinePasswordHint": "Co najmniej 6 znaków",
+      "errorPasswordsDontMatch": "Hasła nie pasują. Upewnij się, że oba pola są takie same.",
+      "errorPasswordTooShort": "Hasło jest za krótkie. Użyj co najmniej 6 znaków.",
+      "errorGeneric": "Coś poszło nie tak. Spróbuj ponownie za chwilę.",
+      "invalidLinkTitle": "Nieprawidłowy lub wygasły link",
+      "invalidLinkSubtitle": "Ten link do resetu mógł wygasnąć. Poproś o nowy, aby ustawić hasło.",
+      "configTitle": "Ustaw nowe hasło",
+      "configSubtitle": "Uwierzytelnianie jest w trakcie konfiguracji. Gdy będzie gotowe, użyj linku resetu z maila.",
+      "successTitle": "Hasło zaktualizowane",
+      "successSubtitle": "Hasło zostało ustawione. Możesz teraz zalogować się nowym hasłem.",
+      "ctaUpdate": "Zaktualizuj hasło",
+      "ctaUpdating": "Aktualizowanie…"
+    }
   },
   "meta": {
     "homeTitle": "Cyprus Winter | Morze Śródziemne zimą",
