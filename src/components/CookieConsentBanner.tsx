@@ -53,13 +53,17 @@ export default function CookieConsentBanner() {
     <div
       ref={bannerRef}
       role="dialog"
+      aria-modal="false"
       aria-live="polite"
-      aria-label="Cookie consent"
-      className="fixed bottom-0 left-0 right-0 z-[9998] p-4 md:p-5 bg-sand-100 border-t border-sand-300 shadow-lg safe-area-pb"
+      aria-labelledby="cookie-banner-title"
+      className="fixed bottom-0 left-0 right-0 z-40 p-4 md:p-5 bg-sand-100 border-t border-sand-300 shadow-lg safe-area-pb"
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
       <div className={`${LAYOUT.listNarrow} mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4`}>
         <p className="text-sm text-olive/90">
+          <span id="cookie-banner-title" className="font-semibold">
+            Cookie consent.
+          </span>{" "}
           We use essential cookies for the service and optional analytics to improve it. By clicking &quot;Accept&quot; you allow analytics.{" "}
           <AppLink href="/privacy#cookies" className="text-terracotta hover:underline">
             Learn more

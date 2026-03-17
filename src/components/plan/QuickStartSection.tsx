@@ -7,6 +7,7 @@ import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { getRecommendedTemplates } from "@/lib/personalization";
 import type { PlanItem } from "@/data";
+import { useTranslations } from "next-intl";
 
 type QuickStartSectionProps = {
   activeDay: number;
@@ -31,6 +32,7 @@ export default function QuickStartSection({
   hasContent,
   tripLength,
 }: QuickStartSectionProps) {
+  const tPlanQuick = useTranslations("planQuick");
   const activeDayItems = days[activeDay] ?? [];
   const { prefs, hydrated } = useUserPreferences();
 
@@ -105,26 +107,29 @@ export default function QuickStartSection({
           className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-aegean/10 text-aegean text-xs font-semibold uppercase tracking-wider"
           aria-hidden
         >
-          {hasContent ? "Ideas" : "Templates"}
+          {hasContent ? tPlanQuick("kickerHasContent") : tPlanQuick("kickerEmpty")}
         </span>
-        <h2 id="quick-start-heading" className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2">
-          {hasContent ? "Add more to your plan" : "Pick a template to start"}
+        <h2
+          id="quick-start-heading"
+          className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2"
+        >
+          {hasContent ? tPlanQuick("titleHasContent") : tPlanQuick("titleEmpty")}
         </h2>
         <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
-          {hasContent
-            ? "Use a template to add or replace stops. Or tap a place below."
-            : "Pre-built routes from coast to mountains. One click fills Day 1."}
+          {hasContent ? tPlanQuick("descHasContent") : tPlanQuick("descEmpty")}
         </p>
         {!hasContent && tripLength == null && (
           <p className="text-sm text-olive/60 max-w-xl mt-2">
-            Set your dates above to see templates that fit your trip.
+            {tPlanQuick("setDatesHint")}
           </p>
         )}
       </header>
 
       {!hasContent && (
         <div className="space-y-4">
-          <p className="text-sm font-medium text-olive/80">Quick add to Day {activeDay}</p>
+          <p className="text-sm font-medium text-olive/80">
+            {tPlanQuick("quickAddLabel", { day: activeDay })}
+          </p>
           <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
@@ -138,14 +143,23 @@ export default function QuickStartSection({
                   disabled={inDay}
                   className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
                   aria-pressed={inDay}
-                  aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
+                  aria-label={
+                    inDay
+                      ? tPlanQuick("quickAddAriaAdded", { label })
+                      : tPlanQuick("quickAddAriaAdd", { label, day: activeDay })
+                  }
                 >
-                  {inDay ? "Added " : ""}{label}
+                  {inDay ? `${tPlanQuick("quickAddAriaAdded", { label })} ` : ""}
+                  {label}
                 </button>
               );
             })}
-            <AppLink href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Discover places">
-              Discover
+            <AppLink
+              href="/discover"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("browsePlacesAria")}
+            >
+              {tPlanQuick("browsePlacesCta")}
             </AppLink>
             <AppLink href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse trails">
               Trails
@@ -163,7 +177,9 @@ export default function QuickStartSection({
       <div className="space-y-8 sm:space-y-10">
         {forYou.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-xs font-semibold text-terracotta uppercase tracking-wider">For you</h3>
+            <h3 className="text-xs font-semibold text-terracotta uppercase tracking-wider">
+              {tPlanQuick("forYou")}
+            </h3>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
               {forYou.map((template) => (
                 <div key={template.key} className={templateCardClass}>
@@ -175,7 +191,9 @@ export default function QuickStartSection({
         )}
         {recommended.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-xs font-semibold text-aegean uppercase tracking-wider">For your {tripLength}-day trip</h3>
+            <h3 className="text-xs font-semibold text-aegean uppercase tracking-wider">
+              {tripLength != null ? tPlanQuick("forTrip", { days: tripLength }) : tPlanQuick("forYou")}
+            </h3>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
               {recommended.map((template) => (
                 <div key={template.key} className={templateCardClass}>
@@ -187,7 +205,7 @@ export default function QuickStartSection({
         )}
         <div className="space-y-4">
           <h3 className="text-xs font-semibold text-olive/70 uppercase tracking-wider">
-            {recommended.length > 0 || forYou.length > 0 ? "More templates" : "Templates"}
+            {tPlanQuick("kickerEmpty")}
           </h3>
           <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
             {others.map((template) => (
