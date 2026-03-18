@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 type Props = {
   email: string;
   onEmailChange: (value: string) => void;
@@ -20,21 +22,25 @@ export default function BookingsEmailLookup({
   error,
   success,
   onSubmit,
-  submitLabel = "Load bookings",
+  submitLabel,
   layout = "inline",
   onRetry,
 }: Props) {
+  const tCommon = useTranslations("common");
+  const tBookings = useTranslations("bookings");
+
   const inputClasses =
     "flex-1 min-w-0 min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-2.5 text-sm text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 disabled:opacity-50";
   const buttonClasses =
     "inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg bg-terracotta text-white text-sm font-medium hover:bg-terracotta-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background";
   const isStacked = layout === "stacked";
+  const resolvedSubmitLabel = submitLabel ?? tBookings("page.sync.submit");
 
   return (
     <form onSubmit={onSubmit} className={isStacked ? "w-full max-w-sm mx-auto" : ""}>
       <div className={`flex flex-col gap-3 ${isStacked ? "w-full" : "sm:flex-row"}`}>
         <label htmlFor="bookings-email-lookup" className="sr-only">
-          Your email to load bookings from another device
+          {tBookings("emailLookup.srLabel")}
         </label>
         <input
           id="bookings-email-lookup"
@@ -42,13 +48,13 @@ export default function BookingsEmailLookup({
           autoComplete="email"
           value={email}
           onChange={(e) => onEmailChange(e.target.value)}
-          placeholder="your@email.com"
+          placeholder={tBookings("emailLookup.placeholder")}
           className={inputClasses}
           aria-invalid={!!error}
           aria-describedby={error ? "bookings-email-error" : success ? "bookings-email-success" : undefined}
         />
         <button type="submit" disabled={loading} className={`${buttonClasses} ${isStacked ? "w-full" : ""}`}>
-          {loading ? "Loading…" : submitLabel}
+          {loading ? tCommon("loading.ellipsis") : resolvedSubmitLabel}
         </button>
       </div>
       {(error || success) && (
@@ -67,7 +73,7 @@ export default function BookingsEmailLookup({
               onClick={onRetry}
               className="mt-2 inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-terracotta hover:bg-terracotta/10 border border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              Try again
+              {tCommon("tryAgain")}
             </button>
           )}
         </div>

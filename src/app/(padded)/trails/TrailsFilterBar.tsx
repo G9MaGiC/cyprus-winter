@@ -5,6 +5,7 @@ import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import StickyFilterBar from "@/components/StickyFilterBar";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import type { TrailStatus } from "@/data/trails";
+import { useTranslations } from "next-intl";
 
 type TrailsFilterBarProps = {
   filteredCount: number;
@@ -29,20 +30,27 @@ export default function TrailsFilterBar({
   cautionCount,
   closedCount,
 }: TrailsFilterBarProps) {
+  const tTrails = useTranslations("trails");
+  const tCommon = useTranslations("common");
+
   return (
-    <StickyFilterBar ariaLabel="Trail filters">
+    <StickyFilterBar ariaLabel={tTrails("filters.aria.section")}>
       <div className={`${LAYOUT.list} mx-auto space-y-4`}>
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span className="prose-label text-olive/60 uppercase tracking-wider">Filter trails</span>
-          <span className="text-olive/60 text-sm">{filteredCount} trails</span>
+          <span className="prose-label text-olive/60 uppercase tracking-wider">
+            {tTrails("filters.aria.section")}
+          </span>
+          <span className="text-olive/60 text-sm">
+            {tTrails("page.list.filteredHeading", { count: filteredCount })}
+          </span>
           {hasFilters && (
             <AppLink href="/trails" className={`text-sm font-medium ${SECTION.aegeanLink} ml-auto sm:ml-2`}>
-              Clear filters
+              {tCommon("clearFilters")}
             </AppLink>
           )}
           {hasInvalidFilter && (
             <span className="text-xs text-olive/60" role="status">
-              — Showing all
+              {tTrails("filterBar.showingAll")}
             </span>
           )}
         </div>

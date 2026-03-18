@@ -1,5 +1,6 @@
 import AppLink from "@/components/AppLink";
 import { CTA, SECTION } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
 type Chip = {
   href: string;
@@ -8,36 +9,35 @@ type Chip = {
   variant: "primary" | "secondary" | "tertiary";
 };
 
-const primary: Chip[] = [
-  { href: "/discover?filter=village", label: "Villages", ariaLabel: "Villages", variant: "primary" },
-  { href: "/discover?filter=winery", label: "Wineries", ariaLabel: "Wineries", variant: "primary" },
-  { href: "/trails", label: "Trails", ariaLabel: "Trails", variant: "secondary" },
-  { href: "/events", label: "Events", ariaLabel: "Events", variant: "secondary" },
-  { href: "/discover?filter=family", label: "Family-friendly", ariaLabel: "Family-friendly", variant: "secondary" },
-  { href: "/trails", label: "Trail conditions", ariaLabel: "Trail conditions", variant: "secondary" },
-  { href: "/discover", label: "All", ariaLabel: "See all", variant: "secondary" },
-];
-
-const also: Chip[] = [
-  { href: "/discover?filter=ancient", label: "Culture", ariaLabel: "Culture", variant: "tertiary" },
-  { href: "/discover?filter=beach", label: "Coasts", ariaLabel: "Coasts", variant: "tertiary" },
-  { href: "/discover?filter=monastery", label: "Monasteries", ariaLabel: "Monasteries", variant: "tertiary" },
-];
-
 function chipClass(v: Chip["variant"]) {
   if (v === "primary") return CTA.chipPrimary;
   if (v === "secondary") return CTA.chipSecondary;
   return CTA.chipTertiary;
 }
 
-export default function CategoryChips() {
+export default async function CategoryChips() {
+  const t = await getTranslations("home");
+  const primary: Chip[] = [
+    { href: "/discover?filter=village", label: t("startHere.chip.villages"), ariaLabel: t("startHere.chip.villages"), variant: "primary" },
+    { href: "/discover?filter=winery", label: t("startHere.chip.wineries"), ariaLabel: t("startHere.chip.wineries"), variant: "primary" },
+    { href: "/trails", label: t("startHere.chip.trails"), ariaLabel: t("startHere.chip.trails"), variant: "secondary" },
+    { href: "/events", label: t("startHere.chip.events"), ariaLabel: t("startHere.chip.events"), variant: "secondary" },
+    { href: "/discover?filter=family", label: t("startHere.chip.familyFriendly"), ariaLabel: t("startHere.chip.familyFriendly"), variant: "secondary" },
+    { href: "/trails", label: t("startHere.chip.trailConditions"), ariaLabel: t("startHere.chip.trailConditions"), variant: "secondary" },
+    { href: "/discover", label: t("startHere.chip.all"), ariaLabel: t("startHere.chip.seeAll"), variant: "secondary" },
+  ];
+  const also: Chip[] = [
+    { href: "/discover?filter=ancient", label: t("startHere.chip.culture"), ariaLabel: t("startHere.chip.culture"), variant: "tertiary" },
+    { href: "/discover?filter=beach", label: t("startHere.chip.coasts"), ariaLabel: t("startHere.chip.coasts"), variant: "tertiary" },
+    { href: "/discover?filter=monastery", label: t("startHere.chip.monasteries"), ariaLabel: t("startHere.chip.monasteries"), variant: "tertiary" },
+  ];
   return (
     <>
       <div className="relative">
         <div
           className="flex flex-nowrap sm:flex-wrap overflow-x-auto scroll-smooth scroll-touch sm:overflow-visible justify-start sm:justify-center gap-3 pb-2 -mx-1 sm:mx-0 px-1 sm:px-0 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           role="navigation"
-          aria-label="Browse by category"
+          aria-label={t("startHere.aria.browseByCategory")}
         >
           {primary.map((c) => (
             <AppLink key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>
@@ -52,7 +52,7 @@ export default function CategoryChips() {
       </div>
 
       <div className={`mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-sand-200/80`}>
-        <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>Also: Culture, Coasts, Monasteries</p>
+        <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>{t("startHere.alsoSubtitle")}</p>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {also.map((c) => (
             <AppLink key={`${c.href}-${c.label}`} href={c.href} className={chipClass(c.variant)} aria-label={c.ariaLabel}>

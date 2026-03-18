@@ -1,8 +1,10 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function BookingsLoading() {
+  const t = useTranslations("common");
   return (
-    <div className="min-h-screen bg-sand" aria-busy aria-live="polite" role="status" aria-label="Loading bookings">
+    <div className="min-h-screen bg-sand" aria-busy aria-live="polite" role="status" aria-label={t("loading.bookings")}>
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse min-h-[60vh]`}>
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
         <div className={`h-9 w-64 ${SKELETON.bar} mb-2`} />

@@ -1,17 +1,20 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-
-const QUICK_CHIPS = [
-  { id: "short-easy", label: "Short & easy", href: "/trails?difficulty=easy" },
-  { id: "open", label: "Open today", href: "/trails?status=open" },
-  { id: "winter", label: "Winter highlights", href: "/trails?region=Troodos" },
-];
+import { useTranslations } from "next-intl";
 
 export default function TrailsQuickFilters() {
+  const t = useTranslations("trails");
+
+  const QUICK_CHIPS = [
+    { id: "short-easy", label: t("quickFilters.chips.shortEasy"), href: "/trails?difficulty=easy" },
+    { id: "open", label: t("quickFilters.chips.openToday"), href: "/trails?status=open" },
+    { id: "winter", label: t("quickFilters.chips.winterHighlights"), href: "/trails?region=Troodos" },
+  ];
+
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="prose-label text-olive/60 mr-1">Quick:</span>
+      <span className="prose-label text-olive/60 mr-1">{t("quickFilters.label")}</span>
       {QUICK_CHIPS.map((chip) => (
         <AppLink
           key={chip.id}

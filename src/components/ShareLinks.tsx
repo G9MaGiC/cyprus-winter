@@ -1,6 +1,7 @@
 "use client";
 
 import { toAbsoluteUrl } from "@/lib/site-url";
+import { useTranslations } from "next-intl";
 
 export type ShareLinksProps = {
   /** Page path (e.g. "/plan", "/discover/omodos") */
@@ -41,6 +42,7 @@ export default function ShareLinks({
   className = "",
 }: ShareLinksProps) {
   const url = toAbsoluteUrl(path);
+  const tCommon = useTranslations("common");
 
   const links = [
     {
@@ -77,7 +79,7 @@ export default function ShareLinks({
 
   return (
     <div className={`flex items-center gap-2 ${className}`} role="group" aria-label={ariaLabel}>
-      <span className="text-sm font-medium text-olive/70 sr-only sm:not-sr-only">Share:</span>
+      <span className="text-sm font-medium text-olive/70 sr-only sm:not-sr-only">{tCommon("shareColon")}</span>
       {links.map(({ platform, href, label, icon }) => (
         <a
           key={platform}
@@ -85,8 +87,8 @@ export default function ShareLinks({
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg text-olive/70 hover:text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          aria-label={`Share on ${label}`}
-          title={`Share on ${label}`}
+          aria-label={tCommon("aria.shareOn", { label })}
+          title={tCommon("aria.shareOn", { label })}
         >
           {icon}
         </a>

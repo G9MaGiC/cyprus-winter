@@ -4,6 +4,7 @@ import { allDiscoverItems } from "@/data/discover";
 import { SECTION, TYPE, LAYOUT } from "@/lib/design-tokens";
 import type { DiscoverMapPlace } from "./DiscoverMap";
 import DiscoverMapClient from "./DiscoverMapClient";
+import { getTranslations } from "next-intl/server";
 
 function getDiscoverMapPlaces(): DiscoverMapPlace[] {
   const results: DiscoverMapPlace[] = [];
@@ -32,8 +33,9 @@ function getDiscoverMapPlaces(): DiscoverMapPlace[] {
   return results;
 }
 
-export default function DiscoverMapSection() {
+export default async function DiscoverMapSection() {
   const places = getDiscoverMapPlaces();
+  const tDiscover = await getTranslations("discover");
   return (
     <section
       id="discover-map"
@@ -45,16 +47,16 @@ export default function DiscoverMapSection() {
           id="discover-map-heading"
           className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
         >
-          {places.length > 0 ? `Places on map (${places.length})` : "Places on map"}
+          {places.length > 0 ? tDiscover("map.sectionTitleWithCount", { count: places.length }) : tDiscover("map.sectionTitle")}
         </h2>
         <p className="text-xs text-olive/60 -mt-2 mb-3">
-          Curated by the Cyprus Winter team.
+          {tDiscover("map.curatedBy")}
         </p>
         <div className="rounded-xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
           {places.length === 0 ? (
             <div className="min-h-[280px] flex flex-col items-center justify-center gap-2 py-12 px-6 text-center">
-              <p className="text-sm text-olive/70">No places with coordinates to display.</p>
-              <p className="text-xs text-olive/60">Browse the list above to explore places.</p>
+              <p className="text-sm text-olive/70">{tDiscover("map.emptyTitle")}</p>
+              <p className="text-xs text-olive/60">{tDiscover("map.emptyBody")}</p>
             </div>
           ) : (
             <DiscoverMapClient places={places} />

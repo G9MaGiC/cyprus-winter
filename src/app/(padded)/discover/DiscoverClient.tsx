@@ -27,6 +27,7 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
   const { prefs, hydrated } = useUserPreferences();
   const { showTipDiscoverFilter, dismissTipDiscoverFilter } = useOnboardingContext();
   const t = useTranslations("onboarding");
+  const tDiscover = useTranslations("discover");
   const filterParam = searchParams?.get("filter") ?? "";
   const filter = filterToSectionId[filterParam];
   const sectionExists = filter && sections.some((s) => s.id === filter);
@@ -54,7 +55,7 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
   const activeSection = sections.find((s) => s.id === filter);
   const activeSectionTitle =
     filterParam === "nature"
-      ? "Nature & coasts"
+      ? tDiscover("page.filters.natureAndCoasts")
       : activeSection?.title ?? "Places";
 
   const scrollBehavior = () =>
@@ -81,13 +82,13 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
 
   const filterAnnouncement =
     filter && sectionExists
-      ? `Showing ${activeSectionTitle}, ${totalCount} places`
-      : "Showing all places";
+      ? tDiscover("page.filterAnnouncement.showing", { section: activeSectionTitle, count: totalCount })
+      : tDiscover("page.filterAnnouncement.all");
 
   return (
     <div
       id="discover-content"
-      aria-label="Discover places in Cyprus"
+      aria-label={tDiscover("page.contentAria")}
       className="-mt-4 sm:-mt-6"
     >
       <SRStatus message={filterAnnouncement} />
@@ -112,14 +113,14 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
           />
         )}
         <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
-          Curated for winter. Add to your plan as you browse.
+          {tDiscover("page.curatedLine")}
         </p>
 
         <DiscoverSectionList ref={firstSectionRef} sections={sectionsToShow} />
 
         {children}
 
-        <RightNowNearYou title="Right now near you" />
+        <RightNowNearYou title={tDiscover("page.rightNowTitle")} />
 
         <DiscoverFooter onScrollToMap={scrollToMap} />
       </div>

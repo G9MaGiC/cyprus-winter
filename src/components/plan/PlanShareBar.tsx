@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import ShareLinks from "@/components/ShareLinks";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
 
@@ -25,6 +26,7 @@ export default function PlanShareBar({
   copyShareLink,
   copyItinerary,
 }: PlanShareBarProps) {
+  const tPlan = useTranslations("plan");
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
   const shareMenuRef = useRef<HTMLDivElement>(null);
   const shareMenuTriggerRef = useRef<HTMLButtonElement>(null);
@@ -49,7 +51,7 @@ export default function PlanShareBar({
   return (
     <div
       role="region"
-      aria-label="Itinerary summary and share"
+      aria-label={tPlan("aria.shareRegion")}
       className={`${STRIP.py} py-5 sm:py-6 bg-sand-100/60 border-b border-sand-200/80 ${LAYOUT.stickyBarX}`}
     >
       <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-4`}>
@@ -62,7 +64,7 @@ export default function PlanShareBar({
             {activeDaysCount}/{displayDaysCount}
           </span>
           <span className="text-olive/60">days</span>
-          <span className="text-olive/50">· Auto-saved</span>
+          <span className="text-olive/50">· {tPlan("autoSaved")}</span>
         </p>
         <div className="relative" ref={shareMenuRef}>
           <button
@@ -72,7 +74,7 @@ export default function PlanShareBar({
             className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta/10 text-terracotta hover:bg-terracotta/15 border border-terracotta/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-expanded={shareMenuOpen}
             aria-haspopup="menu"
-            aria-label="Copy and share options"
+            aria-label={tPlan("aria.shareMenu")}
           >
             Copy & share
             <span className={`text-terracotta/70 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
@@ -122,7 +124,12 @@ export default function PlanShareBar({
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                 }}
               >
-                <ShareLinks path={sharePath} text="My Cyprus Winter itinerary —" ariaLabel="Share via" className="flex flex-wrap gap-2" />
+                <ShareLinks
+                  path={sharePath}
+                  text="My Cyprus Winter itinerary —"
+                  ariaLabel={tPlan("aria.shareVia")}
+                  className="flex flex-wrap gap-2"
+                />
               </div>
             </div>
           )}

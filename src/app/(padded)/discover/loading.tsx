@@ -1,4 +1,5 @@
 import { LAYOUT, CARD, SKELETON, SECTION } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 function CardSkeleton() {
   return (
@@ -56,13 +57,14 @@ function PlaceOfDaySkeleton() {
 }
 
 export default function DiscoverLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-background ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading discover"
+      aria-label={t("loading.discover")}
     >
       <HeroSkeleton />
 

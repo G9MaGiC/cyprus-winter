@@ -7,6 +7,7 @@
 
 import { cn } from "@/lib/utils";
 import { SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 interface SkeletonProps {
   className?: string;
@@ -67,9 +68,16 @@ export function BookingCardSkeleton() {
 }
 
 export function ListSkeleton({ count = 3 }: { count?: number }) {
+  const tCommon = useTranslations("common");
   return (
-    <div className="space-y-4" role="status" aria-live="polite" aria-busy="true" aria-label="Loading content">
-      <span className="sr-only">Loading…</span>
+    <div
+      className="space-y-4"
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+      aria-label={tCommon("loading.content")}
+    >
+      <span className="sr-only">{tCommon("loading.ellipsis")}</span>
       {Array.from({ length: count }).map((_, i) => (
         <Skeleton key={i} className="h-28 w-full" />
       ))}

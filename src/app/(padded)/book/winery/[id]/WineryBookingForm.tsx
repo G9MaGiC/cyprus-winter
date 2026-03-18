@@ -6,6 +6,7 @@ import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
+import { useTranslations } from "next-intl";
 
 export default function WineryBookingForm({
   wineryId,
@@ -14,6 +15,9 @@ export default function WineryBookingForm({
   wineryId: string;
   wineryName: string;
 }) {
+  const t = useTranslations("book.wineryForm");
+  const tCommon = useTranslations("common");
+  const tBookings = useTranslations("bookings");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
@@ -63,7 +67,7 @@ export default function WineryBookingForm({
         const msg =
           data.message ??
           (typeof data.error === "string" ? data.error : data.error?.message) ??
-          "Booking failed";
+          t("errors.failed");
         throw new Error(msg);
       }
 
@@ -91,7 +95,7 @@ export default function WineryBookingForm({
           body,
         });
       }
-      const fallback = "Something went wrong — check your connection and try again.";
+      const fallback = t("errors.fallback");
       setError(msg && !isNetworkError ? msg : fallback);
       setTimeout(() => {
         const behavior =
@@ -116,23 +120,30 @@ export default function WineryBookingForm({
         aria-live="polite"
       >
         <h2 className="font-display text-xl font-semibold text-olive">
-          Request sent
+          {t("success.title")}
         </h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
-          Your tasting request for {wineryName} is on its way. The winery will confirm by email. If you don&apos;t hear back within a day or two, give them a call — they&apos;re usually happy to help.
+          {t("success.body", { wineryName })}
           {storageMode === "memory" && (
-            <> Enter your email on <AppLink href="/bookings" className="text-terracotta underline hover:no-underline">My Bookings</AppLink> to view your request across devices.</>
+            <>
+              {" "}
+              {t("success.crossDevicePrefix")}{" "}
+              <AppLink href="/bookings" className="text-terracotta underline hover:no-underline">
+                {tBookings("title")}
+              </AppLink>{" "}
+              {t("success.crossDeviceSuffix")}
+            </>
           )}
         </p>
         <p className="text-olive/70 text-sm mt-3 break-words">
-          Ask about Commandaria and the indigenous grapes when you&apos;re there. They&apos;re proud of them.
+          {t("success.tip")}
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <AppLink href="/bookings" className={CTA.primaryCompact}>
-            View my bookings
+            {t("success.ctaBookings")}
           </AppLink>
           <AppLink href="/discover" className={CTA.secondaryCompact}>
-            Discover more
+            {t("success.ctaDiscover")}
           </AppLink>
         </div>
       </div>
@@ -147,9 +158,9 @@ export default function WineryBookingForm({
 
       <div>
         <label htmlFor="date" className="block text-sm font-medium text-olive mb-1">
-          Preferred date
+          {t("fields.date.label")}
         </label>
-        <p className="text-xs text-olive/60 mb-2">Winter tastings fill up. A few days ahead helps.</p>
+        <p className="text-xs text-olive/60 mb-2">{t("fields.date.hint")}</p>
         <input
           id="date"
           name="date"
@@ -162,7 +173,7 @@ export default function WineryBookingForm({
 
       <div>
         <label htmlFor="partySize" className="block text-sm font-medium text-olive mb-1">
-          Group size
+          {t("fields.partySize.label")}
         </label>
         <select
           id="partySize"
@@ -172,16 +183,16 @@ export default function WineryBookingForm({
         >
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
             <option key={n} value={n}>
-              {n} {n === 1 ? "person" : "people"}
+              {tCommon("peopleCount", { count: n })}
             </option>
           ))}
-          <option value="11">11+ people</option>
+          <option value="11">{t("fields.partySize.plus")}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="guestName" className="block text-sm font-medium text-olive mb-1">
-          Your name
+          {t("fields.guestName.label")}
         </label>
         <input
           id="guestName"
@@ -190,14 +201,14 @@ export default function WineryBookingForm({
           autoComplete="name"
           required
           maxLength={200}
-          placeholder="John Smith"
+          placeholder={t("fields.guestName.placeholder")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
       <div>
         <label htmlFor="guestEmail" className="block text-sm font-medium text-olive mb-1">
-          Email
+          {t("fields.guestEmail.label")}
         </label>
         <input
           id="guestEmail"
@@ -205,22 +216,22 @@ export default function WineryBookingForm({
           type="email"
           autoComplete="email"
           required
-          placeholder="john@example.com"
+          placeholder={t("fields.guestEmail.placeholder")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
       <div>
         <label htmlFor="notes" className="block text-sm font-medium text-olive mb-1">
-          Notes <span className="text-olive/50">(optional)</span>
+          {t("fields.notes.label")} <span className="text-olive/50">{t("fields.notes.optional")}</span>
         </label>
-        <p className="text-xs text-olive/60 mb-2">Fireside table? Dietary needs? Just mention it — wineries are used to it.</p>
+        <p className="text-xs text-olive/60 mb-2">{t("fields.notes.hint")}</p>
         <textarea
           id="notes"
           name="notes"
           rows={3}
           maxLength={500}
-          placeholder="Allergies, special occasion, fireside or terrace — whatever helps them welcome you"
+          placeholder={t("fields.notes.placeholder")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
       </div>
@@ -229,19 +240,20 @@ export default function WineryBookingForm({
         type="submit"
         disabled={loading}
         aria-busy={loading}
-        aria-label={loading ? "Sending your request" : "Request booking"}
+        aria-label={loading ? t("submit.ariaSending") : t("submit.ariaIdle")}
         className={`w-full mt-6 py-4 rounded-lg justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:disabled:ring-0 ${CTA.primaryCompact}`}
       >
         {loading && (
           <span className="w-4 h-4 border-2 border-white/60 border-t-white rounded-full animate-spin shrink-0" aria-hidden />
         )}
-        {loading ? "Sending…" : "Request booking"}
+        {loading ? t("submit.sending") : t("submit.idle")}
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
-        This is a request, not a confirmed reservation. The winery will confirm by email. By submitting, you agree to our{" "}
-        <AppLink href="/terms" className="text-olive/70 hover:underline">Terms</AppLink>
-        {" "}and{" "}
-        <AppLink href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</AppLink>.
+        {t("finePrint.bodyPrefix")}{" "}
+        <AppLink href="/terms" className="text-olive/70 hover:underline">{t("finePrint.terms")}</AppLink>{" "}
+        {t("finePrint.and")}{" "}
+        <AppLink href="/privacy" className="text-olive/70 hover:underline">{t("finePrint.privacy")}</AppLink>
+        {t("finePrint.bodySuffix")}
       </p>
     </form>
   );

@@ -41,9 +41,9 @@ export default function RegisterPage() {
     return (
       <AuthLayout
         variant="register"
-        kicker="Create account"
-        title="Create account"
-        subtitle="Auth is being set up. You can still use the app—your plan saves on this device. Check back soon."
+        kicker={tAuth("register.configTitle")}
+        title={tAuth("register.configTitle")}
+        subtitle={tAuth("register.configSubtitle")}
         backHref="/account"
         backLabel={tCommon("backTo", { label: tNav("account") })}
       >
@@ -121,7 +121,7 @@ export default function RegisterPage() {
       backLabel={tCommon("backTo", { label: tNav("account") })}
       footer={
         <>
-          Already have an account?{" "}
+          {tAuth("register.alreadyHavePrefix")}{" "}
           <AppLink
             href="/login"
             className="text-terracotta font-medium hover:text-terracotta-muted transition-colors"
@@ -136,7 +136,7 @@ export default function RegisterPage() {
           <AuthErrorAlert message={error} variant={isAlreadyRegistered ? "aegean" : "terracotta"}>
             {isAlreadyRegistered && (
               <AppLink href="/login" className={SECTION.aegeanLink}>
-                Sign in instead →
+                {tAuth("register.signInInstead")}
               </AppLink>
             )}
           </AuthErrorAlert>
@@ -144,11 +144,11 @@ export default function RegisterPage() {
 
         <AuthInput
           id="reg-name"
-          label="Name (optional)"
+          label={tAuth("register.nameLabel")}
           type="text"
           value={name}
           onChange={setName}
-          placeholder="Your name"
+          placeholder={tAuth("register.namePlaceholder")}
           disabled={loading || isLoading}
           autoComplete="name"
         />
@@ -156,11 +156,11 @@ export default function RegisterPage() {
         <AuthInput
           ref={emailRef}
           id="reg-email"
-          label="Email"
+          label={tAuth("forgot.emailLabel")}
           type="email"
           value={email}
           onChange={setEmail}
-          placeholder="you@example.com"
+          placeholder={tAuth("forgot.emailPlaceholder")}
           disabled={loading || isLoading}
           required
           autoComplete="email"
@@ -169,7 +169,7 @@ export default function RegisterPage() {
 
         <AuthPasswordInput
           id="reg-password"
-          label="Password"
+          label={tAuth("register.passwordLabel")}
           hint={tAuth("register.passwordHint")}
           showStrength
           value={password}
@@ -181,7 +181,7 @@ export default function RegisterPage() {
 
         <AuthPasswordInput
           id="reg-confirm"
-          label="Confirm password"
+          label={tAuth("register.confirmPasswordLabel")}
           value={confirmPassword}
           onChange={setConfirmPassword}
           disabled={loading || isLoading}
@@ -201,7 +201,7 @@ export default function RegisterPage() {
           }
           className={`${CTA.primaryCompact} w-full min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed`}
         >
-          {loading ? "Creating account…" : tAuth("register.ctaCreate")}
+          {loading ? tAuth("register.ctaCreating") : tAuth("register.ctaCreate")}
         </button>
 
         <SocialLoginButtons intent="signup" />

@@ -1,8 +1,10 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function PlanLoading() {
+  const t = useTranslations("common");
   return (
-    <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label="Loading plan">
+    <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label={t("loading.plan")}>
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}>
         {/* Hero */}
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />

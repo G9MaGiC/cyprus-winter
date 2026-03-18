@@ -31,7 +31,7 @@ function EmptyDayState({
           type="button"
           onClick={onBrowseAll}
           className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 hover:border-terracotta/20`}
-          aria-label="Browse places to add to your day"
+          aria-label={tPlan("aria.browsePlacesToAddDay")}
         >
           {tPlan("browsePlaces")}
         </button>
@@ -39,7 +39,7 @@ function EmptyDayState({
           type="button"
           onClick={onScrollToQuickStart}
           className={`${CTA.secondaryCompact} hover:border-terracotta/20`}
-          aria-label="Scroll to templates section"
+          aria-label={tPlan("aria.scrollToTemplates")}
         >
           {tPlan("seeTemplates")}
         </button>
@@ -66,7 +66,7 @@ function DayAddSection({
     <div
       id="plan-inline-add"
       role="region"
-      aria-label={`Add a stop to Day ${activeDay}`}
+      aria-label={tPlanQuick("inlineAddAria", { day: activeDay })}
       className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
     >
       <p className="text-sm font-medium text-olive/80 mb-4">
@@ -147,7 +147,7 @@ export default function DayContentPanel({
   const lastAddedPlace = lastAddedId ? getPlace(lastAddedId) : undefined;
 
   return (
-    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
+    <section aria-label={tPlan("aria.yourItinerary")} className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
         {lastAddedPlace && (
           <div
@@ -166,11 +166,11 @@ export default function DayContentPanel({
                   className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-xl bg-terracotta/10 text-terracotta font-semibold text-sm"
                   aria-hidden
                 >
-                  Day {activeDay}
+                  {tPlan("dayLabel", { day: activeDay })}
                 </span>
                 {activeItems.length > 0 && (
                   <span className="text-sm text-olive/70">
-                    {activeItems.length} {activeItems.length === 1 ? "place" : "places"}
+                    {tPlan("placesCount", { count: activeItems.length })}
                   </span>
                 )}
               </div>
@@ -179,7 +179,7 @@ export default function DayContentPanel({
                   type="button"
                   onClick={onClearDay}
                   className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  aria-label={`Clear all places from Day ${activeDay}`}
+                  aria-label={tPlan("aria.clearDay", { day: activeDay })}
                 >
                   {tPlan("clearDay")}
                 </button>
@@ -187,7 +187,7 @@ export default function DayContentPanel({
             </div>
             {activeItems.length >= 3 && (
               <p className="text-sm text-olive/60 mt-3 leading-relaxed" role="status">
-                Add another stop, or switch day above.
+                {tPlan("addAnotherStopHint")}
               </p>
             )}
           </div>
@@ -204,7 +204,7 @@ export default function DayContentPanel({
                 {useBlocks ? (
                   <>
                     <div className="pt-1 mb-4 pl-12">
-                      <span className={`${TYPE.kicker} text-olive/70`}>Morning</span>
+                      <span className={`${TYPE.kicker} text-olive/70`}>{tPlan("morning")}</span>
                     </div>
                     <div className="space-y-0">
                       {morningIds.map((itemId, i) => (
@@ -223,7 +223,7 @@ export default function DayContentPanel({
                     {afternoonIds.length > 0 && (
                       <>
                         <div className="mt-8 mb-4 pl-12">
-                          <span className={`${TYPE.kicker} text-olive/60`}>Afternoon</span>
+                          <span className={`${TYPE.kicker} text-olive/60`}>{tPlan("afternoon")}</span>
                         </div>
                         <div className="space-y-0">
                           {afternoonIds.map((itemId, i) => (

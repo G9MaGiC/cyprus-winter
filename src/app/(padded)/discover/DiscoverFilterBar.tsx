@@ -29,14 +29,15 @@ export default function DiscoverFilterBar({
   onScrollToMap,
 }: DiscoverFilterBarProps) {
   const tCommon = useTranslations("common");
+  const tDiscover = useTranslations("discover");
   const chips = [
-    { id: "", label: "All" },
-    { id: "nature", label: "Nature & coasts" },
+    { id: "", label: tDiscover("page.filters.all") },
+    { id: "nature", label: tDiscover("page.filters.natureAndCoasts") },
     ...sections.filter((s) => s.id !== "coasts").map((s) => ({ id: s.id, label: s.title })),
   ];
 
   return (
-    <StickyFilterBar ariaLabel="Filter places">
+    <StickyFilterBar ariaLabel={tCommon("filterPlaces")}>
       <div className={`${LAYOUT.list} mx-auto space-y-3`}>
         <div role="group" aria-labelledby="discover-filter-label" className="space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2 gap-y-1">
@@ -68,12 +69,12 @@ export default function DiscoverFilterBar({
                 ? "/discover"
                 : `/discover?filter=${chip.id}`
             }
-            ariaLabel="Filter places"
+            ariaLabel={tCommon("filterPlaces")}
           />
 
           {filterParam && !sectionExists && (
             <p className="text-sm text-olive/70 break-words" role="alert">
-              That filter doesn&apos;t exist—showing all places.{" "}
+              {tDiscover("page.filters.invalid")}{" "}
               <AppLink href="/discover" className={SECTION.aegeanLink}>
                 {tCommon("allCategories")}
               </AppLink>
@@ -94,7 +95,7 @@ export default function DiscoverFilterBar({
             type="button"
             onClick={onScrollToMap}
             className="inline-flex items-center gap-2 min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label="Scroll to map of places"
+            aria-label={tDiscover("aria.scrollToMap")}
           >
             <svg className="w-4 h-4 shrink-0 text-olive/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />

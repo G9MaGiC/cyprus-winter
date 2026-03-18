@@ -11,6 +11,7 @@ import {
   type TrailSummary,
 } from "@/lib/trail-summary-cache";
 import { getLiveWeather, type LiveWeather } from "@/lib/weather-live";
+import { getTranslations } from "next-intl/server";
 
 const FEATURED_TRAIL_IDS = ["artemis", "caledonia-falls", "atalante", "olympus-summit"];
 
@@ -53,6 +54,10 @@ export default async function ThisWeekGrid({
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const [t, tCommon] = await Promise.all([
+    getTranslations("home"),
+    getTranslations("common"),
+  ]);
   const Link = LinkComponent;
   let trailSummary: TrailSummary | null = null;
   let liveWeather: LiveWeather | null = null;
@@ -83,11 +88,12 @@ export default async function ThisWeekGrid({
   const featuredTrailIds = trailIdsWithData.length > 0 ? trailIdsWithData : ["artemis"];
   const featuredTrailId = pickDailyWithKey(featuredTrailIds, "featured-trail");
   const featuredStatus = trailSummary?.[featuredTrailId];
-  const featuredTrail = trails.find((t) => t.id === featuredTrailId);
+  const featuredTrail = trails.find((tr) => tr.id === featuredTrailId);
   const trailName = featuredTrail?.name ?? "Artemis Trail";
   const trailLabel = featuredStatus
     ? formatTrailStatus(featuredStatus.status, featuredStatus.surface)
-    : "View trail reports";
+    : t("thisWeekGrid.viewTrailReports");
+  const weatherTip = tip === "Pack layers for the mountain." ? t("weatherStrip.prompts.fallback") : tip;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
@@ -97,11 +103,11 @@ export default async function ThisWeekGrid({
         className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean rounded-xl group`}
       >
         <div className={CARD.content}>
-          <p className={`${TYPE.kicker} text-sage`}>Weather</p>
+          <p className={`${TYPE.kicker} text-sage`}>{t("thisWeekGrid.weather")}</p>
           <p className="text-2xl font-display font-bold text-charcoal mt-0.5 group-hover:text-terracotta transition-colors text-balance">
-            Coast {coastMid}°C · Troodos {troodosMid}°C
+            {t("thisWeekGrid.coastTroodos", { coast: coastMid, troodos: troodosMid })}
           </p>
-          <p className="text-sm text-sage mt-0.5">{tip}</p>
+          <p className="text-sm text-sage mt-0.5">{weatherTip}</p>
         </div>
       </Link>
 
@@ -109,7 +115,7 @@ export default async function ThisWeekGrid({
         className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group`}
       >
         <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} ${CARD.content}`}>
-          <p className={`${TYPE.kicker} text-sage`}>Trails</p>
+          <p className={`${TYPE.kicker} text-sage`}>{t("thisWeekGrid.trails")}</p>
           <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={trailName}>
             {trailName}
           </p>
@@ -131,13 +137,13 @@ export default async function ThisWeekGrid({
         </Link>
         <div className={CARD.footer}>
           <div className="flex flex-wrap items-center gap-2">
-            <AddToItineraryButton placeId={featuredTrailId} label="Add to plan" className="text-sm" />
+            <AddToItineraryButton placeId={featuredTrailId} label={tCommon("addToPlan")} className="text-sm" />
             <Link
               href="/trails"
               prefetch="auto"
               className={`text-sm font-medium transition-colors ${SECTION.aegeanLink}`}
             >
-              View all conditions →
+              {t("thisWeekGrid.viewAllConditions")}
             </Link>
           </div>
         </div>
@@ -150,14 +156,14 @@ export default async function ThisWeekGrid({
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>
-            What&apos;s on
+            {t("thisWeekGrid.whatsOn")}
           </p>
-          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={eventHighlight ? eventHighlight.name : "Events"}>
+          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={eventHighlight ? eventHighlight.name : t("thisWeekGrid.events")}>
             {eventHighlight
               ? eventHighlight.name
               : winterEvents.length > 0
-                ? "Browse winter events"
-                : "Events"}
+                ? t("thisWeekGrid.browseWinterEvents")
+                : t("thisWeekGrid.events")}
           </p>
           <p className="text-sm text-sage mt-0.5 line-clamp-2 break-words">
             {eventHighlight

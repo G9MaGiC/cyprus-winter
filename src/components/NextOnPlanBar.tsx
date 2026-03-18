@@ -7,6 +7,7 @@ import { useItinerary } from "@/hooks/useItinerary";
 import { useTripDates } from "@/hooks/useTripDates";
 import NavigateButton from "@/components/NavigateButton";
 import { LAYOUT } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 /**
  * Sticky bar showing "Next up: [place]" with Navigate when user has an itinerary.
@@ -14,6 +15,7 @@ import { LAYOUT } from "@/lib/design-tokens";
  */
 export default function NextOnPlanBar() {
   const pathname = usePathname();
+  const tCommon = useTranslations("common");
   const { days, activeDay, hydrated, getPlace } = useItinerary();
   const { dates, hydrated: datesHydrated, daysUntil } = useTripDates();
   const [mounted, setMounted] = useState(false);
@@ -55,17 +57,17 @@ export default function NextOnPlanBar() {
   return (
     <div
       role="complementary"
-      aria-label="Next on your plan"
+      aria-label={tCommon("nextOnPlan.aria")}
       className={`sticky ${LAYOUT.stickyTop} z-20 flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
     >
-      <span className="text-xs font-medium text-white/80 shrink-0">Next up</span>
+      <span className="text-xs font-medium text-white/80 shrink-0">{tCommon("nextOnPlan.prefix")}</span>
       <AppLink
         href={href}
         className="flex-1 min-w-0 truncate font-semibold hover:underline text-sm"
       >
         {place.name}
       </AppLink>
-      <NavigateButton place={place} label="Navigate" variant="light" className="shrink-0" />
+      <NavigateButton place={place} label={tCommon("nextOnPlan.navigate")} variant="light" className="shrink-0" />
     </div>
   );
 }

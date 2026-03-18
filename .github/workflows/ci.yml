@@ -27,6 +27,9 @@ jobs:
       - name: i18n validate
         run: npm run i18n:validate
 
+      - name: i18n coverage
+        run: npm run i18n:coverage
+
       - name: Typecheck
         run: npx tsc --noEmit
 

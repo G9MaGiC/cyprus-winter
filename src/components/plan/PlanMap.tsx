@@ -5,6 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
 import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export type PlanMapItem = {
   id: string;
@@ -49,6 +50,7 @@ type PlanMapProps = {
 };
 
 export default function PlanMap({ items, className = "" }: PlanMapProps) {
+  const tCommon = useTranslations("common");
   if (items.length === 0) return null;
 
   return (
@@ -65,7 +67,7 @@ export default function PlanMap({ items, className = "" }: PlanMapProps) {
         attributionControl
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">${tCommon("map.openStreetMap")}</a>`}
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {items.map((item) => (

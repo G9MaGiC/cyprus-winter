@@ -11,6 +11,12 @@ This project uses **Next.js 16** with **next-intl** and JSON message catalogs pe
 - CI enforces consistency:
   - `npm run i18n:validate`
     - Fails if any locale is missing keys, has extra keys, or has empty string values vs `en`.
+  - `npm run i18n:coverage`
+    - Fails if any key used in code is missing from `messages/en.json`; reports keys in messages not referenced in `src` (use `--strict` to fail on unused keys).
+- Optional automation:
+  - `npm run i18n:extract` — extracts user-facing strings from data, lib, TSX into `scripts/i18n/strings.json`.
+  - `npm run i18n:scan` — scans `src` for likely hardcoded strings (literal `alt`, `aria-label`, `title`, `placeholder`, and JSX text) and suggests keys; use `--fail` to exit 1 if any found (useful once the codebase is fully localized).
+  - `npm run i18n:check` — runs both validate and coverage.
 
 ### 2. Getting translations
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useAuth, type OAuthProvider } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 
 const GOOGLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
 const APPLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_APPLE_ENABLED === "true";
@@ -53,12 +54,13 @@ export default function SocialLoginButtons({
   redirectPath = "/account",
   intent = "signin",
 }: SocialLoginButtonsProps) {
+  const tAuth = useTranslations("auth");
   const { signInWithOAuth } = useAuth();
   const [loading, setLoading] = useState<OAuthProvider | null>(null);
 
   const providers: { id: OAuthProvider; enabled: boolean; label: string; Icon: () => React.ReactNode }[] = [
-    { id: "google", enabled: GOOGLE_ENABLED, label: "Google", Icon: GoogleIcon },
-    { id: "apple", enabled: APPLE_ENABLED, label: "Apple", Icon: AppleIcon },
+    { id: "google", enabled: GOOGLE_ENABLED, label: tAuth("social.providers.google"), Icon: GoogleIcon },
+    { id: "apple", enabled: APPLE_ENABLED, label: tAuth("social.providers.apple"), Icon: AppleIcon },
   ];
 
   const enabledProviders = providers.filter((p) => p.enabled);
@@ -83,7 +85,7 @@ export default function SocialLoginButtons({
           <div className="w-full border-t border-sand-200/80" />
         </div>
         <p className="relative flex justify-center text-sm">
-          <span className="bg-white/95 px-4 text-olive/70">Or continue with</span>
+          <span className="bg-white/95 px-4 text-olive/70">{tAuth("social.orContinueWith")}</span>
         </p>
       </div>
       <div
@@ -96,7 +98,7 @@ export default function SocialLoginButtons({
             onClick={() => handleClick(id)}
             disabled={!!loading}
             className={buttonBase}
-            aria-label={`${intent === "signup" ? "Sign up" : "Sign in"} with ${label}`}
+            aria-label={tAuth("social.aria", { intent, provider: label })}
           >
             <Icon />
             <span>{label}</span>

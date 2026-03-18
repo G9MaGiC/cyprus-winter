@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
+import { useTranslations } from "next-intl";
 
 type StickyPlanBarProps = {
   sentinelId: string;
@@ -18,6 +19,7 @@ type StickyPlanBarProps = {
 export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
   const [show, setShow] = useState(false);
   const { setStickyPlanVisible } = useStickyPlanBar();
+  const tCommon = useTranslations("common");
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
@@ -71,13 +73,13 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
     <div
       className={`fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] z-30 flex items-center justify-center pt-4 ${LAYOUT.safeAreaX} pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
-      aria-label="Plan your trip"
+      aria-label={tCommon("planYourTrip")}
     >
       <AppLink
         href="/plan"
         className={`${CTA.primary} max-w-md`}
       >
-        Plan your trip
+        {tCommon("planYourTrip")}
       </AppLink>
     </div>
   );

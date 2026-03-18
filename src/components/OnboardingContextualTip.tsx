@@ -3,6 +3,7 @@
 import { Lightbulb } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { CARD } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 type OnboardingContextualTipProps = {
   message: string;
@@ -21,6 +22,8 @@ export default function OnboardingContextualTip({
   href,
   hrefLabel,
 }: OnboardingContextualTipProps) {
+  const tCommon = useTranslations("common");
+
   return (
     <div
       className={`${CARD.base} border-l-4 border-aegean p-4 flex items-start gap-3`}
@@ -43,7 +46,7 @@ export default function OnboardingContextualTip({
         type="button"
         onClick={onDismiss}
         className="shrink-0 text-olive/50 hover:text-olive text-sm p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-        aria-label="Dismiss tip"
+        aria-label={tCommon("aria.dismissTip")}
       >
         ×
       </button>

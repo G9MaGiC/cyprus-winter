@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import HomePageContent from "@/app/_home/HomePageContent";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -7,12 +8,13 @@ type Props = {
 
 export default async function LocaleHomePage({ params }: Props) {
   const { locale } = await params;
+  const tHome = await getTranslations({ locale, namespace: "home" });
 
   return (
     <HomePageContent
       sharePath={`/${locale}`}
       LinkComponent={Link}
-      planSubtitle="Build your itinerary. Add places from Discover—saves as you go."
+      planSubtitle={tHome("planSubtitle")}
     />
   );
 }

@@ -21,6 +21,7 @@ type StatsData = {
 
 export default function AdminStatsPage() {
   const tNav = useTranslations("nav");
+  const tAdmin = useTranslations("admin.stats");
   const locale = useLocale();
   const [data, setData] = useState<StatsData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,7 @@ export default function AdminStatsPage() {
         if (r.status === 401) {
           sessionStorage.removeItem(ADMIN_KEY_STORAGE);
           setAdminKey(null);
-          setKeyError("Invalid key");
+          setKeyError("invalid");
           return null;
         }
         return r.json();
@@ -75,18 +76,18 @@ export default function AdminStatsPage() {
   if (!adminKey) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <h1 className={`font-display text-2xl font-bold text-olive ${SECTION.headingGap}`}>Admin stats</h1>
+        <h1 className={`font-display text-2xl font-bold text-olive ${SECTION.headingGap}`}>{tAdmin("title")}</h1>
         <p className="text-sm text-olive/70 mb-6">
-          Enter your admin key to view traction metrics. Set ADMIN_SECRET in your environment.
+          {tAdmin("subtitle")}
         </p>
         <form onSubmit={handleKeySubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
           <input
             type="password"
             value={keyInput}
             onChange={(e) => { setKeyInput(e.target.value); setKeyError(null); }}
-            placeholder="Admin key"
+            placeholder={tAdmin("key.placeholder")}
             autoComplete="current-password"
-            aria-label="Admin key"
+            aria-label={tAdmin("key.aria")}
             className="flex-1 min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-2 text-sm text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30"
           />
           <button
@@ -94,10 +95,10 @@ export default function AdminStatsPage() {
             disabled={!keyInput.trim()}
             className="min-h-[44px] px-5 py-2 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Access
+            {tAdmin("key.submit")}
           </button>
         </form>
-        {keyError && <p className="text-sm text-terracotta mt-2">{keyError}</p>}
+        {keyError && <p className="text-sm text-terracotta mt-2">{tAdmin("key.invalid")}</p>}
         <div className="mt-8">
           <BackLink href="/" label={tNav("home")} />
         </div>
@@ -109,7 +110,7 @@ export default function AdminStatsPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-          <h1 className="font-display text-2xl font-bold text-olive">Admin stats</h1>
+          <h1 className="font-display text-2xl font-bold text-olive">{tAdmin("title")}</h1>
           <BackLink href="/" label={tNav("home")} />
         </div>
         <div className="space-y-6">
@@ -117,7 +118,7 @@ export default function AdminStatsPage() {
           <div className={`h-24 ${SKELETON.block}`} aria-hidden />
           <div className={`h-32 ${SKELETON.block}`} aria-hidden />
         </div>
-        <p className="sr-only" role="status" aria-live="polite">Loading…</p>
+        <p className="sr-only" role="status" aria-live="polite">{tAdmin("loading")}</p>
       </div>
     );
   }
@@ -126,7 +127,7 @@ export default function AdminStatsPage() {
   if (err) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <p className="text-terracotta">Failed to load stats: {err}</p>
+        <p className="text-terracotta">{tAdmin("loadError", { error: err })}</p>
       </div>
     );
   }
@@ -142,7 +143,7 @@ export default function AdminStatsPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-        <h1 className="font-display text-2xl font-bold text-olive">Admin stats</h1>
+        <h1 className="font-display text-2xl font-bold text-olive">{tAdmin("title")}</h1>
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -153,25 +154,25 @@ export default function AdminStatsPage() {
             }}
             className="text-sm text-olive/60 hover:text-olive"
           >
-            Sign out
+            {tAdmin("signOut")}
           </button>
           <BackLink href="/" label={tNav("home")} />
         </div>
       </div>
 
       <section className="mb-10">
-        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Bookings (this month)</h2>
+        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>{tAdmin("bookingsThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10 mb-6">
           <p className="text-3xl font-bold text-olive">{number.format(bookings)}</p>
-          <p className="text-sm text-olive/70 mt-1">Total bookings</p>
+          <p className="text-sm text-olive/70 mt-1">{tAdmin("bookingsThisMonth.total")}</p>
         </div>
       </section>
 
       <section className="mb-10">
-        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Partner revenue (this month)</h2>
+        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>{tAdmin("partnerRevenueThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-3xl font-bold text-olive">{currency.format(revenue)}</p>
-          <p className="text-sm text-olive/70 mt-1">Partner revenue share (lead fees)</p>
+          <p className="text-sm text-olive/70 mt-1">{tAdmin("partnerRevenueThisMonth.subtitle")}</p>
           {byWinery.length > 0 && (
             <ul className="mt-4 space-y-2 text-sm">
               {byWinery.map((w) => (
@@ -186,14 +187,14 @@ export default function AdminStatsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>Conversion funnel (this month)</h2>
+        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>{tAdmin("funnelThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
-          <p className="text-sm text-olive/70 mb-4">First touch to booking and revenue</p>
+          <p className="text-sm text-olive/70 mb-4">{tAdmin("funnelThisMonth.subtitle")}</p>
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
-                <th className="py-2 font-medium text-olive">Event</th>
-                <th className="py-2 font-medium text-olive text-right">Count</th>
+                <th className="py-2 font-medium text-olive">{tAdmin("funnelThisMonth.table.event")}</th>
+                <th className="py-2 font-medium text-olive text-right">{tAdmin("funnelThisMonth.table.count")}</th>
               </tr>
             </thead>
             <tbody>
@@ -206,13 +207,13 @@ export default function AdminStatsPage() {
             </tbody>
           </table>
           {funnel.length === 0 && (
-            <p className="text-sm text-olive/60 py-4">No events yet. Conversion tracking requires Supabase and migration 003.</p>
+            <p className="text-sm text-olive/60 py-4">{tAdmin("funnelThisMonth.empty")}</p>
           )}
         </div>
       </section>
 
       <p className="text-xs text-olive/50">
-        Storage: {d.storage ?? "unknown"}
+        {tAdmin("storage", { storage: d.storage ?? tAdmin("storageUnknown") })}
       </p>
     </div>
   );

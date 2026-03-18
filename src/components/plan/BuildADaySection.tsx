@@ -5,15 +5,9 @@ import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { DAY_COMBOS } from "@/data/day-combos";
 import type { RelatedPlace } from "@/lib/related-places";
+import { useTranslations } from "next-intl";
 
-function typeBadge(type: RelatedPlace["type"]) {
-  const labels: Record<RelatedPlace["type"], string> = {
-    trail: "Trail",
-    winery: "Winery",
-    attraction: "Place",
-    restaurant: "Eat",
-    event: "Event",
-  };
+function typeBadge(type: RelatedPlace["type"], label: string) {
   const cls: Record<RelatedPlace["type"], string> = {
     trail: "bg-sage/15 text-sage",
     winery: "bg-golden/15 text-golden",
@@ -21,7 +15,6 @@ function typeBadge(type: RelatedPlace["type"]) {
     restaurant: "bg-sand-200/80 text-olive/80",
     event: "bg-olive/10 text-olive",
   };
-  const label = labels[type];
   return (
     <span
       className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium uppercase tracking-wider ${cls[type]}`}
@@ -38,6 +31,17 @@ type BuildADaySectionProps = {
 };
 
 export default function BuildADaySection({ hasContent, onComboClick }: BuildADaySectionProps) {
+  const tPlan = useTranslations("plan");
+  const tCommon = useTranslations("common");
+
+  const typeLabels: Record<RelatedPlace["type"], string> = {
+    trail: tCommon("trail"),
+    winery: tCommon("winery"),
+    attraction: tCommon("place"),
+    restaurant: tCommon("eat"),
+    event: tCommon("event"),
+  };
+
   return (
     <section
       aria-labelledby="build-a-day-heading"
@@ -49,13 +53,13 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
           className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
           aria-hidden
         >
-          Curated combos
+          {tPlan("curatedCombos")}
         </span>
         <h2 id="build-a-day-heading" className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2">
-          Build a day
+          {tPlan("buildADay")}
         </h2>
         <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
-          Morning at one place, afternoon at another. These flow.
+          {tPlan("curatedCombosDesc")}
         </p>
       </header>
       <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -80,14 +84,14 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 </p>
               )}
               <div className="flex items-center gap-1.5 text-xs text-olive/50 mb-4 uppercase tracking-wider" aria-hidden>
-                <span>Morning</span>
+                <span>{tPlan("morning")}</span>
                 <span aria-hidden>→</span>
-                <span>Afternoon</span>
+                <span>{tPlan("afternoon")}</span>
               </div>
               <ul className="space-y-2.5 mb-5 flex-1 min-h-0">
                 {places.map((p) => (
                   <li key={p.id} className="flex items-center gap-2 min-w-0">
-                    {typeBadge(p.type)}
+                    {typeBadge(p.type, typeLabels[p.type])}
                     <AppLink
                       href={p.href}
                       className="min-w-0 flex-1 break-words text-sm text-olive/90 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] flex items-center py-1 -my-1"
@@ -102,17 +106,17 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                   type="button"
                   onClick={() => onComboClick(places.map((p) => p.id), combo.label)}
                   className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
-                  aria-label={`Add ${combo.label} to plan`}
+                  aria-label={tPlan("aria.addCombo", { label: combo.label })}
                 >
-                  Add to plan
+                  {tPlan("addToPlan")}
                 </button>
               ) : (
                 <AppLink
                   href={`/plan?add=${addIds}`}
                   className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 block text-center`}
-                  aria-label={`Add ${combo.label} to plan`}
+                  aria-label={tPlan("aria.addCombo", { label: combo.label })}
                 >
-                  Add to plan
+                  {tPlan("addToPlan")}
                 </AppLink>
               )}
             </article>

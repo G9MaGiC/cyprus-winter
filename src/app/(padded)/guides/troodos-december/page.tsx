@@ -8,14 +8,17 @@ import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Best Troodos Trails in December | Cyprus Winter",
-  description:
-    "Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, quiet slopes. What to pack, conditions, snow notes. Cyprus winter hiking guide.",
-  alternates: { canonical: `${SITE_URL}/guides/troodos-december` },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "guides.troodosDecember" });
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    alternates: { canonical: `${SITE_URL}/guides/troodos-december` },
+  };
+}
 
 const troodosTrails = trails.filter((t) => t.region === "Troodos");
 
@@ -24,8 +27,15 @@ const decemberPicks = troodosTrails.filter((t) =>
   ["atalante", "artemis", "persephone", "caledonia-falls", "millomeris-falls"].includes(t.id)
 );
 
-function TrailCard({ trail }: { trail: Trail }) {
-  const durationH = Math.round(trail.durationMin / 60);
+function TrailCard({
+  trail,
+  imageAlt,
+  durationLabel,
+}: {
+  trail: Trail;
+  imageAlt: string;
+  durationLabel: string;
+}) {
   return (
     <AppLink
       href={`/trails/${trail.id}`}
@@ -35,7 +45,7 @@ function TrailCard({ trail }: { trail: Trail }) {
         <div className="sm:shrink-0 relative aspect-video sm:w-48 sm:aspect-square overflow-hidden bg-olive/10">
           <Image
             src={getTrailImage(trail.id)}
-            alt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} trail`}
+            alt={imageAlt}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 640px) 100vw, 192px"
@@ -49,7 +59,7 @@ function TrailCard({ trail }: { trail: Trail }) {
             {trail.name}
           </h3>
           <p className="text-sm text-olive/70 mt-0.5">
-            {trail.lengthKm} km · ~{durationH}h
+            {durationLabel}
           </p>
           <p className="text-sm text-olive/80 mt-2 line-clamp-2">
             {trail.winterNotes ?? trail.description}
@@ -61,15 +71,18 @@ function TrailCard({ trail }: { trail: Trail }) {
 }
 
 export default async function TroodosDecemberPage() {
-  const tNav = await getTranslations("nav");
-  const tCommon = await getTranslations("common");
+  const [tNav, tCommon, tGuide] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("guides.troodosDecember"),
+  ]);
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/trails"
         backLabel={tNav("trails")}
-        title="Best Troodos Trails in December"
-        description="December in Troodos: crisp air, quiet trails, often clear before peak snow. Atalante and Artemis stay open when higher routes hold snow; Caledonia Falls runs strong after rain."
+        title={tGuide("header.title")}
+        description={tGuide("header.description")}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
           { label: tNav("trails"), href: "/trails" },
@@ -79,43 +92,71 @@ export default async function TroodosDecemberPage() {
 
       <div className="prose prose-olive max-w-none mb-12">
         <p className="text-olive/80">
-          December hits the sweet spot: ski season hasn&apos;t fully started, trails are usually clear, and the villages are quiet. Pack layers—temps can dip to 2°C at elevation. Check{" "}
-          <AppLink href="/trails" className={SECTION.aegeanLink}>
-            trail conditions
-          </AppLink>{" "}
-          before you go; after cold snaps, higher trails can be icy.
+          {tGuide.rich("intro.body", {
+            trailConditionsLink: (chunks) => (
+              <AppLink href="/trails" className={SECTION.aegeanLink}>
+                {chunks}
+              </AppLink>
+            ),
+          })}
         </p>
       </div>
 
       <section aria-labelledby="december-picks">
         <h2 id="december-picks" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
-          December picks
+          {tGuide("sections.decemberPicks")}
         </h2>
         <div className="space-y-4">
           {decemberPicks.map((trail) => (
-            <TrailCard key={trail.id} trail={trail} />
+            <TrailCard
+              key={trail.id}
+              trail={trail}
+              imageAlt={tGuide("cards.imageAlt", {
+                name: trail.name,
+                region: trail.region,
+                km: trail.lengthKm,
+                difficulty: trail.difficulty,
+              })}
+              durationLabel={tGuide("cards.duration", {
+                km: trail.lengthKm,
+                hours: Math.round(trail.durationMin / 60),
+              })}
+            />
           ))}
         </div>
       </section>
 
       <section aria-labelledby="all-troodos" className="mt-12">
         <h2 id="all-troodos" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
-          All Troodos trails
+          {tGuide("sections.allTroodos")}
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {troodosTrails.map((trail) => (
-            <TrailCard key={trail.id} trail={trail} />
+            <TrailCard
+              key={trail.id}
+              trail={trail}
+              imageAlt={tGuide("cards.imageAlt", {
+                name: trail.name,
+                region: trail.region,
+                km: trail.lengthKm,
+                difficulty: trail.difficulty,
+              })}
+              durationLabel={tGuide("cards.duration", {
+                km: trail.lengthKm,
+                hours: Math.round(trail.durationMin / 60),
+              })}
+            />
           ))}
         </div>
       </section>
 
       <p className="mt-12 text-center text-olive/70 text-sm">
         <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
-          Troodos region
+          {tGuide("footer.troodosRegion")}
         </AppLink>
         {" · "}
         <AppLink href="/weather" className={SECTION.aegeanLink}>
-          Weather by month
+          {tGuide("footer.weatherByMonth")}
         </AppLink>
       </p>
     </div>

@@ -4,26 +4,34 @@ import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy — Cyprus Winter",
-  description:
-    "How Cyprus Winter collects, uses, and protects your data. GDPR-compliant. Data export and deletion available.",
-  alternates: { canonical: `${SITE_URL}/privacy` },
-  robots: { index: true, follow: true },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "privacy.page" });
+  const title = t("meta.title");
+  const description = t("meta.description");
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/privacy` },
+    robots: { index: true, follow: true },
+  };
+}
 
 export default async function PrivacyPage() {
-  const tNav = await getTranslations("nav");
-  const tCommon = await getTranslations("common");
+  const [tNav, tCommon, tPrivacy] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("privacy.page"),
+  ]);
   return (
     <div className={`${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
         backLabel={tNav("home")}
-        title="Privacy Policy"
-        description="How we collect, use, and protect your data. Last updated: March 2026."
+        title={tPrivacy("header.title")}
+        description={tPrivacy("header.description")}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
           { label: tCommon("breadcrumbs.privacy"), href: "/privacy", isCurrent: true },
@@ -33,141 +41,178 @@ export default async function PrivacyPage() {
       <article className={`prose prose-olive max-w-none ${SECTION.blockGap}`}>
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            1. Who we are
+            {tPrivacy("sections.s1.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            Cyprus Winter (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is a tourism information and trip-planning service. This privacy policy explains how we process your personal data when you use our website and services.
+            {tPrivacy("sections.s1.body")}
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            2. Data we collect and how we use it
+            {tPrivacy("sections.s2.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
-            We collect the following data, for the purposes and legal bases stated below:
+            {tPrivacy("sections.s2.intro")}
           </p>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
             <li>
-              <strong>Conversion and usage data</strong> (session ID, path, user-agent, event name): to understand how the service is used and improve it. <em>Legal basis: Legitimate interest.</em>
+              {tPrivacy.rich("sections.s2.items.conversion", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+                em: (chunks) => <em>{chunks}</em>,
+              })}
             </li>
             <li>
-              <strong>Booking data</strong> (email, name, experience and date): to process winery and guide booking requests and communicate with you. <em>Legal basis: Contract performance.</em>
+              {tPrivacy.rich("sections.s2.items.booking", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+                em: (chunks) => <em>{chunks}</em>,
+              })}
             </li>
             <li>
-              <strong>Trail reports</strong> (note, optional email): to display crowd-sourced trail conditions. <em>Legal basis: Legitimate interest; consent where email is provided.</em>
+              {tPrivacy.rich("sections.s2.items.trailReports", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+                em: (chunks) => <em>{chunks}</em>,
+              })}
             </li>
             <li>
-              <strong>Chat messages</strong>: when you use Ask AI, your messages and context are sent to AI providers (OpenAI, xAI, Groq, Moonshot) to generate responses. <em>Legal basis: Legitimate interest.</em>
+              {tPrivacy.rich("sections.s2.items.chat", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+                em: (chunks) => <em>{chunks}</em>,
+              })}
             </li>
             <li>
-              <strong>Local preferences</strong> (interests, regions, itinerary): stored in your browser only. Not sent to our servers except as needed for features (e.g. plan share links).
+              {tPrivacy.rich("sections.s2.items.localPrefs", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </li>
           </ul>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            3. Data processors and transfers
+            {tPrivacy("sections.s3.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
-            We use the following processors to operate the service:
+            {tPrivacy("sections.s3.intro")}
           </p>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
-            <li><strong>Supabase</strong> — database and storage (conversion events, bookings, trail reports)</li>
-            <li><strong>Resend</strong> — email delivery for booking confirmations</li>
-            <li><strong>AI providers</strong> — OpenAI, xAI, Groq, Moonshot — for Ask AI chat responses</li>
-            <li><strong>Vercel</strong> — hosting and analytics (anonymized)</li>
+            <li>
+              {tPrivacy.rich("sections.s3.processors.supabase", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </li>
+            <li>
+              {tPrivacy.rich("sections.s3.processors.resend", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </li>
+            <li>
+              {tPrivacy.rich("sections.s3.processors.ai", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </li>
+            <li>
+              {tPrivacy.rich("sections.s3.processors.vercel", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </li>
           </ul>
           <p className="text-olive/90 leading-relaxed mt-4">
-            Data may be transferred to countries outside the EU. We rely on adequacy decisions or appropriate safeguards (e.g. Standard Contractual Clauses) where required.
+            {tPrivacy("sections.s3.transfers")}
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            4. Retention
+            {tPrivacy("sections.s4.title")}
           </h2>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
-            <li><strong>Conversion events:</strong> Up to 2 years.</li>
-            <li><strong>Bookings:</strong> As needed for booking follow-up and legal obligations (typically up to 2 years after the experience date).</li>
-            <li><strong>Trail reports:</strong> Indefinitely, unless you request deletion (see below).</li>
-            <li><strong>Chat messages:</strong> Not stored long-term; processed in real time by AI providers per their policies.</li>
+            <li>
+              {tPrivacy.rich("sections.s4.items.conversion", { strong: (chunks) => <strong>{chunks}</strong> })}
+            </li>
+            <li>{tPrivacy.rich("sections.s4.items.bookings", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
+            <li>
+              {tPrivacy.rich("sections.s4.items.trailReports", { strong: (chunks) => <strong>{chunks}</strong> })}
+            </li>
+            <li>{tPrivacy.rich("sections.s4.items.chat", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
           </ul>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            5. Your rights (GDPR)
+            {tPrivacy("sections.s5.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
-            You have the right to:
+            {tPrivacy("sections.s5.intro")}
           </p>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
-            <li>Access your data</li>
-            <li>Rectify inaccurate data</li>
-            <li>Request erasure (&quot;right to be forgotten&quot;)</li>
-            <li>Restrict processing</li>
-            <li>Data portability (export)</li>
-            <li>Object to processing</li>
-            <li>Withdraw consent (where applicable)</li>
-            <li>Lodge a complaint with a supervisory authority</li>
+            <li>{tPrivacy("sections.s5.rights.access")}</li>
+            <li>{tPrivacy("sections.s5.rights.rectify")}</li>
+            <li>{tPrivacy("sections.s5.rights.erase")}</li>
+            <li>{tPrivacy("sections.s5.rights.restrict")}</li>
+            <li>{tPrivacy("sections.s5.rights.portability")}</li>
+            <li>{tPrivacy("sections.s5.rights.object")}</li>
+            <li>{tPrivacy("sections.s5.rights.withdraw")}</li>
+            <li>{tPrivacy("sections.s5.rights.complaint")}</li>
           </ul>
           <p className="text-olive/90 leading-relaxed mt-4">
-            To exercise these rights, contact us at the email below. For data linked to a booking, include the email address used. For trail reports, include the email if you provided one. We will respond within 30 days.
+            {tPrivacy("sections.s5.outro")}
           </p>
         </section>
 
         <section id="cookies">
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            6. Cookies and similar technologies
+            {tPrivacy("sections.s6.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
-            We use cookies and local storage for:
+            {tPrivacy("sections.s6.intro")}
           </p>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
-            <li><strong>Essential:</strong> Session, preferences, and functionality (e.g. plan, language).</li>
-            <li><strong>Analytics:</strong> Anonymized usage (if you consent).</li>
+            <li>{tPrivacy.rich("sections.s6.categories.essential", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
+            <li>{tPrivacy.rich("sections.s6.categories.analytics", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
           </ul>
           <p className="text-olive/90 leading-relaxed mt-4">
-            You can manage cookie preferences via the cookie banner or your browser settings. Essential cookies cannot be disabled without limiting functionality.
+            {tPrivacy("sections.s6.outro")}
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            7. Security
+            {tPrivacy("sections.s7.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            We use HTTPS, secure storage, and follow industry best practices. We do not log or store PII in client-side analytics beyond what is strictly necessary.
+            {tPrivacy("sections.s7.body")}
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            8. Changes
+            {tPrivacy("sections.s8.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            We may update this policy. Material changes will be noted at the top. Continued use after changes constitutes acceptance.
+            {tPrivacy("sections.s8.body")}
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            9. Contact
+            {tPrivacy("sections.s9.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            For privacy requests, data export, or deletion: <strong>privacy@cypruswinter.com</strong> (or use the contact method provided on our site).
+            {tPrivacy.rich("sections.s9.body", {
+              email: "privacy@cypruswinter.com",
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </section>
       </article>
 
       <div className="mt-12 flex flex-wrap gap-4">
         <AppLink href="/terms" className={CTA.secondaryCompact}>
-          Terms of Service
+          {tPrivacy("footer.termsCta")}
         </AppLink>
         <AppLink href="/" className={CTA.chipTertiary}>
-          Back to home
+          {tPrivacy("footer.homeCta")}
         </AppLink>
       </div>
     </div>

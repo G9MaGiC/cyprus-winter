@@ -1,13 +1,15 @@
 import { LAYOUT, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function TrailReportLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
       aria-busy="true"
       aria-live="polite"
       role="status"
-      aria-label="Loading report form"
+      aria-label={t("loading.reportForm")}
     >
       <div className={`h-4 w-24 ${SKELETON.block} mb-6`} />
       <div className={`h-8 w-40 ${SKELETON.bar} mb-2`} />

@@ -52,7 +52,7 @@ export default function LoginPage() {
         variant="login"
         kicker={tAuth("login.ctaSignIn")}
         title={tAuth("login.ctaSignIn")}
-        subtitle="Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device."
+        subtitle={tAuth("login.configSubtitle")}
         backHref="/account"
         backLabel={tCommon("backTo", { label: tNav("account") })}
       >
@@ -139,7 +139,7 @@ export default function LoginPage() {
       backLabel={tCommon("backTo", { label: tNav("account") })}
       footer={
         <>
-          No account?{" "}
+          {tAuth("login.noAccountPrefix")}{" "}
           <Link
             href="/register"
             className="text-terracotta font-medium hover:text-terracotta-muted transition-colors"
@@ -155,11 +155,11 @@ export default function LoginPage() {
         <AuthInput
           ref={emailRef}
           id="login-email"
-          label="Email"
+          label={tAuth("forgot.emailLabel")}
           type="email"
           value={email}
           onChange={setEmail}
-          placeholder="you@example.com"
+          placeholder={tAuth("forgot.emailPlaceholder")}
           disabled={loading || isLoading}
           required
           autoComplete="email"
@@ -169,13 +169,13 @@ export default function LoginPage() {
         {mode === "password" && (
           <AuthPasswordInput
             id="login-password"
-            label="Password"
+            label={tAuth("login.passwordLabel")}
             labelAside={
               <Link
                 href="/forgot-password"
                 className="text-sm text-terracotta hover:text-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
               >
-                Forgot password?
+                {tAuth("forgot.title")}
               </Link>
             }
             value={password}
@@ -193,7 +193,7 @@ export default function LoginPage() {
             className={`${CTA.primaryCompact} w-full min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {loading
-              ? "Signing in…"
+              ? tAuth("login.ctaSigningIn")
               : mode === "password"
               ? tAuth("login.ctaSignIn")
               : tAuth("login.ctaSendMagicLink")}

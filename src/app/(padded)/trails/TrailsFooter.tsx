@@ -12,10 +12,11 @@ type TrailsFooterProps = {
 
 export default function TrailsFooter({ reportTrailId, onScrollToMap }: TrailsFooterProps = {}) {
   const tCommon = useTranslations("common");
+  const tTrails = useTranslations("trails");
   return (
     <footer
       className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 ${LAYOUT.footerBottomClearance} text-center`}
-      aria-label="Trails actions"
+      aria-label={tTrails("aria.actions")}
     >
       <p
         className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}
@@ -29,7 +30,7 @@ export default function TrailsFooter({ reportTrailId, onScrollToMap }: TrailsFoo
         <AppLink
           href={reportTrailId ? `/trails/${reportTrailId}/report` : "/trails"}
           className={CTA.secondaryCompact}
-          aria-label="Report trail conditions"
+          aria-label={tTrails("aria.reportConditions")}
         >
           {tCommon("reportConditions")}
         </AppLink>
@@ -61,7 +62,7 @@ export default function TrailsFooter({ reportTrailId, onScrollToMap }: TrailsFoo
           type="button"
           onClick={onScrollToMap}
           className={`text-sm ${SECTION.aegeanLink} mt-4 inline-block`}
-          aria-label="Scroll to map of trails"
+          aria-label={tTrails("aria.scrollToMap")}
         >
           {tCommon("seeMap")}
         </button>

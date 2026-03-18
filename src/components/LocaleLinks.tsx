@@ -15,7 +15,6 @@ const localeNames: Record<string, string> = {
 export default function LocaleLinks() {
   return (
     <div className="mt-4">
-      <span className="text-xs text-olive/60 sr-only">Language:</span>
       <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
         {routing.locales.map((locale) => (
           <AppLink

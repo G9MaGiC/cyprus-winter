@@ -40,7 +40,7 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
     <div
       className={`fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm sm:hidden max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
       role="complementary"
-      aria-label="Quick actions"
+      aria-label={tCommon("aria.quickActions")}
     >
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} py-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4`}>
         {(() => {
@@ -53,7 +53,7 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
         <AppLink
           href={`/trails/${trailId}/report`}
           className="inline-flex items-center justify-center min-h-[44px] px-5 py-3 rounded-lg border-2 border-aegean text-aegean font-medium hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean focus-visible:ring-offset-2 focus-visible:ring-offset-background shrink-0"
-          aria-label="Report conditions for this trail"
+          aria-label={tCommon("aria.reportConditionsForTrail")}
         >
           {tCommon("reportConditions")}
         </AppLink>

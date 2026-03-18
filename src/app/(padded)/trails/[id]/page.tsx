@@ -97,7 +97,10 @@ export default async function TrailPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(trailSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}>
-        <nav className={`sticky ${LAYOUT.stickyTop} z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`} aria-label="Page navigation">
+        <nav
+          className={`sticky ${LAYOUT.stickyTop} z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`}
+          aria-label={tCommon("aria.pageNavigation")}
+        >
           <BackLink href="/trails" label={tNav("trails")} />
           <Breadcrumbs
             items={[
@@ -166,7 +169,7 @@ export default async function TrailPage({
 
           <nav
             className="flex flex-wrap gap-x-4 gap-y-1 py-3 text-sm border-b border-sand-200/70 -mx-1 px-1 overflow-x-auto"
-            aria-label="Jump to section"
+            aria-label={tTrailsDetail("aria.jumpToSection")}
           >
             <a href="#trail-description" className="text-aegean hover:underline">
               {tTrailsDetail("nav.overview")}
@@ -470,7 +473,7 @@ export default async function TrailPage({
             )}
 
             {/* Footer CTA */}
-            <footer className="pt-8 flex flex-col gap-4 relative" aria-label="Trail actions">
+            <footer className="pt-8 flex flex-col gap-4 relative" aria-label={tTrailsDetail("aria.trailActions")}>
               <div id="trail-add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-xs text-olive/60 italic break-words">
                 {tCommon("trailsFooterDisclaimer")}
@@ -478,7 +481,7 @@ export default async function TrailPage({
               <p className="text-olive/70 text-sm break-words">
                 {tTrailsDetail("footer.addToPlanBody")}
               </p>
-              <div className="flex flex-wrap gap-3" role="group" aria-label="Actions">
+              <div className="flex flex-wrap gap-3" role="group" aria-label={tTrailsDetail("aria.actionsGroup")}>
                 <TrackOnClick event="plan_add" properties={{ placeId: trail.id, placeType: "trail" }}>
                   <AddToItineraryButton placeId={trail.id} />
                 </TrackOnClick>

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import AppLink from "@/components/AppLink";
 import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 const typeLabels: Record<string, string> = {
   beach: "Beach",
@@ -31,6 +32,7 @@ function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string
 }
 
 export function RecentlyViewedStrip() {
+  const tCommon = useTranslations("common");
   const [items, setItems] = useState<ReturnType<typeof getRecentlyViewed>>([]);
   const [isClient, setIsClient] = useState(false);
 
@@ -53,7 +55,7 @@ export function RecentlyViewedStrip() {
           </h2>
           <button
             type="button"
-            aria-label="Clear recently viewed"
+            aria-label={tCommon("aria.clearRecentlyViewed")}
             onClick={() => {
               import("@/lib/recently-viewed").then(({ clearRecentlyViewed }) => {
                 clearRecentlyViewed();
