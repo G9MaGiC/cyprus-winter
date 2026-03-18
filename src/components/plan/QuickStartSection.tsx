@@ -82,7 +82,9 @@ export default function QuickStartSection({
               {template.label}
             </span>
             {isForYou && (
-              <span className="text-xs font-medium text-terracotta mt-1 block uppercase tracking-wider">For you</span>
+              <span className="text-xs font-medium text-terracotta mt-1 block uppercase tracking-wider">
+                {tPlanQuick("forYou")}
+              </span>
             )}
             {!isForYou && isRecommended && (
               <span className="text-xs font-medium text-aegean mt-1 block">Fits your {tripLength}-day trip</span>
@@ -161,14 +163,26 @@ export default function QuickStartSection({
             >
               {tPlanQuick("browsePlacesCta")}
             </AppLink>
-            <AppLink href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse trails">
-              Trails
+            <AppLink
+              href="/trails"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("browseTrailsAria")}
+            >
+              {tPlanQuick("browseTrailsLabel")}
             </AppLink>
-            <AppLink href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse wineries">
-              Wineries
+            <AppLink
+              href="/discover?filter=winery"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("browseWineriesAria")}
+            >
+              {tPlanQuick("browseWineriesLabel")}
             </AppLink>
-            <AppLink href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="See what's on">
-              What&apos;s on
+            <AppLink
+              href="/events"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("seeWhatsOnAria")}
+            >
+              {tPlanQuick("seeWhatsOnLabel")}
             </AppLink>
           </div>
         </div>

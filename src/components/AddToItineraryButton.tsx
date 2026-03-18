@@ -41,13 +41,13 @@ export default function AddToItineraryButton({
     return (
       <span
         className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
-        aria-label={`${placeId} is in your itinerary`}
+        aria-label={tCommon("aria.placeInItinerary", { id: placeId })}
       >
         <span aria-hidden>✓</span> {tCommon("inYourPlan")}
         <AppLink
           href="/plan"
           className={`${SECTION.aegeanLink} min-w-[44px] px-3 -my-3 -mx-1 text-sm font-medium touch-manipulation`}
-          aria-label="View your plan"
+          aria-label={tCommon("aria.viewPlan")}
         >
           {tCommon("viewPlan")} →
         </AppLink>

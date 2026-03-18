@@ -7,25 +7,30 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SearchResultCard from "@/components/SearchResultCard";
 import { search } from "@/lib/search";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type SearchPageProps = { searchParams: Promise<{ q?: string }> };
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
-export const metadata: Metadata = {
-  title: "Search Cyprus Winter | Trails, Wineries, Places",
-  description:
-    "Search Cyprus winter: trails, wineries, villages, beaches, ancient sites. Find Troodos hikes, Paphos mosaics, Lefkara. Plan or explore when you land. Free search.",
-  alternates: { canonical: `${SITE_URL}/search` },
-  openGraph: {
-    title: "Search Cyprus Winter | Trails, Wineries, Places",
-    description: "Search Cyprus winter: trails, wineries, villages, beaches. Find Troodos hikes, Paphos mosaics, Lefkara.",
-    url: `${SITE_URL}/search`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter — find trails and places" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "search.page" });
+  const title = t("meta.title");
+  const description = t("meta.description");
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/search` },
+    openGraph: {
+      title,
+      description: t("meta.ogDescription"),
+      url: `${SITE_URL}/search`,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
+    },
+  };
+}
 
 const BROWSE_LINKS: { href: string; labelKey: string }[] = [
   { href: "/trails", labelKey: "trails" },
@@ -38,15 +43,18 @@ const BROWSE_LINKS: { href: string; labelKey: string }[] = [
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
-  const tNav = await getTranslations("nav");
-  const tSearch = await getTranslations("search");
+  const [tNav, tCommon, tSearch] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("search"),
+  ]);
   const q = typeof params.q === "string" ? params.q.trim() : "";
   const showBrowse = q.length < 2;
   const results = q.length >= 2 ? search(q, 12) : [];
   const hasNoResults = q.length >= 2 && results.length === 0;
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-8" aria-label="Page navigation">
+      <nav className="flex flex-col gap-1 mb-8" aria-label={tCommon("aria.pageNavigation")}>
         <BackLink href="/" label={tNav("home")} />
         <Breadcrumbs
           items={[{ label: tNav("home"), href: "/" }, { label: tNav("search"), href: "/search", isCurrent: true }]}

@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
     return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
   }
   if (!isAdminAuthorized(req)) {
-    return jsonError("VALIDATION_ERROR", "Unauthorized", 401);
+    return jsonError("BAD_REQUEST", "Unauthorized", 401);
   }
   try {
     const [bookingsThisMonth, partnerRevenue, funnelCounts] = await Promise.all([

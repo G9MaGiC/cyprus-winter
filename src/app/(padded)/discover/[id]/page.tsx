@@ -67,7 +67,10 @@ export default async function AttractionPage({
   params: Promise<{ id: string; locale?: string }>;
 }) {
   const { id, locale = "en" } = await params;
-  const tNav = await getTranslations({ locale, namespace: "nav" });
+  const [tNav, tDetail] = await Promise.all([
+    getTranslations({ locale, namespace: "nav" }),
+    getTranslations({ locale, namespace: "discover.detail" }),
+  ]);
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
 
@@ -116,7 +119,7 @@ export default async function AttractionPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
         <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
-        <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+        <nav className="flex flex-col gap-1 mb-6" aria-label={tDetail("pageNavAria")}>
           <BackLink href="/discover" label={tNav("discover")} />
           <Breadcrumbs
             items={[
@@ -128,13 +131,13 @@ export default async function AttractionPage({
           />
         </nav>
 
-        <article aria-label={`${a.name}, ${a.type} in ${a.region}`}>
+        <article aria-label={tDetail("articleAria", { name: a.name, type: a.type, region: a.region })}>
           <DetailHero
             image={getAttractionImage(a.id, a.type)}
-            imageAlt={`${a.name}, ${a.region}—${a.type} in Cyprus winter`}
+            imageAlt={tDetail("imageAlt", { name: a.name, region: a.region, type: a.type })}
             badge={
               <span className="inline-block px-3 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md capitalize tracking-wide">
-                {a.type === "restaurant" ? "Eat" : a.type}
+                {a.type === "restaurant" ? tDetail("badgeEat") : a.type}
               </span>
             }
             title={getLocalizedName(a, locale)}
@@ -152,7 +155,7 @@ export default async function AttractionPage({
               <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
                 <p className="text-sm font-medium text-charcoal flex items-start gap-2">
                   <span className="text-golden shrink-0" aria-hidden>⚠</span>
-                  <span>Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).</span>
+                  <span>{tDetail("bufferZoneWarning")}</span>
                 </p>
               </div>
             )}
@@ -160,7 +163,7 @@ export default async function AttractionPage({
             {/* Highlights + Great for — quick scan */}
             <section>
               <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
-                Highlights
+                {tDetail("headings.highlights")}
               </h2>
               <ul className="flex flex-wrap gap-2">
                 {a.highlights.map((h) => (
@@ -174,7 +177,7 @@ export default async function AttractionPage({
               </ul>
               <div className="mt-4">
                 <h3 className="prose-label text-olive/70 mb-1">
-                  Great for
+                  {tDetail("headings.greatFor")}
                 </h3>
                 <p className="text-olive/80 text-base break-words">{a.bestFor.join(" · ")}</p>
               </div>
@@ -198,7 +201,7 @@ export default async function AttractionPage({
                 {a.diningVenues && a.diningVenues.length > 0 && (
                   <div>
                     <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
-                      Dining
+                      {tDetail("headings.dining")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
                       {a.diningVenues.map((v) => (
@@ -215,7 +218,7 @@ export default async function AttractionPage({
                 {a.shops && a.shops.length > 0 && (
                   <div>
                     <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
-                      Shops
+                      {tDetail("headings.shops")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
                       {a.shops.map((s) => (
@@ -251,19 +254,19 @@ export default async function AttractionPage({
             {(a.openingHours || ("transport" in a && a.transport) || ("parking" in a && a.parking) || ("accessibility" in a && a.accessibility)) && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-3`}>
                 <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
-                  Practical info
+                  {tDetail("practical.title")}
                 </h2>
             {a.openingHours && (
-              <p className="text-base text-olive/90 break-words"><strong>Hours:</strong> {a.openingHours}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.hours")}</strong> {a.openingHours}</p>
             )}
             {"transport" in a && a.transport && (
-              <p className="text-base text-olive/90 break-words"><strong>Transport:</strong> {a.transport}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.transport")}</strong> {a.transport}</p>
             )}
             {"parking" in a && a.parking && (
-              <p className="text-base text-olive/90 break-words"><strong>Parking:</strong> {a.parking}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.parking")}</strong> {a.parking}</p>
             )}
             {"accessibility" in a && a.accessibility && (
-              <p className="text-base text-olive/90 break-words"><strong>Accessibility:</strong> {a.accessibility}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.accessibility")}</strong> {a.accessibility}</p>
             )}
               </section>
             )}
@@ -276,17 +279,17 @@ export default async function AttractionPage({
           ("shopUrl" in a && a.shopUrl)) && (
           <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
             <h2 className="prose-label text-olive/70 mb-1">
-              Book & contact
+              {tDetail("booking.title")}
             </h2>
             {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
-              <p className="text-sm text-olive/70 mb-4">Book ahead in winter; hours can be limited.</p>
+              <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
             )}
             <div className="flex flex-col gap-5">
               <div className="flex flex-wrap gap-3">
                 {isWinery(a) && (
                   <>
                     <AppLink href={`/book/winery/${a.id}`} className={`gap-2 ${CTA.primaryCompact}`}>
-                      Book a tasting →
+                      {tDetail("booking.bookTasting")}
                     </AppLink>
                     {a.bookingUrl && (
                       <a
@@ -294,9 +297,9 @@ export default async function AttractionPage({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`gap-2 ${CTA.secondaryCompact}`}
-                        aria-label="Book or contact on website (opens in new tab)"
+                        aria-label={tDetail("booking.bookOrContactAria")}
                       >
-                        {a.contactPhone ? "Book on website" : "Contact / book"}
+                        {a.contactPhone ? tDetail("booking.bookOnWebsite") : tDetail("booking.contactBook")}
                       </a>
                     )}
                   </>
@@ -307,9 +310,9 @@ export default async function AttractionPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`gap-2 ${CTA.primaryCompact}`}
-                    aria-label="Reserve (opens in new tab)"
+                    aria-label={tDetail("booking.reserveAria")}
                   >
-                    Reserve →
+                    {tDetail("booking.reserveCta")}
                   </a>
                 )}
                 {a.bookingUrl && a.type === "village" && "bookingUrl" in a && (
@@ -318,24 +321,24 @@ export default async function AttractionPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`gap-2 ${CTA.primaryCompact}`}
-                    aria-label="Find stays (opens in new tab)"
+                    aria-label={tDetail("booking.findStaysAria")}
                   >
-                    Find stays →
+                    {tDetail("booking.findStaysCta")}
                   </a>
                 )}
                 {a.contactPhone && (
                   <a
                     href={`tel:${a.contactPhone}`}
                     className={`gap-2 ${CTA.secondaryCompact}`}
-                    aria-label={`Call ${a.contactPhone}`}
+                    aria-label={tDetail("booking.callAria", { phone: a.contactPhone })}
                   >
-                    Call {a.contactPhone}
+                    {tDetail("booking.callCta", { phone: a.contactPhone })}
                   </a>
                 )}
               </div>
               {("shopUrl" in a && a.shopUrl) || (isWinery(a) && "instagramHandle" in a && a.instagramHandle) ? (
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-sand-200/80">
-                  <span className="sr-only">More options</span>
+                  <span className="sr-only">{tDetail("booking.moreOptionsSr")}</span>
                   {"shopUrl" in a && a.shopUrl && (
                     <TrackOnClick event="shop_click" properties={{ partnerId: a.id }}>
                       <a
@@ -343,9 +346,9 @@ export default async function AttractionPage({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`gap-2 ${CTA.chipSecondary}`}
-                        aria-label="Buy wine online (opens in new tab)"
+                        aria-label={tDetail("booking.buyWineAria")}
                       >
-                        Buy wine online
+                        {tDetail("booking.buyWineCta")}
                       </a>
                     </TrackOnClick>
                   )}
@@ -355,9 +358,9 @@ export default async function AttractionPage({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center min-h-[44px] gap-2 px-4 py-2.5 rounded-lg border border-sand-200/80 text-olive font-medium text-sm hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                      aria-label={`Follow @${a.instagramHandle} on Instagram (opens in new tab)`}
+                      aria-label={tDetail("booking.instagramAria", { handle: a.instagramHandle })}
                     >
-                      Instagram @{a.instagramHandle}
+                      {tDetail("booking.instagramCta", { handle: a.instagramHandle })}
                     </a>
                   )}
                 </div>
@@ -413,7 +416,7 @@ export default async function AttractionPage({
             )}
             {a.bestTimeToVisit && (
               <p className="text-olive/80 text-base break-words">
-                <strong>Best time:</strong> {a.bestTimeToVisit}
+                <strong>{tDetail("bestTimeLabel")}</strong> {a.bestTimeToVisit}
               </p>
             )}
             {a.localSecret && (
@@ -461,9 +464,9 @@ export default async function AttractionPage({
               target="_blank"
               rel="noopener noreferrer"
               className={`gap-2 mt-3 ${CTA.secondaryCompact}`}
-              aria-label="Get directions (opens in new tab)"
+              aria-label={tDetail("directionsAria")}
             >
-              Get directions →
+              {tDetail("directionsCta")}
             </a>
               </section>
             )}
@@ -534,10 +537,10 @@ export default async function AttractionPage({
               );
             })()}
 
-            <footer className="pt-8 pb-4 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label="Place actions">
+            <footer className="pt-8 pb-4 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label={tDetail("actionsAria")}>
               <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-olive/70 text-sm break-words">
-                Add this place to your plan and pair it with a trail or village nearby.
+                {tDetail("footer.body")}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 {(() => {

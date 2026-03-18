@@ -1,13 +1,15 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function SearchLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading search"
+      aria-label={t("loading.search")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-16 ${SKELETON.block} mb-6`} />

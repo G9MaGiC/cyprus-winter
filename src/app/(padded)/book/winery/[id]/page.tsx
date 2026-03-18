@@ -35,15 +35,18 @@ export default async function WineryBookPage({
   const { id } = await params;
   const winery = wineries.find((w) => w.id === id);
   if (!winery) notFound();
-  const tNav = await getTranslations("nav");
-  const tCommon = await getTranslations("common");
+  const [tNav, tCommon, tBookPages] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("book.pages"),
+  ]);
 
   const canonicalUrl = `${SITE_URL}/book/winery/${id}`;
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
-        <BackLink href={`/discover/${id}`} label={`Back to ${winery.name}`} />
+      <nav className="flex flex-col gap-1 mb-6" aria-label={tBookPages("pageNavAria")}>
+        <BackLink href={`/discover/${id}`} label={tCommon("backTo", { label: winery.name })} />
         <Breadcrumbs
           items={[
             { label: tNav("home"), href: "/" },
@@ -77,39 +80,39 @@ export default async function WineryBookPage({
           <p className="text-sm text-olive/70 mt-2 break-words prose-body">{winery.tastingInfo}</p>
         )}
         <p className="text-sm text-olive/70 mt-3 max-w-lg break-words prose-body">
-          Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they&apos;ll confirm by email.
+          {tBookPages("wineryDetail.intro")}
         </p>
         <p className="text-xs text-olive/60 mt-2 break-words">
-          For adults of legal drinking age. Drink responsibly.
+          {tBookPages("wineryDetail.disclaimer")}
         </p>
       </div>
 
       <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />
 
       {(winery.bookingUrl || winery.contactPhone) && (
-        <section className="mt-8 space-y-4" aria-label="Other ways to book">
+        <section className="mt-8 space-y-4" aria-label={tBookPages("otherWaysAria")}>
           {winery.bookingUrl && (
             <p className="text-sm text-olive/80">
-              Or{" "}
+              {tBookPages("wineryDetail.other.or")}{" "}
               <a
                 href={winery.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta font-medium hover:underline hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
-                aria-label="Book on the winery website (opens in new tab)"
+                aria-label={tBookPages("wineryDetail.other.bookDirectAria")}
               >
-                book on the winery website
+                {tBookPages("wineryDetail.other.bookDirectCta")}
               </a>
-              {" "}— they often have more availability.
+              {" "}{tBookPages("wineryDetail.other.bookDirectSuffix")}
             </p>
           )}
           {winery.contactPhone && (
             <p className="text-sm text-olive/70">
-              Or call{" "}
+              {tBookPages("wineryDetail.other.callPrefix")}{" "}
               <a href={`tel:${winery.contactPhone}`} className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta hover:underline font-medium hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2">
                 {winery.contactPhone}
               </a>
-              {" "}to reserve or check availability — they&apos;re usually happy to help.
+              {" "}{tBookPages("wineryDetail.other.callSuffix")}
             </p>
           )}
         </section>

@@ -117,12 +117,12 @@ export default function PlanPage() {
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
-            Itinerary copied to clipboard
+            {tPlan("aria.itineraryCopied")}
           </div>
         )}
         {linkCopied && (
           <div className="sr-only" role="status" aria-live="polite">
-            Share link copied to clipboard
+            {tPlan("aria.shareLinkCopied")}
           </div>
         )}
 
@@ -146,7 +146,7 @@ export default function PlanPage() {
             }
             descriptionSecondary={!hasContent ? tPlan("pageDescSecondaryEmpty") : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
-            backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter"
+            backgroundImageAlt={tPlan("heroImageAlt")}
             hasWidgetStrip={hasContent}
             breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("plan"), href: "/plan", isCurrent: true }]}
           >
@@ -156,9 +156,9 @@ export default function PlanPage() {
                   type="button"
                   onClick={scrollToQuickStart}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
-                  aria-label="Scroll to templates"
+                  aria-label={tPlan("aria.scrollToTemplates")}
                 >
-                  See templates
+                  {tPlan("seeTemplates")}
                 </button>
               </div>
             )}
@@ -233,9 +233,9 @@ export default function PlanPage() {
                 id="plan-map-heading"
                 className="text-xl sm:text-2xl font-display font-semibold text-charcoal mb-1"
               >
-                Your itinerary on the map
+                {tPlan("mapTitle")}
               </h2>
-              <p className="text-xs text-olive/60 mb-4">Saves automatically.</p>
+              <p className="text-xs text-olive/60 mb-4">{tPlan("pageDescSecondaryEmpty")}</p>
               <PlanMapClient />
             </section>
           )}
@@ -243,7 +243,7 @@ export default function PlanPage() {
           <div
             ref={quickStartRef}
             className="flex flex-col gap-12 sm:gap-16 md:gap-20"
-            aria-label="Add places or use templates"
+            aria-label={tPlan("aria.quickStartRegion")}
           >
             {!hasContent && hydrated && showTipPlanEmpty && (
               <OnboardingContextualTip

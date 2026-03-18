@@ -7,6 +7,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 type ToastType = "success" | "error" | "warning" | "info";
 
@@ -43,6 +44,7 @@ function ToastItem({
   toast: Toast;
   onRemove: (id: string) => void;
 }) {
+  const tCommon = useTranslations("common");
   const [isExiting, setIsExiting] = useState(false);
   const innerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -92,7 +94,7 @@ function ToastItem({
           scheduleRemove();
         }}
         className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors"
-        aria-label="Dismiss notification"
+        aria-label={tCommon("aria.dismissNotification")}
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -103,13 +105,14 @@ function ToastItem({
 }
 
 export function ToastContainer({ toasts, onRemove }: ToastProps) {
+  const tCommon = useTranslations("common");
   if (toasts.length === 0) return null;
 
   return (
     <div
       className="fixed right-4 top-4 z-[100] flex flex-col gap-2 items-end"
       role="region"
-      aria-label="Notifications"
+      aria-label={tCommon("aria.notifications")}
     >
       {toasts.map((toast) => (
         <ToastItem key={toast.id} toast={toast} onRemove={onRemove} />

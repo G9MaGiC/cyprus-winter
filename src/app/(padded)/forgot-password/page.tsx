@@ -28,9 +28,9 @@ export default function ForgotPasswordPage() {
     return (
       <AuthLayout
         variant="forgot"
-        kicker="Reset password"
-        title="Reset password"
-        subtitle="Auth is being set up. Contact support if you need help."
+        kicker={tAuth("reset.configTitle")}
+        title={tAuth("reset.configTitle")}
+        subtitle={tAuth("reset.configSubtitle")}
         backHref="/login"
         backLabel={tCommon("backTo", { label: tNav("signIn") })}
       >
@@ -106,11 +106,11 @@ export default function ForgotPasswordPage() {
         <AuthInput
           ref={emailRef}
           id="forgot-email"
-          label="Email"
+          label={tAuth("forgot.emailLabel")}
           type="email"
           value={email}
           onChange={setEmail}
-          placeholder="you@example.com"
+          placeholder={tAuth("forgot.emailPlaceholder")}
           disabled={loading}
           required
           autoComplete="email"

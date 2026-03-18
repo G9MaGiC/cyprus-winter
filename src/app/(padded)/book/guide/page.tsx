@@ -23,11 +23,15 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
 }
 
 export default async function GuidesListPage() {
-  const tNav = await getTranslations("nav");
-  const tCommon = await getTranslations("common");
+  const [tNav, tCommon, tBookings, tBookPages] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("bookings"),
+    getTranslations("book.pages"),
+  ]);
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+      <nav className="flex flex-col gap-1 mb-6" aria-label={tBookPages("pageNavAria")}>
         <BackLink href="/trails" label={tCommon("backTo", { label: tNav("trails") })} />
         <Breadcrumbs
           items={[
@@ -42,8 +46,7 @@ export default async function GuidesListPage() {
       <div className="mb-8">
         <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
         <p className="text-olive/70 max-w-2xl">
-          Local guides for Troodos, Paphos, and Akamas. Winter conditions know-how, small groups, experienced
-          leaders. Request a hike and they&apos;ll confirm by email.
+          {tBookPages("guideList.intro")}
         </p>
       </div>
 
@@ -70,14 +73,14 @@ export default async function GuidesListPage() {
               <p className="text-sm text-olive/80 mb-4 flex-1 line-clamp-3">{guide.description}</p>
               {trailNames.length > 0 && (
                 <p className="text-xs text-olive/60 mb-4">
-                  Trails: {trailNames.slice(0, 4).join(", ")}
-                  {trailNames.length > 4 ? ` +${trailNames.length - 4} more` : ""}
+                  {tBookPages("guideList.trailsPrefix")} {trailNames.slice(0, 4).join(", ")}
+                  {trailNames.length > 4 ? ` ${tBookPages("guideList.moreCount", { count: trailNames.length - 4 })}` : ""}
                 </p>
               )}
               <AppLink
                 href={`/book/guide/${guide.id}`}
                 className={`w-full justify-center ${CTA.primaryCompact}`}
-                aria-label={`Book a guided hike with ${guide.name}`}
+                aria-label={tBookPages("guideList.ctaAria", { name: guide.name })}
               >
                 {tCommon("bookHike")}
               </AppLink>
@@ -88,11 +91,11 @@ export default async function GuidesListPage() {
 
       <p className="mt-12 text-center text-olive/70 text-sm">
         <AppLink href="/trails" className={SECTION.aegeanLink}>
-          Browse all trails
+          {tBookPages("guideList.footerBrowseTrails")}
         </AppLink>
         {" · "}
         <AppLink href="/bookings" className={SECTION.aegeanLink}>
-          My bookings
+          {tBookings("title")}
         </AppLink>
       </p>
     </div>

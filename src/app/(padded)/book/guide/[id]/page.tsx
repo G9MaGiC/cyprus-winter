@@ -38,12 +38,15 @@ export default async function GuideBookPage({
   const { trail } = await searchParams;
   const guide = guides.find((g) => g.id === id);
   if (!guide) notFound();
-  const tNav = await getTranslations("nav");
-  const tCommon = await getTranslations("common");
+  const [tNav, tCommon, tBookPages] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("book.pages"),
+  ]);
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+      <nav className="flex flex-col gap-1 mb-6" aria-label={tBookPages("pageNavAria")}>
         <BackLink href="/book/guide" label={tCommon("backTo", { label: tCommon("breadcrumbs.bookGuide") })} />
         <Breadcrumbs
           items={[
@@ -59,18 +62,18 @@ export default async function GuideBookPage({
       <div className="mt-6">
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean">
-            Guided hike
+            {tBookPages("guideDetail.badge")}
           </span>
           {guide.isVerified && (
             <span
               className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean"
-              title="Verified partner: receives booking requests directly"
+              title={tBookPages("guideDetail.verifiedTitle")}
             >
-              Verified partner
+              {tBookPages("guideDetail.verifiedLabel")}
             </span>
           )}
         </div>
-        <h1 className="font-display text-3xl font-bold text-olive mt-3">Book a guided hike</h1>
+        <h1 className="font-display text-3xl font-bold text-olive mt-3">{tBookPages("guideDetail.title")}</h1>
         <p className="text-olive/80 mt-1 break-words">
           {guide.name} · {guide.region}
         </p>
@@ -80,31 +83,31 @@ export default async function GuideBookPage({
       <GuideBookingForm guide={guide} preselectedTrailId={trail ?? undefined} />
 
       {(guide.bookingUrl || guide.contactPhone) && (
-        <section className="mt-8 space-y-4" aria-label="Other ways to book">
+        <section className="mt-8 space-y-4" aria-label={tBookPages("otherWaysAria")}>
           {guide.bookingUrl && (
             <p className="text-sm text-olive/80">
-              Or{" "}
+              {tBookPages("guideDetail.other.or")}{" "}
               <a
                 href={guide.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta font-medium hover:underline hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
-                aria-label="Book on the guide's website (opens in new tab)"
+                aria-label={tBookPages("guideDetail.other.bookDirectAria")}
               >
-                book directly on their site
+                {tBookPages("guideDetail.other.bookDirectCta")}
               </a>
             </p>
           )}
           {guide.contactPhone && (
             <p className="text-sm text-olive/70">
-              Or call{" "}
+              {tBookPages("guideDetail.other.callPrefix")}{" "}
               <a
                 href={`tel:${guide.contactPhone}`}
                 className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta hover:underline font-medium hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
               >
                 {guide.contactPhone}
               </a>{" "}
-              to check availability.
+              {tBookPages("guideDetail.other.callSuffix")}
             </p>
           )}
         </section>

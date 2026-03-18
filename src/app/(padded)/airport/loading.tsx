@@ -1,13 +1,15 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function AirportLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading airport guide"
+      aria-label={t("loading.airportGuide")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-24 ${SKELETON.block} mb-4`} />

@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import BackLink from "@/components/BackLink";
 import { CARD, LAYOUT } from "@/lib/design-tokens";
 import { AUTH_HERO_IMAGE } from "@/lib/cyprus-images";
+import { useTranslations } from "next-intl";
 
 export type AuthVariant = "login" | "register" | "forgot" | "success";
 
@@ -31,13 +32,15 @@ export default function AuthLayout({
   imageSrc = AUTH_HERO_IMAGE,
   footer,
 }: AuthLayoutProps) {
+  const tAuth = useTranslations("auth");
+
   return (
     <div className="min-h-[70vh] lg:min-h-[80vh] grid lg:grid-cols-2">
       {/* Hero image — left on desktop, top on mobile */}
       <div className="relative order-first h-[40vh] lg:h-auto lg:min-h-[80vh] w-full overflow-hidden">
         <Image
           src={imageSrc}
-          alt="Cyprus winter — trails, villages, wineries"
+          alt={tAuth("layout.heroAlt")}
           fill
           className="object-cover object-center"
           priority

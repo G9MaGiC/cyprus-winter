@@ -62,7 +62,7 @@ export default function TrailsConditionsStrip({
         <AppLink
           href="#trail-list"
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[44px] py-2 group"
-          aria-label="Trail conditions today — view list"
+          aria-label={t("trails.conditionsStrip.ariaViewList")}
         >
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span

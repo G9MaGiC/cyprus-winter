@@ -166,7 +166,7 @@ export default function OnboardingModal() {
                 handleIntent("exploring", dismiss, router);
               }}
               className={`${CTA.primaryCompact} flex-1 inline-flex items-center justify-center gap-2`}
-              aria-label="Start exploring places and trails"
+              aria-label={t("aria.startExploring")}
             >
               <Compass className="h-4 w-4" aria-hidden />
               {t("cta")}
@@ -175,19 +175,19 @@ export default function OnboardingModal() {
               type="button"
               onClick={handleDismiss}
               className="min-h-[44px] px-4 text-sm text-olive/50 hover:text-terracotta transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
-              aria-label="Skip onboarding"
+              aria-label={t("aria.skip")}
             >
               {t("skip")}
             </button>
           </div>
 
           <p className="text-sm text-olive/60 mb-2">{t("intentQuestion")}</p>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Intent options">
+          <div className="flex flex-wrap gap-2" role="group" aria-label={t("aria.intentGroup")}>
             <button
               type="button"
               onClick={() => handleIntent("planning", dismiss, router)}
               className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-              aria-label="Planning my trip"
+              aria-label={t("aria.intentPlanning")}
             >
               <Route className="h-4 w-4 text-aegean" aria-hidden />
               {t("intentPlanning")}
@@ -196,7 +196,7 @@ export default function OnboardingModal() {
               type="button"
               onClick={() => handleIntent("exploring", dismiss, router)}
               className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-              aria-label="Exploring places"
+              aria-label={t("aria.intentExploring")}
             >
               <MapPin className="h-4 w-4 text-aegean" aria-hidden />
               {t("intentExploring")}
@@ -205,7 +205,7 @@ export default function OnboardingModal() {
               type="button"
               onClick={() => handleIntent("browsing", dismiss, router)}
               className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-              aria-label="Just browsing"
+              aria-label={t("aria.intentBrowsing")}
             >
               <Eye className="h-4 w-4 text-aegean" aria-hidden />
               {t("intentBrowsing")}

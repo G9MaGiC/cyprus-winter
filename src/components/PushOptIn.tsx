@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { CARD } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 const CLIENT_ID_KEY = "cyprus-winter-push-client-id";
 
@@ -23,6 +24,7 @@ type Props = {
 };
 
 export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon" }: Props) {
+  const tPush = useTranslations("push.trip");
   const [status, setStatus] = useState<"idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error" | "notConfigured">("idle");
   const [mounted, setMounted] = useState(false);
   const isMountedRef = useRef(true);
@@ -114,18 +116,16 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
   if (status === "subscribed") {
     return (
       <p className="text-sm text-sage mt-2">
-        You&apos;re set. One reminder per day until you arrive.
+        {tPush("subscribed")}
       </p>
     );
   }
 
   return (
     <div className={`${CARD.base} ${CARD.content} mt-4 bg-aegean/5 border-aegean/20`}>
-      <p className="text-sm font-medium text-olive mb-2">Get trip reminders</p>
+      <p className="text-sm font-medium text-olive mb-2">{tPush("title")}</p>
       <p className="text-xs text-olive/80 mb-3">
-        {variant === "far"
-          ? "We'll remind you a few days before you leave. No spam."
-          : "We'll send up to three short reminders — one per day, 1–3 days before you leave. No spam."}
+        {variant === "far" ? tPush("bodyFar") : tPush("bodySoon")}
       </p>
       <button
         type="button"
@@ -133,7 +133,11 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
         disabled={status === "loading"}
         className="min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium bg-aegean text-white hover:bg-aegean/90 disabled:opacity-60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
-        {status === "loading" ? "Setting up…" : status === "error" ? "Try again" : "Turn on reminders"}
+        {status === "loading"
+          ? tPush("buttonLoading")
+          : status === "error"
+            ? tPush("buttonError")
+            : tPush("buttonIdle")}
       </button>
     </div>
   );

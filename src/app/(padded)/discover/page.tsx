@@ -30,7 +30,11 @@ const sections = buildDiscoverSections(allDiscoverItems);
 const discoverItemListSchema = buildDiscoverItemListSchema(allDiscoverItems, SITE_URL);
 
 export default async function DiscoverPage() {
-  const tNav = await getTranslations("nav");
+  const [tNav, tCommon, tDiscover] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("discover"),
+  ]);
   return (
     <div className="min-h-screen bg-sand">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(discoverItemListSchema) }} />
@@ -38,14 +42,14 @@ export default async function DiscoverPage() {
         <ListPageHero
           backHref="/"
           backLabel={tNav("home")}
-          title="Discover Cyprus Winter"
-          description="Curated places, real feel. Beaches, villages, wineries—what to pair with what."
+          title={tDiscover("page.hero.title")}
+          description={tDiscover("page.hero.description")}
           backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
-          backgroundImageAlt="Omodos village, wine heartland, cobbled streets—Cyprus winter"
+          backgroundImageAlt={tDiscover("page.hero.imageAlt")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("discover"), href: "/discover", isCurrent: true }]}
         >
-          <AppLink href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`} aria-label="Build a day or pick a template">
-            Plan your trip
+          <AppLink href="/plan" className={`${CTA.tertiaryOnDark} mt-4 inline-block`} aria-label={tDiscover("page.hero.planAria")}>
+            {tCommon("planYourTrip")}
           </AppLink>
         </ListPageHero>
 
@@ -56,10 +60,10 @@ export default async function DiscoverPage() {
         >
           <div className={`${LAYOUT.list} mx-auto`}>
             <h2 id="discover-search-heading" className="sr-only">
-              Search places
+              {tDiscover("page.search.srHeading")}
             </h2>
             <SearchBar
-              placeholder="Search places, trails, wineries…"
+              placeholder={tDiscover("page.search.placeholder")}
               className="max-w-2xl mx-auto"
             />
           </div>

@@ -83,7 +83,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             {tease}
           </p>
           {bestTime && (
-            <p className="text-xs text-sage mt-1.5 break-words" title="Best time to visit">
+            <p className="text-xs text-sage mt-1.5 break-words" title={tCommon("bestTimeToVisitTitle")}>
               {bestTime}
             </p>
           )}

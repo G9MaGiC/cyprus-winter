@@ -6,38 +6,45 @@ import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import AppLink from "@/components/AppLink";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
 
-export const metadata: Metadata = {
-  title: "Just Landed? | Cyprus Winter Airport Guide",
-  description:
-    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here.",
-  alternates: { canonical: `${SITE_URL}/airport` },
-  openGraph: {
-    title: "Just Landed? | Cyprus Winter Airport Guide",
-    description: "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers.",
-    url: `${SITE_URL}/airport`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter — Larnaca and Paphos airport guide" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "airport.page" });
+  const title = t("meta.title");
+  const description = t("meta.description");
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/airport` },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/airport`,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
+    },
+  };
+}
 
 const CITY_GREEK: Record<string, string> = {
   Larnaca: "Λάρνακα",
   Paphos: "Πάφος",
 };
 
-const FIRST_HOUR_STEPS = [
-  { step: "1", label: "Arrivals" },
-  { step: "2", label: "Baggage" },
-  { step: "3", label: "Transport" },
-  { step: "4", label: "You're out" },
-];
-
 export default async function AirportPage() {
-  const tNav = await getTranslations("nav");
+  const [tNav, tAirport] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("airport.page"),
+  ]);
+  const FIRST_HOUR_STEPS = [
+    { step: "1", label: tAirport("firstHour.steps.arrivals") },
+    { step: "2", label: tAirport("firstHour.steps.baggage") },
+    { step: "3", label: tAirport("firstHour.steps.transport") },
+    { step: "4", label: tAirport("firstHour.steps.out") },
+  ];
   return (
     <div className="min-h-screen bg-sand">
       <div
@@ -46,19 +53,19 @@ export default async function AirportPage() {
         <ListPageHero
           backHref="/"
           backLabel={tNav("home")}
-          title="Just landed?"
-          description="Transport from Larnaca and Paphos. Taxis, buses, car hire—you're sorted."
-          descriptionSecondary="Coast mild, Troodos cooler. Pack layers."
+          title={tAirport("hero.title")}
+          description={tAirport("hero.description")}
+          descriptionSecondary={tAirport("hero.descriptionSecondary")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("arriving"), href: "/airport", isCurrent: true }]}
           backgroundImage="/images/cyprus/cyprus-airport-coast.jpg"
-          backgroundImageAlt="Cyprus coast, Mediterranean bay—welcome to the island"
+          backgroundImageAlt={tAirport("hero.imageAlt")}
         >
           <AppLink
             href="/plan?template=short-stay"
             className={`${CTA.tertiaryOnDark} mt-4 inline-block`}
-            aria-label="Plan your first 48 hours"
+            aria-label={tAirport("hero.plan48Aria")}
           >
-            Plan your first 48 hours
+            {tAirport("hero.plan48Cta")}
           </AppLink>
         </ListPageHero>
 
@@ -68,26 +75,26 @@ export default async function AirportPage() {
           className={`rounded-xl bg-aegean/10 border border-aegean/30 ${CARD.content}`}
         >
           <h2 id="essentials-heading" className="sr-only">
-            Essential numbers
+            {tAirport("essentials.srHeading")}
           </h2>
           <p className="text-aegean font-semibold text-sm">
             <a href="tel:112" className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
-              Emergency <strong>112</strong>
+              {tAirport("essentials.emergency")} <strong>112</strong>
             </a>
             {" · "}
-            Tourist info <strong>1460</strong>
+            {tAirport("essentials.touristInfo")} <strong>1460</strong>
             {" · "}
             <a href="tel:199" className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
-              Ambulance <strong>199</strong>
+              {tAirport("essentials.ambulance")} <strong>199</strong>
             </a>
           </p>
-          <p className="text-olive/70 text-xs mt-1">Save these. Hope you never need them.</p>
+          <p className="text-olive/70 text-xs mt-1">{tAirport("essentials.note")}</p>
         </section>
 
         {/* Your first hour — orient jetlagged arrivals */}
         <section aria-labelledby="first-hour-heading" className={`rounded-xl ${CARD.base} ${CARD.content}`}>
           <h2 id="first-hour-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
-            Your first hour
+            {tAirport("firstHour.title")}
           </h2>
           <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto pb-1">
             {FIRST_HOUR_STEPS.map(({ step, label }, i) => (
@@ -109,9 +116,9 @@ export default async function AirportPage() {
         {/* Airport picker — prominent for tired arrivals */}
         <section aria-labelledby="airport-picker-heading">
           <h2 id="airport-picker-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
-            Which airport?
+            {tAirport("picker.title")}
           </h2>
-          <nav aria-label="Choose your airport" className="flex gap-3">
+          <nav aria-label={tAirport("picker.aria")} className="flex gap-3">
             {airports.map((airport) => (
               <a
                 key={airport.code}
@@ -150,7 +157,7 @@ export default async function AirportPage() {
 
               <div className="p-6 space-y-6">
                 <div>
-                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>Transport</h3>
+                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>{tAirport("sections.transportTitle")}</h3>
                   <ul className="space-y-3" role="list">
                     {airport.transport.map((t) => (
                       <li
@@ -187,7 +194,7 @@ export default async function AirportPage() {
                 </div>
 
                 <div>
-                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>Things to know</h3>
+                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>{tAirport("sections.tipsTitle")}</h3>
                   <ul className="space-y-2" role="list">
                     {airport.tips.map((tip, i) => (
                       <li
@@ -215,21 +222,20 @@ export default async function AirportPage() {
         {/* Closing — warm, Cyprus Winter voice */}
         <footer className="text-center space-y-6 pb-4">
           <p className="text-olive/80 text-base max-w-lg mx-auto leading-relaxed break-words">
-            Drop your bags. Find a harbour café. Order a coffee and watch the light. Tonight, just arrive.
-            The island isn&apos;t going anywhere.
+            {tAirport("footer.body")}
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">
             <AppLink href="/plan?template=short-stay" className={CTA.primaryCompact}>
-              Plan your first 48 hours
+              {tAirport("hero.plan48Cta")}
             </AppLink>
             <AppLink href="/plan?template=classic-7" className={CTA.secondaryCompact}>
-              Plan your first week
+              {tAirport("footer.planWeekCta")}
             </AppLink>
             <AppLink href="/discover" className={CTA.secondaryCompact}>
-              Discover places
+              {tAirport("footer.discoverCta")}
             </AppLink>
             <AppLink href="/weather" className={CTA.secondaryCompact}>
-              Check weather
+              {tAirport("footer.weatherCta")}
             </AppLink>
           </div>
         </footer>

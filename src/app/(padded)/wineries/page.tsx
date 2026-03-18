@@ -6,55 +6,67 @@ import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
-const wineriesItemListSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Cyprus Winter Wineries",
-  description: "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars.",
-  url: `${SITE_URL}/wineries`,
-  numberOfItems: wineries.length,
-  itemListElement: wineries.map((item, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "Winery",
-      name: item.name,
-      description: item.description.slice(0, 160),
-      url: `${SITE_URL}/discover/${item.id}`,
-      address: { "@type": "PostalAddress", addressLocality: item.region, addressCountry: "CY" },
-    },
-  })),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "wineries.page" });
+  const title = t("meta.title");
+  const description = t("meta.description");
 
-export const metadata: Metadata = {
-  title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
-  description:
-    "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/wineries` },
-  openGraph: {
-    title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
-    description: "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
-    url: `${SITE_URL}/wineries`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winery village, winter" }],
-  },
-};
+  return {
+    title,
+    description,
+    alternates: { canonical: `${SITE_URL}/wineries` },
+    openGraph: {
+      title,
+      description: t("meta.ogDescription"),
+      url: `${SITE_URL}/wineries`,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
+    },
+  };
+}
 
 export default async function WineriesPage() {
-  const tNav = await getTranslations("nav");
+  const [tNav, tCommon, tHome, tWineries] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("home"),
+    getTranslations("wineries.page"),
+  ]);
+
+  const wineriesItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: tWineries("meta.schemaName"),
+    description: tWineries("meta.schemaDescription"),
+    url: `${SITE_URL}/wineries`,
+    numberOfItems: wineries.length,
+    itemListElement: wineries.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Winery",
+        name: item.name,
+        description: item.description.slice(0, 160),
+        url: `${SITE_URL}/discover/${item.id}`,
+        address: { "@type": "PostalAddress", addressLocality: item.region, addressCountry: "CY" },
+      },
+    })),
+  };
+
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(wineriesItemListSchema) }} />
       <PageHeader
         backHref="/discover"
         backLabel={tNav("discover")}
-        title="Cyprus Wineries in Winter"
-        description="Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
+        title={tWineries("header.title")}
+        description={tWineries("header.description")}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
           { label: tNav("discover"), href: "/discover" },
@@ -63,10 +75,10 @@ export default async function WineriesPage() {
       >
         <div className="mt-4 flex flex-wrap gap-3">
           <AppLink href="/bookings" className={CTA.primaryCompact}>
-            Book a tasting
+            {tCommon("bookTasting")}
           </AppLink>
-          <AppLink href="/plan" className={CTA.secondaryCompact} aria-label="Build a day or pick a template">
-            Plan your trip
+          <AppLink href="/plan" className={CTA.secondaryCompact} aria-label={tHome("aria.plan")}>
+            {tCommon("planYourTrip")}
           </AppLink>
         </div>
       </PageHeader>
@@ -76,10 +88,10 @@ export default async function WineriesPage() {
         return partners.length > 0 ? (
           <section aria-labelledby="partners-heading" className="mb-12 sm:mb-16">
             <h2 id="partners-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-              Book with our partners
+              {tWineries("partners.title")}
             </h2>
             <p className="text-olive/70 text-sm mb-6 max-w-2xl">
-              Verified partners receive your booking request directly and confirm by email.
+              {tWineries("partners.body")}
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {partners.map((winery) => (
@@ -93,7 +105,7 @@ export default async function WineriesPage() {
       <div id="wineries-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
       <h2 id="wineries-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-        All wineries
+        {tWineries("listTitle")}
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {wineries.map((winery) => (
@@ -104,13 +116,13 @@ export default async function WineriesPage() {
       <div className={`${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} relative`}>
         <div className="space-y-4">
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-            Pair a winery visit with a trail or village.{" "}
+            {tWineries("footer.pairingPrefix")}{" "}
             <AppLink href="/plan" className={SECTION.aegeanLink}>
-              Build a day
+              {tWineries("footer.pairingLink")}
             </AppLink>
           </p>
           <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-            Explore wine routes:{" "}
+            {tWineries("footer.routesPrefix")}{" "}
         <AppLink href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
           Krasochoria
         </AppLink>

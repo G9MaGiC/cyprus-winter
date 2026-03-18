@@ -5,24 +5,27 @@ import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Team | Cyprus Winter — Trails, Villages, Wineries",
-  description:
-    "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/team` },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "team.page" });
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    alternates: { canonical: `${SITE_URL}/team` },
+  };
+}
 
 export default async function TeamPage() {
-  const tNav = await getTranslations("nav");
+  const [tNav, tTeam] = await Promise.all([getTranslations("nav"), getTranslations("team.page")]);
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
         backLabel={tNav("home")}
-        title="Our Team"
-        description="Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
+        title={tTeam("header.title")}
+        description={tTeam("header.description")}
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("team"), href: "/team", isCurrent: true }]}
       />
 
@@ -62,20 +65,20 @@ export default async function TeamPage() {
       </div>
 
       <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-l-4 border-l-terracotta/20 text-center`}>
-        <p className="text-sm text-olive/80 mb-4">Meet the team behind your trip — and ask them anything.</p>
+        <p className="text-sm text-olive/80 mb-4">{tTeam("cta.prompt")}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <AIAssistantTrigger label="Ask AI" />
+          <AIAssistantTrigger label={tTeam("cta.askAi")} />
           <AppLink href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
-            Start planning
+            {tTeam("cta.startPlanning")}
           </AppLink>
           <AppLink href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
-            Discover places
+            {tTeam("cta.discoverPlaces")}
           </AppLink>
         </div>
       </div>
 
       <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto leading-relaxed break-words">
-        Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That&apos;s a day we&apos;d take. The island rewards the curious.
+        {tTeam("outro")}
       </p>
     </div>
   );

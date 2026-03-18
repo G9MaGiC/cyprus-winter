@@ -79,13 +79,14 @@ function useBreadcrumbs(): BreadcrumbItem[] {
 export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   const autoItems = useBreadcrumbs();
   const breadcrumbItems = items || autoItems;
+  const tCommon = useTranslations("common");
   
   // Don't show on home page
   if (breadcrumbItems.length <= 1) return null;
   
   return (
     <nav
-      aria-label="Breadcrumb"
+      aria-label={tCommon("aria.breadcrumb")}
       className={cn("py-3 px-4 sm:px-6", className)}
     >
       <ol className="flex flex-wrap items-center gap-2 text-sm text-olive/60">

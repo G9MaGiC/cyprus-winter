@@ -12,6 +12,7 @@ import { useAuth } from "@/contexts/AuthContext";
 export default function BottomNav() {
   const pathname = usePathname();
   const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
   const moreButtonRef = useRef<HTMLButtonElement>(null);
@@ -88,7 +89,7 @@ export default function BottomNav() {
   return (
     <nav
       role="navigation"
-      aria-label="Bottom navigation"
+      aria-label={tCommon("aria.bottomNavigation")}
       className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-3 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]"
     >
       <div className="flex items-center justify-around max-w-lg mx-auto">
@@ -131,7 +132,7 @@ export default function BottomNav() {
             onClick={() => setMoreOpen((v) => !v)}
             aria-expanded={moreOpen}
             aria-haspopup="true"
-            aria-label="More navigation"
+            aria-label={tCommon("aria.moreNavigation")}
             className={`flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}

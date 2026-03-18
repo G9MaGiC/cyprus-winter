@@ -1,13 +1,15 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function EventsLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading events"
+      aria-label={t("loading.events")}
     >
       {/* Header skeleton */}
       <div className={`h-4 w-16 ${SKELETON.block} mb-4`} />
