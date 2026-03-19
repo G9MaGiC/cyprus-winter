@@ -19,6 +19,13 @@ export const TRACK_EVENTS = [
   "onboarding_intent_browsing",
   "first_add_to_plan",
   "first_booking",
+  "arrival_quick_action_click",
+  "inline_plan_add_click",
+  "decision_rationale_view",
+  "booking_trust_strip_view",
+  "booking_stepper_progress",
+  "trip_length_recommendation_shown",
+  "today_adapt_action_click",
 ] as const;
 
 export type TrackEventName = (typeof TRACK_EVENTS)[number];

@@ -46,6 +46,7 @@ export default async function HomeHero() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <AppLink
               href="/discover"
+              data-testid="home-hero-explore-cta"
               className={`${CTA.primary} w-full sm:w-auto sm:min-w-[160px] justify-center`}
               aria-label={tHome("aria.discover")}
             >
@@ -53,6 +54,7 @@ export default async function HomeHero() {
             </AppLink>
             <AppLink
               href="/plan"
+              data-testid="home-hero-plan-cta"
               className={`${CTA.secondary} sm:min-w-[140px] justify-center`}
               aria-label={tHome("aria.plan")}
             >
@@ -60,7 +62,12 @@ export default async function HomeHero() {
             </AppLink>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-5 pt-2 border-t border-white/15">
-            <AppLink href="/airport" className={CTA.ghost} aria-label={tHome("aria.airport")}>
+            <AppLink
+              href="/airport"
+              data-testid="home-hero-airport-cta"
+              className={CTA.ghost}
+              aria-label={tHome("aria.airport")}
+            >
               {tHome("cta.arriving")}
             </AppLink>
             <AIAssistantTrigger variant="tertiaryOnDark" label={tHome("cta.askGuide")} />
