@@ -8,6 +8,7 @@ import type { Restaurant } from "@/data/restaurants";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import { useTranslations } from "next-intl";
 
 export default function AttractionCard({ a }: { a: Attraction | Winery | Restaurant }) {
@@ -104,13 +105,15 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
         {isWinery && (
           <AppLink
             href={`/book/winery/${a.id}`}
-            className={CTA.primaryCompact}
+            className={CTA.secondaryCompact}
             aria-label={`${tCommon("bookTasting")} — ${a.name}`}
           >
             {tCommon("bookTasting")}
           </AppLink>
         )}
-        <AddToItineraryButton placeId={a.id} className="text-sm" />
+        <TrackOnClick event="plan_add" properties={{ placeId: a.id, source: "attraction_card" }}>
+          <AddToItineraryButton placeId={a.id} className="text-sm" />
+        </TrackOnClick>
       </div>
     </div>
   );

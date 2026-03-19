@@ -19,6 +19,7 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { getSimilarDiscoverPlaces } from "@/lib/related-places";
 import TrackView from "@/components/TrackView";
+import TrackEventOnMount from "@/components/TrackEventOnMount";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { getLocalizedName } from "@/lib/localize";
 import { getTranslations } from "next-intl/server";
@@ -119,6 +120,7 @@ export default async function AttractionPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
         <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
+        <TrackEventOnMount event="decision_rationale_view" properties={{ place_id: a.id, place_type: a.type }} />
         <nav className="flex flex-col gap-1 mb-6" aria-label={tDetail("pageNavAria")}>
           <BackLink href="/discover" label={tNav("discover")} />
           <Breadcrumbs
@@ -149,6 +151,24 @@ export default async function AttractionPage({
 
             <section>
               <p className="text-olive/90 text-lg sm:text-xl leading-relaxed break-words">{a.description}</p>
+            </section>
+
+            <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>
+              <h2 className={`prose-label text-aegean ${SECTION.headingGap}`}>Why this now</h2>
+              <ul className="space-y-2 text-sm text-olive/85">
+                <li className="flex gap-2">
+                  <span className="text-aegean" aria-hidden>•</span>
+                  <span>Best for {a.bestFor.slice(0, 2).join(" and ").toLowerCase()}.</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aegean" aria-hidden>•</span>
+                  <span>{a.region} is a practical stop for the same day plan flow.</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aegean" aria-hidden>•</span>
+                  <span>Save now to compare with similar options later without losing context.</span>
+                </li>
+              </ul>
             </section>
 
             {"culturalNote" in a && a.culturalNote && /buffer zone/i.test(a.culturalNote) && (
@@ -281,6 +301,12 @@ export default async function AttractionPage({
             <h2 className="prose-label text-olive/70 mb-1">
               {tDetail("booking.title")}
             </h2>
+            <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Trust and timing</p>
+              <p className="mt-1 text-sm text-olive/80">
+                Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready.
+              </p>
+            </div>
             {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
               <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
             )}

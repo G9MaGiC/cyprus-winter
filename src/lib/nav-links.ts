@@ -12,10 +12,10 @@ export const navPrimaryLinks: readonly NavLink[] = [
 ];
 
 export const navMoreLinks: readonly NavLink[] = [
+  { href: "/airport", labelKey: "arriving" },
+  { href: "/bookings", labelKey: "bookings" },
   { href: "/weather", labelKey: "weather" },
   { href: "/events", labelKey: "events" },
-  { href: "/bookings", labelKey: "bookings" },
-  { href: "/airport", labelKey: "arriving" },
   { href: "/secrets", labelKey: "secrets" },
   { href: "/account", labelKey: "account" },
   { href: "/team", labelKey: "team" },
@@ -30,10 +30,10 @@ export const bottomPrimaryLinks: readonly NavLink[] = [
 
 export const bottomOverflowLinks: readonly NavLink[] = [
   { href: "/search", labelKey: "search" },
+  { href: "/airport", labelKey: "arriving" },
+  { href: "/bookings", labelKey: "bookings" },
   { href: "/weather", labelKey: "weather" },
   { href: "/events", labelKey: "events" },
-  { href: "/bookings", labelKey: "bookings" },
-  { href: "/airport", labelKey: "arriving" },
   { href: "/secrets", labelKey: "secrets" },
   { href: "/team", labelKey: "team" },
   { href: "/account", labelKey: "account" },
