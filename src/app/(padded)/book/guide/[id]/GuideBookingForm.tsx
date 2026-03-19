@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
+import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
+import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import { useSearchParams } from "next/navigation";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
@@ -38,6 +40,16 @@ export default function GuideBookingForm({
     if (done && successRef.current) {
       successRef.current.focus({ preventScroll: false });
     }
+  }, [done]);
+
+  useEffect(() => {
+    track("booking_trust_strip_view", { type: "guide_tour", guideId: guide.id });
+    track("booking_stepper_progress", { type: "guide_tour", step: 1 });
+  }, [guide.id]);
+
+  useEffect(() => {
+    if (!done) return;
+    track("booking_stepper_progress", { type: "guide_tour", step: 3 });
   }, [done]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -157,6 +169,12 @@ export default function GuideBookingForm({
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <BookingProgressStepper currentStep={1} />
+      <BookingTrustStrip variant="guide" />
+      <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
+        <p><strong>Booking states:</strong> Requested now to confirmed after guide reply.</p>
+        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+      </div>
       {error && (
         <p
           ref={errorRef}

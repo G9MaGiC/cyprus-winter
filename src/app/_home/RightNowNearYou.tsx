@@ -6,6 +6,7 @@ import AppLink from "@/components/AppLink";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import LocationActionButtons from "@/components/LocationActionButtons";
 import RegionPickerChips from "@/components/RegionPickerChips";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import { getRegionShortLabel, type RegionSlug } from "@/data/regions";
 import { useRightNowFeed } from "@/hooks/useRightNowFeed";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
@@ -258,6 +259,23 @@ export default function RightNowNearYou({
         <AppLink href="/discover" className={SECTION.aegeanLink}>
           {tHome("rightNow.loaded.seeMore")}
         </AppLink>
+      </div>
+      <div className="mb-4 rounded-xl border border-aegean/20 bg-aegean/5 p-4">
+        <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Today adapt</p>
+        <p className="mt-1 text-sm text-olive/80">
+          Weather changes or delayed plans? Use one tap actions to adapt your day without restarting.
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-3">
+          <TrackOnClick event="today_adapt_action_click" properties={{ action: "weather" }}>
+            <AppLink href="/weather" className={SECTION.aegeanLink}>Check weather</AppLink>
+          </TrackOnClick>
+          <TrackOnClick event="today_adapt_action_click" properties={{ action: "plan" }}>
+            <AppLink href="/plan" className={SECTION.aegeanLink}>Adjust plan</AppLink>
+          </TrackOnClick>
+          <TrackOnClick event="today_adapt_action_click" properties={{ action: "bookings" }}>
+            <AppLink href="/bookings" className={SECTION.aegeanLink}>Review bookings</AppLink>
+          </TrackOnClick>
+        </div>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
         {items.map((item) => (

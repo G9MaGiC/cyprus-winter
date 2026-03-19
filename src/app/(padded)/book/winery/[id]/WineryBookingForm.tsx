@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
+import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
+import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
@@ -29,6 +31,16 @@ export default function WineryBookingForm({
     if (done && successRef.current) {
       successRef.current.focus({ preventScroll: false });
     }
+  }, [done]);
+
+  useEffect(() => {
+    track("booking_trust_strip_view", { type: "winery_tasting", wineryId });
+    track("booking_stepper_progress", { type: "winery_tasting", step: 1 });
+  }, [wineryId]);
+
+  useEffect(() => {
+    if (!done) return;
+    track("booking_stepper_progress", { type: "winery_tasting", step: 3 });
   }, [done]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -152,6 +164,12 @@ export default function WineryBookingForm({
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <BookingProgressStepper currentStep={1} />
+      <BookingTrustStrip variant="winery" />
+      <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
+        <p><strong>Booking states:</strong> Requested now to confirmed after partner reply.</p>
+        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+      </div>
       {error && (
         <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>
       )}

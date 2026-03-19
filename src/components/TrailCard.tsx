@@ -5,6 +5,7 @@ import AppLink from "@/components/AppLink";
 import { CARD, TYPE, CALLOUT } from "@/lib/design-tokens";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { formatReportedAgo } from "@/lib/format";
 import type { Trail, TrailConditions } from "@/data/trails";
@@ -97,7 +98,9 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
         </div>
       </AppLink>
       <div className={CARD.footer}>
-        <AddToItineraryButton placeId={trail.id} label="Add to plan" className="text-sm" />
+        <TrackOnClick event="plan_add" properties={{ placeId: trail.id, source: "trail_card" }}>
+          <AddToItineraryButton placeId={trail.id} label="Add to plan" className="text-sm" />
+        </TrackOnClick>
       </div>
     </div>
   );

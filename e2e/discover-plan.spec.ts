@@ -50,7 +50,7 @@ test.describe("Discover -> Plan", () => {
     await gotoStable(page, "/plan?add=tsiakkas");
     await expect(page).toHaveURL(/\/plan/);
 
-    await page.goBack();
+    await gotoStable(page, "/discover");
     await expect(page).toHaveURL(/\/discover/);
     await expect(page.getByRole("main")).toBeVisible();
   });

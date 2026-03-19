@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import { CARD, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
@@ -8,6 +9,7 @@ import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { getRecommendedTemplates } from "@/lib/personalization";
 import type { PlanItem } from "@/data";
 import { useTranslations } from "next-intl";
+import { track } from "@/lib/analytics";
 
 type QuickStartSectionProps = {
   activeDay: number;
@@ -21,6 +23,13 @@ type QuickStartSectionProps = {
 
 function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tripLength: number): boolean {
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
+}
+
+function getTripFitLabel(templateDuration: number, tripLength: number): string {
+  const delta = templateDuration - tripLength;
+  if (delta === 0) return "Exact length";
+  if (Math.abs(delta) === 1) return "Near match";
+  return delta > 0 ? "Compress plan" : "Extend with add-ons";
 }
 
 export default function QuickStartSection({
@@ -53,6 +62,15 @@ export default function QuickStartSection({
           (t) => !isRecommendedForTrip(t, tripLength) && !forYouKeys.has(t.key)
         )
       : ITINERARY_TEMPLATES.filter((t) => !forYouKeys.has(t.key));
+
+  useEffect(() => {
+    if (tripLength == null) return;
+    track("trip_length_recommendation_shown", {
+      trip_length: tripLength,
+      recommended_count: recommended.length,
+      for_you_count: forYou.length,
+    });
+  }, [tripLength, recommended.length, forYou.length]);
 
   const templateCardClass = "shrink-0 snap-center w-[85vw] max-w-[280px] sm:w-full sm:max-w-none";
   const renderTemplateCard = (
@@ -98,6 +116,11 @@ export default function QuickStartSection({
           </span>
         </div>
         <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
+        {tripLength != null && (
+          <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
+            {getTripFitLabel(template.duration, tripLength)}
+          </span>
+        )}
       </button>
     );
   };
@@ -124,6 +147,13 @@ export default function QuickStartSection({
           <p className="text-sm text-olive/60 max-w-xl mt-2">
             {tPlanQuick("setDatesHint")}
           </p>
+        )}
+        {tripLength != null && (
+          <div className="mt-3 rounded-xl border border-aegean/20 bg-aegean/5 p-3 sm:p-4">
+            <p className="text-sm text-olive/85">
+              Recommended for your {tripLength}-day trip based on length fit and your saved preferences.
+            </p>
+          </div>
         )}
       </header>
 

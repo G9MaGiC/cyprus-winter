@@ -3,6 +3,7 @@
 import AppLink from "@/components/AppLink";
 import { useItinerary } from "@/hooks/useItinerary";
 import { CTA, SECTION } from "@/lib/design-tokens";
+import { track, trackProduct } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 
 type AddToItineraryButtonProps = {
@@ -21,7 +22,7 @@ export default function AddToItineraryButton({
   className = "",
 }: AddToItineraryButtonProps) {
   const tCommon = useTranslations("common");
-  const { days, hydrated } = useItinerary();
+  const { days, hydrated, addToDayIfMissing } = useItinerary();
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(placeId);
   const resolvedLabel = label ?? tCommon("addToPlan");
@@ -30,6 +31,7 @@ export default function AddToItineraryButton({
     return (
       <AppLink
         href={`/plan?add=${placeId}`}
+        data-testid={`add-to-plan-${placeId}`}
         className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
       >
         {resolvedLabel} →
@@ -40,6 +42,7 @@ export default function AddToItineraryButton({
   if (isInItinerary) {
     return (
       <span
+        data-testid={`in-plan-${placeId}`}
         className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
         aria-label={tCommon("aria.placeInItinerary", { id: placeId })}
       >
@@ -55,12 +58,21 @@ export default function AddToItineraryButton({
     );
   }
 
+  const handleInlineAdd = () => {
+    addToDayIfMissing(placeId);
+    track("inline_plan_add_click", { place_id: placeId });
+    trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
+  };
+
   return (
-    <AppLink
-      href={`/plan?add=${placeId}`}
+    <button
+      type="button"
+      onClick={handleInlineAdd}
+      data-testid={`add-to-plan-${placeId}`}
       className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
+      aria-label={`${resolvedLabel}: ${placeId}`}
     >
       {resolvedLabel} →
-    </AppLink>
+    </button>
   );
 }
