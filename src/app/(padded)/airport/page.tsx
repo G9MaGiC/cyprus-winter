@@ -6,6 +6,7 @@ import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import AppLink from "@/components/AppLink";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import { getLocale, getTranslations } from "next-intl/server";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
@@ -62,12 +63,34 @@ export default async function AirportPage() {
         >
           <AppLink
             href="/plan?template=short-stay"
+            data-testid="airport-hero-plan48-cta"
             className={`${CTA.tertiaryOnDark} mt-4 inline-block`}
             aria-label={tAirport("hero.plan48Aria")}
           >
             {tAirport("hero.plan48Cta")}
           </AppLink>
         </ListPageHero>
+
+        <section aria-label="Arrival quick actions" className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
+          <p className="prose-label text-olive/70 mb-3">Arrive faster</p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
+              <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">
+                {tAirport("hero.plan48Cta")}
+              </AppLink>
+            </TrackOnClick>
+            <TrackOnClick event="arrival_quick_action_click" properties={{ action: "weather_now" }}>
+              <AppLink href="/weather" className={`${CTA.secondaryCompact} justify-center`} data-testid="airport-quick-weather">
+                {tAirport("footer.weatherCta")}
+              </AppLink>
+            </TrackOnClick>
+            <TrackOnClick event="arrival_quick_action_click" properties={{ action: "discover_nearby" }}>
+              <AppLink href="/discover" className={`${CTA.secondaryCompact} justify-center`} data-testid="airport-quick-discover">
+                {tAirport("footer.discoverCta")}
+              </AppLink>
+            </TrackOnClick>
+          </div>
+        </section>
 
         {/* Essentials — tappable numbers for mobile */}
         <section
@@ -123,6 +146,7 @@ export default async function AirportPage() {
               <a
                 key={airport.code}
                 href={`#airport-${airport.code}`}
+                data-testid={`airport-picker-${airport.code.toLowerCase()}`}
                 className={`flex-1 min-h-[52px] flex items-center justify-center rounded-xl border-2 border-terracotta/40 text-terracotta font-semibold hover:bg-terracotta/10 hover:border-terracotta/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2`}
               >
                 {airport.code} — {airport.city}
@@ -225,16 +249,24 @@ export default async function AirportPage() {
             {tAirport("footer.body")}
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">
-            <AppLink href="/plan?template=short-stay" className={CTA.primaryCompact}>
+            <AppLink
+              href="/plan?template=short-stay"
+              data-testid="airport-footer-plan48-cta"
+              className={CTA.primaryCompact}
+            >
               {tAirport("hero.plan48Cta")}
             </AppLink>
-            <AppLink href="/plan?template=classic-7" className={CTA.secondaryCompact}>
+            <AppLink
+              href="/plan?template=classic-7"
+              data-testid="airport-footer-planweek-cta"
+              className={CTA.secondaryCompact}
+            >
               {tAirport("footer.planWeekCta")}
             </AppLink>
-            <AppLink href="/discover" className={CTA.secondaryCompact}>
+            <AppLink href="/discover" data-testid="airport-footer-discover-cta" className={CTA.secondaryCompact}>
               {tAirport("footer.discoverCta")}
             </AppLink>
-            <AppLink href="/weather" className={CTA.secondaryCompact}>
+            <AppLink href="/weather" data-testid="airport-footer-weather-cta" className={CTA.secondaryCompact}>
               {tAirport("footer.weatherCta")}
             </AppLink>
           </div>
