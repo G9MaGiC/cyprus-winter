@@ -8,7 +8,6 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "react/no-unescaped-entities": "off",
-      "react-hooks/set-state-in-effect": "warn",
     },
   },
   // Override default ignores of eslint-config-next.
@@ -19,6 +18,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "dist/**",
+    ".vercel/**",
     "next-env.d.ts",
     // Capacitor-generated Android files
     "android/**",
