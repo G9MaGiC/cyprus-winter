@@ -5,14 +5,14 @@ import { routing } from "@/i18n/routing";
 const intlMiddleware = createIntlMiddleware(routing);
 
 // Chain next-intl (locale routing) with security headers
-export default function proxy(request: NextRequest): NextResponse {
+export default function middleware(request: NextRequest): NextResponse {
   const response = intlMiddleware(request);
 
   // Build CSP header
   const cspHeader = [
     "default-src 'self'",
-    // Allow scripts from self, nonce, strict-dynamic for Next.js, and unsafe-inline as fallback
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
+    // Allow scripts from self and unsafe-inline (required for Next.js inline scripts)
+    "script-src 'self' 'unsafe-inline' https:",
     // Allow styles from self and unsafe-inline (required for Tailwind)
     "style-src 'self' 'unsafe-inline'",
     // Images from self, blob, data, and external sources
@@ -44,7 +44,7 @@ export default function proxy(request: NextRequest): NextResponse {
   return response;
 }
 
-// Configure proxy to run on all routes except static files
+// Configure middleware to run on all routes except static files and API
 export const config = {
   matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

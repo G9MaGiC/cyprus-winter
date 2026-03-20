@@ -24,9 +24,17 @@ export default function AddToItineraryButton({
 }: AddToItineraryButtonProps) {
   const tCommon = useTranslations("common");
   const { days, hydrated, addToDayIfMissing } = useItinerary();
+  const [justAdded, setJustAdded] = useState(false);
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(placeId);
   const resolvedLabel = label ?? tCommon("addToPlan");
+
+  const handleInlineAdd = () => {
+    addToDayIfMissing(placeId);
+    track("inline_plan_add_click", { place_id: placeId });
+    trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
+    setJustAdded(true);
+  };
 
   if (!hydrated) {
     return (
@@ -58,15 +66,6 @@ export default function AddToItineraryButton({
       </span>
     );
   }
-
-  const [justAdded, setJustAdded] = useState(false);
-
-  const handleInlineAdd = () => {
-    addToDayIfMissing(placeId);
-    track("inline_plan_add_click", { place_id: placeId });
-    trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
-    setJustAdded(true);
-  };
 
   if (justAdded) {
     return (
