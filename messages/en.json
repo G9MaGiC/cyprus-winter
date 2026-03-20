@@ -102,8 +102,7 @@
     "trail": "Trail",
     "winery": "Winery",
     "event": "Event",
-    "eat": "Eat"
-    ,
+    "eat": "Eat",
     "timelineRemovedPlace": "This place was removed from our list",
     "ai": {
       "title": "Cyprus Guide",
@@ -116,10 +115,8 @@
       "stopVoice": "Stop listening"
     },
     "back": "Back",
-    "backTo": "Back to {label}"
-    ,
-    "peopleCount": "{count, plural, one {# person} other {# people}}"
-    ,
+    "backTo": "Back to {label}",
+    "peopleCount": "{count, plural, one {# person} other {# people}}",
     "breadcrumbs": {
       "privacy": "Privacy",
       "terms": "Terms",
@@ -140,8 +137,7 @@
     "bestTimeToVisitTitle": "Best time to visit",
     "reportConditions": "Report conditions",
     "reportAnotherTrail": "Report another trail",
-    "thanksForReporting": "Thanks for reporting."
-    ,
+    "thanksForReporting": "Thanks for reporting.",
     "remove": "Remove",
     "bookTastings": "Book tastings",
     "exploreWineries": "Explore wineries",
@@ -187,13 +183,11 @@
     "skipTo": {
       "editorsPicks": "Skip to Editor's picks",
       "plan": "Skip to Plan"
-    }
-    ,
+    },
     "cancel": "Cancel",
     "done": "Done",
     "clearDay": "Clear day",
-    "clearDayTitle": "Clear Day {day}?"
-    ,
+    "clearDayTitle": "Clear Day {day}?",
     "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
   },
   "home": {
@@ -286,8 +280,7 @@
         "wellnessAria": "Wellness — monasteries, quiet spaces",
         "regionAria": "{region} region"
       }
-    }
-    ,
+    },
     "share": {
       "heading": "Share Cyprus Winter",
       "body": "Planning ahead or already here? Tap the chat bubble. Add places as you browse—your plan saves automatically.",
@@ -534,8 +527,32 @@
         "highlights": "Highlights",
         "greatFor": "Great for",
         "dining": "Dining",
-        "shops": "Shops"
-      }
+        "shops": "Shops",
+        "visitTaste": "Visit & taste",
+        "ourWines": "Our wines",
+        "localSecret": "Local secret",
+        "backstory": "Backstory",
+        "location": "Location",
+        "localSecrets": "Local secrets",
+        "pairWellWith": "Pair well with"
+      },
+      "wineRoute": "Wine route: {route}",
+      "localSecretsSubtitle": "Insider tips for this place. From people who live here.",
+      "seeAllSecrets": "See all local secrets",
+      "combineWithDesc": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
+      "addToPlan": "Add to plan",
+      "addToPlanAria": "Add {name} to plan",
+      "typeLabels": {
+        "winery": "Wineries",
+        "restaurant": "Eat & drink",
+        "beach": "Beaches",
+        "ancient": "Ancient sites",
+        "village": "Villages",
+        "monastery": "Monasteries",
+        "nature": "Nature & coasts",
+        "default": "Places"
+      },
+      "moreInRegion": "More {type} in {region}"
     },
     "aria": {
       "actions": "Discover actions",
@@ -573,7 +590,10 @@
       "funnelThisMonth": {
         "title": "Conversion funnel (this month)",
         "subtitle": "First touch to booking and revenue",
-        "table": { "event": "Event", "count": "Count" },
+        "table": {
+          "event": "Event",
+          "count": "Count"
+        },
         "empty": "No events yet. Conversion tracking requires Supabase and migration 003."
       },
       "storage": "Storage: {storage}",
@@ -713,9 +733,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Good to go" },
-        "caution": { "title": "Check conditions before you head out" },
-        "closed": { "title": "Best saved for another day" }
+        "open": {
+          "title": "Good to go"
+        },
+        "caution": {
+          "title": "Check conditions before you head out"
+        },
+        "closed": {
+          "title": "Best saved for another day"
+        }
       }
     },
     "report": {
@@ -728,15 +754,36 @@
       },
       "options": {
         "status": {
-          "open": { "label": "Open", "desc": "Good to go" },
-          "caution": { "label": "Caution", "desc": "Muddy, wind, or minor issues" },
-          "closed": { "label": "Closed", "desc": "Snow, ice, or unsafe" }
+          "open": {
+            "label": "Open",
+            "desc": "Good to go"
+          },
+          "caution": {
+            "label": "Caution",
+            "desc": "Muddy, wind, or minor issues"
+          },
+          "closed": {
+            "label": "Closed",
+            "desc": "Snow, ice, or unsafe"
+          }
         },
         "surface": {
-          "dry": { "label": "Dry", "desc": "Firm ground, good grip" },
-          "muddy": { "label": "Muddy", "desc": "Soft or wet patches" },
-          "snow": { "label": "Snow", "desc": "Snow on the ground" },
-          "icy": { "label": "Icy", "desc": "Ice, may need spikes" }
+          "dry": {
+            "label": "Dry",
+            "desc": "Firm ground, good grip"
+          },
+          "muddy": {
+            "label": "Muddy",
+            "desc": "Soft or wet patches"
+          },
+          "snow": {
+            "label": "Snow",
+            "desc": "Snow on the ground"
+          },
+          "icy": {
+            "label": "Icy",
+            "desc": "Ice, may need spikes"
+          }
         }
       },
       "placeholders": {
@@ -744,7 +791,10 @@
         "email": "your@email.com"
       },
       "errorHelp": "Check your connection, try again, or go back to the trail.",
-      "submit": { "idle": "Submit report", "loading": "Submitting…" },
+      "submit": {
+        "idle": "Submit report",
+        "loading": "Submitting…"
+      },
       "success": {
         "aria": "Report submitted successfully",
         "body": "Hikers heading to {region} will use this. Every report counts.",
@@ -1484,12 +1534,34 @@
         "ctaTrails": "Browse trails"
       },
       "fields": {
-        "date": { "label": "Preferred date", "hint": "Winter days are short; book ahead for your preferred slot." },
-        "trail": { "label": "Trail", "optional": "(optional)", "hint": "Optional. Helps the guide plan.", "placeholder": "Select a trail (optional)" },
-        "partySize": { "label": "Group size", "plus": "11+ people" },
-        "guestName": { "label": "Your name", "placeholder": "John Smith" },
-        "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
-        "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fitness level, experience, trail preference—whatever helps them plan.", "placeholder": "First winter hike, want to see waterfalls, need an early start — whatever helps" }
+        "date": {
+          "label": "Preferred date",
+          "hint": "Winter days are short; book ahead for your preferred slot."
+        },
+        "trail": {
+          "label": "Trail",
+          "optional": "(optional)",
+          "hint": "Optional. Helps the guide plan.",
+          "placeholder": "Select a trail (optional)"
+        },
+        "partySize": {
+          "label": "Group size",
+          "plus": "11+ people"
+        },
+        "guestName": {
+          "label": "Your name",
+          "placeholder": "John Smith"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "john@example.com"
+        },
+        "notes": {
+          "label": "Notes",
+          "optional": "(optional)",
+          "hint": "Fitness level, experience, trail preference—whatever helps them plan.",
+          "placeholder": "First winter hike, want to see waterfalls, need an early start — whatever helps"
+        }
       },
       "submit": {
         "ariaSending": "Sending your request",
@@ -1504,8 +1576,7 @@
         "privacy": "Privacy Policy",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "wineryForm": {
       "bookingStates": {
         "title": "Booking states:",
@@ -1526,11 +1597,28 @@
         "ctaDiscover": "Discover more"
       },
       "fields": {
-        "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },
-        "partySize": { "label": "Group size", "plus": "11+ people" },
-        "guestName": { "label": "Your name", "placeholder": "John Smith" },
-        "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
-        "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fireside table? Dietary needs? Just mention it — wineries are used to it.", "placeholder": "Allergies, special occasion, fireside or terrace — whatever helps them welcome you" }
+        "date": {
+          "label": "Preferred date",
+          "hint": "Winter tastings fill up. A few days ahead helps."
+        },
+        "partySize": {
+          "label": "Group size",
+          "plus": "11+ people"
+        },
+        "guestName": {
+          "label": "Your name",
+          "placeholder": "John Smith"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "john@example.com"
+        },
+        "notes": {
+          "label": "Notes",
+          "optional": "(optional)",
+          "hint": "Fireside table? Dietary needs? Just mention it — wineries are used to it.",
+          "placeholder": "Allergies, special occasion, fireside or terrace — whatever helps them welcome you"
+        }
       },
       "submit": {
         "ariaSending": "Sending your request",

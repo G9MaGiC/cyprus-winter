@@ -1,6 +1,7 @@
 import AppLink from "@/components/AppLink";
 import { CARD, SECTION } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
+import { getTranslations } from "next-intl/server";
 
 type RelatedPlacesBlockProps = {
   ids: string[];
@@ -9,14 +10,15 @@ type RelatedPlacesBlockProps = {
   showAddToItinerary?: boolean;
 };
 
-export default function RelatedPlacesBlock({ ids, description, showAddToItinerary = false }: RelatedPlacesBlockProps) {
+export default async function RelatedPlacesBlock({ ids, description, showAddToItinerary = false }: RelatedPlacesBlockProps) {
+  const tDetail = await getTranslations("discover.detail");
   const related = getRelatedPlaces(ids);
   if (related.length === 0) return null;
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
       <h2 className={`prose-label text-olive/70 ${SECTION.titleGap} flex items-center gap-2`}>
-        Pair well with
+        {tDetail("headings.pairWellWith")}
       </h2>
       <p className={`text-olive/80 text-base ${SECTION.headingGap} leading-relaxed break-words`}>
         {description}
@@ -35,10 +37,10 @@ export default function RelatedPlacesBlock({ ids, description, showAddToItinerar
               <AppLink
                 href={`/plan?add=${r.id}`}
                 className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] gap-1 px-4 py-2.5 rounded-lg text-sm font-medium text-terracotta bg-terracotta/10 hover:bg-terracotta/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                title={`Add ${r.name} to plan`}
-                aria-label={`Add ${r.name} to plan`}
+                title={tDetail("addToPlanAria", { name: r.name })}
+                aria-label={tDetail("addToPlanAria", { name: r.name })}
               >
-                Add to plan
+                {tDetail("addToPlan")}
               </AppLink>
             )}
           </li>
