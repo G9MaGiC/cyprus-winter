@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import AppLink from "@/components/AppLink";
 import { useItinerary } from "@/hooks/useItinerary";
 import { CTA, SECTION } from "@/lib/design-tokens";
@@ -58,11 +59,26 @@ export default function AddToItineraryButton({
     );
   }
 
+  const [justAdded, setJustAdded] = useState(false);
+
   const handleInlineAdd = () => {
     addToDayIfMissing(placeId);
     track("inline_plan_add_click", { place_id: placeId });
     trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
+    setJustAdded(true);
   };
+
+  if (justAdded) {
+    return (
+      <span
+        data-testid={`added-to-plan-${placeId}`}
+        className={`inline-flex items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
+        role="status"
+      >
+        <span aria-hidden="true">✓</span> {tCommon("addedToPlan")}
+      </span>
+    );
+  }
 
   return (
     <button

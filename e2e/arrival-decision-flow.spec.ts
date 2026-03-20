@@ -34,7 +34,7 @@ test.describe("Arrival decision flow", () => {
 
     const airportCta = page.getByTestId("home-hero-airport-cta");
     await expect(airportCta).toBeVisible();
-    await airportCta.click({ force: true });
+    await airportCta.click();
 
     await expect(page).toHaveURL(/\/airport/);
     await expect(page.getByRole("main")).toBeVisible();
@@ -49,7 +49,7 @@ test.describe("Arrival decision flow", () => {
     await expect(planHeroCta).toHaveAttribute("href", /\/plan\?template=short-stay/);
     const quickPlanCta = page.getByTestId("airport-quick-plan");
     await expect(quickPlanCta).toBeVisible();
-    await quickPlanCta.click({ force: true });
+    await quickPlanCta.click();
     await expect(page).toHaveURL(/\/plan(\?template=short-stay)?$/);
   });
 
@@ -72,10 +72,10 @@ test.describe("Arrival decision flow", () => {
 
   test("arrival-resilience: back and refresh preserve core actionability", async ({ page }) => {
     await gotoStable(page, "/");
-    await Promise.all([
-      page.waitForURL(/\/airport/, { timeout: 15000 }),
-      page.getByTestId("home-hero-airport-cta").click({ force: true }),
-    ]);
+    const airportCta = page.getByTestId("home-hero-airport-cta");
+    await expect(airportCta).toBeVisible();
+    await airportCta.click();
+    await expect(page).toHaveURL(/\/airport/, { timeout: 15000 });
 
     await page.goBack();
     await expect(page).toHaveURL(/\/($|[a-z]{2}$)/);
@@ -116,4 +116,3 @@ test.describe("Arrival decision flow", () => {
     await expect(page.getByTestId("airport-footer-weather-cta")).toHaveAttribute("href", /\/weather/);
   });
 });
-

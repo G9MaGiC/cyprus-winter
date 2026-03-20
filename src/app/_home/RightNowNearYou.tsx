@@ -261,19 +261,19 @@ export default function RightNowNearYou({
         </AppLink>
       </div>
       <div className="mb-4 rounded-xl border border-aegean/20 bg-aegean/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Today adapt</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-aegean">{tHome("rightNow.todayAdapt.title")}</p>
         <p className="mt-1 text-sm text-olive/80">
-          Weather changes or delayed plans? Use one tap actions to adapt your day without restarting.
+          {tHome("rightNow.todayAdapt.body")}
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "weather" }}>
-            <AppLink href="/weather" className={SECTION.aegeanLink}>Check weather</AppLink>
+            <AppLink href="/weather" className={SECTION.aegeanLink}>{tHome("rightNow.todayAdapt.weather")}</AppLink>
           </TrackOnClick>
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "plan" }}>
-            <AppLink href="/plan" className={SECTION.aegeanLink}>Adjust plan</AppLink>
+            <AppLink href="/plan" className={SECTION.aegeanLink}>{tHome("rightNow.todayAdapt.plan")}</AppLink>
           </TrackOnClick>
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "bookings" }}>
-            <AppLink href="/bookings" className={SECTION.aegeanLink}>Review bookings</AppLink>
+            <AppLink href="/bookings" className={SECTION.aegeanLink}>{tHome("rightNow.todayAdapt.bookings")}</AppLink>
           </TrackOnClick>
         </div>
       </div>

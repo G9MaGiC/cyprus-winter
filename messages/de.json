@@ -89,6 +89,7 @@
       "openStreetMap": "OpenStreetMap"
     },
     "addToPlan": "Zum Plan hinzufügen",
+    "addedToPlan": "Zum Plan hinzugefügt",
     "addPlace": "Ort hinzufügen",
     "shareColon": "Teilen:",
     "bookTasting": "Verkostung buchen",
@@ -357,6 +358,13 @@
       "loaded": {
         "seeMore": "Mehr →"
       },
+      "todayAdapt": {
+        "title": "Heute anpassen",
+        "body": "Wetteränderungen oder verzögerte Pläne? Nutzen Sie Schnellaktionen, um Ihren Tag ohne Neustart anzupassen.",
+        "weather": "Wetter prüfen",
+        "plan": "Plan anpassen",
+        "bookings": "Buchungen prüfen"
+      },
       "distance": {
         "aria": "Entfernung",
         "closer": "Näher",
@@ -504,6 +512,16 @@
         "buyWineCta": "Wein online kaufen",
         "instagramAria": "@{handle} auf Instagram folgen (öffnet in neuem Tab)",
         "instagramCta": "Instagram @{handle}"
+      },
+      "whyNow": {
+        "title": "Warum jetzt",
+        "bestFor": "Ideal für {activities}.",
+        "practicalStop": "{region} ist ein praktischer Halt für den Tagesplanablauf.",
+        "saveNow": "Jetzt speichern, um später mit ähnlichen Optionen zu vergleichen, ohne den Kontext zu verlieren."
+      },
+      "trustTiming": {
+        "title": "Vertrauen und Timing",
+        "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeitsübergabe. Speichern Sie diesen Ort zuerst in Ihrem Plan, dann bestätigen Sie, wenn Sie bereit sind."
       },
       "bestTimeLabel": "Beste Zeit:",
       "directionsAria": "Wegbeschreibung (öffnet in neuem Tab)",
@@ -1029,6 +1047,12 @@
     "inlineAddAria": "Stopp zu Tag {day} hinzufügen",
     "forYou": "Für Sie",
     "forTrip": "Für Ihre Reise mit {days} Tagen",
+    "fitsTrip": "Passt zu Ihrer {days}-tägigen Reise",
+    "tripFit.exact": "Exakte Länge",
+    "tripFit.near": "Fast passend",
+    "tripFit.compress": "Plan komprimieren",
+    "tripFit.extend": "Mit Extras erweitern",
+    "recommendedHint": "Empfohlen für Ihre {days}-tägige Reise basierend auf Längenpassung und Ihren gespeicherten Präferenzen.",
     "browseTrailsAria": "Wanderwege durchsuchen",
     "browseTrailsLabel": "Wanderwege",
     "browseWineriesAria": "Weingüter durchsuchen",
@@ -1440,6 +1464,11 @@
   },
   "book": {
     "guideForm": {
+      "bookingStates": {
+        "title": "Buchungsstatus:",
+        "guideFlow": "Jetzt angefragt, nach Guide-Antwort bestätigt.",
+        "offlineHint": "Wenn Sie offline sind, wird Ihre Anfrage als ausstehende Synchronisierung eingereiht und automatisch erneut versucht."
+      },
       "errors": {
         "failed": "Buchung fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
@@ -1478,6 +1507,11 @@
     }
     ,
     "wineryForm": {
+      "bookingStates": {
+        "title": "Buchungsstatus:",
+        "wineryFlow": "Jetzt angefragt, nach Partner-Antwort bestätigt.",
+        "offlineHint": "Wenn Sie offline sind, wird Ihre Anfrage als ausstehende Synchronisierung eingereiht und automatisch erneut versucht."
+      },
       "errors": {
         "failed": "Buchung fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
@@ -1511,8 +1545,22 @@
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
       }
-    }
-    ,
+    },
+    "trustStrip": {
+      "aria": "Buchungsvertrauensinformationen",
+      "title": "Vor dem Absenden",
+      "verified": "Verifizierter {context}-Anfragepfad.",
+      "contextGuide": "Guide",
+      "contextPartner": "Partner",
+      "confirmation": "Bestätigung kommt normalerweise per E-Mail innerhalb von 24 Stunden.",
+      "noCharge": "Keine sofortige In-App-Belastung; Anbieter bestätigen zuerst die Verfügbarkeit."
+    },
+    "stepper": {
+      "aria": "Buchungsfortschritt",
+      "step1": "Details",
+      "step2": "Anfrage gesendet",
+      "step3": "Bestätigung"
+    },
     "pages": {
       "pageNavAria": "Seitennavigation",
       "otherWaysAria": "Weitere Buchungswege",

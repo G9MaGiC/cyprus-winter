@@ -36,19 +36,18 @@ export default function GuideBookingForm({
     .map((tid) => trails.find((t) => t.id === tid || t.slug === tid))
     .filter(Boolean);
 
+  const hasFiredMount = useRef(false);
   useEffect(() => {
-    if (done && successRef.current) {
-      successRef.current.focus({ preventScroll: false });
-    }
-  }, [done]);
-
-  useEffect(() => {
+    if (hasFiredMount.current) return;
+    hasFiredMount.current = true;
     track("booking_trust_strip_view", { type: "guide_tour", guideId: guide.id });
     track("booking_stepper_progress", { type: "guide_tour", step: 1 });
-  }, [guide.id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!done) return;
+    successRef.current?.focus({ preventScroll: false });
     track("booking_stepper_progress", { type: "guide_tour", step: 3 });
   }, [done]);
 
@@ -172,8 +171,8 @@ export default function GuideBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="guide" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after guide reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p><strong>{t("bookingStates.title")}</strong> {t("bookingStates.guideFlow")}</p>
+        <p className="mt-1">{t("bookingStates.offlineHint")}</p>
       </div>
       {error && (
         <p

@@ -89,6 +89,7 @@
       "openStreetMap": "OpenStreetMap"
     },
     "addToPlan": "Dodaj do planu",
+    "addedToPlan": "Dodano do planu",
     "addPlace": "Dodaj miejsce",
     "shareColon": "Udostępnij:",
     "bookTasting": "Zarezerwuj degustację",
@@ -357,6 +358,13 @@
       "loaded": {
         "seeMore": "Zobacz więcej →"
       },
+      "todayAdapt": {
+        "title": "Dostosuj dziś",
+        "body": "Zmiany pogody lub opóźnione plany? Użyj szybkich akcji, aby dostosować dzień bez rozpoczynania od nowa.",
+        "weather": "Sprawdź pogodę",
+        "plan": "Dostosuj plan",
+        "bookings": "Sprawdź rezerwacje"
+      },
       "distance": {
         "aria": "Dystans",
         "closer": "Bliżej",
@@ -504,6 +512,16 @@
         "buyWineCta": "Kup wino online",
         "instagramAria": "Obserwuj @{handle} na Instagramie (otwiera się w nowej karcie)",
         "instagramCta": "Instagram @{handle}"
+      },
+      "whyNow": {
+        "title": "Dlaczego teraz",
+        "bestFor": "Idealne dla {activities}.",
+        "practicalStop": "{region} to praktyczny przystanek w przepływie planu dnia.",
+        "saveNow": "Zapisz teraz, aby później porównać z podobnymi opcjami bez utraty kontekstu."
+      },
+      "trustTiming": {
+        "title": "Zaufanie i czas",
+        "body": "Zweryfikowane dane partnera z praktycznym przekazaniem dostępności. Najpierw zachowaj to miejsce w planie, potem potwierdź, gdy będziesz gotowy."
       },
       "bestTimeLabel": "Najlepszy czas:",
       "directionsAria": "Wskazówki dojazdu (otwiera się w nowej karcie)",
@@ -1029,6 +1047,12 @@
     "inlineAddAria": "Dodaj przystanek do Dnia {day}",
     "forYou": "Dla Ciebie",
     "forTrip": "Na Twoją podróż na {days} dni",
+    "fitsTrip": "Pasuje do Twojej {days}-dniowej podróży",
+    "tripFit.exact": "Dokładna długość",
+    "tripFit.near": "Bliskie dopasowanie",
+    "tripFit.compress": "Skompresuj plan",
+    "tripFit.extend": "Rozszerz o dodatki",
+    "recommendedHint": "Polecane dla Twojej {days}-dniowej podróży na podstawie dopasowania długości i zapisanych preferencji.",
     "browseTrailsAria": "Przeglądaj szlaki",
     "browseTrailsLabel": "Szlaki",
     "browseWineriesAria": "Przeglądaj winnice",
@@ -1440,6 +1464,11 @@
   },
   "book": {
     "guideForm": {
+      "bookingStates": {
+        "title": "Status rezerwacji:",
+        "guideFlow": "Zapytanie wysłane, potwierdzenie po odpowiedzi przewodnika.",
+        "offlineHint": "Jeśli jesteś offline, Twoje żądanie jest kolejkowane jako oczekująca synchronizacja i automatycznie ponawiane."
+      },
       "errors": {
         "failed": "Rezerwacja nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie."
@@ -1478,6 +1507,11 @@
     }
     ,
     "wineryForm": {
+      "bookingStates": {
+        "title": "Status rezerwacji:",
+        "wineryFlow": "Zapytanie wysłane, potwierdzenie po odpowiedzi partnera.",
+        "offlineHint": "Jeśli jesteś offline, Twoje żądanie jest kolejkowane jako oczekująca synchronizacja i automatycznie ponawiane."
+      },
       "errors": {
         "failed": "Rezerwacja nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie."
@@ -1511,8 +1545,22 @@
         "privacy": "Politykę prywatności",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
+    "trustStrip": {
+      "aria": "Informacje o zaufaniu rezerwacji",
+      "title": "Przed wysłaniem",
+      "verified": "Zweryfikowana ścieżka żądania {context}.",
+      "contextGuide": "przewodnika",
+      "contextPartner": "partnera",
+      "confirmation": "Potwierdzenie zazwyczaj przychodzi e-mailem w ciągu 24 godzin.",
+      "noCharge": "Brak natychmiastowej opłaty w aplikacji; dostawcy najpierw potwierdzają dostępność."
+    },
+    "stepper": {
+      "aria": "Postęp rezerwacji",
+      "step1": "Szczegóły",
+      "step2": "Żądanie wysłane",
+      "step3": "Potwierdzenie"
+    },
     "pages": {
       "pageNavAria": "Nawigacja strony",
       "otherWaysAria": "Inne sposoby rezerwacji",

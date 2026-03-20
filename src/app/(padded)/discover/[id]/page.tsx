@@ -154,19 +154,19 @@ export default async function AttractionPage({
             </section>
 
             <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>
-              <h2 className={`prose-label text-aegean ${SECTION.headingGap}`}>Why this now</h2>
+              <h2 className={`prose-label text-aegean ${SECTION.headingGap}`}>{tDetail("whyNow.title")}</h2>
               <ul className="space-y-2 text-sm text-olive/85">
                 <li className="flex gap-2">
-                  <span className="text-aegean" aria-hidden>•</span>
-                  <span>Best for {a.bestFor.slice(0, 2).join(" and ").toLowerCase()}.</span>
+                  <span className="text-aegean" aria-hidden="true">•</span>
+                  <span>{tDetail("whyNow.bestFor", { activities: a.bestFor.slice(0, 2).join(" and ").toLowerCase() })}</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-aegean" aria-hidden>•</span>
-                  <span>{a.region} is a practical stop for the same day plan flow.</span>
+                  <span className="text-aegean" aria-hidden="true">•</span>
+                  <span>{tDetail("whyNow.practicalStop", { region: a.region })}</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-aegean" aria-hidden>•</span>
-                  <span>Save now to compare with similar options later without losing context.</span>
+                  <span className="text-aegean" aria-hidden="true">•</span>
+                  <span>{tDetail("whyNow.saveNow")}</span>
                 </li>
               </ul>
             </section>
@@ -302,9 +302,9 @@ export default async function AttractionPage({
               {tDetail("booking.title")}
             </h2>
             <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Trust and timing</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">{tDetail("trustTiming.title")}</p>
               <p className="mt-1 text-sm text-olive/80">
-                Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready.
+                {tDetail("trustTiming.body")}
               </p>
             </div>
             {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (

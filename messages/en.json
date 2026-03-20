@@ -89,6 +89,7 @@
       "openStreetMap": "OpenStreetMap"
     },
     "addToPlan": "Add to plan",
+    "addedToPlan": "Added to plan",
     "addPlace": "Add place",
     "shareColon": "Share:",
     "bookTasting": "Book a tasting",
@@ -357,6 +358,13 @@
       "loaded": {
         "seeMore": "See more →"
       },
+      "todayAdapt": {
+        "title": "Today adapt",
+        "body": "Weather changes or delayed plans? Use one tap actions to adapt your day without restarting.",
+        "weather": "Check weather",
+        "plan": "Adjust plan",
+        "bookings": "Review bookings"
+      },
       "distance": {
         "aria": "Distance",
         "closer": "Closer",
@@ -504,6 +512,16 @@
         "buyWineCta": "Buy wine online",
         "instagramAria": "Follow @{handle} on Instagram (opens in new tab)",
         "instagramCta": "Instagram @{handle}"
+      },
+      "whyNow": {
+        "title": "Why this now",
+        "bestFor": "Best for {activities}.",
+        "practicalStop": "{region} is a practical stop for the same day plan flow.",
+        "saveNow": "Save now to compare with similar options later without losing context."
+      },
+      "trustTiming": {
+        "title": "Trust and timing",
+        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
       },
       "bestTimeLabel": "Best time:",
       "directionsAria": "Get directions (opens in new tab)",
@@ -1029,6 +1047,12 @@
     "inlineAddAria": "Add a stop to Day {day}",
     "forYou": "For you",
     "forTrip": "For your {days}-day trip",
+    "fitsTrip": "Fits your {days}-day trip",
+    "tripFit.exact": "Exact length",
+    "tripFit.near": "Near match",
+    "tripFit.compress": "Compress plan",
+    "tripFit.extend": "Extend with add-ons",
+    "recommendedHint": "Recommended for your {days}-day trip based on length fit and your saved preferences.",
     "browseTrailsAria": "Browse trails",
     "browseTrailsLabel": "Trails",
     "browseWineriesAria": "Browse wineries",
@@ -1440,6 +1464,11 @@
   },
   "book": {
     "guideForm": {
+      "bookingStates": {
+        "title": "Booking states:",
+        "guideFlow": "Requested now to confirmed after guide reply.",
+        "offlineHint": "If you are offline, your request is queued as sync pending and retried automatically."
+      },
       "errors": {
         "failed": "Booking failed",
         "fallback": "Something went wrong — check your connection and try again."
@@ -1478,6 +1507,11 @@
     }
     ,
     "wineryForm": {
+      "bookingStates": {
+        "title": "Booking states:",
+        "wineryFlow": "Requested now to confirmed after partner reply.",
+        "offlineHint": "If you are offline, your request is queued as sync pending and retried automatically."
+      },
       "errors": {
         "failed": "Booking failed",
         "fallback": "Something went wrong — check your connection and try again."
@@ -1511,8 +1545,22 @@
         "privacy": "Privacy Policy",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
+    "trustStrip": {
+      "aria": "Booking trust information",
+      "title": "Before you submit",
+      "verified": "Verified {context} request route.",
+      "contextGuide": "guide",
+      "contextPartner": "partner",
+      "confirmation": "Confirmation usually arrives by email within 24 hours.",
+      "noCharge": "No instant charge in-app; providers confirm availability first."
+    },
+    "stepper": {
+      "aria": "Booking progress",
+      "step1": "Details",
+      "step2": "Request sent",
+      "step3": "Confirmation"
+    },
     "pages": {
       "pageNavAria": "Page navigation",
       "otherWaysAria": "Other ways to book",
