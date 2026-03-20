@@ -308,7 +308,7 @@ export default async function TrailPage({
                             href={`/book/guide/${guideForTrail.id}?trail=${trail.id}`}
                             className={linkClass}
                           >
-                            Book a guide
+                            {tTrailsDetail("bookGuide")}
                           </AppLink>
                         );
                       }

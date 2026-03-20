@@ -644,6 +644,10 @@
         "planWeekCta": "Zaplanuj pierwszy tydzień",
         "discoverCta": "Odkrywaj miejsca",
         "weatherCta": "Sprawdź pogodę"
+      },
+      "quickActions": {
+        "aria": "Szybkie akcje po przylocie",
+        "label": "Szybciej na miejscu"
       }
     }
   },
@@ -893,7 +897,8 @@
       "footer": {
         "addToPlanBody": "Dodaj ten szlak do planu i połącz go z wioską lub winnicą po południu.",
         "viewAllTrails": "Zobacz wszystkie szlaki"
-      }
+      },
+      "bookGuide": "Zarezerwuj przewodnika"
     },
     "conditionsStrip": {
       "heading": "Warunki dzisiaj",
@@ -1269,6 +1274,17 @@
         "exploreRegionCta": "Odkrywaj {region} →",
         "learnMoreAria": "Dowiedz się więcej o {name}",
         "learnMoreCta": "Dowiedz się więcej"
+      },
+      "dontMiss": {
+        "title": "Nie przegap",
+        "description": "Epifania i karnawał to momenty, gdy wyspa pokazuje swoją duszę. Bądź wcześnie. Ubierz się ciepło."
+      },
+      "planningTips": {
+        "title": "Wskazówki planowania",
+        "checkDates": "Sprawdź oficjalne strony po dokładne daty — wiele wydarzeń zmienia się co roku.",
+        "bookEarly": "Rezerwuj wcześnie na Epifanię, karnawał i jarmarki bożonarodzeniowe.",
+        "arriveEarly": "Przyjedź wcześnie na popularne wydarzenia. Najlepsze miejsca szybko się zapełniają.",
+        "pairEvents": "Łącz wydarzenia z pobliskimi szlakami lub wioskami. Rano wędrówka, po południu wydarzenie."
       }
     }
   },

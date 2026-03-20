@@ -644,6 +644,10 @@
         "planWeekCta": "Planen Sie Ihre erste Woche",
         "discoverCta": "Orte entdecken",
         "weatherCta": "Wetter prüfen"
+      },
+      "quickActions": {
+        "aria": "Schnellaktionen bei Ankunft",
+        "label": "Schneller ankommen"
       }
     }
   },
@@ -893,7 +897,8 @@
       "footer": {
         "addToPlanBody": "Fügen Sie diesen Weg zu Ihrem Plan hinzu und kombinieren Sie ihn nachmittags mit einem Dorf oder Weingut.",
         "viewAllTrails": "Alle Wanderwege ansehen"
-      }
+      },
+      "bookGuide": "Guide buchen"
     },
     "conditionsStrip": {
       "heading": "Bedingungen heute",
@@ -1348,6 +1353,17 @@
         "exploreRegionCta": "{region} entdecken →",
         "learnMoreAria": "Mehr über {name} erfahren",
         "learnMoreCta": "Mehr erfahren"
+      },
+      "dontMiss": {
+        "title": "Nicht verpassen",
+        "description": "Epiphanias und Karneval zeigen die Seele der Insel. Sei früh da. Zieh dich warm an."
+      },
+      "planningTips": {
+        "title": "Planungstipps",
+        "checkDates": "Prüfe offizielle Seiten für genaue Termine — viele Events verschieben sich jährlich.",
+        "bookEarly": "Buche früh für Epiphanias, Karneval und Weihnachtsmärkte.",
+        "arriveEarly": "Komm früh zu beliebten Events. Die besten Plätze sind schnell vergeben.",
+        "pairEvents": "Kombiniere Events mit Wanderwegen oder Dörfern in der Nähe. Morgens wandern, nachmittags zum Event."
       }
     }
   },

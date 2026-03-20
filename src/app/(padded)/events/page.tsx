@@ -339,11 +339,10 @@ export default function EventsPage() {
                   id="dont-miss"
                   className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}
                 >
-                  Don&apos;t miss
+                  {tPage("dontMiss.title")}
                 </h2>
                 <p className={`text-sm text-olive/70 max-w-xl break-words ${SECTION.headingGap}`}>
-                  Epiphany and Carnival are when the island shows its soul. Get
-                  there early. Wrap up warm.
+                  {tPage("dontMiss.description")}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {highlights.map((e) => (
@@ -394,55 +393,20 @@ export default function EventsPage() {
                 id="event-tips"
                 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
               >
-                Planning tips
+                {tPage("planningTips.title")}
               </h2>
               <ul className="space-y-2 text-sm text-olive/90 break-words" role="list">
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Check official sites for exact dates — many events move year
-                    to year.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Book early for Epiphany, Carnival, and Christmas markets.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Arrive early for popular events. The best spots fill quickly.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Pair events with nearby trails or villages. Hike in the
-                    morning, event in the afternoon.
-                  </span>
-                </li>
+                {(["checkDates", "bookEarly", "arriveEarly", "pairEvents"] as const).map((key) => (
+                  <li key={key} className="flex gap-3">
+                    <span
+                      className="text-terracotta shrink-0"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span>{tPage(`planningTips.${key}`)}</span>
+                  </li>
+                ))}
               </ul>
             </section>
           </>

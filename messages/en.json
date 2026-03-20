@@ -644,6 +644,10 @@
         "planWeekCta": "Plan your first week",
         "discoverCta": "Discover places",
         "weatherCta": "Check weather"
+      },
+      "quickActions": {
+        "aria": "Arrival quick actions",
+        "label": "Arrive faster"
       }
     }
   },
@@ -893,7 +897,8 @@
       "footer": {
         "addToPlanBody": "Add this trail to your plan and pair with a village or winery in the afternoon.",
         "viewAllTrails": "View all trails"
-      }
+      },
+      "bookGuide": "Book a guide"
     },
     "conditionsStrip": {
       "heading": "Conditions today",
@@ -1348,6 +1353,17 @@
         "exploreRegionCta": "Explore {region} →",
         "learnMoreAria": "Learn more about {name}",
         "learnMoreCta": "Learn more"
+      },
+      "dontMiss": {
+        "title": "Don't miss",
+        "description": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+      },
+      "planningTips": {
+        "title": "Planning tips",
+        "checkDates": "Check official sites for exact dates — many events move year to year.",
+        "bookEarly": "Book early for Epiphany, Carnival, and Christmas markets.",
+        "arriveEarly": "Arrive early for popular events. The best spots fill quickly.",
+        "pairEvents": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
       }
     }
   },
