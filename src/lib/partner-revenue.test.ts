@@ -4,11 +4,10 @@ const mockSelect = vi.fn();
 const mockGte = vi.fn();
 const mockNot = vi.fn();
 const mockFrom = vi.fn(() => ({ select: mockSelect }));
+const mockSupabase = { from: mockFrom };
 
 vi.mock("./supabase", () => ({
-  getSupabase: vi.fn(() => ({
-    from: mockFrom,
-  })),
+  getSupabase: vi.fn(),
 }));
 
 import { getPartnerRevenueThisMonth } from "./partner-revenue";
@@ -19,6 +18,9 @@ const mockGetSupabase = vi.mocked(getSupabase);
 describe("getPartnerRevenueThisMonth", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Re-establish mock chain after clearAllMocks
+    mockGetSupabase.mockReturnValue(mockSupabase as any);
+    mockFrom.mockReturnValue({ select: mockSelect });
     mockSelect.mockReturnValue({ gte: mockGte });
     mockGte.mockReturnValue({ not: mockNot });
   });
@@ -110,7 +112,7 @@ describe("getPartnerRevenueThisMonth", () => {
     });
 
     const result = await getPartnerRevenueThisMonth();
-    // "not-a-number" -> Number("not-a-number") = NaN -> || 0 -> 0, skipped
+    // "not-a-number" -> Number("not-a-number") = NaN -> || 0 -> 0, skipped (fee <= 0)
     expect(result.totalRevenueEur).toBe(5);
     expect(result.byPartner).toHaveLength(1);
   });

@@ -23,7 +23,7 @@ describe("buildTrailHref", () => {
     expect(href).toContain("status=open");
     expect(href).toContain("difficulty=hard");
     expect(href).toContain("region=Paphos");
-    expect(href).toStartWith("/trails?");
+    expect(href.startsWith("/trails?")).toBe(true);
   });
 
   it("omits undefined params", () => {
