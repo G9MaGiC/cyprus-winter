@@ -223,33 +223,35 @@ describe("usePlanPage derived values", () => {
   });
 });
 
-describe("usePlanPage handler functions", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+async function resetItineraryMock() {
+  const { useItinerary } = await import("@/hooks/useItinerary");
+  (useItinerary as ReturnType<typeof vi.fn>).mockReturnValue({
+    days: mockEmptyDays(),
+    activeDay: 1,
+    setActiveDay: vi.fn(),
+    hydrated: true,
+    copied: false,
+    addToDayIfMissing: mockAddToDayIfMissing,
+    removeFromDay: mockRemoveFromDay,
+    getPlace: mockGetPlace,
+    lastAddedId: null,
+    hasContent: false,
+    hasWineries: false,
+    applyTemplate: mockApplyTemplate,
+    mergeTemplate: mockMergeTemplate,
+    clearDay: mockClearDay,
+    copyItinerary: vi.fn(),
+    copyShareLink: vi.fn(),
+    linkCopied: false,
+    sharePath: "/plan",
+    toggleInDay: vi.fn(),
+  });
+}
 
-    // Reset mocks to defaults
-    const { useItinerary } = require("@/hooks/useItinerary");
-    useItinerary.mockReturnValue({
-      days: mockEmptyDays(),
-      activeDay: 1,
-      setActiveDay: vi.fn(),
-      hydrated: true,
-      copied: false,
-      addToDayIfMissing: mockAddToDayIfMissing,
-      removeFromDay: mockRemoveFromDay,
-      getPlace: mockGetPlace,
-      lastAddedId: null,
-      hasContent: false,
-      hasWineries: false,
-      applyTemplate: mockApplyTemplate,
-      mergeTemplate: mockMergeTemplate,
-      clearDay: mockClearDay,
-      copyItinerary: vi.fn(),
-      copyShareLink: vi.fn(),
-      linkCopied: false,
-      sharePath: "/plan",
-      toggleInDay: vi.fn(),
-    });
+describe("usePlanPage handler functions", () => {
+  beforeEach(async () => {
+    vi.clearAllMocks();
+    await resetItineraryMock();
   });
 
   it("handleTemplateClick calls applyTemplate directly when no content", async () => {
