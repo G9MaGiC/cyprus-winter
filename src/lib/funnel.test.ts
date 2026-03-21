@@ -2,12 +2,11 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const mockSelect = vi.fn();
 const mockGte = vi.fn();
-const mockFrom = vi.fn(() => ({ select: mockSelect }));
+const mockFrom = vi.fn();
+const mockSupabase = { from: mockFrom };
 
 vi.mock("./supabase", () => ({
-  getSupabase: vi.fn(() => ({
-    from: mockFrom,
-  })),
+  getSupabase: vi.fn(),
 }));
 
 import { getFunnelCountsThisMonth } from "./funnel";
@@ -18,6 +17,8 @@ const mockGetSupabase = vi.mocked(getSupabase);
 describe("getFunnelCountsThisMonth", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockGetSupabase.mockReturnValue(mockSupabase as any);
+    mockFrom.mockReturnValue({ select: mockSelect });
     mockSelect.mockReturnValue({ gte: mockGte });
   });
 

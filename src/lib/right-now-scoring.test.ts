@@ -48,8 +48,8 @@ vi.mock("@/data/events", () => ({
 import { scoreAndRank, assignDiscoveryBadges, type ScoredPlace } from "./right-now-scoring";
 import { allPlaces } from "@/data";
 import { getPlaceCoords } from "@/lib/place-coords";
-import { getTimeBucket, matchesTimeBucket, isAdjacentBucket } from "@/lib/right-now-buckets";
-import { getPlaceOfDayIds } from "@/lib/place-of-day-ids";
+import { getTimeBucket } from "@/lib/right-now-buckets";
+import { pickDailyWithKey } from "@/lib/daily-rotator";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -145,12 +145,10 @@ describe("assignDiscoveryBadges", () => {
 
   it("assigns 'Hidden gem near you' for local secret within 25km", () => {
     vi.mocked(getTimeBucket).mockReturnValue("morning");
+    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
     const items = [
       makeScoredPlace({ id: "a", localSecret: "A hidden spot", distanceKm: 10 }),
     ];
-    // Ensure it's not the trending pick
-    const { pickDailyWithKey } = await import("@/lib/daily-rotator");
-    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
 
     const result = assignDiscoveryBadges(items);
     expect(result[0].discoveryBadge).toBe("Hidden gem near you");
@@ -158,11 +156,10 @@ describe("assignDiscoveryBadges", () => {
 
   it("assigns 'Only locals know this spot' for local secret > 25km", () => {
     vi.mocked(getTimeBucket).mockReturnValue("morning");
+    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
     const items = [
       makeScoredPlace({ id: "a", localSecret: "A hidden spot", distanceKm: 30 }),
     ];
-    const { pickDailyWithKey } = await import("@/lib/daily-rotator");
-    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
 
     const result = assignDiscoveryBadges(items);
     expect(result[0].discoveryBadge).toBe("Only locals know this spot");
@@ -170,11 +167,10 @@ describe("assignDiscoveryBadges", () => {
 
   it("assigns 'Perfect for sunset today' at sunset with clear weather", () => {
     vi.mocked(getTimeBucket).mockReturnValue("sunset");
+    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
     const items = [
       makeScoredPlace({ id: "a", effectiveType: "beach" }),
     ];
-    const { pickDailyWithKey } = await import("@/lib/daily-rotator");
-    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
 
     const result = assignDiscoveryBadges(items, { precipitationMm: 0, maxC: 18 } as any);
     expect(result[0].discoveryBadge).toBe("Perfect for sunset today");
@@ -182,11 +178,10 @@ describe("assignDiscoveryBadges", () => {
 
   it("does not assign sunset badge when raining", () => {
     vi.mocked(getTimeBucket).mockReturnValue("sunset");
+    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
     const items = [
       makeScoredPlace({ id: "a", effectiveType: "beach" }),
     ];
-    const { pickDailyWithKey } = await import("@/lib/daily-rotator");
-    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
 
     const result = assignDiscoveryBadges(items, { precipitationMm: 5, maxC: 18 } as any);
     expect(result[0].discoveryBadge).not.toBe("Perfect for sunset today");
@@ -194,11 +189,10 @@ describe("assignDiscoveryBadges", () => {
 
   it("assigns null badge when no conditions match", () => {
     vi.mocked(getTimeBucket).mockReturnValue("morning");
+    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
     const items = [
       makeScoredPlace({ id: "a" }),
     ];
-    const { pickDailyWithKey } = await import("@/lib/daily-rotator");
-    vi.mocked(pickDailyWithKey).mockReturnValue({ id: "other" } as any);
 
     const result = assignDiscoveryBadges(items);
     expect(result[0].discoveryBadge).toBeNull();
