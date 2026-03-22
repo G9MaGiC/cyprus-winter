@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 import createNextIntlPlugin from "next-intl/plugin";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -63,5 +64,20 @@ const nextConfig: NextConfig = {
   // Locale paths are defined in src/i18n/routing.ts
 };
 
-// Compose plugins: bundle analyzer → next-intl
-export default withAnalyzer(withNextIntl(nextConfig));
+// Compose plugins: Sentry → bundle analyzer → next-intl
+export default withSentryConfig(withAnalyzer(withNextIntl(nextConfig)), {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  // Only print logs for uploading source maps when CI is set
+  silent: !process.env.CI,
+  // Upload a larger set of source maps for prettier stack traces (increases build time)
+  widenClientFileUpload: true,
+  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers
+  tunnelRoute: "/monitoring",
+  // Hides source maps from generated client bundles
+  hideSourceMaps: true,
+  // Automatically tree-shake Sentry logger statements to reduce bundle size
+  disableLogger: true,
+  // Enables automatic instrumentation of Vercel Cron Monitors
+  automaticVercelMonitors: true,
+});
