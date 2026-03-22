@@ -1,23 +1,17 @@
 "use client";
 
-import { ReactNode, useSyncExternalStore } from "react";
+import { SerwistProvider as SerwistReactProvider } from "@serwist/next/react";
+import { ReactNode } from "react";
 
 interface SerwistProviderProps {
-  swUrl: string;
+  swUrl?: string;
   children: ReactNode;
 }
 
-const subscribe = () => () => {};
-const getSnapshot = () => true;
-const getServerSnapshot = () => false;
-
 export function SerwistProvider({ children }: SerwistProviderProps) {
-  // Use useSyncExternalStore to avoid setState in useEffect warning
-  const isReady = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  if (!isReady) {
-    return null;
-  }
-
-  return <>{children}</>;
+  return (
+    <SerwistReactProvider swUrl="/sw.js">
+      {children}
+    </SerwistReactProvider>
+  );
 }

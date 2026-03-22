@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withSentryConfig } from "@sentry/nextjs";
+import withSerwist from "@serwist/next";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -13,6 +14,8 @@ const withAnalyzer = withBundleAnalyzer({
 
 const nextConfig: NextConfig = {
   output: process.env.DOCKER_BUILD === "true" ? "standalone" : undefined,
+  // Enable source maps in production so Sentry can resolve stack traces
+  productionBrowserSourceMaps: true,
   turbopack: { root: path.resolve(__dirname) },
   distDir: ".next",
   webpack: (config, { dev }) => {
@@ -64,8 +67,15 @@ const nextConfig: NextConfig = {
   // Locale paths are defined in src/i18n/routing.ts
 };
 
-// Compose plugins: Sentry → bundle analyzer → next-intl
-export default withSentryConfig(withAnalyzer(withNextIntl(nextConfig)), {
+const withPWA = withSerwist({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+  // Don't precache in dev to keep reloads fast
+  disable: process.env.NODE_ENV === "development",
+});
+
+// Compose plugins: Sentry → PWA → bundle analyzer → next-intl
+export default withSentryConfig(withPWA(withAnalyzer(withNextIntl(nextConfig))), {
   org: process.env.SENTRY_ORG,
   project: process.env.SENTRY_PROJECT,
   // Only print logs for uploading source maps when CI is set
@@ -80,4 +90,6 @@ export default withSentryConfig(withAnalyzer(withNextIntl(nextConfig)), {
   disableLogger: true,
   // Enables automatic instrumentation of Vercel Cron Monitors
   automaticVercelMonitors: true,
+  // Annotate React components in error reports for easier debugging
+  reactComponentAnnotation: { enabled: true },
 });
