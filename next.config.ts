@@ -74,8 +74,8 @@ export default withSentryConfig(withAnalyzer(withNextIntl(nextConfig)), {
   widenClientFileUpload: true,
   // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers
   tunnelRoute: "/monitoring",
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
+  // Delete source maps from client bundle after upload (keeps them off the CDN)
+  sourcemaps: { deleteSourcemapsAfterUpload: true },
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
   // Enables automatic instrumentation of Vercel Cron Monitors
