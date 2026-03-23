@@ -64,7 +64,8 @@ export async function POST(req: NextRequest) {
     const merged = {
       push_trip_countdown: pushTripCountdown !== undefined ? pushTripCountdown : (existing?.push_trip_countdown ?? true),
       push_weather_digest: pushWeatherDigest !== undefined ? pushWeatherDigest : (existing?.push_weather_digest ?? false),
-      trip_start_date: tripStartDate ?? existing?.trip_start_date ?? null,
+      // Explicit null clears the date; undefined preserves the existing value.
+      trip_start_date: tripStartDate !== undefined ? tripStartDate : (existing?.trip_start_date ?? null),
     };
 
     const { error } = await supabase.from("push_subscriptions").upsert(

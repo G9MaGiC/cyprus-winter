@@ -11,25 +11,25 @@ import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
-
 const typePaths: Record<string, string> = {
   trail: "/trails",
 };
 
 type CommonT = ReturnType<typeof useTranslations<"common">>;
 
+const TYPE_KEY_MAP: Partial<Record<string, Parameters<CommonT>[0]>> = {
+  beach: "beach",
+  ancientSite: "ancientSite",
+  village: "village",
+  monastery: "monastery",
+  winery: "winery",
+  restaurant: "restaurant",
+  trail: "trail",
+  event: "event",
+};
+
 function getTypeLabel(t: CommonT, type: string): string {
-  const map: Record<string, Parameters<CommonT>[0]> = {
-    beach: "beach",
-    ancientSite: "ancientSite",
-    village: "village",
-    monastery: "monastery",
-    winery: "winery",
-    restaurant: "restaurant",
-    trail: "trail",
-    event: "event",
-  };
-  const key = map[type];
+  const key = TYPE_KEY_MAP[type];
   return key ? t(key) : type;
 }
 
