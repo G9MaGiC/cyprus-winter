@@ -241,6 +241,17 @@ export default function RightNowNearYou({
             })}
           </p>
           <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleUseLocation();
+              }}
+              className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              {tErrors("common.tryAgainCta")}
+            </button>
             {sourceMode === "region" && (
               <button
                 type="button"

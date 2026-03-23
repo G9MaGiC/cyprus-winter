@@ -89,15 +89,16 @@ export default function WineryBookingForm({
       setStorageMode(data.storage ?? null);
       form.reset();
 
+      const wasFirst = loadLocalBookings().length === 0;
+      addBookingToLocal(data.booking);
+
       track("booking_complete", {
         wineryId,
         partySize: Number(partySize),
       });
-      if (loadLocalBookings().length === 0) {
+      if (wasFirst && loadLocalBookings().length > 0) {
         track("first_booking", { wineryId });
       }
-
-      addBookingToLocal(data.booking);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
