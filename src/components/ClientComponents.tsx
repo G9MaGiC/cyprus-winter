@@ -37,7 +37,12 @@ export default function ClientComponents() {
     }
 
     window.addEventListener("load", enable, { once: true });
-    return () => window.removeEventListener("load", enable);
+    // Fallback: if load event never fires (e.g. stuck resource), enable after 8s
+    const fallback = setTimeout(enable, 8_000);
+    return () => {
+      window.removeEventListener("load", enable);
+      clearTimeout(fallback);
+    };
   }, [mounted]);
 
   if (!mounted) return null;

@@ -19,7 +19,8 @@ Reference for Cyprus Winter design tokens. Use these consistently; avoid ad-hoc 
 | `TYPE.subSectionTitleLg` | Sub-section with responsive bump | font-display text-xl sm:text-2xl font-semibold leading-tight |
 | `TYPE.kicker` | Labels above content (on light) | prose-label text-sage |
 | `TYPE.kickerOnDark` | Labels on dark overlays | prose-label text-white/80 |
-| `TYPE.cardTitleCompact` | Compact card titles (RightNowCard, strips) | font-display text-sm sm:text-base font-semibold text-charcoal |
+| `TYPE.cardTitleCompact` | Compact card titles — base (strips, chips) | font-display text-sm sm:text-base font-semibold |
+| `TYPE.cardTitleCompactLinked` | Compact card titles — interactive (RightNowCard) | font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors |
 
 ### Prose utilities (globals.css)
 | Class | Use case | Spec |

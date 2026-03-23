@@ -1358,7 +1358,6 @@
     "description": "Wanderwege, Dörfer, Weingüter. Planen Sie unterwegs — kein Konto nötig.",
     "cta": "Entdecken",
     "skip": "Überspringen",
-    "intentQuestion": "Was ist Ihnen gerade am wichtigsten?",
     "intentLabel": "Oder sagen Sie uns, wofür Sie hier sind",
     "intentPlanning": "Reise planen",
     "intentExploring": "Orte erkunden",

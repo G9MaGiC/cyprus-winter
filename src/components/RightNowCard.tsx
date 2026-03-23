@@ -53,7 +53,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
           </span>
         </div>
         <div className="flex-1 p-2.5 sm:p-3 min-w-0 flex flex-col justify-center">
-          <h3 className={`${TYPE.cardTitleCompact} truncate`}>
+          <h3 className={`${TYPE.cardTitleCompactLinked} truncate`}>
             {item.name}
           </h3>
           <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}`}>

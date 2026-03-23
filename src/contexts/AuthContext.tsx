@@ -68,7 +68,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         session,
         isLoading: false,
       }));
-    }).catch(() => {});
+    }).catch((err: unknown) => {
+      console.error("[AuthProvider] session fetch failed", err);
+    });
 
     const {
       data: { subscription },

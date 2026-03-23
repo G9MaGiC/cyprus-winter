@@ -226,8 +226,10 @@ export const TYPE = {
   subSectionTitleLg: "font-display text-xl sm:text-2xl font-semibold leading-tight",
   kicker: "prose-label text-sage",
   kickerOnDark: "prose-label text-white/80",
-  /** Compact card titles (RightNowCard, strip headings) */
-  cardTitleCompact: "font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors",
+  /** Compact card titles — base (strip headings, weather chips) */
+  cardTitleCompact: "font-display text-sm sm:text-base font-semibold",
+  /** Compact card titles — interactive variant (RightNowCard, linked cards) */
+  cardTitleCompactLinked: "font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors",
 } as const;
 
 /** Homepage hero primitives (server components compose these). */
