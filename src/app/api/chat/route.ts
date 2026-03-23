@@ -303,8 +303,8 @@ export async function POST(req: Request) {
     const hint = getOllamaModelNotFoundHint(lastErr, lastProvider.model);
     if (hint) msg += hint;
   }
-  const is401 = msg.includes("401") || /invalid authentication|invalid api key/i.test(msg);
-  const message = process.env.NODE_ENV === "production" && !is401 ? "Something went wrong. Please try again." : msg;
+  // Always return generic error messages to clients — never leak provider details
+  const message = "Something went wrong. Please try again.";
   console.error("Chat API error (all providers failed):", lastErr);
   return jsonError("SERVER_ERROR", message, 500);
 }

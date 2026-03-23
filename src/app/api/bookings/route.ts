@@ -7,7 +7,7 @@ import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
 import { trails } from "@/data/trails";
 import { z } from "zod";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders, parseJsonBody } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
 
@@ -26,7 +26,8 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = await req.json();
+    const body = await parseJsonBody(req, 10 * 1024); // 10KB max for bookings
+    if (body instanceof Response) return body;
     const parsed = createBookingSchema.safeParse({
       type: body.type ?? "winery_tasting",
       providerId: body.providerId,
@@ -188,6 +189,24 @@ export async function GET(req: Request) {
   const parsed = z.string().email().max(254).safeParse(email);
   if (!parsed.success) {
     return jsonError("VALIDATION_ERROR", "Invalid email format", 400);
+  }
+
+  // Require a lookup token (HMAC of email) to prevent enumeration attacks.
+  // Client generates this from a short-lived token issued at booking time.
+  const token = searchParams.get("token");
+  if (!token) {
+    return jsonError("BAD_REQUEST", "Lookup token required", 400);
+  }
+  const secret = process.env.BOOKING_LOOKUP_SECRET;
+  if (secret) {
+    const crypto = await import("crypto");
+    const expected = crypto.createHmac("sha256", secret).update(parsed.data.toLowerCase()).digest("hex");
+    // Constant-time comparison to prevent timing attacks
+    const tokenBuf = Buffer.from(token);
+    const expectedBuf = Buffer.from(expected);
+    if (tokenBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(tokenBuf, expectedBuf)) {
+      return jsonError("BAD_REQUEST", "Invalid lookup token", 403);
+    }
   }
 
   try {

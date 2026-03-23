@@ -8,7 +8,8 @@ import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { getTranslations } from "next-intl/server";
 
-export const dynamic = "force-dynamic";
+// Revalidate hourly — weather data is mostly static, no need for force-dynamic
+export const revalidate = 3600;
 
 const MONTH_TO_SLUG: Record<string, string> = {
   November: "november",

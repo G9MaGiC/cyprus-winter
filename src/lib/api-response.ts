@@ -61,6 +61,29 @@ export function jsonRateLimitedFromResult(
   return jsonRateLimited(message, retryAfter);
 }
 
+/**
+ * Parse JSON body with size limit to prevent DoS via oversized payloads.
+ * Returns the parsed body or a 413 Response if too large.
+ */
+export async function parseJsonBody(
+  req: Request,
+  maxBytes = 64 * 1024 // 64KB default
+): Promise<unknown | Response> {
+  const contentLength = req.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > maxBytes) {
+    return jsonError("BAD_REQUEST", "Request body too large", 413);
+  }
+  try {
+    const text = await req.text();
+    if (text.length > maxBytes) {
+      return jsonError("BAD_REQUEST", "Request body too large", 413);
+    }
+    return JSON.parse(text);
+  } catch {
+    return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
+  }
+}
+
 /** Headers for successful rate-limited responses (200). Include on all rate-limited routes. */
 export function rateLimitSuccessHeaders(
   remaining: number,
