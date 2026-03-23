@@ -54,10 +54,7 @@ export default async function ThisWeekGrid({
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
-  const [t, tCommon] = await Promise.all([
-    getTranslations("home"),
-    getTranslations("common"),
-  ]);
+  const t = await getTranslations("home");
   const Link = LinkComponent;
   let trailSummary: TrailSummary | null = null;
   let liveWeather: LiveWeather | null = null;
@@ -83,7 +80,7 @@ export default async function ThisWeekGrid({
   const tip = getWeatherTip();
   const eventHighlight = getEventHighlight();
   const trailIdsWithData = trailSummary
-    ? FEATURED_TRAIL_IDS.filter((id) => trailSummary![id])
+    ? FEATURED_TRAIL_IDS.filter((id) => trailSummary[id])
     : ["artemis"];
   const featuredTrailIds = trailIdsWithData.length > 0 ? trailIdsWithData : ["artemis"];
   const featuredTrailId = pickDailyWithKey(featuredTrailIds, "featured-trail");
@@ -137,7 +134,7 @@ export default async function ThisWeekGrid({
         </Link>
         <div className={CARD.footer}>
           <div className="flex flex-wrap items-center gap-2">
-            <AddToItineraryButton placeId={featuredTrailId} label={tCommon("addToPlan")} className="text-sm" />
+            <AddToItineraryButton placeId={featuredTrailId} className="text-sm" />
             <Link
               href="/trails"
               prefetch="auto"

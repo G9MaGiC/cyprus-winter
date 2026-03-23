@@ -119,9 +119,9 @@ export default async function HomePlaceOfDay({
             </span>
           </Link>
           <div className={`flex-1 flex flex-col ${CARD.contentLg}`}>
-            <p id="place-of-day-heading" className={`text-sage prose-label mb-1`}>
+            <h2 id="place-of-day-heading" className={`text-sage prose-label mb-1`}>
               {tHome("placeOfDay.heading")}
-            </p>
+            </h2>
             <Link
               href={place.href}
               prefetch="auto"

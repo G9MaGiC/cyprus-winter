@@ -24,9 +24,9 @@ export default async function HomeTemplateLinks({
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="mb-4 sm:mb-5">
-          <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
+          <h2 id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
             {tHome("templateLinks.kicker")}
-          </p>
+          </h2>
           <p className="text-sm text-olive/70">
             {tHome("templateLinks.subtitle")}
           </p>
