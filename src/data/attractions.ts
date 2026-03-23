@@ -37,6 +37,14 @@ export type Attraction = {
   /** Approximate coords for Right Now distance calculation */
   latitude?: number;
   longitude?: number;
+  /** Season suitability tags */
+  seasonTags?: ("winter" | "spring" | "summer" | "autumn")[];
+  /** Indoor, outdoor, or mixed */
+  indoorOutdoor?: "indoor" | "outdoor" | "mixed";
+  /** Budget level: free, low, mid, high */
+  budgetLevel?: "free" | "low" | "mid" | "high";
+  /** Editorial priority for ranking (1 = highest) */
+  editorialPriority?: number;
 };
 
 export const beaches: Attraction[] = [
@@ -58,6 +66,10 @@ export const beaches: Attraction[] = [
     latitude: 34.987,
     longitude: 34.001,
     combineWith: ["cape-greco", "ayia-napa-sea-caves", "protaras-tavernas"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "fig-tree-bay",
@@ -77,6 +89,10 @@ export const beaches: Attraction[] = [
     latitude: 35.013,
     longitude: 34.058,
     combineWith: ["cape-greco", "protaras-tavernas", "konnos-bay"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "konnos-bay",
@@ -96,6 +112,10 @@ export const beaches: Attraction[] = [
     latitude: 34.965,
     longitude: 34.068,
     combineWith: ["cape-greco", "ayia-napa-sea-caves", "protaras-tavernas", "fig-tree-bay"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "coral-bay",
@@ -115,6 +135,10 @@ export const beaches: Attraction[] = [
     latitude: 34.848,
     longitude: 32.368,
     combineWith: ["pafos-mosaics", "tomb-of-kings", "pafos-harbour", "pissouri-tavernas"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "lara-bay",
@@ -132,6 +156,10 @@ export const beaches: Attraction[] = [
     transport: "Rough track from Polis; 4WD recommended. ~45 min from Paphos.",
     parking: "Limited; end of track.",
     combineWith: ["adonis", "aphrodite", "polis", "polis-harbour", "latsi-harbour"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "ayia-napa-sea-caves",
@@ -151,6 +179,10 @@ export const beaches: Attraction[] = [
     latitude: 34.978,
     longitude: 33.997,
     combineWith: ["konnos-bay", "cape-greco", "protaras-tavernas", "fig-tree-bay"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "governors-beach",
@@ -170,6 +202,10 @@ export const beaches: Attraction[] = [
     latitude: 34.641,
     longitude: 33.146,
     combineWith: ["kourion", "amahti", "zambartas", "domes-sergiou", "governors-beach-tavernas"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
 ];
 
@@ -190,6 +226,10 @@ export const natureSites: Attraction[] = [
     latitude: 34.672,
     longitude: 33.05,
     combineWith: ["kolossi", "kourion", "governors-beach", "limassol-marina-restaurants"],
+    seasonTags: ["winter", "spring"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
 ];
 
@@ -215,6 +255,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Paved paths in parts; some uneven ground. House of Dionysus has ramp access.",
     latitude: 34.756,
     longitude: 32.407,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 1,
   },
   {
     id: "kourion",
@@ -237,6 +281,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Steep paths; theatre steps. Cliff edge unfenced; supervise children.",
     latitude: 34.665,
     longitude: 32.887,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 1,
   },
   {
     id: "tomb-of-kings",
@@ -256,6 +304,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Uneven ground; steep steps into tombs. Shade limited.",
     latitude: 34.767,
     longitude: 32.402,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "salamis",
@@ -274,6 +326,10 @@ export const ancientSites: Attraction[] = [
     parking: "On-site parking",
     latitude: 35.185,
     longitude: 33.902,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "st-hilarion",
@@ -293,6 +349,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Steep climbs; many steps. Not suitable for limited mobility.",
     latitude: 35.312,
     longitude: 33.282,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "amahti",
@@ -312,6 +372,10 @@ export const ancientSites: Attraction[] = [
     latitude: 34.712,
     longitude: 33.143,
     combineWith: ["governors-beach", "kourion", "zambartas"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "choirokoitia",
@@ -334,6 +398,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Uneven paths; steep climb to hilltop. Allow 1 to 1.5 hours.",
     latitude: 34.796,
     longitude: 33.342,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "kolossi",
@@ -356,6 +424,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Steep spiral stairs to roof. Ground floor accessible.",
     latitude: 34.665,
     longitude: 32.933,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "palaipafos",
@@ -375,6 +447,10 @@ export const ancientSites: Attraction[] = [
     latitude: 34.707,
     longitude: 32.574,
     combineWith: ["pafos-mosaics", "tomb-of-kings", "kouklia-cafe", "pafos-harbour"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "buffavento",
@@ -392,6 +468,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Strenuous climb; many steps. Not for limited mobility.",
     latitude: 35.274,
     longitude: 33.409,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "cyprus-museum",
@@ -411,6 +491,10 @@ export const ancientSites: Attraction[] = [
     latitude: 35.173,
     longitude: 33.362,
     accessibility: "Ground floor accessible; some galleries via stairs.",
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "bellapais",
@@ -431,6 +515,10 @@ export const ancientSites: Attraction[] = [
     accessibility: "Uneven flagstones; cloister has steps.",
     latitude: 35.06,
     longitude: 33.28,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "leventis-museum",
@@ -450,6 +538,10 @@ export const ancientSites: Attraction[] = [
     parking: "Street parking; paid zones",
     latitude: 35.176,
     longitude: 33.365,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "paphos-castle",
@@ -468,6 +560,10 @@ export const ancientSites: Attraction[] = [
     latitude: 34.755,
     longitude: 32.408,
     combineWith: ["pafos-mosaics", "tomb-of-kings", "coral-bay", "kouklia-cafe", "pafos-harbour"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "angeloktisti",
@@ -488,6 +584,10 @@ export const ancientSites: Attraction[] = [
     combineWith: ["zygi-tavernas", "lefkara", "kiti-tavernas", "choirokoitia", "lefkara-path"],
     latitude: 34.84,
     longitude: 33.57,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
   {
     id: "idalion",
@@ -506,6 +606,10 @@ export const ancientSites: Attraction[] = [
     parking: "On-site",
     latitude: 34.99,
     longitude: 33.41,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "outdoor",
+    budgetLevel: "low",
+    editorialPriority: 2,
   },
 ];
 
@@ -530,6 +634,10 @@ export const villages: Attraction[] = [
     accessibility: "Valley village; some slopes. Bridge has steps.",
     latitude: 34.992,
     longitude: 32.82,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "lefkara",
@@ -552,6 +660,10 @@ export const villages: Attraction[] = [
     accessibility: "Steep cobbled streets. Main square and some shops accessible.",
     latitude: 34.868,
     longitude: 33.305,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 1,
   },
   {
     id: "polis",
@@ -571,6 +683,10 @@ export const villages: Attraction[] = [
     latitude: 35.035,
     longitude: 32.425,
     combineWith: ["adonis", "aphrodite", "vasilikon", "polis-harbour", "smigies"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "omodos",
@@ -593,6 +709,10 @@ export const villages: Attraction[] = [
     accessibility: "Cobbles throughout; some steep alleys. Main square is level.",
     latitude: 34.847,
     longitude: 32.808,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 1,
   },
   {
     id: "kakopetria",
@@ -615,6 +735,10 @@ export const villages: Attraction[] = [
     accessibility: "Narrow cobbled paths; river crossings. Old Quarter involves steps.",
     latitude: 34.988,
     longitude: 32.902,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "lania",
@@ -631,6 +755,10 @@ export const villages: Attraction[] = [
     culturalNote: "Combine with Tsiakkas or Zambartas; both are a short drive away. Lunch at a village taverna between tastings.",
     latitude: 34.82,
     longitude: 32.86,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "lefke",
@@ -646,6 +774,10 @@ export const villages: Attraction[] = [
     nameEl: "Λεύκα",
     latitude: 35.11,
     longitude: 32.85,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "foini",
@@ -665,6 +797,10 @@ export const villages: Attraction[] = [
     parking: "Village square; free",
     latitude: 34.91,
     longitude: 32.79,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "pedoulas",
@@ -682,6 +818,10 @@ export const villages: Attraction[] = [
     combineWith: ["archangelos-michail", "kykkos", "kalopanagiotis"],
     latitude: 34.97,
     longitude: 32.82,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "platres",
@@ -703,6 +843,10 @@ export const villages: Attraction[] = [
     accessibility: "Hilly village; some steep streets. Main road and square are manageable.",
     latitude: 34.88,
     longitude: 32.87,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "pera-pedi",
@@ -722,6 +866,10 @@ export const villages: Attraction[] = [
     latitude: 34.84,
     longitude: 32.85,
     combineWith: ["omodos", "koilani", "hadjipavlou"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "agros",
@@ -741,6 +889,10 @@ export const villages: Attraction[] = [
     parking: "Village centre; free",
     latitude: 34.92,
     longitude: 33.0,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "fikardou",
@@ -759,6 +911,10 @@ export const villages: Attraction[] = [
     parking: "Village entrance; free",
     latitude: 34.97,
     longitude: 33.18,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "koilani",
@@ -779,6 +935,10 @@ export const villages: Attraction[] = [
     combineWith: ["vlassides", "omodos", "pera-pedi"],
     latitude: 34.823,
     longitude: 32.892,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "lefkara-kato",
@@ -796,6 +956,10 @@ export const villages: Attraction[] = [
     combineWith: ["lefkara", "choirokoitia", "domes-sergiou"],
     latitude: 34.865,
     longitude: 33.31,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "vavla",
@@ -812,6 +976,10 @@ export const villages: Attraction[] = [
     combineWith: ["lefkara", "choirokoitia", "domes-sergiou"],
     latitude: 34.87,
     longitude: 33.27,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "galata",
@@ -827,6 +995,10 @@ export const villages: Attraction[] = [
     bestFor: ["Byzantine art", "Troodos villages", "Culture"],
     latitude: 34.99,
     longitude: 32.89,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "zodiakos",
@@ -843,6 +1015,10 @@ export const villages: Attraction[] = [
     combineWith: ["vasilikon", "vouni-panayia", "adonis"],
     latitude: 34.94,
     longitude: 32.42,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "kato-drys",
@@ -860,6 +1036,10 @@ export const villages: Attraction[] = [
     combineWith: ["lefkara", "choirokoitia", "stavrovouni", "domes-sergiou"],
     latitude: 34.851,
     longitude: 33.304,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "louvaras",
@@ -876,6 +1056,10 @@ export const villages: Attraction[] = [
     combineWith: ["omodos", "koilani", "pera-pedi"],
     latitude: 34.84,
     longitude: 32.88,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "lofou",
@@ -892,6 +1076,10 @@ export const villages: Attraction[] = [
     combineWith: ["omodos", "krasas", "monagri"],
     latitude: 34.86,
     longitude: 32.87,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "kampi-farmaka",
@@ -910,6 +1098,10 @@ export const villages: Attraction[] = [
     combineWith: ["pedoulas", "kykkos"],
     latitude: 34.98,
     longitude: 33.12,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "koili",
@@ -926,6 +1118,10 @@ export const villages: Attraction[] = [
     combineWith: ["chrysorrogiatissa", "polis", "vouni-panayia"],
     latitude: 34.88,
     longitude: 32.51,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "kritou-terra",
@@ -943,6 +1139,10 @@ export const villages: Attraction[] = [
     combineWith: ["adonis", "aphrodite", "polis", "lara-bay"],
     latitude: 35.05,
     longitude: 32.44,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
   {
     id: "kormakitis",
@@ -961,6 +1161,10 @@ export const villages: Attraction[] = [
     combineWith: ["bellapais", "st-hilarion"],
     latitude: 35.34,
     longitude: 33.06,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 2,
   },
 ];
 
@@ -984,6 +1188,10 @@ export const monasteries: Attraction[] = [
     accessibility: "Main areas accessible; museum has steps.",
     latitude: 34.984,
     longitude: 32.741,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "st-neophytos",
@@ -1003,6 +1211,10 @@ export const monasteries: Attraction[] = [
     latitude: 34.845,
     longitude: 32.448,
     combineWith: ["pafos-mosaics", "tsangarides", "vouni-panayia"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "trooditissa",
@@ -1020,6 +1232,10 @@ export const monasteries: Attraction[] = [
     parking: "Small car park; free",
     latitude: 34.92,
     longitude: 32.86,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "machairas",
@@ -1039,6 +1255,10 @@ export const monasteries: Attraction[] = [
     latitude: 34.937,
     longitude: 33.192,
     combineWith: ["kykkos", "cyprus-museum"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "chrysorrogiatissa",
@@ -1059,6 +1279,10 @@ export const monasteries: Attraction[] = [
     latitude: 34.92,
     longitude: 32.62,
     combineWith: ["vouni-panayia", "pafos-mosaics", "tsangarides"],
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "st-john-lampadistis",
@@ -1076,6 +1300,10 @@ export const monasteries: Attraction[] = [
     combineWith: ["kalopanagiotis", "kykkos", "trooditissa"],
     latitude: 34.992,
     longitude: 32.82,
+    seasonTags: ["winter", "spring", "autumn"],
+    indoorOutdoor: "mixed",
+    budgetLevel: "free",
+    editorialPriority: 3,
   },
   {
     id: "panagia-tou-araka",

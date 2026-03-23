@@ -24,7 +24,6 @@ function isHashOnly(href: string): boolean {
  * prefetch+loading hang (vercel/next.js#85162).
  */
 export default function AppLink(props: React.ComponentProps<typeof NextLink>) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- omit locale for IntlLink
   const { href, locale, ...rest } = props;
   const hrefStr = typeof href === "string" ? href : href?.toString() ?? "";
 
@@ -32,5 +31,12 @@ export default function AppLink(props: React.ComponentProps<typeof NextLink>) {
     return <NextLink prefetch="auto" href={href} {...rest} />;
   }
 
-  return <IntlLink prefetch="auto" href={href} {...rest} />;
+  return (
+    <IntlLink
+      prefetch="auto"
+      href={href}
+      {...rest}
+      {...(typeof locale === "string" ? { locale } : {})}
+    />
+  );
 }

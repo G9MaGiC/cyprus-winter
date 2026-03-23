@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
-import { CTA, CARD } from "@/lib/design-tokens";
+import { CTA, CARD, TYPE, PILL, TRANSITION } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
 
 const SCROLL_THRESHOLD_PX = 100;
@@ -121,7 +121,7 @@ export default function OnboardingModal() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] z-[100] transition-all duration-300 ease-out ${
+      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] z-[100] transition-all ${TRANSITION.medium} ease-out ${
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
       role="dialog"
@@ -134,7 +134,7 @@ export default function OnboardingModal() {
         className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}
       >
         {/* Hero image strip with gradient overlay */}
-        <div className="relative h-24 sm:h-28 w-full bg-sand-200">
+        <div className="relative min-h-[7rem] sm:min-h-[8rem] w-full bg-sand-200 overflow-hidden">
           <Image
             src="/images/cyprus/cyprus-trail-gorge.jpg"
             alt=""
@@ -142,30 +142,27 @@ export default function OnboardingModal() {
             className="object-cover"
             sizes="(max-width: 640px) 100vw, 512px"
           />
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent"
-            aria-hidden
-          />
+          <div className={`${CARD.mediaOverlay}`} aria-hidden />
           <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-white">
             <Compass className="h-5 w-5 shrink-0 text-terracotta" aria-hidden />
-            <h2 id="onboarding-title" className="font-display text-lg font-bold">
+            <h2 id="onboarding-title" className="font-display text-xl sm:text-2xl font-semibold leading-tight text-white">
               {t("welcome")}
             </h2>
           </div>
         </div>
 
-        <div className="p-4 sm:p-6">
-          <p id="onboarding-description" className="text-olive/80 text-base mb-4">
+        <div className={CARD.content}>
+          <p id="onboarding-description" className="prose-intro text-olive/80 mb-4">
             {t("description")}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               type="button"
               onClick={() => {
                 handleIntent("exploring", dismiss, router);
               }}
-              className={`${CTA.primaryCompact} flex-1 inline-flex items-center justify-center gap-2`}
+              className={`${CTA.primaryCompact} flex-1 inline-flex items-center justify-center gap-2 ${CARD.interactive}`}
               aria-label={t("aria.startExploring")}
             >
               <Compass className="h-4 w-4" aria-hidden />
@@ -174,42 +171,44 @@ export default function OnboardingModal() {
             <button
               type="button"
               onClick={handleDismiss}
-              className="min-h-[44px] px-4 text-sm text-olive/50 hover:text-terracotta transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
+              className="min-h-[44px] px-4 text-sm text-olive/60 hover:text-olive/80 transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
               aria-label={t("aria.skip")}
             >
               {t("skip")}
             </button>
           </div>
 
-          <p className="text-sm text-olive/60 mb-2">{t("intentQuestion")}</p>
-          <div className="flex flex-wrap gap-2" role="group" aria-label={t("aria.intentGroup")}>
-            <button
-              type="button"
-              onClick={() => handleIntent("planning", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-              aria-label={t("aria.intentPlanning")}
-            >
-              <Route className="h-4 w-4 text-aegean" aria-hidden />
-              {t("intentPlanning")}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleIntent("exploring", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-              aria-label={t("aria.intentExploring")}
-            >
-              <MapPin className="h-4 w-4 text-aegean" aria-hidden />
-              {t("intentExploring")}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleIntent("browsing", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
-              aria-label={t("aria.intentBrowsing")}
-            >
-              <Eye className="h-4 w-4 text-aegean" aria-hidden />
-              {t("intentBrowsing")}
-            </button>
+          <div className="border-t border-sand-200/60 pt-4 mt-2">
+            <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{t("intentLabel")}</p>
+            <div className="flex flex-wrap gap-2" role="group" aria-label={t("aria.intentGroup")}>
+              <button
+                type="button"
+                onClick={() => handleIntent("planning", dismiss, router)}
+                className={`${PILL.base} ${PILL.neutral} gap-2`}
+                aria-label={t("aria.intentPlanning")}
+              >
+                <Route className="h-4 w-4 text-aegean" aria-hidden />
+                {t("intentPlanning")}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleIntent("exploring", dismiss, router)}
+                className={`${PILL.base} ${PILL.neutral} gap-2`}
+                aria-label={t("aria.intentExploring")}
+              >
+                <MapPin className="h-4 w-4 text-aegean" aria-hidden />
+                {t("intentExploring")}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleIntent("browsing", dismiss, router)}
+                className={`${PILL.base} ${PILL.neutral} gap-2`}
+                aria-label={t("aria.intentBrowsing")}
+              >
+                <Eye className="h-4 w-4 text-aegean" aria-hidden />
+                {t("intentBrowsing")}
+              </button>
+            </div>
           </div>
         </div>
       </div>

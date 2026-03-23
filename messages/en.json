@@ -357,6 +357,13 @@
       "loaded": {
         "seeMore": "See more →"
       },
+      "adapt": {
+        "kicker": "Today adapt",
+        "body": "Weather changes or delayed plans? Use one tap actions to adapt your day without restarting.",
+        "ctaWeather": "Check weather",
+        "ctaPlan": "Adjust plan",
+        "ctaBookings": "Review bookings"
+      },
       "distance": {
         "aria": "Distance",
         "closer": "Closer",
@@ -1291,6 +1298,18 @@
       "mobile": {
         "details": "Details →"
       },
+      "hero": {
+        "kicker": "Winter planning",
+        "heading": "Choose your month, then browse what fits",
+        "body": "Coast and Troodos temperatures shift through winter. Pick a month to see the conditions and events, then use Right now near you to adapt your day."
+      },
+      "monthSelector": {
+        "aria": "Choose a month"
+      },
+      "gateway": {
+        "heading": "Browse winter ideas",
+        "monasteries": "Monasteries"
+      },
       "body": {
         "coastTroodos": "Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.",
         "linkTrails": "Check trail conditions",
@@ -1305,6 +1324,20 @@
       "meta": {
         "notFoundTitle": "Weather not found | Cyprus Winter",
         "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures."
+      },
+      "hero": {
+        "kicker": "This month",
+        "heading": "{month} in Cyprus Winter",
+        "body": "Coast sits around {coastMid}°C and Troodos around {troodosMid}°C. Plan layers, then browse the winter picks below."
+      },
+      "monthJump": {
+        "aria": "Jump to another month"
+      },
+      "gateway": {
+        "monasteries": "Monasteries"
+      },
+      "monthDiscovery": {
+        "heading": "Browse what fits {month}"
       },
       "conditionsHeading": "What to expect",
       "conditionsCoastTitle": "Coast (Larnaca, Limassol, Paphos)",
@@ -1326,6 +1359,7 @@
     "cta": "Explore",
     "skip": "Skip",
     "intentQuestion": "What matters most right now?",
+    "intentLabel": "Or tell us what you're here for",
     "intentPlanning": "Planning my trip",
     "intentExploring": "Exploring places",
     "intentBrowsing": "Just browsing",

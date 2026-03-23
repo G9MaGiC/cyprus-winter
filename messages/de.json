@@ -357,6 +357,13 @@
       "loaded": {
         "seeMore": "Mehr →"
       },
+      "adapt": {
+        "kicker": "Heute anpassen",
+        "body": "Wetteränderung oder Verzögerung? Passen Sie Ihren Tag mit einem Tipp an, ohne neu zu starten.",
+        "ctaWeather": "Wetter prüfen",
+        "ctaPlan": "Plan anpassen",
+        "ctaBookings": "Buchungen prüfen"
+      },
       "distance": {
         "aria": "Entfernung",
         "closer": "Näher",
@@ -1291,6 +1298,18 @@
       "mobile": {
         "details": "Details →"
       },
+      "hero": {
+        "kicker": "Winterplanung",
+        "heading": "Wählen Sie Ihren Monat, dann stöbern Sie nach dem Passenden",
+        "body": "Küste und Troodos verändern sich im Winter. Wählen Sie einen Monat, um Bedingungen und Events zu sehen – und passen Sie Ihren Tag mit „Right now near you“ an."
+      },
+      "monthSelector": {
+        "aria": "Monat auswählen"
+      },
+      "gateway": {
+        "heading": "Winter-Ideen entdecken",
+        "monasteries": "Klöster"
+      },
       "body": {
         "coastTroodos": "Küste bedeutet Larnaka, Limassol, Pafos — milde mediterrane Winter. Troodos ist das Gebirge: Dörfer wie Platres und Omodos sowie das Skigebiet am Olymp. Packen Sie Schichten ein; zwischen Küste und Bergen können 10 °C Unterschied liegen.",
         "linkTrails": "Trail-Bedingungen prüfen",
@@ -1305,6 +1324,20 @@
       "meta": {
         "notFoundTitle": "Wetter nicht gefunden | Cyprus Winter",
         "notFoundDescription": "Zypern-Winterwetter nach Monaten: Dezember, Januar, Februar, März. Temperaturen an Küste und im Troodos."
+      },
+      "hero": {
+        "kicker": "Dieser Monat",
+        "heading": "{month} im Cyprus Winter",
+        "body": "Die Küste liegt etwa bei {coastMid}°C, Troodos bei rund {troodosMid}°C. Planen Sie Schichten, dann stöbern Sie unten in den Winter-Tipps."
+      },
+      "monthJump": {
+        "aria": "Zu einem anderen Monat springen"
+      },
+      "gateway": {
+        "monasteries": "Klöster"
+      },
+      "monthDiscovery": {
+        "heading": "{month} – was passt"
       },
       "conditionsHeading": "Was Sie erwartet",
       "conditionsCoastTitle": "Küste (Larnaka, Limassol, Pafos)",
@@ -1326,6 +1359,7 @@
     "cta": "Entdecken",
     "skip": "Überspringen",
     "intentQuestion": "Was ist Ihnen gerade am wichtigsten?",
+    "intentLabel": "Oder sagen Sie uns, wofür Sie hier sind",
     "intentPlanning": "Reise planen",
     "intentExploring": "Orte erkunden",
     "intentBrowsing": "Nur stöbern",

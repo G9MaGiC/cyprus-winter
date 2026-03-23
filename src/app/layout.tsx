@@ -12,11 +12,13 @@ import BottomNav from "@/components/BottomNav";
 import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
+import DebugErrorReporter from "@/components/DebugErrorReporter";
+import DebugErrorBoundary from "@/components/DebugErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LAYOUT } from "@/lib/design-tokens";
+import ClientComponents from "@/components/ClientComponents";
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
-import ClientComponents from "@/components/ClientComponents";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -110,18 +112,21 @@ export default async function RootLayout({
           {tCommon("skipToContent")}
         </a>
         <NextIntlClientProvider messages={messages}>
-        <Providers>
-          <ConversionTrackerClient />
-          <WebVitalsReporter />
-          <ScrollToTop />
-          <Nav />
-          <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
-            {children}
-          </main>
-          <BottomNav />
-          <FooterWithTranslations />
-        </Providers>
-        <ClientComponents />
+          <DebugErrorBoundary>
+            <Providers>
+              <ConversionTrackerClient />
+            <DebugErrorReporter />
+              <WebVitalsReporter />
+              <ScrollToTop />
+              <Nav />
+              <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
+                {children}
+              </main>
+              <BottomNav />
+              <FooterWithTranslations />
+            </Providers>
+          </DebugErrorBoundary>
+          <ClientComponents />
         </NextIntlClientProvider>
       </body>
     </html>

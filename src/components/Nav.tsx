@@ -73,7 +73,11 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
       <div className={`${LAYOUT.nav} mx-auto flex items-center justify-between h-14 ${LAYOUT.safeAreaX}`}>
-        <AppLink href="/" className="font-display text-xl font-bold text-golden min-h-[44px] inline-flex items-center">
+        <AppLink
+          href="/"
+          prefetch={false}
+          className="font-display text-xl font-bold text-golden min-h-[44px] inline-flex items-center"
+        >
           Cyprus Winter
         </AppLink>
 
@@ -81,6 +85,7 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <AppLink
             href="/search"
+            prefetch={false}
             className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-white/80 hover:text-golden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
             aria-label={t("searchAria")}
           >
@@ -92,6 +97,7 @@ export default function Nav() {
             <AppLink
               key={link.href}
               href={link.href}
+              prefetch={false}
               aria-current={isActive(pathname, link.href) ? "page" : undefined}
               className={`text-sm font-medium transition-colors min-h-[44px] inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
                 isActive(pathname, link.href)
@@ -130,6 +136,7 @@ export default function Nav() {
                     <AppLink
                       key={link.href}
                       href={link.href}
+                      prefetch={false}
                       role="menuitem"
                       aria-current={isActive(pathname, link.href) ? "page" : undefined}
                       onClick={() => setMoreOpen(false)}
@@ -191,6 +198,7 @@ export default function Nav() {
         <div className="md:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
           <AppLink
             href="/search"
+            prefetch={false}
             onClick={() => setOpen(false)}
             className="min-h-[44px] flex items-center py-3 font-medium text-golden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded"
           >
@@ -208,6 +216,7 @@ export default function Nav() {
             <AppLink
               key={link.href}
               href={link.href}
+              prefetch={false}
               aria-current={isActive(pathname, link.href) ? "page" : undefined}
               onClick={() => setOpen(false)}
               className={`min-h-[44px] flex items-center py-3 font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${

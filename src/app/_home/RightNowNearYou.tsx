@@ -31,7 +31,7 @@ function SectionShell({
       className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <header className="mb-4 sm:mb-5">
+        <header className={SECTION.headingGap}>
           <h2 id="right-now-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             {title}
           </h2>
@@ -254,26 +254,34 @@ export default function RightNowNearYou({
 
   return (
     <SectionShell title={title} subtitle={loadedSubtitle}>
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+      <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink href="/discover" className={SECTION.aegeanLink}>
           {tHome("rightNow.loaded.seeMore")}
         </AppLink>
       </div>
-      <div className="mb-4 rounded-xl border border-aegean/20 bg-aegean/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Today adapt</p>
+      <div className={`${SECTION.headingGap} rounded-xl border border-aegean/20 bg-aegean/5 p-4`}>
+        <p className="prose-label text-aegean">
+          {tHome("rightNow.adapt.kicker")}
+        </p>
         <p className="mt-1 text-sm text-olive/80">
-          Weather changes or delayed plans? Use one tap actions to adapt your day without restarting.
+          {tHome("rightNow.adapt.body")}
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "weather" }}>
-            <AppLink href="/weather" className={SECTION.aegeanLink}>Check weather</AppLink>
+            <AppLink href="/weather" className={SECTION.aegeanLink}>
+              {tHome("rightNow.adapt.ctaWeather")}
+            </AppLink>
           </TrackOnClick>
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "plan" }}>
-            <AppLink href="/plan" className={SECTION.aegeanLink}>Adjust plan</AppLink>
+            <AppLink href="/plan" className={SECTION.aegeanLink}>
+              {tHome("rightNow.adapt.ctaPlan")}
+            </AppLink>
           </TrackOnClick>
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "bookings" }}>
-            <AppLink href="/bookings" className={SECTION.aegeanLink}>Review bookings</AppLink>
+            <AppLink href="/bookings" className={SECTION.aegeanLink}>
+              {tHome("rightNow.adapt.ctaBookings")}
+            </AppLink>
           </TrackOnClick>
         </div>
       </div>

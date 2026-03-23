@@ -1326,6 +1326,7 @@
     "cta": "Odkrywaj",
     "skip": "Pomiń",
     "intentQuestion": "Co jest teraz najważniejsze?",
+    "intentLabel": "Lub powiedz, po co tutaj jesteś",
     "intentPlanning": "Planowanie podróży",
     "intentExploring": "Odkrywanie miejsc",
     "intentBrowsing": "Tylko przeglądam",

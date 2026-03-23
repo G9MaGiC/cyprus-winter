@@ -97,6 +97,7 @@ export default function BottomNav() {
           <AppLink
             key={link.href}
             href={link.href}
+            prefetch={false}
             aria-current={isActive(pathname, link.href) ? "page" : undefined}
             className="flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
@@ -111,6 +112,7 @@ export default function BottomNav() {
           <AppLink
             key={planLink.href}
             href={planLink.href}
+            prefetch={false}
             aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
             aria-hidden={stickyPlanVisible}
             tabIndex={stickyPlanVisible ? -1 : undefined}
@@ -151,6 +153,7 @@ export default function BottomNav() {
                 <AppLink
                   key={link.href}
                   href={link.href}
+                  prefetch={false}
                   onClick={closeMore}
                   role="menuitem"
                   aria-current={isActive(pathname, link.href) ? "page" : undefined}

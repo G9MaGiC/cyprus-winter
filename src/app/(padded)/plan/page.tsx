@@ -26,7 +26,7 @@ import { useTranslations } from "next-intl";
 import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -166,10 +166,12 @@ export default function PlanPage() {
         </header>
 
         {hasContent && totalPlaces === 1 && showTipFirstAdd && (
-          <OnboardingContextualTip
-            message={t("tipFirstAdd")}
-            onDismiss={dismissTipFirstAdd}
-          />
+          <div className="mb-4">
+            <OnboardingContextualTip
+              message={t("tipFirstAdd")}
+              onDismiss={dismissTipFirstAdd}
+            />
+          </div>
         )}
 
         {hasContent && hydrated && (
@@ -231,7 +233,7 @@ export default function PlanPage() {
             >
               <h2
                 id="plan-map-heading"
-                className="text-xl sm:text-2xl font-display font-semibold text-charcoal mb-1"
+                className={`font-display text-xl sm:text-2xl font-semibold text-charcoal ${SECTION.titleGap}`}
               >
                 {tPlan("mapTitle")}
               </h2>
