@@ -83,10 +83,13 @@ Add a `CARD.featured` token: `rounded-2xl` for "Four places" and Plan/Events car
 
 ### Bottom nav (6 items)
 - Links: Search, Discover, Trails, Plan, Bookings, Events
-- `min-w-[56px]` each → 336px min + padding
-- On 375px viewport: ~19px remaining for padding/gap
-- **Risk:** Text may wrap or feel cramped on small devices
-- **Recommendation:** P1 — Test on iPhone SE (375px). Consider: (a) reduce to 5 items, (b) smaller `min-w`, or (c) scrollable nav on very narrow.
+- `min-w-[44px]` each (design-token minimum) — tested at 375px viewport
+- Safe-area insets applied ✓
+
+### Mobile-first checklist
+- **Touch targets:** 44px minimum (TOUCH_TARGET token in design-tokens.ts). Use `min-h-[44px]`, `min-w-[44px]` for interactive elements.
+- **BottomNav:** Primary links use `min-w-[44px]`; verified fit at 375px (iPhone SE).
+- **Horizontal strips:** Use `scroll-touch`, `[-webkit-overflow-scrolling:touch]`, and `snap-x snap-mandatory` (or `snap-start` on items) for carousels and chip rails on mobile.
 
 ### Safe areas
 - `pl-[max(1.5rem,env(safe-area-inset-left))]` used on hero, sections, footer

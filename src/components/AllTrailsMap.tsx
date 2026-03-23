@@ -82,7 +82,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
                   <AddToItineraryButton
                     placeId={trail.id}
                     label={tCommon("addToPlan")}
-                    className="text-sm min-h-[40px] px-4 py-2"
+                    className="text-sm min-h-[44px] px-4 py-2"
                   />
                   <AppLink
                     href={`/trails/${trail.id}`}
