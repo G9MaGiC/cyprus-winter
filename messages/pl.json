@@ -386,6 +386,25 @@
       "planTitle": "Zaplanuj podróż",
       "eventsTitle": "Zimowe wydarzenia",
       "eventsDesc": "Objawienie Pańskie, karnawał, degustacje. Co i kiedy."
+    },
+    "insiderTip": {
+      "heading": "Zimowa wskazówka od eksperta",
+      "cta": {
+        "trails": "Sprawdź warunki na szlaku",
+        "airport": "Zobacz wskazówki na lotnisku",
+        "explore": "Odkrywaj miejsca"
+      }
+    },
+    "templateLinks": {
+      "kicker": "Gotowe trasy",
+      "subtitle": "Opracowane przez ekspertów. Realistyczne tempo. Zacznij tutaj, potem dostosuj.",
+      "allTemplates": "Wszystkie szablony →"
+    },
+    "whyCyprus": {
+      "heading": "Dlaczego Cypr zimą",
+      "quote": "Łagodne wybrzeże. Góry ze śniegiem. Wędrówka rano, obiad na zewnątrz. Starożytne miejsca puste, wioski ciche. Stop w kafenionie. Kawa. Nikt się nie śpieszy.",
+      "rule": "Jedna prosta zasada: jeden szlak, jedna wioska, jedna degustacja. Dodawaj je do planu w miarę jak idziesz.",
+      "tagline": "Przyjechałeś po ciepło. Zostań dla tempa."
     }
   },
   "error": {

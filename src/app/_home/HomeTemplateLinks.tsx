@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import type { LinkProps } from "@/app/_home/types";
+import { getTranslations } from "next-intl/server";
 
 const TEMPLATE_LINKS = [
   { key: "short-stay", label: "48 hours", href: "/plan?template=short-stay", hint: "Trail, village, wine" },
@@ -9,11 +10,12 @@ const TEMPLATE_LINKS = [
   { key: "mountain-10", label: "10 days", href: "/plan?template=mountain-10", hint: "Hiker immersion" },
 ] as const;
 
-export default function HomeTemplateLinks({
+export default async function HomeTemplateLinks({
   LinkComponent,
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const tHome = await getTranslations("home");
   const Link = LinkComponent;
   return (
     <section
@@ -23,10 +25,10 @@ export default function HomeTemplateLinks({
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="mb-4 sm:mb-5">
           <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
-            Pre-built itineraries
+            {tHome("templateLinks.kicker")}
           </p>
           <p className="text-sm text-olive/70">
-            Expert-curated. Realistic pacing. Start here, then tweak.
+            {tHome("templateLinks.subtitle")}
           </p>
         </header>
         <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -44,7 +46,7 @@ export default function HomeTemplateLinks({
             href="/plan"
             className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-olive/70 text-sm font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
           >
-            All templates →
+            {tHome("templateLinks.allTemplates")}
           </Link>
         </div>
       </div>

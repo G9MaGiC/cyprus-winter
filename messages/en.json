@@ -386,6 +386,25 @@
       "planTitle": "Plan your trip",
       "eventsTitle": "Winter events",
       "eventsDesc": "Epiphany, carnival, tastings. What's on when."
+    },
+    "insiderTip": {
+      "heading": "Winter insider tip",
+      "cta": {
+        "trails": "Check trail conditions",
+        "airport": "See airport tips",
+        "explore": "Explore places"
+      }
+    },
+    "templateLinks": {
+      "kicker": "Pre-built itineraries",
+      "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
+      "allTemplates": "All templates →"
+    },
+    "whyCyprus": {
+      "heading": "Why Cyprus in winter",
+      "quote": "Coast mild. Mountains with snow. Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Stop at a kafenion. Coffee. Nobody hurries.",
+      "rule": "A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.",
+      "tagline": "You came for the warmth. Stay for the pace."
     }
   },
   "error": {

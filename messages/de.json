@@ -386,6 +386,25 @@
       "planTitle": "Reise planen",
       "eventsTitle": "Winterveranstaltungen",
       "eventsDesc": "Dreikönige, Karneval, Weinverkostungen. Was wann los ist."
+    },
+    "insiderTip": {
+      "heading": "Winter-Insider-Tipp",
+      "cta": {
+        "trails": "Streckenbedingungen prüfen",
+        "airport": "Flughafentipps ansehen",
+        "explore": "Orte entdecken"
+      }
+    },
+    "templateLinks": {
+      "kicker": "Fertige Reiserouten",
+      "subtitle": "Von Experten zusammengestellt. Realistisches Tempo. Hier beginnen, dann anpassen.",
+      "allTemplates": "Alle Vorlagen →"
+    },
+    "whyCyprus": {
+      "heading": "Warum Zypern im Winter",
+      "quote": "Milde Küste. Berge mit Schnee. Wandern am Morgen, Mittagessen draußen. Antike Stätten leer, Dörfer ruhig. Halt an einem Kafenion. Kaffee. Niemand eilt.",
+      "rule": "Eine kleine Regel: ein Wanderweg, ein Dorf, eine Weinprobe. Fügen Sie sie nach und nach Ihrem Plan hinzu.",
+      "tagline": "Sie kamen für die Wärme. Bleiben Sie für das Tempo."
     }
   },
   "error": {

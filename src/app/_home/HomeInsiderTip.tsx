@@ -3,22 +3,25 @@ import { winterTipsGeneral, winterTipsHiking, winterTipsPractical } from "@/data
 import type { LinkProps } from "@/app/_home/types";
 import { CALLOUT, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
+import { getTranslations } from "next-intl/server";
 
 const allTips = [...winterTipsGeneral, ...winterTipsHiking, ...winterTipsPractical];
 
-function getCtaForCategory(category: string): { href: string; label: string } {
-  if (category === "hiking") return { href: "/trails", label: "Check trail conditions" };
-  if (category === "practical") return { href: "/airport", label: "See airport tips" };
-  return { href: "/discover", label: "Explore places" };
-}
-
-export default function HomeInsiderTip({
+export default async function HomeInsiderTip({
   LinkComponent,
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const tHome = await getTranslations("home");
   const Link = LinkComponent;
   const tip = pickDailyWithKey(allTips, "insider-tip");
+
+  function getCtaForCategory(category: string): { href: string; label: string } {
+    if (category === "hiking") return { href: "/trails", label: tHome("insiderTip.cta.trails") };
+    if (category === "practical") return { href: "/airport", label: tHome("insiderTip.cta.airport") };
+    return { href: "/discover", label: tHome("insiderTip.cta.explore") };
+  }
+
   const cta = getCtaForCategory(tip.category);
 
   return (
@@ -32,7 +35,7 @@ export default function HomeInsiderTip({
             id="insider-tip-heading"
             className="font-display text-sm font-semibold uppercase tracking-wider text-golden mb-2"
           >
-            Winter insider tip
+            {tHome("insiderTip.heading")}
           </h2>
           <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
             {tip.title}
