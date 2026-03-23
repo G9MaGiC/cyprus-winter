@@ -12,7 +12,15 @@ type DaySelectorProps = {
   displayDaysCount: number;
   getPlace: (id: string) => PlanItem | undefined;
   hasContent: boolean;
+  /** ISO date string for the first day of the trip (e.g. "2025-01-15") */
+  tripStartDate?: string | null;
 };
+
+function formatDayDate(tripStartDate: string, dayIndex: number): string {
+  const start = new Date(tripStartDate);
+  start.setDate(start.getDate() + dayIndex);
+  return start.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+}
 
 export default function DaySelector({
   days,
@@ -22,6 +30,7 @@ export default function DaySelector({
   displayDaysCount,
   getPlace,
   hasContent,
+  tripStartDate,
 }: DaySelectorProps) {
   const tPlan = useTranslations("plan");
   const t = useTranslations("plan.daySelector");
@@ -82,9 +91,18 @@ export default function DaySelector({
                   : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/60"
               }`}
             >
-            {count > 0
-              ? t("tabLabelWithCount", { day: d, count })
-              : tPlan("dayLabel", { day: d })}
+            {tripStartDate
+              ? (
+                <span className="flex flex-col items-center leading-tight">
+                  <span className="text-[0.65rem] font-normal opacity-75 truncate max-w-[5rem]">
+                    {formatDayDate(tripStartDate, d - 1)}
+                  </span>
+                  {count > 0 ? t("tabLabelWithCount", { day: d, count }) : tPlan("dayLabel", { day: d })}
+                </span>
+              )
+              : count > 0
+                ? t("tabLabelWithCount", { day: d, count })
+                : tPlan("dayLabel", { day: d })}
             </button>
           );
         })}

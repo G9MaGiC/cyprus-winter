@@ -142,6 +142,14 @@
     "thanksForReporting": "Dzięki za zgłoszenie."
     ,
     "remove": "Usuń",
+    "undo": "Cofnij",
+    "toast": {
+      "addedToPlan": "Dodano do Dnia {day}",
+      "removedFromPlan": "Usunięto z planu",
+      "linkCopied": "Link skopiowany",
+      "itineraryCopied": "Itinerarium skopiowane",
+      "planShared": "Plan udostępniony!"
+    },
     "bookTastings": "Zarezerwuj degustacje",
     "exploreWineries": "Przeglądaj winnice",
     "allCategories": "Wszystkie kategorie",
@@ -196,6 +204,13 @@
     "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie."
   },
   "home": {
+    "socialProof": {
+      "aria": "Opinie odwiedzających",
+      "headline": "Zaufało nam ponad 4200 zimowych podróżników",
+      "quote1": "Najlepszy przewodnik po Cyprze zimą — szlaki, wino, wszystko.",
+      "quote2": "Odkryłem szlaki i winnice, których nigdy bym nie znalazł.",
+      "quote3": "Zaplanowałem cały tydzień. Absolutnie idealne."
+    },
     "title": "Cyprus Winter",
     "subtitle": "Szlaki, Dziedzictwo & Wioski",
     "kicker": "Najlepiej strzeżony sekret Morza Śródziemnego",
@@ -904,6 +919,7 @@
     "curatedCombosDesc": "Rano w jednym miejscu, popołudnie w drugim. Łączą się naturalnie.",
     "morning": "Rano",
     "afternoon": "Popołudnie",
+    "autoSaved": "Zapisano",
     "pageTitle": "Zaplanuj zimę na Cyprze",
     "pageDescHasContent": "Twój plan. Dodaj więcej, udostępnij lub popraw poniżej.",
     "pageDescEmpty": "Zbuduj zimowy plan podróży. Wybierz szablon lub dodawaj miejsca dzień po dniu.",
@@ -1480,7 +1496,15 @@
     "wineryForm": {
       "errors": {
         "failed": "Rezerwacja nie powiodła się",
-        "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie."
+        "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
+        "offline": "Brak połączenia. Twoja rezerwacja została zapisana i zostanie wysłana po powrocie online.",
+        "rateLimit": "Zbyt wiele żądań. Spróbuj ponownie za chwilę."
+      },
+      "whatToKnow": {
+        "title": "Co warto wiedzieć przed rezerwacją",
+        "free": "Degustacje są bezpłatne — nie płacisz nic dzisiaj",
+        "duration": "Zwykle 45 minut, często prowadzone przez właściciela",
+        "cancellation": "Odwołanie? Skontaktuj się bezpośrednio z winnicą"
       },
       "success": {
         "title": "Wysłano prośbę",
@@ -1488,14 +1512,16 @@
         "crossDevicePrefix": "Wpisz swój email w",
         "crossDeviceSuffix": "aby zobaczyć prośbę na różnych urządzeniach.",
         "tip": "Zapytaj o Commandarię i lokalne odmiany winogron, kiedy tam będziesz. Są z nich dumni.",
+        "whatNext": "Co się stanie: otrzymasz email z potwierdzeniem. Winnica może zadzwonić, by potwierdzić. Dzisiaj nie musisz nic płacić.",
         "ctaBookings": "Zobacz moje rezerwacje",
-        "ctaDiscover": "Odkrywaj dalej"
+        "ctaDiscover": "Odkrywaj dalej",
+        "ctaPlan": "Dodaj do mojego planu"
       },
       "fields": {
-        "date": { "label": "Preferowana data", "hint": "Zimowe degustacje szybko się zapełniają. Pomaga zarezerwować kilka dni wcześniej." },
-        "partySize": { "label": "Wielkość grupy", "plus": "11+ osób" },
-        "guestName": { "label": "Twoje imię", "placeholder": "Jan Kowalski" },
-        "guestEmail": { "label": "Email", "placeholder": "jan@example.com" },
+        "date": { "label": "Preferowana data", "hint": "Zimowe degustacje szybko się zapełniają. Pomaga zarezerwować kilka dni wcześniej.", "error": "Wybierz przyszłą datę" },
+        "partySize": { "label": "Wielkość grupy", "plus": "11+ osób", "decrease": "Zmniejsz liczbę osób", "increase": "Zwiększ liczbę osób", "largeGroupHint": "W przypadku dużych grup skontaktuj się bezpośrednio z winnicą" },
+        "guestName": { "label": "Twoje imię", "placeholder": "Jan Kowalski", "error": "Wpisz swoje imię" },
+        "guestEmail": { "label": "Email", "placeholder": "jan@example.com", "error": "Wpisz prawidłowy adres email" },
         "notes": { "label": "Uwagi", "optional": "(opcjonalnie)", "hint": "Stolik przy kominku? Potrzeby dietetyczne? Wspomnij — winnice są do tego przyzwyczajone.", "placeholder": "Alergie, okazja, kominek lub taras — cokolwiek pomoże w powitaniu" }
       },
       "submit": {

@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import type { ComponentType } from "react";
 import AppLink from "@/components/AppLink";
 import HomeHero from "@/app/_home/HomeHero";
+import HomeSocialProof from "@/app/_home/HomeSocialProof";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
 import HomeSearchSection from "@/app/_home/HomeSearchSection";
-import HomeWhyCyprusTeaser from "@/app/_home/HomeWhyCyprusTeaser";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import StartHereWithExplore from "@/app/_home/StartHereWithExplore";
@@ -14,7 +14,6 @@ import HomeSection from "@/app/_home/HomeSection";
 import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
 import HomePlanningSection from "@/app/_home/HomePlanningSection";
 import HomeFooter from "@/app/_home/HomeFooter";
-import HomeShareSection from "@/app/_home/HomeShareSection";
 import {
   EditorsPicksSkeleton,
   BookTastingsSkeleton,
@@ -35,13 +34,11 @@ const BookTastings = dynamic(() => import("@/app/_home/BookTastings"), {
 import type { LinkProps } from "@/app/_home/types";
 
 type HomePageContentProps = {
-  sharePath?: string;
   LinkComponent?: ComponentType<LinkProps>;
   planSubtitle?: string;
 };
 
 export default function HomePageContent({
-  sharePath = "/",
   LinkComponent = AppLink,
   planSubtitle,
 }: HomePageContentProps = {}) {
@@ -67,16 +64,16 @@ export default function HomePageContent({
         </AppLink>
       </nav>
       <HomeHero />
+      <HomeSocialProof />
+      <RecentlyViewedStrip />
+      <HomeSearchSection />
       <Suspense fallback={<WeatherStripSkeleton />}>
         <HomeWeatherStrip LinkComponent={LinkComponent} />
       </Suspense>
       <TripReminderBanner />
-      <HomeSearchSection />
-      <HomeWhyCyprusTeaser />
       <HomeTrailConditionsStrip LinkComponent={LinkComponent} />
       <StartHereWithExplore LinkComponent={LinkComponent} />
       <RightNowNearYou />
-      <RecentlyViewedStrip />
       <HomePlaceOfDay LinkComponent={LinkComponent} />
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
 
@@ -112,7 +109,6 @@ export default function HomePageContent({
 
       <HomePlanningSection LinkComponent={LinkComponent} planSubtitle={planSubtitle} />
       <HomeFooter LinkComponent={LinkComponent} />
-      <HomeShareSection sharePath={sharePath} />
     </div>
   );
 }

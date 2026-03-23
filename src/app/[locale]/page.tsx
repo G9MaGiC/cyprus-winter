@@ -12,7 +12,6 @@ export default async function LocaleHomePage({ params }: Props) {
 
   return (
     <HomePageContent
-      sharePath={`/${locale}`}
       LinkComponent={Link}
       planSubtitle={tHome("planSubtitle")}
     />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ListPageHero from "@/components/ListPageHero";
 import ClearDayModal from "@/components/plan/ClearDayModal";
@@ -43,10 +43,27 @@ export default function PlanPage() {
   const tNav = useTranslations("nav");
   const hasTrackedPlanView = useRef(false);
 
+  const [showSaved, setShowSaved] = useState(false);
+  const savedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hasTrackedFirstAdd = useRef(false);
   useEffect(() => {
     if (plan.hydrated) setPlanItemCount(plan.totalPlaces);
   }, [plan.hydrated, plan.totalPlaces, setPlanItemCount]);
+
+  // Auto-saved flash indicator — shows briefly after any plan change
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (!plan.hydrated) return;
+    if (isFirstRender.current) { isFirstRender.current = false; return; }
+    // Defer setState to avoid synchronous setState-in-effect warning
+    const raf = requestAnimationFrame(() => setShowSaved(true));
+    if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
+    savedTimerRef.current = setTimeout(() => setShowSaved(false), 2000);
+    return () => {
+      cancelAnimationFrame(raf);
+      if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
+    };
+  }, [plan.days, plan.hydrated]);
   useEffect(() => {
     if (plan.hydrated && plan.totalPlaces >= 1 && !hasTrackedFirstAdd.current) {
       hasTrackedFirstAdd.current = true;
@@ -134,7 +151,14 @@ export default function PlanPage() {
 
         {searchParams.get("add") === "failed" && <PlanAddFailedAlert />}
 
-        <header role="banner">
+        <header role="banner" className="relative">
+          <div
+            aria-live="polite"
+            aria-atomic="true"
+            className={`absolute top-2 right-0 text-xs text-olive/50 transition-opacity duration-500 ${showSaved ? "opacity-100" : "opacity-0"}`}
+          >
+            {tPlan("autoSaved")}
+          </div>
           <ListPageHero
             backHref="/"
             backLabel={tNav("home")}
@@ -208,6 +232,7 @@ export default function PlanPage() {
             displayDaysCount={displayDaysCount}
             getPlace={getPlace}
             hasContent={hasContent}
+            tripStartDate={dates?.start}
           />
 
           <DayContentPanel

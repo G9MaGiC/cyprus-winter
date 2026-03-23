@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { StickyPlanBarProvider } from "@/contexts/StickyPlanBarContext";
 import { OnboardingProvider } from "@/contexts/OnboardingContext";
+import { ToastProvider } from "@/contexts/ToastContext";
 import OfflineQueueProcessor from "@/components/OfflineQueueProcessor";
 
 type ProvidersProps = {
@@ -27,6 +28,7 @@ export default function Providers({ children, includeOnboarding = true }: Provid
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ToastProvider>
       <AuthProvider>
         <StickyPlanBarProvider>
           {includeOnboarding ? (
@@ -42,6 +44,7 @@ export default function Providers({ children, includeOnboarding = true }: Provid
           )}
         </StickyPlanBarProvider>
       </AuthProvider>
+      </ToastProvider>
     </QueryClientProvider>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import AIAssistantWithBoundary from "@/components/AIAssistantWithBoundary";
+import AIFab from "@/components/ai/AIFab";
 import OnboardingModal from "@/components/OnboardingModal";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 
@@ -20,6 +21,7 @@ export default function ClientComponents() {
   return (
     <>
       <AIAssistantWithBoundary />
+      <AIFab />
       <OnboardingModal />
       <CookieConsentBanner />
     </>

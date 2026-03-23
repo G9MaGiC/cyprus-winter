@@ -142,6 +142,14 @@
     "thanksForReporting": "Thanks for reporting."
     ,
     "remove": "Remove",
+    "undo": "Undo",
+    "toast": {
+      "addedToPlan": "Added to Day {day}",
+      "removedFromPlan": "Removed from plan",
+      "linkCopied": "Link copied",
+      "itineraryCopied": "Itinerary copied",
+      "planShared": "Plan shared!"
+    },
     "bookTastings": "Book tastings",
     "exploreWineries": "Explore wineries",
     "allCategories": "All categories",
@@ -196,6 +204,13 @@
     "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
   },
   "home": {
+    "socialProof": {
+      "aria": "Visitor testimonials",
+      "headline": "Trusted by 4,200+ winter visitors",
+      "quote1": "Best resource for Cyprus in winter — trails, wine, everything.",
+      "quote2": "Found trails and wineries I'd never have discovered otherwise.",
+      "quote3": "Planned our whole week with this. Absolutely perfect."
+    },
     "title": "Cyprus Winter",
     "subtitle": "Trails, Heritage & Villages",
     "kicker": "The Mediterranean's best-kept secret",
@@ -904,6 +919,7 @@
     "curatedCombosDesc": "Morning at one place, afternoon at another. These flow.",
     "morning": "Morning",
     "afternoon": "Afternoon",
+    "autoSaved": "Saved",
     "pageTitle": "Plan your Cyprus winter",
     "pageDescHasContent": "Your itinerary. Add more, share, or tweak below.",
     "pageDescEmpty": "Build your winter itinerary. Pick a template or add places day by day.",
@@ -1321,11 +1337,11 @@
     }
   },
   "onboarding": {
-    "welcome": "Cyprus Winter",
+    "welcome": "What brings you to Cyprus?",
     "description": "Trails, villages, wineries. Plan as you go — no account needed.",
     "cta": "Explore",
-    "skip": "Skip",
-    "intentQuestion": "What matters most right now?",
+    "skip": "Just browsing — take me to the home page",
+    "intentQuestion": "What brings you to Cyprus?",
     "intentPlanning": "Planning my trip",
     "intentExploring": "Exploring places",
     "intentBrowsing": "Just browsing",
@@ -1480,22 +1496,32 @@
     "wineryForm": {
       "errors": {
         "failed": "Booking failed",
-        "fallback": "Something went wrong — check your connection and try again."
+        "fallback": "We couldn't confirm right now. Your request is saved and will be sent once the connection is restored.",
+        "offline": "No connection. Your booking is saved and will send when you're back online.",
+        "rateLimit": "Too many requests. Please wait a moment and try again."
+      },
+      "whatToKnow": {
+        "title": "What to know before you book",
+        "free": "Tastings are free — you pay nothing today",
+        "duration": "Typically 45 minutes, often with the owner",
+        "cancellation": "Need to cancel? Contact the winery directly"
       },
       "success": {
-        "title": "Request sent",
-        "body": "Your tasting request for {wineryName} is on its way. The winery will confirm by email. If you don't hear back within a day or two, give them a call — they're usually happy to help.",
+        "title": "You're booked! 🎉",
+        "body": "Your tasting request for {wineryName} is on its way. The winery will confirm by email.",
+        "whatNext": "What happens next: the winery confirms by email within 1–2 days. No payment needed today.",
         "crossDevicePrefix": "Enter your email on",
         "crossDeviceSuffix": "to view your request across devices.",
         "tip": "Ask about Commandaria and the indigenous grapes when you're there. They're proud of them.",
         "ctaBookings": "View my bookings",
-        "ctaDiscover": "Discover more"
+        "ctaPlan": "Add to my plan",
+        "ctaDiscover": "Explore more wineries"
       },
       "fields": {
-        "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },
-        "partySize": { "label": "Group size", "plus": "11+ people" },
-        "guestName": { "label": "Your name", "placeholder": "John Smith" },
-        "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
+        "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps.", "error": "Please pick a future date" },
+        "partySize": { "label": "Group size", "plus": "11+ people", "decrease": "Decrease group size", "increase": "Increase group size", "largeGroupHint": "For groups over 10, note this in the comments below." },
+        "guestName": { "label": "Your name", "placeholder": "John Smith", "error": "Please enter your name" },
+        "guestEmail": { "label": "Email", "placeholder": "john@example.com", "error": "Please enter a valid email address" },
         "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fireside table? Dietary needs? Just mention it — wineries are used to it.", "placeholder": "Allergies, special occasion, fireside or terrace — whatever helps them welcome you" }
       },
       "submit": {

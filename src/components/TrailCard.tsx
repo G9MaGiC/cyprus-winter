@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
-import { CARD, TYPE, CALLOUT } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
@@ -90,9 +90,13 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
               </>
             )}
           </div>
-          {conditions?.tip && (
-            <p className={`mt-3 text-sm text-olive/90 break-words px-4 py-3 ${CALLOUT.tip}`}>
-              {conditions.tip}
+          {conditions && (
+            <p className="mt-2 text-xs text-olive/60 italic line-clamp-1 break-words">
+              {conditions.surface === "dry" ? "Trail: clear" :
+               conditions.surface === "muddy" ? "Trail: muddy sections" :
+               conditions.surface === "snow" ? "Trail: snow present" :
+               "Trail: icy — take care"}
+              {conditions.tip ? ` · ${conditions.tip}` : ""}
             </p>
           )}
         </div>

@@ -142,6 +142,14 @@
     "thanksForReporting": "Danke fürs Melden."
     ,
     "remove": "Entfernen",
+    "undo": "Rückgängig",
+    "toast": {
+      "addedToPlan": "Zu Tag {day} hinzugefügt",
+      "removedFromPlan": "Aus dem Plan entfernt",
+      "linkCopied": "Link kopiert",
+      "itineraryCopied": "Reiseplan kopiert",
+      "planShared": "Plan geteilt!"
+    },
     "bookTastings": "Verkostungen buchen",
     "exploreWineries": "Weingüter entdecken",
     "allCategories": "Alle Kategorien",
@@ -196,6 +204,13 @@
     "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
   },
   "home": {
+    "socialProof": {
+      "aria": "Besucherstimmen",
+      "headline": "Vertraut von über 4.200 Winterbesuchern",
+      "quote1": "Bestes Portal für Zypern im Winter — Wanderwege, Wein, alles.",
+      "quote2": "Fand Routen und Weingüter, die ich sonst nie entdeckt hätte.",
+      "quote3": "Ganze Woche damit geplant. Absolut perfekt."
+    },
     "title": "Cyprus Winter",
     "subtitle": "Wanderwege, Kultur & Dörfer",
     "kicker": "Das bestgehütete Geheimnis des Mittelmeers",
@@ -904,6 +919,7 @@
     "curatedCombosDesc": "Vormittags hier, nachmittags dort. Es ergibt sich.",
     "morning": "Vormittag",
     "afternoon": "Nachmittag",
+    "autoSaved": "Gespeichert",
     "pageTitle": "Planen Sie Ihren Zypern-Winter",
     "pageDescHasContent": "Ihr Reiseplan. Fügen Sie mehr hinzu, teilen Sie ihn oder passen Sie ihn unten an.",
     "pageDescEmpty": "Erstellen Sie Ihren Winter-Reiseplan. Wählen Sie eine Vorlage oder fügen Sie Orte Tag für Tag hinzu.",
@@ -1480,22 +1496,32 @@
     "wineryForm": {
       "errors": {
         "failed": "Buchung fehlgeschlagen",
-        "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+        "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+        "offline": "Keine Verbindung. Ihre Buchung wird gespeichert und gesendet, sobald Sie wieder online sind.",
+        "rateLimit": "Zu viele Anfragen. Bitte warten Sie einen Moment."
+      },
+      "whatToKnow": {
+        "title": "Was Sie vor der Buchung wissen sollten",
+        "free": "Verkostungen sind kostenlos — Sie zahlen heute nichts",
+        "duration": "Typischerweise 45 Minuten, oft mit dem Inhaber",
+        "cancellation": "Stornierung? Wenden Sie sich direkt an das Weingut"
       },
       "success": {
-        "title": "Anfrage gesendet",
-        "body": "Ihre Verkostungsanfrage für {wineryName} ist unterwegs. Das Weingut bestätigt per E‑Mail. Wenn Sie nach ein oder zwei Tagen nichts hören, rufen Sie kurz an — meist helfen sie gerne.",
+        "title": "Sie haben gebucht! 🎉",
+        "body": "Ihre Verkostungsanfrage für {wineryName} ist unterwegs. Das Weingut bestätigt per E‑Mail.",
+        "whatNext": "Was als Nächstes: Das Weingut bestätigt innerhalb von 1–2 Tagen per E‑Mail. Keine Zahlung heute.",
         "crossDevicePrefix": "Geben Sie Ihre E‑Mail ein unter",
         "crossDeviceSuffix": "um Ihre Anfrage auf mehreren Geräten zu sehen.",
         "tip": "Fragen Sie vor Ort nach Commandaria und den autochthonen Rebsorten — darauf sind sie stolz.",
         "ctaBookings": "Meine Buchungen ansehen",
-        "ctaDiscover": "Mehr entdecken"
+        "ctaPlan": "Zum Plan hinzufügen",
+        "ctaDiscover": "Mehr Weingüter entdecken"
       },
       "fields": {
-        "date": { "label": "Wunschtermin", "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen." },
-        "partySize": { "label": "Gruppengröße", "plus": "11+ Personen" },
-        "guestName": { "label": "Ihr Name", "placeholder": "Max Mustermann" },
-        "guestEmail": { "label": "E‑Mail", "placeholder": "max@example.com" },
+        "date": { "label": "Wunschtermin", "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen.", "error": "Bitte wählen Sie ein zukünftiges Datum" },
+        "partySize": { "label": "Gruppengröße", "plus": "11+ Personen", "decrease": "Gruppengröße verringern", "increase": "Gruppengröße erhöhen", "largeGroupHint": "Für Gruppen über 10 Personen vermerken Sie dies bitte in den Notizen." },
+        "guestName": { "label": "Ihr Name", "placeholder": "Max Mustermann", "error": "Bitte geben Sie Ihren Namen ein" },
+        "guestEmail": { "label": "E‑Mail", "placeholder": "max@example.com", "error": "Bitte geben Sie eine gültige E‑Mail-Adresse ein" },
         "notes": { "label": "Notizen", "optional": "(optional)", "hint": "Kaminplatz? Ernährung? Einfach erwähnen — Weingüter sind daran gewöhnt.", "placeholder": "Allergien, Anlass, Kamin oder Terrasse — alles, was beim Empfang hilft" }
       },
       "submit": {

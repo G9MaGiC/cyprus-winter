@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { getPlaceById, type PlanItem } from "@/data";
 import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { toAbsoluteUrl } from "@/lib/site-url";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { trackProduct } from "@/lib/analytics";
+import { useToastContext } from "@/contexts/ToastContext";
 import {
   emptyDays,
   loadItineraryFromStorage,
@@ -29,6 +30,8 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
 export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
+  const tCommon = useTranslations("common");
+  const toast = useToastContext();
   const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
   const isMountedRef = useRef(true);
   const daysRef = useRef<Record<number, string[]>>(emptyDays());
@@ -116,12 +119,28 @@ export function useItinerary() {
   }, [activeDay, setLastAdded]);
 
   const removeFromDay = useCallback((id: string) => {
+    const fromDay = activeDay;
+    const placeName = getPlaceById(id)?.name;
     setDays((prev) => ({
       ...prev,
-      [activeDay]: (prev[activeDay] ?? []).filter((x) => x !== id),
+      [fromDay]: (prev[fromDay] ?? []).filter((x) => x !== id),
     }));
     trackProduct("plan_remove", { item_id: id, locale });
-  }, [activeDay, locale]);
+    toast.info(tCommon("toast.removedFromPlan"), {
+      duration: 5000,
+      action: {
+        label: tCommon("undo"),
+        onClick: () => {
+          setDays((prev) => {
+            const current = prev[fromDay] ?? [];
+            if (current.includes(id)) return prev;
+            return { ...prev, [fromDay]: [...current, id] };
+          });
+        },
+      },
+    });
+    void placeName; // name available for future use
+  }, [activeDay, locale, toast, tCommon]);
 
   const getPlace = useCallback((id: string): PlanItem | undefined => {
     return getPlaceById(id);
@@ -186,6 +205,7 @@ export function useItinerary() {
       await navigator.clipboard.writeText(text);
       if (!isMountedRef.current) return;
       setCopied(true);
+      toast.success(tCommon("toast.itineraryCopied"));
       const itemCount = Object.values(days).flat().length;
       const dayCount = Object.values(days).filter((v) => v.length > 0).length;
       trackProduct("plan_share", { share_method: "copy_text", item_count: itemCount, day_count: dayCount, locale });
@@ -196,18 +216,33 @@ export function useItinerary() {
     } catch {
       // clipboard not available
     }
-  }, [days, getPlace, locale]);
+  }, [days, getPlace, locale, toast, tCommon]);
 
   const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
 
   const copyShareLink = useCallback(async () => {
     const url = toAbsoluteUrl(sharePath);
+    const itemCount = Object.values(days).flat().length;
+    const dayCount = Object.values(days).filter((v) => v.length > 0).length;
+
+    // Use native share sheet on mobile when available
+    if (typeof navigator !== "undefined" && "share" in navigator) {
+      try {
+        await navigator.share({ title: "My Cyprus Winter plan", url });
+        if (!isMountedRef.current) return;
+        toast.success(tCommon("toast.planShared"));
+        trackProduct("plan_share", { share_method: "native_share", item_count: itemCount, day_count: dayCount, locale });
+        return;
+      } catch {
+        // User cancelled or API not supported — fall through to clipboard
+      }
+    }
+
     try {
       await navigator.clipboard.writeText(url);
       if (!isMountedRef.current) return;
       setLinkCopied(true);
-      const itemCount = Object.values(days).flat().length;
-      const dayCount = Object.values(days).filter((v) => v.length > 0).length;
+      toast.success(tCommon("toast.linkCopied"));
       trackProduct("plan_share", { share_method: "copy_link", item_count: itemCount, day_count: dayCount, locale });
       const t = setTimeout(() => {
         if (isMountedRef.current) setLinkCopied(false);
@@ -216,7 +251,7 @@ export function useItinerary() {
     } catch {
       // clipboard not available
     }
-  }, [sharePath, days, locale]);
+  }, [sharePath, days, locale, toast, tCommon]);
 
   useEffect(() => {
     return () => {

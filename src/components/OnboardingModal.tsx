@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
-import { CTA, CARD } from "@/lib/design-tokens";
+import { CARD } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
 
 const SCROLL_THRESHOLD_PX = 100;
@@ -155,60 +155,52 @@ export default function OnboardingModal() {
         </div>
 
         <div className="p-4 sm:p-6">
-          <p id="onboarding-description" className="text-olive/80 text-base mb-4">
+          <p id="onboarding-description" className="text-olive/70 text-sm mb-4 sr-only">
             {t("description")}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mb-4">
-            <button
-              type="button"
-              onClick={() => {
-                handleIntent("exploring", dismiss, router);
-              }}
-              className={`${CTA.primaryCompact} flex-1 inline-flex items-center justify-center gap-2`}
-              aria-label={t("aria.startExploring")}
-            >
-              <Compass className="h-4 w-4" aria-hidden />
-              {t("cta")}
-            </button>
-            <button
-              type="button"
-              onClick={handleDismiss}
-              className="min-h-[44px] px-4 text-sm text-olive/50 hover:text-terracotta transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
-              aria-label={t("aria.skip")}
-            >
-              {t("skip")}
-            </button>
-          </div>
-
-          <p className="text-sm text-olive/60 mb-2">{t("intentQuestion")}</p>
-          <div className="flex flex-wrap gap-2" role="group" aria-label={t("aria.intentGroup")}>
+          {/* Primary intent buttons — lead the interaction */}
+          <div className="flex flex-col gap-2.5" role="group" aria-label={t("aria.intentGroup")}>
             <button
               type="button"
               onClick={() => handleIntent("planning", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+              className="w-full min-h-[52px] px-4 py-3 rounded-xl border border-sand-200 bg-white hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
               aria-label={t("aria.intentPlanning")}
             >
-              <Route className="h-4 w-4 text-aegean" aria-hidden />
-              {t("intentPlanning")}
+              <Route className="h-5 w-5 shrink-0 text-aegean" aria-hidden />
+              <span className="flex-1 font-medium text-olive">{t("intentPlanning")}</span>
+              <span className="text-olive/30 text-sm" aria-hidden>›</span>
             </button>
             <button
               type="button"
               onClick={() => handleIntent("exploring", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+              className="w-full min-h-[52px] px-4 py-3 rounded-xl border border-sand-200 bg-white hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
               aria-label={t("aria.intentExploring")}
             >
-              <MapPin className="h-4 w-4 text-aegean" aria-hidden />
-              {t("intentExploring")}
+              <MapPin className="h-5 w-5 shrink-0 text-aegean" aria-hidden />
+              <span className="flex-1 font-medium text-olive">{t("intentExploring")}</span>
+              <span className="text-olive/30 text-sm" aria-hidden>›</span>
             </button>
             <button
               type="button"
               onClick={() => handleIntent("browsing", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+              className="w-full min-h-[52px] px-4 py-3 rounded-xl border border-sand-200 bg-white hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
               aria-label={t("aria.intentBrowsing")}
             >
-              <Eye className="h-4 w-4 text-aegean" aria-hidden />
-              {t("intentBrowsing")}
+              <Eye className="h-5 w-5 shrink-0 text-aegean" aria-hidden />
+              <span className="flex-1 font-medium text-olive">{t("intentBrowsing")}</span>
+              <span className="text-olive/30 text-sm" aria-hidden>›</span>
+            </button>
+          </div>
+
+          <div className="mt-3 flex justify-center">
+            <button
+              type="button"
+              onClick={handleDismiss}
+              className="min-h-[44px] px-4 text-sm text-olive/40 hover:text-terracotta transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              aria-label={t("aria.skip")}
+            >
+              {t("skip")}
             </button>
           </div>
         </div>

@@ -11,11 +11,17 @@ import { useTranslations } from "next-intl";
 
 type ToastType = "success" | "error" | "warning" | "info";
 
-interface Toast {
+export interface ToastAction {
+  label: string;
+  onClick: () => void;
+}
+
+export interface Toast {
   id: string;
   message: string;
   type: ToastType;
   duration?: number;
+  action?: ToastAction;
 }
 
 interface ToastProps {
@@ -71,6 +77,11 @@ function ToastItem({
     innerTimerRef.current = setTimeout(() => onRemove(toast.id), 300);
   }, [toast.id, onRemove]);
 
+  const dismiss = useCallback(() => {
+    setIsExiting(true);
+    scheduleRemove();
+  }, [scheduleRemove]);
+
   return (
     <div
       role="alert"
@@ -87,12 +98,21 @@ function ToastItem({
         {icons[toast.type]}
       </span>
       <p className="text-sm font-medium flex-1">{toast.message}</p>
+      {toast.action && (
+        <button
+          type="button"
+          onClick={() => {
+            toast.action!.onClick();
+            dismiss();
+          }}
+          className="shrink-0 min-h-[44px] px-3 text-sm font-semibold rounded-lg bg-white/20 hover:bg-white/30 transition-colors whitespace-nowrap"
+        >
+          {toast.action.label}
+        </button>
+      )}
       <button
         type="button"
-        onClick={() => {
-          setIsExiting(true);
-          scheduleRemove();
-        }}
+        onClick={dismiss}
         className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors"
         aria-label={tCommon("aria.dismissNotification")}
       >
@@ -121,36 +141,50 @@ export function ToastContainer({ toasts, onRemove }: ToastProps) {
   );
 }
 
+export interface ToastOptions {
+  duration?: number;
+  action?: ToastAction;
+}
+
 // Hook for using toasts
 let toastId = 0;
 
 export function useToast() {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const addToast = useCallback((message: string, type: ToastType = "info", duration?: number) => {
-    const id = `toast-${++toastId}`;
-    setToasts((prev) => [...prev, { id, message, type, duration }]);
-    return id;
-  }, []);
+  const addToast = useCallback(
+    (message: string, type: ToastType = "info", options?: ToastOptions | number) => {
+      const id = `toast-${++toastId}`;
+      const opts: ToastOptions =
+        typeof options === "number" ? { duration: options } : (options ?? {});
+      setToasts((prev) => [...prev, { id, message, type, ...opts }]);
+      return id;
+    },
+    []
+  );
 
   const removeToast = useCallback((id: string) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
   const success = useCallback(
-    (message: string, duration?: number) => addToast(message, "success", duration),
+    (message: string, options?: ToastOptions | number) =>
+      addToast(message, "success", options),
     [addToast]
   );
   const error = useCallback(
-    (message: string, duration?: number) => addToast(message, "error", duration),
+    (message: string, options?: ToastOptions | number) =>
+      addToast(message, "error", options),
     [addToast]
   );
   const warning = useCallback(
-    (message: string, duration?: number) => addToast(message, "warning", duration),
+    (message: string, options?: ToastOptions | number) =>
+      addToast(message, "warning", options),
     [addToast]
   );
   const info = useCallback(
-    (message: string, duration?: number) => addToast(message, "info", duration),
+    (message: string, options?: ToastOptions | number) =>
+      addToast(message, "info", options),
     [addToast]
   );
 

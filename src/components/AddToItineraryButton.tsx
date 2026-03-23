@@ -5,6 +5,7 @@ import { useItinerary } from "@/hooks/useItinerary";
 import { CTA, SECTION } from "@/lib/design-tokens";
 import { track, trackProduct } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
+import { useToastContext } from "@/contexts/ToastContext";
 
 type AddToItineraryButtonProps = {
   placeId: string;
@@ -22,7 +23,8 @@ export default function AddToItineraryButton({
   className = "",
 }: AddToItineraryButtonProps) {
   const tCommon = useTranslations("common");
-  const { days, hydrated, addToDayIfMissing } = useItinerary();
+  const { days, hydrated, activeDay, addToDayIfMissing } = useItinerary();
+  const toast = useToastContext();
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(placeId);
   const resolvedLabel = label ?? tCommon("addToPlan");
@@ -60,6 +62,7 @@ export default function AddToItineraryButton({
 
   const handleInlineAdd = () => {
     addToDayIfMissing(placeId);
+    toast.success(tCommon("toast.addedToPlan", { day: activeDay }));
     track("inline_plan_add_click", { place_id: placeId });
     trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
   };
