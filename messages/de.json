@@ -984,7 +984,22 @@
       "pairWith": "Passt zu…",
       "worksWell": "Funktioniert gut mit dem, was Sie hinzugefügt haben. Tippen Sie zum Hinzufügen.",
       "addToDayAria": "{name} zu diesem Tag hinzufügen"
-    }
+    },
+    "toast": {
+      "templateAdded": "Vorlage {label} zum Plan hinzugefügt",
+      "templateReplaced": "Plan durch Vorlage {label} ersetzt",
+      "comboAdded": "{label} zum Tag hinzugefügt",
+      "comboReplaced": "Tag durch {label} ersetzt"
+    },
+    "footer": {
+      "winterTip": "Wintertipp: Tageslicht endet gegen 17 Uhr. Wanderungen bis 10 Uhr beginnen; Verkostungen 24–48 Std. im Voraus buchen.",
+      "bookTastings": "Verkostungen buchen",
+      "linkDiscover": "Entdecken",
+      "linkTrails": "Wanderwege",
+      "linkWeather": "Wetter"
+    },
+    "choiceDescHasContent": "Zu Ihrem Plan hinzufügen oder ab Tag {day} ersetzen?",
+    "choiceDescEmpty": "Diese Vorlage anwenden, um Ihren Plan zu starten?"
   },
   "placePicker": {
     "tabs": {
@@ -1050,7 +1065,13 @@
     "browseWineriesAria": "Weingüter durchsuchen",
     "browseWineriesLabel": "Weingüter",
     "seeWhatsOnAria": "Sehen, was los ist",
-    "seeWhatsOnLabel": "Was läuft"
+    "seeWhatsOnLabel": "Was läuft",
+    "fitExact": "Exakte Länge",
+    "fitNear": "Gute Übereinstimmung",
+    "fitCompress": "Plan kürzen",
+    "fitExtend": "Mit Extras erweitern",
+    "fitsTripLength": "Passt zu Ihrer {days}-tägigen Reise",
+    "recommendedForTrip": "Empfohlen für Ihre {days}-tägige Reise – basierend auf Reisedauer und Ihren gespeicherten Vorlieben."
   },
   "bookings": {
     "title": "Meine Buchungen",

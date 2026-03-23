@@ -10,22 +10,38 @@ import { useTranslations } from "next-intl";
 
 function EmptyDayState({
   activeDay,
+  addToDay,
   onBrowseAll,
   onScrollToQuickStart,
 }: {
   activeDay: number;
+  addToDay: (id: string) => void;
   onBrowseAll: () => void;
   onScrollToQuickStart: () => void;
 }) {
   const tPlan = useTranslations("plan");
+  const tPlanQuick = useTranslations("planQuick");
   return (
-      <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-5 sm:px-6 bg-sand-100/30 hover:border-terracotta/20 transition-colors`}>
+      <div className={`${EMPTY_STATE_DASHED} py-10 sm:py-14 px-5 sm:px-6 bg-sand-100/30 hover:border-terracotta/20 transition-colors`}>
       <p className="font-display text-xl sm:text-2xl font-semibold text-olive mb-2 tracking-tight">
         {tPlan("dayEmptyTitle", { day: activeDay })}
       </p>
-      <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
+      <p className="text-sm text-olive/70 mb-5 leading-relaxed max-w-sm mx-auto">
         {tPlan("dayEmptyBody")}
       </p>
+      <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center mb-5">
+        {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => (
+          <button
+            key={id}
+            type="button"
+            onClick={() => addToDay(id)}
+            className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+            aria-label={tPlanQuick("quickAddAriaAdd", { label, day: activeDay })}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
         <button
           type="button"
@@ -196,6 +212,7 @@ export default function DayContentPanel({
             {activeItems.length === 0 ? (
               <EmptyDayState
                 activeDay={activeDay}
+                addToDay={addToDay}
                 onBrowseAll={onBrowseAll}
                 onScrollToQuickStart={onScrollToQuickStart}
               />

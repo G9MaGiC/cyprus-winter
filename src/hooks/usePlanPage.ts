@@ -4,11 +4,20 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { usePlanUrlActions } from "@/hooks/usePlanUrlActions";
 import { useTripDates } from "@/hooks/useTripDates";
+import { useToastContext } from "@/contexts/ToastContext";
+import { useTranslations } from "next-intl";
 import type { TemplateKey } from "@/data/itinerary-templates";
+import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 
 export type ComboChoice = { label: string; ids: string[] };
 
+const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
+  ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
+);
+
 export function usePlanPage() {
+  const toast = useToastContext();
+  const tPlan = useTranslations("plan");
   const [showClearModal, setShowClearModal] = useState(false);
   const [templateChoice, setTemplateChoice] = useState<string | null>(null);
   const [comboChoice, setComboChoice] = useState<ComboChoice | null>(null);
@@ -86,14 +95,16 @@ export function usePlanPage() {
   const handleReplaceTemplate = useCallback(() => {
     if (!templateChoice) return;
     applyTemplate(templateChoice as TemplateKey, true);
+    toast.success(tPlan("toast.templateReplaced", { label: TEMPLATE_LABELS[templateChoice] ?? templateChoice }));
     setTemplateChoice(null);
-  }, [templateChoice, applyTemplate]);
+  }, [templateChoice, applyTemplate, toast, tPlan]);
 
   const handleAddTemplate = useCallback(() => {
     if (!templateChoice) return;
     mergeTemplate(templateChoice as TemplateKey);
+    toast.success(tPlan("toast.templateAdded", { label: TEMPLATE_LABELS[templateChoice] ?? templateChoice }));
     setTemplateChoice(null);
-  }, [templateChoice, mergeTemplate]);
+  }, [templateChoice, mergeTemplate, toast, tPlan]);
 
   const handleComboClick = useCallback(
     (ids: string[], label: string) => {
@@ -109,15 +120,17 @@ export function usePlanPage() {
   const handleAddCombo = useCallback(() => {
     if (!comboChoice) return;
     for (const id of comboChoice.ids) addToDayIfMissing(id);
+    toast.success(tPlan("toast.comboAdded", { label: comboChoice.label }));
     setComboChoice(null);
-  }, [comboChoice, addToDayIfMissing]);
+  }, [comboChoice, addToDayIfMissing, toast, tPlan]);
 
   const handleReplaceCombo = useCallback(() => {
     if (!comboChoice) return;
     clearDay();
     for (const id of comboChoice.ids) addToDayIfMissing(id);
+    toast.success(tPlan("toast.comboReplaced", { label: comboChoice.label }));
     setComboChoice(null);
-  }, [comboChoice, clearDay, addToDayIfMissing]);
+  }, [comboChoice, clearDay, addToDayIfMissing, toast, tPlan]);
 
   const handleClearDayConfirm = useCallback(() => {
     clearDay();

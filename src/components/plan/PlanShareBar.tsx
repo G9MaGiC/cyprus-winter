@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import ShareLinks from "@/components/ShareLinks";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import { Link2, FileText } from "lucide-react";
 
 type PlanShareBarProps = {
   totalPlaces: number;
@@ -101,8 +102,10 @@ export default function PlanShareBar({
                   setShareMenuOpen(false);
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                 }}
-                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
+                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg inline-flex items-center gap-2.5"
+                title="Paste as a URL to share"
               >
+                <Link2 className="h-4 w-4 shrink-0 text-olive/50" aria-hidden />
                 {linkCopied ? "Link copied" : "Copy link"}
               </button>
               <button
@@ -113,8 +116,10 @@ export default function PlanShareBar({
                   setShareMenuOpen(false);
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                 }}
-                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
+                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg inline-flex items-center gap-2.5"
+                title="Paste as formatted text in email or notes"
               >
+                <FileText className="h-4 w-4 shrink-0 text-olive/50" aria-hidden />
                 {copied ? "Copied" : "Copy itinerary (text)"}
               </button>
               <div

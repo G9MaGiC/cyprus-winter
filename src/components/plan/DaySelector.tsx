@@ -57,13 +57,9 @@ export default function DaySelector({
           if (t.getAttribute("role") !== "tab") return;
           const next =
             e.key === "ArrowLeft" || e.key === "ArrowUp"
-              ? activeDay <= 1
-                ? displayDaysCount
-                : activeDay - 1
+              ? Math.max(activeDay - 1, 1)
               : e.key === "ArrowRight" || e.key === "ArrowDown"
-                ? activeDay >= displayDaysCount
-                  ? 1
-                  : activeDay + 1
+                ? Math.min(activeDay + 1, displayDaysCount)
                 : null;
           if (next != null) {
             e.preventDefault();

@@ -984,7 +984,22 @@
       "pairWith": "Pair with…",
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
-    }
+    },
+    "toast": {
+      "templateAdded": "Added {label} template to your plan",
+      "templateReplaced": "Plan replaced with {label} template",
+      "comboAdded": "{label} added to day",
+      "comboReplaced": "Day replaced with {label}"
+    },
+    "footer": {
+      "winterTip": "Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.",
+      "bookTastings": "Book tastings",
+      "linkDiscover": "Discover",
+      "linkTrails": "Trails",
+      "linkWeather": "Weather"
+    },
+    "choiceDescHasContent": "Add to your plan or replace from Day {day}?",
+    "choiceDescEmpty": "Apply this template to start your plan?"
   },
   "placePicker": {
     "tabs": {
@@ -1050,7 +1065,13 @@
     "browseWineriesAria": "Browse wineries",
     "browseWineriesLabel": "Wineries",
     "seeWhatsOnAria": "See what's on",
-    "seeWhatsOnLabel": "What's on"
+    "seeWhatsOnLabel": "What's on",
+    "fitExact": "Exact length",
+    "fitNear": "Near match",
+    "fitCompress": "Compress plan",
+    "fitExtend": "Extend with add-ons",
+    "fitsTripLength": "Fits your {days}-day trip",
+    "recommendedForTrip": "Recommended for your {days}-day trip based on length fit and your saved preferences."
   },
   "bookings": {
     "title": "My Bookings",

@@ -3,17 +3,24 @@
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
 import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
+import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 
 type Props = {
   templateLabel: string;
+  templateKey: string;
+  activeDay: number;
   onClose: () => void;
   onAddToPlan: () => void;
   onReplace: () => void;
 };
 
-export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPlan, onReplace }: Props) {
+export default function TemplateChoiceModal({ templateLabel, templateKey, activeDay, onClose, onAddToPlan, onReplace }: Props) {
   const trapFocus = useTrapFocus();
   const modalRef = useRef<HTMLDivElement>(null);
+  const tPlan = useTranslations("plan");
+
+  const template = ITINERARY_TEMPLATES.find((t) => t.key === templateKey);
 
   useEffect(() => {
     const first = modalRef.current?.querySelector<HTMLElement>(
@@ -42,8 +49,14 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
           Apply {templateLabel}?
         </h2>
         <p id="template-choice-desc" className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
-          Add to your plan or replace what you have.
+          {tPlan("choiceDescHasContent", { day: activeDay })}
         </p>
+        {(template?.seasonalNote || template?.bookingNote) && (
+          <div className="mb-4 p-3 rounded-lg bg-golden/8 border border-golden/20 text-xs text-olive/70 flex flex-col gap-1.5">
+            {template.seasonalNote && <span>🕔 {template.seasonalNote}</span>}
+            {template.bookingNote && <span>📌 {template.bookingNote}</span>}
+          </div>
+        )}
         <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end pt-2">
           <button
             type="button"

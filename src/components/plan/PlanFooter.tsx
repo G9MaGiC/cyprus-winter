@@ -29,7 +29,7 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
         </p>
       )}
       <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
-        Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
+        {tPlan("footer.winterTip")}
       </p>
       <div
         className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm"
@@ -38,17 +38,17 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
       >
         {hasWineries && (
           <Link href="/bookings" className={SECTION.aegeanLink}>
-            Book tastings
+            {tPlan("footer.bookTastings")}
           </Link>
         )}
         <Link href="/discover" className={SECTION.aegeanLink}>
-          Discover
+          {tPlan("footer.linkDiscover")}
         </Link>
         <Link href="/trails" className={SECTION.aegeanLink}>
-          Trails
+          {tPlan("footer.linkTrails")}
         </Link>
         <Link href="/weather" className={SECTION.aegeanLink}>
-          Weather
+          {tPlan("footer.linkWeather")}
         </Link>
       </div>
     </footer>

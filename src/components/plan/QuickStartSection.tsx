@@ -25,11 +25,11 @@ function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tr
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
 
-function getTripFitLabel(templateDuration: number, tripLength: number): string {
+function getTripFitKey(templateDuration: number, tripLength: number): string {
   const delta = templateDuration - tripLength;
-  if (delta === 0) return "Exact length";
-  if (Math.abs(delta) === 1) return "Near match";
-  return delta > 0 ? "Compress plan" : "Extend with add-ons";
+  if (delta === 0) return "fitExact";
+  if (Math.abs(delta) === 1) return "fitNear";
+  return delta > 0 ? "fitCompress" : "fitExtend";
 }
 
 export default function QuickStartSection({
@@ -104,8 +104,8 @@ export default function QuickStartSection({
                 {tPlanQuick("forYou")}
               </span>
             )}
-            {!isForYou && isRecommended && (
-              <span className="text-xs font-medium text-aegean mt-1 block">Fits your {tripLength}-day trip</span>
+            {!isForYou && isRecommended && tripLength != null && (
+              <span className="text-xs font-medium text-aegean mt-1 block">{tPlanQuick("fitsTripLength", { days: tripLength })}</span>
             )}
           </div>
           <span
@@ -118,7 +118,7 @@ export default function QuickStartSection({
         <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
         {tripLength != null && (
           <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
-            {getTripFitLabel(template.duration, tripLength)}
+            {tPlanQuick(getTripFitKey(template.duration, tripLength))}
           </span>
         )}
       </button>
@@ -151,7 +151,7 @@ export default function QuickStartSection({
         {tripLength != null && (
           <div className="mt-3 rounded-xl border border-aegean/20 bg-aegean/5 p-3 sm:p-4">
             <p className="text-sm text-olive/85">
-              Recommended for your {tripLength}-day trip based on length fit and your saved preferences.
+              {tPlanQuick("recommendedForTrip", { days: tripLength })}
             </p>
           </div>
         )}

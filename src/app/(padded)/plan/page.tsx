@@ -322,6 +322,8 @@ export default function PlanPage() {
         {templateChoice && hasContent && (
           <TemplateChoiceModal
             templateLabel={TEMPLATE_LABELS[templateChoice] ?? templateChoice}
+            templateKey={templateChoice}
+            activeDay={activeDay}
             onClose={() => setTemplateChoice(null)}
             onAddToPlan={handleAddTemplate}
             onReplace={handleReplaceTemplate}

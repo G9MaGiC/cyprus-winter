@@ -984,7 +984,22 @@
       "pairWith": "Dopasuj do…",
       "worksWell": "Dobrze pasuje do tego, co dodałeś. Kliknij, aby dodać.",
       "addToDayAria": "Dodaj {name} do tego dnia"
-    }
+    },
+    "toast": {
+      "templateAdded": "Szablon {label} dodany do planu",
+      "templateReplaced": "Plan zastąpiony szablonem {label}",
+      "comboAdded": "{label} dodano do dnia",
+      "comboReplaced": "Dzień zastąpiony przez {label}"
+    },
+    "footer": {
+      "winterTip": "Wskazówka zimowa: dzień kończy się ok. 17:00. Zacznij szlaki przed 10:00; rezerwuj degustacje 24–48 godz. wcześniej.",
+      "bookTastings": "Rezerwuj degustacje",
+      "linkDiscover": "Odkrywaj",
+      "linkTrails": "Szlaki",
+      "linkWeather": "Pogoda"
+    },
+    "choiceDescHasContent": "Dodać do planu lub zastąpić od Dnia {day}?",
+    "choiceDescEmpty": "Zastosować ten szablon, aby rozpocząć plan?"
   },
   "placePicker": {
     "tabs": {
@@ -1050,7 +1065,13 @@
     "browseWineriesAria": "Przeglądaj winnice",
     "browseWineriesLabel": "Winnice",
     "seeWhatsOnAria": "Zobacz, co jest dostępne",
-    "seeWhatsOnLabel": "Co jest dostępne"
+    "seeWhatsOnLabel": "Co jest dostępne",
+    "fitExact": "Dokładna długość",
+    "fitNear": "Zbliżona długość",
+    "fitCompress": "Skróć plan",
+    "fitExtend": "Rozszerz o dodatki",
+    "fitsTripLength": "Pasuje do Twojej {days}-dniowej podróży",
+    "recommendedForTrip": "Polecane dla Twojej {days}-dniowej podróży na podstawie długości i zapisanych preferencji."
   },
   "bookings": {
     "title": "Moje rezerwacje",
