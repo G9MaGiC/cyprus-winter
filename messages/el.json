@@ -195,7 +195,16 @@
     "done": "Έτοιμο",
     "clearDay": "Καθαρισμός ημέρας",
     "clearDayTitle": "Καθαρισμός Ημέρας {day};",
-    "removeAllFromDay": "Αφαίρεση όλων των {count} {count, plural, one {τοποθεσίας} other {τοποθεσιών}} από την Ημέρα {day}. Μπορείτε να τις προσθέσετε ξανά οποιαδήποτε στιγμή."
+    "removeAllFromDay": "Αφαίρεση όλων των {count} {count, plural, one {τοποθεσίας} other {τοποθεσιών}} από την Ημέρα {day}. Μπορείτε να τις προσθέσετε ξανά οποιαδήποτε στιγμή.",
+    "recentlyViewed": "Πρόσφατα επισκέφτηκε",
+    "clear": "Διαγραφή",
+    "beach": "Παραλία",
+    "ancientSite": "Αρχαιολογικός χώρος",
+    "village": "Χωριό",
+    "monastery": "Μοναστήρι",
+    "restaurant": "Εστιατόριο",
+    "beforeYouGo": "Πριν φύγετε",
+    "allSet": "Όλα έτοιμα. Καλό ταξίδι!"
   },
   "home": {
     "socialProof": {

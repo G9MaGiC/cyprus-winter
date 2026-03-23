@@ -11,20 +11,27 @@ import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
-const typeLabels: Record<string, string> = {
-  beach: "Beach",
-  ancientSite: "Ancient Site",
-  village: "Village",
-  monastery: "Monastery",
-  winery: "Winery",
-  restaurant: "Restaurant",
-  trail: "Trail",
-  event: "Event",
-};
 
 const typePaths: Record<string, string> = {
   trail: "/trails",
 };
+
+type CommonT = ReturnType<typeof useTranslations<"common">>;
+
+function getTypeLabel(t: CommonT, type: string): string {
+  const map: Record<string, Parameters<CommonT>[0]> = {
+    beach: "beach",
+    ancientSite: "ancientSite",
+    village: "village",
+    monastery: "monastery",
+    winery: "winery",
+    restaurant: "restaurant",
+    trail: "trail",
+    event: "event",
+  };
+  const key = map[type];
+  return key ? t(key) : type;
+}
 
 function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string {
   const base = typePaths[item.type] || "/discover";
@@ -51,7 +58,7 @@ export function RecentlyViewedStrip() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`flex items-center justify-between ${SECTION.titleGap}`}>
           <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-olive/70`}>
-            Recently viewed
+            {tCommon("recentlyViewed")}
           </h2>
           <button
             type="button"
@@ -64,7 +71,7 @@ export function RecentlyViewedStrip() {
             }}
             className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] py-2 px-3 -m-2 text-xs text-olive/50 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
           >
-            Clear
+            {tCommon("clear")}
           </button>
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none snap-x">
@@ -74,7 +81,7 @@ export function RecentlyViewedStrip() {
               href={getItemPath(item)}
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
             >
-              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
+              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{getTypeLabel(tCommon, item.type)}</p>
               <p className="font-display font-semibold text-olive text-sm truncate group-hover:text-terracotta transition-colors">
                 {item.name}
               </p>

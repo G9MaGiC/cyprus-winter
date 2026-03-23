@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { SECTION } from "@/lib/design-tokens";
 import type { WinterTip } from "@/data/winter-tips";
 
@@ -38,6 +39,7 @@ export default function BeforeYouGoChecklist({
   tips,
   className = "",
 }: BeforeYouGoChecklistProps) {
+  const tCommon = useTranslations("common");
   const ids = useMemo(() => tips.map((t) => t.id), [tips]);
   const [checked, setChecked] = useState<Set<string>>(() => new Set());
   const [hydrated, setHydrated] = useState(false);
@@ -73,11 +75,11 @@ export default function BeforeYouGoChecklist({
       className={className}
     >
       <h2 id="before-you-go-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
-        Before you go
+        {tCommon("beforeYouGo")}
       </h2>
       {checkedCount === totalCount && totalCount > 0 && (
         <p className="text-sm text-terracotta font-medium mb-3" role="status">
-          All set. Have a safe trip.
+          {tCommon("allSet")}
         </p>
       )}
       <ul className="space-y-3" role="list">

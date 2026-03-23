@@ -195,7 +195,16 @@
     "done": "Gotowe",
     "clearDay": "Wyczyść dzień",
     "clearDayTitle": "Wyczyścić Dzień {day}?",
-    "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie."
+    "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie.",
+    "recentlyViewed": "Ostatnio wyświetlone",
+    "clear": "Wyczyść",
+    "beach": "Plaża",
+    "ancientSite": "Starożytne stanowisko",
+    "village": "Wioska",
+    "monastery": "Monastyr",
+    "restaurant": "Restauracja",
+    "beforeYouGo": "Przed wyjazdem",
+    "allSet": "Wszystko gotowe. Szczęśliwej podróży!"
   },
   "home": {
     "socialProof": {

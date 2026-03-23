@@ -59,10 +59,11 @@ export async function POST(req: NextRequest) {
       .eq("id", id)
       .single();
 
-    // Merge: never turn off an opt-in from a different form (trip vs weather)
+    // Merge: if a preference is explicitly provided use it; otherwise preserve the existing value.
+    // This allows opting out while preventing a partial update from one form wiping the other form's setting.
     const merged = {
-      push_trip_countdown: pushTripCountdown === true || (existing?.push_trip_countdown ?? pushTripCountdown ?? true),
-      push_weather_digest: pushWeatherDigest === true || (existing?.push_weather_digest ?? pushWeatherDigest ?? false),
+      push_trip_countdown: pushTripCountdown !== undefined ? pushTripCountdown : (existing?.push_trip_countdown ?? true),
+      push_weather_digest: pushWeatherDigest !== undefined ? pushWeatherDigest : (existing?.push_weather_digest ?? false),
       trip_start_date: tripStartDate ?? existing?.trip_start_date ?? null,
     };
 

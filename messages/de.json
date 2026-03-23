@@ -195,7 +195,16 @@
     "done": "Fertig",
     "clearDay": "Tag leeren",
     "clearDayTitle": "Tag {day} leeren?",
-    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
+    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen.",
+    "recentlyViewed": "Kürzlich angesehen",
+    "clear": "Löschen",
+    "beach": "Strand",
+    "ancientSite": "Antike Stätte",
+    "village": "Dorf",
+    "monastery": "Kloster",
+    "restaurant": "Restaurant",
+    "beforeYouGo": "Vor der Abreise",
+    "allSet": "Alles erledigt. Gute Reise!"
   },
   "home": {
     "socialProof": {
