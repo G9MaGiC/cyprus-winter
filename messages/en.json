@@ -406,7 +406,8 @@
       "failed": "I'm having trouble connecting. Please try again in a moment."
     },
     "rightNow": {
-      "locationDenied": "Enable location or pick a region."
+      "locationDenied": "Enable location or pick a region.",
+      "locationTimeout": "Location request timed out. Try again or pick a region instead."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Please try again in a moment.",

@@ -31,11 +31,18 @@ export type RateLimitScope =
   | "vapid"
   | "right-now";
 
+let redisWarningLogged = false;
+
 function hasRedisEnv(): boolean {
-  return !!(
+  const available = !!(
     process.env.UPSTASH_REDIS_REST_URL &&
     process.env.UPSTASH_REDIS_REST_TOKEN
   );
+  if (!available && process.env.NODE_ENV === "production" && !redisWarningLogged) {
+    redisWarningLogged = true;
+    console.warn("[rate-limit] Redis env vars missing in production — falling back to in-memory rate limiting (not shared across instances)");
+  }
+  return available;
 }
 
 /**

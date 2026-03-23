@@ -9,14 +9,19 @@ function decodeHtmlEntities(str: string): string {
   return str.replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10))).replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)));
 }
 
+/** Strip whitespace, null bytes, and control chars that browsers ignore inside protocol schemes. */
+function normalizeForProtocolCheck(str: string): string {
+  return str.replace(/[\s\0\u200B\u200C\u200D\uFEFF]/g, "");
+}
+
 const DANGEROUS_PROTOCOLS = /^(javascript|data|vbscript|file):/i;
 
-/** Strip dangerous protocols from markdown links [text](url). Replaces with plain link text. Handles entity-encoded URLs. */
+/** Strip dangerous protocols from markdown links [text](url). Replaces with plain link text. Handles entity-encoded and whitespace-obfuscated URLs. */
 export function sanitizeMarkdownLinks(input: string): string {
   if (typeof input !== "string") return "";
-  // URL in [text](url) may contain ) e.g. javascript:alert(1)); capture trailing )+ so we replace the whole link
-  return input.replace(/\[([^\]]*)\]\(([^)]*)(\)+)/g, (fullMatch, text: string, url: string) => {
-    const decoded = decodeHtmlEntities(url.trim());
+  // Match [text](url) — allow nested parens in URL by matching balanced pairs or greedy content
+  return input.replace(/\[([^\]]*)\]\(((?:[^()]*|\([^()]*\))*)\)/g, (fullMatch, text: string, url: string) => {
+    const decoded = normalizeForProtocolCheck(decodeHtmlEntities(url.trim()));
     if (DANGEROUS_PROTOCOLS.test(decoded)) return text;
     return fullMatch;
   });

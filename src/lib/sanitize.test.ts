@@ -44,6 +44,15 @@ describe("sanitizeMarkdownLinks", () => {
     expect(sanitizeMarkdownLinks("[x](&#x6a;avascript:void(0))")).toBe("x");
   });
 
+  it("strips whitespace-obfuscated javascript: links", () => {
+    expect(sanitizeMarkdownLinks("[x](java\tscript:alert(1))")).toBe("x");
+    expect(sanitizeMarkdownLinks("[x](java\nscript:void(0))")).toBe("x");
+  });
+
+  it("strips data: protocol links", () => {
+    expect(sanitizeMarkdownLinks("[x](data:text/html,payload)")).toBe("x");
+  });
+
   it("keeps safe links", () => {
     expect(sanitizeMarkdownLinks("[ok](https://example.com)")).toBe("[ok](https://example.com)");
     expect(sanitizeMarkdownLinks("[rel](/path)")).toBe("[rel](/path)");

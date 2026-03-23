@@ -174,6 +174,25 @@ export default function RightNowNearYou({
     );
   }
 
+  if (state === "timeout") {
+    return (
+      <SectionShell title={title}>
+        <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
+          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
+            {tErrors("rightNow.locationTimeout")}
+          </p>
+          <LocationActionButtons
+            primaryLabel={tErrors("common.tryAgainCta")}
+            onPrimary={handleUseLocation}
+            onSecondary={handlePickRegion}
+            secondaryLabel={tHome("rightNow.consent.cta.pickRegion")}
+            className="mt-0"
+          />
+        </div>
+      </SectionShell>
+    );
+  }
+
   if (state === "denied" || state === "error") {
     return (
       <SectionShell title={title}>

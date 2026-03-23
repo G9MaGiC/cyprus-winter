@@ -66,12 +66,14 @@ export default function WineryBookingForm({
       notes: notes || undefined,
     });
 
+    let resStatus = 0;
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body,
       });
+      resStatus = res.status;
 
       const data = await res.json();
 
@@ -99,7 +101,9 @@ export default function WineryBookingForm({
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
-      if (isNetworkError && typeof navigator !== "undefined") {
+      const isServerError = !isNetworkError && resStatus >= 500;
+      const shouldQueue = isNetworkError || isServerError;
+      if (shouldQueue && typeof navigator !== "undefined") {
         addMutation({
           type: "winery_booking",
           url: "/api/bookings",
@@ -108,7 +112,7 @@ export default function WineryBookingForm({
         });
       }
       const fallback = t("errors.fallback");
-      setError(msg && !isNetworkError ? msg : fallback);
+      setError(msg && !shouldQueue ? msg : fallback);
       setTimeout(() => {
         const behavior =
           typeof window !== "undefined" &&

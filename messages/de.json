@@ -406,7 +406,8 @@
       "failed": "Ich kann gerade nicht verbinden. Bitte versuchen Sie es gleich noch einmal."
     },
     "rightNow": {
-      "locationDenied": "Standort aktivieren oder eine Region auswählen."
+      "locationDenied": "Standort aktivieren oder eine Region auswählen.",
+      "locationTimeout": "Standortanfrage abgelaufen. Versuchen Sie es erneut oder wählen Sie eine Region."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Bitte versuchen Sie es gleich noch einmal.",

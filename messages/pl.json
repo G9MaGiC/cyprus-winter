@@ -399,7 +399,8 @@
       "failed": "Mam problem z połączeniem. Spróbuj ponownie za chwilę."
     },
     "rightNow": {
-      "locationDenied": "Włącz lokalizację albo wybierz region."
+      "locationDenied": "Włącz lokalizację albo wybierz region.",
+      "locationTimeout": "Upłynął limit czasu lokalizacji. Spróbuj ponownie lub wybierz region."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Spróbuj ponownie za chwilę.",
