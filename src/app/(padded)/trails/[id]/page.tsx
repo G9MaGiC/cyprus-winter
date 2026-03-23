@@ -168,7 +168,7 @@ export default async function TrailPage({
           </DetailHero>
 
           <nav
-            className="flex flex-wrap gap-x-4 gap-y-1 py-3 text-sm border-b border-sand-200/70 -mx-1 px-1 overflow-x-auto scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch]"
+            className="flex flex-wrap gap-x-4 gap-y-1 py-3 text-sm border-b border-sand-200/70 -mx-1 px-1 overflow-x-auto scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain"
             aria-label={tTrailsDetail("aria.jumpToSection")}
           >
             <a href="#trail-description" className="text-aegean hover:underline">

@@ -86,7 +86,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
                   />
                   <AppLink
                     href={`/trails/${trail.id}`}
-                    className="text-sm font-medium text-terracotta hover:underline"
+                    className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
                   >
                     {tTrails("map.viewTrail")} →
                   </AppLink>

@@ -75,10 +75,10 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
                 <p className="text-xs text-olive/70 mb-3">{p.region}</p>
                 <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
                   <AddToItineraryButton placeId={p.id} label={tCommon("addToPlan")} className="text-sm min-h-[44px] px-4 py-2" />
-                  <AppLink
-                    href={p.href}
-                    className="text-sm font-medium text-terracotta hover:underline"
-                  >
+<AppLink
+                  href={p.href}
+                  className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
+                >
                     {tDiscover("map.view")}
                   </AppLink>
                 </div>

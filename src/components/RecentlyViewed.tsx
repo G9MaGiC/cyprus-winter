@@ -67,7 +67,7 @@ export function RecentlyViewedStrip() {
             Clear
           </button>
         </div>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory [-webkit-overflow-scrolling:touch]">
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x">
           {items.map((item) => (
             <AppLink
               key={item.id}

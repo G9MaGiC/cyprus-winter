@@ -96,3 +96,8 @@ Prefer Tailwind: `gap-2` (8px) tight inline, `gap-3` (12px) buttons/chips, `gap-
 - [ ] Body/captions use prose-intro, prose-body, or text-olive/80
 - [ ] Spacing uses SECTION or LAYOUT tokens where applicable
 - [ ] CTAs use CTA tokens; links use SECTION.aegeanLink when secondary
+
+### Mobile-first
+- [ ] Touch targets: `min-h-[44px]` (TOUCH_TARGET) for interactive elements
+- [ ] Horizontal scroll strips: `scroll-touch`, `[-webkit-overflow-scrolling:touch]`, `overscroll-x-contain`, `touch-pan-x`, `snap-x snap-mandatory` (or `snap-start` on items)
+- [ ] BottomNav: `min-w-[44px]` for primary links; test at 375px viewport
