@@ -167,7 +167,7 @@ export default async function WeatherMonthPage({ params }: Props) {
       />
 
       {/* Month hero guidance */}
-      <section className="mt-10">
+      <section className={SECTION.blockTop}>
         <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50`}>
           <p className={`${TYPE.kicker} text-sage`}>{tWeatherMonth("hero.kicker")}</p>
           <h2 className={`${TYPE.sectionTitle} mt-2`}>
@@ -183,7 +183,7 @@ export default async function WeatherMonthPage({ params }: Props) {
       </section>
 
       {/* Jump to month */}
-      <section className="mt-8" aria-label={monthJumpLabel}>
+      <section className={SECTION.blockTop} aria-label={monthJumpLabel}>
         <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible">
           {MONTH_SLUGS.map((m) => {
             const name = SLUG_TO_WEATHER[m];
@@ -213,7 +213,7 @@ export default async function WeatherMonthPage({ params }: Props) {
 
       <div className={SECTION.blockGap}>
         <section aria-labelledby="conditions">
-          <h2 id="conditions" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
+          <h2 id="conditions" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
             {tWeatherMonth("conditionsHeading")}
           </h2>
           <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50 space-y-4`}>
@@ -242,7 +242,7 @@ export default async function WeatherMonthPage({ params }: Props) {
 
         {/* Month-specific discovery links */}
         <section aria-labelledby="month-discovery">
-          <h2 id="month-discovery" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
+          <h2 id="month-discovery" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
             {tWeatherMonth("monthDiscovery.heading", { month: monthName })}
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -256,7 +256,7 @@ export default async function WeatherMonthPage({ params }: Props) {
 
         {events.length > 0 && (
           <section aria-labelledby="events">
-            <h2 id="events" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
+            <h2 id="events" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
               {tWeatherMonth("eventsHeading", { month: monthName })}
             </h2>
             <ul className="space-y-3">

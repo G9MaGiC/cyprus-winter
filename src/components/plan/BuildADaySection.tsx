@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { CARD, CTA, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { DAY_COMBOS } from "@/data/day-combos";
 import type { RelatedPlace } from "@/lib/related-places";
@@ -55,7 +55,7 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
         >
           {tPlan("curatedCombos")}
         </span>
-        <h2 id="build-a-day-heading" className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2">
+        <h2 id="build-a-day-heading" className={`mt-3 ${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
           {tPlan("buildADay")}
         </h2>
         <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
@@ -79,11 +79,11 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 {combo.why}
               </p>
               {combo.tip && (
-                <p className="text-xs text-olive/60 mb-4 italic border-l-2 border-l-golden/40 pl-3">
+                <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-l-2 border-l-golden/40 pl-3`}>
                   {combo.tip}
                 </p>
               )}
-              <div className="flex items-center gap-1.5 text-xs text-olive/50 mb-4 uppercase tracking-wider" aria-hidden>
+              <div className={`flex items-center gap-1.5 text-xs text-olive/50 ${SECTION.headingGap} uppercase tracking-wider`} aria-hidden>
                 <span>{tPlan("morning")}</span>
                 <span aria-hidden>→</span>
                 <span>{tPlan("afternoon")}</span>

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import AppLink from "@/components/AppLink";
-import { CARD, TYPE, PILL } from "@/lib/design-tokens";
+import { CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
@@ -136,7 +136,7 @@ export default function QuickStartSection({
         </span>
         <h2
           id="quick-start-heading"
-          className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2"
+          className={`mt-3 ${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}
         >
           {hasContent ? tPlanQuick("titleHasContent") : tPlanQuick("titleEmpty")}
         </h2>

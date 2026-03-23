@@ -138,6 +138,8 @@ export const SECTION = {
   aegeanLink: "inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded",
   /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
   footerBlock: "mt-10 pt-6 border-t border-sand-200/80",
+  /** Top margin for sections within a page — use for consistent block spacing */
+  blockTop: "mt-10 sm:mt-12",
 } as const;
 
 /**
@@ -218,6 +220,10 @@ export const TYPE = {
   sectionSubtitle: "text-sage text-sm sm:text-base leading-relaxed",
   /** Card h3 titles */
   cardTitle: "font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors",
+  /** Sub-section h2 (weather conditions, plan map, day panel) — smaller than sectionTitle */
+  subSectionTitle: "font-display text-xl font-semibold leading-tight",
+  /** Sub-section with responsive bump */
+  subSectionTitleLg: "font-display text-xl sm:text-2xl font-semibold leading-tight",
   kicker: "prose-label text-sage",
   kickerOnDark: "prose-label text-white/80",
 } as const;

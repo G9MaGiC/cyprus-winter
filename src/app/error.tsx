@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
@@ -42,7 +42,7 @@ export default function Error({
   return (
     <main className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}>
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
-        <h1 className="font-display text-2xl font-bold text-olive mb-2">
+        <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
           {tError("title")}
         </h1>
         <p className={`text-olive/80 leading-relaxed prose-body break-words ${SECTION.headingGap}`}>

@@ -49,7 +49,7 @@ export default async function WeatherPage() {
     getTranslations("home"),
   ]);
 
-  const monthSelectorSectionClassName = "mt-8 hidden md:block";
+  const monthSelectorSectionClassName = `${SECTION.blockTop} hidden md:block`;
   const mobileClampClass = "text-olive/80 text-xs mt-0.5 line-clamp-1";
 
   // #region agent log H1 translation labels + H3 responsive class
@@ -121,7 +121,7 @@ export default async function WeatherPage() {
       />
 
       {/* Hero guidance block */}
-      <section className="mt-10">
+      <section className={SECTION.blockTop}>
         <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50`}>
           <p className={`${TYPE.kicker} text-sage`}>{tWeather("hero.kicker")}</p>
           <h2 className={`${TYPE.sectionTitle} mt-2`}>{tWeather("hero.heading")}</h2>
@@ -266,7 +266,7 @@ export default async function WeatherPage() {
       </div>
 
       {/* Discover gateway */}
-      <section className="mt-12">
+      <section className={SECTION.blockTop}>
         <h2 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tWeather("gateway.heading")}</h2>
         <div className="flex flex-wrap gap-3">
           <AppLink href="/trails" className={`${PILL.base} ${PILL.neutral}`}>
@@ -290,13 +290,13 @@ export default async function WeatherPage() {
         </div>
       </section>
 
-      <div className="mt-10">
+      <div className={SECTION.blockTop}>
         <RightNowNearYou title={tHome("rightNowNearYou")} />
       </div>
 
       <WeatherPushOptIn />
 
-      <div className="mt-12 space-y-4 text-olive/80 text-sm max-w-2xl">
+      <div className={`${SECTION.blockTop} space-y-4 text-olive/80 text-sm max-w-2xl`}>
         <p>{tWeather("body.coastTroodos")}</p>
         <p>
           <AppLink href="/trails" className={SECTION.aegeanLink}>

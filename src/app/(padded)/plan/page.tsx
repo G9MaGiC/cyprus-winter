@@ -26,7 +26,7 @@ import { useTranslations } from "next-intl";
 import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
-import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -127,7 +127,7 @@ export default function PlanPage() {
         )}
 
         {searchParams.get("add") && !hydrated && (
-          <p className="text-sm text-olive/70 mb-4" role="status" aria-live="polite">
+          <p className={`text-sm text-olive/70 ${SECTION.headingGap}`} role="status" aria-live="polite">
             {tPlan("addingToPlan")}
           </p>
         )}
@@ -166,7 +166,7 @@ export default function PlanPage() {
         </header>
 
         {hasContent && totalPlaces === 1 && showTipFirstAdd && (
-          <div className="mb-4">
+          <div className={SECTION.headingGap}>
             <OnboardingContextualTip
               message={t("tipFirstAdd")}
               onDismiss={dismissTipFirstAdd}
@@ -233,11 +233,11 @@ export default function PlanPage() {
             >
               <h2
                 id="plan-map-heading"
-                className={`font-display text-xl sm:text-2xl font-semibold text-charcoal ${SECTION.titleGap}`}
+                className={`${TYPE.subSectionTitleLg} text-charcoal ${SECTION.titleGap}`}
               >
                 {tPlan("mapTitle")}
               </h2>
-              <p className="text-xs text-olive/60 mb-4">{tPlan("pageDescSecondaryEmpty")}</p>
+              <p className={`text-xs text-olive/60 ${SECTION.headingGap}`}>{tPlan("pageDescSecondaryEmpty")}</p>
               <PlanMapClient />
             </section>
           )}

@@ -120,7 +120,7 @@ export default function RightNowNearYou({
     return (
       <SectionShell title={title} subtitle={tHome("rightNow.subtitleConsent")}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className="text-olive/80 text-sm mb-4">
+          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.consent.body")}
           </p>
           <LocationActionButtons
@@ -139,7 +139,7 @@ export default function RightNowNearYou({
     return (
       <SectionShell title={title}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className="text-olive/80 text-sm mb-4">
+          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.regionPicker.body")}
           </p>
           <RegionPickerChips
@@ -179,7 +179,7 @@ export default function RightNowNearYou({
       <SectionShell title={title}>
         <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           {state === "denied" ? (
-            <p className="text-olive/80 text-sm mb-4">
+            <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
               {tErrors("rightNow.locationDenied")}
             </p>
           ) : lastErrorCode === "RATE_LIMITED" ? (
@@ -216,7 +216,7 @@ export default function RightNowNearYou({
     return (
       <SectionShell title={title} subtitle={subtitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className="text-olive/80 text-sm mb-4">
+          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.empty.body", {
               scope: sourceMode === "region" ? tHome("rightNow.empty.scopeRegion") : tHome("rightNow.empty.scopeNow"),
             })}

@@ -15,6 +15,8 @@ Reference for Cyprus Winter design tokens. Use these consistently; avoid ad-hoc 
 | `TYPE.sectionTitle` | Section h2 (Explore, This week, list intros) | font-display text-2xl sm:text-3xl font-semibold text-charcoal leading-tight |
 | `TYPE.sectionSubtitle` | Section subtitles | text-sage text-sm sm:text-base leading-relaxed |
 | `TYPE.cardTitle` | Card h3 titles | font-display text-lg font-semibold text-olive |
+| `TYPE.subSectionTitle` | Sub-section h2 (weather conditions, plan map, day panel) | font-display text-xl font-semibold leading-tight |
+| `TYPE.subSectionTitleLg` | Sub-section with responsive bump | font-display text-xl sm:text-2xl font-semibold leading-tight |
 | `TYPE.kicker` | Labels above content (on light) | prose-label text-sage |
 | `TYPE.kickerOnDark` | Labels on dark overlays | prose-label text-white/80 |
 
@@ -55,6 +57,7 @@ Reference for Cyprus Winter design tokens. Use these consistently; avoid ad-hoc 
 | `SECTION.headingGap` | Between heading and content block (mb-4 sm:mb-6) |
 | `SECTION.titleGap` | Between heading and subtitle (mb-2) |
 | `SECTION.blockGap` | Between major sections (space-y-12 sm:space-y-16) |
+| `SECTION.blockTop` | Top margin for sections within a page (mt-10 sm:mt-12) |
 | `SECTION.py` | Major hub section padding |
 | `SECTION.pySub` | Subsection padding |
 

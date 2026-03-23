@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Lightbulb } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type OnboardingContextualTipProps = {
@@ -45,7 +45,7 @@ export default function OnboardingContextualTip({
         {href && hrefLabel && (
           <Link
             href={href}
-            className="inline-block mt-2 text-sm font-medium text-aegean hover:text-aegean/80 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded"
+            className={`mt-2 ${SECTION.aegeanLink}`}
           >
             {hrefLabel}
           </Link>

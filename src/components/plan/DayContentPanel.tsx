@@ -3,7 +3,7 @@
 import { type RefObject } from "react";
 import TimelineRow from "@/components/plan/TimelineRow";
 import SuggestedForDay from "@/components/SuggestedForDay";
-import { CARD, CTA, EMPTY_STATE_DASHED, PILL, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, EMPTY_STATE_DASHED, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 import { useTranslations } from "next-intl";
@@ -20,7 +20,7 @@ function EmptyDayState({
   const tPlan = useTranslations("plan");
   return (
       <div className={`${EMPTY_STATE_DASHED} py-16 sm:py-24 px-5 sm:px-6 bg-sand-100/30 hover:border-terracotta/20 transition-colors`}>
-      <p className="font-display text-xl sm:text-2xl font-semibold text-olive mb-2 tracking-tight">
+      <p className={`${TYPE.subSectionTitleLg} text-olive ${SECTION.titleGap}`}>
         {tPlan("dayEmptyTitle", { day: activeDay })}
       </p>
       <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
@@ -69,7 +69,7 @@ function DayAddSection({
       aria-label={tPlanQuick("inlineAddAria", { day: activeDay })}
       className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
     >
-      <p className="text-sm font-medium text-olive/80 mb-4">
+      <p className={`text-sm font-medium text-olive/80 ${SECTION.headingGap}`}>
         {tPlanQuick("quickAddLabel", { day: activeDay })}
       </p>
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
@@ -203,7 +203,7 @@ export default function DayContentPanel({
               <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className="pt-1 mb-4 pl-12">
+                    <div className={`pt-1 ${SECTION.headingGap} pl-12`}>
                       <span className={`${TYPE.kicker} text-olive/70`}>{tPlan("morning")}</span>
                     </div>
                     <div className="space-y-0">
@@ -222,7 +222,7 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className="mt-8 mb-4 pl-12">
+                        <div className={`mt-8 ${SECTION.headingGap} pl-12`}>
                           <span className={`${TYPE.kicker} text-olive/60`}>{tPlan("afternoon")}</span>
                         </div>
                         <div className="space-y-0">
