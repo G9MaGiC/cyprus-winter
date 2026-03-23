@@ -1160,6 +1160,7 @@
         "skip": "Skip — use my plan on this device"
       }
     },
+    "oauthError": "Sign-in was cancelled or failed. Please try again.",
     "notConfigured": {
       "title": "Sign in coming soon",
       "description": "Sign in (coming soon) will sync your plan and bookings across devices.",

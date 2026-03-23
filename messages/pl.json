@@ -1264,6 +1264,7 @@
         "skip": "Pomiń — używaj planu tylko na tym urządzeniu"
       }
     },
+    "oauthError": "Logowanie zostało anulowane lub nie powiodło się. Spróbuj ponownie.",
     "notConfigured": {
       "title": "Logowanie wkrótce",
       "description": "Logowanie (wkrótce) będzie synchronizować plan i rezerwacje między urządzeniami.",

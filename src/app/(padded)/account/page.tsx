@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AppLink from "@/components/AppLink";
 import { useRouter } from "@/i18n/navigation";
 import { LAYOUT, CTA, CARD, EMPTY_STATE, TYPE } from "@/lib/design-tokens";
@@ -13,6 +13,17 @@ export default function AccountPage() {
   const { user, isLoading, isConfigured, signOut, needsPasswordReset } = useAuth();
   const tNav = useTranslations("nav");
   const tAccount = useTranslations("account");
+  const [oauthError, setOauthError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
+    if (error) {
+      setOauthError(params.get("error_description") || tAccount("oauthError"));
+      router.replace("/account");
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (user && needsPasswordReset) router.replace("/reset-password");
@@ -116,6 +127,12 @@ export default function AccountPage() {
         description={tAccount("signedOut.description")}
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("account"), href: "/account", isCurrent: true }]}
       />
+
+      {oauthError && (
+        <div role="alert" className="mt-6 rounded-lg border border-terracotta/30 bg-terracotta/5 p-4 text-sm text-terracotta">
+          {oauthError}
+        </div>
+      )}
 
       <div className={`${EMPTY_STATE} mt-12`}>
         <p className="text-olive font-semibold">

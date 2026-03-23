@@ -50,6 +50,7 @@ export type HomeFeaturedWinery = {
   wineryId: string;
   title: string;
   subtitle: string;
+  region: string;
   image: string;
   imageAlt: string;
 };
@@ -156,15 +157,17 @@ export const discoverEditorsPicks: HomeEditorialPick[] = discoverEditorsPicksPoo
 export const homeFeaturedWineries: HomeFeaturedWinery[] = [
   {
     wineryId: "tsiakkas",
-    title: "Tsiakkas",
+    title: "Tsiakkas Winery",
     subtitle: "Troodos foothills · heaters on the terrace · book ahead",
+    region: "Pelendri (Limassol)",
     image: getAttractionImage("tsiakkas", "winery"),
     imageAlt: "Winter winery tasting in the Troodos foothills, Cyprus",
   },
   {
     wineryId: "vouni-panayia",
-    title: "Vouni Panayia",
+    title: "Vouni Panayia Winery",
     subtitle: "Laona route · Commandaria comparisons · cosy winter room",
+    region: "Panayia (Paphos)",
     image: getAttractionImage("vouni-panayia", "winery"),
     imageAlt: "Wine villages in the Paphos hills in winter light, Cyprus",
   },
@@ -172,6 +175,7 @@ export const homeFeaturedWineries: HomeFeaturedWinery[] = [
     wineryId: "domes-sergiou",
     title: "Dómes Sergiou",
     subtitle: "Between Larnaca & Limassol · indigenous varieties · modern",
+    region: "Skarinou (Larnaca)",
     image: getAttractionImage("domes-sergiou", "winery"),
     imageAlt: "Modern Cypriot winery tasting, Cyprus winter",
   },

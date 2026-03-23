@@ -1160,6 +1160,7 @@
         "skip": "Überspringen — Plan nur auf diesem Gerät nutzen"
       }
     },
+    "oauthError": "Anmeldung wurde abgebrochen oder ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "notConfigured": {
       "title": "Anmeldung bald verfügbar",
       "description": "Anmelden (bald verfügbar) synchronisiert Ihren Plan und Ihre Buchungen geräteübergreifend.",
