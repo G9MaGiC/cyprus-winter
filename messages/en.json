@@ -440,7 +440,8 @@
     "title": "Page not found",
     "body": "No worries. This page doesn't exist or has been moved. These things happen. The island's still here. The trails, villages, and tastings are waiting. Head home or start exploring.",
     "hint": "Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you're not sure where to start.",
-    "discoverCyprus": "Discover Cyprus"
+    "discoverCyprus": "Discover Cyprus",
+    "searchCyprus": "Search"
   },
   "discover": {
     "addToPlan": "Add to plan",

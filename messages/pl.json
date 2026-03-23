@@ -433,7 +433,8 @@
     "title": "Strona nie znaleziona",
     "body": "Spokojnie. Ta strona nie istnieje lub została przeniesiona. Tak bywa. Wyspa jest nadal tutaj. Szlaki, wioski i degustacje czekają. Wróć na start lub zacznij odkrywać.",
     "hint": "Użyj menu Odkrywaj, Szlaki lub Plan. Lub naciśnij Ask AI, jeśli nie wiesz od czego zacząć.",
-    "discoverCyprus": "Odkryj Cypr"
+    "discoverCyprus": "Odkryj Cypr",
+    "searchCyprus": "Szukaj"
   },
   "discover": {
     "addToPlan": "Dodaj do planu",

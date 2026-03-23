@@ -440,7 +440,8 @@
     "title": "Seite nicht gefunden",
     "body": "Keine Sorge. Diese Seite existiert nicht oder wurde verschoben. Das passiert. Die Insel ist noch da. Wanderwege, Dörfer und Verkostungen warten. Zurück zur Startseite oder Entdecken.",
     "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI, wenn Sie nicht wissen, wo Sie anfangen sollen.",
-    "discoverCyprus": "Zypern entdecken"
+    "discoverCyprus": "Zypern entdecken",
+    "searchCyprus": "Suche"
   },
   "discover": {
     "addToPlan": "Zum Plan hinzufügen",
