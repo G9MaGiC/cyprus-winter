@@ -35,7 +35,7 @@ export default function EditorsPicks({
             </div>
           </Link>
           <div className={CARD.footer}>
-            <AddToItineraryButton placeId={item.id} label="Add to plan" className="text-sm" />
+            <AddToItineraryButton placeId={item.id} className="text-sm" />
           </div>
         </div>
       ))}

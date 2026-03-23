@@ -8,6 +8,7 @@ import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { trails } from "@/data/trails";
+import { getTranslations } from "next-intl/server";
 
 const PLACE_TYPES = ["attraction", "trail", "winery"] as const;
 
@@ -78,11 +79,12 @@ function getPlaceOfDayData() {
   };
 }
 
-export default function HomePlaceOfDay({
+export default async function HomePlaceOfDay({
   LinkComponent,
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const tHome = await getTranslations("home");
   const Link = LinkComponent;
   const place = getPlaceOfDayData();
   const planItem = place ? getPlaceById(place.id) : undefined;
@@ -118,7 +120,7 @@ export default function HomePlaceOfDay({
           </Link>
           <div className={`flex-1 flex flex-col ${CARD.contentLg}`}>
             <p id="place-of-day-heading" className={`text-sage prose-label mb-1`}>
-              Today&apos;s pick — one place worth the drive
+              {tHome("placeOfDay.heading")}
             </p>
             <Link
               href={place.href}
@@ -132,13 +134,13 @@ export default function HomePlaceOfDay({
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               {planItem && <NavigateButton place={planItem} />}
-              <AddToItineraryButton placeId={place.id} label="Add to plan" />
+              <AddToItineraryButton placeId={place.id} />
               <Link
                 href={place.href}
                 prefetch="auto"
                 className="text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline underline-offset-2 transition-colors"
               >
-                See details →
+                {tHome("placeOfDay.seeDetails")}
               </Link>
             </div>
           </div>

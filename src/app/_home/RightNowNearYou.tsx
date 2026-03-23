@@ -95,10 +95,9 @@ function DistanceToggle({
 
 type RightNowNearYouProps = { title?: string };
 
-export default function RightNowNearYou({
-  title = "Right now near you",
-}: RightNowNearYouProps) {
+export default function RightNowNearYou({ title }: RightNowNearYouProps) {
   const tHome = useTranslations("home");
+  const resolvedTitle = title ?? tHome("rightNowNearYou");
   const tErrors = useTranslations("errors");
   const {
     state,
@@ -118,7 +117,7 @@ export default function RightNowNearYou({
 
   if (state === "consent") {
     return (
-      <SectionShell title={title} subtitle={tHome("rightNow.subtitleConsent")}>
+      <SectionShell title={resolvedTitle} subtitle={tHome("rightNow.subtitleConsent")}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             {tHome("rightNow.consent.body")}
@@ -137,7 +136,7 @@ export default function RightNowNearYou({
 
   if (state === "region-picker") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={resolvedTitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             {tHome("rightNow.regionPicker.body")}
@@ -154,7 +153,7 @@ export default function RightNowNearYou({
 
   if (state === "loading") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={resolvedTitle}>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {[1, 2, 3, 4].map((i) => (
             <div
@@ -176,7 +175,7 @@ export default function RightNowNearYou({
 
   if (state === "denied" || state === "error") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={resolvedTitle}>
         <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           {state === "denied" ? (
             <p className="text-olive/80 text-sm mb-4">
@@ -214,7 +213,7 @@ export default function RightNowNearYou({
           })
         : undefined;
     return (
-      <SectionShell title={title} subtitle={subtitle}>
+      <SectionShell title={resolvedTitle} subtitle={subtitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             {tHome("rightNow.empty.body", {
@@ -253,7 +252,7 @@ export default function RightNowNearYou({
       : tHome("rightNow.subtitleLoadedLocation");
 
   return (
-    <SectionShell title={title} subtitle={loadedSubtitle}>
+    <SectionShell title={resolvedTitle} subtitle={loadedSubtitle}>
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink href="/discover" className={SECTION.aegeanLink}>
@@ -261,19 +260,19 @@ export default function RightNowNearYou({
         </AppLink>
       </div>
       <div className="mb-4 rounded-xl border border-aegean/20 bg-aegean/5 p-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Today adapt</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-aegean">{tHome("rightNow.todayAdapt.title")}</p>
         <p className="mt-1 text-sm text-olive/80">
-          Weather changes or delayed plans? Use one tap actions to adapt your day without restarting.
+          {tHome("rightNow.todayAdapt.body")}
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "weather" }}>
-            <AppLink href="/weather" className={SECTION.aegeanLink}>Check weather</AppLink>
+            <AppLink href="/weather" className={SECTION.aegeanLink}>{tHome("rightNow.todayAdapt.checkWeather")}</AppLink>
           </TrackOnClick>
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "plan" }}>
-            <AppLink href="/plan" className={SECTION.aegeanLink}>Adjust plan</AppLink>
+            <AppLink href="/plan" className={SECTION.aegeanLink}>{tHome("rightNow.todayAdapt.adjustPlan")}</AppLink>
           </TrackOnClick>
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "bookings" }}>
-            <AppLink href="/bookings" className={SECTION.aegeanLink}>Review bookings</AppLink>
+            <AppLink href="/bookings" className={SECTION.aegeanLink}>{tHome("rightNow.todayAdapt.reviewBookings")}</AppLink>
           </TrackOnClick>
         </div>
       </div>
