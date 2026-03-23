@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import FilterChips from "@/components/FilterChips";
 import StickyFilterBar from "@/components/StickyFilterBar";
-import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
+import { SECTION, CTA, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
 import { useTranslations } from "next-intl";
 
@@ -42,7 +42,7 @@ export default function DiscoverFilterBar({
         <div role="group" aria-labelledby="discover-filter-label" className="space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2 gap-y-1">
             <span
-              className="prose-label text-olive/60 uppercase tracking-wider"
+              className={`${TYPE.kicker} text-olive/60 uppercase tracking-wider`}
               id="discover-filter-label"
             >
               {filter && sectionExists

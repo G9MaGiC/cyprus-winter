@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import BackLink from "@/components/BackLink";
-import { LAYOUT, SECTION, SKELETON } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, SKELETON, TYPE } from "@/lib/design-tokens";
 import { useLocale, useTranslations } from "next-intl";
 
 const ADMIN_KEY_STORAGE = "cyprus-admin-key";
@@ -76,7 +76,7 @@ export default function AdminStatsPage() {
   if (!adminKey) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-        <h1 className={`font-display text-2xl font-bold text-olive ${SECTION.headingGap}`}>{tAdmin("title")}</h1>
+        <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tAdmin("title")}</h1>
         <p className="text-sm text-olive/70 mb-6">
           {tAdmin("subtitle")}
         </p>
@@ -110,7 +110,7 @@ export default function AdminStatsPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-          <h1 className="font-display text-2xl font-bold text-olive">{tAdmin("title")}</h1>
+          <h1 className={`${TYPE.pageTitle}`}>{tAdmin("title")}</h1>
           <BackLink href="/" label={tNav("home")} />
         </div>
         <div className="space-y-6">
@@ -143,7 +143,7 @@ export default function AdminStatsPage() {
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-        <h1 className="font-display text-2xl font-bold text-olive">{tAdmin("title")}</h1>
+        <h1 className={`${TYPE.pageTitle}`}>{tAdmin("title")}</h1>
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -161,7 +161,7 @@ export default function AdminStatsPage() {
       </div>
 
       <section className="mb-10">
-        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>{tAdmin("bookingsThisMonth.title")}</h2>
+        <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("bookingsThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10 mb-6">
           <p className="text-3xl font-bold text-olive">{number.format(bookings)}</p>
           <p className="text-sm text-olive/70 mt-1">{tAdmin("bookingsThisMonth.total")}</p>
@@ -169,7 +169,7 @@ export default function AdminStatsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>{tAdmin("partnerRevenueThisMonth.title")}</h2>
+        <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("partnerRevenueThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-3xl font-bold text-olive">{currency.format(revenue)}</p>
           <p className="text-sm text-olive/70 mt-1">{tAdmin("partnerRevenueThisMonth.subtitle")}</p>
@@ -187,7 +187,7 @@ export default function AdminStatsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>{tAdmin("funnelThisMonth.title")}</h2>
+        <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("funnelThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">{tAdmin("funnelThisMonth.subtitle")}</p>
           <table className="w-full text-left text-sm">

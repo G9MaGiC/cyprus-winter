@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
-import { CTA } from "@/lib/design-tokens";
+import { CTA, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
@@ -131,7 +131,7 @@ export default function WineryBookingForm({
         role="status"
         aria-live="polite"
       >
-        <h2 className="font-display text-xl font-semibold text-olive">
+        <h2 className={`${TYPE.subSectionTitle} text-olive`}>
           {t("success.title")}
         </h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
@@ -268,9 +268,9 @@ export default function WineryBookingForm({
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
         {t("finePrint.bodyPrefix")}{" "}
-        <AppLink href="/terms" className="text-olive/70 hover:underline">{t("finePrint.terms")}</AppLink>{" "}
+        <AppLink href="/terms" className="inline-flex items-center min-h-[44px] py-2 -my-2 text-olive/70 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">{t("finePrint.terms")}</AppLink>{" "}
         {t("finePrint.and")}{" "}
-        <AppLink href="/privacy" className="text-olive/70 hover:underline">{t("finePrint.privacy")}</AppLink>
+        <AppLink href="/privacy" className="inline-flex items-center min-h-[44px] py-2 -my-2 text-olive/70 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">{t("finePrint.privacy")}</AppLink>
         {t("finePrint.bodySuffix")}
       </p>
     </form>

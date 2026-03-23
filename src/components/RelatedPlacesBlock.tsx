@@ -1,5 +1,5 @@
 import AppLink from "@/components/AppLink";
-import { CARD, SECTION } from "@/lib/design-tokens";
+import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 
 type RelatedPlacesBlockProps = {
@@ -15,7 +15,7 @@ export default function RelatedPlacesBlock({ ids, description, showAddToItinerar
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-      <h2 className={`prose-label text-olive/70 ${SECTION.titleGap} flex items-center gap-2`}>
+      <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.titleGap} flex items-center gap-2`}>
         Pair well with
       </h2>
       <p className={`text-olive/80 text-base ${SECTION.headingGap} leading-relaxed break-words`}>

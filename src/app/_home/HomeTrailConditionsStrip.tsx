@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import { trailConditions } from "@/data/trails";
-import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import { LAYOUT, STRIP, TYPE } from "@/lib/design-tokens";
 import type { LinkProps } from "@/app/_home/types";
 import { getTranslations } from "next-intl/server";
 
@@ -44,7 +44,7 @@ export default async function HomeTrailConditionsStrip({
           aria-label={t("trailConditionsStrip.aria")}
         >
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span id="trail-conditions-heading" className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors">
+            <span id="trail-conditions-heading" className={`${TYPE.cardTitle}`}>
               {t("trailConditionsStrip.heading")}
             </span>
             <span className="flex items-center gap-2 text-sm text-olive/80">

@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
-import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 export type PlanMapItem = {
@@ -77,7 +77,7 @@ export default function PlanMap({ items, className = "" }: PlanMapProps) {
                 <span className="text-xs font-medium text-olive/70">Day {item.day}</span>
                 <AppLink
                   href={item.href}
-                  className="font-semibold text-charcoal hover:text-terracotta block mt-0.5 mb-1"
+                  className={`${TYPE.cardTitle} block mt-0.5 mb-1`}
                 >
                   {item.name}
                 </AppLink>

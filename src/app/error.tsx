@@ -17,26 +17,6 @@ export default function Error({
 
   useEffect(() => {
     console.error(error);
-
-    // #region debug log: app error route
-    fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-      body: JSON.stringify({
-        sessionId: "ce8533",
-        runId: "recheck_initial",
-        hypothesisId: "A_next_error_route",
-        location: "src/app/error.tsx:useEffect",
-        message: "Next app error boundary rendered",
-        data: {
-          name: error?.name ?? "",
-          message: error?.message ?? "",
-          digest: error?.digest ?? "",
-        },
-        timestamp: Date.now(),
-      }),
-    }).catch(() => {});
-    // #endregion
   }, [error]);
 
   return (
@@ -66,7 +46,7 @@ export default function Error({
             {tCommon("goHome")}
           </Link>
         </div>
-        <p className="mt-8 text-sm text-olive/60 break-words">
+        <p className={`${SECTION.blockTop} text-sm text-olive/60 break-words`}>
           {tCommon("emergency")} <strong>112</strong> · {tCommon("touristInfo")} <strong>1460</strong> ·{" "}
           {tCommon("ambulance")} <strong>199</strong>
         </p>

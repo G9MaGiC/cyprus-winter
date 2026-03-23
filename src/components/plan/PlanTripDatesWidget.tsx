@@ -1,7 +1,7 @@
 "use client";
 
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
-import { SECTION } from "@/lib/design-tokens";
+import { SECTION, TYPE } from "@/lib/design-tokens";
 import PushOptIn from "@/components/PushOptIn";
 import type { TripDates } from "@/hooks/useTripDates";
 import { useTranslations } from "next-intl";
@@ -21,10 +21,10 @@ export default function PlanTripDatesWidget({
   return (
     <ListPageWidgetStrip ariaLabel={t("ariaLabel")}>
       <div className="rounded-2xl border border-sand-200/90 bg-white/90 p-6 sm:p-7 shadow-sm">
-        <h2 className={`text-base font-semibold text-olive ${SECTION.headingGap}`}>{t("heading")}</h2>
+        <h2 className={`${TYPE.subSectionTitle} text-olive text-base ${SECTION.headingGap}`}>{t("heading")}</h2>
         <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 mb-5">
           <label className="flex flex-col gap-2">
-            <span className="prose-label text-olive/60">{t("startLabel")}</span>
+            <span className={`${TYPE.kicker} text-olive/60`}>{t("startLabel")}</span>
             <input
               type="date"
               value={dates.start ?? ""}
@@ -33,7 +33,7 @@ export default function PlanTripDatesWidget({
             />
           </label>
           <label className="flex flex-col gap-2">
-            <span className="prose-label text-olive/60">{t("endLabel")}</span>
+            <span className={`${TYPE.kicker} text-olive/60`}>{t("endLabel")}</span>
             <input
               type="date"
               value={dates.end ?? ""}

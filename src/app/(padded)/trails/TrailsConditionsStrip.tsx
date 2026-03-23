@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import { LAYOUT, STRIP, TYPE } from "@/lib/design-tokens";
 import { useTranslations, useLocale } from "next-intl";
 
 type TrailsConditionsStripProps = {
@@ -67,7 +67,7 @@ export default function TrailsConditionsStrip({
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span
               id="trails-conditions-heading"
-              className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors"
+              className={`${TYPE.cardTitle}`}
             >
               {t("trails.conditionsStrip.heading")}
             </span>

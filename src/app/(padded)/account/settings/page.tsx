@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LAYOUT, CTA, CARD, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { Link } from "@/i18n/navigation";
@@ -67,7 +67,7 @@ export default function AccountSettingsPage() {
 
       {/* Interests */}
       <section className={`mt-10 ${SECTION.blockGap}`}>
-        <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
+        <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("interests.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
@@ -89,7 +89,7 @@ export default function AccountSettingsPage() {
 
       {/* Traveler type */}
       <section className="mt-10">
-        <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
+        <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("travelStyle.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
@@ -111,7 +111,7 @@ export default function AccountSettingsPage() {
 
       {/* Favorite regions */}
       <section className="mt-10">
-        <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
+        <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("regions.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
@@ -133,7 +133,7 @@ export default function AccountSettingsPage() {
 
       {/* Notifications */}
       <section className={`${CARD.base} ${CARD.content} mt-10`}>
-        <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
+        <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("notifications.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">
@@ -167,7 +167,7 @@ export default function AccountSettingsPage() {
 
       {/* Data & privacy */}
       <section className={`${CARD.base} ${CARD.content} mt-8`}>
-        <h2 className={`${SECTION.headingGap} font-display text-xl font-semibold text-charcoal`}>
+        <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("privacy.title")}
         </h2>
         <p className="text-sm text-olive/80 mb-4">

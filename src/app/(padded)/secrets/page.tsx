@@ -3,7 +3,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
-import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -93,7 +93,7 @@ export default async function SecretsPage() {
                   <span aria-hidden>→</span>
                 </AppLink>
               )}
-              <h3 className={`font-display text-lg font-semibold text-charcoal ${SECTION.titleGap}`}>
+              <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
                 {g.title}
               </h3>
               <p className="text-olive/80 text-sm leading-relaxed mb-4">{g.body}</p>

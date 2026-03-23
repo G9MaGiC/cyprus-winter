@@ -1,6 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
+import { TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 export default function TrailsQuickFilters() {
@@ -14,7 +15,7 @@ export default function TrailsQuickFilters() {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="prose-label text-olive/60 mr-1">{t("quickFilters.label")}</span>
+      <span className={`${TYPE.kicker} text-olive/60 mr-1`}>{t("quickFilters.label")}</span>
       {QUICK_CHIPS.map((chip) => (
         <AppLink
           key={chip.id}

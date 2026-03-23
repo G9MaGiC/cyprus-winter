@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import AppLink from "@/components/AppLink";
-import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
 import PageHeader from "@/components/PageHeader";
 import type { Booking } from "@/lib/bookings";
@@ -243,7 +243,7 @@ export default function BookingsPage() {
           <div className="space-y-8" role="region" aria-label={tBookingsPage("empty.aria")}>
             <div className={`${EMPTY_STATE_DASHED} bg-white/80`}>
               <div className={`w-12 h-1 mx-auto rounded-full bg-terracotta/40 ${SECTION.headingGap}`} aria-hidden />
-              <h2 className="font-display font-semibold text-olive mb-1">
+              <h2 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>
                 {tBookings("empty")}
               </h2>
               <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
@@ -348,7 +348,7 @@ export default function BookingsPage() {
               ({ key, label }) =>
                 upcomingByGroup[key].length > 0 && (
                   <section key={key} aria-labelledby={`upcoming-${key}`}>
-                    <h2 id={`upcoming-${key}`} className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>
+                    <h2 id={`upcoming-${key}`} className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>
                       {label}
                     </h2>
                     <ul className="space-y-4">
@@ -384,7 +384,7 @@ export default function BookingsPage() {
                                       </span>
                                     )}
                                   </div>
-                                  <span className="font-display font-semibold text-olive block truncate">
+                                  <span className={`${TYPE.cardTitle} block truncate`}>
                                     {b.providerName}
                                   </span>
                                   <p className="text-sm text-olive/70 mt-1 break-words">
@@ -427,7 +427,7 @@ export default function BookingsPage() {
             {/* Past / Cancelled */}
             {past.length > 0 && (
               <section aria-labelledby="past-heading">
-                <h2 id="past-heading" className={`font-display text-lg font-semibold text-olive ${SECTION.headingGap}`}>
+                <h2 id="past-heading" className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>
                   {tBookingsPage("past.heading")}
                 </h2>
                 <ul className="space-y-4">
@@ -447,7 +447,7 @@ export default function BookingsPage() {
                           <div className="flex flex-wrap items-center gap-2 mb-2">
                             <StatusBadge status={b.status} />
                           </div>
-                          <span className="font-display font-semibold text-olive/80 block truncate">
+                          <span className={`${TYPE.cardTitle} text-olive/80 block truncate`}>
                             {b.providerName}
                           </span>
                           <p className="text-sm text-olive/60 mt-1 break-words">
@@ -476,7 +476,7 @@ export default function BookingsPage() {
         {/* Book more — only when user has bookings; copy varies by context */}
         {bookings.length > 0 && (
           <section className={`mt-12 rounded-xl ${CARD.base} ${CARD.content}`} aria-labelledby="book-more">
-            <h2 id="book-more" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
+            <h2 id="book-more" className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>
               {upcoming.length === 0
                 ? tBookingsPage("bookMore.titleNoUpcoming")
                 : tBookingsPage("bookMore.title")}

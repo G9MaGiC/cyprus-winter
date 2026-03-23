@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { trails, trailConditions } from "@/data/trails";
-import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -447,7 +447,7 @@ export default async function TrailPage({
                 <div className="space-y-4">
                   {getSecretsForPlace(trail.id).map((s) => (
                     <div key={s.id} className="p-4 rounded-xl bg-white/80 border border-sand-200/80">
-                      <h3 className="font-display font-semibold text-olive mb-1">{s.title}</h3>
+                      <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
                       <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
                     </div>
                   ))}

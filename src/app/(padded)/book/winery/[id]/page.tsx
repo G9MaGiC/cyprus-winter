@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { wineries } from "@/data/wineries";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -45,7 +45,7 @@ export default async function WineryBookPage({
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label={tBookPages("pageNavAria")}>
+      <nav className={`flex flex-col gap-1 ${SECTION.headingGap}`} aria-label={tBookPages("pageNavAria")}>
         <BackLink href={`/discover/${id}`} label={tCommon("backTo", { label: winery.name })} />
         <Breadcrumbs
           items={[
@@ -72,7 +72,7 @@ export default async function WineryBookPage({
             </span>
           )}
         </div>
-        <h1 className="font-display text-3xl font-bold text-olive mt-3">
+        <h1 className={`${TYPE.pageTitle} mt-3`}>
           {tCommon("bookTasting")}
         </h1>
         <p className="text-olive/80 mt-1 break-words">{winery.name} · {winery.region}</p>
@@ -90,7 +90,7 @@ export default async function WineryBookPage({
       <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />
 
       {(winery.bookingUrl || winery.contactPhone) && (
-        <section className="mt-8 space-y-4" aria-label={tBookPages("otherWaysAria")}>
+        <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>
           {winery.bookingUrl && (
             <p className="text-sm text-olive/80">
               {tBookPages("wineryDetail.other.or")}{" "}

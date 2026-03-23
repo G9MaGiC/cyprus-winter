@@ -5,7 +5,7 @@ import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import { useSearchParams } from "next/navigation";
-import { CTA } from "@/lib/design-tokens";
+import { CTA, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
@@ -138,7 +138,7 @@ export default function GuideBookingForm({
         role="status"
         aria-live="polite"
       >
-        <h2 className="font-display text-xl font-semibold text-olive">{t("success.title")}</h2>
+        <h2 className={`${TYPE.subSectionTitle} text-olive`}>{t("success.title")}</h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
           {t("success.body", { guideName: guide.name })}
           {storageMode === "memory" && (

@@ -2,7 +2,7 @@ import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
-import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { allDiscoverItems } from "@/data/discover";
 import { getDiscoverPlaceOfDayPicks } from "@/lib/discover-place-of-day";
@@ -22,7 +22,7 @@ export default function DiscoverPlaceOfDay() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2
           id="discover-place-of-day-heading"
-          className={`prose-label text-olive/70 ${SECTION.headingGap}`}
+          className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}
         >
           Today&apos;s pick
         </h2>
@@ -48,7 +48,7 @@ export default function DiscoverPlaceOfDay() {
             <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
-            <span className="absolute top-4 right-4 px-3 py-1.5 rounded-lg prose-label bg-white/95 backdrop-blur-sm text-charcoal">
+            <span className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal`}>
               Place of the day
             </span>
           </AppLink>
@@ -56,7 +56,7 @@ export default function DiscoverPlaceOfDay() {
             <div>
               <AppLink
                 href={place.href}
-                className="font-display text-xl sm:text-2xl font-semibold text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1"
+                className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors block min-h-[44px] py-1`}
               >
                 {place.name}
               </AppLink>

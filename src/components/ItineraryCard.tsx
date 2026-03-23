@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { CARD, CTA } from "@/lib/design-tokens";
+import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import NavigateButton from "@/components/NavigateButton";
 import { useTranslations } from "next-intl";
@@ -71,7 +71,7 @@ export default function ItineraryCard({
         </div>
         <AppLink
           href={href}
-          className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors block break-words min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50"
+          className={`${TYPE.cardTitle} block break-words min-h-[44px] py-2.5 -my-2 px-2 -mx-2 rounded-lg hover:bg-sand-100/50`}
           title={place.name}
         >
           {place.name}

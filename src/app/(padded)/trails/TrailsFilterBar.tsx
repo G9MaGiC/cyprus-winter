@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import StickyFilterBar from "@/components/StickyFilterBar";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import type { TrailStatus } from "@/data/trails";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +37,7 @@ export default function TrailsFilterBar({
     <StickyFilterBar ariaLabel={tTrails("filters.aria.section")}>
       <div className={`${LAYOUT.list} mx-auto space-y-4`}>
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span className="prose-label text-olive/60 uppercase tracking-wider">
+          <span className={`${TYPE.kicker} text-olive/60 uppercase tracking-wider`}>
             {tTrails("filters.aria.section")}
           </span>
           <span className="text-olive/60 text-sm">

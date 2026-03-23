@@ -3,7 +3,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import Image from "next/image";
 import { trails } from "@/data/trails";
-import { LAYOUT, CARD, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
@@ -55,7 +55,7 @@ function TrailCard({
           </div>
         </div>
         <div className="p-4 flex-1">
-          <h3 className="font-display text-lg font-semibold text-olive group-hover:text-terracotta">
+          <h3 className={`${TYPE.cardTitle}`}>
             {trail.name}
           </h3>
           <p className="text-sm text-olive/70 mt-0.5">
@@ -103,7 +103,7 @@ export default async function TroodosDecemberPage() {
       </div>
 
       <section aria-labelledby="december-picks">
-        <h2 id="december-picks" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
+        <h2 id="december-picks" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
           {tGuide("sections.decemberPicks")}
         </h2>
         <div className="space-y-4">
@@ -127,7 +127,7 @@ export default async function TroodosDecemberPage() {
       </section>
 
       <section aria-labelledby="all-troodos" className="mt-12">
-        <h2 id="all-troodos" className={`font-display text-xl font-semibold text-olive ${SECTION.headingGap}`}>
+        <h2 id="all-troodos" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
           {tGuide("sections.allTroodos")}
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">

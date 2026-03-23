@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import { useRouter } from "@/i18n/navigation";
-import { LAYOUT, CTA, CARD, EMPTY_STATE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, EMPTY_STATE, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTranslations } from "next-intl";
@@ -48,7 +48,7 @@ export default function AccountPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               {displayName && (
-                <p className="font-display font-semibold text-charcoal">{displayName}</p>
+                <p className={`${TYPE.cardTitle} text-charcoal`}>{displayName}</p>
               )}
               <p className="text-sm text-olive/80 break-all">{email}</p>
             </div>

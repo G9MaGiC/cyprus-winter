@@ -26,6 +26,9 @@
 # production
 /build
 
+# superpowers
+.superpowers/
+
 # misc
 .DS_Store
 *.pem

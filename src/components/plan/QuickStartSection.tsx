@@ -100,7 +100,7 @@ export default function QuickStartSection({
               {template.label}
             </span>
             {isForYou && (
-              <span className="prose-label text-terracotta mt-1 block">
+              <span className={`${TYPE.kicker} text-terracotta mt-1 block`}>
                 {tPlanQuick("forYou")}
               </span>
             )}
@@ -129,7 +129,7 @@ export default function QuickStartSection({
     <section aria-labelledby="quick-start-heading" className="space-y-8 sm:space-y-10">
       <header>
         <span
-          className="prose-label inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-aegean/10 text-aegean"
+          className={`${TYPE.kicker} inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-aegean/10 text-aegean`}
           aria-hidden
         >
           {hasContent ? tPlanQuick("kickerHasContent") : tPlanQuick("kickerEmpty")}
@@ -162,7 +162,7 @@ export default function QuickStartSection({
           <p className="text-sm font-medium text-olive/80">
             {tPlanQuick("quickAddLabel", { day: activeDay })}
           </p>
-          <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
+          <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none scroll-smooth scroll-touch [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
@@ -221,7 +221,7 @@ export default function QuickStartSection({
       <div className="space-y-8 sm:space-y-10">
         {forYou.length > 0 && (
           <div className="space-y-4">
-            <h3 className="prose-label text-terracotta">
+            <h3 className={`${TYPE.kicker} text-terracotta`}>
               {tPlanQuick("forYou")}
             </h3>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
@@ -235,7 +235,7 @@ export default function QuickStartSection({
         )}
         {recommended.length > 0 && (
           <div className="space-y-4">
-            <h3 className="prose-label text-aegean">
+            <h3 className={`${TYPE.kicker} text-aegean`}>
               {tripLength != null ? tPlanQuick("forTrip", { days: tripLength }) : tPlanQuick("forYou")}
             </h3>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
@@ -248,7 +248,7 @@ export default function QuickStartSection({
           </div>
         )}
         <div className="space-y-4">
-          <h3 className="prose-label text-olive/70">
+          <h3 className={`${TYPE.kicker} text-olive/70`}>
             {tPlanQuick("kickerEmpty")}
           </h3>
           <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">

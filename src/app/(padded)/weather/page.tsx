@@ -6,7 +6,7 @@ import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 export const dynamic = "force-dynamic";
 
@@ -42,8 +42,7 @@ function shortSentence(desc: string): string {
 }
 
 export default async function WeatherPage() {
-  const [locale, tNav, tWeather, tHome] = await Promise.all([
-    getLocale(),
+  const [tNav, tWeather, tHome] = await Promise.all([
     getTranslations("nav"),
     getTranslations("weather.page"),
     getTranslations("home"),
@@ -51,64 +50,6 @@ export default async function WeatherPage() {
 
   const monthSelectorSectionClassName = `${SECTION.blockTop} hidden md:block`;
   const mobileClampClass = "text-olive/80 text-xs mt-0.5 line-clamp-1";
-
-  // #region agent log H1 translation labels + H3 responsive class
-  fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-    body: JSON.stringify({
-      sessionId: "ce8533",
-      runId: "debug_weather_ux_anomaly_1",
-      hypothesisId: "H1_translation_namespace_or_fallback",
-      location: "src/app/(padded)/weather/page.tsx",
-      message: "Weather hub: resolved translation strings for coast/troodos labels",
-      data: {
-        locale,
-        coastLabel: tWeather("table.coast"),
-        troodosLabel: tWeather("table.troodos"),
-      },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion
-
-  // #region agent log H3 responsive month selector rail
-  fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-    body: JSON.stringify({
-      sessionId: "ce8533",
-      runId: "debug_weather_ux_anomaly_1",
-      hypothesisId: "H3_month_selector_visibility_on_mobile",
-      location: "src/app/(padded)/weather/page.tsx",
-      message: "Weather hub: month selector rail wrapper className",
-      data: {
-        locale,
-        monthSelectorSectionClassName,
-      },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion
-
-  // #region agent log H4 line-clamp class presence
-  fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-    body: JSON.stringify({
-      sessionId: "ce8533",
-      runId: "debug_weather_ux_anomaly_1",
-      hypothesisId: "H4_description_clamp_not_applied",
-      location: "src/app/(padded)/weather/page.tsx",
-      message: "Weather hub: mobile description clamp class expectation",
-      data: {
-        locale,
-        mobileClampClass,
-      },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion
 
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -131,7 +72,7 @@ export default async function WeatherPage() {
 
       {/* Month selector (hybrid UI) */}
       <section className={monthSelectorSectionClassName} aria-label={tWeather("monthSelector.aria")}>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible">
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain">
           {weatherByMonth.map((row) => {
             const slug = MONTH_TO_SLUG[row.month];
             if (!slug) return null;
@@ -142,7 +83,7 @@ export default async function WeatherPage() {
                 className={`${CARD.compact} shrink-0 px-4 py-3 rounded-xl border border-sand-200/80 hover:border-terracotta/30`}
               >
                 <div className="flex flex-col">
-                  <span className="font-display text-sm font-semibold text-olive">{row.month}</span>
+                  <span className={`${TYPE.cardTitleCompact} text-olive`}>{row.month}</span>
                   <span className="mt-1 text-xs text-olive/70">
                     {tWeather("table.coast")} {row.coastMinC}–{row.coastMaxC}° · {tWeather("table.troodos")} {row.troodosMinC}–{row.troodosMaxC}°
                   </span>
@@ -160,7 +101,7 @@ export default async function WeatherPage() {
           const content = (
               <div className="rounded-xl border border-sand-200/80 bg-white/90 p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-display font-semibold text-olive">{row.month}</span>
+                  <span className={`${TYPE.cardTitle}`}>{row.month}</span>
                   {slug && (
                     <span className="text-xs font-medium text-terracotta">
                       {tWeather("mobile.details")}
@@ -186,7 +127,7 @@ export default async function WeatherPage() {
               </div>
           );
           return slug ? (
-            <AppLink key={row.month} href={`/weather/${slug}`} className="block">
+            <AppLink key={row.month} href={`/weather/${slug}`} className="block min-h-[44px]">
               {content}
             </AppLink>
           ) : (
@@ -196,33 +137,33 @@ export default async function WeatherPage() {
       </div>
 
       {/* Desktop: table */}
-      <div className="hidden md:block overflow-x-auto">
+      <div className="hidden md:block overflow-x-auto scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch]">
         <table className="w-full min-w-[600px] border-collapse text-left">
           <thead>
             <tr className="border-b-2 border-sand-200/80">
-              <th className="py-3 px-4 font-display font-semibold text-olive">
+              <th className={`py-3 px-4 ${TYPE.cardTitle}`}>
                 {tWeather("table.month")}
               </th>
               <th
-                className="py-3 px-4 font-display font-semibold text-olive"
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
                 scope="col"
               >
                 {tWeather("table.coast")}
               </th>
               <th
-                className="py-3 px-4 font-display font-semibold text-olive"
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
                 scope="col"
               >
                 {tWeather("table.coastConditions")}
               </th>
               <th
-                className="py-3 px-4 font-display font-semibold text-olive"
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
                 scope="col"
               >
                 {tWeather("table.troodos")}
               </th>
               <th
-                className="py-3 px-4 font-display font-semibold text-olive"
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
                 scope="col"
               >
                 {tWeather("table.troodosConditions")}

@@ -75,7 +75,7 @@ export function RecentlyViewedStrip() {
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
             >
               <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
-              <p className="font-display font-semibold text-olive text-sm truncate group-hover:text-terracotta transition-colors">
+              <p className={`${TYPE.cardTitle} text-sm truncate`}>
                 {item.name}
               </p>
               <p className="text-xs text-sage mt-0.5 truncate">{item.region}</p>

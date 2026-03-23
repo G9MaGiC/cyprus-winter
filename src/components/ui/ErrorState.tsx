@@ -7,7 +7,7 @@
 
 import AppLink from "@/components/AppLink";
 import { useState, useEffect, useSyncExternalStore } from "react";
-import { CARD, CTA, SECTION } from "@/lib/design-tokens";
+import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
@@ -53,7 +53,7 @@ export function ErrorState({
       aria-live="polite"
     >
       <IconAccent type={icon} />
-      <h3 className="font-display text-lg font-semibold text-charcoal mb-2">
+      <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
         {resolvedTitle}
       </h3>
       <p className={`text-sm text-olive/80 ${SECTION.headingGap} max-w-md mx-auto break-words`}>

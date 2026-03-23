@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import type { LinkProps } from "@/app/_home/types";
 import NavigateButton from "@/components/NavigateButton";
-import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
@@ -117,13 +117,13 @@ export default function HomePlaceOfDay({
             </span>
           </Link>
           <div className={`flex-1 flex flex-col ${CARD.contentLg}`}>
-            <p id="place-of-day-heading" className={`text-sage prose-label mb-1`}>
+            <p id="place-of-day-heading" className={`${TYPE.kicker} mb-1`}>
               Today&apos;s pick — one place worth the drive
             </p>
             <Link
               href={place.href}
               prefetch="auto"
-              className="font-display text-xl font-semibold text-charcoal group-hover:text-terracotta transition-colors mt-0.5"
+              className={`${TYPE.subSectionTitle} text-charcoal group-hover:text-terracotta transition-colors mt-0.5`}
             >
               {place.name}
             </Link>

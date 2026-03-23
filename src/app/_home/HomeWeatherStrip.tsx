@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import { weatherByMonth } from "@/data/weather";
-import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import { LAYOUT, STRIP, TYPE } from "@/lib/design-tokens";
 import { getLiveWeather } from "@/lib/weather-live";
 import type { LinkProps } from "@/app/_home/types";
 import { getTranslations } from "next-intl/server";
@@ -74,7 +74,7 @@ export default async function HomeWeatherStrip({
           className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center min-h-[44px] py-2 group"
           aria-label={tHome("weatherStrip.aria")}
         >
-          <span id="home-weather-heading" className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors">
+          <span id="home-weather-heading" className={`${TYPE.cardTitle}`}>
             {tHome("weatherStrip.heading", {
               coast: coastMid,
               troodos: troodosMid,

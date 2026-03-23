@@ -17,7 +17,7 @@
 | **Accessibility** | B+ | Touch targets ✓; contrast needs verification |
 | **Component patterns** | A | CARD, FilterChips, PageHeader reused well |
 
-**Overall:** Production-ready. Fix P1 items; P2 for polish.
+**Overall:** Production-ready. Design token alignment (typography, spacing, CTA) completed March 2026. Fix remaining P1 items; P2 for polish.
 
 ---
 
@@ -164,20 +164,38 @@ Add a `CARD.featured` token: `rounded-2xl` for "Four places" and Plan/Events car
 
 ## 8. P1 Fixes (Recommended)
 
-| # | Fix | Effort |
+| # | Fix | Status |
 |---|-----|--------|
-| 1 | Bottom nav: verify 6 items fit 375px; reduce or adjust if cramped | Low |
-| 2 | Run contrast audit (axe/Lighthouse); bump `olive/70` if fails | Low |
-| 3 | FilterChips container: add `role="group" aria-label="Filter by category"` | Low |
-| 4 | Hero emergency line: `text-white/70` → `text-white/80` | Trivial |
+| 1 | Bottom nav: verify 6 items fit 375px; reduce or adjust if cramped | Done — min-w 44px, responsive padding, label truncation for iPhone SE |
+| 2 | Run contrast audit (axe/Lighthouse); bump `olive/70` if fails | Pending — manual audit |
+| 3 | FilterChips container: add `role="group" aria-label="Filter by category"` | Done — FilterChips has role="group" + ariaLabel; callers pass semantic labels |
+| 4 | Hero/ListPageHero white-on-dark: `text-white/70` → `text-white/80` | Done — breadcrumbs, seasonal line |
 
 ---
+
+## 8b. Additional Polish (Completed)
+
+| Item | Change |
+|------|--------|
+| CookieConsent "Learn more" | 44px touch target, focus-visible ring |
+| Airport essentials tel links | 44px touch target for 112, 199 |
+| EventCard h3, StartHere cards | `TYPE.cardTitle` alignment |
+| WineryBookingForm Terms/Privacy links | 44px touch target, focus-visible ring |
+
+## 8c. Design Polish and UX Fixes Plan (Completed)
+
+| Phase | Items |
+|-------|-------|
+| **1. Cleanup** | Removed debug instrumentation from weather, AuthContext, error pages |
+| **2. Typography** | TYPE/SECTION tokens on terms, privacy, account/settings, guides, bookings, reset-password, admin |
+| **3. UX** | Trail report CTAs, TrailCard Add to plan, plan days (14), beaches/villages Plan CTA, wineries booking CTA, bookings "Book again", Discover winery filter CTA — already implemented |
+| **4. Design system** | CARD.featured exists in design-tokens; WineryBookingForm terms/privacy 44px touch targets |
 
 ## 9. P2 Polish (Optional)
 
 | # | Fix |
 |---|-----|
-| 1 | Add `CARD.featured` token for `rounded-2xl` cards |
+| 1 | CARD.featured token exists (`border-2 border-aegean/20`); planCombo/planTemplate use `rounded-2xl` |
 | 2 | Standardise section padding (homepage vs SECTION.py) |
 | 3 | AttractionCard badges: consider `rounded-full` for consistency with skill |
 | 4 | Document homepage vs hub page layout conventions |

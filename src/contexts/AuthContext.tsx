@@ -5,7 +5,6 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -43,14 +42,6 @@ function isConfigured(): boolean {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const debugCapsRef = useRef({
-    config: 0,
-    sessionStart: 0,
-    sessionResolved: 0,
-    sessionRejected: 0,
-    authStateChange: 0,
-  });
-
   const [state, setState] = useState<AuthState>({
     user: null,
     session: null,
@@ -61,28 +52,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const supabase = getSupabaseBrowser();
     if (!supabase) {
-      if (debugCapsRef.current.config < 2) {
-        debugCapsRef.current.config += 1;
-        // #region debug log: auth not configured
-        fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-          body: JSON.stringify({
-            sessionId: "ce8533",
-            runId: "recheck_initial",
-            hypothesisId: "H2_auth_init_unavailable",
-            location: "src/contexts/AuthContext.tsx:useEffect:no_supabase",
-            message: "getSupabaseBrowser returned null",
-            data: {
-              hasUrl: Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL),
-              hasAnonKey: Boolean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
-            },
-            timestamp: Date.now(),
-          }),
-        }).catch(() => {});
-        // #endregion
-      }
-
       queueMicrotask(() =>
         setState((s) => ({ ...s, isLoading: false, isConfigured: false }))
       );
@@ -91,48 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     let mounted = true;
 
-    if (debugCapsRef.current.sessionStart < 2) {
-      debugCapsRef.current.sessionStart += 1;
-      // #region debug log: auth getSession start
-      fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-        body: JSON.stringify({
-          sessionId: "ce8533",
-          runId: "recheck_initial",
-          hypothesisId: "H2_auth_get_session_start",
-          location: "src/contexts/AuthContext.tsx:useEffect:getSession_start",
-          message: "Calling supabase.auth.getSession",
-          data: { mounted: true },
-          timestamp: Date.now(),
-        }),
-      }).catch(() => {});
-      // #endregion
-    }
-
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (debugCapsRef.current.sessionResolved < 2) {
-        debugCapsRef.current.sessionResolved += 1;
-        // #region debug log: auth getSession resolved
-        fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-          body: JSON.stringify({
-            sessionId: "ce8533",
-            runId: "recheck_initial",
-            hypothesisId: "H2_auth_get_session_resolved",
-            location: "src/contexts/AuthContext.tsx:useEffect:getSession_resolved",
-            message: "supabase.auth.getSession resolved",
-            data: {
-              mounted,
-              hasSession: Boolean(session),
-              hasUser: Boolean(session?.user),
-            },
-            timestamp: Date.now(),
-          }),
-        }).catch(() => {});
-        // #endregion
-      }
       if (!mounted) return;
       setState((s) => ({
         ...s,
@@ -140,52 +68,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         session,
         isLoading: false,
       }));
-    }).catch((error: unknown) => {
-      if (debugCapsRef.current.sessionRejected < 2) {
-        debugCapsRef.current.sessionRejected += 1;
-        const message = error instanceof Error ? error.message : String(error ?? "");
-        // #region debug log: auth getSession rejected
-        fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-          body: JSON.stringify({
-            sessionId: "ce8533",
-            runId: "recheck_initial",
-            hypothesisId: "H2_auth_get_session_rejected",
-            location: "src/contexts/AuthContext.tsx:useEffect:getSession_rejected",
-            message: "supabase.auth.getSession rejected",
-            data: { message },
-            timestamp: Date.now(),
-          }),
-        }).catch(() => {});
-        // #endregion
-      }
-    });
+    }).catch(() => {});
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      if (debugCapsRef.current.authStateChange < 3) {
-        debugCapsRef.current.authStateChange += 1;
-        // #region debug log: auth state change
-        fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-          body: JSON.stringify({
-            sessionId: "ce8533",
-            runId: "recheck_initial",
-            hypothesisId: "H2_auth_state_change",
-            location: "src/contexts/AuthContext.tsx:onAuthStateChange",
-            message: "Supabase auth state changed",
-            data: {
-              event,
-              hasSession: Boolean(session),
-            },
-            timestamp: Date.now(),
-          }),
-        }).catch(() => {});
-        // #endregion
-      }
       if (!mounted) return;
       setState((s) => ({
         ...s,

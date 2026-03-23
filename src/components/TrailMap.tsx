@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Trail } from "@/data/trails";
-import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 // Fix default marker icons in Next.js
@@ -124,7 +124,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
           >
             <Popup>
               <div className="min-w-[180px]">
-                <p className="font-semibold text-charcoal mb-1">{tTrailsMap("trailheadLegend")}</p>
+                <p className={`${TYPE.cardTitle} mb-1`}>{tTrailsMap("trailheadLegend")}</p>
                 {trail.trailhead && (
                   <p className="text-sm text-olive/80 mb-2">{trail.trailhead}</p>
                 )}
@@ -148,7 +148,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
             <Marker key={i} position={[w.lat, w.lng]} icon={waypointIcon(i + 1)}>
               <Popup>
                 <div className="min-w-[200px]">
-                  <p className="font-semibold text-charcoal mb-0.5">{w.name}</p>
+                  <p className={`${TYPE.cardTitle} mb-0.5`}>{w.name}</p>
                   {w.km != null && (
                     <p className="text-xs text-olive/60 mb-1">@ {w.km} km</p>
                   )}

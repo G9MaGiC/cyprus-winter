@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import Disclosure from "@/components/Disclosure";
 import { winterTipsHiking } from "@/data/winter-tips";
-import { SECTION } from "@/lib/design-tokens";
+import { SECTION, TYPE } from "@/lib/design-tokens";
 import type { Trail } from "@/data/trails";
 import { useTranslations } from "next-intl";
 
@@ -31,7 +31,7 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
                 key={tip.id}
                 className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0"
               >
-                <h3 className="prose-label text-olive">{tip.title}</h3>
+                <h3 className={`${TYPE.kicker} text-olive`}>{tip.title}</h3>
                 <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">{tip.body}</p>
               </div>
             ))}

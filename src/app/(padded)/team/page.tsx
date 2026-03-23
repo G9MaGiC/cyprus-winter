@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { team } from "@/data/team";
-import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -41,7 +41,7 @@ export default async function TeamPage() {
                 .map((n) => n[0])
                 .join("")}
             </div>
-            <h3 className="font-display text-xl font-semibold text-olive group-hover:text-terracotta transition-colors truncate">
+            <h3 className={`${TYPE.subSectionTitle} text-olive group-hover:text-terracotta transition-colors truncate`}>
               {member.name}
             </h3>
             <p className="text-terracotta font-medium text-sm mt-0.5 truncate" title={member.role}>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import { useRouter } from "@/i18n/navigation";
 import BackLink from "@/components/BackLink";
-import { LAYOUT, CARD, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTranslations } from "next-intl";
 
@@ -33,7 +33,7 @@ export default function ResetPasswordPage() {
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
-            <h1 className="font-display text-xl font-semibold text-charcoal mb-2">
+            <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.configTitle")}
             </h1>
             <p className="text-olive/80 text-sm leading-relaxed mb-6">
@@ -81,7 +81,7 @@ export default function ResetPasswordPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aegean mb-2">
               {tCommon("done")}
             </p>
-            <h1 className="font-display text-2xl font-bold text-charcoal mb-2">
+            <h1 className={`${TYPE.sectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.successTitle")}
             </h1>
             <p className="text-olive/80 text-base leading-relaxed mb-6">
@@ -113,7 +113,7 @@ export default function ResetPasswordPage() {
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
           <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
-            <h1 className="font-display text-xl font-semibold text-charcoal mb-2">
+            <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.invalidLinkTitle")}
             </h1>
             <p className="text-olive/80 text-sm leading-relaxed mb-6">
@@ -140,7 +140,7 @@ export default function ResetPasswordPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">
             {tAuth("reset.kicker")}
           </p>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-charcoal mb-2">
+          <h1 className={`${TYPE.sectionTitle} font-bold text-charcoal mb-2`}>
             {tAuth("reset.title")}
           </h1>
           <p className="text-olive/80 text-base leading-relaxed mb-8">

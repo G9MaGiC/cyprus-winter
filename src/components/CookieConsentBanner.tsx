@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import AppLink from "@/components/AppLink";
-import { CTA, LAYOUT } from "@/lib/design-tokens";
+import { CTA, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { setCookieConsent, COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
 
 function subscribe(callback: () => void) {
@@ -65,7 +65,7 @@ export default function CookieConsentBanner() {
             Cookie consent.
           </span>{" "}
           We use essential cookies for the service and optional analytics to improve it. By clicking &quot;Accept&quot; you allow analytics.{" "}
-          <AppLink href="/privacy#cookies" className="text-terracotta hover:underline">
+          <AppLink href="/privacy#cookies" className={`${SECTION.aegeanLink} -my-2 text-terracotta focus-visible:ring-terracotta/50`}>
             Learn more
           </AppLink>
         </p>

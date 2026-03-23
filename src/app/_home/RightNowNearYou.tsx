@@ -261,7 +261,7 @@ export default function RightNowNearYou({
         </AppLink>
       </div>
       <div className={`${SECTION.headingGap} rounded-xl border border-aegean/20 bg-aegean/5 p-4`}>
-        <p className="prose-label text-aegean">
+        <p className={`${TYPE.kicker} text-aegean`}>
           {tHome("rightNow.adapt.kicker")}
         </p>
         <p className="mt-1 text-sm text-olive/80">

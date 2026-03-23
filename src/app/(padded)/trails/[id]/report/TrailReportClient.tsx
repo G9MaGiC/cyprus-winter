@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import { useParams, notFound } from "next/navigation";
 import { trails } from "@/data/trails";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA, TYPE } from "@/lib/design-tokens";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { useTranslations } from "next-intl";
@@ -107,7 +107,7 @@ export default function TrailReportClient() {
           aria-live="polite"
           aria-label={tReport("success.aria")}
         >
-          <p className="text-lg font-semibold text-olive flex items-center justify-center gap-2">
+          <p className={`${TYPE.cardTitle} flex items-center justify-center gap-2`}>
             <span className="w-8 h-8 rounded-full bg-terracotta/20 text-terracotta flex items-center justify-center text-sm" aria-hidden>✓</span>
             {tCommon("thanksForReporting")}
           </p>
@@ -154,7 +154,7 @@ export default function TrailReportClient() {
           className="py-1 px-0 text-xs text-olive/60"
         />
       </nav>
-      <h1 className="font-display text-2xl font-bold text-olive mt-4">
+      <h1 className={`${TYPE.sectionTitle} text-olive mt-4`}>
         {tCommon("reportConditions")}
       </h1>
       <p className="text-olive/70 text-sm mt-1" id="report-context">

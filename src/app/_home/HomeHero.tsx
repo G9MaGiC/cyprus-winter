@@ -39,7 +39,7 @@ export default async function HomeHero() {
           <p className="text-base sm:text-lg text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
             {tHome("headline")}
           </p>
-          <p className="text-sm text-white/75 max-w-lg mx-auto mb-6">
+          <p className="text-sm text-white/80 max-w-lg mx-auto mb-6">
             {tHome(`seasonal.${getSeasonalKey()}`)} {tHome("degreesLine")}
           </p>
 

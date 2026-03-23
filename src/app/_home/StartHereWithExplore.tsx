@@ -114,7 +114,7 @@ export default function StartHereWithExplore({
               aria-label={`${item.title}: ${item.desc}`}
             >
               <div className={`flex-1 ${CARD.content}`}>
-                <p className="font-display text-lg font-semibold text-charcoal group-hover:text-terracotta transition-colors">
+                <p className={`${TYPE.cardTitle} text-charcoal`}>
                   {item.title}
                 </p>
                 <p className="text-sm text-olive/70 mt-1 leading-relaxed line-clamp-2">{item.desc}</p>
@@ -133,7 +133,7 @@ export default function StartHereWithExplore({
         <div className="relative mb-6 sm:mb-8">
           <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>{tHome("startHere.browseByCategory")}</p>
           <div
-            className="flex flex-nowrap sm:flex-wrap overflow-x-auto scroll-smooth scroll-touch sm:overflow-visible justify-start sm:justify-center gap-3 pb-2 -mx-1 sm:mx-0 px-1 sm:px-0 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex flex-nowrap sm:flex-wrap overflow-x-auto scroll-smooth scroll-touch sm:overflow-visible justify-start sm:justify-center gap-3 pb-2 -mx-1 sm:mx-0 px-1 sm:px-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="navigation"
             aria-label={tHome("startHere.aria.browseByCategory")}
           >

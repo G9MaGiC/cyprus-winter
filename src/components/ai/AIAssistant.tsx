@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { AIChatMessages } from "./AIChatMessages";
 import { AIChatInput } from "./AIChatInput";
 import { useAIChat } from "./hooks/useAIChat";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, TYPE } from "@/lib/design-tokens";
 
 const OPEN_AI_EVENT = "open-ai-assistant";
 
@@ -66,7 +66,7 @@ export function AIAssistant() {
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3 border-b border-sand-200">
           <div>
-            <h2 id="ai-chat-title" className="font-display text-lg font-semibold text-olive">
+            <h2 id="ai-chat-title" className={`${TYPE.cardTitle}`}>
               {tCommon("ai.title")}
             </h2>
             <p className="text-xs text-sage">{tCommon("ai.subtitle")}</p>

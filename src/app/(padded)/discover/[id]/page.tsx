@@ -6,7 +6,7 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
-import { LAYOUT, CTA, CARD, CALLOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import AppLink from "@/components/AppLink";
@@ -154,7 +154,7 @@ export default async function AttractionPage({
             </section>
 
             <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>
-              <h2 className={`prose-label text-aegean ${SECTION.headingGap}`}>Why this now</h2>
+              <h2 className={`${TYPE.kicker} text-aegean ${SECTION.headingGap}`}>Why this now</h2>
               <ul className="space-y-2 text-sm text-olive/85">
                 <li className="flex gap-2">
                   <span className="text-aegean" aria-hidden>•</span>
@@ -182,7 +182,7 @@ export default async function AttractionPage({
 
             {/* Highlights + Great for — quick scan */}
             <section>
-              <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+              <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                 {tDetail("headings.highlights")}
               </h2>
               <ul className="flex flex-wrap gap-2">
@@ -196,7 +196,7 @@ export default async function AttractionPage({
                 ))}
               </ul>
               <div className="mt-4">
-                <h3 className="prose-label text-olive/70 mb-1">
+                <h3 className={`${TYPE.kicker} text-olive/70 mb-1`}>
                   {tDetail("headings.greatFor")}
                 </h3>
                 <p className="text-olive/80 text-base break-words">{a.bestFor.join(" · ")}</p>
@@ -220,7 +220,7 @@ export default async function AttractionPage({
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-4`}>
                 {a.diningVenues && a.diningVenues.length > 0 && (
                   <div>
-                    <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                    <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                       {tDetail("headings.dining")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
@@ -237,7 +237,7 @@ export default async function AttractionPage({
                 )}
                 {a.shops && a.shops.length > 0 && (
                   <div>
-                    <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                    <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                       {tDetail("headings.shops")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
@@ -258,7 +258,7 @@ export default async function AttractionPage({
             {/* Winery: Tasting + Book CTA early */}
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Visit & taste
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.tastingInfo}</p>
@@ -298,7 +298,7 @@ export default async function AttractionPage({
           a.contactPhone ||
           ("shopUrl" in a && a.shopUrl)) && (
           <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-            <h2 className="prose-label text-olive/70 mb-1">
+            <h2 className="${TYPE.kicker} text-olive/70 mb-1">
               {tDetail("booking.title")}
             </h2>
             <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
@@ -397,7 +397,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Our wines
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
@@ -418,7 +418,7 @@ export default async function AttractionPage({
                     </div>
                   )}
                   <div className="p-4">
-                    <p className="font-semibold text-olive text-sm break-words">{wine.name}</p>
+                    <p className={`${TYPE.cardTitle} text-sm break-words`}>{wine.name}</p>
                     {wine.variety && (
                       <p className="text-xs text-olive/70 mt-0.5 break-words">{wine.variety}</p>
                     )}
@@ -434,7 +434,7 @@ export default async function AttractionPage({
 
             {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Local secret
                 </h2>
             {a.winterTip && (
@@ -455,7 +455,7 @@ export default async function AttractionPage({
 
             {"backstory" in a && a.backstory && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Backstory
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.backstory}</p>
@@ -470,7 +470,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Location
                 </h2>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
@@ -508,7 +508,7 @@ export default async function AttractionPage({
                 <div className="space-y-4">
                   {getSecretsForPlace(a.id).map((s) => (
                     <div key={s.id} className="p-4 rounded-lg bg-white/80 border border-sand-200/80">
-                      <h3 className="font-display font-semibold text-olive mb-1">{s.title}</h3>
+                      <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
                       <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
                     </div>
                   ))}
@@ -544,7 +544,7 @@ export default async function AttractionPage({
                 "Places";
               return (
                 <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-                  <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                  <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                     More {typeLabel.toLowerCase()} in {a.region}
                   </h2>
                   <ul className="flex flex-wrap gap-2">

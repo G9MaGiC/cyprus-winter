@@ -19,6 +19,7 @@ Reference for Cyprus Winter design tokens. Use these consistently; avoid ad-hoc 
 | `TYPE.subSectionTitleLg` | Sub-section with responsive bump | font-display text-xl sm:text-2xl font-semibold leading-tight |
 | `TYPE.kicker` | Labels above content (on light) | prose-label text-sage |
 | `TYPE.kickerOnDark` | Labels on dark overlays | prose-label text-white/80 |
+| `TYPE.cardTitleCompact` | Compact card titles (RightNowCard, strips) | font-display text-sm sm:text-base font-semibold text-charcoal |
 
 ### Prose utilities (globals.css)
 | Class | Use case | Spec |
@@ -70,6 +71,13 @@ Reference for Cyprus Winter design tokens. Use these consistently; avoid ad-hoc 
 ### Gap scale
 Prefer Tailwind: `gap-2` (8px) tight inline, `gap-3` (12px) buttons/chips, `gap-4` (16px) sections, `gap-6` (24px) major blocks.
 
+### Layout conventions (homepage vs hub pages)
+| Context | Section padding | Notes |
+|---------|-----------------|-------|
+| Homepage (Explore, This week, etc.) | `py-12 sm:py-20` via `SECTION.py` | Denser rhythm for scroll-heavy landing |
+| Hub pages (Discover, Trails, Events) | `LAYOUT.pagePy` (`py-8 sm:py-12`) | List/form vertical padding; section blocks use `SECTION.blockTop` |
+| Legal (Terms, Privacy) | `SECTION.blockGap` + `SECTION.blockTop` on h2 | Article sections stacked with space-y-12 |
+
 ---
 
 ## Hierarchy
@@ -80,7 +88,7 @@ Prefer Tailwind: `gap-2` (8px) tight inline, `gap-3` (12px) buttons/chips, `gap-
 | `CTA.primary`, `CTA.primaryCompact` | Main actions (Explore, Plan, Book) |
 | `CTA.secondaryCompact` | Secondary on light (terracotta border) |
 | `CTA.chipPrimary`, `CTA.chipSecondary`, `CTA.chipTertiary` | Chips, pills |
-| `SECTION.aegeanLink` | Contextual/secondary links |
+| `SECTION.aegeanLink` | Contextual/secondary links (aegean). For terracotta: add `text-terracotta focus-visible:ring-terracotta/50` override |
 
 ### Semantic colors
 - **Primary CTA:** terracotta
@@ -98,6 +106,6 @@ Prefer Tailwind: `gap-2` (8px) tight inline, `gap-3` (12px) buttons/chips, `gap-
 - [ ] CTAs use CTA tokens; links use SECTION.aegeanLink when secondary
 
 ### Mobile-first
-- [ ] Touch targets: `min-h-[44px]` (TOUCH_TARGET) for interactive elements
+- [ ] Touch targets: `min-h-[44px]` (TOUCH_TARGET) for interactive elements (inline links: use `inline-flex items-center min-h-[44px] py-2 -my-2` to expand tap area)
 - [ ] Horizontal scroll strips: `scroll-touch`, `[-webkit-overflow-scrolling:touch]`, `overscroll-x-contain`, `touch-pan-x`, `snap-x snap-mandatory` (or `snap-start` on items)
 - [ ] BottomNav: `min-w-[44px]` for primary links; test at 375px viewport

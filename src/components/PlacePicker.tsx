@@ -145,7 +145,7 @@ export default function PlacePicker({
       <div
         role="tablist"
         aria-label={t("aria.tabList")}
-        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory`}
+        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]`}
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t?.getAttribute?.("role") !== "tab") return;

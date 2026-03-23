@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site-url";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
@@ -40,7 +40,7 @@ export default async function PrivacyPage() {
 
       <article className={`prose prose-olive max-w-none ${SECTION.blockGap}`}>
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s1.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
@@ -49,7 +49,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s2.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
@@ -89,7 +89,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s3.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
@@ -123,7 +123,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s4.title")}
           </h2>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
@@ -139,7 +139,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s5.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
@@ -161,7 +161,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section id="cookies">
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s6.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
@@ -177,7 +177,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s7.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
@@ -186,7 +186,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s8.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
@@ -195,7 +195,7 @@ export default async function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s9.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">

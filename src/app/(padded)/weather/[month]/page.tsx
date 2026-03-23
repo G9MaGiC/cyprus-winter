@@ -102,31 +102,6 @@ export default async function WeatherMonthPage({ params }: Props) {
   const currentMonthChipClass = "border-terracotta/50 bg-terracotta/5";
   const otherMonthChipClass = "border-sand-200/80 hover:border-terracotta/30";
 
-  // #region agent log H1 translation labels + H2 active chip logic + H4 line-clamp classes
-  fetch("http://127.0.0.1:7628/ingest/80b5b3b1-6619-475c-a7bb-fb3080a9d865", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "ce8533" },
-    body: JSON.stringify({
-      sessionId: "ce8533",
-      runId: "debug_weather_ux_anomaly_1",
-      hypothesisId: "H1_translation_namespace_or_fallback_and_H2_active_chip_and_H4_line_clamp",
-      location: "src/app/(padded)/weather/[month]/page.tsx",
-      message: "Weather month detail: locale/labels and chip/description class expectations",
-      data: {
-        locale,
-        slug,
-        coastLabel: tWeatherPage("table.coast"),
-        troodosLabel: tWeatherPage("table.troodos"),
-        currentMonthChipIndex: MONTH_SLUGS.indexOf(slug),
-        clampedDescClass,
-        currentMonthChipClass,
-        otherMonthChipClass,
-      },
-      timestamp: Date.now(),
-    }),
-  }).catch(() => {});
-  // #endregion
-
   const coastMid = midC(row.coastMinC, row.coastMaxC);
   const troodosMid = midC(row.troodosMinC, row.troodosMaxC);
 
@@ -184,7 +159,7 @@ export default async function WeatherMonthPage({ params }: Props) {
 
       {/* Jump to month */}
       <section className={SECTION.blockTop} aria-label={monthJumpLabel}>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible">
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain">
           {MONTH_SLUGS.map((m) => {
             const name = SLUG_TO_WEATHER[m];
             const monthRow = weatherByMonth.find((r) => r.month === name);
@@ -200,7 +175,7 @@ export default async function WeatherMonthPage({ params }: Props) {
                   }`}
               >
                 <div className="flex flex-col">
-                  <span className={`font-display text-sm font-semibold ${isCurrent ? "text-terracotta" : "text-olive"}`}>{name}</span>
+                  <span className={`${TYPE.cardTitleCompact} ${isCurrent ? "text-terracotta" : "text-olive"}`}>{name}</span>
                   <span className={`mt-1 text-xs ${isCurrent ? "text-terracotta/80" : "text-olive/70"}`}>
                     {tWeatherPage("table.coast")} {monthRow.coastMinC}–{monthRow.coastMaxC}° · {tWeatherPage("table.troodos")} {monthRow.troodosMinC}–{monthRow.troodosMaxC}°
                   </span>

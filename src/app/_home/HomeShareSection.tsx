@@ -1,4 +1,4 @@
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import ShareLinks from "@/components/ShareLinks";
 import BackToTopLink from "@/components/BackToTopLink";
 import { getTranslations } from "next-intl/server";
@@ -24,7 +24,7 @@ export default async function HomeShareSection({ sharePath = defaultSharePath }:
         <p className="text-white/80 text-sm mt-3 max-w-lg mx-auto leading-relaxed prose-body">
           {t("share.body")}
         </p>
-        <p className="text-white/90 text-xs font-medium uppercase tracking-wider mt-6 mb-2 prose-label">
+        <p className={`${TYPE.kickerOnDark} text-white/90 text-xs font-medium uppercase tracking-wider mt-6 mb-2`}>
           {t("share.shareWithLabel")}
         </p>
         <div className="flex justify-center gap-4">

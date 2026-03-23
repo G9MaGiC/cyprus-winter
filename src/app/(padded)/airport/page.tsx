@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { airports } from "@/data/airport";
 import { SITE_URL } from "@/lib/site-url";
 import { winterTipsPractical } from "@/data/winter-tips";
-import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import AppLink from "@/components/AppLink";
@@ -72,7 +72,7 @@ export default async function AirportPage() {
         </ListPageHero>
 
         <section aria-label="Arrival quick actions" className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
-          <p className="prose-label text-olive/70 mb-3">Arrive faster</p>
+          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>Arrive faster</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
               <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">
@@ -101,13 +101,13 @@ export default async function AirportPage() {
             {tAirport("essentials.srHeading")}
           </h2>
           <p className="text-aegean font-semibold text-sm">
-            <a href="tel:112" className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
+            <a href="tel:112" className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
               {tAirport("essentials.emergency")} <strong>112</strong>
             </a>
             {" · "}
             {tAirport("essentials.touristInfo")} <strong>1460</strong>
             {" · "}
-            <a href="tel:199" className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
+            <a href="tel:199" className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
               {tAirport("essentials.ambulance")} <strong>199</strong>
             </a>
           </p>
@@ -116,10 +116,10 @@ export default async function AirportPage() {
 
         {/* Your first hour — orient jetlagged arrivals */}
         <section aria-labelledby="first-hour-heading" className={`rounded-xl ${CARD.base} ${CARD.content}`}>
-          <h2 id="first-hour-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
+          <h2 id="first-hour-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
             {tAirport("firstHour.title")}
           </h2>
-          <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto pb-1">
+          <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto pb-1 scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain">
             {FIRST_HOUR_STEPS.map(({ step, label }, i) => (
               <div key={step} className="flex items-center shrink-0 gap-2">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-terracotta/15 text-terracotta text-sm font-semibold">
@@ -138,7 +138,7 @@ export default async function AirportPage() {
 
         {/* Airport picker — prominent for tired arrivals */}
         <section aria-labelledby="airport-picker-heading">
-          <h2 id="airport-picker-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
+          <h2 id="airport-picker-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
             {tAirport("picker.title")}
           </h2>
           <nav aria-label={tAirport("picker.aria")} className="flex gap-3">
@@ -167,7 +167,7 @@ export default async function AirportPage() {
               <div className="bg-terracotta text-white px-6 py-5">
                 <h2
                   id={`airport-${airport.code}-heading`}
-                  className="font-display text-xl sm:text-2xl font-semibold text-white"
+                  className={`${TYPE.subSectionTitleLg} text-white`}
                 >
                   {airport.code} — {airport.name}
                 </h2>
@@ -181,7 +181,7 @@ export default async function AirportPage() {
 
               <div className="p-6 space-y-6">
                 <div>
-                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>{tAirport("sections.transportTitle")}</h3>
+                  <h3 className={`${TYPE.subSectionTitle} text-olive ${SECTION.titleGap}`}>{tAirport("sections.transportTitle")}</h3>
                   <ul className="space-y-3" role="list">
                     {airport.transport.map((t) => (
                       <li
@@ -218,7 +218,7 @@ export default async function AirportPage() {
                 </div>
 
                 <div>
-                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>{tAirport("sections.tipsTitle")}</h3>
+                  <h3 className={`${TYPE.subSectionTitle} text-olive ${SECTION.titleGap}`}>{tAirport("sections.tipsTitle")}</h3>
                   <ul className="space-y-2" role="list">
                     {airport.tips.map((tip, i) => (
                       <li

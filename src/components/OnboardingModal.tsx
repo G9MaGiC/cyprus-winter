@@ -145,7 +145,7 @@ export default function OnboardingModal() {
           <div className={`${CARD.mediaOverlay}`} aria-hidden />
           <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-white">
             <Compass className="h-5 w-5 shrink-0 text-terracotta" aria-hidden />
-            <h2 id="onboarding-title" className="font-display text-xl sm:text-2xl font-semibold leading-tight text-white">
+            <h2 id="onboarding-title" className={`${TYPE.subSectionTitleLg} text-white`}>
               {t("welcome")}
             </h2>
           </div>

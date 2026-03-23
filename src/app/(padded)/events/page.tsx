@@ -79,7 +79,7 @@ function EventCard({
         </span>
         <span className="text-sm text-olive/70 break-words">{event.region}</span>
       </div>
-      <h3 className="font-display text-lg font-semibold text-olive break-words">
+      <h3 className={`${TYPE.cardTitle} break-words`}>
         {event.name}
         {event.nameEl && (
           <span
@@ -194,7 +194,7 @@ export default function EventsPage() {
   const filterGroup = (
     <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-4 lg:gap-6">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="prose-label text-olive/60 w-full sm:w-auto shrink-0">{tPage("filters.typeLabel")}</span>
+        <span className={`${TYPE.kicker} text-olive/60 w-full sm:w-auto shrink-0`}>{tPage("filters.typeLabel")}</span>
         <FilterChips
           chips={typeChips}
           isActive={(c) => (c.id === "" ? !typeFilter : typeFilter === c.id)}
@@ -203,7 +203,7 @@ export default function EventsPage() {
         />
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="prose-label text-olive/60 w-full sm:w-auto shrink-0">{tPage("filters.regionLabel")}</span>
+        <span className={`${TYPE.kicker} text-olive/60 w-full sm:w-auto shrink-0`}>{tPage("filters.regionLabel")}</span>
         <FilterChips
           chips={regionChips}
           isActive={(c) => (c.id === "" ? !regionFilter : regionFilter === c.id)}
@@ -313,7 +313,7 @@ export default function EventsPage() {
                 aria-label={tPage("monthNav.aria")}
                 className={`sticky ${LAYOUT.stickyTop} z-10 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
               >
-                <p className={`prose-label text-olive/60 ${SECTION.titleGap}`}>{tPage("monthNav.title")}</p>
+                <p className={`${TYPE.kicker} text-olive/60 ${SECTION.titleGap}`}>{tPage("monthNav.title")}</p>
                 <div className="flex flex-wrap gap-2">
                   {monthNavMonths.map((month) => (
                     <a
@@ -366,7 +366,7 @@ export default function EventsPage() {
                   >
                     <h2
                       id={`heading-${month}`}
-                      className={`font-display text-xl font-semibold text-terracotta ${SECTION.titleGap}`}
+                      className={`${TYPE.subSectionTitle} text-terracotta ${SECTION.titleGap}`}
                     >
                       {month}
                     </h2>

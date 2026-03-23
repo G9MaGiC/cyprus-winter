@@ -42,7 +42,7 @@ export default function ListPageHero({
         ← {backLabel}
       </AppLink>
       {breadcrumbItems && breadcrumbItems.length > 1 && (
-        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/70" />
+        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/80" />
       )}
     </>
   );

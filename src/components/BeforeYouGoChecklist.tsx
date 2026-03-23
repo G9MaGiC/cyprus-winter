@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { SECTION } from "@/lib/design-tokens";
+import { SECTION, TYPE } from "@/lib/design-tokens";
 import type { WinterTip } from "@/data/winter-tips";
 
 const STORAGE_KEY = "cyprus-winter-before-you-go";
@@ -72,7 +72,7 @@ export default function BeforeYouGoChecklist({
       aria-labelledby="before-you-go-heading"
       className={className}
     >
-      <h2 id="before-you-go-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
+      <h2 id="before-you-go-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
         Before you go
       </h2>
       {checkedCount === totalCount && totalCount > 0 && (

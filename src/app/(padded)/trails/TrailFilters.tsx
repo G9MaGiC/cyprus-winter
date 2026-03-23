@@ -2,6 +2,7 @@
 
 import FilterChips from "@/components/FilterChips";
 import { TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/data/trails";
+import { TYPE } from "@/lib/design-tokens";
 import { buildTrailHref } from "@/lib/trail-url";
 import type { TrailStatus } from "@/data/trails";
 import { useTranslations } from "next-intl";
@@ -61,7 +62,7 @@ export default function TrailFilters({
       </div>
       <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="prose-label text-olive/60 sm:w-auto w-full mb-0.5 sm:mb-0">
+          <span className={`${TYPE.kicker} text-olive/60 sm:w-auto w-full mb-0.5 sm:mb-0`}>
             {t("filters.labels.difficulty")}
           </span>
           <FilterChips
@@ -78,7 +79,7 @@ export default function TrailFilters({
           />
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="prose-label text-olive/60 sm:w-auto w-full mb-0.5 sm:mb-0">
+          <span className={`${TYPE.kicker} text-olive/60 sm:w-auto w-full mb-0.5 sm:mb-0`}>
             {t("filters.labels.region")}
           </span>
           <FilterChips

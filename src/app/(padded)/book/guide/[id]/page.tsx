@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { guides } from "@/data/guides";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -46,7 +46,7 @@ export default async function GuideBookPage({
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label={tBookPages("pageNavAria")}>
+      <nav className={`flex flex-col gap-1 ${SECTION.headingGap}`} aria-label={tBookPages("pageNavAria")}>
         <BackLink href="/book/guide" label={tCommon("backTo", { label: tCommon("breadcrumbs.bookGuide") })} />
         <Breadcrumbs
           items={[
@@ -73,7 +73,7 @@ export default async function GuideBookPage({
             </span>
           )}
         </div>
-        <h1 className="font-display text-3xl font-bold text-olive mt-3">{tBookPages("guideDetail.title")}</h1>
+        <h1 className={`${TYPE.pageTitle} mt-3`}>{tBookPages("guideDetail.title")}</h1>
         <p className="text-olive/80 mt-1 break-words">
           {guide.name} · {guide.region}
         </p>
@@ -83,7 +83,7 @@ export default async function GuideBookPage({
       <GuideBookingForm guide={guide} preselectedTrailId={trail ?? undefined} />
 
       {(guide.bookingUrl || guide.contactPhone) && (
-        <section className="mt-8 space-y-4" aria-label={tBookPages("otherWaysAria")}>
+        <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>
           {guide.bookingUrl && (
             <p className="text-sm text-olive/80">
               {tBookPages("guideDetail.other.or")}{" "}

@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
-import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, TYPE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { useTranslations } from "next-intl";
 
@@ -68,7 +68,7 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
               <div className="min-w-[200px]">
                 <AppLink
                   href={p.href}
-                  className="font-semibold text-charcoal hover:text-terracotta block mb-1"
+                  className={`${TYPE.cardTitle} block mb-1`}
                 >
                   {p.name}
                 </AppLink>

@@ -31,7 +31,7 @@ export default async function GuidesListPage() {
   ]);
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label={tBookPages("pageNavAria")}>
+      <nav className={`flex flex-col gap-1 ${SECTION.headingGap}`} aria-label={tBookPages("pageNavAria")}>
         <BackLink href="/trails" label={tCommon("backTo", { label: tNav("trails") })} />
         <Breadcrumbs
           items={[
@@ -43,7 +43,7 @@ export default async function GuidesListPage() {
         />
       </nav>
 
-      <div className="mb-8">
+      <div className={SECTION.headingMargin}>
         <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
         <p className="text-olive/70 max-w-2xl">
           {tBookPages("guideList.intro")}
@@ -68,7 +68,7 @@ export default async function GuidesListPage() {
                   </span>
                 )}
               </div>
-              <h2 className="font-display text-lg font-semibold text-olive mb-1">{guide.name}</h2>
+              <h2 className={`${TYPE.cardTitle} mb-1`}>{guide.name}</h2>
               <p className="text-sm text-olive/70 mb-2">{guide.region}</p>
               <p className="text-sm text-olive/80 mb-4 flex-1 line-clamp-3">{guide.description}</p>
               {trailNames.length > 0 && (

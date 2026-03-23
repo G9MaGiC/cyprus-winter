@@ -3,7 +3,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import BackLink from "@/components/BackLink";
-import { CARD, LAYOUT } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { AUTH_HERO_IMAGE } from "@/lib/cyprus-images";
 import { useTranslations } from "next-intl";
 
@@ -72,7 +72,7 @@ export default function AuthLayout({
               {kicker}
             </p>
           )}
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-charcoal mb-2">
+          <h1 className={`${TYPE.sectionTitle} text-charcoal ${SECTION.titleGap}`}>
             {title}
           </h1>
           <p className="text-olive/80 text-base leading-relaxed mb-8">{subtitle}</p>

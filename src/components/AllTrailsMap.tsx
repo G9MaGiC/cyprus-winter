@@ -5,7 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
 import type { Trail } from "@/data/trails";
-import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, TYPE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -71,7 +71,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
               <div className="min-w-[200px]">
                 <AppLink
                   href={`/trails/${trail.id}`}
-                  className="font-semibold text-charcoal hover:text-terracotta block mb-1"
+                  className={`${TYPE.cardTitle} block mb-1`}
                 >
                   {trail.name}
                 </AppLink>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CARD, LAYOUT } from "@/lib/design-tokens";
+import { CARD, LAYOUT, TYPE } from "@/lib/design-tokens";
 
 type DetailHeroProps = {
   image: string;
@@ -43,7 +43,7 @@ export default function DetailHero({
         />
         <div className={`absolute bottom-0 left-0 right-0 ${CARD.contentLg} text-white`}>
           {badge && <div className="mb-3">{badge}</div>}
-          <h1 className="font-display text-3xl sm:text-4xl font-bold break-words drop-shadow-sm">
+          <h1 className={`${TYPE.pageTitle} break-words drop-shadow-sm text-white`}>
             {title}
             {titleEl && (
               <span className="ml-2 font-normal text-2xl sm:text-3xl text-white/90 break-words" lang="el">
