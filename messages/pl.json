@@ -1130,6 +1130,19 @@
         "body": "Dodaj kolejną degustację do zimowej podróży.",
         "bodyNoUpcoming": "Wszystkie degustacje masz już za sobą. Zarezerwuj kolejną na następny wyjazd."
       }
+    },
+    "trustStrip": {
+      "aria": "Informacje o zaufaniu rezerwacji",
+      "title": "Przed wysłaniem",
+      "verified": "Zweryfikowana trasa żądania {context}.",
+      "confirmation": "Potwierdzenie zwykle przychodzi mailem w ciągu 24 godzin.",
+      "noCharge": "Brak natychmiastowej opłaty w aplikacji; dostawcy najpierw potwierdzają dostępność."
+    },
+    "stepper": {
+      "aria": "Postęp rezerwacji",
+      "details": "Szczegóły",
+      "requestSent": "Prośba wysłana",
+      "confirmation": "Potwierdzenie"
     }
   },
   "search": {
@@ -1497,6 +1510,11 @@
       "queued": {
         "title": "Zapisano na później",
         "body": "Twoja prośba o degustację w {wineryName} została zapisana i zostanie wysłana automatycznie, gdy wrócisz online."
+      },
+      "statusInfo": {
+        "title": "Statusy rezerwacji:",
+        "requested": "Wysłano prośbę — potwierdzenie po odpowiedzi partnera.",
+        "offline": "Jeśli jesteś offline, prośba zostanie zapisana jako oczekująca i wysłana automatycznie."
       },
       "fields": {
         "date": { "label": "Preferowana data", "hint": "Zimowe degustacje szybko się zapełniają. Pomaga zarezerwować kilka dni wcześniej." },

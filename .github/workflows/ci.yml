@@ -91,6 +91,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Check bundle sizes
+        run: node scripts/check-bundle-size.mjs
+
   e2e-full:
     name: E2E Full
     runs-on: ubuntu-latest

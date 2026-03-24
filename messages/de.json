@@ -1137,6 +1137,19 @@
         "body": "Fügen Sie Ihrer Winterreise eine weitere Verkostung hinzu.",
         "bodyNoUpcoming": "Alle Ihre Verkostungen liegen in der Vergangenheit. Buchen Sie eine neue für Ihre nächste Reise."
       }
+    },
+    "trustStrip": {
+      "aria": "Buchungs-Vertrauensinformationen",
+      "title": "Vor dem Absenden",
+      "verified": "Verifizierte {context}-Anfrageroute.",
+      "confirmation": "Bestätigung kommt normalerweise innerhalb von 24 Stunden per E‑Mail.",
+      "noCharge": "Keine sofortige Belastung in der App; Anbieter bestätigen zuerst die Verfügbarkeit."
+    },
+    "stepper": {
+      "aria": "Buchungsfortschritt",
+      "details": "Details",
+      "requestSent": "Anfrage gesendet",
+      "confirmation": "Bestätigung"
     }
   },
   "account": {
@@ -1530,6 +1543,11 @@
       "queued": {
         "title": "Für später gespeichert",
         "body": "Ihre Verkostungsanfrage für {wineryName} wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
+      },
+      "statusInfo": {
+        "title": "Buchungsstatus:",
+        "requested": "Jetzt angefragt — bestätigt nach Antwort des Partners.",
+        "offline": "Wenn Sie offline sind, wird Ihre Anfrage als ausstehend gespeichert und automatisch erneut gesendet."
       },
       "fields": {
         "date": { "label": "Wunschtermin", "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen." },

@@ -1137,6 +1137,19 @@
         "body": "Add another tasting to your winter trip.",
         "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
       }
+    },
+    "trustStrip": {
+      "aria": "Booking trust information",
+      "title": "Before you submit",
+      "verified": "Verified {context} request route.",
+      "confirmation": "Confirmation usually arrives by email within 24 hours.",
+      "noCharge": "No instant charge in-app; providers confirm availability first."
+    },
+    "stepper": {
+      "aria": "Booking progress",
+      "details": "Details",
+      "requestSent": "Request sent",
+      "confirmation": "Confirmation"
     }
   },
   "account": {
@@ -1530,6 +1543,11 @@
       "queued": {
         "title": "Saved for later",
         "body": "Your tasting request for {wineryName} has been saved and will be sent automatically when you're back online."
+      },
+      "statusInfo": {
+        "title": "Booking states:",
+        "requested": "Requested now to confirmed after partner reply.",
+        "offline": "If you are offline, your request is queued as sync pending and retried automatically."
       },
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },

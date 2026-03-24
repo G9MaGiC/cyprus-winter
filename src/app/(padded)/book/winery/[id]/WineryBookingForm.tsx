@@ -197,8 +197,8 @@ export default function WineryBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="winery" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after partner reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p><strong>{t("statusInfo.title")}</strong> {t("statusInfo.requested")}</p>
+        <p className="mt-1">{t("statusInfo.offline")}</p>
       </div>
       {error && (
         <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>
