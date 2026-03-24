@@ -1494,6 +1494,10 @@
         "ctaBookings": "Zobacz moje rezerwacje",
         "ctaDiscover": "Odkrywaj dalej"
       },
+      "queued": {
+        "title": "Zapisano na później",
+        "body": "Twoja prośba o degustację w {wineryName} została zapisana i zostanie wysłana automatycznie, gdy wrócisz online."
+      },
       "fields": {
         "date": { "label": "Preferowana data", "hint": "Zimowe degustacje szybko się zapełniają. Pomaga zarezerwować kilka dni wcześniej." },
         "partySize": { "label": "Wielkość grupy", "plus": "11+ osób" },

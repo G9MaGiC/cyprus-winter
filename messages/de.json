@@ -1527,6 +1527,10 @@
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaDiscover": "Mehr entdecken"
       },
+      "queued": {
+        "title": "Für später gespeichert",
+        "body": "Ihre Verkostungsanfrage für {wineryName} wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
+      },
       "fields": {
         "date": { "label": "Wunschtermin", "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen." },
         "partySize": { "label": "Gruppengröße", "plus": "11+ Personen" },

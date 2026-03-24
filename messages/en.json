@@ -1527,6 +1527,10 @@
         "ctaBookings": "View my bookings",
         "ctaDiscover": "Discover more"
       },
+      "queued": {
+        "title": "Saved for later",
+        "body": "Your tasting request for {wineryName} has been saved and will be sent automatically when you're back online."
+      },
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },
         "partySize": { "label": "Group size", "plus": "11+ people" },

@@ -113,6 +113,8 @@ export default function OnboardingModal() {
 
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");
+    // Default to "browsing" intent when user skips — still useful for personalization
+    localStorage.setItem(INTENT_KEY, "browsing");
     dismiss();
     previouslyFocusedRef.current?.focus?.();
   }, [dismiss]);

@@ -27,11 +27,22 @@ function getCountdownCopy(daysUntil: number): { title: string; body: string } {
   };
 }
 
+function verifyCronSecret(header: string | null, secret: string): boolean {
+  const expected = `Bearer ${secret}`;
+  if (!header || header.length !== expected.length) return false;
+  try {
+    const { timingSafeEqual } = require("crypto");
+    return timingSafeEqual(Buffer.from(header), Buffer.from(expected));
+  } catch {
+    return header === expected;
+  }
+}
+
 export async function GET(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
 
-  if (!secret || authHeader !== `Bearer ${secret}`) {
+  if (!secret || !verifyCronSecret(authHeader, secret)) {
     return new Response("Unauthorized", { status: 401 });
   }
 

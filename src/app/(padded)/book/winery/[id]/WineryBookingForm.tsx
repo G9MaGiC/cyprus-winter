@@ -22,6 +22,7 @@ export default function WineryBookingForm({
   const tBookings = useTranslations("bookings");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [queued, setQueued] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
@@ -111,9 +112,11 @@ export default function WineryBookingForm({
           method: "POST",
           body,
         });
+        setQueued(true);
+        return;
       }
       const fallback = t("errors.fallback");
-      setError(msg && !shouldQueue ? msg : fallback);
+      setError(msg || fallback);
       setTimeout(() => {
         const behavior =
           typeof window !== "undefined" &&
@@ -159,6 +162,28 @@ export default function WineryBookingForm({
           <AppLink href="/bookings" className={CTA.primaryCompact}>
             {t("success.ctaBookings")}
           </AppLink>
+          <AppLink href="/discover" className={CTA.secondaryCompact}>
+            {t("success.ctaDiscover")}
+          </AppLink>
+        </div>
+      </div>
+    );
+  }
+
+  if (queued) {
+    return (
+      <div
+        className="mt-8 p-6 rounded-lg bg-aegean/5 border border-aegean/20 border-l-4 border-l-aegean/40"
+        role="status"
+        aria-live="polite"
+      >
+        <h2 className={`${TYPE.subSectionTitle} text-olive`}>
+          {t("queued.title")}
+        </h2>
+        <p className="text-olive/80 mt-2 leading-relaxed break-words">
+          {t("queued.body", { wineryName })}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
           <AppLink href="/discover" className={CTA.secondaryCompact}>
             {t("success.ctaDiscover")}
           </AppLink>
