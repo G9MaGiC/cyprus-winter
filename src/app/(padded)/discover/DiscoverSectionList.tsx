@@ -1,12 +1,14 @@
 "use client";
 
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 import AppLink from "@/components/AppLink";
 import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
 import { useTranslations } from "next-intl";
+
+const ITEMS_PER_PAGE = 12;
 
 type DiscoverSectionListProps = {
   sections: DiscoverSection[];
@@ -16,14 +18,28 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
   function DiscoverSectionList({ sections }, ref) {
     const tCommon = useTranslations("common");
     const [shouldAnimate, setShouldAnimate] = useState(true);
+    const [expanded, setExpanded] = useState<Record<string, number>>({});
+
     useEffect(() => {
       const t = setTimeout(() => setShouldAnimate(false), 700);
       return () => clearTimeout(t);
     }, []);
 
+    const showMore = useCallback((sectionId: string, total: number) => {
+      setExpanded((prev) => ({
+        ...prev,
+        [sectionId]: Math.min((prev[sectionId] ?? ITEMS_PER_PAGE) + ITEMS_PER_PAGE, total),
+      }));
+    }, []);
+
     return (
       <div className={`pt-2 ${SECTION.blockGap}`}>
-        {sections.map((section, idx) => (
+        {sections.map((section, idx) => {
+          const visibleCount = expanded[section.id] ?? ITEMS_PER_PAGE;
+          const visibleItems = section.items.slice(0, visibleCount);
+          const hasMore = section.items.length > visibleCount;
+
+          return (
           <section
             key={section.id}
             id={section.id}
@@ -69,14 +85,28 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                 </div>
               </div>
             ) : (
+              <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-                {section.items.map((item) => (
+                {visibleItems.map((item) => (
                   <AttractionCard key={item.id} a={item} />
                 ))}
               </div>
+              {hasMore && (
+                <div className="mt-6 text-center">
+                  <button
+                    type="button"
+                    onClick={() => showMore(section.id, section.items.length)}
+                    className={CTA.secondaryCompact}
+                  >
+                    {tCommon("showMore")} ({section.items.length - visibleCount})
+                  </button>
+                </div>
+              )}
+              </>
             )}
           </section>
-        ))}
+          );
+        })}
       </div>
     );
   }

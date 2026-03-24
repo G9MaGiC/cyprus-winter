@@ -157,6 +157,8 @@
     "seeMap": "Karte ansehen",
     "emergency112": "Notfall 112",
     "trailsFooterDisclaimer": "Bedingungen sind crowd-sourced. Nutzen Sie Ihr Urteilsvermögen und folgen Sie lokalen Hinweisen.",
+    "showMore": "Mehr anzeigen",
+    "retry": "Erneut versuchen",
     "discoverEmptyTitle": "Keine Orte hier.",
     "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel.",
     "emergency": "Notfall",
@@ -526,7 +528,28 @@
         "greatFor": "Ideal für",
         "dining": "Essen",
         "shops": "Shops"
-      }
+      },
+      "whyThisNow": {
+        "title": "Warum jetzt",
+        "bestFor": "Ideal für {tags}.",
+        "practicalStop": "{region} ist ein praktischer Halt für den Tagesplan.",
+        "saveNow": "Jetzt speichern, um später mit ähnlichen Optionen zu vergleichen."
+      },
+      "trustAndTiming": {
+        "title": "Vertrauen und Timing",
+        "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeitsübergabe. Ort zuerst zum Plan hinzufügen, dann bestätigen."
+      },
+      "typeLabels": {
+        "winery": "Weingüter",
+        "restaurant": "Essen & Trinken",
+        "beach": "Strände",
+        "ancient": "Antike Stätten",
+        "village": "Dörfer",
+        "monastery": "Klöster",
+        "nature": "Natur & Küsten",
+        "default": "Orte"
+      },
+      "moreInRegion": "Mehr {type} in {region}"
     },
     "aria": {
       "actions": "Discover-Aktionen",
@@ -572,6 +595,7 @@
     }
   },
   "airport": {
+    "arriveFaster": "Schneller ankommen",
     "page": {
       "meta": {
         "title": "Gerade gelandet? | Cyprus Winter Flughafen-Guide",
@@ -1261,10 +1285,33 @@
       "beaches": "Strände"
     }
   },
+  "checklist": {
+    "title": "Vor der Abreise",
+    "allSet": "Alles erledigt. Gute Reise."
+  },
   "events": {
     "clearFilters": "Filter zurücksetzen",
     "clearFiltersAria": "Filter zurücksetzen und alle Veranstaltungen anzeigen",
     "noMatch": "Keine Veranstaltungen passen zu diesen Filtern. Anderen Typ oder Region versuchen.",
+    "typeLabels": {
+      "festival": "Festival",
+      "market": "Markt",
+      "concert": "Konzert",
+      "food": "Essen & Wein",
+      "culture": "Kultur",
+      "sport": "Sport"
+    },
+    "dontMiss": {
+      "title": "Nicht verpassen",
+      "body": "Dreikönigsfest und Karneval zeigen die Seele der Insel. Früh da sein. Warm anziehen."
+    },
+    "tips": {
+      "title": "Planungstipps",
+      "checkDates": "Offizielle Seiten für genaue Termine prüfen — viele Veranstaltungen verschieben sich jährlich.",
+      "bookEarly": "Früh buchen für Dreikönigsfest, Karneval und Weihnachtsmärkte.",
+      "arriveEarly": "Früh kommen bei beliebten Events. Die besten Plätze füllen sich schnell.",
+      "pairEvents": "Events mit nahen Wanderwegen oder Dörfern kombinieren. Morgens wandern, nachmittags Event."
+    },
     "page": {
       "hero": {
         "title": "Winter-Events",
@@ -1298,6 +1345,29 @@
         "learnMoreAria": "Mehr über {name} erfahren",
         "learnMoreCta": "Mehr erfahren"
       }
+    }
+  },
+  "regions": {
+    "sections": {
+      "villages": "Dörfer",
+      "beaches": "Strände",
+      "ancientSites": "Antike Stätten",
+      "wineries": "Weingüter",
+      "winterEvents": "Winterveranstaltungen",
+      "monasteries": "Klöster & Kirchen"
+    },
+    "allWineries": "Alle Weingüter Zyperns →"
+  },
+  "wineRoutes": {
+    "wineriesOnRoute": "Weingüter auf dieser Route"
+  },
+  "home": {
+    "planning": {
+      "srTitle": "Planung und Wichtiges",
+      "planTitle": "Reise planen",
+      "planSubtitle": "Einen Tag planen oder eine Vorlage wählen. Speichert automatisch.",
+      "eventsTitle": "Winterveranstaltungen",
+      "eventsBody": "Dreikönigsfest, Karneval, Verkostungen. Was wann stattfindet."
     }
   },
   "weather": {

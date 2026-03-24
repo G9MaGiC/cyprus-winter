@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { isSafeUrl } from "@/lib/safe-url";
+import { useTranslations } from "next-intl";
 import type { Message } from "./hooks/useAIChat";
 
 interface AIChatMessagesProps {
@@ -12,6 +13,7 @@ interface AIChatMessagesProps {
 }
 
 function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => void }) {
+  const tCommon = useTranslations("common");
   const isUser = message.role === "user";
 
   return (
@@ -57,7 +59,7 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
             onClick={onRetry}
             className="mt-2 text-xs text-olive/70 hover:text-terracotta underline"
           >
-            Retry
+            {tCommon("retry")}
           </button>
         )}
       </div>

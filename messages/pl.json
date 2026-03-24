@@ -157,6 +157,8 @@
     "seeMap": "Zobacz mapę",
     "emergency112": "Nagły wypadek 112",
     "trailsFooterDisclaimer": "Warunki są zgłaszane przez użytkowników. Kieruj się rozsądkiem i stosuj do lokalnych zaleceń.",
+    "showMore": "Pokaż więcej",
+    "retry": "Ponów",
     "discoverEmptyTitle": "Brak miejsc tutaj.",
     "discoverEmptyBody": "Spróbuj innego filtra albo zapytaj AI—zna wyspę.",
     "emergency": "Nagły wypadek",
@@ -519,7 +521,28 @@
         "greatFor": "Najlepsze dla",
         "dining": "Jedzenie",
         "shops": "Sklepy"
-      }
+      },
+      "whyThisNow": {
+        "title": "Dlaczego teraz",
+        "bestFor": "Najlepsze dla {tags}.",
+        "practicalStop": "{region} to praktyczny przystanek na dzienne zwiedzanie.",
+        "saveNow": "Zapisz teraz, aby porównać z podobnymi opcjami później."
+      },
+      "trustAndTiming": {
+        "title": "Zaufanie i czas",
+        "body": "Zweryfikowane dane partnera. Dodaj najpierw do planu, potem potwierdź."
+      },
+      "typeLabels": {
+        "winery": "Winnice",
+        "restaurant": "Jedzenie i picie",
+        "beach": "Plaże",
+        "ancient": "Starożytne miejsca",
+        "village": "Wioski",
+        "monastery": "Klasztory",
+        "nature": "Natura i wybrzeża",
+        "default": "Miejsca"
+      },
+      "moreInRegion": "Więcej {type} w {region}"
     },
     "aria": {
       "actions": "Działania w Odkrywaj",
@@ -565,6 +588,7 @@
     }
   },
   "airport": {
+    "arriveFaster": "Szybciej na miejscu",
     "page": {
       "meta": {
         "title": "Dopiero wylądowałeś? | Przewodnik lotniskowy Cyprus Winter",
@@ -1174,10 +1198,33 @@
       "beaches": "Plaże"
     }
   },
+  "checklist": {
+    "title": "Przed wyjazdem",
+    "allSet": "Wszystko gotowe. Dobrej podróży."
+  },
   "events": {
     "clearFilters": "Wyczyść filtry",
     "clearFiltersAria": "Wyczyść filtry i pokaż wszystkie wydarzenia",
     "noMatch": "Żadne wydarzenie nie pasuje do filtrów. Spróbuj inny typ lub region.",
+    "typeLabels": {
+      "festival": "Festiwal",
+      "market": "Jarmark",
+      "concert": "Koncert",
+      "food": "Jedzenie i wino",
+      "culture": "Kultura",
+      "sport": "Sport"
+    },
+    "dontMiss": {
+      "title": "Nie przegap",
+      "body": "Trzech Króli i karnawał pokazują duszę wyspy. Bądź wcześnie. Ubierz się ciepło."
+    },
+    "tips": {
+      "title": "Wskazówki planowania",
+      "checkDates": "Sprawdź oficjalne strony pod kątem dokładnych dat — wiele wydarzeń zmienia się co roku.",
+      "bookEarly": "Rezerwuj wcześnie na Trzech Króli, karnawał i jarmarki bożonarodzeniowe.",
+      "arriveEarly": "Przyjdź wcześnie na popularne wydarzenia. Najlepsze miejsca szybko się zapełniają.",
+      "pairEvents": "Połącz wydarzenia z pobliskimi szlakami lub wioskami. Rano wędrówka, po południu wydarzenie."
+    },
     "page": {
       "hero": {
         "title": "Zimowe wydarzenia",
@@ -1211,6 +1258,29 @@
         "learnMoreAria": "Dowiedz się więcej o {name}",
         "learnMoreCta": "Dowiedz się więcej"
       }
+    }
+  },
+  "regions": {
+    "sections": {
+      "villages": "Wioski",
+      "beaches": "Plaże",
+      "ancientSites": "Starożytne miejsca",
+      "wineries": "Winnice",
+      "winterEvents": "Zimowe wydarzenia",
+      "monasteries": "Klasztory i kościoły"
+    },
+    "allWineries": "Wszystkie winnice Cypru →"
+  },
+  "wineRoutes": {
+    "wineriesOnRoute": "Winnice na tej trasie"
+  },
+  "home": {
+    "planning": {
+      "srTitle": "Planowanie i niezbędne informacje",
+      "planTitle": "Zaplanuj podróż",
+      "planSubtitle": "Zbuduj dzień lub wybierz szablon. Zapisuje automatycznie.",
+      "eventsTitle": "Zimowe wydarzenia",
+      "eventsBody": "Trzech Króli, karnawał, degustacje. Co i kiedy."
     }
   },
   "weather": {

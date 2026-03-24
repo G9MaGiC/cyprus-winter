@@ -157,6 +157,8 @@
     "seeMap": "See map",
     "emergency112": "Emergency 112",
     "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "showMore": "Show more",
+    "retry": "Retry",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
     "emergency": "Emergency",
@@ -526,7 +528,28 @@
         "greatFor": "Great for",
         "dining": "Dining",
         "shops": "Shops"
-      }
+      },
+      "whyThisNow": {
+        "title": "Why this now",
+        "bestFor": "Best for {tags}.",
+        "practicalStop": "{region} is a practical stop for the same day plan flow.",
+        "saveNow": "Save now to compare with similar options later without losing context."
+      },
+      "trustAndTiming": {
+        "title": "Trust and timing",
+        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
+      },
+      "typeLabels": {
+        "winery": "Wineries",
+        "restaurant": "Eat & drink",
+        "beach": "Beaches",
+        "ancient": "Ancient sites",
+        "village": "Villages",
+        "monastery": "Monasteries",
+        "nature": "Nature & coasts",
+        "default": "Places"
+      },
+      "moreInRegion": "More {type} in {region}"
     },
     "aria": {
       "actions": "Discover actions",
@@ -572,6 +595,7 @@
     }
   },
   "airport": {
+    "arriveFaster": "Arrive faster",
     "page": {
       "meta": {
         "title": "Just Landed? | Cyprus Winter Airport Guide",
@@ -1261,10 +1285,33 @@
       "beaches": "Beaches"
     }
   },
+  "checklist": {
+    "title": "Before you go",
+    "allSet": "All set. Have a safe trip."
+  },
   "events": {
     "clearFilters": "Clear filters",
     "clearFiltersAria": "Clear filters and show all events",
     "noMatch": "Nothing matches these filters. Try a different type or region.",
+    "typeLabels": {
+      "festival": "Festival",
+      "market": "Market",
+      "concert": "Concert",
+      "food": "Food & Wine",
+      "culture": "Culture",
+      "sport": "Sport"
+    },
+    "dontMiss": {
+      "title": "Don't miss",
+      "body": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+    },
+    "tips": {
+      "title": "Planning tips",
+      "checkDates": "Check official sites for exact dates — many events move year to year.",
+      "bookEarly": "Book early for Epiphany, Carnival, and Christmas markets.",
+      "arriveEarly": "Arrive early for popular events. The best spots fill quickly.",
+      "pairEvents": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+    },
     "page": {
       "hero": {
         "title": "Winter events",
@@ -1298,6 +1345,29 @@
         "learnMoreAria": "Learn more about {name}",
         "learnMoreCta": "Learn more"
       }
+    }
+  },
+  "regions": {
+    "sections": {
+      "villages": "Villages",
+      "beaches": "Beaches",
+      "ancientSites": "Ancient sites",
+      "wineries": "Wineries",
+      "winterEvents": "Winter events",
+      "monasteries": "Monasteries & churches"
+    },
+    "allWineries": "All Cyprus wineries →"
+  },
+  "wineRoutes": {
+    "wineriesOnRoute": "Wineries on this route"
+  },
+  "home": {
+    "planning": {
+      "srTitle": "Planning and essentials",
+      "planTitle": "Plan your trip",
+      "planSubtitle": "Build a day or pick a template. Saves as you go.",
+      "eventsTitle": "Winter events",
+      "eventsBody": "Epiphany, carnival, tastings. What's on when."
     }
   },
   "weather": {

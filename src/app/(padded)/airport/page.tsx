@@ -36,9 +36,10 @@ const CITY_GREEK: Record<string, string> = {
 };
 
 export default async function AirportPage() {
-  const [tNav, tAirport] = await Promise.all([
+  const [tNav, tAirport, tAirportRoot] = await Promise.all([
     getTranslations("nav"),
     getTranslations("airport.page"),
+    getTranslations("airport"),
   ]);
   const FIRST_HOUR_STEPS = [
     { step: "1", label: tAirport("firstHour.steps.arrivals") },
@@ -72,7 +73,7 @@ export default async function AirportPage() {
         </ListPageHero>
 
         <section aria-label="Arrival quick actions" className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
-          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>Arrive faster</p>
+          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>{tAirportRoot("arriveFaster")}</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
               <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">
