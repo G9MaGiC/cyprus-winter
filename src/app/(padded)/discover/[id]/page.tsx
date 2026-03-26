@@ -398,7 +398,7 @@ export default async function AttractionPage({
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Our wines
+                  {tDetail("headings.ourWines")}
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
                   {a.signatureWines.map((wine, i) => (
@@ -435,7 +435,7 @@ export default async function AttractionPage({
             {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Local secret
+                  {tDetail("headings.localSecret")}
                 </h2>
             {a.winterTip && (
               <p className="text-olive/90 text-base leading-relaxed break-words">{a.winterTip}</p>
@@ -456,7 +456,7 @@ export default async function AttractionPage({
             {"backstory" in a && a.backstory && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Backstory
+                  {tDetail("headings.backstory")}
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.backstory}</p>
               </section>
@@ -471,7 +471,7 @@ export default async function AttractionPage({
             {isWinery(a) && typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Location
+                  {tDetail("headings.location")}
                 </h2>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
               <iframe
@@ -500,7 +500,7 @@ export default async function AttractionPage({
             {getSecretsForPlace(a.id).length > 0 && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip}`}>
                 <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
-                  Local secrets
+                  {tDetail("headings.localSecrets")}
                 </h2>
                 <p className="text-sm text-olive/70 mb-4">
                   {tDetail("secrets.subtitle")}

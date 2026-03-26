@@ -13,8 +13,12 @@ function subscribe(callback: () => void) {
 
 function getSnapshot(): string | null {
   if (typeof window === "undefined") return null;
-  const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
-  return stored === "all" || stored === "essential" ? stored : null;
+  try {
+    const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
+    return stored === "all" || stored === "essential" ? stored : null;
+  } catch {
+    return null;
+  }
 }
 
 function getServerSnapshot() {

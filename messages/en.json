@@ -161,6 +161,14 @@
     "retry": "Retry",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
+    "backToTop": "Back to top",
+    "passwordStrength": {
+      "tooShort": "At least 6 characters",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "emergency": "Emergency",
     "touristInfo": "Tourist info",
     "ambulance": "Ambulance",
@@ -523,12 +531,6 @@
       "footer": {
         "body": "Add this place to your plan and pair it with a trail or village nearby."
       },
-      "headings": {
-        "highlights": "Highlights",
-        "greatFor": "Great for",
-        "dining": "Dining",
-        "shops": "Shops"
-      },
       "whyThisNow": {
         "title": "Why this now",
         "bestFor": "Best for {tags}.",
@@ -554,7 +556,18 @@
         "subtitle": "Insider tips for this place. From people who live here.",
         "seeAll": "See all local secrets →"
       },
-      "combineWith": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around."
+      "combineWith": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
+      "headings": {
+        "highlights": "Highlights",
+        "greatFor": "Great for",
+        "dining": "Dining",
+        "shops": "Shops",
+        "ourWines": "Our wines",
+        "localSecret": "Local secret",
+        "backstory": "Backstory",
+        "location": "Location",
+        "localSecrets": "Local secrets"
+      }
     },
     "aria": {
       "actions": "Discover actions",

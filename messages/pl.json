@@ -161,6 +161,14 @@
     "retry": "Ponów",
     "discoverEmptyTitle": "Brak miejsc tutaj.",
     "discoverEmptyBody": "Spróbuj innego filtra albo zapytaj AI—zna wyspę.",
+    "backToTop": "Na górę",
+    "passwordStrength": {
+      "tooShort": "Co najmniej 6 znaków",
+      "good": "Dobre",
+      "strong": "Silne"
+    },
+    "showPassword": "Pokaż hasło",
+    "hidePassword": "Ukryj hasło",
     "emergency": "Nagły wypadek",
     "touristInfo": "Informacja turystyczna",
     "ambulance": "Karetka",
@@ -516,12 +524,6 @@
       "footer": {
         "body": "Dodaj to miejsce do planu i połącz je ze szlakiem lub pobliską wioską."
       },
-      "headings": {
-        "highlights": "Najważniejsze",
-        "greatFor": "Najlepsze dla",
-        "dining": "Jedzenie",
-        "shops": "Sklepy"
-      },
       "whyThisNow": {
         "title": "Dlaczego teraz",
         "bestFor": "Najlepsze dla {tags}.",
@@ -547,7 +549,18 @@
         "subtitle": "Wskazówki od mieszkańców tego miejsca.",
         "seeAll": "Zobacz wszystkie lokalne sekrety →"
       },
-      "combineWith": "Połącz ze szlakami, wioskami lub winnicami w pobliżu. Rano tutaj, po południu gdzie indziej — albo odwrotnie."
+      "combineWith": "Połącz ze szlakami, wioskami lub winnicami w pobliżu. Rano tutaj, po południu gdzie indziej — albo odwrotnie.",
+      "headings": {
+        "highlights": "Najważniejsze",
+        "greatFor": "Najlepsze dla",
+        "dining": "Jedzenie",
+        "shops": "Sklepy",
+        "ourWines": "Nasze wina",
+        "localSecret": "Lokalny sekret",
+        "backstory": "Historia",
+        "location": "Lokalizacja",
+        "localSecrets": "Lokalne sekrety"
+      }
     },
     "aria": {
       "actions": "Działania w Odkrywaj",

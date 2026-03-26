@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export type AuthPasswordInputProps = {
   id: string;
@@ -23,11 +24,11 @@ const inputBase =
   "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors duration-200";
 const inputError = "border-terracotta/40 focus-visible:ring-terracotta/50";
 
-function getStrengthLabel(password: string): string | null {
+function getStrengthKey(password: string): string | null {
   if (password.length === 0) return null;
-  if (password.length < 6) return "At least 6 characters";
-  if (password.length >= 6 && password.length < 10) return "Good";
-  return "Strong";
+  if (password.length < 6) return "tooShort";
+  if (password.length >= 6 && password.length < 10) return "good";
+  return "strong";
 }
 
 function getStrengthColor(password: string): string {
@@ -51,9 +52,11 @@ export default function AuthPasswordInput({
   autoComplete = "current-password",
   "aria-describedby": ariaDescribedby,
 }: AuthPasswordInputProps) {
+  const tCommon = useTranslations("common");
   const [showPassword, setShowPassword] = useState(false);
   const hasError = !!error;
-  const strengthLabel = showStrength ? getStrengthLabel(value) : null;
+  const strengthKey = showStrength ? getStrengthKey(value) : null;
+  const strengthLabel = strengthKey ? tCommon(`passwordStrength.${strengthKey}` as "passwordStrength.tooShort" | "passwordStrength.good" | "passwordStrength.strong") : null;
   const strengthColor = showStrength ? getStrengthColor(value) : "";
 
   const describedBy = [hint && `${id}-hint`, strengthLabel && `${id}-strength`, error && `${id}-error`]
@@ -110,7 +113,7 @@ export default function AuthPasswordInput({
           type="button"
           onClick={() => setShowPassword((v) => !v)}
           className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
-          aria-label={showPassword ? "Hide password" : "Show password"}
+          aria-label={showPassword ? tCommon("hidePassword") : tCommon("showPassword")}
           tabIndex={-1}
         >
           {showPassword ? (

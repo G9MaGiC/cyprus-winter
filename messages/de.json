@@ -161,6 +161,14 @@
     "retry": "Erneut versuchen",
     "discoverEmptyTitle": "Keine Orte hier.",
     "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel.",
+    "backToTop": "Nach oben",
+    "passwordStrength": {
+      "tooShort": "Mindestens 6 Zeichen",
+      "good": "Gut",
+      "strong": "Stark"
+    },
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
     "emergency": "Notfall",
     "touristInfo": "Touristeninfo",
     "ambulance": "Krankenwagen",
@@ -523,12 +531,6 @@
       "footer": {
         "body": "Fügen Sie diesen Ort zu Ihrem Plan hinzu und kombinieren Sie ihn mit einem nahen Trail oder Dorf."
       },
-      "headings": {
-        "highlights": "Highlights",
-        "greatFor": "Ideal für",
-        "dining": "Essen",
-        "shops": "Shops"
-      },
       "whyThisNow": {
         "title": "Warum jetzt",
         "bestFor": "Ideal für {tags}.",
@@ -554,7 +556,18 @@
         "subtitle": "Insidertipps für diesen Ort. Von Einheimischen.",
         "seeAll": "Alle lokalen Geheimnisse →"
       },
-      "combineWith": "Kombinieren Sie mit Wanderwegen, Dörfern oder Weingütern in der Nähe. Vormittags hier, nachmittags dort — oder umgekehrt."
+      "combineWith": "Kombinieren Sie mit Wanderwegen, Dörfern oder Weingütern in der Nähe. Vormittags hier, nachmittags dort — oder umgekehrt.",
+      "headings": {
+        "highlights": "Highlights",
+        "greatFor": "Ideal für",
+        "dining": "Essen",
+        "shops": "Shops",
+        "ourWines": "Unsere Weine",
+        "localSecret": "Lokales Geheimnis",
+        "backstory": "Hintergrund",
+        "location": "Standort",
+        "localSecrets": "Lokale Geheimnisse"
+      }
     },
     "aria": {
       "actions": "Discover-Aktionen",
