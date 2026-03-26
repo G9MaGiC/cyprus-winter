@@ -341,6 +341,31 @@
       "kicker": "Weingüter",
       "subtitle": "Verkostungen am Kamin, oft schenkt der Besitzer ein. Für Wochenenden besser reservieren."
     },
+    "placeOfDay": {
+      "todaysPick": "Tipp des Tages — ein Ort, der die Fahrt lohnt",
+      "addToPlan": "Zum Plan hinzufügen",
+      "seeDetails": "Details ansehen →",
+      "checkReports": "Prüfen Sie Berichte, bevor Sie losfahren.",
+      "goodDayForIt": "Guter Tag dafür",
+      "fallback": {
+        "winery": "Heizstrahler auf der Terrasse.",
+        "village": "Kopfsteinpflaster nur für Sie unter der Woche.",
+        "monastery": "Ruhig diese Woche.",
+        "nature": "Klar heute.",
+        "ancient": "Bestes Licht am Nachmittag.",
+        "beach": "Ruhig im Winter.",
+        "default": "Einen Besuch wert."
+      },
+      "overlay": {
+        "winery": "Ruhig diese Woche",
+        "village": "Ruhig diese Woche",
+        "monastery": "Ruhig diese Woche",
+        "nature": "Klar heute",
+        "ancient": "Bestes Licht am Nachmittag",
+        "beach": "Bestes Licht am Nachmittag",
+        "default": "Einen Besuch wert"
+      }
+    },
     "rightNow": {
       "subtitleConsent": "Was passt gerade bei Ihnen?",
       "subtitleRegion": "Vorschläge in {region}",
@@ -909,7 +934,10 @@
       "viewTrail": "Trail ansehen",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Startpunkt",
-      "footerCount": "{count, plural, one {# Trail auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.} other {# Trails auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.}}"
+      "footerCount": "{count, plural, one {# Trail auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.} other {# Trails auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.}}",
+      "getDirections": "Route berechnen →",
+      "stops": "Stopps",
+      "openInMaps": "In Maps öffnen →"
     },
     "page": {
       "hero": {

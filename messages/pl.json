@@ -341,6 +341,31 @@
       "kicker": "Winnice",
       "subtitle": "Degustacje przy kominku, często serwuje właściciel. Na weekendy lepiej rezerwować wcześniej."
     },
+    "placeOfDay": {
+      "todaysPick": "Wybór dnia — jedno miejsce warte przejażdżki",
+      "addToPlan": "Dodaj do planu",
+      "seeDetails": "Zobacz szczegóły →",
+      "checkReports": "Sprawdź raporty przed wyjazdem.",
+      "goodDayForIt": "Dobry dzień na to",
+      "fallback": {
+        "winery": "Grzejniki na tarasie.",
+        "village": "Bruk tylko dla Ciebie w tygodniu.",
+        "monastery": "Spokojnie w tym tygodniu.",
+        "nature": "Klarownie dziś.",
+        "ancient": "Najlepsze światło po południu.",
+        "beach": "Spokojnie zimą.",
+        "default": "Warto odwiedzić."
+      },
+      "overlay": {
+        "winery": "Spokojnie w tym tygodniu",
+        "village": "Spokojnie w tym tygodniu",
+        "monastery": "Spokojnie w tym tygodniu",
+        "nature": "Klarownie dziś",
+        "ancient": "Najlepsze światło po południu",
+        "beach": "Najlepsze światło po południu",
+        "default": "Warto odwiedzić"
+      }
+    },
     "rightNow": {
       "subtitleConsent": "Co ma sens tam, gdzie jesteś",
       "subtitleRegion": "Sugestie w regionie {region}",
@@ -902,7 +927,10 @@
       "viewTrail": "Zobacz szlak",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Punkt startowy",
-      "footerCount": "{count, plural, one {# szlak na mapie. Dotknij znacznika, aby zobaczyć więcej.} other {# szlaki na mapie. Dotknij znacznika, aby zobaczyć więcej.}}"
+      "footerCount": "{count, plural, one {# szlak na mapie. Dotknij znacznika, aby zobaczyć więcej.} other {# szlaki na mapie. Dotknij znacznika, aby zobaczyć więcej.}}",
+      "getDirections": "Wyznacz trasę →",
+      "stops": "Przystanki",
+      "openInMaps": "Otwórz w Mapach →"
     },
     "page": {
       "hero": {

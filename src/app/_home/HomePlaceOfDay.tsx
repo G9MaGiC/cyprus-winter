@@ -8,10 +8,14 @@ import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { trails } from "@/data/trails";
+import { useTranslations } from "next-intl";
 
 const PLACE_TYPES = ["attraction", "trail", "winery"] as const;
 
-function getPlaceOfDayData() {
+const OVERLAY_TYPES = ["winery", "village", "monastery", "nature", "ancient", "beach"] as const;
+type OverlayType = (typeof OVERLAY_TYPES)[number];
+
+function getPlaceOfDayData(tPod: (key: string) => string) {
   const candidates = allPlaces.filter((p) =>
     PLACE_TYPES.includes(p.type as (typeof PLACE_TYPES)[number])
   );
@@ -25,7 +29,7 @@ function getPlaceOfDayData() {
     const tease =
       trail.winterNotes ||
       trail.description.split(".")[0] + "." ||
-      "Check reports before you go.";
+      tPod("checkReports");
     return {
       id: picked.id,
       name: picked.name,
@@ -34,7 +38,7 @@ function getPlaceOfDayData() {
       image: getTrailImage(picked.id),
       imageAlt: `${picked.name}, ${picked.region} — Troodos trail`,
       tease: tease.length > 100 ? tease.slice(0, 97) + "…" : tease,
-      overlay: "Good day for it",
+      overlay: tPod("goodDayForIt"),
     };
   }
 
@@ -42,29 +46,15 @@ function getPlaceOfDayData() {
   if (!att) return null;
 
   const desc = att.description;
-  const fallbackByType: Record<string, string> = {
-    winery: "Heaters on the terrace.",
-    village: "Cobbles to yourself midweek.",
-    monastery: "Quiet this week.",
-    nature: "Clear today.",
-    ancient: "Best light in afternoon.",
-    beach: "Quiet in winter.",
-  };
+  const fallbackKey = OVERLAY_TYPES.includes(att.type as OverlayType) ? att.type : "default";
   const tease =
     att.winterTip ||
     desc.split(".")[0] + "." ||
-    fallbackByType[att.type] ||
-    `${att.region}. Worth a visit.`;
+    tPod(`fallback.${fallbackKey}`) ||
+    `${att.region}. ${tPod("fallback.default")}`;
   const shortTease = tease.length > 100 ? tease.slice(0, 97) + "…" : tease;
 
-  const overlayByType: Record<string, string> = {
-    winery: "Quiet this week",
-    village: "Quiet this week",
-    monastery: "Quiet this week",
-    nature: "Clear today",
-    ancient: "Best light in afternoon",
-    beach: "Best light in afternoon",
-  };
+  const overlayKey = OVERLAY_TYPES.includes(att.type as OverlayType) ? att.type : "default";
 
   return {
     id: picked.id,
@@ -74,7 +64,7 @@ function getPlaceOfDayData() {
     image: getAttractionImage(picked.id, att.type),
     imageAlt: `${picked.name}, ${picked.region} — Cyprus winter`,
     tease: shortTease,
-    overlay: overlayByType[att.type] ?? "Worth a visit",
+    overlay: tPod(`overlay.${overlayKey}`),
   };
 }
 
@@ -84,7 +74,8 @@ export default function HomePlaceOfDay({
   LinkComponent: ComponentType<LinkProps>;
 }) {
   const Link = LinkComponent;
-  const place = getPlaceOfDayData();
+  const tPod = useTranslations("home.placeOfDay");
+  const place = getPlaceOfDayData(tPod);
   const planItem = place ? getPlaceById(place.id) : undefined;
   if (!place) return null;
 
@@ -118,7 +109,7 @@ export default function HomePlaceOfDay({
           </Link>
           <div className={`flex-1 flex flex-col ${CARD.contentLg}`}>
             <p id="place-of-day-heading" className={`${TYPE.kicker} mb-1`}>
-              Today&apos;s pick — one place worth the drive
+              {tPod("todaysPick")}
             </p>
             <Link
               href={place.href}
@@ -132,13 +123,13 @@ export default function HomePlaceOfDay({
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               {planItem && <NavigateButton place={planItem} />}
-              <AddToItineraryButton placeId={place.id} label="Add to plan" />
+              <AddToItineraryButton placeId={place.id} label={tPod("addToPlan")} />
               <Link
                 href={place.href}
                 prefetch="auto"
                 className="text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline underline-offset-2 transition-colors"
               >
-                See details →
+                {tPod("seeDetails")}
               </Link>
             </div>
           </div>

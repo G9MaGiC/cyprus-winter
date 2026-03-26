@@ -341,6 +341,31 @@
       "kicker": "Wineries",
       "subtitle": "Fireside tastings, often the owner pouring. Reserve ahead for weekends."
     },
+    "placeOfDay": {
+      "todaysPick": "Today's pick — one place worth the drive",
+      "addToPlan": "Add to plan",
+      "seeDetails": "See details →",
+      "checkReports": "Check reports before you go.",
+      "goodDayForIt": "Good day for it",
+      "fallback": {
+        "winery": "Heaters on the terrace.",
+        "village": "Cobbles to yourself midweek.",
+        "monastery": "Quiet this week.",
+        "nature": "Clear today.",
+        "ancient": "Best light in afternoon.",
+        "beach": "Quiet in winter.",
+        "default": "Worth a visit."
+      },
+      "overlay": {
+        "winery": "Quiet this week",
+        "village": "Quiet this week",
+        "monastery": "Quiet this week",
+        "nature": "Clear today",
+        "ancient": "Best light in afternoon",
+        "beach": "Best light in afternoon",
+        "default": "Worth a visit"
+      }
+    },
     "rightNow": {
       "subtitleConsent": "What makes sense where you are",
       "subtitleRegion": "Suggestions in {region}",
@@ -909,7 +934,10 @@
       "viewTrail": "View trail",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Trailhead",
-      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
+      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}",
+      "getDirections": "Get directions →",
+      "stops": "Stops",
+      "openInMaps": "Open in Maps →"
     },
     "page": {
       "hero": {
