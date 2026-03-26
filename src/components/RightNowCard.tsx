@@ -39,7 +39,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
         <div className="w-20 h-20 sm:w-full sm:aspect-[4/3] shrink-0 relative overflow-hidden bg-sand-200/50">
           <Image
             src={item.image}
-            alt=""
+            alt={`${item.name}, ${item.region}`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="80px 80px, (max-width: 640px) 80px, 50vw"

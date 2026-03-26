@@ -549,7 +549,12 @@
         "nature": "Nature & coasts",
         "default": "Places"
       },
-      "moreInRegion": "More {type} in {region}"
+      "moreInRegion": "More {type} in {region}",
+      "secrets": {
+        "subtitle": "Insider tips for this place. From people who live here.",
+        "seeAll": "See all local secrets →"
+      },
+      "combineWith": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around."
     },
     "aria": {
       "actions": "Discover actions",
@@ -1593,6 +1598,11 @@
         "and": "and",
         "privacy": "Privacy Policy",
         "bodySuffix": "."
+      },
+      "statusInfo": {
+        "title": "Booking states:",
+        "requested": "Requested now to confirmed after guide reply.",
+        "offline": "If you are offline, your request is queued as sync pending and retried automatically."
       }
     }
     ,

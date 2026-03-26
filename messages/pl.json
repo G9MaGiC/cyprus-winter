@@ -542,7 +542,12 @@
         "nature": "Natura i wybrzeża",
         "default": "Miejsca"
       },
-      "moreInRegion": "Więcej {type} w {region}"
+      "moreInRegion": "Więcej {type} w {region}",
+      "secrets": {
+        "subtitle": "Wskazówki od mieszkańców tego miejsca.",
+        "seeAll": "Zobacz wszystkie lokalne sekrety →"
+      },
+      "combineWith": "Połącz ze szlakami, wioskami lub winnicami w pobliżu. Rano tutaj, po południu gdzie indziej — albo odwrotnie."
     },
     "aria": {
       "actions": "Działania w Odkrywaj",
@@ -1560,6 +1565,11 @@
         "and": "oraz",
         "privacy": "Politykę prywatności",
         "bodySuffix": "."
+      },
+      "statusInfo": {
+        "title": "Status rezerwacji:",
+        "requested": "Wysłane teraz — potwierdzone po odpowiedzi przewodnika.",
+        "offline": "Jeśli jesteś offline, żądanie jest zapisane i wysyłane automatycznie."
       }
     }
     ,

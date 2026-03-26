@@ -503,7 +503,7 @@ export default async function AttractionPage({
                   Local secrets
                 </h2>
                 <p className="text-sm text-olive/70 mb-4">
-                  Insider tips for this place. From people who live here.
+                  {tDetail("secrets.subtitle")}
                 </p>
                 <div className="space-y-4">
                   {getSecretsForPlace(a.id).map((s) => (
@@ -517,7 +517,7 @@ export default async function AttractionPage({
                   href="/secrets"
                   className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
-                  See all local secrets →
+                  {tDetail("secrets.seeAll")}
                 </AppLink>
               </section>
             )}
@@ -525,7 +525,7 @@ export default async function AttractionPage({
             {a.combineWith && a.combineWith.length > 0 && (
               <RelatedPlacesBlock
                 ids={a.combineWith}
-                description="Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around."
+                description={tDetail("combineWith")}
                 showAddToItinerary
               />
             )}

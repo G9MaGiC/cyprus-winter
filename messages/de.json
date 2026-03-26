@@ -549,7 +549,12 @@
         "nature": "Natur & Küsten",
         "default": "Orte"
       },
-      "moreInRegion": "Mehr {type} in {region}"
+      "moreInRegion": "Mehr {type} in {region}",
+      "secrets": {
+        "subtitle": "Insidertipps für diesen Ort. Von Einheimischen.",
+        "seeAll": "Alle lokalen Geheimnisse →"
+      },
+      "combineWith": "Kombinieren Sie mit Wanderwegen, Dörfern oder Weingütern in der Nähe. Vormittags hier, nachmittags dort — oder umgekehrt."
     },
     "aria": {
       "actions": "Discover-Aktionen",
@@ -1593,6 +1598,11 @@
         "and": "und",
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
+      },
+      "statusInfo": {
+        "title": "Buchungsstatus:",
+        "requested": "Jetzt angefragt — bestätigt nach Antwort des Guides.",
+        "offline": "Wenn Sie offline sind, wird Ihre Anfrage als ausstehend gespeichert und automatisch erneut gesendet."
       }
     }
     ,

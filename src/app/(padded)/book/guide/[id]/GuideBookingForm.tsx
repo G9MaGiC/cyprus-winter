@@ -172,8 +172,8 @@ export default function GuideBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="guide" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after guide reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p><strong>{t("statusInfo.title")}</strong> {t("statusInfo.requested")}</p>
+        <p className="mt-1">{t("statusInfo.offline")}</p>
       </div>
       {error && (
         <p
