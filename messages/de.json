@@ -1027,6 +1027,7 @@
       "yourItinerary": "Ihr Reiseplan",
       "clearDay": "Alle Orte aus Tag {day} entfernen",
       "browsePlacesToAddDay": "Orte durchsuchen, um sie zu Ihrem Tag hinzuzufügen",
+      "removeFromItinerary": "{name} aus der Reiseroute entfernen",
       "scrollToTemplates": "Zu Vorlagen scrollen",
       "addCombo": "{label} zum Plan hinzufügen",
       "selectDay": "Tag auswählen",
@@ -1047,7 +1048,57 @@
       "pairWith": "Passt zu…",
       "worksWell": "Funktioniert gut mit dem, was Sie hinzugefügt haben. Tippen Sie zum Hinzufügen.",
       "addToDayAria": "{name} zu diesem Tag hinzufügen"
+    },
+    "share": {
+      "places": "Orte",
+      "days": "Tage",
+      "copyAndShare": "Kopieren & teilen",
+      "linkCopied": "Link kopiert",
+      "copyLink": "Link kopieren",
+      "copied": "Kopiert",
+      "copyItinerary": "Reiseroute kopieren (Text)",
+      "shareText": "Meine Zypern-Winter-Reiseroute —"
+    },
+    "footer": {
+      "winterTip": "Winter-Tipp: Tageslicht endet gegen 17 Uhr. Wanderungen bis 10 Uhr starten; Verkostungen 24–48 Std. vorher buchen.",
+      "bookTastings": "Verkostungen buchen",
+      "discover": "Entdecken",
+      "trails": "Wanderwege",
+      "weather": "Wetter"
+    },
+    "typeBadge": {
+      "trail": "Wanderweg",
+      "winery": "Weingut",
+      "place": "Ort",
+      "event": "Event",
+      "eat": "Essen"
     }
+  },
+  "cookie": {
+    "title": "Cookie-Einwilligung.",
+    "body": "Wir verwenden notwendige Cookies für den Dienst und optionale Analysen zur Verbesserung. Mit Klick auf \"Akzeptieren\" erlauben Sie Analysen.",
+    "learnMore": "Mehr erfahren",
+    "essentialOnly": "Nur notwendige",
+    "accept": "Akzeptieren"
+  },
+  "recentlyViewed": {
+    "heading": "Kürzlich angesehen",
+    "clear": "Löschen",
+    "types": {
+      "beach": "Strand",
+      "ancientSite": "Antike Stätte",
+      "village": "Dorf",
+      "monastery": "Kloster",
+      "winery": "Weingut",
+      "restaurant": "Restaurant",
+      "trail": "Wanderweg",
+      "event": "Event"
+    }
+  },
+  "relatedPlaces": {
+    "heading": "Passt gut zusammen",
+    "addToPlan": "{name} zum Plan hinzufügen",
+    "addToPlanShort": "Zum Plan hinzufügen"
   },
   "placePicker": {
     "tabs": {

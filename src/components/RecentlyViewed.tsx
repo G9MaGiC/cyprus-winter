@@ -11,15 +11,15 @@ import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
-const typeLabels: Record<string, string> = {
-  beach: "Beach",
-  ancientSite: "Ancient Site",
-  village: "Village",
-  monastery: "Monastery",
-  winery: "Winery",
-  restaurant: "Restaurant",
-  trail: "Trail",
-  event: "Event",
+const TYPE_LABEL_KEYS: Record<string, string> = {
+  beach: "beach",
+  ancientSite: "ancientSite",
+  village: "village",
+  monastery: "monastery",
+  winery: "winery",
+  restaurant: "restaurant",
+  trail: "trail",
+  event: "event",
 };
 
 const typePaths: Record<string, string> = {
@@ -33,6 +33,7 @@ function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string
 
 export function RecentlyViewedStrip() {
   const tCommon = useTranslations("common");
+  const tRecent = useTranslations("recentlyViewed");
   const [items, setItems] = useState<ReturnType<typeof getRecentlyViewed>>([]);
   const [isClient, setIsClient] = useState(false);
 
@@ -51,7 +52,7 @@ export function RecentlyViewedStrip() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`flex items-center justify-between ${SECTION.titleGap}`}>
           <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-olive/70`}>
-            Recently viewed
+            {tRecent("heading")}
           </h2>
           <button
             type="button"
@@ -64,7 +65,7 @@ export function RecentlyViewedStrip() {
             }}
             className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] py-2 px-3 -m-2 text-xs text-olive/50 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
           >
-            Clear
+            {tRecent("clear")}
           </button>
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x">
@@ -74,7 +75,7 @@ export function RecentlyViewedStrip() {
               href={getItemPath(item)}
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
             >
-              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
+              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{TYPE_LABEL_KEYS[item.type] ? tRecent(`types.${TYPE_LABEL_KEYS[item.type]}`) : item.type}</p>
               <p className={`${TYPE.cardTitle} text-sm truncate`}>
                 {item.name}
               </p>

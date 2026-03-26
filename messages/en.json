@@ -1027,6 +1027,7 @@
       "yourItinerary": "Your itinerary",
       "clearDay": "Clear all places from Day {day}",
       "browsePlacesToAddDay": "Browse places to add to your day",
+      "removeFromItinerary": "Remove {name} from itinerary",
       "scrollToTemplates": "Scroll to templates",
       "addCombo": "Add {label} to plan",
       "selectDay": "Select day",
@@ -1047,7 +1048,57 @@
       "pairWith": "Pair with…",
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
+    },
+    "share": {
+      "places": "places",
+      "days": "days",
+      "copyAndShare": "Copy & share",
+      "linkCopied": "Link copied",
+      "copyLink": "Copy link",
+      "copied": "Copied",
+      "copyItinerary": "Copy itinerary (text)",
+      "shareText": "My Cyprus Winter itinerary —"
+    },
+    "footer": {
+      "winterTip": "Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.",
+      "bookTastings": "Book tastings",
+      "discover": "Discover",
+      "trails": "Trails",
+      "weather": "Weather"
+    },
+    "typeBadge": {
+      "trail": "Trail",
+      "winery": "Winery",
+      "place": "Place",
+      "event": "Event",
+      "eat": "Eat"
     }
+  },
+  "cookie": {
+    "title": "Cookie consent.",
+    "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
+    "learnMore": "Learn more",
+    "essentialOnly": "Essential only",
+    "accept": "Accept"
+  },
+  "recentlyViewed": {
+    "heading": "Recently viewed",
+    "clear": "Clear",
+    "types": {
+      "beach": "Beach",
+      "ancientSite": "Ancient Site",
+      "village": "Village",
+      "monastery": "Monastery",
+      "winery": "Winery",
+      "restaurant": "Restaurant",
+      "trail": "Trail",
+      "event": "Event"
+    }
+  },
+  "relatedPlaces": {
+    "heading": "Pair well with",
+    "addToPlan": "Add {name} to plan",
+    "addToPlanShort": "Add to plan"
   },
   "placePicker": {
     "tabs": {

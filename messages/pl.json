@@ -1020,6 +1020,7 @@
       "yourItinerary": "Twój plan podróży",
       "clearDay": "Wyczyść wszystkie miejsca z Dnia {day}",
       "browsePlacesToAddDay": "Przeglądaj miejsca, aby dodać je do swojego dnia",
+      "removeFromItinerary": "Usuń {name} z planu podróży",
       "scrollToTemplates": "Przewiń do szablonów",
       "addCombo": "Dodaj {label} do planu",
       "selectDay": "Wybierz dzień",
@@ -1040,7 +1041,57 @@
       "pairWith": "Dopasuj do…",
       "worksWell": "Dobrze pasuje do tego, co dodałeś. Kliknij, aby dodać.",
       "addToDayAria": "Dodaj {name} do tego dnia"
+    },
+    "share": {
+      "places": "miejsc",
+      "days": "dni",
+      "copyAndShare": "Kopiuj i udostępnij",
+      "linkCopied": "Link skopiowany",
+      "copyLink": "Kopiuj link",
+      "copied": "Skopiowano",
+      "copyItinerary": "Kopiuj plan (tekst)",
+      "shareText": "Mój plan zimowy na Cyprze —"
+    },
+    "footer": {
+      "winterTip": "Wskazówka zimowa: światło kończy się ok. 17:00. Zacznij szlaki do 10:00; rezerwuj degustacje 24–48 godz. wcześniej.",
+      "bookTastings": "Zarezerwuj degustacje",
+      "discover": "Odkrywaj",
+      "trails": "Szlaki",
+      "weather": "Pogoda"
+    },
+    "typeBadge": {
+      "trail": "Szlak",
+      "winery": "Winnica",
+      "place": "Miejsce",
+      "event": "Wydarzenie",
+      "eat": "Jedzenie"
     }
+  },
+  "cookie": {
+    "title": "Zgoda na cookies.",
+    "body": "Używamy niezbędnych plików cookie do działania usługi i opcjonalnych analiz do jej ulepszania. Klikając \"Akceptuj\", zezwalasz na analizy.",
+    "learnMore": "Dowiedz się więcej",
+    "essentialOnly": "Tylko niezbędne",
+    "accept": "Akceptuj"
+  },
+  "recentlyViewed": {
+    "heading": "Ostatnio przeglądane",
+    "clear": "Wyczyść",
+    "types": {
+      "beach": "Plaża",
+      "ancientSite": "Stanowisko starożytne",
+      "village": "Wioska",
+      "monastery": "Klasztor",
+      "winery": "Winnica",
+      "restaurant": "Restauracja",
+      "trail": "Szlak",
+      "event": "Wydarzenie"
+    }
+  },
+  "relatedPlaces": {
+    "heading": "Dobrze pasuje do",
+    "addToPlan": "Dodaj {name} do planu",
+    "addToPlanShort": "Dodaj do planu"
   },
   "placePicker": {
     "tabs": {

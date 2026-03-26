@@ -6,23 +6,25 @@ import type { PlanItem } from "@/data";
 import NavigateButton from "@/components/NavigateButton";
 import { useTranslations } from "next-intl";
 
-function TypeBadge({ type }: { type: PlanItem["type"] }) {
-  const style: Record<PlanItem["type"], string> = {
-    trail: "bg-aegean/15 text-aegean",
-    winery: "bg-terracotta/15 text-terracotta",
-    attraction: "bg-sage/15 text-olive",
-    event: "bg-golden/15 text-golden",
-    restaurant: "bg-golden/15 text-charcoal",
-  };
-  const label: Record<PlanItem["type"], string> = {
-    trail: "Trail",
-    winery: "Winery",
-    attraction: "Place",
-    event: "Event",
-    restaurant: "Eat",
-  };
+const BADGE_STYLE: Record<PlanItem["type"], string> = {
+  trail: "bg-aegean/15 text-aegean",
+  winery: "bg-terracotta/15 text-terracotta",
+  attraction: "bg-sage/15 text-olive",
+  event: "bg-golden/15 text-golden",
+  restaurant: "bg-golden/15 text-charcoal",
+};
+
+const BADGE_KEY: Record<PlanItem["type"], string> = {
+  trail: "trail",
+  winery: "winery",
+  attraction: "place",
+  event: "event",
+  restaurant: "eat",
+};
+
+function TypeBadge({ type, tPlan }: { type: PlanItem["type"]; tPlan: (key: string) => string }) {
   return (
-    <span className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium ${style[type]}`}>{label[type]}</span>
+    <span className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium ${BADGE_STYLE[type]}`}>{tPlan(`typeBadge.${BADGE_KEY[type]}`)}</span>
   );
 }
 
@@ -42,6 +44,7 @@ export default function ItineraryCard({
   inTimeline?: boolean;
 }) {
   const tCommon = useTranslations("common");
+  const tPlan = useTranslations("plan");
   const href =
     place.type === "trail"
       ? `/trails/${place.id}`
@@ -65,7 +68,7 @@ export default function ItineraryCard({
       )}
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2 mb-1">
-          <TypeBadge type={place.type} />
+          <TypeBadge type={place.type} tPlan={tPlan} />
           <span className="text-xs text-olive/50">·</span>
           <span className="text-xs text-olive/60 truncate" title={place.region}>{place.region}</span>
         </div>
@@ -92,7 +95,7 @@ export default function ItineraryCard({
           type="button"
           onClick={onRemove}
           className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          aria-label={`Remove ${place.name} from itinerary`}
+          aria-label={tPlan("aria.removeFromItinerary", { name: place.name })}
         >
           {tCommon("remove")}
         </button>
