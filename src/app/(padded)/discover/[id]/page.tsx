@@ -298,7 +298,7 @@ export default async function AttractionPage({
           a.contactPhone ||
           ("shopUrl" in a && a.shopUrl)) && (
           <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-            <h2 className="${TYPE.kicker} text-olive/70 mb-1">
+            <h2 className={`${TYPE.kicker} text-olive/70 mb-1`}>
               {tDetail("booking.title")}
             </h2>
             <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
