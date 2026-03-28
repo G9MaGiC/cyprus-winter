@@ -14,7 +14,6 @@ export default function Error({
 }) {
   const t = useTranslations("errors.page");
   const tCommon = useTranslations("common");
-  const tFooter = useTranslations("footer");
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -48,7 +47,8 @@ export default function Error({
           </Link>
         </div>
         <p className={`${SECTION.blockTop} text-sm text-olive/60 break-words`}>
-          {tFooter("emergency")} <strong>112</strong> {" · "} {tFooter("touristInfo")} <strong>1460</strong> {" · "} {tFooter("ambulance")} <strong>199</strong>
+          {tCommon("emergency")} <strong>112</strong> · {tCommon("touristInfo")} <strong>1460</strong> ·{" "}
+          {tCommon("ambulance")} <strong>199</strong>
         </p>
       </div>
     </main>

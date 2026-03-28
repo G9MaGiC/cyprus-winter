@@ -68,7 +68,7 @@
 - Create: `src/lib/concierge/types.ts`
 - Test: `src/lib/concierge/__tests__/types.test.ts`
 
-- [ ] **Step 1: Write the type definitions**
+- [x] **Step 1: Write the type definitions**
 
 ```typescript
 // src/lib/concierge/types.ts
@@ -137,7 +137,7 @@ export type OrchestratorResult = {
 };
 ```
 
-- [ ] **Step 2: Write a smoke test**
+- [x] **Step 2: Write a smoke test**
 
 ```typescript
 // src/lib/concierge/__tests__/types.test.ts
@@ -169,12 +169,12 @@ describe("concierge types", () => {
 });
 ```
 
-- [ ] **Step 3: Run test to verify it passes**
+- [x] **Step 3: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/types.test.ts`
 Expected: PASS (type-only tests compile and pass)
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/lib/concierge/types.ts src/lib/concierge/__tests__/types.test.ts
@@ -193,7 +193,7 @@ Add `seasonTags`, `indoorOutdoor`, `budgetLevel`, and `editorialPriority` fields
 - Modify: `src/data/trails.ts` (type + data entries)
 - Modify: `src/data/events.ts` (type + data entries)
 
-- [ ] **Step 1: Add fields to `Attraction` type**
+- [x] **Step 1: Add fields to `Attraction` type**
 
 Add after the `longitude` field in `src/data/attractions.ts`:
 
@@ -208,7 +208,7 @@ Add after the `longitude` field in `src/data/attractions.ts`:
   editorialPriority?: number;
 ```
 
-- [ ] **Step 2: Populate enrichment fields on all attraction entries**
+- [x] **Step 2: Populate enrichment fields on all attraction entries**
 
 For each attraction, add the 4 new fields based on the attraction's characteristics. Examples:
 - Beaches: `seasonTags: ["winter", "spring", "autumn"]`, `indoorOutdoor: "outdoor"`, `budgetLevel: "free"`, `editorialPriority: 3`
@@ -218,7 +218,7 @@ For each attraction, add the 4 new fields based on the attraction's characterist
 
 Use judgment for each individual entry. Key villages like Omodos and Lefkara get `editorialPriority: 1`.
 
-- [ ] **Step 3: Add fields to `Winery` type and populate**
+- [x] **Step 3: Add fields to `Winery` type and populate**
 
 Add to `Winery` type in `src/data/wineries.ts`:
 
@@ -231,7 +231,7 @@ Add to `Winery` type in `src/data/wineries.ts`:
 
 Most wineries: `seasonTags: ["winter"]`, `indoorOutdoor: "mixed"`, `budgetLevel: "mid"`, `editorialPriority` varies (Tsiakkas = 1, lesser-known = 3).
 
-- [ ] **Step 4: Add `editorialPriority` to `Trail` type and populate**
+- [x] **Step 4: Add `editorialPriority` to `Trail` type and populate**
 
 Trails already have `bestSeason` which serves as `seasonTags`. Add only:
 
@@ -241,7 +241,7 @@ Trails already have `bestSeason` which serves as `seasonTags`. Add only:
 
 Artemis = 1, Atalante = 1, Caledonia = 1, lesser trails = 2–3.
 
-- [ ] **Step 5: Add enrichment fields to `Restaurant` type and populate**
+- [x] **Step 5: Add enrichment fields to `Restaurant` type and populate**
 
 Add to `Restaurant` type in `src/data/restaurants.ts` after the `longitude` field:
 
@@ -254,7 +254,7 @@ Add to `Restaurant` type in `src/data/restaurants.ts` after the `longitude` fiel
 
 Most restaurants: `seasonTags: ["winter"]`, `indoorOutdoor: "indoor"`, `budgetLevel` mapped from `priceRange` (€ → "low", €€ → "mid", €€€ → "high"), `editorialPriority` varies.
 
-- [ ] **Step 6: Add `editorialPriority` to `WinterEvent` type and populate**
+- [x] **Step 6: Add `editorialPriority` to `WinterEvent` type and populate**
 
 ```typescript
   editorialPriority?: number;
@@ -262,12 +262,12 @@ Most restaurants: `seasonTags: ["winter"]`, `indoorOutdoor: "indoor"`, `budgetLe
 
 Limassol Carnival = 1, Commandaria Festival = 1, others = 2–3.
 
-- [ ] **Step 7: Verify the app still builds**
+- [x] **Step 7: Verify the app still builds**
 
 Run: `npx next build`
 Expected: Build succeeds with no type errors.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/data/attractions.ts src/data/wineries.ts src/data/trails.ts src/data/events.ts src/data/restaurants.ts
@@ -282,7 +282,7 @@ git commit -m "feat(data): add season, indoor/outdoor, budget, and editorial pri
 - Create: `src/lib/concierge/ranking.ts`
 - Test: `src/lib/concierge/__tests__/ranking.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```typescript
 // src/lib/concierge/__tests__/ranking.test.ts
@@ -338,12 +338,12 @@ describe("rankPlaces", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/ranking.test.ts`
 Expected: FAIL — module not found
 
-- [ ] **Step 3: Implement the ranking engine**
+- [x] **Step 3: Implement the ranking engine**
 
 ```typescript
 // src/lib/concierge/ranking.ts
@@ -451,12 +451,12 @@ export function rankPlaces(places: RankablePlace[], options: RankingOptions = {}
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/ranking.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/ranking.ts src/lib/concierge/__tests__/ranking.test.ts
@@ -471,7 +471,7 @@ git commit -m "feat(concierge): add MVP ranking engine with keyword, distance, s
 - Create: `src/lib/concierge/intents.ts`
 - Test: `src/lib/concierge/__tests__/intents.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```typescript
 // src/lib/concierge/__tests__/intents.test.ts
@@ -533,12 +533,12 @@ describe("classifyIntent", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/intents.test.ts`
 Expected: FAIL — module not found
 
-- [ ] **Step 3: Implement the intent classifier**
+- [x] **Step 3: Implement the intent classifier**
 
 ```typescript
 // src/lib/concierge/intents.ts
@@ -654,12 +654,12 @@ export function classifyIntent(message: string, _context: ConciergeContext): Int
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/intents.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/intents.ts src/lib/concierge/__tests__/intents.test.ts
@@ -674,7 +674,7 @@ git commit -m "feat(concierge): add deterministic intent classifier with pattern
 - Create: `src/lib/concierge/tools/search-places.ts`
 - Test: `src/lib/concierge/__tests__/search-places.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```typescript
 // src/lib/concierge/__tests__/search-places.test.ts
@@ -709,12 +709,12 @@ describe("searchPlaces", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/search-places.test.ts`
 Expected: FAIL — module not found
 
-- [ ] **Step 3: Implement search_places**
+- [x] **Step 3: Implement search_places**
 
 ```typescript
 // src/lib/concierge/tools/search-places.ts
@@ -779,12 +779,12 @@ export function searchPlaces(input: SearchPlacesInput) {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/search-places.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/tools/search-places.ts src/lib/concierge/__tests__/search-places.test.ts
@@ -804,7 +804,7 @@ git commit -m "feat(concierge): add search_places tool with in-memory filtering 
 - Test: `src/lib/concierge/__tests__/search-trails.test.ts`
 - Test: `src/lib/concierge/__tests__/tools.test.ts`
 
-- [ ] **Step 1: Write failing tests for search_trails**
+- [x] **Step 1: Write failing tests for search_trails**
 
 ```typescript
 // src/lib/concierge/__tests__/search-trails.test.ts
@@ -833,12 +833,12 @@ describe("searchTrails", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/search-trails.test.ts`
 Expected: FAIL
 
-- [ ] **Step 3: Implement search_trails**
+- [x] **Step 3: Implement search_trails**
 
 ```typescript
 // src/lib/concierge/tools/search-trails.ts
@@ -894,12 +894,12 @@ export function searchTrails(input: SearchTrailsInput) {
 }
 ```
 
-- [ ] **Step 4: Run search_trails test**
+- [x] **Step 4: Run search_trails test**
 
 Run: `npx vitest run src/lib/concierge/__tests__/search-trails.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Write failing tests for remaining tools**
+- [x] **Step 5: Write failing tests for remaining tools**
 
 ```typescript
 // src/lib/concierge/__tests__/tools.test.ts
@@ -965,12 +965,12 @@ describe("getTransportOptions", () => {
 });
 ```
 
-- [ ] **Step 6: Run tests to verify they fail**
+- [x] **Step 6: Run tests to verify they fail**
 
 Run: `npx vitest run src/lib/concierge/__tests__/tools.test.ts`
 Expected: FAIL
 
-- [ ] **Step 7: Implement search_events**
+- [x] **Step 7: Implement search_events**
 
 ```typescript
 // src/lib/concierge/tools/search-events.ts
@@ -1004,7 +1004,7 @@ export function searchEvents(input: SearchEventsInput) {
 }
 ```
 
-- [ ] **Step 8: Implement get_weather**
+- [x] **Step 8: Implement get_weather**
 
 ```typescript
 // src/lib/concierge/tools/get-weather.ts
@@ -1022,7 +1022,7 @@ export function getWeather(input: GetWeatherInput) {
 }
 ```
 
-- [ ] **Step 9: Implement get_nearby_places**
+- [x] **Step 9: Implement get_nearby_places**
 
 ```typescript
 // src/lib/concierge/tools/get-nearby-places.ts
@@ -1085,7 +1085,7 @@ export function getNearbyPlaces(input: GetNearbyInput) {
 }
 ```
 
-- [ ] **Step 10: Implement get_transport_options**
+- [x] **Step 10: Implement get_transport_options**
 
 ```typescript
 // src/lib/concierge/tools/get-transport-options.ts
@@ -1102,12 +1102,12 @@ export function getTransportOptions(input: GetTransportInput) {
 }
 ```
 
-- [ ] **Step 11: Run all tool tests**
+- [x] **Step 11: Run all tool tests**
 
 Run: `npx vitest run src/lib/concierge/__tests__/tools.test.ts`
 Expected: PASS
 
-- [ ] **Step 12: Commit**
+- [x] **Step 12: Commit**
 
 ```bash
 git add src/lib/concierge/tools/ src/lib/concierge/__tests__/search-trails.test.ts src/lib/concierge/__tests__/tools.test.ts
@@ -1122,7 +1122,7 @@ git commit -m "feat(concierge): add search_trails, search_events, get_weather, g
 - Create: `src/lib/concierge/tools/build-itinerary.ts`
 - Test: `src/lib/concierge/__tests__/build-itinerary.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```typescript
 // src/lib/concierge/__tests__/build-itinerary.test.ts
@@ -1164,12 +1164,12 @@ describe("buildItinerary", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/build-itinerary.test.ts`
 Expected: FAIL
 
-- [ ] **Step 3: Implement build_itinerary**
+- [x] **Step 3: Implement build_itinerary**
 
 ```typescript
 // src/lib/concierge/tools/build-itinerary.ts
@@ -1247,12 +1247,12 @@ export function buildItinerary(input: BuildItineraryInput): ItineraryDay[] {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/build-itinerary.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/tools/build-itinerary.ts src/lib/concierge/__tests__/build-itinerary.test.ts
@@ -1267,7 +1267,7 @@ git commit -m "feat(concierge): add build_itinerary tool with time-slot-based da
 - Create: `src/lib/concierge/prompts/system-assistant.ts`
 - Create: `src/lib/concierge/prompts/developer-tool-policy.ts`
 
-- [ ] **Step 1: Create system-assistant prompt**
+- [x] **Step 1: Create system-assistant prompt**
 
 ```typescript
 // src/lib/concierge/prompts/system-assistant.ts
@@ -1305,7 +1305,7 @@ export function buildSystemPrompt(locale?: string): string {
 }
 ```
 
-- [ ] **Step 2: Create developer-tool-policy prompt**
+- [x] **Step 2: Create developer-tool-policy prompt**
 
 ```typescript
 // src/lib/concierge/prompts/developer-tool-policy.ts
@@ -1349,14 +1349,14 @@ For itineraries: organize by morning/afternoon/evening with geographic logic to 
 For comparisons: give a clear verdict with reasoning.`;
 ```
 
-- [ ] **Step 3: Verify files compile**
+- [x] **Step 3: Verify files compile**
 
 Run: `npx tsc --noEmit`
 Expected: No type errors
 
 > Note: The spec defines 4 prompt files (`system-assistant.md`, `developer-tool-policy.md`, `itinerary-planner.md`, `recommendation-ranker.md`). For MVP, only the first two are needed. The itinerary planning logic lives in the `build-itinerary` tool function, and ranking logic lives in `ranking.ts`. Dedicated prompt files for those can be added post-MVP when more nuanced LLM guidance is needed.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/lib/concierge/prompts/
@@ -1371,7 +1371,7 @@ git commit -m "feat(concierge): add system-assistant and developer-tool-policy p
 - Create: `src/lib/concierge/response-parser.ts`
 - Test: `src/lib/concierge/__tests__/response-parser.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```typescript
 // src/lib/concierge/__tests__/response-parser.test.ts
@@ -1415,12 +1415,12 @@ describe("parseResponse", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/response-parser.test.ts`
 Expected: FAIL
 
-- [ ] **Step 3: Implement the response parser**
+- [x] **Step 3: Implement the response parser**
 
 ```typescript
 // src/lib/concierge/response-parser.ts
@@ -1452,12 +1452,12 @@ export function parseResponse(raw: string): ParsedResponse {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/response-parser.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/response-parser.ts src/lib/concierge/__tests__/response-parser.test.ts
@@ -1472,7 +1472,7 @@ git commit -m "feat(concierge): add response parser for ---ACTIONS--- delimiter 
 - Create: `src/lib/concierge/orchestrator.ts`
 - Test: `src/lib/concierge/__tests__/orchestrator.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```typescript
 // src/lib/concierge/__tests__/orchestrator.test.ts
@@ -1527,12 +1527,12 @@ describe("orchestrate", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/lib/concierge/__tests__/orchestrator.test.ts`
 Expected: FAIL
 
-- [ ] **Step 3: Implement the orchestrator**
+- [x] **Step 3: Implement the orchestrator**
 
 ```typescript
 // src/lib/concierge/orchestrator.ts
@@ -1722,12 +1722,12 @@ export function orchestrate(message: string, context: ConciergeContext): Orchest
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/lib/concierge/__tests__/orchestrator.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/orchestrator.ts src/lib/concierge/__tests__/orchestrator.test.ts
@@ -1741,7 +1741,7 @@ git commit -m "feat(concierge): add orchestrator with intent-to-tool routing and
 **Files:**
 - Modify: `src/lib/chat-schema.ts`
 
-- [ ] **Step 1: Add new fields to chat request schema**
+- [x] **Step 1: Add new fields to chat request schema**
 
 In `src/lib/chat-schema.ts`, add `currentLocation`, `tripDates`, and `tripStage` to the context object:
 
@@ -1767,12 +1767,12 @@ context: z
   .optional(),
 ```
 
-- [ ] **Step 2: Verify existing tests still pass**
+- [x] **Step 2: Verify existing tests still pass**
 
 Run: `npx vitest run`
 Expected: All existing tests pass
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/lib/chat-schema.ts
@@ -1786,7 +1786,7 @@ git commit -m "feat(chat): expand chat request schema with location, trip dates,
 **Files:**
 - Modify: `src/app/api/chat/route.ts`
 
-- [ ] **Step 1: Integrate orchestrator into the route handler**
+- [x] **Step 1: Integrate orchestrator into the route handler**
 
 The route handler needs to:
 1. Check if the active provider is capable (not Ollama/Groq Llama 8B)
@@ -1911,7 +1911,7 @@ Keep the legacy path (`buildAIContextRelevant()` + `SYSTEM_PROMPT_BASE`) for wea
 
 The existing rate limiting, provider loop, error handling, and fallback logic remain unchanged.
 
-- [ ] **Step 2: Write a test for `isCapableProvider`**
+- [x] **Step 2: Write a test for `isCapableProvider`**
 
 ```typescript
 // src/lib/concierge/__tests__/capable-provider.test.ts
@@ -1942,21 +1942,21 @@ describe("isCapableProvider", () => {
 });
 ```
 
-- [ ] **Step 3: Run capability test**
+- [x] **Step 3: Run capability test**
 
 Run: `npx vitest run src/lib/concierge/__tests__/capable-provider.test.ts`
 Expected: PASS
 
-- [ ] **Step 4: Verify the route compiles**
+- [x] **Step 4: Verify the route compiles**
 
 Run: `npx tsc --noEmit`
 Expected: No type errors
 
-- [ ] **Step 5: Manual smoke test**
+- [x] **Step 5: Manual smoke test**
 
 Run: `npm run dev` and send a chat message. Verify streaming still works for both capable and legacy providers.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/app/api/chat/route.ts src/lib/concierge/__tests__/capable-provider.test.ts
@@ -1970,7 +1970,7 @@ git commit -m "feat(chat): integrate concierge orchestrator with capable model d
 **Files:**
 - Modify: `src/components/ai/hooks/useAIChat.ts`
 
-- [ ] **Step 1: Add metadata type to Message and handle metadata SSE events**
+- [x] **Step 1: Add metadata type to Message and handle metadata SSE events**
 
 Add to the `Message` type:
 
@@ -2039,12 +2039,12 @@ if (typeof navigator !== "undefined" && navigator.geolocation) {
 }
 ```
 
-- [ ] **Step 2: Verify it compiles**
+- [x] **Step 2: Verify it compiles**
 
 Run: `npx tsc --noEmit`
 Expected: No type errors
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/components/ai/hooks/useAIChat.ts
@@ -2061,7 +2061,7 @@ git commit -m "feat(chat): handle metadata SSE events and extend Message type wi
 - Create: `src/components/ai/FollowUpChips.tsx`
 - Modify: `src/components/ai/AIAssistant.tsx`
 
-- [ ] **Step 1: Create ActionButtons component**
+- [x] **Step 1: Create ActionButtons component**
 
 ```tsx
 // src/components/ai/ActionButtons.tsx
@@ -2116,7 +2116,7 @@ export function ActionButtons({ actions }: { actions: Action[] }) {
 }
 ```
 
-- [ ] **Step 2: Create PlaceCards component**
+- [x] **Step 2: Create PlaceCards component**
 
 ```tsx
 // src/components/ai/PlaceCards.tsx
@@ -2170,7 +2170,7 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
 }
 ```
 
-- [ ] **Step 3: Create FollowUpChips component**
+- [x] **Step 3: Create FollowUpChips component**
 
 ```tsx
 // src/components/ai/FollowUpChips.tsx
@@ -2201,7 +2201,7 @@ export function FollowUpChips({
 }
 ```
 
-- [ ] **Step 4: Write render smoke tests for UI components**
+- [x] **Step 4: Write render smoke tests for UI components**
 
 ```typescript
 // src/components/ai/__tests__/chat-ui.test.tsx
@@ -2250,12 +2250,12 @@ describe("FollowUpChips", () => {
 });
 ```
 
-- [ ] **Step 5: Run UI component tests**
+- [x] **Step 5: Run UI component tests**
 
 Run: `npx vitest run src/components/ai/__tests__/chat-ui.test.tsx`
 Expected: PASS
 
-- [ ] **Step 6: Integrate into AIChatMessages**
+- [x] **Step 6: Integrate into AIChatMessages**
 
 The integration point is `src/components/ai/AIChatMessages.tsx`, inside the `ChatMessage` function. The metadata components render **after** the ReactMarkdown block for assistant messages, inside the existing message bubble `<div>`.
 
@@ -2296,12 +2296,12 @@ useEffect(() => {
 
 Alternatively, pass `sendMessage` as a prop through `AIChatMessages` → `ChatMessage` if you prefer prop threading over events.
 
-- [ ] **Step 7: Verify it compiles and renders**
+- [x] **Step 7: Verify it compiles and renders**
 
 Run: `npx tsc --noEmit && npm run dev`
 Expected: No errors. Chat renders normally. Metadata components appear when assistant sends structured data.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/components/ai/ActionButtons.tsx src/components/ai/PlaceCards.tsx src/components/ai/FollowUpChips.tsx src/components/ai/AIChatMessages.tsx src/components/ai/__tests__/chat-ui.test.tsx
@@ -2315,7 +2315,7 @@ git commit -m "feat(chat-ui): add action buttons, place cards, and follow-up chi
 **Files:**
 - Modify: `src/components/ai/hooks/useAIChat.ts`
 
-- [ ] **Step 1: Replace static initial message with context-aware opener**
+- [x] **Step 1: Replace static initial message with context-aware opener**
 
 Replace the `INITIAL_MESSAGE` constant and its usage. Instead of a static greeting, generate a dynamic opener based on the current path:
 
@@ -2377,12 +2377,12 @@ function buildContextualOpener(path: string): Message {
 
 Update the initialization logic to use this function instead of the static `INITIAL_MESSAGE`.
 
-- [ ] **Step 2: Verify it compiles**
+- [x] **Step 2: Verify it compiles**
 
 Run: `npx tsc --noEmit`
 Expected: No errors
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/components/ai/hooks/useAIChat.ts
@@ -2396,7 +2396,7 @@ git commit -m "feat(chat): add context-aware opener with follow-up chips based o
 **Files:**
 - Test: `src/lib/concierge/__tests__/integration.test.ts`
 
-- [ ] **Step 1: Write integration test covering the full orchestrate → parse flow**
+- [x] **Step 1: Write integration test covering the full orchestrate → parse flow**
 
 ```typescript
 // src/lib/concierge/__tests__/integration.test.ts
@@ -2458,22 +2458,22 @@ describe("concierge integration", () => {
 });
 ```
 
-- [ ] **Step 2: Run integration test**
+- [x] **Step 2: Run integration test**
 
 Run: `npx vitest run src/lib/concierge/__tests__/integration.test.ts`
 Expected: PASS
 
-- [ ] **Step 3: Run all concierge tests**
+- [x] **Step 3: Run all concierge tests**
 
 Run: `npx vitest run src/lib/concierge/`
 Expected: All tests PASS
 
-- [ ] **Step 4: Build the app**
+- [x] **Step 4: Build the app**
 
 Run: `npx next build`
 Expected: Build succeeds
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/concierge/__tests__/integration.test.ts
@@ -2484,22 +2484,22 @@ git commit -m "test(concierge): add integration tests for full orchestrate-to-pa
 
 ## Task 17: Final Verification
 
-- [ ] **Step 1: Run full test suite**
+- [x] **Step 1: Run full test suite**
 
 Run: `npx vitest run`
 Expected: All tests pass
 
-- [ ] **Step 2: Run linter**
+- [x] **Step 2: Run linter**
 
 Run: `npx next lint`
 Expected: No errors
 
-- [ ] **Step 3: Build**
+- [x] **Step 3: Build**
 
 Run: `npx next build`
 Expected: Build succeeds
 
-- [ ] **Step 4: Manual smoke test**
+- [x] **Step 4: Manual smoke test**
 
 Run: `npm run dev`, open the app, and test these chat flows:
 1. "Best villages near Paphos" → should return place cards + action buttons
@@ -2508,7 +2508,7 @@ Run: `npm run dev`, open the app, and test these chat flows:
 4. "What's near me?" (with geolocation) → should return nearby places
 5. Plain greeting "Hello" → should return text-only response (no metadata)
 
-- [ ] **Step 5: Final commit if any fixes needed**
+- [x] **Step 5: Final commit if any fixes needed**
 
 ```bash
 git add -A
