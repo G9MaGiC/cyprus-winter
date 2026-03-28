@@ -65,11 +65,59 @@ const DEFAULT_SUGGESTIONS = [
   "Add this to my plan",
 ];
 
-const INITIAL_MESSAGE: Message = {
-  role: "assistant",
-  content:
-    "Hi. I know the island—trails, wineries, villages. Ask anything. Tap a suggestion, type, or use the mic.",
-};
+function buildContextualOpener(path: string): Message {
+  const base = "Hi — I know the island. ";
+
+  if (path.includes("/trails")) {
+    return {
+      role: "assistant",
+      content: base + "Looking for a trail? I can help match one to today's weather and your fitness level.",
+      metadata: {
+        followUps: ["Easy winter hike", "Trail conditions today", "Combine a trail with a village"],
+      },
+    };
+  }
+  if (path.includes("/discover")) {
+    return {
+      role: "assistant",
+      content: base + "Exploring places? Tell me your region or what you're in the mood for — I'll narrow it down.",
+      metadata: {
+        followUps: ["Best villages near me", "Hidden beaches", "Family-friendly picks"],
+      },
+    };
+  }
+  if (path.includes("/plan")) {
+    return {
+      role: "assistant",
+      content: base + "Building your plan? I can suggest what fits each day, or fill gaps in your itinerary.",
+      metadata: {
+        followUps: ["Plan my day", "Best route for Day 1", "Add a winery stop"],
+      },
+    };
+  }
+  if (path.includes("/airport")) {
+    return {
+      role: "assistant",
+      content: base + "Just arrived or planning to? I can help with transport, first stops, and your opening day.",
+      metadata: {
+        followUps: ["I just landed in Larnaca", "Transport to Limassol", "What to do first"],
+      },
+    };
+  }
+
+  return {
+    role: "assistant",
+    content: base + "Trails, wineries, villages, day plans — ask anything, or tap a suggestion below.",
+    metadata: {
+      followUps: [
+        "Plan my 3-day trip",
+        "Best wineries with a view",
+        "What should I do today?",
+        "Easy winter hike",
+      ],
+    },
+  };
+}
 
 function loadPersistedMessages(): Message[] | null {
   if (typeof window === "undefined") return null;
@@ -111,11 +159,12 @@ export function useAIChat() {
   const pathname = usePathname();
   const locale = useLocale();
   const tErrors = useTranslations("errors");
-  const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
+  const initialMessage = buildContextualOpener(pathname);
+  const [messages, setMessages] = useState<Message[]>([initialMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
-  const messagesRef = useRef<Message[]>([INITIAL_MESSAGE]);
+  const messagesRef = useRef<Message[]>([initialMessage]);
   const suggestions = getSuggestions(pathname);
 
   // Load persisted messages on mount
@@ -252,6 +301,7 @@ export function useAIChat() {
             "type" in parsed &&
             (parsed as { type?: unknown }).type === "metadata"
           ) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { type: _type, ...metadata } = parsed as Record<string, unknown>;
             setMessages((prev) => {
               const updated = [...prev];
@@ -301,12 +351,12 @@ export function useAIChat() {
 
   const clearChat = useCallback(() => {
     abortRef.current?.abort();
-    setMessages([INITIAL_MESSAGE]);
+    setMessages([buildContextualOpener(pathname)]);
     setInput("");
     if (typeof window !== "undefined") {
       sessionStorage.removeItem(CHAT_SESSION_KEY);
     }
-  }, []);
+  }, [pathname]);
 
   return {
     messages,

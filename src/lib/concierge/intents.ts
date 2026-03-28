@@ -93,6 +93,7 @@ const INTENT_PATTERNS: IntentPattern[] = [
   },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function classifyIntent(message: string, _context: ConciergeContext): Intent[] {
   const matched: Intent[] = [];
 
