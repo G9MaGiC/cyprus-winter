@@ -11,7 +11,8 @@ import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { getWeatherMonthDiscovery, MONTH_SLUGS, type MonthSlug } from "@/lib/weather-month-suggestions";
 
-export const dynamic = "force-dynamic";
+// Revalidate hourly — weather data is mostly static
+export const revalidate = 3600;
 
 const SLUG_TO_WEATHER: Record<MonthSlug, string> = {
   november: "November",

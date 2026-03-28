@@ -68,7 +68,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         session,
         isLoading: false,
       }));
-    }).catch(() => {});
+      // Sync auth hint cookie on initial load
+      if (session?.user) {
+        document.cookie = "cw-auth=1;path=/;max-age=604800;SameSite=Lax";
+      } else {
+        document.cookie = "cw-auth=;path=/;max-age=0";
+      }
+    }).catch((err: unknown) => {
+      console.error("[AuthProvider] session fetch failed", err);
+    });
 
     const {
       data: { subscription },
@@ -80,6 +88,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         session,
         needsPasswordReset: event === "PASSWORD_RECOVERY" || undefined,
       }));
+      // Sync a lightweight auth hint cookie so middleware can gate protected routes
+      // without @supabase/ssr. The cookie carries no secrets — just "logged-in" signal.
+      if (session?.user) {
+        document.cookie = "cw-auth=1;path=/;max-age=604800;SameSite=Lax";
+      } else {
+        document.cookie = "cw-auth=;path=/;max-age=0";
+      }
     });
 
     return () => {

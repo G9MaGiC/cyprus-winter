@@ -36,7 +36,10 @@ export default async function WineRoutePage({ params }: Props) {
   const { slug } = await params;
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   if (!route) notFound();
-  const tNav = await getTranslations("nav");
+  const [tNav, tWineRoutes] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("wineRoutes"),
+  ]);
 
   const routeWineries = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug);
 
@@ -55,7 +58,7 @@ export default async function WineRoutePage({ params }: Props) {
       />
 
       <h2 id="wineries-list" className="sr-only">
-        Wineries on this route
+        {tWineRoutes("wineriesOnRoute")}
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {routeWineries.map((w) => (

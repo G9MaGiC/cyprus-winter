@@ -12,6 +12,7 @@ const OnboardingModal = dynamic(
   { ssr: false, loading: () => null }
 );
 import CookieConsentBanner from "@/components/CookieConsentBanner";
+import { processQueue } from "@/lib/offline-queue";
 
 export default function ClientComponents() {
   const [mounted, setMounted] = useState(false);
@@ -23,6 +24,16 @@ export default function ClientComponents() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
+
+  // Retry queued offline mutations when connection is restored
+  useEffect(() => {
+    if (!mounted) return;
+    const handleOnline = () => { processQueue().catch(() => {}); };
+    // Process any mutations queued from a previous session
+    if (navigator.onLine) handleOnline();
+    window.addEventListener("online", handleOnline);
+    return () => window.removeEventListener("online", handleOnline);
+  }, [mounted]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -37,7 +48,12 @@ export default function ClientComponents() {
     }
 
     window.addEventListener("load", enable, { once: true });
-    return () => window.removeEventListener("load", enable);
+    // Fallback: if load event never fires (e.g. stuck resource), enable after 8s
+    const fallback = setTimeout(enable, 8_000);
+    return () => {
+      window.removeEventListener("load", enable);
+      clearTimeout(fallback);
+    };
   }, [mounted]);
 
   if (!mounted) return null;

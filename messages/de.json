@@ -157,8 +157,20 @@
     "seeMap": "Karte ansehen",
     "emergency112": "Notfall 112",
     "trailsFooterDisclaimer": "Bedingungen sind crowd-sourced. Nutzen Sie Ihr Urteilsvermögen und folgen Sie lokalen Hinweisen.",
+    "showMore": "Mehr anzeigen",
+    "retry": "Erneut versuchen",
     "discoverEmptyTitle": "Keine Orte hier.",
     "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel.",
+    "backToTop": "Nach oben",
+    "navigate": "Navigieren",
+    "navigateTo": "Zu {name} navigieren",
+    "passwordStrength": {
+      "tooShort": "Mindestens 6 Zeichen",
+      "good": "Gut",
+      "strong": "Stark"
+    },
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
     "emergency": "Notfall",
     "touristInfo": "Touristeninfo",
     "ambulance": "Krankenwagen",
@@ -331,6 +343,31 @@
       "kicker": "Weingüter",
       "subtitle": "Verkostungen am Kamin, oft schenkt der Besitzer ein. Für Wochenenden besser reservieren."
     },
+    "placeOfDay": {
+      "todaysPick": "Tipp des Tages — ein Ort, der die Fahrt lohnt",
+      "addToPlan": "Zum Plan hinzufügen",
+      "seeDetails": "Details ansehen →",
+      "checkReports": "Prüfen Sie Berichte, bevor Sie losfahren.",
+      "goodDayForIt": "Guter Tag dafür",
+      "fallback": {
+        "winery": "Heizstrahler auf der Terrasse.",
+        "village": "Kopfsteinpflaster nur für Sie unter der Woche.",
+        "monastery": "Ruhig diese Woche.",
+        "nature": "Klar heute.",
+        "ancient": "Bestes Licht am Nachmittag.",
+        "beach": "Ruhig im Winter.",
+        "default": "Einen Besuch wert."
+      },
+      "overlay": {
+        "winery": "Ruhig diese Woche",
+        "village": "Ruhig diese Woche",
+        "monastery": "Ruhig diese Woche",
+        "nature": "Klar heute",
+        "ancient": "Bestes Licht am Nachmittag",
+        "beach": "Bestes Licht am Nachmittag",
+        "default": "Einen Besuch wert"
+      }
+    },
     "rightNow": {
       "subtitleConsent": "Was passt gerade bei Ihnen?",
       "subtitleRegion": "Vorschläge in {region}",
@@ -406,7 +443,8 @@
       "failed": "Ich kann gerade nicht verbinden. Bitte versuchen Sie es gleich noch einmal."
     },
     "rightNow": {
-      "locationDenied": "Standort aktivieren oder eine Region auswählen."
+      "locationDenied": "Standort aktivieren oder eine Region auswählen.",
+      "locationTimeout": "Standortanfrage abgelaufen. Versuchen Sie es erneut oder wählen Sie eine Region."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Bitte versuchen Sie es gleich noch einmal.",
@@ -439,7 +477,8 @@
     "title": "Seite nicht gefunden",
     "body": "Keine Sorge. Diese Seite existiert nicht oder wurde verschoben. Das passiert. Die Insel ist noch da. Wanderwege, Dörfer und Verkostungen warten. Zurück zur Startseite oder Entdecken.",
     "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI, wenn Sie nicht wissen, wo Sie anfangen sollen.",
-    "discoverCyprus": "Zypern entdecken"
+    "discoverCyprus": "Zypern entdecken",
+    "searchCyprus": "Suche"
   },
   "discover": {
     "addToPlan": "Zum Plan hinzufügen",
@@ -519,11 +558,42 @@
       "footer": {
         "body": "Fügen Sie diesen Ort zu Ihrem Plan hinzu und kombinieren Sie ihn mit einem nahen Trail oder Dorf."
       },
+      "whyThisNow": {
+        "title": "Warum jetzt",
+        "bestFor": "Ideal für {tags}.",
+        "practicalStop": "{region} ist ein praktischer Halt für den Tagesplan.",
+        "saveNow": "Jetzt speichern, um später mit ähnlichen Optionen zu vergleichen."
+      },
+      "trustAndTiming": {
+        "title": "Vertrauen und Timing",
+        "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeitsübergabe. Ort zuerst zum Plan hinzufügen, dann bestätigen."
+      },
+      "typeLabels": {
+        "winery": "Weingüter",
+        "restaurant": "Essen & Trinken",
+        "beach": "Strände",
+        "ancient": "Antike Stätten",
+        "village": "Dörfer",
+        "monastery": "Klöster",
+        "nature": "Natur & Küsten",
+        "default": "Orte"
+      },
+      "moreInRegion": "Mehr {type} in {region}",
+      "secrets": {
+        "subtitle": "Insidertipps für diesen Ort. Von Einheimischen.",
+        "seeAll": "Alle lokalen Geheimnisse →"
+      },
+      "combineWith": "Kombinieren Sie mit Wanderwegen, Dörfern oder Weingütern in der Nähe. Vormittags hier, nachmittags dort — oder umgekehrt.",
       "headings": {
         "highlights": "Highlights",
         "greatFor": "Ideal für",
         "dining": "Essen",
-        "shops": "Shops"
+        "shops": "Shops",
+        "ourWines": "Unsere Weine",
+        "localSecret": "Lokales Geheimnis",
+        "backstory": "Hintergrund",
+        "location": "Standort",
+        "localSecrets": "Lokale Geheimnisse"
       }
     },
     "aria": {
@@ -570,6 +640,7 @@
     }
   },
   "airport": {
+    "arriveFaster": "Schneller ankommen",
     "page": {
       "meta": {
         "title": "Gerade gelandet? | Cyprus Winter Flughafen-Guide",
@@ -702,9 +773,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Gut zu gehen" },
-        "caution": { "title": "Bedingungen prüfen, bevor Sie losgehen" },
-        "closed": { "title": "Am besten für einen anderen Tag aufheben" }
+        "open": { "title": "Gut zu gehen", "label": "Offen" },
+        "caution": { "title": "Bedingungen prüfen, bevor Sie losgehen", "label": "Vorsicht" },
+        "closed": { "title": "Am besten für einen anderen Tag aufheben", "label": "Geschlossen" }
+      },
+      "difficulty": {
+        "easy": { "label": "Leicht", "tip": "Einfacher Untergrund, familienfreundlich. Genießen Sie die Aussicht." },
+        "moderate": { "label": "Mittel", "tip": "Etwas Steigung und Distanz. Planen Sie 2 bis 3 Stunden ein. Kleiden Sie sich warm." },
+        "hard": { "label": "Schwer", "tip": "Steile Abschnitte und längere Distanz. Planen Sie 3 bis 4 Stunden ein. Bedingungen vorher prüfen." },
+        "expert": { "label": "Experte", "tip": "Technisches Gelände, ganztägig. Erfahrung und Vorbereitung erforderlich." }
       }
     },
     "report": {
@@ -865,7 +942,10 @@
       "viewTrail": "Trail ansehen",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Startpunkt",
-      "footerCount": "{count, plural, one {# Trail auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.} other {# Trails auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.}}"
+      "footerCount": "{count, plural, one {# Trail auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.} other {# Trails auf der Karte. Tippen Sie auf einen Marker, um zu entdecken.}}",
+      "getDirections": "Route berechnen →",
+      "stops": "Stopps",
+      "openInMaps": "In Maps öffnen →"
     },
     "page": {
       "hero": {
@@ -955,6 +1035,7 @@
       "yourItinerary": "Ihr Reiseplan",
       "clearDay": "Alle Orte aus Tag {day} entfernen",
       "browsePlacesToAddDay": "Orte durchsuchen, um sie zu Ihrem Tag hinzuzufügen",
+      "removeFromItinerary": "{name} aus der Reiseroute entfernen",
       "scrollToTemplates": "Zu Vorlagen scrollen",
       "addCombo": "{label} zum Plan hinzufügen",
       "selectDay": "Tag auswählen",
@@ -975,7 +1056,57 @@
       "pairWith": "Passt zu…",
       "worksWell": "Funktioniert gut mit dem, was Sie hinzugefügt haben. Tippen Sie zum Hinzufügen.",
       "addToDayAria": "{name} zu diesem Tag hinzufügen"
+    },
+    "share": {
+      "places": "Orte",
+      "days": "Tage",
+      "copyAndShare": "Kopieren & teilen",
+      "linkCopied": "Link kopiert",
+      "copyLink": "Link kopieren",
+      "copied": "Kopiert",
+      "copyItinerary": "Reiseroute kopieren (Text)",
+      "shareText": "Meine Zypern-Winter-Reiseroute —"
+    },
+    "footer": {
+      "winterTip": "Winter-Tipp: Tageslicht endet gegen 17 Uhr. Wanderungen bis 10 Uhr starten; Verkostungen 24–48 Std. vorher buchen.",
+      "bookTastings": "Verkostungen buchen",
+      "discover": "Entdecken",
+      "trails": "Wanderwege",
+      "weather": "Wetter"
+    },
+    "typeBadge": {
+      "trail": "Wanderweg",
+      "winery": "Weingut",
+      "place": "Ort",
+      "event": "Event",
+      "eat": "Essen"
     }
+  },
+  "cookie": {
+    "title": "Cookie-Einwilligung.",
+    "body": "Wir verwenden notwendige Cookies für den Dienst und optionale Analysen zur Verbesserung. Mit Klick auf \"Akzeptieren\" erlauben Sie Analysen.",
+    "learnMore": "Mehr erfahren",
+    "essentialOnly": "Nur notwendige",
+    "accept": "Akzeptieren"
+  },
+  "recentlyViewed": {
+    "heading": "Kürzlich angesehen",
+    "clear": "Löschen",
+    "types": {
+      "beach": "Strand",
+      "ancientSite": "Antike Stätte",
+      "village": "Dorf",
+      "monastery": "Kloster",
+      "winery": "Weingut",
+      "restaurant": "Restaurant",
+      "trail": "Wanderweg",
+      "event": "Event"
+    }
+  },
+  "relatedPlaces": {
+    "heading": "Passt gut zusammen",
+    "addToPlan": "{name} zum Plan hinzufügen",
+    "addToPlanShort": "Zum Plan hinzufügen"
   },
   "placePicker": {
     "tabs": {
@@ -1041,7 +1172,15 @@
     "browseWineriesAria": "Weingüter durchsuchen",
     "browseWineriesLabel": "Weingüter",
     "seeWhatsOnAria": "Sehen, was los ist",
-    "seeWhatsOnLabel": "Was läuft"
+    "seeWhatsOnLabel": "Was läuft",
+    "fitsYourTrip": "Passt zu Ihrer {days}-tägigen Reise",
+    "recommendedForTrip": "Empfohlen für Ihre {days}-tägige Reise basierend auf Dauer und Ihren gespeicherten Vorlieben.",
+    "tripFit": {
+      "exactLength": "Exakte Länge",
+      "nearMatch": "Fast passend",
+      "compressPlan": "Plan komprimieren",
+      "extendWithAddOns": "Mit Extras erweitern"
+    }
   },
   "bookings": {
     "title": "Meine Buchungen",
@@ -1135,6 +1274,19 @@
         "body": "Fügen Sie Ihrer Winterreise eine weitere Verkostung hinzu.",
         "bodyNoUpcoming": "Alle Ihre Verkostungen liegen in der Vergangenheit. Buchen Sie eine neue für Ihre nächste Reise."
       }
+    },
+    "trustStrip": {
+      "aria": "Buchungs-Vertrauensinformationen",
+      "title": "Vor dem Absenden",
+      "verified": "Verifizierte {context}-Anfrageroute.",
+      "confirmation": "Bestätigung kommt normalerweise innerhalb von 24 Stunden per E‑Mail.",
+      "noCharge": "Keine sofortige Belastung in der App; Anbieter bestätigen zuerst die Verfügbarkeit."
+    },
+    "stepper": {
+      "aria": "Buchungsfortschritt",
+      "details": "Details",
+      "requestSent": "Anfrage gesendet",
+      "confirmation": "Bestätigung"
     }
   },
   "account": {
@@ -1159,6 +1311,7 @@
         "skip": "Überspringen — Plan nur auf diesem Gerät nutzen"
       }
     },
+    "oauthError": "Anmeldung wurde abgebrochen oder ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "notConfigured": {
       "title": "Anmeldung bald verfügbar",
       "description": "Anmelden (bald verfügbar) synchronisiert Ihren Plan und Ihre Buchungen geräteübergreifend.",
@@ -1245,10 +1398,33 @@
       "beaches": "Strände"
     }
   },
+  "checklist": {
+    "title": "Vor der Abreise",
+    "allSet": "Alles erledigt. Gute Reise."
+  },
   "events": {
     "clearFilters": "Filter zurücksetzen",
     "clearFiltersAria": "Filter zurücksetzen und alle Veranstaltungen anzeigen",
     "noMatch": "Keine Veranstaltungen passen zu diesen Filtern. Anderen Typ oder Region versuchen.",
+    "typeLabels": {
+      "festival": "Festival",
+      "market": "Markt",
+      "concert": "Konzert",
+      "food": "Essen & Wein",
+      "culture": "Kultur",
+      "sport": "Sport"
+    },
+    "dontMiss": {
+      "title": "Nicht verpassen",
+      "body": "Dreikönigsfest und Karneval zeigen die Seele der Insel. Früh da sein. Warm anziehen."
+    },
+    "tips": {
+      "title": "Planungstipps",
+      "checkDates": "Offizielle Seiten für genaue Termine prüfen — viele Veranstaltungen verschieben sich jährlich.",
+      "bookEarly": "Früh buchen für Dreikönigsfest, Karneval und Weihnachtsmärkte.",
+      "arriveEarly": "Früh kommen bei beliebten Events. Die besten Plätze füllen sich schnell.",
+      "pairEvents": "Events mit nahen Wanderwegen oder Dörfern kombinieren. Morgens wandern, nachmittags Event."
+    },
     "page": {
       "hero": {
         "title": "Winter-Events",
@@ -1282,6 +1458,29 @@
         "learnMoreAria": "Mehr über {name} erfahren",
         "learnMoreCta": "Mehr erfahren"
       }
+    }
+  },
+  "regions": {
+    "sections": {
+      "villages": "Dörfer",
+      "beaches": "Strände",
+      "ancientSites": "Antike Stätten",
+      "wineries": "Weingüter",
+      "winterEvents": "Winterveranstaltungen",
+      "monasteries": "Klöster & Kirchen"
+    },
+    "allWineries": "Alle Weingüter Zyperns →"
+  },
+  "wineRoutes": {
+    "wineriesOnRoute": "Weingüter auf dieser Route"
+  },
+  "home": {
+    "planning": {
+      "srTitle": "Planung und Wichtiges",
+      "planTitle": "Reise planen",
+      "planSubtitle": "Einen Tag planen oder eine Vorlage wählen. Speichert automatisch.",
+      "eventsTitle": "Winterveranstaltungen",
+      "eventsBody": "Dreikönigsfest, Karneval, Verkostungen. Was wann stattfindet."
     }
   },
   "weather": {
@@ -1358,7 +1557,6 @@
     "description": "Wanderwege, Dörfer, Weingüter. Planen Sie unterwegs — kein Konto nötig.",
     "cta": "Entdecken",
     "skip": "Überspringen",
-    "intentQuestion": "Was ist Ihnen gerade am wichtigsten?",
     "intentLabel": "Oder sagen Sie uns, wofür Sie hier sind",
     "intentPlanning": "Reise planen",
     "intentExploring": "Orte erkunden",
@@ -1508,6 +1706,11 @@
         "and": "und",
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
+      },
+      "statusInfo": {
+        "title": "Buchungsstatus:",
+        "requested": "Jetzt angefragt — bestätigt nach Antwort des Guides.",
+        "offline": "Wenn Sie offline sind, wird Ihre Anfrage als ausstehend gespeichert und automatisch erneut gesendet."
       }
     }
     ,
@@ -1524,6 +1727,15 @@
         "tip": "Fragen Sie vor Ort nach Commandaria und den autochthonen Rebsorten — darauf sind sie stolz.",
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaDiscover": "Mehr entdecken"
+      },
+      "queued": {
+        "title": "Für später gespeichert",
+        "body": "Ihre Verkostungsanfrage für {wineryName} wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
+      },
+      "statusInfo": {
+        "title": "Buchungsstatus:",
+        "requested": "Jetzt angefragt — bestätigt nach Antwort des Partners.",
+        "offline": "Wenn Sie offline sind, wird Ihre Anfrage als ausstehend gespeichert und automatisch erneut gesendet."
       },
       "fields": {
         "date": { "label": "Wunschtermin", "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen." },

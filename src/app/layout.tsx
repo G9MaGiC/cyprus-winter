@@ -12,8 +12,6 @@ import BottomNav from "@/components/BottomNav";
 import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
-import DebugErrorReporter from "@/components/DebugErrorReporter";
-import DebugErrorBoundary from "@/components/DebugErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LAYOUT } from "@/lib/design-tokens";
 import ClientComponents from "@/components/ClientComponents";
@@ -112,20 +110,17 @@ export default async function RootLayout({
           {tCommon("skipToContent")}
         </a>
         <NextIntlClientProvider messages={messages}>
-          <DebugErrorBoundary>
-            <Providers>
-              <ConversionTrackerClient />
-            <DebugErrorReporter />
-              <WebVitalsReporter />
-              <ScrollToTop />
-              <Nav />
-              <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
-                {children}
-              </main>
-              <BottomNav />
-              <FooterWithTranslations />
-            </Providers>
-          </DebugErrorBoundary>
+          <Providers>
+            <ConversionTrackerClient />
+            <WebVitalsReporter />
+            <ScrollToTop />
+            <Nav />
+            <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
+              {children}
+            </main>
+            <BottomNav />
+            <FooterWithTranslations />
+          </Providers>
           <ClientComponents />
         </NextIntlClientProvider>
       </body>

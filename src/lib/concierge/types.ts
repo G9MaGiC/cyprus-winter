@@ -12,6 +12,9 @@ export type Intent =
   | "account_navigation"
   | "general";
 
+/** User intent captured during onboarding */
+export type OnboardingIntent = "planning" | "exploring" | "browsing";
+
 /** Context payload assembled server-side each turn */
 export type ConciergeContext = {
   locale: string;
@@ -23,6 +26,8 @@ export type ConciergeContext = {
   tripStage?: "pre_trip" | "during_trip" | "post_trip";
   weatherSummary?: string;
   season: "winter";
+  /** Onboarding intent — allows concierge to personalize from first interaction */
+  userOnboardingIntent?: OnboardingIntent;
 };
 
 /** Result from any tool execution */

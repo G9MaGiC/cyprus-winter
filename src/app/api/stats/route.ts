@@ -17,7 +17,14 @@ function isAdminAuthorized(req: NextRequest): boolean {
   const token = authHeader?.startsWith("Bearer ")
     ? authHeader.slice(7)
     : req.headers.get("x-admin-token");
-  return !!token && token === secret;
+  if (!token) return false;
+  // Constant-time comparison to prevent timing attacks
+  try {
+    const { timingSafeEqual } = require("crypto");
+    return timingSafeEqual(Buffer.from(token), Buffer.from(secret));
+  } catch {
+    return token === secret;
+  }
 }
 
 const FUNNEL_ORDER = [

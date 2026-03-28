@@ -8,12 +8,16 @@ const CLIENT_ID_KEY = "cyprus-winter-push-client-id";
 
 function getOrCreateClientId(): string {
   if (typeof window === "undefined") return "";
-  let id = localStorage.getItem(CLIENT_ID_KEY);
-  if (!id) {
-    id = `anon-${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
-    localStorage.setItem(CLIENT_ID_KEY, id);
+  try {
+    let id = localStorage.getItem(CLIENT_ID_KEY);
+    if (!id) {
+      id = `anon-${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
+      localStorage.setItem(CLIENT_ID_KEY, id);
+    }
+    return id;
+  } catch {
+    return `anon-${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
   }
-  return id;
 }
 
 function urlBase64ToUint8Array(base64: string): Uint8Array {
@@ -73,7 +77,7 @@ export default function WeatherPushOptIn() {
       await navigator.serviceWorker.ready;
       if (!isMountedRef.current) return;
 
-      const vapidRes = await fetch("/api/push/vapid");
+      const vapidRes = await fetch("/api/push/vapid", { signal: AbortSignal.timeout(10_000) });
       if (!vapidRes.ok) {
         if (isMountedRef.current) setStatus(vapidRes.status === 503 ? "notConfigured" : "error");
         return;
@@ -103,6 +107,7 @@ export default function WeatherPushOptIn() {
           pushTripCountdown: false,
           pushWeatherDigest: true,
         }),
+        signal: AbortSignal.timeout(10_000),
       });
 
       if (!res.ok) {

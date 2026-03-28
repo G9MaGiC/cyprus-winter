@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import type { DiscoverMapPlace } from "./DiscoverMap";
 import { useTranslations } from "next-intl";
+import MapErrorBoundary from "@/components/MapErrorBoundary";
 
 const DiscoverMap = dynamic(() => import("./DiscoverMap").then((m) => m.default), {
   ssr: false,
@@ -26,5 +27,9 @@ function DiscoverMapLoadingLabel() {
 }
 
 export default function DiscoverMapClient({ places }: DiscoverMapClientProps) {
-  return <DiscoverMap places={places} className="w-full" />;
+  return (
+    <MapErrorBoundary>
+      <DiscoverMap places={places} className="w-full" />
+    </MapErrorBoundary>
+  );
 }

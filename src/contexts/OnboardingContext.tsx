@@ -81,31 +81,30 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
   const markAddedToPlan = useCallback(() => setHasAddedToPlan(true), []);
 
   const dismissTipPlanEmpty = useCallback(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(ONBOARDING_TIP_PLAN_EMPTY, "true");
-    }
+    try { if (typeof window !== "undefined") localStorage.setItem(ONBOARDING_TIP_PLAN_EMPTY, "true"); } catch {}
     setShowTipPlanEmpty(false);
   }, []);
 
   const dismissTipDiscoverFilter = useCallback(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(ONBOARDING_TIP_DISCOVER_FILTER, "true");
-    }
+    try { if (typeof window !== "undefined") localStorage.setItem(ONBOARDING_TIP_DISCOVER_FILTER, "true"); } catch {}
     setShowTipDiscoverFilter(false);
   }, []);
 
   const dismissTipFirstAdd = useCallback(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem(ONBOARDING_TIP_FIRST_ADD, "true");
-    }
+    try { if (typeof window !== "undefined") localStorage.setItem(ONBOARDING_TIP_FIRST_ADD, "true"); } catch {}
     setShowTipFirstAdd(false);
   }, []);
 
   useEffect(() => {
     if (!mounted || typeof window === "undefined") return;
-    const dismissedPlanEmpty = localStorage.getItem(ONBOARDING_TIP_PLAN_EMPTY) === "true";
-    const dismissedDiscoverFilter = localStorage.getItem(ONBOARDING_TIP_DISCOVER_FILTER) === "true";
-    const dismissedFirstAdd = localStorage.getItem(ONBOARDING_TIP_FIRST_ADD) === "true";
+    let dismissedPlanEmpty = false;
+    let dismissedDiscoverFilter = false;
+    let dismissedFirstAdd = false;
+    try {
+      dismissedPlanEmpty = localStorage.getItem(ONBOARDING_TIP_PLAN_EMPTY) === "true";
+      dismissedDiscoverFilter = localStorage.getItem(ONBOARDING_TIP_DISCOVER_FILTER) === "true";
+      dismissedFirstAdd = localStorage.getItem(ONBOARDING_TIP_FIRST_ADD) === "true";
+    } catch {}
     startTransition(() => {
       setShowTipPlanEmpty(!dismissedPlanEmpty);
       setShowTipDiscoverFilter(!dismissedDiscoverFilter);

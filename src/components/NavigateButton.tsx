@@ -2,6 +2,7 @@
 
 import type { PlanItem } from "@/data";
 import { getPlaceCoords } from "@/lib/place-coords";
+import { useTranslations } from "next-intl";
 
 /**
  * Opens Maps / Waze with destination. Uses lat,lng for accuracy when available.
@@ -18,7 +19,7 @@ function buildMapsUrl(place: PlanItem): string | null {
 export default function NavigateButton({
   place,
   className = "",
-  label = "Navigate",
+  label,
   variant = "default",
 }: {
   place: PlanItem;
@@ -26,6 +27,7 @@ export default function NavigateButton({
   label?: string;
   variant?: "default" | "light";
 }) {
+  const tCommon = useTranslations("common");
   const url = buildMapsUrl(place);
   if (!url) return null;
 
@@ -40,9 +42,9 @@ export default function NavigateButton({
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${base} ${className}`}
-      aria-label={`Navigate to ${place.name}`}
+      aria-label={tCommon("navigateTo", { name: place.name })}
     >
-      {label}
+      {label ?? tCommon("navigate")}
     </a>
   );
 }

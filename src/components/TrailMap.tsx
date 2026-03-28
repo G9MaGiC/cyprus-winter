@@ -134,7 +134,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-terracotta hover:underline"
                 >
-                  Get directions →
+                  {tTrailsMap("getDirections")}
                 </a>
               </div>
             </Popup>
@@ -161,7 +161,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-terracotta hover:underline"
                   >
-                    Get directions →
+                    {tTrailsMap("getDirections")}
                   </a>
                 </div>
               </Popup>
@@ -190,7 +190,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                   className="w-2.5 h-2.5 rounded-full bg-sage border-2 border-white shadow-sm"
                   aria-hidden
                 />
-                Stops
+                {tTrailsMap("stops")}
               </span>
             </>
           )}
@@ -201,7 +201,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
           rel="noopener noreferrer"
           className="text-sm font-medium text-terracotta hover:underline"
         >
-          Open in Maps →
+          {tTrailsMap("openInMaps")}
         </a>
       </div>
     </div>

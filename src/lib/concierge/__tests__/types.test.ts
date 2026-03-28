@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import type { Intent, ConciergeContext, ResponseMetadata } from "../types";
+import type { Intent, ConciergeContext, OnboardingIntent, ResponseMetadata } from "../types";
 
 describe("concierge types", () => {
   it("allows valid intent values", () => {
@@ -14,6 +14,16 @@ describe("concierge types", () => {
       path: "/trails",
     };
     expect(ctx.season).toBe("winter");
+  });
+
+  it("allows context with onboarding intent", () => {
+    const intent: OnboardingIntent = "planning";
+    const ctx: ConciergeContext = {
+      locale: "en",
+      season: "winter",
+      userOnboardingIntent: intent,
+    };
+    expect(ctx.userOnboardingIntent).toBe("planning");
   });
 
   it("allows valid response metadata shape", () => {

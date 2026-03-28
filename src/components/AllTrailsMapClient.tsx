@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import type { Trail } from "@/data/trails";
 import { useTranslations } from "next-intl";
+import MapErrorBoundary from "@/components/MapErrorBoundary";
 
 const AllTrailsMap = dynamic(() => import("./AllTrailsMap"), {
   ssr: false,
@@ -32,5 +33,9 @@ type AllTrailsMapClientProps = {
 };
 
 export default function AllTrailsMapClient({ trails, className }: AllTrailsMapClientProps) {
-  return <AllTrailsMap trails={trails} className={className} />;
+  return (
+    <MapErrorBoundary>
+      <AllTrailsMap trails={trails} className={className} />
+    </MapErrorBoundary>
+  );
 }

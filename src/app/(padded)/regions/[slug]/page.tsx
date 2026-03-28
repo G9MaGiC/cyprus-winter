@@ -111,7 +111,10 @@ export default async function RegionPage({ params }: Props) {
   const { slug } = await params;
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
   if (!config) notFound();
-  const tNav = await getTranslations("nav");
+  const [tNav, tRegions] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("regions"),
+  ]);
 
   const regionSlug = config.slug as RegionSlug;
 
@@ -184,7 +187,7 @@ export default async function RegionPage({ params }: Props) {
               id="villages"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Villages
+              {tRegions("sections.villages")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionVillages.map((v) => (
@@ -200,7 +203,7 @@ export default async function RegionPage({ params }: Props) {
               id="beaches"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Beaches
+              {tRegions("sections.beaches")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionBeaches.map((b) => (
@@ -216,7 +219,7 @@ export default async function RegionPage({ params }: Props) {
               id="ancient"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Ancient sites
+              {tRegions("sections.ancientSites")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionAncient.map((a) => (
@@ -232,7 +235,7 @@ export default async function RegionPage({ params }: Props) {
               id="wineries"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Wineries
+              {tRegions("sections.wineries")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionWineries.slice(0, 9).map((w) => (
@@ -245,7 +248,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/wineries"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  All Cyprus wineries →
+                  {tRegions("allWineries")}
                 </AppLink>
               </p>
             )}
@@ -258,7 +261,7 @@ export default async function RegionPage({ params }: Props) {
               id="events"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Winter events
+              {tRegions("sections.winterEvents")}
             </h2>
             <ul className="space-y-3">
               {regionEvents.map((e) => (
@@ -283,7 +286,7 @@ export default async function RegionPage({ params }: Props) {
               id="monasteries"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Monasteries & churches
+              {tRegions("sections.monasteries")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionMonasteries.map((m) => (

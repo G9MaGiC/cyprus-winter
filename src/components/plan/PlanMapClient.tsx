@@ -6,6 +6,7 @@ import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { getPlaceCoords } from "@/lib/place-coords";
 import type { PlanMapItem } from "./PlanMap";
 import { useTranslations } from "next-intl";
+import MapErrorBoundary from "@/components/MapErrorBoundary";
 
 function PlanMapLoading() {
   const tCommon = useTranslations("common");
@@ -70,5 +71,9 @@ export default function PlanMapClient() {
     );
   }
 
-  return <PlanMap items={items} className="w-full" />;
+  return (
+    <MapErrorBoundary>
+      <PlanMap items={items} className="w-full" />
+    </MapErrorBoundary>
+  );
 }

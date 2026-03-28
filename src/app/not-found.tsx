@@ -26,6 +26,9 @@ export default function NotFound() {
           <Link href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
             {tNotFound("discoverCyprus")}
           </Link>
+          <Link href="/search" className={`px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors inline-flex items-center justify-center min-h-[44px] rounded-lg`}>
+            {tNotFound("searchCyprus")}
+          </Link>
         </div>
         <p className="mt-8 text-sm text-olive/60 break-words">
           {tCommon("emergency")} <strong>112</strong> · {tCommon("touristInfo")} <strong>1460</strong> ·{" "}

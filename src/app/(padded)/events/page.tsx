@@ -13,13 +13,13 @@ import type { WinterEvent } from "@/data/events";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
-const TYPE_LABELS: Record<string, string> = {
-  festival: "Festival",
-  market: "Market",
-  concert: "Concert",
-  food: "Food & Wine",
-  culture: "Culture",
-  sport: "Sport",
+const TYPE_LABEL_KEYS: Record<string, string> = {
+  festival: "festival",
+  market: "market",
+  concert: "concert",
+  food: "food",
+  culture: "culture",
+  sport: "sport",
 };
 
 const TYPE_COLORS: Record<string, string> = {
@@ -56,6 +56,7 @@ function EventCard({
 }) {
   const typeColor = TYPE_COLORS[event.type] ?? "bg-sand-200/80 text-olive/80";
   const tPage = useTranslations("events.page");
+  const tEvents = useTranslations("events");
   const tCommon = useTranslations("common");
 
   return (
@@ -72,7 +73,7 @@ function EventCard({
           className={`px-2.5 py-1 rounded-md text-xs font-medium capitalize ${typeColor}`}
           aria-hidden
         >
-          {TYPE_LABELS[event.type] ?? event.type}
+          {tEvents(`typeLabels.${event.type}`)}
         </span>
         <span className="text-xs text-olive/60" aria-hidden>
           ·
@@ -184,7 +185,7 @@ export default function EventsPage() {
 
   const typeChips = [
     { id: "", label: tPage("filters.toggleAll") },
-    ...Object.entries(TYPE_LABELS).map(([id, label]) => ({ id, label })),
+    ...Object.entries(TYPE_LABEL_KEYS).map(([id, key]) => ({ id, label: tEvents(`typeLabels.${key}`) })),
   ];
   const regionChips = [
     { id: "", label: tPage("filters.toggleAll") },
@@ -260,7 +261,7 @@ export default function EventsPage() {
                   aria-controls="event-filters"
                   id="event-filters-toggle"
                 >
-                  <span className="text-sm">{tPage("filters.togglePrefix")} {hasFilters ? [typeFilter ? TYPE_LABELS[typeFilter] : null, regionFilter].filter(Boolean).join(", ") : tPage("filters.toggleAll")}</span>
+                  <span className="text-sm">{tPage("filters.togglePrefix")} {hasFilters ? [typeFilter ? tEvents(`typeLabels.${typeFilter}`) : null, regionFilter].filter(Boolean).join(", ") : tPage("filters.toggleAll")}</span>
                   <span className="text-olive/60 text-xs" aria-hidden>
                     {filtersExpanded ? tPage("filters.toggleHide") : tPage("filters.toggleShow")}
                   </span>
@@ -339,11 +340,10 @@ export default function EventsPage() {
                   id="dont-miss"
                   className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}
                 >
-                  Don&apos;t miss
+                  {tEvents("dontMiss.title")}
                 </h2>
                 <p className={`text-sm text-olive/70 max-w-xl break-words ${SECTION.headingGap}`}>
-                  Epiphany and Carnival are when the island shows its soul. Get
-                  there early. Wrap up warm.
+                  {tEvents("dontMiss.body")}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {highlights.map((e) => (
@@ -394,7 +394,7 @@ export default function EventsPage() {
                 id="event-tips"
                 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
               >
-                Planning tips
+                {tEvents("tips.title")}
               </h2>
               <ul className="space-y-2 text-sm text-olive/90 break-words" role="list">
                 <li className="flex gap-3">
@@ -405,8 +405,7 @@ export default function EventsPage() {
                     ·
                   </span>
                   <span>
-                    Check official sites for exact dates — many events move year
-                    to year.
+                    {tEvents("tips.checkDates")}
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -417,7 +416,7 @@ export default function EventsPage() {
                     ·
                   </span>
                   <span>
-                    Book early for Epiphany, Carnival, and Christmas markets.
+                    {tEvents("tips.bookEarly")}
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -428,7 +427,7 @@ export default function EventsPage() {
                     ·
                   </span>
                   <span>
-                    Arrive early for popular events. The best spots fill quickly.
+                    {tEvents("tips.arriveEarly")}
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -439,8 +438,7 @@ export default function EventsPage() {
                     ·
                   </span>
                   <span>
-                    Pair events with nearby trails or villages. Hike in the
-                    morning, event in the afternoon.
+                    {tEvents("tips.pairEvents")}
                   </span>
                 </li>
               </ul>

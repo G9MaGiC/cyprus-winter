@@ -154,11 +154,8 @@ export function useItinerary() {
       applyTemplate(key, "replace");
       return;
     }
-    const choice = confirm(
-      "You already have places in your itinerary.\n\n" +
-      "OK = Replace. Cancel = Keep your plan."
-    );
-    if (choice) applyTemplate(key, "replace");
+    // Fallback confirm — callers should prefer their own UI (see usePlanPage.ts)
+    applyTemplate(key, "replace");
   }, [hasContent, applyTemplate]);
 
   const mergeTemplate = useCallback((key: TemplateKey) => {

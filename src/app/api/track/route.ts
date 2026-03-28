@@ -90,6 +90,11 @@ function normalizeProperties(
   return { ok: true, value: out };
 }
 
+/**
+ * In-memory event dedup store. Per-instance only — not shared across serverless
+ * instances. Duplicate events may be stored if routed to different instances.
+ * For strict dedup in production, use Redis or database-level UNIQUE constraints.
+ */
 const EVENT_DEDUPE_TTL_MS = 10 * 60 * 1000;
 const recentlySeenEventIds = new Map<string, number>();
 

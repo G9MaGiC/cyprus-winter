@@ -59,11 +59,11 @@ export default function PlanShareBar({
           <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-terracotta/10 text-terracotta font-semibold tabular-nums">
             {totalPlaces}
           </span>
-          <span className="text-olive/60">places</span>
+          <span className="text-olive/60">{tPlan("share.places")}</span>
           <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-aegean/10 text-aegean font-semibold tabular-nums">
             {activeDaysCount}/{displayDaysCount}
           </span>
-          <span className="text-olive/60">days</span>
+          <span className="text-olive/60">{tPlan("share.days")}</span>
           <span className="text-olive/50">· {tPlan("autoSaved")}</span>
         </p>
         <div className="relative" ref={shareMenuRef}>
@@ -76,7 +76,7 @@ export default function PlanShareBar({
             aria-haspopup="menu"
             aria-label={tPlan("aria.shareMenu")}
           >
-            Copy & share
+            {tPlan("share.copyAndShare")}
             <span className={`text-terracotta/70 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
               ▾
             </span>
@@ -103,7 +103,7 @@ export default function PlanShareBar({
                 }}
                 className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
-                {linkCopied ? "Link copied" : "Copy link"}
+                {linkCopied ? tPlan("share.linkCopied") : tPlan("share.copyLink")}
               </button>
               <button
                 type="button"
@@ -115,7 +115,7 @@ export default function PlanShareBar({
                 }}
                 className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
-                {copied ? "Copied" : "Copy itinerary (text)"}
+                {copied ? tPlan("share.copied") : tPlan("share.copyItinerary")}
               </button>
               <div
                 className="px-4 py-3 mt-2 border-t border-sand-200/80"
@@ -126,7 +126,7 @@ export default function PlanShareBar({
               >
                 <ShareLinks
                   path={sharePath}
-                  text="My Cyprus Winter itinerary —"
+                  text={tPlan("share.shareText")}
                   ariaLabel={tPlan("aria.shareVia")}
                   className="flex flex-wrap gap-2"
                 />

@@ -157,8 +157,20 @@
     "seeMap": "See map",
     "emergency112": "Emergency 112",
     "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "showMore": "Show more",
+    "retry": "Retry",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
+    "backToTop": "Back to top",
+    "navigate": "Navigate",
+    "navigateTo": "Navigate to {name}",
+    "passwordStrength": {
+      "tooShort": "At least 6 characters",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "emergency": "Emergency",
     "touristInfo": "Tourist info",
     "ambulance": "Ambulance",
@@ -331,6 +343,31 @@
       "kicker": "Wineries",
       "subtitle": "Fireside tastings, often the owner pouring. Reserve ahead for weekends."
     },
+    "placeOfDay": {
+      "todaysPick": "Today's pick — one place worth the drive",
+      "addToPlan": "Add to plan",
+      "seeDetails": "See details →",
+      "checkReports": "Check reports before you go.",
+      "goodDayForIt": "Good day for it",
+      "fallback": {
+        "winery": "Heaters on the terrace.",
+        "village": "Cobbles to yourself midweek.",
+        "monastery": "Quiet this week.",
+        "nature": "Clear today.",
+        "ancient": "Best light in afternoon.",
+        "beach": "Quiet in winter.",
+        "default": "Worth a visit."
+      },
+      "overlay": {
+        "winery": "Quiet this week",
+        "village": "Quiet this week",
+        "monastery": "Quiet this week",
+        "nature": "Clear today",
+        "ancient": "Best light in afternoon",
+        "beach": "Best light in afternoon",
+        "default": "Worth a visit"
+      }
+    },
     "rightNow": {
       "subtitleConsent": "What makes sense where you are",
       "subtitleRegion": "Suggestions in {region}",
@@ -406,7 +443,8 @@
       "failed": "I'm having trouble connecting. Please try again in a moment."
     },
     "rightNow": {
-      "locationDenied": "Enable location or pick a region."
+      "locationDenied": "Enable location or pick a region.",
+      "locationTimeout": "Location request timed out. Try again or pick a region instead."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Please try again in a moment.",
@@ -439,7 +477,8 @@
     "title": "Page not found",
     "body": "No worries. This page doesn't exist or has been moved. These things happen. The island's still here. The trails, villages, and tastings are waiting. Head home or start exploring.",
     "hint": "Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you're not sure where to start.",
-    "discoverCyprus": "Discover Cyprus"
+    "discoverCyprus": "Discover Cyprus",
+    "searchCyprus": "Search"
   },
   "discover": {
     "addToPlan": "Add to plan",
@@ -519,11 +558,42 @@
       "footer": {
         "body": "Add this place to your plan and pair it with a trail or village nearby."
       },
+      "whyThisNow": {
+        "title": "Why this now",
+        "bestFor": "Best for {tags}.",
+        "practicalStop": "{region} is a practical stop for the same day plan flow.",
+        "saveNow": "Save now to compare with similar options later without losing context."
+      },
+      "trustAndTiming": {
+        "title": "Trust and timing",
+        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
+      },
+      "typeLabels": {
+        "winery": "Wineries",
+        "restaurant": "Eat & drink",
+        "beach": "Beaches",
+        "ancient": "Ancient sites",
+        "village": "Villages",
+        "monastery": "Monasteries",
+        "nature": "Nature & coasts",
+        "default": "Places"
+      },
+      "moreInRegion": "More {type} in {region}",
+      "secrets": {
+        "subtitle": "Insider tips for this place. From people who live here.",
+        "seeAll": "See all local secrets →"
+      },
+      "combineWith": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
       "headings": {
         "highlights": "Highlights",
         "greatFor": "Great for",
         "dining": "Dining",
-        "shops": "Shops"
+        "shops": "Shops",
+        "ourWines": "Our wines",
+        "localSecret": "Local secret",
+        "backstory": "Backstory",
+        "location": "Location",
+        "localSecrets": "Local secrets"
       }
     },
     "aria": {
@@ -570,6 +640,7 @@
     }
   },
   "airport": {
+    "arriveFaster": "Arrive faster",
     "page": {
       "meta": {
         "title": "Just Landed? | Cyprus Winter Airport Guide",
@@ -702,9 +773,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Good to go" },
-        "caution": { "title": "Check conditions before you head out" },
-        "closed": { "title": "Best saved for another day" }
+        "open": { "title": "Good to go", "label": "Open" },
+        "caution": { "title": "Check conditions before you head out", "label": "Caution" },
+        "closed": { "title": "Best saved for another day", "label": "Closed" }
+      },
+      "difficulty": {
+        "easy": { "label": "Easy", "tip": "Easy underfoot, good for families. Allow time to enjoy the views." },
+        "moderate": { "label": "Moderate", "tip": "Some elevation and distance. Allow 2 to 3 hours. Layer up for the summit." },
+        "hard": { "label": "Hard", "tip": "Steep sections and longer distance. Allow 3 to 4 hours. Check conditions before you go." },
+        "expert": { "label": "Expert", "tip": "Technical terrain, full day. Experience and preparation required." }
       }
     },
     "report": {
@@ -865,7 +942,10 @@
       "viewTrail": "View trail",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Trailhead",
-      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
+      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}",
+      "getDirections": "Get directions →",
+      "stops": "Stops",
+      "openInMaps": "Open in Maps →"
     },
     "page": {
       "hero": {
@@ -955,6 +1035,7 @@
       "yourItinerary": "Your itinerary",
       "clearDay": "Clear all places from Day {day}",
       "browsePlacesToAddDay": "Browse places to add to your day",
+      "removeFromItinerary": "Remove {name} from itinerary",
       "scrollToTemplates": "Scroll to templates",
       "addCombo": "Add {label} to plan",
       "selectDay": "Select day",
@@ -975,7 +1056,57 @@
       "pairWith": "Pair with…",
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
+    },
+    "share": {
+      "places": "places",
+      "days": "days",
+      "copyAndShare": "Copy & share",
+      "linkCopied": "Link copied",
+      "copyLink": "Copy link",
+      "copied": "Copied",
+      "copyItinerary": "Copy itinerary (text)",
+      "shareText": "My Cyprus Winter itinerary —"
+    },
+    "footer": {
+      "winterTip": "Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.",
+      "bookTastings": "Book tastings",
+      "discover": "Discover",
+      "trails": "Trails",
+      "weather": "Weather"
+    },
+    "typeBadge": {
+      "trail": "Trail",
+      "winery": "Winery",
+      "place": "Place",
+      "event": "Event",
+      "eat": "Eat"
     }
+  },
+  "cookie": {
+    "title": "Cookie consent.",
+    "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
+    "learnMore": "Learn more",
+    "essentialOnly": "Essential only",
+    "accept": "Accept"
+  },
+  "recentlyViewed": {
+    "heading": "Recently viewed",
+    "clear": "Clear",
+    "types": {
+      "beach": "Beach",
+      "ancientSite": "Ancient Site",
+      "village": "Village",
+      "monastery": "Monastery",
+      "winery": "Winery",
+      "restaurant": "Restaurant",
+      "trail": "Trail",
+      "event": "Event"
+    }
+  },
+  "relatedPlaces": {
+    "heading": "Pair well with",
+    "addToPlan": "Add {name} to plan",
+    "addToPlanShort": "Add to plan"
   },
   "placePicker": {
     "tabs": {
@@ -1041,7 +1172,15 @@
     "browseWineriesAria": "Browse wineries",
     "browseWineriesLabel": "Wineries",
     "seeWhatsOnAria": "See what's on",
-    "seeWhatsOnLabel": "What's on"
+    "seeWhatsOnLabel": "What's on",
+    "fitsYourTrip": "Fits your {days}-day trip",
+    "recommendedForTrip": "Recommended for your {days}-day trip based on length fit and your saved preferences.",
+    "tripFit": {
+      "exactLength": "Exact length",
+      "nearMatch": "Near match",
+      "compressPlan": "Compress plan",
+      "extendWithAddOns": "Extend with add-ons"
+    }
   },
   "bookings": {
     "title": "My Bookings",
@@ -1135,6 +1274,19 @@
         "body": "Add another tasting to your winter trip.",
         "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
       }
+    },
+    "trustStrip": {
+      "aria": "Booking trust information",
+      "title": "Before you submit",
+      "verified": "Verified {context} request route.",
+      "confirmation": "Confirmation usually arrives by email within 24 hours.",
+      "noCharge": "No instant charge in-app; providers confirm availability first."
+    },
+    "stepper": {
+      "aria": "Booking progress",
+      "details": "Details",
+      "requestSent": "Request sent",
+      "confirmation": "Confirmation"
     }
   },
   "account": {
@@ -1159,6 +1311,7 @@
         "skip": "Skip — use my plan on this device"
       }
     },
+    "oauthError": "Sign-in was cancelled or failed. Please try again.",
     "notConfigured": {
       "title": "Sign in coming soon",
       "description": "Sign in (coming soon) will sync your plan and bookings across devices.",
@@ -1245,10 +1398,33 @@
       "beaches": "Beaches"
     }
   },
+  "checklist": {
+    "title": "Before you go",
+    "allSet": "All set. Have a safe trip."
+  },
   "events": {
     "clearFilters": "Clear filters",
     "clearFiltersAria": "Clear filters and show all events",
     "noMatch": "Nothing matches these filters. Try a different type or region.",
+    "typeLabels": {
+      "festival": "Festival",
+      "market": "Market",
+      "concert": "Concert",
+      "food": "Food & Wine",
+      "culture": "Culture",
+      "sport": "Sport"
+    },
+    "dontMiss": {
+      "title": "Don't miss",
+      "body": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+    },
+    "tips": {
+      "title": "Planning tips",
+      "checkDates": "Check official sites for exact dates — many events move year to year.",
+      "bookEarly": "Book early for Epiphany, Carnival, and Christmas markets.",
+      "arriveEarly": "Arrive early for popular events. The best spots fill quickly.",
+      "pairEvents": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+    },
     "page": {
       "hero": {
         "title": "Winter events",
@@ -1282,6 +1458,29 @@
         "learnMoreAria": "Learn more about {name}",
         "learnMoreCta": "Learn more"
       }
+    }
+  },
+  "regions": {
+    "sections": {
+      "villages": "Villages",
+      "beaches": "Beaches",
+      "ancientSites": "Ancient sites",
+      "wineries": "Wineries",
+      "winterEvents": "Winter events",
+      "monasteries": "Monasteries & churches"
+    },
+    "allWineries": "All Cyprus wineries →"
+  },
+  "wineRoutes": {
+    "wineriesOnRoute": "Wineries on this route"
+  },
+  "home": {
+    "planning": {
+      "srTitle": "Planning and essentials",
+      "planTitle": "Plan your trip",
+      "planSubtitle": "Build a day or pick a template. Saves as you go.",
+      "eventsTitle": "Winter events",
+      "eventsBody": "Epiphany, carnival, tastings. What's on when."
     }
   },
   "weather": {
@@ -1358,7 +1557,6 @@
     "description": "Trails, villages, wineries. Plan as you go — no account needed.",
     "cta": "Explore",
     "skip": "Skip",
-    "intentQuestion": "What matters most right now?",
     "intentLabel": "Or tell us what you're here for",
     "intentPlanning": "Planning my trip",
     "intentExploring": "Exploring places",
@@ -1508,6 +1706,11 @@
         "and": "and",
         "privacy": "Privacy Policy",
         "bodySuffix": "."
+      },
+      "statusInfo": {
+        "title": "Booking states:",
+        "requested": "Requested now to confirmed after guide reply.",
+        "offline": "If you are offline, your request is queued as sync pending and retried automatically."
       }
     }
     ,
@@ -1524,6 +1727,15 @@
         "tip": "Ask about Commandaria and the indigenous grapes when you're there. They're proud of them.",
         "ctaBookings": "View my bookings",
         "ctaDiscover": "Discover more"
+      },
+      "queued": {
+        "title": "Saved for later",
+        "body": "Your tasting request for {wineryName} has been saved and will be sent automatically when you're back online."
+      },
+      "statusInfo": {
+        "title": "Booking states:",
+        "requested": "Requested now to confirmed after partner reply.",
+        "offline": "If you are offline, your request is queued as sync pending and retried automatically."
       },
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },

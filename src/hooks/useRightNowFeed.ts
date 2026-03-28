@@ -16,6 +16,7 @@ export type RightNowState =
   | "loading"
   | "loaded"
   | "denied"
+  | "timeout"
   | "error"
   | "empty";
 export type DistanceMode = "less" | "more";
@@ -164,7 +165,8 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
             console.warn("[RightNow] geolocation error:", err.code, err.message);
           }
           if (isMountedRef.current) {
-            setState(err.code === 1 ? "denied" : "region-picker");
+            // code 1 = PERMISSION_DENIED, code 3 = TIMEOUT
+            setState(err.code === 1 ? "denied" : err.code === 3 ? "timeout" : "region-picker");
           }
         },
         { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }

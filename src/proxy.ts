@@ -11,8 +11,8 @@ export default function proxy(request: NextRequest): NextResponse {
   // Build CSP header
   const cspHeader = [
     "default-src 'self'",
-    // Allow scripts from self, nonce, strict-dynamic for Next.js, and unsafe-inline as fallback
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:",
+    // Allow scripts from self and unsafe-inline (needed for Next.js inline scripts)
+    "script-src 'self' 'unsafe-inline' https:",
     // Allow styles from self and unsafe-inline (required for Tailwind)
     "style-src 'self' 'unsafe-inline'",
     // Images from self, blob, data, and external sources

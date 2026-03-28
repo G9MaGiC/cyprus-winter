@@ -22,6 +22,7 @@ export default function WineryBookingForm({
   const tBookings = useTranslations("bookings");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [queued, setQueued] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
@@ -66,12 +67,14 @@ export default function WineryBookingForm({
       notes: notes || undefined,
     });
 
+    let resStatus = 0;
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body,
       });
+      resStatus = res.status;
 
       const data = await res.json();
 
@@ -87,28 +90,33 @@ export default function WineryBookingForm({
       setStorageMode(data.storage ?? null);
       form.reset();
 
+      const wasFirst = loadLocalBookings().length === 0;
+      addBookingToLocal(data.booking);
+
       track("booking_complete", {
         wineryId,
         partySize: Number(partySize),
       });
-      if (loadLocalBookings().length === 0) {
+      if (wasFirst && loadLocalBookings().length > 0) {
         track("first_booking", { wineryId });
       }
-
-      addBookingToLocal(data.booking);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
-      if (isNetworkError && typeof navigator !== "undefined") {
+      const isServerError = !isNetworkError && resStatus >= 500;
+      const shouldQueue = isNetworkError || isServerError;
+      if (shouldQueue && typeof navigator !== "undefined") {
         addMutation({
           type: "winery_booking",
           url: "/api/bookings",
           method: "POST",
           body,
         });
+        setQueued(true);
+        return;
       }
       const fallback = t("errors.fallback");
-      setError(msg && !isNetworkError ? msg : fallback);
+      setError(msg || fallback);
       setTimeout(() => {
         const behavior =
           typeof window !== "undefined" &&
@@ -162,13 +170,35 @@ export default function WineryBookingForm({
     );
   }
 
+  if (queued) {
+    return (
+      <div
+        className="mt-8 p-6 rounded-lg bg-aegean/5 border border-aegean/20 border-l-4 border-l-aegean/40"
+        role="status"
+        aria-live="polite"
+      >
+        <h2 className={`${TYPE.subSectionTitle} text-olive`}>
+          {t("queued.title")}
+        </h2>
+        <p className="text-olive/80 mt-2 leading-relaxed break-words">
+          {t("queued.body", { wineryName })}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <AppLink href="/discover" className={CTA.secondaryCompact}>
+            {t("success.ctaDiscover")}
+          </AppLink>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="winery" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after partner reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p><strong>{t("statusInfo.title")}</strong> {t("statusInfo.requested")}</p>
+        <p className="mt-1">{t("statusInfo.offline")}</p>
       </div>
       {error && (
         <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>

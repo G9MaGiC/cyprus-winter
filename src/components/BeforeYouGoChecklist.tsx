@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { SECTION, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 import type { WinterTip } from "@/data/winter-tips";
 
 const STORAGE_KEY = "cyprus-winter-before-you-go";
@@ -38,7 +39,8 @@ export default function BeforeYouGoChecklist({
   tips,
   className = "",
 }: BeforeYouGoChecklistProps) {
-  const ids = useMemo(() => tips.map((t) => t.id), [tips]);
+  const t = useTranslations("checklist");
+  const ids = useMemo(() => tips.map((tip) => tip.id), [tips]);
   const [checked, setChecked] = useState<Set<string>>(() => new Set());
   const [hydrated, setHydrated] = useState(false);
 
@@ -73,11 +75,11 @@ export default function BeforeYouGoChecklist({
       className={className}
     >
       <h2 id="before-you-go-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
-        Before you go
+        {t("title")}
       </h2>
       {checkedCount === totalCount && totalCount > 0 && (
         <p className="text-sm text-terracotta font-medium mb-3" role="status">
-          All set. Have a safe trip.
+          {t("allSet")}
         </p>
       )}
       <ul className="space-y-3" role="list">
