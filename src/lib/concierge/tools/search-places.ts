@@ -51,6 +51,7 @@ export function searchPlaces(input: SearchPlacesInput): RankablePlace[] {
   return rankPlaces(candidates, {
     query: input.query,
     season: input.season,
+    category: input.categories?.[0],
     userLocation: input.userLocation,
     limit: input.limit ?? 5,
   });

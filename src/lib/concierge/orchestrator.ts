@@ -153,6 +153,7 @@ export function orchestrate(message: string, context: ConciergeContext): Orchest
   // Add user context
   const ctxParts: string[] = [];
   if (context.path) ctxParts.push(`User is on page: ${context.path}`);
+  if (context.lastPlace) ctxParts.push(`User recently viewed: ${context.lastPlace}`);
   if (context.currentLocation) {
     ctxParts.push(`User location: ${context.currentLocation.lat}, ${context.currentLocation.lng}`);
   }
