@@ -4,6 +4,9 @@ import { useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { isSafeUrl } from "@/lib/safe-url";
 import type { Message } from "./hooks/useAIChat";
+import { ActionButtons } from "./ActionButtons";
+import { PlaceCards } from "./PlaceCards";
+import { FollowUpChips } from "./FollowUpChips";
 
 interface AIChatMessagesProps {
   messages: Message[];
@@ -51,6 +54,16 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
               {message.content}
             </ReactMarkdown>
           </div>
+        )}
+        {message.metadata?.cards && <PlaceCards cards={message.metadata.cards} />}
+        {message.metadata?.actions && <ActionButtons actions={message.metadata.actions} />}
+        {message.metadata?.followUps && (
+          <FollowUpChips
+            chips={message.metadata.followUps}
+            onSelect={(chip) => {
+              window.dispatchEvent(new CustomEvent("ai-followup", { detail: chip }));
+            }}
+          />
         )}
         {message.isRetryable && (
           <button
