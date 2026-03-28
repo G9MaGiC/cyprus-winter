@@ -42,11 +42,11 @@ function getTease(place: { id: string; type: string; localSecret?: string; winte
       return desc || "Worth a visit.";
     }
     const att = getAttractionById(place.id);
-    if (att?.description) return att.description.split(".")[0] + "." || "Worth a visit.";
+    if (att?.description) { const s = att.description.split(".")[0]?.trim(); if (s) return `${s}.`; }
     const rest = getRestaurantById(place.id);
-    if (rest?.description) return rest.description.split(".")[0] + "." || "Worth a visit.";
+    if (rest?.description) { const s = rest.description.split(".")[0]?.trim(); if (s) return `${s}.`; }
     const ev = winterEvents.find((x) => x.id === place.id);
-    if (ev?.description) return ev.description.split(".")[0] + "." || "Worth a visit.";
+    if (ev?.description) { const s = ev.description.split(".")[0]?.trim(); if (s) return `${s}.`; }
   } catch {
     // fallback on any parse error
   }

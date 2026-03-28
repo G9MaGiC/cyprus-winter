@@ -22,10 +22,8 @@ function getPlaceOfDayData() {
   if (picked.type === "trail") {
     const trail = trails.find((t) => t.id === picked.id);
     if (!trail) return null;
-    const tease =
-      trail.winterNotes ||
-      trail.description.split(".")[0] + "." ||
-      "Check reports before you go.";
+    const _first = trail.description.split(".")[0]?.trim();
+    const tease = trail.winterNotes || (_first ? `${_first}.` : "") || "Check reports before you go.";
     return {
       id: picked.id,
       name: picked.name,

@@ -48,16 +48,20 @@ export async function GET(req: NextRequest) {
         const daysUntil = Math.ceil((tripStart.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
         if (daysUntil < 1 || daysUntil > 3) continue;
         const { title, body } = getCountdownCopy(daysUntil);
-        const result = await sendPush(row.subscription, {
-          title,
-          body,
-          url: "/plan",
-        });
-        if (result.ok) {
-          await markPushSent(row.id);
-          pushesSent++;
-        } else if (result.expired) {
-          await deletePushSubscription(row.id);
+        try {
+          const result = await sendPush(row.subscription, {
+            title,
+            body,
+            url: "/plan",
+          });
+          if (result.ok) {
+            await markPushSent(row.id);
+            pushesSent++;
+          } else if (result.expired) {
+            await deletePushSubscription(row.id);
+          }
+        } catch (pushErr) {
+          console.error("Daily push failed for subscription", row.id, pushErr);
         }
       }
     }

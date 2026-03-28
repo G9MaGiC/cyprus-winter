@@ -52,16 +52,20 @@ export async function GET(req: NextRequest) {
     if (isPushConfigured()) {
       const subs = await getSubscribersForWeatherDigest();
       for (const row of subs) {
-        const result = await sendPush(row.subscription, {
-          title,
-          body,
-          url: "/weather",
-        });
-        if (result.ok) {
-          await markWeatherPushSent(row.id);
-          pushesSent++;
-        } else if (result.expired) {
-          await deletePushSubscription(row.id);
+        try {
+          const result = await sendPush(row.subscription, {
+            title,
+            body,
+            url: "/weather",
+          });
+          if (result.ok) {
+            await markWeatherPushSent(row.id);
+            pushesSent++;
+          } else if (result.expired) {
+            await deletePushSubscription(row.id);
+          }
+        } catch (pushErr) {
+          console.error("Weather push failed for subscription", row.id, pushErr);
         }
       }
     }
