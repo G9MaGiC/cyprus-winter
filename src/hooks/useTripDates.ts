@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { parseDateInput } from "@/lib/format";
 
 const STORAGE_KEY = "cyprus-winter-trip-dates";
 
@@ -42,8 +43,8 @@ const MAX_TRIP_DAYS = 14;
  */
 export function tripLengthFromDates(start: string | null, end: string | null): number | null {
   if (!start || !end) return null;
-  const a = new Date(start);
-  const b = new Date(end);
+  const a = parseDateInput(start);
+  const b = parseDateInput(end);
   a.setHours(0, 0, 0, 0);
   b.setHours(0, 0, 0, 0);
   if (b.getTime() < a.getTime()) return null;
@@ -57,7 +58,7 @@ export function tripLengthFromDates(start: string | null, end: string | null): n
  */
 export function daysUntilTrip(start: string | null): number | null {
   if (!start) return null;
-  const d = new Date(start);
+  const d = parseDateInput(start);
   d.setHours(0, 0, 0, 0);
   const today = new Date();
   today.setHours(0, 0, 0, 0);

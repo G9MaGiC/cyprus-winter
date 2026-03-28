@@ -1,7 +1,7 @@
 /**
  * Format date for display (e.g. bookings).
  */
-function parseDateInput(dateStr: string): Date {
+export function parseDateInput(dateStr: string): Date {
   // Avoid UTC drift for YYYY-MM-DD strings (JS treats them as UTC).
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
     const [y, m, d] = dateStr.split("-").map((n) => Number(n));
