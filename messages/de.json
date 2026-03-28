@@ -162,6 +162,8 @@
     "discoverEmptyTitle": "Keine Orte hier.",
     "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel.",
     "backToTop": "Nach oben",
+    "navigate": "Navigieren",
+    "navigateTo": "Zu {name} navigieren",
     "passwordStrength": {
       "tooShort": "Mindestens 6 Zeichen",
       "good": "Gut",
@@ -771,9 +773,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Gut zu gehen" },
-        "caution": { "title": "Bedingungen prüfen, bevor Sie losgehen" },
-        "closed": { "title": "Am besten für einen anderen Tag aufheben" }
+        "open": { "title": "Gut zu gehen", "label": "Offen" },
+        "caution": { "title": "Bedingungen prüfen, bevor Sie losgehen", "label": "Vorsicht" },
+        "closed": { "title": "Am besten für einen anderen Tag aufheben", "label": "Geschlossen" }
+      },
+      "difficulty": {
+        "easy": { "label": "Leicht", "tip": "Einfacher Untergrund, familienfreundlich. Genießen Sie die Aussicht." },
+        "moderate": { "label": "Mittel", "tip": "Etwas Steigung und Distanz. Planen Sie 2 bis 3 Stunden ein. Kleiden Sie sich warm." },
+        "hard": { "label": "Schwer", "tip": "Steile Abschnitte und längere Distanz. Planen Sie 3 bis 4 Stunden ein. Bedingungen vorher prüfen." },
+        "expert": { "label": "Experte", "tip": "Technisches Gelände, ganztägig. Erfahrung und Vorbereitung erforderlich." }
       }
     },
     "report": {
@@ -1164,7 +1172,15 @@
     "browseWineriesAria": "Weingüter durchsuchen",
     "browseWineriesLabel": "Weingüter",
     "seeWhatsOnAria": "Sehen, was los ist",
-    "seeWhatsOnLabel": "Was läuft"
+    "seeWhatsOnLabel": "Was läuft",
+    "fitsYourTrip": "Passt zu Ihrer {days}-tägigen Reise",
+    "recommendedForTrip": "Empfohlen für Ihre {days}-tägige Reise basierend auf Dauer und Ihren gespeicherten Vorlieben.",
+    "tripFit": {
+      "exactLength": "Exakte Länge",
+      "nearMatch": "Fast passend",
+      "compressPlan": "Plan komprimieren",
+      "extendWithAddOns": "Mit Extras erweitern"
+    }
   },
   "bookings": {
     "title": "Meine Buchungen",

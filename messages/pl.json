@@ -162,6 +162,8 @@
     "discoverEmptyTitle": "Brak miejsc tutaj.",
     "discoverEmptyBody": "Spróbuj innego filtra albo zapytaj AI—zna wyspę.",
     "backToTop": "Na górę",
+    "navigate": "Nawiguj",
+    "navigateTo": "Nawiguj do {name}",
     "passwordStrength": {
       "tooShort": "Co najmniej 6 znaków",
       "good": "Dobre",
@@ -764,9 +766,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Dobre do przejścia" },
-        "caution": { "title": "Sprawdź warunki przed wyjściem" },
-        "closed": { "title": "Najlepiej zostawić na inny dzień" }
+        "open": { "title": "Dobre do przejścia", "label": "Otwarty" },
+        "caution": { "title": "Sprawdź warunki przed wyjściem", "label": "Ostrożnie" },
+        "closed": { "title": "Najlepiej zostawić na inny dzień", "label": "Zamknięty" }
+      },
+      "difficulty": {
+        "easy": { "label": "Łatwy", "tip": "Łatwy teren, dobry dla rodzin. Zostaw czas na podziwianie widoków." },
+        "moderate": { "label": "Umiarkowany", "tip": "Trochę przewyższeń i dystansu. Zaplanuj 2 do 3 godzin. Ubierz się ciepło." },
+        "hard": { "label": "Trudny", "tip": "Strome odcinki i dłuższy dystans. Zaplanuj 3 do 4 godzin. Sprawdź warunki." },
+        "expert": { "label": "Ekspert", "tip": "Techniczny teren, cały dzień. Wymagane doświadczenie i przygotowanie." }
       }
     },
     "report": {
@@ -1157,7 +1165,15 @@
     "browseWineriesAria": "Przeglądaj winnice",
     "browseWineriesLabel": "Winnice",
     "seeWhatsOnAria": "Zobacz, co jest dostępne",
-    "seeWhatsOnLabel": "Co jest dostępne"
+    "seeWhatsOnLabel": "Co jest dostępne",
+    "fitsYourTrip": "Pasuje do Twojej {days}-dniowej podróży",
+    "recommendedForTrip": "Polecane na {days}-dniową podróż na podstawie dopasowania długości i zapisanych preferencji.",
+    "tripFit": {
+      "exactLength": "Dokładna długość",
+      "nearMatch": "Bliskie dopasowanie",
+      "compressPlan": "Skompresuj plan",
+      "extendWithAddOns": "Rozszerz o dodatki"
+    }
   },
   "bookings": {
     "title": "Moje rezerwacje",
