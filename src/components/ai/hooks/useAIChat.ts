@@ -13,6 +13,11 @@ export type Message = {
   content: string;
   isRetryable?: boolean;
   is503?: boolean;
+  metadata?: {
+    cards?: { type: string; id: string; title: string; reason: string }[];
+    actions?: { type: string; label: string; payload?: Record<string, unknown> }[];
+    followUps?: string[];
+  };
 };
 
 const MAX_PERSISTED_MESSAGES = 20;
@@ -160,18 +165,27 @@ export function useAIChat() {
           content: m.content,
         }));
 
+        const context: Record<string, unknown> = {
+          path: pathname,
+          lastPlace,
+          itinerary,
+          locale,
+        };
+
+        // Include cached geolocation if available
+        if (typeof window !== "undefined") {
+          const cachedPos = sessionStorage.getItem("cyprus-winter-location");
+          if (cachedPos) {
+            try {
+              context.currentLocation = JSON.parse(cachedPos);
+            } catch { /* ignore */ }
+          }
+        }
+
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            messages: outboundMessages,
-            context: {
-              path: pathname,
-              lastPlace,
-              itinerary,
-              locale,
-            },
-          }),
+          body: JSON.stringify({ messages: outboundMessages, context }),
           signal: abortRef.current.signal,
         });
 
@@ -231,6 +245,24 @@ export function useAIChat() {
               return updated;
             });
           }
+
+          if (
+            typeof parsed === "object" &&
+            parsed !== null &&
+            "type" in parsed &&
+            (parsed as { type?: unknown }).type === "metadata"
+          ) {
+            const { type: _type, ...metadata } = parsed as Record<string, unknown>;
+            setMessages((prev) => {
+              const updated = [...prev];
+              const lastMsg = updated[updated.length - 1];
+              if (lastMsg?.role === "assistant") {
+                updated[updated.length - 1] = { ...lastMsg, metadata: metadata as Message["metadata"] };
+              }
+              messagesRef.current = updated;
+              return updated;
+            });
+          }
         }
       } catch (err) {
         if ((err as Error).name === "AbortError") return;
@@ -259,6 +291,13 @@ export function useAIChat() {
     },
     [loading, pathname, locale, tErrors]
   );
+
+  // Handle follow-up chip selections dispatched from AIChatMessages
+  useEffect(() => {
+    const handler = (e: CustomEvent) => { void sendMessage(e.detail as string); };
+    window.addEventListener("ai-followup", handler as EventListener);
+    return () => window.removeEventListener("ai-followup", handler as EventListener);
+  }, [sendMessage]);
 
   const clearChat = useCallback(() => {
     abortRef.current?.abort();
