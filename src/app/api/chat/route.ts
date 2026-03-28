@@ -6,6 +6,8 @@ import { chatRequestSchema } from "@/lib/chat-schema";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
+import { orchestrate } from "@/lib/concierge/orchestrator";
+import type { ConciergeContext } from "@/lib/concierge/types";
 
 // Providers in priority order. Each is tried until one succeeds (handles 429, timeouts, etc.).
 // AI Gateway (Vercel) first: single key, multi-provider routing. https://vercel.com/docs/ai-gateway/getting-started
@@ -58,6 +60,11 @@ function buildProviders(): Provider[] {
 }
 
 const providers = buildProviders();
+
+function isCapableProvider(provider: Provider): boolean {
+  const weakModels = ["llama-3.1-8b-instant", "llama3.2", "moonshot-v1-8k"];
+  return !weakModels.includes(provider.model) && !provider.isOllama;
+}
 
 function getOllamaModelNotFoundHint(err: unknown, model: string): string | null {
   const msg = err instanceof Error ? err.message : String(err);
@@ -178,42 +185,58 @@ export async function POST(req: Request) {
   }));
 
   const ctx = normalizeChatContext(parsed.data.context);
-  const parts: string[] = [];
-  if (ctx?.path) parts.push(`User is on page: ${ctx.path}`);
-  if (ctx?.lastPlace) parts.push(`User recently viewed: ${ctx.lastPlace}`);
-  if (ctx?.itinerary?.length) {
-    const dayLines = ctx.itinerary
-      .sort((a, b) => a.day - b.day)
-      .map(({ day, placeIds }) => {
-        const names = placeIds
-          .map((id) => getPlaceById(id)?.name ?? id)
-          .filter(Boolean);
-        return `Day ${day}: ${names.join(", ")}`;
-      });
-    parts.push(`User's plan: ${dayLines.join("; ")}. Use this to suggest nearby places, timing, route tips, or pairing ideas.`);
-  }
-  const pageHint = parts.length
-    ? `\n### Current context (use to personalize)\n${parts.join(". ")}\nWhen relevant, tailor your answer to the page they're on, the place they've viewed, or their plan. E.g. on /trails/artemis-trail suggest nearby villages or wineries; on /discover/omodos suggest trails or tastings; for a plan with Artemis and Omodos, suggest Tsiakkas or timing tips.\n`
-    : "";
 
-  let context: string;
-  try {
-    const itineraryIds = ctx?.itinerary?.flatMap((e) => e.placeIds) ?? [];
-    context = buildAIContextRelevant({
-      path: ctx?.path,
-      lastPlace: ctx?.lastPlace,
-      itineraryPlaceIds: itineraryIds.length > 0 ? itineraryIds : undefined,
-    });
-  } catch (ctxErr) {
-    console.error("buildAIContextRelevant error:", ctxErr);
-    try {
-      context = buildAIContext();
-    } catch {
-      context = "Trails, wineries, and attractions data available.";
+  // Build concierge context (capable providers)
+  const rawCtx = parsed.data.context as Record<string, unknown> | undefined;
+  const conciergeCtx: ConciergeContext = {
+    locale: ctx?.locale ?? "en",
+    path: ctx?.path,
+    lastPlace: ctx?.lastPlace,
+    itinerary: ctx?.itinerary,
+    currentLocation: rawCtx?.currentLocation as { lat: number; lng: number } | undefined,
+    tripDates: rawCtx?.tripDates as { start: string; end: string } | undefined,
+    tripStage: rawCtx?.tripStage as "pre_trip" | "during_trip" | "post_trip" | undefined,
+    season: "winter",
+  };
+
+  // Legacy context builder (weak providers)
+  const buildLegacySystemWithContext = (): string => {
+    const parts: string[] = [];
+    if (ctx?.path) parts.push(`User is on page: ${ctx.path}`);
+    if (ctx?.lastPlace) parts.push(`User recently viewed: ${ctx.lastPlace}`);
+    if (ctx?.itinerary?.length) {
+      const dayLines = ctx.itinerary
+        .sort((a, b) => a.day - b.day)
+        .map(({ day, placeIds }) => {
+          const names = placeIds
+            .map((id) => getPlaceById(id)?.name ?? id)
+            .filter(Boolean);
+          return `Day ${day}: ${names.join(", ")}`;
+        });
+      parts.push(`User's plan: ${dayLines.join("; ")}. Use this to suggest nearby places, timing, route tips, or pairing ideas.`);
     }
-  }
-  const systemPrompt = buildSystemPrompt(ctx?.locale);
-  const systemWithContext = `${systemPrompt}\n\n${pageHint}${context}`;
+    const pageHint = parts.length
+      ? `\n### Current context (use to personalize)\n${parts.join(". ")}\nWhen relevant, tailor your answer to the page they're on, the place they've viewed, or their plan.\n`
+      : "";
+
+    let context: string;
+    try {
+      const itineraryIds = ctx?.itinerary?.flatMap((e) => e.placeIds) ?? [];
+      context = buildAIContextRelevant({
+        path: ctx?.path,
+        lastPlace: ctx?.lastPlace,
+        itineraryPlaceIds: itineraryIds.length > 0 ? itineraryIds : undefined,
+      });
+    } catch (ctxErr) {
+      console.error("buildAIContextRelevant error:", ctxErr);
+      try {
+        context = buildAIContext();
+      } catch {
+        context = "Trails, wineries, and attractions data available.";
+      }
+    }
+    return `${buildSystemPrompt(ctx?.locale)}\n\n${pageHint}${context}`;
+  };
 
   const encoder = new TextEncoder();
   const baseHeaders: Record<string, string> = {
@@ -228,10 +251,22 @@ export async function POST(req: Request) {
 
   const emitChunk = (obj: unknown) => `data: ${JSON.stringify(obj)}\n\n`;
 
+  const lastUserMessage = messages[messages.length - 1]?.content ?? "";
+  const delimiter = "---ACTIONS---";
+
   let lastErr: unknown = null;
   let lastProvider: Provider | null = null;
   for (const provider of providers) {
     const { client, model } = provider;
+    const capable = isCapableProvider(provider);
+
+    const systemWithContext = capable
+      ? (() => {
+          const { systemPrompt, contextBlock } = orchestrate(lastUserMessage, conciergeCtx);
+          return `${systemPrompt}\n\n${contextBlock}`;
+        })()
+      : buildLegacySystemWithContext();
+
     const apiMessages = [{ role: "system" as const, content: systemWithContext }, ...messages];
 
     // Try streaming first
@@ -246,12 +281,51 @@ export async function POST(req: Request) {
       const stream = new ReadableStream({
         async start(controller) {
           try {
-            for await (const chunk of completion) {
-              const content = chunk.choices[0]?.delta?.content;
-              if (content) {
-                controller.enqueue(encoder.encode(emitChunk({ delta: content })));
+            if (capable) {
+              // Delimiter-aware streaming: buffer full response, split on ---ACTIONS---
+              let fullContent = "";
+              let sentProseUpTo = 0;
+
+              for await (const chunk of completion) {
+                const content = chunk.choices[0]?.delta?.content;
+                if (content) {
+                  fullContent += content;
+                  const delimIdx = fullContent.indexOf(delimiter);
+                  if (delimIdx === -1) {
+                    const toSend = fullContent.slice(sentProseUpTo);
+                    if (toSend) {
+                      controller.enqueue(encoder.encode(emitChunk({ delta: toSend })));
+                      sentProseUpTo = fullContent.length;
+                    }
+                  }
+                }
+              }
+
+              // Flush remaining prose and optional metadata
+              const delimIdx = fullContent.indexOf(delimiter);
+              if (delimIdx !== -1) {
+                const unseenProse = fullContent.slice(sentProseUpTo, delimIdx).trim();
+                if (unseenProse) {
+                  controller.enqueue(encoder.encode(emitChunk({ delta: unseenProse })));
+                }
+                const jsonStr = fullContent.slice(delimIdx + delimiter.length).trim();
+                try {
+                  const metadata = JSON.parse(jsonStr);
+                  controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...metadata })));
+                } catch {
+                  // Malformed JSON — skip metadata
+                }
+              }
+            } else {
+              // Legacy streaming: pass through chunks directly
+              for await (const chunk of completion) {
+                const content = chunk.choices[0]?.delta?.content;
+                if (content) {
+                  controller.enqueue(encoder.encode(emitChunk({ delta: content })));
+                }
               }
             }
+
             controller.enqueue(encoder.encode(emitChunk({ done: true })));
             controller.close();
           } catch (streamErr) {
