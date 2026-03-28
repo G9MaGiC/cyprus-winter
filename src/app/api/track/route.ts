@@ -91,17 +91,21 @@ function normalizeProperties(
 }
 
 const EVENT_DEDUPE_TTL_MS = 10 * 60 * 1000;
+const EVENT_DEDUPE_MAX_SIZE = 5_000;
 const recentlySeenEventIds = new Map<string, number>();
 
 function isDuplicateEventId(eventId: string): boolean {
   const now = Date.now();
-  // Opportunistic cleanup
+  // Opportunistic cleanup of expired entries
   for (const [key, ts] of recentlySeenEventIds) {
     if (now - ts > EVENT_DEDUPE_TTL_MS) recentlySeenEventIds.delete(key);
   }
   const last = recentlySeenEventIds.get(eventId);
   if (last != null && now - last <= EVENT_DEDUPE_TTL_MS) return true;
-  recentlySeenEventIds.set(eventId, now);
+  // Hard cap: stop inserting when map is full to prevent memory exhaustion
+  if (recentlySeenEventIds.size < EVENT_DEDUPE_MAX_SIZE) {
+    recentlySeenEventIds.set(eventId, now);
+  }
   return false;
 }
 
