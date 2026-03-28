@@ -16,6 +16,13 @@ export const chatRequestSchema = z.object({
         .array(z.object({ day: z.number().int().min(1), placeIds: z.array(z.string().max(128)) }))
         .max(14)
         .optional(),
+      currentLocation: z
+        .object({ lat: z.number().min(-90).max(90), lng: z.number().min(-180).max(180) })
+        .optional(),
+      tripDates: z
+        .object({ start: z.string().max(32), end: z.string().max(32) })
+        .optional(),
+      tripStage: z.enum(["pre_trip", "during_trip", "post_trip"]).optional(),
     })
     .optional(),
 });
