@@ -190,6 +190,23 @@ export function useAIChat() {
     async (content: string) => {
       if (!content.trim() || loading) return;
 
+      // Handle /skills slash command locally without an API call
+      if (content.trim().toLowerCase() === "/skills") {
+        const userMessage: Message = { role: "user", content: content.trim() };
+        const skillsMessage: Message = {
+          role: "assistant",
+          content: `Here's what I can help with:\n\n**Trip planning** — Build a day or multi-day itinerary tailored to your dates and region.\n\n**Discover places** — Wineries, villages, beaches, ancient sites, monasteries.\n\n**Trails & hiking** — Suggestions by difficulty, region, and winter conditions.\n\n**Weather-adapted ideas** — What to do based on the forecast or your travel month.\n\n**Nearby places** — Share your location and I'll find what's close.\n\n**Airport arrival** — Transport from Larnaca or Paphos, first stops, opening-day tips.\n\n**Search & compare** — Compare trails, wineries, and events across the island.\n\nJust ask a question or tap a suggestion below to get started.`,
+          metadata: {
+            followUps: ["Plan my 3-day trip", "Best wineries near Limassol", "Easy winter hike", "I just landed in Larnaca"],
+          },
+        };
+        const withSkills = [...messagesRef.current, userMessage, skillsMessage];
+        messagesRef.current = withSkills;
+        setMessages(withSkills);
+        setInput("");
+        return;
+      }
+
       const userMessage: Message = { role: "user", content: content.trim() };
       // Keep the ref in sync immediately so outbound payload is never stale.
       const nextMessages = [...messagesRef.current, userMessage];
