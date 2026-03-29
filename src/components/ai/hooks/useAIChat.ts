@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
+import { handleSlashCommand } from "../slash-commands";
 // getPlaceById available for future use
 
 export type Message = {
@@ -190,19 +191,13 @@ export function useAIChat() {
     async (content: string) => {
       if (!content.trim() || loading) return;
 
-      // Handle /skills slash command locally without an API call
-      if (content.trim().toLowerCase() === "/skills") {
+      // Handle slash commands locally without an API call
+      const commandReply = handleSlashCommand(content);
+      if (commandReply) {
         const userMessage: Message = { role: "user", content: content.trim() };
-        const skillsMessage: Message = {
-          role: "assistant",
-          content: `Here's what I can help with:\n\n**Trip planning** — Build a day or multi-day itinerary tailored to your dates and region.\n\n**Discover places** — Wineries, villages, beaches, ancient sites, monasteries.\n\n**Trails & hiking** — Suggestions by difficulty, region, and winter conditions.\n\n**Weather-adapted ideas** — What to do based on the forecast or your travel month.\n\n**Nearby places** — Share your location and I'll find what's close.\n\n**Airport arrival** — Transport from Larnaca or Paphos, first stops, opening-day tips.\n\n**Search & compare** — Compare trails, wineries, and events across the island.\n\nJust ask a question or tap a suggestion below to get started.`,
-          metadata: {
-            followUps: ["Plan my 3-day trip", "Best wineries near Limassol", "Easy winter hike", "I just landed in Larnaca"],
-          },
-        };
-        const withSkills = [...messagesRef.current, userMessage, skillsMessage];
-        messagesRef.current = withSkills;
-        setMessages(withSkills);
+        const withCommand = [...messagesRef.current, userMessage, commandReply];
+        messagesRef.current = withCommand;
+        setMessages(withCommand);
         setInput("");
         return;
       }
