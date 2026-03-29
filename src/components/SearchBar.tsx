@@ -116,7 +116,7 @@ export default function SearchBar({
           aria-autocomplete="list"
           aria-activedescendant={activeId}
           id="search-input"
-          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
+          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-xl border border-sand-200/80 bg-white/80 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/15 transition-all duration-200 shadow-[0_1px_4px_rgba(37,39,48,0.04)]"
         />
       </div>
 
@@ -126,7 +126,7 @@ export default function SearchBar({
           ref={listRef}
           aria-labelledby="search-input"
           role="listbox"
-          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-[45]"
+          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-xl bg-white/98 border border-sand-200/80 shadow-[0_12px_32px_rgba(37,39,48,0.1),0_2px_8px_rgba(37,39,48,0.06)] max-h-96 overflow-y-auto z-[45]"
         >
           {results.map((r, i) => (
             <li
@@ -136,8 +136,8 @@ export default function SearchBar({
               role="option"
               aria-selected={i === activeIndex}
               onClick={() => router.push(r.href)}
-              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
-                i === activeIndex ? "bg-terracotta/10" : ""
+              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
+                i === activeIndex ? "bg-terracotta/8" : ""
               }`}
             >
               <div className="flex-1 min-w-0">
@@ -160,12 +160,12 @@ export default function SearchBar({
       )}
 
       {focused && query.length > 0 && query.length < 2 && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-[45] text-olive/60 text-sm" role="status">
+        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-xl bg-white/98 border border-sand-200/80 shadow-[0_8px_24px_rgba(37,39,48,0.08)] z-[45] text-olive/60 text-sm" role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
       {query.length >= 2 && !hasResults && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-[45] text-center text-olive/70 text-sm">
+        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-xl bg-white/98 border border-sand-200/80 shadow-[0_8px_24px_rgba(37,39,48,0.08)] z-[45] text-center text-olive/70 text-sm">
           <p className="mb-4">{tSearch("noResults", { query })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">

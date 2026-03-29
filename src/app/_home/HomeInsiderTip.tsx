@@ -27,17 +27,17 @@ export default function HomeInsiderTip({
       className={`${SECTION.pySub} ${LAYOUT.safeAreaX} bg-sand/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <div className={`${CALLOUT.tip} rounded-2xl px-5 sm:px-6 py-5 sm:py-6`}>
+        <div className={`${CALLOUT.tip} rounded-2xl px-6 sm:px-8 py-6 sm:py-8`}>
           <h2
             id="insider-tip-heading"
-            className="font-display text-sm font-semibold uppercase tracking-wider text-golden mb-2"
+            className="prose-label text-golden mb-3"
           >
             Winter insider tip
           </h2>
-          <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
+          <h3 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.titleGap}`}>
             {tip.title}
           </h3>
-          <p className={`text-olive/90 text-sm leading-relaxed ${SECTION.headingGap}`}>
+          <p className={`text-olive/80 text-base leading-relaxed ${SECTION.headingGap}`}>
             {tip.body}
           </p>
           <Link

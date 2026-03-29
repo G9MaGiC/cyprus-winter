@@ -29,7 +29,7 @@ export default function FilterChips({
 }: FilterChipsProps) {
   return (
     <div
-      className="flex gap-2.5 overflow-x-auto overflow-y-hidden pb-1 -mb-1 pr-4 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory sm:snap-none overscroll-x-contain touch-pan-x"
+      className="flex gap-3 overflow-x-auto overflow-y-hidden pb-1 -mb-1 pr-4 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory sm:snap-none overscroll-x-contain touch-pan-x"
       role="group"
       aria-label={ariaLabel}
       style={{ WebkitOverflowScrolling: "touch", scrollPaddingInline: "max(1rem, env(safe-area-inset-left))" } as React.CSSProperties}

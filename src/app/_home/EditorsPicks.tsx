@@ -24,10 +24,10 @@ export default function EditorsPicks({
                 src={item.image}
                 alt={item.imageAlt}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className="object-cover img-hover-scale"
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" aria-hidden />
             </div>
             <div className={CARD.content}>
               <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={item.title}>{item.title}</h3>

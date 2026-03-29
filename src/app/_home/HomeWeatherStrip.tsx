@@ -74,13 +74,13 @@ export default async function HomeWeatherStrip({
           className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center min-h-[44px] py-2 group"
           aria-label={tHome("weatherStrip.aria")}
         >
-          <span id="home-weather-heading" className={`${TYPE.cardTitle}`}>
+          <span id="home-weather-heading" className={`${TYPE.cardTitle} tracking-[-0.01em]`}>
             {tHome("weatherStrip.heading", {
               coast: coastMid,
               troodos: troodosMid,
             })}
           </span>
-          <span className="text-sage text-sm">— {prompt}</span>
+          <span className="text-sage/80 text-sm font-light">— {prompt}</span>
         </Link>
       </div>
     </section>

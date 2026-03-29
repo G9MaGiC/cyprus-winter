@@ -18,7 +18,7 @@ export default function StickyFilterBar({
     <div
       role={role}
       aria-label={ariaLabel}
-      className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
+      className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-xl border-b border-sand-200/70 shadow-[0_1px_0_rgba(201,111,82,0.04)] ${LAYOUT.stickyBarX} py-4 sm:py-5`}
     >
       {children}
     </div>

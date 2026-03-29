@@ -44,13 +44,13 @@ export default async function HomeTrailConditionsStrip({
           aria-label={t("trailConditionsStrip.aria")}
         >
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span id="trail-conditions-heading" className={`${TYPE.cardTitle}`}>
+            <span id="trail-conditions-heading" className={`${TYPE.cardTitle} tracking-[-0.01em]`}>
               {t("trailConditionsStrip.heading")}
             </span>
-            <span className="flex items-center gap-2 text-sm text-olive/80">
-              {open > 0 && <span className="text-sage font-medium">{t("trailConditionsStrip.open", { count: open })}</span>}
-              {caution > 0 && <span className="text-golden font-medium">{t("trailConditionsStrip.caution", { count: caution })}</span>}
-              {closed > 0 && <span className="text-terracotta font-medium">{t("trailConditionsStrip.closed", { count: closed })}</span>}
+            <span className="flex items-center gap-3 text-sm text-olive/80">
+              {open > 0 && <span className="flex items-center gap-1.5 text-sage font-medium"><span className="w-1.5 h-1.5 rounded-full bg-sage inline-block shrink-0" aria-hidden />{t("trailConditionsStrip.open", { count: open })}</span>}
+              {caution > 0 && <span className="flex items-center gap-1.5 text-golden font-medium"><span className="w-1.5 h-1.5 rounded-full bg-golden inline-block shrink-0" aria-hidden />{t("trailConditionsStrip.caution", { count: caution })}</span>}
+              {closed > 0 && <span className="flex items-center gap-1.5 text-terracotta font-medium"><span className="w-1.5 h-1.5 rounded-full bg-terracotta inline-block shrink-0" aria-hidden />{t("trailConditionsStrip.closed", { count: closed })}</span>}
               {open === 0 && caution === 0 && closed === 0 && (
                 <span className="text-olive/60">{t("trailConditionsStrip.checkReports")}</span>
               )}

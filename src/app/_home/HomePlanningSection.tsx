@@ -28,7 +28,7 @@ export default function HomePlanningSection({
           <LinkComponent
             href="/plan"
             prefetch="auto"
-            className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group`}
+            className={`block rounded-2xl ${CARD.contentLg} min-h-[160px] sm:min-h-[180px] ${CARD.base} border-l-[5px] border-l-terracotta ${CARD.hover} ${CARD.link} group`}
           >
 <h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
             Plan your trip
@@ -40,7 +40,7 @@ export default function HomePlanningSection({
           <LinkComponent
             href="/events"
             prefetch="auto"
-            className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-aegean ${CARD.hover} ${CARD.link} group`}
+            className={`block rounded-2xl ${CARD.contentLg} min-h-[160px] sm:min-h-[180px] ${CARD.base} border-l-[5px] border-l-aegean ${CARD.hover} ${CARD.link} group`}
           >
 <h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
             Winter events
