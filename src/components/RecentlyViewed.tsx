@@ -72,9 +72,9 @@ export function RecentlyViewedStrip() {
             <AppLink
               key={item.id}
               href={getItemPath(item)}
-              className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
+              className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-5 min-w-[200px] max-w-[240px] border-l-[5px] border-l-aegean/40`}
             >
-              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
+              <p className={`${TYPE.kicker} text-olive/60 mb-2.5`}>{typeLabels[item.type] || item.type}</p>
               <p className={`${TYPE.cardTitle} text-sm truncate`}>
                 {item.name}
               </p>

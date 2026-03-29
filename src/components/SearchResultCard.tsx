@@ -26,7 +26,7 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
   const badge = kindBadge[kind] ?? "bg-sand-100 text-olive/80";
 
   return (
-    <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.content}`}>
+    <div className={`group rounded-2xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.content}`}>
       <AppLink
         href={result.href}
         className="block"
@@ -37,14 +37,14 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
             <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
               {name}
             </h3>
-            <p className="text-sm text-olive/70 mt-0.5 truncate" title={sublabel}>{sublabel}</p>
+            <p className="text-sm text-olive/70 mt-1 truncate" title={sublabel}>{sublabel}</p>
           </div>
-          <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
+          <span className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium capitalize tracking-[0.01em] ${badge}`}>
             {kindLabels[kind]}
           </span>
         </div>
       </AppLink>
-      <div className="mt-3 pt-3 border-t border-sand-200/60">
+      <div className="mt-4 pt-4 border-t border-sand-200/60">
         <TrackOnClick event="plan_add" properties={{ placeId: result.item.id, source: "search_result_card" }}>
           <AddToItineraryButton placeId={result.item.id} className="text-sm" />
         </TrackOnClick>

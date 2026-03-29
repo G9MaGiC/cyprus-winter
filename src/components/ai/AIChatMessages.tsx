@@ -22,7 +22,7 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
       className={`flex ${isUser ? "justify-end" : "justify-start"} mb-4`}
     >
       <div
-        className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 ${
+        className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-5 py-4 ${
           isUser
             ? "bg-terracotta text-white rounded-br-md"
             : "bg-sand-100 text-olive rounded-bl-md"
@@ -87,7 +87,7 @@ export function AIChatMessages({ messages, loading, onRetry }: AIChatMessagesPro
   }, [messages, loading]);
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1">
+    <div className="flex-1 overflow-y-auto px-5 py-5 space-y-2">
       {messages.map((message, index) => (
         <ChatMessage
           key={index}
@@ -97,11 +97,11 @@ export function AIChatMessages({ messages, loading, onRetry }: AIChatMessagesPro
       ))}
       {loading && (
         <div className="flex justify-start mb-4">
-          <div className="bg-sand-100 rounded-2xl rounded-bl-md px-4 py-3">
-            <div className="flex gap-1">
-              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+          <div className="bg-sand-100 rounded-2xl rounded-bl-md px-5 py-4">
+            <div className="flex gap-1.5">
+              <span className="w-2.5 h-2.5 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+              <span className="w-2.5 h-2.5 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+              <span className="w-2.5 h-2.5 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
             </div>
           </div>
         </div>

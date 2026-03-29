@@ -86,17 +86,17 @@ export function AIChatInput({
   };
 
   return (
-    <div className="border-t border-sand-200 bg-white">
+    <div className="border-t border-sand-200/70 bg-white">
       {/* Suggestions */}
-      <div className="px-4 py-3 overflow-x-auto">
-        <div className="flex gap-2">
+      <div className="px-5 py-3 overflow-x-auto scrollbar-none">
+        <div className="flex gap-2.5">
           {suggestions.map((suggestion, index) => (
             <button
               key={index}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="shrink-0 px-3 py-1.5 text-xs sm:text-sm bg-sand-100 hover:bg-terracotta/10 
+              className="shrink-0 px-4 py-2 text-xs sm:text-sm bg-sand-100 hover:bg-terracotta/10
                          text-olive hover:text-terracotta rounded-full transition-colors
-                         border border-sand-200/80 whitespace-nowrap"
+                         border border-sand-200/80 whitespace-nowrap tracking-[0.005em]"
               disabled={loading}
             >
               {suggestion}
@@ -106,13 +106,13 @@ export function AIChatInput({
       </div>
 
       {/* Input area */}
-      <form onSubmit={handleSubmit} className="px-4 pb-4">
-        <div className="flex items-center gap-2 bg-sand-100 rounded-full px-4 py-2">
+      <form onSubmit={handleSubmit} className="px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <div className="flex items-center gap-2 bg-sand-100 rounded-2xl px-4 py-3">
           {speechSupported && (
             <button
               type="button"
               onClick={toggleListening}
-              className={`shrink-0 p-2 rounded-full transition-colors ${
+              className={`shrink-0 p-2 rounded-xl transition-colors ${
                 isListening
                   ? "bg-terracotta text-white animate-pulse"
                   : "text-olive hover:bg-sand-200"
@@ -133,8 +133,8 @@ export function AIChatInput({
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="shrink-0 p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-muted 
-                       disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="shrink-0 p-2.5 bg-terracotta text-white rounded-xl hover:bg-terracotta-muted
+                       disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
             aria-label={tCommon("ai.sendAria")}
           >
             <Send size={18} />

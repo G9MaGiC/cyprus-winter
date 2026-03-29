@@ -21,28 +21,28 @@ export default function HomeTemplateLinks({
       className={`${LAYOUT.safeAreaX} ${SECTION.pySub} bg-sand/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <header className="mb-4 sm:mb-5">
-          <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
+        <header className="mb-6 sm:mb-8">
+          <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-3`}>
             Pre-built itineraries
           </p>
-          <p className="text-sm text-olive/70">
+          <p className="text-base text-olive/70">
             Expert-curated. Realistic pacing. Start here, then tweak.
           </p>
         </header>
-        <div className="flex flex-wrap gap-2 sm:gap-3">
+        <div className="flex flex-wrap gap-3 sm:gap-4">
           {TEMPLATE_LINKS.map(({ label, href, hint }) => (
             <Link
               key={href}
               href={href}
-              className="inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex flex-col sm:flex-row sm:items-center sm:gap-2.5 min-h-[52px] px-5 py-3.5 rounded-2xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <span>{label}</span>
-              {hint && <span className="text-xs text-olive/60 font-normal">{hint}</span>}
+              {hint && <span className="text-sm text-olive/60 font-normal">{hint}</span>}
             </Link>
           ))}
           <Link
             href="/plan"
-            className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-olive/70 text-sm font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            className="inline-flex items-center min-h-[52px] px-5 py-3 rounded-xl text-olive/70 text-sm font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
           >
             All templates →
           </Link>

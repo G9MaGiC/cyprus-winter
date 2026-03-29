@@ -50,7 +50,7 @@ export function AIAssistant() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-charcoal/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-charcoal/70 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) handleClose();
       }}
@@ -59,28 +59,28 @@ export function AIAssistant() {
       aria-labelledby="ai-chat-title"
     >
       <div
-        className={`w-full sm:w-[90%] sm:max-w-2xl h-[85vh] sm:h-[80vh] bg-white rounded-t-2xl sm:rounded-2xl 
-                    shadow-2xl flex flex-col overflow-hidden ai-chat-panel-enter ${LAYOUT.safeAreaX}`}
+        className={`w-full sm:w-[90%] sm:max-w-2xl h-[88vh] sm:h-[82vh] bg-white rounded-t-3xl sm:rounded-3xl
+                    shadow-[0_32px_80px_rgba(37,39,48,0.25),0_0_0_1px_rgba(37,39,48,0.04)] flex flex-col overflow-hidden ai-chat-panel-enter ${LAYOUT.safeAreaX}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-sand-200">
+        <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-sand-200/70">
           <div>
-            <h2 id="ai-chat-title" className={`${TYPE.cardTitle}`}>
+            <h2 id="ai-chat-title" className={`${TYPE.cardTitle} tracking-[-0.01em]`}>
               {tCommon("ai.title")}
             </h2>
-            <p className="text-xs text-sage">{tCommon("ai.subtitle")}</p>
+            <p className="text-xs text-sage mt-0.5">{tCommon("ai.subtitle")}</p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <button
               onClick={clearChat}
-              className="text-xs text-olive/70 hover:text-terracotta px-2 py-1"
+              className="text-xs text-olive/70 hover:text-terracotta px-3 py-1.5 rounded-lg hover:bg-sand-100 transition-colors"
             >
               {tCommon("ai.clear")}
             </button>
             <button
               onClick={handleClose}
-              className="p-2 text-olive hover:bg-sand-100 rounded-full transition-colors"
+              className="p-2.5 text-olive hover:bg-sand-100 rounded-xl transition-colors"
               aria-label={tCommon("ai.closeAria")}
             >
               <X size={20} />

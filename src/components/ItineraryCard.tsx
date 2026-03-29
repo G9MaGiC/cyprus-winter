@@ -22,7 +22,7 @@ function TypeBadge({ type }: { type: PlanItem["type"] }) {
     restaurant: "Eat",
   };
   return (
-    <span className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium ${style[type]}`}>{label[type]}</span>
+    <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium tracking-[0.01em] ${style[type]}`}>{label[type]}</span>
   );
 }
 
@@ -59,7 +59,7 @@ export default function ItineraryCard({
       }`}
     >
       {!inTimeline && (
-        <span className="shrink-0 w-8 h-8 rounded-full bg-sand-200/80 text-olive/70 font-semibold text-sm flex items-center justify-center">
+        <span className="shrink-0 w-9 h-9 rounded-full bg-sand-200/80 text-olive/70 font-semibold text-sm flex items-center justify-center">
           {index}
         </span>
       )}

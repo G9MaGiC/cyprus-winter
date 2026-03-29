@@ -87,20 +87,20 @@ export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
     <nav
       aria-label={tCommon("aria.breadcrumb")}
-      className={cn("py-3 px-4 sm:px-6", className)}
+      className={cn("py-4 px-4 sm:px-6", className)}
     >
-      <ol className="flex flex-wrap items-center gap-2 text-sm text-olive/60">
+      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-olive/60">
         {breadcrumbItems.map((item, index) => {
           const isLast = index === breadcrumbItems.length - 1;
           
           return (
-            <li key={item.href} className="flex items-center gap-2">
+            <li key={item.href} className="flex items-center gap-1.5">
               {index > 0 && (
-                <span aria-hidden className="text-olive/30">/</span>
+                <span aria-hidden className="text-olive/25 text-xs">›</span>
               )}
               {isLast ? (
                 <span
-                  className="font-medium text-olive"
+                  className="font-medium text-charcoal"
                   aria-current="page"
                 >
                   {item.label}

@@ -13,8 +13,8 @@ export default async function HomeSearchSection() {
         <h2 id="home-search-heading" className="sr-only">
           {tHome("search.srHeading")}
         </h2>
-        <div className="max-w-xl mx-auto">
-          <p className={`text-center ${TYPE.kicker} mb-3`}>
+        <div className="max-w-2xl mx-auto">
+          <p className={`text-center ${TYPE.kicker} mb-4`}>
             {tHome("search.kicker")}
           </p>
           <SearchBar placeholder={tHome("search.placeholder")} className="w-full" />
