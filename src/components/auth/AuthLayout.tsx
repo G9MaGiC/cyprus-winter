@@ -59,7 +59,7 @@ export default function AuthLayout({
         <BackLink href={backHref} label={backLabel} />
 
         <div
-          className={`${CARD.base} ${CARD.contentLg} mt-8 sm:mt-10 lg:mt-12 border-l-4 ${variant === "success" ? "border-l-aegean/50" : "border-l-terracotta/50"}`}
+          className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-12 lg:mt-14 border-l-[5px] ${variant === "success" ? "border-l-aegean/50" : "border-l-terracotta/50"}`}
           {...(variant === "success" && {
             role: "status",
             "aria-live": "polite",
@@ -67,7 +67,7 @@ export default function AuthLayout({
         >
           {kicker && (
             <p
-              className={`text-xs font-semibold uppercase tracking-[0.15em] mb-2 ${variant === "success" ? "text-aegean" : "text-terracotta/90"}`}
+              className={`text-xs font-semibold uppercase tracking-[0.15em] mb-3 ${variant === "success" ? "text-aegean" : "text-terracotta/90"}`}
             >
               {kicker}
             </p>
@@ -75,13 +75,13 @@ export default function AuthLayout({
           <h1 className={`${TYPE.sectionTitle} text-charcoal ${SECTION.titleGap}`}>
             {title}
           </h1>
-          <p className="text-olive/80 text-base leading-relaxed mb-8">{subtitle}</p>
+          <p className="text-olive/80 text-base leading-relaxed mb-10">{subtitle}</p>
 
           {children}
         </div>
 
         {footer && (
-          <p className="mt-8 text-center text-sm text-olive/70">{footer}</p>
+          <p className="mt-10 text-center text-sm text-olive/70">{footer}</p>
         )}
       </div>
     </div>

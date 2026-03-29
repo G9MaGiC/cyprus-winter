@@ -21,18 +21,18 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
         <p className="text-center mb-4">
           <Link
             href="/register"
-            className="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg text-sm font-medium text-aegean hover:text-aegean/80 border border-aegean/50 hover:border-aegean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-xl text-sm font-medium text-aegean hover:text-aegean/80 border border-aegean/30 hover:border-aegean/60 hover:bg-aegean/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
             aria-label={tPlan("aria.savePlanCta")}
           >
             {tOnboarding("savePlan")}
           </Link>
         </p>
       )}
-      <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
+      <p className="text-olive/60 text-base break-words text-center mb-8 max-w-xl mx-auto leading-relaxed">
         Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
       </p>
       <div
-        className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm"
+        className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm"
         role="navigation"
         aria-label={tPlan("aria.quickLinks")}
       >

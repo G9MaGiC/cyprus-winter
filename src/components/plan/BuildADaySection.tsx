@@ -17,7 +17,7 @@ function typeBadge(type: RelatedPlace["type"], label: string) {
   };
   return (
     <span
-      className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium uppercase tracking-wider ${cls[type]}`}
+      className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium uppercase tracking-[0.01em] ${cls[type]}`}
       aria-hidden
     >
       {label}
@@ -50,7 +50,7 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
       <header>
         <span
           id="build-a-day-kicker"
-          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
+          className="inline-flex items-center min-h-[28px] px-3 py-1 rounded-xl bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
           aria-hidden
         >
           {tPlan("curatedCombos")}
@@ -79,7 +79,7 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 {combo.why}
               </p>
               {combo.tip && (
-                <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-l-2 border-l-golden/40 pl-3`}>
+                <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-l-[3px] border-l-golden/40 pl-4`}>
                   {combo.tip}
                 </p>
               )}
@@ -88,7 +88,7 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 <span aria-hidden>→</span>
                 <span>{tPlan("afternoon")}</span>
               </div>
-              <ul className="space-y-2.5 mb-5 flex-1 min-h-0">
+              <ul className="space-y-3 mb-5 flex-1 min-h-0">
                 {places.map((p) => (
                   <li key={p.id} className="flex items-center gap-2 min-w-0">
                     {typeBadge(p.type, typeLabels[p.type])}
