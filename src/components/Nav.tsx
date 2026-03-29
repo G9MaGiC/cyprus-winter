@@ -131,7 +131,7 @@ export default function Nav() {
                   aria-hidden
                   tabIndex={-1}
                 />
-                <div id="more-menu" ref={moreMenuRef} role="menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-[45] min-w-[120px]">
+                <div id="more-menu" ref={moreMenuRef} role="menu" className="absolute right-0 top-full mt-2 py-2 rounded-xl bg-charcoal/98 backdrop-blur-xl border border-white/8 shadow-[0_16px_48px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] z-[45] min-w-[140px]">
                   {moreLinksResolved.map((link) => (
                     <AppLink
                       key={link.href}
@@ -154,7 +154,7 @@ export default function Nav() {
           <button
             type="button"
             onClick={() => triggerAIAssistant()}
-            className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg bg-golden text-charcoal text-sm font-semibold hover:bg-golden/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+            className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg bg-golden text-charcoal text-sm font-semibold tracking-wide shadow-[0_2px_8px_rgba(212,168,83,0.35)] hover:bg-golden/90 hover:shadow-[0_4px_12px_rgba(212,168,83,0.4)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
             aria-label={t("askAIAria")}
           >
             {t("askAI")}

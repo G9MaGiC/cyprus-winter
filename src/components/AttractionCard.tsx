@@ -48,7 +48,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             src={getAttractionImage(a.id, a.type)}
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
             fill
-            className="object-cover group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out"
+            className="object-cover img-hover-scale"
             sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
           />
           <div className={CARD.mediaOverlay} aria-hidden />
@@ -72,7 +72,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
               </span>
             )}
           </div>
-          <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block" title={a.region}>
+          <span className="absolute bottom-3 left-3 right-3 text-white/95 font-semibold text-xs tracking-widest uppercase drop-shadow-md truncate block" title={a.region}>
             {a.region}
           </span>
         </div>
@@ -80,7 +80,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           <h3 className={`${TYPE.cardTitle} truncate duration-200`} title={a.name}>
             {a.name}
           </h3>
-          <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">
+          <p className="text-sm text-olive/75 mt-1.5 line-clamp-3 leading-relaxed break-words">
             {tease}
           </p>
           {bestTime && (

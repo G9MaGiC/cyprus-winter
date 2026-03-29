@@ -100,7 +100,7 @@ export default function SiteFooter({ labels, localeSwitcher, LinkComponent = App
           </LinkComponent>
         </nav>
 
-        <div className={`inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 text-xs text-olive/80 mx-auto w-fit ${SECTION.headingGap}`}>
+        <div className={`inline-flex flex-wrap justify-center gap-x-5 gap-y-1.5 px-5 py-3.5 rounded-2xl bg-white/80 border border-sand-200/80 shadow-[0_1px_4px_rgba(37,39,48,0.05)] text-xs text-olive/80 mx-auto w-fit ${SECTION.headingGap}`}>
           <span>
             {tCommon("emergency")} <strong className="text-charcoal font-semibold">112</strong>
           </span>

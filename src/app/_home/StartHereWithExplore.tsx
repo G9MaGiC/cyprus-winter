@@ -89,7 +89,7 @@ export default function StartHereWithExplore({
       className={`${LAYOUT.safeAreaX} ${SECTION.py} ${SECTION.alt} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <header className="text-center mb-8 sm:mb-10">
+        <header className="text-center mb-10 sm:mb-14">
           <p className="text-sm text-olive/80 mb-4">{tHome("startHere.prompt")}</p>
           <p className={`${TYPE.kicker} text-sage mb-2`}>{tHome("startHere.primaryPath")}</p>
           <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
@@ -108,8 +108,8 @@ export default function StartHereWithExplore({
               prefetch="auto"
               className={`group flex flex-col ${CARD.base} ${CARD.hover} ${CARD.interactive} ${CARD.link} overflow-hidden ${
                 item.variant === "primary"
-                  ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
-                  : "border-l-4 border-l-aegean/60"
+                  ? "border-l-[5px] border-l-terracotta min-h-[160px] sm:min-h-[180px]"
+                  : "border-l-[5px] border-l-aegean/60 min-h-[160px] sm:min-h-[180px]"
               }`}
               aria-label={`${item.title}: ${item.desc}`}
             >

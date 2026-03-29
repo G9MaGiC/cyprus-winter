@@ -80,7 +80,7 @@ export default function ListPageHero({
   if (backgroundImage) {
     return (
       <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
-        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[320px] sm:min-h-[260px]">
+        <div className="relative aspect-[3/1] sm:aspect-[21/9] min-h-[320px] sm:min-h-[320px]">
           <Image
             src={backgroundImage}
             alt={backgroundImageAlt ?? "Page hero image"}
@@ -94,7 +94,7 @@ export default function ListPageHero({
             <nav className="flex flex-col gap-1" aria-label={tCommon("aria.pageNavigation")}>
               {navBlock}
             </nav>
-            <h1 className={`${TYPE.pageTitle} mt-3 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
+            <h1 className={`${TYPE.pageTitle} mt-3 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]`}>
               {title}
             </h1>
             <p className="text-white/90 mt-1 max-w-xl text-sm sm:text-base break-words leading-relaxed">

@@ -44,7 +44,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
             src={getTrailImage(trail.id)}
             alt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} trail in Cyprus winter`}
             fill
-            className="object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
+            className="object-cover img-hover-scale"
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}
           />
           <div className={CARD.mediaOverlay} aria-hidden />
@@ -53,7 +53,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
             <DifficultyBadge difficulty={trail.difficulty} />
           </div>
           {conditions?.temperatureC != null && (
-            <div className="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-white/90 text-charcoal text-xs font-medium backdrop-blur-sm">
+            <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full bg-white/90 text-charcoal text-xs font-semibold tracking-wide backdrop-blur-sm shadow-sm">
               {conditions.temperatureC}°C
             </div>
           )}
@@ -71,7 +71,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
           <p className="text-sm text-olive/70 mt-1 line-clamp-1 break-words">
             {teaser}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-sage/80 leading-relaxed">
+          <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-sage font-medium tracking-wide leading-relaxed">
             <span>{trail.lengthKm} km</span>
             <span aria-hidden>·</span>
             <span>{trail.elevationGainM}m gain</span>

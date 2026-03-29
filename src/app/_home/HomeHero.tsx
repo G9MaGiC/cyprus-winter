@@ -29,21 +29,21 @@ export default async function HomeHero() {
 
       <div className="relative z-10 w-full max-w-2xl mx-auto px-2 sm:px-4">
         <div className={HERO.panel}>
-          <p className={`${TYPE.kickerOnDark} mb-3`}>{tHome("kicker")}</p>
+          <p className={`${TYPE.kickerOnDark} mb-4 hero-title-enter`}>{tHome("kicker")}</p>
           <h1
             id="hero-heading"
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-[-0.03em] leading-[0.97] text-balance mb-3"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-[-0.03em] leading-[0.97] text-balance mb-3 hero-title-enter"
           >
             {tHome("title")}
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
+          <p className="text-lg sm:text-xl text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-2 hero-subtitle-enter">
             {tHome("headline")}
           </p>
-          <p className="text-sm text-white/80 max-w-lg mx-auto mb-6">
+          <p className="text-sm sm:text-base text-white/70 max-w-lg mx-auto mb-8 hero-subtitle-enter">
             {tHome(`seasonal.${getSeasonalKey()}`)} {tHome("degreesLine")}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 hero-cta-enter">
             <AppLink
               href="/discover"
               data-testid="home-hero-explore-cta"
@@ -61,7 +61,7 @@ export default async function HomeHero() {
               {tHome("cta.planTrip")}
             </AppLink>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-5 pt-2 border-t border-white/15">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-6 pt-4 border-t border-white/12 hero-cta-enter">
             <AppLink
               href="/airport"
               data-testid="home-hero-airport-cta"

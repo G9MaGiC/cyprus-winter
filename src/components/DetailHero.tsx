@@ -25,7 +25,7 @@ export default function DetailHero({
   return (
     <header className={`relative ${LAYOUT.heroBleedX} mt-4 mb-10 sm:mb-14`}>
       <div
-        className={`relative aspect-[4/3] sm:aspect-video overflow-hidden bg-olive/10 ${
+        className={`relative aspect-[4/3] sm:aspect-[16/7] overflow-hidden bg-olive/10 ${
           rounded ? "rounded-lg sm:rounded-xl" : ""
         }`}
       >
@@ -38,7 +38,7 @@ export default function DetailHero({
           priority
         />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"
           aria-hidden
         />
         <div className={`absolute bottom-0 left-0 right-0 p-8 sm:p-12 text-white`}>
