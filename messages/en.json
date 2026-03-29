@@ -1012,6 +1012,13 @@
     "footer": {
       "winterTip": "Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.",
       "bookTastings": "Book tastings"
+    },
+    "modal": {
+      "applyTemplate": "Apply {label}?",
+      "addCombo": "Add {label}?",
+      "addOrReplace": "Add to your plan or replace what you have.",
+      "addOrReplaceDay": "Add to your plan or replace your day.",
+      "replaceDay": "Replace day"
     }
   },
   "placePicker": {
@@ -1078,7 +1085,11 @@
     "browseWineriesAria": "Browse wineries",
     "browseWineriesLabel": "Wineries",
     "seeWhatsOnAria": "See what's on",
-    "seeWhatsOnLabel": "What's on"
+    "seeWhatsOnLabel": "What's on",
+    "fitExact": "Exact length",
+    "fitNear": "Near match",
+    "fitCompress": "Compress plan",
+    "fitExtend": "Extend with add-ons"
   },
   "bookings": {
     "title": "My Bookings",
@@ -1319,6 +1330,17 @@
         "learnMoreAria": "Learn more about {name}",
         "learnMoreCta": "Learn more"
       }
+    },
+    "highlights": {
+      "heading": "Don't miss",
+      "body": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+    },
+    "tips": {
+      "heading": "Planning tips",
+      "checkDates": "Check official sites for exact dates — many events move year to year.",
+      "bookEarly": "Book early for Epiphany, Carnival, and Christmas markets.",
+      "arriveEarly": "Arrive early for popular events. The best spots fill quickly.",
+      "pairWithTrails": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
     }
   },
   "weather": {
@@ -1997,6 +2019,21 @@
       "aria-label_10": "Go to Discover",
       "aria-label_11": "View your itinerary",
       "aria-label_12": "Transport from airport, tips"
+    }
+  },
+  "regions": {
+    "sections": {
+      "trails": "Trails",
+      "villages": "Villages",
+      "beaches": "Beaches",
+      "ancientSites": "Ancient sites",
+      "wineries": "Wineries",
+      "events": "Winter events",
+      "monasteries": "Monasteries & churches"
+    },
+    "footer": {
+      "weatherByMonth": "Weather by month",
+      "planYourTrip": "Plan your trip"
     }
   }
 }

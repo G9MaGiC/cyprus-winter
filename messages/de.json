@@ -1012,6 +1012,13 @@
     "footer": {
       "winterTip": "Winter-Tipp: Tageslicht endet gegen 17 Uhr. Wanderungen bis 10 Uhr starten; Weinproben 24–48 Std. im Voraus buchen.",
       "bookTastings": "Weinproben buchen"
+    },
+    "modal": {
+      "applyTemplate": "{label} anwenden?",
+      "addCombo": "{label} hinzufügen?",
+      "addOrReplace": "Zum Plan hinzufügen oder ersetzen, was Sie haben.",
+      "addOrReplaceDay": "Zum Plan hinzufügen oder Ihren Tag ersetzen.",
+      "replaceDay": "Tag ersetzen"
     }
   },
   "placePicker": {
@@ -1078,7 +1085,11 @@
     "browseWineriesAria": "Weingüter durchsuchen",
     "browseWineriesLabel": "Weingüter",
     "seeWhatsOnAria": "Sehen, was los ist",
-    "seeWhatsOnLabel": "Was läuft"
+    "seeWhatsOnLabel": "Was läuft",
+    "fitExact": "Genau passend",
+    "fitNear": "Fast passend",
+    "fitCompress": "Plan komprimieren",
+    "fitExtend": "Mit Extras ergänzen"
   },
   "bookings": {
     "title": "Meine Buchungen",
@@ -1319,6 +1330,17 @@
         "learnMoreAria": "Mehr über {name} erfahren",
         "learnMoreCta": "Mehr erfahren"
       }
+    },
+    "highlights": {
+      "heading": "Nicht verpassen",
+      "body": "Epiphanie und Karneval sind die Seele der Insel. Früh ankommen. Warm einpacken."
+    },
+    "tips": {
+      "heading": "Planungstipps",
+      "checkDates": "Genaue Termine auf offiziellen Seiten prüfen — viele Events verschieben sich von Jahr zu Jahr.",
+      "bookEarly": "Früh buchen für Epiphanie, Karneval und Weihnachtsmärkte.",
+      "arriveEarly": "Bei beliebten Events früh da sein. Die besten Plätze sind schnell weg.",
+      "pairWithTrails": "Events mit Wanderwegen oder Dörfern kombinieren. Morgens wandern, nachmittags Event."
     }
   },
   "weather": {
@@ -1997,6 +2019,21 @@
       "aria-label_10": "Zu Entdecken gehen",
       "aria-label_11": "Ihren Reiseplan anzeigen",
       "aria-label_12": "Transport vom Flughafen, Tipps"
+    }
+  },
+  "regions": {
+    "sections": {
+      "trails": "Wanderwege",
+      "villages": "Dörfer",
+      "beaches": "Strände",
+      "ancientSites": "Antike Stätten",
+      "wineries": "Weingüter",
+      "events": "Winterveranstaltungen",
+      "monasteries": "Klöster & Kirchen"
+    },
+    "footer": {
+      "weatherByMonth": "Wetter nach Monat",
+      "planYourTrip": "Reise planen"
     }
   }
 }

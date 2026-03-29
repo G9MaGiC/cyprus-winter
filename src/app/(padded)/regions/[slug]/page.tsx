@@ -112,6 +112,7 @@ export default async function RegionPage({ params }: Props) {
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
   if (!config) notFound();
   const tNav = await getTranslations("nav");
+  const tRegions = await getTranslations("regions");
 
   const regionSlug = config.slug as RegionSlug;
 
@@ -158,7 +159,7 @@ export default async function RegionPage({ params }: Props) {
               id="trails"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Trails
+              {tRegions("sections.trails")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionTrails.map((t) => (
@@ -171,7 +172,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/guides/troodos-december"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  Troodos trails in December →
+                  {tNav("trails")} · December →
                 </AppLink>
               </p>
             )}
@@ -184,7 +185,7 @@ export default async function RegionPage({ params }: Props) {
               id="villages"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Villages
+              {tRegions("sections.villages")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionVillages.map((v) => (
@@ -200,7 +201,7 @@ export default async function RegionPage({ params }: Props) {
               id="beaches"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Beaches
+              {tRegions("sections.beaches")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionBeaches.map((b) => (
@@ -216,7 +217,7 @@ export default async function RegionPage({ params }: Props) {
               id="ancient"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Ancient sites
+              {tRegions("sections.ancientSites")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionAncient.map((a) => (
@@ -232,7 +233,7 @@ export default async function RegionPage({ params }: Props) {
               id="wineries"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Wineries
+              {tRegions("sections.wineries")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionWineries.slice(0, 9).map((w) => (
@@ -245,7 +246,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/wineries"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  All Cyprus wineries →
+                  {tRegions("sections.wineries")} →
                 </AppLink>
               </p>
             )}
@@ -258,7 +259,7 @@ export default async function RegionPage({ params }: Props) {
               id="events"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Winter events
+              {tRegions("sections.events")}
             </h2>
             <ul className="space-y-3">
               {regionEvents.map((e) => (
@@ -283,7 +284,7 @@ export default async function RegionPage({ params }: Props) {
               id="monasteries"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Monasteries & churches
+              {tRegions("sections.monasteries")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {regionMonasteries.map((m) => (
@@ -297,11 +298,11 @@ export default async function RegionPage({ params }: Props) {
       <div className={SECTION.footerBlock}>
         <p className="text-center text-olive/70 text-sm">
         <AppLink href="/weather" className={SECTION.aegeanLink}>
-          Weather by month
+          {tRegions("footer.weatherByMonth")}
         </AppLink>
         {" · "}
         <AppLink href="/plan" className={SECTION.aegeanLink}>
-          Plan your trip
+          {tRegions("footer.planYourTrip")}
         </AppLink>
       </p>
       </div>

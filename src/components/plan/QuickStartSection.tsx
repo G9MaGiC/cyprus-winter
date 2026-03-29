@@ -25,11 +25,12 @@ function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tr
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
 
-function getTripFitLabel(templateDuration: number, tripLength: number): string {
+type TripFitT = (key: string) => string;
+function getTripFitLabel(templateDuration: number, tripLength: number, t: TripFitT): string {
   const delta = templateDuration - tripLength;
-  if (delta === 0) return "Exact length";
-  if (Math.abs(delta) === 1) return "Near match";
-  return delta > 0 ? "Compress plan" : "Extend with add-ons";
+  if (delta === 0) return t("fitExact");
+  if (Math.abs(delta) === 1) return t("fitNear");
+  return delta > 0 ? t("fitCompress") : t("fitExtend");
 }
 
 export default function QuickStartSection({
@@ -105,7 +106,7 @@ export default function QuickStartSection({
               </span>
             )}
             {!isForYou && isRecommended && (
-              <span className="text-xs font-medium text-aegean mt-1 block">Fits your {tripLength}-day trip</span>
+              <span className="text-xs font-medium text-aegean mt-1 block">{tPlanQuick("forTrip", { days: tripLength ?? 0 })}</span>
             )}
           </div>
           <span
@@ -118,7 +119,7 @@ export default function QuickStartSection({
         <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
         {tripLength != null && (
           <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
-            {getTripFitLabel(template.duration, tripLength)}
+            {getTripFitLabel(template.duration, tripLength, tPlanQuick)}
           </span>
         )}
       </button>

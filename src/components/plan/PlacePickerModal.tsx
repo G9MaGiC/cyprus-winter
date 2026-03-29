@@ -14,6 +14,7 @@ type Props = {
 
 export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Props) {
   const tCommon = useTranslations("common");
+  const tPlan = useTranslations("plan");
   const trapFocus = useTrapFocus();
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveRef = useRef<HTMLElement | null>(null);
@@ -54,7 +55,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
       >
         <div className="flex items-center justify-between shrink-0 px-5 py-4 sm:py-5 border-b border-sand-200/80">
           <h2 id="browse-places-title" className={`${TYPE.cardTitle} text-lg sm:text-xl`}>
-            Browse places
+            {tPlan("browsePlaces")}
           </h2>
           <button
             type="button"

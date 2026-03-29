@@ -1012,6 +1012,13 @@
     "footer": {
       "winterTip": "Zimowa wskazówka: dzień kończy się ok. 17:00. Zacznij szlaki przed 10:00; rezerwuj degustacje 24–48 godz. wcześniej.",
       "bookTastings": "Rezerwuj degustacje"
+    },
+    "modal": {
+      "applyTemplate": "Zastosować {label}?",
+      "addCombo": "Dodać {label}?",
+      "addOrReplace": "Dodaj do planu lub zastąp to, co masz.",
+      "addOrReplaceDay": "Dodaj do planu lub zastąp swój dzień.",
+      "replaceDay": "Zastąp dzień"
     }
   },
   "placePicker": {
@@ -1078,7 +1085,11 @@
     "browseWineriesAria": "Przeglądaj winnice",
     "browseWineriesLabel": "Winnice",
     "seeWhatsOnAria": "Zobacz, co jest dostępne",
-    "seeWhatsOnLabel": "Co jest dostępne"
+    "seeWhatsOnLabel": "Co jest dostępne",
+    "fitExact": "Dokładna długość",
+    "fitNear": "Zbliżona długość",
+    "fitCompress": "Skompresuj plan",
+    "fitExtend": "Rozszerz o dodatki"
   },
   "bookings": {
     "title": "Moje rezerwacje",
@@ -1240,6 +1251,17 @@
         "learnMoreAria": "Dowiedz się więcej o {name}",
         "learnMoreCta": "Dowiedz się więcej"
       }
+    },
+    "highlights": {
+      "heading": "Nie przegap",
+      "body": "Święto Trzech Króli i Karnawał to dusza wyspy. Przyjedź wcześnie. Ubierz się ciepło."
+    },
+    "tips": {
+      "heading": "Wskazówki planowania",
+      "checkDates": "Sprawdź oficjalne strony po dokładne daty — wiele wydarzeń zmienia się z roku na rok.",
+      "bookEarly": "Rezerwuj wcześnie na Święto Trzech Króli, Karnawał i Jarmarki Bożonarodzeniowe.",
+      "arriveEarly": "Na popularne wydarzenia przychodź wcześnie. Najlepsze miejsca szybko się zajmują.",
+      "pairWithTrails": "Połącz wydarzenia z pobliskimi szlakami lub wioskami. Rano wędrówka, po południu wydarzenie."
     }
   },
   "weather": {
@@ -1997,6 +2019,21 @@
       "aria-label_10": "Przejdź do Odkrywaj",
       "aria-label_11": "Zobacz plan podróży",
       "aria-label_12": "Transport z lotniska, wskazówki"
+    }
+  },
+  "regions": {
+    "sections": {
+      "trails": "Szlaki",
+      "villages": "Wioski",
+      "beaches": "Plaże",
+      "ancientSites": "Starożytne miejsca",
+      "wineries": "Winiarnie",
+      "events": "Zimowe wydarzenia",
+      "monasteries": "Klasztory i kościoły"
+    },
+    "footer": {
+      "weatherByMonth": "Pogoda według miesiąca",
+      "planYourTrip": "Zaplanuj podróż"
     }
   }
 }
