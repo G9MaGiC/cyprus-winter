@@ -9,10 +9,10 @@ export default function BackLink({ href, label }: BackLinkProps) {
   return (
     <AppLink
       href={href}
-      className="inline-flex items-center min-h-[44px] py-2 max-w-full min-w-0 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded truncate"
+      className="inline-flex items-center gap-1.5 min-h-[44px] py-2 max-w-full min-w-0 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg truncate"
       aria-label={label}
     >
-      <span aria-hidden>←</span> {label}
+      <span aria-hidden className="shrink-0">←</span> {label}
     </AppLink>
   );
 }

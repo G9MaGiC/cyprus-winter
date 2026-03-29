@@ -80,18 +80,18 @@ export default function BeforeYouGoChecklist({
           All set. Have a safe trip.
         </p>
       )}
-      <ul className="space-y-3" role="list">
+      <ul className="space-y-3.5" role="list">
         {tips.map((tip) => {
           const isChecked = checked.has(tip.id);
           return (
             <li key={tip.id}>
               <label
-                className={`flex gap-3 text-sm leading-relaxed cursor-pointer group focus-within:ring-2 focus-within:ring-terracotta/50 focus-within:ring-offset-2 focus-within:ring-offset-background rounded-lg p-2 -m-2 transition-colors ${
+                className={`flex gap-3 text-sm leading-relaxed cursor-pointer group focus-within:ring-2 focus-within:ring-terracotta/50 focus-within:ring-offset-2 focus-within:ring-offset-background rounded-xl p-3 -m-3 transition-colors ${
                   isChecked ? "text-olive/60" : "text-olive/90"
                 }`}
               >
                 <span
-                  className={`shrink-0 mt-0.5 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors ${
+                  className={`shrink-0 mt-0.5 w-6 h-6 rounded-lg border-[1.5px] flex items-center justify-center transition-colors ${
                     isChecked
                       ? "bg-terracotta border-terracotta text-white"
                       : "border-sand-300 group-hover:border-terracotta/50"

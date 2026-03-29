@@ -43,7 +43,7 @@ export default function AddToItineraryButton({
     return (
       <span
         data-testid={`in-plan-${placeId}`}
-        className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
+        className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-xl bg-aegean/15 text-aegean font-medium ${className}`}
         aria-label={tCommon("aria.placeInItinerary", { id: placeId })}
       >
         <span aria-hidden>✓</span> {tCommon("inYourPlan")}

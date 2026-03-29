@@ -90,8 +90,8 @@ export default function QuickStartSection({
         type="button"
         onClick={() => onTemplateClick(template.key)}
         className={`text-left w-full min-h-[96px] sm:min-h-[104px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
-          isForYou ? "border-l-4 border-l-terracotta bg-terracotta/[0.04]" : ""
-        } ${isRecommended && !isForYou ? "border-l-4 border-l-aegean bg-aegean/[0.04]" : ""}`}
+          isForYou ? "border-l-[5px] border-l-terracotta bg-terracotta/[0.04]" : ""
+        } ${isRecommended && !isForYou ? "border-l-[5px] border-l-aegean bg-aegean/[0.04]" : ""}`}
         aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
       >
         <div className="flex items-start justify-between gap-3">
@@ -109,7 +109,7 @@ export default function QuickStartSection({
             )}
           </div>
           <span
-            className="shrink-0 rounded-lg bg-sand-200/80 px-2.5 py-1 text-xs font-semibold text-olive/80 tabular-nums"
+            className="shrink-0 rounded-xl bg-sand-200/80 px-3 py-1.5 text-xs font-semibold text-olive/80 tabular-nums"
             aria-hidden
           >
             {template.duration}d
@@ -117,7 +117,7 @@ export default function QuickStartSection({
         </div>
         <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
         {tripLength != null && (
-          <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
+          <span className="mt-2 inline-flex rounded-lg bg-sand-100 px-2.5 py-1 text-xs font-medium text-olive/70">
             {getTripFitLabel(template.duration, tripLength)}
           </span>
         )}
@@ -129,7 +129,7 @@ export default function QuickStartSection({
     <section aria-labelledby="quick-start-heading" className="space-y-8 sm:space-y-10">
       <header>
         <span
-          className={`${TYPE.kicker} inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-aegean/10 text-aegean`}
+          className={`${TYPE.kicker} inline-flex items-center min-h-[28px] px-3 py-1 rounded-xl bg-aegean/10 text-aegean`}
           aria-hidden
         >
           {hasContent ? tPlanQuick("kickerHasContent") : tPlanQuick("kickerEmpty")}
@@ -149,7 +149,7 @@ export default function QuickStartSection({
           </p>
         )}
         {tripLength != null && (
-          <div className="mt-3 rounded-xl border border-aegean/20 bg-aegean/5 p-3 sm:p-4">
+          <div className="mt-3 rounded-2xl border border-aegean/20 bg-aegean/5 p-4 sm:p-5">
             <p className="text-sm text-olive/85">
               Recommended for your {tripLength}-day trip based on length fit and your saved preferences.
             </p>

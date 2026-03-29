@@ -76,9 +76,9 @@ export default function DaySelector({
               aria-controls="day-panel"
               tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveDay(d)}
-              className={`shrink-0 snap-center min-w-[3.5rem] min-[400px]:min-w-[3.75rem] sm:min-w-[4.5rem] px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
+              className={`shrink-0 snap-center min-w-[3.5rem] min-[400px]:min-w-[3.75rem] sm:min-w-[4.5rem] px-4 sm:px-5 py-3 rounded-2xl font-semibold text-sm transition-all duration-200 min-h-[48px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                 isActive
-                  ? "bg-terracotta text-white shadow-sm"
+                  ? "bg-terracotta text-white shadow-[0_2px_8px_rgba(201,111,82,0.35)]"
                   : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/60"
               }`}
             >
@@ -115,7 +115,7 @@ export default function DaySelector({
                   key={d}
                   type="button"
                   onClick={() => setActiveDay(d)}
-                  className={`w-full min-h-[44px] text-left px-4 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  className={`w-full min-h-[48px] text-left px-4 py-3.5 rounded-2xl text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     isActive ? "bg-terracotta/10 text-terracotta font-medium" : "bg-sand-100/60 text-olive/80 hover:bg-sand-200/60"
                   }`}
                 >
