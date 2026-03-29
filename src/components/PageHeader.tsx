@@ -39,12 +39,12 @@ export default function PageHeader({
         <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-olive/60" />
       )}
       </nav>
-      <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
+      <h1 className={`${TYPE.pageTitle} mt-4 sm:mt-6`}>
         {title}
       </h1>
-      <p className="text-olive/80 mt-2 max-w-xl prose-body break-words">{description}</p>
+      <p className="text-olive/80 mt-3 max-w-xl prose-body break-words">{description}</p>
       {descriptionSecondary && (
-        <p className="text-olive/60 text-sm mt-2 max-w-xl break-words">{descriptionSecondary}</p>
+        <p className="text-olive/60 text-sm mt-3 max-w-xl break-words">{descriptionSecondary}</p>
       )}
       {children}
     </div>

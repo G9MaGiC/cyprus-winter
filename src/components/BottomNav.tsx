@@ -99,10 +99,10 @@ export default function BottomNav() {
             href={link.href}
             prefetch={false}
             aria-current={isActive(pathname, link.href) ? "page" : undefined}
-            className="flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
+            className="flex flex-col items-center justify-center min-h-[56px] min-w-[44px] gap-1 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
             <span
-              className={`text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-[0.6875rem] max-[400px]:text-[10px] font-medium tracking-[0.02em] whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(link.labelKey)}
             </span>
@@ -116,12 +116,12 @@ export default function BottomNav() {
             aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
             aria-hidden={stickyPlanVisible}
             tabIndex={stickyPlanVisible ? -1 : undefined}
-            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
+            className={`flex flex-col items-center justify-center min-h-[56px] min-w-[44px] gap-1 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               stickyPlanVisible ? "invisible pointer-events-none" : ""
             }`}
           >
             <span
-              className={`text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-[0.6875rem] max-[400px]:text-[10px] font-medium tracking-[0.02em] whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(planLink.labelKey)}
             </span>
@@ -135,11 +135,11 @@ export default function BottomNav() {
             aria-expanded={moreOpen}
             aria-haspopup="true"
             aria-label={tCommon("aria.moreNavigation")}
-            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
+            className={`flex flex-col items-center justify-center min-h-[56px] min-w-[44px] gap-1 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
-            <span className="text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap">
+            <span className="text-[0.6875rem] max-[400px]:text-[10px] font-medium tracking-[0.02em] whitespace-nowrap">
               {t("more")}
             </span>
           </button>

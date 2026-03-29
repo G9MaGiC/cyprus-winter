@@ -21,6 +21,9 @@
   --touch-target: 44px;
   --transition-smooth: 0.2s ease;
   --transition-medium: 0.3s ease;
+  /* Warm card shadows — terracotta-tinted for Mediterranean depth */
+  --shadow-warm-card: 0 2px 16px rgba(201, 111, 82, 0.05), 0 1px 4px rgba(37, 39, 48, 0.04);
+  --shadow-warm-card-hover: 0 12px 40px rgba(201, 111, 82, 0.12), 0 4px 12px rgba(37, 39, 48, 0.08);
 }
 
 @theme inline {
@@ -48,6 +51,10 @@ html {
   scroll-behavior: smooth;
   /* 16px base prevents iOS zoom on input focus */
   font-size: 16px;
+  /* Crisp font rendering across all platforms */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Subtle tap highlight for touch — terracotta tint */
   -webkit-tap-highlight-color: rgba(201, 111, 82, 0.12);
 }
@@ -84,15 +91,16 @@ a:focus-visible {
 
 .font-display {
   font-family: var(--font-display), "Fraunces", ui-serif, serif;
+  letter-spacing: -0.015em;
 }
 
 /* 2026 typographic scale — clear hierarchy */
 .prose-intro {
-  font-size: 1.125rem;
+  font-size: 1.1875rem;
   line-height: 1.7;
 }
 .prose-body {
-  line-height: 1.7;
+  line-height: 1.75;
 }
 .prose-quote {
   line-height: 1.65;
@@ -100,7 +108,7 @@ a:focus-visible {
 }
 .prose-label {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -165,7 +173,7 @@ details summary::marker {
 
 /* AI Chat v2 — panel entrance, reduced-motion aware */
 .ai-chat-panel-enter {
-  animation: ai-chat-panel-enter 0.25s ease-out forwards;
+  animation: ai-chat-panel-enter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .ai-chat-trigger-pulse {
   animation: ai-chat-trigger-pulse 2s ease-in-out infinite;
@@ -173,7 +181,7 @@ details summary::marker {
 @keyframes ai-chat-panel-enter {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.98);
+    transform: translateY(16px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -182,15 +190,15 @@ details summary::marker {
 }
 @keyframes ai-chat-trigger-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(201, 111, 82, 0.2); }
-  50% { box-shadow: 0 0 0 8px rgba(201, 111, 82, 0); }
+  50% { box-shadow: 0 0 0 10px rgba(201, 111, 82, 0); }
 }
 
 /* Section reveal — subtle fade-in for premium feel */
 .section-reveal {
-  animation: section-reveal 0.5s ease-out both;
+  animation: section-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes section-reveal {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {

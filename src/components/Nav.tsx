@@ -71,12 +71,12 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-charcoal/98 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
       <div className={`${LAYOUT.nav} mx-auto flex items-center justify-between h-14 ${LAYOUT.safeAreaX}`}>
         <AppLink
           href="/"
           prefetch={false}
-          className="font-display text-xl font-bold text-golden min-h-[44px] inline-flex items-center"
+          className="font-display text-[1.375rem] font-bold text-golden min-h-[44px] inline-flex items-center tracking-[-0.02em]"
         >
           Cyprus Winter
         </AppLink>
@@ -99,7 +99,7 @@ export default function Nav() {
               href={link.href}
               prefetch={false}
               aria-current={isActive(pathname, link.href) ? "page" : undefined}
-              className={`text-sm font-medium transition-colors min-h-[44px] inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
+              className={`text-sm font-medium tracking-[0.01em] transition-colors min-h-[44px] inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
                 isActive(pathname, link.href)
                   ? "text-golden"
                   : "text-white/80 hover:text-golden"

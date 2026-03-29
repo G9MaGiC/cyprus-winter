@@ -37,7 +37,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
       : a.description;
 
   return (
-    <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive}`}>
+    <div className={`group overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive}`}>
       <AppLink
         href={`/discover/${a.id}`}
         className={`block ${CARD.link}`}
@@ -54,18 +54,18 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           <div className={CARD.mediaOverlay} aria-hidden />
           <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2">
             <span
-              className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium tracking-[0.01em] capitalize ${badge}`}
             >
               {badgeLabel}
             </span>
             {isSustainable && (
-              <span className="max-[360px]:hidden px-2.5 py-1 rounded-full text-xs font-medium bg-sage/20 text-olive/80">
+              <span className="max-[360px]:hidden px-3 py-1.5 rounded-full text-xs font-medium tracking-[0.01em] bg-sage/20 text-olive/80">
                 {tCommon("local")}
               </span>
             )}
             {isWinery && (a as Winery).isVerified && (
               <span
-                className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean"
+                className="px-3 py-1.5 rounded-full text-xs font-medium tracking-[0.01em] bg-aegean/20 text-aegean"
                 title={tCommon("verifiedPartnerTitle")}
               >
                 {tCommon("verifiedPartner")}
@@ -92,7 +92,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
             {(a.highlights ?? []).slice(0, 3).map((h, i) => (
               <span
                 key={`${h}-${i}`}
-                className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-olive/80 line-clamp-2 min-w-0 max-w-[180px] sm:max-w-[200px] break-words"
+                className="text-xs px-3 py-1.5 rounded-full bg-sand-200/70 text-olive/80 line-clamp-2 min-w-0 max-w-[180px] sm:max-w-[200px] break-words"
                 title={h}
               >
                 {h}

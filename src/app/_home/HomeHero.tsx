@@ -32,11 +32,11 @@ export default async function HomeHero() {
           <p className={`${TYPE.kickerOnDark} mb-3`}>{tHome("kicker")}</p>
           <h1
             id="hero-heading"
-            className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.05] text-balance mb-3"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-[-0.03em] leading-[0.97] text-balance mb-3"
           >
             {tHome("title")}
           </h1>
-          <p className="text-base sm:text-lg text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
+          <p className="text-lg sm:text-xl text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
             {tHome("headline")}
           </p>
           <p className="text-sm text-white/80 max-w-lg mx-auto mb-6">

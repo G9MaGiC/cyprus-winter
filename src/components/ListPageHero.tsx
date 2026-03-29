@@ -64,10 +64,10 @@ export default function ListPageHero({
       <nav className="flex flex-col gap-1" aria-label={tCommon("aria.pageNavigation")}>
         {navBlockLight}
       </nav>
-      <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
+      <h1 className={`${TYPE.pageTitle} mt-4 sm:mt-6`}>
         {title}
       </h1>
-      <p className="text-olive/80 mt-2 max-w-xl prose-body break-words leading-relaxed">
+      <p className="text-olive/80 mt-3 max-w-xl prose-body break-words leading-relaxed">
         {description}
       </p>
       {descriptionSecondary && (
@@ -80,7 +80,7 @@ export default function ListPageHero({
   if (backgroundImage) {
     return (
       <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
-        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[260px] sm:min-h-[200px]">
+        <div className="relative aspect-[3/1] sm:aspect-[16/9] min-h-[320px] sm:min-h-[260px]">
           <Image
             src={backgroundImage}
             alt={backgroundImageAlt ?? "Page hero image"}
@@ -94,7 +94,7 @@ export default function ListPageHero({
             <nav className="flex flex-col gap-1" aria-label={tCommon("aria.pageNavigation")}>
               {navBlock}
             </nav>
-            <h1 className={`${TYPE.pageTitle} mt-1.5 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
+            <h1 className={`${TYPE.pageTitle} mt-3 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>
               {title}
             </h1>
             <p className="text-white/90 mt-1 max-w-xl text-sm sm:text-base break-words leading-relaxed">

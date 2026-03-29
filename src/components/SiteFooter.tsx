@@ -72,8 +72,8 @@ export default function SiteFooter({ labels, localeSwitcher, LinkComponent = App
       className={`border-t border-sand-200/80 bg-sand-100/80 ${LAYOUT.safeAreaX} pb-[max(calc(5rem+env(safe-area-inset-bottom)),1.5rem)] md:pb-[max(1.5rem,env(safe-area-inset-bottom))]`}
     >
       <div id={FOOTER_SENTINEL_ID} className="h-px -mt-px" aria-hidden />
-      <div className={`${LAYOUT.listNarrow} mx-auto py-12 sm:py-16`}>
-        <p className={`font-display text-lg sm:text-xl text-charcoal/90 text-center max-w-lg mx-auto ${SECTION.headingMargin}`}>
+      <div className={`${LAYOUT.listNarrow} mx-auto py-14 sm:py-20`}>
+        <p className={`font-display text-xl sm:text-2xl tracking-[-0.015em] text-charcoal/90 text-center max-w-lg mx-auto ${SECTION.headingMargin}`}>
           {L.tagline}
         </p>
 

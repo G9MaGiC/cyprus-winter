@@ -23,7 +23,7 @@ export default function DetailHero({
   rounded = false,
 }: DetailHeroProps) {
   return (
-    <header className={`relative ${LAYOUT.heroBleedX} mt-4 mb-8 sm:mb-10`}>
+    <header className={`relative ${LAYOUT.heroBleedX} mt-4 mb-10 sm:mb-14`}>
       <div
         className={`relative aspect-[4/3] sm:aspect-video overflow-hidden bg-olive/10 ${
           rounded ? "rounded-lg sm:rounded-xl" : ""
@@ -41,7 +41,7 @@ export default function DetailHero({
           className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
           aria-hidden
         />
-        <div className={`absolute bottom-0 left-0 right-0 ${CARD.contentLg} text-white`}>
+        <div className={`absolute bottom-0 left-0 right-0 p-8 sm:p-12 text-white`}>
           {badge && <div className="mb-3">{badge}</div>}
           <h1 className={`${TYPE.pageTitle} break-words drop-shadow-sm text-white`}>
             {title}

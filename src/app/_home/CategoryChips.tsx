@@ -46,12 +46,12 @@ export default async function CategoryChips() {
           ))}
         </div>
         <div
-          className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 sm:hidden"
+          className="pointer-events-none absolute right-0 top-0 bottom-2 w-16 bg-gradient-to-r from-transparent to-sand/80 sm:hidden"
           aria-hidden
         />
       </div>
 
-      <div className={`mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-sand-200/80`}>
+      <div className={`mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-sand-200/80`}>
         <p className={`text-center text-sage text-sm ${SECTION.titleGap}`}>{t("startHere.alsoSubtitle")}</p>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {also.map((c) => (
