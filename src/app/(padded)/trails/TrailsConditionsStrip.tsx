@@ -67,29 +67,23 @@ export default function TrailsConditionsStrip({
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span
               id="trails-conditions-heading"
-              className={`${TYPE.cardTitle}`}
+              className={`${TYPE.cardTitle} tracking-[-0.01em]`}
             >
               {t("trails.conditionsStrip.heading")}
             </span>
-            <span className="flex items-center gap-2 text-sm text-olive/80">
+            <span className="flex items-center gap-3 text-sm text-olive/80">
               {openCount > 0 && (
-                <span className="text-sage font-medium">
-                  {t("trails.conditionsStrip.openCount", { count: openCount })}
-                </span>
+                <span className="flex items-center gap-1.5 text-sage font-medium"><span className="w-1.5 h-1.5 rounded-full bg-sage inline-block shrink-0" aria-hidden />{t("trails.conditionsStrip.openCount", { count: openCount })}</span>
               )}
               {cautionCount > 0 && (
-                <span className="text-golden font-medium">
-                  {t("trails.conditionsStrip.cautionCount", {
+                <span className="flex items-center gap-1.5 text-golden font-medium"><span className="w-1.5 h-1.5 rounded-full bg-golden inline-block shrink-0" aria-hidden />{t("trails.conditionsStrip.cautionCount", {
                     count: cautionCount,
-                  })}
-                </span>
+                  })}</span>
               )}
               {closedCount > 0 && (
-                <span className="text-terracotta font-medium">
-                  {t("trails.conditionsStrip.closedCount", {
+                <span className="flex items-center gap-1.5 text-terracotta font-medium"><span className="w-1.5 h-1.5 rounded-full bg-terracotta inline-block shrink-0" aria-hidden />{t("trails.conditionsStrip.closedCount", {
                     count: closedCount,
-                  })}
-                </span>
+                  })}</span>
               )}
               {openCount === 0 &&
                 cautionCount === 0 &&

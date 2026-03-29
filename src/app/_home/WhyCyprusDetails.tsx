@@ -17,29 +17,29 @@ export default function WhyCyprusDetails() {
 
       <div className="mt-8 sm:mt-10 max-w-2xl mx-auto">
         <div className={`${CARD.base} ${CARD.content} rounded-2xl`}>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-olive/80">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-base text-olive/80">
             <span className="inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-terracotta/70" aria-hidden />
+              <span className="w-2 h-2 rounded-full bg-terracotta/70 shrink-0" aria-hidden />
               Coast often 16–20°C
             </span>
             <span className="inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-aegean/70" aria-hidden />
+              <span className="w-2 h-2 rounded-full bg-aegean/70 shrink-0" aria-hidden />
               Troodos cooler — check conditions
             </span>
             <span className="inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-golden/80" aria-hidden />
+              <span className="w-2 h-2 rounded-full bg-golden/80 shrink-0" aria-hidden />
               Sunset ~5pm in December
             </span>
           </div>
 
-          <blockquote className="mt-8 text-center text-olive text-base sm:text-lg leading-relaxed prose-quote">
+          <blockquote className="mt-10 text-center text-olive text-lg sm:text-xl leading-relaxed prose-quote">
             Coast mild. Mountains with snow. Hike in the morning, lunch outside. Ancient sites empty, villages quiet.
             Stop at a kafenion. Coffee. Nobody hurries.
           </blockquote>
-          <p className="mt-6 text-center text-sm text-sage">
+          <p className="mt-8 text-center text-sm text-sage">
             A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.
           </p>
-          <p className="mt-4 text-center text-sm font-medium text-olive/90">
+          <p className="mt-5 text-center text-sm font-medium text-olive/90">
             You came for the warmth. Stay for the pace.
           </p>
         </div>

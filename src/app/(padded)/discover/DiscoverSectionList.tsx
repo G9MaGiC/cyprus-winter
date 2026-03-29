@@ -29,7 +29,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
             id={section.id}
             ref={idx === 0 ? ref : undefined}
             aria-labelledby={`section-${section.id}`}
-            className={`py-10 sm:py-14 ${idx % 2 === 1 ? `bg-sand/50 ${LAYOUT.stickyBarX}` : ""} ${shouldAnimate ? "section-reveal" : ""}`}
+            className={`py-12 sm:py-16 ${idx % 2 === 1 ? `bg-sand/50 ${LAYOUT.stickyBarX}` : ""} ${shouldAnimate ? "section-reveal" : ""}`}
             style={shouldAnimate ? { animationDelay: `${idx * 60}ms` } : undefined}
           >
             <h2
@@ -69,7 +69,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                 </div>
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
                 {section.items.map((item) => (
                   <AttractionCard key={item.id} a={item} />
                 ))}

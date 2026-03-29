@@ -28,7 +28,7 @@ export default function ListPageWidgetStrip({
         />
       )}
       <div
-        className={`w-full min-w-0 ${sticky ? `sticky ${LAYOUT.stickyTop} z-10 ${LAYOUT.stickyBarX} pt-2 sm:pt-0 pb-3 sm:pb-4 bg-background/95 backdrop-blur-sm border-b border-sand-200/80` : ""}`}
+        className={`w-full min-w-0 ${sticky ? `sticky ${LAYOUT.stickyTop} z-10 ${LAYOUT.stickyBarX} pt-2 sm:pt-0 pb-3 sm:pb-4 bg-background/97 backdrop-blur-md border-b border-sand-200/70 shadow-[0_1px_0_rgba(201,111,82,0.03)]` : ""}`}
         role="region"
         aria-label={ariaLabel}
       >

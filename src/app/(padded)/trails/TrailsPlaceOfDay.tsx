@@ -37,7 +37,7 @@ export default function TrailsPlaceOfDay() {
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
+              className="object-cover img-hover-scale"
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div
@@ -47,7 +47,7 @@ export default function TrailsPlaceOfDay() {
             <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
-            <span className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal`}>
+            <span className={`absolute top-4 right-4 px-3 py-1.5 rounded-xl ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal shadow-sm`}>
               Trail of the day
             </span>
           </AppLink>
@@ -74,7 +74,7 @@ export default function TrailsPlaceOfDay() {
                 </p>
               )}
             </div>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-4">
               {planItem && <NavigateButton place={planItem} />}
               <AddToItineraryButton placeId={place.id} label="Add to plan" />
               <AppLink

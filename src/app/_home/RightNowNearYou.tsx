@@ -55,7 +55,7 @@ function DistanceToggle({
     <div
       role="group"
       aria-label={tHome("rightNow.distance.aria")}
-      className="inline-flex rounded-lg border border-sand-200/80 bg-white/80 p-0.5 gap-px"
+      className="inline-flex rounded-xl border border-sand-200/70 bg-white/80 p-0.5 gap-px shadow-[0_1px_3px_rgba(37,39,48,0.04)]"
     >
       <button
         type="button"
@@ -65,7 +65,7 @@ function DistanceToggle({
           e.stopPropagation();
           onChange("less");
         }}
-        className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+        className={`min-h-[44px] px-4 py-2 text-sm font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
           value === "less"
             ? "bg-white text-olive shadow-sm"
             : "text-olive/70 hover:text-olive"
@@ -81,7 +81,7 @@ function DistanceToggle({
           e.stopPropagation();
           onChange("more");
         }}
-        className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+        className={`min-h-[44px] px-4 py-2 text-sm font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
           value === "more"
             ? "bg-white text-olive shadow-sm"
             : "text-olive/70 hover:text-olive"
@@ -119,7 +119,7 @@ export default function RightNowNearYou({
   if (state === "consent") {
     return (
       <SectionShell title={title} subtitle={tHome("rightNow.subtitleConsent")}>
-          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
+          <div className="rounded-2xl border border-sand-200/70 p-6 sm:p-7 bg-white/90 shadow-[0_2px_12px_rgba(37,39,48,0.05)]">
           <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.consent.body")}
           </p>
@@ -138,7 +138,7 @@ export default function RightNowNearYou({
   if (state === "region-picker") {
     return (
       <SectionShell title={title}>
-          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
+          <div className="rounded-2xl border border-sand-200/70 p-6 sm:p-7 bg-white/90 shadow-[0_2px_12px_rgba(37,39,48,0.05)]">
           <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.regionPicker.body")}
           </p>
@@ -155,7 +155,7 @@ export default function RightNowNearYou({
   if (state === "loading") {
     return (
       <SectionShell title={title}>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
@@ -215,7 +215,7 @@ export default function RightNowNearYou({
         : undefined;
     return (
       <SectionShell title={title} subtitle={subtitle}>
-          <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
+          <div className="rounded-2xl border border-sand-200/70 p-6 sm:p-7 bg-white/90 shadow-[0_2px_12px_rgba(37,39,48,0.05)]">
           <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.empty.body", {
               scope: sourceMode === "region" ? tHome("rightNow.empty.scopeRegion") : tHome("rightNow.empty.scopeNow"),
@@ -230,7 +230,7 @@ export default function RightNowNearYou({
                   e.stopPropagation();
                   handlePickRegion();
                 }}
-                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="min-h-[44px] px-4 py-2 rounded-xl border border-sand-200/70 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {tHome("rightNow.empty.changeRegion")}
               </button>
@@ -260,7 +260,7 @@ export default function RightNowNearYou({
           {tHome("rightNow.loaded.seeMore")}
         </AppLink>
       </div>
-      <div className={`${SECTION.headingGap} rounded-xl border border-aegean/20 bg-aegean/5 p-4`}>
+      <div className={`${SECTION.headingGap} rounded-2xl border border-aegean/20 bg-aegean/5 p-5 sm:p-6`}>
         <p className={`${TYPE.kicker} text-aegean`}>
           {tHome("rightNow.adapt.kicker")}
         </p>
@@ -285,7 +285,7 @@ export default function RightNowNearYou({
           </TrackOnClick>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
         {items.map((item) => (
           <RightNowCard key={item.id} item={item} />
         ))}
