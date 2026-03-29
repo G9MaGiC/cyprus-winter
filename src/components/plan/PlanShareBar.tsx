@@ -76,7 +76,7 @@ export default function PlanShareBar({
             aria-haspopup="menu"
             aria-label={tPlan("aria.shareMenu")}
           >
-            Copy & share
+            {tPlan("share.copyAndShare")}
             <span className={`text-terracotta/70 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
               ▾
             </span>
@@ -103,7 +103,7 @@ export default function PlanShareBar({
                 }}
                 className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
-                {linkCopied ? "Link copied" : "Copy link"}
+                {linkCopied ? tPlan("share.linkCopied") : tPlan("share.copyLink")}
               </button>
               <button
                 type="button"
@@ -115,7 +115,7 @@ export default function PlanShareBar({
                 }}
                 className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
-                {copied ? "Copied" : "Copy itinerary (text)"}
+                {copied ? tPlan("share.itineraryCopied") : tPlan("share.copyItinerary")}
               </button>
               <div
                 className="px-4 py-3 mt-2 border-t border-sand-200/80"

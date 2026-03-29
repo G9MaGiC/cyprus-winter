@@ -1001,6 +1001,17 @@
       "pairWith": "Dopasuj do…",
       "worksWell": "Dobrze pasuje do tego, co dodałeś. Kliknij, aby dodać.",
       "addToDayAria": "Dodaj {name} do tego dnia"
+    },
+    "share": {
+      "copyAndShare": "Kopiuj i udostępnij",
+      "copyLink": "Kopiuj link",
+      "linkCopied": "Link skopiowany",
+      "copyItinerary": "Kopiuj trasę (tekst)",
+      "itineraryCopied": "Skopiowano"
+    },
+    "footer": {
+      "winterTip": "Zimowa wskazówka: dzień kończy się ok. 17:00. Zacznij szlaki przed 10:00; rezerwuj degustacje 24–48 godz. wcześniej.",
+      "bookTastings": "Rezerwuj degustacje"
     }
   },
   "placePicker": {
