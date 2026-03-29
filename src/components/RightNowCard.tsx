@@ -41,22 +41,22 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             src={item.image}
             alt=""
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover img-hover-scale"
             sizes="80px 80px, (max-width: 640px) 80px, 50vw"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent sm:from-charcoal/60"
             aria-hidden
           />
-          <span className="absolute bottom-1 left-1 right-1 text-white text-[10px] sm:text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2" title={badge}>
+          <span className="absolute bottom-1 left-1 right-1 text-white/95 text-[9px] sm:text-[10px] font-semibold tracking-widest uppercase truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2" title={badge}>
             {badge}
           </span>
         </div>
-        <div className="flex-1 p-2.5 sm:p-3 min-w-0 flex flex-col justify-center">
+        <div className="flex-1 p-3 sm:p-4 min-w-0 flex flex-col justify-center">
           <h3 className={`${TYPE.cardTitleCompact} truncate`}>
             {item.name}
           </h3>
-          <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}`}>
+          <p className="text-xs text-olive/70 mt-1 truncate" title={`${item.region} · ${item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}`}>
             {item.region} · {item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}
           </p>
           <p className="hidden sm:block text-xs text-olive/90 mt-0.5 leading-relaxed line-clamp-2 break-words">
@@ -64,7 +64,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
           </p>
         </div>
       </AppLink>
-      <div className="flex sm:block shrink-0 p-2 sm:p-3 sm:-mt-1 self-center sm:self-stretch">
+      <div className="flex sm:block shrink-0 p-2.5 sm:p-3 sm:-mt-1 self-center sm:self-stretch">
         <AddToItineraryButton placeId={item.id} label="Add" />
       </div>
     </div>

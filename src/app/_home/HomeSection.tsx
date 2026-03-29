@@ -16,9 +16,9 @@ export default function HomeSection({ id, title, subtitle, kicker, alt, children
       className={`${SECTION.py} ${alt ? SECTION.alt : "bg-background"} ${LAYOUT.safeAreaX} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <header className="text-center mb-8 sm:mb-10">
+        <header className="text-center mb-10 sm:mb-14">
           {kicker ? (
-            <p className={`${TYPE.kicker} text-sage mb-2`}>{kicker}</p>
+            <p className={`${TYPE.kicker} text-sage mb-3`}>{kicker}</p>
           ) : null}
           <h2 id={id} className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             {title}

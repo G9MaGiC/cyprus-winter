@@ -13,9 +13,9 @@ export default function HomeWhyCyprusTeaser() {
       <div className={`${LAYOUT.listNarrow} mx-auto`}>
         <blockquote
           id="why-winter-teaser"
-          className={`${CARD.base} ${CARD.content} rounded-2xl border-l-4 border-l-sage/50 text-center`}
+          className={`${CARD.base} ${CARD.contentLg} rounded-2xl border-l-[5px] border-l-sage/60 text-center`}
         >
-          <p className="text-olive text-base sm:text-lg leading-relaxed prose-quote">
+          <p className="text-olive/90 text-lg sm:text-xl font-light italic leading-relaxed prose-quote">
             Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Nobody hurries.
           </p>
         </blockquote>

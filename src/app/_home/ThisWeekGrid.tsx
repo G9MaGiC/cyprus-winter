@@ -100,11 +100,11 @@ export default async function ThisWeekGrid({
       <Link
         href="/weather"
         prefetch="auto"
-        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean rounded-xl group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-[5px] border-l-aegean group`}
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>{t("thisWeekGrid.weather")}</p>
-          <p className="text-2xl font-display font-bold text-charcoal mt-0.5 group-hover:text-terracotta transition-colors text-balance">
+          <p className="text-2xl font-display font-bold tracking-[-0.02em] text-charcoal mt-1 group-hover:text-terracotta transition-colors text-balance">
             {t("thisWeekGrid.coastTroodos", { coast: coastMid, troodos: troodosMid })}
           </p>
           <p className="text-sm text-sage mt-0.5">{weatherTip}</p>
@@ -112,7 +112,7 @@ export default async function ThisWeekGrid({
       </Link>
 
       <div
-        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-[5px] border-l-sage flex flex-col group`}
       >
         <Link href={`/trails/${featuredTrailId}`} className={`flex-1 ${CARD.link} ${CARD.content}`}>
           <p className={`${TYPE.kicker} text-sage`}>{t("thisWeekGrid.trails")}</p>
@@ -121,7 +121,7 @@ export default async function ThisWeekGrid({
           </p>
           <p className="inline-flex items-center gap-1.5 text-sm text-sage mt-0.5">
             <span
-              className={`w-2 h-2 rounded-full shrink-0 ${
+              className={`w-1.5 h-1.5 rounded-full shrink-0 ${
                 featuredStatus?.status === "open"
                   ? "bg-aegean/70"
                   : featuredStatus?.status === "caution"
@@ -152,7 +152,7 @@ export default async function ThisWeekGrid({
       <Link
         href={eventHighlight ? `/events#${eventHighlight.id}` : "/events"}
         prefetch="auto"
-        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-golden flex flex-col group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-[5px] border-l-golden flex flex-col group`}
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>

@@ -108,11 +108,11 @@ export default function HomePlaceOfDay({
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              className="object-cover img-hover-scale"
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div className={CARD.mediaOverlay} aria-hidden />
-            <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-lg">
+            <span className="absolute bottom-3 left-3 right-3 text-white/95 text-xs font-semibold tracking-widest uppercase drop-shadow-lg truncate">
               {place.overlay}
             </span>
           </Link>
@@ -123,14 +123,14 @@ export default function HomePlaceOfDay({
             <Link
               href={place.href}
               prefetch="auto"
-              className={`${TYPE.subSectionTitle} text-charcoal group-hover:text-terracotta transition-colors mt-0.5`}
+              className={`${TYPE.subSectionTitle} text-charcoal group-hover:text-terracotta transition-colors mt-1`}
             >
               {place.name}
             </Link>
-            <p className="text-sm text-olive/90 mt-1 leading-relaxed flex-1">
+            <p className="text-sm text-olive/80 mt-2 leading-relaxed flex-1">
               {place.tease}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+            <div className="mt-5 flex flex-wrap items-center gap-3">
               {planItem && <NavigateButton place={planItem} />}
               <AddToItineraryButton placeId={place.id} label="Add to plan" />
               <Link
