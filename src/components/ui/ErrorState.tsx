@@ -24,7 +24,7 @@ interface ErrorStateProps {
 /** Minimal accent bar per icon type — no emojis (UX persona) */
 function IconAccent({ type }: { type: ErrorStateProps["icon"] }) {
   const color = type === "rate-limit" ? "bg-golden/60" : type === "network" ? "bg-aegean/60" : "bg-terracotta/60";
-  return <div className={cn("h-1 w-12 mx-auto rounded-full", SECTION.titleGap, color)} aria-hidden />;
+  return <div className={cn("h-1.5 w-16 mx-auto rounded-full", SECTION.titleGap, color)} aria-hidden />;
 }
 
 export function ErrorState({
@@ -59,7 +59,7 @@ export function ErrorState({
       <p className={`text-sm text-olive/80 ${SECTION.headingGap} max-w-md mx-auto break-words`}>
         {message}
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
         {retry && (
           <button
             type="button"

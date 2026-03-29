@@ -8,7 +8,7 @@ const GOOGLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
 const APPLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_APPLE_ENABLED === "true";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2.5 min-h-[48px] w-full px-4 py-3 rounded-xl border-2 border-sand-200/90 bg-white/95 text-charcoal font-medium hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex items-center justify-center gap-3 min-h-[52px] w-full px-5 py-3 rounded-2xl border border-sand-200/70 bg-white/95 text-charcoal font-medium hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_1px_3px_rgba(37,39,48,0.04)]";
 
 function GoogleIcon() {
   return (
@@ -79,10 +79,10 @@ export default function SocialLoginButtons({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3.5">
       <div className="relative">
         <div className="absolute inset-0 flex items-center" aria-hidden>
-          <div className="w-full border-t border-sand-200/80" />
+          <div className="w-full border-t border-sand-200/70" />
         </div>
         <p className="relative flex justify-center text-sm">
           <span className="bg-white/95 px-4 text-olive/70">{tAuth("social.orContinueWith")}</span>

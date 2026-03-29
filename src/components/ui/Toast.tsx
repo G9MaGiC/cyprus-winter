@@ -76,14 +76,15 @@ function ToastItem({
       role="alert"
       aria-live="polite"
       className={cn(
-        "flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg border",
-        "min-h-[48px] min-w-[280px] max-w-md",
+        "flex items-center gap-3 px-5 py-4 rounded-2xl border",
+        "min-h-[52px] min-w-[280px] max-w-md",
+        "shadow-[0_8px_32px_rgba(37,39,48,0.18),0_0_0_1px_rgba(255,255,255,0.08)]",
         "transform transition-all duration-300",
         isExiting ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0",
         styles[toast.type]
       )}
     >
-      <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 text-sm font-bold shrink-0">
+      <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/20 text-sm font-bold shrink-0">
         {icons[toast.type]}
       </span>
       <p className="text-sm font-medium flex-1">{toast.message}</p>
@@ -93,7 +94,7 @@ function ToastItem({
           setIsExiting(true);
           scheduleRemove();
         }}
-        className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors"
+        className="shrink-0 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl hover:bg-white/20 transition-colors"
         aria-label={tCommon("aria.dismissNotification")}
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,7 +111,7 @@ export function ToastContainer({ toasts, onRemove }: ToastProps) {
 
   return (
     <div
-      className="fixed right-4 top-4 z-[100] flex flex-col gap-2 items-end"
+      className="fixed right-4 sm:right-5 top-4 sm:top-5 z-[100] flex flex-col gap-3 items-end"
       role="region"
       aria-label={tCommon("aria.notifications")}
     >

@@ -16,8 +16,8 @@ export default function TripReminderBanner() {
       role="status"
       className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} bg-aegean/10 border-b border-aegean/20`}
     >
-      <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm font-medium text-olive">
+      <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+        <p className="text-sm font-medium text-olive/90">
           {tPlan("tripReminderBanner", { days: daysUntil })}
         </p>
         <AppLink href="/plan" className={`text-sm ${SECTION.aegeanLink}`}>

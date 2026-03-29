@@ -56,7 +56,7 @@ export default function CookieConsentBanner() {
       aria-modal="false"
       aria-live="polite"
       aria-labelledby="cookie-banner-title"
-      className="fixed bottom-0 left-0 right-0 z-40 p-4 md:p-5 bg-sand-100 border-t border-sand-300 shadow-lg safe-area-pb"
+      className="fixed bottom-0 left-0 right-0 z-40 p-5 md:p-6 bg-sand-100/98 border-t border-sand-200/70 shadow-[0_-4px_24px_rgba(37,39,48,0.08)] safe-area-pb backdrop-blur-sm"
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
       <div className={`${LAYOUT.listNarrow} mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4`}>
@@ -69,18 +69,18 @@ export default function CookieConsentBanner() {
             Learn more
           </AppLink>
         </p>
-        <div className="flex flex-wrap gap-3 shrink-0">
+        <div className="flex flex-wrap gap-3.5 shrink-0">
           <button
             type="button"
             onClick={handleReject}
-            className={`min-h-[44px] px-5 py-2.5 rounded-lg text-sm font-medium ${CTA.secondaryCompact}`}
+            className={`min-h-[44px] px-6 py-3 rounded-xl text-sm font-medium ${CTA.secondaryCompact}`}
           >
             Essential only
           </button>
           <button
             type="button"
             onClick={handleAccept}
-            className={`min-h-[44px] px-5 py-2.5 rounded-lg text-sm font-medium ${CTA.primaryCompact}`}
+            className={`min-h-[44px] px-6 py-3 rounded-xl text-sm font-medium ${CTA.primaryCompact}`}
           >
             Accept
           </button>

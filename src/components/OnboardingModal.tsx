@@ -131,10 +131,10 @@ export default function OnboardingModal() {
     >
       <div
         ref={panelRef}
-        className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}
+        className={`${CARD.base} mx-4 mb-6 sm:mx-auto sm:max-w-lg sm:mb-8 overflow-hidden shadow-[0_24px_64px_rgba(37,39,48,0.18),0_0_0_1px_rgba(37,39,48,0.04)]`}
       >
         {/* Hero image strip with gradient overlay */}
-        <div className="relative min-h-[7rem] sm:min-h-[8rem] w-full bg-sand-200 overflow-hidden">
+        <div className="relative min-h-[8rem] sm:min-h-[10rem] w-full bg-sand-200 overflow-hidden">
           <Image
             src="/images/cyprus/cyprus-trail-gorge.jpg"
             alt=""
@@ -143,7 +143,7 @@ export default function OnboardingModal() {
             sizes="(max-width: 640px) 100vw, 512px"
           />
           <div className={`${CARD.mediaOverlay}`} aria-hidden />
-          <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-white">
+          <div className="absolute bottom-4 left-5 right-5 flex items-center gap-2.5 text-white">
             <Compass className="h-5 w-5 shrink-0 text-terracotta" aria-hidden />
             <h2 id="onboarding-title" className={`${TYPE.subSectionTitleLg} text-white`}>
               {t("welcome")}
@@ -171,16 +171,16 @@ export default function OnboardingModal() {
             <button
               type="button"
               onClick={handleDismiss}
-              className="min-h-[44px] px-4 text-sm text-olive/60 hover:text-olive/80 transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
+              className="min-h-[44px] px-4 text-sm text-olive/60 hover:text-olive/80 transition-colors rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
               aria-label={t("aria.skip")}
             >
               {t("skip")}
             </button>
           </div>
 
-          <div className="border-t border-sand-200/60 pt-4 mt-2">
-            <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{t("intentLabel")}</p>
-            <div className="flex flex-wrap gap-2" role="group" aria-label={t("aria.intentGroup")}>
+          <div className="border-t border-sand-200/60 pt-5 mt-4">
+            <p className={`${TYPE.kicker} text-olive/60 mb-3`}>{t("intentLabel")}</p>
+            <div className="flex flex-wrap gap-2.5" role="group" aria-label={t("aria.intentGroup")}>
               <button
                 type="button"
                 onClick={() => handleIntent("planning", dismiss, router)}
