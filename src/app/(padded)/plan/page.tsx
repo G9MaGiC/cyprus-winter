@@ -37,7 +37,7 @@ export default function PlanPage() {
   const plan = usePlanPage();
   const { setPlanItemCount, showTipPlanEmpty, dismissTipPlanEmpty, showTipFirstAdd, dismissTipFirstAdd } =
     useOnboardingContext();
-  const { user } = useAuth();
+  const { user, isLoading: authLoading } = useAuth();
   const t = useTranslations("onboarding");
   const tPlan = useTranslations("plan");
   const tNav = useTranslations("nav");
@@ -271,7 +271,7 @@ export default function PlanPage() {
           </div>
         </div>
 
-        <PlanFooter hasWineries={hasWineries} showAccountCTA={!user && totalPlaces >= 2} />
+        <PlanFooter hasWineries={hasWineries} showAccountCTA={!authLoading && !user && totalPlaces >= 2} />
 
         {showClearModal && (
           <ClearDayModal
