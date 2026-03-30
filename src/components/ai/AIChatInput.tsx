@@ -3,6 +3,7 @@
 import { useRef, useState, useCallback } from "react";
 import { Send, Mic, MicOff } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { matchSlashCommands } from "./slash-commands";
 
 interface AIChatInputProps {
   input: string;
@@ -23,6 +24,8 @@ export function AIChatInput({
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+
+  const commandMatches = matchSlashCommands(input);
 
   // Initialize speech recognition
   const initSpeechRecognition = useCallback(() => {
@@ -85,6 +88,10 @@ export function AIChatInput({
     setInput(suggestion);
   };
 
+  const handleCommandSelect = (command: string) => {
+    setInput(command);
+  };
+
   return (
     <div className="border-t border-sand-200 bg-white">
       {/* Suggestions */}
@@ -94,7 +101,7 @@ export function AIChatInput({
             <button
               key={index}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="shrink-0 px-3 py-1.5 text-xs sm:text-sm bg-sand-100 hover:bg-terracotta/10 
+              className="shrink-0 px-3 py-1.5 text-xs sm:text-sm bg-sand-100 hover:bg-terracotta/10
                          text-olive hover:text-terracotta rounded-full transition-colors
                          border border-sand-200/80 whitespace-nowrap"
               disabled={loading}
@@ -104,6 +111,23 @@ export function AIChatInput({
           ))}
         </div>
       </div>
+
+      {/* Slash command suggestions */}
+      {commandMatches.length > 0 && (
+        <div className="mx-4 mb-2 rounded-xl border border-sand-200 bg-white shadow-sm overflow-hidden">
+          {commandMatches.map(({ command, description }) => (
+            <button
+              key={command}
+              type="button"
+              onClick={() => handleCommandSelect(command)}
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-sand-100 transition-colors"
+            >
+              <span className="text-sm font-mono text-terracotta">{command}</span>
+              <span className="text-xs text-olive/60">{description}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Input area */}
       <form onSubmit={handleSubmit} className="px-4 pb-4">
@@ -133,7 +157,7 @@ export function AIChatInput({
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="shrink-0 p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-muted 
+            className="shrink-0 p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-muted
                        disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             aria-label={tCommon("ai.sendAria")}
           >

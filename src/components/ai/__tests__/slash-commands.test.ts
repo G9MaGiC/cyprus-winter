@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { handleSlashCommand, isSlashCommand } from "../slash-commands";
+import { handleSlashCommand, isSlashCommand, matchSlashCommands } from "../slash-commands";
 
 describe("handleSlashCommand", () => {
   it("returns a skills message for /skills", () => {
@@ -49,5 +49,34 @@ describe("isSlashCommand", () => {
 
   it("handles leading whitespace", () => {
     expect(isSlashCommand("  /skills")).toBe(true);
+  });
+});
+
+describe("matchSlashCommands", () => {
+  it("returns all commands for bare /", () => {
+    const matches = matchSlashCommands("/");
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches.every((m) => m.command.startsWith("/"))).toBe(true);
+  });
+
+  it("filters to matching commands", () => {
+    const matches = matchSlashCommands("/ski");
+    expect(matches.some((m) => m.command === "/skills")).toBe(true);
+  });
+
+  it("returns exact match", () => {
+    const matches = matchSlashCommands("/skills");
+    expect(matches).toHaveLength(1);
+    expect(matches[0].command).toBe("/skills");
+    expect(matches[0].description).toBeTruthy();
+  });
+
+  it("returns empty for non-slash input", () => {
+    expect(matchSlashCommands("skills")).toHaveLength(0);
+    expect(matchSlashCommands("hello")).toHaveLength(0);
+  });
+
+  it("returns empty for non-matching slash input", () => {
+    expect(matchSlashCommands("/xyz")).toHaveLength(0);
   });
 });

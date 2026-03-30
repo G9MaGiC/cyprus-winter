@@ -25,6 +25,23 @@ const SKILLS_FOLLOW_UPS = [
   "I just landed in Larnaca",
 ];
 
+export type SlashCommandDef = {
+  command: string;
+  description: string;
+};
+
+/** All registered slash commands, used for autocomplete UI. */
+export const SLASH_COMMANDS: SlashCommandDef[] = [
+  { command: "/skills", description: "See what I can help with" },
+];
+
+/** Returns matching commands for the current input (used for autocomplete). */
+export function matchSlashCommands(input: string): SlashCommandDef[] {
+  const trimmed = input.trim().toLowerCase();
+  if (!trimmed.startsWith("/")) return [];
+  return SLASH_COMMANDS.filter((c) => c.command.startsWith(trimmed));
+}
+
 /** Returns the assistant reply for a given slash command, or null if not a known command. */
 export function handleSlashCommand(input: string): Message | null {
   const normalized = input.trim().toLowerCase();
