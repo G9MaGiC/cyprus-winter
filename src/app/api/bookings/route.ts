@@ -1,7 +1,12 @@
 import { createBooking, getBookingsByEmail } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
-import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequestToGuide } from "@/lib/email";
+import {
+  sendBookingConfirmation,
+  sendBookingLookupTokenEmail,
+  sendBookingRequestToWinery,
+  sendBookingRequestToGuide,
+} from "@/lib/email";
 import { createBookingSchema } from "@/lib/booking-schema";
 import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
@@ -10,32 +15,81 @@ import { z } from "zod";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
+import { createBookingLookupToken, verifyBookingLookupToken } from "@/lib/booking-lookup-token";
+
+const lookupRequestSchema = z.object({
+  action: z.literal("request_lookup_token"),
+  email: z.string().email().max(254),
+});
+
+const genericLookupResponse = {
+  message: "If an account exists for that email, we'll send a secure lookup link shortly.",
+};
 
 export async function POST(req: Request) {
-  let limitResult: RateLimitResult;
+  let body: unknown;
   try {
-    limitResult = await rateLimit(req, 10, "bookings");
+    body = await req.json();
+  } catch {
+    return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
+  }
+
+  const lookupRequest = lookupRequestSchema.safeParse(body);
+  if (lookupRequest.success) {
+    let lookupRateLimit: RateLimitResult;
+    try {
+      lookupRateLimit = await rateLimit(req, 5, "bookings-lookup-request");
+    } catch {
+      return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+    }
+
+    if (!lookupRateLimit.ok) {
+      return jsonRateLimitedFromResult(
+        "Please wait before requesting another booking lookup link.",
+        lookupRateLimit.resetAt
+      );
+    }
+
+    const normalizedEmail = lookupRequest.data.email.trim().toLowerCase();
+
+    try {
+      const token = createBookingLookupToken(normalizedEmail, { ttlSeconds: 15 * 60 });
+      await sendBookingLookupTokenEmail(normalizedEmail, token);
+    } catch (err) {
+      console.error("Booking lookup token request error:", err);
+    }
+
+    return Response.json(genericLookupResponse, {
+      headers: rateLimitSuccessHeaders(lookupRateLimit.remaining, 5, lookupRateLimit.bypassed),
+    });
+  }
+
+  let bookingRateLimit: RateLimitResult;
+  try {
+    bookingRateLimit = await rateLimit(req, 10, "bookings");
   } catch {
     return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
   }
-  if (!limitResult.ok) {
+  if (!bookingRateLimit.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before making another booking.",
-      limitResult.resetAt
+      bookingRateLimit.resetAt
     );
   }
 
   try {
-    const body = await req.json();
     const parsed = createBookingSchema.safeParse({
-      type: body.type ?? "winery_tasting",
-      providerId: body.providerId,
-      date: body.date,
-      partySize: typeof body.partySize === "number" ? body.partySize : Number(body.partySize),
-      guestEmail: body.guestEmail,
-      guestName: body.guestName,
-      notes: body.notes,
-      trailId: body.trailId,
+      type: (body as Record<string, unknown>).type ?? "winery_tasting",
+      providerId: (body as Record<string, unknown>).providerId,
+      date: (body as Record<string, unknown>).date,
+      partySize:
+        typeof (body as Record<string, unknown>).partySize === "number"
+          ? (body as Record<string, unknown>).partySize
+          : Number((body as Record<string, unknown>).partySize),
+      guestEmail: (body as Record<string, unknown>).guestEmail,
+      guestName: (body as Record<string, unknown>).guestName,
+      notes: (body as Record<string, unknown>).notes,
+      trailId: (body as Record<string, unknown>).trailId,
     });
 
     if (!parsed.success) {
@@ -95,7 +149,7 @@ export async function POST(req: Request) {
               : {}),
           },
         },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+        { headers: rateLimitSuccessHeaders(bookingRateLimit.remaining, 10, bookingRateLimit.bypassed) }
       );
     }
 
@@ -151,7 +205,7 @@ export async function POST(req: Request) {
               : {}),
           },
         },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+        { headers: rateLimitSuccessHeaders(bookingRateLimit.remaining, 10, bookingRateLimit.bypassed) }
       );
     }
 
@@ -167,34 +221,55 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  let limitResult: RateLimitResult;
+  let lookupLimitResult: RateLimitResult;
   try {
-    limitResult = await rateLimit(req, 15, "bookings-lookup");
+    lookupLimitResult = await rateLimit(req, 15, "bookings-lookup");
   } catch {
     return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
   }
-  if (!limitResult.ok) {
+  if (!lookupLimitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before checking your bookings again.",
-      limitResult.resetAt
+      lookupLimitResult.resetAt
+    );
+  }
+
+  let verifyLimitResult: RateLimitResult;
+  try {
+    verifyLimitResult = await rateLimit(req, 25, "bookings-lookup-verify");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
+  if (!verifyLimitResult.ok) {
+    return jsonRateLimitedFromResult(
+      "Please wait before trying another booking lookup.",
+      verifyLimitResult.resetAt
     );
   }
 
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email");
-  if (!email) {
-    return jsonError("BAD_REQUEST", "email required", 400);
+  const token = searchParams.get("token");
+  if (!email || !token) {
+    return jsonError("BAD_REQUEST", "email and token required", 400);
   }
+
   const parsed = z.string().email().max(254).safeParse(email);
   if (!parsed.success) {
     return jsonError("VALIDATION_ERROR", "Invalid email format", 400);
   }
 
   try {
+    const verification = verifyBookingLookupToken(token, parsed.data);
+    if (!verification.ok) {
+      return jsonError("FORBIDDEN", "Invalid or expired lookup token", 403);
+    }
+
     const bookings = await getBookingsByEmail(parsed.data);
+    const remaining = Math.min(lookupLimitResult.remaining, verifyLimitResult.remaining);
     return Response.json(
       { bookings },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 15, limitResult.bypassed) }
+      { headers: rateLimitSuccessHeaders(remaining, 15, lookupLimitResult.bypassed || verifyLimitResult.bypassed) }
     );
   } catch (err) {
     console.error("Bookings GET error:", err);
