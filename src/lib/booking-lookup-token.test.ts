@@ -44,4 +44,36 @@ describe("booking lookup token", () => {
 
     expect(result).toEqual({ ok: false, reason: "MISMATCH" });
   });
+
+  it("allows replay within TTL window (tokens are reusable for read-only lookups)", () => {
+    const now = 1_700_000_000_000;
+    const token = createBookingLookupToken("guest@example.com", { nowMs: now });
+
+    const first = verifyBookingLookupToken(token, "guest@example.com", { nowMs: now + 1000 });
+    const second = verifyBookingLookupToken(token, "guest@example.com", { nowMs: now + 2000 });
+
+    expect(first).toEqual({ ok: true, email: "guest@example.com" });
+    expect(second).toEqual({ ok: true, email: "guest@example.com" });
+  });
+
+  it("rejects an empty string token", () => {
+    expect(verifyBookingLookupToken("", "guest@example.com")).toEqual({
+      ok: false,
+      reason: "INVALID",
+    });
+  });
+
+  it("rejects a token without a dot separator", () => {
+    expect(verifyBookingLookupToken("nodot", "guest@example.com")).toEqual({
+      ok: false,
+      reason: "INVALID",
+    });
+  });
+
+  it("rejects a token with non-base64 payload", () => {
+    expect(verifyBookingLookupToken("!!!.!!!", "guest@example.com")).toEqual({
+      ok: false,
+      reason: "INVALID",
+    });
+  });
 });

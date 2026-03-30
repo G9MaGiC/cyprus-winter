@@ -2,6 +2,7 @@
  * Booking types and store. Uses Supabase when configured, else in-memory (dev fallback).
  */
 import { getSupabase, hasSupabase } from "./supabase";
+import { normalizeEmail } from "./normalize-email";
 
 export type BookingStatus = "pending" | "confirmed" | "cancelled";
 
@@ -44,7 +45,7 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 
   const supabase = getSupabase();
   if (supabase) {
-    const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
+    const guestEmailNormalized = normalizeEmail(input.guestEmail);
     const { error } = await supabase.from("bookings").insert({
       id,
       type: input.type,
@@ -73,7 +74,7 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 export async function getBookingsByEmail(email: string): Promise<Booking[]> {
   const supabase = getSupabase();
   if (supabase) {
-    const emailNormalized = email.trim().toLowerCase();
+    const emailNormalized = normalizeEmail(email);
     const { data, error } = await supabase
       .from("bookings")
       .select("*")

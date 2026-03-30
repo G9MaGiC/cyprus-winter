@@ -4,6 +4,7 @@
 import { Resend } from "resend";
 import type { Booking } from "./bookings";
 import { SITE_URL } from "./site-url";
+import { LOOKUP_TOKEN_TTL_SECONDS } from "./booking-lookup-token";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const from = process.env.RESEND_FROM_EMAIL ?? "Cyprus Winter <bookings@cyprus-winter.app>";
@@ -157,12 +158,15 @@ export async function sendBookingRequestToGuide(
 
 export async function sendBookingLookupTokenEmail(
   email: string,
-  token: string
+  token: string,
+  ttlMinutes = Math.floor(LOOKUP_TOKEN_TTL_SECONDS / 60)
 ): Promise<boolean> {
   if (!resend) return false;
 
   const safeEmail = escapeHtml(email);
-  const lookupUrl = `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+  const lookupUrl = escapeHtml(
+    `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`
+  );
 
   try {
     const { error } = await resend.emails.send({
@@ -172,7 +176,7 @@ export async function sendBookingLookupTokenEmail(
       html: `
         <h2>Your secure booking lookup link</h2>
         <p>We received a request to view bookings for <strong>${safeEmail}</strong>.</p>
-        <p>Use this secure link within 15 minutes:</p>
+        <p>Use this secure link within ${ttlMinutes} minutes:</p>
         <p><a href="${lookupUrl}">View my bookings</a></p>
         <p>If you didn't request this, you can ignore this email.</p>
         <p>Cyprus Winter</p>

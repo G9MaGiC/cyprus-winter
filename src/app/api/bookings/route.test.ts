@@ -2,14 +2,15 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { POST, GET } from "./route";
 import { createBookingLookupToken } from "@/lib/booking-lookup-token";
 
-const sendBookingLookupTokenEmail = vi.fn().mockResolvedValue(true);
-
 vi.mock("@/lib/email", () => ({
   sendBookingConfirmation: vi.fn().mockResolvedValue(false),
   sendBookingRequestToWinery: vi.fn().mockResolvedValue(false),
   sendBookingRequestToGuide: vi.fn().mockResolvedValue(false),
-  sendBookingLookupTokenEmail,
+  sendBookingLookupTokenEmail: vi.fn().mockResolvedValue(true),
 }));
+
+// Import after vi.mock so we get the mocked version
+const { sendBookingLookupTokenEmail } = await import("@/lib/email");
 
 function postReq(body: unknown, ip = "127.0.0.2") {
   return new Request("http://localhost:3000/api/bookings", {

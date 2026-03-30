@@ -21,7 +21,6 @@ export type { RateLimitResult } from "./rate-limit-shared";
 export type RateLimitScope =
   | "chat"
   | "bookings"
-  | "bookings-lookup"
   | "bookings-lookup-request"
   | "bookings-lookup-verify"
   | "trail-reports"

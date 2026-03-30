@@ -15,7 +15,8 @@ import { z } from "zod";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
-import { createBookingLookupToken, verifyBookingLookupToken } from "@/lib/booking-lookup-token";
+import { createBookingLookupToken, verifyBookingLookupToken, LOOKUP_TOKEN_TTL_SECONDS } from "@/lib/booking-lookup-token";
+import { normalizeEmail } from "@/lib/normalize-email";
 
 const lookupRequestSchema = z.object({
   action: z.literal("request_lookup_token"),
@@ -50,11 +51,11 @@ export async function POST(req: Request) {
       );
     }
 
-    const normalizedEmail = lookupRequest.data.email.trim().toLowerCase();
+    const normalized = normalizeEmail(lookupRequest.data.email);
 
     try {
-      const token = createBookingLookupToken(normalizedEmail, { ttlSeconds: 15 * 60 });
-      await sendBookingLookupTokenEmail(normalizedEmail, token);
+      const token = createBookingLookupToken(normalized);
+      await sendBookingLookupTokenEmail(normalized, token);
     } catch (err) {
       console.error("Booking lookup token request error:", err);
     }
@@ -78,18 +79,19 @@ export async function POST(req: Request) {
   }
 
   try {
+    const fields = body as Record<string, unknown>;
     const parsed = createBookingSchema.safeParse({
-      type: (body as Record<string, unknown>).type ?? "winery_tasting",
-      providerId: (body as Record<string, unknown>).providerId,
-      date: (body as Record<string, unknown>).date,
+      type: fields.type ?? "winery_tasting",
+      providerId: fields.providerId,
+      date: fields.date,
       partySize:
-        typeof (body as Record<string, unknown>).partySize === "number"
-          ? (body as Record<string, unknown>).partySize
-          : Number((body as Record<string, unknown>).partySize),
-      guestEmail: (body as Record<string, unknown>).guestEmail,
-      guestName: (body as Record<string, unknown>).guestName,
-      notes: (body as Record<string, unknown>).notes,
-      trailId: (body as Record<string, unknown>).trailId,
+        typeof fields.partySize === "number"
+          ? fields.partySize
+          : Number(fields.partySize),
+      guestEmail: fields.guestEmail,
+      guestName: fields.guestName,
+      notes: fields.notes,
+      trailId: fields.trailId,
     });
 
     if (!parsed.success) {
@@ -221,29 +223,16 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  let lookupLimitResult: RateLimitResult;
+  let limitResult: RateLimitResult;
   try {
-    lookupLimitResult = await rateLimit(req, 15, "bookings-lookup");
+    limitResult = await rateLimit(req, 25, "bookings-lookup-verify");
   } catch {
     return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
   }
-  if (!lookupLimitResult.ok) {
-    return jsonRateLimitedFromResult(
-      "Please wait before checking your bookings again.",
-      lookupLimitResult.resetAt
-    );
-  }
-
-  let verifyLimitResult: RateLimitResult;
-  try {
-    verifyLimitResult = await rateLimit(req, 25, "bookings-lookup-verify");
-  } catch {
-    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
-  }
-  if (!verifyLimitResult.ok) {
+  if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before trying another booking lookup.",
-      verifyLimitResult.resetAt
+      limitResult.resetAt
     );
   }
 
@@ -266,10 +255,9 @@ export async function GET(req: Request) {
     }
 
     const bookings = await getBookingsByEmail(parsed.data);
-    const remaining = Math.min(lookupLimitResult.remaining, verifyLimitResult.remaining);
     return Response.json(
       { bookings },
-      { headers: rateLimitSuccessHeaders(remaining, 15, lookupLimitResult.bypassed || verifyLimitResult.bypassed) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 25, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Bookings GET error:", err);

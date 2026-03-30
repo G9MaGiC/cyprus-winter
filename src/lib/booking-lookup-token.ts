@@ -1,6 +1,8 @@
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { normalizeEmail } from "./normalize-email";
 
-const DEFAULT_TTL_SECONDS = 15 * 60;
+/** Default token lifetime. Shared with email copy so the two stay in sync. */
+export const LOOKUP_TOKEN_TTL_SECONDS = 15 * 60;
 
 type TokenPayload = {
   email: string;
@@ -28,10 +30,6 @@ function base64UrlDecode(value: string): string {
   return Buffer.from(value, "base64url").toString("utf8");
 }
 
-function normalizeEmail(email: string): string {
-  return email.trim().toLowerCase();
-}
-
 function signPayload(payloadEncoded: string, secret: string): string {
   return createHmac("sha256", secret).update(payloadEncoded).digest("base64url");
 }
@@ -41,7 +39,7 @@ export function createBookingLookupToken(
   options?: { ttlSeconds?: number; nowMs?: number; nonce?: string }
 ): string {
   const nowMs = options?.nowMs ?? Date.now();
-  const ttlSeconds = options?.ttlSeconds ?? DEFAULT_TTL_SECONDS;
+  const ttlSeconds = options?.ttlSeconds ?? LOOKUP_TOKEN_TTL_SECONDS;
   const nonce = options?.nonce ?? randomBytes(16).toString("hex");
   const payload: TokenPayload = {
     email: normalizeEmail(email),
@@ -54,6 +52,11 @@ export function createBookingLookupToken(
   return `${payloadEncoded}.${signature}`;
 }
 
+/**
+ * Tokens are reusable within their TTL window (read-only lookup).
+ * No server-side nonce store is needed because the blast radius of
+ * a replayed read-only lookup is low and the 15-min TTL limits exposure.
+ */
 export function verifyBookingLookupToken(
   token: string,
   email: string,
