@@ -25,16 +25,20 @@ const INTENT_TOOLS: Record<Intent, string[]> = {
   general: [],
 };
 
-function extractRegion(message: string): string | undefined {
-  const regions = ["Paphos", "Limassol", "Larnaca", "Troodos", "Ayia Napa", "Nicosia", "Famagusta", "Protaras"];
+function extractFromList(message: string, items: string[]): string | undefined {
   const lower = message.toLowerCase();
-  return regions.find((r) => lower.includes(r.toLowerCase()));
+  return items.find((item) => lower.includes(item.toLowerCase()));
+}
+
+const REGIONS = ["Paphos", "Limassol", "Larnaca", "Troodos", "Ayia Napa", "Nicosia", "Famagusta", "Protaras"];
+const WINTER_MONTHS = ["November", "December", "January", "February", "March", "April"];
+
+function extractRegion(message: string): string | undefined {
+  return extractFromList(message, REGIONS);
 }
 
 function extractMonth(message: string): string | undefined {
-  const months = ["November", "December", "January", "February", "March", "April"];
-  const lower = message.toLowerCase();
-  return months.find((m) => lower.includes(m.toLowerCase()));
+  return extractFromList(message, WINTER_MONTHS);
 }
 
 function extractAirportCode(message: string): string | undefined {

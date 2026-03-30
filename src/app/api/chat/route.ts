@@ -7,6 +7,7 @@ import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 import { orchestrate } from "@/lib/concierge/orchestrator";
+import { ACTIONS_DELIMITER } from "@/lib/concierge/response-parser";
 import type { ConciergeContext } from "@/lib/concierge/types";
 
 // Providers in priority order. Each is tried until one succeeds (handles 429, timeouts, etc.).
@@ -252,7 +253,7 @@ export async function POST(req: Request) {
   const emitChunk = (obj: unknown) => `data: ${JSON.stringify(obj)}\n\n`;
 
   const lastUserMessage = messages[messages.length - 1]?.content ?? "";
-  const delimiter = "---ACTIONS---";
+  const delimiter = ACTIONS_DELIMITER;
 
   let lastErr: unknown = null;
   let lastProvider: Provider | null = null;

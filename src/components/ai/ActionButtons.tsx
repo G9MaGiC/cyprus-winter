@@ -2,18 +2,13 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
+import type { ResponseAction } from "@/lib/concierge/types";
 
-type Action = {
-  type: string;
-  label: string;
-  payload?: Record<string, unknown>;
-};
-
-export function ActionButtons({ actions }: { actions: Action[] }) {
+export function ActionButtons({ actions }: { actions: ResponseAction[] }) {
   const router = useRouter();
   const locale = useLocale();
 
-  function handleAction(action: Action) {
+  function handleAction(action: ResponseAction) {
     switch (action.type) {
       case "open_place":
       case "show_on_map":

@@ -2,13 +2,7 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
-
-type Card = {
-  type: string;
-  id: string;
-  title: string;
-  reason: string;
-};
+import type { PlaceCard } from "@/lib/concierge/types";
 
 const TYPE_LABELS: Record<string, string> = {
   trail: "Trail",
@@ -17,11 +11,11 @@ const TYPE_LABELS: Record<string, string> = {
   place: "Place",
 };
 
-export function PlaceCards({ cards }: { cards: Card[] }) {
+export function PlaceCards({ cards }: { cards: PlaceCard[] }) {
   const router = useRouter();
   const locale = useLocale();
 
-  function handleClick(card: Card) {
+  function handleClick(card: PlaceCard) {
     const basePath = card.type === "trail" ? "/trails" : "/discover";
     router.push(`/${locale}${basePath}/${card.id}`);
   }

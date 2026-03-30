@@ -43,6 +43,20 @@ const SLOT_CATEGORY_HINTS: Record<string, string[]> = {
 
 export function buildItinerary(input: BuildItineraryInput): ItineraryDay[] {
   const { region, days, interests, userLocation } = input;
+
+  // Pre-fetch a large ranked pool once instead of per-slot
+  const categories = interests?.length
+    ? interests.map((i) => INTEREST_TO_CATEGORY[i.toLowerCase()] ?? i)
+    : undefined;
+  const pool = searchPlaces({
+    query: interests?.[0] ?? "",
+    region,
+    categories,
+    season: "winter",
+    userLocation,
+    limit: Math.min(days, 14) * TIME_SLOTS.length * 2,
+  });
+
   const usedIds = new Set<string>();
   const result: ItineraryDay[] = [];
 
@@ -50,23 +64,7 @@ export function buildItinerary(input: BuildItineraryInput): ItineraryDay[] {
     const slots: ItinerarySlot[] = [];
 
     for (const timeOfDay of TIME_SLOTS) {
-      const categoryHints = SLOT_CATEGORY_HINTS[timeOfDay];
-      const category = interests?.length
-        ? interests[0]
-        : categoryHints[d % categoryHints.length];
-
-      const places = searchPlaces({
-        query: category,
-        region,
-        categories: interests?.length
-          ? interests.map((i) => INTEREST_TO_CATEGORY[i.toLowerCase()] ?? i)
-          : undefined,
-        season: "winter",
-        userLocation,
-        limit: 10,
-      });
-
-      const place = places.find((p) => !usedIds.has(p.id));
+      const place = pool.find((p) => !usedIds.has(p.id));
       if (place) {
         usedIds.add(place.id);
         slots.push({

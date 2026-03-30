@@ -6,18 +6,14 @@ import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
-// getPlaceById available for future use
+import type { ResponseMetadata } from "@/lib/concierge/types";
 
 export type Message = {
   role: "user" | "assistant";
   content: string;
   isRetryable?: boolean;
   is503?: boolean;
-  metadata?: {
-    cards?: { type: string; id: string; title: string; reason: string }[];
-    actions?: { type: string; label: string; payload?: Record<string, unknown> }[];
-    followUps?: string[];
-  };
+  metadata?: ResponseMetadata;
 };
 
 const MAX_PERSISTED_MESSAGES = 20;

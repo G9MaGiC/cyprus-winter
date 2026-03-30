@@ -1,6 +1,6 @@
 import type { ResponseMetadata } from "./types";
 
-const DELIMITER = "---ACTIONS---";
+export const ACTIONS_DELIMITER = "---ACTIONS---";
 
 export type ParsedResponse = {
   prose: string;
@@ -8,14 +8,14 @@ export type ParsedResponse = {
 };
 
 export function parseResponse(raw: string): ParsedResponse {
-  const delimiterIndex = raw.indexOf(DELIMITER);
+  const delimiterIndex = raw.indexOf(ACTIONS_DELIMITER);
 
   if (delimiterIndex === -1) {
     return { prose: raw.trim() };
   }
 
   const prose = raw.slice(0, delimiterIndex).trim();
-  const jsonStr = raw.slice(delimiterIndex + DELIMITER.length).trim();
+  const jsonStr = raw.slice(delimiterIndex + ACTIONS_DELIMITER.length).trim();
 
   try {
     const parsed = JSON.parse(jsonStr) as ResponseMetadata;
