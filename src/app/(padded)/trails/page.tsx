@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import TrailsClient from "./TrailsClient";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
 import { toSafeJsonForScript } from "@/lib/json-script";
+
+const trailsAlternates = buildStrategyAAlternates("/trails");
 
 export const metadata: Metadata = {
   title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
   description:
     "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
-  alternates: { canonical: `${SITE_URL}/trails` },
+  alternates: trailsAlternates,
   openGraph: {
     title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
     description: "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
-    url: `${SITE_URL}/trails`,
+    url: trailsAlternates.canonical,
     type: "website",
   },
 };

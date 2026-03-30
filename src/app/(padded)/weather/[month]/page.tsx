@@ -3,6 +3,7 @@ import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import { CARD, CTA, LAYOUT, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
@@ -66,11 +67,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
+  const alternates = buildStrategyAAlternates(`/weather/${slug}`);
 
   return {
     title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
     description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
-    alternates: { canonical: `${SITE_URL}/weather/${slug}` },
+    alternates,
     openGraph: {
       images: [{ url: ogImage, width: 1200, height: 630, alt: `Cyprus winter coast—${monthName} weather` }],
     },
@@ -82,8 +84,7 @@ export default async function WeatherMonthPage({ params }: Props) {
   const slug = month.toLowerCase() as MonthSlug;
 
   if (!MONTH_SLUGS.includes(slug)) notFound();
-  const [locale, tNav, tWeatherPage, tWeatherMonth, tCommon, tHome] = await Promise.all([
-    getLocale(),
+  const [tNav, tWeatherPage, tWeatherMonth, tCommon, tHome] = await Promise.all([
     getTranslations("nav"),
     getTranslations("weather.page"),
     getTranslations("weather.month"),

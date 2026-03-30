@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { schemaForLdJson } from "@/lib/schema-ldjson";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Cyprus Winter",
   },
-  alternates: { canonical: SITE_URL },
+  alternates: buildStrategyAAlternates("/"),
 };
 
 const webSiteSchema = {

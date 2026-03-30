@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { wineries } from "@/data/wineries";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
@@ -23,7 +24,7 @@ export async function generateMetadata({
   return {
     title: `Book a tasting | ${winery.name} | Cyprus Winter`,
     description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`,
-    alternates: { canonical: `${SITE_URL}/book/winery/${id}` },
+    alternates: buildStrategyAAlternates(`/book/winery/${id}`),
   };
 }
 

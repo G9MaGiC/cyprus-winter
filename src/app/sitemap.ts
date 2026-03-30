@@ -1,3 +1,6 @@
+/**
+ * Sitemap lists canonical (default-locale, unprefixed) URLs only — see docs/INTERNATIONAL_SEO.md (Strategy A).
+ */
 import type { MetadataRoute } from "next";
 import { allAttractions } from "@/data";
 import { restaurants } from "@/data/restaurants";

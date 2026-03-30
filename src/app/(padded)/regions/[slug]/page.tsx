@@ -13,7 +13,7 @@ import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
 import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { getAttractionImage } from "@/lib/cyprus-images";
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${config.title} | Cyprus Winter`,
     description: config.description,
-    alternates: { canonical: `${SITE_URL}/regions/${slug}` },
+    alternates: buildStrategyAAlternates(`/regions/${slug}`),
   };
 }
 

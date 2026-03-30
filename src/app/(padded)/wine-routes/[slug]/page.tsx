@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import { getTranslations } from "next-intl/server";
@@ -25,10 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 
   const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
+  const alternates = buildStrategyAAlternates(`/wine-routes/${slug}`);
   return {
     title: `${route.title} Wine Route Cyprus Winter | Wineries & Tastings`,
     description: `${route.description} ${count} wineries open for winter tastings. Book ahead.`,
-    alternates: { canonical: `${SITE_URL}/wine-routes/${slug}` },
+    alternates,
   };
 }
 

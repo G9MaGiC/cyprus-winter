@@ -68,7 +68,7 @@ describe("formatDate", () => {
   });
 });
 
-/** YYYY-MM-DD in local time (daysUntil uses local midnight). */
+/** YYYY-MM-DD in local time (daysUntil anchors at local noon for DST-safe deltas). */
 function toLocalDateStr(d: Date): string {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");

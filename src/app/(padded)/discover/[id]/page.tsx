@@ -8,6 +8,7 @@ import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
 import { LAYOUT, CTA, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
@@ -51,10 +52,11 @@ export async function generateMetadata({
   const desc = a.description.slice(0, maxDesc).trim();
   const snippet = prefix + desc + (a.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
+  const alternates = buildStrategyAAlternates(`/discover/${id}`);
   return {
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
-    alternates: { canonical: `${SITE_URL}/discover/${id}` },
+    alternates,
     openGraph: {
       images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
     },

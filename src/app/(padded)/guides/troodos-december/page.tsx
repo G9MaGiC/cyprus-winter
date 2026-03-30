@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import Image from "next/image";
 import { trails } from "@/data/trails";
 import { LAYOUT, CARD, SECTION, TYPE } from "@/lib/design-tokens";
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
-    alternates: { canonical: `${SITE_URL}/guides/troodos-december` },
+    alternates: buildStrategyAAlternates("/guides/troodos-december"),
   };
 }
 

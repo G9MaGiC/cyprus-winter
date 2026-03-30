@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { SerwistProvider } from "../serwist";
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
@@ -18,28 +19,20 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations("meta");
-  
-  // Build alternate language links for SEO
-  const languages: Record<string, string> = {};
-  routing.locales.forEach((loc) => {
-    languages[loc] = `${SITE_URL}/${loc}`;
-  });
-  
+  const alternates = buildStrategyAAlternates("/");
+
   return {
     metadataBase: new URL(SITE_URL),
     title: t("homeTitle"),
     description: t("homeDescription"),
     manifest: "/manifest.json",
     keywords: ["Cyprus winter", "winter in Cyprus", "Cyprus trails", "Cyprus wineries", "Troodos hiking", "winter sun Europe", "Cyprus trip planning", "what to do Cyprus winter", "Cyprus ski", "Cyprus winter events", "Cyprus winter family", "Cyprus Venetian bridges", "Cyprus waterfalls winter"],
-    alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages,
-    },
+    alternates,
     openGraph: {
       title: t("homeTitle"),
       description: t("homeDescription"),
       type: "website",
-      url: SITE_URL,
+      url: alternates.canonical,
       locale,
       images: [{ url: ogImage, width: 1200, height: 630, alt: "Kourion ancient theatre above Mediterranean coast, Cyprus winter" }],
     },

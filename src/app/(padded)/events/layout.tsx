@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import { winterEvents } from "@/data/events";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { toSafeJsonForScript } from "@/lib/json-script";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-monastery-kykkos.jpg`;
+const eventsAlternates = buildStrategyAAlternates("/events");
 
 export const metadata: Metadata = {
   title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
   description:
     "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit.",
-  alternates: { canonical: `${SITE_URL}/events` },
+  alternates: eventsAlternates,
   openGraph: {
     title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
     description: "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here.",
-    url: `${SITE_URL}/events`,
+    url: eventsAlternates.canonical,
     type: "website",
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter events" }],
   },

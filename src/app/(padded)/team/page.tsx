@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
-    alternates: { canonical: `${SITE_URL}/team` },
+    alternates: buildStrategyAAlternates("/team"),
   };
 }
 

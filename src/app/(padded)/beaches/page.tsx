@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { beaches } from "@/data/attractions";
 import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
@@ -16,14 +17,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "beaches.page" });
   const title = t("meta.title");
   const description = t("meta.description");
+  const alternates = buildStrategyAAlternates("/beaches");
   return {
     title,
     description,
-    alternates: { canonical: `${SITE_URL}/beaches` },
+    alternates,
     openGraph: {
       title,
       description: t("meta.schemaDescription"),
-      url: `${SITE_URL}/beaches`,
+      url: alternates.canonical,
       type: "website",
       images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
     },

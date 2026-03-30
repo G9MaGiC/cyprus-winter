@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { allDiscoverItems } from "@/data/discover";
 import { buildDiscoverSections } from "@/lib/discover-sections";
 import { buildDiscoverItemListSchema } from "@/lib/discover-schema";
@@ -13,15 +14,17 @@ import DiscoverClient from "./DiscoverClient";
 import { getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 
+const discoverAlternates = buildStrategyAAlternates("/discover");
+
 export const metadata: Metadata = {
   title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
   description:
     "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—Nissi, Paphos mosaics, Lefkara. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/discover` },
+  alternates: discoverAlternates,
   openGraph: {
     title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
     description: "Cyprus in winter: curated places that feel real. Beaches, villages, wineries, ancient sites.",
-    url: `${SITE_URL}/discover`,
+    url: discoverAlternates.canonical,
     type: "website",
   },
 };

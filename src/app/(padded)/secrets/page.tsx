@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION, TYPE } from "@/lib/design-tokens";
@@ -15,14 +16,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "secrets.page" });
   const title = t("meta.title");
   const description = t("meta.description");
+  const alternates = buildStrategyAAlternates("/secrets");
   return {
     title,
     description,
-    alternates: { canonical: `${SITE_URL}/secrets` },
+    alternates,
     openGraph: {
       title,
       description: t("meta.ogDescription"),
-      url: `${SITE_URL}/secrets`,
+      url: alternates.canonical,
       type: "website",
       images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
     },

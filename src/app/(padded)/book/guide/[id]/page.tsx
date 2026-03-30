@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { guides } from "@/data/guides";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
@@ -23,7 +23,7 @@ export async function generateMetadata({
   return {
     title: `Book a guided hike | ${guide.name} | Cyprus Winter`,
     description: `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`,
-    alternates: { canonical: `${SITE_URL}/book/guide/${id}` },
+    alternates: buildStrategyAAlternates(`/book/guide/${id}`),
   };
 }
 

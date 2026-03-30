@@ -3,6 +3,7 @@ import DetailHero from "@/components/DetailHero";
 import { trails, trailConditions } from "@/data/trails";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
@@ -36,10 +37,11 @@ export async function generateMetadata({
   const maxDesc = 154 - prefix.length; // leave room for ellipsis
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
+  const alternates = buildStrategyAAlternates(`/trails/${id}`);
   return {
     title: `${trail.name} | Cyprus Winter Trails`,
     description: prefix + desc,
-    alternates: { canonical: `${SITE_URL}/trails/${id}` },
+    alternates,
     openGraph: {
       images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region} — ${trail.lengthKm} km trail in Cyprus winter` }],
     },

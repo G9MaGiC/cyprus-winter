@@ -18,6 +18,13 @@ export default function robots(): MetadataRoute.Robots {
           "/account",
           "/reset-password",
           "/forgot-password",
+          // Locale-prefixed auth/account (next-intl); * is a path wildcard per Google robots rules
+          "/*/admin/",
+          "/*/login",
+          "/*/register",
+          "/*/account",
+          "/*/reset-password",
+          "/*/forgot-password",
         ],
       },
     ],

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AppLink from "@/components/AppLink";
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: { canonical: `${SITE_URL}/privacy` },
+    alternates: buildStrategyAAlternates("/privacy"),
     robots: { index: true, follow: true },
   };
 }

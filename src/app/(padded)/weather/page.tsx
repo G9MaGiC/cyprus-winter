@@ -4,6 +4,7 @@ import { CARD, LAYOUT, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { getTranslations } from "next-intl/server";
@@ -21,15 +22,17 @@ const MONTH_TO_SLUG: Record<string, string> = {
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
+const weatherAlternates = buildStrategyAAlternates("/weather");
+
 export const metadata: Metadata = {
   title: "Cyprus Winter Weather by Month | Coast & Troodos",
   description:
     "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/weather` },
+  alternates: weatherAlternates,
   openGraph: {
     title: "Cyprus Winter Weather by Month | Coast & Troodos",
     description: "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
-    url: `${SITE_URL}/weather`,
+    url: weatherAlternates.canonical,
     type: "website",
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter weather guide" }],
   },

@@ -8,7 +8,7 @@ const intlMiddleware = createIntlMiddleware(routing);
 export default function proxy(request: NextRequest): NextResponse {
   const response = intlMiddleware(request);
 
-  // Build CSP header
+  // Build CSP header — broad script-src keeps Turbopack/dev tooling happy; tighten with nonces/hashes for prod if required.
   const cspHeader = [
     "default-src 'self'",
     // Allow scripts from self, nonce, strict-dynamic for Next.js, and unsafe-inline as fallback

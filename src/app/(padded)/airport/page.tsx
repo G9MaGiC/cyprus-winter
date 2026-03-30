@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { airports } from "@/data/airport";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { winterTipsPractical } from "@/data/winter-tips";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
@@ -16,14 +17,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "airport.page" });
   const title = t("meta.title");
   const description = t("meta.description");
+  const alternates = buildStrategyAAlternates("/airport");
   return {
     title,
     description,
-    alternates: { canonical: `${SITE_URL}/airport` },
+    alternates,
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/airport`,
+      url: alternates.canonical,
       type: "website",
       images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
     },

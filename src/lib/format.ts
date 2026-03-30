@@ -26,10 +26,11 @@ export function formatDate(dateStr: string, locale?: string): string {
  */
 export function daysUntil(dateStr: string): number {
   const d = parseDateInput(dateStr);
-  d.setHours(0, 0, 0, 0);
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return Math.ceil((d.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  // Anchor at local noon so day deltas stay correct across DST transitions (midnight spans can be 23/25h).
+  d.setHours(12, 0, 0, 0);
+  today.setHours(12, 0, 0, 0);
+  return Math.round((d.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 }
 
 /**

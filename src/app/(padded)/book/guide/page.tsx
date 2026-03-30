@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { guides } from "@/data/guides";
 import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { trails } from "@/data/trails";
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Book a Guided Hike | Cyprus Winter",
   description:
     "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis, and more. Small groups, winter expertise. Book ahead and they'll confirm by email.",
-  alternates: { canonical: `${SITE_URL}/book/guide` },
+  alternates: buildStrategyAAlternates("/book/guide"),
 };
 
 function getTrailNames(guide: (typeof guides)[0]): string[] {
