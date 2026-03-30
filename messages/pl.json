@@ -357,6 +357,13 @@
       "loaded": {
         "seeMore": "Zobacz więcej →"
       },
+      "adapt": {
+        "kicker": "Dostosuj dziś",
+        "body": "Pogoda się zmienia albo plany się przesunęły? Jednym kliknięciem dostosuj dzień bez zaczynania od zera.",
+        "ctaWeather": "Sprawdź pogodę",
+        "ctaPlan": "Dostosuj plan",
+        "ctaBookings": "Sprawdź rezerwacje"
+      },
       "distance": {
         "aria": "Dystans",
         "closer": "Bliżej",
@@ -1212,6 +1219,18 @@
       "mobile": {
         "details": "Szczegóły →"
       },
+      "hero": {
+        "kicker": "Planowanie zimy",
+        "heading": "Wybierz miesiąc, a potem przeglądaj to, co pasuje",
+        "body": "Temperatury na wybrzeżu i w Troodos zmieniają się przez zimę. Wybierz miesiąc, aby zobaczyć warunki i wydarzenia, a potem użyj „Teraz blisko Ciebie”, by dopasować dzień."
+      },
+      "monthSelector": {
+        "aria": "Wybierz miesiąc"
+      },
+      "gateway": {
+        "heading": "Przeglądaj zimowe pomysły",
+        "monasteries": "Klasztory"
+      },
       "body": {
         "coastTroodos": "Wybrzeże to Larnaka, Limassol, Pafos — łagodne, śródziemnomorskie zimy. Troodos to góry: wioski jak Platres i Omodos oraz ośrodek narciarski na Olimpie. Zapakuj warstwy; różnica między wybrzeżem a górami może sięgać 10°C.",
         "linkTrails": "Sprawdź warunki na szlakach",
@@ -1226,6 +1245,20 @@
       "meta": {
         "notFoundTitle": "Nie znaleziono pogody | Cyprus Winter",
         "notFoundDescription": "Zimowa pogoda na Cyprze według miesięcy: grudzień, styczeń, luty, marzec. Temperatury na wybrzeżu i w Troodos."
+      },
+      "hero": {
+        "kicker": "W tym miesiącu",
+        "heading": "{month} w Cyprus Winter",
+        "body": "Wybrzeże ma około {coastMid}°C, a Troodos około {troodosMid}°C. Zaplanuj warstwy, a potem przejrzyj zimowe propozycje poniżej."
+      },
+      "monthJump": {
+        "aria": "Przeskocz do innego miesiąca"
+      },
+      "gateway": {
+        "monasteries": "Klasztory"
+      },
+      "monthDiscovery": {
+        "heading": "Przeglądaj, co pasuje do {month}"
       },
       "conditionsHeading": "Czego się spodziewać",
       "conditionsCoastTitle": "Wybrzeże (Larnaka, Limassol, Pafos)",
