@@ -87,7 +87,7 @@ export default async function WineryBookPage({
         </p>
       </div>
 
-      <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />
+      <WineryBookingForm wineryId={winery.id} wineryName={winery.name} wineryRegion={winery.region} />
 
       {(winery.bookingUrl || winery.contactPhone) && (
         <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>

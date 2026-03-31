@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
+import BookingValueStack from "@/components/bookings/BookingValueStack";
 import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
@@ -169,6 +170,7 @@ export default function GuideBookingForm({
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <BookingValueStack variant="guide" />
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="guide" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">

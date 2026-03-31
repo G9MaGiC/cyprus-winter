@@ -287,6 +287,12 @@
       }
     }
     ,
+    "trailReports": {
+      "kicker": "Community",
+      "title": "What hikers are saying",
+      "subtitle": "Real conditions from the trail, reported by visitors like you.",
+      "cta": "Browse all trails"
+    },
     "share": {
       "heading": "Share Cyprus Winter",
       "body": "Planning ahead or already here? Tap the chat bubble. Add places as you browse—your plan saves automatically.",
@@ -962,6 +968,24 @@
       "itineraryCopied": "Itinerary copied to clipboard",
       "shareLinkCopied": "Share link copied to clipboard"
     },
+    "savePrompt": {
+      "title": "Save your {count}-place plan",
+      "subtitle": "Get your itinerary by email so you never lose it.",
+      "emailLabel": "Email address",
+      "placeholder": "you@example.com",
+      "cta": "Email my plan",
+      "sending": "Sending…",
+      "error": "Something went wrong. Try again.",
+      "dismiss": "Dismiss",
+      "successMessage": "Check your inbox — your plan is saved."
+    },
+    "shareCard": {
+      "title": "My Cyprus Winter Trip",
+      "summary": "{days} days, {places} places planned",
+      "shareText": "Just planned my {days}-day, {places}-place Cyprus winter trip",
+      "cta": "Share your trip",
+      "copied": "Copied!"
+    },
     "daySelector": {
       "tabLabelWithCount": "Day {day} · {count}",
       "viewAllDays": "View all days",
@@ -1473,6 +1497,27 @@
     }
   },
   "book": {
+    "valueStack": {
+      "title": "What's included",
+      "winery": {
+        "tasting": "Personal wine tasting session",
+        "tour": "Vineyard tour with the winemaker",
+        "recommendations": "Expert food pairing recommendations",
+        "noCost": "No upfront cost — pay at the winery"
+      },
+      "guide": {
+        "guidedHike": "Guided hike with a local expert",
+        "localKnowledge": "Local knowledge and hidden viewpoints",
+        "safetyBriefing": "Safety briefing and trail conditions update",
+        "noCost": "No upfront cost — pay on the day"
+      },
+      "riskReversal": "Cancel anytime before confirmation. Zero risk.",
+      "urgency": "Winter tasting season — book ahead for weekend availability"
+    },
+    "upsell": {
+      "title": "Complete your day",
+      "browseMore": "Browse more places"
+    },
     "guideForm": {
       "errors": {
         "failed": "Booking failed",
@@ -1924,5 +1969,22 @@
       "aria-label_11": "View your itinerary",
       "aria-label_12": "Transport from airport, tips"
     }
+  },
+  "leadCapture": {
+    "kicker": "Free guide",
+    "title": "Get the Cyprus Winter Checklist",
+    "subtitle": "Packing tips, trail picks, and insider advice — straight to your inbox.",
+    "emailLabel": "Email address",
+    "placeholder": "you@example.com",
+    "cta": "Send it to me",
+    "sending": "Sending…",
+    "error": "Something went wrong. Please try again.",
+    "successTitle": "You're on the list",
+    "successBody": "Check your inbox for the checklist. See you on the trails."
+  },
+  "share": {
+    "prompt": "Love this place? Share it with a friend",
+    "share": "Share",
+    "copied": "Copied!"
   }
 }

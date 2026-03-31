@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
+import BookingValueStack from "@/components/bookings/BookingValueStack";
+import PostBookingUpsell from "@/components/book/PostBookingUpsell";
 import { CTA, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
@@ -13,9 +15,11 @@ import { useTranslations } from "next-intl";
 export default function WineryBookingForm({
   wineryId,
   wineryName,
+  wineryRegion,
 }: {
   wineryId: string;
   wineryName: string;
+  wineryRegion?: string;
 }) {
   const t = useTranslations("book.wineryForm");
   const tCommon = useTranslations("common");
@@ -158,12 +162,14 @@ export default function WineryBookingForm({
             {t("success.ctaDiscover")}
           </AppLink>
         </div>
+        {wineryRegion && <PostBookingUpsell region={wineryRegion} excludeId={wineryId} />}
       </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <BookingValueStack variant="winery" />
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="winery" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">

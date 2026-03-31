@@ -24,6 +24,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { getLocalizedName } from "@/lib/localize";
 import { getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
+import SharePrompt from "@/components/SharePrompt";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -151,6 +152,7 @@ export default async function AttractionPage({
 
             <section>
               <p className="text-olive/90 text-lg sm:text-xl leading-relaxed break-words">{a.description}</p>
+              <SharePrompt title={a.name} path={`/discover/${id}`} />
             </section>
 
             <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>

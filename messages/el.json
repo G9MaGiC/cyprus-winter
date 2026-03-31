@@ -101,8 +101,7 @@
     "trail": "Μονοπάτι",
     "winery": "Οινοποιείο",
     "event": "Εκδήλωση",
-    "eat": "Φαγητό"
-    ,
+    "eat": "Φαγητό",
     "timelineRemovedPlace": "Αυτή η τοποθεσία αφαιρέθηκε από τη λίστα μας",
     "ai": {
       "title": "Οδηγός Κύπρου",
@@ -115,10 +114,8 @@
       "stopVoice": "Διακοπή φωνητικής αναζήτησης"
     },
     "back": "Πίσω",
-    "backTo": "Πίσω στο {label}"
-    ,
-    "peopleCount": "{count, plural, one {# άτομο} other {# άτομα}}"
-    ,
+    "backTo": "Πίσω στο {label}",
+    "peopleCount": "{count, plural, one {# άτομο} other {# άτομα}}",
     "breadcrumbs": {
       "privacy": "Απόρρητο",
       "terms": "Όροι",
@@ -139,8 +136,7 @@
     "bestTimeToVisitTitle": "Καλύτερη ώρα για επίσκεψη",
     "reportConditions": "Αναφορά συνθηκών",
     "reportAnotherTrail": "Αναφορά άλλου μονοπατιού",
-    "thanksForReporting": "Ευχαριστούμε για την αναφορά."
-    ,
+    "thanksForReporting": "Ευχαριστούμε για την αναφορά.",
     "remove": "Αφαίρεση",
     "bookTastings": "Κράτηση γευσιγνωσιών",
     "exploreWineries": "Εξερεύνηση οινοποιείων",
@@ -186,13 +182,11 @@
     "skipTo": {
       "editorsPicks": "Μετάβαση στις επιλογές των συντακτών",
       "plan": "Μετάβαση στο Πρόγραμμα"
-    }
-    ,
+    },
     "cancel": "Ακύρωση",
     "done": "Έτοιμο",
     "clearDay": "Καθαρισμός ημέρας",
-    "clearDayTitle": "Καθαρισμός Ημέρας {day};"
-    ,
+    "clearDayTitle": "Καθαρισμός Ημέρας {day};",
     "removeAllFromDay": "Αφαίρεση όλων των {count} {count, plural, one {τοποθεσίας} other {τοποθεσιών}} από την Ημέρα {day}. Μπορείτε να τις προσθέσετε ξανά οποιαδήποτε στιγμή."
   },
   "home": {
@@ -285,8 +279,7 @@
         "wellnessAria": "Ευεξία — μοναστήρια, ήσυχοι χώροι",
         "regionAria": "Περιοχή {region}"
       }
-    }
-    ,
+    },
     "share": {
       "heading": "Κοινοποίηση Cyprus Winter",
       "body": "Προγραμματίζετε ή είστε ήδη εδώ; Πατήστε την φυσαλίδα συνομιλίας. Προσθέστε μέρη καθώς περιηγείστε — το πλάνο σας αποθηκεύεται αυτόματα.",
@@ -369,6 +362,12 @@
         "closer": "Πιο κοντά",
         "farther": "Πιο μακριά"
       }
+    },
+    "trailReports": {
+      "kicker": "Community",
+      "title": "What hikers are saying",
+      "subtitle": "Real conditions from the trail, reported by visitors like you.",
+      "cta": "Browse all trails"
     }
   },
   "error": {
@@ -562,7 +561,10 @@
       "funnelThisMonth": {
         "title": "Funnel μετατροπών (αυτόν τον μήνα)",
         "subtitle": "Από την πρώτη επαφή έως την κράτηση και τα έσοδα",
-        "table": { "event": "Γεγονός", "count": "Πλήθος" },
+        "table": {
+          "event": "Γεγονός",
+          "count": "Πλήθος"
+        },
         "empty": "Δεν υπάρχουν ακόμη γεγονότα. Η παρακολούθηση μετατροπών απαιτεί Supabase και migration 003."
       },
       "storage": "Αποθήκευση: {storage}",
@@ -702,9 +704,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Έτοιμοι να πάτε" },
-        "caution": { "title": "Ελέγξτε τις συνθήκες πριν ξεκινήσετε" },
-        "closed": { "title": "Καλύτερα να μείνει για άλλη μέρα" }
+        "open": {
+          "title": "Έτοιμοι να πάτε"
+        },
+        "caution": {
+          "title": "Ελέγξτε τις συνθήκες πριν ξεκινήσετε"
+        },
+        "closed": {
+          "title": "Καλύτερα να μείνει για άλλη μέρα"
+        }
       }
     },
     "report": {
@@ -717,15 +725,36 @@
       },
       "options": {
         "status": {
-          "open": { "label": "Ανοιχτό", "desc": "Όλα καλά" },
-          "caution": { "label": "Προσοχή", "desc": "Λάσπη, άνεμος ή μικρά ζητήματα" },
-          "closed": { "label": "Κλειστό", "desc": "Χιόνι, πάγος ή μη ασφαλές" }
+          "open": {
+            "label": "Ανοιχτό",
+            "desc": "Όλα καλά"
+          },
+          "caution": {
+            "label": "Προσοχή",
+            "desc": "Λάσπη, άνεμος ή μικρά ζητήματα"
+          },
+          "closed": {
+            "label": "Κλειστό",
+            "desc": "Χιόνι, πάγος ή μη ασφαλές"
+          }
         },
         "surface": {
-          "dry": { "label": "Στεγνό", "desc": "Σταθερό έδαφος, καλή πρόσφυση" },
-          "muddy": { "label": "Λασπώδες", "desc": "Μαλακά ή υγρά σημεία" },
-          "snow": { "label": "Χιόνι", "desc": "Χιόνι στο έδαφος" },
-          "icy": { "label": "Παγωμένο", "desc": "Πάγος, ίσως χρειάζονται καρφιά" }
+          "dry": {
+            "label": "Στεγνό",
+            "desc": "Σταθερό έδαφος, καλή πρόσφυση"
+          },
+          "muddy": {
+            "label": "Λασπώδες",
+            "desc": "Μαλακά ή υγρά σημεία"
+          },
+          "snow": {
+            "label": "Χιόνι",
+            "desc": "Χιόνι στο έδαφος"
+          },
+          "icy": {
+            "label": "Παγωμένο",
+            "desc": "Πάγος, ίσως χρειάζονται καρφιά"
+          }
         }
       },
       "placeholders": {
@@ -733,7 +762,10 @@
         "email": "your@email.com"
       },
       "errorHelp": "Ελέγξτε τη σύνδεσή σας, δοκιμάστε ξανά ή επιστρέψτε στο μονοπάτι.",
-      "submit": { "idle": "Υποβολή αναφοράς", "loading": "Υποβολή…" },
+      "submit": {
+        "idle": "Υποβολή αναφοράς",
+        "loading": "Υποβολή…"
+      },
       "success": {
         "aria": "Η αναφορά υποβλήθηκε με επιτυχία",
         "body": "Πεζοπόροι προς {region} θα το χρησιμοποιήσουν. Κάθε αναφορά μετράει.",
@@ -946,6 +978,24 @@
       "ariaLabel": "Κρατήσεις οινοποιείων"
     },
     "dayLabel": "Ημέρα {day}",
+    "savePrompt": {
+      "title": "Save your {count}-place plan",
+      "subtitle": "Get your itinerary by email so you never lose it.",
+      "emailLabel": "Email address",
+      "placeholder": "you@example.com",
+      "cta": "Email my plan",
+      "sending": "Sending…",
+      "error": "Something went wrong. Try again.",
+      "dismiss": "Dismiss",
+      "successMessage": "Check your inbox — your plan is saved."
+    },
+    "shareCard": {
+      "title": "My Cyprus Winter Trip",
+      "summary": "{days} days, {places} places planned",
+      "shareText": "Just planned my {days}-day, {places}-place Cyprus winter trip",
+      "cta": "Share your trip",
+      "copied": "Copied!"
+    },
     "aria": {
       "shareRegion": "Σύνοψη προγράμματος και κοινοποίηση",
       "shareMenu": "Επιλογές αντιγραφής και κοινοποίησης",
@@ -1473,6 +1523,27 @@
     }
   },
   "book": {
+    "valueStack": {
+      "title": "What's included",
+      "winery": {
+        "tasting": "Personal wine tasting session",
+        "tour": "Vineyard tour with the winemaker",
+        "recommendations": "Expert food pairing recommendations",
+        "noCost": "No upfront cost — pay at the winery"
+      },
+      "guide": {
+        "guidedHike": "Guided hike with a local expert",
+        "localKnowledge": "Local knowledge and hidden viewpoints",
+        "safetyBriefing": "Safety briefing and trail conditions update",
+        "noCost": "No upfront cost — pay on the day"
+      },
+      "riskReversal": "Cancel anytime before confirmation. Zero risk.",
+      "urgency": "Winter tasting season — book ahead for weekend availability"
+    },
+    "upsell": {
+      "title": "Complete your day",
+      "browseMore": "Browse more places"
+    },
     "guideForm": {
       "errors": {
         "failed": "Η κράτηση απέτυχε",
@@ -1489,12 +1560,34 @@
         "ctaTrails": "Περιήγηση μονοπατιών"
       },
       "fields": {
-        "date": { "label": "Προτιμώμενη ημερομηνία", "hint": "Οι χειμερινές μέρες είναι μικρές — κλείστε νωρίς για την ώρα που θέλετε." },
-        "trail": { "label": "Μονοπάτι", "optional": "(προαιρετικό)", "hint": "Προαιρετικό. Βοηθά τον οδηγό να οργανώσει.", "placeholder": "Επιλέξτε μονοπάτι (προαιρετικό)" },
-        "partySize": { "label": "Μέγεθος ομάδας", "plus": "11+ άτομα" },
-        "guestName": { "label": "Το όνομά σας", "placeholder": "Γιώργος Παπαδόπουλος" },
-        "guestEmail": { "label": "Email", "placeholder": "giorgos@example.com" },
-        "notes": { "label": "Σημειώσεις", "optional": "(προαιρετικό)", "hint": "Φυσική κατάσταση, εμπειρία, προτίμηση μονοπατιού — ό,τι βοηθά στον σχεδιασμό.", "placeholder": "Πρώτη χειμερινή πεζοπορία, θέλω καταρράκτες, χρειάζομαι νωρίς — ό,τι βοηθά" }
+        "date": {
+          "label": "Προτιμώμενη ημερομηνία",
+          "hint": "Οι χειμερινές μέρες είναι μικρές — κλείστε νωρίς για την ώρα που θέλετε."
+        },
+        "trail": {
+          "label": "Μονοπάτι",
+          "optional": "(προαιρετικό)",
+          "hint": "Προαιρετικό. Βοηθά τον οδηγό να οργανώσει.",
+          "placeholder": "Επιλέξτε μονοπάτι (προαιρετικό)"
+        },
+        "partySize": {
+          "label": "Μέγεθος ομάδας",
+          "plus": "11+ άτομα"
+        },
+        "guestName": {
+          "label": "Το όνομά σας",
+          "placeholder": "Γιώργος Παπαδόπουλος"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "giorgos@example.com"
+        },
+        "notes": {
+          "label": "Σημειώσεις",
+          "optional": "(προαιρετικό)",
+          "hint": "Φυσική κατάσταση, εμπειρία, προτίμηση μονοπατιού — ό,τι βοηθά στον σχεδιασμό.",
+          "placeholder": "Πρώτη χειμερινή πεζοπορία, θέλω καταρράκτες, χρειάζομαι νωρίς — ό,τι βοηθά"
+        }
       },
       "submit": {
         "ariaSending": "Αποστολή αιτήματος",
@@ -1509,8 +1602,7 @@
         "privacy": "Πολιτική Απορρήτου",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "wineryForm": {
       "errors": {
         "failed": "Η κράτηση απέτυχε",
@@ -1526,11 +1618,28 @@
         "ctaDiscover": "Ανακαλύψτε περισσότερα"
       },
       "fields": {
-        "date": { "label": "Προτιμώμενη ημερομηνία", "hint": "Οι χειμερινές γευσιγνωσίες γεμίζουν. Βοηθά να κλείσετε λίγες μέρες πριν." },
-        "partySize": { "label": "Μέγεθος ομάδας", "plus": "11+ άτομα" },
-        "guestName": { "label": "Το όνομά σας", "placeholder": "Γιώργος Παπαδόπουλος" },
-        "guestEmail": { "label": "Email", "placeholder": "giorgos@example.com" },
-        "notes": { "label": "Σημειώσεις", "optional": "(προαιρετικό)", "hint": "Τραπέζι δίπλα στο τζάκι; Διατροφικές ανάγκες; Απλώς αναφέρετέ το — τα οινοποιεία το συνηθίζουν.", "placeholder": "Αλλεργίες, ειδική περίσταση, τζάκι ή βεράντα — ό,τι βοηθά να σας υποδεχτούν" }
+        "date": {
+          "label": "Προτιμώμενη ημερομηνία",
+          "hint": "Οι χειμερινές γευσιγνωσίες γεμίζουν. Βοηθά να κλείσετε λίγες μέρες πριν."
+        },
+        "partySize": {
+          "label": "Μέγεθος ομάδας",
+          "plus": "11+ άτομα"
+        },
+        "guestName": {
+          "label": "Το όνομά σας",
+          "placeholder": "Γιώργος Παπαδόπουλος"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "giorgos@example.com"
+        },
+        "notes": {
+          "label": "Σημειώσεις",
+          "optional": "(προαιρετικό)",
+          "hint": "Τραπέζι δίπλα στο τζάκι; Διατροφικές ανάγκες; Απλώς αναφέρετέ το — τα οινοποιεία το συνηθίζουν.",
+          "placeholder": "Αλλεργίες, ειδική περίσταση, τζάκι ή βεράντα — ό,τι βοηθά να σας υποδεχτούν"
+        }
       },
       "submit": {
         "ariaSending": "Αποστολή αιτήματος",
@@ -1545,8 +1654,7 @@
         "privacy": "Πολιτική Απορρήτου",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "pages": {
       "pageNavAria": "Πλοήγηση σελίδας",
       "otherWaysAria": "Άλλοι τρόποι κράτησης",
@@ -1924,5 +2032,22 @@
       "aria-label_11": "Δείτε το δρομολόγιό σας",
       "aria-label_12": "Μεταφορά από το αεροδρόμιο, συμβουλές"
     }
+  },
+  "leadCapture": {
+    "kicker": "Free guide",
+    "title": "Get the Cyprus Winter Checklist",
+    "subtitle": "Packing tips, trail picks, and insider advice — straight to your inbox.",
+    "emailLabel": "Email address",
+    "placeholder": "you@example.com",
+    "cta": "Send it to me",
+    "sending": "Sending…",
+    "error": "Something went wrong. Please try again.",
+    "successTitle": "You're on the list",
+    "successBody": "Check your inbox for the checklist. See you on the trails."
+  },
+  "share": {
+    "prompt": "Love this place? Share it with a friend",
+    "share": "Share",
+    "copied": "Copied!"
   }
 }

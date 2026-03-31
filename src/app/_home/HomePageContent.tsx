@@ -6,6 +6,8 @@ import HomeHero from "@/app/_home/HomeHero";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
 import HomeSearchSection from "@/app/_home/HomeSearchSection";
 import HomeWhyCyprusTeaser from "@/app/_home/HomeWhyCyprusTeaser";
+import LeadCapture from "@/components/LeadCapture";
+import RecentTrailReports from "@/components/home/RecentTrailReports";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import StartHereWithExplore from "@/app/_home/StartHereWithExplore";
@@ -73,6 +75,7 @@ export default function HomePageContent({
       <TripReminderBanner />
       <HomeSearchSection />
       <HomeWhyCyprusTeaser />
+      <LeadCapture />
       <HomeTrailConditionsStrip LinkComponent={LinkComponent} />
       <StartHereWithExplore LinkComponent={LinkComponent} />
       <RightNowNearYou />
@@ -110,6 +113,7 @@ export default function HomePageContent({
         <BookTastings LinkComponent={LinkComponent} />
       </HomeSection>
 
+      <RecentTrailReports />
       <HomePlanningSection LinkComponent={LinkComponent} planSubtitle={planSubtitle} />
       <HomeFooter LinkComponent={LinkComponent} />
       <HomeShareSection sharePath={sharePath} />

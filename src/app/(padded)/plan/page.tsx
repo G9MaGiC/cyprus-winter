@@ -9,6 +9,8 @@ import DaySelector from "@/components/plan/DaySelector";
 import PlanAddFailedAlert from "@/components/plan/PlanAddFailedAlert";
 import PlanDaysUntilBanner from "@/components/plan/PlanDaysUntilBanner";
 import PlanFooter from "@/components/plan/PlanFooter";
+import PlanSavePrompt from "@/components/plan/PlanSavePrompt";
+import ShareTripCard from "@/components/plan/ShareTripCard";
 import PlanMapClient from "@/components/plan/PlanMapClient";
 import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
@@ -271,6 +273,8 @@ export default function PlanPage() {
           </div>
         </div>
 
+        <PlanSavePrompt itemCount={totalPlaces} />
+        {hasContent && <ShareTripCard dayCount={displayDaysCount} placeCount={totalPlaces} sharePath={sharePath} />}
         <PlanFooter hasWineries={hasWineries} showAccountCTA={!user && totalPlaces >= 2} />
 
         {showClearModal && (
