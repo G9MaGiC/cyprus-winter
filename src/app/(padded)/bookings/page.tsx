@@ -65,52 +65,114 @@ export default function BookingsPage() {
   }, [refreshBookings]);
 
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
+  const [tokenSent, setTokenSent] = useState(false);
 
-  const fetchByEmail = async (e: React.FormEvent) => {
+  // Handle deep-link from email: /bookings?email=...&token=...
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const token = params.get("token");
+    if (!email || !token) return;
+
+    // Clean the URL so the token isn't left in the address bar
+    window.history.replaceState({}, "", window.location.pathname);
+
+    setEmailLookup(email);
+    setShowSync(true);
+    setEmailLoading(true);
+    setEmailError(null);
+    setEmailSuccess(null);
+
+    (async () => {
+      try {
+        const res = await fetch(
+          `/api/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`
+        );
+        const data = await res.json();
+        if (!isMountedRef.current) return;
+        if (res.status === 429) {
+          setEmailError("Too many requests. Wait a moment and try again.");
+          return;
+        }
+        if (!res.ok) {
+          const msg =
+            data.message ??
+            (typeof data.error === "string" ? data.error : data.error?.message) ??
+            "Invalid or expired lookup link. Please request a new one.";
+          throw new Error(msg);
+        }
+        const apiBookings = (data.bookings ?? []) as Booking[];
+        const local = loadLocalBookings();
+        const merged = mergeBookings(local, apiBookings);
+        saveLocalBookings(merged);
+        if (!isMountedRef.current) return;
+        setBookings(merged);
+        if (apiBookings.length === 0) {
+          setEmailSuccess("No bookings for that email. Try another, or book from Discover.");
+        } else {
+          const added = merged.length - local.length;
+          setEmailSuccess(
+            added > 0
+              ? `Loaded ${added} booking${added === 1 ? "" : "s"}.`
+              : "All set. No new bookings to load."
+          );
+        }
+        if (successTimerRef.current) clearTimeout(successTimerRef.current);
+        successTimerRef.current = setTimeout(() => {
+          successTimerRef.current = null;
+          if (isMountedRef.current) setEmailSuccess(null);
+        }, 5000);
+      } catch (err) {
+        if (!isMountedRef.current) return;
+        const msg = err instanceof Error ? err.message : "";
+        setEmailError(
+          msg && !/failed to fetch|network/i.test(msg)
+            ? msg
+            : "Couldn't load your bookings. Check your connection and try again."
+        );
+      } finally {
+        if (isMountedRef.current) setEmailLoading(false);
+      }
+    })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const requestLookupToken = async (e: React.FormEvent) => {
     e.preventDefault();
     const email = emailLookup.trim();
     if (!email) return;
     setEmailError(null);
     setEmailSuccess(null);
+    setTokenSent(false);
     setEmailLoading(true);
     try {
-      const res = await fetch(`/api/bookings?email=${encodeURIComponent(email)}`);
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "request_lookup_token", email }),
+      });
       const data = await res.json();
       if (!isMountedRef.current) return;
       if (res.status === 429) {
         setEmailError("Too many requests. Wait a moment and try again.");
-        setEmailLoading(false);
         return;
       }
       if (!res.ok) {
         const msg =
           data.message ??
           (typeof data.error === "string" ? data.error : data.error?.message) ??
-          "Failed to load";
+          "Failed to send lookup link.";
         throw new Error(msg);
       }
-      const apiBookings = (data.bookings ?? []) as Booking[];
-      const local = loadLocalBookings();
-      const merged = mergeBookings(local, apiBookings);
-      saveLocalBookings(merged);
-      if (!isMountedRef.current) return;
-      setBookings(merged);
-      if (successTimerRef.current) clearTimeout(successTimerRef.current);
-      if (apiBookings.length === 0) {
-        setEmailSuccess("No bookings for that email. Try another, or book from Discover.");
-      } else {
-        const added = merged.length - local.length;
-        setEmailSuccess(added > 0 ? `Loaded ${added} booking${added === 1 ? "" : "s"}.` : "All set. No new bookings to load.");
-      }
-      successTimerRef.current = setTimeout(() => {
-        successTimerRef.current = null;
-        if (isMountedRef.current) setEmailSuccess(null);
-      }, 5000);
+      setTokenSent(true);
+      setEmailSuccess("Check your email for a secure lookup link. It expires in 15 minutes.");
     } catch (err) {
       if (!isMountedRef.current) return;
       const msg = err instanceof Error ? err.message : "";
       setEmailError(
-        msg && !/failed to fetch|network/i.test(msg) ? msg : "Couldn't load your bookings. Check your connection and try again."
+        msg && !/failed to fetch|network/i.test(msg)
+          ? msg
+          : "Couldn't send lookup link. Check your connection and try again."
       );
     } finally {
       if (isMountedRef.current) setEmailLoading(false);
@@ -197,13 +259,14 @@ export default function BookingsPage() {
                 onEmailChange={(v) => {
                   setEmailLookup(v);
                   setEmailError(null);
+                  setTokenSent(false);
                 }}
                 loading={emailLoading}
                 error={emailError}
                 success={emailSuccess}
-                onSubmit={fetchByEmail}
-                submitLabel="Load bookings"
-                onRetry={emailError ? () => setEmailError(null) : undefined}
+                onSubmit={requestLookupToken}
+                submitLabel={tokenSent ? "Resend link" : "Send lookup link"}
+                onRetry={emailError ? () => { setEmailError(null); setTokenSent(false); } : undefined}
               />
             </div>
           )}
@@ -255,14 +318,15 @@ export default function BookingsPage() {
                     onEmailChange={(v) => {
                       setEmailLookup(v);
                       setEmailError(null);
+                      setTokenSent(false);
                     }}
                     loading={emailLoading}
                     error={emailError}
                     success={emailSuccess}
-                    onSubmit={fetchByEmail}
-                    submitLabel="Load bookings"
+                    onSubmit={requestLookupToken}
+                    submitLabel={tokenSent ? "Resend link" : "Send lookup link"}
                     layout="stacked"
-                    onRetry={emailError ? () => setEmailError(null) : undefined}
+                    onRetry={emailError ? () => { setEmailError(null); setTokenSent(false); } : undefined}
                   />
                 </div>
               )}

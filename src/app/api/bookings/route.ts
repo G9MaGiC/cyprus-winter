@@ -78,18 +78,16 @@ export async function POST(req: Request) {
   }
 
   try {
+    const b = body as Record<string, unknown>;
     const parsed = createBookingSchema.safeParse({
-      type: (body as Record<string, unknown>).type ?? "winery_tasting",
-      providerId: (body as Record<string, unknown>).providerId,
-      date: (body as Record<string, unknown>).date,
-      partySize:
-        typeof (body as Record<string, unknown>).partySize === "number"
-          ? (body as Record<string, unknown>).partySize
-          : Number((body as Record<string, unknown>).partySize),
-      guestEmail: (body as Record<string, unknown>).guestEmail,
-      guestName: (body as Record<string, unknown>).guestName,
-      notes: (body as Record<string, unknown>).notes,
-      trailId: (body as Record<string, unknown>).trailId,
+      type: b.type ?? "winery_tasting",
+      providerId: b.providerId,
+      date: b.date,
+      partySize: typeof b.partySize === "number" ? b.partySize : Number(b.partySize),
+      guestEmail: b.guestEmail,
+      guestName: b.guestName,
+      notes: b.notes,
+      trailId: b.trailId,
     });
 
     if (!parsed.success) {
@@ -221,29 +219,16 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  let lookupLimitResult: RateLimitResult;
+  let limitResult: RateLimitResult;
   try {
-    lookupLimitResult = await rateLimit(req, 15, "bookings-lookup");
+    limitResult = await rateLimit(req, 15, "bookings-lookup");
   } catch {
     return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
   }
-  if (!lookupLimitResult.ok) {
+  if (!limitResult.ok) {
     return jsonRateLimitedFromResult(
       "Please wait before checking your bookings again.",
-      lookupLimitResult.resetAt
-    );
-  }
-
-  let verifyLimitResult: RateLimitResult;
-  try {
-    verifyLimitResult = await rateLimit(req, 25, "bookings-lookup-verify");
-  } catch {
-    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
-  }
-  if (!verifyLimitResult.ok) {
-    return jsonRateLimitedFromResult(
-      "Please wait before trying another booking lookup.",
-      verifyLimitResult.resetAt
+      limitResult.resetAt
     );
   }
 
@@ -266,10 +251,9 @@ export async function GET(req: Request) {
     }
 
     const bookings = await getBookingsByEmail(parsed.data);
-    const remaining = Math.min(lookupLimitResult.remaining, verifyLimitResult.remaining);
     return Response.json(
       { bookings },
-      { headers: rateLimitSuccessHeaders(remaining, 15, lookupLimitResult.bypassed || verifyLimitResult.bypassed) }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, 15, limitResult.bypassed) }
     );
   } catch (err) {
     console.error("Bookings GET error:", err);

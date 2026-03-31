@@ -44,4 +44,13 @@ describe("booking lookup token", () => {
 
     expect(result).toEqual({ ok: false, reason: "MISMATCH" });
   });
+
+  it("rejects a token with extra dot-separated segments", () => {
+    const token = createBookingLookupToken("guest@example.com");
+    const withExtra = `${token}.extrasegment`;
+
+    const result = verifyBookingLookupToken(withExtra, "guest@example.com");
+
+    expect(result).toEqual({ ok: false, reason: "INVALID" });
+  });
 });

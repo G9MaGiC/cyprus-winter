@@ -2,7 +2,9 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { POST, GET } from "./route";
 import { createBookingLookupToken } from "@/lib/booking-lookup-token";
 
-const sendBookingLookupTokenEmail = vi.fn().mockResolvedValue(true);
+const { sendBookingLookupTokenEmail } = vi.hoisted(() => ({
+  sendBookingLookupTokenEmail: vi.fn().mockResolvedValue(true),
+}));
 
 vi.mock("@/lib/email", () => ({
   sendBookingConfirmation: vi.fn().mockResolvedValue(false),

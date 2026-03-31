@@ -60,10 +60,11 @@ export function verifyBookingLookupToken(
   options?: { nowMs?: number }
 ): BookingLookupTokenResult {
   const secret = getTokenSecret();
-  const [payloadEncoded, signature] = token.split(".");
-  if (!payloadEncoded || !signature) {
+  const parts = token.split(".");
+  if (parts.length !== 2) {
     return { ok: false, reason: "INVALID" };
   }
+  const [payloadEncoded, signature] = parts;
 
   const expectedSig = signPayload(payloadEncoded, secret);
   const signatureBuffer = Buffer.from(signature, "utf8");
