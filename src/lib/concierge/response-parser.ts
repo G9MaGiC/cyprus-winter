@@ -26,11 +26,13 @@ export type ParsedResponse = {
 function sanitizeArray<T>(value: unknown, schema: z.ZodType<T>, limit: number): T[] | undefined {
   if (!Array.isArray(value)) return undefined;
 
-  const valid = value
-    .slice(0, limit)
-    .map((item) => schema.safeParse(item))
-    .filter((result): result is z.ZodSafeParseSuccess<T> => result.success)
-    .map((result) => result.data);
+  const valid: T[] = [];
+  for (const item of value.slice(0, limit)) {
+    const result = schema.safeParse(item);
+    if (result.success) {
+      valid.push(result.data);
+    }
+  }
 
   return valid.length > 0 ? valid : undefined;
 }
