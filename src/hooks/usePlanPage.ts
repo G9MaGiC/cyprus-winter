@@ -23,6 +23,7 @@ export function usePlanPage() {
     hydrated,
     copied,
     addToDay,
+    addUniqueToDay,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -42,11 +43,23 @@ export function usePlanPage() {
   const activeDaysCount = Object.keys(days).filter(
     (d) => (days[Number(d)] ?? []).length > 0
   ).length;
-  const displayDaysCount = tripLength ?? (hasContent ? MAX_DAYS : 1);
+  const highestUsedDay = Object.entries(days).reduce((max, [d, ids]) => {
+    const day = Number(d);
+    if (!Array.isArray(ids) || ids.length === 0) return max;
+    return Math.max(max, day);
+  }, 1);
+  const adaptiveDaysCount = Math.min(MAX_DAYS, Math.max(3, highestUsedDay + 1));
+  const displayDaysCount = tripLength ?? (hasContent ? adaptiveDaysCount : 1);
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDay, applyTemplate });
+  const { lastUrlAddCount } = usePlanUrlActions({
+    hydrated,
+    hasContent,
+    getPlace,
+    addUniqueToDay,
+    applyTemplate,
+  });
 
   const scrollBehavior = useCallback(
     () =>
@@ -166,6 +179,7 @@ export function usePlanPage() {
     copyShareLink,
     linkCopied,
     sharePath,
+    lastUrlAddCount,
     // Derived
     totalPlaces,
     activeDaysCount,

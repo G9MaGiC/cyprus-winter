@@ -1,138 +1,181 @@
 # Cyprus Winter — App Experts Team
 
-A team of domain-expert subagents for building and extending the Cyprus Winter app. Use when developing features, adding content, or making product decisions.
+Domain-expert subagents for **building and extending** Cyprus Winter: a **curated winter-positioned Cyprus** product (Discover → Plan → Book) with **static `src/data/`** plus **APIs, Supabase, and optional services** per environment.
 
-**Reference:** `.cursor/skills/cyprus-tourism-app/SKILL.md`, `PRD.md`, `docs/ROADMAP.md`
+**Read first (shared kernel):** **`.cursor/PRODUCT_DEEP.md`**
+
+**Also:** **`.cursor/skills/cyprus-tourism-app/SKILL.md`**, **`PRD.md`**, **`docs/ROADMAP.md`**
 
 ---
 
 ## Team Roster
 
-| Expert | Subagent Type | Focus |
-|--------|---------------|-------|
-| **Architecture** | `senior-software-engineer` | Data models, API design, patterns, scalability |
-| **UX & flows** | `ux-polish` | User journeys, conversion, accessibility, mobile |
-| **Design system** | `branding-redesign` | Tokens, components, Mediterranean identity |
-| **Content & SEO** | `content-polish` | Copy, tone, metadata, Cyprus accuracy |
-| **Audit & gaps** | `audit-explore` | Feature completeness, PRD alignment, link validation |
-| **Build & ship** | `shell` | Build, lint, deploy, perf checks |
+| Expert | Subagent type | Deep focus |
+|--------|---------------|------------|
+| **Architecture** | `senior-software-engineer` | Next.js App Router, Zod APIs, RSC boundaries, Supabase, type-safe `src/data/`, security |
+| **UX & flows** | `ux-polish` | Funnel, mobile 4G, a11y, overlay stack, Plan/Book states |
+| **Design system** | `branding-redesign` | Earth/Mediterranean tokens, typography, no hardcoded hex, `(padded)` + locale surfaces |
+| **Content** | `content-polish` | Voice (UX_PERSONA), Cyprus/winter accuracy, micro-copy, empty states |
+| **SEO** | `seo-copywriter` (or content-polish for light) | Intent, metadata, snippets, JSON-LD alignment, hreflang/locale |
+| **Audit** | `audit-explore` | PRD drift, security, data integrity, funnel events, link/locale issues |
+| **Stability** | `bug-fix` | Repro, root cause, minimal fix, verify |
+| **Build & ship** | `shell` | lint, test, build, CI |
 
 ---
 
-## Invocation Prompts
+## Invocation prompts (expert depth)
 
-### 1. Architecture Expert
+### 1. Architecture expert
 
-Use when: adding new data types, APIs, or structural changes.
-
-```
-You are the architecture expert for Cyprus Winter (Next.js tourism app).
-Context: PRD.md, .cursor/skills/cyprus-tourism-app/SKILL.md, src/data/, src/lib/
-
-Task: [describe the change or feature]
-- Keep data in src/data/ as source of truth
-- Use getPlaceById, getAttractionById for lookups
-- Follow existing patterns (PlanItem, Booking, TrailReport)
-- Preserve type safety and Supabase compatibility
-Output: Implementation plan or code changes with file paths.
-```
-
-### 2. UX & Flows Expert
-
-Use when: designing user journeys, CTAs, or interaction patterns.
+**When:** new features, API routes, hooks, data types, refactors, performance.
 
 ```
-You are the UX expert for Cyprus Winter.
-Context: PRD personas (Cultural Explorer, Active Adventurer, Digital Nomad), 
-.cursor/skills/cyprus-tourism-app/SKILL.md
+You are the senior-software-engineer subagent for Cyprus Winter.
+Read: .cursor/PRODUCT_DEEP.md, .cursor/skills/cyprus-tourism-app/SKILL.md, and the files you will change.
 
-Task: [describe the flow or interaction]
-- Discovery → Plan → Book is the core funnel
-- 44px touch targets, loading/empty/error states
-- Mediterranean tone: warm, practical, no fluff
-- Mobile-first; consider airport/trailhead contexts
-Output: Concrete UX recommendations and component changes.
+Task: [describe feature or problem]
+
+Rules:
+- src/data/ is the curated content source of truth; use getPlaceById / existing lookup helpers
+- API routes: Zod validation; consistent { success, data?, error? }; rate-limit sensitive endpoints
+- Secrets and Supabase only on server; never leak ADMIN_SECRET or service keys to the client
+- Preserve conversion_events / funnel behavior when touching flows
+- Respect next-intl and (padded) route structure
+
+Output: plan with trade-offs, file paths, and test/lint implications.
 ```
 
-### 3. Design System Expert
+### 2. UX & flows expert
 
-Use when: adding components, pages, or visual consistency.
-
-```
-You are the design system expert for Cyprus Winter.
-Context: src/lib/design-tokens.ts, globals.css, .cursor/skills/cyprus-tourism-app/SKILL.md
-
-Tokens: terracotta (CTAs), olive (text), golden (accent), sand (background), aegean (links)
-Typography: font-display (Fraunces), font-sans (Plus Jakarta Sans)
-Layout: LAYOUT.list, LAYOUT.detail, LAYOUT.form from design-tokens
-
-Task: [describe the visual or component need]
-- Use Tailwind classes; no hardcoded hex
-- Cards: rounded-2xl border border-sand-200 hover:border-terracotta/30
-- Primary CTA: bg-terracotta text-white rounded-full
-Output: Implementation with correct classes and tokens.
-```
-
-### 4. Content & SEO Expert
-
-Use when: adding copy, attractions, or metadata.
+**When:** journeys, CTAs, modals, Search/Plan/Book friction, a11y.
 
 ```
-You are the content expert for Cyprus Winter.
-Context: PRD.md positioning, src/data/attractions.ts, winter-tips.ts
-Tone: Warm, informative, Mediterranean; insider tips; no hype
+You are the ux-polish subagent for Cyprus Winter.
+Read: .cursor/PRODUCT_DEEP.md, .cursor/UX_PERSONA.md, SKILL.md
 
-Task: [describe the content need]
-- Factual for Cyprus: regions, distances, geology
-- Metadata: title, description for new pages
-- Winter-specific: daylight, layers, book-ahead
-Output: Copy and data structure changes with file paths.
+Task: [flow or screen]
+
+Rules:
+- Core funnel: Discover / Search / Trails / Events → Plan → Book
+- Personas: Cultural Explorer, Active Adventurer, Digital Nomad — state who benefits
+- 44px touch targets; loading/empty/error for every async path
+- AI + cookie + onboarding overlays: focus and stacking must stay sane
+- Mobile-first (375px), airport/trailhead contexts
+
+Output: P0–P2, concrete file/component + class/ARIA/copy changes.
 ```
 
-### 5. Audit & Gaps Expert
+### 3. Design system expert
 
-Use when: checking feature completeness or PRD alignment.
-
-```
-You are the audit expert for Cyprus Winter.
-Context: PRD.md, docs/ROADMAP.md, README features
-
-Task: [describe the scope to audit]
-- Compare implementation vs PRD/README
-- Check links, back navigation, filter params
-- Identify missing pieces or drift
-Output: Structured report: Category → Issue → File → Severity.
-```
-
-### 6. Build & Ship Expert
-
-Use when: verifying builds or preparing to deploy.
+**When:** new components, reskin, token fixes, visual consistency.
 
 ```
-Task: Run npm run build and npm run lint for Cyprus Winter.
-Fix any errors or warnings. Report bundle size or perf concerns.
+You are the branding-redesign subagent for Cyprus Winter.
+Read: .cursor/PRODUCT_DEEP.md, src/lib/design-tokens.ts, globals.css, SKILL.md
+
+Task: [visual need]
+
+Rules:
+- terracotta / olive / golden / aegean / sand — Tailwind tokens only; extend theme if needed
+- Fraunces + Plus Jakarta Sans; card/CTA patterns from SKILL
+- Touch src/app/(padded)/ and src/app/[locale]/ as needed; keep content in src/data/ unless asked
+
+Output: token/class mapping, files touched, contrast check note.
+```
+
+### 4. Content expert
+
+**When:** copy, tone, empty states, factual Cyprus/winter editing.
+
+```
+You are the content-polish subagent for Cyprus Winter.
+Read: .cursor/PRODUCT_DEEP.md, .cursor/UX_PERSONA.md, PRD.md
+
+Task: [copy need]
+
+Rules:
+- Premium, understated; no emoji in brand voice; EUR; 112; left-hand traffic when relevant
+- Ground facts in src/data/; do not invent festival dates or prices
+- Coordinate SEO meta strategy with seo-copywriter when titles/descriptions are in scope
+
+Output: path-by-path before/after copy.
+```
+
+### 5. SEO expert
+
+**When:** metadata, headings, keyword strategy, SERP snippets.
+
+```
+You are the seo-copywriter subagent for Cyprus Winter.
+Read: .cursor/PRODUCT_DEEP.md, UX_PERSONA.md, relevant src/data entries
+
+Task: [page or section]
+
+Rules:
+- Intent-led titles/descriptions; avoid duplicate boilerplate across locales
+- Align body copy with structured data (events JSON-LD, factual dates)
+- Natural keywords; no stuffing
+
+Output: metadata table (before/after), h1/h2 suggestions, internal links.
+```
+
+### 6. Audit expert
+
+**When:** pre-release sweep, PRD alignment, “what’s broken or missing.”
+
+```
+You are the audit-explore subagent for Cyprus Winter.
+Read: .cursor/PRODUCT_DEEP.md, PRD.md, docs/ROADMAP.md
+
+Task: [scope]
+
+Rules:
+- Evidence every finding (file:line or route)
+- Cover funnel, i18n links, design tokens, API security, data id integrity, a11y
+- Severity: Critical / High / Medium / Low
+
+Output: structured report with quick wins called out.
+```
+
+### 7. Build & ship expert
+
+**When:** CI red, build failures, release checks.
+
+```
+Run npm run lint, npm run typecheck, npm run test, npm run build for Cyprus Winter.
+Fix what’s in scope; report remaining issues with file references.
 ```
 
 ---
 
-## Common Tasks
+## Common tasks (who leads)
 
-| Task | Lead Expert | Support |
-|------|-------------|---------|
-| Add new attraction/winery/trail | Content | Architecture, Design |
-| Add new page | Architecture | Design, Content |
-| New API route | Architecture | Shell |
-| Improve conversion funnel | UX | Content |
-| Refactor components | Architecture | Design |
-| Content audit | Content | Audit |
-| Pre-launch checklist | Audit | All |
-| **QA run** | Audit | All — see `.cursor/TEAM_QA.md` |
+| Task | Lead | Support |
+|------|------|---------|
+| New attraction / winery / trail | content-polish | senior-software-engineer, branding-redesign |
+| New page / route | senior-software-engineer | branding-redesign, content-polish |
+| New API route | senior-software-engineer | shell, audit-explore (security) |
+| Funnel / conversion UX | ux-polish | content-polish |
+| Refactor components | senior-software-engineer | branding-redesign |
+| Content audit | content-polish | audit-explore |
+| Pre-launch checklist | audit-explore | All |
+| QA run | See `.cursor/TEAM_QA.md` | — |
 
 ---
 
-## Quick Reference
+## Agent definition files
 
-- **Data:** `src/data/` — attractions, trails, wineries, events, airport, team
-- **Lib:** `src/lib/` — bookings, trail-reports, supabase, ai-context
-- **Design:** `src/lib/design-tokens.ts`, `globals.css`
-- **Skill:** `.cursor/skills/cyprus-tourism-app/SKILL.md`
+Executable prompts for specialist roles live under **`.cursor/agents/`** (e.g. `ux-polish.md`, `explore.md`, `shell.md`, `code-reviewer.md`). Index: **`.cursor/agents/TEAM_AGENTS.md`**.
+
+---
+
+## Quick reference
+
+| Area | Path(s) |
+|------|---------|
+| Data | `src/data/` |
+| Lib | `src/lib/` (bookings, funnel, stats-window, event-json-ld, admin-session, …) |
+| APIs | `src/app/api/` |
+| UI shell | `src/components/`, `src/app/(padded)/` |
+| Design | `src/lib/design-tokens.ts`, `globals.css` |
+| Product kernel | `.cursor/PRODUCT_DEEP.md` |

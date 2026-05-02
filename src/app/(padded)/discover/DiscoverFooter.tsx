@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
+import { TrackOnClick } from "@/components/TrackOnClick";
 
 type DiscoverFooterProps = {
   onScrollToMap?: () => void;
@@ -20,9 +21,11 @@ export default function DiscoverFooter({ onScrollToMap }: DiscoverFooterProps) {
         Add places to your plan—or ask the AI. It knows the island in winter.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Link href="/plan" className={CTA.primaryCompact}>
-          Add places to your plan
-        </Link>
+        <TrackOnClick event="shop_click" properties={{ source: "discover_footer", action: "plan_cta" }}>
+          <Link href="/plan" className={CTA.primaryCompact}>
+            Add places to your plan
+          </Link>
+        </TrackOnClick>
         <button
           type="button"
           onClick={() =>

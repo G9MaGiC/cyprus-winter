@@ -18,11 +18,14 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
 
   useEffect(() => {
     previousActiveRef.current = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     const first = modalRef.current?.querySelector<HTMLElement>(
       'button:not([disabled]), [href], input, [tabindex]:not([tabindex="-1"])'
     );
     first?.focus();
     return () => {
+      document.body.style.overflow = previousOverflow;
       previousActiveRef.current?.focus?.();
     };
   }, []);
@@ -64,6 +67,9 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
           </button>
         </div>
         <div className="flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6 sm:pb-6">
+          <p className="text-sm text-olive/70 mb-4">
+            Pick one place to add now. You can add more right after.
+          </p>
           <PlacePicker activeDayItems={activeDayItems} onAdd={handleAdd} />
         </div>
       </div>

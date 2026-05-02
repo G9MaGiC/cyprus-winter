@@ -29,6 +29,7 @@
 # misc
 .DS_Store
 *.pem
+cyprus-winter-clone/
 
 # debug
 npm-debug.log*

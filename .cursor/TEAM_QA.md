@@ -2,7 +2,7 @@
 
 Best team for quality assurance and a repeatable process to improve with every QA cycle.
 
-**Reference:** `docs/QA_PLAN.md`, `.cursor/TEAM_REVIEW.md`, `.cursor/TEAM_VISUAL_QA.md`, `.cursor/TEAM_BUGFIX.md`, `.cursor/MCP_TASK_CONFIG.md`
+**Reference:** `docs/QA_PLAN.md`, `docs/UX_UI_RESPONSIVE_MATRIX.md`, `.cursor/TEAM_REVIEW.md`, `.cursor/TEAM_VISUAL_QA.md`, `.cursor/TEAM_BUGFIX.md`, `.cursor/MCP_TASK_CONFIG.md`
 
 ---
 

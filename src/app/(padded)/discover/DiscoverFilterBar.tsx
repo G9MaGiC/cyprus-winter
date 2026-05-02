@@ -34,7 +34,7 @@ export default function DiscoverFilterBar({
 
   return (
     <div
-      className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
+      className={`sticky ${LAYOUT.stickyTop} z-20 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
     >
       <div className={`${LAYOUT.list} mx-auto space-y-3`}>
         <div role="group" aria-labelledby="discover-filter-label" className="space-y-3">
@@ -85,7 +85,7 @@ export default function DiscoverFilterBar({
             Plan your trip
           </Link>
           {hasWineriesInView && (
-            <Link href="/bookings" className={CTA.secondaryCompact}>
+            <Link href="/discover?filter=winery" className={CTA.secondaryCompact}>
               Book tastings
             </Link>
           )}

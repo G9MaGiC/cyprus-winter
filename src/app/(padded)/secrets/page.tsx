@@ -1,27 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { secretsPageMeta } from "@/lib/locale-page-meta";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
-
-export const metadata: Metadata = {
-  title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
-  description:
-    "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips.",
-  alternates: { canonical: `${SITE_URL}/secrets` },
-  openGraph: {
-    title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
-    description: "Cyprus winter local secrets: quiet spots, kafenions, viewpoints. From people who live here.",
-    url: `${SITE_URL}/secrets`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter local secrets" }],
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  secretsPageMeta,
+  "/secrets",
+  routing.defaultLocale
+);
 
 const typeLabels: Record<string, string> = {
   viewpoint: "Viewpoint",

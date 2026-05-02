@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { discoverListPageMeta } from "@/lib/locale-page-meta";
 import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems } from "@/data/discover";
 import { buildDiscoverSections } from "@/lib/discover-sections";
@@ -11,20 +14,14 @@ import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
 import DiscoverMapSection from "./DiscoverMapSection";
 import DiscoverClient from "./DiscoverClient";
 
-export const metadata: Metadata = {
-  title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
-  description:
-    "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—Nissi, Paphos mosaics, Lefkara. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/discover` },
-  openGraph: {
-    title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
-    description: "Cyprus in winter: curated places that feel real. Beaches, villages, wineries, ancient sites.",
-    url: `${SITE_URL}/discover`,
-    type: "website",
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  discoverListPageMeta,
+  "/discover",
+  routing.defaultLocale
+);
 
 const sections = buildDiscoverSections(allDiscoverItems);
+
 const discoverItemListSchema = buildDiscoverItemListSchema(allDiscoverItems, SITE_URL);
 
 export default function DiscoverPage() {

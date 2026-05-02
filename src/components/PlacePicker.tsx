@@ -91,7 +91,9 @@ export default function PlacePicker({
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
         <p className="text-sm text-olive/60 col-span-full py-4" role="status">
-          {search.trim() ? "No matches for that. Try another search, or pick a different tab." : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
+          {search.trim()
+            ? "No matches yet. Try another search or switch category."
+            : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
         </p>
       ) : items.map((item) => {
         const isAdded = activeDayItems.includes(item.id);
@@ -99,7 +101,10 @@ export default function PlacePicker({
           <button
             key={item.id}
             type="button"
-            onClick={() => onAdd(item.id)}
+            onClick={() => {
+              if (!isAdded) onAdd(item.id);
+            }}
+            disabled={isAdded}
             aria-label={isAdded ? `${item.name} (added to plan)` : `Add ${item.name} to plan`}
             className={`text-left p-3 sm:p-4 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               isAdded
@@ -182,7 +187,7 @@ export default function PlacePicker({
       >
         {tab === "all" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Wineries, trails, villages, events. Pick what fits your day.</p>
+            <p className="text-xs text-olive/60 mb-2">Wineries, trails, villages, and events. Pick what fits this day.</p>
             {renderList(allFiltered, "places")}
           </>
         )}
@@ -196,7 +201,7 @@ export default function PlacePicker({
       >
         {tab === "winery" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Book ahead in winter. You&apos;ll often get the owner pouring.</p>
+            <p className="text-xs text-olive/60 mb-2">Book ahead in winter. You may get a quieter tasting and more host time.</p>
             {renderList(wineriesFiltered, "wineries")}
           </>
         )}
@@ -210,7 +215,7 @@ export default function PlacePicker({
       >
         {tab === "trail" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Start by 9am. Check conditions before you go.</p>
+            <p className="text-xs text-olive/60 mb-2">Start by 9am and check trail conditions before you set out.</p>
             {renderList(trailsFiltered, "trails")}
           </>
         )}
@@ -224,7 +229,7 @@ export default function PlacePicker({
       >
         {tab === "attraction" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Villages, ruins, monasteries. Weekday mornings are quietest. Winter light is softer. Plan for morning or late afternoon.</p>
+            <p className="text-xs text-olive/60 mb-2">Villages, ruins, monasteries. Weekday mornings are quieter and winter light is softer.</p>
             {renderList(attractionsFiltered, "attractions")}
           </>
         )}
@@ -238,7 +243,7 @@ export default function PlacePicker({
       >
         {tab === "restaurant" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Tavernas, fish spots, fine dining. Reserve ahead in winter for popular places.</p>
+            <p className="text-xs text-olive/60 mb-2">Tavernas, fish spots, and fine dining. Reserve ahead for popular places.</p>
             {renderList(restaurantsFiltered, "restaurants")}
           </>
         )}
@@ -252,7 +257,7 @@ export default function PlacePicker({
       >
         {tab === "event" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Epiphany, carnival, markets. Dates may shift year to year—check official sources.</p>
+            <p className="text-xs text-olive/60 mb-2">Epiphany, carnival, and markets. Dates can shift year to year, so check official sources.</p>
             {renderList(eventsFiltered, "events")}
           </>
         )}

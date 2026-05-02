@@ -12,14 +12,15 @@ import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
 import ScrollToTop from "@/components/ScrollToTop";
+import OnboardingModal from "@/components/OnboardingModal";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { LAYOUT } from "@/lib/design-tokens";
+import { alternateLanguageUrls } from "@/lib/locale-seo";
 
 const AIAssistantWithBoundary = dynamic(
   () => import("@/components/AIAssistantWithBoundary"),
   { loading: () => null }
 );
-const OnboardingModal = dynamic(() => import("@/components/OnboardingModal"), { loading: () => null });
-const CookieConsentBanner = dynamic(() => import("@/components/CookieConsentBanner"), { loading: () => null });
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
 
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Cyprus Winter",
   },
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: SITE_URL, languages: alternateLanguageUrls("") },
 };
 
 const webSiteSchema = {

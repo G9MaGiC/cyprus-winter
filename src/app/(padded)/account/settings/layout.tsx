@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { accountSettingsLayoutMeta } from "@/lib/locale-page-meta";
 
-export const metadata: Metadata = {
-  title: "Settings | My account | Cyprus Winter",
-  description: "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences.",
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  accountSettingsLayoutMeta,
+  "/account/settings",
+  routing.defaultLocale
+);
 
 export default function AccountSettingsLayout({
   children,

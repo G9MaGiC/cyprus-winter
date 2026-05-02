@@ -6,6 +6,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
@@ -13,30 +14,67 @@ import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
 import { CTA, CARD } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
+import { useTrapFocus } from "@/lib/useTrapFocus";
+import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
 
 const SCROLL_THRESHOLD_PX = 100;
 const DELAY_MS = 2000;
+function shouldShowOnboardingOnPath(pathname: string | null): boolean {
+  const resolvedPath = pathname ?? (typeof window !== "undefined" ? window.location.pathname : null);
+  if (!resolvedPath) return true;
+  const normalized = resolvedPath.toLowerCase().replace(/\/+$/, "") || "/";
+  if (normalized === "/" || /^\/[a-z]{2}$/.test(normalized)) return true;
+  const segments = normalized.split("/").filter(Boolean);
+  return segments.includes("discover");
+}
+
+function safeGetLocalStorage(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeSetLocalStorage(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Ignore storage write errors (private mode / quota / blocked storage).
+  }
+}
+
+function safeRemoveLocalStorage(key: string): void {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // Ignore storage delete errors.
+  }
+}
 
 export function useOnboarding() {
   const [mounted, setMounted] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
-    const raf = requestAnimationFrame(() => {
+    const timer = window.setTimeout(() => {
       setMounted(true);
-      setShowOnboarding(!localStorage.getItem(ONBOARDING_KEY));
-    });
-    return () => cancelAnimationFrame(raf);
+      setShowOnboarding(!safeGetLocalStorage(ONBOARDING_KEY));
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const dismiss = useCallback(() => {
-    localStorage.setItem(ONBOARDING_KEY, "true");
+    safeSetLocalStorage(ONBOARDING_KEY, "true");
+    if (typeof window !== "undefined") {
+      document.body.style.overflow = "";
+    }
     setShowOnboarding(false);
   }, []);
 
   const reset = useCallback(() => {
-    localStorage.removeItem(ONBOARDING_KEY);
-    localStorage.removeItem(INTENT_KEY);
+    safeRemoveLocalStorage(ONBOARDING_KEY);
+    safeRemoveLocalStorage(INTENT_KEY);
     setShowOnboarding(true);
   }, []);
 
@@ -51,7 +89,7 @@ function handleIntent(
   router: ReturnType<typeof useRouter>
 ) {
   if (value) {
-    localStorage.setItem(INTENT_KEY, value);
+    safeSetLocalStorage(INTENT_KEY, value);
     track(`onboarding_intent_${value}` as "onboarding_intent_planning" | "onboarding_intent_exploring" | "onboarding_intent_browsing");
   }
   dismiss();
@@ -61,57 +99,95 @@ function handleIntent(
 }
 
 export default function OnboardingModal() {
+  const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations("onboarding");
   const { showOnboarding, dismiss, isClient } = useOnboarding();
+  const showOnboardingOnPath = shouldShowOnboardingOnPath(pathname);
   const [visible, setVisible] = useState(false);
-  const [ready, setReady] = useState(false);
+  const trapFocus = useTrapFocus();
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const primaryActionRef = useRef<HTMLButtonElement>(null);
+  const previousActiveRef = useRef<HTMLElement | null>(null);
 
+  const hasTrackedStarted = useRef(false);
   useEffect(() => {
-    if (!isClient || !showOnboarding) return;
-    const timer = setTimeout(() => setReady(true), DELAY_MS);
+    if (!isClient || !showOnboarding || !showOnboardingOnPath) {
+      const timer = window.setTimeout(() => setVisible(false), 0);
+      return () => window.clearTimeout(timer);
+    }
 
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      shown = true;
+      document.body.style.overflow = "hidden";
+      setVisible(true);
+      if (!hasTrackedStarted.current) {
+        hasTrackedStarted.current = true;
+        track("onboarding_started");
+      }
+    };
+
+    const timer = setTimeout(show, DELAY_MS);
     const onScroll = () => {
-      if (window.scrollY >= SCROLL_THRESHOLD_PX) setReady(true);
+      if (window.scrollY >= SCROLL_THRESHOLD_PX) show();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [isClient, showOnboarding]);
-
-  const hasTrackedStarted = useRef(false);
-  useEffect(() => {
-    if (!ready || !showOnboarding) return;
-    const raf = requestAnimationFrame(() => {
-      setVisible(true);
-      if (!hasTrackedStarted.current) {
-        hasTrackedStarted.current = true;
-        track("onboarding_started");
-      }
-    });
-    return () => cancelAnimationFrame(raf);
-  }, [ready, showOnboarding]);
+  }, [isClient, showOnboarding, showOnboardingOnPath]);
 
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");
     dismiss();
   }, [dismiss]);
 
-  if (!isClient || !showOnboarding) return null;
+  useEffect(() => {
+    if (!visible) return;
+    previousActiveRef.current = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const raf = requestAnimationFrame(() => primaryActionRef.current?.focus());
+    return () => {
+      cancelAnimationFrame(raf);
+      document.body.style.overflow = previousOverflow === "hidden" ? "" : previousOverflow;
+      previousActiveRef.current?.focus?.();
+    };
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      e.preventDefault();
+      handleDismiss();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [visible, handleDismiss]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    dispatchBlockingOverlayDirty();
+  }, [visible]);
+
+  if (!isClient || !showOnboarding || !showOnboardingOnPath || !visible) return null;
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-[100] transition-all duration-300 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-      }`}
+      data-overlay-priority="blocking"
+      data-overlay-active="true"
+      className="fixed inset-x-0 max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:bottom-0 z-[100] transition-all duration-300 ease-out translate-y-0 opacity-100"
       role="dialog"
       aria-modal="true"
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-description"
+      onKeyDown={(e) => trapFocus(e, dialogRef.current, handleDismiss)}
     >
-      <div className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}>
+      <div ref={dialogRef} className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}>
         {/* Hero image strip with gradient overlay */}
         <div className="relative h-24 sm:h-28 w-full bg-sand-200">
           <Image
@@ -140,6 +216,7 @@ export default function OnboardingModal() {
 
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <button
+              ref={primaryActionRef}
               type="button"
               onClick={() => {
                 handleIntent("exploring", dismiss, router);
@@ -161,11 +238,11 @@ export default function OnboardingModal() {
           </div>
 
           <p className="text-sm text-olive/60 mb-2">{t("intentQuestion")}</p>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Intent options">
+          <div className="flex flex-col min-[360px]:flex-row min-[360px]:flex-wrap gap-2" role="group" aria-label="Intent options">
             <button
               type="button"
               onClick={() => handleIntent("planning", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+              className="inline-flex items-center justify-center min-[360px]:justify-start gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 min-[360px]:flex-1 min-[360px]:min-w-[150px]"
               aria-label="Planning my trip"
             >
               <Route className="h-4 w-4 text-aegean" aria-hidden />
@@ -174,7 +251,7 @@ export default function OnboardingModal() {
             <button
               type="button"
               onClick={() => handleIntent("exploring", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+              className="inline-flex items-center justify-center min-[360px]:justify-start gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 min-[360px]:flex-1 min-[360px]:min-w-[150px]"
               aria-label="Exploring places"
             >
               <MapPin className="h-4 w-4 text-aegean" aria-hidden />
@@ -183,7 +260,7 @@ export default function OnboardingModal() {
             <button
               type="button"
               onClick={() => handleIntent("browsing", dismiss, router)}
-              className="inline-flex items-center gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50"
+              className="inline-flex items-center justify-center min-[360px]:justify-start gap-2 min-h-[44px] px-3 rounded-lg text-sm font-medium text-olive/80 hover:text-terracotta border border-sand-200 hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 min-[360px]:flex-1 min-[360px]:min-w-[150px]"
               aria-label="Just browsing"
             >
               <Eye className="h-4 w-4 text-aegean" aria-hidden />

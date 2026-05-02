@@ -10,7 +10,9 @@ description: Build and extend the Cyprus tourism Next.js app with consistent arc
 - **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4 with custom theme
 - **Fonts**: Plus Jakarta Sans (body), Fraunces (headings)
-- **Data**: Static TypeScript in `src/data/` — no backend/DB
+- **Data**: **Curated content** in `src/data/` (TypeScript, git-versioned) is the product source of truth for places, trails, wineries, events, Plan templates, etc.
+- **Server & persistence**: **Next.js API routes** (`src/app/api/*`) with Zod; **Supabase** (bookings, `conversion_events`, trail reports) and **Resend** when env is configured; **Upstash** (or in-memory) rate limits. **Do not** assume “static only”—check the route and `src/lib/*` for the real data path.
+- **Deeper product context**: `.cursor/PRODUCT_DEEP.md`
 
 ## UX Persona
 

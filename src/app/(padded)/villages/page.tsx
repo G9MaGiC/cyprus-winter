@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { villagesPageMeta } from "@/lib/locale-page-meta";
 import { SITE_URL } from "@/lib/site-url";
 import { villages } from "@/data/attractions";
 import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
-
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
 
 const villagesItemListSchema = {
   "@context": "https://schema.org",
@@ -29,19 +30,11 @@ const villagesItemListSchema = {
   })),
 };
 
-export const metadata: Metadata = {
-  title: "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
-  description:
-    "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six. Free.",
-  alternates: { canonical: `${SITE_URL}/villages` },
-  openGraph: {
-    title: "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
-    description: "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland.",
-    url: `${SITE_URL}/villages`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Omodos village, Cyprus winter" }],
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  villagesPageMeta,
+  "/villages",
+  routing.defaultLocale
+);
 
 export default function VillagesPage() {
   return (

@@ -2,6 +2,8 @@
 
 A tourism app for Cyprus that meets visitors at the airport and keeps them engaged throughout their stay. Beautiful, useful, and habit-forming by design.
 
+**Context for contributors and agents:** a dense product and stack kernel (funnel, personas, trust, technical map) lives in [`.cursor/PRODUCT_DEEP.md`](.cursor/PRODUCT_DEEP.md).
+
 ---
 
 ## Product Idea (In Detail)
@@ -9,6 +11,8 @@ A tourism app for Cyprus that meets visitors at the airport and keeps them engag
 ### Vision
 
 *Make Cyprus travel planning effortless and inspiring—from touchdown to sunset.*
+
+Cyprus Winter is **winter-differentiated** (Nov–Mar positioning in the product spec): mild days, Troodos trails, villages and wine—always grounded in curated data, not generic summer-beach noise. See [`.cursor/PRODUCT_DEEP.md`](.cursor/PRODUCT_DEEP.md) for the full funnel and stack picture.
 
 Cyprus Winter (Cyprus) is a **seasonal, destination-focused travel guide** that:
 - Catches travellers at their highest-intent moment: **arrival**

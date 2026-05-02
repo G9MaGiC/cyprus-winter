@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
 import PageHeader from "@/components/PageHeader";
@@ -29,7 +29,9 @@ function StatusBadge({ status }: { status: Booking["status"] }) {
 export default function BookingsPage() {
   const isMountedRef = useRef(true);
   const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intentHandledRef = useRef(false);
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [newBookingIntent, setNewBookingIntent] = useState(false);
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -53,6 +55,25 @@ export default function BookingsPage() {
   useEffect(() => {
     refreshBookings();
   }, [refreshBookings]);
+
+  /** `/bookings?intent=new` — from Plan winery bar; scroll to booking paths and strip query without Suspense. */
+  useEffect(() => {
+    if (intentHandledRef.current || typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("intent") !== "new") return;
+    intentHandledRef.current = true;
+    setNewBookingIntent(true);
+    const clean = new URL(window.location.href);
+    clean.searchParams.delete("intent");
+    window.history.replaceState(null, "", `${clean.pathname}${clean.search}${clean.hash}`);
+  }, []);
+
+  useEffect(() => {
+    if (!newBookingIntent) return;
+    requestAnimationFrame(() => {
+      document.getElementById("bookings-new-intent")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [newBookingIntent]);
 
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
@@ -149,6 +170,39 @@ export default function BookingsPage() {
           backLabel="Home"
           breadcrumbItems={[{ label: "Home", href: "/" }, { label: "My bookings", href: "/bookings", isCurrent: true }]}
         />
+
+        <p className="text-sm text-olive/75 leading-relaxed mb-8 max-w-2xl">
+          Bookings you make on this device show up here automatically. To pull in tastings we saved when you booked by email,
+          enter that exact address below—same one you used on the form.
+        </p>
+
+        {newBookingIntent && (
+          <div
+            id="bookings-new-intent"
+            className="mb-8 p-4 sm:p-5 rounded-xl border border-terracotta/25 bg-terracotta/5"
+            role="status"
+            aria-live="polite"
+          >
+            <p className="font-medium text-olive mb-1">Start a new booking</p>
+            <p className="text-sm text-olive/70 mb-4">
+              Choose a winery or guided experience, then complete the booking form. You can also load existing bookings by email below.
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+              <Link
+                href="/discover?filter=winery"
+                className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg text-center ${CTA.primaryCompact}`}
+              >
+                Browse wineries
+              </Link>
+              <Link
+                href="/book/guide"
+                className={`inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 rounded-lg text-center ${CTA.chipTertiary}`}
+              >
+                Book a guided hike
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Stats bar */}
         {!loading && bookings.length > 0 && (
@@ -345,7 +399,7 @@ export default function BookingsPage() {
                                       </span>
                                     )}
                                   </div>
-                                  <span className="font-display font-semibold text-olive block truncate">
+                                  <span className="font-display font-semibold text-olive block line-clamp-2 break-words">
                                     {b.providerName}
                                   </span>
                                   <p className="text-sm text-olive/70 mt-1 break-words">
@@ -404,7 +458,7 @@ export default function BookingsPage() {
                           <div className="flex flex-wrap items-center gap-2 mb-2">
                             <StatusBadge status={b.status} />
                           </div>
-                          <span className="font-display font-semibold text-olive/80 block truncate">
+                          <span className="font-display font-semibold text-olive/80 block line-clamp-2 break-words">
                             {b.providerName}
                           </span>
                           <p className="text-sm text-olive/60 mt-1 break-words">

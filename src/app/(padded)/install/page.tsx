@@ -3,12 +3,15 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { installPageMeta } from "@/lib/locale-page-meta";
 
-export const metadata: Metadata = {
-  title: "Install on SiteGround | Cyprus Winter",
-  description: "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup.",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  installPageMeta,
+  "/install",
+  routing.defaultLocale
+);
 
 const steps = [
   {

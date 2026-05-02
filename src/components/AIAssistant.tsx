@@ -12,6 +12,7 @@ import { getPlaceById } from "@/data";
 import { isSafeUrl } from "@/lib/safe-url";
 import { OPEN_AI_EVENT } from "./AIAssistantTrigger";
 import { LAYOUT } from "@/lib/design-tokens";
+import { BLOCKING_OVERLAY_DIRTY_EVENT } from "@/lib/blocking-overlay-events";
 
 /** Horizontal padding matching LAYOUT.safeAreaX for panel sections */
 const PANEL_PX = LAYOUT.safeAreaX;
@@ -107,8 +108,15 @@ function getSuggestions(pathname: string | null): string[] {
   return SUGGESTIONS_HOME;
 }
 
+function normalizeChatPath(pathname: string | null): string | null {
+  if (!pathname) return null;
+  const stripped = pathname.replace(/^\/[a-z]{2}(?=\/|$)/i, "");
+  return stripped || "/";
+}
+
 export default function AIAssistant() {
   const pathname = usePathname();
+  const normalizedPathname = normalizeChatPath(pathname);
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(() => {
     if (typeof window !== "undefined") {
@@ -119,6 +127,11 @@ export default function AIAssistant() {
   });
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showSlowHint, setShowSlowHint] = useState(false);
+  const [isOnline, setIsOnline] = useState<boolean>(() =>
+    typeof navigator === "undefined" ? true : navigator.onLine
+  );
+  const [blockedByOverlay, setBlockedByOverlay] = useState(false);
   const [listening, setListening] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState("");
   const [voiceError, setVoiceError] = useState<string | null>(null);
@@ -131,12 +144,29 @@ export default function AIAssistant() {
   const synthRef = useRef<SpeechSynthesis | null>(null);
   const isMountedRef = useRef(true);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const requestTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const slowHintTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const previousBodyOverflowRef = useRef<string>("");
 
   useEffect(() => {
     isMountedRef.current = true;
     return () => {
       isMountedRef.current = false;
+      if (requestTimeoutRef.current) clearTimeout(requestTimeoutRef.current);
+      if (slowHintTimeoutRef.current) clearTimeout(slowHintTimeoutRef.current);
       abortControllerRef.current?.abort();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onOnline = () => setIsOnline(true);
+    const onOffline = () => setIsOnline(false);
+    window.addEventListener("online", onOnline);
+    window.addEventListener("offline", onOffline);
+    return () => {
+      window.removeEventListener("online", onOnline);
+      window.removeEventListener("offline", onOffline);
     };
   }, []);
 
@@ -158,21 +188,66 @@ export default function AIAssistant() {
   }, [messages]);
 
   useEffect(() => {
-    const handler = () => setOpen(true);
+    const handler = () => {
+      if (blockedByOverlay) return;
+      setOpen(true);
+    };
     window.addEventListener(OPEN_AI_EVENT, handler);
     return () => window.removeEventListener(OPEN_AI_EVENT, handler);
+  }, [blockedByOverlay]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const hasBlockingOverlay = () =>
+      Array.from(document.querySelectorAll<HTMLElement>('[data-overlay-priority="blocking"][data-overlay-active="true"]'))
+        .some((el) => el.getClientRects().length > 0);
+
+    let raf = 0;
+    const updateBlockedState = () => {
+      setBlockedByOverlay(hasBlockingOverlay());
+    };
+    const scheduleUpdate = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        updateBlockedState();
+      });
+    };
+
+    updateBlockedState();
+
+    const onCookieConsent = () => scheduleUpdate();
+    window.addEventListener("cookie-consent-change", onCookieConsent);
+
+    const onOverlayDirty = () => scheduleUpdate();
+    window.addEventListener(BLOCKING_OVERLAY_DIRTY_EVENT, onOverlayDirty);
+
+    const observer = new MutationObserver(scheduleUpdate);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-overlay-priority", "data-overlay-active"],
+    });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("cookie-consent-change", onCookieConsent);
+      window.removeEventListener(BLOCKING_OVERLAY_DIRTY_EVENT, onOverlayDirty);
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
     if (open) {
+      previousBodyOverflowRef.current = document.body.style.overflow;
       document.body.style.overflow = "hidden";
       const t = setTimeout(() => inputRef.current?.focus(), 100);
       return () => {
         clearTimeout(t);
-        document.body.style.overflow = "";
+        document.body.style.overflow = previousBodyOverflowRef.current;
       };
     } else {
-      document.body.style.overflow = "";
       triggerButtonRef.current?.focus();
     }
   }, [open]);
@@ -223,10 +298,30 @@ export default function AIAssistant() {
   const sendMessage = async (text: string, isRetry = false) => {
     const trimmed = text.trim();
     if (!trimmed || loading) return;
+    if (!isOnline) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: "You're offline right now. Reconnect and try again, or keep browsing Discover and Trails.",
+          isRetryable: true,
+        },
+      ]);
+      return;
+    }
 
     abortControllerRef.current?.abort();
     const ac = new AbortController();
     abortControllerRef.current = ac;
+    if (requestTimeoutRef.current) clearTimeout(requestTimeoutRef.current);
+    requestTimeoutRef.current = setTimeout(() => {
+      if (!ac.signal.aborted) ac.abort("timeout");
+    }, 45000);
+    if (slowHintTimeoutRef.current) clearTimeout(slowHintTimeoutRef.current);
+    setShowSlowHint(false);
+    slowHintTimeoutRef.current = setTimeout(() => {
+      if (isMountedRef.current) setShowSlowHint(true);
+    }, 6000);
 
     const messagesToSend = isRetry
       ? messages.slice(0, -1)
@@ -255,7 +350,7 @@ export default function AIAssistant() {
         body: JSON.stringify({
           messages: messagesToSend,
           context: {
-            path: pathname ?? undefined,
+            path: normalizedPathname ?? undefined,
             lastPlace: lastPlace ?? undefined,
             itinerary: getItineraryForChat(),
           },
@@ -382,7 +477,22 @@ export default function AIAssistant() {
       }
     } catch (err) {
       if (!isMountedRef.current) return;
-      if (err instanceof Error && err.name === "AbortError") return;
+      if (err instanceof Error && err.name === "AbortError") {
+        const timeoutAborted = ac.signal.reason === "timeout";
+        if (timeoutAborted) {
+          setMessages((m) => {
+            const last = m[m.length - 1];
+            const timeoutMsg =
+              "This is taking longer than expected. Check your connection and try again.";
+            if (last?.role === "assistant" && !last.content.trim()) {
+              return [...m.slice(0, -1), { role: "assistant", content: timeoutMsg, isRetryable: true }];
+            }
+            return [...m, { role: "assistant", content: timeoutMsg, isRetryable: true }];
+          });
+          return;
+        }
+        return;
+      }
 
       const msg = err instanceof Error ? err.message : "";
       const is503 = msg === "AI_503";
@@ -407,13 +517,30 @@ export default function AIAssistant() {
             { ...last, content: last.content + "\n\n" + errorContent, isRetryable: isRateLimit || !is503, is503 },
           ];
         }
+        if (last?.role === "assistant" && !last.content.trim()) {
+          return [
+            ...m.slice(0, -1),
+            { role: "assistant", content: errorContent, isRetryable: isRateLimit || !is503, is503 },
+          ];
+        }
         return [
           ...m,
-          { role: "assistant", content: errorContent, isRetryable: isRateLimit, is503 },
+          { role: "assistant", content: errorContent, isRetryable: isRateLimit || !is503, is503 },
         ];
       });
     } finally {
-      if (isMountedRef.current) setLoading(false);
+      if (requestTimeoutRef.current) {
+        clearTimeout(requestTimeoutRef.current);
+        requestTimeoutRef.current = null;
+      }
+      if (slowHintTimeoutRef.current) {
+        clearTimeout(slowHintTimeoutRef.current);
+        slowHintTimeoutRef.current = null;
+      }
+      if (isMountedRef.current) {
+        setLoading(false);
+        setShowSlowHint(false);
+      }
     }
   };
 
@@ -487,6 +614,20 @@ export default function AIAssistant() {
     setInterimTranscript("");
   };
 
+  const cancelRequest = () => {
+    abortControllerRef.current?.abort("cancelled");
+    if (requestTimeoutRef.current) {
+      clearTimeout(requestTimeoutRef.current);
+      requestTimeoutRef.current = null;
+    }
+    if (slowHintTimeoutRef.current) {
+      clearTimeout(slowHintTimeoutRef.current);
+      slowHintTimeoutRef.current = null;
+    }
+    setShowSlowHint(false);
+    setLoading(false);
+  };
+
   const speakReply = (text: string) => {
     if (typeof window === "undefined" || !window.speechSynthesis) return;
 
@@ -517,10 +658,18 @@ export default function AIAssistant() {
       <button
         ref={triggerButtonRef}
         type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Ask your guide"
+        onClick={() => {
+          if (blockedByOverlay) return;
+          setOpen(true);
+        }}
+        disabled={blockedByOverlay}
+        aria-label={blockedByOverlay ? "Finish onboarding or cookie choices first" : "Ask your guide"}
         aria-expanded={open}
-        className={`fixed right-[max(1.5rem,env(safe-area-inset-right))] sm:right-6 ${LAYOUT.fixedBottomClearance} sm:bottom-6 z-40 min-h-[48px] min-w-[48px] w-14 h-14 rounded-full bg-terracotta text-white shadow-lg hover:bg-terracotta-muted hover:shadow-xl active:scale-[0.97] transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ai-chat-trigger-pulse`}
+        className={`fixed right-[max(1.5rem,env(safe-area-inset-right))] sm:right-6 ${LAYOUT.fixedBottomClearance} sm:bottom-6 z-40 min-h-[48px] min-w-[48px] w-14 h-14 rounded-full text-white shadow-lg transition-all duration-200 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ${
+          blockedByOverlay
+            ? "bg-terracotta/55 cursor-not-allowed opacity-80"
+            : "bg-terracotta hover:bg-terracotta-muted hover:shadow-xl active:scale-[0.97] ai-chat-trigger-pulse"
+        }`}
       >
         <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -677,8 +826,8 @@ export default function AIAssistant() {
           {messages.length <= 2 && !listening && (
             <div className={`shrink-0 ${PANEL_PX} pb-3`}>
               <p className="text-xs text-olive-muted mb-2 prose-label">Try one, or ask your own</p>
-              <div className="flex gap-3 overflow-x-auto pb-1 -mx-1 scrollbar-none snap-x snap-mandatory overscroll-x-contain scroll-touch [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-                {getSuggestions(pathname).slice(0, 6).map((s) => (
+              <div className="flex gap-3 overflow-x-auto pb-1 px-1 -mx-1 scrollbar-none snap-x snap-mandatory overscroll-x-contain scroll-touch [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)] sm:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+                {getSuggestions(normalizedPathname).slice(0, 6).map((s) => (
                   <button
                     key={s}
                     type="button"
@@ -705,6 +854,18 @@ export default function AIAssistant() {
               >
                 Dismiss
               </button>
+            </div>
+          )}
+
+          {!isOnline && (
+            <div className={`shrink-0 ${PANEL_PX} py-2.5 bg-sand-100 border-t border-sand-200/80`} role="status" aria-live="polite">
+              <p className="text-sm text-olive/80">Offline. Reconnect to chat, or keep browsing pages.</p>
+            </div>
+          )}
+
+          {loading && showSlowHint && (
+            <div className={`shrink-0 ${PANEL_PX} py-2.5 bg-sand-100 border-t border-sand-200/80`} role="status" aria-live="polite">
+              <p className="text-sm text-olive/80">Still working on it… you can wait or stop and retry.</p>
             </div>
           )}
 
@@ -744,12 +905,17 @@ export default function AIAssistant() {
               </button>
             </div>
             <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              className="shrink-0 min-h-[44px] px-5 py-2.5 rounded-xl bg-terracotta text-white font-medium text-sm hover:bg-terracotta-muted active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation"
-              aria-label="Send message"
+              type={loading ? "button" : "submit"}
+              onClick={loading ? cancelRequest : undefined}
+              disabled={!loading && (!input.trim() || !isOnline)}
+              className={`shrink-0 min-h-[44px] px-5 py-2.5 rounded-xl font-medium text-sm active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation ${
+                loading
+                  ? "bg-sand-200 text-olive hover:bg-sand-300 focus-visible:ring-olive/40"
+                  : "bg-terracotta text-white hover:bg-terracotta-muted focus-visible:ring-terracotta"
+              }`}
+              aria-label={loading ? "Stop generating response" : "Send message"}
             >
-              Send
+              {loading ? "Stop" : "Send"}
             </button>
           </form>
         </div>

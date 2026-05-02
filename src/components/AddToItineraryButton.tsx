@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useItinerary } from "@/hooks/useItinerary";
+import { track } from "@/lib/analytics";
+import { getPlaceById } from "@/data";
 
 type AddToItineraryButtonProps = {
   placeId: string;
@@ -21,11 +23,18 @@ export default function AddToItineraryButton({
   const { days, hydrated } = useItinerary();
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(placeId);
+  const placeName = getPlaceById(placeId)?.name ?? "This place";
 
   if (!hydrated) {
     return (
       <Link
         href={`/plan?add=${placeId}`}
+        onClick={() =>
+          track("plan_add", {
+            placeId,
+            source: "add_to_itinerary_button",
+          })
+        }
         className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
       >
         {label} →
@@ -37,7 +46,7 @@ export default function AddToItineraryButton({
     return (
       <span
         className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
-        aria-label={`${placeId} is in your itinerary`}
+        aria-label={`${placeName} is in your plan`}
       >
         <span aria-hidden>✓</span> In your plan
         <Link
@@ -54,6 +63,12 @@ export default function AddToItineraryButton({
   return (
     <Link
       href={`/plan?add=${placeId}`}
+      onClick={() =>
+        track("plan_add", {
+          placeId,
+          source: "add_to_itinerary_button",
+        })
+      }
       className={`inline-flex items-center justify-center min-h-[44px] gap-2 px-5 py-3 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted transition-colors w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className}`}
     >
       {label} →

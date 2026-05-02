@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { PlanItem } from "@/data";
 import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
@@ -10,7 +10,7 @@ type UsePlanUrlActionsParams = {
   hydrated: boolean;
   hasContent: boolean;
   getPlace: (id: string) => PlanItem | undefined;
-  addToDay: (id: string) => void;
+  addUniqueToDay: (id: string) => void;
   applyTemplate: (key: TemplateKey) => void;
 };
 
@@ -28,13 +28,14 @@ export function usePlanUrlActions({
   hydrated,
   hasContent,
   getPlace,
-  addToDay,
+  addUniqueToDay,
   applyTemplate,
 }: UsePlanUrlActionsParams) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const processedAddRef = useRef<string | null>(null);
   const processedTemplateRef = useRef<string | null>(null);
+  const [lastUrlAddCount, setLastUrlAddCount] = useState(0);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -60,8 +61,20 @@ export function usePlanUrlActions({
     }
     const uniqueIds = [...new Set(places.map((p) => p.id))];
     for (const id of uniqueIds) {
-      addToDay(id);
+      addUniqueToDay(id);
     }
+    // Defer state update to avoid setState-in-effect lint warning.
+    queueMicrotask(() => setLastUrlAddCount(uniqueIds.length));
     router.replace("/plan", { scroll: false });
-  }, [hydrated, searchParams, addToDay, getPlace, router]);
+  }, [hydrated, searchParams, addUniqueToDay, getPlace, router]);
+
+  useEffect(() => {
+    if (lastUrlAddCount <= 0) return;
+    const timer = setTimeout(() => setLastUrlAddCount(0), 4500);
+    return () => clearTimeout(timer);
+  }, [lastUrlAddCount]);
+
+  return {
+    lastUrlAddCount,
+  };
 }

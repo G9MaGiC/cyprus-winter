@@ -1,27 +1,19 @@
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { airportPageMeta } from "@/lib/locale-page-meta";
 import { airports } from "@/data/airport";
-import { SITE_URL } from "@/lib/site-url";
 import { winterTipsPractical } from "@/data/winter-tips";
 import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import Link from "next/link";
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
-
-export const metadata: Metadata = {
-  title: "Just Landed? | Cyprus Winter Airport Guide",
-  description:
-    "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here.",
-  alternates: { canonical: `${SITE_URL}/airport` },
-  openGraph: {
-    title: "Just Landed? | Cyprus Winter Airport Guide",
-    description: "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers.",
-    url: `${SITE_URL}/airport`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter — Larnaca and Paphos airport guide" }],
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  airportPageMeta,
+  "/airport",
+  routing.defaultLocale
+);
 
 const CITY_GREEK: Record<string, string> = {
   Larnaca: "Λάρνακα",

@@ -78,6 +78,11 @@ export default function GuideBookingForm({
         throw new Error(msg);
       }
 
+      if (loadLocalBookings().length === 0) {
+        track("first_booking", { guideId: guide.id });
+      }
+      addBookingToLocal(data.booking);
+
       setDone(true);
       setStorageMode(data.storage ?? null);
       form.reset();
@@ -87,11 +92,6 @@ export default function GuideBookingForm({
         trailId: trailId || undefined,
         partySize: Number(partySize),
       });
-      if (loadLocalBookings().length === 0) {
-        track("first_booking", { guideId: guide.id });
-      }
-
-      addBookingToLocal(data.booking);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);

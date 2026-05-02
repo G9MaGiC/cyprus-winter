@@ -22,7 +22,7 @@ function EmptyDayState({
         Day {activeDay} is empty
       </p>
       <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
-        Add your first place below, or pick a template further down to fill the day in one go.
+        Add a place to get started, or use a template below to fill this day quickly.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
         <button
@@ -39,7 +39,7 @@ function EmptyDayState({
           className={`${CTA.secondaryCompact} hover:border-terracotta/20`}
           aria-label="Scroll to templates section"
         >
-          See templates
+          Use a template
         </button>
       </div>
     </div>
@@ -63,11 +63,11 @@ function DayAddSection({
     <div
       id="plan-inline-add"
       role="region"
-      aria-label={`Add a stop to Day ${activeDay}`}
+      aria-label={`Add a place to Day ${activeDay}`}
       className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
     >
       <p className="text-sm font-medium text-olive/80 mb-4">
-        {activeItems.length > 0 ? "Add another stop to Day " + activeDay : "Add a stop to Day " + activeDay}
+        {activeItems.length > 0 ? "Add another place to Day " + activeDay : "Add a place to Day " + activeDay}
       </p>
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
         {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
@@ -137,7 +137,7 @@ export default function DayContentPanel({
   const afternoonIds = useBlocks ? activeItems.slice(mid) : [];
 
   return (
-    <section aria-label="Your itinerary" className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
+    <section aria-label="Your plan" className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
         <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} shadow-[0_2px_12px_rgba(37,39,48,0.05)]`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/40`}>

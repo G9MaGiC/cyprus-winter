@@ -112,7 +112,7 @@ export default function QuickStartSection({
         </h2>
         <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
           {hasContent
-            ? "Use a template to add or replace stops. Or tap a place below."
+            ? "Use a template to add or replace places. Or add one from the quick picks below."
             : "Pre-built routes from coast to mountains. One click fills Day 1."}
         </p>
         {!hasContent && tripLength == null && (

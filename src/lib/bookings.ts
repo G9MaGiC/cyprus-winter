@@ -106,23 +106,43 @@ function rowToBooking(row: Record<string, unknown>): Booking {
 }
 
 export async function getBookingsCountThisMonth(): Promise<number> {
+  return getBookingsCountSince(getMonthStart());
+}
+
+function getMonthStart(): Date {
+  const start = new Date();
+  start.setDate(1);
+  start.setHours(0, 0, 0, 0);
+  return start;
+}
+
+export async function getBookingsCountSince(start: Date): Promise<number> {
+  return getBookingsCountInRange(start);
+}
+
+export async function getBookingsCountInRange(start: Date, end?: Date): Promise<number> {
   const supabase = getSupabase();
+  const startIso = start.toISOString();
+  const endIso = end?.toISOString();
   if (supabase) {
-    const start = new Date();
-    start.setDate(1);
-    start.setHours(0, 0, 0, 0);
-    const startIso = start.toISOString();
-    const { count, error } = await supabase
+    let query = supabase
       .from("bookings")
       .select("*", { count: "exact", head: true })
       .gte("created_at", startIso);
+    if (endIso) query = query.lt("created_at", endIso);
+    const { count, error } = await query;
     if (error) return 0;
     return count ?? 0;
   }
-  const start = new Date();
-  start.setDate(1);
-  const monthStart = start.getTime();
-  return memoryStore.filter((b) => new Date(b.createdAt).getTime() >= monthStart).length;
+
+  const windowStart = start.getTime();
+  const windowEnd = end?.getTime();
+  return memoryStore.filter((b) => {
+    const created = new Date(b.createdAt).getTime();
+    if (created < windowStart) return false;
+    if (typeof windowEnd === "number" && created >= windowEnd) return false;
+    return true;
+  }).length;
 }
 
 export const useDb = hasSupabase;

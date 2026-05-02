@@ -25,6 +25,8 @@ const eslintConfig = defineConfig([
     // Playwright output (generated artifacts)
     "playwright-report/**",
     "test-results/**",
+    // Local nested clone used for experiments; not part of this app.
+    "cyprus-winter-clone/**",
   ]),
 ]);
 

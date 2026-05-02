@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { search, type SearchResult } from "@/lib/search";
+import { track } from "@/lib/analytics";
 
 type SearchBarProps = {
   placeholder?: string;
@@ -12,6 +13,8 @@ type SearchBarProps = {
   initialQuery?: string;
   /** When true, syncs query to URL /search?q= for shareability */
   syncUrl?: boolean;
+  /** When false, suppresses inline empty overlay (use page-level empty state instead). */
+  showNoResultsOverlay?: boolean;
 };
 
 export default function SearchBar({
@@ -20,9 +23,11 @@ export default function SearchBar({
   className = "",
   initialQuery = "",
   syncUrl = false,
+  showNoResultsOverlay = true,
 }: SearchBarProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const rootRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState(initialQuery);
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -53,8 +58,22 @@ export default function SearchBar({
     return () => clearTimeout(t);
   }, [query, syncUrl, router, pathname]);
 
+  useEffect(() => {
+    const onPointerDown = (e: PointerEvent) => {
+      const target = e.target as Node | null;
+      if (target && rootRef.current?.contains(target)) return;
+      setFocused(false);
+      setActiveIndex(-1);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
+
   const showDropdown = focused && results.length > 0;
   const hasResults = results.length > 0;
+  const showInlineNoResults = showNoResultsOverlay && query.length >= 2 && !hasResults;
+  const activeDescendantId =
+    showDropdown && activeIndex >= 0 ? `search-option-${activeIndex}` : undefined;
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!showDropdown) return;
@@ -66,7 +85,8 @@ export default function SearchBar({
       setActiveIndex((i) => (i > 0 ? i - 1 : -1));
     } else if (e.key === "Enter" && activeIndex >= 0 && results[activeIndex]) {
       e.preventDefault();
-      window.location.href = results[activeIndex].href;
+      trackSearchClick(results[activeIndex], "dropdown_enter");
+      router.push(results[activeIndex].href);
     } else if (e.key === "Escape") {
       setFocused(false);
       setActiveIndex(-1);
@@ -85,8 +105,18 @@ export default function SearchBar({
     return "Event";
   };
 
+  const trackSearchClick = (result: SearchResult, source: "dropdown_open" | "dropdown_enter" | "dropdown_add") => {
+    const event = source === "dropdown_add" ? "plan_add" : "shop_click";
+    track(event, {
+      source,
+      kind: result.kind,
+      placeId: result.item.id,
+      queryLength: query.trim().length,
+    });
+  };
+
   return (
-    <div className={`relative w-full ${className}`}>
+    <div ref={rootRef} className={`relative w-full ${className}`}>
       <div className="relative">
         <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-olive/50 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -97,17 +127,16 @@ export default function SearchBar({
           value={query}
           onChange={(e) => { setQuery(e.target.value); setActiveIndex(-1); }}
           onFocus={() => setFocused(true)}
-          onBlur={() => setTimeout(() => setFocused(false), 150)}
           onKeyDown={handleKeyDown}
           autoFocus={autoFocus}
           autoComplete="off"
           placeholder={placeholder}
-          aria-label="Search places, trails, and events"
           role="combobox"
           aria-autocomplete="list"
           aria-expanded={showDropdown}
           aria-controls="search-results"
-          aria-activedescendant={showDropdown && activeIndex >= 0 ? `search-option-${activeIndex}` : undefined}
+          aria-activedescendant={activeDescendantId}
+          aria-label="Search places, trails, and events"
           id="search-input"
           className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
         />
@@ -118,37 +147,42 @@ export default function SearchBar({
           id="search-results"
           ref={listRef}
           role="listbox"
-          aria-labelledby="search-input"
+          aria-label="Search results"
           className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-50"
         >
           {results.map((r, i) => (
             <div
               key={`${r.kind}-${r.item.id}`}
               id={`search-option-${i}`}
-              role="option"
               data-index={i}
-              aria-selected={i === activeIndex}
-              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
+              role="option"
+              aria-selected={activeIndex === i}
+              onClick={() => {
+                trackSearchClick(r, "dropdown_open");
+                router.push(r.href);
+              }}
+              className={`cursor-pointer flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors ${
                 i === activeIndex ? "bg-terracotta/10" : ""
               }`}
             >
-              <Link
-                href={r.href}
-                className="flex-1 min-w-0"
-                tabIndex={-1}
-              >
+              <div className="flex-1 min-w-0 pointer-events-none">
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-medium text-olive truncate">{r.item.name}</span>
                   <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
                 </div>
                 <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
-              </Link>
+              </div>
               <Link
                 href={`/plan?add=${encodeURIComponent(r.item.id)}`}
-                onClick={(e) => e.stopPropagation()}
-                className="shrink-0 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-3 py-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  trackSearchClick(r, "dropdown_add");
+                }}
+                aria-label={`Add ${r.item.name} to plan`}
+                className="pointer-events-auto shrink-0 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-3 py-2 whitespace-nowrap"
               >
-                Add to plan
+                <span className="max-[359px]:hidden">Add to plan</span>
+                <span className="min-[360px]:hidden text-base leading-none" aria-hidden>+</span>
               </Link>
             </div>
           ))}
@@ -160,7 +194,7 @@ export default function SearchBar({
           Type at least 2 characters
         </div>
       )}
-      {query.length >= 2 && !hasResults && (
+      {showInlineNoResults && (
         <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-50 text-center text-olive/70 text-sm">
           <p className="mb-4">Nothing for &ldquo;{query}&rdquo;. Try Troodos, Nissi, Omodos, or browse Discover.</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">Or explore</p>

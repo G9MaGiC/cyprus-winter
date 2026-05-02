@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { troodosGuidePageMeta } from "@/lib/locale-page-meta";
 import Image from "next/image";
 import { trails } from "@/data/trails";
 import { LAYOUT, CARD, SECTION } from "@/lib/design-tokens";
@@ -9,12 +11,11 @@ import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
 
-export const metadata: Metadata = {
-  title: "Best Troodos Trails in December | Cyprus Winter",
-  description:
-    "Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, quiet slopes. What to pack, conditions, snow notes. Cyprus winter hiking guide.",
-  alternates: { canonical: `${SITE_URL}/guides/troodos-december` },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  troodosGuidePageMeta,
+  "/guides/troodos-december",
+  routing.defaultLocale
+);
 
 const troodosTrails = trails.filter((t) => t.region === "Troodos");
 

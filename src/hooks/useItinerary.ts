@@ -118,6 +118,21 @@ export function useItinerary() {
     }
   }, [activeDay]);
 
+  const addUniqueToDay = useCallback((id: string, day = activeDay) => {
+    let added = false;
+    setDays((prev) => {
+      const current = prev[day] ?? [];
+      if (current.includes(id)) return prev;
+      added = true;
+      return { ...prev, [day]: [...current, id] };
+    });
+    if (added) {
+      setLastAddedId(id);
+      const t = setTimeout(() => setLastAddedId(null), 600);
+      timeoutRefs.current.push(t);
+    }
+  }, [activeDay]);
+
   const removeFromDay = useCallback((id: string) => {
     setDays((prev) => ({
       ...prev,
@@ -171,7 +186,7 @@ export function useItinerary() {
   }, [activeDay]);
 
   const copyItinerary = useCallback(async () => {
-    const lines: string[] = ["Cyprus Winter Itinerary", ""];
+    const lines: string[] = ["Cyprus Winter Plan", ""];
     for (let d = 1; d <= MAX_DAYS; d++) {
       const items = days[d] ?? [];
       if (items.length === 0) continue;
@@ -182,7 +197,7 @@ export function useItinerary() {
       }
       lines.push("");
     }
-    const text = lines.join("\n").trim() || "Your Cyprus Winter plan. Add places from Discover or Trails to get going.";
+    const text = lines.join("\n").trim() || "Your Cyprus Winter plan. Add places from Discover or Trails to get started.";
     try {
       await navigator.clipboard.writeText(text);
       if (!isMountedRef.current) return;
@@ -230,6 +245,7 @@ export function useItinerary() {
     linkCopied,
     copyShareLink,
     addToDay,
+    addUniqueToDay,
     removeFromDay,
     getPlace,
     hasContent,

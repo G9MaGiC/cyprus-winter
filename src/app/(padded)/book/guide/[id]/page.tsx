@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { bookGuideMetadata } from "@/lib/locale-metadata-dynamic";
+import { routing } from "@/i18n/routing";
 import { guides } from "@/data/guides";
 import { LAYOUT } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
@@ -17,13 +18,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const guide = guides.find((g) => g.id === id);
-  if (!guide) return { title: "Not found" };
-  return {
-    title: `Book a guided hike | ${guide.name} | Cyprus Winter`,
-    description: `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`,
-    alternates: { canonical: `${SITE_URL}/book/guide/${id}` },
-  };
+  return bookGuideMetadata(id, routing.defaultLocale);
 }
 
 export default async function GuideBookPage({

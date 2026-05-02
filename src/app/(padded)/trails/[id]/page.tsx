@@ -14,6 +14,8 @@ import TrailMapClient from "@/components/TrailMapClient";
 import TrailDetailStickyActions from "@/components/TrailDetailStickyActions";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
+import { trailDetailMetadata } from "@/lib/locale-metadata-dynamic";
+import { routing } from "@/i18n/routing";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatReportedAgo } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
@@ -26,21 +28,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const trail = trails.find((t) => t.id === id || t.slug === id);
-  if (!trail) return { title: "Not found" };
-  const loc = trail.locationText ?? trail.region;
-  const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
-  const maxDesc = 154 - prefix.length; // leave room for ellipsis
-  const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
-  const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
-  return {
-    title: `${trail.name} | Cyprus Winter Trails`,
-    description: prefix + desc,
-    alternates: { canonical: `${SITE_URL}/trails/${id}` },
-    openGraph: {
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region} — ${trail.lengthKm} km trail in Cyprus winter` }],
-    },
-  };
+  return trailDetailMetadata(id, routing.defaultLocale);
 }
 
 export default async function TrailPage({

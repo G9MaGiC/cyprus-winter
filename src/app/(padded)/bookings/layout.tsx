@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { bookingsLayoutMeta } from "@/lib/locale-page-meta";
 
-export const metadata: Metadata = {
-  title: "My Bookings | Cyprus Winter",
-  description:
-    "View and manage your Cyprus Winter winery tastings and experiences. All bookings in one place. Sync from any device. Confirmations by email.",
-  alternates: { canonical: `${SITE_URL}/bookings` },
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  bookingsLayoutMeta,
+  "/bookings",
+  routing.defaultLocale
+);
 
 export default function BookingsLayout({
   children,

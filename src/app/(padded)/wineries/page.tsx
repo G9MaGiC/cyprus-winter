@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { wineriesPageMeta } from "@/lib/locale-page-meta";
 import { SITE_URL } from "@/lib/site-url";
 import { wineries } from "@/data/wineries";
 import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
-
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
 const wineriesItemListSchema = {
   "@context": "https://schema.org",
@@ -29,19 +30,11 @@ const wineriesItemListSchema = {
   })),
 };
 
-export const metadata: Metadata = {
-  title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
-  description:
-    "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/wineries` },
-  openGraph: {
-    title: "Cyprus Wineries in Winter | Wine Routes & Tastings",
-    description: "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
-    url: `${SITE_URL}/wineries`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winery village, winter" }],
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  wineriesPageMeta,
+  "/wineries",
+  routing.defaultLocale
+);
 
 export default function WineriesPage() {
   return (

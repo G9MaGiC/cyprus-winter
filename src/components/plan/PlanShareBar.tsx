@@ -49,7 +49,7 @@ export default function PlanShareBar({
   return (
     <div
       role="region"
-      aria-label="Itinerary summary and share"
+      aria-label="Plan summary and share"
       className={`${STRIP.py} py-5 sm:py-6 bg-sand-100/60 border-b border-sand-200/80 ${LAYOUT.stickyBarX}`}
     >
       <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-4`}>
@@ -62,7 +62,7 @@ export default function PlanShareBar({
             {activeDaysCount}/{displayDaysCount}
           </span>
           <span className="text-olive/60">days</span>
-          <span className="text-olive/50">· Auto-saved</span>
+          <span className="text-olive/50">· Saved automatically</span>
         </p>
         <div className="relative" ref={shareMenuRef}>
           <button
@@ -72,9 +72,9 @@ export default function PlanShareBar({
             className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta/10 text-terracotta hover:bg-terracotta/15 border border-terracotta/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-expanded={shareMenuOpen}
             aria-haspopup="menu"
-            aria-label="Copy and share options"
+            aria-label="Share plan options"
           >
-            Copy & share
+            Share plan
             <span className={`text-terracotta/70 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
               ▾
             </span>
@@ -87,7 +87,21 @@ export default function PlanShareBar({
                 if (e.key === "Escape") {
                   setShareMenuOpen(false);
                   shareMenuTriggerRef.current?.focus();
+                  return;
                 }
+                if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
+                const items = Array.from(
+                  (e.currentTarget as HTMLElement).querySelectorAll<HTMLElement>('[role="menuitem"]')
+                );
+                if (items.length === 0) return;
+                const currentIdx = items.indexOf(document.activeElement as HTMLElement);
+                let nextIdx = currentIdx >= 0 ? currentIdx : 0;
+                if (e.key === "ArrowDown") nextIdx = (currentIdx + 1 + items.length) % items.length;
+                if (e.key === "ArrowUp") nextIdx = (currentIdx - 1 + items.length) % items.length;
+                if (e.key === "Home") nextIdx = 0;
+                if (e.key === "End") nextIdx = items.length - 1;
+                e.preventDefault();
+                items[nextIdx]?.focus();
               }}
             >
               <button
@@ -113,7 +127,7 @@ export default function PlanShareBar({
                 }}
                 className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
               >
-                {copied ? "Copied" : "Copy itinerary (text)"}
+                {copied ? "Plan copied" : "Copy plan text"}
               </button>
               <div
                 className="px-4 py-3 mt-2 border-t border-sand-200/80"
@@ -122,7 +136,7 @@ export default function PlanShareBar({
                   requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
                 }}
               >
-                <ShareLinks path={sharePath} text="My Cyprus Winter itinerary —" ariaLabel="Share via" className="flex flex-wrap gap-2" />
+                <ShareLinks path={sharePath} text="My Cyprus Winter plan —" ariaLabel="Share via" className="flex flex-wrap gap-2" />
               </div>
             </div>
           )}

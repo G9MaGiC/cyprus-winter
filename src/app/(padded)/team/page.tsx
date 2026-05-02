@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { teamPageMeta } from "@/lib/locale-page-meta";
 import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 
-export const metadata: Metadata = {
-  title: "Team | Cyprus Winter — Trails, Villages, Wineries",
-  description:
-    "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six.",
-  alternates: { canonical: `${SITE_URL}/team` },
-};
+export const metadata: Metadata = applyLocaleToMetadata(teamPageMeta, "/team", routing.defaultLocale);
 
 export default function TeamPage() {
   return (

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { bookWineryMetadata } from "@/lib/locale-metadata-dynamic";
+import { routing } from "@/i18n/routing";
 import { wineries } from "@/data/wineries";
 import { LAYOUT } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
@@ -17,13 +19,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const winery = wineries.find((w) => w.id === id);
-  if (!winery) return { title: "Not found" };
-  return {
-    title: `Book a tasting | ${winery.name} | Cyprus Winter`,
-    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`,
-    alternates: { canonical: `${SITE_URL}/book/winery/${id}` },
-  };
+  return bookWineryMetadata(id, routing.defaultLocale);
 }
 
 export default async function WineryBookPage({

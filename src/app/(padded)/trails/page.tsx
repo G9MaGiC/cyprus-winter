@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { trailsListPageMeta } from "@/lib/locale-page-meta";
 import TrailsClient from "./TrailsClient";
-import { SITE_URL } from "@/lib/site-url";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
 
-export const metadata: Metadata = {
-  title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
-  description:
-    "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
-  alternates: { canonical: `${SITE_URL}/trails` },
-  openGraph: {
-    title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
-    description: "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
-    url: `${SITE_URL}/trails`,
-    type: "website",
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  trailsListPageMeta,
+  "/trails",
+  routing.defaultLocale
+);
 
 export default function TrailsPage() {
   return (

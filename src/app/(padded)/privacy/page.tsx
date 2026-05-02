@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { privacyPageMeta } from "@/lib/locale-page-meta";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import Link from "next/link";
 import { CTA } from "@/lib/design-tokens";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy — Cyprus Winter",
-  description:
-    "How Cyprus Winter collects, uses, and protects your data. GDPR-compliant. Data export and deletion available.",
-  alternates: { canonical: `${SITE_URL}/privacy` },
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  privacyPageMeta,
+  "/privacy",
+  routing.defaultLocale
+);
 
 export default function PrivacyPage() {
   return (

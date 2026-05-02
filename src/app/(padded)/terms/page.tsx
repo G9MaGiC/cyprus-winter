@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { termsPageMeta } from "@/lib/locale-page-meta";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import Link from "next/link";
 import { CTA } from "@/lib/design-tokens";
 
-export const metadata: Metadata = {
-  title: "Terms of Service — Cyprus Winter",
-  description:
-    "Terms of use for Cyprus Winter: trip planning, bookings, trail conditions, and user-generated content.",
-  alternates: { canonical: `${SITE_URL}/terms` },
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = applyLocaleToMetadata(termsPageMeta, "/terms", routing.defaultLocale);
 
 export default function TermsPage() {
   return (

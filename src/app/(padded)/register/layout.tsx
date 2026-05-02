@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { registerLayoutMeta } from "@/lib/locale-page-meta";
 
-export const metadata: Metadata = {
-  title: "Create account | Cyprus Winter",
-  description: "Create a free account to sync your plan and bookings across devices.",
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  registerLayoutMeta,
+  "/register",
+  routing.defaultLocale
+);
 
 export default function RegisterLayout({
   children,

@@ -28,7 +28,7 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
         </p>
       )}
       <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
-        Winter tip: daylight ends around 5pm. Start trails by 10am; book tastings 24–48h ahead.
+        Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24-48h ahead.
       </p>
       <div
         className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm"

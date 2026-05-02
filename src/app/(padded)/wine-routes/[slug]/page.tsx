@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { wineRouteSlugMetadata } from "@/lib/locale-metadata-dynamic";
+import { routing } from "@/i18n/routing";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 
@@ -16,19 +17,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const route = WINE_ROUTES.find((r) => r.slug === slug);
-  if (!route)
-    return {
-      title: "Wine route not found | Cyprus Winter",
-      description: "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings.",
-    };
-
-  const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
-  return {
-    title: `${route.title} Wine Route Cyprus Winter | Wineries & Tastings`,
-    description: `${route.description} ${count} wineries open for winter tastings. Book ahead.`,
-    alternates: { canonical: `${SITE_URL}/wine-routes/${slug}` },
-  };
+  return wineRouteSlugMetadata(slug, routing.defaultLocale);
 }
 
 export default async function WineRoutePage({ params }: Props) {

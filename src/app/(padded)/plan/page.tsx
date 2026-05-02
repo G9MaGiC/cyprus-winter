@@ -104,7 +104,7 @@ export default function PlanPage() {
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
-            Itinerary copied to clipboard
+            Plan copied to clipboard
           </div>
         )}
         {linkCopied && (
@@ -115,7 +115,19 @@ export default function PlanPage() {
 
         {searchParams.get("add") && !hydrated && (
           <p className="text-sm text-olive/70 mb-4" role="status" aria-live="polite">
-            Adding to your plan…
+            Adding places to your plan...
+          </p>
+        )}
+
+        {plan.lastUrlAddCount > 0 && (
+          <p
+            className="text-sm text-aegean bg-aegean/10 border border-aegean/20 rounded-lg px-4 py-3 mb-4"
+            role="status"
+            aria-live="polite"
+          >
+            {plan.lastUrlAddCount === 1
+              ? "Added 1 place to your plan."
+              : `Added ${plan.lastUrlAddCount} places to your plan.`}
           </p>
         )}
 
@@ -128,8 +140,8 @@ export default function PlanPage() {
             title="Plan your Cyprus winter"
             description={
               hasContent
-                ? "Your itinerary. Add more, share, or tweak below."
-                : "Build your winter itinerary. Pick a template or add places day by day."
+                ? "Your plan. Add more, share, or tweak below."
+                : "Build your winter plan. Use a template or add places day by day."
             }
             descriptionSecondary={!hasContent ? "Saves automatically." : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
@@ -143,9 +155,9 @@ export default function PlanPage() {
                   type="button"
                   onClick={scrollToQuickStart}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
-                  aria-label="Scroll to templates"
+                  aria-label="Scroll to templates and quick start"
                 >
-                  See templates
+                  Use a template
                 </button>
               </div>
             )}
@@ -220,7 +232,7 @@ export default function PlanPage() {
                 id="plan-map-heading"
                 className="text-xl sm:text-2xl font-display font-semibold text-charcoal mb-1"
               >
-                Your itinerary on the map
+                Your plan on the map
               </h2>
               <p className="text-xs text-olive/60 mb-4">Saves automatically.</p>
               <PlanMapClient />

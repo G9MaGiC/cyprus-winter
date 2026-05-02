@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { weatherMonthMetadata } from "@/lib/locale-metadata-dynamic";
 import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
@@ -38,33 +39,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { month } = await params;
-  const slug = month.toLowerCase() as MonthSlug;
-  if (!MONTH_SLUGS.includes(slug))
-    return {
-      title: "Weather not found | Cyprus Winter",
-      description: "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
-    };
-
-  const monthName = SLUG_TO_WEATHER[slug];
-  const row = weatherByMonth.find((r) => r.month === monthName);
-  if (!row)
-    return {
-      title: "Weather not found | Cyprus Winter",
-      description: "Cyprus winter weather by month. Plan trails and wineries.",
-    };
-
-  const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
-  const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
-  const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
-
-  return {
-    title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
-    description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
-    alternates: { canonical: `${SITE_URL}/weather/${slug}` },
-    openGraph: {
-      images: [{ url: ogImage, width: 1200, height: 630, alt: `Cyprus winter coast—${monthName} weather` }],
-    },
-  };
+  return weatherMonthMetadata(month, routing.defaultLocale);
 }
 
 export default async function WeatherMonthPage({ params }: Props) {

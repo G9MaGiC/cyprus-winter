@@ -7,10 +7,10 @@ import { test, expect } from "@playwright/test";
 test("Bookings: submit winery booking and see it on My Bookings", async ({
   page,
 }) => {
+  // Onboarded flag runs on every navigation; do NOT clear cyprus-bookings here — Playwright
+  // re-runs addInitScript on client navigations, which would wipe the booking before /bookings.
   await page.addInitScript(() => {
     localStorage.setItem("cyprus-winter-onboarded", "true");
-    // Clear any existing bookings for predictable state
-    localStorage.removeItem("cyprus-bookings");
   });
 
   const tomorrow = new Date();
@@ -18,6 +18,7 @@ test("Bookings: submit winery booking and see it on My Bookings", async ({
   const dateStr = tomorrow.toISOString().split("T")[0];
 
   await page.goto("/book/winery/tsiakkas");
+  await page.evaluate(() => localStorage.removeItem("cyprus-bookings"));
 
   await expect(page.getByRole("heading", { level: 1, name: /Book a tasting/ })).toBeVisible();
 

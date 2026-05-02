@@ -81,6 +81,8 @@
 
 ### 2.6 Mobile & Responsive
 
+**Extended checklist (page groups + 320px):** [`docs/UX_UI_RESPONSIVE_MATRIX.md`](UX_UI_RESPONSIVE_MATRIX.md).
+
 | Device | Viewport | Checks |
 |--------|----------|--------|
 | **iPhone SE** | 375×667 | Hero, BottomNav, floating AI button above nav, safe area |

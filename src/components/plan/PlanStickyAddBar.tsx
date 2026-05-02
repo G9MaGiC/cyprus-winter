@@ -89,7 +89,7 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
         type="button"
         onClick={handleClick}
         className="w-full max-w-md min-h-[44px] px-6 py-3 rounded-xl text-base font-semibold bg-terracotta text-white hover:bg-terracotta-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:active:scale-100"
-        aria-label="Add a place to your itinerary"
+        aria-label="Add a place to your plan"
       >
         Add place
       </button>

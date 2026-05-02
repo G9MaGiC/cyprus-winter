@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { beachesPageMeta } from "@/lib/locale-page-meta";
 import { SITE_URL } from "@/lib/site-url";
 import { beaches } from "@/data/attractions";
 import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
-
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-beach-nissi.jpg`;
 
 const beachesItemListSchema = {
   "@context": "https://schema.org",
@@ -29,19 +30,11 @@ const beachesItemListSchema = {
   })),
 };
 
-export const metadata: Metadata = {
-  title: "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
-  description:
-    "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit. Free.",
-  alternates: { canonical: `${SITE_URL}/beaches` },
-  openGraph: {
-    title: "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
-    description: "Best beaches in Cyprus winter: Nissi, Coral Bay, Konnos. Empty sand, golden light. Winter walks, no crowds.",
-    url: `${SITE_URL}/beaches`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter beach, golden light" }],
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  beachesPageMeta,
+  "/beaches",
+  routing.defaultLocale
+);
 
 export default function BeachesPage() {
   return (

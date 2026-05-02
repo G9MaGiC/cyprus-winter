@@ -7,6 +7,7 @@ import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import FilterChips from "@/components/FilterChips";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
@@ -221,13 +222,15 @@ export default function EventsPage() {
           hasWidgetStrip
           breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Events", href: "/events", isCurrent: true }]}
         >
-          <Link
-            href="/plan"
-            className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}
-            aria-label="Plan your trip"
-          >
-            Plan your trip
-          </Link>
+          <TrackOnClick event="shop_click" properties={{ source: "events_hero", action: "plan_cta" }}>
+            <Link
+              href="/plan"
+              className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}
+              aria-label="Plan your trip"
+            >
+              Plan your trip
+            </Link>
+          </TrackOnClick>
           <p className="text-sm text-white/80 mt-2 break-words">
             Dates may shift year to year. Check official sources before you
             travel.
@@ -304,7 +307,7 @@ export default function EventsPage() {
             {monthNavMonths.length > 0 && (
               <nav
                 aria-label="Jump to month"
-                className={`sticky ${LAYOUT.stickyTop} z-10 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
+                className={`sticky ${LAYOUT.stickyTop} z-20 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
               >
                 <p className={`prose-label text-olive/60 ${SECTION.titleGap}`}>Jump to month</p>
                 <div className="flex flex-wrap gap-2">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_URL } from "@/lib/site-url";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { searchPageMeta } from "@/lib/locale-page-meta";
 import { LAYOUT, CTA, EMPTY_STATE_COMPACT, SECTION, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 import BackLink from "@/components/BackLink";
@@ -10,21 +12,11 @@ import { search } from "@/lib/search";
 
 type SearchPageProps = { searchParams: Promise<{ q?: string }> };
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
-
-export const metadata: Metadata = {
-  title: "Search Cyprus Winter | Trails, Wineries, Places",
-  description:
-    "Search Cyprus winter: trails, wineries, villages, beaches, ancient sites. Find Troodos hikes, Paphos mosaics, Lefkara. Plan or explore when you land. Free search.",
-  alternates: { canonical: `${SITE_URL}/search` },
-  openGraph: {
-    title: "Search Cyprus Winter | Trails, Wineries, Places",
-    description: "Search Cyprus winter: trails, wineries, villages, beaches. Find Troodos hikes, Paphos mosaics, Lefkara.",
-    url: `${SITE_URL}/search`,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter — find trails and places" }],
-  },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  searchPageMeta,
+  "/search",
+  routing.defaultLocale
+);
 
 const BROWSE_LINKS = [
   { href: "/trails", label: "Trails" },
@@ -56,7 +48,14 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <p className="text-olive/80 text-sm mb-8">
         Places that feel real. Villages, wineries, beaches, trails, events.
       </p>
-      <SearchBar placeholder="e.g. Omodos, Artemis, carnival" autoFocus initialQuery={q} syncUrl className="max-w-xl" />
+      <SearchBar
+        placeholder="e.g. Omodos, Artemis, carnival"
+        autoFocus
+        initialQuery={q}
+        syncUrl
+        showNoResultsOverlay={false}
+        className="max-w-xl"
+      />
       {results.length > 0 && (
         <div className={`mt-8 ${SECTION.headingGap}`}>
           <h2 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>Results for &ldquo;{q}&rdquo;</h2>
@@ -74,7 +73,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">
             No matches for &ldquo;{q}&rdquo;. Try Troodos, Nissi, Omodos, or browse Discover.
           </p>
-          <p className="text-sm text-olive/80 mb-3">Or tap Ask AI to find something.</p>
+          <p className="text-sm text-olive/80 mb-3">Or ask AI to find something.</p>
           <div className="flex flex-wrap gap-2">
             <Link href="/discover" className={`${CTA.chipTertiary} rounded-xl`}>
               Browse places

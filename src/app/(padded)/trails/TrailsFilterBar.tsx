@@ -32,7 +32,7 @@ export default function TrailsFilterBar({
     <div
       role="region"
       aria-label="Trail filters"
-      className={`sticky ${LAYOUT.stickyTop} z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
+      className={`sticky ${LAYOUT.stickyTop} z-20 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
     >
       <div className={`${LAYOUT.list} mx-auto space-y-4`}>
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">

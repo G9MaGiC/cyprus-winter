@@ -2,6 +2,8 @@ import Image from "next/image";
 import DetailHero from "@/components/DetailHero";
 import type { Metadata } from "next";
 import { allDiscoverIds, getDiscoverPlaceById, getPlaceById } from "@/data";
+import { discoverDetailMetadata } from "@/lib/locale-metadata-dynamic";
+import { routing } from "@/i18n/routing";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
@@ -39,22 +41,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const a = getDiscoverPlaceById(id);
-  if (!a) return { title: "Not found" };
-  const typeLabel = a.type === "winery" ? "Winery" : a.type === "restaurant" ? "Eat" : a.type.charAt(0).toUpperCase() + a.type.slice(1);
-  const prefix = `${a.region}. ${typeLabel}. `;
-  const maxDesc = 154 - prefix.length;
-  const desc = a.description.slice(0, maxDesc).trim();
-  const snippet = prefix + desc + (a.description.length > maxDesc ? "…" : "");
-  const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
-  return {
-    title: `${a.name} | Cyprus Winter`,
-    description: snippet,
-    alternates: { canonical: `${SITE_URL}/discover/${id}` },
-    openGraph: {
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
-    },
-  };
+  return discoverDetailMetadata(id, routing.defaultLocale);
 }
 
 
