@@ -30,10 +30,34 @@ describe("parseResponse", () => {
     expect(result.metadata).toBeUndefined();
   });
 
+  it("drops malformed metadata fields instead of returning unsafe shapes", () => {
+    const raw = `Some text
+
+---ACTIONS---
+{"cards":"not-an-array","actions":[{"type":"open_place","label":"Open","payload":{"path":"/discover/kathikas"}}],"followUps":"not-an-array"}`;
+    const result = parseResponse(raw);
+
+    expect(result.prose).toBe("Some text");
+    expect(result.metadata?.cards).toBeUndefined();
+    expect(result.metadata?.actions).toHaveLength(1);
+    expect(result.metadata?.followUps).toBeUndefined();
+  });
+
+  it("returns prose-only when all metadata fields have invalid shapes", () => {
+    const raw = `Some text
+
+---ACTIONS---
+{"cards":{"id":"kathikas"},"actions":[{"type":"open_place"}],"followUps":[42]}`;
+    const result = parseResponse(raw);
+
+    expect(result.prose).toBe("Some text");
+    expect(result.metadata).toBeUndefined();
+  });
+
   it("trims whitespace around prose and delimiter", () => {
     const raw = `  Trimmed text  \n\n---ACTIONS---\n{"cards":[],"actions":[],"followUps":[]}`;
     const result = parseResponse(raw);
     expect(result.prose).toBe("Trimmed text");
-    expect(result.metadata).toBeDefined();
+    expect(result.metadata).toBeUndefined();
   });
 });

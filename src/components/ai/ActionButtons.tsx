@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
 
 type Action = {
   type: string;
@@ -9,9 +8,16 @@ type Action = {
   payload?: Record<string, unknown>;
 };
 
+function safeInternalPath(value: unknown): string {
+  if (typeof value !== "string") return "/discover";
+  if (!value.startsWith("/") || value.startsWith("//") || value.includes("\\") || value.length > 256) {
+    return "/discover";
+  }
+  return value;
+}
+
 export function ActionButtons({ actions }: { actions: Action[] }) {
   const router = useRouter();
-  const locale = useLocale();
 
   function handleAction(action: Action) {
     switch (action.type) {
@@ -20,12 +26,12 @@ export function ActionButtons({ actions }: { actions: Action[] }) {
       case "view_events":
       case "book_now":
       case "build_day_plan": {
-        const path = (action.payload?.path as string) ?? "/discover";
-        router.push(`/${locale}${path}`);
+        const path = safeInternalPath(action.payload?.path);
+        router.push(path);
         break;
       }
       case "save_to_plan": {
-        router.push(`/${locale}/plan`);
+        router.push("/plan");
         break;
       }
     }
