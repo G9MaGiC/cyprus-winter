@@ -1,1 +1,1 @@
-export { default } from "@/app/(padded)/install/page";
+export { default, generateMetadata } from "@/app/(padded)/install/page";

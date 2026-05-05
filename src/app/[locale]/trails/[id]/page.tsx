@@ -1,1 +1,1 @@
-export { default } from "@/app/(padded)/trails/[id]/page";
+export { default, generateMetadata } from "@/app/(padded)/trails/[id]/page";

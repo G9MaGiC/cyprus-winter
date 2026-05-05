@@ -1,1 +1,1 @@
-export { default } from "@/app/(padded)/trails/[id]/report/page";
+export { default, metadata } from "@/app/(padded)/trails/[id]/report/page";

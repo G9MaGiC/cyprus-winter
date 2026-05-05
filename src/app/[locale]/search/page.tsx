@@ -1,1 +1,1 @@
-export { default } from "@/app/(padded)/search/page";
+export { default, generateMetadata } from "@/app/(padded)/search/page";

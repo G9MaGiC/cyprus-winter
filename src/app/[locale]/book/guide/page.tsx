@@ -1,1 +1,1 @@
-export { default } from "@/app/(padded)/book/guide/page";
+export { default, metadata } from "@/app/(padded)/book/guide/page";
