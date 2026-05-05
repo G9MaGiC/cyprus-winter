@@ -9,7 +9,8 @@ import DaySelector from "@/components/plan/DaySelector";
 import PlanAddFailedAlert from "@/components/plan/PlanAddFailedAlert";
 import PlanDaysUntilBanner from "@/components/plan/PlanDaysUntilBanner";
 import PlanFooter from "@/components/plan/PlanFooter";
-import PlanMapClient from "@/components/plan/PlanMapClient";
+import PlanMapCollapsibleSection from "@/components/plan/PlanMapCollapsibleSection";
+import PlanAddMoreCollapsible from "@/components/plan/PlanAddMoreCollapsible";
 import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
@@ -222,22 +223,7 @@ export default function PlanPage() {
             onScrollToQuickStart={scrollToQuickStart}
           />
 
-          {hasContent && (
-            <section
-              id="plan-map"
-              aria-labelledby="plan-map-heading"
-              className="border-t border-sand-200/80 pt-10 sm:pt-12"
-            >
-              <h2
-                id="plan-map-heading"
-                className="text-xl sm:text-2xl font-display font-semibold text-charcoal mb-1"
-              >
-                Your plan on the map
-              </h2>
-              <p className="text-xs text-olive/60 mb-4">Saves automatically.</p>
-              <PlanMapClient />
-            </section>
-          )}
+          {hasContent && <PlanMapCollapsibleSection />}
 
           <div
             ref={quickStartRef}
@@ -252,19 +238,21 @@ export default function PlanPage() {
                 hrefLabel={t("tipPlanEmptyLink")}
               />
             )}
-            <QuickStartSection
-              activeDay={activeDay}
-              days={days}
-              getPlace={getPlace}
-              addToDay={addToDay}
-              onTemplateClick={handleTemplateClick}
-              hasContent={hasContent}
-              tripLength={tripLength}
-            />
-            <BuildADaySection
-              hasContent={hasContent}
-              onComboClick={handleComboClick}
-            />
+            <PlanAddMoreCollapsible hasContent={hasContent}>
+              <QuickStartSection
+                activeDay={activeDay}
+                days={days}
+                getPlace={getPlace}
+                addToDay={addToDay}
+                onTemplateClick={handleTemplateClick}
+                hasContent={hasContent}
+                tripLength={tripLength}
+              />
+              <BuildADaySection
+                hasContent={hasContent}
+                onComboClick={handleComboClick}
+              />
+            </PlanAddMoreCollapsible>
           </div>
         </div>
 

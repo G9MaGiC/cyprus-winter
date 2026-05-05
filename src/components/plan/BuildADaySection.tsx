@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { DAY_COMBOS } from "@/data/day-combos";

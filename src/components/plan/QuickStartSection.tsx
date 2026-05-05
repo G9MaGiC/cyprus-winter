@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CARD, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";

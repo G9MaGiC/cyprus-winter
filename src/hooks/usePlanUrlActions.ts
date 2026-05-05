@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import type { PlanItem } from "@/data";
 import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
 import { parseAddParam } from "@/lib/plan-url-params";

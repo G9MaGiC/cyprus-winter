@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CTA, SECTION } from "@/lib/design-tokens";
 import { TrackOnClick } from "@/components/TrackOnClick";
 
