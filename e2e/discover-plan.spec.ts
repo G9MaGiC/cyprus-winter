@@ -20,6 +20,8 @@ test("Discover to plan: add place and see it in plan", async ({ page }) => {
 
   await expect(page.getByRole("main")).toBeVisible();
 
+  await expect(page.locator('main a[href="#discover-map"]').first()).toBeVisible({ timeout: 15_000 });
+
   const addToPlanLink = page.getByRole("link", { name: /Add to plan/ }).first();
   await expect(addToPlanLink).toBeVisible();
   const href = await addToPlanLink.getAttribute("href");
