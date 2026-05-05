@@ -6,7 +6,7 @@ import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -218,6 +218,9 @@ export default async function TrailPage({
                     {conditions.tip && (
                       <p className="mt-3 text-sm text-olive/90 italic break-words">{conditions.tip}</p>
                     )}
+                    <p className="mt-3 text-xs text-olive/65 leading-relaxed">
+                      No hiker reports on file for this trail yet—the snapshot above is from our winter guide. After your hike, use &quot;Share what you saw&quot; so the next visitor gets firsthand detail.
+                    </p>
                   </>
                 ) : null}
                 <div className="flex flex-wrap gap-3 mt-4">

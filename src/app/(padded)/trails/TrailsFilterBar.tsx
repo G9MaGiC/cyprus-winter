@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import TrailFilters from "@/app/(padded)/trails/TrailFilters";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import type { TrailStatus } from "@/data/trails";

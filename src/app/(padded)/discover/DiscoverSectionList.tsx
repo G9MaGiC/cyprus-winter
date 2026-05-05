@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";

@@ -5,7 +5,7 @@
  * Includes retry functionality and helpful messaging
  */
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState, useEffect, useSyncExternalStore } from "react";
 import { CARD, CTA, SECTION } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";

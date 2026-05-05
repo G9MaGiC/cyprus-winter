@@ -4,7 +4,7 @@ import { applyLocaleToMetadata } from "@/lib/locale-seo";
 import { termsPageMeta } from "@/lib/locale-page-meta";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CTA } from "@/lib/design-tokens";
 
 export const metadata: Metadata = applyLocaleToMetadata(termsPageMeta, "/terms", routing.defaultLocale);

@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { Trail } from "@/data/trails";
 import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";

@@ -7,7 +7,7 @@ import { winterTipsPractical } from "@/data/winter-tips";
 import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export const metadata: Metadata = applyLocaleToMetadata(
   airportPageMeta,

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTripDates } from "@/hooks/useTripDates";
 import { LAYOUT, SECTION, STRIP } from "@/lib/design-tokens";
 

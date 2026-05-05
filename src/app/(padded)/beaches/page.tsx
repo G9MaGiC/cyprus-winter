@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
 import { beachesPageMeta } from "@/lib/locale-page-meta";

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
 import { TrackOnClick } from "@/components/TrackOnClick";

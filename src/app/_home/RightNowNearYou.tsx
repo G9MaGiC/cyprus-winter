@@ -16,20 +16,23 @@ function SectionShell({
   children,
   title = "Right now near you",
   subtitle,
+  sectionId = "right-now",
 }: {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
+  sectionId?: string;
 }) {
+  const headingId = `${sectionId}-heading`;
   return (
     <section
-      id="right-now"
-      aria-labelledby="right-now-heading"
+      id={sectionId}
+      aria-labelledby={headingId}
       className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="mb-4 sm:mb-5">
-          <h2 id="right-now-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
+          <h2 id={headingId} className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             {title}
           </h2>
           {subtitle && <p className="text-sm text-olive/70">{subtitle}</p>}
@@ -89,10 +92,11 @@ function DistanceToggle({
   );
 }
 
-type RightNowNearYouProps = { title?: string };
+type RightNowNearYouProps = { title?: string; sectionId?: string };
 
 export default function RightNowNearYou({
   title = "Right now near you",
+  sectionId = "right-now",
 }: RightNowNearYouProps) {
   const {
     state,
@@ -111,7 +115,7 @@ export default function RightNowNearYou({
 
   if (state === "consent") {
     return (
-      <SectionShell title={title} subtitle="What makes sense where you are">
+      <SectionShell title={title} sectionId={sectionId} subtitle="What makes sense where you are">
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             Suggestions based on where you are, the time, and the weather.
@@ -130,7 +134,7 @@ export default function RightNowNearYou({
 
   if (state === "region-picker") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={title} sectionId={sectionId}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">Choose a region to explore.</p>
           <RegionPickerChips
@@ -145,7 +149,7 @@ export default function RightNowNearYou({
 
   if (state === "loading") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={title} sectionId={sectionId}>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {[1, 2, 3, 4].map((i) => (
             <div
@@ -173,7 +177,7 @@ export default function RightNowNearYou({
           ? "Too many requests. Try again in a minute."
           : "Couldn't load. Try again shortly.";
     return (
-      <SectionShell title={title}>
+      <SectionShell title={title} sectionId={sectionId}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">{errorMessage}</p>
           <LocationActionButtons
@@ -194,7 +198,7 @@ export default function RightNowNearYou({
         ? `Suggestions in ${getRegionShortLabel(selectedRegion)}`
         : undefined;
     return (
-      <SectionShell title={title} subtitle={subtitle}>
+      <SectionShell title={title} sectionId={sectionId} subtitle={subtitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className="text-olive/80 text-sm mb-4">
             No suggestions for {sourceMode === "region" ? "this region" : "now"}{" "}
@@ -230,7 +234,7 @@ export default function RightNowNearYou({
       : "What makes sense where you are";
 
   return (
-    <SectionShell title={title} subtitle={loadedSubtitle}>
+    <SectionShell title={title} sectionId={sectionId} subtitle={loadedSubtitle}>
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink href="/discover" className={SECTION.aegeanLink}>

@@ -54,7 +54,9 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
   const activeSectionTitle =
     filterParam === "nature"
       ? "Nature & coasts"
-      : activeSection?.title ?? "Places";
+      : filterParam === "family"
+        ? "Family-friendly"
+        : activeSection?.title ?? "Places";
 
   const scrollBehavior = () =>
     (typeof window !== "undefined" &&
@@ -125,7 +127,7 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
 
         {children}
 
-        <RightNowNearYou title="Right now near you" />
+        <RightNowNearYou title="Near you now" sectionId="discover-right-now" />
 
         <DiscoverFooter onScrollToMap={scrollToMap} />
       </div>

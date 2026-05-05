@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import FilterChips from "@/components/FilterChips";
 import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
@@ -29,6 +29,7 @@ export default function DiscoverFilterBar({
   const chips = [
     { id: "", label: "All" },
     { id: "nature", label: "Nature & coasts" },
+    { id: "family", label: "Family-friendly" },
     ...sections.filter((s) => s.id !== "coasts").map((s) => ({ id: s.id, label: s.title })),
   ];
 
@@ -60,13 +61,25 @@ export default function DiscoverFilterBar({
               if (chip.id === "") return !filter;
               if (chip.id === "nature")
                 return filter === "coasts" || filterParam === "nature";
+              if (chip.id === "family") return filterParam === "family";
+              if (chip.id === "hidden")
+                return filter === "hidden" && filterParam !== "family";
               return filter === chip.id;
             }}
-            getHref={(chip) =>
-              chip.id === "" || filter === chip.id
-                ? "/discover"
-                : `/discover?filter=${chip.id}`
-            }
+            getHref={(chip) => {
+              if (chip.id === "") return "/discover";
+              if (
+                chip.id === "hidden" &&
+                filter === "hidden" &&
+                filterParam === "family"
+              ) {
+                return "/discover?filter=hidden";
+              }
+              if (chip.id === "family" && filterParam === "family")
+                return "/discover";
+              if (filter === chip.id) return "/discover";
+              return `/discover?filter=${chip.id}`;
+            }}
             ariaLabel="Filter places"
           />
 

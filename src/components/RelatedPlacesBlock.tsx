@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CARD, SECTION } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 

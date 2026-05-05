@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD } from "@/lib/design-tokens";
 

@@ -6,8 +6,9 @@
  * Otherwise shows generic back
  */
 
-import Link from "next/link";
-import { useSearchParams, usePathname } from "next/navigation";
+import { Link } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface SmartBackLinkProps {

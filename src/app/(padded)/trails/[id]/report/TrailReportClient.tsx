@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useParams, notFound } from "next/navigation";
 import { trails } from "@/data/trails";
 import { LAYOUT, CTA } from "@/lib/design-tokens";

@@ -11,7 +11,7 @@ import type { Restaurant } from "@/data/restaurants";
 import { LAYOUT, CTA, CARD, CALLOUT, SECTION } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import BackLink from "@/components/BackLink";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import AddToItineraryButton from "@/components/AddToItineraryButton";

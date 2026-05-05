@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CTA, EMPTY_STATE_LARGE } from "@/lib/design-tokens";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 

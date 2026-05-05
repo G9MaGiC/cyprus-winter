@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 export default function NotFound() {

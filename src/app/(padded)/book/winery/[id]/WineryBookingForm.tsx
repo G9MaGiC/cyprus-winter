@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CTA } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";

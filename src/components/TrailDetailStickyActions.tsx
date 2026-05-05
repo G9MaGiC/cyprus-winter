@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getPlaceById } from "@/data";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";

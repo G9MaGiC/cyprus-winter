@@ -172,8 +172,9 @@ export default function BookingsPage() {
         />
 
         <p className="text-sm text-olive/75 leading-relaxed mb-8 max-w-2xl">
-          Bookings you make on this device show up here automatically. To pull in tastings we saved when you booked by email,
-          enter that exact address below—same one you used on the form.
+          Everything you book on this device appears here right away. Booked on another phone or laptop? Enter the{" "}
+          <span className="text-olive/90 font-medium">same email you used on the booking form</span> in the section
+          below—we&apos;ll merge what we find with this device. Nothing you already have here is removed.
         </p>
 
         {newBookingIntent && (
@@ -276,7 +277,8 @@ export default function BookingsPage() {
               <div className={`w-12 h-1 mx-auto rounded-full bg-terracotta/40 ${SECTION.headingGap}`} aria-hidden />
               <h2 className="font-display font-semibold text-olive mb-1">No bookings yet</h2>
               <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
-                Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.
+                When you reserve a tasting or guided hike, it will show up here. Book from Discover or Trails, or load
+                past bookings by email if you used another device.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link

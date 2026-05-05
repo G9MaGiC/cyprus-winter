@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { SearchResult } from "@/lib/search";
 import { CARD, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";

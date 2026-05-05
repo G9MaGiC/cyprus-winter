@@ -6,7 +6,7 @@
  */
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 

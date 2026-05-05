@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 const QUICK_CHIPS = [
   { id: "short-easy", label: "Short & easy", href: "/trails?difficulty=easy" },

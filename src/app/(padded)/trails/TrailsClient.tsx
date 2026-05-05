@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect } from "react";
 import { trailConditions } from "@/data/trails";
-import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION, STRIP, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
@@ -114,6 +114,9 @@ export default function TrailsClient() {
               placeholder="Search trails by name, region, difficulty…"
               className="max-w-2xl mx-auto"
             />
+            <p className="text-center text-xs text-olive/60 mt-3 max-w-2xl mx-auto">
+              Matches trails (and related places) in our catalog—tap a result to open it. Use filters below to narrow the list.
+            </p>
           </div>
         </section>
 
@@ -122,6 +125,26 @@ export default function TrailsClient() {
           cautionCount={counts.caution}
           closedCount={counts.closed}
         />
+
+        <section
+          aria-label="Community trail reports"
+          className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-olive/5 border-b border-sand-200/70`}
+        >
+          <div className={`${LAYOUT.list} mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-olive/85`}>
+            <p className="leading-relaxed">
+              <span className="font-medium text-olive">Community intel:</span> Cards show a curated winter snapshot from our guide data.
+              After you hike, share surface conditions and weather—it helps the next visitor decide.
+            </p>
+            {reportTrail ? (
+              <Link
+                href={`/trails/${reportTrail.id}/report`}
+                className={`${CTA.secondaryCompact} shrink-0 self-start sm:self-center whitespace-nowrap`}
+              >
+                Report conditions
+              </Link>
+            ) : null}
+          </div>
+        </section>
 
         <TrailsFilterBar
           filteredCount={filtered.length}
@@ -235,7 +258,7 @@ export default function TrailsClient() {
           </div>
         </section>
 
-        <TrailsTipsSection reportTrail={reportTrail} />
+        {!hasFilters && <TrailsTipsSection reportTrail={reportTrail} />}
 
         <TrailsFooter reportTrailId={reportTrail?.id} onScrollToMap={scrollToMap} />
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { CTA, HERO, LAYOUT, TYPE } from "@/lib/design-tokens";
 

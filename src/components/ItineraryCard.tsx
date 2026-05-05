@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CARD, CTA } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import NavigateButton from "@/components/NavigateButton";

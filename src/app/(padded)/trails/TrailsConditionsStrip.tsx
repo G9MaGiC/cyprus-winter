@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { LAYOUT, STRIP } from "@/lib/design-tokens";
 
 type TrailsConditionsStripProps = {

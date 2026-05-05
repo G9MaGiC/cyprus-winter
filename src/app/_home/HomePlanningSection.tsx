@@ -8,7 +8,8 @@ type HomePlanningSectionProps = {
   planSubtitle?: string;
 };
 
-const defaultPlanSubtitle = "Build a day or pick a template. Saves as you go.";
+const defaultPlanSubtitle =
+  "Templates, map, and share in one place—continue on the full Plan page.";
 
 export default function HomePlanningSection({
   LinkComponent,

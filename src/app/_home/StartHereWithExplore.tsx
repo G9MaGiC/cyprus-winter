@@ -1,6 +1,12 @@
-import type { ComponentType } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
+import AppLink from "@/components/AppLink";
 import { CARD, CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import type { LinkProps } from "@/app/_home/types";
+
+/** Client-only section — must import Link here; RSC cannot pass component refs into client components. */
+const Link = AppLink;
 
 type StartHereItem = {
   title: string;
@@ -65,7 +71,7 @@ const exploreMoreChips: Chip[] = [
 const moodChips: Chip[] = [
   { href: "/trails", label: "Active", ariaLabel: "Active adventures — trails, hiking", variant: "secondary" },
   { href: "/discover?filter=quiet", label: "Quiet escapes", ariaLabel: "Quiet escapes — villages, hidden gems", variant: "secondary" },
-  { href: "/trails", label: "Mountains", ariaLabel: "Mountains — Troodos trails", variant: "secondary" },
+  { href: "/regions/troodos", label: "Mountains", ariaLabel: "Mountains — Troodos region and high trails", variant: "secondary" },
   { href: "/discover?filter=monastery", label: "Wellness", ariaLabel: "Wellness — monasteries, quiet spaces", variant: "secondary" },
 ];
 
@@ -75,12 +81,20 @@ function chipClass(v: Chip["variant"]) {
   return CTA.chipTertiary;
 }
 
-export default function StartHereWithExplore({
-  LinkComponent,
-}: {
-  LinkComponent: ComponentType<LinkProps>;
-}) {
-  const Link = LinkComponent;
+export default function StartHereWithExplore() {
+  const [wide, setWide] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setWide(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  /** Until mounted, treat as desktop layout to match SSR and avoid collapsed flash on large screens. */
+  const showDesktopChipGroups = wide !== false;
+
   return (
     <section
       id="start-here"
@@ -148,37 +162,86 @@ export default function StartHereWithExplore({
           />
         </div>
 
-        <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore more</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {exploreMoreChips.map((c) => (
-              <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
-                {c.label}
-              </Link>
-            ))}
-          </div>
-        </div>
+        {showDesktopChipGroups ? (
+          <>
+            <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
+              <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore more</p>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                {exploreMoreChips.map((c) => (
+                  <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+                    {c.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-        <div>
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore by mood</p>
-          <div
-            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
-            role="navigation"
-            aria-label="Explore by how you feel"
-          >
-            {moodChips.map((m) => (
-              <Link
-                key={m.href + m.label}
-                href={m.href}
-                prefetch="auto"
-                className={CTA.chipSecondary}
-                aria-label={m.ariaLabel}
+            <div>
+              <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore by mood</p>
+              <div
+                className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+                role="navigation"
+                aria-label="Explore by how you feel"
               >
-                {m.label}
-              </Link>
-            ))}
-          </div>
-        </div>
+                {moodChips.map((m) => (
+                  <Link
+                    key={m.href + m.label}
+                    href={m.href}
+                    prefetch="auto"
+                    className={CTA.chipSecondary}
+                    aria-label={m.ariaLabel}
+                  >
+                    {m.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <details className="group rounded-2xl border border-sand-200/80 bg-white/60 shadow-sm open:bg-white/80 open:shadow-md transition-shadow">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl p-4 text-left select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
+              <div className="min-w-0">
+                <p className="font-medium text-olive">More regions, topics & moods</p>
+                <p className="text-xs text-olive/60 mt-0.5">Optional—same shortcuts as on larger screens</p>
+              </div>
+              <ChevronDown
+                className="h-5 w-5 shrink-0 text-olive/45 transition-transform duration-200 group-open:rotate-180"
+                aria-hidden
+              />
+            </summary>
+            <div className="border-t border-sand-200/80 px-3 pb-5 pt-4 sm:px-4 space-y-8">
+              <div>
+                <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore more</p>
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  {exploreMoreChips.map((c) => (
+                    <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className={`${TYPE.kicker} text-sage text-center mb-3`}>Explore by mood</p>
+                <div
+                  className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+                  role="navigation"
+                  aria-label="Explore by how you feel"
+                >
+                  {moodChips.map((m) => (
+                    <Link
+                      key={m.href + m.label}
+                      href={m.href}
+                      prefetch="auto"
+                      className={CTA.chipSecondary}
+                      aria-label={m.ariaLabel}
+                    >
+                      {m.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </details>
+        )}
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
 import { discoverListPageMeta } from "@/lib/locale-page-meta";
@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems } from "@/data/discover";
 import { buildDiscoverSections } from "@/lib/discover-sections";
 import { buildDiscoverItemListSchema } from "@/lib/discover-schema";
-import { CTA, LAYOUT } from "@/lib/design-tokens";
+import { CTA, LAYOUT, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
@@ -56,6 +56,12 @@ export default function DiscoverPage() {
               placeholder="Search places, trails, wineries…"
               className="max-w-2xl mx-auto"
             />
+            <p className="text-center text-sm text-olive/70 mt-4 max-w-xl mx-auto">
+              <a href="#discover-map" className={SECTION.aegeanLink}>
+                Jump to place map
+              </a>
+              <span className="text-olive/55"> — below categories and list</span>
+            </p>
           </div>
         </section>
 

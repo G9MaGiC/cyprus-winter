@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Disclosure from "@/components/Disclosure";
 import { winterTipsHiking } from "@/data/winter-tips";
 import { SECTION } from "@/lib/design-tokens";

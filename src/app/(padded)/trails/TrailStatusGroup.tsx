@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import TrailCard from "@/components/TrailCard";
 import { trailConditions } from "@/data/trails";
 import type { Trail, TrailConditions } from "@/data/trails";

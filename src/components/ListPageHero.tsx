@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { CARD, HERO, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import Breadcrumbs from "@/components/Breadcrumbs";

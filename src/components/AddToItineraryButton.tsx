@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useItinerary } from "@/hooks/useItinerary";
 import { track } from "@/lib/analytics";
 import { getPlaceById } from "@/data";

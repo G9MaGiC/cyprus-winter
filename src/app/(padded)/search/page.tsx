@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
 import { searchPageMeta } from "@/lib/locale-page-meta";
@@ -56,6 +56,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         showNoResultsOverlay={false}
         className="max-w-xl"
       />
+      {showBrowse && (
+        <p className="text-xs text-olive/60 mt-3 max-w-xl">
+          Type at least 2 characters to match places and trails in our catalog. For open-ended questions, use the AI guide (floating button).
+        </p>
+      )}
       {results.length > 0 && (
         <div className={`mt-8 ${SECTION.headingGap}`}>
           <h2 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>Results for &ldquo;{q}&rdquo;</h2>
