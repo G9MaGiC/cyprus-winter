@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@/i18n/navigation";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { LAST_PLACE_KEY, CHAT_SESSION_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { getSupabaseBrowser } from "@/lib/supabase-browser";
@@ -21,6 +21,7 @@ type Message = { role: "user" | "assistant"; content: string; isRetryable?: bool
 
 const SUGGESTIONS_HOME = [
   "Plan my 3-day winter trip",
+  "Work from 16°C—weekend trails near Limassol",
   "Best wineries with a view",
   "Artemis Trail conditions",
   "Omodos and Commandaria tasting",
@@ -825,7 +826,9 @@ export default function AIAssistant() {
           {/* Suggestions — PILL neutral, terracotta hover */}
           {messages.length <= 2 && !listening && (
             <div className={`shrink-0 ${PANEL_PX} pb-3`}>
-              <p className="text-xs text-olive-muted mb-2 prose-label">Try one, or ask your own</p>
+              <p className="text-xs text-olive-muted mb-2 prose-label">
+                Matched to this page—tap a starter or type below.
+              </p>
               <div className="flex gap-3 overflow-x-auto pb-1 px-1 -mx-1 scrollbar-none snap-x snap-mandatory overscroll-x-contain scroll-touch [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)] sm:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
                 {getSuggestions(normalizedPathname).slice(0, 6).map((s) => (
                   <button

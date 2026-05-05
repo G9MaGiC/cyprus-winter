@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import { setCookieConsent, COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
 

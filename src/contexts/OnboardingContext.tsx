@@ -9,7 +9,7 @@ import {
   startTransition,
   type ReactNode,
 } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import {
   ONBOARDING_TIP_PLAN_EMPTY,
   ONBOARDING_TIP_DISCOVER_FILTER,
