@@ -30,10 +30,37 @@ describe("parseResponse", () => {
     expect(result.metadata).toBeUndefined();
   });
 
+  it("drops metadata fields that are not arrays", () => {
+    const raw = `Some text\n\n---ACTIONS---\n{"cards":{"id":"omodos"},"actions":"open","followUps":"Plan a day"}`;
+    const result = parseResponse(raw);
+    expect(result.prose).toBe("Some text");
+    expect(result.metadata).toBeUndefined();
+  });
+
+  it("keeps only well-formed metadata items", () => {
+    const raw = `Some text\n\n---ACTIONS---\n{"cards":[{"type":"place","id":"omodos","title":"Omodos","reason":"Wine village"},{"type":"place","id":"bad"}],"actions":[{"type":"open_place","label":"See Omodos","payload":{"path":"/discover/omodos"}},{"type":"open_place"}],"followUps":["Plan a day",7]}`;
+    const result = parseResponse(raw);
+    expect(result.metadata?.cards).toEqual([
+      { type: "place", id: "omodos", title: "Omodos", reason: "Wine village" },
+    ]);
+    expect(result.metadata?.actions).toEqual([
+      { type: "open_place", label: "See Omodos", payload: { path: "/discover/omodos" } },
+    ]);
+    expect(result.metadata?.followUps).toEqual(["Plan a day"]);
+  });
+
+  it("drops action payload paths that are not safe internal paths", () => {
+    const raw = `Some text\n\n---ACTIONS---\n{"actions":[{"type":"open_place","label":"External","payload":{"path":"https://evil.example"}},{"type":"open_place","label":"Protocol-relative","payload":{"path":"//evil.example"}},{"type":"open_place","label":"Safe","payload":{"path":"/discover/omodos"}}]}`;
+    const result = parseResponse(raw);
+    expect(result.metadata?.actions).toEqual([
+      { type: "open_place", label: "Safe", payload: { path: "/discover/omodos" } },
+    ]);
+  });
+
   it("trims whitespace around prose and delimiter", () => {
     const raw = `  Trimmed text  \n\n---ACTIONS---\n{"cards":[],"actions":[],"followUps":[]}`;
     const result = parseResponse(raw);
     expect(result.prose).toBe("Trimmed text");
-    expect(result.metadata).toBeDefined();
+    expect(result.metadata).toBeUndefined();
   });
 });
