@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { chatRequestSchema } from "./chat-schema";
+import { chatRequestSchema, sanitizeChatMetadata } from "./chat-schema";
 
 describe("chatRequestSchema", () => {
   it("accepts valid messages array", () => {
@@ -66,5 +66,16 @@ describe("chatRequestSchema", () => {
       messages: [{ role: "user", content: "Hi" }],
     });
     expect(result.success).toBe(true);
+  });
+});
+
+describe("sanitizeChatMetadata", () => {
+  it("drops metadata with invalid array shapes before rendering", () => {
+    expect(
+      sanitizeChatMetadata({
+        followUps: "Make this a day plan",
+        actions: { type: "open_place", label: "Open" },
+      })
+    ).toBeUndefined();
   });
 });
