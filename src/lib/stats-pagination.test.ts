@@ -30,10 +30,10 @@ function createBuilder(
 ): MockBuilder {
   let rangeFrom: number | undefined;
   let rangeTo: number | undefined;
-  let builder: MockBuilder;
+  const builder = {} as MockBuilder;
 
   const chain = () => builder;
-  builder = {
+  Object.assign(builder, {
     select: vi.fn(chain),
     gte: vi.fn(chain),
     lt: vi.fn(chain),
@@ -56,7 +56,7 @@ function createBuilder(
           : rows.slice(rangeFrom, rangeTo + 1);
       return Promise.resolve({ data, error: null }).then(onfulfilled, onrejected);
     },
-  };
+  });
 
   return builder;
 }
@@ -67,7 +67,7 @@ function mockSupabase(tables: Record<string, QueryRow[]>) {
     from: vi.fn((table: string) => createBuilder(table, tables[table] ?? [], rangeCalls)),
   };
 
-  vi.mocked(getSupabase).mockReturnValue(supabase as ReturnType<typeof getSupabase>);
+  vi.mocked(getSupabase).mockReturnValue(supabase as unknown as ReturnType<typeof getSupabase>);
   return { rangeCalls };
 }
 
