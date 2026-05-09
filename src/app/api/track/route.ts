@@ -4,9 +4,11 @@ import { getSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
+import { TRACK_EVENTS } from "@/lib/track-events";
 
 const trackBodySchema = z.object({
   event: z.string().min(1).max(64),
+  eventId: z.string().uuid().optional(),
   sessionId: z.string().max(128).regex(/^[A-Za-z0-9_-]*$/).optional().nullable(),
   properties: z
     .record(z.string(), z.union([z.string().max(200), z.number().finite(), z.boolean(), z.null()]))
@@ -23,23 +25,7 @@ const trackBodySchema = z.object({
     ),
 });
 
-const ALLOWED_EVENTS = new Set([
-  "web_vital",
-  "page_view",
-  "discover_view",
-  "winery_detail_view",
-  "booking_start",
-  "booking_complete",
-  "shop_click",
-  "plan_add",
-  "onboarding_started",
-  "onboarding_dismissed",
-  "onboarding_intent_planning",
-  "onboarding_intent_exploring",
-  "onboarding_intent_browsing",
-  "first_add_to_plan",
-  "first_booking",
-]);
+const ALLOWED_EVENTS = new Set<string>(TRACK_EVENTS);
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   if (!value || typeof value !== "object") return false;
@@ -104,6 +90,21 @@ function normalizeProperties(
   return { ok: true, value: out };
 }
 
+const EVENT_DEDUPE_TTL_MS = 10 * 60 * 1000;
+const recentlySeenEventIds = new Map<string, number>();
+
+function isDuplicateEventId(eventId: string): boolean {
+  const now = Date.now();
+  // Opportunistic cleanup
+  for (const [key, ts] of recentlySeenEventIds) {
+    if (now - ts > EVENT_DEDUPE_TTL_MS) recentlySeenEventIds.delete(key);
+  }
+  const last = recentlySeenEventIds.get(eventId);
+  if (last != null && now - last <= EVENT_DEDUPE_TTL_MS) return true;
+  recentlySeenEventIds.set(eventId, now);
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   let limitResult: RateLimitResult;
   try {
@@ -121,11 +122,19 @@ export async function POST(req: NextRequest) {
       const msg = parsed.error.issues.map((e) => e.message).join("; ") || "Invalid request body";
       return jsonError("BAD_REQUEST", msg, 400);
     }
-    const { event: eventVal, sessionId: sessionIdVal, properties: propertiesVal } = parsed.data;
+    const { event: eventVal, eventId, sessionId: sessionIdVal, properties: propertiesVal } = parsed.data;
     const event = eventVal.trim();
     if (!event || !ALLOWED_EVENTS.has(event)) {
       return jsonError("BAD_REQUEST", "Invalid event", 400);
     }
+
+    if (eventId && isDuplicateEventId(eventId)) {
+      return Response.json(
+        { ok: true, stored: false, deduped: true },
+        { headers: rateLimitSuccessHeaders(limitResult.remaining, 120, limitResult.bypassed) }
+      );
+    }
+
     const sessionIdResult = normalizeSessionId(sessionIdVal ?? null);
     if (!sessionIdResult.ok) {
       return jsonError("BAD_REQUEST", sessionIdResult.error, 400);
@@ -140,6 +149,7 @@ export async function POST(req: NextRequest) {
     if (supabase) {
       const { error } = await supabase.from("conversion_events").insert({
         event,
+        event_id: eventId,
         properties: {
           ...propertiesResult.value,
           user_agent: (req.headers.get("user-agent") ?? "").slice(0, 200) || undefined,
@@ -150,7 +160,7 @@ export async function POST(req: NextRequest) {
       if (error) console.error("Track API storage error:", error);
     }
     return Response.json(
-      { ok: true, stored },
+      { ok: true, stored, deduped: false },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 120, limitResult.bypassed) }
     );
   } catch (err) {

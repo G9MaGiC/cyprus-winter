@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { schemaForLdJson } from "@/lib/schema-ldjson";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -11,16 +13,11 @@ import BottomNav from "@/components/BottomNav";
 import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
+import DebugErrorReporter from "@/components/DebugErrorReporter";
+import DebugErrorBoundary from "@/components/DebugErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
-import OnboardingModal from "@/components/OnboardingModal";
-import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { LAYOUT } from "@/lib/design-tokens";
-import { alternateLanguageUrls } from "@/lib/locale-seo";
-
-const AIAssistantWithBoundary = dynamic(
-  () => import("@/components/AIAssistantWithBoundary"),
-  { loading: () => null }
-);
+import ClientComponents from "@/components/ClientComponents";
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
 
@@ -65,7 +62,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Cyprus Winter",
   },
-  alternates: { canonical: SITE_URL, languages: alternateLanguageUrls("") },
+  alternates: buildStrategyAAlternates("/"),
 };
 
 const webSiteSchema = {
@@ -87,9 +84,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const messages = await getMessages();
+  const locale = await getLocale();
+  const tCommon = await getTranslations({ locale, namespace: "common" });
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <script
           type="application/ld+json"
@@ -103,8 +102,7 @@ export default async function RootLayout({
         {/* JavaScript disabled warning */}
         <noscript>
           <div className="bg-terracotta text-white px-4 py-3 text-center text-sm">
-            <strong>JavaScript is required</strong> for full functionality. 
-            You can still browse trails and places, but features like the itinerary planner and chat require JavaScript.
+            <strong>{tCommon("noscript.title")}</strong> {tCommon("noscript.body")}
           </div>
         </noscript>
         
@@ -112,23 +110,24 @@ export default async function RootLayout({
           href="#main-content"
           className="fixed left-4 top-4 z-[9999] min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-terracotta text-white rounded-full font-medium -translate-y-[200%] focus-visible:translate-y-0 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          Skip to main content
+          {tCommon("skipToContent")}
         </a>
         <NextIntlClientProvider messages={messages}>
-        <Providers>
-          <ConversionTrackerClient />
-          <WebVitalsReporter />
-          <ScrollToTop />
-          <Nav />
-          <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
-            {children}
-          </main>
-          <BottomNav />
-          <FooterWithTranslations />
-        </Providers>
-        <AIAssistantWithBoundary />
-        <OnboardingModal />
-        <CookieConsentBanner />
+          <DebugErrorBoundary>
+            <Providers>
+              <ConversionTrackerClient />
+            <DebugErrorReporter />
+              <WebVitalsReporter />
+              <ScrollToTop />
+              <Nav />
+              <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
+                {children}
+              </main>
+              <BottomNav />
+              <FooterWithTranslations />
+            </Providers>
+          </DebugErrorBoundary>
+          <ClientComponents />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,9 +1,19 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
+
 const OPEN_AI_EVENT = "open-ai-assistant";
 
+function blockingOverlayActive(): boolean {
+  if (typeof document === "undefined") return false;
+  return !!document.querySelector(
+    '[data-overlay-priority="blocking"][data-overlay-active="true"]'
+  );
+}
+
 export function triggerAIAssistant() {
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && !blockingOverlayActive()) {
     window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT));
   }
 }
@@ -14,6 +24,11 @@ type AIAssistantTriggerProps = {
 };
 
 export default function AIAssistantTrigger({ variant = "default", label = "Ask AI" }: AIAssistantTriggerProps) {
+  // Intentionally leave the default label as-is; callers can pass localized `label`.
+  // (Nav uses `nav.askAI` already; this component is used in a few legacy spots.)
+  const tNav = useTranslations("nav");
+  const blocked = useBlockingOverlaysActive();
+
   const className =
     variant === "tertiaryOnDark"
       ? "inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-white/90 hover:text-golden hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation"
@@ -22,9 +37,12 @@ export default function AIAssistantTrigger({ variant = "default", label = "Ask A
   return (
     <button
       type="button"
-      onClick={triggerAIAssistant}
-      className={className}
-      aria-label="Ask the AI for trails, wineries, and trip planning"
+      disabled={blocked}
+      onClick={() => triggerAIAssistant()}
+      className={`${className} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
+      aria-label={
+        blocked ? "Finish onboarding or cookie choices first" : tNav("askAIAria")
+      }
     >
       {variant === "default" ? (
         <>

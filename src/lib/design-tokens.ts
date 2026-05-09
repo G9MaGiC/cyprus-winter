@@ -54,6 +54,18 @@ export const BOTTOM_NAV = {
 /** Nav bar height (h-14) + safe area. Use for spacing content below fixed nav. */
 export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
 
+/** Layering scale — keeps overlays/banners predictable. */
+export const LAYER = {
+  /** Persistent chrome like `BottomNav` and cookie banner. */
+  chrome: "z-40",
+  /** Popovers/menus/tooltips that should sit above chrome but below modals. */
+  popover: "z-[45]",
+  /** Standard modal/dialog overlay. */
+  modal: "z-50",
+  /** Topmost global overlays (e.g. AI assistant) that must beat banners. */
+  topOverlay: "z-[70]",
+} as const;
+
 /** Max-width and structural layout classes. */
 export const LAYOUT = {
   /** Top padding for (padded) pages — clears fixed nav. Complements NAV_OFFSET. */
@@ -126,6 +138,8 @@ export const SECTION = {
   aegeanLink: "inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded",
   /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
   footerBlock: "mt-10 pt-6 border-t border-sand-200/80",
+  /** Top margin for sections within a page — use for consistent block spacing */
+  blockTop: "mt-10 sm:mt-12",
 } as const;
 
 /**
@@ -206,8 +220,14 @@ export const TYPE = {
   sectionSubtitle: "text-sage text-sm sm:text-base leading-relaxed",
   /** Card h3 titles */
   cardTitle: "font-display text-lg font-semibold text-olive group-hover:text-terracotta transition-colors",
+  /** Sub-section h2 (weather conditions, plan map, day panel) — smaller than sectionTitle */
+  subSectionTitle: "font-display text-xl font-semibold leading-tight",
+  /** Sub-section with responsive bump */
+  subSectionTitleLg: "font-display text-xl sm:text-2xl font-semibold leading-tight",
   kicker: "prose-label text-sage",
   kickerOnDark: "prose-label text-white/80",
+  /** Compact card titles (RightNowCard, strip headings) */
+  cardTitleCompact: "font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors",
 } as const;
 
 /** Homepage hero primitives (server components compose these). */
@@ -236,9 +256,9 @@ export const CALLOUT = {
 
 /** Skeleton loading — pulse + palette. Compose with h-* w-* for dimensions. */
 export const SKELETON = {
-  bar: "animate-pulse rounded bg-olive/20",
-  block: "animate-pulse rounded-lg bg-sand-200/70",
-  media: "aspect-[4/3] bg-sand-200/70 animate-pulse",
+  bar: "animate-pulse rounded bg-olive/30",
+  block: "animate-pulse rounded-lg bg-sand-300/60",
+  media: "aspect-[4/3] bg-sand-300/60 animate-pulse",
   card: "rounded-xl bg-white/90 border border-sand-200/80",
 } as const;
 

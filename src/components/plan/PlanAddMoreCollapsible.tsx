@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useMatchMedia } from "@/hooks/useMatchMedia";
 
 type PlanAddMoreCollapsibleProps = {
@@ -17,6 +18,7 @@ export default function PlanAddMoreCollapsible({
   children,
 }: PlanAddMoreCollapsibleProps) {
   const mdUp = useMatchMedia("(min-width: 768px)", false);
+  const tPlan = useTranslations("plan");
 
   if (!hasContent || mdUp) {
     return <div className="flex flex-col gap-12 sm:gap-16 md:gap-20">{children}</div>;
@@ -26,8 +28,8 @@ export default function PlanAddMoreCollapsible({
     <details className="group rounded-2xl border border-sand-200/80 bg-white/70 shadow-sm open:shadow-md open:bg-white/90 transition-shadow">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl p-4 sm:p-5 text-left select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
         <div className="min-w-0">
-          <p className="font-display text-lg font-semibold text-charcoal">Add more to your plan</p>
-          <p className="text-xs text-olive/60 mt-0.5">Templates, pairings, and themed days</p>
+          <p className="font-display text-lg font-semibold text-charcoal">{tPlan("addMoreCollapsibleTitle")}</p>
+          <p className="text-xs text-olive/60 mt-0.5">{tPlan("addMoreCollapsibleSubtitle")}</p>
         </div>
         <ChevronDown
           className="h-5 w-5 shrink-0 text-olive/45 transition-transform duration-200 group-open:rotate-180"

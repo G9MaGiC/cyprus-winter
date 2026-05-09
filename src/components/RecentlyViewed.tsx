@@ -6,9 +6,10 @@
  */
 
 import { useEffect, useState } from "react";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 const typeLabels: Record<string, string> = {
   beach: "Beach",
@@ -31,6 +32,7 @@ function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string
 }
 
 export function RecentlyViewedStrip() {
+  const tCommon = useTranslations("common");
   const [items, setItems] = useState<ReturnType<typeof getRecentlyViewed>>([]);
   const [isClient, setIsClient] = useState(false);
 
@@ -53,7 +55,7 @@ export function RecentlyViewedStrip() {
           </h2>
           <button
             type="button"
-            aria-label="Clear recently viewed"
+            aria-label={tCommon("aria.clearRecentlyViewed")}
             onClick={() => {
               import("@/lib/recently-viewed").then(({ clearRecentlyViewed }) => {
                 clearRecentlyViewed();
@@ -65,19 +67,19 @@ export function RecentlyViewedStrip() {
             Clear
           </button>
         </div>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none snap-x">
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x">
           {items.map((item) => (
-            <Link
+            <AppLink
               key={item.id}
               href={getItemPath(item)}
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
             >
               <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
-              <p className="font-display font-semibold text-olive text-sm truncate group-hover:text-terracotta transition-colors">
+              <p className={`${TYPE.cardTitle} text-sm truncate`}>
                 {item.name}
               </p>
               <p className="text-xs text-sage mt-0.5 truncate">{item.region}</p>
-            </Link>
+            </AppLink>
           ))}
         </div>
       </div>

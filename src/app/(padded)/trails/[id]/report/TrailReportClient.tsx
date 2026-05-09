@@ -1,27 +1,23 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { useParams, notFound } from "next/navigation";
 import { trails } from "@/data/trails";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA, TYPE } from "@/lib/design-tokens";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
+import { getApiErrorCode, getRetryAfterSeconds, safeJson } from "@/lib/api-client";
 
-const STATUS_OPTIONS = [
-  { value: "open", label: "Open", desc: "Good to go" },
-  { value: "caution", label: "Caution", desc: "Muddy, wind, or minor issues" },
-  { value: "closed", label: "Closed", desc: "Snow, ice, or unsafe" },
-] as const;
-
-const SURFACE_OPTIONS = [
-  { value: "dry", label: "Dry", desc: "Firm ground, good grip" },
-  { value: "muddy", label: "Muddy", desc: "Soft or wet patches" },
-  { value: "snow", label: "Snow", desc: "Snow on the ground" },
-  { value: "icy", label: "Icy", desc: "Ice, may need spikes" },
-] as const;
+const STATUS_VALUES = ["open", "caution", "closed"] as const;
+const SURFACE_VALUES = ["dry", "muddy", "snow", "icy"] as const;
 
 export default function TrailReportClient() {
+  const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
+  const tErrors = useTranslations("errors");
+  const tReport = useTranslations("trails.report");
   const params = useParams();
   const id = params?.id as string;
   const trail = typeof id === "string" ? trails.find((t) => t.id === id || t.slug === id) : undefined;
@@ -79,18 +75,24 @@ export default function TrailReportClient() {
           reporterEmail: email.trim() || undefined,
         }),
       });
-      const data = await res.json();
+      const data = await safeJson(res);
       if (!isMountedRef.current) return;
       if (!res.ok) {
-        const msg =
-          data.message ??
-          (typeof data.error === "string" ? data.error : data.error?.message) ??
-          "Failed to submit";
-        throw new Error(msg);
+        const code = getApiErrorCode(data);
+        const retryAfterSeconds = getRetryAfterSeconds(res);
+        if (code === "RATE_LIMITED") {
+          throw new Error(
+            typeof retryAfterSeconds === "number"
+              ? tErrors("rateLimited.retryIn", { seconds: retryAfterSeconds })
+              : tErrors("api.RATE_LIMITED")
+          );
+        }
+        if (code && tErrors.has(`api.${code}`)) throw new Error(tErrors(`api.${code}`));
+        throw new Error(tErrors("common.title"));
       }
       setDone(true);
     } catch (err) {
-      if (isMountedRef.current) setError(err instanceof Error ? err.message : "Didn't save. Try again or head back to the trail.");
+      if (isMountedRef.current) setError(err instanceof Error ? err.message : tErrors("common.title"));
     } finally {
       if (isMountedRef.current) setLoading(false);
     }
@@ -103,35 +105,35 @@ export default function TrailReportClient() {
           className="p-6 rounded-lg bg-terracotta/10 border border-terracotta/20 text-center"
           role="status"
           aria-live="polite"
-          aria-label="Report submitted successfully"
+          aria-label={tReport("success.aria")}
         >
-          <p className="text-lg font-semibold text-olive flex items-center justify-center gap-2">
+          <p className={`${TYPE.cardTitle} flex items-center justify-center gap-2`}>
             <span className="w-8 h-8 rounded-full bg-terracotta/20 text-terracotta flex items-center justify-center text-sm" aria-hidden>✓</span>
-            Thanks for reporting.
+            {tCommon("thanksForReporting")}
           </p>
-          <p className="text-sm text-olive/70 mt-2">Hikers heading to {trail.region} will use this. Every report counts.</p>
+          <p className="text-sm text-olive/70 mt-2">{tReport("success.body", { region: trail.region })}</p>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
-            <Link
+            <AppLink
               ref={successLinkRef}
               href={`/trails/${trail.id}`}
               className={`min-w-[140px] justify-center ${CTA.primaryCompact}`}
-              title={`Back to ${trail.name}`}
+              title={tReport("success.backTitle", { name: trail.name })}
             >
-              Back to {trail.name}
-            </Link>
-            <Link
+              {tReport("success.backCta", { name: trail.name })}
+            </AppLink>
+            <AppLink
               href={`/plan?add=${trail.id}`}
               className={`min-w-[140px] justify-center ${CTA.secondaryCompact}`}
-              title={`Add ${trail.name} to your plan`}
+              title={tReport("success.addTitle", { name: trail.name })}
             >
-              Add {trail.name} to your plan
-            </Link>
-            <Link
+              {tReport("success.addCta", { name: trail.name })}
+            </AppLink>
+            <AppLink
               href="/trails"
               className={`min-w-[140px] justify-center ${CTA.chipTertiary}`}
             >
-              Report another trail
-            </Link>
+              {tCommon("reportAnotherTrail")}
+            </AppLink>
           </div>
         </div>
       </div>
@@ -140,23 +142,26 @@ export default function TrailReportClient() {
 
   return (
     <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
+      <nav className="flex flex-col gap-1 mb-6" aria-label={tCommon("aria.pageNavigation")}>
         <BackLink href={`/trails/${trail.id}`} label={`Back to ${trail.name}`} />
         <Breadcrumbs
           items={[
-            { label: "Home", href: "/" },
-            { label: "Trails", href: "/trails" },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("trails"), href: "/trails" },
             { label: trail.name, href: `/trails/${trail.id}` },
-            { label: "Report conditions", href: `/trails/${trail.id}/report`, isCurrent: true },
+            { label: tCommon("breadcrumbs.reportConditions"), href: `/trails/${trail.id}/report`, isCurrent: true },
           ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
       </nav>
-      <h1 className="font-display text-2xl font-bold text-olive mt-4">
-        Report conditions
+      <h1 className={`${TYPE.sectionTitle} text-olive mt-4`}>
+        {tCommon("reportConditions")}
       </h1>
       <p className="text-olive/70 text-sm mt-1" id="report-context">
-        Reporting: <strong className="text-olive/90">{trail.name}</strong>. Help others by sharing what you saw. Quick and anonymous if you prefer.
+        {tReport.rich("context", {
+          name: trail.name,
+          strong: (chunks) => <strong className="text-olive/90">{chunks}</strong>,
+        })}
       </p>
 
       <form
@@ -166,34 +171,34 @@ export default function TrailReportClient() {
         noValidate
       >
         <div role="group" aria-labelledby="status-label">
-          <label id="status-label" className="block text-sm font-medium text-olive mb-2">Status</label>
+          <label id="status-label" className="block text-sm font-medium text-olive mb-2">{tReport("fields.status")}</label>
           <div className="flex flex-wrap gap-2">
-            {STATUS_OPTIONS.map((o) => (
+            {STATUS_VALUES.map((value) => (
               <button
-                key={o.value}
+                key={value}
                 type="button"
-                title={o.desc}
-                onClick={() => setStatus(o.value)}
-                className={status === o.value ? CTA.chipPrimary : CTA.chipSecondary}
+                title={tReport(`options.status.${value}.desc`)}
+                onClick={() => setStatus(value)}
+                className={status === value ? CTA.chipPrimary : CTA.chipSecondary}
               >
-                {o.label}
+                {tReport(`options.status.${value}.label`)}
               </button>
             ))}
           </div>
         </div>
 
         <div role="group" aria-labelledby="surface-label">
-          <label id="surface-label" className="block text-sm font-medium text-olive mb-2">Surface</label>
+          <label id="surface-label" className="block text-sm font-medium text-olive mb-2">{tReport("fields.surface")}</label>
           <div className="flex flex-wrap gap-2">
-            {SURFACE_OPTIONS.map((o) => (
+            {SURFACE_VALUES.map((value) => (
               <button
-                key={o.value}
+                key={value}
                 type="button"
-                title={o.desc}
-                onClick={() => setSurface(o.value)}
-                className={surface === o.value ? CTA.chipPrimary : CTA.chipSecondary}
+                title={tReport(`options.surface.${value}.desc`)}
+                onClick={() => setSurface(value)}
+                className={surface === value ? CTA.chipPrimary : CTA.chipSecondary}
               >
-                {o.label}
+                {tReport(`options.surface.${value}.label`)}
               </button>
             ))}
           </div>
@@ -201,7 +206,7 @@ export default function TrailReportClient() {
 
         <div>
           <label htmlFor="note" className="block text-sm font-medium text-olive mb-2">
-            Note (optional)
+            {tReport("fields.note")}
           </label>
           <textarea
             id="note"
@@ -210,14 +215,14 @@ export default function TrailReportClient() {
             rows={3}
             maxLength={500}
             className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
-            placeholder="e.g. Muddy near the stream crossing. Microspikes helped."
+            placeholder={tReport("placeholders.note")}
           />
           <p className="mt-1 text-xs text-olive/60">{note.length}/500</p>
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-olive mb-2">
-            Email (optional, for verification)
+            {tReport("fields.email")}
           </label>
           <input
             id="email"
@@ -226,7 +231,7 @@ export default function TrailReportClient() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
-            placeholder="your@email.com"
+            placeholder={tReport("placeholders.email")}
           />
         </div>
 
@@ -239,7 +244,7 @@ export default function TrailReportClient() {
             role="alert"
           >
             <p className="text-sm text-olive/90 break-words">{error}</p>
-            <p className="text-xs text-olive/70 mt-1">Check your connection, try again, or go back to the trail.</p>
+            <p className="text-xs text-olive/70 mt-1">{tReport("errorHelp")}</p>
           </div>
         )}
 
@@ -250,7 +255,7 @@ export default function TrailReportClient() {
           aria-live="polite"
           className={`w-full py-3 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed focus-visible:disabled:ring-0 ${CTA.primaryCompact}`}
         >
-          {loading ? "Submitting…" : "Submit report"}
+          {loading ? tReport("submit.loading") : tReport("submit.idle")}
         </button>
       </form>
     </div>

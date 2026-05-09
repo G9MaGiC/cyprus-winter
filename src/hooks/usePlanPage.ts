@@ -22,8 +22,7 @@ export function usePlanPage() {
     setActiveDay,
     hydrated,
     copied,
-    addToDay,
-    addUniqueToDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -43,23 +42,11 @@ export function usePlanPage() {
   const activeDaysCount = Object.keys(days).filter(
     (d) => (days[Number(d)] ?? []).length > 0
   ).length;
-  const highestUsedDay = Object.entries(days).reduce((max, [d, ids]) => {
-    const day = Number(d);
-    if (!Array.isArray(ids) || ids.length === 0) return max;
-    return Math.max(max, day);
-  }, 1);
-  const adaptiveDaysCount = Math.min(MAX_DAYS, Math.max(3, highestUsedDay + 1));
-  const displayDaysCount = tripLength ?? (hasContent ? adaptiveDaysCount : 1);
+  const displayDaysCount = tripLength ?? (hasContent ? MAX_DAYS : 1);
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  const { lastUrlAddCount } = usePlanUrlActions({
-    hydrated,
-    hasContent,
-    getPlace,
-    addUniqueToDay,
-    applyTemplate,
-  });
+  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDayIfMissing, applyTemplate });
 
   const scrollBehavior = useCallback(
     () =>
@@ -111,26 +98,26 @@ export function usePlanPage() {
   const handleComboClick = useCallback(
     (ids: string[], label: string) => {
       if (!hasContent) {
-        for (const id of ids) addToDay(id);
+        for (const id of ids) addToDayIfMissing(id);
         return;
       }
       setComboChoice({ label, ids });
     },
-    [hasContent, addToDay]
+    [hasContent, addToDayIfMissing]
   );
 
   const handleAddCombo = useCallback(() => {
     if (!comboChoice) return;
-    for (const id of comboChoice.ids) addToDay(id);
+    for (const id of comboChoice.ids) addToDayIfMissing(id);
     setComboChoice(null);
-  }, [comboChoice, addToDay]);
+  }, [comboChoice, addToDayIfMissing]);
 
   const handleReplaceCombo = useCallback(() => {
     if (!comboChoice) return;
     clearDay();
-    for (const id of comboChoice.ids) addToDay(id);
+    for (const id of comboChoice.ids) addToDayIfMissing(id);
     setComboChoice(null);
-  }, [comboChoice, clearDay, addToDay]);
+  }, [comboChoice, clearDay, addToDayIfMissing]);
 
   const handleClearDayConfirm = useCallback(() => {
     clearDay();
@@ -168,7 +155,7 @@ export function usePlanPage() {
     activeItems,
     hydrated,
     copied,
-    addToDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -179,7 +166,6 @@ export function usePlanPage() {
     copyShareLink,
     linkCopied,
     sharePath,
-    lastUrlAddCount,
     // Derived
     totalPlaces,
     activeDaysCount,

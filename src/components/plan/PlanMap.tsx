@@ -3,8 +3,9 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Link } from "@/i18n/navigation";
-import { TOKENS, MAP_ICON_SHADOW } from "@/lib/design-tokens";
+import AppLink from "@/components/AppLink";
+import { TOKENS, MAP_ICON_SHADOW, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export type PlanMapItem = {
   id: string;
@@ -49,6 +50,7 @@ type PlanMapProps = {
 };
 
 export default function PlanMap({ items, className = "" }: PlanMapProps) {
+  const tCommon = useTranslations("common");
   if (items.length === 0) return null;
 
   return (
@@ -65,7 +67,7 @@ export default function PlanMap({ items, className = "" }: PlanMapProps) {
         attributionControl
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">${tCommon("map.openStreetMap")}</a>`}
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {items.map((item) => (
@@ -73,19 +75,19 @@ export default function PlanMap({ items, className = "" }: PlanMapProps) {
             <Popup>
               <div className="min-w-[200px]">
                 <span className="text-xs font-medium text-olive/70">Day {item.day}</span>
-                <Link
+                <AppLink
                   href={item.href}
-                  className="font-semibold text-charcoal hover:text-terracotta block mt-0.5 mb-1"
+                  className={`${TYPE.cardTitle} block mt-0.5 mb-1`}
                 >
                   {item.name}
-                </Link>
+                </AppLink>
                 <p className="text-xs text-olive/70 mb-3">{item.region}</p>
-                <Link
+                <AppLink
                   href={item.href}
                   className="text-sm font-medium text-terracotta hover:underline"
                 >
                   View details →
-                </Link>
+                </AppLink>
               </div>
             </Popup>
           </Marker>

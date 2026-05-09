@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { TYPE } from "@/lib/design-tokens";
 import { useTrapFocus } from "@/lib/useTrapFocus";
 import PlacePicker from "@/components/PlacePicker";
+import { useTranslations } from "next-intl";
 
 type Props = {
   activeDayItems: string[];
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Props) {
+  const tCommon = useTranslations("common");
   const trapFocus = useTrapFocus();
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveRef = useRef<HTMLElement | null>(null);
@@ -61,7 +63,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
             type="button"
             onClick={handleClose}
             className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl text-olive/70 hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label="Close"
+            aria-label={tCommon("aria.close")}
           >
             <span className="text-lg font-medium" aria-hidden>×</span>
           </button>

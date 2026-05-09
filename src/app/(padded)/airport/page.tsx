@@ -1,33 +1,53 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { airportPageMeta } from "@/lib/locale-page-meta";
 import { airports } from "@/data/airport";
+import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { winterTipsPractical } from "@/data/winter-tips";
-import { LAYOUT, CARD, CTA, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
+import { TrackOnClick } from "@/components/TrackOnClick";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  airportPageMeta,
-  "/airport",
-  routing.defaultLocale
-);
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "airport.page" });
+  const title = t("meta.title");
+  const description = t("meta.description");
+  const alternates = buildStrategyAAlternates("/airport");
+  return {
+    title,
+    description,
+    alternates,
+    openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogAlt") }],
+    },
+  };
+}
 
 const CITY_GREEK: Record<string, string> = {
   Larnaca: "Λάρνακα",
   Paphos: "Πάφος",
 };
 
-const FIRST_HOUR_STEPS = [
-  { step: "1", label: "Arrivals" },
-  { step: "2", label: "Baggage" },
-  { step: "3", label: "Transport" },
-  { step: "4", label: "You're out" },
-];
-
-export default function AirportPage() {
+export default async function AirportPage() {
+  const [tNav, tAirport] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("airport.page"),
+  ]);
+  const FIRST_HOUR_STEPS = [
+    { step: "1", label: tAirport("firstHour.steps.arrivals") },
+    { step: "2", label: tAirport("firstHour.steps.baggage") },
+    { step: "3", label: tAirport("firstHour.steps.transport") },
+    { step: "4", label: tAirport("firstHour.steps.out") },
+  ];
   return (
     <div className="min-h-screen bg-sand">
       <div
@@ -35,22 +55,44 @@ export default function AirportPage() {
       >
         <ListPageHero
           backHref="/"
-          backLabel="Home"
-          title="Just landed?"
-          description="Transport from Larnaca and Paphos. Taxis, buses, car hire—you're sorted."
-          descriptionSecondary="Coast mild, Troodos cooler. Pack layers."
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Arriving", href: "/airport", isCurrent: true }]}
+          backLabel={tNav("home")}
+          title={tAirport("hero.title")}
+          description={tAirport("hero.description")}
+          descriptionSecondary={tAirport("hero.descriptionSecondary")}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("arriving"), href: "/airport", isCurrent: true }]}
           backgroundImage="/images/cyprus/cyprus-airport-coast.jpg"
-          backgroundImageAlt="Cyprus coast, Mediterranean bay—welcome to the island"
+          backgroundImageAlt={tAirport("hero.imageAlt")}
         >
-          <Link
+          <AppLink
             href="/plan?template=short-stay"
+            data-testid="airport-hero-plan48-cta"
             className={`${CTA.tertiaryOnDark} mt-4 inline-block`}
-            aria-label="Plan your first 48 hours"
+            aria-label={tAirport("hero.plan48Aria")}
           >
-            Plan your first 48 hours
-          </Link>
+            {tAirport("hero.plan48Cta")}
+          </AppLink>
         </ListPageHero>
+
+        <section aria-label="Arrival quick actions" className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
+          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>Arrive faster</p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
+              <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">
+                {tAirport("hero.plan48Cta")}
+              </AppLink>
+            </TrackOnClick>
+            <TrackOnClick event="arrival_quick_action_click" properties={{ action: "weather_now" }}>
+              <AppLink href="/weather" className={`${CTA.secondaryCompact} justify-center`} data-testid="airport-quick-weather">
+                {tAirport("footer.weatherCta")}
+              </AppLink>
+            </TrackOnClick>
+            <TrackOnClick event="arrival_quick_action_click" properties={{ action: "discover_nearby" }}>
+              <AppLink href="/discover" className={`${CTA.secondaryCompact} justify-center`} data-testid="airport-quick-discover">
+                {tAirport("footer.discoverCta")}
+              </AppLink>
+            </TrackOnClick>
+          </div>
+        </section>
 
         {/* Essentials — tappable numbers for mobile */}
         <section
@@ -58,28 +100,28 @@ export default function AirportPage() {
           className={`rounded-xl bg-aegean/10 border border-aegean/30 ${CARD.content}`}
         >
           <h2 id="essentials-heading" className="sr-only">
-            Essential numbers
+            {tAirport("essentials.srHeading")}
           </h2>
           <p className="text-aegean font-semibold text-sm">
-            <a href="tel:112" className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
-              Emergency <strong>112</strong>
+            <a href="tel:112" className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
+              {tAirport("essentials.emergency")} <strong>112</strong>
             </a>
             {" · "}
-            Tourist info <strong>1460</strong>
+            {tAirport("essentials.touristInfo")} <strong>1460</strong>
             {" · "}
-            <a href="tel:199" className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
-              Ambulance <strong>199</strong>
+            <a href="tel:199" className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
+              {tAirport("essentials.ambulance")} <strong>199</strong>
             </a>
           </p>
-          <p className="text-olive/70 text-xs mt-1">Save these. Hope you never need them.</p>
+          <p className="text-olive/70 text-xs mt-1">{tAirport("essentials.note")}</p>
         </section>
 
         {/* Your first hour — orient jetlagged arrivals */}
         <section aria-labelledby="first-hour-heading" className={`rounded-xl ${CARD.base} ${CARD.content}`}>
-          <h2 id="first-hour-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
-            Your first hour
+          <h2 id="first-hour-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
+            {tAirport("firstHour.title")}
           </h2>
-          <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto pb-1">
+          <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto pb-1 scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain">
             {FIRST_HOUR_STEPS.map(({ step, label }, i) => (
               <div key={step} className="flex items-center shrink-0 gap-2">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-terracotta/15 text-terracotta text-sm font-semibold">
@@ -98,14 +140,15 @@ export default function AirportPage() {
 
         {/* Airport picker — prominent for tired arrivals */}
         <section aria-labelledby="airport-picker-heading">
-          <h2 id="airport-picker-heading" className={`font-display font-semibold text-olive ${SECTION.headingGap}`}>
-            Which airport?
+          <h2 id="airport-picker-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
+            {tAirport("picker.title")}
           </h2>
-          <nav aria-label="Choose your airport" className="flex gap-3">
+          <nav aria-label={tAirport("picker.aria")} className="flex gap-3">
             {airports.map((airport) => (
               <a
                 key={airport.code}
                 href={`#airport-${airport.code}`}
+                data-testid={`airport-picker-${airport.code.toLowerCase()}`}
                 className={`flex-1 min-h-[52px] flex items-center justify-center rounded-xl border-2 border-terracotta/40 text-terracotta font-semibold hover:bg-terracotta/10 hover:border-terracotta/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2`}
               >
                 {airport.code} — {airport.city}
@@ -126,7 +169,7 @@ export default function AirportPage() {
               <div className="bg-terracotta text-white px-6 py-5">
                 <h2
                   id={`airport-${airport.code}-heading`}
-                  className="font-display text-xl sm:text-2xl font-semibold text-white"
+                  className={`${TYPE.subSectionTitleLg} text-white`}
                 >
                   {airport.code} — {airport.name}
                 </h2>
@@ -140,7 +183,7 @@ export default function AirportPage() {
 
               <div className="p-6 space-y-6">
                 <div>
-                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>Transport</h3>
+                  <h3 className={`${TYPE.subSectionTitle} text-olive ${SECTION.titleGap}`}>{tAirport("sections.transportTitle")}</h3>
                   <ul className="space-y-3" role="list">
                     {airport.transport.map((t) => (
                       <li
@@ -177,7 +220,7 @@ export default function AirportPage() {
                 </div>
 
                 <div>
-                  <h3 className={`font-display font-semibold text-olive ${SECTION.titleGap}`}>Things to know</h3>
+                  <h3 className={`${TYPE.subSectionTitle} text-olive ${SECTION.titleGap}`}>{tAirport("sections.tipsTitle")}</h3>
                   <ul className="space-y-2" role="list">
                     {airport.tips.map((tip, i) => (
                       <li
@@ -205,22 +248,29 @@ export default function AirportPage() {
         {/* Closing — warm, Cyprus Winter voice */}
         <footer className="text-center space-y-6 pb-4">
           <p className="text-olive/80 text-base max-w-lg mx-auto leading-relaxed break-words">
-            Drop your bags. Find a harbour café. Order a coffee and watch the light. Tonight, just arrive.
-            The island isn&apos;t going anywhere.
+            {tAirport("footer.body")}
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">
-            <Link href="/plan?template=short-stay" className={CTA.primaryCompact}>
-              Plan your first 48 hours
-            </Link>
-            <Link href="/plan?template=classic-7" className={CTA.secondaryCompact}>
-              Plan your first week
-            </Link>
-            <Link href="/discover" className={CTA.secondaryCompact}>
-              Discover places
-            </Link>
-            <Link href="/weather" className={CTA.secondaryCompact}>
-              Check weather
-            </Link>
+            <AppLink
+              href="/plan?template=short-stay"
+              data-testid="airport-footer-plan48-cta"
+              className={CTA.primaryCompact}
+            >
+              {tAirport("hero.plan48Cta")}
+            </AppLink>
+            <AppLink
+              href="/plan?template=classic-7"
+              data-testid="airport-footer-planweek-cta"
+              className={CTA.secondaryCompact}
+            >
+              {tAirport("footer.planWeekCta")}
+            </AppLink>
+            <AppLink href="/discover" data-testid="airport-footer-discover-cta" className={CTA.secondaryCompact}>
+              {tAirport("footer.discoverCta")}
+            </AppLink>
+            <AppLink href="/weather" data-testid="airport-footer-weather-cta" className={CTA.secondaryCompact}>
+              {tAirport("footer.weatherCta")}
+            </AppLink>
           </div>
         </footer>
       </div>

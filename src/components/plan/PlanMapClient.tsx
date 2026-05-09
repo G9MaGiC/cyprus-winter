@@ -5,18 +5,24 @@ import { useMemo } from "react";
 import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { getPlaceCoords } from "@/lib/place-coords";
 import type { PlanMapItem } from "./PlanMap";
+import { useTranslations } from "next-intl";
 
-const PlanMap = dynamic(() => import("./PlanMap").then((m) => m.default), {
-  ssr: false,
-  loading: () => (
+function PlanMapLoading() {
+  const tCommon = useTranslations("common");
+  return (
     <div
       className="min-h-[280px] rounded-xl border border-sand-200/80 bg-sand-100/80 flex items-center justify-center animate-pulse"
       role="status"
       aria-live="polite"
     >
-      <p className="text-sm text-olive/60">Loading map…</p>
+      <p className="text-sm text-olive/60">{tCommon("loading.map")}</p>
     </div>
-  ),
+  );
+}
+
+const PlanMap = dynamic(() => import("./PlanMap").then((m) => m.default), {
+  ssr: false,
+  loading: () => <PlanMapLoading />,
 });
 
 export default function PlanMapClient() {

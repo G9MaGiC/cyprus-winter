@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { bookWineryMetadata } from "@/lib/locale-metadata-dynamic";
-import { routing } from "@/i18n/routing";
 import { wineries } from "@/data/wineries";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import WineryBookingForm from "./WineryBookingForm";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -19,7 +19,13 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  return bookWineryMetadata(id, routing.defaultLocale);
+  const winery = wineries.find((w) => w.id === id);
+  if (!winery) return { title: "Not found" };
+  return {
+    title: `Book a tasting | ${winery.name} | Cyprus Winter`,
+    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`,
+    alternates: buildStrategyAAlternates(`/book/winery/${id}`),
+  };
 }
 
 export default async function WineryBookPage({
@@ -30,19 +36,24 @@ export default async function WineryBookPage({
   const { id } = await params;
   const winery = wineries.find((w) => w.id === id);
   if (!winery) notFound();
+  const [tNav, tCommon, tBookPages] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("book.pages"),
+  ]);
 
   const canonicalUrl = `${SITE_URL}/book/winery/${id}`;
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
-        <BackLink href={`/discover/${id}`} label={`Back to ${winery.name}`} />
+      <nav className={`flex flex-col gap-1 ${SECTION.headingGap}`} aria-label={tBookPages("pageNavAria")}>
+        <BackLink href={`/discover/${id}`} label={tCommon("backTo", { label: winery.name })} />
         <Breadcrumbs
           items={[
-            { label: "Home", href: "/" },
-            { label: "Discover", href: "/discover" },
+            { label: tNav("home"), href: "/" },
+            { label: tNav("discover"), href: "/discover" },
             { label: winery.name, href: `/discover/${id}` },
-            { label: "Book tasting", href: canonicalUrl, isCurrent: true },
+            { label: tCommon("breadcrumbs.bookTasting"), href: canonicalUrl, isCurrent: true },
           ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
@@ -51,55 +62,58 @@ export default async function WineryBookPage({
       <div className="mt-6">
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/20 text-terracotta">
-            Wine tasting
+            {tCommon("wineTasting")}
           </span>
           {winery.isVerified && (
-            <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean" title="Verified partner: receives booking requests directly">
-              Verified partner
+            <span
+              className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean"
+              title={tCommon("verifiedPartnerTitle")}
+            >
+              {tCommon("verifiedPartner")}
             </span>
           )}
         </div>
-        <h1 className="font-display text-3xl font-bold text-olive mt-3">
-          Book a tasting
+        <h1 className={`${TYPE.pageTitle} mt-3`}>
+          {tCommon("bookTasting")}
         </h1>
         <p className="text-olive/80 mt-1 break-words">{winery.name} · {winery.region}</p>
         {winery.tastingInfo && (
           <p className="text-sm text-olive/70 mt-2 break-words prose-body">{winery.tastingInfo}</p>
         )}
         <p className="text-sm text-olive/70 mt-3 max-w-lg break-words prose-body">
-          Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they&apos;ll confirm by email.
+          {tBookPages("wineryDetail.intro")}
         </p>
         <p className="text-xs text-olive/60 mt-2 break-words">
-          For adults of legal drinking age. Drink responsibly.
+          {tBookPages("wineryDetail.disclaimer")}
         </p>
       </div>
 
       <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />
 
       {(winery.bookingUrl || winery.contactPhone) && (
-        <section className="mt-8 space-y-4" aria-label="Other ways to book">
+        <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>
           {winery.bookingUrl && (
             <p className="text-sm text-olive/80">
-              Or{" "}
+              {tBookPages("wineryDetail.other.or")}{" "}
               <a
                 href={winery.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta font-medium hover:underline hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
-                aria-label="Book on the winery website (opens in new tab)"
+                aria-label={tBookPages("wineryDetail.other.bookDirectAria")}
               >
-                book on the winery website
+                {tBookPages("wineryDetail.other.bookDirectCta")}
               </a>
-              {" "}— they often have more availability.
+              {" "}{tBookPages("wineryDetail.other.bookDirectSuffix")}
             </p>
           )}
           {winery.contactPhone && (
             <p className="text-sm text-olive/70">
-              Or call{" "}
+              {tBookPages("wineryDetail.other.callPrefix")}{" "}
               <a href={`tel:${winery.contactPhone}`} className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta hover:underline font-medium hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2">
                 {winery.contactPhone}
               </a>
-              {" "}to reserve or check availability — they&apos;re usually happy to help.
+              {" "}{tBookPages("wineryDetail.other.callSuffix")}
             </p>
           )}
         </section>

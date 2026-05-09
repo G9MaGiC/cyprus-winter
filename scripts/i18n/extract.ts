@@ -7,6 +7,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const importPath = (p: string) => pathToFileURL(p).href;
@@ -22,6 +23,10 @@ function add(out: Record<string, string>, key: string, value: string): void {
   const v = value.trim();
   if (v.length < 2 || /^[\d\s\-\.]+$/.test(v)) return;
   out[key] = v;
+}
+
+function stableId(input: string): string {
+  return createHash("sha1").update(input).digest("hex").slice(0, 10);
 }
 
 /** Extract from data files via dynamic import (requires tsx) */
@@ -180,23 +185,47 @@ async function extractData(out: Record<string, string>): Promise<void> {
 }
 
 async function extractLib(out: Record<string, string>): Promise<void> {
-  const { navPrimaryLinks, navMoreLinks, bottomPrimaryLinks, mobileMenuGroups } = await import(
+  const { navPrimaryLinks, navMoreLinks, bottomPrimaryLinks } = await import(
     importPath(path.join(SRC, "lib/nav-links.ts"))
   );
-  const { BEST_FOR_OPTIONS } = await import(importPath(path.join(SRC, "lib/best-for.ts")));
-  const { JOURNEY_CONFIG } = await import(importPath(path.join(SRC, "lib/discovery-journeys.ts")));
+  let BEST_FOR_OPTIONS: { slug: string; label: string }[] = [];
+  try {
+    const mod = await import(importPath(path.join(SRC, "lib/best-for.ts")));
+    BEST_FOR_OPTIONS = mod.BEST_FOR_OPTIONS ?? [];
+  } catch {
+    /* best-for.ts optional */
+  }
+  let JOURNEY_CONFIG: Record<string, { label?: string; sub?: string }> = {};
+  try {
+    const mod = await import(importPath(path.join(SRC, "lib/discovery-journeys.ts")));
+    JOURNEY_CONFIG = mod.JOURNEY_CONFIG ?? {};
+  } catch {
+    /* discovery-journeys.ts optional */
+  }
 
-  const addNav = (link: { href: string; label: string }) => {
+  const labelKeyToLabel: Record<string, string> = {
+    home: "Home",
+    discover: "Discover",
+    trails: "Trails",
+    plan: "Plan",
+    weather: "Weather",
+    events: "Events",
+    bookings: "Bookings",
+    arriving: "Arriving",
+    airport: "Airport",
+    secrets: "Local secrets",
+    account: "Account",
+    team: "Team",
+    search: "Search",
+  };
+  const addNav = (link: { href: string; labelKey: string }) => {
     const k = link.href === "/" ? "home" : link.href.replace(/\//g, "_").replace(/^_/, "");
-    add(out, `common.nav.${k}`, link.label);
+    const label = labelKeyToLabel[link.labelKey] ?? link.labelKey;
+    add(out, `common.nav.${k}`, label);
   };
   navPrimaryLinks.forEach(addNav);
   navMoreLinks.forEach(addNav);
   bottomPrimaryLinks.forEach(addNav);
-  for (const g of mobileMenuGroups) {
-    add(out, `common.nav.group.${g.title.toLowerCase().replace(/\s+/g, "_")}`, g.title);
-    g.links.forEach(addNav);
-  }
 
   for (const opt of BEST_FOR_OPTIONS) {
     add(out, `common.bestFor.${opt.slug}`, opt.label);
@@ -257,7 +286,6 @@ function extractTSX(out: Record<string, string>): void {
 
   const translatableAttrs = ["alt", "aria-label", "title", "placeholder"];
   const files = [...walk(path.join(SRC, "app")), ...walk(path.join(SRC, "components"))];
-  let keyIndex = 0;
 
   for (const file of files) {
     const rel = path
@@ -273,14 +301,14 @@ function extractTSX(out: Record<string, string>): void {
       while ((m = re.exec(content)) !== null) {
         const val = m[1].replace(/\\"/g, '"').trim();
         if (val.length > 2) {
-          add(out, `ui.${rel}.${attr}_${keyIndex++}`, val);
+          add(out, `ui.${rel}.${attr}.${stableId(val)}`, val);
         }
       }
       const re2 = new RegExp(`${attr}={\\s*["']([^"']{3,}?)["']\\s*}`, "g");
       while ((m = re2.exec(content)) !== null) {
         const val = m[1].replace(/\\"/g, '"').trim();
         if (val.length > 2) {
-          add(out, `ui.${rel}.${attr}_${keyIndex++}`, val);
+          add(out, `ui.${rel}.${attr}.${stableId(val)}`, val);
         }
       }
     }
@@ -296,7 +324,7 @@ function extractTSX(out: Record<string, string>): void {
         !val.startsWith("{") &&
         !val.includes("className")
       ) {
-        add(out, `ui.${rel}.text_${keyIndex++}`, val);
+        add(out, `ui.${rel}.text.${stableId(val)}`, val);
       }
     }
   }

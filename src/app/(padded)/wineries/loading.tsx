@@ -1,4 +1,5 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 function CardSkeleton() {
   return (
@@ -18,13 +19,14 @@ function CardSkeleton() {
 }
 
 export default function WineriesLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading wineries"
+      aria-label={t("loading.wineries")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />

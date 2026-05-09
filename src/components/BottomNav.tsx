@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
-import { Link, usePathname } from "@/i18n/navigation";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
+import AppLink from "@/components/AppLink";
+import { usePathname } from "next/navigation";
 import { isActive } from "@/lib/nav";
 import { bottomOverflowLinks, bottomPrimaryLinks } from "@/lib/nav-links";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
@@ -9,17 +11,19 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
-  const moreTriggerRef = useRef<HTMLButtonElement>(null);
-  const firstMenuItemRef = useRef<HTMLAnchorElement>(null);
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
+  const moreMenuRef = useRef<HTMLDivElement>(null);
   const { stickyPlanVisible } = useStickyPlanBar();
   const { user } = useAuth();
   const overflowLinksResolved = useMemo(
     () =>
       bottomOverflowLinks.map((l) =>
         l.href === "/account" && !user
-          ? { href: "/login", label: "Sign in" }
+          ? { href: "/login", labelKey: "signIn" as const }
           : l
       ),
     [user]
@@ -27,112 +31,136 @@ export default function BottomNav() {
 
   const planLink = bottomPrimaryLinks.find((l) => l.href === "/plan");
   const otherLinks = bottomPrimaryLinks.filter((l) => l.href !== "/plan");
-  const isOverflowActive = overflowLinksResolved.some((l) => isActive(pathname, l.href));
+  const isOverflowActive = overflowLinksResolved.some((l) =>
+    isActive(pathname, l.href)
+  );
+
+  const closeMore = useCallback(() => {
+    setMoreOpen(false);
+    moreButtonRef.current?.focus?.();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setMoreOpen(false);
+        closeMore();
       }
     };
     if (moreOpen) {
       document.addEventListener("click", handleClickOutside);
     }
     return () => document.removeEventListener("click", handleClickOutside);
-  }, [moreOpen]);
+  }, [moreOpen, closeMore]);
 
   useEffect(() => {
     if (!moreOpen) return;
-    requestAnimationFrame(() => firstMenuItemRef.current?.focus());
-  }, [moreOpen]);
+    const menu = moreMenuRef.current;
+    if (!menu) return;
+    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    if (focusables.length === 0) return;
+    (focusables[0] as HTMLElement).focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMore();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const first = focusables[0] as HTMLElement;
+      const last = focusables[focusables.length - 1] as HTMLElement;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    menu.addEventListener("keydown", onKeyDown);
+    return () => menu.removeEventListener("keydown", onKeyDown);
+  }, [moreOpen, closeMore]);
 
   return (
     <nav
       role="navigation"
-      aria-label="Bottom navigation"
+      aria-label={tCommon("aria.bottomNavigation")}
       className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-3 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]"
     >
       <div className="flex items-center justify-around max-w-lg mx-auto">
         {otherLinks.map((link) => (
-          <Link
+          <AppLink
             key={link.href}
             href={link.href}
-            prefetch="auto"
+            prefetch={false}
             aria-current={isActive(pathname, link.href) ? "page" : undefined}
-            className="flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
+            className="flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
             <span
-              title={link.label}
-              className={`text-xs max-[400px]:text-[11px] font-medium max-w-[64px] truncate text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
-              {link.label}
+              {t(link.labelKey)}
             </span>
-          </Link>
+          </AppLink>
         ))}
-        {planLink &&
-          (stickyPlanVisible ? (
-            <div
-              className="flex flex-col items-center justify-center min-h-[52px] min-w-[48px] py-3 px-2 pointer-events-none select-none"
-              aria-hidden
+        {planLink && (
+          <AppLink
+            key={planLink.href}
+            href={planLink.href}
+            prefetch={false}
+            aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
+            aria-hidden={stickyPlanVisible}
+            tabIndex={stickyPlanVisible ? -1 : undefined}
+            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
+              stickyPlanVisible ? "invisible pointer-events-none" : ""
+            }`}
+          >
+            <span
+              className={`text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
-              <span className="text-xs max-[400px]:text-[11px] font-medium max-w-[64px] truncate text-center invisible">
-                {planLink.label}
-              </span>
-            </div>
-          ) : (
-            <Link
-              key={planLink.href}
-              href={planLink.href}
-              prefetch="auto"
-              aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
-              className="flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
-            >
-              <span
-                title={planLink.label}
-                className={`text-xs max-[400px]:text-[11px] font-medium max-w-[64px] truncate text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
-              >
-                {planLink.label}
-              </span>
-            </Link>
-          ))}
+              {t(planLink.labelKey)}
+            </span>
+          </AppLink>
+        )}
         <div className="relative" ref={moreRef}>
           <button
-            ref={moreTriggerRef}
+            ref={moreButtonRef}
             type="button"
             onClick={() => setMoreOpen((v) => !v)}
             aria-expanded={moreOpen}
             aria-haspopup="true"
-            aria-label="More navigation"
-            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[48px] gap-0.5 py-3 px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
+            aria-label={tCommon("aria.moreNavigation")}
+            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
-            <span className="text-xs max-[400px]:text-[11px] font-medium">More</span>
+            <span className="text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap">
+              {t("more")}
+            </span>
           </button>
           {moreOpen && (
             <div
-              className="absolute bottom-full right-0 mb-2 w-[min(16rem,calc(100vw-1rem))] max-w-[calc(100vw-1rem)] py-2 rounded-xl bg-charcoal/98 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-sm"
+              ref={moreMenuRef}
+              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 min-w-[140px] py-2 rounded-xl bg-charcoal/98 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-sm"
               role="menu"
-              onKeyDown={(e) => {
-                if (e.key !== "Escape") return;
-                e.preventDefault();
-                setMoreOpen(false);
-                requestAnimationFrame(() => moreTriggerRef.current?.focus());
-              }}
             >
-              {overflowLinksResolved.map((link, idx) => (
-                <Link
+              {overflowLinksResolved.map((link) => (
+                <AppLink
                   key={link.href}
-                  ref={idx === 0 ? firstMenuItemRef : undefined}
                   href={link.href}
-                  prefetch="auto"
-                  onClick={() => setMoreOpen(false)}
+                  prefetch={false}
+                  onClick={closeMore}
                   role="menuitem"
                   aria-current={isActive(pathname, link.href) ? "page" : undefined}
                   className="block min-h-[44px] px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 rounded mx-1"
                 >
-                  {link.label}
-                </Link>
+                  {t(link.labelKey)}
+                </AppLink>
               ))}
             </div>
           )}

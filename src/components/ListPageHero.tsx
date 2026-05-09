@@ -1,7 +1,8 @@
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import Image from "next/image";
 import { CARD, HERO, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
 
 export type BreadcrumbItem = { label: string; href: string; isCurrent?: boolean };
 
@@ -30,28 +31,29 @@ export default function ListPageHero({
   hasWidgetStrip = false,
   children,
 }: ListPageHeroProps) {
+  const tCommon = useTranslations("common");
   const textMb = hasWidgetStrip ? "mb-6 sm:mb-8" : SECTION.headingMarginLarge;
   const navBlock = (
     <>
-      <Link
+      <AppLink
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-white/90 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded w-fit"
       >
         ← {backLabel}
-      </Link>
+      </AppLink>
       {breadcrumbItems && breadcrumbItems.length > 1 && (
-        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/70" />
+        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/80" />
       )}
     </>
   );
   const navBlockLight = (
     <>
-      <Link
+      <AppLink
         href={backHref}
         className="inline-flex items-center min-h-[44px] py-2 text-terracotta/90 hover:text-terracotta text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
       >
         ← {backLabel}
-      </Link>
+      </AppLink>
       {breadcrumbItems && breadcrumbItems.length > 1 && (
         <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-olive/60" />
       )}
@@ -59,7 +61,7 @@ export default function ListPageHero({
   );
   const content = (
     <div className={textMb}>
-      <nav className="flex flex-col gap-1" aria-label="Page navigation">
+      <nav className="flex flex-col gap-1" aria-label={tCommon("aria.pageNavigation")}>
         {navBlockLight}
       </nav>
       <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>
@@ -89,7 +91,7 @@ export default function ListPageHero({
           />
           <div className={HERO.listOverlay} aria-hidden />
           <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} ${LAYOUT.heroContentTop} pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>
-            <nav className="flex flex-col gap-1" aria-label="Page navigation">
+            <nav className="flex flex-col gap-1" aria-label={tCommon("aria.pageNavigation")}>
               {navBlock}
             </nav>
             <h1 className={`${TYPE.pageTitle} mt-1.5 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}>

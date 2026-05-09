@@ -15,6 +15,7 @@ import type { DiscoverSection } from "@/lib/discover-sections";
 import DiscoverFilterBar from "./DiscoverFilterBar";
 import DiscoverSectionList from "./DiscoverSectionList";
 import DiscoverFooter from "./DiscoverFooter";
+import { SRStatus } from "@/components/SRStatus";
 
 type DiscoverClientProps = {
   sections: DiscoverSection[];
@@ -26,6 +27,7 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
   const { prefs, hydrated } = useUserPreferences();
   const { showTipDiscoverFilter, dismissTipDiscoverFilter } = useOnboardingContext();
   const t = useTranslations("onboarding");
+  const tDiscover = useTranslations("discover");
   const filterParam = searchParams?.get("filter") ?? "";
   const filter = filterToSectionId[filterParam];
   const sectionExists = filter && sections.some((s) => s.id === filter);
@@ -53,10 +55,8 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
   const activeSection = sections.find((s) => s.id === filter);
   const activeSectionTitle =
     filterParam === "nature"
-      ? "Nature & coasts"
-      : filterParam === "family"
-        ? "Family-friendly"
-        : activeSection?.title ?? "Places";
+      ? tDiscover("page.filters.natureAndCoasts")
+      : activeSection?.title ?? "Places";
 
   const scrollBehavior = () =>
     (typeof window !== "undefined" &&
@@ -82,23 +82,16 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
 
   const filterAnnouncement =
     filter && sectionExists
-      ? `Showing ${activeSectionTitle}, ${totalCount} places`
-      : "Showing all places";
+      ? tDiscover("page.filterAnnouncement.showing", { section: activeSectionTitle, count: totalCount })
+      : tDiscover("page.filterAnnouncement.all");
 
   return (
     <div
       id="discover-content"
-      aria-label="Discover places in Cyprus"
+      aria-label={tDiscover("page.contentAria")}
       className="-mt-4 sm:-mt-6"
     >
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="sr-only"
-        role="status"
-      >
-        {filterAnnouncement}
-      </div>
+      <SRStatus message={filterAnnouncement} />
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
 
       <DiscoverFilterBar
@@ -120,14 +113,14 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
           />
         )}
         <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
-          Curated for winter. Add to your plan as you browse.
+          {tDiscover("page.curatedLine")}
         </p>
 
         <DiscoverSectionList ref={firstSectionRef} sections={sectionsToShow} />
 
         {children}
 
-        <RightNowNearYou title="Near you now" sectionId="discover-right-now" />
+        <RightNowNearYou title={tDiscover("page.rightNowTitle")} />
 
         <DiscoverFooter onScrollToMap={scrollToMap} />
       </div>

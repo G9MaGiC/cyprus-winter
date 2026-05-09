@@ -2,6 +2,7 @@
 import { describe, it, expect, vi, beforeEach, beforeAll } from "vitest";
 import { renderHook, act, waitFor } from "@testing-library/react";
 import { Suspense } from "react";
+import { NextIntlClientProvider } from "next-intl";
 import { useItinerary } from "./useItinerary";
 import { encodeItinerary } from "@/lib/itinerary-share";
 import { SITE_URL } from "@/lib/site-url";
@@ -30,7 +31,11 @@ vi.mock("next/navigation", () => ({
 }));
 
 function wrapper({ children }: { children: React.ReactNode }) {
-  return <Suspense fallback={null}>{children}</Suspense>;
+  return (
+    <NextIntlClientProvider locale="en" messages={{}}>
+      <Suspense fallback={null}>{children}</Suspense>
+    </NextIntlClientProvider>
+  );
 }
 
 function wipeLocalStorage() {
@@ -124,35 +129,39 @@ describe("useItinerary", () => {
     expect(result.current.days[1]).toEqual(["pafos-mosaics"]);
   });
 
-  it("addToDay adds a place on the active day and toggles off on second call", async () => {
+  it("toggleInDay adds a place on the active day and toggles off on second call", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.toggleInDay("kourion");
     });
     await waitFor(() =>
       expect(result.current.days[1]).toContain("kourion")
     );
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.toggleInDay("kourion");
     });
     await waitFor(() =>
       expect(result.current.days[1]).not.toContain("kourion")
     );
   });
 
-  it("addUniqueToDay adds only once and respects day argument", async () => {
+  it("addToDayIfMissing adds only once per day", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
       result.current.setActiveDay(2);
-      result.current.addUniqueToDay("kourion", 2);
-      result.current.addUniqueToDay("kourion", 2);
+    });
+    await waitFor(() => expect(result.current.activeDay).toBe(2));
+
+    act(() => {
+      result.current.addToDayIfMissing("kourion");
+      result.current.addToDayIfMissing("kourion");
     });
     expect(result.current.days[2]?.filter((id) => id === "kourion").length).toBe(
       1
@@ -165,10 +174,20 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
+    });
+    act(() => {
       result.current.setActiveDay(2);
-      result.current.addUniqueToDay("pafos-mosaics", 2);
+    });
+    await waitFor(() => expect(result.current.activeDay).toBe(2));
+    act(() => {
+      result.current.addToDayIfMissing("pafos-mosaics");
+    });
+    act(() => {
       result.current.setActiveDay(1);
+    });
+    await waitFor(() => expect(result.current.activeDay).toBe(1));
+    act(() => {
       result.current.removeFromDay("kourion");
     });
 
@@ -182,10 +201,20 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
+    });
+    act(() => {
       result.current.setActiveDay(2);
-      result.current.addUniqueToDay("artemis", 2);
+    });
+    await waitFor(() => expect(result.current.activeDay).toBe(2));
+    act(() => {
+      result.current.addToDayIfMissing("artemis");
+    });
+    act(() => {
       result.current.setActiveDay(1);
+    });
+    await waitFor(() => expect(result.current.activeDay).toBe(1));
+    act(() => {
       result.current.clearDay();
     });
 
@@ -212,7 +241,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
     });
     expect(result.current.hasContent).toBe(true);
 
@@ -232,7 +261,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
       result.current.mergeTemplate("short-stay");
     });
 
@@ -248,7 +277,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addUniqueToDay("tsiakkas", 1);
+      result.current.addToDayIfMissing("tsiakkas");
     });
 
     expect(result.current.hasWineries).toBe(true);
@@ -260,7 +289,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
     });
 
     await waitFor(() => {
@@ -277,7 +306,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
     });
 
     await act(async () => {
@@ -286,7 +315,7 @@ describe("useItinerary", () => {
 
     expect(clipboardMocks.writeText).toHaveBeenCalledTimes(1);
     const text = clipboardMocks.writeText.mock.calls[0][0];
-    expect(text).toContain("Cyprus Winter Plan");
+    expect(text).toContain("Cyprus Winter Itinerary");
     expect(text).toContain("Day 1:");
     expect(text).toContain("Kourion");
     expect(text).toContain("Limassol");
@@ -301,7 +330,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
     });
 
     await act(async () => {
@@ -317,7 +346,7 @@ describe("useItinerary", () => {
     await waitFor(() => expect(result.current.hydrated).toBe(true));
 
     act(() => {
-      result.current.addToDay("kourion");
+      result.current.addToDayIfMissing("kourion");
     });
 
     await waitFor(() => expect(result.current.sharePath).not.toBe("/plan"));

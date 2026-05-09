@@ -1,17 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
 import type { PlanItem } from "@/data";
 import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
 import { parseAddParam } from "@/lib/plan-url-params";
+import { trackProduct } from "@/lib/analytics";
 
 type UsePlanUrlActionsParams = {
   hydrated: boolean;
   hasContent: boolean;
   getPlace: (id: string) => PlanItem | undefined;
-  addUniqueToDay: (id: string) => void;
+  addToDayIfMissing: (id: string) => void;
   applyTemplate: (key: TemplateKey) => void;
 };
 
@@ -29,14 +31,14 @@ export function usePlanUrlActions({
   hydrated,
   hasContent,
   getPlace,
-  addUniqueToDay,
+  addToDayIfMissing,
   applyTemplate,
 }: UsePlanUrlActionsParams) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const locale = useLocale();
   const processedAddRef = useRef<string | null>(null);
   const processedTemplateRef = useRef<string | null>(null);
-  const [lastUrlAddCount, setLastUrlAddCount] = useState(0);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -62,20 +64,14 @@ export function usePlanUrlActions({
     }
     const uniqueIds = [...new Set(places.map((p) => p.id))];
     for (const id of uniqueIds) {
-      addUniqueToDay(id);
+      addToDayIfMissing(id);
     }
-    // Defer state update to avoid setState-in-effect lint warning.
-    queueMicrotask(() => setLastUrlAddCount(uniqueIds.length));
+    trackProduct("plan_add", {
+      source: "url_add",
+      locale,
+      count: uniqueIds.length,
+      item_id: uniqueIds.length === 1 ? uniqueIds[0] : undefined,
+    });
     router.replace("/plan", { scroll: false });
-  }, [hydrated, searchParams, addUniqueToDay, getPlace, router]);
-
-  useEffect(() => {
-    if (lastUrlAddCount <= 0) return;
-    const timer = setTimeout(() => setLastUrlAddCount(0), 4500);
-    return () => clearTimeout(timer);
-  }, [lastUrlAddCount]);
-
-  return {
-    lastUrlAddCount,
-  };
+  }, [hydrated, searchParams, addToDayIfMissing, getPlace, router, locale]);
 }

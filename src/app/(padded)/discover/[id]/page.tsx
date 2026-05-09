@@ -2,16 +2,15 @@ import Image from "next/image";
 import DetailHero from "@/components/DetailHero";
 import type { Metadata } from "next";
 import { allDiscoverIds, getDiscoverPlaceById, getPlaceById } from "@/data";
-import { discoverDetailMetadata } from "@/lib/locale-metadata-dynamic";
-import { routing } from "@/i18n/routing";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
-import { LAYOUT, CTA, CARD, CALLOUT, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -21,7 +20,11 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { getSimilarDiscoverPlaces } from "@/lib/related-places";
 import TrackView from "@/components/TrackView";
+import TrackEventOnMount from "@/components/TrackEventOnMount";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { getLocalizedName } from "@/lib/localize";
+import { getTranslations } from "next-intl/server";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -41,16 +44,36 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  return discoverDetailMetadata(id, routing.defaultLocale);
+  const a = getDiscoverPlaceById(id);
+  if (!a) return { title: "Not found" };
+  const typeLabel = a.type === "winery" ? "Winery" : a.type === "restaurant" ? "Eat" : a.type.charAt(0).toUpperCase() + a.type.slice(1);
+  const prefix = `${a.region}. ${typeLabel}. `;
+  const maxDesc = 154 - prefix.length;
+  const desc = a.description.slice(0, maxDesc).trim();
+  const snippet = prefix + desc + (a.description.length > maxDesc ? "…" : "");
+  const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
+  const alternates = buildStrategyAAlternates(`/discover/${id}`);
+  return {
+    title: `${a.name} | Cyprus Winter`,
+    description: snippet,
+    alternates,
+    openGraph: {
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
+    },
+  };
 }
 
 
 export default async function AttractionPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale?: string }>;
 }) {
-  const { id } = await params;
+  const { id, locale = "en" } = await params;
+  const [tNav, tDetail] = await Promise.all([
+    getTranslations({ locale, namespace: "nav" }),
+    getTranslations({ locale, namespace: "discover.detail" }),
+  ]);
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
 
@@ -85,43 +108,43 @@ export default async function AttractionPage({
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
+      itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Discover", item: `${SITE_URL}/discover` },
-      { "@type": "ListItem", position: 3, name: a.name, item: canonicalUrl },
+      { "@type": "ListItem", position: 3, name: getLocalizedName(a, locale), item: canonicalUrl },
     ],
   };
 
   return (
     <div className="min-h-screen bg-sand">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(attractionSchema) }} />
-      {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(attractionSchema) }} />
+      {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(localBusinessSchema) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
         <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
-        <nav className="flex flex-col gap-1 mb-6" aria-label="Page navigation">
-          <BackLink href="/discover" label="Back to Discover" />
+        <TrackEventOnMount event="decision_rationale_view" properties={{ place_id: a.id, place_type: a.type }} />
+        <nav className="flex flex-col gap-1 mb-6" aria-label={tDetail("pageNavAria")}>
+          <BackLink href="/discover" label={tNav("discover")} />
           <Breadcrumbs
             items={[
-              { label: "Home", href: "/" },
-              { label: "Discover", href: "/discover" },
+              { label: tNav("home"), href: "/" },
+              { label: tNav("discover"), href: "/discover" },
               { label: a.name, href: canonicalUrl, isCurrent: true },
             ]}
             className="py-1 px-0 text-xs text-olive/60"
           />
         </nav>
 
-        <article aria-label={`${a.name}, ${a.type} in ${a.region}`}>
+        <article aria-label={tDetail("articleAria", { name: a.name, type: a.type, region: a.region })}>
           <DetailHero
             image={getAttractionImage(a.id, a.type)}
-            imageAlt={`${a.name}, ${a.region}—${a.type} in Cyprus winter`}
+            imageAlt={tDetail("imageAlt", { name: a.name, region: a.region, type: a.type })}
             badge={
               <span className="inline-block px-3 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md capitalize tracking-wide">
-                {a.type === "restaurant" ? "Eat" : a.type}
+                {a.type === "restaurant" ? tDetail("badgeEat") : a.type}
               </span>
             }
-            title={a.name}
-            titleEl={"nameEl" in a ? a.nameEl : undefined}
+            title={getLocalizedName(a, locale)}
             subtitle={a.region}
           />
 
@@ -132,19 +155,37 @@ export default async function AttractionPage({
               <p className="text-olive/90 text-lg sm:text-xl leading-relaxed break-words">{a.description}</p>
             </section>
 
+            <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>
+              <h2 className={`${TYPE.kicker} text-aegean ${SECTION.headingGap}`}>Why this now</h2>
+              <ul className="space-y-2 text-sm text-olive/85">
+                <li className="flex gap-2">
+                  <span className="text-aegean" aria-hidden>•</span>
+                  <span>Best for {a.bestFor.slice(0, 2).join(" and ").toLowerCase()}.</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aegean" aria-hidden>•</span>
+                  <span>{a.region} is a practical stop for the same day plan flow.</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-aegean" aria-hidden>•</span>
+                  <span>Save now to compare with similar options later without losing context.</span>
+                </li>
+              </ul>
+            </section>
+
             {"culturalNote" in a && a.culturalNote && /buffer zone/i.test(a.culturalNote) && (
               <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
                 <p className="text-sm font-medium text-charcoal flex items-start gap-2">
                   <span className="text-golden shrink-0" aria-hidden>⚠</span>
-                  <span>Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).</span>
+                  <span>{tDetail("bufferZoneWarning")}</span>
                 </p>
               </div>
             )}
 
             {/* Highlights + Great for — quick scan */}
             <section>
-              <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
-                Highlights
+              <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                {tDetail("headings.highlights")}
               </h2>
               <ul className="flex flex-wrap gap-2">
                 {a.highlights.map((h) => (
@@ -157,8 +198,8 @@ export default async function AttractionPage({
                 ))}
               </ul>
               <div className="mt-4">
-                <h3 className="prose-label text-olive/70 mb-1">
-                  Great for
+                <h3 className={`${TYPE.kicker} text-olive/70 mb-1`}>
+                  {tDetail("headings.greatFor")}
                 </h3>
                 <p className="text-olive/80 text-base break-words">{a.bestFor.join(" · ")}</p>
               </div>
@@ -181,8 +222,8 @@ export default async function AttractionPage({
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-4`}>
                 {a.diningVenues && a.diningVenues.length > 0 && (
                   <div>
-                    <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
-                      Dining
+                    <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                      {tDetail("headings.dining")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
                       {a.diningVenues.map((v) => (
@@ -198,8 +239,8 @@ export default async function AttractionPage({
                 )}
                 {a.shops && a.shops.length > 0 && (
                   <div>
-                    <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
-                      Shops
+                    <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                      {tDetail("headings.shops")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
                       {a.shops.map((s) => (
@@ -219,7 +260,7 @@ export default async function AttractionPage({
             {/* Winery: Tasting + Book CTA early */}
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Visit & taste
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.tastingInfo}</p>
@@ -235,19 +276,19 @@ export default async function AttractionPage({
             {(a.openingHours || ("transport" in a && a.transport) || ("parking" in a && a.parking) || ("accessibility" in a && a.accessibility)) && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-3`}>
                 <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
-                  Practical info
+                  {tDetail("practical.title")}
                 </h2>
             {a.openingHours && (
-              <p className="text-base text-olive/90 break-words"><strong>Hours:</strong> {a.openingHours}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.hours")}</strong> {a.openingHours}</p>
             )}
             {"transport" in a && a.transport && (
-              <p className="text-base text-olive/90 break-words"><strong>Transport:</strong> {a.transport}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.transport")}</strong> {a.transport}</p>
             )}
             {"parking" in a && a.parking && (
-              <p className="text-base text-olive/90 break-words"><strong>Parking:</strong> {a.parking}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.parking")}</strong> {a.parking}</p>
             )}
             {"accessibility" in a && a.accessibility && (
-              <p className="text-base text-olive/90 break-words"><strong>Accessibility:</strong> {a.accessibility}</p>
+              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.accessibility")}</strong> {a.accessibility}</p>
             )}
               </section>
             )}
@@ -259,28 +300,34 @@ export default async function AttractionPage({
           a.contactPhone ||
           ("shopUrl" in a && a.shopUrl)) && (
           <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-            <h2 className="prose-label text-olive/70 mb-1">
-              Book & contact
+            <h2 className="${TYPE.kicker} text-olive/70 mb-1">
+              {tDetail("booking.title")}
             </h2>
+            <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Trust and timing</p>
+              <p className="mt-1 text-sm text-olive/80">
+                Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready.
+              </p>
+            </div>
             {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
-              <p className="text-sm text-olive/70 mb-4">Book ahead in winter; hours can be limited.</p>
+              <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
             )}
             <div className="flex flex-col gap-5">
               <div className="flex flex-wrap gap-3">
                 {isWinery(a) && (
                   <>
-                    <Link href={`/book/winery/${a.id}`} className={`gap-2 ${CTA.primaryCompact}`}>
-                      Book a tasting →
-                    </Link>
+                    <AppLink href={`/book/winery/${a.id}`} className={`gap-2 ${CTA.primaryCompact}`}>
+                      {tDetail("booking.bookTasting")}
+                    </AppLink>
                     {a.bookingUrl && (
                       <a
                         href={a.bookingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`gap-2 ${CTA.secondaryCompact}`}
-                        aria-label="Book or contact on website (opens in new tab)"
+                        aria-label={tDetail("booking.bookOrContactAria")}
                       >
-                        {a.contactPhone ? "Book on website" : "Contact / book"}
+                        {a.contactPhone ? tDetail("booking.bookOnWebsite") : tDetail("booking.contactBook")}
                       </a>
                     )}
                   </>
@@ -291,9 +338,9 @@ export default async function AttractionPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`gap-2 ${CTA.primaryCompact}`}
-                    aria-label="Reserve (opens in new tab)"
+                    aria-label={tDetail("booking.reserveAria")}
                   >
-                    Reserve →
+                    {tDetail("booking.reserveCta")}
                   </a>
                 )}
                 {a.bookingUrl && a.type === "village" && "bookingUrl" in a && (
@@ -302,24 +349,24 @@ export default async function AttractionPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`gap-2 ${CTA.primaryCompact}`}
-                    aria-label="Find stays (opens in new tab)"
+                    aria-label={tDetail("booking.findStaysAria")}
                   >
-                    Find stays →
+                    {tDetail("booking.findStaysCta")}
                   </a>
                 )}
                 {a.contactPhone && (
                   <a
                     href={`tel:${a.contactPhone}`}
                     className={`gap-2 ${CTA.secondaryCompact}`}
-                    aria-label={`Call ${a.contactPhone}`}
+                    aria-label={tDetail("booking.callAria", { phone: a.contactPhone })}
                   >
-                    Call {a.contactPhone}
+                    {tDetail("booking.callCta", { phone: a.contactPhone })}
                   </a>
                 )}
               </div>
               {("shopUrl" in a && a.shopUrl) || (isWinery(a) && "instagramHandle" in a && a.instagramHandle) ? (
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-sand-200/80">
-                  <span className="sr-only">More options</span>
+                  <span className="sr-only">{tDetail("booking.moreOptionsSr")}</span>
                   {"shopUrl" in a && a.shopUrl && (
                     <TrackOnClick event="shop_click" properties={{ partnerId: a.id }}>
                       <a
@@ -327,9 +374,9 @@ export default async function AttractionPage({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`gap-2 ${CTA.chipSecondary}`}
-                        aria-label="Buy wine online (opens in new tab)"
+                        aria-label={tDetail("booking.buyWineAria")}
                       >
-                        Buy wine online
+                        {tDetail("booking.buyWineCta")}
                       </a>
                     </TrackOnClick>
                   )}
@@ -339,9 +386,9 @@ export default async function AttractionPage({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center min-h-[44px] gap-2 px-4 py-2.5 rounded-lg border border-sand-200/80 text-olive font-medium text-sm hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                      aria-label={`Follow @${a.instagramHandle} on Instagram (opens in new tab)`}
+                      aria-label={tDetail("booking.instagramAria", { handle: a.instagramHandle })}
                     >
-                      Instagram @{a.instagramHandle}
+                      {tDetail("booking.instagramCta", { handle: a.instagramHandle })}
                     </a>
                   )}
                 </div>
@@ -352,7 +399,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Our wines
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
@@ -373,7 +420,7 @@ export default async function AttractionPage({
                     </div>
                   )}
                   <div className="p-4">
-                    <p className="font-semibold text-olive text-sm break-words">{wine.name}</p>
+                    <p className={`${TYPE.cardTitle} text-sm break-words`}>{wine.name}</p>
                     {wine.variety && (
                       <p className="text-xs text-olive/70 mt-0.5 break-words">{wine.variety}</p>
                     )}
@@ -389,7 +436,7 @@ export default async function AttractionPage({
 
             {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Local secret
                 </h2>
             {a.winterTip && (
@@ -397,7 +444,7 @@ export default async function AttractionPage({
             )}
             {a.bestTimeToVisit && (
               <p className="text-olive/80 text-base break-words">
-                <strong>Best time:</strong> {a.bestTimeToVisit}
+                <strong>{tDetail("bestTimeLabel")}</strong> {a.bestTimeToVisit}
               </p>
             )}
             {a.localSecret && (
@@ -410,7 +457,7 @@ export default async function AttractionPage({
 
             {"backstory" in a && a.backstory && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Backstory
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.backstory}</p>
@@ -425,7 +472,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
-                <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   Location
                 </h2>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
@@ -445,9 +492,9 @@ export default async function AttractionPage({
               target="_blank"
               rel="noopener noreferrer"
               className={`gap-2 mt-3 ${CTA.secondaryCompact}`}
-              aria-label="Get directions (opens in new tab)"
+              aria-label={tDetail("directionsAria")}
             >
-              Get directions →
+              {tDetail("directionsCta")}
             </a>
               </section>
             )}
@@ -463,17 +510,17 @@ export default async function AttractionPage({
                 <div className="space-y-4">
                   {getSecretsForPlace(a.id).map((s) => (
                     <div key={s.id} className="p-4 rounded-lg bg-white/80 border border-sand-200/80">
-                      <h3 className="font-display font-semibold text-olive mb-1">{s.title}</h3>
+                      <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
                       <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
                     </div>
                   ))}
                 </div>
-                <Link
+                <AppLink
                   href="/secrets"
                   className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
                   See all local secrets →
-                </Link>
+                </AppLink>
               </section>
             )}
 
@@ -499,18 +546,18 @@ export default async function AttractionPage({
                 "Places";
               return (
                 <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-                  <h2 className={`prose-label text-olive/70 ${SECTION.headingGap}`}>
+                  <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                     More {typeLabel.toLowerCase()} in {a.region}
                   </h2>
                   <ul className="flex flex-wrap gap-2">
                     {similar.map((r) => (
                       <li key={r.id}>
-                        <Link
+                        <AppLink
                           href={r.href}
                           className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:text-terracotta-muted hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                           {r.name} →
-                        </Link>
+                        </AppLink>
                       </li>
                     ))}
                   </ul>
@@ -518,10 +565,10 @@ export default async function AttractionPage({
               );
             })()}
 
-            <footer className="pt-8 pb-4 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label="Place actions">
+            <footer className="pt-8 pb-4 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label={tDetail("actionsAria")}>
               <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
               <p className="text-olive/70 text-sm break-words">
-                Add this place to your plan and pair it with a trail or village nearby.
+                {tDetail("footer.body")}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 {(() => {

@@ -5,13 +5,28 @@ export default defineConfig({
   test: {
     environment: "node",
     setupFiles: ["./src/test/setup.ts"],
-    exclude: [
-      "**/node_modules/**",
-      "**/e2e/**",
-      "cyprus-winter-clone/**",
-      ".next/**",
-      ".next-build/**",
-    ],
+    exclude: ["**/node_modules/**", "**/e2e/**"],
+    env: {
+      MOONSHOT_API_KEY: "unit-test-placeholder-not-a-real-key",
+    },
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+      exclude: [
+        "**/node_modules/**",
+        "**/test/**",
+        "**/*.d.ts",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "src/data/**", // Static data files
+      ],
+      thresholds: {
+        lines: 60,
+        functions: 60,
+        branches: 50,
+        statements: 60,
+      },
+    },
   },
   resolve: {
     alias: {

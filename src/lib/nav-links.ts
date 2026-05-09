@@ -1,40 +1,40 @@
 export type NavLink = {
   href: string;
-  label: string;
+  /** Translation key in nav namespace (e.g. "discover", "plan") */
+  labelKey: string;
 };
 
 export const navPrimaryLinks: readonly NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/discover", label: "Discover" },
-  { href: "/trails", label: "Trails" },
-  { href: "/plan", label: "Plan" },
+  { href: "/", labelKey: "home" },
+  { href: "/discover", labelKey: "discover" },
+  { href: "/trails", labelKey: "trails" },
+  { href: "/plan", labelKey: "plan" },
 ];
 
 export const navMoreLinks: readonly NavLink[] = [
-  { href: "/weather", label: "Weather" },
-  { href: "/events", label: "Events" },
-  { href: "/bookings", label: "Bookings" },
-  { href: "/airport", label: "Arriving" },
-  { href: "/secrets", label: "Local secrets" },
-  { href: "/account", label: "Account" },
-  { href: "/team", label: "Team" },
+  { href: "/airport", labelKey: "arriving" },
+  { href: "/bookings", labelKey: "bookings" },
+  { href: "/weather", labelKey: "weather" },
+  { href: "/events", labelKey: "events" },
+  { href: "/secrets", labelKey: "secrets" },
+  { href: "/account", labelKey: "account" },
+  { href: "/team", labelKey: "team" },
 ];
 
 export const bottomPrimaryLinks: readonly NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/discover", label: "Discover" },
-  { href: "/trails", label: "Trails" },
-  { href: "/plan", label: "Plan" },
+  { href: "/", labelKey: "home" },
+  { href: "/discover", labelKey: "discover" },
+  { href: "/trails", labelKey: "trails" },
+  { href: "/plan", labelKey: "plan" },
 ];
 
 export const bottomOverflowLinks: readonly NavLink[] = [
-  { href: "/search", label: "Search" },
-  { href: "/weather", label: "Weather" },
-  { href: "/events", label: "Events" },
-  { href: "/bookings", label: "Bookings" },
-  { href: "/airport", label: "Arriving" },
-  { href: "/secrets", label: "Local secrets" },
-  { href: "/team", label: "Team" },
-  { href: "/account", label: "Account" },
+  { href: "/search", labelKey: "search" },
+  { href: "/airport", labelKey: "arriving" },
+  { href: "/bookings", labelKey: "bookings" },
+  { href: "/weather", labelKey: "weather" },
+  { href: "/events", labelKey: "events" },
+  { href: "/secrets", labelKey: "secrets" },
+  { href: "/team", labelKey: "team" },
+  { href: "/account", labelKey: "account" },
 ];
-

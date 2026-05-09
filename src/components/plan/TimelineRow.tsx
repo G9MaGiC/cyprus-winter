@@ -4,6 +4,7 @@ import { type RefObject } from "react";
 import ItineraryCard from "@/components/ItineraryCard";
 import { CARD } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
+import { useTranslations } from "next-intl";
 
 type TimelineRowProps = {
   id: string;
@@ -24,6 +25,7 @@ export default function TimelineRow({
   getPlace,
   removeFromDay,
 }: TimelineRowProps) {
+  const tCommon = useTranslations("common");
   const p = getPlace(id);
   if (!p) {
     return (
@@ -34,15 +36,17 @@ export default function TimelineRow({
           </span>
           {showConnector && <span className="w-px h-5 sm:h-6 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
         </div>
-        <div className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}>
-          <span className="text-sm text-olive/60 italic">This place was removed from our list</span>
+        <div
+          className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}
+        >
+          <span className="text-sm text-olive/60 italic">{tCommon("timelineRemovedPlace")}</span>
           <button
             type="button"
             onClick={() => removeFromDay(id)}
             className="min-h-[44px] px-3 py-2 text-sm font-medium text-olive/70 hover:text-terracotta rounded-lg hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label="Remove"
+            aria-label={tCommon("remove")}
           >
-            Remove
+            {tCommon("remove")}
           </button>
         </div>
       </div>

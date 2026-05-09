@@ -1,13 +1,15 @@
 import { LAYOUT, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function TrailLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}
       aria-busy="true"
       aria-live="polite"
       role="status"
-      aria-label="Loading trail"
+      aria-label={t("loading.trail")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-24 ${SKELETON.block} mb-6`} aria-hidden />

@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
-import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { teamPageMeta } from "@/lib/locale-page-meta";
+import AppLink from "@/components/AppLink";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { team } from "@/data/team";
-import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = applyLocaleToMetadata(teamPageMeta, "/team", routing.defaultLocale);
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "team.page" });
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    alternates: buildStrategyAAlternates("/team"),
+  };
+}
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  const [tNav, tTeam] = await Promise.all([getTranslations("nav"), getTranslations("team.page")]);
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
-        title="Our Team"
-        description="Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
-        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Team", href: "/team", isCurrent: true }]}
+        backLabel={tNav("home")}
+        title={tTeam("header.title")}
+        description={tTeam("header.description")}
+        breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("team"), href: "/team", isCurrent: true }]}
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -33,7 +41,7 @@ export default function TeamPage() {
                 .map((n) => n[0])
                 .join("")}
             </div>
-            <h3 className="font-display text-xl font-semibold text-olive group-hover:text-terracotta transition-colors truncate">
+            <h3 className={`${TYPE.subSectionTitle} text-olive group-hover:text-terracotta transition-colors truncate`}>
               {member.name}
             </h3>
             <p className="text-terracotta font-medium text-sm mt-0.5 truncate" title={member.role}>
@@ -57,20 +65,20 @@ export default function TeamPage() {
       </div>
 
       <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-l-4 border-l-terracotta/20 text-center`}>
-        <p className="text-sm text-olive/80 mb-4">Meet the team behind your trip — and ask them anything.</p>
+        <p className="text-sm text-olive/80 mb-4">{tTeam("cta.prompt")}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <AIAssistantTrigger label="Ask AI" />
-          <Link href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
-            Start planning
-          </Link>
-          <Link href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
-            Discover places
-          </Link>
+          <AIAssistantTrigger label={tTeam("cta.askAi")} />
+          <AppLink href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
+            {tTeam("cta.startPlanning")}
+          </AppLink>
+          <AppLink href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
+            {tTeam("cta.discoverPlaces")}
+          </AppLink>
         </div>
       </div>
 
       <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto leading-relaxed break-words">
-        Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That&apos;s a day we&apos;d take. The island rewards the curious.
+        {tTeam("outro")}
       </p>
     </div>
   );

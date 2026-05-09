@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { weatherHubPageMeta } from "@/lib/locale-page-meta";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import AppLink from "@/components/AppLink";
+import { CARD, LAYOUT, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
+import RightNowNearYou from "@/app/_home/RightNowNearYou";
+import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
+import { getTranslations } from "next-intl/server";
+
+export const dynamic = "force-dynamic";
 
 const MONTH_TO_SLUG: Record<string, string> = {
   November: "november",
@@ -17,22 +20,82 @@ const MONTH_TO_SLUG: Record<string, string> = {
   April: "april",
 };
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  weatherHubPageMeta,
-  "/weather",
-  routing.defaultLocale
-);
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
-export default function WeatherPage() {
+const weatherAlternates = buildStrategyAAlternates("/weather");
+
+export const metadata: Metadata = {
+  title: "Cyprus Winter Weather by Month | Coast & Troodos",
+  description:
+    "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
+  alternates: weatherAlternates,
+  openGraph: {
+    title: "Cyprus Winter Weather by Month | Coast & Troodos",
+    description: "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
+    url: weatherAlternates.canonical,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter weather guide" }],
+  },
+};
+
+function shortSentence(desc: string): string {
+  const first = desc.split(".")[0]?.trim() ?? "";
+  if (!first) return desc;
+  return first.endsWith("!") || first.endsWith("?") ? first : `${first}.`;
+}
+
+export default async function WeatherPage() {
+  const [tNav, tWeather, tHome] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("weather.page"),
+    getTranslations("home"),
+  ]);
+
+  const monthSelectorSectionClassName = `${SECTION.blockTop} hidden md:block`;
+  const mobileClampClass = "text-olive/80 text-xs mt-0.5 line-clamp-1";
+
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
-        title="Cyprus Winter Weather by Month"
-        description="Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries."
-        breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Weather", href: "/weather", isCurrent: true }]}
+        backLabel={tNav("home")}
+        title={tWeather("title")}
+        description={tWeather("description")}
+        breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("weather"), href: "/weather", isCurrent: true }]}
       />
+
+      {/* Hero guidance block */}
+      <section className={SECTION.blockTop}>
+        <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50`}>
+          <p className={`${TYPE.kicker} text-sage`}>{tWeather("hero.kicker")}</p>
+          <h2 className={`${TYPE.sectionTitle} mt-2`}>{tWeather("hero.heading")}</h2>
+          <p className="text-olive/80 mt-3 max-w-2xl prose-body break-words leading-relaxed">{tWeather("hero.body")}</p>
+        </div>
+      </section>
+
+      {/* Month selector (hybrid UI) */}
+      <section className={monthSelectorSectionClassName} aria-label={tWeather("monthSelector.aria")}>
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain">
+          {weatherByMonth.map((row) => {
+            const slug = MONTH_TO_SLUG[row.month];
+            if (!slug) return null;
+            return (
+              <AppLink
+                key={row.month}
+                href={`/weather/${slug}`}
+                className={`${CARD.compact} shrink-0 px-4 py-3 rounded-xl border border-sand-200/80 hover:border-terracotta/30`}
+              >
+                <div className="flex flex-col">
+                  <span className={`${TYPE.cardTitleCompact} text-olive`}>{row.month}</span>
+                  <span className="mt-1 text-xs text-olive/70">
+                    {tWeather("table.coast")} {row.coastMinC}–{row.coastMaxC}° · {tWeather("table.troodos")} {row.troodosMinC}–{row.troodosMaxC}°
+                  </span>
+                </div>
+              </AppLink>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Mobile: card layout avoids horizontal scroll */}
       <div className="md:hidden space-y-3">
@@ -41,29 +104,35 @@ export default function WeatherPage() {
           const content = (
               <div className="rounded-xl border border-sand-200/80 bg-white/90 p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-display font-semibold text-olive">{row.month}</span>
+                  <span className={`${TYPE.cardTitle}`}>{row.month}</span>
                   {slug && (
-                    <span className="text-xs font-medium text-terracotta">Details →</span>
+                    <span className="text-xs font-medium text-terracotta">
+                      {tWeather("mobile.details")}
+                    </span>
                   )}
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="text-olive/60 text-xs">Coast</p>
+                    <p className="text-olive/60 text-xs">
+                      {tWeather("table.coast")}
+                    </p>
                     <p className="text-olive font-medium">{row.coastMinC}–{row.coastMaxC}°C</p>
-                    <p className="text-olive/80 text-xs mt-0.5 line-clamp-2">{row.coastDesc}</p>
+                    <p className={mobileClampClass}>{shortSentence(row.coastDesc)}</p>
                   </div>
                   <div>
-                    <p className="text-olive/60 text-xs">Troodos</p>
+                    <p className="text-olive/60 text-xs">
+                      {tWeather("table.troodos")}
+                    </p>
                     <p className="text-olive font-medium">{row.troodosMinC}–{row.troodosMaxC}°C</p>
-                    <p className="text-olive/80 text-xs mt-0.5 line-clamp-2">{row.troodosDesc}</p>
+                    <p className={mobileClampClass}>{shortSentence(row.troodosDesc)}</p>
                   </div>
                 </div>
               </div>
           );
           return slug ? (
-            <Link key={row.month} href={`/weather/${slug}`} className="block">
+            <AppLink key={row.month} href={`/weather/${slug}`} className="block min-h-[44px]">
               {content}
-            </Link>
+            </AppLink>
           ) : (
             <div key={row.month}>{content}</div>
           );
@@ -71,15 +140,37 @@ export default function WeatherPage() {
       </div>
 
       {/* Desktop: table */}
-      <div className="hidden md:block overflow-x-auto">
+      <div className="hidden md:block overflow-x-auto scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch]">
         <table className="w-full min-w-[600px] border-collapse text-left">
           <thead>
             <tr className="border-b-2 border-sand-200/80">
-              <th className="py-3 px-4 font-display font-semibold text-olive">Month</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Coast (°C)</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Conditions</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Troodos (°C)</th>
-              <th className="py-3 px-4 font-display font-semibold text-olive" scope="col">Conditions</th>
+              <th className={`py-3 px-4 ${TYPE.cardTitle}`}>
+                {tWeather("table.month")}
+              </th>
+              <th
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
+                scope="col"
+              >
+                {tWeather("table.coast")}
+              </th>
+              <th
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
+                scope="col"
+              >
+                {tWeather("table.coastConditions")}
+              </th>
+              <th
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
+                scope="col"
+              >
+                {tWeather("table.troodos")}
+              </th>
+              <th
+                className={`py-3 px-4 ${TYPE.cardTitle}`}
+                scope="col"
+              >
+                {tWeather("table.troodosConditions")}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -89,12 +180,12 @@ export default function WeatherPage() {
               <tr key={row.month} className="border-b border-sand-100">
                 <td className="py-4 px-4">
                   {slug ? (
-                    <Link
+                    <AppLink
                       href={`/weather/${slug}`}
                       className="font-medium text-olive hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] inline-flex items-center"
                     >
                       {row.month}
-                    </Link>
+                    </AppLink>
                   ) : (
                     <span className="font-medium text-olive">{row.month}</span>
                   )}
@@ -103,13 +194,13 @@ export default function WeatherPage() {
                   {row.coastMinC}–{row.coastMaxC}°C
                 </td>
                 <td className="py-4 px-4 text-sm text-olive/80 max-w-xs">
-                  {row.coastDesc}
+                  {shortSentence(row.coastDesc)}
                 </td>
                 <td className="py-4 px-4 text-olive/90">
                   {row.troodosMinC}–{row.troodosMaxC}°C
                 </td>
                 <td className="py-4 px-4 text-sm text-olive/80 max-w-xs">
-                  {row.troodosDesc}
+                  {shortSentence(row.troodosDesc)}
                 </td>
               </tr>
               );
@@ -118,27 +209,51 @@ export default function WeatherPage() {
         </table>
       </div>
 
+      {/* Discover gateway */}
+      <section className={SECTION.blockTop}>
+        <h2 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tWeather("gateway.heading")}</h2>
+        <div className="flex flex-wrap gap-3">
+          <AppLink href="/trails" className={`${PILL.base} ${PILL.neutral}`}>
+            {tNav("trails")}
+          </AppLink>
+          <AppLink href="/discover?filter=winery" className={`${PILL.base} ${PILL.neutral}`}>
+            {tNav("wineries")}
+          </AppLink>
+          <AppLink href="/discover?filter=village" className={`${PILL.base} ${PILL.neutral}`}>
+            {tNav("villages")}
+          </AppLink>
+          <AppLink href="/discover?filter=monastery" className={`${PILL.base} ${PILL.neutral}`}>
+            {tWeather("gateway.monasteries")}
+          </AppLink>
+          <AppLink href="/discover?filter=hidden" className={`${PILL.base} ${PILL.neutral}`}>
+            {tNav("secrets")}
+          </AppLink>
+          <AppLink href="/events" className={`${PILL.base} ${PILL.neutral}`}>
+            {tNav("events")}
+          </AppLink>
+        </div>
+      </section>
+
+      <div className={SECTION.blockTop}>
+        <RightNowNearYou title={tHome("rightNowNearYou")} />
+      </div>
+
       <WeatherPushOptIn />
 
-      <div className="mt-12 space-y-4 text-olive/80 text-sm max-w-2xl">
+      <div className={`${SECTION.blockTop} space-y-4 text-olive/80 text-sm max-w-2xl`}>
+        <p>{tWeather("body.coastTroodos")}</p>
         <p>
-          Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.
-        </p>
-        <p>
-          <Link
-            href="/trails"
-            className={SECTION.aegeanLink}
-          >
-            Check trail conditions
-          </Link>{" "}
-          before heading up.{" "}
-          <Link
+          <AppLink href="/trails" className={SECTION.aegeanLink}>
+            {tWeather("body.linkTrails")}
+          </AppLink>{" "}
+          {tWeather("body.linkTrailsSuffix")}{" "}
+          <AppLink
             href="/discover?filter=winery"
             className={SECTION.aegeanLink}
           >
-            Winter wineries
-          </Link>{" "}
-          — fireside tastings, book ahead.
+            {tWeather("body.linkWineries")}
+          </AppLink>{" "}
+          {tWeather("body.linkWineriesSuffix")}
         </p>
       </div>
     </div>

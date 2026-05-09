@@ -1,96 +1,114 @@
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { installPageMeta } from "@/lib/locale-page-meta";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  installPageMeta,
-  "/install",
-  routing.defaultLocale
-);
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "install.page" });
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    robots: { index: false, follow: false },
+  };
+}
 
-const steps = [
-  {
-    title: "1. Configure for static export",
-    body: "Add these to next.config.ts so Next.js generates static HTML instead of a Node server:",
-    code: `const nextConfig = {
+type InstallStep = { title: string; body: string; code?: string; note?: string };
+
+const stepCode = {
+  s1: `const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
   // ... existing config
 };`,
-    note: "API routes will not work on SiteGround—use Supabase or another backend if needed.",
-  },
-  {
-    title: "2. Build the static export",
-    body: "On your computer, ensure Node.js 18+ is installed. Install dependencies and build:",
-    code: `npm install
+  s2: `npm install
 npm run build`,
-    note: "The build outputs to the out/ folder. SiteGround cannot run Node.js—you deploy static files only.",
-  },
-  {
-    title: "3. Upload to SiteGround",
-    body: "Upload the contents of the out/ folder to your site's public_html directory. Use cPanel File Manager, FTP, or SFTP.",
-    code: "Upload: out/*  →  public_html/",
-    note: "Upload everything inside out/, including the _next folder and index.html. Do not upload the out folder itself—only its contents.",
-  },
-  {
-    title: "4. Add .htaccess for routing",
-    body: "Create a .htaccess file in public_html so direct links (e.g. /trails, /discover) work correctly:",
-    code: `RewriteEngine On
+  s3: "Upload: out/*  →  public_html/",
+  s4: `RewriteEngine On
 RewriteBase /
 RewriteRule ^index\\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]`,
-    note: "This sends 404s for missing files to index.html so the app can handle routing. Adjust RewriteBase if the app lives in a subfolder.",
-  },
-  {
-    title: "5. Verify",
-    body: "Open your domain in a browser. Check the homepage, trails, and discover pages. Links and images should load.",
-  },
-];
+};
 
-export default function InstallPage() {
+export default async function InstallPage() {
+  const [tNav, tCommon, tInstall] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("install.page"),
+  ]);
+  const steps: InstallStep[] = [
+    {
+      title: tInstall("steps.items.s1.title"),
+      body: tInstall("steps.items.s1.body"),
+      code: stepCode.s1,
+      note: tInstall("steps.items.s1.note"),
+    },
+    {
+      title: tInstall("steps.items.s2.title"),
+      body: tInstall("steps.items.s2.body"),
+      code: stepCode.s2,
+      note: tInstall("steps.items.s2.note"),
+    },
+    {
+      title: tInstall("steps.items.s3.title"),
+      body: tInstall("steps.items.s3.body"),
+      code: stepCode.s3,
+      note: tInstall("steps.items.s3.note"),
+    },
+    {
+      title: tInstall("steps.items.s4.title"),
+      body: tInstall("steps.items.s4.body"),
+      code: stepCode.s4,
+      note: tInstall("steps.items.s4.note"),
+    },
+    {
+      title: tInstall("steps.items.s5.title"),
+      body: tInstall("steps.items.s5.body"),
+    },
+  ];
   return (
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
-      <nav className="flex flex-col gap-1 mb-8" aria-label="Page navigation">
-        <BackLink href="/" label="Back to Cyprus Winter" />
+      <nav className="flex flex-col gap-1 mb-8" aria-label={tInstall("nav.ariaLabel")}>
+        <BackLink href="/" label={tCommon("backTo", { label: tInstall("nav.backLabel") })} />
         <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Install", href: "/install", isCurrent: true }]}
+          items={[
+            { label: tNav("home"), href: "/" },
+            { label: tInstall("nav.breadcrumbCurrent"), href: "/install", isCurrent: true },
+          ]}
           className="py-1 px-0 text-xs text-olive/60"
         />
       </nav>
 
       <header className={SECTION.headingMarginLarge}>
         <p className="text-golden text-sm font-medium tracking-[0.15em] uppercase mb-2">
-          Deployment guide
+          {tInstall("header.kicker")}
         </p>
         <h1 className={`${TYPE.pageTitle} text-charcoal mt-2`}>
-          Install on SiteGround
+          {tInstall("header.title")}
         </h1>
         <p className="mt-3 text-olive/80 text-base leading-relaxed max-w-xl">
-          Cyprus Winter runs as static HTML, CSS, and JavaScript. SiteGround shared hosting can serve it directly—no Node.js required.
+          {tInstall("header.body")}
         </p>
       </header>
 
       <section aria-labelledby="requirements" className="mb-12">
         <h2 id="requirements" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-          Requirements
+          {tInstall("requirements.title")}
         </h2>
         <ul className={`${CARD.base} ${CARD.content} space-y-2 text-olive/90`}>
-          <li>• Node.js 18+ (for building locally)</li>
-          <li>• SiteGround shared hosting with cPanel or FTP access</li>
-          <li>• Domain pointed to your SiteGround account</li>
+          <li>{`• ${tInstall("requirements.items.node")}`}</li>
+          <li>{`• ${tInstall("requirements.items.siteground")}`}</li>
+          <li>{`• ${tInstall("requirements.items.domain")}`}</li>
         </ul>
       </section>
 
       <section aria-labelledby="steps" className="space-y-10 mt-16 sm:mt-20">
         <h2 id="steps" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-          Steps
+          {tInstall("steps.title")}
         </h2>
 
         {steps.map((step, i) => (
@@ -109,7 +127,7 @@ export default function InstallPage() {
               <pre
                 className="rounded-lg bg-charcoal text-white p-4 overflow-x-auto text-sm font-mono mb-4"
                 role="region"
-                aria-label="Code snippet"
+                aria-label={tInstall("steps.codeSnippetAria")}
               >
                 <code>{step.code}</code>
               </pre>
@@ -125,25 +143,32 @@ export default function InstallPage() {
 
       <section aria-labelledby="troubleshooting" className={SECTION.footerBlock}>
         <h2 id="troubleshooting" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
-          Troubleshooting
+          {tInstall("troubleshooting.title")}
         </h2>
         <ul className="space-y-3 text-olive/90 text-sm">
           <li>
-            <strong className="text-charcoal">Blank page or 404 on refresh:</strong> Add or fix the .htaccess rewrite rules above.
+            <strong className="text-charcoal">{tInstall("troubleshooting.items.blank.label")}</strong>{" "}
+            {tInstall("troubleshooting.items.blank.body")}
           </li>
           <li>
-            <strong className="text-charcoal">Images not loading:</strong> Ensure <code className="rounded bg-sand-200 px-1 py-0.5">images.unoptimized: true</code> is set in next.config. Image paths must be correct in the built output.
+            <strong className="text-charcoal">{tInstall("troubleshooting.items.images.label")}</strong>{" "}
+            {tInstall.rich("troubleshooting.items.images.body", {
+              config: (chunks) => (
+                <code className="rounded bg-sand-200 px-1 py-0.5">{chunks}</code>
+              ),
+            })}
           </li>
           <li>
-            <strong className="text-charcoal">API or chat not working:</strong> SiteGround shared hosting cannot run Next.js API routes. Use Supabase, Vercel serverless, or another backend and point the app to it.
+            <strong className="text-charcoal">{tInstall("troubleshooting.items.api.label")}</strong>{" "}
+            {tInstall("troubleshooting.items.api.body")}
           </li>
         </ul>
       </section>
 
       <div className="mt-16 sm:mt-20 flex flex-wrap gap-4">
-        <Link href="/" className={`px-8 py-3 rounded-xl ${CTA.primaryCompact}`}>
-          Back to app
-        </Link>
+        <AppLink href="/" className={`px-8 py-3 rounded-xl ${CTA.primaryCompact}`}>
+          {tCommon("backTo", { label: tInstall("footer.backToAppLabel") })}
+        </AppLink>
       </div>
     </div>
   );

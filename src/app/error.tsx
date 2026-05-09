@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { Link } from "@/i18n/navigation";
-import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function Error({
   error,
@@ -11,6 +12,9 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const tError = useTranslations("error");
+  const tCommon = useTranslations("common");
+
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -18,14 +22,14 @@ export default function Error({
   return (
     <main className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}>
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
-        <h1 className="font-display text-2xl font-bold text-olive mb-2">
-          A small glitch
+        <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
+          {tError("title")}
         </h1>
         <p className={`text-olive/80 leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
-          A small glitch. Try again or head home—the trails, villages, and tastings are still there.
+          {tError("body")}
         </p>
         <p className={`text-olive/70 text-sm ${SECTION.headingGap}`}>
-          Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we&apos;ll point you to Nissi, Troodos, Lefkara.
+          {tError("hint")}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
@@ -33,17 +37,18 @@ export default function Error({
             onClick={reset}
             className={`px-6 py-3 ${CTA.primaryCompact}`}
           >
-            Try again
+            {tCommon("tryAgain")}
           </button>
           <Link
             href="/"
             className={`px-6 py-3 ${CTA.secondaryCompact}`}
           >
-            Go home
+            {tCommon("goHome")}
           </Link>
         </div>
-        <p className="mt-8 text-sm text-olive/60 break-words">
-          Emergency <strong>112</strong> · Tourist info <strong>1460</strong> · Ambulance <strong>199</strong>
+        <p className={`${SECTION.blockTop} text-sm text-olive/60 break-words`}>
+          {tCommon("emergency")} <strong>112</strong> · {tCommon("touristInfo")} <strong>1460</strong> ·{" "}
+          {tCommon("ambulance")} <strong>199</strong>
         </p>
       </div>
     </main>

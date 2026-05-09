@@ -35,6 +35,9 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
       aria-labelledby="template-choice-title"
       aria-describedby="template-choice-desc"
       onKeyDown={(e) => trapFocus(e, modalRef.current, onClose)}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div
         ref={modalRef}

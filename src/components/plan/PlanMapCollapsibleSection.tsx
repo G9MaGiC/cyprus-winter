@@ -1,8 +1,10 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import PlanMapClient from "./PlanMapClient";
 import { useMatchMedia } from "@/hooks/useMatchMedia";
+import { SECTION, TYPE } from "@/lib/design-tokens";
 
 /**
  * Desktop (md+): map stays open like a normal section.
@@ -10,6 +12,7 @@ import { useMatchMedia } from "@/hooks/useMatchMedia";
  */
 export default function PlanMapCollapsibleSection() {
   const mdUp = useMatchMedia("(min-width: 768px)", false);
+  const tPlan = useTranslations("plan");
 
   if (mdUp) {
     return (
@@ -20,10 +23,11 @@ export default function PlanMapCollapsibleSection() {
       >
         <h2
           id="plan-map-heading"
-          className="text-xl sm:text-2xl font-display font-semibold text-charcoal mb-1"
+          className={`${TYPE.subSectionTitleLg} text-charcoal ${SECTION.titleGap}`}
         >
-          Your plan on the map
+          {tPlan("mapTitle")}
         </h2>
+        <p className={`text-xs text-olive/60 ${SECTION.headingGap}`}>{tPlan("mapCollapsibleHint")}</p>
         <PlanMapClient />
       </section>
     );
@@ -36,11 +40,9 @@ export default function PlanMapCollapsibleSection() {
     >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl py-3 pl-1 pr-2 text-left -mx-1 select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
         <div className="min-w-0">
-          <h2 className="text-xl font-display font-semibold text-charcoal">
-            Your plan on the map
-          </h2>
+          <h2 className={`${TYPE.subSectionTitleLg} text-charcoal`}>{tPlan("mapTitle")}</h2>
           <p className="text-xs text-olive/60 mt-0.5">
-            Show stops and driving context on the island map
+            {tPlan("mapCollapsibleHint")}
           </p>
         </div>
         <ChevronDown

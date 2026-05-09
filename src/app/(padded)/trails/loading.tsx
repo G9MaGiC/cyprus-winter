@@ -1,8 +1,10 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function TrailsLoading() {
+  const t = useTranslations("common");
   return (
-    <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label="Loading trails">
+    <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label={t("loading.trails")}>
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}>
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
         <div className={`h-9 w-64 ${SKELETON.bar} mb-2`} />

@@ -1,13 +1,15 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function WineRouteLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading wine route"
+      aria-label={t("loading.wineRoute")}
     >
       <div className="animate-pulse space-y-8">
         <div className={`h-4 w-24 ${SKELETON.block}`} />

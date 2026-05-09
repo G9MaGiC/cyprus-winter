@@ -2,6 +2,7 @@
 
 import { LAYOUT } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
+import { useTranslations } from "next-intl";
 
 type DaySelectorProps = {
   days: Record<number, string[]>;
@@ -22,9 +23,11 @@ export default function DaySelector({
   getPlace,
   hasContent,
 }: DaySelectorProps) {
+  const tPlan = useTranslations("plan");
+  const t = useTranslations("plan.daySelector");
   return (
     <section
-      aria-label="Select day"
+      aria-label={tPlan("aria.selectDay")}
       className={
         hasContent
           ? [
@@ -38,7 +41,7 @@ export default function DaySelector({
     >
       <div
         role="tablist"
-        aria-label="Select day"
+        aria-label={tPlan("aria.selectDay")}
         className="flex gap-2 sm:gap-2.5 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x"
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
@@ -79,7 +82,9 @@ export default function DaySelector({
                   : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/60"
               }`}
             >
-              {count > 0 ? `Day ${d} · ${count}` : `Day ${d}`}
+            {count > 0
+              ? t("tabLabelWithCount", { day: d, count })
+              : tPlan("dayLabel", { day: d })}
             </button>
           );
         })}
@@ -89,7 +94,9 @@ export default function DaySelector({
         <details className="group mt-4 sm:mt-5 hidden sm:block">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl min-h-[44px] flex items-center">
             <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/70 hover:text-terracotta min-h-[44px] py-2.5 px-3 rounded-xl hover:bg-terracotta/5 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
-              {activeDaysCount > 1 ? `View all ${activeDaysCount} days` : "View all days"}
+              {activeDaysCount > 1
+                ? t("viewAllDaysCount", { count: activeDaysCount })
+                : t("viewAllDays")}
               <span className="text-olive/50 group-open:rotate-180 transition-transform" aria-hidden>
                 ▾
               </span>
@@ -98,7 +105,10 @@ export default function DaySelector({
           <div className="mt-3 space-y-2">
             {Array.from({ length: displayDaysCount }, (_, i) => i + 1).map((d) => {
               const items = days[d] ?? [];
-              const summary = items.map((id) => getPlace(id)?.name ?? "…").join(" → ") || "Add places to start";
+              const summary =
+                items
+                  .map((id) => getPlace(id)?.name ?? t("unknownPlace"))
+                  .join(t("summarySeparator")) || t("summaryEmpty");
               const isActive = activeDay === d;
               return (
                 <button
@@ -109,7 +119,7 @@ export default function DaySelector({
                     isActive ? "bg-terracotta/10 text-terracotta font-medium" : "bg-sand-100/60 text-olive/80 hover:bg-sand-200/60"
                   }`}
                 >
-                  <span className="font-medium shrink-0">Day {d}</span>
+                  <span className="font-medium shrink-0">{tPlan("dayLabel", { day: d })}</span>
                   <span className="truncate text-olive/70">{summary}</span>
                 </button>
               );

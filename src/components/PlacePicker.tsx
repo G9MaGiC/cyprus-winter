@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { SECTION } from "@/lib/design-tokens";
 import { allPlaces, getPlaceById } from "@/data";
+import { useTranslations } from "next-intl";
 
 const wineries = allPlaces.filter((p) => p.type === "winery");
 const trails = allPlaces.filter((p) => p.type === "trail");
@@ -11,15 +12,6 @@ const restaurants = allPlaces.filter((p) => p.type === "restaurant");
 const events = allPlaces.filter((p) => p.type === "event");
 
 type TabId = "all" | "winery" | "trail" | "attraction" | "restaurant" | "event";
-
-const TABS: { id: TabId; label: string }[] = [
-  { id: "all", label: "All" },
-  { id: "winery", label: "Wineries" },
-  { id: "trail", label: "Trails" },
-  { id: "attraction", label: "Attractions" },
-  { id: "restaurant", label: "Eat" },
-  { id: "event", label: "Events" },
-];
 
 type Place = { id: string; name: string; region: string };
 
@@ -64,10 +56,20 @@ export default function PlacePicker({
   activeDayItems,
   onAdd,
 }: PlacePickerProps) {
+  const t = useTranslations("placePicker");
   const preferred = useMemo(() => inferPreferredTab(activeDayItems), [activeDayItems]);
   const [tab, setTab] = useState<TabId>("all");
   const [search, setSearch] = useState("");
   const prevCountRef = useRef(0);
+
+  const TABS: { id: TabId; label: string; listLabel: string }[] = [
+    { id: "all", label: t("tabs.all"), listLabel: t("lists.places") },
+    { id: "winery", label: t("tabs.wineries"), listLabel: t("lists.wineries") },
+    { id: "trail", label: t("tabs.trails"), listLabel: t("lists.trails") },
+    { id: "attraction", label: t("tabs.attractions"), listLabel: t("lists.attractions") },
+    { id: "restaurant", label: t("tabs.eat"), listLabel: t("lists.restaurants") },
+    { id: "event", label: t("tabs.events"), listLabel: t("lists.events") },
+  ];
 
   useEffect(() => {
     const count = activeDayItems.length;
@@ -88,12 +90,12 @@ export default function PlacePicker({
   const eventsFiltered = useMemo(() => filterPlaces(events, search), [search]);
 
   const renderList = (items: Place[], tabLabel: string) => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(50vh,360px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(55vh,400px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
         <p className="text-sm text-olive/60 col-span-full py-4" role="status">
           {search.trim()
-            ? "No matches yet. Try another search or switch category."
-            : `No ${tabLabel} in our list yet. Try another category or add from Discover.`}
+            ? t("empty.noMatches")
+            : t("empty.noneInList", { tabLabel })}
         </p>
       ) : items.map((item) => {
         const isAdded = activeDayItems.includes(item.id);
@@ -101,11 +103,12 @@ export default function PlacePicker({
           <button
             key={item.id}
             type="button"
-            onClick={() => {
-              if (!isAdded) onAdd(item.id);
-            }}
-            disabled={isAdded}
-            aria-label={isAdded ? `${item.name} (added to plan)` : `Add ${item.name} to plan`}
+            onClick={() => onAdd(item.id)}
+            aria-label={
+              isAdded
+                ? t("aria.itemAdded", { name: item.name })
+                : t("aria.addItem", { name: item.name })
+            }
             className={`text-left p-3 sm:p-4 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               isAdded
                 ? "border-terracotta/10 bg-terracotta/10"
@@ -115,7 +118,7 @@ export default function PlacePicker({
             <span className="font-medium text-olive block truncate">{item.name}</span>
             <span className="text-olive/60 text-sm truncate block">({item.region})</span>
             {isAdded && (
-              <span className="block text-terracotta text-xs mt-1">Added</span>
+              <span className="block text-terracotta text-xs mt-1">{t("labels.added")}</span>
             )}
           </button>
         );
@@ -127,22 +130,22 @@ export default function PlacePicker({
     <div>
       <div className={SECTION.titleGap}>
         <label htmlFor="place-search" className="sr-only">
-          Search places by name or region
+          {t("search.srLabel")}
         </label>
         <input
           id="place-search"
           type="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search by name or region…"
-          aria-label="Search places by name or region"
+          placeholder={t("search.placeholder")}
+          aria-label={t("search.ariaLabel")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-3 py-2 text-sm text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
       <div
         role="tablist"
-        aria-label="Place categories"
-        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory`}
+        aria-label={t("aria.tabList")}
+        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]`}
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t?.getAttribute?.("role") !== "tab") return;
@@ -158,23 +161,23 @@ export default function PlacePicker({
           }
         }}
       >
-        {TABS.map((t) => (
+        {TABS.map((tabItem) => (
           <button
-            key={t.id}
+            key={tabItem.id}
             type="button"
             role="tab"
-            aria-selected={tab === t.id}
-            aria-controls={`tabpanel-${t.id}`}
-            id={`tab-${t.id}`}
-            tabIndex={tab === t.id ? 0 : -1}
-            onClick={() => setTab(t.id)}
+            aria-selected={tab === tabItem.id}
+            aria-controls={`tabpanel-${tabItem.id}`}
+            id={`tab-${tabItem.id}`}
+            tabIndex={tab === tabItem.id ? 0 : -1}
+            onClick={() => setTab(tabItem.id)}
             className={`shrink-0 snap-start px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 min-h-[44px] min-w-[5rem] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-              tab === t.id
+              tab === tabItem.id
                 ? "bg-terracotta text-white shadow-sm"
                 : "bg-sand-200/80 text-olive hover:bg-sand-200"
             }`}
           >
-            {t.label}
+            {tabItem.label}
           </button>
         ))}
       </div>
@@ -187,8 +190,8 @@ export default function PlacePicker({
       >
         {tab === "all" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Wineries, trails, villages, and events. Pick what fits this day.</p>
-            {renderList(allFiltered, "places")}
+            <p className="text-xs text-olive/60 mb-2">{t("hints.all")}</p>
+            {renderList(allFiltered, t("lists.places"))}
           </>
         )}
       </div>
@@ -201,8 +204,8 @@ export default function PlacePicker({
       >
         {tab === "winery" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Book ahead in winter. You may get a quieter tasting and more host time.</p>
-            {renderList(wineriesFiltered, "wineries")}
+            <p className="text-xs text-olive/60 mb-2">{t("hints.wineries")}</p>
+            {renderList(wineriesFiltered, t("lists.wineries"))}
           </>
         )}
       </div>
@@ -215,8 +218,8 @@ export default function PlacePicker({
       >
         {tab === "trail" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Start by 9am and check trail conditions before you set out.</p>
-            {renderList(trailsFiltered, "trails")}
+            <p className="text-xs text-olive/60 mb-2">{t("hints.trails")}</p>
+            {renderList(trailsFiltered, t("lists.trails"))}
           </>
         )}
       </div>
@@ -229,8 +232,8 @@ export default function PlacePicker({
       >
         {tab === "attraction" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Villages, ruins, monasteries. Weekday mornings are quieter and winter light is softer.</p>
-            {renderList(attractionsFiltered, "attractions")}
+            <p className="text-xs text-olive/60 mb-2">{t("hints.attractions")}</p>
+            {renderList(attractionsFiltered, t("lists.attractions"))}
           </>
         )}
       </div>
@@ -243,8 +246,8 @@ export default function PlacePicker({
       >
         {tab === "restaurant" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Tavernas, fish spots, and fine dining. Reserve ahead for popular places.</p>
-            {renderList(restaurantsFiltered, "restaurants")}
+            <p className="text-xs text-olive/60 mb-2">{t("hints.restaurants")}</p>
+            {renderList(restaurantsFiltered, t("lists.restaurants"))}
           </>
         )}
       </div>
@@ -257,8 +260,8 @@ export default function PlacePicker({
       >
         {tab === "event" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">Epiphany, carnival, and markets. Dates can shift year to year, so check official sources.</p>
-            {renderList(eventsFiltered, "events")}
+            <p className="text-xs text-olive/60 mb-2">{t("hints.events")}</p>
+            {renderList(eventsFiltered, t("lists.events"))}
           </>
         )}
       </div>

@@ -68,7 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         session,
         isLoading: false,
       }));
-    });
+    }).catch(() => {});
 
     const {
       data: { subscription },

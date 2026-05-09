@@ -1,13 +1,15 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function AttractionLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}
       aria-busy
       aria-live="polite"
       role="status"
-      aria-label="Loading attraction"
+      aria-label={t("loading.attraction")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-28 ${SKELETON.block} mb-6`} />

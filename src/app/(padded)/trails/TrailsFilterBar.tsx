@@ -1,9 +1,11 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import TrailFilters from "@/app/(padded)/trails/TrailFilters";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import StickyFilterBar from "@/components/StickyFilterBar";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import type { TrailStatus } from "@/data/trails";
+import { useTranslations } from "next-intl";
 
 type TrailsFilterBarProps = {
   filteredCount: number;
@@ -28,24 +30,27 @@ export default function TrailsFilterBar({
   cautionCount,
   closedCount,
 }: TrailsFilterBarProps) {
+  const tTrails = useTranslations("trails");
+  const tCommon = useTranslations("common");
+
   return (
-    <div
-      role="region"
-      aria-label="Trail filters"
-      className={`sticky ${LAYOUT.stickyTop} z-20 bg-background/98 backdrop-blur-md border-b border-sand-200/60 ${LAYOUT.stickyBarX} py-4 sm:py-5`}
-    >
+    <StickyFilterBar ariaLabel={tTrails("filters.aria.section")}>
       <div className={`${LAYOUT.list} mx-auto space-y-4`}>
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span className="prose-label text-olive/60 uppercase tracking-wider">Filter trails</span>
-          <span className="text-olive/60 text-sm">{filteredCount} trails</span>
+          <span className={`${TYPE.kicker} text-olive/60 uppercase tracking-wider`}>
+            {tTrails("filters.aria.section")}
+          </span>
+          <span className="text-olive/60 text-sm">
+            {tTrails("page.list.filteredHeading", { count: filteredCount })}
+          </span>
           {hasFilters && (
-            <Link href="/trails" className={`text-sm font-medium ${SECTION.aegeanLink} ml-auto sm:ml-2`}>
-              Clear filters
-            </Link>
+            <AppLink href="/trails" className={`text-sm font-medium ${SECTION.aegeanLink} ml-auto sm:ml-2`}>
+              {tCommon("clearFilters")}
+            </AppLink>
           )}
           {hasInvalidFilter && (
             <span className="text-xs text-olive/60" role="status">
-              — Showing all
+              {tTrails("filterBar.showingAll")}
             </span>
           )}
         </div>
@@ -58,6 +63,6 @@ export default function TrailsFilterBar({
           closedCount={closedCount}
         />
       </div>
-    </div>
+    </StickyFilterBar>
   );
 }

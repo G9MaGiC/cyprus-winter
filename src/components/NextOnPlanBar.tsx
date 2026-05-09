@@ -1,23 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Link, usePathname } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
+import { usePathname } from "next/navigation";
 import { useItinerary } from "@/hooks/useItinerary";
 import { useTripDates } from "@/hooks/useTripDates";
 import NavigateButton from "@/components/NavigateButton";
 import { LAYOUT } from "@/lib/design-tokens";
-
-/** usePathname() from next-intl is locale-stripped (e.g. /plan not /el/plan). */
-function shouldHideNextOnPlanBar(pathname: string): boolean {
-  if (pathname.startsWith("/plan")) return true;
-  if (pathname.startsWith("/account")) return true;
-  return (
-    pathname === "/login" ||
-    pathname === "/register" ||
-    pathname === "/forgot-password" ||
-    pathname === "/reset-password"
-  );
-}
+import { useTranslations } from "next-intl";
 
 /**
  * Sticky bar showing "Next up: [place]" with Navigate when user has an itinerary.
@@ -25,6 +15,7 @@ function shouldHideNextOnPlanBar(pathname: string): boolean {
  */
 export default function NextOnPlanBar() {
   const pathname = usePathname();
+  const tCommon = useTranslations("common");
   const { days, activeDay, hydrated, getPlace } = useItinerary();
   const { dates, hydrated: datesHydrated, daysUntil } = useTripDates();
   const [mounted, setMounted] = useState(false);
@@ -50,7 +41,15 @@ export default function NextOnPlanBar() {
   const firstId = ids[0];
   const place = firstId ? getPlace(firstId) : undefined;
 
-  if (shouldHideNextOnPlanBar(pathname)) return null;
+  // Hide on plan page (they see full list), account, auth. Handles locale routes and localized pathnames.
+  const planSegments = ["/plan", "/schedias", "/planen", "/planuj"];
+  const authSegments = [
+    "/account", "/logarias", "/konto", "/login", "/eisodos", "/anmelden", "/logowanie",
+    "/register", "/eggrafi", "/registrieren", "/rejestracja",
+    "/forgot-password", "/reset-password",
+  ];
+  const hideSegments = [...planSegments, ...authSegments];
+  if (hideSegments.some((p) => pathname === p || pathname.endsWith(p))) return null;
   if (!place || ids.length === 0) return null;
 
   const href = place.type === "trail" ? `/trails/${place.id}` : place.type === "event" ? "/events" : `/discover/${place.id}`;
@@ -58,17 +57,17 @@ export default function NextOnPlanBar() {
   return (
     <div
       role="complementary"
-      aria-label="Next on your plan"
+      aria-label={tCommon("nextOnPlan.aria")}
       className={`sticky ${LAYOUT.stickyTop} z-20 flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
     >
-      <span className="text-xs font-medium text-white/80 shrink-0">Next up</span>
-      <Link
+      <span className="text-xs font-medium text-white/80 shrink-0">{tCommon("nextOnPlan.prefix")}</span>
+      <AppLink
         href={href}
         className="flex-1 min-w-0 truncate font-semibold hover:underline text-sm"
       >
         {place.name}
-      </Link>
-      <NavigateButton place={place} label="Navigate" variant="light" className="shrink-0" />
+      </AppLink>
+      <NavigateButton place={place} label={tCommon("nextOnPlan.navigate")} variant="light" className="shrink-0" />
     </div>
   );
 }

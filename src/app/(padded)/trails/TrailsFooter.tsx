@@ -1,8 +1,9 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 type TrailsFooterProps = {
   reportTrailId?: string | null;
@@ -10,38 +11,40 @@ type TrailsFooterProps = {
 };
 
 export default function TrailsFooter({ reportTrailId, onScrollToMap }: TrailsFooterProps = {}) {
+  const tCommon = useTranslations("common");
+  const tTrails = useTranslations("trails");
   return (
     <footer
       className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 ${LAYOUT.footerBottomClearance} text-center`}
-      aria-label="Trails actions"
+      aria-label={tTrails("aria.actions")}
     >
       <p
         className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}
       >
-        Conditions are crowd-sourced. Use your judgement and follow local advice.
+        {tCommon("trailsFooterDisclaimer")}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Link href="/plan" className={CTA.primaryCompact}>
-          Plan your trip
-        </Link>
-        <Link
+        <AppLink href="/plan" className={CTA.primaryCompact}>
+          {tCommon("planYourTrip")}
+        </AppLink>
+        <AppLink
           href={reportTrailId ? `/trails/${reportTrailId}/report` : "/trails"}
           className={CTA.secondaryCompact}
-          aria-label="Report trail conditions"
+          aria-label={tTrails("aria.reportConditions")}
         >
-          Report conditions
-        </Link>
-        <Link
+          {tCommon("reportConditions")}
+        </AppLink>
+        <AppLink
           href="/guides/troodos-december"
           className={`text-sm font-medium ${SECTION.aegeanLink}`}
         >
-          Winter hiking guide
-        </Link>
+          {tCommon("winterHikingGuide")}
+        </AppLink>
         <a
           href="tel:112"
           className={`text-sm font-medium ${SECTION.aegeanLink}`}
         >
-          Emergency 112
+          {tCommon("emergency112")}
         </a>
         <button
           type="button"
@@ -49,9 +52,9 @@ export default function TrailsFooter({ reportTrailId, onScrollToMap }: TrailsFoo
             window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
           }
           className={`text-sm font-medium ${SECTION.aegeanLink}`}
-          aria-label="Ask AI for trail suggestions"
+          aria-label={tCommon("askAITrailsAria")}
         >
-          Ask AI
+          {tCommon("askAI")}
         </button>
       </div>
       {onScrollToMap && (
@@ -59,9 +62,9 @@ export default function TrailsFooter({ reportTrailId, onScrollToMap }: TrailsFoo
           type="button"
           onClick={onScrollToMap}
           className={`text-sm ${SECTION.aegeanLink} mt-4 inline-block`}
-          aria-label="Scroll to map of trails"
+          aria-label={tTrails("aria.scrollToMap")}
         >
-          See map
+          {tCommon("seeMap")}
         </button>
       )}
     </footer>

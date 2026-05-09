@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
-import { LAYOUT } from "@/lib/design-tokens";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
+import { useTranslations } from "next-intl";
 
 type PlanStickyAddBarProps = {
   sentinelId: string;
@@ -20,6 +20,7 @@ type PlanStickyAddBarProps = {
 export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlaceClick }: PlanStickyAddBarProps) {
   const [show, setShow] = useState(false);
   const { setStickyPlanVisible } = useStickyPlanBar();
+  const tCommon = useTranslations("common");
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
@@ -81,17 +82,17 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
 
   return (
     <div
-      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomClearance} z-30 flex items-center justify-center px-5 py-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/98 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
+      className={`fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] z-30 flex items-center justify-center px-5 py-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/98 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
       role="complementary"
-      aria-label="Add place"
+      aria-label={tCommon("aria.addPlace")}
     >
       <button
         type="button"
         onClick={handleClick}
         className="w-full max-w-md min-h-[44px] px-6 py-3 rounded-xl text-base font-semibold bg-terracotta text-white hover:bg-terracotta-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] motion-reduce:active:scale-100"
-        aria-label="Add a place to your plan"
+        aria-label={tCommon("aria.addPlaceToItinerary")}
       >
-        Add place
+        {tCommon("addPlace")}
       </button>
     </div>
   );

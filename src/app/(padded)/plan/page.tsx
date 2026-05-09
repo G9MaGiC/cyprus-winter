@@ -24,10 +24,10 @@ import { usePlanPage } from "@/hooks/usePlanPage";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTranslations } from "next-intl";
-import { track } from "@/lib/analytics";
+import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -40,6 +40,9 @@ export default function PlanPage() {
     useOnboardingContext();
   const { user } = useAuth();
   const t = useTranslations("onboarding");
+  const tPlan = useTranslations("plan");
+  const tNav = useTranslations("nav");
+  const hasTrackedPlanView = useRef(false);
 
   const hasTrackedFirstAdd = useRef(false);
   useEffect(() => {
@@ -51,6 +54,16 @@ export default function PlanPage() {
       track("first_add_to_plan", { count: plan.totalPlaces });
     }
   }, [plan.hydrated, plan.totalPlaces]);
+
+  useEffect(() => {
+    if (!plan.hydrated || hasTrackedPlanView.current) return;
+    hasTrackedPlanView.current = true;
+    trackProduct("plan_view", {
+      item_count: plan.totalPlaces,
+      day_count: plan.activeDaysCount,
+      has_content: plan.hasContent,
+    });
+  }, [plan.hydrated, plan.totalPlaces, plan.activeDaysCount, plan.hasContent]);
 
   const {
     showClearModal,
@@ -73,7 +86,7 @@ export default function PlanPage() {
     activeItems,
     hydrated,
     copied,
-    addToDay,
+    addToDayIfMissing,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -105,30 +118,18 @@ export default function PlanPage() {
       >
         {copied && (
           <div className="sr-only" role="status" aria-live="polite">
-            Plan copied to clipboard
+            {tPlan("aria.itineraryCopied")}
           </div>
         )}
         {linkCopied && (
           <div className="sr-only" role="status" aria-live="polite">
-            Share link copied to clipboard
+            {tPlan("aria.shareLinkCopied")}
           </div>
         )}
 
         {searchParams.get("add") && !hydrated && (
-          <p className="text-sm text-olive/70 mb-4" role="status" aria-live="polite">
-            Adding places to your plan...
-          </p>
-        )}
-
-        {plan.lastUrlAddCount > 0 && (
-          <p
-            className="text-sm text-aegean bg-aegean/10 border border-aegean/20 rounded-lg px-4 py-3 mb-4"
-            role="status"
-            aria-live="polite"
-          >
-            {plan.lastUrlAddCount === 1
-              ? "Added 1 place to your plan."
-              : `Added ${plan.lastUrlAddCount} places to your plan.`}
+          <p className={`text-sm text-olive/70 ${SECTION.headingGap}`} role="status" aria-live="polite">
+            {tPlan("addingToPlan")}
           </p>
         )}
 
@@ -137,18 +138,18 @@ export default function PlanPage() {
         <header role="banner">
           <ListPageHero
             backHref="/"
-            backLabel="Home"
-            title="Plan your Cyprus winter"
+            backLabel={tNav("home")}
+            title={tPlan("pageTitle")}
             description={
               hasContent
-                ? "Your plan. Add more, share, or tweak below."
-                : "Build your winter plan. Use a template or add places day by day."
+                ? tPlan("pageDescHasContent")
+                : tPlan("pageDescEmpty")
             }
-            descriptionSecondary={!hasContent ? "Saves automatically." : undefined}
+            descriptionSecondary={!hasContent ? tPlan("pageDescSecondaryEmpty") : undefined}
             backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
-            backgroundImageAlt="Omodos village, wine heartland—plan your Cyprus winter"
+            backgroundImageAlt={tPlan("heroImageAlt")}
             hasWidgetStrip={hasContent}
-            breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Plan", href: "/plan", isCurrent: true }]}
+            breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("plan"), href: "/plan", isCurrent: true }]}
           >
             {!hasContent && (
               <div className="mt-4 sm:mt-5">
@@ -156,9 +157,9 @@ export default function PlanPage() {
                   type="button"
                   onClick={scrollToQuickStart}
                   className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 w-full sm:w-auto transition-transform duration-150 ease-out`}
-                  aria-label="Scroll to templates and quick start"
+                  aria-label={tPlan("aria.scrollToTemplates")}
                 >
-                  Use a template
+                  {tPlan("seeTemplates")}
                 </button>
               </div>
             )}
@@ -166,10 +167,12 @@ export default function PlanPage() {
         </header>
 
         {hasContent && totalPlaces === 1 && showTipFirstAdd && (
-          <OnboardingContextualTip
-            message={t("tipFirstAdd")}
-            onDismiss={dismissTipFirstAdd}
-          />
+          <div className={SECTION.headingGap}>
+            <OnboardingContextualTip
+              message={t("tipFirstAdd")}
+              onDismiss={dismissTipFirstAdd}
+            />
+          </div>
         )}
 
         {hasContent && hydrated && (
@@ -214,7 +217,7 @@ export default function PlanPage() {
             activeDay={activeDay}
             activeItems={activeItems}
             getPlace={getPlace}
-            addToDay={addToDay}
+            addToDay={addToDayIfMissing}
             removeFromDay={removeFromDay}
             lastAddedId={lastAddedId}
             lastAddedCardRef={lastAddedCardRef}
@@ -223,27 +226,23 @@ export default function PlanPage() {
             onScrollToQuickStart={scrollToQuickStart}
           />
 
-          {hasContent && <PlanMapCollapsibleSection />}
+          {hasContent && hydrated && <PlanMapCollapsibleSection />}
 
-          <div
-            ref={quickStartRef}
-            className="flex flex-col gap-12 sm:gap-16 md:gap-20"
-            aria-label="Add places or use templates"
-          >
-            {!hasContent && hydrated && showTipPlanEmpty && (
-              <OnboardingContextualTip
-                message={t("tipPlanEmpty")}
-                onDismiss={dismissTipPlanEmpty}
-                href="/discover"
-                hrefLabel={t("tipPlanEmptyLink")}
-              />
-            )}
+          <div ref={quickStartRef} aria-label={tPlan("aria.quickStartRegion")}>
             <PlanAddMoreCollapsible hasContent={hasContent}>
+              {!hasContent && hydrated && showTipPlanEmpty && (
+                <OnboardingContextualTip
+                  message={t("tipPlanEmpty")}
+                  onDismiss={dismissTipPlanEmpty}
+                  href="/discover"
+                  hrefLabel={t("tipPlanEmptyLink")}
+                />
+              )}
               <QuickStartSection
                 activeDay={activeDay}
                 days={days}
                 getPlace={getPlace}
-                addToDay={addToDay}
+                addToDay={addToDayIfMissing}
                 onTemplateClick={handleTemplateClick}
                 hasContent={hasContent}
                 tripLength={tripLength}
@@ -276,7 +275,7 @@ export default function PlanPage() {
         {showBrowseModal && (
           <PlacePickerModal
             activeDayItems={activeItems}
-            onAdd={addToDay}
+            onAdd={addToDayIfMissing}
             onClose={() => setShowBrowseModal(false)}
           />
         )}

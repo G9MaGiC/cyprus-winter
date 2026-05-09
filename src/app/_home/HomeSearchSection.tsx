@@ -1,8 +1,9 @@
-import AppLink from "@/components/AppLink";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
+import { getTranslations } from "next-intl/server";
 
-export default function HomeSearchSection() {
+export default async function HomeSearchSection() {
+  const tHome = await getTranslations("home");
   return (
     <section
       aria-labelledby="home-search-heading"
@@ -10,20 +11,13 @@ export default function HomeSearchSection() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2 id="home-search-heading" className="sr-only">
-          Search places and trails
+          {tHome("search.srHeading")}
         </h2>
         <div className="max-w-xl mx-auto">
-          <p className={`text-center ${TYPE.kicker} mb-2`}>
-            Search matches names in our catalog—places, trails, events.
+          <p className={`text-center ${TYPE.kicker} mb-3`}>
+            {tHome("search.kicker")}
           </p>
-          <p className="text-center text-sm text-olive/75 mb-3 leading-relaxed">
-            Prefer to browse? Go to{" "}
-            <AppLink href="/#start-here" className={SECTION.aegeanLink}>
-              Start here
-            </AppLink>{" "}
-            for categories, regions, and moods—or use the AI guide.
-          </p>
-          <SearchBar placeholder="Find a place, trail, or event" className="w-full" />
+          <SearchBar placeholder={tHome("search.placeholder")} className="w-full" />
         </div>
       </div>
     </section>

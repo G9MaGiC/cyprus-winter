@@ -1,8 +1,17 @@
 import { LAYOUT, SECTION, CARD, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function RootLoading() {
+  const t = useTranslations("common");
+
   return (
-    <div className="min-h-screen bg-background" aria-busy aria-live="polite" role="status" aria-label="Loading">
+    <div
+      className="min-h-screen bg-background"
+      aria-busy
+      aria-live="polite"
+      role="status"
+      aria-label={t("loading.generic")}
+    >
       {/* Hero skeleton */}
       <div className="relative min-h-[75vh] sm:min-h-[82vh] flex flex-col items-center justify-end sm:justify-center pb-16 sm:pb-24">
         <div className={`absolute inset-0 ${SKELETON.block} rounded-none`} />

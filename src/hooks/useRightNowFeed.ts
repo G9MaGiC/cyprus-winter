@@ -24,7 +24,8 @@ export type SourceMode = "gps" | "region";
 export type UseRightNowFeedReturn = {
   state: RightNowState;
   items: RightNowItem[];
-  lastErrorCode: "rate_limited" | null;
+  lastErrorCode: "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "SERVER_ERROR" | null;
+  lastRetryAfterSeconds?: number;
   coords: { lat: number; lng: number } | null;
   distanceMode: DistanceMode;
   sourceMode: SourceMode;
@@ -49,14 +50,27 @@ async function fetchRightNow(
       ? `${window.location.origin}/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`
       : `/api/right-now?lat=${lat}&lng=${lng}&limit=4${maxQuery}${regionQuery}`;
   const res = await fetch(url);
+  const data = await res.json().catch(() => ({} as unknown));
   if (!res.ok) {
-    await res.json().catch(() => ({}));
-    const err = new Error("Right Now fetch failed") as Error & { status?: number };
+    const code =
+      typeof data === "object" && data !== null
+        ? ((data as { error?: { code?: unknown } }).error?.code as unknown)
+        : undefined;
+    const err = new Error("Right Now fetch failed") as Error & {
+      status?: number;
+      code?: string;
+      retryAfterSeconds?: number;
+    };
     err.status = res.status;
+    err.code = typeof code === "string" ? code : undefined;
+    const ra = res.headers.get("Retry-After");
+    const retryAfterSeconds = ra ? Number(ra) : NaN;
+    err.retryAfterSeconds = Number.isFinite(retryAfterSeconds)
+      ? retryAfterSeconds
+      : undefined;
     throw err;
   }
-  const data = await res.json();
-  return data.items ?? [];
+  return (data as { items?: RightNowItem[] }).items ?? [];
 }
 
 export function useRightNowFeed(): UseRightNowFeedReturn {
@@ -96,10 +110,24 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
     staleTime: STALE_MS,
   });
 
-  const lastErrorCode: "rate_limited" | null =
-    queryError && queryErr && "status" in queryErr && queryErr.status === 429
-      ? "rate_limited"
-      : null;
+  const lastErrorCode: "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "SERVER_ERROR" | null =
+    queryError && queryErr && typeof queryErr === "object" && queryErr !== null && "code" in queryErr
+      ? (typeof (queryErr as { code?: unknown }).code === "string"
+          ? ((queryErr as { code: string }).code as "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "SERVER_ERROR")
+          : null)
+      : queryError && queryErr && "status" in queryErr && (queryErr as { status?: unknown }).status === 429
+        ? "RATE_LIMITED"
+        : null;
+
+  const lastRetryAfterSeconds =
+    queryError &&
+    queryErr &&
+    typeof queryErr === "object" &&
+    queryErr !== null &&
+    "retryAfterSeconds" in queryErr &&
+    typeof (queryErr as { retryAfterSeconds?: unknown }).retryAfterSeconds === "number"
+      ? (queryErr as { retryAfterSeconds: number }).retryAfterSeconds
+      : undefined;
 
   // Derive state from query + pre-query UI
   useEffect(() => {
@@ -190,6 +218,7 @@ export function useRightNowFeed(): UseRightNowFeedReturn {
     state,
     items,
     lastErrorCode,
+    lastRetryAfterSeconds,
     coords,
     distanceMode,
     sourceMode,

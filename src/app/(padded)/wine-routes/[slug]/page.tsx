@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
-import { wineRouteSlugMetadata } from "@/lib/locale-metadata-dynamic";
-import { routing } from "@/i18n/routing";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return WINE_ROUTES.map((r) => ({ slug: r.slug }));
@@ -17,13 +17,27 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  return wineRouteSlugMetadata(slug, routing.defaultLocale);
+  const route = WINE_ROUTES.find((r) => r.slug === slug);
+  if (!route)
+    return {
+      title: "Wine route not found | Cyprus Winter",
+      description: "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings.",
+    };
+
+  const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
+  const alternates = buildStrategyAAlternates(`/wine-routes/${slug}`);
+  return {
+    title: `${route.title} Wine Route Cyprus Winter | Wineries & Tastings`,
+    description: `${route.description} ${count} wineries open for winter tastings. Book ahead.`,
+    alternates,
+  };
 }
 
 export default async function WineRoutePage({ params }: Props) {
   const { slug } = await params;
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   if (!route) notFound();
+  const tNav = await getTranslations("nav");
 
   const routeWineries = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug);
 
@@ -31,12 +45,12 @@ export default async function WineRoutePage({ params }: Props) {
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/wineries"
-        backLabel="Wineries"
+        backLabel={tNav("wineries")}
         title={`${route.title} Wine Route`}
         description={route.description}
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Wineries", href: "/wineries" },
+          { label: tNav("home"), href: "/" },
+          { label: tNav("wineries"), href: "/wineries" },
           { label: `${route.title} Route`, href: `/wine-routes/${slug}`, isCurrent: true },
         ]}
       />
@@ -52,13 +66,13 @@ export default async function WineRoutePage({ params }: Props) {
 
       <div className={SECTION.footerBlock}>
         <p className="text-center text-olive/70 text-sm">
-          <Link href="/wineries" className={SECTION.aegeanLink}>
+          <AppLink href="/wineries" className={SECTION.aegeanLink}>
             All Cyprus wineries
-          </Link>
+          </AppLink>
           {" · "}
-          <Link href="/plan" className={SECTION.aegeanLink}>
+          <AppLink href="/plan" className={SECTION.aegeanLink}>
             Plan your trip
-          </Link>
+          </AppLink>
         </p>
       </div>
     </div>

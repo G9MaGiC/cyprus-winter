@@ -1,20 +1,28 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { trailsListPageMeta } from "@/lib/locale-page-meta";
 import TrailsClient from "./TrailsClient";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  trailsListPageMeta,
-  "/trails",
-  routing.defaultLocale
-);
+const trailsAlternates = buildStrategyAAlternates("/trails");
+
+export const metadata: Metadata = {
+  title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
+  description:
+    "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
+  alternates: trailsAlternates,
+  openGraph: {
+    title: "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
+    description: "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
+    url: trailsAlternates.canonical,
+    type: "website",
+  },
+};
 
 export default function TrailsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getTrailsItemListSchema()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(getTrailsItemListSchema()) }} />
       <TrailsClient />
     </>
   );

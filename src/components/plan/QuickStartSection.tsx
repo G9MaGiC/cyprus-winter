@@ -1,12 +1,15 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import { CARD, TYPE, PILL } from "@/lib/design-tokens";
+import { useEffect } from "react";
+import AppLink from "@/components/AppLink";
+import { CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { getRecommendedTemplates } from "@/lib/personalization";
 import type { PlanItem } from "@/data";
+import { useTranslations } from "next-intl";
+import { track } from "@/lib/analytics";
 
 type QuickStartSectionProps = {
   activeDay: number;
@@ -22,6 +25,13 @@ function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tr
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
 
+function getTripFitLabel(templateDuration: number, tripLength: number): string {
+  const delta = templateDuration - tripLength;
+  if (delta === 0) return "Exact length";
+  if (Math.abs(delta) === 1) return "Near match";
+  return delta > 0 ? "Compress plan" : "Extend with add-ons";
+}
+
 export default function QuickStartSection({
   activeDay,
   days,
@@ -31,6 +41,7 @@ export default function QuickStartSection({
   hasContent,
   tripLength,
 }: QuickStartSectionProps) {
+  const tPlanQuick = useTranslations("planQuick");
   const activeDayItems = days[activeDay] ?? [];
   const { prefs, hydrated } = useUserPreferences();
 
@@ -51,6 +62,15 @@ export default function QuickStartSection({
           (t) => !isRecommendedForTrip(t, tripLength) && !forYouKeys.has(t.key)
         )
       : ITINERARY_TEMPLATES.filter((t) => !forYouKeys.has(t.key));
+
+  useEffect(() => {
+    if (tripLength == null) return;
+    track("trip_length_recommendation_shown", {
+      trip_length: tripLength,
+      recommended_count: recommended.length,
+      for_you_count: forYou.length,
+    });
+  }, [tripLength, recommended.length, forYou.length]);
 
   const templateCardClass = "shrink-0 snap-center w-[85vw] max-w-[280px] sm:w-full sm:max-w-none";
   const renderTemplateCard = (
@@ -80,7 +100,9 @@ export default function QuickStartSection({
               {template.label}
             </span>
             {isForYou && (
-              <span className="text-xs font-medium text-terracotta mt-1 block uppercase tracking-wider">For you</span>
+              <span className={`${TYPE.kicker} text-terracotta mt-1 block`}>
+                {tPlanQuick("forYou")}
+              </span>
             )}
             {!isForYou && isRecommended && (
               <span className="text-xs font-medium text-aegean mt-1 block">Fits your {tripLength}-day trip</span>
@@ -94,6 +116,11 @@ export default function QuickStartSection({
           </span>
         </div>
         <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
+        {tripLength != null && (
+          <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
+            {getTripFitLabel(template.duration, tripLength)}
+          </span>
+        )}
       </button>
     );
   };
@@ -102,30 +129,40 @@ export default function QuickStartSection({
     <section aria-labelledby="quick-start-heading" className="space-y-8 sm:space-y-10">
       <header>
         <span
-          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-aegean/10 text-aegean text-xs font-semibold uppercase tracking-wider"
+          className={`${TYPE.kicker} inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-aegean/10 text-aegean`}
           aria-hidden
         >
-          {hasContent ? "Ideas" : "Templates"}
+          {hasContent ? tPlanQuick("kickerHasContent") : tPlanQuick("kickerEmpty")}
         </span>
-        <h2 id="quick-start-heading" className="font-display text-2xl sm:text-3xl font-semibold text-olive tracking-tight mt-3 mb-2">
-          {hasContent ? "Add more to your plan" : "Pick a template to start"}
+        <h2
+          id="quick-start-heading"
+          className={`mt-3 ${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}
+        >
+          {hasContent ? tPlanQuick("titleHasContent") : tPlanQuick("titleEmpty")}
         </h2>
         <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
-          {hasContent
-            ? "Use a template to add or replace places. Or add one from the quick picks below."
-            : "Pre-built routes from coast to mountains. One click fills Day 1."}
+          {hasContent ? tPlanQuick("descHasContent") : tPlanQuick("descEmpty")}
         </p>
         {!hasContent && tripLength == null && (
           <p className="text-sm text-olive/60 max-w-xl mt-2">
-            Set your dates above to see templates that fit your trip.
+            {tPlanQuick("setDatesHint")}
           </p>
+        )}
+        {tripLength != null && (
+          <div className="mt-3 rounded-xl border border-aegean/20 bg-aegean/5 p-3 sm:p-4">
+            <p className="text-sm text-olive/85">
+              Recommended for your {tripLength}-day trip based on length fit and your saved preferences.
+            </p>
+          </div>
         )}
       </header>
 
       {!hasContent && (
         <div className="space-y-4">
-          <p className="text-sm font-medium text-olive/80">Quick add to Day {activeDay}</p>
-          <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
+          <p className="text-sm font-medium text-olive/80">
+            {tPlanQuick("quickAddLabel", { day: activeDay })}
+          </p>
+          <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none scroll-smooth scroll-touch [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
             {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
               const inDay = activeDayItems.includes(id);
               const place = getPlace(id);
@@ -138,24 +175,45 @@ export default function QuickStartSection({
                   disabled={inDay}
                   className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
                   aria-pressed={inDay}
-                  aria-label={inDay ? `${label} added` : `Add ${label} to Day ${activeDay}`}
+                  aria-label={
+                    inDay
+                      ? tPlanQuick("quickAddAriaAdded", { label })
+                      : tPlanQuick("quickAddAriaAdd", { label, day: activeDay })
+                  }
                 >
-                  {inDay ? "Added " : ""}{label}
+                  {inDay ? `${tPlanQuick("quickAddAriaAdded", { label })} ` : ""}
+                  {label}
                 </button>
               );
             })}
-            <Link href="/discover" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Discover places">
-              Discover
-            </Link>
-            <Link href="/trails" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse trails">
-              Trails
-            </Link>
-            <Link href="/discover?filter=winery" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="Browse wineries">
-              Wineries
-            </Link>
-            <Link href="/events" className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`} aria-label="See what's on">
-              What&apos;s on
-            </Link>
+            <AppLink
+              href="/discover"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("browsePlacesAria")}
+            >
+              {tPlanQuick("browsePlacesCta")}
+            </AppLink>
+            <AppLink
+              href="/trails"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("browseTrailsAria")}
+            >
+              {tPlanQuick("browseTrailsLabel")}
+            </AppLink>
+            <AppLink
+              href="/discover?filter=winery"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("browseWineriesAria")}
+            >
+              {tPlanQuick("browseWineriesLabel")}
+            </AppLink>
+            <AppLink
+              href="/events"
+              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+              aria-label={tPlanQuick("seeWhatsOnAria")}
+            >
+              {tPlanQuick("seeWhatsOnLabel")}
+            </AppLink>
           </div>
         </div>
       )}
@@ -163,7 +221,9 @@ export default function QuickStartSection({
       <div className="space-y-8 sm:space-y-10">
         {forYou.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-xs font-semibold text-terracotta uppercase tracking-wider">For you</h3>
+            <h3 className={`${TYPE.kicker} text-terracotta`}>
+              {tPlanQuick("forYou")}
+            </h3>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
               {forYou.map((template) => (
                 <div key={template.key} className={templateCardClass}>
@@ -175,7 +235,9 @@ export default function QuickStartSection({
         )}
         {recommended.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-xs font-semibold text-aegean uppercase tracking-wider">For your {tripLength}-day trip</h3>
+            <h3 className={`${TYPE.kicker} text-aegean`}>
+              {tripLength != null ? tPlanQuick("forTrip", { days: tripLength }) : tPlanQuick("forYou")}
+            </h3>
             <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
               {recommended.map((template) => (
                 <div key={template.key} className={templateCardClass}>
@@ -186,8 +248,8 @@ export default function QuickStartSection({
           </div>
         )}
         <div className="space-y-4">
-          <h3 className="text-xs font-semibold text-olive/70 uppercase tracking-wider">
-            {recommended.length > 0 || forYou.length > 0 ? "More templates" : "Templates"}
+          <h3 className={`${TYPE.kicker} text-olive/70`}>
+            {tPlanQuick("kickerEmpty")}
           </h3>
           <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
             {others.map((template) => (

@@ -1,26 +1,57 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { absoluteUrlForLocale, applyLocaleToMetadata } from "@/lib/locale-seo";
-import { eventsSegmentMeta } from "@/lib/locale-page-meta";
-import { buildEventsIndexJsonLd } from "@/lib/events-index-json-ld";
+import { winterEvents } from "@/data/events";
+import { SITE_URL } from "@/lib/site-url";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { toSafeJsonForScript } from "@/lib/json-script";
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  eventsSegmentMeta,
-  "/events",
-  routing.defaultLocale
-);
+const ogImage = `${SITE_URL}/images/cyprus/cyprus-monastery-kykkos.jpg`;
+const eventsAlternates = buildStrategyAAlternates("/events");
+
+export const metadata: Metadata = {
+  title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
+  description:
+    "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit.",
+  alternates: eventsAlternates,
+  openGraph: {
+    title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
+    description: "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here.",
+    url: eventsAlternates.canonical,
+    type: "website",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter events" }],
+  },
+};
 
 export default function EventsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const eventsUrl = absoluteUrlForLocale("/events", routing.defaultLocale);
-  const eventListSchema = buildEventsIndexJsonLd(eventsUrl);
+  const eventsUrl = `${SITE_URL}/events`;
+
+  const eventListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Cyprus Winter Events",
+    description: "Winter events in Cyprus: Epiphany, carnival, Commandaria tastings, Christmas markets, ski season, and more.",
+    url: eventsUrl,
+    numberOfItems: winterEvents.length,
+    itemListElement: winterEvents.map((evt, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Event",
+        name: evt.name,
+        description: evt.description.slice(0, 160),
+        location: { "@type": "Place", name: evt.venue || evt.region, address: { addressLocality: evt.region, addressCountry: "CY" } },
+        url: `${eventsUrl}#${evt.id}`,
+        ...(evt.dates && { startDate: evt.dates }),
+      },
+    })),
+  };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(eventListSchema) }} />
       {children}
     </>
   );

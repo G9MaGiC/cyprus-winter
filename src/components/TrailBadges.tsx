@@ -1,26 +1,30 @@
+"use client";
+
 import type { TrailStatus, TrailDifficulty } from "@/data/trails";
+import { useTranslations } from "next-intl";
 
 const badgeOverlay = "backdrop-blur-sm bg-white/85";
 
 export function StatusBadge({ status }: { status: TrailStatus }) {
+  const tBadges = useTranslations("trails.badges");
   switch (status) {
     case "open":
       return (
-        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-aegean ${badgeOverlay}`} title="Good to go">
+        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-aegean ${badgeOverlay}`} title={tBadges("status.open.title")}>
           <span className="w-2 h-2 rounded-full bg-aegean/80" aria-hidden />
           Open
         </span>
       );
     case "caution":
       return (
-        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-charcoal ${badgeOverlay}`} title="Check conditions before you head out">
+        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-charcoal ${badgeOverlay}`} title={tBadges("status.caution.title")}>
           <span className="w-2 h-2 rounded-full bg-golden" aria-hidden />
           Caution
         </span>
       );
     case "closed":
       return (
-        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-terracotta ${badgeOverlay}`} title="Best saved for another day">
+        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-terracotta ${badgeOverlay}`} title={tBadges("status.closed.title")}>
           <span className="w-2 h-2 rounded-full bg-terracotta/80" aria-hidden />
           Closed
         </span>

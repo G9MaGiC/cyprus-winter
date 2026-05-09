@@ -1,14 +1,17 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
+import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
+import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import { useSearchParams } from "next/navigation";
-import { CTA } from "@/lib/design-tokens";
+import { CTA, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
 import { trails } from "@/data/trails";
 import type { Guide } from "@/data/guides";
+import { useTranslations } from "next-intl";
 
 export default function GuideBookingForm({
   guide,
@@ -17,6 +20,9 @@ export default function GuideBookingForm({
   guide: Guide;
   preselectedTrailId?: string | null;
 }) {
+  const t = useTranslations("book.guideForm");
+  const tCommon = useTranslations("common");
+  const tBookings = useTranslations("bookings");
   const searchParams = useSearchParams();
   const trailFromQuery = preselectedTrailId ?? searchParams.get("trail");
   const [loading, setLoading] = useState(false);
@@ -34,6 +40,16 @@ export default function GuideBookingForm({
     if (done && successRef.current) {
       successRef.current.focus({ preventScroll: false });
     }
+  }, [done]);
+
+  useEffect(() => {
+    track("booking_trust_strip_view", { type: "guide_tour", guideId: guide.id });
+    track("booking_stepper_progress", { type: "guide_tour", step: 1 });
+  }, [guide.id]);
+
+  useEffect(() => {
+    if (!done) return;
+    track("booking_stepper_progress", { type: "guide_tour", step: 3 });
   }, [done]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -74,14 +90,9 @@ export default function GuideBookingForm({
         const msg =
           data.message ??
           (typeof data.error === "string" ? data.error : data.error?.message) ??
-          "Booking failed";
+          t("errors.failed");
         throw new Error(msg);
       }
-
-      if (loadLocalBookings().length === 0) {
-        track("first_booking", { guideId: guide.id });
-      }
-      addBookingToLocal(data.booking);
 
       setDone(true);
       setStorageMode(data.storage ?? null);
@@ -92,13 +103,18 @@ export default function GuideBookingForm({
         trailId: trailId || undefined,
         partySize: Number(partySize),
       });
+      if (loadLocalBookings().length === 0) {
+        track("first_booking", { guideId: guide.id });
+      }
+
+      addBookingToLocal(data.booking);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
       if (isNetworkError && typeof navigator !== "undefined") {
         addMutation({ type: "guide_booking", url: "/api/bookings", method: "POST", body });
       }
-      const fallback = "Something went wrong — check your connection and try again.";
+      const fallback = t("errors.fallback");
       setError(msg && !isNetworkError ? msg : fallback);
       setTimeout(() => {
         const behavior =
@@ -122,31 +138,30 @@ export default function GuideBookingForm({
         role="status"
         aria-live="polite"
       >
-        <h2 className="font-display text-xl font-semibold text-olive">Request sent</h2>
+        <h2 className={`${TYPE.subSectionTitle} text-olive`}>{t("success.title")}</h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
-          Your hike request for {guide.name} is on its way. They&apos;ll confirm by email. If you
-          don&apos;t hear back within a day or two, give them a call.
+          {t("success.body", { guideName: guide.name })}
           {storageMode === "memory" && (
             <>
               {" "}
-              Enter your email on{" "}
-              <Link href="/bookings" className="text-terracotta underline hover:no-underline">
-                My Bookings
-              </Link>{" "}
-              to view your request across devices.
+              {t("success.crossDevicePrefix")}{" "}
+              <AppLink href="/bookings" className="text-terracotta underline hover:no-underline">
+                {tBookings("title")}
+              </AppLink>{" "}
+              {t("success.crossDeviceSuffix")}
             </>
           )}
         </p>
         <p className="text-olive/70 text-sm mt-3 break-words">
-          Pack layers and water. Tell someone your route.
+          {t("success.tip")}
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Link href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
-            View my bookings
-          </Link>
-          <Link href="/trails" className={`gap-2 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}>
-            Browse trails
-          </Link>
+          <AppLink href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
+            {t("success.ctaBookings")}
+          </AppLink>
+          <AppLink href="/trails" className={`gap-2 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}>
+            {t("success.ctaTrails")}
+          </AppLink>
         </div>
       </div>
     );
@@ -154,6 +169,12 @@ export default function GuideBookingForm({
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <BookingProgressStepper currentStep={1} />
+      <BookingTrustStrip variant="guide" />
+      <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
+        <p><strong>Booking states:</strong> Requested now to confirmed after guide reply.</p>
+        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+      </div>
       {error && (
         <p
           ref={errorRef}
@@ -168,9 +189,9 @@ export default function GuideBookingForm({
 
       <div>
         <label htmlFor="date" className="block text-sm font-medium text-olive mb-1">
-          Preferred date
+          {t("fields.date.label")}
         </label>
-        <p className="text-xs text-olive/60 mb-2">Winter days are short; book ahead for your preferred slot.</p>
+        <p className="text-xs text-olive/60 mb-2">{t("fields.date.hint")}</p>
         <input
           id="date"
           name="date"
@@ -184,9 +205,9 @@ export default function GuideBookingForm({
       {trailOptions.length > 0 && (
         <div>
           <label htmlFor="trailId" className="block text-sm font-medium text-olive mb-1">
-            Trail <span className="text-olive/50">(optional)</span>
+            {t("fields.trail.label")} <span className="text-olive/50">{t("fields.trail.optional")}</span>
           </label>
-          <p className="text-xs text-olive/60 mb-2">Optional. Helps the guide plan.</p>
+          <p className="text-xs text-olive/60 mb-2">{t("fields.trail.hint")}</p>
           <select
             id="trailId"
             name="trailId"
@@ -198,11 +219,11 @@ export default function GuideBookingForm({
             }
             className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
           >
-            <option value="">Select a trail (optional)</option>
-            {trailOptions.map((t) =>
-              t ? (
-                <option key={t.id} value={t.id}>
-                  {t.name}
+            <option value="">{t("fields.trail.placeholder")}</option>
+            {trailOptions.map((trail) =>
+              trail ? (
+                <option key={trail.id} value={trail.id}>
+                  {trail.name}
                 </option>
               ) : null
             )}
@@ -212,7 +233,7 @@ export default function GuideBookingForm({
 
       <div>
         <label htmlFor="partySize" className="block text-sm font-medium text-olive mb-1">
-          Group size
+          {t("fields.partySize.label")}
         </label>
         <select
           id="partySize"
@@ -222,16 +243,16 @@ export default function GuideBookingForm({
         >
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
             <option key={n} value={n}>
-              {n} {n === 1 ? "person" : "people"}
+              {tCommon("peopleCount", { count: n })}
             </option>
           ))}
-          <option value="11">11+ people</option>
+          <option value="11">{t("fields.partySize.plus")}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="guestName" className="block text-sm font-medium text-olive mb-1">
-          Your name
+          {t("fields.guestName.label")}
         </label>
         <input
           id="guestName"
@@ -240,14 +261,14 @@ export default function GuideBookingForm({
           autoComplete="name"
           required
           maxLength={200}
-          placeholder="John Smith"
+          placeholder={t("fields.guestName.placeholder")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
       <div>
         <label htmlFor="guestEmail" className="block text-sm font-medium text-olive mb-1">
-          Email
+          {t("fields.guestEmail.label")}
         </label>
         <input
           id="guestEmail"
@@ -255,24 +276,24 @@ export default function GuideBookingForm({
           type="email"
           autoComplete="email"
           required
-          placeholder="john@example.com"
+          placeholder={t("fields.guestEmail.placeholder")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
 
       <div>
         <label htmlFor="notes" className="block text-sm font-medium text-olive mb-1">
-          Notes <span className="text-olive/50">(optional)</span>
+          {t("fields.notes.label")} <span className="text-olive/50">{t("fields.notes.optional")}</span>
         </label>
         <p className="text-xs text-olive/60 mb-2">
-          Fitness level, experience, trail preference—whatever helps them plan.
+          {t("fields.notes.hint")}
         </p>
         <textarea
           id="notes"
           name="notes"
           rows={3}
           maxLength={500}
-          placeholder="First winter hike, want to see waterfalls, need an early start — whatever helps"
+          placeholder={t("fields.notes.placeholder")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
       </div>
@@ -281,19 +302,20 @@ export default function GuideBookingForm({
         type="submit"
         disabled={loading}
         aria-busy={loading}
-        aria-label={loading ? "Sending your request" : "Request guided hike"}
+        aria-label={loading ? t("submit.ariaSending") : t("submit.ariaIdle")}
         className={`w-full mt-6 py-4 rounded-lg justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:disabled:ring-0 ${CTA.primaryCompact}`}
       >
         {loading && (
           <span className="w-4 h-4 border-2 border-white/60 border-t-white rounded-full animate-spin shrink-0" aria-hidden />
         )}
-        {loading ? "Sending…" : "Request guided hike"}
+        {loading ? t("submit.sending") : t("submit.idle")}
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
-        This is a request, not a confirmed reservation. They&apos;ll confirm by email. By submitting, you agree to our{" "}
-        <Link href="/terms" className="text-olive/70 hover:underline">Terms</Link>
-        {" "}and{" "}
-        <Link href="/privacy" className="text-olive/70 hover:underline">Privacy Policy</Link>.
+        {t("finePrint.bodyPrefix")}{" "}
+        <AppLink href="/terms" className="text-olive/70 hover:underline">{t("finePrint.terms")}</AppLink>{" "}
+        {t("finePrint.and")}{" "}
+        <AppLink href="/privacy" className="text-olive/70 hover:underline">{t("finePrint.privacy")}</AppLink>
+        {t("finePrint.bodySuffix")}
       </p>
     </form>
   );

@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { CARD } from "@/lib/design-tokens";
+import { CARD, TYPE } from "@/lib/design-tokens";
 
 function formatKm(n: number): string {
   return n % 1 === 0 ? String(n) : n.toFixed(1);
@@ -31,7 +31,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
     <div
       className={`group overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive} flex flex-row sm:flex-col`}
     >
-      <Link
+      <AppLink
         href={item.href}
         className={`block ${CARD.link} flex-1 flex flex-row sm:flex-col min-w-0`}
         aria-label={`${item.name}, ${item.region}`}
@@ -53,7 +53,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
           </span>
         </div>
         <div className="flex-1 p-2.5 sm:p-3 min-w-0 flex flex-col justify-center">
-          <h3 className="font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors truncate">
+          <h3 className={`${TYPE.cardTitleCompact} truncate`}>
             {item.name}
           </h3>
           <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}`}>
@@ -63,7 +63,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             {item.tease}
           </p>
         </div>
-      </Link>
+      </AppLink>
       <div className="flex sm:block shrink-0 p-2 sm:p-3 sm:-mt-1 self-center sm:self-stretch">
         <AddToItineraryButton placeId={item.id} label="Add" />
       </div>

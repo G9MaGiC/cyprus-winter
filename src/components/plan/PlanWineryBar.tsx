@@ -1,29 +1,26 @@
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { CTA, SECTION } from "@/lib/design-tokens";
-import { TrackOnClick } from "@/components/TrackOnClick";
+import { useTranslations } from "next-intl";
 
 export default function PlanWineryBar() {
+  const tCommon = useTranslations("common");
+  const tBookings = useTranslations("bookings");
+  const tPlan = useTranslations("plan.wineryBar");
   return (
     <div
       role="region"
-      aria-label="Winery bookings"
+      aria-label={tPlan("ariaLabel")}
       className="rounded-2xl border border-sand-200/90 bg-white/90 p-5 sm:p-6 flex flex-wrap items-center gap-3 sm:gap-4 min-h-[44px] shadow-sm"
     >
-      <TrackOnClick event="shop_click" properties={{ source: "plan_winery_bar", action: "book_tastings" }}>
-        <Link href="/bookings?intent=new" className={CTA.primaryCompact}>
-          Book tastings
-        </Link>
-      </TrackOnClick>
-      <TrackOnClick event="shop_click" properties={{ source: "plan_winery_bar", action: "browse_wineries" }}>
-        <Link href="/discover?filter=winery" className={CTA.secondaryCompact}>
-          Browse wineries
-        </Link>
-      </TrackOnClick>
-      <TrackOnClick event="shop_click" properties={{ source: "plan_winery_bar", action: "my_bookings" }}>
-        <Link href="/bookings" className={SECTION.aegeanLink}>
-          My bookings
-        </Link>
-      </TrackOnClick>
+      <AppLink href="/bookings" className={CTA.primaryCompact}>
+        {tCommon("bookTastings")}
+      </AppLink>
+      <AppLink href="/discover?filter=winery" className={CTA.secondaryCompact}>
+        {tBookings("browseWineries")}
+      </AppLink>
+      <AppLink href="/bookings" className={SECTION.aegeanLink}>
+        {tBookings("title")}
+      </AppLink>
     </div>
   );
 }

@@ -9,51 +9,66 @@ describe("formatReportedAgo", () => {
     vi.useRealTimers();
   });
 
-  it('returns "Just now" for dates within the last hour', () => {
+  it("returns locale-relative time for dates within the last hour", () => {
     vi.setSystemTime(new Date("2026-03-05T12:00:00Z"));
-    expect(formatReportedAgo("2026-03-05T11:30:00Z")).toBe("Just now");
+    const expected = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "narrow" }).format(
+      0,
+      "minute"
+    );
+    expect(formatReportedAgo("2026-03-05T11:30:00Z", "en")).toBe(expected);
   });
 
-  it('returns "Xh ago" for dates within the last 24 hours', () => {
+  it("returns locale-relative time for dates within the last 24 hours", () => {
     vi.setSystemTime(new Date("2026-03-05T14:00:00Z"));
-    expect(formatReportedAgo("2026-03-05T12:00:00Z")).toBe("2h ago");
+    const expected = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "narrow" }).format(
+      -2,
+      "hour"
+    );
+    expect(formatReportedAgo("2026-03-05T12:00:00Z", "en")).toBe(expected);
   });
 
-  it('returns "Yesterday" for 1 day ago', () => {
+  it("returns locale-relative time for 1 day ago", () => {
     vi.setSystemTime(new Date("2026-03-05T12:00:00Z"));
-    expect(formatReportedAgo("2026-03-04T12:00:00Z")).toBe("Yesterday");
+    const expected = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "narrow" }).format(
+      -1,
+      "day"
+    );
+    expect(formatReportedAgo("2026-03-04T12:00:00Z", "en")).toBe(expected);
   });
 
-  it('returns "Xd ago" for dates within the last week', () => {
+  it("returns locale-relative time for dates within the last week", () => {
     vi.setSystemTime(new Date("2026-03-05T12:00:00Z"));
-    expect(formatReportedAgo("2026-03-03T12:00:00Z")).toBe("2d ago");
+    const expected = new Intl.RelativeTimeFormat("en", { numeric: "auto", style: "narrow" }).format(
+      -2,
+      "day"
+    );
+    expect(formatReportedAgo("2026-03-03T12:00:00Z", "en")).toBe(expected);
   });
 
   it("returns Invalid Date string for invalid input", () => {
-    expect(formatReportedAgo("not-a-date")).toBe("Invalid Date");
+    expect(formatReportedAgo("not-a-date", "en")).toBe("Invalid Date");
   });
 
   it("returns locale date string for older dates", () => {
     vi.setSystemTime(new Date("2026-03-05T12:00:00Z"));
-    const result = formatReportedAgo("2026-02-20T12:00:00Z");
+    const result = formatReportedAgo("2026-02-20T12:00:00Z", "en");
     expect(result).toMatch(/\d/);
   });
 });
 
 describe("formatDate", () => {
   it("handles invalid date string", () => {
-    const result = formatDate("not-a-date");
-    expect(result).toContain("Invalid");
+    expect(formatDate("not-a-date", "en")).toBe("Invalid Date");
   });
 
   it("formats ISO date string", () => {
-    const result = formatDate("2026-03-15");
+    const result = formatDate("2026-03-15", "en");
     expect(result).toMatch(/15/);
     expect(result).toMatch(/Mar/);
   });
 });
 
-/** YYYY-MM-DD in local time (daysUntil uses local midnight). */
+/** YYYY-MM-DD in local time (daysUntil anchors at local noon for DST-safe deltas). */
 function toLocalDateStr(d: Date): string {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");

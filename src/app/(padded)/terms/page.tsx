@@ -1,137 +1,171 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { termsPageMeta } from "@/lib/locale-page-meta";
-import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
-import { Link } from "@/i18n/navigation";
+import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = applyLocaleToMetadata(termsPageMeta, "/terms", routing.defaultLocale);
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "terms.page" });
+  const title = t("meta.title");
+  const description = t("meta.description");
+  return {
+    title,
+    description,
+    alternates: buildStrategyAAlternates("/terms"),
+    robots: { index: true, follow: true },
+  };
+}
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const [tNav, tCommon, tTerms] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("common"),
+    getTranslations("terms.page"),
+  ]);
   return (
     <div className={`${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
         backHref="/"
-        backLabel="Home"
-        title="Terms of Service"
-        description="Terms governing your use of Cyprus Winter. Last updated: March 2026."
+        backLabel={tNav("home")}
+        title={tTerms("header.title")}
+        description={tTerms("header.description")}
         breadcrumbItems={[
-          { label: "Home", href: "/" },
-          { label: "Terms", href: "/terms", isCurrent: true },
+          { label: tNav("home"), href: "/" },
+          { label: tCommon("breadcrumbs.terms"), href: "/terms", isCurrent: true },
         ]}
       />
 
       <article className={`prose prose-olive max-w-none ${SECTION.blockGap}`}>
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            1. Acceptance
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s1.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            By using Cyprus Winter (&quot;the service&quot;), you agree to these Terms of Service and our <Link href="/privacy" className="text-terracotta hover:underline">Privacy Policy</Link>. If you do not agree, do not use the service.
+            {tTerms.rich("sections.s1.body", {
+              privacyPolicyLink: (chunks) => (
+                <AppLink href="/privacy" className="text-terracotta hover:underline">
+                  {chunks}
+                </AppLink>
+              ),
+            })}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            2. Description of the service
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s2.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            Cyprus Winter provides tourism information, trip planning tools, trail conditions, and booking requests for wineries and guides in Cyprus. We are an informational and planning service, not a tour operator or booking agent. Winery and guide bookings are <strong>requests</strong>; confirmation depends on the partner. We do not guarantee availability or pricing.
+            {tTerms.rich("sections.s2.body", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            3. User-generated content (UGC)
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s3.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed mb-4">
-            You may submit content such as trail condition reports. By submitting, you:
+            {tTerms("sections.s3.intro")}
           </p>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
-            <li>Grant us a non-exclusive, royalty-free licence to use, display, and modify the content for the service.</li>
-            <li>Represent that you own or have the right to submit the content and that it does not violate any third-party rights or laws.</li>
-            <li>Agree not to submit false, harmful, abusive, or illegal content.</li>
+            <li>{tTerms("sections.s3.items.licence")}</li>
+            <li>{tTerms("sections.s3.items.ownership")}</li>
+            <li>{tTerms("sections.s3.items.noHarm")}</li>
           </ul>
           <p className="text-olive/90 leading-relaxed mt-4">
-            We may remove or edit content that violates these terms or our content policy. We are not responsible for user-generated content; responsibility lies with the submitter.
+            {tTerms("sections.s3.outro")}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            4. Disclaimers
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s4.title")}
           </h2>
           <ul className="list-disc pl-6 space-y-2 text-olive/90">
             <li>
-              <strong>Trail conditions:</strong> Conditions are crowd-sourced and not guaranteed. Weather and trail status change. Check official sources and use your own judgement before hiking.
+              {tTerms.rich("sections.s4.items.trail", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </li>
             <li>
-              <strong>Outdoor activities:</strong> Hiking and outdoor activities involve inherent risks. You assume responsibility for your safety. Prepare appropriately (weather, gear, fitness) and follow local regulations.
+              {tTerms.rich("sections.s4.items.outdoor", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </li>
             <li>
-              <strong>Bookings:</strong> Submission of a booking form is a request, not a confirmed reservation. Partners confirm separately. We are not liable for partner availability, pricing, or conduct.
+              {tTerms.rich("sections.s4.items.bookings", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </li>
             <li>
-              <strong>AI content:</strong> Ask AI responses are for general information only. They may be inaccurate or incomplete. Do not rely on them for critical decisions (safety, legal, medical). Verify important information from authoritative sources.
+              {tTerms.rich("sections.s4.items.ai", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </li>
           </ul>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            5. Alcohol content
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s5.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            Wine and winery content is intended for adults of legal drinking age. If you are under the legal age in your jurisdiction, please do not use winery booking or related features. Drink responsibly.
+            {tTerms("sections.s5.body")}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            6. Limitation of liability
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s6.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            To the fullest extent permitted by law, Cyprus Winter and its operators are not liable for any indirect, incidental, special, or consequential damages arising from your use of the service, including but not limited to reliance on trail conditions, AI responses, or booking outcomes. Our total liability is limited to the amount you paid to us (if any) in the 12 months preceding the claim, or zero if you have not paid. Some jurisdictions do not allow these limitations; in such cases our liability is limited to the maximum permitted by law.
+            {tTerms("sections.s6.body")}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            7. Governing law and disputes
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s7.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            These terms are governed by the laws of the Republic of Cyprus. Any disputes shall be resolved in the courts of Cyprus. EU consumers retain the right to bring claims in their country of residence.
+            {tTerms("sections.s7.body")}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            8. Changes
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s8.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            We may update these terms. Material changes will be noted at the top. Continued use after changes constitutes acceptance. If you do not agree, discontinue use.
+            {tTerms("sections.s8.body")}
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-charcoal mt-10 mb-3">
-            9. Contact
+          <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
+            {tTerms("sections.s9.title")}
           </h2>
           <p className="text-olive/90 leading-relaxed">
-            For questions about these terms: <strong>legal@cypruswinter.com</strong> (or use the contact method provided on our site).
+            {tTerms.rich("sections.s9.body", {
+              email: "legal@cypruswinter.com",
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </section>
       </article>
 
       <div className="mt-12 flex flex-wrap gap-4">
-        <Link href="/privacy" className={CTA.secondaryCompact}>
-          Privacy Policy
-        </Link>
-        <Link href="/" className={CTA.chipTertiary}>
-          Back to home
-        </Link>
+        <AppLink href="/privacy" className={CTA.secondaryCompact}>
+          {tTerms("footer.privacyCta")}
+        </AppLink>
+        <AppLink href="/" className={CTA.chipTertiary}>
+          {tTerms("footer.homeCta")}
+        </AppLink>
       </div>
     </div>
   );

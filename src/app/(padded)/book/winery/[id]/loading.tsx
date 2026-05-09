@@ -1,11 +1,13 @@
 import { LAYOUT, SKELETON } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 export default function WineryBookingLoading() {
+  const t = useTranslations("common");
   return (
     <div
       className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
       aria-busy
-      aria-label="Loading booking form"
+      aria-label={t("loading.bookingForm")}
     >
       <div className={`h-4 w-24 ${SKELETON.block} mb-6`} />
       <div className={`h-9 w-48 ${SKELETON.bar} mb-3`} />

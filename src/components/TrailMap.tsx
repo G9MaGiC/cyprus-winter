@@ -4,7 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Trail } from "@/data/trails";
-import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 // Fix default marker icons in Next.js
 const trailheadIcon = L.divIcon({
@@ -63,6 +64,8 @@ type TrailMapProps = {
 };
 
 export default function TrailMap({ trail, className = "" }: TrailMapProps) {
+  const tCommon = useTranslations("common");
+  const tTrailsMap = useTranslations("trails.map");
   const hasTrailhead = trail.trailheadCoords != null;
   const waypointsWithCoords = trail.waypoints?.filter((w) => w.lat != null && w.lng != null) ?? [];
 
@@ -100,7 +103,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
         attributionControl={true}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">${tCommon("map.openStreetMap")}</a>`}
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {polylinePositions.length > 1 && (
@@ -121,7 +124,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
           >
             <Popup>
               <div className="min-w-[180px]">
-                <p className="font-semibold text-charcoal mb-1">Trailhead</p>
+                <p className={`${TYPE.cardTitle} mb-1`}>{tTrailsMap("trailheadLegend")}</p>
                 {trail.trailhead && (
                   <p className="text-sm text-olive/80 mb-2">{trail.trailhead}</p>
                 )}
@@ -145,7 +148,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
             <Marker key={i} position={[w.lat, w.lng]} icon={waypointIcon(i + 1)}>
               <Popup>
                 <div className="min-w-[200px]">
-                  <p className="font-semibold text-charcoal mb-0.5">{w.name}</p>
+                  <p className={`${TYPE.cardTitle} mb-0.5`}>{w.name}</p>
                   {w.km != null && (
                     <p className="text-xs text-olive/60 mb-1">@ {w.km} km</p>
                   )}
@@ -174,7 +177,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
               className="w-3 h-3 rounded-full bg-terracotta border-2 border-white shadow-sm"
               aria-hidden
             />
-            Trailhead
+            {tTrailsMap("trailheadLegend")}
           </span>
           {waypointsWithCoords.some((w) => {
             const tc = trail.trailheadCoords;

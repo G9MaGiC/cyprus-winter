@@ -1,17 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Link } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import FilterChips from "@/components/FilterChips";
-import { TrackOnClick } from "@/components/TrackOnClick";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const TYPE_LABELS: Record<string, string> = {
   festival: "Festival",
@@ -55,6 +55,8 @@ function EventCard({
   variant?: "default" | "highlight";
 }) {
   const typeColor = TYPE_COLORS[event.type] ?? "bg-sand-200/80 text-olive/80";
+  const tPage = useTranslations("events.page");
+  const tCommon = useTranslations("common");
 
   return (
     <article
@@ -77,7 +79,7 @@ function EventCard({
         </span>
         <span className="text-sm text-olive/70 break-words">{event.region}</span>
       </div>
-      <h3 className="font-display text-lg font-semibold text-olive break-words">
+      <h3 className={`${TYPE.cardTitle} break-words`}>
         {event.name}
         {event.nameEl && (
           <span
@@ -91,7 +93,7 @@ function EventCard({
       {(event.dates || event.venue) && (
         <p
           className="text-sm text-terracotta font-medium mt-2 break-words"
-          aria-label={`When: ${event.dates ?? ""}. Where: ${event.venue ?? ""}`}
+          aria-label={tPage("card.whenWhereAria", { dates: event.dates ?? "", venue: event.venue ?? "" })}
         >
           {event.dates && <span>{event.dates}</span>}
           {event.dates && event.venue && " · "}
@@ -102,14 +104,14 @@ function EventCard({
         {event.description}
       </p>
       <div className="flex flex-wrap gap-3 mt-4">
-        <AddToItineraryButton placeId={event.id} label="Add to plan" />
+        <AddToItineraryButton placeId={event.id} label={tCommon("addToPlan")} />
         {event.region !== "All" && (
           <Link
             href={`/search?q=${encodeURIComponent(event.region)}`}
             className={`px-4 py-2.5 rounded-lg ${CTA.secondaryCompact}`}
-            aria-label={`Explore ${event.region}`}
+            aria-label={tPage("card.exploreRegionAria", { region: event.region })}
           >
-            Explore {event.region} →
+            {tPage("card.exploreRegionCta", { region: event.region })}
           </Link>
         )}
         {event.url && (
@@ -118,9 +120,9 @@ function EventCard({
             target="_blank"
             rel="noopener noreferrer"
             className={`px-4 py-2.5 rounded-lg ${CTA.chipTertiary}`}
-            aria-label={`Learn more about ${event.name}`}
+            aria-label={tPage("card.learnMoreAria", { name: event.name })}
           >
-            Learn more
+            {tPage("card.learnMoreCta")}
           </a>
         )}
       </div>
@@ -129,6 +131,11 @@ function EventCard({
 }
 
 export default function EventsPage() {
+  const tNav = useTranslations("nav");
+  const tEvents = useTranslations("events");
+  const tPage = useTranslations("events.page");
+  const tCommon = useTranslations("common");
+  const tSearch = useTranslations("search");
   const searchParams = useSearchParams();
   const typeFromUrl = searchParams.get("type") ?? "";
   const regionFromUrl = searchParams.get("region") ?? "";
@@ -176,32 +183,32 @@ export default function EventsPage() {
   const [filtersExpanded, setFiltersExpanded] = useState(hasFilters);
 
   const typeChips = [
-    { id: "", label: "All" },
+    { id: "", label: tPage("filters.toggleAll") },
     ...Object.entries(TYPE_LABELS).map(([id, label]) => ({ id, label })),
   ];
   const regionChips = [
-    { id: "", label: "All" },
+    { id: "", label: tPage("filters.toggleAll") },
     ...REGIONS_LIST.map((r) => ({ id: r, label: r })),
   ];
 
   const filterGroup = (
     <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-4 lg:gap-6">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="prose-label text-olive/60 w-full sm:w-auto shrink-0">Type</span>
+        <span className={`${TYPE.kicker} text-olive/60 w-full sm:w-auto shrink-0`}>{tPage("filters.typeLabel")}</span>
         <FilterChips
           chips={typeChips}
           isActive={(c) => (c.id === "" ? !typeFilter : typeFilter === c.id)}
           getHref={(c) => buildFilterHref(c.id, regionFilter)}
-          ariaLabel="Filter by type"
+          ariaLabel={tPage("filters.byTypeAria")}
         />
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="prose-label text-olive/60 w-full sm:w-auto shrink-0">Region</span>
+        <span className={`${TYPE.kicker} text-olive/60 w-full sm:w-auto shrink-0`}>{tPage("filters.regionLabel")}</span>
         <FilterChips
           chips={regionChips}
           isActive={(c) => (c.id === "" ? !regionFilter : regionFilter === c.id)}
           getHref={(c) => buildFilterHref(typeFilter, c.id)}
-          ariaLabel="Filter by region"
+          ariaLabel={tPage("filters.byRegionAria")}
         />
       </div>
     </div>
@@ -213,38 +220,35 @@ export default function EventsPage() {
         className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst}`}
       >
         <ListPageHero
-          title="Winter events"
-          description="Epiphany, carnival, markets, tastings. The island fills the short days with light and noise. November to March."
+          title={tPage("hero.title")}
+          description={tPage("hero.description")}
           backHref="/"
-          backLabel="Home"
+          backLabel={tNav("home")}
           backgroundImage="/images/cyprus/cyprus-monastery-kykkos.jpg"
-          backgroundImageAlt="Kykkos monastery, Troodos—Cyprus winter culture and events"
+          backgroundImageAlt={tPage("hero.imageAlt")}
           hasWidgetStrip
-          breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Events", href: "/events", isCurrent: true }]}
+          breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("events"), href: "/events", isCurrent: true }]}
         >
-          <TrackOnClick event="shop_click" properties={{ source: "events_hero", action: "plan_cta" }}>
-            <Link
-              href="/plan"
-              className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}
-              aria-label="Plan your trip"
-            >
-              Plan your trip
-            </Link>
-          </TrackOnClick>
+          <Link
+            href="/plan"
+            className={`inline-flex items-center min-h-[44px] mt-4 ${CTA.tertiaryOnDark}`}
+            aria-label={tPage("hero.planAria")}
+          >
+            {tPage("hero.planCta")}
+          </Link>
           <p className="text-sm text-white/80 mt-2 break-words">
-            Dates may shift year to year. Check official sources before you
-            travel.
+            {tPage("hero.note")}
           </p>
         </ListPageHero>
 
         <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
 
-        <ListPageWidgetStrip sticky sentinelId="events-plan-sentinel" ariaLabel="Filter events">
-          <section aria-label="Filter events" className="mb-0">
+        <ListPageWidgetStrip sticky sentinelId="events-plan-sentinel" ariaLabel={tPage("filters.aria")}>
+          <section aria-label={tPage("filters.aria")} className="mb-0">
             <div className={`${CARD.base} ${CARD.content}`}>
               {hasInvalidFilter && (
                 <p className="text-sm text-olive/70 mb-4" role="status">
-                  Unknown filter — showing all events.
+                  {tPage("filters.unknown")}
                 </p>
               )}
               <div className="sm:hidden">
@@ -256,9 +260,9 @@ export default function EventsPage() {
                   aria-controls="event-filters"
                   id="event-filters-toggle"
                 >
-                  <span className="text-sm">Filters: {hasFilters ? [typeFilter ? TYPE_LABELS[typeFilter] : null, regionFilter].filter(Boolean).join(", ") : "All"}</span>
+                  <span className="text-sm">{tPage("filters.togglePrefix")} {hasFilters ? [typeFilter ? TYPE_LABELS[typeFilter] : null, regionFilter].filter(Boolean).join(", ") : tPage("filters.toggleAll")}</span>
                   <span className="text-olive/60 text-xs" aria-hidden>
-                    {filtersExpanded ? "Hide" : "Show"}
+                    {filtersExpanded ? tPage("filters.toggleHide") : tPage("filters.toggleShow")}
                   </span>
                 </button>
                 <div
@@ -283,21 +287,21 @@ export default function EventsPage() {
             aria-live="polite"
           >
             <p className="text-olive/80 break-words max-w-sm mx-auto">
-              Nothing matches these filters. Try a different type or region.
+              {tEvents("noMatch")}
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/events"
                 className={CTA.secondaryCompact}
-                aria-label="Clear filters and show all events"
+                aria-label={tEvents("clearFiltersAria")}
               >
-                Clear filters
+                {tEvents("clearFilters")}
               </Link>
               <Link href="/discover" className={CTA.chipTertiary}>
-                Browse Discover
+                {tSearch("browseDiscover")}
               </Link>
               <Link href="/plan" className={CTA.chipTertiary}>
-                Plan your trip
+                {tCommon("planYourTrip")}
               </Link>
             </div>
           </div>
@@ -306,17 +310,17 @@ export default function EventsPage() {
             {/* Month jump nav — above content, prominent */}
             {monthNavMonths.length > 0 && (
               <nav
-                aria-label="Jump to month"
-                className={`sticky ${LAYOUT.stickyTop} z-20 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
+                aria-label={tPage("monthNav.aria")}
+                className={`sticky ${LAYOUT.stickyTop} z-10 ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
               >
-                <p className={`prose-label text-olive/60 ${SECTION.titleGap}`}>Jump to month</p>
+                <p className={`${TYPE.kicker} text-olive/60 ${SECTION.titleGap}`}>{tPage("monthNav.title")}</p>
                 <div className="flex flex-wrap gap-2">
                   {monthNavMonths.map((month) => (
                     <a
                       key={month}
                       href={`#month-${month}`}
                       className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
-                      aria-label={`Jump to ${month}`}
+                      aria-label={tPage("monthNav.jumpTo", { month })}
                     >
                       {month}
                     </a>
@@ -362,7 +366,7 @@ export default function EventsPage() {
                   >
                     <h2
                       id={`heading-${month}`}
-                      className={`font-display text-xl font-semibold text-terracotta ${SECTION.titleGap}`}
+                      className={`${TYPE.subSectionTitle} text-terracotta ${SECTION.titleGap}`}
                     >
                       {month}
                     </h2>

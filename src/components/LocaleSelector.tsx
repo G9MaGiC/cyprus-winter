@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface LocaleSelectorProps {
   variant?: "default" | "footer" | "mobile";
@@ -10,6 +11,7 @@ interface LocaleSelectorProps {
 
 export default function LocaleSelector({ variant = "default" }: LocaleSelectorProps) {
   const locale = useLocale();
+  const tCommon = useTranslations("common");
   const router = useRouter();
   const pathname = usePathname();
 
@@ -37,7 +39,7 @@ export default function LocaleSelector({ variant = "default" }: LocaleSelectorPr
 
   return (
     <div className={`flex items-center gap-2 ${variant === "footer" ? "mt-4" : ""}`}>
-      <span className="text-xs text-olive/60 sr-only">Language:</span>
+      <span className="text-xs text-olive/60 sr-only">{tCommon("languageLabel")}</span>
       <select
         value={locale}
         onChange={handleChange}
@@ -47,7 +49,7 @@ export default function LocaleSelector({ variant = "default" }: LocaleSelectorPr
           backgroundSize: "16px",
           backgroundPosition: "right 8px center",
         }}
-        aria-label="Select language"
+        aria-label={tCommon("aria.selectLanguage")}
       >
         {routing.locales.map((loc) => (
           <option key={loc} value={loc}>

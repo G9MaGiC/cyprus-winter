@@ -1,7 +1,8 @@
 import type { ComponentType } from "react";
 import { trailConditions } from "@/data/trails";
-import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import { LAYOUT, STRIP, TYPE } from "@/lib/design-tokens";
 import type { LinkProps } from "@/app/_home/types";
+import { getTranslations } from "next-intl/server";
 
 const TROODOS_TRAILS = ["artemis", "atalante", "caledonia-falls", "olympus-summit", "persephone"] as const;
 
@@ -17,22 +18,19 @@ function getStatusCounts() {
   return { open, caution, closed, total: TROODOS_TRAILS.length };
 }
 
-function getGoNoGoLabel() {
-  const { open, caution, closed } = getStatusCounts();
-  if (open > 0 && closed === 0 && caution === 0) return "Troodos trails good to go";
-  if (caution > 0 && closed === 0) return `${caution} trail${caution > 1 ? "s" : ""} need${caution === 1 ? "s" : ""} caution`;
-  if (closed > 0) return `${closed} trail${closed > 1 ? "s" : ""} closed — check before you go`;
-  return "Check trail conditions before Troodos";
-}
-
-export default function HomeTrailConditionsStrip({
+export default async function HomeTrailConditionsStrip({
   LinkComponent,
 }: {
   LinkComponent: ComponentType<LinkProps>;
 }) {
+  const t = await getTranslations("home");
   const Link = LinkComponent;
   const { open, caution, closed } = getStatusCounts();
-  const label = getGoNoGoLabel();
+  let label: string;
+  if (open > 0 && closed === 0 && caution === 0) label = t("trailConditionsStrip.goodToGo");
+  else if (caution > 0 && closed === 0) label = t("trailConditionsStrip.cautionOnly", { count: caution });
+  else if (closed > 0) label = t("trailConditionsStrip.withClosed", { count: closed });
+  else label = t("trailConditionsStrip.checkConditions");
 
   return (
     <section
@@ -43,18 +41,18 @@ export default function HomeTrailConditionsStrip({
         <Link
           href="/trails"
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[44px] py-2 group"
-          aria-label="Troodos trail conditions — check status before you go"
+          aria-label={t("trailConditionsStrip.aria")}
         >
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span id="trail-conditions-heading" className="font-display font-semibold text-olive group-hover:text-terracotta transition-colors">
-              Trails today
+            <span id="trail-conditions-heading" className={`${TYPE.cardTitle}`}>
+              {t("trailConditionsStrip.heading")}
             </span>
             <span className="flex items-center gap-2 text-sm text-olive/80">
-              {open > 0 && <span className="text-sage font-medium">{open} open</span>}
-              {caution > 0 && <span className="text-golden font-medium">{caution} caution</span>}
-              {closed > 0 && <span className="text-terracotta font-medium">{closed} closed</span>}
+              {open > 0 && <span className="text-sage font-medium">{t("trailConditionsStrip.open", { count: open })}</span>}
+              {caution > 0 && <span className="text-golden font-medium">{t("trailConditionsStrip.caution", { count: caution })}</span>}
+              {closed > 0 && <span className="text-terracotta font-medium">{t("trailConditionsStrip.closed", { count: closed })}</span>}
               {open === 0 && caution === 0 && closed === 0 && (
-                <span className="text-olive/60">Check reports</span>
+                <span className="text-olive/60">{t("trailConditionsStrip.checkReports")}</span>
               )}
             </span>
           </div>

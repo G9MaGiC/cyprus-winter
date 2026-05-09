@@ -40,6 +40,9 @@ export default function ComboChoiceModal({
       aria-labelledby="combo-choice-title"
       aria-describedby="combo-choice-desc"
       onKeyDown={(e) => trapFocus(e, modalRef.current, onClose)}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div
         ref={modalRef}

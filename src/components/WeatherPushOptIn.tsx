@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { CARD, SECTION } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 const CLIENT_ID_KEY = "cyprus-winter-push-client-id";
 
@@ -25,6 +26,7 @@ function urlBase64ToUint8Array(base64: string): Uint8Array {
 }
 
 export default function WeatherPushOptIn() {
+  const tPush = useTranslations("push.weather");
   const [status, setStatus] = useState<"idle" | "loading" | "subscribed" | "unsupported" | "denied" | "error" | "notConfigured">("idle");
   const [mounted, setMounted] = useState(false);
   const isMountedRef = useRef(true);
@@ -118,16 +120,16 @@ export default function WeatherPushOptIn() {
   if (status === "subscribed") {
     return (
       <p className="text-sm text-sage">
-        You&apos;re set. We&apos;ll send short weather updates up to 3 times a day.
+        {tPush("subscribed")}
       </p>
     );
   }
 
   return (
     <div className={`${CARD.base} ${CARD.content} mt-6 bg-sage/10 border-sage/30`}>
-      <p className="text-sm font-medium text-olive mb-2">Weather digest</p>
+      <p className="text-sm font-medium text-olive mb-2">{tPush("title")}</p>
       <p className={`text-xs text-olive/80 ${SECTION.titleGap}`}>
-        Get short updates (morning, midday, evening) — coast and Troodos temps. No spam.
+        {tPush("body")}
       </p>
       <button
         type="button"
@@ -135,7 +137,11 @@ export default function WeatherPushOptIn() {
         disabled={status === "loading"}
         className="min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium bg-sage text-white hover:bg-sage/90 disabled:opacity-60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage/50"
       >
-        {status === "loading" ? "Setting up…" : status === "error" ? "Try again" : "Turn on weather digest"}
+        {status === "loading"
+          ? tPush("buttonLoading")
+          : status === "error"
+            ? tPush("buttonError")
+            : tPush("buttonIdle")}
       </button>
     </div>
   );
