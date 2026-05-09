@@ -17,7 +17,7 @@ export default function DebugErrorReporter() {
       if (capsRef.current.onerror >= 2) return;
       capsRef.current.onerror += 1;
 
-      const ev = typeof event === "string" ? null : (event as any);
+      const ev = typeof event === "string" ? null : (event as ErrorEvent);
 
       // #region debug log: uncaught JS error
       fetch(SERVER_ENDPOINT, {

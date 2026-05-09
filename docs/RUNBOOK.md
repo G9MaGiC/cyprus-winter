@@ -8,26 +8,28 @@ Runbooks and fallbacks for technical risks: AI dependency (Moonshot), Supabase c
 
 ---
 
-## 1. AI Dependency (Groq, Ollama, Moonshot, OpenAI)
+## 1. AI Dependency (AI Gateway, xAI, Groq, Ollama, Moonshot, OpenAI)
 
 ### Risk
 
 The chat assistant depends on an AI provider. If no provider is configured (missing key/URL), invalid, rate-limited, or the provider is down, AI chat fails.
 
-Supported providers (priority order): **xAI Grok** (grok-3-mini), **Groq** (free, Llama), **Ollama** (local/self-hosted), **Moonshot** (Kimi), **OpenAI** (gpt-4o-mini).
+Supported providers (priority order): **Vercel AI Gateway** (single key), **xAI** (grok-3-mini), **Groq** (llama-3.1-8b-instant), **Ollama** (local/self-hosted), **Moonshot** (moonshot-v1-8k), **OpenAI** (gpt-4o-mini).
 
 ### Current Behavior
 
 | Condition | Response |
 |-----------|----------|
-| No provider configured | 503, message: "Add XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY to your .env.local" |
+| No provider configured | 503, message: "Add AI_GATEWAY_API_KEY, XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY to your .env.local" |
 | Rate limit (20 req/min) | 429, message: "Please wait a moment before trying again" |
 | Provider error | 500, message: error.message (no stack) |
 | Quota exceeded | User sees "We've hit a usage limit for now" |
 
-### Required Env Var (one of)
+### Required env var (one of)
 
 ```
+AI_GATEWAY_API_KEY=<your-key>       # Vercel AI Gateway (recommended if available)
+AI_GATEWAY_MODEL=openai/gpt-4o-mini # Optional; default openai/gpt-4o-mini
 XAI_API_KEY=<your-key>            # xAI Grok at console.x.ai
 GROQ_API_KEY=<your-key>           # Free at console.groq.com, Llama models
 OLLAMA_BASE_URL=http://localhost:11434/v1   # For local/self-hosted Ollama

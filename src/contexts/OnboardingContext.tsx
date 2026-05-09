@@ -9,12 +9,28 @@ import {
   startTransition,
   type ReactNode,
 } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import {
   ONBOARDING_TIP_PLAN_EMPTY,
   ONBOARDING_TIP_DISCOVER_FILTER,
   ONBOARDING_TIP_FIRST_ADD,
 } from "@/lib/local-storage-keys";
+
+function safeGetLocalStorage(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeSetLocalStorage(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Ignore storage write errors (private mode / quota / blocked storage).
+  }
+}
 
 type OnboardingContextValue = {
   hasSeenDiscover: boolean;
@@ -82,30 +98,30 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
 
   const dismissTipPlanEmpty = useCallback(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem(ONBOARDING_TIP_PLAN_EMPTY, "true");
+      safeSetLocalStorage(ONBOARDING_TIP_PLAN_EMPTY, "true");
     }
     setShowTipPlanEmpty(false);
   }, []);
 
   const dismissTipDiscoverFilter = useCallback(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem(ONBOARDING_TIP_DISCOVER_FILTER, "true");
+      safeSetLocalStorage(ONBOARDING_TIP_DISCOVER_FILTER, "true");
     }
     setShowTipDiscoverFilter(false);
   }, []);
 
   const dismissTipFirstAdd = useCallback(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem(ONBOARDING_TIP_FIRST_ADD, "true");
+      safeSetLocalStorage(ONBOARDING_TIP_FIRST_ADD, "true");
     }
     setShowTipFirstAdd(false);
   }, []);
 
   useEffect(() => {
     if (!mounted || typeof window === "undefined") return;
-    const dismissedPlanEmpty = localStorage.getItem(ONBOARDING_TIP_PLAN_EMPTY) === "true";
-    const dismissedDiscoverFilter = localStorage.getItem(ONBOARDING_TIP_DISCOVER_FILTER) === "true";
-    const dismissedFirstAdd = localStorage.getItem(ONBOARDING_TIP_FIRST_ADD) === "true";
+    const dismissedPlanEmpty = safeGetLocalStorage(ONBOARDING_TIP_PLAN_EMPTY) === "true";
+    const dismissedDiscoverFilter = safeGetLocalStorage(ONBOARDING_TIP_DISCOVER_FILTER) === "true";
+    const dismissedFirstAdd = safeGetLocalStorage(ONBOARDING_TIP_FIRST_ADD) === "true";
     startTransition(() => {
       setShowTipPlanEmpty(!dismissedPlanEmpty);
       setShowTipDiscoverFilter(!dismissedDiscoverFilter);

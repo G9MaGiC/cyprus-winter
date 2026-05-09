@@ -20,6 +20,8 @@ function normalize(s: string): string {
 }
 
 type ScoredResult = SearchResult & { score: number };
+const trailById = new Map(trails.map((t) => [t.id, t]));
+const eventById = new Map(winterEvents.map((e) => [e.id, e]));
 
 /** Score for a single token: exact id > exact name > prefix name > contains name > prefix region > contains region > description. */
 function tokenScore(
@@ -63,12 +65,17 @@ function matchScore(
 }
 
 function toSearchResult(p: PlanItem): SearchResult {
-  const href = p.type === "trail" ? `/trails/${p.id}` : p.type === "event" ? "/events" : `/discover/${p.id}`;
+  const href =
+    p.type === "trail"
+      ? `/trails/${p.id}`
+      : p.type === "event"
+        ? `/events#${encodeURIComponent(p.id)}`
+        : `/discover/${p.id}`;
   if (p.type === "trail") {
     return { kind: "trail", item: { id: p.id, name: p.name, region: p.region }, href };
   }
   if (p.type === "event") {
-    const e = winterEvents.find((x) => x.id === p.id);
+    const e = eventById.get(p.id);
     return { kind: "event", item: { id: p.id, name: p.name, region: p.region, month: e?.month ?? "" }, href };
   }
   return { kind: "place", item: p, href };
@@ -87,10 +94,10 @@ export function search(query: string, limit = 20): SearchResult[] {
       region: p.region,
     };
     if (p.type === "trail") {
-      const t = trails.find((x) => x.id === p.id);
+      const t = trailById.get(p.id);
       if (t) fields.description = t.description;
     } else if (p.type === "event") {
-      const e = winterEvents.find((x) => x.id === p.id);
+      const e = eventById.get(p.id);
       if (e) {
         fields.description = e.description;
         fields.venue = e.venue ?? "";

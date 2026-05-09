@@ -9,7 +9,8 @@ import DaySelector from "@/components/plan/DaySelector";
 import PlanAddFailedAlert from "@/components/plan/PlanAddFailedAlert";
 import PlanDaysUntilBanner from "@/components/plan/PlanDaysUntilBanner";
 import PlanFooter from "@/components/plan/PlanFooter";
-import PlanMapClient from "@/components/plan/PlanMapClient";
+import PlanMapCollapsibleSection from "@/components/plan/PlanMapCollapsibleSection";
+import PlanAddMoreCollapsible from "@/components/plan/PlanAddMoreCollapsible";
 import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
@@ -26,7 +27,7 @@ import { useTranslations } from "next-intl";
 import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
-import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -225,49 +226,32 @@ export default function PlanPage() {
             onScrollToQuickStart={scrollToQuickStart}
           />
 
-          {hasContent && (
-            <section
-              id="plan-map"
-              aria-labelledby="plan-map-heading"
-              className="border-t border-sand-200/80 pt-10 sm:pt-12"
-            >
-              <h2
-                id="plan-map-heading"
-                className={`${TYPE.subSectionTitleLg} text-charcoal ${SECTION.titleGap}`}
-              >
-                {tPlan("mapTitle")}
-              </h2>
-              <p className={`text-xs text-olive/60 ${SECTION.headingGap}`}>{tPlan("pageDescSecondaryEmpty")}</p>
-              <PlanMapClient />
-            </section>
-          )}
+          {hasContent && hydrated && <PlanMapCollapsibleSection />}
 
-          <div
-            ref={quickStartRef}
-            className="flex flex-col gap-12 sm:gap-16 md:gap-20"
-            aria-label={tPlan("aria.quickStartRegion")}
-          >
-            {!hasContent && hydrated && showTipPlanEmpty && (
-              <OnboardingContextualTip
-                message={t("tipPlanEmpty")}
-                onDismiss={dismissTipPlanEmpty}
-                href="/discover"
-                hrefLabel={t("tipPlanEmptyLink")}
+          <div ref={quickStartRef} aria-label={tPlan("aria.quickStartRegion")}>
+            <PlanAddMoreCollapsible hasContent={hasContent}>
+              {!hasContent && hydrated && showTipPlanEmpty && (
+                <OnboardingContextualTip
+                  message={t("tipPlanEmpty")}
+                  onDismiss={dismissTipPlanEmpty}
+                  href="/discover"
+                  hrefLabel={t("tipPlanEmptyLink")}
+                />
+              )}
+              <QuickStartSection
+                activeDay={activeDay}
+                days={days}
+                getPlace={getPlace}
+                addToDay={addToDayIfMissing}
+                onTemplateClick={handleTemplateClick}
+                hasContent={hasContent}
+                tripLength={tripLength}
               />
-            )}
-            <QuickStartSection
-              activeDay={activeDay}
-              days={days}
-              getPlace={getPlace}
-              addToDay={addToDayIfMissing}
-              onTemplateClick={handleTemplateClick}
-              hasContent={hasContent}
-              tripLength={tripLength}
-            />
-            <BuildADaySection
-              hasContent={hasContent}
-              onComboClick={handleComboClick}
-            />
+              <BuildADaySection
+                hasContent={hasContent}
+                onComboClick={handleComboClick}
+              />
+            </PlanAddMoreCollapsible>
           </div>
         </div>
 

@@ -16,10 +16,15 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     const first = modalRef.current?.querySelector<HTMLElement>(
       'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
     );
     first?.focus();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, []);
 
   return (
@@ -36,7 +41,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
     >
       <div
         ref={modalRef}
-        className={`w-full max-w-md ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl rounded-2xl`}
+        className={`w-full max-w-md max-h-[90dvh] overflow-y-auto ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl rounded-2xl`}
       >
         <h2 id="template-choice-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           Apply {templateLabel}?

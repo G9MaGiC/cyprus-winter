@@ -13,6 +13,7 @@ import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
 import { CTA, CARD, TYPE, PILL, TRANSITION } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
+import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
 
 const SCROLL_THRESHOLD_PX = 100;
 const DELAY_MS = 2000;
@@ -111,6 +112,10 @@ export default function OnboardingModal() {
     return () => cancelAnimationFrame(raf);
   }, [visible]);
 
+  useEffect(() => {
+    dispatchBlockingOverlayDirty();
+  }, [visible, showOnboarding]);
+
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");
     dismiss();
@@ -121,11 +126,13 @@ export default function OnboardingModal() {
 
   return (
     <div
+      data-overlay-priority="blocking"
+      data-overlay-active={visible ? "true" : "false"}
       className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] z-[100] transition-all ${TRANSITION.medium} ease-out ${
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
       role="dialog"
-      aria-modal="false"
+      aria-modal="true"
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-description"
     >

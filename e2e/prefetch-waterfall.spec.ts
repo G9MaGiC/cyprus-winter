@@ -1,19 +1,5 @@
 import { test } from "@playwright/test";
 
-function summarize(urls: string[]) {
-  const uniq = new Set(urls);
-  const nextData = [...uniq].filter((u) => u.includes("/_next/data/"));
-  const nextStatic = [...uniq].filter((u) => u.includes("/_next/static/"));
-  const apiRoutes = [...uniq].filter((u) => u.includes("/api/"));
-  return {
-    uniqueRequestCount: uniq.size,
-    uniqueNextDataCount: nextData.length,
-    uniqueNextStaticCount: nextStatic.length,
-    uniqueApiCount: apiRoutes.length,
-    sampleNextData: nextData.slice(0, 10),
-  };
-}
-
 test.describe("Network prefetch during initial load", () => {
   test("counts Next data prefetches on home", async ({ page }) => {
     const urls: string[] = [];
@@ -41,7 +27,6 @@ test.describe("Network prefetch during initial load", () => {
       };
     }, urls);
 
-    // eslint-disable-next-line no-console
     console.log("PREFETCH_WATERFALL_SUMMARY_JSON=" + JSON.stringify(summary, null, 2));
   });
 });

@@ -1,24 +1,36 @@
-# Ideal Customer Personas (ICPs) — Cyprus Winter
+# Cyprus Winter — ICPs & personas (canonical)
 
-**Version:** 1.0  
-**Last updated:** March 2026  
-**Sources:** PRD.md Section 2 (Winter User Personas), UX_PERSONA.md  
-**Use for:** Product prioritization, acquisition, messaging, partnerships, sales enablement
+**Owner:** Product / Growth  
+**Last updated:** May 2026  
+**Use for:** product prioritization, acquisition, messaging, partnerships, and QA golden-path coverage.  
+**Canon:** This is the single authoritative ICP/persona reference. Historical snapshots live in `docs/archive/`.
 
----
+## Executive prioritization (quarterly)
 
-## Executive Summary
+Use this table when making trade-offs. It reflects the current “who we build for first” ordering used across the repo.
 
-Cyprus Winter targets travelers who choose the island in November–March for **authentic Mediterranean exploration**, not mass-market sun. Our ICPs share a desire to escape Northern European cold, avoid tourist traps, and experience culture, trails, and villages at a slower pace. Prioritization is driven by **LTV**, **revenue potential**, **strategic fit** with the product, and **market growth**.
+| Rank | ICP | Priority tag | LTV | Why it matters |
+|------|-----|--------------|-----|----------------|
+| 1 | **Cultural Explorer Claire** | **Primary** | €85 | Strongest Plan→Book conversion lens |
+| 2 | **Digital Nomad Nadia** | **Growth** | €120 | Retention + referrals; long-stay compounding |
+| 3 | **Active Adventurer Anders** | **Secondary** | €45 | Engagement + UGC (trail reports) strengthens quality/trust |
+| 4 | **Winter Sun Family** | **Emerging** | €60 | Seasonal repeat; reassurance + family-proof UX |
 
-| ICP | Priority | LTV | Primary Revenue Driver |
-|-----|----------|-----|------------------------|
-| Cultural Explorer Claire | **Primary** | €85 | Guided tours, wine experiences, cultural bookings |
-| Digital Nomad Nadia | **Growth** | €120 | Long-stay bookings, referrals, repeat visits |
-| Active Adventurer Anders | **Secondary** | €45 | Trail guides, equipment, transport |
-| Winter Sun Family | **Emerging** | €60 | Family-friendly tours, seasonal repeat, summer conversion |
+Secondary segments (not primary conversion targets unless campaigns demand it): Local / Expat / Bleisure.
 
----
+## Golden paths + amazement audit cadence
+
+We run a lightweight “amazement” audit on core journeys (Relief/Specificity/Payoff, 0–2 each). A step scoring **≤ 3** becomes a redesign candidate.
+
+**Cadence:** monthly during build, weekly during launch month.
+### Current carry-forward gaps (P0–P2)
+
+| ID | Priority | Persona | Gap | Route / owner |
+|----|----------|---------|-----|---------------|
+| G1 | **P0** | Claire | Plan share/export lacks “story-grade” preview (OG/title/one-line summary). | `/plan`, `PlanShareBar`, metadata |
+| G5 | **P1** | Bleisure | Validate `short-stay` template density; reduce clicks from `/airport` to filled Plan. | `/plan`, templates |
+| G6 | **P2** | Local | Events freshness perception (seasonal copy + “updated” cues). | `/events` |
+
 
 ## 1. Primary ICP: Cultural Explorer Claire
 

@@ -15,21 +15,38 @@ export async function getPartnerRevenueThisMonth(): Promise<{
   totalRevenueEur: number;
   byPartner: PartnerRevenueSummary[];
 }> {
+  const start = new Date();
+  start.setDate(1);
+  start.setHours(0, 0, 0, 0);
+  return getPartnerRevenueSince(start);
+}
+
+export async function getPartnerRevenueSince(start: Date): Promise<{
+  totalRevenueEur: number;
+  byPartner: PartnerRevenueSummary[];
+}> {
+  return getPartnerRevenueInRange(start);
+}
+
+export async function getPartnerRevenueInRange(start: Date, end?: Date): Promise<{
+  totalRevenueEur: number;
+  byPartner: PartnerRevenueSummary[];
+}> {
   const supabase = getSupabase();
   if (!supabase) {
     return { totalRevenueEur: 0, byPartner: [] };
   }
 
-  const start = new Date();
-  start.setDate(1);
-  start.setHours(0, 0, 0, 0);
   const startIso = start.toISOString();
+  const endIso = end?.toISOString();
 
-  const { data, error } = await supabase
+  let query = supabase
     .from("bookings")
     .select("provider_id, provider_name, lead_fee_eur")
     .gte("created_at", startIso)
     .not("lead_fee_eur", "is", null);
+  if (endIso) query = query.lt("created_at", endIso);
+  const { data, error } = await query;
 
   if (error) {
     console.error("Partner revenue query error:", error);

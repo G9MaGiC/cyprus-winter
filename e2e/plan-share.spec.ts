@@ -21,7 +21,7 @@ test("Plan: add place and copy share link", async ({ page }) => {
 
   // Open Copy & share menu
   const shareButton = page.getByRole("button", {
-    name: "Copy and share options",
+    name: /Share plan options|Copy and share options/,
   });
   await expect(shareButton).toBeVisible();
   await shareButton.click();

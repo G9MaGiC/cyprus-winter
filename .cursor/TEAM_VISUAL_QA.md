@@ -55,6 +55,15 @@ Use this checklist when running the team. Agents should report findings against 
 - [ ] PageHeader back link presence
 - [ ] Nav active state styling
 
+### Responsive & viewports (all pages)
+
+Use **`docs/UX_UI_RESPONSIVE_MATRIX.md`** as the master checklist. At minimum:
+
+- [ ] **320px, 375px, 768px, 1024px, 1280px** — no horizontal overflow; hero and CTAs usable
+- [ ] **Bottom nav clearance** on mobile — primary content and sticky bars above `BOTTOM_NAV` clearance (`design-tokens.ts`)
+- [ ] **Safe areas** — notched devices: nav + bottom padding respect `env(safe-area-inset-*)`
+- [ ] **Locale** (`/el`, `/de`, …) — longer strings do not break chips, cards, or nav
+
 ---
 
 ## Invocation Prompts

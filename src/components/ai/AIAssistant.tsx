@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { AIChatMessages } from "./AIChatMessages";
@@ -10,8 +10,16 @@ import { LAYOUT, TYPE } from "@/lib/design-tokens";
 
 const OPEN_AI_EVENT = "open-ai-assistant";
 
+function blockingOverlayActive(): boolean {
+  if (typeof document === "undefined") return false;
+  return !!document.querySelector(
+    '[data-overlay-priority="blocking"][data-overlay-active="true"]'
+  );
+}
+
 export function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
+  const previousBodyOverflowRef = useRef("");
   const tCommon = useTranslations("common");
   const {
     messages,
@@ -24,12 +32,24 @@ export function AIAssistant() {
   } = useAIChat();
 
   useEffect(() => {
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = () => {
+      if (blockingOverlayActive()) return;
+      setIsOpen(true);
+    };
     if (typeof window !== "undefined") {
       window.addEventListener(OPEN_AI_EVENT, handleOpen);
       return () => window.removeEventListener(OPEN_AI_EVENT, handleOpen);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    previousBodyOverflowRef.current = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousBodyOverflowRef.current;
+    };
+  }, [isOpen]);
 
   const handleClose = useCallback(() => setIsOpen(false), []);
 

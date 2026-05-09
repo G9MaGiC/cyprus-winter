@@ -1,11 +1,19 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 
 const OPEN_AI_EVENT = "open-ai-assistant";
 
+function blockingOverlayActive(): boolean {
+  if (typeof document === "undefined") return false;
+  return !!document.querySelector(
+    '[data-overlay-priority="blocking"][data-overlay-active="true"]'
+  );
+}
+
 export function triggerAIAssistant() {
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && !blockingOverlayActive()) {
     window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT));
   }
 }
@@ -19,6 +27,7 @@ export default function AIAssistantTrigger({ variant = "default", label = "Ask A
   // Intentionally leave the default label as-is; callers can pass localized `label`.
   // (Nav uses `nav.askAI` already; this component is used in a few legacy spots.)
   const tNav = useTranslations("nav");
+  const blocked = useBlockingOverlaysActive();
 
   const className =
     variant === "tertiaryOnDark"
@@ -28,9 +37,12 @@ export default function AIAssistantTrigger({ variant = "default", label = "Ask A
   return (
     <button
       type="button"
-      onClick={triggerAIAssistant}
-      className={className}
-      aria-label={tNav("askAIAria")}
+      disabled={blocked}
+      onClick={() => triggerAIAssistant()}
+      className={`${className} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
+      aria-label={
+        blocked ? "Finish onboarding or cookie choices first" : tNav("askAIAria")
+      }
     >
       {variant === "default" ? (
         <>

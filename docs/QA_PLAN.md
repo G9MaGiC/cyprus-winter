@@ -81,6 +81,8 @@
 
 ### 2.6 Mobile & Responsive
 
+**Extended checklist (page groups + 320px):** [`docs/UX_UI_RESPONSIVE_MATRIX.md`](UX_UI_RESPONSIVE_MATRIX.md).
+
 | Device | Viewport | Checks |
 |--------|----------|--------|
 | **iPhone SE** | 375×667 | Hero, BottomNav, floating AI button above nav, safe area |
@@ -215,14 +217,14 @@ Open | In progress | Fixed | Won't fix
 
 ---
 
-## 7. Test Coverage Gaps (Recommended Additions)
+## 7. Test Coverage (current) + gaps
 
 | Area | Current | Recommended |
 |------|---------|-------------|
-| **API routes** | bookings, chat, trail-reports, health | — |
-| **Hooks** | None | useItinerary (add, remove, template, clear) |
+| **API routes** | bookings, chat, trail-reports, health | Add coverage if routes expand (admin/session, stats, track, right-now) |
+| **Hooks** | useItinerary (`src/hooks/useItinerary.test.tsx`: jsdom, mocked `useSearchParams`, clipboard + `storage` events) | Extend if hook grows |
 | **Data helpers** | related-places, data/index, format, sanitize | — |
-| **E2E** | None | Playwright: Plan→Book flow, Discover→Detail |
+| **E2E** | Playwright: Discover→Plan (`e2e/discover-plan.spec.ts`), Home smoke (`e2e/home-smoke.spec.ts`) | Add Plan→Book flow; add locale smoke; keep selectors robust |
 
 ---
 

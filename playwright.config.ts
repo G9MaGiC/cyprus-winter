@@ -19,6 +19,7 @@ export default defineConfig({
     command: process.env.CI ? "npm run build && npm run start" : "npm run dev",
     url: baseURL,
     reuseExistingServer: true,
-    timeout: process.env.CI ? 180_000 : 60_000,
+    // CI runs `build && start`; on cold caches a full Next build + static gen can exceed 4m.
+    timeout: process.env.CI ? 420_000 : 120_000,
   },
 });

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
+import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { forgotPasswordLayoutMeta } from "@/lib/locale-page-meta";
 
-export const metadata: Metadata = {
-  title: "Reset password | Cyprus Winter",
-  description: "Request a password reset link to regain access to your account.",
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = applyLocaleToMetadata(
+  forgotPasswordLayoutMeta,
+  "/forgot-password",
+  routing.defaultLocale
+);
 
 export default function ForgotPasswordLayout({
   children,

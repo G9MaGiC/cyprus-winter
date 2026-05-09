@@ -43,6 +43,24 @@ export default async function HomeHero() {
             {tHome(`seasonal.${getSeasonalKey()}`)} {tHome("degreesLine")}
           </p>
 
+          <p className="text-xs sm:text-sm text-center text-white/70 max-w-lg mx-auto mb-5 leading-relaxed">
+            <AppLink
+              href="/discover?filter=family"
+              className="text-white/95 underline decoration-white/35 underline-offset-2 hover:decoration-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 rounded-sm"
+            >
+              Family-friendly picks
+            </AppLink>
+            <span className="text-white/35 mx-2" aria-hidden>
+              ·
+            </span>
+            <AppLink
+              href="/plan?template=short-stay"
+              className="text-white/95 underline decoration-white/35 underline-offset-2 hover:decoration-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 rounded-sm"
+            >
+              48-hour template
+            </AppLink>
+          </p>
+
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <AppLink
               href="/discover"

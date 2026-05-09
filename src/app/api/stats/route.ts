@@ -1,11 +1,18 @@
 import { NextRequest } from "next/server";
-import { getBookingsCountThisMonth } from "@/lib/bookings";
+import { getBookingsCountInRange } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
-import { getPartnerRevenueThisMonth } from "@/lib/partner-revenue";
-import { getFunnelCountsThisMonth } from "@/lib/funnel";
+import { getPartnerRevenueInRange } from "@/lib/partner-revenue";
+import { getEventSourceBreakdownInRange, getFunnelCountsInRange } from "@/lib/funnel";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
+import {
+  getPreviousStatsRange,
+  getStatsRangeStartUtc,
+  getStatsWindowLabel,
+  parseStatsWindow,
+} from "@/lib/stats-window";
+import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/lib/admin-session";
 
 // Must be dynamic: fetches live bookings, revenue, funnel data
 export const dynamic = "force-dynamic";
@@ -17,7 +24,9 @@ function isAdminAuthorized(req: NextRequest): boolean {
   const token = authHeader?.startsWith("Bearer ")
     ? authHeader.slice(7)
     : req.headers.get("x-admin-token");
-  return !!token && token === secret;
+  if (!!token && token === secret) return true;
+  const sessionRaw = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
+  return !!sessionRaw && verifyAdminSessionToken(sessionRaw, secret);
 }
 
 const FUNNEL_ORDER = [
@@ -29,6 +38,8 @@ const FUNNEL_ORDER = [
   "booking_start",
   "booking_complete",
 ];
+
+const SOURCE_BREAKDOWN_EVENTS = ["shop_click", "plan_add"];
 
 /**
  * Traction metrics for YC / ops. Bookings, partner revenue, conversion funnel.
@@ -48,11 +59,28 @@ export async function GET(req: NextRequest) {
     return jsonError("BAD_REQUEST", "Unauthorized", 401);
   }
   try {
-    const [bookingsThisMonth, partnerRevenue, funnelCounts] = await Promise.all([
-      getBookingsCountThisMonth(),
-      getPartnerRevenueThisMonth(),
-      getFunnelCountsThisMonth(),
+    const window = parseStatsWindow(req.nextUrl.searchParams.get("window"));
+    const now = new Date();
+    const rangeStart = getStatsRangeStartUtc(window, now);
+    const rangeEnd = now;
+    const prevRange = getPreviousStatsRange(rangeStart, rangeEnd);
+
+    const [current, previous] = await Promise.all([
+      Promise.all([
+        getBookingsCountInRange(rangeStart, rangeEnd),
+        getPartnerRevenueInRange(rangeStart, rangeEnd),
+        getFunnelCountsInRange(rangeStart, rangeEnd),
+        getEventSourceBreakdownInRange(SOURCE_BREAKDOWN_EVENTS, rangeStart, rangeEnd),
+      ]),
+      Promise.all([
+        getBookingsCountInRange(prevRange.start, prevRange.end),
+        getPartnerRevenueInRange(prevRange.start, prevRange.end),
+        getFunnelCountsInRange(prevRange.start, prevRange.end),
+        getEventSourceBreakdownInRange(SOURCE_BREAKDOWN_EVENTS, prevRange.start, prevRange.end),
+      ]),
     ]);
+    const [bookingsThisMonth, partnerRevenue, funnelCounts, sourceBreakdown] = current;
+    const [bookingsPrev, partnerRevenuePrev, funnelCountsPrev, sourceBreakdownPrev] = previous;
     const usesDb = hasSupabase();
 
     const funnel = FUNNEL_ORDER.map((event) => ({
@@ -67,6 +95,19 @@ export async function GET(req: NextRequest) {
         partnerRevenueByWinery: partnerRevenue.byPartner,
         funnel,
         funnelCounts,
+        sourceBreakdown,
+        compare: {
+          bookings: bookingsPrev,
+          partnerRevenueEur: partnerRevenuePrev.totalRevenueEur,
+          funnelCounts: funnelCountsPrev,
+          sourceBreakdown: sourceBreakdownPrev,
+          rangeStartIso: prevRange.start.toISOString(),
+          rangeEndIso: prevRange.end.toISOString(),
+        },
+        window,
+        windowLabel: getStatsWindowLabel(window),
+        rangeStartIso: rangeStart.toISOString(),
+        rangeEndIso: rangeEnd.toISOString(),
         storage: usesDb ? "supabase" : "memory",
       },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 30, limitResult.bypassed) }

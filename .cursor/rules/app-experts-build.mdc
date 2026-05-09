@@ -9,7 +9,7 @@ When the user asks to **build**, **develop**, **add**, or **extend** features fo
 
 ## How to invoke
 
-Use `mcp_task` with `subagent_type: "TEAM-AGENTS"` and specify the expert in the prompt. Always reference `.cursor/skills/cyprus-tourism-app/SKILL.md` and `.cursor/TEAM_APP_EXPERTS.md`.
+Use `mcp_task` with `subagent_type: "TEAM-AGENTS"` and specify the expert in the prompt. Always reference **`.cursor/PRODUCT_DEEP.md`**, **`.cursor/skills/cyprus-tourism-app/SKILL.md`**, and **`.cursor/TEAM_APP_EXPERTS.md`**.
 
 ## Lead expert by task
 
@@ -29,10 +29,10 @@ Use `mcp_task` with `subagent_type: "TEAM-AGENTS"` and specify the expert in the
 mcp_task({
   subagent_type: "TEAM-AGENTS",
   description: "Add new attraction page",
-  prompt: "You are the architecture expert for Cyprus Winter. Reference .cursor/skills/cyprus-tourism-app/SKILL.md and .cursor/TEAM_APP_EXPERTS.md. Task: [user's task]. Use src/data/ as source of truth, follow existing patterns (PlanItem, getPlaceById), preserve type safety."
+  prompt: "You are the architecture expert for Cyprus Winter. Reference .cursor/PRODUCT_DEEP.md, .cursor/skills/cyprus-tourism-app/SKILL.md, and .cursor/TEAM_APP_EXPERTS.md. Task: [user's task]. Use src/data/ as source of truth, follow existing patterns (PlanItem, getPlaceById), preserve type safety."
 })
 ```
 
 ## Fallback
 
-If `mcp_task` or TEAM-AGENTS is unavailable, simulate App Experts: consider Architecture, UX, Design, Content, and Audit concerns; reference the skill file; implement accordingly.
+If `mcp_task` or TEAM-AGENTS is unavailable, simulate App Experts: consider Architecture, UX, Design, Content, and Audit concerns; reference **`.cursor/PRODUCT_DEEP.md`** and the skill file; implement accordingly.

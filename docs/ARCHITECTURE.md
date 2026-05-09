@@ -11,7 +11,7 @@ cyprus-winter/
 ├── src/
 │   ├── app/              # Next.js App Router (pages, layouts, API)
 │   │   ├── (padded)/     # Route group: pages with top padding
-│   │   ├── _home/        # Home page sections (server)
+│   │   ├── _home/        # Home page sections (mixed server/client)
 │   │   ├── [locale]/     # Localized routes (en, el, de, pl)
 │   │   ├── api/          # API routes
 │   │   └── serwist/      # PWA worker config
@@ -100,6 +100,14 @@ cyprus-winter/
 - **Server components** (default): discover, trails, wineries, plan — import `@/data` directly.
 - **Client components** (`"use client"`): ~75 files — interactive UI (itinerary, maps, forms, AI, push).
 - **Pattern**: Server pages compose server + client children; client components call APIs with `fetch()`.
+
+#### RSC safety rules (non-negotiable)
+
+- **Do not pass functions/components from Server Components into Client Components as props.** React Server Components cannot serialize those values.\n+  - Example failure mode: passing a `LinkComponent` (a function/component) into a client-only section can trigger the global `error.tsx` boundary at runtime.\n+- Prefer **importing the dependency directly** inside the client component (e.g. `AppLink` / `@/i18n/navigation` wrappers), or make the caller client-only if it truly needs to pass a component reference.
+
+#### Locale routing rule of thumb
+
+- If a link should respect locale routing, prefer `@/i18n/navigation` (`Link`, `useRouter`, `usePathname`) via the project wrapper `src/components/AppLink.tsx`.
 
 ### Data Paths
 
