@@ -66,7 +66,7 @@ All: **mobile-first**, often on **4G** at the airport or trailhead; **EUR**; **w
 | Plan / itinerary state | `src/hooks/useItinerary.ts`, `usePlanPage.ts`, `usePlanUrlActions.ts` |
 | Funnel / analytics | `src/lib/funnel.ts`, `src/lib/analytics.ts`, `src/app/api/track` |
 | Bookings | `src/lib/bookings.ts`, `src/app/api/bookings`, `src/app/(padded)/bookings` |
-| AI | `src/components/AIAssistant.tsx`, `src/app/api/chat` |
+| AI | `src/components/AIAssistantWithBoundary.tsx` (dynamic import from `ClientComponents.tsx`), `src/app/api/chat` |
 | SEO / meta | `layout.tsx`, page `metadata`, `src/app/(padded)/events/layout.tsx` (JSON-LD) |
 | Admin | `src/app/api/stats`, `src/app/(padded)/admin/stats` |
 

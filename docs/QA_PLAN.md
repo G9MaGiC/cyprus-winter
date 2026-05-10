@@ -20,6 +20,8 @@
 
 ### 2.1 Automated Checks (Run First)
 
+**E2E prerequisites (first clone / clean machine):** Playwright does not ship browser binaries with `npm ci`. Before running any Playwright command, run **`npm run test:e2e:install`** (installs Chromium for desktop and mobile-viewport projects). If you see `browserType.launch: Executable doesn't exist`, run that script. Linux CI uses `playwright install --with-deps chromium` in `.github/workflows/ci.yml`; local Linux may need system deps (`npx playwright install-deps`). Full E2E (`test:e2e:ci`) installs all browsers including WebKit.
+
 | Check | Command | Coverage | Notes |
 |-------|---------|----------|-------|
 | **Lint** | `npm run lint` | Style, unused vars, imports | Fix all before manual QA |

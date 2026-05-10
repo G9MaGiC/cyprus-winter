@@ -39,8 +39,18 @@ test.describe("Discover -> Plan", () => {
     await gotoStable(page, "/discover");
     await expect(page.getByRole("main")).toBeVisible();
 
-    const linksToPlan = page.locator('a[href*="/plan"]');
-    await expect(linksToPlan.first()).toBeVisible();
+    // Top nav Plan may be hidden on small viewports (overflow menu); BottomNav Plan is visible on mobile.
+    // Desktop has no bottom bar (md:hidden). Assert at least one /plan link is visible.
+    const planAnchors = page.locator('a[href*="/plan"]');
+    await expect(planAnchors.first()).toBeAttached();
+    await expect(async () => {
+      const n = await planAnchors.count();
+      expect(n).toBeGreaterThan(0);
+      for (let i = 0; i < n; i++) {
+        if (await planAnchors.nth(i).isVisible()) return;
+      }
+      throw new Error("no visible Plan link");
+    }).toPass();
   });
 
   test("resilience: back navigation from plan returns to discover context", async ({ page }) => {
