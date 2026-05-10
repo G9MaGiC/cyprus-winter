@@ -1,6 +1,6 @@
 /**
  * Cyprus winter weather by month. Coast = Larnaca/Limassol/Paphos; Troodos = mountain villages and peaks.
- * Typical conditions for trip planning; not live forecasts.
+ * Typical planning ranges (long-term averages), not live forecasts—check current conditions before hiking or driving high roads.
  */
 export type WeatherByMonth = {
   month: string;
@@ -29,7 +29,7 @@ export const weatherByMonth: WeatherByMonth[] = [
     coastDesc: "Mild days, cool nights. Layers. Christmas markets and mulled wine.",
     troodosMinC: 2,
     troodosMaxC: 10,
-    troodosDesc: "Snow possible from mid‑month. Ski resort opens. Check trail conditions.",
+    troodosDesc: "Snow possible from mid‑month up high. Ski resort usually opens when snow allows—check before you go.",
   },
   {
     month: "January",
@@ -38,7 +38,7 @@ export const weatherByMonth: WeatherByMonth[] = [
     coastDesc: "Coolest month. Still sunny. Ruins and villages; pack a warm layer.",
     troodosMinC: 0,
     troodosMaxC: 8,
-    troodosDesc: "Peak ski season. Trails may be icy. Book tastings; wineries warm inside.",
+    troodosDesc: "Peak ski season on Olympus when snow holds. Lower trails may be icy after frost—book tastings; wineries warm inside.",
   },
   {
     month: "February",
@@ -47,7 +47,7 @@ export const weatherByMonth: WeatherByMonth[] = [
     coastDesc: "Similar to January. Almond blossoms from late Feb. Longer days.",
     troodosMinC: 1,
     troodosMaxC: 9,
-    troodosDesc: "Ski season continues. Late Feb trails start to clear. Crocus and cyclamen.",
+    troodosDesc: "Ski often holds into early spring; lower elevations thaw first. Crocus and cyclamen.",
   },
   {
     month: "March",

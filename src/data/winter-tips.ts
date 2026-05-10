@@ -12,7 +12,7 @@ export const winterTipsGeneral: WinterTip[] = [
     id: "daylight",
     category: "general",
     title: "Daylight is short",
-    body: "Sunrise around 6:45am, sunset around 5pm in December and January. Plan outdoor activities for the morning. By 4pm the light is already golden. Use it.",
+    body: "December and January have the shortest days—roughly nine hours between sunrise and sunset. Plan outdoor activities for the morning. By late afternoon the light is already golden. Use it.",
   },
   {
     id: "layers",
@@ -42,7 +42,7 @@ export const winterTipsGeneral: WinterTip[] = [
     id: "winter-light",
     category: "general",
     title: "The light is different",
-    body: "Winter sun is lower. Golden hour starts around 3:30pm in December. Ancient sites, villages, the coast: everything looks different. Bring a camera. Or just watch. The light alone is worth the trip. Plan ruins and villages for the afternoon and you'll see why.",
+    body: "Winter sun stays low in the sky. Golden hour comes early—often mid-afternoon in December. Ancient sites, villages, the coast: everything looks different. Bring a camera. Or just watch. Plan ruins and villages for the afternoon and you'll see why.",
   },
 ];
 
@@ -51,7 +51,7 @@ export const winterTipsHiking: WinterTip[] = [
     id: "start-early",
     category: "hiking",
     title: "Start by 9am",
-    body: "Winter daylight ends around 5pm. Give yourself time to finish in the light. The morning air is crisp. The trails are empty. You'll thank yourself when you're back at the car by 3.",
+    body: "Winter days are short—finish hikes well before dusk. The morning air is crisp. The trails are quieter early. You'll thank yourself when you're back at the car with daylight to spare.",
   },
   {
     id: "check-conditions",
