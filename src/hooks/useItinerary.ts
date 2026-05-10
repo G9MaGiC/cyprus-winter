@@ -105,8 +105,6 @@ export function useItinerary() {
   }, [activeDay, setLastAdded]);
 
   const addToDayIfMissing = useCallback((id: string) => {
-    const current = daysRef.current[activeDay] ?? [];
-    if (current.includes(id)) return;
     setDays((prev) => {
       const prevCurrent = prev[activeDay] ?? [];
       if (prevCurrent.includes(id)) return prev;

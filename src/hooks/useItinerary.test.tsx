@@ -168,6 +168,28 @@ describe("useItinerary", () => {
     );
   });
 
+  it("re-adds an item when clearing and replacing a day in one action", async () => {
+    const { result } = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+
+    act(() => {
+      result.current.addToDayIfMissing("artemis");
+    });
+    await waitFor(() => expect(result.current.days[1]).toEqual(["artemis"]));
+
+    act(() => {
+      result.current.clearDay();
+      result.current.addToDayIfMissing("artemis");
+      result.current.addToDayIfMissing("omodos");
+      result.current.addToDayIfMissing("tsiakkas");
+    });
+
+    await waitFor(() =>
+      expect(result.current.days[1]).toEqual(["artemis", "omodos", "tsiakkas"])
+    );
+  });
+
   it("removeFromDay removes only from active day", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 
