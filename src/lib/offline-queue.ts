@@ -7,6 +7,7 @@
 
 const STORAGE_KEY = "cyprus-winter-offline-queue";
 const MAX_ITEMS = 50;
+let processingPromise: Promise<{ processed: number; succeeded: number }> | null = null;
 
 export type QueuedMutation = {
   id: string;
@@ -62,8 +63,7 @@ export function removeMutation(id: string): void {
   save(items);
 }
 
-/** Process the queue: retry each mutation, remove on success. */
-export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
+async function processQueueOnce(): Promise<{ processed: number; succeeded: number }> {
   const items = load();
   if (items.length === 0) return { processed: 0, succeeded: 0 };
 
@@ -86,4 +86,14 @@ export async function processQueue(): Promise<{ processed: number; succeeded: nu
     }
   }
   return { processed: items.length, succeeded };
+}
+
+/** Process the queue: retry each mutation, remove on success. */
+export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
+  if (processingPromise) return processingPromise;
+
+  processingPromise = processQueueOnce().finally(() => {
+    processingPromise = null;
+  });
+  return processingPromise;
 }
