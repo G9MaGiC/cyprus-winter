@@ -2,10 +2,13 @@
  * Conversion funnel counts from conversion_events.
  */
 import { getSupabase } from "./supabase";
+import { fetchAllSupabaseRows, type SupabaseRangeQuery } from "./supabase-pagination";
 
 export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
 export type EventSourceBreakdown = Record<string, SourceBreakdownRow[]>;
+type FunnelEventRow = { event: unknown };
+type EventSourceRow = { event: unknown; properties: unknown };
 
 export async function getFunnelCountsThisMonth(): Promise<FunnelCounts> {
   const start = new Date();
@@ -25,12 +28,14 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("conversion_events")
-    .select("event")
-    .gte("created_at", startIso);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const { data, error } = await fetchAllSupabaseRows<FunnelEventRow>(() => {
+    let query = supabase
+      .from("conversion_events")
+      .select("event")
+      .gte("created_at", startIso);
+    if (endIso) query = query.lt("created_at", endIso);
+    return query as unknown as SupabaseRangeQuery<FunnelEventRow>;
+  });
 
   if (error) {
     console.error("Funnel query error:", error);
@@ -73,13 +78,15 @@ export async function getEventSourceBreakdownInRange(
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("conversion_events")
-    .select("event, properties")
-    .in("event", events)
-    .gte("created_at", startIso);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const { data, error } = await fetchAllSupabaseRows<EventSourceRow>(() => {
+    let query = supabase
+      .from("conversion_events")
+      .select("event, properties")
+      .in("event", events)
+      .gte("created_at", startIso);
+    if (endIso) query = query.lt("created_at", endIso);
+    return query as unknown as SupabaseRangeQuery<EventSourceRow>;
+  });
 
   if (error) {
     console.error("Funnel source breakdown query error:", error);
