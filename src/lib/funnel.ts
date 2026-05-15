@@ -2,6 +2,7 @@
  * Conversion funnel counts from conversion_events.
  */
 import { getSupabase } from "./supabase";
+import { fetchAllSupabaseRows } from "./supabase-pagination";
 
 export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
@@ -30,7 +31,7 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
     .select("event")
     .gte("created_at", startIso);
   if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const { data, error } = await fetchAllSupabaseRows(query);
 
   if (error) {
     console.error("Funnel query error:", error);
@@ -79,7 +80,7 @@ export async function getEventSourceBreakdownInRange(
     .in("event", events)
     .gte("created_at", startIso);
   if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const { data, error } = await fetchAllSupabaseRows(query);
 
   if (error) {
     console.error("Funnel source breakdown query error:", error);

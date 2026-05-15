@@ -3,6 +3,7 @@
  * Winery partners with partnerLeadFeeEur pay per lead/booking.
  */
 import { getSupabase } from "./supabase";
+import { fetchAllSupabaseRows } from "./supabase-pagination";
 
 export type PartnerRevenueSummary = {
   providerId: string;
@@ -46,7 +47,7 @@ export async function getPartnerRevenueInRange(start: Date, end?: Date): Promise
     .gte("created_at", startIso)
     .not("lead_fee_eur", "is", null);
   if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const { data, error } = await fetchAllSupabaseRows(query);
 
   if (error) {
     console.error("Partner revenue query error:", error);

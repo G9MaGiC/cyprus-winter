@@ -6,6 +6,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
+import {
+  sanitizeResponseMetadata,
+  type AIResponseMetadata,
+} from "@/lib/ai-response-metadata";
 // getPlaceById available for future use
 
 export type Message = {
@@ -13,11 +17,7 @@ export type Message = {
   content: string;
   isRetryable?: boolean;
   is503?: boolean;
-  metadata?: {
-    cards?: { type: string; id: string; title: string; reason: string }[];
-    actions?: { type: string; label: string; payload?: Record<string, unknown> }[];
-    followUps?: string[];
-  };
+  metadata?: AIResponseMetadata;
 };
 
 const MAX_PERSISTED_MESSAGES = 20;
@@ -126,13 +126,18 @@ function loadPersistedMessages(): Message[] | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed) || parsed.length === 0) return null;
-    const valid = parsed.filter(
-      (m): m is Message =>
-        m &&
-        typeof m === "object" &&
-        (m.role === "user" || m.role === "assistant") &&
-        typeof m.content === "string"
-    );
+    const valid = parsed
+      .filter(
+        (m): m is Message =>
+          m &&
+          typeof m === "object" &&
+          (m.role === "user" || m.role === "assistant") &&
+          typeof m.content === "string"
+      )
+      .map((m) => {
+        const metadata = sanitizeResponseMetadata(m.metadata);
+        return metadata ? { ...m, metadata } : { ...m, metadata: undefined };
+      });
     return valid.length > 0 ? valid : null;
   } catch {
     return null;
@@ -301,13 +306,13 @@ export function useAIChat() {
             "type" in parsed &&
             (parsed as { type?: unknown }).type === "metadata"
           ) {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { type: _type, ...metadata } = parsed as Record<string, unknown>;
+            const sanitizedMetadata = sanitizeResponseMetadata(parsed);
+            if (!sanitizedMetadata) continue;
             setMessages((prev) => {
               const updated = [...prev];
               const lastMsg = updated[updated.length - 1];
               if (lastMsg?.role === "assistant") {
-                updated[updated.length - 1] = { ...lastMsg, metadata: metadata as Message["metadata"] };
+                updated[updated.length - 1] = { ...lastMsg, metadata: sanitizedMetadata };
               }
               messagesRef.current = updated;
               return updated;
