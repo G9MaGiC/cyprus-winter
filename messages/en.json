@@ -255,7 +255,7 @@
     "editorsPicks": "Editor's picks",
     "editorsPicksKicker": "Curated",
     "rightNowNearYou": "Right now near you",
-    "discoverCurated": "Curated for winter. Add to your plan as you browse.",
+    "discoverCurated": "Curious what we'd choose? Curated for winter—add to your plan as you browse.",
     "natureAndCoasts": "Nature & coasts",
     "places": "Places",
     "startHere": {
@@ -305,8 +305,7 @@
         "wellnessAria": "Wellness — monasteries, quiet spaces",
         "regionAria": "{region} region"
       }
-    }
-    ,
+    },
     "share": {
       "heading": "Share Cyprus Winter",
       "body": "Planning ahead or already here? Tap the chat bubble. Add places as you browse—your plan saves automatically.",
@@ -389,6 +388,30 @@
         "closer": "Closer",
         "farther": "Farther"
       }
+    },
+    "placeOfDay": {
+      "kicker": "Today's pick — one place worth the drive",
+      "addToPlan": "Add to plan",
+      "seeDetails": "See details →",
+      "openAria": "Open {name}",
+      "overlays": {
+        "goodDay": "Good day for it",
+        "quietWeek": "Quiet this week",
+        "clearToday": "Clear today",
+        "bestAfternoon": "Best light in afternoon",
+        "worthVisit": "Worth a visit"
+      }
+    },
+    "planningSection": {
+      "srHeading": "Planning and essentials",
+      "planTitle": "Plan your trip",
+      "eventsTitle": "Winter events",
+      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
+      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+    },
+    "recentlyViewed": {
+      "title": "Recently viewed",
+      "clear": "Clear"
     }
   },
   "error": {
@@ -1277,6 +1300,12 @@
     "viewTrails": "View all trails",
     "planTrip": "Plan your trip",
     "browseByCategory": "Or browse by category",
+    "footer": {
+      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+    },
+    "aria": {
+      "actions": "Search page actions"
+    },
     "category": {
       "trails": "Trails",
       "discover": "Discover",
@@ -1322,6 +1351,54 @@
         "exploreRegionCta": "Explore {region} →",
         "learnMoreAria": "Learn more about {name}",
         "learnMoreCta": "Learn more"
+      },
+      "highlights": {
+        "title": "Don't miss",
+        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+      },
+      "tips": {
+        "title": "Planning tips",
+        "item1": "Check official sites for exact dates — many events move year to year.",
+        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
+        "item3": "Arrive early for popular events. The best spots fill quickly.",
+        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+      },
+      "footer": {
+        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
+        "weatherLink": "Weather by month"
+      },
+      "aria": {
+        "actions": "Events page actions"
+      },
+      "types": {
+        "festival": "Festival",
+        "market": "Market",
+        "concert": "Concert",
+        "food": "Food & Wine",
+        "culture": "Culture",
+        "sport": "Sport"
+      }
+    }
+  },
+  "regions": {
+    "page": {
+      "footer": {
+        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
+        "weatherLink": "Weather by month"
+      },
+      "aria": {
+        "actions": "Region page actions"
+      }
+    }
+  },
+  "wineRoutes": {
+    "page": {
+      "footer": {
+        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
+        "allWineries": "All Cyprus wineries"
+      },
+      "aria": {
+        "actions": "Wine route actions"
       }
     }
   },

@@ -16,7 +16,7 @@ export function FollowUpChips({
           key={i}
           type="button"
           onClick={() => onSelect(chip)}
-          className="shrink-0 px-3 py-1 text-xs rounded-full border border-olive/20 text-olive/80 hover:bg-sand-100 hover:border-olive/40 transition-colors whitespace-nowrap min-h-[32px]"
+          className="shrink-0 px-3 py-1 text-xs rounded-full border border-olive/20 text-olive/80 hover:bg-sand-100 hover:border-olive/40 transition-colors whitespace-nowrap min-h-[44px]"
         >
           {chip}
         </button>

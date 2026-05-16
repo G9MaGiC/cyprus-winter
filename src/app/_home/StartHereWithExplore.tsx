@@ -133,7 +133,7 @@ export default function StartHereWithExplore({
         <div className="relative mb-6 sm:mb-8">
           <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>{tHome("startHere.browseByCategory")}</p>
           <div
-            className="flex flex-nowrap sm:flex-wrap overflow-x-auto scroll-smooth scroll-touch sm:overflow-visible justify-start sm:justify-center gap-3 pb-2 -mx-1 sm:mx-0 px-1 sm:px-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-3 pb-2 -mx-1 md:mx-0 px-1 md:px-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="navigation"
             aria-label={tHome("startHere.aria.browseByCategory")}
           >
@@ -144,7 +144,7 @@ export default function StartHereWithExplore({
             ))}
           </div>
           <div
-            className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 sm:hidden"
+            className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
             aria-hidden
           />
         </div>

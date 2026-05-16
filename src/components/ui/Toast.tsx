@@ -7,6 +7,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { LAYER } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type ToastType = "success" | "error" | "warning" | "info";
@@ -110,7 +111,7 @@ export function ToastContainer({ toasts, onRemove }: ToastProps) {
 
   return (
     <div
-      className="fixed right-4 top-4 z-[100] flex flex-col gap-2 items-end"
+      className={`fixed right-4 top-4 ${LAYER.toast} flex flex-col gap-2 items-end`}
       role="region"
       aria-label={tCommon("aria.notifications")}
     >

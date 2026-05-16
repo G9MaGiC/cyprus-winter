@@ -1092,3 +1092,65 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 |----|------|-------|----------|
 | BUG-080 | E2E | `arrival-decision-flow` desktop hero → `/airport` navigation occasionally flaky | Fixed — `scrollIntoViewIfNeeded` + `waitForURL` race; **35/35** full suite May 16 |
 | — | i18n | New strings added to all locales; DE/PL copy is functional—native polish pass optional | Info |
+
+---
+
+## Visual QA — Full pass (May 16, 2026)
+
+*Team: branding-redesign + ux-polish + automated gates per `docs/QA_PLAN.md` §2.6 and `.cursor/TEAM_VISUAL_QA.md`.*
+
+### Automated baseline
+
+| Check | Result |
+|-------|--------|
+| `npm run lint` | Pass |
+| `npm run typecheck` | Pass |
+| `npm run test` | Pass (473) |
+| `npm run build` | Pass |
+| `npm run i18n:validate` | Pass (1342 keys, 4 locales) |
+
+### Findings fixed (BUG-081–086)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-081 | Layout | `HubFooter` duplicated mobile bottom clearance (`footerBottomClearance` + `main` padding) — excessive gap above site footer | Removed `footerBottomClearance` from `HubFooter`; documented in `docs/UX_PATTERNS.md` |
+| BUG-082 | Funnel | Events page lacked `HubFooter`; hardcoded EN copy; sticky sentinel on filter strip (Plan bar showed too early) | `HubFooter` + i18n; sentinel moved to page footer; empty-filter state gets footer |
+| BUG-083 | Funnel | Search, regions, wine-routes used ad-hoc footer links vs `HubFooter` | Migrated to `HubFooter` + i18n keys |
+| BUG-084 | Overlays | `ToastContainer` at `z-[100]` competed with onboarding | `LAYER.toast` (`z-[95]`) |
+| BUG-085 | Events | Highlights / planning tips not in message catalogs | `events.page.*` keys in en/el/de/pl |
+| BUG-086 | A11y | AI action chips `min-h-[32px]` | Bumped to `min-h-[44px]` in `ActionButtons.tsx` |
+
+### Backlog / manual
+
+| Area | Note |
+|------|------|
+| Home | Chip density / P2 items in `docs/archive/HOME_PAGE_UX_ASSESSMENT.md` — not in this pass |
+| Tablet 640–767px | Manual matrix in `docs/archive/UX_UI_RESPONSIVE_MATRIX.md` |
+| DE/PL | New footer strings synced from EN; native polish optional |
+
+---
+
+## Visual QA — Follow-up (May 16, 2026)
+
+*Home + tablet alignment after full pass BUG-081–086.*
+
+### Automated baseline
+
+| Check | Result |
+|-------|--------|
+| `npm run lint` | Pass |
+| `npm run typecheck` | Pass |
+| `npm run test` | Pass |
+| `npm run i18n:validate` | Pass |
+| `npm run build` | Pass |
+
+### Findings fixed (BUG-087–092)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-087 | Home | Editor's picks subtitle didn't merge “Curious…” line | `home.discoverCurated` copy updated |
+| BUG-088 | Home | `HomePlanningSection` / `HomePlaceOfDay` hardcoded EN | i18n keys + `useTranslations` |
+| BUG-089 | Home | Recently viewed strip hardcoded EN | `home.recentlyViewed.*` |
+| BUG-090 | Home | Place of Day actions tight on mobile | `gap-2 sm:gap-3`; See details `min-h-[44px]` |
+| BUG-091 | Tablet | Category chips wrapped at `sm` while BottomNav until `md` | Chip scroll/wrap + fade use `md` breakpoint |
+| BUG-092 | A11y | AI `FollowUpChips` 32px touch targets | `min-h-[44px]` |

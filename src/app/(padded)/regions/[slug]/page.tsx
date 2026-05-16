@@ -13,6 +13,7 @@ import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
 import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
+import HubFooter from "@/components/HubFooter";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
@@ -111,7 +112,11 @@ export default async function RegionPage({ params }: Props) {
   const { slug } = await params;
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
   if (!config) notFound();
-  const tNav = await getTranslations("nav");
+  const [tNav, tPage, tDiscover] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("regions.page"),
+    getTranslations("discover"),
+  ]);
 
   const regionSlug = config.slug as RegionSlug;
 
@@ -294,17 +299,18 @@ export default async function RegionPage({ params }: Props) {
         )}
       </div>
 
-      <div className={SECTION.footerBlock}>
-        <p className="text-center text-olive/70 text-sm">
-        <AppLink href="/weather" className={SECTION.aegeanLink}>
-          Weather by month
-        </AppLink>
-        {" · "}
-        <AppLink href="/plan" className={SECTION.aegeanLink}>
-          Plan your trip
-        </AppLink>
-      </p>
-      </div>
+      <span id="region-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <HubFooter
+        body={tPage("footer.hubBody")}
+        ariaLabel={tPage("aria.actions")}
+        askAiLabel={tDiscover("footer.askAi")}
+        askAiAriaLabel={tDiscover("aria.askAi")}
+        secondary={
+          <AppLink href="/weather" className={SECTION.aegeanLink}>
+            {tPage("footer.weatherLink")}
+          </AppLink>
+        }
+      />
     </div>
   );
 }

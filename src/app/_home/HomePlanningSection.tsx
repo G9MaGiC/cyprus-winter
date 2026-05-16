@@ -1,20 +1,23 @@
+"use client";
+
 import type { ComponentType } from "react";
 import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import type { LinkProps } from "@/app/_home/types";
+import { useTranslations } from "next-intl";
 
 type HomePlanningSectionProps = {
   LinkComponent: ComponentType<LinkProps>;
   planSubtitle?: string;
 };
 
-const defaultPlanSubtitle =
-  "Templates, map, and share in one place—continue on the full Plan page.";
-
 export default function HomePlanningSection({
   LinkComponent,
-  planSubtitle = defaultPlanSubtitle,
+  planSubtitle,
 }: HomePlanningSectionProps) {
+  const t = useTranslations("home.planningSection");
+  const resolvedSubtitle = planSubtitle ?? t("defaultSubtitle");
+
   return (
     <section
       id="planning-section"
@@ -23,7 +26,7 @@ export default function HomePlanningSection({
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2 id="planning-heading" className="sr-only">
-          Planning and essentials
+          {t("srHeading")}
         </h2>
         <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
           <LinkComponent
@@ -31,11 +34,11 @@ export default function HomePlanningSection({
             prefetch="auto"
             className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-terracotta ${CARD.hover} ${CARD.link} group`}
           >
-<h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
-            Plan your trip
-          </h3>
+            <h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
+              {t("planTitle")}
+            </h3>
             <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
-              {planSubtitle}
+              {resolvedSubtitle}
             </p>
           </LinkComponent>
           <LinkComponent
@@ -43,11 +46,11 @@ export default function HomePlanningSection({
             prefetch="auto"
             className={`block rounded-2xl ${CARD.contentLg} min-h-[120px] ${CARD.base} border-l-4 border-l-aegean ${CARD.hover} ${CARD.link} group`}
           >
-<h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
-            Winter events
-          </h3>
+            <h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
+              {t("eventsTitle")}
+            </h3>
             <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
-              Epiphany, carnival, tastings. What&apos;s on when.
+              {t("eventsDesc")}
             </p>
           </LinkComponent>
         </div>

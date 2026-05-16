@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import AppLink from "@/components/AppLink";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
-import { SECTION, CTA, LAYOUT } from "@/lib/design-tokens";
+import { SECTION, CTA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 export type HubFooterProps = {
@@ -46,7 +46,7 @@ export default function HubFooter({
 
   return (
     <footer
-      className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 ${LAYOUT.footerBottomClearance} text-center ${className}`}
+      className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 text-center ${className}`}
       aria-label={ariaLabel}
     >
       <p className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}>

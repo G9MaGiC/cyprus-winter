@@ -33,6 +33,7 @@ function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string
 
 export function RecentlyViewedStrip() {
   const tCommon = useTranslations("common");
+  const tHome = useTranslations("home");
   const [items, setItems] = useState<ReturnType<typeof getRecentlyViewed>>([]);
   const [isClient, setIsClient] = useState(false);
 
@@ -51,7 +52,7 @@ export function RecentlyViewedStrip() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`flex items-center justify-between ${SECTION.titleGap}`}>
           <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-olive/70`}>
-            Recently viewed
+            {tHome("recentlyViewed.title")}
           </h2>
           <button
             type="button"
@@ -64,7 +65,7 @@ export function RecentlyViewedStrip() {
             }}
             className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] py-2 px-3 -m-2 text-xs text-olive/50 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
           >
-            Clear
+            {tHome("recentlyViewed.clear")}
           </button>
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x">

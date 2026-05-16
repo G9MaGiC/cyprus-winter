@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
+import HubFooter from "@/components/HubFooter";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
@@ -37,7 +38,11 @@ export default async function WineRoutePage({ params }: Props) {
   const { slug } = await params;
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   if (!route) notFound();
-  const tNav = await getTranslations("nav");
+  const [tNav, tPage, tDiscover] = await Promise.all([
+    getTranslations("nav"),
+    getTranslations("wineRoutes.page"),
+    getTranslations("discover"),
+  ]);
 
   const routeWineries = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug);
 
@@ -64,17 +69,17 @@ export default async function WineRoutePage({ params }: Props) {
         ))}
       </div>
 
-      <div className={SECTION.footerBlock}>
-        <p className="text-center text-olive/70 text-sm">
+      <HubFooter
+        body={tPage("footer.hubBody")}
+        ariaLabel={tPage("aria.actions")}
+        askAiLabel={tDiscover("footer.askAi")}
+        askAiAriaLabel={tDiscover("aria.askAi")}
+        secondary={
           <AppLink href="/wineries" className={SECTION.aegeanLink}>
-            All Cyprus wineries
+            {tPage("footer.allWineries")}
           </AppLink>
-          {" · "}
-          <AppLink href="/plan" className={SECTION.aegeanLink}>
-            Plan your trip
-          </AppLink>
-        </p>
-      </div>
+        }
+      />
     </div>
   );
 }

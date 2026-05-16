@@ -70,8 +70,7 @@ See comments in `design-tokens.ts`. Cookie and onboarding sit above chrome; AI p
 
 | Token / class | Purpose |
 |---------------|---------|
-| `LAYOUT.mainPaddingBottom` | Main content clears nav until `md` |
-| `LAYOUT.footerBottomClearance` | Hub/detail footers clear nav until `md` |
+| `LAYOUT.mainPaddingBottom` | On `<main>` — clears BottomNav until `md`; hub footers omit extra `footerBottomClearance` to avoid double gap |
 | `LAYOUT.fixedBottomAboveNavCookie` | Fixed sticky CTAs sit **above** nav + cookie offset (5.5rem) |
 | `LAYOUT.mobileBottomChromeHidden` | `md:hidden` on mobile-only fixed bars |
 

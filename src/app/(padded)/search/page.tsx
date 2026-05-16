@@ -8,6 +8,7 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SearchResultCard from "@/components/SearchResultCard";
 import AskAIButton from "@/components/AskAIButton";
+import HubFooter from "@/components/HubFooter";
 import { search } from "@/lib/search";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -46,10 +47,11 @@ const BROWSE_LINKS: { href: string; labelKey: string }[] = [
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
-  const [tNav, tCommon, tSearch] = await Promise.all([
+  const [tNav, tCommon, tSearch, tDiscover] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
     getTranslations("search"),
+    getTranslations("discover"),
   ]);
   const q = typeof params.q === "string" ? params.q.trim() : "";
   const showBrowse = q.length < 2;
@@ -119,6 +121,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </div>
         </div>
       )}
+      <HubFooter
+        body={tSearch("footer.hubBody")}
+        ariaLabel={tSearch("aria.actions")}
+        askAiLabel={tDiscover("footer.askAi")}
+        askAiAriaLabel={tDiscover("aria.askAi")}
+        className="mt-10"
+      />
     </div>
   );
 }

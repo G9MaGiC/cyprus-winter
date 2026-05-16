@@ -101,8 +101,7 @@
     "trail": "Wanderweg",
     "winery": "Weingut",
     "event": "Veranstaltung",
-    "eat": "Essen"
-    ,
+    "eat": "Essen",
     "timelineRemovedPlace": "Dieser Ort wurde aus unserer Liste entfernt",
     "ai": {
       "title": "Zypern-Guide",
@@ -115,10 +114,8 @@
       "stopVoice": "Sprachsuche stoppen"
     },
     "back": "Zurück",
-    "backTo": "Zurück zu {label}"
-    ,
-    "peopleCount": "{count, plural, one {# Person} other {# Personen}}"
-    ,
+    "backTo": "Zurück zu {label}",
+    "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
     "breadcrumbs": {
       "privacy": "Datenschutz",
       "terms": "AGB",
@@ -139,8 +136,7 @@
     "bestTimeToVisitTitle": "Beste Besuchszeit",
     "reportConditions": "Bedingungen melden",
     "reportAnotherTrail": "Einen weiteren Weg melden",
-    "thanksForReporting": "Danke fürs Melden."
-    ,
+    "thanksForReporting": "Danke fürs Melden.",
     "remove": "Entfernen",
     "bookTastings": "Verkostungen buchen",
     "exploreWineries": "Weingüter entdecken",
@@ -200,13 +196,11 @@
       "plan": "Zum Plan springen",
       "search": "Zur Suche springen",
       "startHere": "Zu Start hier springen"
-    }
-    ,
+    },
     "cancel": "Abbrechen",
     "done": "Fertig",
     "clearDay": "Tag leeren",
-    "clearDayTitle": "Tag {day} leeren?"
-    ,
+    "clearDayTitle": "Tag {day} leeren?",
     "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
   },
   "home": {
@@ -221,7 +215,7 @@
       "spring": "Küste mild. Berge kühler. Planen Sie unterwegs."
     },
     "degreesLine": "Sechzehn Grad, wenn daheim sechs sind.",
-  "planSubtitle": "Baue deine Route. Füge Orte aus Discover hinzu — wird automatisch gespeichert.",
+    "planSubtitle": "Baue deine Route. Füge Orte aus Discover hinzu — wird automatisch gespeichert.",
     "cta": {
       "arriving": "Gerade gelandet? Hier starten",
       "explore": "Entdecken",
@@ -255,7 +249,7 @@
     "editorsPicks": "Redaktions-Tipps",
     "editorsPicksKicker": "Kuratierte Auswahl",
     "rightNowNearYou": "Jetzt in Ihrer Nähe",
-    "discoverCurated": "Kuratierte Winter-Auswahl. Fügen Sie beim Stöbern zu Ihrem Plan hinzu.",
+    "discoverCurated": "Curious what we'd choose? Curated for winter—add to your plan as you browse.",
     "natureAndCoasts": "Natur & Küste",
     "places": "Orte",
     "startHere": {
@@ -305,8 +299,7 @@
         "wellnessAria": "Wellness — Klöster, stille Orte",
         "regionAria": "Region {region}"
       }
-    }
-    ,
+    },
     "share": {
       "heading": "Cyprus Winter teilen",
       "body": "Schon geplant oder schon da? Tippen Sie auf die Chat-Blase. Fügen Sie Orte beim Stöbern hinzu — Ihr Plan wird automatisch gespeichert.",
@@ -389,6 +382,30 @@
         "closer": "Näher",
         "farther": "Weiter"
       }
+    },
+    "placeOfDay": {
+      "kicker": "Today's pick — one place worth the drive",
+      "addToPlan": "Add to plan",
+      "seeDetails": "See details →",
+      "openAria": "Open {name}",
+      "overlays": {
+        "goodDay": "Good day for it",
+        "quietWeek": "Quiet this week",
+        "clearToday": "Clear today",
+        "bestAfternoon": "Best light in afternoon",
+        "worthVisit": "Worth a visit"
+      }
+    },
+    "planningSection": {
+      "srHeading": "Planning and essentials",
+      "planTitle": "Plan your trip",
+      "eventsTitle": "Winter events",
+      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
+      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+    },
+    "recentlyViewed": {
+      "title": "Recently viewed",
+      "clear": "Clear"
     }
   },
   "error": {
@@ -587,7 +604,10 @@
       "funnelThisMonth": {
         "title": "Conversion-Funnel (diesen Monat)",
         "subtitle": "Vom ersten Kontakt bis zur Buchung und zum Umsatz",
-        "table": { "event": "Ereignis", "count": "Anzahl" },
+        "table": {
+          "event": "Ereignis",
+          "count": "Anzahl"
+        },
         "empty": "Noch keine Events. Conversion-Tracking erfordert Supabase und Migration 003."
       },
       "storage": "Speicher: {storage}",
@@ -740,9 +760,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Gut zu gehen" },
-        "caution": { "title": "Bedingungen prüfen, bevor Sie losgehen" },
-        "closed": { "title": "Am besten für einen anderen Tag aufheben" }
+        "open": {
+          "title": "Gut zu gehen"
+        },
+        "caution": {
+          "title": "Bedingungen prüfen, bevor Sie losgehen"
+        },
+        "closed": {
+          "title": "Am besten für einen anderen Tag aufheben"
+        }
       }
     },
     "report": {
@@ -755,15 +781,36 @@
       },
       "options": {
         "status": {
-          "open": { "label": "Offen", "desc": "Alles gut" },
-          "caution": { "label": "Vorsicht", "desc": "Matsch, Wind oder kleinere Probleme" },
-          "closed": { "label": "Geschlossen", "desc": "Schnee, Eis oder unsicher" }
+          "open": {
+            "label": "Offen",
+            "desc": "Alles gut"
+          },
+          "caution": {
+            "label": "Vorsicht",
+            "desc": "Matsch, Wind oder kleinere Probleme"
+          },
+          "closed": {
+            "label": "Geschlossen",
+            "desc": "Schnee, Eis oder unsicher"
+          }
         },
         "surface": {
-          "dry": { "label": "Trocken", "desc": "Fester Boden, guter Grip" },
-          "muddy": { "label": "Matschig", "desc": "Weiche oder nasse Stellen" },
-          "snow": { "label": "Schnee", "desc": "Schnee am Boden" },
-          "icy": { "label": "Eisig", "desc": "Eis, ggf. Spikes nötig" }
+          "dry": {
+            "label": "Trocken",
+            "desc": "Fester Boden, guter Grip"
+          },
+          "muddy": {
+            "label": "Matschig",
+            "desc": "Weiche oder nasse Stellen"
+          },
+          "snow": {
+            "label": "Schnee",
+            "desc": "Schnee am Boden"
+          },
+          "icy": {
+            "label": "Eisig",
+            "desc": "Eis, ggf. Spikes nötig"
+          }
         }
       },
       "placeholders": {
@@ -771,7 +818,10 @@
         "email": "deine@email.com"
       },
       "errorHelp": "Prüfen Sie die Verbindung, versuchen Sie es erneut oder gehen Sie zurück zum Weg.",
-      "submit": { "idle": "Bericht absenden", "loading": "Wird gesendet…" },
+      "submit": {
+        "idle": "Bericht absenden",
+        "loading": "Wird gesendet…"
+      },
       "success": {
         "aria": "Bericht erfolgreich gesendet",
         "body": "Wanderer in Richtung {region} werden das nutzen. Jeder Bericht zählt.",
@@ -1186,14 +1236,14 @@
       "signOut": "Abmelden",
       "cta": {
         "plan": "Mein Plan",
-        "bookings": "Meine Buchungen ansehen",
+        "bookings": "Meine Buchungen",
         "settings": "Einstellungen"
       }
     },
     "signedOut": {
-      "title": "Plan auf allen Geräten speichern",
-      "description": "Melden Sie sich an, um Plan und Buchungen geräteübergreifend zu synchronisieren.",
-      "body": "Erstellen Sie ein kostenloses Konto — Ihr Reiseplan und Ihre Buchungen begleiten Sie überallhin.",
+      "title": "Plan auf mehreren Geräten speichern",
+      "description": "Melden Sie sich an, um Plan und Buchungen über Geräte hinweg zu synchronisieren.",
+      "body": "Erstellen Sie kostenlos ein Konto — Ihr Reiseplan und Ihre Buchungen sind dann überall verfügbar.",
       "cta": {
         "create": "Konto erstellen",
         "signIn": "Anmelden",
@@ -1201,17 +1251,17 @@
       }
     },
     "notConfigured": {
-      "title": "Anmeldung bald verfügbar",
-      "description": "Anmelden (bald verfügbar) synchronisiert Ihren Plan und Ihre Buchungen geräteübergreifend.",
-      "body": "Ihr Plan und Ihre Buchungen befinden sich auf diesem Gerät. Nutzen Sie die E‑Mail‑Suche auf der Buchungsseite, um Reservierungen von einem anderen Gerät zu laden."
+      "title": "Anmeldung kommt bald",
+      "description": "Anmelden (bald verfügbar) synchronisiert Plan und Buchungen über Geräte hinweg.",
+      "body": "Ihr Plan und Ihre Buchungen sind auf diesem Gerät gespeichert. Nutzen Sie die E‑Mail-Suche auf der Buchungsseite, um Reservierungen von einem anderen Gerät zu laden."
     },
     "settings": {
       "title": "Einstellungen",
       "loading": "Wird geladen…",
-      "description": "Passen Sie Ihr Erlebnis an. Wir verwenden diese Angaben, um Orte und Wanderwege zu zeigen, die zu Ihrem Stil passen.",
+      "description": "Personalisieren Sie Ihr Erlebnis. Damit zeigen wir Orte und Wanderwege, die zu Ihrem Stil passen.",
       "interests": {
         "title": "Interessen",
-        "body": "Wählen Sie, was Sie begeistert. Entdecken, Right Now und Plan‑Vorschläge orientieren sich daran.",
+        "body": "Wählen Sie, was Sie begeistert. Entdecken, Right Now und Vorschläge richten sich danach.",
         "labels": {
           "active": "Wandern & Trails",
           "culture": "Geschichte & Archäologie",
@@ -1222,34 +1272,34 @@
       },
       "travelStyle": {
         "title": "Reisestil",
-        "body": "Hilft, Empfehlungen anzupassen (z. B. familienfreundlich, Auszeiten zu zweit).",
+        "body": "Hilft, Vorschläge anzupassen (z. B. familienfreundlich, Auszeit zu zweit).",
         "labels": {
           "solo": "Allein",
           "couple": "Zu zweit",
-          "family": "Familie",
+          "family": "Familien",
           "group": "Gruppe",
-          "nomad": "Digitaler Nomade"
+          "nomad": "Digital Nomad"
         }
       },
       "regions": {
         "title": "Lieblingsregionen",
-        "body": "Wir heben Inhalte aus diesen Regionen in Entdecken und Right Now hervor."
+        "body": "Wir zeigen Inhalte aus diesen Regionen häufiger in Entdecken und Right Now."
       },
       "notifications": {
         "title": "Benachrichtigungen",
-        "body": "Wenn Sie Push aktivieren, verwenden wir diese Einstellungen für Hinweise.",
-        "trails": "Updates zu Trail‑Bedingungen (Troodos usw.)",
-        "events": "Winter‑Events und Festivals"
+        "body": "Wenn Sie Push aktivieren, nutzen wir diese Einstellungen für Hinweise.",
+        "trails": "Updates zu Trail-Bedingungen (Troodos usw.)",
+        "events": "Winter-Events und Festivals"
       },
       "privacy": {
         "title": "Daten & Datenschutz",
-        "body": "Steuern Sie, was wir auf diesem Gerät speichern. Für Daten, die wir halten (Buchungen, Trail‑Reports), können Sie Export oder Löschung anfordern.",
-        "clear": "Zuletzt angesehen löschen",
-        "cleared": "Zuletzt angesehen gelöscht",
+        "body": "Steuern Sie, was wir auf diesem Gerät speichern. Für Daten, die wir halten (Buchungen, Trail-Reports), können Sie Export oder Löschung anfordern.",
+        "clear": "Kürzlich angesehen löschen",
+        "cleared": "Kürzlich angesehen gelöscht",
         "requestExport": "Datenexport anfordern",
         "requestDeletion": "Löschung anfordern",
         "footer": {
-          "prefix": "Geben Sie die E‑Mail an, die für Buchungen oder Trail‑Reports verwendet wurde. Wir antworten innerhalb von 30 Tagen. Siehe unsere",
+          "prefix": "Bitte die E‑Mail angeben, die für Buchungen oder Trail-Reports verwendet wurde. Wir antworten innerhalb von 30 Tagen. Siehe unsere",
           "privacyPolicy": "Datenschutzerklärung",
           "suffix": "."
         }
@@ -1284,6 +1334,12 @@
       "events": "Veranstaltungen",
       "villages": "Dörfer",
       "beaches": "Strände"
+    },
+    "footer": {
+      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+    },
+    "aria": {
+      "actions": "Search page actions"
     }
   },
   "events": {
@@ -1322,6 +1378,32 @@
         "exploreRegionCta": "{region} entdecken →",
         "learnMoreAria": "Mehr über {name} erfahren",
         "learnMoreCta": "Mehr erfahren"
+      },
+      "highlights": {
+        "title": "Don't miss",
+        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+      },
+      "tips": {
+        "title": "Planning tips",
+        "item1": "Check official sites for exact dates — many events move year to year.",
+        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
+        "item3": "Arrive early for popular events. The best spots fill quickly.",
+        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+      },
+      "footer": {
+        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
+        "weatherLink": "Weather by month"
+      },
+      "aria": {
+        "actions": "Events page actions"
+      },
+      "types": {
+        "festival": "Festival",
+        "market": "Market",
+        "concert": "Concert",
+        "food": "Food & Wine",
+        "culture": "Culture",
+        "sport": "Sport"
       }
     }
   },
@@ -1530,12 +1612,34 @@
         "ctaTrails": "Wanderwege ansehen"
       },
       "fields": {
-        "date": { "label": "Wunschtermin", "hint": "Wintertage sind kurz — buchen Sie frühzeitig Ihren bevorzugten Slot." },
-        "trail": { "label": "Wanderweg", "optional": "(optional)", "hint": "Optional. Hilft dem Guide bei der Planung.", "placeholder": "Wanderweg wählen (optional)" },
-        "partySize": { "label": "Gruppengröße", "plus": "11+ Personen" },
-        "guestName": { "label": "Ihr Name", "placeholder": "Max Mustermann" },
-        "guestEmail": { "label": "E‑Mail", "placeholder": "max@example.com" },
-        "notes": { "label": "Notizen", "optional": "(optional)", "hint": "Fitness, Erfahrung, Trail-Wunsch — alles, was bei der Planung hilft.", "placeholder": "Erste Winterwanderung, Wasserfälle sehen, früher Start — alles, was hilft" }
+        "date": {
+          "label": "Wunschtermin",
+          "hint": "Wintertage sind kurz — buchen Sie frühzeitig Ihren bevorzugten Slot."
+        },
+        "trail": {
+          "label": "Wanderweg",
+          "optional": "(optional)",
+          "hint": "Optional. Hilft dem Guide bei der Planung.",
+          "placeholder": "Wanderweg wählen (optional)"
+        },
+        "partySize": {
+          "label": "Gruppengröße",
+          "plus": "11+ Personen"
+        },
+        "guestName": {
+          "label": "Ihr Name",
+          "placeholder": "Max Mustermann"
+        },
+        "guestEmail": {
+          "label": "E‑Mail",
+          "placeholder": "max@example.com"
+        },
+        "notes": {
+          "label": "Notizen",
+          "optional": "(optional)",
+          "hint": "Fitness, Erfahrung, Trail-Wunsch — alles, was bei der Planung hilft.",
+          "placeholder": "Erste Winterwanderung, Wasserfälle sehen, früher Start — alles, was hilft"
+        }
       },
       "submit": {
         "ariaSending": "Anfrage wird gesendet",
@@ -1550,8 +1654,7 @@
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
       }
-    }
-    ,
+    },
     "wineryForm": {
       "errors": {
         "failed": "Buchung fehlgeschlagen",
@@ -1567,11 +1670,28 @@
         "ctaDiscover": "Mehr entdecken"
       },
       "fields": {
-        "date": { "label": "Wunschtermin", "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen." },
-        "partySize": { "label": "Gruppengröße", "plus": "11+ Personen" },
-        "guestName": { "label": "Ihr Name", "placeholder": "Max Mustermann" },
-        "guestEmail": { "label": "E‑Mail", "placeholder": "max@example.com" },
-        "notes": { "label": "Notizen", "optional": "(optional)", "hint": "Kaminplatz? Ernährung? Einfach erwähnen — Weingüter sind daran gewöhnt.", "placeholder": "Allergien, Anlass, Kamin oder Terrasse — alles, was beim Empfang hilft" }
+        "date": {
+          "label": "Wunschtermin",
+          "hint": "Winter-Verkostungen sind gefragt. Ein paar Tage im Voraus helfen."
+        },
+        "partySize": {
+          "label": "Gruppengröße",
+          "plus": "11+ Personen"
+        },
+        "guestName": {
+          "label": "Ihr Name",
+          "placeholder": "Max Mustermann"
+        },
+        "guestEmail": {
+          "label": "E‑Mail",
+          "placeholder": "max@example.com"
+        },
+        "notes": {
+          "label": "Notizen",
+          "optional": "(optional)",
+          "hint": "Kaminplatz? Ernährung? Einfach erwähnen — Weingüter sind daran gewöhnt.",
+          "placeholder": "Allergien, Anlass, Kamin oder Terrasse — alles, was beim Empfang hilft"
+        }
       },
       "submit": {
         "ariaSending": "Anfrage wird gesendet",
@@ -1586,8 +1706,7 @@
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
       }
-    }
-    ,
+    },
     "pages": {
       "pageNavAria": "Seitennavigation",
       "otherWaysAria": "Weitere Buchungswege",
@@ -1629,85 +1748,6 @@
           "callSuffix": "um zu reservieren oder Verfügbarkeit zu prüfen — meist helfen sie gerne."
         }
       }
-    }
-  },
-  "account": {
-    "title": "Mein Konto",
-    "loading": "Wird geladen…",
-    "signedIn": {
-      "description": "Ihr Plan und Ihre Buchungen — geräteübergreifend synchronisiert.",
-      "signOut": "Abmelden",
-      "cta": {
-        "plan": "Mein Plan",
-        "bookings": "Meine Buchungen",
-        "settings": "Einstellungen"
-      }
-    },
-    "signedOut": {
-      "title": "Plan auf mehreren Geräten speichern",
-      "description": "Melden Sie sich an, um Plan und Buchungen über Geräte hinweg zu synchronisieren.",
-      "body": "Erstellen Sie kostenlos ein Konto — Ihr Reiseplan und Ihre Buchungen sind dann überall verfügbar.",
-      "cta": {
-        "create": "Konto erstellen",
-        "signIn": "Anmelden",
-        "skip": "Überspringen — Plan nur auf diesem Gerät nutzen"
-      }
-    },
-    "notConfigured": {
-      "title": "Anmeldung kommt bald",
-      "description": "Anmelden (bald verfügbar) synchronisiert Plan und Buchungen über Geräte hinweg.",
-      "body": "Ihr Plan und Ihre Buchungen sind auf diesem Gerät gespeichert. Nutzen Sie die E‑Mail-Suche auf der Buchungsseite, um Reservierungen von einem anderen Gerät zu laden."
-    },
-    "settings": {
-      "title": "Einstellungen",
-      "loading": "Wird geladen…",
-      "description": "Personalisieren Sie Ihr Erlebnis. Damit zeigen wir Orte und Wanderwege, die zu Ihrem Stil passen.",
-      "interests": {
-        "title": "Interessen",
-        "body": "Wählen Sie, was Sie begeistert. Entdecken, Right Now und Vorschläge richten sich danach.",
-        "labels": {
-          "active": "Wandern & Trails",
-          "culture": "Geschichte & Archäologie",
-          "wine": "Wein & Verkostungen",
-          "wellness": "Wellness & Entspannung",
-          "villages": "Bergdörfer"
-        }
-      },
-      "travelStyle": {
-        "title": "Reisestil",
-        "body": "Hilft, Vorschläge anzupassen (z. B. familienfreundlich, Auszeit zu zweit).",
-        "labels": {
-          "solo": "Allein",
-          "couple": "Zu zweit",
-          "family": "Familien",
-          "group": "Gruppe",
-          "nomad": "Digital Nomad"
-        }
-      },
-      "regions": {
-        "title": "Lieblingsregionen",
-        "body": "Wir zeigen Inhalte aus diesen Regionen häufiger in Entdecken und Right Now."
-      },
-      "notifications": {
-        "title": "Benachrichtigungen",
-        "body": "Wenn Sie Push aktivieren, nutzen wir diese Einstellungen für Hinweise.",
-        "trails": "Updates zu Trail-Bedingungen (Troodos usw.)",
-        "events": "Winter-Events und Festivals"
-      },
-      "privacy": {
-        "title": "Daten & Datenschutz",
-        "body": "Steuern Sie, was wir auf diesem Gerät speichern. Für Daten, die wir halten (Buchungen, Trail-Reports), können Sie Export oder Löschung anfordern.",
-        "clear": "Kürzlich angesehen löschen",
-        "cleared": "Kürzlich angesehen gelöscht",
-        "requestExport": "Datenexport anfordern",
-        "requestDeletion": "Löschung anfordern",
-        "footer": {
-          "prefix": "Bitte die E‑Mail angeben, die für Buchungen oder Trail-Reports verwendet wurde. Wir antworten innerhalb von 30 Tagen. Siehe unsere",
-          "privacyPolicy": "Datenschutzerklärung",
-          "suffix": "."
-        }
-      },
-      "backToAccount": "← Zurück zum Konto"
     }
   },
   "guides": {
@@ -2047,6 +2087,28 @@
       "aria-label_10": "Zu Entdecken gehen",
       "aria-label_11": "Ihren Reiseplan anzeigen",
       "aria-label_12": "Transport vom Flughafen, Tipps"
+    }
+  },
+  "regions": {
+    "page": {
+      "footer": {
+        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
+        "weatherLink": "Weather by month"
+      },
+      "aria": {
+        "actions": "Region page actions"
+      }
+    }
+  },
+  "wineRoutes": {
+    "page": {
+      "footer": {
+        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
+        "allWineries": "All Cyprus wineries"
+      },
+      "aria": {
+        "actions": "Wine route actions"
+      }
     }
   }
 }

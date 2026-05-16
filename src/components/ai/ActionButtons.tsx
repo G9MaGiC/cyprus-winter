@@ -40,7 +40,7 @@ export function ActionButtons({ actions }: { actions: Action[] }) {
           key={i}
           type="button"
           onClick={() => handleAction(action)}
-          className="px-3 py-1.5 text-xs font-medium rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta/20 transition-colors min-h-[32px]"
+          className="px-3 py-1.5 text-xs font-medium rounded-full bg-terracotta/10 text-terracotta hover:bg-terracotta/20 transition-colors min-h-[44px]"
         >
           {action.label}
         </button>

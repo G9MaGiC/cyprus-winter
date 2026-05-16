@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
+import HubFooter from "@/components/HubFooter";
 import FilterChips from "@/components/FilterChips";
 import AskAIButton from "@/components/AskAIButton";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION } from "@/lib/design-tokens";
@@ -12,16 +13,8 @@ import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
 import { useTranslations } from "next-intl";
+import AppLink from "@/components/AppLink";
 import { Link } from "@/i18n/navigation";
-
-const TYPE_LABELS: Record<string, string> = {
-  festival: "Festival",
-  market: "Market",
-  concert: "Concert",
-  food: "Food & Wine",
-  culture: "Culture",
-  sport: "Sport",
-};
 
 const TYPE_COLORS: Record<string, string> = {
   festival: "bg-golden/20 text-charcoal",
@@ -43,6 +36,8 @@ const MONTH_FULL: Record<string, string> = {
 
 const HIGHLIGHT_IDS = ["epiphany-cyprus", "limassol-carnival"];
 
+const EVENT_TYPES = ["festival", "market", "concert", "food", "culture", "sport"] as const;
+
 const REGIONS_LIST = Array.from(new Set(winterEvents.map((e) => e.region)))
   .filter((r) => r !== "All")
   .sort();
@@ -58,6 +53,11 @@ function EventCard({
   const typeColor = TYPE_COLORS[event.type] ?? "bg-sand-200/80 text-olive/80";
   const tPage = useTranslations("events.page");
   const tCommon = useTranslations("common");
+  const typeLabel = (type: string) => {
+    const key = type as "festival" | "market" | "concert" | "food" | "culture" | "sport";
+    if (key in TYPE_COLORS) return tPage(`types.${key}`);
+    return type;
+  };
 
   return (
     <article
@@ -73,7 +73,7 @@ function EventCard({
           className={`px-2.5 py-1 rounded-md text-xs font-medium capitalize ${typeColor}`}
           aria-hidden
         >
-          {TYPE_LABELS[event.type] ?? event.type}
+          {typeLabel(event.type)}
         </span>
         <span className="text-xs text-olive/60" aria-hidden>
           ·
@@ -136,6 +136,7 @@ export default function EventsPage() {
   const tEvents = useTranslations("events");
   const tPage = useTranslations("events.page");
   const tCommon = useTranslations("common");
+  const tDiscover = useTranslations("discover");
   const tSearch = useTranslations("search");
   const searchParams = useSearchParams();
   const typeFromUrl = searchParams.get("type") ?? "";
@@ -185,8 +186,12 @@ export default function EventsPage() {
 
   const typeChips = [
     { id: "", label: tPage("filters.toggleAll") },
-    ...Object.entries(TYPE_LABELS).map(([id, label]) => ({ id, label })),
+    ...EVENT_TYPES.map((id) => ({ id, label: tPage(`types.${id}`) })),
   ];
+  const typeFilterLabel =
+    typeFilter && EVENT_TYPES.includes(typeFilter as (typeof EVENT_TYPES)[number])
+      ? tPage(`types.${typeFilter as (typeof EVENT_TYPES)[number]}`)
+      : null;
   const regionChips = [
     { id: "", label: tPage("filters.toggleAll") },
     ...REGIONS_LIST.map((r) => ({ id: r, label: r })),
@@ -242,9 +247,7 @@ export default function EventsPage() {
           </p>
         </ListPageHero>
 
-        <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
-
-        <ListPageWidgetStrip sticky sentinelId="events-plan-sentinel" ariaLabel={tPage("filters.aria")}>
+        <ListPageWidgetStrip sticky ariaLabel={tPage("filters.aria")}>
           <section aria-label={tPage("filters.aria")} className="mb-0">
             <div className={`${CARD.base} ${CARD.content}`}>
               {hasInvalidFilter && (
@@ -261,7 +264,7 @@ export default function EventsPage() {
                   aria-controls="event-filters"
                   id="event-filters-toggle"
                 >
-                  <span className="text-sm">{tPage("filters.togglePrefix")} {hasFilters ? [typeFilter ? TYPE_LABELS[typeFilter] : null, regionFilter].filter(Boolean).join(", ") : tPage("filters.toggleAll")}</span>
+                  <span className="text-sm">{tPage("filters.togglePrefix")} {hasFilters ? [typeFilterLabel, regionFilter].filter(Boolean).join(", ") : tPage("filters.toggleAll")}</span>
                   <span className="text-olive/60 text-xs" aria-hidden>
                     {filtersExpanded ? tPage("filters.toggleHide") : tPage("filters.toggleShow")}
                   </span>
@@ -306,6 +309,13 @@ export default function EventsPage() {
               </Link>
               <AskAIButton className={CTA.chipTertiary} />
             </div>
+            <HubFooter
+              body={tPage("footer.hubBody")}
+              ariaLabel={tPage("aria.actions")}
+              askAiLabel={tDiscover("footer.askAi")}
+              askAiAriaLabel={tDiscover("aria.askAi")}
+              className="mt-10"
+            />
           </div>
         ) : (
           <>
@@ -341,11 +351,10 @@ export default function EventsPage() {
                   id="dont-miss"
                   className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}
                 >
-                  Don&apos;t miss
+                  {tPage("highlights.title")}
                 </h2>
                 <p className={`text-sm text-olive/70 max-w-xl break-words ${SECTION.headingGap}`}>
-                  Epiphany and Carnival are when the island shows its soul. Get
-                  there early. Wrap up warm.
+                  {tPage("highlights.lead")}
                 </p>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {highlights.map((e) => (
@@ -396,57 +405,33 @@ export default function EventsPage() {
                 id="event-tips"
                 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
               >
-                Planning tips
+                {tPage("tips.title")}
               </h2>
               <ul className="space-y-2 text-sm text-olive/90 break-words" role="list">
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Check official sites for exact dates — many events move year
-                    to year.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Book early for Epiphany, Carnival, and Christmas markets.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Arrive early for popular events. The best spots fill quickly.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span
-                    className="text-terracotta shrink-0"
-                    aria-hidden
-                  >
-                    ·
-                  </span>
-                  <span>
-                    Pair events with nearby trails or villages. Hike in the
-                    morning, event in the afternoon.
-                  </span>
-                </li>
+                {(["item1", "item2", "item3", "item4"] as const).map((key) => (
+                  <li key={key} className="flex gap-3">
+                    <span className="text-terracotta shrink-0" aria-hidden>
+                      ·
+                    </span>
+                    <span>{tPage(`tips.${key}`)}</span>
+                  </li>
+                ))}
               </ul>
             </section>
+
+            <span id="events-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+            <HubFooter
+              body={tPage("footer.hubBody")}
+              ariaLabel={tPage("aria.actions")}
+              askAiLabel={tDiscover("footer.askAi")}
+              askAiAriaLabel={tDiscover("aria.askAi")}
+              secondary={
+                <AppLink href="/weather" className={SECTION.aegeanLink}>
+                  {tPage("footer.weatherLink")}
+                </AppLink>
+              }
+            />
+            <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
           </>
         )}
       </div>

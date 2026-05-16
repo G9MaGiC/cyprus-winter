@@ -101,8 +101,7 @@
     "trail": "Szlak",
     "winery": "Winnica",
     "event": "Wydarzenie",
-    "eat": "Jedzenie"
-    ,
+    "eat": "Jedzenie",
     "timelineRemovedPlace": "To miejsce zostało usunięte z naszej listy",
     "ai": {
       "title": "Przewodnik po Cyprze",
@@ -115,10 +114,8 @@
       "stopVoice": "Wyłącz wyszukiwanie głosowe"
     },
     "back": "Wróć",
-    "backTo": "Wróć do {label}"
-    ,
-    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}"
-    ,
+    "backTo": "Wróć do {label}",
+    "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
     "breadcrumbs": {
       "privacy": "Prywatność",
       "terms": "Regulamin",
@@ -139,8 +136,7 @@
     "bestTimeToVisitTitle": "Najlepszy czas na wizytę",
     "reportConditions": "Zgłoś warunki",
     "reportAnotherTrail": "Zgłoś kolejny szlak",
-    "thanksForReporting": "Dzięki za zgłoszenie."
-    ,
+    "thanksForReporting": "Dzięki za zgłoszenie.",
     "remove": "Usuń",
     "bookTastings": "Zarezerwuj degustacje",
     "exploreWineries": "Przeglądaj winnice",
@@ -200,13 +196,11 @@
       "plan": "Przejdź do Planu",
       "search": "Przejdź do wyszukiwania",
       "startHere": "Przejdź do Zacznij tutaj"
-    }
-    ,
+    },
     "cancel": "Anuluj",
     "done": "Gotowe",
     "clearDay": "Wyczyść dzień",
-    "clearDayTitle": "Wyczyścić Dzień {day}?"
-    ,
+    "clearDayTitle": "Wyczyścić Dzień {day}?",
     "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie."
   },
   "home": {
@@ -255,7 +249,7 @@
     "editorsPicks": "Polecane przez redakcję",
     "editorsPicksKicker": "Kuratowane",
     "rightNowNearYou": "Teraz blisko Ciebie",
-    "discoverCurated": "Kuratowane na zimę. Dodawaj do planu podczas przeglądania.",
+    "discoverCurated": "Curious what we'd choose? Curated for winter—add to your plan as you browse.",
     "natureAndCoasts": "Natura i wybrzeże",
     "places": "Miejsca",
     "startHere": {
@@ -305,8 +299,7 @@
         "wellnessAria": "Wellness — klasztory, ciche miejsca",
         "regionAria": "Region {region}"
       }
-    }
-    ,
+    },
     "share": {
       "heading": "Udostępnij Cyprus Winter",
       "body": "Planujesz z góry czy już jesteś na miejscu? Dotknij bąbelka czatu. Dodawaj miejsca podczas przeglądania — plan zapisuje się automatycznie.",
@@ -389,6 +382,30 @@
         "closer": "Bliżej",
         "farther": "Dalej"
       }
+    },
+    "placeOfDay": {
+      "kicker": "Today's pick — one place worth the drive",
+      "addToPlan": "Add to plan",
+      "seeDetails": "See details →",
+      "openAria": "Open {name}",
+      "overlays": {
+        "goodDay": "Good day for it",
+        "quietWeek": "Quiet this week",
+        "clearToday": "Clear today",
+        "bestAfternoon": "Best light in afternoon",
+        "worthVisit": "Worth a visit"
+      }
+    },
+    "planningSection": {
+      "srHeading": "Planning and essentials",
+      "planTitle": "Plan your trip",
+      "eventsTitle": "Winter events",
+      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
+      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+    },
+    "recentlyViewed": {
+      "title": "Recently viewed",
+      "clear": "Clear"
     }
   },
   "error": {
@@ -587,7 +604,10 @@
       "funnelThisMonth": {
         "title": "Lejek konwersji (w tym miesiącu)",
         "subtitle": "Od pierwszego kontaktu do rezerwacji i przychodu",
-        "table": { "event": "Zdarzenie", "count": "Liczba" },
+        "table": {
+          "event": "Zdarzenie",
+          "count": "Liczba"
+        },
         "empty": "Brak zdarzeń. Śledzenie konwersji wymaga Supabase i migracji 003."
       },
       "storage": "Magazyn: {storage}",
@@ -740,9 +760,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Dobre do przejścia" },
-        "caution": { "title": "Sprawdź warunki przed wyjściem" },
-        "closed": { "title": "Najlepiej zostawić na inny dzień" }
+        "open": {
+          "title": "Dobre do przejścia"
+        },
+        "caution": {
+          "title": "Sprawdź warunki przed wyjściem"
+        },
+        "closed": {
+          "title": "Najlepiej zostawić na inny dzień"
+        }
       }
     },
     "report": {
@@ -755,15 +781,36 @@
       },
       "options": {
         "status": {
-          "open": { "label": "Otwarte", "desc": "Wszystko w porządku" },
-          "caution": { "label": "Ostrożnie", "desc": "Błoto, wiatr lub drobne utrudnienia" },
-          "closed": { "label": "Zamknięte", "desc": "Śnieg, lód lub niebezpiecznie" }
+          "open": {
+            "label": "Otwarte",
+            "desc": "Wszystko w porządku"
+          },
+          "caution": {
+            "label": "Ostrożnie",
+            "desc": "Błoto, wiatr lub drobne utrudnienia"
+          },
+          "closed": {
+            "label": "Zamknięte",
+            "desc": "Śnieg, lód lub niebezpiecznie"
+          }
         },
         "surface": {
-          "dry": { "label": "Sucho", "desc": "Twarde podłoże, dobra przyczepność" },
-          "muddy": { "label": "Błoto", "desc": "Miękkie lub mokre odcinki" },
-          "snow": { "label": "Śnieg", "desc": "Śnieg na ziemi" },
-          "icy": { "label": "Lód", "desc": "Lód, mogą być potrzebne raczki" }
+          "dry": {
+            "label": "Sucho",
+            "desc": "Twarde podłoże, dobra przyczepność"
+          },
+          "muddy": {
+            "label": "Błoto",
+            "desc": "Miękkie lub mokre odcinki"
+          },
+          "snow": {
+            "label": "Śnieg",
+            "desc": "Śnieg na ziemi"
+          },
+          "icy": {
+            "label": "Lód",
+            "desc": "Lód, mogą być potrzebne raczki"
+          }
         }
       },
       "placeholders": {
@@ -771,7 +818,10 @@
         "email": "twoj@email.com"
       },
       "errorHelp": "Sprawdź połączenie, spróbuj ponownie lub wróć do szlaku.",
-      "submit": { "idle": "Wyślij raport", "loading": "Wysyłanie…" },
+      "submit": {
+        "idle": "Wyślij raport",
+        "loading": "Wysyłanie…"
+      },
       "success": {
         "aria": "Raport wysłany pomyślnie",
         "body": "Wędrowcy zmierzający do {region} skorzystają z tego. Każdy raport się liczy.",
@@ -1205,6 +1255,12 @@
       "events": "Wydarzenia",
       "villages": "Wioski",
       "beaches": "Plaże"
+    },
+    "footer": {
+      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+    },
+    "aria": {
+      "actions": "Search page actions"
     }
   },
   "events": {
@@ -1243,6 +1299,32 @@
         "exploreRegionCta": "Odkrywaj {region} →",
         "learnMoreAria": "Dowiedz się więcej o {name}",
         "learnMoreCta": "Dowiedz się więcej"
+      },
+      "highlights": {
+        "title": "Don't miss",
+        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+      },
+      "tips": {
+        "title": "Planning tips",
+        "item1": "Check official sites for exact dates — many events move year to year.",
+        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
+        "item3": "Arrive early for popular events. The best spots fill quickly.",
+        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+      },
+      "footer": {
+        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
+        "weatherLink": "Weather by month"
+      },
+      "aria": {
+        "actions": "Events page actions"
+      },
+      "types": {
+        "festival": "Festival",
+        "market": "Market",
+        "concert": "Concert",
+        "food": "Food & Wine",
+        "culture": "Culture",
+        "sport": "Sport"
       }
     }
   },
@@ -1530,12 +1612,34 @@
         "ctaTrails": "Przeglądaj szlaki"
       },
       "fields": {
-        "date": { "label": "Preferowana data", "hint": "Zimowe dni są krótkie — rezerwuj wcześniej, by złapać preferowany termin." },
-        "trail": { "label": "Szlak", "optional": "(opcjonalnie)", "hint": "Opcjonalne. Pomaga przewodnikowi zaplanować.", "placeholder": "Wybierz szlak (opcjonalnie)" },
-        "partySize": { "label": "Wielkość grupy", "plus": "11+ osób" },
-        "guestName": { "label": "Twoje imię", "placeholder": "Jan Kowalski" },
-        "guestEmail": { "label": "Email", "placeholder": "jan@example.com" },
-        "notes": { "label": "Uwagi", "optional": "(opcjonalnie)", "hint": "Kondycja, doświadczenie, preferencje szlaku — wszystko, co pomoże w planowaniu.", "placeholder": "Pierwsza zimowa wędrówka, chcę wodospady, potrzebuję wcześnie — cokolwiek pomoże" }
+        "date": {
+          "label": "Preferowana data",
+          "hint": "Zimowe dni są krótkie — rezerwuj wcześniej, by złapać preferowany termin."
+        },
+        "trail": {
+          "label": "Szlak",
+          "optional": "(opcjonalnie)",
+          "hint": "Opcjonalne. Pomaga przewodnikowi zaplanować.",
+          "placeholder": "Wybierz szlak (opcjonalnie)"
+        },
+        "partySize": {
+          "label": "Wielkość grupy",
+          "plus": "11+ osób"
+        },
+        "guestName": {
+          "label": "Twoje imię",
+          "placeholder": "Jan Kowalski"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "jan@example.com"
+        },
+        "notes": {
+          "label": "Uwagi",
+          "optional": "(opcjonalnie)",
+          "hint": "Kondycja, doświadczenie, preferencje szlaku — wszystko, co pomoże w planowaniu.",
+          "placeholder": "Pierwsza zimowa wędrówka, chcę wodospady, potrzebuję wcześnie — cokolwiek pomoże"
+        }
       },
       "submit": {
         "ariaSending": "Wysyłanie prośby",
@@ -1550,8 +1654,7 @@
         "privacy": "Politykę prywatności",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "wineryForm": {
       "errors": {
         "failed": "Rezerwacja nie powiodła się",
@@ -1567,11 +1670,28 @@
         "ctaDiscover": "Odkrywaj dalej"
       },
       "fields": {
-        "date": { "label": "Preferowana data", "hint": "Zimowe degustacje szybko się zapełniają. Pomaga zarezerwować kilka dni wcześniej." },
-        "partySize": { "label": "Wielkość grupy", "plus": "11+ osób" },
-        "guestName": { "label": "Twoje imię", "placeholder": "Jan Kowalski" },
-        "guestEmail": { "label": "Email", "placeholder": "jan@example.com" },
-        "notes": { "label": "Uwagi", "optional": "(opcjonalnie)", "hint": "Stolik przy kominku? Potrzeby dietetyczne? Wspomnij — winnice są do tego przyzwyczajone.", "placeholder": "Alergie, okazja, kominek lub taras — cokolwiek pomoże w powitaniu" }
+        "date": {
+          "label": "Preferowana data",
+          "hint": "Zimowe degustacje szybko się zapełniają. Pomaga zarezerwować kilka dni wcześniej."
+        },
+        "partySize": {
+          "label": "Wielkość grupy",
+          "plus": "11+ osób"
+        },
+        "guestName": {
+          "label": "Twoje imię",
+          "placeholder": "Jan Kowalski"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "jan@example.com"
+        },
+        "notes": {
+          "label": "Uwagi",
+          "optional": "(opcjonalnie)",
+          "hint": "Stolik przy kominku? Potrzeby dietetyczne? Wspomnij — winnice są do tego przyzwyczajone.",
+          "placeholder": "Alergie, okazja, kominek lub taras — cokolwiek pomoże w powitaniu"
+        }
       },
       "submit": {
         "ariaSending": "Wysyłanie prośby",
@@ -1586,8 +1706,7 @@
         "privacy": "Politykę prywatności",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "pages": {
       "pageNavAria": "Nawigacja strony",
       "otherWaysAria": "Inne sposoby rezerwacji",
@@ -1968,6 +2087,28 @@
       "aria-label_10": "Przejdź do Odkrywaj",
       "aria-label_11": "Zobacz plan podróży",
       "aria-label_12": "Transport z lotniska, wskazówki"
+    }
+  },
+  "regions": {
+    "page": {
+      "footer": {
+        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
+        "weatherLink": "Weather by month"
+      },
+      "aria": {
+        "actions": "Region page actions"
+      }
+    }
+  },
+  "wineRoutes": {
+    "page": {
+      "footer": {
+        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
+        "allWineries": "All Cyprus wineries"
+      },
+      "aria": {
+        "actions": "Wine route actions"
+      }
     }
   }
 }
