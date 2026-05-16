@@ -5,8 +5,6 @@ import BackLink from "@/components/BackLink";
 import { LAYOUT, SECTION, SKELETON, TYPE } from "@/lib/design-tokens";
 import { useLocale, useTranslations } from "next-intl";
 
-const ADMIN_KEY_STORAGE = "cyprus-admin-key";
-
 type FunnelRow = { event: string; count: number };
 type PartnerRow = { providerId: string; providerName: string; bookingCount: number; totalFeeEur: number };
 
@@ -25,20 +23,17 @@ export default function AdminStatsPage() {
   const locale = useLocale();
   const [data, setData] = useState<StatsData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [adminKey, setAdminKey] = useState<string | null>(null);
+  const [hasSession, setHasSession] = useState(false);
   const [keyInput, setKeyInput] = useState("");
   const [keyError, setKeyError] = useState<string | null>(null);
 
-  const fetchStats = useCallback((token: string) => {
+  const fetchStats = useCallback(() => {
     setLoading(true);
     setKeyError(null);
-    fetch("/api/stats", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch("/api/stats", { credentials: "include" })
       .then((r) => {
         if (r.status === 401) {
-          sessionStorage.removeItem(ADMIN_KEY_STORAGE);
-          setAdminKey(null);
+          setHasSession(false);
           setKeyError("invalid");
           return null;
         }
@@ -52,28 +47,56 @@ export default function AdminStatsPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Restore admin key from sessionStorage on mount and fetch stats if present.
+  // Prefer the HttpOnly admin session cookie so the raw ADMIN_SECRET is not stored in browser JS state.
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? sessionStorage.getItem(ADMIN_KEY_STORAGE) : null;
-    if (stored) {
-      setAdminKey(stored); // eslint-disable-line react-hooks/set-state-in-effect -- client restore
-      fetchStats(stored);
-    } else {
-      setLoading(false);
-    }
+    fetch("/api/admin/session", { credentials: "include" })
+      .then((r) => {
+        if (!r.ok) return false;
+        return true;
+      })
+      .then((valid) => {
+        if (valid) {
+          setHasSession(true);
+          fetchStats();
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(() => setLoading(false));
   }, [fetchStats]);
 
   const handleKeySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const key = keyInput.trim();
     if (!key) return;
-    sessionStorage.setItem(ADMIN_KEY_STORAGE, key);
-    setAdminKey(key);
-    setKeyInput("");
-    fetchStats(key);
+    setLoading(true);
+    setKeyError(null);
+    fetch("/api/admin/session", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ secret: key }),
+    })
+      .then((r) => {
+        if (!r.ok) {
+          setKeyError("invalid");
+          setHasSession(false);
+          setLoading(false);
+          return false;
+        }
+        setHasSession(true);
+        setKeyInput("");
+        fetchStats();
+        return true;
+      })
+      .catch(() => {
+        setKeyError("invalid");
+        setHasSession(false);
+        setLoading(false);
+      });
   };
 
-  if (!adminKey) {
+  if (!hasSession) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tAdmin("title")}</h1>
@@ -148,8 +171,8 @@ export default function AdminStatsPage() {
           <button
             type="button"
             onClick={() => {
-              sessionStorage.removeItem(ADMIN_KEY_STORAGE);
-              setAdminKey(null);
+              void fetch("/api/admin/session", { method: "DELETE", credentials: "include" });
+              setHasSession(false);
               setData(null);
             }}
             className="text-sm text-olive/60 hover:text-olive"
