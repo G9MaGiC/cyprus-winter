@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import { useEffect } from "react";
 import { trailConditions } from "@/data/trails";
-import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYER, LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
@@ -255,7 +255,7 @@ export default function TrailsClient() {
 
         {hasAnyTrails && (
           <div
-            className="fixed left-0 right-0 z-40 flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))]"
+            className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 ${LAYOUT.mobileBottomChromeHidden}`}
           >
             <AppLink
               href="/plan"

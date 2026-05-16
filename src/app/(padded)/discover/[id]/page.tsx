@@ -13,12 +13,11 @@ import BackLink from "@/components/BackLink";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
-import AddToItineraryButton from "@/components/AddToItineraryButton";
-import NavigateButton from "@/components/NavigateButton";
+import DetailActionFooter from "@/components/DetailActionFooter";
 import StickyAddToPlanBar from "@/components/StickyAddToPlanBar";
-import { TrackOnClick } from "@/components/TrackOnClick";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { getSimilarDiscoverPlaces } from "@/lib/related-places";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import TrackView from "@/components/TrackView";
 import TrackEventOnMount from "@/components/TrackEventOnMount";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -565,21 +564,13 @@ export default async function AttractionPage({
               );
             })()}
 
-            <footer className="pt-8 pb-4 border-t border-sand-200/80 flex flex-col sm:flex-row sm:items-center gap-4 relative" aria-label={tDetail("actionsAria")}>
-              <div id="add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
-              <p className="text-olive/70 text-sm break-words">
-                {tDetail("footer.body")}
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
-                {(() => {
-                  const place = getPlaceById(a.id);
-                  return place ? <NavigateButton place={place} /> : null;
-                })()}
-                <TrackOnClick event="plan_add" properties={{ placeId: a.id, placeType: a.type }}>
-                  <AddToItineraryButton placeId={a.id} className="sm:shrink-0" />
-                </TrackOnClick>
-              </div>
-            </footer>
+            <DetailActionFooter
+              placeId={a.id}
+              placeType={a.type}
+              place={getPlaceById(a.id)}
+              body={tDetail("footer.body")}
+              ariaLabel={tDetail("actionsAria")}
+            />
           </div>
         </article>
         <StickyAddToPlanBar placeId={a.id} sentinelId="add-to-plan-sentinel" />

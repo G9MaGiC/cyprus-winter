@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import AppLink from "@/components/AppLink";
-import { CTA, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { CTA, LAYER, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { setCookieConsent, COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
 
@@ -65,7 +65,7 @@ export default function CookieConsentBanner() {
       aria-modal="true"
       aria-live="polite"
       aria-labelledby="cookie-banner-title"
-      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavMaxMd} md:bottom-0 z-[90] p-4 md:p-5 bg-sand-100 border-t border-sand-300 shadow-lg safe-area-pb`}
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavMaxMd} md:bottom-0 ${LAYER.cookieBanner} p-4 md:p-5 bg-sand-100 border-t border-sand-300 shadow-lg safe-area-pb`}
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
       <div className={`${LAYOUT.listNarrow} mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4`}>

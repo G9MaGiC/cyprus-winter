@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { SECTION } from "@/lib/design-tokens";
+import { LAYOUT, SECTION } from "@/lib/design-tokens";
 
 type PlanFooterProps = {
   hasWineries?: boolean;
@@ -15,7 +15,7 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
   const tPlan = useTranslations("plan");
   return (
     <footer
-      className={`${SECTION.footerBlock} pt-12 pb-[env(safe-area-inset-bottom)] sm:pt-14 sm:pb-0`}
+      className={`${SECTION.footerBlock} pt-12 sm:pt-14 ${LAYOUT.footerBottomClearance}`}
     >
       {showAccountCTA && (
         <p className="text-center mb-4">

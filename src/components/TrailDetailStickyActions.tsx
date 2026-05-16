@@ -6,7 +6,8 @@ import { getPlaceById } from "@/data";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
-import { LAYOUT } from "@/lib/design-tokens";
+import { FOOTER_SENTINEL_ID } from "@/lib/footer";
+import { LAYER, LAYOUT } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type TrailDetailStickyActionsProps = {
@@ -25,20 +26,46 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
 
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
+    const footerSentinel = document.getElementById(FOOTER_SENTINEL_ID);
     if (!sentinel) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
+
+    let actionsVisible = false;
+    let footerInView = false;
+
+    const updateShow = () => setVisible(actionsVisible && !footerInView);
+
+    const addObserver = new IntersectionObserver(
+      ([entry]) => {
+        actionsVisible = !entry.isIntersecting;
+        updateShow();
+      },
       { threshold: 0 }
     );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+
+    const footerObserver = footerSentinel
+      ? new IntersectionObserver(
+          ([entry]) => {
+            footerInView = entry.isIntersecting;
+            updateShow();
+          },
+          { threshold: 0 }
+        )
+      : null;
+
+    addObserver.observe(sentinel);
+    if (footerSentinel && footerObserver) footerObserver.observe(footerSentinel);
+
+    return () => {
+      addObserver.disconnect();
+      footerObserver?.disconnect();
+    };
   }, [sentinelId]);
 
   if (!visible) return null;
 
   return (
     <div
-      className={`fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm sm:hidden max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm ${LAYOUT.mobileBottomChromeHidden} py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
       role="complementary"
       aria-label={tCommon("aria.quickActions")}
     >

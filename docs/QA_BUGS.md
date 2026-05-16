@@ -1026,9 +1026,9 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | `npm run typecheck` | Pass | |
 | `npm run test` | Pass | 61 files, 477 tests (Vitest) |
 | `npm run build` | Pass | Next.js 16.1.6 (Turbopack) |
-| `npm run test:e2e:core-funnel:ci` | Pass | 12 tests (after browser install — see below) |
+| `npm run test:e2e:core-funnel:ci` | Pass | 24 tests across `chromium` + `mobile-chrome` (after browser install — see below) |
 
-**E2E toolchain note:** First local run failed with `browserType.launch: Executable doesn't exist` for Playwright Chromium (cache path empty). After `npx playwright install chromium`, **all 12** core-funnel tests passed (~3.1 min). CI typically installs browsers during setup; document this for fresh clones so contributors do not assume a green path without `playwright install`.
+**E2E toolchain note:** First local run failed with `browserType.launch: Executable doesn't exist` for Playwright Chromium (cache path empty). After `npx playwright install chromium`, **all 24** core-funnel tests passed (desktop + mobile viewport). CI typically installs browsers during setup; document this for fresh clones so contributors do not assume a green path without `playwright install`.
 
 ### audit-explore — PRD, security, funnel
 
@@ -1038,7 +1038,7 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | Cron / admin auth | `src/app/api/cron/daily/route.ts` and `weather-digest/route.ts` require `CRON_SECRET` + `Authorization: Bearer`; `api/stats` and admin session use `ADMIN_SECRET` — server-only env, not exposed to client | Info |
 | Prior backlog | BUG-071 (Redis-backed rate limits in prod) remains a deployment concern if production still uses in-memory limits | Backlog (see Mar 9 QA) |
 | Doc drift | `PRODUCT_DEEP.md` §6 still references `AIAssistant.tsx`; implementation uses `AIAssistantWithBoundary` + dynamic import from `ClientComponents.tsx` | Low |
-| Funnel coverage | E2E core funnel (`arrival-decision-flow`, `discover-plan`, `plan-book`, `bookings`, `locale-prefixed-route`) — **12/12** after browser install | Info |
+| Funnel coverage | E2E core funnel (`arrival-decision-flow`, `discover-plan`, `plan-book`, `bookings`, `locale-prefixed-route`) — **24/24** across `chromium` + `mobile-chrome` after browser install | Info |
 
 ### ux-polish — overlays + Plan/Book mobile matrix
 
@@ -1046,7 +1046,7 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 |------|---------|----------|
 | Overlay stack | `ClientComponents.tsx`: CookieConsentBanner mounts immediately after hydration; AI + OnboardingModal deferred to `window.load` to protect LCP — aligns with performance goals | Info |
 | Blocking overlays | `useBlockingOverlaysActive` + `data-overlay` on cookie/onboarding — consistent with prior UX hardening | Info |
-| Mobile matrix | `playwright.config.ts` uses a single project: **Desktop Chrome** (`devices["Desktop Chrome"]`). Touch targets / BottomNav / safe-area overlap for Plan/Book are **not** exercised by this E2E suite — manual or additional mobile projects needed per `docs/UX_UI_RESPONSIVE_MATRIX.md` | Medium (coverage gap) |
+| Mobile matrix | `playwright.config.ts` runs the core funnel on **Desktop Chrome** and **mobile-chrome** (`Pixel 7`). Touch targets / BottomNav / safe-area coverage now has Playwright smoke coverage, with broader manual matrix still tracked in `docs/UX_UI_RESPONSIVE_MATRIX.md` | Info |
 
 ### seo-copywriter — sample locale pages
 
@@ -1061,11 +1061,34 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | ID | Source | Issue | File / action |
 |----|--------|-------|----------------|
 | BUG-077 | shell | Fresh machine: core-funnel E2E fails until `npx playwright install chromium` (or full `playwright install`) — add to onboarding / `docs/QA_PLAN.md` or optional `postinstall` | Process |
-| BUG-078 | ux | E2E only Desktop Chrome — Plan/Book mobile matrix not automated; consider Playwright mobile viewport project for smoke | `playwright.config.ts` (fixed: `Pixel 7` / `mobile-chrome`) |
+| BUG-078 | ux | Core-funnel E2E lacked mobile viewport — Plan/Book mobile matrix not automated | `playwright.config.ts` + `e2e/discover-plan.spec.ts` (fixed: `Pixel 7` / `mobile-chrome`, BottomNav Plan assertion) |
 | BUG-079 | audit | `PRODUCT_DEEP.md` §6 path references legacy `AIAssistant.tsx` | Doc update |
 
 ### Fix status (May 9, 2026)
 
 - Automated gate: **lint, typecheck, test, build** — all pass.
-- **Core-funnel E2E:** **12/12** pass after local Playwright Chromium install.
+- **Core-funnel E2E:** **24/24** pass after local Playwright Chromium install.
 - BUG-077–079: **Fixed** — `npm run test:e2e:install` + QA_PLAN prerequisites (BUG-077); `playwright.config.ts` **mobile-chrome** project (`Pixel 7`, Chromium viewport) for core-funnel specs only — avoids WebKit-only install/crash in constrained envs (BUG-078); `PRODUCT_DEEP.md` §6 AI paths updated (BUG-079).
+
+---
+
+## UX/UI Refinement Program — May 16, 2026
+
+*Full implementation per platform refinement plan: `HubFooter`, `DetailActionFooter`, overlay a11y, home IA, discover map tab, i18n keys. See `docs/UX_PATTERNS.md` and `docs/QA_PLAN.md` (hub footer / funnel parity row).*
+
+### Automated baseline
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| `npm run lint` | Pass | |
+| `npm run build` | Pass | Next.js production build |
+| `npm run test` | Pass | 478 Vitest (prior run) |
+| `npm run i18n:validate` | Pass | After syncing 24 UX keys to `el`, `de`, `pl` |
+| `npm run test:e2e:local` (UX subset) | Pass | 10/10 — `hub-footer`, `overlay-precedence`, `discover-detail`, `discover-plan` |
+
+### Backlog / watch
+
+| ID | Area | Issue | Severity |
+|----|------|-------|----------|
+| BUG-080 | E2E | `arrival-decision-flow` desktop hero → `/airport` navigation occasionally flaky | Fixed — `scrollIntoViewIfNeeded` + `waitForURL` race; **35/35** full suite May 16 |
+| — | i18n | New strings added to all locales; DE/PL copy is functional—native polish pass optional | Info |

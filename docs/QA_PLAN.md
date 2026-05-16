@@ -22,6 +22,13 @@
 
 **E2E prerequisites (first clone / clean machine):** Playwright does not ship browser binaries with `npm ci`. Before running any Playwright command, run **`npm run test:e2e:install`** (installs Chromium for desktop and mobile-viewport projects). If you see `browserType.launch: Executable doesn't exist`, run that script. Linux CI uses `playwright install --with-deps chromium` in `.github/workflows/ci.yml`; local Linux may need system deps (`npx playwright install-deps`). Full E2E (`test:e2e:ci`) installs all browsers including WebKit.
 
+**Corporate firewall / VPN (local dev only):** `npx playwright install` must reach Playwright’s browser CDN over **HTTPS (443)**. Allow outbound access to at least:
+
+- `cdn.playwright.dev` — primary browser archive CDN (see [Playwright: Install behind a firewall or a proxy](https://playwright.dev/docs/browsers#install-behind-a-firewall-or-a-proxy))
+- `storage.googleapis.com` — **Chrome for Testing / headless shell** bundles are often fetched from paths under `chrome-for-testing-public` (same install step; observed when the CDN mirrors or falls back)
+
+Hosts and exact URLs can change between Playwright releases; if allowlisting is strict, re-check after upgrades or use `PLAYWRIGHT_DOWNLOAD_HOST` / an internal mirror per upstream docs. **CI:** GitHub Actions already runs `npx playwright install --with-deps chromium` (core funnel) and `npx playwright install --with-deps` (full E2E) in `.github/workflows/ci.yml` — no workflow change required for this allowlist; it applies to locked-down developer machines and self-hosted runners behind a firewall.
+
 | Check | Command | Coverage | Notes |
 |-------|---------|----------|-------|
 | **Lint** | `npm run lint` | Style, unused vars, imports | Fix all before manual QA |
@@ -54,6 +61,8 @@
 | **AI chat** | Open → type/speak → suggestions → retry on error | Focus trap, safe area, rate limit UX |
 | **Search** | Nav → Search → query → results | Empty query, no results, links |
 | **Airport** | Arriving page, transport, tips | Content accuracy, links |
+| **Hub footer → Ask AI** | Beaches (or other hub) footer → Ask AI | `e2e/hub-footer.spec.ts`; Cyprus Guide dialog opens after cookie/onboarding dismissed |
+| **UX funnel footer parity** | Hubs use `HubFooter` (Plan + Ask AI); discover/trail detail use `DetailActionFooter` (Navigate + Add to plan + Ask AI) | `docs/UX_PATTERNS.md`; sticky place bars respect `footer-sentinel` |
 
 ### 2.4 Edge Cases & Error Paths
 

@@ -9,10 +9,15 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
+import { Plus } from "lucide-react";
+import { useItinerary } from "@/hooks/useItinerary";
 import { useTranslations } from "next-intl";
 
 export default function AttractionCard({ a }: { a: Attraction | Winery | Restaurant }) {
   const tCommon = useTranslations("common");
+  const { days, hydrated, addToDayIfMissing } = useItinerary();
+  const allIds = Object.values(days ?? {}).flat();
+  const isInItinerary = hydrated && allIds.includes(a.id);
   const typeColors: Record<string, string> = {
     beach: "bg-aegean/20 text-aegean",
     ancient: "bg-terracotta/20 text-terracotta",
@@ -101,7 +106,9 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           </div>
         </div>
       </AppLink>
-      <div className={`${CARD.footer} flex flex-wrap items-center gap-3`}>
+      <div
+        className={`${CARD.footer} flex flex-col max-sm:items-stretch sm:flex-row sm:flex-wrap sm:items-center gap-3 [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto`}
+      >
         {isWinery && (
           <AppLink
             href={`/book/winery/${a.id}`}
@@ -114,6 +121,16 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
         <TrackOnClick event="plan_add" properties={{ placeId: a.id, source: "attraction_card" }}>
           <AddToItineraryButton placeId={a.id} className="text-sm" />
         </TrackOnClick>
+        {hydrated && !isInItinerary && (
+          <button
+            type="button"
+            onClick={() => addToDayIfMissing(a.id)}
+            className="hidden sm:inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg border border-sand-200/80 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
+            aria-label={`${tCommon("addToPlan")}: ${a.name}`}
+          >
+            <Plus className="h-5 w-5" aria-hidden />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -34,9 +34,11 @@ test.describe("Arrival decision flow", () => {
 
     const airportCta = page.getByTestId("home-hero-airport-cta");
     await expect(airportCta).toBeVisible();
-    await airportCta.click({ force: true });
-
-    await expect(page).toHaveURL(/\/airport/);
+    await airportCta.scrollIntoViewIfNeeded();
+    await Promise.all([
+      page.waitForURL(/\/airport/, { timeout: 20_000 }),
+      airportCta.click(),
+    ]);
     await expect(page.getByRole("main")).toBeVisible();
 
     const picker = page.locator(

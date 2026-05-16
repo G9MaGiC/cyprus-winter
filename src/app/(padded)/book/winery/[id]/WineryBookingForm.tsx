@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
-import { CTA, TYPE } from "@/lib/design-tokens";
+import { CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
@@ -140,7 +140,7 @@ export default function WineryBookingForm({
             <>
               {" "}
               {t("success.crossDevicePrefix")}{" "}
-              <AppLink href="/bookings" className="text-terracotta underline hover:no-underline">
+              <AppLink href="/bookings" className={SECTION.aegeanLink}>
                 {tBookings("title")}
               </AppLink>{" "}
               {t("success.crossDeviceSuffix")}
@@ -150,11 +150,14 @@ export default function WineryBookingForm({
         <p className="text-olive/70 text-sm mt-3 break-words">
           {t("success.tip")}
         </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <AppLink href="/bookings" className={CTA.primaryCompact}>
+        <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
+          <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
+            {tCommon("viewPlan")}
+          </AppLink>
+          <AppLink href="/bookings" className={`${CTA.secondaryCompact} justify-center`}>
             {t("success.ctaBookings")}
           </AppLink>
-          <AppLink href="/discover" className={CTA.secondaryCompact}>
+          <AppLink href="/discover" className={`${CTA.secondaryCompact} justify-center`}>
             {t("success.ctaDiscover")}
           </AppLink>
         </div>

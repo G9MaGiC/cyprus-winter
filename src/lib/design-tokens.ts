@@ -49,21 +49,41 @@ export const BOTTOM_NAV = {
   height: "4.5rem",
   /** For use in Tailwind: bottom-[...] or pb-[...] with env(safe-area-inset-bottom) */
   clearance: "calc(4.5rem+env(safe-area-inset-bottom))",
+  /** Gap between BottomNav and mobile sticky CTAs (height + gap = 5.5rem). */
+  stickyGap: "1rem",
+  stickyClearance: "calc(5.5rem+env(safe-area-inset-bottom))",
+  stickyClearanceWithCookie:
+    "calc(5.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))",
 } as const;
 
 /** Nav bar height (h-14) + safe area. Use for spacing content below fixed nav. */
 export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
 
-/** Layering scale — keeps overlays/banners predictable. */
+/**
+ * Layering scale — keeps overlays/banners predictable.
+ * Component mapping (prefer these over ad-hoc z-index):
+ * - chrome: Nav, BottomNav (`z-40`)
+ * - popover: home skip nav, menus (`z-[45]`)
+ * - modal: AI assistant panel when open (`z-50`)
+ * - cookieBanner: CookieConsentBanner (`z-[90]`)
+ * - onboarding: OnboardingModal (`z-[100]`)
+ * - stickyPlaceBar: StickyAddToPlanBar, TrailDetailStickyActions (`z-30`–`z-40`)
+ */
 export const LAYER = {
-  /** Persistent chrome like `BottomNav` and cookie banner. */
+  /** Persistent chrome like `BottomNav`. */
   chrome: "z-40",
-  /** Popovers/menus/tooltips that should sit above chrome but below modals. */
+  /** Popovers/menus/tooltips above chrome, below modals. */
   popover: "z-[45]",
-  /** Standard modal/dialog overlay. */
+  /** Standard modal/dialog (e.g. AI assistant panel). */
   modal: "z-50",
-  /** Topmost global overlays (e.g. AI assistant) that must beat banners. */
+  /** Reserved for future top overlays; cookie/onboarding use dedicated tokens below. */
   topOverlay: "z-[70]",
+  /** Cookie consent banner — above chrome, below onboarding. */
+  cookieBanner: "z-[90]",
+  /** First-run onboarding sheet — top of blocking stack. */
+  onboarding: "z-[100]",
+  /** Mobile sticky place actions below nav, above content. */
+  stickyPlaceBar: "z-30",
 } as const;
 
 /** Max-width and structural layout classes. */
@@ -78,14 +98,19 @@ export const LAYOUT = {
   mainPaddingBottom: "pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0",
   /** Fixed/sticky bottom — for elements above bottom nav. Use with fixed. */
   fixedBottomClearance: "bottom-[calc(4.5rem+env(safe-area-inset-bottom))]",
-  /** Footer section bottom padding — clears bottom nav on mobile. */
-  footerBottomClearance: "pb-[calc(4.5rem+env(safe-area-inset-bottom))] sm:pb-0",
+  /** Footer section bottom padding — clears bottom nav until md (matches BottomNav). */
+  footerBottomClearance: "pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0",
   /** Hero content overlay top padding — clears nav with extra buffer. */
   heroContentTop: "pt-[calc(4.5rem+env(safe-area-inset-top,0px))]",
   /** Fixed bar above bottom nav — for bars that stack (e.g. trail actions). */
   fixedBottomAboveNav: "bottom-[calc(5.5rem+env(safe-area-inset-bottom))]",
+  /** Fixed mobile CTA above BottomNav + cookie offset (use with md:hidden). */
+  fixedBottomAboveNavCookie:
+    "bottom-[calc(5.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))]",
   /** Same as fixedBottomAboveNav, but only on mobile (max-md). */
   fixedBottomAboveNavMaxMd: "max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))]",
+  /** Hide fixed mobile chrome when desktop nav replaces BottomNav. */
+  mobileBottomChromeHidden: "md:hidden",
   list: "max-w-5xl",
   listNarrow: "max-w-4xl",
   /** Horizontal padding with safe area (notch devices). Use with px-6 equivalent. */

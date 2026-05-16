@@ -6,6 +6,7 @@ import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
+import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -32,9 +33,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SecretsPage() {
-  const [tNav, tSecrets] = await Promise.all([
+  const [tNav, tSecrets, tDiscover] = await Promise.all([
     getTranslations("nav"),
     getTranslations("secrets.page"),
+    getTranslations("discover"),
   ]);
   const typeLabels: Record<string, string> = {
     viewpoint: tSecrets("types.viewpoint"),
@@ -112,15 +114,13 @@ export default async function SecretsPage() {
         })}
       </div>
       )}
-      <div className={`${SECTION.footerBlock} relative`}>
-        <span id="secrets-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-          {tSecrets("footer.prefix")}{" "}
-          <AppLink href="/plan" className={SECTION.aegeanLink}>
-            {tSecrets("footer.planLink")}
-          </AppLink>
-        </p>
-      </div>
+      <span id="secrets-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <HubFooter
+        body={tSecrets("footer.hubBody")}
+        ariaLabel={tSecrets("aria.actions")}
+        askAiLabel={tDiscover("footer.askAi")}
+        askAiAriaLabel={tDiscover("aria.askAi")}
+      />
       <StickyPlanBarBlock sentinelId="secrets-plan-sentinel" />
     </div>
   );

@@ -6,12 +6,12 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useRouter } from "@/i18n/navigation";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
-import { CTA, CARD, TYPE, PILL, TRANSITION } from "@/lib/design-tokens";
+import { CTA, CARD, TYPE, PILL, TRANSITION, LAYER } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
 
@@ -61,17 +61,26 @@ function handleIntent(
   // browsing: stay on home
 }
 
+function shouldSkipOnboardingPath(pathname: string | null): boolean {
+  if (!pathname) return false;
+  if (pathname === "/plan" || pathname.startsWith("/plan/")) return true;
+  if (pathname.startsWith("/book/") || pathname.includes("/book/")) return true;
+  return false;
+}
+
 export default function OnboardingModal() {
   const router = useRouter();
+  const pathname = usePathname();
   const t = useTranslations("onboarding");
   const { showOnboarding, dismiss, isClient } = useOnboarding();
+  const skipRoute = shouldSkipOnboardingPath(pathname);
   const [visible, setVisible] = useState(false);
   const [ready, setReady] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!isClient || !showOnboarding) return;
+    if (!isClient || !showOnboarding || skipRoute) return;
     const timer = setTimeout(() => setReady(true), DELAY_MS);
 
     const onScroll = () => {
@@ -82,11 +91,11 @@ export default function OnboardingModal() {
       clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [isClient, showOnboarding]);
+  }, [isClient, showOnboarding, skipRoute]);
 
   const hasTrackedStarted = useRef(false);
   useEffect(() => {
-    if (!ready || !showOnboarding) return;
+    if (!ready || !showOnboarding || skipRoute) return;
     const raf = requestAnimationFrame(() => {
       setVisible(true);
       if (!hasTrackedStarted.current) {
@@ -95,7 +104,7 @@ export default function OnboardingModal() {
       }
     });
     return () => cancelAnimationFrame(raf);
-  }, [ready, showOnboarding]);
+  }, [ready, showOnboarding, skipRoute]);
 
   // Move focus into the onboarding panel when it becomes visible and restore on dismiss
   useEffect(() => {
@@ -114,7 +123,9 @@ export default function OnboardingModal() {
 
   useEffect(() => {
     dispatchBlockingOverlayDirty();
-  }, [visible, showOnboarding]);
+  }, [visible, showOnboarding, skipRoute]);
+
+  const blockingActive = showOnboarding && !skipRoute;
 
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");
@@ -122,17 +133,18 @@ export default function OnboardingModal() {
     previouslyFocusedRef.current?.focus?.();
   }, [dismiss]);
 
-  if (!isClient || !showOnboarding) return null;
+  if (!isClient || !showOnboarding || skipRoute) return null;
 
   return (
     <div
       data-overlay-priority="blocking"
-      data-overlay-active={visible ? "true" : "false"}
-      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] z-[100] transition-all ${TRANSITION.medium} ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+      data-overlay-active={blockingActive ? "true" : "false"}
+      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] ${LAYER.onboarding} transition-all ${TRANSITION.medium} ease-out ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
       }`}
       role="dialog"
-      aria-modal="true"
+      aria-modal={visible}
+      aria-hidden={!visible}
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-description"
     >

@@ -9,6 +9,7 @@ import AppLink from "@/components/AppLink";
 import { useState, useEffect, useSyncExternalStore } from "react";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { cn } from "@/lib/utils";
+import AskAIButton from "@/components/AskAIButton";
 import { useTranslations } from "next-intl";
 
 interface ErrorStateProps {
@@ -19,6 +20,7 @@ interface ErrorStateProps {
   showHomeLink?: boolean;
   className?: string;
   icon?: "error" | "warning" | "rate-limit" | "network";
+  askAI?: boolean;
 }
 
 /** Minimal accent bar per icon type — no emojis (UX persona) */
@@ -35,6 +37,7 @@ export function ErrorState({
   showHomeLink = true,
   className,
   icon = "error",
+  askAI = false,
 }: ErrorStateProps) {
   const tErrors = useTranslations("errors");
   const tCommon = useTranslations("common");
@@ -59,20 +62,23 @@ export function ErrorState({
       <p className={`text-sm text-olive/80 ${SECTION.headingGap} max-w-md mx-auto break-words`}>
         {message}
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+      <div className="flex flex-col sm:flex-row gap-3 justify-center [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">
         {retry && (
           <button
             type="button"
             onClick={retry}
-            className={`${CTA.primaryCompact} min-h-[44px]`}
+            className={`${CTA.primaryCompact} min-h-[44px] justify-center`}
           >
             {resolvedRetryLabel}
           </button>
         )}
+        {askAI && (
+          <AskAIButton className={`${CTA.secondaryCompact} min-h-[44px] w-full sm:w-auto justify-center`} />
+        )}
         {showHomeLink && (
           <AppLink
             href="/"
-            className={`${CTA.secondaryCompact} min-h-[44px]`}
+            className={`${CTA.secondaryCompact} min-h-[44px] justify-center`}
           >
             {tCommon("goHome")}
           </AppLink>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
+import { LAYER, LAYOUT } from "@/lib/design-tokens";
 
 type StickyAddToPlanBarProps = {
   placeId: string;
@@ -63,7 +64,7 @@ export default function StickyAddToPlanBar({
 
   return (
     <div
-      className={`fixed left-0 right-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom)+var(--cw-cookie-banner-offset,0px))] z-30 flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 sm:hidden`}
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 ${LAYOUT.mobileBottomChromeHidden}`}
       role="complementary"
       aria-label={label}
     >

@@ -7,6 +7,7 @@ import SearchBar from "@/components/SearchBar";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SearchResultCard from "@/components/SearchResultCard";
+import AskAIButton from "@/components/AskAIButton";
 import { search } from "@/lib/search";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -98,6 +99,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <AppLink href="/plan" className={`${CTA.chipTertiary} rounded-xl`}>
               {tSearch("planTrip")}
             </AppLink>
+            <AskAIButton className={`${CTA.chipTertiary} rounded-xl min-h-[44px]`} />
           </div>
         </div>
       )}

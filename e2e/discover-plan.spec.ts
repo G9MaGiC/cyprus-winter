@@ -35,22 +35,23 @@ test.describe("Discover -> Plan", () => {
     await expect(page.getByRole("main")).toContainText(/Day 1|your plan|places/i);
   });
 
-  test("contract: discover exposes add-to-plan buttons", async ({ page }) => {
+  test("contract: discover exposes add-to-plan buttons", async ({ page }, testInfo) => {
     await gotoStable(page, "/discover");
     await expect(page.getByRole("main")).toBeVisible();
 
-    // Top nav Plan may be hidden on small viewports (overflow menu); BottomNav Plan is visible on mobile.
-    // Desktop has no bottom bar (md:hidden). Assert at least one /plan link is visible.
-    const planAnchors = page.locator('a[href*="/plan"]');
-    await expect(planAnchors.first()).toBeAttached();
-    await expect(async () => {
-      const n = await planAnchors.count();
-      expect(n).toBeGreaterThan(0);
-      for (let i = 0; i < n; i++) {
-        if (await planAnchors.nth(i).isVisible()) return;
-      }
-      throw new Error("no visible Plan link");
-    }).toPass();
+    const bottomNav = page.getByRole("navigation", { name: /bottom navigation/i });
+
+    if (testInfo.project.name === "mobile-chrome") {
+      await expect(bottomNav).toBeVisible();
+      await expect(bottomNav.getByRole("link", { name: /^plan$/i })).toBeVisible();
+      return;
+    }
+
+    await expect(bottomNav).not.toBeVisible();
+    // Hero / filter CTAs use locale-aware AppLink; match by accessible name, not exact href.
+    await expect(
+      page.getByRole("main").getByRole("link", { name: /Plan your trip|Build a day/i }).first()
+    ).toBeVisible({ timeout: 15_000 });
   });
 
   test("resilience: back navigation from plan returns to discover context", async ({ page }) => {

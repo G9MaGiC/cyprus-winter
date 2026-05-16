@@ -1,13 +1,13 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { useTranslations } from "next-intl";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
-import { LAYOUT } from "@/lib/design-tokens";
+import { CTA, LAYOUT } from "@/lib/design-tokens";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { sortDiscoverItemsByInterests } from "@/lib/personalization";
 import { filterToSectionId } from "@/lib/discover-sections";
@@ -43,6 +43,7 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
     }));
   }, [sections, filter, sectionExists, hydrated, prefs.interests]);
 
+  const [viewMode, setViewMode] = useState<"list" | "map">("list");
   const firstSectionRef = useRef<HTMLElement | null>(null);
   const hasWineriesInView = sectionsToShow.some((s) =>
     s.items.some((i) => "type" in i && i.type === "winery")
@@ -116,13 +117,61 @@ export default function DiscoverClient({ sections, children }: DiscoverClientPro
           {tDiscover("page.curatedLine")}
         </p>
 
-        <DiscoverSectionList ref={firstSectionRef} sections={sectionsToShow} />
+        <div
+          role="tablist"
+          aria-label={tDiscover("page.viewTabs.aria")}
+          className="flex gap-2 pb-4"
+        >
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === "list"}
+            aria-controls="discover-list-panel"
+            id="discover-tab-list"
+            onClick={() => setViewMode("list")}
+            className={`min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
+              viewMode === "list" ? CTA.chipPrimary : CTA.chipTertiary
+            }`}
+          >
+            {tDiscover("page.viewTabs.list")}
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={viewMode === "map"}
+            aria-controls="discover-map"
+            id="discover-tab-map"
+            onClick={() => {
+              setViewMode("map");
+              scrollToMap();
+            }}
+            className={`min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
+              viewMode === "map" ? CTA.chipPrimary : CTA.chipTertiary
+            }`}
+          >
+            {tDiscover("page.viewTabs.map")}
+          </button>
+        </div>
 
-        {children}
+        {viewMode === "list" ? (
+          <div
+            id="discover-list-panel"
+            role="tabpanel"
+            aria-labelledby="discover-tab-list"
+          >
+            <DiscoverSectionList ref={firstSectionRef} sections={sectionsToShow} />
+          </div>
+        ) : (
+          <div role="tabpanel" aria-labelledby="discover-tab-map">
+            {children}
+          </div>
+        )}
 
-        <RightNowNearYou title={tDiscover("page.rightNowTitle")} />
+        {viewMode === "list" ? (
+          <RightNowNearYou title={tDiscover("page.rightNowTitle")} />
+        ) : null}
 
-        <DiscoverFooter onScrollToMap={scrollToMap} />
+        <DiscoverFooter onScrollToMap={viewMode === "list" ? scrollToMap : undefined} />
       </div>
     </div>
   );

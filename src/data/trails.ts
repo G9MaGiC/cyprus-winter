@@ -52,7 +52,7 @@ export type TrailConditions = {
   surface: TrailSurface;
   temperatureC?: number;
   windKmh?: number;
-  lastReportedAt: string;
+  lastReportedAt?: string;
   tip?: string;
 };
 
@@ -1508,14 +1508,12 @@ export const trailConditions: Record<string, TrailConditions> = {
     surface: "dry",
     temperatureC: 17,
     windKmh: 8,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Start by 9am. The morning light on the eastern ridge is worth it. Pack layers; ridges stay cooler than Platres.",
   },
   "caledonia-falls": {
     trailId: "caledonia-falls",
     status: "open",
     surface: "dry",
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Strong flow after winter rains. Rocks near the falls stay slippery—watch footing.",
   },
   atalante: {
@@ -1523,7 +1521,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 17,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Good conditions. Weekends get busier; arrive before 10 and you'll have the trail to yourself for the first hour.",
   },
   persephone: {
@@ -1531,7 +1528,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
   },
   "olympus-summit": {
     trailId: "olympus-summit",
@@ -1539,7 +1535,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     surface: "dry",
     temperatureC: 11,
     windKmh: 22,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Late spring: summit usually snow-free but stays cold and windy. Early mornings can hold frost on shaded rocks.",
   },
   adonis: {
@@ -1547,7 +1542,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 21,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Pleasant coastal walk. The Baths of Aphrodite café at the trailhead does a good post-hike coffee.",
   },
   aphrodite: {
@@ -1555,14 +1549,12 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 17,
-    lastReportedAt: "2026-05-09T12:00:00Z",
   },
   "avakas-gorge": {
     trailId: "avakas-gorge",
     status: "open",
     surface: "dry",
     temperatureC: 16,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Gorge is dry. Rock surfaces can still be slippery in places. Good grip shoes. Take your time. The drama of the slot is worth it.",
   },
   "millomeris-falls": {
@@ -1570,7 +1562,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 13,
-    lastReportedAt: "2026-05-09T12:00:00Z",
   },
   horteri: {
     trailId: "horteri",
@@ -1578,7 +1569,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     surface: "dry",
     temperatureC: 11,
     windKmh: 12,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Upper section cooler. Pack warm layer.",
   },
   "cape-greco": {
@@ -1586,7 +1576,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 19,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Ideal winter coastal hike. Sea caves accessible.",
   },
   "caledonia-alternative": {
@@ -1594,7 +1583,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Full day—start early. Valley sections can turn muddy after rain; boots still wise.",
   },
   "madari-ridge": {
@@ -1603,7 +1591,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     surface: "dry",
     temperatureC: 12,
     windKmh: 18,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Windy on the ridge; bring a layer. Visibility is excellent today. The fire watchtower views are the reward.",
   },
   "petra-tou-romiou": {
@@ -1612,7 +1599,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     surface: "dry",
     temperatureC: 19,
     windKmh: 10,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Ideal coastal winter walk. Stay back from the waterline on days with big swell.",
   },
   smigies: {
@@ -1620,7 +1606,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 17,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Ideal Akamas winter hike. Combine with Kolios or Sterna winery and Polis for lunch.",
   },
   "stavros-tis-psokas": {
@@ -1628,7 +1613,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 15,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Remote and quiet. Road can be rough; check conditions before driving.",
   },
   "kampos-tou-livadiou": {
@@ -1636,7 +1620,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Family-friendly. Spring green; peaks above stay cooler.",
   },
   pissouromoutti: {
@@ -1644,7 +1627,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 17,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Short loop from Smigies. Combine with Vasilikon and Polis for lunch.",
   },
   "e4-troodos-platres": {
@@ -1652,7 +1634,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 12,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Point-to-point; arrange transport. Check conditions in deep winter.",
   },
   "vavatsinia-honeybee": {
@@ -1660,7 +1641,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Family-friendly. Bee-themed trail. Combine with Lefkara or Choirokoitia.",
   },
   "vouni-panagias": {
@@ -1668,7 +1648,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 16,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Combine with Vouni Panayia winery for a full Laona day.",
   },
   "mnimata-piskopon": {
@@ -1676,7 +1655,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Linear trail; arrange transport at both ends. Connects to Kampos tou Livadiou.",
   },
   "kryos-potamos-loop": {
@@ -1684,7 +1662,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Stream banks stay damp after rain. Combines well with Psilo Dendro for lunch.",
   },
   "loumata-ton-aeton": {
@@ -1692,7 +1669,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Linear; arrange transport. Short but characterful.",
   },
   "panagia-tis-amasgou": {
@@ -1700,7 +1676,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 15,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Family-friendly. Combine with Krasochoria wineries.",
   },
   "xyliatos-dam": {
@@ -1708,7 +1683,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 13,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Easy loop. Dam views. About 50 min from Nicosia.",
   },
   "selladi-stavros": {
@@ -1716,7 +1690,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 13,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Check forecast—summits can still be chilly outside midsummer.",
   },
   "machairas-forest": {
@@ -1724,7 +1697,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 12,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Combine with Machairas Monastery and Agros.",
   },
   "horteri-extended": {
@@ -1732,7 +1704,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Quieter than Artemis. Platres trout after.",
   },
   "agia-irini": {
@@ -1740,7 +1711,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 16,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Point-to-point; arrange transport. Dramatic gorge.",
   },
   "livadi-trail": {
@@ -1748,7 +1718,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Family-friendly. Gentle Troodos loop while peaks stay cooler.",
   },
   mylikouri: {
@@ -1756,7 +1725,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Kakopetria trout after.",
   },
   "persephone-extended": {
@@ -1764,7 +1732,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Platres nearby.",
   },
   "dwarf-oaks": {
@@ -1772,7 +1739,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 12,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Short and gentle. Family-friendly.",
   },
   "lefkara-path": {
@@ -1780,7 +1746,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 15,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Village to village. Zygi for fish after.",
   },
   "potamia-dam": {
@@ -1788,7 +1753,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Dam and birdlife. Agros for loukoumi.",
   },
   kionia: {
@@ -1796,7 +1760,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Solid half-day. Platres trout.",
   },
   "trees-of-woe": {
@@ -1804,7 +1767,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Historic trail. Platres or Kakopetria after.",
   },
   "kalidonia-alt": {
@@ -1812,7 +1774,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 13,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "After rain, muddy patches linger—waterproof boots still smart.",
   },
   pentadaktylos: {
@@ -1820,7 +1781,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Check access. Bellapais and St Hilarion nearby.",
   },
   "larnaca-salt-lake": {
@@ -1828,7 +1788,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 16,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Flamingos in winter. Birdwatchers' favourite.",
   },
   almirolivado: {
@@ -1836,7 +1795,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 8,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "King of winter trails. Lake appears after snow/rain. Go with someone who knows it.",
   },
   "vretsia-roudias": {
@@ -1844,7 +1802,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Abandoned village and Venetian bridge. Remote Paphos forest.",
   },
   chrysovrysi: {
@@ -1852,7 +1809,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 10,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Hidden in plain sight. One hour out-and-back. Best in winter.",
   },
   "kavos-trail": {
@@ -1860,7 +1816,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 18,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Quarry, fossils, cliff views. Quieter than Cyclops.",
   },
   "moutti-anemwn": {
@@ -1868,7 +1823,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 15,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Peak of Winds. Remote Paphos. Check GPS near end.",
   },
   "politiko-machairas": {
@@ -1876,7 +1830,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 12,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Magical after rain. Afxentiou hideout and Machairas Monastery.",
   },
   "agia-tilliria": {
@@ -1884,7 +1837,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Distinct landscape. Kato Pyrgos area. Sea views from forest.",
   },
   ariadni: {
@@ -1892,7 +1844,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 10,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Exposed ridgeline. Best in winter. Kavallos fire tower views.",
   },
   "moutti-athasias": {
@@ -1900,7 +1851,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 13,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Local favourite. Cave at end. Do not enter cave.",
   },
   gnafkio: {
@@ -1908,7 +1858,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 9,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Greenest trail in Cyprus. Moss and forest. Near Panthea.",
   },
   panthea: {
@@ -1916,7 +1865,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 9,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Refuge at start. Ridgeline views. Park cars at both ends for one-way.",
   },
   "kionia-profitis-elias": {
@@ -1924,7 +1872,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 11,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "E4 trail. Arrange car at both ends. Charcoal kilns, abandoned monastery.",
   },
   "kykkos-konizi": {
@@ -1932,7 +1879,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 8,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Do not hike alone. Very difficult. Winter preferred.",
   },
   "selladi-trypilos": {
@@ -1940,7 +1886,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 10,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Cedar Valley. Limited parking. 360° views from fire tower.",
   },
   "mesa-potamos": {
@@ -1948,7 +1893,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Family-friendly. Waterfall and monastery. Krasochoria nearby.",
   },
   stavrovouni: {
@@ -1956,7 +1900,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 15,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Exposed—best in winter. Go clockwise. Combine with Agia Varvara for 10 km.",
   },
   "agia-varvara-stavrovouni": {
@@ -1964,7 +1907,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 15,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Steep ascent. Avoid wooden steps when wet. Thirty min from Larnaca.",
   },
   karvounarka: {
@@ -1972,7 +1914,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 12,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Combine with Moutti tis Athasias for cave + forest. Vavatsinia for lunch.",
   },
   "cape-aspro": {
@@ -1980,7 +1921,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 17,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "White cliffs. No shade—ideal in winter. Different kind of hike.",
   },
   "germasogeia-kyparissia": {
@@ -1988,7 +1928,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 14,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Bring plenty of water. Krasochoria wineries nearby.",
   },
   "agioi-anargyroi-circular": {
@@ -1996,7 +1935,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 18,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Quieter than Cyclops. Combine with Sea Caves for coastal day.",
   },
   "sea-caves-anargyroi": {
@@ -2004,7 +1942,6 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 18,
-    lastReportedAt: "2026-05-09T12:00:00Z",
     tip: "Winter = fewer crowds. Sea caves and Kamara tou Koraka.",
   },
 };

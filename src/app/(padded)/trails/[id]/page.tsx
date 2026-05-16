@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
+import { getPlaceById } from "@/data";
 import { trails, trailConditions } from "@/data/trails";
+import DetailActionFooter from "@/components/DetailActionFooter";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
@@ -10,10 +12,8 @@ import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
-import AddToItineraryButton from "@/components/AddToItineraryButton";
 import TrailMapClient from "@/components/TrailMapClient";
 import TrailDetailStickyActions from "@/components/TrailDetailStickyActions";
-import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatReportedAgo } from "@/lib/format";
@@ -54,10 +54,11 @@ export default async function TrailPage({
   params: Promise<{ id: string; locale?: string }>;
 }) {
   const { id, locale = "en" } = await params;
-  const [tNav, tTrailsDetail, tCommon] = await Promise.all([
+  const [tNav, tTrailsDetail, tCommon, tTrails] = await Promise.all([
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "trails.detail" }),
     getTranslations({ locale, namespace: "common" }),
+    getTranslations({ locale, namespace: "trails" }),
   ]);
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) notFound();
@@ -173,24 +174,24 @@ export default async function TrailPage({
             className="flex flex-wrap gap-x-4 gap-y-1 py-3 text-sm border-b border-sand-200/70 -mx-1 px-1 overflow-x-auto scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain"
             aria-label={tTrailsDetail("aria.jumpToSection")}
           >
-            <a href="#trail-description" className="text-aegean hover:underline">
+            <a href="#trail-description" className={`${SECTION.aegeanLink} shrink-0 snap-start`}>
               {tTrailsDetail("nav.overview")}
             </a>
-            <a href="#trail-conditions" className="text-aegean hover:underline">
+            <a href="#trail-conditions" className={`${SECTION.aegeanLink} shrink-0 snap-start`}>
               {tTrailsDetail("nav.conditions")}
             </a>
             {(trail.trailheadCoords || trail.waypoints?.some((w) => w.lat != null && w.lng != null)) && (
-              <a href="#trail-map" className="text-aegean hover:underline">
+              <a href="#trail-map" className={`${SECTION.aegeanLink} shrink-0 snap-start`}>
                 {tTrailsDetail("nav.map")}
               </a>
             )}
             {trail.waypoints && trail.waypoints.length > 0 && (
-              <a href="#trail-waypoints" className="text-aegean hover:underline">
+              <a href="#trail-waypoints" className={`${SECTION.aegeanLink} shrink-0 snap-start`}>
                 {tTrailsDetail("nav.waypoints")}
               </a>
             )}
             {trail.combineWith && trail.combineWith.length > 0 && (
-              <a href="#trail-pair-with" className="text-aegean hover:underline">
+              <a href="#trail-pair-with" className={`${SECTION.aegeanLink} shrink-0 snap-start`}>
                 {tTrailsDetail("nav.pairWith")}
               </a>
             )}
@@ -286,6 +287,9 @@ export default async function TrailPage({
                           surface: conditions.surface,
                         })}
                       </span>
+                      {!conditions.lastReportedAt && (
+                        <span className="text-olive/60">{tTrails("conditionsEditorial")}</span>
+                      )}
                     </div>
                     {conditions.tip && (
                       <p className="mt-3 text-sm text-olive/90 italic break-words">{conditions.tip}</p>
@@ -474,27 +478,21 @@ export default async function TrailPage({
               </div>
             )}
 
-            {/* Footer CTA */}
-            <footer className="pt-8 flex flex-col gap-4 relative" aria-label={tTrailsDetail("aria.trailActions")}>
-              <div id="trail-add-to-plan-sentinel" aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
-              <p className="text-xs text-olive/60 italic break-words">
-                {tCommon("trailsFooterDisclaimer")}
-              </p>
-              <p className="text-olive/70 text-sm break-words">
-                {tTrailsDetail("footer.addToPlanBody")}
-              </p>
-              <div className="flex flex-wrap gap-3" role="group" aria-label={tTrailsDetail("aria.actionsGroup")}>
-                <TrackOnClick event="plan_add" properties={{ placeId: trail.id, placeType: "trail" }}>
-                  <AddToItineraryButton placeId={trail.id} />
-                </TrackOnClick>
-                <AppLink
-                  href="/trails"
-                  className="inline-flex items-center justify-center min-h-[44px] min-w-[120px] gap-2 px-5 py-3 rounded-lg border-2 border-aegean/60 text-aegean font-medium hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  {tTrailsDetail("footer.viewAllTrails")}
-                </AppLink>
-              </div>
-            </footer>
+            <p className="text-xs text-olive/60 italic break-words pt-8">
+              {tCommon("trailsFooterDisclaimer")}
+            </p>
+            <DetailActionFooter
+              placeId={trail.id}
+              placeType="trail"
+              place={getPlaceById(trail.id)}
+              body={tTrailsDetail("footer.addToPlanBody")}
+              ariaLabel={tTrailsDetail("aria.trailActions")}
+              sentinelId="trail-add-to-plan-sentinel"
+            >
+              <AppLink href="/trails" className={CTA.secondaryCompact}>
+                {tTrailsDetail("footer.viewAllTrails")}
+              </AppLink>
+            </DetailActionFooter>
           </div>
         </article>
       </div>

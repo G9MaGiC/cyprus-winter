@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { isSafeUrl } from "@/lib/safe-url";
+import { SECTION } from "@/lib/design-tokens";
 import type { Message } from "./hooks/useAIChat";
 import { ActionButtons } from "./ActionButtons";
 import { PlaceCards } from "./PlaceCards";
@@ -67,8 +68,9 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
         )}
         {message.isRetryable && (
           <button
+            type="button"
             onClick={onRetry}
-            className="mt-2 text-xs text-olive/70 hover:text-terracotta underline"
+            className={`mt-2 ${SECTION.aegeanLink} text-xs`}
           >
             Retry
           </button>

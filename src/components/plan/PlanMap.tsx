@@ -84,7 +84,7 @@ export default function PlanMap({ items, className = "" }: PlanMapProps) {
                 <p className="text-xs text-olive/70 mb-3">{item.region}</p>
                 <AppLink
                   href={item.href}
-                  className="text-sm font-medium text-terracotta hover:underline"
+                  className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
                 >
                   View details →
                 </AppLink>

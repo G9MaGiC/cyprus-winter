@@ -152,6 +152,17 @@
     "askAI": "Zapytaj AI",
     "askAITrailsAria": "Zapytaj AI o propozycje szlaków",
     "askAIRecommendationsAria": "Zapytaj AI o rekomendacje",
+    "hubFooter": {
+      "prompt": "Dodaj miejsca do planu—lub zapytaj AI o pomysły.",
+      "aria": {
+        "actions": "Akcje strony"
+      }
+    },
+    "tripPlanSummary": {
+      "aria": "Podsumowanie planu podróży",
+      "places": "{count, plural, one {# miejsce w planie} few {# miejsca w planie} many {# miejsc w planie} other {# miejsca w planie}}",
+      "viewPlan": "Zobacz plan"
+    },
     "planYourTrip": "Zaplanuj wycieczkę",
     "winterHikingGuide": "Przewodnik po zimowych wędrówkach",
     "seeMap": "Zobacz mapę",
@@ -184,8 +195,11 @@
       "content": "Ładowanie treści"
     },
     "skipTo": {
+      "thisWeek": "Przejdź do Ten tydzień",
       "editorsPicks": "Przejdź do polecanych przez redakcję",
-      "plan": "Przejdź do Planu"
+      "plan": "Przejdź do Planu",
+      "search": "Przejdź do wyszukiwania",
+      "startHere": "Przejdź do Zacznij tutaj"
     }
     ,
     "cancel": "Anuluj",
@@ -213,6 +227,12 @@
       "explore": "Odkrywaj",
       "planTrip": "Zaplanuj wycieczkę",
       "askGuide": "Zapytaj przewodnika"
+    },
+    "tripModes": {
+      "aria": "Wybierz, jak podróżujesz",
+      "arriving": "Właśnie przyjechałem",
+      "planning": "Planowanie",
+      "exploring": "Odkrywanie"
     },
     "aria": {
       "discover": "Odkryj miejsca, wioski i winnice",
@@ -467,6 +487,11 @@
       "search": {
         "srHeading": "Szukaj miejsc",
         "placeholder": "Szukaj miejsc, szlaków, winnic…"
+      },
+      "viewTabs": {
+        "aria": "Wyświetl miejsca jako listę lub mapę",
+        "list": "Lista",
+        "map": "Mapa"
       }
     },
     "map": {
@@ -632,8 +657,12 @@
       "srHeading": "Plaże Cypru zimą",
       "footer": {
         "body": "Połącz spacer po plaży ze starożytnymi ruinami albo obiadem w górskiej wiosce.",
+        "hubBody": "Połącz spacer po plaży z ruinami lub lunchem w wiosce. Dodaj miejsca do planu—lub zapytaj AI.",
         "allPlaces": "Zobacz wszystkie miejsca",
         "planDay": "Zaplanuj dzień"
+      },
+      "aria": {
+        "actions": "Akcje strony plaż"
       }
     }
   },
@@ -654,8 +683,12 @@
       "srHeading": "Cypryjskie wioski zimą",
       "footer": {
         "body": "Połącz wizytę w wiosce ze szlakiem lub winnicą.",
+        "hubBody": "Połącz wizytę w wiosce ze szlakiem lub winnicą. Dodaj miejsca do planu—lub zapytaj AI.",
         "allPlaces": "Zobacz wszystkie miejsca",
         "planDay": "Zaplanuj dzień"
+      },
+      "aria": {
+        "actions": "Akcje strony wiosek"
       }
     }
   },
@@ -681,7 +714,11 @@
       "footer": {
         "pairingPrefix": "Połącz wizytę w winnicy ze szlakiem albo wioską.",
         "pairingLink": "Zaplanuj dzień",
-        "routesPrefix": "Poznaj szlaki wina:"
+        "routesPrefix": "Poznaj szlaki wina:",
+        "hubBody": "Połącz wizytę w winnicy ze szlakiem lub wioską. Dodaj miejsca do planu—lub zapytaj AI."
+      },
+      "aria": {
+        "actions": "Akcje strony winnic"
       }
     }
   },
@@ -689,6 +726,7 @@
     "addToPlan": "Dodaj do planu",
     "submitReport": "Wyślij raport",
     "submitting": "Wysyłanie…",
+    "conditionsEditorial": "Zimowy obraz",
     "noMatch": "Żaden szlak nie pasuje do filtrów. Spróbuj inny status, trudność lub region—albo zapytaj AI. Zna Troodos od gór po wybrzeże.",
     "allTrails": "Wszystkie szlaki",
     "askAI": "Zapytaj AI",
@@ -1814,7 +1852,11 @@
       },
       "footer": {
         "prefix": "Połącz ze szlakami i wioskami.",
-        "planLink": "Zaplanuj dzień"
+        "planLink": "Zaplanuj dzień",
+        "hubBody": "Połącz sekrety ze szlakami i wioskami. Dodaj miejsca do planu—lub zapytaj AI."
+      },
+      "aria": {
+        "actions": "Akcje strony sekretów"
       },
       "types": {
         "viewpoint": "Punkt widokowy",

@@ -3,9 +3,10 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { beaches } from "@/data/attractions";
-import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
+import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
@@ -38,6 +39,7 @@ export default async function BeachesPage() {
     getTranslations("common"),
     getTranslations("beaches.page"),
   ]);
+  const tDiscover = await getTranslations("discover");
   const beachesItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -85,19 +87,13 @@ export default async function BeachesPage() {
         ))}
       </div>
 
-      <div className={`${SECTION.footerBlock} relative`}>
-        <span id="beaches-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-        {tBeaches("footer.body")}{" "}
-        <AppLink href="/discover" className={SECTION.aegeanLink}>
-          {tBeaches("footer.allPlaces")}
-        </AppLink>
-        {" · "}
-        <AppLink href="/plan" className={SECTION.aegeanLink}>
-          {tBeaches("footer.planDay")}
-        </AppLink>
-      </p>
-      </div>
+      <span id="beaches-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <HubFooter
+        body={tBeaches("footer.hubBody")}
+        ariaLabel={tBeaches("aria.actions")}
+        askAiLabel={tDiscover("footer.askAi")}
+        askAiAriaLabel={tDiscover("aria.askAi")}
+      />
       <StickyPlanBarBlock sentinelId="beaches-plan-sentinel" />
     </div>
   );

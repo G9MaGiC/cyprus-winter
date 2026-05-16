@@ -196,7 +196,7 @@ export default function AccountSettingsPage() {
         </div>
         <p className="text-xs text-olive/60 mt-3">
           {tSettings("privacy.footer.prefix")}{" "}
-          <Link href="/privacy" className="text-terracotta hover:underline">
+          <Link href="/privacy" className={SECTION.aegeanLink}>
             {tSettings("privacy.footer.privacyPolicy")}
           </Link>
           {tSettings("privacy.footer.suffix")}

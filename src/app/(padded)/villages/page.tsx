@@ -3,9 +3,10 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { villages } from "@/data/attractions";
-import { LAYOUT, SECTION, CTA } from "@/lib/design-tokens";
+import { LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
+import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
@@ -34,10 +35,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function VillagesPage() {
-  const [tNav, tCommon, tVillages] = await Promise.all([
+  const [tNav, tCommon, tVillages, tDiscover] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
     getTranslations("villages.page"),
+    getTranslations("discover"),
   ]);
 
   const villagesItemListSchema = {
@@ -88,19 +90,13 @@ export default async function VillagesPage() {
         ))}
       </div>
 
-      <div className={`${SECTION.footerBlock} relative`}>
-        <span id="villages-plan-sentinel" className="h-px absolute top-0 left-0 right-0 pointer-events-none" aria-hidden />
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-          {tVillages("footer.body")}{" "}
-          <AppLink href="/discover" className={SECTION.aegeanLink}>
-            {tVillages("footer.allPlaces")}
-          </AppLink>
-          {" · "}
-          <AppLink href="/plan" className={SECTION.aegeanLink}>
-            {tVillages("footer.planDay")}
-          </AppLink>
-        </p>
-      </div>
+      <span id="villages-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <HubFooter
+        body={tVillages("footer.hubBody")}
+        ariaLabel={tVillages("aria.actions")}
+        askAiLabel={tDiscover("footer.askAi")}
+        askAiAriaLabel={tDiscover("aria.askAi")}
+      />
       <StickyPlanBarBlock sentinelId="villages-plan-sentinel" />
     </div>
   );

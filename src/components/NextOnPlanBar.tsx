@@ -63,7 +63,7 @@ export default function NextOnPlanBar() {
       <span className="text-xs font-medium text-white/80 shrink-0">{tCommon("nextOnPlan.prefix")}</span>
       <AppLink
         href={href}
-        className="flex-1 min-w-0 truncate font-semibold hover:underline text-sm"
+        className="flex-1 min-w-0 truncate font-semibold text-sm inline-flex items-center min-h-[44px] py-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-aegean rounded"
       >
         {place.name}
       </AppLink>

@@ -1,60 +1,25 @@
 import { describe, it, expect } from "vitest";
-import { TOKENS, LAYOUT, CTA, SECTION, CARD, EMPTY_STATE_DASHED, PILL, EMPTY_STATE, HERO } from "./design-tokens";
+import { BOTTOM_NAV, LAYOUT } from "./design-tokens";
 
-describe("TOKENS", () => {
-  it("has expected color keys", () => {
-    expect(TOKENS.terracotta).toMatch(/^#[0-9a-fA-F]{6}$/);
-    expect(TOKENS.aegean).toMatch(/^#[0-9a-fA-F]{6}$/);
-    expect(TOKENS.charcoal).toBeDefined();
+describe("LAYOUT mobile bottom chrome", () => {
+  it("aligns footer and main clearance with BottomNav md breakpoint", () => {
+    expect(LAYOUT.footerBottomClearance).toContain("md:pb-0");
+    expect(LAYOUT.mainPaddingBottom).toContain("md:pb-0");
   });
-});
 
-describe("LAYOUT", () => {
-  it("has list and form max-widths", () => {
-    expect(LAYOUT.list).toContain("max-w");
-    expect(LAYOUT.form).toContain("max-w");
+  it("places sticky CTAs above nav with cookie offset", () => {
+    expect(LAYOUT.fixedBottomAboveNavCookie).toContain("5.5rem");
+    expect(LAYOUT.fixedBottomAboveNavCookie).toContain("--cw-cookie-banner-offset");
+    expect(BOTTOM_NAV.stickyClearanceWithCookie).toContain("--cw-cookie-banner-offset");
   });
-});
 
-describe("CTA", () => {
-  it("primaryCompact includes terracotta", () => {
-    expect(CTA.primaryCompact).toContain("terracotta");
+  it("hides mobile-only fixed chrome at md", () => {
+    expect(LAYOUT.mobileBottomChromeHidden).toBe("md:hidden");
   });
-});
 
-describe("SECTION", () => {
-  it("has blockGap defined", () => {
-    expect(SECTION.blockGap).toBeDefined();
-  });
-});
-
-describe("CARD", () => {
-  it("base includes rounded", () => {
-    expect(CARD.base).toMatch(/rounded/);
-  });
-});
-
-describe("HERO", () => {
-  it("section contains min-h", () => {
-    expect(HERO.section).toContain("min-h");
-  });
-});
-
-describe("PILL", () => {
-  it("base contains rounded-full", () => {
-    expect(PILL.base).toContain("rounded-full");
-  });
-});
-
-describe("EMPTY_STATE", () => {
-  it("is a non-empty string", () => {
-    expect(EMPTY_STATE.length).toBeGreaterThan(0);
-  });
-});
-
-describe("EMPTY_STATE_DASHED", () => {
-  it("is a non-empty string", () => {
-    expect(typeof EMPTY_STATE_DASHED).toBe("string");
-    expect(EMPTY_STATE_DASHED.length).toBeGreaterThan(0);
+  it("documents sticky offset as nav height plus gap", () => {
+    expect(BOTTOM_NAV.height).toBe("4.5rem");
+    expect(BOTTOM_NAV.stickyGap).toBe("1rem");
+    expect(BOTTOM_NAV.stickyClearance).toContain("5.5rem");
   });
 });

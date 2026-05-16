@@ -152,6 +152,17 @@
     "askAI": "Ask AI",
     "askAITrailsAria": "Ask AI for trail suggestions",
     "askAIRecommendationsAria": "Ask AI for recommendations",
+    "hubFooter": {
+      "prompt": "Add places to your plan—or ask the AI for ideas.",
+      "aria": {
+        "actions": "Page actions"
+      }
+    },
+    "tripPlanSummary": {
+      "aria": "Your trip plan summary",
+      "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
+      "viewPlan": "View plan"
+    },
     "planYourTrip": "Plan your trip",
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
@@ -184,8 +195,11 @@
       "content": "Loading content"
     },
     "skipTo": {
+      "thisWeek": "Skip to This week",
       "editorsPicks": "Skip to Editor's picks",
-      "plan": "Skip to Plan"
+      "plan": "Skip to Plan",
+      "search": "Skip to search",
+      "startHere": "Skip to Start here"
     }
     ,
     "cancel": "Cancel",
@@ -213,6 +227,12 @@
       "explore": "Explore",
       "planTrip": "Plan your trip",
       "askGuide": "Ask your guide"
+    },
+    "tripModes": {
+      "aria": "Choose how you are travelling",
+      "arriving": "Just arrived",
+      "planning": "Planning",
+      "exploring": "Exploring"
     },
     "aria": {
       "discover": "Discover places, villages, and wineries",
@@ -467,6 +487,11 @@
       "search": {
         "srHeading": "Search places",
         "placeholder": "Search places, trails, wineries…"
+      },
+      "viewTabs": {
+        "aria": "View places as list or map",
+        "list": "List",
+        "map": "Map"
       }
     },
     "map": {
@@ -632,8 +657,12 @@
       "srHeading": "Beaches in Cyprus winter",
       "footer": {
         "body": "Combine a beach walk with ancient ruins or a village lunch.",
+        "hubBody": "Combine a beach walk with ancient ruins or a village lunch. Add places to your plan—or ask the AI.",
         "allPlaces": "See all places",
         "planDay": "Plan your day"
+      },
+      "aria": {
+        "actions": "Beaches page actions"
       }
     }
   },
@@ -654,8 +683,12 @@
       "srHeading": "Cyprus winter villages",
       "footer": {
         "body": "Combine a village visit with a trail or winery.",
+        "hubBody": "Combine a village visit with a trail or winery. Add places to your plan—or ask the AI.",
         "allPlaces": "See all places",
         "planDay": "Plan your day"
+      },
+      "aria": {
+        "actions": "Villages page actions"
       }
     }
   },
@@ -681,7 +714,11 @@
       "footer": {
         "pairingPrefix": "Pair a winery visit with a trail or village.",
         "pairingLink": "Build a day",
-        "routesPrefix": "Explore wine routes:"
+        "routesPrefix": "Explore wine routes:",
+        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI."
+      },
+      "aria": {
+        "actions": "Wineries page actions"
       }
     }
   },
@@ -689,6 +726,7 @@
     "addToPlan": "Add to plan",
     "submitReport": "Submit report",
     "submitting": "Submitting…",
+    "conditionsEditorial": "Winter snapshot",
     "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
     "allTrails": "All trails",
     "askAI": "Ask AI",
@@ -1814,7 +1852,11 @@
       },
       "footer": {
         "prefix": "Pair with trails and villages.",
-        "planLink": "Plan your day"
+        "planLink": "Plan your day",
+        "hubBody": "Pair secrets with trails and villages. Add places to your plan—or ask the AI."
+      },
+      "aria": {
+        "actions": "Secrets page actions"
       },
       "types": {
         "viewpoint": "Viewpoint",

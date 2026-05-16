@@ -9,7 +9,7 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { formatReportedAgo } from "@/lib/format";
 import type { Trail, TrailConditions } from "@/data/trails";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 type Props = {
   trail: Trail;
@@ -19,6 +19,7 @@ type Props = {
 
 export default function TrailCard({ trail, conditions, featured }: Props) {
   const locale = useLocale();
+  const tTrails = useTranslations("trails");
   const durationH = Math.round(trail.durationMin / 60);
   const teaser = trail.highlights?.[0] ?? trail.description;
 
@@ -83,12 +84,17 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
                 <span className="capitalize">{trail.routeType.replace("-", " ")}</span>
               </>
             )}
-            {conditions?.lastReportedAt && (
+            {conditions?.lastReportedAt ? (
               <>
                 <span aria-hidden>·</span>
                 <span>{formatReportedAgo(conditions.lastReportedAt, locale)}</span>
               </>
-            )}
+            ) : conditions ? (
+              <>
+                <span aria-hidden>·</span>
+                <span>{tTrails("conditionsEditorial")}</span>
+              </>
+            ) : null}
           </div>
           {conditions?.tip && (
             <p className={`mt-3 text-sm text-olive/90 break-words px-4 py-3 ${CALLOUT.tip}`}>

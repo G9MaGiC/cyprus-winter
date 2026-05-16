@@ -15,7 +15,7 @@ test("Discover to detail: can navigate to a place and see content", async ({
   await page.goto("/");
 
   // Open Discover (via nav or direct)
-  await page.goto("/discover");
+  await page.goto("/discover", { waitUntil: "load" });
 
   // Dismiss onboarding modal if it appears (init script can race with hydrate)
   const skipButton = page.getByRole("button", { name: "Skip onboarding" });
@@ -29,9 +29,9 @@ test("Discover to detail: can navigate to a place and see content", async ({
   // Wait for discover list to load
   await expect(page.getByRole("main")).toBeVisible();
 
-  // Find first place card link and click
-  const firstCard = page.locator('a[href*="/discover/"]').first();
-  await expect(firstCard).toBeVisible();
+  // Cards live in #discover-content; section-reveal animates from opacity 0 for ~500ms
+  const firstCard = page.locator('#discover-content a[href*="/discover/"]').first();
+  await expect(firstCard).toBeVisible({ timeout: 20_000 });
   const href = await firstCard.getAttribute("href");
   expect(href).toMatch(/\/discover\/[a-z0-9-]+/);
 

@@ -6,6 +6,7 @@ import { winterEvents } from "@/data/events";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import FilterChips from "@/components/FilterChips";
+import AskAIButton from "@/components/AskAIButton";
 import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
@@ -303,6 +304,7 @@ export default function EventsPage() {
               <Link href="/plan" className={CTA.chipTertiary}>
                 {tCommon("planYourTrip")}
               </Link>
+              <AskAIButton className={CTA.chipTertiary} />
             </div>
           </div>
         ) : (

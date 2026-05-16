@@ -152,6 +152,17 @@
     "askAI": "Ask AI",
     "askAITrailsAria": "Ask AI nach Trail-Vorschlägen",
     "askAIRecommendationsAria": "Ask AI nach Empfehlungen",
+    "hubFooter": {
+      "prompt": "Orte zu Ihrem Plan hinzufügen—oder die KI nach Ideen fragen.",
+      "aria": {
+        "actions": "Seitenaktionen"
+      }
+    },
+    "tripPlanSummary": {
+      "aria": "Zusammenfassung Ihres Reiseplans",
+      "places": "{count, plural, one {# Ort in Ihrem Plan} other {# Orte in Ihrem Plan}}",
+      "viewPlan": "Plan ansehen"
+    },
     "planYourTrip": "Reise planen",
     "winterHikingGuide": "Winter-Wanderführer",
     "seeMap": "Karte ansehen",
@@ -184,8 +195,11 @@
       "content": "Inhalte werden geladen"
     },
     "skipTo": {
+      "thisWeek": "Zu Diese Woche springen",
       "editorsPicks": "Zu Redaktions-Tipps springen",
-      "plan": "Zum Plan springen"
+      "plan": "Zum Plan springen",
+      "search": "Zur Suche springen",
+      "startHere": "Zu Start hier springen"
     }
     ,
     "cancel": "Abbrechen",
@@ -213,6 +227,12 @@
       "explore": "Entdecken",
       "planTrip": "Reise planen",
       "askGuide": "Ask AI"
+    },
+    "tripModes": {
+      "aria": "Wählen Sie, wie Sie reisen",
+      "arriving": "Gerade angekommen",
+      "planning": "Planung",
+      "exploring": "Erkunden"
     },
     "aria": {
       "discover": "Orte, Dörfer und Weingüter entdecken",
@@ -467,6 +487,11 @@
       "search": {
         "srHeading": "Orte suchen",
         "placeholder": "Orte, Trails, Weingüter suchen…"
+      },
+      "viewTabs": {
+        "aria": "Orte als Liste oder Karte anzeigen",
+        "list": "Liste",
+        "map": "Karte"
       }
     },
     "map": {
@@ -632,8 +657,12 @@
       "srHeading": "Strände auf Zypern im Winter",
       "footer": {
         "body": "Kombinieren Sie den Strandspaziergang mit antiken Ruinen oder einem Dorfmittagessen.",
+        "hubBody": "Kombinieren Sie einen Strandspaziergang mit antiken Ruinen oder einem Dorfmittagessen. Orte zum Plan hinzufügen—oder die KI fragen.",
         "allPlaces": "Alle Orte ansehen",
         "planDay": "Tag planen"
+      },
+      "aria": {
+        "actions": "Strandseiten-Aktionen"
       }
     }
   },
@@ -654,8 +683,12 @@
       "srHeading": "Zyperns Winterdörfer",
       "footer": {
         "body": "Kombinieren Sie einen Dorfbummel mit einem Trail oder einem Weingut.",
+        "hubBody": "Kombinieren Sie einen Dorfbesuch mit einer Route oder einem Weingut. Orte zum Plan hinzufügen—oder die KI fragen.",
         "allPlaces": "Alle Orte ansehen",
         "planDay": "Tag planen"
+      },
+      "aria": {
+        "actions": "Dorfseiten-Aktionen"
       }
     }
   },
@@ -681,7 +714,11 @@
       "footer": {
         "pairingPrefix": "Kombinieren Sie einen Weingutbesuch mit einem Trail oder einem Dorf.",
         "pairingLink": "Tag planen",
-        "routesPrefix": "Weinrouten entdecken:"
+        "routesPrefix": "Weinrouten entdecken:",
+        "hubBody": "Kombinieren Sie einen Weingutbesuch mit einer Route oder einem Dorf. Orte zum Plan hinzufügen—oder die KI fragen."
+      },
+      "aria": {
+        "actions": "Weingutseiten-Aktionen"
       }
     }
   },
@@ -689,6 +726,7 @@
     "addToPlan": "Zum Plan hinzufügen",
     "submitReport": "Bericht absenden",
     "submitting": "Wird gesendet…",
+    "conditionsEditorial": "Winter-Schnappschuss",
     "noMatch": "Keine Wanderwege passen zu Ihren Filtern. Ändern Sie Status, Schwierigkeit oder Region—oder fragen Sie die AI. Sie kennt Troodos bis Küste.",
     "allTrails": "Alle Wanderwege",
     "askAI": "Ask AI",
@@ -1893,7 +1931,11 @@
       },
       "footer": {
         "prefix": "Kombinieren Sie mit Trails und Dörfern.",
-        "planLink": "Tag planen"
+        "planLink": "Tag planen",
+        "hubBody": "Kombinieren Sie Geheimtipps mit Routen und Dörfern. Orte zum Plan hinzufügen—oder die KI fragen."
+      },
+      "aria": {
+        "actions": "Geheimtipps-Seitenaktionen"
       },
       "types": {
         "viewpoint": "Aussichtspunkt",

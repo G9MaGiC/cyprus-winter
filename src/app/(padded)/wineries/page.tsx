@@ -6,6 +6,7 @@ import { wineries } from "@/data/wineries";
 import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
+import WineriesHubFooter from "@/components/WineriesHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
@@ -115,34 +116,7 @@ export default async function WineriesPage() {
         ))}
       </div>
 
-      <div className={`${SECTION.footerBlock} ${LAYOUT.footerBottomClearance} relative`}>
-        <div className="space-y-4">
-          <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-            {tWineries("footer.pairingPrefix")}{" "}
-            <AppLink href="/plan" className={SECTION.aegeanLink}>
-              {tWineries("footer.pairingLink")}
-            </AppLink>
-          </p>
-          <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-            {tWineries("footer.routesPrefix")}{" "}
-        <AppLink href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
-          Krasochoria
-        </AppLink>
-        {" · "}
-        <AppLink href="/wine-routes/laona" className={SECTION.aegeanLink}>
-          Laona
-        </AppLink>
-        {" · "}
-        <AppLink href="/wine-routes/akamas" className={SECTION.aegeanLink}>
-          Akamas
-        </AppLink>
-        {" · "}
-        <AppLink href="/wine-routes/commandaria" className={SECTION.aegeanLink}>
-          Commandaria
-        </AppLink>
-      </p>
-        </div>
-      </div>
+      <WineriesHubFooter />
       <StickyPlanBarBlock sentinelId="wineries-plan-sentinel" />
     </div>
   );

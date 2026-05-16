@@ -9,6 +9,8 @@ import HomeWhyCyprusTeaser from "@/app/_home/HomeWhyCyprusTeaser";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import StartHereWithExplore from "@/app/_home/StartHereWithExplore";
+import HomeTripModeChips from "@/app/_home/HomeTripModeChips";
+import TripPlanSummaryChip from "@/components/TripPlanSummaryChip";
 import HomePlaceOfDay from "@/app/_home/HomePlaceOfDay";
 import HomeSection from "@/app/_home/HomeSection";
 import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
@@ -21,6 +23,7 @@ import {
   WeatherStripSkeleton,
   ThisWeekSkeleton,
 } from "@/app/_home/skeletons";
+import { LAYER } from "@/lib/design-tokens";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
 import { useTranslations } from "next-intl";
@@ -51,13 +54,19 @@ export default function HomePageContent({
     <div className="relative overflow-hidden bg-background">
       <nav
         aria-label={tCommon("skipToContent")}
-        className="absolute left-4 top-4 z-[45] flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2"
+        className={`absolute left-4 top-4 ${LAYER.popover} flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2`}
       >
+        <AppLink
+          href="#start-here"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2 font-medium text-terracotta hover:bg-terracotta/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
+        >
+          {tCommon("skipTo.startHere")}
+        </AppLink>
         <AppLink
           href="#this-week-heading"
           className="inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2 font-medium text-terracotta hover:bg-terracotta/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
         >
-          Skip to This week
+          {tCommon("skipTo.thisWeek")}
         </AppLink>
         <AppLink
           href="#editors-picks-heading"
@@ -73,18 +82,19 @@ export default function HomePageContent({
         </AppLink>
       </nav>
       <HomeHero />
+      <HomeTripModeChips />
       <Suspense fallback={<WeatherStripSkeleton />}>
         <HomeWeatherStrip LinkComponent={LinkComponent} />
       </Suspense>
       <TripReminderBanner />
+      <StartHereWithExplore LinkComponent={LinkComponent} />
       <HomeSearchSection />
       <HomeWhyCyprusTeaser />
       <HomeTrailConditionsStrip LinkComponent={LinkComponent} />
-      <StartHereWithExplore LinkComponent={LinkComponent} />
       <RightNowNearYou />
       <RecentlyViewedStrip />
       <HomePlaceOfDay LinkComponent={LinkComponent} />
-      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
+      <TripPlanSummaryChip />
 
       <HomeSection
         id="this-week-heading"
@@ -116,6 +126,7 @@ export default function HomePageContent({
         <BookTastings LinkComponent={LinkComponent} />
       </HomeSection>
 
+      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomePlanningSection LinkComponent={LinkComponent} planSubtitle={planSubtitle} />
       <HomeFooter LinkComponent={LinkComponent} />
       <HomeShareSection sharePath={sharePath} />
