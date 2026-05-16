@@ -7,6 +7,7 @@
 
 const STORAGE_KEY = "cyprus-winter-offline-queue";
 const MAX_ITEMS = 50;
+let isProcessing = false;
 
 export type QueuedMutation = {
   id: string;
@@ -64,26 +65,33 @@ export function removeMutation(id: string): void {
 
 /** Process the queue: retry each mutation, remove on success. */
 export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
-  const items = load();
-  if (items.length === 0) return { processed: 0, succeeded: 0 };
+  if (isProcessing) return { processed: 0, succeeded: 0 };
+  isProcessing = true;
 
-  let succeeded = 0;
-  for (const item of items) {
-    try {
-      const res = await fetch(item.url, {
-        method: item.method,
-        headers: { "Content-Type": "application/json" },
-        body: item.body ?? undefined,
-      });
+  try {
+    const items = load();
+    if (items.length === 0) return { processed: 0, succeeded: 0 };
 
-      if (res.ok) {
-        removeMutation(item.id);
-        succeeded++;
+    let succeeded = 0;
+    for (const item of items) {
+      try {
+        const res = await fetch(item.url, {
+          method: item.method,
+          headers: { "Content-Type": "application/json" },
+          body: item.body ?? undefined,
+        });
+
+        if (res.ok) {
+          removeMutation(item.id);
+          succeeded++;
+        }
+        // Non-2xx: leave in queue, will retry next online
+      } catch {
+        // Network error: leave in queue
       }
-      // Non-2xx: leave in queue, will retry next online
-    } catch {
-      // Network error: leave in queue
     }
+    return { processed: items.length, succeeded };
+  } finally {
+    isProcessing = false;
   }
-  return { processed: items.length, succeeded };
 }
