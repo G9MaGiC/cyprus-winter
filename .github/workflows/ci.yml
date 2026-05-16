@@ -30,8 +30,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Core funnel E2E gate
-        run: npm run test:e2e:core-funnel:ci
+      - name: Core funnel + UX E2E gate
+        run: npm run test:e2e:gate:ci
 
       - name: Upload core funnel Playwright artifacts
         if: failure()

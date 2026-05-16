@@ -1,8 +1,10 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import AppLink from "@/components/AppLink";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
+import { TrackOnClick } from "@/components/TrackOnClick";
 import { SECTION, CTA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -19,6 +21,8 @@ export type HubFooterProps = {
   scrollToMapAriaLabel?: string;
   secondary?: ReactNode;
   className?: string;
+  /** Analytics page id (defaults to pathname). */
+  analyticsPage?: string;
 };
 
 /**
@@ -38,7 +42,10 @@ export default function HubFooter({
   scrollToMapAriaLabel,
   secondary,
   className = "",
+  analyticsPage,
 }: HubFooterProps) {
+  const pathname = usePathname();
+  const page = analyticsPage ?? pathname ?? "";
   const tCommon = useTranslations("common");
   const resolvedPrimaryLabel = primaryLabel ?? tCommon("planYourTrip");
   const resolvedAskAiLabel = askAiLabel ?? tCommon("askAI");
@@ -53,18 +60,22 @@ export default function HubFooter({
         {body}
       </p>
       <div className="flex flex-col max-sm:items-stretch sm:flex-row sm:flex-wrap items-center justify-center gap-3 [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">
-        <AppLink href={primaryHref} className={CTA.primaryCompact}>
-          {resolvedPrimaryLabel}
-        </AppLink>
+        <TrackOnClick event="hub_footer_click" properties={{ action: "plan", page }}>
+          <AppLink href={primaryHref} className={CTA.primaryCompact}>
+            {resolvedPrimaryLabel}
+          </AppLink>
+        </TrackOnClick>
         {showAskAi && (
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-            className={CTA.secondaryCompact}
-            aria-label={resolvedAskAiAria}
-          >
-            {resolvedAskAiLabel}
-          </button>
+          <TrackOnClick event="hub_footer_click" properties={{ action: "ask_ai", page }}>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
+              className={CTA.secondaryCompact}
+              aria-label={resolvedAskAiAria}
+            >
+              {resolvedAskAiLabel}
+            </button>
+          </TrackOnClick>
         )}
         {onScrollToMap && scrollToMapLabel && (
           <button

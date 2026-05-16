@@ -43,17 +43,22 @@ export default function DetailActionFooter({
       <p className="text-olive/70 text-sm break-words flex-1">{body}</p>
       <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 w-full sm:w-auto [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">
         {place ? <NavigateButton place={place} /> : null}
-        <TrackOnClick event="plan_add" properties={{ placeId, placeType }}>
+        <TrackOnClick event="plan_add" properties={{ placeId, placeType, source: "detail_footer" }}>
           <AddToItineraryButton placeId={placeId} className="sm:shrink-0 w-full sm:w-auto" />
         </TrackOnClick>
-        <button
-          type="button"
-          onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-          className={`${CTA.secondaryCompact} w-full sm:w-auto justify-center`}
-          aria-label={tDiscover("aria.askAi")}
+        <TrackOnClick
+          event="hub_footer_click"
+          properties={{ action: "ask_ai", page: "detail", placeId, placeType }}
         >
-          {tDiscover("footer.askAi")}
-        </button>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
+            className={`${CTA.secondaryCompact} w-full sm:w-auto justify-center`}
+            aria-label={tDiscover("aria.askAi")}
+          >
+            {tDiscover("footer.askAi")}
+          </button>
+        </TrackOnClick>
         {children}
       </div>
     </footer>

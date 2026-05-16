@@ -249,7 +249,7 @@
     "editorsPicks": "Επιλογές των συντάκτων",
     "editorsPicksKicker": "Επιμελημένα",
     "rightNowNearYou": "Τώρα κοντά σας",
-    "discoverCurated": "Curious what we'd choose? Curated for winter—add to your plan as you browse.",
+    "discoverCurated": "Αναρωτιέστε τι θα επιλέγαμε εμείς; Επιμελημένα για τον χειμώνα—προσθέστε στο πρόγραμμά σας καθώς περιηγείστε.",
     "natureAndCoasts": "Φύση και ακτές",
     "places": "Τοποθεσίες",
     "startHere": {
@@ -384,28 +384,28 @@
       }
     },
     "placeOfDay": {
-      "kicker": "Today's pick — one place worth the drive",
-      "addToPlan": "Add to plan",
-      "seeDetails": "See details →",
-      "openAria": "Open {name}",
+      "kicker": "Η επιλογή της ημέρας — ένα μέρος που αξίζει το ταξίδι",
+      "addToPlan": "Προσθήκη στο πρόγραμμα",
+      "seeDetails": "Λεπτομέρειες →",
+      "openAria": "Άνοιγμα {name}",
       "overlays": {
-        "goodDay": "Good day for it",
-        "quietWeek": "Quiet this week",
-        "clearToday": "Clear today",
-        "bestAfternoon": "Best light in afternoon",
-        "worthVisit": "Worth a visit"
+        "goodDay": "Καλή μέρα για επίσκεψη",
+        "quietWeek": "Ήσυχα αυτή την εβδομάδα",
+        "clearToday": "Καθαρά σήμερα",
+        "bestAfternoon": "Καλύτερο φως το απόγευμα",
+        "worthVisit": "Αξίζει την επίσκεψη"
       }
     },
     "planningSection": {
-      "srHeading": "Planning and essentials",
-      "planTitle": "Plan your trip",
-      "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "srHeading": "Σχεδιασμός και βασικά",
+      "planTitle": "Σχεδιάστε το ταξίδι σας",
+      "eventsTitle": "Χειμερινές εκδηλώσεις",
+      "eventsDesc": "Θεοφάνεια, καρναβάλι, γευσιγνωσίες. Τι γίνεται πότε.",
+      "defaultSubtitle": "Πρότυπα, χάρτης και κοινοποίηση σε ένα μέρος—συνεχίστε στη σελίδα Πρόγραμμα."
     },
     "recentlyViewed": {
-      "title": "Recently viewed",
-      "clear": "Clear"
+      "title": "Πρόσφατα προβολή",
+      "clear": "Καθαρισμός"
     }
   },
   "error": {
@@ -1257,7 +1257,7 @@
       "beaches": "Παραλίες"
     },
     "footer": {
-      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+      "hubBody": "Προσθέστε μέρη στο πρόγραμμά σας—ή ρωτήστε το AI. Γνωρίζει το νησί τον χειμώνα."
     },
     "aria": {
       "actions": "Search page actions"
@@ -1301,19 +1301,19 @@
         "learnMoreCta": "Μάθετε περισσότερα"
       },
       "highlights": {
-        "title": "Don't miss",
-        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+        "title": "Μην χάσετε",
+        "lead": "Η Θεοφάνεια και το καρναβάλι είναι όταν το νησί δείχνει την ψυχή του. Φτάστε νωρίς. Ντυθείτε ζεστά."
       },
       "tips": {
-        "title": "Planning tips",
-        "item1": "Check official sites for exact dates — many events move year to year.",
-        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
-        "item3": "Arrive early for popular events. The best spots fill quickly.",
-        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+        "title": "Συμβουλές σχεδιασμού",
+        "item1": "Ελέγξτε επίσημες ιστοσελίδες για ακριβείς ημερομηνίες—πολλές εκδηλώσεις αλλάζουν κάθε χρόνο.",
+        "item2": "Κλείστε νωρίς για Θεοφάνεια, καρναβάλι και χριστουγεννιάτικες αγορές.",
+        "item3": "Φτάστε νωρίς σε δημοφιλείς εκδηλώσεις. Τα καλύτερα σημεία γεμίζουν γρήγορα.",
+        "item4": "Συνδυάστε εκδηλώσεις με κοντινά μονοπάτια ή χωριά. Πεζοπορία το πρωί, εκδήλωση το απόγευμα."
       },
       "footer": {
-        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Προσθέστε εκδηλώσεις στο πρόγραμμά σας—ή ρωτήστε το AI τι γίνεται όταν επισκέπτεστε.",
+        "weatherLink": "Καιρός ανά μήνα"
       },
       "aria": {
         "actions": "Events page actions"
@@ -2092,8 +2092,8 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Εξερευνήστε μονοπάτια, χωριά και οινοποιεία στην περιοχή—και προσθέστε τα στο πρόγραμμά σας.",
+        "weatherLink": "Καιρός ανά μήνα"
       },
       "aria": {
         "actions": "Region page actions"
@@ -2103,8 +2103,8 @@
   "wineRoutes": {
     "page": {
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "Κλείστε γευσιγνωσίες εκ των προτέρων και συνδυάστε τη διαδρομή με χωριό ή μονοπάτι κοντά.",
+        "allWineries": "Όλα τα οινοποιεία της Κύπρου"
       },
       "aria": {
         "actions": "Wine route actions"

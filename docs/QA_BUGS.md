@@ -1154,3 +1154,15 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-090 | Home | Place of Day actions tight on mobile | `gap-2 sm:gap-3`; See details `min-h-[44px]` |
 | BUG-091 | Tablet | Category chips wrapped at `sm` while BottomNav until `md` | Chip scroll/wrap + fade use `md` breakpoint |
 | BUG-092 | A11y | AI `FollowUpChips` 32px touch targets | `min-h-[44px]` |
+
+---
+
+## CTO follow-up hardening — May 17, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-093 | CI | UX specs not in core-funnel gate | `test:e2e:ux:ci` + `test:e2e:gate:ci` in Core Funnel Gate job |
+| BUG-094 | Docs | `UX_PATTERNS.md` hub list incomplete | Full hub/detail list + E2E + analytics |
+| BUG-095 | Analytics | Hub footer Plan/Ask AI untracked | `hub_footer_click` on `HubFooter` + detail Ask AI |
+| BUG-096 | i18n | DE/PL/EL EN placeholders for QA strings | `scripts/i18n/patch-cto-locale-polish.mjs` |
+| BUG-097 | E2E | Events hub footer untested | `hub-footer.spec.ts` events case |

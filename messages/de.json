@@ -249,7 +249,7 @@
     "editorsPicks": "Redaktions-Tipps",
     "editorsPicksKicker": "Kuratierte Auswahl",
     "rightNowNearYou": "Jetzt in Ihrer Nähe",
-    "discoverCurated": "Curious what we'd choose? Curated for winter—add to your plan as you browse.",
+    "discoverCurated": "Neugierig, was wir wählen würden? Kuratiert für den Winter—fügen Sie beim Stöbern zu Ihrem Plan hinzu.",
     "natureAndCoasts": "Natur & Küste",
     "places": "Orte",
     "startHere": {
@@ -384,28 +384,28 @@
       }
     },
     "placeOfDay": {
-      "kicker": "Today's pick — one place worth the drive",
-      "addToPlan": "Add to plan",
-      "seeDetails": "See details →",
-      "openAria": "Open {name}",
+      "kicker": "Tipp des Tages — ein Ort, der die Fahrt wert ist",
+      "addToPlan": "Zum Plan hinzufügen",
+      "seeDetails": "Details →",
+      "openAria": "{name} öffnen",
       "overlays": {
-        "goodDay": "Good day for it",
-        "quietWeek": "Quiet this week",
-        "clearToday": "Clear today",
-        "bestAfternoon": "Best light in afternoon",
-        "worthVisit": "Worth a visit"
+        "goodDay": "Guter Tag dafür",
+        "quietWeek": "Ruhig diese Woche",
+        "clearToday": "Heute klar",
+        "bestAfternoon": "Bestes Licht am Nachmittag",
+        "worthVisit": "Besuch lohnt sich"
       }
     },
     "planningSection": {
-      "srHeading": "Planning and essentials",
-      "planTitle": "Plan your trip",
-      "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "srHeading": "Planung und Essentials",
+      "planTitle": "Reise planen",
+      "eventsTitle": "Winter-Events",
+      "eventsDesc": "Epiphanias, Karneval, Verkostungen. Was wann stattfindet.",
+      "defaultSubtitle": "Vorlagen, Karte und Teilen an einem Ort—weiter auf der Plan-Seite."
     },
     "recentlyViewed": {
-      "title": "Recently viewed",
-      "clear": "Clear"
+      "title": "Zuletzt angesehen",
+      "clear": "Löschen"
     }
   },
   "error": {
@@ -1336,7 +1336,7 @@
       "beaches": "Strände"
     },
     "footer": {
-      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+      "hubBody": "Orte zum Plan hinzufügen—oder die KI fragen. Sie kennt die Insel im Winter."
     },
     "aria": {
       "actions": "Search page actions"
@@ -1380,19 +1380,19 @@
         "learnMoreCta": "Mehr erfahren"
       },
       "highlights": {
-        "title": "Don't miss",
-        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+        "title": "Nicht verpassen",
+        "lead": "Epiphanias und Karneval zeigen die Seele der Insel. Kommen Sie früh. Warm anziehen."
       },
       "tips": {
-        "title": "Planning tips",
-        "item1": "Check official sites for exact dates — many events move year to year.",
-        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
-        "item3": "Arrive early for popular events. The best spots fill quickly.",
-        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+        "title": "Planungstipps",
+        "item1": "Offizielle Seiten für genaue Termine prüfen—viele Events wechseln von Jahr zu Jahr.",
+        "item2": "Früh buchen für Epiphanias, Karneval und Weihnachtsmärkte.",
+        "item3": "Bei beliebten Events früh da sein. Die besten Plätze sind schnell weg.",
+        "item4": "Events mit nahen Trails oder Dörfern verbinden. Vormittags wandern, nachmittags Event."
       },
       "footer": {
-        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Events zum Plan hinzufügen—oder die KI fragen, was während Ihres Besuchs läuft.",
+        "weatherLink": "Wetter nach Monat"
       },
       "aria": {
         "actions": "Events page actions"
@@ -2092,8 +2092,8 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Trails, Dörfer und Weingüter in der Region entdecken—dann zum Plan hinzufügen.",
+        "weatherLink": "Wetter nach Monat"
       },
       "aria": {
         "actions": "Region page actions"
@@ -2103,8 +2103,8 @@
   "wineRoutes": {
     "page": {
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "Verkostungen vorab buchen und die Route mit einem Dorf oder Trail in der Nähe verbinden.",
+        "allWineries": "Alle Weingüter Zyperns"
       },
       "aria": {
         "actions": "Wine route actions"

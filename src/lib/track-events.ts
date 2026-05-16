@@ -26,6 +26,7 @@ export const TRACK_EVENTS = [
   "booking_stepper_progress",
   "trip_length_recommendation_shown",
   "today_adapt_action_click",
+  "hub_footer_click",
 ] as const;
 
 export type TrackEventName = (typeof TRACK_EVENTS)[number];
