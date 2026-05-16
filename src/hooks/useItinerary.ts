@@ -26,6 +26,17 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
   ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
 );
 
+function mergeDays(
+  a: Record<number, string[]>,
+  b: Record<number, string[]>
+): Record<number, string[]> {
+  const next = emptyDays();
+  for (let d = 1; d <= MAX_DAYS; d++) {
+    next[d] = [...new Set([...(a[d] ?? []), ...(b[d] ?? [])])];
+  }
+  return next;
+}
+
 export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -105,12 +116,15 @@ export function useItinerary() {
   }, [activeDay, setLastAdded]);
 
   const addToDayIfMissing = useCallback((id: string) => {
-    const current = daysRef.current[activeDay] ?? [];
-    if (current.includes(id)) return;
     setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
-      if (prevCurrent.includes(id)) return prev;
-      return { ...prev, [activeDay]: [...prevCurrent, id] };
+      const base = mergeDays(loadItineraryFromStorage(), prev);
+      const prevCurrent = base[activeDay] ?? [];
+      const next = prevCurrent.includes(id)
+        ? base
+        : { ...base, [activeDay]: [...prevCurrent, id] };
+      daysRef.current = next;
+      persistItineraryToStorage(next);
+      return next;
     });
     setLastAdded(id);
   }, [activeDay, setLastAdded]);
