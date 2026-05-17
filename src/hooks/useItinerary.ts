@@ -26,6 +26,14 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
   ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
 );
 
+function mergeDays(base: Record<number, string[]>, incoming: Record<number, string[]>): Record<number, string[]> {
+  const next = emptyDays();
+  for (let d = 1; d <= MAX_DAYS; d++) {
+    next[d] = [...new Set([...(base[d] ?? []), ...(incoming[d] ?? [])])];
+  }
+  return next;
+}
+
 export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -108,9 +116,10 @@ export function useItinerary() {
     const current = daysRef.current[activeDay] ?? [];
     if (current.includes(id)) return;
     setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
-      if (prevCurrent.includes(id)) return prev;
-      return { ...prev, [activeDay]: [...prevCurrent, id] };
+      const merged = mergeDays(prev, loadItineraryFromStorage());
+      const prevCurrent = merged[activeDay] ?? [];
+      if (prevCurrent.includes(id)) return merged;
+      return { ...merged, [activeDay]: [...prevCurrent, id] };
     });
     setLastAdded(id);
   }, [activeDay, setLastAdded]);
@@ -167,6 +176,13 @@ export function useItinerary() {
 
   const clearDay = useCallback(() => {
     setDays((prev) => ({ ...prev, [activeDay]: [] }));
+  }, [activeDay]);
+
+  const replaceActiveDay = useCallback((ids: string[]) => {
+    setDays((prev) => ({
+      ...prev,
+      [activeDay]: [...new Set(ids)],
+    }));
   }, [activeDay]);
 
   const copyItinerary = useCallback(async () => {
@@ -243,6 +259,7 @@ export function useItinerary() {
     applyTemplate: applyTemplateReplace,
     mergeTemplate,
     clearDay,
+    replaceActiveDay,
     copyItinerary,
     sharePath,
   };

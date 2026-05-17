@@ -222,6 +222,19 @@ describe("useItinerary", () => {
     expect(result.current.days[2]).toContain("artemis");
   });
 
+  it("replaceActiveDay replaces the active day in one update", async () => {
+    const { result } = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+
+    act(() => {
+      result.current.addToDayIfMissing("kourion");
+      result.current.replaceActiveDay(["kourion", "artemis", "kourion"]);
+    });
+
+    expect(result.current.days[1]).toEqual(["kourion", "artemis"]);
+  });
+
   it("applyTemplate replaces without confirm when plan is empty", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 
@@ -397,5 +410,30 @@ describe("useItinerary", () => {
     await waitFor(() =>
       expect(result.current.days[1]).toEqual(["artemis"])
     );
+  });
+
+  it("merges latest storage when separate same-tab hooks add places", async () => {
+    const first = renderHook(() => useItinerary(), { wrapper });
+    const second = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(first.result.current.hydrated).toBe(true));
+    await waitFor(() => expect(second.result.current.hydrated).toBe(true));
+
+    act(() => {
+      first.result.current.addToDayIfMissing("kourion");
+    });
+    await waitFor(() => {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Record<string, string[]>;
+      expect(parsed["1"]).toContain("kourion");
+    });
+
+    act(() => {
+      second.result.current.addToDayIfMissing("artemis");
+    });
+
+    await waitFor(() => {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Record<string, string[]>;
+      expect(parsed["1"]).toEqual(expect.arrayContaining(["kourion", "artemis"]));
+    });
   });
 });

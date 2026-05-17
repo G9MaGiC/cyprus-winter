@@ -31,6 +31,7 @@ export function usePlanPage() {
     applyTemplate,
     mergeTemplate,
     clearDay,
+    replaceActiveDay,
     copyItinerary,
     copyShareLink,
     linkCopied,
@@ -114,10 +115,9 @@ export function usePlanPage() {
 
   const handleReplaceCombo = useCallback(() => {
     if (!comboChoice) return;
-    clearDay();
-    for (const id of comboChoice.ids) addToDayIfMissing(id);
+    replaceActiveDay(comboChoice.ids);
     setComboChoice(null);
-  }, [comboChoice, clearDay, addToDayIfMissing]);
+  }, [comboChoice, replaceActiveDay]);
 
   const handleClearDayConfirm = useCallback(() => {
     clearDay();
@@ -162,6 +162,7 @@ export function usePlanPage() {
     hasContent,
     hasWineries,
     clearDay,
+    replaceActiveDay,
     copyItinerary,
     copyShareLink,
     linkCopied,
