@@ -23,6 +23,7 @@ import {
   WeatherStripSkeleton,
   ThisWeekSkeleton,
 } from "@/app/_home/skeletons";
+import { TripModeChipsSkeleton } from "@/app/_home/TripModeChipsSkeleton";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
 
@@ -45,10 +46,14 @@ export default async function HomePageContent({
 
   return (
     <>
-      <HomeTripModeChips />
-      <Suspense fallback={<WeatherStripSkeleton />}>
-        <HomeWeatherStrip locale={locale} />
-      </Suspense>
+      <div className="bg-background">
+        <Suspense fallback={<TripModeChipsSkeleton />}>
+          <HomeTripModeChips />
+        </Suspense>
+        <Suspense fallback={<WeatherStripSkeleton />}>
+          <HomeWeatherStrip locale={locale} />
+        </Suspense>
+      </div>
       <TripReminderBanner />
       <StartHereWithExplore />
       <Suspense fallback={null}>
@@ -76,7 +81,7 @@ export default async function HomePageContent({
 
       <HomeSection
         id="editors-picks-heading"
-        title={tHome("editorsPicks")}
+        title={tHome("editorsPicks.title")}
         kicker={tHome("editorsPicksKicker")}
         subtitle={tHome("discoverCurated")}
         alt
@@ -91,7 +96,7 @@ export default async function HomePageContent({
         subtitle={tHome("bookTastings.subtitle")}
       >
         <Suspense fallback={<BookTastingsSkeleton />}>
-          <BookTastings />
+          <BookTastings locale={locale} />
         </Suspense>
       </HomeSection>
 

@@ -1,7 +1,7 @@
 "use client";
 
-import AppLink from "@/components/AppLink";
-import { LAYOUT, STRIP, TYPE } from "@/lib/design-tokens";
+import { StatusStrip, StatusStripLink } from "@/components/StatusStrip";
+import { STRIP } from "@/lib/design-tokens";
 import { useTranslations, useLocale } from "next-intl";
 
 type TrailsConditionsStripProps = {
@@ -54,57 +54,43 @@ export default function TrailsConditionsStrip({
   );
 
   return (
-    <section
-      aria-labelledby="trails-conditions-heading"
-      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-aegean/5 border-b border-sand-200/70`}
-    >
-      <div className={`${LAYOUT.list} mx-auto`}>
-        <AppLink
-          href="#trail-list"
-          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[44px] py-2 group"
-          aria-label={t("trails.conditionsStrip.ariaViewList")}
-        >
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span
-              id="trails-conditions-heading"
-              className={`${TYPE.cardTitle}`}
-            >
-              {t("trails.conditionsStrip.heading")}
-            </span>
-            <span className="flex items-center gap-2 text-sm text-olive/80">
-              {openCount > 0 && (
-                <span className="text-sage font-medium">
-                  {t("trails.conditionsStrip.openCount", { count: openCount })}
-                </span>
-              )}
-              {cautionCount > 0 && (
-                <span className="text-golden font-medium">
-                  {t("trails.conditionsStrip.cautionCount", {
-                    count: cautionCount,
-                  })}
-                </span>
-              )}
-              {closedCount > 0 && (
-                <span className="text-terracotta font-medium">
-                  {t("trails.conditionsStrip.closedCount", {
-                    count: closedCount,
-                  })}
-                </span>
-              )}
-              {openCount === 0 &&
-                cautionCount === 0 &&
-                closedCount === 0 && (
-                  <span className="text-olive/60">
-                    {t("trails.conditionsStrip.noReports")}
-                  </span>
-                )}
-            </span>
-          </div>
-          <span className="text-sage text-sm group-hover:text-terracotta transition-colors shrink-0">
-            {label}
+    <StatusStrip variant="aegean" labelledBy="trails-conditions-heading">
+      <StatusStripLink
+        href="#trail-list"
+        ariaLabel={t("trails.conditionsStrip.ariaViewList")}
+        layout="split"
+      >
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span id="trails-conditions-heading" className={STRIP.label}>
+            {t("trails.conditionsStrip.heading")}
           </span>
-        </AppLink>
-      </div>
-    </section>
+          <span className={`flex items-center gap-2 ${STRIP.meta}`}>
+            {openCount > 0 && (
+              <span className="text-sage font-medium">
+                {t("trails.conditionsStrip.openCount", { count: openCount })}
+              </span>
+            )}
+            {cautionCount > 0 && (
+              <span className="text-golden font-medium">
+                {t("trails.conditionsStrip.cautionCount", {
+                  count: cautionCount,
+                })}
+              </span>
+            )}
+            {closedCount > 0 && (
+              <span className="text-terracotta font-medium">
+                {t("trails.conditionsStrip.closedCount", {
+                  count: closedCount,
+                })}
+              </span>
+            )}
+            {openCount === 0 && cautionCount === 0 && closedCount === 0 && (
+              <span className="text-olive/60">{t("trails.conditionsStrip.noReports")}</span>
+            )}
+          </span>
+        </div>
+        <span className={STRIP.hint}>{label}</span>
+      </StatusStripLink>
+    </StatusStrip>
   );
 }

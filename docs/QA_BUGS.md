@@ -1202,3 +1202,20 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | ID | Area | Issue | Action |
 |----|------|-------|--------|
 | BUG-071 | Ops | Redis rate limits optional in prod | Set `UPSTASH_REDIS_REST_*` on Vercel before launch |
+
+---
+
+## Expert review remediation — May 17, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-107 | Visual | Home status strips / PostHeroBand inconsistent with trails/plan | `StatusStrip`, `PostHeroBand`, `STRIP` tokens; trip mode band on home |
+| BUG-108 | i18n | `PlanShareBar` hardcoded EN | `plan.share.*` keys |
+| BUG-109 | i18n | `RecentlyViewed` type labels hardcoded | `common.placeTypes.*` |
+| BUG-110 | i18n | Home editor picks / featured wineries / insider tip from EN data | `home-editors-picks-data`, `home-featured-wineries-data`, `home-insider-tip-data` |
+| BUG-111 | UX | Airport page missing `HubFooter` | `AirportFooter.tsx` + hub-footer e2e |
+| BUG-112 | CI | `home-smoke.spec.ts` not in UX gate | Added to `test:e2e:ux:ci` |
+| BUG-113 | i18n | Right Now API teases from EN descriptions | API returns `tease: null`; client uses `home.rightNow.card.defaultTease` |
+| BUG-114 | Security | CSP `unsafe-eval` in production | Removed in prod via `proxy.ts` (`NODE_ENV`) |
+| BUG-115 | Docs | Stale agent docs | `AGENTS.md` at app root |
+| BUG-116 | Security | Bookings email lookup enumeration | Rate limited (`bookings-lookup`, 15/min); generic errors — document in deploy checklist |

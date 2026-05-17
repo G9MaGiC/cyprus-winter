@@ -1,12 +1,9 @@
 import "server-only";
 
 import AppLink from "@/components/AppLink";
-import { winterTipsGeneral, winterTipsHiking, winterTipsPractical } from "@/data/winter-tips";
+import { getHomeInsiderTip } from "@/app/_home/home-insider-tip-data";
 import { CALLOUT, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { getTranslations } from "next-intl/server";
-
-const allTips = [...winterTipsGeneral, ...winterTipsHiking, ...winterTipsPractical];
 
 type Props = { locale?: string };
 
@@ -23,10 +20,10 @@ function ctaHref(category: string): string {
 }
 
 export default async function HomeInsiderTip({ locale }: Props) {
-  const t = locale
-    ? await getTranslations({ locale, namespace: "home" })
-    : await getTranslations("home");
-  const tip = pickDailyWithKey(allTips, "insider-tip");
+  const [t, tip] = await Promise.all([
+    locale ? getTranslations({ locale, namespace: "home" }) : getTranslations("home"),
+    getHomeInsiderTip(locale),
+  ]);
   const key = ctaKey(tip.category);
 
   return (

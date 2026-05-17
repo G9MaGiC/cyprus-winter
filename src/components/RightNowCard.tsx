@@ -4,6 +4,7 @@ import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 function formatKm(n: number): string {
   return n % 1 === 0 ? String(n) : n.toFixed(1);
@@ -21,11 +22,13 @@ export type RightNowItem = {
   timeOfDayMatch: string;
   discoveryBadge: string | null;
   image: string;
-  tease: string;
+  tease: string | null;
 };
 
 export default function RightNowCard({ item }: { item: RightNowItem }) {
-  const badge = item.discoveryBadge ?? item.reasons[0] ?? "Worth a visit";
+  const tHome = useTranslations("home");
+  const badge = item.discoveryBadge ?? item.reasons[0] ?? tHome("rightNow.card.defaultTease");
+  const tease = item.tease ?? tHome("rightNow.card.defaultTease");
 
   return (
     <div
@@ -60,7 +63,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             {item.region} · {item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}
           </p>
           <p className="hidden sm:block text-xs text-olive/90 mt-0.5 leading-relaxed line-clamp-2 break-words">
-            {item.tease}
+            {tease}
           </p>
         </div>
       </AppLink>

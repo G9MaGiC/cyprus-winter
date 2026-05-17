@@ -423,7 +423,7 @@ export default async function AttractionPage({
                     </div>
                   )}
                   <div className="p-4">
-                    <p className={`${TYPE.cardTitle} text-sm break-words`}>{wine.name}</p>
+                    <p className={`${TYPE.cardTitleCompact} break-words`}>{wine.name}</p>
                     {wine.variety && (
                       <p className="text-xs text-olive/70 mt-0.5 break-words">{wine.variety}</p>
                     )}

@@ -48,7 +48,7 @@ export function WeatherStripSkeleton() {
   return (
     <section
       aria-hidden
-      className={`${LAYOUT.safeAreaX} ${STRIP.py} bg-sand/60 border-b border-sand-200/80`}
+      className={`${LAYOUT.safeAreaX} ${STRIP.py} ${STRIP.surfaceSand}`}
     >
       <div className={`${LAYOUT.list} mx-auto flex justify-center`}>
         <div className={`h-6 w-40 ${SKELETON.bar}`} />

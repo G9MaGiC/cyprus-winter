@@ -11,16 +11,22 @@ import { getRecentlyViewed } from "@/lib/recently-viewed";
 import { CARD, TYPE, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
-const typeLabels: Record<string, string> = {
-  beach: "Beach",
-  ancientSite: "Ancient Site",
-  village: "Village",
-  monastery: "Monastery",
-  winery: "Winery",
-  restaurant: "Restaurant",
-  trail: "Trail",
-  event: "Event",
-};
+const PLACE_TYPE_KEYS = [
+  "beach",
+  "ancientSite",
+  "village",
+  "monastery",
+  "winery",
+  "restaurant",
+  "trail",
+  "event",
+] as const;
+
+type PlaceTypeKey = (typeof PLACE_TYPE_KEYS)[number];
+
+function isPlaceTypeKey(type: string): type is PlaceTypeKey {
+  return (PLACE_TYPE_KEYS as readonly string[]).includes(type);
+}
 
 const typePaths: Record<string, string> = {
   trail: "/trails",
@@ -34,6 +40,7 @@ function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string
 export function RecentlyViewedStrip() {
   const tCommon = useTranslations("common");
   const tHome = useTranslations("home");
+  const tPlaceTypes = useTranslations("common.placeTypes");
   const [items, setItems] = useState<ReturnType<typeof getRecentlyViewed>>([]);
   const [isClient, setIsClient] = useState(false);
 
@@ -75,8 +82,10 @@ export function RecentlyViewedStrip() {
               href={getItemPath(item)}
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-l-4 border-l-aegean/40`}
             >
-              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{typeLabels[item.type] || item.type}</p>
-              <p className={`${TYPE.cardTitle} text-sm truncate`}>
+              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>
+                {isPlaceTypeKey(item.type) ? tPlaceTypes(item.type) : item.type}
+              </p>
+              <p className={`${TYPE.cardTitleCompact} truncate`}>
                 {item.name}
               </p>
               <p className="text-xs text-sage mt-0.5 truncate">{item.region}</p>

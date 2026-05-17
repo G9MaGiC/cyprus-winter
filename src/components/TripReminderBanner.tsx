@@ -1,8 +1,9 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
+import { StatusStrip } from "@/components/StatusStrip";
 import { useTripDates } from "@/hooks/useTripDates";
-import { LAYOUT, SECTION, STRIP } from "@/lib/design-tokens";
+import { SECTION, STRIP } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 export default function TripReminderBanner() {
@@ -12,18 +13,18 @@ export default function TripReminderBanner() {
   if (!hydrated || !withinSevenDays || daysUntil === null) return null;
 
   return (
-    <div
-      role="status"
-      className={`${LAYOUT.safeAreaX} ${STRIP.pyCompact} bg-aegean/10 border-b border-aegean/20`}
-    >
-      <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm font-medium text-olive">
+    <StatusStrip variant="aegean" labelledBy="trip-reminder-heading">
+      <div
+        role="status"
+        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 min-h-[44px] py-1"
+      >
+        <p id="trip-reminder-heading" className={STRIP.label}>
           {tPlan("tripReminderBanner", { days: daysUntil })}
         </p>
-        <AppLink href="/plan" className={`text-sm ${SECTION.aegeanLink}`}>
+        <AppLink href="/plan" className={SECTION.aegeanLink}>
           {tPlan("reviewPlan")}
         </AppLink>
       </div>
-    </div>
+    </StatusStrip>
   );
 }

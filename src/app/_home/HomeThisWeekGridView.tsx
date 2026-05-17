@@ -55,10 +55,12 @@ export default function HomeThisWeekGridView({
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>{weatherKicker}</p>
-          <p className="text-2xl font-display font-bold text-charcoal mt-0.5 group-hover:text-terracotta transition-colors text-balance">
+          <p
+            className={`${TYPE.stat} mt-0.5 group-hover:text-terracotta transition-colors text-balance`}
+          >
             {weatherHeading}
           </p>
-          <p className="text-sm text-sage mt-0.5">{weatherTip}</p>
+          <p className={`${TYPE.statSub} mt-0.5`}>{weatherTip}</p>
         </div>
       </AppLink>
 
@@ -67,7 +69,7 @@ export default function HomeThisWeekGridView({
       >
         <AppLink href={trailHref} className={`flex-1 ${CARD.link} ${CARD.content}`}>
           <p className={`${TYPE.kicker} text-sage`}>{trailsKicker}</p>
-          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={trailName}>
+          <p className={`${TYPE.cardTitleCompact} mt-0.5 truncate`} title={trailName}>
             {trailName}
           </p>
           <p className="inline-flex items-center gap-1.5 text-sm text-sage mt-0.5">
@@ -99,7 +101,7 @@ export default function HomeThisWeekGridView({
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>{eventsKicker}</p>
-          <p className={`${TYPE.cardTitle} text-charcoal mt-0.5 truncate`} title={eventTitle}>
+          <p className={`${TYPE.cardTitleCompact} mt-0.5 truncate`} title={eventTitle}>
             {eventTitle}
           </p>
           <p className="text-sm text-sage mt-0.5 line-clamp-2 break-words">{eventSubtitle}</p>

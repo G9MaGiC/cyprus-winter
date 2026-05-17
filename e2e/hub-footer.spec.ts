@@ -21,6 +21,19 @@ test.describe("Hub footer Ask AI", () => {
     });
   });
 
+  test("airport footer Ask AI opens Cyprus Guide dialog", async ({ page }) => {
+    await page.goto("/airport");
+    await expect(page.getByRole("main")).toBeVisible();
+
+    const hubFooter = page.locator('footer[aria-label="Airport page actions"]');
+    await hubFooter.scrollIntoViewIfNeeded();
+    await hubFooter.getByRole("button", { name: /ask ai/i }).click();
+
+    await expect(page.getByRole("dialog", { name: /Cyprus Guide/i })).toBeVisible({
+      timeout: 15_000,
+    });
+  });
+
   test("beaches footer Ask AI opens Cyprus Guide dialog", async ({ page }) => {
     await page.goto("/beaches");
     await expect(page.getByRole("main")).toBeVisible();

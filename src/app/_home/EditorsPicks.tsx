@@ -4,20 +4,21 @@ import Image from "next/image";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import AppLink from "@/components/AppLink";
 import { CARD, TYPE } from "@/lib/design-tokens";
-import { homeEditorsPicks } from "@/data/home";
+import { getHomeEditorsPicks } from "@/app/_home/home-editors-picks-data";
 import { getTranslations } from "next-intl/server";
 
 type Props = { locale?: string };
 
 export default async function EditorsPicks({ locale }: Props) {
-  const [tHome, tCommon] = await Promise.all([
+  const [picks, tHome, tCommon] = await Promise.all([
+    getHomeEditorsPicks(locale),
     locale ? getTranslations({ locale, namespace: "home" }) : getTranslations("home"),
     locale ? getTranslations({ locale, namespace: "common" }) : getTranslations("common"),
   ]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-      {homeEditorsPicks.map((item) => (
+      {picks.map((item) => (
         <div
           key={item.id}
           className={`overflow-hidden rounded-2xl ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
