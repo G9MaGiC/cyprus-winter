@@ -593,6 +593,7 @@
         "invalid": "Nieprawidłowy klucz"
       },
       "signOut": "Wyloguj",
+      "signOutError": "Nie udało się wylogować. Spróbuj ponownie online.",
       "bookingsThisMonth": {
         "title": "Rezerwacje (w tym miesiącu)",
         "total": "Łącznie rezerwacji"

@@ -50,7 +50,9 @@ export async function getPartnerRevenueInRange(start: Date, end?: Date): Promise
       .from("bookings")
       .select("provider_id, provider_name, lead_fee_eur")
       .gte("created_at", startIso)
-      .not("lead_fee_eur", "is", null);
+      .not("lead_fee_eur", "is", null)
+      .order("created_at", { ascending: true })
+      .order("id", { ascending: true });
     if (endIso) query = query.lt("created_at", endIso);
     return query;
   });

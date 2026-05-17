@@ -30,7 +30,9 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
     let query = supabase
       .from("conversion_events")
       .select("event")
-      .gte("created_at", startIso);
+      .gte("created_at", startIso)
+      .order("created_at", { ascending: true })
+      .order("id", { ascending: true });
     if (endIso) query = query.lt("created_at", endIso);
     return query;
   });
@@ -84,7 +86,9 @@ export async function getEventSourceBreakdownInRange(
       .from("conversion_events")
       .select("event, properties")
       .in("event", events)
-      .gte("created_at", startIso);
+      .gte("created_at", startIso)
+      .order("created_at", { ascending: true })
+      .order("id", { ascending: true });
     if (endIso) query = query.lt("created_at", endIso);
     return query;
   });

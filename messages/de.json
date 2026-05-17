@@ -593,6 +593,7 @@
         "invalid": "Ungültiger Schlüssel"
       },
       "signOut": "Abmelden",
+      "signOutError": "Abmelden fehlgeschlagen. Versuchen Sie es online erneut.",
       "bookingsThisMonth": {
         "title": "Buchungen (diesen Monat)",
         "total": "Buchungen insgesamt"

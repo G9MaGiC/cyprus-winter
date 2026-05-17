@@ -26,10 +26,13 @@ export default function AdminStatsPage() {
   const [hasAdminSession, setHasAdminSession] = useState(false);
   const [keyInput, setKeyInput] = useState("");
   const [keyError, setKeyError] = useState<string | null>(null);
+  const [signOutError, setSignOutError] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
 
   const fetchStats = useCallback(() => {
     setLoading(true);
     setKeyError(null);
+    setSignOutError(false);
     fetch("/api/stats", {
       credentials: "include",
     })
@@ -69,6 +72,7 @@ export default function AdminStatsPage() {
     if (!key) return;
     setLoading(true);
     setKeyError(null);
+    setSignOutError(false);
     try {
       const res = await fetch("/api/admin/session", {
         method: "POST",
@@ -89,6 +93,24 @@ export default function AdminStatsPage() {
       setHasAdminSession(false);
       setKeyError("invalid");
       setLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    setSigningOut(true);
+    setSignOutError(false);
+    try {
+      const res = await fetch("/api/admin/session", { method: "DELETE", credentials: "include" });
+      if (!res.ok) {
+        setSignOutError(true);
+        return;
+      }
+      setHasAdminSession(false);
+      setData(null);
+    } catch {
+      setSignOutError(true);
+    } finally {
+      setSigningOut(false);
     }
   };
 
@@ -166,11 +188,8 @@ export default function AdminStatsPage() {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => {
-              void fetch("/api/admin/session", { method: "DELETE", credentials: "include" });
-              setHasAdminSession(false);
-              setData(null);
-            }}
+            onClick={() => void handleSignOut()}
+            disabled={signingOut}
             className="text-sm text-olive/60 hover:text-olive"
           >
             {tAdmin("signOut")}
@@ -178,6 +197,11 @@ export default function AdminStatsPage() {
           <BackLink href="/" label={tNav("home")} />
         </div>
       </div>
+      {signOutError && (
+        <p className="mb-6 text-sm text-terracotta" role="alert">
+          {tAdmin("signOutError")}
+        </p>
+      )}
 
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("bookingsThisMonth.title")}</h2>

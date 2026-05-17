@@ -1,6 +1,6 @@
 /** @vitest-environment jsdom */
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import AdminStatsPage from "./page";
 
@@ -15,6 +15,7 @@ const messages = {
       title: "Admin stats",
       subtitle: "Private stats",
       signOut: "Sign out",
+      signOutError: "Could not sign out",
       loading: "Loading stats",
       loadError: "Could not load {error}",
       key: {
@@ -56,6 +57,7 @@ function renderPage() {
 
 describe("AdminStatsPage", () => {
   beforeEach(() => {
+    cleanup();
     sessionStorage.clear();
     vi.restoreAllMocks();
   });
@@ -105,5 +107,39 @@ describe("AdminStatsPage", () => {
     );
     expect(fetchMock.mock.calls[2][1]).not.toHaveProperty("headers");
     expect(sessionStorage.getItem("cyprus-admin-key")).toBeNull();
+  });
+
+  it("keeps the authenticated view when the HttpOnly logout request fails", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ ok: true }), { status: 200 }))
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            bookingsThisMonth: 0,
+            partnerRevenueEur: 0,
+            partnerRevenueByWinery: [],
+            funnel: [],
+            storage: "supabase",
+          }),
+          { status: 200 }
+        )
+      )
+      .mockResolvedValueOnce(new Response("{}", { status: 500 }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    renderPage();
+
+    const signOut = await screen.findByRole("button", { name: "Sign out" });
+    fireEvent.click(signOut);
+
+    await screen.findByText("Could not sign out");
+    expect(screen.getByRole("button", { name: "Sign out" })).toBeTruthy();
+    expect(screen.queryByLabelText("Admin key")).toBeNull();
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      3,
+      "/api/admin/session",
+      expect.objectContaining({ method: "DELETE", credentials: "include" })
+    );
   });
 });

@@ -12,12 +12,13 @@ type BookingRow = {
   lead_fee_eur: number;
 };
 
-function makeQuery(rows: BookingRow[]) {
+function makeQuery(rows: BookingRow[], orderMock = vi.fn()) {
   const query = {
     select: vi.fn(() => query),
     gte: vi.fn(() => query),
     lt: vi.fn(() => query),
     not: vi.fn(() => query),
+    order: orderMock.mockImplementation(() => query),
     range: vi.fn((from: number, to: number) =>
       Promise.resolve({ data: rows.slice(from, to + 1), error: null })
     ),
@@ -40,8 +41,9 @@ describe("partner revenue stats", () => {
       provider_name: "Tsiakkas Winery",
       lead_fee_eur: 5,
     }));
+    const orderMock = vi.fn();
     vi.mocked(getSupabase).mockReturnValue({
-      from: vi.fn(() => makeQuery(rows)),
+      from: vi.fn(() => makeQuery(rows, orderMock)),
     } as never);
 
     const revenue = await getPartnerRevenueInRange(new Date("2026-05-01T00:00:00.000Z"));
@@ -55,5 +57,7 @@ describe("partner revenue stats", () => {
         totalFeeEur: 6025,
       },
     ]);
+    expect(orderMock).toHaveBeenCalledWith("created_at", { ascending: true });
+    expect(orderMock).toHaveBeenCalledWith("id", { ascending: true });
   });
 });
