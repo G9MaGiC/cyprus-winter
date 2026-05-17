@@ -53,7 +53,7 @@ export default function AdminStatsPage() {
     fetch("/api/admin/session", { credentials: "include" })
       .then((r) => {
         if (!r.ok) return false;
-        setHasAdminSession(true); // eslint-disable-line react-hooks/set-state-in-effect -- client session restore
+        setHasAdminSession(true);
         fetchStats();
         return true;
       })
