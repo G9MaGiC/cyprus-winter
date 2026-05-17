@@ -73,8 +73,8 @@ export default async function AirportPage() {
           </AppLink>
         </ListPageHero>
 
-        <section aria-label="Arrival quick actions" className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
-          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>Arrive faster</p>
+        <section aria-label={tAirport("quickActions.aria")} className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
+          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>{tAirport("quickActions.kicker")}</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
               <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">

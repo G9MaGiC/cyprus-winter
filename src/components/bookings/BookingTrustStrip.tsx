@@ -1,20 +1,24 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 type BookingTrustStripProps = {
   variant?: "winery" | "guide";
 };
 
 export default function BookingTrustStrip({ variant = "winery" }: BookingTrustStripProps) {
-  const context = variant === "guide" ? "guide" : "partner";
+  const t = useTranslations("book.form.trust");
+  const context =
+    variant === "guide" ? t("contextGuide") : t("contextPartner");
+
   return (
-    <section className="rounded-xl border border-aegean/20 bg-aegean/5 p-4" aria-label="Booking trust information">
-      <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Before you submit</p>
+    <section className="rounded-xl border border-aegean/20 bg-aegean/5 p-4" aria-label={t("aria")}>
+      <p className="text-xs font-semibold uppercase tracking-wider text-aegean">{t("heading")}</p>
       <ul className="mt-2 space-y-1.5 text-sm text-olive/85">
-        <li>Verified {context} request route.</li>
-        <li>Confirmation usually arrives by email within 24 hours.</li>
-        <li>No instant charge in-app; providers confirm availability first.</li>
+        <li>{t("verifiedRoute", { context })}</li>
+        <li>{t("emailConfirm")}</li>
+        <li>{t("noCharge")}</li>
       </ul>
     </section>
   );
 }
-

@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import { useEffect } from "react";
 import { trailConditions } from "@/data/trails";
-import { LAYER, LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
@@ -42,7 +42,6 @@ export default function TrailsClient() {
     hasInvalidFilter,
   } = useTrailsFilter();
 
-  const hasAnyTrails = filtered.length > 0;
 
   const reportTrail = unknownTrails[0] ?? filtered[0] ?? null;
 
@@ -252,20 +251,6 @@ export default function TrailsClient() {
         <TrailsTipsSection reportTrail={reportTrail} />
 
         <TrailsFooter reportTrailId={reportTrail?.id} onScrollToMap={scrollToMap} />
-
-        {hasAnyTrails && (
-          <div
-            className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} flex items-center justify-center py-3 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 ${LAYOUT.mobileBottomChromeHidden}`}
-          >
-            <AppLink
-              href="/plan"
-              className={`flex-1 max-w-sm flex justify-center items-center min-h-[48px] px-6 rounded-xl ${CTA.primaryCompact}`}
-              aria-label={tTrailsPage("bottomBar.aria")}
-            >
-              {tCommon("addToPlan")}
-            </AppLink>
-          </div>
-        )}
       </div>
     </div>
   );

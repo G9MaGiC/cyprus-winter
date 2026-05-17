@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import type { ComponentType } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import type { LinkProps } from "@/app/_home/types";
+import AppLink from "@/components/AppLink";
 import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { allPlaces, getAttractionById, getPlaceById } from "@/data";
@@ -87,13 +86,9 @@ function getPlaceOfDayData(overlays: {
   };
 }
 
-export default function HomePlaceOfDay({
-  LinkComponent,
-}: {
-  LinkComponent: ComponentType<LinkProps>;
-}) {
+export default function HomePlaceOfDay() {
   const t = useTranslations("home.placeOfDay");
-  const Link = LinkComponent;
+  const Link = AppLink;
   const place = getPlaceOfDayData({
     goodDay: t("overlays.goodDay"),
     quietWeek: t("overlays.quietWeek"),

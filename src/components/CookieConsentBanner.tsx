@@ -5,6 +5,7 @@ import AppLink from "@/components/AppLink";
 import { CTA, LAYER, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { setCookieConsent, COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
+import { useTranslations } from "next-intl";
 
 function subscribe(callback: () => void) {
   if (typeof window === "undefined") return () => {};
@@ -23,6 +24,7 @@ function getServerSnapshot() {
 }
 
 export default function CookieConsentBanner() {
+  const tCommon = useTranslations("common");
   const choice = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const bannerRef = useRef<HTMLDivElement>(null);
 
@@ -84,8 +86,8 @@ export default function CookieConsentBanner() {
             onClick={handleReject}
             className={`min-h-[44px] px-4 sm:px-5 py-2.5 rounded-lg text-sm font-medium w-full sm:w-auto justify-center ${CTA.secondaryCompact}`}
           >
-            <span className="max-[359px]:hidden">Essential only</span>
-            <span className="min-[360px]:hidden">Essential</span>
+            <span className="max-[359px]:hidden">{tCommon("cookies.essentialOnly")}</span>
+            <span className="min-[360px]:hidden">{tCommon("cookies.essentialShort")}</span>
           </button>
           <button
             type="button"

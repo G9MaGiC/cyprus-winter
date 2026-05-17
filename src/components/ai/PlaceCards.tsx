@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
-import { useLocale } from "next-intl";
 
 type Card = {
   type: string;
@@ -19,11 +18,10 @@ const TYPE_LABELS: Record<string, string> = {
 
 export function PlaceCards({ cards }: { cards: Card[] }) {
   const router = useRouter();
-  const locale = useLocale();
 
   function handleClick(card: Card) {
     const basePath = card.type === "trail" ? "/trails" : "/discover";
-    router.push(`/${locale}${basePath}/${card.id}`);
+    router.push(`${basePath}/${card.id}`);
   }
 
   if (!cards.length) return null;

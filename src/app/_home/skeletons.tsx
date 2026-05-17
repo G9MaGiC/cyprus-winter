@@ -1,4 +1,16 @@
-import { CARD, LAYOUT, SKELETON, STRIP } from "@/lib/design-tokens";
+import { CARD, HERO, LAYOUT, SKELETON, STRIP } from "@/lib/design-tokens";
+
+export function HomeHeroSkeleton() {
+  return (
+    <section aria-hidden className={`${HERO.section} ${LAYOUT.safeAreaX} bg-sand-200/80`}>
+      <div className={`${LAYOUT.list} mx-auto min-h-[280px] sm:min-h-[320px] flex flex-col justify-end pb-10 sm:pb-12`}>
+        <div className={`h-4 w-32 ${SKELETON.bar} mb-4`} />
+        <div className={`h-10 sm:h-12 w-4/5 max-w-lg ${SKELETON.bar} mb-3`} />
+        <div className={`h-5 w-3/5 max-w-md ${SKELETON.bar}`} />
+      </div>
+    </section>
+  );
+}
 
 export function EditorsPicksSkeleton() {
   return (

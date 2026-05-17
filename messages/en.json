@@ -90,6 +90,10 @@
     },
     "addToPlan": "Add to plan",
     "addPlace": "Add place",
+    "cookies": {
+      "essentialOnly": "Essential only",
+      "essentialShort": "Essential"
+    },
     "shareColon": "Share:",
     "bookTasting": "Book a tasting",
     "clearFilters": "Clear filters",
@@ -150,6 +154,7 @@
     "viewOnMap": "View on map",
     "scrollToMap": "Scroll to map",
     "askAI": "Ask AI",
+    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
     "askAITrailsAria": "Ask AI for trail suggestions",
     "askAIRecommendationsAria": "Ask AI for recommendations",
     "hubFooter": {
@@ -297,6 +302,14 @@
         "monasteries": "Monasteries",
         "active": "Active",
         "activeAria": "Active adventures — trails, hiking",
+        "boulderingPlus": "Bouldering+",
+        "boulderingPlusAria": "Bouldering and rock gyms in Cyprus",
+        "climbing": "Rock climbing",
+        "climbingAria": "Rock climbing and crags in Cyprus",
+        "cycling": "Cycling",
+        "cyclingAria": "Cycling routes and bike-friendly trails",
+        "watersports": "Watersports",
+        "watersportsAria": "Watersports — diving, kayaking, coastal adventures",
         "quietEscapes": "Quiet escapes",
         "quietEscapesAria": "Quiet escapes — villages, hidden gems",
         "mountains": "Mountains",
@@ -412,7 +425,39 @@
     "recentlyViewed": {
       "title": "Recently viewed",
       "clear": "Clear"
-    }
+    },
+    "insiderTip": {
+      "heading": "Winter insider tip",
+      "cta": {
+        "hiking": "Check trail conditions",
+        "practical": "See airport tips",
+        "default": "Explore places"
+      }
+    },
+    "templates": {
+      "kicker": "Pre-built itineraries",
+      "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
+      "allTemplates": "All templates →",
+      "items": {
+        "short-stay": { "label": "48 hours", "hint": "Trail, village, wine" },
+        "classic": { "label": "5 days", "hint": "Coast to mountains" },
+        "classic-7": { "label": "7 days", "hint": "Full island sweep" },
+        "mountain-10": { "label": "10 days", "hint": "Hiker immersion" }
+      }
+    },
+    "whyCyprus": {
+      "title": "Why Cyprus in winter",
+      "coastTemp": "Coast often 16–20°C",
+      "troodosCooler": "Troodos cooler — check conditions",
+      "sunset": "Sunset ~5pm in December",
+      "blockquote": "Coast mild. Mountains with snow. Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Stop at a kafenion. Coffee. Nobody hurries.",
+      "rule": "A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.",
+      "tagline": "You came for the warmth. Stay for the pace."
+    },
+    "whyCyprusTeaser": {
+      "quote": "Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Nobody hurries."
+    },
+    "editorsPicksOpenAria": "Open {title}"
   },
   "error": {
     "title": "A small glitch",
@@ -572,6 +617,16 @@
         "greatFor": "Great for",
         "dining": "Dining",
         "shops": "Shops"
+      },
+      "whyNow": {
+        "title": "Why this now",
+        "bestFor": "Best for {types}.",
+        "regionFlow": "{region} is a practical stop for the same day plan flow.",
+        "saveCompare": "Save now to compare with similar options later without losing context."
+      },
+      "trustTiming": {
+        "title": "Trust and timing",
+        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
       }
     },
     "aria": {
@@ -655,6 +710,10 @@
       "sections": {
         "transportTitle": "Transport",
         "tipsTitle": "Things to know"
+      },
+      "quickActions": {
+        "aria": "Arrival quick actions",
+        "kicker": "Arrive faster"
       },
       "footer": {
         "body": "Drop your bags. Find a harbour café. Order a coffee and watch the light. Tonight, just arrive. The island isn't going anywhere.",
@@ -1237,6 +1296,9 @@
         "body": "Pick what excites you. Discover, Right Now, and plan suggestions will lean toward these.",
         "labels": {
           "active": "Hiking & trails",
+          "bouldering": "Bouldering+",
+          "climbing": "Rock climbing",
+          "cycling": "Cycling",
           "culture": "History & archaeology",
           "wine": "Wine & tastings",
           "wellness": "Wellness & relaxation",
@@ -1591,6 +1653,29 @@
     }
   },
   "book": {
+    "form": {
+      "trust": {
+        "aria": "Booking trust information",
+        "heading": "Before you submit",
+        "verifiedRoute": "Verified {context} request route.",
+        "emailConfirm": "Confirmation usually arrives by email within 24 hours.",
+        "noCharge": "No instant charge in-app; providers confirm availability first.",
+        "contextPartner": "partner",
+        "contextGuide": "guide"
+      },
+      "progress": {
+        "aria": "Booking progress",
+        "stepDetails": "Details",
+        "stepSent": "Request sent",
+        "stepConfirmation": "Confirmation"
+      },
+      "states": {
+        "heading": "Booking states:",
+        "wineryBody": "Requested now to confirmed after partner reply.",
+        "guideBody": "Requested now to confirmed after guide reply.",
+        "offlineQueue": "If you are offline, your request is queued as sync pending and retried automatically."
+      }
+    },
     "guideForm": {
       "errors": {
         "failed": "Booking failed",

@@ -18,6 +18,7 @@ export default function WineryBookingForm({
   wineryName: string;
 }) {
   const t = useTranslations("book.wineryForm");
+  const tForm = useTranslations("book.form");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
   const [loading, setLoading] = useState(false);
@@ -170,8 +171,10 @@ export default function WineryBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="winery" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after partner reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p>
+          <strong>{tForm("states.heading")}</strong> {tForm("states.wineryBody")}
+        </p>
+        <p className="mt-1">{tForm("states.offlineQueue")}</p>
       </div>
       {error && (
         <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>

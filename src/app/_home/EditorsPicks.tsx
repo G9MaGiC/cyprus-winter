@@ -1,16 +1,20 @@
+import "server-only";
+
 import Image from "next/image";
-import type { ComponentType } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import type { LinkProps } from "@/app/_home/types";
+import AppLink from "@/components/AppLink";
 import { CARD, TYPE } from "@/lib/design-tokens";
 import { homeEditorsPicks } from "@/data/home";
+import { getTranslations } from "next-intl/server";
 
-export default function EditorsPicks({
-  LinkComponent,
-}: {
-  LinkComponent: ComponentType<LinkProps>;
-}) {
-  const Link = LinkComponent;
+type Props = { locale?: string };
+
+export default async function EditorsPicks({ locale }: Props) {
+  const [tHome, tCommon] = await Promise.all([
+    locale ? getTranslations({ locale, namespace: "home" }) : getTranslations("home"),
+    locale ? getTranslations({ locale, namespace: "common" }) : getTranslations("common"),
+  ]);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
       {homeEditorsPicks.map((item) => (
@@ -18,7 +22,12 @@ export default function EditorsPicks({
           key={item.id}
           className={`overflow-hidden rounded-2xl ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
         >
-          <Link href={item.href} prefetch="auto" className={`block flex-1 ${CARD.link}`} aria-label={`Open ${item.title}`}>
+          <AppLink
+            href={item.href}
+            prefetch="auto"
+            className={`block flex-1 ${CARD.link}`}
+            aria-label={tHome("editorsPicksOpenAria", { title: item.title })}
+          >
             <div className={CARD.media}>
               <Image
                 src={item.image}
@@ -27,19 +36,29 @@ export default function EditorsPicks({
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
+                aria-hidden
+              />
             </div>
             <div className={CARD.content}>
-              <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={item.title}>{item.title}</h3>
-              <p className="text-sm text-sage mt-1 leading-relaxed line-clamp-2 break-words">{item.desc}</p>
+              <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={item.title}>
+                {item.title}
+              </h3>
+              <p className="text-sm text-sage mt-1 leading-relaxed line-clamp-2 break-words">
+                {item.desc}
+              </p>
             </div>
-          </Link>
+          </AppLink>
           <div className={CARD.footer}>
-            <AddToItineraryButton placeId={item.id} label="Add to plan" className="text-sm" />
+            <AddToItineraryButton
+              placeId={item.id}
+              label={tCommon("addToPlan")}
+              className="text-sm"
+            />
           </div>
         </div>
       ))}
     </div>
   );
 }
-

@@ -125,7 +125,7 @@ export default function OnboardingModal() {
     dispatchBlockingOverlayDirty();
   }, [visible, showOnboarding, skipRoute]);
 
-  const blockingActive = showOnboarding && !skipRoute;
+  const blockingActive = showOnboarding && !skipRoute && visible;
 
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");

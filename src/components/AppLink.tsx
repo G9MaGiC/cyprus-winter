@@ -20,23 +20,25 @@ function isHashOnly(href: string): boolean {
 
 /**
  * Locale-aware link wrapper. Uses next-intl Link for internal routes (preserves locale),
- * NextLink for external URLs and hash anchors. Prefetch="auto" avoids Next.js 16
- * prefetch+loading hang (vercel/next.js#85162).
+ * NextLink for external URLs and hash anchors. Prefetch="auto" on same-locale links
+ * avoids Next.js 16 prefetch+loading hang (vercel/next.js#85162). Omits prefetch when
+ * `locale` is set (locale switcher) — next-intl does not support prefetch with `locale`.
  */
 export default function AppLink(props: React.ComponentProps<typeof NextLink>) {
-  const { href, locale, ...rest } = props;
+  const { href, locale, prefetch, ...rest } = props;
   const hrefStr = typeof href === "string" ? href : href?.toString() ?? "";
+  const localeSwitch = typeof locale === "string";
+  const resolvedPrefetch = prefetch ?? "auto";
 
   if (isExternal(hrefStr) || isHashOnly(hrefStr)) {
-    return <NextLink prefetch="auto" href={href} {...rest} />;
+    return <NextLink prefetch={resolvedPrefetch} href={href} {...rest} />;
   }
 
   return (
     <IntlLink
-      prefetch="auto"
       href={href}
       {...rest}
-      {...(typeof locale === "string" ? { locale } : {})}
+      {...(localeSwitch ? { locale } : { prefetch: resolvedPrefetch })}
     />
   );
 }

@@ -292,7 +292,7 @@ export async function POST(req: Request) {
                   fullContent += content;
                   const delimIdx = fullContent.indexOf(delimiter);
                   if (delimIdx === -1) {
-                    const toSend = fullContent.slice(sentProseUpTo);
+                    const toSend = sanitizeText(fullContent.slice(sentProseUpTo));
                     if (toSend) {
                       controller.enqueue(encoder.encode(emitChunk({ delta: toSend })));
                       sentProseUpTo = fullContent.length;
@@ -304,7 +304,7 @@ export async function POST(req: Request) {
               // Flush remaining prose and optional metadata
               const delimIdx = fullContent.indexOf(delimiter);
               if (delimIdx !== -1) {
-                const unseenProse = fullContent.slice(sentProseUpTo, delimIdx).trim();
+                const unseenProse = sanitizeText(fullContent.slice(sentProseUpTo, delimIdx).trim());
                 if (unseenProse) {
                   controller.enqueue(encoder.encode(emitChunk({ delta: unseenProse })));
                 }
@@ -321,7 +321,10 @@ export async function POST(req: Request) {
               for await (const chunk of completion) {
                 const content = chunk.choices[0]?.delta?.content;
                 if (content) {
-                  controller.enqueue(encoder.encode(emitChunk({ delta: content })));
+                  const safe = sanitizeText(content);
+                  if (safe) {
+                    controller.enqueue(encoder.encode(emitChunk({ delta: safe })));
+                  }
                 }
               }
             }

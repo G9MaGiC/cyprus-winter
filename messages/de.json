@@ -146,6 +146,7 @@
     "viewOnMap": "Auf der Karte ansehen",
     "scrollToMap": "Zur Karte scrollen",
     "askAI": "Ask AI",
+    "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
     "askAITrailsAria": "Ask AI nach Trail-Vorschlägen",
     "askAIRecommendationsAria": "Ask AI nach Empfehlungen",
     "hubFooter": {
@@ -201,7 +202,11 @@
     "done": "Fertig",
     "clearDay": "Tag leeren",
     "clearDayTitle": "Tag {day} leeren?",
-    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
+    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen.",
+    "cookies": {
+      "essentialOnly": "Nur essenziell",
+      "essentialShort": "Essenziell"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -297,7 +302,15 @@
         "mountainsAria": "Berge — Troodos‑Trails",
         "wellness": "Wellness",
         "wellnessAria": "Wellness — Klöster, stille Orte",
-        "regionAria": "Region {region}"
+        "regionAria": "Region {region}",
+        "boulderingPlus": "Bouldering+",
+        "boulderingPlusAria": "Bouldern und Kletterhallen auf Zypern",
+        "climbing": "Klettern",
+        "climbingAria": "Felsklettern und Klettergebiete auf Zypern",
+        "cycling": "Radfahren",
+        "cyclingAria": "Radwege und fahrradfreundliche Strecken",
+        "watersports": "Wassersport",
+        "watersportsAria": "Wassersport — Tauchen, Kajak, Küstenabenteuer"
       }
     },
     "share": {
@@ -406,7 +419,51 @@
     "recentlyViewed": {
       "title": "Zuletzt angesehen",
       "clear": "Löschen"
-    }
+    },
+    "insiderTip": {
+      "heading": "Winter-Insider-Tipp",
+      "cta": {
+        "hiking": "Trail-Bedingungen prüfen",
+        "practical": "Flughafen-Tipps",
+        "default": "Orte entdecken"
+      }
+    },
+    "templates": {
+      "kicker": "Fertige Reiserouten",
+      "subtitle": "Kuratiert von Experten. Realistisches Tempo. Hier starten, dann anpassen.",
+      "allTemplates": "Alle Vorlagen →",
+      "items": {
+        "short-stay": {
+          "label": "48 Stunden",
+          "hint": "Trail, Dorf, Wein"
+        },
+        "classic": {
+          "label": "5 Tage",
+          "hint": "Küste bis Berge"
+        },
+        "classic-7": {
+          "label": "7 Tage",
+          "hint": "Ganze Insel"
+        },
+        "mountain-10": {
+          "label": "10 Tage",
+          "hint": "Wander-Fokus"
+        }
+      }
+    },
+    "whyCyprus": {
+      "title": "Warum Zypern im Winter",
+      "coastTemp": "Küste oft 16–20°C",
+      "troodosCooler": "Troodos kühler — Bedingungen prüfen",
+      "sunset": "Sonnenuntergang ~17 Uhr im Dezember",
+      "blockquote": "Milde Küste. Berge mit Schnee. Morgens wandern, mittags draußen essen. Antike Stätten leer, Dörfer ruhig. Pause im Kafenion. Kaffee. Niemand hetzt.",
+      "rule": "Kleine Regel: ein Trail, ein Dorf, eine Verkostung. Unterwegs zum Plan hinzufügen.",
+      "tagline": "Sie kamen wegen der Wärme. Bleiben Sie wegen des Tempos."
+    },
+    "whyCyprusTeaser": {
+      "quote": "Morgens wandern, mittags draußen essen. Antike Stätten leer, Dörfer ruhig. Niemand hetzt."
+    },
+    "editorsPicksOpenAria": "{title} öffnen"
   },
   "error": {
     "title": "Ein kleines Problem",
@@ -566,6 +623,16 @@
         "greatFor": "Ideal für",
         "dining": "Essen",
         "shops": "Shops"
+      },
+      "whyNow": {
+        "title": "Warum jetzt",
+        "bestFor": "Ideal für {types}.",
+        "regionFlow": "{region} ist ein praktischer Stopp für denselben Tagesplan.",
+        "saveCompare": "Jetzt speichern, um später ähnliche Optionen zu vergleichen, ohne den Kontext zu verlieren."
+      },
+      "trustTiming": {
+        "title": "Vertrauen und Timing",
+        "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeit. Erst in den Plan, dann bestätigen."
       }
     },
     "aria": {
@@ -658,6 +725,10 @@
         "planWeekCta": "Planen Sie Ihre erste Woche",
         "discoverCta": "Orte entdecken",
         "weatherCta": "Wetter prüfen"
+      },
+      "quickActions": {
+        "aria": "Schnellaktionen bei Ankunft",
+        "kicker": "Schneller ankommen"
       }
     }
   },
@@ -1267,7 +1338,10 @@
           "culture": "Geschichte & Archäologie",
           "wine": "Wein & Verkostungen",
           "wellness": "Wellness & Entspannung",
-          "villages": "Bergdörfer"
+          "villages": "Bergdörfer",
+          "bouldering": "Bouldering+",
+          "climbing": "Felsklettern",
+          "cycling": "Radfahren"
         }
       },
       "travelStyle": {
@@ -1747,6 +1821,29 @@
           "callPrefix": "Oder anrufen",
           "callSuffix": "um zu reservieren oder Verfügbarkeit zu prüfen — meist helfen sie gerne."
         }
+      }
+    },
+    "form": {
+      "trust": {
+        "aria": "Vertrauensinformationen zur Buchung",
+        "heading": "Vor dem Absenden",
+        "verifiedRoute": "Verifizierte {context}-Anfrageroute.",
+        "emailConfirm": "Bestätigung meist per E-Mail innerhalb von 24 Stunden.",
+        "noCharge": "Keine Sofortzahlung in der App; Anbieter bestätigen zuerst die Verfügbarkeit.",
+        "contextPartner": "Partner",
+        "contextGuide": "Guide"
+      },
+      "progress": {
+        "aria": "Buchungsfortschritt",
+        "stepDetails": "Details",
+        "stepSent": "Anfrage gesendet",
+        "stepConfirmation": "Bestätigung"
+      },
+      "states": {
+        "heading": "Buchungsstatus:",
+        "wineryBody": "Jetzt angefragt — nach Partnerantwort bestätigt.",
+        "guideBody": "Jetzt angefragt — nach Guide-Antwort bestätigt.",
+        "offlineQueue": "Offline wird Ihre Anfrage in die Sync-Warteschlange gestellt und automatisch wiederholt."
       }
     }
   },

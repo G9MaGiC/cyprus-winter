@@ -1166,3 +1166,39 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-095 | Analytics | Hub footer Plan/Ask AI untracked | `hub_footer_click` on `HubFooter` + detail Ask AI |
 | BUG-096 | i18n | DE/PL/EL EN placeholders for QA strings | `scripts/i18n/patch-cto-locale-polish.mjs` |
 | BUG-097 | E2E | Events hub footer untested | `hub-footer.spec.ts` events case |
+
+---
+
+## CTO hardening pass — May 17, 2026 (full fix)
+
+*Act-as-CTO: automated gates + P1 code fixes + CI hardening.*
+
+### Automated baseline
+
+| Check | Result |
+|-------|--------|
+| `npm run lint -- --max-warnings 0` | Pass |
+| `npm run typecheck` | Pass |
+| `npm run test` | Pass (473) |
+| `npm run i18n:validate` | Pass (1419 keys × 4 locales) |
+| `npm run i18n:scan -- --fail` | Pass (0 hardcoded strings) |
+
+### Findings fixed (BUG-098–106)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-098 | Lint | Unused `LAYER` import in `TrailsClient.tsx` | Removed |
+| BUG-099 | i18n routing | AI `ActionButtons` / `PlaceCards` prepended `/${locale}` — broke Strategy A for English | Use `@/i18n/navigation` paths only (no manual locale prefix) |
+| BUG-100 | Security | Chat SSE deltas not server-sanitized | `sanitizeText()` on each streaming delta |
+| BUG-101 | i18n | Home footer blocks hardcoded EN (`HomeInsiderTip`, `HomeTemplateLinks`, `WhyCyprus*`, `EditorsPicks`) | Server `getTranslations` + keys in en/el/de/pl |
+| BUG-102 | i18n | `RightNowNearYou` default title hardcoded | `tHome("rightNowNearYou")` |
+| BUG-103 | i18n | 18 hardcoded booking/airport/discover/cookie strings | `book.form.*`, `discover.detail.*`, `airport.page.quickActions`, `common.cookies` |
+| BUG-104 | Visual | Discover booking heading `className="${TYPE.kicker}..."` (broken template) | Fixed to template literal + i18n trust block |
+| BUG-105 | CI | Lint warnings + hardcoded scan not enforced | `--max-warnings 0`; `i18n:scan --fail` in quality job |
+| BUG-106 | Home RSC | Weather/search/trails/this-week/share server-client split | `home-*-data.ts` + `*View.tsx` wrappers (prior session, verified build) |
+
+### Deploy note (unchanged)
+
+| ID | Area | Issue | Action |
+|----|------|-------|--------|
+| BUG-071 | Ops | Redis rate limits optional in prod | Set `UPSTASH_REDIS_REST_*` on Vercel before launch |

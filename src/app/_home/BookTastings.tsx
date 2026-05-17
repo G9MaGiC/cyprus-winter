@@ -1,19 +1,15 @@
+"use client";
+
 import Image from "next/image";
-import type { ComponentType } from "react";
+import AppLink from "@/components/AppLink";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 import { homeFeaturedWineries } from "@/data/home";
 import { wineries } from "@/data/wineries";
-import type { LinkProps } from "@/app/_home/types";
 
-export default function BookTastings({
-  LinkComponent,
-}: {
-  LinkComponent: ComponentType<LinkProps>;
-}) {
+export default function BookTastings() {
   const tCommon = useTranslations("common");
-  const Link = LinkComponent;
   const featured = homeFeaturedWineries.map((w) => {
     const full = wineries.find((x) => x.id === w.wineryId);
     return {
@@ -27,7 +23,7 @@ export default function BookTastings({
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
       {featured.map((w) => (
         <div key={w.wineryId} className={`overflow-hidden rounded-2xl ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}>
-          <Link href={`/discover/${w.wineryId}`} prefetch="auto" className={`${CARD.link} flex-1`} aria-label={`View ${w.name}`}>
+          <AppLink href={`/discover/${w.wineryId}`} prefetch="auto" className={`${CARD.link} flex-1`} aria-label={`View ${w.name}`}>
             <div className={CARD.media}>
               <Image
                 src={w.image}
@@ -46,25 +42,25 @@ export default function BookTastings({
               <p className="text-sm text-olive/70 mt-1">{w.region}</p>
               <p className="text-sm text-sage mt-3 leading-relaxed line-clamp-2 break-words">{w.subtitle}</p>
             </div>
-          </Link>
+          </AppLink>
           <div className={CARD.footer}>
             <div className="flex flex-wrap items-center gap-3">
-              <Link
+              <AppLink
                 href={`/book/winery/${w.wineryId}`}
                 prefetch="auto"
                 className={CTA.primaryCompact}
                 aria-label={`${tCommon("bookTasting")} — ${w.name}`}
               >
                 {tCommon("bookTasting")}
-              </Link>
-              <Link
+              </AppLink>
+              <AppLink
                 href="/wineries"
                 prefetch="auto"
                 className={`text-sm ${SECTION.aegeanLink}`}
                 aria-label={tCommon("exploreWineries")}
               >
                 {tCommon("exploreWineries")}
-              </Link>
+              </AppLink>
             </div>
           </div>
         </div>

@@ -146,6 +146,7 @@
     "viewOnMap": "Zobacz na mapie",
     "scrollToMap": "Przewiń do mapy",
     "askAI": "Zapytaj AI",
+    "askAIAria": "Zapytaj AI o szlaki, winnice i pomysły na wycieczkę",
     "askAITrailsAria": "Zapytaj AI o propozycje szlaków",
     "askAIRecommendationsAria": "Zapytaj AI o rekomendacje",
     "hubFooter": {
@@ -201,7 +202,11 @@
     "done": "Gotowe",
     "clearDay": "Wyczyść dzień",
     "clearDayTitle": "Wyczyścić Dzień {day}?",
-    "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie."
+    "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie.",
+    "cookies": {
+      "essentialOnly": "Tylko niezbędne",
+      "essentialShort": "Niezbędne"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -297,7 +302,15 @@
         "mountainsAria": "Góry — szlaki Troodos",
         "wellness": "Wellness",
         "wellnessAria": "Wellness — klasztory, ciche miejsca",
-        "regionAria": "Region {region}"
+        "regionAria": "Region {region}",
+        "boulderingPlus": "Bouldering+",
+        "boulderingPlusAria": "Bouldering i ścianki wspinaczkowe na Cyprze",
+        "climbing": "Wspinaczka",
+        "climbingAria": "Wspinaczka skałkowa i rejony na Cyprze",
+        "cycling": "Kolarstwo",
+        "cyclingAria": "Trasy rowerowe i szlaki przyjazne rowerom",
+        "watersports": "Sporty wodne",
+        "watersportsAria": "Sporty wodne — nurkowanie, kajaki, przybrzeżne"
       }
     },
     "share": {
@@ -406,7 +419,51 @@
     "recentlyViewed": {
       "title": "Ostatnio oglądane",
       "clear": "Wyczyść"
-    }
+    },
+    "insiderTip": {
+      "heading": "Zimowa wskazówka insider",
+      "cta": {
+        "hiking": "Sprawdź warunki na szlakach",
+        "practical": "Wskazówki lotniskowe",
+        "default": "Odkrywaj miejsca"
+      }
+    },
+    "templates": {
+      "kicker": "Gotowe plany podróży",
+      "subtitle": "Kuracja ekspertów. Realistyczne tempo. Zacznij tutaj, potem dopasuj.",
+      "allTemplates": "Wszystkie szablony →",
+      "items": {
+        "short-stay": {
+          "label": "48 godzin",
+          "hint": "Szlak, wieś, wino"
+        },
+        "classic": {
+          "label": "5 dni",
+          "hint": "Od wybrzeża po góry"
+        },
+        "classic-7": {
+          "label": "7 dni",
+          "hint": "Cała wyspa"
+        },
+        "mountain-10": {
+          "label": "10 dni",
+          "hint": "Dla piechurów"
+        }
+      }
+    },
+    "whyCyprus": {
+      "title": "Dlaczego Cypr zimą",
+      "coastTemp": "Wybrzeże często 16–20°C",
+      "troodosCooler": "Troodos chłodniej — sprawdź warunki",
+      "sunset": "Zachód słońca ~17:00 w grudniu",
+      "blockquote": "Łagodne wybrzeże. Góry ze śniegiem. Rano szlak, obiad na zewnątrz. Puste zabytki, ciche wioski. Postój w kafenion. Kawa. Nikt się nie spieszy.",
+      "rule": "Mała zasada: jeden szlak, jedna wieś, jedna degustacja. Dodawaj do planu w drodze.",
+      "tagline": "Przyjechałeś po ciepło. Zostań dla tempa."
+    },
+    "whyCyprusTeaser": {
+      "quote": "Rano szlak, obiad na zewnątrz. Puste zabytki, ciche wioski. Nikt się nie spieszy."
+    },
+    "editorsPicksOpenAria": "Otwórz {title}"
   },
   "error": {
     "title": "Drobna usterka",
@@ -566,6 +623,16 @@
         "greatFor": "Najlepsze dla",
         "dining": "Jedzenie",
         "shops": "Sklepy"
+      },
+      "whyNow": {
+        "title": "Dlaczego teraz",
+        "bestFor": "Najlepsze dla {types}.",
+        "regionFlow": "{region} to praktyczny przystanek w tym samym planie dnia.",
+        "saveCompare": "Zapisz teraz, by później porównać podobne opcje bez utraty kontekstu."
+      },
+      "trustTiming": {
+        "title": "Zaufanie i czas",
+        "body": "Zweryfikowane dane partnera i praktyczna dostępność. Najpierw dodaj do planu, potem potwierdź."
       }
     },
     "aria": {
@@ -658,6 +725,10 @@
         "planWeekCta": "Zaplanuj pierwszy tydzień",
         "discoverCta": "Odkrywaj miejsca",
         "weatherCta": "Sprawdź pogodę"
+      },
+      "quickActions": {
+        "aria": "Szybkie działania po przylocie",
+        "kicker": "Szybciej na miejscu"
       }
     }
   },
@@ -1436,7 +1507,10 @@
           "culture": "Historia i archeologia",
           "wine": "Wino i degustacje",
           "wellness": "Wellness i relaks",
-          "villages": "Górskie wioski"
+          "villages": "Górskie wioski",
+          "bouldering": "Bouldering+",
+          "climbing": "Wspinaczka skałkowa",
+          "cycling": "Kolarstwo"
         }
       },
       "travelStyle": {
@@ -1747,6 +1821,29 @@
           "callPrefix": "Albo zadzwoń",
           "callSuffix": "aby zarezerwować lub sprawdzić dostępność — zwykle chętnie pomagają."
         }
+      }
+    },
+    "form": {
+      "trust": {
+        "aria": "Informacje o zaufaniu rezerwacji",
+        "heading": "Przed wysłaniem",
+        "verifiedRoute": "Zweryfikowana trasa zapytania {context}.",
+        "emailConfirm": "Potwierdzenie zwykle e-mailem w ciągu 24 godzin.",
+        "noCharge": "Bez natychmiastowej opłaty w aplikacji; dostawcy najpierw potwierdzają dostępność.",
+        "contextPartner": "partnera",
+        "contextGuide": "przewodnika"
+      },
+      "progress": {
+        "aria": "Postęp rezerwacji",
+        "stepDetails": "Szczegóły",
+        "stepSent": "Wysłano zapytanie",
+        "stepConfirmation": "Potwierdzenie"
+      },
+      "states": {
+        "heading": "Statusy rezerwacji:",
+        "wineryBody": "Zapytanie teraz — potwierdzenie po odpowiedzi partnera.",
+        "guideBody": "Zapytanie teraz — potwierdzenie po odpowiedzi przewodnika.",
+        "offlineQueue": "Offline zapytanie trafia do kolejki synchronizacji i jest ponawiane automatycznie."
       }
     }
   },

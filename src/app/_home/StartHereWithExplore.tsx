@@ -1,6 +1,7 @@
-import type { ComponentType } from "react";
+"use client";
+
+import AppLink from "@/components/AppLink";
 import { CARD, CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import type { LinkProps } from "@/app/_home/types";
 import { useTranslations } from "next-intl";
 
 type StartHereItem = {
@@ -24,13 +25,8 @@ function chipClass(v: Chip["variant"]) {
   return CTA.chipTertiary;
 }
 
-export default function StartHereWithExplore({
-  LinkComponent,
-}: {
-  LinkComponent: ComponentType<LinkProps>;
-}) {
+export default function StartHereWithExplore() {
   const tHome = useTranslations("home");
-  const Link = LinkComponent;
   const startItems: StartHereItem[] = [
     {
       title: tHome("startHere.card.discoverTitle"),
@@ -78,9 +74,13 @@ export default function StartHereWithExplore({
 
   const moodChips: Chip[] = [
     { href: "/trails", label: tHome("startHere.chip.active"), ariaLabel: tHome("startHere.chip.activeAria"), variant: "secondary" },
+    { href: "/search?q=bouldering", label: tHome("startHere.chip.boulderingPlus"), ariaLabel: tHome("startHere.chip.boulderingPlusAria"), variant: "secondary" },
+    { href: "/search?q=climbing", label: tHome("startHere.chip.climbing"), ariaLabel: tHome("startHere.chip.climbingAria"), variant: "secondary" },
+    { href: "/search?q=cycling", label: tHome("startHere.chip.cycling"), ariaLabel: tHome("startHere.chip.cyclingAria"), variant: "secondary" },
+    { href: "/search?q=watersports", label: tHome("startHere.chip.watersports"), ariaLabel: tHome("startHere.chip.watersportsAria"), variant: "secondary" },
     { href: "/discover?filter=quiet", label: tHome("startHere.chip.quietEscapes"), ariaLabel: tHome("startHere.chip.quietEscapesAria"), variant: "secondary" },
     { href: "/trails", label: tHome("startHere.chip.mountains"), ariaLabel: tHome("startHere.chip.mountainsAria"), variant: "secondary" },
-    { href: "/discover?filter=monastery", label: tHome("startHere.chip.wellness"), ariaLabel: tHome("startHere.chip.wellnessAria"), variant: "secondary" },
+    { href: "/discover?filter=quiet", label: tHome("startHere.chip.wellness"), ariaLabel: tHome("startHere.chip.wellnessAria"), variant: "secondary" },
   ];
   return (
     <section
@@ -102,7 +102,7 @@ export default function StartHereWithExplore({
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
           {startItems.map((item) => (
-            <Link
+            <AppLink
               key={item.title}
               href={item.href}
               prefetch="auto"
@@ -126,7 +126,7 @@ export default function StartHereWithExplore({
                   {item.cta}
                 </span>
               </div>
-            </Link>
+            </AppLink>
           ))}
         </div>
 
@@ -138,9 +138,9 @@ export default function StartHereWithExplore({
             aria-label={tHome("startHere.aria.browseByCategory")}
           >
             {categoryChips.map((c) => (
-              <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+              <AppLink key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
                 {c.label}
-              </Link>
+              </AppLink>
             ))}
           </div>
           <div
@@ -153,32 +153,36 @@ export default function StartHereWithExplore({
           <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreMore")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {exploreMoreChips.map((c) => (
-              <Link key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+              <AppLink key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
                 {c.label}
-              </Link>
+              </AppLink>
             ))}
           </div>
         </div>
 
-        <div>
+        <div className="relative">
           <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreByMood")}</p>
           <div
-            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+            className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-2 sm:gap-3 pb-2 -mx-1 md:mx-0 px-1 md:px-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="navigation"
             aria-label={tHome("startHere.aria.exploreByMood")}
           >
             {moodChips.map((m) => (
-              <Link
+              <AppLink
                 key={m.href + m.label}
                 href={m.href}
                 prefetch="auto"
-                className={CTA.chipSecondary}
+                className={`${CTA.chipSecondary} shrink-0 snap-start`}
                 aria-label={m.ariaLabel}
               >
                 {m.label}
-              </Link>
+              </AppLink>
             ))}
           </div>
+          <div
+            className="pointer-events-none absolute right-0 top-8 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
+            aria-hidden
+          />
         </div>
       </div>
     </section>

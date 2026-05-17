@@ -4,7 +4,15 @@
  * Synced to Supabase when user is authenticated (Phase 2+).
  */
 
-export type Interest = "active" | "culture" | "wine" | "wellness" | "villages";
+export type Interest =
+  | "active"
+  | "bouldering"
+  | "climbing"
+  | "cycling"
+  | "culture"
+  | "wine"
+  | "wellness"
+  | "villages";
 export type TravelerType = "solo" | "couple" | "family" | "group" | "nomad";
 
 export type UserPreferences = {
@@ -55,7 +63,16 @@ function save(prefs: UserPreferences) {
 }
 
 function isInterest(v: string): v is Interest {
-  return ["active", "culture", "wine", "wellness", "villages"].includes(v);
+  return [
+    "active",
+    "bouldering",
+    "climbing",
+    "cycling",
+    "culture",
+    "wine",
+    "wellness",
+    "villages",
+  ].includes(v);
 }
 
 function isTravelerType(v: string): v is TravelerType {
@@ -100,6 +117,9 @@ export function toggleFavoriteRegion(region: string): UserPreferences {
 
 export const INTEREST_LABELS: Record<Interest, string> = {
   active: "Hiking & trails",
+  bouldering: "Bouldering+",
+  climbing: "Rock climbing",
+  cycling: "Cycling",
   culture: "History & archaeology",
   wine: "Wine & tastings",
   wellness: "Wellness & relaxation",

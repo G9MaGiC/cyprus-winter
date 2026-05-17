@@ -21,6 +21,7 @@ export default function GuideBookingForm({
   preselectedTrailId?: string | null;
 }) {
   const t = useTranslations("book.guideForm");
+  const tForm = useTranslations("book.form");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
   const searchParams = useSearchParams();
@@ -172,8 +173,10 @@ export default function GuideBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="guide" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after guide reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p>
+          <strong>{tForm("states.heading")}</strong> {tForm("states.guideBody")}
+        </p>
+        <p className="mt-1">{tForm("states.offlineQueue")}</p>
       </div>
       {error && (
         <p
