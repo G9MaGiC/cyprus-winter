@@ -20,6 +20,7 @@ import EditorsPicks from "@/app/_home/EditorsPicks";
 import BookTastings from "@/app/_home/BookTastings";
 import {
   BookTastingsSkeleton,
+  SearchSectionSkeleton,
   WeatherStripSkeleton,
   ThisWeekSkeleton,
 } from "@/app/_home/skeletons";
@@ -56,11 +57,11 @@ export default async function HomePageContent({
       </div>
       <TripReminderBanner />
       <StartHereWithExplore />
-      <Suspense fallback={null}>
+      <Suspense fallback={<SearchSectionSkeleton />}>
         <HomeSearchSection locale={locale} />
       </Suspense>
       <HomeWhyCyprusTeaser locale={locale} />
-      <Suspense fallback={null}>
+      <Suspense fallback={<WeatherStripSkeleton />}>
         <HomeTrailConditionsStrip locale={locale} />
       </Suspense>
       <RightNowNearYou />

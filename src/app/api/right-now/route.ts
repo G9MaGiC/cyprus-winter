@@ -137,7 +137,7 @@ function buildReasons(item: {
 }): string[] {
   const reasons: string[] = [];
   if (item.discoveryBadge) reasons.push(item.discoveryBadge);
-  if (item.distanceKm < 15) reasons.push("Nearby");
-  if (item.localSecret) reasons.push("Local secret");
-  return reasons.length > 0 ? reasons : ["Worth a visit"];
+  if (item.distanceKm < 15) reasons.push("nearby");
+  if (item.localSecret) reasons.push("local_secret");
+  return reasons.length > 0 ? reasons : ["worth_visit"];
 }

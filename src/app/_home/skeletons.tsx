@@ -44,6 +44,17 @@ export function BookTastingsSkeleton() {
   );
 }
 
+export function SearchSectionSkeleton() {
+  return (
+    <section aria-hidden className={`${LAYOUT.safeAreaX} py-8 sm:py-10`}>
+      <div className={`${LAYOUT.list} mx-auto`}>
+        <div className={`h-4 w-48 ${SKELETON.bar} mb-3 mx-auto`} />
+        <div className={`h-12 w-full max-w-xl mx-auto ${SKELETON.bar} rounded-xl`} />
+      </div>
+    </section>
+  );
+}
+
 export function WeatherStripSkeleton() {
   return (
     <section

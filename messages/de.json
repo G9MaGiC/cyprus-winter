@@ -205,7 +205,11 @@
     "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen.",
     "cookies": {
       "essentialOnly": "Nur essenziell",
-      "essentialShort": "Essenziell"
+      "essentialShort": "Essenziell",
+      "title": "Cookie-Einwilligung.",
+      "body": "Wir nutzen notwendige Cookies für den Dienst und optionale Analytics zur Verbesserung. Mit „Akzeptieren“ erlauben Sie Analytics.",
+      "accept": "Akzeptieren",
+      "learnMore": "Mehr erfahren"
     },
     "placeTypes": {
       "beach": "Strand",
@@ -259,7 +263,8 @@
       "viewAllConditions": "Alle Bedingungen ansehen →",
       "whatsOn": "Was los ist",
       "events": "Veranstaltungen",
-      "browseWinterEvents": "Winter-Veranstaltungen ansehen"
+      "browseWinterEvents": "Winter-Veranstaltungen ansehen",
+      "eventsTeaser": "Epiphanie, Karneval, Märkte — stöbern Sie, was läuft"
     },
     "editorsPicks": {
       "title": "Tipps der Redaktion",
@@ -355,7 +360,9 @@
       "shareText": "Cyprus Winter — das bestgehütete Geheimnis des Mittelmeers. Trails, Dörfer, Kulturerbe. Oft sechzehn Grad, wenn daheim sechs sind."
     },
     "hero": {
-      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
+      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter",
+      "familyPicksLink": "Familienfreundliche Tipps",
+      "templateLink": "48-Stunden-Vorlage"
     },
     "search": {
       "srHeading": "Orte und Wanderwege suchen",
@@ -430,7 +437,15 @@
         "farther": "Weiter"
       },
       "card": {
-        "defaultTease": "Im Winter einen Besuch wert."
+        "defaultTease": "Im Winter einen Besuch wert.",
+        "add": "Hinzufügen",
+        "distanceLessThanKm": "< 1 km",
+        "distanceKm": "{distance} km"
+      },
+      "reasons": {
+        "nearby": "In der Nähe",
+        "local_secret": "Lokales Geheimnis",
+        "worth_visit": "Einen Besuch wert"
       }
     },
     "placeOfDay": {
@@ -1264,6 +1279,9 @@
       "copyItinerary": "Reiseplan kopieren (Text)",
       "copied": "Kopiert",
       "shareTextPrefix": "Mein Zypern-Winter-Reiseplan —"
+    },
+    "footer": {
+      "winterTip": "Tipp: Es wird gegen 17 Uhr dunkel. Starten Sie Trails bis 10 Uhr und buchen Sie Verkostungen 24–48 Stunden vorher."
     }
   },
   "placePicker": {

@@ -92,7 +92,11 @@
     "addPlace": "Add place",
     "cookies": {
       "essentialOnly": "Essential only",
-      "essentialShort": "Essential"
+      "essentialShort": "Essential",
+      "title": "Cookie consent.",
+      "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
+      "accept": "Accept",
+      "learnMore": "Learn more"
     },
     "shareColon": "Share:",
     "bookTasting": "Book a tasting",
@@ -265,7 +269,8 @@
       "viewAllConditions": "View all conditions →",
       "whatsOn": "What's on",
       "events": "Events",
-      "browseWinterEvents": "Browse winter events"
+      "browseWinterEvents": "Browse winter events",
+      "eventsTeaser": "Epiphany, carnival, markets — browse what's on"
     },
     "editorsPicksKicker": "Curated",
     "rightNowNearYou": "Right now near you",
@@ -336,7 +341,9 @@
       "shareText": "Cyprus Winter — the Mediterranean's best-kept secret. Trails, villages, heritage. Often sixteen degrees when home is six."
     },
     "hero": {
-      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter",
+      "familyPicksLink": "Family-friendly picks",
+      "templateLink": "48-hour template"
     },
     "search": {
       "srHeading": "Search places and trails",
@@ -411,7 +418,15 @@
         "farther": "Farther"
       },
       "card": {
-        "defaultTease": "Worth a visit in winter."
+        "defaultTease": "Worth a visit in winter.",
+        "add": "Add",
+        "distanceLessThanKm": "< 1 km",
+        "distanceKm": "{distance} km"
+      },
+      "reasons": {
+        "nearby": "Nearby",
+        "local_secret": "Local secret",
+        "worth_visit": "Worth a visit"
       }
     },
     "placeOfDay": {
@@ -1225,6 +1240,9 @@
       "pairWith": "Pair with…",
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
+    },
+    "footer": {
+      "winterTip": "Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24–48h ahead."
     }
   },
   "placePicker": {

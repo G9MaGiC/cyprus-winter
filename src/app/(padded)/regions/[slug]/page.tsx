@@ -14,6 +14,7 @@ import { winterEvents } from "@/data/events";
 import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
 import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import HubFooter from "@/components/HubFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
@@ -300,6 +301,7 @@ export default async function RegionPage({ params }: Props) {
       </div>
 
       <span id="region-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <StickyPlanBarBlock sentinelId="region-plan-sentinel" />
       <HubFooter
         body={tPage("footer.hubBody")}
         ariaLabel={tPage("aria.actions")}

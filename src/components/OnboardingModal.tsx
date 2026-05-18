@@ -139,6 +139,7 @@ export default function OnboardingModal() {
     <div
       data-overlay-priority="blocking"
       data-overlay-active={blockingActive ? "true" : "false"}
+      inert={!visible ? true : undefined}
       className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] ${LAYER.onboarding} transition-all ${TRANSITION.medium} ease-out ${
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
       }`}

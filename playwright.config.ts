@@ -30,6 +30,12 @@ const coreFunnelGlobs = [
   "**/locale-prefixed-route.spec.ts",
 ] as const;
 
+const mobileUxGlobs = [
+  "**/hub-footer.spec.ts",
+  "**/overlay-precedence.spec.ts",
+  "**/home-smoke.spec.ts",
+] as const;
+
 export default defineConfig({
   testDir: "./e2e",
   /** First dev hit per route can compile 30–60s+ on cold Turbopack. */
@@ -48,7 +54,7 @@ export default defineConfig({
     {
       name: "mobile-chrome",
       use: { ...devices["Pixel 7"] },
-      testMatch: [...coreFunnelGlobs],
+      testMatch: [...coreFunnelGlobs, ...mobileUxGlobs],
     },
   ],
   webServer: {

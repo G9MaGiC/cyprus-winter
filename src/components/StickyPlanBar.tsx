@@ -4,6 +4,7 @@ import AppLink from "@/components/AppLink";
 import { useEffect, useState } from "react";
 import { CTA, LAYER, LAYOUT } from "@/lib/design-tokens";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 import { useTranslations } from "next-intl";
 
@@ -19,6 +20,7 @@ type StickyPlanBarProps = {
 export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
   const [show, setShow] = useState(false);
   const { setStickyPlanVisible } = useStickyPlanBar();
+  const overlaysBlock = useBlockingOverlaysActive();
   const tCommon = useTranslations("common");
 
   useEffect(() => {
@@ -67,7 +69,7 @@ export default function StickyPlanBar({ sentinelId }: StickyPlanBarProps) {
     return () => setStickyPlanVisible(false);
   }, [show, setStickyPlanVisible]);
 
-  if (!show) return null;
+  if (!show || overlaysBlock) return null;
 
   return (
     <div

@@ -9,6 +9,7 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 import { LAYER, LAYOUT } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 
 type TrailDetailStickyActionsProps = {
   trailId: string;
@@ -22,6 +23,7 @@ type TrailDetailStickyActionsProps = {
  */
 export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailDetailStickyActionsProps) {
   const tCommon = useTranslations("common");
+  const overlaysBlock = useBlockingOverlaysActive();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
     };
   }, [sentinelId]);
 
-  if (!visible) return null;
+  if (!visible || overlaysBlock) return null;
 
   return (
     <div

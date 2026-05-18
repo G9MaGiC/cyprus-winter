@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import AppLink from "@/components/AppLink";
 import { useItinerary } from "@/hooks/useItinerary";
 import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
+import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { CTA, LAYER, LAYOUT } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -20,13 +21,14 @@ export default function TripPlanSummaryChip() {
   const t = useTranslations("common.tripPlanSummary");
   const { days, hydrated } = useItinerary();
   const overlaysBlock = useBlockingOverlaysActive();
+  const { stickyPlanVisible } = useStickyPlanBar();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     queueMicrotask(() => setMounted(true));
   }, []);
 
-  if (!mounted || !hydrated || !isHomePath(pathname) || overlaysBlock) return null;
+  if (!mounted || !hydrated || !isHomePath(pathname) || overlaysBlock || stickyPlanVisible) return null;
 
   const totalPlaces = Object.values(days).flat().length;
   if (totalPlaces <= 0) return null;

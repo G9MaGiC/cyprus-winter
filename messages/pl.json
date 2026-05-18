@@ -205,7 +205,11 @@
     "removeAllFromDay": "Usuń wszystkie {count} {count, plural, one {miejsce} other {miejsca}} z Dnia {day}. Możesz je dodać ponownie w dowolnym momencie.",
     "cookies": {
       "essentialOnly": "Tylko niezbędne",
-      "essentialShort": "Niezbędne"
+      "essentialShort": "Niezbędne",
+      "title": "Zgoda na pliki cookie.",
+      "body": "Używamy niezbędnych plików cookie do działania serwisu i opcjonalnych analityk do ulepszeń. Klikając „Akceptuj”, zezwalasz na analitykę.",
+      "accept": "Akceptuj",
+      "learnMore": "Dowiedz się więcej"
     },
     "placeTypes": {
       "beach": "Plaża",
@@ -259,7 +263,8 @@
       "viewAllConditions": "Wszystkie warunki →",
       "whatsOn": "Co w programie",
       "events": "Wydarzenia",
-      "browseWinterEvents": "Przeglądaj zimowe wydarzenia"
+      "browseWinterEvents": "Przeglądaj zimowe wydarzenia",
+      "eventsTeaser": "Teofania, karnawał, targi — zobacz, co się dzieje"
     },
     "editorsPicks": {
       "title": "Wybór redakcji",
@@ -355,7 +360,9 @@
       "shareText": "Cyprus Winter — najlepiej strzeżona tajemnica Morza Śródziemnego. Szlaki, wioski, dziedzictwo. Często szesnaście stopni, gdy w domu jest sześć."
     },
     "hero": {
-      "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
+      "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą",
+      "familyPicksLink": "Propozycje dla rodzin",
+      "templateLink": "Szablon na 48 godzin"
     },
     "search": {
       "srHeading": "Szukaj miejsc i szlaków",
@@ -430,7 +437,15 @@
         "farther": "Dalej"
       },
       "card": {
-        "defaultTease": "Warte odwiedzenia zimą."
+        "defaultTease": "Warte odwiedzenia zimą.",
+        "add": "Dodaj",
+        "distanceLessThanKm": "< 1 km",
+        "distanceKm": "{distance} km"
+      },
+      "reasons": {
+        "nearby": "W pobliżu",
+        "local_secret": "Lokalny sekret",
+        "worth_visit": "Warte odwiedzin"
       }
     },
     "placeOfDay": {
@@ -1264,6 +1279,9 @@
       "copyItinerary": "Kopiuj plan (tekst)",
       "copied": "Skopiowano",
       "shareTextPrefix": "Mój zimowy plan na Cyprze —"
+    },
+    "footer": {
+      "winterTip": "Wskazówka: światło gaśnie około 17. Ruszaj na szlaki do 10 i rezerwuj degustacje 24–48 h wcześniej."
     }
   },
   "placePicker": {

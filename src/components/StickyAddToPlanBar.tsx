@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 import { LAYER, LAYOUT } from "@/lib/design-tokens";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
+import { useTranslations } from "next-intl";
 
 type StickyAddToPlanBarProps = {
   placeId: string;
@@ -19,8 +21,11 @@ type StickyAddToPlanBarProps = {
 export default function StickyAddToPlanBar({
   placeId,
   sentinelId,
-  label = "Add to plan",
+  label,
 }: StickyAddToPlanBarProps) {
+  const tCommon = useTranslations("common");
+  const addLabel = label ?? tCommon("addToPlan");
+  const overlaysBlock = useBlockingOverlaysActive();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -60,15 +65,15 @@ export default function StickyAddToPlanBar({
     };
   }, [sentinelId]);
 
-  if (!show) return null;
+  if (!show || overlaysBlock) return null;
 
   return (
     <div
       className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} flex items-center justify-center p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] bg-background/95 backdrop-blur-sm border-t border-sand-200/80 ${LAYOUT.mobileBottomChromeHidden}`}
       role="complementary"
-      aria-label={label}
+      aria-label={addLabel}
     >
-      <AddToItineraryButton placeId={placeId} label={label} className="w-full max-w-md" />
+      <AddToItineraryButton placeId={placeId} label={addLabel} className="w-full max-w-md" />
     </div>
   );
 }

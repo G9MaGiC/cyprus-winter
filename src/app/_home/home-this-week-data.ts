@@ -1,16 +1,16 @@
 import "server-only";
 
 import { winterEvents } from "@/data/events";
-import { weatherByMonth } from "@/data/weather";
 import { trails } from "@/data/trails";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
+import { getLocalizedName } from "@/lib/localize";
+import { getWeatherPromptKey, getWeatherRowForCurrentMonth } from "@/lib/home-weather-month";
 import { getTrailSummary, type TrailSummary } from "@/lib/trail-summary-cache";
 import { getLiveWeather, type LiveWeather } from "@/lib/weather-live";
 import { getTranslations } from "next-intl/server";
 import type { HomeThisWeekGridViewProps } from "@/app/_home/HomeThisWeekGridView";
 
 const FEATURED_TRAIL_IDS = ["artemis", "caledonia-falls", "atalante", "olympus-summit"];
-const MONTH_TO_WEATHER: Record<number, number> = { 0: 2, 1: 3, 2: 4, 3: 5, 10: 0, 11: 1 };
 const MONTH_TO_EVENT_MONTH: Record<number, "Nov" | "Dec" | "Jan" | "Feb" | "Mar"> = {
   0: "Jan",
   1: "Feb",
@@ -20,12 +20,8 @@ const MONTH_TO_EVENT_MONTH: Record<number, "Nov" | "Dec" | "Jan" | "Feb" | "Mar"
 };
 const FETCH_TIMEOUT_MS = 4000;
 
-function getWeatherTip(): string {
-  const m = new Date().getMonth();
-  const w = weatherByMonth[MONTH_TO_WEATHER[m] ?? 1];
-  const first = w.troodosDesc.split(".")[0];
-  return first ? `${first}.` : "Pack layers for the mountain.";
-}
+type TrailStatus = "open" | "caution" | "closed";
+type TrailSurface = "dry" | "muddy" | "snow" | "icy";
 
 function getEventHighlight() {
   const m = new Date().getMonth();
@@ -36,16 +32,37 @@ function getEventHighlight() {
   return pickDailyWithKey(thisMonthEvents, "this-week-event");
 }
 
-function formatTrailStatus(status: string, surface: string): string {
-  const s = status.charAt(0).toUpperCase() + status.slice(1);
-  const surf = surface.charAt(0).toUpperCase() + surface.slice(1);
-  return `${s} · ${surf}`;
+function formatTrailStatus(
+  status: string,
+  surface: string,
+  tTrails: (key: string) => string
+): string {
+  const statusKey = status as TrailStatus;
+  const surfaceKey = surface as TrailSurface;
+  const statusLabels: Record<TrailStatus, string> = {
+    open: tTrails("report.options.status.open.label"),
+    caution: tTrails("report.options.status.caution.label"),
+    closed: tTrails("report.options.status.closed.label"),
+  };
+  const surfaceLabels: Record<TrailSurface, string> = {
+    dry: tTrails("report.options.surface.dry.label"),
+    muddy: tTrails("report.options.surface.muddy.label"),
+    snow: tTrails("report.options.surface.snow.label"),
+    icy: tTrails("report.options.surface.icy.label"),
+  };
+  const statusLabel = statusLabels[statusKey] ?? status;
+  const surfaceLabel = surfaceLabels[surfaceKey] ?? surface;
+  return `${statusLabel} · ${surfaceLabel}`;
 }
 
 export async function getHomeThisWeekGridProps(locale?: string): Promise<HomeThisWeekGridViewProps> {
-  const [t, tCommon] = await Promise.all([
+  const resolvedLocale = locale ?? "en";
+  const [t, tCommon, tTrails] = await Promise.all([
     locale ? getTranslations({ locale, namespace: "home" }) : getTranslations("home"),
     locale ? getTranslations({ locale, namespace: "common" }) : getTranslations("common"),
+    locale
+      ? getTranslations({ locale, namespace: "trails" })
+      : getTranslations("trails"),
   ]);
 
   let trailSummary: TrailSummary | null = null;
@@ -63,7 +80,7 @@ export async function getHomeThisWeekGridProps(locale?: string): Promise<HomeThi
     liveWeather = null;
   }
 
-  const w = weatherByMonth[MONTH_TO_WEATHER[new Date().getMonth()] ?? 1];
+  const w = getWeatherRowForCurrentMonth();
   const coastMid = liveWeather
     ? Math.round((liveWeather.coast.minC + liveWeather.coast.maxC) / 2)
     : Math.round((w.coastMinC + w.coastMaxC) / 2);
@@ -71,7 +88,7 @@ export async function getHomeThisWeekGridProps(locale?: string): Promise<HomeThi
     ? Math.round((liveWeather.troodos.minC + liveWeather.troodos.maxC) / 2)
     : Math.round((w.troodosMinC + w.troodosMaxC) / 2);
 
-  const tip = getWeatherTip();
+  const weatherTip = t(`weatherStrip.prompts.${getWeatherPromptKey(w)}`);
   const eventHighlight = getEventHighlight();
   const trailIdsWithData = trailSummary
     ? FEATURED_TRAIL_IDS.filter((id) => trailSummary[id])
@@ -80,21 +97,22 @@ export async function getHomeThisWeekGridProps(locale?: string): Promise<HomeThi
   const featuredTrailId = pickDailyWithKey(featuredTrailIds, "featured-trail");
   const featuredStatus = trailSummary?.[featuredTrailId];
   const featuredTrail = trails.find((tr) => tr.id === featuredTrailId);
-  const trailName = featuredTrail?.name ?? "Artemis Trail";
+  const trailName = featuredTrail
+    ? getLocalizedName(featuredTrail, resolvedLocale)
+    : t("editorsPicks.items.artemis.title");
   const trailLabel = featuredStatus
-    ? formatTrailStatus(featuredStatus.status, featuredStatus.surface)
+    ? formatTrailStatus(featuredStatus.status, featuredStatus.surface, tTrails)
     : t("thisWeekGrid.viewTrailReports");
-  const weatherTip = tip === "Pack layers for the mountain." ? t("weatherStrip.prompts.fallback") : tip;
 
   const eventTitle = eventHighlight
-    ? eventHighlight.name
+    ? getLocalizedName(eventHighlight, resolvedLocale)
     : winterEvents.length > 0
       ? t("thisWeekGrid.browseWinterEvents")
       : t("thisWeekGrid.events");
   const eventSubtitle = eventHighlight
     ? eventHighlight.dates ?? eventHighlight.venue ?? ""
     : winterEvents.length > 0
-      ? winterEvents.slice(0, 2).map((e) => e.name).join(" · ") + "…"
+      ? t("thisWeekGrid.eventsTeaser")
       : "";
 
   return {
