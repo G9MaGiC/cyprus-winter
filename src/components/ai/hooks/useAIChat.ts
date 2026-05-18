@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
+import { sanitizeResponseMetadata, sanitizeStoredChatMessages } from "@/lib/ai-response-metadata";
 // getPlaceById available for future use
 
 export type Message = {
@@ -126,13 +127,7 @@ function loadPersistedMessages(): Message[] | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed) || parsed.length === 0) return null;
-    const valid = parsed.filter(
-      (m): m is Message =>
-        m &&
-        typeof m === "object" &&
-        (m.role === "user" || m.role === "assistant") &&
-        typeof m.content === "string"
-    );
+    const valid = sanitizeStoredChatMessages(parsed);
     return valid.length > 0 ? valid : null;
   } catch {
     return null;
@@ -303,11 +298,13 @@ export function useAIChat() {
           ) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { type: _type, ...metadata } = parsed as Record<string, unknown>;
+            const safeMetadata = sanitizeResponseMetadata(metadata);
+            if (!safeMetadata) continue;
             setMessages((prev) => {
               const updated = [...prev];
               const lastMsg = updated[updated.length - 1];
               if (lastMsg?.role === "assistant") {
-                updated[updated.length - 1] = { ...lastMsg, metadata: metadata as Message["metadata"] };
+                updated[updated.length - 1] = { ...lastMsg, metadata: safeMetadata };
               }
               messagesRef.current = updated;
               return updated;

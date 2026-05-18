@@ -168,6 +168,55 @@ describe("useItinerary", () => {
     );
   });
 
+  it("merges latest localStorage before inline additions from another hook instance", async () => {
+    const first = renderHook(() => useItinerary(), { wrapper });
+    const second = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(first.result.current.hydrated).toBe(true));
+    await waitFor(() => expect(second.result.current.hydrated).toBe(true));
+
+    act(() => {
+      first.result.current.addToDayIfMissing("kourion");
+    });
+
+    await waitFor(() => {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Record<string, string[]>;
+      expect(stored["1"]).toEqual(["kourion"]);
+    });
+
+    act(() => {
+      second.result.current.addToDayIfMissing("pafos-mosaics", { mergeStored: true });
+    });
+
+    await waitFor(() => {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Record<string, string[]>;
+      expect(stored["1"]).toEqual(["kourion", "pafos-mosaics"]);
+    });
+  });
+
+  it("does not resurrect stored items when replacing a day in one hook instance", async () => {
+    const { result } = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+
+    act(() => {
+      result.current.addToDayIfMissing("kourion");
+    });
+    await waitFor(() => {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Record<string, string[]>;
+      expect(stored["1"]).toEqual(["kourion"]);
+    });
+
+    act(() => {
+      result.current.clearDay();
+      result.current.addToDayIfMissing("pafos-mosaics");
+    });
+
+    await waitFor(() => {
+      expect(result.current.days[1]).toEqual(["pafos-mosaics"]);
+    });
+  });
+
   it("removeFromDay removes only from active day", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 

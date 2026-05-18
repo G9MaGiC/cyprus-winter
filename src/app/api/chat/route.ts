@@ -3,6 +3,7 @@ import { buildAIContext, buildAIContextRelevant } from "@/lib/ai-context";
 import { getPlaceById } from "@/data";
 import { rateLimit } from "@/lib/rate-limit";
 import { chatRequestSchema } from "@/lib/chat-schema";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
@@ -310,8 +311,10 @@ export async function POST(req: Request) {
                 }
                 const jsonStr = fullContent.slice(delimIdx + delimiter.length).trim();
                 try {
-                  const metadata = JSON.parse(jsonStr);
-                  controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...metadata })));
+                  const metadata = sanitizeResponseMetadata(JSON.parse(jsonStr));
+                  if (metadata) {
+                    controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...metadata })));
+                  }
                 } catch {
                   // Malformed JSON — skip metadata
                 }

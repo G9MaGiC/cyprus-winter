@@ -1,4 +1,5 @@
 import type { ResponseMetadata } from "./types";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 
 const DELIMITER = "---ACTIONS---";
 
@@ -18,8 +19,8 @@ export function parseResponse(raw: string): ParsedResponse {
   const jsonStr = raw.slice(delimiterIndex + DELIMITER.length).trim();
 
   try {
-    const parsed = JSON.parse(jsonStr) as ResponseMetadata;
-    return { prose, metadata: parsed };
+    const parsed = sanitizeResponseMetadata(JSON.parse(jsonStr));
+    return parsed ? { prose, metadata: parsed } : { prose };
   } catch {
     return { prose };
   }

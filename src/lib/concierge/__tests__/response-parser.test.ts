@@ -31,7 +31,7 @@ describe("parseResponse", () => {
   });
 
   it("trims whitespace around prose and delimiter", () => {
-    const raw = `  Trimmed text  \n\n---ACTIONS---\n{"cards":[],"actions":[],"followUps":[]}`;
+    const raw = `  Trimmed text  \n\n---ACTIONS---\n{"followUps":["Plan a day"]}`;
     const result = parseResponse(raw);
     expect(result.prose).toBe("Trimmed text");
     expect(result.metadata).toBeDefined();
