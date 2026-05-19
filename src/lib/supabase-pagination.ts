@@ -1,5 +1,5 @@
 type SupabasePagedQuery<T> = {
-  range: (from: number, to: number) => Promise<{
+  range: (from: number, to: number) => PromiseLike<{
     data: T[] | null;
     error: { message?: string } | null;
   }>;
