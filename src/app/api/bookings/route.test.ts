@@ -1,9 +1,11 @@
 import { describe, it, expect, vi } from "vitest";
 import { POST, GET } from "./route";
+import { sendBookingConfirmation } from "@/lib/email";
 
 vi.mock("@/lib/email", () => ({
   sendBookingConfirmation: vi.fn().mockResolvedValue(false),
   sendBookingRequestToWinery: vi.fn().mockResolvedValue(false),
+  sendBookingRequestToGuide: vi.fn().mockResolvedValue(false),
 }));
 
 function postReq(body: unknown, ip = "127.0.0.2") {
@@ -57,6 +59,41 @@ describe("POST /api/bookings", () => {
     const data = await res.json();
     expect(data.booking).toBeDefined();
     expect(data.booking.providerId).toBe("tsiakkas");
+  });
+
+  it("deduplicates booking replays with the same idempotency key", async () => {
+    vi.mocked(sendBookingConfirmation).mockClear();
+    const first = await POST(postReq(validBody, "127.0.0.9"));
+    const second = await POST(
+      new Request("http://localhost:3000/api/bookings", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-forwarded-for": "127.0.0.10",
+          "Idempotency-Key": "mq-test-booking-replay",
+        },
+        body: JSON.stringify(validBody),
+      })
+    );
+    const replay = await POST(
+      new Request("http://localhost:3000/api/bookings", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-forwarded-for": "127.0.0.11",
+          "Idempotency-Key": "mq-test-booking-replay",
+        },
+        body: JSON.stringify(validBody),
+      })
+    );
+
+    expect(first.status).toBe(200);
+    expect(second.status).toBe(200);
+    expect(replay.status).toBe(200);
+    const secondData = await second.json();
+    const replayData = await replay.json();
+    expect(replayData.booking.id).toBe(secondData.booking.id);
+    expect(sendBookingConfirmation).toHaveBeenCalledTimes(2);
   });
 });
 

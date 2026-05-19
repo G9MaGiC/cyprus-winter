@@ -43,6 +43,10 @@ export async function POST(req: Request) {
       return jsonError("VALIDATION_ERROR", msg, 400);
     }
 
+    const idempotencyKey =
+      typeof body.idempotencyKey === "string"
+        ? body.idempotencyKey
+        : req.headers.get("Idempotency-Key") ?? undefined;
     const { type, providerId, date, partySize, guestEmail, guestName, notes, trailId } = parsed.data;
     const safeGuestName = sanitizeForStorage(guestName);
     if (!safeGuestName) {
@@ -54,7 +58,7 @@ export async function POST(req: Request) {
       if (!winery) {
         return jsonError("NOT_FOUND", "Winery not found", 404);
       }
-      const booking = await createBooking({
+      const { booking, created } = await createBooking({
         type: "winery_tasting",
         providerId,
         providerName: winery.name,
@@ -64,16 +68,19 @@ export async function POST(req: Request) {
         guestName: safeGuestName,
         notes: notes != null ? sanitizeForStorage(notes) : undefined,
         leadFeeEur: winery.partnerLeadFeeEur,
+        idempotencyKey,
       });
 
       let confirmationSent = false;
       let wineryNotificationSent = false;
-      try {
-        confirmationSent = await sendBookingConfirmation(booking);
-      } catch (e) {
-        console.error("Guest email send failed:", e);
+      if (created) {
+        try {
+          confirmationSent = await sendBookingConfirmation(booking);
+        } catch (e) {
+          console.error("Guest email send failed:", e);
+        }
       }
-      if (winery.isVerified && winery.partnerEmail?.trim()) {
+      if (created && winery.isVerified && winery.partnerEmail?.trim()) {
         try {
           wineryNotificationSent = await sendBookingRequestToWinery(booking, {
             name: winery.name,
@@ -109,7 +116,7 @@ export async function POST(req: Request) {
         trailId && trail
           ? (notes ? `${notes}\nTrail: ${trail.name}` : `Trail: ${trail.name}`)
           : notes;
-      const booking = await createBooking({
+      const { booking, created } = await createBooking({
         type: "guide_tour",
         providerId,
         providerName: guide.name,
@@ -119,16 +126,19 @@ export async function POST(req: Request) {
         guestName: safeGuestName,
         notes: notesWithTrail != null ? sanitizeForStorage(notesWithTrail) : undefined,
         leadFeeEur: guide.partnerLeadFeeEur,
+        idempotencyKey,
       });
 
       let confirmationSent = false;
       let guideNotificationSent = false;
-      try {
-        confirmationSent = await sendBookingConfirmation(booking);
-      } catch (e) {
-        console.error("Guest email send failed:", e);
+      if (created) {
+        try {
+          confirmationSent = await sendBookingConfirmation(booking);
+        } catch (e) {
+          console.error("Guest email send failed:", e);
+        }
       }
-      if (guide.isVerified && guide.partnerEmail?.trim()) {
+      if (created && guide.isVerified && guide.partnerEmail?.trim()) {
         try {
           guideNotificationSent = await sendBookingRequestToGuide(
             booking,

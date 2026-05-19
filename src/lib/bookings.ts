@@ -29,11 +29,44 @@ function generateId(): string {
 
 export type CreateBookingInput = Omit<Booking, "id" | "status" | "createdAt"> & {
   leadFeeEur?: number;
+  idempotencyKey?: string;
 };
 
-export async function createBooking(input: CreateBookingInput): Promise<Booking> {
-  const { leadFeeEur, ...rest } = input;
-  const id = generateId();
+export type CreateBookingResult = {
+  booking: Booking;
+  created: boolean;
+};
+
+function bookingIdFromIdempotencyKey(key: string | undefined): string | null {
+  const trimmed = key?.trim();
+  if (!trimmed || !/^[A-Za-z0-9._:-]{1,128}$/.test(trimmed)) return null;
+  return `b-idem-${trimmed}`;
+}
+
+async function getBookingById(id: string): Promise<Booking | null> {
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("bookings")
+      .select("*")
+      .eq("id", id)
+      .limit(1);
+    if (error) return null;
+    return data?.[0] ? rowToBooking(data[0]) : null;
+  }
+  return memoryStore.find((booking) => booking.id === id) ?? null;
+}
+
+function isDuplicateKeyError(error: { code?: string; message?: string }): boolean {
+  return error.code === "23505" || /duplicate key|unique constraint/i.test(error.message ?? "");
+}
+
+export async function createBooking(input: CreateBookingInput): Promise<CreateBookingResult> {
+  const { leadFeeEur, idempotencyKey, ...rest } = input;
+  const id = bookingIdFromIdempotencyKey(idempotencyKey) ?? generateId();
+  const existing = await getBookingById(id);
+  if (existing) return { booking: existing, created: false };
+
   const createdAt = new Date().toISOString();
   const booking: Booking = {
     ...rest,
@@ -60,14 +93,18 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
       lead_fee_eur: leadFeeEur ?? null,
     });
     if (error) {
+      if (isDuplicateKeyError(error)) {
+        const duplicate = await getBookingById(id);
+        if (duplicate) return { booking: duplicate, created: false };
+      }
       console.error("Booking DB insert failed:", error.message, { id, providerId: input.providerId });
       throw new Error(error.message);
     }
-    return booking;
+    return { booking, created: true };
   }
 
   memoryStore.push(booking);
-  return booking;
+  return { booking, created: true };
 }
 
 export async function getBookingsByEmail(email: string): Promise<Booking[]> {

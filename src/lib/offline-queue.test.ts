@@ -26,6 +26,8 @@ describe("offline queue", () => {
     const first = processQueue();
     const second = processQueue();
     expect(fetchMock).toHaveBeenCalledTimes(1);
+    const headers = new Headers(fetchMock.mock.calls[0][1]?.headers);
+    expect(headers.get("Idempotency-Key")).toMatch(/^mq-/);
 
     resolveFetch();
     const [firstResult, secondResult] = await Promise.all([first, second]);
