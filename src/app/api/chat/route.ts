@@ -8,6 +8,7 @@ import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 import { orchestrate } from "@/lib/concierge/orchestrator";
 import type { ConciergeContext } from "@/lib/concierge/types";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 
 // Providers in priority order. Each is tried until one succeeds (handles 429, timeouts, etc.).
 // AI Gateway (Vercel) first: single key, multi-provider routing. https://vercel.com/docs/ai-gateway/getting-started
@@ -310,8 +311,10 @@ export async function POST(req: Request) {
                 }
                 const jsonStr = fullContent.slice(delimIdx + delimiter.length).trim();
                 try {
-                  const metadata = JSON.parse(jsonStr);
-                  controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...metadata })));
+                  const metadata = sanitizeResponseMetadata(JSON.parse(jsonStr));
+                  if (metadata) {
+                    controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...metadata })));
+                  }
                 } catch {
                   // Malformed JSON — skip metadata
                 }

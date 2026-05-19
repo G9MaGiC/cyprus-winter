@@ -19,6 +19,7 @@ export default function OfflineQueueProcessor() {
       });
     };
 
+    if (navigator.onLine) handleOnline();
     window.addEventListener("online", handleOnline);
     return () => window.removeEventListener("online", handleOnline);
   }, []);

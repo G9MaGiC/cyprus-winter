@@ -2,6 +2,7 @@
  * Conversion funnel counts from conversion_events.
  */
 import { getSupabase } from "./supabase";
+import { fetchAllSupabaseRows } from "./supabase-pagination";
 
 export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
@@ -25,12 +26,15 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("conversion_events")
-    .select("event")
-    .gte("created_at", startIso);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const createQuery = () => {
+    let query = supabase
+      .from("conversion_events")
+      .select("event")
+      .gte("created_at", startIso);
+    if (endIso) query = query.lt("created_at", endIso);
+    return query;
+  };
+  const { data, error } = await fetchAllSupabaseRows<{ event: string | null }>(createQuery);
 
   if (error) {
     console.error("Funnel query error:", error);
@@ -73,13 +77,19 @@ export async function getEventSourceBreakdownInRange(
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("conversion_events")
-    .select("event, properties")
-    .in("event", events)
-    .gte("created_at", startIso);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const createQuery = () => {
+    let query = supabase
+      .from("conversion_events")
+      .select("event, properties")
+      .in("event", events)
+      .gte("created_at", startIso);
+    if (endIso) query = query.lt("created_at", endIso);
+    return query;
+  };
+  const { data, error } = await fetchAllSupabaseRows<{
+    event: string | null;
+    properties: unknown;
+  }>(createQuery);
 
   if (error) {
     console.error("Funnel source breakdown query error:", error);

@@ -75,7 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider messages={messages}>
       <SerwistProvider swUrl="/serwist/sw.js">
-        <Providers includeOnboarding={false}>
+        <Providers includeOnboarding={false} includeOfflineQueue={false}>
           <div className={LAYOUT.paddedTop}>
             {children}
           </div>

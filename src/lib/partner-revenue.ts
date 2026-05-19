@@ -3,6 +3,7 @@
  * Winery partners with partnerLeadFeeEur pay per lead/booking.
  */
 import { getSupabase } from "./supabase";
+import { fetchAllSupabaseRows } from "./supabase-pagination";
 
 export type PartnerRevenueSummary = {
   providerId: string;
@@ -40,13 +41,20 @@ export async function getPartnerRevenueInRange(start: Date, end?: Date): Promise
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("bookings")
-    .select("provider_id, provider_name, lead_fee_eur")
-    .gte("created_at", startIso)
-    .not("lead_fee_eur", "is", null);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const createQuery = () => {
+    let query = supabase
+      .from("bookings")
+      .select("provider_id, provider_name, lead_fee_eur")
+      .gte("created_at", startIso)
+      .not("lead_fee_eur", "is", null);
+    if (endIso) query = query.lt("created_at", endIso);
+    return query;
+  };
+  const { data, error } = await fetchAllSupabaseRows<{
+    provider_id: string | null;
+    provider_name: string | null;
+    lead_fee_eur: number | string | null;
+  }>(createQuery);
 
   if (error) {
     console.error("Partner revenue query error:", error);
