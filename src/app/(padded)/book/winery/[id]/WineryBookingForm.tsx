@@ -7,7 +7,7 @@ import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import { CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
-import { addMutation } from "@/lib/offline-queue";
+import { addMutation, createOfflineMutationId } from "@/lib/offline-queue";
 import { useTranslations } from "next-intl";
 
 export default function WineryBookingForm({
@@ -55,6 +55,7 @@ export default function WineryBookingForm({
     const guestName = formData.get("guestName") as string;
     const guestEmail = formData.get("guestEmail") as string;
     const notes = formData.get("notes") as string;
+    const idempotencyKey = createOfflineMutationId();
 
     const body = JSON.stringify({
       type: "winery_tasting",
@@ -69,7 +70,7 @@ export default function WineryBookingForm({
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
         body,
       });
 
@@ -105,6 +106,7 @@ export default function WineryBookingForm({
           url: "/api/bookings",
           method: "POST",
           body,
+          idempotencyKey,
         });
       }
       const fallback = t("errors.fallback");

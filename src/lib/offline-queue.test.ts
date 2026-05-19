@@ -21,6 +21,7 @@ describe("offline queue", () => {
       url: "/api/bookings",
       method: "POST",
       body: JSON.stringify({ providerId: "tsiakkas" }),
+      idempotencyKey: "mq-original-submit",
     });
 
     const first = processQueue();
@@ -28,7 +29,7 @@ describe("offline queue", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
     const headers = new Headers(init.headers);
-    expect(headers.get("Idempotency-Key")).toMatch(/^mq-/);
+    expect(headers.get("Idempotency-Key")).toBe("mq-original-submit");
 
     resolveFetch();
     const [firstResult, secondResult] = await Promise.all([first, second]);

@@ -11,12 +11,17 @@ let processingPromise: Promise<{ processed: number; succeeded: number }> | null 
 
 export type QueuedMutation = {
   id: string;
+  idempotencyKey?: string;
   type: string;
   url: string;
   method: string;
   body?: string;
   createdAt: number;
 };
+
+export function createOfflineMutationId(): string {
+  return `mq-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
 
 function load(): QueuedMutation[] {
   if (typeof window === "undefined") return [];
@@ -45,7 +50,7 @@ export function addMutation(mutation: Omit<QueuedMutation, "id" | "createdAt">):
   const items = load();
   const item: QueuedMutation = {
     ...mutation,
-    id: `mq-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+    id: mutation.idempotencyKey ?? createOfflineMutationId(),
     createdAt: Date.now(),
   };
   items.push(item);
@@ -83,7 +88,7 @@ async function processQueueUnlocked(): Promise<{ processed: number; succeeded: n
         method: item.method,
         headers: {
           "Content-Type": "application/json",
-          "Idempotency-Key": item.id,
+          "Idempotency-Key": item.idempotencyKey ?? item.id,
         },
         body: item.body ?? undefined,
       });

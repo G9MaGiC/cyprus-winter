@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
-import { addMutation } from "@/lib/offline-queue";
+import { addMutation, createOfflineMutationId } from "@/lib/offline-queue";
 import { trails } from "@/data/trails";
 import type { Guide } from "@/data/guides";
 import { useTranslations } from "next-intl";
@@ -64,6 +64,7 @@ export default function GuideBookingForm({
     const guestName = formData.get("guestName") as string;
     const guestEmail = formData.get("guestEmail") as string;
     const notes = formData.get("notes") as string;
+    const idempotencyKey = createOfflineMutationId();
     const trailId = (formData.get("trailId") as string) || undefined;
 
     const body = JSON.stringify({
@@ -80,7 +81,7 @@ export default function GuideBookingForm({
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Idempotency-Key": idempotencyKey },
         body,
       });
 
@@ -112,7 +113,13 @@ export default function GuideBookingForm({
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
       if (isNetworkError && typeof navigator !== "undefined") {
-        addMutation({ type: "guide_booking", url: "/api/bookings", method: "POST", body });
+        addMutation({
+          type: "guide_booking",
+          url: "/api/bookings",
+          method: "POST",
+          body,
+          idempotencyKey,
+        });
       }
       const fallback = t("errors.fallback");
       setError(msg && !isNetworkError ? msg : fallback);
