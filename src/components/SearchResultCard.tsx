@@ -3,14 +3,10 @@
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
+import { createDetailLink } from "@/components/SmartBackLink";
 import type { SearchResult } from "@/lib/search";
 import { CARD, TYPE } from "@/lib/design-tokens";
-
-const kindLabels: Record<string, string> = {
-  place: "Place",
-  trail: "Trail",
-  event: "Event",
-};
+import { useTranslations } from "next-intl";
 
 const kindBadge: Record<string, string> = {
   place: "bg-terracotta/20 text-terracotta",
@@ -18,19 +14,42 @@ const kindBadge: Record<string, string> = {
   event: "bg-golden/20 text-charcoal",
 };
 
-export default function SearchResultCard({ result }: { result: SearchResult }) {
+type Props = {
+  result: SearchResult;
+  /** When set, detail links include `from=search&q=` for SmartBackLink. */
+  searchQuery?: string;
+};
+
+export default function SearchResultCard({ result, searchQuery }: Props) {
+  const tCommon = useTranslations("common");
   const name = result.item.name;
   const region = result.item.region;
   const kind = result.kind;
   const sublabel = kind === "event" ? (result.item as { month: string }).month : region;
   const badge = kindBadge[kind] ?? "bg-sand-100 text-olive/80";
 
+  const kindLabel =
+    kind === "trail"
+      ? tCommon("trail")
+      : kind === "event"
+        ? tCommon("event")
+        : tCommon("place");
+
+  const basePath = result.href.replace(/\/[^/]+$/, "");
+  const id = result.href.split("/").pop() ?? result.item.id;
+  const href =
+    searchQuery && searchQuery.length >= 2
+      ? createDetailLink(basePath, id, "search", searchQuery)
+      : result.href;
+
+  const ariaLabel = `${name}, ${kindLabel}, ${region}`;
+
   return (
     <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.content}`}>
       <AppLink
-        href={result.href}
+        href={href}
         className="block"
-        aria-label={`${name}, ${kindLabels[kind]} in ${region}`}
+        aria-label={ariaLabel}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
@@ -40,7 +59,7 @@ export default function SearchResultCard({ result }: { result: SearchResult }) {
             <p className="text-sm text-olive/70 mt-0.5 truncate" title={sublabel}>{sublabel}</p>
           </div>
           <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
-            {kindLabels[kind]}
+            {kindLabel}
           </span>
         </div>
       </AppLink>

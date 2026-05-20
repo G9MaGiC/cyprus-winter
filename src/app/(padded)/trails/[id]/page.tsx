@@ -6,7 +6,7 @@ import DetailActionFooter from "@/components/DetailActionFooter";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import BackLink from "@/components/BackLink";
+import TrailDetailBackLink from "@/app/(padded)/trails/TrailDetailBackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AppLink from "@/components/AppLink";
@@ -104,7 +104,7 @@ export default async function TrailPage({
           className={`sticky ${LAYOUT.stickyTop} z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`}
           aria-label={tCommon("aria.pageNavigation")}
         >
-          <BackLink href="/trails" label={tNav("trails")} />
+          <TrailDetailBackLink />
           <Breadcrumbs
             items={[
               { label: tNav("home"), href: "/" },

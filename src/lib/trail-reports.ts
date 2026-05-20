@@ -31,11 +31,12 @@ export async function createTrailReport(input: {
   temperatureC?: number;
   windKmh?: number;
   reporterEmail?: string;
-}): Promise<TrailReport> {
+}): Promise<{ report: TrailReport; stored: boolean }> {
   const id = generateId();
   const reportedAt = new Date().toISOString();
 
   const supabase = getSupabase();
+  let stored = false;
   if (supabase) {
     const { error } = await supabase.from("trail_reports").insert({
       id,
@@ -50,19 +51,23 @@ export async function createTrailReport(input: {
       created_at: reportedAt,
     });
     if (error) throw new Error(error.message);
+    stored = true;
   }
 
   return {
-    id,
-    trailId: input.trailId,
-    status: input.status,
-    surface: input.surface,
-    note: input.note,
-    temperatureC: input.temperatureC,
-    windKmh: input.windKmh,
-    reportedAt,
-    reporterEmail: input.reporterEmail,
-    createdAt: reportedAt,
+    report: {
+      id,
+      trailId: input.trailId,
+      status: input.status,
+      surface: input.surface,
+      note: input.note,
+      temperatureC: input.temperatureC,
+      windKmh: input.windKmh,
+      reportedAt,
+      reporterEmail: input.reporterEmail,
+      createdAt: reportedAt,
+    },
+    stored,
   };
 }
 

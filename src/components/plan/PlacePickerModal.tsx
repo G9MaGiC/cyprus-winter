@@ -14,6 +14,7 @@ type Props = {
 
 export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Props) {
   const tCommon = useTranslations("common");
+  const tPlan = useTranslations("plan");
   const trapFocus = useTrapFocus();
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveRef = useRef<HTMLElement | null>(null);
@@ -57,7 +58,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
       >
         <div className="flex items-center justify-between shrink-0 px-5 py-4 sm:py-5 border-b border-sand-200/80">
           <h2 id="browse-places-title" className={`${TYPE.cardTitle} text-lg sm:text-xl`}>
-            Browse places
+            {tPlan("browsePlaces")}
           </h2>
           <button
             type="button"
@@ -70,7 +71,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
         </div>
         <div className="flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6 sm:pb-6">
           <p className="text-sm text-olive/70 mb-4">
-            Pick one place to add now. You can add more right after.
+            {tPlan("placePickerIntro")}
           </p>
           <PlacePicker activeDayItems={activeDayItems} onAdd={handleAdd} />
         </div>

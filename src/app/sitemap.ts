@@ -48,7 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const secondary: MetadataRoute.Sitemap = [
     e("/weather", 0.8, "monthly"),
-    e("/bookings", 0.6, "monthly"),
     e("/airport", 0.7, "monthly"),
     e("/search", 0.7, "monthly"),
     e("/secrets", 0.8),
@@ -78,6 +77,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     e("/team", 0.5, "monthly"),
     e("/guides/troodos-december", 0.7),
     e("/install", 0.4, "monthly"),
+    e("/privacy", 0.3, "monthly"),
+    e("/terms", 0.3, "monthly"),
   ];
 
   const discoverIds = [

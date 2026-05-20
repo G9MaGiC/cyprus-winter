@@ -1178,6 +1178,7 @@
     "dayEmptyTitle": "Day {day} is empty",
     "dayEmptyBody": "Add your first place below, or pick a template further down to fill the day in one go.",
     "browsePlaces": "Browse places",
+    "placePickerIntro": "Pick one place to add now. You can add more right after.",
     "seeTemplates": "See templates",
     "placesCount": "{count, plural, one {# place} other {# places}}",
     "addAnotherStopHint": "Add another stop, or switch day above.",
@@ -1833,6 +1834,7 @@
         "crossDeviceLink": "My Bookings",
         "crossDeviceSuffix": "to view your request across devices.",
         "tip": "Pack layers and water. Tell someone your route.",
+        "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the guide if you don't see it.",
         "ctaBookings": "View my bookings",
         "ctaTrails": "Browse trails"
       },
@@ -1870,6 +1872,7 @@
         "crossDevicePrefix": "Enter your email on",
         "crossDeviceSuffix": "to view your request across devices.",
         "tip": "Ask about Commandaria and the indigenous grapes when you're there. They're proud of them.",
+        "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the winery if you don't see it.",
         "ctaBookings": "View my bookings",
         "ctaDiscover": "Discover more"
       },

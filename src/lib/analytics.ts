@@ -45,9 +45,18 @@ function postTrack(event: string, properties?: EventProps): void {
   }).catch(() => {});
 }
 
+/** Funnel events tracked without full analytics consent (minimal properties, no PII). */
+const ESSENTIAL_FUNNEL_EVENTS: readonly EventName[] = [
+  "booking_start",
+  "booking_complete",
+  "hub_footer_click",
+  "plan_add",
+] as const;
+
 export function track(event: EventName, properties?: EventProps): void {
   if (typeof window === "undefined") return;
-  if (!hasAnalyticsConsent()) return;
+  const essential = (ESSENTIAL_FUNNEL_EVENTS as readonly string[]).includes(event);
+  if (!essential && !hasAnalyticsConsent()) return;
   postTrack(event, properties);
 }
 

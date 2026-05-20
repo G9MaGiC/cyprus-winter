@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
+import { isSafeInternalPath } from "@/lib/safe-internal-path";
 
 type Action = {
   type: string;
@@ -18,7 +19,8 @@ export function ActionButtons({ actions }: { actions: Action[] }) {
       case "view_events":
       case "book_now":
       case "build_day_plan": {
-        const path = (action.payload?.path as string) ?? "/discover";
+        const raw = (action.payload?.path as string) ?? "/discover";
+        const path = isSafeInternalPath(raw) ? raw : "/discover";
         router.push(path);
         break;
       }

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import EmergencyLine from "@/components/EmergencyLine";
 
 export default function Error({
   error,
@@ -14,14 +15,14 @@ export default function Error({
 }) {
   const t = useTranslations("errors.page");
   const tCommon = useTranslations("common");
-  const tFooter = useTranslations("footer");
   useEffect(() => {
     console.error(error);
   }, [error]);
 
   return (
-    <main
+    <div
       className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}
+      role="alert"
     >
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
         <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
@@ -36,21 +37,15 @@ export default function Error({
           {t("hint")}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            type="button"
-            onClick={reset}
-            className={`px-6 py-3 ${CTA.primaryCompact}`}
-          >
+          <button type="button" onClick={reset} className={CTA.primaryCompact}>
             {tCommon("tryAgain")}
           </button>
-          <Link href="/" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
+          <Link href="/" className={CTA.secondaryCompact}>
             {tCommon("goHome")}
           </Link>
         </div>
-        <p className={`${SECTION.blockTop} text-sm text-olive/60 break-words`}>
-          {tFooter("emergency")} <strong>112</strong> {" · "} {tFooter("touristInfo")} <strong>1460</strong> {" · "} {tFooter("ambulance")} <strong>199</strong>
-        </p>
+        <EmergencyLine className={SECTION.blockTop} />
       </div>
-    </main>
+    </div>
   );
 }

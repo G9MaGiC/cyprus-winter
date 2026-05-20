@@ -23,6 +23,8 @@ export type HubFooterProps = {
   className?: string;
   /** Analytics page id (defaults to pathname). */
   analyticsPage?: string;
+  /** Optional data-testid for primary Plan CTA (E2E contracts). */
+  primaryTestId?: string;
 };
 
 /**
@@ -43,6 +45,7 @@ export default function HubFooter({
   secondary,
   className = "",
   analyticsPage,
+  primaryTestId,
 }: HubFooterProps) {
   const pathname = usePathname();
   const page = analyticsPage ?? pathname ?? "";
@@ -61,7 +64,11 @@ export default function HubFooter({
       </p>
       <div className="flex flex-col max-sm:items-stretch sm:flex-row sm:flex-wrap items-center justify-center gap-3 [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">
         <TrackOnClick event="hub_footer_click" properties={{ action: "plan", page }}>
-          <AppLink href={primaryHref} className={CTA.primaryCompact}>
+          <AppLink
+            href={primaryHref}
+            className={CTA.primaryCompact}
+            {...(primaryTestId ? { "data-testid": primaryTestId } : {})}
+          >
             {resolvedPrimaryLabel}
           </AppLink>
         </TrackOnClick>

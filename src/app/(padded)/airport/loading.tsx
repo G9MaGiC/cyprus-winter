@@ -5,7 +5,7 @@ export default function AirportLoading() {
   const t = useTranslations("common");
   return (
     <div
-      className={`min-h-screen bg-sand ${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
+      className={`min-h-screen bg-sand ${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} flex flex-col gap-10 sm:gap-14`}
       aria-busy
       aria-live="polite"
       role="status"

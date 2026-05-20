@@ -13,6 +13,7 @@ export default function AirportFooter() {
       body={tAirport("footer.body")}
       ariaLabel={tAirport("aria.actions")}
       primaryHref="/plan?template=short-stay"
+      primaryTestId="airport-footer-plan48-cta"
       primaryLabel={tAirport("hero.plan48Cta")}
       askAiLabel={tAirport("footer.askAi")}
       askAiAriaLabel={tAirport("footer.askAiAria")}

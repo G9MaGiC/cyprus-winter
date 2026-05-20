@@ -24,6 +24,7 @@ export default function WineryBookingForm({
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
+  const [emailDelayed, setEmailDelayed] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
@@ -86,6 +87,7 @@ export default function WineryBookingForm({
 
       setDone(true);
       setStorageMode(data.storage ?? null);
+      setEmailDelayed(data.emailStatus?.confirmationSent === false);
       form.reset();
 
       track("booking_complete", {
@@ -151,6 +153,11 @@ export default function WineryBookingForm({
         <p className="text-olive/70 text-sm mt-3 break-words">
           {t("success.tip")}
         </p>
+        {emailDelayed && (
+          <p className="text-olive/80 text-sm mt-3 break-words">
+            {t("success.emailDelayed")}
+          </p>
+        )}
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}

@@ -9,7 +9,7 @@ import type { Restaurant } from "@/data/restaurants";
 import { LAYOUT, CTA, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import BackLink from "@/components/BackLink";
+import DiscoverDetailBackLink from "@/app/(padded)/discover/DiscoverDetailBackLink";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
@@ -123,7 +123,7 @@ export default async function AttractionPage({
         <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
         <TrackEventOnMount event="decision_rationale_view" properties={{ place_id: a.id, place_type: a.type }} />
         <nav className="flex flex-col gap-1 mb-6" aria-label={tDetail("pageNavAria")}>
-          <BackLink href="/discover" label={tNav("discover")} />
+          <DiscoverDetailBackLink />
           <Breadcrumbs
             items={[
               { label: tNav("home"), href: "/" },

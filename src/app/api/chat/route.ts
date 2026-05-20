@@ -6,6 +6,7 @@ import { chatRequestSchema } from "@/lib/chat-schema";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
+import { isSafeInternalPath as isAllowedAppPath } from "@/lib/safe-internal-path";
 import { orchestrate } from "@/lib/concierge/orchestrator";
 import type { ConciergeContext } from "@/lib/concierge/types";
 
@@ -102,11 +103,29 @@ function buildSystemPrompt(locale?: string): string {
 const CHAT_LIMIT = process.env.NODE_ENV === "development" ? 60 : 20;
 
 function isSafeInternalPath(path: string): boolean {
-  if (!path.startsWith("/")) return false;
-  if (path.startsWith("//")) return false;
-  if (path.includes("\\")) return false;
-  if (path.length > 256) return false;
-  return true;
+  if (!path || path.length > 256 || path.includes("\\")) return false;
+  return isAllowedAppPath(path);
+}
+
+function sanitizeChatMetadata(metadata: Record<string, unknown>): Record<string, unknown> {
+  const actions = metadata.actions;
+  if (!Array.isArray(actions)) return metadata;
+  const safeActions = actions
+    .map((raw) => {
+      if (!raw || typeof raw !== "object") return null;
+      const action = raw as Record<string, unknown>;
+      const payload =
+        action.payload && typeof action.payload === "object"
+          ? { ...(action.payload as Record<string, unknown>) }
+          : undefined;
+      if (payload && typeof payload.path === "string") {
+        const path = sanitizeText(payload.path, 256);
+        payload.path = path && isSafeInternalPath(path) ? path : undefined;
+      }
+      return { ...action, payload };
+    })
+    .filter(Boolean);
+  return { ...metadata, actions: safeActions };
 }
 
 function normalizeChatContext(ctx: unknown) {
@@ -310,8 +329,9 @@ export async function POST(req: Request) {
                 }
                 const jsonStr = fullContent.slice(delimIdx + delimiter.length).trim();
                 try {
-                  const metadata = JSON.parse(jsonStr);
-                  controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...metadata })));
+                  const metadata = JSON.parse(jsonStr) as Record<string, unknown>;
+                  const safe = sanitizeChatMetadata(metadata);
+                  controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...safe })));
                 } catch {
                   // Malformed JSON — skip metadata
                 }
@@ -381,7 +401,12 @@ export async function POST(req: Request) {
     if (hint) msg += hint;
   }
   const is401 = msg.includes("401") || /invalid authentication|invalid api key/i.test(msg);
-  const message = process.env.NODE_ENV === "production" && !is401 ? "Something went wrong. Please try again." : msg;
+  const message =
+    process.env.NODE_ENV === "production"
+      ? "Something went wrong. Please try again."
+      : is401
+        ? msg
+        : msg;
   console.error("Chat API error (all providers failed):", lastErr);
   return jsonError("SERVER_ERROR", message, 500);
 }

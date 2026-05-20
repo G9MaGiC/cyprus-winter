@@ -1217,6 +1217,7 @@
     "dayEmptyTitle": "Dzień {day} jest pusty",
     "dayEmptyBody": "Dodaj pierwsze miejsce poniżej albo wybierz szablon dalej, aby wypełnić dzień jednym ruchem.",
     "browsePlaces": "Przeglądaj miejsca",
+    "placePickerIntro": "Wybierz jedno miejsce teraz. Kolejne możesz dodać od razu potem.",
     "seeTemplates": "Zobacz szablony",
     "placesCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}}",
     "addAnotherStopHint": "Dodaj kolejny postój albo zmień dzień powyżej.",
@@ -1827,6 +1828,7 @@
         "crossDeviceLink": "Moje rezerwacje",
         "crossDeviceSuffix": "aby zobaczyć prośbę na różnych urządzeniach.",
         "tip": "Zabierz warstwy i wodę. Powiedz komuś, jaką trasę wybierasz.",
+        "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z przewodnikiem.",
         "ctaBookings": "Zobacz moje rezerwacje",
         "ctaTrails": "Przeglądaj szlaki"
       },
@@ -1885,6 +1887,7 @@
         "crossDevicePrefix": "Wpisz swój email w",
         "crossDeviceSuffix": "aby zobaczyć prośbę na różnych urządzeniach.",
         "tip": "Zapytaj o Commandarię i lokalne odmiany winogron, kiedy tam będziesz. Są z nich dumni.",
+        "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z winnicą.",
         "ctaBookings": "Zobacz moje rezerwacje",
         "ctaDiscover": "Odkrywaj dalej"
       },

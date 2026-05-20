@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
+import { useTrapFocus } from "@/lib/useTrapFocus";
 import { CTA, CARD, TYPE, PILL, TRANSITION, LAYER } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
@@ -78,6 +79,7 @@ export default function OnboardingModal() {
   const [ready, setReady] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const trapFocus = useTrapFocus();
 
   useEffect(() => {
     if (!isClient || !showOnboarding || skipRoute) return;
@@ -148,6 +150,7 @@ export default function OnboardingModal() {
       aria-hidden={!visible}
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-description"
+      onKeyDown={(e) => trapFocus(e, panelRef.current, handleDismiss)}
     >
       <div
         ref={panelRef}

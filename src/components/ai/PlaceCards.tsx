@@ -33,7 +33,7 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
           key={card.id}
           type="button"
           onClick={() => handleClick(card)}
-          className="flex items-start gap-2 p-2 rounded-lg bg-sand-50 hover:bg-sand-100 transition-colors text-left w-full"
+            className="flex items-start gap-2 p-2 rounded-lg bg-sand-100/80 hover:bg-sand-200/70 transition-colors text-left w-full min-h-[44px] py-3"
         >
           <span className="shrink-0 mt-0.5 text-xs font-medium text-olive/60 uppercase tracking-wide w-12">
             {TYPE_LABELS[card.type] ?? "Place"}

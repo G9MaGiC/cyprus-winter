@@ -1217,6 +1217,7 @@
     "dayEmptyTitle": "Tag {day} ist leer",
     "dayEmptyBody": "Fügen Sie unten Ihren ersten Ort hinzu oder wählen Sie weiter unten eine Vorlage, um den Tag auf einmal zu füllen.",
     "browsePlaces": "Orte durchsuchen",
+    "placePickerIntro": "Wählen Sie jetzt einen Ort. Weitere können Sie direkt danach hinzufügen.",
     "seeTemplates": "Vorlagen ansehen",
     "placesCount": "{count, plural, one {# Ort} other {# Orte}}",
     "addAnotherStopHint": "Fügen Sie einen weiteren Stopp hinzu oder wechseln Sie oben den Tag.",
@@ -1827,6 +1828,7 @@
         "crossDeviceLink": "Meine Buchungen",
         "crossDeviceSuffix": "um Ihre Anfrage auf mehreren Geräten zu sehen.",
         "tip": "Schichten und Wasser einpacken. Sagen Sie jemandem Ihre Route.",
+        "emailDelayed": "Ihre Anfrage ist gespeichert. Die Bestätigungs-E-Mail kann ein paar Minuten dauern — prüfen Sie den Spam-Ordner oder kontaktieren Sie den Guide.",
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaTrails": "Wanderwege ansehen"
       },
@@ -1885,6 +1887,7 @@
         "crossDevicePrefix": "Geben Sie Ihre E‑Mail ein unter",
         "crossDeviceSuffix": "um Ihre Anfrage auf mehreren Geräten zu sehen.",
         "tip": "Fragen Sie vor Ort nach Commandaria und den autochthonen Rebsorten — darauf sind sie stolz.",
+        "emailDelayed": "Ihre Anfrage ist gespeichert. Die Bestätigungs-E-Mail kann ein paar Minuten dauern — prüfen Sie den Spam-Ordner oder kontaktieren Sie das Weingut.",
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaDiscover": "Mehr entdecken"
       },

@@ -8,6 +8,7 @@ export type ApiErrorCode =
   | "NOT_FOUND"
   | "RATE_LIMITED"
   | "BAD_REQUEST"
+  | "UNAUTHORIZED"
   | "SERVER_ERROR"
   | "SERVICE_UNAVAILABLE";
 

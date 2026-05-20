@@ -2,6 +2,7 @@ import AppLink from "@/components/AppLink";
 import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
 import LocaleLinks from "./LocaleLinks";
+import EmergencyLine from "./EmergencyLine";
 import { useTranslations } from "next-intl";
 
 const footerLinkClass =
@@ -100,17 +101,7 @@ export default function SiteFooter({ labels, localeSwitcher, LinkComponent = App
           </LinkComponent>
         </nav>
 
-        <div className={`inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 text-xs text-olive/80 mx-auto w-fit ${SECTION.headingGap}`}>
-          <span>
-            {tCommon("emergency")} <strong className="text-charcoal font-semibold">112</strong>
-          </span>
-          <span>
-            {tCommon("touristInfo")} <strong className="text-charcoal font-semibold">1460</strong>
-          </span>
-          <span>
-            {tCommon("ambulance")} <strong className="text-charcoal font-semibold">199</strong>
-          </span>
-        </div>
+        <EmergencyLine variant="pill" className={SECTION.headingGap} />
 
         <p className={`text-xs text-olive/70 max-w-md mx-auto text-center leading-relaxed ${SECTION.headingGap}`}>
           {L.practical}

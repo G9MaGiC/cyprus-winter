@@ -5,7 +5,7 @@ export default function EventsLoading() {
   const t = useTranslations("common");
   return (
     <div
-      className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
+      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} animate-pulse`}
       aria-busy
       aria-live="polite"
       role="status"
