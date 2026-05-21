@@ -14,6 +14,11 @@ import { Compass, MapPin, Route, Eye } from "lucide-react";
 import { CTA, CARD, TYPE, PILL, TRANSITION, LAYER } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
+import {
+  safeLocalStorageGet,
+  safeLocalStorageRemove,
+  safeLocalStorageSet,
+} from "@/lib/client-storage";
 
 const SCROLL_THRESHOLD_PX = 100;
 const DELAY_MS = 2000;
@@ -25,19 +30,19 @@ export function useOnboarding() {
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       setMounted(true);
-      setShowOnboarding(!localStorage.getItem(ONBOARDING_KEY));
+      setShowOnboarding(!safeLocalStorageGet(ONBOARDING_KEY));
     });
     return () => cancelAnimationFrame(raf);
   }, []);
 
   const dismiss = useCallback(() => {
-    localStorage.setItem(ONBOARDING_KEY, "true");
+    safeLocalStorageSet(ONBOARDING_KEY, "true");
     setShowOnboarding(false);
   }, []);
 
   const reset = useCallback(() => {
-    localStorage.removeItem(ONBOARDING_KEY);
-    localStorage.removeItem(INTENT_KEY);
+    safeLocalStorageRemove(ONBOARDING_KEY);
+    safeLocalStorageRemove(INTENT_KEY);
     setShowOnboarding(true);
   }, []);
 
@@ -52,7 +57,7 @@ function handleIntent(
   router: ReturnType<typeof useRouter>
 ) {
   if (value) {
-    localStorage.setItem(INTENT_KEY, value);
+    safeLocalStorageSet(INTENT_KEY, value);
     track(`onboarding_intent_${value}` as "onboarding_intent_planning" | "onboarding_intent_exploring" | "onboarding_intent_browsing");
   }
   dismiss();
