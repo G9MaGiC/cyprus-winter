@@ -124,7 +124,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
         {hydrated && !isInItinerary && (
           <button
             type="button"
-            onClick={() => addToDayIfMissing(a.id)}
+            onClick={() => addToDayIfMissing(a.id, { mergeStored: true })}
             className="hidden sm:inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg border border-sand-200/80 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
             aria-label={`${tCommon("addToPlan")}: ${a.name}`}
           >
