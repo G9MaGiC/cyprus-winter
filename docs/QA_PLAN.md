@@ -34,6 +34,7 @@ Hosts and exact URLs can change between Playwright releases; if allowlisting is 
 | **Lint** | `npm run lint` | Style, unused vars, imports | Fix all before manual QA |
 | **Tests** | `npm run test` | 175+ unit tests: format, booking-schema, related-places, data, search, API routes, sanitize, rate-limit | |
 | **E2E** | `npm run test:e2e` (dev) or `npm run test:e2e:ci` | Discover→Detail flow | Playwright; add Plan, Bookings flows |
+| **E2E gate (CI)** | `npm run test:e2e:gate:ci` | Core funnel + UX specs (`hub-footer`, `overlay-precedence`, `discover-detail`) | Runs in Core Funnel Gate job |
 | **Build** | `npm run build` | Compile, SSG/SSR, routing | Must pass; prebuild catches `.next` ownership |
 | **Typecheck** | `npx tsc --noEmit` | Type errors | Add to CI if not already |
 | **API stress** | `npm run stress:api` | Rate limits, error handling | Verify chat + bookings under load |

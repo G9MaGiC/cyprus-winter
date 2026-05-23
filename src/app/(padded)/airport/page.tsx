@@ -6,6 +6,7 @@ import { winterTipsPractical } from "@/data/winter-tips";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
+import AirportFooter from "@/app/(padded)/airport/AirportFooter";
 import AppLink from "@/components/AppLink";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -73,8 +74,8 @@ export default async function AirportPage() {
           </AppLink>
         </ListPageHero>
 
-        <section aria-label="Arrival quick actions" className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
-          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>Arrive faster</p>
+        <section aria-label={tAirport("quickActions.aria")} className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
+          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>{tAirport("quickActions.kicker")}</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
               <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">
@@ -245,34 +246,7 @@ export default async function AirportPage() {
           <BeforeYouGoChecklist tips={winterTipsPractical} />
         </section>
 
-        {/* Closing — warm, Cyprus Winter voice */}
-        <footer className="text-center space-y-6 pb-4">
-          <p className="text-olive/80 text-base max-w-lg mx-auto leading-relaxed break-words">
-            {tAirport("footer.body")}
-          </p>
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">
-            <AppLink
-              href="/plan?template=short-stay"
-              data-testid="airport-footer-plan48-cta"
-              className={CTA.primaryCompact}
-            >
-              {tAirport("hero.plan48Cta")}
-            </AppLink>
-            <AppLink
-              href="/plan?template=classic-7"
-              data-testid="airport-footer-planweek-cta"
-              className={CTA.secondaryCompact}
-            >
-              {tAirport("footer.planWeekCta")}
-            </AppLink>
-            <AppLink href="/discover" data-testid="airport-footer-discover-cta" className={CTA.secondaryCompact}>
-              {tAirport("footer.discoverCta")}
-            </AppLink>
-            <AppLink href="/weather" data-testid="airport-footer-weather-cta" className={CTA.secondaryCompact}>
-              {tAirport("footer.weatherCta")}
-            </AppLink>
-          </div>
-        </footer>
+        <AirportFooter />
       </div>
     </div>
   );

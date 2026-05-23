@@ -79,7 +79,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <ul className="grid gap-4 sm:grid-cols-2" role="list">
             {results.map((r) => (
               <li key={`${r.kind}-${r.item.id}`}>
-                <SearchResultCard result={r} />
+                <SearchResultCard result={r} searchQuery={q} />
               </li>
             ))}
           </ul>

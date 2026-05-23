@@ -22,6 +22,9 @@ type ItineraryTemplate = {
 /** Keywords per interest — items matching these score higher. */
 const INTEREST_KEYWORDS: Record<Interest, string[]> = {
   active: ["hiking", "trail", "trails", "active", "walk", "mountain", "outdoor"],
+  bouldering: ["boulder", "bouldering", "climbing wall", "rock gym"],
+  climbing: ["climbing", "crag", "rock", "cliff", "via ferrata", "rope"],
+  cycling: ["cycling", "bike", "bicycle", "mountain bike", "mtb", "cycle"],
   culture: ["history", "archaeology", "culture", "museum", "ancient", "unesco", "byzantine", "heritage"],
   wine: ["wine", "tasting", "winery", "commandaria", "krasochoria", "grape"],
   wellness: ["wellness", "relaxation", "peaceful", "quiet", "spa", "retreat"],
@@ -31,7 +34,8 @@ const INTEREST_KEYWORDS: Record<Interest, string[]> = {
 /** Attraction types that map to interests. */
 const TYPE_TO_INTEREST: Record<string, Interest[]> = {
   beach: ["wellness"],
-  nature: ["active", "wellness"],
+  nature: ["active", "bouldering", "climbing", "cycling", "wellness"],
+  activity: ["bouldering", "climbing", "active"],
   ancient: ["culture"],
   village: ["villages", "culture"],
   monastery: ["culture"],
@@ -87,6 +91,10 @@ export function sortDiscoverItemsByInterests<T extends DiscoverItem>(
 const TEMPLATE_BESTFOR_TO_INTEREST: Record<string, Interest> = {
   "hiking": "active",
   "trails": "active",
+  "bouldering": "bouldering",
+  "climbing": "climbing",
+  "cycling": "cycling",
+  "bike": "cycling",
   "villages": "villages",
   "culture": "culture",
   "history": "culture",

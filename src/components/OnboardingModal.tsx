@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
 import Image from "next/image";
 import { Compass, MapPin, Route, Eye } from "lucide-react";
+import { useTrapFocus } from "@/lib/useTrapFocus";
 import { CTA, CARD, TYPE, PILL, TRANSITION, LAYER } from "@/lib/design-tokens";
 import { ONBOARDING_KEY, INTENT_KEY } from "@/lib/local-storage-keys";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
@@ -78,6 +79,7 @@ export default function OnboardingModal() {
   const [ready, setReady] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+  const trapFocus = useTrapFocus();
 
   useEffect(() => {
     if (!isClient || !showOnboarding || skipRoute) return;
@@ -125,7 +127,7 @@ export default function OnboardingModal() {
     dispatchBlockingOverlayDirty();
   }, [visible, showOnboarding, skipRoute]);
 
-  const blockingActive = showOnboarding && !skipRoute;
+  const blockingActive = showOnboarding && !skipRoute && visible;
 
   const handleDismiss = useCallback(() => {
     track("onboarding_dismissed");
@@ -139,6 +141,7 @@ export default function OnboardingModal() {
     <div
       data-overlay-priority="blocking"
       data-overlay-active={blockingActive ? "true" : "false"}
+      inert={!visible ? true : undefined}
       className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] ${LAYER.onboarding} transition-all ${TRANSITION.medium} ease-out ${
         visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
       }`}
@@ -147,6 +150,7 @@ export default function OnboardingModal() {
       aria-hidden={!visible}
       aria-labelledby="onboarding-title"
       aria-describedby="onboarding-description"
+      onKeyDown={(e) => trapFocus(e, panelRef.current, handleDismiss)}
     >
       <div
         ref={panelRef}

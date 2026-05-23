@@ -35,8 +35,10 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
   const { leadFeeEur, ...rest } = input;
   const id = generateId();
   const createdAt = new Date().toISOString();
+  const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
   const booking: Booking = {
     ...rest,
+    guestEmail: guestEmailNormalized,
     id,
     status: "pending",
     createdAt,
@@ -44,7 +46,6 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 
   const supabase = getSupabase();
   if (supabase) {
-    const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
     const { error } = await supabase.from("bookings").insert({
       id,
       type: input.type,

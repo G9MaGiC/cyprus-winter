@@ -21,6 +21,7 @@ export default function GuideBookingForm({
   preselectedTrailId?: string | null;
 }) {
   const t = useTranslations("book.guideForm");
+  const tForm = useTranslations("book.form");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
   const searchParams = useSearchParams();
@@ -28,6 +29,7 @@ export default function GuideBookingForm({
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
+  const [emailDelayed, setEmailDelayed] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
@@ -96,6 +98,7 @@ export default function GuideBookingForm({
 
       setDone(true);
       setStorageMode(data.storage ?? null);
+      setEmailDelayed(data.emailStatus?.confirmationSent === false);
       form.reset();
 
       track("booking_complete", {
@@ -155,6 +158,11 @@ export default function GuideBookingForm({
         <p className="text-olive/70 text-sm mt-3 break-words">
           {t("success.tip")}
         </p>
+        {emailDelayed && (
+          <p className="text-olive/80 text-sm mt-3 break-words">
+            {t("success.emailDelayed")}
+          </p>
+        )}
         <div className="mt-4 flex flex-wrap gap-3">
           <AppLink href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
             {t("success.ctaBookings")}
@@ -172,8 +180,10 @@ export default function GuideBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="guide" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after guide reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p>
+          <strong>{tForm("states.heading")}</strong> {tForm("states.guideBody")}
+        </p>
+        <p className="mt-1">{tForm("states.offlineQueue")}</p>
       </div>
       {error && (
         <p

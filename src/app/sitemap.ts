@@ -9,6 +9,7 @@ import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
 import { REGION_CONFIGS } from "@/data/regions";
 import { WINE_ROUTES } from "@/data/wine-routes";
+import { ACTIVITY_FILTER_KEYS } from "@/lib/activity-catalog";
 import { SITE_URL } from "@/lib/site-url";
 
 const WEATHER_MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
@@ -38,9 +39,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const e = (path: string, priority: number, changeFreq?: ChangeFreq) =>
     entry(base, path, priority, changeFreq, now);
 
+  const discoverActivityFilters: MetadataRoute.Sitemap = ACTIVITY_FILTER_KEYS.map(
+    (filter) => entry(base, `/discover?filter=${filter}`, 0.75, "weekly", now)
+  );
+
   const hub: MetadataRoute.Sitemap = [
     e("/", 1),
     e("/discover", 0.9),
+    ...discoverActivityFilters,
     e("/trails", 0.9, "daily"),
     e("/plan", 0.8, "monthly"),
     e("/events", 0.8),
@@ -48,7 +54,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const secondary: MetadataRoute.Sitemap = [
     e("/weather", 0.8, "monthly"),
-    e("/bookings", 0.6, "monthly"),
     e("/airport", 0.7, "monthly"),
     e("/search", 0.7, "monthly"),
     e("/secrets", 0.8),
@@ -78,6 +83,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     e("/team", 0.5, "monthly"),
     e("/guides/troodos-december", 0.7),
     e("/install", 0.4, "monthly"),
+    e("/privacy", 0.3, "monthly"),
+    e("/terms", 0.3, "monthly"),
   ];
 
   const discoverIds = [

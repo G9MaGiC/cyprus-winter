@@ -5,8 +5,6 @@ import BackLink from "@/components/BackLink";
 import { LAYOUT, SECTION, SKELETON, TYPE } from "@/lib/design-tokens";
 import { useLocale, useTranslations } from "next-intl";
 
-const ADMIN_KEY_STORAGE = "cyprus-admin-key";
-
 type FunnelRow = { event: string; count: number };
 type PartnerRow = { providerId: string; providerName: string; bookingCount: number; totalFeeEur: number };
 
@@ -25,55 +23,79 @@ export default function AdminStatsPage() {
   const locale = useLocale();
   const [data, setData] = useState<StatsData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [adminKey, setAdminKey] = useState<string | null>(null);
+  const [authenticated, setAuthenticated] = useState(false);
   const [keyInput, setKeyInput] = useState("");
   const [keyError, setKeyError] = useState<string | null>(null);
 
-  const fetchStats = useCallback((token: string) => {
+  const fetchStats = useCallback(() => {
     setLoading(true);
     setKeyError(null);
-    fetch("/api/stats", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch("/api/stats", { credentials: "include" })
       .then((r) => {
         if (r.status === 401) {
-          sessionStorage.removeItem(ADMIN_KEY_STORAGE);
-          setAdminKey(null);
+          setAuthenticated(false);
           setKeyError("invalid");
           return null;
         }
         return r.json();
       })
       .then((json) => {
-        if (json && !json.error) setData(json);
-        else if (json?.error && json.error !== "Invalid key") setData({ error: json.error });
+        if (json && !json.error) {
+          setData(json);
+          setAuthenticated(true);
+        } else if (json?.error && json.error !== "Invalid key") setData({ error: json.error });
       })
       .catch((e) => setData({ error: String(e) }))
       .finally(() => setLoading(false));
   }, []);
 
-  // Restore admin key from sessionStorage on mount and fetch stats if present.
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? sessionStorage.getItem(ADMIN_KEY_STORAGE) : null;
-    if (stored) {
-      setAdminKey(stored); // eslint-disable-line react-hooks/set-state-in-effect -- client restore
-      fetchStats(stored);
-    } else {
-      setLoading(false);
-    }
+    fetch("/api/admin/session", { credentials: "include" })
+      .then((r) => {
+        if (r.ok) {
+          setAuthenticated(true);
+          fetchStats();
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(() => setLoading(false));
   }, [fetchStats]);
 
-  const handleKeySubmit = (e: React.FormEvent) => {
+  const handleKeySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const key = keyInput.trim();
     if (!key) return;
-    sessionStorage.setItem(ADMIN_KEY_STORAGE, key);
-    setAdminKey(key);
-    setKeyInput("");
-    fetchStats(key);
+    setLoading(true);
+    setKeyError(null);
+    try {
+      const res = await fetch("/api/admin/session", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret: key }),
+      });
+      if (!res.ok) {
+        setKeyError("invalid");
+        setLoading(false);
+        return;
+      }
+      setKeyInput("");
+      setAuthenticated(true);
+      fetchStats();
+    } catch {
+      setKeyError("invalid");
+      setLoading(false);
+    }
   };
 
-  if (!adminKey) {
+  const handleSignOut = async () => {
+    await fetch("/api/admin/session", { method: "DELETE", credentials: "include" });
+    setAuthenticated(false);
+    setData(null);
+  };
+
+  if (!authenticated) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tAdmin("title")}</h1>
@@ -92,7 +114,7 @@ export default function AdminStatsPage() {
           />
           <button
             type="submit"
-            disabled={!keyInput.trim()}
+            disabled={!keyInput.trim() || loading}
             className="min-h-[44px] px-5 py-2 rounded-lg bg-terracotta text-white font-semibold hover:bg-terracotta-muted disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {tAdmin("key.submit")}
@@ -147,12 +169,8 @@ export default function AdminStatsPage() {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => {
-              sessionStorage.removeItem(ADMIN_KEY_STORAGE);
-              setAdminKey(null);
-              setData(null);
-            }}
-            className="text-sm text-olive/60 hover:text-olive"
+            onClick={() => void handleSignOut()}
+            className="text-sm text-olive/60 hover:text-olive min-h-[44px] px-2"
           >
             {tAdmin("signOut")}
           </button>

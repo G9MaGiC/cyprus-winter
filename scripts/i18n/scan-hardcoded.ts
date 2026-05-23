@@ -15,6 +15,26 @@ const TRANSLATABLE_ATTRS = ["alt", "aria-label", "title", "placeholder"] as cons
 const MIN_STRING_LENGTH = 3;
 const MAX_REPORT = 100;
 
+const SKIP_DIR_SEGMENTS = [
+  `${path.sep}data${path.sep}`,
+  `${path.sep}contexts${path.sep}`,
+  `${path.sep}__tests__${path.sep}`,
+];
+
+function shouldSkipFile(full: string): boolean {
+  if (SKIP_DIR_SEGMENTS.some((seg) => full.includes(seg))) return true;
+  if (/\.(test|spec)\.[jt]sx?$/.test(full)) return true;
+  return false;
+}
+
+function isTsLoaderCopyFile(full: string): boolean {
+  if (!full.endsWith(".ts")) return false;
+  const rel = path.relative(SRC_DIR, full);
+  if (rel.endsWith("-data.ts") || rel.endsWith("-copy.ts")) return true;
+  if (rel.startsWith(`app${path.sep}_home${path.sep}`) && !rel.endsWith(".tsx")) return true;
+  return false;
+}
+
 function walkDir(dir: string): string[] {
   const files: string[] = [];
   if (!fs.existsSync(dir)) return files;
@@ -25,7 +45,10 @@ function walkDir(dir: string): string[] {
       if (e.name !== "node_modules" && !e.name.startsWith(".")) {
         files.push(...walkDir(full));
       }
-    } else if (e.name.endsWith(".tsx") && !full.includes(`${path.sep}contexts${path.sep}`)) {
+    } else if (
+      (e.name.endsWith(".tsx") || (e.name.endsWith(".ts") && isTsLoaderCopyFile(full))) &&
+      !shouldSkipFile(full)
+    ) {
       files.push(full);
     }
   }
@@ -51,11 +74,14 @@ function isLikelyUserFacing(value: string, kind: "attr" | "text"): boolean {
 export interface HardcodedHit {
   file: string;
   line: number;
-  kind: "attr" | "text";
+  kind: "attr" | "text" | "prop";
   attr?: string;
   value: string;
   suggestedKey: string;
 }
+
+const COPY_PROP_RE =
+  /^\s*([a-zA-Z]+(?:Label|Title|Heading|Copy|Text|Message|Prompt|Tip|Body|Desc|Name|Cta|Line|Subtitle|Kicker)?)\s*:\s*["']([^"']+)["']/;
 
 /** Find literal attr="value" or attr='value' that are translatable and not attr={t(...)}. */
 function findLiteralAttrs(content: string, filePath: string): HardcodedHit[] {
@@ -107,6 +133,27 @@ function findLiteralText(content: string, filePath: string): HardcodedHit[] {
   return hits;
 }
 
+/** Find object property literals in server loaders (*-data.ts, *-copy.ts, _home/*.ts). */
+function findTsLoaderLiterals(content: string, filePath: string): HardcodedHit[] {
+  if (!filePath.endsWith(".ts") || !isTsLoaderCopyFile(filePath)) return [];
+  const hits: HardcodedHit[] = [];
+  const lines = content.split("\n");
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const lineNum = i + 1;
+    if (/t\(|getTranslations|import |from ["']|console\.|throw new|^\s*\/\//.test(line)) continue;
+    const m = line.match(COPY_PROP_RE);
+    if (!m) continue;
+    const prop = m[1];
+    const value = m[2].replace(/\\"/g, '"').trim();
+    if (!isLikelyUserFacing(value, "text")) continue;
+    const suggestedKey = `home.loader.${prop}.${stableId(value)}`;
+    hits.push({ file: filePath, line: lineNum, kind: "prop", attr: prop, value, suggestedKey });
+  }
+  return hits;
+}
+
 function main(): void {
   const args = process.argv.slice(2);
   const failOnHit = args.includes("--fail");
@@ -118,6 +165,7 @@ function main(): void {
     const content = fs.readFileSync(file, "utf8");
     allHits.push(...findLiteralAttrs(content, file));
     allHits.push(...findLiteralText(content, file));
+    allHits.push(...findTsLoaderLiterals(content, file));
   }
 
   const byFile = new Map<string, HardcodedHit[]>();
@@ -142,7 +190,8 @@ function main(): void {
         break;
       }
       const preview = h.value.length > 50 ? h.value.slice(0, 47) + "…" : h.value;
-      const kind = h.kind === "attr" ? ` ${h.attr}=` : " text";
+      const kind =
+        h.kind === "attr" ? ` ${h.attr}=` : h.kind === "prop" ? ` ${h.attr}:` : " text";
       console.error(`  ${rel}:${h.line}${kind} "${preview}" → suggest key: ${h.suggestedKey}`);
       shown++;
     }

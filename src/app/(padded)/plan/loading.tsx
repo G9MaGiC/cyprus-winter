@@ -5,7 +5,7 @@ export default function PlanLoading() {
   const t = useTranslations("common");
   return (
     <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label={t("loading.plan")}>
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}>
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyPlan} flex flex-col gap-8 sm:gap-12 md:gap-16 animate-pulse`}>
         {/* Hero */}
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
         <div className={`h-9 w-64 ${SKELETON.bar} mb-3`} />

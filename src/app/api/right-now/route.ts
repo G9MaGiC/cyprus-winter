@@ -2,8 +2,6 @@ import { scoreAndRank, assignDiscoveryBadges } from "@/lib/right-now-scoring";
 import { getWeatherAtCoords } from "@/lib/weather-live";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { getAttractionById, getRestaurantById } from "@/data";
-import { trails } from "@/data/trails";
-import { winterEvents } from "@/data/events";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
 import {
   jsonError,
@@ -31,26 +29,11 @@ function getImage(place: { id: string; type: string }): string {
   return getAttractionImage(place.id, rest ? "restaurant" : "nature");
 }
 
-function getTease(place: { id: string; type: string; localSecret?: string; winterTip?: string }): string {
-  try {
-    if (place.localSecret) return place.localSecret;
-    if (place.winterTip) return place.winterTip;
-    if (place.type === "trail") {
-      const t = trails.find((x) => x.id === place.id);
-      if (!t) return "Worth a visit.";
-      const desc = t.winterNotes ?? (typeof t.description === "string" ? t.description.split(".")[0] + "." : "Worth a visit.");
-      return desc || "Worth a visit.";
-    }
-    const att = getAttractionById(place.id);
-    if (att?.description) return att.description.split(".")[0] + "." || "Worth a visit.";
-    const rest = getRestaurantById(place.id);
-    if (rest?.description) return rest.description.split(".")[0] + "." || "Worth a visit.";
-    const ev = winterEvents.find((x) => x.id === place.id);
-    if (ev?.description) return ev.description.split(".")[0] + "." || "Worth a visit.";
-  } catch {
-    // fallback on any parse error
-  }
-  return "Worth a visit.";
+/** Curated teases only; EN data descriptions are resolved on the client via i18n. */
+function getTease(place: { localSecret?: string; winterTip?: string }): string | null {
+  if (place.localSecret) return place.localSecret;
+  if (place.winterTip) return place.winterTip;
+  return null;
 }
 
 export async function GET(req: Request) {
@@ -125,7 +108,7 @@ export async function GET(req: Request) {
         timeOfDayMatch: item.timeOfDayMatch,
         discoveryBadge: item.discoveryBadge,
         image: getImage(item),
-        tease: tease.length > 120 ? tease.slice(0, 120) + "…" : tease,
+        tease: tease ? (tease.length > 120 ? tease.slice(0, 120) + "…" : tease) : null,
       };
     });
 
@@ -154,7 +137,7 @@ function buildReasons(item: {
 }): string[] {
   const reasons: string[] = [];
   if (item.discoveryBadge) reasons.push(item.discoveryBadge);
-  if (item.distanceKm < 15) reasons.push("Nearby");
-  if (item.localSecret) reasons.push("Local secret");
-  return reasons.length > 0 ? reasons : ["Worth a visit"];
+  if (item.distanceKm < 15) reasons.push("nearby");
+  if (item.localSecret) reasons.push("local_secret");
+  return reasons.length > 0 ? reasons : ["worth_visit"];
 }

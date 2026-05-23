@@ -130,7 +130,7 @@ function enrichPlace(place: PlanItem): ScorablePlace {
       base.localSecret = r.localSecret;
       base.winterOpen = r.winterOpen;
     }
-  } else if (place.type === "attraction") {
+  } else if (place.type === "attraction" || place.type === "activity") {
     const a = getAttractionById(place.id);
     if (a) {
       base.effectiveType = a.type;

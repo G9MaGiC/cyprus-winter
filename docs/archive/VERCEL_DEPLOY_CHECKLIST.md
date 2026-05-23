@@ -25,7 +25,9 @@ Use this when configuring the Cyprus Winter project in Vercel.
 
 **Before first deploy:** Set all required env vars in Vercel dashboard. Build will fail or features will break without Supabase, Resend, and at least one AI key.
 
-**P0 before launch:** Set Redis (`UPSTASH_REDIS_REST_*`) for shared rate limiting. Never set `STRESS_TEST_TOKEN` in production.
+**P0 before launch (required):** Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in Vercel for shared rate limiting across serverless instances (BUG-071). Without these, limits are per-instance only. Never set `STRESS_TEST_TOKEN` in production.
+
+**Auth (optional):** Social sign-in flags (`NEXT_PUBLIC_*`) default off; enable only when Supabase OAuth providers are configured.
 
 **Rate limiting:** Relies on `x-forwarded-for` / `x-real-ip` for client identification. Vercel (and typical reverse proxies) set these. If deploying behind a custom proxy, ensure it overwrites these headers so they cannot be spoofed by clients.
 

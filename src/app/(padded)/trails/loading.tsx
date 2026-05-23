@@ -5,7 +5,7 @@ export default function TrailsLoading() {
   const t = useTranslations("common");
   return (
     <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label={t("loading.trails")}>
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}>
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16 animate-pulse`}>
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
         <div className={`h-9 w-64 ${SKELETON.bar} mb-2`} />
         <div className={`h-4 w-full max-w-lg ${SKELETON.block} mb-8`} />

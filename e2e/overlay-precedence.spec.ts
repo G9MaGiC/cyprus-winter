@@ -39,11 +39,16 @@ test("AI trigger is blocked until onboarding/cookie are resolved", async ({ page
   await page.getByRole("button", { name: "Skip onboarding" }).click();
   await page.getByRole("button", { name: "Accept" }).click();
 
-  // Nav and hero both use `nav.askAIAria`; hero visible text is "Ask your guide", nav is "Ask AI".
-  const activeTrigger = page
-    .getByRole("button", { name: /Ask AI for trails/i })
-    .filter({ hasText: /^Ask AI$/ });
-  await expect(activeTrigger).toBeEnabled({ timeout: 15_000 });
-  await activeTrigger.click();
+  const viewport = page.viewportSize();
+  const isMobile = viewport != null && viewport.width < 768;
+  if (isMobile) {
+    await page.getByRole("button", { name: /open menu/i }).click();
+  }
+
+  const activeTrigger = page.getByRole("button", { name: /Ask AI for trails/i }).filter({
+    hasText: /^Ask AI$/,
+  });
+  await expect(activeTrigger.first()).toBeEnabled({ timeout: 15_000 });
+  await activeTrigger.first().click();
   await expect(page.getByRole("dialog", { name: /Cyprus Guide/i })).toBeVisible();
 });

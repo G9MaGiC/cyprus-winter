@@ -4,9 +4,17 @@ import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, TYPE } from "@/lib/design-tokens";
+import { useTranslations } from "next-intl";
 
 function formatKm(n: number): string {
   return n % 1 === 0 ? String(n) : n.toFixed(1);
+}
+
+const REASON_CODES = ["nearby", "local_secret", "worth_visit"] as const;
+type ReasonCode = (typeof REASON_CODES)[number];
+
+function isReasonCode(value: string): value is ReasonCode {
+  return (REASON_CODES as readonly string[]).includes(value);
 }
 
 export type RightNowItem = {
@@ -21,11 +29,24 @@ export type RightNowItem = {
   timeOfDayMatch: string;
   discoveryBadge: string | null;
   image: string;
-  tease: string;
+  tease: string | null;
 };
 
 export default function RightNowCard({ item }: { item: RightNowItem }) {
-  const badge = item.discoveryBadge ?? item.reasons[0] ?? "Worth a visit";
+  const tHome = useTranslations("home");
+  const tCommon = useTranslations("common");
+
+  const localizeReason = (reason: string) =>
+    isReasonCode(reason) ? tHome(`rightNow.reasons.${reason}`) : reason;
+
+  const badge =
+    item.discoveryBadge ??
+    (item.reasons[0] ? localizeReason(item.reasons[0]) : tHome("rightNow.card.defaultTease"));
+  const tease = item.tease ?? tHome("rightNow.card.defaultTease");
+  const distanceLabel =
+    item.distanceKm < 0.5
+      ? tHome("rightNow.card.distanceLessThanKm")
+      : tHome("rightNow.card.distanceKm", { distance: formatKm(item.distanceKm) });
 
   return (
     <div
@@ -48,24 +69,28 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent sm:from-charcoal/60"
             aria-hidden
           />
-          <span className="absolute bottom-1 left-1 right-1 text-white text-[10px] sm:text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2" title={badge}>
+          <span
+            className="absolute bottom-1 left-1 right-1 text-white text-[10px] sm:text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2"
+            title={badge}
+          >
             {badge}
           </span>
         </div>
         <div className="flex-1 p-2.5 sm:p-3 min-w-0 flex flex-col justify-center">
-          <h3 className={`${TYPE.cardTitleCompact} truncate`}>
-            {item.name}
-          </h3>
-          <p className="text-xs text-olive/80 mt-0.5 truncate" title={`${item.region} · ${item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}`}>
-            {item.region} · {item.distanceKm < 0.5 ? "< 1 km" : `${formatKm(item.distanceKm)} km`}
+          <h3 className={`${TYPE.cardTitleCompact} truncate`}>{item.name}</h3>
+          <p
+            className="text-xs text-olive/80 mt-0.5 truncate"
+            title={`${item.region} · ${distanceLabel}`}
+          >
+            {item.region} · {distanceLabel}
           </p>
           <p className="hidden sm:block text-xs text-olive/90 mt-0.5 leading-relaxed line-clamp-2 break-words">
-            {item.tease}
+            {tease}
           </p>
         </div>
       </AppLink>
       <div className="flex sm:block shrink-0 p-2 sm:p-3 sm:-mt-1 self-center sm:self-stretch">
-        <AddToItineraryButton placeId={item.id} label="Add" />
+        <AddToItineraryButton placeId={item.id} label={tCommon("addToPlan")} />
       </div>
     </div>
   );

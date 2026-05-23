@@ -1,13 +1,14 @@
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import EmergencyLine from "@/components/EmergencyLine";
 
 export default function NotFound() {
   const tNotFound = useTranslations("notFound");
   const tCommon = useTranslations("common");
 
   return (
-    <main className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`} role="alert">
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
         <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
           {tNotFound("title")}
@@ -20,18 +21,15 @@ export default function NotFound() {
           {tNotFound("hint")}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/" className={`px-6 py-3 ${CTA.primaryCompact}`}>
+          <Link href="/" className={CTA.primaryCompact}>
             {tCommon("goHome")}
           </Link>
-          <Link href="/discover" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
+          <Link href="/discover" className={CTA.secondaryCompact}>
             {tNotFound("discoverCyprus")}
           </Link>
         </div>
-        <p className="mt-8 text-sm text-olive/60 break-words">
-          {tCommon("emergency")} <strong>112</strong> · {tCommon("touristInfo")} <strong>1460</strong> ·{" "}
-          {tCommon("ambulance")} <strong>199</strong>
-        </p>
+        <EmergencyLine className="mt-8" />
       </div>
-    </main>
+    </div>
   );
 }

@@ -13,6 +13,8 @@ type PlanFooterProps = {
 export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterProps) {
   const tOnboarding = useTranslations("onboarding");
   const tPlan = useTranslations("plan");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
   return (
     <footer
       className={`${SECTION.footerBlock} pt-12 sm:pt-14 ${LAYOUT.footerBottomClearance}`}
@@ -29,7 +31,7 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
         </p>
       )}
       <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
-        Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24-48h ahead.
+        {tPlan("footer.winterTip")}
       </p>
       <div
         className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm"
@@ -38,17 +40,17 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
       >
         {hasWineries && (
           <Link href="/bookings" className={SECTION.aegeanLink}>
-            Book tastings
+            {tCommon("bookTastings")}
           </Link>
         )}
         <Link href="/discover" className={SECTION.aegeanLink}>
-          Discover
+          {tNav("discover")}
         </Link>
         <Link href="/trails" className={SECTION.aegeanLink}>
-          Trails
+          {tNav("trails")}
         </Link>
         <Link href="/weather" className={SECTION.aegeanLink}>
-          Weather
+          {tNav("weather")}
         </Link>
       </div>
     </footer>

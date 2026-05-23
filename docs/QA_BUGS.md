@@ -1154,3 +1154,68 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-090 | Home | Place of Day actions tight on mobile | `gap-2 sm:gap-3`; See details `min-h-[44px]` |
 | BUG-091 | Tablet | Category chips wrapped at `sm` while BottomNav until `md` | Chip scroll/wrap + fade use `md` breakpoint |
 | BUG-092 | A11y | AI `FollowUpChips` 32px touch targets | `min-h-[44px]` |
+
+---
+
+## CTO follow-up hardening — May 17, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-093 | CI | UX specs not in core-funnel gate | `test:e2e:ux:ci` + `test:e2e:gate:ci` in Core Funnel Gate job |
+| BUG-094 | Docs | `UX_PATTERNS.md` hub list incomplete | Full hub/detail list + E2E + analytics |
+| BUG-095 | Analytics | Hub footer Plan/Ask AI untracked | `hub_footer_click` on `HubFooter` + detail Ask AI |
+| BUG-096 | i18n | DE/PL/EL EN placeholders for QA strings | `scripts/i18n/patch-cto-locale-polish.mjs` |
+| BUG-097 | E2E | Events hub footer untested | `hub-footer.spec.ts` events case |
+
+---
+
+## CTO hardening pass — May 17, 2026 (full fix)
+
+*Act-as-CTO: automated gates + P1 code fixes + CI hardening.*
+
+### Automated baseline
+
+| Check | Result |
+|-------|--------|
+| `npm run lint -- --max-warnings 0` | Pass |
+| `npm run typecheck` | Pass |
+| `npm run test` | Pass (473) |
+| `npm run i18n:validate` | Pass (1419 keys × 4 locales) |
+| `npm run i18n:scan -- --fail` | Pass (0 hardcoded strings) |
+
+### Findings fixed (BUG-098–106)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-098 | Lint | Unused `LAYER` import in `TrailsClient.tsx` | Removed |
+| BUG-099 | i18n routing | AI `ActionButtons` / `PlaceCards` prepended `/${locale}` — broke Strategy A for English | Use `@/i18n/navigation` paths only (no manual locale prefix) |
+| BUG-100 | Security | Chat SSE deltas not server-sanitized | `sanitizeText()` on each streaming delta |
+| BUG-101 | i18n | Home footer blocks hardcoded EN (`HomeInsiderTip`, `HomeTemplateLinks`, `WhyCyprus*`, `EditorsPicks`) | Server `getTranslations` + keys in en/el/de/pl |
+| BUG-102 | i18n | `RightNowNearYou` default title hardcoded | `tHome("rightNowNearYou")` |
+| BUG-103 | i18n | 18 hardcoded booking/airport/discover/cookie strings | `book.form.*`, `discover.detail.*`, `airport.page.quickActions`, `common.cookies` |
+| BUG-104 | Visual | Discover booking heading `className="${TYPE.kicker}..."` (broken template) | Fixed to template literal + i18n trust block |
+| BUG-105 | CI | Lint warnings + hardcoded scan not enforced | `--max-warnings 0`; `i18n:scan --fail` in quality job |
+| BUG-106 | Home RSC | Weather/search/trails/this-week/share server-client split | `home-*-data.ts` + `*View.tsx` wrappers (prior session, verified build) |
+
+### Deploy note (unchanged)
+
+| ID | Area | Issue | Action |
+|----|------|-------|--------|
+| BUG-071 | Ops | Redis rate limits optional in prod | Set `UPSTASH_REDIS_REST_*` on Vercel before launch |
+
+---
+
+## Expert review remediation — May 17, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-107 | Visual | Home status strips / PostHeroBand inconsistent with trails/plan | `StatusStrip`, `PostHeroBand`, `STRIP` tokens; trip mode band on home |
+| BUG-108 | i18n | `PlanShareBar` hardcoded EN | `plan.share.*` keys |
+| BUG-109 | i18n | `RecentlyViewed` type labels hardcoded | `common.placeTypes.*` |
+| BUG-110 | i18n | Home editor picks / featured wineries / insider tip from EN data | `home-editors-picks-data`, `home-featured-wineries-data`, `home-insider-tip-data` |
+| BUG-111 | UX | Airport page missing `HubFooter` | `AirportFooter.tsx` + hub-footer e2e |
+| BUG-112 | CI | `home-smoke.spec.ts` not in UX gate | Added to `test:e2e:ux:ci` |
+| BUG-113 | i18n | Right Now API teases from EN descriptions | API returns `tease: null`; client uses `home.rightNow.card.defaultTease` |
+| BUG-114 | Security | CSP `unsafe-eval` in production | Removed in prod via `proxy.ts` (`NODE_ENV`) |
+| BUG-115 | Docs | Stale agent docs | `AGENTS.md` at app root |
+| BUG-116 | Security | Bookings email lookup enumeration | Rate limited (`bookings-lookup`, 15/min); generic errors — document in deploy checklist |

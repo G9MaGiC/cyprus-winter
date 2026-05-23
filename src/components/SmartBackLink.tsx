@@ -10,6 +10,9 @@ import AppLink from "@/components/AppLink";
 import { useSearchParams, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { createDetailLink } from "@/lib/discover-links";
+
+export { createDetailLink };
 
 interface SmartBackLinkProps {
   fallbackHref?: string;
@@ -38,7 +41,10 @@ export default function SmartBackLink({
     href = `/search?q=${encodeURIComponent(query)}`;
     label = tCommon("backTo", { label: `“${query}”` });
   } else if (from === "discover") {
-    href = "/discover";
+    const filterParam = searchParams.get("filter");
+    href = filterParam
+      ? `/discover?filter=${encodeURIComponent(filterParam)}`
+      : "/discover";
     label = tCommon("backTo", { label: tNav("discover") });
   } else if (from === "plan") {
     href = "/plan";
@@ -66,19 +72,4 @@ export default function SmartBackLink({
       <span className="truncate max-w-[200px]">{label}</span>
     </AppLink>
   );
-}
-
-// Helper to add "from" parameter to links
-export function createDetailLink(
-  basePath: string,
-  id: string,
-  from?: string,
-  query?: string
-): string {
-  const params = new URLSearchParams();
-  if (from) params.set("from", from);
-  if (query) params.set("q", query);
-  
-  const queryString = params.toString();
-  return `${basePath}/${id}${queryString ? `?${queryString}` : ""}`;
 }

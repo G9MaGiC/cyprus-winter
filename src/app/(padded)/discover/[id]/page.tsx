@@ -9,7 +9,7 @@ import type { Restaurant } from "@/data/restaurants";
 import { LAYOUT, CTA, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import BackLink from "@/components/BackLink";
+import DiscoverDetailBackLink from "@/app/(padded)/discover/DiscoverDetailBackLink";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
@@ -24,6 +24,11 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { getLocalizedName } from "@/lib/localize";
 import { getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
+import {
+  discoverDetailHref,
+  discoverListHref,
+  getDiscoverTypeLabel,
+} from "@/lib/discover-links";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -40,12 +45,18 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale?: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
+  const { id, locale = "en" } = await params;
+  const tDetail = await getTranslations({ locale, namespace: "discover.detail" });
   const a = getDiscoverPlaceById(id);
-  if (!a) return { title: "Not found" };
-  const typeLabel = a.type === "winery" ? "Winery" : a.type === "restaurant" ? "Eat" : a.type.charAt(0).toUpperCase() + a.type.slice(1);
+  if (!a) return { title: tDetail("metadata.notFound") };
+  const typeLabel =
+    a.type === "winery"
+      ? tDetail("metadata.typeWinery")
+      : a.type === "restaurant"
+        ? tDetail("metadata.typeEat")
+        : a.type.charAt(0).toUpperCase() + a.type.slice(1);
   const prefix = `${a.region}. ${typeLabel}. `;
   const maxDesc = 154 - prefix.length;
   const desc = a.description.slice(0, maxDesc).trim();
@@ -65,16 +76,24 @@ export async function generateMetadata({
 
 export default async function AttractionPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string; locale?: string }>;
+  searchParams: Promise<{ from?: string; filter?: string; q?: string }>;
 }) {
   const { id, locale = "en" } = await params;
-  const [tNav, tDetail] = await Promise.all([
+  const { from, filter: filterParam } = await searchParams;
+  const preserveFilter = from === "discover" ? filterParam : undefined;
+  const discoverBackHref = discoverListHref(preserveFilter);
+  const [tNav, tDetail, tCommon] = await Promise.all([
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "discover.detail" }),
+    getTranslations({ locale, namespace: "common" }),
   ]);
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
+
+  const typeLabel = getDiscoverTypeLabel(a.type, tDetail, tCommon);
 
   const canonicalUrl = `${SITE_URL}/discover/${id}`;
   const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
@@ -108,8 +127,13 @@ export default async function AttractionPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
       itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Discover", item: `${SITE_URL}/discover` },
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: SITE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: tNav("discover"),
+        item: `${SITE_URL}${discoverBackHref}`,
+      },
       { "@type": "ListItem", position: 3, name: getLocalizedName(a, locale), item: canonicalUrl },
     ],
   };
@@ -120,27 +144,32 @@ export default async function AttractionPage({
       {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(localBusinessSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
-        <TrackView id={a.id} name={a.name} type={a.type} region={a.region} />
+        <TrackView
+          id={a.id}
+          name={a.name}
+          type={getPlaceById(a.id)?.type ?? a.type}
+          region={a.region}
+        />
         <TrackEventOnMount event="decision_rationale_view" properties={{ place_id: a.id, place_type: a.type }} />
         <nav className="flex flex-col gap-1 mb-6" aria-label={tDetail("pageNavAria")}>
-          <BackLink href="/discover" label={tNav("discover")} />
+          <DiscoverDetailBackLink />
           <Breadcrumbs
             items={[
               { label: tNav("home"), href: "/" },
-              { label: tNav("discover"), href: "/discover" },
+              { label: tNav("discover"), href: discoverBackHref },
               { label: a.name, href: canonicalUrl, isCurrent: true },
             ]}
             className="py-1 px-0 text-xs text-olive/60"
           />
         </nav>
 
-        <article aria-label={tDetail("articleAria", { name: a.name, type: a.type, region: a.region })}>
+        <article aria-label={tDetail("articleAria", { name: a.name, type: typeLabel, region: a.region })}>
           <DetailHero
             image={getAttractionImage(a.id, a.type)}
-            imageAlt={tDetail("imageAlt", { name: a.name, region: a.region, type: a.type })}
+            imageAlt={tDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel })}
             badge={
-              <span className="inline-block px-3 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md capitalize tracking-wide">
-                {a.type === "restaurant" ? tDetail("badgeEat") : a.type}
+              <span className="inline-block px-3 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md tracking-wide">
+                {typeLabel}
               </span>
             }
             title={getLocalizedName(a, locale)}
@@ -155,19 +184,23 @@ export default async function AttractionPage({
             </section>
 
             <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>
-              <h2 className={`${TYPE.kicker} text-aegean ${SECTION.headingGap}`}>Why this now</h2>
+              <h2 className={`${TYPE.kicker} text-aegean ${SECTION.headingGap}`}>{tDetail("whyNow.title")}</h2>
               <ul className="space-y-2 text-sm text-olive/85">
                 <li className="flex gap-2">
                   <span className="text-aegean" aria-hidden>•</span>
-                  <span>Best for {a.bestFor.slice(0, 2).join(" and ").toLowerCase()}.</span>
+                  <span>
+                    {tDetail("whyNow.bestFor", {
+                      types: a.bestFor.slice(0, 2).join(" and ").toLowerCase(),
+                    })}
+                  </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-aegean" aria-hidden>•</span>
-                  <span>{a.region} is a practical stop for the same day plan flow.</span>
+                  <span>{tDetail("whyNow.regionFlow", { region: a.region })}</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-aegean" aria-hidden>•</span>
-                  <span>Save now to compare with similar options later without losing context.</span>
+                  <span>{tDetail("whyNow.saveCompare")}</span>
                 </li>
               </ul>
             </section>
@@ -260,12 +293,12 @@ export default async function AttractionPage({
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Visit & taste
+                  {tDetail("visitTaste.title")}
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.tastingInfo}</p>
                 {a.wineRoute && (
                   <p className="text-olive/70 text-sm mt-2 break-words">
-                    Wine route: {a.wineRoute}
+                    {tDetail("wineRoute", { route: a.wineRoute })}
                   </p>
                 )}
               </section>
@@ -299,14 +332,14 @@ export default async function AttractionPage({
           a.contactPhone ||
           ("shopUrl" in a && a.shopUrl)) && (
           <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-            <h2 className="${TYPE.kicker} text-olive/70 mb-1">
+            <h2 className={`${TYPE.kicker} text-olive/70 mb-1`}>
               {tDetail("booking.title")}
             </h2>
             <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">Trust and timing</p>
-              <p className="mt-1 text-sm text-olive/80">
-                Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready.
+              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">
+                {tDetail("trustTiming.title")}
               </p>
+              <p className="mt-1 text-sm text-olive/80">{tDetail("trustTiming.body")}</p>
             </div>
             {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
               <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
@@ -399,7 +432,7 @@ export default async function AttractionPage({
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Our wines
+                  {tDetail("ourWines.title")}
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
                   {a.signatureWines.map((wine, i) => (
@@ -419,7 +452,7 @@ export default async function AttractionPage({
                     </div>
                   )}
                   <div className="p-4">
-                    <p className={`${TYPE.cardTitle} text-sm break-words`}>{wine.name}</p>
+                    <p className={`${TYPE.cardTitleCompact} break-words`}>{wine.name}</p>
                     {wine.variety && (
                       <p className="text-xs text-olive/70 mt-0.5 break-words">{wine.variety}</p>
                     )}
@@ -436,7 +469,7 @@ export default async function AttractionPage({
             {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Local secret
+                  {tDetail("localSecretHeading")}
                 </h2>
             {a.winterTip && (
               <p className="text-olive/90 text-base leading-relaxed break-words">{a.winterTip}</p>
@@ -457,7 +490,7 @@ export default async function AttractionPage({
             {"backstory" in a && a.backstory && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Backstory
+                  {tDetail("backstoryHeading")}
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.backstory}</p>
               </section>
@@ -472,11 +505,11 @@ export default async function AttractionPage({
             {isWinery(a) && typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                  Location
+                  {tDetail("location.title")}
                 </h2>
             <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
               <iframe
-                title={`Map: ${a.name}`}
+                title={tDetail("map.iframeTitle", { name: a.name })}
                 src={`https://www.openstreetmap.org/export/embed.html?bbox=${a.longitude - 0.02}%2C${a.latitude - 0.015}%2C${a.longitude + 0.02}%2C${a.latitude + 0.015}&layer=mapnik&marker=${a.latitude}%2C${a.longitude}`}
                 width="100%"
                 height="100%"
@@ -501,10 +534,10 @@ export default async function AttractionPage({
             {getSecretsForPlace(a.id).length > 0 && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip}`}>
                 <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
-                  Local secrets
+                  {tDetail("localSecrets.title")}
                 </h2>
                 <p className="text-sm text-olive/70 mb-4">
-                  Insider tips for this place. From people who live here.
+                  {tDetail("localSecrets.intro")}
                 </p>
                 <div className="space-y-4">
                   {getSecretsForPlace(a.id).map((s) => (
@@ -518,7 +551,7 @@ export default async function AttractionPage({
                   href="/secrets"
                   className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
-                  See all local secrets →
+                  {tDetail("localSecrets.seeAll")}
                 </AppLink>
               </section>
             )}
@@ -526,33 +559,44 @@ export default async function AttractionPage({
             {a.combineWith && a.combineWith.length > 0 && (
               <RelatedPlacesBlock
                 ids={a.combineWith}
-                description="Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around."
+                title={tDetail("combineWith.title")}
+                description={tDetail("combineWith.description")}
+                discoverFilter={preserveFilter}
                 showAddToItinerary
+                addToPlanLabel={tCommon("addToPlan")}
+                addToPlanAria={(name) => tDetail("combineWith.addToPlanAria", { name })}
               />
             )}
 
             {(() => {
               const similar = getSimilarDiscoverPlaces(a.id, a.type, a.region);
               if (similar.length === 0) return null;
-              const typeLabel =
-                a.type === "winery" ? "Wineries" :
-                a.type === "restaurant" ? "Eat & drink" :
-                a.type === "beach" ? "Beaches" :
-                a.type === "ancient" ? "Ancient sites" :
-                a.type === "village" ? "Villages" :
-                a.type === "monastery" ? "Monasteries" :
-                a.type === "nature" ? "Nature & coasts" :
-                "Places";
+              const similarTypeKey =
+                a.type === "winery" ||
+                a.type === "restaurant" ||
+                a.type === "beach" ||
+                a.type === "ancient" ||
+                a.type === "village" ||
+                a.type === "monastery" ||
+                a.type === "activity" ||
+                a.type === "nature"
+                  ? a.type
+                  : "default";
+              const typeLabel = tDetail(`similar.typeLabels.${similarTypeKey}`);
               return (
                 <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
                   <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
-                    More {typeLabel.toLowerCase()} in {a.region}
+                    {tDetail("similar.title", { type: typeLabel, region: a.region })}
                   </h2>
                   <ul className="flex flex-wrap gap-2">
                     {similar.map((r) => (
                       <li key={r.id}>
                         <AppLink
-                          href={r.href}
+                          href={
+                            r.href.startsWith("/discover/")
+                              ? discoverDetailHref(r.id, preserveFilter)
+                              : r.href
+                          }
                           className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-lg bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:text-terracotta-muted hover:border-terracotta/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                           {r.name} →

@@ -33,6 +33,12 @@ describe("getPlaceById", () => {
     expect(p?.id).toBe("artemis");
     expect(p?.type).toBe("trail");
   });
+
+  it("returns activity plan type for activity places", () => {
+    const p = getPlaceById("climb-cyprus-limassol");
+    expect(p).toBeDefined();
+    expect(p?.type).toBe("activity");
+  });
 });
 
 describe("getAttractionById", () => {

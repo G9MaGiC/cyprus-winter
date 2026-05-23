@@ -19,7 +19,7 @@ export type Coords = { lat: number; lng: number };
  * - Events: latitude/longitude or region centroid
  */
 export function getPlaceCoords(place: PlanItem): Coords | null {
-  if (place.type === "attraction") {
+  if (place.type === "attraction" || place.type === "activity") {
     const attraction = getAttractionById(place.id);
     if (attraction && typeof attraction.latitude === "number" && typeof attraction.longitude === "number") {
       return { lat: attraction.latitude, lng: attraction.longitude };

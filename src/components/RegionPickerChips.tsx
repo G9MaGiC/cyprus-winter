@@ -45,7 +45,7 @@ export default function RegionPickerChips({
               e.stopPropagation();
               onSelect(config.slug);
             }}
-            className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 bg-white text-olive text-sm font-medium hover:bg-sand-50/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2"
+            className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 bg-white text-olive text-sm font-medium hover:bg-sand-100/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2"
           >
             {getRegionShortLabel(config.slug)}
           </button>

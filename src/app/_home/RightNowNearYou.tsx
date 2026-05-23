@@ -95,10 +95,9 @@ function DistanceToggle({
 
 type RightNowNearYouProps = { title?: string };
 
-export default function RightNowNearYou({
-  title = "Right now near you",
-}: RightNowNearYouProps) {
+export default function RightNowNearYou({ title }: RightNowNearYouProps) {
   const tHome = useTranslations("home");
+  const sectionTitle = title ?? tHome("rightNowNearYou");
   const tErrors = useTranslations("errors");
   const {
     state,
@@ -118,7 +117,7 @@ export default function RightNowNearYou({
 
   if (state === "consent") {
     return (
-      <SectionShell title={title} subtitle={tHome("rightNow.subtitleConsent")}>
+      <SectionShell title={sectionTitle} subtitle={tHome("rightNow.subtitleConsent")}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.consent.body")}
@@ -137,7 +136,7 @@ export default function RightNowNearYou({
 
   if (state === "region-picker") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={sectionTitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.regionPicker.body")}
@@ -154,7 +153,7 @@ export default function RightNowNearYou({
 
   if (state === "loading") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={sectionTitle}>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {[1, 2, 3, 4].map((i) => (
             <div
@@ -176,7 +175,7 @@ export default function RightNowNearYou({
 
   if (state === "denied" || state === "error") {
     return (
-      <SectionShell title={title}>
+      <SectionShell title={sectionTitle}>
         <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           {state === "denied" ? (
             <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
@@ -214,7 +213,7 @@ export default function RightNowNearYou({
           })
         : undefined;
     return (
-      <SectionShell title={title} subtitle={subtitle}>
+      <SectionShell title={sectionTitle} subtitle={subtitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.empty.body", {
@@ -253,7 +252,7 @@ export default function RightNowNearYou({
       : tHome("rightNow.subtitleLoadedLocation");
 
   return (
-    <SectionShell title={title} subtitle={loadedSubtitle}>
+    <SectionShell title={sectionTitle} subtitle={loadedSubtitle}>
       <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
         <DistanceToggle value={distanceMode} onChange={handleDistanceChange} />
         <AppLink href="/discover" className={SECTION.aegeanLink}>

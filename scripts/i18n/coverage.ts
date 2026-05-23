@@ -71,16 +71,15 @@ function findNamespacesInFile(content: string): Map<string, string> {
   while ((m = re2.exec(content)) !== null) {
     map.set(m[1], m[2]);
   }
-  // const [tNav, tWeather, tCommon] = await Promise.all([ getTranslations("nav"), getTranslations("weather.page"), ... ])
+  // const [tNav, tWeather, tCommon] = await Promise.all([ getTranslations("nav"), ... ])
   const promiseAllBlock = /const\s*\[\s*([\w\s,]+)\s*\]\s*=\s*await\s*Promise\.all\s*\(\s*\[\s*([\s\S]*?)\s*\]\s*\)/g;
   while ((m = promiseAllBlock.exec(content)) !== null) {
     const varNames = m[1].split(",").map((s) => s.trim()).filter(Boolean);
-    const inner = m[2];
+    const elements = splitTopLevelComma(m[2]);
     const nsList: string[] = [];
-    const reGetNs = /getTranslations\s*\(\s*["']([^"']*)["']\s*\)|getTranslations\s*\(\s*\{\s*[^}]*namespace\s*:\s*["']([^"']+)["']/g;
-    let nm: RegExpExecArray | null;
-    while ((nm = reGetNs.exec(inner)) !== null) {
-      nsList.push(nm[1] !== undefined ? nm[1] : nm[2]);
+    for (const el of elements) {
+      const ns = extractNamespaceFromElement(el);
+      if (ns !== null) nsList.push(ns);
     }
     for (let i = 0; i < varNames.length && i < nsList.length; i++) {
       map.set(varNames[i], nsList[i]);
@@ -132,6 +131,35 @@ function findDynamicKeyPrefixesInFile(
 
 function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/** Split Promise.all array elements without breaking nested parens/brackets. */
+function splitTopLevelComma(s: string): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c === "(" || c === "[" || c === "{") depth++;
+    else if (c === ")" || c === "]" || c === "}") depth--;
+    else if (c === "," && depth === 0) {
+      parts.push(s.slice(start, i).trim());
+      start = i + 1;
+    }
+  }
+  parts.push(s.slice(start).trim());
+  return parts.filter(Boolean);
+}
+
+/** One namespace per Promise.all element (handles ternary getTranslations calls). */
+function extractNamespaceFromElement(element: string): string | null {
+  const objMatch = element.match(
+    /getTranslations\s*\(\s*\{[^}]*namespace\s*:\s*["']([^"']+)["']/
+  );
+  if (objMatch) return objMatch[1];
+  const strMatch = element.match(/getTranslations\s*\(\s*["']([^"']*)["']\s*\)/);
+  if (strMatch) return strMatch[1];
+  return null;
 }
 
 function collectUsedKeys(): { used: Set<string>; dynamicPrefixes: Set<string> } {

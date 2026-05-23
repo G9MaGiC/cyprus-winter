@@ -18,11 +18,13 @@ export default function WineryBookingForm({
   wineryName: string;
 }) {
   const t = useTranslations("book.wineryForm");
+  const tForm = useTranslations("book.form");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
+  const [emailDelayed, setEmailDelayed] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
@@ -85,6 +87,7 @@ export default function WineryBookingForm({
 
       setDone(true);
       setStorageMode(data.storage ?? null);
+      setEmailDelayed(data.emailStatus?.confirmationSent === false);
       form.reset();
 
       track("booking_complete", {
@@ -150,6 +153,11 @@ export default function WineryBookingForm({
         <p className="text-olive/70 text-sm mt-3 break-words">
           {t("success.tip")}
         </p>
+        {emailDelayed && (
+          <p className="text-olive/80 text-sm mt-3 break-words">
+            {t("success.emailDelayed")}
+          </p>
+        )}
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}
@@ -170,8 +178,10 @@ export default function WineryBookingForm({
       <BookingProgressStepper currentStep={1} />
       <BookingTrustStrip variant="winery" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
-        <p><strong>Booking states:</strong> Requested now to confirmed after partner reply.</p>
-        <p className="mt-1">If you are offline, your request is queued as sync pending and retried automatically.</p>
+        <p>
+          <strong>{tForm("states.heading")}</strong> {tForm("states.wineryBody")}
+        </p>
+        <p className="mt-1">{tForm("states.offlineQueue")}</p>
       </div>
       {error && (
         <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>

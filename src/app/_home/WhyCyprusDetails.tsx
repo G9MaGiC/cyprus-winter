@@ -1,6 +1,15 @@
-import { CARD, TYPE } from "@/lib/design-tokens";
+import "server-only";
 
-export default function WhyCyprusDetails() {
+import { CARD, TYPE } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
+
+type Props = { locale?: string };
+
+export default async function WhyCyprusDetails({ locale }: Props) {
+  const t = locale
+    ? await getTranslations({ locale, namespace: "home" })
+    : await getTranslations("home");
+
   return (
     <details className="group" open>
       <summary className="list-none cursor-pointer min-h-[44px] py-5 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl transition-colors hover:text-terracotta">
@@ -8,8 +17,17 @@ export default function WhyCyprusDetails() {
           id="why-cyprus-heading"
           className={`${TYPE.sectionTitle} inline-flex items-center justify-center gap-2`}
         >
-          Why Cyprus in winter
-          <svg className="w-5 h-5 text-sage transition-transform duration-200 group-open:rotate-180 shrink-0" aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          {t("whyCyprus.title")}
+          <svg
+            className="w-5 h-5 text-sage transition-transform duration-200 group-open:rotate-180 shrink-0"
+            aria-hidden
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M6 9l6 6 6-6" />
           </svg>
         </h2>
@@ -20,31 +38,25 @@ export default function WhyCyprusDetails() {
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-olive/80">
             <span className="inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-terracotta/70" aria-hidden />
-              Coast often 16–20°C
+              {t("whyCyprus.coastTemp")}
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-aegean/70" aria-hidden />
-              Troodos cooler — check conditions
+              {t("whyCyprus.troodosCooler")}
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-golden/80" aria-hidden />
-              Sunset ~5pm in December
+              {t("whyCyprus.sunset")}
             </span>
           </div>
 
           <blockquote className="mt-8 text-center text-olive text-base sm:text-lg leading-relaxed prose-quote">
-            Coast mild. Mountains with snow. Hike in the morning, lunch outside. Ancient sites empty, villages quiet.
-            Stop at a kafenion. Coffee. Nobody hurries.
+            {t("whyCyprus.blockquote")}
           </blockquote>
-          <p className="mt-6 text-center text-sm text-sage">
-            A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.
-          </p>
-          <p className="mt-4 text-center text-sm font-medium text-olive/90">
-            You came for the warmth. Stay for the pace.
-          </p>
+          <p className="mt-6 text-center text-sm text-sage">{t("whyCyprus.rule")}</p>
+          <p className="mt-4 text-center text-sm font-medium text-olive/90">{t("whyCyprus.tagline")}</p>
         </div>
       </div>
     </details>
   );
 }
-

@@ -1,20 +1,25 @@
-import type { ComponentType } from "react";
+import "server-only";
+
+import AppLink from "@/components/AppLink";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import type { LinkProps } from "@/app/_home/types";
+import { getTranslations } from "next-intl/server";
 
-const TEMPLATE_LINKS = [
-  { key: "short-stay", label: "48 hours", href: "/plan?template=short-stay", hint: "Trail, village, wine" },
-  { key: "classic", label: "5 days", href: "/plan?template=classic", hint: "Coast to mountains" },
-  { key: "classic-7", label: "7 days", href: "/plan?template=classic-7", hint: "Full island sweep" },
-  { key: "mountain-10", label: "10 days", href: "/plan?template=mountain-10", hint: "Hiker immersion" },
-] as const;
+const TEMPLATE_KEYS = ["short-stay", "classic", "classic-7", "mountain-10"] as const;
 
-export default function HomeTemplateLinks({
-  LinkComponent,
-}: {
-  LinkComponent: ComponentType<LinkProps>;
-}) {
-  const Link = LinkComponent;
+const TEMPLATE_HREFS: Record<(typeof TEMPLATE_KEYS)[number], string> = {
+  "short-stay": "/plan?template=short-stay",
+  classic: "/plan?template=classic",
+  "classic-7": "/plan?template=classic-7",
+  "mountain-10": "/plan?template=mountain-10",
+};
+
+type Props = { locale?: string };
+
+export default async function HomeTemplateLinks({ locale }: Props) {
+  const t = locale
+    ? await getTranslations({ locale, namespace: "home" })
+    : await getTranslations("home");
+
   return (
     <section
       aria-labelledby="templates-heading"
@@ -23,29 +28,29 @@ export default function HomeTemplateLinks({
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="mb-4 sm:mb-5">
           <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
-            Pre-built itineraries
+            {t("templates.kicker")}
           </p>
-          <p className="text-sm text-olive/70">
-            Expert-curated. Realistic pacing. Start here, then tweak.
-          </p>
+          <p className="text-sm text-olive/70">{t("templates.subtitle")}</p>
         </header>
         <div className="flex flex-wrap gap-2 sm:gap-3">
-          {TEMPLATE_LINKS.map(({ label, href, hint }) => (
-            <Link
-              key={href}
-              href={href}
+          {TEMPLATE_KEYS.map((key) => (
+            <AppLink
+              key={key}
+              href={TEMPLATE_HREFS[key]}
               className="inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <span>{label}</span>
-              {hint && <span className="text-xs text-olive/60 font-normal">{hint}</span>}
-            </Link>
+              <span>{t(`templates.items.${key}.label`)}</span>
+              <span className="text-xs text-olive/60 font-normal">
+                {t(`templates.items.${key}.hint`)}
+              </span>
+            </AppLink>
           ))}
-          <Link
+          <AppLink
             href="/plan"
             className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-olive/70 text-sm font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
           >
-            All templates →
-          </Link>
+            {t("templates.allTemplates")}
+          </AppLink>
         </div>
       </div>
     </section>

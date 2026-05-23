@@ -430,7 +430,7 @@ export const trails: Trail[] = [
     ],
     winterSafety: "Ridge is exposed; wind chill significant. Snow possible Jan to Feb. 360° views on clear days. Emergency: 112.",
     elevationMaxM: 1610,
-    localSecret: "The fire watchtower at km 2.5. Climb it if you can. The 360° views are worth the extra steps. Kyperounta Winery is nearby; highest vineyard in Cyprus. Combine if you have time.",
+    localSecret: "The fire watchtower at km 2.5. Climb it if you can. The 360° views are worth the extra steps. Kyperounta Winery is nearby—among Europe's highest wineries. Combine if you have time.",
   },
   {
     id: "petra-tou-romiou",

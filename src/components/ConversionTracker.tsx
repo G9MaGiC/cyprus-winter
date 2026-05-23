@@ -1,19 +1,23 @@
 "use client";
 
 import { usePathname } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { track } from "@/lib/analytics";
 import { getPlaceById } from "@/data";
 
 export default function ConversionTracker() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const prevPath = useRef<string | null>(null);
+  const prevDiscoverFilter = useRef<string | null>(null);
 
   useEffect(() => {
     if (!pathname) return;
 
     const path = pathname.split("?")[0];
     const isDiscover = path === "/discover" || path.endsWith("/discover");
+    const filter = searchParams?.get("filter")?.trim() || null;
     const isDiscoverDetail = path.includes("/discover/");
     const isWineryBook = path.includes("/book/winery/");
     const isGuideBook = path.includes("/book/guide/");
@@ -21,7 +25,12 @@ export default function ConversionTracker() {
     track("page_view", { path: pathname });
 
     if (isDiscover) {
-      track("discover_view");
+      track("discover_view", filter ? { filter } : undefined);
+      if (filter && filter !== prevDiscoverFilter.current) {
+        track("discover_filter", { filter });
+        prevDiscoverFilter.current = filter;
+      }
+      if (!filter) prevDiscoverFilter.current = null;
     }
     if (isDiscoverDetail && pathname !== prevPath.current) {
       const segments = path.split("/").filter(Boolean);
@@ -48,7 +57,7 @@ export default function ConversionTracker() {
     }
 
     prevPath.current = pathname;
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   return null;
 }

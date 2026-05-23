@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     const note = parsed.data.note != null ? sanitizeForStorage(parsed.data.note) : undefined;
     const reporterEmail = parsed.data.reporterEmail != null ? sanitizeForStorage(parsed.data.reporterEmail) : undefined;
 
-    const report = await createTrailReport({
+    const { report, stored } = await createTrailReport({
       trailId: trail.id,
       status: parsed.data.status,
       surface: parsed.data.surface,
@@ -62,7 +62,10 @@ export async function POST(req: Request) {
     return Response.json(
       {
         report,
-        message: "Thanks for the report. It helps other hikers.",
+        stored,
+        message: stored
+          ? "Thanks for the report. It helps other hikers."
+          : "Thanks — we couldn't save your report right now. Conditions on the trail page may not update until storage is available.",
       },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
     );

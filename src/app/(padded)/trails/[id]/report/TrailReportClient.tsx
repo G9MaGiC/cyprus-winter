@@ -28,6 +28,7 @@ export default function TrailReportClient() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [storedReport, setStoredReport] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const successLinkRef = useRef<HTMLAnchorElement>(null);
@@ -90,6 +91,11 @@ export default function TrailReportClient() {
         if (code && tErrors.has(`api.${code}`)) throw new Error(tErrors(`api.${code}`));
         throw new Error(tErrors("common.title"));
       }
+      const stored =
+        data && typeof data === "object" && "stored" in data
+          ? Boolean((data as { stored?: boolean }).stored)
+          : true;
+      setStoredReport(stored);
       setDone(true);
     } catch (err) {
       if (isMountedRef.current) setError(err instanceof Error ? err.message : tErrors("common.title"));
@@ -111,7 +117,11 @@ export default function TrailReportClient() {
             <span className="w-8 h-8 rounded-full bg-terracotta/20 text-terracotta flex items-center justify-center text-sm" aria-hidden>✓</span>
             {tCommon("thanksForReporting")}
           </p>
-          <p className="text-sm text-olive/70 mt-2">{tReport("success.body", { region: trail.region })}</p>
+          <p className="text-sm text-olive/70 mt-2">
+            {storedReport
+              ? tReport("success.body", { region: trail.region })
+              : tReport("success.notStored", { region: trail.region })}
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
             <AppLink
               ref={successLinkRef}

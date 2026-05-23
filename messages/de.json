@@ -146,6 +146,7 @@
     "viewOnMap": "Auf der Karte ansehen",
     "scrollToMap": "Zur Karte scrollen",
     "askAI": "Ask AI",
+    "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
     "askAITrailsAria": "Ask AI nach Trail-Vorschlägen",
     "askAIRecommendationsAria": "Ask AI nach Empfehlungen",
     "hubFooter": {
@@ -201,7 +202,27 @@
     "done": "Fertig",
     "clearDay": "Tag leeren",
     "clearDayTitle": "Tag {day} leeren?",
-    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen."
+    "removeAllFromDay": "Alle {count} {count, plural, one {Ort} other {Orte}} aus Tag {day} entfernen. Sie können sie jederzeit wieder hinzufügen.",
+    "cookies": {
+      "essentialOnly": "Nur essenziell",
+      "essentialShort": "Essenziell",
+      "title": "Cookie-Einwilligung.",
+      "body": "Wir nutzen notwendige Cookies für den Dienst und optionale Analytics zur Verbesserung. Mit „Akzeptieren“ erlauben Sie Analytics.",
+      "accept": "Akzeptieren",
+      "learnMore": "Mehr erfahren"
+    },
+    "placeTypes": {
+      "beach": "Strand",
+      "ancientSite": "Antike Stätte",
+      "village": "Dorf",
+      "monastery": "Kloster",
+      "activity": "Aktivität",
+      "nature": "Natur",
+      "winery": "Weingut",
+      "restaurant": "Restaurant",
+      "trail": "Wanderweg",
+      "event": "Veranstaltung"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -244,12 +265,37 @@
       "viewAllConditions": "Alle Bedingungen ansehen →",
       "whatsOn": "Was los ist",
       "events": "Veranstaltungen",
-      "browseWinterEvents": "Winter-Veranstaltungen ansehen"
+      "browseWinterEvents": "Winter-Veranstaltungen ansehen",
+      "eventsTeaser": "Epiphanie, Karneval, Märkte — stöbern Sie, was läuft"
     },
-    "editorsPicks": "Redaktions-Tipps",
+    "editorsPicks": {
+      "title": "Tipps der Redaktion",
+      "items": {
+        "omodos": {
+          "title": "Omodos",
+          "desc": "Cobbled streets, zivania, coffee in the wine heartland",
+          "imageAlt": "Omodos village, wine heartland, cobbled streets—Cyprus winter"
+        },
+        "pafos-mosaics": {
+          "title": "Pafos mosaics",
+          "desc": "Roman mosaics in soft winter light",
+          "imageAlt": "Pafos Roman mosaics in soft winter light—Cyprus"
+        },
+        "artemis": {
+          "title": "Artemis Trail",
+          "desc": "7 km of pine forest and ridge views",
+          "imageAlt": "Artemis Trail, Troodos pine forest, Cyprus winter hiking"
+        },
+        "kourion": {
+          "title": "Kourion",
+          "desc": "Roman ruins, sunset over the sea",
+          "imageAlt": "Kourion Greco-Roman ruins above Mediterranean, Cyprus winter"
+        }
+      }
+    },
     "editorsPicksKicker": "Kuratierte Auswahl",
     "rightNowNearYou": "Jetzt in Ihrer Nähe",
-    "discoverCurated": "Curious what we'd choose? Curated for winter—add to your plan as you browse.",
+    "discoverCurated": "Neugierig, was wir wählen würden? Kuratiert für den Winter—fügen Sie beim Stöbern zu Ihrem Plan hinzu.",
     "natureAndCoasts": "Natur & Küste",
     "places": "Orte",
     "startHere": {
@@ -291,13 +337,23 @@
         "monasteries": "Klöster",
         "active": "Aktiv",
         "activeAria": "Aktiv — Trails, Wandern",
+        "trailsAndHiking": "Trails & Wandern",
+        "trailsAndHikingAria": "Trail-Status und Wandern im Troodos",
         "quietEscapes": "Ruhige Auszeiten",
         "quietEscapesAria": "Ruhig — Dörfer, Geheimtipps",
         "mountains": "Berge",
         "mountainsAria": "Berge — Troodos‑Trails",
         "wellness": "Wellness",
         "wellnessAria": "Wellness — Klöster, stille Orte",
-        "regionAria": "Region {region}"
+        "regionAria": "Region {region}",
+        "boulderingPlus": "Bouldern+",
+        "boulderingPlusAria": "Bouldern und Kletterhallen auf Zypern",
+        "climbing": "Klettern",
+        "climbingAria": "Felsklettern und Klettergebiete auf Zypern",
+        "cycling": "Radfahren",
+        "cyclingAria": "Radwege und fahrradfreundliche Strecken",
+        "watersports": "Wassersport",
+        "watersportsAria": "Wassersport — Tauchen, Kajak, Küstenabenteuer"
       }
     },
     "share": {
@@ -308,7 +364,9 @@
       "shareText": "Cyprus Winter — das bestgehütete Geheimnis des Mittelmeers. Trails, Dörfer, Kulturerbe. Oft sechzehn Grad, wenn daheim sechs sind."
     },
     "hero": {
-      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
+      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter",
+      "familyPicksLink": "Familienfreundliche Tipps",
+      "templateLink": "48-Stunden-Vorlage"
     },
     "search": {
       "srHeading": "Orte und Wanderwege suchen",
@@ -381,31 +439,159 @@
         "aria": "Entfernung",
         "closer": "Näher",
         "farther": "Weiter"
+      },
+      "card": {
+        "defaultTease": "Im Winter einen Besuch wert.",
+        "add": "Hinzufügen",
+        "distanceLessThanKm": "< 1 km",
+        "distanceKm": "{distance} km"
+      },
+      "reasons": {
+        "nearby": "In der Nähe",
+        "local_secret": "Lokales Geheimnis",
+        "worth_visit": "Einen Besuch wert"
       }
     },
     "placeOfDay": {
-      "kicker": "Today's pick — one place worth the drive",
-      "addToPlan": "Add to plan",
-      "seeDetails": "See details →",
-      "openAria": "Open {name}",
+      "kicker": "Tipp des Tages — ein Ort, der die Fahrt wert ist",
+      "addToPlan": "Zum Plan hinzufügen",
+      "seeDetails": "Details →",
+      "openAria": "{name} öffnen",
       "overlays": {
-        "goodDay": "Good day for it",
-        "quietWeek": "Quiet this week",
-        "clearToday": "Clear today",
-        "bestAfternoon": "Best light in afternoon",
-        "worthVisit": "Worth a visit"
+        "goodDay": "Guter Tag dafür",
+        "quietWeek": "Ruhig diese Woche",
+        "clearToday": "Heute klar",
+        "bestAfternoon": "Bestes Licht am Nachmittag",
+        "worthVisit": "Besuch lohnt sich"
       }
     },
     "planningSection": {
-      "srHeading": "Planning and essentials",
-      "planTitle": "Plan your trip",
-      "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "srHeading": "Planung und Essentials",
+      "planTitle": "Reise planen",
+      "eventsTitle": "Winter-Events",
+      "eventsDesc": "Epiphanias, Karneval, Verkostungen. Was wann stattfindet.",
+      "defaultSubtitle": "Vorlagen, Karte und Teilen an einem Ort—weiter auf der Plan-Seite."
     },
     "recentlyViewed": {
-      "title": "Recently viewed",
-      "clear": "Clear"
+      "title": "Zuletzt angesehen",
+      "clear": "Löschen"
+    },
+    "insiderTip": {
+      "heading": "Winter-Insider-Tipp",
+      "cta": {
+        "hiking": "Trail-Bedingungen prüfen",
+        "practical": "Flughafen-Tipps",
+        "default": "Orte entdecken"
+      }
+    },
+    "templates": {
+      "kicker": "Fertige Reiserouten",
+      "subtitle": "Kuratiert von Experten. Realistisches Tempo. Hier starten, dann anpassen.",
+      "allTemplates": "Alle Vorlagen →",
+      "items": {
+        "short-stay": {
+          "label": "48 Stunden",
+          "hint": "Trail, Dorf, Wein"
+        },
+        "classic": {
+          "label": "5 Tage",
+          "hint": "Küste bis Berge"
+        },
+        "classic-7": {
+          "label": "7 Tage",
+          "hint": "Ganze Insel"
+        },
+        "mountain-10": {
+          "label": "10 Tage",
+          "hint": "Wander-Fokus"
+        }
+      }
+    },
+    "whyCyprus": {
+      "title": "Warum Zypern im Winter",
+      "coastTemp": "Küste oft 16–20°C",
+      "troodosCooler": "Troodos kühler — Bedingungen prüfen",
+      "sunset": "Sonnenuntergang ~17 Uhr im Dezember",
+      "blockquote": "Milde Küste. Berge mit Schnee. Morgens wandern, mittags draußen essen. Antike Stätten leer, Dörfer ruhig. Pause im Kafenion. Kaffee. Niemand hetzt.",
+      "rule": "Kleine Regel: ein Trail, ein Dorf, eine Verkostung. Unterwegs zum Plan hinzufügen.",
+      "tagline": "Sie kamen wegen der Wärme. Bleiben Sie wegen des Tempos."
+    },
+    "whyCyprusTeaser": {
+      "quote": "Morgens wandern, mittags draußen essen. Antike Stätten leer, Dörfer ruhig. Niemand hetzt."
+    },
+    "editorsPicksOpenAria": "{title} öffnen",
+    "featuredWineries": {
+      "items": {
+        "tsiakkas": {
+          "title": "Tsiakkas",
+          "subtitle": "Troodos foothills · heaters on the terrace · book ahead",
+          "imageAlt": "Winter winery tasting in the Troodos foothills, Cyprus"
+        },
+        "vouni-panayia": {
+          "title": "Vouni Panayia",
+          "subtitle": "Laona route · Commandaria comparisons · cosy winter room",
+          "imageAlt": "Wine villages in the Paphos hills in winter light, Cyprus"
+        },
+        "domes-sergiou": {
+          "title": "Dómes Sergiou",
+          "subtitle": "Between Larnaca & Limassol · indigenous varieties · modern",
+          "imageAlt": "Modern Cypriot winery tasting, Cyprus winter"
+        }
+      }
+    },
+    "insiderTips": {
+      "daylight": {
+        "title": "Daylight is short",
+        "body": "December and January have the shortest days—roughly nine hours between sunrise and sunset. Plan outdoor activities for the morning. By late afternoon the light is already golden. Use it."
+      },
+      "layers": {
+        "title": "Layer up",
+        "body": "The coast might be 18°C while Troodos is 5°C. Bring a windproof jacket, a warm mid-layer, and a hat. Mountain cafés have fireplaces. Coastal tavernas have heaters. Dress for both."
+      },
+      "book-ahead": {
+        "title": "Book winery tastings ahead",
+        "body": "Many wineries run small operations. In winter they appreciate a call or online booking. You'll often get the owner or winemaker pouring. Worth the extra step."
+      },
+      "weekday-quiet": {
+        "title": "Weekdays are quieter",
+        "body": "Omodos, Lefkara, and the main sites fill up on weekends. Tuesday or Wednesday? You'll have the cobbles to yourself. Villages feel different when the tour buses have gone. Plan big days for midweek."
+      },
+      "kafenion-stop": {
+        "title": "Stop for a coffee",
+        "body": "Village kafenions are where locals meet. Order a Greek coffee, sit, watch. No rush. In winter the stove is lit and the pace is slow. The person at the next table often knows the best winery, trail, or taverna. The best advice isn't in a guidebook."
+      },
+      "winter-light": {
+        "title": "The light is different",
+        "body": "Winter sun stays low in the sky. Golden hour comes early—often mid-afternoon in December. Ancient sites, villages, the coast: everything looks different. Bring a camera. Or just watch. Plan ruins and villages for the afternoon and you'll see why."
+      },
+      "start-early": {
+        "title": "Start by 9am",
+        "body": "Winter days are short—finish hikes well before dusk. The morning air is crisp. The trails are quieter early. You'll thank yourself when you're back at the car with daylight to spare."
+      },
+      "check-conditions": {
+        "title": "Check before you go",
+        "body": "Troodos weather changes fast. Snow on Olympus, mud after rain, ice on shaded sections. The ski resort posts conditions. So do local cafés. Ask. Don't assume."
+      },
+      "microspikes": {
+        "title": "Microspikes for Olympus",
+        "body": "Olympus Summit and higher Troodos trails can have snow and ice from January to March. Microspikes cost €20 and fit over your boots. If the forecast is near freezing, bring them."
+      },
+      "tell-someone": {
+        "title": "Tell someone your route",
+        "body": "Phone signal is patchy in the mountains. Tell your hotel or a friend which trail you're on and when you expect back. Emergency: 112. The mountain doesn't care about your deadline."
+      },
+      "euro": {
+        "title": "Euro, cards, and cash",
+        "body": "Cyprus uses the euro. Cards work almost everywhere. Small village shops and kafenions sometimes prefer cash. Keep €20 or so for coffee, lace, and zivania."
+      },
+      "drive-left": {
+        "title": "Drive on the left",
+        "body": "British legacy. Rent a car if you want to reach villages and trails. The roads are good. Mountain bends can be tight. Take your time. The views are worth it."
+      },
+      "emergency": {
+        "title": "Emergency numbers",
+        "body": "112 for EU emergency. 1460 for tourist information. 199 for ambulance. Save them. Hope you never need them."
+      }
     }
   },
   "error": {
@@ -490,10 +676,76 @@
         "showing": "{section} · {count} Orte",
         "all": "Alle Orte"
       },
+      "filterGroups": {
+        "places": "Orte",
+        "placesAria": "Nach Kategorie filtern",
+        "winterMoods": "Winter-Stimmung",
+        "winterMoodsAria": "Nach Aktivität und Stimmung filtern"
+      },
+      "sections": {
+        "coasts": "Küsten & Natur",
+        "ancient": "Antike Stätten",
+        "village": "Dörfer",
+        "wine": "Wein & Essen",
+        "monastery": "Klöster & Kultur",
+        "hidden": "Geheimtipps"
+      },
       "filters": {
         "all": "Alle",
         "natureAndCoasts": "Natur & Küsten",
-        "invalid": "Diesen Filter gibt es nicht — alle Orte werden angezeigt."
+        "invalid": "Diesen Filter gibt es nicht — alle Orte werden angezeigt.",
+        "togglePrefix": "Filter:",
+        "toggleAll": "Alle",
+        "toggleShow": "Anzeigen",
+        "toggleHide": "Ausblenden",
+        "bouldering": "Bouldern+",
+        "climbing": "Klettern",
+        "cycling": "Radfahren",
+        "watersports": "Wassersport",
+        "quiet": "Ruhige Auszeiten",
+        "mountains": "Berge",
+        "wellness": "Wellness",
+        "relatedTrails": "Passende Wanderwege",
+        "seeAllMountainTrails": "Troodos-Wanderwege",
+        "browseAllTrails": "Alle Wanderwege",
+        "seeCoasts": "Küsten & Strände",
+        "searchMore": "Weiter suchen",
+        "seeHiddenGems": "Weitere Geheimtipps",
+        "seeMonasteries": "Klöster & Kultur"
+      },
+      "meta": {
+        "title": "Cyprus Winter entdecken | Strände, Dörfer, Weingüter",
+        "description": "Zypern im Winter: kuratierte Orte mit echtem Gefühl. Strände, antike Stätten, Dörfer, Weingüter — plus Bouldern, Radfahren und Küstenabenteuer. Sechzehn Grad, wenn daheim sechs sind.",
+        "filters": {
+          "bouldering": {
+            "title": "Bouldern auf Zypern im Winter | Felsblöcke & Hallen",
+            "description": "Outdoor-Boulder und Kletterhallen auf Zypern — Gerakopetra, Episkopi, Droushia, Limassol. Wintertemperaturen ideal. Kuratierte Liste mit Kombinationen."
+          },
+          "climbing": {
+            "title": "Klettern Zypern Winter | Fels & Küste",
+            "description": "Felsklettern und Küstenpassagen im zypriotischen Winter — Kap Greco, Kourion, Episkopi. Schichten einpacken; Zugang prüfen. Kuratierte Crags und Dörfer."
+          },
+          "cycling": {
+            "title": "Radfahren Zypern Winter | Troodos & Küsten",
+            "description": "Winter-Radfahren auf Zypern: Troodos-Staudämme, Krasochoria-Gravel, Akamas-Küste, Dorfrunden. Milde Küste, kühlere Berge. Kuratierte Routen."
+          },
+          "watersports": {
+            "title": "Wassersport Zypern Winter | Tauchen & Kajak",
+            "description": "Tauchen, Kajak und Küstenabenteuer im zypriotischen Winter — Latchi, Zenobia, Kap Greco, Lara. Ruhige Tage; Tauchzentren vorab buchen."
+          },
+          "quiet": {
+            "title": "Ruhige Auszeiten Zypern Winter | Dörfer & Geheimtipps",
+            "description": "Ruhiger Zypern-Winter: Spitzendörfer, Walddörfer, Kafenions mit einem Stammgast. Kuratierte Slow-Travel-Spots abseits des Sommertrubels."
+          },
+          "mountains": {
+            "title": "Berge Zypern Winter | Troodos-Dörfer",
+            "description": "Troodos und Pitsilia im Winter: Platres, Kykkos, schneebedeckte Gipfel, Dorfplätze. Schichten einpacken; Trail-Status prüfen. Kuratierte Bergstopps."
+          },
+          "wellness": {
+            "title": "Wellness Zypern Winter | Klöster & Waldbaden",
+            "description": "Winter-Wellness auf Zypern: Thermaldörfer, Waldbaden, stille Klöster, Spa-Küste. Kuratierte ruhige Orte und sanfte Wege."
+          }
+        }
       },
       "hero": {
         "title": "Cyprus Winter entdecken",
@@ -566,6 +818,60 @@
         "greatFor": "Ideal für",
         "dining": "Essen",
         "shops": "Shops"
+      },
+      "whyNow": {
+        "title": "Warum jetzt",
+        "bestFor": "Ideal für {types}.",
+        "regionFlow": "{region} ist ein praktischer Stopp für denselben Tagesplan.",
+        "saveCompare": "Zum Plan hinzufügen und mit einem nahen Trail oder Dorf kombinieren."
+      },
+      "visitTaste": {
+        "title": "Besuch & Verkostung"
+      },
+      "wineRoute": "Weinroute: {route}",
+      "ourWines": {
+        "title": "Unsere Weine"
+      },
+      "location": {
+        "title": "Lage"
+      },
+      "localSecretHeading": "Lokales Geheimnis",
+      "backstoryHeading": "Hintergrund",
+      "localSecrets": {
+        "title": "Lokale Geheimtipps",
+        "intro": "Insider-Tipps von Menschen, die hier leben.",
+        "seeAll": "Alle lokalen Geheimtipps →"
+      },
+      "combineWith": {
+        "title": "Passt gut zu",
+        "description": "Mit nahen Trails, Dörfern oder Weingütern kombinieren. Vormittags hier, nachmittags woanders.",
+        "addToPlanAria": "{name} zum Plan hinzufügen"
+      },
+      "map": {
+        "iframeTitle": "Karte: {name}"
+      },
+      "metadata": {
+        "notFound": "Nicht gefunden",
+        "typeWinery": "Weingut",
+        "typeEat": "Essen"
+      },
+      "trustTiming": {
+        "title": "Vertrauen und Timing",
+        "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeit. Erst in den Plan, dann bestätigen."
+      },
+      "similar": {
+        "title": "Mehr {type} in {region}",
+        "typeLabels": {
+          "winery": "Weingüter",
+          "restaurant": "Essen & Trinken",
+          "beach": "Strände",
+          "ancient": "Antike Stätten",
+          "village": "Dörfer",
+          "monastery": "Klöster",
+          "activity": "Aktiv & Indoor",
+          "nature": "Natur & Küsten",
+          "default": "Orte"
+        }
       }
     },
     "aria": {
@@ -657,7 +963,16 @@
         "body": "Taschen abstellen. Ein Hafen-Café finden. Kaffee bestellen und dem Licht zusehen. Heute Abend: einfach ankommen. Die Insel läuft nicht weg.",
         "planWeekCta": "Planen Sie Ihre erste Woche",
         "discoverCta": "Orte entdecken",
-        "weatherCta": "Wetter prüfen"
+        "weatherCta": "Wetter prüfen",
+        "askAi": "KI fragen",
+        "askAiAria": "KI zu Ankunft und Transport fragen"
+      },
+      "quickActions": {
+        "aria": "Schnellaktionen bei Ankunft",
+        "kicker": "Schneller ankommen"
+      },
+      "aria": {
+        "actions": "Flughafen-Seitenaktionen"
       }
     }
   },
@@ -825,6 +1140,7 @@
       "success": {
         "aria": "Bericht erfolgreich gesendet",
         "body": "Wanderer in Richtung {region} werden das nutzen. Jeder Bericht zählt.",
+        "notStored": "Danke — wir haben Ihre Meldung erhalten, konnten sie aber noch nicht speichern. Die Bedingungen auf der Trail-Seite werden möglicherweise erst aktualisiert, wenn die Speicherung wieder verfügbar ist.",
         "backTitle": "Zurück zu {name}",
         "backCta": "Zurück zu {name}",
         "addTitle": "{name} zu Ihrem Plan hinzufügen",
@@ -915,6 +1231,7 @@
         "seeAll": "Alle Geheimtipps ansehen →"
       },
       "relatedPlaces": {
+        "title": "Passt gut zu",
         "description": "Wanderung am Morgen, Dorf oder Weingut am Nachmittag. Starten Sie am besten bis 9 Uhr."
       },
       "footer": {
@@ -1016,6 +1333,7 @@
     "dayEmptyTitle": "Tag {day} ist leer",
     "dayEmptyBody": "Fügen Sie unten Ihren ersten Ort hinzu oder wählen Sie weiter unten eine Vorlage, um den Tag auf einmal zu füllen.",
     "browsePlaces": "Orte durchsuchen",
+    "placePickerIntro": "Wählen Sie jetzt einen Ort. Weitere können Sie direkt danach hinzufügen.",
     "seeTemplates": "Vorlagen ansehen",
     "placesCount": "{count, plural, one {# Ort} other {# Orte}}",
     "addAnotherStopHint": "Fügen Sie einen weiteren Stopp hinzu oder wechseln Sie oben den Tag.",
@@ -1066,6 +1384,21 @@
       "pairWith": "Passt zu…",
       "worksWell": "Funktioniert gut mit dem, was Sie hinzugefügt haben. Tippen Sie zum Hinzufügen.",
       "addToDayAria": "{name} zu diesem Tag hinzufügen"
+    },
+    "share": {
+      "copyAndShare": "Kopieren & teilen",
+      "placesLabel": "places",
+      "daysLabel": "days",
+      "placesCount": "{count, plural, one {# Ort} other {# Orte}}",
+      "daysCount": "{count, plural, one {# Tag} other {# Tage}}",
+      "copyLink": "Link kopieren",
+      "linkCopied": "Link kopiert",
+      "copyItinerary": "Reiseplan kopieren (Text)",
+      "copied": "Kopiert",
+      "shareTextPrefix": "Mein Zypern-Winter-Reiseplan —"
+    },
+    "footer": {
+      "winterTip": "Tipp: Es wird gegen 17 Uhr dunkel. Starten Sie Trails bis 10 Uhr und buchen Sie Verkostungen 24–48 Stunden vorher."
     }
   },
   "placePicker": {
@@ -1267,7 +1600,10 @@
           "culture": "Geschichte & Archäologie",
           "wine": "Wein & Verkostungen",
           "wellness": "Wellness & Entspannung",
-          "villages": "Bergdörfer"
+          "villages": "Bergdörfer",
+          "bouldering": "Bouldering+",
+          "climbing": "Felsklettern",
+          "cycling": "Radfahren"
         }
       },
       "travelStyle": {
@@ -1336,7 +1672,7 @@
       "beaches": "Strände"
     },
     "footer": {
-      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+      "hubBody": "Orte zum Plan hinzufügen—oder die KI fragen. Sie kennt die Insel im Winter."
     },
     "aria": {
       "actions": "Search page actions"
@@ -1380,19 +1716,19 @@
         "learnMoreCta": "Mehr erfahren"
       },
       "highlights": {
-        "title": "Don't miss",
-        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+        "title": "Nicht verpassen",
+        "lead": "Epiphanias und Karneval zeigen die Seele der Insel. Kommen Sie früh. Warm anziehen."
       },
       "tips": {
-        "title": "Planning tips",
-        "item1": "Check official sites for exact dates — many events move year to year.",
-        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
-        "item3": "Arrive early for popular events. The best spots fill quickly.",
-        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+        "title": "Planungstipps",
+        "item1": "Offizielle Seiten für genaue Termine prüfen—viele Events wechseln von Jahr zu Jahr.",
+        "item2": "Früh buchen für Epiphanias, Karneval und Weihnachtsmärkte.",
+        "item3": "Bei beliebten Events früh da sein. Die besten Plätze sind schnell weg.",
+        "item4": "Events mit nahen Trails oder Dörfern verbinden. Vormittags wandern, nachmittags Event."
       },
       "footer": {
-        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Events zum Plan hinzufügen—oder die KI fragen, was während Ihres Besuchs läuft.",
+        "weatherLink": "Wetter nach Monat"
       },
       "aria": {
         "actions": "Events page actions"
@@ -1608,6 +1944,7 @@
         "crossDeviceLink": "Meine Buchungen",
         "crossDeviceSuffix": "um Ihre Anfrage auf mehreren Geräten zu sehen.",
         "tip": "Schichten und Wasser einpacken. Sagen Sie jemandem Ihre Route.",
+        "emailDelayed": "Ihre Anfrage ist gespeichert. Die Bestätigungs-E-Mail kann ein paar Minuten dauern — prüfen Sie den Spam-Ordner oder kontaktieren Sie den Guide.",
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaTrails": "Wanderwege ansehen"
       },
@@ -1666,6 +2003,7 @@
         "crossDevicePrefix": "Geben Sie Ihre E‑Mail ein unter",
         "crossDeviceSuffix": "um Ihre Anfrage auf mehreren Geräten zu sehen.",
         "tip": "Fragen Sie vor Ort nach Commandaria und den autochthonen Rebsorten — darauf sind sie stolz.",
+        "emailDelayed": "Ihre Anfrage ist gespeichert. Die Bestätigungs-E-Mail kann ein paar Minuten dauern — prüfen Sie den Spam-Ordner oder kontaktieren Sie das Weingut.",
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaDiscover": "Mehr entdecken"
       },
@@ -1747,6 +2085,29 @@
           "callPrefix": "Oder anrufen",
           "callSuffix": "um zu reservieren oder Verfügbarkeit zu prüfen — meist helfen sie gerne."
         }
+      }
+    },
+    "form": {
+      "trust": {
+        "aria": "Vertrauensinformationen zur Buchung",
+        "heading": "Vor dem Absenden",
+        "verifiedRoute": "Verifizierte {context}-Anfrageroute.",
+        "emailConfirm": "Bestätigung meist per E-Mail innerhalb von 24 Stunden.",
+        "noCharge": "Keine Sofortzahlung in der App; Anbieter bestätigen zuerst die Verfügbarkeit.",
+        "contextPartner": "Partner",
+        "contextGuide": "Guide"
+      },
+      "progress": {
+        "aria": "Buchungsfortschritt",
+        "stepDetails": "Details",
+        "stepSent": "Anfrage gesendet",
+        "stepConfirmation": "Bestätigung"
+      },
+      "states": {
+        "heading": "Buchungsstatus:",
+        "wineryBody": "Jetzt angefragt — nach Partnerantwort bestätigt.",
+        "guideBody": "Jetzt angefragt — nach Guide-Antwort bestätigt.",
+        "offlineQueue": "Offline wird Ihre Anfrage in die Sync-Warteschlange gestellt und automatisch wiederholt."
       }
     }
   },
@@ -2092,8 +2453,8 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Trails, Dörfer und Weingüter in der Region entdecken—dann zum Plan hinzufügen.",
+        "weatherLink": "Wetter nach Monat"
       },
       "aria": {
         "actions": "Region page actions"
@@ -2103,8 +2464,8 @@
   "wineRoutes": {
     "page": {
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "Verkostungen vorab buchen und die Route mit einem Dorf oder Trail in der Nähe verbinden.",
+        "allWineries": "Alle Weingüter Zyperns"
       },
       "aria": {
         "actions": "Wine route actions"

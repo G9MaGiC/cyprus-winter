@@ -135,11 +135,12 @@ export function useItinerary() {
   const applyTemplate = useCallback((key: TemplateKey, mode: "replace" | "merge" = "replace") => {
     const template = getTemplateDays(key);
     if (!template) return;
+    const validId = (id: string) => (getPlaceById(id) ? id : null);
     setDays((prev) => {
       const next = emptyDays();
       for (let d = 1; d <= MAX_DAYS; d++) {
-        const existing = prev[d] ?? [];
-        const fromTemplate = template[d] ?? [];
+        const existing = (prev[d] ?? []).map(validId).filter(Boolean) as string[];
+        const fromTemplate = (template[d] ?? []).map(validId).filter(Boolean) as string[];
         next[d] = mode === "merge"
           ? [...new Set([...existing, ...fromTemplate])]
           : [...fromTemplate];

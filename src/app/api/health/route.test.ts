@@ -17,6 +17,7 @@ describe("GET /api/health", () => {
     expect(data).toHaveProperty("resend");
     expect(["ok", "error", "not configured"]).toContain(data.resend);
     expect(typeof data.ok).toBe("boolean");
+    expect(data).toHaveProperty("productionReady");
   });
 
   it("includes rate limit headers", async () => {

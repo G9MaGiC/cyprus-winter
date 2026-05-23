@@ -26,8 +26,15 @@ export type PlanItem = {
   id: string;
   name: string;
   region: string;
-  type: "attraction" | "trail" | "winery" | "event" | "restaurant";
+  type: "attraction" | "activity" | "trail" | "winery" | "event" | "restaurant";
 };
+
+/** Map discover attraction record type to itinerary plan type. */
+export function planTypeForAttraction(
+  attractionType: Attraction["type"]
+): PlanItem["type"] {
+  return attractionType === "activity" ? "activity" : "attraction";
+}
 
 const baseAttractions = [...beaches, ...natureSites, ...ancientSites, ...villages, ...monasteries];
 
@@ -36,7 +43,7 @@ export const allPlaces: PlanItem[] = [
     id: a.id,
     name: a.name,
     region: a.region,
-    type: "attraction" as const,
+    type: planTypeForAttraction(a.type),
   })),
   ...wineries.map((w) => ({
     id: w.id,

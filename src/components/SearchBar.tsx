@@ -135,8 +135,15 @@ export default function SearchBar({
               id={`search-option-${i}`}
               role="option"
               aria-selected={i === activeIndex}
+              tabIndex={i === activeIndex ? 0 : -1}
               onClick={() => router.push(r.href)}
-              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  router.push(r.href);
+                }
+              }}
+              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
                 i === activeIndex ? "bg-terracotta/10" : ""
               }`}
             >

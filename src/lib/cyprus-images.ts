@@ -116,6 +116,7 @@ export function getAttractionImage(id: string, type: string): string {
     monastery: `${local}/cyprus-monastery-kykkos.jpg`,
     winery: `${local}/cyprus-winery-troodos.jpg`,
     nature: `${local}/cyprus-trail-troodos.jpg`,
+    activity: `${local}/cyprus-trail-troodos.jpg`,
     restaurant: `${local}/cyprus-village-omodos.jpg`, // taverna/coastal fallback
   };
   const wineryImages: Record<string, string> = {

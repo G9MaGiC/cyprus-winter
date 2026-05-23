@@ -3,11 +3,15 @@ import { POST } from "./route";
 
 vi.mock("@/lib/trail-reports", () => ({
   createTrailReport: vi.fn().mockResolvedValue({
-    id: "r-1",
-    trailId: "artemis",
-    status: "open",
-    surface: "dry",
-    createdAt: new Date().toISOString(),
+    report: {
+      id: "r-1",
+      trailId: "artemis",
+      status: "open",
+      surface: "dry",
+      createdAt: new Date().toISOString(),
+      reportedAt: new Date().toISOString(),
+    },
+    stored: true,
   }),
 }));
 
@@ -51,5 +55,6 @@ describe("POST /api/trail-reports", () => {
     const data = await res.json();
     expect(data.report).toBeDefined();
     expect(data.report.trailId).toBe("artemis");
+    expect(data.stored).toBe(true);
   });
 });

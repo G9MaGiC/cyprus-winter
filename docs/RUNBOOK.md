@@ -294,6 +294,26 @@ The Android app loads the web app from a remote URL (`server.url` in `capacitor.
 
 ---
 
+## 6. Production readiness checklist
+
+Before launch, `GET /api/health` should report `productionReady: true` in production (`NODE_ENV=production`):
+
+| Check | Env vars |
+|-------|----------|
+| **Required** | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` |
+| **Required** | `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` |
+| Recommended | `RESEND_API_KEY`, `ADMIN_SECRET`, one AI provider key |
+
+```bash
+curl -s https://<your-domain>/api/health | jq '.productionReady, .productionChecks'
+```
+
+**Content & data:** Run `npm run data:validate` before merging editorial changes (combineWith, activity catalog, itinerary templates).
+
+**Capacitor (Android):** Remote WebView loads `CAPACITOR_SERVER_URL` (default Vercel). For store releases, pin a production URL, ship `public/error.html`, and plan Live Updates or bundled assets post-launch (see §5).
+
+---
+
 ## Quick Reference
 
 | Issue | Check | Fix |

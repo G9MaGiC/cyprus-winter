@@ -1,40 +1,10 @@
-import { getPlaceById } from "@/data";
-import { getPlaceCoords } from "@/lib/place-coords";
-import { allDiscoverItems } from "@/data/discover";
+import { buildDiscoverMapPlaces } from "@/lib/discover-map-places";
 import { SECTION, TYPE, LAYOUT } from "@/lib/design-tokens";
-import type { DiscoverMapPlace } from "./DiscoverMap";
 import DiscoverMapClient from "./DiscoverMapClient";
 import { getTranslations } from "next-intl/server";
 
-function getDiscoverMapPlaces(): DiscoverMapPlace[] {
-  const results: DiscoverMapPlace[] = [];
-  const seen = new Set<string>();
-
-  for (const item of allDiscoverItems) {
-    const place = getPlaceById(item.id);
-    if (!place) continue;
-    const coords = getPlaceCoords(place);
-    if (!coords) continue;
-
-    const key = `${place.id}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-
-    results.push({
-      id: place.id,
-      name: place.name,
-      href: `/discover/${place.id}`,
-      region: place.region,
-      lat: coords.lat,
-      lng: coords.lng,
-    });
-  }
-
-  return results;
-}
-
 export default async function DiscoverMapSection() {
-  const places = getDiscoverMapPlaces();
+  const places = buildDiscoverMapPlaces();
   const tDiscover = await getTranslations("discover");
   return (
     <section

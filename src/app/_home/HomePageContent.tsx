@@ -1,8 +1,7 @@
-import dynamic from "next/dynamic";
+import "server-only";
+
 import { Suspense } from "react";
-import type { ComponentType } from "react";
-import AppLink from "@/components/AppLink";
-import HomeHero from "@/app/_home/HomeHero";
+import { getTranslations } from "next-intl/server";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
 import HomeSearchSection from "@/app/_home/HomeSearchSection";
 import HomeWhyCyprusTeaser from "@/app/_home/HomeWhyCyprusTeaser";
@@ -17,83 +16,57 @@ import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
 import HomePlanningSection from "@/app/_home/HomePlanningSection";
 import HomeFooter from "@/app/_home/HomeFooter";
 import HomeShareSection from "@/app/_home/HomeShareSection";
+import EditorsPicks from "@/app/_home/EditorsPicks";
+import BookTastings from "@/app/_home/BookTastings";
 import {
-  EditorsPicksSkeleton,
   BookTastingsSkeleton,
+  SearchSectionSkeleton,
   WeatherStripSkeleton,
   ThisWeekSkeleton,
 } from "@/app/_home/skeletons";
-import { LAYER } from "@/lib/design-tokens";
+import { TripModeChipsSkeleton } from "@/app/_home/TripModeChipsSkeleton";
 import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
-import { useTranslations } from "next-intl";
-
-const EditorsPicks = dynamic(() => import("@/app/_home/EditorsPicks"), {
-  loading: EditorsPicksSkeleton,
-});
-const BookTastings = dynamic(() => import("@/app/_home/BookTastings"), {
-  loading: BookTastingsSkeleton,
-});
-
-import type { LinkProps } from "@/app/_home/types";
 
 type HomePageContentProps = {
   sharePath?: string;
-  LinkComponent?: ComponentType<LinkProps>;
   planSubtitle?: string;
+  locale?: string;
 };
 
-export default function HomePageContent({
+/** Server-only home sections (hero rendered from page shell). */
+export default async function HomePageContent({
   sharePath = "/",
-  LinkComponent = AppLink,
   planSubtitle,
-}: HomePageContentProps = {}) {
-  const tHome = useTranslations("home");
-  const tCommon = useTranslations("common");
+  locale,
+}: HomePageContentProps) {
+  const [tHome, tCommon] = await Promise.all([
+    locale ? getTranslations({ locale, namespace: "home" }) : getTranslations("home"),
+    locale ? getTranslations({ locale, namespace: "common" }) : getTranslations("common"),
+  ]);
+
   return (
-    <div className="relative overflow-hidden bg-background">
-      <nav
-        aria-label={tCommon("skipToContent")}
-        className={`absolute left-4 top-4 ${LAYER.popover} flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2`}
-      >
-        <AppLink
-          href="#start-here"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2 font-medium text-terracotta hover:bg-terracotta/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
-        >
-          {tCommon("skipTo.startHere")}
-        </AppLink>
-        <AppLink
-          href="#this-week-heading"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2 font-medium text-terracotta hover:bg-terracotta/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
-        >
-          {tCommon("skipTo.thisWeek")}
-        </AppLink>
-        <AppLink
-          href="#editors-picks-heading"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2 font-medium text-terracotta hover:bg-terracotta/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
-        >
-          {tCommon("skipTo.editorsPicks")}
-        </AppLink>
-        <AppLink
-          href="#planning-section"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2 font-medium text-terracotta hover:bg-terracotta/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
-        >
-          {tCommon("skipTo.plan")}
-        </AppLink>
-      </nav>
-      <HomeHero />
-      <HomeTripModeChips />
-      <Suspense fallback={<WeatherStripSkeleton />}>
-        <HomeWeatherStrip LinkComponent={LinkComponent} />
-      </Suspense>
+    <>
+      <div className="bg-background">
+        <Suspense fallback={<TripModeChipsSkeleton />}>
+          <HomeTripModeChips />
+        </Suspense>
+        <Suspense fallback={<WeatherStripSkeleton />}>
+          <HomeWeatherStrip locale={locale} />
+        </Suspense>
+      </div>
       <TripReminderBanner />
-      <StartHereWithExplore LinkComponent={LinkComponent} />
-      <HomeSearchSection />
-      <HomeWhyCyprusTeaser />
-      <HomeTrailConditionsStrip LinkComponent={LinkComponent} />
+      <StartHereWithExplore />
+      <Suspense fallback={<SearchSectionSkeleton />}>
+        <HomeSearchSection locale={locale} />
+      </Suspense>
+      <HomeWhyCyprusTeaser locale={locale} />
+      <Suspense fallback={<WeatherStripSkeleton />}>
+        <HomeTrailConditionsStrip locale={locale} />
+      </Suspense>
       <RightNowNearYou />
       <RecentlyViewedStrip />
-      <HomePlaceOfDay LinkComponent={LinkComponent} />
+      <HomePlaceOfDay />
       <TripPlanSummaryChip />
 
       <HomeSection
@@ -103,18 +76,18 @@ export default function HomePageContent({
         subtitle={tHome("thisWeekDesc")}
       >
         <Suspense fallback={<ThisWeekSkeleton />}>
-          <ThisWeekGrid LinkComponent={LinkComponent} />
+          <ThisWeekGrid locale={locale} />
         </Suspense>
       </HomeSection>
 
       <HomeSection
         id="editors-picks-heading"
-        title={tHome("editorsPicks")}
+        title={tHome("editorsPicks.title")}
         kicker={tHome("editorsPicksKicker")}
         subtitle={tHome("discoverCurated")}
         alt
       >
-        <EditorsPicks LinkComponent={LinkComponent} />
+        <EditorsPicks locale={locale} />
       </HomeSection>
 
       <HomeSection
@@ -123,13 +96,17 @@ export default function HomePageContent({
         kicker={tHome("bookTastings.kicker")}
         subtitle={tHome("bookTastings.subtitle")}
       >
-        <BookTastings LinkComponent={LinkComponent} />
+        <Suspense fallback={<BookTastingsSkeleton />}>
+          <BookTastings locale={locale} />
+        </Suspense>
       </HomeSection>
 
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
-      <HomePlanningSection LinkComponent={LinkComponent} planSubtitle={planSubtitle} />
-      <HomeFooter LinkComponent={LinkComponent} />
-      <HomeShareSection sharePath={sharePath} />
-    </div>
+      <HomePlanningSection planSubtitle={planSubtitle} />
+      <HomeFooter locale={locale} />
+      <Suspense fallback={null}>
+        <HomeShareSection sharePath={sharePath} locale={locale} />
+      </Suspense>
+    </>
   );
 }

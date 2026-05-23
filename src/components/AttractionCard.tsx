@@ -11,25 +11,34 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { Plus } from "lucide-react";
 import { useItinerary } from "@/hooks/useItinerary";
+import { useSearchParams } from "next/navigation";
+import { discoverDetailHref, getDiscoverTypeLabel } from "@/lib/discover-links";
 import { useTranslations } from "next-intl";
 
 export default function AttractionCard({ a }: { a: Attraction | Winery | Restaurant }) {
   const tCommon = useTranslations("common");
+  const tDiscover = useTranslations("discover.detail");
+  const searchParams = useSearchParams();
+  const discoverFilter = searchParams.get("filter");
+  const detailHref = discoverDetailHref(a.id, discoverFilter);
   const { days, hydrated, addToDayIfMissing } = useItinerary();
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(a.id);
+  const badgeLabel = getDiscoverTypeLabel(a.type, tDiscover, tCommon);
   const typeColors: Record<string, string> = {
     beach: "bg-aegean/20 text-aegean",
     ancient: "bg-terracotta/20 text-terracotta",
     village: "bg-olive/20 text-olive",
     monastery: "bg-golden/30 text-charcoal",
     nature: "bg-sage/30 text-olive",
+    activity: "bg-sage/30 text-olive",
     winery: "bg-terracotta/20 text-terracotta",
     restaurant: "bg-golden/20 text-charcoal",
   };
   const badge = typeColors[a.type] ?? "bg-sand-100 text-olive/80";
-  const isSustainable = ["village", "monastery", "nature", "winery"].includes(a.type);
-  const badgeLabel = a.type === "restaurant" ? tCommon("eat") : a.type;
+  const isSustainable = ["village", "monastery", "nature", "activity", "winery"].includes(
+    a.type
+  );
 
   const isWinery = a.type === "winery";
   const winterTip = "winterTip" in a ? a.winterTip : undefined;
@@ -44,9 +53,9 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
   return (
     <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive}`}>
       <AppLink
-        href={`/discover/${a.id}`}
+        href={detailHref}
         className={`block ${CARD.link}`}
-        aria-label={`${a.name}, ${a.type} in ${a.region}`}
+        aria-label={`${a.name}, ${badgeLabel} in ${a.region}`}
       >
         <div className="aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0">
           <Image
@@ -125,7 +134,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           <button
             type="button"
             onClick={() => addToDayIfMissing(a.id)}
-            className="hidden sm:inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg border border-sand-200/80 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg border border-sand-200/80 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 shrink-0"
             aria-label={`${tCommon("addToPlan")}: ${a.name}`}
           >
             <Plus className="h-5 w-5" aria-hidden />

@@ -136,10 +136,26 @@ export const LAYOUT = {
   heroBleedX: "-mx-4 sm:-mx-6",
 } as const;
 
-/** Strip sections (Weather, Right Now, Trail Conditions). */
+/** Strip sections (Weather, Right Now, Trail Conditions). Use sans type — not TYPE.cardTitle (display). */
 export const STRIP = {
   py: "py-4 sm:py-5",
   pyCompact: "py-3 sm:py-4",
+  surfaceSand: "bg-sand-100/80 border-b border-sand-200/70",
+  surfaceAegean: "bg-aegean/5 border-b border-sand-200/70",
+  /** Centered single-line strip link (weather). */
+  linkCentered:
+    "flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center min-h-[44px] py-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg",
+  /** Split row strip link (trail conditions). */
+  linkSplit:
+    "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 min-h-[44px] py-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg",
+  /** Primary stat / label — body sans, not display serif. */
+  label: "text-sm sm:text-base font-semibold text-charcoal",
+  /** Inline stats row: temps, counts. */
+  inlineRow: "text-sm sm:text-base text-charcoal",
+  inlinePrimary: "font-semibold tabular-nums",
+  inlineSecondary: "text-olive/70",
+  meta: "text-sm text-olive/80",
+  hint: "text-sm text-sage group-hover:text-terracotta transition-colors shrink-0",
 } as const;
 
 /** Section rhythm
@@ -256,6 +272,18 @@ export const TYPE = {
   kickerOnDark: "prose-label text-white/80",
   /** Compact card titles (RightNowCard, strip headings) */
   cardTitleCompact: "font-display text-sm sm:text-base font-semibold text-charcoal group-hover:text-terracotta transition-colors",
+  /** Numeric / metric lines in info cards (weather temps, counts) — sans, not display */
+  stat: "text-xl sm:text-2xl font-semibold text-charcoal tabular-nums tracking-tight",
+  statSub: "text-sm text-sage",
+} as const;
+
+/** Floated band below hero (trip mode chips). */
+export const POST_HERO = {
+  wrap: `${LAYOUT.safeAreaX} relative z-20 -mt-8 sm:-mt-10`,
+  inner: `${LAYOUT.list} mx-auto`,
+  panel:
+    "rounded-2xl border border-sand-200/80 bg-background shadow-[0_4px_20px_rgba(37,39,48,0.06)] px-3 py-3 sm:px-4",
+  chipNav: "flex flex-wrap items-center justify-center gap-2",
 } as const;
 
 /** Homepage hero primitives (server components compose these). */

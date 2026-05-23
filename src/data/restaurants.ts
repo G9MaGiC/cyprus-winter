@@ -229,7 +229,7 @@ export const restaurants: Restaurant[] = [
     openingHours: "Typically 12–15:30, 19–22; call in winter",
     winterTip: "Do Caledonia or Kryos Potamos in the morning. Kakopetria for lunch. Psaróvrasto—trout poached in wine and herbs.",
     bestTimeToVisit: "Lunch; after morning trail",
-    localSecret: "Psaróvrasto. Trout, wine, herbs. The river runs past. Kakopetria knows hikers. The Old Town is UNESCO-listed; allow time to wander.",
+    localSecret: "Psaróvrasto. Trout, wine, herbs. The river runs past. Kakopetria knows hikers. Galata's UNESCO painted churches are minutes away—allow time to wander.",
     combineWith: ["caledonia-falls", "kampos-tou-livadiou", "kryos-potamos-loop", "kakopetria"],
     transport: "Kakopetria village, Solea Valley. ~55 min from Limassol.",
     parking: "Village parking; some tavernas by the river.",

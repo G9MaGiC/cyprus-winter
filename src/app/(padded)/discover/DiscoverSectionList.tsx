@@ -6,6 +6,7 @@ import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
+import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { useTranslations } from "next-intl";
 
 type DiscoverSectionListProps = {
@@ -15,6 +16,7 @@ type DiscoverSectionListProps = {
 const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListProps>(
   function DiscoverSectionList({ sections }, ref) {
     const tCommon = useTranslations("common");
+    const tDiscover = useTranslations("discover");
     const [shouldAnimate, setShouldAnimate] = useState(true);
     useEffect(() => {
       const t = setTimeout(() => setShouldAnimate(false), 700);
@@ -23,7 +25,12 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
 
     return (
       <div className={`pt-2 ${SECTION.blockGap}`}>
-        {sections.map((section, idx) => (
+        {sections.map((section, idx) => {
+          const sectionTitle = isActivityFilterKey(section.id)
+            ? tDiscover(`page.filters.${section.id}`)
+            : tDiscover(`page.sections.${section.id}`);
+
+          return (
           <section
             key={section.id}
             id={section.id}
@@ -37,7 +44,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
               tabIndex={idx === 0 ? -1 : undefined}
               className={`${TYPE.sectionTitle} break-words ${SECTION.headingGap}`}
             >
-              {section.title}
+              {sectionTitle}
             </h2>
 
             {section.items.length === 0 ? (
@@ -69,14 +76,46 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                 </div>
               </div>
             ) : (
+              <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                 {section.items.map((item) => (
                   <AttractionCard key={item.id} a={item} />
                 ))}
               </div>
+              {section.trailLinks && section.trailLinks.length > 0 ? (
+                <div className={`mt-8 sm:mt-10 ${SECTION.headingGap}`}>
+                  <h3 className={`${TYPE.cardTitle} text-charcoal mb-4`}>
+                    {tDiscover("page.filters.relatedTrails")}
+                  </h3>
+                  <ul className="flex flex-wrap gap-2">
+                    {section.trailLinks.map((trail) => (
+                      <li key={trail.id}>
+                        <AppLink
+                          href={trail.href}
+                          className={CTA.chipSecondary}
+                        >
+                          {trail.name}
+                        </AppLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {section.seeMore ? (
+                <div className="mt-6">
+                  <AppLink
+                    href={section.seeMore.href}
+                    className={CTA.secondaryCompact}
+                  >
+                    {tDiscover(`page.filters.${section.seeMore.labelKey}`)}
+                  </AppLink>
+                </div>
+              ) : null}
+              </>
             )}
           </section>
-        ))}
+          );
+        })}
       </div>
     );
   }
