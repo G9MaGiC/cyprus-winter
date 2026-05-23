@@ -125,6 +125,8 @@ type DayContentPanelProps = {
   onClearDay: () => void;
   onBrowseAll: () => void;
   onScrollToQuickStart: () => void;
+  /** Hide inline quick-add when empty plan already shows chips in Quick Start */
+  hideInlineAdd?: boolean;
 };
 
 export default function DayContentPanel({
@@ -138,6 +140,7 @@ export default function DayContentPanel({
   onClearDay,
   onBrowseAll,
   onScrollToQuickStart,
+  hideInlineAdd = false,
 }: DayContentPanelProps) {
   const tPlan = useTranslations("plan");
   const useBlocks = activeItems.length >= 3;
@@ -264,13 +267,15 @@ export default function DayContentPanel({
         </div>
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
-        <DayAddSection
-          activeDay={activeDay}
-          activeItems={activeItems}
-          getPlace={getPlace}
-          addToDay={addToDay}
-          onBrowseAll={onBrowseAll}
-        />
+        {!hideInlineAdd && (
+          <DayAddSection
+            activeDay={activeDay}
+            activeItems={activeItems}
+            getPlace={getPlace}
+            addToDay={addToDay}
+            onBrowseAll={onBrowseAll}
+          />
+        )}
       </div>
     </section>
   );

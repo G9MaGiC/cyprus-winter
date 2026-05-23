@@ -111,6 +111,29 @@ export default function PlanPageClient() {
     scrollToQuickStart,
   } = plan;
 
+  const quickStartBlock = (
+    <>
+      {!hasContent && hydrated && showTipPlanEmpty && (
+        <OnboardingContextualTip
+          message={t("tipPlanEmpty")}
+          onDismiss={dismissTipPlanEmpty}
+          href="/discover"
+          hrefLabel={t("tipPlanEmptyLink")}
+        />
+      )}
+      <QuickStartSection
+        activeDay={activeDay}
+        days={days}
+        getPlace={getPlace}
+        addToDay={addToDayIfMissing}
+        onTemplateClick={handleTemplateClick}
+        hasContent={hasContent}
+        tripLength={tripLength}
+      />
+      <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+    </>
+  );
+
   return (
     <div className="min-h-screen bg-sand">
       <div
@@ -188,6 +211,12 @@ export default function PlanPageClient() {
           />
         )}
 
+        {!hasContent && (
+          <div ref={quickStartRef} aria-label={tPlan("aria.quickStartRegion")} className="scroll-mt-24 sm:scroll-mt-28">
+            {quickStartBlock}
+          </div>
+        )}
+
         {datesHydrated && withinSevenDays && daysUntil !== null && (
           <PlanDaysUntilBanner daysUntil={daysUntil} />
         )}
@@ -197,6 +226,7 @@ export default function PlanPageClient() {
             dates={dates}
             setTripDates={setTripDates}
             withinSevenDays={withinSevenDays}
+            defaultCollapsed={!hasContent}
           />
         )}
 
@@ -224,35 +254,16 @@ export default function PlanPageClient() {
             onClearDay={() => setShowClearModal(true)}
             onBrowseAll={() => setShowBrowseModal(true)}
             onScrollToQuickStart={scrollToQuickStart}
+            hideInlineAdd={!hasContent}
           />
 
           {hasContent && hydrated && <PlanMapCollapsibleSection />}
 
-          <div ref={quickStartRef} aria-label={tPlan("aria.quickStartRegion")}>
-            <PlanAddMoreCollapsible hasContent={hasContent}>
-              {!hasContent && hydrated && showTipPlanEmpty && (
-                <OnboardingContextualTip
-                  message={t("tipPlanEmpty")}
-                  onDismiss={dismissTipPlanEmpty}
-                  href="/discover"
-                  hrefLabel={t("tipPlanEmptyLink")}
-                />
-              )}
-              <QuickStartSection
-                activeDay={activeDay}
-                days={days}
-                getPlace={getPlace}
-                addToDay={addToDayIfMissing}
-                onTemplateClick={handleTemplateClick}
-                hasContent={hasContent}
-                tripLength={tripLength}
-              />
-              <BuildADaySection
-                hasContent={hasContent}
-                onComboClick={handleComboClick}
-              />
-            </PlanAddMoreCollapsible>
-          </div>
+          {hasContent && (
+            <div ref={quickStartRef} aria-label={tPlan("aria.quickStartRegion")}>
+              <PlanAddMoreCollapsible hasContent={hasContent}>{quickStartBlock}</PlanAddMoreCollapsible>
+            </div>
+          )}
         </div>
 
         <PlanFooter hasWineries={hasWineries} showAccountCTA={!user && totalPlaces >= 2} />

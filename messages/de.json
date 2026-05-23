@@ -1331,7 +1331,7 @@
     "addingToPlan": "Wird zum Plan hinzugefügt…",
     "addedToDayBanner": "{name} zu Tag {day} hinzugefügt.",
     "dayEmptyTitle": "Tag {day} ist leer",
-    "dayEmptyBody": "Fügen Sie unten Ihren ersten Ort hinzu oder wählen Sie weiter unten eine Vorlage, um den Tag auf einmal zu füllen.",
+    "dayEmptyBody": "Durchsuchen Sie unten Orte oder wählen Sie oben eine Vorlage, um den Tag auf einmal zu füllen.",
     "browsePlaces": "Orte durchsuchen",
     "placePickerIntro": "Wählen Sie jetzt einen Ort. Weitere können Sie direkt danach hinzufügen.",
     "seeTemplates": "Vorlagen ansehen",
@@ -1348,6 +1348,8 @@
     "tripDatesWidget": {
       "ariaLabel": "Reisedaten",
       "heading": "Wann reisen Sie?",
+      "optionalSummary": "Optional: Reisedaten festlegen",
+      "optionalHint": "Passende Vorlagen und eine Erinnerung vor der Anreise.",
       "startLabel": "Start",
       "endLabel": "Ende"
     },
@@ -1451,7 +1453,7 @@
     "titleHasContent": "Mehr zu Ihrem Plan hinzufügen",
     "descEmpty": "Vorgefertigte Routen von Küste bis Berge. Ein Klick füllt Tag 1.",
     "descHasContent": "Nutzen Sie eine Vorlage, um Stopps hinzuzufügen oder zu ersetzen. Oder tippen Sie unten auf einen Ort.",
-    "setDatesHint": "Legen Sie oben Ihre Reisedaten fest, um passende Vorlagen zu sehen.",
+    "setDatesHint": "Öffnen Sie unten die Reisedaten, um passende Vorlagen zu sehen.",
     "quickAddLabel": "Schnell hinzufügen zu Tag {day}",
     "quickAddAriaAdded": "{label} hinzugefügt",
     "quickAddAriaAdd": "{label} zu Tag {day} hinzufügen",
@@ -1465,7 +1467,14 @@
     "browseWineriesAria": "Weingüter durchsuchen",
     "browseWineriesLabel": "Weingüter",
     "seeWhatsOnAria": "Sehen, was los ist",
-    "seeWhatsOnLabel": "Was läuft"
+    "seeWhatsOnLabel": "Was läuft",
+    "fitsTripDays": "Passt zu Ihrer {days}-Tage-Reise",
+    "tripRecommendationBlurb": "Empfohlen für Ihre {days}-Tage-Reise — nach Länge und Ihren gespeicherten Vorlieben.",
+    "tripFitExact": "Exakte Länge",
+    "tripFitNear": "Nahe Übereinstimmung",
+    "tripFitCompress": "Plan verdichten",
+    "tripFitExtend": "Mit Extras verlängern",
+    "allTemplates": "Alle Vorlagen"
   },
   "bookings": {
     "title": "Meine Buchungen",

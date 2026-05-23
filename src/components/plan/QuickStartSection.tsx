@@ -25,13 +25,6 @@ function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tr
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
 
-function getTripFitLabel(templateDuration: number, tripLength: number): string {
-  const delta = templateDuration - tripLength;
-  if (delta === 0) return "Exact length";
-  if (Math.abs(delta) === 1) return "Near match";
-  return delta > 0 ? "Compress plan" : "Extend with add-ons";
-}
-
 export default function QuickStartSection({
   activeDay,
   days,
@@ -72,6 +65,13 @@ export default function QuickStartSection({
     });
   }, [tripLength, recommended.length, forYou.length]);
 
+  const getTripFitLabel = (templateDuration: number, length: number): string => {
+    const delta = templateDuration - length;
+    if (delta === 0) return tPlanQuick("tripFitExact");
+    if (Math.abs(delta) === 1) return tPlanQuick("tripFitNear");
+    return delta > 0 ? tPlanQuick("tripFitCompress") : tPlanQuick("tripFitExtend");
+  };
+
   const templateCardClass = "shrink-0 snap-center w-[85vw] max-w-[280px] sm:w-full sm:max-w-none";
   const renderTemplateCard = (
     template: (typeof ITINERARY_TEMPLATES)[number],
@@ -104,8 +104,10 @@ export default function QuickStartSection({
                 {tPlanQuick("forYou")}
               </span>
             )}
-            {!isForYou && isRecommended && (
-              <span className="text-xs font-medium text-aegean mt-1 block">Fits your {tripLength}-day trip</span>
+            {!isForYou && isRecommended && tripLength != null && (
+              <span className="text-xs font-medium text-aegean mt-1 block">
+                {tPlanQuick("fitsTripDays", { days: tripLength })}
+              </span>
             )}
           </div>
           <span
@@ -124,6 +126,112 @@ export default function QuickStartSection({
       </button>
     );
   };
+
+  const templateGrids = (
+    <div className="space-y-8 sm:space-y-10">
+      {forYou.length > 0 && (
+        <div className="space-y-4">
+          <h3 className={`${TYPE.kicker} text-terracotta`}>
+            {tPlanQuick("forYou")}
+          </h3>
+          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
+            {forYou.map((template) => (
+              <div key={template.key} className={templateCardClass}>
+                {renderTemplateCard(template, false, true)}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {recommended.length > 0 && (
+        <div className="space-y-4">
+          <h3 className={`${TYPE.kicker} text-aegean`}>
+            {tripLength != null ? tPlanQuick("forTrip", { days: tripLength }) : tPlanQuick("forYou")}
+          </h3>
+          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
+            {recommended.map((template) => (
+              <div key={template.key} className={templateCardClass}>
+                {renderTemplateCard(template, true, false)}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      <div className="space-y-4">
+        <h3 className={`${TYPE.kicker} text-olive/70`}>
+          {tPlanQuick("allTemplates")}
+        </h3>
+        <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
+          {others.map((template) => (
+            <div key={template.key} className={templateCardClass}>
+              {renderTemplateCard(template, false, false)}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const quickAddRow = !hasContent ? (
+    <div className="space-y-4">
+      <p className="text-sm font-medium text-olive/80">
+        {tPlanQuick("quickAddLabel", { day: activeDay })}
+      </p>
+      <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none scroll-smooth scroll-touch [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
+        {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
+          const inDay = activeDayItems.includes(id);
+          const place = getPlace(id);
+          if (!place) return null;
+          return (
+            <button
+              key={id}
+              type="button"
+              onClick={() => addToDay(id)}
+              disabled={inDay}
+              className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+              aria-pressed={inDay}
+              aria-label={
+                inDay
+                  ? tPlanQuick("quickAddAriaAdded", { label })
+                  : tPlanQuick("quickAddAriaAdd", { label, day: activeDay })
+              }
+            >
+              {inDay ? `${tPlanQuick("quickAddAriaAdded", { label })} ` : ""}
+              {label}
+            </button>
+          );
+        })}
+        <AppLink
+          href="/discover"
+          className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+          aria-label={tPlanQuick("browsePlacesAria")}
+        >
+          {tPlanQuick("browsePlacesCta")}
+        </AppLink>
+        <AppLink
+          href="/trails"
+          className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+          aria-label={tPlanQuick("browseTrailsAria")}
+        >
+          {tPlanQuick("browseTrailsLabel")}
+        </AppLink>
+        <AppLink
+          href="/discover?filter=winery"
+          className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+          aria-label={tPlanQuick("browseWineriesAria")}
+        >
+          {tPlanQuick("browseWineriesLabel")}
+        </AppLink>
+        <AppLink
+          href="/events"
+          className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
+          aria-label={tPlanQuick("seeWhatsOnAria")}
+        >
+          {tPlanQuick("seeWhatsOnLabel")}
+        </AppLink>
+      </div>
+    </div>
+  ) : null;
 
   return (
     <section aria-labelledby="quick-start-heading" className="space-y-8 sm:space-y-10">
@@ -151,115 +259,23 @@ export default function QuickStartSection({
         {tripLength != null && (
           <div className="mt-3 rounded-xl border border-aegean/20 bg-aegean/5 p-3 sm:p-4">
             <p className="text-sm text-olive/85">
-              Recommended for your {tripLength}-day trip based on length fit and your saved preferences.
+              {tPlanQuick("tripRecommendationBlurb", { days: tripLength })}
             </p>
           </div>
         )}
       </header>
 
-      {!hasContent && (
-        <div className="space-y-4">
-          <p className="text-sm font-medium text-olive/80">
-            {tPlanQuick("quickAddLabel", { day: activeDay })}
-          </p>
-          <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none scroll-smooth scroll-touch [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
-            {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
-              const inDay = activeDayItems.includes(id);
-              const place = getPlace(id);
-              if (!place) return null;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => addToDay(id)}
-                  disabled={inDay}
-                  className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
-                  aria-pressed={inDay}
-                  aria-label={
-                    inDay
-                      ? tPlanQuick("quickAddAriaAdded", { label })
-                      : tPlanQuick("quickAddAriaAdd", { label, day: activeDay })
-                  }
-                >
-                  {inDay ? `${tPlanQuick("quickAddAriaAdded", { label })} ` : ""}
-                  {label}
-                </button>
-              );
-            })}
-            <AppLink
-              href="/discover"
-              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
-              aria-label={tPlanQuick("browsePlacesAria")}
-            >
-              {tPlanQuick("browsePlacesCta")}
-            </AppLink>
-            <AppLink
-              href="/trails"
-              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
-              aria-label={tPlanQuick("browseTrailsAria")}
-            >
-              {tPlanQuick("browseTrailsLabel")}
-            </AppLink>
-            <AppLink
-              href="/discover?filter=winery"
-              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
-              aria-label={tPlanQuick("browseWineriesAria")}
-            >
-              {tPlanQuick("browseWineriesLabel")}
-            </AppLink>
-            <AppLink
-              href="/events"
-              className={`shrink-0 snap-start ${PILL.base} ${PILL.neutral}`}
-              aria-label={tPlanQuick("seeWhatsOnAria")}
-            >
-              {tPlanQuick("seeWhatsOnLabel")}
-            </AppLink>
-          </div>
-        </div>
+      {!hasContent ? (
+        <>
+          {templateGrids}
+          {quickAddRow}
+        </>
+      ) : (
+        <>
+          {quickAddRow}
+          {templateGrids}
+        </>
       )}
-
-      <div className="space-y-8 sm:space-y-10">
-        {forYou.length > 0 && (
-          <div className="space-y-4">
-            <h3 className={`${TYPE.kicker} text-terracotta`}>
-              {tPlanQuick("forYou")}
-            </h3>
-            <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
-              {forYou.map((template) => (
-                <div key={template.key} className={templateCardClass}>
-                  {renderTemplateCard(template, false, true)}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        {recommended.length > 0 && (
-          <div className="space-y-4">
-            <h3 className={`${TYPE.kicker} text-aegean`}>
-              {tripLength != null ? tPlanQuick("forTrip", { days: tripLength }) : tPlanQuick("forYou")}
-            </h3>
-            <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
-              {recommended.map((template) => (
-                <div key={template.key} className={templateCardClass}>
-                  {renderTemplateCard(template, true, false)}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        <div className="space-y-4">
-          <h3 className={`${TYPE.kicker} text-olive/70`}>
-            {tPlanQuick("kickerEmpty")}
-          </h3>
-          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
-            {others.map((template) => (
-              <div key={template.key} className={templateCardClass}>
-                {renderTemplateCard(template, false, false)}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

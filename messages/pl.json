@@ -1331,7 +1331,7 @@
     "addingToPlan": "Dodawanie do planu…",
     "addedToDayBanner": "Dodano {name} do Dnia {day}.",
     "dayEmptyTitle": "Dzień {day} jest pusty",
-    "dayEmptyBody": "Dodaj pierwsze miejsce poniżej albo wybierz szablon dalej, aby wypełnić dzień jednym ruchem.",
+    "dayEmptyBody": "Przeglądaj miejsca poniżej albo wybierz szablon powyżej, aby wypełnić dzień jednym ruchem.",
     "browsePlaces": "Przeglądaj miejsca",
     "placePickerIntro": "Wybierz jedno miejsce teraz. Kolejne możesz dodać od razu potem.",
     "seeTemplates": "Zobacz szablony",
@@ -1348,6 +1348,8 @@
     "tripDatesWidget": {
       "ariaLabel": "Daty wyjazdu",
       "heading": "Kiedy podróżujesz?",
+      "optionalSummary": "Opcjonalnie: daty wyjazdu",
+      "optionalHint": "Dopasowane szablony i przypomnienie przed przylotem.",
       "startLabel": "Początek",
       "endLabel": "Koniec"
     },
@@ -1451,7 +1453,7 @@
     "titleHasContent": "Dodaj więcej do swojego planu",
     "descEmpty": "Gotowe trasy od wybrzeża po góry. Jeden klik wypełnia Dzień 1.",
     "descHasContent": "Użyj szablonu, aby dodać lub podmienić postoje. Albo stuknij w miejsce poniżej.",
-    "setDatesHint": "Ustaw daty powyżej, żeby zobaczyć szablony dopasowane do Twojej podróży.",
+    "setDatesHint": "Otwórz daty wyjazdu poniżej, aby zobaczyć szablony dopasowane do długości podróży.",
     "quickAddLabel": "Szybkie dodanie do Dnia {day}",
     "quickAddAriaAdded": "Dodano {label}",
     "quickAddAriaAdd": "Dodaj {label} do Dnia {day}",
@@ -1465,7 +1467,14 @@
     "browseWineriesAria": "Przeglądaj winnice",
     "browseWineriesLabel": "Winnice",
     "seeWhatsOnAria": "Zobacz, co jest dostępne",
-    "seeWhatsOnLabel": "Co jest dostępne"
+    "seeWhatsOnLabel": "Co jest dostępne",
+    "fitsTripDays": "Pasuje do podróży na {days} dni",
+    "tripRecommendationBlurb": "Polecane na Twoją podróż {days} dni — wg długości i zapisanych preferencji.",
+    "tripFitExact": "Dokładna długość",
+    "tripFitNear": "Bliskie dopasowanie",
+    "tripFitCompress": "Skróć plan",
+    "tripFitExtend": "Rozszerz dodatkami",
+    "allTemplates": "Wszystkie szablony"
   },
   "bookings": {
     "title": "Moje rezerwacje",
