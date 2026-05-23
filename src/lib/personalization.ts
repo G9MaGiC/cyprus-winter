@@ -35,6 +35,7 @@ const INTEREST_KEYWORDS: Record<Interest, string[]> = {
 const TYPE_TO_INTEREST: Record<string, Interest[]> = {
   beach: ["wellness"],
   nature: ["active", "bouldering", "climbing", "cycling", "wellness"],
+  activity: ["bouldering", "climbing", "active"],
   ancient: ["culture"],
   village: ["villages", "culture"],
   monastery: ["culture"],

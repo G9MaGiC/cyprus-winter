@@ -16,6 +16,7 @@ const PLACE_TYPE_KEYS = [
   "ancientSite",
   "village",
   "monastery",
+  "activity",
   "winery",
   "restaurant",
   "trail",

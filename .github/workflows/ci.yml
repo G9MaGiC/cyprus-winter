@@ -73,6 +73,9 @@ jobs:
       - name: Lint
         run: npm run lint -- --max-warnings 0
 
+      - name: Data validate
+        run: npm run data:validate
+
       - name: Test
         run: npm run test
 

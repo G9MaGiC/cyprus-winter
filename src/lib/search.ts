@@ -2,7 +2,7 @@
  * Client-side search over places, trails, and events.
  * Results are relevance-ranked: exact/prefix match on name > region > description.
  */
-import { allPlaces, type PlanItem } from "@/data";
+import { allPlaces, type PlanItem, getAttractionById } from "@/data";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 
@@ -101,6 +101,15 @@ export function search(query: string, limit = 20): SearchResult[] {
       if (e) {
         fields.description = e.description;
         fields.venue = e.venue ?? "";
+      }
+    } else {
+      const a = getAttractionById(p.id);
+      if (a) {
+        fields.description = [
+          a.description,
+          ...(a.bestFor ?? []),
+          ...(a.highlights ?? []),
+        ].join(" ");
       }
     }
     const score = matchScore(q, fields);

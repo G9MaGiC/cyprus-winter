@@ -73,14 +73,14 @@ export default function StartHereWithExplore() {
   ];
 
   const moodChips: Chip[] = [
-    { href: "/trails", label: tHome("startHere.chip.active"), ariaLabel: tHome("startHere.chip.activeAria"), variant: "secondary" },
-    { href: "/search?q=bouldering", label: tHome("startHere.chip.boulderingPlus"), ariaLabel: tHome("startHere.chip.boulderingPlusAria"), variant: "secondary" },
-    { href: "/search?q=climbing", label: tHome("startHere.chip.climbing"), ariaLabel: tHome("startHere.chip.climbingAria"), variant: "secondary" },
-    { href: "/search?q=cycling", label: tHome("startHere.chip.cycling"), ariaLabel: tHome("startHere.chip.cyclingAria"), variant: "secondary" },
-    { href: "/search?q=watersports", label: tHome("startHere.chip.watersports"), ariaLabel: tHome("startHere.chip.watersportsAria"), variant: "secondary" },
+    { href: "/trails", label: tHome("startHere.chip.trailsAndHiking"), ariaLabel: tHome("startHere.chip.trailsAndHikingAria"), variant: "secondary" },
+    { href: "/discover?filter=bouldering", label: tHome("startHere.chip.boulderingPlus"), ariaLabel: tHome("startHere.chip.boulderingPlusAria"), variant: "secondary" },
+    { href: "/discover?filter=climbing", label: tHome("startHere.chip.climbing"), ariaLabel: tHome("startHere.chip.climbingAria"), variant: "secondary" },
+    { href: "/discover?filter=cycling", label: tHome("startHere.chip.cycling"), ariaLabel: tHome("startHere.chip.cyclingAria"), variant: "secondary" },
+    { href: "/discover?filter=watersports", label: tHome("startHere.chip.watersports"), ariaLabel: tHome("startHere.chip.watersportsAria"), variant: "secondary" },
     { href: "/discover?filter=quiet", label: tHome("startHere.chip.quietEscapes"), ariaLabel: tHome("startHere.chip.quietEscapesAria"), variant: "secondary" },
-    { href: "/trails", label: tHome("startHere.chip.mountains"), ariaLabel: tHome("startHere.chip.mountainsAria"), variant: "secondary" },
-    { href: "/discover?filter=quiet", label: tHome("startHere.chip.wellness"), ariaLabel: tHome("startHere.chip.wellnessAria"), variant: "secondary" },
+    { href: "/discover?filter=mountains", label: tHome("startHere.chip.mountains"), ariaLabel: tHome("startHere.chip.mountainsAria"), variant: "secondary" },
+    { href: "/discover?filter=wellness", label: tHome("startHere.chip.wellness"), ariaLabel: tHome("startHere.chip.wellnessAria"), variant: "secondary" },
   ];
   return (
     <section

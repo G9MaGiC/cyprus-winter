@@ -472,6 +472,7 @@ export default async function TrailPage({
               <div id="trail-pair-with">
               <RelatedPlacesBlock
                 ids={trail.combineWith}
+                title={tTrailsDetail("relatedPlaces.title")}
                 description={tTrailsDetail("relatedPlaces.description")}
                 showAddToItinerary
               />

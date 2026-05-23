@@ -2,7 +2,13 @@
  * Builds context for the AI from app data so it can give accurate Cyprus Winter answers.
  */
 import { trails, trailConditions } from "@/data/trails";
-import { beaches, ancientSites, villages, monasteries } from "@/data/attractions";
+import {
+  beaches,
+  ancientSites,
+  villages,
+  monasteries,
+} from "@/data/attractions";
+import { activityPlaces } from "@/data/activity-places";
 import { wineries } from "@/data/wineries";
 import { winterEvents } from "@/data/events";
 import { secretGems } from "@/data/secret-gems";
@@ -16,7 +22,7 @@ export type AIContextOptions = {
 const TIER1_ESSENTIALS = `
 ## Cyprus Winter App Knowledge Base
 
-You are the Cyprus Winter guide. You know trails, wineries, villages, and winter travel in Cyprus (Nov–Mar).
+You are the Cyprus Winter guide. You know trails, wineries, villages, climbing and bouldering spots, cycling loops, and winter travel in Cyprus (Nov–Mar).
 Cyprus winter: 16 to 20°C, ideal for hiking, wine, culture. Northern Europe visitors escape 3 to 8°C.
 Emergency: 112. Tourist info: 1460. Ambulance: 199.
 
@@ -75,10 +81,15 @@ export function buildAIContext(): string {
     .map((b) => `- ${b.name} (${b.region}), id: ${b.id}`)
     .join("\n");
 
+  const activitySummary = activityPlaces
+    .slice(0, 24)
+    .map((a) => `- ${a.name} (${a.region}), id: ${a.id}. ${(a.bestFor ?? []).slice(0, 2).join(", ")}`)
+    .join("\n");
+
   return `
 ## Cyprus Winter App Knowledge Base
 
-You are the Cyprus Winter guide. You know trails, wineries, villages, and winter travel in Cyprus (Nov–Mar).
+You are the Cyprus Winter guide. You know trails, wineries, villages, climbing and bouldering spots, cycling loops, and winter travel in Cyprus (Nov–Mar).
 Cyprus winter: 16 to 20°C, ideal for hiking, wine, culture. Northern Europe visitors escape 3 to 8°C.
 Emergency: 112. Tourist info: 1460. Ambulance: 199.
 
@@ -100,6 +111,10 @@ ${monasterySummary}
 
 ### Beaches
 ${beachSummary}
+
+### Outdoor activities (bouldering, climbing, cycling, watersports)
+${activitySummary}
+(Use /discover?filter=bouldering, climbing, cycling, watersports, quiet, mountains, wellness for curated lists.)
 
 ### Winter Events (Nov to Mar)
 ${winterEvents.map((e) => `- ${e.name} (${e.month}): ${e.description.slice(0, 100)}`).join("\n")}
@@ -161,6 +176,10 @@ export function buildAIContextRelevant(options?: AIContextOptions): string {
   const villageSummary = villages.map((v) => `- ${v.name} (${v.region}), id: ${v.id}`).join("\n");
   const monasterySummary = monasteries.map((m) => `- ${m.name} (${m.region}), id: ${m.id}`).join("\n");
   const beachSummary = beaches.map((b) => `- ${b.name} (${b.region}), id: ${b.id}`).join("\n");
+  const activitySummary = activityPlaces
+    .slice(0, 20)
+    .map((a) => `- ${a.name} (${a.region}), id: ${a.id}`)
+    .join("\n");
 
   const isTrailsPage = path.startsWith("/trails");
   const isDiscoverPage = path.startsWith("/discover") || path.startsWith("/book/winery");
@@ -183,6 +202,10 @@ ${focusIds.size > 0 ? WINTER_INSIDER_TIPS : ""}`;
 
   if (isDiscoverPage) {
     return `${TIER1_ESSENTIALS}
+### Outdoor activities (bouldering, climbing, cycling, watersports)
+${activitySummary}
+(Use /discover?filter=bouldering, climbing, cycling, watersports, quiet, mountains, wellness for curated lists.)
+
 ### Ancient Sites
 ${ancientSummary}
 

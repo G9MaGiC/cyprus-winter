@@ -3,6 +3,10 @@ import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
+import {
+  getProductionEnvChecks,
+  productionEnvReady,
+} from "@/lib/production-readiness";
 
 // Health check must run at request time (Supabase connectivity, env)
 export const dynamic = "force-dynamic";
@@ -56,6 +60,8 @@ export async function GET(req: Request) {
   }
 
   const ok = !hasSupabase() || supabaseOk;
+  const productionChecks = getProductionEnvChecks();
+  const productionReady = productionEnvReady();
 
   const headers: HeadersInit = {
     ...rateLimitSuccessHeaders(limitResult.remaining, 60, limitResult.bypassed),
@@ -72,6 +78,8 @@ export async function GET(req: Request) {
       email: emailConfigured,
       resend: resendStatus,
       supabase: hasSupabase() ? (supabaseOk ? "ok" : "error") : "not configured",
+      productionReady,
+      productionChecks: productionChecks.length > 0 ? productionChecks : undefined,
     },
     { status: ok ? 200 : 503, headers }
   );

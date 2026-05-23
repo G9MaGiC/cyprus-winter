@@ -35,12 +35,15 @@ npm run typecheck
 npm run test
 npm run i18n:validate
 npm run i18n:scan --fail
+npm run data:validate
 npm run build
 npm run test:e2e:gate:ci
 ```
 
+See `docs/SCORECARD.md` for 5/5 launch criteria.
+
 ## Before merging
 
-1. Lint, typecheck, unit tests, i18n validate/scan, build
+1. Lint, typecheck, unit tests, i18n validate/scan, **data:validate**, build
 2. E2E gate if touching funnel, overlays, or hub footers
 3. Log regressions in `docs/QA_BUGS.md`

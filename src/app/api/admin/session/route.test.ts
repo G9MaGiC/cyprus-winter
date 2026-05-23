@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { GET, POST, DELETE } from "./route";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken } from "@/lib/admin-session";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 describe("admin session API", () => {
   const secret = "test-admin-secret";
@@ -30,7 +30,7 @@ describe("admin session API", () => {
       headers: { "content-type": "application/json", "x-forwarded-for": "127.0.0.51" },
       body: JSON.stringify({ secret }),
     });
-    const res = await POST(req);
+    const res = (await POST(req)) as NextResponse;
     expect(res.status).toBe(200);
     const cookie = res.cookies.get(ADMIN_SESSION_COOKIE);
     expect(cookie?.value).toBeTruthy();
@@ -58,7 +58,7 @@ describe("admin session API", () => {
   });
 
   it("DELETE clears session cookie", async () => {
-    const res = await DELETE();
+    const res = (await DELETE()) as NextResponse;
     expect(res.status).toBe(200);
     const cookie = res.cookies.get(ADMIN_SESSION_COOKIE);
     expect(cookie?.maxAge).toBe(0);

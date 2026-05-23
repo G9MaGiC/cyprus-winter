@@ -1,10 +1,15 @@
 import DiscoverPage from "@/app/(padded)/discover/page";
-import { discoverListPageMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { buildDiscoverListMetadata } from "@/lib/discover-list-meta";
 
 export default DiscoverPage;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  return applyLocaleToMetadata(discoverListPageMeta, "/discover", locale);
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ filter?: string | string[] }>;
+}) {
+  const [{ locale }, { filter }] = await Promise.all([params, searchParams]);
+  return buildDiscoverListMetadata(locale, filter);
 }

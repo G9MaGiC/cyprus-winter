@@ -4,12 +4,15 @@ import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { allDiscoverItems } from "@/data/discover";
 import { buildDiscoverSections } from "@/lib/discover-sections";
+import {
+  ACTIVITY_FILTER_KEYS,
+  buildActivitySection,
+} from "@/lib/activity-catalog";
 import { buildDiscoverItemListSchema } from "@/lib/discover-schema";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
-import DiscoverMapSection from "./DiscoverMapSection";
 import DiscoverClient from "./DiscoverClient";
 import { getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
@@ -29,7 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
-const sections = buildDiscoverSections(allDiscoverItems);
+const standardSections = buildDiscoverSections(allDiscoverItems);
+const activitySections = ACTIVITY_FILTER_KEYS.map((key) =>
+  buildActivitySection(key, allDiscoverItems)
+).filter((s): s is NonNullable<typeof s> => s != null);
 const discoverItemListSchema = buildDiscoverItemListSchema(allDiscoverItems, SITE_URL);
 
 export default async function DiscoverPage() {
@@ -76,9 +82,10 @@ export default async function DiscoverPage() {
 
         <div id="discover-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
-        <DiscoverClient sections={sections}>
-          <DiscoverMapSection />
-        </DiscoverClient>
+        <DiscoverClient
+          sections={standardSections}
+          activitySections={activitySections}
+        />
       </div>
     </div>
   );

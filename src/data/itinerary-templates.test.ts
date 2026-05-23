@@ -1,17 +1,19 @@
-import { describe, it, expect } from "vitest";
-import { ITINERARY_TEMPLATES } from "./itinerary-templates";
+import { describe, expect, it } from "vitest";
 import { getPlaceById } from "@/data";
+import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 
-describe("ITINERARY_TEMPLATES", () => {
-  it("only references valid place IDs", () => {
-    const invalid: string[] = [];
+describe("itinerary templates", () => {
+  it("resolves every template place id via getPlaceById", () => {
+    const issues: string[] = [];
     for (const template of ITINERARY_TEMPLATES) {
-      for (const ids of Object.values(template.days)) {
+      for (const [day, ids] of Object.entries(template.days)) {
         for (const id of ids) {
-          if (!getPlaceById(id)) invalid.push(`${template.key}:${id}`);
+          if (!getPlaceById(id)) {
+            issues.push(`${template.key} day ${day}: ${id}`);
+          }
         }
       }
     }
-    expect(invalid).toEqual([]);
+    expect(issues, issues.join("\n")).toEqual([]);
   });
 });

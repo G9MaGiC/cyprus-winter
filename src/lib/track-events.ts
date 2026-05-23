@@ -2,6 +2,7 @@ export const TRACK_EVENTS = [
   "web_vital",
   "page_view",
   "discover_view",
+  "discover_filter",
   "winery_detail_view",
   "booking_start",
   "booking_complete",

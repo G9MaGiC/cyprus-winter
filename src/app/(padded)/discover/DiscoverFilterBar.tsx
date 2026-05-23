@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import AppLink from "@/components/AppLink";
 import FilterChips from "@/components/FilterChips";
 import StickyFilterBar from "@/components/StickyFilterBar";
 import { SECTION, CTA, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
+import { ACTIVITY_FILTER_KEYS } from "@/lib/activity-catalog";
+import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { useTranslations } from "next-intl";
 
 type DiscoverFilterBarProps = {
@@ -15,8 +18,14 @@ type DiscoverFilterBarProps = {
   totalCount: number;
   activeSectionTitle: string;
   hasWineriesInView: boolean;
+  isActivityFilter: boolean;
   onScrollToMap: () => void;
 };
+
+function discoverFilterHref(chipId: string, isActive: boolean): string {
+  if (chipId === "" || isActive) return "/discover";
+  return `/discover?filter=${chipId}`;
+}
 
 export default function DiscoverFilterBar({
   sections,
@@ -26,15 +35,82 @@ export default function DiscoverFilterBar({
   totalCount,
   activeSectionTitle,
   hasWineriesInView,
+  isActivityFilter,
   onScrollToMap,
 }: DiscoverFilterBarProps) {
   const tCommon = useTranslations("common");
   const tDiscover = useTranslations("discover");
-  const chips = [
+  const { stickyPlanVisible } = useStickyPlanBar();
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
+
+  const placeChips = [
     { id: "", label: tDiscover("page.filters.all") },
     { id: "nature", label: tDiscover("page.filters.natureAndCoasts") },
-    ...sections.filter((s) => s.id !== "coasts").map((s) => ({ id: s.id, label: s.title })),
+    ...sections
+      .filter((s) => s.id !== "coasts")
+      .map((s) => ({
+        id: s.id,
+        label: tDiscover(`page.sections.${s.id}`),
+      })),
   ];
+
+  const activityChips = ACTIVITY_FILTER_KEYS.map((id) => ({
+    id,
+    label: tDiscover(`page.filters.${id}`),
+  }));
+
+  const isPlaceChipActive = (chip: { id: string }) => {
+    if (chip.id === "") return !filterParam;
+    if (chip.id === "nature")
+      return filter === "coasts" || filterParam === "nature";
+    return filter === chip.id && !isActivityFilter;
+  };
+
+  const activeFilterLabel =
+    filterParam && sectionExists
+      ? activeSectionTitle
+      : filterParam && !sectionExists
+        ? tDiscover("page.filters.invalid")
+        : tDiscover("page.filters.toggleAll");
+
+  const filterGroups = (
+    <div className="space-y-4">
+      <div className="space-y-2">
+        <p className={`${TYPE.kicker} text-sage`}>
+          {tDiscover("page.filterGroups.places")}
+        </p>
+        <FilterChips
+          chips={placeChips}
+          isActive={isPlaceChipActive}
+          getHref={(chip) => discoverFilterHref(chip.id, isPlaceChipActive(chip))}
+          ariaLabel={tDiscover("page.filterGroups.placesAria")}
+        />
+      </div>
+
+      <div className="space-y-2 pt-1 border-t border-sand-200/80">
+        <p className={`${TYPE.kicker} text-sage`}>
+          {tDiscover("page.filterGroups.winterMoods")}
+        </p>
+        <FilterChips
+          chips={activityChips}
+          isActive={(chip) => filterParam === chip.id}
+          getHref={(chip) =>
+            discoverFilterHref(chip.id, filterParam === chip.id)
+          }
+          ariaLabel={tDiscover("page.filterGroups.winterMoodsAria")}
+        />
+      </div>
+
+      {filterParam && !sectionExists && (
+        <p className="text-sm text-olive/70 break-words" role="alert">
+          {tDiscover("page.filters.invalid")}{" "}
+          <AppLink href="/discover" className={SECTION.aegeanLink}>
+            {tCommon("allCategories")}
+          </AppLink>
+        </p>
+      )}
+    </div>
+  );
 
   return (
     <StickyFilterBar ariaLabel={tCommon("filterPlaces")}>
@@ -46,7 +122,10 @@ export default function DiscoverFilterBar({
               id="discover-filter-label"
             >
               {filter && sectionExists
-                ? `${activeSectionTitle} · ${totalCount} places`
+                ? tDiscover("page.filterAnnouncement.showing", {
+                    section: activeSectionTitle,
+                    count: totalCount,
+                  })
                 : tCommon("filterPlaces")}
             </span>
             {filter && sectionExists && (
@@ -56,37 +135,44 @@ export default function DiscoverFilterBar({
             )}
           </div>
 
-          <FilterChips
-            chips={chips}
-            isActive={(chip) => {
-              if (chip.id === "") return !filter;
-              if (chip.id === "nature")
-                return filter === "coasts" || filterParam === "nature";
-              return filter === chip.id;
-            }}
-            getHref={(chip) =>
-              chip.id === "" || filter === chip.id
-                ? "/discover"
-                : `/discover?filter=${chip.id}`
-            }
-            ariaLabel={tCommon("filterPlaces")}
-          />
-
-          {filterParam && !sectionExists && (
-            <p className="text-sm text-olive/70 break-words" role="alert">
-              {tDiscover("page.filters.invalid")}{" "}
-              <AppLink href="/discover" className={SECTION.aegeanLink}>
-                {tCommon("allCategories")}
-              </AppLink>
-            </p>
-          )}
+          <div className="sm:hidden">
+            <button
+              type="button"
+              onClick={() => setFiltersExpanded((v) => !v)}
+              className="flex items-center justify-between w-full min-h-[44px] px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-expanded={filtersExpanded}
+              aria-controls="discover-filters"
+              id="discover-filters-toggle"
+            >
+              <span className="text-sm">
+                {tDiscover("page.filters.togglePrefix")} {activeFilterLabel}
+              </span>
+              <span className="text-olive/60 text-xs" aria-hidden>
+                {filtersExpanded
+                  ? tDiscover("page.filters.toggleHide")
+                  : tDiscover("page.filters.toggleShow")}
+              </span>
+            </button>
+            <div
+              id="discover-filters"
+              role="region"
+              aria-labelledby="discover-filters-toggle"
+              hidden={!filtersExpanded}
+              className="mt-3"
+            >
+              {filterGroups}
+            </div>
+          </div>
+          <div className="hidden sm:block">{filterGroups}</div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <AppLink href="/plan" className={CTA.primaryCompact}>
-            {tCommon("planYourTrip")}
-          </AppLink>
-          {hasWineriesInView && (
+          {!stickyPlanVisible && (
+            <AppLink href="/plan" className={CTA.primaryCompact}>
+              {tCommon("planYourTrip")}
+            </AppLink>
+          )}
+          {hasWineriesInView && !isActivityFilter && (
             <AppLink href="/bookings" className={CTA.secondaryCompact}>
               {tCommon("bookTastings")}
             </AppLink>

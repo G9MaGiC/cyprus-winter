@@ -216,6 +216,8 @@
       "ancientSite": "Stanowisko archeologiczne",
       "village": "Wioska",
       "monastery": "Klasztor",
+      "activity": "Aktywność",
+      "nature": "Natura",
       "winery": "Winnica",
       "restaurant": "Restauracja",
       "trail": "Szlak",
@@ -335,6 +337,8 @@
         "monasteries": "Klasztory",
         "active": "Aktywnie",
         "activeAria": "Aktywnie — szlaki, wędrówki",
+        "trailsAndHiking": "Szlaki i wędrówki",
+        "trailsAndHikingAria": "Warunki szlaków i wędrówki w Troodos",
         "quietEscapes": "Spokojne miejsca",
         "quietEscapesAria": "Spokojnie — wioski, ukryte perełki",
         "mountains": "Góry",
@@ -342,7 +346,7 @@
         "wellness": "Wellness",
         "wellnessAria": "Wellness — klasztory, ciche miejsca",
         "regionAria": "Region {region}",
-        "boulderingPlus": "Bouldering+",
+        "boulderingPlus": "Boulder+",
         "boulderingPlusAria": "Bouldering i ścianki wspinaczkowe na Cyprze",
         "climbing": "Wspinaczka",
         "climbingAria": "Wspinaczka skałkowa i rejony na Cyprze",
@@ -672,10 +676,76 @@
         "showing": "Wyświetlam {section}, {count} miejsc",
         "all": "Wyświetlam wszystkie miejsca"
       },
+      "filterGroups": {
+        "places": "Miejsca",
+        "placesAria": "Filtruj według kategorii",
+        "winterMoods": "Zimowy nastrój",
+        "winterMoodsAria": "Filtruj według aktywności i nastroju"
+      },
+      "sections": {
+        "coasts": "Wybrzeża i natura",
+        "ancient": "Stanowiska archeologiczne",
+        "village": "Wioski",
+        "wine": "Wino i jedzenie",
+        "monastery": "Klasztory i kultura",
+        "hidden": "Ukryte perełki"
+      },
       "filters": {
         "all": "Wszystko",
         "natureAndCoasts": "Natura i wybrzeża",
-        "invalid": "Ten filtr nie istnieje — pokazuję wszystkie miejsca."
+        "invalid": "Ten filtr nie istnieje — pokazuję wszystkie miejsca.",
+        "togglePrefix": "Filtry:",
+        "toggleAll": "Wszystkie",
+        "toggleShow": "Pokaż",
+        "toggleHide": "Ukryj",
+        "bouldering": "Boulder+",
+        "climbing": "Wspinaczka",
+        "cycling": "Kolarstwo",
+        "watersports": "Sporty wodne",
+        "quiet": "Ciche ucieczki",
+        "mountains": "Góry",
+        "wellness": "Wellness",
+        "relatedTrails": "Powiązane szlaki",
+        "seeAllMountainTrails": "Szlaki Troodos",
+        "browseAllTrails": "Wszystkie szlaki",
+        "seeCoasts": "Wybrzeża i plaże",
+        "searchMore": "Szukaj więcej",
+        "seeHiddenGems": "Więcej ukrytych perełek",
+        "seeMonasteries": "Klasztory i kultura"
+      },
+      "meta": {
+        "title": "Odkrywaj Cyprus Winter | Plaże, wioski, winnice",
+        "description": "Cypr zimą: wyselekcjonowane miejsca z prawdziwym klimatem. Plaże, stanowiska archeologiczne, wioski, winnice — plus bouldering, rower i przybrzeżne przygody. Szesnaście stopni, gdy w domu jest sześć.",
+        "filters": {
+          "bouldering": {
+            "title": "Bouldering na Cyprze zimą | Skałki i ścianki",
+            "description": "Boulder na świeżym powietrzu i ścianki na Cyprze — Gerakopetra, Episkopi, Droushia, Limassol. Zimowe temperatury idealne. Lista z propozycjami połączeń."
+          },
+          "climbing": {
+            "title": "Wspinaczka skałkowa Cypr zimą | Skały i wybrzeże",
+            "description": "Wspinaczka i przejścia przybrzeżne zimą na Cyprze — Cape Greco, Kourion, Episkopi. Warstwy i sprawdzenie dostępu. Wybrane rejony i wioski."
+          },
+          "cycling": {
+            "title": "Kolarstwo Cypr zimą | Troodos i wybrzeże",
+            "description": "Zimowa jazda na Cyprze: drogi przy tamach Troodos, gravel Krasochoria, wybrzeże Akamas, pętle przez wioski. Łagodne wybrzeże, chłodniejsze góry."
+          },
+          "watersports": {
+            "title": "Sporty wodne Cypr zimą | Nurkowanie i kajaki",
+            "description": "Nurkowanie, kajaki i przybrzeżne przygody zimą — Latchi, wrak Zenobia, Cape Greco, Lara. Spokojne dni; rezerwuj centra nurkowe z wyprzedzeniem."
+          },
+          "quiet": {
+            "title": "Ciche ucieczki Cypr zimą | Wioski i perełki",
+            "description": "Cichy zimowy Cypr: koronkarskie wioski, leśne osady, kafenion z jednym bywalcem. Wybrane miejsca slow travel z dala od letnich tłumów."
+          },
+          "mountains": {
+            "title": "Góry Cypru zimą | Wioski Troodos",
+            "description": "Troodos i Pitsilia zimą: Platres, Kykkos, zaśnieżone szczyty, place wioskowe. Warstwy; sprawdź warunki szlaków. Wybrane przystanki w górach."
+          },
+          "wellness": {
+            "title": "Wellness Cypr zimą | Klasztory i leśne kąpiele",
+            "description": "Zimowy wellness na Cyprze: wioski termalne, leśne kąpiele, ciche klasztory, spa przy wybrzeżu. Wybrane spokojne miejsca i łagodne spacery."
+          }
+        }
       },
       "hero": {
         "title": "Odkrywaj Cyprus Winter",
@@ -753,11 +823,55 @@
         "title": "Dlaczego teraz",
         "bestFor": "Najlepsze dla {types}.",
         "regionFlow": "{region} to praktyczny przystanek w tym samym planie dnia.",
-        "saveCompare": "Zapisz teraz, by później porównać podobne opcje bez utraty kontekstu."
+        "saveCompare": "Dodaj do planu i połącz z pobliskim szlakiem lub wioską."
+      },
+      "visitTaste": {
+        "title": "Wizyta i degustacja"
+      },
+      "wineRoute": "Trasa winiarska: {route}",
+      "ourWines": {
+        "title": "Nasze wina"
+      },
+      "location": {
+        "title": "Lokalizacja"
+      },
+      "localSecretHeading": "Lokalny sekret",
+      "backstoryHeading": "Historia miejsca",
+      "localSecrets": {
+        "title": "Lokalne sekrety",
+        "intro": "Wskazówki od ludzi, którzy tu mieszkają.",
+        "seeAll": "Wszystkie lokalne sekrety →"
+      },
+      "combineWith": {
+        "title": "Dobrze łączy się z",
+        "description": "Połącz z pobliskimi szlakami, wioskami lub winnicami. Rano tutaj, popołudniu gdzie indziej.",
+        "addToPlanAria": "Dodaj {name} do planu"
+      },
+      "map": {
+        "iframeTitle": "Mapa: {name}"
+      },
+      "metadata": {
+        "notFound": "Nie znaleziono",
+        "typeWinery": "Winnica",
+        "typeEat": "Jedzenie"
       },
       "trustTiming": {
         "title": "Zaufanie i czas",
         "body": "Zweryfikowane dane partnera i praktyczna dostępność. Najpierw dodaj do planu, potem potwierdź."
+      },
+      "similar": {
+        "title": "Więcej: {type} w {region}",
+        "typeLabels": {
+          "winery": "winnice",
+          "restaurant": "jedzenie i napoje",
+          "beach": "plaże",
+          "ancient": "stanowiska archeologiczne",
+          "village": "wioski",
+          "monastery": "klasztory",
+          "activity": "aktywności i indoor",
+          "nature": "natura i wybrzeża",
+          "default": "miejsca"
+        }
       }
     },
     "aria": {
@@ -1026,6 +1140,7 @@
       "success": {
         "aria": "Raport wysłany pomyślnie",
         "body": "Wędrowcy zmierzający do {region} skorzystają z tego. Każdy raport się liczy.",
+        "notStored": "Dziękujemy — otrzymaliśmy raport, ale nie udało się go jeszcze zapisać. Warunki na stronie szlaku mogą się nie zaktualizować, dopóki baza nie wróci.",
         "backTitle": "Wróć do {name}",
         "backCta": "Wróć do {name}",
         "addTitle": "Dodaj {name} do planu",
@@ -1116,6 +1231,7 @@
         "seeAll": "Zobacz wszystkie lokalne sekrety →"
       },
       "relatedPlaces": {
+        "title": "Dobrze łączy się z",
         "description": "Wędrówka rano, wioska albo winnica po południu. Wyrusz najpóźniej o 9:00."
       },
       "footer": {
@@ -1654,7 +1770,7 @@
           "wine": "Wino i degustacje",
           "wellness": "Wellness i relaks",
           "villages": "Górskie wioski",
-          "bouldering": "Bouldering+",
+          "bouldering": "Boulder+",
           "climbing": "Wspinaczka skałkowa",
           "cycling": "Kolarstwo"
         }

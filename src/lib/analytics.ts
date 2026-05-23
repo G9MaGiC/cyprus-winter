@@ -51,6 +51,7 @@ const ESSENTIAL_FUNNEL_EVENTS: readonly EventName[] = [
   "booking_complete",
   "hub_footer_click",
   "plan_add",
+  "discover_filter",
 ] as const;
 
 export function track(event: EventName, properties?: EventProps): void {

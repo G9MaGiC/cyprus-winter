@@ -216,6 +216,8 @@
       "ancientSite": "Antike Stätte",
       "village": "Dorf",
       "monastery": "Kloster",
+      "activity": "Aktivität",
+      "nature": "Natur",
       "winery": "Weingut",
       "restaurant": "Restaurant",
       "trail": "Wanderweg",
@@ -335,6 +337,8 @@
         "monasteries": "Klöster",
         "active": "Aktiv",
         "activeAria": "Aktiv — Trails, Wandern",
+        "trailsAndHiking": "Trails & Wandern",
+        "trailsAndHikingAria": "Trail-Status und Wandern im Troodos",
         "quietEscapes": "Ruhige Auszeiten",
         "quietEscapesAria": "Ruhig — Dörfer, Geheimtipps",
         "mountains": "Berge",
@@ -342,7 +346,7 @@
         "wellness": "Wellness",
         "wellnessAria": "Wellness — Klöster, stille Orte",
         "regionAria": "Region {region}",
-        "boulderingPlus": "Bouldering+",
+        "boulderingPlus": "Bouldern+",
         "boulderingPlusAria": "Bouldern und Kletterhallen auf Zypern",
         "climbing": "Klettern",
         "climbingAria": "Felsklettern und Klettergebiete auf Zypern",
@@ -672,10 +676,76 @@
         "showing": "{section} · {count} Orte",
         "all": "Alle Orte"
       },
+      "filterGroups": {
+        "places": "Orte",
+        "placesAria": "Nach Kategorie filtern",
+        "winterMoods": "Winter-Stimmung",
+        "winterMoodsAria": "Nach Aktivität und Stimmung filtern"
+      },
+      "sections": {
+        "coasts": "Küsten & Natur",
+        "ancient": "Antike Stätten",
+        "village": "Dörfer",
+        "wine": "Wein & Essen",
+        "monastery": "Klöster & Kultur",
+        "hidden": "Geheimtipps"
+      },
       "filters": {
         "all": "Alle",
         "natureAndCoasts": "Natur & Küsten",
-        "invalid": "Diesen Filter gibt es nicht — alle Orte werden angezeigt."
+        "invalid": "Diesen Filter gibt es nicht — alle Orte werden angezeigt.",
+        "togglePrefix": "Filter:",
+        "toggleAll": "Alle",
+        "toggleShow": "Anzeigen",
+        "toggleHide": "Ausblenden",
+        "bouldering": "Bouldern+",
+        "climbing": "Klettern",
+        "cycling": "Radfahren",
+        "watersports": "Wassersport",
+        "quiet": "Ruhige Auszeiten",
+        "mountains": "Berge",
+        "wellness": "Wellness",
+        "relatedTrails": "Passende Wanderwege",
+        "seeAllMountainTrails": "Troodos-Wanderwege",
+        "browseAllTrails": "Alle Wanderwege",
+        "seeCoasts": "Küsten & Strände",
+        "searchMore": "Weiter suchen",
+        "seeHiddenGems": "Weitere Geheimtipps",
+        "seeMonasteries": "Klöster & Kultur"
+      },
+      "meta": {
+        "title": "Cyprus Winter entdecken | Strände, Dörfer, Weingüter",
+        "description": "Zypern im Winter: kuratierte Orte mit echtem Gefühl. Strände, antike Stätten, Dörfer, Weingüter — plus Bouldern, Radfahren und Küstenabenteuer. Sechzehn Grad, wenn daheim sechs sind.",
+        "filters": {
+          "bouldering": {
+            "title": "Bouldern auf Zypern im Winter | Felsblöcke & Hallen",
+            "description": "Outdoor-Boulder und Kletterhallen auf Zypern — Gerakopetra, Episkopi, Droushia, Limassol. Wintertemperaturen ideal. Kuratierte Liste mit Kombinationen."
+          },
+          "climbing": {
+            "title": "Klettern Zypern Winter | Fels & Küste",
+            "description": "Felsklettern und Küstenpassagen im zypriotischen Winter — Kap Greco, Kourion, Episkopi. Schichten einpacken; Zugang prüfen. Kuratierte Crags und Dörfer."
+          },
+          "cycling": {
+            "title": "Radfahren Zypern Winter | Troodos & Küsten",
+            "description": "Winter-Radfahren auf Zypern: Troodos-Staudämme, Krasochoria-Gravel, Akamas-Küste, Dorfrunden. Milde Küste, kühlere Berge. Kuratierte Routen."
+          },
+          "watersports": {
+            "title": "Wassersport Zypern Winter | Tauchen & Kajak",
+            "description": "Tauchen, Kajak und Küstenabenteuer im zypriotischen Winter — Latchi, Zenobia, Kap Greco, Lara. Ruhige Tage; Tauchzentren vorab buchen."
+          },
+          "quiet": {
+            "title": "Ruhige Auszeiten Zypern Winter | Dörfer & Geheimtipps",
+            "description": "Ruhiger Zypern-Winter: Spitzendörfer, Walddörfer, Kafenions mit einem Stammgast. Kuratierte Slow-Travel-Spots abseits des Sommertrubels."
+          },
+          "mountains": {
+            "title": "Berge Zypern Winter | Troodos-Dörfer",
+            "description": "Troodos und Pitsilia im Winter: Platres, Kykkos, schneebedeckte Gipfel, Dorfplätze. Schichten einpacken; Trail-Status prüfen. Kuratierte Bergstopps."
+          },
+          "wellness": {
+            "title": "Wellness Zypern Winter | Klöster & Waldbaden",
+            "description": "Winter-Wellness auf Zypern: Thermaldörfer, Waldbaden, stille Klöster, Spa-Küste. Kuratierte ruhige Orte und sanfte Wege."
+          }
+        }
       },
       "hero": {
         "title": "Cyprus Winter entdecken",
@@ -753,11 +823,55 @@
         "title": "Warum jetzt",
         "bestFor": "Ideal für {types}.",
         "regionFlow": "{region} ist ein praktischer Stopp für denselben Tagesplan.",
-        "saveCompare": "Jetzt speichern, um später ähnliche Optionen zu vergleichen, ohne den Kontext zu verlieren."
+        "saveCompare": "Zum Plan hinzufügen und mit einem nahen Trail oder Dorf kombinieren."
+      },
+      "visitTaste": {
+        "title": "Besuch & Verkostung"
+      },
+      "wineRoute": "Weinroute: {route}",
+      "ourWines": {
+        "title": "Unsere Weine"
+      },
+      "location": {
+        "title": "Lage"
+      },
+      "localSecretHeading": "Lokales Geheimnis",
+      "backstoryHeading": "Hintergrund",
+      "localSecrets": {
+        "title": "Lokale Geheimtipps",
+        "intro": "Insider-Tipps von Menschen, die hier leben.",
+        "seeAll": "Alle lokalen Geheimtipps →"
+      },
+      "combineWith": {
+        "title": "Passt gut zu",
+        "description": "Mit nahen Trails, Dörfern oder Weingütern kombinieren. Vormittags hier, nachmittags woanders.",
+        "addToPlanAria": "{name} zum Plan hinzufügen"
+      },
+      "map": {
+        "iframeTitle": "Karte: {name}"
+      },
+      "metadata": {
+        "notFound": "Nicht gefunden",
+        "typeWinery": "Weingut",
+        "typeEat": "Essen"
       },
       "trustTiming": {
         "title": "Vertrauen und Timing",
         "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeit. Erst in den Plan, dann bestätigen."
+      },
+      "similar": {
+        "title": "Mehr {type} in {region}",
+        "typeLabels": {
+          "winery": "Weingüter",
+          "restaurant": "Essen & Trinken",
+          "beach": "Strände",
+          "ancient": "Antike Stätten",
+          "village": "Dörfer",
+          "monastery": "Klöster",
+          "activity": "Aktiv & Indoor",
+          "nature": "Natur & Küsten",
+          "default": "Orte"
+        }
       }
     },
     "aria": {
@@ -1026,6 +1140,7 @@
       "success": {
         "aria": "Bericht erfolgreich gesendet",
         "body": "Wanderer in Richtung {region} werden das nutzen. Jeder Bericht zählt.",
+        "notStored": "Danke — wir haben Ihre Meldung erhalten, konnten sie aber noch nicht speichern. Die Bedingungen auf der Trail-Seite werden möglicherweise erst aktualisiert, wenn die Speicherung wieder verfügbar ist.",
         "backTitle": "Zurück zu {name}",
         "backCta": "Zurück zu {name}",
         "addTitle": "{name} zu Ihrem Plan hinzufügen",
@@ -1116,6 +1231,7 @@
         "seeAll": "Alle Geheimtipps ansehen →"
       },
       "relatedPlaces": {
+        "title": "Passt gut zu",
         "description": "Wanderung am Morgen, Dorf oder Weingut am Nachmittag. Starten Sie am besten bis 9 Uhr."
       },
       "footer": {

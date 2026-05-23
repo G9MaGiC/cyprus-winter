@@ -7,19 +7,22 @@ import NavigateButton from "@/components/NavigateButton";
 import { useTranslations } from "next-intl";
 
 function TypeBadge({ type }: { type: PlanItem["type"] }) {
+  const tPlaceTypes = useTranslations("common.placeTypes");
   const style: Record<PlanItem["type"], string> = {
     trail: "bg-aegean/15 text-aegean",
     winery: "bg-terracotta/15 text-terracotta",
     attraction: "bg-sage/15 text-olive",
+    activity: "bg-aegean/10 text-aegean",
     event: "bg-golden/15 text-golden",
     restaurant: "bg-golden/15 text-charcoal",
   };
   const label: Record<PlanItem["type"], string> = {
-    trail: "Trail",
-    winery: "Winery",
+    trail: tPlaceTypes("trail"),
+    winery: tPlaceTypes("winery"),
     attraction: "Place",
-    event: "Event",
-    restaurant: "Eat",
+    activity: tPlaceTypes("activity"),
+    event: tPlaceTypes("event"),
+    restaurant: tPlaceTypes("restaurant"),
   };
   return (
     <span className={`shrink-0 px-2 py-0.5 rounded-md text-xs font-medium ${style[type]}`}>{label[type]}</span>

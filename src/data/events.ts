@@ -61,11 +61,11 @@ export const winterEvents: WinterEvent[] = [
     nameEl: "Γιορτή Κουμανταριά",
     region: "Limassol",
     description:
-      "The Commandaria Festival celebrates Cyprus's oldest wine; the sweet, sun-dried wine that has been made in these hills since the Crusades. Koilani, Pera Pedi, and other Krasochoria villages host tastings, music, and traditional food. You can sample different producers, learn how Commandaria is made, and enjoy the mountain air. It's usually the first weekend of December, when the vines are bare and the villages are dressed for the occasion. A good excuse to explore the wine villages and fill a few bottles for the winter.",
+      "The Commandaria Festival celebrates Cyprus's oldest wine—the sweet, sun-dried wine made in these hills since the Crusades. Koilani usually hosts the main events; tastings and music spread across Krasochoria and UNESCO Commandaria villages such as Louvaras, Silikou, Doros, and Monagri. Sample producers, learn how Commandaria is made, and enjoy the mountain air. Usually the first weekend of December, when the vines are bare. Check dates annually.",
     type: "food",
     month: "Dec",
-    dates: "First weekend of December",
-    venue: "Koilani, Pera Pedi, other Krasochoria",
+    dates: "First weekend of December (check annually)",
+    venue: "Koilani and Krasochoria / Commandaria villages",
     latitude: 34.823,
     longitude: 32.892,
   },
@@ -101,7 +101,7 @@ export const winterEvents: WinterEvent[] = [
     name: "Bellapais Abbey Concerts",
     region: "Kyrenia",
     description:
-      "Music in the Gothic ruins. Classical, folk, sometimes both. The abbey's refectory becomes a concert hall; the arches throw the sound back. You sit under the stars with the mountain at your back. The programme changes each year; check ahead for winter dates. Even if you miss a concert, the abbey at night is worth the drive. The village spills down the hillside. Lights twinkle. It's one of those evenings that sticks in the memory.",
+      "Bellapais is in north Cyprus—crossing from the south requires the usual border arrangements; verify access before you travel. Music in the Gothic ruins. Classical, folk, sometimes both. The abbey's refectory becomes a concert hall; the arches throw the sound back. You sit under the stars with the mountain at your back. The programme changes each year; check ahead for winter dates. Even if you miss a concert, the abbey at night is worth the drive when access allows.",
     type: "concert",
     month: "Dec",
     dates: "Selected dates Dec to Jan",
@@ -166,7 +166,7 @@ export const winterEvents: WinterEvent[] = [
     name: "Kyperounta Christmas Village",
     region: "Troodos",
     description:
-      "High-altitude Christmas market in the Pitsilia region. Vineyards and pine forests frame the village. Traditional treats, local Commandaria, crafts, and concerts. Kyperounta winery and the mountain air. Usually 10:00–19:00; shorter hours on 25 December. About 50 minutes from Limassol. Wrap up; it's cold up there.",
+      "High-altitude Christmas market in the Pitsilia region. Vineyards and pine forests frame the village. Traditional treats, Kyperounta winery tastings, crafts, and concerts. The mountain air. Usually 10:00–19:00; shorter hours on 25 December. About 50 minutes from Limassol. Wrap up; it's cold up there. Check dates annually.",
     type: "market",
     month: "Dec",
     dates: "Weekends late Nov to 6 Jan",
@@ -180,7 +180,7 @@ export const winterEvents: WinterEvent[] = [
     nameEl: "Πολιτιστικός Χειμώνας Αγίας Νάπας",
     region: "Ayia Napa",
     description:
-      "Weekly Thursday events from January to March. Greek and international jazz, traditional Cypriot dance, rebetiko, and cultural performances. The resort's quiet season becomes a stage for music and heritage. Check the programme for dates and venues. A different side of Ayia Napa.",
+      "Weekly Thursday events from January to March. Greek and international jazz, traditional Cypriot dance, rebetiko, and cultural performances. The resort's quiet season becomes a stage for music and heritage. Check the municipality programme for dates and venues—schedules vary by year. A different side of Ayia Napa.",
     type: "culture",
     month: "Jan",
     dates: "Jan to Mar, Thursdays 19:30",
@@ -233,7 +233,7 @@ export const winterEvents: WinterEvent[] = [
     name: "Lania Christmas",
     region: "Limassol",
     description:
-      "The village of lanes and vines lights up in early December. Crafts, treats, and a small-scale Christmas atmosphere. Lania is one of the Krasochoria; combine with Omodos or Vasa for a wine-country day. Quieter than the big Christmas villages. The architecture and mountain views are the draw. Check dates; usually the first weekend of December.",
+      "The village of lanes and vines lights up in early December. Crafts, treats, and a small-scale Christmas atmosphere. Lania is one of the fourteen authorised Commandaria villages—combine with Vasa for a wine-country day, or Omodos for Krasochoria (outside the Commandaria zone). Quieter than the big Christmas villages. The architecture and mountain views are the draw. Check dates; usually the first weekend of December.",
     type: "festival",
     month: "Dec",
     dates: "Usually first weekend of December",

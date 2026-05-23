@@ -33,6 +33,8 @@ const coreFunnelGlobs = [
 const mobileUxGlobs = [
   "**/hub-footer.spec.ts",
   "**/overlay-precedence.spec.ts",
+  "**/discover-detail.spec.ts",
+  "**/discover-filters.spec.ts",
   "**/home-smoke.spec.ts",
 ] as const;
 

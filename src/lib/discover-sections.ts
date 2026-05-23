@@ -6,6 +6,7 @@ import {
   villages,
   monasteries,
 } from "@/data/attractions";
+import { ACTIVITY_PLACE_IDS_SET } from "@/data/activity-places";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
 
@@ -13,6 +14,8 @@ export type DiscoverSection = {
   id: string;
   title: string;
   items: DiscoverItem[];
+  trailLinks?: { id: string; name: string; href: string }[];
+  seeMore?: { href: string; labelKey: string };
 };
 
 /** Maps URL filter param to section id. */
@@ -28,7 +31,6 @@ export const filterToSectionId: Record<string, string> = {
   restaurant: "wine",
   monastery: "monastery",
   family: "hidden",
-  quiet: "hidden",
   hidden: "hidden",
   "off-beaten-path": "hidden",
 };
@@ -58,7 +60,8 @@ function isOffBeatenPath(item: {
 export function buildDiscoverSections(
   allDiscoverItems: DiscoverItem[]
 ): DiscoverSection[] {
-  const coastsItems = [...beaches, ...natureSites];
+  const coastNature = natureSites.filter((item) => !ACTIVITY_PLACE_IDS_SET.has(item.id));
+  const coastsItems = [...beaches, ...coastNature];
   const wineAndFoodItems = [...wineries, ...restaurants];
   const familyItems = allDiscoverItems.filter(isFamilyFriendly);
   const quietItems = allDiscoverItems.filter(isOffBeatenPath);

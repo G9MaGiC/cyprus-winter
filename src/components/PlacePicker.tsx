@@ -7,7 +7,9 @@ import { useTranslations } from "next-intl";
 
 const wineries = allPlaces.filter((p) => p.type === "winery");
 const trails = allPlaces.filter((p) => p.type === "trail");
-const attractions = allPlaces.filter((p) => p.type === "attraction");
+const attractions = allPlaces.filter(
+  (p) => p.type === "attraction" || p.type === "activity"
+);
 const restaurants = allPlaces.filter((p) => p.type === "restaurant");
 const events = allPlaces.filter((p) => p.type === "event");
 
@@ -30,7 +32,7 @@ function inferPreferredTab(ids: string[]): TabId {
     const p = getPlaceById(id);
     if (p?.type === "trail") hasTrail = true;
     if (p?.type === "winery") hasWinery = true;
-    if (p?.type === "attraction") hasAttraction = true;
+    if (p?.type === "attraction" || p?.type === "activity") hasAttraction = true;
     if (p?.type === "restaurant") hasRestaurant = true;
     if (p?.type === "event") hasEvent = true;
   }
