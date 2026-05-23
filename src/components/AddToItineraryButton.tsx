@@ -59,7 +59,7 @@ export default function AddToItineraryButton({
   }
 
   const handleInlineAdd = () => {
-    addToDayIfMissing(placeId);
+    addToDayIfMissing(placeId, { mergeStored: true });
     track("inline_plan_add_click", { place_id: placeId });
     trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
   };
