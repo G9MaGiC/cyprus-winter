@@ -42,6 +42,16 @@ npm run test:e2e:gate:ci
 
 See `docs/SCORECARD.md` for 5/5 launch criteria.
 
+## Agent workflows (Superpowers)
+
+| Intent | Use |
+|--------|-----|
+| Execute a plan | `/execute-plan` → reads `executing-plans` skill; plans live in `docs/superpowers/plans/` |
+| Write a plan | Ask agent to use `writing-plans` skill |
+| Brainstorm feature | Ask agent to use `brainstorming` skill |
+
+The deprecated Superpowers plugin `/execute-plan` stub is overridden by `.cursor/commands/execute-plan.md` in this repo.
+
 ## Before merging
 
 1. Lint, typecheck, unit tests, i18n validate/scan, **data:validate**, build
