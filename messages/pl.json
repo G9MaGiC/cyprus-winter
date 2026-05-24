@@ -717,6 +717,30 @@
         "title": "Odkrywaj Cyprus Winter | Plaże, wioski, winnice",
         "description": "Cypr zimą: wyselekcjonowane miejsca z prawdziwym klimatem. Plaże, stanowiska archeologiczne, wioski, winnice — plus bouldering, rower i przybrzeżne przygody. Szesnaście stopni, gdy w domu jest sześć.",
         "filters": {
+          "nature": {
+            "title": "Natura i wybrzeże Cypr zimą | Plaże, wąwozy i szlaki",
+            "description": "Natura i wybrzeże Cypru zimą: puste plaże, wąwozy Akamas, klify Cape Greco. Łagodne dni, złote światło. Wyselekcjonowane miejsca przyrody i wybrzeża z propozycjami połączeń."
+          },
+          "ancient": {
+            "title": "Stanowiska archeologiczne Cypr zimą | Kourion, Pafos i grobowce",
+            "description": "Antyczne miejsca na Cyprze zimą: teatr Kourion, mozaiki Pafos, Grobowce Królewskie. Miękkie światło, mniej autokarów. Wyselekcjonowane ruiny z wioskami i winnicami."
+          },
+          "village": {
+            "title": "Wioski Cypr zimą | Omodos, Lefkara i Platres",
+            "description": "Wioski na Cyprze zimą: bruk Omodos, koronki Lefkara, leśne place Platres. Kafeneia, wino przy kominku, puste uliczki w tygodniu. Wyselekcjonowane przystanki."
+          },
+          "wine": {
+            "title": "Winnice Cypr zimą | Degustacje i trasy winne",
+            "description": "Winnice na Cyprze zimą: Krasochoria, Laona, Commandaria. Degustacje przy ogniu, przytulne piwnice, rezerwacja z wyprzedzeniem. Wyselekcjonowane winnice z jedzeniem i wioskami."
+          },
+          "monastery": {
+            "title": "Klasztory Cypr zimą | Kykkos, Troodos i kultura",
+            "description": "Klasztory na Cyprze zimą: Kykkos, Machairas, ciche klasztory w Troodos. Warstwy ubrań, szacunek dla dress code. Wyselekcjonowane miejsca kultury ze spacerami w lesie."
+          },
+          "hidden": {
+            "title": "Ukryty Cypr zimą | Sekrety i lokalne perełki",
+            "description": "Ukryty Cypr zimą: lokalne sekrety, ciche punkty widokowe, kafeneia z dala od szlaków. Wyselekcjonowane perełki z dala od letnich tłumów."
+          },
           "bouldering": {
             "title": "Bouldering na Cyprze zimą | Skałki i ścianki",
             "description": "Boulder na świeżym powietrzu i ścianki na Cyprze — Gerakopetra, Episkopi, Droushia, Limassol. Zimowe temperatury idealne. Lista z propozycjami połączeń."
@@ -751,7 +775,9 @@
         "title": "Odkrywaj Cyprus Winter",
         "description": "Wyselekcjonowane miejsca, prawdziwy klimat. Plaże, wioski, winnice — co z czym łączyć.",
         "imageAlt": "Wioska Omodos, serce regionu winiarskiego, bruk — Cypr zimą",
-        "planAria": "Zaplanuj dzień lub wybierz szablon"
+        "planAria": "Zaplanuj dzień lub wybierz szablon",
+        "browsePlaces": "Przeglądaj miejsca",
+        "browseAria": "Przejdź do miejsc i filtrów"
       },
       "search": {
         "srHeading": "Szukaj miejsc",
@@ -761,6 +787,24 @@
         "aria": "Wyświetl miejsca jako listę lub mapę",
         "list": "Lista",
         "map": "Mapa"
+      },
+      "placeOfDay": {
+        "kicker": "Wybór dnia",
+        "badge": "Miejsce dnia",
+        "collapsibleTitle": "Dzisiejsza rekomendacja",
+        "collapsibleSubtitle": "Jedno miejsce warte przejazdu — plus pary",
+        "pairWith": "Połącz z",
+        "alsoWorth": "Też warte odwiedzin:",
+        "addToPlan": "Dodaj do planu",
+        "seeDetails": "Szczegóły",
+        "openAria": "Otwórz {name}",
+        "overlays": {
+          "quietWeek": "Cicho w tym tygodniu",
+          "clearToday": "Dziś bez przeszkód",
+          "bestAfternoon": "Najlepsze światło po południu",
+          "cosyWinter": "Przytulnie zimą",
+          "worthVisit": "Warte odwiedzin"
+        }
       }
     },
     "map": {

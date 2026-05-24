@@ -711,6 +711,30 @@
         "title": "Discover Cyprus Winter | Beaches, Villages, Wineries",
         "description": "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—plus bouldering, cycling, and coast adventures. Sixteen degrees when home is six.",
         "filters": {
+          "nature": {
+            "title": "Cyprus Winter Nature & Coasts | Beaches, Gorges & Trails",
+            "description": "Cyprus winter nature and coast: empty beaches, Akamas gorges, Cape Greco cliffs. Mild days, golden light, no summer crowds. Curated coast and nature spots with pairings."
+          },
+          "ancient": {
+            "title": "Ancient Sites Cyprus Winter | Kourion, Paphos & Tombs",
+            "description": "Cyprus ancient sites in winter: Kourion theatre, Paphos mosaics, Tombs of the Kings. Soft light, fewer tour buses. Curated ruins with village and winery pairings."
+          },
+          "village": {
+            "title": "Cyprus Villages Winter | Omodos, Lefkara & Platres",
+            "description": "Cyprus villages in winter: Omodos cobbles, Lefkara lace, Platres forest squares. Kafenions, fireside wine, empty lanes midweek. Curated village stops."
+          },
+          "wine": {
+            "title": "Cyprus Wineries Winter | Tastings & Wine Routes",
+            "description": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars, book ahead. Curated wine stops with food and village pairings."
+          },
+          "monastery": {
+            "title": "Cyprus Monasteries Winter | Kykkos, Troodos & Culture",
+            "description": "Cyprus monasteries in winter: Kykkos, Machairas, quiet Troodos cloisters. Layer up, respect dress codes, pair with forest walks. Curated culture stops."
+          },
+          "hidden": {
+            "title": "Hidden Cyprus Winter | Secret Spots & Local Gems",
+            "description": "Hidden Cyprus winter: local secrets, quiet viewpoints, off-radar kafenions. Curated gems away from summer crowds — pair with trails and villages."
+          },
           "bouldering": {
             "title": "Bouldering in Cyprus Winter | Crags & Gyms",
             "description": "Outdoor boulders and climbing gyms across Cyprus—Gerakopetra, Episkopi, Droushia, Limassol walls. Winter temps ideal. Curated list with pairings."
@@ -745,7 +769,9 @@
         "title": "Discover Cyprus Winter",
         "description": "Curated places, real feel. Beaches, villages, wineries—what to pair with what.",
         "imageAlt": "Omodos village, wine heartland, cobbled streets—Cyprus winter",
-        "planAria": "Build a day or pick a template"
+        "planAria": "Build a day or pick a template",
+        "browsePlaces": "Browse places",
+        "browseAria": "Jump to places and filters"
       },
       "search": {
         "srHeading": "Search places",
@@ -755,6 +781,24 @@
         "aria": "View places as list or map",
         "list": "List",
         "map": "Map"
+      },
+      "placeOfDay": {
+        "kicker": "Today's pick",
+        "badge": "Place of the day",
+        "collapsibleTitle": "Today's curated pick",
+        "collapsibleSubtitle": "One place worth the drive, plus pairings",
+        "pairWith": "Pair with",
+        "alsoWorth": "Also worth a visit:",
+        "addToPlan": "Add to plan",
+        "seeDetails": "See details",
+        "openAria": "Open {name}",
+        "overlays": {
+          "quietWeek": "Quiet this week",
+          "clearToday": "Clear today",
+          "bestAfternoon": "Best light in afternoon",
+          "cosyWinter": "Cosy in winter",
+          "worthVisit": "Worth a visit"
+        }
       }
     },
     "map": {

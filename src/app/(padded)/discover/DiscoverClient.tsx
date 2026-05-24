@@ -15,6 +15,7 @@ import type { DiscoverSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import DiscoverFilterBar from "./DiscoverFilterBar";
 import DiscoverMapPanel from "./DiscoverMapPanel";
+import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
 import DiscoverSectionList from "./DiscoverSectionList";
 import DiscoverFooter from "./DiscoverFooter";
 import { SRStatus } from "@/components/SRStatus";
@@ -110,7 +111,7 @@ export default function DiscoverClient({
     <div
       id="discover-content"
       aria-label={tDiscover("page.contentAria")}
-      className="-mt-4 sm:-mt-6"
+      className="-mt-4 sm:-mt-6 scroll-mt-24 sm:scroll-mt-28"
     >
       <SRStatus message={filterAnnouncement} />
       <StickyPlanBar sentinelId="discover-plan-sentinel" />
@@ -126,6 +127,8 @@ export default function DiscoverClient({
         isActivityFilter={isActivity}
         onScrollToMap={scrollToMap}
       />
+
+      <DiscoverPlaceOfDay />
 
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} flex flex-col gap-4`}>
         {filter && sectionExists && !isActivity && showTipDiscoverFilter && (

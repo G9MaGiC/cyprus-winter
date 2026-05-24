@@ -12,11 +12,20 @@ const ogWineryTroodos = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 export const discoverListPageMeta: Metadata = {
   title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
   description:
-    "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—Nissi, Paphos mosaics, Lefkara. Sixteen degrees when home is six.",
+    "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—plus bouldering, cycling, and coast adventures. Sixteen degrees when home is six.",
   openGraph: {
     title: "Discover Cyprus Winter | Beaches, Villages, Wineries",
-    description: "Cyprus in winter: curated places that feel real. Beaches, villages, wineries, ancient sites.",
+    description:
+      "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—plus bouldering, cycling, and coast adventures.",
     type: "website",
+    images: [
+      {
+        url: ogVillage,
+        width: 1200,
+        height: 630,
+        alt: "Omodos village, Cyprus winter — discover curated places",
+      },
+    ],
   },
 };
 

@@ -717,6 +717,30 @@
         "title": "Cyprus Winter entdecken | Strände, Dörfer, Weingüter",
         "description": "Zypern im Winter: kuratierte Orte mit echtem Gefühl. Strände, antike Stätten, Dörfer, Weingüter — plus Bouldern, Radfahren und Küstenabenteuer. Sechzehn Grad, wenn daheim sechs sind.",
         "filters": {
+          "nature": {
+            "title": "Natur & Küste Zypern Winter | Strände, Schluchten & Trails",
+            "description": "Zypern Winter Natur und Küste: leere Strände, Akamas-Schluchten, Kap-Greco-Klippen. Milde Tage, goldenes Licht. Kuratierte Küsten- und Naturspots mit Kombinationen."
+          },
+          "ancient": {
+            "title": "Antike Stätten Zypern Winter | Kourion, Paphos & Gräber",
+            "description": "Antike Stätten auf Zypern im Winter: Kourion-Theater, Paphos-Mosaike, Königsgräber. Weiches Licht, weniger Reisebusse. Kuratierte Ruinen mit Dorf- und Wein-Kombinationen."
+          },
+          "village": {
+            "title": "Dörfer Zypern Winter | Omodos, Lefkara & Platres",
+            "description": "Zypriotische Dörfer im Winter: Omodos-Kopfstein, Lefkara-Spitze, Platres-Waldplätze. Kafenions, Wein am Feuer, leere Gassen unter der Woche. Kuratierte Dorfstopps."
+          },
+          "wine": {
+            "title": "Weingüter Zypern Winter | Verkostungen & Routen",
+            "description": "Zypern Winter-Weingüter: Krasochoria, Laona, Commandaria. Verkostungen am Feuer, gemütliche Keller, vorab buchen. Kuratierte Weinstopps mit Essen und Dörfern."
+          },
+          "monastery": {
+            "title": "Klöster Zypern Winter | Kykkos, Troodos & Kultur",
+            "description": "Klöster auf Zypern im Winter: Kykkos, Machairas, stille Troodos-Klöster. Schichten einpacken, Kleiderordnung beachten. Kuratierte Kulturstopps mit Waldwegen."
+          },
+          "hidden": {
+            "title": "Verstecktes Zypern Winter | Geheimtipps & lokale Perlen",
+            "description": "Verstecktes Zypern im Winter: lokale Geheimnisse, ruhige Aussichten, Kafenions abseits der Route. Kuratierte Perlen fernab des Sommertrubels."
+          },
           "bouldering": {
             "title": "Bouldern auf Zypern im Winter | Felsblöcke & Hallen",
             "description": "Outdoor-Boulder und Kletterhallen auf Zypern — Gerakopetra, Episkopi, Droushia, Limassol. Wintertemperaturen ideal. Kuratierte Liste mit Kombinationen."
@@ -751,7 +775,9 @@
         "title": "Cyprus Winter entdecken",
         "description": "Kuratierte Orte mit echtem Gefühl. Strände, Dörfer, Weingüter — was passt wozu.",
         "imageAlt": "Dorf Omodos, Weinregion, Kopfsteinpflaster — Zypern im Winter",
-        "planAria": "Tag planen oder Vorlage wählen"
+        "planAria": "Tag planen oder Vorlage wählen",
+        "browsePlaces": "Orte durchsuchen",
+        "browseAria": "Zu Orten und Filtern springen"
       },
       "search": {
         "srHeading": "Orte suchen",
@@ -761,6 +787,24 @@
         "aria": "Orte als Liste oder Karte anzeigen",
         "list": "Liste",
         "map": "Karte"
+      },
+      "placeOfDay": {
+        "kicker": "Tipp des Tages",
+        "badge": "Ort des Tages",
+        "collapsibleTitle": "Kuratierte Tagesempfehlung",
+        "collapsibleSubtitle": "Ein Ort, der die Fahrt wert ist — plus Kombinationen",
+        "pairWith": "Kombinieren mit",
+        "alsoWorth": "Auch einen Besuch wert:",
+        "addToPlan": "Zum Plan hinzufügen",
+        "seeDetails": "Details",
+        "openAria": "{name} öffnen",
+        "overlays": {
+          "quietWeek": "Ruhig diese Woche",
+          "clearToday": "Heute klar",
+          "bestAfternoon": "Bestes Licht am Nachmittag",
+          "cosyWinter": "Gemütlich im Winter",
+          "worthVisit": "Einen Besuch wert"
+        }
       }
     },
     "map": {
