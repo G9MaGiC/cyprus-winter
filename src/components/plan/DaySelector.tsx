@@ -31,7 +31,7 @@ export default function DaySelector({
       className={
         hasContent
           ? [
-              "sm:sticky z-10",
+              "sticky z-10",
               LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
               "pt-4 pb-4 sm:pt-5 sm:pb-5 mb-6 sm:mb-8 bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",
@@ -90,8 +90,8 @@ export default function DaySelector({
         })}
       </div>
 
-      {hasContent && (
-        <details className="group mt-4 sm:mt-5 hidden sm:block">
+      {hasContent && displayDaysCount > 1 && (
+        <details className="group mt-4 sm:mt-5">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl min-h-[44px] flex items-center">
             <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/70 hover:text-terracotta min-h-[44px] py-2.5 px-3 rounded-xl hover:bg-terracotta/5 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
               {activeDaysCount > 1

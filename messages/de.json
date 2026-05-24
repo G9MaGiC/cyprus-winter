@@ -1335,6 +1335,9 @@
     "browsePlaces": "Orte durchsuchen",
     "placePickerIntro": "Wählen Sie jetzt einen Ort. Weitere können Sie direkt danach hinzufügen.",
     "seeTemplates": "Vorlagen ansehen",
+    "heroBrowsePlaces": "Orte durchsuchen",
+    "combosCollapsibleTitle": "Kuratierte Tagespaare",
+    "combosCollapsibleSubtitle": "Vormittag und Nachmittag, die gut zusammenpassen",
     "placesCount": "{count, plural, one {# Ort} other {# Orte}}",
     "addAnotherStopHint": "Fügen Sie einen weiteren Stopp hinzu oder wechseln Sie oben den Tag.",
     "autoSaved": "Automatisch gespeichert",
@@ -1396,6 +1399,7 @@
       "copyLink": "Link kopieren",
       "linkCopied": "Link kopiert",
       "copyItinerary": "Reiseplan kopieren (Text)",
+      "copyItineraryShort": "Text kopieren",
       "copied": "Kopiert",
       "shareTextPrefix": "Mein Zypern-Winter-Reiseplan —"
     },
@@ -1474,7 +1478,8 @@
     "tripFitNear": "Nahe Übereinstimmung",
     "tripFitCompress": "Plan verdichten",
     "tripFitExtend": "Mit Extras verlängern",
-    "allTemplates": "Alle Vorlagen"
+    "allTemplates": "Alle Vorlagen",
+    "templateCardAria": "Vorlage {label} verwenden: {description}. {duration} Tage, {count} Orte. {preview}"
   },
   "bookings": {
     "title": "Meine Buchungen",

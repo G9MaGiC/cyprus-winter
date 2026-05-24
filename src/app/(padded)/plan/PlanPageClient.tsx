@@ -27,6 +27,7 @@ import { useTranslations } from "next-intl";
 import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
+import AppLink from "@/components/AppLink";
 import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
@@ -130,7 +131,24 @@ export default function PlanPageClient() {
         hasContent={hasContent}
         tripLength={tripLength}
       />
-      <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+      {!hasContent ? (
+        <details className="group rounded-2xl border border-sand-200/80 bg-white/70 shadow-sm open:shadow-md open:bg-white/90 transition-shadow">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl p-4 sm:p-5 text-left select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
+            <div className="min-w-0">
+              <p className="font-display text-lg font-semibold text-charcoal">{tPlan("combosCollapsibleTitle")}</p>
+              <p className="text-xs text-olive/60 mt-0.5">{tPlan("combosCollapsibleSubtitle")}</p>
+            </div>
+            <span className="text-olive/45 group-open:rotate-180 transition-transform shrink-0" aria-hidden>
+              ▾
+            </span>
+          </summary>
+          <div className="border-t border-sand-200/60 px-3 pb-6 pt-4 sm:px-5">
+            <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+          </div>
+        </details>
+      ) : (
+        <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+      )}
     </>
   );
 
@@ -175,7 +193,7 @@ export default function PlanPageClient() {
             breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("plan"), href: "/plan", isCurrent: true }]}
           >
             {!hasContent && (
-              <div className="mt-4 sm:mt-5">
+              <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row gap-3 sm:items-center">
                 <button
                   type="button"
                   onClick={scrollToQuickStart}
@@ -184,6 +202,13 @@ export default function PlanPageClient() {
                 >
                   {tPlan("seeTemplates")}
                 </button>
+                <AppLink
+                  href="/discover"
+                  className={`${CTA.secondaryCompact} w-full sm:w-auto text-center`}
+                  aria-label={tPlan("browsePlaces")}
+                >
+                  {tPlan("heroBrowsePlaces")}
+                </AppLink>
               </div>
             )}
           </ListPageHero>
@@ -233,15 +258,17 @@ export default function PlanPageClient() {
         {hasWineries && hydrated && <PlanWineryBar />}
 
         <div className="flex flex-col gap-10 sm:gap-14">
-          <DaySelector
-            days={days}
-            activeDay={activeDay}
-            setActiveDay={setActiveDay}
-            activeDaysCount={activeDaysCount}
-            displayDaysCount={displayDaysCount}
-            getPlace={getPlace}
-            hasContent={hasContent}
-          />
+          {hasContent && (
+            <DaySelector
+              days={days}
+              activeDay={activeDay}
+              setActiveDay={setActiveDay}
+              activeDaysCount={activeDaysCount}
+              displayDaysCount={displayDaysCount}
+              getPlace={getPlace}
+              hasContent={hasContent}
+            />
+          )}
 
           <DayContentPanel
             activeDay={activeDay}
@@ -277,11 +304,13 @@ export default function PlanPageClient() {
           />
         )}
 
-        <PlanStickyAddBar
-          sentinelId="plan-add-sentinel"
-          scrollTargetId="plan-inline-add"
-          onAddPlaceClick={() => setShowBrowseModal(true)}
-        />
+        {hasContent && hydrated && (
+          <PlanStickyAddBar
+            sentinelId="plan-add-sentinel"
+            scrollTargetId="plan-inline-add"
+            onAddPlaceClick={() => setShowBrowseModal(true)}
+          />
+        )}
 
         {showBrowseModal && (
           <PlacePickerModal

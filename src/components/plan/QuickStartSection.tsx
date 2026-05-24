@@ -25,6 +25,13 @@ function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tr
   return template.duration === tripLength || Math.abs(template.duration - tripLength) <= 1;
 }
 
+/** Bleisure / airport handoff: surface short-stay first when no dates yet. */
+function prioritizeShortStay<T extends { key: string }>(templates: T[]): T[] {
+  const idx = templates.findIndex((t) => t.key === "short-stay");
+  if (idx <= 0) return templates;
+  return [templates[idx], ...templates.slice(0, idx), ...templates.slice(idx + 1)];
+}
+
 export default function QuickStartSection({
   activeDay,
   days,
@@ -55,6 +62,9 @@ export default function QuickStartSection({
           (t) => !isRecommendedForTrip(t, tripLength) && !forYouKeys.has(t.key)
         )
       : ITINERARY_TEMPLATES.filter((t) => !forYouKeys.has(t.key));
+
+  const othersToShow =
+    !hasContent && tripLength == null ? prioritizeShortStay(others) : others;
 
   useEffect(() => {
     if (tripLength == null) return;
@@ -92,7 +102,13 @@ export default function QuickStartSection({
         className={`text-left w-full min-h-[96px] sm:min-h-[104px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
           isForYou ? "border-l-4 border-l-terracotta bg-terracotta/[0.04]" : ""
         } ${isRecommended && !isForYou ? "border-l-4 border-l-aegean bg-aegean/[0.04]" : ""}`}
-        aria-label={`Use ${template.label} template: ${template.description}. ${template.duration} days, ${placeCount} places. ${preview}`}
+        aria-label={tPlanQuick("templateCardAria", {
+          label: template.label,
+          description: template.description,
+          duration: template.duration,
+          count: placeCount,
+          preview,
+        })}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
@@ -162,7 +178,7 @@ export default function QuickStartSection({
           {tPlanQuick("allTemplates")}
         </h3>
         <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
-          {others.map((template) => (
+          {othersToShow.map((template) => (
             <div key={template.key} className={templateCardClass}>
               {renderTemplateCard(template, false, false)}
             </div>

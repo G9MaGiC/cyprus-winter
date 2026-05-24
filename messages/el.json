@@ -1335,6 +1335,9 @@
     "browsePlaces": "Περιήγηση σε τοποθεσίες",
     "placePickerIntro": "Επιλέξτε ένα μέρος τώρα. Μπορείτε να προσθέσετε κι άλλα αμέσως μετά.",
     "seeTemplates": "Δείτε πρότυπα",
+    "heroBrowsePlaces": "Περιήγηση σε τοποθεσίες",
+    "combosCollapsibleTitle": "Ζεύγη ημερών",
+    "combosCollapsibleSubtitle": "Πρωί και απόγευμα που δένουν μεταξύ τους",
     "placesCount": "{count, plural, one {# τοποθεσία} other {# τοποθεσίες}}",
     "addAnotherStopHint": "Προσθέστε άλλη μία στάση ή αλλάξτε ημέρα παραπάνω.",
     "autoSaved": "Αυτόματα αποθηκευμένο",
@@ -1396,6 +1399,7 @@
       "copyLink": "Αντιγραφή συνδέσμου",
       "linkCopied": "Ο σύνδεσμος αντιγράφηκε",
       "copyItinerary": "Αντιγραφή προγράμματος (κείμενο)",
+      "copyItineraryShort": "Αντιγραφή κειμένου",
       "copied": "Αντιγράφηκε",
       "shareTextPrefix": "Το πρόγραμμά μου για την Κύπρο τον χειμώνα —"
     },
@@ -1474,7 +1478,8 @@
     "tripFitNear": "Κοντινή αντιστοιχία",
     "tripFitCompress": "Συμπύκνωση προγράμματος",
     "tripFitExtend": "Επέκταση με extras",
-    "allTemplates": "Όλα τα πρότυπα"
+    "allTemplates": "Όλα τα πρότυπα",
+    "templateCardAria": "Χρήση προτύπου {label}: {description}. {duration} ημέρες, {count} μέρη. {preview}"
   },
   "bookings": {
     "title": "Οι κρατήσεις μου",

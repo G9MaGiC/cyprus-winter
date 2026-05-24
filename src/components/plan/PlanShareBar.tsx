@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import ShareLinks from "@/components/ShareLinks";
-import { LAYOUT, STRIP } from "@/lib/design-tokens";
+import { CTA, LAYOUT, STRIP } from "@/lib/design-tokens";
 
 type PlanShareBarProps = {
   totalPlaces: number;
@@ -30,7 +30,6 @@ export default function PlanShareBar({
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
   const shareMenuRef = useRef<HTMLDivElement>(null);
   const shareMenuTriggerRef = useRef<HTMLButtonElement>(null);
-  const shareMenuFirstItemRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!shareMenuOpen) return;
@@ -44,18 +43,18 @@ export default function PlanShareBar({
     return () => document.removeEventListener("click", close, { capture: true });
   }, [shareMenuOpen]);
 
-  useEffect(() => {
-    if (shareMenuOpen) shareMenuFirstItemRef.current?.focus();
-  }, [shareMenuOpen]);
-
   return (
     <div
       role="region"
       aria-label={tPlan("aria.shareRegion")}
       className={`${STRIP.py} py-5 sm:py-6 ${STRIP.surfaceSand} ${LAYOUT.stickyBarX}`}
     >
-      <div className={`${LAYOUT.list} mx-auto flex flex-wrap items-center justify-between gap-4`}>
-        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-olive/80 leading-relaxed min-w-0 flex-1 min-[400px]:flex-initial" aria-live="polite" role="status">
+      <div className={`${LAYOUT.list} mx-auto flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between`}>
+        <p
+          className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-olive/80 leading-relaxed min-w-0"
+          aria-live="polite"
+          role="status"
+        >
           <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-terracotta/10 text-terracotta font-semibold tabular-nums">
             {totalPlaces}
           </span>
@@ -66,62 +65,56 @@ export default function PlanShareBar({
           <span className="text-olive/60">{tPlan("share.daysLabel")}</span>
           <span className="text-olive/50">· {tPlan("autoSaved")}</span>
         </p>
-        <div className="relative" ref={shareMenuRef}>
+
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
-            ref={shareMenuTriggerRef}
             type="button"
-            onClick={() => setShareMenuOpen((v) => !v)}
-            className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-terracotta/10 text-terracotta hover:bg-terracotta/15 border border-terracotta/15 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-expanded={shareMenuOpen}
-            aria-haspopup="menu"
-            aria-label={tPlan("aria.shareMenu")}
+            onClick={copyShareLink}
+            className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+              linkCopied
+                ? "bg-aegean/15 text-aegean border border-aegean/25"
+                : `${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`
+            }`}
+            aria-label={tPlan("share.copyLink")}
           >
-            {tPlan("share.copyAndShare")}
-            <span className={`text-terracotta/70 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
-              ▾
-            </span>
+            {linkCopied ? tPlan("share.linkCopied") : tPlan("share.copyLink")}
           </button>
-          {shareMenuOpen && (
-            <div
-              role="menu"
-              className="absolute right-0 top-full mt-2 py-2 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10 animate-in fade-in slide-in-from-top-2 duration-200"
-              onKeyDown={(e) => {
-                if (e.key === "Escape") {
-                  setShareMenuOpen(false);
-                  shareMenuTriggerRef.current?.focus();
-                }
-              }}
+          <button
+            type="button"
+            onClick={copyItinerary}
+            className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+              copied
+                ? "bg-aegean/15 text-aegean border border-aegean/25"
+                : CTA.secondaryCompact
+            }`}
+            aria-label={tPlan("share.copyItinerary")}
+          >
+            {copied ? tPlan("share.copied") : tPlan("share.copyItineraryShort")}
+          </button>
+          <div className="relative" ref={shareMenuRef}>
+            <button
+              ref={shareMenuTriggerRef}
+              type="button"
+              onClick={() => setShareMenuOpen((v) => !v)}
+              className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white/90 text-olive border border-sand-200/80 hover:border-terracotta/20 hover:bg-sand-100/60 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-expanded={shareMenuOpen}
+              aria-haspopup="menu"
+              aria-label={tPlan("aria.shareVia")}
             >
-              <button
-                ref={shareMenuFirstItemRef}
-                type="button"
-                role="menuitem"
-                onClick={() => {
-                  copyShareLink();
-                  setShareMenuOpen(false);
-                  requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
-                }}
-                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
-              >
-                {linkCopied ? tPlan("share.linkCopied") : tPlan("share.copyLink")}
-              </button>
-              <button
-                type="button"
-                role="menuitem"
-                onClick={() => {
-                  copyItinerary();
-                  setShareMenuOpen(false);
-                  requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
-                }}
-                className="w-full min-h-[44px] px-4 py-2.5 text-left text-sm font-medium text-olive hover:bg-sand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
-              >
-                {copied ? tPlan("share.copied") : tPlan("share.copyItinerary")}
-              </button>
+              {tPlan("share.copyAndShare")}
+              <span className={`text-olive/50 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
+                ▾
+              </span>
+            </button>
+            {shareMenuOpen && (
               <div
-                className="px-4 py-3 mt-2 border-t border-sand-200/80"
-                onClick={() => {
-                  setShareMenuOpen(false);
-                  requestAnimationFrame(() => shareMenuTriggerRef.current?.focus());
+                role="menu"
+                className="absolute right-0 top-full mt-2 py-3 px-4 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10 animate-in fade-in slide-in-from-top-2 duration-200"
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    setShareMenuOpen(false);
+                    shareMenuTriggerRef.current?.focus();
+                  }
                 }}
               >
                 <ShareLinks
@@ -131,8 +124,8 @@ export default function PlanShareBar({
                   className="flex flex-wrap gap-2"
                 />
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1296,6 +1296,9 @@
     "browsePlaces": "Browse places",
     "placePickerIntro": "Pick one place to add now. You can add more right after.",
     "seeTemplates": "See templates",
+    "heroBrowsePlaces": "Browse places",
+    "combosCollapsibleTitle": "Curated day pairings",
+    "combosCollapsibleSubtitle": "Morning and afternoon combos that flow",
     "placesCount": "{count, plural, one {# place} other {# places}}",
     "addAnotherStopHint": "Add another stop, or switch day above.",
     "autoSaved": "Auto-saved",
@@ -1326,6 +1329,7 @@
       "copyLink": "Copy link",
       "linkCopied": "Link copied",
       "copyItinerary": "Copy itinerary (text)",
+      "copyItineraryShort": "Copy text",
       "copied": "Copied",
       "shareTextPrefix": "My Cyprus Winter itinerary —"
     },
@@ -1435,7 +1439,8 @@
     "tripFitNear": "Near match",
     "tripFitCompress": "Compress plan",
     "tripFitExtend": "Extend with add-ons",
-    "allTemplates": "All templates"
+    "allTemplates": "All templates",
+    "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}"
   },
   "bookings": {
     "title": "My Bookings",

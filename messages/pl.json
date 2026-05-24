@@ -1335,6 +1335,9 @@
     "browsePlaces": "Przeglądaj miejsca",
     "placePickerIntro": "Wybierz jedno miejsce teraz. Kolejne możesz dodać od razu potem.",
     "seeTemplates": "Zobacz szablony",
+    "heroBrowsePlaces": "Przeglądaj miejsca",
+    "combosCollapsibleTitle": "Kuratorskie pary na dzień",
+    "combosCollapsibleSubtitle": "Poranek i popołudnie, które do siebie pasują",
     "placesCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}}",
     "addAnotherStopHint": "Dodaj kolejny postój albo zmień dzień powyżej.",
     "autoSaved": "Automatycznie zapisane",
@@ -1396,6 +1399,7 @@
       "copyLink": "Kopiuj link",
       "linkCopied": "Link skopiowany",
       "copyItinerary": "Kopiuj plan (tekst)",
+      "copyItineraryShort": "Kopiuj tekst",
       "copied": "Skopiowano",
       "shareTextPrefix": "Mój zimowy plan na Cyprze —"
     },
@@ -1474,7 +1478,8 @@
     "tripFitNear": "Bliskie dopasowanie",
     "tripFitCompress": "Skróć plan",
     "tripFitExtend": "Rozszerz dodatkami",
-    "allTemplates": "Wszystkie szablony"
+    "allTemplates": "Wszystkie szablony",
+    "templateCardAria": "Użyj szablonu {label}: {description}. {duration} dni, {count} miejsc. {preview}"
   },
   "bookings": {
     "title": "Moje rezerwacje",
