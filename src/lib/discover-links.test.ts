@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { discoverDetailHref, discoverListHref } from "@/lib/discover-links";
+import { createSearchResultLink, discoverDetailHref, discoverListHref } from "@/lib/discover-links";
 
 describe("discover-links", () => {
   it("discoverListHref preserves filter", () => {
@@ -13,6 +13,18 @@ describe("discover-links", () => {
     );
     expect(discoverDetailHref("omodos", null)).toBe(
       "/discover/omodos?from=discover"
+    );
+  });
+
+  it("adds search context before event hash fragments", () => {
+    expect(
+      createSearchResultLink("/events#limassol-carnival", "limassol-carnival", "carnival")
+    ).toBe("/events?from=search&q=carnival#limassol-carnival");
+  });
+
+  it("keeps detail result search links on the detail path", () => {
+    expect(createSearchResultLink("/discover/omodos", "omodos", "omodos")).toBe(
+      "/discover/omodos?from=search&q=omodos"
     );
   });
 });

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sanitizeText, sanitizeForStorage, sanitizeMarkdownLinks } from "./sanitize";
+import { sanitizeText, sanitizeForStorage, sanitizeMarkdownLinks, sanitizeStreamDelta } from "./sanitize";
 
 describe("sanitizeText", () => {
   it("returns empty string for non-string input", () => {
@@ -47,6 +47,21 @@ describe("sanitizeMarkdownLinks", () => {
   it("keeps safe links", () => {
     expect(sanitizeMarkdownLinks("[ok](https://example.com)")).toBe("[ok](https://example.com)");
     expect(sanitizeMarkdownLinks("[rel](/path)")).toBe("[rel](/path)");
+  });
+});
+
+describe("sanitizeStreamDelta", () => {
+  it("preserves boundary spaces so streamed chunks concatenate into readable text", () => {
+    const chunks = ["Try", " Omodos", " village", " in the morning."];
+
+    expect(chunks.map((chunk) => sanitizeStreamDelta(chunk)).join("")).toBe(
+      "Try Omodos village in the morning."
+    );
+  });
+
+  it("strips unsafe markup without trimming valid stream whitespace", () => {
+    expect(sanitizeStreamDelta(" <b>Omodos</b> ")).toBe(" Omodos ");
+    expect(sanitizeStreamDelta("[x](javascript:alert(1)) ")).toBe("x ");
   });
 });
 

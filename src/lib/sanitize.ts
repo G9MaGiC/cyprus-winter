@@ -34,6 +34,13 @@ export function sanitizeText(input: string, maxLength?: number): string {
   return out;
 }
 
+/** Sanitize an incremental stream fragment without trimming cross-chunk spaces. */
+export function sanitizeStreamDelta(input: string): string {
+  if (typeof input !== "string") return "";
+  const out = input.replace(/<[^>]*>/g, "");
+  return sanitizeMarkdownLinks(out);
+}
+
 /** Sanitize for storage/API: same as sanitizeText, no length limit applied here (Zod handles max). */
 export function sanitizeForStorage(input: string): string {
   return sanitizeText(input);

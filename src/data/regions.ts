@@ -103,6 +103,13 @@ export function itemMatchesRegion(regionStr: string, slug: RegionSlug): boolean 
   }
 }
 
+export function filterEventsByRegion<T extends { region: string }>(
+  events: T[],
+  slug: RegionSlug
+): T[] {
+  return events.filter((event) => event.region === "All" || itemMatchesRegion(event.region, slug));
+}
+
 /** Match winery region string to a region slug (winery.region is like "Pelendri (Limassol)" or "Kathikas (Paphos)"). */
 export function wineryMatchesRegion(wineryRegion: string, slug: RegionSlug): boolean {
   return itemMatchesRegion(wineryRegion, slug);

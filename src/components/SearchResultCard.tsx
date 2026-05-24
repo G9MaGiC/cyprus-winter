@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
-import { createDetailLink } from "@/components/SmartBackLink";
+import { createSearchResultLink } from "@/lib/discover-links";
 import type { SearchResult } from "@/lib/search";
 import { CARD, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
@@ -35,12 +35,7 @@ export default function SearchResultCard({ result, searchQuery }: Props) {
         ? tCommon("event")
         : tCommon("place");
 
-  const basePath = result.href.replace(/\/[^/]+$/, "");
-  const id = result.href.split("/").pop() ?? result.item.id;
-  const href =
-    searchQuery && searchQuery.length >= 2
-      ? createDetailLink(basePath, id, "search", searchQuery)
-      : result.href;
+  const href = createSearchResultLink(result.href, result.item.id, searchQuery);
 
   const ariaLabel = `${name}, ${kindLabel}, ${region}`;
 

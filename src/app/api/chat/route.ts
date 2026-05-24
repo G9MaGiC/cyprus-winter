@@ -5,7 +5,7 @@ import { rateLimit } from "@/lib/rate-limit";
 import { chatRequestSchema } from "@/lib/chat-schema";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
-import { sanitizeText } from "@/lib/sanitize";
+import { sanitizeStreamDelta, sanitizeText } from "@/lib/sanitize";
 import { isSafeInternalPath as isAllowedAppPath } from "@/lib/safe-internal-path";
 import { orchestrate } from "@/lib/concierge/orchestrator";
 import type { ConciergeContext } from "@/lib/concierge/types";
@@ -311,7 +311,7 @@ export async function POST(req: Request) {
                   fullContent += content;
                   const delimIdx = fullContent.indexOf(delimiter);
                   if (delimIdx === -1) {
-                    const toSend = sanitizeText(fullContent.slice(sentProseUpTo));
+                    const toSend = sanitizeStreamDelta(fullContent.slice(sentProseUpTo));
                     if (toSend) {
                       controller.enqueue(encoder.encode(emitChunk({ delta: toSend })));
                       sentProseUpTo = fullContent.length;
@@ -323,7 +323,7 @@ export async function POST(req: Request) {
               // Flush remaining prose and optional metadata
               const delimIdx = fullContent.indexOf(delimiter);
               if (delimIdx !== -1) {
-                const unseenProse = sanitizeText(fullContent.slice(sentProseUpTo, delimIdx).trim());
+                const unseenProse = sanitizeStreamDelta(fullContent.slice(sentProseUpTo, delimIdx));
                 if (unseenProse) {
                   controller.enqueue(encoder.encode(emitChunk({ delta: unseenProse })));
                 }
@@ -341,7 +341,7 @@ export async function POST(req: Request) {
               for await (const chunk of completion) {
                 const content = chunk.choices[0]?.delta?.content;
                 if (content) {
-                  const safe = sanitizeText(content);
+                  const safe = sanitizeStreamDelta(content);
                   if (safe) {
                     controller.enqueue(encoder.encode(emitChunk({ delta: safe })));
                   }

@@ -11,7 +11,7 @@ import {
 import { wineries } from "@/data/wineries";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
-import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
+import { REGION_CONFIGS, filterByRegion, filterEventsByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
 import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -129,20 +129,7 @@ export default async function RegionPage({ params }: Props) {
   const regionWineries = wineries.filter((w) =>
     wineryMatchesRegion(w.region, regionSlug)
   );
-  const regionEventFilter: Record<RegionSlug, string | null> = {
-    troodos: "Troodos",
-    paphos: "Paphos",
-    larnaca: "Larnaca",
-    limassol: "Limassol",
-    "ayia-napa": null,
-  };
-  const eventRegion = regionEventFilter[regionSlug];
-  const regionEvents =
-    eventRegion === null
-      ? []
-      : winterEvents.filter(
-          (e) => e.region === eventRegion || e.region === "All"
-        );
+  const regionEvents = filterEventsByRegion(winterEvents, regionSlug);
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>

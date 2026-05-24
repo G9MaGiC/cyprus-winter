@@ -17,6 +17,25 @@ export function createDetailLink(
   return `${basePath}/${id}${queryString ? `?${queryString}` : ""}`;
 }
 
+/** Build a search result URL with back-context while preserving hash anchors. */
+export function createSearchResultLink(
+  resultHref: string,
+  id: string,
+  searchQuery?: string
+): string {
+  if (!searchQuery || searchQuery.length < 2) return resultHref;
+
+  const [path, hash] = resultHref.split("#", 2);
+  if (hash) {
+    const params = new URLSearchParams({ from: "search", q: searchQuery });
+    return `${path}?${params.toString()}#${hash}`;
+  }
+
+  const basePath = resultHref.replace(/\/[^/]+$/, "");
+  const detailId = resultHref.split("/").pop() ?? id;
+  return createDetailLink(basePath, detailId, "search", searchQuery);
+}
+
 /** Localized type label for discover cards and detail hero badges. */
 export function getDiscoverTypeLabel(
   type: string,
