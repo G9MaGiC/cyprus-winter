@@ -90,6 +90,7 @@
     },
     "addToPlan": "Zum Plan hinzufügen",
     "addPlace": "Ort hinzufügen",
+    "openAria": "{name} öffnen",
     "shareColon": "Teilen:",
     "bookTasting": "Verkostung buchen",
     "clearFilters": "Filter zurücksetzen",
@@ -115,6 +116,7 @@
     },
     "back": "Zurück",
     "backTo": "Zurück zu {label}",
+    "backToTop": "Nach oben",
     "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
     "breadcrumbs": {
       "privacy": "Datenschutz",
@@ -463,6 +465,15 @@
         "clearToday": "Heute klar",
         "bestAfternoon": "Bestes Licht am Nachmittag",
         "worthVisit": "Besuch lohnt sich"
+      },
+      "fallbackTease": {
+        "winery": "Heizstrahler auf der Terrasse.",
+        "village": "Kopfsteinpflaster ganz für sich unter der Woche.",
+        "monastery": "Ruhig diese Woche.",
+        "nature": "Klar heute.",
+        "ancient": "Bestes Licht am Nachmittag.",
+        "beach": "Ruhig im Winter.",
+        "trail": "Berichte prüfen vor dem Losgehen."
       }
     },
     "planningSection": {
@@ -1346,7 +1357,8 @@
       },
       "sr": {
         "filtered": "{count} Wanderwege werden angezeigt",
-        "allByCategory": "Alle Wanderwege nach Kategorie werden angezeigt"
+        "allByCategory": "Alle Wanderwege nach Kategorie werden angezeigt",
+        "browseByCategory": "Wanderwege nach Kategorie durchsuchen"
       }
     }
   },
@@ -1765,6 +1777,13 @@
         "aria": "Zum Monat springen",
         "title": "Zum Monat springen",
         "jumpTo": "Zu {month} springen"
+      },
+      "monthFull": {
+        "Nov": "November",
+        "Dec": "Dezember",
+        "Jan": "Januar",
+        "Feb": "Februar",
+        "Mar": "März"
       },
       "card": {
         "whenWhereAria": "Wann: {dates}. Wo: {venue}",

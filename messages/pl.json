@@ -90,6 +90,7 @@
     },
     "addToPlan": "Dodaj do planu",
     "addPlace": "Dodaj miejsce",
+    "openAria": "Otwórz {name}",
     "shareColon": "Udostępnij:",
     "bookTasting": "Zarezerwuj degustację",
     "clearFilters": "Wyczyść filtry",
@@ -115,6 +116,7 @@
     },
     "back": "Wróć",
     "backTo": "Wróć do {label}",
+    "backToTop": "Powrót na górę",
     "peopleCount": "{count, plural, one {# osoba} few {# osoby} many {# osób} other {# osoby}}",
     "breadcrumbs": {
       "privacy": "Prywatność",
@@ -463,6 +465,15 @@
         "clearToday": "Dziś bez przeszkód",
         "bestAfternoon": "Najlepsze światło po południu",
         "worthVisit": "Warte odwiedzin"
+      },
+      "fallbackTease": {
+        "winery": "Grzejniki na tarasie.",
+        "village": "Brukowane uliczki tylko dla ciebie w tygodniu.",
+        "monastery": "Spokojnie w tym tygodniu.",
+        "nature": "Czyste niebo dziś.",
+        "ancient": "Najlepsze światło po południu.",
+        "beach": "Spokojnie zimą.",
+        "trail": "Sprawdź raporty przed wyjściem."
       }
     },
     "planningSection": {
@@ -1346,7 +1357,8 @@
       },
       "sr": {
         "filtered": "Wyświetlanych {count} szlaków",
-        "allByCategory": "Wyświetlane wszystkie szlaki według kategorii"
+        "allByCategory": "Wyświetlane wszystkie szlaki według kategorii",
+        "browseByCategory": "Przeglądaj szlaki według kategorii"
       }
     }
   },
@@ -1683,6 +1695,13 @@
         "aria": "Przeskocz do miesiąca",
         "title": "Przeskocz do miesiąca",
         "jumpTo": "Przeskocz do {month}"
+      },
+      "monthFull": {
+        "Nov": "Listopad",
+        "Dec": "Grudzień",
+        "Jan": "Styczeń",
+        "Feb": "Luty",
+        "Mar": "Marzec"
       },
       "card": {
         "whenWhereAria": "Kiedy: {dates}. Gdzie: {venue}",

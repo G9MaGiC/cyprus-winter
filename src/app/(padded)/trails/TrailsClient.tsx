@@ -226,7 +226,7 @@ export default function TrailsClient() {
             id="trail-list"
           >
             <h2 id="trail-sections-heading" className="sr-only">
-              Browse trails by category
+              {tTrailsPage("sr.browseByCategory")}
             </h2>
             <TrailsSectionList />
           </section>

@@ -13,6 +13,7 @@ type Props = {
 
 export default function BookTastingsView({ featured }: Props) {
   const tCommon = useTranslations("common");
+  const openAria = (name: string) => tCommon("openAria", { name });
   const items = featured.map((w) => {
     const full = wineries.find((x) => x.id === w.wineryId);
     return {
@@ -33,7 +34,7 @@ export default function BookTastingsView({ featured }: Props) {
             href={`/discover/${w.wineryId}`}
             prefetch="auto"
             className={`${CARD.link} flex-1`}
-            aria-label={`View ${w.name}`}
+            aria-label={openAria(w.name)}
           >
             <div className={CARD.media}>
               <Image

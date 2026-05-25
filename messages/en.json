@@ -90,6 +90,7 @@
     },
     "addToPlan": "Add to plan",
     "addPlace": "Add place",
+    "openAria": "Open {name}",
     "cookies": {
       "essentialOnly": "Essential only",
       "essentialShort": "Essential",
@@ -135,8 +136,8 @@
       "stopVoice": "Stop listening"
     },
     "back": "Back",
-    "backTo": "Back to {label}"
-    ,
+    "backTo": "Back to {label}",
+    "backToTop": "Back to top",
     "peopleCount": "{count, plural, one {# person} other {# people}}"
     ,
     "breadcrumbs": {
@@ -444,6 +445,15 @@
         "clearToday": "Clear today",
         "bestAfternoon": "Best light in afternoon",
         "worthVisit": "Worth a visit"
+      },
+      "fallbackTease": {
+        "winery": "Heaters on the terrace.",
+        "village": "Cobbles to yourself midweek.",
+        "monastery": "Quiet this week.",
+        "nature": "Clear today.",
+        "ancient": "Best light in afternoon.",
+        "beach": "Quiet in winter.",
+        "trail": "Check reports before you go."
       }
     },
     "planningSection": {
@@ -1307,7 +1317,8 @@
       },
       "sr": {
         "filtered": "Showing {count} trails",
-        "allByCategory": "Showing all trails by category"
+        "allByCategory": "Showing all trails by category",
+        "browseByCategory": "Browse trails by category"
       }
     }
   },
@@ -1726,6 +1737,13 @@
         "aria": "Jump to month",
         "title": "Jump to month",
         "jumpTo": "Jump to {month}"
+      },
+      "monthFull": {
+        "Nov": "November",
+        "Dec": "December",
+        "Jan": "January",
+        "Feb": "February",
+        "Mar": "March"
       },
       "card": {
         "whenWhereAria": "When: {dates}. Where: {venue}",

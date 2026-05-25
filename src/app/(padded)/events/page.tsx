@@ -26,13 +26,6 @@ const TYPE_COLORS: Record<string, string> = {
 };
 
 const MONTH_ORDER = ["Nov", "Dec", "Jan", "Feb", "Mar"] as const;
-const MONTH_FULL: Record<string, string> = {
-  Nov: "November",
-  Dec: "December",
-  Jan: "January",
-  Feb: "February",
-  Mar: "March",
-};
 
 const HIGHLIGHT_IDS = ["epiphany-cyprus", "limassol-carnival"];
 
@@ -382,7 +375,7 @@ export default function EventsPage() {
                       {month}
                     </h2>
                     <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>
-                      {MONTH_FULL[month]}
+                      {tPage(`monthFull.${month}`)}
                     </p>
                     <ul className="space-y-6" role="list">
                       {events.map((e) => (

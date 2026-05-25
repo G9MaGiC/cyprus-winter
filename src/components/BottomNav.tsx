@@ -106,6 +106,9 @@ export default function BottomNav() {
             >
               {t(link.labelKey)}
             </span>
+            {isActive(pathname, link.href) && (
+              <span className="w-1 h-1 rounded-full bg-golden mt-0.5" aria-hidden />
+            )}
           </AppLink>
         ))}
         {planLink && (
@@ -125,6 +128,9 @@ export default function BottomNav() {
             >
               {t(planLink.labelKey)}
             </span>
+            {isActive(pathname, planLink.href) && (
+              <span className="w-1 h-1 rounded-full bg-golden mt-0.5" aria-hidden />
+            )}
           </AppLink>
         )}
         <div className="relative" ref={moreRef}>

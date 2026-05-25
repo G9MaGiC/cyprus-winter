@@ -13,13 +13,18 @@ import { useTranslations } from "next-intl";
 
 const PLACE_TYPES = ["attraction", "trail", "winery"] as const;
 
-function getPlaceOfDayData(overlays: {
-  goodDay: string;
-  quietWeek: string;
-  clearToday: string;
-  bestAfternoon: string;
-  worthVisit: string;
-}) {
+type PlaceOfDayI18n = {
+  overlays: {
+    goodDay: string;
+    quietWeek: string;
+    clearToday: string;
+    bestAfternoon: string;
+    worthVisit: string;
+  };
+  fallbackTease: Record<string, string>;
+};
+
+function getPlaceOfDayData({ overlays, fallbackTease }: PlaceOfDayI18n) {
   const candidates = allPlaces.filter((p) =>
     PLACE_TYPES.includes(p.type as (typeof PLACE_TYPES)[number])
   );
@@ -33,7 +38,7 @@ function getPlaceOfDayData(overlays: {
     const tease =
       trail.winterNotes ||
       trail.description.split(".")[0] + "." ||
-      "Check reports before you go.";
+      fallbackTease.trail;
     return {
       id: picked.id,
       name: picked.name,
@@ -50,19 +55,11 @@ function getPlaceOfDayData(overlays: {
   if (!att) return null;
 
   const desc = att.description;
-  const fallbackByType: Record<string, string> = {
-    winery: "Heaters on the terrace.",
-    village: "Cobbles to yourself midweek.",
-    monastery: "Quiet this week.",
-    nature: "Clear today.",
-    ancient: "Best light in afternoon.",
-    beach: "Quiet in winter.",
-  };
   const tease =
     att.winterTip ||
     desc.split(".")[0] + "." ||
-    fallbackByType[att.type] ||
-    `${att.region}. Worth a visit.`;
+    fallbackTease[att.type] ||
+    `${att.region}. ${overlays.worthVisit}.`;
   const shortTease = tease.length > 100 ? tease.slice(0, 97) + "…" : tease;
 
   const overlayByType: Record<string, string> = {
@@ -90,11 +87,22 @@ export default function HomePlaceOfDay() {
   const t = useTranslations("home.placeOfDay");
   const Link = AppLink;
   const place = getPlaceOfDayData({
-    goodDay: t("overlays.goodDay"),
-    quietWeek: t("overlays.quietWeek"),
-    clearToday: t("overlays.clearToday"),
-    bestAfternoon: t("overlays.bestAfternoon"),
-    worthVisit: t("overlays.worthVisit"),
+    overlays: {
+      goodDay: t("overlays.goodDay"),
+      quietWeek: t("overlays.quietWeek"),
+      clearToday: t("overlays.clearToday"),
+      bestAfternoon: t("overlays.bestAfternoon"),
+      worthVisit: t("overlays.worthVisit"),
+    },
+    fallbackTease: {
+      winery: t("fallbackTease.winery"),
+      village: t("fallbackTease.village"),
+      monastery: t("fallbackTease.monastery"),
+      nature: t("fallbackTease.nature"),
+      ancient: t("fallbackTease.ancient"),
+      beach: t("fallbackTease.beach"),
+      trail: t("fallbackTease.trail"),
+    },
   });
   const planItem = place ? getPlaceById(place.id) : undefined;
   if (!place) return null;

@@ -17,11 +17,11 @@ type DistanceMode = "less" | "more";
 
 function SectionShell({
   children,
-  title = "Right now near you",
+  title,
   subtitle,
 }: {
   children: React.ReactNode;
-  title?: string;
+  title: string;
   subtitle?: string;
 }) {
   return (
