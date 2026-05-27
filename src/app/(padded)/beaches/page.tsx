@@ -73,19 +73,21 @@ export default async function BeachesPage() {
           { label: tNav("beaches"), href: "/beaches", isCurrent: true },
         ]}
       >
-        <AppLink href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+        <AppLink href="/plan" className={`mt-4 ${CTA.primaryCompact}`}>
           {tCommon("planYourTrip")}
         </AppLink>
       </PageHeader>
 
-      <h2 id="beaches-list" className="sr-only">
-        {tBeaches("srHeading")}
-      </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {beaches.map((beach) => (
-          <AttractionCard key={beach.id} a={beach} />
-        ))}
-      </div>
+      <section aria-labelledby="beaches-list">
+        <h2 id="beaches-list" className="sr-only">
+          {tBeaches("srHeading")}
+        </h2>
+        <ul role="list" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {beaches.map((beach) => (
+            <li key={beach.id}><AttractionCard a={beach} /></li>
+          ))}
+        </ul>
+      </section>
 
       <span id="beaches-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
       <HubFooter

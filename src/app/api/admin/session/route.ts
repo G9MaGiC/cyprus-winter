@@ -89,7 +89,15 @@ export async function POST(req: NextRequest) {
 }
 
 /** Clear admin session cookie (logout). */
-export async function DELETE() {
+export async function DELETE(req: NextRequest) {
+  try {
+    const limitResult = await rateLimit(req, 30, "stats");
+    if (!limitResult.ok) {
+      return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
+    }
+  } catch {
+    // Logout still allowed if rate limiter fails
+  }
   const res = NextResponse.json({ ok: true });
   res.cookies.set(ADMIN_SESSION_COOKIE, "", {
     httpOnly: true,

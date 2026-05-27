@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { TYPE } from "@/lib/design-tokens";
+import { LAYER, TYPE } from "@/lib/design-tokens";
 import { useTrapFocus } from "@/lib/useTrapFocus";
 import PlacePicker from "@/components/PlacePicker";
 import { useTranslations } from "next-intl";
@@ -44,7 +44,7 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col sm:items-center sm:justify-center p-4 pb-[env(safe-area-inset-bottom)] sm:p-6 sm:pb-6 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50"
+      className={`fixed inset-0 ${LAYER.modal} flex flex-col sm:items-center sm:justify-center p-4 pb-[env(safe-area-inset-bottom)] sm:p-6 sm:pb-6 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="browse-places-title"

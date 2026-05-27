@@ -43,7 +43,8 @@
     "searchAria": "Search places and trails",
     "askAIAria": "Ask AI for trails, wineries, and trip ideas",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation"
   },
   "common": {
     "nav": {
@@ -86,7 +87,13 @@
       "body": "for full functionality. You can still browse trails and places, but features like the itinerary planner and chat require JavaScript."
     },
     "map": {
-      "openStreetMap": "OpenStreetMap"
+      "openStreetMap": "OpenStreetMap",
+      "enableMapAria": "Enable map interactions",
+      "enableMapCta": "Enable map",
+      "disableMapAria": "Disable map interactions",
+      "disableMapCta": "Done",
+      "getDirections": "Get directions",
+      "openInMaps": "Open in Maps"
     },
     "addToPlan": "Add to plan",
     "addPlace": "Add place",
@@ -133,7 +140,9 @@
       "inputPlaceholder": "Ask about Cyprus…",
       "sendAria": "Send message",
       "startVoice": "Start voice input",
-      "stopVoice": "Stop listening"
+      "stopVoice": "Stop listening",
+      "retry": "Retry",
+      "thinking": "Thinking…"
     },
     "back": "Back",
     "backTo": "Back to {label}",
@@ -235,6 +244,7 @@
     "title": "Cyprus Winter",
     "subtitle": "Trails, Heritage & Villages",
     "kicker": "The Mediterranean's best-kept secret",
+    "footerSection": "More about Cyprus winter",
     "headline": "Escape the cold. Ruins, trails, villages. Plan as you go.",
     "seasonal": {
       "lateYear": "Coast mild. Trails clear. Best for hiking.",
@@ -670,11 +680,15 @@
   },
   "discover": {
     "addToPlan": "Add to plan",
+    "askAI": "Ask AI",
     "bookTasting": "Book a tasting",
     "seeEverything": "See everything",
     "page": {
       "contentAria": "Discover places in Cyprus",
       "curatedLine": "Curated for winter. Add to your plan as you browse.",
+      "noResultsTitle": "Nothing matches this filter",
+      "noResultsBody": "Try a different category, clear the filter, or ask the AI for recommendations.",
+      "clearFilter": "Clear filter",
       "rightNowTitle": "Right now near you",
       "filterAnnouncement": {
         "showing": "Showing {section}, {count} places",
@@ -692,6 +706,7 @@
         "village": "Villages",
         "wine": "Wine & food",
         "monastery": "Monasteries & culture",
+        "family": "Family-friendly",
         "hidden": "Hidden gems"
       },
       "filters": {
@@ -812,6 +827,7 @@
       }
     },
     "map": {
+      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Use arrow keys to pan; markers open place details.",
       "openStreetMap": "OpenStreetMap",
       "loading": "Loading map…",
       "emptyTitle": "No places with coordinates to display.",
@@ -828,6 +844,31 @@
       "imageAlt": "{name}, {region}—{type} in Cyprus winter",
       "badgeEat": "Eat",
       "bufferZoneWarning": "Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).",
+      "winter": {
+        "open": "Open in winter",
+        "seasonsLabel": "Seasons:",
+        "seasons": {
+          "winter": "winter",
+          "spring": "spring",
+          "summer": "summer",
+          "autumn": "autumn"
+        },
+        "indoorOutdoorLabel": "Setting:",
+        "indoorOutdoor": {
+          "indoor": "indoor",
+          "outdoor": "outdoor",
+          "mixed": "mixed"
+        },
+        "budgetLabel": "Budget:",
+        "budget": {
+          "free": "free",
+          "low": "low",
+          "mid": "mid",
+          "high": "high"
+        },
+        "galleryHeading": "Gallery",
+        "galleryAlt": "{name} gallery photo {index}"
+      },
       "practical": {
         "title": "Practical info",
         "hours": "Hours:",
@@ -852,7 +893,8 @@
         "buyWineAria": "Buy wine online (opens in new tab)",
         "buyWineCta": "Buy wine online",
         "instagramAria": "Follow @{handle} on Instagram (opens in new tab)",
-        "instagramCta": "Instagram @{handle}"
+        "instagramCta": "Instagram @{handle}",
+        "bookGuide": "Book a guide →"
       },
       "bestTimeLabel": "Best time:",
       "directionsAria": "Get directions (opens in new tab)",
@@ -896,7 +938,8 @@
         "addToPlanAria": "Add {name} to plan"
       },
       "map": {
-        "iframeTitle": "Map: {name}"
+        "iframeTitle": "Map: {name}",
+        "loadMap": "Load map"
       },
       "metadata": {
         "notFound": "Not found",
@@ -1107,6 +1150,19 @@
     "submitReport": "Submit report",
     "submitting": "Submitting…",
     "conditionsEditorial": "Winter snapshot",
+    "card": {
+      "elevationGain": "{meters}m gain",
+      "temperature": "{value}°C",
+      "trailAria": "{name}, {length} km {difficulty} trail in {region}",
+      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter"
+    },
+    "placeOfDay": {
+      "heading": "Trail of the day",
+      "badge": "Trail of the day",
+      "openAria": "Open {name}",
+      "pairWith": "Pair with",
+      "seeDetails": "See details"
+    },
     "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
     "allTrails": "All trails",
     "askAI": "Ask AI",
@@ -1228,10 +1284,18 @@
         "temperatureAtTrailhead": "{temperature}°C at trailhead",
         "windAtTrailhead": "{wind} km/h wind"
       },
+      "liveWeather": {
+        "temperature": "{min}–{max}°C",
+        "rain": "Rain expected",
+        "live": "Live"
+      },
       "safety": {
         "title": "Safety & essentials",
-        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go."
+        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go.",
+        "easyTitle": "Good to know",
+        "easyBody": "Emergency 112 · Tourist info 1460. Water, sun protection, and comfortable shoes are enough for this walk."
       },
+      "bookGuide": "Book a guide",
       "winterSafetyTitle": "Winter safety",
       "routeMapTitle": "Route map",
       "winterNotesTitle": "Winter notes",
@@ -1283,11 +1347,17 @@
     },
     "map": {
       "viewTrail": "View trail",
+      "stops": "Stops",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Trailhead",
       "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
     },
     "page": {
+      "meta": {
+        "title": "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
+        "description": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
+        "ogDescription": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length."
+      },
       "hero": {
         "title": "Winter Trails",
         "description": "Pine forest, ridge views, empty paths. Sixteen degrees when home is six.",
@@ -1421,6 +1491,38 @@
     },
     "footer": {
       "winterTip": "Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24–48h ahead."
+    },
+    "meta": {
+      "title": "Plan Cyprus Winter | Curated Itineraries & Trip Builder",
+      "description": "Curated Cyprus winter itineraries: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
+      "ogTitle": "Plan Cyprus Winter | Curated Itineraries & Trip Builder",
+      "ogDescription": "Curated Cyprus winter itineraries with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
+    },
+    "templateChoiceModal": {
+      "title": "Apply {template}?",
+      "description": "Add to your plan or replace what you have.",
+      "cancel": "Cancel",
+      "replaceDay": "Replace day",
+      "addToPlan": "Add to plan"
+    },
+    "comboChoiceModal": {
+      "title": "Add {combo}?",
+      "description": "Add to your plan or replace your day.",
+      "cancel": "Cancel",
+      "replaceDay": "Replace day",
+      "addToPlan": "Add to plan"
+    },
+    "map": {
+      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your itinerary",
+      "dayLabel": "Day {day}",
+      "viewDetails": "View details →",
+      "footer": "{count, plural, one {# place} other {# places}} on map. Numbers = day. Tap to explore.",
+      "noCoords": "Some of your places don't have map locations yet."
+    },
+    "clipboard": {
+      "heading": "Cyprus Winter Itinerary",
+      "dayLabel": "Day {day}:",
+      "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
     }
   },
   "placePicker": {
@@ -1793,6 +1895,23 @@
   },
   "wineRoutes": {
     "page": {
+      "meta": {
+        "title": "{route} Wine Route Cyprus Winter | Wineries & Tastings",
+        "description": "{route} wine route: {count, plural, one {# winery} other {# wineries}} open for winter tastings. Book ahead.",
+        "notFoundTitle": "Wine route not found | Cyprus Winter",
+        "notFoundDescription": "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings."
+      },
+      "routeTitle": "{route} Wine Route",
+      "routeBreadcrumb": "{route} Route",
+      "wineriesOnRoute": "Wineries on this route",
+      "grapeVarieties": "Grape varieties",
+      "winterTipLabel": "Winter tip",
+      "map": {
+        "heading": "{route} map ({count})",
+        "caption": "Tap a marker to open a winery.",
+        "ariaLabel": "Map showing {count, plural, one {# winery} other {# wineries}} on this wine route",
+        "viewWinery": "View winery"
+      },
       "footer": {
         "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
         "allWineries": "All Cyprus wineries"
@@ -1804,6 +1923,12 @@
   },
   "weather": {
     "page": {
+      "meta": {
+        "title": "Cyprus Winter Weather by Month | Coast & Troodos",
+        "description": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
+        "ogDescription": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
+        "ogImageAlt": "Cyprus winter weather guide"
+      },
       "title": "Cyprus Winter Weather by Month",
       "description": "Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries.",
       "table": {
@@ -2015,9 +2140,16 @@
       }
     },
     "guideForm": {
+      "validation": {
+        "dateRequired": "Choose a date in the future",
+        "nameRequired": "Name is required",
+        "emailInvalid": "Enter a valid email address",
+        "partySizeRequired": "Select group size"
+      },
       "errors": {
         "failed": "Booking failed",
-        "fallback": "Something went wrong — check your connection and try again."
+        "fallback": "Something went wrong — check your connection and try again.",
+        "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
       },
       "success": {
         "title": "Request sent",
@@ -2033,7 +2165,7 @@
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter days are short; book ahead for your preferred slot." },
         "trail": { "label": "Trail", "optional": "(optional)", "hint": "Optional. Helps the guide plan.", "placeholder": "Select a trail (optional)" },
-        "partySize": { "label": "Group size", "plus": "11+ people" },
+        "partySize": { "label": "Group size", "plus": "11+ people", "placeholder": "Select group size" },
         "guestName": { "label": "Your name", "placeholder": "John Smith" },
         "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
         "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fitness level, experience, trail preference—whatever helps them plan.", "placeholder": "First winter hike, want to see waterfalls, need an early start — whatever helps" }
@@ -2054,9 +2186,16 @@
     }
     ,
     "wineryForm": {
+      "validation": {
+        "dateRequired": "Choose a date in the future",
+        "nameRequired": "Name is required",
+        "emailInvalid": "Enter a valid email address",
+        "partySizeRequired": "Select group size"
+      },
       "errors": {
         "failed": "Booking failed",
-        "fallback": "Something went wrong — check your connection and try again."
+        "fallback": "Something went wrong — check your connection and try again.",
+        "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
       },
       "success": {
         "title": "Request sent",
@@ -2070,7 +2209,7 @@
       },
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },
-        "partySize": { "label": "Group size", "plus": "11+ people" },
+        "partySize": { "label": "Group size", "plus": "11+ people", "placeholder": "Select group size" },
         "guestName": { "label": "Your name", "placeholder": "John Smith" },
         "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
         "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fireside table? Dietary needs? Just mention it — wineries are used to it.", "placeholder": "Allergies, special occasion, fireside or terrace — whatever helps them welcome you" }
@@ -2118,10 +2257,24 @@
         "footerBrowseTrails": "Browse all trails",
         "footerMyBookings": "My bookings"
       },
+      "wineryList": {
+        "meta": {
+          "title": "Book a Wine Tasting | Cyprus Winter",
+          "description": "Browse verified Cyprus wineries and book a winter tasting. Cosy fires, the owner pouring, small groups. Book ahead — winter weekends fill."
+        },
+        "intro": "Browse our partner wineries and request a tasting. They'll confirm by email — usually within a day.",
+        "ctaAria": "Book a tasting at {name}",
+        "footerBrowseWineries": "Browse all wineries"
+      },
       "wineryDetail": {
         "metaNotFound": "Not found",
         "intro": "Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they'll confirm by email.",
         "disclaimer": "For adults of legal drinking age. Drink responsibly.",
+        "practical": {
+          "hours": "Hours:",
+          "transport": "Getting there:",
+          "parking": "Parking:"
+        },
         "other": {
           "or": "Or",
           "bookDirectCta": "book on the winery website",
@@ -2129,6 +2282,26 @@
           "bookDirectSuffix": "— they often have more availability.",
           "callPrefix": "Or call",
           "callSuffix": "to reserve or check availability — they're usually happy to help."
+        },
+        "winterTip": {
+          "heading": "Winter tip",
+          "icon": "💡"
+        },
+        "signatureWines": {
+          "heading": "What you might taste"
+        },
+        "instagram": {
+          "follow": "Follow on Instagram",
+          "aria": "Follow {name} on Instagram (opens in new tab)"
+        },
+        "combineWith": {
+          "heading": "While you're in the area"
+        },
+        "bestTime": {
+          "label": "Best time to visit:"
+        },
+        "jsonLd": {
+          "priceRange": "€€"
         }
       }
     }
@@ -2375,6 +2548,7 @@
         "title": "Team | Cyprus Winter — Trails, Villages, Wineries",
         "description": "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six."
       },
+      "membersHeading": "Team members",
       "header": {
         "title": "Our Team",
         "description": "Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."

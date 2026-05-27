@@ -5,6 +5,7 @@ import AppLink from "@/components/AppLink";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { search, type SearchResult } from "@/lib/search";
 import { useTranslations } from "next-intl";
+import { LAYER } from "@/lib/design-tokens";
 
 type SearchBarProps = {
   placeholder?: string;
@@ -126,7 +127,7 @@ export default function SearchBar({
           ref={listRef}
           aria-labelledby="search-input"
           role="listbox"
-          className="absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto z-[45]"
+          className={`absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto ${LAYER.popover}`}
         >
           {results.map((r, i) => (
             <li
@@ -167,12 +168,12 @@ export default function SearchBar({
       )}
 
       {focused && query.length > 0 && query.length < 2 && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-[45] text-olive/60 text-sm" role="status">
+        <div className={`absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-olive/60 text-sm`} role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
       {query.length >= 2 && !hasResults && (
-        <div className="absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 z-[45] text-center text-olive/70 text-sm">
+        <div className={`absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-center text-olive/70 text-sm`}>
           <p className="mb-4">{tSearch("noResults", { query })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">

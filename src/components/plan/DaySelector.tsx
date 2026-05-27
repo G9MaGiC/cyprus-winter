@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, LAYER } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { useTranslations } from "next-intl";
 
@@ -31,7 +31,7 @@ export default function DaySelector({
       className={
         hasContent
           ? [
-              "sticky z-10",
+              `sticky ${LAYER.stickyContent}`,
               LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
               "pt-4 pb-4 sm:pt-5 sm:pb-5 mb-6 sm:mb-8 bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",
@@ -44,8 +44,8 @@ export default function DaySelector({
         aria-label={tPlan("aria.selectDay")}
         className="flex gap-2 sm:gap-2.5 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory snap-center scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x"
         onKeyDown={(e) => {
-          const t = e.target as HTMLElement;
-          if (t.getAttribute("role") !== "tab") return;
+          const el = e.target as HTMLElement;
+          if (el.getAttribute("role") !== "tab") return;
           const next =
             e.key === "ArrowLeft" || e.key === "ArrowUp"
               ? activeDay <= 1

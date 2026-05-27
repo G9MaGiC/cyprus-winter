@@ -19,20 +19,10 @@ test("Plan: add place and copy share link", async ({ page }) => {
   const main = page.getByRole("main");
   await expect(main).toContainText(/Day 1|places|your plan/i, { timeout: 5000 });
 
-  // Open Copy & share menu
-  const shareButton = page.getByRole("button", {
-    name: /Share plan options|Copy and share options/,
-  });
-  await expect(shareButton).toBeVisible();
-  await shareButton.click();
-
-  // Click "Copy link" — copies share URL to clipboard and closes menu
-  const copyLinkItem = page.getByRole("menuitem", {
+  // Copy share link (button moved out of menu)
+  const copyLinkButton = page.getByRole("button", {
     name: /Copy link|Link copied/,
   });
-  await expect(copyLinkItem).toBeVisible();
-  await copyLinkItem.click();
-
-  // Menu closes after action; share flow completed
-  await expect(page.getByRole("menu")).not.toBeVisible({ timeout: 2000 });
+  await expect(copyLinkButton).toBeVisible();
+  await copyLinkButton.click();
 });

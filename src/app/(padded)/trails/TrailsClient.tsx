@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { trailConditions } from "@/data/trails";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
@@ -57,8 +57,15 @@ export default function TrailsClient() {
       ?.scrollIntoView({ behavior: scrollBehavior() });
   };
 
+  const hasScrolledOnFilter = useRef(false);
+
   useEffect(() => {
-    if (!hasFilters) return;
+    if (!hasFilters) {
+      hasScrolledOnFilter.current = false;
+      return;
+    }
+    if (hasScrolledOnFilter.current) return;
+    hasScrolledOnFilter.current = true;
     const el = document.getElementById("trail-list");
     const heading = document.getElementById("trail-list-heading");
     if (el) el.scrollIntoView({ behavior: scrollBehavior() });

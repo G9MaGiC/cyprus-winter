@@ -25,24 +25,29 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("conversion_events")
-    .select("event")
-    .gte("created_at", startIso);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
+  const FUNNEL_EVENTS = [
+    "page_view", "discover_view", "trail_view", "winery_detail_view",
+    "plan_add", "booking_start", "booking_confirmed",
+  ];
 
-  if (error) {
-    console.error("Funnel query error:", error);
-    return {};
-  }
+  const results = await Promise.all(
+    FUNNEL_EVENTS.map(async (event) => {
+      let q = supabase
+        .from("conversion_events")
+        .select("*", { count: "exact", head: true })
+        .eq("event", event)
+        .gte("created_at", startIso);
+      if (endIso) q = q.lt("created_at", endIso);
+      const { count, error } = await q;
+      if (error) {
+        console.error(`Funnel count error for ${event}:`, error);
+        return [event, 0] as const;
+      }
+      return [event, count ?? 0] as const;
+    })
+  );
 
-  const counts: FunnelCounts = {};
-  for (const row of data ?? []) {
-    const e = String(row.event || "").trim();
-    if (e) counts[e] = (counts[e] ?? 0) + 1;
-  }
-  return counts;
+  return Object.fromEntries(results);
 }
 
 export async function getEventSourceBreakdownThisMonth(
@@ -73,38 +78,48 @@ export async function getEventSourceBreakdownInRange(
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  let query = supabase
-    .from("conversion_events")
-    .select("event, properties")
-    .in("event", events)
-    .gte("created_at", startIso);
-  if (endIso) query = query.lt("created_at", endIso);
-  const { data, error } = await query;
-
-  if (error) {
-    console.error("Funnel source breakdown query error:", error);
-    return empty;
-  }
-
+  const PAGE_SIZE = 1000;
   const buckets: Record<string, Record<string, number>> = {};
   for (const event of events) buckets[event] = {};
 
-  for (const row of data ?? []) {
-    const event = String(row.event || "").trim();
-    if (!event || !events.includes(event)) continue;
+  let offset = 0;
+  let hasMore = true;
 
-    const props =
-      row.properties && typeof row.properties === "object" && !Array.isArray(row.properties)
-        ? (row.properties as Record<string, unknown>)
-        : {};
+  while (hasMore) {
+    let query = supabase
+      .from("conversion_events")
+      .select("event, properties")
+      .in("event", events)
+      .gte("created_at", startIso)
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (endIso) query = query.lt("created_at", endIso);
+    const { data, error } = await query;
 
-    const sourceRaw = props.source;
-    const source =
-      typeof sourceRaw === "string" && sourceRaw.trim().length > 0
-        ? sourceRaw.trim()
-        : "unknown";
+    if (error) {
+      console.error("Funnel source breakdown query error:", error);
+      return empty;
+    }
 
-    buckets[event][source] = (buckets[event][source] ?? 0) + 1;
+    for (const row of data ?? []) {
+      const event = String(row.event || "").trim();
+      if (!event || !events.includes(event)) continue;
+
+      const props =
+        row.properties && typeof row.properties === "object" && !Array.isArray(row.properties)
+          ? (row.properties as Record<string, unknown>)
+          : {};
+
+      const sourceRaw = props.source;
+      const source =
+        typeof sourceRaw === "string" && sourceRaw.trim().length > 0
+          ? sourceRaw.trim()
+          : "unknown";
+
+      buckets[event][source] = (buckets[event][source] ?? 0) + 1;
+    }
+
+    hasMore = (data?.length ?? 0) === PAGE_SIZE;
+    offset += PAGE_SIZE;
   }
 
   const out: EventSourceBreakdown = {};

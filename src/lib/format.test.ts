@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { formatDate, daysUntil, getUpcomingDateGroup, formatReportedAgo } from "./format";
+import { formatDate, daysUntil, getUpcomingDateGroup, formatReportedAgo, formatReportTimestamp } from "./format";
 
 describe("formatReportedAgo", () => {
   beforeEach(() => {
@@ -53,6 +53,15 @@ describe("formatReportedAgo", () => {
     vi.setSystemTime(new Date("2026-03-05T12:00:00Z"));
     const result = formatReportedAgo("2026-02-20T12:00:00Z", "en");
     expect(result).toMatch(/\d/);
+  });
+});
+
+describe("formatReportTimestamp", () => {
+  it("includes absolute and relative parts for recent reports", () => {
+    vi.setSystemTime(new Date("2026-03-05T12:00:00Z"));
+    const result = formatReportTimestamp("2026-03-05T11:30:00Z", "en");
+    expect(result).toContain("·");
+    expect(result).toMatch(/Mar/i);
   });
 });
 

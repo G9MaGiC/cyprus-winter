@@ -58,7 +58,11 @@ describe("admin session API", () => {
   });
 
   it("DELETE clears session cookie", async () => {
-    const res = (await DELETE()) as NextResponse;
+    const req = new NextRequest("http://localhost:3000/api/admin/session", {
+      method: "DELETE",
+      headers: { "x-forwarded-for": "127.0.0.60" },
+    });
+    const res = (await DELETE(req)) as NextResponse;
     expect(res.status).toBe(200);
     const cookie = res.cookies.get(ADMIN_SESSION_COOKIE);
     expect(cookie?.maxAge).toBe(0);

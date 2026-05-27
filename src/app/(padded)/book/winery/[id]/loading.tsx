@@ -1,8 +1,8 @@
 import { LAYOUT, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function WineryBookingLoading() {
-  const t = useTranslations("common");
+export default async function WineryBookingLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}

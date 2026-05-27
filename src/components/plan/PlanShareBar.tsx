@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import ShareLinks from "@/components/ShareLinks";
-import { CTA, LAYOUT, STRIP } from "@/lib/design-tokens";
+import { CTA, LAYER, LAYOUT, STRIP } from "@/lib/design-tokens";
 
 type PlanShareBarProps = {
   totalPlaces: number;
@@ -109,7 +109,7 @@ export default function PlanShareBar({
             {shareMenuOpen && (
               <div
                 role="menu"
-                className="absolute right-0 top-full mt-2 py-3 px-4 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] z-10 animate-in fade-in slide-in-from-top-2 duration-200"
+                className={`absolute right-0 top-full mt-2 py-3 px-4 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] ${LAYER.popover} animate-in fade-in slide-in-from-top-2 duration-200`}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") {
                     setShareMenuOpen(false);

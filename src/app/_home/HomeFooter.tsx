@@ -4,12 +4,14 @@ import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import HomeInsiderTip from "@/app/_home/HomeInsiderTip";
 import HomeTemplateLinks from "@/app/_home/HomeTemplateLinks";
+import { getTranslations } from "next-intl/server";
 
 type Props = { locale?: string };
 
-export default function HomeFooter({ locale }: Props) {
+export default async function HomeFooter({ locale }: Props) {
+  const tHome = await getTranslations("home");
   return (
-    <footer role="contentinfo" className={`${SECTION.alt} ${LAYOUT.safeAreaX}`}>
+    <section aria-label={tHome("footerSection")} className={`${SECTION.alt} ${LAYOUT.safeAreaX}`}>
       <div className={`${LAYOUT.list} mx-auto ${SECTION.blockGap}`}>
         <div className={SECTION.py}>
           <WhyCyprusDetails locale={locale} />
@@ -21,6 +23,6 @@ export default function HomeFooter({ locale }: Props) {
           <HomeTemplateLinks locale={locale} />
         </div>
       </div>
-    </footer>
+    </section>
   );
 }

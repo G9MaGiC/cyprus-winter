@@ -3,7 +3,7 @@ import DetailHero from "@/components/DetailHero";
 import { getPlaceById } from "@/data";
 import { trails, trailConditions } from "@/data/trails";
 import DetailActionFooter from "@/components/DetailActionFooter";
-import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, SECTION, TYPE, LAYER } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import TrailDetailBackLink from "@/app/(padded)/trails/TrailDetailBackLink";
@@ -16,10 +16,11 @@ import TrailMapClient from "@/components/TrailMapClient";
 import TrailDetailStickyActions from "@/components/TrailDetailStickyActions";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
-import { formatReportedAgo } from "@/lib/format";
+import { formatReportTimestamp } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { guides } from "@/data/guides";
 import SectionCard from "@/components/SectionCard";
+import TrailWeatherBadge from "@/components/TrailWeatherBadge";
 import { getLocalizedName } from "@/lib/localize";
 import { getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
@@ -89,19 +90,19 @@ export default async function TrailPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Trails", item: `${SITE_URL}/trails` },
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: tNav("trails"), item: `${SITE_URL}/trails` },
       { "@type": "ListItem", position: 3, name: getLocalizedName(trail, locale), item: canonicalUrl },
     ],
   };
 
   return (
-    <div className="min-h-screen bg-sand pb-20">
+    <div className="min-h-screen bg-sand">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(trailSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
-      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}>
+      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} ${LAYOUT.detailMobileStickyClearance}`}>
         <nav
-          className={`sticky ${LAYOUT.stickyTop} z-10 flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`}
+          className={`sticky ${LAYOUT.stickyTop} ${LAYER.stickyContent} flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`}
           aria-label={tCommon("aria.pageNavigation")}
         >
           <TrailDetailBackLink />
@@ -252,7 +253,7 @@ export default async function TrailPage({
                           surface: latestReport.surface,
                         })}
                       </span>
-                      <span className="text-olive/60">{formatReportedAgo(latestReport.reportedAt, locale)}</span>
+                      <span className="text-olive/60">{formatReportTimestamp(latestReport.reportedAt, locale)}</span>
                     </div>
                     {latestReport.note && (
                       <p className="mt-3 text-sm text-olive/90 italic break-words">
@@ -302,34 +303,33 @@ export default async function TrailPage({
                   </AppLink>
                   {(() => {
                     const status = (latestReport?.status ?? conditions?.status) ?? "open";
-                    if (status === "caution" || status === "closed") {
-                      const guideForTrail = guides.find(
-                        (g) => g.isVerified && g.trailIds.includes(trail.id)
-                      );
-                      const linkClass =
-                        "inline-flex items-center min-h-[44px] gap-2 px-4 py-3 rounded-lg text-sm font-medium border-2 border-aegean/60 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
-                      if (guideForTrail) {
-                        return (
-                          <AppLink
-                            href={`/book/guide/${guideForTrail.id}?trail=${trail.id}`}
-                            className={linkClass}
-                          >
-                            Book a guide
-                          </AppLink>
-                        );
-                      }
+                    const isUrgent = status === "caution" || status === "closed";
+                    const guideForTrail = guides.find(
+                      (g) => g.isVerified && g.trailIds.includes(trail.id)
+                    );
+                    const linkClass = isUrgent
+                      ? `gap-2 ${CTA.primaryCompact}`
+                      : `inline-flex items-center min-h-[44px] gap-2 px-4 py-3 rounded-lg text-sm font-medium border-2 border-aegean/60 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`;
+                    if (guideForTrail) {
                       return (
-                        <a
-                          href="https://www.cyprusactivetours.com/"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <AppLink
+                          href={`/book/guide/${guideForTrail.id}?trail=${trail.id}`}
                           className={linkClass}
                         >
-                          Book a guide
-                        </a>
+                          {tTrailsDetail("bookGuide")}
+                        </AppLink>
                       );
                     }
-                    return null;
+                    return (
+                      <a
+                        href="https://www.cyprusactivetours.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClass}
+                      >
+                        {tTrailsDetail("bookGuide")}
+                      </a>
+                    );
                   })()}
                 </div>
               </SectionCard>
@@ -350,10 +350,31 @@ export default async function TrailPage({
               </SectionCard>
             )}
 
-            {/* Safety & essentials — early placement for discoverability */}
-            <SectionCard title={tTrailsDetail("safety.title")} borderAccent="terracotta">
+            {trail.trailheadCoords && (
+              <div className="flex items-center gap-2">
+                <TrailWeatherBadge
+                  lat={trail.trailheadCoords.lat}
+                  lng={trail.trailheadCoords.lng}
+                  temperatureLabel={tTrailsDetail("liveWeather.temperature")}
+                  rainLabel={tTrailsDetail("liveWeather.rain")}
+                  liveLabel={tTrailsDetail("liveWeather.live")}
+                />
+              </div>
+            )}
+
+            {/* Safety & essentials — lighter copy on easy trails */}
+            <SectionCard
+              title={
+                trail.difficulty === "easy"
+                  ? tTrailsDetail("safety.easyTitle")
+                  : tTrailsDetail("safety.title")
+              }
+              borderAccent="terracotta"
+            >
               <p className="text-sm text-olive/90 break-words">
-                {tTrailsDetail("safety.body")}
+                {trail.difficulty === "easy"
+                  ? tTrailsDetail("safety.easyBody")
+                  : tTrailsDetail("safety.body")}
               </p>
             </SectionCard>
 

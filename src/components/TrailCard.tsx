@@ -34,7 +34,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
       <AppLink
         href={`/trails/${trail.id}`}
         className={`block ${CARD.link}`}
-        aria-label={`${trail.name}, ${trail.lengthKm} km ${trail.difficulty} trail in ${trail.region}`}
+        aria-label={tTrails("card.trailAria", { name: trail.name, length: trail.lengthKm, difficulty: trail.difficulty, region: trail.region })}
       >
         <div
           className={`relative overflow-hidden bg-olive/10 shrink-0 ${
@@ -43,7 +43,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
         >
           <Image
             src={getTrailImage(trail.id)}
-            alt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} trail in Cyprus winter`}
+            alt={tTrails("card.imageAlt", { name: trail.name, region: trail.region, length: trail.lengthKm, difficulty: trail.difficulty })}
             fill
             className="object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}
@@ -55,7 +55,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
           </div>
           {conditions?.temperatureC != null && (
             <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 text-charcoal text-xs font-medium backdrop-blur-sm">
-              {conditions.temperatureC}°C
+              {tTrails("card.temperature", { value: conditions.temperatureC })}
             </div>
           )}
           <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block">
@@ -75,7 +75,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
           <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-sage/80">
             <span>{trail.lengthKm} km</span>
             <span aria-hidden>·</span>
-            <span>{trail.elevationGainM}m gain</span>
+            <span>{tTrails("card.elevationGain", { meters: trail.elevationGainM })}</span>
             <span aria-hidden>·</span>
             <span>~{durationH}h</span>
             {trail.routeType && (
@@ -105,7 +105,7 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
       </AppLink>
       <div className={CARD.footer}>
         <TrackOnClick event="plan_add" properties={{ placeId: trail.id, source: "trail_card" }}>
-          <AddToItineraryButton placeId={trail.id} label="Add to plan" className="text-sm" />
+          <AddToItineraryButton placeId={trail.id} label={tTrails("addToPlan")} className="text-sm" />
         </TrackOnClick>
       </div>
     </div>

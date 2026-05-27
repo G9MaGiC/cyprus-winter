@@ -30,9 +30,19 @@ vi.mock("next/navigation", () => ({
   useSearchParams: () => mockSearchParams,
 }));
 
+const testMessages = {
+  plan: {
+    clipboard: {
+      heading: "Cyprus Winter Itinerary",
+      dayLabel: "Day {day}:",
+      emptyFallback: "Your Cyprus Winter plan. Add places from Discover or Trails to get going.",
+    },
+  },
+};
+
 function wrapper({ children }: { children: React.ReactNode }) {
   return (
-    <NextIntlClientProvider locale="en" messages={{}}>
+    <NextIntlClientProvider locale="en" messages={testMessages}>
       <Suspense fallback={null}>{children}</Suspense>
     </NextIntlClientProvider>
   );
@@ -73,7 +83,7 @@ describe("useItinerary", () => {
     vi.stubGlobal("navigator", {
       clipboard: { writeText: clipboardMocks.writeText },
     } as unknown as Navigator);
-    vi.stubGlobal("confirm", vi.fn(() => true));
+    
   });
 
   it("hydrates with empty days when no URL plan and no storage", async () => {
@@ -232,10 +242,10 @@ describe("useItinerary", () => {
     });
 
     expect(result.current.days[1]?.length).toBeGreaterThan(0);
-    expect(confirm).not.toHaveBeenCalled();
+    
   });
 
-  it("applyTemplate asks confirm when replacing a non-empty plan", async () => {
+  it("applyTemplate replaces a non-empty plan directly", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 
     await waitFor(() => expect(result.current.hydrated).toBe(true));
@@ -245,14 +255,11 @@ describe("useItinerary", () => {
     });
     expect(result.current.hasContent).toBe(true);
 
-    vi.mocked(confirm).mockReturnValueOnce(false);
-
     act(() => {
       result.current.applyTemplate("short-stay");
     });
 
-    expect(confirm).toHaveBeenCalled();
-    expect(result.current.days[1]).toEqual(["kourion"]);
+    expect(result.current.days[1]).not.toEqual(["kourion"]);
   });
 
   it("mergeTemplate merges template IDs into existing days", async () => {

@@ -7,8 +7,10 @@ import NavigateButton from "@/components/NavigateButton";
 import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { getTrailPlaceOfDayPick } from "@/lib/trail-place-of-day";
+import { useTranslations } from "next-intl";
 
 export default function TrailsPlaceOfDay() {
+  const tTrails = useTranslations("trails");
   const place = getTrailPlaceOfDayPick();
   const planItem = place ? getPlaceById(place.id) : undefined;
   if (!place) return null;
@@ -23,7 +25,7 @@ export default function TrailsPlaceOfDay() {
           id="trails-place-of-day-heading"
           className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}
         >
-          Trail of the day
+          {tTrails("placeOfDay.heading")}
         </h2>
         <div
           className={`rounded-2xl overflow-hidden ${CARD.planCombo} ${CARD.interactive} group flex flex-col sm:flex-row`}
@@ -31,7 +33,7 @@ export default function TrailsPlaceOfDay() {
           <AppLink
             href={place.href}
             className="block sm:w-2/5 shrink-0 relative aspect-[4/3] sm:aspect-square"
-            aria-label={`Open ${place.name}`}
+            aria-label={tTrails("placeOfDay.openAria", { name: place.name })}
           >
             <Image
               src={place.image}
@@ -48,7 +50,7 @@ export default function TrailsPlaceOfDay() {
               {place.overlay}
             </span>
             <span className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal`}>
-              Trail of the day
+              {tTrails("placeOfDay.badge")}
             </span>
           </AppLink>
           <div className={`flex-1 flex flex-col ${CARD.content} justify-between`}>
@@ -64,7 +66,7 @@ export default function TrailsPlaceOfDay() {
               </p>
               {place.pairWith && (
                 <p className="text-sm text-olive/80 mt-3">
-                  Pair with{" "}
+                  {tTrails("placeOfDay.pairWith")}{" "}
                   <AppLink
                     href={place.pairWith.href}
                     className={`font-medium ${SECTION.aegeanLink}`}
@@ -76,12 +78,12 @@ export default function TrailsPlaceOfDay() {
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {planItem && <NavigateButton place={planItem} />}
-              <AddToItineraryButton placeId={place.id} label="Add to plan" />
+              <AddToItineraryButton placeId={place.id} label={tTrails("addToPlan")} />
               <AppLink
                 href={place.href}
                 className="text-sm font-medium text-terracotta hover:text-terracotta-muted transition-colors min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
               >
-                See details
+                {tTrails("placeOfDay.seeDetails")}
               </AppLink>
             </div>
           </div>

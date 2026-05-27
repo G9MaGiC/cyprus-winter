@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { getPlaceById, type PlanItem } from "@/data";
 import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { toAbsoluteUrl } from "@/lib/site-url";
@@ -29,6 +29,7 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
 export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
+  const tPlanClip = useTranslations("plan.clipboard");
   const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
   const isMountedRef = useRef(true);
   const daysRef = useRef<Record<number, string[]>>(emptyDays());
@@ -150,17 +151,9 @@ export function useItinerary() {
     trackProduct("plan_template_apply", { template: key, mode, locale });
   }, [locale]);
 
-  const applyTemplateReplace = useCallback((key: TemplateKey, skipConfirm?: boolean) => {
-    if (!hasContent || skipConfirm) {
-      applyTemplate(key, "replace");
-      return;
-    }
-    const choice = confirm(
-      "You already have places in your itinerary.\n\n" +
-      "OK = Replace. Cancel = Keep your plan."
-    );
-    if (choice) applyTemplate(key, "replace");
-  }, [hasContent, applyTemplate]);
+  const applyTemplateReplace = useCallback((key: TemplateKey) => {
+    applyTemplate(key, "replace");
+  }, [applyTemplate]);
 
   const mergeTemplate = useCallback((key: TemplateKey) => {
     applyTemplate(key, "merge");
@@ -171,18 +164,18 @@ export function useItinerary() {
   }, [activeDay]);
 
   const copyItinerary = useCallback(async () => {
-    const lines: string[] = ["Cyprus Winter Itinerary", ""];
+    const lines: string[] = [tPlanClip("heading"), ""];
     for (let d = 1; d <= MAX_DAYS; d++) {
       const items = days[d] ?? [];
       if (items.length === 0) continue;
-      lines.push(`Day ${d}:`);
+      lines.push(tPlanClip("dayLabel", { day: d }));
       for (const id of items) {
         const p = getPlace(id);
         if (p) lines.push(`  • ${p.name} (${p.region})`);
       }
       lines.push("");
     }
-    const text = lines.join("\n").trim() || "Your Cyprus Winter plan. Add places from Discover or Trails to get going.";
+    const text = lines.join("\n").trim() || tPlanClip("emptyFallback");
     try {
       await navigator.clipboard.writeText(text);
       if (!isMountedRef.current) return;
@@ -197,7 +190,7 @@ export function useItinerary() {
     } catch {
       // clipboard not available
     }
-  }, [days, getPlace, locale]);
+  }, [days, getPlace, locale, tPlanClip]);
 
   const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
 

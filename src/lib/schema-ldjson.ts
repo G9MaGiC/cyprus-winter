@@ -7,5 +7,5 @@
  * when content is from our own data files.
  */
 export function schemaForLdJson<T extends object>(schema: T): string {
-  return JSON.stringify(schema);
+  return JSON.stringify(schema).replace(/</g, "\\u003c");
 }

@@ -1219,3 +1219,40 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-114 | Security | CSP `unsafe-eval` in production | Removed in prod via `proxy.ts` (`NODE_ENV`) |
 | BUG-115 | Docs | Stale agent docs | `AGENTS.md` at app root |
 | BUG-116 | Security | Bookings email lookup enumeration | Rate limited (`bookings-lookup`, 15/min); generic errors — document in deploy checklist |
+
+---
+
+## Visual QA — Full responsive pass (May 27, 2026)
+
+*Branch: `fix/discover-trails-booking-maps` (PR #38). Viewports 320/375/768/1280+; automated gates + code audit.*
+
+### Automated baseline
+
+| Check | Result |
+|-------|--------|
+| `npm run lint` | Pass |
+| `npm run typecheck` | Pass |
+| `npm run test` | Pass (549) |
+| `npm run i18n:validate` | Pass (1758 keys × 4 locales) |
+| `npm run i18n:scan --fail` | Pass |
+| `npm run data:validate` | Pass |
+| `npm run build` | Pass |
+| `npm run test:e2e:gate:ci` | Skipped locally — Playwright Chromium not installed in sandbox (`browserType.launch: Executable doesn't exist`; run `npm run test:e2e:install` first) |
+
+### Findings fixed (BUG-117–121)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-117 | Visual | Wine route hero images referenced missing files (`cyprus-wine-village.jpg`, `cyprus-paphos-hills.jpg`, `cyprus-akamas-coast.jpg`, `cyprus-commandaria-village.jpg`) | Mapped to existing `/images/cyprus/*` assets in `wine-routes.ts` + OG fallback in `wine-routes/[slug]/page.tsx` |
+| BUG-118 | Layout | `PlanFooter` duplicated mobile bottom clearance (`footerBottomClearance` + `<main>` `mainPaddingBottom`) — excessive gap above site footer on plan page | Removed `footerBottomClearance` from `PlanFooter.tsx` (same pattern as BUG-081 / `HubFooter`) |
+| BUG-119 | Layout | Trail detail used ad-hoc `pb-20`; discover detail used inline `pb-24 sm:pb-12` for sticky action bars | Added `LAYOUT.detailMobileStickyClearance`; applied on discover + trail detail pages |
+| BUG-120 | i18n | Booking form Zod validation surfaced English defaults (`Required`, `Invalid email`) | `localizeBookingFieldErrors` + `validationLabels` in `useBookingForm`; winery/guide forms wired to `book.*Form.validation.*` |
+| BUG-121 | i18n | Missing `partySizeRequired` validation key in message catalogs | Added en/el/de/pl under `book.guideForm.validation` and `book.wineryForm.validation` |
+
+### Manual / no change required
+
+| Area | Note |
+|------|------|
+| Maps | `MapInteractionGuard` + tap-to-enable overlay present on Discover, trails, plan, wine-route maps — scroll trap mitigated on touch |
+| Hub pages | List/hub pages use `LAYOUT.pagePy` / `pagePyHeroFirst` / `safeAreaX`; home uses root layout without `(padded)` top offset |
+| Images | All `cyprus-images.ts` paths resolve to files under `public/images/cyprus/` after wine-route fix |

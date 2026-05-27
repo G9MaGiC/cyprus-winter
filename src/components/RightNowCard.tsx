@@ -70,7 +70,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             aria-hidden
           />
           <span
-            className="absolute bottom-1 left-1 right-1 text-white text-[10px] sm:text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2"
+            className="absolute bottom-1 left-1 right-1 text-white text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2"
             title={badge}
           >
             {badge}

@@ -1,3 +1,5 @@
+"use client";
+
 import AppLink from "@/components/AppLink";
 import { CTA, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";

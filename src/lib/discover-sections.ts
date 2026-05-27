@@ -30,7 +30,7 @@ export const filterToSectionId: Record<string, string> = {
   eat: "wine",
   restaurant: "wine",
   monastery: "monastery",
-  family: "hidden",
+  family: "family",
   hidden: "hidden",
   "off-beaten-path": "hidden",
 };
@@ -70,11 +70,13 @@ export function buildDiscoverSections(
   );
 
   return [
-    { id: "coasts", title: "Coasts", items: coastsItems },
-    { id: "ancient", title: "Ancient sites", items: ancientSites },
-    { id: "village", title: "Villages", items: villages },
-    { id: "wine", title: "Wine & food", items: wineAndFoodItems },
-    { id: "monastery", title: "Monasteries & culture", items: monasteries },
-    { id: "hidden", title: "Hidden gems", items: hiddenGemsItems },
+    // NOTE: `title` is non-user-facing fallback only; UI should use i18n keys like `discover.page.sections.${id}`.
+    { id: "coasts", title: "coasts", items: coastsItems },
+    { id: "ancient", title: "ancient", items: ancientSites },
+    { id: "village", title: "village", items: villages },
+    { id: "wine", title: "wine", items: wineAndFoodItems },
+    { id: "monastery", title: "monastery", items: monasteries },
+    { id: "family", title: "family", items: familyItems },
+    { id: "hidden", title: "hidden", items: hiddenGemsItems },
   ];
 }

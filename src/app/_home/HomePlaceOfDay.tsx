@@ -85,7 +85,6 @@ function getPlaceOfDayData({ overlays, fallbackTease }: PlaceOfDayI18n) {
 
 export default function HomePlaceOfDay() {
   const t = useTranslations("home.placeOfDay");
-  const Link = AppLink;
   const place = getPlaceOfDayData({
     overlays: {
       goodDay: t("overlays.goodDay"),
@@ -117,7 +116,7 @@ export default function HomePlaceOfDay() {
         <div
           className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
         >
-          <Link
+          <AppLink
             href={place.href}
             prefetch="auto"
             className="block sm:w-2/5 shrink-0 relative aspect-[4/3] sm:aspect-square"
@@ -134,31 +133,31 @@ export default function HomePlaceOfDay() {
             <span className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium drop-shadow-lg">
               {place.overlay}
             </span>
-          </Link>
+          </AppLink>
           <div className={`flex-1 flex flex-col ${CARD.contentLg}`}>
             <p id="place-of-day-heading" className={`${TYPE.kicker} mb-1`}>
               {t("kicker")}
             </p>
-            <Link
+            <AppLink
               href={place.href}
               prefetch="auto"
               className={`${TYPE.subSectionTitle} text-charcoal group-hover:text-terracotta transition-colors mt-0.5`}
             >
               {place.name}
-            </Link>
+            </AppLink>
             <p className="text-sm text-olive/90 mt-1 leading-relaxed flex-1">
               {place.tease}
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
               {planItem && <NavigateButton place={planItem} />}
               <AddToItineraryButton placeId={place.id} label={t("addToPlan")} />
-              <Link
+              <AppLink
                 href={place.href}
                 prefetch="auto"
                 className="text-sm font-medium text-terracotta hover:text-terracotta-muted hover:underline underline-offset-2 transition-colors min-h-[44px] inline-flex items-center"
               >
                 {t("seeDetails")}
-              </Link>
+              </AppLink>
             </div>
           </div>
         </div>

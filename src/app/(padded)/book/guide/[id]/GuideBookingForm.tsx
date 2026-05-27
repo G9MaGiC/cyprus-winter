@@ -1,17 +1,16 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useCallback } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
-import { track } from "@/lib/analytics";
-import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
-import { addMutation } from "@/lib/offline-queue";
 import { trails } from "@/data/trails";
 import type { Guide } from "@/data/guides";
 import { useTranslations } from "next-intl";
+import { guideBookingSchema } from "@/lib/booking-schemas";
+import { useBookingForm } from "@/hooks/useBookingForm";
 
 export default function GuideBookingForm({
   guide,
@@ -26,121 +25,65 @@ export default function GuideBookingForm({
   const tBookings = useTranslations("bookings");
   const searchParams = useSearchParams();
   const trailFromQuery = preselectedTrailId ?? searchParams.get("trail");
-  const [loading, setLoading] = useState(false);
-  const [done, setDone] = useState(false);
-  const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
-  const [emailDelayed, setEmailDelayed] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const successRef = useRef<HTMLDivElement>(null);
-  const errorRef = useRef<HTMLParagraphElement>(null);
 
   const trailOptions = guide.trailIds
-    .map((tid) => trails.find((t) => t.id === tid || t.slug === tid))
+    .map((tid) => trails.find((tr) => tr.id === tid || tr.slug === tid))
     .filter(Boolean);
 
-  useEffect(() => {
-    if (done && successRef.current) {
-      successRef.current.focus({ preventScroll: false });
-    }
-  }, [done]);
-
-  useEffect(() => {
-    track("booking_trust_strip_view", { type: "guide_tour", guideId: guide.id });
-    track("booking_stepper_progress", { type: "guide_tour", step: 1 });
-  }, [guide.id]);
-
-  useEffect(() => {
-    if (!done) return;
-    track("booking_stepper_progress", { type: "guide_tour", step: 3 });
-  }, [done]);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const date = formData.get("date") as string;
-    const partySize = formData.get("partySize") as string;
-    const guestName = formData.get("guestName") as string;
-    const guestEmail = formData.get("guestEmail") as string;
-    const notes = formData.get("notes") as string;
-    const trailId = (formData.get("trailId") as string) || undefined;
-
-    const body = JSON.stringify({
+  const {
+    loading,
+    done,
+    storageMode,
+    emailDelayed,
+    error,
+    fieldErrors,
+    notesLength,
+    setNotesLength,
+    successRef,
+    errorRef,
+    handleSubmit,
+    todayStr,
+    validateFieldOnBlur,
+  } = useBookingForm(
+    {
       type: "guide_tour",
       providerId: guide.id,
-      date,
-      partySize: Number(partySize),
-      guestName,
-      guestEmail,
-      notes: notes || undefined,
-      trailId: trailId || undefined,
-    });
-
-    try {
-      const res = await fetch("/api/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body,
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        const msg =
-          data.message ??
-          (typeof data.error === "string" ? data.error : data.error?.message) ??
-          t("errors.failed");
-        throw new Error(msg);
-      }
-
-      setDone(true);
-      setStorageMode(data.storage ?? null);
-      setEmailDelayed(data.emailStatus?.confirmationSent === false);
-      form.reset();
-
-      track("booking_complete", {
-        guideId: guide.id,
-        trailId: trailId || undefined,
-        partySize: Number(partySize),
-      });
-      if (loadLocalBookings().length === 0) {
-        track("first_booking", { guideId: guide.id });
-      }
-
-      addBookingToLocal(data.booking);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "";
-      const isNetworkError = /failed to fetch|network error/i.test(msg);
-      if (isNetworkError && typeof navigator !== "undefined") {
-        addMutation({ type: "guide_booking", url: "/api/bookings", method: "POST", body });
-      }
-      const fallback = t("errors.fallback");
-      setError(msg && !isNetworkError ? msg : fallback);
-      setTimeout(() => {
-        const behavior =
-          typeof window !== "undefined" &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? "auto"
-            : "smooth";
-        errorRef.current?.scrollIntoView({ behavior, block: "nearest" });
-      }, 0);
-    } finally {
-      setLoading(false);
+      providerName: guide.name,
+      schema: guideBookingSchema,
+      extraFields: { trailId: undefined },
+      analyticsExtra: { guideId: guide.id },
+      validationLabels: {
+        date: t("validation.dateRequired"),
+        guestName: t("validation.nameRequired"),
+        guestEmail: t("validation.emailInvalid"),
+        partySize: t("validation.partySizeRequired"),
+      },
+    },
+    {
+      failed: t("errors.failed"),
+      fallback: t("errors.fallback"),
+      offlineQueued: t("errors.offlineQueued"),
     }
-  };
+  );
+
+  const handleBlur = useCallback(
+    (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      validateFieldOnBlur(e.target.name, e.target.value);
+    },
+    [validateFieldOnBlur]
+  );
 
   if (done) {
     return (
       <div
         ref={successRef}
         tabIndex={-1}
-        className="mt-8 p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-aegean/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
+        className="mt-8 space-y-4 focus-visible:outline-none"
         role="status"
         aria-live="polite"
       >
+        <BookingProgressStepper currentStep={3} />
+        <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-aegean/40">
         <h2 className={`${TYPE.subSectionTitle} text-olive`}>{t("success.title")}</h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
           {t("success.body", { guideName: guide.name })}
@@ -163,13 +106,17 @@ export default function GuideBookingForm({
             {t("success.emailDelayed")}
           </p>
         )}
-        <div className="mt-4 flex flex-wrap gap-3">
-          <AppLink href="/bookings" className={`gap-2 px-5 py-3 rounded-lg ${CTA.primaryCompact}`}>
+        <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
+          <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
+            {tCommon("viewPlan")}
+          </AppLink>
+          <AppLink href="/bookings" className={`${CTA.secondaryCompact} justify-center`}>
             {t("success.ctaBookings")}
           </AppLink>
-          <AppLink href="/trails" className={`gap-2 px-5 py-3 rounded-lg ${CTA.secondaryCompact}`}>
+          <AppLink href="/trails" className={`${CTA.secondaryCompact} justify-center`}>
             {t("success.ctaTrails")}
           </AppLink>
+        </div>
         </div>
       </div>
     );
@@ -177,7 +124,7 @@ export default function GuideBookingForm({
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-      <BookingProgressStepper currentStep={1} />
+      <BookingProgressStepper currentStep={loading ? 2 : 1} />
       <BookingTrustStrip variant="guide" />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
         <p>
@@ -207,9 +154,13 @@ export default function GuideBookingForm({
           name="date"
           type="date"
           required
-          min={new Date().toISOString().split("T")[0]}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
+          min={todayStr}
+          onBlur={handleBlur}
+          aria-invalid={!!fieldErrors.date}
+          aria-describedby={fieldErrors.date ? "date-error" : undefined}
+          className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.date ? "border-terracotta" : "border-sand-200/80"}`}
         />
+        {fieldErrors.date && <p id="date-error" className="text-xs text-terracotta mt-1">{fieldErrors.date}</p>}
       </div>
 
       {trailOptions.length > 0 && (
@@ -221,9 +172,10 @@ export default function GuideBookingForm({
           <select
             id="trailId"
             name="trailId"
+            onBlur={handleBlur}
             defaultValue={
               (() => {
-                const match = trailFromQuery && trailOptions.find((t) => t && (t.id === trailFromQuery || t.slug === trailFromQuery));
+                const match = trailFromQuery && trailOptions.find((tr) => tr && (tr.id === trailFromQuery || tr.slug === trailFromQuery));
                 return match ? match.id : "";
               })()
             }
@@ -249,8 +201,13 @@ export default function GuideBookingForm({
           id="partySize"
           name="partySize"
           required
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
+          defaultValue=""
+          onBlur={handleBlur}
+          aria-invalid={!!fieldErrors.partySize}
+          aria-describedby={fieldErrors.partySize ? "partySize-error" : undefined}
+          className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.partySize ? "border-terracotta" : "border-sand-200/80"}`}
         >
+          <option value="" disabled>{t("fields.partySize.placeholder")}</option>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
             <option key={n} value={n}>
               {tCommon("peopleCount", { count: n })}
@@ -258,6 +215,7 @@ export default function GuideBookingForm({
           ))}
           <option value="11">{t("fields.partySize.plus")}</option>
         </select>
+        {fieldErrors.partySize && <p id="partySize-error" className="text-xs text-terracotta mt-1">{fieldErrors.partySize}</p>}
       </div>
 
       <div>
@@ -272,8 +230,12 @@ export default function GuideBookingForm({
           required
           maxLength={200}
           placeholder={t("fields.guestName.placeholder")}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
+          onBlur={handleBlur}
+          aria-invalid={!!fieldErrors.guestName}
+          aria-describedby={fieldErrors.guestName ? "guestName-error" : undefined}
+          className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.guestName ? "border-terracotta" : "border-sand-200/80"}`}
         />
+        {fieldErrors.guestName && <p id="guestName-error" className="text-xs text-terracotta mt-1">{fieldErrors.guestName}</p>}
       </div>
 
       <div>
@@ -287,8 +249,12 @@ export default function GuideBookingForm({
           autoComplete="email"
           required
           placeholder={t("fields.guestEmail.placeholder")}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
+          onBlur={handleBlur}
+          aria-invalid={!!fieldErrors.guestEmail}
+          aria-describedby={fieldErrors.guestEmail ? "guestEmail-error" : undefined}
+          className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.guestEmail ? "border-terracotta" : "border-sand-200/80"}`}
         />
+        {fieldErrors.guestEmail && <p id="guestEmail-error" className="text-xs text-terracotta mt-1">{fieldErrors.guestEmail}</p>}
       </div>
 
       <div>
@@ -304,8 +270,13 @@ export default function GuideBookingForm({
           rows={3}
           maxLength={500}
           placeholder={t("fields.notes.placeholder")}
+          onChange={(e) => setNotesLength(e.target.value.length)}
+          onBlur={handleBlur}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
+        {notesLength > 0 && (
+          <p className="text-xs text-olive/50 mt-1 text-right tabular-nums">{notesLength}/500</p>
+        )}
       </div>
 
       <button
@@ -322,9 +293,9 @@ export default function GuideBookingForm({
       </button>
       <p className="text-xs text-olive/50 mt-3 text-center break-words">
         {t("finePrint.bodyPrefix")}{" "}
-        <AppLink href="/terms" className="text-olive/70 hover:underline">{t("finePrint.terms")}</AppLink>{" "}
+        <AppLink href="/terms" className="inline-flex items-center min-h-[44px] py-2 -my-2 text-olive/70 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">{t("finePrint.terms")}</AppLink>{" "}
         {t("finePrint.and")}{" "}
-        <AppLink href="/privacy" className="text-olive/70 hover:underline">{t("finePrint.privacy")}</AppLink>
+        <AppLink href="/privacy" className="inline-flex items-center min-h-[44px] py-2 -my-2 text-olive/70 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">{t("finePrint.privacy")}</AppLink>
         {t("finePrint.bodySuffix")}
       </p>
     </form>

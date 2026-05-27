@@ -27,6 +27,7 @@ const PlanMap = dynamic(() => import("./PlanMap").then((m) => m.default), {
 
 export default function PlanMapClient() {
   const { days, hydrated, getPlace } = useItinerary();
+  const tMap = useTranslations("plan.map");
 
   const items = useMemo((): PlanMapItem[] => {
     if (!hydrated || !days) return [];
@@ -65,7 +66,7 @@ export default function PlanMapClient() {
   if (items.length === 0 && hasContent) {
     return (
       <p className="text-sm text-olive/70 py-6 rounded-xl border border-sand-200/80 bg-sand-100/50 text-center">
-        Some of your places don&apos;t have map locations yet.
+        {tMap("noCoords")}
       </p>
     );
   }

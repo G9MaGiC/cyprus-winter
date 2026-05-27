@@ -48,7 +48,7 @@ export default function SearchResultCard({ result, searchQuery }: Props) {
     <div className={`group rounded-xl overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.content}`}>
       <AppLink
         href={href}
-        className="block"
+        className={`block ${CARD.link}`}
         aria-label={ariaLabel}
       >
         <div className="flex items-start justify-between gap-3">

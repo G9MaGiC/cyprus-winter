@@ -91,13 +91,18 @@ function normalizeProperties(
 }
 
 const EVENT_DEDUPE_TTL_MS = 10 * 60 * 1000;
+const EVENT_DEDUPE_MAX_SIZE = 5000;
 const recentlySeenEventIds = new Map<string, number>();
 
 function isDuplicateEventId(eventId: string): boolean {
   const now = Date.now();
-  // Opportunistic cleanup
   for (const [key, ts] of recentlySeenEventIds) {
     if (now - ts > EVENT_DEDUPE_TTL_MS) recentlySeenEventIds.delete(key);
+  }
+  if (recentlySeenEventIds.size > EVENT_DEDUPE_MAX_SIZE) {
+    const entries = [...recentlySeenEventIds.entries()].sort((a, b) => a[1] - b[1]);
+    const toDelete = entries.slice(0, entries.length - EVENT_DEDUPE_MAX_SIZE);
+    for (const [key] of toDelete) recentlySeenEventIds.delete(key);
   }
   const last = recentlySeenEventIds.get(eventId);
   if (last != null && now - last <= EVENT_DEDUPE_TTL_MS) return true;

@@ -18,13 +18,14 @@ export default function BookingProgressStepper({
         {steps.map((label, index) => {
           const step = (index + 1) as 1 | 2 | 3;
           const isActive = step <= currentStep;
+          const isCurrent = step === currentStep;
           return (
             <li key={label} className="min-w-0">
               <div
-                className={`h-1.5 rounded-full ${isActive ? "bg-terracotta" : "bg-sand-200"}`}
+                className={`h-1.5 rounded-full transition-colors duration-300 ${isActive ? "bg-terracotta" : "bg-sand-200"} ${isCurrent && currentStep === 2 ? "animate-pulse" : ""}`}
                 aria-hidden
               />
-              <p className={`mt-2 text-xs font-medium ${isActive ? "text-olive" : "text-olive/50"}`}>
+              <p className={`mt-2 text-xs font-medium transition-colors duration-300 ${isActive ? "text-olive" : "text-olive/50"}`}>
                 {label}
               </p>
             </li>

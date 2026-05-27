@@ -1,12 +1,11 @@
 import Image from "next/image";
-import DetailHero from "@/components/DetailHero";
 import type { Metadata } from "next";
 import { allDiscoverIds, getDiscoverPlaceById, getPlaceById } from "@/data";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { type Winery } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
-import { LAYOUT, CTA, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import DiscoverDetailBackLink from "@/app/(padded)/discover/DiscoverDetailBackLink";
@@ -17,7 +16,6 @@ import DetailActionFooter from "@/components/DetailActionFooter";
 import StickyAddToPlanBar from "@/components/StickyAddToPlanBar";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { getSimilarDiscoverPlaces } from "@/lib/related-places";
-import { TrackOnClick } from "@/components/TrackOnClick";
 import TrackView from "@/components/TrackView";
 import TrackEventOnMount from "@/components/TrackEventOnMount";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -29,6 +27,11 @@ import {
   discoverListHref,
   getDiscoverTypeLabel,
 } from "@/lib/discover-links";
+import DetailHeroSection from "./DetailHeroSection";
+import DetailPracticalInfo from "./DetailPracticalInfo";
+import DetailBookingSection from "./DetailBookingSection";
+import DiscoverLocationMap from "@/components/DiscoverLocationMap";
+import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -66,9 +69,22 @@ export async function generateMetadata({
   return {
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
-    alternates,
+    alternates: {
+      canonical: alternates.canonical,
+      languages: alternates.languages,
+    },
     openGraph: {
+      title: `${a.name} | Cyprus Winter`,
+      description: snippet,
+      url: alternates.canonical,
+      type: "website",
       images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${a.name} | Cyprus Winter`,
+      description: snippet,
+      images: [imageUrl],
     },
   };
 }
@@ -94,6 +110,8 @@ export default async function AttractionPage({
   if (!a) notFound();
 
   const typeLabel = getDiscoverTypeLabel(a.type, tDetail, tCommon);
+  const placeSecrets = getSecretsForPlace(a.id);
+  const showInlineLocalSecret = Boolean(a.localSecret) && placeSecrets.length === 0;
 
   const canonicalUrl = `${SITE_URL}/discover/${id}`;
   const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
@@ -143,7 +161,7 @@ export default async function AttractionPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(attractionSchema) }} />
       {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(localBusinessSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
-      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
+      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} ${LAYOUT.detailMobileStickyClearance}`}>
         <TrackView
           id={a.id}
           name={a.name}
@@ -164,57 +182,16 @@ export default async function AttractionPage({
         </nav>
 
         <article aria-label={tDetail("articleAria", { name: a.name, type: typeLabel, region: a.region })}>
-          <DetailHero
-            image={getAttractionImage(a.id, a.type)}
-            imageAlt={tDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel })}
-            badge={
-              <span className="inline-block px-3 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md tracking-wide">
-                {typeLabel}
-              </span>
-            }
-            title={getLocalizedName(a, locale)}
-            subtitle={a.region}
+          <DetailHeroSection
+            a={a}
+            locale={locale}
+            typeLabel={typeLabel}
+            tDetail={tDetail}
           />
 
-          {/* Content */}
-          <div className="space-y-10 sm:space-y-14">
+          <div className="space-y-10 sm:space-y-14 mt-10 sm:mt-14">
 
-            <section>
-              <p className="text-olive/90 text-lg sm:text-xl leading-relaxed break-words">{a.description}</p>
-            </section>
-
-            <section className={`${CARD.base} ${CARD.content} bg-aegean/5 border-aegean/20`}>
-              <h2 className={`${TYPE.kicker} text-aegean ${SECTION.headingGap}`}>{tDetail("whyNow.title")}</h2>
-              <ul className="space-y-2 text-sm text-olive/85">
-                <li className="flex gap-2">
-                  <span className="text-aegean" aria-hidden>•</span>
-                  <span>
-                    {tDetail("whyNow.bestFor", {
-                      types: a.bestFor.slice(0, 2).join(" and ").toLowerCase(),
-                    })}
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-aegean" aria-hidden>•</span>
-                  <span>{tDetail("whyNow.regionFlow", { region: a.region })}</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-aegean" aria-hidden>•</span>
-                  <span>{tDetail("whyNow.saveCompare")}</span>
-                </li>
-              </ul>
-            </section>
-
-            {"culturalNote" in a && a.culturalNote && /buffer zone/i.test(a.culturalNote) && (
-              <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
-                <p className="text-sm font-medium text-charcoal flex items-start gap-2">
-                  <span className="text-golden shrink-0" aria-hidden>⚠</span>
-                  <span>{tDetail("bufferZoneWarning")}</span>
-                </p>
-              </div>
-            )}
-
-            {/* Highlights + Great for — quick scan */}
+            {/* Highlights + Great for */}
             <section>
               <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                 {tDetail("headings.highlights")}
@@ -289,7 +266,7 @@ export default async function AttractionPage({
               </section>
             )}
 
-            {/* Winery: Tasting + Book CTA early */}
+            {/* Winery: Tasting info */}
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
@@ -304,130 +281,9 @@ export default async function AttractionPage({
               </section>
             )}
 
-            {/* Practical info — before booking so logistics come first */}
-            {(a.openingHours || ("transport" in a && a.transport) || ("parking" in a && a.parking) || ("accessibility" in a && a.accessibility)) && (
-              <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-3`}>
-                <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
-                  {tDetail("practical.title")}
-                </h2>
-            {a.openingHours && (
-              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.hours")}</strong> {a.openingHours}</p>
-            )}
-            {"transport" in a && a.transport && (
-              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.transport")}</strong> {a.transport}</p>
-            )}
-            {"parking" in a && a.parking && (
-              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.parking")}</strong> {a.parking}</p>
-            )}
-            {"accessibility" in a && a.accessibility && (
-              <p className="text-base text-olive/90 break-words"><strong>{tDetail("practical.accessibility")}</strong> {a.accessibility}</p>
-            )}
-              </section>
-            )}
+            <DetailPracticalInfo a={a} tDetail={tDetail} />
 
-            {/* Revenue CTAs — Book, Contact, Shop */}
-            {(a.type === "winery" ||
-          (a.type === "village" && "bookingUrl" in a && a.bookingUrl) ||
-          (a.type === "restaurant" && (a.bookingUrl || a.contactPhone)) ||
-          a.contactPhone ||
-          ("shopUrl" in a && a.shopUrl)) && (
-          <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-            <h2 className={`${TYPE.kicker} text-olive/70 mb-1`}>
-              {tDetail("booking.title")}
-            </h2>
-            <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-aegean">
-                {tDetail("trustTiming.title")}
-              </p>
-              <p className="mt-1 text-sm text-olive/80">{tDetail("trustTiming.body")}</p>
-            </div>
-            {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
-              <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
-            )}
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-wrap gap-3">
-                {isWinery(a) && (
-                  <>
-                    <AppLink href={`/book/winery/${a.id}`} className={`gap-2 ${CTA.primaryCompact}`}>
-                      {tDetail("booking.bookTasting")}
-                    </AppLink>
-                    {a.bookingUrl && (
-                      <a
-                        href={a.bookingUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`gap-2 ${CTA.secondaryCompact}`}
-                        aria-label={tDetail("booking.bookOrContactAria")}
-                      >
-                        {a.contactPhone ? tDetail("booking.bookOnWebsite") : tDetail("booking.contactBook")}
-                      </a>
-                    )}
-                  </>
-                )}
-                {a.type === "restaurant" && a.bookingUrl && (
-                  <a
-                    href={a.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`gap-2 ${CTA.primaryCompact}`}
-                    aria-label={tDetail("booking.reserveAria")}
-                  >
-                    {tDetail("booking.reserveCta")}
-                  </a>
-                )}
-                {a.bookingUrl && a.type === "village" && "bookingUrl" in a && (
-                  <a
-                    href={a.bookingUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`gap-2 ${CTA.primaryCompact}`}
-                    aria-label={tDetail("booking.findStaysAria")}
-                  >
-                    {tDetail("booking.findStaysCta")}
-                  </a>
-                )}
-                {a.contactPhone && (
-                  <a
-                    href={`tel:${a.contactPhone}`}
-                    className={`gap-2 ${CTA.secondaryCompact}`}
-                    aria-label={tDetail("booking.callAria", { phone: a.contactPhone })}
-                  >
-                    {tDetail("booking.callCta", { phone: a.contactPhone })}
-                  </a>
-                )}
-              </div>
-              {("shopUrl" in a && a.shopUrl) || (isWinery(a) && "instagramHandle" in a && a.instagramHandle) ? (
-                <div className="flex flex-wrap gap-3 pt-4 border-t border-sand-200/80">
-                  <span className="sr-only">{tDetail("booking.moreOptionsSr")}</span>
-                  {"shopUrl" in a && a.shopUrl && (
-                    <TrackOnClick event="shop_click" properties={{ partnerId: a.id }}>
-                      <a
-                        href={a.shopUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`gap-2 ${CTA.chipSecondary}`}
-                        aria-label={tDetail("booking.buyWineAria")}
-                      >
-                        {tDetail("booking.buyWineCta")}
-                      </a>
-                    </TrackOnClick>
-                  )}
-                  {isWinery(a) && "instagramHandle" in a && a.instagramHandle && (
-                    <a
-                      href={`https://www.instagram.com/${(a as Winery).instagramHandle}/`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center min-h-[44px] gap-2 px-4 py-2.5 rounded-lg border border-sand-200/80 text-olive font-medium text-sm hover:border-terracotta/30 hover:bg-terracotta/5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                      aria-label={tDetail("booking.instagramAria", { handle: a.instagramHandle })}
-                    >
-                      {tDetail("booking.instagramCta", { handle: a.instagramHandle })}
-                    </a>
-                  )}
-                </div>
-              ) : null}
-            </div>
-          </section>
-        )}
+            <DetailBookingSection a={a} tDetail={tDetail} />
 
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
@@ -435,13 +291,13 @@ export default async function AttractionPage({
                   {tDetail("ourWines.title")}
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
-                  {a.signatureWines.map((wine, i) => (
+                  {a.signatureWines.map((wine) => (
                     <div
-                      key={i}
+                      key={wine.name}
                       className="rounded-xl bg-white/90 border border-sand-200/80 hover:border-terracotta/20 transition-all duration-200 overflow-hidden group shadow-sm"
                     >
-                  {wine.image && (
-                    <div className="aspect-[3/4] relative bg-sand-100 overflow-hidden">
+                  <div className="aspect-[3/4] relative bg-sand-100 overflow-hidden">
+                    {wine.image ? (
                       <Image
                         src={wine.image}
                         alt={`${wine.name} ${wine.variety ? `— ${wine.variety}` : ""} at ${a.name}, Cyprus winter wine`}
@@ -449,8 +305,15 @@ export default async function AttractionPage({
                         className="object-contain group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 640px) 50vw, 180px"
                       />
-                    </div>
-                  )}
+                    ) : (
+                      <div
+                        className="absolute inset-0 flex items-center justify-center p-3 text-center text-xs font-medium text-olive/50"
+                        aria-hidden
+                      >
+                        {wine.name}
+                      </div>
+                    )}
+                  </div>
                   <div className="p-4">
                     <p className={`${TYPE.cardTitleCompact} break-words`}>{wine.name}</p>
                     {wine.variety && (
@@ -466,7 +329,7 @@ export default async function AttractionPage({
               </section>
             )}
 
-            {(a.winterTip || a.bestTimeToVisit || a.localSecret) && (
+            {(a.winterTip || a.bestTimeToVisit || showInlineLocalSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   {tDetail("localSecretHeading")}
@@ -479,7 +342,7 @@ export default async function AttractionPage({
                 <strong>{tDetail("bestTimeLabel")}</strong> {a.bestTimeToVisit}
               </p>
             )}
-            {a.localSecret && (
+            {showInlineLocalSecret && a.localSecret && (
               <p className="text-olive/90 text-base italic border-l-2 border-terracotta/30 pl-4 break-words">
                 {a.localSecret}
               </p>
@@ -496,42 +359,30 @@ export default async function AttractionPage({
               </section>
             )}
 
-            {"culturalNote" in a && a.culturalNote && !/buffer zone/i.test(a.culturalNote) && (
+            {"culturalNote" in a && a.culturalNote && !isBufferZoneCulturalNote(a.culturalNote) && (
               <p className="text-olive/80 text-base italic break-words">
                 {a.culturalNote}
               </p>
             )}
 
-            {isWinery(a) && typeof a.latitude === "number" && typeof a.longitude === "number" && (
+            {typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
                 <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
                   {tDetail("location.title")}
                 </h2>
-            <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
-              <iframe
-                title={tDetail("map.iframeTitle", { name: a.name })}
-                src={`https://www.openstreetmap.org/export/embed.html?bbox=${a.longitude - 0.02}%2C${a.latitude - 0.015}%2C${a.longitude + 0.02}%2C${a.latitude + 0.015}&layer=mapnik&marker=${a.latitude}%2C${a.longitude}`}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-            <a
-              href={`https://www.google.com/maps/dir/?api=1&destination=${a.latitude},${a.longitude}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`gap-2 mt-3 ${CTA.secondaryCompact}`}
-              aria-label={tDetail("directionsAria")}
-            >
-              {tDetail("directionsCta")}
-            </a>
+                <DiscoverLocationMap
+                  name={a.name}
+                  latitude={a.latitude}
+                  longitude={a.longitude}
+                  iframeTitle={tDetail("map.iframeTitle", { name: a.name })}
+                  directionsAria={tDetail("directionsAria")}
+                  directionsCta={tDetail("directionsCta")}
+                  loadMapLabel={tDetail("map.loadMap")}
+                />
               </section>
             )}
 
-            {getSecretsForPlace(a.id).length > 0 && (
+            {placeSecrets.length > 0 && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip}`}>
                 <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
                   {tDetail("localSecrets.title")}
@@ -540,7 +391,7 @@ export default async function AttractionPage({
                   {tDetail("localSecrets.intro")}
                 </p>
                 <div className="space-y-4">
-                  {getSecretsForPlace(a.id).map((s) => (
+                  {placeSecrets.map((s) => (
                     <div key={s.id} className="p-4 rounded-lg bg-white/80 border border-sand-200/80">
                       <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
                       <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
@@ -556,9 +407,9 @@ export default async function AttractionPage({
               </section>
             )}
 
-            {a.combineWith && a.combineWith.length > 0 && (
+            {a.combineWith && a.combineWith.filter((cid) => getPlaceById(cid)).length > 0 && (
               <RelatedPlacesBlock
-                ids={a.combineWith}
+                ids={a.combineWith.filter((cid) => getPlaceById(cid))}
                 title={tDetail("combineWith.title")}
                 description={tDetail("combineWith.description")}
                 discoverFilter={preserveFilter}

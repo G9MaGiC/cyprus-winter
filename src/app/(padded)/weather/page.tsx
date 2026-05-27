@@ -24,19 +24,21 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
 const weatherAlternates = buildStrategyAAlternates("/weather");
 
-export const metadata: Metadata = {
-  title: "Cyprus Winter Weather by Month | Coast & Troodos",
-  description:
-    "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
-  alternates: weatherAlternates,
-  openGraph: {
-    title: "Cyprus Winter Weather by Month | Coast & Troodos",
-    description: "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
-    url: weatherAlternates.canonical,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter weather guide" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("weather.page");
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    alternates: weatherAlternates,
+    openGraph: {
+      title: t("meta.title"),
+      description: t("meta.ogDescription"),
+      url: weatherAlternates.canonical,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t("meta.ogImageAlt") }],
+    },
+  };
+}
 
 function shortSentence(desc: string): string {
   const first = desc.split(".")[0]?.trim() ?? "";

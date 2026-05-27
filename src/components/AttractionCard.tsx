@@ -91,7 +91,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
           </span>
         </div>
         <div className={CARD.content}>
-          <h3 className={`${TYPE.cardTitle} truncate duration-200`} title={a.name}>
+          <h3 className={`${TYPE.cardTitle} line-clamp-2 duration-200`} title={a.name}>
             {a.name}
           </h3>
           <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">

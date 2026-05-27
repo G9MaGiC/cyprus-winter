@@ -1,5 +1,5 @@
-import { LAYOUT, CARD, SKELETON, SECTION } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { LAYOUT, CARD, SKELETON, SECTION, LAYER } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
 function CardSkeleton() {
   return (
@@ -56,8 +56,8 @@ function PlaceOfDaySkeleton() {
   );
 }
 
-export default function DiscoverLoading() {
-  const t = useTranslations("common");
+export default async function DiscoverLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-background ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
@@ -79,7 +79,7 @@ export default function DiscoverLoading() {
       <PlaceOfDaySkeleton />
 
       <div className="-mt-4 sm:-mt-6">
-        <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] z-10 bg-background/98 backdrop-blur-md border-b border-sand-200/60 -ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] py-4 sm:py-5`}>
+        <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] ${LAYER.stickyContent} bg-background/98 backdrop-blur-md border-b border-sand-200/60 -ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] py-4 sm:py-5`}>
           <div className={`${LAYOUT.list} mx-auto space-y-3`}>
             <div className={`h-3 w-32 ${SKELETON.block}`} />
             <div className="flex gap-2.5 overflow-x-hidden pb-1">

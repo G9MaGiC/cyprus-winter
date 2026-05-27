@@ -64,3 +64,23 @@ export function formatReportedAgo(iso: string, locale?: string): string {
     return "Invalid Date";
   }
 }
+
+/** Relative + absolute timestamp for static trail detail (avoids stale “ago” after build). */
+export function formatReportTimestamp(iso: string, locale?: string): string {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "Invalid Date";
+    const absolute = new Intl.DateTimeFormat(locale, {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(d);
+    const relative = formatReportedAgo(iso, locale);
+    if (relative === absolute) return absolute;
+    return `${absolute} · ${relative}`;
+  } catch {
+    return "Invalid Date";
+  }
+}
