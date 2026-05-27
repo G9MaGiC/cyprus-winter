@@ -2119,7 +2119,8 @@
       "validation": {
         "dateRequired": "Wybierz datę w przyszłości",
         "nameRequired": "Imię jest wymagane",
-        "emailInvalid": "Wprowadź prawidłowy adres e-mail"
+        "emailInvalid": "Wprowadź prawidłowy adres e-mail",
+        "partySizeRequired": "Wybierz wielkość grupy"
       },
       "errors": {
         "failed": "Rezerwacja nie powiodła się",
@@ -2186,7 +2187,8 @@
       "validation": {
         "dateRequired": "Wybierz datę w przyszłości",
         "nameRequired": "Imię jest wymagane",
-        "emailInvalid": "Wprowadź prawidłowy adres e-mail"
+        "emailInvalid": "Wprowadź prawidłowy adres e-mail",
+        "partySizeRequired": "Wybierz wielkość grupy"
       },
       "errors": {
         "failed": "Rezerwacja nie powiodła się",

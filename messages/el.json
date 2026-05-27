@@ -2119,7 +2119,8 @@
       "validation": {
         "dateRequired": "Επιλέξτε μελλοντική ημερομηνία",
         "nameRequired": "Το όνομα είναι υποχρεωτικό",
-        "emailInvalid": "Εισάγετε έγκυρη διεύθυνση email"
+        "emailInvalid": "Εισάγετε έγκυρη διεύθυνση email",
+        "partySizeRequired": "Επιλέξτε μέγεθος ομάδας"
       },
       "errors": {
         "failed": "Η κράτηση απέτυχε",
@@ -2186,7 +2187,8 @@
       "validation": {
         "dateRequired": "Επιλέξτε μελλοντική ημερομηνία",
         "nameRequired": "Το όνομα είναι υποχρεωτικό",
-        "emailInvalid": "Εισάγετε μια έγκυρη διεύθυνση email"
+        "emailInvalid": "Εισάγετε μια έγκυρη διεύθυνση email",
+        "partySizeRequired": "Επιλέξτε μέγεθος ομάδας"
       },
       "errors": {
         "failed": "Η κράτηση απέτυχε",

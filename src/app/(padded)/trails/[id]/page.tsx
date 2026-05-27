@@ -97,10 +97,10 @@ export default async function TrailPage({
   };
 
   return (
-    <div className="min-h-screen bg-sand pb-20">
+    <div className="min-h-screen bg-sand">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(trailSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
-      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail}`}>
+      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} ${LAYOUT.detailMobileStickyClearance}`}>
         <nav
           className={`sticky ${LAYOUT.stickyTop} ${LAYER.stickyContent} flex flex-col gap-1 ${LAYOUT.stickyBarX} pt-2 pb-2 bg-sand/95 backdrop-blur-sm supports-[backdrop-filter]:bg-sand/90 md:bg-transparent md:backdrop-blur-none md:pt-0 md:pb-0 mb-2`}
           aria-label={tCommon("aria.pageNavigation")}

@@ -134,6 +134,8 @@ export const LAYOUT = {
   pagePyPlan: "pt-0 pb-24 sm:pt-12 sm:pb-16",
   /** Vertical padding for detail pages — tighter for content-heavy layouts */
   pagePyDetail: "py-6 sm:py-10",
+  /** Extra bottom padding on mobile for sticky Add-to-plan / trail action bars */
+  detailMobileStickyClearance: "pb-24 sm:pb-12",
   /** Sticky bar edge-to-edge: negative margin + padding for safe area. Use for sticky filter/day bars. */
   stickyBarX: "-ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))]",
   /** Hero components that bleed to viewport edges */

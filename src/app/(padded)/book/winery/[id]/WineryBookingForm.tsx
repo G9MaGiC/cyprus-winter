@@ -42,6 +42,12 @@ export default function WineryBookingForm({
       providerName: wineryName,
       schema: wineryBookingSchema,
       analyticsExtra: { wineryId },
+      validationLabels: {
+        date: t("validation.dateRequired"),
+        guestName: t("validation.nameRequired"),
+        guestEmail: t("validation.emailInvalid"),
+        partySize: t("validation.partySizeRequired"),
+      },
     },
     {
       failed: t("errors.failed"),

@@ -37,6 +37,13 @@ export const wineryBookingSchema = z.object({
 
 export type WineryBookingInput = z.infer<typeof wineryBookingSchema>;
 
+export type BookingValidationLabels = {
+  date: string;
+  guestName: string;
+  guestEmail: string;
+  partySize?: string;
+};
+
 export function formatZodErrors(result: { success: boolean; error?: z.ZodError }): Record<string, string> {
   if (result.success || !result.error) return {};
   const errors: Record<string, string> = {};
@@ -45,4 +52,20 @@ export function formatZodErrors(result: { success: boolean; error?: z.ZodError }
     if (!errors[field]) errors[field] = issue.message;
   }
   return errors;
+}
+
+/** Map Zod field keys to translated validation copy (avoids English defaults in UI). */
+export function localizeBookingFieldErrors(
+  errors: Record<string, string>,
+  labels: BookingValidationLabels
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [field, fallback] of Object.entries(errors)) {
+    if (field === "date") out.date = labels.date;
+    else if (field === "guestName") out.guestName = labels.guestName;
+    else if (field === "guestEmail") out.guestEmail = labels.guestEmail;
+    else if (field === "partySize" && labels.partySize) out.partySize = labels.partySize;
+    else out[field] = fallback;
+  }
+  return out;
 }

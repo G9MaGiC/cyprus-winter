@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
   const alternates = buildStrategyAAlternates(`/wine-routes/${slug}`);
-  const ogImage = toAbsoluteUrl(route.heroImage || "/images/cyprus/cyprus-wine-village.jpg");
+  const ogImage = toAbsoluteUrl(route.heroImage || "/images/cyprus/cyprus-village-omodos.jpg");
   return {
     title: t("meta.title", { route: route.title }),
     description: t("meta.description", { route: route.title, count }),

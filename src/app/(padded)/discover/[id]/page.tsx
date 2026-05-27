@@ -161,7 +161,7 @@ export default async function AttractionPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(attractionSchema) }} />
       {localBusinessSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(localBusinessSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
-      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} pb-24 sm:pb-12`}>
+      <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} ${LAYOUT.detailMobileStickyClearance}`}>
         <TrackView
           id={a.id}
           name={a.name}

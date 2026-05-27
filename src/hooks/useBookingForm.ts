@@ -5,7 +5,7 @@ import type { z } from "zod";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
-import { formatZodErrors } from "@/lib/booking-schemas";
+import { formatZodErrors, localizeBookingFieldErrors, type BookingValidationLabels } from "@/lib/booking-schemas";
 
 export type BookingFormConfig = {
   type: "winery_tasting" | "guide_tour";
@@ -14,6 +14,7 @@ export type BookingFormConfig = {
   schema: z.ZodSchema;
   extraFields?: Record<string, string | undefined>;
   analyticsExtra?: Record<string, string | number | undefined>;
+  validationLabels?: BookingValidationLabels;
 };
 
 export type BookingFormState = {
@@ -42,7 +43,7 @@ export function useBookingForm(
   config: BookingFormConfig,
   tErrors: ErrorStrings
 ): BookingFormState {
-  const { type, providerId, schema, extraFields, analyticsExtra } = config;
+  const { type, providerId, schema, extraFields, analyticsExtra, validationLabels } = config;
 
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -55,6 +56,12 @@ export function useBookingForm(
   const errorRef = useRef<HTMLParagraphElement>(null);
 
   const todayStr = new Date().toISOString().split("T")[0];
+
+  const toFieldErrors = useCallback(
+    (raw: Record<string, string>) =>
+      validationLabels ? localizeBookingFieldErrors(raw, validationLabels) : raw,
+    [validationLabels]
+  );
 
   useEffect(() => {
     if (done && successRef.current) {
@@ -96,7 +103,7 @@ export function useBookingForm(
 
     const validation = schema.safeParse(rawInput);
     if (!validation.success) {
-      setFieldErrors(formatZodErrors(validation as { success: false; error: import("zod").ZodError }));
+      setFieldErrors(toFieldErrors(formatZodErrors(validation as { success: false; error: import("zod").ZodError })));
       return;
     }
 
@@ -190,7 +197,7 @@ export function useBookingForm(
         ...partial,
       });
       if (!result.success) {
-        const errs = formatZodErrors(result as { success: false; error: z.ZodError });
+        const errs = toFieldErrors(formatZodErrors(result as { success: false; error: z.ZodError }));
         if (errs[name]) {
           setFieldErrors((prev) => ({ ...prev, [name]: errs[name] }));
         } else {
@@ -208,7 +215,7 @@ export function useBookingForm(
         });
       }
     },
-    [schema]
+    [schema, toFieldErrors]
   );
 
   return {

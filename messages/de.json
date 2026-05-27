@@ -2119,7 +2119,8 @@
       "validation": {
         "dateRequired": "Wählen Sie ein zukünftiges Datum",
         "nameRequired": "Name ist erforderlich",
-        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein"
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein",
+        "partySizeRequired": "Gruppengröße auswählen"
       },
       "errors": {
         "failed": "Buchung fehlgeschlagen",
@@ -2186,7 +2187,8 @@
       "validation": {
         "dateRequired": "Wählen Sie ein zukünftiges Datum",
         "nameRequired": "Name ist erforderlich",
-        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein"
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein",
+        "partySizeRequired": "Gruppengröße auswählen"
       },
       "errors": {
         "failed": "Buchung fehlgeschlagen",

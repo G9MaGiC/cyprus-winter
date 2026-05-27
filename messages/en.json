@@ -2141,7 +2141,8 @@
       "validation": {
         "dateRequired": "Choose a date in the future",
         "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address"
+        "emailInvalid": "Enter a valid email address",
+        "partySizeRequired": "Select group size"
       },
       "errors": {
         "failed": "Booking failed",
@@ -2186,7 +2187,8 @@
       "validation": {
         "dateRequired": "Choose a date in the future",
         "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address"
+        "emailInvalid": "Enter a valid email address",
+        "partySizeRequired": "Select group size"
       },
       "errors": {
         "failed": "Booking failed",
