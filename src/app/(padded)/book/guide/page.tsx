@@ -8,12 +8,21 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { trails } from "@/data/trails";
 import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Book a Guided Hike | Cyprus Winter",
-  description:
-    "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis, and more. Small groups, winter expertise. Book ahead and they'll confirm by email.",
-  alternates: buildStrategyAAlternates("/book/guide"),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("book.pages.guideList.meta");
+  const alternates = buildStrategyAAlternates("/book/guide");
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates,
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: alternates.canonical,
+      type: "website",
+    },
+  };
+}
 
 function getTrailNames(guide: (typeof guides)[0]): string[] {
   return guide.trailIds

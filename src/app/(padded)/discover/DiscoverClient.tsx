@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
-import { CTA, LAYOUT } from "@/lib/design-tokens";
+import { CTA, EMPTY_STATE, LAYOUT } from "@/lib/design-tokens";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { sortDiscoverItemsByInterests } from "@/lib/personalization";
 import { filterToSectionId } from "@/lib/discover-sections";
@@ -19,6 +19,8 @@ import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
 import DiscoverSectionList from "./DiscoverSectionList";
 import DiscoverFooter from "./DiscoverFooter";
 import { SRStatus } from "@/components/SRStatus";
+import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
+import AppLink from "@/components/AppLink";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 
 type DiscoverClientProps = {
@@ -197,7 +199,31 @@ export default function DiscoverClient({
           </button>
         </div>
 
-        {viewMode === "list" ? (
+        {totalCount === 0 && filter ? (
+          <div className={EMPTY_STATE} role="status" aria-live="polite">
+            <p className="text-lg font-semibold text-olive mb-2">
+              {tDiscover("page.noResultsTitle")}
+            </p>
+            <p className="text-olive/80 mb-6">
+              {tDiscover("page.noResultsBody")}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <AppLink
+                href="/discover"
+                className={`min-w-[120px] justify-center ${CTA.primaryCompact}`}
+              >
+                {tDiscover("page.clearFilter")}
+              </AppLink>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
+                className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
+              >
+                {tDiscover("askAI")}
+              </button>
+            </div>
+          </div>
+        ) : viewMode === "list" ? (
           <div
             id="discover-list-panel"
             role="tabpanel"

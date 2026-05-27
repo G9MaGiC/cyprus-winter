@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { isActive } from "@/lib/nav";
 import { bottomOverflowLinks, bottomPrimaryLinks } from "@/lib/nav-links";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
+import { LAYER } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
 
 export default function BottomNav() {
@@ -90,7 +91,7 @@ export default function BottomNav() {
     <nav
       role="navigation"
       aria-label={tCommon("aria.bottomNavigation")}
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-3 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]"
+      className={`fixed bottom-0 left-0 right-0 ${LAYER.chrome} md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-3 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]`}
     >
       <div className="flex items-center justify-around max-w-lg mx-auto">
         {otherLinks.map((link) => (
@@ -102,7 +103,7 @@ export default function BottomNav() {
             className="flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
             <span
-              className={`text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(link.labelKey)}
             </span>
@@ -124,7 +125,7 @@ export default function BottomNav() {
             }`}
           >
             <span
-              className={`text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(planLink.labelKey)}
             </span>
@@ -145,7 +146,7 @@ export default function BottomNav() {
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
-            <span className="text-xs max-[400px]:text-[11px] font-medium whitespace-nowrap">
+            <span className="text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap">
               {t("more")}
             </span>
           </button>

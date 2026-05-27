@@ -1,11 +1,14 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-leaflet";
+import MapScrollWheelToggle from "@/components/MapScrollWheelToggle";
+import MapInteractionGuard from "@/components/MapInteractionGuard";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Trail } from "@/data/trails";
 import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 // Fix default marker icons in Next.js
 const trailheadIcon = L.divIcon({
@@ -66,6 +69,12 @@ type TrailMapProps = {
 export default function TrailMap({ trail, className = "" }: TrailMapProps) {
   const tCommon = useTranslations("common");
   const tTrailsMap = useTranslations("trails.map");
+
+  const [interactive, setInteractive] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !(window.matchMedia?.("(pointer: coarse)").matches ?? false);
+  });
+
   const hasTrailhead = trail.trailheadCoords != null;
   const waypointsWithCoords = trail.waypoints?.filter((w) => w.lat != null && w.lng != null) ?? [];
 
@@ -94,14 +103,40 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
     `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 
   return (
-    <div className={`overflow-hidden rounded-lg border border-sand-200/70 bg-sand-100/50 ${className}`}>
+    <div className={`relative overflow-hidden rounded-lg border border-sand-200/70 bg-sand-100/50 ${className}`}>
+      {!interactive && (
+        <div className="absolute inset-0 z-[5] flex items-end justify-center p-3 pointer-events-none">
+          <button
+            type="button"
+            onClick={() => setInteractive(true)}
+            className="pointer-events-auto inline-flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-full bg-white/95 border border-sand-200/80 text-sm font-medium text-olive shadow-sm hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            aria-label={tCommon("map.enableMapAria")}
+          >
+            {tCommon("map.enableMapCta")}
+          </button>
+        </div>
+      )}
+      {interactive && (
+        <div className="absolute top-3 right-3 z-[5]">
+          <button
+            type="button"
+            onClick={() => setInteractive(false)}
+            className="inline-flex items-center justify-center min-h-[36px] px-3 py-2 rounded-full bg-white/90 border border-sand-200/80 text-xs font-medium text-olive/80 hover:text-olive hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            aria-label={tCommon("map.disableMapAria")}
+          >
+            {tCommon("map.disableMapCta")}
+          </button>
+        </div>
+      )}
       <MapContainer
         center={[centerLat, centerLng]}
         zoom={12}
-        scrollWheelZoom={true}
+        scrollWheelZoom={false}
         className="h-[280px] sm:h-[340px] w-full z-0"
         attributionControl={true}
       >
+        <MapInteractionGuard interactive={interactive} />
+        <MapScrollWheelToggle />
         <TileLayer
           attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">${tCommon("map.openStreetMap")}</a>`}
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -134,7 +169,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-terracotta hover:underline"
                 >
-                  Get directions →
+                    {tCommon("map.getDirections")} →
                 </a>
               </div>
             </Popup>
@@ -161,7 +196,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-terracotta hover:underline"
                   >
-                    Get directions →
+                    {tCommon("map.getDirections")} →
                   </a>
                 </div>
               </Popup>
@@ -190,7 +225,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                   className="w-2.5 h-2.5 rounded-full bg-sage border-2 border-white shadow-sm"
                   aria-hidden
                 />
-                Stops
+                {tTrailsMap("stops")}
               </span>
             </>
           )}
@@ -201,7 +236,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
           rel="noopener noreferrer"
           className="text-sm font-medium text-terracotta hover:underline"
         >
-          Open in Maps →
+          {tCommon("map.openInMaps")} →
         </a>
       </div>
     </div>

@@ -29,6 +29,7 @@ export default async function TeamPage() {
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("team"), href: "/team", isCurrent: true }]}
       />
 
+      <h2 className="sr-only">{tTeam("membersHeading")}</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {team.map((member) => (
           <article

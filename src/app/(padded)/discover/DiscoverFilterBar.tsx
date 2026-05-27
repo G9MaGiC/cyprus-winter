@@ -173,7 +173,7 @@ export default function DiscoverFilterBar({
             </AppLink>
           )}
           {hasWineriesInView && !isActivityFilter && (
-            <AppLink href="/bookings" className={CTA.secondaryCompact}>
+            <AppLink href="/book/winery" className={CTA.secondaryCompact}>
               {tCommon("bookTastings")}
             </AppLink>
           )}

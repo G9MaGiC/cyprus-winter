@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { triggerAIAssistant } from "./AIAssistantTrigger";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYOUT, LAYER } from "@/lib/design-tokens";
 import { isActive } from "@/lib/nav";
 import { navMoreLinks, navPrimaryLinks } from "@/lib/nav-links";
 import { useAuth } from "@/contexts/AuthContext";
@@ -16,6 +16,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
   const moreLinksResolved = useMemo(
     () =>
@@ -70,8 +71,28 @@ export default function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    if (!open || !mobileMenuRef.current) return;
+    const menu = mobileMenuRef.current;
+    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    if (focusables.length === 0) return;
+    (focusables[0] as HTMLElement).focus();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const first = focusables[0] as HTMLElement;
+      const last = focusables[focusables.length - 1] as HTMLElement;
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    menu.addEventListener("keydown", handleKeyDown);
+    return () => menu.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]">
+    <nav aria-label={t("mainNavigation")} className={`fixed top-0 left-0 right-0 ${LAYER.chrome} bg-charcoal/97 backdrop-blur-xl border-b border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.08)] pt-[env(safe-area-inset-top)]`}>
       <div className={`${LAYOUT.nav} mx-auto flex items-center justify-between h-14 ${LAYOUT.safeAreaX}`}>
         <AppLink
           href="/"
@@ -126,12 +147,12 @@ export default function Nav() {
             {moreOpen && (
               <>
                 <div
-                  className="fixed inset-0 z-40"
+                  className={`fixed inset-0 ${LAYER.chrome}`}
                   onClick={() => setMoreOpen(false)}
                   aria-hidden
                   tabIndex={-1}
                 />
-                <div id="more-menu" ref={moreMenuRef} role="menu" className="absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl z-[45] min-w-[120px]">
+                <div id="more-menu" ref={moreMenuRef} role="menu" className={`absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl ${LAYER.popover} min-w-[120px]`}>
                   {moreLinksResolved.map((link) => (
                     <AppLink
                       key={link.href}
@@ -195,7 +216,7 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
+        <div ref={mobileMenuRef} role="menu" className="md:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
           <AppLink
             href="/search"
             prefetch={false}

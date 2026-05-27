@@ -104,7 +104,7 @@ export default async function SecretsPage() {
               {g.href && (
                 <AppLink
                   href={g.href}
-                  className={`inline-flex items-center text-sm font-medium text-terracotta hover:text-terracotta/80 ${CARD.link}`}
+                  className={`inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 ${CARD.link}`}
                 >
                   {tSecrets("card.goThere")}
                 </AppLink>

@@ -40,7 +40,9 @@ export function AIChatInput({
     const recognition = new SpeechRecognitionAPI();
     recognition.continuous = false;
     recognition.interimResults = true;
-    recognition.lang = "en-US";
+    const localeMap: Record<string, string> = { en: "en-US", el: "el-GR", de: "de-DE", pl: "pl-PL" };
+    const htmlLang = document.documentElement.lang || "en";
+    recognition.lang = localeMap[htmlLang] || "en-US";
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = Array.from(event.results)
@@ -94,9 +96,10 @@ export function AIChatInput({
             <button
               key={index}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="shrink-0 px-3 py-1.5 text-xs sm:text-sm bg-sand-100 hover:bg-terracotta/10 
+              className="shrink-0 min-h-[44px] px-4 py-2 text-sm bg-sand-100 hover:bg-terracotta/10 
                          text-olive hover:text-terracotta rounded-full transition-colors
-                         border border-sand-200/80 whitespace-nowrap"
+                         border border-sand-200/80 whitespace-nowrap
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
               disabled={loading}
             >
               {suggestion}
@@ -112,7 +115,7 @@ export function AIChatInput({
             <button
               type="button"
               onClick={toggleListening}
-              className={`shrink-0 p-2 rounded-full transition-colors ${
+              className={`shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
                 isListening
                   ? "bg-terracotta text-white animate-pulse"
                   : "text-olive hover:bg-sand-200"
@@ -127,14 +130,15 @@ export function AIChatInput({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={tCommon("ai.inputPlaceholder")}
-            className="flex-1 bg-transparent border-none outline-none text-sm sm:text-base text-olive placeholder:text-olive/50"
+            className="flex-1 bg-transparent border-none outline-none text-base text-olive placeholder:text-olive/50 focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
             disabled={loading}
           />
-          <button
+            <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="shrink-0 p-2 bg-terracotta text-white rounded-full hover:bg-terracotta-muted 
-                       disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center bg-terracotta text-white rounded-full hover:bg-terracotta-muted 
+                       disabled:opacity-50 disabled:cursor-not-allowed transition-colors
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
             aria-label={tCommon("ai.sendAria")}
           >
             <Send size={18} />

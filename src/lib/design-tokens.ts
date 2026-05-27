@@ -87,6 +87,10 @@ export const LAYER = {
   toast: "z-[95]",
   /** Mobile sticky place actions below nav, above content. */
   stickyPlaceBar: "z-30",
+  /** Sticky content: filter bars, day selectors, in-page sticky headers. */
+  stickyContent: "z-10",
+  /** Skip-to-content link — always on top. */
+  skipNav: "z-[9999]",
 } as const;
 
 /** Max-width and structural layout classes. */

@@ -76,19 +76,21 @@ export default async function VillagesPage() {
           { label: tNav("villages"), href: "/villages", isCurrent: true },
         ]}
       >
-        <AppLink href="/plan" className={`mt-4 inline-flex items-center min-h-[44px] px-5 py-2.5 rounded-lg ${CTA.primaryCompact}`}>
+        <AppLink href="/plan" className={`mt-4 ${CTA.primaryCompact}`}>
           {tCommon("planYourTrip")}
         </AppLink>
       </PageHeader>
 
-      <h2 id="villages-list" className="sr-only">
-        {tVillages("srHeading")}
-      </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {villages.map((village) => (
-          <AttractionCard key={village.id} a={village} />
-        ))}
-      </div>
+      <section aria-labelledby="villages-list">
+        <h2 id="villages-list" className="sr-only">
+          {tVillages("srHeading")}
+        </h2>
+        <ul role="list" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {villages.map((village) => (
+            <li key={village.id}><AttractionCard a={village} /></li>
+          ))}
+        </ul>
+      </section>
 
       <span id="villages-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
       <HubFooter

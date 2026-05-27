@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import ReactMarkdown from "react-markdown";
+import AppLink from "@/components/AppLink";
 import { isSafeUrl } from "@/lib/safe-url";
 import { SECTION } from "@/lib/design-tokens";
 import type { Message } from "./hooks/useAIChat";
@@ -15,7 +17,7 @@ interface AIChatMessagesProps {
   onRetry: () => void;
 }
 
-function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => void }) {
+function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRetry: () => void; retryLabel: string }) {
   const isUser = message.role === "user";
 
   return (
@@ -38,6 +40,14 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
                 a: ({ href, children }) => {
                   if (!href || !isSafeUrl(href)) {
                     return <span className="text-olive/80">{children}</span>;
+                  }
+                  const isInternal = href.startsWith("/");
+                  if (isInternal) {
+                    return (
+                      <AppLink href={href} className="text-aegean hover:underline">
+                        {children}
+                      </AppLink>
+                    );
                   }
                   return (
                     <a
@@ -70,9 +80,10 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
           <button
             type="button"
             onClick={onRetry}
-            className={`mt-2 ${SECTION.aegeanLink} text-xs`}
+            className={`mt-2 ${SECTION.aegeanLink} text-sm`}
+            aria-label={retryLabel}
           >
-            Retry
+            {retryLabel}
           </button>
         )}
       </div>
@@ -81,29 +92,30 @@ function ChatMessage({ message, onRetry }: { message: Message; onRetry: () => vo
 }
 
 export function AIChatMessages({ messages, loading, onRetry }: AIChatMessagesProps) {
+  const tCommon = useTranslations("common");
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1">
+    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1" role="log" aria-live="polite" aria-relevant="additions">
       {messages.map((message, index) => (
         <ChatMessage
           key={index}
           message={message}
           onRetry={onRetry}
+          retryLabel={tCommon("ai.retry")}
         />
       ))}
       {loading && (
-        <div className="flex justify-start mb-4">
+        <div className="flex justify-start mb-4" role="status" aria-label={tCommon("ai.thinking")}>
           <div className="bg-sand-100 rounded-2xl rounded-bl-md px-4 py-3">
             <div className="flex gap-1">
-              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce motion-reduce:animate-none" style={{ animationDelay: "0ms" }} />
+              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce motion-reduce:animate-none" style={{ animationDelay: "150ms" }} />
+              <span className="w-2 h-2 bg-olive/40 rounded-full animate-bounce motion-reduce:animate-none" style={{ animationDelay: "300ms" }} />
             </div>
           </div>
         </div>

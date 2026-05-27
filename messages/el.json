@@ -43,7 +43,8 @@
     "searchAria": "Αναζήτηση τοποθεσιών και μονοπατιών",
     "askAIAria": "Ρωτήστε το AI για μονοπάτια, οινοποιεία και ιδέες ταξιδιού",
     "openMenu": "Άνοιγμα μενού",
-    "closeMenu": "Κλείσιμο μενού"
+    "closeMenu": "Κλείσιμο μενού",
+    "mainNavigation": "Κύρια πλοήγηση"
   },
   "common": {
     "nav": {
@@ -86,7 +87,13 @@
       "body": "για πλήρη λειτουργικότητα. Μπορείτε να περιηγηθείτε σε μονοπάτια και μέρη, αλλά λειτουργίες όπως το πρόγραμμα διαδρομής και το chat απαιτούν JavaScript."
     },
     "map": {
-      "openStreetMap": "OpenStreetMap"
+      "openStreetMap": "OpenStreetMap",
+      "enableMapAria": "Ενεργοποίηση αλληλεπίδρασης χάρτη",
+      "enableMapCta": "Ενεργοποίηση χάρτη",
+      "disableMapAria": "Απενεργοποίηση αλληλεπίδρασης χάρτη",
+      "disableMapCta": "Τέλος",
+      "getDirections": "Οδηγίες",
+      "openInMaps": "Άνοιγμα στους Χάρτες"
     },
     "addToPlan": "Προσθήκη στο πρόγραμμα",
     "addPlace": "Προσθήκη τοποθεσίας",
@@ -112,7 +119,9 @@
       "inputPlaceholder": "Ρωτήστε με για την Κύπρο…",
       "sendAria": "Αποστολή μηνύματος",
       "startVoice": "Έναρξη φωνητικής αναζήτησης",
-      "stopVoice": "Διακοπή φωνητικής αναζήτησης"
+      "stopVoice": "Διακοπή φωνητικής αναζήτησης",
+      "retry": "Δοκιμάστε ξανά",
+      "thinking": "Σκέφτεται…"
     },
     "back": "Πίσω",
     "backTo": "Πίσω στο {label}",
@@ -230,6 +239,7 @@
     "title": "Cyprus Winter",
     "subtitle": "Μονοπάτια, Πολιτισμός & Χωριά",
     "kicker": "Το καλά κρυμμένο μυστικό της Μεσογείου",
+    "footerSection": "Περισσότερα για τη χειμερινή Κύπρο",
     "headline": "Ξεφύγετε από το κρύο. Αρχαιολογικοί χώροι, μονοπάτια, χωριά. Σχεδιάστε καθώς εξερευνάτε.",
     "seasonal": {
       "lateYear": "Ήπια ακτή. Καθαρά μονοπάτια. Ιδανικά για πεζοπορία.",
@@ -535,73 +545,73 @@
       "items": {
         "tsiakkas": {
           "title": "Tsiakkas",
-          "subtitle": "Troodos foothills · heaters on the terrace · book ahead",
-          "imageAlt": "Winter winery tasting in the Troodos foothills, Cyprus"
+          "subtitle": "Πρόποδες Troodos · θερμάστρες στη βεράντα · κλείστε εκ των προτέρων",
+          "imageAlt": "Χειμερινή γευσιγνωσία σε οινοποιείο στους πρόποδες Troodos, Κύπρος"
         },
         "vouni-panayia": {
           "title": "Vouni Panayia",
-          "subtitle": "Laona route · Commandaria comparisons · cosy winter room",
-          "imageAlt": "Wine villages in the Paphos hills in winter light, Cyprus"
+          "subtitle": "Διαδρομή Laona · συγκρίσεις Κουμανταρίας · ζεστός χειμερινός χώρος",
+          "imageAlt": "Χωριά κρασιού στους λόφους Paphos σε χειμερινό φως, Κύπρος"
         },
         "domes-sergiou": {
           "title": "Dómes Sergiou",
-          "subtitle": "Between Larnaca & Limassol · indigenous varieties · modern",
-          "imageAlt": "Modern Cypriot winery tasting, Cyprus winter"
+          "subtitle": "Ανάμεσα σε Larnaca & Limassol · ντόπιες ποικιλίες · μοντέρνο",
+          "imageAlt": "Μοντέρνα κυπριακή γευσιγνωσία οίνου, χειμερινή Κύπρος"
         }
       }
     },
     "insiderTips": {
       "daylight": {
-        "title": "Daylight is short",
-        "body": "December and January have the shortest days—roughly nine hours between sunrise and sunset. Plan outdoor activities for the morning. By late afternoon the light is already golden. Use it."
+        "title": "Η μέρα είναι σύντομη",
+        "body": "Δεκέμβριος και Ιανουάριος έχουν τις πιο κοντές μέρες—περίπου εννέα ώρες μεταξύ ανατολής και δύσης. Σχεδιάστε τις υπαίθριες δραστηριότητες για το πρωί. Αργά το απόγευμα το φως γίνεται ήδη χρυσαφένιο. Εκμεταλλευτείτε το."
       },
       "layers": {
-        "title": "Layer up",
-        "body": "The coast might be 18°C while Troodos is 5°C. Bring a windproof jacket, a warm mid-layer, and a hat. Mountain cafés have fireplaces. Coastal tavernas have heaters. Dress for both."
+        "title": "Ντυθείτε σε στρώσεις",
+        "body": "Η ακτή μπορεί να είναι 18°C ενώ ο Troodos 5°C. Πάρτε αντιανεμικό μπουφάν, ένα ζεστό ενδιάμεσο στρώμα και σκούφο. Τα ορεινά καφέ έχουν τζάκια. Οι παράκτιες ταβέρνες έχουν θερμάστρες. Ντυθείτε και για τα δύο."
       },
       "book-ahead": {
-        "title": "Book winery tastings ahead",
-        "body": "Many wineries run small operations. In winter they appreciate a call or online booking. You'll often get the owner or winemaker pouring. Worth the extra step."
+        "title": "Κλείστε γευσιγνωσίες εκ των προτέρων",
+        "body": "Πολλά οινοποιεία λειτουργούν σε μικρή κλίμακα. Τον χειμώνα εκτιμούν ένα τηλεφώνημα ή online κράτηση. Συχνά θα σας σερβίρει ο ιδιοκτήτης ή ο οινοποιός. Αξίζει το επιπλέον βήμα."
       },
       "weekday-quiet": {
-        "title": "Weekdays are quieter",
-        "body": "Omodos, Lefkara, and the main sites fill up on weekends. Tuesday or Wednesday? You'll have the cobbles to yourself. Villages feel different when the tour buses have gone. Plan big days for midweek."
+        "title": "Τις καθημερινές είναι πιο ήσυχα",
+        "body": "Omodos, Lefkara και τα κύρια αξιοθέατα γεμίζουν τα Σαββατοκύριακα. Τρίτη ή Τετάρτη; Θα έχετε τα πλακόστρωτα για εσάς. Τα χωριά αισθάνονται αλλιώς όταν τα τουριστικά λεωφορεία φύγουν. Σχεδιάστε τις μεγάλες εκδρομές για μέσα στη βδομάδα."
       },
       "kafenion-stop": {
-        "title": "Stop for a coffee",
-        "body": "Village kafenions are where locals meet. Order a Greek coffee, sit, watch. No rush. In winter the stove is lit and the pace is slow. The person at the next table often knows the best winery, trail, or taverna. The best advice isn't in a guidebook."
+        "title": "Σταματήστε για καφέ",
+        "body": "Τα καφενεία στα χωριά είναι σημείο συνάντησης των ντόπιων. Παραγγείλτε ελληνικό καφέ, καθίστε, παρατηρήστε. Χωρίς βιασύνη. Τον χειμώνα η σόμπα καίει και ο ρυθμός είναι αργός. Ο άνθρωπος στο διπλανό τραπέζι ξέρει συχνά το καλύτερο οινοποιείο, μονοπάτι ή ταβέρνα. Οι καλύτερες συμβουλές δεν βρίσκονται σε ταξιδιωτικό οδηγό."
       },
       "winter-light": {
-        "title": "The light is different",
-        "body": "Winter sun stays low in the sky. Golden hour comes early—often mid-afternoon in December. Ancient sites, villages, the coast: everything looks different. Bring a camera. Or just watch. Plan ruins and villages for the afternoon and you'll see why."
+        "title": "Το φως είναι διαφορετικό",
+        "body": "Ο χειμερινός ήλιος παραμένει χαμηλά στον ουρανό. Η χρυσή ώρα έρχεται νωρίς—συχνά νωρίς το απόγευμα τον Δεκέμβριο. Αρχαίοι χώροι, χωριά, η ακτή: τα πάντα δείχνουν αλλιώς. Πάρτε φωτογραφική μηχανή. Ή απλά παρατηρήστε. Σχεδιάστε ερείπια και χωριά για το απόγευμα και θα δείτε γιατί."
       },
       "start-early": {
-        "title": "Start by 9am",
-        "body": "Winter days are short—finish hikes well before dusk. The morning air is crisp. The trails are quieter early. You'll thank yourself when you're back at the car with daylight to spare."
+        "title": "Ξεκινήστε ως τις 9 π.μ.",
+        "body": "Οι χειμερινές μέρες είναι σύντομες—τελειώστε τις πεζοπορίες αρκετά πριν σκοτεινιάσει. Ο πρωινός αέρας είναι δροσερός. Τα μονοπάτια είναι πιο ήσυχα νωρίς. Θα ευχαριστήσετε τον εαυτό σας όταν γυρίσετε στο αυτοκίνητο με φως ακόμα."
       },
       "check-conditions": {
-        "title": "Check before you go",
-        "body": "Troodos weather changes fast. Snow on Olympus, mud after rain, ice on shaded sections. The ski resort posts conditions. So do local cafés. Ask. Don't assume."
+        "title": "Ελέγξτε πριν ξεκινήσετε",
+        "body": "Ο καιρός στον Troodos αλλάζει γρήγορα. Χιόνι στον Olympus, λάσπη μετά τη βροχή, πάγος στα σκιασμένα σημεία. Το χιονοδρομικό ανακοινώνει τις συνθήκες. Το ίδιο και τα τοπικά καφέ. Ρωτήστε. Μην υποθέτετε."
       },
       "microspikes": {
-        "title": "Microspikes for Olympus",
-        "body": "Olympus Summit and higher Troodos trails can have snow and ice from January to March. Microspikes cost €20 and fit over your boots. If the forecast is near freezing, bring them."
+        "title": "Αντιολισθητικά για Olympus",
+        "body": "Η κορυφή του Olympus και τα ψηλότερα μονοπάτια του Troodos μπορεί να έχουν χιόνι και πάγο από Ιανουάριο ως Μάρτιο. Τα microspikes κοστίζουν €20 και τοποθετούνται πάνω στις μπότες σας. Αν η πρόγνωση είναι κοντά στο μηδέν, πάρτε τα μαζί."
       },
       "tell-someone": {
-        "title": "Tell someone your route",
-        "body": "Phone signal is patchy in the mountains. Tell your hotel or a friend which trail you're on and when you expect back. Emergency: 112. The mountain doesn't care about your deadline."
+        "title": "Ενημερώστε κάποιον για τη διαδρομή σας",
+        "body": "Το σήμα τηλεφώνου είναι ασταθές στα βουνά. Πείτε στο ξενοδοχείο σας ή σε φίλο ποιο μονοπάτι ακολουθείτε και πότε περιμένετε να γυρίσετε. Εκτάκτη ανάγκη: 112. Στο βουνό δεν ενδιαφέρει κανέναν η προθεσμία σας."
       },
       "euro": {
-        "title": "Euro, cards, and cash",
-        "body": "Cyprus uses the euro. Cards work almost everywhere. Small village shops and kafenions sometimes prefer cash. Keep €20 or so for coffee, lace, and zivania."
+        "title": "Ευρώ, κάρτες και μετρητά",
+        "body": "Η Κύπρος χρησιμοποιεί ευρώ. Οι κάρτες δουλεύουν σχεδόν παντού. Μικρά χωριάτικα μαγαζιά και καφενεία μερικές φορές προτιμούν μετρητά. Κρατήστε €20 περίπου για καφέ, δαντέλα και ζιβανία."
       },
       "drive-left": {
-        "title": "Drive on the left",
-        "body": "British legacy. Rent a car if you want to reach villages and trails. The roads are good. Mountain bends can be tight. Take your time. The views are worth it."
+        "title": "Οδηγήστε αριστερά",
+        "body": "Βρετανική κληρονομιά. Νοικιάστε αυτοκίνητο αν θέλετε να φτάσετε σε χωριά και μονοπάτια. Οι δρόμοι είναι καλοί. Οι ορεινές στροφές μπορεί να είναι στενές. Πάρτε τον χρόνο σας. Η θέα αξίζει."
       },
       "emergency": {
-        "title": "Emergency numbers",
-        "body": "112 for EU emergency. 1460 for tourist information. 199 for ambulance. Save them. Hope you never need them."
+        "title": "Αριθμοί εκτάκτης ανάγκης",
+        "body": "112 για ευρωπαϊκό αριθμό εκτάκτης ανάγκης. 1460 για τουριστικές πληροφορίες. 199 για ασθενοφόρο. Αποθηκεύστε τους. Ελπίστε να μην τους χρειαστείτε."
       }
     }
   },
@@ -682,6 +692,9 @@
     "page": {
       "contentAria": "Ανακαλύψτε μέρη στην Κύπρο",
       "curatedLine": "Επιλεγμένα για τον χειμώνα. Προσθέστε στο πρόγραμμά σας καθώς περιηγείστε.",
+      "noResultsTitle": "Τίποτα δεν ταιριάζει με αυτό το φίλτρο",
+      "noResultsBody": "Δοκιμάστε διαφορετική κατηγορία, αφαιρέστε το φίλτρο ή ρωτήστε το AI για προτάσεις.",
+      "clearFilter": "Καθαρισμός φίλτρου",
       "rightNowTitle": "Τώρα κοντά σας",
       "filterAnnouncement": {
         "showing": "Εμφάνιση {section}, {count} μέρη",
@@ -699,6 +712,7 @@
         "village": "Χωριά",
         "wine": "Κρασί & φαγητό",
         "monastery": "Μοναστήρια & πολιτισμός",
+        "family": "Για οικογένειες",
         "hidden": "Κρυφά διαμάντια"
       },
       "filters": {
@@ -819,6 +833,7 @@
       }
     },
     "map": {
+      "ariaLabel": "Διαδραστικός χάρτης με {count, plural, one {# μέρος} other {# μέρη}}. Χρησιμοποιήστε τα βέλη για μετακίνηση· οι δείκτες ανοίγουν λεπτομέρειες.",
       "openStreetMap": "OpenStreetMap",
       "loading": "Φόρτωση χάρτη…",
       "emptyTitle": "Δεν υπάρχουν μέρη με συντεταγμένες για εμφάνιση.",
@@ -835,10 +850,35 @@
       "imageAlt": "{name}, {region}—{type} στην Κύπρο τον χειμώνα",
       "badgeEat": "Φαγητό",
       "bufferZoneWarning": "Ελέγξτε την πρόσβαση πριν πάτε. Περιοχή buffer zone — οι συνθήκες μπορεί να αλλάξουν. Επιβεβαιώστε με τοπικές πηγές ή τουριστικές πληροφορίες (1460).",
+      "winter": {
+        "open": "Ανοιχτό τον χειμώνα",
+        "seasonsLabel": "Εποχές:",
+        "seasons": {
+          "winter": "χειμώνας",
+          "spring": "άνοιξη",
+          "summer": "καλοκαίρι",
+          "autumn": "φθινόπωρο"
+        },
+        "indoorOutdoorLabel": "Χώρος:",
+        "indoorOutdoor": {
+          "indoor": "εσωτερικός",
+          "outdoor": "εξωτερικός",
+          "mixed": "μικτός"
+        },
+        "budgetLabel": "Κόστος:",
+        "budget": {
+          "free": "δωρεάν",
+          "low": "χαμηλό",
+          "mid": "μεσαίο",
+          "high": "υψηλό"
+        },
+        "galleryHeading": "Φωτογραφίες",
+        "galleryAlt": "Φωτογραφία {index} από {name}"
+      },
       "practical": {
         "title": "Πρακτικές πληροφορίες",
         "hours": "Ώρες:",
-        "transport": "Μεταφορά:",
+        "transport": "Πρόσβαση:",
         "parking": "Στάθμευση:",
         "accessibility": "Προσβασιμότητα:"
       },
@@ -859,7 +899,8 @@
         "buyWineAria": "Αγορά κρασιού online (ανοίγει σε νέα καρτέλα)",
         "buyWineCta": "Αγορά κρασιού online",
         "instagramAria": "Ακολουθήστε @{handle} στο Instagram (ανοίγει σε νέα καρτέλα)",
-        "instagramCta": "Instagram @{handle}"
+        "instagramCta": "Instagram @{handle}",
+        "bookGuide": "Κράτηση οδηγού →"
       },
       "bestTimeLabel": "Καλύτερη ώρα:",
       "directionsAria": "Οδηγίες (ανοίγει σε νέα καρτέλα)",
@@ -903,7 +944,8 @@
         "addToPlanAria": "Προσθήκη {name} στο πρόγραμμα"
       },
       "map": {
-        "iframeTitle": "Χάρτης: {name}"
+        "iframeTitle": "Χάρτης: {name}",
+        "loadMap": "Φόρτωση χάρτη"
       },
       "metadata": {
         "notFound": "Δεν βρέθηκε",
@@ -1117,6 +1159,19 @@
     "submitReport": "Υποβολή αναφοράς",
     "submitting": "Υποβολή…",
     "conditionsEditorial": "Χειμερινό στιγμιότυπο",
+    "card": {
+      "elevationGain": "{meters}μ υψομ.",
+      "temperature": "{value}°C",
+      "trailAria": "{name}, {length} χλμ {difficulty} μονοπάτι στην περιοχή {region}",
+      "imageAlt": "{name}, {region} — {length} χλμ {difficulty} μονοπάτι στην Κύπρο"
+    },
+    "placeOfDay": {
+      "heading": "Μονοπάτι της ημέρας",
+      "badge": "Μονοπάτι της ημέρας",
+      "openAria": "Άνοιγμα {name}",
+      "pairWith": "Συνδυάστε με",
+      "seeDetails": "Δείτε λεπτομέρειες"
+    },
     "noMatch": "Δεν υπάρχουν μονοπάτια με τα φίλτρα σας. Δοκιμάστε διαφορετική κατάσταση, δυσκολία ή περιοχή—ή ρωτήστε το AI. Γνωρίζει από Τρόοδο μέχρι ακτή.",
     "allTrails": "Όλα τα μονοπάτια",
     "askAI": "Ρωτήστε το AI",
@@ -1268,16 +1323,24 @@
         "temperatureAtTrailhead": "{temperature}°C στο ξεκίνημα",
         "windAtTrailhead": "{wind} km/h άνεμος"
       },
+      "liveWeather": {
+        "temperature": "{min}–{max}°C",
+        "rain": "Αναμένεται βροχή",
+        "live": "Ζωντανά"
+      },
       "safety": {
         "title": "Ασφάλεια & βασικά",
-        "body": "Έκτακτη ανάγκη 112 · Τουριστικές πληροφορίες 1460 · Ασθενοφόρο 199. Στρώσεις, νερό, φορτισμένο τηλέφωνο. Ελέγξτε τις συνθήκες πριν πάτε."
+        "body": "Έκτακτη ανάγκη 112 · Τουριστικές πληροφορίες 1460 · Ασθενοφόρο 199. Στρώσεις, νερό, φορτισμένο τηλέφωνο. Ελέγξτε τις συνθήκες πριν πάτε.",
+        "easyTitle": "Χρήσιμα να ξέρετε",
+        "easyBody": "Έκτακτη ανάγκη 112 · Τουριστικές πληροφορίες 1460. Νερό, αντηλιακό και άνετα παπούτσια αρκούν για αυτή τη διαδρομή."
       },
+      "bookGuide": "Κράτηση ξεναγού",
       "winterSafetyTitle": "Ασφάλεια τον χειμώνα",
       "routeMapTitle": "Χάρτης διαδρομής",
       "winterNotesTitle": "Σημειώσεις χειμώνα",
       "keyStopsTitle": "Σημαντικές στάσεις",
       "localSecretTitle": "Τοπικό μυστικό",
-      "highlightsTitle": "Κορυφαία σημεία",
+      "highlightsTitle": "Αξιοθέατα",
       "bestSeasonTitle": "Καλύτερη εποχή",
       "whatToBringTitle": "Τι να έχετε μαζί",
       "localSecrets": {
@@ -1328,6 +1391,11 @@
       "footerCount": "{count, plural, one {# μονοπάτι στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.} other {# μονοπάτια στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.}}"
     },
     "page": {
+      "meta": {
+        "title": "Χειμερινά μονοπάτια Κύπρου | Τρόοδος, Πάφος & Ακάμας",
+        "description": "Μονοπάτια Κύπρου τον χειμώνα: Τρόοδος, Πάφος, Ακάμας. Συνθήκες, δυσκολία, μήκος. Συμβουλές πεζοπορίας. Δεκαέξι βαθμοί όταν στο σπίτι έχετε έξι.",
+        "ogDescription": "Μονοπάτια Κύπρου τον χειμώνα: Τρόοδος, Πάφος, Ακάμας. Συνθήκες, δυσκολία, μήκος."
+      },
       "hero": {
         "title": "Χειμερινά μονοπάτια",
         "description": "Πευκοδάση, θέα στις ράχες, άδειες διαδρομές. Δεκαέξι βαθμοί όταν στο σπίτι έχετε έξι.",
@@ -1449,7 +1517,7 @@
     "share": {
       "copyAndShare": "Αντιγραφή & κοινοποίηση",
       "placesLabel": "μέρη",
-      "daysLabel": "ημέρες",
+      "daysLabel": "μέρες",
       "placesCount": "{count, plural, one {# μέρος} other {# μέρη}}",
       "daysCount": "{count, plural, one {# ημέρα} other {# ημέρες}}",
       "copyLink": "Αντιγραφή συνδέσμου",
@@ -1461,6 +1529,38 @@
     },
     "footer": {
       "winterTip": "Συμβουλή: το φως δύει γύρω στις 5μ.μ. Ξεκινήστε μονοπάτια πριν τις 10π.μ. και κλείστε γευσιγνωσίες 24–48 ώρες νωρίτερα."
+    },
+    "meta": {
+      "title": "Σχεδιάστε τον Χειμώνα στην Κύπρο | Επιμελημένα Δρομολόγια & Σχεδιασμός Ταξιδιού",
+      "description": "Επιμελημένα χειμερινά δρομολόγια Κύπρου: 48 ώρες έως 10 μέρες. Ρυθμός ειδικών, συμβουλές κράτησης οινοποιείων, εποχιακές συμβουλές. Μονοπάτια Τροόδους, χωριά, ακτές—σχεδιάστε εκ των προτέρων ή μόλις φτάσετε. Δωρεάν.",
+      "ogTitle": "Σχεδιάστε τον Χειμώνα στην Κύπρο | Επιμελημένα Δρομολόγια",
+      "ogDescription": "Επιμελημένα χειμερινά δρομολόγια Κύπρου με ρυθμό ειδικών και συμβουλές οινοποιείων. Μονοπάτια, χωριά, ακτές. Σχεδιάστε εκ των προτέρων ή μόλις φτάσετε."
+    },
+    "templateChoiceModal": {
+      "title": "Εφαρμογή {template};",
+      "description": "Προσθήκη στο πλάνο σας ή αντικατάσταση.",
+      "cancel": "Ακύρωση",
+      "replaceDay": "Αντικατάσταση ημέρας",
+      "addToPlan": "Προσθήκη στο πλάνο"
+    },
+    "comboChoiceModal": {
+      "title": "Προσθήκη {combo};",
+      "description": "Προσθήκη στο πλάνο σας ή αντικατάσταση της ημέρας.",
+      "cancel": "Ακύρωση",
+      "replaceDay": "Αντικατάσταση ημέρας",
+      "addToPlan": "Προσθήκη στο πλάνο"
+    },
+    "map": {
+      "ariaLabel": "Χάρτης με {count, plural, one {# τοποθεσία} other {# τοποθεσίες}} στο δρομολόγιό σας",
+      "dayLabel": "Ημέρα {day}",
+      "viewDetails": "Λεπτομέρειες →",
+      "footer": "{count, plural, one {# τοποθεσία} other {# τοποθεσίες}} στον χάρτη. Αριθμοί = ημέρα. Πατήστε για εξερεύνηση.",
+      "noCoords": "Ορισμένες τοποθεσίες δεν έχουν ακόμη συντεταγμένες χάρτη."
+    },
+    "clipboard": {
+      "heading": "Χειμερινό Δρομολόγιο Κύπρου",
+      "dayLabel": "Ημέρα {day}:",
+      "emptyFallback": "Το χειμερινό σας πλάνο Κύπρου. Προσθέστε τοποθεσίες από Ανακαλύψτε ή Μονοπάτια για να ξεκινήσετε."
     }
   },
   "placePicker": {
@@ -1663,7 +1763,7 @@
       "hubBody": "Προσθέστε μέρη στο πρόγραμμά σας—ή ρωτήστε το AI. Γνωρίζει το νησί τον χειμώνα."
     },
     "aria": {
-      "actions": "Search page actions"
+      "actions": "Ενέργειες σελίδας αναζήτησης"
     }
   },
   "events": {
@@ -1726,20 +1826,26 @@
         "weatherLink": "Καιρός ανά μήνα"
       },
       "aria": {
-        "actions": "Events page actions"
+        "actions": "Ενέργειες σελίδας εκδηλώσεων"
       },
       "types": {
-        "festival": "Festival",
-        "market": "Market",
-        "concert": "Concert",
-        "food": "Food & Wine",
-        "culture": "Culture",
-        "sport": "Sport"
+        "festival": "Φεστιβάλ",
+        "market": "Αγορά",
+        "concert": "Συναυλία",
+        "food": "Φαγητό & Κρασί",
+        "culture": "Πολιτισμός",
+        "sport": "Αθλητισμός"
       }
     }
   },
   "weather": {
     "page": {
+      "meta": {
+        "title": "Καιρός χειμώνα στην Κύπρο ανά μήνα | Ακτή & Τρόοδος",
+        "description": "Χειμερινός καιρός Κύπρου ανά μήνα: ακτή 18–20°C, Τρόοδος 8–12°C. Στρώσεις, μονοπάτια και οινοποιεία. Νοέμβριος ως Απρίλιος.",
+        "ogDescription": "Χειμερινός καιρός Κύπρου ανά μήνα: ακτή 18–20°C, Τρόοδος 8–12°C.",
+        "ogImageAlt": "Οδηγός χειμερινού καιρού Κύπρου"
+      },
       "title": "Καιρός χειμώνα στην Κύπρο ανά μήνα",
       "description": "Θερμοκρασίες σε ακτή και Τρόοδο μήνα με τον μήνα. Σχεδιάστε ρούχα, μονοπάτια και οινοποιεία.",
       "table": {
@@ -2010,9 +2116,15 @@
   },
   "book": {
     "guideForm": {
+      "validation": {
+        "dateRequired": "Επιλέξτε μελλοντική ημερομηνία",
+        "nameRequired": "Το όνομα είναι υποχρεωτικό",
+        "emailInvalid": "Εισάγετε έγκυρη διεύθυνση email"
+      },
       "errors": {
         "failed": "Η κράτηση απέτυχε",
-        "fallback": "Κάτι πήγε στραβά — ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά."
+        "fallback": "Κάτι πήγε στραβά — ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+        "offlineQueued": "Είστε εκτός σύνδεσης — το αίτημά σας αποθηκεύτηκε και θα σταλεί αυτόματα όταν επιστρέψετε στο δίκτυο."
       },
       "success": {
         "title": "Το αίτημα στάλθηκε",
@@ -2038,7 +2150,8 @@
         },
         "partySize": {
           "label": "Μέγεθος ομάδας",
-          "plus": "11+ άτομα"
+          "plus": "11+ άτομα",
+          "placeholder": "Επιλέξτε μέγεθος ομάδας"
         },
         "guestName": {
           "label": "Το όνομά σας",
@@ -2070,9 +2183,15 @@
       }
     },
     "wineryForm": {
+      "validation": {
+        "dateRequired": "Επιλέξτε μελλοντική ημερομηνία",
+        "nameRequired": "Το όνομα είναι υποχρεωτικό",
+        "emailInvalid": "Εισάγετε μια έγκυρη διεύθυνση email"
+      },
       "errors": {
         "failed": "Η κράτηση απέτυχε",
-        "fallback": "Κάτι πήγε στραβά — ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά."
+        "fallback": "Κάτι πήγε στραβά — ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+        "offlineQueued": "Είστε εκτός σύνδεσης — το αίτημά σας αποθηκεύτηκε και θα σταλεί αυτόματα όταν επιστρέψετε στο δίκτυο."
       },
       "success": {
         "title": "Το αίτημα στάλθηκε",
@@ -2091,7 +2210,8 @@
         },
         "partySize": {
           "label": "Μέγεθος ομάδας",
-          "plus": "11+ άτομα"
+          "plus": "11+ άτομα",
+          "placeholder": "Επιλέξτε μέγεθος ομάδας"
         },
         "guestName": {
           "label": "Το όνομά σας",
@@ -2150,10 +2270,24 @@
         "footerBrowseTrails": "Περιήγηση όλων των μονοπατιών",
         "footerMyBookings": "Οι κρατήσεις μου"
       },
+      "wineryList": {
+        "meta": {
+          "title": "Κράτηση γευσιγνωσίας κρασιού | Cyprus Winter",
+          "description": "Περιηγηθείτε σε επαληθευμένα κυπριακά οινοποιεία και κλείστε χειμερινή γευσιγνωσία. Φωτιά, ο ιδιοκτήτης σερβίρει, μικρές ομάδες. Κλείστε νωρίς — τα χειμερινά σαββατοκύριακα γεμίζουν."
+        },
+        "intro": "Περιηγηθείτε στα συνεργαζόμενα οινοποιεία μας και ζητήστε γευσιγνωσία. Θα επιβεβαιώσουν με email — συνήθως εντός μιας ημέρας.",
+        "ctaAria": "Κράτηση γευσιγνωσίας στο {name}",
+        "footerBrowseWineries": "Περιήγηση όλων των οινοποιείων"
+      },
       "wineryDetail": {
         "metaNotFound": "Δεν βρέθηκε",
         "intro": "Οι χειμερινές γευσιγνωσίες εδώ είναι ζεστές — φωτιά, θερμάστρες και συχνά σερβίρει ο ιδιοκτήτης. Στείλτε αίτημα και θα επιβεβαιώσουν με email.",
         "disclaimer": "Μόνο για ενήλικες νόμιμης ηλικίας κατανάλωσης. Πιείτε υπεύθυνα.",
+        "practical": {
+          "hours": "Ώρες:",
+          "transport": "Πρόσβαση:",
+          "parking": "Στάθμευση:"
+        },
         "other": {
           "or": "Ή",
           "bookDirectCta": "κλείστε από τον ιστότοπο του οινοποιείου",
@@ -2161,6 +2295,26 @@
           "bookDirectSuffix": "— συχνά έχουν περισσότερη διαθεσιμότητα.",
           "callPrefix": "Ή καλέστε",
           "callSuffix": "για κράτηση ή διαθεσιμότητα — συνήθως χαίρονται να βοηθήσουν."
+        },
+        "winterTip": {
+          "heading": "Χειμερινή συμβουλή",
+          "icon": "💡"
+        },
+        "signatureWines": {
+          "heading": "Τι μπορεί να δοκιμάσετε"
+        },
+        "instagram": {
+          "follow": "Ακολουθήστε στο Instagram",
+          "aria": "Ακολουθήστε {name} στο Instagram (ανοίγει σε νέα καρτέλα)"
+        },
+        "combineWith": {
+          "heading": "Ενώ είστε στην περιοχή"
+        },
+        "bestTime": {
+          "label": "Καλύτερη ώρα επίσκεψης:"
+        },
+        "jsonLd": {
+          "priceRange": "€€"
         }
       }
     },
@@ -2176,7 +2330,7 @@
       },
       "progress": {
         "aria": "Πρόοδος κράτησης",
-        "stepDetails": "Στοιχεία",
+        "stepDetails": "Λεπτομέρειες",
         "stepSent": "Αίτημα στάλθηκε",
         "stepConfirmation": "Επιβεβαίωση"
       },
@@ -2418,7 +2572,7 @@
       "types": {
         "viewpoint": "Θέα",
         "kafenion": "Καφενείο",
-        "timing": "Timing",
+        "timing": "Χρονισμός",
         "pairing": "Συνδυασμός",
         "spot": "Σημείο"
       }
@@ -2430,6 +2584,7 @@
         "title": "Ομάδα | Cyprus Winter — μονοπάτια, χωριά, οινοποιεία",
         "description": "Οι άνθρωποι πίσω από το Cyprus Winter. Μονοπάτια, χωριά, οινοποιεία — η Κύπρος τον χειμώνα αξίζει περισσότερα. Γνωρίστε την ομάδα που έφτιαξε αυτόν τον οδηγό. Δεκαέξι βαθμοί όταν στο σπίτι έχετε έξι."
       },
+      "membersHeading": "Μέλη ομάδας",
       "header": {
         "title": "Η ομάδα μας",
         "description": "Designers, developers και ειδικοί του τουρισμού. Η Κύπρος τον χειμώνα αξίζει περισσότερα από μια μονογραμμή αναφορά."
@@ -2534,18 +2689,35 @@
         "weatherLink": "Καιρός ανά μήνα"
       },
       "aria": {
-        "actions": "Region page actions"
+        "actions": "Ενέργειες σελίδας περιοχής"
       }
     }
   },
   "wineRoutes": {
     "page": {
+      "meta": {
+        "title": "Οινική διαδρομή {route} Κύπρος Χειμώνας | Οινοποιεία & Γευσιγνωσίες",
+        "description": "Οινική διαδρομή {route}: {count, plural, one {# οινοποιείο} other {# οινοποιεία}} ανοιχτά για χειμερινές γευσιγνωσίες. Κλείστε εκ των προτέρων.",
+        "notFoundTitle": "Οινική διαδρομή δεν βρέθηκε | Cyprus Winter",
+        "notFoundDescription": "Χειμερινές οινικές διαδρομές Κύπρου: Κρασοχώρια, Λαόνα, Ακάμας, Κομμανταρία. Περιηγηθείτε σε οινοποιεία."
+      },
+      "routeTitle": "Οινική διαδρομή {route}",
+      "routeBreadcrumb": "Διαδρομή {route}",
+      "wineriesOnRoute": "Οινοποιεία σε αυτή τη διαδρομή",
+      "grapeVarieties": "Ποικιλίες σταφυλιών",
+      "winterTipLabel": "Χειμερινή συμβουλή",
+      "map": {
+        "heading": "Χάρτης {route} ({count})",
+        "caption": "Πατήστε έναν δείκτη για να ανοίξετε ένα οινοποιείο.",
+        "ariaLabel": "Χάρτης με {count, plural, one {# οινοποιείο} other {# οινοποιεία}} σε αυτή τη διαδρομή κρασιού",
+        "viewWinery": "Δείτε το οινοποιείο"
+      },
       "footer": {
         "hubBody": "Κλείστε γευσιγνωσίες εκ των προτέρων και συνδυάστε τη διαδρομή με χωριό ή μονοπάτι κοντά.",
         "allWineries": "Όλα τα οινοποιεία της Κύπρου"
       },
       "aria": {
-        "actions": "Wine route actions"
+        "actions": "Ενέργειες διαδρομών κρασιού"
       }
     }
   }

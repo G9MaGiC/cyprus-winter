@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { buildDiscoverMapPlaces } from "@/lib/discover-map-places";
 import type { DiscoverSection } from "@/lib/discover-sections";
-import { SECTION, TYPE, LAYOUT } from "@/lib/design-tokens";
+import { CARD, SECTION, TYPE, LAYOUT } from "@/lib/design-tokens";
 import DiscoverMapClient from "./DiscoverMapClient";
 
 type DiscoverMapPanelProps = {
@@ -40,7 +40,7 @@ export default function DiscoverMapPanel({ sections }: DiscoverMapPanelProps) {
         <p className="text-xs text-olive/60 -mt-2 mb-3">
           {tDiscover("map.curatedBy")}
         </p>
-        <div className="rounded-xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
+        <div className={`${CARD.base} overflow-hidden bg-sand-100/50`}>
           {places.length === 0 ? (
             <div className="min-h-[280px] flex flex-col items-center justify-center gap-2 py-12 px-6 text-center">
               <p className="text-sm text-olive/70">{tDiscover("map.emptyTitle")}</p>

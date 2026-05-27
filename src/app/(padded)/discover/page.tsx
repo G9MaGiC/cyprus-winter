@@ -12,6 +12,7 @@ import {
   absoluteDiscoverPageUrl,
   discoverSectionMetaKey,
 } from "@/lib/discover-list-meta";
+import { buildDiscoverListMetadata } from "@/lib/discover-list-meta";
 import { CTA, LAYOUT } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
@@ -23,6 +24,16 @@ const standardSections = buildDiscoverSections(allDiscoverItems);
 const activitySections = ACTIVITY_FILTER_KEYS.map((key) =>
   buildActivitySection(key, allDiscoverItems)
 ).filter((s): s is NonNullable<typeof s> => s != null);
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Promise<{ filter?: string | string[] }>;
+}) {
+  const locale = await getLocale();
+  const resolvedParams = searchParams ? await searchParams : {};
+  return buildDiscoverListMetadata(locale, resolvedParams.filter);
+}
 
 export default async function DiscoverPage({
   searchParams,
@@ -115,9 +126,8 @@ export default async function DiscoverPage({
           </div>
         </ListPageHero>
 
-        <section
+        <search
           aria-labelledby="discover-search-heading"
-          role="search"
           className={`${LAYOUT.safeAreaX} -mt-4`}
         >
           <div className={`${LAYOUT.list} mx-auto`}>
@@ -129,7 +139,7 @@ export default async function DiscoverPage({
               className="max-w-2xl mx-auto"
             />
           </div>
-        </section>
+        </search>
 
         <div id="discover-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 

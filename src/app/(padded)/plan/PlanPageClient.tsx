@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import ListPageHero from "@/components/ListPageHero";
-import ClearDayModal from "@/components/plan/ClearDayModal";
+import dynamic from "next/dynamic";
+const ClearDayModal = dynamic(() => import("@/components/plan/ClearDayModal"), { ssr: false });
 import DayContentPanel from "@/components/plan/DayContentPanel";
 import DaySelector from "@/components/plan/DaySelector";
 import PlanAddFailedAlert from "@/components/plan/PlanAddFailedAlert";
@@ -15,11 +16,11 @@ import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
 import PlanWineryBar from "@/components/plan/PlanWineryBar";
-import PlacePickerModal from "@/components/plan/PlacePickerModal";
+const PlacePickerModal = dynamic(() => import("@/components/plan/PlacePickerModal"), { ssr: false });
 import QuickStartSection from "@/components/plan/QuickStartSection";
 import BuildADaySection from "@/components/plan/BuildADaySection";
-import ComboChoiceModal from "@/components/plan/ComboChoiceModal";
-import TemplateChoiceModal from "@/components/plan/TemplateChoiceModal";
+const ComboChoiceModal = dynamic(() => import("@/components/plan/ComboChoiceModal"), { ssr: false });
+const TemplateChoiceModal = dynamic(() => import("@/components/plan/TemplateChoiceModal"), { ssr: false });
 import { usePlanPage } from "@/hooks/usePlanPage";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -176,7 +177,7 @@ export default function PlanPageClient() {
 
         {searchParams.get("add") === "failed" && <PlanAddFailedAlert />}
 
-        <header role="banner">
+        <header>
           <ListPageHero
             backHref="/"
             backLabel={tNav("home")}

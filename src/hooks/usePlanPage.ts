@@ -85,7 +85,7 @@ export function usePlanPage() {
 
   const handleReplaceTemplate = useCallback(() => {
     if (!templateChoice) return;
-    applyTemplate(templateChoice as TemplateKey, true);
+    applyTemplate(templateChoice as TemplateKey);
     setTemplateChoice(null);
   }, [templateChoice, applyTemplate]);
 

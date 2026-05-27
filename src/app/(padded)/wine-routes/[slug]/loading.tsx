@@ -1,3 +1,5 @@
+"use client";
+
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
-import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, LAYER, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -17,19 +17,22 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
   const trapFocus = useTrapFocus();
   const modalRef = useRef<HTMLDivElement>(null);
   const cancelRef = useRef<HTMLButtonElement>(null);
+  const previousActiveRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    previousActiveRef.current = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     cancelRef.current?.focus();
     return () => {
       document.body.style.overflow = previousOverflow;
+      previousActiveRef.current?.focus?.();
     };
   }, []);
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:pb-4 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50"
+      className={`fixed inset-0 ${LAYER.modal} flex items-center justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:pb-4 bg-charcoal/60 backdrop-blur-sm supports-[backdrop-filter]:bg-charcoal/50`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="clear-day-title"

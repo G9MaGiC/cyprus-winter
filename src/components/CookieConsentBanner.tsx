@@ -64,7 +64,7 @@ export default function CookieConsentBanner() {
       data-overlay-priority="blocking"
       data-overlay-active="true"
       role="dialog"
-      aria-modal="true"
+      aria-modal="false"
       aria-live="polite"
       aria-labelledby="cookie-banner-title"
       className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavMaxMd} md:bottom-0 ${LAYER.cookieBanner} p-4 md:p-5 bg-sand-100 border-t border-sand-300 shadow-lg safe-area-pb`}

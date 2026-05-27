@@ -130,23 +130,25 @@ export default function StartHereWithExplore() {
           ))}
         </div>
 
-        <div className="relative mb-6 sm:mb-8">
+        <div className="mb-6 sm:mb-8">
           <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>{tHome("startHere.browseByCategory")}</p>
-          <div
-            className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-3 pb-2 -mx-1 md:mx-0 px-1 md:px-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            role="navigation"
-            aria-label={tHome("startHere.aria.browseByCategory")}
-          >
-            {categoryChips.map((c) => (
-              <AppLink key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
-                {c.label}
-              </AppLink>
-            ))}
+          <div className="relative">
+            <div
+              className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-3 pb-2 -mx-1 md:mx-0 px-1 pr-14 md:px-0 md:pr-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              role="group"
+              aria-label={tHome("startHere.aria.browseByCategory")}
+            >
+              {categoryChips.map((c) => (
+                <AppLink key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+                  {c.label}
+                </AppLink>
+              ))}
+            </div>
+            <div
+              className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
+              aria-hidden
+            />
           </div>
-          <div
-            className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
-            aria-hidden
-          />
         </div>
 
         <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
@@ -160,29 +162,31 @@ export default function StartHereWithExplore() {
           </div>
         </div>
 
-        <div className="relative">
+        <div>
           <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreByMood")}</p>
-          <div
-            className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-2 sm:gap-3 pb-2 -mx-1 md:mx-0 px-1 md:px-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            role="navigation"
-            aria-label={tHome("startHere.aria.exploreByMood")}
-          >
-            {moodChips.map((m) => (
-              <AppLink
-                key={m.href + m.label}
-                href={m.href}
-                prefetch="auto"
-                className={`${CTA.chipSecondary} shrink-0 snap-start`}
-                aria-label={m.ariaLabel}
-              >
-                {m.label}
-              </AppLink>
-            ))}
+          <div className="relative">
+            <div
+              className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-2 sm:gap-3 pb-2 -mx-1 md:mx-0 px-1 pr-14 md:px-0 md:pr-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              role="group"
+              aria-label={tHome("startHere.aria.exploreByMood")}
+            >
+              {moodChips.map((m) => (
+                <AppLink
+                  key={m.href + m.label}
+                  href={m.href}
+                  prefetch="auto"
+                  className={`${CTA.chipSecondary} shrink-0 snap-start`}
+                  aria-label={m.ariaLabel}
+                >
+                  {m.label}
+                </AppLink>
+              ))}
+            </div>
+            <div
+              className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
+              aria-hidden
+            />
           </div>
-          <div
-            className="pointer-events-none absolute right-0 top-8 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
-            aria-hidden
-          />
         </div>
       </div>
     </section>

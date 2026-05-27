@@ -20,10 +20,19 @@ export async function generateMetadata({
   const { id } = await params;
   const guide = guides.find((g) => g.id === id);
   if (!guide) return { title: "Not found" };
+  const title = `Book a guided hike | ${guide.name} | Cyprus Winter`;
+  const description = `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`;
+  const alternates = buildStrategyAAlternates(`/book/guide/${id}`);
   return {
-    title: `Book a guided hike | ${guide.name} | Cyprus Winter`,
-    description: `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`,
-    alternates: buildStrategyAAlternates(`/book/guide/${id}`),
+    title,
+    description,
+    alternates,
+    openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
+      type: "website",
+    },
   };
 }
 

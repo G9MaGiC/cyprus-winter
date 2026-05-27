@@ -6,6 +6,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { LAYER } from "@/lib/design-tokens";
 
 interface LoadingOverlayProps {
   isLoading: boolean;
@@ -28,7 +29,7 @@ export function LoadingOverlay({
       {isLoading && (
         <div
           className={cn(
-            "absolute inset-0 z-40 flex flex-col items-center justify-center",
+            `absolute inset-0 ${LAYER.chrome} flex flex-col items-center justify-center`,
             "bg-sand/80 transition-opacity duration-200",
             blur && "backdrop-blur-sm"
           )}
