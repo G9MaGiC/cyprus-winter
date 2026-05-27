@@ -687,6 +687,7 @@
   },
   "discover": {
     "addToPlan": "Προσθήκη στο πρόγραμμα",
+    "askAI": "Ask AI",
     "bookTasting": "Κράτηση γευσιγνωσίας",
     "seeEverything": "Δείτε τα πάντα",
     "page": {
@@ -1386,6 +1387,7 @@
     },
     "map": {
       "viewTrail": "Δείτε το μονοπάτι",
+      "stops": "Στάσεις",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Αφετηρία",
       "footerCount": "{count, plural, one {# μονοπάτι στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.} other {# μονοπάτια στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.}}"

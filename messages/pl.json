@@ -687,6 +687,7 @@
   },
   "discover": {
     "addToPlan": "Dodaj do planu",
+    "askAI": "Ask AI",
     "bookTasting": "Zarezerwuj degustację",
     "seeEverything": "Zobacz wszystko",
     "page": {
@@ -1386,6 +1387,7 @@
     },
     "map": {
       "viewTrail": "Zobacz szlak",
+      "stops": "Przystanki",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Punkt startowy",
       "footerCount": "{count, plural, one {# szlak na mapie. Dotknij znacznika, aby zobaczyć więcej.} other {# szlaki na mapie. Dotknij znacznika, aby zobaczyć więcej.}}"

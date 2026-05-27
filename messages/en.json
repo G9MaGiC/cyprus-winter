@@ -680,6 +680,7 @@
   },
   "discover": {
     "addToPlan": "Add to plan",
+    "askAI": "Ask AI",
     "bookTasting": "Book a tasting",
     "seeEverything": "See everything",
     "page": {
@@ -1346,6 +1347,7 @@
     },
     "map": {
       "viewTrail": "View trail",
+      "stops": "Stops",
       "popupMeta": "{region} · {km} km",
       "trailheadLegend": "Trailhead",
       "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
