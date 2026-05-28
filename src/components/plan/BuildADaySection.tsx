@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
-import { DAY_COMBOS } from "@/data/day-combos";
+import { DAY_COMBO_DEFS } from "@/data/day-combos";
 import type { RelatedPlace } from "@/lib/related-places";
 import { useTranslations } from "next-intl";
 
@@ -32,6 +32,7 @@ type BuildADaySectionProps = {
 
 export default function BuildADaySection({ hasContent, onComboClick }: BuildADaySectionProps) {
   const tPlan = useTranslations("plan");
+  const tCombos = useTranslations("plan.dayCombos");
   const tCommon = useTranslations("common");
 
   const typeLabels: Record<RelatedPlace["type"], string> = {
@@ -63,24 +64,34 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
         </p>
       </header>
       <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {DAY_COMBOS.map((combo) => {
+        {DAY_COMBO_DEFS.map((combo) => {
           const places = getRelatedPlaces(combo.ids);
           if (places.length === 0) return null;
           const addIds = places.map((p) => p.id).join(",");
+          const label = tCombos(`${combo.key}.label`);
+          const why = tCombos(`${combo.key}.why`);
+          const tipKeysWithTip: Record<string, true> = {
+            trailAndVillage: true,
+            paphosMosaicsWine: true,
+            waterfallVillage: true,
+            kykkosWine: true,
+            gentleTrailPlatres: true,
+          };
+          const tip = tipKeysWithTip[combo.key] ? tCombos(`${combo.key}.tip`) : "";
           return (
             <article
-              key={combo.label}
+              key={combo.key}
               className={`${CARD.planCombo} ${CARD.interactive} p-5 sm:p-6 flex flex-col group transition-all duration-200`}
             >
               <h3 className={`${TYPE.cardTitle} text-base sm:text-lg mb-2`}>
-                {combo.label}
+                {label}
               </h3>
               <p className={`text-sm text-olive/70 mb-3 leading-relaxed`}>
-                {combo.why}
+                {why}
               </p>
-              {combo.tip && (
+              {tip && tip !== `${combo.key}.tip` && (
                 <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-l-2 border-l-golden/40 pl-3`}>
-                  {combo.tip}
+                  {tip}
                 </p>
               )}
               <div className={`flex items-center gap-1.5 text-xs text-olive/50 ${SECTION.headingGap} uppercase tracking-wider`} aria-hidden>
@@ -104,9 +115,9 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
               {hasContent && onComboClick ? (
                 <button
                   type="button"
-                  onClick={() => onComboClick(places.map((p) => p.id), combo.label)}
+                  onClick={() => onComboClick(places.map((p) => p.id), label)}
                   className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
-                  aria-label={tPlan("aria.addCombo", { label: combo.label })}
+                  aria-label={tPlan("aria.addCombo", { label })}
                 >
                   {tPlan("addToPlan")}
                 </button>
@@ -114,7 +125,7 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 <AppLink
                   href={`/plan?add=${addIds}`}
                   className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 block text-center`}
-                  aria-label={tPlan("aria.addCombo", { label: combo.label })}
+                  aria-label={tPlan("aria.addCombo", { label })}
                 >
                   {tPlan("addToPlan")}
                 </AppLink>

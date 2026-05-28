@@ -87,8 +87,9 @@ export default function ListPageHero({
             alt={backgroundImageAlt ?? ""}
             fill
             className="object-cover"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 1200px"
             priority
+            fetchPriority="high"
           />
           <div className={HERO.listOverlay} aria-hidden />
           <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} ${LAYOUT.heroContentTop} pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>

@@ -30,6 +30,7 @@ import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 import AppLink from "@/components/AppLink";
 import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
+import PlanOfflineBanner from "@/components/plan/PlanOfflineBanner";
 import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
@@ -226,6 +227,10 @@ export default function PlanPageClient() {
             />
           </div>
         )}
+
+        <div className="mb-4">
+          <PlanOfflineBanner />
+        </div>
 
         {hasContent && hydrated && (
           <PlanShareBar

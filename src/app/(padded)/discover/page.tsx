@@ -17,6 +17,7 @@ import { CTA, LAYOUT } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverClient from "./DiscoverClient";
+import DiscoverCombosTeaser from "./DiscoverCombosTeaser";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 
@@ -142,6 +143,8 @@ export default async function DiscoverPage({
         </search>
 
         <div id="discover-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
+
+        <DiscoverCombosTeaser />
 
         <DiscoverClient
           sections={standardSections}

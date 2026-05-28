@@ -46,9 +46,9 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 | P1-03 | **Trail conditions trust** (official vs community, timestamp prominence) | DE-01, UK-01 | 6 | 8 | 0.9 | 1.5 | **28.8** | Done |
 | P1-04 | **Search aliases** (PL/EL spellings, alternate place names) | PL-01, GR-01 | 6 | 7 | 0.8 | 2 | **16.8** | Done |
 | P1-05 | **Winery price / appointment hints** on cards + book | PL-01, UK-01, IL-01 | 7 | 7 | 0.8 | 1.5 | **26.1** | Done (cards) |
-| P1-06 | **i18n fuzz pass** (booking errors, edge modals, discover filters) | PL-01, DE-01, GR-01 | 8 | 6 | 0.9 | 2 | **21.6** | Open |
-| P1-07 | **Hero system consistency** (list crop, discover search padding, detail top margin) | UK-01, UK-02 | 9 | 5 | 0.9 | 1 | **40.5** | Partial (see recent commits) |
-| P1-08 | **Map mobile interaction** audit all surfaces | DE-01, PL-01 | 7 | 7 | 0.9 | 1 | **44.1** | Partial (`MapInteractionGuard`) |
+| P1-06 | **i18n fuzz pass** (booking errors, edge modals, discover filters) | PL-01, DE-01, GR-01 | 8 | 6 | 0.9 | 2 | **21.6** | Done (day combos i18n; scan clean) |
+| P1-07 | **Hero system consistency** (list crop, discover search padding, detail top margin) | UK-01, UK-02 | 9 | 5 | 0.9 | 1 | **40.5** | Done (LCP sizes + prior hero commits) |
+| P1-08 | **Map mobile interaction** audit all surfaces | DE-01, PL-01 | 7 | 7 | 0.9 | 1 | **44.1** | Done (all Leaflet surfaces use `MapInteractionGuard`) |
 
 ---
 
@@ -58,8 +58,8 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 |----|------------|----------|---|---|---|---|-------|--------|
 | P2-01 | **Family template v2** (rain day, age tags, less AI nudge) | UK-02, PL-01 | 5 | 8 | 0.8 | 2 | **16.0** | Done |
 | P2-02 | **Workation template** (wifi, month weather tie-in) | DE-02 | 3 | 7 | 0.6 | 2 | **6.3** | Done |
-| P2-03 | **“Local winter” editorial lane** (GR-first picks, Nicosia food) | GR-01 | 4 | 6 | 0.7 | 2 | **8.4** | Open |
-| P2-04 | **Day combos as first-class UI** (package-feel days) | RO-01, PL-01 | 4 | 7 | 0.7 | 2 | **9.8** | Open |
+| P2-03 | **“Local winter” editorial lane** (GR-first picks, Nicosia food) | GR-01 | 4 | 6 | 0.7 | 2 | **8.4** | Done (`?filter=local`) |
+| P2-04 | **Day combos as first-class UI** (package-feel days) | RO-01, PL-01 | 4 | 7 | 0.7 | 2 | **9.8** | Done (Discover teaser + Plan) |
 | P2-05 | **Accessible / low-mobility filter** | UK-01 | 3 | 8 | 0.8 | 1.5 | **12.8** | Done |
 | P2-06 | **Plan export** (ICS or shareable text v2) | DE-01 | 4 | 6 | 0.8 | 2 | **9.6** | Done (ICS download) |
 | P2-07 | **Winery click-to-call** on detail/book | IL-01, UK-01 | 5 | 6 | 0.9 | 0.5 | **54.0** | Done (existing) |
@@ -73,8 +73,8 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 | P3-01 | **Hebrew critical paths** (book, plan, discover) | IL-01 | 5 | 7 | 0.6 | 4 | **5.3** | Open |
 | P3-02 | **Romanian locale** (or EN first-visit path) | RO-01 | 3 | 6 | 0.5 | 4 | **2.3** | Open |
 | P3-03 | **French locale** | FR-01 | 2 | 5 | 0.5 | 4 | **1.3** | Open |
-| P3-04 | **LCP budget / hero image strategy** | PERF-01 | 9 | 5 | 0.8 | 2 | **18.0** | Open |
-| P3-05 | **Offline read-only plan** | PERF-01 | 4 | 6 | 0.5 | 4 | **3.0** | Open |
+| P3-04 | **LCP budget / hero image strategy** | PERF-01 | 9 | 5 | 0.8 | 2 | **18.0** | Partial (`fetchPriority` + hero sizes) |
+| P3-05 | **Offline read-only plan** | PERF-01 | 4 | 6 | 0.5 | 4 | **3.0** | Partial (offline banner on plan) |
 | P3-06 | **WCAG 2.2 AA audit** (discover, plan, book) | A11Y-01 | 8 | 7 | 0.9 | 3 | **16.8** | Open |
 
 ---
@@ -84,7 +84,7 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 | ID | Initiative | Personas | R | I | C | E | Score | Status |
 |----|------------|----------|---|---|---|---|-------|--------|
 | B2B-01 | **Partner lead email + SLA documentation** | B2B-01 | 4 | 8 | 0.9 | 1 | **28.8** | Done (guest email) |
-| B2B-02 | **Winter hours data audit** pipeline | B2B-01, PL-01 | 5 | 7 | 0.8 | 2 | **14.0** | Open |
+| B2B-02 | **Winter hours data audit** pipeline | B2B-01, PL-01 | 5 | 7 | 0.8 | 2 | **14.0** | Done (`winter-hours-audit.test.ts` in `data:validate`) |
 
 ---
 

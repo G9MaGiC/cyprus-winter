@@ -716,7 +716,14 @@
         "monastery": "Monasteries & culture",
         "family": "Family-friendly",
         "accessible": "Accessible & gentle",
+        "local": "Local winter",
         "hidden": "Hidden gems"
+      },
+      "combosTeaser": {
+        "kicker": "Curated days",
+        "title": "Ready-made day pairings",
+        "body": "Morning and afternoon combos that flow—add one to your plan in a tap.",
+        "seeAll": "See all pairings on Plan →"
       },
       "filters": {
         "all": "All",
@@ -776,6 +783,10 @@
           "accessible": {
             "title": "Accessible Cyprus Winter | Gentle Paths & Museums",
             "description": "Lower-mobility winter Cyprus: paved sites, manageable villages, ground-floor museums. Curated accessible and gentle places."
+          },
+          "local": {
+            "title": "Local Winter Cyprus | Museums, Villages & Slow Days",
+            "description": "Winter like a local: Nicosia museums, lace villages, stone sites—fewer tour buses, more kafenion time."
           },
           "bouldering": {
             "title": "Bouldering in Cyprus Winter | Crags & Gyms",
@@ -1470,6 +1481,48 @@
       "tightDay": "Four or more stops is ambitious for one winter day.",
       "daylight": "Winter daylight ends around 5pm—start outdoor stops by 10am.",
       "trailAndSpread": "Trail plus distant stops—start early and check conditions."
+    },
+    "offline": {
+      "body": "You are offline. Your plan stays on this device until you are back online—bookings need a connection."
+    },
+    "dayCombos": {
+      "trailAndVillage": {
+        "label": "Trail and village",
+        "why": "Pine forest in the morning, village lunch by noon.",
+        "tip": "Start Artemis by 9am. Omodos warms up with coffee and lace."
+      },
+      "limassolCoastCommandaria": {
+        "label": "Limassol coast & Commandaria",
+        "why": "Ancient theatre, quick dip, then sugar-mill wine."
+      },
+      "paphosMosaicsWine": {
+        "label": "Paphos mosaics & wine",
+        "why": "Morning light on the floors, Vouni for lunch and tasting.",
+        "tip": "House of Theseus: 9–11am. Book Vouni ahead."
+      },
+      "waterfallVillage": {
+        "label": "Waterfall and stone village",
+        "why": "Caledonia after rain, Kakopetria for lunch and cobbles.",
+        "tip": "Best 1–2 days after rainfall. Waterproof boots."
+      },
+      "kykkosWine": {
+        "label": "Kykkos and wine",
+        "why": "Monastery and views first, Tsiakkas tasting to close the loop.",
+        "tip": "Tsiakkas terrace has heaters. Book ahead."
+      },
+      "laceAncientWine": {
+        "label": "Lace, ancient & wine",
+        "why": "Lefkara lacemakers, Choirokoitia, then Dómes Sergiou."
+      },
+      "gentleTrailPlatres": {
+        "label": "Gentle trail & Platres",
+        "why": "Atalante loop, then Platres for kafenions and views.",
+        "tip": "Easiest Troodos trail. Often clear when higher trails have snow."
+      },
+      "paphosCoastAdonis": {
+        "label": "Paphos coast & Adonis",
+        "why": "Tomb of Kings, coral bay stretch, Adonis for tasting."
+      }
     },
     "share": {
       "copyAndShare": "Copy & share",

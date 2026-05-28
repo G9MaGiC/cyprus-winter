@@ -9,6 +9,7 @@ import {
 import { ACTIVITY_PLACE_IDS_SET } from "@/data/activity-places";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
+import { LOCAL_WINTER_PICK_IDS } from "@/data/local-winter-picks";
 
 export type DiscoverSection = {
   id: string;
@@ -32,6 +33,7 @@ export const filterToSectionId: Record<string, string> = {
   monastery: "monastery",
   family: "family",
   accessible: "accessible",
+  local: "local",
   hidden: "hidden",
   "off-beaten-path": "hidden",
 };
@@ -101,6 +103,9 @@ export function buildDiscoverSections(
   const wineAndFoodItems = [...wineries, ...restaurants];
   const familyItems = allDiscoverItems.filter(isFamilyFriendly);
   const accessibleItems = allDiscoverItems.filter(isAccessibleFriendly);
+  const localWinterItems = allDiscoverItems.filter((item) =>
+    (LOCAL_WINTER_PICK_IDS as readonly string[]).includes(item.id)
+  );
   const quietItems = allDiscoverItems.filter(isOffBeatenPath);
   const hiddenGemsItems = [...familyItems, ...quietItems].filter(
     (item, i, arr) => arr.findIndex((x) => x.id === item.id) === i
@@ -115,6 +120,7 @@ export function buildDiscoverSections(
     { id: "monastery", title: "monastery", items: monasteries },
     { id: "family", title: "family", items: familyItems },
     { id: "accessible", title: "accessible", items: accessibleItems },
+    { id: "local", title: "local", items: localWinterItems },
     { id: "hidden", title: "hidden", items: hiddenGemsItems },
   ];
 }
