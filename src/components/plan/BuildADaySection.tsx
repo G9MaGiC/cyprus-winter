@@ -28,9 +28,10 @@ function typeBadge(type: RelatedPlace["type"], label: string) {
 type BuildADaySectionProps = {
   hasContent: boolean;
   onComboClick?: (ids: string[], label: string) => void;
+  readOnly?: boolean;
 };
 
-export default function BuildADaySection({ hasContent, onComboClick }: BuildADaySectionProps) {
+export default function BuildADaySection({ hasContent, onComboClick, readOnly = false }: BuildADaySectionProps) {
   const tPlan = useTranslations("plan");
   const tCombos = useTranslations("plan.dayCombos");
   const tCommon = useTranslations("common");
@@ -116,7 +117,17 @@ export default function BuildADaySection({ hasContent, onComboClick }: BuildADay
                 <button
                   type="button"
                   onClick={() => onComboClick(places.map((p) => p.id), label)}
-                  className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
+                  disabled={readOnly}
+                  className={`w-full ${CTA.primaryCompact} transition-transform duration-150 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed`}
+                  aria-label={tPlan("aria.addCombo", { label })}
+                >
+                  {tPlan("addToPlan")}
+                </button>
+              ) : readOnly ? (
+                <button
+                  type="button"
+                  disabled
+                  className={`w-full ${CTA.primaryCompact} opacity-50 cursor-not-allowed`}
                   aria-label={tPlan("aria.addCombo", { label })}
                 >
                   {tPlan("addToPlan")}

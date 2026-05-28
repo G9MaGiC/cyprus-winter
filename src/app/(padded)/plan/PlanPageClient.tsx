@@ -115,6 +115,7 @@ export default function PlanPageClient() {
     handleReplaceCombo,
     handleClearDayConfirm,
     scrollToQuickStart,
+    planReadOnly,
   } = plan;
 
   const quickStartBlock = (
@@ -135,6 +136,7 @@ export default function PlanPageClient() {
         onTemplateClick={handleTemplateClick}
         hasContent={hasContent}
         tripLength={tripLength}
+        readOnly={planReadOnly}
       />
       {!hasContent ? (
         <details className="group rounded-2xl border border-sand-200/80 bg-white/70 shadow-sm open:shadow-md open:bg-white/90 transition-shadow">
@@ -148,11 +150,11 @@ export default function PlanPageClient() {
             </span>
           </summary>
           <div className="border-t border-sand-200/60 px-3 pb-6 pt-4 sm:px-5">
-            <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+            <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} readOnly={planReadOnly} />
           </div>
         </details>
       ) : (
-        <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+        <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} readOnly={planReadOnly} />
       )}
     </>
   );
@@ -290,9 +292,12 @@ export default function PlanPageClient() {
             lastAddedId={lastAddedId}
             lastAddedCardRef={lastAddedCardRef}
             onClearDay={() => setShowClearModal(true)}
-            onBrowseAll={() => setShowBrowseModal(true)}
+            onBrowseAll={() => {
+              if (!planReadOnly) setShowBrowseModal(true);
+            }}
             onScrollToQuickStart={scrollToQuickStart}
             hideInlineAdd={!hasContent}
+            readOnly={planReadOnly}
           />
 
           {hasContent && hydrated && <PlanMapCollapsibleSection />}
@@ -319,7 +324,7 @@ export default function PlanPageClient() {
           />
         )}
 
-        {hasContent && hydrated && (
+        {hasContent && hydrated && !planReadOnly && (
           <PlanStickyAddBar
             sentinelId="plan-add-sentinel"
             scrollTargetId="plan-inline-add"

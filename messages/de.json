@@ -1604,7 +1604,9 @@
       "emptyFallback": "Ihr Zypern-Winterplan. Fügen Sie Orte aus Entdecken oder Wanderwege hinzu, um loszulegen."
     },
     "offline": {
-      "body": "Sie sind offline. Ihr Plan bleibt auf diesem Gerät—Buchungen brauchen eine Verbindung."
+      "body": "Ihr Plan bleibt auf diesem Gerät, bis Sie wieder online sind—Buchungen brauchen eine Verbindung.",
+      "title": "Sie sind offline",
+      "readOnly": "Nur Lesen: Sie können den Plan erst online wieder bearbeiten."
     },
     "dayCombos": {
       "trailAndVillage": {

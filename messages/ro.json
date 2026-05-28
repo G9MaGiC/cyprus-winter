@@ -29,25 +29,25 @@
     "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
   },
   "nav": {
-    "discover": "Discover",
+    "discover": "Descoperă",
     "plan": "Plan",
-    "trails": "Trails",
-    "events": "Events",
+    "trails": "Trasee",
+    "events": "Evenimente",
     "airport": "Airport",
     "arriving": "Arriving",
     "beaches": "Beaches",
     "villages": "Villages",
     "wineries": "Wineries",
     "signIn": "Sign in",
-    "home": "Home",
-    "weather": "Weather",
-    "bookings": "Bookings",
+    "home": "Acasă",
+    "weather": "Vreme",
+    "bookings": "Rezervări",
     "secrets": "Local secrets",
     "account": "Account",
     "team": "Team",
-    "search": "Search",
+    "search": "Căutare",
     "more": "More",
-    "askAI": "Ask AI",
+    "askAI": "Întreabă AI",
     "searchAria": "Search places and trails",
     "askAIAria": "Ask AI for trails, wineries, and trip ideas",
     "openMenu": "Open menu",
@@ -56,20 +56,20 @@
   },
   "common": {
     "nav": {
-      "discover": "Discover",
-      "trip": "Itinerary",
+      "discover": "Descoperă",
+      "trip": "Itinerar",
       "airport": "Airport"
     },
     "aria": {
       "planCta": "Build a day",
       "pageNavigation": "Page navigation",
-      "viewPlan": "View your plan",
+      "viewPlan": "Vezi planul tău",
       "placeInItinerary": "{id} is in your itinerary",
-      "bottomNavigation": "Bottom navigation",
+      "bottomNavigation": "Navigare jos",
       "moreNavigation": "More navigation",
       "breadcrumb": "Breadcrumb",
       "dismissTip": "Dismiss tip",
-      "selectLanguage": "Select language",
+      "selectLanguage": "Alege limba",
       "close": "Close",
       "addPlace": "Add place",
       "addPlaceToItinerary": "Add a place to your itinerary",
@@ -103,8 +103,8 @@
       "getDirections": "Get directions",
       "openInMaps": "Open in Maps"
     },
-    "addToPlan": "Add to plan",
-    "addPlace": "Add place",
+    "addToPlan": "Adaugă în plan",
+    "addPlace": "Adaugă loc",
     "openAria": "Open {name}",
     "cookies": {
       "essentialOnly": "Essential only",
@@ -151,7 +151,7 @@
       "retry": "Retry",
       "thinking": "Thinking…"
     },
-    "back": "Back",
+    "back": "Înapoi",
     "backTo": "Back to {label}",
     "backToTop": "Back to top",
     "peopleCount": "{count, plural, one {# person} other {# people}}",
@@ -165,7 +165,7 @@
       "troodosDecember": "Troodos December"
     },
     "inYourPlan": "In your plan",
-    "viewPlan": "View plan",
+    "viewPlan": "Vezi planul",
     "local": "Local",
     "verifiedPartner": "Verified partner",
     "verifiedPartnerTitle": "Verified partner: receives booking requests directly",
@@ -176,12 +176,12 @@
     "reportConditions": "Report conditions",
     "reportAnotherTrail": "Report another trail",
     "thanksForReporting": "Thanks for reporting.",
-    "remove": "Remove",
-    "bookTastings": "Book tastings",
+    "remove": "Elimină",
+    "bookTastings": "Rezervă degustări",
     "exploreWineries": "Explore wineries",
     "allCategories": "All categories",
-    "filterPlaces": "Filter places",
-    "clearFilter": "Clear filter",
+    "filterPlaces": "Filtrează locuri",
+    "clearFilter": "Șterge filtrul",
     "viewOnMap": "View on map",
     "scrollToMap": "Scroll to map",
     "askAI": "Ask AI",
@@ -199,7 +199,7 @@
       "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
       "viewPlan": "View plan"
     },
-    "planYourTrip": "Plan your trip",
+    "planYourTrip": "Planifică călătoria",
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
     "emergency112": "Emergency 112",
@@ -700,7 +700,7 @@
     "seeEverything": "See everything",
     "page": {
       "contentAria": "Discover places in Cyprus",
-      "curatedLine": "Curated for winter. Add to your plan as you browse.",
+      "curatedLine": "Selecție de iarnă. Adaugă în plan pe măsură ce explorezi.",
       "noResultsTitle": "Nothing matches this filter",
       "noResultsBody": "Try a different category, clear the filter, or ask the AI for recommendations.",
       "clearFilter": "Clear filter",
@@ -733,7 +733,7 @@
         "seeAll": "See all pairings on Plan →"
       },
       "filters": {
-        "all": "All",
+        "all": "Toate",
         "natureAndCoasts": "Nature & coasts",
         "invalid": "That filter doesn't exist—showing all places.",
         "togglePrefix": "Filters:",
@@ -756,7 +756,7 @@
         "seeMonasteries": "Monasteries & culture"
       },
       "meta": {
-        "title": "Discover Cyprus Winter | Beaches, Villages, Wineries",
+        "title": "Descoperă Cipru iarna | Plaje, sate, crame",
         "description": "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—plus bouldering, cycling, and coast adventures. Sixteen degrees when home is six.",
         "filters": {
           "nature": {
@@ -1472,10 +1472,10 @@
     "curatedCombosDesc": "Morning at one place, afternoon at another. These flow.",
     "morning": "Morning",
     "afternoon": "Afternoon",
-    "pageTitle": "Plan your Cyprus winter",
-    "pageDescHasContent": "Your itinerary. Add more, share, or tweak below.",
-    "pageDescEmpty": "Build your winter itinerary. Pick a template or add places day by day.",
-    "pageDescSecondaryEmpty": "Saves automatically.",
+    "pageTitle": "Planifică iarna în Cipru",
+    "pageDescHasContent": "Itinerariul tău. Adaugă, distribuie sau ajustează mai jos.",
+    "pageDescEmpty": "Construiește un itinerar de iarnă. Alege un șablon sau adaugă locuri pe zile.",
+    "pageDescSecondaryEmpty": "Se salvează automat.",
     "mapTitle": "Your itinerary on the map",
     "mapCollapsibleHint": "Stops and driving context on the island map",
     "addMoreCollapsibleTitle": "Add more to your plan",
@@ -1523,7 +1523,9 @@
       "trailAndSpread": "Trail plus distant stops—start early and check conditions."
     },
     "offline": {
-      "body": "You are offline. Your plan stays on this device until you are back online—bookings need a connection."
+      "body": "Ești offline. Planul rămâne pe acest dispozitiv — rezervările necesită conexiune.",
+      "title": "Ești offline",
+      "readOnly": "Doar citire: nu poți edita planul până revii online."
     },
     "dayCombos": {
       "trailAndVillage": {
@@ -2362,11 +2364,11 @@
       },
       "fields": {
         "date": {
-          "label": "Preferred date",
+          "label": "Dată",
           "hint": "Winter tastings fill up. A few days ahead helps."
         },
         "partySize": {
-          "label": "Group size",
+          "label": "Dimensiune grup",
           "plus": "11+ people",
           "placeholder": "Select group size"
         },
@@ -2388,8 +2390,8 @@
       "submit": {
         "ariaSending": "Sending your request",
         "ariaIdle": "Request booking",
-        "sending": "Sending…",
-        "idle": "Request booking"
+        "sending": "Se trimite…",
+        "idle": "Trimite cererea"
       },
       "finePrint": {
         "bodyPrefix": "This is a request, not a confirmed reservation. The winery will confirm by email. By submitting, you agree to our",

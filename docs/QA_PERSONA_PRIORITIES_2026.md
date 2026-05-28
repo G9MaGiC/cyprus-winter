@@ -70,11 +70,11 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 
 | ID | Initiative | Personas | R | I | C | E | Score | Status |
 |----|------------|----------|---|---|---|---|-------|--------|
-| P3-01 | **Hebrew critical paths** (book, plan, discover) | IL-01 | 5 | 7 | 0.6 | 4 | **5.3** | Partial (`he` locale + RTL; EN copy pending translation) |
-| P3-02 | **Romanian locale** (or EN first-visit path) | RO-01 | 3 | 6 | 0.5 | 4 | **2.3** | Partial (`ro` locale; EN copy) |
-| P3-03 | **French locale** | FR-01 | 2 | 5 | 0.5 | 4 | **1.3** | Partial (`fr` locale; EN copy) |
+| P3-01 | **Hebrew critical paths** (book, plan, discover) | IL-01 | 5 | 7 | 0.6 | 4 | **5.3** | Partial (`he` + RTL; nav/plan/discover/book critical strings) |
+| P3-02 | **Romanian locale** (or EN first-visit path) | RO-01 | 3 | 6 | 0.5 | 4 | **2.3** | Partial (`ro` + critical-path copy) |
+| P3-03 | **French locale** | FR-01 | 2 | 5 | 0.5 | 4 | **1.3** | Partial (`fr` + critical-path copy) |
 | P3-04 | **LCP budget / hero image strategy** | PERF-01 | 9 | 5 | 0.8 | 2 | **18.0** | Partial (`fetchPriority` + hero sizes) |
-| P3-05 | **Offline read-only plan** | PERF-01 | 4 | 6 | 0.5 | 4 | **3.0** | Partial (offline banner on plan) |
+| P3-05 | **Offline read-only plan** | PERF-01 | 4 | 6 | 0.5 | 4 | **3.0** | Partial (offline banner + read-only edits; no SW cache) |
 | P3-06 | **WCAG 2.2 AA audit** (discover, plan, book) | A11Y-01 | 8 | 7 | 0.9 | 3 | **16.8** | Partial (booking `aria-describedby` hints/errors) |
 
 ---

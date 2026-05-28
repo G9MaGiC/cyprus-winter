@@ -29,25 +29,25 @@
     "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
   },
   "nav": {
-    "discover": "Discover",
-    "plan": "Plan",
-    "trails": "Trails",
-    "events": "Events",
+    "discover": "גילוי",
+    "plan": "תכנון",
+    "trails": "שבילים",
+    "events": "אירועים",
     "airport": "Airport",
     "arriving": "Arriving",
     "beaches": "Beaches",
     "villages": "Villages",
     "wineries": "Wineries",
     "signIn": "Sign in",
-    "home": "Home",
-    "weather": "Weather",
-    "bookings": "Bookings",
+    "home": "בית",
+    "weather": "מזג אוויר",
+    "bookings": "הזמנות",
     "secrets": "Local secrets",
     "account": "Account",
     "team": "Team",
-    "search": "Search",
+    "search": "חיפוש",
     "more": "More",
-    "askAI": "Ask AI",
+    "askAI": "שאל את ה-AI",
     "searchAria": "Search places and trails",
     "askAIAria": "Ask AI for trails, wineries, and trip ideas",
     "openMenu": "Open menu",
@@ -56,20 +56,20 @@
   },
   "common": {
     "nav": {
-      "discover": "Discover",
-      "trip": "Itinerary",
+      "discover": "גילוי",
+      "trip": "מסלול",
       "airport": "Airport"
     },
     "aria": {
       "planCta": "Build a day",
       "pageNavigation": "Page navigation",
-      "viewPlan": "View your plan",
+      "viewPlan": "צפה בתכנית שלך",
       "placeInItinerary": "{id} is in your itinerary",
-      "bottomNavigation": "Bottom navigation",
+      "bottomNavigation": "ניווט תחתון",
       "moreNavigation": "More navigation",
       "breadcrumb": "Breadcrumb",
       "dismissTip": "Dismiss tip",
-      "selectLanguage": "Select language",
+      "selectLanguage": "בחר שפה",
       "close": "Close",
       "addPlace": "Add place",
       "addPlaceToItinerary": "Add a place to your itinerary",
@@ -103,8 +103,8 @@
       "getDirections": "Get directions",
       "openInMaps": "Open in Maps"
     },
-    "addToPlan": "Add to plan",
-    "addPlace": "Add place",
+    "addToPlan": "הוסף לתכנית",
+    "addPlace": "הוסף מקום",
     "openAria": "Open {name}",
     "cookies": {
       "essentialOnly": "Essential only",
@@ -151,7 +151,7 @@
       "retry": "Retry",
       "thinking": "Thinking…"
     },
-    "back": "Back",
+    "back": "חזרה",
     "backTo": "Back to {label}",
     "backToTop": "Back to top",
     "peopleCount": "{count, plural, one {# person} other {# people}}",
@@ -165,7 +165,7 @@
       "troodosDecember": "Troodos December"
     },
     "inYourPlan": "In your plan",
-    "viewPlan": "View plan",
+    "viewPlan": "צפה בתכנית",
     "local": "Local",
     "verifiedPartner": "Verified partner",
     "verifiedPartnerTitle": "Verified partner: receives booking requests directly",
@@ -176,12 +176,12 @@
     "reportConditions": "Report conditions",
     "reportAnotherTrail": "Report another trail",
     "thanksForReporting": "Thanks for reporting.",
-    "remove": "Remove",
-    "bookTastings": "Book tastings",
+    "remove": "הסר",
+    "bookTastings": "הזמן טעימות",
     "exploreWineries": "Explore wineries",
     "allCategories": "All categories",
-    "filterPlaces": "Filter places",
-    "clearFilter": "Clear filter",
+    "filterPlaces": "סינון מקומות",
+    "clearFilter": "נקה סינון",
     "viewOnMap": "View on map",
     "scrollToMap": "Scroll to map",
     "askAI": "Ask AI",
@@ -199,7 +199,7 @@
       "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
       "viewPlan": "View plan"
     },
-    "planYourTrip": "Plan your trip",
+    "planYourTrip": "תכנן את הטיול",
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
     "emergency112": "Emergency 112",
@@ -700,7 +700,7 @@
     "seeEverything": "See everything",
     "page": {
       "contentAria": "Discover places in Cyprus",
-      "curatedLine": "Curated for winter. Add to your plan as you browse.",
+      "curatedLine": "אוצר חורף. הוסף לתכנית בזמן הגלישה.",
       "noResultsTitle": "Nothing matches this filter",
       "noResultsBody": "Try a different category, clear the filter, or ask the AI for recommendations.",
       "clearFilter": "Clear filter",
@@ -733,7 +733,7 @@
         "seeAll": "See all pairings on Plan →"
       },
       "filters": {
-        "all": "All",
+        "all": "הכל",
         "natureAndCoasts": "Nature & coasts",
         "invalid": "That filter doesn't exist—showing all places.",
         "togglePrefix": "Filters:",
@@ -756,7 +756,7 @@
         "seeMonasteries": "Monasteries & culture"
       },
       "meta": {
-        "title": "Discover Cyprus Winter | Beaches, Villages, Wineries",
+        "title": "גילוי קפריסין בחורף | חופים, כפרים, יקבים",
         "description": "Cyprus in winter: curated places that feel real. Beaches, ancient sites, villages, wineries—plus bouldering, cycling, and coast adventures. Sixteen degrees when home is six.",
         "filters": {
           "nature": {
@@ -1472,10 +1472,10 @@
     "curatedCombosDesc": "Morning at one place, afternoon at another. These flow.",
     "morning": "Morning",
     "afternoon": "Afternoon",
-    "pageTitle": "Plan your Cyprus winter",
-    "pageDescHasContent": "Your itinerary. Add more, share, or tweak below.",
-    "pageDescEmpty": "Build your winter itinerary. Pick a template or add places day by day.",
-    "pageDescSecondaryEmpty": "Saves automatically.",
+    "pageTitle": "תכנון חורף בקפריסין",
+    "pageDescHasContent": "המסלול שלך. הוסף, שתף או עדכן למטה.",
+    "pageDescEmpty": "בנה מסלול חורף. בחר תבנית או הוסף מקומות יום־יום.",
+    "pageDescSecondaryEmpty": "נשמר אוטומטית.",
     "mapTitle": "Your itinerary on the map",
     "mapCollapsibleHint": "Stops and driving context on the island map",
     "addMoreCollapsibleTitle": "Add more to your plan",
@@ -1523,7 +1523,9 @@
       "trailAndSpread": "Trail plus distant stops—start early and check conditions."
     },
     "offline": {
-      "body": "You are offline. Your plan stays on this device until you are back online—bookings need a connection."
+      "body": "אתה במצב לא מקוון. התכנית נשארת במכשיר הזה — הזמנות דורשות חיבור.",
+      "title": "אין חיבור",
+      "readOnly": "צפייה בלבד: לא ניתן לערוך את התכנית עד שתחזור לרשת."
     },
     "dayCombos": {
       "trailAndVillage": {
@@ -2362,11 +2364,11 @@
       },
       "fields": {
         "date": {
-          "label": "Preferred date",
+          "label": "תאריך",
           "hint": "Winter tastings fill up. A few days ahead helps."
         },
         "partySize": {
-          "label": "Group size",
+          "label": "גודל קבוצה",
           "plus": "11+ people",
           "placeholder": "Select group size"
         },
@@ -2388,8 +2390,8 @@
       "submit": {
         "ariaSending": "Sending your request",
         "ariaIdle": "Request booking",
-        "sending": "Sending…",
-        "idle": "Request booking"
+        "sending": "שולח…",
+        "idle": "שלח בקשה"
       },
       "finePrint": {
         "bodyPrefix": "This is a request, not a confirmed reservation. The winery will confirm by email. By submitting, you agree to our",

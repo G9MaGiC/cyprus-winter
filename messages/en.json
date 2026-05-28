@@ -1523,7 +1523,9 @@
       "trailAndSpread": "Trail plus distant stops—start early and check conditions."
     },
     "offline": {
-      "body": "You are offline. Your plan stays on this device until you are back online—bookings need a connection."
+      "title": "You are offline",
+      "body": "Your plan stays on this device until you are back online—bookings need a connection.",
+      "readOnly": "Read-only: you cannot edit the plan until you are back online."
     },
     "dayCombos": {
       "trailAndVillage": {

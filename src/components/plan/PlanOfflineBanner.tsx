@@ -12,9 +12,11 @@ export default function PlanOfflineBanner() {
   return (
     <div
       role="status"
-      className="rounded-xl border border-golden/30 bg-golden/10 px-4 py-3 text-sm text-olive/85 leading-relaxed"
+      className="rounded-xl border border-golden/30 bg-golden/10 px-4 py-3 text-sm text-olive/85 leading-relaxed space-y-1"
     >
-      {t("body")}
+      <p className="font-medium text-olive">{t("title")}</p>
+      <p>{t("body")}</p>
+      <p className="text-olive/75">{t("readOnly")}</p>
     </div>
   );
 }

@@ -1604,7 +1604,9 @@
       "emptyFallback": "Twój zimowy plan na Cypr. Dodaj miejsca z Odkrywaj lub Szlaków, aby zacząć."
     },
     "offline": {
-      "body": "Jesteś offline. Plan zostaje na tym urządzeniu—rezerwacje wymagają sieci."
+      "body": "Plan zostaje na tym urządzeniu, dopóki nie wrócisz online—rezerwacje wymagają połączenia.",
+      "title": "Jesteś offline",
+      "readOnly": "Tylko do odczytu: nie możesz edytować planu, dopóki nie wrócisz online."
     },
     "dayCombos": {
       "trailAndVillage": {
