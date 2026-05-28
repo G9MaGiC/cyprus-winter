@@ -45,8 +45,8 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 | P1-02 | **Daylight / pace hints** on plan days (sunset, “tight day”) | NORD-01, DE-01, UK-01 | 7 | 7 | 0.7 | 2 | **17.2** | Done |
 | P1-03 | **Trail conditions trust** (official vs community, timestamp prominence) | DE-01, UK-01 | 6 | 8 | 0.9 | 1.5 | **28.8** | Done |
 | P1-04 | **Search aliases** (PL/EL spellings, alternate place names) | PL-01, GR-01 | 6 | 7 | 0.8 | 2 | **16.8** | Done |
-| P1-05 | **Winery price / appointment hints** on cards + book | PL-01, UK-01, IL-01 | 7 | 7 | 0.8 | 1.5 | **26.1** | Done (cards) |
-| P1-06 | **i18n fuzz pass** (booking errors, edge modals, discover filters) | PL-01, DE-01, GR-01 | 8 | 6 | 0.9 | 2 | **21.6** | Done (day combos i18n; scan clean) |
+| P1-05 | **Winery price / appointment hints** on cards + book | PL-01, UK-01, IL-01 | 7 | 7 | 0.8 | 1.5 | **26.1** | Done |
+| P1-06 | **i18n fuzz pass** (booking errors, edge modals, discover filters) | PL-01, DE-01, GR-01 | 8 | 6 | 0.9 | 2 | **21.6** | Done (combos localized; ro/fr/he added) |
 | P1-07 | **Hero system consistency** (list crop, discover search padding, detail top margin) | UK-01, UK-02 | 9 | 5 | 0.9 | 1 | **40.5** | Done (LCP sizes + prior hero commits) |
 | P1-08 | **Map mobile interaction** audit all surfaces | DE-01, PL-01 | 7 | 7 | 0.9 | 1 | **44.1** | Done (all Leaflet surfaces use `MapInteractionGuard`) |
 
@@ -70,12 +70,12 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 
 | ID | Initiative | Personas | R | I | C | E | Score | Status |
 |----|------------|----------|---|---|---|---|-------|--------|
-| P3-01 | **Hebrew critical paths** (book, plan, discover) | IL-01 | 5 | 7 | 0.6 | 4 | **5.3** | Open |
-| P3-02 | **Romanian locale** (or EN first-visit path) | RO-01 | 3 | 6 | 0.5 | 4 | **2.3** | Open |
-| P3-03 | **French locale** | FR-01 | 2 | 5 | 0.5 | 4 | **1.3** | Open |
+| P3-01 | **Hebrew critical paths** (book, plan, discover) | IL-01 | 5 | 7 | 0.6 | 4 | **5.3** | Partial (`he` locale + RTL; EN copy pending translation) |
+| P3-02 | **Romanian locale** (or EN first-visit path) | RO-01 | 3 | 6 | 0.5 | 4 | **2.3** | Partial (`ro` locale; EN copy) |
+| P3-03 | **French locale** | FR-01 | 2 | 5 | 0.5 | 4 | **1.3** | Partial (`fr` locale; EN copy) |
 | P3-04 | **LCP budget / hero image strategy** | PERF-01 | 9 | 5 | 0.8 | 2 | **18.0** | Partial (`fetchPriority` + hero sizes) |
 | P3-05 | **Offline read-only plan** | PERF-01 | 4 | 6 | 0.5 | 4 | **3.0** | Partial (offline banner on plan) |
-| P3-06 | **WCAG 2.2 AA audit** (discover, plan, book) | A11Y-01 | 8 | 7 | 0.9 | 3 | **16.8** | Open |
+| P3-06 | **WCAG 2.2 AA audit** (discover, plan, book) | A11Y-01 | 8 | 7 | 0.9 | 3 | **16.8** | Partial (booking `aria-describedby` hints/errors) |
 
 ---
 

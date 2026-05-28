@@ -5,6 +5,8 @@ import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import BookingSuccessNextSteps from "@/components/bookings/BookingSuccessNextSteps";
+import WineryBookingHints from "@/components/bookings/WineryBookingHints";
+import { fieldDescribedBy } from "@/lib/form-a11y";
 import { CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import { wineryBookingSchema } from "@/lib/booking-schemas";
@@ -13,9 +15,13 @@ import { useBookingForm } from "@/hooks/useBookingForm";
 export default function WineryBookingForm({
   wineryId,
   wineryName,
+  openingHours,
+  bestTimeToVisit,
 }: {
   wineryId: string;
   wineryName: string;
+  openingHours?: string;
+  bestTimeToVisit?: string;
 }) {
   const t = useTranslations("book.wineryForm");
   const tForm = useTranslations("book.form");
@@ -120,6 +126,7 @@ export default function WineryBookingForm({
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <BookingProgressStepper currentStep={loading ? 2 : 1} />
       <BookingTrustStrip variant="winery" />
+      <WineryBookingHints openingHours={openingHours} bestTimeToVisit={bestTimeToVisit} />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-olive/75">
         <p>
           <strong>{tForm("states.heading")}</strong> {tForm("states.wineryBody")}
@@ -134,7 +141,9 @@ export default function WineryBookingForm({
         <label htmlFor="date" className="block text-sm font-medium text-olive mb-1">
           {t("fields.date.label")}
         </label>
-        <p className="text-xs text-olive/60 mb-2">{t("fields.date.hint")}</p>
+        <p id="date-hint" className="text-xs text-olive/60 mb-2">
+          {t("fields.date.hint")}
+        </p>
         <input
           id="date"
           name="date"
@@ -143,7 +152,7 @@ export default function WineryBookingForm({
           min={todayStr}
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.date}
-          aria-describedby={fieldErrors.date ? "date-error" : undefined}
+          aria-describedby={fieldDescribedBy("date-hint", fieldErrors.date && "date-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.date ? "border-terracotta" : "border-sand-200/80"}`}
         />
         {fieldErrors.date && <p id="date-error" className="text-xs text-terracotta mt-1">{fieldErrors.date}</p>}
@@ -153,6 +162,9 @@ export default function WineryBookingForm({
         <label htmlFor="partySize" className="block text-sm font-medium text-olive mb-1">
           {t("fields.partySize.label")}
         </label>
+        <p id="partySize-hint" className="sr-only">
+          {t("fields.partySize.placeholder")}
+        </p>
         <select
           id="partySize"
           name="partySize"
@@ -160,7 +172,7 @@ export default function WineryBookingForm({
           defaultValue=""
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.partySize}
-          aria-describedby={fieldErrors.partySize ? "partySize-error" : undefined}
+          aria-describedby={fieldDescribedBy("partySize-hint", fieldErrors.partySize && "partySize-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.partySize ? "border-terracotta" : "border-sand-200/80"}`}
         >
           <option value="" disabled>{t("fields.partySize.placeholder")}</option>
@@ -188,7 +200,7 @@ export default function WineryBookingForm({
           placeholder={t("fields.guestName.placeholder")}
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.guestName}
-          aria-describedby={fieldErrors.guestName ? "guestName-error" : undefined}
+          aria-describedby={fieldDescribedBy(fieldErrors.guestName && "guestName-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.guestName ? "border-terracotta" : "border-sand-200/80"}`}
         />
         {fieldErrors.guestName && <p id="guestName-error" className="text-xs text-terracotta mt-1">{fieldErrors.guestName}</p>}
@@ -207,7 +219,7 @@ export default function WineryBookingForm({
           placeholder={t("fields.guestEmail.placeholder")}
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.guestEmail}
-          aria-describedby={fieldErrors.guestEmail ? "guestEmail-error" : undefined}
+          aria-describedby={fieldDescribedBy(fieldErrors.guestEmail && "guestEmail-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.guestEmail ? "border-terracotta" : "border-sand-200/80"}`}
         />
         {fieldErrors.guestEmail && <p id="guestEmail-error" className="text-xs text-terracotta mt-1">{fieldErrors.guestEmail}</p>}
@@ -217,7 +229,9 @@ export default function WineryBookingForm({
         <label htmlFor="notes" className="block text-sm font-medium text-olive mb-1">
           {t("fields.notes.label")} <span className="text-olive/50">{t("fields.notes.optional")}</span>
         </label>
-        <p className="text-xs text-olive/60 mb-2">{t("fields.notes.hint")}</p>
+        <p id="notes-hint" className="text-xs text-olive/60 mb-2">
+          {t("fields.notes.hint")}
+        </p>
         <textarea
           id="notes"
           name="notes"
@@ -225,6 +239,7 @@ export default function WineryBookingForm({
           maxLength={500}
           placeholder={t("fields.notes.placeholder")}
           onChange={(e) => setNotesLength(e.target.value.length)}
+          aria-describedby={fieldDescribedBy("notes-hint")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
         {notesLength > 0 && (

@@ -9,6 +9,9 @@ const localeNames: Record<string, string> = {
   el: "Ελληνικά",
   de: "Deutsch",
   pl: "Polski",
+  ro: "Română",
+  fr: "Français",
+  he: "עברית",
 };
 
 /**

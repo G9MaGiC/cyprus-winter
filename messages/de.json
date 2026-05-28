@@ -1608,41 +1608,41 @@
     },
     "dayCombos": {
       "trailAndVillage": {
-        "label": "Trail and village",
-        "why": "Pine forest in the morning, village lunch by noon.",
-        "tip": "Start Artemis by 9am. Omodos warms up with coffee and lace."
+        "label": "Wanderweg und Dorf",
+        "why": "Morgens im Kiefernwald, mittags Dorflunch.",
+        "tip": "Artemis um 9 Uhr starten. Omodos lädt mit Kaffee und Spitze ein."
       },
       "limassolCoastCommandaria": {
-        "label": "Limassol coast & Commandaria",
-        "why": "Ancient theatre, quick dip, then sugar-mill wine."
+        "label": "Limassol-Küste & Commandaria",
+        "why": "Antikes Theater, kurze Küstenpause, dann Commandaria-Wein."
       },
       "paphosMosaicsWine": {
-        "label": "Paphos mosaics & wine",
-        "why": "Morning light on the floors, Vouni for lunch and tasting.",
-        "tip": "House of Theseus: 9–11am. Book Vouni ahead."
+        "label": "Paphos-Mosaike & Wein",
+        "why": "Morgenlicht auf den Böden, Vouni zum Mittagessen und Verkostung.",
+        "tip": "Haus des Theseus: 9–11 Uhr. Vouni vorab buchen."
       },
       "waterfallVillage": {
-        "label": "Waterfall and stone village",
-        "why": "Caledonia after rain, Kakopetria for lunch and cobbles.",
-        "tip": "Best 1–2 days after rainfall. Waterproof boots."
+        "label": "Wasserfall und Steindorf",
+        "why": "Caledonia nach Regen, Kakopetria zum Essen.",
+        "tip": "Am besten 1–2 Tage nach Regen. Wasserdichte Stiefel."
       },
       "kykkosWine": {
-        "label": "Kykkos and wine",
-        "why": "Monastery and views first, Tsiakkas tasting to close the loop.",
-        "tip": "Tsiakkas terrace has heaters. Book ahead."
+        "label": "Kykkos und Wein",
+        "why": "Kloster und Aussicht zuerst, Tsiakkas-Verkostung zum Abschluss.",
+        "tip": "Terrasse mit Heizung. Vorab reservieren."
       },
       "laceAncientWine": {
-        "label": "Lace, ancient & wine",
-        "why": "Lefkara lacemakers, Choirokoitia, then Dómes Sergiou."
+        "label": "Spitze, Antike & Wein",
+        "why": "Lefkara, Choirokoitia, dann Dómes Sergiou."
       },
       "gentleTrailPlatres": {
-        "label": "Gentle trail & Platres",
-        "why": "Atalante loop, then Platres for kafenions and views.",
-        "tip": "Easiest Troodos trail. Often clear when higher trails have snow."
+        "label": "Sanfter Weg & Platres",
+        "why": "Atalante-Runde, dann Platres mit Kafenions.",
+        "tip": "Leichtester Troodos-Weg. Oft frei, wenn höhere Wege Schnee haben."
       },
       "paphosCoastAdonis": {
-        "label": "Paphos coast & Adonis",
-        "why": "Tomb of Kings, coral bay stretch, Adonis for tasting."
+        "label": "Paphos-Küste & Adonis",
+        "why": "Königsgräber, Küstenstretch, Adonis-Verkostung."
       }
     }
   },
@@ -2335,6 +2335,11 @@
         "and": "und",
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
+      },
+      "hints": {
+        "heading": "Vor der Buchung",
+        "hoursLabel": "Öffnungszeiten:",
+        "bestTimeLabel": "Beste Zeit:"
       }
     },
     "pages": {

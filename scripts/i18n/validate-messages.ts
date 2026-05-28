@@ -6,7 +6,7 @@ type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 const PROJECT_ROOT = path.resolve(__dirname, "../..");
 const MESSAGES_DIR = path.join(PROJECT_ROOT, "messages");
 
-const LOCALES = ["en", "de", "el", "pl"] as const;
+const LOCALES = ["en", "de", "el", "pl", "ro", "fr", "he"] as const;
 type Locale = (typeof LOCALES)[number];
 
 function readJsonFile(p: string): Json {

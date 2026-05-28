@@ -157,7 +157,12 @@ export default async function WineryBookPage({
         </p>
       </div>
 
-      <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />
+      <WineryBookingForm
+        wineryId={winery.id}
+        wineryName={winery.name}
+        openingHours={winery.openingHours}
+        bestTimeToVisit={winery.bestTimeToVisit}
+      />
 
       {(winery.openingHours || winery.transport || winery.parking) && (
         <div className="mt-6 rounded-lg border border-sand-200/70 bg-sand-100/60 p-4 space-y-2 text-sm text-olive/75">

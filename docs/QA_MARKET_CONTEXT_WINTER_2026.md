@@ -14,7 +14,7 @@ Cyprus winter tourism in **early 2026** showed **record or near-record off-peak 
 
 **2026 is not a “normal” year for trust:** regional security events can produce **sharp arrival drops** (reported ~30% YoY declines in Mar–Apr 2026 in some trade coverage). QA must validate **factual, calm travel context**—not only sunny marketing.
 
-**Product locale alignment:** App ships `en`, `el`, `de`, `pl` (`src/i18n/routing.ts`) — matches four of five top winter markets. **Gaps:** Hebrew (Israel), Romanian (growing EU feeder), French (secondary EU).
+**Product locale alignment:** App ships `en`, `el`, `de`, `pl`, plus beta `ro`, `fr`, `he` (`src/i18n/routing.ts`). Core four match top winter markets. **`he`** uses RTL layout; **`ro`/`fr`/`he`** message files currently mirror English—translate in content passes.
 
 ---
 

@@ -2334,11 +2334,6 @@
       }
     },
     "wineryForm": {
-      "hints": {
-        "heading": "Before you book",
-        "hoursLabel": "Hours:",
-        "bestTimeLabel": "Best time:"
-      },
       "validation": {
         "dateRequired": "Choose a date in the future",
         "nameRequired": "Name is required",
@@ -2402,6 +2397,11 @@
         "and": "and",
         "privacy": "Privacy Policy",
         "bodySuffix": "."
+      },
+      "hints": {
+        "heading": "לפני ההזמנה",
+        "hoursLabel": "שעות:",
+        "bestTimeLabel": "זמן מומלץ:"
       }
     },
     "pages": {
