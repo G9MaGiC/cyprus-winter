@@ -6,6 +6,7 @@ import SuggestedForDay from "@/components/SuggestedForDay";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
+import PlanDayHints from "@/components/plan/PlanDayHints";
 import { useTranslations } from "next-intl";
 
 function EmptyDayState({
@@ -148,6 +149,9 @@ export default function DayContentPanel({
   const morningIds = useBlocks ? activeItems.slice(0, mid) : activeItems;
   const afternoonIds = useBlocks ? activeItems.slice(mid) : [];
   const lastAddedPlace = lastAddedId ? getPlace(lastAddedId) : undefined;
+  const activePlaces = activeItems
+    .map((id) => getPlace(id))
+    .filter((p): p is PlanItem => p != null);
 
   return (
     <section aria-label={tPlan("aria.yourItinerary")} className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
@@ -193,6 +197,7 @@ export default function DayContentPanel({
                 {tPlan("addAnotherStopHint")}
               </p>
             )}
+            {activePlaces.length > 0 && <PlanDayHints places={activePlaces} />}
           </div>
 
           <div className={CARD.content}>

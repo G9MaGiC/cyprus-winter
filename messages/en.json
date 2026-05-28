@@ -20,6 +20,14 @@
     "privacy": "Privacy",
     "terms": "Terms"
   },
+  "travelTrust": {
+    "aria": "Official travel information",
+    "heading": "Before you travel",
+    "body": "Entry rules and local conditions change. Use official sources—no hype, just facts.",
+    "visitCyprus": "Visit Cyprus (official tourism)",
+    "foreignTravelUk": "UK foreign travel advice — Cyprus",
+    "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
+  },
   "nav": {
     "discover": "Discover",
     "plan": "Plan",
@@ -707,6 +715,7 @@
         "wine": "Wine & food",
         "monastery": "Monasteries & culture",
         "family": "Family-friendly",
+        "accessible": "Accessible & gentle",
         "hidden": "Hidden gems"
       },
       "filters": {
@@ -759,6 +768,14 @@
           "hidden": {
             "title": "Hidden Cyprus Winter | Secret Spots & Local Gems",
             "description": "Hidden Cyprus winter: local secrets, quiet viewpoints, off-radar kafenions. Curated gems away from summer crowds — pair with trails and villages."
+          },
+          "family": {
+            "title": "Family-Friendly Cyprus Winter | Beaches & Gentle Days",
+            "description": "Cyprus winter with kids: calm beaches, lace villages, easy museums. Two stops per day, rain-day backups. Curated family-friendly places."
+          },
+          "accessible": {
+            "title": "Accessible Cyprus Winter | Gentle Paths & Museums",
+            "description": "Lower-mobility winter Cyprus: paved sites, manageable villages, ground-floor museums. Curated accessible and gentle places."
           },
           "bouldering": {
             "title": "Bouldering in Cyprus Winter | Crags & Gyms",
@@ -1274,6 +1291,8 @@
       "topSightsTitle": "Top sights",
       "conditions": {
         "latestFromHikers": "Latest from hikers",
+        "communityReport": "Community report—not official. Timestamp shows when it was shared.",
+        "editorialConditions": "Seasonal guide snapshot—not a live report. Submit a report if you were just on the trail.",
         "currentConditions": "Current conditions",
         "titleNoData": "Trail conditions",
         "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
@@ -1445,10 +1464,19 @@
     "wineryBar": {
       "ariaLabel": "Winery bookings"
     },
+    "realism": {
+      "aria": "Day pacing hints",
+      "spreadRegions": "These stops span different parts of the island—allow drive time between them.",
+      "tightDay": "Four or more stops is ambitious for one winter day.",
+      "daylight": "Winter daylight ends around 5pm—start outdoor stops by 10am.",
+      "trailAndSpread": "Trail plus distant stops—start early and check conditions."
+    },
     "share": {
       "copyAndShare": "Copy & share",
       "placesLabel": "places",
       "daysLabel": "days",
+      "downloadIcs": "Add to calendar",
+      "icsDownloaded": "Downloaded",
       "placesCount": "{count, plural, one {# place} other {# places}}",
       "daysCount": "{count, plural, one {# day} other {# days}}",
       "copyLink": "Copy link",
@@ -2160,7 +2188,12 @@
         "tip": "Pack layers and water. Tell someone your route.",
         "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the guide if you don't see it.",
         "ctaBookings": "View my bookings",
-        "ctaTrails": "Browse trails"
+        "ctaTrails": "Browse trails",
+        "nextStepsHeading": "What happens next",
+        "nextStep1": "We save your request and email you a copy when delivery is available.",
+        "nextStep2": "The guide confirms by email—usually within 24–48 hours on weekdays.",
+        "nextStep3": "Track status anytime under My Bookings with the same email.",
+        "sla": "This is a request, not a confirmed slot. If you hear nothing after two business days, contact the guide."
       },
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter days are short; book ahead for your preferred slot." },
@@ -2205,7 +2238,12 @@
         "tip": "Ask about Commandaria and the indigenous grapes when you're there. They're proud of them.",
         "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the winery if you don't see it.",
         "ctaBookings": "View my bookings",
-        "ctaDiscover": "Discover more"
+        "ctaDiscover": "Discover more",
+        "nextStepsHeading": "What happens next",
+        "nextStep1": "We save your request and email you a copy when delivery is available.",
+        "nextStep2": "The winery confirms date and time by email—usually within 24–48 hours on weekdays.",
+        "nextStep3": "Track status anytime under My Bookings with the same email.",
+        "sla": "No charge in-app until they confirm. If you hear nothing after two business days, call the winery."
       },
       "fields": {
         "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },

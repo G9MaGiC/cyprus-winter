@@ -13,6 +13,8 @@ export const DISCOVER_SECTION_FILTER_KEYS = [
   "village",
   "wine",
   "monastery",
+  "family",
+  "accessible",
   "hidden",
 ] as const;
 
@@ -38,6 +40,8 @@ export function discoverSectionMetaKey(
     village: "village",
     wine: "wine",
     monastery: "monastery",
+    family: "family",
+    accessible: "accessible",
     hidden: "hidden",
   };
   return bySection[sectionId] ?? null;

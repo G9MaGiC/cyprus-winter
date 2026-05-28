@@ -29,6 +29,7 @@ import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 import AppLink from "@/components/AppLink";
+import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
@@ -97,6 +98,8 @@ export default function PlanPageClient() {
     copyItinerary,
     copyShareLink,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     sharePath,
     totalPlaces,
     activeDaysCount,
@@ -234,6 +237,8 @@ export default function PlanPageClient() {
             sharePath={sharePath}
             copyShareLink={copyShareLink}
             copyItinerary={copyItinerary}
+            icsDownloaded={icsDownloaded}
+            downloadCalendar={downloadCalendar}
           />
         )}
 
@@ -292,6 +297,10 @@ export default function PlanPageClient() {
               <PlanAddMoreCollapsible hasContent={hasContent}>{quickStartBlock}</PlanAddMoreCollapsible>
             </div>
           )}
+        </div>
+
+        <div className={`${LAYOUT.safeAreaX} ${LAYOUT.list} mx-auto ${SECTION.blockGap}`}>
+          <TravelTrustStrip />
         </div>
 
         <PlanFooter hasWineries={hasWineries} showAccountCTA={!user && totalPlaces >= 2} />

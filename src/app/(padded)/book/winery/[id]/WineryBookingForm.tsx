@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
+import BookingSuccessNextSteps from "@/components/bookings/BookingSuccessNextSteps";
 import { CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import { wineryBookingSchema } from "@/lib/booking-schemas";
@@ -98,6 +99,7 @@ export default function WineryBookingForm({
             {t("success.emailDelayed")}
           </p>
         )}
+        <BookingSuccessNextSteps namespace="book.wineryForm" />
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}

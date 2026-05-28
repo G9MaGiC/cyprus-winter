@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
+import BookingSuccessNextSteps from "@/components/bookings/BookingSuccessNextSteps";
 import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
 import { trails } from "@/data/trails";
@@ -106,6 +107,7 @@ export default function GuideBookingForm({
             {t("success.emailDelayed")}
           </p>
         )}
+        <BookingSuccessNextSteps namespace="book.guideForm" />
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}

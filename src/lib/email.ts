@@ -43,7 +43,13 @@ export async function sendBookingConfirmation(booking: Booking): Promise<boolean
           <li><strong>Party size:</strong> ${partySize}</li>
           <li><strong>Status:</strong> Pending (${confirmBy} will confirm by email)</li>
         </ul>
-        <p>You can view your bookings at: <a href="${SITE_URL}/bookings">My Bookings</a></p>
+        <p><strong>What happens next:</strong></p>
+        <ol>
+          <li>Your request is saved in our system.</li>
+          <li>${confirmBy} typically replies within <strong>24–48 hours</strong> on weekdays.</li>
+          <li>Check <a href="${SITE_URL}/bookings">My Bookings</a> anytime with the same email.</li>
+        </ol>
+        <p>If you do not hear back after two business days, contact ${confirmBy} directly.</p>
         <p>Cyprus Winter</p>
       `,
     });

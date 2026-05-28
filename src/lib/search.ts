@@ -3,6 +3,7 @@
  * Results are relevance-ranked: exact/prefix match on name > region > description.
  */
 import { allPlaces, type PlanItem, getAttractionById } from "@/data";
+import { expandSearchToken } from "@/data/search-aliases";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 
@@ -24,13 +25,10 @@ const trailById = new Map(trails.map((t) => [t.id, t]));
 const eventById = new Map(winterEvents.map((e) => [e.id, e]));
 
 /** Score for a single token: exact id > exact name > prefix name > contains name > prefix region > contains region > description. */
-function tokenScore(
-  token: string,
+function scoreTokenAgainstFields(
+  t: string,
   fields: { id?: string; name: string; region?: string; description?: string; venue?: string }
 ): number {
-  const t = normalize(token);
-  if (t.length < 2) return 0;
-
   const n = (s: string) => normalize(s ?? "");
   const nameNorm = n(fields.name);
   const regionNorm = n(fields.region ?? "");
@@ -45,6 +43,21 @@ function tokenScore(
   if (regionNorm.includes(t)) return 40;
   if (descNorm.includes(t)) return 25;
   return 0;
+}
+
+function tokenScore(
+  token: string,
+  fields: { id?: string; name: string; region?: string; description?: string; venue?: string }
+): number {
+  if (normalize(token).length < 2) return 0;
+
+  let best = 0;
+  for (const variant of expandSearchToken(token)) {
+    const t = normalize(variant);
+    if (t.length < 2) continue;
+    best = Math.max(best, scoreTokenAgainstFields(t, fields));
+  }
+  return best;
 }
 
 /** Multi-word: all tokens must match. Returns sum of per-token scores or 0 if any token fails. */

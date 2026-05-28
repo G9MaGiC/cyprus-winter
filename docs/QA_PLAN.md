@@ -3,7 +3,8 @@
 **Owner:** CTO / QA  
 **Created:** March 2026  
 **Purpose:** Systematic plan to find all bugs, document fixes, and reach launch-ready quality  
-**Refs:** AUDIT_REPORT.md, PROJECT_REVIEW.md, ROADMAP.md, TECHNICAL.md
+**Refs:** AUDIT_REPORT.md, PROJECT_REVIEW.md, ROADMAP.md, TECHNICAL.md  
+**Winter 2026 persona pack:** `docs/QA_MARKET_CONTEXT_WINTER_2026.md`, `docs/QA_PERSONAS_FULL_STACK_2026.md`, `docs/QA_PERSONA_JOURNEYS_2026.md`, `docs/QA_PERSONA_PRIORITIES_2026.md`
 
 ---
 
@@ -240,7 +241,22 @@ Open | In progress | Fixed | Won't fix
 
 ---
 
-## 8. Traceability
+## 8. Winter 2026 persona QA pack
+
+Use alongside phases A–F for market-grounded manual QA and backlog prioritization.
+
+| Doc | Use when |
+|-----|----------|
+| [QA_MARKET_CONTEXT_WINTER_2026.md](./QA_MARKET_CONTEXT_WINTER_2026.md) | Arrivals mix, locale gaps, trust/crisis context |
+| [QA_PERSONAS_FULL_STACK_2026.md](./QA_PERSONAS_FULL_STACK_2026.md) | Pick 2–3 personas per release; full-stack critique checklist |
+| [QA_PERSONA_JOURNEYS_2026.md](./QA_PERSONA_JOURNEYS_2026.md) | Scripted steps, viewport matrix, Playwright mapping, release gate |
+| [QA_PERSONA_PRIORITIES_2026.md](./QA_PERSONA_PRIORITIES_2026.md) | RICE-scored product backlog from persona themes |
+
+**Per release:** Run the release gate in `QA_PERSONA_JOURNEYS_2026.md` + automated suite (§2.1). Tag bugs with persona ID in `docs/QA_BUGS.md`.
+
+---
+
+## 9. Traceability
 
 - **Bugs:** Log in GitHub Issues or docs/QA_BUGS.md  
 - **Fixes:** Reference bug ID in commit message  

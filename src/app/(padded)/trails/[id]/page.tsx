@@ -229,6 +229,11 @@ export default async function TrailPage({
                     ? tTrailsDetail("conditions.latestFromHikers")
                     : tTrailsDetail("conditions.currentConditions")
                 }
+                subtitle={
+                  latestReport
+                    ? tTrailsDetail("conditions.communityReport")
+                    : tTrailsDetail("conditions.editorialConditions")
+                }
                 borderAccent="aegean"
               >
                 {latestReport ? (

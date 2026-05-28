@@ -20,6 +20,14 @@
     "privacy": "Prywatność",
     "terms": "Regulamin"
   },
+  "travelTrust": {
+    "aria": "Oficjalne informacje podróżne",
+    "heading": "Przed podróżą",
+    "body": "Zasady wjazdu i warunki lokalne się zmieniają. Korzystaj z oficjalnych źródeł—bez sensacji.",
+    "visitCyprus": "Visit Cyprus (oficjalna turystyka)",
+    "foreignTravelUk": "Rada podróży UK — Cypr",
+    "emergency": "Alarmowe 112 · Informacja turystyczna 1460 · Pogotowie 199"
+  },
   "nav": {
     "discover": "Odkrywaj",
     "plan": "Planuj",
@@ -714,6 +722,7 @@
         "wine": "Wino i jedzenie",
         "monastery": "Klasztory i kultura",
         "family": "Rodzinne",
+        "accessible": "Dostępne i spokojne",
         "hidden": "Ukryte perełki"
       },
       "filters": {
@@ -766,6 +775,14 @@
           "hidden": {
             "title": "Ukryty Cypr zimą | Sekrety i lokalne perełki",
             "description": "Ukryty Cypr zimą: lokalne sekrety, ciche punkty widokowe, kafeneia z dala od szlaków. Wyselekcjonowane perełki z dala od letnich tłumów."
+          },
+          "family": {
+            "title": "Cypr zimą dla rodzin | Plaże i spokojne dni",
+            "description": "Cypr zimą z dziećmi: spokojne plaże, wioski, łatwe muzea. Dwa przystanki dziennie, opcje na deszcz."
+          },
+          "accessible": {
+            "title": "Dostępny Cypr zimą | Łagodne trasy i muzea",
+            "description": "Cypr zimą przy ograniczonej mobilności: utwardzone miejsca, przystępne wioski, muzea na parterze."
           },
           "bouldering": {
             "title": "Bouldering na Cyprze zimą | Skałki i ścianki",
@@ -1314,6 +1331,8 @@
       "topSightsTitle": "Najciekawsze miejsca",
       "conditions": {
         "latestFromHikers": "Najnowsze od wędrowców",
+        "communityReport": "Raport społeczności—nieoficjalny. Znacznik czasu pokazuje, kiedy dodano.",
+        "editorialConditions": "Sezonowy przewodnik—nie raport na żywo. Dodaj raport, jeśli byłeś na szlaku.",
         "currentConditions": "Aktualne warunki",
         "titleNoData": "Warunki na szlaku",
         "noRecentBody": "Brak ostatnich zgłoszeń dla tego szlaku. Wróciłeś właśnie? Podziel się tym, co widziałeś — to minuta roboty.",
@@ -1516,10 +1535,19 @@
       "worksWell": "Dobrze pasuje do tego, co dodałeś. Kliknij, aby dodać.",
       "addToDayAria": "Dodaj {name} do tego dnia"
     },
+    "realism": {
+      "aria": "Wskazówki tempa dnia",
+      "spreadRegions": "Te miejsca są w różnych częściach wyspy—zaplanuj dojazdy.",
+      "tightDay": "Cztery lub więcej przystanków to ambitny zimowy dzień.",
+      "daylight": "Zimowe światło gaśnie ok. 17:00—zacznij plany na zewnątrz przed 10:00.",
+      "trailAndSpread": "Szlak i odległe miejsca—wcześnie zacznij i sprawdź warunki."
+    },
     "share": {
       "copyAndShare": "Kopiuj i udostępnij",
       "placesLabel": "miejsca",
       "daysLabel": "dni",
+      "downloadIcs": "Dodaj do kalendarza",
+      "icsDownloaded": "Pobrano",
       "placesCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsc}}",
       "daysCount": "{count, plural, one {# dzień} few {# dni} many {# dni} other {# dni}}",
       "copyLink": "Kopiuj link",
@@ -2138,7 +2166,12 @@
         "tip": "Zabierz warstwy i wodę. Powiedz komuś, jaką trasę wybierasz.",
         "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z przewodnikiem.",
         "ctaBookings": "Zobacz moje rezerwacje",
-        "ctaTrails": "Przeglądaj szlaki"
+        "ctaTrails": "Przeglądaj szlaki",
+        "nextStepsHeading": "Co dalej",
+        "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
+        "nextStep2": "Przewodnik potwierdza mailem—zwykle w 24–48 h w dni robocze.",
+        "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
+        "sla": "To prośba, nie potwierdzony termin. Po dwóch dniach roboczych bez odpowiedzi skontaktuj się z przewodnikiem."
       },
       "fields": {
         "date": {
@@ -2205,7 +2238,12 @@
         "tip": "Zapytaj o Commandarię i lokalne odmiany winogron, kiedy tam będziesz. Są z nich dumni.",
         "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z winnicą.",
         "ctaBookings": "Zobacz moje rezerwacje",
-        "ctaDiscover": "Odkrywaj dalej"
+        "ctaDiscover": "Odkrywaj dalej",
+        "nextStepsHeading": "Co dalej",
+        "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
+        "nextStep2": "Winnica potwierdza datę i godzinę mailem—zwykle w 24–48 h w dni robocze.",
+        "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
+        "sla": "Brak opłaty w aplikacji do potwierdzenia. Po dwóch dniach roboczych bez odpowiedzi zadzwoń do winnicy."
       },
       "fields": {
         "date": {

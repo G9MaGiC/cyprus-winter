@@ -34,6 +34,8 @@ export function usePlanPage() {
     copyItinerary,
     copyShareLink,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     sharePath,
   } = useItinerary();
 
@@ -165,6 +167,8 @@ export function usePlanPage() {
     copyItinerary,
     copyShareLink,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     sharePath,
     // Derived
     totalPlaces,
