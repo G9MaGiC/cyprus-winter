@@ -2,11 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import type { PlanItem } from "@/data";
 import { TEMPLATE_KEYS, type TemplateKey } from "@/data/itinerary-templates";
-import { parseAddParam } from "@/lib/plan-url-params";
+import { parseAddParam, patchPlanUrlSearchParams } from "@/lib/plan-url-params";
 import { trackProduct } from "@/lib/analytics";
 
 type UsePlanUrlActionsParams = {
@@ -35,7 +34,6 @@ export function usePlanUrlActions({
   applyTemplate,
 }: UsePlanUrlActionsParams) {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const locale = useLocale();
   const processedAddRef = useRef<string | null>(null);
   const processedTemplateRef = useRef<string | null>(null);
@@ -47,9 +45,9 @@ export function usePlanUrlActions({
     if (!hasContent) {
       processedTemplateRef.current = template;
       applyTemplate(template);
-      router.replace("/plan", { scroll: false });
+      patchPlanUrlSearchParams((p) => p.delete("template"));
     }
-  }, [hydrated, searchParams, hasContent, applyTemplate, router]);
+  }, [hydrated, searchParams, hasContent, applyTemplate]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -59,7 +57,10 @@ export function usePlanUrlActions({
     const ids = parseAddParam(addParam);
     const places = ids.map((id) => getPlace(id)).filter((p): p is PlanItem => !!p);
     if (places.length === 0) {
-      router.replace("/plan?add=failed", { scroll: false });
+      patchPlanUrlSearchParams((p) => {
+        p.delete("add");
+        p.set("add", "failed");
+      });
       return;
     }
     const uniqueIds = [...new Set(places.map((p) => p.id))];
@@ -72,6 +73,6 @@ export function usePlanUrlActions({
       count: uniqueIds.length,
       item_id: uniqueIds.length === 1 ? uniqueIds[0] : undefined,
     });
-    router.replace("/plan", { scroll: false });
-  }, [hydrated, searchParams, addToDayIfMissing, getPlace, router, locale]);
+    patchPlanUrlSearchParams((p) => p.delete("add"));
+  }, [hydrated, searchParams, addToDayIfMissing, getPlace, locale]);
 }

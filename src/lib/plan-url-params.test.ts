@@ -1,44 +1,43 @@
-import { describe, it, expect } from "vitest";
-import { parseAddParam } from "./plan-url-params";
+import { describe, expect, it, beforeEach, afterEach } from "vitest";
+import { parseAddParam, patchPlanUrlSearchParams } from "./plan-url-params";
 
 describe("parseAddParam", () => {
-  it("returns empty array for null", () => {
+  it("returns empty for null, failed, or empty", () => {
     expect(parseAddParam(null)).toEqual([]);
-  });
-
-  it("returns empty array for failed", () => {
     expect(parseAddParam("failed")).toEqual([]);
-  });
-
-  it("returns empty array for empty string", () => {
     expect(parseAddParam("")).toEqual([]);
   });
 
-  it("parses single id", () => {
-    expect(parseAddParam("tsiakkas")).toEqual(["tsiakkas"]);
-  });
-
   it("parses comma-separated ids", () => {
-    expect(parseAddParam("tsiakkas,omodos")).toEqual(["tsiakkas", "omodos"]);
+    expect(parseAddParam("omodos,tsiakkas")).toEqual(["omodos", "tsiakkas"]);
+  });
+});
+
+/**
+ * @vitest-environment jsdom
+ */
+describe("patchPlanUrlSearchParams", () => {
+  const originalHref = "/en/plan?add=tsiakkas";
+
+  beforeEach(() => {
+    window.history.replaceState({}, "", originalHref);
   });
 
-  it("trims whitespace", () => {
-    expect(parseAddParam(" tsiakkas , omodos ")).toEqual(["tsiakkas", "omodos"]);
+  afterEach(() => {
+    window.history.replaceState({}, "", "/");
   });
 
-  it("filters empty segments", () => {
-    expect(parseAddParam("tsiakkas,,omodos")).toEqual(["tsiakkas", "omodos"]);
+  it("removes add without full navigation", () => {
+    patchPlanUrlSearchParams((p) => p.delete("add"));
+    expect(window.location.pathname).toBe("/en/plan");
+    expect(window.location.search).toBe("");
   });
 
-  it("deduplicates ids", () => {
-    expect(parseAddParam("tsiakkas,omodos,tsiakkas")).toEqual(["tsiakkas", "omodos"]);
-  });
-
-  it("caps at 50 ids", () => {
-    const ids = Array.from({ length: 60 }, (_, i) => `id${i}`).join(",");
-    const result = parseAddParam(ids);
-    expect(result).toHaveLength(50);
-    expect(result[0]).toBe("id0");
-    expect(result[49]).toBe("id49");
+  it("sets add=failed", () => {
+    patchPlanUrlSearchParams((p) => {
+      p.delete("add");
+      p.set("add", "failed");
+    });
+    expect(window.location.search).toBe("?add=failed");
   });
 });

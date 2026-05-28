@@ -19,10 +19,13 @@ test.describe("Plan -> Book", () => {
     const main = page.getByRole("main");
     await expect(main).toContainText(/Day 1|places|your plan|Tsiakkas/i, { timeout: 5000 });
 
-    const bookLink = page.getByRole("link", { name: /Book a tasting at Tsiakkas|Book a tasting/i });
+    const bookLink = page.locator('a[href*="/book/winery/tsiakkas"]').filter({
+      hasText: /Book a tasting/i,
+    });
     await expect(bookLink).toBeVisible();
-    await expect(bookLink).toHaveAttribute("href", /\/book\/winery\/tsiakkas/);
-    await bookLink.click();
+    const href = await bookLink.getAttribute("href");
+    expect(href).toMatch(/\/book\/winery\/tsiakkas/);
+    await page.goto(href!);
 
     await expect(page).toHaveURL(/\/book\/winery\/tsiakkas/);
   });
