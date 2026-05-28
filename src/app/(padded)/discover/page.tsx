@@ -128,7 +128,7 @@ export default async function DiscoverPage({
 
         <search
           aria-labelledby="discover-search-heading"
-          className={`${LAYOUT.safeAreaX} -mt-4`}
+          className="-mt-4"
         >
           <div className={`${LAYOUT.list} mx-auto`}>
             <h2 id="discover-search-heading" className="sr-only">
