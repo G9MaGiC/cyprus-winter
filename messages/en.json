@@ -2410,6 +2410,11 @@
       "pageNavAria": "Page navigation",
       "otherWaysAria": "Other ways to book",
       "guideDetail": {
+        "meta": {
+          "title": "Book a guided hike | {guideName} | Cyprus Winter",
+          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+        },
+        "metaNotFound": "Not found",
         "badge": "Guided hike",
         "title": "Book a guided hike",
         "verifiedTitle": "Verified partner: receives booking requests directly",
@@ -2444,6 +2449,10 @@
         "footerBrowseWineries": "Browse all wineries"
       },
       "wineryDetail": {
+        "meta": {
+          "title": "Book a tasting | {wineryName} | Cyprus Winter",
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
+        },
         "metaNotFound": "Not found",
         "intro": "Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they'll confirm by email.",
         "disclaimer": "For adults of legal drinking age. Drink responsibly.",

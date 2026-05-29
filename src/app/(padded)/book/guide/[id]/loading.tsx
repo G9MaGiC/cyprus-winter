@@ -1,6 +1,8 @@
 import { LAYOUT, SKELETON } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
-export default function GuideBookLoading() {
+export default async function GuideBookLoading() {
+  const t = await getTranslations("common");
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <div className={`h-10 w-48 ${SKELETON.block}`} aria-hidden />
@@ -13,7 +15,7 @@ export default function GuideBookLoading() {
         ))}
       </div>
       <p className="sr-only" aria-busy="true">
-        Loading booking form
+        {t("loading.bookingForm")}
       </p>
     </div>
   );

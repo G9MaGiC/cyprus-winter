@@ -10,7 +10,7 @@ import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import WineryBookingForm from "./WineryBookingForm";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -22,10 +22,12 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "book.pages.wineryDetail" });
   const winery = wineries.find((w) => w.id === id);
-  if (!winery) return { title: "Not found" };
-  const title = `Book a tasting | ${winery.name} | Cyprus Winter`;
-  const description = `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`;
+  if (!winery) return { title: t("metaNotFound") };
+  const title = t("meta.title", { wineryName: winery.name });
+  const description = t("meta.description", { wineryName: winery.name, region: winery.region });
   const alternates = buildStrategyAAlternates(`/book/winery/${id}`);
   return {
     title,

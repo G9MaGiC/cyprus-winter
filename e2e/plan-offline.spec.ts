@@ -1,0 +1,23 @@
+import { test, expect } from "@playwright/test";
+
+/**
+ * P3-05: offline read-only plan — banner and disabled add actions.
+ */
+test.describe("Plan offline read-only", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("cyprus-winter-onboarded", "true");
+      localStorage.setItem(
+        "cyprus-winter-itinerary",
+        JSON.stringify({ "1": ["tsiakkas"] })
+      );
+    });
+    await page.context().setOffline(true);
+  });
+
+  test("shows offline banner and hides sticky add bar", async ({ page }) => {
+    await page.goto("/plan", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("status").filter({ hasText: /offline|read-only/i })).toBeVisible();
+    await expect(page.getByRole("complementary", { name: /add place/i })).toHaveCount(0);
+  });
+});

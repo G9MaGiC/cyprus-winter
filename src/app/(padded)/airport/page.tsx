@@ -10,7 +10,9 @@ import AirportFooter from "@/app/(padded)/airport/AirportFooter";
 import AppLink from "@/components/AppLink";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getLocale, getTranslations } from "next-intl/server";
+import { preload } from "react-dom";
 
+const AIRPORT_HERO_IMAGE = "/images/cyprus/cyprus-airport-coast.jpg";
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,6 +41,7 @@ const CITY_GREEK: Record<string, string> = {
 };
 
 export default async function AirportPage() {
+  preload(AIRPORT_HERO_IMAGE, { as: "image" });
   const [tNav, tAirport] = await Promise.all([
     getTranslations("nav"),
     getTranslations("airport.page"),
@@ -61,7 +64,7 @@ export default async function AirportPage() {
           description={tAirport("hero.description")}
           descriptionSecondary={tAirport("hero.descriptionSecondary")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("arriving"), href: "/airport", isCurrent: true }]}
-          backgroundImage="/images/cyprus/cyprus-airport-coast.jpg"
+          backgroundImage={AIRPORT_HERO_IMAGE}
           backgroundImageAlt={tAirport("hero.imageAlt")}
         >
           <AppLink

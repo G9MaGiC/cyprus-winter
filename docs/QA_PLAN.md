@@ -234,7 +234,7 @@ Open | In progress | Fixed | Won't fix
 
 | Area | Current | Recommended |
 |------|---------|-------------|
-| **API routes** | bookings, chat, trail-reports, health | Add coverage if routes expand (admin/session, stats, track, right-now) |
+| **API routes** | bookings, chat, trail-reports, health, admin/session, stats, track, right-now, cron/daily, push/vapid | Add push/subscribe and cron/weather-digest tests if routes expand |
 | **Hooks** | useItinerary (`src/hooks/useItinerary.test.tsx`: jsdom, mocked `useSearchParams`, clipboard + `storage` events) | Extend if hook grows |
 | **Data helpers** | related-places, data/index, format, sanitize | — |
 | **E2E** | Playwright: Discover→Plan (`e2e/discover-plan.spec.ts`), Home smoke (`e2e/home-smoke.spec.ts`) | Add Plan→Book flow; add locale smoke; keep selectors robust |

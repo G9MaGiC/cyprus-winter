@@ -30,7 +30,7 @@
     "test:e2e:core-funnel": "playwright test e2e/arrival-decision-flow.spec.ts e2e/discover-plan.spec.ts e2e/plan-book.spec.ts e2e/bookings.spec.ts e2e/locale-prefixed-route.spec.ts",
     "test:e2e:core-funnel:ci": "CI=true PORT=3001 playwright test e2e/arrival-decision-flow.spec.ts e2e/discover-plan.spec.ts e2e/plan-book.spec.ts e2e/bookings.spec.ts e2e/locale-prefixed-route.spec.ts",
     "test:e2e:core-funnel:local": "playwright test e2e/arrival-decision-flow.spec.ts e2e/discover-plan.spec.ts e2e/plan-book.spec.ts e2e/bookings.spec.ts e2e/locale-prefixed-route.spec.ts --workers=1",
-    "test:e2e:ux:ci": "CI=true PORT=3001 playwright test e2e/hub-footer.spec.ts e2e/overlay-precedence.spec.ts e2e/discover-detail.spec.ts e2e/discover-filters.spec.ts e2e/home-smoke.spec.ts",
+    "test:e2e:ux:ci": "CI=true PORT=3001 playwright test e2e/hub-footer.spec.ts e2e/overlay-precedence.spec.ts e2e/discover-detail.spec.ts e2e/discover-filters.spec.ts e2e/home-smoke.spec.ts e2e/travel-trust.spec.ts e2e/plan-offline.spec.ts",
     "test:e2e:gate:ci": "npm run test:e2e:core-funnel:ci && npm run test:e2e:ux:ci",
     "stress:api": "node scripts/stress-test-apis.mjs",
     "analyze": "ANALYZE=true npm run build",

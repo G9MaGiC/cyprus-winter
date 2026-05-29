@@ -12,16 +12,16 @@ cyprus-winter/
 │   ├── app/              # Next.js App Router (pages, layouts, API)
 │   │   ├── (padded)/     # Route group: pages with top padding
 │   │   ├── _home/        # Home page sections (mixed server/client)
-│   │   ├── [locale]/     # Localized routes (en, el, de, pl)
+│   │   ├── [locale]/     # Localized routes (en, el, de, pl, ro, fr, he)
 │   │   ├── api/          # API routes
-│   │   └── serwist/      # PWA worker config
+│   │   └── serwist/      # PWA provider stub (push SW in public/sw.js)
 │   ├── components/       # Shared UI components (~80+)
 │   ├── contexts/         # AuthContext, StickyPlanBarContext
 │   ├── data/             # Static content (attractions, trails, etc.)
 │   ├── hooks/            # useItinerary, useRightNowFeed, etc.
 │   ├── i18n/             # next-intl routing, navigation
 │   └── lib/              # Services, utilities, shared logic (~50 files)
-├── messages/             # i18n JSON (en, el, de, pl)
+├── messages/             # i18n JSON (en, el, de, pl, ro, fr, he)
 ├── docs/                 # QA, audits, design docs
 ├── scripts/              # Build, data enrichment, i18n
 ├── public/               # Static assets
@@ -34,7 +34,7 @@ cyprus-winter/
 
 ### 2.1 Routing
 
-- **next-intl** with locales: `en` (default), `el`, `de`, `pl` (`localePrefix: "as-needed"`).
+- **next-intl** with locales: `en` (default), `el`, `de`, `pl`, `ro`, `fr`, `he` (`localePrefix: "as-needed"`; `he` uses RTL).
 - **Dual route trees**:
   - Root `/` → home (non-locale)
   - `[locale]/...` → localized pages with `NextIntlClientProvider`, `SerwistProvider`, `StickyPlanBarProvider`
@@ -263,4 +263,4 @@ Hooks
 - **Unit tests**: `lib/*.test.ts` (format, search, sanitize, daily-rotator, api-response, rate-limit, itinerary-share, etc.)
 - **API tests**: `app/api/*/route.test.ts` (trail-reports, bookings, chat, health)
 - **Data tests**: `data/index.test.ts`, `lib/related-places.test.ts`
-- **E2E**: Not automated; manual QA per `docs/QA_PLAN.md`
+- **E2E**: Playwright gate in CI (`npm run test:e2e:gate:ci`) — core funnel + UX specs; full suite via `npm run test:e2e:ci`

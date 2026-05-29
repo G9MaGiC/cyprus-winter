@@ -2420,7 +2420,12 @@
           "bookDirectAria": "Book on the guide's website (opens in new tab)",
           "callPrefix": "Or call",
           "callSuffix": "to check availability."
-        }
+        },
+        "meta": {
+          "title": "Book a guided hike | {guideName} | Cyprus Winter",
+          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+        },
+        "metaNotFound": "Not found"
       },
       "guideList": {
         "meta": {
@@ -2479,6 +2484,10 @@
         },
         "jsonLd": {
           "priceRange": "€€"
+        },
+        "meta": {
+          "title": "Book a tasting | {wineryName} | Cyprus Winter",
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
         }
       }
     }

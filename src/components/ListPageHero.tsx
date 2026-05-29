@@ -79,12 +79,13 @@ export default function ListPageHero({
   );
 
   if (backgroundImage) {
+    const heroAlt = backgroundImageAlt?.trim() ? backgroundImageAlt : title;
     return (
       <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
         <div className="relative aspect-[5/2] sm:aspect-[16/9] min-h-[220px] sm:min-h-[240px]">
           <Image
             src={backgroundImage}
-            alt={backgroundImageAlt ?? ""}
+            alt={heroAlt}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 1200px"
