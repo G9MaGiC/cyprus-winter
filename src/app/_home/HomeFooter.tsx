@@ -4,6 +4,7 @@ import { LAYOUT, SECTION } from "@/lib/design-tokens";
 import WhyCyprusDetails from "@/app/_home/WhyCyprusDetails";
 import HomeInsiderTip from "@/app/_home/HomeInsiderTip";
 import HomeTemplateLinks from "@/app/_home/HomeTemplateLinks";
+import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { getTranslations } from "next-intl/server";
 
 type Props = { locale?: string };
@@ -21,6 +22,9 @@ export default async function HomeFooter({ locale }: Props) {
         </div>
         <div className={`${SECTION.pySub} pt-0`}>
           <HomeTemplateLinks locale={locale} />
+        </div>
+        <div className={`${SECTION.pySub} pt-0`}>
+          <TravelTrustStrip />
         </div>
       </div>
     </section>

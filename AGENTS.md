@@ -14,7 +14,7 @@
 |------|------|
 | Pages | `src/app/(padded)/`, `src/app/_home/` |
 | Data | `src/data/` |
-| i18n | `messages/{en,el,de,pl}.json`, `src/i18n/` |
+| i18n | `messages/{en,el,de,pl,ro,fr,he}.json`, `src/i18n/routing.ts` (7 locales; `he` RTL) |
 | API | `src/app/api/` |
 | Design tokens | `src/lib/design-tokens.ts` |
 | QA | `docs/QA_PLAN.md`, `docs/QA_BUGS.md` |

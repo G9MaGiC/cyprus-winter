@@ -20,6 +20,14 @@
     "privacy": "Privacy",
     "terms": "Terms"
   },
+  "travelTrust": {
+    "aria": "Official travel information",
+    "heading": "Before you travel",
+    "body": "Entry rules and local conditions change. Use official sources—no hype, just facts.",
+    "visitCyprus": "Visit Cyprus (official tourism)",
+    "foreignTravelUk": "UK foreign travel advice — Cyprus",
+    "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
+  },
   "nav": {
     "discover": "Discover",
     "plan": "Plan",
@@ -129,8 +137,7 @@
       "restaurant": "Restaurant",
       "trail": "Trail",
       "event": "Event"
-    }
-    ,
+    },
     "timelineRemovedPlace": "This place was removed from our list",
     "ai": {
       "title": "Cyprus Guide",
@@ -147,8 +154,7 @@
     "back": "Back",
     "backTo": "Back to {label}",
     "backToTop": "Back to top",
-    "peopleCount": "{count, plural, one {# person} other {# people}}"
-    ,
+    "peopleCount": "{count, plural, one {# person} other {# people}}",
     "breadcrumbs": {
       "privacy": "Privacy",
       "terms": "Terms",
@@ -169,8 +175,7 @@
     "bestTimeToVisitTitle": "Best time to visit",
     "reportConditions": "Report conditions",
     "reportAnotherTrail": "Report another trail",
-    "thanksForReporting": "Thanks for reporting."
-    ,
+    "thanksForReporting": "Thanks for reporting.",
     "remove": "Remove",
     "bookTastings": "Book tastings",
     "exploreWineries": "Explore wineries",
@@ -231,13 +236,11 @@
       "plan": "Skip to Plan",
       "search": "Skip to search",
       "startHere": "Skip to Start here"
-    }
-    ,
+    },
     "cancel": "Cancel",
     "done": "Done",
     "clearDay": "Clear day",
-    "clearDayTitle": "Clear Day {day}?"
-    ,
+    "clearDayTitle": "Clear Day {day}?",
     "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
   },
   "home": {
@@ -490,10 +493,22 @@
       "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
       "allTemplates": "All templates →",
       "items": {
-        "short-stay": { "label": "48 hours", "hint": "Trail, village, wine" },
-        "classic": { "label": "5 days", "hint": "Coast to mountains" },
-        "classic-7": { "label": "7 days", "hint": "Full island sweep" },
-        "mountain-10": { "label": "10 days", "hint": "Hiker immersion" }
+        "short-stay": {
+          "label": "48 hours",
+          "hint": "Trail, village, wine"
+        },
+        "classic": {
+          "label": "5 days",
+          "hint": "Coast to mountains"
+        },
+        "classic-7": {
+          "label": "7 days",
+          "hint": "Full island sweep"
+        },
+        "mountain-10": {
+          "label": "10 days",
+          "hint": "Hiker immersion"
+        }
       }
     },
     "whyCyprus": {
@@ -707,7 +722,15 @@
         "wine": "Wine & food",
         "monastery": "Monasteries & culture",
         "family": "Family-friendly",
+        "accessible": "Accessible & gentle",
+        "local": "Local winter",
         "hidden": "Hidden gems"
+      },
+      "combosTeaser": {
+        "kicker": "Curated days",
+        "title": "Ready-made day pairings",
+        "body": "Morning and afternoon combos that flow—add one to your plan in a tap.",
+        "seeAll": "See all pairings on Plan →"
       },
       "filters": {
         "all": "All",
@@ -759,6 +782,18 @@
           "hidden": {
             "title": "Hidden Cyprus Winter | Secret Spots & Local Gems",
             "description": "Hidden Cyprus winter: local secrets, quiet viewpoints, off-radar kafenions. Curated gems away from summer crowds — pair with trails and villages."
+          },
+          "family": {
+            "title": "Family-Friendly Cyprus Winter | Beaches & Gentle Days",
+            "description": "Cyprus winter with kids: calm beaches, lace villages, easy museums. Two stops per day, rain-day backups. Curated family-friendly places."
+          },
+          "accessible": {
+            "title": "Accessible Cyprus Winter | Gentle Paths & Museums",
+            "description": "Lower-mobility winter Cyprus: paved sites, manageable villages, ground-floor museums. Curated accessible and gentle places."
+          },
+          "local": {
+            "title": "Local Winter Cyprus | Museums, Villages & Slow Days",
+            "description": "Winter like a local: Nicosia museums, lace villages, stone sites—fewer tour buses, more kafenion time."
           },
           "bouldering": {
             "title": "Bouldering in Cyprus Winter | Crags & Gyms",
@@ -1001,7 +1036,10 @@
       "funnelThisMonth": {
         "title": "Conversion funnel (this month)",
         "subtitle": "First touch to booking and revenue",
-        "table": { "event": "Event", "count": "Count" },
+        "table": {
+          "event": "Event",
+          "count": "Count"
+        },
         "empty": "No events yet. Conversion tracking requires Supabase and migration 003."
       },
       "storage": "Storage: {storage}",
@@ -1176,9 +1214,15 @@
     },
     "badges": {
       "status": {
-        "open": { "title": "Good to go" },
-        "caution": { "title": "Check conditions before you head out" },
-        "closed": { "title": "Best saved for another day" }
+        "open": {
+          "title": "Good to go"
+        },
+        "caution": {
+          "title": "Check conditions before you head out"
+        },
+        "closed": {
+          "title": "Best saved for another day"
+        }
       }
     },
     "report": {
@@ -1191,15 +1235,36 @@
       },
       "options": {
         "status": {
-          "open": { "label": "Open", "desc": "Good to go" },
-          "caution": { "label": "Caution", "desc": "Muddy, wind, or minor issues" },
-          "closed": { "label": "Closed", "desc": "Snow, ice, or unsafe" }
+          "open": {
+            "label": "Open",
+            "desc": "Good to go"
+          },
+          "caution": {
+            "label": "Caution",
+            "desc": "Muddy, wind, or minor issues"
+          },
+          "closed": {
+            "label": "Closed",
+            "desc": "Snow, ice, or unsafe"
+          }
         },
         "surface": {
-          "dry": { "label": "Dry", "desc": "Firm ground, good grip" },
-          "muddy": { "label": "Muddy", "desc": "Soft or wet patches" },
-          "snow": { "label": "Snow", "desc": "Snow on the ground" },
-          "icy": { "label": "Icy", "desc": "Ice, may need spikes" }
+          "dry": {
+            "label": "Dry",
+            "desc": "Firm ground, good grip"
+          },
+          "muddy": {
+            "label": "Muddy",
+            "desc": "Soft or wet patches"
+          },
+          "snow": {
+            "label": "Snow",
+            "desc": "Snow on the ground"
+          },
+          "icy": {
+            "label": "Icy",
+            "desc": "Ice, may need spikes"
+          }
         }
       },
       "placeholders": {
@@ -1207,7 +1272,10 @@
         "email": "your@email.com"
       },
       "errorHelp": "Check your connection, try again, or go back to the trail.",
-      "submit": { "idle": "Submit report", "loading": "Submitting…" },
+      "submit": {
+        "idle": "Submit report",
+        "loading": "Submitting…"
+      },
       "success": {
         "aria": "Report submitted successfully",
         "body": "Hikers heading to {region} will use this. Every report counts.",
@@ -1274,6 +1342,8 @@
       "topSightsTitle": "Top sights",
       "conditions": {
         "latestFromHikers": "Latest from hikers",
+        "communityReport": "Community report—not official. Timestamp shows when it was shared.",
+        "editorialConditions": "Seasonal guide snapshot—not a live report. Submit a report if you were just on the trail.",
         "currentConditions": "Current conditions",
         "titleNoData": "Trail conditions",
         "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
@@ -1445,10 +1515,63 @@
     "wineryBar": {
       "ariaLabel": "Winery bookings"
     },
+    "realism": {
+      "aria": "Day pacing hints",
+      "spreadRegions": "These stops span different parts of the island—allow drive time between them.",
+      "tightDay": "Four or more stops is ambitious for one winter day.",
+      "daylight": "Winter daylight ends around 5pm—start outdoor stops by 10am.",
+      "trailAndSpread": "Trail plus distant stops—start early and check conditions."
+    },
+    "offline": {
+      "title": "You are offline",
+      "body": "Your plan stays on this device until you are back online—bookings need a connection.",
+      "readOnly": "Read-only: you cannot edit the plan until you are back online."
+    },
+    "dayCombos": {
+      "trailAndVillage": {
+        "label": "Trail and village",
+        "why": "Pine forest in the morning, village lunch by noon.",
+        "tip": "Start Artemis by 9am. Omodos warms up with coffee and lace."
+      },
+      "limassolCoastCommandaria": {
+        "label": "Limassol coast & Commandaria",
+        "why": "Ancient theatre, quick dip, then sugar-mill wine."
+      },
+      "paphosMosaicsWine": {
+        "label": "Paphos mosaics & wine",
+        "why": "Morning light on the floors, Vouni for lunch and tasting.",
+        "tip": "House of Theseus: 9–11am. Book Vouni ahead."
+      },
+      "waterfallVillage": {
+        "label": "Waterfall and stone village",
+        "why": "Caledonia after rain, Kakopetria for lunch and cobbles.",
+        "tip": "Best 1–2 days after rainfall. Waterproof boots."
+      },
+      "kykkosWine": {
+        "label": "Kykkos and wine",
+        "why": "Monastery and views first, Tsiakkas tasting to close the loop.",
+        "tip": "Tsiakkas terrace has heaters. Book ahead."
+      },
+      "laceAncientWine": {
+        "label": "Lace, ancient & wine",
+        "why": "Lefkara lacemakers, Choirokoitia, then Dómes Sergiou."
+      },
+      "gentleTrailPlatres": {
+        "label": "Gentle trail & Platres",
+        "why": "Atalante loop, then Platres for kafenions and views.",
+        "tip": "Easiest Troodos trail. Often clear when higher trails have snow."
+      },
+      "paphosCoastAdonis": {
+        "label": "Paphos coast & Adonis",
+        "why": "Tomb of Kings, coral bay stretch, Adonis for tasting."
+      }
+    },
     "share": {
       "copyAndShare": "Copy & share",
       "placesLabel": "places",
       "daysLabel": "days",
+      "downloadIcs": "Add to calendar",
+      "icsDownloaded": "Downloaded",
       "placesCount": "{count, plural, one {# place} other {# places}}",
       "daysCount": "{count, plural, one {# day} other {# days}}",
       "copyLink": "Copy link",
@@ -2160,15 +2283,43 @@
         "tip": "Pack layers and water. Tell someone your route.",
         "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the guide if you don't see it.",
         "ctaBookings": "View my bookings",
-        "ctaTrails": "Browse trails"
+        "ctaTrails": "Browse trails",
+        "nextStepsHeading": "What happens next",
+        "nextStep1": "We save your request and email you a copy when delivery is available.",
+        "nextStep2": "The guide confirms by email—usually within 24–48 hours on weekdays.",
+        "nextStep3": "Track status anytime under My Bookings with the same email.",
+        "sla": "This is a request, not a confirmed slot. If you hear nothing after two business days, contact the guide."
       },
       "fields": {
-        "date": { "label": "Preferred date", "hint": "Winter days are short; book ahead for your preferred slot." },
-        "trail": { "label": "Trail", "optional": "(optional)", "hint": "Optional. Helps the guide plan.", "placeholder": "Select a trail (optional)" },
-        "partySize": { "label": "Group size", "plus": "11+ people", "placeholder": "Select group size" },
-        "guestName": { "label": "Your name", "placeholder": "John Smith" },
-        "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
-        "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fitness level, experience, trail preference—whatever helps them plan.", "placeholder": "First winter hike, want to see waterfalls, need an early start — whatever helps" }
+        "date": {
+          "label": "Preferred date",
+          "hint": "Winter days are short; book ahead for your preferred slot."
+        },
+        "trail": {
+          "label": "Trail",
+          "optional": "(optional)",
+          "hint": "Optional. Helps the guide plan.",
+          "placeholder": "Select a trail (optional)"
+        },
+        "partySize": {
+          "label": "Group size",
+          "plus": "11+ people",
+          "placeholder": "Select group size"
+        },
+        "guestName": {
+          "label": "Your name",
+          "placeholder": "John Smith"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "john@example.com"
+        },
+        "notes": {
+          "label": "Notes",
+          "optional": "(optional)",
+          "hint": "Fitness level, experience, trail preference—whatever helps them plan.",
+          "placeholder": "First winter hike, want to see waterfalls, need an early start — whatever helps"
+        }
       },
       "submit": {
         "ariaSending": "Sending your request",
@@ -2183,9 +2334,13 @@
         "privacy": "Privacy Policy",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "wineryForm": {
+      "hints": {
+        "heading": "Before you book",
+        "hoursLabel": "Hours:",
+        "bestTimeLabel": "Best time:"
+      },
       "validation": {
         "dateRequired": "Choose a date in the future",
         "nameRequired": "Name is required",
@@ -2205,14 +2360,37 @@
         "tip": "Ask about Commandaria and the indigenous grapes when you're there. They're proud of them.",
         "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the winery if you don't see it.",
         "ctaBookings": "View my bookings",
-        "ctaDiscover": "Discover more"
+        "ctaDiscover": "Discover more",
+        "nextStepsHeading": "What happens next",
+        "nextStep1": "We save your request and email you a copy when delivery is available.",
+        "nextStep2": "The winery confirms date and time by email—usually within 24–48 hours on weekdays.",
+        "nextStep3": "Track status anytime under My Bookings with the same email.",
+        "sla": "No charge in-app until they confirm. If you hear nothing after two business days, call the winery."
       },
       "fields": {
-        "date": { "label": "Preferred date", "hint": "Winter tastings fill up. A few days ahead helps." },
-        "partySize": { "label": "Group size", "plus": "11+ people", "placeholder": "Select group size" },
-        "guestName": { "label": "Your name", "placeholder": "John Smith" },
-        "guestEmail": { "label": "Email", "placeholder": "john@example.com" },
-        "notes": { "label": "Notes", "optional": "(optional)", "hint": "Fireside table? Dietary needs? Just mention it — wineries are used to it.", "placeholder": "Allergies, special occasion, fireside or terrace — whatever helps them welcome you" }
+        "date": {
+          "label": "Preferred date",
+          "hint": "Winter tastings fill up. A few days ahead helps."
+        },
+        "partySize": {
+          "label": "Group size",
+          "plus": "11+ people",
+          "placeholder": "Select group size"
+        },
+        "guestName": {
+          "label": "Your name",
+          "placeholder": "John Smith"
+        },
+        "guestEmail": {
+          "label": "Email",
+          "placeholder": "john@example.com"
+        },
+        "notes": {
+          "label": "Notes",
+          "optional": "(optional)",
+          "hint": "Fireside table? Dietary needs? Just mention it — wineries are used to it.",
+          "placeholder": "Allergies, special occasion, fireside or terrace — whatever helps them welcome you"
+        }
       },
       "submit": {
         "ariaSending": "Sending your request",
@@ -2227,12 +2405,16 @@
         "privacy": "Privacy Policy",
         "bodySuffix": "."
       }
-    }
-    ,
+    },
     "pages": {
       "pageNavAria": "Page navigation",
       "otherWaysAria": "Other ways to book",
       "guideDetail": {
+        "meta": {
+          "title": "Book a guided hike | {guideName} | Cyprus Winter",
+          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+        },
+        "metaNotFound": "Not found",
         "badge": "Guided hike",
         "title": "Book a guided hike",
         "verifiedTitle": "Verified partner: receives booking requests directly",
@@ -2267,6 +2449,10 @@
         "footerBrowseWineries": "Browse all wineries"
       },
       "wineryDetail": {
+        "meta": {
+          "title": "Book a tasting | {wineryName} | Cyprus Winter",
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
+        },
         "metaNotFound": "Not found",
         "intro": "Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they'll confirm by email.",
         "disclaimer": "For adults of legal drinking age. Drink responsibly.",

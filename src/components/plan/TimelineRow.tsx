@@ -14,6 +14,7 @@ type TimelineRowProps = {
   lastAddedCardRef: RefObject<HTMLDivElement | null>;
   getPlace: (id: string) => PlanItem | undefined;
   removeFromDay: (id: string) => void;
+  readOnly?: boolean;
 };
 
 export default function TimelineRow({
@@ -24,6 +25,7 @@ export default function TimelineRow({
   lastAddedCardRef,
   getPlace,
   removeFromDay,
+  readOnly = false,
 }: TimelineRowProps) {
   const tCommon = useTranslations("common");
   const p = getPlace(id);
@@ -40,14 +42,16 @@ export default function TimelineRow({
           className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}
         >
           <span className="text-sm text-olive/60 italic">{tCommon("timelineRemovedPlace")}</span>
-          <button
-            type="button"
-            onClick={() => removeFromDay(id)}
-            className="min-h-[44px] px-3 py-2 text-sm font-medium text-olive/70 hover:text-terracotta rounded-lg hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label={tCommon("remove")}
-          >
-            {tCommon("remove")}
-          </button>
+          {!readOnly && (
+            <button
+              type="button"
+              onClick={() => removeFromDay(id)}
+              className="min-h-[44px] px-3 py-2 text-sm font-medium text-olive/70 hover:text-terracotta rounded-lg hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label={tCommon("remove")}
+            >
+              {tCommon("remove")}
+            </button>
+          )}
         </div>
       </div>
     );
@@ -71,6 +75,7 @@ export default function TimelineRow({
         <ItineraryCard
           place={p}
           onRemove={() => removeFromDay(id)}
+          hideRemove={readOnly}
           lastAdded={isLastAdded}
           index={index}
           cardRef={undefined}

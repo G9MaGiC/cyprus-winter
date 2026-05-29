@@ -6,16 +6,19 @@ import SuggestedForDay from "@/components/SuggestedForDay";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
+import PlanDayHints from "@/components/plan/PlanDayHints";
 import { useTranslations } from "next-intl";
 
 function EmptyDayState({
   activeDay,
   onBrowseAll,
   onScrollToQuickStart,
+  readOnly,
 }: {
   activeDay: number;
   onBrowseAll: () => void;
   onScrollToQuickStart: () => void;
+  readOnly?: boolean;
 }) {
   const tPlan = useTranslations("plan");
   return (
@@ -30,7 +33,8 @@ function EmptyDayState({
         <button
           type="button"
           onClick={onBrowseAll}
-          className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 hover:border-terracotta/20`}
+          disabled={readOnly}
+          className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 hover:border-terracotta/20 disabled:opacity-50 disabled:cursor-not-allowed`}
           aria-label={tPlan("aria.browsePlacesToAddDay")}
         >
           {tPlan("browsePlaces")}
@@ -38,7 +42,8 @@ function EmptyDayState({
         <button
           type="button"
           onClick={onScrollToQuickStart}
-          className={`${CTA.secondaryCompact} hover:border-terracotta/20`}
+          disabled={readOnly}
+          className={`${CTA.secondaryCompact} hover:border-terracotta/20 disabled:opacity-50 disabled:cursor-not-allowed`}
           aria-label={tPlan("aria.scrollToTemplates")}
         >
           {tPlan("seeTemplates")}
@@ -54,12 +59,14 @@ function DayAddSection({
   getPlace,
   addToDay,
   onBrowseAll,
+  readOnly,
 }: {
   activeDay: number;
   activeItems: string[];
   getPlace: (id: string) => PlanItem | undefined;
   addToDay: (id: string) => void;
   onBrowseAll: () => void;
+  readOnly?: boolean;
 }) {
   const tPlanQuick = useTranslations("planQuick");
   return (
@@ -82,7 +89,7 @@ function DayAddSection({
               key={id}
               type="button"
               onClick={() => addToDay(id)}
-              disabled={inDay}
+              disabled={inDay || readOnly}
               className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
               aria-pressed={inDay}
               aria-label={
@@ -99,7 +106,8 @@ function DayAddSection({
         <button
           type="button"
           onClick={onBrowseAll}
-          className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150`}
+          disabled={readOnly}
+          className={`shrink-0 snap-start ${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 disabled:opacity-50 disabled:cursor-not-allowed`}
           aria-label={tPlanQuick("browsePlacesAria")}
         >
           {tPlanQuick("browsePlacesCta")}
@@ -127,6 +135,7 @@ type DayContentPanelProps = {
   onScrollToQuickStart: () => void;
   /** Hide inline quick-add when empty plan already shows chips in Quick Start */
   hideInlineAdd?: boolean;
+  readOnly?: boolean;
 };
 
 export default function DayContentPanel({
@@ -141,6 +150,7 @@ export default function DayContentPanel({
   onBrowseAll,
   onScrollToQuickStart,
   hideInlineAdd = false,
+  readOnly = false,
 }: DayContentPanelProps) {
   const tPlan = useTranslations("plan");
   const useBlocks = activeItems.length >= 3;
@@ -148,6 +158,9 @@ export default function DayContentPanel({
   const morningIds = useBlocks ? activeItems.slice(0, mid) : activeItems;
   const afternoonIds = useBlocks ? activeItems.slice(mid) : [];
   const lastAddedPlace = lastAddedId ? getPlace(lastAddedId) : undefined;
+  const activePlaces = activeItems
+    .map((id) => getPlace(id))
+    .filter((p): p is PlanItem => p != null);
 
   return (
     <section aria-label={tPlan("aria.yourItinerary")} className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
@@ -177,7 +190,7 @@ export default function DayContentPanel({
                   </span>
                 )}
               </div>
-              {activeItems.length > 0 && (
+              {activeItems.length > 0 && !readOnly && (
                 <button
                   type="button"
                   onClick={onClearDay}
@@ -193,6 +206,7 @@ export default function DayContentPanel({
                 {tPlan("addAnotherStopHint")}
               </p>
             )}
+            {activePlaces.length > 0 && <PlanDayHints places={activePlaces} />}
           </div>
 
           <div className={CARD.content}>
@@ -201,6 +215,7 @@ export default function DayContentPanel({
                 activeDay={activeDay}
                 onBrowseAll={onBrowseAll}
                 onScrollToQuickStart={onScrollToQuickStart}
+                readOnly={readOnly}
               />
             ) : (
               <div className="space-y-0">
@@ -220,6 +235,7 @@ export default function DayContentPanel({
                           lastAddedCardRef={lastAddedCardRef}
                           getPlace={getPlace}
                           removeFromDay={removeFromDay}
+                          readOnly={readOnly}
                         />
                       ))}
                     </div>
@@ -239,6 +255,7 @@ export default function DayContentPanel({
                               lastAddedCardRef={lastAddedCardRef}
                               getPlace={getPlace}
                               removeFromDay={removeFromDay}
+                              readOnly={readOnly}
                             />
                           ))}
                         </div>
@@ -257,6 +274,7 @@ export default function DayContentPanel({
                         lastAddedCardRef={lastAddedCardRef}
                         getPlace={getPlace}
                         removeFromDay={removeFromDay}
+                        readOnly={readOnly}
                       />
                     ))}
                   </div>
@@ -267,13 +285,14 @@ export default function DayContentPanel({
         </div>
 
         <div id="plan-add-sentinel" aria-hidden className="h-0" />
-        {!hideInlineAdd && (
+        {!hideInlineAdd && !readOnly && (
           <DayAddSection
             activeDay={activeDay}
             activeItems={activeItems}
             getPlace={getPlace}
             addToDay={addToDay}
             onBrowseAll={onBrowseAll}
+            readOnly={readOnly}
           />
         )}
       </div>

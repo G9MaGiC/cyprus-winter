@@ -14,6 +14,8 @@ type PlanShareBarProps = {
   sharePath: string;
   copyShareLink: () => void;
   copyItinerary: () => void;
+  icsDownloaded?: boolean;
+  downloadCalendar?: () => void;
 };
 
 export default function PlanShareBar({
@@ -25,6 +27,8 @@ export default function PlanShareBar({
   sharePath,
   copyShareLink,
   copyItinerary,
+  icsDownloaded = false,
+  downloadCalendar,
 }: PlanShareBarProps) {
   const tPlan = useTranslations("plan");
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
@@ -91,6 +95,20 @@ export default function PlanShareBar({
           >
             {copied ? tPlan("share.copied") : tPlan("share.copyItineraryShort")}
           </button>
+          {downloadCalendar && (
+            <button
+              type="button"
+              onClick={downloadCalendar}
+              className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                icsDownloaded
+                  ? "bg-aegean/15 text-aegean border border-aegean/25"
+                  : CTA.secondaryCompact
+              }`}
+              aria-label={tPlan("share.downloadIcs")}
+            >
+              {icsDownloaded ? tPlan("share.icsDownloaded") : tPlan("share.downloadIcs")}
+            </button>
+          )}
           <div className="relative" ref={shareMenuRef}>
             <button
               ref={shareMenuTriggerRef}

@@ -20,6 +20,14 @@
     "privacy": "Datenschutz",
     "terms": "AGB"
   },
+  "travelTrust": {
+    "aria": "Offizielle Reiseinformationen",
+    "heading": "Vor der Reise",
+    "body": "Einreise und lokale Lage ändern sich. Nutzen Sie offizielle Quellen—sachlich, ohne Hype.",
+    "visitCyprus": "Visit Cyprus (offizieller Tourismus)",
+    "foreignTravelUk": "UK-Reisehinweise — Zypern",
+    "emergency": "Notruf 112 · Touristeninfo 1460 · Rettung 199"
+  },
   "nav": {
     "discover": "Entdecken",
     "plan": "Planen",
@@ -714,7 +722,9 @@
         "wine": "Wein & Essen",
         "monastery": "Klöster & Kultur",
         "family": "Familienfreundlich",
-        "hidden": "Geheimtipps"
+        "accessible": "Barrierefrei & sanft",
+        "hidden": "Geheimtipps",
+        "local": "Lokaler Winter"
       },
       "filters": {
         "all": "Alle",
@@ -767,6 +777,14 @@
             "title": "Verstecktes Zypern Winter | Geheimtipps & lokale Perlen",
             "description": "Verstecktes Zypern im Winter: lokale Geheimnisse, ruhige Aussichten, Kafenions abseits der Route. Kuratierte Perlen fernab des Sommertrubels."
           },
+          "family": {
+            "title": "Familienfreundliches Zypern Winter | Strände & sanfte Tage",
+            "description": "Zypern im Winter mit Kindern: ruhige Strände, Dörfer, leichte Museen. Zwei Stopps pro Tag, Regen-Alternativen."
+          },
+          "accessible": {
+            "title": "Barrierefreies Zypern Winter | Sanfte Wege & Museen",
+            "description": "Zypern Winter mit eingeschränkter Mobilität: befestigte Stätten, gut gehende Dörfer, Museen im Erdgeschoss."
+          },
           "bouldering": {
             "title": "Bouldern auf Zypern im Winter | Felsblöcke & Hallen",
             "description": "Outdoor-Boulder und Kletterhallen auf Zypern — Gerakopetra, Episkopi, Droushia, Limassol. Wintertemperaturen ideal. Kuratierte Liste mit Kombinationen."
@@ -794,6 +812,10 @@
           "wellness": {
             "title": "Wellness Zypern Winter | Klöster & Waldbaden",
             "description": "Winter-Wellness auf Zypern: Thermaldörfer, Waldbaden, stille Klöster, Spa-Küste. Kuratierte ruhige Orte und sanfte Wege."
+          },
+          "local": {
+            "title": "Lokaler Winter Zypern | Museen & Dörfer",
+            "description": "Winter wie Einheimische: Nikosia-Museen, Dörfer, langsames Tempo."
           }
         }
       },
@@ -831,6 +853,12 @@
           "cosyWinter": "Gemütlich im Winter",
           "worthVisit": "Einen Besuch wert"
         }
+      },
+      "combosTeaser": {
+        "kicker": "Kuratierte Tage",
+        "title": "Fertige Tagespaare",
+        "body": "Vormittag und Nachmittag im Flow—mit einem Tippen in den Plan.",
+        "seeAll": "Alle Paare auf Plan →"
       }
     },
     "map": {
@@ -1314,6 +1342,8 @@
       "topSightsTitle": "Top-Spots",
       "conditions": {
         "latestFromHikers": "Aktuelles von Wandernden",
+        "communityReport": "Community-Meldung—nicht offiziell. Zeitstempel zeigt, wann geteilt.",
+        "editorialConditions": "Saisonaler Leitfaden—kein Live-Bericht. Melden Sie, wenn Sie gerade unterwegs waren.",
         "currentConditions": "Aktuelle Bedingungen",
         "titleNoData": "Trail-Bedingungen",
         "noRecentBody": "Keine aktuellen Bedingungen für diesen Weg. Gerade zurück? Teilen Sie, was Sie gesehen haben – es dauert nur eine Minute.",
@@ -1516,10 +1546,19 @@
       "worksWell": "Funktioniert gut mit dem, was Sie hinzugefügt haben. Tippen Sie zum Hinzufügen.",
       "addToDayAria": "{name} zu diesem Tag hinzufügen"
     },
+    "realism": {
+      "aria": "Hinweise zum Tagesrhythmus",
+      "spreadRegions": "Diese Stopps liegen in verschiedenen Regionen—Fahrzeit einplanen.",
+      "tightDay": "Vier oder mehr Stopps sind für einen Wintertag ambitioniert.",
+      "daylight": "Winterlicht endet gegen 17 Uhr—Outdoor-Stopps bis 10 Uhr starten.",
+      "trailAndSpread": "Wanderweg plus entfernte Stopps—früh starten und Bedingungen prüfen."
+    },
     "share": {
       "copyAndShare": "Kopieren & teilen",
       "placesLabel": "Orte",
       "daysLabel": "Tage",
+      "downloadIcs": "Zum Kalender hinzufügen",
+      "icsDownloaded": "Heruntergeladen",
       "placesCount": "{count, plural, one {# Ort} other {# Orte}}",
       "daysCount": "{count, plural, one {# Tag} other {# Tage}}",
       "copyLink": "Link kopieren",
@@ -1563,6 +1602,50 @@
       "heading": "Zypern Winter Reiseroute",
       "dayLabel": "Tag {day}:",
       "emptyFallback": "Ihr Zypern-Winterplan. Fügen Sie Orte aus Entdecken oder Wanderwege hinzu, um loszulegen."
+    },
+    "offline": {
+      "body": "Ihr Plan bleibt auf diesem Gerät, bis Sie wieder online sind—Buchungen brauchen eine Verbindung.",
+      "title": "Sie sind offline",
+      "readOnly": "Nur Lesen: Sie können den Plan erst online wieder bearbeiten."
+    },
+    "dayCombos": {
+      "trailAndVillage": {
+        "label": "Wanderweg und Dorf",
+        "why": "Morgens im Kiefernwald, mittags Dorflunch.",
+        "tip": "Artemis um 9 Uhr starten. Omodos lädt mit Kaffee und Spitze ein."
+      },
+      "limassolCoastCommandaria": {
+        "label": "Limassol-Küste & Commandaria",
+        "why": "Antikes Theater, kurze Küstenpause, dann Commandaria-Wein."
+      },
+      "paphosMosaicsWine": {
+        "label": "Paphos-Mosaike & Wein",
+        "why": "Morgenlicht auf den Böden, Vouni zum Mittagessen und Verkostung.",
+        "tip": "Haus des Theseus: 9–11 Uhr. Vouni vorab buchen."
+      },
+      "waterfallVillage": {
+        "label": "Wasserfall und Steindorf",
+        "why": "Caledonia nach Regen, Kakopetria zum Essen.",
+        "tip": "Am besten 1–2 Tage nach Regen. Wasserdichte Stiefel."
+      },
+      "kykkosWine": {
+        "label": "Kykkos und Wein",
+        "why": "Kloster und Aussicht zuerst, Tsiakkas-Verkostung zum Abschluss.",
+        "tip": "Terrasse mit Heizung. Vorab reservieren."
+      },
+      "laceAncientWine": {
+        "label": "Spitze, Antike & Wein",
+        "why": "Lefkara, Choirokoitia, dann Dómes Sergiou."
+      },
+      "gentleTrailPlatres": {
+        "label": "Sanfter Weg & Platres",
+        "why": "Atalante-Runde, dann Platres mit Kafenions.",
+        "tip": "Leichtester Troodos-Weg. Oft frei, wenn höhere Wege Schnee haben."
+      },
+      "paphosCoastAdonis": {
+        "label": "Paphos-Küste & Adonis",
+        "why": "Königsgräber, Küstenstretch, Adonis-Verkostung."
+      }
     }
   },
   "placePicker": {
@@ -2138,7 +2221,12 @@
         "tip": "Schichten und Wasser einpacken. Sagen Sie jemandem Ihre Route.",
         "emailDelayed": "Ihre Anfrage ist gespeichert. Die Bestätigungs-E-Mail kann ein paar Minuten dauern — prüfen Sie den Spam-Ordner oder kontaktieren Sie den Guide.",
         "ctaBookings": "Meine Buchungen ansehen",
-        "ctaTrails": "Wanderwege ansehen"
+        "ctaTrails": "Wanderwege ansehen",
+        "nextStepsHeading": "Was als Nächstes passiert",
+        "nextStep1": "Wir speichern Ihre Anfrage und senden eine Kopie per E-Mail, sobald möglich.",
+        "nextStep2": "Der Guide bestätigt per E-Mail—meist innerhalb von 24–48 Stunden an Werktagen.",
+        "nextStep3": "Status jederzeit unter Meine Buchungen mit derselben E-Mail.",
+        "sla": "Dies ist eine Anfrage, kein bestätigter Termin. Nach zwei Werktagen ohne Antwort den Guide direkt kontaktieren."
       },
       "fields": {
         "date": {
@@ -2205,7 +2293,12 @@
         "tip": "Fragen Sie vor Ort nach Commandaria und den autochthonen Rebsorten — darauf sind sie stolz.",
         "emailDelayed": "Ihre Anfrage ist gespeichert. Die Bestätigungs-E-Mail kann ein paar Minuten dauern — prüfen Sie den Spam-Ordner oder kontaktieren Sie das Weingut.",
         "ctaBookings": "Meine Buchungen ansehen",
-        "ctaDiscover": "Mehr entdecken"
+        "ctaDiscover": "Mehr entdecken",
+        "nextStepsHeading": "Was als Nächstes passiert",
+        "nextStep1": "Wir speichern Ihre Anfrage und senden eine Kopie per E-Mail, sobald möglich.",
+        "nextStep2": "Das Weingut bestätigt Datum und Uhrzeit per E-Mail—meist innerhalb von 24–48 Stunden an Werktagen.",
+        "nextStep3": "Status jederzeit unter Meine Buchungen mit derselben E-Mail.",
+        "sla": "Keine Belastung in der App, bis sie bestätigen. Nach zwei Werktagen ohne Antwort das Weingut anrufen."
       },
       "fields": {
         "date": {
@@ -2244,6 +2337,11 @@
         "and": "und",
         "privacy": "Datenschutz",
         "bodySuffix": "zu."
+      },
+      "hints": {
+        "heading": "Vor der Buchung",
+        "hoursLabel": "Öffnungszeiten:",
+        "bestTimeLabel": "Beste Zeit:"
       }
     },
     "pages": {
@@ -2260,7 +2358,12 @@
           "bookDirectAria": "Auf der Website des Guides buchen (öffnet in neuem Tab)",
           "callPrefix": "Oder anrufen",
           "callSuffix": "um Verfügbarkeit zu prüfen."
-        }
+        },
+        "meta": {
+          "title": "Book a guided hike | {guideName} | Cyprus Winter",
+          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+        },
+        "metaNotFound": "Not found"
       },
       "guideList": {
         "meta": {
@@ -2319,6 +2422,10 @@
         },
         "jsonLd": {
           "priceRange": "€€"
+        },
+        "meta": {
+          "title": "Book a tasting | {wineryName} | Cyprus Winter",
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
         }
       }
     },

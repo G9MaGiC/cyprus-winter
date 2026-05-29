@@ -1,4 +1,7 @@
 import { z } from "zod";
+import type { Locale } from "@/i18n/routing";
+
+const CHAT_LOCALES = ["en", "el", "de", "pl", "ro", "fr", "he"] as const satisfies readonly Locale[];
 
 const messageSchema = z.object({
   role: z.enum(["user", "assistant", "system"]),
@@ -9,7 +12,7 @@ export const chatRequestSchema = z.object({
   messages: z.array(messageSchema).min(1),
   context: z
     .object({
-      locale: z.enum(["en", "el", "de", "pl"]).optional(),
+      locale: z.enum(CHAT_LOCALES).optional(),
       path: z.string().max(256).optional(),
       lastPlace: z.string().max(256).optional(),
       itinerary: z

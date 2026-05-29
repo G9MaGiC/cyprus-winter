@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { getPlaceById, type PlanItem } from "@/data";
 import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
+import { buildPlanIcs, downloadPlanIcs } from "@/lib/plan-ics";
 import { toAbsoluteUrl } from "@/lib/site-url";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { trackProduct } from "@/lib/analytics";
@@ -45,6 +46,7 @@ export function useItinerary() {
   const [hydrated, setHydrated] = useState(false);
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [icsDownloaded, setIcsDownloaded] = useState(false);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -194,6 +196,20 @@ export function useItinerary() {
 
   const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
 
+  const downloadCalendar = useCallback(() => {
+    const ics = buildPlanIcs(days, getPlace);
+    downloadPlanIcs(ics);
+    if (!isMountedRef.current) return;
+    setIcsDownloaded(true);
+    const itemCount = Object.values(days).flat().length;
+    const dayCount = Object.values(days).filter((v) => v.length > 0).length;
+    trackProduct("plan_share", { share_method: "download_ics", item_count: itemCount, day_count: dayCount, locale });
+    const t = setTimeout(() => {
+      if (isMountedRef.current) setIcsDownloaded(false);
+    }, 2000);
+    timeoutRefs.current.push(t);
+  }, [days, getPlace, locale]);
+
   const copyShareLink = useCallback(async () => {
     const url = toAbsoluteUrl(sharePath);
     try {
@@ -227,6 +243,8 @@ export function useItinerary() {
     hydrated,
     copied,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     copyShareLink,
     toggleInDay,
     addToDayIfMissing,

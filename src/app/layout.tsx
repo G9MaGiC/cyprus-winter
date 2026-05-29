@@ -86,9 +86,10 @@ export default async function RootLayout({
   const messages = await getMessages();
   const locale = await getLocale();
   const tCommon = await getTranslations({ locale, namespace: "common" });
+  const dir = locale === "he" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={dir}>
       <head>
         <script
           type="application/ld+json"

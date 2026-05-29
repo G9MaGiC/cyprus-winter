@@ -10,6 +10,7 @@ import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/booki
 
 import { formatDate, daysUntil, getUpcomingDateGroup } from "@/lib/format";
 import BookingsEmailLookup from "@/components/BookingsEmailLookup";
+import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { useLocale, useTranslations } from "next-intl";
 
 function StatusBadge({ status }: { status: Booking["status"] }) {
@@ -162,6 +163,8 @@ export default function BookingsPage() {
           backLabel={tNav("home")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("bookings"), href: "/bookings", isCurrent: true }]}
         />
+
+        <TravelTrustStrip className="mb-8" />
 
         {/* Stats bar */}
         {!loading && bookings.length > 0 && (

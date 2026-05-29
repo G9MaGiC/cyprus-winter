@@ -4,12 +4,14 @@ import { useCallback } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
+import BookingSuccessNextSteps from "@/components/bookings/BookingSuccessNextSteps";
 import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
 import { trails } from "@/data/trails";
 import type { Guide } from "@/data/guides";
 import { useTranslations } from "next-intl";
 import { guideBookingSchema } from "@/lib/booking-schemas";
+import { fieldDescribedBy } from "@/lib/form-a11y";
 import { useBookingForm } from "@/hooks/useBookingForm";
 
 export default function GuideBookingForm({
@@ -106,6 +108,7 @@ export default function GuideBookingForm({
             {t("success.emailDelayed")}
           </p>
         )}
+        <BookingSuccessNextSteps namespace="book.guideForm" />
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}
@@ -148,7 +151,7 @@ export default function GuideBookingForm({
         <label htmlFor="date" className="block text-sm font-medium text-olive mb-1">
           {t("fields.date.label")}
         </label>
-        <p className="text-xs text-olive/60 mb-2">{t("fields.date.hint")}</p>
+        <p id="date-hint" className="text-xs text-olive/60 mb-2">{t("fields.date.hint")}</p>
         <input
           id="date"
           name="date"
@@ -157,7 +160,7 @@ export default function GuideBookingForm({
           min={todayStr}
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.date}
-          aria-describedby={fieldErrors.date ? "date-error" : undefined}
+          aria-describedby={fieldDescribedBy("date-hint", fieldErrors.date && "date-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.date ? "border-terracotta" : "border-sand-200/80"}`}
         />
         {fieldErrors.date && <p id="date-error" className="text-xs text-terracotta mt-1">{fieldErrors.date}</p>}
@@ -168,11 +171,12 @@ export default function GuideBookingForm({
           <label htmlFor="trailId" className="block text-sm font-medium text-olive mb-1">
             {t("fields.trail.label")} <span className="text-olive/50">{t("fields.trail.optional")}</span>
           </label>
-          <p className="text-xs text-olive/60 mb-2">{t("fields.trail.hint")}</p>
+          <p id="trail-hint" className="text-xs text-olive/60 mb-2">{t("fields.trail.hint")}</p>
           <select
             id="trailId"
             name="trailId"
             onBlur={handleBlur}
+            aria-describedby={fieldDescribedBy("trail-hint")}
             defaultValue={
               (() => {
                 const match = trailFromQuery && trailOptions.find((tr) => tr && (tr.id === trailFromQuery || tr.slug === trailFromQuery));
@@ -197,6 +201,9 @@ export default function GuideBookingForm({
         <label htmlFor="partySize" className="block text-sm font-medium text-olive mb-1">
           {t("fields.partySize.label")}
         </label>
+        <p id="partySize-hint" className="sr-only">
+          {t("fields.partySize.placeholder")}
+        </p>
         <select
           id="partySize"
           name="partySize"
@@ -204,7 +211,7 @@ export default function GuideBookingForm({
           defaultValue=""
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.partySize}
-          aria-describedby={fieldErrors.partySize ? "partySize-error" : undefined}
+          aria-describedby={fieldDescribedBy("partySize-hint", fieldErrors.partySize && "partySize-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.partySize ? "border-terracotta" : "border-sand-200/80"}`}
         >
           <option value="" disabled>{t("fields.partySize.placeholder")}</option>
@@ -251,7 +258,7 @@ export default function GuideBookingForm({
           placeholder={t("fields.guestEmail.placeholder")}
           onBlur={handleBlur}
           aria-invalid={!!fieldErrors.guestEmail}
-          aria-describedby={fieldErrors.guestEmail ? "guestEmail-error" : undefined}
+          aria-describedby={fieldDescribedBy(fieldErrors.guestEmail && "guestEmail-error")}
           className={`w-full min-h-[44px] rounded-lg border px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 ${fieldErrors.guestEmail ? "border-terracotta" : "border-sand-200/80"}`}
         />
         {fieldErrors.guestEmail && <p id="guestEmail-error" className="text-xs text-terracotta mt-1">{fieldErrors.guestEmail}</p>}
@@ -261,7 +268,7 @@ export default function GuideBookingForm({
         <label htmlFor="notes" className="block text-sm font-medium text-olive mb-1">
           {t("fields.notes.label")} <span className="text-olive/50">{t("fields.notes.optional")}</span>
         </label>
-        <p className="text-xs text-olive/60 mb-2">
+        <p id="notes-hint" className="text-xs text-olive/60 mb-2">
           {t("fields.notes.hint")}
         </p>
         <textarea
@@ -272,10 +279,13 @@ export default function GuideBookingForm({
           placeholder={t("fields.notes.placeholder")}
           onChange={(e) => setNotesLength(e.target.value.length)}
           onBlur={handleBlur}
+          aria-describedby={fieldDescribedBy("notes-hint")}
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
         {notesLength > 0 && (
-          <p className="text-xs text-olive/50 mt-1 text-right tabular-nums">{notesLength}/500</p>
+          <p id="notes-count" className="text-xs text-olive/50 mt-1 text-right tabular-nums" aria-live="polite">
+            {notesLength}/500
+          </p>
         )}
       </div>
 

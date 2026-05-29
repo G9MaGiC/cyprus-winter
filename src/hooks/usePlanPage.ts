@@ -4,11 +4,15 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useItinerary, MAX_DAYS } from "@/hooks/useItinerary";
 import { usePlanUrlActions } from "@/hooks/usePlanUrlActions";
 import { useTripDates } from "@/hooks/useTripDates";
+import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import type { TemplateKey } from "@/data/itinerary-templates";
 
 export type ComboChoice = { label: string; ids: string[] };
 
 export function usePlanPage() {
+  const online = useOnlineStatus();
+  const planReadOnly = !online;
+
   const [showClearModal, setShowClearModal] = useState(false);
   const [templateChoice, setTemplateChoice] = useState<string | null>(null);
   const [comboChoice, setComboChoice] = useState<ComboChoice | null>(null);
@@ -34,6 +38,8 @@ export function usePlanPage() {
     copyItinerary,
     copyShareLink,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     sharePath,
   } = useItinerary();
 
@@ -46,7 +52,14 @@ export function usePlanPage() {
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDayIfMissing, applyTemplate });
+  usePlanUrlActions({
+    hydrated,
+    hasContent,
+    getPlace,
+    addToDayIfMissing,
+    applyTemplate,
+    mutationsDisabled: planReadOnly,
+  });
 
   const scrollBehavior = useCallback(
     () =>
@@ -74,55 +87,74 @@ export function usePlanPage() {
 
   const handleTemplateClick = useCallback(
     (key: string) => {
+      if (planReadOnly) return;
       if (!hasContent) {
         applyTemplate(key as TemplateKey);
         return;
       }
       setTemplateChoice(key);
     },
-    [hasContent, applyTemplate]
+    [planReadOnly, hasContent, applyTemplate]
   );
 
   const handleReplaceTemplate = useCallback(() => {
-    if (!templateChoice) return;
+    if (planReadOnly || !templateChoice) return;
     applyTemplate(templateChoice as TemplateKey);
     setTemplateChoice(null);
-  }, [templateChoice, applyTemplate]);
+  }, [planReadOnly, templateChoice, applyTemplate]);
 
   const handleAddTemplate = useCallback(() => {
-    if (!templateChoice) return;
+    if (planReadOnly || !templateChoice) return;
     mergeTemplate(templateChoice as TemplateKey);
     setTemplateChoice(null);
-  }, [templateChoice, mergeTemplate]);
+  }, [planReadOnly, templateChoice, mergeTemplate]);
 
   const handleComboClick = useCallback(
     (ids: string[], label: string) => {
+      if (planReadOnly) return;
       if (!hasContent) {
         for (const id of ids) addToDayIfMissing(id);
         return;
       }
       setComboChoice({ label, ids });
     },
-    [hasContent, addToDayIfMissing]
+    [planReadOnly, hasContent, addToDayIfMissing]
   );
 
   const handleAddCombo = useCallback(() => {
-    if (!comboChoice) return;
+    if (planReadOnly || !comboChoice) return;
     for (const id of comboChoice.ids) addToDayIfMissing(id);
     setComboChoice(null);
-  }, [comboChoice, addToDayIfMissing]);
+  }, [planReadOnly, comboChoice, addToDayIfMissing]);
 
   const handleReplaceCombo = useCallback(() => {
-    if (!comboChoice) return;
+    if (planReadOnly || !comboChoice) return;
     clearDay();
     for (const id of comboChoice.ids) addToDayIfMissing(id);
     setComboChoice(null);
-  }, [comboChoice, clearDay, addToDayIfMissing]);
+  }, [planReadOnly, comboChoice, clearDay, addToDayIfMissing]);
 
   const handleClearDayConfirm = useCallback(() => {
+    if (planReadOnly) return;
     clearDay();
     setShowClearModal(false);
-  }, [clearDay]);
+  }, [planReadOnly, clearDay]);
+
+  const guardedAddToDay = useCallback(
+    (id: string) => {
+      if (planReadOnly) return;
+      addToDayIfMissing(id);
+    },
+    [planReadOnly, addToDayIfMissing]
+  );
+
+  const guardedRemoveFromDay = useCallback(
+    (id: string) => {
+      if (planReadOnly) return;
+      removeFromDay(id);
+    },
+    [planReadOnly, removeFromDay]
+  );
 
   const scrollToQuickStart = useCallback(() => {
     quickStartRef.current?.scrollIntoView({
@@ -155,8 +187,9 @@ export function usePlanPage() {
     activeItems,
     hydrated,
     copied,
-    addToDayIfMissing,
-    removeFromDay,
+    planReadOnly,
+    addToDayIfMissing: guardedAddToDay,
+    removeFromDay: guardedRemoveFromDay,
     getPlace,
     lastAddedId,
     hasContent,
@@ -165,6 +198,8 @@ export function usePlanPage() {
     copyItinerary,
     copyShareLink,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     sharePath,
     // Derived
     totalPlaces,

@@ -29,6 +29,8 @@ import { track, trackProduct } from "@/lib/analytics";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 import AppLink from "@/components/AppLink";
+import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
+import PlanOfflineBanner from "@/components/plan/PlanOfflineBanner";
 import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
@@ -97,6 +99,8 @@ export default function PlanPageClient() {
     copyItinerary,
     copyShareLink,
     linkCopied,
+    icsDownloaded,
+    downloadCalendar,
     sharePath,
     totalPlaces,
     activeDaysCount,
@@ -111,6 +115,7 @@ export default function PlanPageClient() {
     handleReplaceCombo,
     handleClearDayConfirm,
     scrollToQuickStart,
+    planReadOnly,
   } = plan;
 
   const quickStartBlock = (
@@ -131,6 +136,7 @@ export default function PlanPageClient() {
         onTemplateClick={handleTemplateClick}
         hasContent={hasContent}
         tripLength={tripLength}
+        readOnly={planReadOnly}
       />
       {!hasContent ? (
         <details className="group rounded-2xl border border-sand-200/80 bg-white/70 shadow-sm open:shadow-md open:bg-white/90 transition-shadow">
@@ -144,11 +150,11 @@ export default function PlanPageClient() {
             </span>
           </summary>
           <div className="border-t border-sand-200/60 px-3 pb-6 pt-4 sm:px-5">
-            <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+            <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} readOnly={planReadOnly} />
           </div>
         </details>
       ) : (
-        <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} />
+        <BuildADaySection hasContent={hasContent} onComboClick={handleComboClick} readOnly={planReadOnly} />
       )}
     </>
   );
@@ -224,6 +230,10 @@ export default function PlanPageClient() {
           </div>
         )}
 
+        <div className="mb-4">
+          <PlanOfflineBanner />
+        </div>
+
         {hasContent && hydrated && (
           <PlanShareBar
             totalPlaces={totalPlaces}
@@ -234,6 +244,8 @@ export default function PlanPageClient() {
             sharePath={sharePath}
             copyShareLink={copyShareLink}
             copyItinerary={copyItinerary}
+            icsDownloaded={icsDownloaded}
+            downloadCalendar={downloadCalendar}
           />
         )}
 
@@ -280,9 +292,12 @@ export default function PlanPageClient() {
             lastAddedId={lastAddedId}
             lastAddedCardRef={lastAddedCardRef}
             onClearDay={() => setShowClearModal(true)}
-            onBrowseAll={() => setShowBrowseModal(true)}
+            onBrowseAll={() => {
+              if (!planReadOnly) setShowBrowseModal(true);
+            }}
             onScrollToQuickStart={scrollToQuickStart}
             hideInlineAdd={!hasContent}
+            readOnly={planReadOnly}
           />
 
           {hasContent && hydrated && <PlanMapCollapsibleSection />}
@@ -292,6 +307,10 @@ export default function PlanPageClient() {
               <PlanAddMoreCollapsible hasContent={hasContent}>{quickStartBlock}</PlanAddMoreCollapsible>
             </div>
           )}
+        </div>
+
+        <div className={`${LAYOUT.safeAreaX} ${LAYOUT.list} mx-auto ${SECTION.blockGap}`}>
+          <TravelTrustStrip />
         </div>
 
         <PlanFooter hasWineries={hasWineries} showAccountCTA={!user && totalPlaces >= 2} />
@@ -305,7 +324,7 @@ export default function PlanPageClient() {
           />
         )}
 
-        {hasContent && hydrated && (
+        {hasContent && hydrated && !planReadOnly && (
           <PlanStickyAddBar
             sentinelId="plan-add-sentinel"
             scrollTargetId="plan-inline-add"

@@ -40,7 +40,15 @@ export function AIChatInput({
     const recognition = new SpeechRecognitionAPI();
     recognition.continuous = false;
     recognition.interimResults = true;
-    const localeMap: Record<string, string> = { en: "en-US", el: "el-GR", de: "de-DE", pl: "pl-PL" };
+    const localeMap: Record<string, string> = {
+      en: "en-US",
+      el: "el-GR",
+      de: "de-DE",
+      pl: "pl-PL",
+      ro: "ro-RO",
+      fr: "fr-FR",
+      he: "he-IL",
+    };
     const htmlLang = document.documentElement.lang || "en";
     recognition.lang = localeMap[htmlLang] || "en-US";
 

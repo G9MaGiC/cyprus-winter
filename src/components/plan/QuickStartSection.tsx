@@ -19,6 +19,7 @@ type QuickStartSectionProps = {
   onTemplateClick: (key: TemplateKey) => void;
   hasContent: boolean;
   tripLength: number | null;
+  readOnly?: boolean;
 };
 
 function isRecommendedForTrip(template: (typeof ITINERARY_TEMPLATES)[number], tripLength: number): boolean {
@@ -40,6 +41,7 @@ export default function QuickStartSection({
   onTemplateClick,
   hasContent,
   tripLength,
+  readOnly = false,
 }: QuickStartSectionProps) {
   const tPlanQuick = useTranslations("planQuick");
   const activeDayItems = days[activeDay] ?? [];
@@ -99,7 +101,8 @@ export default function QuickStartSection({
         key={template.key}
         type="button"
         onClick={() => onTemplateClick(template.key)}
-        className={`text-left w-full min-h-[96px] sm:min-h-[104px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group ${
+        disabled={readOnly}
+        className={`text-left w-full min-h-[96px] sm:min-h-[104px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 ${
           isForYou ? "border-l-4 border-l-terracotta bg-terracotta/[0.04]" : ""
         } ${isRecommended && !isForYou ? "border-l-4 border-l-aegean bg-aegean/[0.04]" : ""}`}
         aria-label={tPlanQuick("templateCardAria", {
@@ -203,7 +206,7 @@ export default function QuickStartSection({
               key={id}
               type="button"
               onClick={() => addToDay(id)}
-              disabled={inDay}
+              disabled={inDay || readOnly}
               className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
               aria-pressed={inDay}
               aria-label={

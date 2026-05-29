@@ -9,6 +9,7 @@ import {
 import { ACTIVITY_PLACE_IDS_SET } from "@/data/activity-places";
 import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
+import { LOCAL_WINTER_PICK_IDS } from "@/data/local-winter-picks";
 
 export type DiscoverSection = {
   id: string;
@@ -31,6 +32,8 @@ export const filterToSectionId: Record<string, string> = {
   restaurant: "wine",
   monastery: "monastery",
   family: "family",
+  accessible: "accessible",
+  local: "local",
   hidden: "hidden",
   "off-beaten-path": "hidden",
 };
@@ -41,6 +44,41 @@ function isFamilyFriendly(item: { bestFor?: string[] }): boolean {
       (b) =>
         b.toLowerCase().includes("famil") || b.toLowerCase().includes("family")
     ) ?? false
+  );
+}
+
+function isAccessibleFriendly(item: {
+  accessibility?: string;
+  bestFor?: string[];
+}): boolean {
+  const acc = (item.accessibility ?? "").toLowerCase();
+  if (
+    acc.includes("not suitable") ||
+    acc.includes("not for limited") ||
+    acc.includes("strenuous") ||
+    acc.includes("steep climb") ||
+    acc.includes("steep paths") && acc.includes("many steps")
+  ) {
+    return false;
+  }
+  if (
+    acc.includes("accessible") ||
+    acc.includes("manageable") ||
+    acc.includes("ground floor") ||
+    acc.includes("paved paths")
+  ) {
+    return true;
+  }
+  return (
+    item.bestFor?.some((b) => {
+      const lower = b.toLowerCase();
+      return (
+        lower.includes("accessible") ||
+        lower.includes("wheelchair") ||
+        lower.includes("limited mobility") ||
+        lower.includes("gentle")
+      );
+    }) ?? false
   );
 }
 
@@ -64,6 +102,10 @@ export function buildDiscoverSections(
   const coastsItems = [...beaches, ...coastNature];
   const wineAndFoodItems = [...wineries, ...restaurants];
   const familyItems = allDiscoverItems.filter(isFamilyFriendly);
+  const accessibleItems = allDiscoverItems.filter(isAccessibleFriendly);
+  const localWinterItems = allDiscoverItems.filter((item) =>
+    (LOCAL_WINTER_PICK_IDS as readonly string[]).includes(item.id)
+  );
   const quietItems = allDiscoverItems.filter(isOffBeatenPath);
   const hiddenGemsItems = [...familyItems, ...quietItems].filter(
     (item, i, arr) => arr.findIndex((x) => x.id === item.id) === i
@@ -77,6 +119,8 @@ export function buildDiscoverSections(
     { id: "wine", title: "wine", items: wineAndFoodItems },
     { id: "monastery", title: "monastery", items: monasteries },
     { id: "family", title: "family", items: familyItems },
+    { id: "accessible", title: "accessible", items: accessibleItems },
+    { id: "local", title: "local", items: localWinterItems },
     { id: "hidden", title: "hidden", items: hiddenGemsItems },
   ];
 }

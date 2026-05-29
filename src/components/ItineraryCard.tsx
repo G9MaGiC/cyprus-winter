@@ -32,6 +32,7 @@ function TypeBadge({ type }: { type: PlanItem["type"] }) {
 export default function ItineraryCard({
   place,
   onRemove,
+  hideRemove = false,
   lastAdded,
   index,
   cardRef,
@@ -39,6 +40,7 @@ export default function ItineraryCard({
 }: {
   place: PlanItem;
   onRemove: () => void;
+  hideRemove?: boolean;
   lastAdded: boolean;
   index: number;
   cardRef?: React.RefObject<HTMLDivElement | null>;
@@ -91,14 +93,16 @@ export default function ItineraryCard({
             {tCommon("bookTasting")}
           </AppLink>
         )}
-        <button
-          type="button"
-          onClick={onRemove}
-          className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          aria-label={`Remove ${place.name} from itinerary`}
-        >
-          {tCommon("remove")}
-        </button>
+        {!hideRemove && (
+          <button
+            type="button"
+            onClick={onRemove}
+            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            aria-label={`Remove ${place.name} from itinerary`}
+          >
+            {tCommon("remove")}
+          </button>
+        )}
       </div>
     </div>
   );

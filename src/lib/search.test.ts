@@ -37,6 +37,11 @@ describe("search", () => {
     expect(results).toEqual([]);
   });
 
+  it("matches Lemesos alias for Limassol region", () => {
+    const results = search("lemesos", 10);
+    expect(results.length).toBeGreaterThan(0);
+  });
+
   it("trims leading/trailing whitespace", () => {
     const results = search("  omodos  ", 5);
     expect(results.length).toBeGreaterThan(0);

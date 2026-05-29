@@ -79,16 +79,18 @@ export default function ListPageHero({
   );
 
   if (backgroundImage) {
+    const heroAlt = backgroundImageAlt?.trim() ? backgroundImageAlt : title;
     return (
       <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
         <div className="relative aspect-[5/2] sm:aspect-[16/9] min-h-[220px] sm:min-h-[240px]">
           <Image
             src={backgroundImage}
-            alt={backgroundImageAlt ?? ""}
+            alt={heroAlt}
             fill
             className="object-cover"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 1200px"
             priority
+            fetchPriority="high"
           />
           <div className={HERO.listOverlay} aria-hidden />
           <div className={`absolute inset-0 flex flex-col justify-end text-white ${CARD.contentLg} ${LAYOUT.safeAreaX} ${LAYOUT.heroContentTop} pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]`}>

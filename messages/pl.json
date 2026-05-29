@@ -20,6 +20,14 @@
     "privacy": "Prywatność",
     "terms": "Regulamin"
   },
+  "travelTrust": {
+    "aria": "Oficjalne informacje podróżne",
+    "heading": "Przed podróżą",
+    "body": "Zasady wjazdu i warunki lokalne się zmieniają. Korzystaj z oficjalnych źródeł—bez sensacji.",
+    "visitCyprus": "Visit Cyprus (oficjalna turystyka)",
+    "foreignTravelUk": "Rada podróży UK — Cypr",
+    "emergency": "Alarmowe 112 · Informacja turystyczna 1460 · Pogotowie 199"
+  },
   "nav": {
     "discover": "Odkrywaj",
     "plan": "Planuj",
@@ -714,7 +722,9 @@
         "wine": "Wino i jedzenie",
         "monastery": "Klasztory i kultura",
         "family": "Rodzinne",
-        "hidden": "Ukryte perełki"
+        "accessible": "Dostępne i spokojne",
+        "hidden": "Ukryte perełki",
+        "local": "Lokalna zima"
       },
       "filters": {
         "all": "Wszystko",
@@ -767,6 +777,14 @@
             "title": "Ukryty Cypr zimą | Sekrety i lokalne perełki",
             "description": "Ukryty Cypr zimą: lokalne sekrety, ciche punkty widokowe, kafeneia z dala od szlaków. Wyselekcjonowane perełki z dala od letnich tłumów."
           },
+          "family": {
+            "title": "Cypr zimą dla rodzin | Plaże i spokojne dni",
+            "description": "Cypr zimą z dziećmi: spokojne plaże, wioski, łatwe muzea. Dwa przystanki dziennie, opcje na deszcz."
+          },
+          "accessible": {
+            "title": "Dostępny Cypr zimą | Łagodne trasy i muzea",
+            "description": "Cypr zimą przy ograniczonej mobilności: utwardzone miejsca, przystępne wioski, muzea na parterze."
+          },
           "bouldering": {
             "title": "Bouldering na Cyprze zimą | Skałki i ścianki",
             "description": "Boulder na świeżym powietrzu i ścianki na Cyprze — Gerakopetra, Episkopi, Droushia, Limassol. Zimowe temperatury idealne. Lista z propozycjami połączeń."
@@ -794,6 +812,10 @@
           "wellness": {
             "title": "Wellness Cypr zimą | Klasztory i leśne kąpiele",
             "description": "Zimowy wellness na Cyprze: wioski termalne, leśne kąpiele, ciche klasztory, spa przy wybrzeżu. Wybrane spokojne miejsca i łagodne spacery."
+          },
+          "local": {
+            "title": "Lokalna zima na Cyprze | Muzea i wioski",
+            "description": "Zima jak u miejscowych: muzea, wioski, spokojne tempo."
           }
         }
       },
@@ -831,6 +853,12 @@
           "cosyWinter": "Przytulnie zimą",
           "worthVisit": "Warte odwiedzin"
         }
+      },
+      "combosTeaser": {
+        "kicker": "Dni pod ręką",
+        "title": "Gotowe pary na dzień",
+        "body": "Poranek i popołudnie w jednym rytmie—dodaj do planu jednym dotknięciem.",
+        "seeAll": "Wszystkie pary w Planie →"
       }
     },
     "map": {
@@ -1314,6 +1342,8 @@
       "topSightsTitle": "Najciekawsze miejsca",
       "conditions": {
         "latestFromHikers": "Najnowsze od wędrowców",
+        "communityReport": "Raport społeczności—nieoficjalny. Znacznik czasu pokazuje, kiedy dodano.",
+        "editorialConditions": "Sezonowy przewodnik—nie raport na żywo. Dodaj raport, jeśli byłeś na szlaku.",
         "currentConditions": "Aktualne warunki",
         "titleNoData": "Warunki na szlaku",
         "noRecentBody": "Brak ostatnich zgłoszeń dla tego szlaku. Wróciłeś właśnie? Podziel się tym, co widziałeś — to minuta roboty.",
@@ -1516,10 +1546,19 @@
       "worksWell": "Dobrze pasuje do tego, co dodałeś. Kliknij, aby dodać.",
       "addToDayAria": "Dodaj {name} do tego dnia"
     },
+    "realism": {
+      "aria": "Wskazówki tempa dnia",
+      "spreadRegions": "Te miejsca są w różnych częściach wyspy—zaplanuj dojazdy.",
+      "tightDay": "Cztery lub więcej przystanków to ambitny zimowy dzień.",
+      "daylight": "Zimowe światło gaśnie ok. 17:00—zacznij plany na zewnątrz przed 10:00.",
+      "trailAndSpread": "Szlak i odległe miejsca—wcześnie zacznij i sprawdź warunki."
+    },
     "share": {
       "copyAndShare": "Kopiuj i udostępnij",
       "placesLabel": "miejsca",
       "daysLabel": "dni",
+      "downloadIcs": "Dodaj do kalendarza",
+      "icsDownloaded": "Pobrano",
       "placesCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsc}}",
       "daysCount": "{count, plural, one {# dzień} few {# dni} many {# dni} other {# dni}}",
       "copyLink": "Kopiuj link",
@@ -1563,6 +1602,50 @@
       "heading": "Zimowy Plan Podróży po Cyprze",
       "dayLabel": "Dzień {day}:",
       "emptyFallback": "Twój zimowy plan na Cypr. Dodaj miejsca z Odkrywaj lub Szlaków, aby zacząć."
+    },
+    "offline": {
+      "body": "Plan zostaje na tym urządzeniu, dopóki nie wrócisz online—rezerwacje wymagają połączenia.",
+      "title": "Jesteś offline",
+      "readOnly": "Tylko do odczytu: nie możesz edytować planu, dopóki nie wrócisz online."
+    },
+    "dayCombos": {
+      "trailAndVillage": {
+        "label": "Szlak i wioska",
+        "why": "Rano las sosnowy, w południe lunch we wsi.",
+        "tip": "Artemida od 9:00. Omodos ogrzeje kawą i koronką."
+      },
+      "limassolCoastCommandaria": {
+        "label": "Wybrzeże Limassol & Commandaria",
+        "why": "Teatr antyczny, szybki postój nad morzem, potem wino Commandaria."
+      },
+      "paphosMosaicsWine": {
+        "label": "Mozaiki Pafos & wino",
+        "why": "Poranne światło na posadzkach, Vouni na lunch i degustację.",
+        "tip": "Dom Tezeusza: 9–11. Zarezerwuj Vouni wcześniej."
+      },
+      "waterfallVillage": {
+        "label": "Wodospad i kamienna wioska",
+        "why": "Caledonia po deszczu, Kakopetria na obiad.",
+        "tip": "Najlepiej 1–2 dni po deszczu. Buty wodoodporne."
+      },
+      "kykkosWine": {
+        "label": "Kykkos i wino",
+        "why": "Klasztor i widoki najpierw, degustacja Tsiakkas na koniec.",
+        "tip": "Taras z ogrzewaniem. Rezerwuj z wyprzedzeniem."
+      },
+      "laceAncientWine": {
+        "label": "Koronka, antyki i wino",
+        "why": "Lefkara, Choirokoitia, potem Dómes Sergiou."
+      },
+      "gentleTrailPlatres": {
+        "label": "Łagodny szlak i Platres",
+        "why": "Pętla Atalante, potem Platres z kafenionami.",
+        "tip": "Najłatwiejszy szlak Troodos. Często czysty, gdy wyżej jest śnieg."
+      },
+      "paphosCoastAdonis": {
+        "label": "Wybrzeże Pafos i Adonis",
+        "why": "Grobowce Królów, wybrzeże, degustacja u Adonisa."
+      }
     }
   },
   "placePicker": {
@@ -2138,7 +2221,12 @@
         "tip": "Zabierz warstwy i wodę. Powiedz komuś, jaką trasę wybierasz.",
         "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z przewodnikiem.",
         "ctaBookings": "Zobacz moje rezerwacje",
-        "ctaTrails": "Przeglądaj szlaki"
+        "ctaTrails": "Przeglądaj szlaki",
+        "nextStepsHeading": "Co dalej",
+        "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
+        "nextStep2": "Przewodnik potwierdza mailem—zwykle w 24–48 h w dni robocze.",
+        "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
+        "sla": "To prośba, nie potwierdzony termin. Po dwóch dniach roboczych bez odpowiedzi skontaktuj się z przewodnikiem."
       },
       "fields": {
         "date": {
@@ -2205,7 +2293,12 @@
         "tip": "Zapytaj o Commandarię i lokalne odmiany winogron, kiedy tam będziesz. Są z nich dumni.",
         "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z winnicą.",
         "ctaBookings": "Zobacz moje rezerwacje",
-        "ctaDiscover": "Odkrywaj dalej"
+        "ctaDiscover": "Odkrywaj dalej",
+        "nextStepsHeading": "Co dalej",
+        "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
+        "nextStep2": "Winnica potwierdza datę i godzinę mailem—zwykle w 24–48 h w dni robocze.",
+        "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
+        "sla": "Brak opłaty w aplikacji do potwierdzenia. Po dwóch dniach roboczych bez odpowiedzi zadzwoń do winnicy."
       },
       "fields": {
         "date": {
@@ -2244,6 +2337,11 @@
         "and": "oraz",
         "privacy": "Politykę prywatności",
         "bodySuffix": "."
+      },
+      "hints": {
+        "heading": "Przed rezerwacją",
+        "hoursLabel": "Godziny:",
+        "bestTimeLabel": "Najlepszy czas:"
       }
     },
     "pages": {
@@ -2260,7 +2358,12 @@
           "bookDirectAria": "Rezerwacja na stronie przewodnika (otwiera się w nowej karcie)",
           "callPrefix": "Albo zadzwoń",
           "callSuffix": "aby sprawdzić dostępność."
-        }
+        },
+        "meta": {
+          "title": "Book a guided hike | {guideName} | Cyprus Winter",
+          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+        },
+        "metaNotFound": "Not found"
       },
       "guideList": {
         "meta": {
@@ -2319,6 +2422,10 @@
         },
         "jsonLd": {
           "priceRange": "€€"
+        },
+        "meta": {
+          "title": "Book a tasting | {wineryName} | Cyprus Winter",
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
         }
       }
     },

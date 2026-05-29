@@ -10,7 +10,7 @@ import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import WineryBookingForm from "./WineryBookingForm";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -22,10 +22,12 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "book.pages.wineryDetail" });
   const winery = wineries.find((w) => w.id === id);
-  if (!winery) return { title: "Not found" };
-  const title = `Book a tasting | ${winery.name} | Cyprus Winter`;
-  const description = `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`;
+  if (!winery) return { title: t("metaNotFound") };
+  const title = t("meta.title", { wineryName: winery.name });
+  const description = t("meta.description", { wineryName: winery.name, region: winery.region });
   const alternates = buildStrategyAAlternates(`/book/winery/${id}`);
   return {
     title,
@@ -82,6 +84,7 @@ export default async function WineryBookPage({
               className="object-cover"
               sizes="(max-width: 640px) 100vw, 600px"
               priority
+              fetchPriority="high"
             />
           </div>
         )}
@@ -157,7 +160,12 @@ export default async function WineryBookPage({
         </p>
       </div>
 
-      <WineryBookingForm wineryId={winery.id} wineryName={winery.name} />
+      <WineryBookingForm
+        wineryId={winery.id}
+        wineryName={winery.name}
+        openingHours={winery.openingHours}
+        bestTimeToVisit={winery.bestTimeToVisit}
+      />
 
       {(winery.openingHours || winery.transport || winery.parking) && (
         <div className="mt-6 rounded-lg border border-sand-200/70 bg-sand-100/60 p-4 space-y-2 text-sm text-olive/75">

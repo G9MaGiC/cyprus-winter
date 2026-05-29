@@ -14,6 +14,8 @@ type UsePlanUrlActionsParams = {
   getPlace: (id: string) => PlanItem | undefined;
   addToDayIfMissing: (id: string) => void;
   applyTemplate: (key: TemplateKey) => void;
+  /** Skip ?add= / ?template= mutations when offline (read-only plan). */
+  mutationsDisabled?: boolean;
 };
 
 function isValidTemplate(value: string | null): value is TemplateKey {
@@ -32,6 +34,7 @@ export function usePlanUrlActions({
   getPlace,
   addToDayIfMissing,
   applyTemplate,
+  mutationsDisabled = false,
 }: UsePlanUrlActionsParams) {
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -39,7 +42,7 @@ export function usePlanUrlActions({
   const processedTemplateRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || mutationsDisabled) return;
     const template = searchParams.get("template");
     if (!isValidTemplate(template) || processedTemplateRef.current === template) return;
     if (!hasContent) {
@@ -47,10 +50,10 @@ export function usePlanUrlActions({
       applyTemplate(template);
       patchPlanUrlSearchParams((p) => p.delete("template"));
     }
-  }, [hydrated, searchParams, hasContent, applyTemplate]);
+  }, [hydrated, mutationsDisabled, searchParams, hasContent, applyTemplate]);
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || mutationsDisabled) return;
     const addParam = searchParams.get("add");
     if (!addParam || addParam === "failed" || processedAddRef.current === addParam) return;
     processedAddRef.current = addParam;
@@ -74,5 +77,5 @@ export function usePlanUrlActions({
       item_id: uniqueIds.length === 1 ? uniqueIds[0] : undefined,
     });
     patchPlanUrlSearchParams((p) => p.delete("add"));
-  }, [hydrated, searchParams, addToDayIfMissing, getPlace, locale]);
+  }, [hydrated, mutationsDisabled, searchParams, addToDayIfMissing, getPlace, locale]);
 }

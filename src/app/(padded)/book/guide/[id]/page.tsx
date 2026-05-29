@@ -6,7 +6,7 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import GuideBookingForm from "./GuideBookingForm";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ id: g.id }));
@@ -18,10 +18,12 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "book.pages.guideDetail" });
   const guide = guides.find((g) => g.id === id);
-  if (!guide) return { title: "Not found" };
-  const title = `Book a guided hike | ${guide.name} | Cyprus Winter`;
-  const description = `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`;
+  if (!guide) return { title: t("metaNotFound") };
+  const title = t("meta.title", { guideName: guide.name });
+  const description = t("meta.description", { guideName: guide.name, region: guide.region });
   const alternates = buildStrategyAAlternates(`/book/guide/${id}`);
   return {
     title,
