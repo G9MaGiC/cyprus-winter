@@ -22,7 +22,7 @@
   },
   "travelTrust": {
     "aria": "Official travel information",
-    "heading": "Before you travel",
+    "heading": "Avant le voyage",
     "body": "Entry rules and local conditions change. Use official sources—no hype, just facts.",
     "visitCyprus": "Visit Cyprus (official tourism)",
     "foreignTravelUk": "UK foreign travel advice — Cyprus",
@@ -826,11 +826,11 @@
         }
       },
       "hero": {
-        "title": "Discover Cyprus Winter",
+        "title": "Découvrir Chypre en hiver",
         "description": "Curated places, real feel. Beaches, villages, wineries—what to pair with what.",
         "imageAlt": "Omodos village, wine heartland, cobbled streets—Cyprus winter",
         "planAria": "Build a day or pick a template",
-        "browsePlaces": "Browse places",
+        "browsePlaces": "Voir les lieux",
         "browseAria": "Jump to places and filters"
       },
       "search": {
@@ -1723,7 +1723,7 @@
     "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}"
   },
   "bookings": {
-    "title": "My Bookings",
+    "title": "Mes réservations",
     "empty": "No bookings yet",
     "emptyBody": "Book a tasting from Discover, or load bookings from another device.",
     "browseWineries": "Browse wineries",
@@ -1748,7 +1748,7 @@
       "allSet": "All set. No new bookings to load."
     },
     "page": {
-      "title": "My bookings",
+      "title": "Mes réservations",
       "description": "Your tastings and experiences. All in one place.",
       "stats": {
         "totalBookings": "{count, plural, one {booking} other {bookings}}",
@@ -2242,7 +2242,7 @@
     "form": {
       "trust": {
         "aria": "Booking trust information",
-        "heading": "Before you submit",
+        "heading": "Avant d'envoyer",
         "verifiedRoute": "Verified {context} request route.",
         "emailConfirm": "Confirmation usually arrives by email within 24 hours.",
         "noCharge": "No instant charge in-app; providers confirm availability first.",
@@ -2256,10 +2256,10 @@
         "stepConfirmation": "Confirmation"
       },
       "states": {
-        "heading": "Booking states:",
-        "wineryBody": "Requested now to confirmed after partner reply.",
+        "heading": "États de réservation :",
+        "wineryBody": "Demande envoyée — confirmation après réponse du domaine.",
         "guideBody": "Requested now to confirmed after guide reply.",
-        "offlineQueue": "If you are offline, your request is queued as sync pending and retried automatically."
+        "offlineQueue": "Hors ligne — la demande est mise en file et renvoyée automatiquement."
       }
     },
     "guideForm": {
@@ -2270,12 +2270,12 @@
         "partySizeRequired": "Select group size"
       },
       "errors": {
-        "failed": "Booking failed",
+        "failed": "Échec de la réservation",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
       },
       "success": {
-        "title": "Request sent",
+        "title": "Demande envoyée",
         "body": "Your hike request for {guideName} is on its way. They'll confirm by email. If you don't hear back within a day or two, give them a call.",
         "crossDevicePrefix": "Enter your email on",
         "crossDeviceLink": "My Bookings",
@@ -2324,8 +2324,8 @@
       "submit": {
         "ariaSending": "Sending your request",
         "ariaIdle": "Request guided hike",
-        "sending": "Sending…",
-        "idle": "Request guided hike"
+        "sending": "Envoi…",
+        "idle": "Demander une randonnée guidée"
       },
       "finePrint": {
         "bodyPrefix": "This is a request, not a confirmed reservation. They'll confirm by email. By submitting, you agree to our",
@@ -2343,22 +2343,22 @@
         "partySizeRequired": "Select group size"
       },
       "errors": {
-        "failed": "Booking failed",
-        "fallback": "Something went wrong — check your connection and try again.",
+        "failed": "Échec de la réservation",
+        "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
       },
       "success": {
-        "title": "Request sent",
+        "title": "Demande envoyée",
         "body": "Your tasting request for {wineryName} is on its way. The winery will confirm by email. If you don't hear back within a day or two, give them a call — they're usually happy to help.",
         "crossDevicePrefix": "Enter your email on",
         "crossDeviceSuffix": "to view your request across devices.",
         "tip": "Ask about Commandaria and the indigenous grapes when you're there. They're proud of them.",
         "emailDelayed": "Your request is saved. The confirmation email may take a few minutes — check spam or contact the winery if you don't see it.",
-        "ctaBookings": "View my bookings",
+        "ctaBookings": "Mes réservations",
         "ctaDiscover": "Discover more",
-        "nextStepsHeading": "What happens next",
-        "nextStep1": "We save your request and email you a copy when delivery is available.",
-        "nextStep2": "The winery confirms date and time by email—usually within 24–48 hours on weekdays.",
+        "nextStepsHeading": "Et ensuite",
+        "nextStep1": "Nous enregistrons la demande et envoyons une copie par e-mail quand possible.",
+        "nextStep2": "Le domaine confirme date et heure par e-mail — en général sous 24–48 h.",
         "nextStep3": "Track status anytime under My Bookings with the same email.",
         "sla": "No charge in-app until they confirm. If you hear nothing after two business days, call the winery."
       },
@@ -2373,11 +2373,11 @@
           "placeholder": "Select group size"
         },
         "guestName": {
-          "label": "Your name",
+          "label": "Votre nom",
           "placeholder": "John Smith"
         },
         "guestEmail": {
-          "label": "Email",
+          "label": "E-mail",
           "placeholder": "john@example.com"
         },
         "notes": {

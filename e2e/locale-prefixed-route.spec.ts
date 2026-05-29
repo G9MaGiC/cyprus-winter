@@ -38,4 +38,13 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page).toHaveURL(/\/fr\/plan/);
     await expect(page.getByRole("main")).toBeVisible();
   });
+
+  test("Hebrew winery book form shows localized submit", async ({ page }) => {
+    await page.goto("/he/book/winery/tsiakkas", { waitUntil: "domcontentloaded" });
+    await expect(page).toHaveURL(/\/he\/book\/winery\/tsiakkas/);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(
+      page.getByRole("button", { name: /שלח בקשה|request booking/i })
+    ).toBeVisible();
+  });
 });

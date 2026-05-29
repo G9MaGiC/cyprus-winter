@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AppLink from "@/components/AppLink";
 import FilterChips from "@/components/FilterChips";
 import StickyFilterBar from "@/components/StickyFilterBar";
@@ -42,6 +42,13 @@ export default function DiscoverFilterBar({
   const tDiscover = useTranslations("discover");
   const { stickyPlanVisible } = useStickyPlanBar();
   const [filtersExpanded, setFiltersExpanded] = useState(false);
+  const filtersPanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!filtersExpanded || !filtersPanelRef.current) return;
+    const firstChip = filtersPanelRef.current.querySelector<HTMLElement>("a[href]");
+    firstChip?.focus();
+  }, [filtersExpanded]);
 
   const placeChips = [
     { id: "", label: tDiscover("page.filters.all") },
@@ -154,10 +161,12 @@ export default function DiscoverFilterBar({
               </span>
             </button>
             <div
+              ref={filtersPanelRef}
               id="discover-filters"
               role="region"
               aria-labelledby="discover-filters-toggle"
               hidden={!filtersExpanded}
+              inert={!filtersExpanded}
               className="mt-3"
             >
               {filterGroups}

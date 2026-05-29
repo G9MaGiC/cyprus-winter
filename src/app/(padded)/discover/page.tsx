@@ -19,7 +19,10 @@ import SearchBar from "@/components/SearchBar";
 import DiscoverClient from "./DiscoverClient";
 import DiscoverCombosTeaser from "./DiscoverCombosTeaser";
 import { getLocale, getTranslations } from "next-intl/server";
+import { preload } from "react-dom";
 import { toSafeJsonForScript } from "@/lib/json-script";
+
+const DISCOVER_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 
 const standardSections = buildDiscoverSections(allDiscoverItems);
 const activitySections = ACTIVITY_FILTER_KEYS.map((key) =>
@@ -41,6 +44,7 @@ export default async function DiscoverPage({
 }: {
   searchParams?: Promise<{ filter?: string | string[] }>;
 }) {
+  preload(DISCOVER_HERO_IMAGE, { as: "image" });
   const locale = await getLocale();
   const resolvedParams = searchParams ? await searchParams : {};
   const filterParam =
@@ -105,7 +109,7 @@ export default async function DiscoverPage({
           backLabel={tNav("home")}
           title={tDiscover("page.hero.title")}
           description={tDiscover("page.hero.description")}
-          backgroundImage="/images/cyprus/cyprus-village-omodos.jpg"
+          backgroundImage={DISCOVER_HERO_IMAGE}
           backgroundImageAlt={tDiscover("page.hero.imageAlt")}
           breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("discover"), href: "/discover", isCurrent: true }]}
         >

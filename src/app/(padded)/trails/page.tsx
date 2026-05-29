@@ -5,6 +5,9 @@ import { SITE_URL } from "@/lib/site-url";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { getTranslations } from "next-intl/server";
+import { preload } from "react-dom";
+
+const TRAILS_HERO_IMAGE = "/images/cyprus/cyprus-trail-troodos.jpg";
 
 const trailsAlternates = buildStrategyAAlternates("/trails");
 
@@ -42,6 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function TrailsPage() {
+  preload(TRAILS_HERO_IMAGE, { as: "image" });
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(getTrailsItemListSchema()) }} />

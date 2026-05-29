@@ -36,6 +36,7 @@ export default function DetailHero({
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 800px"
           priority
+          fetchPriority="high"
         />
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"

@@ -82,6 +82,7 @@ export default async function WineryBookPage({
               className="object-cover"
               sizes="(max-width: 640px) 100vw, 600px"
               priority
+              fetchPriority="high"
             />
           </div>
         )}
