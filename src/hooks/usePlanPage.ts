@@ -52,7 +52,14 @@ export function usePlanPage() {
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  usePlanUrlActions({ hydrated, hasContent, getPlace, addToDayIfMissing, applyTemplate });
+  usePlanUrlActions({
+    hydrated,
+    hasContent,
+    getPlace,
+    addToDayIfMissing,
+    applyTemplate,
+    mutationsDisabled: planReadOnly,
+  });
 
   const scrollBehavior = useCallback(
     () =>
