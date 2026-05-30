@@ -292,24 +292,24 @@
       "title": "Επιλογές συντάκτη",
       "items": {
         "omodos": {
-          "title": "Omodos",
-          "desc": "Cobbled streets, zivania, coffee in the wine heartland",
-          "imageAlt": "Omodos village, wine heartland, cobbled streets—Cyprus winter"
+          "title": "Όμοδος",
+          "desc": "Πλακόστρωτοι δρόμοι, ζιβανιά, καφές στην καρδιά της οινοποιίας",
+          "imageAlt": "Χωριό Όμοδος, οινοχώρα, πλακόστρωτοι δρόμοι—χειμώνας Κύπρος"
         },
         "pafos-mosaics": {
-          "title": "Pafos mosaics",
-          "desc": "Roman mosaics in soft winter light",
-          "imageAlt": "Pafos Roman mosaics in soft winter light—Cyprus"
+          "title": "Μωσαϊκά Πάφου",
+          "desc": "Ρωμαϊκά μωσαϊκά σε απαλό χειμερινό φως",
+          "imageAlt": "Ρωμαϊκά μωσαϊκά στην Πάφο σε απαλό χειμερινό φως—Κύπρος"
         },
         "artemis": {
-          "title": "Artemis Trail",
-          "desc": "7 km of pine forest and ridge views",
-          "imageAlt": "Artemis Trail, Troodos pine forest, Cyprus winter hiking"
+          "title": "Μονοπάτι Άρτεμις",
+          "desc": "7 χλμ πευκόδασος και θέα από την κορυφή",
+          "imageAlt": "Μονοπάτι Άρτεμις, πευκόδασος Τροόδους, χειμερινή πεζοπορία Κύπρος"
         },
         "kourion": {
-          "title": "Kourion",
-          "desc": "Roman ruins, sunset over the sea",
-          "imageAlt": "Kourion Greco-Roman ruins above Mediterranean, Cyprus winter"
+          "title": "Κουρίον",
+          "desc": "Ρωμαϊκά ερείπια, ηλιοβασίλεμα πάνω από τη θάλασσα",
+          "imageAlt": "Ελληνορωμαϊκά ερείπια Κουρίου πάνω από τη Μεσόγειο, χειμώνας Κύπρος"
         }
       }
     },

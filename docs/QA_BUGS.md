@@ -1220,6 +1220,12 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-115 | Docs | Stale agent docs | `AGENTS.md` at app root |
 | BUG-116 | Security | Bookings email lookup enumeration | Rate limited (`bookings-lookup`, 15/min); generic errors — document in deploy checklist |
 
+### Follow-up — May 17, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-117 | i18n | `el` home `editorsPicks.items.*` desc/imageAlt still EN after sync | Native Greek copy for all four picks |
+
 ---
 
 ## Visual QA — Full responsive pass (May 27, 2026)
