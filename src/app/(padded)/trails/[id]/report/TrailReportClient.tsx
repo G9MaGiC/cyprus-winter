@@ -153,7 +153,7 @@ export default function TrailReportClient() {
   return (
     <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <nav className="flex flex-col gap-1 mb-6" aria-label={tCommon("aria.pageNavigation")}>
-        <BackLink href={`/trails/${trail.id}`} label={`Back to ${trail.name}`} />
+        <BackLink href={`/trails/${trail.id}`} label={tCommon("backTo", { label: trail.name })} />
         <Breadcrumbs
           items={[
             { label: tNav("home"), href: "/" },

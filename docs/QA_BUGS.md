@@ -1226,6 +1226,14 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 |----|------|-------|-----|
 | BUG-117 | i18n | `el` home `editorsPicks.items.*` desc/imageAlt still EN after sync | Native Greek copy for all four picks |
 
+### Deep review bug fixes — May 30, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-122 | UX / GF4 | SearchBar dropdown navigated without `from=search&q=` — SmartBackLink could not restore query | `searchResultHref()` in `search.ts`; SearchBar + SearchResultCard |
+| BUG-123 | i18n | Trail report form BackLink hardcoded EN | `tCommon("backTo", { label: trail.name })` |
+| BUG-124 | Security | Chat action paths only prefix-checked, not place-validated | `resolveInternalPath()` in `sanitizeChatMetadata` |
+
 ---
 
 ## Visual QA — Full responsive pass (May 27, 2026)

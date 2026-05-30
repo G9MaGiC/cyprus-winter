@@ -7,6 +7,7 @@ import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 import { isSafeInternalPath as isAllowedAppPath } from "@/lib/safe-internal-path";
+import { resolveInternalPath } from "@/lib/resolve-internal-path";
 import { orchestrate } from "@/lib/concierge/orchestrator";
 import type { ConciergeContext } from "@/lib/concierge/types";
 
@@ -120,7 +121,7 @@ function sanitizeChatMetadata(metadata: Record<string, unknown>): Record<string,
           : undefined;
       if (payload && typeof payload.path === "string") {
         const path = sanitizeText(payload.path, 256);
-        payload.path = path && isSafeInternalPath(path) ? path : undefined;
+        payload.path = path ? resolveInternalPath(path) : undefined;
       }
       return { ...action, payload };
     })

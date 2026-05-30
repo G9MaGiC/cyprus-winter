@@ -6,6 +6,7 @@ import { allPlaces, type PlanItem, getAttractionById } from "@/data";
 import { expandSearchToken } from "@/data/search-aliases";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
+import { createDetailLink } from "@/lib/discover-links";
 
 export type SearchResult =
   | { kind: "place"; item: PlanItem; href: string }
@@ -135,4 +136,20 @@ export function search(query: string, limit = 20): SearchResult[] {
     void _score;
     return rest as SearchResult;
   });
+}
+
+/** Detail href preserving search context for SmartBackLink (GF4). */
+export function searchResultHref(result: SearchResult, query?: string): string {
+  const q = query?.trim() ?? "";
+  if (q.length < 2) return result.href;
+
+  if (result.kind === "trail") {
+    return createDetailLink("/trails", result.item.id, "search", q);
+  }
+  if (result.kind === "place") {
+    const base = result.item.type === "trail" ? "/trails" : "/discover";
+    return createDetailLink(base, result.item.id, "search", q);
+  }
+  const params = new URLSearchParams({ from: "search", q });
+  return `/events?${params.toString()}#${encodeURIComponent(result.item.id)}`;
 }

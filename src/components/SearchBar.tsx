@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import AppLink from "@/components/AppLink";
 import { useRouter, usePathname } from "@/i18n/navigation";
-import { search, type SearchResult } from "@/lib/search";
+import { getAttractionById } from "@/data";
+import { search, searchResultHref, type SearchResult } from "@/lib/search";
 import { useTranslations } from "next-intl";
 import { LAYER } from "@/lib/design-tokens";
 
@@ -74,7 +75,7 @@ export default function SearchBar({
       setActiveIndex((i) => (i > 0 ? i - 1 : -1));
     } else if (e.key === "Enter" && activeIndex >= 0 && results[activeIndex]) {
       e.preventDefault();
-      router.push(results[activeIndex].href);
+      router.push(searchResultHref(results[activeIndex], query));
     } else if (e.key === "Escape") {
       setFocused(false);
       setActiveIndex(-1);
@@ -83,14 +84,24 @@ export default function SearchBar({
   };
 
   const typeLabel = (r: SearchResult) => {
-    if (r.kind === "place") {
-      const t = r.item.type;
-      if (t === "trail") return tCommon("trail");
-      if (t === "winery") return tCommon("winery");
-      return tCommon("place");
-    }
-    if (r.kind === "trail") return tCommon("trail");
-    return tCommon("event");
+    if (r.kind === "trail") return tCommon("placeTypes.trail");
+    if (r.kind === "event") return tCommon("placeTypes.event");
+    const t = r.item.type;
+    if (t === "winery") return tCommon("placeTypes.winery");
+    if (t === "restaurant") return tCommon("placeTypes.restaurant");
+    if (t === "trail") return tCommon("placeTypes.trail");
+    if (t === "activity") return tCommon("placeTypes.activity");
+    const att = getAttractionById(r.item.id);
+    if (att?.type === "beach") return tCommon("placeTypes.beach");
+    if (att?.type === "village") return tCommon("placeTypes.village");
+    if (att?.type === "monastery") return tCommon("placeTypes.monastery");
+    if (att?.type === "ancient") return tCommon("placeTypes.ancientSite");
+    if (att?.type === "nature") return tCommon("placeTypes.nature");
+    return tCommon("place");
+  };
+
+  const navigateToResult = (r: SearchResult) => {
+    router.push(searchResultHref(r, query));
   };
 
   return (
@@ -137,11 +148,11 @@ export default function SearchBar({
               role="option"
               aria-selected={i === activeIndex}
               tabIndex={i === activeIndex ? 0 : -1}
-              onClick={() => router.push(r.href)}
+              onClick={() => navigateToResult(r)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  router.push(r.href);
+                  navigateToResult(r);
                 }
               }}
               className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${

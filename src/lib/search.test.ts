@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { search } from "./search";
+import { search, searchResultHref } from "./search";
 
 describe("search", () => {
   it("returns empty array for query shorter than 2 chars", () => {
@@ -73,5 +73,27 @@ describe("search", () => {
     if (results.length > 0) {
       expect(results.some((r) => r.item.name.toLowerCase().includes("artemis"))).toBe(true);
     }
+  });
+});
+
+describe("searchResultHref", () => {
+  it("preserves search context for discover places", () => {
+    const [result] = search("omodos", 1);
+    expect(result).toBeDefined();
+    expect(searchResultHref(result, "omodos")).toBe(
+      "/discover/omodos?from=search&q=omodos"
+    );
+  });
+
+  it("preserves search context for trails", () => {
+    const [result] = search("artemis", 1);
+    expect(result?.kind).toBe("trail");
+    expect(searchResultHref(result!, "artemis")).toContain("from=search");
+    expect(searchResultHref(result!, "artemis")).toContain("q=artemis");
+  });
+
+  it("returns plain href when query is too short", () => {
+    const [result] = search("omodos", 1);
+    expect(searchResultHref(result, "o")).toBe(result.href);
   });
 });
