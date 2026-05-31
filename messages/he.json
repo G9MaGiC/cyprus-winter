@@ -162,7 +162,16 @@
       "reportConditions": "Report conditions",
       "bookGuide": "Book a guide",
       "bookTasting": "Book tasting",
-      "troodosDecember": "Troodos December"
+      "troodosDecember": "Troodos December",
+      "register": "יצירת חשבון",
+      "forgotPassword": "איפוס סיסמה",
+      "resetPassword": "סיסמה חדשה",
+      "book": "הזמנה",
+      "guide": "טיול מודרך",
+      "wineRoutes": "מסלולי יין",
+      "regions": "אזורים",
+      "install": "התקנת האפליקציה",
+      "winery": "יקב"
     },
     "inYourPlan": "In your plan",
     "viewPlan": "צפה בתכנית",
@@ -2002,6 +2011,13 @@
         "food": "Food & Wine",
         "culture": "Culture",
         "sport": "Sport"
+      },
+      "monthShort": {
+        "Nov": "נוב",
+        "Dec": "דצמ",
+        "Jan": "ינו",
+        "Feb": "פבר",
+        "Mar": "מרץ"
       }
     }
   },

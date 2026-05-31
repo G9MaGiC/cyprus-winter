@@ -162,7 +162,16 @@
       "reportConditions": "Report conditions",
       "bookGuide": "Book a guide",
       "bookTasting": "Book tasting",
-      "troodosDecember": "Troodos December"
+      "troodosDecember": "Troodos December",
+      "register": "Creare cont",
+      "forgotPassword": "Resetare parolă",
+      "resetPassword": "Parolă nouă",
+      "book": "Rezervare",
+      "guide": "Drumeție ghidată",
+      "wineRoutes": "Rute viticole",
+      "regions": "Regiuni",
+      "install": "Instalează aplicația",
+      "winery": "Cramă"
     },
     "inYourPlan": "In your plan",
     "viewPlan": "Vezi planul",
@@ -2002,6 +2011,13 @@
         "food": "Food & Wine",
         "culture": "Culture",
         "sport": "Sport"
+      },
+      "monthShort": {
+        "Nov": "Nov",
+        "Dec": "Dec",
+        "Jan": "Ian",
+        "Feb": "Feb",
+        "Mar": "Mar"
       }
     }
   },

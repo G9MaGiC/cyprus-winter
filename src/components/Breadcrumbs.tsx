@@ -26,11 +26,11 @@ interface BreadcrumbsProps {
 function useBreadcrumbs(): BreadcrumbItem[] {
   const pathname = usePathname();
   const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
   
   const normalized = getPathWithoutLocale(pathname);
   const segments = normalized.split("/").filter(Boolean);
   
-  // Map of path segments to readable labels
   const labelMap: Record<string, string> = {
     discover: tNav("discover"),
     trails: tNav("trails"),
@@ -44,16 +44,16 @@ function useBreadcrumbs(): BreadcrumbItem[] {
     login: tNav("signIn"),
     search: tNav("search"),
     secrets: tNav("secrets"),
-    // Non-nav segments (keep English for now unless we add message keys)
-    register: "Create account",
-    "forgot-password": "Reset password",
-    "reset-password": "Set new password",
-    book: "Book",
-    guide: "Guided hike",
-    "wine-routes": "Wine Routes",
-    regions: "Regions",
-    "troodos-december": "Troodos December Guide",
-    install: "Install App",
+    register: tCommon("breadcrumbs.register"),
+    "forgot-password": tCommon("breadcrumbs.forgotPassword"),
+    "reset-password": tCommon("breadcrumbs.resetPassword"),
+    book: tCommon("breadcrumbs.book"),
+    guide: tCommon("breadcrumbs.guide"),
+    "wine-routes": tCommon("breadcrumbs.wineRoutes"),
+    regions: tCommon("breadcrumbs.regions"),
+    "troodos-december": tCommon("breadcrumbs.troodosDecember"),
+    install: tCommon("breadcrumbs.install"),
+    winery: tCommon("breadcrumbs.winery"),
   };
   
   const items: BreadcrumbItem[] = [{ label: tNav("home"), href: "/" }];

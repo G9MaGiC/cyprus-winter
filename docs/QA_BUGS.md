@@ -1234,6 +1234,34 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-123 | i18n | Trail report form BackLink hardcoded EN | `tCommon("backTo", { label: trail.name })` |
 | BUG-124 | Security | Chat action paths only prefix-checked, not place-validated | `resolveInternalPath()` in `sanitizeChatMetadata` |
 
+### Holistic UX + image audit — May 31, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-125 | Images | 74 wineries shared one generic `cyprus-winery-troodos.jpg`; book flow used `winery.image` not `getAttractionImage` | `resolveWineryImage()` + wine-route regional fallbacks; book list/detail use `getAttractionImage`; 3 CC images added (see attributions below) |
+| BUG-126 | Images | Choirokoitia used Kourion generic ancient photo | `cyprus-choirokoitia.jpg` (Wikimedia CC BY 3.0) |
+| BUG-127 | UX | Search hub missing mobile `StickyPlanBar` | Sentinel + `StickyPlanBarBlock` on `/search` |
+| BUG-128 | i18n | Trail “Pair well with” add-to-plan CTAs defaulted to English | Pass `addToPlanLabel` / `addToPlanAria` on trail detail |
+| BUG-129 | UX | Book tasting back link always returned to discover detail | `BookWineryBackLink` + `SmartBackLink` `from=plan\|book\|wineries\|home\|bookings`; entry links pass `?from=` |
+| BUG-130 | UX | Airport + wine-route hubs missing mobile `StickyPlanBar` | Sentinel + `StickyPlanBarBlock` on `/airport`, `/wine-routes/[slug]` |
+| BUG-131 | i18n | Events month chips/headings hardcoded EN abbreviations | `events.page.monthShort.*` in all 7 locales |
+| BUG-132 | i18n | Breadcrumb auto-labels for auth/book paths hardcoded EN | `common.breadcrumbs.*` keys wired in `Breadcrumbs.tsx` |
+
+**Image attributions (new assets in `public/images/cyprus/`):**
+
+| File | Source | License |
+|------|--------|---------|
+| `cyprus-choirokoitia.jpg` | [Choirokoitia, Cyprus - panoramio](https://commons.wikimedia.org/wiki/File:Choirokoitia,_Cyprus_-_panoramio.jpg) | CC BY 3.0 |
+| `cyprus-vineyard-laona.jpg` | [Zenon Winery Vineyards 3](https://commons.wikimedia.org/wiki/File:Zenon_Winery_Vineyards_3.jpg) | CC BY 4.0 |
+| `cyprus-vineyard-mountain.jpg` | [Zenon Winery Vineyards](https://commons.wikimedia.org/wiki/File:Zenon_Winery_Vineyards.jpg) | CC BY 4.0 |
+
+**Manual follow-up (remaining):**
+
+- Per-winery venue photos for remaining ~65 wineries — partner/CC sourcing or official press kits (P1)
+- Discover Right Now placement below full catalog (P2)
+- Plan page bottom padding / `PlanStickyAddBar` overlay guard (P2)
+- Auth password visibility `aria-label` i18n (P1)
+
 ---
 
 ## Visual QA — Full responsive pass (May 27, 2026)

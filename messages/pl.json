@@ -142,7 +142,16 @@
       "reportConditions": "Zgłoś warunki",
       "bookGuide": "Zarezerwuj przewodnika",
       "bookTasting": "Zarezerwuj degustację",
-      "troodosDecember": "Troodos — grudzień"
+      "troodosDecember": "Troodos — grudzień",
+      "register": "Utwórz konto",
+      "forgotPassword": "Reset hasła",
+      "resetPassword": "Nowe hasło",
+      "book": "Rezerwacja",
+      "guide": "Wędrówka z przewodnikiem",
+      "wineRoutes": "Trasy winiarskie",
+      "regions": "Regiony",
+      "install": "Zainstaluj aplikację",
+      "winery": "Winnica"
     },
     "inYourPlan": "W Twoim planie",
     "viewPlan": "Zobacz plan",
@@ -1920,6 +1929,13 @@
         "food": "Jedzenie i wino",
         "culture": "Kultura",
         "sport": "Sport"
+      },
+      "monthShort": {
+        "Nov": "Lis",
+        "Dec": "Gru",
+        "Jan": "Sty",
+        "Feb": "Lut",
+        "Mar": "Mar"
       }
     }
   },

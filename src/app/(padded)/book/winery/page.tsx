@@ -8,6 +8,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { getTranslations } from "next-intl/server";
+import { getAttractionImage } from "@/lib/cyprus-images";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("book.pages.wineryList.meta");
@@ -77,7 +78,7 @@ export default async function WineriesListPage() {
                   className={`${CARD.base} ${CARD.content} ${CARD.hover} rounded-xl overflow-hidden flex flex-col`}
                 >
                   <div className="relative h-32 -mx-5 -mt-5 sm:-mx-6 sm:-mt-6 mb-3">
-                    <Image src={winery.image} alt={winery.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
+                    <Image src={getAttractionImage(winery.id, "winery")} alt={winery.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
                   </div>
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
@@ -107,7 +108,7 @@ export default async function WineriesListPage() {
                     </div>
                   )}
                   <AppLink
-                    href={`/book/winery/${winery.id}`}
+                    href={`/book/winery/${winery.id}?from=book`}
                     className={`w-full justify-center ${CTA.primaryCompact}`}
                     aria-label={tBookPages("wineryList.ctaAria", { name: winery.name })}
                   >

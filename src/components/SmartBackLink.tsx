@@ -52,6 +52,18 @@ export default function SmartBackLink({
   } else if (from === "trails") {
     href = "/trails";
     label = tCommon("backTo", { label: tNav("trails") });
+  } else if (from === "wineries") {
+    href = "/wineries";
+    label = tCommon("backTo", { label: tNav("wineries") });
+  } else if (from === "book") {
+    href = "/book/winery";
+    label = tCommon("backTo", { label: tCommon("breadcrumbs.bookTasting") });
+  } else if (from === "bookings") {
+    href = "/bookings";
+    label = tCommon("backTo", { label: tNav("bookings") });
+  } else if (from === "home") {
+    href = "/";
+    label = tCommon("backTo", { label: tNav("home") });
   }
   
   // Don't show if we're at the root

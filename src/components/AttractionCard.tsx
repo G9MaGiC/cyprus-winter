@@ -15,7 +15,14 @@ import { useSearchParams } from "next/navigation";
 import { discoverDetailHref, getDiscoverTypeLabel } from "@/lib/discover-links";
 import { useTranslations } from "next-intl";
 
-export default function AttractionCard({ a }: { a: Attraction | Winery | Restaurant }) {
+export default function AttractionCard({
+  a,
+  bookFrom,
+}: {
+  a: Attraction | Winery | Restaurant;
+  /** Query `from` for book tasting back navigation (e.g. discover, wineries). */
+  bookFrom?: string;
+}) {
   const tCommon = useTranslations("common");
   const tDiscover = useTranslations("discover.detail");
   const searchParams = useSearchParams();
@@ -133,7 +140,7 @@ export default function AttractionCard({ a }: { a: Attraction | Winery | Restaur
       >
         {isWinery && (
           <AppLink
-            href={`/book/winery/${a.id}`}
+            href={`/book/winery/${a.id}${bookFrom ? `?from=${bookFrom}` : ""}`}
             className={CTA.secondaryCompact}
             aria-label={`${tCommon("bookTasting")} — ${a.name}`}
           >

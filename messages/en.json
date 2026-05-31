@@ -162,7 +162,16 @@
       "reportConditions": "Report conditions",
       "bookGuide": "Book a guide",
       "bookTasting": "Book tasting",
-      "troodosDecember": "Troodos December"
+      "troodosDecember": "Troodos December",
+      "register": "Create account",
+      "forgotPassword": "Reset password",
+      "resetPassword": "Set new password",
+      "book": "Book",
+      "guide": "Guided hike",
+      "wineRoutes": "Wine Routes",
+      "regions": "Regions",
+      "install": "Install App",
+      "winery": "Winery"
     },
     "inYourPlan": "In your plan",
     "viewPlan": "View plan",
@@ -1969,6 +1978,13 @@
         "Jan": "January",
         "Feb": "February",
         "Mar": "March"
+      },
+      "monthShort": {
+        "Nov": "Nov",
+        "Dec": "Dec",
+        "Jan": "Jan",
+        "Feb": "Feb",
+        "Mar": "Mar"
       },
       "card": {
         "whenWhereAria": "When: {dates}. Where: {venue}",

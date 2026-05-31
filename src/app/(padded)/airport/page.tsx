@@ -7,6 +7,7 @@ import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import BeforeYouGoChecklist from "@/components/BeforeYouGoChecklist";
 import AirportFooter from "@/app/(padded)/airport/AirportFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import AppLink from "@/components/AppLink";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -97,6 +98,8 @@ export default async function AirportPage() {
             </TrackOnClick>
           </div>
         </section>
+
+        <div id="airport-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
         {/* Essentials — tappable numbers for mobile */}
         <section
@@ -250,6 +253,7 @@ export default async function AirportPage() {
         </section>
 
         <AirportFooter />
+        <StickyPlanBarBlock sentinelId="airport-plan-sentinel" />
       </div>
     </div>
   );

@@ -18,6 +18,10 @@ import EventFilters from "./EventFilters";
 
 const MONTH_ORDER = ["Nov", "Dec", "Jan", "Feb", "Mar"] as const;
 
+function monthShortKey(month: (typeof MONTH_ORDER)[number]) {
+  return `monthShort.${month}` as const;
+}
+
 const HIGHLIGHT_IDS = ["epiphany-cyprus", "limassol-carnival"];
 
 const EVENT_TYPES = ["festival", "market", "concert", "food", "culture", "sport"] as const;
@@ -163,9 +167,9 @@ export default function EventsPage() {
                       key={month}
                       href={`#month-${month}`}
                       className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
-                      aria-label={tPage("monthNav.jumpTo", { month })}
+                      aria-label={tPage("monthNav.jumpTo", { month: tPage(monthShortKey(month)) })}
                     >
-                      {month}
+                      {tPage(monthShortKey(month))}
                     </a>
                   ))}
                 </div>
@@ -208,7 +212,7 @@ export default function EventsPage() {
                       id={`heading-${month}`}
                       className={`${TYPE.subSectionTitle} text-terracotta ${SECTION.titleGap}`}
                     >
-                      {month}
+                      {tPage(monthShortKey(month))}
                     </h2>
                     <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>
                       {tPage(`monthFull.${month}`)}

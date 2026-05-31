@@ -366,7 +366,7 @@ export default function BookingsPage() {
                         const viewLabel = isGuide
                           ? tBookingsPage("cta.viewTrails")
                           : tBookingsPage("cta.viewWinery");
-                        const modifyHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}`;
+                        const modifyHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}?from=bookings`;
                         const todayCopy = isGuide
                           ? tBookingsPage("today.guidedHike")
                           : tBookingsPage("today.tasting");
@@ -439,7 +439,7 @@ export default function BookingsPage() {
                     const placeValid = !!getPlaceById(b.providerId);
                     const guideValid = !!getGuideById(b.providerId);
                     const providerValid = placeValid || guideValid;
-                    const bookAgainHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}`;
+                    const bookAgainHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}?from=bookings`;
                     const secondaryHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
                     const secondaryLabel = isGuide
                       ? tBookingsPage("cta.browseTrails")

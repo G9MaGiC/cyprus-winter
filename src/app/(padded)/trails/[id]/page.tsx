@@ -55,11 +55,12 @@ export default async function TrailPage({
   params: Promise<{ id: string; locale?: string }>;
 }) {
   const { id, locale = "en" } = await params;
-  const [tNav, tTrailsDetail, tCommon, tTrails] = await Promise.all([
+  const [tNav, tTrailsDetail, tCommon, tTrails, tDiscoverDetail] = await Promise.all([
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "trails.detail" }),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "trails" }),
+    getTranslations({ locale, namespace: "discover.detail" }),
   ]);
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) notFound();
@@ -501,6 +502,8 @@ export default async function TrailPage({
                 title={tTrailsDetail("relatedPlaces.title")}
                 description={tTrailsDetail("relatedPlaces.description")}
                 showAddToItinerary
+                addToPlanLabel={tCommon("addToPlan")}
+                addToPlanAria={(name) => tDiscoverDetail("combineWith.addToPlanAria", { name })}
               />
               </div>
             )}

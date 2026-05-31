@@ -5,8 +5,13 @@
  * - Use place-specific images where available (e.g. lefkara → cyprus-lefkara.jpg)
  * - Fallbacks: beach=south coast, ancient=Kourion, village=Troodos, monastery=Kykkos
  * - Region match: Polis/Latsi → polis; Kyrenia/Pentadaktylos → bellapais or st-hilarion
+ * - Wineries: per-id map, then wine-route regional image (not one generic for all 70+)
  */
+import { wineries } from "@/data/wineries";
+
 const local = "/images/cyprus";
+
+const wineryById = new Map(wineries.map((w) => [w.id, w]));
 
 /** Auth pages hero — warm, winter-appropriate (village/ruins). */
 export const AUTH_HERO_IMAGE = `${local}/cyprus-village-omodos.jpg`;
@@ -27,7 +32,7 @@ export function getAttractionImage(id: string, type: string): string {
     salamis: `${local}/cyprus-salamis.jpg`,
     "st-hilarion": `${local}/cyprus-st-hilarion.jpg`,
     amahti: `${local}/cyprus-ancient-kourion.jpg`,
-    choirokoitia: `${local}/cyprus-ancient-kourion.jpg`,
+    choirokoitia: `${local}/cyprus-choirokoitia.jpg`,
     kolossi: `${local}/cyprus-ancient-kourion.jpg`,
     palaipafos: `${local}/cyprus-ancient-kourion.jpg`,
     buffavento: `${local}/cyprus-st-hilarion.jpg`, // castle on Pentadaktylos, not monastery
@@ -119,11 +124,7 @@ export function getAttractionImage(id: string, type: string): string {
     activity: `${local}/cyprus-trail-troodos.jpg`,
     restaurant: `${local}/cyprus-village-omodos.jpg`, // taverna/coastal fallback
   };
-  const wineryImages: Record<string, string> = {
-    "domes-sergiou": `${local}/domes-sergiou-hero.png`,
-    kolios: `${local}/cyprus-winery-troodos.jpg`, // Mountain winery: Statos Agios Fotios, 3000ft
-  };
-  if (type === "winery") return wineryImages[id] ?? fallbacks.winery;
+  if (type === "winery") return resolveWineryImage(id);
   if (type === "restaurant") return map[id] ?? fallbacks.restaurant;
   return map[id] ?? fallbacks[type] ?? `${local}/cyprus-trail-troodos.jpg`;
 }
@@ -175,4 +176,41 @@ const trailImages: Record<string, string> = {
 /** Map trail id to image URL. */
 export function getTrailImage(trailId: string): string {
   return trailImages[trailId] ?? `${local}/cyprus-trail-troodos.jpg`; // Troodos fallback
+}
+
+/** Per-winery overrides (venue-specific or partner assets). */
+const wineryImages: Record<string, string> = {
+  "domes-sergiou": `${local}/domes-sergiou-hero.png`,
+  kolios: `${local}/cyprus-vineyard-mountain.jpg`,
+  tsiakkas: `${local}/cyprus-vineyard-mountain.jpg`,
+  "vouni-panayia": `${local}/cyprus-vineyard-laona.jpg`,
+  zambartas: `${local}/cyprus-vineyard-laona.jpg`,
+};
+
+/** Wine-route regional fallbacks when no per-id image exists. */
+const wineRouteImages: Record<string, string> = {
+  Krasochoria: `${local}/cyprus-winery-troodos.jpg`,
+  Laona: `${local}/cyprus-vineyard-laona.jpg`,
+  "Laona–Akamas": `${local}/cyprus-trail-gorge.jpg`,
+  Akamas: `${local}/cyprus-trail-gorge.jpg`,
+  Pitsilia: `${local}/cyprus-vineyard-mountain.jpg`,
+  Commandaria: `${local}/cyprus-village-omodos.jpg`,
+  Troodos: `${local}/cyprus-trail-troodos.jpg`,
+  "Larnaca hills": `${local}/cyprus-lefkara.jpg`,
+  Larnaca: `${local}/cyprus-lefkara.jpg`,
+  "Larnaca–Limassol corridor": `${local}/cyprus-governors-beach.jpg`,
+  "Limassol corridor": `${local}/cyprus-governors-beach.jpg`,
+  "Limassol coast": `${local}/cyprus-governors-beach.jpg`,
+  Limassol: `${local}/cyprus-governors-beach.jpg`,
+  Nicosia: `${local}/cyprus-village-omodos.jpg`,
+};
+
+const wineryFallback = `${local}/cyprus-winery-troodos.jpg`;
+
+/** Resolve winery hero/card image by id and optional wine route. */
+export function resolveWineryImage(id: string): string {
+  if (wineryImages[id]) return wineryImages[id];
+  const route = wineryById.get(id)?.wineRoute;
+  if (route && wineRouteImages[route]) return wineRouteImages[route];
+  return wineryFallback;
 }

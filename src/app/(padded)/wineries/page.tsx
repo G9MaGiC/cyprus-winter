@@ -98,7 +98,7 @@ export default async function WineriesPage() {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {partners.map((winery) => (
-                <AttractionCard key={winery.id} a={winery} />
+                <AttractionCard key={winery.id} a={winery} bookFrom="wineries" />
               ))}
             </div>
           </section>
@@ -112,7 +112,7 @@ export default async function WineriesPage() {
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {wineries.map((winery) => (
-          <AttractionCard key={winery.id} a={winery} />
+          <AttractionCard key={winery.id} a={winery} bookFrom="wineries" />
         ))}
       </div>
 

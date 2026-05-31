@@ -4,13 +4,14 @@ import { getPlaceById } from "@/data/index";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import BackLink from "@/components/BackLink";
+import BookWineryBackLink from "@/components/BookWineryBackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
+import { getAttractionImage } from "@/lib/cyprus-images";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -26,6 +27,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "book.pages.wineryDetail" });
   const winery = wineries.find((w) => w.id === id);
   if (!winery) return { title: t("metaNotFound") };
+  const imageUrl = getAttractionImage(id, "winery");
   const title = t("meta.title", { wineryName: winery.name });
   const description = t("meta.description", { wineryName: winery.name, region: winery.region });
   const alternates = buildStrategyAAlternates(`/book/winery/${id}`);
@@ -38,7 +40,7 @@ export async function generateMetadata({
       description,
       url: alternates.canonical,
       type: "website",
-      images: winery.image ? [{ url: winery.image, width: 800, height: 600, alt: winery.name }] : undefined,
+      images: [{ url: imageUrl, width: 800, height: 600, alt: winery.name }],
     },
   };
 }
@@ -51,6 +53,7 @@ export default async function WineryBookPage({
   const { id } = await params;
   const winery = wineries.find((w) => w.id === id);
   if (!winery) notFound();
+  const imageUrl = getAttractionImage(id, "winery");
   const [tNav, tCommon, tBookPages] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
@@ -62,7 +65,7 @@ export default async function WineryBookPage({
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <nav className={`flex flex-col gap-1 ${SECTION.headingGap}`} aria-label={tBookPages("pageNavAria")}>
-        <BackLink href={`/discover/${id}`} label={tCommon("backTo", { label: winery.name })} />
+        <BookWineryBackLink wineryId={id} wineryName={winery.name} />
         <Breadcrumbs
           items={[
             { label: tNav("home"), href: "/" },
@@ -75,10 +78,9 @@ export default async function WineryBookPage({
       </nav>
 
       <div className="mt-6">
-        {winery.image && (
-          <div className="mb-5 rounded-xl overflow-hidden border border-sand-200/80 relative h-40 sm:h-52">
+        <div className="mb-5 rounded-xl overflow-hidden border border-sand-200/80 relative h-40 sm:h-52">
             <Image
-              src={winery.image}
+              src={imageUrl}
               alt={winery.name}
               fill
               className="object-cover"
@@ -87,7 +89,6 @@ export default async function WineryBookPage({
               fetchPriority="high"
             />
           </div>
-        )}
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/20 text-terracotta">
             {tCommon("wineTasting")}
@@ -273,7 +274,7 @@ export default async function WineryBookPage({
               addressRegion: winery.region,
               addressCountry: "CY",
             },
-            ...(winery.image ? { image: winery.image } : {}),
+            ...(imageUrl ? { image: imageUrl } : {}),
             ...(winery.contactPhone ? { telephone: winery.contactPhone } : {}),
             ...(winery.openingHours ? { openingHours: winery.openingHours } : {}),
             ...(winery.latitude && winery.longitude ? {

@@ -6,6 +6,7 @@ import { WINE_ROUTES } from "@/data/wine-routes";
 import { LAYOUT, SECTION, CARD, TYPE } from "@/lib/design-tokens";
 import Image from "next/image";
 import HubFooter from "@/components/HubFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
@@ -111,12 +112,14 @@ export default async function WineRoutePage({ params }: Props) {
         </div>
       )}
 
+      <div id="wine-route-plan-sentinel" className="h-px pointer-events-none mb-8" aria-hidden />
+
       <h2 id="wineries-list" className="sr-only">
         {tPage("wineriesOnRoute")}
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {routeWineries.map((w) => (
-          <AttractionCard key={w.id} a={w} />
+          <AttractionCard key={w.id} a={w} bookFrom="wineries" />
         ))}
       </div>
 
@@ -131,6 +134,7 @@ export default async function WineRoutePage({ params }: Props) {
           </AppLink>
         }
       />
+      <StickyPlanBarBlock sentinelId="wine-route-plan-sentinel" />
     </div>
   );
 }

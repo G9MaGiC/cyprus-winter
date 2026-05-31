@@ -162,7 +162,16 @@
       "reportConditions": "Report conditions",
       "bookGuide": "Book a guide",
       "bookTasting": "Book tasting",
-      "troodosDecember": "Troodos December"
+      "troodosDecember": "Troodos December",
+      "register": "Créer un compte",
+      "forgotPassword": "Réinitialiser le mot de passe",
+      "resetPassword": "Nouveau mot de passe",
+      "book": "Réserver",
+      "guide": "Randonnée guidée",
+      "wineRoutes": "Routes des vins",
+      "regions": "Régions",
+      "install": "Installer l'app",
+      "winery": "Domaine viticole"
     },
     "inYourPlan": "In your plan",
     "viewPlan": "Voir le plan",
@@ -2002,6 +2011,13 @@
         "food": "Food & Wine",
         "culture": "Culture",
         "sport": "Sport"
+      },
+      "monthShort": {
+        "Nov": "Nov",
+        "Dec": "Déc",
+        "Jan": "Jan",
+        "Feb": "Fév",
+        "Mar": "Mar"
       }
     }
   },

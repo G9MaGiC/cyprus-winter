@@ -9,6 +9,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import SearchResultCard from "@/components/SearchResultCard";
 import AskAIButton from "@/components/AskAIButton";
 import HubFooter from "@/components/HubFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { search } from "@/lib/search";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -73,6 +74,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {tSearch("intro")}
       </p>
       <SearchBar placeholder={tSearch("placeholder")} autoFocus initialQuery={q} syncUrl className="max-w-xl" />
+      <div id="search-plan-sentinel" className="h-px pointer-events-none mt-8" aria-hidden />
       {results.length > 0 && (
         <div className={`mt-8 ${SECTION.headingGap}`}>
           <h2 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tSearch("resultsFor", { query: q })}</h2>
@@ -128,6 +130,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         askAiAriaLabel={tDiscover("aria.askAi")}
         className="mt-10"
       />
+      <StickyPlanBarBlock sentinelId="search-plan-sentinel" />
     </div>
   );
 }

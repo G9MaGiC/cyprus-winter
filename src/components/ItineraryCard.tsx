@@ -86,7 +86,7 @@ export default function ItineraryCard({
         <NavigateButton place={place} />
         {place.type === "winery" && (
           <AppLink
-            href={`/book/winery/${place.id}`}
+            href={`/book/winery/${place.id}?from=plan`}
             className={CTA.primaryCompact}
             aria-label={`${tCommon("bookTasting")} — ${place.name}`}
           >

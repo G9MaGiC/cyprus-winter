@@ -14,7 +14,7 @@ export default function PlanWineryBar() {
       aria-label={tPlan("ariaLabel")}
       className="rounded-2xl border border-sand-200/90 bg-white/90 p-5 sm:p-6 flex flex-wrap items-center gap-3 sm:gap-4 min-h-[44px] shadow-sm"
     >
-      <AppLink href="/book/winery" className={CTA.primaryCompact}>
+      <AppLink href="/book/winery?from=plan" className={CTA.primaryCompact}>
         {tCommon("bookTastings")}
       </AppLink>
       <AppLink href="/discover?filter=winery" className={CTA.secondaryCompact}>
