@@ -328,6 +328,9 @@ curl -s https://<your-domain>/api/health | jq '.productionReady, .productionChec
 
 ## Related Docs
 
+- `docs/LAUNCH_CHECKLIST.md` — one-page pre-launch ops gate
+- `docs/WINERY_IMAGE_INTAKE.md` — partner winery hero photo workflow
+- `docs/SCORECARD.md` — 5/5 engineering criteria (updated counts)
 - `TECHNICAL.md` — Architecture and tech stack
 - `src/app/api/health/route.ts` — Health endpoint implementation
 - `src/lib/supabase.ts` — Supabase client and fallback
