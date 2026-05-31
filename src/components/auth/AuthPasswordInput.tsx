@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export type AuthPasswordInputProps = {
   id: string;
@@ -23,17 +24,11 @@ const inputBase =
   "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors duration-200";
 const inputError = "border-terracotta/40 focus-visible:ring-terracotta/50";
 
-function getStrengthLabel(password: string): string | null {
+function getStrengthKey(password: string): "tooShort" | "good" | "strong" | null {
   if (password.length === 0) return null;
-  if (password.length < 6) return "At least 6 characters";
-  if (password.length >= 6 && password.length < 10) return "Good";
-  return "Strong";
-}
-
-function getStrengthColor(password: string): string {
-  if (password.length < 6) return "text-olive/60";
-  if (password.length < 10) return "text-sage";
-  return "text-sage font-medium";
+  if (password.length < 6) return "tooShort";
+  if (password.length < 10) return "good";
+  return "strong";
 }
 
 export default function AuthPasswordInput({
@@ -51,12 +46,18 @@ export default function AuthPasswordInput({
   autoComplete = "current-password",
   "aria-describedby": ariaDescribedby,
 }: AuthPasswordInputProps) {
+  const tAuth = useTranslations("auth.password");
   const [showPassword, setShowPassword] = useState(false);
   const hasError = !!error;
-  const strengthLabel = showStrength ? getStrengthLabel(value) : null;
-  const strengthColor = showStrength ? getStrengthColor(value) : "";
+  const strengthKey = showStrength ? getStrengthKey(value) : null;
+  const strengthColor =
+    strengthKey === "tooShort"
+      ? "text-olive/60"
+      : strengthKey
+        ? "text-sage font-medium"
+        : "";
 
-  const describedBy = [hint && `${id}-hint`, strengthLabel && `${id}-strength`, error && `${id}-error`]
+  const describedBy = [hint && `${id}-hint`, strengthKey && `${id}-strength`, error && `${id}-error`]
     .filter(Boolean)
     .join(" ") || ariaDescribedby || undefined;
 
@@ -72,20 +73,20 @@ export default function AuthPasswordInput({
           {labelAside}
         </div>
       )}
-      {(hint || strengthLabel) && (
+      {(hint || strengthKey) && (
         <div className="flex items-center justify-between mb-1.5">
           {hint && (
             <p id={`${id}-hint`} className="text-xs text-olive/60">
               {hint}
             </p>
           )}
-          {showStrength && strengthLabel && (
+          {showStrength && strengthKey && (
             <p
               id={`${id}-strength`}
               className={`text-xs ${strengthColor}`}
               aria-live="polite"
             >
-              {strengthLabel}
+              {tAuth(`strength.${strengthKey}`)}
             </p>
           )}
         </div>
@@ -110,7 +111,7 @@ export default function AuthPasswordInput({
           type="button"
           onClick={() => setShowPassword((v) => !v)}
           className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
-          aria-label={showPassword ? "Hide password" : "Show password"}
+          aria-label={showPassword ? tAuth("hide") : tAuth("show")}
           tabIndex={-1}
         >
           {showPassword ? (

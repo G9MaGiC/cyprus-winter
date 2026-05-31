@@ -1247,20 +1247,28 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-131 | i18n | Events month chips/headings hardcoded EN abbreviations | `events.page.monthShort.*` in all 7 locales |
 | BUG-132 | i18n | Breadcrumb auto-labels for auth/book paths hardcoded EN | `common.breadcrumbs.*` keys wired in `Breadcrumbs.tsx` |
 
-**Image attributions (new assets in `public/images/cyprus/`):**
+### Follow-up — May 31, 2026 (continued)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-133 | i18n | Auth password show/hide aria + strength labels hardcoded EN | `auth.password.*` in all locales; `AuthPasswordInput` |
+| BUG-134 | UX | `PlanStickyAddBar` competed with cookie/overlay chrome | `useBlockingOverlaysActive()`; reduced `pagePyPlan` mobile padding |
+| BUG-135 | UX | Discover Right Now buried below full catalog | Moved above list/map tabs (after Place of the day) |
+| BUG-136 | Images | Commandaria + verified wineries still on generic fallbacks | 2 CC Omodos winery assets; per-id map for verified wineries; Commandaria route image |
+
+**Image attributions (BUG-125, BUG-126, BUG-136):**
 
 | File | Source | License |
 |------|--------|---------|
 | `cyprus-choirokoitia.jpg` | [Choirokoitia, Cyprus - panoramio](https://commons.wikimedia.org/wiki/File:Choirokoitia,_Cyprus_-_panoramio.jpg) | CC BY 3.0 |
 | `cyprus-vineyard-laona.jpg` | [Zenon Winery Vineyards 3](https://commons.wikimedia.org/wiki/File:Zenon_Winery_Vineyards_3.jpg) | CC BY 4.0 |
 | `cyprus-vineyard-mountain.jpg` | [Zenon Winery Vineyards](https://commons.wikimedia.org/wiki/File:Zenon_Winery_Vineyards.jpg) | CC BY 4.0 |
+| `cyprus-winery-omodos-tasting.jpg` | [Wine tasting at Ktima Gerolemo, Omodos](https://commons.wikimedia.org/wiki/File:Wine_tasting_at_Ktima_Gerolemo_Winery,_Omodos,_Cyprus-_DSC00505.jpg) | CC BY-SA 4.0 |
+| `cyprus-winery-barrels.jpg` | [Wine barrels at Ktima Gerolemo](https://commons.wikimedia.org/wiki/File:Wine_barrels_at_the_Ktima_Gerolemo_Winery,_Cyprus-DSC00511.jpg) | CC BY-SA 4.0 |
 
 **Manual follow-up (remaining):**
 
-- Per-winery venue photos for remaining ~65 wineries — partner/CC sourcing or official press kits (P1)
-- Discover Right Now placement below full catalog (P2)
-- Plan page bottom padding / `PlanStickyAddBar` overlay guard (P2)
-- Auth password visibility `aria-label` i18n (P1)
+- Per-winery venue photos for ~55 remaining wineries — partner/CC sourcing or official press kits (P1)
 
 ---
 

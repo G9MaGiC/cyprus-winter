@@ -131,7 +131,7 @@ export const LAYOUT = {
   /** Pages with hero image first: no top padding on mobile so hero sits under nav */
   pagePyHeroFirst: "pt-0 pb-8 sm:py-12",
   /** Plan page: hero-first + extra bottom clearance for mobile nav (StickyPlanBar). */
-  pagePyPlan: "pt-0 pb-24 sm:pt-12 sm:pb-16",
+  pagePyPlan: "pt-0 pb-12 sm:pt-12 sm:pb-16",
   /** Vertical padding for detail pages — tighter for content-heavy layouts */
   pagePyDetail: "py-6 sm:py-10",
   /** Extra bottom padding on mobile for sticky Add-to-plan / trail action bars */

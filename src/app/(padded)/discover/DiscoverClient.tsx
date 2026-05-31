@@ -132,6 +132,12 @@ export default function DiscoverClient({
 
       <DiscoverPlaceOfDay />
 
+      {viewMode === "list" && totalCount > 0 ? (
+        <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX}`}>
+          <RightNowNearYou title={tDiscover("page.rightNowTitle")} />
+        </div>
+      ) : null}
+
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} flex flex-col gap-4`}>
         {filter && sectionExists && !isActivity && showTipDiscoverFilter && (
           <OnboardingContextualTip
@@ -241,10 +247,6 @@ export default function DiscoverClient({
             <DiscoverMapPanel sections={sectionsToShow} />
           </div>
         )}
-
-        {viewMode === "list" ? (
-          <RightNowNearYou title={tDiscover("page.rightNowTitle")} />
-        ) : null}
 
         <DiscoverFooter onScrollToMap={viewMode === "list" ? scrollToMap : undefined} />
       </div>

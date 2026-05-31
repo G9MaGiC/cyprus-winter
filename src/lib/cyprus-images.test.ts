@@ -11,7 +11,11 @@ describe("resolveWineryImage", () => {
   });
 
   it("uses Krasochoria fallback for unknown Krasochoria winery", () => {
-    expect(resolveWineryImage("ktima-vassiliades")).toBe("/images/cyprus/cyprus-winery-troodos.jpg");
+    expect(resolveWineryImage("ayia-mavri")).toBe("/images/cyprus/cyprus-winery-troodos.jpg");
+  });
+
+  it("uses per-id barrel image for mapped Krasochoria winery", () => {
+    expect(resolveWineryImage("ktima-vassiliades")).toBe("/images/cyprus/cyprus-winery-barrels.jpg");
   });
 });
 

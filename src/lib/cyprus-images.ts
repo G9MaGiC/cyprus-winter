@@ -185,6 +185,14 @@ const wineryImages: Record<string, string> = {
   tsiakkas: `${local}/cyprus-vineyard-mountain.jpg`,
   "vouni-panayia": `${local}/cyprus-vineyard-laona.jpg`,
   zambartas: `${local}/cyprus-vineyard-laona.jpg`,
+  santo: `${local}/cyprus-winery-troodos.jpg`,
+  kyperounta: `${local}/cyprus-vineyard-mountain.jpg`,
+  fikardos: `${local}/cyprus-vineyard-laona.jpg`,
+  vlassides: `${local}/cyprus-winery-barrels.jpg`,
+  vasilikon: `${local}/cyprus-trail-gorge.jpg`,
+  "ktima-vassiliades": `${local}/cyprus-winery-barrels.jpg`,
+  mystes: `${local}/cyprus-winery-omodos-tasting.jpg`,
+  "oenou-yi": `${local}/cyprus-winery-omodos-tasting.jpg`,
 };
 
 /** Wine-route regional fallbacks when no per-id image exists. */
@@ -194,7 +202,7 @@ const wineRouteImages: Record<string, string> = {
   "Laona–Akamas": `${local}/cyprus-trail-gorge.jpg`,
   Akamas: `${local}/cyprus-trail-gorge.jpg`,
   Pitsilia: `${local}/cyprus-vineyard-mountain.jpg`,
-  Commandaria: `${local}/cyprus-village-omodos.jpg`,
+  Commandaria: `${local}/cyprus-winery-omodos-tasting.jpg`,
   Troodos: `${local}/cyprus-trail-troodos.jpg`,
   "Larnaca hills": `${local}/cyprus-lefkara.jpg`,
   Larnaca: `${local}/cyprus-lefkara.jpg`,

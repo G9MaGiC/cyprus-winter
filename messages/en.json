@@ -2167,6 +2167,15 @@
     "aiAssistant": "Ask me anything—best trails, winery recommendations, or help planning your day."
   },
   "auth": {
+    "password": {
+      "show": "Show password",
+      "hide": "Hide password",
+      "strength": {
+        "tooShort": "At least 6 characters",
+        "good": "Good",
+        "strong": "Strong"
+      }
+    },
     "layout": {
       "heroAlt": "Cyprus winter — trails, villages, wineries"
     },

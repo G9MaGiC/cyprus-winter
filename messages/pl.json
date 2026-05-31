@@ -2213,6 +2213,15 @@
       "ariaHidePassword": "Ukryj hasło",
       "ctaUpdate": "Zaktualizuj hasło",
       "ctaUpdating": "Aktualizowanie…"
+    },
+    "password": {
+      "show": "Pokaż hasło",
+      "hide": "Ukryj hasło",
+      "strength": {
+        "tooShort": "Co najmniej 6 znaków",
+        "good": "Dobre",
+        "strong": "Silne"
+      }
     }
   },
   "book": {

@@ -2252,6 +2252,15 @@
       "ariaHidePassword": "Hide password",
       "ctaUpdate": "Update password",
       "ctaUpdating": "Updating…"
+    },
+    "password": {
+      "show": "הצג סיסמה",
+      "hide": "הסתר סיסמה",
+      "strength": {
+        "tooShort": "לפחות 6 תווים",
+        "good": "טוב",
+        "strong": "חזק"
+      }
     }
   },
   "book": {

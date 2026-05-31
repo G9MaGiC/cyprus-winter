@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import { useTranslations } from "next-intl";
 import { LAYER, LAYOUT } from "@/lib/design-tokens";
 
@@ -21,6 +22,7 @@ type PlanStickyAddBarProps = {
 export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlaceClick }: PlanStickyAddBarProps) {
   const [show, setShow] = useState(false);
   const { setStickyPlanVisible } = useStickyPlanBar();
+  const overlaysBlock = useBlockingOverlaysActive();
   const tCommon = useTranslations("common");
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
     target?.scrollIntoView({ behavior, block: "start" });
   };
 
-  if (!show) return null;
+  if (!show || overlaysBlock) return null;
 
   return (
     <div
