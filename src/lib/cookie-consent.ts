@@ -6,25 +6,31 @@ export const COOKIE_CONSENT_KEY = "cyprus-winter:cookie-consent";
 
 export type CookieConsent = "all" | "essential";
 
+let inMemoryConsent: CookieConsent | null = null;
+
 export function getCookieConsent(): CookieConsent | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = localStorage.getItem(COOKIE_CONSENT_KEY);
-    if (raw === "all" || raw === "essential") return raw;
+    if (raw === "all" || raw === "essential") {
+      inMemoryConsent = raw;
+      return raw;
+    }
   } catch {
-    return null;
+    return inMemoryConsent;
   }
-  return null;
+  return inMemoryConsent;
 }
 
 export function setCookieConsent(value: CookieConsent): void {
   if (typeof window === "undefined") return;
+  inMemoryConsent = value;
   try {
     localStorage.setItem(COOKIE_CONSENT_KEY, value);
-    window.dispatchEvent(new CustomEvent("cookie-consent-change", { detail: value }));
   } catch {
     // Storage can be unavailable in privacy modes.
   }
+  window.dispatchEvent(new CustomEvent("cookie-consent-change", { detail: value }));
 }
 
 export function hasAnalyticsConsent(): boolean {

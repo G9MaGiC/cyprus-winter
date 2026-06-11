@@ -37,6 +37,10 @@ function stripLocalePrefix(path: string): string {
   return stripped === "" ? "/" : stripped;
 }
 
+function isSafeMetadataId(id: string): boolean {
+  return Boolean(id) && !/[/?#\\]/.test(id) && !id.includes("..");
+}
+
 function sanitizeActionPayload(payload: unknown): Record<string, unknown> | undefined {
   const obj = asRecord(payload);
   if (!obj) return undefined;
@@ -48,7 +52,7 @@ function sanitizeActionPayload(payload: unknown): Record<string, unknown> | unde
   }
   if (typeof obj.id === "string") {
     const id = sanitizeText(obj.id, 128);
-    if (id) out.id = id;
+    if (isSafeMetadataId(id)) out.id = id;
   }
   if (typeof obj.day === "number" && Number.isInteger(obj.day) && obj.day >= 1 && obj.day <= 14) {
     out.day = obj.day;
@@ -71,7 +75,7 @@ export function sanitizeResponseMetadata(metadata: unknown): SafeChatMetadata {
           const id = typeof card.id === "string" ? sanitizeText(card.id, 128) : "";
           const title = typeof card.title === "string" ? sanitizeText(card.title, 120) : "";
           const reason = typeof card.reason === "string" ? sanitizeText(card.reason, 180) : "";
-          if (!CARD_TYPES.has(type) || !id || !title || !reason) return null;
+          if (!CARD_TYPES.has(type) || !isSafeMetadataId(id) || !title || !reason) return null;
           return { type, id, title, reason };
         })
         .filter((card): card is { type: string; id: string; title: string; reason: string } => Boolean(card))

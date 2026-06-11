@@ -61,4 +61,18 @@ describe("AI response metadata sanitization", () => {
       { role: "user", content: "thanks" },
     ]);
   });
+
+  it("drops cards with unsafe path-like IDs", () => {
+    const sanitized = sanitizeResponseMetadata({
+      cards: [
+        { type: "place", id: "../admin", title: "Admin", reason: "bad" },
+        { type: "place", id: "kourion?next=/admin", title: "Kourion", reason: "bad" },
+        { type: "trail", id: "artemis", title: "Artemis", reason: "safe" },
+      ],
+    });
+
+    expect(sanitized.cards).toEqual([
+      { type: "trail", id: "artemis", title: "Artemis", reason: "safe" },
+    ]);
+  });
 });
