@@ -22,6 +22,21 @@ const STORAGE_KEY = getItineraryStorageKey();
 export { MAX_DAYS };
 export { ITINERARY_TEMPLATES, type TemplateKey };
 
+type AddToDayOptions = {
+  mergeStored?: boolean;
+};
+
+function mergeDays(
+  base: Record<number, string[]>,
+  stored: Record<number, string[]>
+): Record<number, string[]> {
+  const next = emptyDays();
+  for (let d = 1; d <= MAX_DAYS; d++) {
+    next[d] = [...new Set([...(base[d] ?? []), ...(stored[d] ?? [])])];
+  }
+  return next;
+}
+
 /** @deprecated Use getTemplateDays or ITINERARY_TEMPLATES */
 export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
@@ -107,15 +122,28 @@ export function useItinerary() {
     if (isAdding) setLastAdded(id);
   }, [activeDay, setLastAdded]);
 
-  const addToDayIfMissing = useCallback((id: string) => {
+  const addToDayIfMissing = useCallback((id: string, options?: AddToDayOptions) => {
     const current = daysRef.current[activeDay] ?? [];
-    if (current.includes(id)) return;
+    if (!options?.mergeStored && current.includes(id)) return;
     setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
-      if (prevCurrent.includes(id)) return prev;
-      return { ...prev, [activeDay]: [...prevCurrent, id] };
+      const base = options?.mergeStored
+        ? mergeDays(prev, loadItineraryFromStorage())
+        : prev;
+      const prevCurrent = base[activeDay] ?? [];
+      if (prevCurrent.includes(id)) return base;
+      return { ...base, [activeDay]: [...prevCurrent, id] };
     });
     setLastAdded(id);
+  }, [activeDay, setLastAdded]);
+
+  const replaceActiveDay = useCallback((ids: string[]) => {
+    const nextIds = [...new Set(ids.filter((id) => Boolean(getPlaceById(id))))];
+    setDays((prev) => ({
+      ...prev,
+      [activeDay]: nextIds,
+    }));
+    const last = nextIds.at(-1);
+    if (last) setLastAdded(last);
   }, [activeDay, setLastAdded]);
 
   const removeFromDay = useCallback((id: string) => {
@@ -248,6 +276,7 @@ export function useItinerary() {
     copyShareLink,
     toggleInDay,
     addToDayIfMissing,
+    replaceActiveDay,
     removeFromDay,
     getPlace,
     hasContent,

@@ -27,6 +27,7 @@ export function usePlanPage() {
     hydrated,
     copied,
     addToDayIfMissing,
+    replaceActiveDay,
     removeFromDay,
     getPlace,
     lastAddedId,
@@ -129,10 +130,9 @@ export function usePlanPage() {
 
   const handleReplaceCombo = useCallback(() => {
     if (planReadOnly || !comboChoice) return;
-    clearDay();
-    for (const id of comboChoice.ids) addToDayIfMissing(id);
+    replaceActiveDay(comboChoice.ids);
     setComboChoice(null);
-  }, [planReadOnly, comboChoice, clearDay, addToDayIfMissing]);
+  }, [planReadOnly, comboChoice, replaceActiveDay]);
 
   const handleClearDayConfirm = useCallback(() => {
     if (planReadOnly) return;

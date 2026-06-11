@@ -14,10 +14,15 @@ type EventProps = Record<string, string | number | boolean | undefined>;
 
 function getSessionId(): string {
   if (typeof window === "undefined") return "";
-  let id = sessionStorage.getItem("cw_sid");
-  if (!id) {
+  let id: string | null = null;
+  try {
+    id = sessionStorage.getItem("cw_sid");
+    if (!id) {
+      id = `sid_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+      sessionStorage.setItem("cw_sid", id);
+    }
+  } catch {
     id = `sid_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
-    sessionStorage.setItem("cw_sid", id);
   }
   return id;
 }

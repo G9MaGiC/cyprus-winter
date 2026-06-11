@@ -8,15 +8,23 @@ export type CookieConsent = "all" | "essential";
 
 export function getCookieConsent(): CookieConsent | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(COOKIE_CONSENT_KEY);
-  if (raw === "all" || raw === "essential") return raw;
+  try {
+    const raw = localStorage.getItem(COOKIE_CONSENT_KEY);
+    if (raw === "all" || raw === "essential") return raw;
+  } catch {
+    return null;
+  }
   return null;
 }
 
 export function setCookieConsent(value: CookieConsent): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(COOKIE_CONSENT_KEY, value);
-  window.dispatchEvent(new CustomEvent("cookie-consent-change", { detail: value }));
+  try {
+    localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    window.dispatchEvent(new CustomEvent("cookie-consent-change", { detail: value }));
+  } catch {
+    // Storage can be unavailable in privacy modes.
+  }
 }
 
 export function hasAnalyticsConsent(): boolean {

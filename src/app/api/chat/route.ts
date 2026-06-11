@@ -7,7 +7,7 @@ import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 import { isSafeInternalPath as isAllowedAppPath } from "@/lib/safe-internal-path";
-import { resolveInternalPath } from "@/lib/resolve-internal-path";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 import { orchestrate } from "@/lib/concierge/orchestrator";
 import type { ConciergeContext } from "@/lib/concierge/types";
 
@@ -106,27 +106,6 @@ const CHAT_LIMIT = process.env.NODE_ENV === "development" ? 60 : 20;
 function isSafeInternalPath(path: string): boolean {
   if (!path || path.length > 256 || path.includes("\\")) return false;
   return isAllowedAppPath(path);
-}
-
-function sanitizeChatMetadata(metadata: Record<string, unknown>): Record<string, unknown> {
-  const actions = metadata.actions;
-  if (!Array.isArray(actions)) return metadata;
-  const safeActions = actions
-    .map((raw) => {
-      if (!raw || typeof raw !== "object") return null;
-      const action = raw as Record<string, unknown>;
-      const payload =
-        action.payload && typeof action.payload === "object"
-          ? { ...(action.payload as Record<string, unknown>) }
-          : undefined;
-      if (payload && typeof payload.path === "string") {
-        const path = sanitizeText(payload.path, 256);
-        payload.path = path ? resolveInternalPath(path) : undefined;
-      }
-      return { ...action, payload };
-    })
-    .filter(Boolean);
-  return { ...metadata, actions: safeActions };
 }
 
 function normalizeChatContext(ctx: unknown) {
@@ -331,7 +310,7 @@ export async function POST(req: Request) {
                 const jsonStr = fullContent.slice(delimIdx + delimiter.length).trim();
                 try {
                   const metadata = JSON.parse(jsonStr) as Record<string, unknown>;
-                  const safe = sanitizeChatMetadata(metadata);
+                  const safe = sanitizeResponseMetadata(metadata);
                   controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...safe })));
                 } catch {
                   // Malformed JSON — skip metadata
