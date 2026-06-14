@@ -27,6 +27,19 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
   ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
 );
 
+type AddToDayOptions = {
+  mergeStored?: boolean;
+};
+
+function mergeWithStoredItinerary(prev: Record<number, string[]>): Record<number, string[]> {
+  const stored = loadItineraryFromStorage();
+  const next = emptyDays();
+  for (let d = 1; d <= MAX_DAYS; d++) {
+    next[d] = [...new Set([...(stored[d] ?? []), ...(prev[d] ?? [])])];
+  }
+  return next;
+}
+
 export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -107,13 +120,14 @@ export function useItinerary() {
     if (isAdding) setLastAdded(id);
   }, [activeDay, setLastAdded]);
 
-  const addToDayIfMissing = useCallback((id: string) => {
+  const addToDayIfMissing = useCallback((id: string, options?: AddToDayOptions) => {
     const current = daysRef.current[activeDay] ?? [];
-    if (current.includes(id)) return;
+    if (current.includes(id) && !options?.mergeStored) return;
     setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
+      const base = options?.mergeStored ? mergeWithStoredItinerary(prev) : prev;
+      const prevCurrent = base[activeDay] ?? [];
       if (prevCurrent.includes(id)) return prev;
-      return { ...prev, [activeDay]: [...prevCurrent, id] };
+      return { ...base, [activeDay]: [...prevCurrent, id] };
     });
     setLastAdded(id);
   }, [activeDay, setLastAdded]);

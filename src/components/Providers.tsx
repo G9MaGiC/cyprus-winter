@@ -11,9 +11,15 @@ type ProvidersProps = {
   children: React.ReactNode;
   /** Omit OnboardingProvider when nested under root (e.g. locale layout) to avoid duplication */
   includeOnboarding?: boolean;
+  /** Mount once at the app root so queued offline mutations are not replayed by nested trees. */
+  includeOfflineQueue?: boolean;
 };
 
-export default function Providers({ children, includeOnboarding = true }: ProvidersProps) {
+export default function Providers({
+  children,
+  includeOnboarding = true,
+  includeOfflineQueue = true,
+}: ProvidersProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -31,12 +37,12 @@ export default function Providers({ children, includeOnboarding = true }: Provid
         <StickyPlanBarProvider>
           {includeOnboarding ? (
             <OnboardingProvider>
-              <OfflineQueueProcessor />
+              {includeOfflineQueue ? <OfflineQueueProcessor /> : null}
               {children}
             </OnboardingProvider>
           ) : (
             <>
-              <OfflineQueueProcessor />
+              {includeOfflineQueue ? <OfflineQueueProcessor /> : null}
               {children}
             </>
           )}
