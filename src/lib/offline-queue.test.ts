@@ -22,6 +22,7 @@ describe("offline queue", () => {
 
   beforeEach(() => {
     storage.clear();
+    vi.stubGlobal("localStorage", storage);
     vi.stubGlobal("window", { localStorage: storage });
   });
 
