@@ -148,6 +148,12 @@ export const bookGuideIndexPageMeta: Metadata = {
     "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis, and more. Small groups, winter expertise. Book ahead and they'll confirm by email.",
 };
 
+export const bookWineryIndexPageMeta: Metadata = {
+  title: "Book a Wine Tasting | Cyprus Winter",
+  description:
+    "Book Cyprus winter winery tastings in Krasochoria, Laona, Commandaria, and more. Cosy cellars, verified partners, confirmation by email.",
+};
+
 export const trailReportPageMeta: Metadata = {
   title: "Report trail conditions | Cyprus Winter",
   description: "Submit a quick update on trail conditions to help other hikers.",
