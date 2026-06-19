@@ -3,7 +3,7 @@ import { addMutation, processQueue } from "./offline-queue";
 
 function installLocalStorage() {
   const store = new Map<string, string>();
-  vi.stubGlobal("localStorage", {
+  const localStorage = {
     getItem: vi.fn((key: string) => store.get(key) ?? null),
     setItem: vi.fn((key: string, value: string) => {
       store.set(key, value);
@@ -14,7 +14,9 @@ function installLocalStorage() {
     clear: vi.fn(() => {
       store.clear();
     }),
-  });
+  };
+  vi.stubGlobal("window", { localStorage });
+  vi.stubGlobal("localStorage", localStorage);
 }
 
 describe("processQueue", () => {
