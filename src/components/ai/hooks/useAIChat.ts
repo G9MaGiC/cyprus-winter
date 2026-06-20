@@ -311,7 +311,6 @@ export function useAIChat() {
             "type" in parsed &&
             (parsed as { type?: unknown }).type === "metadata"
           ) {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const metadata = sanitizeResponseMetadata(parsed);
             setMessages((prev) => {
               const updated = [...prev];
