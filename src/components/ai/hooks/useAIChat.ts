@@ -6,6 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
+import type { ResponseMetadata } from "@/lib/concierge/types";
 // getPlaceById available for future use
 
 export type Message = {
@@ -13,11 +15,7 @@ export type Message = {
   content: string;
   isRetryable?: boolean;
   is503?: boolean;
-  metadata?: {
-    cards?: { type: string; id: string; title: string; reason: string }[];
-    actions?: { type: string; label: string; payload?: Record<string, unknown> }[];
-    followUps?: string[];
-  };
+  metadata?: ResponseMetadata;
 };
 
 const MAX_PERSISTED_MESSAGES = 20;
@@ -126,13 +124,25 @@ function loadPersistedMessages(): Message[] | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed) || parsed.length === 0) return null;
-    const valid = parsed.filter(
-      (m): m is Message =>
-        m &&
-        typeof m === "object" &&
-        (m.role === "user" || m.role === "assistant") &&
-        typeof m.content === "string"
-    );
+    const valid = parsed
+      .filter(
+        (m): m is Record<string, unknown> =>
+          m !== null &&
+          typeof m === "object" &&
+          ((m as { role?: unknown }).role === "user" || (m as { role?: unknown }).role === "assistant") &&
+          typeof (m as { content?: unknown }).content === "string"
+      )
+      .map((m) => {
+        const metadata = sanitizeResponseMetadata(m.metadata);
+        const hasMetadata = Object.keys(metadata).length > 0;
+        return {
+          role: m.role as Message["role"],
+          content: m.content as string,
+          isRetryable: typeof m.isRetryable === "boolean" ? m.isRetryable : undefined,
+          is503: typeof m.is503 === "boolean" ? m.is503 : undefined,
+          metadata: hasMetadata ? metadata : undefined,
+        };
+      });
     return valid.length > 0 ? valid : null;
   } catch {
     return null;
@@ -302,12 +312,12 @@ export function useAIChat() {
             (parsed as { type?: unknown }).type === "metadata"
           ) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { type: _type, ...metadata } = parsed as Record<string, unknown>;
+            const metadata = sanitizeResponseMetadata(parsed);
             setMessages((prev) => {
               const updated = [...prev];
               const lastMsg = updated[updated.length - 1];
               if (lastMsg?.role === "assistant") {
-                updated[updated.length - 1] = { ...lastMsg, metadata: metadata as Message["metadata"] };
+                updated[updated.length - 1] = { ...lastMsg, metadata };
               }
               messagesRef.current = updated;
               return updated;
