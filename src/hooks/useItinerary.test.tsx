@@ -203,7 +203,7 @@ describe("useItinerary", () => {
     });
 
     act(() => {
-      result.current.second.addToDayIfMissing("artemis");
+      result.current.second.addToDayIfMissing("artemis", { mergeStored: true });
     });
 
     await waitFor(() => {
