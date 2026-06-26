@@ -17,6 +17,10 @@ export type QueuedMutation = {
   createdAt: number;
 };
 
+type ProcessQueueResult = { processed: number; succeeded: number };
+
+let inFlightProcess: Promise<ProcessQueueResult> | null = null;
+
 function load(): QueuedMutation[] {
   if (typeof window === "undefined") return [];
   try {
@@ -62,8 +66,7 @@ export function removeMutation(id: string): void {
   save(items);
 }
 
-/** Process the queue: retry each mutation, remove on success. */
-export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
+async function processQueueOnce(): Promise<ProcessQueueResult> {
   const items = load();
   if (items.length === 0) return { processed: 0, succeeded: 0 };
 
@@ -86,4 +89,14 @@ export async function processQueue(): Promise<{ processed: number; succeeded: nu
     }
   }
   return { processed: items.length, succeeded };
+}
+
+/** Process the queue: retry each mutation, remove on success. */
+export function processQueue(): Promise<ProcessQueueResult> {
+  if (inFlightProcess) return inFlightProcess;
+
+  inFlightProcess = processQueueOnce().finally(() => {
+    inFlightProcess = null;
+  });
+  return inFlightProcess;
 }
