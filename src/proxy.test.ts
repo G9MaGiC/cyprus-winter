@@ -10,7 +10,12 @@ describe("proxy content security policy", () => {
     const response = proxy({} as Parameters<typeof proxy>[0]);
     const policy = response.headers.get("Content-Security-Policy");
 
-    expect(policy).toContain("frame-src 'self' https://www.openstreetmap.org");
-    expect(policy).toContain("https://*.tile.openstreetmap.org");
+    expect(policy?.split("; ")).toEqual(
+      expect.arrayContaining([
+        "img-src 'self' blob: data: https://images.unsplash.com https://cdn.shopify.com https://*.tile.openstreetmap.org",
+        "frame-src 'self' https://www.openstreetmap.org",
+        "frame-ancestors 'none'",
+      ])
+    );
   });
 });
