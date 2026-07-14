@@ -57,10 +57,13 @@ export function useBookingForm(
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [notesLength, setNotesLength] = useState(0);
+  const [todayStr, setTodayStr] = useState("");
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
 
-  const todayStr = toLocalDateInputValue();
+  useEffect(() => {
+    setTodayStr(toLocalDateInputValue());
+  }, []);
 
   const toFieldErrors = useCallback(
     (raw: Record<string, string>) =>
