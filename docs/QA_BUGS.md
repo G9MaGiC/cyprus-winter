@@ -1256,6 +1256,13 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 | BUG-135 | UX | Discover Right Now buried below full catalog | Moved above list/map tabs (after Place of the day) |
 | BUG-136 | Images | Commandaria + verified wineries still on generic fallbacks | 2 CC Omodos winery assets; per-id map for verified wineries; Commandaria route image |
 
+### Critical bug investigation — July 14, 2026
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-137 | Bookings | UTC parsing and server-rendered date minima rejected valid same-day bookings in UTC-negative time zones | Parse calendar dates at local midnight; hydrate `min` from the browser timezone after mount |
+| BUG-138 | Maps / Security | Production CSP blocked OpenStreetMap detail embeds and Leaflet tiles across map surfaces | Allow only the required OpenStreetMap frame and tile origins while retaining `frame-ancestors 'none'` |
+
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 
 | File | Source | License |
