@@ -5,7 +5,12 @@ import type { z } from "zod";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
-import { formatZodErrors, localizeBookingFieldErrors, type BookingValidationLabels } from "@/lib/booking-schemas";
+import {
+  formatZodErrors,
+  localizeBookingFieldErrors,
+  toLocalDateInputValue,
+  type BookingValidationLabels,
+} from "@/lib/booking-schemas";
 
 export type BookingFormConfig = {
   type: "winery_tasting" | "guide_tour";
@@ -55,7 +60,7 @@ export function useBookingForm(
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
 
-  const todayStr = new Date().toISOString().split("T")[0];
+  const todayStr = toLocalDateInputValue();
 
   const toFieldErrors = useCallback(
     (raw: Record<string, string>) =>
