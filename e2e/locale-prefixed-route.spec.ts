@@ -39,6 +39,15 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page.getByRole("main")).toBeVisible();
   });
 
+  test("German winery booking list resolves", async ({ page }) => {
+    const response = await page.goto("/de/book/winery", {
+      waitUntil: "domcontentloaded",
+    });
+
+    expect(response?.status()).toBe(200);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  });
+
   test("Hebrew winery book form shows localized submit", async ({ page }) => {
     await page.goto("/he/book/winery/tsiakkas", { waitUntil: "domcontentloaded" });
     await expect(page).toHaveURL(/\/he\/book\/winery\/tsiakkas/);
