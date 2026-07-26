@@ -27,6 +27,22 @@ export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object
   ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
 );
 
+/**
+ * Union storage + in-memory days so independent useItinerary() instances
+ * on the same tab (AttractionCard + AddToItineraryButton) cannot clobber
+ * each other's adds when writing back to localStorage.
+ */
+function mergeItineraryDays(
+  stored: Record<number, string[]>,
+  current: Record<number, string[]>
+): Record<number, string[]> {
+  const next = emptyDays();
+  for (let d = 1; d <= MAX_DAYS; d++) {
+    next[d] = [...new Set([...(stored[d] ?? []), ...(current[d] ?? [])])];
+  }
+  return next;
+}
+
 export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -108,12 +124,18 @@ export function useItinerary() {
   }, [activeDay, setLastAdded]);
 
   const addToDayIfMissing = useCallback((id: string) => {
-    const current = daysRef.current[activeDay] ?? [];
-    if (current.includes(id)) return;
+    const merged = mergeItineraryDays(loadItineraryFromStorage(), daysRef.current);
+    const current = merged[activeDay] ?? [];
+    if (current.includes(id)) {
+      // Sync stale in-memory state with storage even when the id is already present.
+      setDays(merged);
+      return;
+    }
     setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
-      if (prevCurrent.includes(id)) return prev;
-      return { ...prev, [activeDay]: [...prevCurrent, id] };
+      const base = mergeItineraryDays(loadItineraryFromStorage(), prev);
+      const prevCurrent = base[activeDay] ?? [];
+      if (prevCurrent.includes(id)) return base;
+      return { ...base, [activeDay]: [...prevCurrent, id] };
     });
     setLastAdded(id);
   }, [activeDay, setLastAdded]);

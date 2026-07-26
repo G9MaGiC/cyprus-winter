@@ -178,6 +178,42 @@ describe("useItinerary", () => {
     );
   });
 
+  it("preserves same-tab additions from independent hook instances", async () => {
+    const { result } = renderHook(
+      () => ({
+        first: useItinerary(),
+        second: useItinerary(),
+      }),
+      { wrapper }
+    );
+
+    await waitFor(() => {
+      expect(result.current.first.hydrated).toBe(true);
+      expect(result.current.second.hydrated).toBe(true);
+    });
+
+    act(() => {
+      result.current.first.addToDayIfMissing("kourion");
+    });
+    await waitFor(() => {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      expect(raw).toBeTruthy();
+      const parsed = JSON.parse(raw!) as Record<string, string[]>;
+      expect(parsed["1"]).toEqual(["kourion"]);
+    });
+
+    act(() => {
+      result.current.second.addToDayIfMissing("artemis");
+    });
+
+    await waitFor(() => {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      expect(raw).toBeTruthy();
+      const parsed = JSON.parse(raw!) as Record<string, string[]>;
+      expect(parsed["1"]).toEqual(["kourion", "artemis"]);
+    });
+  });
+
   it("removeFromDay removes only from active day", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 

@@ -2,6 +2,7 @@
  * Minimal ICS export for plan days (P2-06).
  */
 import type { PlanItem } from "@/data";
+import { MAX_DAYS } from "@/lib/itinerary-share";
 
 function escapeIcsText(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
@@ -28,7 +29,7 @@ export function buildPlanIcs(
   ];
 
   let eventIndex = 0;
-  for (let dayNum = 1; dayNum <= 10; dayNum++) {
+  for (let dayNum = 1; dayNum <= MAX_DAYS; dayNum++) {
     const ids = days[dayNum] ?? [];
     if (ids.length === 0) continue;
 
