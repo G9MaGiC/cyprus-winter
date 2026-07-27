@@ -66,9 +66,13 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
             </ReactMarkdown>
           </div>
         )}
-        {message.metadata?.cards && <PlaceCards cards={message.metadata.cards} />}
-        {message.metadata?.actions && <ActionButtons actions={message.metadata.actions} />}
-        {message.metadata?.followUps && (
+        {Array.isArray(message.metadata?.cards) && message.metadata.cards.length > 0 && (
+          <PlaceCards cards={message.metadata.cards} />
+        )}
+        {Array.isArray(message.metadata?.actions) && message.metadata.actions.length > 0 && (
+          <ActionButtons actions={message.metadata.actions} />
+        )}
+        {Array.isArray(message.metadata?.followUps) && message.metadata.followUps.length > 0 && (
           <FollowUpChips
             chips={message.metadata.followUps}
             onSelect={(chip) => {

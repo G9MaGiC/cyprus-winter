@@ -24,7 +24,7 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
     router.push(`${basePath}/${card.id}`);
   }
 
-  if (!cards.length) return null;
+  if (!Array.isArray(cards) || !cards.length) return null;
 
   return (
     <div className="flex flex-col gap-2 mt-2">
