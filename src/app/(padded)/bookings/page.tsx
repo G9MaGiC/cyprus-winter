@@ -12,6 +12,7 @@ import { formatDate, daysUntil, getUpcomingDateGroup } from "@/lib/format";
 import BookingsEmailLookup from "@/components/BookingsEmailLookup";
 import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { useLocale, useTranslations } from "next-intl";
+import { useAuth } from "@/contexts/AuthContext";
 
 function StatusBadge({ status }: { status: Booking["status"] }) {
   const tBookings = useTranslations("bookings");
@@ -35,6 +36,7 @@ export default function BookingsPage() {
   const tBookings = useTranslations("bookings");
   const tBookingsPage = useTranslations("bookings.page");
   const locale = useLocale();
+  const { session, isLoading: authLoading, isConfigured: authConfigured } = useAuth();
   const isMountedRef = useRef(true);
   const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -80,9 +82,18 @@ export default function BookingsPage() {
     if (!email) return;
     setEmailError(null);
     setEmailSuccess(null);
+
+    if (authConfigured && (authLoading || !session?.access_token)) {
+      setEmailError(tBookings("errors.signInRequired"));
+      return;
+    }
+
     setEmailLoading(true);
     try {
-      const res = await fetch(`/api/bookings?email=${encodeURIComponent(email)}`);
+      const headers = session?.access_token
+        ? { Authorization: `Bearer ${session.access_token}` }
+        : undefined;
+      const res = await fetch(`/api/bookings?email=${encodeURIComponent(email)}`, { headers });
       const data = await res.json();
       if (!isMountedRef.current) return;
       if (res.status === 429) {
