@@ -2747,7 +2747,7 @@
       "sections": {
         "s1": {
           "title": "1. Akceptacja",
-          "body": "Korzystając z Cyprus Winter (\"usługa\"), akceptujesz te Warunki korzystania oraz naszą {privacyPolicyLink}. Jeśli nie akceptujesz, nie korzystaj z usługi.",
+          "body": "Korzystając z Cyprus Winter (\"usługa\"), akceptujesz te Warunki korzystania oraz naszą <privacyPolicyLink>Politykę prywatności</privacyPolicyLink>. Jeśli nie akceptujesz, nie korzystaj z usługi.",
           "privacyPolicyLink": "Politykę prywatności"
         },
         "s2": {
