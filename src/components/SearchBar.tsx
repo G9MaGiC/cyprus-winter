@@ -183,7 +183,7 @@ export default function SearchBar({
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
-      {query.length >= 2 && !hasResults && (
+      {focused && query.length >= 2 && !hasResults && (
         <div className={`absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-center text-olive/70 text-sm`}>
           <p className="mb-4">{tSearch("noResults", { query })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
