@@ -165,6 +165,11 @@ export async function POST(req: Request) {
     );
   }
 
+  const contentLength = Number(req.headers.get("content-length") ?? 0);
+  if (Number.isFinite(contentLength) && contentLength > 256_000) {
+    return jsonError("VALIDATION_ERROR", "Request body is too large.", 413);
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -176,6 +181,14 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     const msg = parsed.error.issues[0]?.message ?? "messages array is required";
     return jsonError("VALIDATION_ERROR", msg, 400, [{ field: "messages", message: msg }]);
+  }
+
+  const totalMessageCharacters = parsed.data.messages.reduce(
+    (total, message) => total + message.content.length,
+    0
+  );
+  if (totalMessageCharacters > 40_000) {
+    return jsonError("VALIDATION_ERROR", "Conversation is too long. Start a new chat.", 413);
   }
 
   const messages = parsed.data.messages.map((m) => ({
@@ -347,7 +360,8 @@ export async function POST(req: Request) {
       if (!isRetryableError(err)) {
         lastErr = err;
         lastProvider = provider;
-        break;
+        console.warn(`Chat provider rejected the request (${model}); trying next provider.`);
+        continue;
       }
       // Fall back to non-streaming for this provider
       try {
