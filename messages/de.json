@@ -2747,7 +2747,7 @@
       "sections": {
         "s1": {
           "title": "1. Zustimmung",
-          "body": "Durch die Nutzung von Cyprus Winter (\"der Service\") stimmen Sie diesen Nutzungsbedingungen und unserer {privacyPolicyLink} zu. Wenn Sie nicht einverstanden sind, nutzen Sie den Service nicht.",
+          "body": "Durch die Nutzung von Cyprus Winter (\"der Service\") stimmen Sie diesen Nutzungsbedingungen und unserer <privacyPolicyLink>Datenschutzerklärung</privacyPolicyLink> zu. Wenn Sie nicht einverstanden sind, nutzen Sie den Service nicht.",
           "privacyPolicyLink": "Datenschutzerklärung"
         },
         "s2": {
