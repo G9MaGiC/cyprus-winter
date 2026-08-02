@@ -3,6 +3,9 @@
  */
 import { getSupabase, hasSupabase } from "./supabase";
 
+export const TRAIL_REPORT_FRESHNESS_HOURS = 48;
+const TRAIL_REPORT_FRESHNESS_MS = TRAIL_REPORT_FRESHNESS_HOURS * 60 * 60 * 1000;
+
 export type TrailReportStatus = "open" | "caution" | "closed";
 export type TrailReportSurface = "dry" | "muddy" | "snow" | "icy";
 
@@ -75,10 +78,12 @@ export async function getLatestReportsByTrail(trailId: string, limit = 5): Promi
   const supabase = getSupabase();
   if (!supabase) return [];
 
+  const freshSince = new Date(Date.now() - TRAIL_REPORT_FRESHNESS_MS).toISOString();
   const { data, error } = await supabase
     .from("trail_reports")
     .select("*")
     .eq("trail_id", trailId)
+    .gte("reported_at", freshSince)
     .order("reported_at", { ascending: false })
     .limit(limit);
 
