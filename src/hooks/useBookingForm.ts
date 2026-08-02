@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback, type RefObject } from "react";
 import type { z } from "zod";
 import { track } from "@/lib/analytics";
-import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
+import { addBookingToLocal } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
 import {
   formatZodErrors,
@@ -48,7 +48,7 @@ export function useBookingForm(
   config: BookingFormConfig,
   tErrors: ErrorStrings
 ): BookingFormState {
-  const { type, providerId, schema, extraFields, analyticsExtra, validationLabels } = config;
+  const { type, providerId, schema, extraFields, validationLabels } = config;
 
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -168,17 +168,8 @@ export function useBookingForm(
       setEmailDelayed(data.emailStatus?.confirmationSent === false);
       form.reset();
 
-      const trackPayload: Record<string, string | number | undefined> = {
-        partySize: Number(validated.partySize),
-        ...analyticsExtra,
-      };
-      track("booking_complete", trackPayload);
-
-      if (loadLocalBookings().length === 0) {
-        const firstBookingPayload: Record<string, string | number | undefined> = { ...analyticsExtra };
-        track("first_booking", firstBookingPayload);
-      }
-
+      // booking_complete is recorded by the server after durable creation,
+      // so clients cannot forge conversion funnel data.
       addBookingToLocal(data.booking);
       idempotencyKeyRef.current = null;
     } catch (err) {

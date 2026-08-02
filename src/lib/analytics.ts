@@ -3,11 +3,11 @@
  * Non-essential analytics requires explicit cookie consent.
  */
 import { hasAnalyticsConsent } from "@/lib/cookie-consent";
-import { PRODUCT_EVENTS, type ProductEventName, type TrackEventName } from "@/lib/track-events";
+import { PRODUCT_EVENTS, type ClientTrackEventName, type ProductEventName } from "@/lib/track-events";
 
 const TRACK_ENDPOINT = "/api/track";
 
-export type EventName = TrackEventName;
+export type EventName = ClientTrackEventName;
 
 type EventProps = Record<string, string | number | boolean | undefined>;
 

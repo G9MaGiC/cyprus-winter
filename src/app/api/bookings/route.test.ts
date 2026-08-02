@@ -58,6 +58,14 @@ describe("POST /api/bookings", () => {
     expect(data.error?.code).toBe("VALIDATION_ERROR");
   });
 
+  it("silently drops honeypot submissions", async () => {
+    const res = await POST(
+      postReq({ ...validBody, website: "https://bot.example" }, "127.0.0.41")
+    );
+    expect(res.status).toBe(200);
+    expect((await res.json()).stored).toBe(false);
+  });
+
   it("returns 404 for unknown winery", async () => {
     const res = await POST(
       postReq({ ...validBody, providerId: "unknown-winery-xyz" }, "127.0.0.4")

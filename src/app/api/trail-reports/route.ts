@@ -2,7 +2,13 @@ import { createTrailReport } from "@/lib/trail-reports";
 import { rateLimit } from "@/lib/rate-limit";
 import { trails } from "@/data/trails";
 import { z } from "zod";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
 
@@ -42,15 +48,13 @@ export async function POST(req: Request) {
   }
 
   try {
-    const rawBody = await req.text();
-    if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
-      return jsonError("PAYLOAD_TOO_LARGE", "Report payload is too large.", 413);
-    }
-
     let body: unknown;
     try {
-      body = JSON.parse(rawBody);
-    } catch {
+      body = await readJsonBody(req, MAX_BODY_BYTES);
+    } catch (err) {
+      if (err instanceof RequestBodyTooLargeError) {
+        return jsonError("PAYLOAD_TOO_LARGE", "Report payload is too large.", 413);
+      }
       return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
     }
 

@@ -17,6 +17,7 @@ export type { RateLimitResult } from "./rate-limit-shared";
 export type RateLimitScope =
   | "chat"
   | "bookings"
+  | "bookings-email"
   | "bookings-lookup"
   | "trail-reports"
   | "track"
@@ -43,7 +44,8 @@ function isCiE2eTest(): boolean {
 export async function rateLimit(
   req: Request,
   limit: number,
-  scope: RateLimitScope
+  scope: RateLimitScope,
+  key?: string
 ): Promise<RateLimitResult> {
   if (shouldBypass(req)) return bypassResult();
 
@@ -51,7 +53,7 @@ export async function rateLimit(
     throw new Error("Distributed rate limiting is required in production.");
   }
 
-  const identifier = `${scope}:${getClientId(req)}`;
+  const identifier = `${scope}:${key?.trim() || getClientId(req)}`;
   if (hasRedisEnv()) {
     return redisRateLimit(identifier, limit);
   }

@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/routing";
 const CHAT_LOCALES = ["en", "el", "de", "pl", "ro", "fr", "he"] as const satisfies readonly Locale[];
 
 const messageSchema = z.object({
-  role: z.enum(["user", "assistant", "system"]),
+  role: z.enum(["user", "assistant"]),
   content: z.string().min(1).max(10000),
 });
 

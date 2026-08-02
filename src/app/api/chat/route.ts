@@ -3,7 +3,13 @@ import { buildAIContext, buildAIContextRelevant } from "@/lib/ai-context";
 import { getPlaceById } from "@/data";
 import { rateLimit } from "@/lib/rate-limit";
 import { chatRequestSchema } from "@/lib/chat-schema";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 import { isSafeInternalPath as isAllowedAppPath } from "@/lib/safe-internal-path";
@@ -165,15 +171,13 @@ export async function POST(req: Request) {
     );
   }
 
-  const contentLength = Number(req.headers.get("content-length") ?? 0);
-  if (Number.isFinite(contentLength) && contentLength > 256_000) {
-    return jsonError("VALIDATION_ERROR", "Request body is too large.", 413);
-  }
-
   let body: unknown;
   try {
-    body = await req.json();
-  } catch {
+    body = await readJsonBody(req, 256_000);
+  } catch (err) {
+    if (err instanceof RequestBodyTooLargeError) {
+      return jsonError("PAYLOAD_TOO_LARGE", "Request body is too large.", 413);
+    }
     return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
   }
 

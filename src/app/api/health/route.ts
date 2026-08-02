@@ -12,13 +12,14 @@ import {
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
-  let limitResult: RateLimitResult;
+  let limitResult: RateLimitResult | null = null;
   try {
     limitResult = await rateLimit(req, 60, "health");
   } catch {
-    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+    // Health must still expose authorized readiness diagnostics when Redis is missing.
+    limitResult = null;
   }
-  if (!limitResult.ok) {
+  if (limitResult && !limitResult.ok) {
     return jsonRateLimitedFromResult("Too many health checks", limitResult.resetAt);
   }
   const production = process.env.NODE_ENV === "production";
@@ -71,7 +72,9 @@ export async function GET(req: Request) {
   const ok = (!production || productionReady) && (!hasSupabase() || supabaseOk);
 
   const headers: HeadersInit = {
-    ...rateLimitSuccessHeaders(limitResult.remaining, 60, limitResult.bypassed),
+    ...(limitResult
+      ? rateLimitSuccessHeaders(limitResult.remaining, 60, limitResult.bypassed)
+      : {}),
     "Cache-Control": "no-store",
   };
   const detailed = {

@@ -20,6 +20,10 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
   const router = useRouter();
 
   function handleClick(card: Card) {
+    if (card.type === "event") {
+      router.push("/events");
+      return;
+    }
     const basePath = card.type === "trail" ? "/trails" : "/discover";
     router.push(`${basePath}/${card.id}`);
   }

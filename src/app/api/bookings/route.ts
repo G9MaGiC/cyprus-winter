@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { BookingIdempotencyConflictError, createBooking, getBookingsByEmail } from "@/lib/bookings";
 import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
@@ -7,9 +8,17 @@ import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
 import { trails } from "@/data/trails";
 import { z } from "zod";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
+
+const MAX_BOOKING_BODY_BYTES = 32_000;
 
 function getBearerToken(req: Request): string | null {
   const header = req.headers.get("authorization")?.trim();
@@ -31,6 +40,26 @@ function publicBookingView(booking: Awaited<ReturnType<typeof getBookingsByEmail
   };
 }
 
+async function recordTrustedBookingEvent(
+  booking: Awaited<ReturnType<typeof createBooking>>["booking"]
+): Promise<void> {
+  const supabase = getSupabase();
+  if (!supabase) return;
+
+  const { error } = await supabase.from("conversion_events").insert({
+    event: "booking_complete",
+    properties: {
+      source: "booking_api",
+      booking_id: booking.id,
+      booking_type: booking.type,
+      provider_id: booking.providerId,
+      party_size: booking.partySize,
+    },
+    session_id: null,
+  });
+  if (error) console.error("Trusted booking conversion event failed:", error);
+}
+
 export async function POST(req: Request) {
   let limitResult: RateLimitResult;
   try {
@@ -49,11 +78,25 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = await req.json();
+    let body: unknown;
+    try {
+      body = await readJsonBody(req, MAX_BOOKING_BODY_BYTES);
+    } catch (err) {
+      if (err instanceof RequestBodyTooLargeError) {
+        return jsonError("PAYLOAD_TOO_LARGE", "Booking payload is too large.", 413);
+      }
+      return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
+    }
     if (!body || typeof body !== "object" || Array.isArray(body)) {
       return jsonError("VALIDATION_ERROR", "Invalid input", 400);
     }
     const raw = body as Record<string, unknown>;
+    if (typeof raw.website === "string" && raw.website.trim()) {
+      return Response.json(
+        { booking: null, stored: false, message: "Thanks for the request." },
+        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+      );
+    }
     const parsed = createBookingSchema.safeParse({
       type: raw.type ?? "winery_tasting",
       providerId: raw.providerId,
@@ -77,6 +120,23 @@ export async function POST(req: Request) {
       return jsonError("VALIDATION_ERROR", "Guest name is required", 400);
     }
 
+    const emailRateLimitKey = createHash("sha256")
+      .update(guestEmail.trim().toLowerCase())
+      .digest("hex");
+    let emailLimitResult: RateLimitResult;
+    try {
+      emailLimitResult = await rateLimit(req, 10, "bookings-email", emailRateLimitKey);
+    } catch {
+      return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+    }
+    if (!emailLimitResult.ok) {
+      return jsonRateLimitedFromResult(
+        "Please wait before making another booking with this email address.",
+        emailLimitResult.resetAt
+      );
+    }
+    const successLimitRemaining = Math.min(limitResult.remaining, emailLimitResult.remaining);
+
     if (type === "winery_tasting") {
       const winery = wineries.find((w) => w.id === providerId);
       if (!winery) {
@@ -99,6 +159,7 @@ export async function POST(req: Request) {
       let confirmationSent = false;
       let wineryNotificationSent = false;
       if (created) {
+        await recordTrustedBookingEvent(booking);
         try {
           confirmationSent = await sendBookingConfirmation(booking);
         } catch (e) {
@@ -131,7 +192,7 @@ export async function POST(req: Request) {
               : {}),
           },
         },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+        { headers: rateLimitSuccessHeaders(successLimitRemaining, 10, limitResult.bypassed || emailLimitResult.bypassed) }
       );
     }
 
@@ -162,6 +223,7 @@ export async function POST(req: Request) {
       let confirmationSent = false;
       let guideNotificationSent = false;
       if (created) {
+        await recordTrustedBookingEvent(booking);
         try {
           confirmationSent = await sendBookingConfirmation(booking);
         } catch (e) {
@@ -195,7 +257,7 @@ export async function POST(req: Request) {
               : {}),
           },
         },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+        { headers: rateLimitSuccessHeaders(successLimitRemaining, 10, limitResult.bypassed || emailLimitResult.bypassed) }
       );
     }
 

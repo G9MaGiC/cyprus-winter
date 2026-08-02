@@ -1,22 +1,24 @@
 import { NextRequest } from "next/server";
 import { getSupabase } from "@/lib/supabase";
-import { isPushConfigured } from "@/lib/push";
+import { isAllowedPushEndpoint, isPushConfigured } from "@/lib/push";
 import { rateLimit } from "@/lib/rate-limit";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { z } from "zod";
 import { isValidCalendarDate } from "@/lib/booking-schema";
 
+const MAX_PUSH_BODY_BYTES = 32_000;
+
 const subscribeSchema = z.object({
   clientId: z.string().min(8).max(64),
   subscription: z.object({
-    endpoint: z.string().url().refine((value) => {
-      try {
-        return new URL(value).protocol === "https:";
-      } catch {
-        return false;
-      }
-    }, "Push endpoint must use HTTPS"),
+    endpoint: z.string().url().refine(isAllowedPushEndpoint, "Unsupported push endpoint"),
     keys: z.object({
       p256dh: z.string().min(1).max(200),
       auth: z.string().min(1).max(200),
@@ -54,7 +56,15 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = await req.json();
+    let body: unknown;
+    try {
+      body = await readJsonBody(req, MAX_PUSH_BODY_BYTES);
+    } catch (err) {
+      if (err instanceof RequestBodyTooLargeError) {
+        return jsonError("PAYLOAD_TOO_LARGE", "Push subscription payload is too large.", 413);
+      }
+      return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
+    }
     const parsed = subscribeSchema.safeParse(body);
     if (!parsed.success) {
       const msg = parsed.error.issues[0]?.message ?? "Invalid input";
@@ -71,10 +81,10 @@ export async function POST(req: NextRequest) {
       .eq("id", id)
       .single();
 
-    // Merge: never turn off an opt-in from a different form (trip vs weather)
+    // Omitted fields preserve the current preference, while explicit false disables it.
     const merged = {
-      push_trip_countdown: pushTripCountdown === true || (existing?.push_trip_countdown ?? pushTripCountdown ?? true),
-      push_weather_digest: pushWeatherDigest === true || (existing?.push_weather_digest ?? pushWeatherDigest ?? false),
+      push_trip_countdown: pushTripCountdown ?? existing?.push_trip_countdown ?? false,
+      push_weather_digest: pushWeatherDigest ?? existing?.push_weather_digest ?? false,
       trip_start_date: tripStartDate ?? existing?.trip_start_date ?? null,
     };
 

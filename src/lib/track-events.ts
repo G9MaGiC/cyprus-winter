@@ -32,6 +32,19 @@ export const TRACK_EVENTS = [
 
 export type TrackEventName = (typeof TRACK_EVENTS)[number];
 
+/** Events that must be recorded by trusted server workflows, not clients. */
+export const SERVER_ONLY_TRACK_EVENTS = [
+  "booking_complete",
+  "first_booking",
+] as const;
+
+export type ServerOnlyTrackEventName = (typeof SERVER_ONLY_TRACK_EVENTS)[number];
+export type ClientTrackEventName = Exclude<TrackEventName, ServerOnlyTrackEventName>;
+
+export const CLIENT_TRACK_EVENTS = TRACK_EVENTS.filter(
+  (event) => !(SERVER_ONLY_TRACK_EVENTS as readonly string[]).includes(event)
+);
+
 export const PRODUCT_EVENTS = [
   "plan_add",
   "plan_view",
