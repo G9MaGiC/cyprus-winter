@@ -31,7 +31,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   const url = new URL(request.url);
-  if (request.method !== "GET" || url.origin !== self.location.origin || url.pathname.startsWith("/api/")) {
+  const isPrivatePath = ["/bookings", "/admin"].some((prefix) => url.pathname === prefix || url.pathname.startsWith(`${prefix}/`));\n  const hasCredentials = request.headers.has("authorization") || request.headers.has("cookie");\n  if (request.method !== "GET" || url.origin !== self.location.origin || url.pathname.startsWith("/api/") || isPrivatePath || hasCredentials) {
     return;
   }
 
