@@ -18,6 +18,7 @@ import DebugErrorBoundary from "@/components/DebugErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LAYOUT, LAYER } from "@/lib/design-tokens";
 import ClientComponents from "@/components/ClientComponents";
+import { SerwistProvider } from "@/app/serwist";
 
 const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
 
@@ -114,6 +115,7 @@ export default async function RootLayout({
           {tCommon("skipToContent")}
         </a>
         <NextIntlClientProvider messages={messages}>
+          <SerwistProvider swUrl="/sw.js">
           <DebugErrorBoundary>
             <Providers>
               <ConversionTrackerClient />
@@ -129,6 +131,7 @@ export default async function RootLayout({
             </Providers>
           </DebugErrorBoundary>
           <ClientComponents />
+          </SerwistProvider>
         </NextIntlClientProvider>
       </body>
     </html>
