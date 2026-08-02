@@ -157,7 +157,7 @@ Example response:
 
 ---
 
-## 3. Build Directory Ownership (root-owned .next / .next)
+## 3. Build Directory Ownership (root-owned .next)
 
 ### Risk
 
@@ -196,7 +196,7 @@ If `npm run build` (or equivalent) is run with `sudo`, or in Docker as root, the
 If you can’t fix ownership (e.g. shared host):
 
 - `next.config.ts` already uses `distDir: ".next"`.
-- If both `.next` and `.next` are root-owned, use a new dir:
+- If `.next` is root-owned and cannot be repaired, use a new dir:
   1. Set `distDir: "build/next"` (or another path) in `next.config.ts`.
   2. Update `scripts/check-build-dir.mjs` to check that path.
   3. Add the new dir to `.gitignore`.
