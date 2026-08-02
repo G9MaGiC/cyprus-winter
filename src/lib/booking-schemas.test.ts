@@ -29,4 +29,19 @@ describe("booking calendar-date validation", () => {
 
     expect(result.success).toBe(true);
   });
+
+  it.each([
+    ["winery", wineryBookingSchema],
+    ["guide", guideBookingSchema],
+  ])("rejects impossible calendar dates for %s bookings", (_type, schema) => {
+    const result = schema.safeParse({
+      date: "2026-02-31",
+      partySize: 2,
+      guestName: "Test Guest",
+      guestEmail: "test@example.com",
+      notes: "",
+    });
+
+    expect(result.success).toBe(false);
+  });
 });
