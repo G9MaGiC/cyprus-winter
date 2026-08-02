@@ -88,6 +88,15 @@ export function useTripDates() {
     setHydrated(true);
   }, []);
 
+  useEffect(() => {
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key !== STORAGE_KEY) return;
+      setDates(loadTripDates());
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
   const setTripDates = useCallback((start: string | null, end: string | null) => {
     const next = { start, end };
     setDates(next);
