@@ -9,14 +9,19 @@ const messageSchema = z.object({
 });
 
 export const chatRequestSchema = z.object({
-  messages: z.array(messageSchema).min(1),
+  messages: z.array(messageSchema).min(1).max(24),
   context: z
     .object({
       locale: z.enum(CHAT_LOCALES).optional(),
       path: z.string().max(256).optional(),
       lastPlace: z.string().max(256).optional(),
       itinerary: z
-        .array(z.object({ day: z.number().int().min(1), placeIds: z.array(z.string().max(128)) }))
+        .array(
+          z.object({
+            day: z.number().int().min(1).max(14),
+            placeIds: z.array(z.string().max(128)).max(50),
+          })
+        )
         .max(14)
         .optional(),
       currentLocation: z
