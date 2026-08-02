@@ -10,10 +10,10 @@ import { isValidCalendarDate } from "@/lib/booking-schema";
 const subscribeSchema = z.object({
   clientId: z.string().min(8).max(64),
   subscription: z.object({
-    endpoint: z.string().url(),
+    endpoint: z.string().url().refine((value) => {\n      try {\n        return new URL(value).protocol === "https:";\n      } catch {\n        return false;\n      }\n    }, "Push endpoint must use HTTPS"),
     keys: z.object({
-      p256dh: z.string().max(200),
-      auth: z.string().max(200),
+      p256dh: z.string().min(1).max(200),
+      auth: z.string().min(1).max(200),
     }),
     expirationTime: z.number().nullable().optional(),
   }),
