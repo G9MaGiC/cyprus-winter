@@ -4,6 +4,8 @@
 import { getSupabase } from "./supabase";
 import type { PushSubscriptionJson } from "./push";
 
+const PAGE_SIZE = 1000;
+
 export type PushSubscriptionRow = {
   id: string;
   client_id: string;
@@ -36,18 +38,26 @@ export async function getSubscribersForTripCountdown(): Promise<PushSubscription
     in3.toISOString().slice(0, 10),
   ];
 
-  const { data, error } = await supabase
-    .from("push_subscriptions")
-    .select("*")
-    .eq("push_trip_countdown", true)
-    .in("trip_start_date", targetDates);
+  const rows: PushSubscriptionRow[] = [];
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from("push_subscriptions")
+      .select("id,client_id,subscription,trip_start_date,push_trip_countdown,push_weather_digest,last_push_at,last_weather_push_at")
+      .eq("push_trip_countdown", true)
+      .in("trip_start_date", targetDates)
+      .range(offset, offset + PAGE_SIZE - 1);
 
-  if (error) {
-    console.error("Push subscribers query error:", error);
-    return [];
+    if (error) {
+      console.error("Push subscribers query error:", error);
+      return [];
+    }
+
+    rows.push(...((data ?? []) as PushSubscriptionRow[]));
+    if ((data?.length ?? 0) < PAGE_SIZE) break;
+    offset += PAGE_SIZE;
   }
 
-  const rows = (data ?? []) as PushSubscriptionRow[];
   return rows.filter(
     (r) => r.last_push_at == null || new Date(r.last_push_at).toISOString() < todayStart
   );
@@ -73,17 +83,25 @@ export async function getSubscribersForWeatherDigest(): Promise<PushSubscription
   const supabase = getSupabase();
   if (!supabase) return [];
 
-  const { data, error } = await supabase
-    .from("push_subscriptions")
-    .select("*")
-    .eq("push_weather_digest", true);
+  const rows: PushSubscriptionRow[] = [];
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from("push_subscriptions")
+      .select("id,client_id,subscription,trip_start_date,push_trip_countdown,push_weather_digest,last_push_at,last_weather_push_at")
+      .eq("push_weather_digest", true)
+      .range(offset, offset + PAGE_SIZE - 1);
 
-  if (error) {
-    console.error("Weather digest subscribers query error:", error);
-    return [];
+    if (error) {
+      console.error("Weather digest subscribers query error:", error);
+      return [];
+    }
+
+    rows.push(...((data ?? []) as PushSubscriptionRow[]));
+    if ((data?.length ?? 0) < PAGE_SIZE) break;
+    offset += PAGE_SIZE;
   }
 
-  const rows = (data ?? []) as PushSubscriptionRow[];
   const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString();
   return rows.filter(
     (r) =>
