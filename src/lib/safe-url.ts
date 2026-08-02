@@ -1,10 +1,11 @@
 /**
- * URL safety checks for links (XSS prevention).
+ * URL safety checks for links (XSS/open-navigation prevention).
  * Used when rendering markdown links from AI/user content.
- * Decodes HTML entities before protocol check to prevent bypass (e.g. &#106;avascript:).
+ * Decodes HTML and percent entities before protocol/path checks.
  */
 
 const DANGEROUS_PROTOCOLS = ["javascript:", "data:", "vbscript:", "file:"];
+const INTERNAL_BASE = "https://cyprus-winter.invalid/";
 
 function decodeHtmlEntities(str: string): string {
   return str
@@ -12,21 +13,43 @@ function decodeHtmlEntities(str: string): string {
     .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)));
 }
 
+function decodePercentEncoding(str: string): string {
+  try {
+    return decodeURIComponent(str);
+  } catch {
+    return str;
+  }
+}
+
 /**
- * Returns true if the URL is safe to use as href (relative paths or https/http).
- * Rejects javascript:, data:, and other dangerous protocols (after decoding entities).
+ * Returns true if the URL is safe to use as href.
+ * Internal paths are checked with a URL parser so slash/backslash variants
+ * cannot be normalized into an external host by the browser.
  */
 export function isSafeUrl(url: string): boolean {
   if (typeof url !== "string" || !url.trim()) return false;
-  const decoded = decodeHtmlEntities(url.trim());
-  const trimmed = decoded.trim().toLowerCase();
-  // Protocol-relative URLs (//evil.com) must not be treated as app paths.
-  if (trimmed.startsWith("//")) return false;
-  if (trimmed.startsWith("/")) return true; // relative path
-  if (trimmed.startsWith("#")) return true; // hash link
+
+  const htmlDecoded = decodeHtmlEntities(url);
+  if (/[\u0000-\u001f\u007f]/.test(htmlDecoded)) return false;
+  const decoded = decodePercentEncoding(htmlDecoded.trim());
+  if (/[\\\u0000-\u001f\u007f]/.test(decoded)) return false;
+
+  const trimmed = decoded.trim();
+  const lower = trimmed.toLowerCase();
+  if (lower.startsWith("//")) return false;
   for (const proto of DANGEROUS_PROTOCOLS) {
-    if (trimmed.startsWith(proto)) return false;
+    if (lower.startsWith(proto)) return false;
   }
-  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return true;
-  return false;
+
+  if (trimmed.startsWith("#")) return true;
+
+  try {
+    const parsed = new URL(trimmed, INTERNAL_BASE);
+    if (trimmed.startsWith("/")) {
+      return parsed.origin === new URL(INTERNAL_BASE).origin;
+    }
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
 }
