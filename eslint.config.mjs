@@ -8,7 +8,8 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "react/no-unescaped-entities": "off",
-      // These effects intentionally hydrate browser-only storage/query state after mount.\n      "react-hooks/set-state-in-effect": "off",
+      // These effects intentionally hydrate browser-only storage/query state after mount.
+      "react-hooks/set-state-in-effect": "off",
     },
   },
   // Override default ignores of eslint-config-next.
