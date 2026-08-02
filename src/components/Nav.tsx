@@ -2,7 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { triggerAIAssistant } from "./AIAssistantTrigger";
 import { LAYOUT, LAYER } from "@/lib/design-tokens";
@@ -17,6 +17,11 @@ export default function Nav() {
   const [moreOpen, setMoreOpen] = useState(false);
   const moreMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeMobileMenu = useCallback(() => {
+    setOpen(false);
+    requestAnimationFrame(() => mobileMenuButtonRef.current?.focus());
+  }, []);
   const { user } = useAuth();
   const moreLinksResolved = useMemo(
     () =>
@@ -32,13 +37,13 @@ export default function Nav() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setOpen(false);
+        closeMobileMenu();
         setMoreOpen(false);
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, []);
+  }, [closeMobileMenu]);
 
   useEffect(() => {
     if (!moreOpen || !moreMenuRef.current) return;
@@ -103,7 +108,7 @@ export default function Nav() {
         </AppLink>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <AppLink
             href="/search"
             prefetch={false}
@@ -114,7 +119,7 @@ export default function Nav() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </AppLink>
-          {navPrimaryLinks.map((link) => (
+          {navPrimaryLinks.filter((link) => link.href !== "/").map((link) => (
             <AppLink
               key={link.href}
               href={link.href}
@@ -184,11 +189,13 @@ export default function Nav() {
 
         {/* Mobile menu button — 44px min touch target */}
         <button
+          ref={mobileMenuButtonRef}
           type="button"
-          className="md:hidden min-h-[44px] min-w-[44px] p-3 flex items-center justify-center text-white rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
-          onClick={() => setOpen(!open)}
+          className="lg:hidden min-h-[44px] min-w-[44px] p-3 flex items-center justify-center text-white rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+          onClick={() => (open ? closeMobileMenu() : setOpen(true))
           aria-label={open ? t("closeMenu") : t("openMenu")}
           aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           <svg
             className="w-6 h-6"
@@ -216,11 +223,11 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div ref={mobileMenuRef} role="menu" className="md:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
+        <div id="mobile-menu" ref={mobileMenuRef} role="menu" className="lg:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
           <AppLink
             href="/search"
             prefetch={false}
-            onClick={() => setOpen(false)}
+            onClick={closeMobileMenu}
             className="min-h-[44px] flex items-center py-3 font-medium text-golden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded"
           >
             {t("search")}
@@ -239,7 +246,7 @@ export default function Nav() {
               href={link.href}
               prefetch={false}
               aria-current={isActive(pathname, link.href) ? "page" : undefined}
-              onClick={() => setOpen(false)}
+              onClick={closeMobileMenu}
               className={`min-h-[44px] flex items-center py-3 font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${
                 isActive(pathname, link.href) ? "text-golden" : "text-white"
               }`}

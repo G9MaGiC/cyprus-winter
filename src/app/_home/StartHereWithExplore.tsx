@@ -151,43 +151,46 @@ export default function StartHereWithExplore() {
           </div>
         </div>
 
-        <div className="pt-4 sm:pt-6 border-t border-sand-200/80 mb-8 sm:mb-10">
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreMore")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {exploreMoreChips.map((c) => (
-              <AppLink key={`${c.href}-${c.label}`} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
-                {c.label}
-              </AppLink>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p className={`${TYPE.kicker} text-sage text-center mb-3`}>{tHome("startHere.exploreByMood")}</p>
-          <div className="relative">
-            <div
-              className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-2 sm:gap-3 pb-2 -mx-1 md:mx-0 px-1 pr-14 md:px-0 md:pr-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              role="group"
-              aria-label={tHome("startHere.aria.exploreByMood")}
-            >
-              {moodChips.map((m) => (
-                <AppLink
-                  key={m.href + m.label}
-                  href={m.href}
-                  prefetch="auto"
-                  className={`${CTA.chipSecondary} shrink-0 snap-start`}
-                  aria-label={m.ariaLabel}
-                >
-                  {m.label}
+        <details className="border-t border-sand-200/80 group">
+          <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg [&::-webkit-details-marker]:hidden">
+            <span className={TYPE.kicker + " text-sage"}>{tHome("startHere.exploreMore")}</span>
+            <svg className="h-5 w-5 text-sage transition-transform duration-200 group-open:rotate-180" aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div className="pb-1 sm:pb-2 space-y-6">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {exploreMoreChips.map((c) => (
+                <AppLink key={c.href + c.label} href={c.href} prefetch="auto" className={chipClass(c.variant)} aria-label={c.ariaLabel}>
+                  {c.label}
                 </AppLink>
               ))}
             </div>
-            <div
-              className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
-              aria-hidden
-            />
+            <div className="border-t border-sand-200/80 pt-5">
+              <p className={TYPE.kicker + " text-sage text-center mb-3"}>{tHome("startHere.exploreByMood")}</p>
+              <div className="relative">
+                <div
+                  className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-2 sm:gap-3 pb-2 -mx-1 md:mx-0 px-1 pr-14 md:px-0 md:pr-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  role="group"
+                  aria-label={tHome("startHere.aria.exploreByMood")}
+                >
+                  {moodChips.map((m) => (
+                    <AppLink
+                      key={m.href + m.label}
+                      href={m.href}
+                      prefetch="auto"
+                      className={CTA.chipSecondary + " shrink-0 snap-start"}
+                      aria-label={m.ariaLabel}
+                    >
+                      {m.label}
+                    </AppLink>
+                  ))}
+                </div>
+                <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden" aria-hidden />
+              </div>
+            </div>
           </div>
-        </div>
+        </details>
       </div>
     </section>
   );

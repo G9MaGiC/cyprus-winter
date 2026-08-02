@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { NextIntlClientProvider } from "next-intl";
 // Alias setRequestLocale to avoid "defined multiple times" with Turbopack
-import { getMessages, getTranslations, setRequestLocale as setLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale as setLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -66,13 +65,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
   setLocale(locale);
 
-  const messages = await getMessages();
 
-  return (
-    <NextIntlClientProvider messages={messages}>
-      <div className={LAYOUT.paddedTop}>
-        {children}
-      </div>
-    </NextIntlClientProvider>
-  );
+  return <div className={LAYOUT.paddedTop}>{children}</div>;
 }

@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import HomeWeatherStrip from "@/app/_home/HomeWeatherStrip";
 import HomeSearchSection from "@/app/_home/HomeSearchSection";
-import HomeWhyCyprusTeaser from "@/app/_home/HomeWhyCyprusTeaser";
 import HomeTrailConditionsStrip from "@/app/_home/HomeTrailConditionsStrip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import StartHereWithExplore from "@/app/_home/StartHereWithExplore";
@@ -60,7 +59,6 @@ export default async function HomePageContent({
       <Suspense fallback={<SearchSectionSkeleton />}>
         <HomeSearchSection locale={locale} />
       </Suspense>
-      <HomeWhyCyprusTeaser locale={locale} />
       <Suspense fallback={<WeatherStripSkeleton />}>
         <HomeTrailConditionsStrip locale={locale} />
       </Suspense>
