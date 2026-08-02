@@ -58,6 +58,7 @@ export function useBookingForm(
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [notesLength, setNotesLength] = useState(0);
   const [todayStr, setTodayStr] = useState("");
+  const idempotencyKeyRef = useRef<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
 
@@ -118,9 +119,17 @@ export function useBookingForm(
     setLoading(true);
     const validated = validation.data as Record<string, unknown>;
 
+    if (!idempotencyKeyRef.current) {
+      idempotencyKeyRef.current =
+        typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `booking-${Date.now()}-${Math.random().toString(36).slice(2, 14)}`;
+    }
+
     const bodyObj: Record<string, unknown> = {
       type,
       providerId,
+      idempotencyKey: idempotencyKeyRef.current,
       date: validated.date,
       partySize: validated.partySize,
       guestName: validated.guestName,
@@ -171,6 +180,7 @@ export function useBookingForm(
       }
 
       addBookingToLocal(data.booking);
+      idempotencyKeyRef.current = null;
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
@@ -178,6 +188,7 @@ export function useBookingForm(
         addMutation({ type: mutationType, url: "/api/bookings", method: "POST", body });
         setError(tErrors.offlineQueued);
       } else {
+        idempotencyKeyRef.current = null;
         setError(msg || tErrors.fallback);
       }
       setTimeout(() => {
