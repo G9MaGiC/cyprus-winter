@@ -116,7 +116,6 @@ export default function PlanShareBar({
               onClick={() => setShareMenuOpen((v) => !v)}
               className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white/90 text-olive border border-sand-200/80 hover:border-terracotta/20 hover:bg-sand-100/60 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               aria-expanded={shareMenuOpen}
-              aria-haspopup="menu"
               aria-label={tPlan("aria.shareVia")}
             >
               {tPlan("share.copyAndShare")}
@@ -126,7 +125,6 @@ export default function PlanShareBar({
             </button>
             {shareMenuOpen && (
               <div
-                role="menu"
                 className={`absolute right-0 top-full mt-2 py-3 px-4 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] ${LAYER.popover} animate-in fade-in slide-in-from-top-2 duration-200`}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") {
