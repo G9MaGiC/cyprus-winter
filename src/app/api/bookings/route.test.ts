@@ -51,7 +51,7 @@ describe("POST /api/bookings", () => {
   });
 
   it("requires an idempotency key", async () => {
-    const { idempotencyKey: _ignored, ...withoutKey } = validBody;
+    const withoutKey = { ...validBody, idempotencyKey: undefined };
     const res = await POST(postReq(withoutKey, "127.0.0.32"));
     expect(res.status).toBe(400);
     const data = await res.json();
