@@ -23,14 +23,14 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page).toHaveURL(/\/he\/plan/);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("main")).toBeVisible();
-    await expect(page.getByRole("navigation").getByRole("link", { name: "גילוי" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "גילוי" })).toBeVisible();
   });
 
   test("Romanian /ro/discover loads with localized title", async ({ page }) => {
     await page.goto("/ro/discover", { waitUntil: "domcontentloaded" });
     await expect(page).toHaveURL(/\/ro\/discover/);
     await expect(page.getByRole("main")).toBeVisible();
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Descoperă" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Descoperă" })).toBeVisible();
   });
 
   test("French /fr/plan loads main content", async ({ page }) => {
