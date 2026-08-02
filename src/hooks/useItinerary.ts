@@ -69,18 +69,21 @@ export function useItinerary() {
 
   useEffect(() => {
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY && e.newValue != null && isMountedRef.current) {
-        try {
-          const parsed = JSON.parse(e.newValue) as Record<string, string[]>;
-          const out = emptyDays();
-          for (const [k, v] of Object.entries(parsed)) {
-            const d = parseInt(k, 10);
-            if (d >= 1 && d <= MAX_DAYS && Array.isArray(v)) out[d] = v;
-          }
-          setDays(out);
-        } catch {
-          // ignore parse errors from other tabs
+      if (e.key !== STORAGE_KEY || !isMountedRef.current) return;
+      if (e.newValue === null) {
+        setDays(emptyDays());
+        return;
+      }
+      try {
+        const parsed = JSON.parse(e.newValue) as Record<string, string[]>;
+        const out = emptyDays();
+        for (const [k, v] of Object.entries(parsed)) {
+          const d = parseInt(k, 10);
+          if (d >= 1 && d <= MAX_DAYS && Array.isArray(v)) out[d] = v;
         }
+        setDays(out);
+      } catch {
+        // ignore parse errors from other tabs
       }
     };
     window.addEventListener("storage", handleStorage);
