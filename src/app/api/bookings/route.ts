@@ -1,4 +1,4 @@
-import { createBooking, getBookingsByEmail } from "@/lib/bookings";
+import { BookingIdempotencyConflictError, createBooking, getBookingsByEmail } from "@/lib/bookings";
 import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequestToGuide } from "@/lib/email";
@@ -198,6 +198,13 @@ export async function POST(req: Request) {
 
     return jsonError("VALIDATION_ERROR", "Invalid booking type", 400);
   } catch (err) {
+    if (err instanceof BookingIdempotencyConflictError) {
+      return jsonError(
+        "IDEMPOTENCY_CONFLICT",
+        "This booking key was already used for different details. Start a new booking.",
+        409
+      );
+    }
     console.error("Booking API error:", err);
     return jsonError(
       "SERVER_ERROR",
