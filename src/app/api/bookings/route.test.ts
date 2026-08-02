@@ -75,6 +75,18 @@ describe("POST /api/bookings", () => {
     expect(data.booking.providerId).toBe("tsiakkas");
   });
 
+  it("rejects reusing an idempotency key with different booking details", async () => {
+    const key = "conflict-booking-key-001";
+    const first = await POST(postReq({ ...validBody, idempotencyKey: key }, "127.0.0.53"));
+    const second = await POST(
+      postReq({ ...validBody, idempotencyKey: key, date: "2099-03-16" }, "127.0.0.54")
+    );
+    expect(first.status).toBe(200);
+    expect(second.status).toBe(409);
+    const data = await second.json();
+    expect(data.error?.code).toBe("IDEMPOTENCY_CONFLICT");
+  });
+
   it("replays an idempotent booking without creating a second record", async () => {
     const body = { ...validBody, idempotencyKey: "replay-booking-key-001" };
     const first = await POST(postReq(body, "127.0.0.51"));
