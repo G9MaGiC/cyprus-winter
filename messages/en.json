@@ -11,8 +11,8 @@
     "villages": "Villages",
     "troodos": "Troodos",
     "paphos": "Paphos",
-    "tagline": "Mild, uncrowded, real. Trails, villages, heritage. The island rewards the curious.",
-    "practical": "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
+    "tagline": "A quieter Cyprus. Trails, villages, wineries, and slow days.",
+    "practical": "Drive on the left. Pack layers. Check conditions before heading into Troodos.",
     "emergency": "Emergency",
     "touristInfo": "Tourist info",
     "ambulance": "Ambulance",
@@ -254,10 +254,10 @@
   },
   "home": {
     "title": "Cyprus Winter",
-    "subtitle": "Trails, Heritage & Villages",
-    "kicker": "The Mediterranean's best-kept secret",
+    "subtitle": "Trails, villages, wineries, and slow days",
+    "kicker": "Your winter guide to Cyprus",
     "footerSection": "More about Cyprus winter",
-    "headline": "Escape the cold. Ruins, trails, villages. Plan as you go.",
+    "headline": "A quieter side of the island.",
     "seasonal": {
       "lateYear": "Coast mild. Trails clear. Best for hiking.",
       "earlyYear": "Coast mild. Troodos with snow. Pack layers.",
@@ -306,16 +306,16 @@
       "prompt": "So — where do you want to go first?",
       "primaryPath": "Primary path",
       "title": "Start here",
-      "subtitle": "Just landed or still planning? Ruins to village tastings — start anywhere.",
+      "subtitle": "Just landed or still planning? Find a good place to begin.",
       "card": {
         "discoverTitle": "Discover",
-        "discoverDesc": "Places that feel real. Ruins, coasts, villages, heritage.",
+        "discoverDesc": "Mild coastlines, ruins, villages, and places worth slowing down for.",
         "discoverCta": "Start exploring",
         "planTitle": "Plan",
-        "planDesc": "Build a day or pick a template. Saves as you go.",
+        "planDesc": "Build a day around the time, weather, and places you care about.",
         "planCta": "Build a day",
         "bookTitle": "Book",
-        "bookDesc": "Reserve tastings before weekends fill.",
+        "bookDesc": "Reserve a tasting or guided experience before the weekend.",
         "bookCta": "Book tastings"
       },
       "browseByCategory": "Browse by category",
@@ -2786,7 +2786,7 @@
       "sections": {
         "s1": {
           "title": "1. Acceptance",
-          "body": "By using Cyprus Winter (\"the service\"), you agree to these Terms of Service and our {privacyPolicyLink}. If you do not agree, do not use the service.",
+          "body": "By using Cyprus Winter (\"the service\"), you agree to these Terms of Service and our <privacyPolicyLink>Privacy Policy</privacyPolicyLink>. If you do not agree, do not use the service.",
           "privacyPolicyLink": "Privacy Policy"
         },
         "s2": {
@@ -2840,8 +2840,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
-    "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land."
+    "homeTitle": "Cyprus Winter | Trails, Villages, Wineries, and Slow Days",
+    "homeDescription": "A quieter Cyprus in winter. Discover mild coastlines, mountain villages, open trails, wineries, and local places worth slowing down for."
   },
   "ui": {
     "hero": {
