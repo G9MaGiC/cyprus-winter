@@ -27,6 +27,7 @@ test.describe("Arrival decision flow", () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => {
       localStorage.setItem("cyprus-winter-onboarded", "true");
+      localStorage.setItem("cyprus-winter:cookie-consent", "all");
     });
   });
 
