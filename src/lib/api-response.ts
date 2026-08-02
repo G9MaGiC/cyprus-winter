@@ -31,7 +31,7 @@ export function jsonError(
     },
     message, // Top-level for clients that expect data.message or data.error (string)
   };
-  return Response.json(body, { status });
+  return Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
 
 /** 429 response with Retry-After and X-RateLimit headers. */
@@ -46,6 +46,7 @@ export function jsonRateLimited(
     {
       status: 429,
       headers: {
+        "Cache-Control": "no-store",
         "Retry-After": String(Math.ceil(retryAfterSeconds)),
         "X-RateLimit-Remaining": "0",
       },
@@ -69,6 +70,7 @@ export function rateLimitSuccessHeaders(
   bypassed?: boolean
 ): Record<string, string> {
   const headers: Record<string, string> = {
+    "Cache-Control": "no-store",
     "X-RateLimit-Remaining": String(Math.max(0, remaining)),
     "X-RateLimit-Limit": String(limit),
   };
