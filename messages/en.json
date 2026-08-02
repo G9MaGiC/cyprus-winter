@@ -319,7 +319,7 @@
         "bookCta": "Book tastings"
       },
       "browseByCategory": "Browse by category",
-      "alsoSubtitle": "Also: Culture, Coasts, Monasteries",
+      "alsoSubtitle": "Prefer culture, coast, or quiet places?",
       "exploreMore": "Explore more",
       "exploreByMood": "Explore by mood",
       "aria": {
@@ -482,8 +482,8 @@
       "srHeading": "Planning and essentials",
       "planTitle": "Plan your trip",
       "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "eventsDesc": "Epiphany, carnival, markets, and tastings. See what is happening while you are here.",
+      "defaultSubtitle": "Build a simple day around your time, the weather, and the places you want to see."
     },
     "recentlyViewed": {
       "title": "Recently viewed",
