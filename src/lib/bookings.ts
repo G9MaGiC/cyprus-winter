@@ -25,9 +25,44 @@ export type Booking = {
 const memoryStore: Booking[] = [];
 
 
-function idForIdempotencyKey(key: string): string {
-  const digest = createHash("sha256").update(key).digest("hex");
+export class BookingIdempotencyConflictError extends Error {
+  constructor() {
+    super("The idempotency key was already used for a different booking request.");
+    this.name = "BookingIdempotencyConflictError";
+  }
+}
+
+function idForIdempotencyKey(key: string, email: string): string {
+  const digest = createHash("sha256").update(`${email}\0${key}`).digest("hex");
   return `b-idem-${digest}`;
+}
+
+function matchesBookingRequest(
+  existing: Booking,
+  input: Omit<Booking, "id" | "status" | "createdAt">,
+  normalizedEmail: string
+): boolean {
+  return (
+    existing.type === input.type &&
+    existing.providerId === input.providerId &&
+    existing.providerName === input.providerName &&
+    existing.date === input.date &&
+    existing.partySize === input.partySize &&
+    existing.guestEmail === normalizedEmail &&
+    existing.guestName === input.guestName &&
+    (existing.notes ?? undefined) === (input.notes ?? undefined)
+  );
+}
+
+function replayOrThrow(
+  existing: Booking,
+  input: Omit<Booking, "id" | "status" | "createdAt">,
+  normalizedEmail: string
+): CreateBookingResult {
+  if (!matchesBookingRequest(existing, input, normalizedEmail)) {
+    throw new BookingIdempotencyConflictError();
+  }
+  return { booking: existing, created: false };
 }
 
 export type CreateBookingInput = Omit<Booking, "id" | "status" | "createdAt"> & {
@@ -42,7 +77,7 @@ export type CreateBookingResult = {
 
 export async function createBooking(input: CreateBookingInput): Promise<CreateBookingResult> {
   const { leadFeeEur, idempotencyKey, ...rest } = input;
-  const id = idForIdempotencyKey(idempotencyKey);
+  const id = idForIdempotencyKey(idempotencyKey, guestEmailNormalized);
   const createdAt = new Date().toISOString();
   const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
   const booking: Booking = {
@@ -66,7 +101,7 @@ export async function createBooking(input: CreateBookingInput): Promise<CreateBo
       throw new Error(lookupError.message);
     }
     if (existing) {
-      return { booking: rowToBooking(existing as Record<string, unknown>), created: false };
+      return replayOrThrow(rowToBooking(existing as Record<string, unknown>), rest, guestEmailNormalized);
     }
 
     const { error } = await supabase.from("bookings").insert({
@@ -93,7 +128,7 @@ export async function createBooking(input: CreateBookingInput): Promise<CreateBo
           .eq("id", id)
           .maybeSingle();
         if (replayed) {
-          return { booking: rowToBooking(replayed as Record<string, unknown>), created: false };
+          return replayOrThrow(rowToBooking(replayed as Record<string, unknown>), rest, guestEmailNormalized);
         }
       }
       console.error("Booking DB insert failed:", error.message, { id, providerId: input.providerId });
@@ -103,7 +138,7 @@ export async function createBooking(input: CreateBookingInput): Promise<CreateBo
   }
 
   const existing = memoryStore.find((item) => item.id === id);
-  if (existing) return { booking: existing, created: false };
+  if (existing) return replayOrThrow(existing, rest, guestEmailNormalized);
   memoryStore.push(booking);
   return { booking, created: true };
 }
