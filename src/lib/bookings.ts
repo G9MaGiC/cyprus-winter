@@ -24,9 +24,6 @@ export type Booking = {
 
 const memoryStore: Booking[] = [];
 
-function generateId(): string {
-  return `b-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-}
 
 function idForIdempotencyKey(key: string): string {
   const digest = createHash("sha256").update(key).digest("hex");
