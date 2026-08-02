@@ -112,14 +112,14 @@ export function useItinerary() {
   }, []);
 
   const toggleInDay = useCallback((id: string) => {
-    const current = daysRef.current[activeDay] ?? [];
+    const base = mergeItineraryDays(loadItineraryFromStorage(), daysRef.current);
+    const current = base[activeDay] ?? [];
     const isAdding = !current.includes(id);
-    setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
-      const shouldAdd = !prevCurrent.includes(id);
-      const nextDay = shouldAdd ? [...prevCurrent, id] : prevCurrent.filter((x) => x !== id);
-      return { ...prev, [activeDay]: nextDay };
-    });
+    const next = {
+      ...base,
+      [activeDay]: isAdding ? [...current, id] : current.filter((x) => x !== id),
+    };
+    setDays(next);
     if (isAdding) setLastAdded(id);
   }, [activeDay, setLastAdded]);
 
@@ -141,10 +141,11 @@ export function useItinerary() {
   }, [activeDay, setLastAdded]);
 
   const removeFromDay = useCallback((id: string) => {
-    setDays((prev) => ({
-      ...prev,
-      [activeDay]: (prev[activeDay] ?? []).filter((x) => x !== id),
-    }));
+    const base = mergeItineraryDays(loadItineraryFromStorage(), daysRef.current);
+    setDays({
+      ...base,
+      [activeDay]: (base[activeDay] ?? []).filter((x) => x !== id),
+    });
     trackProduct("plan_remove", { item_id: id, locale });
   }, [activeDay, locale]);
 
@@ -161,17 +162,16 @@ export function useItinerary() {
     const template = getTemplateDays(key);
     if (!template) return;
     const validId = (id: string) => (getPlaceById(id) ? id : null);
-    setDays((prev) => {
-      const next = emptyDays();
-      for (let d = 1; d <= MAX_DAYS; d++) {
-        const existing = (prev[d] ?? []).map(validId).filter(Boolean) as string[];
-        const fromTemplate = (template[d] ?? []).map(validId).filter(Boolean) as string[];
-        next[d] = mode === "merge"
-          ? [...new Set([...existing, ...fromTemplate])]
-          : [...fromTemplate];
-      }
-      return next;
-    });
+    const base = mergeItineraryDays(loadItineraryFromStorage(), daysRef.current);
+    const next = emptyDays();
+    for (let d = 1; d <= MAX_DAYS; d++) {
+      const existing = (base[d] ?? []).map(validId).filter(Boolean) as string[];
+      const fromTemplate = (template[d] ?? []).map(validId).filter(Boolean) as string[];
+      next[d] = mode === "merge"
+        ? [...new Set([...existing, ...fromTemplate])]
+        : [...fromTemplate];
+    }
+    setDays(next);
     trackProduct("plan_template_apply", { template: key, mode, locale });
   }, [locale]);
 
@@ -184,7 +184,8 @@ export function useItinerary() {
   }, [applyTemplate]);
 
   const clearDay = useCallback(() => {
-    setDays((prev) => ({ ...prev, [activeDay]: [] }));
+    const base = mergeItineraryDays(loadItineraryFromStorage(), daysRef.current);
+    setDays({ ...base, [activeDay]: [] });
   }, [activeDay]);
 
   const copyItinerary = useCallback(async () => {
