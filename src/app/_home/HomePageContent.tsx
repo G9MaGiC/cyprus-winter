@@ -25,7 +25,6 @@ import {
   ThisWeekSkeleton,
 } from "@/app/_home/skeletons";
 import { TripModeChipsSkeleton } from "@/app/_home/TripModeChipsSkeleton";
-import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 import TripReminderBanner from "@/components/TripReminderBanner";
 
 type HomePageContentProps = {
@@ -56,16 +55,15 @@ export default async function HomePageContent({
         </Suspense>
       </div>
       <TripReminderBanner />
-      <StartHereWithExplore />
       <Suspense fallback={<SearchSectionSkeleton />}>
         <HomeSearchSection locale={locale} />
       </Suspense>
+      <StartHereWithExplore />
       <HomeWhyCyprusTeaser locale={locale} />
       <Suspense fallback={<WeatherStripSkeleton />}>
         <HomeTrailConditionsStrip locale={locale} />
       </Suspense>
       <RightNowNearYou />
-      <RecentlyViewedStrip />
       <HomePlaceOfDay />
       <TripPlanSummaryChip />
 
