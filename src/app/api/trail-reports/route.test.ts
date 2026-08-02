@@ -1,17 +1,19 @@
 import { describe, it, expect, vi } from "vitest";
 import { POST } from "./route";
 
-const createTrailReport = vi.fn().mockResolvedValue({
-  report: {
-    id: "r-1",
-    trailId: "artemis",
-    status: "open",
-    surface: "dry",
-    createdAt: new Date().toISOString(),
-    reportedAt: new Date().toISOString(),
-  },
-  stored: true,
-});
+const { createTrailReport } = vi.hoisted(() => ({
+  createTrailReport: vi.fn().mockResolvedValue({
+    report: {
+      id: "r-1",
+      trailId: "artemis",
+      status: "open",
+      surface: "dry",
+      createdAt: new Date().toISOString(),
+      reportedAt: new Date().toISOString(),
+    },
+    stored: true,
+  }),
+}));
 
 vi.mock("@/lib/trail-reports", () => ({ createTrailReport }));
 
