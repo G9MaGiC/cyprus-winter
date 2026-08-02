@@ -36,6 +36,7 @@ function saveTripDates(dates: TripDates) {
 }
 
 const MAX_TRIP_DAYS = 14;
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 function parseDateOnly(value: string): Date | null {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
@@ -54,8 +55,11 @@ export function tripLengthFromDates(start: string | null, end: string | null): n
   if (!start || !end) return null;
   const a = parseDateOnly(start);
   const b = parseDateOnly(end);
-  if (!a || !b || b.getTime() < a.getTime()) return null;
-  const days = Math.ceil((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+  if (!a || !b) return null;
+  const aDay = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const bDay = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  if (bDay < aDay) return null;
+  const days = Math.round((bDay - aDay) / MS_PER_DAY) + 1;
   return Math.min(MAX_TRIP_DAYS, Math.max(1, days));
 }
 
@@ -68,8 +72,9 @@ export function daysUntilTrip(start: string | null): number | null {
   const d = parseDateOnly(start);
   if (!d) return null;
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return Math.ceil((d.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  const startDay = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+  const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  return Math.round((startDay - todayDay) / MS_PER_DAY);
 }
 
 export function useTripDates() {
