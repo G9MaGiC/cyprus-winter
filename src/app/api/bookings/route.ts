@@ -44,6 +44,9 @@ export async function POST(req: Request) {
       limitResult.resetAt
     );
   }
+  if (process.env.NODE_ENV === "production" && !hasSupabase()) {
+    return jsonError("SERVICE_UNAVAILABLE", "Booking storage is not configured.", 503);
+  }
 
   try {
     const body = await req.json();
@@ -227,6 +230,9 @@ export async function GET(req: Request) {
       limitResult.resetAt
     );
   }
+  if (process.env.NODE_ENV === "production" && !hasSupabase()) {
+    return jsonError("SERVICE_UNAVAILABLE", "Booking storage is not configured.", 503);
+  }
 
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email");
@@ -251,7 +257,8 @@ export async function GET(req: Request) {
       }
       const { data, error } = await supabase.auth.getUser(accessToken);
       const userEmail = data.user?.email?.trim().toLowerCase();
-      if (error || !userEmail || userEmail !== emailNormalized) {
+      const emailConfirmed = Boolean(data.user?.email_confirmed_at);
+      if (error || !userEmail || userEmail !== emailNormalized || !emailConfirmed) {
         return jsonError("UNAUTHORIZED", "Sign in with the booking email to continue.", 401);
       }
     }
