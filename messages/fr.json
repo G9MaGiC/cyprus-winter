@@ -2786,7 +2786,7 @@
       "sections": {
         "s1": {
           "title": "1. Acceptance",
-          "body": "By using Cyprus Winter (\"the service\"), you agree to these Terms of Service and our {privacyPolicyLink}. If you do not agree, do not use the service.",
+          "body": "By using Cyprus Winter (\"the service\"), you agree to these Terms of Service and our <privacyPolicyLink>Privacy Policy</privacyPolicyLink>. If you do not agree, do not use the service.",
           "privacyPolicyLink": "Privacy Policy"
         },
         "s2": {
