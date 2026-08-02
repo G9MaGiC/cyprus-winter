@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.43.0",
-    "@supabase/supabase-js": "^2.98.0",
+    "@supabase/supabase-js": "2.109.0",
     "@swc/helpers": "0.5.19",
     "@tanstack/react-query": "^5.90.21",
     "@upstash/ratelimit": "^2.0.8",
