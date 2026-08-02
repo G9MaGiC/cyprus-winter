@@ -192,7 +192,7 @@ export default function Nav() {
           ref={mobileMenuButtonRef}
           type="button"
           className="lg:hidden min-h-[44px] min-w-[44px] p-3 flex items-center justify-center text-white rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
-          onClick={() => (open ? closeMobileMenu() : setOpen(true))
+          onClick={() => (open ? closeMobileMenu() : setOpen(true))}
           aria-label={open ? t("closeMenu") : t("openMenu")}
           aria-expanded={open}
           aria-controls="mobile-menu"
