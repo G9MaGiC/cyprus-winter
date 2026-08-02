@@ -34,6 +34,12 @@ function hasRedisEnv(): boolean {
   );
 }
 
+function isCiE2eTest(): boolean {
+  // CI E2E has no external Redis service. This flag is supplied only by the
+  // workflow test job, while production deployments still fail closed.
+  return process.env.CI === "true" && process.env.E2E_TEST_MODE === "true";
+}
+
 export async function rateLimit(
   req: Request,
   limit: number,
@@ -41,7 +47,7 @@ export async function rateLimit(
 ): Promise<RateLimitResult> {
   if (shouldBypass(req)) return bypassResult();
 
-  if (process.env.NODE_ENV === "production" && !hasRedisEnv()) {
+  if (process.env.NODE_ENV === "production" && !hasRedisEnv() && !isCiE2eTest()) {
     throw new Error("Distributed rate limiting is required in production.");
   }
 
