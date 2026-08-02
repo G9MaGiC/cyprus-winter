@@ -42,7 +42,6 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
 
   useEffect(() => {
     // Hydration: detect push support and permission after mount
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- client-only initialization
     setMounted(true);
     if (typeof window !== "undefined" && "Notification" in window && "serviceWorker" in navigator) {
       if (Notification.permission === "granted") setStatus("subscribed");
