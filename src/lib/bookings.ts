@@ -77,9 +77,9 @@ export type CreateBookingResult = {
 
 export async function createBooking(input: CreateBookingInput): Promise<CreateBookingResult> {
   const { leadFeeEur, idempotencyKey, ...rest } = input;
+  const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
   const id = idForIdempotencyKey(idempotencyKey, guestEmailNormalized);
   const createdAt = new Date().toISOString();
-  const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
   const booking: Booking = {
     ...rest,
     guestEmail: guestEmailNormalized,
