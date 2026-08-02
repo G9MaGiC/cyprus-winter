@@ -18,18 +18,24 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page.getByRole("main")).toBeVisible();
   });
 
-  test("Hebrew /he/plan uses RTL and localized nav", async ({ page }) => {
+  test("Hebrew /he/plan uses RTL and localized nav", async ({ page }, testInfo) => {
     await page.goto("/he/plan", { waitUntil: "domcontentloaded" });
     await expect(page).toHaveURL(/\/he\/plan/);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("main")).toBeVisible();
+    if (testInfo.project.name.includes("mobile")) {
+      await page.getByRole("navigation", { name: "Main navigation" }).getByRole("button").click();
+    }
     await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "גילוי" })).toBeVisible();
   });
 
-  test("Romanian /ro/discover loads with localized title", async ({ page }) => {
+  test("Romanian /ro/discover loads with localized title", async ({ page }, testInfo) => {
     await page.goto("/ro/discover", { waitUntil: "domcontentloaded" });
     await expect(page).toHaveURL(/\/ro\/discover/);
     await expect(page.getByRole("main")).toBeVisible();
+    if (testInfo.project.name.includes("mobile")) {
+      await page.getByRole("navigation", { name: "Main navigation" }).getByRole("button").click();
+    }
     await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Descoperă" })).toBeVisible();
   });
 
