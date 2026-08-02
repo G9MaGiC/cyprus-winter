@@ -5,6 +5,7 @@ import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { z } from "zod";
+import { isValidCalendarDate } from "@/lib/booking-schema";
 
 const subscribeSchema = z.object({
   clientId: z.string().min(8).max(64),
@@ -16,7 +17,12 @@ const subscribeSchema = z.object({
     }),
     expirationTime: z.number().nullable().optional(),
   }),
-  tripStartDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().nullable(),
+  tripStartDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .refine(isValidCalendarDate, "Invalid trip start date")
+    .optional()
+    .nullable(),
   pushTripCountdown: z.boolean().optional(),
   pushWeatherDigest: z.boolean().optional(),
 });
