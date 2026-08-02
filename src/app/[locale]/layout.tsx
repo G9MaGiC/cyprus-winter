@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
 // Alias setRequestLocale to avoid "defined multiple times" with Turbopack
 import { getMessages, getTranslations, setRequestLocale as setLocale } from "next-intl/server";
@@ -9,9 +8,6 @@ import { routing } from "@/i18n/routing";
 import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import { SerwistProvider } from "../serwist";
-
-const Providers = dynamic(() => import("@/components/Providers"), { ssr: true });
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
@@ -74,13 +70,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <SerwistProvider swUrl="/serwist/sw.js">
-        <Providers includeOnboarding={false}>
-          <div className={LAYOUT.paddedTop}>
-            {children}
-          </div>
-        </Providers>
-      </SerwistProvider>
+      <div className={LAYOUT.paddedTop}>
+        {children}
+      </div>
     </NextIntlClientProvider>
   );
 }
