@@ -10,7 +10,11 @@ function getOrCreateClientId(): string {
   if (typeof window === "undefined") return "";
   let id = localStorage.getItem(CLIENT_ID_KEY);
   if (!id) {
-    id = `anon-${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
+    const suffix =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2, 12)}`;
+    id = `anon-${suffix}`;
     localStorage.setItem(CLIENT_ID_KEY, id);
   }
   return id;
