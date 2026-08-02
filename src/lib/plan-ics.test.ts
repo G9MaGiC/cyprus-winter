@@ -24,5 +24,6 @@ describe("buildPlanIcs", () => {
     expect(ics).toContain(`SUMMARY:Cyprus Winter — Day ${MAX_DAYS}`);
     expect(ics).toContain("DESCRIPTION:Day 14 Village (Troodos)");
     expect(ics).toContain("DTSTART;VALUE=DATE:20260114");
+    expect(ics).toContain("DTEND;VALUE=DATE:20260115");
   });
 });
