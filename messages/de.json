@@ -1747,6 +1747,7 @@
     "errors": {
       "rateLimited": "Zu viele Anfragen. Warten Sie kurz und versuchen Sie es erneut.",
       "failedToLoad": "Konnte nicht geladen werden",
+      "signInRequired": "Melden Sie sich an, um Buchungen von einem anderen Gerät zu laden.",
       "connection": "Ihre Buchungen konnten nicht geladen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
     },
     "emailLookup": {
