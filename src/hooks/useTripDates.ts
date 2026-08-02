@@ -37,16 +37,24 @@ function saveTripDates(dates: TripDates) {
 
 const MAX_TRIP_DAYS = 14;
 
+function parseDateOnly(value: string): Date | null {
+  const match = /^(\\d{4})-(\\d{2})-(\\d{2})$/.exec(value);
+  if (!match) return null;
+  const [, year, month, day] = match.map(Number);
+  const date = new Date(year, month - 1, day);
+  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day
+    ? date
+    : null;
+}
+
 /**
  * Trip length in days (start to end inclusive). Null if invalid range or dates missing.
  */
 export function tripLengthFromDates(start: string | null, end: string | null): number | null {
   if (!start || !end) return null;
-  const a = new Date(start);
-  const b = new Date(end);
-  a.setHours(0, 0, 0, 0);
-  b.setHours(0, 0, 0, 0);
-  if (b.getTime() < a.getTime()) return null;
+  const a = parseDateOnly(start);
+  const b = parseDateOnly(end);
+  if (!a || !b || b.getTime() < a.getTime()) return null;
   const days = Math.ceil((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24)) + 1;
   return Math.min(MAX_TRIP_DAYS, Math.max(1, days));
 }
@@ -57,8 +65,8 @@ export function tripLengthFromDates(start: string | null, end: string | null): n
  */
 export function daysUntilTrip(start: string | null): number | null {
   if (!start) return null;
-  const d = new Date(start);
-  d.setHours(0, 0, 0, 0);
+  const d = parseDateOnly(start);
+  if (!d) return null;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return Math.ceil((d.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
