@@ -67,7 +67,6 @@ export async function createTrailReport(input: {
       temperatureC: input.temperatureC,
       windKmh: input.windKmh,
       reportedAt,
-      reporterEmail: input.reporterEmail,
       createdAt: reportedAt,
     },
     stored,
@@ -98,7 +97,6 @@ export async function getLatestReportsByTrail(trailId: string, limit = 5): Promi
     temperatureC: row.temperature_c != null ? Number(row.temperature_c) : undefined,
     windKmh: row.wind_kmh != null ? Number(row.wind_kmh) : undefined,
     reportedAt: String(row.reported_at),
-    reporterEmail: row.reporter_email ? String(row.reporter_email) : undefined,
     createdAt: String(row.created_at),
   }));
 }
