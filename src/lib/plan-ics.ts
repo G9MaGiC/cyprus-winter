@@ -36,6 +36,9 @@ export function buildPlanIcs(
     const dayDate = new Date(start);
     dayDate.setUTCDate(dayDate.getUTCDate() + (dayNum - 1));
     const dateStr = formatIcsDate(dayDate);
+    const endDate = new Date(dayDate);
+    endDate.setUTCDate(endDate.getUTCDate() + 1);
+    const endDateStr = formatIcsDate(endDate);
 
     const names = ids
       .map((id) => getPlace(id))
@@ -51,7 +54,7 @@ export function buildPlanIcs(
       `UID:plan-day-${dayNum}-${eventIndex}@${uidHost}`,
       `DTSTAMP:${formatIcsDate(new Date())}T120000Z`,
       `DTSTART;VALUE=DATE:${dateStr}`,
-      `DTEND;VALUE=DATE:${dateStr}`,
+      `DTEND;VALUE=DATE:${endDateStr}`,
       `SUMMARY:${escapeIcsText(summary)}`,
       `DESCRIPTION:${escapeIcsText(description)}`,
       "END:VEVENT"
