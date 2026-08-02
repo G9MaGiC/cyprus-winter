@@ -10,7 +10,8 @@ export type ApiErrorCode =
   | "BAD_REQUEST"
   | "UNAUTHORIZED"
   | "SERVER_ERROR"
-  | "SERVICE_UNAVAILABLE";
+  | "SERVICE_UNAVAILABLE"
+  | "IDEMPOTENCY_CONFLICT";
 
 export type ApiErrorDetail = {
   field?: string;
