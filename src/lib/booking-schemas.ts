@@ -8,11 +8,22 @@ export function toLocalDateInputValue(date = new Date()): string {
   return `${year}-${month}-${day}`;
 }
 
+function isValidCalendarDate(value: string): boolean {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return false;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const parsed = new Date(year, month - 1, day);
+  return (
+    parsed.getFullYear() === year &&
+    parsed.getMonth() === month - 1 &&
+    parsed.getDate() === day
+  );
+}
+
 function isBookableDate(value: string): boolean {
-  const parsed = new Date(`${value}T00:00:00`);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return !isNaN(parsed.getTime()) && parsed >= today;
+  return isValidCalendarDate(value) && value >= toLocalDateInputValue();
 }
 
 export const guideBookingSchema = z.object({
