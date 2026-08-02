@@ -31,6 +31,36 @@ describe("offline queue", () => {
     vi.restoreAllMocks();
   });
 
+  it("rejects non-API queue targets", () => {
+    addMutation({
+      type: "unsafe",
+      url: "https://evil.example/collect",
+      method: "POST",
+      body: "{}",
+    });
+
+    expect(getQueue()).toEqual([]);
+  });
+
+  it("removes permanent client errors instead of retrying forever", async () => {
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValue(new Response(null, { status: 400 }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    addMutation({
+      type: "invalid",
+      url: "/api/bookings",
+      method: "POST",
+      body: "{}",
+    });
+
+    await processQueue();
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(getQueue()).toEqual([]);
+  });
+
   it("deduplicates concurrent queue processors so a booking mutation posts once", async () => {
     const fetchMock = vi
       .fn<typeof fetch>()
