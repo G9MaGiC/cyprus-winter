@@ -44,7 +44,7 @@ export default function DetailHeroSection({
           </div>
         }
         title={getLocalizedName(a, locale)}
-        titleEl={"nameEl" in a && a.nameEl && locale !== "el" ? a.nameEl : undefined}
+        titleEl={"nameEl" in a && a.nameEl && locale === "en" ? a.nameEl : undefined}
         subtitle={a.region}
       />
 
