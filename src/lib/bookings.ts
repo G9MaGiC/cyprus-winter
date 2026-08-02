@@ -1,6 +1,7 @@
 /**
  * Booking types and store. Uses Supabase when configured, else in-memory (dev fallback).
  */
+import { createHash } from "node:crypto";
 import { getSupabase, hasSupabase } from "./supabase";
 
 export type BookingStatus = "pending" | "confirmed" | "cancelled";
@@ -27,13 +28,24 @@ function generateId(): string {
   return `b-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
+function idForIdempotencyKey(key: string): string {
+  const digest = createHash("sha256").update(key).digest("hex");
+  return `b-idem-${digest}`;
+}
+
 export type CreateBookingInput = Omit<Booking, "id" | "status" | "createdAt"> & {
   leadFeeEur?: number;
+  idempotencyKey: string;
 };
 
-export async function createBooking(input: CreateBookingInput): Promise<Booking> {
-  const { leadFeeEur, ...rest } = input;
-  const id = generateId();
+export type CreateBookingResult = {
+  booking: Booking;
+  created: boolean;
+};
+
+export async function createBooking(input: CreateBookingInput): Promise<CreateBookingResult> {
+  const { leadFeeEur, idempotencyKey, ...rest } = input;
+  const id = idForIdempotencyKey(idempotencyKey);
   const createdAt = new Date().toISOString();
   const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
   const booking: Booking = {
@@ -46,6 +58,20 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 
   const supabase = getSupabase();
   if (supabase) {
+    const { data: existing, error: lookupError } = await supabase
+      .from("bookings")
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+
+    if (lookupError) {
+      console.error("Booking idempotency lookup failed:", lookupError.message, { id });
+      throw new Error(lookupError.message);
+    }
+    if (existing) {
+      return { booking: rowToBooking(existing as Record<string, unknown>), created: false };
+    }
+
     const { error } = await supabase.from("bookings").insert({
       id,
       type: input.type,
@@ -61,14 +87,28 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
       lead_fee_eur: leadFeeEur ?? null,
     });
     if (error) {
+      // Two concurrent requests can both miss the lookup; the primary-key conflict
+      // is the durable idempotency barrier.
+      if (error.code === "23505") {
+        const { data: replayed } = await supabase
+          .from("bookings")
+          .select("*")
+          .eq("id", id)
+          .maybeSingle();
+        if (replayed) {
+          return { booking: rowToBooking(replayed as Record<string, unknown>), created: false };
+        }
+      }
       console.error("Booking DB insert failed:", error.message, { id, providerId: input.providerId });
       throw new Error(error.message);
     }
-    return booking;
+    return { booking, created: true };
   }
 
+  const existing = memoryStore.find((item) => item.id === id);
+  if (existing) return { booking: existing, created: false };
   memoryStore.push(booking);
-  return booking;
+  return { booking, created: true };
 }
 
 export async function getBookingsByEmail(email: string): Promise<Booking[]> {
@@ -77,11 +117,11 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
     const emailNormalized = email.trim().toLowerCase();
     const { data, error } = await supabase
       .from("bookings")
-      .select("*")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
       .eq("guest_email", emailNormalized)
       .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
-    return (data ?? []).map(rowToBooking);
+    return (data ?? []).map((row) => rowToBooking(row as Record<string, unknown>));
   }
 
   return memoryStore
