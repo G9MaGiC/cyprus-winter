@@ -3,6 +3,10 @@ import { test, expect, type Page } from "@playwright/test";
 /**
  * Arrival flow contract tests using stable test ids.
  */
+function visibleTestId(page: Page, testId: string) {
+  return page.locator(`[data-testid="${testId}"]:visible`);
+}
+
 async function gotoStable(page: Page, url: string) {
   let lastError: unknown;
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -32,7 +36,7 @@ test.describe("Arrival decision flow", () => {
     await gotoStable(page, "/");
     await expect(page.getByRole("main")).toBeVisible();
 
-    const airportCta = page.getByTestId("home-hero-airport-cta");
+    const airportCta = visibleTestId(page, "home-hero-airport-cta");
     await expect(airportCta).toBeVisible();
     await airportCta.scrollIntoViewIfNeeded();
     await Promise.all([
@@ -42,14 +46,14 @@ test.describe("Arrival decision flow", () => {
     await expect(page.getByRole("main")).toBeVisible();
 
     const picker = page.locator(
-      '[data-testid="airport-picker-lca"], [data-testid="airport-picker-pfo"]'
+      '[data-testid="airport-picker-lca"]:visible, [data-testid="airport-picker-pfo"]:visible'
     );
     await expect(picker.first()).toBeVisible();
 
-    const planHeroCta = page.getByTestId("airport-hero-plan48-cta");
+    const planHeroCta = visibleTestId(page, "airport-hero-plan48-cta");
     await expect(planHeroCta).toBeVisible();
     await expect(planHeroCta).toHaveAttribute("href", /\/plan\?template=short-stay/);
-    const quickPlanCta = page.getByTestId("airport-quick-plan");
+    const quickPlanCta = visibleTestId(page, "airport-quick-plan");
     await expect(quickPlanCta).toBeVisible();
     await quickPlanCta.click({ force: true });
     await expect(page).toHaveURL(/\/plan(\?template=short-stay)?$/);
@@ -59,8 +63,8 @@ test.describe("Arrival decision flow", () => {
     await gotoStable(page, "/airport");
     await expect(page.getByRole("main")).toBeVisible();
 
-    const lcaPicker = page.getByTestId("airport-picker-lca");
-    const pfoPicker = page.getByTestId("airport-picker-pfo");
+    const lcaPicker = visibleTestId(page, "airport-picker-lca");
+    const pfoPicker = visibleTestId(page, "airport-picker-pfo");
 
     await expect(lcaPicker).toBeVisible();
     await expect(pfoPicker).toBeVisible();
@@ -76,46 +80,45 @@ test.describe("Arrival decision flow", () => {
     await gotoStable(page, "/");
     await Promise.all([
       page.waitForURL(/\/airport/, { timeout: 15000 }),
-      page.getByTestId("home-hero-airport-cta").click({ force: true }),
+      visibleTestId(page, "home-hero-airport-cta").click({ force: true }),
     ]);
 
     await page.goBack();
     await expect(page).toHaveURL(/\/($|[a-z]{2}$)/);
-    await expect(page.getByTestId("home-hero-airport-cta")).toBeVisible();
+    await expect(visibleTestId(page, "home-hero-airport-cta")).toBeVisible();
 
     await gotoStable(page, "/airport");
     await page.reload({ waitUntil: "domcontentloaded" });
 
-    await expect(page.getByTestId("airport-hero-plan48-cta")).toBeVisible();
-    await expect(page.getByTestId("airport-quick-weather")).toBeVisible();
-    await expect(page.getByTestId("airport-quick-discover")).toBeVisible();
-    await expect(page.getByTestId("airport-footer-discover-cta")).toBeVisible();
+    await expect(visibleTestId(page, "airport-hero-plan48-cta")).toBeVisible();
+    await expect(visibleTestId(page, "airport-quick-weather")).toBeVisible();
+    await expect(visibleTestId(page, "airport-quick-discover")).toBeVisible();
+    await expect(visibleTestId(page, "airport-footer-discover-cta")).toBeVisible();
   });
 
   test("arrival-cta-contract: key test IDs and hrefs remain stable", async ({ page }) => {
     await gotoStable(page, "/");
-    await expect(page.getByTestId("home-hero-explore-cta")).toHaveAttribute("href", /\/discover/);
-    await expect(page.getByTestId("home-hero-plan-cta")).toHaveAttribute("href", /\/plan/);
-    await expect(page.getByTestId("home-hero-airport-cta")).toHaveAttribute("href", /\/airport/);
+    await expect(visibleTestId(page, "home-hero-explore-cta")).toHaveAttribute("href", /\/discover/);
+    await expect(visibleTestId(page, "home-hero-plan-cta")).toHaveAttribute("href", /\/plan/);
+    await expect(visibleTestId(page, "home-hero-airport-cta")).toHaveAttribute("href", /\/airport/);
 
     await gotoStable(page, "/airport");
-    await expect(page.getByTestId("airport-hero-plan48-cta")).toHaveAttribute(
+    await expect(visibleTestId(page, "airport-hero-plan48-cta")).toHaveAttribute(
       "href",
       /\/plan\?template=short-stay/
     );
-    await expect(page.getByTestId("airport-footer-plan48-cta")).toHaveAttribute(
+    await expect(visibleTestId(page, "airport-footer-plan48-cta")).toHaveAttribute(
       "href",
       /\/plan\?template=short-stay/
     );
-    await expect(page.getByTestId("airport-footer-planweek-cta")).toHaveAttribute(
+    await expect(visibleTestId(page, "airport-footer-planweek-cta")).toHaveAttribute(
       "href",
       /\/plan\?template=classic-7/
     );
-    await expect(page.getByTestId("airport-footer-discover-cta")).toHaveAttribute(
+    await expect(visibleTestId(page, "airport-footer-discover-cta")).toHaveAttribute(
       "href",
       /\/discover/
     );
-    await expect(page.getByTestId("airport-footer-weather-cta")).toHaveAttribute("href", /\/weather/);
+    await expect(visibleTestId(page, "airport-footer-weather-cta")).toHaveAttribute("href", /\/weather/);
   });
 });
-
