@@ -89,7 +89,7 @@ export default function StartHereWithExplore() {
                   ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
                   : "border-l-4 border-l-aegean/60"
               }`}
-              aria-label={`${item.title}: ${item.desc}`}
+              aria-label={item.title}
             >
               <div className={`flex-1 ${CARD.content}`}>
                 <p className={`${TYPE.cardTitle} text-charcoal`}>
@@ -129,17 +129,6 @@ export default function StartHereWithExplore() {
           </div>
         </div>
 
-        <div className="mt-6 border-t border-sand-200/80 pt-5 text-center">
-          <p className="text-sm text-olive/70 mb-3">{tHome("startHere.alsoSubtitle")}</p>
-          <AppLink
-            href="/discover"
-            prefetch="auto"
-            className={CTA.secondaryCompact}
-            aria-label={tHome("startHere.exploreMore")}
-          >
-            {tHome("startHere.exploreMore")}
-          </AppLink>
-        </div>
       </div>
     </section>
   );
