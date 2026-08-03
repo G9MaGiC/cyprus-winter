@@ -38,10 +38,6 @@ export default function SearchBar({
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    setQuery(initialQuery ?? "");
-  }, [initialQuery]);
-
   const results = useMemo(() =>
     normalizedQuery.length >= 2 ? search(normalizedQuery, 12) : [],
   [normalizedQuery]);
