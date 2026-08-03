@@ -32,14 +32,19 @@ export default function SearchBar({
   const inputId = useId().replace(/:/g, "");
   const resultsId = `${inputId}-results`;
   const [query, setQuery] = useState(initialQuery ?? "");
+  const normalizedQuery = query.trim();
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
+  useEffect(() => {
+    setQuery(initialQuery ?? "");
+  }, [initialQuery]);
+
   const results = useMemo(() =>
-    query.length >= 2 ? search(query, 12) : [],
-  [query]);
+    normalizedQuery.length >= 2 ? search(normalizedQuery, 12) : [],
+  [normalizedQuery]);
 
   useEffect(() => {
     if (activeIndex >= 0 && listRef.current) {
@@ -83,7 +88,7 @@ export default function SearchBar({
       setActiveIndex((i) => (i > 0 ? i - 1 : -1));
     } else if (e.key === "Enter" && activeIndex >= 0 && results[activeIndex]) {
       e.preventDefault();
-      router.push(searchResultHref(results[activeIndex], query));
+      router.push(searchResultHref(results[activeIndex], normalizedQuery));
     }
   };
 
@@ -105,7 +110,7 @@ export default function SearchBar({
   };
 
   const navigateToResult = (r: SearchResult) => {
-    router.push(searchResultHref(r, query));
+    router.push(searchResultHref(r, normalizedQuery));
   };
 
   return (
@@ -182,14 +187,14 @@ export default function SearchBar({
         </ul>
       )}
 
-      {focused && query.length > 0 && query.length < 2 && (
+      {focused && normalizedQuery.length > 0 && normalizedQuery.length < 2 && (
         <div className={`absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-olive/60 text-sm`} role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
-      {focused && query.length >= 2 && !hasResults && (
+      {focused && normalizedQuery.length >= 2 && !hasResults && (
         <div role="status" className={`absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-center text-olive/70 text-sm`}>
-          <p className="mb-4">{tSearch("noResults", { query })}</p>
+          <p className="mb-4">{tSearch("noResults", { query: normalizedQuery })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <AppLink
