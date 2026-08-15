@@ -108,12 +108,19 @@ export function useItinerary() {
   }, [activeDay, setLastAdded]);
 
   const addToDayIfMissing = useCallback((id: string) => {
-    const current = daysRef.current[activeDay] ?? [];
-    if (current.includes(id)) return;
     setDays((prev) => {
-      const prevCurrent = prev[activeDay] ?? [];
-      if (prevCurrent.includes(id)) return prev;
-      return { ...prev, [activeDay]: [...prevCurrent, id] };
+      // Same-tab instances (one per AttractionCard / AddToItineraryButton) do not
+      // share React state. Merge localStorage so a second add cannot drop the first.
+      const stored = loadItineraryFromStorage();
+      const merged = emptyDays();
+      for (let d = 1; d <= MAX_DAYS; d++) {
+        merged[d] = [...new Set([...(stored[d] ?? []), ...(prev[d] ?? [])])];
+      }
+      const current = merged[activeDay] ?? [];
+      if (current.includes(id)) return merged;
+      const next = { ...merged, [activeDay]: [...current, id] };
+      persistItineraryToStorage(next);
+      return next;
     });
     setLastAdded(id);
   }, [activeDay, setLastAdded]);

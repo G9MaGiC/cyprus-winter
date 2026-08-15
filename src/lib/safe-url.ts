@@ -20,6 +20,8 @@ export function isSafeUrl(url: string): boolean {
   if (typeof url !== "string" || !url.trim()) return false;
   const decoded = decodeHtmlEntities(url.trim());
   const trimmed = decoded.trim().toLowerCase();
+  // Protocol-relative URLs (//evil.example) are external open-redirects, not app paths.
+  if (trimmed.startsWith("//")) return false;
   if (trimmed.startsWith("/")) return true; // relative path
   if (trimmed.startsWith("#")) return true; // hash link
   for (const proto of DANGEROUS_PROTOCOLS) {

@@ -62,8 +62,9 @@ export function removeMutation(id: string): void {
   save(items);
 }
 
-/** Process the queue: retry each mutation, remove on success. */
-export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
+let inFlight: Promise<{ processed: number; succeeded: number }> | null = null;
+
+async function processQueueOnce(): Promise<{ processed: number; succeeded: number }> {
   const items = load();
   if (items.length === 0) return { processed: 0, succeeded: 0 };
 
@@ -86,4 +87,13 @@ export async function processQueue(): Promise<{ processed: number; succeeded: nu
     }
   }
   return { processed: items.length, succeeded };
+}
+
+/** Process the queue: retry each mutation, remove on success. Concurrent calls share one run. */
+export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
+  if (inFlight) return inFlight;
+  inFlight = processQueueOnce().finally(() => {
+    inFlight = null;
+  });
+  return inFlight;
 }

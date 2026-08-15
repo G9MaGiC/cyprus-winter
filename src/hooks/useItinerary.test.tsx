@@ -159,6 +159,37 @@ describe("useItinerary", () => {
     );
   });
 
+  it("addToDayIfMissing from a second same-tab instance does not drop the first add", async () => {
+    const first = renderHook(() => useItinerary(), { wrapper });
+    const second = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(first.result.current.hydrated).toBe(true));
+    await waitFor(() => expect(second.result.current.hydrated).toBe(true));
+
+    act(() => {
+      first.result.current.addToDayIfMissing("kourion");
+    });
+    await waitFor(() =>
+      expect(first.result.current.days[1]).toContain("kourion")
+    );
+
+    act(() => {
+      second.result.current.addToDayIfMissing("pafos-mosaics");
+    });
+
+    await waitFor(() => {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      expect(raw).toBeTruthy();
+      const parsed = JSON.parse(raw!) as Record<string, string[]>;
+      expect(parsed["1"]).toEqual(
+        expect.arrayContaining(["kourion", "pafos-mosaics"])
+      );
+    });
+    expect(second.result.current.days[1]).toEqual(
+      expect.arrayContaining(["kourion", "pafos-mosaics"])
+    );
+  });
+
   it("addToDayIfMissing adds only once per day", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 

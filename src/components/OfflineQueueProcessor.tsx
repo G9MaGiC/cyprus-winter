@@ -11,7 +11,7 @@ export default function OfflineQueueProcessor() {
   const processedRef = useRef(false);
 
   useEffect(() => {
-    const handleOnline = () => {
+    const flush = () => {
       if (processedRef.current) return;
       processedRef.current = true;
       processQueue().finally(() => {
@@ -19,8 +19,9 @@ export default function OfflineQueueProcessor() {
       });
     };
 
-    window.addEventListener("online", handleOnline);
-    return () => window.removeEventListener("online", handleOnline);
+    flush();
+    window.addEventListener("online", flush);
+    return () => window.removeEventListener("online", flush);
   }, []);
 
   return null;

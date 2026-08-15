@@ -41,7 +41,7 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
                   if (!href || !isSafeUrl(href)) {
                     return <span className="text-olive/80">{children}</span>;
                   }
-                  const isInternal = href.startsWith("/");
+                  const isInternal = href.startsWith("/") && !href.startsWith("//");
                   if (isInternal) {
                     return (
                       <AppLink href={href} className="text-aegean hover:underline">
