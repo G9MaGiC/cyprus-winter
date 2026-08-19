@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-05-31 · **Target commit:** `6462605` on `main`
+**Last updated:** 2026-08-19 · **Target commit:** `main` after PR #70
 
 ---
 
@@ -17,6 +17,7 @@ Set in **Vercel → Project → Settings → Environment Variables → Productio
 | `NEXT_PUBLIC_SUPABASE_URL` | **Yes** | Bookings, trail reports, analytics |
 | `SUPABASE_SERVICE_ROLE_KEY` | **Yes** | Server-side Supabase |
 | `RESEND_API_KEY` | Recommended | Booking confirmation emails |
+| `BOOKING_LOOKUP_TOKEN_SECRET` | Recommended | Signed 15-minute My Bookings email links (min 16 chars). Signed-in users can still load bookings without it. |
 | `ADMIN_SECRET` | Recommended | `/admin/stats` |
 | One AI key | Recommended | Cyprus Guide (`GROQ_API_KEY`, `AI_GATEWAY_API_KEY`, etc.) |
 | `CRON_SECRET` | If crons enabled | Daily cron routes |
@@ -45,11 +46,11 @@ npm run data:validate && npm run build
 npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 ```
 
-| Check | Expected (May 2026) |
+| Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 572+ pass |
-| i18n keys | 1848 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full — all green |
+| Unit tests | 447+ pass |
+| i18n keys | 1860 × 7 locales |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 
 ---
 
@@ -99,7 +100,7 @@ Test viewports: **390×844** (mobile), **1280** (desktop).
 - [ ] Confirm `productionReady` on public domain (not just preview)
 - [ ] Update `docs/SCORECARD.md` after each release train
 - [ ] Admin HttpOnly session (DR-003) — security backlog
-- [ ] GitHub Actions Node 20 → 24 migration (CI warnings only today)
+- [x] GitHub Actions Node 20 → 24 action runtime (PR #70: checkout/setup-node/upload-artifact @v7)
 
 ---
 
@@ -118,5 +119,5 @@ Test viewports: **390×844** (mobile), **1280** (desktop).
 
 - `docs/RUNBOOK.md` — incidents, Capacitor, cron
 - `docs/SCORECARD.md` — 5/5 engineering criteria
-- `docs/QA_BUGS.md` — BUG-122–136 remediation log
+- `docs/QA_BUGS.md` — BUG-122–145 remediation log
 - `docs/DEEP_REVIEW_2026-05-20.md` — pre-launch security backlog

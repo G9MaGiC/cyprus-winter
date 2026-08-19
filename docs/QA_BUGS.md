@@ -1269,6 +1269,14 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-141 | Chat | Malformed streamed/persisted metadata could crash the overlay | Sanitize metadata server-side and on persist/replay |
 | BUG-142 | i18n | Localized `/book/winery` list 404'd | Locale proxy page + metadata |
 
+### Follow-up — August 19, 2026 (rebase leftovers)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-143 | Chat | Ask AI had no local `/skills` command; older PR hardcoded English and shrank tap targets | Localized `/skills` intercept + autocomplete; keep 44px targets and locale speech recognition (PR #68) |
+| BUG-144 | Bookings | Email lookup on another device required a signed-in session | Additive HMAC lookup tokens + confirmation-email link; Bearer session still accepted (PR #69) |
+| BUG-145 | CI | `checkout@v4` / `setup-node@v4` ran on deprecated Node 20 action runtime | Bump checkout, setup-node, and upload-artifact to `@v7` (PR #70) |
+
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 
 | File | Source | License |
