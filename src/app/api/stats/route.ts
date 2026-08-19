@@ -43,7 +43,7 @@ const SOURCE_BREAKDOWN_EVENTS = ["shop_click", "plan_add"];
 
 /**
  * Traction metrics for YC / ops. Bookings, partner revenue, conversion funnel.
- * Requires ADMIN_SECRET in Authorization: Bearer <secret> or x-admin-token header.
+ * Requires ADMIN_SECRET via HttpOnly session cookie, Authorization: Bearer, or x-admin-token.
  */
 export async function GET(req: NextRequest) {
   let limitResult: RateLimitResult;

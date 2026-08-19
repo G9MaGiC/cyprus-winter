@@ -1276,6 +1276,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-143 | Chat | Ask AI had no local `/skills` command; older PR hardcoded English and shrank tap targets | Localized `/skills` intercept + autocomplete; keep 44px targets and locale speech recognition (PR #68) |
 | BUG-144 | Bookings | Email lookup on another device required a signed-in session | Additive HMAC lookup tokens + confirmation-email link; Bearer session still accepted (PR #69) |
 | BUG-145 | CI | `checkout@v4` / `setup-node@v4` ran on deprecated Node 20 action runtime | Bump checkout, setup-node, and upload-artifact to `@v7` (PR #70) |
+| BUG-146 | Analytics | Funnel events (`booking_start`, hub footer, plan add) required marketing-cookie consent | First-party `trackProduct` events send without “accept all”; privacy essential copy updated |
 
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 

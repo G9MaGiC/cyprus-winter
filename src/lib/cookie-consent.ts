@@ -1,6 +1,7 @@
 /**
  * EU cookie consent. Non-essential (analytics) cookies require consent.
- * Stored in localStorage. Essential cookies (session, preferences, plan) run without consent.
+ * Stored in localStorage. Essential cookies (session, preferences, plan) and
+ * first-party funnel metrics run without marketing consent.
  */
 export const COOKIE_CONSENT_KEY = "cyprus-winter:cookie-consent";
 

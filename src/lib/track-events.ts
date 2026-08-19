@@ -52,7 +52,14 @@ export const PRODUCT_EVENTS = [
   "plan_share",
   "plan_day_change",
   "plan_template_apply",
+  "booking_start",
+  "hub_footer_click",
+  "shop_click",
 ] as const satisfies readonly TrackEventName[];
 
 export type ProductEventName = (typeof PRODUCT_EVENTS)[number];
+
+export function isProductEvent(event: string): event is ProductEventName {
+  return (PRODUCT_EVENTS as readonly string[]).includes(event);
+}
 

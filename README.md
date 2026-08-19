@@ -239,7 +239,7 @@ The app includes an AI-powered chat assistant with voice input/output. To enable
 
 ---
 
-**Admin stats** (`/admin/stats`): Set `ADMIN_SECRET` in your environment. The page prompts for it and sends it via `Authorization: Bearer`. Without it, the stats API returns 401.
+**Admin stats** (`/admin/stats`): Set `ADMIN_SECRET` in your environment. The page prompts for it and exchanges it for an HttpOnly session cookie (`POST /api/admin/session`). Stats requests then use that cookie. Scripts can still send `Authorization: Bearer`. Without a valid session or Bearer token, the stats API returns 401.
 
 **Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, `OLLAMA_TIMEOUT_MS`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`, `HEALTH_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
 
