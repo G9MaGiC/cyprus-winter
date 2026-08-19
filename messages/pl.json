@@ -1756,14 +1756,17 @@
       "rateLimited": "Za dużo zapytań. Odczekaj chwilę i spróbuj ponownie.",
       "failedToLoad": "Nie udało się wczytać",
       "signInRequired": "Zaloguj się, aby wczytać rezerwacje z innego urządzenia.",
-      "connection": "Nie udało się wczytać Twoich rezerwacji. Sprawdź połączenie i spróbuj ponownie."
+      "connection": "Nie udało się wczytać Twoich rezerwacji. Sprawdź połączenie i spróbuj ponownie.",
+      "lookupExpired": "Nieprawidłowy lub wygasły link. Poproś o nowy.",
+      "lookupLinkFailed": "Nie udało się wysłać linku. Sprawdź połączenie i spróbuj ponownie."
     },
     "emailLookup": {
       "srLabel": "Twój email do wczytania rezerwacji z innego urządzenia",
       "placeholder": "your@email.com",
       "noMatch": "Brak rezerwacji dla tego adresu. Spróbuj inny lub zarezerwuj w Odkrywaj.",
       "loadedCount": "{count, plural, one {Wczytano # rezerwację.} few {Wczytano # rezerwacje.} many {Wczytano # rezerwacji.} other {Wczytano # rezerwacji.}}",
-      "allSet": "Gotowe. Brak nowych rezerwacji do wczytania."
+      "allSet": "Gotowe. Brak nowych rezerwacji do wczytania.",
+      "linkSent": "Sprawdź e-mail: bezpieczny link wygasa po 15 minutach."
     },
     "page": {
       "title": "Moje rezerwacje",
@@ -1776,6 +1779,8 @@
       "sync": {
         "toggle": "Zarezerwowano na innym urządzeniu? Wczytaj przez email",
         "submit": "Wczytaj rezerwacje",
+        "sendLookupLink": "Wyślij link",
+        "resendLookupLink": "Wyślij link ponownie",
         "loadByEmail": "Wczytaj przez email",
         "mergeHint": "Połączymy rezerwacje z tym urządzeniem."
       },

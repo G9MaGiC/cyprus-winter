@@ -1756,14 +1756,17 @@
       "rateLimited": "Too many requests. Wait a moment and try again.",
       "failedToLoad": "Failed to load",
       "signInRequired": "Connectez-vous pour charger vos réservations depuis un autre appareil.",
-      "connection": "Couldn't load your bookings. Check your connection and try again."
+      "connection": "Couldn't load your bookings. Check your connection and try again.",
+      "lookupExpired": "Lien invalide ou expiré. Demandez-en un nouveau.",
+      "lookupLinkFailed": "Impossible d’envoyer le lien. Vérifiez la connexion et réessayez."
     },
     "emailLookup": {
       "srLabel": "Your email to load bookings from another device",
       "placeholder": "your@email.com",
       "noMatch": "No bookings for that email. Try another, or book from Discover.",
       "loadedCount": "{count, plural, one {Loaded # booking.} other {Loaded # bookings.}}",
-      "allSet": "All set. No new bookings to load."
+      "allSet": "All set. No new bookings to load.",
+      "linkSent": "Consultez votre e-mail : le lien sécurisé expire dans 15 minutes."
     },
     "page": {
       "title": "Mes réservations",
@@ -1776,6 +1779,8 @@
       "sync": {
         "toggle": "Booked on another device? Load by email",
         "submit": "Load bookings",
+        "sendLookupLink": "Envoyer le lien",
+        "resendLookupLink": "Renvoyer le lien",
         "loadByEmail": "Load by email",
         "mergeHint": "We’ll merge any bookings with this device."
       },

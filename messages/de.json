@@ -1756,14 +1756,17 @@
       "rateLimited": "Zu viele Anfragen. Warten Sie kurz und versuchen Sie es erneut.",
       "failedToLoad": "Konnte nicht geladen werden",
       "signInRequired": "Melden Sie sich an, um Buchungen von einem anderen Gerät zu laden.",
-      "connection": "Ihre Buchungen konnten nicht geladen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+      "connection": "Ihre Buchungen konnten nicht geladen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "lookupExpired": "Ungültiger oder abgelaufener Link. Bitte einen neuen anfordern.",
+      "lookupLinkFailed": "Der Lookup-Link konnte nicht gesendet werden. Verbindung prüfen und erneut versuchen."
     },
     "emailLookup": {
       "srLabel": "Ihre E-Mail, um Buchungen von einem anderen Gerät zu laden",
       "placeholder": "your@email.com",
       "noMatch": "Keine Buchungen für diese E-Mail. Andere E-Mail versuchen oder unter Entdecken buchen.",
       "loadedCount": "{count, plural, one {# Buchung geladen.} other {# Buchungen geladen.}}",
-      "allSet": "Alles bereit. Keine neuen Buchungen zum Laden."
+      "allSet": "Alles bereit. Keine neuen Buchungen zum Laden.",
+      "linkSent": "Prüfen Sie Ihre E-Mail: der sichere Link läuft in 15 Minuten ab."
     },
     "page": {
       "title": "Meine Buchungen",
@@ -1776,6 +1779,8 @@
       "sync": {
         "toggle": "Auf anderem Gerät gebucht? Per E-Mail laden",
         "submit": "Buchungen laden",
+        "sendLookupLink": "Lookup-Link senden",
+        "resendLookupLink": "Link erneut senden",
         "loadByEmail": "Per E-Mail laden",
         "mergeHint": "Wir führen alle Buchungen mit diesem Gerät zusammen."
       },

@@ -75,15 +75,94 @@ export default function BookingsPage() {
   }, [refreshBookings]);
 
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
+  const [tokenSent, setTokenSent] = useState(false);
+  const canDirectLookup = !authConfigured || Boolean(session?.access_token);
+
+  const applyRemoteBookings = (apiBookings: Booking[]) => {
+    const local = loadLocalBookings();
+    const merged = mergeBookings(local, apiBookings);
+    saveLocalBookings(merged);
+    if (!isMountedRef.current) return;
+    setBookings(merged);
+    if (successTimerRef.current) clearTimeout(successTimerRef.current);
+    if (apiBookings.length === 0) {
+      setEmailSuccess(tBookings("emailLookup.noMatch"));
+    } else {
+      const added = merged.length - local.length;
+      setEmailSuccess(
+        added > 0
+          ? tBookings("emailLookup.loadedCount", { count: added })
+          : tBookings("emailLookup.allSet")
+      );
+    }
+    successTimerRef.current = setTimeout(() => {
+      successTimerRef.current = null;
+      if (isMountedRef.current) setEmailSuccess(null);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const token = params.get("token");
+    if (!email || !token) return;
+
+    window.history.replaceState({}, "", window.location.pathname);
+
+    setEmailLookup(email);
+    setShowSync(true);
+    setEmailLoading(true);
+    setEmailError(null);
+    setEmailSuccess(null);
+
+    (async () => {
+      try {
+        const res = await fetch(
+          `/api/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`
+        );
+        const data = await res.json();
+        if (!isMountedRef.current) return;
+        if (res.status === 429) {
+          setEmailError(tBookings("errors.rateLimited"));
+          return;
+        }
+        if (res.status === 403) {
+          setEmailError(tBookings("errors.lookupExpired"));
+          return;
+        }
+        if (!res.ok) {
+          const msg =
+            data.message ??
+            (typeof data.error === "string" ? data.error : data.error?.message) ??
+            tBookings("errors.lookupExpired");
+          throw new Error(msg);
+        }
+        applyRemoteBookings((data.bookings ?? []) as Booking[]);
+      } catch (err) {
+        if (!isMountedRef.current) return;
+        const msg = err instanceof Error ? err.message : "";
+        setEmailError(
+          msg && !/failed to fetch|network/i.test(msg)
+            ? msg
+            : tBookings("errors.connection")
+        );
+      } finally {
+        if (isMountedRef.current) setEmailLoading(false);
+      }
+    })();
+    // Deep-link from the emailed lookup URL; run once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchByEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     const email = emailLookup.trim();
     if (!email) return;
+    if (authConfigured && authLoading) return;
     setEmailError(null);
     setEmailSuccess(null);
 
-    if (authConfigured && (authLoading || !session?.access_token)) {
+    if (authConfigured && !session?.access_token) {
       setEmailError(tBookings("errors.signInRequired"));
       return;
     }
@@ -108,27 +187,7 @@ export default function BookingsPage() {
           tBookings("errors.failedToLoad");
         throw new Error(msg);
       }
-      const apiBookings = (data.bookings ?? []) as Booking[];
-      const local = loadLocalBookings();
-      const merged = mergeBookings(local, apiBookings);
-      saveLocalBookings(merged);
-      if (!isMountedRef.current) return;
-      setBookings(merged);
-      if (successTimerRef.current) clearTimeout(successTimerRef.current);
-      if (apiBookings.length === 0) {
-        setEmailSuccess(tBookings("emailLookup.noMatch"));
-      } else {
-        const added = merged.length - local.length;
-        setEmailSuccess(
-          added > 0
-            ? tBookings("emailLookup.loadedCount", { count: added })
-            : tBookings("emailLookup.allSet")
-        );
-      }
-      successTimerRef.current = setTimeout(() => {
-        successTimerRef.current = null;
-        if (isMountedRef.current) setEmailSuccess(null);
-      }, 5000);
+      applyRemoteBookings((data.bookings ?? []) as Booking[]);
     } catch (err) {
       if (!isMountedRef.current) return;
       const msg = err instanceof Error ? err.message : "";
@@ -141,6 +200,55 @@ export default function BookingsPage() {
       if (isMountedRef.current) setEmailLoading(false);
     }
   };
+
+  const requestLookupToken = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const email = emailLookup.trim();
+    if (!email) return;
+    setEmailError(null);
+    setEmailSuccess(null);
+    setTokenSent(false);
+    setEmailLoading(true);
+    try {
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "request_lookup_token", email }),
+      });
+      const data = await res.json();
+      if (!isMountedRef.current) return;
+      if (res.status === 429) {
+        setEmailError(tBookings("errors.rateLimited"));
+        return;
+      }
+      if (!res.ok) {
+        const msg =
+          data.message ??
+          (typeof data.error === "string" ? data.error : data.error?.message) ??
+          tBookings("errors.lookupLinkFailed");
+        throw new Error(msg);
+      }
+      setTokenSent(true);
+      setEmailSuccess(tBookings("emailLookup.linkSent"));
+    } catch (err) {
+      if (!isMountedRef.current) return;
+      const msg = err instanceof Error ? err.message : "";
+      setEmailError(
+        msg && !/failed to fetch|network/i.test(msg)
+          ? msg
+          : tBookings("errors.lookupLinkFailed")
+      );
+    } finally {
+      if (isMountedRef.current) setEmailLoading(false);
+    }
+  };
+
+  const onSyncSubmit = canDirectLookup ? fetchByEmail : requestLookupToken;
+  const syncSubmitLabel = canDirectLookup
+    ? tBookingsPage("sync.submit")
+    : tokenSent
+      ? tBookingsPage("sync.resendLookupLink")
+      : tBookingsPage("sync.sendLookupLink");
 
   const now = new Date().toISOString().slice(0, 10);
   const upcoming = bookings
@@ -228,13 +336,14 @@ export default function BookingsPage() {
                 onEmailChange={(v) => {
                   setEmailLookup(v);
                   setEmailError(null);
+                  setTokenSent(false);
                 }}
                 loading={emailLoading}
                 error={emailError}
                 success={emailSuccess}
-                onSubmit={fetchByEmail}
-                submitLabel={tBookingsPage("sync.submit")}
-                onRetry={emailError ? () => setEmailError(null) : undefined}
+                onSubmit={onSyncSubmit}
+                submitLabel={syncSubmitLabel}
+                onRetry={emailError ? () => { setEmailError(null); setTokenSent(false); } : undefined}
               />
             </div>
           )}
@@ -296,14 +405,15 @@ export default function BookingsPage() {
                     onEmailChange={(v) => {
                       setEmailLookup(v);
                       setEmailError(null);
+                      setTokenSent(false);
                     }}
                     loading={emailLoading}
                     error={emailError}
                     success={emailSuccess}
-                    onSubmit={fetchByEmail}
-                    submitLabel={tBookingsPage("sync.submit")}
+                    onSubmit={onSyncSubmit}
+                    submitLabel={syncSubmitLabel}
                     layout="stacked"
-                    onRetry={emailError ? () => setEmailError(null) : undefined}
+                    onRetry={emailError ? () => { setEmailError(null); setTokenSent(false); } : undefined}
                   />
                 </div>
               )}

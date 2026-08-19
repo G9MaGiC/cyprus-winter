@@ -19,6 +19,7 @@ export type RateLimitScope =
   | "bookings"
   | "bookings-email"
   | "bookings-lookup"
+  | "bookings-lookup-request"
   | "trail-reports"
   | "track"
   | "health"

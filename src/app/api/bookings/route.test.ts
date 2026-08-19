@@ -1,9 +1,13 @@
 import { describe, it, expect, vi } from "vitest";
 import { POST, GET } from "./route";
+import { createBookingLookupToken } from "@/lib/booking-lookup-token";
+import { sendBookingLookupTokenEmail } from "@/lib/email";
 
 vi.mock("@/lib/email", () => ({
   sendBookingConfirmation: vi.fn().mockResolvedValue(false),
   sendBookingRequestToWinery: vi.fn().mockResolvedValue(false),
+  sendBookingRequestToGuide: vi.fn().mockResolvedValue(false),
+  sendBookingLookupTokenEmail: vi.fn().mockResolvedValue(true),
 }));
 
 function postReq(body: unknown, ip = "127.0.0.2") {
@@ -17,9 +21,10 @@ function postReq(body: unknown, ip = "127.0.0.2") {
   });
 }
 
-function getReq(email?: string, ip = "127.0.0.3") {
+function getReq(email?: string, ip = "127.0.0.3", token?: string) {
   const url = new URL("http://localhost:3000/api/bookings");
   if (email != null) url.searchParams.set("email", email);
+  if (token != null) url.searchParams.set("token", token);
   return new Request(url.toString(), {
     headers: { "x-forwarded-for": ip },
   });
@@ -130,5 +135,73 @@ describe("GET /api/bookings", () => {
     const data = await res.json();
     expect(Array.isArray(data.bookings)).toBe(true);
     expect(res.headers.get("cache-control")).toBe("no-store");
+  });
+});
+
+describe("POST /api/bookings lookup token", () => {
+  it("returns a generic message for a lookup-link request", async () => {
+    const res = await POST(
+      postReq({ action: "request_lookup_token", email: "guest@example.com" }, "127.0.0.90")
+    );
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.message).toMatch(/secure lookup link/i);
+    expect(data.booking).toBeUndefined();
+  });
+
+  it("sends a lookup email when the signing secret is configured", async () => {
+    process.env.BOOKING_LOOKUP_TOKEN_SECRET = "booking-lookup-secret-for-tests";
+    vi.mocked(sendBookingLookupTokenEmail).mockClear();
+    const res = await POST(
+      postReq({ action: "request_lookup_token", email: "guest@example.com" }, "127.0.0.95")
+    );
+    expect(res.status).toBe(200);
+    expect(sendBookingLookupTokenEmail).toHaveBeenCalledWith(
+      "guest@example.com",
+      expect.any(String)
+    );
+  });
+});
+
+describe("GET /api/bookings with lookup token", () => {
+  const secret = "booking-lookup-secret-for-tests";
+
+  it("accepts a valid token", async () => {
+    process.env.BOOKING_LOOKUP_TOKEN_SECRET = secret;
+    const token = createBookingLookupToken("user@example.com");
+    const res = await GET(getReq("user@example.com", "127.0.0.91", token));
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(Array.isArray(data.bookings)).toBe(true);
+    expect(data.bookings.every((b: { guestEmail?: string }) => b.guestEmail === undefined)).toBe(
+      true
+    );
+  });
+
+  it("rejects a tampered token", async () => {
+    process.env.BOOKING_LOOKUP_TOKEN_SECRET = secret;
+    const token = createBookingLookupToken("user@example.com");
+    const res = await GET(getReq("user@example.com", "127.0.0.92", `${token}x`));
+    expect(res.status).toBe(403);
+    const data = await res.json();
+    expect(data.error?.code).toBe("FORBIDDEN");
+  });
+
+  it("rejects a token used with a different email", async () => {
+    process.env.BOOKING_LOOKUP_TOKEN_SECRET = secret;
+    const token = createBookingLookupToken("user@example.com");
+    const res = await GET(getReq("other@example.com", "127.0.0.93", token));
+    expect(res.status).toBe(403);
+    expect((await res.json()).error?.code).toBe("FORBIDDEN");
+  });
+
+  it("rejects an expired token", async () => {
+    process.env.BOOKING_LOOKUP_TOKEN_SECRET = secret;
+    const token = createBookingLookupToken("user@example.com", {
+      nowMs: 1_700_000_000_000,
+      ttlSeconds: 60,
+    });
+    const res = await GET(getReq("user@example.com", "127.0.0.94", token));
+    expect(res.status).toBe(403);
   });
 });

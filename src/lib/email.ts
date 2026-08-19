@@ -3,6 +3,7 @@
  */
 import { Resend } from "resend";
 import type { Booking } from "./bookings";
+import { createBookingLookupToken, isBookingLookupTokenConfigured } from "./booking-lookup-token";
 import { SITE_URL } from "./site-url";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -28,6 +29,7 @@ export async function sendBookingConfirmation(booking: Booking): Promise<boolean
   const isGuide = booking.type === "guide_tour";
   const entityLabel = isGuide ? "guided hike" : "tasting";
   const confirmBy = isGuide ? "the guide" : "the winery";
+  const bookingsHref = bookingLookupUrl(booking.guestEmail);
 
   try {
     const { error } = await resend.emails.send({
@@ -47,7 +49,7 @@ export async function sendBookingConfirmation(booking: Booking): Promise<boolean
         <ol>
           <li>Your request is saved in our system.</li>
           <li>${confirmBy} typically replies within <strong>24–48 hours</strong> on weekdays.</li>
-          <li>Check <a href="${SITE_URL}/bookings">My Bookings</a> anytime with the same email.</li>
+          <li>Check <a href="${bookingsHref}">My Bookings</a> anytime with the same email.</li>
         </ol>
         <p>If you do not hear back after two business days, contact ${confirmBy} directly.</p>
         <p>Cyprus Winter</p>
@@ -157,6 +159,54 @@ export async function sendBookingRequestToGuide(
     return true;
   } catch (err) {
     console.error("Guide notification send error:", err);
+    return false;
+  }
+}
+
+function bookingLookupUrl(email: string): string {
+  if (!isBookingLookupTokenConfigured()) {
+    return `${SITE_URL}/bookings`;
+  }
+  try {
+    const token = createBookingLookupToken(email);
+    return `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+  } catch (err) {
+    console.error("Booking lookup token create error:", err);
+    return `${SITE_URL}/bookings`;
+  }
+}
+
+export async function sendBookingLookupTokenEmail(
+  email: string,
+  token: string
+): Promise<boolean> {
+  if (!resend) return false;
+
+  const safeEmail = escapeHtml(email);
+  const lookupUrl = `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: email,
+      subject: "Your secure bookings lookup link | Cyprus Winter",
+      html: `
+        <h2>Your secure booking lookup link</h2>
+        <p>We received a request to view bookings for <strong>${safeEmail}</strong>.</p>
+        <p>Use this secure link within 15 minutes:</p>
+        <p><a href="${lookupUrl}">View my bookings</a></p>
+        <p>If you didn't request this, you can ignore this email.</p>
+        <p>Cyprus Winter</p>
+      `,
+    });
+
+    if (error) {
+      console.error("Resend booking lookup email error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Booking lookup email send error:", err);
     return false;
   }
 }

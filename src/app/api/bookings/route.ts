@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { BookingIdempotencyConflictError, createBooking, getBookingsByEmail } from "@/lib/bookings";
 import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
-import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequestToGuide } from "@/lib/email";
+import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequestToGuide, sendBookingLookupTokenEmail } from "@/lib/email";
 import { createBookingSchema } from "@/lib/booking-schema";
 import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
@@ -17,8 +17,22 @@ import {
 } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
+import {
+  createBookingLookupToken,
+  isBookingLookupTokenConfigured,
+  verifyBookingLookupToken,
+} from "@/lib/booking-lookup-token";
 
 const MAX_BOOKING_BODY_BYTES = 32_000;
+
+const lookupRequestSchema = z.object({
+  action: z.literal("request_lookup_token"),
+  email: z.string().email().max(254),
+});
+
+const genericLookupResponse = {
+  message: "If an account exists for that email, we'll send a secure lookup link shortly.",
+};
 
 function getBearerToken(req: Request): string | null {
   const header = req.headers.get("authorization")?.trim();
@@ -60,7 +74,87 @@ async function recordTrustedBookingEvent(
   if (error) console.error("Trusted booking conversion event failed:", error);
 }
 
+async function authorizeBookingLookup(
+  req: Request,
+  emailNormalized: string,
+  lookupToken: string | null
+): Promise<Response | null> {
+  if (hasSupabase()) {
+    const supabase = getSupabase();
+    const accessToken = getBearerToken(req);
+    if (supabase && accessToken) {
+      const { data, error } = await supabase.auth.getUser(accessToken);
+      const userEmail = data.user?.email?.trim().toLowerCase();
+      const emailConfirmed = Boolean(data.user?.email_confirmed_at);
+      if (!error && userEmail && userEmail === emailNormalized && emailConfirmed) {
+        return null;
+      }
+    }
+  }
+
+  if (lookupToken) {
+    if (!isBookingLookupTokenConfigured()) {
+      return jsonError("SERVICE_UNAVAILABLE", "Booking lookup is not configured.", 503);
+    }
+    const verification = verifyBookingLookupToken(lookupToken, emailNormalized);
+    if (!verification.ok) {
+      return jsonError("FORBIDDEN", "Invalid or expired lookup token", 403);
+    }
+    return null;
+  }
+
+  if (hasSupabase()) {
+    return jsonError("UNAUTHORIZED", "Sign in to load your bookings.", 401);
+  }
+
+  return null;
+}
+
+async function handleLookupTokenRequest(req: Request, email: string): Promise<Response> {
+  let lookupRateLimit: RateLimitResult;
+  try {
+    lookupRateLimit = await rateLimit(req, 5, "bookings-lookup-request");
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+  }
+  if (!lookupRateLimit.ok) {
+    return jsonRateLimitedFromResult(
+      "Please wait before requesting another booking lookup link.",
+      lookupRateLimit.resetAt
+    );
+  }
+
+  const normalizedEmail = email.trim().toLowerCase();
+  try {
+    if (isBookingLookupTokenConfigured()) {
+      const token = createBookingLookupToken(normalizedEmail, { ttlSeconds: 15 * 60 });
+      await sendBookingLookupTokenEmail(normalizedEmail, token);
+    }
+  } catch (err) {
+    console.error("Booking lookup token request error:", err);
+  }
+
+  return Response.json(genericLookupResponse, {
+    headers: rateLimitSuccessHeaders(lookupRateLimit.remaining, 5, lookupRateLimit.bypassed),
+  });
+}
+
 export async function POST(req: Request) {
+  let body: unknown;
+  try {
+    body = await readJsonBody(req, MAX_BOOKING_BODY_BYTES);
+  } catch (err) {
+    if (err instanceof RequestBodyTooLargeError) {
+      return jsonError("PAYLOAD_TOO_LARGE", "Booking payload is too large.", 413);
+    }
+    return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
+  }
+
+  const lookupRequest = lookupRequestSchema.safeParse(body);
+  if (lookupRequest.success) {
+    return handleLookupTokenRequest(req, lookupRequest.data.email);
+  }
+
   let limitResult: RateLimitResult;
   try {
     limitResult = await rateLimit(req, 10, "bookings");
@@ -78,15 +172,6 @@ export async function POST(req: Request) {
   }
 
   try {
-    let body: unknown;
-    try {
-      body = await readJsonBody(req, MAX_BOOKING_BODY_BYTES);
-    } catch (err) {
-      if (err instanceof RequestBodyTooLargeError) {
-        return jsonError("PAYLOAD_TOO_LARGE", "Booking payload is too large.", 413);
-      }
-      return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
-    }
     if (!body || typeof body !== "object" || Array.isArray(body)) {
       return jsonError("VALIDATION_ERROR", "Invalid input", 400);
     }
@@ -298,6 +383,7 @@ export async function GET(req: Request) {
 
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email");
+  const lookupToken = searchParams.get("token")?.trim() || null;
   if (!email) {
     return jsonError("BAD_REQUEST", "email required", 400);
   }
@@ -308,22 +394,8 @@ export async function GET(req: Request) {
 
   try {
     const emailNormalized = parsed.data.trim().toLowerCase();
-
-    // In production, booking history is only available to an authenticated
-    // Supabase user whose verified email matches the requested address.
-    if (hasSupabase()) {
-      const supabase = getSupabase();
-      const accessToken = getBearerToken(req);
-      if (!supabase || !accessToken) {
-        return jsonError("UNAUTHORIZED", "Sign in to load your bookings.", 401);
-      }
-      const { data, error } = await supabase.auth.getUser(accessToken);
-      const userEmail = data.user?.email?.trim().toLowerCase();
-      const emailConfirmed = Boolean(data.user?.email_confirmed_at);
-      if (error || !userEmail || userEmail !== emailNormalized || !emailConfirmed) {
-        return jsonError("UNAUTHORIZED", "Sign in with the booking email to continue.", 401);
-      }
-    }
+    const authError = await authorizeBookingLookup(req, emailNormalized, lookupToken);
+    if (authError) return authError;
 
     const bookings = await getBookingsByEmail(emailNormalized);
     return Response.json(
