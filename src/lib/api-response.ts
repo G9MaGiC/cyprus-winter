@@ -9,6 +9,7 @@ export type ApiErrorCode =
   | "RATE_LIMITED"
   | "BAD_REQUEST"
   | "UNAUTHORIZED"
+  | "FORBIDDEN"
   | "SERVER_ERROR"
   | "SERVICE_UNAVAILABLE"
   | "IDEMPOTENCY_CONFLICT"
