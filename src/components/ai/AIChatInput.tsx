@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState, useCallback } from "react";
-import { Send, Mic, MicOff } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Send, Mic, MicOff } from "lucide-react";
+import { matchSlashCommands } from "./slash-commands";
 
 interface AIChatInputProps {
   input: string;
@@ -23,6 +24,7 @@ export function AIChatInput({
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const commandMatches = matchSlashCommands(input);
 
   // Initialize speech recognition
   const initSpeechRecognition = useCallback(() => {
@@ -115,6 +117,22 @@ export function AIChatInput({
           ))}
         </div>
       </div>
+
+      {commandMatches.length > 0 && (
+        <div className="mx-4 mb-2 rounded-xl border border-sand-200 bg-white shadow-sm overflow-hidden">
+          {commandMatches.map(({ command, descriptionKey }) => (
+            <button
+              key={command}
+              type="button"
+              onClick={() => setInput(command)}
+              className="w-full flex items-center gap-3 min-h-[44px] px-4 py-2.5 text-left hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            >
+              <span className="text-sm font-mono text-terracotta">{command}</span>
+              <span className="text-xs text-olive/60">{tCommon(`ai.slash.${descriptionKey}`)}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Input area */}
       <form onSubmit={handleSubmit} className="px-4 pb-4">

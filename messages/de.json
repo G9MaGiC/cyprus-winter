@@ -129,7 +129,15 @@
       "startVoice": "Sprachsuche starten",
       "stopVoice": "Sprachsuche stoppen",
       "retry": "Erneut versuchen",
-      "thinking": "Denkt nach…"
+      "thinking": "Denkt nach…",
+      "slash": {
+        "skillsDescription": "Sehen Sie, wobei ich helfen kann",
+        "skillsBody": "Damit kann ich helfen:\n\n**Reiseplanung** — Ein- oder mehrtägige Routen passend zu Ihren Daten und der Region.\n\n**Orte entdecken** — Weingüter, Dörfer, Strände, antike Stätten, Klöster.\n\n**Wanderwege** — Vorschläge nach Schwierigkeit, Region und Winterbedingungen.\n\n**Wetterangepasste Ideen** — Was sich lohnt, je nach Vorhersage oder Reisemonat.\n\n**In der Nähe** — Teilen Sie Ihren Standort, und ich finde, was nah ist.\n\n**Ankunft am Flughafen** — Transfer von Larnaka oder Paphos, erste Stopps, Tipps zum Ankunftstag.\n\n**Suchen und vergleichen** — Wanderwege, Weingüter und Veranstaltungen auf der Insel vergleichen.\n\nStellen Sie eine Frage oder tippen Sie unten auf einen Vorschlag.",
+        "followUpPlan": "Plane meine 3-Tage-Reise",
+        "followUpWineries": "Beste Weingüter bei Limassol",
+        "followUpHike": "Leichte Winterwanderung",
+        "followUpAirport": "Ich bin gerade in Larnaka gelandet"
+      }
     },
     "back": "Zurück",
     "backTo": "Zurück zu {label}",
