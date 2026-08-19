@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 import createNextIntlPlugin from "next-intl/plugin";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -12,6 +13,8 @@ const withAnalyzer = withBundleAnalyzer({
 
 const nextConfig: NextConfig = {
   output: process.env.DOCKER_BUILD === "true" ? "standalone" : undefined,
+  // Enable source maps in production so Sentry can resolve stack traces.
+  productionBrowserSourceMaps: true,
   turbopack: { root: path.resolve(__dirname) },
   distDir: ".next",
   webpack: (config, { dev }) => {
@@ -64,5 +67,15 @@ const nextConfig: NextConfig = {
   // Locale paths are defined in src/i18n/routing.ts
 };
 
-// Compose plugins: bundle analyzer → next-intl
-export default withAnalyzer(withNextIntl(nextConfig));
+// Compose plugins: Sentry → bundle analyzer → next-intl
+export default withSentryConfig(withAnalyzer(withNextIntl(nextConfig)), {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  tunnelRoute: "/monitoring",
+  sourcemaps: { deleteSourcemapsAfterUpload: true },
+  disableLogger: true,
+  automaticVercelMonitors: true,
+  reactComponentAnnotation: { enabled: true },
+});
