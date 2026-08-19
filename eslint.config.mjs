@@ -20,6 +20,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "dist/**",
+    ".vercel/**",
     "next-env.d.ts",
     // Capacitor-generated Android files
     "android/**",
