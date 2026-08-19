@@ -75,7 +75,9 @@ export default withSentryConfig(withAnalyzer(withNextIntl(nextConfig)), {
   widenClientFileUpload: true,
   tunnelRoute: "/monitoring",
   sourcemaps: { deleteSourcemapsAfterUpload: true },
-  disableLogger: true,
-  automaticVercelMonitors: true,
-  reactComponentAnnotation: { enabled: true },
+  webpack: {
+    treeshake: { removeDebugLogging: true },
+    automaticVercelMonitors: true,
+    reactComponentAnnotation: { enabled: true },
+  },
 });
