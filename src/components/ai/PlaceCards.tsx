@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
+import { resolveInternalPath } from "@/lib/resolve-internal-path";
 
 type Card = {
   type: string;
@@ -25,7 +26,7 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
       return;
     }
     const basePath = card.type === "trail" ? "/trails" : "/discover";
-    router.push(`${basePath}/${card.id}`);
+    router.push(resolveInternalPath(`${basePath}/${card.id}`));
   }
 
   if (!Array.isArray(cards) || !cards.length) return null;
