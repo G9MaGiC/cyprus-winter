@@ -253,6 +253,13 @@ Full setup: [docs/REDIS_SETUP.md](docs/REDIS_SETUP.md)
 
 ## Run
 
+### Get the source
+
+```bash
+git clone https://github.com/G9MaGiC/cyprus-winter.git
+cd cyprus-winter
+```
+
 ```bash
 npm install
 npm run dev
