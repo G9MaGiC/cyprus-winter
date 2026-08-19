@@ -48,7 +48,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 451+ pass |
+| Unit tests | 452+ pass |
 | i18n keys | 1861 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 
