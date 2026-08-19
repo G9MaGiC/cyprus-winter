@@ -1,15 +1,33 @@
 import { z } from "zod";
 
+/** Local calendar YYYY-MM-DD for HTML date inputs (not UTC). */
+export function toLocalDateInputValue(date = new Date()): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function isValidCalendarDate(value: string): boolean {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return false;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const parsed = new Date(year, month - 1, day);
+  return (
+    parsed.getFullYear() === year &&
+    parsed.getMonth() === month - 1 &&
+    parsed.getDate() === day
+  );
+}
+
+function isBookableDate(value: string): boolean {
+  return isValidCalendarDate(value) && value >= toLocalDateInputValue();
+}
+
 export const guideBookingSchema = z.object({
-  date: z
-    .string()
-    .min(1)
-    .refine((d) => {
-      const parsed = new Date(d);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return !isNaN(parsed.getTime()) && parsed >= today;
-    }),
+  date: z.string().min(1).refine(isBookableDate),
   partySize: z.coerce.number().int().min(1).max(20),
   guestName: z.string().trim().min(1).max(200),
   guestEmail: z.string().trim().email().max(320),
@@ -20,15 +38,7 @@ export const guideBookingSchema = z.object({
 export type GuideBookingInput = z.infer<typeof guideBookingSchema>;
 
 export const wineryBookingSchema = z.object({
-  date: z
-    .string()
-    .min(1)
-    .refine((d) => {
-      const parsed = new Date(d);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return !isNaN(parsed.getTime()) && parsed >= today;
-    }),
+  date: z.string().min(1).refine(isBookableDate),
   partySize: z.coerce.number().int().min(1).max(20),
   guestName: z.string().trim().min(1).max(200),
   guestEmail: z.string().trim().email().max(320),

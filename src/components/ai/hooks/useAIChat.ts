@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 // getPlaceById available for future use
 
 export type Message = {
@@ -126,13 +127,19 @@ function loadPersistedMessages(): Message[] | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed) || parsed.length === 0) return null;
-    const valid = parsed.filter(
-      (m): m is Message =>
-        m &&
-        typeof m === "object" &&
-        (m.role === "user" || m.role === "assistant") &&
-        typeof m.content === "string"
-    );
+    const valid = parsed.flatMap((raw): Message[] => {
+      if (!raw || typeof raw !== "object") return [];
+      const m = raw as Record<string, unknown>;
+      if ((m.role !== "user" && m.role !== "assistant") || typeof m.content !== "string") {
+        return [];
+      }
+      const metadata = m.metadata ? sanitizeResponseMetadata(m.metadata) : undefined;
+      return [{
+        role: m.role,
+        content: m.content,
+        ...(metadata && Object.keys(metadata).length > 0 ? { metadata } : {}),
+      }];
+    });
     return valid.length > 0 ? valid : null;
   } catch {
     return null;
@@ -205,7 +212,13 @@ export function useAIChat() {
         // Build context
         const lastPlace =
           typeof window !== "undefined"
-            ? sessionStorage.getItem(LAST_PLACE_KEY) || undefined
+            ? (() => {
+                try {
+                  return sessionStorage.getItem(LAST_PLACE_KEY) || undefined;
+                } catch {
+                  return undefined;
+                }
+              })()
             : undefined;
         const itinerary = getItineraryForChat();
 
@@ -223,7 +236,12 @@ export function useAIChat() {
 
         // Include cached geolocation if available
         if (typeof window !== "undefined") {
-          const cachedPos = sessionStorage.getItem("cyprus-winter-location");
+          let cachedPos: string | null = null;
+          try {
+            cachedPos = sessionStorage.getItem("cyprus-winter-location");
+          } catch {
+            cachedPos = null;
+          }
           if (cachedPos) {
             try {
               context.currentLocation = JSON.parse(cachedPos);
@@ -303,11 +321,12 @@ export function useAIChat() {
           ) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { type: _type, ...metadata } = parsed as Record<string, unknown>;
+            const safeMetadata = sanitizeResponseMetadata(metadata);
             setMessages((prev) => {
               const updated = [...prev];
               const lastMsg = updated[updated.length - 1];
               if (lastMsg?.role === "assistant") {
-                updated[updated.length - 1] = { ...lastMsg, metadata: metadata as Message["metadata"] };
+                updated[updated.length - 1] = { ...lastMsg, metadata: safeMetadata };
               }
               messagesRef.current = updated;
               return updated;
@@ -354,7 +373,11 @@ export function useAIChat() {
     setMessages([buildContextualOpener(pathname)]);
     setInput("");
     if (typeof window !== "undefined") {
-      sessionStorage.removeItem(CHAT_SESSION_KEY);
+      try {
+        sessionStorage.removeItem(CHAT_SESSION_KEY);
+      } catch {
+        // Storage can be unavailable in privacy modes.
+      }
     }
   }, [pathname]);
 

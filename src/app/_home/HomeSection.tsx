@@ -13,7 +13,7 @@ export default function HomeSection({ id, title, subtitle, kicker, alt, children
   return (
     <section
       aria-labelledby={id}
-      className={`${SECTION.py} ${alt ? SECTION.alt : "bg-background"} ${LAYOUT.safeAreaX} scroll-mt-24`}
+      className={`py-10 sm:py-16 ${alt ? SECTION.alt : "bg-background"} ${LAYOUT.safeAreaX} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className="text-center mb-8 sm:mb-10">

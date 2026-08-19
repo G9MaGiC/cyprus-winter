@@ -1,23 +1,23 @@
 "use client";
 
-import { ReactNode, useSyncExternalStore } from "react";
+import { useEffect, type ReactNode } from "react";
 
 interface SerwistProviderProps {
   swUrl: string;
   children: ReactNode;
 }
 
-const subscribe = () => () => {};
-const getSnapshot = () => true;
-const getServerSnapshot = () => false;
-
-export function SerwistProvider({ children }: SerwistProviderProps) {
-  // Use useSyncExternalStore to avoid setState in useEffect warning
-  const isReady = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  if (!isReady) {
-    return null;
-  }
+/**
+ * Register the app service worker once at the root. It provides the offline
+ * shell and also owns push notification handling.
+ */
+export function SerwistProvider({ swUrl, children }: SerwistProviderProps) {
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.register(swUrl, { updateViaCache: "none" }).catch(() => {
+      // Offline support is progressive enhancement; never block the app.
+    });
+  }, [swUrl]);
 
   return <>{children}</>;
 }

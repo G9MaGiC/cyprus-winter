@@ -3,9 +3,14 @@
 import { useState, useRef, useEffect, useCallback, type RefObject } from "react";
 import type { z } from "zod";
 import { track } from "@/lib/analytics";
-import { addBookingToLocal, loadLocalBookings } from "@/lib/bookings-storage";
+import { addBookingToLocal } from "@/lib/bookings-storage";
 import { addMutation } from "@/lib/offline-queue";
-import { formatZodErrors, localizeBookingFieldErrors, type BookingValidationLabels } from "@/lib/booking-schemas";
+import {
+  formatZodErrors,
+  localizeBookingFieldErrors,
+  toLocalDateInputValue,
+  type BookingValidationLabels,
+} from "@/lib/booking-schemas";
 
 export type BookingFormConfig = {
   type: "winery_tasting" | "guide_tour";
@@ -43,7 +48,7 @@ export function useBookingForm(
   config: BookingFormConfig,
   tErrors: ErrorStrings
 ): BookingFormState {
-  const { type, providerId, schema, extraFields, analyticsExtra, validationLabels } = config;
+  const { type, providerId, schema, extraFields, validationLabels } = config;
 
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -52,13 +57,14 @@ export function useBookingForm(
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [notesLength, setNotesLength] = useState(0);
+  const [todayStr, setTodayStr] = useState("");
+  const idempotencyKeyRef = useRef<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
 
-  const today = new Date();
-  const todayStr = [today.getFullYear(), today.getMonth() + 1, today.getDate()]
-    .map((part) => String(part).padStart(2, "0"))
-    .join("-");
+  useEffect(() => {
+    setTodayStr(toLocalDateInputValue());
+  }, []);
 
   const toFieldErrors = useCallback(
     (raw: Record<string, string>) =>
@@ -113,9 +119,17 @@ export function useBookingForm(
     setLoading(true);
     const validated = validation.data as Record<string, unknown>;
 
+    if (!idempotencyKeyRef.current) {
+      idempotencyKeyRef.current =
+        typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `booking-${Date.now()}-${Math.random().toString(36).slice(2, 14)}`;
+    }
+
     const bodyObj: Record<string, unknown> = {
       type,
       providerId,
+      idempotencyKey: idempotencyKeyRef.current,
       date: validated.date,
       partySize: validated.partySize,
       guestName: validated.guestName,
@@ -154,18 +168,10 @@ export function useBookingForm(
       setEmailDelayed(data.emailStatus?.confirmationSent === false);
       form.reset();
 
-      const trackPayload: Record<string, string | number | undefined> = {
-        partySize: Number(validated.partySize),
-        ...analyticsExtra,
-      };
-      track("booking_complete", trackPayload);
-
-      if (loadLocalBookings().length === 0) {
-        const firstBookingPayload: Record<string, string | number | undefined> = { ...analyticsExtra };
-        track("first_booking", firstBookingPayload);
-      }
-
+      // booking_complete is recorded by the server after durable creation,
+      // so clients cannot forge conversion funnel data.
       addBookingToLocal(data.booking);
+      idempotencyKeyRef.current = null;
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
       const isNetworkError = /failed to fetch|network error/i.test(msg);
@@ -173,6 +179,7 @@ export function useBookingForm(
         addMutation({ type: mutationType, url: "/api/bookings", method: "POST", body });
         setError(tErrors.offlineQueued);
       } else {
+        idempotencyKeyRef.current = null;
         setError(msg || tErrors.fallback);
       }
       setTimeout(() => {

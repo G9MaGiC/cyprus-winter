@@ -9,6 +9,26 @@ import { bottomOverflowLinks, bottomPrimaryLinks } from "@/lib/nav-links";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { LAYER } from "@/lib/design-tokens";
 import { useAuth } from "@/contexts/AuthContext";
+import { CalendarDays, Compass, Home, MoreHorizontal, Route } from "lucide-react";
+
+function NavIcon({ href, active }: { href: string; active: boolean }) {
+  const Icon =
+    href === "/"
+      ? Home
+      : href === "/discover"
+        ? Compass
+        : href === "/trails"
+          ? Route
+          : CalendarDays;
+
+  return (
+    <Icon
+      className={`h-4 w-4 ${active ? "text-golden" : "text-white/70"}`}
+      strokeWidth={1.8}
+      aria-hidden
+    />
+  );
+}
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -91,7 +111,7 @@ export default function BottomNav() {
     <nav
       role="navigation"
       aria-label={tCommon("aria.bottomNavigation")}
-      className={`fixed bottom-0 left-0 right-0 ${LAYER.chrome} md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-3 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]`}
+      className={`fixed bottom-0 left-0 right-0 ${LAYER.chrome} md:hidden bg-charcoal/97 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.12)] pb-[env(safe-area-inset-bottom)] pt-2 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]`}
     >
       <div className="flex items-center justify-around max-w-lg mx-auto">
         {otherLinks.map((link) => (
@@ -100,8 +120,9 @@ export default function BottomNav() {
             href={link.href}
             prefetch={false}
             aria-current={isActive(pathname, link.href) ? "page" : undefined}
-            className="flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
+            className="flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5"
           >
+            <NavIcon href={link.href} active={isActive(pathname, link.href)} />
             <span
               className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
@@ -120,10 +141,11 @@ export default function BottomNav() {
             aria-current={isActive(pathname, planLink.href) ? "page" : undefined}
             aria-hidden={stickyPlanVisible}
             tabIndex={stickyPlanVisible ? -1 : undefined}
-            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
+            className={`flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               stickyPlanVisible ? "invisible pointer-events-none" : ""
             }`}
           >
+            <NavIcon href={planLink.href} active={isActive(pathname, planLink.href)} />
             <span
               className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
@@ -142,10 +164,11 @@ export default function BottomNav() {
             aria-expanded={moreOpen}
             aria-haspopup="true"
             aria-label={tCommon("aria.moreNavigation")}
-            className={`flex flex-col items-center justify-center min-h-[52px] min-w-[44px] gap-0.5 py-3 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
+            className={`flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               isOverflowActive ? "text-golden" : "text-white/80"
             }`}
           >
+            <MoreHorizontal className="h-4 w-4 text-white/70" strokeWidth={1.8} aria-hidden />
             <span className="text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap">
               {t("more")}
             </span>

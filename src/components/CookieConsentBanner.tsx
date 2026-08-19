@@ -3,7 +3,7 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import AppLink from "@/components/AppLink";
 import { CTA, LAYER, LAYOUT, SECTION } from "@/lib/design-tokens";
-import { setCookieConsent, COOKIE_CONSENT_KEY } from "@/lib/cookie-consent";
+import { getCookieConsent, setCookieConsent } from "@/lib/cookie-consent";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
 import { useTranslations } from "next-intl";
 
@@ -14,9 +14,7 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): string | null {
-  if (typeof window === "undefined") return null;
-  const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
-  return stored === "all" || stored === "essential" ? stored : null;
+  return getCookieConsent();
 }
 
 function getServerSnapshot() {

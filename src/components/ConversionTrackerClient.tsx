@@ -8,7 +8,6 @@ export default function ConversionTrackerClient() {
 
   useEffect(() => {
     // Intentionally using setState for client-only rendering
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

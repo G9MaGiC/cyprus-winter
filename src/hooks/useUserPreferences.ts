@@ -16,7 +16,6 @@ export function useUserPreferences() {
 
   useEffect(() => {
     // Hydrate from localStorage after mount (SSR-safe). Single run, no subscription.
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- valid hydration pattern for client-only storage
     setPrefs(getUserPreferences());
     setHydrated(true);
   }, []);

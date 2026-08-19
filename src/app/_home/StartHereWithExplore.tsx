@@ -128,7 +128,6 @@ export default function StartHereWithExplore() {
             />
           </div>
         </div>
-
       </div>
     </section>
   );

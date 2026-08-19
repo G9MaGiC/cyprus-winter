@@ -1747,6 +1747,7 @@
     "errors": {
       "rateLimited": "Too many requests. Wait a moment and try again.",
       "failedToLoad": "Failed to load",
+      "signInRequired": "יש להתחבר כדי לטעון הזמנות ממכשיר אחר.",
       "connection": "Couldn't load your bookings. Check your connection and try again."
     },
     "emailLookup": {

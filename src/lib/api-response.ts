@@ -10,12 +10,68 @@ export type ApiErrorCode =
   | "BAD_REQUEST"
   | "UNAUTHORIZED"
   | "SERVER_ERROR"
-  | "SERVICE_UNAVAILABLE";
+  | "SERVICE_UNAVAILABLE"
+  | "IDEMPOTENCY_CONFLICT"
+  | "PAYLOAD_TOO_LARGE";
 
 export type ApiErrorDetail = {
   field?: string;
   message: string;
 };
+
+export class RequestBodyTooLargeError extends Error {
+  constructor(readonly maxBytes: number) {
+    super(`Request body exceeds ${maxBytes} bytes.`);
+    this.name = "RequestBodyTooLargeError";
+  }
+}
+
+/** Read and parse JSON without buffering an unbounded request body. */
+export async function readJsonBody<T = unknown>(
+  req: Request,
+  maxBytes = 256_000
+): Promise<T> {
+  const contentLengthHeader = req.headers.get("content-length");
+  const contentLength = contentLengthHeader ? Number(contentLengthHeader) : Number.NaN;
+  if (Number.isFinite(contentLength) && contentLength > maxBytes) {
+    throw new RequestBodyTooLargeError(maxBytes);
+  }
+
+  const reader = req.body?.getReader();
+  if (!reader) {
+    const text = await req.text();
+    if (new TextEncoder().encode(text).byteLength > maxBytes) {
+      throw new RequestBodyTooLargeError(maxBytes);
+    }
+    return JSON.parse(text) as T;
+  }
+
+  const chunks: Uint8Array[] = [];
+  let totalBytes = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (!value) continue;
+      totalBytes += value.byteLength;
+      if (totalBytes > maxBytes) {
+        await reader.cancel();
+        throw new RequestBodyTooLargeError(maxBytes);
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  const bytes = new Uint8Array(totalBytes);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return JSON.parse(new TextDecoder().decode(bytes)) as T;
+}
 
 export function jsonError(
   code: ApiErrorCode,
@@ -31,7 +87,7 @@ export function jsonError(
     },
     message, // Top-level for clients that expect data.message or data.error (string)
   };
-  return Response.json(body, { status });
+  return Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
 
 /** 429 response with Retry-After and X-RateLimit headers. */
@@ -46,6 +102,7 @@ export function jsonRateLimited(
     {
       status: 429,
       headers: {
+        "Cache-Control": "no-store",
         "Retry-After": String(Math.ceil(retryAfterSeconds)),
         "X-RateLimit-Remaining": "0",
       },
@@ -69,6 +126,7 @@ export function rateLimitSuccessHeaders(
   bypassed?: boolean
 ): Record<string, string> {
   const headers: Record<string, string> = {
+    "Cache-Control": "no-store",
     "X-RateLimit-Remaining": String(Math.max(0, remaining)),
     "X-RateLimit-Limit": String(limit),
   };

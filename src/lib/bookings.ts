@@ -1,6 +1,7 @@
 /**
  * Booking types and store. Uses Supabase when configured, else in-memory (dev fallback).
  */
+import { createHash } from "node:crypto";
 import { getSupabase, hasSupabase } from "./supabase";
 
 export type BookingStatus = "pending" | "confirmed" | "cancelled";
@@ -23,19 +24,62 @@ export type Booking = {
 
 const memoryStore: Booking[] = [];
 
-function generateId(): string {
-  return `b-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+
+export class BookingIdempotencyConflictError extends Error {
+  constructor() {
+    super("The idempotency key was already used for a different booking request.");
+    this.name = "BookingIdempotencyConflictError";
+  }
+}
+
+function idForIdempotencyKey(key: string, email: string): string {
+  const digest = createHash("sha256").update(`${email}\0${key}`).digest("hex");
+  return `b-idem-${digest}`;
+}
+
+function matchesBookingRequest(
+  existing: Booking,
+  input: Omit<Booking, "id" | "status" | "createdAt">,
+  normalizedEmail: string
+): boolean {
+  return (
+    existing.type === input.type &&
+    existing.providerId === input.providerId &&
+    existing.providerName === input.providerName &&
+    existing.date === input.date &&
+    existing.partySize === input.partySize &&
+    existing.guestEmail === normalizedEmail &&
+    existing.guestName === input.guestName &&
+    (existing.notes ?? undefined) === (input.notes ?? undefined)
+  );
+}
+
+function replayOrThrow(
+  existing: Booking,
+  input: Omit<Booking, "id" | "status" | "createdAt">,
+  normalizedEmail: string
+): CreateBookingResult {
+  if (!matchesBookingRequest(existing, input, normalizedEmail)) {
+    throw new BookingIdempotencyConflictError();
+  }
+  return { booking: existing, created: false };
 }
 
 export type CreateBookingInput = Omit<Booking, "id" | "status" | "createdAt"> & {
   leadFeeEur?: number;
+  idempotencyKey: string;
 };
 
-export async function createBooking(input: CreateBookingInput): Promise<Booking> {
-  const { leadFeeEur, ...rest } = input;
-  const id = generateId();
-  const createdAt = new Date().toISOString();
+export type CreateBookingResult = {
+  booking: Booking;
+  created: boolean;
+};
+
+export async function createBooking(input: CreateBookingInput): Promise<CreateBookingResult> {
+  const { leadFeeEur, idempotencyKey, ...rest } = input;
   const guestEmailNormalized = input.guestEmail.trim().toLowerCase();
+  const id = idForIdempotencyKey(idempotencyKey, guestEmailNormalized);
+  const createdAt = new Date().toISOString();
   const booking: Booking = {
     ...rest,
     guestEmail: guestEmailNormalized,
@@ -46,6 +90,20 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
 
   const supabase = getSupabase();
   if (supabase) {
+    const { data: existing, error: lookupError } = await supabase
+      .from("bookings")
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+
+    if (lookupError) {
+      console.error("Booking idempotency lookup failed:", lookupError.message, { id });
+      throw new Error(lookupError.message);
+    }
+    if (existing) {
+      return replayOrThrow(rowToBooking(existing as Record<string, unknown>), rest, guestEmailNormalized);
+    }
+
     const { error } = await supabase.from("bookings").insert({
       id,
       type: input.type,
@@ -61,14 +119,28 @@ export async function createBooking(input: CreateBookingInput): Promise<Booking>
       lead_fee_eur: leadFeeEur ?? null,
     });
     if (error) {
+      // Two concurrent requests can both miss the lookup; the primary-key conflict
+      // is the durable idempotency barrier.
+      if (error.code === "23505") {
+        const { data: replayed } = await supabase
+          .from("bookings")
+          .select("*")
+          .eq("id", id)
+          .maybeSingle();
+        if (replayed) {
+          return replayOrThrow(rowToBooking(replayed as Record<string, unknown>), rest, guestEmailNormalized);
+        }
+      }
       console.error("Booking DB insert failed:", error.message, { id, providerId: input.providerId });
       throw new Error(error.message);
     }
-    return booking;
+    return { booking, created: true };
   }
 
+  const existing = memoryStore.find((item) => item.id === id);
+  if (existing) return replayOrThrow(existing, rest, guestEmailNormalized);
   memoryStore.push(booking);
-  return booking;
+  return { booking, created: true };
 }
 
 export async function getBookingsByEmail(email: string): Promise<Booking[]> {
@@ -77,11 +149,11 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
     const emailNormalized = email.trim().toLowerCase();
     const { data, error } = await supabase
       .from("bookings")
-      .select("*")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
       .eq("guest_email", emailNormalized)
       .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
-    return (data ?? []).map(rowToBooking);
+    return (data ?? []).map((row) => rowToBooking(row as Record<string, unknown>));
   }
 
   return memoryStore
