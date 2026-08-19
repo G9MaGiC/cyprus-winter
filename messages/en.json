@@ -149,7 +149,15 @@
       "startVoice": "Start voice input",
       "stopVoice": "Stop listening",
       "retry": "Retry",
-      "thinking": "Thinking…"
+      "thinking": "Thinking…",
+      "slash": {
+        "skillsDescription": "See what I can help with",
+        "skillsBody": "Here's what I can help with:\n\n**Trip planning** — Build a day or multi-day itinerary tailored to your dates and region.\n\n**Discover places** — Wineries, villages, beaches, ancient sites, monasteries.\n\n**Trails & hiking** — Suggestions by difficulty, region, and winter conditions.\n\n**Weather-adapted ideas** — What to do based on the forecast or your travel month.\n\n**Nearby places** — Share your location and I'll find what's close.\n\n**Airport arrival** — Transport from Larnaca or Paphos, first stops, opening-day tips.\n\n**Search & compare** — Compare trails, wineries, and events across the island.\n\nJust ask a question or tap a suggestion below to get started.",
+        "followUpPlan": "Plan my 3-day trip",
+        "followUpWineries": "Best wineries near Limassol",
+        "followUpHike": "Easy winter hike",
+        "followUpAirport": "I just landed in Larnaca"
+      }
     },
     "back": "Back",
     "backTo": "Back to {label}",

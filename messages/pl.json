@@ -129,7 +129,15 @@
       "startVoice": "Włącz wyszukiwanie głosowe",
       "stopVoice": "Wyłącz wyszukiwanie głosowe",
       "retry": "Spróbuj ponownie",
-      "thinking": "Myśli…"
+      "thinking": "Myśli…",
+      "slash": {
+        "skillsDescription": "Zobacz, w czym mogę pomóc",
+        "skillsBody": "W tym mogę pomóc:\n\n**Planowanie podróży** — Jednodniowy lub wielodniowy plan dopasowany do dat i regionu.\n\n**Odkrywanie miejsc** — Winnice, wioski, plaże, stanowiska antyczne, klasztory.\n\n**Szlaki i trekking** — Propozycje według trudności, regionu i warunków zimowych.\n\n**Pomysły na pogodę** — Co robić według prognozy lub miesiąca podróży.\n\n**W pobliżu** — Udostępnij lokalizację, a znajdę, co jest blisko.\n\n**Przylot na lotnisko** — Transport z Larnaki lub Pafos, pierwsze przystanki, wskazówki na dzień przylotu.\n\n**Szukaj i porównuj** — Porównaj szlaki, winnice i wydarzenia na wyspie.\n\nZadaj pytanie lub stuknij propozycję poniżej.",
+        "followUpPlan": "Zaplanuj moją 3-dniową podróż",
+        "followUpWineries": "Najlepsze winnice koło Limassol",
+        "followUpHike": "Łatwy zimowy szlak",
+        "followUpAirport": "Właśnie wylądowałem w Larnace"
+      }
     },
     "back": "Wróć",
     "backTo": "Wróć do {label}",

@@ -7,6 +7,7 @@ import { CHAT_SESSION_KEY, LAST_PLACE_KEY } from "@/lib/local-storage-keys";
 import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
 import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
+import { handleSlashCommand } from "../slash-commands";
 // getPlaceById available for future use
 
 export type Message = {
@@ -166,6 +167,7 @@ export function useAIChat() {
   const pathname = usePathname();
   const locale = useLocale();
   const tErrors = useTranslations("errors");
+  const tAi = useTranslations("common.ai");
   const initialMessage = buildContextualOpener(pathname);
   const [messages, setMessages] = useState<Message[]>([initialMessage]);
   const [input, setInput] = useState("");
@@ -196,6 +198,24 @@ export function useAIChat() {
   const sendMessage = useCallback(
     async (content: string) => {
       if (!content.trim() || loading) return;
+
+      const commandReply = handleSlashCommand(content, {
+        content: tAi("slash.skillsBody"),
+        followUps: [
+          tAi("slash.followUpPlan"),
+          tAi("slash.followUpWineries"),
+          tAi("slash.followUpHike"),
+          tAi("slash.followUpAirport"),
+        ],
+      });
+      if (commandReply) {
+        const userMessage: Message = { role: "user", content: content.trim() };
+        const withCommand = [...messagesRef.current, userMessage, commandReply];
+        messagesRef.current = withCommand;
+        setMessages(withCommand);
+        setInput("");
+        return;
+      }
 
       const userMessage: Message = { role: "user", content: content.trim() };
       // Keep the ref in sync immediately so outbound payload is never stale.
@@ -358,7 +378,7 @@ export function useAIChat() {
         abortRef.current = null;
       }
     },
-    [loading, pathname, locale, tErrors]
+    [loading, pathname, locale, tErrors, tAi]
   );
 
   // Handle follow-up chip selections dispatched from AIChatMessages

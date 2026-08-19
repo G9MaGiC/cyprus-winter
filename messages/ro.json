@@ -149,7 +149,15 @@
       "startVoice": "Start voice input",
       "stopVoice": "Stop listening",
       "retry": "Retry",
-      "thinking": "Thinking…"
+      "thinking": "Thinking…",
+      "slash": {
+        "skillsDescription": "Vezi cu ce te pot ajuta",
+        "skillsBody": "Cu acestea te pot ajuta:\n\n**Planificarea călătoriei** — Un itinerar de o zi sau de mai multe zile, pe datele și zona ta.\n\n**Descoperă locuri** — Crame, sate, plaje, situri antice, mănăstiri.\n\n**Trasee și drumeții** — Sugestii după dificultate, zonă și condiții de iarnă.\n\n**Idei după vreme** — Ce merită făcut după prognoză sau luna de călătorie.\n\n**În apropiere** — Spune-mi locația și găsesc ce e aproape.\n\n**Sosire pe aeroport** — Transfer din Larnaca sau Paphos, primele opriri, sfaturi pentru ziua sosirii.\n\n**Caută și compară** — Compară trasee, crame și evenimente pe insulă.\n\nPune o întrebare sau atinge o sugestie mai jos.",
+        "followUpPlan": "Planifică-mi călătoria de 3 zile",
+        "followUpWineries": "Cele mai bune crame lângă Limassol",
+        "followUpHike": "Drumeție de iarnă ușoară",
+        "followUpAirport": "Tocmai am aterizat la Larnaca"
+      }
     },
     "back": "Înapoi",
     "backTo": "Back to {label}",

@@ -149,7 +149,15 @@
       "startVoice": "Start voice input",
       "stopVoice": "Stop listening",
       "retry": "Retry",
-      "thinking": "Thinking…"
+      "thinking": "Thinking…",
+      "slash": {
+        "skillsDescription": "Voir ce que je peux faire",
+        "skillsBody": "Voici ce que je peux faire :\n\n**Organisation du séjour** — Un itinéraire d’un ou plusieurs jours selon vos dates et la région.\n\n**Découvrir des lieux** — Domaines, villages, plages, sites antiques, monastères.\n\n**Sentiers et randonnées** — Suggestions selon la difficulté, la région et les conditions d’hiver.\n\n**Idées selon la météo** — Que faire d’après les prévisions ou le mois de voyage.\n\n**À proximité** — Partagez votre position, je trouverai ce qui est proche.\n\n**Arrivée à l’aéroport** — Transfert depuis Larnaca ou Paphos, premiers arrêts, conseils pour le jour d’arrivée.\n\n**Rechercher et comparer** — Comparez sentiers, domaines et événements sur l’île.\n\nPosez une question ou touchez une suggestion ci-dessous.",
+        "followUpPlan": "Planifier mon séjour de 3 jours",
+        "followUpWineries": "Meilleures caves près de Limassol",
+        "followUpHike": "Randonnée hivernale facile",
+        "followUpAirport": "Je viens d’atterrir à Larnaca"
+      }
     },
     "back": "Retour",
     "backTo": "Back to {label}",
