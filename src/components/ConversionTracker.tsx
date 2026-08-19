@@ -3,7 +3,7 @@
 import { usePathname } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { track } from "@/lib/analytics";
+import { track, trackProduct } from "@/lib/analytics";
 import { getPlaceById } from "@/data";
 
 export default function ConversionTracker() {
@@ -45,14 +45,14 @@ export default function ConversionTracker() {
       const segments = path.split("/").filter(Boolean);
       const id = segments[segments.length - 1] ?? "";
       if (/^[a-z0-9-]+$/i.test(id) && id.length <= 80) {
-        track("booking_start", { wineryId: id });
+        trackProduct("booking_start", { wineryId: id });
       }
     }
     if (isGuideBook && pathname !== prevPath.current) {
       const segments = path.split("/").filter(Boolean);
       const id = segments[segments.length - 1] ?? "";
       if (id && /^[a-z0-9-]+$/i.test(id) && id.length <= 80) {
-        track("booking_start", { guideId: id });
+        trackProduct("booking_start", { guideId: id });
       }
     }
 

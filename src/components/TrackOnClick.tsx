@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { track } from "@/lib/analytics";
+import { track, trackProduct } from "@/lib/analytics";
 import type { EventName } from "@/lib/analytics";
+import { isProductEvent } from "@/lib/track-events";
 
 type TrackOnClickProps = {
   event: EventName;
@@ -23,14 +24,20 @@ export function TrackOnClick({
     return React.cloneElement(child, {
       onClick: (e: React.MouseEvent) => {
         child.props.onClick?.(e);
-        if (!e.defaultPrevented) track(event, properties);
+        if (!e.defaultPrevented) {
+          if (isProductEvent(event)) trackProduct(event, properties);
+          else track(event, properties);
+        }
       },
     });
   }
 
   return (
     <span
-      onClick={() => track(event, properties)}
+      onClick={() => {
+        if (isProductEvent(event)) trackProduct(event, properties);
+        else track(event, properties);
+      }}
       className="contents"
     >
       {children}

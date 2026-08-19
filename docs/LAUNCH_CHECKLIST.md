@@ -48,7 +48,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 447+ pass |
+| Unit tests | 450+ pass |
 | i18n keys | 1860 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 
@@ -99,7 +99,7 @@ Test viewports: **390×844** (mobile), **1280** (desktop).
 - [ ] Partner winery image intake (verified partners first) — `docs/WINERY_IMAGE_INTAKE.md`
 - [ ] Confirm `productionReady` on public domain (not just preview)
 - [ ] Update `docs/SCORECARD.md` after each release train
-- [ ] Admin HttpOnly session (DR-003) — security backlog
+- [x] Admin HttpOnly session (DR-003) — `/admin/stats` uses `POST /api/admin/session`; secret is not stored in `sessionStorage`
 - [x] GitHub Actions Node 20 → 24 action runtime (PR #70: checkout/setup-node/upload-artifact @v7)
 
 ---

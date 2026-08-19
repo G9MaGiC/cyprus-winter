@@ -2701,7 +2701,7 @@
           "title": "6. Cookies and similar technologies",
           "intro": "We use cookies and local storage for:",
           "categories": {
-            "essential": "<strong>Essential:</strong> Session, preferences, and functionality (e.g. plan, language).",
+            "essential": "<strong>Essentiel :</strong> Session, préférences, plan de voyage et métriques de tunnel en premier parti nécessaires aux réservations (ajout au plan, début de réservation). Elles restent sur nos serveurs.",
             "analytics": "<strong>Analytics:</strong> Anonymized usage (if you consent)."
           },
           "outro": "You can manage cookie preferences via the cookie banner or your browser settings. Essential cookies cannot be disabled without limiting functionality."

@@ -1,6 +1,7 @@
 /**
  * Client-side conversion tracking. Sends events to /api/track.
- * Non-essential analytics requires explicit cookie consent.
+ * Marketing analytics (`track`) requires cookie consent "all".
+ * First-party funnel metrics (`trackProduct`) are essential to operate Plan/Book.
  */
 import { hasAnalyticsConsent } from "@/lib/cookie-consent";
 import { PRODUCT_EVENTS, type ClientTrackEventName, type ProductEventName } from "@/lib/track-events";
@@ -53,8 +54,9 @@ export function track(event: EventName, properties?: EventProps): void {
   postTrack(event, properties);
 }
 
+/** First-party funnel metrics. Not gated on marketing-cookie consent. */
 export function trackProduct(event: ProductEventName, properties?: EventProps): void {
-  if (typeof window === "undefined" || !hasAnalyticsConsent()) return;
+  if (typeof window === "undefined") return;
   if (!(PRODUCT_EVENTS as readonly string[]).includes(event)) return;
   postTrack(event, properties);
 }

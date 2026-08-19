@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
 
   const raw = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
   if (!raw || !verifyAdminSessionToken(raw, secret)) {
-    return jsonError("VALIDATION_ERROR", "Unauthorized", 401);
+    return jsonError("UNAUTHORIZED", "Unauthorized", 401);
   }
 
   return NextResponse.json({ ok: true });
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
       : "";
 
   if (!token || token !== secret) {
-    return jsonError("VALIDATION_ERROR", "Unauthorized", 401);
+    return jsonError("UNAUTHORIZED", "Unauthorized", 401);
   }
 
   const value = createAdminSessionToken(secret);
