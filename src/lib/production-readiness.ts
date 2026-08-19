@@ -1,3 +1,5 @@
+import { isBookingLookupTokenConfigured } from "./booking-lookup-token";
+
 /**
  * Production environment checks for health endpoint and deploy runbooks.
  */
@@ -64,6 +66,13 @@ export function getProductionEnvChecks(): EnvCheck[] {
       ok: !!process.env.ADMIN_SECRET,
       required: false,
       hint: "Set ADMIN_SECRET for /admin/stats",
+    },
+    {
+      id: "booking-lookup-token",
+      label: "Booking lookup token secret",
+      ok: isBookingLookupTokenConfigured(),
+      required: false,
+      hint: "Set BOOKING_LOOKUP_TOKEN_SECRET (min 16 chars) to email signed My Bookings links",
     },
   ];
 }

@@ -302,7 +302,7 @@ Before launch, `GET /api/health` should report `productionReady: true` in produc
 |-------|----------|
 | **Required** | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` |
 | **Required** | `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` |
-| Recommended | `RESEND_API_KEY`, `ADMIN_SECRET`, one AI provider key |
+| Recommended | `RESEND_API_KEY`, `ADMIN_SECRET`, one AI provider key, `BOOKING_LOOKUP_TOKEN_SECRET` |
 
 ```bash
 curl -s https://<your-domain>/api/health | jq '.productionReady, .productionChecks'
