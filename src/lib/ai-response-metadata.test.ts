@@ -25,4 +25,13 @@ describe("sanitizeResponseMetadata", () => {
   it("omits non-array cards/actions that would crash PlaceCards/ActionButtons.map", () => {
     expect(sanitizeResponseMetadata({ cards: "abc", actions: "x", followUps: "y" })).toEqual({});
   });
+
+  it("rewrites action payload paths to safe internal routes", () => {
+    const sanitized = sanitizeResponseMetadata({
+      actions: [
+        { type: "open_place", label: "Leave the app", payload: { path: "https://evil.example" } },
+      ],
+    });
+    expect(sanitized.actions?.[0]?.payload?.path).toBe("/discover");
+  });
 });
