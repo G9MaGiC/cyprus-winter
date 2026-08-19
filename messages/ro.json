@@ -1,24 +1,24 @@
 {
   "footer": {
-    "discover": "Discover",
+    "discover": "Descoperă",
     "plan": "Plan",
-    "airport": "Airport",
-    "arriving": "Arriving",
-    "weather": "Weather",
-    "bookings": "Bookings",
-    "beaches": "Beaches",
-    "wineries": "Wineries",
-    "villages": "Villages",
+    "airport": "Aeroport",
+    "arriving": "La sosire",
+    "weather": "Vreme",
+    "bookings": "Rezervări",
+    "beaches": "Plaje",
+    "wineries": "Crame",
+    "villages": "Sate",
     "troodos": "Troodos",
     "paphos": "Paphos",
-    "tagline": "Mild, uncrowded, real. Trails, villages, heritage. The island rewards the curious.",
-    "practical": "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
-    "ambulance": "Ambulance",
-    "planYourTrip": "Plan your trip",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "tagline": "Un Cipru mai liniștit. Trasee, sate, crame, zile lente.",
+    "practical": "Se circulă pe stânga. Luați straturi. Verificați condițiile înainte de Troodos.",
+    "emergency": "Urgență",
+    "touristInfo": "Info turiști",
+    "ambulance": "Ambulanță",
+    "planYourTrip": "Planifică-ți călătoria",
+    "privacy": "Confidențialitate",
+    "terms": "Termeni"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -33,93 +33,93 @@
     "plan": "Plan",
     "trails": "Trasee",
     "events": "Evenimente",
-    "airport": "Airport",
-    "arriving": "Arriving",
-    "beaches": "Beaches",
-    "villages": "Villages",
-    "wineries": "Wineries",
-    "signIn": "Sign in",
+    "airport": "Aeroport",
+    "arriving": "La sosire",
+    "beaches": "Plaje",
+    "villages": "Sate",
+    "wineries": "Crame",
+    "signIn": "Autentificare",
     "home": "Acasă",
     "weather": "Vreme",
     "bookings": "Rezervări",
-    "secrets": "Local secrets",
-    "account": "Account",
-    "team": "Team",
+    "secrets": "Secrete locale",
+    "account": "Cont",
+    "team": "Echipă",
     "search": "Căutare",
-    "more": "More",
+    "more": "Mai mult",
     "askAI": "Întreabă AI",
-    "searchAria": "Search places and trails",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
-    "mainNavigation": "Main navigation"
+    "searchAria": "Caută locuri și trasee",
+    "askAIAria": "Întreabă AI despre trasee, crame și idei de călătorie",
+    "openMenu": "Deschide meniul",
+    "closeMenu": "Închide meniul",
+    "mainNavigation": "Navigare principală"
   },
   "common": {
     "nav": {
       "discover": "Descoperă",
       "trip": "Itinerar",
-      "airport": "Airport"
+      "airport": "Aeroport"
     },
     "aria": {
-      "planCta": "Build a day",
-      "pageNavigation": "Page navigation",
+      "planCta": "Construiește o zi",
+      "pageNavigation": "Navigarea paginii",
       "viewPlan": "Vezi planul tău",
-      "placeInItinerary": "{id} is in your itinerary",
+      "placeInItinerary": "{id} este în itinerar",
       "bottomNavigation": "Navigare jos",
-      "moreNavigation": "More navigation",
-      "breadcrumb": "Breadcrumb",
-      "dismissTip": "Dismiss tip",
+      "moreNavigation": "Mai multe",
+      "breadcrumb": "Firul paginii",
+      "dismissTip": "Închide sfatul",
       "selectLanguage": "Alege limba",
-      "close": "Close",
-      "addPlace": "Add place",
-      "addPlaceToItinerary": "Add a place to your itinerary",
-      "clearRecentlyViewed": "Clear recently viewed",
-      "shareOn": "Share on {label}",
-      "siteFooter": "Site footer",
-      "footerNav": "Plan, explore, and essentials",
+      "close": "Închide",
+      "addPlace": "Adaugă loc",
+      "addPlaceToItinerary": "Adaugă un loc în itinerar",
+      "clearRecentlyViewed": "Șterge vizionate recent",
+      "shareOn": "Distribuie pe {label}",
+      "siteFooter": "Subsol site",
+      "footerNav": "Planifică, explorează, esențiale",
       "footerLegal": "Legal",
-      "quickActions": "Quick actions",
-      "reportConditionsForTrail": "Report conditions for this trail",
-      "dismissNotification": "Dismiss notification",
-      "notifications": "Notifications"
+      "quickActions": "Acțiuni rapide",
+      "reportConditionsForTrail": "Raportează condițiile acestui traseu",
+      "dismissNotification": "Închide notificarea",
+      "notifications": "Notificări"
     },
-    "skipToContent": "Skip to main content",
-    "languageLabel": "Language:",
+    "skipToContent": "Sari la conținut",
+    "languageLabel": "Limbă:",
     "nextOnPlan": {
-      "aria": "Next on your plan",
-      "prefix": "Next up",
-      "navigate": "Navigate"
+      "aria": "Următorul din plan",
+      "prefix": "Urmează",
+      "navigate": "Navighează"
     },
     "noscript": {
-      "title": "JavaScript is required",
-      "body": "for full functionality. You can still browse trails and places, but features like the itinerary planner and chat require JavaScript."
+      "title": "Este necesar JavaScript",
+      "body": "pentru toate funcțiile. Poți răsfoi trasee și locuri, dar planul și chatul cer JavaScript."
     },
     "map": {
       "openStreetMap": "OpenStreetMap",
-      "enableMapAria": "Enable map interactions",
-      "enableMapCta": "Enable map",
-      "disableMapAria": "Disable map interactions",
-      "disableMapCta": "Done",
-      "getDirections": "Get directions",
-      "openInMaps": "Open in Maps"
+      "enableMapAria": "Activează harta",
+      "enableMapCta": "Activează harta",
+      "disableMapAria": "Dezactivează harta",
+      "disableMapCta": "Gata",
+      "getDirections": "Indicații",
+      "openInMaps": "Deschide în Hărți"
     },
     "addToPlan": "Adaugă în plan",
     "addPlace": "Adaugă loc",
-    "openAria": "Open {name}",
+    "openAria": "Deschide {name}",
     "cookies": {
-      "essentialOnly": "Essential only",
-      "essentialShort": "Essential",
-      "title": "Cookie consent.",
-      "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
+      "essentialOnly": "Doar esențiale",
+      "essentialShort": "Esențiale",
+      "title": "Consimțământ cookies.",
+      "body": "Folosim cookie-uri esențiale pentru serviciu și analize opționale. „Accept” permite analizele.",
       "accept": "Accept",
-      "learnMore": "Learn more"
+      "learnMore": "Află mai mult"
     },
-    "shareColon": "Share:",
-    "bookTasting": "Book a tasting",
-    "clearFilters": "Clear filters",
-    "submitReport": "Submit report",
-    "goHome": "Go home",
-    "tryAgain": "Try again",
+    "shareColon": "Distribuie:",
+    "bookTasting": "Rezervă o degustare",
+    "clearFilters": "Șterge filtrele",
+    "submitReport": "Trimite raportul",
+    "goHome": "Acasă",
+    "tryAgain": "Încearcă din nou",
     "explore": "Explore",
     "place": "Place",
     "trail": "Trail",
@@ -227,25 +227,25 @@
     "touristInfo": "Tourist info",
     "ambulance": "Ambulance",
     "loading": {
-      "generic": "Loading",
-      "ellipsis": "Loading…",
-      "map": "Loading map…",
-      "trails": "Loading trails",
-      "trail": "Loading trail",
-      "discover": "Loading discover",
-      "search": "Loading search",
-      "bookings": "Loading bookings",
-      "plan": "Loading plan",
-      "events": "Loading events",
-      "wineries": "Loading wineries",
-      "attraction": "Loading attraction",
-      "region": "Loading region",
-      "wineRoute": "Loading wine route",
-      "airportGuide": "Loading airport guide",
-      "weatherMonth": "Loading weather",
-      "bookingForm": "Loading booking form",
-      "reportForm": "Loading report form",
-      "content": "Loading content"
+      "generic": "Se încarcă",
+      "ellipsis": "Se încarcă…",
+      "map": "Se încarcă harta…",
+      "trails": "Se încarcă traseele",
+      "trail": "Se încarcă traseul",
+      "discover": "Se încarcă Descoperă",
+      "search": "Se încarcă căutarea",
+      "bookings": "Se încarcă rezervările",
+      "plan": "Se încarcă planul",
+      "events": "Se încarcă evenimentele",
+      "wineries": "Se încarcă cramele",
+      "attraction": "Se încarcă locul",
+      "region": "Se încarcă regiunea",
+      "wineRoute": "Se încarcă ruta vinului",
+      "airportGuide": "Se încarcă ghidul aeroport",
+      "weatherMonth": "Se încarcă vremea",
+      "bookingForm": "Se încarcă formularul",
+      "reportForm": "Se încarcă raportul",
+      "content": "Se încarcă conținutul"
     },
     "skipTo": {
       "thisWeek": "Skip to This week",
@@ -254,11 +254,12 @@
       "search": "Skip to search",
       "startHere": "Skip to Start here"
     },
-    "cancel": "Cancel",
-    "done": "Done",
+    "cancel": "Anulează",
+    "done": "Gata",
     "clearDay": "Clear day",
     "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
+    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "localeBeta": "beta"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -647,42 +648,42 @@
   },
   "errors": {
     "common": {
-      "title": "Something went wrong",
-      "tryAgainCta": "Try again"
+      "title": "Ceva nu a mers",
+      "tryAgainCta": "Încearcă din nou"
     },
     "page": {
-      "title": "A small glitch",
-      "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-      "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+      "title": "O mică problemă",
+      "body": "O mică problemă. Încearcă din nou sau mergi acasă — traseele, satele și degustările rămân.",
+      "hint": "Meniu: Descoperă, Trasee sau Plan. Sau întreabă AI."
     },
     "rateLimited": {
-      "title": "Too many requests",
-      "canRetry": "You can try again now.",
-      "waitThenRetry": "{seconds, plural, one {Wait # second, then try again.} other {Wait # seconds, then try again.}}",
-      "retryNow": "Try again",
-      "retryIn": "Wait {seconds}s"
+      "title": "Prea multe cereri",
+      "canRetry": "Poți încerca din nou acum.",
+      "waitThenRetry": "{seconds, plural, one {Așteaptă # secundă, apoi încearcă din nou.} other {Așteaptă # secunde, apoi încearcă din nou.}}",
+      "retryNow": "Încearcă din nou",
+      "retryIn": "Așteaptă {seconds}s"
     },
     "network": {
-      "titleOnline": "Connection issue",
-      "titleOffline": "You're offline",
-      "messageOnline": "Connection trouble. Try again, or tap Ask AI.",
-      "messageOffline": "You're offline. Connect to browse trails and plan your trip.",
-      "checkConnection": "Check connection"
+      "titleOnline": "Problemă de conexiune",
+      "titleOffline": "Ești offline",
+      "messageOnline": "Conexiune slabă. Încearcă din nou sau întreabă AI.",
+      "messageOffline": "Ești offline. Conectează-te ca să răsfoiești și să planifici.",
+      "checkConnection": "Verifică conexiunea"
     },
     "chat": {
-      "rateLimited": "Too many requests. Please wait a moment.",
-      "unavailable": "I'm having trouble connecting. Please try again in a moment.",
-      "failed": "I'm having trouble connecting. Please try again in a moment."
+      "rateLimited": "Prea multe cereri. Așteaptă un moment.",
+      "unavailable": "Nu mă pot conecta. Încearcă din nou peste puțin.",
+      "failed": "Nu mă pot conecta. Încearcă din nou peste puțin."
     },
     "rightNow": {
       "locationDenied": "Enable location or pick a region."
     },
     "api": {
-      "SERVICE_UNAVAILABLE": "Please try again in a moment.",
-      "RATE_LIMITED": "Too many requests. Please wait a moment.",
-      "SERVER_ERROR": "Something went wrong. Please try again.",
-      "VALIDATION_ERROR": "Something went wrong. Please try again.",
-      "BAD_REQUEST": "Something went wrong. Please try again."
+      "SERVICE_UNAVAILABLE": "Încearcă din nou peste puțin.",
+      "RATE_LIMITED": "Prea multe cereri. Așteaptă un moment.",
+      "SERVER_ERROR": "Ceva nu a mers. Încearcă din nou.",
+      "VALIDATION_ERROR": "Ceva nu a mers. Încearcă din nou.",
+      "BAD_REQUEST": "Ceva nu a mers. Încearcă din nou."
     }
   },
   "push": {
@@ -1753,36 +1754,36 @@
       "cancelled": "cancelled"
     },
     "errors": {
-      "rateLimited": "Too many requests. Wait a moment and try again.",
-      "failedToLoad": "Failed to load",
+      "rateLimited": "Prea multe cereri. Așteaptă un moment și încearcă din nou.",
+      "failedToLoad": "Nu s-a putut încărca",
       "signInRequired": "Conectați-vă pentru a încărca rezervările de pe alt dispozitiv.",
-      "connection": "Couldn't load your bookings. Check your connection and try again.",
+      "connection": "Nu am putut încărca rezervările. Verifică conexiunea și încearcă din nou.",
       "lookupExpired": "Link invalid sau expirat. Cereți unul nou.",
       "lookupLinkFailed": "Nu am putut trimite linkul. Verificați conexiunea și încercați din nou."
     },
     "emailLookup": {
-      "srLabel": "Your email to load bookings from another device",
+      "srLabel": "Emailul tău pentru a încărca rezervări de pe alt dispozitiv",
       "placeholder": "your@email.com",
-      "noMatch": "No bookings for that email. Try another, or book from Discover.",
-      "loadedCount": "{count, plural, one {Loaded # booking.} other {Loaded # bookings.}}",
-      "allSet": "All set. No new bookings to load.",
+      "noMatch": "Nicio rezervare pentru acest email. Încearcă altul sau rezervă din Descoperă.",
+      "loadedCount": "{count, plural, one {S-a încărcat # rezervare.} other {S-au încărcat # rezervări.}}",
+      "allSet": "Gata. Nimic nou de încărcat.",
       "linkSent": "Verificați e-mailul: linkul expiră în 15 minute."
     },
     "page": {
       "title": "Rezervările mele",
-      "description": "Your tastings and experiences. All in one place.",
+      "description": "Degustări și experiențe. Toate într-un loc.",
       "stats": {
         "totalBookings": "{count, plural, one {booking} other {bookings}}",
         "upcoming": "upcoming",
         "confirmedCount": "{count} confirmed"
       },
       "sync": {
-        "toggle": "Booked on another device? Load by email",
-        "submit": "Load bookings",
+        "toggle": "Ai rezervat pe alt dispozitiv? Încarcă prin email",
+        "submit": "Încarcă rezervările",
         "sendLookupLink": "Trimite linkul",
         "resendLookupLink": "Retrimite linkul",
-        "loadByEmail": "Load by email",
-        "mergeHint": "We’ll merge any bookings with this device."
+        "loadByEmail": "Încarcă prin email",
+        "mergeHint": "Le unim cu acest dispozitiv."
       },
       "loading": {
         "aria": "Loading your bookings",
@@ -2193,25 +2194,25 @@
       "aria": "{intent, select, signup {Sign up with {provider}} other {Sign in with {provider}}}"
     },
     "login": {
-      "title": "Welcome back",
+      "title": "Bine ai revenit",
       "subtitle": "Your plan and bookings follow you. Trails, villages, wineries — all in one place.",
       "configSubtitle": "Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device.",
       "errorInvalidCredentials": "Email or password doesn’t match. Try again or use a magic link.",
       "errorConfirmEmail": "Please confirm your email first. Check your inbox for the activation link.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "ctaSignIn": "Sign in",
-      "ctaSigningIn": "Signing in…",
-      "ctaSendMagicLink": "Send magic link",
-      "ctaUseMagic": "Use magic link",
-      "ctaUsePassword": "Use password",
-      "passwordLabel": "Password",
+      "errorGeneric": "Ceva nu a mers. Încearcă din nou peste puțin.",
+      "ctaSignIn": "Autentificare",
+      "ctaSigningIn": "Se autentifică…",
+      "ctaSendMagicLink": "Trimite link magic",
+      "ctaUseMagic": "Link magic",
+      "ctaUsePassword": "Parolă",
+      "passwordLabel": "Parolă",
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "No account?"
+      "noAccountPrefix": "Nu ai cont?"
     },
     "register": {
-      "title": "Join Cyprus Winter",
+      "title": "Alătură-te Cyprus Winter",
       "subtitle": "Plan trails, wineries, villages. Sync your itinerary across devices.",
       "configTitle": "Create account",
       "configSubtitle": "Auth is being set up. You can still use the app—your plan saves on this device. Check back soon.",
@@ -2219,7 +2220,7 @@
       "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
       "errorInvalidEmail": "Please enter a valid email address.",
       "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "errorGeneric": "Ceva nu a mers. Încearcă din nou peste puțin.",
       "passwordHint": "At least 6 characters",
       "successTitle": "Almost there",
       "successSubtitle": "We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account, then sign in.",
@@ -2227,11 +2228,11 @@
       "namePlaceholder": "Your name",
       "confirmPasswordLabel": "Confirm password",
       "passwordLabel": "Password",
-      "ctaCreating": "Creating account…",
-      "ctaSignIn": "Sign in",
-      "ctaCreate": "Create account",
-      "alreadyHavePrefix": "Already have an account?",
-      "signInInstead": "Sign in instead →"
+      "ctaCreating": "Se creează…",
+      "ctaSignIn": "Autentificare",
+      "ctaCreate": "Creează cont",
+      "alreadyHavePrefix": "Ai deja cont?",
+      "signInInstead": "Autentificare →"
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2303,10 +2304,10 @@
     },
     "guideForm": {
       "validation": {
-        "dateRequired": "Choose a date in the future",
-        "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address",
-        "partySizeRequired": "Select group size"
+        "dateRequired": "Alege o dată viitoare",
+        "nameRequired": "Numele este obligatoriu",
+        "emailInvalid": "Introdu un email valid",
+        "partySizeRequired": "Alege mărimea grupului"
       },
       "errors": {
         "failed": "Rezervarea a eșuat",
@@ -2376,10 +2377,10 @@
     },
     "wineryForm": {
       "validation": {
-        "dateRequired": "Choose a date in the future",
-        "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address",
-        "partySizeRequired": "Select group size"
+        "dateRequired": "Alege o dată viitoare",
+        "nameRequired": "Numele este obligatoriu",
+        "emailInvalid": "Introdu un email valid",
+        "partySizeRequired": "Alege mărimea grupului"
       },
       "errors": {
         "failed": "Rezervarea a eșuat",

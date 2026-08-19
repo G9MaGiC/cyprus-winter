@@ -41,7 +41,7 @@ All: **mobile-first**, often on **4G** at the airport or trailhead; **EUR**; **w
 
 ## 4. Technical reality (this repo)
 
-- **Framework:** **Next.js 16** (App Router), **React 19**, **Tailwind v4**, **next-intl** (locale routes under `/[locale]/` plus default paths).
+- **Framework:** **Next.js 16** (App Router), **React 19**, **Tailwind v4**, **next-intl** (locale routes under `/[locale]/` plus default paths). Locales: `en`, `el`, `de`, `pl` (full), plus beta `fr`, `he`, `ro` (translated chrome; English editorial until a content sprint).
 - **Data:** **Primary source of truth** is **`src/data/`** (attractions, trails, wineries, events, `PlanItem`, templates, etc.)—typed, versioned in git.
 - **Server data:** **Supabase** for bookings, conversion events, trail reports, etc., when env is set—**not** “static only.” Client features may use **localStorage** (plan, bookings merge) with clear hydration rules.
 - **APIs:** `src/app/api/*`—**Zod** validation, `{ success, data?, error? }` style per project rules; **Upstash** (or in-memory) **rate limiting**.

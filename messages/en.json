@@ -85,6 +85,7 @@
     },
     "skipToContent": "Skip to main content",
     "languageLabel": "Language:",
+    "localeBeta": "beta",
     "nextOnPlan": {
       "aria": "Next on your plan",
       "prefix": "Next up",

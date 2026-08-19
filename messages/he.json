@@ -1,24 +1,24 @@
 {
   "footer": {
-    "discover": "Discover",
-    "plan": "Plan",
-    "airport": "Airport",
-    "arriving": "Arriving",
-    "weather": "Weather",
-    "bookings": "Bookings",
-    "beaches": "Beaches",
-    "wineries": "Wineries",
-    "villages": "Villages",
+    "discover": "גילוי",
+    "plan": "תכנון",
+    "airport": "שדה תעופה",
+    "arriving": "בהגעה",
+    "weather": "מזג אוויר",
+    "bookings": "הזמנות",
+    "beaches": "חופים",
+    "wineries": "יקבים",
+    "villages": "כפרים",
     "troodos": "Troodos",
     "paphos": "Paphos",
-    "tagline": "Mild, uncrowded, real. Trails, villages, heritage. The island rewards the curious.",
-    "practical": "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
-    "ambulance": "Ambulance",
-    "planYourTrip": "Plan your trip",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "tagline": "קפריסין שקטה יותר. שבילים, כפרים, יקבים, ימים איטיים.",
+    "practical": "נוהגים בצד שמאל. קחו שכבות. בדקו תנאים לפני טרודוס.",
+    "emergency": "חירום",
+    "touristInfo": "מידע לתיירים",
+    "ambulance": "אמבולנס",
+    "planYourTrip": "תכננו את הטיול",
+    "privacy": "פרטיות",
+    "terms": "תנאים"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -33,93 +33,93 @@
     "plan": "תכנון",
     "trails": "שבילים",
     "events": "אירועים",
-    "airport": "Airport",
-    "arriving": "Arriving",
-    "beaches": "Beaches",
-    "villages": "Villages",
-    "wineries": "Wineries",
-    "signIn": "Sign in",
+    "airport": "שדה תעופה",
+    "arriving": "בהגעה",
+    "beaches": "חופים",
+    "villages": "כפרים",
+    "wineries": "יקבים",
+    "signIn": "התחברות",
     "home": "בית",
     "weather": "מזג אוויר",
     "bookings": "הזמנות",
-    "secrets": "Local secrets",
-    "account": "Account",
-    "team": "Team",
+    "secrets": "סודות מקומיים",
+    "account": "חשבון",
+    "team": "צוות",
     "search": "חיפוש",
-    "more": "More",
+    "more": "עוד",
     "askAI": "שאל את ה-AI",
-    "searchAria": "Search places and trails",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
-    "mainNavigation": "Main navigation"
+    "searchAria": "חיפוש מקומות ושבילים",
+    "askAIAria": "שאלו את ה-AI על שבילים, יקבים ורעיונות לטיול",
+    "openMenu": "פתחו תפריט",
+    "closeMenu": "סגרו תפריט",
+    "mainNavigation": "ניווט ראשי"
   },
   "common": {
     "nav": {
       "discover": "גילוי",
       "trip": "מסלול",
-      "airport": "Airport"
+      "airport": "שדה תעופה"
     },
     "aria": {
-      "planCta": "Build a day",
-      "pageNavigation": "Page navigation",
+      "planCta": "בנו יום",
+      "pageNavigation": "ניווט בדף",
       "viewPlan": "צפה בתכנית שלך",
-      "placeInItinerary": "{id} is in your itinerary",
+      "placeInItinerary": "{id} בתוכנית",
       "bottomNavigation": "ניווט תחתון",
-      "moreNavigation": "More navigation",
-      "breadcrumb": "Breadcrumb",
-      "dismissTip": "Dismiss tip",
+      "moreNavigation": "עוד ניווט",
+      "breadcrumb": "נתיב דפים",
+      "dismissTip": "סגירת טיפ",
       "selectLanguage": "בחר שפה",
-      "close": "Close",
-      "addPlace": "Add place",
-      "addPlaceToItinerary": "Add a place to your itinerary",
-      "clearRecentlyViewed": "Clear recently viewed",
-      "shareOn": "Share on {label}",
-      "siteFooter": "Site footer",
-      "footerNav": "Plan, explore, and essentials",
-      "footerLegal": "Legal",
-      "quickActions": "Quick actions",
-      "reportConditionsForTrail": "Report conditions for this trail",
-      "dismissNotification": "Dismiss notification",
-      "notifications": "Notifications"
+      "close": "סגירה",
+      "addPlace": "הוספת מקום",
+      "addPlaceToItinerary": "הוסיפו מקום לתוכנית",
+      "clearRecentlyViewed": "נקו נצפו לאחרונה",
+      "shareOn": "שיתוף ב-{label}",
+      "siteFooter": "כותרת תחתונה",
+      "footerNav": "תכנון, גילוי, חיוני",
+      "footerLegal": "משפטי",
+      "quickActions": "פעולות מהירות",
+      "reportConditionsForTrail": "דיווח על תנאי השביל",
+      "dismissNotification": "סגירת התראה",
+      "notifications": "התראות"
     },
-    "skipToContent": "Skip to main content",
-    "languageLabel": "Language:",
+    "skipToContent": "דלגו לתוכן",
+    "languageLabel": "שפה:",
     "nextOnPlan": {
-      "aria": "Next on your plan",
-      "prefix": "Next up",
-      "navigate": "Navigate"
+      "aria": "הבא בתוכנית",
+      "prefix": "הבא",
+      "navigate": "ניווט"
     },
     "noscript": {
-      "title": "JavaScript is required",
-      "body": "for full functionality. You can still browse trails and places, but features like the itinerary planner and chat require JavaScript."
+      "title": "נדרש JavaScript",
+      "body": "לכל הפונקציות. אפשר לגלוש בשבילים ובמקומות, אבל התוכנית והצ׳אט דורשים JavaScript."
     },
     "map": {
       "openStreetMap": "OpenStreetMap",
-      "enableMapAria": "Enable map interactions",
-      "enableMapCta": "Enable map",
-      "disableMapAria": "Disable map interactions",
-      "disableMapCta": "Done",
-      "getDirections": "Get directions",
-      "openInMaps": "Open in Maps"
+      "enableMapAria": "הפעלת המפה",
+      "enableMapCta": "הפעלת מפה",
+      "disableMapAria": "כיבוי אינטראקציית מפה",
+      "disableMapCta": "סיום",
+      "getDirections": "ניווט",
+      "openInMaps": "פתיחה במפות"
     },
     "addToPlan": "הוסף לתכנית",
     "addPlace": "הוסף מקום",
-    "openAria": "Open {name}",
+    "openAria": "פתיחת {name}",
     "cookies": {
-      "essentialOnly": "Essential only",
-      "essentialShort": "Essential",
-      "title": "Cookie consent.",
-      "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
-      "accept": "Accept",
-      "learnMore": "Learn more"
+      "essentialOnly": "חיוני בלבד",
+      "essentialShort": "חיוני",
+      "title": "הסכמה לעוגיות.",
+      "body": "אנחנו משתמשים בעוגיות חיוניות לשירות ובאנליטיקה אופציונלית. «אישור» מאפשר אנליטיקה.",
+      "accept": "אישור",
+      "learnMore": "למידע נוסף"
     },
-    "shareColon": "Share:",
-    "bookTasting": "Book a tasting",
-    "clearFilters": "Clear filters",
-    "submitReport": "Submit report",
-    "goHome": "Go home",
-    "tryAgain": "Try again",
+    "shareColon": "שיתוף:",
+    "bookTasting": "הזמנת טעימה",
+    "clearFilters": "ניקוי מסננים",
+    "submitReport": "שליחת דיווח",
+    "goHome": "דף הבית",
+    "tryAgain": "נסו שוב",
     "explore": "Explore",
     "place": "Place",
     "trail": "Trail",
@@ -227,25 +227,25 @@
     "touristInfo": "Tourist info",
     "ambulance": "Ambulance",
     "loading": {
-      "generic": "Loading",
-      "ellipsis": "Loading…",
-      "map": "Loading map…",
-      "trails": "Loading trails",
-      "trail": "Loading trail",
-      "discover": "Loading discover",
-      "search": "Loading search",
-      "bookings": "Loading bookings",
-      "plan": "Loading plan",
-      "events": "Loading events",
-      "wineries": "Loading wineries",
-      "attraction": "Loading attraction",
-      "region": "Loading region",
-      "wineRoute": "Loading wine route",
-      "airportGuide": "Loading airport guide",
-      "weatherMonth": "Loading weather",
-      "bookingForm": "Loading booking form",
-      "reportForm": "Loading report form",
-      "content": "Loading content"
+      "generic": "טוען",
+      "ellipsis": "טוען…",
+      "map": "טוען מפה…",
+      "trails": "טוען שבילים",
+      "trail": "טוען שביל",
+      "discover": "טוען גילוי",
+      "search": "טוען חיפוש",
+      "bookings": "טוען הזמנות",
+      "plan": "טוען תכנון",
+      "events": "טוען אירועים",
+      "wineries": "טוען יקבים",
+      "attraction": "טוען מקום",
+      "region": "טוען אזור",
+      "wineRoute": "טוען מסלול יין",
+      "airportGuide": "טוען מדריך שדה תעופה",
+      "weatherMonth": "טוען מזג אוויר",
+      "bookingForm": "טוען טופס הזמנה",
+      "reportForm": "טוען טופס דיווח",
+      "content": "טוען תוכן"
     },
     "skipTo": {
       "thisWeek": "Skip to This week",
@@ -254,11 +254,12 @@
       "search": "Skip to search",
       "startHere": "Skip to Start here"
     },
-    "cancel": "Cancel",
-    "done": "Done",
+    "cancel": "ביטול",
+    "done": "סיום",
     "clearDay": "Clear day",
     "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
+    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "localeBeta": "בטא"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -647,42 +648,42 @@
   },
   "errors": {
     "common": {
-      "title": "Something went wrong",
-      "tryAgainCta": "Try again"
+      "title": "משהו השתבש",
+      "tryAgainCta": "נסו שוב"
     },
     "page": {
-      "title": "A small glitch",
-      "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-      "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+      "title": "תקלה קטנה",
+      "body": "תקלה קטנה. נסו שוב או חזרו הביתה — השבילים, הכפרים והטעימות עדיין כאן.",
+      "hint": "תפריט: גילוי, שבילים או תכנון. או שאלו את ה-AI."
     },
     "rateLimited": {
-      "title": "Too many requests",
-      "canRetry": "You can try again now.",
-      "waitThenRetry": "{seconds, plural, one {Wait # second, then try again.} other {Wait # seconds, then try again.}}",
-      "retryNow": "Try again",
-      "retryIn": "Wait {seconds}s"
+      "title": "יותר מדי בקשות",
+      "canRetry": "אפשר לנסות שוב עכשיו.",
+      "waitThenRetry": "{seconds, plural, one {המתינו שנייה #, ואז נסו שוב.} other {המתינו # שניות, ואז נסו שוב.}}",
+      "retryNow": "נסו שוב",
+      "retryIn": "המתינו {seconds}ש׳"
     },
     "network": {
-      "titleOnline": "Connection issue",
-      "titleOffline": "You're offline",
-      "messageOnline": "Connection trouble. Try again, or tap Ask AI.",
-      "messageOffline": "You're offline. Connect to browse trails and plan your trip.",
-      "checkConnection": "Check connection"
+      "titleOnline": "בעיית חיבור",
+      "titleOffline": "אין חיבור",
+      "messageOnline": "חיבור בעייתי. נסו שוב, או שאלו את ה-AI.",
+      "messageOffline": "אין חיבור. התחברו כדי לגלוש ולתכנן.",
+      "checkConnection": "בדקו חיבור"
     },
     "chat": {
-      "rateLimited": "Too many requests. Please wait a moment.",
-      "unavailable": "I'm having trouble connecting. Please try again in a moment.",
-      "failed": "I'm having trouble connecting. Please try again in a moment."
+      "rateLimited": "יותר מדי בקשות. המתינו רגע.",
+      "unavailable": "קשה להתחבר. נסו שוב בעוד רגע.",
+      "failed": "קשה להתחבר. נסו שוב בעוד רגע."
     },
     "rightNow": {
       "locationDenied": "Enable location or pick a region."
     },
     "api": {
-      "SERVICE_UNAVAILABLE": "Please try again in a moment.",
-      "RATE_LIMITED": "Too many requests. Please wait a moment.",
-      "SERVER_ERROR": "Something went wrong. Please try again.",
-      "VALIDATION_ERROR": "Something went wrong. Please try again.",
-      "BAD_REQUEST": "Something went wrong. Please try again."
+      "SERVICE_UNAVAILABLE": "נסו שוב בעוד רגע.",
+      "RATE_LIMITED": "יותר מדי בקשות. המתינו רגע.",
+      "SERVER_ERROR": "משהו השתבש. נסו שוב.",
+      "VALIDATION_ERROR": "משהו השתבש. נסו שוב.",
+      "BAD_REQUEST": "משהו השתבש. נסו שוב."
     }
   },
   "push": {
@@ -1753,36 +1754,36 @@
       "cancelled": "cancelled"
     },
     "errors": {
-      "rateLimited": "Too many requests. Wait a moment and try again.",
-      "failedToLoad": "Failed to load",
+      "rateLimited": "יותר מדי בקשות. המתינו רגע ונסו שוב.",
+      "failedToLoad": "הטעינה נכשלה",
       "signInRequired": "יש להתחבר כדי לטעון הזמנות ממכשיר אחר.",
-      "connection": "Couldn't load your bookings. Check your connection and try again.",
+      "connection": "לא הצלחנו לטעון הזמנות. בדקו חיבור ונסו שוב.",
       "lookupExpired": "קישור לא תקף או שפג תוקפו. בקשו קישור חדש.",
       "lookupLinkFailed": "לא הצלחנו לשלוח קישור. בדקו את החיבור ונסו שוב."
     },
     "emailLookup": {
-      "srLabel": "Your email to load bookings from another device",
+      "srLabel": "האימייל שלכם לטעינת הזמנות ממכשיר אחר",
       "placeholder": "your@email.com",
-      "noMatch": "No bookings for that email. Try another, or book from Discover.",
-      "loadedCount": "{count, plural, one {Loaded # booking.} other {Loaded # bookings.}}",
-      "allSet": "All set. No new bookings to load.",
+      "noMatch": "אין הזמנות לאימייל הזה. נסו אחר, או הזמינו מגילוי.",
+      "loadedCount": "{count, plural, one {נטענה הזמנה #.} other {נטענו # הזמנות.}}",
+      "allSet": "הכול מוכן. אין הזמנות חדשות לטעינה.",
       "linkSent": "בדקו את האימייל: הקישור מאובטח ופג תוקפו בעוד 15 דקות."
     },
     "page": {
       "title": "ההזמנות שלי",
-      "description": "Your tastings and experiences. All in one place.",
+      "description": "טעימות וחוויות. הכול במקום אחד.",
       "stats": {
         "totalBookings": "{count, plural, one {booking} other {bookings}}",
         "upcoming": "upcoming",
         "confirmedCount": "{count} confirmed"
       },
       "sync": {
-        "toggle": "Booked on another device? Load by email",
-        "submit": "Load bookings",
+        "toggle": "הזמנתם במכשיר אחר? טענו באימייל",
+        "submit": "טעינת הזמנות",
         "sendLookupLink": "שלחו קישור",
         "resendLookupLink": "שלחו קישור שוב",
-        "loadByEmail": "Load by email",
-        "mergeHint": "We’ll merge any bookings with this device."
+        "loadByEmail": "טעינה באימייל",
+        "mergeHint": "נמזג עם המכשיר הזה."
       },
       "loading": {
         "aria": "Loading your bookings",
@@ -2193,25 +2194,25 @@
       "aria": "{intent, select, signup {Sign up with {provider}} other {Sign in with {provider}}}"
     },
     "login": {
-      "title": "Welcome back",
+      "title": "ברוכים השבים",
       "subtitle": "Your plan and bookings follow you. Trails, villages, wineries — all in one place.",
       "configSubtitle": "Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device.",
       "errorInvalidCredentials": "Email or password doesn’t match. Try again or use a magic link.",
       "errorConfirmEmail": "Please confirm your email first. Check your inbox for the activation link.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "ctaSignIn": "Sign in",
-      "ctaSigningIn": "Signing in…",
-      "ctaSendMagicLink": "Send magic link",
-      "ctaUseMagic": "Use magic link",
-      "ctaUsePassword": "Use password",
-      "passwordLabel": "Password",
+      "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
+      "ctaSignIn": "התחברות",
+      "ctaSigningIn": "מתחברים…",
+      "ctaSendMagicLink": "שליחת קישור קסם",
+      "ctaUseMagic": "קישור קסם",
+      "ctaUsePassword": "סיסמה",
+      "passwordLabel": "סיסמה",
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "No account?"
+      "noAccountPrefix": "אין חשבון?"
     },
     "register": {
-      "title": "Join Cyprus Winter",
+      "title": "הצטרפות ל-Cyprus Winter",
       "subtitle": "Plan trails, wineries, villages. Sync your itinerary across devices.",
       "configTitle": "Create account",
       "configSubtitle": "Auth is being set up. You can still use the app—your plan saves on this device. Check back soon.",
@@ -2219,7 +2220,7 @@
       "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
       "errorInvalidEmail": "Please enter a valid email address.",
       "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
       "passwordHint": "At least 6 characters",
       "successTitle": "Almost there",
       "successSubtitle": "We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account, then sign in.",
@@ -2227,11 +2228,11 @@
       "namePlaceholder": "Your name",
       "confirmPasswordLabel": "Confirm password",
       "passwordLabel": "Password",
-      "ctaCreating": "Creating account…",
-      "ctaSignIn": "Sign in",
-      "ctaCreate": "Create account",
-      "alreadyHavePrefix": "Already have an account?",
-      "signInInstead": "Sign in instead →"
+      "ctaCreating": "יוצרים…",
+      "ctaSignIn": "התחברות",
+      "ctaCreate": "יצירת חשבון",
+      "alreadyHavePrefix": "כבר יש חשבון?",
+      "signInInstead": "התחברות →"
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2303,10 +2304,10 @@
     },
     "guideForm": {
       "validation": {
-        "dateRequired": "Choose a date in the future",
-        "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address",
-        "partySizeRequired": "Select group size"
+        "dateRequired": "בחרו תאריך עתידי",
+        "nameRequired": "נדרש שם",
+        "emailInvalid": "הזינו אימייל תקין",
+        "partySizeRequired": "בחרו גודל קבוצה"
       },
       "errors": {
         "failed": "ההזמנה נכשלה",
@@ -2376,10 +2377,10 @@
     },
     "wineryForm": {
       "validation": {
-        "dateRequired": "Choose a date in the future",
-        "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address",
-        "partySizeRequired": "Select group size"
+        "dateRequired": "בחרו תאריך עתידי",
+        "nameRequired": "נדרש שם",
+        "emailInvalid": "הזינו אימייל תקין",
+        "partySizeRequired": "בחרו גודל קבוצה"
       },
       "errors": {
         "failed": "ההזמנה נכשלה",
