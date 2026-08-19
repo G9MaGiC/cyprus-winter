@@ -28,7 +28,8 @@ function getReq(email?: string, ip = "127.0.0.3") {
 const validBody = {
   type: "winery_tasting",
   providerId: "tsiakkas",
-  date: "2026-03-15",
+  date: "2099-03-15",
+  idempotencyKey: "test-booking-key-001",
   partySize: 2,
   guestEmail: "test@example.com",
   guestName: "Test Guest",
@@ -40,6 +41,29 @@ describe("POST /api/bookings", () => {
     expect(res.status).toBe(400);
     const data = await res.json();
     expect(data.error?.code).toBe("VALIDATION_ERROR");
+  });
+
+  it("rejects invalid calendar dates", async () => {
+    const res = await POST(postReq({ ...validBody, date: "2099-02-31" }, "127.0.0.31"));
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error?.code).toBe("VALIDATION_ERROR");
+  });
+
+  it("requires an idempotency key", async () => {
+    const withoutKey = { ...validBody, idempotencyKey: undefined };
+    const res = await POST(postReq(withoutKey, "127.0.0.32"));
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error?.code).toBe("VALIDATION_ERROR");
+  });
+
+  it("silently drops honeypot submissions", async () => {
+    const res = await POST(
+      postReq({ ...validBody, website: "https://bot.example" }, "127.0.0.41")
+    );
+    expect(res.status).toBe(200);
+    expect((await res.json()).stored).toBe(false);
   });
 
   it("returns 404 for unknown winery", async () => {
@@ -57,6 +81,31 @@ describe("POST /api/bookings", () => {
     const data = await res.json();
     expect(data.booking).toBeDefined();
     expect(data.booking.providerId).toBe("tsiakkas");
+  });
+
+  it("rejects reusing an idempotency key with different booking details", async () => {
+    const key = "conflict-booking-key-001";
+    const first = await POST(postReq({ ...validBody, idempotencyKey: key }, "127.0.0.53"));
+    const second = await POST(
+      postReq({ ...validBody, idempotencyKey: key, date: "2099-03-16" }, "127.0.0.54")
+    );
+    expect(first.status).toBe(200);
+    expect(second.status).toBe(409);
+    const data = await second.json();
+    expect(data.error?.code).toBe("IDEMPOTENCY_CONFLICT");
+  });
+
+  it("replays an idempotent booking without creating a second record", async () => {
+    const body = { ...validBody, idempotencyKey: "replay-booking-key-001" };
+    const first = await POST(postReq(body, "127.0.0.51"));
+    const second = await POST(postReq(body, "127.0.0.52"));
+    const firstData = await first.json();
+    const secondData = await second.json();
+
+    expect(first.status).toBe(200);
+    expect(second.status).toBe(200);
+    expect(secondData.booking.id).toBe(firstData.booking.id);
+    expect(secondData.replayed).toBe(true);
   });
 });
 
@@ -80,5 +129,6 @@ describe("GET /api/bookings", () => {
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(Array.isArray(data.bookings)).toBe(true);
+    expect(res.headers.get("cache-control")).toBe("no-store");
   });
 });

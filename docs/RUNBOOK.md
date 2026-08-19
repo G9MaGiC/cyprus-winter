@@ -157,21 +157,21 @@ Example response:
 
 ---
 
-## 3. Build Directory Ownership (root-owned .next / dist/next)
+## 3. Build Directory Ownership (root-owned .next)
 
 ### Risk
 
-If `npm run build` (or equivalent) is run with `sudo`, or in Docker as root, the build output (`.next` or `dist/next`) can become root-owned. Subsequent builds by a normal user then fail with `EACCES`.
+If `npm run build` (or equivalent) is run with `sudo`, or in Docker as root, the build output (`.next` or `.next`) can become root-owned. Subsequent builds by a normal user then fail with `EACCES`.
 
 ### Current Setup
 
-- Next.js outputs to `dist/next` (see `next.config.ts` `distDir`).
-- Pre-build script `scripts/check-build-dir.mjs` checks that `dist/next` is writable.
+- Next.js outputs to `.next` (see `next.config.ts` `distDir`).
+- Pre-build script `scripts/check-build-dir.mjs` checks that `.next` is writable.
 
 ### Symptoms
 
 - `npm run build` fails before Next compiles.
-- Error: `.next is not writable (likely root-owned)` (message may still say `.next`; the script checks `dist/next`).
+- Error: `.next is not writable (likely root-owned)` (message may still say `.next`; the script checks `.next`).
 - Fix instructions printed in `scripts/check-build-dir.mjs` (chown + rm + build).
 
 ### Runbook: Build Fails Due to Ownership
@@ -179,8 +179,8 @@ If `npm run build` (or equivalent) is run with `sudo`, or in Docker as root, the
 1. **Fix ownership and remove old output**
    ```bash
    cd /path/to/cyprus-winter
-   sudo chown -R $(whoami) dist .next .next-build 2>/dev/null
-   rm -rf dist .next .next-build
+   sudo chown -R $(whoami) .next .next-build 2>/dev/null
+   rm -rf .next .next-build
    npm run build
    ```
 
@@ -195,8 +195,8 @@ If `npm run build` (or equivalent) is run with `sudo`, or in Docker as root, the
 
 If you can’t fix ownership (e.g. shared host):
 
-- `next.config.ts` already uses `distDir: "dist/next"`.
-- If both `.next` and `dist/next` are root-owned, use a new dir:
+- `next.config.ts` already uses `distDir: ".next"`.
+- If `.next` is root-owned and cannot be repaired, use a new dir:
   1. Set `distDir: "build/next"` (or another path) in `next.config.ts`.
   2. Update `scripts/check-build-dir.mjs` to check that path.
   3. Add the new dir to `.gitignore`.
@@ -321,7 +321,7 @@ curl -s https://<your-domain>/api/health | jq '.productionReady, .productionChec
 | AI 503 | `curl /api/health` → `ai: false` | Add `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` |
 | Android app blank | Vercel URL reachable? | Check deployment; user may be offline; see §5 |
 | Supabase down | `curl /api/health` → `supabase: "error"` | Check URL/key, Supabase status |
-| Build EACCES | Pre-build fails on output dir | `sudo chown -R $(whoami) dist .next .next-build 2>/dev/null` then `npm run build:clean` |
+| Build EACCES | Pre-build fails on output dir | `sudo chown -R $(whoami) .next .next-build 2>/dev/null` then `npm run build:clean` |
 | Cron 500 | Vercel logs, external monitor | Check logs; retry manually; see §4 |
 
 ---

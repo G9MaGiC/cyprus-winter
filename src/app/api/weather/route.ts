@@ -44,8 +44,8 @@ export async function GET(req: Request) {
       if (weather) {
         return Response.json(weather, {
           headers: {
-            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
             ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
+            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
           },
         });
       }
@@ -56,8 +56,8 @@ export async function GET(req: Request) {
     }
     return Response.json(weather, {
       headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
         ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
       },
     });
   } catch (err) {

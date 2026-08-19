@@ -82,7 +82,7 @@ export default function ListPageHero({
     const heroAlt = backgroundImageAlt?.trim() ? backgroundImageAlt : title;
     return (
       <section className={`relative ${LAYOUT.heroBleedX} ${textMb} overflow-hidden`}>
-        <div className="relative aspect-[5/2] sm:aspect-[16/9] min-h-[220px] sm:min-h-[240px]">
+        <div className="relative min-h-[360px] sm:aspect-[16/7] sm:min-h-[280px]">
           <Image
             src={backgroundImage}
             alt={heroAlt}

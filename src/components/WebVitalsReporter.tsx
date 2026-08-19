@@ -8,12 +8,16 @@ const TRACK_ENDPOINT = "/api/track";
 
 function getSessionId(): string {
   if (typeof window === "undefined") return "";
-  let id = sessionStorage.getItem("cw_sid");
-  if (!id) {
-    id = `sid_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
-    sessionStorage.setItem("cw_sid", id);
+  try {
+    let id = sessionStorage.getItem("cw_sid");
+    if (!id) {
+      id = `sid_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+      sessionStorage.setItem("cw_sid", id);
+    }
+    return id;
+  } catch {
+    return `sid_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
   }
-  return id;
 }
 
 function sendWebVital(metric: string, value: number, rating: string) {

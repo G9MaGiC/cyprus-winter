@@ -119,8 +119,8 @@ export async function GET(req: Request) {
       },
       {
         headers: {
-          "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60",
           ...rateLimitSuccessHeaders(limitResult.remaining, RIGHT_NOW_LIMIT, limitResult.bypassed),
+          "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60",
         },
       }
     );

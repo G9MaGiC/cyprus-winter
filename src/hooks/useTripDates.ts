@@ -36,18 +36,30 @@ function saveTripDates(dates: TripDates) {
 }
 
 const MAX_TRIP_DAYS = 14;
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+function parseDateOnly(value: string): Date | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return null;
+  const [, year, month, day] = match.map(Number);
+  const date = new Date(year, month - 1, day);
+  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day
+    ? date
+    : null;
+}
 
 /**
  * Trip length in days (start to end inclusive). Null if invalid range or dates missing.
  */
 export function tripLengthFromDates(start: string | null, end: string | null): number | null {
   if (!start || !end) return null;
-  const a = new Date(start);
-  const b = new Date(end);
-  a.setHours(0, 0, 0, 0);
-  b.setHours(0, 0, 0, 0);
-  if (b.getTime() < a.getTime()) return null;
-  const days = Math.ceil((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+  const a = parseDateOnly(start);
+  const b = parseDateOnly(end);
+  if (!a || !b) return null;
+  const aDay = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const bDay = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  if (bDay < aDay) return null;
+  const days = Math.round((bDay - aDay) / MS_PER_DAY) + 1;
   return Math.min(MAX_TRIP_DAYS, Math.max(1, days));
 }
 
@@ -57,11 +69,12 @@ export function tripLengthFromDates(start: string | null, end: string | null): n
  */
 export function daysUntilTrip(start: string | null): number | null {
   if (!start) return null;
-  const d = new Date(start);
-  d.setHours(0, 0, 0, 0);
+  const d = parseDateOnly(start);
+  if (!d) return null;
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return Math.ceil((d.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  const startDay = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+  const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  return Math.round((startDay - todayDay) / MS_PER_DAY);
 }
 
 export function useTripDates() {
@@ -70,9 +83,17 @@ export function useTripDates() {
 
   useEffect(() => {
     // Hydrate from localStorage after mount (SSR-safe). Single run, no subscription.
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- valid hydration pattern for client-only storage
     setDates(loadTripDates());
     setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key !== STORAGE_KEY) return;
+      setDates(loadTripDates());
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
   }, []);
 
   const setTripDates = useCallback((start: string | null, end: string | null) => {

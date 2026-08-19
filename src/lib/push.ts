@@ -7,6 +7,24 @@ import webpush from "web-push";
 const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
 const privateKey = process.env.VAPID_PRIVATE_KEY;
 
+/** Accept only known browser push service hosts before making outbound requests. */
+export function isAllowedPushEndpoint(endpoint: string): boolean {
+  try {
+    const url = new URL(endpoint);
+    if (url.protocol !== "https:" || url.username || url.password) return false;
+    const hostname = url.hostname.toLowerCase().replace(/\\.$/, "");
+    return (
+      hostname === "fcm.googleapis.com" ||
+      hostname === "updates.push.services.mozilla.com" ||
+      hostname.endsWith(".push.services.mozilla.com") ||
+      hostname.endsWith(".push.apple.com") ||
+      hostname.endsWith(".notify.windows.com")
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function isPushConfigured(): boolean {
   return !!(publicKey && privateKey);
 }
@@ -35,6 +53,10 @@ export async function sendPush(
   subscription: PushSubscriptionJson,
   payload: { title: string; body: string; url?: string }
 ): Promise<SendPushResult> {
+  if (!isAllowedPushEndpoint(subscription.endpoint)) {
+    console.warn("Rejected unsupported push endpoint:", subscription.endpoint);
+    return { ok: false };
+  }
   ensureConfigured();
   try {
     await webpush.sendNotification(subscription as webpush.PushSubscription, JSON.stringify(payload));

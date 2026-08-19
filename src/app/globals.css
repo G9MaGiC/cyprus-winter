@@ -4,14 +4,14 @@
   /* Cyprus Winter — Mediterranean warmth: terracotta, aegean, golden, sand */
   --background: #faf8f5;
   --foreground: #252730;
-  --terracotta: #c96f52;
-  --terracotta-muted: #b85d42;
+  --terracotta: #b45b42;
+  --terracotta-muted: #9f4d37;
   --olive: #4a5162;
   --olive-muted: #6b7280;
   --golden: #d4a853;
   --charcoal: #252730;
   --aegean: #1a6b7c;
-  --sage: #6b8f7a;
+  --sage: #527561;
   /* cloud and sand share same hex — use sand for surfaces, cloud for body/background */
   --cloud: #faf8f5;
   --sand: #faf8f5;
@@ -26,14 +26,14 @@
 @theme inline {
   --color-background: var(--cloud);
   --color-foreground: var(--charcoal);
-  --color-terracotta: #c96f52;
-  --color-terracotta-muted: #b85d42;
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-muted: var(--terracotta-muted);
   --color-olive: #4a5162;
   --color-olive-muted: #6b7280;
   --color-golden: #d4a853;
   --color-charcoal: #252730;
   --color-aegean: #1a6b7c;
-  --color-sage: #6b8f7a;
+  --color-sage: var(--sage);
   --color-sage-muted: #8fa99a;
   --color-cloud: #faf8f5;
   --color-sand: #faf8f5;
@@ -49,7 +49,7 @@ html {
   /* 16px base prevents iOS zoom on input focus */
   font-size: 16px;
   /* Subtle tap highlight for touch — terracotta tint */
-  -webkit-tap-highlight-color: rgba(201, 111, 82, 0.12);
+  -webkit-tap-highlight-color: rgba(180, 91, 66, 0.12);
 }
 
 body {
@@ -111,7 +111,7 @@ a:focus-visible {
 }
 
 ::selection {
-  background: rgba(201, 111, 82, 0.18);
+  background: rgba(180, 91, 66, 0.18);
   color: var(--charcoal);
 }
 
@@ -181,8 +181,8 @@ details summary::marker {
   }
 }
 @keyframes ai-chat-trigger-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 111, 82, 0.2); }
-  50% { box-shadow: 0 0 0 8px rgba(201, 111, 82, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(180, 91, 66, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(180, 91, 66, 0); }
 }
 
 /* Section reveal — subtle fade-in for premium feel */

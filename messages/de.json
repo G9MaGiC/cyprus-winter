@@ -1747,6 +1747,7 @@
     "errors": {
       "rateLimited": "Zu viele Anfragen. Warten Sie kurz und versuchen Sie es erneut.",
       "failedToLoad": "Konnte nicht geladen werden",
+      "signInRequired": "Melden Sie sich an, um Buchungen von einem anderen Gerät zu laden.",
       "connection": "Ihre Buchungen konnten nicht geladen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
     },
     "emailLookup": {
@@ -2747,7 +2748,7 @@
       "sections": {
         "s1": {
           "title": "1. Zustimmung",
-          "body": "Durch die Nutzung von Cyprus Winter (\"der Service\") stimmen Sie diesen Nutzungsbedingungen und unserer {privacyPolicyLink} zu. Wenn Sie nicht einverstanden sind, nutzen Sie den Service nicht.",
+          "body": "Durch die Nutzung von Cyprus Winter (\"der Service\") stimmen Sie diesen Nutzungsbedingungen und unserer <privacyPolicyLink>Datenschutzerklärung</privacyPolicyLink> zu. Wenn Sie nicht einverstanden sind, nutzen Sie den Service nicht.",
           "privacyPolicyLink": "Datenschutzerklärung"
         },
         "s2": {

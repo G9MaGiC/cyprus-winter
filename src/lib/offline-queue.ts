@@ -2,11 +2,12 @@
  * Offline mutation queue.
  * Queues failed API mutations when offline; retries when connection restored.
  * Persists to localStorage so queue survives page refresh.
- * SYSTEM_DESIGN_REVIEW.md §5.4
  */
 
 const STORAGE_KEY = "cyprus-winter-offline-queue";
 const MAX_ITEMS = 50;
+const ALLOWED_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
+const RETRYABLE_CLIENT_STATUSES = new Set([408, 425, 429]);
 
 export type QueuedMutation = {
   id: string;
@@ -17,13 +18,33 @@ export type QueuedMutation = {
   createdAt: number;
 };
 
+type ProcessQueueResult = { processed: number; succeeded: number };
+
+let inFlightProcess: Promise<ProcessQueueResult> | null = null;
+
+function isValidQueuedMutation(value: unknown): value is QueuedMutation {
+  if (!value || typeof value !== "object") return false;
+  const item = value as Partial<QueuedMutation>;
+  return (
+    typeof item.id === "string" &&
+    typeof item.type === "string" &&
+    typeof item.url === "string" &&
+    item.url.startsWith("/api/") &&
+    !item.url.startsWith("//") &&
+    typeof item.method === "string" &&
+    ALLOWED_METHODS.has(item.method.toUpperCase()) &&
+    (item.body == null || typeof item.body === "string") &&
+    typeof item.createdAt === "number"
+  );
+}
+
 function load(): QueuedMutation[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed.filter(isValidQueuedMutation) : [];
   } catch {
     return [];
   }
@@ -39,11 +60,21 @@ function save(items: QueuedMutation[]) {
   }
 }
 
-/** Add a mutation to the queue. Call when a fetch fails due to network/offline. */
+/** Add a same-origin API mutation to the queue. */
 export function addMutation(mutation: Omit<QueuedMutation, "id" | "createdAt">): void {
+  const normalizedMethod = mutation.method.toUpperCase();
+  if (
+    !mutation.url.startsWith("/api/") ||
+    mutation.url.startsWith("//") ||
+    !ALLOWED_METHODS.has(normalizedMethod)
+  ) {
+    return;
+  }
+
   const items = load();
   const item: QueuedMutation = {
     ...mutation,
+    method: normalizedMethod,
     id: `mq-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     createdAt: Date.now(),
   };
@@ -62,8 +93,7 @@ export function removeMutation(id: string): void {
   save(items);
 }
 
-/** Process the queue: retry each mutation, remove on success. */
-export async function processQueue(): Promise<{ processed: number; succeeded: number }> {
+async function processQueueOnce(): Promise<ProcessQueueResult> {
   const items = load();
   if (items.length === 0) return { processed: 0, succeeded: 0 };
 
@@ -79,11 +109,24 @@ export async function processQueue(): Promise<{ processed: number; succeeded: nu
       if (res.ok) {
         removeMutation(item.id);
         succeeded++;
+      } else if (res.status >= 400 && res.status < 500 && !RETRYABLE_CLIENT_STATUSES.has(res.status)) {
+        // Validation/auth/not-found errors are permanent for this queued payload.
+        // Retrying them forever would hide the failure and waste requests.
+        removeMutation(item.id);
       }
-      // Non-2xx: leave in queue, will retry next online
     } catch {
-      // Network error: leave in queue
+      // Network error: leave in queue for the next online event.
     }
   }
   return { processed: items.length, succeeded };
+}
+
+/** Process the queue: retry each mutation, serializing concurrent callers. */
+export function processQueue(): Promise<ProcessQueueResult> {
+  if (inFlightProcess) return inFlightProcess;
+
+  inFlightProcess = processQueueOnce().finally(() => {
+    inFlightProcess = null;
+  });
+  return inFlightProcess;
 }

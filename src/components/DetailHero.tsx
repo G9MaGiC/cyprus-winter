@@ -47,7 +47,7 @@ export default function DetailHero({
           <h1 className={`${TYPE.pageTitle} break-words drop-shadow-sm text-white`}>
             {title}
             {titleEl && (
-              <span className="ml-2 font-normal text-2xl sm:text-3xl text-white/90 break-words" lang="el">
+              <span className="inline-block ml-2 font-normal text-2xl sm:text-3xl text-white/90 break-words" lang="el">
                 {titleEl}
               </span>
             )}

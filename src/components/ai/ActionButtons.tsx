@@ -30,7 +30,7 @@ export function ActionButtons({ actions }: { actions: Action[] }) {
     }
   }
 
-  if (!actions.length) return null;
+  if (!Array.isArray(actions) || !actions.length) return null;
 
   return (
     <div className="flex flex-wrap gap-2 mt-2">

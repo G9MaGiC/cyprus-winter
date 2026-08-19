@@ -139,7 +139,7 @@ export const LAYOUT = {
   /** Sticky bar edge-to-edge: negative margin + padding for safe area. Use for sticky filter/day bars. */
   stickyBarX: "-ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))]",
   /** Hero components that bleed to viewport edges */
-  heroBleedX: "-mx-4 sm:-mx-6",
+  heroBleedX: "-ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))]",
 } as const;
 
 /** Strip sections (Weather, Right Now, Trail Conditions). Use sans type — not TYPE.cardTitle (display). */

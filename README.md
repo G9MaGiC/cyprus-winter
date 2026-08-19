@@ -241,9 +241,9 @@ The app includes an AI-powered chat assistant with voice input/output. To enable
 
 **Admin stats** (`/admin/stats`): Set `ADMIN_SECRET` in your environment. The page prompts for it and sends it via `Authorization: Bearer`. Without it, the stats API returns 401.
 
-**Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, `OLLAMA_TIMEOUT_MS`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
+**Server-only env vars (do not prefix with `NEXT_PUBLIC_`):** `XAI_API_KEY`, `GROQ_API_KEY`, `OLLAMA_BASE_URL`, `OLLAMA_MODEL`, `OLLAMA_TIMEOUT_MS`, `MOONSHOT_API_KEY`, or `OPENAI_API_KEY` (for AI chat); `RESEND_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ADMIN_SECRET`, `HEALTH_SECRET`. These are used only in API routes or server code and must not be exposed to the client bundle.
 
-**Redis (production rate limiting):** By default, rate limits use in-memory counters (per serverless instance). For Vercel or other multi-instance deploys, configure Upstash Redis so limits are shared:
+**Redis (production rate limiting):** Upstash Redis is required in production; the app fails closed if distributed rate limiting is not configured. Configure it before deploying:
 
 1. Create a database at [console.upstash.com](https://console.upstash.com)
 2. Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in your environment
@@ -266,7 +266,7 @@ npm run build
 npm start
 ```
 
-**Troubleshooting:** If build fails with `EACCES` on `.next` or `dist/next`, the output dirs may be root-owned. Fix: `sudo chown -R $(whoami) dist .next .next-build 2>/dev/null` then `rm -rf dist .next .next-build` and `npm run build` (or `npm run build:clean` after chown). See [docs/RUNBOOK.md](docs/RUNBOOK.md) for full details.
+**Troubleshooting:** If build fails with `EACCES` on `.next`, the output dirs may be root-owned. Fix: `sudo chown -R $(whoami) .next .next-build 2>/dev/null` then `rm -rf .next .next-build` and `npm run build` (or `npm run build:clean` after chown). See [docs/RUNBOOK.md](docs/RUNBOOK.md) for full details.
 
 ---
 

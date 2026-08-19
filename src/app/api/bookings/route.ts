@@ -1,5 +1,6 @@
-import { createBooking, getBookingsByEmail } from "@/lib/bookings";
-import { hasSupabase } from "@/lib/supabase";
+import { createHash } from "node:crypto";
+import { BookingIdempotencyConflictError, createBooking, getBookingsByEmail } from "@/lib/bookings";
+import { getSupabase, hasSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequestToGuide } from "@/lib/email";
 import { createBookingSchema } from "@/lib/booking-schema";
@@ -7,9 +8,57 @@ import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
 import { trails } from "@/data/trails";
 import { z } from "zod";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
+
+const MAX_BOOKING_BODY_BYTES = 32_000;
+
+function getBearerToken(req: Request): string | null {
+  const header = req.headers.get("authorization")?.trim();
+  if (!header || !/^Bearer\s+/i.test(header)) return null;
+  const token = header.replace(/^Bearer\s+/i, "").trim();
+  return token || null;
+}
+
+function publicBookingView(booking: Awaited<ReturnType<typeof getBookingsByEmail>>[number]) {
+  return {
+    id: booking.id,
+    type: booking.type,
+    providerId: booking.providerId,
+    providerName: booking.providerName,
+    date: booking.date,
+    partySize: booking.partySize,
+    status: booking.status,
+    createdAt: booking.createdAt,
+  };
+}
+
+async function recordTrustedBookingEvent(
+  booking: Awaited<ReturnType<typeof createBooking>>["booking"]
+): Promise<void> {
+  const supabase = getSupabase();
+  if (!supabase) return;
+
+  const { error } = await supabase.from("conversion_events").insert({
+    event: "booking_complete",
+    properties: {
+      source: "booking_api",
+      booking_id: booking.id,
+      booking_type: booking.type,
+      provider_id: booking.providerId,
+      party_size: booking.partySize,
+    },
+    session_id: null,
+  });
+  if (error) console.error("Trusted booking conversion event failed:", error);
+}
 
 export async function POST(req: Request) {
   let limitResult: RateLimitResult;
@@ -24,18 +73,40 @@ export async function POST(req: Request) {
       limitResult.resetAt
     );
   }
+  if (process.env.NODE_ENV === "production" && !hasSupabase()) {
+    return jsonError("SERVICE_UNAVAILABLE", "Booking storage is not configured.", 503);
+  }
 
   try {
-    const body = await req.json();
+    let body: unknown;
+    try {
+      body = await readJsonBody(req, MAX_BOOKING_BODY_BYTES);
+    } catch (err) {
+      if (err instanceof RequestBodyTooLargeError) {
+        return jsonError("PAYLOAD_TOO_LARGE", "Booking payload is too large.", 413);
+      }
+      return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
+    }
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return jsonError("VALIDATION_ERROR", "Invalid input", 400);
+    }
+    const raw = body as Record<string, unknown>;
+    if (typeof raw.website === "string" && raw.website.trim()) {
+      return Response.json(
+        { booking: null, stored: false, message: "Thanks for the request." },
+        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+      );
+    }
     const parsed = createBookingSchema.safeParse({
-      type: body.type ?? "winery_tasting",
-      providerId: body.providerId,
-      date: body.date,
-      partySize: typeof body.partySize === "number" ? body.partySize : Number(body.partySize),
-      guestEmail: body.guestEmail,
-      guestName: body.guestName,
-      notes: body.notes,
-      trailId: body.trailId,
+      type: raw.type ?? "winery_tasting",
+      providerId: raw.providerId,
+      date: raw.date,
+      idempotencyKey: raw.idempotencyKey,
+      partySize: typeof raw.partySize === "number" ? raw.partySize : Number(raw.partySize),
+      guestEmail: raw.guestEmail,
+      guestName: raw.guestName,
+      notes: raw.notes,
+      trailId: raw.trailId,
     });
 
     if (!parsed.success) {
@@ -43,18 +114,35 @@ export async function POST(req: Request) {
       return jsonError("VALIDATION_ERROR", msg, 400);
     }
 
-    const { type, providerId, date, partySize, guestEmail, guestName, notes, trailId } = parsed.data;
+    const { type, providerId, date, idempotencyKey, partySize, guestEmail, guestName, notes, trailId } = parsed.data;
     const safeGuestName = sanitizeForStorage(guestName);
     if (!safeGuestName) {
       return jsonError("VALIDATION_ERROR", "Guest name is required", 400);
     }
+
+    const emailRateLimitKey = createHash("sha256")
+      .update(guestEmail.trim().toLowerCase())
+      .digest("hex");
+    let emailLimitResult: RateLimitResult;
+    try {
+      emailLimitResult = await rateLimit(req, 10, "bookings-email", emailRateLimitKey);
+    } catch {
+      return jsonError("SERVICE_UNAVAILABLE", "Rate limiting unavailable. Try again in a moment.", 503);
+    }
+    if (!emailLimitResult.ok) {
+      return jsonRateLimitedFromResult(
+        "Please wait before making another booking with this email address.",
+        emailLimitResult.resetAt
+      );
+    }
+    const successLimitRemaining = Math.min(limitResult.remaining, emailLimitResult.remaining);
 
     if (type === "winery_tasting") {
       const winery = wineries.find((w) => w.id === providerId);
       if (!winery) {
         return jsonError("NOT_FOUND", "Winery not found", 404);
       }
-      const booking = await createBooking({
+      const result = await createBooking({
         type: "winery_tasting",
         providerId,
         providerName: winery.name,
@@ -64,29 +152,38 @@ export async function POST(req: Request) {
         guestName: safeGuestName,
         notes: notes != null ? sanitizeForStorage(notes) : undefined,
         leadFeeEur: winery.partnerLeadFeeEur,
+        idempotencyKey,
       });
+      const { booking, created } = result;
 
       let confirmationSent = false;
       let wineryNotificationSent = false;
-      try {
-        confirmationSent = await sendBookingConfirmation(booking);
-      } catch (e) {
-        console.error("Guest email send failed:", e);
-      }
-      if (winery.isVerified && winery.partnerEmail?.trim()) {
+      if (created) {
+        await recordTrustedBookingEvent(booking);
         try {
-          wineryNotificationSent = await sendBookingRequestToWinery(booking, {
-            name: winery.name,
-            partnerEmail: winery.partnerEmail.trim(),
-          });
+          confirmationSent = await sendBookingConfirmation(booking);
         } catch (e) {
-          console.error("Winery notification send failed:", e);
+          console.error("Guest email send failed:", e);
+        }
+        if (winery.isVerified && winery.partnerEmail?.trim()) {
+          try {
+            wineryNotificationSent = await sendBookingRequestToWinery(booking, {
+              name: winery.name,
+              partnerEmail: winery.partnerEmail.trim(),
+            });
+          } catch (e) {
+            console.error("Winery notification send failed:", e);
+          }
         }
       }
+
       return Response.json(
         {
           booking,
-          message: "Booking request sent. The winery will be in touch.",
+          message: created
+            ? "Booking request sent. The winery will be in touch."
+            : "This booking request was already received.",
+          replayed: !created,
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
             confirmationSent,
@@ -95,7 +192,7 @@ export async function POST(req: Request) {
               : {}),
           },
         },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+        { headers: rateLimitSuccessHeaders(successLimitRemaining, 10, limitResult.bypassed || emailLimitResult.bypassed) }
       );
     }
 
@@ -109,7 +206,7 @@ export async function POST(req: Request) {
         trailId && trail
           ? (notes ? `${notes}\nTrail: ${trail.name}` : `Trail: ${trail.name}`)
           : notes;
-      const booking = await createBooking({
+      const result = await createBooking({
         type: "guide_tour",
         providerId,
         providerName: guide.name,
@@ -119,30 +216,39 @@ export async function POST(req: Request) {
         guestName: safeGuestName,
         notes: notesWithTrail != null ? sanitizeForStorage(notesWithTrail) : undefined,
         leadFeeEur: guide.partnerLeadFeeEur,
+        idempotencyKey,
       });
+      const { booking, created } = result;
 
       let confirmationSent = false;
       let guideNotificationSent = false;
-      try {
-        confirmationSent = await sendBookingConfirmation(booking);
-      } catch (e) {
-        console.error("Guest email send failed:", e);
-      }
-      if (guide.isVerified && guide.partnerEmail?.trim()) {
+      if (created) {
+        await recordTrustedBookingEvent(booking);
         try {
-          guideNotificationSent = await sendBookingRequestToGuide(
-            booking,
-            { name: guide.name, partnerEmail: guide.partnerEmail.trim() },
-            trail?.name
-          );
+          confirmationSent = await sendBookingConfirmation(booking);
         } catch (e) {
-          console.error("Guide notification send failed:", e);
+          console.error("Guest email send failed:", e);
+        }
+        if (guide.isVerified && guide.partnerEmail?.trim()) {
+          try {
+            guideNotificationSent = await sendBookingRequestToGuide(
+              booking,
+              { name: guide.name, partnerEmail: guide.partnerEmail.trim() },
+              trail?.name
+            );
+          } catch (e) {
+            console.error("Guide notification send failed:", e);
+          }
         }
       }
+
       return Response.json(
         {
           booking,
-          message: "Booking request sent. The guide will be in touch.",
+          message: created
+            ? "Booking request sent. The guide will be in touch."
+            : "This booking request was already received.",
+          replayed: !created,
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
             confirmationSent,
@@ -151,12 +257,19 @@ export async function POST(req: Request) {
               : {}),
           },
         },
-        { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+        { headers: rateLimitSuccessHeaders(successLimitRemaining, 10, limitResult.bypassed || emailLimitResult.bypassed) }
       );
     }
 
     return jsonError("VALIDATION_ERROR", "Invalid booking type", 400);
   } catch (err) {
+    if (err instanceof BookingIdempotencyConflictError) {
+      return jsonError(
+        "IDEMPOTENCY_CONFLICT",
+        "This booking key was already used for different details. Start a new booking.",
+        409
+      );
+    }
     console.error("Booking API error:", err);
     return jsonError(
       "SERVER_ERROR",
@@ -179,6 +292,9 @@ export async function GET(req: Request) {
       limitResult.resetAt
     );
   }
+  if (process.env.NODE_ENV === "production" && !hasSupabase()) {
+    return jsonError("SERVICE_UNAVAILABLE", "Booking storage is not configured.", 503);
+  }
 
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email");
@@ -191,9 +307,27 @@ export async function GET(req: Request) {
   }
 
   try {
-    const bookings = await getBookingsByEmail(parsed.data);
+    const emailNormalized = parsed.data.trim().toLowerCase();
+
+    // In production, booking history is only available to an authenticated
+    // Supabase user whose verified email matches the requested address.
+    if (hasSupabase()) {
+      const supabase = getSupabase();
+      const accessToken = getBearerToken(req);
+      if (!supabase || !accessToken) {
+        return jsonError("UNAUTHORIZED", "Sign in to load your bookings.", 401);
+      }
+      const { data, error } = await supabase.auth.getUser(accessToken);
+      const userEmail = data.user?.email?.trim().toLowerCase();
+      const emailConfirmed = Boolean(data.user?.email_confirmed_at);
+      if (error || !userEmail || userEmail !== emailNormalized || !emailConfirmed) {
+        return jsonError("UNAUTHORIZED", "Sign in with the booking email to continue.", 401);
+      }
+    }
+
+    const bookings = await getBookingsByEmail(emailNormalized);
     return Response.json(
-      { bookings },
+      { bookings: bookings.map(publicBookingView) },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 15, limitResult.bypassed) }
     );
   } catch (err) {

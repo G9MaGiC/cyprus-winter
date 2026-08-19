@@ -33,6 +33,18 @@ describe("POST /api/track", () => {
     expect(res.status).toBe(400);
   });
 
+  it("rejects server-only booking conversion events", async () => {
+    const res = await POST(
+      req({
+        event: "booking_complete",
+        eventId: "6d86d7c8-ff23-4a06-8d1b-42d4cf4a7b47",
+        sessionId: "sid_test",
+        properties: {},
+      }) as unknown as NextRequest
+    );
+    expect(res.status).toBe(400);
+  });
+
   it("accepts plan_view payload", async () => {
     const res = await POST(
       req({

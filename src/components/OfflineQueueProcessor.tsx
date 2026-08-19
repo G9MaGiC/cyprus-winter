@@ -5,13 +5,14 @@ import { processQueue } from "@/lib/offline-queue";
 
 /**
  * Listens for online event and processes the offline mutation queue.
- * Mount once at app root (e.g. in Providers).
+ * Also flushes once on mount so a refresh while already online still drains the queue.
+ * Mount once at app root (e.g. in Providers). Nested Providers share processQueue's lock.
  */
 export default function OfflineQueueProcessor() {
   const processedRef = useRef(false);
 
   useEffect(() => {
-    const handleOnline = () => {
+    const run = () => {
       if (processedRef.current) return;
       processedRef.current = true;
       processQueue().finally(() => {
@@ -19,8 +20,9 @@ export default function OfflineQueueProcessor() {
       });
     };
 
-    window.addEventListener("online", handleOnline);
-    return () => window.removeEventListener("online", handleOnline);
+    run();
+    window.addEventListener("online", run);
+    return () => window.removeEventListener("online", run);
   }, []);
 
   return null;

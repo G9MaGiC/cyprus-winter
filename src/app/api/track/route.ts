@@ -2,9 +2,15 @@ import { NextRequest } from "next/server";
 import { z } from "zod";
 import { getSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
-import { TRACK_EVENTS } from "@/lib/track-events";
+import { CLIENT_TRACK_EVENTS } from "@/lib/track-events";
 
 const trackBodySchema = z.object({
   event: z.string().min(1).max(64),
@@ -25,7 +31,7 @@ const trackBodySchema = z.object({
     ),
 });
 
-const ALLOWED_EVENTS = new Set<string>(TRACK_EVENTS);
+const ALLOWED_EVENTS = new Set<string>(CLIENT_TRACK_EVENTS);
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   if (!value || typeof value !== "object") return false;
@@ -90,6 +96,7 @@ function normalizeProperties(
   return { ok: true, value: out };
 }
 
+const TRACK_BODY_BYTES = 16_000;
 const EVENT_DEDUPE_TTL_MS = 10 * 60 * 1000;
 const EVENT_DEDUPE_MAX_SIZE = 5000;
 const recentlySeenEventIds = new Map<string, number>();
@@ -121,7 +128,15 @@ export async function POST(req: NextRequest) {
     return jsonRateLimitedFromResult("Too many requests", limitResult.resetAt);
   }
   try {
-    const raw = await req.json();
+    let raw: unknown;
+    try {
+      raw = await readJsonBody(req, TRACK_BODY_BYTES);
+    } catch (err) {
+      if (err instanceof RequestBodyTooLargeError) {
+        return jsonError("PAYLOAD_TOO_LARGE", "Tracking payload is too large.", 413);
+      }
+      return jsonError("BAD_REQUEST", "Invalid JSON body", 400);
+    }
     const parsed = trackBodySchema.safeParse(raw);
     if (!parsed.success) {
       const msg = parsed.error.issues.map((e) => e.message).join("; ") || "Invalid request body";

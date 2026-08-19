@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { POST } from "./route";
 
-vi.mock("@/lib/trail-reports", () => ({
+const { createTrailReport } = vi.hoisted(() => ({
   createTrailReport: vi.fn().mockResolvedValue({
     report: {
       id: "r-1",
@@ -15,12 +15,15 @@ vi.mock("@/lib/trail-reports", () => ({
   }),
 }));
 
-function postReq(body: unknown, ip = "127.0.0.9") {
+vi.mock("@/lib/trail-reports", () => ({ createTrailReport }));
+
+function postReq(body: unknown, ip = "127.0.0.9", headers: Record<string, string> = {}) {
   return new Request("http://localhost:3000/api/trail-reports", {
     method: "POST",
     headers: {
       "content-type": "application/json",
       "x-forwarded-for": ip,
+      ...headers,
     },
     body: JSON.stringify(body),
   });
@@ -56,5 +59,19 @@ describe("POST /api/trail-reports", () => {
     expect(data.report).toBeDefined();
     expect(data.report.trailId).toBe("artemis");
     expect(data.stored).toBe(true);
+  });
+
+  it("silently drops honeypot submissions", async () => {
+    createTrailReport.mockClear();
+    const res = await POST(postReq({ ...validBody, website: "https://bot.example" }, "127.0.0.12"));
+    expect(res.status).toBe(200);
+    expect((await res.json()).stored).toBe(false);
+    expect(createTrailReport).not.toHaveBeenCalled();
+  });
+
+  it("rejects oversized payloads before parsing", async () => {
+    const res = await POST(postReq(validBody, "127.0.0.13", { "content-length": "32001" }));
+    expect(res.status).toBe(413);
+    expect((await res.json()).error?.code).toBe("PAYLOAD_TOO_LARGE");
   });
 });

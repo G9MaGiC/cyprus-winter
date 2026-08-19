@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useId } from "react";
 import AppLink from "@/components/AppLink";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { getAttractionById } from "@/data";
@@ -29,15 +29,18 @@ export default function SearchBar({
   const tSearch = useTranslations("search");
   const tCommon = useTranslations("common");
   const tNav = useTranslations("nav");
+  const inputId = useId().replace(/:/g, "");
+  const resultsId = `${inputId}-results`;
   const [query, setQuery] = useState(initialQuery ?? "");
+  const normalizedQuery = query.trim();
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
   const results = useMemo(() =>
-    query.length >= 2 ? search(query, 12) : [],
-  [query]);
+    normalizedQuery.length >= 2 ? search(normalizedQuery, 12) : [],
+  [normalizedQuery]);
 
   useEffect(() => {
     if (activeIndex >= 0 && listRef.current) {
@@ -62,10 +65,16 @@ export default function SearchBar({
   const showDropdown = focused && results.length > 0;
   const hasResults = results.length > 0;
   const activeId = showDropdown && activeIndex >= 0 && results[activeIndex]
-    ? `search-option-${activeIndex}`
+    ? `${resultsId}-option-${activeIndex}`
     : undefined;
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setFocused(false);
+      setActiveIndex(-1);
+      inputRef.current?.blur();
+      return;
+    }
     if (!showDropdown) return;
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -75,11 +84,7 @@ export default function SearchBar({
       setActiveIndex((i) => (i > 0 ? i - 1 : -1));
     } else if (e.key === "Enter" && activeIndex >= 0 && results[activeIndex]) {
       e.preventDefault();
-      router.push(searchResultHref(results[activeIndex], query));
-    } else if (e.key === "Escape") {
-      setFocused(false);
-      setActiveIndex(-1);
-      inputRef.current?.blur();
+      router.push(searchResultHref(results[activeIndex], normalizedQuery));
     }
   };
 
@@ -101,7 +106,7 @@ export default function SearchBar({
   };
 
   const navigateToResult = (r: SearchResult) => {
-    router.push(searchResultHref(r, query));
+    router.push(searchResultHref(r, normalizedQuery));
   };
 
   return (
@@ -124,19 +129,19 @@ export default function SearchBar({
           aria-label={tNav("searchAria")}
           role="combobox"
           aria-expanded={showDropdown}
-          aria-controls="search-results"
+          aria-controls={resultsId}
           aria-autocomplete="list"
           aria-activedescendant={activeId}
-          id="search-input"
+          id={inputId}
           className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
         />
       </div>
 
       {showDropdown && (
         <ul
-          id="search-results"
+          id={resultsId}
           ref={listRef}
-          aria-labelledby="search-input"
+          aria-labelledby={inputId}
           role="listbox"
           className={`absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto ${LAYER.popover}`}
         >
@@ -144,7 +149,7 @@ export default function SearchBar({
             <li
               key={`${r.kind}-${r.item.id}`}
               data-index={i}
-              id={`search-option-${i}`}
+              id={`${resultsId}-option-${i}`}
               role="option"
               aria-selected={i === activeIndex}
               tabIndex={i === activeIndex ? 0 : -1}
@@ -178,14 +183,14 @@ export default function SearchBar({
         </ul>
       )}
 
-      {focused && query.length > 0 && query.length < 2 && (
+      {focused && normalizedQuery.length > 0 && normalizedQuery.length < 2 && (
         <div className={`absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-olive/60 text-sm`} role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
-      {query.length >= 2 && !hasResults && (
-        <div className={`absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-center text-olive/70 text-sm`}>
-          <p className="mb-4">{tSearch("noResults", { query })}</p>
+      {focused && normalizedQuery.length >= 2 && !hasResults && (
+        <div role="status" className={`absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-center text-olive/70 text-sm`}>
+          <p className="mb-4">{tSearch("noResults", { query: normalizedQuery })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <AppLink

@@ -5,7 +5,8 @@ describe("createBookingSchema", () => {
   const valid = {
     type: "winery_tasting",
     providerId: "tsiakkas",
-    date: "2026-03-15",
+    date: "2099-03-15",
+    idempotencyKey: "schema-test-booking-key-001",
     partySize: 2,
     guestEmail: "test@example.com",
     guestName: "Test Guest",

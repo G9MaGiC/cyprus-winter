@@ -27,7 +27,7 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
 
   const FUNNEL_EVENTS = [
     "page_view", "discover_view", "trail_view", "winery_detail_view",
-    "plan_add", "booking_start", "booking_confirmed",
+    "plan_add", "booking_start", "booking_complete",
   ];
 
   const results = await Promise.all(

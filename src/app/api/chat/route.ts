@@ -3,11 +3,17 @@ import { buildAIContext, buildAIContextRelevant } from "@/lib/ai-context";
 import { getPlaceById } from "@/data";
 import { rateLimit } from "@/lib/rate-limit";
 import { chatRequestSchema } from "@/lib/chat-schema";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeText } from "@/lib/sanitize";
 import { isSafeInternalPath as isAllowedAppPath } from "@/lib/safe-internal-path";
-import { resolveInternalPath } from "@/lib/resolve-internal-path";
+import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 import { orchestrate } from "@/lib/concierge/orchestrator";
 import type { ConciergeContext } from "@/lib/concierge/types";
 
@@ -108,27 +114,6 @@ function isSafeInternalPath(path: string): boolean {
   return isAllowedAppPath(path);
 }
 
-function sanitizeChatMetadata(metadata: Record<string, unknown>): Record<string, unknown> {
-  const actions = metadata.actions;
-  if (!Array.isArray(actions)) return metadata;
-  const safeActions = actions
-    .map((raw) => {
-      if (!raw || typeof raw !== "object") return null;
-      const action = raw as Record<string, unknown>;
-      const payload =
-        action.payload && typeof action.payload === "object"
-          ? { ...(action.payload as Record<string, unknown>) }
-          : undefined;
-      if (payload && typeof payload.path === "string") {
-        const path = sanitizeText(payload.path, 256);
-        payload.path = path ? resolveInternalPath(path) : undefined;
-      }
-      return { ...action, payload };
-    })
-    .filter(Boolean);
-  return { ...metadata, actions: safeActions };
-}
-
 function normalizeChatContext(ctx: unknown) {
   if (!ctx || typeof ctx !== "object") return {};
   const obj = ctx as Record<string, unknown>;
@@ -188,8 +173,11 @@ export async function POST(req: Request) {
 
   let body: unknown;
   try {
-    body = await req.json();
-  } catch {
+    body = await readJsonBody(req, 256_000);
+  } catch (err) {
+    if (err instanceof RequestBodyTooLargeError) {
+      return jsonError("PAYLOAD_TOO_LARGE", "Request body is too large.", 413);
+    }
     return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
   }
 
@@ -197,6 +185,14 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     const msg = parsed.error.issues[0]?.message ?? "messages array is required";
     return jsonError("VALIDATION_ERROR", msg, 400, [{ field: "messages", message: msg }]);
+  }
+
+  const totalMessageCharacters = parsed.data.messages.reduce(
+    (total, message) => total + message.content.length,
+    0
+  );
+  if (totalMessageCharacters > 40_000) {
+    return jsonError("VALIDATION_ERROR", "Conversation is too long. Start a new chat.", 413);
   }
 
   const messages = parsed.data.messages.map((m) => ({
@@ -330,8 +326,8 @@ export async function POST(req: Request) {
                 }
                 const jsonStr = fullContent.slice(delimIdx + delimiter.length).trim();
                 try {
-                  const metadata = JSON.parse(jsonStr) as Record<string, unknown>;
-                  const safe = sanitizeChatMetadata(metadata);
+                  const metadata = JSON.parse(jsonStr) as unknown;
+                  const safe = sanitizeResponseMetadata(metadata);
                   controller.enqueue(encoder.encode(emitChunk({ type: "metadata", ...safe })));
                 } catch {
                   // Malformed JSON — skip metadata
@@ -368,7 +364,8 @@ export async function POST(req: Request) {
       if (!isRetryableError(err)) {
         lastErr = err;
         lastProvider = provider;
-        break;
+        console.warn(`Chat provider rejected the request (${model}); trying next provider.`);
+        continue;
       }
       // Fall back to non-streaming for this provider
       try {

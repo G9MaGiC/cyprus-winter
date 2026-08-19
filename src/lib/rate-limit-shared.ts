@@ -5,14 +5,38 @@ export type RateLimitResult = {
   bypassed?: boolean;
 };
 
-/** Extract client identifier for rate limiting. */
+function normalizeClientId(value: string | null): string | null {
+  const normalized = value?.split(",")[0]?.trim().replace(/^"|"$/g, "");
+  if (!normalized || normalized.length > 128) return null;
+  return normalized;
+}
+
+/**
+ * Extract a client identifier.
+ *
+ * The deployment edge must overwrite the trusted headers below. We prefer
+ * platform-specific headers and never trust the first user-controlled
+ * X-Forwarded-For hop.
+ */
 export function getClientId(req: Request): string {
+  const trustedHeaders = ["x-vercel-forwarded-for", "cf-connecting-ip", "x-real-ip"];
+  for (const header of trustedHeaders) {
+    const value = normalizeClientId(req.headers.get(header));
+    if (value) return value;
+  }
+
   const forwarded = req.headers.get("x-forwarded-for");
-  const ip =
-    forwarded?.split(",")[0]?.trim() ??
-    req.headers.get("x-real-ip") ??
-    "unknown";
-  return ip;
+  const chain = forwarded
+    ?.split(",")
+    .map((value) => normalizeClientId(value))
+    .filter((value): value is string => Boolean(value));
+  if (chain && chain.length > 0) {
+    // The closest proxy-added hop is safer than the first, which clients can
+    // commonly inject. Configure a trusted platform header for per-client limits.
+    return chain[chain.length - 1];
+  }
+
+  return "unknown";
 }
 
 const STRESS_TEST_TOKEN = process.env.STRESS_TEST_TOKEN;

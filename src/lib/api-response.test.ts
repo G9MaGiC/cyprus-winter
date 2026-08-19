@@ -4,6 +4,8 @@ import {
   jsonRateLimited,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
 } from "./api-response";
 
 describe("jsonError", () => {
@@ -72,5 +74,17 @@ describe("rateLimitSuccessHeaders", () => {
   it("includes bypassed when true", () => {
     const h = rateLimitSuccessHeaders(10, 10, true);
     expect(h["X-RateLimit-Bypassed"]).toBe("true");
+  });
+});
+
+
+describe("readJsonBody", () => {
+  it("rejects oversized request bodies", async () => {
+    const req = new Request("http://localhost:3000/api/test", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ payload: "x".repeat(500) }),
+    });
+    await expect(readJsonBody(req, 100)).rejects.toBeInstanceOf(RequestBodyTooLargeError);
   });
 });

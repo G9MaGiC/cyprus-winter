@@ -3,6 +3,9 @@
  */
 import { getSupabase, hasSupabase } from "./supabase";
 
+export const TRAIL_REPORT_FRESHNESS_HOURS = 48;
+const TRAIL_REPORT_FRESHNESS_MS = TRAIL_REPORT_FRESHNESS_HOURS * 60 * 60 * 1000;
+
 export type TrailReportStatus = "open" | "caution" | "closed";
 export type TrailReportSurface = "dry" | "muddy" | "snow" | "icy";
 
@@ -64,7 +67,6 @@ export async function createTrailReport(input: {
       temperatureC: input.temperatureC,
       windKmh: input.windKmh,
       reportedAt,
-      reporterEmail: input.reporterEmail,
       createdAt: reportedAt,
     },
     stored,
@@ -75,10 +77,12 @@ export async function getLatestReportsByTrail(trailId: string, limit = 5): Promi
   const supabase = getSupabase();
   if (!supabase) return [];
 
+  const freshSince = new Date(Date.now() - TRAIL_REPORT_FRESHNESS_MS).toISOString();
   const { data, error } = await supabase
     .from("trail_reports")
     .select("*")
     .eq("trail_id", trailId)
+    .gte("reported_at", freshSince)
     .order("reported_at", { ascending: false })
     .limit(limit);
 
@@ -93,7 +97,6 @@ export async function getLatestReportsByTrail(trailId: string, limit = 5): Promi
     temperatureC: row.temperature_c != null ? Number(row.temperature_c) : undefined,
     windKmh: row.wind_kmh != null ? Number(row.wind_kmh) : undefined,
     reportedAt: String(row.reported_at),
-    reporterEmail: row.reporter_email ? String(row.reporter_email) : undefined,
     createdAt: String(row.created_at),
   }));
 }

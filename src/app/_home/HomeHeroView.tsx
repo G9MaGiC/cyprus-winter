@@ -51,7 +51,7 @@ export default function HomeHeroView({
       />
       <div className={HERO.overlay} aria-hidden />
 
-      <div className="relative z-10 w-full max-w-2xl mx-auto px-2 sm:px-4">
+      <div className="relative z-10 w-full max-w-xl mx-auto px-2 sm:px-4">
         <div className={HERO.panel}>
           <p className={`${TYPE.kickerOnDark} mb-3`}>{kicker}</p>
           <h1
@@ -63,7 +63,7 @@ export default function HomeHeroView({
           <p className="text-base sm:text-lg text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
             {headline}
           </p>
-          <p className="text-sm text-white/80 max-w-lg mx-auto mb-6">{seasonalLine}</p>
+          <p className="text-sm text-white/80 max-w-lg mx-auto mb-5">{seasonalLine}</p>
 
           <p className="text-xs sm:text-sm text-center text-white/70 max-w-lg mx-auto mb-5 leading-relaxed">
             <AppLink
@@ -101,7 +101,7 @@ export default function HomeHeroView({
               {planCta}
             </AppLink>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-5 pt-2 border-t border-white/15">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-4 pt-2 border-t border-white/15">
             <AppLink
               href="/airport"
               data-testid="home-hero-airport-cta"

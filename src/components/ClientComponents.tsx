@@ -20,7 +20,6 @@ export default function ClientComponents() {
   useEffect(() => {
     // Intentionally using setState for client-only rendering
     // This prevents hydration mismatches by only rendering on client
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
