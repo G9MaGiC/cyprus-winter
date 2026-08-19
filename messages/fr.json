@@ -1,24 +1,24 @@
 {
   "footer": {
-    "discover": "Discover",
+    "discover": "Découvrir",
     "plan": "Plan",
-    "airport": "Airport",
-    "arriving": "Arriving",
-    "weather": "Weather",
-    "bookings": "Bookings",
-    "beaches": "Beaches",
-    "wineries": "Wineries",
+    "airport": "Aéroport",
+    "arriving": "À l’arrivée",
+    "weather": "Météo",
+    "bookings": "Réservations",
+    "beaches": "Plages",
+    "wineries": "Domaines",
     "villages": "Villages",
     "troodos": "Troodos",
     "paphos": "Paphos",
-    "tagline": "Mild, uncrowded, real. Trails, villages, heritage. The island rewards the curious.",
-    "practical": "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
+    "tagline": "Une Chypre plus calme. Sentiers, villages, domaines, journées lentes.",
+    "practical": "Conduite à gauche. Superposez les vêtements. Vérifiez les conditions avant Troodos.",
+    "emergency": "Urgences",
+    "touristInfo": "Info touristique",
     "ambulance": "Ambulance",
-    "planYourTrip": "Plan your trip",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "planYourTrip": "Planifiez votre voyage",
+    "privacy": "Confidentialité",
+    "terms": "Conditions"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -33,93 +33,93 @@
     "plan": "Plan",
     "trails": "Sentiers",
     "events": "Événements",
-    "airport": "Airport",
-    "arriving": "Arriving",
-    "beaches": "Beaches",
+    "airport": "Aéroport",
+    "arriving": "À l’arrivée",
+    "beaches": "Plages",
     "villages": "Villages",
-    "wineries": "Wineries",
-    "signIn": "Sign in",
+    "wineries": "Domaines",
+    "signIn": "Connexion",
     "home": "Accueil",
     "weather": "Météo",
     "bookings": "Réservations",
-    "secrets": "Local secrets",
-    "account": "Account",
-    "team": "Team",
+    "secrets": "Secrets locaux",
+    "account": "Compte",
+    "team": "Équipe",
     "search": "Rechercher",
-    "more": "More",
+    "more": "Plus",
     "askAI": "Demander à l'IA",
-    "searchAria": "Search places and trails",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
-    "mainNavigation": "Main navigation"
+    "searchAria": "Rechercher lieux et sentiers",
+    "askAIAria": "Demander à l’IA des sentiers, domaines et idées de séjour",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mainNavigation": "Navigation principale"
   },
   "common": {
     "nav": {
       "discover": "Découvrir",
       "trip": "Itinéraire",
-      "airport": "Airport"
+      "airport": "Aéroport"
     },
     "aria": {
-      "planCta": "Build a day",
-      "pageNavigation": "Page navigation",
+      "planCta": "Composer une journée",
+      "pageNavigation": "Navigation de page",
       "viewPlan": "Voir votre plan",
-      "placeInItinerary": "{id} is in your itinerary",
+      "placeInItinerary": "{id} est dans votre itinéraire",
       "bottomNavigation": "Navigation inférieure",
-      "moreNavigation": "More navigation",
-      "breadcrumb": "Breadcrumb",
-      "dismissTip": "Dismiss tip",
+      "moreNavigation": "Plus de navigation",
+      "breadcrumb": "Fil d’Ariane",
+      "dismissTip": "Fermer l’astuce",
       "selectLanguage": "Choisir la langue",
-      "close": "Close",
-      "addPlace": "Add place",
-      "addPlaceToItinerary": "Add a place to your itinerary",
-      "clearRecentlyViewed": "Clear recently viewed",
-      "shareOn": "Share on {label}",
-      "siteFooter": "Site footer",
-      "footerNav": "Plan, explore, and essentials",
-      "footerLegal": "Legal",
-      "quickActions": "Quick actions",
-      "reportConditionsForTrail": "Report conditions for this trail",
-      "dismissNotification": "Dismiss notification",
+      "close": "Fermer",
+      "addPlace": "Ajouter un lieu",
+      "addPlaceToItinerary": "Ajouter un lieu à l’itinéraire",
+      "clearRecentlyViewed": "Effacer les vus récemment",
+      "shareOn": "Partager sur {label}",
+      "siteFooter": "Pied de page",
+      "footerNav": "Planifier, explorer, essentiels",
+      "footerLegal": "Mentions légales",
+      "quickActions": "Actions rapides",
+      "reportConditionsForTrail": "Signaler l’état de ce sentier",
+      "dismissNotification": "Fermer la notification",
       "notifications": "Notifications"
     },
-    "skipToContent": "Skip to main content",
-    "languageLabel": "Language:",
+    "skipToContent": "Aller au contenu",
+    "languageLabel": "Langue :",
     "nextOnPlan": {
-      "aria": "Next on your plan",
-      "prefix": "Next up",
-      "navigate": "Navigate"
+      "aria": "Suite de votre plan",
+      "prefix": "Ensuite",
+      "navigate": "Itinéraire"
     },
     "noscript": {
-      "title": "JavaScript is required",
-      "body": "for full functionality. You can still browse trails and places, but features like the itinerary planner and chat require JavaScript."
+      "title": "JavaScript est requis",
+      "body": "pour toutes les fonctions. Vous pouvez parcourir sentiers et lieux, mais le plan et le chat nécessitent JavaScript."
     },
     "map": {
       "openStreetMap": "OpenStreetMap",
-      "enableMapAria": "Enable map interactions",
-      "enableMapCta": "Enable map",
-      "disableMapAria": "Disable map interactions",
-      "disableMapCta": "Done",
-      "getDirections": "Get directions",
-      "openInMaps": "Open in Maps"
+      "enableMapAria": "Activer la carte",
+      "enableMapCta": "Activer la carte",
+      "disableMapAria": "Désactiver la carte",
+      "disableMapCta": "Terminé",
+      "getDirections": "Itinéraire",
+      "openInMaps": "Ouvrir dans Plans"
     },
     "addToPlan": "Ajouter au plan",
     "addPlace": "Ajouter un lieu",
-    "openAria": "Open {name}",
+    "openAria": "Ouvrir {name}",
     "cookies": {
-      "essentialOnly": "Essential only",
-      "essentialShort": "Essential",
-      "title": "Cookie consent.",
-      "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
-      "accept": "Accept",
-      "learnMore": "Learn more"
+      "essentialOnly": "Essentiel seulement",
+      "essentialShort": "Essentiel",
+      "title": "Cookies.",
+      "body": "Nous utilisons des cookies essentiels pour le service et des statistiques optionnelles. « Accepter » autorise les statistiques.",
+      "accept": "Accepter",
+      "learnMore": "En savoir plus"
     },
-    "shareColon": "Share:",
-    "bookTasting": "Book a tasting",
-    "clearFilters": "Clear filters",
-    "submitReport": "Submit report",
-    "goHome": "Go home",
-    "tryAgain": "Try again",
+    "shareColon": "Partager :",
+    "bookTasting": "Réserver une dégustation",
+    "clearFilters": "Effacer les filtres",
+    "submitReport": "Envoyer le signalement",
+    "goHome": "Accueil",
+    "tryAgain": "Réessayer",
     "explore": "Explore",
     "place": "Place",
     "trail": "Trail",
@@ -227,25 +227,25 @@
     "touristInfo": "Tourist info",
     "ambulance": "Ambulance",
     "loading": {
-      "generic": "Loading",
-      "ellipsis": "Loading…",
-      "map": "Loading map…",
-      "trails": "Loading trails",
-      "trail": "Loading trail",
-      "discover": "Loading discover",
-      "search": "Loading search",
-      "bookings": "Loading bookings",
-      "plan": "Loading plan",
-      "events": "Loading events",
-      "wineries": "Loading wineries",
-      "attraction": "Loading attraction",
-      "region": "Loading region",
-      "wineRoute": "Loading wine route",
-      "airportGuide": "Loading airport guide",
-      "weatherMonth": "Loading weather",
-      "bookingForm": "Loading booking form",
-      "reportForm": "Loading report form",
-      "content": "Loading content"
+      "generic": "Chargement",
+      "ellipsis": "Chargement…",
+      "map": "Chargement de la carte…",
+      "trails": "Chargement des sentiers",
+      "trail": "Chargement du sentier",
+      "discover": "Chargement de Découvrir",
+      "search": "Chargement de la recherche",
+      "bookings": "Chargement des réservations",
+      "plan": "Chargement du plan",
+      "events": "Chargement des événements",
+      "wineries": "Chargement des domaines",
+      "attraction": "Chargement du lieu",
+      "region": "Chargement de la région",
+      "wineRoute": "Chargement de la route des vins",
+      "airportGuide": "Chargement du guide aéroport",
+      "weatherMonth": "Chargement de la météo",
+      "bookingForm": "Chargement du formulaire",
+      "reportForm": "Chargement du signalement",
+      "content": "Chargement du contenu"
     },
     "skipTo": {
       "thisWeek": "Skip to This week",
@@ -254,11 +254,12 @@
       "search": "Skip to search",
       "startHere": "Skip to Start here"
     },
-    "cancel": "Cancel",
-    "done": "Done",
+    "cancel": "Annuler",
+    "done": "Terminé",
     "clearDay": "Clear day",
     "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
+    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "localeBeta": "bêta"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -647,42 +648,42 @@
   },
   "errors": {
     "common": {
-      "title": "Something went wrong",
-      "tryAgainCta": "Try again"
+      "title": "Un problème est survenu",
+      "tryAgainCta": "Réessayer"
     },
     "page": {
-      "title": "A small glitch",
-      "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-      "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+      "title": "Petit accroc",
+      "body": "Petit accroc. Réessayez ou rentrez à l’accueil — sentiers, villages et dégustations sont toujours là.",
+      "hint": "Menu : Découvrir, Sentiers ou Plan. Ou Demander à l’IA."
     },
     "rateLimited": {
-      "title": "Too many requests",
-      "canRetry": "You can try again now.",
-      "waitThenRetry": "{seconds, plural, one {Wait # second, then try again.} other {Wait # seconds, then try again.}}",
-      "retryNow": "Try again",
-      "retryIn": "Wait {seconds}s"
+      "title": "Trop de demandes",
+      "canRetry": "Vous pouvez réessayer maintenant.",
+      "waitThenRetry": "{seconds, plural, one {Attendez # seconde, puis réessayez.} other {Attendez # secondes, puis réessayez.}}",
+      "retryNow": "Réessayer",
+      "retryIn": "Attendre {seconds}s"
     },
     "network": {
-      "titleOnline": "Connection issue",
-      "titleOffline": "You're offline",
-      "messageOnline": "Connection trouble. Try again, or tap Ask AI.",
-      "messageOffline": "You're offline. Connect to browse trails and plan your trip.",
-      "checkConnection": "Check connection"
+      "titleOnline": "Problème de connexion",
+      "titleOffline": "Hors ligne",
+      "messageOnline": "Connexion difficile. Réessayez, ou Demander à l’IA.",
+      "messageOffline": "Vous êtes hors ligne. Connectez-vous pour parcourir et planifier.",
+      "checkConnection": "Vérifier la connexion"
     },
     "chat": {
-      "rateLimited": "Too many requests. Please wait a moment.",
-      "unavailable": "I'm having trouble connecting. Please try again in a moment.",
-      "failed": "I'm having trouble connecting. Please try again in a moment."
+      "rateLimited": "Trop de demandes. Attendez un instant.",
+      "unavailable": "Connexion difficile. Réessayez dans un moment.",
+      "failed": "Connexion difficile. Réessayez dans un moment."
     },
     "rightNow": {
       "locationDenied": "Enable location or pick a region."
     },
     "api": {
-      "SERVICE_UNAVAILABLE": "Please try again in a moment.",
-      "RATE_LIMITED": "Too many requests. Please wait a moment.",
-      "SERVER_ERROR": "Something went wrong. Please try again.",
-      "VALIDATION_ERROR": "Something went wrong. Please try again.",
-      "BAD_REQUEST": "Something went wrong. Please try again."
+      "SERVICE_UNAVAILABLE": "Réessayez dans un moment.",
+      "RATE_LIMITED": "Trop de demandes. Attendez un instant.",
+      "SERVER_ERROR": "Un problème est survenu. Réessayez.",
+      "VALIDATION_ERROR": "Un problème est survenu. Réessayez.",
+      "BAD_REQUEST": "Un problème est survenu. Réessayez."
     }
   },
   "push": {
@@ -1753,36 +1754,36 @@
       "cancelled": "cancelled"
     },
     "errors": {
-      "rateLimited": "Too many requests. Wait a moment and try again.",
-      "failedToLoad": "Failed to load",
+      "rateLimited": "Trop de demandes. Attendez un instant et réessayez.",
+      "failedToLoad": "Chargement impossible",
       "signInRequired": "Connectez-vous pour charger vos réservations depuis un autre appareil.",
-      "connection": "Couldn't load your bookings. Check your connection and try again.",
+      "connection": "Impossible de charger vos réservations. Vérifiez la connexion et réessayez.",
       "lookupExpired": "Lien invalide ou expiré. Demandez-en un nouveau.",
       "lookupLinkFailed": "Impossible d’envoyer le lien. Vérifiez la connexion et réessayez."
     },
     "emailLookup": {
-      "srLabel": "Your email to load bookings from another device",
+      "srLabel": "Votre e-mail pour charger les réservations d’un autre appareil",
       "placeholder": "your@email.com",
-      "noMatch": "No bookings for that email. Try another, or book from Discover.",
-      "loadedCount": "{count, plural, one {Loaded # booking.} other {Loaded # bookings.}}",
-      "allSet": "All set. No new bookings to load.",
+      "noMatch": "Aucune réservation pour cet e-mail. Essayez un autre, ou réservez depuis Découvrir.",
+      "loadedCount": "{count, plural, one {# réservation chargée.} other {# réservations chargées.}}",
+      "allSet": "C’est bon. Rien de nouveau à charger.",
       "linkSent": "Consultez votre e-mail : le lien sécurisé expire dans 15 minutes."
     },
     "page": {
       "title": "Mes réservations",
-      "description": "Your tastings and experiences. All in one place.",
+      "description": "Dégustations et expériences. Tout au même endroit.",
       "stats": {
         "totalBookings": "{count, plural, one {booking} other {bookings}}",
         "upcoming": "upcoming",
         "confirmedCount": "{count} confirmed"
       },
       "sync": {
-        "toggle": "Booked on another device? Load by email",
-        "submit": "Load bookings",
+        "toggle": "Réservé sur un autre appareil ? Charger par e-mail",
+        "submit": "Charger les réservations",
         "sendLookupLink": "Envoyer le lien",
         "resendLookupLink": "Renvoyer le lien",
-        "loadByEmail": "Load by email",
-        "mergeHint": "We’ll merge any bookings with this device."
+        "loadByEmail": "Charger par e-mail",
+        "mergeHint": "Nous fusionnerons avec cet appareil."
       },
       "loading": {
         "aria": "Loading your bookings",
@@ -2193,25 +2194,25 @@
       "aria": "{intent, select, signup {Sign up with {provider}} other {Sign in with {provider}}}"
     },
     "login": {
-      "title": "Welcome back",
+      "title": "Bon retour",
       "subtitle": "Your plan and bookings follow you. Trails, villages, wineries — all in one place.",
       "configSubtitle": "Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device.",
       "errorInvalidCredentials": "Email or password doesn’t match. Try again or use a magic link.",
       "errorConfirmEmail": "Please confirm your email first. Check your inbox for the activation link.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "ctaSignIn": "Sign in",
-      "ctaSigningIn": "Signing in…",
-      "ctaSendMagicLink": "Send magic link",
-      "ctaUseMagic": "Use magic link",
-      "ctaUsePassword": "Use password",
-      "passwordLabel": "Password",
+      "errorGeneric": "Un problème est survenu. Réessayez dans un moment.",
+      "ctaSignIn": "Connexion",
+      "ctaSigningIn": "Connexion…",
+      "ctaSendMagicLink": "Envoyer le lien magique",
+      "ctaUseMagic": "Lien magique",
+      "ctaUsePassword": "Mot de passe",
+      "passwordLabel": "Mot de passe",
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "No account?"
+      "noAccountPrefix": "Pas de compte ?"
     },
     "register": {
-      "title": "Join Cyprus Winter",
+      "title": "Rejoindre Cyprus Winter",
       "subtitle": "Plan trails, wineries, villages. Sync your itinerary across devices.",
       "configTitle": "Create account",
       "configSubtitle": "Auth is being set up. You can still use the app—your plan saves on this device. Check back soon.",
@@ -2219,7 +2220,7 @@
       "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
       "errorInvalidEmail": "Please enter a valid email address.",
       "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
+      "errorGeneric": "Un problème est survenu. Réessayez dans un moment.",
       "passwordHint": "At least 6 characters",
       "successTitle": "Almost there",
       "successSubtitle": "We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account, then sign in.",
@@ -2227,11 +2228,11 @@
       "namePlaceholder": "Your name",
       "confirmPasswordLabel": "Confirm password",
       "passwordLabel": "Password",
-      "ctaCreating": "Creating account…",
-      "ctaSignIn": "Sign in",
-      "ctaCreate": "Create account",
-      "alreadyHavePrefix": "Already have an account?",
-      "signInInstead": "Sign in instead →"
+      "ctaCreating": "Création…",
+      "ctaSignIn": "Connexion",
+      "ctaCreate": "Créer un compte",
+      "alreadyHavePrefix": "Déjà un compte ?",
+      "signInInstead": "Connexion →"
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2303,10 +2304,10 @@
     },
     "guideForm": {
       "validation": {
-        "dateRequired": "Choose a date in the future",
-        "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address",
-        "partySizeRequired": "Select group size"
+        "dateRequired": "Choisissez une date à venir",
+        "nameRequired": "Le nom est requis",
+        "emailInvalid": "Entrez une adresse e-mail valide",
+        "partySizeRequired": "Choisissez la taille du groupe"
       },
       "errors": {
         "failed": "Échec de la réservation",
@@ -2376,10 +2377,10 @@
     },
     "wineryForm": {
       "validation": {
-        "dateRequired": "Choose a date in the future",
-        "nameRequired": "Name is required",
-        "emailInvalid": "Enter a valid email address",
-        "partySizeRequired": "Select group size"
+        "dateRequired": "Choisissez une date à venir",
+        "nameRequired": "Le nom est requis",
+        "emailInvalid": "Entrez une adresse e-mail valide",
+        "partySizeRequired": "Choisissez la taille du groupe"
       },
       "errors": {
         "failed": "Échec de la réservation",

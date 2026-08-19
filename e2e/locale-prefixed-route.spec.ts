@@ -23,20 +23,22 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page).toHaveURL(/\/he\/plan/);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("main")).toBeVisible();
+    const nav = page.getByRole("navigation", { name: "ניווט ראשי" });
     if (testInfo.project.name.includes("mobile")) {
-      await page.getByRole("navigation", { name: "Main navigation" }).getByRole("button").click();
+      await nav.getByRole("button", { name: "פתחו תפריט" }).click();
     }
-    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "גילוי" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "גילוי" })).toBeVisible();
   });
 
   test("Romanian /ro/discover loads with localized title", async ({ page }, testInfo) => {
     await page.goto("/ro/discover", { waitUntil: "domcontentloaded" });
     await expect(page).toHaveURL(/\/ro\/discover/);
     await expect(page.getByRole("main")).toBeVisible();
+    const nav = page.getByRole("navigation", { name: "Navigare principală" });
     if (testInfo.project.name.includes("mobile")) {
-      await page.getByRole("navigation", { name: "Main navigation" }).getByRole("button").click();
+      await nav.getByRole("button", { name: "Deschide meniul" }).click();
     }
-    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Descoperă" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "Descoperă" })).toBeVisible();
   });
 
   test("French /fr/plan loads main content", async ({ page }) => {

@@ -48,8 +48,8 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 450+ pass |
-| i18n keys | 1860 × 7 locales |
+| Unit tests | 452+ pass |
+| i18n keys | 1861 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 
 ---
@@ -64,6 +64,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 | Book | `/discover/tsiakkas` → Book tasting | Hero image ≠ generic only; back returns to discover |
 | Search | `/search?q=omodos` → result → back | Query preserved (GF4) |
 | i18n | `/el`, `/de` home + plan | No English leaks in nav/footer |
+| i18n beta | `/fr`, `/he`, `/ro` switcher + chrome | Locales labeled beta; nav/footer/errors not English (home editorial may still be) |
 | Bookings | Submit test booking (staging) | Email or Supabase row (if configured) |
 
 Test viewports: **390×844** (mobile), **1280** (desktop).

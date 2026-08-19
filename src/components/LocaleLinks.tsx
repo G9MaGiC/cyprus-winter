@@ -1,8 +1,8 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { useLocale } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
+import { isBetaLocale, routing } from "@/i18n/routing";
 import { usePathname } from "@/i18n/navigation";
 
 const localeNames: Record<string, string> = {
@@ -22,22 +22,30 @@ const localeNames: Record<string, string> = {
 export default function LocaleLinks() {
   const pathname = usePathname();
   const currentLocale = useLocale();
+  const t = useTranslations("common");
 
   return (
     <div className="mt-4">
       <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
-        {routing.locales.map((locale) => (
-          <AppLink
-            key={locale}
-            href={pathname || "/"}
-            locale={locale}
-            aria-current={locale === currentLocale ? "page" : undefined}
-            aria-label={localeNames[locale] || locale}
-            className={`text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded px-2 py-1 min-h-[44px] inline-flex items-center ${locale === currentLocale ? "text-terracotta bg-terracotta/10" : "text-olive/70 hover:text-terracotta"}`}
-          >
-            {localeNames[locale] || locale}
-          </AppLink>
-        ))}
+        {routing.locales.map((locale) => {
+          const name = localeNames[locale] || locale;
+          const label = isBetaLocale(locale) ? `${name} (${t("localeBeta")})` : name;
+          return (
+            <AppLink
+              key={locale}
+              href={pathname || "/"}
+              locale={locale}
+              aria-current={locale === currentLocale ? "page" : undefined}
+              aria-label={label}
+              className={`text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded px-2 py-1 min-h-[44px] inline-flex items-center ${locale === currentLocale ? "text-terracotta bg-terracotta/10" : "text-olive/70 hover:text-terracotta"}`}
+            >
+              {name}
+              {isBetaLocale(locale) ? (
+                <span className="ms-1 font-normal text-olive/50">({t("localeBeta")})</span>
+              ) : null}
+            </AppLink>
+          );
+        })}
       </div>
     </div>
   );

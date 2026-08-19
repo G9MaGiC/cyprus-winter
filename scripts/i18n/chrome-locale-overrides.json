@@ -1,0 +1,649 @@
+{
+  "fr": {
+    "footer": {
+      "discover": "Découvrir",
+      "plan": "Plan",
+      "airport": "Aéroport",
+      "arriving": "À l’arrivée",
+      "weather": "Météo",
+      "bookings": "Réservations",
+      "beaches": "Plages",
+      "wineries": "Domaines",
+      "villages": "Villages",
+      "tagline": "Une Chypre plus calme. Sentiers, villages, domaines, journées lentes.",
+      "practical": "Conduite à gauche. Superposez les vêtements. Vérifiez les conditions avant Troodos.",
+      "emergency": "Urgences",
+      "touristInfo": "Info touristique",
+      "ambulance": "Ambulance",
+      "planYourTrip": "Planifiez votre voyage",
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
+    },
+    "nav": {
+      "plan": "Plan",
+      "airport": "Aéroport",
+      "arriving": "À l’arrivée",
+      "beaches": "Plages",
+      "villages": "Villages",
+      "wineries": "Domaines",
+      "signIn": "Connexion",
+      "secrets": "Secrets locaux",
+      "account": "Compte",
+      "team": "Équipe",
+      "more": "Plus",
+      "searchAria": "Rechercher lieux et sentiers",
+      "askAIAria": "Demander à l’IA des sentiers, domaines et idées de séjour",
+      "openMenu": "Ouvrir le menu",
+      "closeMenu": "Fermer le menu",
+      "mainNavigation": "Navigation principale"
+    },
+    "common": {
+      "nav": { "airport": "Aéroport" },
+      "localeBeta": "bêta",
+      "aria": {
+        "planCta": "Composer une journée",
+        "pageNavigation": "Navigation de page",
+        "placeInItinerary": "{id} est dans votre itinéraire",
+        "moreNavigation": "Plus de navigation",
+        "breadcrumb": "Fil d’Ariane",
+        "dismissTip": "Fermer l’astuce",
+        "close": "Fermer",
+        "addPlace": "Ajouter un lieu",
+        "addPlaceToItinerary": "Ajouter un lieu à l’itinéraire",
+        "clearRecentlyViewed": "Effacer les vus récemment",
+        "shareOn": "Partager sur {label}",
+        "siteFooter": "Pied de page",
+        "footerNav": "Planifier, explorer, essentiels",
+        "footerLegal": "Mentions légales",
+        "quickActions": "Actions rapides",
+        "reportConditionsForTrail": "Signaler l’état de ce sentier",
+        "dismissNotification": "Fermer la notification",
+        "notifications": "Notifications"
+      },
+      "skipToContent": "Aller au contenu",
+      "languageLabel": "Langue :",
+      "nextOnPlan": {
+        "aria": "Suite de votre plan",
+        "prefix": "Ensuite",
+        "navigate": "Itinéraire"
+      },
+      "noscript": {
+        "title": "JavaScript est requis",
+        "body": "pour toutes les fonctions. Vous pouvez parcourir sentiers et lieux, mais le plan et le chat nécessitent JavaScript."
+      },
+      "map": {
+        "enableMapAria": "Activer la carte",
+        "enableMapCta": "Activer la carte",
+        "disableMapAria": "Désactiver la carte",
+        "disableMapCta": "Terminé",
+        "getDirections": "Itinéraire",
+        "openInMaps": "Ouvrir dans Plans"
+      },
+      "openAria": "Ouvrir {name}",
+      "cookies": {
+        "essentialOnly": "Essentiel seulement",
+        "essentialShort": "Essentiel",
+        "title": "Cookies.",
+        "body": "Nous utilisons des cookies essentiels pour le service et des statistiques optionnelles. « Accepter » autorise les statistiques.",
+        "accept": "Accepter",
+        "learnMore": "En savoir plus"
+      },
+      "shareColon": "Partager :",
+      "bookTasting": "Réserver une dégustation",
+      "clearFilters": "Effacer les filtres",
+      "submitReport": "Envoyer le signalement",
+      "goHome": "Accueil",
+      "tryAgain": "Réessayer",
+      "loading": {
+        "generic": "Chargement",
+        "ellipsis": "Chargement…",
+        "map": "Chargement de la carte…",
+        "trails": "Chargement des sentiers",
+        "trail": "Chargement du sentier",
+        "discover": "Chargement de Découvrir",
+        "search": "Chargement de la recherche",
+        "bookings": "Chargement des réservations",
+        "plan": "Chargement du plan",
+        "events": "Chargement des événements",
+        "wineries": "Chargement des domaines",
+        "attraction": "Chargement du lieu",
+        "region": "Chargement de la région",
+        "wineRoute": "Chargement de la route des vins",
+        "airportGuide": "Chargement du guide aéroport",
+        "weatherMonth": "Chargement de la météo",
+        "bookingForm": "Chargement du formulaire",
+        "reportForm": "Chargement du signalement",
+        "content": "Chargement du contenu"
+      },
+      "cancel": "Annuler",
+      "done": "Terminé"
+    },
+    "errors": {
+      "common": { "title": "Un problème est survenu", "tryAgainCta": "Réessayer" },
+      "page": {
+        "title": "Petit accroc",
+        "body": "Petit accroc. Réessayez ou rentrez à l’accueil — sentiers, villages et dégustations sont toujours là.",
+        "hint": "Menu : Découvrir, Sentiers ou Plan. Ou Demander à l’IA."
+      },
+      "rateLimited": {
+        "title": "Trop de demandes",
+        "canRetry": "Vous pouvez réessayer maintenant.",
+        "waitThenRetry": "{seconds, plural, one {Attendez # seconde, puis réessayez.} other {Attendez # secondes, puis réessayez.}}",
+        "retryNow": "Réessayer",
+        "retryIn": "Attendre {seconds}s"
+      },
+      "network": {
+        "titleOnline": "Problème de connexion",
+        "titleOffline": "Hors ligne",
+        "messageOnline": "Connexion difficile. Réessayez, ou Demander à l’IA.",
+        "messageOffline": "Vous êtes hors ligne. Connectez-vous pour parcourir et planifier.",
+        "checkConnection": "Vérifier la connexion"
+      },
+      "chat": {
+        "rateLimited": "Trop de demandes. Attendez un instant.",
+        "unavailable": "Connexion difficile. Réessayez dans un moment.",
+        "failed": "Connexion difficile. Réessayez dans un moment."
+      },
+      "api": {
+        "SERVICE_UNAVAILABLE": "Réessayez dans un moment.",
+        "RATE_LIMITED": "Trop de demandes. Attendez un instant.",
+        "SERVER_ERROR": "Un problème est survenu. Réessayez.",
+        "VALIDATION_ERROR": "Un problème est survenu. Réessayez.",
+        "BAD_REQUEST": "Un problème est survenu. Réessayez."
+      }
+    },
+    "bookings": {
+      "errors": {
+        "rateLimited": "Trop de demandes. Attendez un instant et réessayez.",
+        "failedToLoad": "Chargement impossible",
+        "connection": "Impossible de charger vos réservations. Vérifiez la connexion et réessayez."
+      },
+      "emailLookup": {
+        "srLabel": "Votre e-mail pour charger les réservations d’un autre appareil",
+        "noMatch": "Aucune réservation pour cet e-mail. Essayez un autre, ou réservez depuis Découvrir.",
+        "loadedCount": "{count, plural, one {# réservation chargée.} other {# réservations chargées.}}",
+        "allSet": "C’est bon. Rien de nouveau à charger."
+      },
+      "page": {
+        "description": "Dégustations et expériences. Tout au même endroit.",
+        "sync": {
+          "toggle": "Réservé sur un autre appareil ? Charger par e-mail",
+          "submit": "Charger les réservations",
+          "loadByEmail": "Charger par e-mail",
+          "mergeHint": "Nous fusionnerons avec cet appareil."
+        }
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "Bon retour",
+        "ctaSignIn": "Connexion",
+        "ctaSigningIn": "Connexion…",
+        "ctaSendMagicLink": "Envoyer le lien magique",
+        "ctaUseMagic": "Lien magique",
+        "ctaUsePassword": "Mot de passe",
+        "passwordLabel": "Mot de passe",
+        "errorGeneric": "Un problème est survenu. Réessayez dans un moment.",
+        "noAccountPrefix": "Pas de compte ?"
+      },
+      "register": {
+        "title": "Rejoindre Cyprus Winter",
+        "ctaCreate": "Créer un compte",
+        "ctaCreating": "Création…",
+        "ctaSignIn": "Connexion",
+        "alreadyHavePrefix": "Déjà un compte ?",
+        "signInInstead": "Connexion →",
+        "errorGeneric": "Un problème est survenu. Réessayez dans un moment."
+      }
+    },
+    "book": {
+      "wineryForm": {
+        "validation": {
+          "dateRequired": "Choisissez une date à venir",
+          "nameRequired": "Le nom est requis",
+          "emailInvalid": "Entrez une adresse e-mail valide",
+          "partySizeRequired": "Choisissez la taille du groupe"
+        }
+      },
+      "guideForm": {
+        "validation": {
+          "dateRequired": "Choisissez une date à venir",
+          "nameRequired": "Le nom est requis",
+          "emailInvalid": "Entrez une adresse e-mail valide",
+          "partySizeRequired": "Choisissez la taille du groupe"
+        }
+      }
+    }
+  },
+  "ro": {
+    "footer": {
+      "discover": "Descoperă",
+      "plan": "Plan",
+      "airport": "Aeroport",
+      "arriving": "La sosire",
+      "weather": "Vreme",
+      "bookings": "Rezervări",
+      "beaches": "Plaje",
+      "wineries": "Crame",
+      "villages": "Sate",
+      "tagline": "Un Cipru mai liniștit. Trasee, sate, crame, zile lente.",
+      "practical": "Se circulă pe stânga. Luați straturi. Verificați condițiile înainte de Troodos.",
+      "emergency": "Urgență",
+      "touristInfo": "Info turiști",
+      "ambulance": "Ambulanță",
+      "planYourTrip": "Planifică-ți călătoria",
+      "privacy": "Confidențialitate",
+      "terms": "Termeni"
+    },
+    "nav": {
+      "plan": "Plan",
+      "airport": "Aeroport",
+      "arriving": "La sosire",
+      "beaches": "Plaje",
+      "villages": "Sate",
+      "wineries": "Crame",
+      "signIn": "Autentificare",
+      "secrets": "Secrete locale",
+      "account": "Cont",
+      "team": "Echipă",
+      "more": "Mai mult",
+      "searchAria": "Caută locuri și trasee",
+      "askAIAria": "Întreabă AI despre trasee, crame și idei de călătorie",
+      "openMenu": "Deschide meniul",
+      "closeMenu": "Închide meniul",
+      "mainNavigation": "Navigare principală"
+    },
+    "common": {
+      "nav": { "airport": "Aeroport" },
+      "localeBeta": "beta",
+      "aria": {
+        "planCta": "Construiește o zi",
+        "pageNavigation": "Navigarea paginii",
+        "placeInItinerary": "{id} este în itinerar",
+        "moreNavigation": "Mai multe",
+        "breadcrumb": "Firul paginii",
+        "dismissTip": "Închide sfatul",
+        "close": "Închide",
+        "addPlace": "Adaugă loc",
+        "addPlaceToItinerary": "Adaugă un loc în itinerar",
+        "clearRecentlyViewed": "Șterge vizionate recent",
+        "shareOn": "Distribuie pe {label}",
+        "siteFooter": "Subsol site",
+        "footerNav": "Planifică, explorează, esențiale",
+        "footerLegal": "Legal",
+        "quickActions": "Acțiuni rapide",
+        "reportConditionsForTrail": "Raportează condițiile acestui traseu",
+        "dismissNotification": "Închide notificarea",
+        "notifications": "Notificări"
+      },
+      "skipToContent": "Sari la conținut",
+      "languageLabel": "Limbă:",
+      "nextOnPlan": {
+        "aria": "Următorul din plan",
+        "prefix": "Urmează",
+        "navigate": "Navighează"
+      },
+      "noscript": {
+        "title": "Este necesar JavaScript",
+        "body": "pentru toate funcțiile. Poți răsfoi trasee și locuri, dar planul și chatul cer JavaScript."
+      },
+      "map": {
+        "enableMapAria": "Activează harta",
+        "enableMapCta": "Activează harta",
+        "disableMapAria": "Dezactivează harta",
+        "disableMapCta": "Gata",
+        "getDirections": "Indicații",
+        "openInMaps": "Deschide în Hărți"
+      },
+      "openAria": "Deschide {name}",
+      "cookies": {
+        "essentialOnly": "Doar esențiale",
+        "essentialShort": "Esențiale",
+        "title": "Consimțământ cookies.",
+        "body": "Folosim cookie-uri esențiale pentru serviciu și analize opționale. „Accept” permite analizele.",
+        "accept": "Accept",
+        "learnMore": "Află mai mult"
+      },
+      "shareColon": "Distribuie:",
+      "bookTasting": "Rezervă o degustare",
+      "clearFilters": "Șterge filtrele",
+      "submitReport": "Trimite raportul",
+      "goHome": "Acasă",
+      "tryAgain": "Încearcă din nou",
+      "loading": {
+        "generic": "Se încarcă",
+        "ellipsis": "Se încarcă…",
+        "map": "Se încarcă harta…",
+        "trails": "Se încarcă traseele",
+        "trail": "Se încarcă traseul",
+        "discover": "Se încarcă Descoperă",
+        "search": "Se încarcă căutarea",
+        "bookings": "Se încarcă rezervările",
+        "plan": "Se încarcă planul",
+        "events": "Se încarcă evenimentele",
+        "wineries": "Se încarcă cramele",
+        "attraction": "Se încarcă locul",
+        "region": "Se încarcă regiunea",
+        "wineRoute": "Se încarcă ruta vinului",
+        "airportGuide": "Se încarcă ghidul aeroport",
+        "weatherMonth": "Se încarcă vremea",
+        "bookingForm": "Se încarcă formularul",
+        "reportForm": "Se încarcă raportul",
+        "content": "Se încarcă conținutul"
+      },
+      "cancel": "Anulează",
+      "done": "Gata"
+    },
+    "errors": {
+      "common": { "title": "Ceva nu a mers", "tryAgainCta": "Încearcă din nou" },
+      "page": {
+        "title": "O mică problemă",
+        "body": "O mică problemă. Încearcă din nou sau mergi acasă — traseele, satele și degustările rămân.",
+        "hint": "Meniu: Descoperă, Trasee sau Plan. Sau întreabă AI."
+      },
+      "rateLimited": {
+        "title": "Prea multe cereri",
+        "canRetry": "Poți încerca din nou acum.",
+        "waitThenRetry": "{seconds, plural, one {Așteaptă # secundă, apoi încearcă din nou.} other {Așteaptă # secunde, apoi încearcă din nou.}}",
+        "retryNow": "Încearcă din nou",
+        "retryIn": "Așteaptă {seconds}s"
+      },
+      "network": {
+        "titleOnline": "Problemă de conexiune",
+        "titleOffline": "Ești offline",
+        "messageOnline": "Conexiune slabă. Încearcă din nou sau întreabă AI.",
+        "messageOffline": "Ești offline. Conectează-te ca să răsfoiești și să planifici.",
+        "checkConnection": "Verifică conexiunea"
+      },
+      "chat": {
+        "rateLimited": "Prea multe cereri. Așteaptă un moment.",
+        "unavailable": "Nu mă pot conecta. Încearcă din nou peste puțin.",
+        "failed": "Nu mă pot conecta. Încearcă din nou peste puțin."
+      },
+      "api": {
+        "SERVICE_UNAVAILABLE": "Încearcă din nou peste puțin.",
+        "RATE_LIMITED": "Prea multe cereri. Așteaptă un moment.",
+        "SERVER_ERROR": "Ceva nu a mers. Încearcă din nou.",
+        "VALIDATION_ERROR": "Ceva nu a mers. Încearcă din nou.",
+        "BAD_REQUEST": "Ceva nu a mers. Încearcă din nou."
+      }
+    },
+    "bookings": {
+      "errors": {
+        "rateLimited": "Prea multe cereri. Așteaptă un moment și încearcă din nou.",
+        "failedToLoad": "Nu s-a putut încărca",
+        "connection": "Nu am putut încărca rezervările. Verifică conexiunea și încearcă din nou."
+      },
+      "emailLookup": {
+        "srLabel": "Emailul tău pentru a încărca rezervări de pe alt dispozitiv",
+        "noMatch": "Nicio rezervare pentru acest email. Încearcă altul sau rezervă din Descoperă.",
+        "loadedCount": "{count, plural, one {S-a încărcat # rezervare.} other {S-au încărcat # rezervări.}}",
+        "allSet": "Gata. Nimic nou de încărcat."
+      },
+      "page": {
+        "description": "Degustări și experiențe. Toate într-un loc.",
+        "sync": {
+          "toggle": "Ai rezervat pe alt dispozitiv? Încarcă prin email",
+          "submit": "Încarcă rezervările",
+          "loadByEmail": "Încarcă prin email",
+          "mergeHint": "Le unim cu acest dispozitiv."
+        }
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "Bine ai revenit",
+        "ctaSignIn": "Autentificare",
+        "ctaSigningIn": "Se autentifică…",
+        "ctaSendMagicLink": "Trimite link magic",
+        "ctaUseMagic": "Link magic",
+        "ctaUsePassword": "Parolă",
+        "passwordLabel": "Parolă",
+        "errorGeneric": "Ceva nu a mers. Încearcă din nou peste puțin.",
+        "noAccountPrefix": "Nu ai cont?"
+      },
+      "register": {
+        "title": "Alătură-te Cyprus Winter",
+        "ctaCreate": "Creează cont",
+        "ctaCreating": "Se creează…",
+        "ctaSignIn": "Autentificare",
+        "alreadyHavePrefix": "Ai deja cont?",
+        "signInInstead": "Autentificare →",
+        "errorGeneric": "Ceva nu a mers. Încearcă din nou peste puțin."
+      }
+    },
+    "book": {
+      "wineryForm": {
+        "validation": {
+          "dateRequired": "Alege o dată viitoare",
+          "nameRequired": "Numele este obligatoriu",
+          "emailInvalid": "Introdu un email valid",
+          "partySizeRequired": "Alege mărimea grupului"
+        }
+      },
+      "guideForm": {
+        "validation": {
+          "dateRequired": "Alege o dată viitoare",
+          "nameRequired": "Numele este obligatoriu",
+          "emailInvalid": "Introdu un email valid",
+          "partySizeRequired": "Alege mărimea grupului"
+        }
+      }
+    }
+  },
+  "he": {
+    "footer": {
+      "discover": "גילוי",
+      "plan": "תכנון",
+      "airport": "שדה תעופה",
+      "arriving": "בהגעה",
+      "weather": "מזג אוויר",
+      "bookings": "הזמנות",
+      "beaches": "חופים",
+      "wineries": "יקבים",
+      "villages": "כפרים",
+      "tagline": "קפריסין שקטה יותר. שבילים, כפרים, יקבים, ימים איטיים.",
+      "practical": "נוהגים בצד שמאל. קחו שכבות. בדקו תנאים לפני טרודוס.",
+      "emergency": "חירום",
+      "touristInfo": "מידע לתיירים",
+      "ambulance": "אמבולנס",
+      "planYourTrip": "תכננו את הטיול",
+      "privacy": "פרטיות",
+      "terms": "תנאים"
+    },
+    "nav": {
+      "airport": "שדה תעופה",
+      "arriving": "בהגעה",
+      "beaches": "חופים",
+      "villages": "כפרים",
+      "wineries": "יקבים",
+      "signIn": "התחברות",
+      "secrets": "סודות מקומיים",
+      "account": "חשבון",
+      "team": "צוות",
+      "more": "עוד",
+      "searchAria": "חיפוש מקומות ושבילים",
+      "askAIAria": "שאלו את ה-AI על שבילים, יקבים ורעיונות לטיול",
+      "openMenu": "פתחו תפריט",
+      "closeMenu": "סגרו תפריט",
+      "mainNavigation": "ניווט ראשי"
+    },
+    "common": {
+      "nav": { "airport": "שדה תעופה" },
+      "localeBeta": "בטא",
+      "aria": {
+        "planCta": "בנו יום",
+        "pageNavigation": "ניווט בדף",
+        "placeInItinerary": "{id} בתוכנית",
+        "moreNavigation": "עוד ניווט",
+        "breadcrumb": "נתיב דפים",
+        "dismissTip": "סגירת טיפ",
+        "close": "סגירה",
+        "addPlace": "הוספת מקום",
+        "addPlaceToItinerary": "הוסיפו מקום לתוכנית",
+        "clearRecentlyViewed": "נקו נצפו לאחרונה",
+        "shareOn": "שיתוף ב-{label}",
+        "siteFooter": "כותרת תחתונה",
+        "footerNav": "תכנון, גילוי, חיוני",
+        "footerLegal": "משפטי",
+        "quickActions": "פעולות מהירות",
+        "reportConditionsForTrail": "דיווח על תנאי השביל",
+        "dismissNotification": "סגירת התראה",
+        "notifications": "התראות"
+      },
+      "skipToContent": "דלגו לתוכן",
+      "languageLabel": "שפה:",
+      "nextOnPlan": {
+        "aria": "הבא בתוכנית",
+        "prefix": "הבא",
+        "navigate": "ניווט"
+      },
+      "noscript": {
+        "title": "נדרש JavaScript",
+        "body": "לכל הפונקציות. אפשר לגלוש בשבילים ובמקומות, אבל התוכנית והצ׳אט דורשים JavaScript."
+      },
+      "map": {
+        "enableMapAria": "הפעלת המפה",
+        "enableMapCta": "הפעלת מפה",
+        "disableMapAria": "כיבוי אינטראקציית מפה",
+        "disableMapCta": "סיום",
+        "getDirections": "ניווט",
+        "openInMaps": "פתיחה במפות"
+      },
+      "openAria": "פתיחת {name}",
+      "cookies": {
+        "essentialOnly": "חיוני בלבד",
+        "essentialShort": "חיוני",
+        "title": "הסכמה לעוגיות.",
+        "body": "אנחנו משתמשים בעוגיות חיוניות לשירות ובאנליטיקה אופציונלית. «אישור» מאפשר אנליטיקה.",
+        "accept": "אישור",
+        "learnMore": "למידע נוסף"
+      },
+      "shareColon": "שיתוף:",
+      "bookTasting": "הזמנת טעימה",
+      "clearFilters": "ניקוי מסננים",
+      "submitReport": "שליחת דיווח",
+      "goHome": "דף הבית",
+      "tryAgain": "נסו שוב",
+      "loading": {
+        "generic": "טוען",
+        "ellipsis": "טוען…",
+        "map": "טוען מפה…",
+        "trails": "טוען שבילים",
+        "trail": "טוען שביל",
+        "discover": "טוען גילוי",
+        "search": "טוען חיפוש",
+        "bookings": "טוען הזמנות",
+        "plan": "טוען תכנון",
+        "events": "טוען אירועים",
+        "wineries": "טוען יקבים",
+        "attraction": "טוען מקום",
+        "region": "טוען אזור",
+        "wineRoute": "טוען מסלול יין",
+        "airportGuide": "טוען מדריך שדה תעופה",
+        "weatherMonth": "טוען מזג אוויר",
+        "bookingForm": "טוען טופס הזמנה",
+        "reportForm": "טוען טופס דיווח",
+        "content": "טוען תוכן"
+      },
+      "cancel": "ביטול",
+      "done": "סיום"
+    },
+    "errors": {
+      "common": { "title": "משהו השתבש", "tryAgainCta": "נסו שוב" },
+      "page": {
+        "title": "תקלה קטנה",
+        "body": "תקלה קטנה. נסו שוב או חזרו הביתה — השבילים, הכפרים והטעימות עדיין כאן.",
+        "hint": "תפריט: גילוי, שבילים או תכנון. או שאלו את ה-AI."
+      },
+      "rateLimited": {
+        "title": "יותר מדי בקשות",
+        "canRetry": "אפשר לנסות שוב עכשיו.",
+        "waitThenRetry": "{seconds, plural, one {המתינו שנייה #, ואז נסו שוב.} other {המתינו # שניות, ואז נסו שוב.}}",
+        "retryNow": "נסו שוב",
+        "retryIn": "המתינו {seconds}ש׳"
+      },
+      "network": {
+        "titleOnline": "בעיית חיבור",
+        "titleOffline": "אין חיבור",
+        "messageOnline": "חיבור בעייתי. נסו שוב, או שאלו את ה-AI.",
+        "messageOffline": "אין חיבור. התחברו כדי לגלוש ולתכנן.",
+        "checkConnection": "בדקו חיבור"
+      },
+      "chat": {
+        "rateLimited": "יותר מדי בקשות. המתינו רגע.",
+        "unavailable": "קשה להתחבר. נסו שוב בעוד רגע.",
+        "failed": "קשה להתחבר. נסו שוב בעוד רגע."
+      },
+      "api": {
+        "SERVICE_UNAVAILABLE": "נסו שוב בעוד רגע.",
+        "RATE_LIMITED": "יותר מדי בקשות. המתינו רגע.",
+        "SERVER_ERROR": "משהו השתבש. נסו שוב.",
+        "VALIDATION_ERROR": "משהו השתבש. נסו שוב.",
+        "BAD_REQUEST": "משהו השתבש. נסו שוב."
+      }
+    },
+    "bookings": {
+      "errors": {
+        "rateLimited": "יותר מדי בקשות. המתינו רגע ונסו שוב.",
+        "failedToLoad": "הטעינה נכשלה",
+        "connection": "לא הצלחנו לטעון הזמנות. בדקו חיבור ונסו שוב."
+      },
+      "emailLookup": {
+        "srLabel": "האימייל שלכם לטעינת הזמנות ממכשיר אחר",
+        "noMatch": "אין הזמנות לאימייל הזה. נסו אחר, או הזמינו מגילוי.",
+        "loadedCount": "{count, plural, one {נטענה הזמנה #.} other {נטענו # הזמנות.}}",
+        "allSet": "הכול מוכן. אין הזמנות חדשות לטעינה."
+      },
+      "page": {
+        "description": "טעימות וחוויות. הכול במקום אחד.",
+        "sync": {
+          "toggle": "הזמנתם במכשיר אחר? טענו באימייל",
+          "submit": "טעינת הזמנות",
+          "loadByEmail": "טעינה באימייל",
+          "mergeHint": "נמזג עם המכשיר הזה."
+        }
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "ברוכים השבים",
+        "ctaSignIn": "התחברות",
+        "ctaSigningIn": "מתחברים…",
+        "ctaSendMagicLink": "שליחת קישור קסם",
+        "ctaUseMagic": "קישור קסם",
+        "ctaUsePassword": "סיסמה",
+        "passwordLabel": "סיסמה",
+        "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
+        "noAccountPrefix": "אין חשבון?"
+      },
+      "register": {
+        "title": "הצטרפות ל-Cyprus Winter",
+        "ctaCreate": "יצירת חשבון",
+        "ctaCreating": "יוצרים…",
+        "ctaSignIn": "התחברות",
+        "alreadyHavePrefix": "כבר יש חשבון?",
+        "signInInstead": "התחברות →",
+        "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע."
+      }
+    },
+    "book": {
+      "wineryForm": {
+        "validation": {
+          "dateRequired": "בחרו תאריך עתידי",
+          "nameRequired": "נדרש שם",
+          "emailInvalid": "הזינו אימייל תקין",
+          "partySizeRequired": "בחרו גודל קבוצה"
+        }
+      },
+      "guideForm": {
+        "validation": {
+          "dateRequired": "בחרו תאריך עתידי",
+          "nameRequired": "נדרש שם",
+          "emailInvalid": "הזינו אימייל תקין",
+          "partySizeRequired": "בחרו גודל קבוצה"
+        }
+      }
+    }
+  }
+}

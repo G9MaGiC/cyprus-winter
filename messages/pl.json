@@ -85,6 +85,7 @@
     },
     "skipToContent": "Przejdź do treści",
     "languageLabel": "Język:",
+    "localeBeta": "beta",
     "nextOnPlan": {
       "aria": "Następne w Twoim planie",
       "prefix": "Następne",
