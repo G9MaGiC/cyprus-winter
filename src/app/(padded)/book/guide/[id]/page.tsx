@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { guides } from "@/data/guides";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { toSafeJsonForScript } from "@/lib/json-script";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
@@ -54,6 +56,13 @@ export default async function GuideBookPage({
     getTranslations("common"),
     getTranslations("book.pages"),
   ]);
+
+  const canonicalUrl = `${SITE_URL}/book/guide/${id}`;
+  const imageUrl =
+    guide.image &&
+    (guide.image.startsWith("http://") || guide.image.startsWith("https://")
+      ? guide.image
+      : `${SITE_URL}${guide.image.startsWith("/") ? "" : "/"}${guide.image}`);
 
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -123,6 +132,32 @@ export default async function GuideBookPage({
           )}
         </section>
       )}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: toSafeJsonForScript({
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            name: guide.name,
+            description: guide.description,
+            address: {
+              "@type": "PostalAddress",
+              addressRegion: guide.region,
+              addressCountry: "CY",
+            },
+            ...(imageUrl ? { image: imageUrl } : {}),
+            ...(guide.contactPhone ? { telephone: guide.contactPhone } : {}),
+            ...(guide.bookingUrl ? { sameAs: [guide.bookingUrl] } : {}),
+            url: canonicalUrl,
+            serviceType: tBookPages("guideDetail.jsonLd.serviceType"),
+            areaServed: {
+              "@type": "AdministrativeArea",
+              name: guide.region,
+            },
+          }),
+        }}
+      />
     </div>
   );
 }

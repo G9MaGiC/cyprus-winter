@@ -2594,6 +2594,9 @@
           "bookDirectAria": "Book on the guide's website (opens in new tab)",
           "callPrefix": "Or call",
           "callSuffix": "to check availability."
+        },
+        "jsonLd": {
+          "serviceType": "Guided winter hike"
         }
       },
       "guideList": {
@@ -2831,7 +2834,7 @@
           "title": "6. Cookies and similar technologies",
           "intro": "We use cookies and local storage for:",
           "categories": {
-            "essential": "<strong>Essential:</strong> Session, preferences, trip plan, and first-party funnel metrics needed to operate bookings (plan adds, booking starts). These stay on our servers.",
+            "essential": "<strong>Essential:</strong> Session, preferences, trip plan, and first-party funnel metrics needed to operate bookings (page views, plan adds, booking starts). These stay on our servers.",
             "analytics": "<strong>Analytics:</strong> Anonymized usage (if you consent)."
           },
           "outro": "You can manage cookie preferences via the cookie banner or your browser settings. Essential cookies cannot be disabled without limiting functionality."

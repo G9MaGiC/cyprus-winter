@@ -2526,6 +2526,9 @@
           "callPrefix": "Ή καλέστε",
           "callSuffix": "για να ελέγξετε διαθεσιμότητα."
         },
+        "jsonLd": {
+          "serviceType": "Χειμερινή πεζοπορία με οδηγό"
+        },
         "meta": {
           "title": "Book a guided hike | {guideName} | Cyprus Winter",
           "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
@@ -2790,7 +2793,7 @@
           "title": "6. Cookies και παρόμοιες τεχνολογίες",
           "intro": "Χρησιμοποιούμε cookies και local storage για:",
           "categories": {
-            "essential": "<strong>Απαραίτητα:</strong> Συνεδρία, προτιμήσεις, πρόγραμμα ταξιδιού και μετρήσεις διοχέτευσης πρώτου μέρους για κρατήσεις (προσθήκη στο πρόγραμμα, έναρξη κράτησης). Μένουν στους διακομιστές μας.",
+            "essential": "<strong>Απαραίτητα:</strong> Συνεδρία, προτιμήσεις, πρόγραμμα ταξιδιού και μετρήσεις διοχέτευσης πρώτου μέρους για κρατήσεις (προβολές σελίδων, προσθήκη στο πρόγραμμα, έναρξη κράτησης). Μένουν στους διακομιστές μας.",
             "analytics": "<strong>Analytics:</strong> Ανωνυμοποιημένη χρήση (αν συναινέσετε)."
           },
           "outro": "Μπορείτε να διαχειριστείτε προτιμήσεις cookies από το banner ή τις ρυθμίσεις του browser. Τα απαραίτητα cookies δεν μπορούν να απενεργοποιηθούν χωρίς να περιοριστεί η λειτουργικότητα."

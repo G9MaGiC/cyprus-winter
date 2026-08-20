@@ -2526,6 +2526,9 @@
           "callPrefix": "Oder anrufen",
           "callSuffix": "um Verfügbarkeit zu prüfen."
         },
+        "jsonLd": {
+          "serviceType": "Geführte Winterwanderung"
+        },
         "meta": {
           "title": "Book a guided hike | {guideName} | Cyprus Winter",
           "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
@@ -2790,7 +2793,7 @@
           "title": "6. Cookies und ähnliche Technologien",
           "intro": "Wir verwenden Cookies und Local Storage für:",
           "categories": {
-            "essential": "<strong>Essentiell:</strong> Session, Präferenzen, Reiseplan und First-Party-Funnel-Daten für Buchungen (Plan hinzufügen, Buchungsstart). Sie bleiben auf unseren Servern.",
+            "essential": "<strong>Essentiell:</strong> Session, Präferenzen, Reiseplan und First-Party-Funnel-Daten für Buchungen (Seitenaufrufe, Plan hinzufügen, Buchungsstart). Sie bleiben auf unseren Servern.",
             "analytics": "<strong>Analytics:</strong> Anonymisierte Nutzung (wenn Sie zustimmen)."
           },
           "outro": "Sie können Cookie-Einstellungen über das Cookie-Banner oder in Ihrem Browser verwalten. Essentielle Cookies können nicht deaktiviert werden, ohne die Funktionalität einzuschränken."

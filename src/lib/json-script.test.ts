@@ -21,4 +21,11 @@ describe("JSON-LD script embedding", () => {
     expect(src).toContain("toSafeJsonForScript");
     expect(src).not.toMatch(/dangerouslySetInnerHTML=\{\{\s*__html:\s*JSON\.stringify/);
   });
+
+  it("book guide detail uses the script-safe serializer", () => {
+    const src = readFileSync("src/app/(padded)/book/guide/[id]/page.tsx", "utf8");
+    expect(src).toContain("toSafeJsonForScript");
+    expect(src).toContain("TravelAgency");
+    expect(src).not.toMatch(/dangerouslySetInnerHTML=\{\{\s*__html:\s*JSON\.stringify/);
+  });
 });

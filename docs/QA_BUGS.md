@@ -1376,6 +1376,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-176 | Analytics (DR-026) | Admin funnel omitted `plan_view` / `plan_share` / `hub_footer_click`; `shop_click` always 0 | Shared `FUNNEL_ORDER` drives counts + stats API |
 | BUG-177 | Security (DR-001 leftover) | AI markdown links allowed any same-origin path (`/admin`, `/partner`, `/login`) | `isSafeMarkdownHref` requires `isSafeInternalPath` allowlist |
 | BUG-178 | Analytics (DR-006 leftover) | `winery_detail_view` still marketing-consent gated; funnel KPIs undercount | `PRODUCT_EVENTS` + `trackProduct` in ConversionTracker |
+| BUG-179 | Analytics (DR-006 leftover) | `page_view` still marketing-consent gated; funnel top of funnel undercount | `page_view` in `PRODUCT_EVENTS`; ConversionTracker uses `trackProduct` |
+| BUG-180 | SEO | `/book/guide/[id]` had no JSON-LD | `TravelAgency` schema via `toSafeJsonForScript` |
 
 ### Still open — ops / human (do not invent)
 

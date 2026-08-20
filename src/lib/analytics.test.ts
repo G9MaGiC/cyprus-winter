@@ -23,26 +23,28 @@ describe("analytics consent", () => {
   });
 
   it("does not send marketing events without analytics consent", () => {
-    track("page_view", { path: "/discover" });
+    track("onboarding_started", { source: "home" });
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("sends marketing events when analytics consent is granted", () => {
     vi.mocked(hasAnalyticsConsent).mockReturnValue(true);
-    track("page_view", { path: "/discover" });
+    track("onboarding_started", { source: "home" });
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(JSON.parse(fetchMock.mock.calls[0][1].body as string).event).toBe("page_view");
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body as string).event).toBe("onboarding_started");
   });
 
   it("sends first-party funnel events without marketing consent", () => {
+    trackProduct("page_view", { path: "/discover" });
     trackProduct("booking_start", { wineryId: "tsiakkas" });
     trackProduct("hub_footer_click", { action: "plan" });
     trackProduct("plan_add", { item_id: "tsiakkas" });
     trackProduct("trail_view", { trail_id: "artemis" });
     trackProduct("winery_detail_view", { placeId: "tsiakkas" });
-    expect(fetchMock).toHaveBeenCalledTimes(5);
+    expect(fetchMock).toHaveBeenCalledTimes(6);
     const events = fetchMock.mock.calls.map((call) => JSON.parse(call[1].body as string).event);
     expect(events).toEqual([
+      "page_view",
       "booking_start",
       "hub_footer_click",
       "plan_add",

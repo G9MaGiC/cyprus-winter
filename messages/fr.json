@@ -2590,6 +2590,9 @@
           "callPrefix": "Ou appelez",
           "callSuffix": "pour vérifier les disponibilités."
         },
+        "jsonLd": {
+          "serviceType": "Randonnée d’hiver guidée"
+        },
         "meta": {
           "title": "Réserver une randonnée guidée | {guideName} | Cyprus Winter",
           "description": "Demandez une randonnée d’hiver guidée avec {guideName} à {region}. Petits groupes, connaissance du terrain. Confirmation par e-mail."
@@ -2831,7 +2834,7 @@
           "title": "6. Cookies and similar technologies",
           "intro": "We use cookies and local storage for:",
           "categories": {
-            "essential": "<strong>Essentiel :</strong> Session, préférences, plan de voyage et métriques de tunnel en premier parti nécessaires aux réservations (ajout au plan, début de réservation). Elles restent sur nos serveurs.",
+            "essential": "<strong>Essentiel :</strong> Session, préférences, plan de voyage et métriques de tunnel en premier parti nécessaires aux réservations (vues de page, ajout au plan, début de réservation). Elles restent sur nos serveurs.",
             "analytics": "<strong>Analytics:</strong> Anonymized usage (if you consent)."
           },
           "outro": "You can manage cookie preferences via the cookie banner or your browser settings. Essential cookies cannot be disabled without limiting functionality."

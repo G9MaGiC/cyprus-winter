@@ -2590,6 +2590,9 @@
           "callPrefix": "Sau sună",
           "callSuffix": "ca să verifici disponibilitatea."
         },
+        "jsonLd": {
+          "serviceType": "Drumeție ghidată de iarnă"
+        },
         "meta": {
           "title": "Rezervă o drumeție ghidată | {guideName} | Cyprus Winter",
           "description": "Cere o drumeție ghidată de iarnă cu {guideName} în {region}. Grupuri mici, experiență locală. Va confirma pe email."
@@ -2831,7 +2834,7 @@
           "title": "6. Cookies and similar technologies",
           "intro": "We use cookies and local storage for:",
           "categories": {
-            "essential": "<strong>Esențiale:</strong> Sesiune, preferințe, planul călătoriei și metrici de funnel proprii pentru rezervări (adăugare în plan, început de rezervare). Rămân pe serverele noastre.",
+            "essential": "<strong>Esențiale:</strong> Sesiune, preferințe, planul călătoriei și metrici de funnel proprii pentru rezervări (vizualizări de pagină, adăugare în plan, început de rezervare). Rămân pe serverele noastre.",
             "analytics": "<strong>Analytics:</strong> Anonymized usage (if you consent)."
           },
           "outro": "You can manage cookie preferences via the cookie banner or your browser settings. Essential cookies cannot be disabled without limiting functionality."

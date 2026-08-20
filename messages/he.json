@@ -2590,6 +2590,9 @@
           "callPrefix": "או התקשרו",
           "callSuffix": "לבדיקת זמינות."
         },
+        "jsonLd": {
+          "serviceType": "הליכת חורף מודרכת"
+        },
         "meta": {
           "title": "הזמנת הליכה מודרכת | {guideName} | Cyprus Winter",
           "description": "בקשת הליכת חורף מודרכת עם {guideName} ב-{region}. קבוצות קטנות, היכרות מקומית. יאשרו באימייל."
@@ -2831,7 +2834,7 @@
           "title": "6. Cookies and similar technologies",
           "intro": "We use cookies and local storage for:",
           "categories": {
-            "essential": "<strong>חיוני:</strong> הפעלה, העדפות, תוכנית הטיול ומדדי משפך בצד שלנו לצורך הזמנות (הוספה לתוכנית, תחילת הזמנה). נשארים בשרתים שלנו.",
+            "essential": "<strong>חיוני:</strong> הפעלה, העדפות, תוכנית הטיול ומדדי משפך בצד שלנו לצורך הזמנות (צפיות בדף, הוספה לתוכנית, תחילת הזמנה). נשארים בשרתים שלנו.",
             "analytics": "<strong>Analytics:</strong> Anonymized usage (if you consent)."
           },
           "outro": "You can manage cookie preferences via the cookie banner or your browser settings. Essential cookies cannot be disabled without limiting functionality."

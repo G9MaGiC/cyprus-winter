@@ -47,6 +47,7 @@ export const CLIENT_TRACK_EVENTS = TRACK_EVENTS.filter(
 );
 
 export const PRODUCT_EVENTS = [
+  "page_view",
   "plan_add",
   "plan_view",
   "plan_remove",

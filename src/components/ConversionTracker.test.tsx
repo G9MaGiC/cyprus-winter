@@ -36,17 +36,21 @@ describe("ConversionTracker trail_view", () => {
 
   it("records trail_view for a known trail detail without marketing consent", () => {
     render(<ConversionTracker />);
+    expect(analytics.trackProduct).toHaveBeenCalledWith("page_view", { path: "/trails/artemis" });
     expect(analytics.trackProduct).toHaveBeenCalledWith("trail_view", { trail_id: "artemis" });
   });
 
   it("does not record trail_view on the trails index or report form", () => {
     nav.pathname = "/trails";
     const { rerender } = render(<ConversionTracker />);
-    expect(analytics.trackProduct).not.toHaveBeenCalled();
+    expect(analytics.trackProduct).toHaveBeenCalledWith("page_view", { path: "/trails" });
+    expect(analytics.trackProduct).not.toHaveBeenCalledWith("trail_view", expect.anything());
 
+    analytics.trackProduct.mockClear();
     nav.pathname = "/trails/artemis/report";
     rerender(<ConversionTracker />);
-    expect(analytics.trackProduct).not.toHaveBeenCalled();
+    expect(analytics.trackProduct).toHaveBeenCalledWith("page_view", { path: "/trails/artemis/report" });
+    expect(analytics.trackProduct).not.toHaveBeenCalledWith("trail_view", expect.anything());
   });
 });
 
@@ -75,7 +79,8 @@ describe("ConversionTracker winery_detail_view", () => {
 
   it("records winery_detail_view without marketing consent", () => {
     render(<ConversionTracker />);
+    expect(analytics.trackProduct).toHaveBeenCalledWith("page_view", { path: "/discover/tsiakkas" });
     expect(analytics.trackProduct).toHaveBeenCalledWith("winery_detail_view", { placeId: "tsiakkas" });
-    expect(analytics.track).toHaveBeenCalledWith("page_view", expect.any(Object));
+    expect(analytics.track).not.toHaveBeenCalled();
   });
 });

@@ -3,7 +3,7 @@
 import { usePathname } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { track, trackProduct } from "@/lib/analytics";
+import { trackProduct } from "@/lib/analytics";
 import { getPlaceById } from "@/data";
 
 export default function ConversionTracker() {
@@ -23,7 +23,7 @@ export default function ConversionTracker() {
     const isGuideBook = path.includes("/book/guide/");
     const trailDetail = path.match(/\/trails\/([a-z0-9-]+)$/i);
 
-    track("page_view", { path: pathname });
+    trackProduct("page_view", { path: pathname });
 
     if (isDiscover) {
       trackProduct("discover_view", filter ? { filter } : undefined);
