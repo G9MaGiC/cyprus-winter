@@ -177,9 +177,9 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 
 | ID | Work | Grant criterion | Code today | Effort |
 |----|------|-----------------|------------|--------|
-| **G0** | PRE-SEED IRIS pack (annex, CVs, wireframes, DNSH) | Implementation | Docs + screenshots | 1–2 weeks (non-code) |
+| **G0** | PRE-SEED IRIS pack (annex, CVs, wireframes, DNSH) | Implementation | `docs/grant/` draft + wireframes; IRIS/CVs still human | Partial |
 | **G1** | Confirm production `GET /api/health` → `productionReady` | Prototype demonstrated | Public boolean + Bearer `HEALTH_SECRET` annex dump | Ops (env still on Vercel) |
-| **G2** | Partner portal: hours, photos, accept/decline tasting | SME impact, innovation | Bookings API + admin stats; no partner UI yet | High |
+| **G2** | Partner portal: hours, photos, accept/decline tasting | SME impact, innovation | Spec in `docs/grant/G2_PARTNER_PORTAL_SPEC.md`; no UI yet | Spec only |
 | **G3** | Discover filters: Accessible, Family, Cycling | DMT accessibility + sports | `accessibility` / `bestFor` in data; buried on detail | Medium |
 | **G4** | Surface trail conditions + winter hours on cards | Excellence (intelligence) | Reports API + detail copy | Medium |
 | **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `src/data/activity-places.ts` cycling IDs | Medium |

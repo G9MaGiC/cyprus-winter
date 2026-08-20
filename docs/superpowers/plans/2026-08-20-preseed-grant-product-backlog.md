@@ -36,9 +36,9 @@
 **Files:** `GRANT_STRATEGY.md`, `GRANT_PITCH.md`, PDF annexes (not in git unless the team wants `/docs/grant/`)
 
 - [ ] Register Host Organisation on [IRIS](https://iris.research.org.cy); confirm startup definition and no prior PRE-SEED/SEED as HO
-- [ ] Screenshot prototype: `/`, `/discover`, `/plan`, `/book/winery/[id]`, Ask AI, `/bookings` (desktop + 390px). Label as Annex II wireframes
-- [ ] Write Part B (≤20 pages) using RIF template: SOTA vs Visit Cyprus / OTAs / generic AI; SWOT; 18-month plan from `GRANT_STRATEGY.md`; DNSH (season spread, skip unsafe trails)
-- [ ] EUROPASS CVs; 15% co-finance note; optional partner ≤20%
+- [x] Screenshot prototype: `/`, `/discover`, `/plan`, `/book/winery/[id]`, Ask AI, `/bookings` (desktop + 390px). Label as Annex II wireframes (`docs/grant/wireframes/`, recapture `npm run grant:wireframes`)
+- [x] Working Part B draft in `docs/grant/PART_B.md` (SOTA vs Visit Cyprus / OTAs / generic AI; SWOT; 18-month plan; DNSH). **Must be pasted into the official unmodified IRIS template** (≤20 pages)
+- [x] CV placeholder + 15% co-finance note (`docs/grant/CV_PLACEHOLDER.md`, `COFINANCE.md`) — no invented people or bank accounts
 - [ ] Submit **before 11 Sep 2026, 13:00**. Greek call text wins if English diverges
 - [ ] **Verify:** IRIS shows submitted; keep PDF copies
 
@@ -152,7 +152,7 @@
 
 **Files:** new authenticated partner area; extend `src/app/api/bookings/route.ts`; never replace Bearer + lookup-token GET
 
-- [ ] Spec first: winery can update winter hours, upload hero (or URL), accept/decline request
+- [x] Spec first: winery can update winter hours, upload hero (or URL), accept/decline request (`docs/grant/G2_PARTNER_PORTAL_SPEC.md`) — **do not build until PRE-SEED is filed**
 - [ ] Reuse existing booking records; do not build a second CRM
 - [ ] Tests: unauthorised 401; partner can only see own `providerId`
 - [ ] **Verify:** lint, typecheck, bookings e2e gate

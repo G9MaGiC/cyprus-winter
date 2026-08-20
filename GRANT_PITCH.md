@@ -47,4 +47,4 @@ CSTI · wine producers (pilot cellars) · local guides · optional university pa
 
 ---
 
-**Demo:** production URL or http://localhost:3000 · **Strategy:** `GRANT_STRATEGY.md` · **Backlog:** `docs/superpowers/plans/2026-08-20-preseed-grant-product-backlog.md`
+**Demo:** production URL or http://localhost:3000 · **Strategy:** `GRANT_STRATEGY.md` · **Annex kit:** `docs/grant/` · **Backlog:** `docs/superpowers/plans/2026-08-20-preseed-grant-product-backlog.md`
