@@ -1687,7 +1687,14 @@
       "copyItinerary": "Αντιγραφή προγράμματος (κείμενο)",
       "copyItineraryShort": "Αντιγραφή κειμένου",
       "copied": "Αντιγράφηκε",
-      "shareTextPrefix": "Το πρόγραμμά μου για την Κύπρο τον χειμώνα —"
+      "shareTextPrefix": "Το πρόγραμμά μου για την Κύπρο τον χειμώνα —",
+      "previewLineTwo": "{a} και {b}",
+      "previewLineThree": "{a}, {b} και {c}",
+      "previewLineMore": "{a}, {b} και {count} ακόμη",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {# μέρος} other {# μέρη}} σε {dayCount, plural, one {# ημέρα} other {# ημέρες}}. Άνοιξέ το στο Plan για αποθήκευση.",
+      "ogImageAlt": "{places} — χειμερινό πλάνο Κύπρου",
+      "recipientPreview": "Προεπισκόπηση συνδέσμου: {places}"
     },
     "sustainability": {
       "aria": "Σημειώσεις χειμερινού ρυθμού",

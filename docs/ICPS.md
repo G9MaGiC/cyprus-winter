@@ -27,7 +27,7 @@ We run a lightweight “amazement” audit on core journeys (Relief/Specificity/
 
 | ID | Priority | Persona | Gap | Route / owner |
 |----|----------|---------|-----|---------------|
-| G1 | **P0** | Claire | Plan share/export lacks “story-grade” preview (OG/title/one-line summary). | `/plan`, `PlanShareBar`, metadata |
+| G1 | **P0** | Claire | Plan share/export lacks “story-grade” preview (OG/title/one-line summary). | `/plan`, `PlanShareBar`, metadata — **fixed 2026-08-20:** `?plan=` generateMetadata names places; share bar shows recipient preview line |
 | G5 | **P1** | Bleisure | Validate `short-stay` template density; reduce clicks from `/airport` to filled Plan. | `/plan`, templates |
 | G6 | **P2** | Local | Events freshness perception (seasonal copy + “updated” cues). | `/events` |
 

@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { getPlaceById, type PlanItem } from "@/data";
 import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { buildPlanIcs, downloadPlanIcs } from "@/lib/plan-ics";
+import { buildPlanShareCopy, buildPlanSharePreview } from "@/lib/plan-share-preview";
 import { toAbsoluteUrl } from "@/lib/site-url";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { trackProduct } from "@/lib/analytics";
@@ -47,6 +48,7 @@ export function useItinerary() {
   const searchParams = useSearchParams();
   const locale = useLocale();
   const tPlanClip = useTranslations("plan.clipboard");
+  const tShare = useTranslations("plan.share");
   const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
   const isMountedRef = useRef(true);
   const daysRef = useRef<Record<number, string[]>>(emptyDays());
@@ -221,6 +223,18 @@ export function useItinerary() {
   }, [days, getPlace, locale, tPlanClip]);
 
   const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
+  const shareCopy = buildPlanShareCopy(buildPlanSharePreview(hasContent ? days : null), {
+    two: (a, b) => tShare("previewLineTwo", { a, b }),
+    three: (a, b, c) => tShare("previewLineThree", { a, b, c }),
+    more: (a, b, count) => tShare("previewLineMore", { a, b, count }),
+    title: (places) => tShare("ogNamedTitle", { places }),
+    description: (places, placeCount, dayCount) =>
+      tShare("ogNamedDescription", { places, placeCount, dayCount }),
+  });
+  const sharePreviewLine = shareCopy?.placesLine ?? null;
+  const shareText = sharePreviewLine
+    ? `${tShare("shareTextPrefix")} ${sharePreviewLine}`
+    : tShare("shareTextPrefix");
 
   const downloadCalendar = useCallback(() => {
     const ics = buildPlanIcs(days, getPlace);
@@ -283,5 +297,7 @@ export function useItinerary() {
     clearDay,
     copyItinerary,
     sharePath,
+    sharePreviewLine,
+    shareText,
   };
 }

@@ -1687,7 +1687,14 @@
       "copyItinerary": "Kopiuj plan (tekst)",
       "copyItineraryShort": "Kopiuj tekst",
       "copied": "Skopiowano",
-      "shareTextPrefix": "Mój zimowy plan na Cyprze —"
+      "shareTextPrefix": "Mój zimowy plan na Cyprze —",
+      "previewLineTwo": "{a} i {b}",
+      "previewLineThree": "{a}, {b} i {c}",
+      "previewLineMore": "{a}, {b} i {count} więcej",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}} na {dayCount, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}. Otwórz w Plan, zapisz i dopasuj.",
+      "ogImageAlt": "{places} — zimowy plan Cypru",
+      "recipientPreview": "Podgląd linku: {places}"
     },
     "sustainability": {
       "aria": "Uwagi o zimowym tempie",

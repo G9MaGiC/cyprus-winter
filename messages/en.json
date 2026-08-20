@@ -1700,7 +1700,14 @@
       "copyItinerary": "Copy itinerary (text)",
       "copyItineraryShort": "Copy text",
       "copied": "Copied",
-      "shareTextPrefix": "My Cyprus Winter itinerary —"
+      "shareTextPrefix": "My Cyprus Winter itinerary —",
+      "previewLineTwo": "{a} and {b}",
+      "previewLineThree": "{a}, {b} and {c}",
+      "previewLineMore": "{a}, {b} and {count} more",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {# place} other {# places}} across {dayCount, plural, one {# day} other {# days}}. Open in Plan to save and tweak.",
+      "ogImageAlt": "{places} — Cyprus winter plan",
+      "recipientPreview": "Link preview: {places}"
     },
     "dayLabel": "Day {day}",
     "aria": {

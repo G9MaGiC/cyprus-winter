@@ -1700,7 +1700,14 @@
       "copyItinerary": "Copy itinerary (text)",
       "copyItineraryShort": "Copy text",
       "copied": "Copied",
-      "shareTextPrefix": "My Cyprus Winter itinerary —"
+      "shareTextPrefix": "My Cyprus Winter itinerary —",
+      "previewLineTwo": "{a} ו{b}",
+      "previewLineThree": "{a}, {b} ו{c}",
+      "previewLineMore": "{a}, {b} ועוד {count}",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {מקום #} other {# מקומות}} ב-{dayCount, plural, one {יום #} other {# ימים}}. פתחו ב-Plan כדי לשמור ולדייק.",
+      "ogImageAlt": "{places} — תוכנית חורף בקפריסין",
+      "recipientPreview": "תצוגה מקדימה לקישור: {places}"
     },
     "dayLabel": "Day {day}",
     "aria": {

@@ -1,10 +1,15 @@
 import PlanPage from "@/app/(padded)/plan/page";
-import { planSegmentMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { buildPlanPageMetadata } from "@/lib/plan-share-meta";
 
 export default PlanPage;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  return applyLocaleToMetadata(planSegmentMeta, "/plan", locale);
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ plan?: string | string[] }>;
+}) {
+  const [{ locale }, { plan }] = await Promise.all([params, searchParams]);
+  return buildPlanPageMetadata(locale, plan);
 }

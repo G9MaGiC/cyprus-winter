@@ -41,6 +41,8 @@ export function usePlanPage() {
     icsDownloaded,
     downloadCalendar,
     sharePath,
+    sharePreviewLine,
+    shareText,
   } = useItinerary();
 
   const activeItems = days[activeDay] ?? [];
@@ -201,6 +203,8 @@ export function usePlanPage() {
     icsDownloaded,
     downloadCalendar,
     sharePath,
+    sharePreviewLine,
+    shareText,
     // Derived
     totalPlaces,
     activeDaysCount,

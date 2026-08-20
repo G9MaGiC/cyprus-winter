@@ -1687,7 +1687,14 @@
       "copyItinerary": "Reiseplan kopieren (Text)",
       "copyItineraryShort": "Text kopieren",
       "copied": "Kopiert",
-      "shareTextPrefix": "Mein Zypern-Winter-Reiseplan —"
+      "shareTextPrefix": "Mein Zypern-Winter-Reiseplan —",
+      "previewLineTwo": "{a} und {b}",
+      "previewLineThree": "{a}, {b} und {c}",
+      "previewLineMore": "{a}, {b} und {count} weitere",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {# Ort} other {# Orte}} an {dayCount, plural, one {# Tag} other {# Tagen}}. In Plan öffnen, speichern und anpassen.",
+      "ogImageAlt": "{places} — Zypern-Winterplan",
+      "recipientPreview": "Linkvorschau: {places}"
     },
     "sustainability": {
       "aria": "Hinweise zum Wintertempo",

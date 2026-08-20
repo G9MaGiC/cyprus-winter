@@ -1700,7 +1700,14 @@
       "copyItinerary": "Copy itinerary (text)",
       "copyItineraryShort": "Copy text",
       "copied": "Copied",
-      "shareTextPrefix": "My Cyprus Winter itinerary —"
+      "shareTextPrefix": "My Cyprus Winter itinerary —",
+      "previewLineTwo": "{a} et {b}",
+      "previewLineThree": "{a}, {b} et {c}",
+      "previewLineMore": "{a}, {b} et {count} de plus",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {# lieu} other {# lieux}} sur {dayCount, plural, one {# jour} other {# jours}}. Ouvrir dans Plan pour enregistrer et ajuster.",
+      "ogImageAlt": "{places} — plan d’hiver à Chypre",
+      "recipientPreview": "Aperçu du lien : {places}"
     },
     "dayLabel": "Day {day}",
     "aria": {

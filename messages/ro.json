@@ -1700,7 +1700,14 @@
       "copyItinerary": "Copy itinerary (text)",
       "copyItineraryShort": "Copy text",
       "copied": "Copied",
-      "shareTextPrefix": "My Cyprus Winter itinerary —"
+      "shareTextPrefix": "My Cyprus Winter itinerary —",
+      "previewLineTwo": "{a} și {b}",
+      "previewLineThree": "{a}, {b} și {c}",
+      "previewLineMore": "{a}, {b} și încă {count}",
+      "ogNamedTitle": "{places} — Cyprus Winter",
+      "ogNamedDescription": "{places}. {placeCount, plural, one {# loc} other {# locuri}} pe {dayCount, plural, one {# zi} other {# zile}}. Deschide în Plan ca să salvezi și să ajustezi.",
+      "ogImageAlt": "{places} — plan de iarnă în Cipru",
+      "recipientPreview": "Previzualizare link: {places}"
     },
     "dayLabel": "Day {day}",
     "aria": {

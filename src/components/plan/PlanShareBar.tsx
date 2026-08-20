@@ -12,6 +12,8 @@ type PlanShareBarProps = {
   copied: boolean;
   linkCopied: boolean;
   sharePath: string;
+  sharePreviewLine?: string | null;
+  shareText?: string;
   copyShareLink: () => void;
   copyItinerary: () => void;
   icsDownloaded?: boolean;
@@ -25,6 +27,8 @@ export default function PlanShareBar({
   copied,
   linkCopied,
   sharePath,
+  sharePreviewLine,
+  shareText,
   copyShareLink,
   copyItinerary,
   icsDownloaded = false,
@@ -68,6 +72,11 @@ export default function PlanShareBar({
           </span>
           <span className="text-olive/60">{tPlan("share.daysLabel")}</span>
           <span className="text-olive/50">· {tPlan("autoSaved")}</span>
+          {sharePreviewLine ? (
+            <span className="basis-full text-olive/70">
+              {tPlan("share.recipientPreview", { places: sharePreviewLine })}
+            </span>
+          ) : null}
         </p>
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
@@ -135,7 +144,7 @@ export default function PlanShareBar({
               >
                 <ShareLinks
                   path={sharePath}
-                  text={tPlan("share.shareTextPrefix")}
+                  text={shareText ?? tPlan("share.shareTextPrefix")}
                   ariaLabel={tPlan("aria.shareVia")}
                   className="flex flex-wrap gap-2"
                 />

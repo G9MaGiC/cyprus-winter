@@ -1363,6 +1363,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-163 | Security | Chat 503 when no AI key listed env var names (including production) | Generic “guide unavailable” message; no key names or `.env.local` |
 | BUG-164 | API (DR-033 leftover) | Cron 401 returned plain text `"Unauthorized"` | `jsonError("UNAUTHORIZED", …, 401)` on daily + weather-digest |
 | BUG-165 | Security / SEO | Locale `/[locale]/events` JSON-LD used raw `JSON.stringify` (padded events already escaped) | `toSafeJsonForScript` |
+| BUG-166 | Plan / SEO | Shared `/plan?plan=` links used generic “Plan Cyprus Winter” OG/title | `buildPlanPageMetadata` names places from the encoded itinerary; share bar shows the recipient preview line; shared URLs `noindex` |
 
 ### Still open — ops / human (do not invent)
 
@@ -1380,7 +1381,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | Item | Severity | Notes |
 |------|----------|-------|
-| Plan share OG/title is static (no `?plan=` preview) | P1 | `PlanShareBar` / plan layout metadata |
 | Beta `fr`/`he`/`ro` funnel chrome leftovers (`common.backTo`, breadcrumbs `bookTasting`, `verifiedPartner`, Discover Book CTA) | P1 | Nav/footer/errors already translated (BUG-147/153); remaining keys still English |
 | Hidden gems ≈ most of Discover because `localSecret` is editorial copy on almost every place, plus family union | P2 | Do not retag from this pass; needs an editorial `hidden` flag |
 | DR-007 | P2 | No route tests yet for `push/subscribe` (weather-digest 401 now covered) |

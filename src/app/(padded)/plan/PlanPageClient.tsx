@@ -103,6 +103,8 @@ export default function PlanPageClient() {
     icsDownloaded,
     downloadCalendar,
     sharePath,
+    sharePreviewLine,
+    shareText,
     totalPlaces,
     activeDaysCount,
     displayDaysCount,
@@ -243,6 +245,8 @@ export default function PlanPageClient() {
             copied={copied}
             linkCopied={linkCopied}
             sharePath={sharePath}
+            sharePreviewLine={sharePreviewLine}
+            shareText={shareText}
             copyShareLink={copyShareLink}
             copyItinerary={copyItinerary}
             icsDownloaded={icsDownloaded}

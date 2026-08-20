@@ -37,6 +37,15 @@ const testMessages = {
       dayLabel: "Day {day}:",
       emptyFallback: "Your Cyprus Winter plan. Add places from Discover or Trails to get going.",
     },
+    share: {
+      previewLineTwo: "{a} and {b}",
+      previewLineThree: "{a}, {b} and {c}",
+      previewLineMore: "{a}, {b} and {count} more",
+      ogNamedTitle: "{places} — Cyprus Winter",
+      ogNamedDescription:
+        "{places}. {placeCount, plural, one {# place} other {# places}} across {dayCount, plural, one {# day} other {# days}}. Open in Plan to save and tweak.",
+      shareTextPrefix: "My Cyprus Winter itinerary —",
+    },
   },
 };
 
@@ -403,6 +412,8 @@ describe("useItinerary", () => {
     expect(url).toBe(`${SITE_URL}${result.current.sharePath}`);
     expect(url).toContain("/plan?plan=");
     expect(result.current.linkCopied).toBe(true);
+    expect(result.current.sharePreviewLine).toBe("Kourion");
+    expect(result.current.shareText).toContain("Kourion");
   });
 
   it("copyShareLink uses base plan URL when empty", async () => {
