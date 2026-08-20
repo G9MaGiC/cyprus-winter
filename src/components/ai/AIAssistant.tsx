@@ -137,6 +137,9 @@ export function AIAssistant() {
               {tCommon("ai.title")}
             </h2>
             <p className="text-xs text-sage">{tCommon("ai.subtitle")}</p>
+            <p className="text-[11px] text-olive/55 mt-0.5 max-w-[18rem] leading-snug">
+              {tCommon("ai.disclaimer")}
+            </p>
           </div>
           <div className="flex items-center gap-2">
             <button

@@ -1394,6 +1394,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-194 | A11y | Emergency numbers not tappable (`EmergencyLine`; airport 1460) | `tel:` links with 44px hit area |
 | BUG-195 | Docs | Stale root links to archived AUDIT/PROJECT_REVIEW/ROADMAP/UX matrix | Retarget to `docs/archive/*` |
 | BUG-196 | Visual | More `rounded-2xl` stacked on `CARD.base` | Drop redundant radius on plan/home cards |
+| BUG-197 | Trust / copy | Guest-facing booking/AI/trail copy could imply CW charges or confirms; alcohol disclaimer missing on Discover winery + winery list | Clarify request vs confirm + no payment; add alcohol + AI disclaimers; harden trail footer “not guaranteed” |
 
 ### Still open — ops / human (do not invent)
 

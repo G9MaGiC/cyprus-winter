@@ -161,7 +161,8 @@
         "followUpWineries": "Cele mai bune crame lângă Limassol",
         "followUpHike": "Drumeție de iarnă ușoară",
         "followUpAirport": "Tocmai am aterizat la Larnaca"
-      }
+      },
+      "disclaimer": "Doar informații generale — verifică detaliile critice pentru siguranță din surse locale."
     },
     "back": "Înapoi",
     "backTo": "Înapoi la {label}",
@@ -224,7 +225,7 @@
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
     "emergency112": "Emergency 112",
-    "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "trailsFooterDisclaimer": "Condițiile sunt de la utilizatori și nu sunt garantate. Folosește-ți judecata și urmează sfaturile locale.",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
     "emergency": "Emergency",
@@ -963,7 +964,8 @@
         "buyWineCta": "Cumpără vin online",
         "instagramAria": "Urmărește @{handle} pe Instagram (se deschide într-o filă nouă)",
         "instagramCta": "Instagram @{handle}",
-        "bookGuide": "Rezervă un ghid →"
+        "bookGuide": "Rezervă un ghid →",
+        "alcoholDisclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil."
       },
       "bestTimeLabel": "Best time:",
       "directionsAria": "Get directions (opens in new tab)",
@@ -1017,7 +1019,7 @@
       },
       "trustTiming": {
         "title": "Trust and timing",
-        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
+        "body": "Detalii partener verificate, cu predare practică. Adaugă mai întâi în plan, apoi cere partenerului — confirmă pe email."
       },
       "similar": {
         "title": "More {type} in {region}",
@@ -2448,8 +2450,8 @@
         "aria": "Informații de încredere pentru rezervare",
         "heading": "Înainte de trimitere",
         "verifiedRoute": "Rută de cerere {context} verificată.",
-        "emailConfirm": "Confirmarea ajunge de obicei pe email în 24 de ore.",
-        "noCharge": "Fără taxă instant în aplicație; partenerii confirmă mai întâi disponibilitatea.",
+        "emailConfirm": "Partenerul confirmă de obicei pe email în 24 de ore.",
+        "noCharge": "Nu se ia nicio plată aici. Furnizorii confirmă mai întâi disponibilitatea.",
         "contextPartner": "partener",
         "contextGuide": "ghid"
       },
@@ -2457,12 +2459,12 @@
         "aria": "Progresul rezervării",
         "stepDetails": "Detalii",
         "stepSent": "Cerere trimisă",
-        "stepConfirmation": "Confirmare"
+        "stepConfirmation": "Partenerul confirmă"
       },
       "states": {
         "heading": "Stări rezervare:",
-        "wineryBody": "De la cerere acum la confirmare după răspunsul cramei.",
-        "guideBody": "De la cerere acum la confirmare după răspunsul ghidului.",
+        "wineryBody": "Statusul începe ca cerere; confirmat doar după răspunsul partenerului.",
+        "guideBody": "Statusul începe ca cerere; confirmat doar după răspunsul ghidului.",
         "offlineQueue": "Dacă ești offline, cererea e pusă la coadă ca sincronizare în așteptare și retrimisă automat."
       }
     },
@@ -2474,7 +2476,7 @@
         "partySizeRequired": "Alege mărimea grupului"
       },
       "errors": {
-        "failed": "Rezervarea a eșuat",
+        "failed": "Cererea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
         "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
       },
@@ -2492,7 +2494,7 @@
         "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
         "nextStep2": "Ghidul confirmă pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
-        "sla": "E o cerere, nu un loc confirmat. Dacă nu auzi nimic după două zile lucrătoare, contactează ghidul."
+        "sla": "Este o cerere, nu un loc confirmat. Nu se ia nicio plată aici. Dacă nu auzi nimic după două zile lucrătoare, contactează ghidul."
       },
       "fields": {
         "date": {
@@ -2547,7 +2549,7 @@
         "partySizeRequired": "Alege mărimea grupului"
       },
       "errors": {
-        "failed": "Rezervarea a eșuat",
+        "failed": "Cererea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
         "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
       },
@@ -2564,7 +2566,7 @@
         "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
         "nextStep2": "Crama confirmă data și ora pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
-        "sla": "Fără taxă în aplicație până confirmă. Dacă nu auzi nimic după două zile lucrătoare, sună crama."
+        "sla": "Nu se ia nicio plată în aplicație. Crama confirmă disponibilitatea separat. Dacă nu auzi nimic după două zile lucrătoare, sună la cramă."
       },
       "fields": {
         "date": {
@@ -2653,7 +2655,8 @@
         },
         "intro": "Răsfoiește cramele partenere și cere o degustare. Vor confirma pe email — de obicei într-o zi.",
         "ctaAria": "Rezervă o degustare la {name}",
-        "footerBrowseWineries": "Răsfoiește toate cramele"
+        "footerBrowseWineries": "Răsfoiește toate cramele",
+        "disclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil."
       },
       "wineryDetail": {
         "metaNotFound": "Nu a fost găsit",
@@ -2694,7 +2697,7 @@
         },
         "meta": {
           "title": "Rezervă o degustare | {wineryName} | Cyprus Winter",
-          "description": "Rezervă o degustare de iarnă la {wineryName} în {region}. Focuri calde, încălzitoare, adesea proprietarul toarnă. Confirmare pe email. Rezervă din timp. Cyprus Winter."
+          "description": "Rezervă o degustare de iarnă la {wineryName} în {region}. Focuri calde, încălzitoare, adesea proprietarul toarnă. Vor confirma pe email. Rezervă din timp. Cyprus Winter."
         }
       }
     }

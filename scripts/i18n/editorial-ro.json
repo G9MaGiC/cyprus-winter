@@ -326,7 +326,7 @@
   "book.form.trust.heading": "Înainte de trimitere",
   "book.form.trust.verifiedRoute": "Rută de cerere {context} verificată.",
   "book.form.trust.emailConfirm": "Confirmarea ajunge de obicei pe email în 24 de ore.",
-  "book.form.trust.noCharge": "Fără taxă instant în aplicație; partenerii confirmă mai întâi disponibilitatea.",
+  "book.form.trust.noCharge": "Nu se ia nicio plată aici. Furnizorii confirmă mai întâi disponibilitatea.",
   "book.form.trust.contextPartner": "partener",
   "book.form.trust.contextGuide": "ghid",
   "book.form.progress.aria": "Progresul rezervării",

@@ -326,7 +326,7 @@
   "book.form.trust.heading": "Avant d’envoyer",
   "book.form.trust.verifiedRoute": "Circuit de demande {context} vérifié.",
   "book.form.trust.emailConfirm": "La confirmation arrive en général par e-mail sous 24 heures.",
-  "book.form.trust.noCharge": "Aucun paiement immédiat dans l’app ; les prestataires confirment d’abord la disponibilité.",
+  "book.form.trust.noCharge": "Aucun paiement n’est pris ici. Les prestataires confirment d’abord la disponibilité.",
   "book.form.trust.contextPartner": "partenaire",
   "book.form.trust.contextGuide": "guide",
   "book.form.progress.aria": "Progression de la réservation",

@@ -142,7 +142,8 @@
         "followUpWineries": "Najlepsze winnice koło Limassol",
         "followUpHike": "Łatwy zimowy szlak",
         "followUpAirport": "Właśnie wylądowałem w Larnace"
-      }
+      },
+      "disclaimer": "Tylko informacje ogólne — krytyczne dla bezpieczeństwa szczegóły weryfikuj lokalnie."
     },
     "back": "Wróć",
     "backTo": "Wróć do {label}",
@@ -205,7 +206,7 @@
     "winterHikingGuide": "Przewodnik po zimowych wędrówkach",
     "seeMap": "Zobacz mapę",
     "emergency112": "Nagły wypadek 112",
-    "trailsFooterDisclaimer": "Warunki są zgłaszane przez użytkowników. Kieruj się rozsądkiem i stosuj do lokalnych zaleceń.",
+    "trailsFooterDisclaimer": "Warunki pochodzą od użytkowników i nie są gwarantowane. Użyj własnego osądu i stosuj się do lokalnych zaleceń.",
     "discoverEmptyTitle": "Brak miejsc tutaj.",
     "discoverEmptyBody": "Spróbuj innego filtra albo zapytaj AI—zna wyspę.",
     "emergency": "Nagły wypadek",
@@ -963,7 +964,8 @@
         "buyWineCta": "Kup wino online",
         "instagramAria": "Obserwuj @{handle} na Instagramie (otwiera się w nowej karcie)",
         "instagramCta": "Instagram @{handle}",
-        "bookGuide": "Zarezerwuj przewodnika →"
+        "bookGuide": "Zarezerwuj przewodnika →",
+        "alcoholDisclaimer": "Dla dorosłych w wieku legalnym do spożycia alkoholu. Pij odpowiedzialnie."
       },
       "bestTimeLabel": "Najlepszy czas:",
       "directionsAria": "Wskazówki dojazdu (otwiera się w nowej karcie)",
@@ -1017,7 +1019,7 @@
       },
       "trustTiming": {
         "title": "Zaufanie i czas",
-        "body": "Zweryfikowane dane partnera i praktyczna dostępność. Najpierw dodaj do planu, potem potwierdź."
+        "body": "Zweryfikowane dane partnera z praktycznym przekazaniem. Najpierw dodaj do planu, potem złóż prośbę u partnera — potwierdzą e-mailem."
       },
       "similar": {
         "title": "Więcej: {type} w {region}",
@@ -2410,7 +2412,7 @@
         "partySizeRequired": "Wybierz wielkość grupy"
       },
       "errors": {
-        "failed": "Rezerwacja nie powiodła się",
+        "failed": "Prośba nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
         "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci."
       },
@@ -2428,7 +2430,7 @@
         "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
         "nextStep2": "Przewodnik potwierdza mailem—zwykle w 24–48 h w dni robocze.",
         "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
-        "sla": "To prośba, nie potwierdzony termin. Po dwóch dniach roboczych bez odpowiedzi skontaktuj się z przewodnikiem."
+        "sla": "To prośba, nie potwierdzone miejsce. Tu nie pobieramy płatności. Jeśli po dwóch dniach roboczych nie będzie odpowiedzi, skontaktuj się z przewodnikiem."
       },
       "fields": {
         "date": {
@@ -2483,7 +2485,7 @@
         "partySizeRequired": "Wybierz wielkość grupy"
       },
       "errors": {
-        "failed": "Rezerwacja nie powiodła się",
+        "failed": "Prośba nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
         "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci."
       },
@@ -2500,7 +2502,7 @@
         "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
         "nextStep2": "Winnica potwierdza datę i godzinę mailem—zwykle w 24–48 h w dni robocze.",
         "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
-        "sla": "Brak opłaty w aplikacji do potwierdzenia. Po dwóch dniach roboczych bez odpowiedzi zadzwoń do winnicy."
+        "sla": "W aplikacji nie pobieramy płatności. Winnica potwierdza dostępność osobno. Jeśli po dwóch dniach roboczych nie będzie odpowiedzi, zadzwoń do winnicy."
       },
       "fields": {
         "date": {
@@ -2589,7 +2591,8 @@
         },
         "intro": "Przeglądaj nasze partnerskie winnice i poproś o degustację. Potwierdzą mailem — zwykle w ciągu jednego dnia.",
         "ctaAria": "Zarezerwuj degustację w {name}",
-        "footerBrowseWineries": "Przeglądaj wszystkie winnice"
+        "footerBrowseWineries": "Przeglądaj wszystkie winnice",
+        "disclaimer": "Dla dorosłych w wieku legalnym do spożycia alkoholu. Pij odpowiedzialnie."
       },
       "wineryDetail": {
         "metaNotFound": "Nie znaleziono",
@@ -2630,7 +2633,7 @@
         },
         "meta": {
           "title": "Book a tasting | {wineryName} | Cyprus Winter",
-          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter."
         }
       }
     },
@@ -2639,8 +2642,8 @@
         "aria": "Informacje o zaufaniu rezerwacji",
         "heading": "Przed wysłaniem",
         "verifiedRoute": "Zweryfikowana trasa zapytania {context}.",
-        "emailConfirm": "Potwierdzenie zwykle e-mailem w ciągu 24 godzin.",
-        "noCharge": "Bez natychmiastowej opłaty w aplikacji; dostawcy najpierw potwierdzają dostępność.",
+        "emailConfirm": "Partner zwykle potwierdza e-mailem w ciągu 24 godzin.",
+        "noCharge": "Tu nie pobieramy płatności. Dostawcy najpierw potwierdzają dostępność.",
         "contextPartner": "partnera",
         "contextGuide": "przewodnika"
       },
@@ -2648,12 +2651,12 @@
         "aria": "Postęp rezerwacji",
         "stepDetails": "Szczegóły",
         "stepSent": "Wysłano zapytanie",
-        "stepConfirmation": "Potwierdzenie"
+        "stepConfirmation": "Partner potwierdza"
       },
       "states": {
         "heading": "Statusy rezerwacji:",
-        "wineryBody": "Zapytanie teraz — potwierdzenie po odpowiedzi partnera.",
-        "guideBody": "Zapytanie teraz — potwierdzenie po odpowiedzi przewodnika.",
+        "wineryBody": "Status zaczyna się jako prośba; potwierdzenie dopiero po odpowiedzi partnera.",
+        "guideBody": "Status zaczyna się jako prośba; potwierdzenie dopiero po odpowiedzi przewodnika.",
         "offlineQueue": "Offline zapytanie trafia do kolejki synchronizacji i jest ponawiane automatycznie."
       }
     }

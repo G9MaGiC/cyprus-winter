@@ -166,7 +166,7 @@ export const bookGuideIndexPageMeta: Metadata = {
 export const bookWineryIndexPageMeta: Metadata = {
   title: "Book a Wine Tasting | Cyprus Winter",
   description:
-    "Book winter winery tastings across Cyprus wine routes. Verified tasting partners, cosy cellars, mountain villages, and email confirmation. Book ahead for winter visits.",
+    "Book winter winery tastings across Cyprus wine routes. Verified tasting partners, cosy cellars, mountain villages — request a tasting and they'll confirm by email. Book ahead for winter visits.",
 };
 
 export const trailReportPageMeta: Metadata = {

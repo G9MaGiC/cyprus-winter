@@ -37,6 +37,9 @@ export default function DetailBookingSection({ a, tDetail }: DetailBookingSectio
         </p>
         <p className="mt-1 text-sm text-olive/80">{tDetail("trustTiming.body")}</p>
       </div>
+      {isWinery(a) && (
+        <p className="text-sm text-olive/60 mb-4">{tDetail("booking.alcoholDisclaimer")}</p>
+      )}
       {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
         <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
       )}

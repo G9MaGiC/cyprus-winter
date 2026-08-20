@@ -326,7 +326,7 @@
   "book.form.trust.heading": "לפני השליחה",
   "book.form.trust.verifiedRoute": "מסלול בקשת {context} מאומת.",
   "book.form.trust.emailConfirm": "אישור בדרך כלל מגיע באימייל תוך 24 שעות.",
-  "book.form.trust.noCharge": "אין חיוב מיידי באפליקציה; הספקים מאשרים זמינות קודם.",
+  "book.form.trust.noCharge": "אין תשלום כאן. הספקים מאשרים זמינות קודם.",
   "book.form.trust.contextPartner": "שותף",
   "book.form.trust.contextGuide": "מדריך",
   "book.form.progress.aria": "התקדמות הזמנה",

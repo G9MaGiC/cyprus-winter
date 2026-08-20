@@ -161,7 +161,8 @@
         "followUpWineries": "Meilleures caves près de Limassol",
         "followUpHike": "Randonnée hivernale facile",
         "followUpAirport": "Je viens d’atterrir à Larnaca"
-      }
+      },
+      "disclaimer": "Informations générales uniquement — vérifiez les détails critiques pour la sécurité auprès de sources locales."
     },
     "back": "Retour",
     "backTo": "Retour à {label}",
@@ -224,7 +225,7 @@
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
     "emergency112": "Emergency 112",
-    "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "trailsFooterDisclaimer": "Les conditions sont issues des utilisateurs et non garanties. Faites preuve de jugement et suivez les conseils locaux.",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
     "emergency": "Emergency",
@@ -963,7 +964,8 @@
         "buyWineCta": "Acheter du vin en ligne",
         "instagramAria": "Suivre @{handle} sur Instagram (s’ouvre dans un nouvel onglet)",
         "instagramCta": "Instagram @{handle}",
-        "bookGuide": "Réserver un guide →"
+        "bookGuide": "Réserver un guide →",
+        "alcoholDisclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération."
       },
       "bestTimeLabel": "Best time:",
       "directionsAria": "Get directions (opens in new tab)",
@@ -1017,7 +1019,7 @@
       },
       "trustTiming": {
         "title": "Trust and timing",
-        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
+        "body": "Détails partenaire vérifiés avec passation pratique. Ajoutez d’abord à votre plan, puis demandez au partenaire — confirmation par e-mail."
       },
       "similar": {
         "title": "More {type} in {region}",
@@ -2448,8 +2450,8 @@
         "aria": "Informations de confiance sur la réservation",
         "heading": "Avant d’envoyer",
         "verifiedRoute": "Circuit de demande {context} vérifié.",
-        "emailConfirm": "La confirmation arrive en général par e-mail sous 24 heures.",
-        "noCharge": "Aucun paiement immédiat dans l’app ; les prestataires confirment d’abord la disponibilité.",
+        "emailConfirm": "Le partenaire confirme généralement par e-mail sous 24 heures.",
+        "noCharge": "Aucun paiement n’est pris ici. Les prestataires confirment d’abord la disponibilité.",
         "contextPartner": "partenaire",
         "contextGuide": "guide"
       },
@@ -2457,12 +2459,12 @@
         "aria": "Progression de la réservation",
         "stepDetails": "Détails",
         "stepSent": "Demande envoyée",
-        "stepConfirmation": "Confirmation"
+        "stepConfirmation": "Le partenaire confirme"
       },
       "states": {
         "heading": "États de réservation :",
-        "wineryBody": "Demandé maintenant, confirmé après la réponse du partenaire.",
-        "guideBody": "Demandé maintenant, confirmé après la réponse du guide.",
+        "wineryBody": "Le statut commence en demande ; confirmé seulement après réponse du partenaire.",
+        "guideBody": "Le statut commence en demande ; confirmé seulement après réponse du guide.",
         "offlineQueue": "Si vous êtes hors ligne, votre demande est mise en file d’attente et renvoyée automatiquement."
       }
     },
@@ -2474,7 +2476,7 @@
         "partySizeRequired": "Choisissez la taille du groupe"
       },
       "errors": {
-        "failed": "La réservation a échoué",
+        "failed": "Demande échouée",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
       },
@@ -2492,7 +2494,7 @@
         "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
         "nextStep2": "Le guide confirme par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
-        "sla": "C’est une demande, pas un créneau confirmé. Sans nouvelle après deux jours ouvrés, contactez le guide."
+        "sla": "C’est une demande, pas un créneau confirmé. Aucun paiement n’est pris ici. Sans nouvelles après deux jours ouvrés, contactez le guide."
       },
       "fields": {
         "date": {
@@ -2547,7 +2549,7 @@
         "partySizeRequired": "Choisissez la taille du groupe"
       },
       "errors": {
-        "failed": "La réservation a échoué",
+        "failed": "Demande échouée",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
       },
@@ -2564,7 +2566,7 @@
         "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
         "nextStep2": "Le domaine confirme la date et l’heure par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
-        "sla": "Aucun paiement dans l’app avant confirmation. Sans nouvelle après deux jours ouvrés, appelez le domaine."
+        "sla": "Aucun paiement n’est pris dans l’app. Le domaine confirme la disponibilité à part. Sans nouvelles après deux jours ouvrés, appelez le domaine."
       },
       "fields": {
         "date": {
@@ -2653,7 +2655,8 @@
         },
         "intro": "Parcourez nos domaines partenaires et demandez une dégustation. Ils confirment par e-mail — en général sous un jour.",
         "ctaAria": "Réserver une dégustation à {name}",
-        "footerBrowseWineries": "Tous les domaines"
+        "footerBrowseWineries": "Tous les domaines",
+        "disclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération."
       },
       "wineryDetail": {
         "metaNotFound": "Introuvable",
@@ -2694,7 +2697,7 @@
         },
         "meta": {
           "title": "Réserver une dégustation | {wineryName} | Cyprus Winter",
-          "description": "Réservez une dégustation d’hiver à {wineryName} à {region}. Feu, chauffage, souvent le propriétaire qui verse. Confirmation par e-mail. Réservez à l’avance. Cyprus Winter."
+          "description": "Réservez une dégustation d’hiver à {wineryName} à {region}. Feu, chauffage, souvent le propriétaire qui verse. Ils confirment par e-mail. Réservez à l’avance. Cyprus Winter."
         }
       }
     }

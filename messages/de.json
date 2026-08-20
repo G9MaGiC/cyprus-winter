@@ -142,7 +142,8 @@
         "followUpWineries": "Beste Weingüter bei Limassol",
         "followUpHike": "Leichte Winterwanderung",
         "followUpAirport": "Ich bin gerade in Larnaka gelandet"
-      }
+      },
+      "disclaimer": "Nur allgemeine Informationen — sicherheitskritische Details vor Ort prüfen."
     },
     "back": "Zurück",
     "backTo": "Zurück zu {label}",
@@ -205,7 +206,7 @@
     "winterHikingGuide": "Winter-Wanderführer",
     "seeMap": "Karte ansehen",
     "emergency112": "Notfall 112",
-    "trailsFooterDisclaimer": "Bedingungen sind crowd-sourced. Nutzen Sie Ihr Urteilsvermögen und folgen Sie lokalen Hinweisen.",
+    "trailsFooterDisclaimer": "Bedingungen sind nutzergeneriert und nicht garantiert. Nutzen Sie Ihr Urteilsvermögen und folgen Sie lokalen Hinweisen.",
     "discoverEmptyTitle": "Keine Orte hier.",
     "discoverEmptyBody": "Versuchen Sie einen anderen Filter oder fragen Sie Ask AI—es kennt die Insel.",
     "emergency": "Notfall",
@@ -963,7 +964,8 @@
         "buyWineCta": "Wein online kaufen",
         "instagramAria": "@{handle} auf Instagram folgen (öffnet in neuem Tab)",
         "instagramCta": "Instagram @{handle}",
-        "bookGuide": "Guide buchen →"
+        "bookGuide": "Guide buchen →",
+        "alcoholDisclaimer": "Für Erwachsene im gesetzlichen Trinkalter. Verantwortlich genießen."
       },
       "bestTimeLabel": "Beste Zeit:",
       "directionsAria": "Wegbeschreibung (öffnet in neuem Tab)",
@@ -1017,7 +1019,7 @@
       },
       "trustTiming": {
         "title": "Vertrauen und Timing",
-        "body": "Verifizierte Partnerdetails mit praktischer Verfügbarkeit. Erst in den Plan, dann bestätigen."
+        "body": "Verifizierte Partnerdetails mit praktischer Übergabe. Zuerst zum Plan hinzufügen, dann beim Partner anfragen — Bestätigung per E-Mail."
       },
       "similar": {
         "title": "Mehr {type} in {region}",
@@ -2410,7 +2412,7 @@
         "partySizeRequired": "Gruppengröße auswählen"
       },
       "errors": {
-        "failed": "Buchung fehlgeschlagen",
+        "failed": "Anfrage fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
         "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
       },
@@ -2428,7 +2430,7 @@
         "nextStep1": "Wir speichern Ihre Anfrage und senden eine Kopie per E-Mail, sobald möglich.",
         "nextStep2": "Der Guide bestätigt per E-Mail—meist innerhalb von 24–48 Stunden an Werktagen.",
         "nextStep3": "Status jederzeit unter Meine Buchungen mit derselben E-Mail.",
-        "sla": "Dies ist eine Anfrage, kein bestätigter Termin. Nach zwei Werktagen ohne Antwort den Guide direkt kontaktieren."
+        "sla": "Das ist eine Anfrage, kein bestätigter Platz. Hier wird keine Zahlung genommen. Wenn Sie nach zwei Werktagen nichts hören, kontaktieren Sie den Guide."
       },
       "fields": {
         "date": {
@@ -2483,7 +2485,7 @@
         "partySizeRequired": "Gruppengröße auswählen"
       },
       "errors": {
-        "failed": "Buchung fehlgeschlagen",
+        "failed": "Anfrage fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
         "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
       },
@@ -2500,7 +2502,7 @@
         "nextStep1": "Wir speichern Ihre Anfrage und senden eine Kopie per E-Mail, sobald möglich.",
         "nextStep2": "Das Weingut bestätigt Datum und Uhrzeit per E-Mail—meist innerhalb von 24–48 Stunden an Werktagen.",
         "nextStep3": "Status jederzeit unter Meine Buchungen mit derselben E-Mail.",
-        "sla": "Keine Belastung in der App, bis sie bestätigen. Nach zwei Werktagen ohne Antwort das Weingut anrufen."
+        "sla": "In der App wird keine Zahlung genommen. Das Weingut bestätigt die Verfügbarkeit separat. Wenn Sie nach zwei Werktagen nichts hören, rufen Sie das Weingut an."
       },
       "fields": {
         "date": {
@@ -2589,7 +2591,8 @@
         },
         "intro": "Stöbern Sie durch unsere Partnerweingüter und fragen Sie eine Verkostung an. Bestätigung per E‑Mail — meist innerhalb eines Tages.",
         "ctaAria": "Verkostung bei {name} buchen",
-        "footerBrowseWineries": "Alle Weingüter ansehen"
+        "footerBrowseWineries": "Alle Weingüter ansehen",
+        "disclaimer": "Für Erwachsene im gesetzlichen Trinkalter. Verantwortlich genießen."
       },
       "wineryDetail": {
         "metaNotFound": "Nicht gefunden",
@@ -2630,7 +2633,7 @@
         },
         "meta": {
           "title": "Book a tasting | {wineryName} | Cyprus Winter",
-          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter."
         }
       }
     },
@@ -2639,8 +2642,8 @@
         "aria": "Vertrauensinformationen zur Buchung",
         "heading": "Vor dem Absenden",
         "verifiedRoute": "Verifizierte {context}-Anfrageroute.",
-        "emailConfirm": "Bestätigung meist per E-Mail innerhalb von 24 Stunden.",
-        "noCharge": "Keine Sofortzahlung in der App; Anbieter bestätigen zuerst die Verfügbarkeit.",
+        "emailConfirm": "Der Partner bestätigt in der Regel innerhalb von 24 Stunden per E-Mail.",
+        "noCharge": "Hier wird keine Zahlung genommen. Anbieter bestätigen zuerst die Verfügbarkeit.",
         "contextPartner": "Partner",
         "contextGuide": "Guide"
       },
@@ -2648,12 +2651,12 @@
         "aria": "Buchungsfortschritt",
         "stepDetails": "Details",
         "stepSent": "Anfrage gesendet",
-        "stepConfirmation": "Bestätigung"
+        "stepConfirmation": "Partner bestätigt"
       },
       "states": {
         "heading": "Buchungsstatus:",
-        "wineryBody": "Jetzt angefragt — nach Partnerantwort bestätigt.",
-        "guideBody": "Jetzt angefragt — nach Guide-Antwort bestätigt.",
+        "wineryBody": "Status beginnt als Anfrage; bestätigt erst nach Partnerantwort.",
+        "guideBody": "Status beginnt als Anfrage; bestätigt erst nach Antwort des Guides.",
         "offlineQueue": "Offline wird Ihre Anfrage in die Sync-Warteschlange gestellt und automatisch wiederholt."
       }
     }

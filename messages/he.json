@@ -161,7 +161,8 @@
         "followUpWineries": "היקבים הטובים ליד לימסול",
         "followUpHike": "טיול חורף קל",
         "followUpAirport": "הרגע נחתתי בלרנקה"
-      }
+      },
+      "disclaimer": "מידע כללי בלבד — אמתו פרטים קריטיים לבטיחות ממקורות מקומיים."
     },
     "back": "חזרה",
     "backTo": "חזרה אל {label}",
@@ -224,7 +225,7 @@
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
     "emergency112": "Emergency 112",
-    "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "trailsFooterDisclaimer": "התנאים מבוססי דיווחים ואינם מובטחים. השתמשו בשיקול דעת ועקבו אחר הנחיות מקומיות.",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
     "emergency": "Emergency",
@@ -963,7 +964,8 @@
         "buyWineCta": "קניית יין אונליין",
         "instagramAria": "עקבו אחרי @{handle} באינסטגרם (נפתח בלשונית חדשה)",
         "instagramCta": "אינסטגרם @{handle}",
-        "bookGuide": "הזמנת מדריך →"
+        "bookGuide": "הזמנת מדריך →",
+        "alcoholDisclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות."
       },
       "bestTimeLabel": "Best time:",
       "directionsAria": "Get directions (opens in new tab)",
@@ -1017,7 +1019,7 @@
       },
       "trustTiming": {
         "title": "Trust and timing",
-        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
+        "body": "פרטי שותף מאומתים עם מסירה מעשית. הוסיפו קודם לתוכנית, ואז בקשו מהשותף — הם מאשרים באימייל."
       },
       "similar": {
         "title": "More {type} in {region}",
@@ -2448,8 +2450,8 @@
         "aria": "מידע אמון להזמנה",
         "heading": "לפני השליחה",
         "verifiedRoute": "מסלול בקשת {context} מאומת.",
-        "emailConfirm": "אישור בדרך כלל מגיע באימייל תוך 24 שעות.",
-        "noCharge": "אין חיוב מיידי באפליקציה; הספקים מאשרים זמינות קודם.",
+        "emailConfirm": "השותף בדרך כלל מאשר באימייל תוך 24 שעות.",
+        "noCharge": "אין תשלום כאן. הספקים מאשרים זמינות קודם.",
         "contextPartner": "שותף",
         "contextGuide": "מדריך"
       },
@@ -2457,12 +2459,12 @@
         "aria": "התקדמות הזמנה",
         "stepDetails": "פרטים",
         "stepSent": "הבקשה נשלחה",
-        "stepConfirmation": "אישור"
+        "stepConfirmation": "השותף מאשר"
       },
       "states": {
         "heading": "מצבי הזמנה:",
-        "wineryBody": "בקשה עכשיו — אישור אחרי תשובת היקב.",
-        "guideBody": "בקשה עכשיו — אישור אחרי תשובת המדריך.",
+        "wineryBody": "הסטטוס מתחיל כבקשה; מאושר רק אחרי תשובת השותף.",
+        "guideBody": "הסטטוס מתחיל כבקשה; מאושר רק אחרי תשובת המדריך.",
         "offlineQueue": "בלי חיבור, הבקשה נשמרת בתור ומנסים שוב אוטומטית."
       }
     },
@@ -2474,7 +2476,7 @@
         "partySizeRequired": "בחרו גודל קבוצה"
       },
       "errors": {
-        "failed": "ההזמנה נכשלה",
+        "failed": "הבקשה נכשלה",
         "fallback": "משהו השתבש — בדקו את החיבור ונסו שוב.",
         "offlineQueued": "אתם ללא חיבור — הבקשה נשמרה ותישלח אוטומטית כשתחזרו לרשת."
       },
@@ -2492,7 +2494,7 @@
         "nextStep1": "שומרים את הבקשה ושולחים לכם עותק באימייל כשאפשר.",
         "nextStep2": "המדריך מאשר באימייל — בדרך כלל תוך 24–48 שעות בימי חול.",
         "nextStep3": "עקבו אחרי הסטטוס בהזמנות שלי, עם אותו אימייל.",
-        "sla": "זו בקשה, לא משבצת מאושרת. אם אין תשובה אחרי שני ימי עסקים, פנו למדריך."
+        "sla": "זו בקשה, לא מקום מאושר. אין תשלום כאן. אם אין מענה אחרי שני ימי עסקים, צרו קשר עם המדריך."
       },
       "fields": {
         "date": {
@@ -2547,7 +2549,7 @@
         "partySizeRequired": "בחרו גודל קבוצה"
       },
       "errors": {
-        "failed": "ההזמנה נכשלה",
+        "failed": "הבקשה נכשלה",
         "fallback": "משהו השתבש — בדקו את החיבור ונסו שוב.",
         "offlineQueued": "אתם ללא חיבור — הבקשה נשמרה ותישלח אוטומטית כשתחזרו לרשת."
       },
@@ -2564,7 +2566,7 @@
         "nextStep1": "שומרים את הבקשה ושולחים לכם עותק באימייל כשאפשר.",
         "nextStep2": "היקב מאשר תאריך ושעה באימייל — בדרך כלל תוך 24–48 שעות בימי חול.",
         "nextStep3": "עקבו אחרי הסטטוס בהזמנות שלי, עם אותו אימייל.",
-        "sla": "אין חיוב באפליקציה עד שיאשרו. אם אין תשובה אחרי שני ימי עסקים, התקשרו ליקב."
+        "sla": "אין תשלום באפליקציה. היקב מאשר זמינות בנפרד. אם אין מענה אחרי שני ימי עסקים, התקשרו ליקב."
       },
       "fields": {
         "date": {
@@ -2653,7 +2655,8 @@
         },
         "intro": "עיינו ביקבי השותפים ובקשו טעימה. יאשרו באימייל — בדרך כלל תוך יום.",
         "ctaAria": "הזמנת טעימה ב-{name}",
-        "footerBrowseWineries": "כל היקבים"
+        "footerBrowseWineries": "כל היקבים",
+        "disclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות."
       },
       "wineryDetail": {
         "metaNotFound": "לא נמצא",
@@ -2694,7 +2697,7 @@
         },
         "meta": {
           "title": "הזמנת טעימה | {wineryName} | Cyprus Winter",
-          "description": "הזמנת טעימת חורף ב-{wineryName} ב-{region}. אח, חימום, לעתים קרובות הבעלים מוזג. אישור באימייל. הזמינו מראש. Cyprus Winter."
+          "description": "הזמנת טעימת חורף ב-{wineryName} ב-{region}. אח, חימום, לעתים קרובות הבעלים מוזג. הם יאשרו באימייל. הזמינו מראש. Cyprus Winter."
         }
       }
     }

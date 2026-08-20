@@ -69,7 +69,7 @@ export async function bookWineryMetadata(id: string, locale: string): Promise<Me
   const path = `/book/winery/${id}`;
   const base: Metadata = {
     title: `Book a tasting | ${winery.name} | Cyprus Winter`,
-    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter.`,
+    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter.`,
   };
   return applyLocaleToMetadata(base, path, locale);
 }

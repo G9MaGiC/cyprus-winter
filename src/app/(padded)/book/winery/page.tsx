@@ -52,6 +52,9 @@ export default async function WineriesListPage() {
         <p className="text-olive/70 max-w-2xl">
           {tBookPages("wineryList.intro")}
         </p>
+        <p className="text-sm text-olive/60 mt-2 max-w-2xl">
+          {tBookPages("wineryList.disclaimer")}
+        </p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

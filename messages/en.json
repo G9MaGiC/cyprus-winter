@@ -162,7 +162,8 @@
         "followUpWineries": "Best wineries near Limassol",
         "followUpHike": "Easy winter hike",
         "followUpAirport": "I just landed in Larnaca"
-      }
+      },
+      "disclaimer": "General information only — verify safety-critical details from local sources."
     },
     "back": "Back",
     "backTo": "Back to {label}",
@@ -225,7 +226,7 @@
     "winterHikingGuide": "Winter hiking guide",
     "seeMap": "See map",
     "emergency112": "Emergency 112",
-    "trailsFooterDisclaimer": "Conditions are crowd-sourced. Use your judgement and follow local advice.",
+    "trailsFooterDisclaimer": "Conditions are crowd-sourced and not guaranteed. Use your judgement and follow local advice.",
     "discoverEmptyTitle": "No places here.",
     "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
     "emergency": "Emergency",
@@ -963,7 +964,8 @@
         "buyWineCta": "Buy wine online",
         "instagramAria": "Follow @{handle} on Instagram (opens in new tab)",
         "instagramCta": "Instagram @{handle}",
-        "bookGuide": "Book a guide →"
+        "bookGuide": "Book a guide →",
+        "alcoholDisclaimer": "For adults of legal drinking age. Drink responsibly."
       },
       "bestTimeLabel": "Best time:",
       "directionsAria": "Get directions (opens in new tab)",
@@ -1017,7 +1019,7 @@
       },
       "trustTiming": {
         "title": "Trust and timing",
-        "body": "Verified partner details with practical availability handoff. Keep this place in your plan first, then confirm when ready."
+        "body": "Verified partner details with a practical handoff. Add this place to your plan first, then request with the partner when ready — they confirm by email."
       },
       "similar": {
         "title": "More {type} in {region}",
@@ -2448,8 +2450,8 @@
         "aria": "Booking trust information",
         "heading": "Before you submit",
         "verifiedRoute": "Verified {context} request route.",
-        "emailConfirm": "Confirmation usually arrives by email within 24 hours.",
-        "noCharge": "No instant charge in-app; providers confirm availability first.",
+        "emailConfirm": "The partner usually confirms by email within 24 hours.",
+        "noCharge": "No payment is taken here. Providers confirm availability first.",
         "contextPartner": "partner",
         "contextGuide": "guide"
       },
@@ -2457,12 +2459,12 @@
         "aria": "Booking progress",
         "stepDetails": "Details",
         "stepSent": "Request sent",
-        "stepConfirmation": "Confirmation"
+        "stepConfirmation": "Partner confirms"
       },
       "states": {
         "heading": "Booking states:",
-        "wineryBody": "Requested now to confirmed after partner reply.",
-        "guideBody": "Requested now to confirmed after guide reply.",
+        "wineryBody": "Status starts as requested; confirmed only after the partner replies.",
+        "guideBody": "Status starts as requested; confirmed only after the guide replies.",
         "offlineQueue": "If you are offline, your request is queued as sync pending and retried automatically."
       }
     },
@@ -2474,7 +2476,7 @@
         "partySizeRequired": "Select group size"
       },
       "errors": {
-        "failed": "Booking failed",
+        "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
       },
@@ -2492,7 +2494,7 @@
         "nextStep1": "We save your request and email you a copy when delivery is available.",
         "nextStep2": "The guide confirms by email—usually within 24–48 hours on weekdays.",
         "nextStep3": "Track status anytime under My Bookings with the same email.",
-        "sla": "This is a request, not a confirmed slot. If you hear nothing after two business days, contact the guide."
+        "sla": "This is a request, not a confirmed slot. No payment is taken here. If you hear nothing after two business days, contact the guide."
       },
       "fields": {
         "date": {
@@ -2552,7 +2554,7 @@
         "partySizeRequired": "Select group size"
       },
       "errors": {
-        "failed": "Booking failed",
+        "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
       },
@@ -2569,7 +2571,7 @@
         "nextStep1": "We save your request and email you a copy when delivery is available.",
         "nextStep2": "The winery confirms date and time by email—usually within 24–48 hours on weekdays.",
         "nextStep3": "Track status anytime under My Bookings with the same email.",
-        "sla": "No charge in-app until they confirm. If you hear nothing after two business days, call the winery."
+        "sla": "No payment is taken in-app. The winery confirms availability separately. If you hear nothing after two business days, call the winery."
       },
       "fields": {
         "date": {
@@ -2653,12 +2655,13 @@
         },
         "intro": "Browse our partner wineries and request a tasting. They'll confirm by email — usually within a day.",
         "ctaAria": "Book a tasting at {name}",
-        "footerBrowseWineries": "Browse all wineries"
+        "footerBrowseWineries": "Browse all wineries",
+        "disclaimer": "For adults of legal drinking age. Drink responsibly."
       },
       "wineryDetail": {
         "meta": {
           "title": "Book a tasting | {wineryName} | Cyprus Winter",
-          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. Confirmation by email. Book ahead. Cyprus Winter."
+          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter."
         },
         "metaNotFound": "Not found",
         "intro": "Winter tastings here are cosy — fire, heaters, and often the owner pouring. Send your request and they'll confirm by email.",
