@@ -2,6 +2,7 @@
  * Conversion funnel counts from conversion_events.
  */
 import { getSupabase } from "./supabase";
+import { localeFromTrackedProperties } from "./stats-kpi-export";
 
 export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
@@ -129,4 +130,54 @@ export async function getEventSourceBreakdownInRange(
       .sort((a, b) => b.count - a.count);
   }
   return out;
+}
+
+export type LocaleBreakdownRow = { locale: string; count: number };
+
+/** Locale mix from conversion_events.properties.locale or properties.path — no dedicated column. */
+export async function getFunnelLocaleBreakdownInRange(
+  start: Date,
+  end?: Date
+): Promise<LocaleBreakdownRow[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
+  const startIso = start.toISOString();
+  const endIso = end?.toISOString();
+  const PAGE_SIZE = 1000;
+  const buckets: Record<string, number> = {};
+
+  let offset = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    let query = supabase
+      .from("conversion_events")
+      .select("properties")
+      .gte("created_at", startIso)
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (endIso) query = query.lt("created_at", endIso);
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Funnel locale breakdown query error:", error);
+      return [];
+    }
+
+    for (const row of data ?? []) {
+      const props =
+        row.properties && typeof row.properties === "object" && !Array.isArray(row.properties)
+          ? (row.properties as Record<string, unknown>)
+          : {};
+      const locale = localeFromTrackedProperties(props);
+      buckets[locale] = (buckets[locale] ?? 0) + 1;
+    }
+
+    hasMore = (data?.length ?? 0) === PAGE_SIZE;
+    offset += PAGE_SIZE;
+  }
+
+  return Object.entries(buckets)
+    .map(([locale, count]) => ({ locale, count }))
+    .sort((a, b) => b.count - a.count || a.locale.localeCompare(b.locale));
 }

@@ -165,7 +165,7 @@ Natural-person teams may submit; **company registration must complete before con
 Use `/admin/stats` and first-party `trackProduct` events (`plan_add`, `booking_start`, hub clicks). Exportable KPIs evaluators understand:
 
 - Itineraries built; bookings/leads by SME (`providerId`)
-- Locale / market mix (`en`, `de`, `pl`, `he`, …)
+- Locale / market mix (`en`, `de`, `pl`, `he`, …) — **derived** from `conversion_events.properties.path` or optional `properties.locale`. There is **no dedicated locale column**; CSV/JSON export from `/api/stats?format=csv` (admin session or Bearer) includes this mix.
 - Share of Plan items that are rural/mountain vs beach
 - Trail-condition views vs “closed / snow” skips (once surfaced)
 

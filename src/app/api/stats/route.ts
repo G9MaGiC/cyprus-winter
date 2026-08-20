@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { getBookingsCountInRange } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
 import { getPartnerRevenueInRange } from "@/lib/partner-revenue";
-import { getEventSourceBreakdownInRange, getFunnelCountsInRange } from "@/lib/funnel";
+import { getEventSourceBreakdownInRange, getFunnelCountsInRange, getFunnelLocaleBreakdownInRange } from "@/lib/funnel";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
@@ -13,6 +13,11 @@ import {
   parseStatsWindow,
 } from "@/lib/stats-window";
 import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/lib/admin-session";
+import {
+  buildStatsKpiCsv,
+  statsKpiFilename,
+  type StatsKpiExportInput,
+} from "@/lib/stats-kpi-export";
 
 // Must be dynamic: fetches live bookings, revenue, funnel data
 export const dynamic = "force-dynamic";
@@ -71,6 +76,7 @@ export async function GET(req: NextRequest) {
         getPartnerRevenueInRange(rangeStart, rangeEnd),
         getFunnelCountsInRange(rangeStart, rangeEnd),
         getEventSourceBreakdownInRange(SOURCE_BREAKDOWN_EVENTS, rangeStart, rangeEnd),
+        getFunnelLocaleBreakdownInRange(rangeStart, rangeEnd),
       ]),
       Promise.all([
         getBookingsCountInRange(prevRange.start, prevRange.end),
@@ -79,7 +85,7 @@ export async function GET(req: NextRequest) {
         getEventSourceBreakdownInRange(SOURCE_BREAKDOWN_EVENTS, prevRange.start, prevRange.end),
       ]),
     ]);
-    const [bookingsThisMonth, partnerRevenue, funnelCounts, sourceBreakdown] = current;
+    const [bookingsThisMonth, partnerRevenue, funnelCounts, sourceBreakdown, localeBreakdown] = current;
     const [bookingsPrev, partnerRevenuePrev, funnelCountsPrev, sourceBreakdownPrev] = previous;
     const usesDb = hasSupabase();
 
@@ -87,15 +93,16 @@ export async function GET(req: NextRequest) {
       event,
       count: funnelCounts[event] ?? 0,
     }));
-
-    return Response.json(
-      {
+    const localeSource = "properties.path_or_locale" as const;
+    const payload = {
         bookingsThisMonth,
         partnerRevenueEur: partnerRevenue.totalRevenueEur,
         partnerRevenueByWinery: partnerRevenue.byPartner,
         funnel,
         funnelCounts,
         sourceBreakdown,
+        localeBreakdown,
+        localeSource,
         compare: {
           bookings: bookingsPrev,
           partnerRevenueEur: partnerRevenuePrev.totalRevenueEur,
@@ -109,9 +116,35 @@ export async function GET(req: NextRequest) {
         rangeStartIso: rangeStart.toISOString(),
         rangeEndIso: rangeEnd.toISOString(),
         storage: usesDb ? "supabase" : "memory",
-      },
-      { headers: rateLimitSuccessHeaders(limitResult.remaining, 30, limitResult.bypassed) }
-    );
+    };
+
+    const format = req.nextUrl.searchParams.get("format");
+    if (format === "csv") {
+      const csvInput: StatsKpiExportInput = {
+        window,
+        windowLabel: payload.windowLabel,
+        rangeStartIso: payload.rangeStartIso,
+        rangeEndIso: payload.rangeEndIso,
+        bookingsThisMonth: payload.bookingsThisMonth,
+        partnerRevenueEur: payload.partnerRevenueEur,
+        partnerRevenueByWinery: payload.partnerRevenueByWinery,
+        funnel: payload.funnel,
+        localeBreakdown: payload.localeBreakdown,
+        localeSource,
+      };
+      const filename = statsKpiFilename("csv", window, now);
+      return new Response(buildStatsKpiCsv(csvInput), {
+        headers: {
+          "Content-Type": "text/csv; charset=utf-8",
+          "Content-Disposition": `attachment; filename="${filename}"`,
+          ...rateLimitSuccessHeaders(limitResult.remaining, 30, limitResult.bypassed),
+        },
+      });
+    }
+
+    return Response.json(payload, {
+      headers: rateLimitSuccessHeaders(limitResult.remaining, 30, limitResult.bypassed),
+    });
   } catch (err) {
     console.error("Stats API error:", err);
     return jsonError("SERVER_ERROR", "Failed to load stats", 500);

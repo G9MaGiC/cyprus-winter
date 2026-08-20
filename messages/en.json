@@ -1066,7 +1066,23 @@
         "empty": "No events yet. Conversion tracking requires Supabase and migration 003."
       },
       "storage": "Storage: {storage}",
-      "storageUnknown": "unknown"
+      "storageUnknown": "unknown",
+      "export": {
+        "csv": "Download CSV",
+        "json": "Download JSON",
+        "csvAria": "Download funnel and partner revenue as CSV",
+        "jsonAria": "Download funnel and partner revenue as JSON",
+        "failed": "Export did not download. Try again."
+      },
+      "localeMix": {
+        "title": "Locale mix",
+        "subtitle": "Derived from tracked path or locale property. conversion_events has no dedicated locale column.",
+        "empty": "No locale mix yet. Events need a path or locale property.",
+        "table": {
+          "locale": "Locale",
+          "count": "Count"
+        }
+      }
     }
   },
   "airport": {
