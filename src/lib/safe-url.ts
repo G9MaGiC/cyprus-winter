@@ -4,6 +4,8 @@
  * Decodes HTML and percent entities before protocol/path checks.
  */
 
+import { isSafeInternalPath } from "@/lib/safe-internal-path";
+
 const DANGEROUS_PROTOCOLS = ["javascript:", "data:", "vbscript:", "file:"];
 const INTERNAL_BASE = "https://cyprus-winter.invalid/";
 
@@ -52,4 +54,17 @@ export function isSafeUrl(url: string): boolean {
   } catch {
     return false;
   }
+}
+
+/**
+ * Markdown/chat href gate: external http(s) via `isSafeUrl`, same-origin paths
+ * must also pass the AI/app allowlist (`isSafeInternalPath`) so /admin, /partner,
+ * /login, /api, etc. never become clickable AppLinks.
+ */
+export function isSafeMarkdownHref(url: string): boolean {
+  if (!isSafeUrl(url)) return false;
+  const trimmed = url.trim();
+  if (trimmed.startsWith("#")) return true;
+  if (trimmed.startsWith("/")) return isSafeInternalPath(trimmed);
+  return true;
 }

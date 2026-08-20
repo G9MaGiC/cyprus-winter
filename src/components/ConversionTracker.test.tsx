@@ -64,3 +64,18 @@ describe("ConversionTracker discover_filter", () => {
     expect(analytics.trackProduct).toHaveBeenCalledWith("discover_filter", { filter: "accessible" });
   });
 });
+
+describe("ConversionTracker winery_detail_view", () => {
+  beforeEach(() => {
+    nav.pathname = "/discover/tsiakkas";
+    nav.search = new URLSearchParams();
+    analytics.track.mockClear();
+    analytics.trackProduct.mockClear();
+  });
+
+  it("records winery_detail_view without marketing consent", () => {
+    render(<ConversionTracker />);
+    expect(analytics.trackProduct).toHaveBeenCalledWith("winery_detail_view", { placeId: "tsiakkas" });
+    expect(analytics.track).toHaveBeenCalledWith("page_view", expect.any(Object));
+  });
+});

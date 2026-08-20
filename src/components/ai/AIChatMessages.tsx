@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import ReactMarkdown from "react-markdown";
 import AppLink from "@/components/AppLink";
-import { isSafeUrl } from "@/lib/safe-url";
+import { isSafeMarkdownHref } from "@/lib/safe-url";
 import { SECTION } from "@/lib/design-tokens";
 import type { Message } from "./hooks/useAIChat";
 import { ActionButtons } from "./ActionButtons";
@@ -38,7 +38,7 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
             <ReactMarkdown
               components={{
                 a: ({ href, children }) => {
-                  if (!href || !isSafeUrl(href)) {
+                  if (!href || !isSafeMarkdownHref(href)) {
                     return <span className="text-olive/80">{children}</span>;
                   }
                   const isInternal = href.startsWith("/");
@@ -47,6 +47,13 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
                       <AppLink href={href} className="text-aegean hover:underline">
                         {children}
                       </AppLink>
+                    );
+                  }
+                  if (href.startsWith("#")) {
+                    return (
+                      <a href={href} className="text-aegean hover:underline">
+                        {children}
+                      </a>
                     );
                   }
                   return (

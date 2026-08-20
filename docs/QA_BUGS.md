@@ -1374,6 +1374,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-174 | API (DR-008 leftover) | Success bodies still ad hoc on vapid/track/cron | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged |
 | BUG-175 | Security / SEO | Book tasting JSON-LD used raw `JSON.stringify` (partner hours/description) | `toSafeJsonForScript` on `/book/winery/[id]` |
 | BUG-176 | Analytics (DR-026) | Admin funnel omitted `plan_view` / `plan_share` / `hub_footer_click`; `shop_click` always 0 | Shared `FUNNEL_ORDER` drives counts + stats API |
+| BUG-177 | Security (DR-001 leftover) | AI markdown links allowed any same-origin path (`/admin`, `/partner`, `/login`) | `isSafeMarkdownHref` requires `isSafeInternalPath` allowlist |
+| BUG-178 | Analytics (DR-006 leftover) | `winery_detail_view` still marketing-consent gated; funnel KPIs undercount | `PRODUCT_EVENTS` + `trackProduct` in ConversionTracker |
 
 ### Still open — ops / human (do not invent)
 

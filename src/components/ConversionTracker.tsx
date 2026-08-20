@@ -39,7 +39,7 @@ export default function ConversionTracker() {
       const isValidId = /^[a-z0-9-]+$/i.test(id) && id.length <= 80;
       const place = isValidId ? getPlaceById(id) : undefined;
       if (place?.type === "winery") {
-        track("winery_detail_view", { placeId: id });
+        trackProduct("winery_detail_view", { placeId: id });
       }
     }
     if (isWineryBook && pathname !== prevPath.current) {

@@ -17,7 +17,7 @@ Use on list/hub pages:
 - **Optional:** `onScrollToMap`, `secondary` slot (e.g. wineries wine routes, events weather link)
 - **Body:** page-specific copy (i18n)
 - **Sticky:** `StickyPlanBarBlock` with a page-specific sentinel id (trip-level, not per-card)
-- **Analytics:** `hub_footer_click` with `action` (`plan` | `ask_ai`) and `page` (pathname or `analyticsPage` prop). Requires cookie consent.
+- **Analytics:** `hub_footer_click` with `action` (`plan` | `ask_ai`) and `page` (pathname or `analyticsPage` prop). First-party via `trackProduct` (no marketing-cookie consent).
 
 Do **not** add `LAYOUT.footerBottomClearance` on `HubFooter` — `<main>` already uses `LAYOUT.mainPaddingBottom`.
 
