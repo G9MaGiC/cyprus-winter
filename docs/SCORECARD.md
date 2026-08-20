@@ -56,6 +56,7 @@ Details: `docs/QA_BUGS.md`
 ## Related docs
 
 - `docs/LAUNCH_CHECKLIST.md` — one-page pre-launch ops gate
+- `GRANT_STRATEGY.md` — PRE-SEED/0526 (deadline 11 Sep 2026) and tourism-grant map
 - `docs/WINERY_IMAGE_INTAKE.md` — partner photo workflow
 - `docs/RUNBOOK.md` — incidents and env matrix
 - `docs/DEEP_REVIEW_2026-05-20.md` — security backlog (DR-*)

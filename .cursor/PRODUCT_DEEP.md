@@ -69,6 +69,7 @@ All: **mobile-first**, often on **4G** at the airport or trailhead; **EUR**; **w
 | AI | `src/components/AIAssistantWithBoundary.tsx` (dynamic import from `ClientComponents.tsx`), `src/app/api/chat` |
 | SEO / meta | `layout.tsx`, page `metadata`, `src/app/(padded)/events/layout.tsx` (JSON-LD) |
 | Admin | `src/app/api/stats`, `src/app/(padded)/admin/stats` |
+| Grants / PRE-SEED | `GRANT_STRATEGY.md`, `GRANT_PITCH.md`, `docs/superpowers/plans/2026-08-20-preseed-grant-product-backlog.md` |
 
 ---
 
