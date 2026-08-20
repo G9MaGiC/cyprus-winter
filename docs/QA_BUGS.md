@@ -1370,6 +1370,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-170 | API (DR-007/008) | No `jsonSuccess()` helper; `push/subscribe` had no route tests | `jsonSuccess` → `{ ok: true, … }`; subscribe route uses it; Vitest covers 503/400/413/200 |
 | BUG-171 | Discover | Hidden gems ≈ most of Discover (`localSecret` + family union) | Hidden section uses `bestFor` “hidden gem” / “off-the-beaten-path” only; Family stays its own filter |
 | BUG-172 | Bookings (DR-019) | Sync merge kept local `pending` over API `confirmed`/`cancelled` | `mergeBookings` API-wins on id collision; local-only rows still kept |
+| BUG-173 | A11y (DR-016) | SearchBar `role="option"` nested an Add-to-plan link and took focus via tabIndex | Options are non-focusable; Enter/click open detail; Add stays on SearchResultCard |
 
 ### Still open — ops / human (do not invent)
 

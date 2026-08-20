@@ -152,32 +152,17 @@ export default function SearchBar({
               id={`${resultsId}-option-${i}`}
               role="option"
               aria-selected={i === activeIndex}
-              tabIndex={i === activeIndex ? 0 : -1}
+              onMouseDown={(e) => e.preventDefault()}
               onClick={() => navigateToResult(r)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  navigateToResult(r);
-                }
-              }}
-              className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 ${
+              className={`px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors ${
                 i === activeIndex ? "bg-terracotta/10" : ""
               }`}
             >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="font-medium text-olive truncate">{r.item.name}</span>
-                  <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
-                </div>
-                <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-medium text-olive truncate">{r.item.name}</span>
+                <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
               </div>
-              <AppLink
-                href={`/plan?add=${encodeURIComponent(r.item.id)}`}
-                onClick={(e) => e.stopPropagation()}
-                className="shrink-0 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-terracotta/30 rounded px-3 py-2"
-              >
-                {tCommon("addToPlan")}
-              </AppLink>
+              <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
             </li>
           ))}
         </ul>
