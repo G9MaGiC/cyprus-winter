@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimited,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
@@ -31,6 +32,27 @@ describe("jsonError", () => {
     expect(data.error.details).toEqual([
       { field: "email", message: "Must be valid email" },
     ]);
+  });
+});
+
+describe("jsonSuccess", () => {
+  it("returns { ok: true } by default", async () => {
+    const res = jsonSuccess();
+    expect(res.status).toBe(200);
+    expect(res.headers.get("Cache-Control")).toBe("no-store");
+    await expect(res.json()).resolves.toEqual({ ok: true });
+  });
+
+  it("merges payload fields and keeps ok true", async () => {
+    const res = jsonSuccess({ publicKey: "abc", ok: false });
+    const data = await res.json();
+    expect(data).toEqual({ publicKey: "abc", ok: true });
+  });
+
+  it("accepts custom status and headers", async () => {
+    const res = jsonSuccess({}, { status: 201, headers: { "X-RateLimit-Remaining": "4" } });
+    expect(res.status).toBe(201);
+    expect(res.headers.get("X-RateLimit-Remaining")).toBe("4");
   });
 });
 
@@ -76,7 +98,6 @@ describe("rateLimitSuccessHeaders", () => {
     expect(h["X-RateLimit-Bypassed"]).toBe("true");
   });
 });
-
 
 describe("readJsonBody", () => {
   it("rejects oversized request bodies", async () => {

@@ -1367,6 +1367,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-167 | Plan / G5 | Airport 48h CTA filled Plan with no “what now” framing | `PlanStartHere` after `?template=short-stay`; short-stay stays 5 stops / 2 days |
 | BUG-168 | Events / G6 | Events hero had no freshness cue; empty filters buried Plan | “Updated monthly” under hero note; Plan is primary recovery CTA |
 | BUG-169 | i18n | Beta `fr`/`he`/`ro` funnel chrome leftovers (`common.backTo`, breadcrumbs `bookTasting`, `verifiedPartner`, Discover Book CTA) | Translated those keys + companion booking/report chrome; privacy/terms **body** still English for legal review |
+| BUG-170 | API (DR-007/008) | No `jsonSuccess()` helper; `push/subscribe` had no route tests | `jsonSuccess` → `{ ok: true, … }`; subscribe route uses it; Vitest covers 503/400/413/200 |
 
 ### Still open — ops / human (do not invent)
 
@@ -1385,7 +1386,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | Item | Severity | Notes |
 |------|----------|-------|
 | Hidden gems ≈ most of Discover because `localSecret` is editorial copy on almost every place, plus family union | P2 | Do not retag from this pass; needs an editorial `hidden` flag |
-| DR-007 | P2 | No route tests yet for `push/subscribe` (weather-digest 401 now covered) |
-| DR-008 | P2 | No `jsonSuccess()` helper; success bodies remain ad hoc |
+| Broader adoption of `jsonSuccess` across ad hoc success bodies | P3 | Helper exists (BUG-170); migrate route-by-route without breaking clients |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

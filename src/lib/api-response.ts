@@ -1,6 +1,7 @@
 /**
  * Consistent API response helpers.
- * TECHNICAL.md: { error: { code, message, details? } } for errors.
+ * Errors: `{ error: { code, message, details? }, message }`.
+ * Successes: prefer `jsonSuccess` → `{ ok: true, ...fields }` (ad hoc shapes remain valid where clients already expect them).
  */
 
 export type ApiErrorCode =
@@ -89,6 +90,26 @@ export function jsonError(
     message, // Top-level for clients that expect data.message or data.error (string)
   };
   return Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
+}
+
+/**
+ * Success helper. Contract is `{ ok: true, ...fields }` (not `{ success, data }`).
+ * Prefer this for ok-only / ok+payload routes; keep route-specific shapes when clients already expect them.
+ */
+export function jsonSuccess(
+  data: Record<string, unknown> = {},
+  init?: { status?: number; headers?: Record<string, string> }
+): Response {
+  return Response.json(
+    { ...data, ok: true as const },
+    {
+      status: init?.status ?? 200,
+      headers: {
+        "Cache-Control": "no-store",
+        ...init?.headers,
+      },
+    }
+  );
 }
 
 /** 429 response with Retry-After and X-RateLimit headers. */

@@ -4,6 +4,7 @@ import { isAllowedPushEndpoint, isPushConfigured } from "@/lib/push";
 import { rateLimit } from "@/lib/rate-limit";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
   readJsonBody,
@@ -106,8 +107,8 @@ export async function POST(req: NextRequest) {
       return jsonError("SERVER_ERROR", "Could not save subscription", 500);
     }
 
-    return Response.json(
-      { ok: true },
+    return jsonSuccess(
+      {},
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 5, limitResult.bypassed) }
     );
   } catch (err) {
