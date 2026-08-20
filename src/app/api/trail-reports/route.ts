@@ -4,6 +4,7 @@ import { trails } from "@/data/trails";
 import { z } from "zod";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
   readJsonBody,
@@ -66,7 +67,7 @@ export async function POST(req: Request) {
 
     // Return a generic success to bots so the endpoint does not become an oracle.
     if (parsed.data.website?.trim()) {
-      return Response.json(
+      return jsonSuccess(
         {
           report: null,
           stored: false,
@@ -95,7 +96,7 @@ export async function POST(req: Request) {
       reporterEmail: reporterEmail || undefined,
     });
 
-    return Response.json(
+    return jsonSuccess(
       {
         report,
         stored,

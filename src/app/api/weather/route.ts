@@ -2,6 +2,7 @@ import { getLiveWeather, getWeatherAtCoords } from "@/lib/weather-live";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
 } from "@/lib/api-response";
@@ -42,24 +43,30 @@ export async function GET(req: Request) {
       }
       const weather = await getWeatherAtCoords(latNum, lngNum);
       if (weather) {
-        return Response.json(weather, {
-          headers: {
-            ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
-            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
-          },
-        });
+        return jsonSuccess(
+          { ...weather },
+          {
+            headers: {
+              ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
+              "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
+            },
+          }
+        );
       }
     }
     const weather = await getLiveWeather();
     if (!weather) {
       return jsonError("SERVICE_UNAVAILABLE", "Weather unavailable", 503);
     }
-    return Response.json(weather, {
-      headers: {
-        ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
-      },
-    });
+    return jsonSuccess(
+      { ...weather },
+      {
+        headers: {
+          ...rateLimitSuccessHeaders(limitResult.remaining, WEATHER_LIMIT, limitResult.bypassed),
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600",
+        },
+      }
+    );
   } catch (err) {
     console.error("Weather API error:", err);
     return jsonError("SERVER_ERROR", "Weather unavailable", 500);

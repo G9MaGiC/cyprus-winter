@@ -56,6 +56,7 @@ describe("POST /api/trail-reports", () => {
     const res = await POST(postReq(validBody, "127.0.0.11"));
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(data.report).toBeDefined();
     expect(data.report.trailId).toBe("artemis");
     expect(data.stored).toBe(true);
@@ -65,7 +66,9 @@ describe("POST /api/trail-reports", () => {
     createTrailReport.mockClear();
     const res = await POST(postReq({ ...validBody, website: "https://bot.example" }, "127.0.0.12"));
     expect(res.status).toBe(200);
-    expect((await res.json()).stored).toBe(false);
+    const data = await res.json();
+    expect(data.ok).toBe(true);
+    expect(data.stored).toBe(false);
     expect(createTrailReport).not.toHaveBeenCalled();
   });
 

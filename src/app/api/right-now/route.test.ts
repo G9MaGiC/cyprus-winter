@@ -20,6 +20,7 @@ describe("GET /api/right-now", () => {
     );
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(Array.isArray(data.items)).toBe(true);
     expect(data.items.length).toBeGreaterThan(0);
     expect(data.items.length).toBeLessThanOrEqual(5);

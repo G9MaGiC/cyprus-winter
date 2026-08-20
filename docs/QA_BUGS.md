@@ -1378,6 +1378,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-178 | Analytics (DR-006 leftover) | `winery_detail_view` still marketing-consent gated; funnel KPIs undercount | `PRODUCT_EVENTS` + `trackProduct` in ConversionTracker |
 | BUG-179 | Analytics (DR-006 leftover) | `page_view` still marketing-consent gated; funnel top of funnel undercount | `page_view` in `PRODUCT_EVENTS`; ConversionTracker uses `trackProduct` |
 | BUG-180 | SEO | `/book/guide/[id]` had no JSON-LD | `TravelAgency` schema via `toSafeJsonForScript` |
+| BUG-181 | API (DR-008 leftover) | weather / right-now / trail-reports / bookings success bodies still ad hoc | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged; guest GET auth unchanged |
 
 ### Still open — ops / human (do not invent)
 
@@ -1396,6 +1397,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | Item | Severity | Notes |
 |------|----------|-------|
 | Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
-| Remaining ad hoc success bodies (weather/right-now/bookings payloads; cookie-setting session routes) | P3 | jsonSuccess adopted on vapid/track/cron (BUG-174); reshape carefully |
+| Cookie-setting session routes (`admin/session`, `partner/session`) keep hand-rolled `{ ok: true }` + `Set-Cookie` | P3 | Already `{ ok: true }`; leave alone unless consolidating cookie helpers |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

@@ -10,6 +10,7 @@ import { trails } from "@/data/trails";
 import { z } from "zod";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
   readJsonBody,
@@ -134,7 +135,7 @@ async function handleLookupTokenRequest(req: Request, email: string): Promise<Re
     console.error("Booking lookup token request error:", err);
   }
 
-  return Response.json(genericLookupResponse, {
+  return jsonSuccess(genericLookupResponse, {
     headers: rateLimitSuccessHeaders(lookupRateLimit.remaining, 5, lookupRateLimit.bypassed),
   });
 }
@@ -177,7 +178,7 @@ export async function POST(req: Request) {
     }
     const raw = body as Record<string, unknown>;
     if (typeof raw.website === "string" && raw.website.trim()) {
-      return Response.json(
+      return jsonSuccess(
         { booking: null, stored: false, message: "Thanks for the request." },
         { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
       );
@@ -262,7 +263,7 @@ export async function POST(req: Request) {
         }
       }
 
-      return Response.json(
+      return jsonSuccess(
         {
           booking,
           message: created
@@ -327,7 +328,7 @@ export async function POST(req: Request) {
         }
       }
 
-      return Response.json(
+      return jsonSuccess(
         {
           booking,
           message: created
@@ -398,7 +399,7 @@ export async function GET(req: Request) {
     if (authError) return authError;
 
     const bookings = await getBookingsByEmail(emailNormalized);
-    return Response.json(
+    return jsonSuccess(
       { bookings: bookings.map(publicBookingView) },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 15, limitResult.bypassed) }
     );

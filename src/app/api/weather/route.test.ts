@@ -19,6 +19,7 @@ describe("GET /api/weather", () => {
     const res = await GET(getReq("http://localhost:3000/api/weather"));
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(data.coast).toBeDefined();
     expect(data.troodos).toBeDefined();
   });

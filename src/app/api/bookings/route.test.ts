@@ -68,7 +68,9 @@ describe("POST /api/bookings", () => {
       postReq({ ...validBody, website: "https://bot.example" }, "127.0.0.41")
     );
     expect(res.status).toBe(200);
-    expect((await res.json()).stored).toBe(false);
+    const data = await res.json();
+    expect(data.ok).toBe(true);
+    expect(data.stored).toBe(false);
   });
 
   it("returns 404 for unknown winery", async () => {
@@ -84,6 +86,7 @@ describe("POST /api/bookings", () => {
     const res = await POST(postReq(validBody, "127.0.0.5"));
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(data.booking).toBeDefined();
     expect(data.booking.providerId).toBe("tsiakkas");
   });
@@ -133,6 +136,7 @@ describe("GET /api/bookings", () => {
     const res = await GET(getReq("user@example.com", "127.0.0.8"));
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(Array.isArray(data.bookings)).toBe(true);
     expect(res.headers.get("cache-control")).toBe("no-store");
   });
@@ -145,6 +149,7 @@ describe("POST /api/bookings lookup token", () => {
     );
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(data.message).toMatch(/secure lookup link/i);
     expect(data.booking).toBeUndefined();
   });
@@ -172,6 +177,7 @@ describe("GET /api/bookings with lookup token", () => {
     const res = await GET(getReq("user@example.com", "127.0.0.91", token));
     expect(res.status).toBe(200);
     const data = await res.json();
+    expect(data.ok).toBe(true);
     expect(Array.isArray(data.bookings)).toBe(true);
     expect(data.bookings.every((b: { guestEmail?: string }) => b.guestEmail === undefined)).toBe(
       true

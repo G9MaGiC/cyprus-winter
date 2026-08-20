@@ -5,6 +5,7 @@ import { getAttractionById, getRestaurantById } from "@/data";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
 } from "@/lib/api-response";
@@ -112,7 +113,7 @@ export async function GET(req: Request) {
       };
     });
 
-    return Response.json(
+    return jsonSuccess(
       {
         items,
         meta: { locationUsed: true, timeUsed },
