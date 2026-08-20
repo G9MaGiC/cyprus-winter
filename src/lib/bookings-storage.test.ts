@@ -43,12 +43,38 @@ describe("mergeBookings", () => {
     expect(result[1].id).toBe("b2");
   });
 
-  it("dedupes by id with local winning when overlap", () => {
-    const local = [booking({ id: "b1", guestName: "Local", createdAt: "2026-03-12T10:00:00Z" })];
-    const api = [booking({ id: "b1", guestName: "API", createdAt: "2026-03-12T10:00:00Z" })];
+  it("dedupes by id with API winning when overlap", () => {
+    const local = [
+      booking({
+        id: "b1",
+        guestName: "Local",
+        status: "pending",
+        createdAt: "2026-03-12T10:00:00Z",
+      }),
+    ];
+    const api = [
+      booking({
+        id: "b1",
+        guestName: "API",
+        status: "confirmed",
+        createdAt: "2026-03-12T10:00:00Z",
+      }),
+    ];
     const result = mergeBookings(local, api);
     expect(result).toHaveLength(1);
-    expect(result[0].guestName).toBe("Local");
+    expect(result[0].guestName).toBe("API");
+    expect(result[0].status).toBe("confirmed");
+  });
+
+  it("keeps local-only bookings that are not on the API", () => {
+    const local = [
+      booking({ id: "local-only", status: "pending", createdAt: "2026-03-11T10:00:00Z" }),
+    ];
+    const api = [
+      booking({ id: "api-only", status: "confirmed", createdAt: "2026-03-12T10:00:00Z" }),
+    ];
+    const result = mergeBookings(local, api);
+    expect(result.map((b) => b.id)).toEqual(["api-only", "local-only"]);
   });
 
   it("merges different ids and sorts by createdAt descending", () => {

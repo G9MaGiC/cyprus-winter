@@ -7,19 +7,15 @@ import type { Booking } from "./bookings";
 const STORAGE_KEY = "cyprus-bookings";
 
 /**
- * Merge local and API bookings. Dedupe by id (local wins).
+ * Merge local and API bookings. Dedupe by id (**API wins** on collision so
+ * partner-confirmed/cancelled status is not stuck as local `pending`).
  * Returns combined list sorted by createdAt descending.
  */
 export function mergeBookings(local: Booking[], api: Booking[]): Booking[] {
-  const seen = new Set(local.map((b) => b.id));
-  const merged = [...local];
-  for (const b of api) {
-    if (!seen.has(b.id)) {
-      merged.push(b);
-      seen.add(b.id);
-    }
-  }
-  return merged.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
+  const byId = new Map<string, Booking>();
+  for (const b of local) byId.set(b.id, b);
+  for (const b of api) byId.set(b.id, b);
+  return [...byId.values()].sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
 }
 
 export function loadLocalBookings(): Booking[] {
