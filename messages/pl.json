@@ -2880,6 +2880,8 @@
       "wineriesOnRoute": "Winnice na tym szlaku",
       "grapeVarieties": "Odmiany winogron",
       "winterTipLabel": "Wskazówka zimowa",
+      "bookableHeading": "Zarezerwuj degustację na tej trasie",
+      "bookableIntro": "Wybrane winnice z zimowymi godzinami. Zadzwoń wcześniej, gdy podano.",
       "map": {
         "heading": "Mapa {route} ({count})",
         "caption": "Dotknij znacznika, aby otworzyć winnicę.",

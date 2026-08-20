@@ -12,7 +12,9 @@ import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import { getTranslations } from "next-intl/server";
 import WineRouteMap from "./WineRouteMap";
+import WineRouteBookableStops from "./WineRouteBookableStops";
 import { toAbsoluteUrl } from "@/lib/site-url";
+import { WINE_ROUTE_BOOK_FROM } from "@/lib/wine-route-stops";
 
 export function generateStaticParams() {
   return WINE_ROUTES.map((r) => ({ slug: r.slug }));
@@ -112,6 +114,8 @@ export default async function WineRoutePage({ params }: Props) {
         </div>
       )}
 
+      <WineRouteBookableStops slug={slug} />
+
       <div id="wine-route-plan-sentinel" className="h-px pointer-events-none mb-8" aria-hidden />
 
       <h2 id="wineries-list" className="sr-only">
@@ -119,7 +123,7 @@ export default async function WineRoutePage({ params }: Props) {
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {routeWineries.map((w) => (
-          <AttractionCard key={w.id} a={w} bookFrom="wineries" />
+          <AttractionCard key={w.id} a={w} bookFrom={WINE_ROUTE_BOOK_FROM} />
         ))}
       </div>
 

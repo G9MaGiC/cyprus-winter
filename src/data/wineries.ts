@@ -1757,3 +1757,7 @@ export const wineries: Winery[] = [
     combineWith: ["adonis", "aphrodite", "the-farmyard", "vasilikon"],
   },
 ];
+
+export function getWineryById(id: string): Winery | undefined {
+  return wineries.find((w) => w.id === id);
+}

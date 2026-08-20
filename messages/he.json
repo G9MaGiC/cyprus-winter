@@ -2083,6 +2083,8 @@
       "wineriesOnRoute": "Wineries on this route",
       "grapeVarieties": "Grape varieties",
       "winterTipLabel": "Winter tip",
+      "bookableHeading": "הזמינו טעימה במסלול",
+      "bookableIntro": "יקבים נבחרים עם שעות חורף. התקשרו מראש כשמצוין.",
       "map": {
         "heading": "{route} map ({count})",
         "caption": "Tap a marker to open a winery.",

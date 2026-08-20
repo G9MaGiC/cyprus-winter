@@ -2083,6 +2083,8 @@
       "wineriesOnRoute": "Wineries on this route",
       "grapeVarieties": "Grape varieties",
       "winterTipLabel": "Winter tip",
+      "bookableHeading": "Book a tasting on this route",
+      "bookableIntro": "Featured cellars with winter hours. Call ahead when listed.",
       "map": {
         "heading": "{route} map ({count})",
         "caption": "Tap a marker to open a winery.",

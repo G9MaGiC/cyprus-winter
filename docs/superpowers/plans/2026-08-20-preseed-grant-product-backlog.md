@@ -111,9 +111,9 @@
 
 **Files:** `src/data/wine-routes.ts`, `src/app/(padded)/wine-routes/[slug]/page.tsx`
 
-- [ ] Link each route to bookable winery IDs already in data
-- [ ] Structured winter hours / call-ahead (reuse winery fields)
-- [ ] **Verify:** each slug still 200; at least one Book CTA per route
+- [x] Link each route to bookable winery IDs already in data
+- [x] Structured winter hours / call-ahead (reuse winery fields)
+- [x] **Verify:** each slug still 200; at least one Book CTA per route
 
 ---
 

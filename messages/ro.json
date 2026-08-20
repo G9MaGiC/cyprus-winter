@@ -2083,6 +2083,8 @@
       "wineriesOnRoute": "Wineries on this route",
       "grapeVarieties": "Grape varieties",
       "winterTipLabel": "Winter tip",
+      "bookableHeading": "Rezervă o degustare pe acest traseu",
+      "bookableIntro": "Crame evidențiate, cu program de iarnă. Sunați înainte când este menționat.",
       "map": {
         "heading": "{route} map ({count})",
         "caption": "Tap a marker to open a winery.",

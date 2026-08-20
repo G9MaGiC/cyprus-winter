@@ -2880,6 +2880,8 @@
       "wineriesOnRoute": "Weingüter auf dieser Route",
       "grapeVarieties": "Rebsorten",
       "winterTipLabel": "Winter-Tipp",
+      "bookableHeading": "Verkostung auf dieser Route buchen",
+      "bookableIntro": "Ausgewählte Weingüter mit Winterzeiten. Vorher anrufen, wenn angegeben.",
       "map": {
         "heading": "{route} Karte ({count})",
         "caption": "Marker antippen, um ein Weingut zu öffnen.",

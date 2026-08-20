@@ -6,6 +6,8 @@ export type WineRoute = {
   center: { lat: number; lng: number };
   winterTip: string;
   heroImage: string;
+  /** Winery IDs already in `wineries` that can take a Book tasting CTA. */
+  bookableWineryIds: string[];
 };
 
 export const WINE_ROUTES: WineRoute[] = [
@@ -18,6 +20,7 @@ export const WINE_ROUTES: WineRoute[] = [
     center: { lat: 34.85, lng: 32.82 },
     winterTip: "Most cellars open weekends only in winter. Call a day ahead and you'll often get the winemaker pouring.",
     heroImage: "/images/cyprus/cyprus-village-omodos.jpg",
+    bookableWineryIds: ["tsiakkas", "zambartas", "santo"],
   },
   {
     slug: "laona",
@@ -28,6 +31,7 @@ export const WINE_ROUTES: WineRoute[] = [
     center: { lat: 34.93, lng: 32.52 },
     winterTip: "Winter visitors get fireside tastings and unhurried tours. Vouni Panayia and Tsangarides are the anchor stops.",
     heroImage: "/images/cyprus/cyprus-winery-troodos.jpg",
+    bookableWineryIds: ["vouni-panayia", "kolios"],
   },
   {
     slug: "akamas",
@@ -38,6 +42,7 @@ export const WINE_ROUTES: WineRoute[] = [
     center: { lat: 34.96, lng: 32.38 },
     winterTip: "Pair a morning hike on the Aphrodite trail with an afternoon tasting in Kathikas—twenty minutes apart.",
     heroImage: "/images/cyprus/cyprus-trail-gorge.jpg",
+    bookableWineryIds: ["vasilikon", "meletiou", "sterna-boutique"],
   },
   {
     slug: "commandaria",
@@ -48,6 +53,7 @@ export const WINE_ROUTES: WineRoute[] = [
     center: { lat: 34.80, lng: 32.95 },
     winterTip: "Commandaria producers welcome drop-ins more readily in winter. Monagri and Lania have the most accessible cellars.",
     heroImage: "/images/cyprus/cyprus-lefkara.jpg",
+    bookableWineryIds: ["savvas", "monagri", "silikou-museum", "revecca"],
   },
 ];
 

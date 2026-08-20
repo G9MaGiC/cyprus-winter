@@ -1280,6 +1280,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-147 | i18n | `fr`/`he`/`ro` nav, footer, cookies, and errors still mirrored English; switcher did not mark them as beta | Chrome translations for those locales + `localeBeta` suffix in the switcher; editorial/home body still English |
 | BUG-148 | Discover / Trails | Accessible, family, and cycling filters were buried; trail cards hid live conditions and most place cards hid winter hours | Pin practical Discover chips; overlay hiker reports on trail cards; show hours / call-ahead on attraction cards |
 | BUG-149 | Admin stats | No session-gated CSV/JSON of funnel + SME revenue for grant KPIs | `/api/stats?format=csv` uses admin cookie/Bearer (401 otherwise); locale mix from `properties.path` / `locale` |
+| BUG-151 | Wine routes | Route pages were editorial lists with no featured Book tasting CTA or structured hours | `bookableWineryIds` per route; hours/call-ahead strip + Book tasting to `/book/winery/[id]?from=wine-route` |
 
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 

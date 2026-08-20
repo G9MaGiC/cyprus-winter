@@ -183,7 +183,7 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 | **G3** | Discover filters: Accessible, Family, Cycling | DMT accessibility + sports | `accessibility` / `bestFor` in data; buried on detail | Medium |
 | **G4** | Surface trail conditions + winter hours on cards | Excellence (intelligence) | Reports API + detail copy | Medium |
 | **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `src/data/activity-places.ts` cycling IDs | Medium |
-| **G6** | Wine routes as operational (hours, bookable stops) | Route ecosystems / wine gastronomy | `/wine-routes/[slug]` editorial only | Medium |
+| **G6** | Wine routes as operational (hours, bookable stops) | Route ecosystems / wine gastronomy | `bookableWineryIds` + hours/Book strip on `/wine-routes/[slug]` | Done |
 | **G7** | Finish `he` editorial (then `fr`/`ro` body) | International orientation | Chrome translated; home/legal still EN | High (copy) |
 | **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan client + weather/conditions | Medium |
 | **G9** | KPI CSV/JSON from `/api/stats` (locale, SME, plan events) | Added value / reporting | `src/app/(padded)/admin/stats/page.tsx` | Low |
