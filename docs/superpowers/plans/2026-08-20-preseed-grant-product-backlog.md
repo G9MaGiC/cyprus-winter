@@ -131,10 +131,10 @@
 
 **Files:** `messages/he.json` (then `fr.json`, `ro.json`), `scripts/i18n/`
 
-- [ ] Do **not** machine-translate legal pages without a reviewer
-- [ ] Priority order: home hero, Discover, Plan, Book, privacy summary
-- [ ] Keep beta label until body copy is done
-- [ ] **Verify:** `i18n:validate`; chrome regression test still passes
+- [x] Do **not** machine-translate legal pages without a reviewer
+- [x] Priority order: home hero, Discover, Plan, Book, privacy summary
+- [x] Keep beta label until body copy is done
+- [x] **Verify:** `i18n:validate`; chrome regression test still passes
 
 ---
 

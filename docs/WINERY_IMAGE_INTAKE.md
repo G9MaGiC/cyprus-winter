@@ -2,7 +2,7 @@
 
 Workflow for replacing generic/regional winery hero images with **venue-accurate** photos. Code path: `resolveWineryImage()` in `src/lib/cyprus-images.ts` (used by Discover, Book, home featured).
 
-**Backlog:** Most listings still use wine-route regional fallbacks (see `docs/QA_BUGS.md` BUG-125–136, BUG-153). G10 added village-accurate CC assets; tasting-room interiors still need partners.
+**Backlog:** Most listings still use wine-route regional fallbacks (see `docs/QA_BUGS.md` BUG-125–136, BUG-154). G10 added village-accurate CC assets; tasting-room interiors still need partners.
 
 ---
 

@@ -43,7 +43,7 @@ describe("beta locale chrome", () => {
       "auth.login.ctaSignIn",
       "book.wineryForm.validation.emailInvalid",
     ];
-    const mayMatchEnglish = new Set(["footer.plan", "nav.plan"]);
+    const mayMatchEnglish = new Set(["footer.plan", "nav.plan", "home.title"]);
 
     for (const locale of BETA_LOCALES) {
       const messages = betaMessages[locale];
@@ -52,6 +52,47 @@ describe("beta locale chrome", () => {
         expect(nestedString(messages, key), `${locale} ${key}`).not.toBe(nestedString(en, key));
       }
       expect(nestedString(messages, "common.localeBeta").length).toBeGreaterThan(0);
+    }
+  });
+
+  it("translates priority editorial (home, Discover, Plan, Book, privacy summary)", () => {
+    const editorialMustDiffer = [
+      "home.headline",
+      "home.degreesLine",
+      "home.cta.explore",
+      "home.hero.familyPicksLink",
+      "home.startHere.title",
+      "discover.addToPlan",
+      "discover.page.noResultsTitle",
+      "plan.emptyDay",
+      "plan.mapTitle",
+      "book.form.trust.emailConfirm",
+      "privacy.page.header.description",
+    ];
+    for (const locale of BETA_LOCALES) {
+      const messages = betaMessages[locale];
+      for (const key of editorialMustDiffer) {
+        expect(nestedString(messages, key), `${locale} ${key}`).not.toBe(nestedString(en, key));
+      }
+    }
+  });
+
+  it("keeps full privacy policy body in English pending legal review", () => {
+    for (const locale of BETA_LOCALES) {
+      expect(nestedString(betaMessages[locale], "privacy.page.sections.s1.body")).toBe(
+        nestedString(en, "privacy.page.sections.s1.body"),
+      );
+      expect(nestedString(betaMessages[locale], "privacy.page.sections.s5.outro")).toBe(
+        nestedString(en, "privacy.page.sections.s5.outro"),
+      );
+    }
+  });
+
+  it("keeps beta labels until remaining body copy is done", () => {
+    expect([...BETA_LOCALES].sort()).toEqual(["fr", "he", "ro"]);
+    for (const locale of BETA_LOCALES) {
+      expect(isBetaLocale(locale)).toBe(true);
+      expect(nestedString(betaMessages[locale], "common.localeBeta").length).toBeGreaterThan(0);
     }
   });
 });
