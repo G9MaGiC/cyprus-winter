@@ -6,6 +6,7 @@ import type { RateLimitResult } from "@/lib/rate-limit";
 import {
   getProductionEnvChecks,
   productionEnvReady,
+  toAnnexProductionChecks,
 } from "@/lib/production-readiness";
 
 // Health check must run at request time (Supabase connectivity, env)
@@ -67,7 +68,7 @@ export async function GET(req: Request) {
     }
   }
 
-  const productionChecks = getProductionEnvChecks();
+  const productionChecks = toAnnexProductionChecks(getProductionEnvChecks());
   const productionReady = productionEnvReady();
   const ok = (!production || productionReady) && (!hasSupabase() || supabaseOk);
 
@@ -76,6 +77,11 @@ export async function GET(req: Request) {
       ? rateLimitSuccessHeaders(limitResult.remaining, 60, limitResult.bypassed)
       : {}),
     "Cache-Control": "no-store",
+  };
+  const publicBody = {
+    ok,
+    message: ok ? "OK" : "Unavailable",
+    productionReady,
   };
   const detailed = {
     ok,
@@ -91,8 +97,8 @@ export async function GET(req: Request) {
     productionChecks: productionChecks.length > 0 ? productionChecks : undefined,
   };
 
-  return NextResponse.json(
-    exposeDetails ? detailed : { ok, message: ok ? "OK" : "Unavailable" },
-    { status: ok ? 200 : 503, headers }
-  );
+  return NextResponse.json(exposeDetails ? detailed : publicBody, {
+    status: ok ? 200 : 503,
+    headers,
+  });
 }

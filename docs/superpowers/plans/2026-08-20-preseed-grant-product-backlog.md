@@ -46,12 +46,13 @@
 
 ### Task G1: Production readiness evidence
 
-**Files:** `docs/LAUNCH_CHECKLIST.md`, `src/lib/production-readiness.ts`
+**Files:** `docs/LAUNCH_CHECKLIST.md`, `src/lib/production-readiness.ts`, `src/app/api/health/route.ts`
 
-- [ ] Set production `UPSTASH_REDIS_REST_*`, `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
-- [ ] `curl -s https://<domain>/api/health | jq '.productionReady, .productionChecks'`
-- [ ] Paste redacted JSON into the annex (no secrets)
-- [ ] **Verify:** `productionReady: true`
+- [x] Public production `/api/health` returns `productionReady` without leaking `productionChecks` or env hints
+- [x] Authorized dump (`Authorization: Bearer $HEALTH_SECRET`) returns annex-safe checks (`id`, `label`, `ok`, `required` only)
+- [ ] Set production `UPSTASH_REDIS_REST_*`, `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and `HEALTH_SECRET` on Vercel
+- [ ] `curl` production (public boolean + bearer dump) and paste redacted JSON into the annex (no secrets)
+- [ ] **Verify:** live `productionReady: true` (ops — not confirmable from this repo)
 
 ---
 

@@ -81,3 +81,10 @@ export function productionEnvReady(): boolean {
   const checks = getProductionEnvChecks();
   return checks.filter((c) => c.required).every((c) => c.ok);
 }
+
+/** Annex / health JSON: booleans only — never include hints or env values. */
+export type AnnexEnvCheck = Pick<EnvCheck, "id" | "label" | "ok" | "required">;
+
+export function toAnnexProductionChecks(checks: EnvCheck[]): AnnexEnvCheck[] {
+  return checks.map(({ id, label, ok, required }) => ({ id, label, ok, required }));
+}

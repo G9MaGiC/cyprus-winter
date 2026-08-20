@@ -1,5 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { getProductionEnvChecks, productionEnvReady } from "@/lib/production-readiness";
+import {
+  getProductionEnvChecks,
+  productionEnvReady,
+  toAnnexProductionChecks,
+} from "@/lib/production-readiness";
 
 describe("production-readiness", () => {
   it("returns no checks outside production", () => {
@@ -35,6 +39,21 @@ describe("production-readiness", () => {
 
     vi.stubEnv("BOOKING_LOOKUP_TOKEN_SECRET", "booking-lookup-secret-for-tests");
     expect(getProductionEnvChecks().find((c) => c.id === "booking-lookup-token")?.ok).toBe(true);
+    vi.unstubAllEnvs();
+  });
+
+  it("redacts check hints for annex JSON", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "super-secret-upstash-token");
+    const annex = toAnnexProductionChecks(getProductionEnvChecks());
+    expect(annex.find((c) => c.id === "upstash")).toEqual({
+      id: "upstash",
+      label: "Upstash Redis (rate limits)",
+      ok: false,
+      required: true,
+    });
+    expect(JSON.stringify(annex)).not.toContain("super-secret-upstash-token");
+    expect(annex.every((c) => !("hint" in c))).toBe(true);
     vi.unstubAllEnvs();
   });
 });

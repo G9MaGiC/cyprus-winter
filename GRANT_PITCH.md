@@ -29,7 +29,7 @@
 | Live SME partners (tastings/guides) | 25 wineries + 15 guides |
 | Itineraries with ≥1 rural/mountain stop | Majority of saved plans |
 | Markets with non-English chrome | DE, EL, PL, HE (IL) |
-| Prototype evidence | `GET /api/health` → `productionReady`; funnel stats export |
+| Prototype evidence | Public `GET /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; funnel stats export |
 
 ## Alignment
 

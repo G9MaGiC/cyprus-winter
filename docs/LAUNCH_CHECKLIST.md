@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-19 · **Target commit:** `main` after PR #70
+**Last updated:** 2026-08-20 · **Target commit:** `main` after G1 health evidence
 
 ---
 
@@ -21,17 +21,38 @@ Set in **Vercel → Project → Settings → Environment Variables → Productio
 | `ADMIN_SECRET` | Recommended | `/admin/stats` |
 | One AI key | Recommended | Cyprus Guide (`GROQ_API_KEY`, `AI_GATEWAY_API_KEY`, etc.) |
 | `CRON_SECRET` | If crons enabled | Daily cron routes |
+| `HEALTH_SECRET` | Recommended (required for annex dump) | Bearer token for full `/api/health` diagnostics in production |
 
 **Never in production:** `STRESS_TEST_TOKEN`
 
 ### Verify after deploy
 
+Public production health returns `{ ok, message, productionReady }` only. `productionChecks` (and storage/AI details) require `Authorization: Bearer $HEALTH_SECRET`. JSON never includes env values or setup hints.
+
 ```bash
-# Use production domain or Vercel bypass URL if deployment protection is on
-curl -s "https://<your-domain>/api/health" | jq '{ ok, productionReady, productionChecks, supabase, ai, email }'
+# Uptime / boolean gate
+curl -s "https://<your-domain>/api/health" | jq '{ ok, productionReady }'
+
+# PRE-SEED annex dump (redacted checks — paste this, not Vercel env screenshots)
+curl -s "https://<your-domain>/api/health" \
+  -H "Authorization: Bearer ${HEALTH_SECRET}" \
+  | jq '{ ok, productionReady, productionChecks, supabase, ai, email }'
 ```
 
 **Pass criteria:** `productionReady: true` and required checks (`upstash`, `supabase`) show `ok: true`.
+
+Example authorized payload while Upstash is still missing (do **not** paste a fabricated `true`):
+
+```json
+{
+  "ok": false,
+  "productionReady": false,
+  "productionChecks": [
+    { "id": "upstash", "label": "Upstash Redis (rate limits)", "ok": false, "required": true },
+    { "id": "supabase", "label": "Supabase (bookings, analytics, trail reports)", "ok": false, "required": true }
+  ]
+}
+```
 
 ---
 

@@ -1285,6 +1285,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-152 | Plan | No DNSH-style strip; risk of inventing buses or fake carbon | Calm Plan strip: villages, Troodos trail conditions, airport buses from `airports` data only |
 | BUG-153 | i18n | `he`/`fr`/`ro` home, Discover, Plan, Book, and privacy summary still English | Priority editorial in those locales; full privacy/terms body left English for legal review; beta labels kept |
 | BUG-154 | Images | P0 winery heroes still generic or village-mismatched (Tsiakkas on mountain stock; Mystes on Gerolemo Omodos tasting; Krasochoria on summer Troodos) | CC village vineyards: Pelendri (`winery-tsiakkas.jpg`), Silikou Commandaria, January Lofou for Krasochoria; Mystes uses Laona fallback. Remaining verified partners still regional until tasting-room assets arrive. |
+| BUG-155 | Ops / Security | Production `/api/health` hid `productionReady`; docs curled checks without `HEALTH_SECRET` | Public payload includes `productionReady` only; Bearer dump returns annex checks without hints or env values |
 
 **Image attributions (BUG-125, BUG-126, BUG-136, BUG-154):**
 
