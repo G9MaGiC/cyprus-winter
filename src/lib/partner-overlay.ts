@@ -1,6 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-
 export type PartnerOverlay = {
   openingHours?: string;
   imageUrl?: string;
@@ -26,14 +23,6 @@ export function applyPartnerOpeningHours<T extends { id: string; openingHours?: 
   const hours = partnerOpeningHours(place.id);
   if (!hours) return place;
   return { ...place, openingHours: hours };
-}
-
-export function isSafePartnerImageUrl(url: string): boolean {
-  const trimmed = url.trim();
-  if (!trimmed.startsWith("/images/cyprus/")) return false;
-  if (trimmed.includes("..") || trimmed.includes("\\")) return false;
-  if (!/\.(jpg|jpeg|png|webp)$/i.test(trimmed)) return false;
-  return existsSync(join(process.cwd(), "public", trimmed));
 }
 
 export function setPartnerOverlay(providerId: string, patch: PartnerOverlay): PartnerOverlay {

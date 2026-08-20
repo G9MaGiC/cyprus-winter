@@ -155,7 +155,7 @@
 - [x] Spec first: winery can update winter hours, upload hero (or URL), accept/decline request (`docs/grant/G2_PARTNER_PORTAL_SPEC.md`)
 - [x] Reuse existing booking records; do not build a second CRM
 - [x] Tests: unauthorised 401; partner can only see own `providerId`
-- [ ] **Verify:** lint, typecheck, bookings e2e gate
+- [x] **Verify:** lint, typecheck, unit tests (515), i18n validate/scan, `data:validate`, build; bookings e2e on CI
 
 ---
 
