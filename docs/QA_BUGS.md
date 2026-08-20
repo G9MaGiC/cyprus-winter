@@ -1283,6 +1283,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-150 | Cycling | Cycling lived only as a Discover mood filter, not a hub with HubFooter | `/cycling` hub from activity-places data, locale proxy, footer/search links |
 | BUG-151 | Wine routes | Route pages were editorial lists with no featured Book tasting CTA or structured hours | `bookableWineryIds` per route; hours/call-ahead strip + Book tasting to `/book/winery/[id]?from=wine-route` |
 | BUG-152 | Plan | No DNSH-style strip; risk of inventing buses or fake carbon | Calm Plan strip: villages, Troodos trail conditions, airport buses from `airports` data only |
+| BUG-153 | i18n | `he`/`fr`/`ro` home, Discover, Plan, Book, and privacy summary still English | Priority editorial in those locales; full privacy/terms body left English for legal review; beta labels kept |
 
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 
