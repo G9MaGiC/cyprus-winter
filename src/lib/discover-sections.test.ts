@@ -8,6 +8,7 @@ import {
   filterToSectionId,
   isAccessibleFriendly,
   isFamilyFriendly,
+  isOffBeatenPath,
   PRACTICAL_DISCOVER_FILTERS,
 } from "@/lib/discover-sections";
 
@@ -39,6 +40,28 @@ describe("buildDiscoverSections", () => {
     for (const item of accessible!.items) {
       expect(isAccessibleFriendly(item), item.id).toBe(true);
     }
+  });
+
+  it("hidden gems use editorial bestFor tags only — not localSecret or family union", () => {
+    const sections = buildDiscoverSections(allDiscoverItems);
+    const hidden = sections.find((s) => s.id === "hidden");
+    const family = sections.find((s) => s.id === "family");
+    expect(hidden).toBeDefined();
+    expect(hidden!.items.length).toBeGreaterThan(0);
+    expect(hidden!.items.length).toBeLessThan(allDiscoverItems.length / 2);
+    expect(hidden!.items.length).toBeLessThanOrEqual(80);
+
+    for (const item of hidden!.items) {
+      expect(isOffBeatenPath(item), item.id).toBe(true);
+    }
+
+    // Popular family beach must not appear only because it has tip copy / family tags.
+    expect(hidden!.items.some((item) => item.id === "nissi-beach")).toBe(false);
+    expect(family!.items.some((item) => item.id === "nissi-beach")).toBe(true);
+
+    // Known editorial off-path villages stay in Hidden.
+    expect(hidden!.items.some((item) => item.id === "fikardou")).toBe(true);
+    expect(hidden!.items.some((item) => item.id === "lofou")).toBe(true);
   });
 
   it("family and accessible lists include sourced winter-practical places", () => {

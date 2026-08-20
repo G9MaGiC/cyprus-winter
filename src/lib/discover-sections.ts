@@ -88,17 +88,14 @@ export function isAccessibleFriendly(item: {
   );
 }
 
-function isOffBeatenPath(item: {
-  bestFor?: string[];
-  localSecret?: string;
-}): boolean {
+/** Editorial “Hidden gems” signal — bestFor tags only (not localSecret copy). */
+export function isOffBeatenPath(item: { bestFor?: string[] }): boolean {
   return (
-    item.bestFor?.some(
-      (b) =>
-        b.toLowerCase().includes("off-the-beaten-path") ||
-        b.toLowerCase().includes("hidden gem")
-    ) ?? false
-  ) || !!item.localSecret;
+    item.bestFor?.some((b) => {
+      const lower = b.toLowerCase();
+      return lower.includes("off-the-beaten-path") || lower.includes("hidden gem");
+    }) ?? false
+  );
 }
 
 export function buildDiscoverSections(
@@ -112,10 +109,9 @@ export function buildDiscoverSections(
   const localWinterItems = allDiscoverItems.filter((item) =>
     (LOCAL_WINTER_PICK_IDS as readonly string[]).includes(item.id)
   );
-  const quietItems = allDiscoverItems.filter(isOffBeatenPath);
-  const hiddenGemsItems = [...familyItems, ...quietItems].filter(
-    (item, i, arr) => arr.findIndex((x) => x.id === item.id) === i
-  );
+  // Hidden gems: editorial bestFor tags only — not localSecret (almost every place has tip copy)
+  // and not a family union (Family has its own section / filter).
+  const hiddenGemsItems = allDiscoverItems.filter(isOffBeatenPath);
 
   return [
     // NOTE: `title` is non-user-facing fallback only; UI should use i18n keys like `discover.page.sections.${id}`.

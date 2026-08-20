@@ -1368,6 +1368,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-168 | Events / G6 | Events hero had no freshness cue; empty filters buried Plan | “Updated monthly” under hero note; Plan is primary recovery CTA |
 | BUG-169 | i18n | Beta `fr`/`he`/`ro` funnel chrome leftovers (`common.backTo`, breadcrumbs `bookTasting`, `verifiedPartner`, Discover Book CTA) | Translated those keys + companion booking/report chrome; privacy/terms **body** still English for legal review |
 | BUG-170 | API (DR-007/008) | No `jsonSuccess()` helper; `push/subscribe` had no route tests | `jsonSuccess` → `{ ok: true, … }`; subscribe route uses it; Vitest covers 503/400/413/200 |
+| BUG-171 | Discover | Hidden gems ≈ most of Discover (`localSecret` + family union) | Hidden section uses `bestFor` “hidden gem” / “off-the-beaten-path” only; Family stays its own filter |
 
 ### Still open — ops / human (do not invent)
 
@@ -1385,7 +1386,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | Item | Severity | Notes |
 |------|----------|-------|
-| Hidden gems ≈ most of Discover because `localSecret` is editorial copy on almost every place, plus family union | P2 | Do not retag from this pass; needs an editorial `hidden` flag |
 | Broader adoption of `jsonSuccess` across ad hoc success bodies | P3 | Helper exists (BUG-170); migrate route-by-route without breaking clients |
+| Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
