@@ -1379,6 +1379,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-179 | Analytics (DR-006 leftover) | `page_view` still marketing-consent gated; funnel top of funnel undercount | `page_view` in `PRODUCT_EVENTS`; ConversionTracker uses `trackProduct` |
 | BUG-180 | SEO | `/book/guide/[id]` had no JSON-LD | `TravelAgency` schema via `toSafeJsonForScript` |
 | BUG-181 | API (DR-008 leftover) | weather / right-now / trail-reports / bookings success bodies still ad hoc | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged; guest GET auth unchanged |
+| BUG-182 | Nav (DR-028) | Hub pages (`/beaches`, `/villages`, `/wineries`, `/cycling`, `/wine-routes`) did not highlight Discover | `isActive` maps those hubs to `/discover` |
 
 ### Still open — ops / human (do not invent)
 
