@@ -1085,6 +1085,21 @@
           "locale": "Język",
           "count": "Liczba"
         }
+      },
+      "planGeography": {
+        "title": "Mix planu: wieś / góry vs plaża",
+        "subtitle": "Z item_id w plan_add w danych kuratorskich. Brak id = nieznane. To nie GPS.",
+        "empty": "Brak mixu planu. Dodania potrzebują item_id.",
+        "table": {
+          "bucket": "Typ miejsca",
+          "count": "Liczba"
+        },
+        "buckets": {
+          "rural_mountain": "Wieś / góry",
+          "beach_coast": "Plaża / wybrzeże",
+          "other": "Inne",
+          "unknown": "Nieznane"
+        }
       }
     }
   },

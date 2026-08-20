@@ -7,6 +7,7 @@ import {
   getEventSourceBreakdownInRange,
   getFunnelCountsInRange,
   getFunnelLocaleBreakdownInRange,
+  getPlanGeographyBreakdownInRange,
 } from "@/lib/funnel";
 import { getStatsRangeStartUtc } from "@/lib/stats-window";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken } from "@/lib/admin-session";
@@ -23,6 +24,7 @@ vi.mock("@/lib/funnel", () => ({
   getFunnelCountsInRange: vi.fn(),
   getEventSourceBreakdownInRange: vi.fn(),
   getFunnelLocaleBreakdownInRange: vi.fn(),
+  getPlanGeographyBreakdownInRange: vi.fn(),
 }));
 
 vi.mock("@/lib/supabase", () => ({
@@ -71,6 +73,7 @@ describe("GET /api/stats", () => {
       plan_add: [],
     });
     vi.mocked(getFunnelLocaleBreakdownInRange).mockResolvedValue([]);
+    vi.mocked(getPlanGeographyBreakdownInRange).mockResolvedValue([]);
   });
 
   afterEach(() => {
@@ -154,6 +157,10 @@ describe("GET /api/stats", () => {
         },
       ],
     });
+    vi.mocked(getPlanGeographyBreakdownInRange).mockResolvedValue([
+      { bucket: "rural_mountain", count: 8 },
+      { bucket: "beach_coast", count: 3 },
+    ]);
     const cookieVal = createAdminSessionToken("test-admin-secret");
     const res = await GET(
       statsReq("/api/stats?format=csv", { cookie: `${ADMIN_SESSION_COOKIE}=${cookieVal}` })
@@ -164,5 +171,8 @@ describe("GET /api/stats", () => {
     const body = await res.text();
     expect(body).toContain("funnel,plan_add,12");
     expect(body).toContain("partner,tsiakkas");
+    expect(body).toContain("plan_geography_source,plan_add.item_id");
+    expect(body).toContain("plan_geography,rural_mountain,8");
+    expect(body).toContain("plan_geography,beach_coast,3");
   });
 });

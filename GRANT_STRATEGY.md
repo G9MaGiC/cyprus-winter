@@ -166,7 +166,7 @@ Use `/admin/stats` and first-party `trackProduct` events (`plan_add`, `booking_s
 
 - Itineraries built; bookings/leads by SME (`providerId`)
 - Locale / market mix (`en`, `de`, `pl`, `he`, …) — **derived** from `conversion_events.properties.path` or optional `properties.locale`. There is **no dedicated locale column**; CSV/JSON export from `/api/stats?format=csv` (admin session or Bearer) includes this mix.
-- Share of Plan items that are rural/mountain vs beach
+- Share of Plan items that are rural/mountain vs beach — **CSV/JSON** `plan_geography_*` from `plan_add.item_id` (curated place types; missing ids = unknown)
 - Trail-condition views vs “closed / snow” skips (once surfaced)
 
 ---
@@ -186,7 +186,7 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 | **G6** | Wine routes as operational (hours, bookable stops) | Route ecosystems / wine gastronomy | `bookableWineryIds` + hours/Book strip on `/wine-routes/[slug]` | Done |
 | **G7** | Finish `he` editorial (then `fr`/`ro` body) | International orientation | Home/Discover/Plan/Book + privacy summary; legal body still EN; beta labels remain | Done (legal pending) |
 | **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan strip: villages, trail conditions, airport buses only | Done |
-| **G9** | KPI CSV/JSON from `/api/stats` (locale, SME, plan events) | Added value / reporting | `src/app/(padded)/admin/stats/page.tsx` | Low |
+| **G9** | KPI CSV/JSON from `/api/stats` (locale, SME, plan events, rural/beach mix) | Added value / reporting | `src/app/(padded)/admin/stats/page.tsx` | Done |
 | **G10** | Partner winery photos (~55) | Credibility | `docs/WINERY_IMAGE_INTAKE.md` | Partial — village CC for Tsiakkas / Commandaria / Krasochoria; tasting rooms still partner-gated |
 
 **Already shipped (cite in the annex, do not rebuild):** Plan → Book funnel, trail reports, winery/guide booking requests, HMAC booking lookup, grounded AI + `/skills`, offline plan, travel-trust / 112, 7 locales with `fr`/`he`/`ro` chrome + beta labels, first-party funnel analytics.

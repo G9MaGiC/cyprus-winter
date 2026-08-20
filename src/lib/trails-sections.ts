@@ -12,6 +12,14 @@ export type TrailSection = {
   trailIds: string[];
 };
 
+/** Trails shown in the coastal section — used for Plan rural/mountain vs beach mix. */
+export const COASTAL_TRAIL_IDS = [
+  "cape-greco",
+  "petra-tou-romiou",
+  "kavos-trail",
+  "sea-caves-anargyroi",
+] as const;
+
 const sectionDefs: TrailSection[] = [
   {
     id: "winter-highlights",
@@ -39,12 +47,7 @@ const sectionDefs: TrailSection[] = [
   {
     id: "coastal",
     title: "Coastal escapes",
-    trailIds: [
-      "cape-greco",
-      "petra-tou-romiou",
-      "kavos-trail",
-      "sea-caves-anargyroi",
-    ],
+    trailIds: [...COASTAL_TRAIL_IDS],
   },
   {
     id: "peak-views",

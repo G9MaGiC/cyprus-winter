@@ -1085,6 +1085,21 @@
           "locale": "Limbă",
           "count": "Count"
         }
+      },
+      "planGeography": {
+        "title": "Mix plan: rural / munte vs plajă",
+        "subtitle": "Din item_id la plan_add în datele curate. Fără id = necunoscut. Nu este GPS.",
+        "empty": "Încă nu există mix. Adăugările au nevoie de item_id.",
+        "table": {
+          "bucket": "Tip loc",
+          "count": "Count"
+        },
+        "buckets": {
+          "rural_mountain": "Rural / munte",
+          "beach_coast": "Plajă / coastă",
+          "other": "Altele",
+          "unknown": "Necunoscut"
+        }
       }
     }
   },

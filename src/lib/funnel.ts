@@ -3,6 +3,11 @@
  */
 import { getSupabase } from "./supabase";
 import { localeFromTrackedProperties } from "./stats-kpi-export";
+import {
+  countPlanGeography,
+  planGeographyRows,
+  type PlanGeographyBucket,
+} from "./plan-geography";
 
 export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
@@ -180,4 +185,53 @@ export async function getFunnelLocaleBreakdownInRange(
   return Object.entries(buckets)
     .map(([locale, count]) => ({ locale, count }))
     .sort((a, b) => b.count - a.count || a.locale.localeCompare(b.locale));
+}
+
+export type PlanGeographyBreakdownRow = { bucket: PlanGeographyBucket; count: number };
+
+/** Rural/mountain vs beach mix from `plan_add` `properties.item_id`. Missing ids count as unknown. */
+export async function getPlanGeographyBreakdownInRange(
+  start: Date,
+  end?: Date
+): Promise<PlanGeographyBreakdownRow[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
+  const startIso = start.toISOString();
+  const endIso = end?.toISOString();
+  const PAGE_SIZE = 1000;
+  const ids: Array<string | undefined> = [];
+
+  let offset = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    let query = supabase
+      .from("conversion_events")
+      .select("properties")
+      .eq("event", "plan_add")
+      .gte("created_at", startIso)
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (endIso) query = query.lt("created_at", endIso);
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Plan geography breakdown query error:", error);
+      return [];
+    }
+
+    for (const row of data ?? []) {
+      const props =
+        row.properties && typeof row.properties === "object" && !Array.isArray(row.properties)
+          ? (row.properties as Record<string, unknown>)
+          : {};
+      const itemId = props.item_id;
+      ids.push(typeof itemId === "string" ? itemId : undefined);
+    }
+
+    hasMore = (data?.length ?? 0) === PAGE_SIZE;
+    offset += PAGE_SIZE;
+  }
+
+  return planGeographyRows(countPlanGeography(ids));
 }

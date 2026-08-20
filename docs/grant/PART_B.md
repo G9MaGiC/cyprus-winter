@@ -19,7 +19,7 @@ Cyprus Winter is a **winter-first discovery, planning, and SME-booking product**
 - 25 live winery partners and 15 guides sending or receiving tasting/tour requests
 - Majority of saved Plans include ≥1 rural or mountain stop
 - Public `GET /api/health` → `productionReady: true` on the production domain (Bearer dump of checks for the annex, no secrets)
-- KPI export from `/api/stats` (funnel + SME lead fees + locale mix)
+- KPI export from `/api/stats` (funnel + SME lead fees + locale mix + rural/mountain vs beach Plan adds)
 
 ### 1.2 Innovation vs international state of the art
 
@@ -90,7 +90,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 | WP2 Partner portal | 0–6 | Hours, hero URL, accept/decline on existing bookings | Thin `/partner` MVP shipped; durable overlay + magic-link still post-award |
 | WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Chrome + funnel editorial shipped; legal pending |
 | WP4 Visible intelligence | 0–12 | Accessibility/cycling/wine-route/plan DNSH screenshots | Shipped (G3–G8) |
-| WP5 Market + seed readiness | 12–18 | Research note, 25 SME leads, Seed-programme options | KPI CSV shipped (G9) |
+| WP5 Market + seed readiness | 12–18 | Research note, 25 SME leads, Seed-programme options | KPI CSV shipped (G9) including rural/mountain vs beach Plan mix |
 
 ### 3.3 Indicative budget (not Part A)
 

@@ -18,6 +18,8 @@ export type StatsKpiExportInput = {
   funnel: { event: string; count: number }[];
   localeBreakdown: { locale: string; count: number }[];
   localeSource: StatsKpiLocaleSource;
+  planGeographyBreakdown: { bucket: string; count: number }[];
+  planGeographySource: "plan_add.item_id";
 };
 
 export function localeFromTrackedProperties(
@@ -57,6 +59,7 @@ export function buildStatsKpiCsv(input: StatsKpiExportInput): string {
     csvRow(["meta", "range_start", input.rangeStartIso]),
     csvRow(["meta", "range_end", input.rangeEndIso]),
     csvRow(["locale_source", input.localeSource]),
+    csvRow(["plan_geography_source", input.planGeographySource]),
     csvRow(["bookings", "total", input.bookingsThisMonth]),
     csvRow(["partner_revenue_eur", "total", input.partnerRevenueEur]),
   ];
@@ -76,6 +79,9 @@ export function buildStatsKpiCsv(input: StatsKpiExportInput): string {
   }
   for (const row of input.localeBreakdown) {
     lines.push(csvRow(["locale", row.locale, row.count]));
+  }
+  for (const row of input.planGeographyBreakdown) {
+    lines.push(csvRow(["plan_geography", row.bucket, row.count]));
   }
   return `${lines.join("\n")}\n`;
 }

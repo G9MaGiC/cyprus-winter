@@ -9,6 +9,7 @@ import { useLocale, useTranslations } from "next-intl";
 type FunnelRow = { event: string; count: number };
 type PartnerRow = { providerId: string; providerName: string; bookingCount: number; totalFeeEur: number };
 type LocaleRow = { locale: string; count: number };
+type GeographyRow = { bucket: string; count: number };
 
 type StatsData = {
   bookingsThisMonth?: number;
@@ -17,6 +18,8 @@ type StatsData = {
   funnel?: FunnelRow[];
   localeBreakdown?: LocaleRow[];
   localeSource?: string;
+  planGeographyBreakdown?: GeographyRow[];
+  planGeographySource?: string;
   window?: string;
   storage?: string;
   error?: string;
@@ -199,6 +202,14 @@ export default function AdminStatsPage() {
   const byWinery = d.partnerRevenueByWinery ?? [];
   const funnel = d.funnel ?? [];
   const locales = d.localeBreakdown ?? [];
+  const geography = d.planGeographyBreakdown ?? [];
+  const geographyLabel = (bucket: string) => {
+    if (bucket === "rural_mountain") return tAdmin("planGeography.buckets.rural_mountain");
+    if (bucket === "beach_coast") return tAdmin("planGeography.buckets.beach_coast");
+    if (bucket === "other") return tAdmin("planGeography.buckets.other");
+    if (bucket === "unknown") return tAdmin("planGeography.buckets.unknown");
+    return bucket;
+  };
   const currency = new Intl.NumberFormat(locale, { style: "currency", currency: "EUR" });
   const number = new Intl.NumberFormat(locale);
 
@@ -308,6 +319,32 @@ export default function AdminStatsPage() {
           </table>
           {locales.length === 0 && (
             <p className="text-sm text-olive/60 py-4">{tAdmin("localeMix.empty")}</p>
+          )}
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("planGeography.title")}</h2>
+        <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
+          <p className="text-sm text-olive/70 mb-4">{tAdmin("planGeography.subtitle")}</p>
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-sand-200/80">
+                <th className="py-2 font-medium text-olive">{tAdmin("planGeography.table.bucket")}</th>
+                <th className="py-2 font-medium text-olive text-right">{tAdmin("planGeography.table.count")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {geography.map((row) => (
+                <tr key={row.bucket} className="border-b border-sand-100">
+                  <td className="py-2 text-olive">{geographyLabel(row.bucket)}</td>
+                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {geography.length === 0 && (
+            <p className="text-sm text-olive/60 py-4">{tAdmin("planGeography.empty")}</p>
           )}
         </div>
       </section>

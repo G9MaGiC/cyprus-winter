@@ -29,7 +29,7 @@
 | Live SME partners (tastings/guides) | 25 wineries + 15 guides |
 | Itineraries with ≥1 rural/mountain stop | Majority of saved plans |
 | Markets with non-English chrome | DE, EL, PL, HE (IL) |
-| Prototype evidence | Public `GET /api/health` captured 20 Aug 2026: **`productionReady: false`** (Upstash/Supabase still ops). Target is `true` plus Bearer `HEALTH_SECRET` dump. Funnel stats export already ships. |
+| Prototype evidence | Public `GET /api/health` captured 20 Aug 2026: **`productionReady: false`** (Upstash/Supabase still ops). Target is `true` plus Bearer `HEALTH_SECRET` dump. Funnel stats export includes locale mix and rural/mountain vs beach Plan adds. |
 
 ## Alignment
 

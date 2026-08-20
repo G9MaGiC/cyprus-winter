@@ -30,6 +30,11 @@ const sample: StatsKpiExportInput = {
     { locale: "de", count: 2 },
   ],
   localeSource: "properties.path_or_locale",
+  planGeographyBreakdown: [
+    { bucket: "rural_mountain", count: 8 },
+    { bucket: "beach_coast", count: 3 },
+  ],
+  planGeographySource: "plan_add.item_id",
 };
 
 describe("localeFromTrackedProperties", () => {
@@ -60,6 +65,9 @@ describe("buildStatsKpiCsv", () => {
     expect(csv).toContain("locale,en,10");
     expect(csv).toContain("locale,de,2");
     expect(csv).toContain("locale_source,properties.path_or_locale");
+    expect(csv).toContain("plan_geography_source,plan_add.item_id");
+    expect(csv).toContain("plan_geography,rural_mountain,8");
+    expect(csv).toContain("plan_geography,beach_coast,3");
     expect(csv).toContain("bookings,total,3");
     expect(csv).toContain("partner_revenue_eur,total,90.5");
   });

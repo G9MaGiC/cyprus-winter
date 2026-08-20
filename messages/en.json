@@ -1085,6 +1085,21 @@
           "locale": "Locale",
           "count": "Count"
         }
+      },
+      "planGeography": {
+        "title": "Plan mix: rural / mountain vs beach",
+        "subtitle": "From plan_add item ids in curated data. Missing ids count as unknown. Not GPS.",
+        "empty": "No plan-add mix yet. Adds need an item_id.",
+        "table": {
+          "bucket": "Place type",
+          "count": "Count"
+        },
+        "buckets": {
+          "rural_mountain": "Rural / mountain",
+          "beach_coast": "Beach / coast",
+          "other": "Other",
+          "unknown": "Unknown"
+        }
       }
     }
   },

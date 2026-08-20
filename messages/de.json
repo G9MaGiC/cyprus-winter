@@ -1085,6 +1085,21 @@
           "locale": "Sprache",
           "count": "Anzahl"
         }
+      },
+      "planGeography": {
+        "title": "Plan-Mix: ländlich / Berg vs. Strand",
+        "subtitle": "Aus plan_add-IDs in den kuratierten Daten. Fehlende IDs zählen als unbekannt. Kein GPS.",
+        "empty": "Noch kein Plan-Mix. Adds brauchen eine item_id.",
+        "table": {
+          "bucket": "Ortstyp",
+          "count": "Anzahl"
+        },
+        "buckets": {
+          "rural_mountain": "Ländlich / Berg",
+          "beach_coast": "Strand / Küste",
+          "other": "Sonstiges",
+          "unknown": "Unbekannt"
+        }
       }
     }
   },

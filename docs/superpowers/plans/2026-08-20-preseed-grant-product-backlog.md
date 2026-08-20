@@ -95,6 +95,7 @@
 
 - [x] Add CSV or JSON download of funnel + `partnerRevenueByWinery` (already on the page type)
 - [x] Include locale breakdown if `conversion_events` already stores it; otherwise document the gap in the annex
+- [x] Include rural/mountain vs beach share of `plan_add` from curated place types (`plan_geography_*` in CSV/JSON)
 - [x] Keep admin HttpOnly session (`POST /api/admin/session`); no new query-token auth
 - [x] **Verify:** authenticated download; 401 without session
 

@@ -1085,6 +1085,21 @@
           "locale": "Langue",
           "count": "Count"
         }
+      },
+      "planGeography": {
+        "title": "Mix du plan : rural / montagne vs plage",
+        "subtitle": "Depuis les item_id de plan_add dans les données curatées. Sans id = inconnu. Pas de GPS.",
+        "empty": "Pas encore de mix. Les ajouts ont besoin d’un item_id.",
+        "table": {
+          "bucket": "Type de lieu",
+          "count": "Count"
+        },
+        "buckets": {
+          "rural_mountain": "Rural / montagne",
+          "beach_coast": "Plage / côte",
+          "other": "Autre",
+          "unknown": "Inconnu"
+        }
       }
     }
   },

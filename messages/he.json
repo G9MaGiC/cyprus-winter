@@ -1085,6 +1085,21 @@
           "locale": "שפה",
           "count": "Count"
         }
+      },
+      "planGeography": {
+        "title": "תמהיל תוכנית: כפרי / הר מול חוף",
+        "subtitle": "מתוך item_id ב-plan_add בנתונים הערוכים. בלי מזהה = לא ידוע. לא GPS.",
+        "empty": "עדיין אין תמהיל. להוספות נדרש item_id.",
+        "table": {
+          "bucket": "סוג מקום",
+          "count": "Count"
+        },
+        "buckets": {
+          "rural_mountain": "כפרי / הר",
+          "beach_coast": "חוף / חוף ים",
+          "other": "אחר",
+          "unknown": "לא ידוע"
+        }
       }
     }
   },
