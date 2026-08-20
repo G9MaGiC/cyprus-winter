@@ -18,7 +18,8 @@
     "ambulance": "Ambulanță",
     "planYourTrip": "Planifică-ți călătoria",
     "privacy": "Confidențialitate",
-    "terms": "Termeni"
+    "terms": "Termeni",
+    "cycling": "Ciclism"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -52,7 +53,8 @@
     "askAIAria": "Întreabă AI despre trasee, crame și idei de călătorie",
     "openMenu": "Deschide meniul",
     "closeMenu": "Închide meniul",
-    "mainNavigation": "Navigare principală"
+    "mainNavigation": "Navigare principală",
+    "cycling": "Ciclism"
   },
   "common": {
     "nav": {
@@ -776,7 +778,8 @@
         "seeCoasts": "See coasts & beaches",
         "searchMore": "Search for more",
         "seeHiddenGems": "More hidden gems",
-        "seeMonasteries": "Monasteries & culture"
+        "seeMonasteries": "Monasteries & culture",
+        "browseCyclingHub": "Hub de ciclism"
       },
       "meta": {
         "title": "Descoperă Cipru iarna | Plaje, sate, crame",
@@ -1977,7 +1980,8 @@
       "wineries": "Wineries",
       "events": "Events",
       "villages": "Villages",
-      "beaches": "Beaches"
+      "beaches": "Beaches",
+      "cycling": "Ciclism"
     }
   },
   "events": {
@@ -2893,6 +2897,31 @@
       "aria-label_10": "Go to Discover",
       "aria-label_11": "View your itinerary",
       "aria-label_12": "Transport from airport, tips"
+    }
+  },
+  "cycling": {
+    "page": {
+      "meta": {
+        "title": "Ciclism în Cipru iarna | Troodos, baraje și coastă",
+        "description": "Ciclism de iarnă în Cipru: drumuri de pădure în Troodos, bucle de baraj, Akamas și gravel pe coastă. Rece, liniștit, practicabil când acasă ninge.",
+        "ogAlt": "Drum de pădure Troodos, ciclism de iarnă în Cipru",
+        "schemaName": "Ciclism de iarnă în Cipru",
+        "schemaDescription": "Ciclism de iarnă: Troodos, baraje, Akamas și coastă."
+      },
+      "header": {
+        "title": "Ciclism în Cipru iarna",
+        "description": "Drumuri de pădure, bucle de baraj și kilometri liniștiți pe coastă. Aer rece, puțin trafic. Straturi pentru coborâri."
+      },
+      "srHeading": "Locuri de ciclism în Cipru iarna",
+      "trailsTitle": "Asociază cu un traseu",
+      "footer": {
+        "hubBody": "Construiește o buclă, verifică condițiile din Troodos sau întreabă ghidul. Iarna e sezonul de pedalat.",
+        "discoverFilter": "Ciclism în Discover",
+        "trailConditions": "Condiții pe trasee"
+      },
+      "aria": {
+        "actions": "Acțiuni pagină ciclism"
+      }
     }
   }
 }

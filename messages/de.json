@@ -18,7 +18,8 @@
     "ambulance": "Rettung",
     "planYourTrip": "Reise planen",
     "privacy": "Datenschutz",
-    "terms": "AGB"
+    "terms": "AGB",
+    "cycling": "Radfahren"
   },
   "travelTrust": {
     "aria": "Offizielle Reiseinformationen",
@@ -52,7 +53,8 @@
     "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "mainNavigation": "Hauptnavigation"
+    "mainNavigation": "Hauptnavigation",
+    "cycling": "Radfahren"
   },
   "common": {
     "nav": {
@@ -770,7 +772,8 @@
         "seeCoasts": "Küsten & Strände",
         "searchMore": "Weiter suchen",
         "seeHiddenGems": "Weitere Geheimtipps",
-        "seeMonasteries": "Klöster & Kultur"
+        "seeMonasteries": "Klöster & Kultur",
+        "browseCyclingHub": "Rad-Hub"
       },
       "meta": {
         "title": "Cyprus Winter entdecken | Strände, Dörfer, Weingüter",
@@ -1971,7 +1974,8 @@
       "wineries": "Weingüter",
       "events": "Veranstaltungen",
       "villages": "Dörfer",
-      "beaches": "Strände"
+      "beaches": "Strände",
+      "cycling": "Radfahren"
     },
     "footer": {
       "hubBody": "Orte zum Plan hinzufügen—oder die KI fragen. Sie kennt die Insel im Winter."
@@ -2892,6 +2896,31 @@
       },
       "aria": {
         "actions": "Weinrouten-Aktionen"
+      }
+    }
+  },
+  "cycling": {
+    "page": {
+      "meta": {
+        "title": "Radfahren auf Zypern im Winter | Troodos, Stauseen & Küste",
+        "description": "Winterradeln auf Zypern: Troodos-Waldstraßen, Stausee-Runden, Akamas und Küstengravel. Kühl, ruhig, fahrbar, wenn zu Hause Schnee liegt.",
+        "ogAlt": "Troodos-Waldstraße, Radfahren auf Zypern im Winter",
+        "schemaName": "Radfahren auf Zypern im Winter",
+        "schemaDescription": "Winterradeln: Troodos, Stauseen, Akamas und Küste."
+      },
+      "header": {
+        "title": "Radfahren auf Zypern im Winter",
+        "description": "Waldstraßen, Stausee-Runden und ruhige Küstenkilometer. Kühle Luft, wenig Verkehr. Schichten für die Abfahrten."
+      },
+      "srHeading": "Radorte auf Zypern im Winter",
+      "trailsTitle": "Mit einem Wanderweg kombinieren",
+      "footer": {
+        "hubBody": "Eine Runde planen, Troodos-Bedingungen prüfen oder den Guide fragen. Winter ist die Saison zum Fahren.",
+        "discoverFilter": "Radfahren in Discover",
+        "trailConditions": "Wegbedingungen"
+      },
+      "aria": {
+        "actions": "Aktionen der Radseite"
       }
     }
   }

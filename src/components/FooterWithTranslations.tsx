@@ -16,6 +16,7 @@ export default async function FooterWithTranslations() {
     beaches: t("beaches"),
     wineries: t("wineries"),
     villages: t("villages"),
+    cycling: t("cycling"),
     troodos: t("troodos"),
     paphos: t("paphos"),
     practical: t("practical"),

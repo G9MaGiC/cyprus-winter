@@ -208,7 +208,7 @@ export const ACTIVITY_SEE_MORE: Partial<
 > = {
   mountains: { href: "/trails?region=Troodos", labelKey: "seeAllMountainTrails" },
   climbing: { href: "/trails", labelKey: "browseAllTrails" },
-  cycling: { href: "/trails", labelKey: "browseAllTrails" },
+  cycling: { href: "/cycling", labelKey: "browseCyclingHub" },
   watersports: { href: "/beaches", labelKey: "seeCoasts" },
   quiet: { href: "/discover?filter=hidden", labelKey: "seeHiddenGems" },
   bouldering: { href: "/search?q=bouldering", labelKey: "searchMore" },
