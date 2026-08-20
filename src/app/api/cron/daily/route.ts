@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
   const secret = process.env.CRON_SECRET;
 
   if (!secret || authHeader !== `Bearer ${secret}`) {
-    return new Response("Unauthorized", { status: 401 });
+    return jsonError("UNAUTHORIZED", "Unauthorized", 401);
   }
 
   try {

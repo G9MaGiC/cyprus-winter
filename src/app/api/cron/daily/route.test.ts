@@ -30,6 +30,8 @@ describe("cron daily API", () => {
     const req = new NextRequest("http://localhost:3000/api/cron/daily");
     const res = await GET(req);
     expect(res.status).toBe(401);
+    const data = await res.json();
+    expect(data.error?.code).toBe("UNAUTHORIZED");
   });
 
   it("returns 401 with wrong bearer token", async () => {
@@ -38,6 +40,8 @@ describe("cron daily API", () => {
     });
     const res = await GET(req);
     expect(res.status).toBe(401);
+    const data = await res.json();
+    expect(data.error?.code).toBe("UNAUTHORIZED");
   });
 
   it("returns ok payload with valid bearer", async () => {

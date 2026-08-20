@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildEventsIndexJsonLd } from "@/lib/events-index-json-ld";
+import { toSafeJsonForScript } from "@/lib/json-script";
 import { absoluteUrlForLocale, applyLocaleToMetadata } from "@/lib/locale-seo";
 import { eventsSegmentMeta } from "@/lib/locale-page-meta";
 
@@ -17,7 +18,7 @@ export default async function LocaleEventsLayout({ children, params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(eventListSchema) }} />
       {children}
     </>
   );

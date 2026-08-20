@@ -1346,3 +1346,44 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | Maps | `MapInteractionGuard` + tap-to-enable overlay present on Discover, trails, plan, wine-route maps — scroll trap mitigated on touch |
 | Hub pages | List/hub pages use `LAYOUT.pagePy` / `pagePyHeroFirst` / `safeAreaX`; home uses root layout without `(padded)` top offset |
 | Images | All `cyprus-images.ts` paths resolve to files under `public/images/cyprus/` after wine-route fix |
+
+---
+
+## Bug check — 20 Aug 2026
+
+Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-review leftovers, and a code audit. GitHub Issues API is not accessible from this environment (`Resource not accessible by integration`); this log remains the tracker.
+
+**QA_BUGS historical entries:** all BUG-001–161 are **Fixed**. None were reopened.
+
+### Fixed this pass
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-162 | A11y (DR-015 leftover) | Root `src/app/error.tsx` wrapped content in `<main>` inside layout `<main id="main-content">` | Use `<div role="alert">` + shared `EmergencyLine`, matching padded error / not-found |
+| BUG-163 | Security | Chat 503 when no AI key listed env var names (including production) | Generic “guide unavailable” message; no key names or `.env.local` |
+| BUG-164 | API (DR-033 leftover) | Cron 401 returned plain text `"Unauthorized"` | `jsonError("UNAUTHORIZED", …, 401)` on daily + weather-digest |
+| BUG-165 | Security / SEO | Locale `/[locale]/events` JSON-LD used raw `JSON.stringify` (padded events already escaped) | `toSafeJsonForScript` |
+
+### Still open — ops / human (do not invent)
+
+| Item | Severity | Notes |
+|------|----------|-------|
+| Live `productionReady: false` on `cyprus-winter.vercel.app/api/health` (HTTP 503) | P0 | Set `UPSTASH_REDIS_REST_*` + `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` on Vercel. Recapture health after. |
+| `cypruswinter.com` DNS unresolved (last capture) | P0 | Registrar / DNS |
+| IRIS PRE-SEED/0526 submit by 11 Sep 2026 13:00 | P0 | CVs, legal entity, 15% co-finance; pack not submitted |
+| Tasting-room photos for remaining verified partners | P1 | Partner press kits only — `docs/WINERY_IMAGE_INTAKE.md` |
+| `he`/`fr`/`ro` privacy/terms **body** still English | P1 | Legal review; do not machine-translate |
+| Launch checklist sign-off blank | P1 | Engineering / Ops / Product / Content |
+| G2 partner overlay is in-memory `Map` | P1 | Durable store + magic-link post-award |
+
+### Still open — product / debt (not inventing features)
+
+| Item | Severity | Notes |
+|------|----------|-------|
+| Plan share OG/title is static (no `?plan=` preview) | P1 | `PlanShareBar` / plan layout metadata |
+| Beta `fr`/`he`/`ro` funnel chrome leftovers (`common.backTo`, breadcrumbs `bookTasting`, `verifiedPartner`, Discover Book CTA) | P1 | Nav/footer/errors already translated (BUG-147/153); remaining keys still English |
+| Hidden gems ≈ most of Discover because `localSecret` is editorial copy on almost every place, plus family union | P2 | Do not retag from this pass; needs an editorial `hidden` flag |
+| DR-007 | P2 | No route tests yet for `push/subscribe` (weather-digest 401 now covered) |
+| DR-008 | P2 | No `jsonSuccess()` helper; success bodies remain ad hoc |
+
+**Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

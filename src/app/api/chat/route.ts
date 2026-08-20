@@ -166,7 +166,7 @@ export async function POST(req: Request) {
   if (providers.length === 0) {
     return jsonError(
       "SERVICE_UNAVAILABLE",
-      "Add AI_GATEWAY_API_KEY, XAI_API_KEY, GROQ_API_KEY, OLLAMA_BASE_URL, MOONSHOT_API_KEY, or OPENAI_API_KEY to your .env.local.",
+      "The guide is unavailable right now. Try again in a moment.",
       503
     );
   }

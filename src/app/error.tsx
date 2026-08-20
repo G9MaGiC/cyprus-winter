@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import EmergencyLine from "@/components/EmergencyLine";
 
 export default function Error({
   error,
@@ -20,7 +21,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}>
+    <div
+      className={`min-h-screen flex flex-col items-center justify-center ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} pb-[max(2rem,env(safe-area-inset-bottom))] bg-sand`}
+      role="alert"
+    >
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
         <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
           {tError("title")}
@@ -46,11 +50,8 @@ export default function Error({
             {tCommon("goHome")}
           </Link>
         </div>
-        <p className={`${SECTION.blockTop} text-sm text-olive/60 break-words`}>
-          {tCommon("emergency")} <strong>112</strong> · {tCommon("touristInfo")} <strong>1460</strong> ·{" "}
-          {tCommon("ambulance")} <strong>199</strong>
-        </p>
+        <EmergencyLine className={SECTION.blockTop} />
       </div>
-    </main>
+    </div>
   );
 }
