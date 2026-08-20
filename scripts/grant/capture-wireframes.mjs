@@ -12,11 +12,15 @@ const outDir = join(here, "../../docs/grant/wireframes");
 const base = (process.env.GRANT_BASE_URL || "http://localhost:3000").replace(/\/$/, "");
 
 const pages = [
-  { name: "home", path: "/" },
-  { name: "discover", path: "/discover" },
+  { name: "home", path: "/", wait: "Start here" },
+  { name: "discover", path: "/discover", wait: /Tsiakkas|Omodos|Lefkara/i },
+  { name: "discover-cycling", path: "/discover?filter=cycling", wait: /Platres|Prodromos|Akamas/i },
   { name: "plan", path: "/plan" },
   { name: "book-winery", path: "/book/winery/tsiakkas" },
   { name: "bookings", path: "/bookings" },
+  { name: "cycling", path: "/cycling", wait: "Cycling in Cyprus winter" },
+  { name: "wine-route", path: "/wine-routes/krasochoria", wait: "Book a tasting on this route" },
+  { name: "partner", path: "/partner", wait: "Partner portal" },
 ];
 
 const viewports = [
@@ -93,11 +97,10 @@ try {
     for (const route of pages) {
       await page.goto(`${base}${route.path}`, { waitUntil: "domcontentloaded", timeout: 90_000 });
       await waitSettled(page);
-      if (route.name === "discover") {
-        await page.getByRole("link", { name: /Tsiakkas|Omodos|Lefkara/i }).first().waitFor({ timeout: 30_000 });
-      }
-      if (route.name === "home") {
-        await page.getByText("Start here", { exact: true }).first().waitFor({ timeout: 30_000 });
+      if (route.wait) {
+        const loc = page.getByText(route.wait).first();
+        await loc.waitFor({ timeout: 30_000 });
+        await loc.scrollIntoViewIfNeeded();
       }
       await shot(page, `${route.name}-${vp.suffix}.png`);
     }

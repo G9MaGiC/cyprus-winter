@@ -24,6 +24,8 @@ Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cy
 | `COFINANCE.md` | 15% own contribution note |
 | `ANNEX_II.md` | Captions for wireframe PDF |
 | `wireframes/*.png` | Screenshots labelled as prototype wireframes (desktop 1280 + 390px) |
+| `PRODUCTION_HEALTH.md` | Live public `/api/health` capture — currently `productionReady: false` |
+| `production-health-public.json` | Machine-readable public health slice (no secrets) |
 | `G2_PARTNER_PORTAL_SPEC.md` | Months 0–6 workplan; thin `/partner` MVP is in code (in-memory overlay) |
 | `CV_PLACEHOLDER.md` | Who must file CVs — no invented people |
 
@@ -47,6 +49,10 @@ Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cy
 
 ```bash
 npm run grant:wireframes
+# or from the live prototype:
+GRANT_BASE_URL=https://cyprus-winter.vercel.app npm run grant:wireframes
+
+npm run grant:health
 ```
 
-Requires the app on `http://localhost:3000` (or `GRANT_BASE_URL`).
+Requires the app on `http://localhost:3000` (or `GRANT_BASE_URL`). Health recapture writes `production-health-public.json` and will not invent `productionReady: true`.

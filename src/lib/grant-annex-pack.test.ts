@@ -26,7 +26,8 @@ describe("PRE-SEED annex kit (G0)", () => {
     expect(partB).toMatch(/Do No Significant Harm|DNSH/);
     expect(partB).toMatch(/Visit Cyprus/);
     expect(partB).toMatch(/official template/);
-    expect(partB).not.toMatch(/blockchain/i);
+    expect(partB).toMatch(/thin `\/partner`/i);
+    expect(partB).not.toMatch(/no partner UI/i);
   });
 
   it("keeps DNSH free of fake carbon numbers", () => {
@@ -44,12 +45,26 @@ describe("PRE-SEED annex kit (G0)", () => {
     expect(spec).not.toMatch(/replace Bearer/i);
   });
 
-  it("has Annex II wireframes for home, Discover, Plan, Book, Ask AI, and Bookings at two widths", () => {
+  it("records live public health without claiming productionReady true", () => {
+    const evidence = JSON.parse(read("production-health-public.json")) as {
+      url: string;
+      public: { productionReady: boolean };
+    };
+    expect(evidence.url).toMatch(/\/api\/health$/);
+    expect(evidence.public.productionReady).toBe(false);
+    expect(read("PRODUCTION_HEALTH.md")).toMatch(/productionReady.*false/i);
+    expect(read("PRODUCTION_HEALTH.md").toLowerCase()).not.toMatch(/productionready:\s*true/);
+    expect(read("production-health-public.json")).not.toMatch(/UPSTASH|HEALTH_SECRET|hint/i);
+  });
+
+  it("has Annex II wireframes for home, Discover, Plan, Book, Ask AI, Bookings, cycling, wine route, and partner at two widths", () => {
     const shots = [
       "home-1280.png",
       "home-390.png",
       "discover-1280.png",
       "discover-390.png",
+      "discover-cycling-1280.png",
+      "discover-cycling-390.png",
       "plan-1280.png",
       "plan-390.png",
       "book-winery-1280.png",
@@ -58,6 +73,12 @@ describe("PRE-SEED annex kit (G0)", () => {
       "ask-ai-390.png",
       "bookings-1280.png",
       "bookings-390.png",
+      "cycling-1280.png",
+      "cycling-390.png",
+      "wine-route-1280.png",
+      "wine-route-390.png",
+      "partner-1280.png",
+      "partner-390.png",
     ];
     for (const file of shots) {
       expect(existsSync(join(root, "wireframes", file)), file).toBe(true);

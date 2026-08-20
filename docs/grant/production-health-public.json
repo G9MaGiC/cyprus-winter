@@ -1,0 +1,10 @@
+{
+  "capturedAt": "2026-08-20T14:49:50.533Z",
+  "url": "https://cyprus-winter.vercel.app/api/health",
+  "httpStatus": 503,
+  "public": {
+    "ok": false,
+    "message": "Unavailable",
+    "productionReady": false
+  }
+}

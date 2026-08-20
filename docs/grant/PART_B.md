@@ -38,7 +38,7 @@ We will **not** add on-chain tourism, golf, weddings, or diving to chase Deputy 
 
 | | Helpful | Harmful |
 |--|---------|---------|
-| **Internal** | **S:** Working Plan→Book funnel, trail reports, winery/guide requests, HMAC booking lookup, 7 locales (beta `he`/`fr`/`ro`), cycling hub, operational wine-route hours, admin KPI export. **W:** Production Upstash/Supabase still an ops gate; tasting-room photos still partner-gated; legal pages not translator-reviewed in beta locales; no partner UI to accept/decline requests. |
+| **Internal** | **S:** Working Plan→Book funnel, trail reports, winery/guide requests, HMAC booking lookup, 7 locales (beta `he`/`fr`/`ro`), cycling hub, operational wine-route hours, admin KPI export, thin `/partner` accept/decline. **W:** Live `GET /api/health` on `cyprus-winter.vercel.app` still returns `productionReady: false` (Upstash/Supabase ops); partner overlay is in-memory; tasting-room photos still partner-gated; legal pages not translator-reviewed in beta locales. |
 | **External** | **O:** PRE-SEED international-startup window to 11 Sep 2026; Strategy 2035 year-round / accessibility / cycling; ReTour (CSTI/UNRF) as a later demonstrator. **T:** OTAs could add winter SKUs; DMO apps; evaluators reading us as a brochure; DNSH fail if we fake green numbers. |
 
 ### 1.4 Maturity (TRL)
@@ -86,7 +86,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 
 | WP | Months | Outcome | Already in prototype? |
 |----|--------|---------|------------------------|
-| WP1 Production gate | 0–3 | Upstash + Supabase; `productionReady: true`; Sentry | Health evidence path shipped; **secrets still ops** |
+| WP1 Production gate | 0–3 | Upstash + Supabase; `productionReady: true`; Sentry | Public health captured **false** (`docs/grant/PRODUCTION_HEALTH.md`); secrets still ops |
 | WP2 Partner portal | 0–6 | Hours, hero URL, accept/decline on existing bookings | Thin `/partner` MVP shipped; durable overlay + magic-link still post-award |
 | WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Chrome + funnel editorial shipped; legal pending |
 | WP4 Visible intelligence | 0–12 | Accessibility/cycling/wine-route/plan DNSH screenshots | Shipped (G3–G8) |
