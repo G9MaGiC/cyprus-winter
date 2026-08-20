@@ -17,6 +17,12 @@ describe("PRE-SEED annex kit (G0)", () => {
     expect(readme).toMatch(/\[HOST ORGANISATION/);
   });
 
+  it("pitch records live productionReady false and does not claim IRIS submitted", () => {
+    const pitch = readFileSync(join(process.cwd(), "GRANT_PITCH.md"), "utf8");
+    expect(pitch).toMatch(/productionReady:\s*\*\*false\*\*|productionReady: false/);
+    expect(pitch.toLowerCase()).not.toMatch(/iris shows submitted/);
+  });
+
   it("drafts Part B against Excellence, Added value, Implementation, SWOT, and DNSH", () => {
     const partB = read("PART_B.md");
     expect(partB).toMatch(/Excellence/);
@@ -83,5 +89,9 @@ describe("PRE-SEED annex kit (G0)", () => {
     for (const file of shots) {
       expect(existsSync(join(root, "wireframes", file)), file).toBe(true);
     }
+    expect(existsSync(join(root, "ANNEX_II.pdf")), "ANNEX_II.pdf").toBe(true);
+    const pdf = readFileSync(join(root, "ANNEX_II.pdf"));
+    expect(pdf.byteLength).toBeGreaterThan(50_000);
+    expect(pdf.subarray(0, 5).toString("utf8")).toBe("%PDF-");
   });
 });

@@ -2,7 +2,7 @@
 
 ICT annex: screenshots of the **live prototype**, labelled as wireframes of current structure. Two widths: **1280** (desktop) and **390** (mobile). Recapture with `npm run grant:wireframes`.
 
-Export this table plus the PNGs to a single PDF for IRIS. Do not include admin secrets, guest PII, or health bearer dumps in the PDF.
+Export this table plus the PNGs to a single PDF for IRIS (`npm run grant:annex-pdf` → `docs/grant/ANNEX_II.pdf`). Do not include admin secrets, guest PII, or health bearer dumps in the PDF.
 
 | File | Screen | Why evaluators should see it |
 |------|--------|------------------------------|

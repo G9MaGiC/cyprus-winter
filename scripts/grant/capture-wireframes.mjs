@@ -11,7 +11,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const outDir = join(here, "../../docs/grant/wireframes");
 const base = (process.env.GRANT_BASE_URL || "http://localhost:3000").replace(/\/$/, "");
 
-const pages = [
+const allPages = [
   { name: "home", path: "/", wait: "Start here" },
   { name: "discover", path: "/discover", wait: /Tsiakkas|Omodos|Lefkara/i },
   { name: "discover-cycling", path: "/discover?filter=cycling", wait: /Platres|Prodromos|Akamas/i },
@@ -22,6 +22,18 @@ const pages = [
   { name: "wine-route", path: "/wine-routes/krasochoria", wait: "Book a tasting on this route" },
   { name: "partner", path: "/partner", wait: "Partner portal" },
 ];
+
+const shotFilter = (process.env.GRANT_SHOTS || "")
+  .split(",")
+  .map((name) => name.trim())
+  .filter(Boolean);
+const pages = shotFilter.length
+  ? allPages.filter((route) => shotFilter.includes(route.name))
+  : allPages;
+const captureAskAi = shotFilter.length === 0 || shotFilter.includes("ask-ai");
+if (shotFilter.length && pages.length === 0 && !captureAskAi) {
+  throw new Error(`GRANT_SHOTS matched nothing: ${shotFilter.join(", ")}`);
+}
 
 const viewports = [
   { suffix: "1280", width: 1280, height: 800 },
@@ -79,6 +91,9 @@ async function openAskAi(page) {
 }
 
 async function shot(page, file) {
+  await page.addStyleTag({
+    content: `nextjs-portal, [data-next-badge-root], #__next-build-watcher { display: none !important; }`,
+  });
   await page.screenshot({ path: join(outDir, file), fullPage: false });
 }
 
@@ -105,10 +120,12 @@ try {
       await shot(page, `${route.name}-${vp.suffix}.png`);
     }
 
-    await page.goto(`${base}/discover`, { waitUntil: "domcontentloaded", timeout: 90_000 });
-    await waitSettled(page);
-    await openAskAi(page);
-    await shot(page, `ask-ai-${vp.suffix}.png`);
+    if (captureAskAi) {
+      await page.goto(`${base}/discover`, { waitUntil: "domcontentloaded", timeout: 90_000 });
+      await waitSettled(page);
+      await openAskAi(page);
+      await shot(page, `ask-ai-${vp.suffix}.png`);
+    }
     await context.close();
   }
 } finally {

@@ -33,6 +33,29 @@ describe("getAttractionImage", () => {
     expect(getAttractionImage("tsiakkas", "winery")).toBe(resolveWineryImage("tsiakkas"));
     expect(getAttractionImage("tsiakkas", "winery")).toBe("/images/cyprus/winery-tsiakkas.jpg");
   });
+
+  it("maps cycling hub places to existing regional files instead of one identical trail fallback", () => {
+    expect(getAttractionImage("troodos-cycling-hub", "nature")).toBe("/images/cyprus/cyprus-trail-troodos.jpg");
+    expect(getAttractionImage("akamas-latchi-cycling", "nature")).toBe("/images/cyprus/cyprus-trail-coastal.jpg");
+    expect(getAttractionImage("limassol-coastal-cycle", "nature")).toBe("/images/cyprus/cyprus-governors-beach.jpg");
+    expect(getAttractionImage("pitsilia-cycling-loop", "nature")).toBe("/images/cyprus/cyprus-vineyard-mountain.jpg");
+    expect(getAttractionImage("krasochoria-gravel-loop", "nature")).toBe(
+      "/images/cyprus/cyprus-vineyard-lofou-january.jpg"
+    );
+    expect(getAttractionImage("silikou-valley-trail", "nature")).toBe("/images/cyprus/cyprus-vineyard-silikou.jpg");
+    const urls = [
+      "troodos-cycling-hub",
+      "akamas-latchi-cycling",
+      "limassol-coastal-cycle",
+      "pitsilia-cycling-loop",
+      "krasochoria-gravel-loop",
+      "silikou-valley-trail",
+    ].map((id) => getAttractionImage(id, "nature"));
+    expect(new Set(urls).size).toBe(urls.length);
+    for (const url of urls) {
+      expect(existsSync(join(process.cwd(), "public", url)), url).toBe(true);
+    }
+  });
 });
 
 describe("winery image files on disk (G10)", () => {

@@ -15,12 +15,12 @@
 
 ## The solution
 
-**Cyprus Winter** is not a DMO clone. It is a **winter decision-support product**: curated places and trails, conditions and hours, a Plan funnel, winery/guide requests, and an AI guide grounded in that data (not a generic chatbot).
+**Cyprus Winter** is not a DMO clone. It is a **winter decision-support product**: curated places and trails, conditions and hours, a Plan funnel, winery/guide requests, a thin partner portal (accept/decline + hours), and an AI guide grounded in that data (not a generic chatbot).
 
 1. **Extends the season** — Troodos, wine villages, culture, cycling in the cool months  
-2. **Gets SMEs booked** — tasting and guide requests; email lookup across devices  
+2. **Gets SMEs booked** — tasting and guide requests; email lookup across devices; `/partner` accept/decline  
 3. **DNSH / year-round strategy** — shifts demand off the July peak; skip closed or snowed trails  
-4. **International** — `en`, `el`, `de`, `pl` complete; `he` / `fr` / `ro` chrome in beta  
+4. **International** — `en`, `el`, `de`, `pl` complete; `he` / `fr` / `ro` chrome + funnel editorial in beta (legal body still EN)  
 
 ## Impact (18-month PRE-SEED targets)
 
@@ -29,7 +29,7 @@
 | Live SME partners (tastings/guides) | 25 wineries + 15 guides |
 | Itineraries with ≥1 rural/mountain stop | Majority of saved plans |
 | Markets with non-English chrome | DE, EL, PL, HE (IL) |
-| Prototype evidence | Public `GET /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; funnel stats export |
+| Prototype evidence | Public `GET /api/health` captured 20 Aug 2026: **`productionReady: false`** (Upstash/Supabase still ops). Target is `true` plus Bearer `HEALTH_SECRET` dump. Funnel stats export already ships. |
 
 ## Alignment
 
@@ -43,7 +43,7 @@ CSTI · wine producers (pilot cellars) · local guides · optional university pa
 
 ## Ask
 
-**€119,999 PRE-SEED** to finish the partner portal, Hebrew (then FR/RO) editorial, accessibility/cycling hubs, and measurable SME KPIs — 15% co-financed by the company.
+**€119,999 PRE-SEED** to harden production (`productionReady`), durable partner overlay + magic-link, Hebrew legal body, and measurable SME KPIs — 15% co-financed by the company. Thin `/partner`, cycling hub, wine-route booking, Discover filters, and KPI export are already in the prototype.
 
 ---
 

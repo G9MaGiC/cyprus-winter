@@ -180,9 +180,9 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 | **G0** | PRE-SEED IRIS pack (annex, CVs, wireframes, DNSH) | Implementation | `docs/grant/` draft + intelligence wireframes; IRIS/CVs still human | Partial |
 | **G1** | Confirm production `GET /api/health` → `productionReady` | Prototype demonstrated | Public JSON captured 20 Aug 2026: **`productionReady: false`** (`docs/grant/PRODUCTION_HEALTH.md`) | Ops (Vercel env) |
 | **G2** | Partner portal: hours, photos, accept/decline tasting | SME impact, innovation | Thin `/partner` + API; in-memory overlay; guest lookup-token unchanged | Thin MVP |
-| **G3** | Discover filters: Accessible, Family, Cycling | DMT accessibility + sports | `accessibility` / `bestFor` in data; buried on detail | Medium |
-| **G4** | Surface trail conditions + winter hours on cards | Excellence (intelligence) | Reports API + detail copy | Medium |
-| **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `src/data/activity-places.ts` cycling IDs | Medium |
+| **G3** | Discover filters: Accessible, Family, Cycling | DMT accessibility + sports | First-class chips + `/discover?filter=cycling` | Done |
+| **G4** | Surface trail conditions + winter hours on cards | Excellence (intelligence) | Reports API + card copy | Done |
+| **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `/cycling` hub + regional card images | Done |
 | **G6** | Wine routes as operational (hours, bookable stops) | Route ecosystems / wine gastronomy | `bookableWineryIds` + hours/Book strip on `/wine-routes/[slug]` | Done |
 | **G7** | Finish `he` editorial (then `fr`/`ro` body) | International orientation | Home/Discover/Plan/Book + privacy summary; legal body still EN; beta labels remain | Done (legal pending) |
 | **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan strip: villages, trail conditions, airport buses only | Done |

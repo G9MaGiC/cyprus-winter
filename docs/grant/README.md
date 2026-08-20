@@ -23,6 +23,7 @@ Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cy
 | `DNSH.md` | Compatibility gate paragraph |
 | `COFINANCE.md` | 15% own contribution note |
 | `ANNEX_II.md` | Captions for wireframe PDF |
+| `ANNEX_II.pdf` | IRIS upload: captions + PNGs (`npm run grant:annex-pdf`) |
 | `wireframes/*.png` | Screenshots labelled as prototype wireframes (desktop 1280 + 390px) |
 | `PRODUCTION_HEALTH.md` | Live public `/api/health` capture — currently `productionReady: false` |
 | `production-health-public.json` | Machine-readable public health slice (no secrets) |
@@ -49,10 +50,13 @@ Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cy
 
 ```bash
 npm run grant:wireframes
+# subset (e.g. after cycling image map):
+GRANT_SHOTS=cycling,discover-cycling npm run grant:wireframes
 # or from the live prototype:
 GRANT_BASE_URL=https://cyprus-winter.vercel.app npm run grant:wireframes
 
 npm run grant:health
+npm run grant:annex-pdf
 ```
 
 Requires the app on `http://localhost:3000` (or `GRANT_BASE_URL`). Health recapture writes `production-health-public.json` and will not invent `productionReady: true`.

@@ -1286,6 +1286,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-153 | i18n | `he`/`fr`/`ro` home, Discover, Plan, Book, and privacy summary still English | Priority editorial in those locales; full privacy/terms body left English for legal review; beta labels kept |
 | BUG-154 | Images | P0 winery heroes still generic or village-mismatched (Tsiakkas on mountain stock; Mystes on Gerolemo Omodos tasting; Krasochoria on summer Troodos) | CC village vineyards: Pelendri (`winery-tsiakkas.jpg`), Silikou Commandaria, January Lofou for Krasochoria; Mystes uses Laona fallback. Remaining verified partners still regional until tasting-room assets arrive. |
 | BUG-155 | Ops / Security | Production `/api/health` hid `productionReady`; docs curled checks without `HEALTH_SECRET` | Public payload includes `productionReady` only; Bearer dump returns annex checks without hints or env values |
+| BUG-156 | Images / Cycling | Cycling hub cards all used the same Troodos trail fallback | Regional existing assets: Troodos trail, Akamas coast, Limassol beach, Pitsilia mountain vineyard, Krasochoria January Lofou, Silikou valley |
 
 **Image attributions (BUG-125, BUG-126, BUG-136, BUG-154):**
 

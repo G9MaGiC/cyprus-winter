@@ -114,6 +114,22 @@ export function getAttractionImage(id: string, type: string): string {
     "sentio": `${local}/cyprus-village-omodos.jpg`,
     "santo-restaurant": `${local}/cyprus-governors-beach.jpg`,
     "seasons-oriental": `${local}/cyprus-governors-beach.jpg`, // Four Seasons Limassol
+    "troodos-cycling-hub": `${local}/cyprus-trail-troodos.jpg`,
+    "prodromos-dam-cycling": `${local}/cyprus-trail-waterfall.jpg`,
+    "pitsilia-cycling-loop": `${local}/cyprus-vineyard-mountain.jpg`,
+    "kellaki-kyparissia-ridge": `${local}/cyprus-vineyard-mountain.jpg`,
+    "krasochoria-gravel-loop": `${local}/cyprus-vineyard-lofou-january.jpg`,
+    "trimiklini-dam-cycling": `${local}/cyprus-trail-troodos.jpg`,
+    "xyliatos-dam-cycle": `${local}/cyprus-trail-troodos.jpg`,
+    "potamia-dam-cycling": `${local}/cyprus-trail-troodos.jpg`,
+    "akamas-latchi-cycling": `${local}/cyprus-trail-coastal.jpg`,
+    "limassol-coastal-cycle": `${local}/cyprus-governors-beach.jpg`,
+    "silikou-valley-trail": `${local}/cyprus-vineyard-silikou.jpg`,
+    "larnaca-village-coastal-cycle": `${local}/cyprus-lara-bay.jpg`,
+    alona: `${local}/cyprus-village-omodos.jpg`,
+    kellaki: `${local}/cyprus-village-omodos.jpg`,
+    trimiklini: `${local}/cyprus-village-omodos.jpg`,
+    prodromos: `${local}/cyprus-village-omodos.jpg`,
   };
   const fallbacks: Record<string, string> = {
     beach: `${local}/cyprus-governors-beach.jpg`,     // south coast

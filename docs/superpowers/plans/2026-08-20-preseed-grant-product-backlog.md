@@ -36,7 +36,7 @@
 **Files:** `GRANT_STRATEGY.md`, `GRANT_PITCH.md`, PDF annexes (not in git unless the team wants `/docs/grant/`)
 
 - [ ] Register Host Organisation on [IRIS](https://iris.research.org.cy); confirm startup definition and no prior PRE-SEED/SEED as HO
-- [x] Screenshot prototype: `/`, `/discover`, `/plan`, `/book/winery/[id]`, Ask AI, `/bookings` (desktop + 390px). Label as Annex II wireframes (`docs/grant/wireframes/`, recapture `npm run grant:wireframes`)
+- [x] Screenshot prototype: `/`, `/discover`, `/plan`, `/book/winery/[id]`, Ask AI, `/bookings` (desktop + 390px). Label as Annex II wireframes (`docs/grant/wireframes/`, recapture `npm run grant:wireframes`; PDF `npm run grant:annex-pdf`)
 - [x] Extra intelligence shots: `/cycling`, `/wine-routes/krasochoria`, `/discover?filter=cycling`, `/partner` (no secrets)
 - [x] Working Part B draft in `docs/grant/PART_B.md` (SOTA vs Visit Cyprus / OTAs / generic AI; SWOT; 18-month plan; DNSH). **Must be pasted into the official unmodified IRIS template** (≤20 pages)
 - [x] CV placeholder + 15% co-finance note (`docs/grant/CV_PLACEHOLDER.md`, `COFINANCE.md`) — no invented people or bank accounts
