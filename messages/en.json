@@ -646,6 +646,13 @@
       }
     }
   },
+  "manifest": {
+    "name": "Cyprus Winter — Plan Ahead or Start Exploring",
+    "description": "Cyprus winter: trails, villages, heritage, events. Plan your trip or explore when you land. Trail conditions, winery tastings, local secrets.",
+    "shortcuts": {
+      "rightNowDescription": "What's good near you — weather and location-based suggestions"
+    }
+  },
   "error": {
     "title": "A small glitch",
     "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",

@@ -1380,6 +1380,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-180 | SEO | `/book/guide/[id]` had no JSON-LD | `TravelAgency` schema via `toSafeJsonForScript` |
 | BUG-181 | API (DR-008 leftover) | weather / right-now / trail-reports / bookings success bodies still ad hoc | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged; guest GET auth unchanged |
 | BUG-182 | Nav (DR-028) | Hub pages (`/beaches`, `/villages`, `/wineries`, `/cycling`, `/wine-routes`) did not highlight Discover | `isActive` maps those hubs to `/discover` |
+| BUG-183 | PWA / i18n | Static EN `public/manifest.json`; installs ignored page locale | Locale route `/manifests/[locale]` + layout metadata; keys in `messages/*` |
 
 ### Still open — ops / human (do not invent)
 
@@ -1399,5 +1400,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |------|----------|-------|
 | Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
 | Cookie-setting session routes (`admin/session`, `partner/session`) keep hand-rolled `{ ok: true }` + `Set-Cookie` | P3 | Already `{ ok: true }`; leave alone unless consolidating cookie helpers |
+| Locale-aware PWA manifest | — | Done (BUG-183) |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

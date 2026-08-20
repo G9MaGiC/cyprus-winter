@@ -646,6 +646,13 @@
       }
     }
   },
+  "manifest": {
+    "name": "Cyprus Winter — Planifiez ou explorez",
+    "description": "Chypre en hiver : sentiers, villages, patrimoine, événements. Planifiez le voyage ou explorez à l’arrivée. Conditions des sentiers, dégustations, secrets locaux.",
+    "shortcuts": {
+      "rightNowDescription": "Ce qui vaut le coup près de vous — suggestions selon météo et lieu"
+    }
+  },
   "error": {
     "title": "A small glitch",
     "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",

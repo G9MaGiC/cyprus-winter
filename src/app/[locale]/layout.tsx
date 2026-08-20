@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { pwaManifestHref } from "@/lib/pwa-manifest";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
@@ -14,13 +15,14 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations("meta");
+  const tHome = await getTranslations("home");
   const alternates = buildStrategyAAlternates("/");
 
   return {
     metadataBase: new URL(SITE_URL),
     title: t("homeTitle"),
     description: t("homeDescription"),
-    manifest: "/manifest.json",
+    manifest: pwaManifestHref(locale),
     keywords: ["Cyprus winter", "winter in Cyprus", "Cyprus trails", "Cyprus wineries", "Troodos hiking", "winter sun Europe", "Cyprus trip planning", "what to do Cyprus winter", "Cyprus ski", "Cyprus winter events", "Cyprus winter family", "Cyprus Venetian bridges", "Cyprus waterfalls winter"],
     alternates,
     openGraph: {
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     appleWebApp: {
       capable: true,
       statusBarStyle: "default",
-      title: "Cyprus Winter",
+      title: tHome("title"),
     },
   };
 }

@@ -646,6 +646,13 @@
       }
     }
   },
+  "manifest": {
+    "name": "Cyprus Winter — Planifică sau explorează",
+    "description": "Iarna în Cipru: trasee, sate, patrimoniu, evenimente. Planifică călătoria sau explorează la aterizare. Condiții pe trasee, degustări, secrete locale.",
+    "shortcuts": {
+      "rightNowDescription": "Ce merită aproape de tine — sugestii după vreme și locație"
+    }
+  },
   "error": {
     "title": "A small glitch",
     "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",

@@ -646,6 +646,13 @@
       }
     }
   },
+  "manifest": {
+    "name": "Cyprus Winter — תכננו מראש או התחילו לחקור",
+    "description": "חורף בקפריסין: שבילים, כפרים, מורשת, אירועים. תכננו את הטיול או חקרו עם הנחיתה. תנאי שבילים, טעימות יין, סודות מקומיים.",
+    "shortcuts": {
+      "rightNowDescription": "מה כדאי לידכם — הצעות לפי מזג אוויר ומיקום"
+    }
+  },
   "error": {
     "title": "A small glitch",
     "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",

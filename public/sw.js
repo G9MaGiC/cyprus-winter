@@ -1,5 +1,5 @@
 const CACHE_NAME = "cyprus-winter-shell-v1";
-const PRECACHE_URLS = ["/", "/plan", "/discover", "/trails", "/manifest.json"];
+const PRECACHE_URLS = ["/", "/plan", "/discover", "/trails", "/manifests/en"];
 
 function safeNotificationUrl(value) {
   if (typeof value !== "string") return "/";

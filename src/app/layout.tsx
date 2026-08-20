@@ -36,35 +36,41 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+import { pwaManifestHref } from "@/lib/pwa-manifest";
+
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Cyprus Winter | Mediterranean Winter Escape",
-  description:
-    "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan trails, wineries, villages. Free trip planner.",
-  manifest: "/manifest.json",
-  keywords: ["Cyprus winter", "winter in Cyprus", "Cyprus trails", "Cyprus wineries", "Troodos hiking", "winter sun Europe", "Cyprus trip planning", "what to do Cyprus winter"],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const tHome = await getTranslations({ locale, namespace: "home" });
+  return {
+    metadataBase: new URL(SITE_URL),
     title: "Cyprus Winter | Mediterranean Winter Escape",
-    description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries, ancient sites. Plan or explore when you land.",
-    type: "website",
-    url: SITE_URL,
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Kourion ancient theatre above Mediterranean coast, Cyprus winter" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Cyprus Winter | Mediterranean Winter Escape",
-    description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries. Plan or explore when you land.",
-    images: [ogImage],
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Cyprus Winter",
-  },
-  alternates: buildStrategyAAlternates("/"),
-};
+    description:
+      "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan trails, wineries, villages. Free trip planner.",
+    manifest: pwaManifestHref(locale),
+    keywords: ["Cyprus winter", "winter in Cyprus", "Cyprus trails", "Cyprus wineries", "Troodos hiking", "winter sun Europe", "Cyprus trip planning", "what to do Cyprus winter"],
+    openGraph: {
+      title: "Cyprus Winter | Mediterranean Winter Escape",
+      description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries, ancient sites. Plan or explore when you land.",
+      type: "website",
+      url: SITE_URL,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: "Kourion ancient theatre above Mediterranean coast, Cyprus winter" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Cyprus Winter | Mediterranean Winter Escape",
+      description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries. Plan or explore when you land.",
+      images: [ogImage],
+    },
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: tHome("title"),
+    },
+    alternates: buildStrategyAAlternates("/"),
+  };
+}
 
 const webSiteSchema = {
   "@context": "https://schema.org",

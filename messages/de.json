@@ -646,6 +646,13 @@
       }
     }
   },
+  "manifest": {
+    "name": "Cyprus Winter — Vorausplanen oder entdecken",
+    "description": "Zypern im Winter: Trails, Dörfer, Kulturerbe, Events. Plane deine Reise oder entdecke vor Ort. Trail-Bedingungen, Weinproben, lokale Geheimtipps.",
+    "shortcuts": {
+      "rightNowDescription": "Was sich in der Nähe lohnt — Vorschläge nach Wetter und Standort"
+    }
+  },
   "error": {
     "title": "Ein kleines Problem",
     "body": "Ein kleines Problem. Versuchen Sie es erneut oder gehen Sie zur Startseite—Wanderwege, Dörfer und Verkostungen warten auf Sie.",

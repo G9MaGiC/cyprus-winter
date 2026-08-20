@@ -646,6 +646,13 @@
       }
     }
   },
+  "manifest": {
+    "name": "Cyprus Winter — Zaplanuj lub zacznij odkrywać",
+    "description": "Zima na Cyprze: szlaki, wioski, dziedzictwo, wydarzenia. Zaplanuj wyjazd lub odkrywaj po przylocie. Warunki na szlakach, degustacje win, lokalne sekrety.",
+    "shortcuts": {
+      "rightNowDescription": "Co warto blisko Ciebie — propozycje według pogody i lokalizacji"
+    }
+  },
   "error": {
     "title": "Drobna usterka",
     "body": "Drobna usterka. Spróbuj ponownie lub wróć na stronę główną—szlaki, wioski i degustacje nadal na Ciebie czekają.",

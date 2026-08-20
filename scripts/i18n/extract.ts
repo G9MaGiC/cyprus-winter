@@ -1,6 +1,6 @@
 /**
  * i18n extraction script.
- * Extracts user-facing strings from data files, lib configs, TSX components, and manifest.
+ * Extracts user-facing strings from data files, lib configs, TSX components, and messages manifest keys.
  * Output: scripts/i18n/strings.json (flat key-value for translation)
  * Run: npm run i18n:extract (uses tsx)
  */
@@ -346,12 +346,15 @@ function extractHomeHero(out: Record<string, string>): void {
 }
 
 function extractManifest(out: Record<string, string>): void {
-  const p = path.join(PROJECT_ROOT, "public/manifest.json");
+  const p = path.join(PROJECT_ROOT, "messages/en.json");
   if (!fs.existsSync(p)) return;
-  const manifest = JSON.parse(fs.readFileSync(p, "utf-8"));
-  if (manifest.name) add(out, "manifest.name", manifest.name);
-  if (manifest.short_name) add(out, "manifest.short_name", manifest.short_name);
-  if (manifest.description) add(out, "manifest.description", manifest.description);
+  const messages = JSON.parse(fs.readFileSync(p, "utf-8")) as {
+    manifest?: { name?: string; description?: string };
+    home?: { title?: string };
+  };
+  if (messages.manifest?.name) add(out, "manifest.name", messages.manifest.name);
+  if (messages.home?.title) add(out, "manifest.short_name", messages.home.title);
+  if (messages.manifest?.description) add(out, "manifest.description", messages.manifest.description);
 }
 
 async function main(): Promise<void> {
