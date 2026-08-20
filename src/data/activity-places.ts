@@ -921,6 +921,9 @@ export const activityPlaces: Attraction[] = [
       "Mackenzie Beach curves along Larnaca's southern shore—a shallow bay that catches afternoon wind and winter kite sessions when the forecast aligns. The sand shelves gently; on calm days snorkellers and paddleboarders explore clear patches in the bay. The Zenobia wreck lies offshore for divers—a separate marina trip, not a shore swim. Local schools run SUP and intro kite lessons when wind and season align. Finikoudes promenade and the salt lake flamingos are minutes away by car.",
     winterTip: "Check wind forecast for kite; calm mornings better for snorkel and SUP. 3mm wetsuit Dec to Feb. Zenobia dives book separately from Larnaca marina.",
     localSecret: "Calm weekday mornings: walk Finikoudes pier first, then Mackenzie for an uncrowded paddle before the wind builds.",
+    openingHours: "Open shoreline year-round. Schools and kit rental seasonal.",
+    accessibility:
+      "Fully accessible in bathing season (DMT 2025: floating wheelchair at McKenzie). Promenade and car parks year-round; confirm sea equipment in winter.",
     transport: "5 min south of Larnaca centre; airport 10 min",
     parking: "Mackenzie Beach public car parks",
     latitude: 34.883,
@@ -939,11 +942,14 @@ export const activityPlaces: Attraction[] = [
       "840 hectares of pine and scrub on Nicosia's south-eastern edge. Twenty kilometres of walking trails, a sixteen-kilometre cycling route, lake, and botanical garden. Free entry; winter rain turns the paths quiet and green. The capital's quickest forest reset.",
     type: "nature",
     highlights: ["Forest trails", "Cycling route", "Botanical garden"],
-    bestFor: ["Wellness", "Walking", "Cycling"],
+    bestFor: ["Wellness", "Walking", "Cycling", "Families"],
     backstory:
       "Athalassa National Forest Park sits where Nicosia meets the Mesaoria foothills—pine, cypress, and maquis on rolling ground that feels far from the capital's traffic once you pass the gate. Twenty kilometres of trails loop through trees and open scrub; a sixteen-kilometre cycling route shares hard-pack and gravel surfaces. A lake, visitor centre, and free botanical garden anchor the main entrance. Entry is free; the visitor centre charges a nominal fee. Winter brings cooler air and occasional rain—paths empty, birds active, the kind of hour-long reset locals use before lunch in the old town. Machairas and Klirou boulders are an hour away if you want to extend the day; Leventis Museum and Ledra Street are twenty minutes back toward centre.",
     winterTip: "After rain, stick to main tracks—side paths muddy. Visitor centre open weekdays; check hours off-season. Layer for cycling descents.",
     localSecret: "Botanical garden first, then the lake loop counter-clockwise—most visitors stop at the café and turn back.",
+    openingHours: "Park open dawn to dusk. Visitor centre hours vary — call ahead off-season.",
+    accessibility:
+      "Main excursion area has paved paths and facilities for disabled visitors (Department of Forests). Stick to main tracks after rain.",
     transport: "15 min from Nicosia centre via Aglantzia",
     parking: "Main entrance car park; free",
     latitude: 35.143,

@@ -284,6 +284,33 @@ describe("discover data audit — factual anchors (activity)", () => {
     expect(b?.winterTip).toMatch(/border/i);
   });
 
+  it("uses Department of Antiquities / DMT hours and access, not invented daily gates", () => {
+    const choiro = ancientSites.find((a) => a.id === "choirokoitia");
+    expect(choiro?.openingHours).toMatch(/Daily 8:30 to 17:00 \(winter/);
+    expect(choiro?.openingHours).not.toMatch(/closed Mon/i);
+    expect(choiro?.accessibility).toMatch(/reconstructed dwellings/i);
+    expect(choiro?.accessibility).toMatch(/not for limited mobility/i);
+
+    const palaipafos = ancientSites.find((a) => a.id === "palaipafos");
+    expect(palaipafos?.openingHours).toMatch(/closed Mon/i);
+
+    const kition = ancientSites.find((a) => a.id === "kition");
+    expect(kition?.openingHours).toMatch(/Mon to Fri 8:30 to 16:00/);
+    expect(kition?.openingHours).toMatch(/Closed Sat and Sun/);
+    expect(kition?.accessibility).toMatch(/Wheelchair accessible/i);
+
+    const kourion = ancientSites.find((a) => a.id === "kourion");
+    expect(kourion?.accessibility).toMatch(/wheelchair accessible/i);
+
+    const asinou = monasteries.find((m) => m.id === "panagia-asinou");
+    expect(asinou?.openingHours).toMatch(/16 Sep to 15 Apr/);
+    expect(asinou?.accessibility).toMatch(/Wheelchair accessible/i);
+
+    const aliki = natureSites.find((n) => n.id === "larnaca-aliki");
+    expect(aliki?.bestFor).toEqual(expect.arrayContaining(["Families", "Gentle walks"]));
+    expect(aliki?.accessibility).toMatch(/Paved paths/);
+  });
+
   it("Climb Cyprus indoor gym uses activity type", () => {
     expect(activityPlaces.find((p) => p.id === "climb-cyprus-limassol")?.type).toBe(
       "activity"

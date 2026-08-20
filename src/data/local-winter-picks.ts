@@ -8,5 +8,5 @@ export const LOCAL_WINTER_PICK_IDS = [
   "choirokoitia",
   "lefkara",
   "omodos",
-  "larnaca-salt-lake",
+  "larnaca-aliki",
 ] as const;

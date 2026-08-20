@@ -1291,6 +1291,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-158 | Analytics | Funnel counted `trail_view` but the client never sent it | First-party `trail_view` on trail detail; report form and trails index excluded. No invented snow-skip counter |
 | BUG-159 | Analytics / G3 | Accessible / family / cycling filter use was marketing-consent gated, so grant KPIs undercounted | First-party `discover_view` + `discover_filter`; CSV `discover_filter,*`; Annex II shots for accessible and family |
 | BUG-160 | Grant / Annex II | Accessible and family Discover wireframes waited on chip copy, so shots showed pairings + filters with no place photos | Capture waits on card titles (`Pafos Archaeological Site`, `Nissi Beach`) and scrolls `section#id h3`; recapture those PNGs + default Discover |
+| BUG-161 | Data / Discover | Accessible and family categories were thin; coasts/ancient/monasteries lacked sourced hours and access notes | DMT 2025 + Department of Antiquities fields; Kition + Larnaca Salt Lake Discover records; local winter pick is `larnaca-aliki` (not the trail id) |
 
 **Image attributions (BUG-125, BUG-126, BUG-136, BUG-154):**
 

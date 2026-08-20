@@ -42,6 +42,8 @@ export function getAttractionImage(id: string, type: string): string {
     "leventis-museum": `${local}/cyprus-ancient-kourion.jpg`,
     "paphos-castle": `${local}/cyprus-ancient-kourion.jpg`,
     idalion: `${local}/cyprus-ancient-kourion.jpg`,
+    kition: `${local}/cyprus-ancient-kourion.jpg`,
+    "larnaca-aliki": `${local}/cyprus-trail-coastal.jpg`,
     kalopanagiotis: `${local}/cyprus-village-omodos.jpg`,
     lefkara: `${local}/cyprus-lefkara.jpg`,
     polis: `${local}/cyprus-polis.jpg`,

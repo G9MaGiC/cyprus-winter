@@ -7,8 +7,7 @@ describe("expandSearchToken", () => {
     expect(tokens).toContain("lemesos");
   });
 
-  it("includes pafos alias for paphos query", () => {
-    const tokens = expandSearchToken("paphos");
-    expect(tokens.some((t) => t.includes("pafos"))).toBe(true);
+  it("includes kition alias for Larnaca archaeology", () => {
+    expect(expandSearchToken("kition")).toContain("larnaca archaeology");
   });
 });

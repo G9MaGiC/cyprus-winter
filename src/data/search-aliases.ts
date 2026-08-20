@@ -16,7 +16,9 @@ export const SEARCH_ALIAS_EXPANSIONS: Record<string, string[]> = {
   napa: ["napa", "αγία νάπα"],
   platres: ["πλάτρες"],
   kourion: ["curium"],
+  kition: ["kition", "kiti", "larnaca archaeology"],
   kykkos: ["κύκκος"],
+  aliki: ["salt lake", "flamingo", "hala sultan"],
 };
 
 /** Tokens to try when scoring a query token (includes canonical + aliases). */
