@@ -103,7 +103,7 @@
 
 - [x] Same hub pattern as `/wineries` / `/trails` (`HubFooter`, sticky Plan, list from data)
 - [x] Locale `[locale]/cycling` proxy if other hubs have one
-- [ ] **Verify:** `data:validate`, e2e smoke or hub-footer spec if you touch footers
+- [x] **Verify:** `data:validate`, e2e smoke or hub-footer spec if you touch footers
 
 ---
 
