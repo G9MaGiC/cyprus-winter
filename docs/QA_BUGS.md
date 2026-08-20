@@ -1372,6 +1372,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-172 | Bookings (DR-019) | Sync merge kept local `pending` over API `confirmed`/`cancelled` | `mergeBookings` API-wins on id collision; local-only rows still kept |
 | BUG-173 | A11y (DR-016) | SearchBar `role="option"` nested an Add-to-plan link and took focus via tabIndex | Options are non-focusable; Enter/click open detail; Add stays on SearchResultCard |
 | BUG-174 | API (DR-008 leftover) | Success bodies still ad hoc on vapid/track/cron | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged |
+| BUG-175 | Security / SEO | Book tasting JSON-LD used raw `JSON.stringify` (partner hours/description) | `toSafeJsonForScript` on `/book/winery/[id]` |
+| BUG-176 | Analytics (DR-026) | Admin funnel omitted `plan_view` / `plan_share` / `hub_footer_click`; `shop_click` always 0 | Shared `FUNNEL_ORDER` drives counts + stats API |
 
 ### Still open — ops / human (do not invent)
 

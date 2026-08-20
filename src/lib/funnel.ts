@@ -14,6 +14,23 @@ export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
 export type EventSourceBreakdown = Record<string, SourceBreakdownRow[]>;
 
+/** Ordered Discover → Plan → Book events counted for admin stats / KPI export. */
+export const FUNNEL_ORDER = [
+  "page_view",
+  "discover_view",
+  "trail_view",
+  "winery_detail_view",
+  "shop_click",
+  "plan_view",
+  "plan_add",
+  "plan_share",
+  "hub_footer_click",
+  "booking_start",
+  "booking_complete",
+] as const;
+
+export type FunnelEventName = (typeof FUNNEL_ORDER)[number];
+
 export async function getFunnelCountsThisMonth(): Promise<FunnelCounts> {
   const start = new Date();
   start.setDate(1);
@@ -32,13 +49,8 @@ export async function getFunnelCountsInRange(start: Date, end?: Date): Promise<F
   const startIso = start.toISOString();
   const endIso = end?.toISOString();
 
-  const FUNNEL_EVENTS = [
-    "page_view", "discover_view", "trail_view", "winery_detail_view",
-    "plan_add", "booking_start", "booking_complete",
-  ];
-
   const results = await Promise.all(
-    FUNNEL_EVENTS.map(async (event) => {
+    FUNNEL_ORDER.map(async (event) => {
       let q = supabase
         .from("conversion_events")
         .select("*", { count: "exact", head: true })

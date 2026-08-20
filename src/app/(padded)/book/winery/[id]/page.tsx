@@ -4,6 +4,7 @@ import { getPlaceById } from "@/data/index";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { toSafeJsonForScript } from "@/lib/json-script";
 import BookWineryBackLink from "@/components/BookWineryBackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AppLink from "@/components/AppLink";
@@ -266,7 +267,7 @@ export default async function WineryBookPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: toSafeJsonForScript({
             "@context": "https://schema.org",
             "@type": "FoodEstablishment",
             name: winery.name,

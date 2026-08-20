@@ -21,13 +21,17 @@ vi.mock("@/lib/partner-revenue", () => ({
   getPartnerRevenueInRange: vi.fn(),
 }));
 
-vi.mock("@/lib/funnel", () => ({
-  getFunnelCountsInRange: vi.fn(),
-  getEventSourceBreakdownInRange: vi.fn(),
-  getFunnelLocaleBreakdownInRange: vi.fn(),
-  getPlanGeographyBreakdownInRange: vi.fn(),
-  getDiscoverFilterBreakdownInRange: vi.fn(),
-}));
+vi.mock("@/lib/funnel", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/funnel")>();
+  return {
+    ...actual,
+    getFunnelCountsInRange: vi.fn(),
+    getEventSourceBreakdownInRange: vi.fn(),
+    getFunnelLocaleBreakdownInRange: vi.fn(),
+    getPlanGeographyBreakdownInRange: vi.fn(),
+    getDiscoverFilterBreakdownInRange: vi.fn(),
+  };
+});
 
 vi.mock("@/lib/supabase", () => ({
   hasSupabase: vi.fn().mockReturnValue(false),

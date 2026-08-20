@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { getBookingsCountInRange } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
 import { getPartnerRevenueInRange } from "@/lib/partner-revenue";
-import { getEventSourceBreakdownInRange, getFunnelCountsInRange, getFunnelLocaleBreakdownInRange, getPlanGeographyBreakdownInRange, getDiscoverFilterBreakdownInRange } from "@/lib/funnel";
+import { getEventSourceBreakdownInRange, getFunnelCountsInRange, getFunnelLocaleBreakdownInRange, getPlanGeographyBreakdownInRange, getDiscoverFilterBreakdownInRange, FUNNEL_ORDER } from "@/lib/funnel";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
@@ -33,17 +33,6 @@ function isAdminAuthorized(req: NextRequest): boolean {
   const sessionRaw = req.cookies.get(ADMIN_SESSION_COOKIE)?.value;
   return !!sessionRaw && verifyAdminSessionToken(sessionRaw, secret);
 }
-
-const FUNNEL_ORDER = [
-  "page_view",
-  "discover_view",
-  "trail_view",
-  "winery_detail_view",
-  "shop_click",
-  "plan_add",
-  "booking_start",
-  "booking_complete",
-];
 
 const SOURCE_BREAKDOWN_EVENTS = ["shop_click", "plan_add"];
 
