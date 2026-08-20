@@ -1088,6 +1088,59 @@
       }
     }
   },
+  "partner": {
+    "portal": {
+      "title": "פורטל שותפים",
+      "subtitle": "התחברו עם כתובת האימייל המאומתת של ההזמנות ועם הסוד המשותף של הפורטל.",
+      "loading": "טוען…",
+      "loadError": "לא ניתן לטעון את נתוני השותף: {error}",
+      "email": {
+        "aria": "אימייל שותף מאומת",
+        "placeholder": "אימייל שותף",
+        "label": "אימייל"
+      },
+      "secret": {
+        "aria": "סוד פורטל השותפים",
+        "placeholder": "סוד הפורטל",
+        "label": "סוד"
+      },
+      "submit": "כניסה",
+      "invalid": "האימייל או הסוד אינם מזוהים.",
+      "signOut": "יציאה",
+      "greeting": "מחוברים כ-{name}",
+      "requests": {
+        "title": "בקשות לטעימות וסיורים",
+        "empty": "אין בקשות עדיין.",
+        "guest": "אורח",
+        "meta": "{date} · קבוצה של {party}",
+        "status": "סטטוס",
+        "accept": "אישור",
+        "decline": "דחייה",
+        "acceptAria": "אישור בקשה מ-{guest}",
+        "declineAria": "דחיית בקשה מ-{guest}",
+        "updateFailed": "לא ניתן לעדכן את הבקשה. נסו שוב."
+      },
+      "status": {
+        "pending": "ממתין",
+        "confirmed": "אושר",
+        "cancelled": "בוטל"
+      },
+      "profile": {
+        "title": "שעות ותמונת כותרת",
+        "hoursLabel": "שעות חורף",
+        "hoursAria": "שעות פתיחה בחורף",
+        "hoursPlaceholder": "חורף: ג׳–ש׳ 11:00–15:00. התקשרו מראש.",
+        "imageLabel": "נתיב תמונת הכותרת",
+        "imageAria": "נתיב מקומי לתמונת הכותרת",
+        "imagePlaceholder": "/images/cyprus/winery-example.jpg",
+        "imageHint": "השתמשו בנתיב תחת /images/cyprus/ שכבר קיים באתר.",
+        "save": "שמירת פרופיל",
+        "saved": "הפרופיל נשמר.",
+        "saveFailed": "השמירה נכשלה. נתיב התמונה חייב להיות קובץ מקומי ב-/images/cyprus.",
+        "unsafeImage": "נתיב התמונה אינו מותר."
+      }
+    }
+  },
   "airport": {
     "page": {
       "meta": {

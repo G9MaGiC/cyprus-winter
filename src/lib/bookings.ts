@@ -161,6 +161,62 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
     .sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
 }
 
+export async function getBookingsByProviderId(providerId: string): Promise<Booking[]> {
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("bookings")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
+      .eq("provider_id", providerId)
+      .order("created_at", { ascending: false });
+    if (error) throw new Error(error.message);
+    return (data ?? []).map((row) => rowToBooking(row as Record<string, unknown>));
+  }
+
+  return memoryStore
+    .filter((b) => b.providerId === providerId)
+    .sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
+}
+
+export async function updateBookingStatus(
+  id: string,
+  status: BookingStatus,
+  providerId: string
+): Promise<{ booking: Booking } | { error: "not_found" | "forbidden" }> {
+  if (status !== "confirmed" && status !== "cancelled") {
+    return { error: "not_found" };
+  }
+
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data: existing, error: lookupError } = await supabase
+      .from("bookings")
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+    if (lookupError) throw new Error(lookupError.message);
+    if (!existing) return { error: "not_found" };
+    const current = rowToBooking(existing as Record<string, unknown>);
+    if (current.providerId !== providerId) return { error: "forbidden" };
+    const { data: updated, error } = await supabase
+      .from("bookings")
+      .update({ status })
+      .eq("id", id)
+      .eq("provider_id", providerId)
+      .select("*")
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!updated) return { error: "not_found" };
+    return { booking: rowToBooking(updated as Record<string, unknown>) };
+  }
+
+  const current = memoryStore.find((b) => b.id === id);
+  if (!current) return { error: "not_found" };
+  if (current.providerId !== providerId) return { error: "forbidden" };
+  current.status = status;
+  return { booking: current };
+}
+
 function rowToBooking(row: Record<string, unknown>): Booking {
   const type = row.type === "guide_tour" ? "guide_tour" : "winery_tasting";
   return {

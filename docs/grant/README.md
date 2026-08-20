@@ -24,7 +24,7 @@ Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cy
 | `COFINANCE.md` | 15% own contribution note |
 | `ANNEX_II.md` | Captions for wireframe PDF |
 | `wireframes/*.png` | Screenshots labelled as prototype wireframes (desktop 1280 + 390px) |
-| `G2_PARTNER_PORTAL_SPEC.md` | Months 0–6 workplan detail (do not build before submit) |
+| `G2_PARTNER_PORTAL_SPEC.md` | Months 0–6 workplan; thin `/partner` MVP is in code (in-memory overlay) |
 | `CV_PLACEHOLDER.md` | Who must file CVs — no invented people |
 
 ## IRIS submit checklist

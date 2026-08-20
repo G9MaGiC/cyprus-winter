@@ -1088,6 +1088,59 @@
       }
     }
   },
+  "partner": {
+    "portal": {
+      "title": "Portal partener",
+      "subtitle": "Autentificați-vă cu e-mailul verificat de rezervări și secretul comun al portalului.",
+      "loading": "Se încarcă…",
+      "loadError": "Nu s-au putut încărca datele partenerului: {error}",
+      "email": {
+        "aria": "E-mail partener verificat",
+        "placeholder": "E-mail partener",
+        "label": "E-mail"
+      },
+      "secret": {
+        "aria": "Secretul portalului partener",
+        "placeholder": "Secret portal",
+        "label": "Secret"
+      },
+      "submit": "Autentificare",
+      "invalid": "E-mailul sau secretul nu este recunoscut.",
+      "signOut": "Deconectare",
+      "greeting": "Autentificat ca {name}",
+      "requests": {
+        "title": "Cereri de degustare și tururi",
+        "empty": "Nicio cerere încă.",
+        "guest": "Oaspete",
+        "meta": "{date} · grup de {party}",
+        "status": "Status",
+        "accept": "Acceptă",
+        "decline": "Refuză",
+        "acceptAria": "Acceptă cererea de la {guest}",
+        "declineAria": "Refuză cererea de la {guest}",
+        "updateFailed": "Cererea nu a putut fi actualizată. Încercați din nou."
+      },
+      "status": {
+        "pending": "În așteptare",
+        "confirmed": "Confirmat",
+        "cancelled": "Anulat"
+      },
+      "profile": {
+        "title": "Program și imagine principală",
+        "hoursLabel": "Program de iarnă",
+        "hoursAria": "Program de iarnă",
+        "hoursPlaceholder": "Iarnă: mar–sâm 11:00–15:00. Sunați înainte.",
+        "imageLabel": "Calea imaginii principale",
+        "imageAria": "Cale locală a imaginii principale",
+        "imagePlaceholder": "/images/cyprus/winery-example.jpg",
+        "imageHint": "Folosiți o cale din /images/cyprus/ care există deja pe site.",
+        "save": "Salvează profilul",
+        "saved": "Profil salvat.",
+        "saveFailed": "Nu s-a salvat. Calea imaginii trebuie să fie un fișier local /images/cyprus.",
+        "unsafeImage": "Această cale de imagine nu este permisă."
+      }
+    }
+  },
   "airport": {
     "page": {
       "meta": {

@@ -1088,6 +1088,59 @@
       }
     }
   },
+  "partner": {
+    "portal": {
+      "title": "Portail partenaire",
+      "subtitle": "Connectez-vous avec l’e-mail de réservation vérifié et le secret partagé du portail.",
+      "loading": "Chargement…",
+      "loadError": "Impossible de charger les données partenaire : {error}",
+      "email": {
+        "aria": "E-mail partenaire vérifié",
+        "placeholder": "E-mail partenaire",
+        "label": "E-mail"
+      },
+      "secret": {
+        "aria": "Secret du portail partenaire",
+        "placeholder": "Secret du portail",
+        "label": "Secret"
+      },
+      "submit": "Se connecter",
+      "invalid": "E-mail ou secret non reconnu.",
+      "signOut": "Se déconnecter",
+      "greeting": "Connecté en tant que {name}",
+      "requests": {
+        "title": "Demandes de dégustation et de visite",
+        "empty": "Aucune demande pour le moment.",
+        "guest": "Invité",
+        "meta": "{date} · groupe de {party}",
+        "status": "Statut",
+        "accept": "Accepter",
+        "decline": "Refuser",
+        "acceptAria": "Accepter la demande de {guest}",
+        "declineAria": "Refuser la demande de {guest}",
+        "updateFailed": "Impossible de mettre à jour cette demande. Réessayez."
+      },
+      "status": {
+        "pending": "En attente",
+        "confirmed": "Confirmé",
+        "cancelled": "Annulé"
+      },
+      "profile": {
+        "title": "Horaires et image d’en-tête",
+        "hoursLabel": "Horaires d’hiver",
+        "hoursAria": "Horaires d’ouverture en hiver",
+        "hoursPlaceholder": "Hiver : mar–sam 11:00–15:00. Appelez avant.",
+        "imageLabel": "Chemin de l’image d’en-tête",
+        "imageAria": "Chemin local de l’image d’en-tête",
+        "imagePlaceholder": "/images/cyprus/winery-example.jpg",
+        "imageHint": "Utilisez un chemin sous /images/cyprus/ déjà présent sur le site.",
+        "save": "Enregistrer le profil",
+        "saved": "Profil enregistré.",
+        "saveFailed": "Enregistrement impossible. Le chemin d’image doit être un fichier local /images/cyprus.",
+        "unsafeImage": "Ce chemin d’image n’est pas autorisé."
+      }
+    }
+  },
   "airport": {
     "page": {
       "meta": {

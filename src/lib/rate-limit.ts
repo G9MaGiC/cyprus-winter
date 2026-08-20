@@ -27,7 +27,8 @@ export type RateLimitScope =
   | "push-subscribe"
   | "weather"
   | "vapid"
-  | "right-now";
+  | "right-now"
+  | "partner";
 
 function hasRedisEnv(): boolean {
   return Boolean(

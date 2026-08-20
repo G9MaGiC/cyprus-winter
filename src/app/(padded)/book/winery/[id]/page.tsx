@@ -12,6 +12,7 @@ import Image from "next/image";
 import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -51,8 +52,9 @@ export default async function WineryBookPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const winery = wineries.find((w) => w.id === id);
-  if (!winery) notFound();
+  const found = wineries.find((w) => w.id === id);
+  if (!found) notFound();
+  const winery = applyPartnerOpeningHours(found);
   const imageUrl = getAttractionImage(id, "winery");
   const [tNav, tCommon, tBookPages] = await Promise.all([
     getTranslations("nav"),

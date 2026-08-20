@@ -179,7 +179,7 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 |----|------|-----------------|------------|--------|
 | **G0** | PRE-SEED IRIS pack (annex, CVs, wireframes, DNSH) | Implementation | `docs/grant/` draft + wireframes; IRIS/CVs still human | Partial |
 | **G1** | Confirm production `GET /api/health` → `productionReady` | Prototype demonstrated | Public boolean + Bearer `HEALTH_SECRET` annex dump | Ops (env still on Vercel) |
-| **G2** | Partner portal: hours, photos, accept/decline tasting | SME impact, innovation | Spec in `docs/grant/G2_PARTNER_PORTAL_SPEC.md`; no UI yet | Spec only |
+| **G2** | Partner portal: hours, photos, accept/decline tasting | SME impact, innovation | Thin `/partner` + API; in-memory overlay; guest lookup-token unchanged | Thin MVP |
 | **G3** | Discover filters: Accessible, Family, Cycling | DMT accessibility + sports | `accessibility` / `bestFor` in data; buried on detail | Medium |
 | **G4** | Surface trail conditions + winter hours on cards | Excellence (intelligence) | Reports API + detail copy | Medium |
 | **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `src/data/activity-places.ts` cycling IDs | Medium |
@@ -214,7 +214,7 @@ Outreach order: **IRIS registration this week** → CSTI one-pager (`GRANT_PITCH
 2. **By 4 Sep 2026:** Draft Part B + budget + CVs; freeze innovation narrative (no last-minute feature spam).
 3. **By 11 Sep 2026, 13:00:** Submit PRE-SEED/0526.
 4. **In parallel (product):** G1, G9, G3/G4 (visible intelligence) — highest annex screenshots per euro.
-5. **After submission:** G2 partner portal and G7 Hebrew body copy as the 18-month prototype story.
+5. **After submission:** Durable partner overlay + magic-link (G2 follow-on) and G7 Hebrew legal body as the 18-month prototype story.
 6. **Ongoing:** Watch DMT portal for digital-transition reopen; keep ReTour conversation warm.
 
 ---

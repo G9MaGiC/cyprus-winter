@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/admin/",
+          "/partner/",
           "/api/",
           "/login",
           "/register",
@@ -20,6 +21,7 @@ export default function robots(): MetadataRoute.Robots {
           "/forgot-password",
           // Locale-prefixed auth/account (next-intl); * is a path wildcard per Google robots rules
           "/*/admin/",
+          "/*/partner/",
           "/*/login",
           "/*/register",
           "/*/account",

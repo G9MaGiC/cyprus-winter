@@ -1088,6 +1088,59 @@
       }
     }
   },
+  "partner": {
+    "portal": {
+      "title": "Partnerportal",
+      "subtitle": "Melden Sie sich mit Ihrer verifizierten Buchungs-E-Mail und dem gemeinsamen Portal-Geheimnis an.",
+      "loading": "Wird geladen…",
+      "loadError": "Partnerdaten konnten nicht geladen werden: {error}",
+      "email": {
+        "aria": "Verifizierte Partner-E-Mail",
+        "placeholder": "Partner-E-Mail",
+        "label": "E-Mail"
+      },
+      "secret": {
+        "aria": "Partnerportal-Geheimnis",
+        "placeholder": "Portal-Geheimnis",
+        "label": "Geheimnis"
+      },
+      "submit": "Anmelden",
+      "invalid": "E-Mail oder Geheimnis wird nicht erkannt.",
+      "signOut": "Abmelden",
+      "greeting": "Angemeldet als {name}",
+      "requests": {
+        "title": "Verkostungs- und Touranfragen",
+        "empty": "Noch keine Anfragen.",
+        "guest": "Gast",
+        "meta": "{date} · Gruppe {party}",
+        "status": "Status",
+        "accept": "Annehmen",
+        "decline": "Ablehnen",
+        "acceptAria": "Anfrage von {guest} annehmen",
+        "declineAria": "Anfrage von {guest} ablehnen",
+        "updateFailed": "Die Anfrage konnte nicht aktualisiert werden. Bitte erneut versuchen."
+      },
+      "status": {
+        "pending": "Ausstehend",
+        "confirmed": "Bestätigt",
+        "cancelled": "Storniert"
+      },
+      "profile": {
+        "title": "Öffnungszeiten und Titelbild",
+        "hoursLabel": "Winterzeiten",
+        "hoursAria": "Winter-Öffnungszeiten",
+        "hoursPlaceholder": "Winter: Di–Sa 11:00–15:00. Bitte anrufen.",
+        "imageLabel": "Titelbild-Pfad",
+        "imageAria": "Lokaler Titelbild-Pfad",
+        "imagePlaceholder": "/images/cyprus/winery-example.jpg",
+        "imageHint": "Verwenden Sie einen Pfad unter /images/cyprus/, der bereits auf der Website liegt.",
+        "save": "Profil speichern",
+        "saved": "Profil gespeichert.",
+        "saveFailed": "Speichern fehlgeschlagen. Der Bildpfad muss eine lokale /images/cyprus-Datei sein.",
+        "unsafeImage": "Dieser Bildpfad ist nicht erlaubt."
+      }
+    }
+  },
   "airport": {
     "page": {
       "meta": {

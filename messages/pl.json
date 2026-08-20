@@ -1088,6 +1088,59 @@
       }
     }
   },
+  "partner": {
+    "portal": {
+      "title": "Portal partnera",
+      "subtitle": "Zaloguj się zweryfikowanym e-mailem rezerwacji i wspólnym sekretem portalu.",
+      "loading": "Ładowanie…",
+      "loadError": "Nie udało się wczytać danych partnera: {error}",
+      "email": {
+        "aria": "Zweryfikowany e-mail partnera",
+        "placeholder": "E-mail partnera",
+        "label": "E-mail"
+      },
+      "secret": {
+        "aria": "Sekret portalu partnera",
+        "placeholder": "Sekret portalu",
+        "label": "Sekret"
+      },
+      "submit": "Zaloguj się",
+      "invalid": "E-mail lub sekret nie został rozpoznany.",
+      "signOut": "Wyloguj",
+      "greeting": "Zalogowano jako {name}",
+      "requests": {
+        "title": "Prośby o degustacje i wycieczki",
+        "empty": "Brak próśb.",
+        "guest": "Gość",
+        "meta": "{date} · grupa {party}",
+        "status": "Status",
+        "accept": "Zaakceptuj",
+        "decline": "Odrzuć",
+        "acceptAria": "Zaakceptuj prośbę od {guest}",
+        "declineAria": "Odrzuć prośbę od {guest}",
+        "updateFailed": "Nie udało się zaktualizować prośby. Spróbuj ponownie."
+      },
+      "status": {
+        "pending": "Oczekuje",
+        "confirmed": "Potwierdzono",
+        "cancelled": "Anulowano"
+      },
+      "profile": {
+        "title": "Godziny i zdjęcie główne",
+        "hoursLabel": "Godziny zimowe",
+        "hoursAria": "Zimowe godziny otwarcia",
+        "hoursPlaceholder": "Zima: wt–sob 11:00–15:00. Prosimy dzwonić.",
+        "imageLabel": "Ścieżka zdjęcia głównego",
+        "imageAria": "Lokalna ścieżka zdjęcia głównego",
+        "imagePlaceholder": "/images/cyprus/winery-example.jpg",
+        "imageHint": "Użyj ścieżki w /images/cyprus/, która już istnieje na stronie.",
+        "save": "Zapisz profil",
+        "saved": "Profil zapisany.",
+        "saveFailed": "Nie zapisano. Ścieżka obrazu musi być lokalnym plikiem /images/cyprus.",
+        "unsafeImage": "Ta ścieżka obrazu nie jest dozwolona."
+      }
+    }
+  },
   "airport": {
     "page": {
       "meta": {

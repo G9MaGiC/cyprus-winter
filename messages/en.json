@@ -1088,6 +1088,59 @@
       }
     }
   },
+  "partner": {
+    "portal": {
+      "title": "Partner portal",
+      "subtitle": "Sign in with your verified booking email and the shared portal secret.",
+      "loading": "Loading…",
+      "loadError": "Could not load partner data: {error}",
+      "email": {
+        "aria": "Verified partner email",
+        "placeholder": "Partner email",
+        "label": "Email"
+      },
+      "secret": {
+        "aria": "Partner portal secret",
+        "placeholder": "Portal secret",
+        "label": "Secret"
+      },
+      "submit": "Sign in",
+      "invalid": "Email or secret is not recognised.",
+      "signOut": "Sign out",
+      "greeting": "Signed in as {name}",
+      "requests": {
+        "title": "Tasting and tour requests",
+        "empty": "No requests yet.",
+        "guest": "Guest",
+        "meta": "{date} · party of {party}",
+        "status": "Status",
+        "accept": "Accept",
+        "decline": "Decline",
+        "acceptAria": "Accept request from {guest}",
+        "declineAria": "Decline request from {guest}",
+        "updateFailed": "Could not update that request. Try again."
+      },
+      "status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "cancelled": "Cancelled"
+      },
+      "profile": {
+        "title": "Hours and hero image",
+        "hoursLabel": "Winter hours",
+        "hoursAria": "Winter opening hours",
+        "hoursPlaceholder": "Winter: Tue–Sat 11:00–15:00. Call ahead.",
+        "imageLabel": "Hero image path",
+        "imageAria": "Local hero image path",
+        "imagePlaceholder": "/images/cyprus/winery-example.jpg",
+        "imageHint": "Use a path under /images/cyprus/ that already exists on the site.",
+        "save": "Save profile",
+        "saved": "Profile saved.",
+        "saveFailed": "Could not save. Check the image path is a local /images/cyprus file.",
+        "unsafeImage": "That image path is not allowed."
+      }
+    }
+  },
   "airport": {
     "page": {
       "meta": {

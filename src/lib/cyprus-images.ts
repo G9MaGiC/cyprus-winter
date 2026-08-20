@@ -8,6 +8,7 @@
  * - Wineries: per-id map, then wine-route regional image (not one generic for all 70+)
  */
 import { wineries } from "@/data/wineries";
+import { getPartnerOverlay } from "./partner-overlay";
 
 const local = "/images/cyprus";
 
@@ -217,6 +218,8 @@ const wineryFallback = `${local}/cyprus-winery-troodos.jpg`;
 
 /** Resolve winery hero/card image by id and optional wine route. */
 export function resolveWineryImage(id: string): string {
+  const overlayImage = getPartnerOverlay(id)?.imageUrl;
+  if (overlayImage) return overlayImage;
   if (wineryImages[id]) return wineryImages[id];
   const route = wineryById.get(id)?.wineRoute;
   if (route && wineRouteImages[route]) return wineRouteImages[route];

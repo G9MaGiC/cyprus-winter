@@ -74,6 +74,13 @@ export function getProductionEnvChecks(): EnvCheck[] {
       required: false,
       hint: "Set BOOKING_LOOKUP_TOKEN_SECRET (min 16 chars) to email signed My Bookings links",
     },
+    {
+      id: "partner-portal",
+      label: "Partner portal secret",
+      ok: !!(process.env.PARTNER_PORTAL_SECRET && process.env.PARTNER_PORTAL_SECRET.length >= 16),
+      required: false,
+      hint: "Set PARTNER_PORTAL_SECRET (min 16 chars) for /partner",
+    },
   ];
 }
 

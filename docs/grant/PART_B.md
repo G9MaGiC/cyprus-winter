@@ -87,7 +87,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 | WP | Months | Outcome | Already in prototype? |
 |----|--------|---------|------------------------|
 | WP1 Production gate | 0–3 | Upstash + Supabase; `productionReady: true`; Sentry | Health evidence path shipped; **secrets still ops** |
-| WP2 Partner portal | 0–6 | Hours, hero URL, accept/decline on existing bookings | Spec only (`G2_PARTNER_PORTAL_SPEC.md`) — **build after submit** |
+| WP2 Partner portal | 0–6 | Hours, hero URL, accept/decline on existing bookings | Thin `/partner` MVP shipped; durable overlay + magic-link still post-award |
 | WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Chrome + funnel editorial shipped; legal pending |
 | WP4 Visible intelligence | 0–12 | Accessibility/cycling/wine-route/plan DNSH screenshots | Shipped (G3–G8) |
 | WP5 Market + seed readiness | 12–18 | Research note, 25 SME leads, Seed-programme options | KPI CSV shipped (G9) |

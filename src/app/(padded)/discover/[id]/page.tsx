@@ -32,6 +32,7 @@ import DetailPracticalInfo from "./DetailPracticalInfo";
 import DetailBookingSection from "./DetailBookingSection";
 import DiscoverLocationMap from "@/components/DiscoverLocationMap";
 import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -106,8 +107,9 @@ export default async function AttractionPage({
     getTranslations({ locale, namespace: "discover.detail" }),
     getTranslations({ locale, namespace: "common" }),
   ]);
-  const a = getDiscoverPlaceById(id);
-  if (!a) notFound();
+  const found = getDiscoverPlaceById(id);
+  if (!found) notFound();
+  const a = applyPartnerOpeningHours(found);
 
   const typeLabel = getDiscoverTypeLabel(a.type, tDetail, tCommon);
   const placeSecrets = getSecretsForPlace(a.id);

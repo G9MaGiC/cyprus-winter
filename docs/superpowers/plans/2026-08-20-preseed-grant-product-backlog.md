@@ -9,7 +9,7 @@
 
 **Architecture:** Keep App Router, `src/data/` as source of truth, `getPlaceById` / `PlanItem`, i18n in all 7 locales, HubFooter on hubs. No hardcoded user-facing strings.
 
-**Out of scope until PRE-SEED is submitted:** large partner-portal build (G2) unless G0 annex is already filed. Prefer **visible intelligence** (G3, G4, G9) for screenshots.
+**Out of scope until PRE-SEED is submitted:** a large partner CRM (G2 follow-on: durable overlay, magic-link). A thin `/partner` MVP may ship once the annex kit is in `docs/grant/`. Prefer **visible intelligence** (G3, G4, G9) for screenshots.
 
 ---
 
@@ -152,9 +152,9 @@
 
 **Files:** new authenticated partner area; extend `src/app/api/bookings/route.ts`; never replace Bearer + lookup-token GET
 
-- [x] Spec first: winery can update winter hours, upload hero (or URL), accept/decline request (`docs/grant/G2_PARTNER_PORTAL_SPEC.md`) — **do not build until PRE-SEED is filed**
-- [ ] Reuse existing booking records; do not build a second CRM
-- [ ] Tests: unauthorised 401; partner can only see own `providerId`
+- [x] Spec first: winery can update winter hours, upload hero (or URL), accept/decline request (`docs/grant/G2_PARTNER_PORTAL_SPEC.md`)
+- [x] Reuse existing booking records; do not build a second CRM
+- [x] Tests: unauthorised 401; partner can only see own `providerId`
 - [ ] **Verify:** lint, typecheck, bookings e2e gate
 
 ---

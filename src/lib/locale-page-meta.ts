@@ -242,6 +242,12 @@ export const adminStatsPageMeta: Metadata = {
   robots: { index: false, follow: false },
 };
 
+export const partnerPortalPageMeta: Metadata = {
+  title: "Partner portal | Cyprus Winter",
+  description: "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests.",
+  robots: { index: false, follow: false },
+};
+
 export const accountSettingsLayoutMeta: Metadata = {
   title: "Settings | My account | Cyprus Winter",
   description: "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences.",

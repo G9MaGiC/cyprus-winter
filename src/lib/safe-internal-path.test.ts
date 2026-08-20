@@ -16,6 +16,7 @@ describe("isSafeInternalPath", () => {
     expect(isSafeInternalPath("https://evil.com")).toBe(false);
     expect(isSafeInternalPath("//evil.com")).toBe(false);
     expect(isSafeInternalPath("/admin/stats")).toBe(false);
+    expect(isSafeInternalPath("/partner")).toBe(false);
     expect(isSafeInternalPath("/discover/../../etc/passwd")).toBe(false);
   });
 });
