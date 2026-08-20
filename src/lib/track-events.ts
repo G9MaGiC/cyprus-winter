@@ -57,6 +57,8 @@ export const PRODUCT_EVENTS = [
   "hub_footer_click",
   "shop_click",
   "trail_view",
+  "discover_view",
+  "discover_filter",
 ] as const satisfies readonly TrackEventName[];
 
 export type ProductEventName = (typeof PRODUCT_EVENTS)[number];

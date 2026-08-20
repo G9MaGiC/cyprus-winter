@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { getBookingsCountInRange } from "@/lib/bookings";
 import { hasSupabase } from "@/lib/supabase";
 import { getPartnerRevenueInRange } from "@/lib/partner-revenue";
-import { getEventSourceBreakdownInRange, getFunnelCountsInRange, getFunnelLocaleBreakdownInRange, getPlanGeographyBreakdownInRange } from "@/lib/funnel";
+import { getEventSourceBreakdownInRange, getFunnelCountsInRange, getFunnelLocaleBreakdownInRange, getPlanGeographyBreakdownInRange, getDiscoverFilterBreakdownInRange } from "@/lib/funnel";
 import { rateLimit } from "@/lib/rate-limit";
 import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
@@ -79,6 +79,7 @@ export async function GET(req: NextRequest) {
         getEventSourceBreakdownInRange(SOURCE_BREAKDOWN_EVENTS, rangeStart, rangeEnd),
         getFunnelLocaleBreakdownInRange(rangeStart, rangeEnd),
         getPlanGeographyBreakdownInRange(rangeStart, rangeEnd),
+        getDiscoverFilterBreakdownInRange(rangeStart, rangeEnd),
       ]),
       Promise.all([
         getBookingsCountInRange(prevRange.start, prevRange.end),
@@ -87,7 +88,7 @@ export async function GET(req: NextRequest) {
         getEventSourceBreakdownInRange(SOURCE_BREAKDOWN_EVENTS, prevRange.start, prevRange.end),
       ]),
     ]);
-    const [bookingsThisMonth, partnerRevenue, funnelCounts, sourceBreakdown, localeBreakdown, planGeographyBreakdown] = current;
+    const [bookingsThisMonth, partnerRevenue, funnelCounts, sourceBreakdown, localeBreakdown, planGeographyBreakdown, discoverFilterBreakdown] = current;
     const [bookingsPrev, partnerRevenuePrev, funnelCountsPrev, sourceBreakdownPrev] = previous;
     const usesDb = hasSupabase();
 
@@ -107,6 +108,8 @@ export async function GET(req: NextRequest) {
         localeSource,
         planGeographyBreakdown,
         planGeographySource: "plan_add.item_id" as const,
+        discoverFilterBreakdown,
+        discoverFilterSource: "discover_filter.filter" as const,
         compare: {
           bookings: bookingsPrev,
           partnerRevenueEur: partnerRevenuePrev.totalRevenueEur,
@@ -137,6 +140,8 @@ export async function GET(req: NextRequest) {
         localeSource,
         planGeographyBreakdown: payload.planGeographyBreakdown,
         planGeographySource: "plan_add.item_id",
+        discoverFilterBreakdown: payload.discoverFilterBreakdown,
+        discoverFilterSource: "discover_filter.filter",
       };
       const filename = statsKpiFilename("csv", window, now);
       return new Response(buildStatsKpiCsv(csvInput), {

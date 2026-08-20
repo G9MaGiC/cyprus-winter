@@ -35,6 +35,11 @@ const sample: StatsKpiExportInput = {
     { bucket: "beach_coast", count: 3 },
   ],
   planGeographySource: "plan_add.item_id",
+  discoverFilterBreakdown: [
+    { filter: "accessible", count: 4 },
+    { filter: "cycling", count: 2 },
+  ],
+  discoverFilterSource: "discover_filter.filter",
 };
 
 describe("localeFromTrackedProperties", () => {
@@ -68,6 +73,9 @@ describe("buildStatsKpiCsv", () => {
     expect(csv).toContain("plan_geography_source,plan_add.item_id");
     expect(csv).toContain("plan_geography,rural_mountain,8");
     expect(csv).toContain("plan_geography,beach_coast,3");
+    expect(csv).toContain("discover_filter_source,discover_filter.filter");
+    expect(csv).toContain("discover_filter,accessible,4");
+    expect(csv).toContain("discover_filter,cycling,2");
     expect(csv).toContain("bookings,total,3");
     expect(csv).toContain("partner_revenue_eur,total,90.5");
   });

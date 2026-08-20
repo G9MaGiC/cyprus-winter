@@ -8,6 +8,7 @@ import {
   planGeographyRows,
   type PlanGeographyBucket,
 } from "./plan-geography";
+import { countDiscoverFilters } from "./discover-filter-kpi";
 
 export type FunnelCounts = Record<string, number>;
 export type SourceBreakdownRow = { source: string; count: number };
@@ -234,4 +235,53 @@ export async function getPlanGeographyBreakdownInRange(
   }
 
   return planGeographyRows(countPlanGeography(ids));
+}
+
+export type DiscoverFilterBreakdownRow = { filter: string; count: number };
+
+/** Discover `?filter=` mix from first-party `discover_filter` events. */
+export async function getDiscoverFilterBreakdownInRange(
+  start: Date,
+  end?: Date
+): Promise<DiscoverFilterBreakdownRow[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
+  const startIso = start.toISOString();
+  const endIso = end?.toISOString();
+  const PAGE_SIZE = 1000;
+  const filters: Array<string | undefined> = [];
+
+  let offset = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    let query = supabase
+      .from("conversion_events")
+      .select("properties")
+      .eq("event", "discover_filter")
+      .gte("created_at", startIso)
+      .range(offset, offset + PAGE_SIZE - 1);
+    if (endIso) query = query.lt("created_at", endIso);
+    const { data, error } = await query;
+
+    if (error) {
+      console.error("Discover filter breakdown query error:", error);
+      return [];
+    }
+
+    for (const row of data ?? []) {
+      const props =
+        row.properties && typeof row.properties === "object" && !Array.isArray(row.properties)
+          ? (row.properties as Record<string, unknown>)
+          : {};
+      const filter = props.filter;
+      filters.push(typeof filter === "string" ? filter : undefined);
+    }
+
+    hasMore = (data?.length ?? 0) === PAGE_SIZE;
+    offset += PAGE_SIZE;
+  }
+
+  return countDiscoverFilters(filters);
 }

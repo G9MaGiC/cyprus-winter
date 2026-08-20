@@ -166,6 +166,7 @@ Use `/admin/stats` and first-party `trackProduct` events (`plan_add`, `booking_s
 
 - Itineraries built; bookings/leads by SME (`providerId`)
 - Locale / market mix (`en`, `de`, `pl`, `he`, …) — **derived** from `conversion_events.properties.path` or optional `properties.locale`. There is **no dedicated locale column**; CSV/JSON export from `/api/stats?format=csv` (admin session or Bearer) includes this mix.
+- Discover filter mix (`accessible`, `family`, `cycling`, …) — first-party `discover_filter.filter` in CSV/JSON (`discover_filter_*`). Not gated on marketing cookies.
 - Share of Plan items that are rural/mountain vs beach — **CSV/JSON** `plan_geography_*` from `plan_add.item_id` (curated place types; missing ids = unknown)
 - Trail-condition **views**: first-party `trail_view` on trail detail (`/trails/[id]`). **Closed / snow skips are not counted** — there is no skip control; do not invent that KPI.
 
@@ -210,10 +211,10 @@ Outreach order: **IRIS registration this week** → CSTI one-pager (`GRANT_PITCH
 
 ## Part 5: Next steps (dated)
 
-1. **This week:** Confirm company eligibility; open IRIS; book a grant advisor; screenshot wireframes from production or `localhost:3000`.
-2. **By 4 Sep 2026:** Draft Part B + budget + CVs; freeze innovation narrative (no last-minute feature spam).
+1. **This week:** Confirm company eligibility; open IRIS; book a grant advisor. Product annex wireframes and KPI export are in `docs/grant/` — paste Part B into the **official** IRIS template.
+2. **By 4 Sep 2026:** CVs, 15% co-finance source, freeze innovation narrative (no last-minute feature spam). Set Vercel env so live `productionReady` can become true.
 3. **By 11 Sep 2026, 13:00:** Submit PRE-SEED/0526.
-4. **In parallel (product):** G1, G9, G3/G4 (visible intelligence) — highest annex screenshots per euro.
+4. **Product (done in-repo):** G3–G9 visible intelligence, thin `/partner`, cycling hub, KPI export (locale, SME, rural/beach, Discover filters, trail_view). **Not done:** live `productionReady`, IRIS/CVs, Hebrew legal, tasting-room photos.
 5. **After submission:** Durable partner overlay + magic-link (G2 follow-on) and G7 Hebrew legal body as the 18-month prototype story.
 6. **Ongoing:** Watch DMT portal for digital-transition reopen; keep ReTour conversation warm.
 

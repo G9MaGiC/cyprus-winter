@@ -9,6 +9,8 @@ Export this table plus the PNGs to a single PDF for IRIS (`npm run grant:annex-p
 | `home-1280.png` / `home-390.png` | Home | Winter-first positioning, not a DMO clone |
 | `discover-1280.png` / `discover-390.png` | Discover | Intelligence + practical filters (accessible / family / cycling) |
 | `discover-cycling-1280.png` / `discover-cycling-390.png` | Discover · Cycling | Special-interest filter (DMT cycling) |
+| `discover-accessible-1280.png` / `discover-accessible-390.png` | Discover · Accessible | DMT accessibility filter (not buried copy) |
+| `discover-family-1280.png` / `discover-family-390.png` | Discover · Family | Family winter days filter |
 | `plan-1280.png` / `plan-390.png` | Plan | Funnel + sustainability strip (no fake carbon) |
 | `book-winery-1280.png` / `book-winery-390.png` | Book tasting (`/book/winery/tsiakkas`) | SME booking request |
 | `ask-ai-1280.png` / `ask-ai-390.png` | Ask AI overlay | Grounded Cyprus Guide, not a generic chatbot chrome |

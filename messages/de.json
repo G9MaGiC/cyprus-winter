@@ -1100,6 +1100,15 @@
           "other": "Sonstiges",
           "unknown": "Unbekannt"
         }
+      },
+      "discoverFilters": {
+        "title": "Discover-Filter",
+        "subtitle": "First-party discover_filter. Accessible, Familie und Radfahren sind die Grant-Chips.",
+        "empty": "Noch keine Filter-Ereignisse.",
+        "table": {
+          "filter": "Filter",
+          "count": "Anzahl"
+        }
       }
     }
   },

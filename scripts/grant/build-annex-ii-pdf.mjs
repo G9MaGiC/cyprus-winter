@@ -25,6 +25,8 @@ const screens = [
     why: "Intelligence + practical filters (accessible / family / cycling)",
   },
   { name: "discover-cycling", title: "Discover · Cycling", why: "Special-interest filter (DMT cycling)" },
+  { name: "discover-accessible", title: "Discover · Accessible", why: "DMT accessibility filter (not buried copy)" },
+  { name: "discover-family", title: "Discover · Family", why: "Family winter days filter" },
   { name: "plan", title: "Plan", why: "Funnel + sustainability strip (no fake carbon)" },
   { name: "book-winery", title: "Book tasting", why: "SME booking request (/book/winery/tsiakkas)" },
   { name: "ask-ai", title: "Ask AI overlay", why: "Grounded Cyprus Guide, not a generic chatbot" },

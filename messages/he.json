@@ -1100,6 +1100,15 @@
           "other": "אחר",
           "unknown": "לא ידוע"
         }
+      },
+      "discoverFilters": {
+        "title": "מסנני Discover",
+        "subtitle": "אירועי discover_filter first-party. נגיש, משפחה ורכיבה הם שבבי המענק.",
+        "empty": "עדיין אין אירועי מסנן.",
+        "table": {
+          "filter": "מסנן",
+          "count": "Count"
+        }
       }
     }
   },

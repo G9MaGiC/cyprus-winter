@@ -15,6 +15,8 @@ const allPages = [
   { name: "home", path: "/", wait: "Start here" },
   { name: "discover", path: "/discover", wait: /Tsiakkas|Omodos|Lefkara/i },
   { name: "discover-cycling", path: "/discover?filter=cycling", wait: /Platres|Prodromos|Akamas/i },
+  { name: "discover-accessible", path: "/discover?filter=accessible", wait: /Accessible/i },
+  { name: "discover-family", path: "/discover?filter=family", wait: /Family/i },
   { name: "plan", path: "/plan" },
   { name: "book-winery", path: "/book/winery/tsiakkas" },
   { name: "bookings", path: "/bookings" },

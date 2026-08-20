@@ -26,9 +26,9 @@ export default function ConversionTracker() {
     track("page_view", { path: pathname });
 
     if (isDiscover) {
-      track("discover_view", filter ? { filter } : undefined);
+      trackProduct("discover_view", filter ? { filter } : undefined);
       if (filter && filter !== prevDiscoverFilter.current) {
-        track("discover_filter", { filter });
+        trackProduct("discover_filter", { filter });
         prevDiscoverFilter.current = filter;
       }
       if (!filter) prevDiscoverFilter.current = null;

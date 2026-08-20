@@ -20,6 +20,8 @@ export type StatsKpiExportInput = {
   localeSource: StatsKpiLocaleSource;
   planGeographyBreakdown: { bucket: string; count: number }[];
   planGeographySource: "plan_add.item_id";
+  discoverFilterBreakdown: { filter: string; count: number }[];
+  discoverFilterSource: "discover_filter.filter";
 };
 
 export function localeFromTrackedProperties(
@@ -60,6 +62,7 @@ export function buildStatsKpiCsv(input: StatsKpiExportInput): string {
     csvRow(["meta", "range_end", input.rangeEndIso]),
     csvRow(["locale_source", input.localeSource]),
     csvRow(["plan_geography_source", input.planGeographySource]),
+    csvRow(["discover_filter_source", input.discoverFilterSource]),
     csvRow(["bookings", "total", input.bookingsThisMonth]),
     csvRow(["partner_revenue_eur", "total", input.partnerRevenueEur]),
   ];
@@ -82,6 +85,9 @@ export function buildStatsKpiCsv(input: StatsKpiExportInput): string {
   }
   for (const row of input.planGeographyBreakdown) {
     lines.push(csvRow(["plan_geography", row.bucket, row.count]));
+  }
+  for (const row of input.discoverFilterBreakdown) {
+    lines.push(csvRow(["discover_filter", row.filter, row.count]));
   }
   return `${lines.join("\n")}\n`;
 }

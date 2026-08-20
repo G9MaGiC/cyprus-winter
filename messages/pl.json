@@ -1100,6 +1100,15 @@
           "other": "Inne",
           "unknown": "Nieznane"
         }
+      },
+      "discoverFilters": {
+        "title": "Filtry Discover",
+        "subtitle": "First-party discover_filter. Accessible, rodzina i rower to chipy grantowe.",
+        "empty": "Brak zdarzeń filtra.",
+        "table": {
+          "filter": "Filtr",
+          "count": "Liczba"
+        }
       }
     }
   },

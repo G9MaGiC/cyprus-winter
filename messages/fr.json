@@ -1100,6 +1100,15 @@
           "other": "Autre",
           "unknown": "Inconnu"
         }
+      },
+      "discoverFilters": {
+        "title": "Filtres Discover",
+        "subtitle": "Événements discover_filter first-party. Accessible, famille et vélo sont les puces grant.",
+        "empty": "Pas encore d’événements de filtre.",
+        "table": {
+          "filter": "Filtre",
+          "count": "Count"
+        }
       }
     }
   },

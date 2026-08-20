@@ -8,6 +8,7 @@ import {
   getFunnelCountsInRange,
   getFunnelLocaleBreakdownInRange,
   getPlanGeographyBreakdownInRange,
+  getDiscoverFilterBreakdownInRange,
 } from "@/lib/funnel";
 import { getStatsRangeStartUtc } from "@/lib/stats-window";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken } from "@/lib/admin-session";
@@ -25,6 +26,7 @@ vi.mock("@/lib/funnel", () => ({
   getEventSourceBreakdownInRange: vi.fn(),
   getFunnelLocaleBreakdownInRange: vi.fn(),
   getPlanGeographyBreakdownInRange: vi.fn(),
+  getDiscoverFilterBreakdownInRange: vi.fn(),
 }));
 
 vi.mock("@/lib/supabase", () => ({
@@ -74,6 +76,7 @@ describe("GET /api/stats", () => {
     });
     vi.mocked(getFunnelLocaleBreakdownInRange).mockResolvedValue([]);
     vi.mocked(getPlanGeographyBreakdownInRange).mockResolvedValue([]);
+    vi.mocked(getDiscoverFilterBreakdownInRange).mockResolvedValue([]);
   });
 
   afterEach(() => {
@@ -161,6 +164,10 @@ describe("GET /api/stats", () => {
       { bucket: "rural_mountain", count: 8 },
       { bucket: "beach_coast", count: 3 },
     ]);
+    vi.mocked(getDiscoverFilterBreakdownInRange).mockResolvedValue([
+      { filter: "accessible", count: 4 },
+      { filter: "cycling", count: 2 },
+    ]);
     const cookieVal = createAdminSessionToken("test-admin-secret");
     const res = await GET(
       statsReq("/api/stats?format=csv", { cookie: `${ADMIN_SESSION_COOKIE}=${cookieVal}` })
@@ -174,5 +181,7 @@ describe("GET /api/stats", () => {
     expect(body).toContain("plan_geography_source,plan_add.item_id");
     expect(body).toContain("plan_geography,rural_mountain,8");
     expect(body).toContain("plan_geography,beach_coast,3");
+    expect(body).toContain("discover_filter,accessible,4");
+    expect(body).toContain("discover_filter,cycling,2");
   });
 });

@@ -49,3 +49,18 @@ describe("ConversionTracker trail_view", () => {
     expect(analytics.trackProduct).not.toHaveBeenCalled();
   });
 });
+
+describe("ConversionTracker discover_filter", () => {
+  beforeEach(() => {
+    nav.pathname = "/discover";
+    nav.search = new URLSearchParams("filter=accessible");
+    analytics.track.mockClear();
+    analytics.trackProduct.mockClear();
+  });
+
+  it("records first-party discover_view and discover_filter", () => {
+    render(<ConversionTracker />);
+    expect(analytics.trackProduct).toHaveBeenCalledWith("discover_view", { filter: "accessible" });
+    expect(analytics.trackProduct).toHaveBeenCalledWith("discover_filter", { filter: "accessible" });
+  });
+});

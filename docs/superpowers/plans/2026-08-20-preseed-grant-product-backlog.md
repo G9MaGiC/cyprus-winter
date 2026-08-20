@@ -69,6 +69,7 @@
 - [x] Cycling: IDs/types from `activity-places.ts` + preference key `"cycling"` in `user-preferences.ts`
 - [x] i18n all chip labels in 7 locales
 - [x] Tests: filter returns a non-empty known ID (e.g. a tagged place) and empty-state copy
+- [x] First-party `discover_filter` / `discover_view` (not marketing-consent gated) + KPI mix in `/api/stats`
 - [x] **Verify:** `npm run test`, `npm run i18n:validate`, `i18n:scan --fail`; screenshot for annex
 
 ---

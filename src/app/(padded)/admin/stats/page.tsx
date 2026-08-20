@@ -10,6 +10,7 @@ type FunnelRow = { event: string; count: number };
 type PartnerRow = { providerId: string; providerName: string; bookingCount: number; totalFeeEur: number };
 type LocaleRow = { locale: string; count: number };
 type GeographyRow = { bucket: string; count: number };
+type FilterRow = { filter: string; count: number };
 
 type StatsData = {
   bookingsThisMonth?: number;
@@ -20,6 +21,8 @@ type StatsData = {
   localeSource?: string;
   planGeographyBreakdown?: GeographyRow[];
   planGeographySource?: string;
+  discoverFilterBreakdown?: FilterRow[];
+  discoverFilterSource?: string;
   window?: string;
   storage?: string;
   error?: string;
@@ -203,6 +206,7 @@ export default function AdminStatsPage() {
   const funnel = d.funnel ?? [];
   const locales = d.localeBreakdown ?? [];
   const geography = d.planGeographyBreakdown ?? [];
+  const filters = d.discoverFilterBreakdown ?? [];
   const geographyLabel = (bucket: string) => {
     if (bucket === "rural_mountain") return tAdmin("planGeography.buckets.rural_mountain");
     if (bucket === "beach_coast") return tAdmin("planGeography.buckets.beach_coast");
@@ -345,6 +349,32 @@ export default function AdminStatsPage() {
           </table>
           {geography.length === 0 && (
             <p className="text-sm text-olive/60 py-4">{tAdmin("planGeography.empty")}</p>
+          )}
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("discoverFilters.title")}</h2>
+        <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
+          <p className="text-sm text-olive/70 mb-4">{tAdmin("discoverFilters.subtitle")}</p>
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-sand-200/80">
+                <th className="py-2 font-medium text-olive">{tAdmin("discoverFilters.table.filter")}</th>
+                <th className="py-2 font-medium text-olive text-right">{tAdmin("discoverFilters.table.count")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filters.map((row) => (
+                <tr key={row.filter} className="border-b border-sand-100">
+                  <td className="py-2 text-olive">{row.filter}</td>
+                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {filters.length === 0 && (
+            <p className="text-sm text-olive/60 py-4">{tAdmin("discoverFilters.empty")}</p>
           )}
         </div>
       </section>

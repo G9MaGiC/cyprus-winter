@@ -1100,6 +1100,15 @@
           "other": "Άλλο",
           "unknown": "Άγνωστο"
         }
+      },
+      "discoverFilters": {
+        "title": "Φίλτρα Discover",
+        "subtitle": "First-party discover_filter. Προσβάσιμο, οικογένεια και ποδήλατο είναι τα chips της πρότασης.",
+        "empty": "Δεν υπάρχουν ακόμη γεγονότα φίλτρου.",
+        "table": {
+          "filter": "Φίλτρο",
+          "count": "Πλήθος"
+        }
       }
     }
   },

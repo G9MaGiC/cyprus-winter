@@ -1100,6 +1100,15 @@
           "other": "Other",
           "unknown": "Unknown"
         }
+      },
+      "discoverFilters": {
+        "title": "Discover filters",
+        "subtitle": "First-party discover_filter events. Accessible, family, and cycling are the grant chips.",
+        "empty": "No filter events yet.",
+        "table": {
+          "filter": "Filter",
+          "count": "Count"
+        }
       }
     }
   },

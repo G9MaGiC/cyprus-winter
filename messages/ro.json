@@ -1100,6 +1100,15 @@
           "other": "Altele",
           "unknown": "Necunoscut"
         }
+      },
+      "discoverFilters": {
+        "title": "Filtre Discover",
+        "subtitle": "Evenimente discover_filter first-party. Accessible, familie și ciclism sunt chipurile grant.",
+        "empty": "Încă nu există evenimente de filtru.",
+        "table": {
+          "filter": "Filtru",
+          "count": "Count"
+        }
       }
     }
   },
