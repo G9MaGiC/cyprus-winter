@@ -5,7 +5,7 @@ export default async function WineryBookingLoading() {
   const t = await getTranslations("common");
   return (
     <div
-      className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
+      className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
       aria-busy
       aria-label={t("loading.bookingForm")}
     >

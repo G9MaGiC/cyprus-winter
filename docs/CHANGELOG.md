@@ -20,7 +20,7 @@ All notable changes to Cyprus Winter are documented here.
 
 ### Phase 1 completion
 
-Release marking pre-launch polish and Phase 1 MVP completion per [ROADMAP.md](ROADMAP.md).
+Release marking pre-launch polish and Phase 1 MVP completion per [docs/archive/ROADMAP.md](archive/ROADMAP.md).
 
 ### Discover page refactor
 

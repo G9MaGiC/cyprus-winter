@@ -23,11 +23,10 @@ type AIAssistantTriggerProps = {
   label?: string;
 };
 
-export default function AIAssistantTrigger({ variant = "default", label = "Ask AI" }: AIAssistantTriggerProps) {
-  // Intentionally leave the default label as-is; callers can pass localized `label`.
-  // (Nav uses `nav.askAI` already; this component is used in a few legacy spots.)
+export default function AIAssistantTrigger({ variant = "default", label }: AIAssistantTriggerProps) {
   const tNav = useTranslations("nav");
   const blocked = useBlockingOverlaysActive();
+  const resolvedLabel = label ?? tNav("askAI");
 
   const className =
     variant === "tertiaryOnDark"
@@ -40,9 +39,7 @@ export default function AIAssistantTrigger({ variant = "default", label = "Ask A
       disabled={blocked}
       onClick={() => triggerAIAssistant()}
       className={`${className} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
-      aria-label={
-        blocked ? "Finish onboarding or cookie choices first" : tNav("askAIAria")
-      }
+      aria-label={blocked ? tNav("askAIBlockedAria") : tNav("askAIAria")}
     >
       {variant === "default" ? (
         <>
@@ -59,10 +56,10 @@ export default function AIAssistantTrigger({ variant = "default", label = "Ask A
               />
             </svg>
           </span>
-          <span>{label}</span>
+          <span>{resolvedLabel}</span>
         </>
       ) : (
-        <span>{label}</span>
+        <span>{resolvedLabel}</span>
       )}
     </button>
   );

@@ -10,6 +10,8 @@ import { getTrailImage } from "@/lib/cyprus-images";
 import { getPlaceById } from "@/data";
 import type { Trail } from "@/data/trails";
 
+export type TrailPlaceOfDayOverlayKey = "openWithTemp" | "open" | "caution" | "seeConditions";
+
 export type TrailPlaceOfDayPick = {
   id: string;
   name: string;
@@ -18,7 +20,8 @@ export type TrailPlaceOfDayPick = {
   image: string;
   imageAlt: string;
   tease: string;
-  overlay: string;
+  /** Localized in TrailsPlaceOfDay via trails.placeOfDay.overlay.* */
+  overlayKey: TrailPlaceOfDayOverlayKey;
   temperatureC?: number;
   status?: "open" | "caution" | "closed";
   pairWith?: { name: string; href: string };
@@ -54,6 +57,15 @@ export function getTrailPlaceOfDayPick(): TrailPlaceOfDayPick | null {
         ? `/discover/${pairPlace.id}`
         : undefined;
 
+  const overlayKey: TrailPlaceOfDayOverlayKey =
+    conditions?.status === "open"
+      ? conditions.temperatureC != null
+        ? "openWithTemp"
+        : "open"
+      : conditions?.status === "caution"
+        ? "caution"
+        : "seeConditions";
+
   return {
     id: picked.id,
     name: picked.name,
@@ -65,14 +77,7 @@ export function getTrailPlaceOfDayPick(): TrailPlaceOfDayPick | null {
       const first = picked.description.split(".")[0]?.trim();
       return first ? `${first}.` : `${picked.region}. Winter hike.`;
     })(),
-    overlay:
-      conditions?.status === "open"
-        ? conditions.temperatureC != null
-          ? `${conditions.temperatureC}°C · Open`
-          : "Open"
-        : conditions?.status === "caution"
-          ? "Caution — check details"
-          : "See conditions",
+    overlayKey,
     temperatureC: conditions?.temperatureC,
     status: conditions?.status,
     pairWith:

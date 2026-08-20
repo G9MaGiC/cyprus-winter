@@ -1,11 +1,11 @@
 import { LAYOUT, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function TrailReportLoading() {
-  const t = useTranslations("common");
+export default async function TrailReportLoading() {
+  const t = await getTranslations("common");
   return (
     <div
-      className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
+      className={`min-h-screen bg-sand ${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
       aria-busy="true"
       aria-live="polite"
       role="status"

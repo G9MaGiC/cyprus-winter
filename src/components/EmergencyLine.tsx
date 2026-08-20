@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
 type EmergencyLineProps = {
@@ -6,19 +7,45 @@ type EmergencyLineProps = {
   className?: string;
 };
 
+function Tel({
+  href,
+  children,
+  strongClass,
+}: {
+  href: string;
+  children: ReactNode;
+  strongClass?: string;
+}) {
+  return (
+    <a
+      href={href}
+      className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded"
+    >
+      <strong className={strongClass}>{children}</strong>
+    </a>
+  );
+}
+
 export default function EmergencyLine({ variant = "inline", className = "" }: EmergencyLineProps) {
   const tCommon = useTranslations("common");
+  const strongClass = variant === "pill" ? "text-charcoal font-semibold" : undefined;
 
   const content = (
     <>
       {tCommon("emergency")}{" "}
-      <strong className={variant === "pill" ? "text-charcoal font-semibold" : undefined}>112</strong>
+      <Tel href="tel:112" strongClass={strongClass}>
+        112
+      </Tel>
       {" · "}
       {tCommon("touristInfo")}{" "}
-      <strong className={variant === "pill" ? "text-charcoal font-semibold" : undefined}>1460</strong>
+      <Tel href="tel:1460" strongClass={strongClass}>
+        1460
+      </Tel>
       {" · "}
       {tCommon("ambulance")}{" "}
-      <strong className={variant === "pill" ? "text-charcoal font-semibold" : undefined}>199</strong>
+      <Tel href="tel:199" strongClass={strongClass}>
+        199
+      </Tel>
     </>
   );
 

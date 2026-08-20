@@ -6,12 +6,7 @@ import { trails, trailConditions, TRAIL_REGIONS, TRAIL_DIFFICULTIES } from "@/da
 import { PROMOTED_TRAIL_IDS } from "@/data/promoted";
 import type { Trail, TrailStatus } from "@/data/trails";
 
-const STATUS_OPTIONS: { id: TrailStatus | ""; label: string }[] = [
-  { id: "", label: "All status" },
-  { id: "open", label: "Open" },
-  { id: "caution", label: "Caution" },
-  { id: "closed", label: "Closed" },
-];
+const STATUS_IDS: Array<TrailStatus | ""> = ["", "open", "caution", "closed"];
 
 export type UseTrailsFilterReturn = {
   filtered: Trail[];
@@ -40,7 +35,7 @@ export function useTrailsFilter(): UseTrailsFilterReturn {
       !difficultyFilter || TRAIL_DIFFICULTIES.includes(difficultyFilter as (typeof TRAIL_DIFFICULTIES)[number]);
     const validRegion =
       !regionFilter || TRAIL_REGIONS.includes(regionFilter as (typeof TRAIL_REGIONS)[number]);
-    const validStatus = !statusFilter || STATUS_OPTIONS.some((s) => s.id === statusFilter);
+    const validStatus = !statusFilter || STATUS_IDS.includes(statusFilter);
 
     const safeDifficulty = validDifficulty ? difficultyFilter : undefined;
     const safeRegion = validRegion ? regionFilter : undefined;

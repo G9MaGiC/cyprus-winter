@@ -174,7 +174,7 @@ export default function DayContentPanel({
             {tPlan("addedToDayBanner", { name: lastAddedPlace.name, day: activeDay })}
           </div>
         )}
-        <div className={`rounded-2xl ${CARD.base} overflow-hidden ${CARD.hover} shadow-[0_2px_12px_rgba(37,39,48,0.05)]`}>
+        <div className={`${CARD.base} overflow-hidden ${CARD.hover} shadow-[0_2px_12px_rgba(37,39,48,0.05)]`}>
           <div className={`${CARD.content} border-b border-sand-200/80 bg-sand-100/40`}>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3 flex-wrap">

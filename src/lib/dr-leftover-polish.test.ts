@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
+import { getTrailPlaceOfDayPick } from "./trail-place-of-day";
 
 describe("discover loading shell", () => {
   it("matches live discover background sand", () => {
@@ -11,6 +12,13 @@ describe("discover loading shell", () => {
   });
 });
 
+describe("winery booking loading shell", () => {
+  it("uses sand background like the live booking page", () => {
+    const loading = readFileSync("src/app/(padded)/book/winery/[id]/loading.tsx", "utf8");
+    expect(loading).toContain("min-h-screen bg-sand");
+  });
+});
+
 describe("deprecated home/itinerary cleanup", () => {
   it("does not keep the deprecated HomeHero wrapper", () => {
     expect(() => readFileSync("src/app/_home/HomeHero.tsx", "utf8")).toThrow();
@@ -19,5 +27,19 @@ describe("deprecated home/itinerary cleanup", () => {
   it("does not export WINTER_TEMPLATES from useItinerary", () => {
     const src = readFileSync("src/hooks/useItinerary.ts", "utf8");
     expect(src).not.toContain("WINTER_TEMPLATES");
+  });
+
+  it("does not keep empty DAY_COMBOS / discover editors pool", () => {
+    expect(readFileSync("src/data/day-combos.ts", "utf8")).not.toContain("DAY_COMBOS");
+    expect(readFileSync("src/data/home.ts", "utf8")).not.toContain("discoverEditorsPicks");
+  });
+});
+
+describe("trail place of day overlay keys", () => {
+  it("returns a localizable overlayKey instead of English overlay copy", () => {
+    const pick = getTrailPlaceOfDayPick();
+    expect(pick).not.toBeNull();
+    expect(["openWithTemp", "open", "caution", "seeConditions"]).toContain(pick!.overlayKey);
+    expect(pick).not.toHaveProperty("overlay");
   });
 });

@@ -54,7 +54,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mainNavigation": "Main navigation",
-    "cycling": "Cycling"
+    "cycling": "Cycling",
+    "askAIBlockedAria": "Finish onboarding or cookie choices first"
   },
   "common": {
     "nav": {
@@ -1327,7 +1328,13 @@
       "badge": "Trail of the day",
       "openAria": "Open {name}",
       "pairWith": "Pair with",
-      "seeDetails": "See details"
+      "seeDetails": "See details",
+      "overlay": {
+        "open": "Open",
+        "openWithTemp": "{temp}°C · Open",
+        "caution": "Caution — check details",
+        "seeConditions": "See conditions"
+      }
     },
     "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
     "allTrails": "All trails",
@@ -1343,13 +1350,34 @@
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go"
+          "title": "Good to go",
+          "label": "Open"
         },
         "caution": {
-          "title": "Check conditions before you head out"
+          "title": "Check conditions before you head out",
+          "label": "Caution"
         },
         "closed": {
-          "title": "Best saved for another day"
+          "title": "Best saved for another day",
+          "label": "Closed"
+        }
+      },
+      "difficulty": {
+        "easy": {
+          "label": "Easy",
+          "tip": "Easy underfoot, good for families. Allow time to enjoy the views."
+        },
+        "moderate": {
+          "label": "Moderate",
+          "tip": "Some elevation and distance. Allow 2 to 3 hours. Layer up for the summit."
+        },
+        "hard": {
+          "label": "Hard",
+          "tip": "Steep sections and longer distance. Allow 3 to 4 hours. Check conditions before you go."
+        },
+        "expert": {
+          "label": "Expert",
+          "tip": "Technical terrain, full day. Experience and preparation required."
         }
       }
     },

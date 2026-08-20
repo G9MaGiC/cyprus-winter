@@ -21,7 +21,7 @@ export default async function HomeWhyCyprusTeaser({ locale }: Props) {
       <div className={`${LAYOUT.listNarrow} mx-auto`}>
         <blockquote
           id="why-winter-teaser"
-          className={`${CARD.base} ${CARD.content} rounded-2xl border-l-4 border-l-sage/50 text-center`}
+          className={`${CARD.base} ${CARD.content} border-l-4 border-l-sage/50 text-center`}
         >
           <p className="text-olive text-base sm:text-lg leading-relaxed prose-quote">
             {t("whyCyprusTeaser.quote")}

@@ -54,7 +54,8 @@
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
     "mainNavigation": "Hauptnavigation",
-    "cycling": "Radfahren"
+    "cycling": "Radfahren",
+    "askAIBlockedAria": "Zuerst Onboarding oder Cookie-Auswahl abschließen"
   },
   "common": {
     "nav": {
@@ -1327,7 +1328,13 @@
       "badge": "Wanderweg des Tages",
       "openAria": "{name} öffnen",
       "pairWith": "Kombinieren mit",
-      "seeDetails": "Details ansehen"
+      "seeDetails": "Details ansehen",
+      "overlay": {
+        "open": "Offen",
+        "openWithTemp": "{temp}°C · Offen",
+        "caution": "Vorsicht — Details prüfen",
+        "seeConditions": "Bedingungen ansehen"
+      }
     },
     "noMatch": "Keine Wanderwege passen zu Ihren Filtern. Ändern Sie Status, Schwierigkeit oder Region—oder fragen Sie die AI. Sie kennt Troodos bis Küste.",
     "allTrails": "Alle Wanderwege",
@@ -1343,13 +1350,34 @@
     "badges": {
       "status": {
         "open": {
-          "title": "Gut zu gehen"
+          "title": "Gut zu gehen",
+          "label": "Offen"
         },
         "caution": {
-          "title": "Bedingungen prüfen, bevor Sie losgehen"
+          "title": "Bedingungen prüfen, bevor Sie losgehen",
+          "label": "Vorsicht"
         },
         "closed": {
-          "title": "Am besten für einen anderen Tag aufheben"
+          "title": "Am besten für einen anderen Tag aufheben",
+          "label": "Geschlossen"
+        }
+      },
+      "difficulty": {
+        "easy": {
+          "label": "Leicht",
+          "tip": "Leicht unter Fuß, gut für Familien. Zeit für die Aussicht einplanen."
+        },
+        "moderate": {
+          "label": "Mittel",
+          "tip": "Etwas Höhenmeter und Strecke. 2–3 Stunden einplanen. Schichten für den Gipfel."
+        },
+        "hard": {
+          "label": "Schwer",
+          "tip": "Steile Abschnitte und längere Distanz. 3–4 Stunden. Bedingungen vorher prüfen."
+        },
+        "expert": {
+          "label": "Experte",
+          "tip": "Technisches Gelände, ganzer Tag. Erfahrung und Vorbereitung nötig."
         }
       }
     },

@@ -54,7 +54,8 @@
     "openMenu": "Deschide meniul",
     "closeMenu": "Închide meniul",
     "mainNavigation": "Navigare principală",
-    "cycling": "Ciclism"
+    "cycling": "Ciclism",
+    "askAIBlockedAria": "Finalizează mai întâi onboarding-ul sau alegerea cookie-urilor"
   },
   "common": {
     "nav": {
@@ -1327,7 +1328,13 @@
       "badge": "Trail of the day",
       "openAria": "Open {name}",
       "pairWith": "Pair with",
-      "seeDetails": "See details"
+      "seeDetails": "See details",
+      "overlay": {
+        "open": "Deschis",
+        "openWithTemp": "{temp}°C · Deschis",
+        "caution": "Atenție — verifică detaliile",
+        "seeConditions": "Vezi condițiile"
+      }
     },
     "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
     "allTrails": "All trails",
@@ -1343,13 +1350,34 @@
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go"
+          "title": "Good to go",
+          "label": "Deschis"
         },
         "caution": {
-          "title": "Check conditions before you head out"
+          "title": "Check conditions before you head out",
+          "label": "Atenție"
         },
         "closed": {
-          "title": "Best saved for another day"
+          "title": "Best saved for another day",
+          "label": "Închis"
+        }
+      },
+      "difficulty": {
+        "easy": {
+          "label": "Ușor",
+          "tip": "Teren ușor, bun pentru familii. Lasă timp pentru peisaj."
+        },
+        "moderate": {
+          "label": "Moderat",
+          "tip": "Puțină diferență de nivel și distanță. Rezervă 2–3 ore. Straturi pentru vârf."
+        },
+        "hard": {
+          "label": "Greu",
+          "tip": "Secțiuni abrupte și distanță mai mare. Rezervă 3–4 ore. Verifică condițiile."
+        },
+        "expert": {
+          "label": "Expert",
+          "tip": "Teren tehnic, zi întreagă. Experiență și pregătire necesare."
         }
       }
     },

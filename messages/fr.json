@@ -54,7 +54,8 @@
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "mainNavigation": "Navigation principale",
-    "cycling": "Vélo"
+    "cycling": "Vélo",
+    "askAIBlockedAria": "Terminez d’abord l’accueil ou le choix des cookies"
   },
   "common": {
     "nav": {
@@ -1327,7 +1328,13 @@
       "badge": "Trail of the day",
       "openAria": "Open {name}",
       "pairWith": "Pair with",
-      "seeDetails": "See details"
+      "seeDetails": "See details",
+      "overlay": {
+        "open": "Ouvert",
+        "openWithTemp": "{temp}°C · Ouvert",
+        "caution": "Attention — voir les détails",
+        "seeConditions": "Voir les conditions"
+      }
     },
     "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
     "allTrails": "All trails",
@@ -1343,13 +1350,34 @@
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go"
+          "title": "Good to go",
+          "label": "Ouvert"
         },
         "caution": {
-          "title": "Check conditions before you head out"
+          "title": "Check conditions before you head out",
+          "label": "Attention"
         },
         "closed": {
-          "title": "Best saved for another day"
+          "title": "Best saved for another day",
+          "label": "Fermé"
+        }
+      },
+      "difficulty": {
+        "easy": {
+          "label": "Facile",
+          "tip": "Terrain facile, adapté aux familles. Prenez le temps d’admirer la vue."
+        },
+        "moderate": {
+          "label": "Modéré",
+          "tip": "Un peu de dénivelé et de distance. Comptez 2 à 3 h. Couches pour le sommet."
+        },
+        "hard": {
+          "label": "Difficile",
+          "tip": "Passages raides et plus longue distance. Comptez 3 à 4 h. Vérifiez les conditions."
+        },
+        "expert": {
+          "label": "Expert",
+          "tip": "Terrain technique, journée entière. Expérience et préparation requises."
         }
       }
     },

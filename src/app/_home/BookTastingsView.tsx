@@ -28,7 +28,7 @@ export default function BookTastingsView({ featured }: Props) {
       {items.map((w) => (
         <div
           key={w.wineryId}
-          className={`overflow-hidden rounded-2xl ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
+          className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
         >
           <AppLink
             href={`/discover/${w.wineryId}`}

@@ -57,7 +57,7 @@ export default function ItineraryCard({
   return (
     <div
       ref={lastAdded && !inTimeline ? cardRef : undefined}
-      className={`group flex items-center gap-4 rounded-2xl ${CARD.content} ${CARD.base} transition-all duration-200 ${
+      className={`group flex items-center gap-4 ${CARD.content} ${CARD.base} transition-all duration-200 ${
         lastAdded
           ? "ring-2 ring-terracotta/40 border-terracotta/30 shadow-md"
           : CARD.hover

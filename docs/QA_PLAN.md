@@ -3,7 +3,7 @@
 **Owner:** CTO / QA  
 **Created:** March 2026  
 **Purpose:** Systematic plan to find all bugs, document fixes, and reach launch-ready quality  
-**Refs:** AUDIT_REPORT.md, PROJECT_REVIEW.md, ROADMAP.md, TECHNICAL.md  
+**Refs:** [docs/archive/AUDIT_REPORT.md](archive/AUDIT_REPORT.md), [docs/archive/PROJECT_REVIEW.md](archive/PROJECT_REVIEW.md), [docs/archive/ROADMAP.md](archive/ROADMAP.md), [TECHNICAL.md](../TECHNICAL.md)  
 **Winter 2026 persona pack:** `docs/QA_MARKET_CONTEXT_WINTER_2026.md`, `docs/QA_PERSONAS_FULL_STACK_2026.md`, `docs/QA_PERSONA_JOURNEYS_2026.md`, `docs/QA_PERSONA_PRIORITIES_2026.md`
 
 ---
@@ -130,12 +130,12 @@ Hosts and exact URLs can change between Playwright releases; if allowlisting is 
 
 | Risk | Source | Mitigation |
 |------|--------|------------|
-| `combineWith` orphan IDs | AUDIT_REPORT | Low; getRelatedPlaces skips unknown IDs; validate data |
-| Resend failures swallowed | PROJECT_REVIEW | Ensure booking still saved; log error; consider user notice |
-| Health endpoint doesn't check Supabase/Resend | PROJECT_REVIEW | Extend health check; document behavior |
-| Chat API stack traces in dev | PROJECT_REVIEW | Ensure prod hides stack traces |
-| localStorage + Supabase merge | PROJECT_REVIEW | Manual test of sync; document edge cases |
-| Nav parent-route highlighting | AUDIT_REPORT | Verify `pathname.startsWith` for Discover, Trails |
+| `combineWith` orphan IDs | archive/AUDIT_REPORT | Low; getRelatedPlaces skips unknown IDs; validate data |
+| Resend failures swallowed | archive/PROJECT_REVIEW | Ensure booking still saved; log error; consider user notice |
+| Health endpoint doesn't check Supabase/Resend | archive/PROJECT_REVIEW | Extend health check; document behavior |
+| Chat API stack traces in dev | archive/PROJECT_REVIEW | Ensure prod hides stack traces |
+| localStorage + Supabase merge | archive/PROJECT_REVIEW | Manual test of sync; document edge cases |
+| Nav parent-route highlighting | archive/AUDIT_REPORT | Verify `pathname.startsWith` for Discover, Trails |
 
 ### Recurring checks (from QA cycles)
 

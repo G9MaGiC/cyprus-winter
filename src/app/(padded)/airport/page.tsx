@@ -114,7 +114,10 @@ export default async function AirportPage() {
               {tAirport("essentials.emergency")} <strong>112</strong>
             </a>
             {" · "}
-            {tAirport("essentials.touristInfo")} <strong>1460</strong>
+            {tAirport("essentials.touristInfo")}{" "}
+            <a href="tel:1460" className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
+              <strong>1460</strong>
+            </a>
             {" · "}
             <a href="tel:199" className="inline-flex items-center min-h-[44px] py-2 -my-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 rounded">
               {tAirport("essentials.ambulance")} <strong>199</strong>

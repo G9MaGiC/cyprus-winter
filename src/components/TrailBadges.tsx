@@ -12,34 +12,27 @@ export function StatusBadge({ status }: { status: TrailStatus }) {
       return (
         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-aegean ${badgeOverlay}`} title={tBadges("status.open.title")}>
           <span className="w-2 h-2 rounded-full bg-aegean/80" aria-hidden />
-          Open
+          {tBadges("status.open.label")}
         </span>
       );
     case "caution":
       return (
         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-charcoal ${badgeOverlay}`} title={tBadges("status.caution.title")}>
           <span className="w-2 h-2 rounded-full bg-golden" aria-hidden />
-          Caution
+          {tBadges("status.caution.label")}
         </span>
       );
     case "closed":
       return (
         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-terracotta ${badgeOverlay}`} title={tBadges("status.closed.title")}>
           <span className="w-2 h-2 rounded-full bg-terracotta/80" aria-hidden />
-          Closed
+          {tBadges("status.closed.label")}
         </span>
       );
     default:
       return null;
   }
 }
-
-const DIFFICULTY_TIPS: Record<TrailDifficulty, string> = {
-  easy: "Easy underfoot, good for families. Allow time to enjoy the views.",
-  moderate: "Some elevation and distance. Allow 2 to 3 hours. Layer up for the summit.",
-  hard: "Steep sections and longer distance. Allow 3 to 4 hours. Check conditions before you go.",
-  expert: "Technical terrain, full day. Experience and preparation required.",
-};
 
 const difficultyTextColors: Record<TrailDifficulty, string> = {
   easy: "text-aegean",
@@ -49,12 +42,13 @@ const difficultyTextColors: Record<TrailDifficulty, string> = {
 };
 
 export function DifficultyBadge({ difficulty }: { difficulty: TrailDifficulty }) {
+  const tBadges = useTranslations("trails.badges");
   return (
     <span
-      title={DIFFICULTY_TIPS[difficulty]}
-      className={`px-2.5 py-1 rounded-md text-xs font-medium capitalize backdrop-blur-sm bg-white/85 ${difficultyTextColors[difficulty] ?? "text-olive/80"}`}
+      title={tBadges(`difficulty.${difficulty}.tip`)}
+      className={`px-2.5 py-1 rounded-md text-xs font-medium backdrop-blur-sm bg-white/85 ${difficultyTextColors[difficulty] ?? "text-olive/80"}`}
     >
-      {difficulty}
+      {tBadges(`difficulty.${difficulty}.label`)}
     </span>
   );
 }

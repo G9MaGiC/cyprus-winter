@@ -28,14 +28,3 @@ export const DAY_COMBO_DEFS: DayComboDef[] = [
   { key: "gentleTrailPlatres", ids: ["atalante", "platres"] },
   { key: "paphosCoastAdonis", ids: ["tomb-of-kings", "adonis", "kolios"] },
 ];
-
-/** @deprecated Use DAY_COMBO_DEFS + plan.dayCombos i18n */
-export type DayCombo = {
-  label: string;
-  why: string;
-  tip?: string;
-  ids: string[];
-};
-
-/** @deprecated Use DAY_COMBO_DEFS */
-export const DAY_COMBOS: DayCombo[] = [];

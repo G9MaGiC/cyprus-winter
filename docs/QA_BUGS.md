@@ -1046,7 +1046,7 @@ No regressions found. Nav clearance (3.5rem ≈ h-14) and safe-area-inset applie
 |------|---------|----------|
 | Overlay stack | `ClientComponents.tsx`: CookieConsentBanner mounts immediately after hydration; AI + OnboardingModal deferred to `window.load` to protect LCP — aligns with performance goals | Info |
 | Blocking overlays | `useBlockingOverlaysActive` + `data-overlay` on cookie/onboarding — consistent with prior UX hardening | Info |
-| Mobile matrix | `playwright.config.ts` runs the core funnel on **Desktop Chrome** and **mobile-chrome** (`Pixel 7`). Touch targets / BottomNav / safe-area coverage now has Playwright smoke coverage, with broader manual matrix still tracked in `docs/UX_UI_RESPONSIVE_MATRIX.md` | Info |
+| Mobile matrix | `playwright.config.ts` runs the core funnel on **Desktop Chrome** and **mobile-chrome** (`Pixel 7`). Touch targets / BottomNav / safe-area coverage now has Playwright smoke coverage, with broader manual matrix still tracked in `docs/archive/UX_UI_RESPONSIVE_MATRIX.md` | Info |
 
 ### seo-copywriter — sample locale pages
 
@@ -1386,6 +1386,14 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-186 | Cleanup (DR-038) | Deprecated `HomeHero.tsx` + unused `WINTER_TEMPLATES` | Removed |
 | BUG-187 | Visual (DR-035 leftover) | Featured cards stacked `rounded-2xl` on `CARD.base` (`rounded-xl`) | Drop redundant radius on EditorsPicks / Place of Day |
 | BUG-188 | Push (DR-040) | Cron push URLs hardcoded EN paths with no documented policy | Document EN-default in RUNBOOK + cron comments until subscriptions store locale |
+| BUG-189 | i18n | Trail status/difficulty badges showed English labels/tips | `trails.badges.*.label` / `difficulty.*.tip` wired in `TrailBadges` |
+| BUG-190 | i18n | Trail of the Day overlay English (`Open` / `Caution…`) | `overlayKey` + `trails.placeOfDay.overlay.*` |
+| BUG-191 | i18n | `AIAssistantTrigger` default label + blocked aria hardcoded EN | `nav.askAI` / `nav.askAIBlockedAria` |
+| BUG-192 | Visual | Winery book + trail report loadings missing `bg-sand`; report loading used client `useTranslations` in RSC | Align shells; server `getTranslations` |
+| BUG-193 | Cleanup | Dead `DAY_COMBOS` / Discover editors pool; EN labels in `useTrailsFilter` | Removed / status id list only |
+| BUG-194 | A11y | Emergency numbers not tappable (`EmergencyLine`; airport 1460) | `tel:` links with 44px hit area |
+| BUG-195 | Docs | Stale root links to archived AUDIT/PROJECT_REVIEW/ROADMAP/UX matrix | Retarget to `docs/archive/*` |
+| BUG-196 | Visual | More `rounded-2xl` stacked on `CARD.base` | Drop redundant radius on plan/home cards |
 
 ### Still open — ops / human (do not invent)
 

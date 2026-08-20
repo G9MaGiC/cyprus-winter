@@ -44,7 +44,7 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
     >
       <div
         ref={modalRef}
-        className={`w-full max-w-md max-h-[90dvh] overflow-y-auto ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl rounded-2xl`}
+        className={`w-full max-w-md max-h-[90dvh] overflow-y-auto ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl`}
       >
         <h2 id="clear-day-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           {tCommon("clearDayTitle", { day: activeDay })}

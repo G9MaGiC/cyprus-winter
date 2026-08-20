@@ -54,7 +54,8 @@
     "openMenu": "Otwórz menu",
     "closeMenu": "Zamknij menu",
     "mainNavigation": "Nawigacja główna",
-    "cycling": "Kolarstwo"
+    "cycling": "Kolarstwo",
+    "askAIBlockedAria": "Najpierw dokończ onboarding lub wybór cookies"
   },
   "common": {
     "nav": {
@@ -1327,7 +1328,13 @@
       "badge": "Szlak dnia",
       "openAria": "Otwórz {name}",
       "pairWith": "Połącz z",
-      "seeDetails": "Zobacz szczegóły"
+      "seeDetails": "Zobacz szczegóły",
+      "overlay": {
+        "open": "Otwarty",
+        "openWithTemp": "{temp}°C · Otwarty",
+        "caution": "Ostrożnie — sprawdź szczegóły",
+        "seeConditions": "Zobacz warunki"
+      }
     },
     "noMatch": "Żaden szlak nie pasuje do filtrów. Spróbuj inny status, trudność lub region—albo zapytaj AI. Zna Troodos od gór po wybrzeże.",
     "allTrails": "Wszystkie szlaki",
@@ -1343,13 +1350,34 @@
     "badges": {
       "status": {
         "open": {
-          "title": "Dobre do przejścia"
+          "title": "Dobre do przejścia",
+          "label": "Otwarty"
         },
         "caution": {
-          "title": "Sprawdź warunki przed wyjściem"
+          "title": "Sprawdź warunki przed wyjściem",
+          "label": "Ostrożnie"
         },
         "closed": {
-          "title": "Najlepiej zostawić na inny dzień"
+          "title": "Najlepiej zostawić na inny dzień",
+          "label": "Zamknięty"
+        }
+      },
+      "difficulty": {
+        "easy": {
+          "label": "Łatwy",
+          "tip": "Łatwy teren, dobry dla rodzin. Zostaw czas na widoki."
+        },
+        "moderate": {
+          "label": "Umiarkowany",
+          "tip": "Trochę przewyższenia i dystansu. Zaplanuj 2–3 godziny. Warstwy na szczyt."
+        },
+        "hard": {
+          "label": "Trudny",
+          "tip": "Strome odcinki i dłuższy dystans. Zaplanuj 3–4 godziny. Sprawdź warunki przed wyjściem."
+        },
+        "expert": {
+          "label": "Ekspert",
+          "tip": "Teren techniczny, cały dzień. Wymagane doświadczenie i przygotowanie."
         }
       }
     },

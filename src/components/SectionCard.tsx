@@ -27,7 +27,7 @@ export default function SectionCard({
   id,
 }: SectionCardProps) {
   return (
-    <section id={id} className={`rounded-2xl ${CARD.base} ${CARD.contentLg} border-l-4 ${accentClasses[borderAccent]} ${className}`}>
+    <section id={id} className={`${CARD.base} ${CARD.contentLg} border-l-4 ${accentClasses[borderAccent]} ${className}`}>
       <h2 className={`${TYPE.cardTitle} ${subtitle ? "mb-1.5" : SECTION.headingGap}`}>{title}</h2>
       {subtitle && <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>{subtitle}</p>}
       {children}

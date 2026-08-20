@@ -54,7 +54,8 @@
     "openMenu": "פתחו תפריט",
     "closeMenu": "סגרו תפריט",
     "mainNavigation": "ניווט ראשי",
-    "cycling": "רכיבה"
+    "cycling": "רכיבה",
+    "askAIBlockedAria": "סיימו קודם את ההיכרות או בחירת העוגיות"
   },
   "common": {
     "nav": {
@@ -1327,7 +1328,13 @@
       "badge": "Trail of the day",
       "openAria": "Open {name}",
       "pairWith": "Pair with",
-      "seeDetails": "See details"
+      "seeDetails": "See details",
+      "overlay": {
+        "open": "פתוח",
+        "openWithTemp": "{temp}°C · פתוח",
+        "caution": "זהירות — בדקו פרטים",
+        "seeConditions": "ראו תנאים"
+      }
     },
     "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
     "allTrails": "All trails",
@@ -1343,13 +1350,34 @@
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go"
+          "title": "Good to go",
+          "label": "פתוח"
         },
         "caution": {
-          "title": "Check conditions before you head out"
+          "title": "Check conditions before you head out",
+          "label": "זהירות"
         },
         "closed": {
-          "title": "Best saved for another day"
+          "title": "Best saved for another day",
+          "label": "סגור"
+        }
+      },
+      "difficulty": {
+        "easy": {
+          "label": "קל",
+          "tip": "שטח קל, מתאים למשפחות. השאירו זמן לנוף."
+        },
+        "moderate": {
+          "label": "בינוני",
+          "tip": "טיפוס ומרחק מסוימים. הקצו 2–3 שעות. שכבות לפסגה."
+        },
+        "hard": {
+          "label": "קשה",
+          "tip": "קטעים תלולים ומרחק ארוך יותר. הקצו 3–4 שעות. בדקו תנאים לפני היציאה."
+        },
+        "expert": {
+          "label": "מומחים",
+          "tip": "שטח טכני, יום שלם. נדרשים ניסיון והכנה."
         }
       }
     },

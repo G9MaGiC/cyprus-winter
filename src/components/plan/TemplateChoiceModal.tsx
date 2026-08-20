@@ -46,7 +46,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
     >
       <div
         ref={modalRef}
-        className={`w-full max-w-md max-h-[90dvh] overflow-y-auto ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl rounded-2xl`}
+        className={`w-full max-w-md max-h-[90dvh] overflow-y-auto ${CARD.base} ${CARD.content} ${CARD.contentLg} shadow-2xl`}
       >
         <h2 id="template-choice-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           {t("title", { template: templateLabel })}

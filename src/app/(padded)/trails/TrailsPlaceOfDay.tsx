@@ -47,7 +47,9 @@ export default function TrailsPlaceOfDay() {
               aria-hidden
             />
             <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
-              {place.overlay}
+              {place.overlayKey === "openWithTemp" && place.temperatureC != null
+                ? tTrails("placeOfDay.overlay.openWithTemp", { temp: place.temperatureC })
+                : tTrails(`placeOfDay.overlay.${place.overlayKey}`)}
             </span>
             <span className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal`}>
               {tTrails("placeOfDay.badge")}
