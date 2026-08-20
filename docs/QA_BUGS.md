@@ -1288,6 +1288,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-155 | Ops / Security | Production `/api/health` hid `productionReady`; docs curled checks without `HEALTH_SECRET` | Public payload includes `productionReady` only; Bearer dump returns annex checks without hints or env values |
 | BUG-156 | Images / Cycling | Cycling hub cards all used the same Troodos trail fallback | Regional existing assets: Troodos trail, Akamas coast, Limassol beach, Pitsilia mountain vineyard, Krasochoria January Lofou, Silikou valley |
 | BUG-157 | Admin / KPIs | Stats export had locale and SME fees but not rural/mountain vs beach Plan mix (grant metric) | `plan_add.item_id` classified from curated data; CSV/JSON `plan_geography_*`; admin table |
+| BUG-158 | Analytics | Funnel counted `trail_view` but the client never sent it | First-party `trail_view` on trail detail; report form and trails index excluded. No invented snow-skip counter |
 
 **Image attributions (BUG-125, BUG-126, BUG-136, BUG-154):**
 

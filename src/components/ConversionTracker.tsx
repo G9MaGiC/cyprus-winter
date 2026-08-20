@@ -21,6 +21,7 @@ export default function ConversionTracker() {
     const isDiscoverDetail = path.includes("/discover/");
     const isWineryBook = path.includes("/book/winery/");
     const isGuideBook = path.includes("/book/guide/");
+    const trailDetail = path.match(/\/trails\/([a-z0-9-]+)$/i);
 
     track("page_view", { path: pathname });
 
@@ -53,6 +54,14 @@ export default function ConversionTracker() {
       const id = segments[segments.length - 1] ?? "";
       if (id && /^[a-z0-9-]+$/i.test(id) && id.length <= 80) {
         trackProduct("booking_start", { guideId: id });
+      }
+    }
+    if (trailDetail && pathname !== prevPath.current) {
+      const id = trailDetail[1] ?? "";
+      const isValidId = /^[a-z0-9-]+$/i.test(id) && id.length <= 80;
+      const place = isValidId ? getPlaceById(id) : undefined;
+      if (place?.type === "trail") {
+        trackProduct("trail_view", { trail_id: place.id });
       }
     }
 

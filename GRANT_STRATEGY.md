@@ -167,7 +167,7 @@ Use `/admin/stats` and first-party `trackProduct` events (`plan_add`, `booking_s
 - Itineraries built; bookings/leads by SME (`providerId`)
 - Locale / market mix (`en`, `de`, `pl`, `he`, …) — **derived** from `conversion_events.properties.path` or optional `properties.locale`. There is **no dedicated locale column**; CSV/JSON export from `/api/stats?format=csv` (admin session or Bearer) includes this mix.
 - Share of Plan items that are rural/mountain vs beach — **CSV/JSON** `plan_geography_*` from `plan_add.item_id` (curated place types; missing ids = unknown)
-- Trail-condition views vs “closed / snow” skips (once surfaced)
+- Trail-condition **views**: first-party `trail_view` on trail detail (`/trails/[id]`). **Closed / snow skips are not counted** — there is no skip control; do not invent that KPI.
 
 ---
 

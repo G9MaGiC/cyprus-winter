@@ -82,8 +82,10 @@
 - [x] Show latest condition status (or “no report”) on trail cards, not only detail
 - [x] Show winter hours / “call ahead” where the data field already exists
 - [x] Do not invent Forestry Department integration in this task
+- [x] First-party `trail_view` on trail detail for KPI export (not consent-gated)
 - [x] Tests for empty report vs reported state
 - [x] **Verify:** unit tests + Discover/Trails screenshot
+- [ ] Do **not** invent a “skipped because snow” counter until there is a real skip control
 
 ---
 

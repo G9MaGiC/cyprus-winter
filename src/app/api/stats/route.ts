@@ -37,6 +37,7 @@ function isAdminAuthorized(req: NextRequest): boolean {
 const FUNNEL_ORDER = [
   "page_view",
   "discover_view",
+  "trail_view",
   "winery_detail_view",
   "shop_click",
   "plan_add",

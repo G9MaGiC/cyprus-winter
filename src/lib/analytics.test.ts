@@ -38,8 +38,9 @@ describe("analytics consent", () => {
     trackProduct("booking_start", { wineryId: "tsiakkas" });
     trackProduct("hub_footer_click", { action: "plan" });
     trackProduct("plan_add", { item_id: "tsiakkas" });
-    expect(fetchMock).toHaveBeenCalledTimes(3);
+    trackProduct("trail_view", { trail_id: "artemis" });
+    expect(fetchMock).toHaveBeenCalledTimes(4);
     const events = fetchMock.mock.calls.map((call) => JSON.parse(call[1].body as string).event);
-    expect(events).toEqual(["booking_start", "hub_footer_click", "plan_add"]);
+    expect(events).toEqual(["booking_start", "hub_footer_click", "plan_add", "trail_view"]);
   });
 });
