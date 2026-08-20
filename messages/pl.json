@@ -18,7 +18,8 @@
     "ambulance": "Pogotowie",
     "planYourTrip": "Zaplanuj wycieczkę",
     "privacy": "Prywatność",
-    "terms": "Regulamin"
+    "terms": "Regulamin",
+    "cycling": "Kolarstwo"
   },
   "travelTrust": {
     "aria": "Oficjalne informacje podróżne",
@@ -52,7 +53,8 @@
     "askAIAria": "Zapytaj AI o szlaki, winnice i pomysły na wycieczkę",
     "openMenu": "Otwórz menu",
     "closeMenu": "Zamknij menu",
-    "mainNavigation": "Nawigacja główna"
+    "mainNavigation": "Nawigacja główna",
+    "cycling": "Kolarstwo"
   },
   "common": {
     "nav": {
@@ -770,7 +772,8 @@
         "seeCoasts": "Wybrzeża i plaże",
         "searchMore": "Szukaj więcej",
         "seeHiddenGems": "Więcej ukrytych perełek",
-        "seeMonasteries": "Klasztory i kultura"
+        "seeMonasteries": "Klasztory i kultura",
+        "browseCyclingHub": "Hub kolarski"
       },
       "meta": {
         "title": "Odkrywaj Cyprus Winter | Plaże, wioski, winnice",
@@ -1873,7 +1876,8 @@
       "wineries": "Winnice",
       "events": "Wydarzenia",
       "villages": "Wioski",
-      "beaches": "Plaże"
+      "beaches": "Plaże",
+      "cycling": "Kolarstwo"
     },
     "footer": {
       "hubBody": "Dodaj miejsca do planu—lub zapytaj AI. Zna wyspę zimą."
@@ -2876,6 +2880,31 @@
       },
       "aria": {
         "actions": "Akcje szlaków winiarskich"
+      }
+    }
+  },
+  "cycling": {
+    "page": {
+      "meta": {
+        "title": "Kolarstwo na Cyprze zimą | Troodos, zapory i wybrzeże",
+        "description": "Zimowe kolarstwo na Cyprze: leśne drogi Troodos, pętle wokół zapór, Akamas i żwir na wybrzeżu. Chłodno, cicho, da się jechać, gdy w domu leży śnieg.",
+        "ogAlt": "Leśna droga Troodos, kolarstwo na Cyprze zimą",
+        "schemaName": "Kolarstwo na Cyprze zimą",
+        "schemaDescription": "Zimowe kolarstwo: Troodos, zapory, Akamas i wybrzeże."
+      },
+      "header": {
+        "title": "Kolarstwo na Cyprze zimą",
+        "description": "Leśne drogi, pętle zapór i ciche kilometry wybrzeża. Chłodne powietrze, mało ruchu. Warstwy na zjazdy."
+      },
+      "srHeading": "Miejsca na rower na Cyprze zimą",
+      "trailsTitle": "Połącz ze szlakiem",
+      "footer": {
+        "hubBody": "Złóż pętlę, sprawdź warunki w Troodos albo zapytaj przewodnika. Zima to sezon na rower.",
+        "discoverFilter": "Kolarstwo w Discover",
+        "trailConditions": "Warunki na szlakach"
+      },
+      "aria": {
+        "actions": "Akcje strony kolarstwa"
       }
     }
   }

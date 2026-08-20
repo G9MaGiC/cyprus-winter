@@ -39,4 +39,8 @@ test.describe("Hub footer Ask AI", () => {
   test("beaches footer Ask AI opens Cyprus Guide dialog", async ({ page }) => {
     await openCyprusGuideFromHub(page, "/beaches");
   });
+
+  test("cycling footer Ask AI opens Cyprus Guide dialog", async ({ page }) => {
+    await openCyprusGuideFromHub(page, "/cycling");
+  });
 });

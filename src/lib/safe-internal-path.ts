@@ -16,6 +16,7 @@ const ALLOWED_PREFIXES = [
   "/wineries",
   "/villages",
   "/beaches",
+  "/cycling",
   "/secrets",
   "/regions",
   "/wine-routes",

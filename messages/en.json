@@ -18,7 +18,8 @@
     "ambulance": "Ambulance",
     "planYourTrip": "Plan your trip",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "cycling": "Cycling"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -52,7 +53,8 @@
     "askAIAria": "Ask AI for trails, wineries, and trip ideas",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "mainNavigation": "Main navigation"
+    "mainNavigation": "Main navigation",
+    "cycling": "Cycling"
   },
   "common": {
     "nav": {
@@ -776,7 +778,8 @@
         "seeCoasts": "See coasts & beaches",
         "searchMore": "Search for more",
         "seeHiddenGems": "More hidden gems",
-        "seeMonasteries": "Monasteries & culture"
+        "seeMonasteries": "Monasteries & culture",
+        "browseCyclingHub": "Cycling hub"
       },
       "meta": {
         "title": "Discover Cyprus Winter | Beaches, Villages, Wineries",
@@ -1961,7 +1964,8 @@
       "wineries": "Wineries",
       "events": "Events",
       "villages": "Villages",
-      "beaches": "Beaches"
+      "beaches": "Beaches",
+      "cycling": "Cycling"
     }
   },
   "events": {
@@ -2877,6 +2881,31 @@
       "aria-label_10": "Go to Discover",
       "aria-label_11": "View your itinerary",
       "aria-label_12": "Transport from airport, tips"
+    }
+  },
+  "cycling": {
+    "page": {
+      "meta": {
+        "title": "Cyprus Winter Cycling | Troodos, Dams & Coast Loops",
+        "description": "Winter cycling in Cyprus: Troodos forest roads, dam loops, Akamas and coastal gravel. Cool, quiet, and rideable when home is snowed in. Plan a loop.",
+        "ogAlt": "Troodos forest road, Cyprus winter cycling",
+        "schemaName": "Cyprus Winter Cycling",
+        "schemaDescription": "Winter cycling in Cyprus: Troodos forest roads, dam loops, Akamas and coastal gravel."
+      },
+      "header": {
+        "title": "Cycling in Cyprus winter",
+        "description": "Forest roads, dam loops, and quiet coast miles. Cool air, little traffic. Layer up for descents; the island rewards a slow ride."
+      },
+      "srHeading": "Cycling places in Cyprus winter",
+      "trailsTitle": "Pair with a trail",
+      "footer": {
+        "hubBody": "Build a loop, check Troodos conditions, or ask the guide. Winter is the season to ride.",
+        "discoverFilter": "Cycling on Discover",
+        "trailConditions": "Trail conditions"
+      },
+      "aria": {
+        "actions": "Cycling page actions"
+      }
     }
   }
 }

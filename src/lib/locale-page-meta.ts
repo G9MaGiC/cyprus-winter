@@ -106,6 +106,21 @@ export const wineriesPageMeta: Metadata = {
   },
 };
 
+const ogTrailTroodos = `${SITE_URL}/images/cyprus/cyprus-trail-troodos.jpg`;
+
+export const cyclingPageMeta: Metadata = {
+  title: "Cyprus Winter Cycling | Troodos, Dams & Coast Loops",
+  description:
+    "Winter cycling in Cyprus: Troodos forest roads, dam loops, Akamas and coastal gravel. Cool, quiet, and rideable when home is snowed in. Plan a loop.",
+  openGraph: {
+    title: "Cyprus Winter Cycling | Troodos, Dams & Coast Loops",
+    description:
+      "Winter cycling in Cyprus: Troodos forest roads, dam loops, Akamas and coastal gravel. Cool, quiet, rideable.",
+    type: "website",
+    images: [{ url: ogTrailTroodos, width: 1200, height: 630, alt: "Troodos forest road, Cyprus winter cycling" }],
+  },
+};
+
 export const secretsPageMeta: Metadata = {
   title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
   description:

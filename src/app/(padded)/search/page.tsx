@@ -44,6 +44,7 @@ const BROWSE_LINKS: { href: string; labelKey: string }[] = [
   { href: "/events", labelKey: "events" },
   { href: "/villages", labelKey: "villages" },
   { href: "/beaches", labelKey: "beaches" },
+  { href: "/cycling", labelKey: "cycling" },
 ];
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {

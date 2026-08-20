@@ -1279,6 +1279,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-146 | Analytics | Funnel events (`booking_start`, hub footer, plan add) required marketing-cookie consent | First-party `trackProduct` events send without “accept all”; privacy essential copy updated |
 | BUG-147 | i18n | `fr`/`he`/`ro` nav, footer, cookies, and errors still mirrored English; switcher did not mark them as beta | Chrome translations for those locales + `localeBeta` suffix in the switcher; editorial/home body still English |
 | BUG-148 | Discover / Trails | Accessible, family, and cycling filters were buried; trail cards hid live conditions and most place cards hid winter hours | Pin practical Discover chips; overlay hiker reports on trail cards; show hours / call-ahead on attraction cards |
+| BUG-150 | Cycling | Cycling lived only as a Discover mood filter, not a hub with HubFooter | `/cycling` hub from activity-places data, locale proxy, footer/search links |
 
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 
