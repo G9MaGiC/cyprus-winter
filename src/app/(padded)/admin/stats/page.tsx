@@ -315,8 +315,6 @@ export default function AdminStatsPage() {
       {exportError && (
         <p className="text-sm text-terracotta mb-6">{tAdmin("export.failed")}</p>
       )}
-        </div>
-      </section>
 
       <p className="text-xs text-olive/50">
         {tAdmin("storage", { storage: d.storage ?? tAdmin("storageUnknown") })}

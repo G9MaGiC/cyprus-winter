@@ -93,7 +93,7 @@
 - [x] Add CSV or JSON download of funnel + `partnerRevenueByWinery` (already on the page type)
 - [x] Include locale breakdown if `conversion_events` already stores it; otherwise document the gap in the annex
 - [x] Keep admin HttpOnly session (`POST /api/admin/session`); no new query-token auth
-- [ ] **Verify:** authenticated download; 401 without session
+- [x] **Verify:** authenticated download; 401 without session
 
 ---
 
