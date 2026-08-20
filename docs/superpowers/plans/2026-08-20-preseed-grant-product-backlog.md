@@ -142,8 +142,8 @@
 
 **Files:** `docs/WINERY_IMAGE_INTAKE.md`, `public/images/cyprus/`
 
-- [ ] Partner or CC assets with attribution in `docs/QA_BUGS.md`
-- [ ] **Verify:** `data:validate`; no broken image paths
+- [x] Partner or CC assets with attribution in `docs/QA_BUGS.md` (Pelendri / Silikou / January Lofou; remaining verified partners still regional)
+- [ ] **Verify:** `data:validate`; no broken image paths (`resolveWineryImage` file-exists tests)
 
 ---
 

@@ -187,7 +187,7 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 | **G7** | Finish `he` editorial (then `fr`/`ro` body) | International orientation | Chrome translated; home/legal still EN | High (copy) |
 | **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan strip: villages, trail conditions, airport buses only | Done |
 | **G9** | KPI CSV/JSON from `/api/stats` (locale, SME, plan events) | Added value / reporting | `src/app/(padded)/admin/stats/page.tsx` | Low |
-| **G10** | Partner winery photos (~55) | Credibility | `docs/WINERY_IMAGE_INTAKE.md` | Content |
+| **G10** | Partner winery photos (~55) | Credibility | `docs/WINERY_IMAGE_INTAKE.md` | Partial — village CC for Tsiakkas / Commandaria / Krasochoria; tasting rooms still partner-gated |
 
 **Already shipped (cite in the annex, do not rebuild):** Plan → Book funnel, trail reports, winery/guide booking requests, HMAC booking lookup, grounded AI + `/skills`, offline plan, travel-trust / 112, 7 locales with `fr`/`he`/`ro` chrome + beta labels, first-party funnel analytics.
 

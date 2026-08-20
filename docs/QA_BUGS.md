@@ -1283,8 +1283,9 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-150 | Cycling | Cycling lived only as a Discover mood filter, not a hub with HubFooter | `/cycling` hub from activity-places data, locale proxy, footer/search links |
 | BUG-151 | Wine routes | Route pages were editorial lists with no featured Book tasting CTA or structured hours | `bookableWineryIds` per route; hours/call-ahead strip + Book tasting to `/book/winery/[id]?from=wine-route` |
 | BUG-152 | Plan | No DNSH-style strip; risk of inventing buses or fake carbon | Calm Plan strip: villages, Troodos trail conditions, airport buses from `airports` data only |
+| BUG-153 | Images | P0 winery heroes still generic or village-mismatched (Tsiakkas on mountain stock; Mystes on Gerolemo Omodos tasting; Krasochoria on summer Troodos) | CC village vineyards: Pelendri (`winery-tsiakkas.jpg`), Silikou Commandaria, January Lofou for Krasochoria; Mystes uses Laona fallback. Remaining verified partners still regional until tasting-room assets arrive. |
 
-**Image attributions (BUG-125, BUG-126, BUG-136):**
+**Image attributions (BUG-125, BUG-126, BUG-136, BUG-153):**
 
 | File | Source | License |
 |------|--------|---------|
@@ -1293,10 +1294,13 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | `cyprus-vineyard-mountain.jpg` | [Zenon Winery Vineyards](https://commons.wikimedia.org/wiki/File:Zenon_Winery_Vineyards.jpg) | CC BY 4.0 |
 | `cyprus-winery-omodos-tasting.jpg` | [Wine tasting at Ktima Gerolemo, Omodos](https://commons.wikimedia.org/wiki/File:Wine_tasting_at_Ktima_Gerolemo_Winery,_Omodos,_Cyprus-_DSC00505.jpg) | CC BY-SA 4.0 |
 | `cyprus-winery-barrels.jpg` | [Wine barrels at Ktima Gerolemo](https://commons.wikimedia.org/wiki/File:Wine_barrels_at_the_Ktima_Gerolemo_Winery,_Cyprus-DSC00511.jpg) | CC BY-SA 4.0 |
+| `winery-tsiakkas.jpg` | [Vignoble de Palendria suivant les courbes de niveau](https://commons.wikimedia.org/wiki/File:Vignoble_de_Palendria_suivant_les_courbes_de_niveau.jpg) (Pelendri; GOC53) | CC BY 2.0 |
+| `cyprus-vineyard-silikou.jpg` | [Vignoble sur le terroir de Silikou](https://commons.wikimedia.org/wiki/File:Vignoble_sur_le_terroir_de_Silikou.jpg) (GOC53) | CC BY 2.0 |
+| `cyprus-vineyard-lofou-january.jpg` | [Vignoble en janvier à Lofou](https://commons.wikimedia.org/wiki/File:Vignoble_en_janvier_%C3%A0_Lofou.jpg) (Leonid Mamchenkov) | CC BY 2.0 |
 
 **Manual follow-up (remaining):**
 
-- Per-winery venue photos for ~55 remaining wineries — partner/CC sourcing or official press kits (P1)
+- Per-winery tasting-room / cellar photos for remaining verified partners (`vouni-panayia`, `kolios`, and still-regional `zambartas` / `santo`) and ~50 listings on wine-route fallbacks — partner press kits only; Commons has almost no named venue interiors.
 
 ---
 

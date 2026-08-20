@@ -2,7 +2,7 @@
 
 Workflow for replacing generic/regional winery hero images with **venue-accurate** photos. Code path: `resolveWineryImage()` in `src/lib/cyprus-images.ts` (used by Discover, Book, home featured).
 
-**Backlog:** ~55 wineries still on wine-route regional fallbacks (see `docs/QA_BUGS.md` BUG-125–136).
+**Backlog:** Most listings still use wine-route regional fallbacks (see `docs/QA_BUGS.md` BUG-125–136, BUG-153). G10 added village-accurate CC assets; tasting-room interiors still need partners.
 
 ---
 
@@ -19,13 +19,14 @@ Workflow for replacing generic/regional winery hero images with **venue-accurate
 
 | ID | Name | Current image source |
 |----|------|----------------------|
-| `tsiakkas` | Tsiakkas Winery | Per-id → `cyprus-vineyard-mountain.jpg` |
-| `vouni-panayia` | Vouni Panayia | Per-id → `cyprus-vineyard-laona.jpg` |
-| `zambartas` | Zambartas | Per-id → `cyprus-vineyard-laona.jpg` |
-| `kolios` | Kolios | Per-id → `cyprus-vineyard-mountain.jpg` |
-| `kyperounta` | Kyperounta | Per-id → `cyprus-vineyard-mountain.jpg` |
-| `santo` | Santo | Per-id → `cyprus-winery-troodos.jpg` |
+| `tsiakkas` | Tsiakkas Winery | Per-id → `winery-tsiakkas.jpg` (Pelendri vineyard, CC BY 2.0) |
+| `vouni-panayia` | Vouni Panayia | Per-id → `cyprus-vineyard-laona.jpg` (Laona regional) |
+| `zambartas` | Zambartas | Per-id → `cyprus-vineyard-lofou-january.jpg` (Krasochoria winter) |
+| `kolios` | Kolios | Per-id → `cyprus-vineyard-mountain.jpg` (Pitsilia regional) |
+| `santo` | Santo | Per-id → `cyprus-vineyard-lofou-january.jpg` (Krasochoria winter) |
 | `domes-sergiou` | Dómes Sergiou | Partner asset `domes-sergiou-hero.png` ✓ |
+
+`kyperounta` is listed in some older notes but is **not** `isVerified` in `src/data/wineries.ts`. It stays on the Pitsilia mountain regional photo.
 
 ---
 
@@ -137,11 +138,11 @@ Regional fallbacks (no per-id map) live in `wineRouteImages` — already wired f
 
 Track in partner sprint:
 
-| Metric | Baseline (May 2026) | Target |
-|--------|----------------------|--------|
-| Wineries with per-id image | ~12 / 71 | 25 by end of month |
-| Verified partners with bespoke photo | 1 / 7 (domes-sergiou) | 7 / 7 |
-| Broken image paths | 0 | 0 |
+| Metric | Baseline (May 2026) | Aug 2026 (G10) | Target |
+|--------|----------------------|----------------|--------|
+| Wineries with per-id image | ~12 / 71 | 15 / 72 | 25 |
+| Verified partners with venue or village-accurate photo | 1 / 6 (domes-sergiou) | 2 / 6 (domes + Tsiakkas Pelendri CC); 2 Krasochoria on Lofou winter CC; 2 still Laona/mountain regional | 6 / 6 tasting-room or partner shots |
+| Broken image paths | 0 | 0 (asserted in `cyprus-images.test.ts`) | 0 |
 
 ---
 

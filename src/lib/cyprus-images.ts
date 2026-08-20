@@ -182,27 +182,27 @@ export function getTrailImage(trailId: string): string {
 const wineryImages: Record<string, string> = {
   "domes-sergiou": `${local}/domes-sergiou-hero.png`,
   kolios: `${local}/cyprus-vineyard-mountain.jpg`,
-  tsiakkas: `${local}/cyprus-vineyard-mountain.jpg`,
+  tsiakkas: `${local}/winery-tsiakkas.jpg`, // Pelendri vineyard (CC BY 2.0), not a tasting-room interior
   "vouni-panayia": `${local}/cyprus-vineyard-laona.jpg`,
-  zambartas: `${local}/cyprus-vineyard-laona.jpg`,
-  santo: `${local}/cyprus-winery-troodos.jpg`,
+  zambartas: `${local}/cyprus-vineyard-lofou-january.jpg`, // Krasochoria, not Laona/Paphos
+  santo: `${local}/cyprus-vineyard-lofou-january.jpg`,
   kyperounta: `${local}/cyprus-vineyard-mountain.jpg`,
   fikardos: `${local}/cyprus-vineyard-laona.jpg`,
   vlassides: `${local}/cyprus-winery-barrels.jpg`,
   vasilikon: `${local}/cyprus-trail-gorge.jpg`,
   "ktima-vassiliades": `${local}/cyprus-winery-barrels.jpg`,
-  mystes: `${local}/cyprus-winery-omodos-tasting.jpg`,
   "oenou-yi": `${local}/cyprus-winery-omodos-tasting.jpg`,
+  savvas: `${local}/cyprus-vineyard-silikou.jpg`,
 };
 
 /** Wine-route regional fallbacks when no per-id image exists. */
 const wineRouteImages: Record<string, string> = {
-  Krasochoria: `${local}/cyprus-winery-troodos.jpg`,
+  Krasochoria: `${local}/cyprus-vineyard-lofou-january.jpg`,
   Laona: `${local}/cyprus-vineyard-laona.jpg`,
   "Laona–Akamas": `${local}/cyprus-trail-gorge.jpg`,
   Akamas: `${local}/cyprus-trail-gorge.jpg`,
   Pitsilia: `${local}/cyprus-vineyard-mountain.jpg`,
-  Commandaria: `${local}/cyprus-winery-omodos-tasting.jpg`,
+  Commandaria: `${local}/cyprus-vineyard-silikou.jpg`,
   Troodos: `${local}/cyprus-trail-troodos.jpg`,
   "Larnaca hills": `${local}/cyprus-lefkara.jpg`,
   Larnaca: `${local}/cyprus-lefkara.jpg`,
