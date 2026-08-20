@@ -1782,6 +1782,13 @@
         "label": "Paphos-Küste & Adonis",
         "why": "Königsgräber, Küstenstretch, Adonis-Verkostung."
       }
+    },
+    "startHere": {
+      "kicker": "48 Stunden",
+      "title": "Hier beginnen",
+      "framing": "Heute Abend · Morgen. Zuerst Küstenruinen, dann Troodos und eine Dorfverkostung.",
+      "tonightCta": "Zu heute Abend",
+      "addStopCta": "Erste Station hinzufügen"
     }
   },
   "placePicker": {
@@ -2087,7 +2094,8 @@
         "imageAlt": "Kloster Kykkos, Troodos — Kultur und Events im zypriotischen Winter",
         "planAria": "Reise planen",
         "planCta": "Reise planen",
-        "note": "Termine können sich von Jahr zu Jahr verschieben. Prüfen Sie offizielle Quellen vor der Reise."
+        "note": "Termine können sich von Jahr zu Jahr verschieben. Prüfen Sie offizielle Quellen vor der Reise.",
+        "updated": "Monatlich aktualisiert. Termine verschieben sich — prüfe offizielle Quellen."
       },
       "filters": {
         "aria": "Events filtern",

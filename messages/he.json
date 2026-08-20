@@ -1782,6 +1782,13 @@
       "heading": "Cyprus Winter Itinerary",
       "dayLabel": "Day {day}:",
       "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
+    },
+    "startHere": {
+      "kicker": "48 שעות",
+      "title": "התחילו כאן",
+      "framing": "הערב · מחר. קודם הריסות בחוף, אחר כך טרודוס וטעימה בכפר.",
+      "tonightCta": "קפיצה להערב",
+      "addStopCta": "הוסיפו את התחנה הראשונה"
     }
   },
   "placePicker": {
@@ -2087,7 +2094,8 @@
         "imageAlt": "Kykkos monastery, Troodos—Cyprus winter culture and events",
         "planAria": "Plan your trip",
         "planCta": "Plan your trip",
-        "note": "Dates may shift year to year. Check official sources before you travel."
+        "note": "Dates may shift year to year. Check official sources before you travel.",
+        "updated": "מתעדכן מדי חודש. התאריכים עדיין זזים — בדקו במקורות הרשמיים."
       },
       "filters": {
         "aria": "Filter events",

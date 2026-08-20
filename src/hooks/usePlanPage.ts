@@ -17,6 +17,7 @@ export function usePlanPage() {
   const [templateChoice, setTemplateChoice] = useState<string | null>(null);
   const [comboChoice, setComboChoice] = useState<ComboChoice | null>(null);
   const [showBrowseModal, setShowBrowseModal] = useState(false);
+  const [templateAppliedFromUrl, setTemplateAppliedFromUrl] = useState<TemplateKey | null>(null);
 
   const { dates, setTripDates, hydrated: datesHydrated, daysUntil, withinSevenDays, tripLength } =
     useTripDates();
@@ -60,6 +61,7 @@ export function usePlanPage() {
     getPlace,
     addToDayIfMissing,
     applyTemplate,
+    onTemplateApplied: setTemplateAppliedFromUrl,
     mutationsDisabled: planReadOnly,
   });
 
@@ -205,6 +207,7 @@ export function usePlanPage() {
     sharePath,
     sharePreviewLine,
     shareText,
+    templateAppliedFromUrl,
     // Derived
     totalPlaces,
     activeDaysCount,

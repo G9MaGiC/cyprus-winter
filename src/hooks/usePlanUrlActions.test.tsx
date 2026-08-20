@@ -87,4 +87,25 @@ describe("usePlanUrlActions", () => {
     expect(applyTemplate).toHaveBeenCalledWith("short-stay");
     expect(patchMocks.patchPlanUrlSearchParams).toHaveBeenCalled();
   });
+
+  it("notifies when a template is applied from the URL", () => {
+    const applyTemplate = vi.fn();
+    const onTemplateApplied = vi.fn();
+    navMocks.template = "short-stay";
+
+    renderHook(
+      () =>
+        usePlanUrlActions({
+          hydrated: true,
+          hasContent: false,
+          getPlace: () => undefined,
+          addToDayIfMissing: vi.fn(),
+          applyTemplate,
+          onTemplateApplied,
+        }),
+      { wrapper }
+    );
+
+    expect(onTemplateApplied).toHaveBeenCalledWith("short-stay");
+  });
 });

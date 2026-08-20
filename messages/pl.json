@@ -1782,6 +1782,13 @@
         "label": "Wybrzeże Pafos i Adonis",
         "why": "Grobowce Królów, wybrzeże, degustacja u Adonisa."
       }
+    },
+    "startHere": {
+      "kicker": "48 godzin",
+      "title": "Zacznij tutaj",
+      "framing": "Dziś wieczór · Jutro. Najpierw ruiny nad morzem, potem Troodos i degustacja we wsi.",
+      "tonightCta": "Przejdź do dziś wieczór",
+      "addStopCta": "Dodaj pierwszy przystanek"
     }
   },
   "placePicker": {
@@ -2005,7 +2012,8 @@
         "imageAlt": "Klasztor Kykkos, Troodos — kultura i wydarzenia na Cyprze zimą",
         "planAria": "Zaplanuj podróż",
         "planCta": "Zaplanuj podróż",
-        "note": "Daty mogą się zmieniać z roku na rok. Sprawdź oficjalne źródła przed podróżą."
+        "note": "Daty mogą się zmieniać z roku na rok. Sprawdź oficjalne źródła przed podróżą.",
+        "updated": "Aktualizowane co miesiąc. Daty się przesuwają — sprawdzaj oficjalne źródła."
       },
       "filters": {
         "aria": "Filtruj wydarzenia",

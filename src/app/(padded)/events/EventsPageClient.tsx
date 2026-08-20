@@ -108,6 +108,7 @@ export default function EventsPage() {
           <p className="text-sm text-white/80 mt-2 break-words">
             {tPage("hero.note")}
           </p>
+          <p className="text-xs text-white/70 mt-2">{tPage("hero.updated")}</p>
         </ListPageHero>
 
         <ListPageWidgetStrip sticky ariaLabel={tPage("filters.aria")}>
@@ -140,7 +141,7 @@ export default function EventsPage() {
               <Link href="/discover" className={CTA.chipTertiary}>
                 {tSearch("browseDiscover")}
               </Link>
-              <Link href="/plan" className={CTA.chipTertiary}>
+              <Link href="/plan" className={CTA.primaryCompact}>
                 {tCommon("planYourTrip")}
               </Link>
               <AskAIButton className={CTA.chipTertiary} />

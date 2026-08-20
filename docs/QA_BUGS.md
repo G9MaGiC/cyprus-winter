@@ -1364,6 +1364,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-164 | API (DR-033 leftover) | Cron 401 returned plain text `"Unauthorized"` | `jsonError("UNAUTHORIZED", …, 401)` on daily + weather-digest |
 | BUG-165 | Security / SEO | Locale `/[locale]/events` JSON-LD used raw `JSON.stringify` (padded events already escaped) | `toSafeJsonForScript` |
 | BUG-166 | Plan / SEO | Shared `/plan?plan=` links used generic “Plan Cyprus Winter” OG/title | `buildPlanPageMetadata` names places from the encoded itinerary; share bar shows the recipient preview line; shared URLs `noindex` |
+| BUG-167 | Plan / G5 | Airport 48h CTA filled Plan with no “what now” framing | `PlanStartHere` after `?template=short-stay`; short-stay stays 5 stops / 2 days |
+| BUG-168 | Events / G6 | Events hero had no freshness cue; empty filters buried Plan | “Updated monthly” under hero note; Plan is primary recovery CTA |
 
 ### Still open — ops / human (do not invent)
 

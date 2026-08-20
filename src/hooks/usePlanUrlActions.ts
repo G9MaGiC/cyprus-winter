@@ -14,6 +14,8 @@ type UsePlanUrlActionsParams = {
   getPlace: (id: string) => PlanItem | undefined;
   addToDayIfMissing: (id: string) => void;
   applyTemplate: (key: TemplateKey) => void;
+  /** Fired when `?template=` applies a template to an empty plan. */
+  onTemplateApplied?: (key: TemplateKey) => void;
   /** Skip ?add= / ?template= mutations when offline (read-only plan). */
   mutationsDisabled?: boolean;
 };
@@ -34,6 +36,7 @@ export function usePlanUrlActions({
   getPlace,
   addToDayIfMissing,
   applyTemplate,
+  onTemplateApplied,
   mutationsDisabled = false,
 }: UsePlanUrlActionsParams) {
   const searchParams = useSearchParams();
@@ -48,9 +51,10 @@ export function usePlanUrlActions({
     if (!hasContent) {
       processedTemplateRef.current = template;
       applyTemplate(template);
+      onTemplateApplied?.(template);
       patchPlanUrlSearchParams((p) => p.delete("template"));
     }
-  }, [hydrated, mutationsDisabled, searchParams, hasContent, applyTemplate]);
+  }, [hydrated, mutationsDisabled, searchParams, hasContent, applyTemplate, onTemplateApplied]);
 
   useEffect(() => {
     if (!hydrated || mutationsDisabled) return;

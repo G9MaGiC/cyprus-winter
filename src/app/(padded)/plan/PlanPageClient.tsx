@@ -13,6 +13,7 @@ import PlanFooter from "@/components/plan/PlanFooter";
 import PlanMapCollapsibleSection from "@/components/plan/PlanMapCollapsibleSection";
 import PlanAddMoreCollapsible from "@/components/plan/PlanAddMoreCollapsible";
 import PlanShareBar from "@/components/plan/PlanShareBar";
+import PlanStartHere from "@/components/plan/PlanStartHere";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
 import PlanWineryBar from "@/components/plan/PlanWineryBar";
@@ -105,6 +106,7 @@ export default function PlanPageClient() {
     sharePath,
     sharePreviewLine,
     shareText,
+    templateAppliedFromUrl,
     totalPlaces,
     activeDaysCount,
     displayDaysCount,
@@ -254,6 +256,21 @@ export default function PlanPageClient() {
           />
         )}
 
+        {hasContent && hydrated && templateAppliedFromUrl === "short-stay" && (
+          <PlanStartHere
+            onJumpToTonight={() => {
+              setActiveDay(1);
+              document.getElementById("plan-itinerary")?.scrollIntoView({
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                block: "start",
+              });
+            }}
+            onAddFirstStop={() => {
+              if (!planReadOnly) setShowBrowseModal(true);
+            }}
+          />
+        )}
+
         {!hasContent && (
           <div ref={quickStartRef} aria-label={tPlan("aria.quickStartRegion")} className="scroll-mt-24 sm:scroll-mt-28">
             {quickStartBlock}
@@ -275,7 +292,7 @@ export default function PlanPageClient() {
 
         {hasWineries && hydrated && <PlanWineryBar />}
 
-        <div className="flex flex-col gap-10 sm:gap-14">
+        <div id="plan-itinerary" className="flex flex-col gap-10 sm:gap-14 scroll-mt-24 sm:scroll-mt-28">
           {hasContent && (
             <DaySelector
               days={days}
