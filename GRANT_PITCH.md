@@ -1,53 +1,50 @@
-# Cyprus Winter — Grant Application Pitch (1 Page)
+# Cyprus Winter — Grant pitch (1 page)
 
-**Project:** Cyprus Winter — *The winter-first discovery & booking app for Cyprus*  
-**Tagline:** Escape the cold. Discover the real Cyprus.  
-**Contact:** [Your details]  
-**Date:** March 2026
+**Project:** Cyprus Winter — winter-first discovery, plan, and SME booking for Cyprus  
+**Tagline:** A quieter side of the island. Plan as you go.  
+**Date:** 20 August 2026  
+**Primary ask:** RIF **PRE-SEED/0526** — up to **€119,999** (85%), 18 months, submit via IRIS by **11 Sep 2026, 13:00**
 
 ---
 
-## The Problem
+## The problem
 
-- Cyprus tourism is **70% concentrated in summer**, causing overtourism, seasonal unemployment, and underused winter capacity.
-- **Rural and mountain SMEs** (wineries, guides, agrotourism) lack digital visibility and booking channels—they can't get discovered by travelers who actually want their experiences.
-- Winter demand is **growing (+30% YoY)** but fragmented—visitors don't know what's open, where to hike, or how to plan.
+- Cyprus stays **summer-concentrated**; winter visitors from **UK, Germany, Poland, Israel, and Greece** still use summer OTAs.
+- **Rural and mountain SMEs** (wineries, guides, villages) have no serious winter booking channel.
+- Travellers cannot see **what is open**, **which trails are safe**, or how to book a tasting without WhatsApp.
 
-## The Solution
+## The solution
 
-**Cyprus Winter** is the mobile-first discovery and booking app for winter tourism in Cyprus. It is the only platform that combines **winter focus** + **trail intelligence** + **SME booking** in one product.
+**Cyprus Winter** is not a DMO clone. It is a **winter decision-support product**: curated places and trails, conditions and hours, a Plan funnel, winery/guide requests, and an AI guide grounded in that data (not a generic chatbot).
 
-1. **Extends the season** — Surfaces winter product (trails, wineries, villages, ancient sites) and builds itineraries
-2. **Supports SMEs** — Gets wineries, guides, and experiences discovered and booked by travelers planning winter trips
-3. **Reduces peak pressure** — Shifts demand to November–March, supporting sustainable, low-season tourism
-4. **Real-time winter intelligence** — Trail conditions, weather-aware suggestions, offline PWA for travelers
+1. **Extends the season** — Troodos, wine villages, culture, cycling in the cool months  
+2. **Gets SMEs booked** — tasting and guide requests; email lookup across devices  
+3. **DNSH / year-round strategy** — shifts demand off the July peak; skip closed or snowed trails  
+4. **International** — `en`, `el`, `de`, `pl` complete; `he` / `fr` / `ro` chrome in beta  
 
-## Impact (Projected)
+## Impact (18-month PRE-SEED targets)
 
 | Metric | Target |
 |--------|--------|
-| Winter MAU | 15,000 → 35,000 (peak) |
-| SME partners | 25 wineries, 15 guides, 50+ attractions |
-| Itineraries built | 5,000+ per season |
-| Avg. itinerary length | 8 days (vs. 7 summer) |
+| Live SME partners (tastings/guides) | 25 wineries + 15 guides |
+| Itineraries with ≥1 rural/mountain stop | Majority of saved plans |
+| Markets with non-English chrome | DE, EL, PL, HE (IL) |
+| Prototype evidence | `GET /api/health` → `productionReady`; funnel stats export |
 
-## Grant Alignment
+## Alignment
 
-- **ReTour (Interreg NEXT MED):** Seasonal resilience, SME digital tools, climate adaptation
-- **Cyprus DMT:** Special interest tourism, digital transition, rural/mountain product
-- **Sustainability:** Seasonal spread, local supply chains, lower peak demand
+- **PRE-SEED:** International startup, prototype + GTM, ICT wireframes, DNSH  
+- **Strategy 2035 / DMT:** Year-round, special-interest (wine, rural, cycling), accessibility, smart destination  
+- **ReTour (CSTI/UNRF):** Winter SME demonstrator — partnership, not this cheque  
 
 ## Partnerships
 
-- Cyprus Sustainable Tourism Initiative (CSTI)
-- Cyprus Tourism Organisation (CTO)
-- Wine Producers Association
-- Local guides and tour operators
+CSTI · wine producers (pilot cellars) · local guides · optional university partner ≤20% of PRE-SEED budget for validation only  
 
 ## Ask
 
-[Insert specific ask: pilot funding, co-development, partnership, grant amount]
+**€119,999 PRE-SEED** to finish the partner portal, Hebrew (then FR/RO) editorial, accessibility/cycling hubs, and measurable SME KPIs — 15% co-financed by the company.
 
 ---
 
-**Website:** [URL] | **Demo:** [URL]
+**Demo:** production URL or http://localhost:3000 · **Strategy:** `GRANT_STRATEGY.md` · **Backlog:** `docs/superpowers/plans/2026-08-20-preseed-grant-product-backlog.md`

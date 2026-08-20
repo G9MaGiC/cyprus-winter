@@ -1,229 +1,222 @@
 # Cyprus Winter — Grant & Funding Strategy
 
-**Purpose:** Adapt the Cyprus Winter concept to maximize eligibility and success for tourism, digital innovation, and sustainability grants.  
-**Last updated:** March 2026
+**Purpose:** Match Cyprus Winter to live and likely EU/Cyprus funding, and list product work that evaluators can actually see.  
+**Last updated:** 20 August 2026  
+**Executable backlog:** `docs/superpowers/plans/2026-08-20-preseed-grant-product-backlog.md`
+
+This is a product/funding map, not legal advice. For PRE-SEED, the **Greek call text** on [IRIS](https://iris.research.org.cy) is legally binding. Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cyprus grant advisor before submitting.
 
 ---
 
-## Executive Summary
+## Executive summary
 
-Cyprus Winter is the **winter-first discovery and booking app** for Cyprus—trails, ancient sites, villages, wineries—and the only platform that combines winter focus, trail intelligence, and SME booking. It directly supports **seasonal diversification**, **rural/mountain SMEs**, and **sustainable tourism**. This document reframes the project for grant applications and identifies the best-fit funding opportunities.
+| Priority | Instrument | Status (20 Aug 2026) | What it is |
+|----------|------------|----------------------|------------|
+| **P0** | **RIF PRE-SEED/0526** | **Open until 11 Sep 2026, 13:00** | Up to **€119,999** (85% intensity) for an internationally oriented **startup** |
+| P1 | ReTour (Interreg NEXT MED) | Running (not a solo cheque) | Join CSTI / UNRF as winter SME demonstrator |
+| P1 | Deputy Ministry of Tourism 2026 budget | Money in the budget; **no open digital-transition form** | Watch [fundingprogrammesportal.gov.cy](https://www.fundingprogrammesportal.gov.cy) |
+| P2 | Future SMP / Interreg “route” calls | COSME TOURSME-01 closed 20 May 2026 | Keep wine routes as an operational product |
+
+Cyprus Winter already supports **season extension**, **rural/mountain SMEs**, and **special-interest winter product** (trails, wine, villages, cycling in data). PRE-SEED evaluators will still reject a pitch that reads as “another destination website.” The innovation claim is **winter decision support + SME booking + grounded AI**, not a brochure.
+
+Do **not** add blockchain or unrelated DMT categories (golf, weddings, diving) to chase keywords.
 
 ---
 
-## Part 1: Funding Opportunities & Fit
+## Part 1: Funding opportunities & fit
 
-### 1.1 ReTour (Interreg NEXT MED) — **HIGHEST PRIORITY**
+### 1.1 RIF PRE-SEED/0526 — **highest priority (live)**
 
 | Field | Details |
 |-------|---------|
-| **Programme** | ReTour — "Creating Resilient SMEs in the Tourism Sector" |
-| **Budget** | €1.83M total (89% EU-funded) |
-| **Duration** | 30 months (launched Jan 2026) |
-| **Countries** | Greece, Cyprus, Jordan, Italy, Turkey, Lebanon |
-| **Cyprus partners** | University of Nicosia Research Foundation (UNRF), Cyprus Sustainable Tourism Initiative (CSTI) |
-| **Focus** | Tourism SME resilience, AI/IoT/blockchain, sustainable tools, climate adaptation, cross-border cooperation |
+| **Full name** | Creation and Initial Development of Startups with International Orientation |
+| **Call** | PRE-SEED/0526 |
+| **Authority** | [Research and Innovation Foundation (RIF / ΊδΕΚ)](https://www.research.org.cy/en/new-call-for-proposals-for-the-creation-and-initial-development-of-startups-with-international-orientation-pre-seed-programme-pre-seed-0526/) |
+| **Portal** | [IRIS](https://iris.research.org.cy) · [Funding Programmes Portal](https://www.fundingprogrammesportal.gov.cy/en/2026/05/new-call-for-proposals-for-the-creation-and-initial-development-of-startups-with-international-orientation-pre-seed-programme-pre-seed-0526/) |
+| **Source** | ERDF + Republic of Cyprus, ΘΑλΕΙΑ 2021–2027, Priority 1 (smart/digital economy) |
+| **Call budget** | €1,000,000 |
+| **Max per project** | **€119,999** |
+| **Intensity** | **85%** of eligible costs (15% co-finance) |
+| **Cashflow** | **70%** pre-financing on contract; remainder after final report |
+| **Duration** | Up to **18 months** |
+| **Deadline** | **11 September 2026, 13:00** local time |
+| **Evaluation** | Sep 2026 – Mar 2027 (indicative); contracts ~June 2027 |
 
-**Fit:** Cyprus Winter directly supports ReTour objectives:
-- **Seasonal resilience** — Shifts demand from summer peak to winter, reducing overtourism and supporting year-round SME revenue
-- **Digital transformation** — App platform for trail conditions, itinerary building, winery/tour bookings
-- **SME support** — Connects visitors to local guides, wineries, agrotourism, villages (SMEs)
-- **Climate adaptation** — Promotes low-season, cooler-weather activities (hiking, culture, wine) vs. beach/sun dependency
+**Who can host:** A **startup** (small, unlisted, typically ≤5 years, no takeover of another firm, no profits distributed, not formed by merger — confirm in the RESTART work programme). Established and active (or to be established before contract) in territories under the control of the **Republic of Cyprus**. One PRE-SEED project per enterprise as Host Organisation. **Prior PRE-SEED or SEED as HO disqualifies.**
 
-**Action:** Reach out to **CSTI** and **UNRF** to:
-1. Join as a pilot/demonstrator project under ReTour
-2. Propose Cyprus Winter as the digital platform for winter SME visibility
-3. Offer data/insights on winter visitor behavior for ReTour research
+Natural-person teams may submit; **company registration must complete before contract signature**.
+
+**Partners (optional):** Research orgs / enterprises / other private orgs, **≤20%** of budget, only for experimental development (prototype, pilot, test/validate). Large enterprises need an incentive-effect justification.
+
+**Allowed Host activities (indicative):** prototype development, market research, business model, business plan, IP, legal/accounting, marketing/branding, seeking partners and investors.
+
+**ICT annex:** Digital products **must** upload a **product/service wireframe** (Annex II). Screenshots of the live app labelled as wireframes of the current prototype are acceptable if they show structure (home, Discover, Plan, Book, Ask AI, My Bookings).
+
+**Scoring (same in Stage A and B):**
+
+| Criterion | Weight | What they look for |
+|-----------|--------|-------------------|
+| **Excellence** | 30% | Novelty vs **international** state of the art; SWOT; realistic TRL; risks |
+| **Added value and benefit** | 35% | International market, economic impact, IP, growth |
+| **Implementation** | 35% | Team, GTM, workplan, budget credibility |
+| **Gate** | — | Compatible with programme; **Do No Significant Harm**; ≥ **12.00 / 15.00** to Stage B |
+
+**How to pitch Cyprus Winter (do / don’t):**
+
+| Do | Don’t |
+|----|--------|
+| Winter **intelligence**: trail conditions, winter hours, weather-aware Plan, offline PWA | “We built a Cyprus tourism website” |
+| **SME booking** without OTA lock-in (winery/guide requests, email lookup) | Compete with Visit Cyprus as a DMO clone |
+| **Grounded AI** (tools + curated `src/data`, not hallucinated itineraries) | Generic ChatGPT wrapper |
+| **International GTM**: UK, DE, PL, IL, GR — locales `en el de pl he` | “Tourists in general” |
+| DNSH: season-spread, skip closed/snowed trails, village-first days | Fake green badges or on-chain tourism |
+
+**18-month workplan to put in Part B:**
+
+| Phase | Months | Outcomes |
+|-------|--------|----------|
+| 1 | 0–6 | Partner portal MVP, production hardening (`productionReady`), Hebrew editorial, KPI export |
+| 2 | 6–12 | Accessibility + cycling hubs, wine-route hours/booking, 25 live SME leads, UK/DE/PL tests |
+| 3 | 12–18 | Market-research report, Seed-programme readiness, optional CSTI pilot |
+
+**Immediate application package:**
+
+- [ ] IRIS legal entity + Host Organisation
+- [ ] Part A (online budget)
+- [ ] Part B technical annex (≤20 pages, official template)
+- [ ] Annex I EUROPASS CVs (coordinator + key team, ≤5 pages each)
+- [ ] Annex II wireframes (PDF)
+- [ ] DNSH paragraph (season extension, no significant environmental harm)
+- [ ] 15% co-finance source named
+- [ ] Optional partner letter if using ≤20% experimental-development partner
 
 ---
 
-### 1.2 Cyprus Deputy Ministry of Tourism — National Grant Schemes
+### 1.2 ReTour (Interreg NEXT MED) — partnership, not a cheque
 
 | Field | Details |
 |-------|---------|
-| **Budget** | €14.9M (2026) for tourism product upgrading |
-| **Admin** | Deputy Ministry of Tourism, CTO |
-| **Types** | Operational, infrastructure, sustainability, digital transition, special interest tourism |
-| **Portal** | [fundingprogrammesportal.gov.cy](https://www.fundingprogrammesportal.gov.cy) |
+| **Programme** | ReTour — Creating Resilient SMEs in the Tourism Sector |
+| **Budget** | €1.83M total (~89% EU) |
+| **Duration** | 30 months from Jan 2026 |
+| **Countries** | Greece, Cyprus, Jordan, Italy, Türkiye, Lebanon |
+| **Cyprus partners** | CSTI, University of Nicosia Research Foundation (UNRF) |
+| **Focus** | Tourism SME resilience, digital tools, climate adaptation |
 
-**Relevant past schemes (indicate priorities):**
-- **Digital transition of Special Interest tourism providers** — Online promotion, strengthening online presence, targeted promotion of special forms of tourism
-- **Improving accessibility, environmental awareness, special interest infrastructure** — Aligned with National Tourism Strategy 2030
-- **Visitable craft and wine gastronomy workshops** — Mountainous, remote, rural areas; experiential tourism; wine gastronomy
+**Fit:** Seasonal resilience, SME discovery/booking, low-season activities vs beach dependency.
 
-**Fit:** Cyprus Winter aligns with:
-- **Special interest tourism** — Winter hiking, wine, culture, villages
-- **Digital presence** — App as digital showcase for winter product
-- **Rural/mountain areas** — Troodos, Pitsilia, wine villages
-- **Wine gastronomy** — Winery content and booking funnel
-
-**Action:** Monitor the Funding Programmes Portal for new calls. Prepare application materials emphasizing:
-- Digital promotion of winter/special interest tourism
-- Support for rural and mountain SMEs
-- Wine route and agrotourism visibility
+**Action:** Ask CSTI/UNRF to use Cyprus Winter as a **winter SME demonstrator** (pilot wineries/guides, anonymised funnel stats). Do not invent blockchain because the programme mentions it.
 
 ---
 
-### 1.3 Interreg NEXT MED — Green Transition Call
+### 1.3 Deputy Ministry of Tourism — 2026 budget & Strategy 2035
 
 | Field | Details |
 |-------|---------|
-| **Budget** | €83.7M |
-| **Deadline** | 15 May 2025 (1pm CET) |
-| **Project size** | €700K–€3.5M |
-| **Co-financing** | 89% EU, 11% partner |
-| **Partners** | Min. 3 organisations from 3 countries; 1 from Mediterranean Partner Country |
-| **Focus** | Energy, circular economy, climate adaptation, water, SME decarbonisation, green innovation |
+| **2026 product-upgrade envelope** | ~€14.9M (state budget reporting) |
+| **Special-interest incentives** | ~€13.2M: sports, wine/local product, diving, **accessibility**, environment, **digital transition of special-interest providers** |
+| **Promotion** | ~€27.7M international campaigns; cycling/sports fairs abroad |
+| **Strategy** | [National Tourism Strategy 2035](https://www.stockwatch.com.cy/en/news/cyprus-government-approves-new-national-tourism-strategy-2035): year-round, **smart destination**, green transition, accessibility |
+| **Portal** | [fundingprogrammesportal.gov.cy](https://www.fundingprogrammesportal.gov.cy) · [DMT programmes](https://www.fundingprogrammesportal.gov.cy/en/programs/programmes-of-the-deputy-ministry-of-tourism/) |
 
-**Fit (stretch):** Cyprus Winter supports green transition indirectly:
-- **Seasonal spread** — Reduces summer energy/water peaks
-- **Active/outdoor tourism** — Lower carbon than resort-heavy models
-- **Local economy** — Supports villages, wineries, guides (shorter supply chains)
-- **Digital over physical** — App reduces printed materials, supports smart mobility
+**Last published digital-transition de minimis scheme** (websites, SEO, extra languages, booking, AI chat for wine / rural / cycling / culture, etc.) **closed 31 Dec 2023**. Treat 2026 money as **watch-and-ready**, not as a form you can file this week.
 
-**Action:** Consider partnering with organisations in Greece, Malta, or a partner country (Jordan, Lebanon) to submit a multi-country project. Reframe as "Digital tools for sustainable, low-season Mediterranean tourism."
+**When a similar scheme reopens:** position **partner SMEs** (wineries, guides) as beneficiaries who use Cyprus Winter for booking, photos, and winter hours — not a second WordPress brochure.
+
+**Product alignment with special-interest categories we already serve:** winter hiking, wine & gastronomy, rural/nature, cultural, cycling/sports. Skip wedding/cruise/golf unless the product truly adds them.
 
 ---
 
-### 1.4 Cross-Re-Tour (Tourism 4.0)
+### 1.4 Closed or not a fit (keep for narrative only)
 
-| Field | Details |
-|-------|---------|
-| **Grants** | €20,000 or €30,000 per project |
-| **Countries** | Netherlands, Spain (Catalonia), Germany, Slovenia, Portugal, Montenegro, Latvia, Malta |
-| **Cyprus** | Not in eligible countries |
-| **Focus** | Green + digital innovation; behavioral nudges; circular economy; energy; water; plastic reduction |
-
-**Fit:** Cyprus is not eligible. Options:
-1. Partner with a **Malta-based** SME or NGO to apply; Cyprus Winter could be a pilot use case
-2. Use Cross-Re-Tour themes to strengthen narratives for other grants (sustainability, digital, innovation)
+| Instrument | Status | Use |
+|------------|--------|-----|
+| **SMP-COSME-2026-TOURSME-01** (thematic/geographic **routes** + DMO ecosystems) | Closed **20 May 2026**; ~€1.2–1.4M per consortium | Language for wine-route product; future TravelTech + 3 DMOs |
+| **fuTOURiSME** | Closed; awards made | Twin transition (green + digital) wording |
+| **Interreg NEXT MED Green Transition** | Deadline **15 May 2025** | Expired |
+| **Cross-Re-Tour / FU-TOURISM** | Cyprus not eligible | Ignore for cash |
+| **Cyprus Seeds** | Academic research commercialisation | Not this product |
+| **NCC-CY tourism cybersecurity 2025** | Closed Nov 2025 | Hygiene bar: rate limits, secrets, admin cookie session (already in app) |
 
 ---
 
-### 1.5 FU-TOURISM (COSME / Single Market Programme)
+## Part 2: Narrative adaptations
 
-| Field | Details |
-|-------|---------|
-| **Budget** | €4M total; €20K per SME |
-| **Countries** | Poland, Austria, Belgium, Croatia, Greece, Spain |
-| **Cyprus** | Not in eligible countries |
-| **Status** | Applications closed Feb 2025 |
-
-**Fit:** Cyprus not eligible. Use as reference for future COSME/SMP tourism calls that may include Cyprus.
-
----
-
-## Part 2: Narrative Adaptations for Grant Applications
-
-### 2.1 Reframing the Problem
+### 2.1 Problem
 
 | Grant focus | Narrative |
 |-------------|-----------|
-| **Seasonal resilience** | "Cyprus tourism is 70% summer-concentrated, creating overtourism, employment volatility, and underused infrastructure. Winter demand exists (+30% YoY) but is fragmented and invisible." |
-| **SME support** | "Rural and mountain SMEs (wineries, guides, agrotourism, villages) lack digital visibility and booking channels. Visitors default to coastal, summer-focused platforms." |
-| **Sustainability** | "Spreading demand to winter reduces peak-season pressure on water, energy, and infrastructure. Winter tourism favors cultural and active experiences with lower per-visitor footprint." |
-| **Digital transition** | "Special interest tourism (hiking, wine, culture) is underpromoted online. A purpose-built app drives discovery and conversions for winter product." |
+| **PRE-SEED / international** | Winter visitors from UK, DE, PL, IL, GR arrive with summer OTAs. They cannot tell what is open, which trails are safe, or how to book a village winery without WhatsApp. |
+| **Seasonal resilience** | Cyprus stays summer-concentrated; winter demand exists but is fragmented. |
+| **SME support** | Rural/mountain SMEs lack a winter booking channel; visitors default to coastal platforms. |
+| **Sustainability / DNSH** | Spreading trips to Nov–Mar reduces peak pressure on water, energy, and Troodos. |
+| **Digital transition / 2035** | Special-interest winter product is under-served online vs sun-and-sea. |
 
-### 2.2 Reframing the Solution
+### 2.2 Solution statements
 
-| Grant focus | Solution statement |
-|-------------|-------------------|
-| **ReTour** | "Cyprus Winter is the winter-first discovery and booking app that increases resilience of tourism SMEs by extending the season, providing real-time trail/conditions data, and getting local experiences discovered and booked—aligned with ReTour's Innovation Centre and digital tools." |
-| **Cyprus DMT** | "Cyprus Winter is the winter-first discovery and booking app for special interest and rural tourism, improving the online presence of winter product and supporting the National Tourism Strategy 2030." |
-| **Green / Interreg** | "Cyprus Winter supports sustainable tourism by promoting low-season, experience-based travel that reduces peak demand and supports local, lower-carbon value chains." |
+| Audience | One sentence |
+|----------|----------------|
+| **PRE-SEED** | Cyprus Winter is a winter-first discovery, planning, and SME-booking product: curated data, trail/hours intelligence, grounded AI, and a Plan → Book funnel aimed at international short-haul markets — not a DMO clone or a generic OTA. |
+| **ReTour** | The winter SME layer: conditions, itineraries, and tasting/guide requests that keep mountain and wine businesses earning off-peak. |
+| **DMT / Strategy 2035** | Digital product for year-round special-interest tourism (trails, wine routes, villages, cycling) with accessibility and smart-destination hooks. |
 
-### 2.3 Key Metrics to Emphasise
+### 2.3 Metrics to report
 
-- **Seasonal diversification:** % of app users planning winter vs. summer trips
-- **SME reach:** Number of wineries, guides, villages, attractions featured and linked
-- **Engagement:** Itineraries built, trail condition views, bookings/referrals
-- **Geographic spread:** Traffic to Troodos, Pitsilia, wine villages (rural/mountain)
-- **Sustainability proxy:** Shift from beach-resort to culture/active/wine itineraries
+Use `/admin/stats` and first-party `trackProduct` events (`plan_add`, `booking_start`, hub clicks). Exportable KPIs evaluators understand:
 
----
-
-## Part 3: Product Adaptations for Grant Fit
-
-### 3.1 High-Impact Additions
-
-| Feature | Grant alignment | Effort |
-|---------|-----------------|--------|
-| **Trail conditions (crowd-sourced)** | ReTour digital tools, SME engagement | Medium |
-| **Winery / experience booking** | Direct SME revenue, measurable impact | High |
-| **Sustainability badges** | Green transition, Cross-Re-Tour themes | Low |
-| **"Escape the cold" carbon comparison** | Behavioral nudge, green narrative | Low |
-| **Offline PWA** | Accessibility, digital inclusion | Done |
-| **Partnership with CTO / CSTI** | Credibility, alignment with national strategy | Outreach |
-
-### 3.2 Content Emphases
-
-- **Rural and mountain** — Troodos, Pitsilia, wine villages, agrotourism
-- **Winter-only** — Trail conditions, seasonal events, winter tips
-- **Local SMEs** — Wineries, guides, tavernas, workshops
-- **Sustainability** — Public transport tips, local sourcing, low-impact activities
-
-### 3.3 Governance & Reporting
-
-For grant compliance, consider:
-- **KPIs dashboard** — User counts, itinerary usage, SME referrals
-- **Partner reporting** — Monthly summaries for CTO, CSTI, or funders
-- **Pilot structure** — Define pilot SMEs (wineries, guides) and success criteria
+- Itineraries built; bookings/leads by SME (`providerId`)
+- Locale / market mix (`en`, `de`, `pl`, `he`, …)
+- Share of Plan items that are rural/mountain vs beach
+- Trail-condition views vs “closed / snow” skips (once surfaced)
 
 ---
 
-## Part 4: Partnership Strategy
+## Part 3: Product backlog (grant-aligned)
 
-### 4.1 Priority Partners
+Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-product-backlog.md`.
 
-| Partner | Role | Grant relevance |
-|---------|------|-----------------|
-| **Cyprus Sustainable Tourism Initiative (CSTI)** | ReTour implementer; validation, network | ReTour, national schemes |
-| **University of Nicosia Research Foundation (UNRF)** | ReTour lead in Cyprus; research, data | ReTour |
-| **Cyprus Tourism Organisation (CTO)** | Official endorsement, content, marketing | National grants |
-| **Cyprus Deputy Ministry of Tourism** | Policy alignment, grant admin | National grants |
-| **Wine Producers Association** | Winery content, booking, wine routes | Special interest, rural |
-| **Local guides / tour operators** | Trail and experience bookings | SME support |
+| ID | Work | Grant criterion | Code today | Effort |
+|----|------|-----------------|------------|--------|
+| **G0** | PRE-SEED IRIS pack (annex, CVs, wireframes, DNSH) | Implementation | Docs + screenshots | 1–2 weeks (non-code) |
+| **G1** | Confirm production `GET /api/health` → `productionReady` | Prototype demonstrated | `src/lib/production-readiness.ts` | Ops |
+| **G2** | Partner portal: hours, photos, accept/decline tasting | SME impact, innovation | Bookings API + admin stats; no partner UI yet | High |
+| **G3** | Discover filters: Accessible, Family, Cycling | DMT accessibility + sports | `accessibility` / `bestFor` in data; buried on detail | Medium |
+| **G4** | Surface trail conditions + winter hours on cards | Excellence (intelligence) | Reports API + detail copy | Medium |
+| **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `src/data/activity-places.ts` cycling IDs | Medium |
+| **G6** | Wine routes as operational (hours, bookable stops) | Route ecosystems / wine gastronomy | `/wine-routes/[slug]` editorial only | Medium |
+| **G7** | Finish `he` editorial (then `fr`/`ro` body) | International orientation | Chrome translated; home/legal still EN | High (copy) |
+| **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan client + weather/conditions | Medium |
+| **G9** | KPI CSV/JSON from `/api/stats` (locale, SME, plan events) | Added value / reporting | `src/app/(padded)/admin/stats/page.tsx` | Low |
+| **G10** | Partner winery photos (~55) | Credibility | `docs/WINERY_IMAGE_INTAKE.md` | Content |
 
-### 4.2 Outreach Sequence
-
-1. **CSTI** — Introduce Cyprus Winter; propose collaboration under ReTour (pilot, data, SME linkage)
-2. **CTO** — Request meeting to align with winter strategy and explore co-promotion
-3. **Wine Producers Association** — Propose winery integration and wine route visibility
-4. **UNRF** — Explore research partnership (winter visitor behavior, digital adoption)
-
----
-
-## Part 5: Application Checklist
-
-### 5.1 Documents to Prepare
-
-- [ ] **Executive summary** (1 page) — Problem, solution, impact, ask
-- [ ] **Project description** (2–5 pages) — Objectives, activities, timeline, budget
-- [ ] **Budget breakdown** — Development, content, marketing, operations, co-financing
-- [ ] **Partnership letters** — CSTI, CTO, wineries, guides
-- [ ] **KPIs and impact metrics** — Aligned with grant criteria
-- [ ] **Legal/company registration** — Ensure SME or eligible entity status
-
-### 5.2 Common Grant Criteria — Alignment
-
-| Criterion | Cyprus Winter alignment |
-|-----------|-------------------------|
-| **Innovation** | Digital-first winter tourism platform; trail conditions; mood-based discovery |
-| **Sustainability** | Seasonal spread, lower peak demand, local SME support |
-| **Economic impact** | SME visibility, booking funnel, extended season revenue |
-| **Scalability** | Template for other Mediterranean winter destinations |
-| **Partnership** | CTO, CSTI, wineries, guides |
-| **Digital transition** | PWA, offline, mobile-first, SME digital presence |
+**Already shipped (cite in the annex, do not rebuild):** Plan → Book funnel, trail reports, winery/guide booking requests, HMAC booking lookup, grounded AI + `/skills`, offline plan, travel-trust / 112, 7 locales with `fr`/`he`/`ro` chrome + beta labels, first-party funnel analytics.
 
 ---
 
-## Part 6: Next Steps
+## Part 4: Partnerships
 
-1. **Immediate:** Contact CSTI and UNRF re. ReTour pilot/demonstrator role
-2. **Short-term:** Register on Cyprus Funding Programmes Portal; subscribe to tourism calls
-3. **Medium-term:** Prepare grant application package (summary, budget, KPIs, partnerships)
-4. **Ongoing:** Add sustainability and SME-impact features to the product roadmap
+| Partner | Role | Instrument |
+|---------|------|------------|
+| **RIF** | Funder / IRIS | PRE-SEED |
+| **CSTI** | Sustainability validation, SME network | ReTour, DNSH narrative |
+| **UNRF** | Optional ≤20% experimental-development partner | PRE-SEED partner **or** ReTour |
+| **Deputy Ministry / Visit Cyprus** | Do not contradict official entry/safety; co-promotion later | DMT |
+| **Wine producers / village wineries** | Hours, photos, tasting SLO | SME KPIs |
+| **Local guides** | Trail + experience bookings | SME KPIs |
+
+Outreach order: **IRIS registration this week** → CSTI one-pager (`GRANT_PITCH.md`) → wine association for 5 pilot cellars → UNRF only if you need a research partner on the 20% cap.
 
 ---
 
-*This document should be updated as new calls open and partnerships develop.*
+## Part 5: Next steps (dated)
+
+1. **This week:** Confirm company eligibility; open IRIS; book a grant advisor; screenshot wireframes from production or `localhost:3000`.
+2. **By 4 Sep 2026:** Draft Part B + budget + CVs; freeze innovation narrative (no last-minute feature spam).
+3. **By 11 Sep 2026, 13:00:** Submit PRE-SEED/0526.
+4. **In parallel (product):** G1, G9, G3/G4 (visible intelligence) — highest annex screenshots per euro.
+5. **After submission:** G2 partner portal and G7 Hebrew body copy as the 18-month prototype story.
+6. **Ongoing:** Watch DMT portal for digital-transition reopen; keep ReTour conversation warm.
+
+---
+
+*Update this file when a DMT call opens or PRE-SEED results are known.*
