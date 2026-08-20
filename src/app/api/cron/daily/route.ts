@@ -51,6 +51,7 @@ export async function GET(req: NextRequest) {
         const result = await sendPush(row.subscription, {
           title,
           body,
+          // EN-default deep links: push subscriptions do not store locale yet (DR-040).
           url: "/plan",
         });
         if (result.ok) {

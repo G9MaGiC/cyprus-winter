@@ -94,7 +94,7 @@ Hosts and exact URLs can change between Playwright releases; if allowlisting is 
 
 ### 2.6 Mobile & Responsive
 
-**Extended checklist (page groups + 320px):** [`docs/UX_UI_RESPONSIVE_MATRIX.md`](UX_UI_RESPONSIVE_MATRIX.md).
+**Extended checklist (page groups + 320px):** [`docs/archive/UX_UI_RESPONSIVE_MATRIX.md`](archive/UX_UI_RESPONSIVE_MATRIX.md).
 
 | Device | Viewport | Checks |
 |--------|----------|--------|

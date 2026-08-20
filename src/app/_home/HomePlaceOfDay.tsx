@@ -114,7 +114,7 @@ export default function HomePlaceOfDay() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div
-          className={`rounded-2xl overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
+          className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col sm:flex-row`}
         >
           <AppLink
             href={place.href}

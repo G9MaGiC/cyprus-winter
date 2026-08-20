@@ -21,7 +21,7 @@ export default async function EditorsPicks({ locale }: Props) {
       {picks.map((item) => (
         <div
           key={item.id}
-          className={`overflow-hidden rounded-2xl ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
+          className={`overflow-hidden ${CARD.base} ${CARD.featured} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
         >
           <AppLink
             href={item.href}

@@ -216,6 +216,8 @@ Cron jobs (`/api/cron/daily`, `/api/cron/weather-digest`) run on a schedule. If 
 | `/api/cron/daily` | 06:00 daily | Refresh trail summary cache; send trip countdown push notifications |
 | `/api/cron/weather-digest` | 12:00 daily | Send weather digest push notifications |
 
+**Push deep links (DR-040):** Countdown opens `/plan` and weather digest opens `/weather` (default-locale / unprefixed URLs). Subscriptions do not store a locale yet; localized `start_url` for installs is handled separately via `/manifests/[locale]`.
+
 ### Authentication
 
 Both routes require `Authorization: Bearer <CRON_SECRET>`. Vercel injects this automatically. For manual runs:

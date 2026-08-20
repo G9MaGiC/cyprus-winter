@@ -23,11 +23,6 @@ const STORAGE_KEY = getItineraryStorageKey();
 export { MAX_DAYS };
 export { ITINERARY_TEMPLATES, type TemplateKey };
 
-/** @deprecated Use getTemplateDays or ITINERARY_TEMPLATES */
-export const WINTER_TEMPLATES: Record<string, Record<number, string[]>> = Object.fromEntries(
-  ITINERARY_TEMPLATES.map((t) => [t.key, t.days])
-);
-
 /**
  * Union storage + in-memory days so independent useItinerary() instances
  * on the same tab (AttractionCard + AddToItineraryButton) cannot clobber

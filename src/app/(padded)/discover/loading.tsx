@@ -37,7 +37,7 @@ function PlaceOfDaySkeleton() {
     <section className={`${SECTION.pySub} ${LAYOUT.safeAreaX}`}>
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`h-3 w-24 ${SKELETON.block} ${SECTION.headingGap}`} />
-        <div className={`rounded-2xl overflow-hidden ${CARD.planCombo} flex flex-col sm:flex-row`}>
+        <div className={`${CARD.base} ${CARD.planCombo} overflow-hidden flex flex-col sm:flex-row`}>
           <div className={`sm:w-2/5 shrink-0 aspect-[4/3] sm:aspect-square ${SKELETON.block}`} />
           <div className={`flex-1 ${CARD.content} flex flex-col justify-between gap-4`}>
             <div>
@@ -60,7 +60,7 @@ export default async function DiscoverLoading() {
   const t = await getTranslations("common");
   return (
     <div
-      className={`min-h-screen bg-background ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
+      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
       aria-busy
       aria-live="polite"
       role="status"

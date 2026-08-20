@@ -1381,6 +1381,11 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-181 | API (DR-008 leftover) | weather / right-now / trail-reports / bookings success bodies still ad hoc | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged; guest GET auth unchanged |
 | BUG-182 | Nav (DR-028) | Hub pages (`/beaches`, `/villages`, `/wineries`, `/cycling`, `/wine-routes`) did not highlight Discover | `isActive` maps those hubs to `/discover` |
 | BUG-183 | PWA / i18n | Static EN `public/manifest.json`; installs ignored page locale | Locale route `/manifests/[locale]` + layout metadata; keys in `messages/*` |
+| BUG-184 | Visual (DR-022) | Discover loading used `bg-background` vs live `bg-sand` | Align loading shell + PlaceOfDay skeleton to `CARD.base` |
+| BUG-185 | Docs (DR-036) | QA_PLAN §2.6 linked missing root UX matrix | Point to `docs/archive/UX_UI_RESPONSIVE_MATRIX.md` |
+| BUG-186 | Cleanup (DR-038) | Deprecated `HomeHero.tsx` + unused `WINTER_TEMPLATES` | Removed |
+| BUG-187 | Visual (DR-035 leftover) | Featured cards stacked `rounded-2xl` on `CARD.base` (`rounded-xl`) | Drop redundant radius on EditorsPicks / Place of Day |
+| BUG-188 | Push (DR-040) | Cron push URLs hardcoded EN paths with no documented policy | Document EN-default in RUNBOOK + cron comments until subscriptions store locale |
 
 ### Still open — ops / human (do not invent)
 
@@ -1400,6 +1405,5 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |------|----------|-------|
 | Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
 | Cookie-setting session routes (`admin/session`, `partner/session`) keep hand-rolled `{ ok: true }` + `Set-Cookie` | P3 | Already `{ ok: true }`; leave alone unless consolidating cookie helpers |
-| Locale-aware PWA manifest | — | Done (BUG-183) |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
