@@ -61,12 +61,12 @@
 
 **Files:** `src/lib/discover-sections.ts`, `src/lib/discover-place-utils.ts`, Discover list client, `messages/*.json`
 
-- [ ] Reuse existing `accessibility` heuristics in `discover-sections.ts` (wheelchair etc.) as a **filter chip**, not only buried copy
-- [ ] Family: `bestFor` / existing family tags (`docs/ICPS.md`)
-- [ ] Cycling: IDs/types from `activity-places.ts` + preference key `"cycling"` in `user-preferences.ts`
-- [ ] i18n all chip labels in 7 locales
-- [ ] Tests: filter returns a non-empty known ID (e.g. a tagged place) and empty-state copy
-- [ ] **Verify:** `npm run test`, `npm run i18n:validate`, `i18n:scan --fail`; screenshot for annex
+- [x] Reuse existing `accessibility` heuristics in `discover-sections.ts` (wheelchair etc.) as a **filter chip**, not only buried copy
+- [x] Family: `bestFor` / existing family tags (`docs/ICPS.md`)
+- [x] Cycling: IDs/types from `activity-places.ts` + preference key `"cycling"` in `user-preferences.ts`
+- [x] i18n all chip labels in 7 locales
+- [x] Tests: filter returns a non-empty known ID (e.g. a tagged place) and empty-state copy
+- [x] **Verify:** `npm run test`, `npm run i18n:validate`, `i18n:scan --fail`; screenshot for annex
 
 ---
 
@@ -76,11 +76,11 @@
 
 **Files:** trail/discover cards, `src/app/api/trail-reports/`, place `winterHours` (or equivalent) in `src/data/`
 
-- [ ] Show latest condition status (or “no report”) on trail cards, not only detail
-- [ ] Show winter hours / “call ahead” where the data field already exists
-- [ ] Do not invent Forestry Department integration in this task
-- [ ] Tests for empty report vs reported state
-- [ ] **Verify:** unit tests + Discover/Trails screenshot
+- [x] Show latest condition status (or “no report”) on trail cards, not only detail
+- [x] Show winter hours / “call ahead” where the data field already exists
+- [x] Do not invent Forestry Department integration in this task
+- [x] Tests for empty report vs reported state
+- [x] **Verify:** unit tests + Discover/Trails screenshot
 
 ---
 

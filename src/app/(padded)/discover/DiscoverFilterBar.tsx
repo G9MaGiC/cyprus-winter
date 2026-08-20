@@ -6,7 +6,7 @@ import FilterChips from "@/components/FilterChips";
 import StickyFilterBar from "@/components/StickyFilterBar";
 import { SECTION, CTA, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
-import { ACTIVITY_FILTER_KEYS } from "@/lib/activity-catalog";
+import { buildDiscoverFilterChipGroups } from "@/lib/discover-filter-chips";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { useTranslations } from "next-intl";
 
@@ -50,21 +50,34 @@ export default function DiscoverFilterBar({
     firstChip?.focus();
   }, [filtersExpanded]);
 
+  const chipGroups = buildDiscoverFilterChipGroups(sections.map((s) => s.id));
+
   const placeChips = [
     { id: "", label: tDiscover("page.filters.all") },
     { id: "nature", label: tDiscover("page.filters.natureAndCoasts") },
-    ...sections
-      .filter((s) => s.id !== "coasts")
-      .map((s) => ({
-        id: s.id,
-        label: tDiscover(`page.sections.${s.id}`),
-      })),
+    ...chipGroups.places.map((id) => ({
+      id,
+      label: tDiscover(`page.sections.${id}`),
+    })),
   ];
 
-  const activityChips = ACTIVITY_FILTER_KEYS.map((id) => ({
+  const practicalChips = chipGroups.practical.map((id) => ({
+    id,
+    label:
+      id === "cycling"
+        ? tDiscover("page.filters.cycling")
+        : tDiscover(`page.sections.${id}`),
+  }));
+
+  const activityChips = chipGroups.moods.map((id) => ({
     id,
     label: tDiscover(`page.filters.${id}`),
   }));
+
+  const isPracticalChipActive = (chip: { id: string }) => {
+    if (chip.id === "cycling") return filterParam === "cycling";
+    return filter === chip.id && !isActivityFilter;
+  };
 
   const isPlaceChipActive = (chip: { id: string }) => {
     if (chip.id === "") return !filterParam;
@@ -83,6 +96,18 @@ export default function DiscoverFilterBar({
   const filterGroups = (
     <div className="space-y-4">
       <div className="space-y-2">
+        <p className={`${TYPE.kicker} text-sage`}>
+          {tDiscover("page.filterGroups.practical")}
+        </p>
+        <FilterChips
+          chips={practicalChips}
+          isActive={isPracticalChipActive}
+          getHref={(chip) => discoverFilterHref(chip.id, isPracticalChipActive(chip))}
+          ariaLabel={tDiscover("page.filterGroups.practicalAria")}
+        />
+      </div>
+
+      <div className="space-y-2 pt-1 border-t border-sand-200/80">
         <p className={`${TYPE.kicker} text-sage`}>
           {tDiscover("page.filterGroups.places")}
         </p>

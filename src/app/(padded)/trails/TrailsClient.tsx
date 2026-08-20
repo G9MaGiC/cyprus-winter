@@ -22,8 +22,14 @@ import TrailStatusGroup from "@/app/(padded)/trails/TrailStatusGroup";
 import TrailsTipsSection from "@/app/(padded)/trails/TrailsTipsSection";
 import { useTranslations } from "next-intl";
 import { SRStatus } from "@/components/SRStatus";
+import { TrailListReportsProvider } from "@/components/TrailListReportsProvider";
+import type { TrailCardReportInput } from "@/lib/trail-card-conditions";
 
-export default function TrailsClient() {
+export default function TrailsClient({
+  reportsByTrail = {},
+}: {
+  reportsByTrail?: Record<string, TrailCardReportInput>;
+}) {
   const tNav = useTranslations("nav");
   const tTrailsPage = useTranslations("trails.page");
   const tCommon = useTranslations("common");
@@ -79,6 +85,7 @@ export default function TrailsClient() {
     : tTrailsPage("sr.allByCategory");
 
   return (
+    <TrailListReportsProvider reports={reportsByTrail}>
     <div className="min-h-screen bg-sand">
       <SRStatus message={filterAnnouncement} />
       <div
@@ -260,5 +267,6 @@ export default function TrailsClient() {
         <TrailsFooter reportTrailId={reportTrail?.id} onScrollToMap={scrollToMap} />
       </div>
     </div>
+    </TrailListReportsProvider>
   );
 }

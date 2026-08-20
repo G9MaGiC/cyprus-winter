@@ -11,6 +11,12 @@ import { wineries } from "@/data/wineries";
 import { restaurants } from "@/data/restaurants";
 import { LOCAL_WINTER_PICK_IDS } from "@/data/local-winter-picks";
 
+export {
+  PRACTICAL_DISCOVER_FILTERS,
+  buildDiscoverFilterChipGroups,
+  type PracticalDiscoverFilter,
+} from "@/lib/discover-filter-chips";
+
 export type DiscoverSection = {
   id: string;
   title: string;
@@ -38,7 +44,7 @@ export const filterToSectionId: Record<string, string> = {
   "off-beaten-path": "hidden",
 };
 
-function isFamilyFriendly(item: { bestFor?: string[] }): boolean {
+export function isFamilyFriendly(item: { bestFor?: string[] }): boolean {
   return (
     item.bestFor?.some(
       (b) =>
@@ -47,7 +53,7 @@ function isFamilyFriendly(item: { bestFor?: string[] }): boolean {
   );
 }
 
-function isAccessibleFriendly(item: {
+export function isAccessibleFriendly(item: {
   accessibility?: string;
   bestFor?: string[];
 }): boolean {
@@ -57,7 +63,7 @@ function isAccessibleFriendly(item: {
     acc.includes("not for limited") ||
     acc.includes("strenuous") ||
     acc.includes("steep climb") ||
-    acc.includes("steep paths") && acc.includes("many steps")
+    (acc.includes("steep paths") && acc.includes("many steps"))
   ) {
     return false;
   }

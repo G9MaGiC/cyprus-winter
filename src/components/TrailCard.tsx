@@ -9,17 +9,29 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { formatReportedAgo } from "@/lib/format";
 import type { Trail, TrailConditions } from "@/data/trails";
+import { trailConditions as editorialConditions } from "@/data/trails";
+import { useTrailListReports } from "@/components/TrailListReportsProvider";
+import {
+  resolveTrailCardConditions,
+  trailConditionsFromView,
+} from "@/lib/trail-card-conditions";
 import { useLocale, useTranslations } from "next-intl";
 
 type Props = {
   trail: Trail;
   conditions?: TrailConditions;
   featured?: boolean;
+  /** Hide static winter snapshots (e.g. “No report” group). Live reports still show. */
+  hideEditorial?: boolean;
 };
 
-export default function TrailCard({ trail, conditions, featured }: Props) {
+export default function TrailCard({ trail, conditions, featured, hideEditorial }: Props) {
   const locale = useLocale();
   const tTrails = useTranslations("trails");
+  const reports = useTrailListReports();
+  const editorial = hideEditorial ? undefined : (conditions ?? editorialConditions[trail.id]);
+  const view = resolveTrailCardConditions(editorial, reports[trail.id]);
+  const resolved = trailConditionsFromView(trail.id, view);
   const durationH = Math.round(trail.durationMin / 60);
   const teaser = trail.highlights?.[0] ?? trail.description;
 
@@ -50,12 +62,18 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
           />
           <div className={CARD.mediaOverlay} aria-hidden />
           <div className="absolute top-3 left-3 flex flex-wrap items-center gap-2">
-            {conditions && <StatusBadge status={conditions.status} />}
+            {resolved ? (
+              <StatusBadge status={resolved.status} />
+            ) : (
+              <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium text-olive/80 backdrop-blur-sm bg-white/85">
+                {tTrails("card.noReport")}
+              </span>
+            )}
             <DifficultyBadge difficulty={trail.difficulty} />
           </div>
-          {conditions?.temperatureC != null && (
+          {resolved?.temperatureC != null && (
             <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 text-charcoal text-xs font-medium backdrop-blur-sm">
-              {tTrails("card.temperature", { value: conditions.temperatureC })}
+              {tTrails("card.temperature", { value: resolved.temperatureC })}
             </div>
           )}
           <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block">
@@ -84,21 +102,28 @@ export default function TrailCard({ trail, conditions, featured }: Props) {
                 <span className="capitalize">{trail.routeType.replace("-", " ")}</span>
               </>
             )}
-            {conditions?.lastReportedAt ? (
+            {view.source === "report" && resolved?.lastReportedAt ? (
               <>
                 <span aria-hidden>·</span>
-                <span>{formatReportedAgo(conditions.lastReportedAt, locale)}</span>
+                <span>{tTrails("card.hikerReport")}</span>
+                <span aria-hidden>·</span>
+                <span>{formatReportedAgo(resolved.lastReportedAt, locale)}</span>
               </>
-            ) : conditions ? (
+            ) : view.source === "editorial" ? (
               <>
                 <span aria-hidden>·</span>
                 <span>{tTrails("conditionsEditorial")}</span>
               </>
-            ) : null}
+            ) : (
+              <>
+                <span aria-hidden>·</span>
+                <span>{tTrails("card.noReport")}</span>
+              </>
+            )}
           </div>
-          {conditions?.tip && (
+          {resolved?.tip && (
             <p className={`mt-3 text-sm text-olive/90 break-words px-4 py-3 ${CALLOUT.tip}`}>
-              {conditions.tip}
+              {resolved.tip}
             </p>
           )}
         </div>

@@ -113,6 +113,7 @@
     "submitReport": "Wyślij raport",
     "goHome": "Strona główna",
     "tryAgain": "Spróbuj ponownie",
+    "callAhead": "Zadzwoń wcześniej",
     "explore": "Odkrywaj",
     "place": "Miejsce",
     "trail": "Szlak",
@@ -368,6 +369,8 @@
         "trailConditions": "Stan szlaków",
         "events": "Wydarzenia",
         "familyFriendly": "Dla rodzin",
+        "accessible": "Dostępne i spokojne",
+        "accessibleAria": "Dostępne i spokojne miejsca",
         "all": "Wszystko",
         "seeAll": "Zobacz wszystko",
         "culture": "Kultura",
@@ -728,6 +731,8 @@
         "all": "Wyświetlam wszystkie miejsca"
       },
       "filterGroups": {
+        "practical": "Praktyczne",
+        "practicalAria": "Filtruj według rodziny, dostępności i roweru",
         "places": "Miejsca",
         "placesAria": "Filtruj według kategorii",
         "winterMoods": "Zimowy nastrój",
@@ -1210,7 +1215,9 @@
       "elevationGain": "{meters}m przewyższenia",
       "temperature": "{value}°C",
       "trailAria": "{name}, {length} km szlak {difficulty} w {region}",
-      "imageAlt": "{name}, {region} — {length} km szlak {difficulty} na Cyprze zimą"
+      "imageAlt": "{name}, {region} — {length} km szlak {difficulty} na Cyprze zimą",
+      "noReport": "Brak raportu",
+      "hikerReport": "Raport turysty"
     },
     "placeOfDay": {
       "heading": "Szlak dnia",

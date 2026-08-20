@@ -113,6 +113,7 @@
     "submitReport": "Υποβολή αναφοράς",
     "goHome": "Αρχική σελίδα",
     "tryAgain": "Δοκιμάστε ξανά",
+    "callAhead": "Καλέστε πρώτα",
     "explore": "Εξερεύνηση",
     "place": "Τοποθεσία",
     "trail": "Μονοπάτι",
@@ -368,6 +369,8 @@
         "trailConditions": "Κατάσταση μονοπατιών",
         "events": "Εκδηλώσεις",
         "familyFriendly": "Για οικογένειες",
+        "accessible": "Προσβάσιμα & ήπια",
+        "accessibleAria": "Προσβάσιμα και ήπια μέρη",
         "all": "Όλα",
         "seeAll": "Δείτε όλα",
         "culture": "Πολιτισμός",
@@ -728,6 +731,8 @@
         "all": "Εμφάνιση όλων των μερών"
       },
       "filterGroups": {
+        "practical": "Πρακτικά",
+        "practicalAria": "Φίλτρο κατά οικογένεια, προσβασιμότητα και ποδήλατο",
         "places": "Μέρη",
         "placesAria": "Φίλτρο ανά κατηγορία",
         "winterMoods": "Διάθεση χειμώνα",
@@ -1210,7 +1215,9 @@
       "elevationGain": "{meters}μ υψομ.",
       "temperature": "{value}°C",
       "trailAria": "{name}, {length} χλμ {difficulty} μονοπάτι στην περιοχή {region}",
-      "imageAlt": "{name}, {region} — {length} χλμ {difficulty} μονοπάτι στην Κύπρο"
+      "imageAlt": "{name}, {region} — {length} χλμ {difficulty} μονοπάτι στην Κύπρο",
+      "noReport": "Χωρίς αναφορά",
+      "hikerReport": "Αναφορά πεζοπόρου"
     },
     "placeOfDay": {
       "heading": "Μονοπάτι της ημέρας",
