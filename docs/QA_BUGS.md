@@ -1366,6 +1366,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-166 | Plan / SEO | Shared `/plan?plan=` links used generic “Plan Cyprus Winter” OG/title | `buildPlanPageMetadata` names places from the encoded itinerary; share bar shows the recipient preview line; shared URLs `noindex` |
 | BUG-167 | Plan / G5 | Airport 48h CTA filled Plan with no “what now” framing | `PlanStartHere` after `?template=short-stay`; short-stay stays 5 stops / 2 days |
 | BUG-168 | Events / G6 | Events hero had no freshness cue; empty filters buried Plan | “Updated monthly” under hero note; Plan is primary recovery CTA |
+| BUG-169 | i18n | Beta `fr`/`he`/`ro` funnel chrome leftovers (`common.backTo`, breadcrumbs `bookTasting`, `verifiedPartner`, Discover Book CTA) | Translated those keys + companion booking/report chrome; privacy/terms **body** still English for legal review |
 
 ### Still open — ops / human (do not invent)
 
@@ -1383,7 +1384,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | Item | Severity | Notes |
 |------|----------|-------|
-| Beta `fr`/`he`/`ro` funnel chrome leftovers (`common.backTo`, breadcrumbs `bookTasting`, `verifiedPartner`, Discover Book CTA) | P1 | Nav/footer/errors already translated (BUG-147/153); remaining keys still English |
 | Hidden gems ≈ most of Discover because `localSecret` is editorial copy on almost every place, plus family union | P2 | Do not retag from this pass; needs an editorial `hidden` flag |
 | DR-007 | P2 | No route tests yet for `push/subscribe` (weather-digest 401 now covered) |
 | DR-008 | P2 | No `jsonSuccess()` helper; success bodies remain ad hoc |
