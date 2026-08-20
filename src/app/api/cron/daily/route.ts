@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { jsonError } from "@/lib/api-response";
+import { jsonError, jsonSuccess } from "@/lib/api-response";
 import { refreshTrailSummary } from "@/lib/trail-summary-cache";
 import {
   getSubscribersForTripCountdown,
@@ -62,8 +62,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    return Response.json({
-      ok: true,
+    return jsonSuccess({
       trails: Object.keys(summary).length,
       pushesSent,
       updated: new Date().toISOString(),

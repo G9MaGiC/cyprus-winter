@@ -4,6 +4,7 @@ import { getSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import {
   jsonError,
+  jsonSuccess,
   jsonRateLimitedFromResult,
   rateLimitSuccessHeaders,
   readJsonBody,
@@ -149,8 +150,8 @@ export async function POST(req: NextRequest) {
     }
 
     if (eventId && isDuplicateEventId(eventId)) {
-      return Response.json(
-        { ok: true, stored: false, deduped: true },
+      return jsonSuccess(
+        { stored: false, deduped: true },
         { headers: rateLimitSuccessHeaders(limitResult.remaining, 120, limitResult.bypassed) }
       );
     }
@@ -179,8 +180,8 @@ export async function POST(req: NextRequest) {
       stored = !error;
       if (error) console.error("Track API storage error:", error);
     }
-    return Response.json(
-      { ok: true, stored, deduped: false },
+    return jsonSuccess(
+      { stored, deduped: false },
       { headers: rateLimitSuccessHeaders(limitResult.remaining, 120, limitResult.bypassed) }
     );
   } catch (err) {

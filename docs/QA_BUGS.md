@@ -1371,6 +1371,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-171 | Discover | Hidden gems ≈ most of Discover (`localSecret` + family union) | Hidden section uses `bestFor` “hidden gem” / “off-the-beaten-path” only; Family stays its own filter |
 | BUG-172 | Bookings (DR-019) | Sync merge kept local `pending` over API `confirmed`/`cancelled` | `mergeBookings` API-wins on id collision; local-only rows still kept |
 | BUG-173 | A11y (DR-016) | SearchBar `role="option"` nested an Add-to-plan link and took focus via tabIndex | Options are non-focusable; Enter/click open detail; Add stays on SearchResultCard |
+| BUG-174 | API (DR-008 leftover) | Success bodies still ad hoc on vapid/track/cron | Those routes use `jsonSuccess` (`{ ok: true, … }`); cookie session routes unchanged |
 
 ### Still open — ops / human (do not invent)
 
@@ -1388,7 +1389,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | Item | Severity | Notes |
 |------|----------|-------|
-| Broader adoption of `jsonSuccess` across ad hoc success bodies | P3 | Helper exists (BUG-170); migrate route-by-route without breaking clients |
 | Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
+| Remaining ad hoc success bodies (weather/right-now/bookings payloads; cookie-setting session routes) | P3 | jsonSuccess adopted on vapid/track/cron (BUG-174); reshape carefully |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

@@ -1,6 +1,11 @@
 import { getVapidPublicKey, isPushConfigured } from "@/lib/push";
 import { rateLimit, type RateLimitResult } from "@/lib/rate-limit";
-import { jsonError, jsonRateLimitedFromResult, rateLimitSuccessHeaders } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonSuccess,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+} from "@/lib/api-response";
 
 const VAPID_LIMIT = 10;
 
@@ -22,11 +27,9 @@ export async function GET(req: Request) {
     if (!publicKey) {
       return jsonError("SERVICE_UNAVAILABLE", "VAPID key missing", 503);
     }
-    return Response.json(
+    return jsonSuccess(
       { publicKey },
-      {
-        headers: rateLimitSuccessHeaders(limitResult.remaining, VAPID_LIMIT, limitResult.bypassed),
-      }
+      { headers: rateLimitSuccessHeaders(limitResult.remaining, VAPID_LIMIT, limitResult.bypassed) }
     );
   } catch {
     return jsonError("SERVICE_UNAVAILABLE", "Push configuration error. Try again in a moment.", 503);

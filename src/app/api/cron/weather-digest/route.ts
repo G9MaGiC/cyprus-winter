@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { jsonError } from "@/lib/api-response";
+import { jsonError, jsonSuccess } from "@/lib/api-response";
 import { getLiveWeather } from "@/lib/weather-live";
 import {
   getSubscribersForWeatherDigest,
@@ -66,8 +66,7 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    return Response.json({
-      ok: true,
+    return jsonSuccess({
       pushesSent,
       weather: weather ? "live" : "fallback",
       updated: new Date().toISOString(),

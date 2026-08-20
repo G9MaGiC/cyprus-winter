@@ -19,5 +19,6 @@ describe("push vapid API", () => {
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(data.publicKey).toBe("test-vapid-public-key");
+    expect(data.ok).toBe(true);
   });
 });
