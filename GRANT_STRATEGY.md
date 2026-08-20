@@ -185,7 +185,7 @@ Full implementation steps: `docs/superpowers/plans/2026-08-20-preseed-grant-prod
 | **G5** | Cycling hub (`/cycling` or first-class Discover chip) | Special-interest cycling | `src/data/activity-places.ts` cycling IDs | Medium |
 | **G6** | Wine routes as operational (hours, bookable stops) | Route ecosystems / wine gastronomy | `bookableWineryIds` + hours/Book strip on `/wine-routes/[slug]` | Done |
 | **G7** | Finish `he` editorial (then `fr`/`ro` body) | International orientation | Chrome translated; home/legal still EN | High (copy) |
-| **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan client + weather/conditions | Medium |
+| **G8** | Plan sustainability strip (bus, skip closed Troodos) | DNSH | Plan strip: villages, trail conditions, airport buses only | Done |
 | **G9** | KPI CSV/JSON from `/api/stats` (locale, SME, plan events) | Added value / reporting | `src/app/(padded)/admin/stats/page.tsx` | Low |
 | **G10** | Partner winery photos (~55) | Credibility | `docs/WINERY_IMAGE_INTAKE.md` | Content |
 

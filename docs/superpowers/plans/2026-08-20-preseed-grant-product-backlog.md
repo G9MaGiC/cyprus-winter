@@ -121,9 +121,9 @@
 
 **Files:** Plan client (`PlanPageClient` / related), `messages/*.json`
 
-- [ ] Short, calm copy: prefer villages; check Troodos conditions; public transport only where you have a real source
-- [ ] No fake carbon numbers
-- [ ] **Verify:** i18n scan; Plan e2e still green
+- [x] Short, calm copy: prefer villages; check Troodos conditions; public transport only where you have a real source
+- [x] No fake carbon numbers
+- [x] **Verify:** i18n scan; Plan e2e still green
 
 ---
 

@@ -1282,6 +1282,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-149 | Admin stats | No session-gated CSV/JSON of funnel + SME revenue for grant KPIs | `/api/stats?format=csv` uses admin cookie/Bearer (401 otherwise); locale mix from `properties.path` / `locale` |
 | BUG-150 | Cycling | Cycling lived only as a Discover mood filter, not a hub with HubFooter | `/cycling` hub from activity-places data, locale proxy, footer/search links |
 | BUG-151 | Wine routes | Route pages were editorial lists with no featured Book tasting CTA or structured hours | `bookableWineryIds` per route; hours/call-ahead strip + Book tasting to `/book/winery/[id]?from=wine-route` |
+| BUG-152 | Plan | No DNSH-style strip; risk of inventing buses or fake carbon | Calm Plan strip: villages, Troodos trail conditions, airport buses from `airports` data only |
 
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 

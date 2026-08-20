@@ -1656,6 +1656,14 @@
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
     },
+    "sustainability": {
+      "aria": "הערות לקצב חורף",
+      "heading": "לנסוע בקלילות",
+      "body": "ימים בכפר במקום נסיעות ארוכות. בדקו את הטרודוס לפני העלייה. אוטובוסי שדה התעופה בעמוד הנחיתה—לא לוחות זמנים לכל האי.",
+      "villages": "העדיפו יום בכפר",
+      "troodosConditions": "בדקו את תנאי שבילי הטרודוס",
+      "airportBuses": "אוטובוסי שדה תעופה (לרנקה ופאפוס)"
+    },
     "footer": {
       "winterTip": "Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24–48h ahead."
     },

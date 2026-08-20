@@ -1612,6 +1612,14 @@
       "copied": "Skopiowano",
       "shareTextPrefix": "Mój zimowy plan na Cyprze —"
     },
+    "sustainability": {
+      "aria": "Uwagi o zimowym tempie",
+      "heading": "Lekko przez zimę",
+      "body": "Dni we wsi zamiast długich przejazdów. Sprawdź Troodos zanim pojedziesz w góry. Autobusy lotniskowe są w Przylocie—nie rozkłady dla całej wyspy.",
+      "villages": "Wybierz dzień we wsi",
+      "troodosConditions": "Sprawdź warunki szlaków Troodos",
+      "airportBuses": "Autobusy lotniskowe (Larnaka i Pafos)"
+    },
     "footer": {
       "winterTip": "Wskazówka: światło gaśnie około 17. Ruszaj na szlaki do 10 i rezerwuj degustacje 24–48 h wcześniej."
     },

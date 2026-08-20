@@ -1656,6 +1656,14 @@
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
     },
+    "sustainability": {
+      "aria": "Note de ritm pentru iarnă",
+      "heading": "Mergeți ușor",
+      "body": "Zile la sat, nu drumuri lungi. Verificați Troodos înainte să urcați. Autobuzele de aeroport sunt la Sosire—nu orare pentru toată insula.",
+      "villages": "Preferă o zi la sat",
+      "troodosConditions": "Verificați condițiile traseelor Troodos",
+      "airportBuses": "Autobuze de aeroport (Larnaca și Paphos)"
+    },
     "footer": {
       "winterTip": "Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24–48h ahead."
     },

@@ -30,6 +30,7 @@ import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 import AppLink from "@/components/AppLink";
 import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
+import PlanSustainabilityStrip from "@/components/plan/PlanSustainabilityStrip";
 import PlanOfflineBanner from "@/components/plan/PlanOfflineBanner";
 import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
@@ -309,7 +310,8 @@ export default function PlanPageClient() {
           )}
         </div>
 
-        <div className={`${LAYOUT.safeAreaX} ${LAYOUT.list} mx-auto ${SECTION.blockGap}`}>
+        <div className={`${LAYOUT.safeAreaX} ${LAYOUT.list} mx-auto ${SECTION.blockGap} flex flex-col gap-6`}>
+          <PlanSustainabilityStrip />
           <TravelTrustStrip />
         </div>
 

@@ -1612,6 +1612,14 @@
       "copied": "Kopiert",
       "shareTextPrefix": "Mein Zypern-Winter-Reiseplan —"
     },
+    "sustainability": {
+      "aria": "Hinweise zum Wintertempo",
+      "heading": "Leicht unterwegs",
+      "body": "Dorftage statt langer Fahrten. Troodos prüfen, bevor ihr hochfahrt. Flughafenbusse stehen unter Ankunft—keine Insel-Fahrpläne.",
+      "villages": "Lieber ein Dorftag",
+      "troodosConditions": "Troodos-Pfadbedingungen prüfen",
+      "airportBuses": "Flughafenbusse (Larnaca & Paphos)"
+    },
     "footer": {
       "winterTip": "Tipp: Es wird gegen 17 Uhr dunkel. Starten Sie Trails bis 10 Uhr und buchen Sie Verkostungen 24–48 Stunden vorher."
     },

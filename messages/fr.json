@@ -1656,6 +1656,14 @@
       "worksWell": "Works well with what you&apos;ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
     },
+    "sustainability": {
+      "aria": "Notes d'allure en hiver",
+      "heading": "Voyager léger",
+      "body": "Journées au village plutôt que de longs trajets. Vérifiez le Troodos avant de monter. Les bus d'aéroport sont sous Arrivée—pas d'horaires pour toute l'île.",
+      "villages": "Préférer une journée au village",
+      "troodosConditions": "Conditions des sentiers du Troodos",
+      "airportBuses": "Bus d'aéroport (Larnaca et Paphos)"
+    },
     "footer": {
       "winterTip": "Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24–48h ahead."
     },
