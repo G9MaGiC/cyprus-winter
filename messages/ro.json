@@ -120,6 +120,7 @@
     "submitReport": "Trimite raportul",
     "goHome": "Acasă",
     "tryAgain": "Încearcă din nou",
+    "callAhead": "Sunați înainte",
     "explore": "Explore",
     "place": "Place",
     "trail": "Trail",
@@ -343,6 +344,8 @@
         "trailConditions": "Trail conditions",
         "events": "Events",
         "familyFriendly": "Family-friendly",
+        "accessible": "Accessible & gentle",
+        "accessibleAria": "Accessible and gentle places",
         "all": "All",
         "seeAll": "See all",
         "culture": "Culture",
@@ -728,6 +731,8 @@
         "all": "Showing all places"
       },
       "filterGroups": {
+        "practical": "Practic",
+        "practicalAria": "Filtrează după familie, accesibilitate și ciclism",
         "places": "Places",
         "placesAria": "Filter by place category",
         "winterMoods": "Winter moods",
@@ -1210,7 +1215,9 @@
       "elevationGain": "{meters}m gain",
       "temperature": "{value}°C",
       "trailAria": "{name}, {length} km {difficulty} trail in {region}",
-      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter"
+      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter",
+      "noReport": "Fără raport",
+      "hikerReport": "Raport de drumeție"
     },
     "placeOfDay": {
       "heading": "Trail of the day",

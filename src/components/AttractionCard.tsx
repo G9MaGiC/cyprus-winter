@@ -13,6 +13,7 @@ import { Plus } from "lucide-react";
 import { useItinerary } from "@/hooks/useItinerary";
 import { useSearchParams } from "next/navigation";
 import { discoverDetailHref, getDiscoverTypeLabel } from "@/lib/discover-links";
+import { isCallAheadHours, placeCardHours } from "@/lib/place-card-hours";
 import { useTranslations } from "next-intl";
 
 export default function AttractionCard({
@@ -50,14 +51,9 @@ export default function AttractionCard({
   const isWinery = a.type === "winery";
   const winterTip = "winterTip" in a ? a.winterTip : undefined;
   const bestTime = "bestTimeToVisit" in a ? a.bestTimeToVisit : undefined;
-  const wineryAppointmentHint =
-    isWinery && "tastingInfo" in a && a.tastingInfo
-      ? a.tastingInfo.length > 72
-        ? `${a.tastingInfo.slice(0, 69)}…`
-        : a.tastingInfo
-      : isWinery && "openingHours" in a && a.openingHours
-        ? a.openingHours
-        : undefined;
+  const hours = placeCardHours(a);
+  const hoursPreview =
+    hours && hours.length > 72 ? `${hours.slice(0, 69)}…` : hours;
   const tease =
     winterTip && winterTip.length > 0
       ? winterTip.length > 100
@@ -112,9 +108,10 @@ export default function AttractionCard({
           <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">
             {tease}
           </p>
-          {wineryAppointmentHint && (
-            <p className="text-xs text-aegean/90 mt-1.5 break-words line-clamp-2" title={wineryAppointmentHint}>
-              {wineryAppointmentHint}
+          {hoursPreview && (
+            <p className="text-xs text-aegean/90 mt-1.5 break-words line-clamp-2" title={hours}>
+              {isCallAheadHours(hours) ? `${tCommon("callAhead")} · ` : null}
+              {hoursPreview}
             </p>
           )}
           {bestTime && (

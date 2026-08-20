@@ -49,6 +49,7 @@ export default function TrailStatusGroup({
             key={trail.id}
             trail={trail}
             conditions={getConditions(trail)}
+            hideEditorial={noConditions}
             featured={false}
           />
         ))}

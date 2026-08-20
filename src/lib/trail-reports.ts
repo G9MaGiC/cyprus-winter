@@ -73,6 +73,20 @@ export async function createTrailReport(input: {
   };
 }
 
+function mapReportRow(row: Record<string, unknown>): TrailReport {
+  return {
+    id: String(row.id),
+    trailId: String(row.trail_id),
+    status: row.status as TrailReportStatus,
+    surface: row.surface as TrailReportSurface,
+    note: row.note ? String(row.note) : undefined,
+    temperatureC: row.temperature_c != null ? Number(row.temperature_c) : undefined,
+    windKmh: row.wind_kmh != null ? Number(row.wind_kmh) : undefined,
+    reportedAt: String(row.reported_at),
+    createdAt: String(row.created_at),
+  };
+}
+
 export async function getLatestReportsByTrail(trailId: string, limit = 5): Promise<TrailReport[]> {
   const supabase = getSupabase();
   if (!supabase) return [];
@@ -87,18 +101,30 @@ export async function getLatestReportsByTrail(trailId: string, limit = 5): Promi
     .limit(limit);
 
   if (error) return [];
+  return (data ?? []).map((row: Record<string, unknown>) => mapReportRow(row));
+}
 
-  return (data ?? []).map((row: Record<string, unknown>) => ({
-    id: String(row.id),
-    trailId: String(row.trail_id),
-    status: row.status as TrailReportStatus,
-    surface: row.surface as TrailReportSurface,
-    note: row.note ? String(row.note) : undefined,
-    temperatureC: row.temperature_c != null ? Number(row.temperature_c) : undefined,
-    windKmh: row.wind_kmh != null ? Number(row.wind_kmh) : undefined,
-    reportedAt: String(row.reported_at),
-    createdAt: String(row.created_at),
-  }));
+/** Latest fresh report per trail for list cards. Empty when Supabase is not configured. */
+export async function getLatestReportMap(): Promise<Record<string, TrailReport>> {
+  const supabase = getSupabase();
+  if (!supabase) return {};
+
+  const freshSince = new Date(Date.now() - TRAIL_REPORT_FRESHNESS_MS).toISOString();
+  const { data, error } = await supabase
+    .from("trail_reports")
+    .select("*")
+    .gte("reported_at", freshSince)
+    .order("reported_at", { ascending: false })
+    .limit(400);
+
+  if (error || !data) return {};
+
+  const map: Record<string, TrailReport> = {};
+  for (const row of data as Record<string, unknown>[]) {
+    const report = mapReportRow(row);
+    if (!map[report.trailId]) map[report.trailId] = report;
+  }
+  return map;
 }
 
 export const hasTrailReports = hasSupabase;

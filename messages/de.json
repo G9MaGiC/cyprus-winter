@@ -113,6 +113,7 @@
     "submitReport": "Bericht absenden",
     "goHome": "Zur Startseite",
     "tryAgain": "Erneut versuchen",
+    "callAhead": "Vorher anrufen",
     "explore": "Entdecken",
     "place": "Ort",
     "trail": "Wanderweg",
@@ -368,6 +369,8 @@
         "trailConditions": "Wanderweg-Status",
         "events": "Veranstaltungen",
         "familyFriendly": "Familienfreundlich",
+        "accessible": "Barrierefrei & sanft",
+        "accessibleAria": "Barrierefreie und sanfte Orte",
         "all": "Alle",
         "seeAll": "Alles ansehen",
         "culture": "Kultur",
@@ -728,6 +731,8 @@
         "all": "Alle Orte"
       },
       "filterGroups": {
+        "practical": "Praktisch",
+        "practicalAria": "Nach Familie, Barrierefreiheit und Radfahren filtern",
         "places": "Orte",
         "placesAria": "Nach Kategorie filtern",
         "winterMoods": "Winter-Stimmung",
@@ -1210,7 +1215,9 @@
       "elevationGain": "{meters}m Aufstieg",
       "temperature": "{value}°C",
       "trailAria": "{name}, {length} km {difficulty} Wanderweg in {region}",
-      "imageAlt": "{name}, {region} — {length} km {difficulty} Wanderweg auf Zypern"
+      "imageAlt": "{name}, {region} — {length} km {difficulty} Wanderweg auf Zypern",
+      "noReport": "Kein Bericht",
+      "hikerReport": "Wanderbericht"
     },
     "placeOfDay": {
       "heading": "Wanderweg des Tages",

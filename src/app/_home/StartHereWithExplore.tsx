@@ -57,6 +57,8 @@ export default function StartHereWithExplore() {
     { href: "/trails", label: tHome("startHere.chip.trails"), ariaLabel: tHome("startHere.chip.trailsAria"), variant: "secondary" },
     { href: "/events", label: tHome("startHere.chip.events"), ariaLabel: tHome("startHere.chip.events"), variant: "secondary" },
     { href: "/discover?filter=family", label: tHome("startHere.chip.familyFriendly"), ariaLabel: tHome("startHere.chip.familyFriendly"), variant: "secondary" },
+    { href: "/discover?filter=accessible", label: tHome("startHere.chip.accessible"), ariaLabel: tHome("startHere.chip.accessibleAria"), variant: "secondary" },
+    { href: "/discover?filter=cycling", label: tHome("startHere.chip.cycling"), ariaLabel: tHome("startHere.chip.cyclingAria"), variant: "secondary" },
     { href: "/discover", label: tHome("startHere.chip.all"), ariaLabel: tHome("startHere.chip.seeAll"), variant: "secondary" },
   ];
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TrailsClient from "./TrailsClient";
+import { getLatestReportMap } from "@/lib/trail-reports";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { SITE_URL } from "@/lib/site-url";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
@@ -44,12 +45,13 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function TrailsPage() {
+export default async function TrailsPage() {
   preload(TRAILS_HERO_IMAGE, { as: "image" });
+  const reportsByTrail = await getLatestReportMap();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(getTrailsItemListSchema()) }} />
-      <TrailsClient />
+      <TrailsClient reportsByTrail={reportsByTrail} />
     </>
   );
 }
