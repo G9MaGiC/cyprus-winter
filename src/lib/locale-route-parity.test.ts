@@ -13,4 +13,13 @@ describe("localized route parity", () => {
       ).toBe(true);
     }
   });
+
+  it("has locale proxies for hub list pages", () => {
+    for (const route of ["beaches", "wineries", "villages", "cycling"]) {
+      expect(
+        existsSync(join(appDir, "[locale]", route, "page.tsx")),
+        `missing localized /${route} hub`
+      ).toBe(true);
+    }
+  });
 });

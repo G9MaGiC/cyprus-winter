@@ -18,7 +18,8 @@
     "ambulance": "אמבולנס",
     "planYourTrip": "תכננו את הטיול",
     "privacy": "פרטיות",
-    "terms": "תנאים"
+    "terms": "תנאים",
+    "cycling": "רכיבה"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -52,7 +53,8 @@
     "askAIAria": "שאלו את ה-AI על שבילים, יקבים ורעיונות לטיול",
     "openMenu": "פתחו תפריט",
     "closeMenu": "סגרו תפריט",
-    "mainNavigation": "ניווט ראשי"
+    "mainNavigation": "ניווט ראשי",
+    "cycling": "רכיבה"
   },
   "common": {
     "nav": {
@@ -776,7 +778,8 @@
         "seeCoasts": "See coasts & beaches",
         "searchMore": "Search for more",
         "seeHiddenGems": "More hidden gems",
-        "seeMonasteries": "Monasteries & culture"
+        "seeMonasteries": "Monasteries & culture",
+        "browseCyclingHub": "מרכז רכיבה"
       },
       "meta": {
         "title": "גילוי קפריסין בחורף | חופים, כפרים, יקבים",
@@ -1977,7 +1980,8 @@
       "wineries": "Wineries",
       "events": "Events",
       "villages": "Villages",
-      "beaches": "Beaches"
+      "beaches": "Beaches",
+      "cycling": "רכיבה"
     }
   },
   "events": {
@@ -2895,6 +2899,31 @@
       "aria-label_10": "Go to Discover",
       "aria-label_11": "View your itinerary",
       "aria-label_12": "Transport from airport, tips"
+    }
+  },
+  "cycling": {
+    "page": {
+      "meta": {
+        "title": "רכיבה בקפריסין בחורף | טרודוס, סכרים וחוף",
+        "description": "רכיבת חורף בקפריסין: דרכי יער בטרודוס, לולאות סכרים, אקאמאס וחצץ בחוף. קריר, שקט, וניתן לרכב כשבבית יורד שלג.",
+        "ogAlt": "דרך יער בטרודוס, רכיבת חורף בקפריסין",
+        "schemaName": "רכיבת חורף בקפריסין",
+        "schemaDescription": "רכיבת חורף: טרודוס, סכרים, אקאמאס וחוף."
+      },
+      "header": {
+        "title": "רכיבה בקפריסין בחורף",
+        "description": "דרכי יער, לולאות סכרים וקילומטרים שקטים בחוף. אוויר קריר, מעט תנועה. שכבות לירידות."
+      },
+      "srHeading": "מקומות לרכיבה בקפריסין בחורף",
+      "trailsTitle": "שלב עם שביל",
+      "footer": {
+        "hubBody": "בנו לולאה, בדקו תנאים בטרודוס או שאלו את המדריך. החורף הוא עונת הרכיבה.",
+        "discoverFilter": "רכיבה ב-Discover",
+        "trailConditions": "תנאי שבילים"
+      },
+      "aria": {
+        "actions": "פעולות דף הרכיבה"
+      }
     }
   }
 }

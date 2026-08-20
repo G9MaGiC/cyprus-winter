@@ -7,6 +7,8 @@ describe("isSafeInternalPath", () => {
     expect(isSafeInternalPath("/trails/artemis")).toBe(true);
     expect(isSafeInternalPath("/plan?add=artemis")).toBe(true);
     expect(isSafeInternalPath("/search?q=troodos")).toBe(true);
+    expect(isSafeInternalPath("/cycling")).toBe(true);
+    expect(isSafeInternalPath("/cycling?from=discover")).toBe(true);
   });
 
   it("rejects external and unsafe paths", () => {

@@ -20,6 +20,7 @@ export type SiteFooterProps = {
     beaches: string;
     wineries: string;
     villages: string;
+    cycling: string;
     troodos: string;
     paphos: string;
     practical: string;
@@ -42,6 +43,7 @@ const DEFAULT_LABELS = {
   beaches: "Beaches",
   wineries: "Wineries",
   villages: "Villages",
+  cycling: "Cycling",
   troodos: "Troodos",
   paphos: "Paphos",
   practical: "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
@@ -58,6 +60,7 @@ const FOOTER_LINKS: { href: string; key: keyof typeof DEFAULT_LABELS }[] = [
   { href: "/beaches", key: "beaches" },
   { href: "/wineries", key: "wineries" },
   { href: "/villages", key: "villages" },
+  { href: "/cycling", key: "cycling" },
   { href: "/regions/troodos", key: "troodos" },
   { href: "/regions/paphos", key: "paphos" },
 ];

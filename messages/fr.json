@@ -18,7 +18,8 @@
     "ambulance": "Ambulance",
     "planYourTrip": "Planifiez votre voyage",
     "privacy": "Confidentialité",
-    "terms": "Conditions"
+    "terms": "Conditions",
+    "cycling": "Vélo"
   },
   "travelTrust": {
     "aria": "Official travel information",
@@ -52,7 +53,8 @@
     "askAIAria": "Demander à l’IA des sentiers, domaines et idées de séjour",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "mainNavigation": "Navigation principale"
+    "mainNavigation": "Navigation principale",
+    "cycling": "Vélo"
   },
   "common": {
     "nav": {
@@ -776,7 +778,8 @@
         "seeCoasts": "See coasts & beaches",
         "searchMore": "Search for more",
         "seeHiddenGems": "More hidden gems",
-        "seeMonasteries": "Monasteries & culture"
+        "seeMonasteries": "Monasteries & culture",
+        "browseCyclingHub": "Hub vélo"
       },
       "meta": {
         "title": "Découvrir Chypre en hiver | Plages, villages, domaines",
@@ -1977,7 +1980,8 @@
       "wineries": "Wineries",
       "events": "Events",
       "villages": "Villages",
-      "beaches": "Beaches"
+      "beaches": "Beaches",
+      "cycling": "Vélo"
     }
   },
   "events": {
@@ -2895,6 +2899,31 @@
       "aria-label_10": "Go to Discover",
       "aria-label_11": "View your itinerary",
       "aria-label_12": "Transport from airport, tips"
+    }
+  },
+  "cycling": {
+    "page": {
+      "meta": {
+        "title": "Vélo à Chypre en hiver | Troodos, barrages et côte",
+        "description": "Cyclisme d’hiver à Chypre : routes forestières du Troodos, boucles de barrages, Akamas et gravel côtier. Frais, calme, praticable quand il neige chez vous.",
+        "ogAlt": "Route forestière du Troodos, vélo d’hiver à Chypre",
+        "schemaName": "Vélo d’hiver à Chypre",
+        "schemaDescription": "Cyclisme d’hiver : Troodos, barrages, Akamas et côte."
+      },
+      "header": {
+        "title": "Vélo à Chypre en hiver",
+        "description": "Routes forestières, boucles de barrages et kilomètres de côte calmes. Air frais, peu de trafic. Couches pour les descentes."
+      },
+      "srHeading": "Lieux cyclables à Chypre en hiver",
+      "trailsTitle": "Associer à un sentier",
+      "footer": {
+        "hubBody": "Composez une boucle, vérifiez les conditions au Troodos ou demandez au guide. L’hiver est la saison pour rouler.",
+        "discoverFilter": "Vélo dans Discover",
+        "trailConditions": "Conditions des sentiers"
+      },
+      "aria": {
+        "actions": "Actions de la page vélo"
+      }
     }
   }
 }

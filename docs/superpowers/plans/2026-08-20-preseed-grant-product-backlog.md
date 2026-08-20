@@ -101,9 +101,9 @@
 
 **Files:** new `src/app/(padded)/cycling/page.tsx` (or locale proxy), HubFooter client, `src/data/activity-places.ts`, `messages/*.json`
 
-- [ ] Same hub pattern as `/wineries` / `/trails` (`HubFooter`, sticky Plan, list from data)
-- [ ] Locale `[locale]/cycling` proxy if other hubs have one
-- [ ] **Verify:** `data:validate`, e2e smoke or hub-footer spec if you touch footers
+- [x] Same hub pattern as `/wineries` / `/trails` (`HubFooter`, sticky Plan, list from data)
+- [x] Locale `[locale]/cycling` proxy if other hubs have one
+- [x] **Verify:** `data:validate`, e2e smoke or hub-footer spec if you touch footers
 
 ---
 
