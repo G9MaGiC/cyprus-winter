@@ -66,7 +66,7 @@
 - [x] Cycling: IDs/types from `activity-places.ts` + preference key `"cycling"` in `user-preferences.ts`
 - [x] i18n all chip labels in 7 locales
 - [x] Tests: filter returns a non-empty known ID (e.g. a tagged place) and empty-state copy
-- [ ] **Verify:** `npm run test`, `npm run i18n:validate`, `i18n:scan --fail`; screenshot for annex
+- [x] **Verify:** `npm run test`, `npm run i18n:validate`, `i18n:scan --fail`; screenshot for annex
 
 ---
 
@@ -80,7 +80,7 @@
 - [x] Show winter hours / “call ahead” where the data field already exists
 - [x] Do not invent Forestry Department integration in this task
 - [x] Tests for empty report vs reported state
-- [ ] **Verify:** unit tests + Discover/Trails screenshot
+- [x] **Verify:** unit tests + Discover/Trails screenshot
 
 ---
 
