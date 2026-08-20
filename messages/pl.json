@@ -1061,7 +1061,23 @@
         "empty": "Brak zdarzeń. Śledzenie konwersji wymaga Supabase i migracji 003."
       },
       "storage": "Magazyn: {storage}",
-      "storageUnknown": "nieznane"
+      "storageUnknown": "nieznane",
+      "export": {
+        "csv": "Pobierz CSV",
+        "json": "Pobierz JSON",
+        "csvAria": "Pobierz lejek i przychód partnerów jako CSV",
+        "jsonAria": "Pobierz lejek i przychód partnerów jako JSON",
+        "failed": "Eksport się nie pobrał. Spróbuj ponownie."
+      },
+      "localeMix": {
+        "title": "Mix języków",
+        "subtitle": "Z tracked path lub właściwości locale. Tabela conversion_events nie ma osobnej kolumny locale.",
+        "empty": "Brak mixu języków. Zdarzenia potrzebują path lub locale.",
+        "table": {
+          "locale": "Język",
+          "count": "Liczba"
+        }
+      }
     }
   },
   "airport": {

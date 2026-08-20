@@ -1061,7 +1061,23 @@
         "empty": "No events yet. Conversion tracking requires Supabase and migration 003."
       },
       "storage": "Storage: {storage}",
-      "storageUnknown": "unknown"
+      "storageUnknown": "unknown",
+      "export": {
+        "csv": "Descarcă CSV",
+        "json": "Descarcă JSON",
+        "csvAria": "Descarcă funnel-ul și venitul partenerilor ca CSV",
+        "jsonAria": "Descarcă funnel-ul și venitul partenerilor ca JSON",
+        "failed": "Exportul nu s-a descărcat. Încearcă din nou."
+      },
+      "localeMix": {
+        "title": "Mix de limbi",
+        "subtitle": "Derivat din path sau proprietatea locale. conversion_events nu are o coloană locale dedicată.",
+        "empty": "Încă nu există mix de limbi. Evenimentele au nevoie de path sau locale.",
+        "table": {
+          "locale": "Limbă",
+          "count": "Count"
+        }
+      }
     }
   },
   "airport": {

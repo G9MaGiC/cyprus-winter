@@ -6,6 +6,7 @@ import { getPartnerRevenueInRange } from "@/lib/partner-revenue";
 import {
   getEventSourceBreakdownInRange,
   getFunnelCountsInRange,
+  getFunnelLocaleBreakdownInRange,
 } from "@/lib/funnel";
 import { getStatsRangeStartUtc } from "@/lib/stats-window";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken } from "@/lib/admin-session";
@@ -21,6 +22,7 @@ vi.mock("@/lib/partner-revenue", () => ({
 vi.mock("@/lib/funnel", () => ({
   getFunnelCountsInRange: vi.fn(),
   getEventSourceBreakdownInRange: vi.fn(),
+  getFunnelLocaleBreakdownInRange: vi.fn(),
 }));
 
 vi.mock("@/lib/supabase", () => ({
@@ -68,6 +70,7 @@ describe("GET /api/stats", () => {
       shop_click: [],
       plan_add: [],
     });
+    vi.mocked(getFunnelLocaleBreakdownInRange).mockResolvedValue([]);
   });
 
   afterEach(() => {
@@ -131,5 +134,35 @@ describe("GET /api/stats", () => {
     const res = await GET(statsReq("/api/stats", { authorization: "Bearer test-admin-secret" }));
     expect(res.status).toBe(200);
     expect(res.headers.get("X-RateLimit-Remaining")).toBeDefined();
+  });
+
+  it("returns 401 for CSV export without an admin session", async () => {
+    const res = await GET(statsReq("/api/stats?format=csv"));
+    expect(res.status).toBe(401);
+  });
+
+  it("returns a CSV attachment when format=csv and the session is valid", async () => {
+    vi.mocked(getFunnelCountsInRange).mockResolvedValue({ plan_add: 12, booking_start: 4 });
+    vi.mocked(getPartnerRevenueInRange).mockResolvedValue({
+      totalRevenueEur: 90.5,
+      byPartner: [
+        {
+          providerId: "tsiakkas",
+          providerName: "Tsiakkas Winery",
+          bookingCount: 2,
+          totalFeeEur: 70,
+        },
+      ],
+    });
+    const cookieVal = createAdminSessionToken("test-admin-secret");
+    const res = await GET(
+      statsReq("/api/stats?format=csv", { cookie: `${ADMIN_SESSION_COOKIE}=${cookieVal}` })
+    );
+    expect(res.status).toBe(200);
+    expect(res.headers.get("content-type")).toMatch(/text\/csv/);
+    expect(res.headers.get("content-disposition")).toMatch(/attachment;.*cyprus-winter-kpis-mtd-2026-05-15\.csv/);
+    const body = await res.text();
+    expect(body).toContain("funnel,plan_add,12");
+    expect(body).toContain("partner,tsiakkas");
   });
 });

@@ -2,17 +2,22 @@
 
 import { useEffect, useState, useCallback } from "react";
 import BackLink from "@/components/BackLink";
-import { LAYOUT, SECTION, SKELETON, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, SECTION, SKELETON, TYPE, CTA } from "@/lib/design-tokens";
+import { statsKpiFilename } from "@/lib/stats-kpi-export";
 import { useLocale, useTranslations } from "next-intl";
 
 type FunnelRow = { event: string; count: number };
 type PartnerRow = { providerId: string; providerName: string; bookingCount: number; totalFeeEur: number };
+type LocaleRow = { locale: string; count: number };
 
 type StatsData = {
   bookingsThisMonth?: number;
   partnerRevenueEur?: number;
   partnerRevenueByWinery?: PartnerRow[];
   funnel?: FunnelRow[];
+  localeBreakdown?: LocaleRow[];
+  localeSource?: string;
+  window?: string;
   storage?: string;
   error?: string;
 };
@@ -26,6 +31,7 @@ export default function AdminStatsPage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [keyInput, setKeyInput] = useState("");
   const [keyError, setKeyError] = useState<string | null>(null);
+  const [exportError, setExportError] = useState<string | null>(null);
 
   const fetchStats = useCallback(() => {
     setLoading(true);
@@ -95,6 +101,39 @@ export default function AdminStatsPage() {
     setData(null);
   };
 
+  const triggerDownload = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleDownloadCsv = async () => {
+    setExportError(null);
+    const res = await fetch("/api/stats?format=csv", { credentials: "include" });
+    if (res.status === 401) {
+      setAuthenticated(false);
+      setKeyError("invalid");
+      return;
+    }
+    if (!res.ok) {
+      setExportError("failed");
+      return;
+    }
+    const blob = await res.blob();
+    const match = res.headers.get("content-disposition")?.match(/filename="([^"]+)"/);
+    triggerDownload(blob, match?.[1] ?? "cyprus-winter-kpis.csv");
+  };
+
+  const handleDownloadJson = () => {
+    if (!data || data.error) return;
+    setExportError(null);
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    triggerDownload(blob, statsKpiFilename("json", data.window ?? "mtd", new Date()));
+  };
+
   if (!authenticated) {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -159,6 +198,7 @@ export default function AdminStatsPage() {
   const revenue = d.partnerRevenueEur ?? 0;
   const byWinery = d.partnerRevenueByWinery ?? [];
   const funnel = d.funnel ?? [];
+  const locales = d.localeBreakdown ?? [];
   const currency = new Intl.NumberFormat(locale, { style: "currency", currency: "EUR" });
   const number = new Intl.NumberFormat(locale);
 
@@ -166,7 +206,23 @@ export default function AdminStatsPage() {
     <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
         <h1 className={`${TYPE.pageTitle}`}>{tAdmin("title")}</h1>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => void handleDownloadCsv()}
+            className={CTA.secondaryCompact}
+            aria-label={tAdmin("export.csvAria")}
+          >
+            {tAdmin("export.csv")}
+          </button>
+          <button
+            type="button"
+            onClick={handleDownloadJson}
+            className={CTA.secondaryCompact}
+            aria-label={tAdmin("export.jsonAria")}
+          >
+            {tAdmin("export.json")}
+          </button>
           <button
             type="button"
             onClick={() => void handleSignOut()}
@@ -227,6 +283,38 @@ export default function AdminStatsPage() {
           {funnel.length === 0 && (
             <p className="text-sm text-olive/60 py-4">{tAdmin("funnelThisMonth.empty")}</p>
           )}
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("localeMix.title")}</h2>
+        <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
+          <p className="text-sm text-olive/70 mb-4">{tAdmin("localeMix.subtitle")}</p>
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-sand-200/80">
+                <th className="py-2 font-medium text-olive">{tAdmin("localeMix.table.locale")}</th>
+                <th className="py-2 font-medium text-olive text-right">{tAdmin("localeMix.table.count")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {locales.map((row) => (
+                <tr key={row.locale} className="border-b border-sand-100">
+                  <td className="py-2 text-olive">{row.locale}</td>
+                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {locales.length === 0 && (
+            <p className="text-sm text-olive/60 py-4">{tAdmin("localeMix.empty")}</p>
+          )}
+        </div>
+      </section>
+
+      {exportError && (
+        <p className="text-sm text-terracotta mb-6">{tAdmin("export.failed")}</p>
+      )}
         </div>
       </section>
 

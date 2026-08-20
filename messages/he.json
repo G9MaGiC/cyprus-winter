@@ -1061,7 +1061,23 @@
         "empty": "No events yet. Conversion tracking requires Supabase and migration 003."
       },
       "storage": "Storage: {storage}",
-      "storageUnknown": "unknown"
+      "storageUnknown": "unknown",
+      "export": {
+        "csv": "הורדת CSV",
+        "json": "הורדת JSON",
+        "csvAria": "הורדת המשפך והכנסות השותפים כ-CSV",
+        "jsonAria": "הורדת המשפך והכנסות השותפים כ-JSON",
+        "failed": "הייצוא לא הורד. נסו שוב."
+      },
+      "localeMix": {
+        "title": "תמהיל שפות",
+        "subtitle": "נגזר מ-path או ממאפיין locale. ל-conversion_events אין עמודת locale ייעודית.",
+        "empty": "עדיין אין תמהיל שפות. לאירועים נדרשים path או locale.",
+        "table": {
+          "locale": "שפה",
+          "count": "Count"
+        }
+      }
     }
   },
   "airport": {

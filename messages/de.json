@@ -1061,7 +1061,23 @@
         "empty": "Noch keine Events. Conversion-Tracking erfordert Supabase und Migration 003."
       },
       "storage": "Speicher: {storage}",
-      "storageUnknown": "unbekannt"
+      "storageUnknown": "unbekannt",
+      "export": {
+        "csv": "CSV herunterladen",
+        "json": "JSON herunterladen",
+        "csvAria": "Funnel und Partnerumsatz als CSV herunterladen",
+        "jsonAria": "Funnel und Partnerumsatz als JSON herunterladen",
+        "failed": "Export wurde nicht heruntergeladen. Bitte erneut versuchen."
+      },
+      "localeMix": {
+        "title": "Sprachmix",
+        "subtitle": "Abgeleitet aus tracked path oder locale-Eigenschaft. conversion_events hat keine eigene Locale-Spalte.",
+        "empty": "Noch kein Sprachmix. Ereignisse brauchen path oder locale.",
+        "table": {
+          "locale": "Sprache",
+          "count": "Anzahl"
+        }
+      }
     }
   },
   "airport": {

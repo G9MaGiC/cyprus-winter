@@ -1278,6 +1278,7 @@ Integrated green, current PRs #60 (brand refresh) and #59 (production hardening)
 | BUG-145 | CI | `checkout@v4` / `setup-node@v4` ran on deprecated Node 20 action runtime | Bump checkout, setup-node, and upload-artifact to `@v7` (PR #70) |
 | BUG-146 | Analytics | Funnel events (`booking_start`, hub footer, plan add) required marketing-cookie consent | First-party `trackProduct` events send without “accept all”; privacy essential copy updated |
 | BUG-147 | i18n | `fr`/`he`/`ro` nav, footer, cookies, and errors still mirrored English; switcher did not mark them as beta | Chrome translations for those locales + `localeBeta` suffix in the switcher; editorial/home body still English |
+| BUG-149 | Admin stats | No session-gated CSV/JSON of funnel + SME revenue for grant KPIs | `/api/stats?format=csv` uses admin cookie/Bearer (401 otherwise); locale mix from `properties.path` / `locale` |
 
 **Image attributions (BUG-125, BUG-126, BUG-136):**
 

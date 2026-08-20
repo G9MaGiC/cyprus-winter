@@ -1061,7 +1061,23 @@
         "empty": "Δεν υπάρχουν ακόμη γεγονότα. Η παρακολούθηση μετατροπών απαιτεί Supabase και migration 003."
       },
       "storage": "Αποθήκευση: {storage}",
-      "storageUnknown": "άγνωστο"
+      "storageUnknown": "άγνωστο",
+      "export": {
+        "csv": "Λήψη CSV",
+        "json": "Λήψη JSON",
+        "csvAria": "Λήψη funnel και εσόδων συνεργατών ως CSV",
+        "jsonAria": "Λήψη funnel και εσόδων συνεργατών ως JSON",
+        "failed": "Η εξαγωγή δεν έγινε. Δοκιμάστε ξανά."
+      },
+      "localeMix": {
+        "title": "Μείγμα γλωσσών",
+        "subtitle": "Από το tracked path ή την ιδιότητα locale. Ο πίνακας conversion_events δεν έχει στήλη locale.",
+        "empty": "Δεν υπάρχει ακόμη μείγμα γλωσσών. Τα γεγονότα χρειάζονται path ή locale.",
+        "table": {
+          "locale": "Γλώσσα",
+          "count": "Πλήθος"
+        }
+      }
     }
   },
   "airport": {
