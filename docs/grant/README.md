@@ -52,6 +52,8 @@ Confirm eligibility with RIF (`callsupport@research.org.cy`, 22 205000) and a Cy
 npm run grant:wireframes
 # subset (e.g. after cycling image map):
 GRANT_SHOTS=cycling,discover-cycling npm run grant:wireframes
+# practical filters must wait on place-card titles (not the chip label):
+GRANT_SHOTS=discover,discover-accessible,discover-family npm run grant:wireframes
 # or from the live prototype:
 GRANT_BASE_URL=https://cyprus-winter.vercel.app npm run grant:wireframes
 

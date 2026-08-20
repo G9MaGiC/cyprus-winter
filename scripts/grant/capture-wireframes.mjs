@@ -11,12 +11,28 @@ const here = dirname(fileURLToPath(import.meta.url));
 const outDir = join(here, "../../docs/grant/wireframes");
 const base = (process.env.GRANT_BASE_URL || "http://localhost:3000").replace(/\/$/, "");
 
+/**
+ * Discover filter shots must wait on a **place-card title**, not the chip/status
+ * line. Waiting on /Accessible/ or /Family/ then scrollIntoViewIfNeeded keeps
+ * the viewport on pairings + chips, so Annex II PNGs omit photos (tiny files).
+ * `cards` is the DiscoverSectionList section id; we scroll its first h3.
+ */
 const allPages = [
   { name: "home", path: "/", wait: "Start here" },
-  { name: "discover", path: "/discover", wait: /Tsiakkas|Omodos|Lefkara/i },
-  { name: "discover-cycling", path: "/discover?filter=cycling", wait: /Platres|Prodromos|Akamas/i },
-  { name: "discover-accessible", path: "/discover?filter=accessible", wait: /Accessible/i },
-  { name: "discover-family", path: "/discover?filter=family", wait: /Family/i },
+  { name: "discover", path: "/discover", wait: /Nissi Beach|Fig Tree Bay|Coral Bay/i, cards: "coasts" },
+  { name: "discover-cycling", path: "/discover?filter=cycling", wait: /Platres|Prodromos|Akamas/i, cards: "cycling" },
+  {
+    name: "discover-accessible",
+    path: "/discover?filter=accessible",
+    wait: /Pafos Archaeological Site|Kolossi Castle|Cyprus Museum/i,
+    cards: "accessible",
+  },
+  {
+    name: "discover-family",
+    path: "/discover?filter=family",
+    wait: /Nissi Beach|Fig Tree Bay/i,
+    cards: "family",
+  },
   { name: "plan", path: "/plan" },
   { name: "book-winery", path: "/book/winery/tsiakkas" },
   { name: "bookings", path: "/bookings" },
@@ -92,6 +108,13 @@ async function openAskAi(page) {
   throw new Error("Ask AI dialog did not open after retries");
 }
 
+async function revealPlaceCards(page, sectionId) {
+  const heading = page.locator(`section#${sectionId} h3`).first();
+  await heading.waitFor({ timeout: 30_000 });
+  await heading.scrollIntoViewIfNeeded();
+  await page.locator(`section#${sectionId} img`).first().waitFor({ state: "visible", timeout: 15_000 });
+}
+
 async function shot(page, file) {
   await page.addStyleTag({
     content: `nextjs-portal, [data-next-badge-root], #__next-build-watcher { display: none !important; }`,
@@ -117,7 +140,12 @@ try {
       if (route.wait) {
         const loc = page.getByText(route.wait).first();
         await loc.waitFor({ timeout: 30_000 });
-        await loc.scrollIntoViewIfNeeded();
+        if (!route.cards) {
+          await loc.scrollIntoViewIfNeeded();
+        }
+      }
+      if (route.cards) {
+        await revealPlaceCards(page, route.cards);
       }
       await shot(page, `${route.name}-${vp.suffix}.png`);
     }

@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -97,5 +97,28 @@ describe("PRE-SEED annex kit (G0)", () => {
     const pdf = readFileSync(join(root, "ANNEX_II.pdf"));
     expect(pdf.byteLength).toBeGreaterThan(50_000);
     expect(pdf.subarray(0, 5).toString("utf8")).toBe("%PDF-");
+  });
+
+  it("captures accessible and family Discover shots on listing cards, not filter chips", () => {
+    const script = readFileSync(join(process.cwd(), "scripts/grant/capture-wireframes.mjs"), "utf8");
+    expect(script).toMatch(/Pafos Archaeological Site\|Kolossi Castle/);
+    expect(script).toMatch(/Nissi Beach\|Fig Tree Bay/);
+    expect(script).toMatch(/cards: "accessible"/);
+    expect(script).toMatch(/cards: "family"/);
+    expect(script).not.toMatch(/discover-accessible[\s\S]{0,80}wait: \/Accessible\/i/);
+    expect(script).not.toMatch(/discover-family[\s\S]{0,80}wait: \/Family\/i/);
+
+    const photoShots = [
+      "discover-1280.png",
+      "discover-390.png",
+      "discover-accessible-1280.png",
+      "discover-accessible-390.png",
+      "discover-family-1280.png",
+      "discover-family-390.png",
+    ];
+    for (const file of photoShots) {
+      const bytes = statSync(join(root, "wireframes", file)).size;
+      expect(bytes, `${file} should include place-card photos`).toBeGreaterThan(80_000);
+    }
   });
 });
