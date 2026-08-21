@@ -12,8 +12,8 @@ Workflow for replacing generic regional trail stock with **official Visit Cyprus
 
 | Tier | Count | Image source |
 |------|-------|--------------|
-| **Official** | 31 / 73 | `public/images/cyprus/trails/trail-{id}.jpg` from Visit Cyprus |
-| **Regional stock** | ~24 | Troodos / coastal / gorge / waterfall shared assets |
+| **Official** | 31 / 100 | `public/images/cyprus/trails/trail-{id}.jpg` from Visit Cyprus |
+| **Regional stock** | ~51 | Troodos / coastal / gorge / village shared assets |
 | **Fallback** | ~18 | Troodos default (discovery/hidden routes) |
 
 Visit Cyprus `nature-trails-2` catalog: **100% mapped** (32 pages → 31 unique trail ids; Madari shares one hero).
