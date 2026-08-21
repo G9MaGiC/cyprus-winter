@@ -47,6 +47,30 @@ describe("winery booking loading shell", () => {
   });
 });
 
+describe("events loading shell", () => {
+  it("uses sand background and hero skeleton like the live events page", () => {
+    const loading = readFileSync("src/app/(padded)/events/loading.tsx", "utf8");
+    const page = readFileSync("src/app/(padded)/events/EventsPageClient.tsx", "utf8");
+    expect(page).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("HeroSkeleton");
+  });
+
+  it("uses sand sticky bar token on filter skeleton", () => {
+    const loading = readFileSync("src/app/(padded)/events/loading.tsx", "utf8");
+    expect(loading).toContain("STRIP.stickySandBar");
+    expect(loading).not.toContain("bg-background/98");
+  });
+});
+
+describe("list page widget strip", () => {
+  it("requires i18n ariaLabel instead of hardcoded EN default", () => {
+    const strip = readFileSync("src/components/ListPageWidgetStrip.tsx", "utf8");
+    expect(strip).toMatch(/ariaLabel:\s*string/);
+    expect(strip).not.toMatch(/ariaLabel\s*=\s*"Page filters and stats"/);
+  });
+});
+
 describe("deprecated home/itinerary cleanup", () => {
   it("does not keep the deprecated HomeHero wrapper", () => {
     expect(() => readFileSync("src/app/_home/HomeHero.tsx", "utf8")).toThrow();

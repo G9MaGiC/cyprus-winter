@@ -1492,5 +1492,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-239 | A11y | Weather month event “Add to plan” link under 44px height | `min-h-[44px] items-center py-2` |
 | BUG-240 | A11y | `FilterChips` default `ariaLabel="Filters"` hardcoded EN | `ariaLabel` required; all callers already pass i18n labels |
 | BUG-241 | Visual | `DaySelector` still inlined `bg-sand/98` sticky bar after BUG-232 token train | `STRIP.stickySandBar` on plan day tabs; guard test in `dr-leftover-polish.test.ts` |
+| BUG-242 | Visual / A11y | Events loading filter skeleton used static CARD (no sticky sand bar) after BUG-232; `ListPageWidgetStrip` default `ariaLabel="Page filters and stats"` hardcoded EN | Hero + sticky `STRIP.stickySandBar` on events loading; required i18n `ariaLabel` on widget strip |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

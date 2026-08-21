@@ -5,8 +5,8 @@ type ListPageWidgetStripProps = {
   sticky?: boolean;
   /** Optional sentinel id - renders a 1px sentinel above the strip for StickyPlanBar */
   sentinelId?: string;
-  /** Optional aria-label for the region (default: "Page filters and stats") */
-  ariaLabel?: string;
+  /** Accessible name for the filter/stats region (required — pass i18n label from caller) */
+  ariaLabel: string;
   children: React.ReactNode;
   className?: string;
 };
@@ -14,7 +14,7 @@ type ListPageWidgetStripProps = {
 export default function ListPageWidgetStrip({
   sticky = false,
   sentinelId,
-  ariaLabel = "Page filters and stats",
+  ariaLabel,
   children,
   className = "",
 }: ListPageWidgetStripProps) {

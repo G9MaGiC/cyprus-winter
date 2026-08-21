@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `ebbf609` (main after PR #134 BUG-241 DaySelector sticky bar)
+**Last updated:** 2026-08-21 · **Target commit:** `8bc2601` (main after PR #135 BUG-242 events loading sticky bar)
 
 ---
 
