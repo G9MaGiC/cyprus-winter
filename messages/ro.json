@@ -2872,27 +2872,27 @@
   "guides": {
     "troodosDecember": {
       "meta": {
-        "title": "Best Troodos Trails in December | Cyprus Winter",
-        "description": "Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, quiet slopes. What to pack, conditions, snow notes. Cyprus winter hiking guide."
+        "title": "Cele mai bune trasee Troodos în decembrie | Cyprus Winter",
+        "description": "Trasee Troodos în decembrie: Artemis, Atalante, Caledonia Falls. Poteci libere, versanți liniștiți. Ce să împachetezi, condiții, note despre zăpadă. Ghid de drumeție de iarnă în Cipru."
       },
       "header": {
-        "title": "Best Troodos Trails in December",
-        "description": "December in Troodos: crisp air, quiet trails, often clear before peak snow. Artemis is the gentler Chionistra loop when higher ridges hold snow; Atalante is a full-day 14 km hike—start early when ice-free. Caledonia Falls runs strong after rain."
+        "title": "Cele mai bune trasee Troodos în decembrie",
+        "description": "Decembrie în Troodos: aer curat, trasee liniștite, adesea libere înainte de zăpadă. Artemis este bucla mai blândă pe Chionistra când crestele înalte țin zăpadă; Atalante este o drumeție de o zi, 14 km — plecați devreme când e fără gheață. Caledonia Falls curge puternic după ploaie."
       },
       "intro": {
-        "body": "December hits the sweet spot: ski season hasn’t fully started, trails are usually clear, and the villages are quiet. Pack layers—temps can dip to 2°C at elevation. Check {trailConditionsLink} before you go; after cold snaps, higher trails can be icy.",
-        "trailConditionsLink": "trail conditions"
+        "body": "Decembrie e momentul potrivit: sezonul de schi nu a început încă pe deplin, traseele sunt de obicei libere, iar satele sunt liniștite. Luați straturi — temperatura poate scădea la 2°C la altitudine. Verificați {trailConditionsLink} înainte de plecare; după episoade reci, traseele de la altitudine pot fi înghețate.",
+        "trailConditionsLink": "condițiile traseelor"
       },
       "sections": {
-        "decemberPicks": "December picks",
-        "allTroodos": "All Troodos trails"
+        "decemberPicks": "Selecții pentru decembrie",
+        "allTroodos": "Toate traseele Troodos"
       },
       "footer": {
-        "troodosRegion": "Troodos region",
-        "weatherByMonth": "Weather by month"
+        "troodosRegion": "Regiunea Troodos",
+        "weatherByMonth": "Vremea pe luni"
       },
       "cards": {
-        "imageAlt": "{name}, {region} — {km} km {difficulty} trail",
+        "imageAlt": "{name}, {region} — traseu {km} km {difficulty}",
         "duration": "{km} km · ~{hours}h"
       }
     }

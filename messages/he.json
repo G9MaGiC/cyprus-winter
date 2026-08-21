@@ -2872,28 +2872,28 @@
   "guides": {
     "troodosDecember": {
       "meta": {
-        "title": "Best Troodos Trails in December | Cyprus Winter",
-        "description": "Troodos trails in December: Artemis, Atalante, Caledonia Falls. Clear paths, quiet slopes. What to pack, conditions, snow notes. Cyprus winter hiking guide."
+        "title": "מסלולי טרודוס הטובים ביותר בדצמבר | Cyprus Winter",
+        "description": "מסלולי טרודוס בדצמבר: Artemis, Atalante, Caledonia Falls. שבילים פנויים, מדרונות שקטים. מה לארוז, תנאים, הערות שלג. מדריך טיולים חורף בקפריסין."
       },
       "header": {
-        "title": "Best Troodos Trails in December",
-        "description": "December in Troodos: crisp air, quiet trails, often clear before peak snow. Artemis is the gentler Chionistra loop when higher ridges hold snow; Atalante is a full-day 14 km hike—start early when ice-free. Caledonia Falls runs strong after rain."
+        "title": "מסלולי טרודוס הטובים ביותר בדצמבר",
+        "description": "דצמבר בטרודוס: אוויר צלול, שבילים שקטים, לעיתים פנויים לפני שלג השיא. Artemis הוא הלולאה העדינה יותר סביב Chionistra כשבחלקים הגבוהים יש שלג; Atalante הוא טיול יום מלא של 14 ק\"מ — צאו מוקדם כשאין קרח. Caledonia Falls זורם חזק אחרי גשם."
       },
       "intro": {
-        "body": "December hits the sweet spot: ski season hasn’t fully started, trails are usually clear, and the villages are quiet. Pack layers—temps can dip to 2°C at elevation. Check {trailConditionsLink} before you go; after cold snaps, higher trails can be icy.",
-        "trailConditionsLink": "trail conditions"
+        "body": "דצמבר הוא חלון מושלם: עונת הסקי עדיין לא התחילה במלואה, השבילים בדרך כלל פנויים והכפרים שקטים. ארזו שכבות — הטמפרטורה יכולה לרדת ל-2°C בגובה. בדקו {trailConditionsLink} לפני שיוצאים; אחרי גל קור, שבילים גבוהים עלולים להיות קפואים.",
+        "trailConditionsLink": "תנאי השבילים"
       },
       "sections": {
-        "decemberPicks": "December picks",
-        "allTroodos": "All Troodos trails"
+        "decemberPicks": "בחירות לדצמבר",
+        "allTroodos": "כל מסלולי טרודוס"
       },
       "footer": {
-        "troodosRegion": "Troodos region",
-        "weatherByMonth": "Weather by month"
+        "troodosRegion": "אזור טרודוס",
+        "weatherByMonth": "מזג אוויר לפי חודש"
       },
       "cards": {
-        "imageAlt": "{name}, {region} — {km} km {difficulty} trail",
-        "duration": "{km} km · ~{hours}h"
+        "imageAlt": "{name}, {region} — מסלול {km} ק\"מ {difficulty}",
+        "duration": "{km} ק\"מ · ~{hours} ש'"
       }
     }
   },

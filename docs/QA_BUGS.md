@@ -1453,4 +1453,10 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-225 | i18n | Right Now discovery badges (`Hidden gem near you`, etc.) were hardcoded EN in `right-now-scoring.ts` and shown on locale routes | Stable badge keys + `home.rightNow.discoveryBadges.*` in all 7 locales; `RightNowCard` localizes |
 
+### Fixed — Troodos December guide beta locales (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-226 | i18n | `guides.troodosDecember` still mirrored English on beta `fr`/`he`/`ro` (header, intro, meta, section labels) after BUG-220 copy fix in en/el/de/pl | Localized full guide block in fr, he, ro; Artemis/Atalante pacing copy preserved |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
