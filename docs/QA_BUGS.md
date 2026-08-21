@@ -1525,5 +1525,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-258 | Data / assets | Trail heroes reused 4 regional stock photos (47 trails shared Troodos JPG) | Fetched 32 Visit Cyprus official pages; 29 mapped to app ids → `public/images/cyprus/trails/`; `npm run trails:fetch-images`, `docs/TRAIL_IMAGE_INTAKE.md` |
 | BUG-259 | Data | Ezousa Valley + Panagia tou Araka–Stavros tou Agiasmati on Visit Cyprus but missing from catalog | Added `ezousa-valley`, `panagia-araka-stavros` with official heroes; VC catalog 100% mapped |
 | BUG-260 | Data | 27 Forestry fd56 outside-forest trails missing from catalog | `npm run trails:scrape-forestry`, `forestry-name-map.ts`, 27 new trails in `trails.ts`; `docs/TRAIL_FORESTRY_INTAKE.md`; app total 100 trails |
+| BUG-261 | Data | fd56 stats drift on 4 pre-existing mapped trails | Re-aligned `vouni-panagias`, `millomeris-falls`, `ariadni`, `lefkara-path` to fd56; `npm run trails:sync-forestry-stats` |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

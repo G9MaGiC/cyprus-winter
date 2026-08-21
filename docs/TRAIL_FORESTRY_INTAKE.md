@@ -29,6 +29,9 @@ npm run trails:scrape-forestry
 
 # Compare manifest to src/data/trails.ts
 npm run trails:forestry-gap
+
+# Verify fd56 stats match app catalog (length, duration, difficulty)
+npm run trails:sync-forestry-stats
 ```
 
 Outputs:
@@ -50,11 +53,19 @@ Outputs:
 
 ---
 
-## Leaflet PDFs (hero images — future)
+## Leaflet PDFs (hero images — deferred)
 
-The scraper records PDF flyer URLs from Troodos and Paphos index pages. PDF first-page extraction (`pdftoppm`) is deferred; fd56 trails currently use regional stock images.
+The scraper records PDF flyer URLs from Troodos and Paphos index pages. Automated first-page extraction was attempted (pdfjs + canvas) but Forestry four-fold flyers use JPEG2000 images that do not decode in Node without OpenJPEG/poppler. fd56 and regional trails continue to use regional stock until manual hero crop or `pdftoppm` in CI.
 
 Combined map PDF (~158 MB): linked in manifest under `leaflets[district=Combined map]`.
+
+---
+
+## Stats sync (fd56 ↔ app)
+
+Four trails existed in the app before BUG-260 and were re-aligned to fd56 stats in BUG-261: `vouni-panagias`, `millomeris-falls`, `ariadni`, `lefkara-path`.
+
+Run `npm run trails:sync-forestry-stats` after manifest or trail edits to catch drift.
 
 ---
 
