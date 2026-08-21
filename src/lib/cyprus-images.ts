@@ -184,6 +184,11 @@ const officialTrailImages: Record<string, string> = {
   "xyliatos-dam": `${trailsDir}/trail-xyliatos-dam.jpg`,
   "ezousa-valley": `${trailsDir}/trail-ezousa-valley.jpg`,
   "panagia-araka-stavros": `${trailsDir}/trail-panagia-araka-stavros.jpg`,
+  "moni-fylagra": `${trailsDir}/trail-moni-fylagra.jpg`,
+  chorteri: `${trailsDir}/trail-chorteri.jpg`,
+  "argakas-dam": `${trailsDir}/trail-argakas-dam.jpg`,
+  symvoulas: `${trailsDir}/trail-symvoulas.jpg`,
+  "venetian-bridges": `${trailsDir}/trail-venetian-bridges.jpg`,
 };
 
 /** Regional stock for trails without an official Visit Cyprus hero. */

@@ -18,7 +18,25 @@ Workflow for importing **official Forestry Department** trail stats from moa.gov
 | **Editorial polish** | 27 / 27 | `forestry-trail-copy.ts` + `npm run trails:polish-forestry` |
 | **Official VC heroes** | 31 | Unchanged — fd56 trails use regional stock |
 
-App total trails: **100** (73 state-forest/discovery + 27 fd56 outside-forest additions).
+App total trails: **104** (73 state-forest/discovery + 27 fd56 outside-forest + 4 PDF-only Paphos routes).
+
+---
+
+## PDF leaflet heroes (BUG-263)
+
+Five trails have official heroes cropped from Forestry four-fold PDFs via poppler:
+
+```bash
+npm run trails:extract-forestry-heroes   # requires poppler-utils (pdftoppm)
+```
+
+| Trail | Source |
+|-------|--------|
+| moni-fylagra | Troodos leaflet |
+| chorteri | Paphos leaflet (distinct from Troodos horteri) |
+| argakas-dam | Paphos leaflet |
+| symvoulas | Paphos leaflet |
+| venetian-bridges | Paphos leaflet |
 
 ---
 
@@ -39,6 +57,9 @@ npm run trails:polish-forestry
 
 # Forestry PDF leaflets vs official/regional hero coverage
 npm run trails:forestry-leaflet-gap
+
+# Crop heroes from four-fold PDFs (poppler-utils)
+npm run trails:extract-forestry-heroes
 ```
 
 Outputs:
@@ -60,11 +81,11 @@ Outputs:
 
 ---
 
-## Leaflet PDFs (hero images — deferred)
+## Leaflet PDFs (hero images)
 
-The scraper records PDF flyer URLs from Troodos and Paphos index pages. Automated first-page extraction was attempted (pdfjs + canvas) but Forestry four-fold flyers use JPEG2000 images that do not decode in Node without OpenJPEG/poppler. fd56 and regional trails continue to use regional stock until manual hero crop or `pdftoppm` in CI.
+The scraper records PDF flyer URLs from Troodos and Paphos index pages. Heroes are extracted with `npm run trails:extract-forestry-heroes` (poppler `pdftoppm` + sharp crop). JPEG2000 in four-fold flyers requires poppler—plain pdfjs+canvas renders blank in Node.
 
-Combined map PDF (~158 MB): linked in manifest under `leaflets[district=Combined map]`.
+Remaining unmapped PDFs: Troodos Visitor Centre botanical trail, combined Akamas–Troodos mega map (~158 MB).
 
 ---
 
