@@ -37,6 +37,7 @@
     "analyze:old": "next experimental-analyze",
     "data:export": "npx tsx scripts/enrich-places/export-places.ts",
     "data:validate": "npx tsx scripts/validate-data.ts",
+    "check:conflict-markers": "node scripts/check-conflict-markers.mjs",
     "grant:wireframes": "node scripts/grant/capture-wireframes.mjs",
     "grant:annex-pdf": "node scripts/grant/build-annex-ii-pdf.mjs",
     "grant:health": "npx tsx scripts/grant/fetch-production-health.ts",

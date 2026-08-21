@@ -79,6 +79,9 @@ jobs:
       - name: Lint
         run: npm run lint -- --max-warnings 0
 
+      - name: Conflict markers
+        run: npm run check:conflict-markers
+
       - name: Data validate
         run: npm run data:validate
 
