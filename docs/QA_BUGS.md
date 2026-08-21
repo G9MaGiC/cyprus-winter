@@ -1438,8 +1438,13 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | Item | Severity | Notes |
 |------|----------|-------|
-| Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
 | Cookie-setting session routes (`admin/session`, `partner/session`) keep hand-rolled `{ ok: true }` + `Set-Cookie` | P3 | Already `{ ok: true }`; leave alone unless consolidating cookie helpers |
+
+### Fixed — hidden gems editorial tags (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-230 | Discover | Seven places with explicit “fewer visitors” / “off the main loop” copy lacked `Off-the-beaten-path` in `bestFor` (P3 backlog) | Tagged Salamis, Palaipafos, Buffavento, Panagia tou Araka, Savvas, Ayii Anargyri, Silikou Museum; audit test guards copy→tag alignment |
 
 ### Fixed — enrich-places sync (Aug 21, 2026)
 
