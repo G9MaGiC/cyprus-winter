@@ -1,8 +1,8 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function PlanLoading() {
-  const t = useTranslations("common");
+export default async function PlanLoading() {
+  const t = await getTranslations("common");
   return (
     <div className="min-h-screen bg-sand" aria-busy="true" aria-live="polite" role="status" aria-label={t("loading.plan")}>
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyPlan} flex flex-col gap-8 sm:gap-12 md:gap-16 animate-pulse`}>

@@ -1,8 +1,8 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function BookingsLoading() {
-  const t = useTranslations("common");
+export default async function BookingsLoading() {
+  const t = await getTranslations("common");
   return (
     <div className="min-h-screen bg-sand" aria-busy aria-live="polite" role="status" aria-label={t("loading.bookings")}>
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse min-h-[60vh]`}>

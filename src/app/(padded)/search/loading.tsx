@@ -1,8 +1,8 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function SearchLoading() {
-  const t = useTranslations("common");
+export default async function SearchLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}

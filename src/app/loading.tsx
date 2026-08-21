@@ -1,8 +1,8 @@
 import { LAYOUT, SECTION, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function RootLoading() {
-  const t = useTranslations("common");
+export default async function RootLoading() {
+  const t = await getTranslations("common");
 
   return (
     <div

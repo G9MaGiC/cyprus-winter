@@ -1697,6 +1697,14 @@
         "allByCategory": "Showing all trails by category",
         "browseByCategory": "Browse trails by category"
       }
+    },
+    "sections": {
+      "winter-highlights": "Temps forts d’hiver",
+      "family-friendly": "Adapté aux familles",
+      "waterfall": "Sentiers de cascades",
+      "coastal": "Escapades côtières",
+      "peak-views": "Vues depuis les sommets",
+      "full-day": "Défis journée complète"
     }
   },
   "plan": {

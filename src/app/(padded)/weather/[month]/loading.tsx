@@ -1,8 +1,8 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function WeatherMonthLoading() {
-  const t = useTranslations("common");
+export default async function WeatherMonthLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} py-12 sm:py-16`}

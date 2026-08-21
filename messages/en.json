@@ -1697,6 +1697,14 @@
         "allByCategory": "Showing all trails by category",
         "browseByCategory": "Browse trails by category"
       }
+    },
+    "sections": {
+      "winter-highlights": "Winter highlights",
+      "family-friendly": "Family-friendly",
+      "waterfall": "Waterfall trails",
+      "coastal": "Coastal escapes",
+      "peak-views": "Peak views",
+      "full-day": "Full-day challenges"
     }
   },
   "plan": {

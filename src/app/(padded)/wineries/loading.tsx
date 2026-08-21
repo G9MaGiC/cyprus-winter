@@ -1,5 +1,5 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 function CardSkeleton() {
   return (
@@ -18,8 +18,8 @@ function CardSkeleton() {
   );
 }
 
-export default function WineriesLoading() {
-  const t = useTranslations("common");
+export default async function WineriesLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}

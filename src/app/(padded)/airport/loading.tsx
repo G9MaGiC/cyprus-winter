@@ -1,8 +1,8 @@
 import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function AirportLoading() {
-  const t = useTranslations("common");
+export default async function AirportLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.listNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} flex flex-col gap-10 sm:gap-14`}

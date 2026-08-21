@@ -1697,6 +1697,14 @@
         "allByCategory": "Wyświetlane wszystkie szlaki według kategorii",
         "browseByCategory": "Przeglądaj szlaki według kategorii"
       }
+    },
+    "sections": {
+      "winter-highlights": "Zimowe atrakcje",
+      "family-friendly": "Przyjazne rodzinom",
+      "waterfall": "Szlaki do wodospadów",
+      "coastal": "Ucieczki nad morze",
+      "peak-views": "Widoki ze szczytów",
+      "full-day": "Wyzwania na cały dzień"
     }
   },
   "plan": {

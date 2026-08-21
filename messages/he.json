@@ -1697,6 +1697,14 @@
         "allByCategory": "Showing all trails by category",
         "browseByCategory": "Browse trails by category"
       }
+    },
+    "sections": {
+      "winter-highlights": "היילייטים לחורף",
+      "family-friendly": "ידידותי למשפחות",
+      "waterfall": "שבילי מפלים",
+      "coastal": "בריחות לחוף",
+      "peak-views": "נופים מהפסגות",
+      "full-day": "אתגרים ליום שלם"
     }
   },
   "plan": {

@@ -1398,6 +1398,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-198 | i18n | AI openers/suggestions hardcoded EN; path strip ignored `fr`/`he`/`ro` | `common.ai.suggestions` + `opener`; `chat-path` uses all `routing.locales` |
 | BUG-199 | Product | `/wine-routes` hub 404 — only `[slug]` pages | Hub page + locale proxy + sitemap + wineries footer link |
 | BUG-200 | Trust | Partner portal “Profile saved.” with no ephemeral caveat | `ephemeralNote` + session-scoped saved copy |
+| BUG-201 | i18n | Trails curated section `h2`s hardcoded EN in `trails-sections.ts` | Titles via `trails.sections.*` in `TrailsSectionList` |
+| BUG-202 | RSC / i18n | 13 `loading.tsx` files still used client `useTranslations` (BUG-192 leftover) | Async `getTranslations`; drop `"use client"` on wine-route slug loading |
 
 ### Still open — ops / human (do not invent)
 

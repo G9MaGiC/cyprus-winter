@@ -4,8 +4,10 @@ import TrailCard from "@/components/TrailCard";
 import { trailConditions } from "@/data/trails";
 import { SECTION, LAYOUT, TYPE } from "@/lib/design-tokens";
 import { buildTrailSections } from "@/lib/trails-sections";
+import { useTranslations } from "next-intl";
 
 export default function TrailsSectionList() {
+  const tSections = useTranslations("trails.sections");
   const sections = buildTrailSections();
   if (sections.length === 0) return null;
 
@@ -22,7 +24,7 @@ export default function TrailsSectionList() {
             id={`trail-section-${section.id}`}
             className={`${TYPE.sectionTitle} break-words ${SECTION.headingGap}`}
           >
-            {section.title}
+            {tSections(section.id)}
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             {section.trails.map((trail) => (

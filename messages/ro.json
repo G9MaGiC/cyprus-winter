@@ -1697,6 +1697,14 @@
         "allByCategory": "Showing all trails by category",
         "browseByCategory": "Browse trails by category"
       }
+    },
+    "sections": {
+      "winter-highlights": "Repere de iarnă",
+      "family-friendly": "Potrivit familiilor",
+      "waterfall": "Trasee cu cascade",
+      "coastal": "Escapade pe coastă",
+      "peak-views": "Priveliști de pe vârfuri",
+      "full-day": "Provocări pe zi întreagă"
     }
   },
   "plan": {

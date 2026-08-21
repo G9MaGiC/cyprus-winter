@@ -1,14 +1,14 @@
 /**
  * Curated trail sections for the trails page.
  * Shown when no filters are active.
+ * Titles come from `trails.sections.*` message keys (by section id).
  */
 
 import { trails } from "@/data/trails";
 import type { Trail } from "@/data/trails";
 
-export type TrailSection = {
+export type TrailSectionDef = {
   id: string;
-  title: string;
   trailIds: string[];
 };
 
@@ -20,15 +20,13 @@ export const COASTAL_TRAIL_IDS = [
   "sea-caves-anargyroi",
 ] as const;
 
-const sectionDefs: TrailSection[] = [
+const sectionDefs: TrailSectionDef[] = [
   {
     id: "winter-highlights",
-    title: "Winter highlights",
     trailIds: ["artemis", "atalante", "adonis", "cape-greco", "caledonia-falls"],
   },
   {
     id: "family-friendly",
-    title: "Family-friendly",
     trailIds: trails
       .filter((t) => t.difficulty === "easy" && t.lengthKm <= 3)
       .map((t) => t.id)
@@ -36,7 +34,6 @@ const sectionDefs: TrailSection[] = [
   },
   {
     id: "waterfall",
-    title: "Waterfall trails",
     trailIds: [
       "caledonia-falls",
       "millomeris-falls",
@@ -46,28 +43,24 @@ const sectionDefs: TrailSection[] = [
   },
   {
     id: "coastal",
-    title: "Coastal escapes",
     trailIds: [...COASTAL_TRAIL_IDS],
   },
   {
     id: "peak-views",
-    title: "Peak views",
     trailIds: ["olympus-summit", "madari-ridge", "stavrovouni"],
   },
   {
     id: "full-day",
-    title: "Full-day challenges",
     trailIds: ["horteri", "caledonia-alternative", "kykkos-konizi"],
   },
 ];
 
 const trailById = new Map(trails.map((t) => [t.id, t]));
 
-export function buildTrailSections(): { id: string; title: string; trails: Trail[] }[] {
+export function buildTrailSections(): { id: string; trails: Trail[] }[] {
   return sectionDefs
     .map((s) => ({
       id: s.id,
-      title: s.title,
       trails: s.trailIds
         .map((id) => trailById.get(id))
         .filter((t): t is Trail => t != null),
