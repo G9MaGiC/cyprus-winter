@@ -121,6 +121,19 @@ export const cyclingPageMeta: Metadata = {
   },
 };
 
+export const wineRoutesHubPageMeta: Metadata = {
+  title: "Cyprus Wine Routes in Winter | Krasochoria, Laona, Akamas, Commandaria",
+  description:
+    "Four Cyprus wine routes for winter tastings: Krasochoria, Laona, Akamas, and Commandaria. Book cellars ahead and pair with villages or trails.",
+  openGraph: {
+    title: "Cyprus Wine Routes in Winter | Krasochoria, Laona, Akamas, Commandaria",
+    description:
+      "Four Cyprus wine routes for winter tastings. Book cellars ahead; pair with villages or trails.",
+    type: "website",
+    images: [{ url: ogWineryTroodos, width: 1200, height: 630, alt: "Cyprus wine villages in winter" }],
+  },
+};
+
 export const secretsPageMeta: Metadata = {
   title: "Cyprus Winter Secrets | Local Tips & Hidden Spots",
   description:

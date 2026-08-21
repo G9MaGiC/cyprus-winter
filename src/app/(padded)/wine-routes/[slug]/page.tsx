@@ -59,8 +59,9 @@ export default async function WineRoutePage({ params }: Props) {
   const { slug } = await params;
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   if (!route) notFound();
-  const [tNav, tPage, tDiscover] = await Promise.all([
+  const [tNav, tCommon, tPage, tDiscover] = await Promise.all([
     getTranslations("nav"),
+    getTranslations("common"),
     getTranslations("wineRoutes.page"),
     getTranslations("discover"),
   ]);
@@ -70,13 +71,14 @@ export default async function WineRoutePage({ params }: Props) {
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <PageHeader
-        backHref="/wineries"
-        backLabel={tNav("wineries")}
+        backHref="/wine-routes"
+        backLabel={tCommon("breadcrumbs.wineRoutes")}
         title={tPage("routeTitle", { route: route.title })}
         description={route.description}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
           { label: tNav("wineries"), href: "/wineries" },
+          { label: tCommon("breadcrumbs.wineRoutes"), href: "/wine-routes" },
           { label: tPage("routeBreadcrumb", { route: route.title }), href: `/wine-routes/${slug}`, isCurrent: true },
         ]}
       />

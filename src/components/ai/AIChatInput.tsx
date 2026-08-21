@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Send, Mic, MicOff } from "lucide-react";
 import { matchSlashCommands } from "./slash-commands";
 
@@ -21,6 +21,7 @@ export function AIChatInput({
   suggestions,
 }: AIChatInputProps) {
   const tCommon = useTranslations("common");
+  const locale = useLocale();
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -51,8 +52,7 @@ export function AIChatInput({
       fr: "fr-FR",
       he: "he-IL",
     };
-    const htmlLang = document.documentElement.lang || "en";
-    recognition.lang = localeMap[htmlLang] || "en-US";
+    recognition.lang = localeMap[locale] || "en-US";
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = Array.from(event.results)
@@ -70,7 +70,7 @@ export function AIChatInput({
     };
 
     return recognition;
-  }, [setInput]);
+  }, [locale, setInput]);
 
   const toggleListening = useCallback(() => {
     if (!speechSupported) return;

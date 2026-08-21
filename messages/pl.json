@@ -143,7 +143,84 @@
         "followUpHike": "Łatwy zimowy szlak",
         "followUpAirport": "Właśnie wylądowałem w Larnace"
       },
-      "disclaimer": "Tylko informacje ogólne — krytyczne dla bezpieczeństwa szczegóły weryfikuj lokalnie."
+      "disclaimer": "Tylko informacje ogólne — krytyczne dla bezpieczeństwa szczegóły weryfikuj lokalnie.",
+      "suggestions": {
+        "home": {
+          "0": "Zaplanuj moją 3-dniową zimową podróż",
+          "1": "Najlepsze winnice z widokiem",
+          "2": "Warunki na szlaku Artemis",
+          "3": "Omodos i degustacja Commandaria",
+          "4": "Przylatuję jutro. Od czego zacząć?",
+          "5": "Wędrówka i wino jednego dnia"
+        },
+        "discover": {
+          "0": "Najlepsze winnice z widokiem",
+          "1": "Spokojne wioski na wolny dzień",
+          "2": "Co pasuje do Kourion?",
+          "3": "Omodos i pobliskie degustacje",
+          "4": "Miejsca przyjazne rodzinom zimą",
+          "5": "Gdzie najlepsze zimowe światło?"
+        },
+        "trails": {
+          "0": "Warunki na szlaku Artemis",
+          "1": "Najlepszy szlak na ten tydzień?",
+          "2": "Łatwe szlaki dla początkujących",
+          "3": "Śnieg w Troodos—czego się spodziewać?",
+          "4": "Połącz szlak z wioską",
+          "5": "Co założyć na zimową wędrówkę?"
+        },
+        "plan": {
+          "0": "Dodaj winnicę koło Omodos",
+          "1": "Najlepsza trasa na dzień 2?",
+          "2": "Wypełnij dzień kulturą i winem",
+          "3": "Szlaki koło hotelu w Platres",
+          "4": "Rezerwuj degustacje z wyprzedzeniem—które winnice?",
+          "5": "Krótki pobyt: 48 godzin, co robić?"
+        },
+        "default": {
+          "0": "Co pasuje do tego miejsca?",
+          "1": "Najlepszy czas na wizytę?",
+          "2": "Pobliskie szlaki lub wioski",
+          "3": "Zimowe wskazówki tutaj",
+          "4": "Dodaj do mojego planu"
+        }
+      },
+      "opener": {
+        "base": "Cześć — znam wyspę. ",
+        "home": "Szlaki, winnice, wioski, plany dnia — pytaj lub wybierz sugestię poniżej.",
+        "trails": "Szukasz szlaku? Dopasuję go do pogody i Twojej kondycji.",
+        "discover": "Odkrywasz miejsca? Podaj region lub nastrój — zawężę wybór.",
+        "plan": "Budujesz plan? Podpowiem, co pasuje do każdego dnia, lub uzupełnię luki.",
+        "airport": "Właśnie wylądowałeś lub planujesz? Pomogę z transportem, pierwszymi przystankami i dniem otwarcia.",
+        "followUps": {
+          "home": {
+            "0": "Zaplanuj 3-dniową podróż",
+            "1": "Najlepsze winnice z widokiem",
+            "2": "Co robić dziś?",
+            "3": "Łatwa zimowa wędrówka"
+          },
+          "trails": {
+            "0": "Łatwa zimowa wędrówka",
+            "1": "Warunki szlaków dziś",
+            "2": "Połącz szlak z wioską"
+          },
+          "discover": {
+            "0": "Najlepsze wioski w pobliżu",
+            "1": "Ukryte plaże",
+            "2": "Propozycje dla rodzin"
+          },
+          "plan": {
+            "0": "Zaplanuj mój dzień",
+            "1": "Najlepsza trasa na dzień 1",
+            "2": "Dodaj postój w winnicy"
+          },
+          "airport": {
+            "0": "Właśnie wylądowałem w Larnace",
+            "1": "Transport do Limassol",
+            "2": "Co zrobić najpierw"
+          }
+        }
+      }
     },
     "back": "Wróć",
     "backTo": "Wróć do {label}",
@@ -1169,9 +1246,10 @@
         "imagePlaceholder": "/images/cyprus/winery-example.jpg",
         "imageHint": "Użyj ścieżki w /images/cyprus/, która już istnieje na stronie.",
         "save": "Zapisz profil",
-        "saved": "Profil zapisany.",
+        "saved": "Zapisano na tę sesję serwera.",
         "saveFailed": "Nie zapisano. Ścieżka obrazu musi być lokalnym plikiem /images/cyprus.",
-        "unsafeImage": "Ta ścieżka obrazu nie jest dozwolona."
+        "unsafeImage": "Ta ścieżka obrazu nie jest dozwolona.",
+        "ephemeralNote": "Zmiany godzin i zdjęcia bohatera są tymczasowe — znikają po restarcie serwera, dopóki nie będzie trwałego magazynu."
       }
     }
   },
@@ -1305,7 +1383,8 @@
         "pairingPrefix": "Połącz wizytę w winnicy ze szlakiem albo wioską.",
         "pairingLink": "Zaplanuj dzień",
         "routesPrefix": "Poznaj szlaki wina:",
-        "hubBody": "Połącz wizytę w winnicy ze szlakiem lub wioską. Dodaj miejsca do planu—lub zapytaj AI."
+        "hubBody": "Połącz wizytę w winnicy ze szlakiem lub wioską. Dodaj miejsca do planu—lub zapytaj AI.",
+        "allRoutes": "Przeglądaj wszystkie szlaki winiarskie"
       },
       "aria": {
         "actions": "Akcje strony winnic"
@@ -3035,6 +3114,29 @@
       },
       "footer": {
         "hubBody": "Zarezerwuj degustacje z wyprzedzeniem i połącz trasę z pobliską wioską lub szlakiem.",
+        "allWineries": "Wszystkie winnice Cypru"
+      },
+      "aria": {
+        "actions": "Akcje szlaków winiarskich"
+      }
+    },
+    "hub": {
+      "meta": {
+        "title": "Szlaki winiarskie Cypru zimą | Krasochoria, Laona, Akamas, Commandaria",
+        "description": "Cztery szlaki winiarskie na zimowe degustacje: Krasochoria, Laona, Akamas i Commandaria. Rezerwuj piwnice z wyprzedzeniem.",
+        "ogDescription": "Cztery szlaki winiarskie na zimowe degustacje. Rezerwuj piwnice z wyprzedzeniem.",
+        "ogAlt": "Cypryjskie wioski winiarskie zimą",
+        "schemaName": "Zimowe szlaki winiarskie Cypru",
+        "schemaDescription": "Szlaki Krasochoria, Laona, Akamas i Commandaria z zimowymi degustacjami."
+      },
+      "header": {
+        "title": "Szlaki winiarskie",
+        "description": "Cztery zimowe trasy na wzgórzach Limassol i Paphos. Wybierz szlak, potem zarezerwuj degustację."
+      },
+      "winterTipLabel": "Zimowa wskazówka",
+      "ctaOpen": "Otwórz szlak",
+      "footer": {
+        "hubBody": "Rezerwuj degustacje z wyprzedzeniem i połącz szlak z wioską lub szlakiem Troodos.",
         "allWineries": "Wszystkie winnice Cypru"
       },
       "aria": {

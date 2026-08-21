@@ -381,6 +381,7 @@ export default function PartnerPortalPage() {
             className={inputClass}
           />
           <p className="text-xs text-olive/60">{t("profile.imageHint")}</p>
+          <p className="text-xs text-olive/55">{t("profile.ephemeralNote")}</p>
           <button type="submit" disabled={savingProfile} className={CTA.primaryCompact}>
             {t("profile.save")}
           </button>

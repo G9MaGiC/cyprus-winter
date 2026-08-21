@@ -163,7 +163,84 @@
         "followUpHike": "Easy winter hike",
         "followUpAirport": "I just landed in Larnaca"
       },
-      "disclaimer": "General information only — verify safety-critical details from local sources."
+      "disclaimer": "General information only — verify safety-critical details from local sources.",
+      "suggestions": {
+        "home": {
+          "0": "Plan my 3-day winter trip",
+          "1": "Best wineries with a view",
+          "2": "Artemis Trail conditions",
+          "3": "Omodos and Commandaria tasting",
+          "4": "I'm arriving tomorrow. Where do I start?",
+          "5": "Hike plus wine in one day"
+        },
+        "discover": {
+          "0": "Best wineries with a view",
+          "1": "Quiet villages for a slow day",
+          "2": "What pairs with Kourion?",
+          "3": "Omodos and nearby tastings",
+          "4": "Family-friendly places in winter",
+          "5": "Where's the best winter light?"
+        },
+        "trails": {
+          "0": "Artemis Trail conditions",
+          "1": "Best trail for this week?",
+          "2": "Easy trails for beginners",
+          "3": "Troodos snow—what to expect?",
+          "4": "Combine a trail with a village",
+          "5": "What to wear for winter hiking?"
+        },
+        "plan": {
+          "0": "Add a winery near Omodos",
+          "1": "Best route for Day 2?",
+          "2": "Fill a day with culture and wine",
+          "3": "Trails near my hotel in Platres",
+          "4": "Book tastings ahead—which wineries?",
+          "5": "Short stay: 48 hours, what to do?"
+        },
+        "default": {
+          "0": "What pairs well with this place?",
+          "1": "Best time to visit?",
+          "2": "Nearby trails or villages",
+          "3": "Winter tips for here",
+          "4": "Add this to my plan"
+        }
+      },
+      "opener": {
+        "base": "Hi — I know the island. ",
+        "home": "Trails, wineries, villages, day plans — ask anything, or tap a suggestion below.",
+        "trails": "Looking for a trail? I can help match one to today's weather and your fitness level.",
+        "discover": "Exploring places? Tell me your region or what you're in the mood for — I'll narrow it down.",
+        "plan": "Building your plan? I can suggest what fits each day, or fill gaps in your itinerary.",
+        "airport": "Just arrived or planning to? I can help with transport, first stops, and your opening day.",
+        "followUps": {
+          "home": {
+            "0": "Plan my 3-day trip",
+            "1": "Best wineries with a view",
+            "2": "What should I do today?",
+            "3": "Easy winter hike"
+          },
+          "trails": {
+            "0": "Easy winter hike",
+            "1": "Trail conditions today",
+            "2": "Combine a trail with a village"
+          },
+          "discover": {
+            "0": "Best villages near me",
+            "1": "Hidden beaches",
+            "2": "Family-friendly picks"
+          },
+          "plan": {
+            "0": "Plan my day",
+            "1": "Best route for Day 1",
+            "2": "Add a winery stop"
+          },
+          "airport": {
+            "0": "I just landed in Larnaca",
+            "1": "Transport to Limassol",
+            "2": "What to do first"
+          }
+        }
+      }
     },
     "back": "Back",
     "backTo": "Back to {label}",
@@ -1169,9 +1246,10 @@
         "imagePlaceholder": "/images/cyprus/winery-example.jpg",
         "imageHint": "Use a path under /images/cyprus/ that already exists on the site.",
         "save": "Save profile",
-        "saved": "Profile saved.",
+        "saved": "Saved for this server session.",
         "saveFailed": "Could not save. Check the image path is a local /images/cyprus file.",
-        "unsafeImage": "That image path is not allowed."
+        "unsafeImage": "That image path is not allowed.",
+        "ephemeralNote": "Hours and hero image changes are temporary — they reset when the server restarts until durable storage ships."
       }
     }
   },
@@ -1305,7 +1383,8 @@
         "pairingPrefix": "Pair a winery visit with a trail or village.",
         "pairingLink": "Build a day",
         "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI."
+        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "allRoutes": "Browse all wine routes"
       },
       "aria": {
         "actions": "Wineries page actions"
@@ -2238,6 +2317,29 @@
       },
       "aria": {
         "actions": "Wine route actions"
+      }
+    },
+    "hub": {
+      "meta": {
+        "title": "Cyprus Wine Routes in Winter | Krasochoria, Laona, Akamas, Commandaria",
+        "description": "Four Cyprus wine routes for winter tastings: Krasochoria, Laona, Akamas, and Commandaria. Book cellars ahead and pair with villages or trails.",
+        "ogDescription": "Four Cyprus wine routes for winter tastings. Book cellars ahead; pair with villages or trails.",
+        "ogAlt": "Cyprus wine villages in winter",
+        "schemaName": "Cyprus winter wine routes",
+        "schemaDescription": "Krasochoria, Laona, Akamas, and Commandaria wine routes with winter tastings."
+      },
+      "header": {
+        "title": "Wine routes",
+        "description": "Four winter-ready routes across the Limassol and Paphos hills. Pick a route, then book a tasting."
+      },
+      "winterTipLabel": "Winter tip",
+      "ctaOpen": "Open route",
+      "footer": {
+        "hubBody": "Book tastings ahead and pair a route with a village day or Troodos trail.",
+        "allWineries": "All Cyprus wineries"
+      },
+      "aria": {
+        "actions": "Wine routes actions"
       }
     }
   },

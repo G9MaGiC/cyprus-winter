@@ -143,7 +143,84 @@
         "followUpHike": "Leichte Winterwanderung",
         "followUpAirport": "Ich bin gerade in Larnaka gelandet"
       },
-      "disclaimer": "Nur allgemeine Informationen — sicherheitskritische Details vor Ort prüfen."
+      "disclaimer": "Nur allgemeine Informationen — sicherheitskritische Details vor Ort prüfen.",
+      "suggestions": {
+        "home": {
+          "0": "Plane meine 3-tägige Winterreise",
+          "1": "Beste Weingüter mit Aussicht",
+          "2": "Artemis-Trail Bedingungen",
+          "3": "Omodos und Commandaria-Verkostung",
+          "4": "Ich komme morgen an. Wo fange ich an?",
+          "5": "Wandern und Wein an einem Tag"
+        },
+        "discover": {
+          "0": "Beste Weingüter mit Aussicht",
+          "1": "Ruhige Dörfer für einen langsamen Tag",
+          "2": "Was passt zu Kourion?",
+          "3": "Omodos und nahe Verkostungen",
+          "4": "Familienfreundliche Orte im Winter",
+          "5": "Wo ist das beste Winterlicht?"
+        },
+        "trails": {
+          "0": "Artemis-Trail Bedingungen",
+          "1": "Bester Trail für diese Woche?",
+          "2": "Leichte Trails für Anfänger",
+          "3": "Schnee im Troodos—was erwarten?",
+          "4": "Trail mit einem Dorf kombinieren",
+          "5": "Was anziehen zum Winterwandern?"
+        },
+        "plan": {
+          "0": "Weingut bei Omodos hinzufügen",
+          "1": "Beste Route für Tag 2?",
+          "2": "Einen Tag mit Kultur und Wein füllen",
+          "3": "Trails nahe meinem Hotel in Platres",
+          "4": "Verkostungen voraus buchen—welche Weingüter?",
+          "5": "Kurzer Aufenthalt: 48 Stunden, was tun?"
+        },
+        "default": {
+          "0": "Was passt gut zu diesem Ort?",
+          "1": "Beste Besuchszeit?",
+          "2": "Nahe Trails oder Dörfer",
+          "3": "Wintertipps hier",
+          "4": "Zu meinem Plan hinzufügen"
+        }
+      },
+      "opener": {
+        "base": "Hallo — ich kenne die Insel. ",
+        "home": "Trails, Weingüter, Dörfer, Tagespläne — fragen Sie oder tippen Sie einen Vorschlag unten.",
+        "trails": "Suchen Sie einen Trail? Ich passe ihn an Wetter und Fitness an.",
+        "discover": "Orte entdecken? Region oder Stimmung nennen — ich grenze ein.",
+        "plan": "Plan bauen? Ich schlage vor, was zu jedem Tag passt, oder fülle Lücken.",
+        "airport": "Gerade angekommen oder Planung? Hilfe bei Transport, ersten Stopps und dem ersten Tag.",
+        "followUps": {
+          "home": {
+            "0": "Plane meine 3-Tage-Reise",
+            "1": "Beste Weingüter mit Aussicht",
+            "2": "Was soll ich heute tun?",
+            "3": "Leichte Winterwanderung"
+          },
+          "trails": {
+            "0": "Leichte Winterwanderung",
+            "1": "Trail-Bedingungen heute",
+            "2": "Trail mit einem Dorf kombinieren"
+          },
+          "discover": {
+            "0": "Beste Dörfer in meiner Nähe",
+            "1": "Versteckte Strände",
+            "2": "Familienfreundliche Tipps"
+          },
+          "plan": {
+            "0": "Plane meinen Tag",
+            "1": "Beste Route für Tag 1",
+            "2": "Weingut-Stopp hinzufügen"
+          },
+          "airport": {
+            "0": "Gerade in Larnaka gelandet",
+            "1": "Transport nach Limassol",
+            "2": "Was zuerst tun"
+          }
+        }
+      }
     },
     "back": "Zurück",
     "backTo": "Zurück zu {label}",
@@ -1169,9 +1246,10 @@
         "imagePlaceholder": "/images/cyprus/winery-example.jpg",
         "imageHint": "Verwenden Sie einen Pfad unter /images/cyprus/, der bereits auf der Website liegt.",
         "save": "Profil speichern",
-        "saved": "Profil gespeichert.",
+        "saved": "Für diese Server-Sitzung gespeichert.",
         "saveFailed": "Speichern fehlgeschlagen. Der Bildpfad muss eine lokale /images/cyprus-Datei sein.",
-        "unsafeImage": "Dieser Bildpfad ist nicht erlaubt."
+        "unsafeImage": "Dieser Bildpfad ist nicht erlaubt.",
+        "ephemeralNote": "Änderungen an Stunden und Hero-Bild sind vorübergehend — sie gehen bei Server-Neustart verloren, bis dauerhafte Speicherung kommt."
       }
     }
   },
@@ -1305,7 +1383,8 @@
         "pairingPrefix": "Kombinieren Sie einen Weingutbesuch mit einem Trail oder einem Dorf.",
         "pairingLink": "Tag planen",
         "routesPrefix": "Weinrouten entdecken:",
-        "hubBody": "Kombinieren Sie einen Weingutbesuch mit einer Route oder einem Dorf. Orte zum Plan hinzufügen—oder die KI fragen."
+        "hubBody": "Kombinieren Sie einen Weingutbesuch mit einer Route oder einem Dorf. Orte zum Plan hinzufügen—oder die KI fragen.",
+        "allRoutes": "Alle Weinrouten ansehen"
       },
       "aria": {
         "actions": "Weingutseiten-Aktionen"
@@ -3035,6 +3114,29 @@
       },
       "footer": {
         "hubBody": "Verkostungen vorab buchen und die Route mit einem Dorf oder Trail in der Nähe verbinden.",
+        "allWineries": "Alle Weingüter Zyperns"
+      },
+      "aria": {
+        "actions": "Weinrouten-Aktionen"
+      }
+    },
+    "hub": {
+      "meta": {
+        "title": "Zypern Weinrouten im Winter | Krasochoria, Laona, Akamas, Commandaria",
+        "description": "Vier Weinrouten für Winterverkostungen: Krasochoria, Laona, Akamas und Commandaria. Keller voraus buchen.",
+        "ogDescription": "Vier Weinrouten für Winterverkostungen. Keller voraus buchen.",
+        "ogAlt": "Zyprische Weindörfer im Winter",
+        "schemaName": "Zypern Winter-Weinrouten",
+        "schemaDescription": "Krasochoria-, Laona-, Akamas- und Commandaria-Routen mit Winterverkostungen."
+      },
+      "header": {
+        "title": "Weinrouten",
+        "description": "Vier wintertaugliche Routen in den Hügeln von Limassol und Paphos. Route wählen, dann Verkostung buchen."
+      },
+      "winterTipLabel": "Wintertipp",
+      "ctaOpen": "Route öffnen",
+      "footer": {
+        "hubBody": "Verkostungen voraus buchen und eine Route mit Dorf oder Troodos-Trail kombinieren.",
         "allWineries": "Alle Weingüter Zyperns"
       },
       "aria": {

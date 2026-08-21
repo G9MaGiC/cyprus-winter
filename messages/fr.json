@@ -162,7 +162,84 @@
         "followUpHike": "Randonnée hivernale facile",
         "followUpAirport": "Je viens d’atterrir à Larnaca"
       },
-      "disclaimer": "Informations générales uniquement — vérifiez les détails critiques pour la sécurité auprès de sources locales."
+      "disclaimer": "Informations générales uniquement — vérifiez les détails critiques pour la sécurité auprès de sources locales.",
+      "suggestions": {
+        "home": {
+          "0": "Planifie mon séjour d’hiver de 3 jours",
+          "1": "Meilleurs domaines avec vue",
+          "2": "Conditions du sentier Artemis",
+          "3": "Omodos et dégustation Commandaria",
+          "4": "J’arrive demain. Par où commencer ?",
+          "5": "Randonnée et vin le même jour"
+        },
+        "discover": {
+          "0": "Meilleurs domaines avec vue",
+          "1": "Villages tranquilles pour une journée lente",
+          "2": "Quoi associer à Kourion ?",
+          "3": "Omodos et dégustations proches",
+          "4": "Lieux adaptés aux familles en hiver",
+          "5": "Où est la meilleure lumière d’hiver ?"
+        },
+        "trails": {
+          "0": "Conditions du sentier Artemis",
+          "1": "Meilleur sentier pour cette semaine ?",
+          "2": "Sentiers faciles pour débutants",
+          "3": "Neige au Troodos—à quoi s’attendre ?",
+          "4": "Combiner un sentier et un village",
+          "5": "Que porter pour la randonnée d’hiver ?"
+        },
+        "plan": {
+          "0": "Ajouter un domaine près d’Omodos",
+          "1": "Meilleur itinéraire pour le jour 2 ?",
+          "2": "Remplir une journée culture et vin",
+          "3": "Sentiers près de mon hôtel à Platres",
+          "4": "Réserver des dégustations—quels domaines ?",
+          "5": "Court séjour : 48 h, que faire ?"
+        },
+        "default": {
+          "0": "Qu’associer à cet endroit ?",
+          "1": "Meilleure période pour visiter ?",
+          "2": "Sentiers ou villages à proximité",
+          "3": "Conseils d’hiver ici",
+          "4": "Ajouter à mon plan"
+        }
+      },
+      "opener": {
+        "base": "Bonjour — je connais l’île. ",
+        "home": "Sentiers, domaines, villages, journées — demandez ou touchez une suggestion ci-dessous.",
+        "trails": "Vous cherchez un sentier ? Je l’adapte à la météo et à votre niveau.",
+        "discover": "Vous explorez des lieux ? Indiquez la région ou l’ambiance — je précise.",
+        "plan": "Vous construisez votre plan ? Je propose ce qui convient à chaque jour, ou je comble les trous.",
+        "airport": "Juste arrivé ou en préparation ? Transport, premiers arrêts et journée d’ouverture.",
+        "followUps": {
+          "home": {
+            "0": "Planifie mon voyage de 3 jours",
+            "1": "Meilleurs domaines avec vue",
+            "2": "Que faire aujourd’hui ?",
+            "3": "Randonnée d’hiver facile"
+          },
+          "trails": {
+            "0": "Randonnée d’hiver facile",
+            "1": "Conditions des sentiers aujourd’hui",
+            "2": "Combiner un sentier et un village"
+          },
+          "discover": {
+            "0": "Meilleurs villages près de moi",
+            "1": "Plages cachées",
+            "2": "Choix famille"
+          },
+          "plan": {
+            "0": "Planifie ma journée",
+            "1": "Meilleur itinéraire jour 1",
+            "2": "Ajouter un arrêt domaine"
+          },
+          "airport": {
+            "0": "Je viens d’atterrir à Larnaca",
+            "1": "Transport vers Limassol",
+            "2": "Que faire en premier"
+          }
+        }
+      }
     },
     "back": "Retour",
     "backTo": "Retour à {label}",
@@ -1169,9 +1246,10 @@
         "imagePlaceholder": "/images/cyprus/winery-example.jpg",
         "imageHint": "Utilisez un chemin sous /images/cyprus/ déjà présent sur le site.",
         "save": "Enregistrer le profil",
-        "saved": "Profil enregistré.",
+        "saved": "Enregistré pour cette session serveur.",
         "saveFailed": "Enregistrement impossible. Le chemin d’image doit être un fichier local /images/cyprus.",
-        "unsafeImage": "Ce chemin d’image n’est pas autorisé."
+        "unsafeImage": "Ce chemin d’image n’est pas autorisé.",
+        "ephemeralNote": "Les horaires et l’image hero sont temporaires — ils se réinitialisent au redémarrage du serveur jusqu’à un stockage durable."
       }
     }
   },
@@ -1305,7 +1383,8 @@
         "pairingPrefix": "Pair a winery visit with a trail or village.",
         "pairingLink": "Build a day",
         "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI."
+        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "allRoutes": "Toutes les routes des vins"
       },
       "aria": {
         "actions": "Wineries page actions"
@@ -2238,6 +2317,29 @@
       },
       "aria": {
         "actions": "Wine route actions"
+      }
+    },
+    "hub": {
+      "meta": {
+        "title": "Routes des vins de Chypre en hiver | Krasochoria, Laona, Akamas, Commandaria",
+        "description": "Quatre routes des vins pour dégustations d’hiver : Krasochoria, Laona, Akamas et Commandaria. Réservez les caves à l’avance.",
+        "ogDescription": "Quatre routes des vins pour dégustations d’hiver. Réservez les caves à l’avance.",
+        "ogAlt": "Villages viticoles de Chypre en hiver",
+        "schemaName": "Routes des vins d’hiver à Chypre",
+        "schemaDescription": "Routes Krasochoria, Laona, Akamas et Commandaria avec dégustations d’hiver."
+      },
+      "header": {
+        "title": "Routes des vins",
+        "description": "Quatre itinéraires prêts pour l’hiver dans les collines de Limassol et Paphos. Choisissez une route, puis réservez une dégustation."
+      },
+      "winterTipLabel": "Conseil d’hiver",
+      "ctaOpen": "Ouvrir la route",
+      "footer": {
+        "hubBody": "Réservez des dégustations à l’avance et associez une route à un village ou un sentier du Troodos.",
+        "allWineries": "Tous les domaines de Chypre"
+      },
+      "aria": {
+        "actions": "Actions des routes des vins"
       }
     }
   },

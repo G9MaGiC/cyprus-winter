@@ -8,7 +8,7 @@ import { getItineraryForChat } from "@/lib/itinerary-for-chat";
 import { iterateSseData } from "@/lib/sse";
 import { sanitizeResponseMetadata } from "@/lib/ai-response-metadata";
 import { handleSlashCommand } from "../slash-commands";
-// getPlaceById available for future use
+import { chatBasePath, stripLocalePrefix } from "@/lib/chat-path";
 
 export type Message = {
   role: "user" | "assistant";
@@ -24,100 +24,62 @@ export type Message = {
 
 const MAX_PERSISTED_MESSAGES = 20;
 
-const SUGGESTIONS_BY_PATH: Record<string, string[]> = {
-  "/": [
-    "Plan my 3-day winter trip",
-    "Best wineries with a view",
-    "Artemis Trail conditions",
-    "Omodos and Commandaria tasting",
-    "I'm arriving tomorrow. Where do I start?",
-    "Hike plus wine in one day",
-  ],
-  "/discover": [
-    "Best wineries with a view",
-    "Quiet villages for a slow day",
-    "What pairs with Kourion?",
-    "Omodos and nearby tastings",
-    "Family-friendly places in winter",
-    "Where's the best winter light?",
-  ],
-  "/trails": [
-    "Artemis Trail conditions",
-    "Best trail for this week?",
-    "Easy trails for beginners",
-    "Troodos snow—what to expect?",
-    "Combine a trail with a village",
-    "What to wear for winter hiking?",
-  ],
-  "/plan": [
-    "Add a winery near Omodos",
-    "Best route for Day 2?",
-    "Fill a day with culture and wine",
-    "Trails near my hotel in Platres",
-    "Book tastings ahead—which wineries?",
-    "Short stay: 48 hours, what to do?",
-  ],
+type AiT = ReturnType<typeof useTranslations>;
+
+function tList(t: AiT, prefix: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => t(`${prefix}.${i}`));
+}
+
+const SUGGESTION_BUCKETS: Record<string, { key: string; count: number }> = {
+  "/": { key: "suggestions.home", count: 6 },
+  "/discover": { key: "suggestions.discover", count: 6 },
+  "/trails": { key: "suggestions.trails", count: 6 },
+  "/plan": { key: "suggestions.plan", count: 6 },
 };
 
-const DEFAULT_SUGGESTIONS = [
-  "What pairs well with this place?",
-  "Best time to visit?",
-  "Nearby trails or villages",
-  "Winter tips for here",
-  "Add this to my plan",
-];
+function getSuggestions(pathname: string, tAi: AiT): string[] {
+  const bucket = SUGGESTION_BUCKETS[chatBasePath(pathname)];
+  if (bucket) return tList(tAi, bucket.key, bucket.count);
+  return tList(tAi, "suggestions.default", 5);
+}
 
-function buildContextualOpener(path: string): Message {
-  const base = "Hi — I know the island. ";
+function buildContextualOpener(pathname: string, tAi: AiT): Message {
+  const path = stripLocalePrefix(pathname);
+  const base = tAi("opener.base");
 
   if (path.includes("/trails")) {
     return {
       role: "assistant",
-      content: base + "Looking for a trail? I can help match one to today's weather and your fitness level.",
-      metadata: {
-        followUps: ["Easy winter hike", "Trail conditions today", "Combine a trail with a village"],
-      },
+      content: base + tAi("opener.trails"),
+      metadata: { followUps: tList(tAi, "opener.followUps.trails", 3) },
     };
   }
   if (path.includes("/discover")) {
     return {
       role: "assistant",
-      content: base + "Exploring places? Tell me your region or what you're in the mood for — I'll narrow it down.",
-      metadata: {
-        followUps: ["Best villages near me", "Hidden beaches", "Family-friendly picks"],
-      },
+      content: base + tAi("opener.discover"),
+      metadata: { followUps: tList(tAi, "opener.followUps.discover", 3) },
     };
   }
   if (path.includes("/plan")) {
     return {
       role: "assistant",
-      content: base + "Building your plan? I can suggest what fits each day, or fill gaps in your itinerary.",
-      metadata: {
-        followUps: ["Plan my day", "Best route for Day 1", "Add a winery stop"],
-      },
+      content: base + tAi("opener.plan"),
+      metadata: { followUps: tList(tAi, "opener.followUps.plan", 3) },
     };
   }
   if (path.includes("/airport")) {
     return {
       role: "assistant",
-      content: base + "Just arrived or planning to? I can help with transport, first stops, and your opening day.",
-      metadata: {
-        followUps: ["I just landed in Larnaca", "Transport to Limassol", "What to do first"],
-      },
+      content: base + tAi("opener.airport"),
+      metadata: { followUps: tList(tAi, "opener.followUps.airport", 3) },
     };
   }
 
   return {
     role: "assistant",
-    content: base + "Trails, wineries, villages, day plans — ask anything, or tap a suggestion below.",
-    metadata: {
-      followUps: [
-        "Plan my 3-day trip",
-        "Best wineries with a view",
-        "What should I do today?",
-        "Easy winter hike",
-      ],
-    },
+    content: base + tAi("opener.home"),
+    metadata: { followUps: tList(tAi, "opener.followUps.home", 4) },
   };
 }
 
@@ -157,24 +119,18 @@ function persistMessages(messages: Message[]) {
   }
 }
 
-function getSuggestions(pathname: string): string[] {
-  const normalized = pathname.replace(/^\/(en|el|de|pl)(\/|$)/, "/");
-  const basePath = normalized.split("/").slice(0, 2).join("/") || "/";
-  return SUGGESTIONS_BY_PATH[basePath] || DEFAULT_SUGGESTIONS;
-}
-
 export function useAIChat() {
   const pathname = usePathname();
   const locale = useLocale();
   const tErrors = useTranslations("errors");
   const tAi = useTranslations("common.ai");
-  const initialMessage = buildContextualOpener(pathname);
+  const initialMessage = buildContextualOpener(pathname, tAi);
   const [messages, setMessages] = useState<Message[]>([initialMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
   const messagesRef = useRef<Message[]>([initialMessage]);
-  const suggestions = getSuggestions(pathname);
+  const suggestions = getSuggestions(pathname, tAi);
 
   // Load persisted messages on mount
   useEffect(() => {
@@ -390,7 +346,7 @@ export function useAIChat() {
 
   const clearChat = useCallback(() => {
     abortRef.current?.abort();
-    setMessages([buildContextualOpener(pathname)]);
+    setMessages([buildContextualOpener(pathname, tAi)]);
     setInput("");
     if (typeof window !== "undefined") {
       try {
@@ -399,7 +355,7 @@ export function useAIChat() {
         // Storage can be unavailable in privacy modes.
       }
     }
-  }, [pathname]);
+  }, [pathname, tAi]);
 
   return {
     messages,

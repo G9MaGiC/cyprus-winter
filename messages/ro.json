@@ -162,7 +162,84 @@
         "followUpHike": "Drumeție de iarnă ușoară",
         "followUpAirport": "Tocmai am aterizat la Larnaca"
       },
-      "disclaimer": "Doar informații generale — verifică detaliile critice pentru siguranță din surse locale."
+      "disclaimer": "Doar informații generale — verifică detaliile critice pentru siguranță din surse locale.",
+      "suggestions": {
+        "home": {
+          "0": "Planifică-mi sejurul de iarnă de 3 zile",
+          "1": "Cele mai bune crame cu vedere",
+          "2": "Condiții pe traseul Artemis",
+          "3": "Omodos și degustare Commandaria",
+          "4": "Ajung mâine. De unde încep?",
+          "5": "Drumeție și vin în aceeași zi"
+        },
+        "discover": {
+          "0": "Cele mai bune crame cu vedere",
+          "1": "Sate liniștite pentru o zi lentă",
+          "2": "Ce se potrivește cu Kourion?",
+          "3": "Omodos și degustări aproape",
+          "4": "Locuri potrivite familiilor iarna",
+          "5": "Unde e cea mai frumoasă lumină de iarnă?"
+        },
+        "trails": {
+          "0": "Condiții pe traseul Artemis",
+          "1": "Cel mai bun traseu pentru săptămâna asta?",
+          "2": "Trasee ușoare pentru începători",
+          "3": "Zăpadă în Troodos—la ce să mă aștept?",
+          "4": "Combină un traseu cu un sat",
+          "5": "Ce să port la drumeția de iarnă?"
+        },
+        "plan": {
+          "0": "Adaugă o cramă lângă Omodos",
+          "1": "Cel mai bun traseu pentru ziua 2?",
+          "2": "Umple o zi cu cultură și vin",
+          "3": "Trasee lângă hotelul din Platres",
+          "4": "Rezervă degustări din timp—care crame?",
+          "5": "Sejur scurt: 48 de ore, ce să fac?"
+        },
+        "default": {
+          "0": "Ce se potrivește cu acest loc?",
+          "1": "Cel mai bun moment de vizită?",
+          "2": "Trasee sau sate aproape",
+          "3": "Sfaturi de iarnă aici",
+          "4": "Adaugă în planul meu"
+        }
+      },
+      "opener": {
+        "base": "Bună — cunosc insula. ",
+        "home": "Trasee, crame, sate, planuri de zi — întreabă sau apasă o sugestie mai jos.",
+        "trails": "Cauți un traseu? Îl potrivesc cu vremea de azi și nivelul tău.",
+        "discover": "Explorezi locuri? Spune-mi regiunea sau starea — restrâng.",
+        "plan": "Construiești planul? Propun ce se potrivește fiecărei zile sau completez golurile.",
+        "airport": "Tocmai ai aterizat sau planifici? Ajut cu transport, primele opriri și ziua de început.",
+        "followUps": {
+          "home": {
+            "0": "Planifică o călătorie de 3 zile",
+            "1": "Cele mai bune crame cu vedere",
+            "2": "Ce să fac azi?",
+            "3": "Drumeție ușoară de iarnă"
+          },
+          "trails": {
+            "0": "Drumeție ușoară de iarnă",
+            "1": "Condiții pe trasee azi",
+            "2": "Combină un traseu cu un sat"
+          },
+          "discover": {
+            "0": "Cele mai bune sate aproape",
+            "1": "Plaje ascunse",
+            "2": "Alegeri pentru familie"
+          },
+          "plan": {
+            "0": "Planifică-mi ziua",
+            "1": "Cel mai bun traseu pentru ziua 1",
+            "2": "Adaugă o oprire la cramă"
+          },
+          "airport": {
+            "0": "Tocmai am aterizat la Larnaca",
+            "1": "Transport spre Limassol",
+            "2": "Ce să fac mai întâi"
+          }
+        }
+      }
     },
     "back": "Înapoi",
     "backTo": "Înapoi la {label}",
@@ -1169,9 +1246,10 @@
         "imagePlaceholder": "/images/cyprus/winery-example.jpg",
         "imageHint": "Folosiți o cale din /images/cyprus/ care există deja pe site.",
         "save": "Salvează profilul",
-        "saved": "Profil salvat.",
+        "saved": "Salvat pentru această sesiune de server.",
         "saveFailed": "Nu s-a salvat. Calea imaginii trebuie să fie un fișier local /images/cyprus.",
-        "unsafeImage": "Această cale de imagine nu este permisă."
+        "unsafeImage": "Această cale de imagine nu este permisă.",
+        "ephemeralNote": "Ore și imaginea hero sunt temporare — se resetează la repornirea serverului până există stocare durabilă."
       }
     }
   },
@@ -1305,7 +1383,8 @@
         "pairingPrefix": "Pair a winery visit with a trail or village.",
         "pairingLink": "Build a day",
         "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI."
+        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "allRoutes": "Toate rutele vinului"
       },
       "aria": {
         "actions": "Wineries page actions"
@@ -2238,6 +2317,29 @@
       },
       "aria": {
         "actions": "Wine route actions"
+      }
+    },
+    "hub": {
+      "meta": {
+        "title": "Rutele vinului din Cipru iarna | Krasochoria, Laona, Akamas, Commandaria",
+        "description": "Patru rute ale vinului pentru degustări de iarnă: Krasochoria, Laona, Akamas și Commandaria. Rezervă cramele din timp.",
+        "ogDescription": "Patru rute ale vinului pentru degustări de iarnă. Rezervă cramele din timp.",
+        "ogAlt": "Sate viticole din Cipru iarna",
+        "schemaName": "Rutele vinului de iarnă din Cipru",
+        "schemaDescription": "Rutele Krasochoria, Laona, Akamas și Commandaria cu degustări de iarnă."
+      },
+      "header": {
+        "title": "Rutele vinului",
+        "description": "Patru trasee gata de iarnă pe dealurile Limassol și Paphos. Alege o rută, apoi rezervă o degustare."
+      },
+      "winterTipLabel": "Sfat de iarnă",
+      "ctaOpen": "Deschide ruta",
+      "footer": {
+        "hubBody": "Rezervă degustări din timp și asociază o rută cu un sat sau un traseu din Troodos.",
+        "allWineries": "Toate cramele din Cipru"
+      },
+      "aria": {
+        "actions": "Acțiuni rute vin"
       }
     }
   },

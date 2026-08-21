@@ -18,6 +18,10 @@ export default function WineriesHubFooter() {
       secondary={
         <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
           {tWineries("footer.routesPrefix")}{" "}
+          <AppLink href="/wine-routes" className={SECTION.aegeanLink}>
+            {tWineries("footer.allRoutes")}
+          </AppLink>
+          {" · "}
           <AppLink href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
             Krasochoria
           </AppLink>
