@@ -322,6 +322,25 @@ describe("discover data audit — factual anchors (activity)", () => {
     expect(ACTIVITY_PLACE_IDS.watersports).toContain("lara-bay");
     expect(ACTIVITY_PLACE_IDS.watersports).not.toContain("governors-beach");
   });
+
+  it("hidden-gem copy implies Off-the-beaten-path bestFor tag (BUG-230)", () => {
+    const ids = [
+      "salamis",
+      "palaipafos",
+      "buffavento",
+      "panagia-tou-araka",
+      "savvas",
+      "ayii-anargyri",
+      "silikou-museum",
+    ] as const;
+    for (const id of ids) {
+      const item = allDiscoverItems.find((p) => p.id === id);
+      expect(item, id).toBeDefined();
+      expect(item!.bestFor, id).toEqual(
+        expect.arrayContaining(["Off-the-beaten-path"])
+      );
+    }
+  });
 });
 
 describe("discover data audit — Troodos trail pacing", () => {
