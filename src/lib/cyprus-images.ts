@@ -246,6 +246,17 @@ const wineRouteImages: Record<string, string> = {
 
 const wineryFallback = `${local}/cyprus-winery-troodos.jpg`;
 
+export type WineryImageSource = "partner-overlay" | "per-id" | "wine-route" | "fallback";
+
+/** Classify how a winery hero image was resolved (for intake metrics). */
+export function classifyWineryImageSource(id: string): WineryImageSource {
+  if (getPartnerOverlay(id)?.imageUrl) return "partner-overlay";
+  if (wineryImages[id]) return "per-id";
+  const route = wineryById.get(id)?.wineRoute;
+  if (route && wineRouteImages[route]) return "wine-route";
+  return "fallback";
+}
+
 /** Resolve winery hero/card image by id and optional wine route. */
 export function resolveWineryImage(id: string): string {
   const overlayImage = getPartnerOverlay(id)?.imageUrl;

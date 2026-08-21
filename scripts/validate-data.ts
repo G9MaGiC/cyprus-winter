@@ -9,7 +9,7 @@ const root = path.resolve(__dirname, "..");
 
 console.log("Running discover data audit tests…");
 try {
-  execSync("npx vitest run src/lib/discover-data-audit.test.ts src/data/itinerary-templates.test.ts src/data/winter-hours-audit.test.ts src/lib/activity-catalog.test.ts src/lib/activity-places.test.ts src/lib/wine-route-stops.test.ts scripts/enrich-places/places-export.test.ts", {
+  execSync("npx vitest run src/lib/discover-data-audit.test.ts src/data/itinerary-templates.test.ts src/data/winter-hours-audit.test.ts src/lib/activity-catalog.test.ts src/lib/activity-places.test.ts src/lib/wine-route-stops.test.ts src/lib/cyprus-images.test.ts src/lib/winery-image-intake.test.ts scripts/enrich-places/places-export.test.ts", {
     cwd: root,
     stdio: "inherit",
   });

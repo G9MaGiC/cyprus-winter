@@ -1521,5 +1521,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-255 | Build | `HomeDiscoverySections` imported server-only modules — Turbopack build fail | Client gate wraps server children; types moved to `src/types/before-install-prompt.ts` |
 | BUG-256 | E2E | BUG-252 locale filter tests failed on mobile — filters collapsed | Expand `#discover-filters-toggle` before chip assertions; home-smoke for state-aware sections |
+| BUG-257 | Data | Winery image intake metrics not in CI data gate | `classifyWineryImageSource`, `winery-image-intake.test.ts`, `npm run images:validate`; wired into `data:validate` |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

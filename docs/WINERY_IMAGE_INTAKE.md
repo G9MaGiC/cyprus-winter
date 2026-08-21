@@ -157,7 +157,7 @@ Track in partner sprint:
 |--------|----------------------|----------------|--------|
 | Wineries with per-id image | ~12 / 71 | 15 / 72 | 25 |
 | Verified partners with venue or village-accurate photo | 1 / 6 (domes-sergiou) | 2 / 6 (domes + Tsiakkas Pelendri CC); 4 still regional/Lofou CC — see outreach queue above | 6 / 6 tasting-room or partner shots |
-| Broken image paths | 0 | 0 (asserted in `cyprus-images.test.ts`) | 0 |
+| Broken image paths | 0 | 0 (asserted in `cyprus-images.test.ts` + `winery-image-intake.test.ts`; `npm run images:validate`) | 0 |
 
 ---
 

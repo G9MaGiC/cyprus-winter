@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `66f6f18` (main — design train BUG-246–253 + E2E gate green)
+**Last updated:** 2026-08-21 · **Target commit:** `41fbd14` (main — post-design smoke + CI green)
 
 ---
 
@@ -64,12 +64,13 @@ Run locally or trust latest CI ([GitHub Actions](https://github.com/G9MaGiC/cypr
 npm run lint && npm run typecheck && npm run test
 npm run i18n:validate && npm run i18n:scan --fail
 npm run data:validate && npm run check:conflict-markers && npm run build
+npm run images:validate   # winery + attraction local image paths
 npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 ```
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 645+ pass |
+| Unit tests | 650+ pass |
 | i18n keys | 2102 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `66f6f18` |
 
