@@ -1420,6 +1420,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-220 | Content | Troodos December guide framed Atalante as a short “stays open” winter twin of Artemis | Header copy: Artemis = gentler loop; Atalante = full-day 14 km |
 | BUG-221 | i18n | `scripts/i18n/strings.json` still had pre-Forestry Atalante (“4 km easy”) after catalog sync | Re-run `i18n:extract`; refresh Atalante conditions tip |
 | BUG-222 | Docs | Unresolved git conflict markers committed to `docs/QA_BUGS.md` on main via PR #124 rebase | Keep BUG-217 and BUG-218 rows; drop markers |
+| BUG-223 | CI | No guard against unresolved conflict markers landing on main (BUG-222) | `npm run check:conflict-markers` in Quality job |
 
 ### Still open — ops / human (do not invent)
 
