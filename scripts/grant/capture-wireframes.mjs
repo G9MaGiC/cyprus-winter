@@ -37,6 +37,7 @@ const allPages = [
   { name: "book-winery", path: "/book/winery/tsiakkas" },
   { name: "bookings", path: "/bookings" },
   { name: "cycling", path: "/cycling", wait: "Cycling in Cyprus winter" },
+  { name: "wine-routes", path: "/wine-routes", wait: /Wine routes|Krasochoria|Laona|Commandaria/i },
   { name: "wine-route", path: "/wine-routes/krasochoria", wait: "Book a tasting on this route" },
   { name: "partner", path: "/partner", wait: "Partner portal" },
 ];

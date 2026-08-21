@@ -1398,8 +1398,13 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-198 | i18n | AI openers/suggestions hardcoded EN; path strip ignored `fr`/`he`/`ro` | `common.ai.suggestions` + `opener`; `chat-path` uses all `routing.locales` |
 | BUG-199 | Product | `/wine-routes` hub 404 — only `[slug]` pages | Hub page + locale proxy + sitemap + wineries footer link |
 | BUG-200 | Trust | Partner portal “Profile saved.” with no ephemeral caveat | `ephemeralNote` + session-scoped saved copy |
+<<<<<<< HEAD
 | BUG-201 | i18n | Trails curated section `h2`s hardcoded EN in `trails-sections.ts` | Titles via `trails.sections.*` in `TrailsSectionList` |
 | BUG-202 | RSC / i18n | 13 `loading.tsx` files still used client `useTranslations` (BUG-192 leftover) | Async `getTranslations`; drop `"use client"` on wine-route slug loading |
+=======
+| BUG-203 | Tests | SearchBar / HubFooter had no component tests (DR P2) | Vitest jsdom coverage for combobox nav, nested-link guard, Plan test id, Ask AI event |
+| BUG-204 | Grant | Annex wireframe capture lacked `/wine-routes` hub after BUG-199 | `capture-wireframes.mjs` + `ANNEX_II.md` row (PNGs via `GRANT_SHOTS=wine-routes`) |
+>>>>>>> 0addc6f (test: SearchBar/HubFooter coverage + wine-routes grant hub shot)
 
 ### Still open — ops / human (do not invent)
 

@@ -15,6 +15,7 @@ Export this table plus the PNGs to a single PDF for IRIS (`npm run grant:annex-p
 | `book-winery-1280.png` / `book-winery-390.png` | Book tasting (`/book/winery/tsiakkas`) | SME booking request |
 | `ask-ai-1280.png` / `ask-ai-390.png` | Ask AI overlay | Grounded Cyprus Guide, not a generic chatbot chrome |
 | `bookings-1280.png` / `bookings-390.png` | My Bookings | Return loop (session or lookup-token — do not screenshot tokens) |
-| `cycling-1280.png` / `cycling-390.png` | Cycling hub | Special-interest sports product |
+| `cycling-1280.png` / `cycling-390.png` | Cycling hub | Special-interest sports product; winter loops + trail pairings |
+| `wine-routes-1280.png` / `wine-routes-390.png` | Wine routes hub | Four routes index (Krasochoria, Laona, Akamas, Commandaria) |
 | `wine-route-1280.png` / `wine-route-390.png` | Krasochoria wine route | Operational hours + Book tasting |
 | `partner-1280.png` / `partner-390.png` | Partner portal sign-in | SME hours / accept-decline (do not screenshot secrets) |
