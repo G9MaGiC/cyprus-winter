@@ -127,6 +127,41 @@ describe("deprecated home/itinerary cleanup", () => {
   });
 });
 
+describe("discover detail loading shell", () => {
+  it("uses sand background and detail hero skeleton like the live page", () => {
+    const loading = readFileSync("src/app/(padded)/discover/[id]/loading.tsx", "utf8");
+    const page = readFileSync("src/app/(padded)/discover/[id]/page.tsx", "utf8");
+    expect(page).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("DetailHeroSkeleton");
+    expect(loading).toContain("SKELETON.media");
+    expect(loading).toContain("STRIP.stickyBottomBar");
+    expect(loading).toContain("LAYOUT.detailMobileStickyClearance");
+  });
+});
+
+describe("bookings loading shell", () => {
+  it("uses sand background and page header skeleton like the live page", () => {
+    const loading = readFileSync("src/app/(padded)/bookings/loading.tsx", "utf8");
+    const page = readFileSync("src/app/(padded)/bookings/page.tsx", "utf8");
+    expect(page).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("PageHeaderSkeleton");
+    expect(loading).toContain("BookingCardSkeleton");
+  });
+});
+
+describe("search loading shell", () => {
+  it("uses sand background and search result skeleton like the live page", () => {
+    const loading = readFileSync("src/app/(padded)/search/loading.tsx", "utf8");
+    const page = readFileSync("src/app/(padded)/search/page.tsx", "utf8");
+    expect(page).toContain("LAYOUT.form");
+    expect(loading).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("SearchResultSkeleton");
+    expect(loading).toContain("NavSkeleton");
+  });
+});
+
 describe("home section reveal", () => {
   it("wraps exactly three content sections with HomeSectionReveal", () => {
     const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");
