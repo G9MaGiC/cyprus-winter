@@ -3,12 +3,10 @@
  * Fail if unresolved git conflict markers are present in tracked source/docs.
  * Prevents BUG-222-style merges where rebase markers land on main.
  */
-import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const MARKERS = ["<<<<<<<", "=======", ">>>>>>>"];
 const SKIP_DIRS = new Set([
   "node_modules",
   ".git",
