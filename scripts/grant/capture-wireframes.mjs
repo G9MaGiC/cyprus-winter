@@ -37,8 +37,18 @@ const allPages = [
   { name: "book-winery", path: "/book/winery/tsiakkas" },
   { name: "bookings", path: "/bookings" },
   { name: "cycling", path: "/cycling", wait: "Cycling in Cyprus winter" },
-  { name: "wine-routes", path: "/wine-routes", wait: /Wine routes|Krasochoria|Laona|Commandaria/i },
-  { name: "wine-route", path: "/wine-routes/krasochoria", wait: "Book a tasting on this route" },
+  {
+    name: "wine-routes",
+    path: "/wine-routes",
+    wait: /Wine routes|Krasochoria|Laona|Commandaria/i,
+    waitImages: true,
+  },
+  {
+    name: "wine-route",
+    path: "/wine-routes/krasochoria",
+    wait: "Book a tasting on this route",
+    waitImages: true,
+  },
   { name: "partner", path: "/partner", wait: "Partner portal" },
 ];
 
@@ -116,6 +126,19 @@ async function revealPlaceCards(page, sectionId) {
   await page.locator(`section#${sectionId} img`).first().waitFor({ state: "visible", timeout: 15_000 });
 }
 
+/** Hub shots with large JPG heroes — wait until decoded or PNGs are grey placeholders. */
+async function waitMainImages(page) {
+  await page.locator("main img").first().waitFor({ state: "visible", timeout: 20_000 });
+  await page.waitForFunction(
+    () =>
+      [...document.querySelectorAll("main img")].every(
+        (img) => img.complete && img.naturalWidth > 0
+      ),
+    null,
+    { timeout: 30_000 }
+  );
+}
+
 async function shot(page, file) {
   await page.addStyleTag({
     content: `nextjs-portal, [data-next-badge-root], #__next-build-watcher { display: none !important; }`,
@@ -147,6 +170,9 @@ try {
       }
       if (route.cards) {
         await revealPlaceCards(page, route.cards);
+      }
+      if (route.waitImages) {
+        await waitMainImages(page);
       }
       await shot(page, `${route.name}-${vp.suffix}.png`);
     }

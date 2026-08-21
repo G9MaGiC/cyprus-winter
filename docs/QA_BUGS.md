@@ -1411,6 +1411,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-211 | SEO / i18n | Account / settings / trail report / admin / partner still EN `locale-page-meta` | Translated hub meta + `pathOverride` for `/trails/{id}/report` |
 | BUG-212 | SEO / i18n | Discover/Plan meta builders still spread EN `locale-page-meta`; Discover OG alt hardcoded EN | Localized builders; add `discover.page.meta.ogAlt`; delete dead `locale-page-meta.ts` |
 | BUG-213 | Grant | Annex II listed `wine-routes-*` hub shots but PNGs missing on disk after BUG-199/204 | Captured hub 1280/390; regen `ANNEX_II.pdf`; assert in grant-annex-pack test |
+| BUG-214 | Grant | Hub wireframes captured before large JPG heroes decoded → grey card placeholders | `waitImages` in capture script; recapture wine-routes(+slug); regen PDF |
 
 ### Still open — ops / human (do not invent)
 

@@ -123,4 +123,15 @@ describe("PRE-SEED annex kit (G0)", () => {
       expect(bytes, `${file} should include place-card photos`).toBeGreaterThan(80_000);
     }
   });
+
+  it("waits for wine-routes hub images so Annex II shots are not grey placeholders", () => {
+    const script = readFileSync(join(process.cwd(), "scripts/grant/capture-wireframes.mjs"), "utf8");
+    expect(script).toMatch(/name: "wine-routes"[\s\S]{0,120}waitImages:\s*true/);
+    expect(script).toMatch(/async function waitMainImages/);
+
+    for (const file of ["wine-routes-1280.png", "wine-routes-390.png"]) {
+      const bytes = statSync(join(root, "wireframes", file)).size;
+      expect(bytes, `${file} should include route hero photos`).toBeGreaterThan(80_000);
+    }
+  });
 });
