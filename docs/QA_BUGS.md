@@ -1402,6 +1402,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-202 | RSC / i18n | 13 `loading.tsx` files still used client `useTranslations` (BUG-192 leftover) | Async `getTranslations`; drop `"use client"` on wine-route slug loading |
 | BUG-203 | Tests | SearchBar / HubFooter had no component tests (DR P2) | Vitest jsdom coverage for combobox nav, nested-link guard, Plan test id, Ask AI event |
 | BUG-204 | Grant | Annex wireframe capture lacked `/wine-routes` hub after BUG-199 | `capture-wireframes.mjs` + `ANNEX_II.md` row (PNGs via `GRANT_SHOTS=wine-routes`) |
+| BUG-205 | SEO / i18n | `[locale]` hub `generateMetadata` overrode padded translations with EN `locale-page-meta` | `buildTranslatedHubMetadata` for beaches/wineries/trails/… |
+| BUG-206 | Tests | WineryBookingForm had no component coverage (DR P2 leftover) | Vitest for form / alert / success+emailDelayed live region |
 
 ### Still open — ops / human (do not invent)
 
