@@ -45,6 +45,13 @@ export const TRANSLATED_HUB_META = {
     ogDescriptionKey: "schemaDescription",
     ogAltKey: "ogAlt",
   },
+  nature: {
+    path: "/nature",
+    namespace: "nature.page",
+    ogImage: `${SITE_URL}/images/cyprus/cyprus-trail-waterfall.jpg`,
+    ogDescriptionKey: "schemaDescription",
+    ogAltKey: "ogAlt",
+  },
   wineRoutes: {
     path: "/wine-routes",
     namespace: "wineRoutes.hub",

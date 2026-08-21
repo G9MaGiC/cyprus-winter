@@ -71,6 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     e("/wineries", 0.8),
     e("/villages", 0.8),
     e("/cycling", 0.8),
+    e("/nature", 0.8),
     e("/wine-routes", 0.8),
   ];
 
