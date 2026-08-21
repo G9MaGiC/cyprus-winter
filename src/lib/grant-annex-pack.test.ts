@@ -85,6 +85,8 @@ describe("PRE-SEED annex kit (G0)", () => {
       "bookings-390.png",
       "cycling-1280.png",
       "cycling-390.png",
+      "wine-routes-1280.png",
+      "wine-routes-390.png",
       "wine-route-1280.png",
       "wine-route-390.png",
       "partner-1280.png",
