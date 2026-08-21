@@ -63,6 +63,46 @@ describe("events loading shell", () => {
   });
 });
 
+describe("trails loading shell", () => {
+  it("uses sand background and hero skeleton like the live trails page", () => {
+    const loading = readFileSync("src/app/(padded)/trails/loading.tsx", "utf8");
+    const page = readFileSync("src/app/(padded)/trails/TrailsClient.tsx", "utf8");
+    expect(page).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("HeroSkeleton");
+  });
+
+  it("uses sand sticky bar token on filter skeleton", () => {
+    const loading = readFileSync("src/app/(padded)/trails/loading.tsx", "utf8");
+    expect(loading).toContain("STRIP.stickySandBar");
+    expect(loading).not.toContain("bg-background/98");
+  });
+});
+
+describe("plan loading shell", () => {
+  it("uses sand background and hero skeleton like the live plan page", () => {
+    const loading = readFileSync("src/app/(padded)/plan/loading.tsx", "utf8");
+    const page = readFileSync("src/app/(padded)/plan/PlanPageClient.tsx", "utf8");
+    expect(page).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("min-h-screen bg-sand");
+    expect(loading).toContain("HeroSkeleton");
+  });
+
+  it("uses sand sticky bar token on day selector skeleton", () => {
+    const loading = readFileSync("src/app/(padded)/plan/loading.tsx", "utf8");
+    expect(loading).toContain("STRIP.stickySandBar");
+    expect(loading).not.toContain("bg-background/98");
+  });
+});
+
+describe("plan sticky add bar", () => {
+  it("uses bottom bar token instead of inline bg-background/98", () => {
+    const bar = readFileSync("src/components/plan/PlanStickyAddBar.tsx", "utf8");
+    expect(bar).toContain("STRIP.stickyBottomBar");
+    expect(bar).not.toContain("bg-background/98");
+  });
+});
+
 describe("list page widget strip", () => {
   it("requires i18n ariaLabel instead of hardcoded EN default", () => {
     const strip = readFileSync("src/components/ListPageWidgetStrip.tsx", "utf8");

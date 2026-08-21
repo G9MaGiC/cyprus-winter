@@ -1494,4 +1494,12 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-241 | Visual | `DaySelector` still inlined `bg-sand/98` sticky bar after BUG-232 token train | `STRIP.stickySandBar` on plan day tabs; guard test in `dr-leftover-polish.test.ts` |
 | BUG-242 | Visual / A11y | Events loading filter skeleton used static CARD (no sticky sand bar) after BUG-232; `ListPageWidgetStrip` default `ariaLabel="Page filters and stats"` hardcoded EN | Hero + sticky `STRIP.stickySandBar` on events loading; required i18n `ariaLabel` on widget strip |
 
+### Fixed — fix-all pass (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-243 | Visual | Trails loading skeleton lacked hero image + sticky filter bar — flash vs live `ListPageHero` / `StickyFilterBar` | Hero skeleton + `STRIP.stickySandBar` filter strip; guard tests in `dr-leftover-polish.test.ts` |
+| BUG-244 | Visual | Plan loading skeleton lacked hero + sticky day tabs — flash vs live `ListPageHero` / `DaySelector` | Hero skeleton + sticky `STRIP.stickySandBar` day-selector strip |
+| BUG-245 | Visual | `PlanStickyAddBar` inlined `bg-background/98` instead of design token | Added `STRIP.stickyBottomBar`; applied on plan sticky add bar |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

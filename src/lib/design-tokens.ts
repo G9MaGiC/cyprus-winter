@@ -151,6 +151,9 @@ export const STRIP = {
   /** Sticky filter/day bars on sand hub pages — matches DaySelector / Events filters. */
   stickySandBar:
     "bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",
+  /** Fixed bottom add bars on sand pages — Plan sticky add, trail detail actions. */
+  stickyBottomBar:
+    "bg-background/98 backdrop-blur-sm border-t border-sand-200/80",
   /** Centered single-line strip link (weather). */
   linkCentered:
     "flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center min-h-[44px] py-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg",

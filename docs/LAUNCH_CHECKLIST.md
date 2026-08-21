@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `f3a9dc0` (main — BUG-242 events loading sticky bar)
+**Last updated:** 2026-08-21 · **Target commit:** `c04d072` (main — fix-all pass BUG-243–245)
 
 ---
 
@@ -69,7 +69,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 622+ pass |
+| Unit tests | 631+ pass |
 | i18n keys | 2097 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 

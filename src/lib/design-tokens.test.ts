@@ -36,6 +36,11 @@ describe("STRIP typography", () => {
     expect(STRIP.stickySandBar).toContain("bg-sand/98");
     expect(STRIP.stickySandBar).toContain("backdrop-blur-md");
   });
+
+  it("defines sticky bottom bar for fixed add CTAs on sand pages", () => {
+    expect(STRIP.stickyBottomBar).toContain("bg-background/98");
+    expect(STRIP.stickyBottomBar).toContain("border-t");
+  });
 });
 
 describe("TYPE stat ramp", () => {
