@@ -20,6 +20,8 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 
 ## Design System
 
+**Motion & visual language:** [`docs/DESIGN_SUPER_BRIEF.md`](../../docs/DESIGN_SUPER_BRIEF.md) · [`docs/MOTION.md`](../../docs/MOTION.md)
+
 ### Token audit (2026 Earth-inspired — Mediterranean warmth)
 
 **Sources:** `src/app/globals.css` (:root + @theme), `src/lib/design-tokens.ts` (TOKENS, LAYOUT, SECTION, CARD, EMPTY_STATE). Use these as the source of truth for actual hex values; the table below may reflect an alternate palette.
