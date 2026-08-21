@@ -367,7 +367,7 @@
       "arriving": "Właśnie przyleciałeś? Zacznij tutaj",
       "explore": "Odkrywaj",
       "planTrip": "Zaplanuj wycieczkę",
-      "askGuide": "Zapytaj przewodnika"
+      "askGuide": "Zapytaj przewodnika AI"
     },
     "tripModes": {
       "aria": "Wybierz, jak podróżujesz",
@@ -392,7 +392,8 @@
       "whatsOn": "Co w programie",
       "events": "Wydarzenia",
       "browseWinterEvents": "Przeglądaj zimowe wydarzenia",
-      "eventsTeaser": "Teofania, karnawał, targi — zobacz, co się dzieje"
+      "eventsTeaser": "Teofania, karnawał, targi — zobacz, co się dzieje",
+      "trailPhotoAlt": "Szlak {name}, Cypr zimą"
     },
     "editorsPicks": {
       "title": "Wybór redakcji",
@@ -436,9 +437,10 @@
         "planTitle": "Planuj",
         "planDesc": "Ułóż dzień lub wybierz szablon. Zapisuje się na bieżąco.",
         "planCta": "Ułóż dzień",
-        "bookTitle": "Rezerwuj",
-        "bookDesc": "Rezerwuj degustacje zanim weekendy się zapełnią.",
-        "bookCta": "Zarezerwuj degustacje"
+        "bookTitle": "Rezerwuj doświadczenia",
+        "bookDesc": "Zarezerwuj degustację w winnicy lub wycieczkę z przewodnikiem w Troodos przed weekendem.",
+        "bookCta": "Zarezerwuj degustacje",
+        "bookGuideLink": "Wycieczki z przewodnikiem"
       },
       "browseByCategory": "Przeglądaj kategorie",
       "alsoSubtitle": "Również: Kultura, Wybrzeża, Klasztory",
@@ -494,7 +496,13 @@
     "hero": {
       "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą",
       "familyPicksLink": "Propozycje dla rodzin",
-      "templateLink": "Szablon na 48 godzin"
+      "templateLink": "Szablon na 48 godzin",
+      "images": {
+        "troodosTrail": "Szlak Artemida, las sosnowy Troodos, Cypr zimą",
+        "omodosVillage": "Uliczka Omodos, Krasochoria, Cypr zimą",
+        "winterVineyard": "Górska winnica w zimowym świetle, Cypr",
+        "kourionCoast": "Antyczny teatr Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
+      }
     },
     "search": {
       "srHeading": "Szukaj miejsc i szlaków",
@@ -2728,7 +2736,8 @@
         "moreCount": "+{count} więcej",
         "ctaAria": "Zarezerwuj wędrówkę z przewodnikiem z {name}",
         "footerBrowseTrails": "Przeglądaj wszystkie szlaki",
-        "footerMyBookings": "Moje rezerwacje"
+        "footerMyBookings": "Moje rezerwacje",
+        "alsoWineries": "Wolisz degustację? Zarezerwuj wizytę w winnicy"
       },
       "wineryList": {
         "meta": {
@@ -2738,7 +2747,8 @@
         "intro": "Przeglądaj nasze partnerskie winnice i poproś o degustację. Potwierdzą mailem — zwykle w ciągu jednego dnia.",
         "ctaAria": "Zarezerwuj degustację w {name}",
         "footerBrowseWineries": "Przeglądaj wszystkie winnice",
-        "disclaimer": "Dla dorosłych w wieku legalnym do spożycia alkoholu. Pij odpowiedzialnie."
+        "disclaimer": "Dla dorosłych w wieku legalnym do spożycia alkoholu. Pij odpowiedzialnie.",
+        "alsoGuides": "Wędrówki w Troodos? Zarezerwuj licencjonowanego przewodnika"
       },
       "wineryDetail": {
         "metaNotFound": "Nie znaleziono",

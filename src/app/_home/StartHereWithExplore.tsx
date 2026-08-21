@@ -5,10 +5,13 @@ import { CARD, CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type StartHereItem = {
+  id: "discover" | "plan" | "book";
   title: string;
   desc: string;
   href: string;
   cta: string;
+  guideHref?: string;
+  guideCta?: string;
   variant: "primary" | "secondary";
 };
 
@@ -29,6 +32,7 @@ export default function StartHereWithExplore() {
   const tHome = useTranslations("home");
   const startItems: StartHereItem[] = [
     {
+      id: "discover",
       title: tHome("startHere.card.discoverTitle"),
       desc: tHome("startHere.card.discoverDesc"),
       href: "/discover",
@@ -36,6 +40,7 @@ export default function StartHereWithExplore() {
       variant: "primary",
     },
     {
+      id: "plan",
       title: tHome("startHere.card.planTitle"),
       desc: tHome("startHere.card.planDesc"),
       href: "/plan",
@@ -43,10 +48,13 @@ export default function StartHereWithExplore() {
       variant: "secondary",
     },
     {
+      id: "book",
       title: tHome("startHere.card.bookTitle"),
       desc: tHome("startHere.card.bookDesc"),
-      href: "/wineries",
+      href: "/book/winery",
       cta: tHome("startHere.card.bookCta"),
+      guideHref: "/book/guide",
+      guideCta: tHome("startHere.card.bookGuideLink"),
       variant: "secondary",
     },
   ];
@@ -81,33 +89,61 @@ export default function StartHereWithExplore() {
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
-          {startItems.map((item) => (
-            <AppLink
-              key={item.title}
-              href={item.href}
-              prefetch="auto"
-              className={`group flex flex-col ${CARD.base} ${CARD.hover} ${CARD.interactive} ${CARD.link} overflow-hidden ${
-                item.variant === "primary"
-                  ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
-                  : "border-l-4 border-l-aegean/60"
-              }`}
-              aria-label={item.title}
-            >
-              <div className={`flex-1 ${CARD.content}`}>
-                <p className={`${TYPE.cardTitle} text-charcoal`}>
-                  {item.title}
-                </p>
-                <p className="text-sm text-olive/70 mt-1 leading-relaxed line-clamp-2">{item.desc}</p>
+          {startItems.map((item) =>
+            item.id === "book" ? (
+              <div
+                key={item.id}
+                className={`flex flex-col ${CARD.base} ${CARD.hover} overflow-hidden ${
+                  item.variant === "primary"
+                    ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
+                    : "border-l-4 border-l-aegean/60"
+                }`}
+              >
+                <div className={`flex-1 ${CARD.content}`}>
+                  <p className={`${TYPE.cardTitle} text-charcoal`}>{item.title}</p>
+                  <p className="text-sm text-olive/70 mt-1 leading-relaxed line-clamp-3">{item.desc}</p>
+                </div>
+                <div className={`${CARD.footer} flex flex-wrap items-center gap-2`}>
+                  <AppLink href={item.href} prefetch="auto" className={CTA.secondaryCompact}>
+                    {item.cta}
+                  </AppLink>
+                  {item.guideHref && item.guideCta && (
+                    <AppLink
+                      href={item.guideHref}
+                      prefetch="auto"
+                      className={`text-sm font-medium ${SECTION.aegeanLink}`}
+                    >
+                      {item.guideCta}
+                    </AppLink>
+                  )}
+                </div>
               </div>
-              <div className={CARD.footer}>
-                <span
-                  className={`inline-block ${item.variant === "primary" ? CTA.primaryCompact : CTA.secondaryCompact}`}
-                >
-                  {item.cta}
-                </span>
-              </div>
-            </AppLink>
-          ))}
+            ) : (
+              <AppLink
+                key={item.id}
+                href={item.href}
+                prefetch="auto"
+                className={`group flex flex-col ${CARD.base} ${CARD.hover} ${CARD.interactive} ${CARD.link} overflow-hidden ${
+                  item.variant === "primary"
+                    ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
+                    : "border-l-4 border-l-aegean/60"
+                }`}
+                aria-label={item.title}
+              >
+                <div className={`flex-1 ${CARD.content}`}>
+                  <p className={`${TYPE.cardTitle} text-charcoal`}>{item.title}</p>
+                  <p className="text-sm text-olive/70 mt-1 leading-relaxed line-clamp-2">{item.desc}</p>
+                </div>
+                <div className={CARD.footer}>
+                  <span
+                    className={`inline-block ${item.variant === "primary" ? CTA.primaryCompact : CTA.secondaryCompact}`}
+                  >
+                    {item.cta}
+                  </span>
+                </div>
+              </AppLink>
+            )
+          )}
         </div>
 
         <div className="mb-6 sm:mb-8">

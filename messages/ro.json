@@ -367,7 +367,7 @@
       "arriving": "Tocmai ai ajuns? Începe aici",
       "explore": "Explorează",
       "planTrip": "Planifică-ți călătoria",
-      "askGuide": "Întreabă ghidul"
+      "askGuide": "Întreabă ghidul AI"
     },
     "tripModes": {
       "aria": "Alege cum călătorești",
@@ -392,7 +392,8 @@
       "whatsOn": "Ce e programat",
       "events": "Evenimente",
       "browseWinterEvents": "Răsfoiește evenimentele de iarnă",
-      "eventsTeaser": "Bobotează, carnaval, piețe — vezi ce e programat"
+      "eventsTeaser": "Bobotează, carnaval, piețe — vezi ce e programat",
+      "trailPhotoAlt": "Traseu {name}, Cipru iarna"
     },
     "editorsPicksKicker": "Selecție",
     "rightNowNearYou": "Acum, aproape de tine",
@@ -411,9 +412,10 @@
         "planTitle": "Plan",
         "planDesc": "Construiește o zi în jurul orei, vremii și locurilor care te interesează.",
         "planCta": "Construiește o zi",
-        "bookTitle": "Rezervă",
-        "bookDesc": "Rezervă o degustare sau o experiență ghidată înainte de weekend.",
-        "bookCta": "Rezervă degustări"
+        "bookTitle": "Rezervă experiențe",
+        "bookDesc": "Rezervă o degustare la crama sau o drumeție ghidată în Troodos înainte de weekend.",
+        "bookCta": "Rezervă degustări",
+        "bookGuideLink": "Drumeții ghidate"
       },
       "browseByCategory": "Răsfoiește pe categorii",
       "alsoSubtitle": "Preferi cultură, litoral sau locuri liniștite?",
@@ -469,7 +471,13 @@
     "hero": {
       "imageAlt": "Teatrul antic de la Kourion, litoral mediteranean, iarnă în Cipru",
       "familyPicksLink": "Alegeri pentru familii",
-      "templateLink": "Șablon de 48 de ore"
+      "templateLink": "Șablon de 48 de ore",
+      "images": {
+        "troodosTrail": "Traseul Artemis, pădure de pin Troodos, Cipru iarna",
+        "omodosVillage": "Stradă în Omodos, Krasochoria, Cipru iarna",
+        "winterVineyard": "Podgorie de munte în lumină de iarnă, Cipru",
+        "kourionCoast": "Teatrul antic Kourion, coasta Mediteranei, Cipru iarna"
+      }
     },
     "search": {
       "srHeading": "Caută locuri și trasee",
@@ -2815,7 +2823,8 @@
         "moreCount": "+{count} în plus",
         "ctaAria": "Rezervă o drumeție ghidată cu {name}",
         "footerBrowseTrails": "Răsfoiește toate traseele",
-        "footerMyBookings": "Rezervările mele"
+        "footerMyBookings": "Rezervările mele",
+        "alsoWineries": "Preferi o degustare? Rezervă o vizită la crama"
       },
       "wineryList": {
         "meta": {
@@ -2825,7 +2834,8 @@
         "intro": "Răsfoiește cramele partenere și cere o degustare. Vor confirma pe email — de obicei într-o zi.",
         "ctaAria": "Rezervă o degustare la {name}",
         "footerBrowseWineries": "Răsfoiește toate cramele",
-        "disclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil."
+        "disclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil.",
+        "alsoGuides": "Drumeție în Troodos? Rezervă un ghid licențiat"
       },
       "wineryDetail": {
         "metaNotFound": "Nu a fost găsit",

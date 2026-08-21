@@ -1,6 +1,7 @@
 import "server-only";
 
 import type { HomeHeroCopy } from "@/app/_home/HomeHeroView";
+import { pickHomeHeroImage } from "@/app/_home/home-hero-images";
 import { getTranslations } from "next-intl/server";
 
 function getSeasonalKey(): "lateYear" | "earlyYear" | "march" | "spring" {
@@ -17,8 +18,12 @@ export async function getHomeHeroCopy(locale?: string): Promise<HomeHeroCopy> {
     : await getTranslations("home");
   const seasonalKey = getSeasonalKey();
 
+  const heroImage = pickHomeHeroImage();
+
   return {
-    imageAlt: tHome("hero.imageAlt"),
+    imageSrc: heroImage.src,
+    imageObjectPosition: heroImage.objectPosition,
+    imageAlt: tHome(`hero.images.${heroImage.altKey}`),
     kicker: tHome("kicker"),
     title: tHome("title"),
     headline: tHome("headline"),

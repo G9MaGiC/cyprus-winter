@@ -6,6 +6,8 @@ import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { CTA, HERO, LAYOUT, TYPE } from "@/lib/design-tokens";
 
 export type HomeHeroCopy = {
+  imageSrc: string;
+  imageObjectPosition?: string;
   imageAlt: string;
   kicker: string;
   title: string;
@@ -23,6 +25,8 @@ export type HomeHeroCopy = {
 };
 
 export default function HomeHeroView({
+  imageSrc,
+  imageObjectPosition,
   imageAlt,
   kicker,
   title,
@@ -41,10 +45,11 @@ export default function HomeHeroView({
   return (
     <section aria-labelledby="hero-heading" className={`${HERO.section} ${LAYOUT.safeAreaX}`}>
       <Image
-        src="/images/cyprus/cyprus-ancient-kourion.jpg"
+        src={imageSrc}
         alt={imageAlt}
         fill
         className="object-cover object-center"
+        style={imageObjectPosition ? { objectPosition: imageObjectPosition } : undefined}
         priority
         fetchPriority="high"
         sizes="100vw"

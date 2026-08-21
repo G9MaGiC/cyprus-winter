@@ -367,7 +367,7 @@
       "arriving": "Just arrived? Start here",
       "explore": "Explore",
       "planTrip": "Plan your trip",
-      "askGuide": "Ask your guide"
+      "askGuide": "Ask the AI guide"
     },
     "tripModes": {
       "aria": "Choose how you are travelling",
@@ -389,6 +389,7 @@
       "coastTroodos": "Coast {coast}°C · Troodos {troodos}°C",
       "viewTrailReports": "View trail reports",
       "viewAllConditions": "View all conditions →",
+      "trailPhotoAlt": "{name} trail, Cyprus winter",
       "whatsOn": "What's on",
       "events": "Events",
       "browseWinterEvents": "Browse winter events",
@@ -411,9 +412,10 @@
         "planTitle": "Plan",
         "planDesc": "Build a day around the time, weather, and places you care about.",
         "planCta": "Build a day",
-        "bookTitle": "Book",
-        "bookDesc": "Reserve a tasting or guided experience before the weekend.",
-        "bookCta": "Book tastings"
+        "bookTitle": "Book experiences",
+        "bookDesc": "Reserve a winery tasting or a guided Troodos hike before the weekend.",
+        "bookCta": "Book tastings",
+        "bookGuideLink": "Guided hikes"
       },
       "browseByCategory": "Browse by category",
       "alsoSubtitle": "Prefer culture, coast, or quiet places?",
@@ -468,6 +470,12 @@
     },
     "hero": {
       "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter",
+      "images": {
+        "troodosTrail": "Artemis trail, Troodos pine forest, Cyprus winter",
+        "omodosVillage": "Omodos village lane, Krasochoria, Cyprus winter",
+        "winterVineyard": "Mountain vineyard in winter light, Cyprus",
+        "kourionCoast": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+      },
       "familyPicksLink": "Family-friendly picks",
       "templateLink": "48-hour template"
     },
@@ -2815,7 +2823,8 @@
         "moreCount": "+{count} more",
         "ctaAria": "Book a guided hike with {name}",
         "footerBrowseTrails": "Browse all trails",
-        "footerMyBookings": "My bookings"
+        "footerMyBookings": "My bookings",
+        "alsoWineries": "Prefer a tasting? Book a winery visit"
       },
       "wineryList": {
         "meta": {
@@ -2825,7 +2834,8 @@
         "intro": "Browse our partner wineries and request a tasting. They'll confirm by email — usually within a day.",
         "ctaAria": "Book a tasting at {name}",
         "footerBrowseWineries": "Browse all wineries",
-        "disclaimer": "For adults of legal drinking age. Drink responsibly."
+        "disclaimer": "For adults of legal drinking age. Drink responsibly.",
+        "alsoGuides": "Hiking Troodos? Book a licensed guide"
       },
       "wineryDetail": {
         "meta": {

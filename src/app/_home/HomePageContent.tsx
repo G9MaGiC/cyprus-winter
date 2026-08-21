@@ -61,6 +61,7 @@ export default async function HomePageContent({
       <HomeSectionReveal index={0}>
         <StartHereWithExplore />
       </HomeSectionReveal>
+      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomeSectionReveal index={1}>
         <HomeWhyCyprusTeaser locale={locale} />
       </HomeSectionReveal>
@@ -107,7 +108,6 @@ export default async function HomePageContent({
         </HomeSection>
       </HomeDiscoverySections>
 
-      <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomePlanningSection planSubtitle={planSubtitle} />
       <HomeFooter locale={locale} />
       <Suspense fallback={null}>

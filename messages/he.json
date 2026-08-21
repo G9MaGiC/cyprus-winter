@@ -367,7 +367,7 @@
       "arriving": "רק נחתם? התחילו כאן",
       "explore": "גלו",
       "planTrip": "תכננו את הטיול",
-      "askGuide": "שאלו את המדריך"
+      "askGuide": "שאלו את מדריך ה-AI"
     },
     "tripModes": {
       "aria": "בחרו איך אתם מטיילים",
@@ -392,7 +392,8 @@
       "whatsOn": "מה קורה",
       "events": "אירועים",
       "browseWinterEvents": "אירועי חורף",
-      "eventsTeaser": "חג ההתגלות, קרנבל, שווקים — ראו מה קורה"
+      "eventsTeaser": "חג ההתגלות, קרנבל, שווקים — ראו מה קורה",
+      "trailPhotoAlt": "שביל {name}, קפריסין בחורף"
     },
     "editorsPicksKicker": "נבחרים",
     "rightNowNearYou": "עכשיו לידכם",
@@ -411,9 +412,10 @@
         "planTitle": "תכנון",
         "planDesc": "בנו יום לפי הזמן, מזג האוויר והמקומות שחשובים לכם.",
         "planCta": "בנו יום",
-        "bookTitle": "הזמנה",
-        "bookDesc": "שמרו טעימה או חוויה מודרכת לפני סוף השבוע.",
-        "bookCta": "הזמינו טעימות"
+        "bookTitle": "הזמנת חוויות",
+        "bookDesc": "הזמינו טעימת יין ביקב או טיול מודרך בטרודוס לפני סוף השבוע.",
+        "bookCta": "הזמינו טעימות",
+        "bookGuideLink": "טיולים מודרכים"
       },
       "browseByCategory": "לפי קטגוריה",
       "alsoSubtitle": "מעדיפים תרבות, חוף, או מקומות שקטים?",
@@ -469,7 +471,13 @@
     "hero": {
       "imageAlt": "התיאטרון העתיק ב-Kourion, חוף הים התיכון, חורף בקפריסין",
       "familyPicksLink": "בחירות למשפחות",
-      "templateLink": "תבנית 48 שעות"
+      "templateLink": "תבנית 48 שעות",
+      "images": {
+        "troodosTrail": "שביל ארטמיס, יער אורן בטרודוס, קפריסין בחורף",
+        "omodosVillage": "סמטת אומודוס, קrasochoria, קפריסין בחורף",
+        "winterVineyard": "כרם הרים באור חורף, קפריסין",
+        "kourionCoast": "תיאטרון קורion העתיק, חוף הים התיכון, קפריסין בחורף"
+      }
     },
     "search": {
       "srHeading": "חיפוש מקומות ושבילים",
@@ -2815,7 +2823,8 @@
         "moreCount": "+{count} נוספים",
         "ctaAria": "הזמנת הליכה מודרכת עם {name}",
         "footerBrowseTrails": "כל השבילים",
-        "footerMyBookings": "ההזמנות שלי"
+        "footerMyBookings": "ההזמנות שלי",
+        "alsoWineries": "מעדיפים טעימת יין? הזמינו ביקור ביקב"
       },
       "wineryList": {
         "meta": {
@@ -2825,7 +2834,8 @@
         "intro": "עיינו ביקבי השותפים ובקשו טעימה. יאשרו באימייל — בדרך כלל תוך יום.",
         "ctaAria": "הזמנת טעימה ב-{name}",
         "footerBrowseWineries": "כל היקבים",
-        "disclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות."
+        "disclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות.",
+        "alsoGuides": "מטיילים בטרודוס? הזמינו מדריך מורשה"
       },
       "wineryDetail": {
         "metaNotFound": "לא נמצא",

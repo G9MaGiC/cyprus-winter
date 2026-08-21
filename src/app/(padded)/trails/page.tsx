@@ -8,7 +8,7 @@ import { toSafeJsonForScript } from "@/lib/json-script";
 import { getTranslations } from "next-intl/server";
 import { preload } from "react-dom";
 
-const TRAILS_HERO_IMAGE = "/images/cyprus/cyprus-trail-troodos.jpg";
+const TRAILS_HERO_IMAGE = "/images/cyprus/trails/trail-artemis.jpg";
 
 const trailsAlternates = buildStrategyAAlternates("/trails");
 
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = t("meta.title");
   const description = t("meta.description");
   const ogDescription = t("meta.ogDescription");
-  const ogImage = `${SITE_URL}/images/cyprus/cyprus-trail-troodos.jpg`;
+  const ogImage = `${SITE_URL}/images/cyprus/trails/trail-artemis.jpg`;
   return {
     title,
     description,
