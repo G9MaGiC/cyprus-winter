@@ -2737,7 +2737,8 @@
         "ctaAria": "Κράτηση πεζοπορίας με οδηγό με {name}",
         "footerBrowseTrails": "Περιήγηση όλων των μονοπατιών",
         "footerMyBookings": "Οι κρατήσεις μου",
-        "browseLicensedDirectory": "Όλοι οι επίσημοι οδηγοί (CTO) →"
+        "browseLicensedDirectory": "Όλοι οι επίσημοι οδηγοί (CTO) →",
+        "partnerCount": "{count} επαληθευμένοι συνεργάτες σε Τρόοδο, Πάφο, Λευκωσία και ανατολική ακτή"
       },
       "wineryList": {
         "meta": {
@@ -2891,7 +2892,9 @@
         "title": "Επαληθευμένοι συνεργάτες πεζοπορίας",
         "body": "Δέχονται αιτήματα μέσω Cyprus Winter — Τρόοδος, Ακάμας, πολιτισμός.",
         "button": "Κράτηση επαληθευμένου οδηγού"
-      }
+      },
+      "verifiedPartnerBadge": "Κράτηση στην εφαρμογή",
+      "verifiedPartnerBook": "Αίτημα μέσω Cyprus Winter"
     }
   },
   "install": {

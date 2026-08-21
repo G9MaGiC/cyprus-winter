@@ -40,4 +40,9 @@ describe("guide-match", () => {
     expect(directoryHref).toContain("district=lemesos");
     expect(directoryHref).toContain("lang=english");
   });
+
+  it("prefers locale-matching verified guide for trail", () => {
+    const deMatch = matchGuideForTrail("artemis", "de");
+    expect(deMatch.verifiedGuide?.languages).toContain("german");
+  });
 });

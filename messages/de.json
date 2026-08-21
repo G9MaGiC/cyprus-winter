@@ -2737,7 +2737,8 @@
         "ctaAria": "Geführte Wanderung mit {name} buchen",
         "footerBrowseTrails": "Alle Wanderwege ansehen",
         "footerMyBookings": "Meine Buchungen",
-        "browseLicensedDirectory": "Alle lizenzierten Führer (offizielle CTO-Liste) →"
+        "browseLicensedDirectory": "Alle lizenzierten Führer (offizielle CTO-Liste) →",
+        "partnerCount": "{count} verifizierte Partner in Troodos, Paphos, Nikosia und an der Ostküste"
       },
       "wineryList": {
         "meta": {
@@ -2891,7 +2892,9 @@
         "title": "Verifizierte Winter-Wanderpartner",
         "body": "Anfragen über Cyprus Winter — Troodos, Akamas, Kultur.",
         "button": "Verifizierten Führer buchen"
-      }
+      },
+      "verifiedPartnerBadge": "In-App-Buchung",
+      "verifiedPartnerBook": "Anfrage über Cyprus Winter"
     }
   },
   "install": {

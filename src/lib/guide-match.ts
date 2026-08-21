@@ -6,6 +6,7 @@ import {
   LOCALE_TO_GUIDE_LANGUAGE,
   type TouristGuideDistrict,
 } from "@/lib/guides-directory-types";
+import { sortGuidesByLocaleMatch } from "@/lib/guide-partners";
 
 export type GuideMatchResult = {
   verifiedGuides: Guide[];
@@ -58,8 +59,9 @@ export function matchGuidesForPlanItemIds(
     if (district) districts.add(district);
   }
 
-  const verifiedGuides = uniqueGuides(
-    trailIds.flatMap((tid) => getVerifiedGuidesForTrail(tid))
+  const verifiedGuides = sortGuidesByLocaleMatch(
+    uniqueGuides(trailIds.flatMap((tid) => getVerifiedGuidesForTrail(tid))),
+    locale
   );
 
   const language = locale ? (LOCALE_TO_GUIDE_LANGUAGE[locale] ?? null) : null;
@@ -78,7 +80,7 @@ export function matchGuideForTrail(
   directoryHref: string;
   licensedCount: number;
 } {
-  const verified = getVerifiedGuidesForTrail(trailId);
+  const verified = sortGuidesByLocaleMatch(getVerifiedGuidesForTrail(trailId), locale);
   const trail = trails.find((t) => t.id === trailId);
   const district = trail ? districtForTrailRegion(trail.region) ?? null : null;
   const language = locale ? (LOCALE_TO_GUIDE_LANGUAGE[locale] ?? null) : null;

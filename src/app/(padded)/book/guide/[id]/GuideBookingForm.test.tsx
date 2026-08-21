@@ -80,6 +80,8 @@ const guide: Guide = {
   id: "cyprus-active-tours",
   name: "Cyprus Active Tours",
   region: "Troodos & Paphos",
+  district: "lemesos",
+  languages: ["english", "greek"],
   description: "Winter hiking tours.",
   trailIds: ["artemis"],
   isVerified: true,

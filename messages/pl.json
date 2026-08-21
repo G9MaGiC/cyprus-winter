@@ -2737,7 +2737,8 @@
         "ctaAria": "Zarezerwuj wędrówkę z przewodnikiem z {name}",
         "footerBrowseTrails": "Przeglądaj wszystkie szlaki",
         "footerMyBookings": "Moje rezerwacje",
-        "browseLicensedDirectory": "Wszyscy licencjonowani przewodnicy (lista CTO) →"
+        "browseLicensedDirectory": "Wszyscy licencjonowani przewodnicy (lista CTO) →",
+        "partnerCount": "{count} zweryfikowanych partnerów w Troodos, Pafos, Nikozji i na wschodnim wybrzeżu"
       },
       "wineryList": {
         "meta": {
@@ -2891,7 +2892,9 @@
         "title": "Zweryfikowani partnerzy trekkingowi",
         "body": "Przyjmują zapytania przez Cyprus Winter — Troodos, Akamas, kultura.",
         "button": "Zarezerwuj zweryfikowanego przewodnika"
-      }
+      },
+      "verifiedPartnerBadge": "Rezerwacja w aplikacji",
+      "verifiedPartnerBook": "Zapytanie przez Cyprus Winter"
     }
   },
   "install": {

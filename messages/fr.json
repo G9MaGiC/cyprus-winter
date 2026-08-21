@@ -2824,7 +2824,8 @@
         "ctaAria": "Réserver une randonnée guidée avec {name}",
         "footerBrowseTrails": "Tous les sentiers",
         "footerMyBookings": "Mes réservations",
-        "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →"
+        "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →",
+        "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast"
       },
       "wineryList": {
         "meta": {
@@ -2955,7 +2956,9 @@
         "title": "Verified winter hiking partners",
         "body": "These guides accept requests through Cyprus Winter — Troodos, Akamas, and culture tours with email confirmation.",
         "button": "Book a verified guide"
-      }
+      },
+      "verifiedPartnerBadge": "Books in-app",
+      "verifiedPartnerBook": "Request via Cyprus Winter"
     }
   },
   "install": {
