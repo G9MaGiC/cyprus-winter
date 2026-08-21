@@ -190,13 +190,16 @@ describe("filter chips layout stress", () => {
 });
 
 describe("home state-aware discovery sections", () => {
-  it("delegates editors and book tastings to HomeDiscoverySections client leaf", () => {
+  it("delegates editors and book tastings to HomeDiscoverySections client gate", () => {
     const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");
     const adaptive = readFileSync("src/app/_home/HomeDiscoverySections.tsx", "utf8");
     expect(content).toContain("HomeDiscoverySections");
-    expect(content).not.toContain("EditorsPicks");
+    expect(content).toContain("EditorsPicks");
+    expect(content).toContain("BookTastings");
     expect(adaptive).toContain("useItinerary");
     expect(adaptive).toContain("hasContent");
+    expect(adaptive).toContain("children");
+    expect(adaptive).not.toContain("EditorsPicks");
   });
 });
 

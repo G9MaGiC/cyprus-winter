@@ -17,7 +17,10 @@ import HomePlanningSection from "@/app/_home/HomePlanningSection";
 import HomeFooter from "@/app/_home/HomeFooter";
 import HomeShareSection from "@/app/_home/HomeShareSection";
 import HomeDiscoverySections from "@/app/_home/HomeDiscoverySections";
+import EditorsPicks from "@/app/_home/EditorsPicks";
+import BookTastings from "@/app/_home/BookTastings";
 import {
+  BookTastingsSkeleton,
   SearchSectionSkeleton,
   WeatherStripSkeleton,
   ThisWeekSkeleton,
@@ -39,6 +42,7 @@ export default async function HomePageContent({
   locale,
 }: HomePageContentProps) {
   const tHome = locale ? await getTranslations({ locale, namespace: "home" }) : await getTranslations("home");
+  const tCommon = locale ? await getTranslations({ locale, namespace: "common" }) : await getTranslations("common");
 
   return (
     <>
@@ -80,7 +84,28 @@ export default async function HomePageContent({
         </Suspense>
       </HomeSection>
 
-      <HomeDiscoverySections locale={locale} />
+      <HomeDiscoverySections>
+        <HomeSection
+          id="editors-picks-heading"
+          title={tHome("editorsPicks.title")}
+          kicker={tHome("editorsPicksKicker")}
+          subtitle={tHome("discoverCurated")}
+          alt
+        >
+          <EditorsPicks locale={locale} />
+        </HomeSection>
+
+        <HomeSection
+          id="book-tastings-heading"
+          title={tCommon("bookTastings")}
+          kicker={tHome("bookTastings.kicker")}
+          subtitle={tHome("bookTastings.subtitle")}
+        >
+          <Suspense fallback={<BookTastingsSkeleton />}>
+            <BookTastings locale={locale} />
+          </Suspense>
+        </HomeSection>
+      </HomeDiscoverySections>
 
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomePlanningSection planSubtitle={planSubtitle} />

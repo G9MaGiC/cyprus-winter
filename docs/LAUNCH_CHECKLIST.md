@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `c04d072` (main — fix-all pass BUG-243–245)
+**Last updated:** 2026-08-21 · **Target commit:** `b8729f2` (main — design super brief train BUG-246–253)
 
 ---
 

@@ -6,11 +6,7 @@ import { CARD, CTA, LAYER, TRANSITION } from "@/lib/design-tokens";
 import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import { PWA_INSTALL_DISMISSED_KEY, PWA_VISIT_COUNT_KEY } from "@/lib/local-storage-keys";
 import { getItineraryStorageKey } from "@/lib/itinerary-storage";
-
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
-};
+import type { BeforeInstallPromptEvent } from "@/types/before-install-prompt";
 
 function hasPlanInStorage(): boolean {
   try {

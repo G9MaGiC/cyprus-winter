@@ -1,52 +1,22 @@
 "use client";
 
-import { Suspense } from "react";
-import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 import { useItinerary } from "@/hooks/useItinerary";
-import HomeSection from "@/app/_home/HomeSection";
-import EditorsPicks from "@/app/_home/EditorsPicks";
-import BookTastings from "@/app/_home/BookTastings";
-import { BookTastingsSkeleton } from "@/app/_home/skeletons";
 
 type HomeDiscoverySectionsProps = {
-  locale?: string;
+  children: ReactNode;
 };
 
 /**
- * Hides editor picks and book tastings when the visitor already has plan items —
- * reduces funnel noise for return planners without changing copy.
+ * Hides editor picks and book tastings when the visitor already has plan items.
+ * Server-rendered sections are passed as children to preserve RSC boundaries.
  */
-export default function HomeDiscoverySections({ locale }: HomeDiscoverySectionsProps) {
-  const tHome = useTranslations("home");
-  const tCommon = useTranslations("common");
+export default function HomeDiscoverySections({ children }: HomeDiscoverySectionsProps) {
   const { hasContent, hydrated } = useItinerary();
 
   if (hydrated && hasContent) {
     return null;
   }
 
-  return (
-    <>
-      <HomeSection
-        id="editors-picks-heading"
-        title={tHome("editorsPicks.title")}
-        kicker={tHome("editorsPicksKicker")}
-        subtitle={tHome("discoverCurated")}
-        alt
-      >
-        <EditorsPicks locale={locale} />
-      </HomeSection>
-
-      <HomeSection
-        id="book-tastings-heading"
-        title={tCommon("bookTastings")}
-        kicker={tHome("bookTastings.kicker")}
-        subtitle={tHome("bookTastings.subtitle")}
-      >
-        <Suspense fallback={<BookTastingsSkeleton />}>
-          <BookTastings locale={locale} />
-        </Suspense>
-      </HomeSection>
-    </>
-  );
+  return <>{children}</>;
 }
