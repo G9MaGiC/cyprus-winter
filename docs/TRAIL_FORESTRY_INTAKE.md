@@ -15,6 +15,7 @@ Workflow for importing **official Forestry Department** trail stats from moa.gov
 | **fd56 catalog** | 31 | Scraped from moa.gov.cy |
 | **Mapped to app ids** | 31 / 31 | `scripts/trails/forestry-name-map.ts` |
 | **In app** | 31 / 31 | Includes 27 added in BUG-260 |
+| **Editorial polish** | 27 / 27 | `forestry-trail-copy.ts` + `npm run trails:polish-forestry` |
 | **Official VC heroes** | 31 | Unchanged — fd56 trails use regional stock |
 
 App total trails: **100** (73 state-forest/discovery + 27 fd56 outside-forest additions).
@@ -32,6 +33,12 @@ npm run trails:forestry-gap
 
 # Verify fd56 stats match app catalog (length, duration, difficulty)
 npm run trails:sync-forestry-stats
+
+# Re-apply editorial copy after manifest refresh
+npm run trails:polish-forestry
+
+# Forestry PDF leaflets vs official/regional hero coverage
+npm run trails:forestry-leaflet-gap
 ```
 
 Outputs:

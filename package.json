@@ -45,6 +45,8 @@
     "trails:scrape-forestry": "npx tsx scripts/trails/scrape-forestry-trails.ts",
     "trails:forestry-gap": "npx tsx scripts/trails/forestry-gap-analysis.ts",
     "trails:sync-forestry-stats": "npx tsx scripts/trails/sync-forestry-stats.ts",
+    "trails:polish-forestry": "npx tsx scripts/trails/apply-forestry-polish.ts",
+    "trails:forestry-leaflet-gap": "npx tsx scripts/trails/forestry-leaflet-gap.ts",
     "check:conflict-markers": "node scripts/check-conflict-markers.mjs",
     "grant:wireframes": "node scripts/grant/capture-wireframes.mjs",
     "grant:annex-pdf": "node scripts/grant/build-annex-ii-pdf.mjs",
