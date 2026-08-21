@@ -134,6 +134,20 @@ export const TRANSLATED_HUB_META = {
     namespace: "auth.reset",
     robots: { index: false, follow: true },
   },
+  guidesTroodosDecember: {
+    path: "/guides/troodos-december",
+    namespace: "guides.troodosDecember",
+  },
+  install: {
+    path: "/install",
+    namespace: "install.page",
+    robots: { index: false, follow: false },
+  },
+  bookings: {
+    path: "/bookings",
+    namespace: "bookings.page",
+    robots: { index: false, follow: true },
+  },
 } as const satisfies Record<string, TranslatedHubMetaConfig>;
 
 export type TranslatedHubId = keyof typeof TRANSLATED_HUB_META;

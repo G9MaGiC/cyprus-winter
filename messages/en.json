@@ -2090,6 +2090,10 @@
         "titleNoUpcoming": "Plan your next visit",
         "body": "Add another tasting to your winter trip.",
         "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
+      },
+      "meta": {
+        "title": "My bookings | Cyprus Winter",
+        "description": "View and manage your Cyprus Winter winery tastings and experiences. All bookings in one place. Sync from any device. Confirmations by email."
       }
     }
   },

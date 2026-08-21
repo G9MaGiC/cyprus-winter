@@ -4,15 +4,11 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { LAYOUT, CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "install.page" });
-  return {
-    title: t("meta.title"),
-    description: t("meta.description"),
-    robots: { index: false, follow: false },
-  };
+  return buildTranslatedHubMetadata("install", locale);
 }
 
 type InstallStep = { title: string; body: string; code?: string; note?: string };

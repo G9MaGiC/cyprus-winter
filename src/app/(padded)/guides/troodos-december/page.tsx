@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
-import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import Image from "next/image";
 import { trails } from "@/data/trails";
 import { LAYOUT, CARD, SECTION, TYPE } from "@/lib/design-tokens";
@@ -9,15 +8,11 @@ import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
 import { getLocale, getTranslations } from "next-intl/server";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "guides.troodosDecember" });
-  return {
-    title: t("meta.title"),
-    description: t("meta.description"),
-    alternates: buildStrategyAAlternates("/guides/troodos-december"),
-  };
+  return buildTranslatedHubMetadata("guidesTroodosDecember", locale);
 }
 
 const troodosTrails = trails.filter((t) => t.region === "Troodos");

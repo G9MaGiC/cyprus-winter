@@ -33,6 +33,9 @@ describe("buildTranslatedHubMetadata", () => {
     expect(TRANSLATED_HUB_META.privacy.path).toBe("/privacy");
     expect(TRANSLATED_HUB_META.events.namespace).toBe("events.page");
     expect(TRANSLATED_HUB_META.login.robots).toEqual({ index: false, follow: true });
+    expect(TRANSLATED_HUB_META.guidesTroodosDecember.path).toBe("/guides/troodos-december");
+    expect(TRANSLATED_HUB_META.install.robots).toEqual({ index: false, follow: false });
+    expect(TRANSLATED_HUB_META.bookings.namespace).toBe("bookings.page");
   });
 
   it("returns localized title/description and locale canonical", async () => {

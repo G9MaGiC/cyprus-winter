@@ -2090,6 +2090,10 @@
         "titleNoUpcoming": "Zaplanuj kolejną wizytę",
         "body": "Dodaj kolejną degustację do zimowej podróży.",
         "bodyNoUpcoming": "Wszystkie degustacje masz już za sobą. Zarezerwuj kolejną na następny wyjazd."
+      },
+      "meta": {
+        "title": "Moje rezerwacje | Cyprus Winter",
+        "description": "Twoje degustacje i doświadczenia. Wszystko w jednym miejscu."
       }
     }
   },

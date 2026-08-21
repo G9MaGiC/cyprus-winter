@@ -2090,6 +2090,10 @@
         "titleNoUpcoming": "Plan your next visit",
         "body": "Add another tasting to your winter trip.",
         "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
+      },
+      "meta": {
+        "title": "ההזמנות שלי | Cyprus Winter",
+        "description": "טעימות וחוויות. הכול במקום אחד."
       }
     }
   },

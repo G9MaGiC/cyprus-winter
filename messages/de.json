@@ -2090,6 +2090,10 @@
         "titleNoUpcoming": "Nächsten Besuch planen",
         "body": "Fügen Sie Ihrer Winterreise eine weitere Verkostung hinzu.",
         "bodyNoUpcoming": "Alle Ihre Verkostungen liegen in der Vergangenheit. Buchen Sie eine neue für Ihre nächste Reise."
+      },
+      "meta": {
+        "title": "Meine Buchungen | Cyprus Winter",
+        "description": "Ihre Verkostungen und Erlebnisse. Alles an einem Ort."
       }
     }
   },
