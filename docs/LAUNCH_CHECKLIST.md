@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `41fbd14` (main — post-design smoke + CI green)
+**Last updated:** 2026-08-21 · **Target commit:** `aaf2ef7` (main — winery image audit + plan-share E2E)
 
 ---
 
