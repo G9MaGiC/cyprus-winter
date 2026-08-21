@@ -27,3 +27,31 @@ test("home shows hero entry points, search, and skip links", async ({ page }) =>
   await expect(page.locator('a[href="#this-week-heading"]')).toHaveCount(1);
   await expect(page.locator('a[href="#editors-picks-heading"]')).toHaveCount(1);
 });
+
+test("home hides editors picks when plan already has items", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("cyprus-winter-onboarded", "true");
+    localStorage.setItem("cyprus-winter:cookie-consent", "all");
+    localStorage.setItem(
+      "cyprus-winter-itinerary",
+      JSON.stringify({ "1": ["omodos"], "2": [], "3": [], "4": [], "5": [] })
+    );
+  });
+
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("main")).toBeVisible();
+  await expect(page.locator("#editors-picks-heading")).toHaveCount(0);
+  await expect(page.locator("#book-tastings-heading")).toHaveCount(0);
+});
+
+test("home shows editors picks for new visitors without plan items", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("cyprus-winter-onboarded", "true");
+    localStorage.setItem("cyprus-winter:cookie-consent", "all");
+    localStorage.removeItem("cyprus-winter-itinerary");
+  });
+
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await expect(page.locator("#editors-picks-heading")).toBeVisible({ timeout: 10_000 });
+  await expect(page.locator("#book-tastings-heading")).toBeVisible({ timeout: 10_000 });
+});

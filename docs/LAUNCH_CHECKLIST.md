@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `4daf6f7` (main — design train BUG-246–253 + RSC gate fix)
+**Last updated:** 2026-08-21 · **Target commit:** `66f6f18` (main — design train BUG-246–253 + E2E gate green)
 
 ---
 
@@ -71,7 +71,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 |-------|---------------------|
 | Unit tests | 645+ pass |
 | i18n keys | 2102 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — verify on `4daf6f7` |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `66f6f18` |
 
 ---
 

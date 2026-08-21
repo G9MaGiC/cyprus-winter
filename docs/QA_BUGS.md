@@ -1515,4 +1515,11 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-252 | i18n | Long DE/PL/HE filter labels overflow at 390px | `FilterChips` max-width cap on mobile; locale discover E2E at 390px |
 | BUG-253 | UX | No consumer PWA install prompt despite Serwist SW | `InstallPromptBanner` via `SerwistProvider`; 2nd visit or plan gate; i18n ×7; iOS hint only |
 
+### Fixed — post design train hygiene (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-255 | Build | `HomeDiscoverySections` imported server-only modules — Turbopack build fail | Client gate wraps server children; types moved to `src/types/before-install-prompt.ts` |
+| BUG-256 | E2E | BUG-252 locale filter tests failed on mobile — filters collapsed | Expand `#discover-filters-toggle` before chip assertions; home-smoke for state-aware sections |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
