@@ -41,6 +41,7 @@
     "trails:fetch-images": "npx tsx scripts/trails/fetch-visitcyprus-trails.ts",
     "trails:scrape-forestry": "npx tsx scripts/trails/scrape-forestry-trails.ts",
     "trails:forestry-gap": "npx tsx scripts/trails/forestry-gap-analysis.ts",
+    "trails:sync-forestry-stats": "npx tsx scripts/trails/sync-forestry-stats.ts",
     "check:conflict-markers": "node scripts/check-conflict-markers.mjs",
     "grant:wireframes": "node scripts/grant/capture-wireframes.mjs",
     "grant:annex-pdf": "node scripts/grant/build-annex-ii-pdf.mjs",
