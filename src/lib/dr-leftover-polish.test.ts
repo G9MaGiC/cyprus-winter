@@ -25,6 +25,14 @@ describe("sticky filter bar", () => {
   });
 });
 
+describe("plan day selector sticky bar", () => {
+  it("uses sand sticky surface token instead of inline bg-sand/98", () => {
+    const selector = readFileSync("src/components/plan/DaySelector.tsx", "utf8");
+    expect(selector).toContain("STRIP.stickySandBar");
+    expect(selector).not.toContain("bg-sand/98");
+  });
+});
+
 describe("trail map direction links", () => {
   it("uses 44px touch-target token for map CTAs", () => {
     const map = readFileSync("src/components/TrailMap.tsx", "utf8");

@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT, LAYER } from "@/lib/design-tokens";
+import { LAYOUT, LAYER, STRIP } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { useTranslations } from "next-intl";
 
@@ -34,7 +34,7 @@ export default function DaySelector({
               `sticky ${LAYER.stickyContent}`,
               LAYOUT.stickyTop,
               LAYOUT.stickyBarX,
-              "pt-4 pb-4 sm:pt-5 sm:pb-5 mb-6 sm:mb-8 bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",
+              `pt-4 pb-4 sm:pt-5 sm:pb-5 mb-6 sm:mb-8 ${STRIP.stickySandBar}`,
             ].join(" ")
           : "mb-6 sm:mb-8"
       }
