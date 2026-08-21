@@ -1715,7 +1715,7 @@ export const trailConditions: Record<string, TrailConditions> = {
     status: "open",
     surface: "dry",
     temperatureC: 17,
-    tip: "Good conditions. Weekends get busier; arrive before 10 and you'll have the trail to yourself for the first hour.",
+    tip: "Full-day 14 km loop (~5 h). Start early; weekends busier after 10.",
   },
   persephone: {
     trailId: "persephone",
