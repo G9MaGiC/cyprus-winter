@@ -76,6 +76,8 @@
       "close": "סגירה",
       "addPlace": "הוספת מקום",
       "addPlaceToItinerary": "הוסיפו מקום לתוכנית",
+      "navigateTo": "ניווט אל {name}",
+      "removeFromPlan": "הסרת {name} מהתוכנית",
       "clearRecentlyViewed": "נקו נצפו לאחרונה",
       "shareOn": "שיתוף ב-{label}",
       "siteFooter": "כותרת תחתונה",

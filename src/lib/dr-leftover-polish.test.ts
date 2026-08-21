@@ -10,6 +10,26 @@ describe("discover loading shell", () => {
     expect(loading).toContain("bg-sand");
     expect(loading).not.toMatch(/min-h-screen bg-background/);
   });
+
+  it("uses sand sticky bar token on filter skeleton", () => {
+    const loading = readFileSync("src/app/(padded)/discover/loading.tsx", "utf8");
+    expect(loading).toContain("STRIP.stickySandBar");
+  });
+});
+
+describe("sticky filter bar", () => {
+  it("uses sand sticky surface on hub filter bars", () => {
+    const bar = readFileSync("src/components/StickyFilterBar.tsx", "utf8");
+    expect(bar).toContain("STRIP.stickySandBar");
+    expect(bar).not.toContain("bg-background/98");
+  });
+});
+
+describe("trail map direction links", () => {
+  it("uses 44px touch-target token for map CTAs", () => {
+    const map = readFileSync("src/components/TrailMap.tsx", "utf8");
+    expect(map).toContain("SECTION.mapDirectionsLink");
+  });
 });
 
 describe("winery booking loading shell", () => {

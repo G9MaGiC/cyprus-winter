@@ -44,14 +44,14 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
                   const isInternal = href.startsWith("/");
                   if (isInternal) {
                     return (
-                      <AppLink href={href} className="text-aegean hover:underline">
+                      <AppLink href={href} className={SECTION.aegeanLink}>
                         {children}
                       </AppLink>
                     );
                   }
                   if (href.startsWith("#")) {
                     return (
-                      <a href={href} className="text-aegean hover:underline">
+                      <a href={href} className={SECTION.aegeanLink}>
                         {children}
                       </a>
                     );
@@ -59,7 +59,7 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
                   return (
                     <a
                       href={href}
-                      className="text-aegean hover:underline"
+                      className={SECTION.aegeanLink}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

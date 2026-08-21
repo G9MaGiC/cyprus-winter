@@ -76,6 +76,8 @@
       "close": "Κλείσιμο",
       "addPlace": "Προσθήκη τοποθεσίας",
       "addPlaceToItinerary": "Προσθέστε μια τοποθεσία στο πρόγραμμά σας",
+      "navigateTo": "Πλοήγηση στο {name}",
+      "removeFromPlan": "Αφαίρεση {name} από το πρόγραμμα",
       "clearRecentlyViewed": "Διαγραφή πρόσφατων προβολών",
       "shareOn": "Κοινοποιήστε στο {label}",
       "siteFooter": "Υποσέλιδο",

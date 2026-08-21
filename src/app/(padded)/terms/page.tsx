@@ -38,7 +38,7 @@ export default async function TermsPage() {
           <p className="text-olive/90 leading-relaxed">
             {tTerms.rich("sections.s1.body", {
               privacyPolicyLink: (chunks) => (
-                <AppLink href="/privacy" className="text-terracotta hover:underline">
+                <AppLink href="/privacy" className="inline-flex items-center min-h-[44px] py-2 -my-2 text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded">
                   {chunks}
                 </AppLink>
               ),
