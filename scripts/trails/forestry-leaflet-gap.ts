@@ -86,7 +86,7 @@ async function main(): Promise<void> {
     for (const p of unmappedPdfs.sort()) console.log(`  - ${p}`);
   }
 
-  console.log(`\nHero extraction blocked: JPEG2000 in four-fold flyers (needs poppler/OpenJPEG).`);
+  console.log(`\nForestry PDF heroes: npm run trails:extract-forestry-heroes (requires poppler-utils).`);
 }
 
 void main();

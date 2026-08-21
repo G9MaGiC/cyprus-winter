@@ -8,8 +8,8 @@ export const FORESTRY_PDF_TO_TRAIL_ID: Record<string, string> = {
   "atalanti trail en 2025.pdf": "atalante",
   "persephone trail en 2025.pdf": "persephone",
   "kalidonia en 2025.pdf": "caledonia-falls",
-  "choirteri nature trail - four fold flyer.pdf": "horteri",
-  "horteri nature trail - four fold flyer.pdf": "horteri",
+  "choirteri nature trail - four fold flyer.pdf": "chorteri",
+  "chorteri nature trail - four fold flyer.pdf": "chorteri",
   "smigies nature trail - four fold flyer.pdf": "smigies",
   "adonis and aphrodite nature trails - four fold flyer.pdf": "adonis",
   "the loumata ton aeton nature trail - four fold flyer.pdf": "loumata-ton-aeton",
@@ -19,6 +19,7 @@ export const FORESTRY_PDF_TO_TRAIL_ID: Record<string, string> = {
   "circular nature trail  kyparissia - four fold flyer.pdf": "germasogeia-kyparissia",
   "argakas dam nature trail - four fold flyer.pdf": "argakas-dam",
   "nature trail venetian bridges  - four fold flyer.pdf": "venetian-bridges",
+  "nature trail venetian bridges - four fold flyer.pdf": "venetian-bridges",
   "nature trail symvoulas - four fold flyer.pdf": "symvoulas",
 };
 
@@ -34,11 +35,10 @@ export function normalizePdfKey(urlOrName: string): string {
 export function pdfToTrailId(urlOrFilename: string): string | null {
   const key = normalizePdfKey(urlOrFilename);
   if (FORESTRY_PDF_TO_TRAIL_ID[key]) return FORESTRY_PDF_TO_TRAIL_ID[key];
-  // fuzzy: horteri typo in source listing
-  if (key.includes("horteri") || key.includes("choirteri")) return "horteri";
+  if (key.includes("chorteri") || key.includes("choirteri")) return "chorteri";
   if (key.includes("adonis") && key.includes("aphrodite")) return "adonis";
   return null;
 }
 
 /** Trail ids referenced in PDF map but not yet in catalog. */
-export const FORESTRY_PDF_UNMAPPED_TRAIL_IDS = ["argakas-dam", "venetian-bridges", "symvoulas"] as const;
+export const FORESTRY_PDF_UNMAPPED_TRAIL_IDS = [] as const;

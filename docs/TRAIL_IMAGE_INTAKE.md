@@ -12,9 +12,9 @@ Workflow for replacing generic regional trail stock with **official Visit Cyprus
 
 | Tier | Count | Image source |
 |------|-------|--------------|
-| **Official** | 31 / 100 | `public/images/cyprus/trails/trail-{id}.jpg` from Visit Cyprus |
+| **Official** | 36 / 104 | `public/images/cyprus/trails/trail-{id}.jpg` (31 Visit Cyprus + 5 Forestry PDF) |
 | **Regional stock** | ~51 | Troodos / coastal / gorge / village shared assets |
-| **Fallback** | ~18 | Troodos default (discovery/hidden routes) |
+| **Fallback** | ~17 | Troodos default (discovery/hidden routes) |
 
 Visit Cyprus `nature-trails-2` catalog: **100% mapped** (32 pages → 31 unique trail ids; Madari shares one hero).
 
@@ -25,7 +25,8 @@ Re-run metrics: `npm run images:validate` → `trail-image-intake.test.ts`.
 ## Refresh official photos
 
 ```bash
-npm run trails:fetch-images
+npm run trails:fetch-images          # Visit Cyprus heroes
+npm run trails:extract-forestry-heroes  # Forestry PDF leaflet crops (requires poppler-utils)
 ```
 
 Writes:

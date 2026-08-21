@@ -5299,6 +5299,66 @@
     }
   },
   {
+    "id": "chorteri",
+    "name": "Chorteri Nature Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular in the heart of Paphos Forest near Stavros tis Psokas: 5 km, about 3 hours, grade 3. Calabrian pine and endemic golden oak on the climb to Chorteri peak (1,290 m). Rather difficult uphill; excellent Stavros Valley views. Mouflon and red deer enclosures at the forest station. Start 1.5 km from Stavros tis Psokas on the Kykko road.",
+      "highlights": [
+        "Paphos Forest",
+        "Chorteri peak",
+        "Golden oak"
+      ]
+    }
+  },
+  {
+    "id": "argakas-dam",
+    "name": "Argakas Dam Nature Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular in Agios Merkourios valley, Paphos state forest: short route 8 km (~2 h) or long 10 km (~2.5 h) on forest roads with gentle inclines. Panoramic views of Argakas Dam, Argaka village, Akamas, and Chrysochou Bay. Calabrian pine, mouflon in the SPA, and riparian pockets. Trailhead near Argaka village.",
+      "highlights": [
+        "Argakas Dam",
+        "Akamas views",
+        "Mouflon habitat"
+      ]
+    }
+  },
+  {
+    "id": "symvoulas",
+    "name": "Symvoulas Nature Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry Yialia valley route: now circular from Nea Dimmata village square through Paphos Forest to the Symvoulas stream, Mavres–Pervoli, and Pomos (17 km, 3–5 hours). Bird's-eye views over Paphos Forest, Akamas, and Chrysochou Gulf. Named for historic forest council meetings. Linear Pomos option also documented (~11 km).",
+      "highlights": [
+        "Yialia valley",
+        "Akamas panorama",
+        "Symvoulas stream"
+      ]
+    }
+  },
+  {
+    "id": "venetian-bridges",
+    "name": "Venetian Bridges Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear connecting three protected Venetian bridges—Elias, Tzielefos (Tzelefos), and Roudias—through Paphos Forest from Kaminaria to Vretsia. Total 17 km, 6–8 hours in four sections (3.2 + 3.9 + 6.9 + 3 km). Part of the historic Camel Road. Walk one or two sections for a half-day; full traverse needs transport at both ends.",
+      "highlights": [
+        "Elias Bridge",
+        "Tzielefos Bridge",
+        "Roudias Bridge"
+      ]
+    }
+  },
+  {
     "id": "limassol-carnival",
     "name": "Limassol Carnival",
     "region": "Limassol",
