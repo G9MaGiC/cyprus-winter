@@ -551,6 +551,12 @@
         "nearby": "Nearby",
         "local_secret": "Local secret",
         "worth_visit": "Worth a visit"
+      },
+      "discoveryBadges": {
+        "hidden_gem_near_you": "Hidden gem near you",
+        "only_locals_know": "Only locals know this spot",
+        "trending_today": "Trending today",
+        "perfect_sunset_today": "Perfect for sunset today"
       }
     },
     "placeOfDay": {

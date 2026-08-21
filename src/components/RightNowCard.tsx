@@ -4,6 +4,7 @@ import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, TYPE } from "@/lib/design-tokens";
+import { isDiscoveryBadgeCode } from "@/lib/right-now-badges";
 import { useTranslations } from "next-intl";
 
 function formatKm(n: number): string {
@@ -39,9 +40,14 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
   const localizeReason = (reason: string) =>
     isReasonCode(reason) ? tHome(`rightNow.reasons.${reason}`) : reason;
 
-  const badge =
-    item.discoveryBadge ??
-    (item.reasons[0] ? localizeReason(item.reasons[0]) : tHome("rightNow.card.defaultTease"));
+  const localizeBadge = (code: string) =>
+    isDiscoveryBadgeCode(code) ? tHome(`rightNow.discoveryBadges.${code}`) : code;
+
+  const badge = item.discoveryBadge
+    ? localizeBadge(item.discoveryBadge)
+    : item.reasons[0]
+      ? localizeReason(item.reasons[0])
+      : tHome("rightNow.card.defaultTease");
   const tease = item.tease ?? tHome("rightNow.card.defaultTease");
   const distanceLabel =
     item.distanceKm < 0.5

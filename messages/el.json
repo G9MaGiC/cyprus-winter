@@ -576,6 +576,12 @@
         "nearby": "Κοντά",
         "local_secret": "Τοπικό μυστικό",
         "worth_visit": "Αξίζει επίσκεψη"
+      },
+      "discoveryBadges": {
+        "hidden_gem_near_you": "Κρυμμένος θησαυρός κοντά σας",
+        "only_locals_know": "Το ξέρουν μόνο οι ντόπιοι",
+        "trending_today": "Δημοφιλές σήμερα",
+        "perfect_sunset_today": "Ιδανικό για ηλιοβασίλεμα σήμερα"
       }
     },
     "placeOfDay": {
