@@ -2284,6 +2284,12 @@
         "Jan": "Ian",
         "Feb": "Feb",
         "Mar": "Mar"
+      },
+      "meta": {
+        "title": "Evenimente de iarnă în Cipru | Bobotează, carnaval, piețe",
+        "description": "Bobotează, carnaval, degustări Commandaria, piețe de Crăciun. Ce se întâmplă cât ești aici. Cipru nu se oprește când soarele coboară.",
+        "ogDescription": "Bobotează, carnaval, degustări Commandaria, piețe de Crăciun. Ce se întâmplă cât ești aici.",
+        "ogAlt": "Evenimente de iarnă în Cipru"
       }
     }
   },
@@ -2485,7 +2491,11 @@
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "Nu ai cont?"
+      "noAccountPrefix": "Nu ai cont?",
+      "meta": {
+        "title": "Autentificare | Cyprus Winter",
+        "description": "Autentifică-te pentru a sincroniza planul și rezervările pe dispozitive."
+      }
     },
     "register": {
       "title": "Alătură-te Cyprus Winter",
@@ -2508,7 +2518,11 @@
       "ctaSignIn": "Autentificare",
       "ctaCreate": "Creează cont",
       "alreadyHavePrefix": "Ai deja cont?",
-      "signInInstead": "Autentificare →"
+      "signInInstead": "Autentificare →",
+      "meta": {
+        "title": "Creează cont | Cyprus Winter",
+        "description": "Creează un cont pentru a sincroniza planul și rezervările."
+      }
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2520,7 +2534,11 @@
       "successTitle": "Reset link sent",
       "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
       "ctaSend": "Send reset link",
-      "ctaSending": "Sending…"
+      "ctaSending": "Sending…",
+      "meta": {
+        "title": "Resetare parolă | Cyprus Winter",
+        "description": "Solicită un link de resetare pentru contul Cyprus Winter."
+      }
     },
     "reset": {
       "inlinePasswordHint": "At least 6 characters",
@@ -2542,7 +2560,11 @@
       "ariaShowPassword": "Show password",
       "ariaHidePassword": "Hide password",
       "ctaUpdate": "Update password",
-      "ctaUpdating": "Updating…"
+      "ctaUpdating": "Updating…",
+      "meta": {
+        "title": "Parolă nouă | Cyprus Winter",
+        "description": "Alege o parolă nouă pentru contul Cyprus Winter."
+      }
     },
     "password": {
       "show": "Afișează parola",
@@ -3071,8 +3093,8 @@
   "terms": {
     "page": {
       "meta": {
-        "title": "Terms of Service — Cyprus Winter",
-        "description": "Terms of use for Cyprus Winter: trip planning, bookings, trail conditions, and user-generated content."
+        "title": "Termeni și condiții — Cyprus Winter",
+        "description": "Termenii de utilizare pentru Cyprus Winter: planificare, rezervări, condiții pe trasee și conținut generat de utilizatori."
       },
       "header": {
         "title": "Terms of Service",

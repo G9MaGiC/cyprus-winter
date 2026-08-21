@@ -12,6 +12,7 @@ export type TranslatedHubMetaConfig = {
   ogDescriptionKey?: string;
   /** `meta.*` key for OG image alt. */
   ogAltKey?: string;
+  robots?: Metadata["robots"];
 };
 
 /** Guest hubs that already have localized `*.page.meta` (or hub) keys. */
@@ -96,6 +97,43 @@ export const TRANSLATED_HUB_META = {
     path: "/book/guide",
     namespace: "book.pages.guideList",
   },
+  privacy: {
+    path: "/privacy",
+    namespace: "privacy.page",
+    robots: { index: true, follow: true },
+  },
+  terms: {
+    path: "/terms",
+    namespace: "terms.page",
+    robots: { index: true, follow: true },
+  },
+  events: {
+    path: "/events",
+    namespace: "events.page",
+    ogImage: `${SITE_URL}/images/cyprus/cyprus-monastery-kykkos.jpg`,
+    ogDescriptionKey: "ogDescription",
+    ogAltKey: "ogAlt",
+  },
+  login: {
+    path: "/login",
+    namespace: "auth.login",
+    robots: { index: false, follow: true },
+  },
+  register: {
+    path: "/register",
+    namespace: "auth.register",
+    robots: { index: false, follow: true },
+  },
+  forgotPassword: {
+    path: "/forgot-password",
+    namespace: "auth.forgot",
+    robots: { index: false, follow: true },
+  },
+  resetPassword: {
+    path: "/reset-password",
+    namespace: "auth.reset",
+    robots: { index: false, follow: true },
+  },
 } as const satisfies Record<string, TranslatedHubMetaConfig>;
 
 export type TranslatedHubId = keyof typeof TRANSLATED_HUB_META;
@@ -126,6 +164,7 @@ export async function buildTranslatedHubMetadata(
   const base: Metadata = {
     title,
     description,
+    ...(config.robots ? { robots: config.robots } : {}),
     openGraph: {
       title,
       description: ogDescription,

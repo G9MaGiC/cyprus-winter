@@ -2284,6 +2284,12 @@
         "food": "Food & Wine",
         "culture": "Culture",
         "sport": "Sport"
+      },
+      "meta": {
+        "title": "Cyprus Winter Events | Epiphany, Carnival, Markets",
+        "description": "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit.",
+        "ogDescription": "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here.",
+        "ogAlt": "Cyprus winter events"
       }
     }
   },
@@ -2494,7 +2500,11 @@
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "No account?"
+      "noAccountPrefix": "No account?",
+      "meta": {
+        "title": "Sign in | Cyprus Winter",
+        "description": "Sign in to sync your plan and bookings across devices."
+      }
     },
     "register": {
       "title": "Join Cyprus Winter",
@@ -2517,7 +2527,11 @@
       "ctaSignIn": "Sign in",
       "ctaCreate": "Create account",
       "alreadyHavePrefix": "Already have an account?",
-      "signInInstead": "Sign in instead →"
+      "signInInstead": "Sign in instead →",
+      "meta": {
+        "title": "Create account | Cyprus Winter",
+        "description": "Create an account to sync your plan and bookings across devices."
+      }
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2529,7 +2543,11 @@
       "successTitle": "Reset link sent",
       "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
       "ctaSend": "Send reset link",
-      "ctaSending": "Sending…"
+      "ctaSending": "Sending…",
+      "meta": {
+        "title": "Reset password | Cyprus Winter",
+        "description": "Request a password reset link for your Cyprus Winter account."
+      }
     },
     "reset": {
       "inlinePasswordHint": "At least 6 characters",
@@ -2551,7 +2569,11 @@
       "ariaShowPassword": "Show password",
       "ariaHidePassword": "Hide password",
       "ctaUpdate": "Update password",
-      "ctaUpdating": "Updating…"
+      "ctaUpdating": "Updating…",
+      "meta": {
+        "title": "Set new password | Cyprus Winter",
+        "description": "Choose a new password for your Cyprus Winter account."
+      }
     }
   },
   "book": {

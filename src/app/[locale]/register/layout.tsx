@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { registerLayoutMeta } from "@/lib/locale-page-meta";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return applyLocaleToMetadata(registerLayoutMeta, "/register", locale);
+  return buildTranslatedHubMetadata("register", locale);
 }
 
-export default function LocaleRegisterLayout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: Props) {
   return children;
 }

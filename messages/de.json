@@ -2284,6 +2284,12 @@
         "Jan": "Jan",
         "Feb": "Feb",
         "Mar": "Mär"
+      },
+      "meta": {
+        "title": "Zypern Winter-Events | Epiphanie, Karneval, Märkte",
+        "description": "Epiphanie, Karneval, Commandaria-Verkostungen, Weihnachtsmärkte. Was läuft, während Sie da sind. Zypern macht nicht zu, wenn die Sonne tiefer steht.",
+        "ogDescription": "Epiphanie, Karneval, Commandaria-Verkostungen, Weihnachtsmärkte. Was läuft, während Sie da sind.",
+        "ogAlt": "Zypern Winter-Events"
       }
     }
   },
@@ -2421,7 +2427,11 @@
       "magicSentTitle": "Link gesendet",
       "magicSentSubtitle": "Wir haben einen Anmeldelink an <strong>{email}</strong> gesendet. Klicken Sie darauf, um sich auf diesem Gerät anzumelden.",
       "ctaUseDifferentMethod": "Andere Methode verwenden",
-      "noAccountPrefix": "Noch kein Konto?"
+      "noAccountPrefix": "Noch kein Konto?",
+      "meta": {
+        "title": "Anmelden | Cyprus Winter",
+        "description": "Melden Sie sich an, um Plan und Buchungen geräteübergreifend zu synchronisieren."
+      }
     },
     "register": {
       "title": "Cyprus Winter beitreten",
@@ -2444,7 +2454,11 @@
       "ctaSignIn": "Anmelden",
       "ctaCreate": "Konto erstellen",
       "alreadyHavePrefix": "Schon ein Konto?",
-      "signInInstead": "Stattdessen anmelden →"
+      "signInInstead": "Stattdessen anmelden →",
+      "meta": {
+        "title": "Konto erstellen | Cyprus Winter",
+        "description": "Konto erstellen, um Plan und Buchungen zu synchronisieren."
+      }
     },
     "forgot": {
       "title": "Passwort vergessen?",
@@ -2456,7 +2470,11 @@
       "successTitle": "Reset-Link gesendet",
       "successSubtitle": "Wir haben einen Passwort-Reset-Link an <strong>{email}</strong> gesendet. Klicken Sie darauf, um ein neues Passwort festzulegen.",
       "ctaSend": "Reset-Link senden",
-      "ctaSending": "Wird gesendet…"
+      "ctaSending": "Wird gesendet…",
+      "meta": {
+        "title": "Passwort zurücksetzen | Cyprus Winter",
+        "description": "Link zum Zurücksetzen des Cyprus-Winter-Passworts anfordern."
+      }
     },
     "reset": {
       "inlinePasswordHint": "Mindestens 6 Zeichen",
@@ -2478,7 +2496,11 @@
       "ariaShowPassword": "Passwort anzeigen",
       "ariaHidePassword": "Passwort ausblenden",
       "ctaUpdate": "Passwort aktualisieren",
-      "ctaUpdating": "Wird aktualisiert…"
+      "ctaUpdating": "Wird aktualisiert…",
+      "meta": {
+        "title": "Neues Passwort | Cyprus Winter",
+        "description": "Neues Passwort für Ihr Cyprus-Winter-Konto festlegen."
+      }
     },
     "password": {
       "show": "Passwort anzeigen",

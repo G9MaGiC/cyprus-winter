@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
 import { winterEvents } from "@/data/events";
 import { SITE_URL } from "@/lib/site-url";
-import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { getLocale } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-const ogImage = `${SITE_URL}/images/cyprus/cyprus-monastery-kykkos.jpg`;
-const eventsAlternates = buildStrategyAAlternates("/events");
-
-export const metadata: Metadata = {
-  title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
-  description:
-    "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here. Cyprus doesn't shut down when the sun dips. Plan your winter visit.",
-  alternates: eventsAlternates,
-  openGraph: {
-    title: "Cyprus Winter Events | Epiphany, Carnival, Markets",
-    description: "Epiphany, carnival, Commandaria tastings, Christmas markets. What's on when you're here.",
-    url: eventsAlternates.canonical,
-    type: "website",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Cyprus winter events" }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return buildTranslatedHubMetadata("events", locale);
+}
 
 export default function EventsLayout({
   children,
@@ -32,7 +21,8 @@ export default function EventsLayout({
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Cyprus Winter Events",
-    description: "Winter events in Cyprus: Epiphany, carnival, Commandaria tastings, Christmas markets, ski season, and more.",
+    description:
+      "Winter events in Cyprus: Epiphany, carnival, Commandaria tastings, Christmas markets, ski season, and more.",
     url: eventsUrl,
     numberOfItems: winterEvents.length,
     itemListElement: winterEvents.map((evt, i) => ({
@@ -42,7 +32,11 @@ export default function EventsLayout({
         "@type": "Event",
         name: evt.name,
         description: evt.description.slice(0, 160),
-        location: { "@type": "Place", name: evt.venue || evt.region, address: { addressLocality: evt.region, addressCountry: "CY" } },
+        location: {
+          "@type": "Place",
+          name: evt.venue || evt.region,
+          address: { addressLocality: evt.region, addressCountry: "CY" },
+        },
         url: `${eventsUrl}#${evt.id}`,
         ...(evt.dates && { startDate: evt.dates }),
       },
@@ -51,7 +45,10 @@ export default function EventsLayout({
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(eventListSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(eventListSchema) }}
+      />
       {children}
     </>
   );

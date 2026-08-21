@@ -30,6 +30,9 @@ describe("buildTranslatedHubMetadata", () => {
   it("exposes configs for guest hubs with message keys", () => {
     expect(TRANSLATED_HUB_META.beaches.path).toBe("/beaches");
     expect(TRANSLATED_HUB_META.wineRoutes.namespace).toBe("wineRoutes.hub");
+    expect(TRANSLATED_HUB_META.privacy.path).toBe("/privacy");
+    expect(TRANSLATED_HUB_META.events.namespace).toBe("events.page");
+    expect(TRANSLATED_HUB_META.login.robots).toEqual({ index: false, follow: true });
   });
 
   it("returns localized title/description and locale canonical", async () => {
@@ -40,5 +43,12 @@ describe("buildTranslatedHubMetadata", () => {
     expect(en.title).not.toEqual(el.title);
     expect(el.alternates?.canonical).toContain("/el/beaches");
     expect(en.alternates?.canonical).toMatch(/\/beaches$/);
+  });
+
+  it("spreads robots from hub config when present", async () => {
+    const privacy = await buildTranslatedHubMetadata("privacy", "en");
+    const login = await buildTranslatedHubMetadata("login", "en");
+    expect(privacy.robots).toEqual({ index: true, follow: true });
+    expect(login.robots).toEqual({ index: false, follow: true });
   });
 });

@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { loginLayoutMeta } from "@/lib/locale-page-meta";
+import { getLocale } from "next-intl/server";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export const metadata: Metadata = applyLocaleToMetadata(loginLayoutMeta, "/login", routing.defaultLocale);
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return buildTranslatedHubMetadata("login", locale);
+}
 
-export default function LoginLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function LoginLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

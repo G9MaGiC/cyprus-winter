@@ -2284,6 +2284,12 @@
         "Jan": "Jan",
         "Feb": "Fév",
         "Mar": "Mar"
+      },
+      "meta": {
+        "title": "Événements d’hiver à Chypre | Épiphanie, carnaval, marchés",
+        "description": "Épiphanie, carnaval, dégustations Commandaria, marchés de Noël. Ce qui se passe pendant votre séjour. Chypre ne s’arrête pas quand le soleil baisse.",
+        "ogDescription": "Épiphanie, carnaval, dégustations Commandaria, marchés de Noël. Ce qui se passe pendant votre séjour.",
+        "ogAlt": "Événements d’hiver à Chypre"
       }
     }
   },
@@ -2485,7 +2491,11 @@
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "Pas de compte ?"
+      "noAccountPrefix": "Pas de compte ?",
+      "meta": {
+        "title": "Connexion | Cyprus Winter",
+        "description": "Connectez-vous pour synchroniser plan et réservations entre appareils."
+      }
     },
     "register": {
       "title": "Rejoindre Cyprus Winter",
@@ -2508,7 +2518,11 @@
       "ctaSignIn": "Connexion",
       "ctaCreate": "Créer un compte",
       "alreadyHavePrefix": "Déjà un compte ?",
-      "signInInstead": "Connexion →"
+      "signInInstead": "Connexion →",
+      "meta": {
+        "title": "Créer un compte | Cyprus Winter",
+        "description": "Créez un compte pour synchroniser plan et réservations."
+      }
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2520,7 +2534,11 @@
       "successTitle": "Reset link sent",
       "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
       "ctaSend": "Send reset link",
-      "ctaSending": "Sending…"
+      "ctaSending": "Sending…",
+      "meta": {
+        "title": "Réinitialiser le mot de passe | Cyprus Winter",
+        "description": "Demandez un lien de réinitialisation pour votre compte Cyprus Winter."
+      }
     },
     "reset": {
       "inlinePasswordHint": "At least 6 characters",
@@ -2542,7 +2560,11 @@
       "ariaShowPassword": "Show password",
       "ariaHidePassword": "Hide password",
       "ctaUpdate": "Update password",
-      "ctaUpdating": "Updating…"
+      "ctaUpdating": "Updating…",
+      "meta": {
+        "title": "Nouveau mot de passe | Cyprus Winter",
+        "description": "Choisissez un nouveau mot de passe pour votre compte Cyprus Winter."
+      }
     },
     "password": {
       "show": "Afficher le mot de passe",
@@ -3071,8 +3093,8 @@
   "terms": {
     "page": {
       "meta": {
-        "title": "Terms of Service — Cyprus Winter",
-        "description": "Terms of use for Cyprus Winter: trip planning, bookings, trail conditions, and user-generated content."
+        "title": "Conditions d’utilisation — Cyprus Winter",
+        "description": "Conditions d’utilisation de Cyprus Winter : planification, réservations, conditions des sentiers et contenu généré par les utilisateurs."
       },
       "header": {
         "title": "Terms of Service",

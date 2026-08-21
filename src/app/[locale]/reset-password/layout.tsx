@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { resetPasswordLayoutMeta } from "@/lib/locale-page-meta";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return applyLocaleToMetadata(resetPasswordLayoutMeta, "/reset-password", locale);
+  return buildTranslatedHubMetadata("resetPassword", locale);
 }
 
-export default function LocaleResetPasswordLayout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: Props) {
   return children;
 }

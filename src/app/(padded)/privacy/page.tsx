@@ -1,22 +1,14 @@
 import type { Metadata } from "next";
-import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AppLink from "@/components/AppLink";
 import { CTA } from "@/lib/design-tokens";
 import { getLocale, getTranslations } from "next-intl/server";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "privacy.page" });
-  const title = t("meta.title");
-  const description = t("meta.description");
-  return {
-    title,
-    description,
-    alternates: buildStrategyAAlternates("/privacy"),
-    robots: { index: true, follow: true },
-  };
+  return buildTranslatedHubMetadata("privacy", locale);
 }
 
 export default async function PrivacyPage() {

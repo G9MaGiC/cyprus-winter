@@ -2202,6 +2202,12 @@
         "Jan": "Sty",
         "Feb": "Lut",
         "Mar": "Mar"
+      },
+      "meta": {
+        "title": "Zimowe wydarzenia na Cyprze | Objawienie, karnawał, targi",
+        "description": "Objawienie Pańskie, karnawał, degustacje Commandaria, jarmarki bożonarodzeniowe. Co się dzieje, gdy jesteś na miejscu.",
+        "ogDescription": "Objawienie Pańskie, karnawał, degustacje Commandaria, jarmarki. Co się dzieje na miejscu.",
+        "ogAlt": "Zimowe wydarzenia na Cyprze"
       }
     }
   },
@@ -2421,7 +2427,11 @@
       "magicSentTitle": "Link wysłany",
       "magicSentSubtitle": "Wysłaliśmy link do logowania na <strong>{email}</strong>. Kliknij go, aby zalogować się na tym urządzeniu.",
       "ctaUseDifferentMethod": "Użyj innej metody",
-      "noAccountPrefix": "Nie masz konta?"
+      "noAccountPrefix": "Nie masz konta?",
+      "meta": {
+        "title": "Zaloguj się | Cyprus Winter",
+        "description": "Zaloguj się, aby synchronizować plan i rezerwacje między urządzeniami."
+      }
     },
     "register": {
       "title": "Dołącz do Cyprus Winter",
@@ -2444,7 +2454,11 @@
       "ctaSignIn": "Zaloguj się",
       "ctaCreate": "Utwórz konto",
       "alreadyHavePrefix": "Masz już konto?",
-      "signInInstead": "Zaloguj się zamiast tego →"
+      "signInInstead": "Zaloguj się zamiast tego →",
+      "meta": {
+        "title": "Utwórz konto | Cyprus Winter",
+        "description": "Utwórz konto, aby synchronizować plan i rezerwacje."
+      }
     },
     "forgot": {
       "title": "Nie pamiętasz hasła?",
@@ -2456,7 +2470,11 @@
       "successTitle": "Link do resetu wysłany",
       "successSubtitle": "Wysłaliśmy link do resetu hasła na <strong>{email}</strong>. Kliknij go, aby ustawić nowe hasło.",
       "ctaSend": "Wyślij link do resetu",
-      "ctaSending": "Wysyłanie…"
+      "ctaSending": "Wysyłanie…",
+      "meta": {
+        "title": "Reset hasła | Cyprus Winter",
+        "description": "Poproś o link do resetu hasła konta Cyprus Winter."
+      }
     },
     "reset": {
       "inlinePasswordHint": "Co najmniej 6 znaków",
@@ -2478,7 +2496,11 @@
       "ariaShowPassword": "Pokaż hasło",
       "ariaHidePassword": "Ukryj hasło",
       "ctaUpdate": "Zaktualizuj hasło",
-      "ctaUpdating": "Aktualizowanie…"
+      "ctaUpdating": "Aktualizowanie…",
+      "meta": {
+        "title": "Nowe hasło | Cyprus Winter",
+        "description": "Ustaw nowe hasło do konta Cyprus Winter."
+      }
     },
     "password": {
       "show": "Pokaż hasło",

@@ -2284,6 +2284,12 @@
         "Jan": "ינו",
         "Feb": "פבר",
         "Mar": "מרץ"
+      },
+      "meta": {
+        "title": "אירועי חורף בקפריסין | חג ההתגלות, קרנבל, שווקים",
+        "description": "חג ההתגלות, קרנבל, טעימות קומנדריה, שווקי חג. מה קורה כשאתם כאן. קפריסין לא נעצרת כשהשמש יורדת.",
+        "ogDescription": "חג ההתגלות, קרנבל, טעימות קומנדריה, שווקי חג. מה קורה כשאתם כאן.",
+        "ogAlt": "אירועי חורף בקפריסין"
       }
     }
   },
@@ -2485,7 +2491,11 @@
       "magicSentTitle": "Link sent",
       "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
       "ctaUseDifferentMethod": "Use a different method",
-      "noAccountPrefix": "אין חשבון?"
+      "noAccountPrefix": "אין חשבון?",
+      "meta": {
+        "title": "התחברות | Cyprus Winter",
+        "description": "התחברו כדי לסנכרן תוכנית והזמנות בין מכשירים."
+      }
     },
     "register": {
       "title": "הצטרפות ל-Cyprus Winter",
@@ -2508,7 +2518,11 @@
       "ctaSignIn": "התחברות",
       "ctaCreate": "יצירת חשבון",
       "alreadyHavePrefix": "כבר יש חשבון?",
-      "signInInstead": "התחברות →"
+      "signInInstead": "התחברות →",
+      "meta": {
+        "title": "יצירת חשבון | Cyprus Winter",
+        "description": "צרו חשבון כדי לסנכרן תוכנית והזמנות."
+      }
     },
     "forgot": {
       "title": "Forgot your password?",
@@ -2520,7 +2534,11 @@
       "successTitle": "Reset link sent",
       "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
       "ctaSend": "Send reset link",
-      "ctaSending": "Sending…"
+      "ctaSending": "Sending…",
+      "meta": {
+        "title": "איפוס סיסמה | Cyprus Winter",
+        "description": "בקשו קישור לאיפוס סיסמה לחשבון Cyprus Winter."
+      }
     },
     "reset": {
       "inlinePasswordHint": "At least 6 characters",
@@ -2542,7 +2560,11 @@
       "ariaShowPassword": "Show password",
       "ariaHidePassword": "Hide password",
       "ctaUpdate": "Update password",
-      "ctaUpdating": "Updating…"
+      "ctaUpdating": "Updating…",
+      "meta": {
+        "title": "סיסמה חדשה | Cyprus Winter",
+        "description": "בחרו סיסמה חדשה לחשבון Cyprus Winter."
+      }
     },
     "password": {
       "show": "הצג סיסמה",
@@ -3071,8 +3093,8 @@
   "terms": {
     "page": {
       "meta": {
-        "title": "Terms of Service — Cyprus Winter",
-        "description": "Terms of use for Cyprus Winter: trip planning, bookings, trail conditions, and user-generated content."
+        "title": "תנאי שימוש — Cyprus Winter",
+        "description": "תנאי השימוש ב-Cyprus Winter: תכנון טיול, הזמנות, תנאי שבילים ותוכן משתמשים."
       },
       "header": {
         "title": "Terms of Service",
