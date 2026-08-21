@@ -1508,5 +1508,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-246 | Docs | Motion/UX system undocumented — no single source for section-reveal, skeleton parity, or photography art direction | Added `docs/DESIGN_SUPER_BRIEF.md`, `docs/MOTION.md`, `docs/PHOTOGRAPHY_GUIDELINES.md`; motion section in `docs/UX_PATTERNS.md`; cross-links from `.cursor/UX_PERSONA.md` |
 | BUG-247 | Visual | Home sections static on first paint while discover uses `section-reveal` stagger | `HomeSectionReveal` client wrapper on first 3 sections (StartHere, WhyCyprus, RightNow); guard tests in `dr-leftover-polish.test.ts` |
+| BUG-248 | Visual | `.ai-chat-trigger-pulse` keyframes unused — first-time AI discoverability missing | Wire pulse on default `AIAssistantTrigger` with `AI_PULSE_SEEN_KEY`; respects `useBlockingOverlaysActive`; unit tests |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

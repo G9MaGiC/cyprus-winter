@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
+import { AI_PULSE_SEEN_KEY } from "@/lib/local-storage-keys";
 
 const OPEN_AI_EVENT = "open-ai-assistant";
 
@@ -27,6 +29,29 @@ export default function AIAssistantTrigger({ variant = "default", label }: AIAss
   const tNav = useTranslations("nav");
   const blocked = useBlockingOverlaysActive();
   const resolvedLabel = label ?? tNav("askAI");
+  const [pulseSeen, setPulseSeen] = useState(true);
+
+  useEffect(() => {
+    try {
+      setPulseSeen(localStorage.getItem(AI_PULSE_SEEN_KEY) === "true");
+    } catch {
+      setPulseSeen(true);
+    }
+  }, []);
+
+  const showPulse = variant === "default" && !pulseSeen && !blocked;
+
+  const handleClick = () => {
+    if (!pulseSeen) {
+      try {
+        localStorage.setItem(AI_PULSE_SEEN_KEY, "true");
+      } catch {
+        /* ignore quota / private mode */
+      }
+      setPulseSeen(true);
+    }
+    triggerAIAssistant();
+  };
 
   const className =
     variant === "tertiaryOnDark"
@@ -37,8 +62,8 @@ export default function AIAssistantTrigger({ variant = "default", label }: AIAss
     <button
       type="button"
       disabled={blocked}
-      onClick={() => triggerAIAssistant()}
-      className={`${className} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
+      onClick={handleClick}
+      className={`${className} ${showPulse ? "ai-chat-trigger-pulse" : ""} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
       aria-label={blocked ? tNav("askAIBlockedAria") : tNav("askAIAria")}
     >
       {variant === "default" ? (
