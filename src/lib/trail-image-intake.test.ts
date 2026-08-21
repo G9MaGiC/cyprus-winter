@@ -39,7 +39,7 @@ describe("trail image intake (Visit Cyprus official heroes)", () => {
       counts[classifyTrailImageSource(trail.id)] += 1;
     }
     expect(counts.official).toBe(31);
-    expect(counts.regional).toBeGreaterThan(10);
-    expect(trails.length).toBe(73);
+    expect(counts.regional).toBeGreaterThan(30);
+    expect(trails.length).toBe(100);
   });
 });
