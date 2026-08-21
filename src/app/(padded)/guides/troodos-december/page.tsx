@@ -17,10 +17,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const troodosTrails = trails.filter((t) => t.region === "Troodos");
 
-/** December-friendly: often clear, good conditions, or iconic winter pick */
-const decemberPicks = troodosTrails.filter((t) =>
-  ["atalante", "artemis", "persephone", "caledonia-falls", "millomeris-falls"].includes(t.id)
-);
+/** December-friendly: often clear, good conditions, or iconic winter pick (gentler first) */
+const DECEMBER_PICK_IDS = [
+  "artemis",
+  "persephone",
+  "millomeris-falls",
+  "caledonia-falls",
+  "atalante",
+] as const;
+
+const decemberPicks = DECEMBER_PICK_IDS.map((id) =>
+  troodosTrails.find((t) => t.id === id)
+).filter((t): t is Trail => t != null);
 
 function TrailCard({
   trail,

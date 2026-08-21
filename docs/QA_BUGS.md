@@ -1417,6 +1417,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-217 | Product | Mountain itineraries still paired Atalante (now ~14 km / 5 h) with Omodos wine stop on the same day | Move Atalante to day 5 with Pedoulas; day 2 = Persephone + Omodos |
 | BUG-218 | Discover | Trails hub curated sections omitted new Forestry Cape Greco / waterfall / full-day routes from pass 2 | Extend `COASTAL_TRAIL_IDS` + waterfall/full-day section lists |
 | BUG-219 | Product | Atalante/Artemis `combineWith` still suggested same-day Omodos or double Chionistra loops after stats + itinerary pacing | Atalante → Platres/Pedoulas; Artemis drops Atalante |
+| BUG-220 | Content | Troodos December guide framed Atalante as a short “stays open” winter twin of Artemis | Header copy: Artemis = gentler loop; Atalante = full-day 14 km |
 | BUG-222 | Docs | Unresolved git conflict markers committed to `docs/QA_BUGS.md` on main via PR #124 rebase | Keep BUG-217 and BUG-218 rows; drop markers |
 
 ### Still open — ops / human (do not invent)
