@@ -162,6 +162,15 @@ describe("search loading shell", () => {
   });
 });
 
+describe("plan share copy feedback", () => {
+  it("uses terracotta ring on copied state in PlanShareBar", () => {
+    const bar = readFileSync("src/components/plan/PlanShareBar.tsx", "utf8");
+    expect(bar).toContain("ring-terracotta/40");
+    expect(bar).toContain("CopyCheckIcon");
+    expect(bar).not.toContain("bg-aegean/15 text-aegean border border-aegean/25");
+  });
+});
+
 describe("home section reveal", () => {
   it("wraps exactly three content sections with HomeSectionReveal", () => {
     const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");

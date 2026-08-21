@@ -5,6 +5,20 @@ import { useTranslations } from "next-intl";
 import ShareLinks from "@/components/ShareLinks";
 import { CTA, LAYER, LAYOUT, STRIP } from "@/lib/design-tokens";
 
+function CopyCheckIcon() {
+  return (
+    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+function copySuccessClass(active: boolean, defaultClass: string) {
+  return active
+    ? "bg-terracotta/10 text-terracotta border border-terracotta/30 ring-2 ring-terracotta/40 gap-2"
+    : defaultClass;
+}
+
 type PlanShareBarProps = {
   totalPlaces: number;
   activeDaysCount: number;
@@ -83,26 +97,38 @@ export default function PlanShareBar({
           <button
             type="button"
             onClick={copyShareLink}
-            className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-              linkCopied
-                ? "bg-aegean/15 text-aegean border border-aegean/25"
-                : `${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`
-            }`}
+            className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${copySuccessClass(
+              linkCopied,
+              `${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`
+            )}`}
             aria-label={tPlan("share.copyLink")}
           >
-            {linkCopied ? tPlan("share.linkCopied") : tPlan("share.copyLink")}
+            {linkCopied ? (
+              <>
+                <CopyCheckIcon />
+                {tPlan("share.linkCopied")}
+              </>
+            ) : (
+              tPlan("share.copyLink")
+            )}
           </button>
           <button
             type="button"
             onClick={copyItinerary}
-            className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-              copied
-                ? "bg-aegean/15 text-aegean border border-aegean/25"
-                : CTA.secondaryCompact
-            }`}
+            className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${copySuccessClass(
+              copied,
+              CTA.secondaryCompact
+            )}`}
             aria-label={tPlan("share.copyItinerary")}
           >
-            {copied ? tPlan("share.copied") : tPlan("share.copyItineraryShort")}
+            {copied ? (
+              <>
+                <CopyCheckIcon />
+                {tPlan("share.copied")}
+              </>
+            ) : (
+              tPlan("share.copyItineraryShort")
+            )}
           </button>
           {downloadCalendar && (
             <button
