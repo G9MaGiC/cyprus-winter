@@ -5359,6 +5359,21 @@
     }
   },
   {
+    "id": "troodos-visitor-centre",
+    "name": "Troodos Visitor Centre Botanical Trail",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular at the Troodos Visitor Centre: 250 m, gentle incline, wheelchair accessible. Thirty labelled endemic and indigenous plants of Troodos National Forest Park—including black pine, golden oak, Troodos sage, and Cyprus cedar. Educational loop on serpentinite; ideal before Artemis or Atalante.",
+      "highlights": [
+        "Endemic flora",
+        "Wheelchair accessible",
+        "Visitor Centre"
+      ]
+    }
+  },
+  {
     "id": "limassol-carnival",
     "name": "Limassol Carnival",
     "region": "Limassol",

@@ -17,6 +17,10 @@ export const FORESTRY_PDF_TO_TRAIL_ID: Record<string, string> = {
   "nature trail agia eirini - limeria eoka - four fold flyer.pdf": "agia-irini",
   "nature trail stavros tou agiasmati -panagia tou araka four fold flyer.pdf": "panagia-araka-stavros",
   "circular nature trail  kyparissia - four fold flyer.pdf": "germasogeia-kyparissia",
+  "circular nature trail kyparissia - four fold flyer.pdf": "germasogeia-kyparissia",
+  "nature trail loumata ton aeton - three fold flyer.pdf": "loumata-ton-aeton",
+  "botanical and geological trail of the troodos visitor centre - four fold flyer.pdf":
+    "troodos-visitor-centre",
   "argakas dam nature trail - four fold flyer.pdf": "argakas-dam",
   "nature trail venetian bridges  - four fold flyer.pdf": "venetian-bridges",
   "nature trail venetian bridges - four fold flyer.pdf": "venetian-bridges",

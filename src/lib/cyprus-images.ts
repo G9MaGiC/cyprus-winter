@@ -189,6 +189,7 @@ const officialTrailImages: Record<string, string> = {
   "argakas-dam": `${trailsDir}/trail-argakas-dam.jpg`,
   symvoulas: `${trailsDir}/trail-symvoulas.jpg`,
   "venetian-bridges": `${trailsDir}/trail-venetian-bridges.jpg`,
+  "troodos-visitor-centre": `${trailsDir}/trail-troodos-visitor-centre.jpg`,
 };
 
 /** Regional stock for trails without an official Visit Cyprus hero. */

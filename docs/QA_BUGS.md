@@ -1528,5 +1528,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-261 | Data | fd56 stats drift on 4 pre-existing mapped trails | Re-aligned `vouni-panagias`, `millomeris-falls`, `ariadni`, `lefkara-path` to fd56; `npm run trails:sync-forestry-stats` |
 | BUG-262 | Content | fd56 trails had truncated auto-generated copy | `forestry-trail-copy.ts`, `npm run trails:polish-forestry`; PDF leaflet gap script for horteri/moni-fylagra |
 | BUG-263 | Data | PDF-only Paphos trails missing; horteri/chorteri conflated | Added `chorteri`, `argakas-dam`, `symvoulas`, `venetian-bridges`; `extract-forestry-heroes.ts`; 5 Forestry PDF heroes; app total 104 |
+| BUG-264 | Data | State-forest gap analysis; Troodos Visitor Centre PDF | `state-forest-gap-analysis.ts`, `troodos-visitor-centre` trail + hero; PDF map fixes (kyparissia, loumata); app total 105, 68 authoritative |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
