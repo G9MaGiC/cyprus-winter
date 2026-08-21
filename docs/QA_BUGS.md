@@ -1416,7 +1416,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-216 | Data | Remaining catalog trails drifted or missing vs Forestry guide (Chrysovrysi 1.5 km vs 8 km; Kavos 2.5 vs 1.2; missing Trooditissa–Phini, Prodromos routes, Pouziaris, Kannoures, Moni–Fylagra, Konnos–Cyclops, Cape Greco Aphrodite) | Pass 2: sync stats + add missing official trails; reuse regional stock images only |
 | BUG-217 | Product | Mountain itineraries still paired Atalante (now ~14 km / 5 h) with Omodos wine stop on the same day | Move Atalante to day 5 with Pedoulas; day 2 = Persephone + Omodos |
 | BUG-218 | Discover | Trails hub curated sections omitted new Forestry Cape Greco / waterfall / full-day routes from pass 2 | Extend `COASTAL_TRAIL_IDS` + waterfall/full-day section lists |
+| BUG-219 | Product | Atalante/Artemis `combineWith` still suggested same-day Omodos or double Chionistra loops after stats + itinerary pacing | Atalante → Platres/Pedoulas; Artemis drops Atalante |
 | BUG-222 | Docs | Unresolved git conflict markers committed to `docs/QA_BUGS.md` on main via PR #124 rebase | Keep BUG-217 and BUG-218 rows; drop markers |
+
 ### Still open — ops / human (do not invent)
 
 | Item | Severity | Notes |

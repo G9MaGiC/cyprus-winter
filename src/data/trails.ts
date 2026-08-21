@@ -76,7 +76,7 @@ export const trails: Trail[] = [
     trailhead: "300 m from the Chionistra road junction on the Troodos–Prodromos road (parking at start)",
     bring: ["Layers", "Water", "Snacks"],
     localSecret: "Start anti-clockwise; the eastern section has the best views and you hit them before lunch. Quietest on weekday mornings.",
-    combineWith: ["omodos", "tsiakkas", "platres", "atalante"],
+    combineWith: ["omodos", "tsiakkas", "platres"],
     nameEl: "Μονοπάτι Αρτέμιδος",
     trailheadCoords: { lat: 34.9346, lng: 32.8711 },
     locationText: "Troodos, Nicosia",
@@ -140,7 +140,7 @@ export const trails: Trail[] = [
     trailhead: "Troodos Square (parking at the square)",
     bring: ["Layers", "Water", "Food", "Head torch"],
     localSecret: "Do Artemis and Atalante on different days. Combining both is a very long outing; the shared Chionistra circuit is the link.",
-    combineWith: ["artemis", "platres", "omodos"],
+    combineWith: ["platres", "pedoulas"],
     nameEl: "Μονοπάτι Αταλάντης",
     trailheadCoords: { lat: 34.9346, lng: 32.8711 },
     waypoints: [
