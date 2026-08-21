@@ -6,6 +6,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open shoreline year-round. Cafés seasonal.",
       "description": "Nissi means island. A rock islet sixty metres offshore, soft sand, clear water. In winter the crowds disappear and the light changes. One of Europe's top 25 beaches.",
       "highlights": [
         "White sand",
@@ -21,6 +22,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open shoreline year-round. Promenade cafés often stay open.",
       "description": "Blue Flag sand, a swim-to islet, and five hundred metres of gentle shore. Winter walks are mild; the promenade cafés stay open. Protected from the north wind.",
       "highlights": [
         "Blue Flag",
@@ -36,6 +38,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open shoreline year-round. No facilities on the sand.",
       "description": "A sheltered cove in Cape Greco. White sand, emerald water, cliffs on either side. Drop in from the coastal path in winter and you might have it to yourself.",
       "highlights": [
         "Protected cove",
@@ -51,6 +54,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open shoreline year-round. Tavernas often stay open.",
       "description": "Golden sand, calm waters, tavernas that stay open. Winter sunsets around five. Ideal for families; in winter it belongs to walkers and watchers.",
       "highlights": [
         "Golden sand",
@@ -66,6 +70,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open shoreline year-round. No facilities; pack water.",
       "description": "Protected coast on the Akamas. No sunbeds, no bars. Golden sand, turquoise water. In winter the turtles are gone and the beach is empty. Pack a picnic.",
       "highlights": [
         "Turtle nesting",
@@ -81,6 +86,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open cliff-top year-round.",
       "description": "Wind and waves carved these caves. The limestone glows amber in winter light. Bring your camera and a wind layer. The crowds have gone.",
       "highlights": [
         "Sea caves",
@@ -96,6 +102,7 @@
     "type": "beach",
     "urls": [],
     "current": {
+      "openingHours": "Open shoreline year-round. Cliff tavernas often stay open.",
       "description": "White cliffs above dark volcanic sand. Coves, tavernas, fresh fish. On a mild December afternoon you can sit outside with a blanket. One of the best winter lunch spots on the coast.",
       "highlights": [
         "White cliffs",
@@ -207,7 +214,7 @@
     "type": "ancient",
     "urls": [],
     "current": {
-      "openingHours": "Tue to Sun 8:30 to 17:00 (winter); closed Mon",
+      "openingHours": "Daily 8:30 to 17:00 (winter 16 Sep to 15 Apr)",
       "description": "People lived here seven thousand years ago. Round stone houses, defensive walls, the island's oldest settlement. Winter mornings can be misty; dramatic for photos. UNESCO.",
       "highlights": [
         "Neolithic",
@@ -224,7 +231,7 @@
     "urls": [],
     "current": {
       "openingHours": "Daily 8:30 to 17:00 (winter)",
-      "description": "Winter visit: Commandaria wine was made here for eight hundred years. Square crusader keep, sugar mill ruins beside it. Thirty minutes; pair with a tasting at Zambartas or Kolios.",
+      "description": "Winter visit: Commandaria wine was made here for eight hundred years. Square crusader keep, sugar mill ruins beside it. Thirty minutes; pair with a tasting at Zambartas (nearby) or Kolios (Paphos hills).",
       "highlights": [
         "Crusader castle",
         "Commandaria history",
@@ -239,7 +246,7 @@
     "type": "ancient",
     "urls": [],
     "current": {
-      "openingHours": "Daily 8:30 to 17:00 (winter)",
+      "openingHours": "Tue to Sun 8:30 to 17:00; closed Mon (from 1 Jul 2024)",
       "description": "Winter ruins: Aphrodite's sanctuary, quieter than the main Pafos mosaics. Best time to explore. Kouklia village wraps around the site. Stop for a coffee; the ruins are over your shoulder.",
       "highlights": [
         "Aphrodite sanctuary",
@@ -255,8 +262,8 @@
     "type": "ancient",
     "urls": [],
     "current": {
-      "openingHours": "Daily 9 to 17 (north Cyprus)",
-      "description": "Best winter views: Buffavento means Defier of the Winds. Forty-five minutes steep climb. St Hilarion to the west, the sea, the Mesaoria plain. More ruined than St Hilarion, fewer visitors. Wear proper shoes.",
+      "openingHours": "Daily 9 to 17 (north Cyprus; may vary)",
+      "description": "North Cyprus. Buffavento means Defier of the Winds—a ruined crusader castle on a ridge with the best winter views in the range. Forty-five minutes steep climb. St Hilarion to the west, the sea, the Mesaoria plain. More ruined than St Hilarion, fewer visitors. Verify border access from the south before you travel. Wear proper shoes.",
       "highlights": [
         "Crusader castle",
         "Panoramic views",
@@ -303,7 +310,7 @@
     "type": "ancient",
     "urls": [],
     "current": {
-      "openingHours": "Tue to Sun 10 to 16:30; closed Mon",
+      "openingHours": "Tue to Sun 10 to 16:30; closed Mon and public holidays",
       "description": "Nicosia's story across five thousand years. Ancient Ledra, Venetian walls, independence. Free entry. Intimate galleries in the old town. Most visitors skip it; don't.",
       "highlights": [
         "Nicosia history",
@@ -335,7 +342,7 @@
     "type": "ancient",
     "urls": [],
     "current": {
-      "openingHours": "Daily; check locally for winter hours",
+      "openingHours": "Winter (1 Oct to 31 Apr): Mon to Sat 7:00 to 16:45, Sun 9:30 to 16:45 (DMT 2025). Confirm locally.",
       "description": "A 6th-century mosaic of the Virgin and Child. One of the oldest surviving Byzantine mosaics in the eastern Mediterranean. Most tour buses skip it. The village is quiet. The church is small, intimate. Allow forty minutes.",
       "highlights": [
         "Byzantine mosaic",
@@ -351,12 +358,28 @@
     "type": "ancient",
     "urls": [],
     "current": {
-      "openingHours": "Tue to Sun 8:30 to 17:00 (winter)",
+      "openingHours": "Local museum Mon to Fri 8:30 to 16:00 (DMT 2025). Archaeological park hours vary — call 22 444818.",
       "description": "Ancient Idalion sprawls across two hills near Nicosia. Temple and palace remains, Aphrodite's sanctuary, and olive trees. Fewer visitors in winter; you might have it to yourself.",
       "highlights": [
         "City-kingdom",
         "Aphrodite sanctuary",
         "Archaeological park"
+      ]
+    }
+  },
+  {
+    "id": "kition",
+    "name": "Ancient Kition",
+    "region": "Larnaca",
+    "type": "ancient",
+    "urls": [],
+    "current": {
+      "openingHours": "Mon to Fri 8:30 to 16:00 (winter 16 Sep to 15 Apr). Closed Sat and Sun.",
+      "description": "Mycenaean and Phoenician Larnaca under the modern town. Kathari and Bamboula precincts, a temple of Astarte, and harbour works. Winter weekdays only; weekends closed. One of the few Department of Antiquities sites published as wheelchair-accessible throughout.",
+      "highlights": [
+        "Phoenician harbour",
+        "Temple of Astarte",
+        "Larnaca archaeology"
       ]
     }
   },
@@ -526,7 +549,7 @@
     "type": "village",
     "urls": [],
     "current": {
-      "description": "One of the original Commandaria villages. Smaller than Omodos, quieter. Hadjipavlou winery. Stop for lunch; the tavernas know how to cook. En route to Omodos and Koilani.",
+      "description": "Krasochoria village with Commandaria tradition—not one of the fourteen UNESCO-named villages, but stone terraces and Hadjipavlou winery. Smaller than Omodos, quieter. Stop for lunch; the tavernas know how to cook. En route to Omodos and Koilani.",
       "highlights": [
         "Wine village",
         "Commandaria",
@@ -574,7 +597,7 @@
     "urls": [],
     "current": {
       "openingHours": "Wine museum 10 to 16; tavernas 12 to 22",
-      "description": "Commandaria was born here. The wine museum traces five thousand years. December brings the Commandaria Festival. Even in January the tavernas are warm. Plan to eat. Then Vlassides for a tasting.",
+      "description": "Krasochoria village where Commandaria tradition runs deep. The wine museum traces five thousand years. December brings the Commandaria Festival. Even in January the tavernas are warm. Plan to eat. Then Vlassides for a tasting.",
       "highlights": [
         "Wine museum",
         "Krasochoria",
@@ -748,6 +771,396 @@
     }
   },
   {
+    "id": "tochni",
+    "name": "Tochni",
+    "region": "Larnaca",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Golden stone houses, Byzantine chapels, and a 2.8 km nature trail through the Larnaca hills. Agrotourism guesthouses in restored village homes. Winter weekday mornings you might have the square to yourself. Dubbed the Little Tuscany of Cyprus—for the light on the stone, not the crowds.",
+      "highlights": [
+        "Golden stone",
+        "Agrotourism",
+        "Nature trail"
+      ]
+    }
+  },
+  {
+    "id": "droushia",
+    "name": "Droushia",
+    "region": "Paphos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Laona plateau village above Polis. Wide views, weaving and Rural Life museum, and the gateway to Gerakopetra crag. Fewer visitors than Omodos or Lefkara. A kafenion, a square, silence that holds.",
+      "highlights": [
+        "Laona plateau",
+        "Weaving centre",
+        "Crag gateway"
+      ]
+    }
+  },
+  {
+    "id": "ineia",
+    "name": "Ineia",
+    "region": "Paphos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Climber's village on the Laona plateau. Kafenion intel on road conditions, views to Polis bay, minutes from Gerakopetra crag. Winter weekday mornings: coffee, silence, and the road up to the boulders.",
+      "highlights": [
+        "Climbing hub",
+        "Laona views",
+        "Plateau village"
+      ]
+    }
+  },
+  {
+    "id": "prodromos",
+    "name": "Prodromos",
+    "region": "Troodos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Cyprus's highest village at 1,380 metres. Apple orchards, mountain air, Prodromos Dam below. Mist, occasional snow, and a kafenion that understands cold cyclists and hikers.",
+      "highlights": [
+        "Highest village",
+        "Apple orchards",
+        "Mountain dam"
+      ]
+    }
+  },
+  {
+    "id": "milia",
+    "name": "Milia",
+    "region": "Paphos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Tiny Paphos Forest hamlet near Tzelefos bridge. Milia Eco Lodge restored stone houses; taverna food from the valley. Forest walks, river noise, and one of the quietest nights in Cyprus.",
+      "highlights": [
+        "Eco lodge",
+        "Paphos Forest",
+        "Tzelefos access"
+      ]
+    }
+  },
+  {
+    "id": "spilia",
+    "name": "Spilia",
+    "region": "Nicosia",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Mountain village on the Nicosia–Troodos road. Cool air, pine views, and a pace that slows you before Machairas or Kykkos. Winter stop for coffee when the capital feels too flat.",
+      "highlights": [
+        "Mountain pass village",
+        "Pine views",
+        "Troodos gateway"
+      ]
+    }
+  },
+  {
+    "id": "pelathousa",
+    "name": "Pelathousa",
+    "region": "Paphos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Laona plateau hamlet with sea views toward Polis. A few hundred souls, no tour buses, a church and a silence that holds. Stop between Droushia and Polis when the coast feels too busy.",
+      "highlights": [
+        "Sea views",
+        "Laona hamlet",
+        "Plateau silence"
+      ]
+    }
+  },
+  {
+    "id": "trimiklini",
+    "name": "Trimiklini",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Village on the Limassol–Platres road at 545 metres. Trimiklini Dam, a 1901 double bridge, and a Venetian relic in the Kouris bed. Most people drive through; winter cyclists and walkers stop for coffee and silence.",
+      "highlights": [
+        "Double bridge",
+        "Trimiklini Dam",
+        "Wine & zivania"
+      ]
+    }
+  },
+  {
+    "id": "moutoullas",
+    "name": "Moutoullas",
+    "region": "Troodos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Marathasa Valley village with the oldest UNESCO painted church in the Troodos group (1280). Key from the village. Quiet valley base between Pedoulas and Kalopanagiotis.",
+      "highlights": [
+        "Painted church",
+        "Marathasa Valley",
+        "Mountain village"
+      ]
+    }
+  },
+  {
+    "id": "statos-agios-fotios",
+    "name": "Statos–Agios Fotios",
+    "region": "Paphos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Merged mountain village in the Paphos hills near Avakas Gorge. Organic wineries, gorge access, and views over pine-covered slopes. Quieter than Omodos; colder in winter.",
+      "highlights": [
+        "Laona plateau",
+        "Organic wine",
+        "Avakas gateway"
+      ]
+    }
+  },
+  {
+    "id": "nikitari",
+    "name": "Nikitari",
+    "region": "Nicosia",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Mesaoria foothill village gateway to UNESCO Panagia tis Asinou (1105). Byzantine frescoes of Constantinopolitan quality. Winter weekday visits often mean the church to yourself.",
+      "highlights": [
+        "Asinou church",
+        "Byzantine frescoes",
+        "Mesaoria foothills"
+      ]
+    }
+  },
+  {
+    "id": "kato-platres",
+    "name": "Kato Platres",
+    "region": "Troodos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Lower Platres on the Kryos Potamos—quieter than the resort village upstream. Trout tavernas, forest walks, and Caledonia Falls access without the square crowds.",
+      "highlights": [
+        "River valley",
+        "Trout tavernas",
+        "Trail access"
+      ]
+    }
+  },
+  {
+    "id": "vretsia",
+    "name": "Vretsia",
+    "region": "Paphos",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Evacuated village in the Paphos Forest—stone ruins, silence, and the trailhead to Roudias Venetian Bridge. Feels like an open-air museum. Remote; go with company and tell someone your route.",
+      "highlights": [
+        "Abandoned village",
+        "Roudias bridge trail",
+        "Paphos Forest"
+      ]
+    }
+  },
+  {
+    "id": "kellaki",
+    "name": "Kellaki (Prastio)",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Hill village above Germasogeia Dam. Gateway to the Kyparissia ridge trail. Views over the reservoir and coast. Few visitors; kafenion pace.",
+      "highlights": [
+        "Dam views",
+        "Kyparissia trail",
+        "Hill village"
+      ]
+    }
+  },
+  {
+    "id": "kannavia",
+    "name": "Kannavia",
+    "region": "Nicosia",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Small Troodos forest village east of Kakopetria. Pine trails, frost in winter, and none of Platres square bustle. A base for Persephone and Almirolivado loops.",
+      "highlights": [
+        "Forest village",
+        "CTO trails",
+        "Troodos quiet"
+      ]
+    }
+  },
+  {
+    "id": "doros",
+    "name": "Doros",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Commandaria village on the southern Troodos slopes. Stone lanes, almond groves, and a tomb dating to 700 BC. Quieter than Omodos; deeper in the wine valleys. Vine terraces and winter mist in the hollows.",
+      "highlights": [
+        "Commandaria",
+        "Stone lanes",
+        "Ancient tomb"
+      ]
+    }
+  },
+  {
+    "id": "monagri-village",
+    "name": "Monagri",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Deep Commandaria country. Cooperative winery, cellar tours, and stone village quiet. Most visitors chase Omodos; Monagri makes wine without the performance.",
+      "highlights": [
+        "Cooperative winery",
+        "Commandaria",
+        "Cellar tours"
+      ]
+    }
+  },
+  {
+    "id": "silikou",
+    "name": "Silikou",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Commandaria heritage village. Museum of wine tradition, terraced vines, and valley walks. Agios Georgios church anchors a hamlet that feels unchanged for centuries.",
+      "highlights": [
+        "Commandaria museum",
+        "Terraced vines",
+        "UNESCO wine heritage"
+      ]
+    }
+  },
+  {
+    "id": "polystipos",
+    "name": "Polystipos",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Pitsilia village in the eastern Troodos, southeast of Olympus. Chronias dam, pine forest, and zivania culture. Cooler than the coast; often snow-dusted in January. Starting point for eastern Troodos loops.",
+      "highlights": [
+        "Pitsilia",
+        "Chronias dam",
+        "Zivania tradition"
+      ]
+    }
+  },
+  {
+    "id": "alona",
+    "name": "Alona",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Pitsilia village on the road to Olympus. Stone houses, apple orchards, and views across the eastern Troodos. Quieter base than Agros for winter mountain days.",
+      "highlights": [
+        "Pitsilia views",
+        "Apple orchards",
+        "Olympus approach"
+      ]
+    }
+  },
+  {
+    "id": "apsiou",
+    "name": "Apsiou",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Limassol wine village on the Krasochoria route. Hadjipavlou and other wineries; stone architecture; views toward the coast. Less photographed than Omodos; more room to breathe.",
+      "highlights": [
+        "Krasochoria",
+        "Stone architecture",
+        "Coast views"
+      ]
+    }
+  },
+  {
+    "id": "amiantos",
+    "name": "Amiantos",
+    "region": "Limassol",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Former mining village turned geopark gateway. Troodos Geopark Visitor Centre, recovering pine forest, and trails into ophiolite geology. Honest about industrial past; beautiful in winter snow.",
+      "highlights": [
+        "Geopark",
+        "Mining heritage",
+        "Forest recovery"
+      ]
+    }
+  },
+  {
+    "id": "kalavasos",
+    "name": "Kalavasos",
+    "region": "Larnaca",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Neolithic Tenta site and quiet village between Larnaca and Limassol. 7,000-year-old settlement; lace-making tradition; gateway to Vasilikon and Lefkara hinterland.",
+      "highlights": [
+        "Tenta Neolithic site",
+        "Lace tradition",
+        "Vasilikon wine route"
+      ]
+    }
+  },
+  {
+    "id": "peristerona",
+    "name": "Peristerona",
+    "region": "Nicosia",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Mesaoria village with a five-domed Byzantine church and Xyliatos dam nearby. Agricultural plain meets foothills; quiet kafenion pace; winter birdwatching at the reservoir.",
+      "highlights": [
+        "Five-domed church",
+        "Xyliatos dam",
+        "Mesaoria foothills"
+      ]
+    }
+  },
+  {
+    "id": "lagoudera",
+    "name": "Lagoudera",
+    "region": "Nicosia",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "UNESCO Panagia tou Araka (1192) above the village. Among the finest Komnenian frescoes in Cyprus. Key from village; combine with Kakopetria or Agros for a painted-church day.",
+      "highlights": [
+        "Panagia tou Araka",
+        "UNESCO frescoes",
+        "Mountain village"
+      ]
+    }
+  },
+  {
+    "id": "mitsero",
+    "name": "Mitsero",
+    "region": "Nicosia",
+    "type": "village",
+    "urls": [],
+    "current": {
+      "description": "Mining heritage village with red lake views. Pyrite mine flooded in 1967—acid drainage colours the water. Industrial landscape turned strange beauty. View from safe points only; never enter the lake.",
+      "highlights": [
+        "Red lake",
+        "Pyrite mining heritage",
+        "Industrial landscape"
+      ]
+    }
+  },
+  {
     "id": "kykkos",
     "name": "Kykkos Monastery",
     "region": "Troodos",
@@ -786,7 +1199,7 @@
     "type": "monastery",
     "urls": [],
     "current": {
-      "openingHours": "Daily 8 to 12, 14 to 17",
+      "openingHours": "Daily 8 to 12, 14 to 17. Call ahead after snow.",
       "description": "Fourteen hundred metres up. Active monastery, monks, a reverent welcome. The road from Platres can be snowy in Jan to Feb; call ahead. When it's open, the drive through the pine forest is beautiful. Dress modestly.",
       "highlights": [
         "High altitude",
@@ -834,7 +1247,7 @@
     "type": "monastery",
     "urls": [],
     "current": {
-      "openingHours": "Key from Kalopanagiotis museum; 9 to 16",
+      "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally.",
       "description": "Three churches share one timber roof in Kalopanagiotis. The frescoes span four centuries. The key lives at the village museum. Step inside and the walls speak. UNESCO for a reason.",
       "highlights": [
         "UNESCO",
@@ -850,7 +1263,8 @@
     "type": "monastery",
     "urls": [],
     "current": {
-      "description": "Near Lagoudera. Dated 1192. The finest Komnenian frescoes in Cyprus. Look up at the dome; the Pantokrator fills it. The key is kept in the village. Fewer visitors find it. That's part of the gift.",
+      "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally.",
+      "description": "Near Lagoudera. Dated 1192. Among the finest Komnenian frescoes in Cyprus. Look up at the dome; the Pantokrator fills it. The key is kept in the village. Fewer visitors find it. That's part of the gift.",
       "highlights": [
         "UNESCO",
         "1192 frescoes",
@@ -865,6 +1279,7 @@
     "type": "monastery",
     "urls": [],
     "current": {
+      "openingHours": "Active convent; call ahead. Modest dress required.",
       "description": "Active convent above the sea near Cape Greco. Peaceful gardens. The coastal path runs nearby; visit the convent, then walk six kilometres of sea caves and cliffs. In winter the light is clear. The Mediterranean stretches to the horizon.",
       "highlights": [
         "Coastal",
@@ -896,6 +1311,7 @@
     "type": "monastery",
     "urls": [],
     "current": {
+      "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally.",
       "description": "Pedoulas. Frescoes from 1474. Blues, reds, gold. The Last Judgment covers one wall; Pentecost another. The key lives at the Folk Art Museum or the café. Small. Intimate. The 15th century surrounds you.",
       "highlights": [
         "UNESCO",
@@ -911,6 +1327,7 @@
     "type": "monastery",
     "urls": [],
     "current": {
+      "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally.",
       "description": "St Nicholas of the Roof. The timber roof gives the church its name; a rare survival. Frescoes span six centuries. Above Kakopetria. Key from the Old Quarter. The trout tavernas by the river know how to warm you up after.",
       "highlights": [
         "UNESCO",
@@ -926,11 +1343,28 @@
     "type": "monastery",
     "urls": [],
     "current": {
+      "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally.",
       "description": "UNESCO painted church in Moutoullas. 1280 frescoes; earliest of the Troodos painted church group.",
       "highlights": [
         "UNESCO",
         "1280 frescoes",
         "Earliest Troodos church"
+      ]
+    }
+  },
+  {
+    "id": "panagia-asinou",
+    "name": "Panagia tis Asinou",
+    "region": "Nicosia",
+    "type": "monastery",
+    "urls": [],
+    "current": {
+      "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally.",
+      "description": "UNESCO church above Nikitari (1105). Comnenian frescoes of exceptional quality—Constantinople art in a Mesaoria foothill setting. Winter weekday visits often mean solitude in the nave.",
+      "highlights": [
+        "UNESCO",
+        "1105 frescoes",
+        "Comnenian art"
       ]
     }
   },
@@ -957,6 +1391,7 @@
     "type": "nature",
     "urls": [],
     "current": {
+      "openingHours": "Promenade always open. Shops and cafés seasonal hours.",
       "description": "Waterfront promenade, superyachts, and Mediterranean dining. The marina sits between the old town and the sea. In winter the crowds thin; the cafés stay open. A stroll here pairs well with Kolossi or Kourion. Urban Cyprus at its best.",
       "highlights": [
         "Waterfront",
@@ -966,20 +1401,684 @@
     }
   },
   {
+    "id": "larnaca-aliki",
+    "name": "Larnaca Salt Lake",
+    "region": "Larnaca",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "openingHours": "Open shoreline year-round. No ticket for the lake path.",
+      "description": "Ramsar wetland beside the airport. Greater flamingos winter here from about November to March. A flat promenade and viewing points; Hala Sultan Tekke sits on the western shore. Free, always open, best at first light.",
+      "highlights": [
+        "Winter flamingos",
+        "Ramsar wetland",
+        "Promenade"
+      ]
+    }
+  },
+  {
+    "id": "gerakopetra-boulders",
+    "name": "Gerakopetra (Ineia Crag)",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "A leading sport-climbing crag on the Laona plateau above Polis. Hard sandstone at 600 metres; northeast-facing walls stay cool in summer. Over a hundred bolted routes from 5a to 8b+, plus boulders scattered on the hillside. Ineia and Droushia villages are minutes away. Dry winter days bring excellent friction; belayers need layers on shaded sectors.",
+      "highlights": [
+        "Sport climbing",
+        "Sandstone crag",
+        "Laona plateau"
+      ]
+    }
+  },
+  {
+    "id": "droushia-konefti-boulders",
+    "name": "Droushia & Konefti Boulders",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "The Laona plateau's boulder fields spread across four square kilometres around Droushia village. Sandstone blocks, steep roofs, and quiet hillside landings. Less documented than Gerakopetra's main wall but richer for explorers who like to wander. The village weaving centre and Rural Life museum are worth a stop on the way back.",
+      "highlights": [
+        "Boulder fields",
+        "Laona plateau",
+        "Sandstone blocks"
+      ]
+    }
+  },
+  {
+    "id": "klirou-boulders",
+    "name": "Klirou Valley Boulders",
+    "region": "Nicosia",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "A quiet bouldering valley in the Nicosia foothills. Small limestone blocks in a pine-scented gorge—exploratory terrain, not a polished crag. Locals know it; tourists rarely do. Good half-day from the capital when Troodos is snowed in and the coast feels too mild.",
+      "highlights": [
+        "Limestone boulders",
+        "Nicosia foothills",
+        "Exploratory"
+      ]
+    }
+  },
+  {
+    "id": "arakapas-boulders",
+    "name": "Arakapas Boulders",
+    "region": "Pitsilia",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Quiet limestone boulders in the Pitsilia foothills east of Limassol. Smaller and less trafficked than the Laona crags. A handful of problems on good rock, pine shade, and views across the eastern Troodos. Combine with Agros or Machairas for a full Limassol hinterland day.",
+      "highlights": [
+        "Bouldering",
+        "Pitsilia views",
+        "Quiet field"
+      ]
+    }
+  },
+  {
+    "id": "climb-cyprus-limassol",
+    "name": "Climb Cyprus (Indoor)",
+    "region": "Limassol",
+    "type": "activity",
+    "urls": [],
+    "current": {
+      "description": "Modern indoor climbing and bouldering gym when the weather turns. Top-rope, lead walls, and a dedicated boulder cave. Winter rain or Troodos snow day? This is the fallback. Shoe rental available. Good for warming up before outdoor days or an evening session after village tastings.",
+      "highlights": [
+        "Indoor climbing",
+        "Bouldering cave",
+        "Rain-day backup"
+      ]
+    }
+  },
+  {
+    "id": "cape-greco-climbing",
+    "name": "Cape Greco Cliffs",
+    "region": "Ayia Napa",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Sea-cliff limestone on the island's eastern tip. Sport routes and trad lines above turquoise water. Winter is the window: cooler rock, fewer boats, calmer seas. Local operators run guided sessions. Even without ropes, the coastal path and sea caves reward a morning here.",
+      "highlights": [
+        "Sea cliffs",
+        "Sport climbing",
+        "Sea caves"
+      ]
+    }
+  },
+  {
+    "id": "petra-tou-romiou-cliffs",
+    "name": "Petra tou Romiou Cliffs",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Aphrodite's Rock and the limestone cliffs above the birthplace myth. Not a sport crag, but coastal scrambling and boulder problems near the shore. Winter sunsets are spectacular. Low crowds. Pair with the coastal walk toward Pissouri for a full active day.",
+      "highlights": [
+        "Coastal cliffs",
+        "Scrambling",
+        "Sunset views"
+      ]
+    }
+  },
+  {
+    "id": "troodos-cycling-hub",
+    "name": "Troodos Cycling Routes",
+    "region": "Troodos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Mountain roads and forest tracks around Platres and Troodos Square. Winter cycling is cool and quiet: Artemis road loops, Karvounas to Kakopetria descents, pine-scented climbs. Road and gravel options. Layer up; elevation brings cold. Cafés in Platres welcome muddy bikes.",
+      "highlights": [
+        "Mountain roads",
+        "Forest tracks",
+        "Platres hub"
+      ]
+    }
+  },
+  {
+    "id": "akamas-latchi-cycling",
+    "name": "Akamas & Latchi Cycling",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Coastal and dirt roads through the Akamas peninsula. Latchi harbour to Baths of Aphrodite, Blue Lagoon viewpoints, and quiet village tracks. Winter mild on the coast. Gravel-friendly routes; some sections rough. E-bikes popular with local rentals.",
+      "highlights": [
+        "Akamas peninsula",
+        "Coastal roads",
+        "Blue Lagoon views"
+      ]
+    }
+  },
+  {
+    "id": "limassol-coastal-cycle",
+    "name": "Limassol Coastal Cycle Path",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Paved cycle path along the Limassol coast from the old port toward Germasogeia and beyond. Flat, family-friendly, winter sun. Connect to the dam loop for hills. Bike rental shops in the marina area. Evening rides when the light turns golden.",
+      "highlights": [
+        "Coastal path",
+        "Flat route",
+        "City to sea"
+      ]
+    }
+  },
+  {
+    "id": "latchi-kayak-base",
+    "name": "Latchi Harbour & Kayak",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Glassy winter mornings in Latchi harbour. Kayak rentals and guided trips to the Blue Lagoon and Akamas sea caves when the sea is calm. Winter seas are cooler but often clearer; fewer boats. Wetsuit recommended Dec to Feb. Fish tavernas on the harbour for post-paddle lunch.",
+      "highlights": [
+        "Kayaking",
+        "Blue Lagoon",
+        "Sea caves"
+      ]
+    }
+  },
+  {
+    "id": "zenobia-diving",
+    "name": "Zenobia Wreck (Diving)",
+    "region": "Larnaca",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "One of the world's top wreck dives. The ferry Zenobia sank in 1980 on her maiden voyage; she lies on her side at 16 to 42 metres. Winter visibility can be excellent when boats run. Certified divers only; Larnaca dive centres schedule trips year-round when weather allows—book ahead off-season. A bucket-list dive in the eastern Mediterranean.",
+      "highlights": [
+        "Wreck diving",
+        "Zenobia ferry",
+        "World-class site"
+      ]
+    }
+  },
+  {
+    "id": "cape-greco-kayak",
+    "name": "Cape Greco Sea Caves (Kayak)",
+    "region": "Ayia Napa",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Paddle into sea caves and arches on the Cape Greco peninsula. Guided kayak tours on calm days when operators run—call ahead off-season. Winter groups are small; the water is clear and the cliffs dramatic. Snorkelling from the kayak optional in mild weather.",
+      "highlights": [
+        "Sea kayaking",
+        "Sea caves",
+        "Snorkelling"
+      ]
+    }
+  },
+  {
+    "id": "lady-mile-windsurf",
+    "name": "Lady's Mile Windsurfing",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Long flat beach and steady winter winds make Lady's Mile a local favourite for windsurfing and kitesurfing. Less crowded than summer. Wetsuit essential. Watch the salt lake flamingos on the drive in. Best on clear windy days Dec to Mar.",
+      "highlights": [
+        "Windsurfing",
+        "Kitesurfing",
+        "Flat water"
+      ]
+    }
+  },
+  {
+    "id": "ayii-anargyri-spa",
+    "name": "Ayii Anargyri Natural Healing Spa",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Natural sulphur springs piped into pools at this Miliou valley spa hotel. Thermal water at 28°C year-round. Day passes and treatments available. Winter is ideal: mist in the valley, warm water, quiet pools. Combine with Polis or Akamas hiking for a wellness day.",
+      "highlights": [
+        "Thermal springs",
+        "Spa treatments",
+        "Miliou valley"
+      ]
+    }
+  },
+  {
+    "id": "kourion-coastal-scramble",
+    "name": "Kourion Sea Cliffs",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Limestone cliffs below the Kourion ancient theatre drop to Episkopi Bay. Not a bolted crag—a scramble zone where locals practice movement above the sea. Winter sunsets from the theatre are famous; the cliff path below is quieter. Check rock after rain.",
+      "highlights": [
+        "Coastal scrambling",
+        "Ancient theatre views",
+        "Episkopi Bay"
+      ]
+    }
+  },
+  {
+    "id": "white-rocks-paphos",
+    "name": "White Rocks (Agios Georgios)",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Limestone coves and white cliffs between Paphos and Coral Bay. Snorkelling in clear winter water, coastal scrambling, and sea caves at low tide. Not the harbour-side White Rocks hotel—the wild coast near Agios Georgios Pegeias. Few tour buses in winter.",
+      "highlights": [
+        "White limestone",
+        "Snorkelling",
+        "Sea caves"
+      ]
+    }
+  },
+  {
+    "id": "prodromos-dam-cycling",
+    "name": "Prodromos Dam & Forest Roads",
+    "region": "Troodos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Cyprus's highest village sits beside a quiet dam and web of forest roads. Gravel loops through pine and golden oak, mist in winter mornings, snow dusting on the peaks. Cool, empty, and serious climbing—1,380 metres of elevation.",
+      "highlights": [
+        "High-altitude cycling",
+        "Prodromos Dam",
+        "Forest roads"
+      ]
+    }
+  },
+  {
+    "id": "krasochoria-gravel-loop",
+    "name": "Krasochoria Gravel Loop",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Linked wine villages on gravel and tarmac: Louvaras, Lofou, Omodos, Koilani. Rolling hills, vine terraces bare in winter, kafenion stops. E-bikes and gravel bikes love this loop. Quiet weekday riding; Omodos gets busier on weekends.",
+      "highlights": [
+        "Wine villages",
+        "Gravel roads",
+        "Krasochoria"
+      ]
+    }
+  },
+  {
+    "id": "pomos-harbour-coast",
+    "name": "Pomos Harbour & Tylliria Coast",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Remote fishing harbour on Cyprus's north-west tip. Pebble beach, crystal water, Dragon Cave kayak trips, and almost no winter crowds. The Tylliria peninsula feels like another island—slower, wilder, far from the resort coast.",
+      "highlights": [
+        "Remote harbour",
+        "Kayaking",
+        "Snorkelling"
+      ]
+    }
+  },
+  {
+    "id": "germasogeia-dam-paddle",
+    "name": "Germasogeia Dam Paddle",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Reservoir kayaking and SUP surrounded by Troodos foothills. Flat water, pine-scented shores, no sea swell. Winter mornings are mirror-calm. Local operators run sessions; the dam trail links to cycling and hiking loops.",
+      "highlights": [
+        "Reservoir paddling",
+        "Flat water",
+        "Mountain backdrop"
+      ]
+    }
+  },
+  {
+    "id": "tzelefos-bridge",
+    "name": "Tzelefos Venetian Bridge",
+    "region": "Troodos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Medieval single-arch bridge in the Paphos Forest. Moss, river noise, pine shade—a place that slows you down. Winter rains swell the Diarizos; mist hangs in the valley. Forest bathing, gentle walks, and one of Cyprus's most photographed hidden spots.",
+      "highlights": [
+        "Venetian bridge",
+        "Paphos Forest",
+        "River valley"
+      ]
+    }
+  },
+  {
+    "id": "episkopi-crags",
+    "name": "Episkopi (Paphos) Crags",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Steep limestone sport climbing ten kilometres from Paphos. Forty bolted routes from 6a to 8c on a south-facing wall—athletic overhangs and crimpy faces. Lower sectors dry fast after rain; winter is prime when inland crags are cold.",
+      "highlights": [
+        "Sport climbing",
+        "Limestone overhangs",
+        "Paphos hills"
+      ]
+    }
+  },
+  {
+    "id": "episkopi-boulders",
+    "name": "Episkopi Boulders (Paphos)",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Twenty-one limestone boulder problems near the Episkopi sport crag. Low altitude, quick sessions, good winter sun. Less traffic than Laona. Combine with the main wall or a half-day when Gerakopetra is too far.",
+      "highlights": [
+        "Limestone boulders",
+        "Quick sessions",
+        "Winter sun"
+      ]
+    }
+  },
+  {
+    "id": "kellaki-kyparissia-ridge",
+    "name": "Kyparissia Ridge (Kellaki)",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Exposed ridge above Germasogeia Dam with 685 metres of climb and panoramic Limassol coast views. Winter hiking and MTB when summer sun would be brutal. Natural cypress clusters, endemic flora, and silence above the reservoir.",
+      "highlights": [
+        "Ridge trail",
+        "Dam views",
+        "MTB terrain"
+      ]
+    }
+  },
+  {
+    "id": "trimiklini-dam-cycling",
+    "name": "Trimiklini Dam Roads",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Rolling dam roads and vineyard lanes around Trimiklini on the Limassol–Platres corridor. Double stone bridge, Venetian relics, and quiet climbing before the Troodos ascent. A locals' winter loop when the high mountains are snow-bound.",
+      "highlights": [
+        "Dam roads",
+        "Vineyard lanes",
+        "Limassol–Platres corridor"
+      ]
+    }
+  },
+  {
+    "id": "xyliatos-dam-cycle",
+    "name": "Xyliatos Dam & Peristerona Loop",
+    "region": "Nicosia",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Forest roads around Xyliatos Dam in the Nicosia foothills. Quiet reservoir, pine shade, and linked villages—Peristerona, Agios Ioannis—on a mild winter loop far from the coast crowds.",
+      "highlights": [
+        "Reservoir loop",
+        "Pine forest",
+        "Nicosia foothills"
+      ]
+    }
+  },
+  {
+    "id": "green-bay-protaras",
+    "name": "Green Bay (Protaras)",
+    "region": "Ayia Napa",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Sheltered crescent bay for shore diving and snorkelling—sea turtles, ancient pottery on the seabed, calm entry when the open Med is rough. Prasinada to locals. Winter visibility can exceed summer; wetsuit essential.",
+      "highlights": [
+        "Shore dive",
+        "Sea turtles",
+        "Snorkelling"
+      ]
+    }
+  },
+  {
+    "id": "pissouri-bay-coast",
+    "name": "Pissouri Bay Coast",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Cliff-backed bay between Limassol and Paphos. PADI dive centre, white cliffs trail, and tavernas above the curve of the coast. Winter sunsets around five; mild when Troodos is cold.",
+      "highlights": [
+        "Cliff coast",
+        "Diving",
+        "Sunset bay"
+      ]
+    }
+  },
+  {
+    "id": "kannavia-forest-bathing",
+    "name": "Kannavia Forest Trails",
+    "region": "Nicosia",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Small Troodos village surrounded by pine—CTO trails, quiet forest bathing, and snow dust on nearby peaks in deep winter. Fewer buses than Platres; more silence.",
+      "highlights": [
+        "Pine forest",
+        "CTO trails",
+        "Mountain quiet"
+      ]
+    }
+  },
+  {
+    "id": "amphorae-caves-paphos",
+    "name": "Amphorae Caves (Moulia)",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Shallow reef dive and snorkel site off Paphos harbour. Roman amphorae encrust a cave roof at 12 metres—2,000 years of history above your mask. Green turtles and stingrays in winter when visibility clears.",
+      "highlights": [
+        "Boat dive",
+        "Roman amphorae",
+        "Turtle sightings"
+      ]
+    }
+  },
+  {
+    "id": "amiantos-geopark",
+    "name": "Troodos Geopark (Amiantos)",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "UNESCO Global Geopark visitor centre in a restored mine school. Asbestos and chromite mining history, geological garden, copper furnace reconstructions. Forest trails radiate from the site—winter snow possible at this elevation.",
+      "highlights": [
+        "UNESCO Geopark",
+        "Mining heritage",
+        "Forest trails"
+      ]
+    }
+  },
+  {
+    "id": "mesa-potamos-grove",
+    "name": "Mesa Potamos Picnic Grove",
+    "region": "Troodos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Forest picnic site near Platres with tables under ancient plane trees. Stream noise, mountain air, and easy access when longer trails are snow-closed. Locals' winter lunch stop after a short walk.",
+      "highlights": [
+        "Picnic grove",
+        "Plane trees",
+        "Stream"
+      ]
+    }
+  },
+  {
+    "id": "pitsilia-cycling-loop",
+    "name": "Pitsilia Village Loop",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Linked mountain roads through Agros, Alona, Polystipos, and Kyperounta. Vine terraces bare in winter, zivania distilleries, and views toward Olympus. Serious climbing; serious quiet.",
+      "highlights": [
+        "Pitsilia region",
+        "Mountain villages",
+        "Vine terraces"
+      ]
+    }
+  },
+  {
+    "id": "minthis-forest-paphos",
+    "name": "Minthis Forest (Paphos Hills)",
+    "region": "Paphos",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Pine and golden oak above Tsada and Koili. Quiet forest roads for walking and gravel cycling. Minthis Golf overlooks the hills; the forest below stays wild and little visited in winter.",
+      "highlights": [
+        "Paphos forest",
+        "Gravel roads",
+        "Hill views"
+      ]
+    }
+  },
+  {
+    "id": "potamia-dam-cycling",
+    "name": "Potamia Dam & Laxia Loop",
+    "region": "Nicosia",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Reservoir and forest roads in the Nicosia District hills. Linked to the Potamia nature trail—easy cycling on quiet tarmac when Troodos is snowed in.",
+      "highlights": [
+        "Reservoir",
+        "Forest roads",
+        "CTO trail link"
+      ]
+    }
+  },
+  {
+    "id": "paramali-coast",
+    "name": "Paramali & West Limassol Coast",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Quiet west Limassol coastline between Pissouri and Akrotiri. Cliff paths, empty shingle beaches, and winter light on white rock. No resort infrastructure—bring supplies.",
+      "highlights": [
+        "Cliff coast",
+        "Empty beaches",
+        "West Limassol"
+      ]
+    }
+  },
+  {
+    "id": "silikou-valley-trail",
+    "name": "Silikou Commandaria Valley",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Commandaria heritage valley. Ancient vine terraces, the Commandaria museum, and walks between stone-built hamlets. Winter light in the vines; zivania warmth in the kafenion.",
+      "highlights": [
+        "Commandaria heritage",
+        "Valley walks",
+        "UNESCO wine tradition"
+      ]
+    }
+  },
+  {
+    "id": "cape-greco-cyclops-dive",
+    "name": "Cyclops Cave (Cape Greco)",
+    "region": "Ayia Napa",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Advanced shore dive at Cape Greco—Cyclops Cave drops beyond 30 metres for trained divers. Shallow caves nearby for snorkellers. Winter visibility and empty parking.",
+      "highlights": [
+        "Advanced dive",
+        "Sea caves",
+        "Cape Greco"
+      ]
+    }
+  },
+  {
+    "id": "eptagoneia-limestone-boulders",
+    "name": "Eptagoneia Boulders",
+    "region": "Limassol",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Limestone blocks in the Pitsilia foothills between Klirou and Arakapas. The east-corridor bouldering gap—exploratory problems on good rock, pine shade, views toward Papoutsa. Less polished than Laona; quieter than the capital valley.",
+      "highlights": [
+        "Limestone boulders",
+        "East corridor",
+        "Pitsilia foothills"
+      ]
+    }
+  },
+  {
+    "id": "larnaca-village-coastal-cycle",
+    "name": "Orange Valley & Zygi Coastal Loop",
+    "region": "Larnaca",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "description": "Gravel and tarmac loop through Kalavasos, Tochni, and Zygi fishing harbour. Orange groves in the valley, mild winter sun, fish tavernas on the coast. Forty to fifty kilometres of rolling Larnaca hinterland—quieter than Troodos when snow closes the peaks.",
+      "highlights": [
+        "Village loop",
+        "Zygi harbour",
+        "Orange Valley"
+      ]
+    }
+  },
+  {
+    "id": "mackenzie-larnaca-coast",
+    "name": "Mackenzie Beach & Larnaca Bay",
+    "region": "Larnaca",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "openingHours": "Open shoreline year-round. Schools and kit rental seasonal.",
+      "description": "Shallow Larnaca bay with winter kite and windsurf when the wind cooperates. Calm days suit snorkelling and SUP; the wreck of the Zenobia lies offshore for divers. Finikoudes promenade ten minutes north. Mild eastern-Mediterranean winter coast—not empty, but far from summer crowds.",
+      "highlights": [
+        "Kitesurf",
+        "Snorkelling",
+        "Shallow bay"
+      ]
+    }
+  },
+  {
+    "id": "athalassa-forest-park",
+    "name": "Athalassa National Forest Park",
+    "region": "Nicosia",
+    "type": "nature",
+    "urls": [],
+    "current": {
+      "openingHours": "Park open dawn to dusk. Visitor centre hours vary — call ahead off-season.",
+      "description": "840 hectares of pine and scrub on Nicosia's south-eastern edge. Twenty kilometres of walking trails, a sixteen-kilometre cycling route, lake, and botanical garden. Free entry; winter rain turns the paths quiet and green. The capital's quickest forest reset.",
+      "highlights": [
+        "Forest trails",
+        "Cycling route",
+        "Botanical garden"
+      ]
+    }
+  },
+  {
     "id": "tsiakkas",
     "name": "Tsiakkas Winery",
     "region": "Pelendri (Limassol)",
     "type": "winery",
     "urls": [
-      "https://www.tsiakkaswinery.com/en/visit"
+      "https://tsiakkaswinery.com/experiences/"
     ],
     "current": {
-      "contactPhone": "+357 25 944044",
-      "description": "Tsiakkas is a family-run winery in the Troodos foothills, known for indigenous varieties: Xynisteri, Maratheftiko, and a few surprises. The tasting terrace looks out over the mountains; in winter they light the heaters so you can sit outside with a blanket and a view. Book ahead; the family often leads the tasting themselves. Ask about the Xynisteri lees-aged, and they'll point you to the best halloumi in the village for a proper pairing.",
+      "openingHours": "Mon–Fri 10:00–16:00, Sat 11:00–17:00. Closed Sun except select dates.",
+      "contactPhone": "+357 99 244795",
+      "description": "Founded in 1988, Tsiakkas sits at 1,000 m in Pelendri, Pitsilia. Thirteen hectares of certified organic vineyards produce around 200,000 bottles of Xynisteri, Maratheftiko, and indigenous varieties. The terrace has heaters in winter; guided tours run Mon–Sat at 12:00 and 14:00. Reserve ahead—the family often pours.",
       "highlights": [
+        "Organic vineyards",
         "Xynisteri",
-        "Maratheftiko",
-        "Mountain views"
+        "Maratheftiko"
       ]
     }
   },
@@ -989,11 +2088,12 @@
     "region": "Panayia (Paphos)",
     "type": "winery",
     "urls": [
-      "https://www.vounipanayiawinery.com/visit"
+      "https://www.vounipanayiawinery.com/"
     ],
     "current": {
-      "contactPhone": "+357 26 722222",
-      "description": "Vouni Panayia is one of Cyprus's most awarded wineries. It sits in the Laona region, the wine villages of the Paphos hills. Commandaria, dry whites, robust reds. The tasting room is cosy in winter. They'll bring local cheese. Ask for a comparative tasting of their Commandaria; younger and older vintages side by side. You'll taste what time does to the wine. The village of Panayia is nearby; the church has a miraculous icon. Locals often combine a winery visit with a quick stop. Winter hours run ten to four. Plan for lunch in the village. The drive through the Laona villages is half the pleasure.",
+      "openingHours": "9:00–16:00",
+      "contactPhone": "+357 99 755159",
+      "description": "Established in 1987, Vouni Panayia sits on a hill above Panayia village with views over Kannaviou Reservoir and the Troodos. After recent renovations it offers an educational film, traditional museum, and tasting room. Commandaria, dry whites, and robust reds from limestone-rich soils. The restaurant serves meals with valley views.",
       "highlights": [
         "Commandaria",
         "Award-winning",
@@ -1007,14 +2107,15 @@
     "region": "Agios Amvrosios (Limassol)",
     "type": "winery",
     "urls": [
-      "https://www.zambartaswineries.com/visit"
+      "https://zambartaswineries.com/book-now/"
     ],
     "current": {
+      "openingHours": "Mon–Fri 10:00–17:00, Sat–Sun 10:00–18:00 (winter). Prior appointment recommended.",
       "contactPhone": "+357 25 942424",
-      "description": "Zambartas was founded by a pioneering oenologist who helped put modern Cypriot wine on the map. The facility is clean and modern, but the welcome is warm. Their Lefkada is a flagship; an indigenous red that surprises people who think they know Cypriot wine. The rosé is crisp and summery even in winter. It's an easy twenty-five-minute drive from Limassol, ideal for a winter afternoon when you want good wine without a long mountain haul.",
+      "description": "Founded in 2006 by Dr. Akis Zambartas, the winery focuses on indigenous varieties and environmentally friendly practice. Their Shiraz–Lefkada blend is a flagship, matured 12 months in oak. Three tasting experiences: Winemaker's Selection (€20), Seasonal Selection (€15), Wine & Canapés (€25). Winter hours 10:00–17:00 weekdays, 18:00 weekends.",
       "highlights": [
-        "Lefkada",
-        "Rosé",
+        "Shiraz–Lefkada",
+        "Indigenous varieties",
         "Boutique"
       ]
     }
@@ -1022,16 +2123,19 @@
   {
     "id": "kolios",
     "name": "Kolios Winery",
-    "region": "Kathikas (Paphos)",
+    "region": "Statos-Ayios Fotios (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://www.kolioswinery.com.cy/book-a-table/"
+    ],
     "current": {
-      "contactPhone": "+357 26 632127",
-      "description": "Kolios sits in Kathikas, one of the Akamas wine villages. Old vines, Commandaria, and hearty reds. The tasting room is rustic; stone walls, village charm. It's the kind of place where the owner might pour your glass and tell you how his grandfather made wine in the same building. Call ahead in winter; hours can be limited. Combine a visit with the Baths of Aphrodite and the Adonis Trail. Kathikas is on the loop. Do the hike in the morning, the tasting in the afternoon. Ask to compare their Commandaria with a modern interpretation. The difference is a lesson in tradition.",
+      "openingHours": "Winter (Oct–Feb): Mon–Sat 9am–3pm. Summer (Mar–Sep): Mon–Sat 8:30am–5pm. Sunday: private parties only (50+ guests).",
+      "contactPhone": "+357 26 724090",
+      "description": "Kolios sits on a mountaintop about a kilometre outside Statos Agios Fotios, towards Chrysorrogiatissa Monastery. At 3,000 feet, the family cultivates the largest organic Maratheftiko vineyard in Cyprus—no chemical fertilizers, only natural methods. Four generations have tended these vines. The underground cellar has oak barrels and a natural spring that keeps the humidity ideal for ageing. Guided tours at 12:30pm are followed by traditional meze lunch at 1pm, cooked by the owner's wife from local ingredients. Book one or two days ahead. The views over mountainous Paphos—pine-covered slopes, gorges, mouflons wandering the vineyards—reward the drive up.",
       "highlights": [
-        "Akamas route",
-        "Commandaria",
-        "Old vines"
+        "Organic Maratheftiko",
+        "Meze lunch",
+        "3000 ft altitude"
       ]
     }
   },
@@ -1040,14 +2144,17 @@
     "name": "Kyperounta Winery",
     "region": "Kyperounta (Troodos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://kyperoundawinery.com/en/"
+    ],
     "current": {
+      "openingHours": "By appointment. Call for hours; road conditions vary Dec–Feb.",
       "contactPhone": "+357 25 452123",
-      "description": "Kyperounta is the highest-altitude vineyard in Cyprus; 1,400 metres. The wines have a character you won't find at sea level: minerality, acidity, a clarity that comes from cold nights and mountain air. Winter visits offer snow-capped Troodos views. Call ahead. The road can be closed by snow in January and February. December or March are safer bets. If you make it, wrap up warm. The tasting room has heaters, but the drive up is half the adventure. Combine with Olympus Summit, Platres, or the Artemis Trail. You're in the heart of the mountains here.",
+      "description": "At 1,400 m, Kyperounta is among Europe's highest wineries by facility altitude. Established in the late 1990s, it began production in 1998. Chardonnay, Cabernet Sauvignon, Syrah, and premium EPOS range benefit from slow ripening and mountain clarity. Three-level gravity-fed facility; underground cellar with 250 oak barrels. Call ahead—the road can close in snow.",
       "highlights": [
-        "High altitude",
-        "Unique terroir",
-        "Troodos views"
+        "Among Europe's highest wineries",
+        "1,400 m altitude",
+        "EPOS range"
       ]
     }
   },
@@ -1060,12 +2167,13 @@
       "https://www.santowinery.com/reservations"
     ],
     "current": {
+      "openingHours": "Restaurant 12:00–16:00; check for winter variations.",
       "contactPhone": "+357 25 936666",
-      "description": "Santo perches on a hill above Limassol with panoramic sea and vineyard views. Their Ayios Onoufrios red has become a Cyprus favourite, and the restaurant stays open for lunch year-round. On a mild winter day you can sit outside with a blanket and watch the light shift over the vines. The terrace fills at weekends, so book ahead. Sunset in December is around five; time it right and you get the golden hour with a glass in hand. It's the kind of place where lunch stretches into the afternoon.",
+      "description": "Hilltop winery above Limassol with panoramic sea and vineyard views. The restaurant serves lunch most weeks; call ahead Nov–Mar. On mild winter days the terrace offers heaters and blankets. Sunset in December is around five—time a late afternoon tasting for the golden hour. Book ahead at weekends.",
       "highlights": [
         "Sea views",
         "Restaurant",
-        "Events"
+        "Year-round lunch"
       ]
     }
   },
@@ -1076,11 +2184,12 @@
     "type": "winery",
     "urls": [],
     "current": {
-      "contactPhone": "+357 26 732222",
-      "description": "Organic winter tastings in the Laona wine villages. Stone-built tasting room, mountain views. Xynisteri, Maratheftiko, Lefkada.",
+      "openingHours": "Mon–Sat 9:00–17:00",
+      "contactPhone": "+357 26 722777",
+      "description": "Founded in 2005 by Angelos Tsangarides, the estate has ~20 ha of certified organic vineyards and seven organic labels. Single Vineyard Xynisteri, Vasilissa Maratheftiko, Angels Rosé. No synthetic pesticides or chemical fertilisers. Stone-built tasting room with mountain views.",
       "highlights": [
-        "Organic",
-        "Indigenous varieties",
+        "Organic certified",
+        "Vasilissa Maratheftiko",
         "Laona route"
       ]
     }
@@ -1088,16 +2197,19 @@
   {
     "id": "fikardos",
     "name": "Fikardos Winery",
-    "region": "Stroumbi (Paphos)",
+    "region": "Mesogi / Stroumbi (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://www.fikardoswines.com.cy/bookings/"
+    ],
     "current": {
-      "contactPhone": "+357 26 632145",
-      "description": "Pioneering boutique winery in the Paphos wine villages. Focus on Maratheftiko, Cabernet Sauvignon, and Chardonnay. Lovely terrace overlooking the vines; ideal for a sunny winter afternoon.",
+      "openingHours": "Mon–Fri 8:00–13:00 & 14:30–17:00, Sat 8:00–13:00. Closed Sun.",
+      "contactPhone": "+357 26 949814",
+      "description": "Founded in 1990 by Theodoros Fikardos, one of the first privately owned wineries in Cyprus. Vineyards in Pano Arodes and Choulou; grapes from Stroumbi, Tsada, Kathikas. Five ranges: Classic, Medium Sweet, Premium, Premium Limited Edition, Experiment. Terrace overlooking the vines.",
       "highlights": [
         "Maratheftiko",
-        "Terrace views",
-        "Boutique"
+        "Award-winning",
+        "First private winery"
       ]
     }
   },
@@ -1107,14 +2219,15 @@
     "region": "Koilani (Limassol)",
     "type": "winery",
     "urls": [
-      "https://www.vlassideswinery.com"
+      "https://vlassideswinery.com/visits/"
     ],
     "current": {
-      "contactPhone": "+357 25 472220",
-      "description": "Award-winning winter tastings in the Krasochoria heartland. Shiraz, Cabernet Sauvignon. Book ahead. Modern facility with warm hospitality.",
+      "openingHours": "Mon–Fri 11:00–16:00 by appointment. Closed Sun & holidays.",
+      "contactPhone": "+357 97 789560",
+      "description": "Founded by Sophocles Vlassides (UC Davis), completed 2012. Unconventional architecture—represented Cyprus at the Mies van der Rohe Award 2015. Twenty-one hectares at 700–1,100 m. Shiraz, Cabernet Sauvignon, Sauvignon Blanc; minimal oak, fruit-forward style. Rainbow tasting €7.50; 4×4 with cheese €18; Riedel experience €220.",
       "highlights": [
         "Shiraz",
-        "Award-winning",
+        "Award-winning architecture",
         "Krasochoria"
       ]
     }
@@ -1124,13 +2237,16 @@
     "name": "Vasilikon Winery",
     "region": "Kathikas (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://vasilikon.com/contact-us/"
+    ],
     "current": {
-      "contactPhone": "+357 26 632138",
-      "description": "Winter tastings on the Akamas wine route. Commandaria, old vines. Pair with Adonis Trail. Traditional charm.",
+      "openingHours": "Winery 8:30–18:00, restaurant 10:00–16:00 in season; call ahead Nov–Mar.",
+      "contactPhone": "+357 26 633999",
+      "description": "Established in 1993 by the Kyriakides brothers. Sixteen hectares at 650–700 m; limestone and volcanic soils; sea breezes give a distinctive saline character. PDO Vasilikon Xynisteri (Laona Akamas since 2016), Ayios Onoufrios red (Silver 2014 International Challenge). Cellar, museum, restaurant, terrace.",
       "highlights": [
-        "Commandaria",
-        "Old vines",
+        "Ayios Onoufrios",
+        "PDO Xynisteri",
         "Akamas route"
       ]
     }
@@ -1142,44 +2258,46 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "10:00–18:00; restaurant 11:00–19:00. Call ahead off-season.",
       "contactPhone": "+357 25 421234",
-      "description": "Winter cellar tastings in Omodos. Stone architecture, Commandaria, Xynisteri, Mavro. Book ahead.",
+      "description": "Also known as Oenou Yi; founded 2017 by Christodoulos G. Vassiliades. At 800–1,000 m in the Krasochoria hills. Traditional Xinisteri (70%) and Mavro (30%), sun-dried; Commandaria gold medal at Thessaloniki 2021. Tours and restaurant (11:00–19:00) with village views.",
       "highlights": [
+        "Commandaria gold medal",
         "Omodos village",
-        "Commandaria",
-        "Historic setting"
+        "Restaurant"
       ]
     }
   },
   {
     "id": "ayia-mavri",
     "name": "Ayia Mavri Winery",
-    "region": "Statos (Paphos)",
+    "region": "Koilani (Limassol)",
     "type": "winery",
     "urls": [],
     "current": {
-      "contactPhone": "+357 26 742345",
-      "description": "Intimate winter tastings on the Laona plateau. Small-batch Xynisteri, Maratheftiko, rosé. Call ahead.",
+      "openingHours": "11:00–16:00 in season; call ahead Nov–Mar.",
+      "contactPhone": "+357 25 470225",
+      "description": "Established 1983; first winery in Koilani. Run by Yiannoula and Ioannis Ioannidou. ~50,000 bottles/year from Mavro, Xinisteri, Muscat, Lefkada, Shiraz, Cabernet. Famous for Mosxatos sweet wines. Vineyard tour, tastings, local cheese and delicacies.",
       "highlights": [
-        "Small-batch",
-        "Winemaker tastings",
-        "Laona plateau"
+        "Mosxatos sweet wines",
+        "First in Koilani",
+        "Award-winning"
       ]
     }
   },
   {
     "id": "ezousa",
     "name": "Ezousa Winery",
-    "region": "Pano Panayia (Paphos)",
+    "region": "Kannaviou (Paphos)",
     "type": "winery",
     "urls": [],
     "current": {
-      "contactPhone": "+357 26 722345",
-      "description": "Small family winery in the Paphos mountains. Indigenous varieties and natural wine approach. Rustic tasting experience with local meze; reserve ahead.",
+      "contactPhone": "+357 70 008844",
+      "description": "Owner Michalis Constantinides. Named after the Ezousa river; four hectares at 400 m. Indigenous varieties only—soils born of fire and time. ~52,000 bottles/year. Tasting room; book ahead.",
       "highlights": [
-        "Natural wine",
-        "Indigenous grapes",
-        "Family-run"
+        "Indigenous varieties",
+        "Ezousa terroir",
+        "Natural approach"
       ]
     }
   },
@@ -1191,7 +2309,7 @@
     "urls": [],
     "current": {
       "contactPhone": "+357 25 442156",
-      "description": "Third-generation winery in the Krasochoria. Commandaria and dry wines from mountain vineyards. Traditional stone cellar and warm winter welcome.",
+      "description": "Third-generation family winery in Pera Pedi at 770 m—Krasochoria village with Commandaria tradition. Traditional sun-dried grapes, long ageing. Stone cellar, mountain air. Call ahead for tastings.",
       "highlights": [
         "Commandaria",
         "Third generation",
@@ -1202,15 +2320,16 @@
   {
     "id": "olympus-winery",
     "name": "Olympus Wineries",
-    "region": "Odou (Limassol)",
+    "region": "Omodos (Limassol)",
     "type": "winery",
     "urls": [],
     "current": {
-      "contactPhone": "+357 25 423456",
-      "description": "Olympus Wineries sits near Troodos, close enough to smell the pine. Xynisteri, Cabernet Sauvignon, Commandaria. The views stretch across the mountain. In January and February the road can be snowy; call ahead. If you make it, you're in the heart of it. Combine a visit with a ski day or a Troodos drive. The mountain does the work. You taste, you look out the window, you understand why people come here in winter. The wines taste of altitude. Of cold nights and clear air.",
+      "openingHours": "08:00–17:00. Call ahead in winter.",
+      "contactPhone": "+357 99 651707",
+      "description": "Established 1996 on the foothills of Olympus. Maratheftiko, Xinisteri, Cabernet Sauvignon, Chardonnay. Tours through barrel room and bottling line. Professional staff, positive reviews. Near Troodos; road can be snowy Jan–Feb—call ahead.",
       "highlights": [
         "Troodos proximity",
-        "Mountain views",
+        "Maratheftiko",
         "Ski + wine combo"
       ]
     }
@@ -1218,32 +2337,36 @@
   {
     "id": "aes-ambelis",
     "name": "Aes Ambelis Winery",
-    "region": "Agios Amvrosios (Limassol)",
+    "region": "Kalo Chorio Orinis (Nicosia)",
     "type": "winery",
     "urls": [],
     "current": {
-      "contactPhone": "+357 25 942567",
-      "description": "Next to Zambartas. Do both in one afternoon. Single-vineyard Xynisteri and Maratheftiko. Compare styles. The drive from Limassol is twenty minutes. Modern tasting room, terrace views. Agios Amvrosios village. Two estates, one trip. The kind of afternoon that fills a bottle and a memory.",
+      "openingHours": "By appointment; call ahead Nov–Mar.",
+      "contactPhone": "+357 99 651361",
+      "description": "Founded early 1990s by George Tripatsas. Three hectares; Maratheftiko, Shiraz, Chardonnay; natural farming. ~170,000 bottles/year. Two-level architecture, underground cellar, tasting hall overlooking Pitsilia. Artisanal cheese and charcuterie available.",
       "highlights": [
         "Single-vineyard",
-        "Krasochoria",
-        "Boutique"
+        "Natural farming",
+        "Pitsilia views"
       ]
     }
   },
   {
     "id": "makarounas",
     "name": "Makarounas Winery",
-    "region": "Makarounas (Paphos)",
+    "region": "Letymbou (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://www.makarounaswinery.com/visit/"
+    ],
     "current": {
+      "openingHours": "Mon–Fri 11:00–15:00, Sat 11:00–17:00. Reservations required.",
       "contactPhone": "+357 26 732456",
-      "description": "Organic and sustainability-focused. High-altitude vines in Makarounas village. Their Lefkada is a rare indigenous red; ask about it. The valley views from the terrace are golden in winter. Book ahead. Laona route. The kind of place that reminds you why small producers matter.",
+      "description": "Boutique family winery; four generations. Only Cyprus winery sourcing exclusively from own vineyards—17–28 ha at 400–600 m. Ungrafted vines, organic viticulture. Xynisteri, Morokanella, Spourtiko, Maratheftiko, Yiannoudi, Lefkada. Decanter and international awards.",
       "highlights": [
+        "100% estate grapes",
         "Organic",
-        "Lefkada",
-        "Sustainability"
+        "Lefkada"
       ]
     }
   },
@@ -1255,7 +2378,7 @@
     "urls": [],
     "current": {
       "contactPhone": "+357 25 944567",
-      "description": "Minous is a traditional village winery in Pachna, in the Commandaria heartland. Generations have made wine here. Commandaria, Mavro, Xynisteri. The tasting room is simple. Honest. Call ahead; they're often available for drop-ins, but winter hours can be flexible. The village tavernas do lunch. Stop for a glass, then eat. Or eat, then taste. Pachna sits on the wine route between Limassol and Troodos. The road winds through the vines. In winter they're bare. The stone holds the sun. Minous rewards those who take their time.",
+      "description": "Traditional village winery in Pachna at 750–800 m—Krasochoria foothills with Commandaria-style sweet wines. Generations of wine; Mavro, Xynisteri. Simple tasting room. Call ahead; drop-ins possible but winter hours flexible. Village tavernas nearby for lunch.",
       "highlights": [
         "Commandaria",
         "Village winery",
@@ -1266,16 +2389,19 @@
   {
     "id": "christoudia",
     "name": "Christoudia Winery",
-    "region": "Pelendri (Limassol)",
+    "region": "Kato Drys (Larnaca)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://www.christoudia.com/visit-us/"
+    ],
     "current": {
-      "contactPhone": "+357 25 944678",
-      "description": "Christoudia is a family estate in the Troodos foothills. Xynisteri, Maratheftiko, rosé. Mountain freshness in every glass. In winter they light the fireplace. You sit by the fire with a blanket and a view. It's the kind of tasting that makes you forget the time. Book ahead. The family often pours. They'll tell you about the harvest, the cellar, the mountain. Near Platres and the trails. Do Artemis in the morning, Christoudia in the afternoon. Or reverse it. The fireplace works either way.",
+      "openingHours": "9:00–17:00 in season; call ahead Nov–Mar.",
+      "contactPhone": "+357 24 342142",
+      "description": "Founded 1992 by Yiannis and Alexia Christoudia (originally KRELAN). ~80,000 bottles from Xinisteri, Maratheftiko, Spourtiko, Cabernet, Muscat. Modern facility (2012) with barrel cellars. Fireplace in winter. Brunch with Cypriot cuisine; weddings and events.",
       "highlights": [
         "Maratheftiko",
-        "Fireplace tastings",
-        "Mountain"
+        "Fireplace",
+        "Brunch"
       ]
     }
   },
@@ -1287,7 +2413,7 @@
     "urls": [],
     "current": {
       "contactPhone": "+357 25 523789",
-      "description": "Tria Elit sits just outside Limassol with terrace views over the Mediterranean. Their modern wines and experimental blends attract visitors who like to try something new. It's an easy half-day from the coast; twenty minutes by car; so you can combine a tasting with a harbour lunch or an afternoon at Kourion. The terrace catches the winter sun. Wrap up and you can sit outside. Book ahead for groups. It's the kind of place that works when you want good wine without a long mountain drive.",
+      "description": "Modern winery near Limassol with terrace views over the Mediterranean. Experimental blends and contemporary styles. ~20 min by car from the coast—combine with harbour lunch or Kourion. Terrace catches winter sun.",
       "highlights": [
         "Modern blends",
         "Easy access",
@@ -1302,8 +2428,9 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 722890",
-      "description": "Nichteri is a small winery on the western Laona route, tucked into a restored stone building that feels a world away from the coast. Indigenous varieties, boutique production, intimate tastings. Call ahead; they run a lean operation and appreciate the notice. In winter the stone walls hold the warmth and the pace slows. Combine with Chrysorrogiatissa or Vouni Panayia for a full Paphos hills day. The western Laona villages have a different character to the main wine route: quieter, more remote. Nichteri rewards those who make the detour.",
+      "description": "Small winery on the western Laona route in a restored stone building. Indigenous varieties, boutique production, intimate tastings. Stone walls hold warmth in winter; the pace slows. Western Laona has a different character—quieter, more remote. Combine with Chrysorrogiatissa or Vouni Panayia.",
       "highlights": [
         "Indigenous varieties",
         "Stone building",
@@ -1318,11 +2445,12 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "Call ahead for winter hours.",
       "contactPhone": "+357 26 632901",
-      "description": "Meletiou sits on the Akamas wine route with sweeping sea and vineyard views. Commandaria and dry wines from the Kathikas hills. The terrace looks out over the coast; on a clear winter day you can see all the way to the horizon. Kathikas village does lunch. Do the tasting first, then eat. Or eat, then taste. The drive through the Akamas wine villages is half the pleasure. Call ahead in winter. Combine with the Adonis or Aphrodite trail for a full day. The terrace catches the afternoon sun. Wrap up and stay awhile.",
+      "description": "On the Akamas wine route with sweeping sea and vineyard views. Dry whites and rosés from the Kathikas hills—not Commandaria zone, but terrace views and Laona character. Kathikas village does lunch nearby. The drive through the Akamas wine villages is half the pleasure.",
       "highlights": [
         "Sea views",
-        "Commandaria",
+        "Laona-Akamas",
         "Kathikas village"
       ]
     }
@@ -1334,8 +2462,9 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 472012",
-      "description": "Elegant Xynisteri and Maratheftiko in the Krasochoria. The tasting room looks out at the Troodos. Book the wine-and-cheese pairing; it's worth it. Koilani village is nearby for lunch. In winter the mountain light is sharp. Stay. Order a second glass. Their Maratheftiko has real character.",
+      "description": "Elegant Xynisteri and Maratheftiko in the Krasochoria. Tasting room with Troodos views. Wine-and-cheese pairing worth booking. Koilani village nearby for lunch. Winter mountain light is sharp.",
       "highlights": [
         "Wine & cheese",
         "Krasochoria",
@@ -1350,8 +2479,9 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "Varies; call ahead Nov–Mar.",
       "contactPhone": "+357 25 421123",
-      "description": "Right in the heart of Omodos. Cellar tastings, Commandaria aged the traditional way. Do the monastery and square first, then Komos for a tasting. The village cafés do lunch. Ask to compare an older vintage with a younger one; you'll taste the difference. Winter visitors get the courtyard mostly to themselves.",
+      "description": "In the heart of Omodos. Cellar tastings, Commandaria aged the traditional way. Do the monastery and square first, then Komos. Village cafés do lunch. Ask to compare older and younger vintages. Winter visitors get the courtyard mostly to themselves.",
       "highlights": [
         "Omodos",
         "Cellar tastings",
@@ -1366,6 +2496,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 942234",
       "description": "Family-run in Vasa, one of the quieter Krasochoria villages. Their Lefkada is worth the drive. Warm welcome, mountain air. Call ahead; they appreciate the heads-up. Combine with Omodos or Louvaras for a full village day. The kind of place where someone pours and then sits down to talk.",
       "highlights": [
@@ -1382,6 +2513,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 732567",
       "description": "Cooperative on the Laona route. Community-driven, traditional methods. Ask how it works; the story is part of the tasting. Agios Georgios village is quiet. Good for a slow afternoon. Call ahead. Groups welcome. It's the kind of place that shows you how wine holds villages together.",
       "highlights": [
@@ -1398,12 +2530,13 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 423234",
-      "description": "Silikou. Old vines. Centuries of tradition in the cellar. Their Commandaria comes from the heart of the zone. Call ahead. Silikou is off the main loop; fewer visitors, more room to breathe. Ask about the old vines. They'll tell you. The mountain does the rest.",
+      "description": "Silikou at 650 m—one of 14 villages authorised for Commandaria. Winemaking since Frankish times (~1200). Old vines, centuries of tradition. Commandaria from the heart of the zone. Off the main loop; fewer visitors, more room to breathe. Commandaria Museum nearby.",
       "highlights": [
-        "Historic",
+        "Commandaria zone",
         "Old vines",
-        "Silikou"
+        "Historic Silikou"
       ]
     }
   },
@@ -1414,8 +2547,9 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 722456",
-      "description": "Small production in Miliou. Valley views from the terrace. Book ahead. Ideal for a quiet escape on the Laona route. The hills roll away. It's the kind of place that slows you down. Stay. Order another glass. The Paphos hinterland has its own rhythm.",
+      "description": "Small production in Miliou. Valley views from the terrace. Book ahead. Ideal for a quiet escape on the Laona route. The hills roll away; the Paphos hinterland has its own rhythm.",
       "highlights": [
         "Valley views",
         "Small production",
@@ -1426,32 +2560,38 @@
   {
     "id": "argyrides",
     "name": "Argyrides Winery",
-    "region": "Pera Pedi (Limassol)",
+    "region": "Vasa Koilaniou (Limassol)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://argyrideswinery.com/"
+    ],
     "current": {
-      "contactPhone": "+357 25 442345",
-      "description": "Pera Pedi. Stone-built tasting room, Troodos views. One of the original Commandaria villages. Their sweet wine; ask about it. The stone holds the sun in winter. Combine with Omodos, Koilani, Hadjipavlou. Commandaria heartland. Call ahead for tastings.",
+      "openingHours": "Mon–Fri 8:00–16:00. Closed weekends.",
+      "contactPhone": "+357 25 945999",
+      "description": "Five generations since 1913. Housed in a 200-year-old listed ancestral home in Vasa Koilaniou, meticulously restored. Eight hectares in Laona Krasochoria; Maratheftiko, Xynisteri, Cabernet, Merlot, Chardonnay, Viognier. Modern tech meets tradition. Wine Club for limited editions.",
       "highlights": [
-        "Mountain winery",
-        "Sweet wine",
-        "Stone building"
+        "Five generations",
+        "200-year-old house",
+        "Laona Krasochoria"
       ]
     }
   },
   {
     "id": "kalamos",
     "name": "Kalamos Winery",
-    "region": "Vouni (Limassol)",
+    "region": "Amargeti (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://www.kalamoswinery.com/"
+    ],
     "current": {
-      "contactPhone": "+357 25 423456",
-      "description": "Near Platres. Forest and vineyard views. Do a morning trail; Artemis, Caledonia, your pick; then Kalamos for a tasting. Their Lefkada has character. Ask about it. The drive through Vouni village is part of the day. Give yourself time. The mountain rewards slow.",
+      "openingHours": "8:00–16:00 Mon–Sun in season; call ahead Nov–Mar.",
+      "contactPhone": "+357 26 723224",
+      "description": "Family-owned by Nicos Ignatiou and sons. Mataro, Xynisteri, Maratheftiko; Commandaria, liqueurs, Zivania. ~20 min from Paphos. Quality local wines—red, white, dry, semi-dry, sweet. Direct delivery of limited editions.",
       "highlights": [
-        "Forest views",
-        "Platres proximity",
-        "Lefkada"
+        "Mataro",
+        "Maratheftiko",
+        "Commandaria"
       ]
     }
   },
@@ -1462,6 +2602,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 742567",
       "description": "Organic and natural. Statos village, Laona plateau. Book the meze pairing; the cheese and olives make the wine sing. They're passionate about natural fermentation. Ask. The setting is peaceful. Plan to stay. Laona has a different vibe to the Krasochoria: quieter, more remote. Winter tastings feel like a gift.",
       "highlights": [
@@ -1478,6 +2619,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 944789",
       "description": "Kilani village. Family estate. Their Lefkada has character; indigenous red, worth asking about. The Krasochoria hospitality is warm. Kilani is quieter than Omodos. Reserve for winter. Combine with Koilani and Vlassides for a full village day. The kind of place where someone pours and then sits down to talk.",
       "highlights": [
@@ -1494,6 +2636,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 732678",
       "description": "Phinikas. Off the beaten path. Boutique Xynisteri and Maratheftiko, valley views from the terrace. The drive rewards. Call ahead; they run a small operation and appreciate the notice. Intimate. Quiet. The kind of tasting where you sit and the afternoon slips away. Western Laona has a different vibe to the main wine loop.",
       "highlights": [
@@ -1510,6 +2653,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 442456",
       "description": "Monagri village, deep in Commandaria country. Cooperative production. Ask for the cellar tour; the story of how these villages have made wine for centuries is worth hearing. Groups welcome. Call ahead. Traditional Mavro, Xynisteri, and Commandaria. The kind of place where community and wine are inseparable.",
       "highlights": [
@@ -1526,6 +2670,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "Varies; call ahead Nov–Mar.",
       "contactPhone": "+357 25 421234",
       "description": "Walk from the monastery square. Stone arches, village charm. One of the few Omodos wineries where you can drop in without a reservation. Commandaria, Xynisteri, Mavro. Do the village first; the cobbles, the kafenions; then Loukas for a tasting. Ideal for first-timers. The square is five minutes away.",
       "highlights": [
@@ -1542,6 +2687,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 944890",
       "description": "Dhoros village. Mountain views. The fireplace is the draw. Book ahead and claim a seat. Their rosé is crisp even in winter; ask about it. Xynisteri, Maratheftiko, the Troodos out the window. Cosy. Stay awhile. Winter tastings here feel like the reason you came.",
       "highlights": [
@@ -1554,15 +2700,18 @@
   {
     "id": "avakas",
     "name": "Avakas Winery",
-    "region": "Kallepia (Paphos)",
+    "region": "Statos (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://avacasw.weebly.com/contact-us.html"
+    ],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 632567",
-      "description": "Do the gorge in the morning. Then call from the car park when you're done; they're used to hikers. Xynisteri and Maratheftiko from mountain vines. The Xynisteri has a different character up here. Ask. Kallepia village, Laona route. The gorge and the wine make a ideal pairing.",
+      "description": "Commercial production since 1988; moved to new premises 2009. Statos at 1,000 m in central Paphos mountains. ~200,000 L/year from 8 ha; Maratheftiko, Ophtalmo. Wines follow Byzantine and Roman traditions. Combine with Avakas Gorge—call from the car park when done; they're used to hikers.",
       "highlights": [
-        "Avakas Gorge",
-        "Hike + wine",
+        "Maratheftiko",
+        "Avakas Gorge combo",
         "Mountain vines"
       ]
     }
@@ -1574,8 +2723,9 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 472345",
-      "description": "Fourth generation. Koilani. Commandaria heartland. Ask to see the cellar; it's historic, and the story is worth hearing. Krasas has been here for generations. It shows in the wine and the welcome. Book ahead. The cellar tour is the gift.",
+      "description": "Fourth generation. Koilani. Krasochoria hills with Commandaria tradition. Ask to see the cellar; it's historic, and the story is worth hearing. Krasas has been here for generations. It shows in the wine and the welcome. Book ahead. The cellar tour is the gift.",
       "highlights": [
         "Fourth generation",
         "Historic cellar",
@@ -1590,6 +2740,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 442567",
       "description": "Agios Theodoros village. Small. Honest. The kind of place where the owner pours. Mavro, Xynisteri, and a sweet wine worth asking about. Call ahead. Off the main Commandaria loop, which means fewer visitors and more room to talk. The wine is straightforward. The welcome is real.",
       "highlights": [
@@ -1606,8 +2757,9 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "Call ahead for winter hours.",
       "contactPhone": "+357 25 421345",
-      "description": "Right in Platres. Forest and vineyard views. Ski in the morning, Ambeli in the afternoon. Or Artemis, then taste. Their Lefkada has character. The village knows how to warm you up. Winter tastings by the fire. Call ahead in season.",
+      "description": "Right in Platres. Forest and vineyard views. Ski in the morning, Ambeli in the afternoon. Or Artemis trail, then taste. Lefkada has character. Winter tastings by the fire. Call ahead in season.",
       "highlights": [
         "Platres",
         "Ski nearby",
@@ -1625,7 +2777,7 @@
       "https://domeswinery.com/collections/all"
     ],
     "current": {
-      "openingHours": "By appointment",
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "description": "The Sergiou family makes wine in Skarinou, between Limassol and Larnaca. Indigenous varieties only: Xynisteri, Morokanella, Assyrtiko, Maratheftiko, and the Atypon blends. They often pour the tastings themselves and tell the story behind each bottle. Book ahead.",
       "highlights": [
         "Xynisteri Single Vineyard",
@@ -1641,14 +2793,17 @@
     "name": "Mystes Winery",
     "region": "Pano Archimandrita (Paphos)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://mysteswinery.com/"
+    ],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 730000",
-      "description": "Mystes represents a fresh chapter in Cyprus wine heritage. A boutique family winery at 550 metres in the heart of the Paphos wine region. Owner and winemaker Loucas Papaloucas brings experience from Kamanterena and a passion for organic cultivation. Indigenous varieties Spourtiko and Morokanella alongside Chardonnay and Syrah. The modern facility welcomes visitors for guided tours and tastings. Winter visits: book ahead; the family often leads the experience.",
+      "description": "Founded 2013. Loucas Papaloucas, winemaker (ex-Kamanterena), blends tradition and innovation; minimal intervention. At 550 m, ~33 km east of Paphos. Chardonnay, Syrah rosé, Maratheftiko; Giannoudi, Promara, Orange Xynisteri. Labels use Linear B ideograms for 'wine.' Stone and modern architecture; cheese and charcuterie platters.",
       "highlights": [
         "Organic",
-        "Spourtiko",
-        "Boutique"
+        "Maratheftiko",
+        "Indigenous varieties"
       ]
     }
   },
@@ -1657,14 +2812,17 @@
     "name": "Oenou Yi Winery",
     "region": "Omodos (Limassol)",
     "type": "winery",
-    "urls": [],
+    "urls": [
+      "https://oenouyiwine.com/"
+    ],
     "current": {
-      "contactPhone": "+357 25 421234",
-      "description": "Oenou Yi sits amphitheatrically between the Troodos peaks, facing Mount Olympus. A contemporary winery that honours Omodos's long wine tradition while combining advanced technology for exceptional quality. Founded in 2017, it has quickly become an award-winning presence. The tasting room offers mountain views; the wines reflect both indigenous varieties and modern craft. Book ahead in winter. Omodos village is at your feet—monastery, cobbles, kafenions.",
+      "openingHours": "10:00–17:00 in season; call ahead Nov–Mar.",
+      "contactPhone": "+357 25 446000",
+      "description": "Oenou Yi (Ktima Vassiliades) established 2018. Private vineyards, some over 120 years old, on Afamis and Laona hills. ~250,000 bottles/year; indigenous Mavro, Xynisteri, Maratheftiko, Lefkada, Promara, Vasilissa, Yiannoudi; Commandaria. Modern underground facility. 10:00–17:00 in season; call ahead Nov–Mar.",
       "highlights": [
-        "Modern Omodos",
-        "Award-winning",
-        "Mountain views"
+        "120-year vines",
+        "Commandaria",
+        "Indigenous varieties"
       ]
     }
   },
@@ -1675,12 +2833,13 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "9:30–18:00 in season; call ahead Nov–Mar.",
       "contactPhone": "+357 26 632200",
-      "description": "Sterna is a family-run spot in Kathikas with its own vineyards and a seriously cool ancient cave cellar where wines age as they did two thousand years ago. Koralli, Kelaidonis, Mayoklima—indigenous varieties with a sense of place. The little museum and cave tour add context. Great views, friendly people, zero pretension. Part of the Akamas wine loop. Call ahead in winter; they appreciate the notice.",
+      "description": "Family-run since 1995. ~55 ha in Kathikas. Ancient cave cellar—wine storage since Hellenistic times (2,000+ years); 15–16°C year-round temperature. Koralli (red/white), Kelaidonis (red/white/rosé), Mayoklima Merlot. Museum with old tools. Tastings €5 with olives, bread, cheese platters. 9:30–18:00 in season; call ahead Nov–Mar.",
       "highlights": [
-        "Cave cellar",
-        "Indigenous varieties",
-        "Museum"
+        "2,000-year cave",
+        "Koralli",
+        "Kelaidonis"
       ]
     }
   },
@@ -1746,7 +2905,7 @@
     ],
     "current": {
       "contactPhone": "+357 25 944500",
-      "description": "Boutique winery in Vasa Koilaniou, one of the Krasochoria heartland villages. Mavro, Maratheftiko, Xynisteri, plus international varieties. Their grand stone cellar was built by local masons. Relaxed, welcoming atmosphere; staff speak English, Russian, Greek. Open daily; check hours in winter. The Petra white and red blends showcase local varieties. Groups welcome. Vasa sits between Omodos and Koilani—easy to combine with a full Krasochoria loop.",
+      "description": "Boutique winery in Vasa Koilaniou, Krasochoria village. Mavro, Maratheftiko, Xynisteri, plus international varieties. Their grand stone cellar was built by local masons. Relaxed, welcoming atmosphere; staff speak English, Russian, Greek. Call ahead Nov–Mar. The Petra white and red blends showcase local varieties. Groups welcome. Vasa sits between Omodos and Koilani—easy to combine with a full Krasochoria loop.",
       "highlights": [
         "Stone cellar",
         "Petra blends",
@@ -1778,9 +2937,9 @@
     "urls": [],
     "current": {
       "contactPhone": "+357 25 442200",
-      "description": "Where tradition meets the future. Evangelou sits in Pera Pedi, Commandaria heartland. Indigenous varieties, modern techniques. Their Commandaria-style wines and dry offerings attract visitors who want both heritage and quality. The tasting room is warm; book ahead in winter. Pera Pedi is one of the original Commandaria villages. Combine with Omodos, Koilani, or Hadjipavlou for a full village circuit.",
+      "description": "Where tradition meets the future. Evangelou sits in Pera Pedi—Krasochoria village with Commandaria tradition. Indigenous varieties, modern techniques. Their Commandaria-style wines and dry offerings attract visitors who want both heritage and quality. The tasting room is warm; book ahead in winter. Combine with Omodos, Koilani, or Hadjipavlou for a full village circuit.",
       "highlights": [
-        "Commandaria zone",
+        "Commandaria-style",
         "Indigenous varieties",
         "Pera Pedi"
       ]
@@ -1939,6 +3098,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 432123",
       "description": "Family winery in the heart of Krasochoria. Xynisteri, Maratheftiko, Commandaria. The village of Koilani has ten wineries; Lambouri holds its own. Cosy tasting room. Book ahead. Combine with Omodos, Lania, or a full Krasochoria loop. Winter: heaters, mountain views, unhurried tastings.",
       "highlights": [
@@ -1955,6 +3115,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; book ahead for tours. Call ahead Nov–Mar.",
       "contactPhone": "+357 25 589111",
       "description": "Historic cooperative since 1943. One of Cyprus's largest; the story of Cypriot wine in one place. Tours of the facility, tastings, shop. Industrial scale but heritage heart. Limassol seafront. Combine with Kolossi, Kourion, or a city explore. Winter: fewer crowds, full tours available.",
       "highlights": [
@@ -1971,6 +3132,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 22 524010",
       "description": "Nicosia district winery. Vineyards in the Mesaoria and foothills. Modern approach, indigenous and international varieties. Tasting room; book ahead. Combine with Lefkara, Machairas, or a Nicosia hinterland day. Winter: quiet, focused tastings. About 40 minutes from the capital.",
       "highlights": [
@@ -1987,6 +3149,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 24 424567",
       "description": "Larnaca wine route. Commandaria focus; sweet and semi-sweet. The village setting is peaceful. Book ahead. Combine with Stavrovouni, Choirokoitia, or Zygi for fish. Winter: ideal for Commandaria tastings. The Larnaca hills have their own microclimate.",
       "highlights": [
@@ -2003,6 +3166,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "description": "Boutique Nicosia winery. Small production, quality focus. Xynisteri, Maratheftiko. The tasting experience is intimate. Call ahead. Combine with Agros, Machairas, or Kalopanagiotis for a mountain day. Winter: cosy, personal. Off the main wine routes—discovery territory.",
       "highlights": [
         "Boutique",
@@ -2018,6 +3182,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 22 942345",
       "description": "Pitsilia wine route. High-altitude vineyards; crisp whites, structured reds. Family-run. The drive up is scenic. Book ahead. Combine with Kykkos, Pedoulas, or Troodos trails. Winter: can be cooler at elevation; the tasting room warms you. Authentic mountain wine.",
       "highlights": [
@@ -2034,6 +3199,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 24 333456",
       "description": "Larnaca hills winery. Modern facility, indigenous varieties. Xynisteri, Maratheftiko, Yiannoudi. Tastings and tours; book ahead. Combine with Lefkara, Stavrovouni, or the Larnaca coast. Winter: mild in the hills. A different side of Cypriot wine.",
       "highlights": [
@@ -2050,6 +3216,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 25 522789",
       "description": "Family winery on the Limassol wine route. Traditional and modern. Commandaria, dry whites, reds. Cosy tasting. Book ahead. Combine with Kolossi, Kourion, or Omodos. Winter: heaters, unhurried. The Limassol corridor has many options; Zambeli is a quiet favourite.",
       "highlights": [
@@ -2066,6 +3233,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "description": "Troodos foothills. Near Platres; combine with Caledonia Falls or Artemis. Small production, mountain character. Xynisteri, reds. Call ahead. Winter: the mountains are the draw; a winery stop adds depth. Cosy tasting room.",
       "highlights": [
         "Troodos",
@@ -2081,6 +3249,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "description": "Vouni village, Krasochoria. Boutique production. Xynisteri, Maratheftiko, Commandaria. The village is quiet; the winery welcomes visitors who book. Combine with Omodos, Lania, or Silikou. Winter: peaceful, personal. A hidden Krasochoria stop.",
       "highlights": [
         "Vouni",
@@ -2096,6 +3265,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "description": "Historic village of Fikardou; UNESCO heritage. The wine estate complements the restored stone houses. Small production; book ahead. Combine with the village walk, Machairas, or Agros. Winter: the village is magical; snow possible. A culture and wine day.",
       "highlights": [
         "UNESCO village",
@@ -2111,6 +3281,7 @@
     "type": "winery",
     "urls": [],
     "current": {
+      "openingHours": "By appointment; call ahead Nov–Mar.",
       "contactPhone": "+357 26 633456",
       "description": "Kathikas village, Akamas edge. On the Laona–Akamas wine route. Combine with Adonis, Aphrodite, or The Farmyard for lunch. Boutique; Xynisteri, Maratheftiko. Book ahead. Winter: the Akamas loop; trail in the morning, wine and lunch after. Coastal-meets-mountain.",
       "highlights": [
@@ -2127,7 +3298,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Between Larnaca and Limassol. No ruins, no lace. Just fish. The tavernas line the harbour; they serve what the boats brought in that morning. Locals eat here. Tourists rarely find it. Winter lunch on the waterfront—octopus, sea bream, calamari. The pace is slow. The coffee after is obligatory. Zygi is where Cypriots go for Sunday fish. You should too.",
+      "openingHours": "Tavernas typically 12–15:30, 19–23",
+      "description": "Between Larnaca and Limassol. No ruins, no lace. Just fish. The tavernas line the harbour; they serve what the boats brought in that morning. Locals eat here. Winter lunch on the waterfront—octopus, sea bream, calamari. The pace is slow. The coffee after is obligatory. Zygi is where Cypriots go for Sunday fish. Combine with Choirokoitia, Lefkara, or Cape Greco trail.",
       "highlights": [
         "Harbour fish",
         "Fresh daily catch",
@@ -2142,7 +3314,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "White cliffs above dark volcanic sand. The tavernas perch on the cliffs; they serve fresh fish and meze. On a mild December afternoon you can sit outside with a blanket. The fish is fresh, the wine flows. One of the best winter lunch spots on the coast. The contrast—white cliffs, dark sand—is striking in winter light. Combine with Amathus or Kourion for ruins in the morning.",
+      "openingHours": "Tavernas typically 12–15:30, 19–23",
+      "description": "White cliffs above dark volcanic sand. The tavernas perch on the cliffs; they serve fresh fish and meze. On a mild December afternoon you can sit outside with a blanket. The fish is fresh, the wine flows. One of the best winter lunch spots on the coast. The contrast—white cliffs, dark sand—is striking in winter light. Combine with Kourion or Kolossi in the morning, fish at lunch. Cape Greco trail or Choirokoitia are within reach for a full day.",
       "highlights": [
         "Cliff views",
         "Fresh fish",
@@ -2174,7 +3347,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Wiz 50 Best top 5. Ethnic Asian comfort cuisine in Kathikas, Paphos. Head Chef Savvas Iakovides. Farm-to-table ethos. On the Akamas loop—do Adonis or Aphrodite in the morning, then book lunch. The village setting and the food make it a destination. Reserve ahead; it fills.",
+      "openingHours": "Lunch and dinner; reserve ahead",
+      "description": "Wiz 50 Best top 5. Ethnic Asian comfort cuisine in Kathikas, Paphos. Head Chef Savvas Iakovides. Farm-to-table ethos. On the Akamas loop—do Adonis or Aphrodite in the morning, then book lunch. The village setting and the food make it a destination. Reserve ahead; it fills. Winter: trail in the morning, this meal as the reward.",
       "highlights": [
         "Wiz top 5",
         "Asian comfort",
@@ -2189,9 +3363,10 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "The taverna by the river. The owner knows every hiker. Order the trout with almonds. The fireplace, the mountain air. It's the pairing locals do after Artemis or Caledonia Falls. Do the trail in the morning; finish by 1pm. Drive to Platres. Don't skip it.",
+      "openingHours": "Typically 12–15:30, 19–22; call in winter",
+      "description": "The taverna by the river. The owner knows every hiker. Order the trout with almonds—psaróvrasto, poached in wine and herbs. The fireplace, the mountain air, the sound of the Kryos Potamos. It's the pairing locals do after Artemis or Caledonia Falls. Do the trail in the morning; finish by 1pm. Drive to Platres. Don't skip it.",
       "highlights": [
-        "Trout",
+        "Trout with almonds",
         "Fireplace",
         "Post-hike"
       ]
@@ -2204,7 +3379,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Post-Adonis or Aphrodite trail. The harbour tavernas serve fish that's fresh. Kolios and Vasilikon wineries are on the loop back. Or skip the wine and just eat. The trail earns you the meal. Polis knows how to feed hikers. Harbour views, relaxed pace.",
+      "openingHours": "Tavernas typically 12–15:30, 19–23; some close Mon or Tue",
+      "description": "Post-Adonis or Aphrodite trail. The harbour tavernas serve fish that's fresh—what the boats brought in. Vasilikon winery is on the Akamas loop back. Or skip the wine and just eat. The trail earns you the meal. Polis knows how to feed hikers. Harbour views, relaxed pace. No high-rises, no neon—just fish, wine, and the bay.",
       "highlights": [
         "Harbour fish",
         "Post-trail",
@@ -2249,9 +3425,10 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "River setting. Psaróvrasto—trout poached in wine and herbs. Kakopetria's trout tavernas line the Kryos Potamos. Do Caledonia Falls or Kampos tou Livadiou in the morning; Kakopetria for lunch. The village knows hikers. Fireplace, mountain air, the sound of the river.",
+      "openingHours": "Typically 12–15:30, 19–22; call in winter",
+      "description": "River setting. Psaróvrasto—trout poached in wine and herbs. Kakopetria's trout tavernas line the Kryos Potamos. Do Caledonia Falls, Kryos Potamos loop, or Kampos tou Livadiou in the morning; Kakopetria for lunch. The village knows hikers. Fireplace, mountain air, the sound of the river. Winter: cosy inside.",
       "highlights": [
-        "Trout",
+        "Psaróvrasto trout",
         "River setting",
         "Post-hike"
       ]
@@ -2279,7 +3456,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Ruins over your shoulder. Kouklia village sits beside Palaipafos, the ancient sanctuary of Aphrodite. The village cafés and tavernas offer simple Cypriot fare with a view of history. Coffee, meze, a slow lunch. Winter is quiet; the site and the village belong to those who take their time. Combine Palaipafos in the morning, Kouklia for lunch.",
+      "openingHours": "Cafés and tavernas; typically 9–18 or lunch hours",
+      "description": "Ruins over your shoulder. Kouklia village sits beside Palaipafos, the ancient sanctuary of Aphrodite. The village cafés and tavernas offer simple Cypriot fare with a view of history. Coffee, meze, a slow lunch. Winter is quiet; the site and the village belong to those who take their time. Combine Palaipafos in the morning, Kouklia for lunch. Petra tou Romiou coastal path is nearby.",
       "highlights": [
         "Ancient site views",
         "Village café",
@@ -2309,11 +3487,12 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Post-Angeloktisti church. The Byzantine church of Angeloktisti in Kiti draws visitors; the village tavernas do lunch. Simple Cypriot fare, meze, village pace. Combine with Zygi for fish or Lefkara for lace. Kiti sits between Larnaca and the mountains—a good stop on a Larnaca hinterland day.",
+      "openingHours": "Tavernas typically 12–15:30, 19–22",
+      "description": "Post-Angeloktisti church. The Byzantine church of Angeloktisti in Kiti draws visitors; the village tavernas do lunch. Simple Cypriot fare, meze, village pace. Church first—the 6th-century mosaic is one of the oldest in the eastern Mediterranean—then lunch. Combine with Zygi for fish or Lefkara for lace. Larnaca Salt Lake and Cape Greco are within reach.",
       "highlights": [
         "Village tavernas",
         "Post-Angeloktisti",
-        "Larnaca uplands"
+        "6th-c. mosaic"
       ]
     }
   },
@@ -2324,9 +3503,10 @@
     "type": "restaurant",
     "urls": [],
     "current": {
+      "openingHours": "Typically 12–15:30, 19–22; Psilo Dendro and others",
       "description": "The trout tavernas of Platres. Order psaróvrasto—trout poached in wine and herbs. Fireplace, mountain air, the sound of the Kryos Potamos. After Artemis, Caledonia, or Kampos tou Livadiou. The village knows hikers. Psilo Dendro is the classic; others line the river. Winter lunch by the fire.",
       "highlights": [
-        "Trout",
+        "Psaróvrasto",
         "Fireplace",
         "Post-hike"
       ]
@@ -2339,11 +3519,12 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Harbour fish on the Akamas edge. Latsi serves what the boats bring in. Simpler than Polis, closer to the Baths of Aphrodite. Winter lunch by the water. Combine with Adonis, Aphrodite, or Smigies trail. The drive along the coast is part of the day.",
+      "openingHours": "Tavernas typically 12–15:30, 19–23",
+      "description": "Harbour fish on the Akamas edge. Latsi serves what the boats bring in—simpler than Polis, closer to the Baths of Aphrodite trailhead. Winter lunch by the water. Combine with Adonis, Aphrodite, or Smigies in the morning; Latsi for lunch before the loop back. The drive along the coast is part of the day. Less crowded than Polis harbour.",
       "highlights": [
         "Harbour fish",
         "Akamas edge",
-        "Coastal"
+        "Baths of Aphrodite nearby"
       ]
     }
   },
@@ -2365,11 +3546,12 @@
   {
     "id": "pissouri-tavernas",
     "name": "Pissouri Bay Tavernas",
-    "region": "Limassol",
+    "region": "Pissouri (Limassol)",
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Cliff tavernas above Pissouri Bay. Sunset views over the curve of the coast. Meze, fish, local wine. Winter sunsets around five. The bay stays mild when the mountains are cold. Combine with Petra tou Romiou, Kourion, or the coastal walk. A west-Limassol lunch or dinner.",
+      "openingHours": "Tavernas typically 12–15:30, 19–23",
+      "description": "Cliff tavernas above Pissouri Bay. Sunset views over the curve of the coast. Meze, fish, local wine. Winter sunsets around five. The bay stays mild when the mountains are cold. Combine with Petra tou Romiou coastal path, Kourion ruins, or Avakas Gorge. A west-Limassol lunch or dinner.",
       "highlights": [
         "Cliff views",
         "Sunset",
@@ -2380,11 +3562,12 @@
   {
     "id": "omodos-tavernas",
     "name": "Omodos Village Tavernas",
-    "region": "Limassol",
+    "region": "Omodos (Limassol)",
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "The cobbled square of Omodos. Tavernas under the plane trees. Meze, kleftiko, halloumi, local wine. After a Krasochoria winery loop—Tsiakkas, Oenou Yi, Lania—Omodos is the natural lunch stop. The monastery overlooks the village. Winter sun on the square. The pace is slow. Reserve on weekends.",
+      "openingHours": "Tavernas typically 12–15:30, 19–22; square cafés all day",
+      "description": "The cobbled square of Omodos. Tavernas under the plane trees. Meze, kleftiko, halloumi, local wine. After a Krasochoria winery loop—Tsiakkas, Oenou Yi, Lania, Loukas—or the Artemis trail, Omodos is the natural lunch stop. The monastery overlooks the village. Winter sun on the square. The pace is slow. Reserve on weekends.",
       "highlights": [
         "Village square",
         "Meze",
@@ -2418,11 +3601,12 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Protaras waterfront and inland. Fish tavernas by the sea; village meze spots. Winter: fewer crowds, mild evenings. Combine with Fig Tree Bay, Cape Greco, or Konnos. The pace is slower than summer. Reserve for popular spots.",
+      "openingHours": "Tavernas typically 12–15:30, 19–23",
+      "description": "Protaras waterfront and inland. Fish tavernas by the sea; village meze spots. Winter: fewer crowds, mild evenings. Do the Cape Greco trail in the morning, Protaras for lunch. Fig Tree Bay and Konnos are nearby. The pace is slower than summer. Reserve for popular spots.",
       "highlights": [
         "Waterfront",
         "Fish",
-        "Village meze"
+        "Cape Greco combo"
       ]
     }
   },
@@ -2463,11 +3647,12 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Agros village. Rose products, loukoumi, mountain meze. The village is famous for roses and sweets. Tavernas serve local fare. Combine with Machairas, Kykkos road, or Troodos trails. Winter: cosy, mountain character.",
+      "openingHours": "Tavernas typically 12–15:30, 19–22",
+      "description": "Agros village. Rose products, loukoumi, mountain meze. The village is famous for roses and sweets. Tavernas serve local fare. Combine with Machairas Forest trail, Xyliatos Dam, or the Kykkos road. Winter: cosy, mountain character. Rose liqueur and loukoumi before or after lunch.",
       "highlights": [
         "Rose village",
         "Loukoumi",
-        "Mountain"
+        "Mountain meze"
       ]
     }
   },
@@ -2478,11 +3663,14 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Pano and Kato Lefkara. Lace village lunch. Tavernas in stone buildings. Meze, local wine. After the Lefkara path or lace shopping. Combine with Choirokoitia, Zygi, or Stavrovouni. Winter: mild; the villages are quieter.",
+      "openingHours": "Tavernas typically 12–15:30, 19–22; some close Mon or Tue",
+      "description": "The lace village. UNESCO-recognised Lefkaritiko since the Venetians. Tavernas in stone buildings, silver workshops, lacemakers in doorways. Meze, local wine, village pace. Pano and Kato Lefkara—two villages, one tradition. Winter light on the cobbles; fewer tour buses; the craft comes first.",
       "highlights": [
-        "Lace village",
-        "Stone buildings",
-        "Meze"
+        "UNESCO Lefkaritiko lace",
+        "Silver filigree",
+        "Lefkara Path",
+        "Stone architecture",
+        "Village events"
       ]
     }
   },
@@ -2493,7 +3681,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Kathikas village on the Akamas loop. Traditional tavernas; meze, local wine. The Farmyard is the star; others offer simpler fare. Combine with Adonis, Aphrodite, Smigies, or Sygkrasi winery. Winter: trail in the morning, village lunch after.",
+      "openingHours": "Tavernas typically 12–15:30, 19–22",
+      "description": "Kathikas village on the Akamas loop. Traditional tavernas; meze, local wine. The Farmyard is the star—book ahead; others offer simpler fare. Combine with Adonis, Aphrodite, or Smigies in the morning; Kathikas for lunch. Vasilikon and Sygkrasi wineries are minutes away. Winter: trail in the morning, village lunch after.",
       "highlights": [
         "Akamas loop",
         "Village",
@@ -2553,11 +3742,12 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Troodos Square and the visitor centre area. Cafés, simple lunches. After Artemis, Atalante, or Persephone. Hot chocolate, coffee, sandwiches. Winter: essential post-hike warmth. Snow possible; the square is the hub.",
+      "openingHours": "Visitor centre and cafés; typically 9–17 or 18",
+      "description": "Troodos Square and the visitor centre area. Cafés, simple lunches, hot chocolate. After Artemis, Atalante, or Persephone. Winter: essential post-hike warmth. Snow possible; the square is the hub. Not fancy—coffee, sandwiches, warmth. The mountains do the work; Troodos Square restores you.",
       "highlights": [
         "Post-hike",
         "Troodos hub",
-        "Visitor centre"
+        "Hot chocolate"
       ]
     }
   },
@@ -2568,7 +3758,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Solea Valley villages—Kakopetria, Galata, Kalopanagiotis. Trout, meze, mountain fare. River settings, fireplaces. Combine with Mylikouri, Kampos tou Livadiou, or Agios Nikolaos tis Stegis. Winter: the valley is cosy.",
+      "openingHours": "Village tavernas typically 12–15:30, 19–22",
+      "description": "Solea Valley villages—Kakopetria, Galata, Kalopanagiotis. Trout, meze, mountain fare. River settings, fireplaces. Combine with Mylikouri trail, Kampos tou Livadiou, Kryos Potamos, or Agios Nikolaos tis Stegis. Winter: the valley is cosy. Psaróvrasto (trout) is the classic.",
       "highlights": [
         "Solea Valley",
         "Trout",
@@ -2598,7 +3789,8 @@
     "type": "restaurant",
     "urls": [],
     "current": {
-      "description": "Episkopi village near Kourion. Tavernas with views of the ancient site. Meze, local wine. After Kourion ruins. Combine with Kolossi, Governor's Beach, or the coastal drive. Winter: mild; the ruins glow in afternoon light.",
+      "openingHours": "Tavernas typically 12–15:30, 19–22",
+      "description": "Episkopi village near Kourion. Tavernas with views of the ancient site. Meze, local wine. Do Kourion ruins in the morning; Episkopi for lunch. Combine with Kolossi, Governor's Beach, or Zambartas winery. Winter: mild; the ruins glow in afternoon light. The theatre faces the sea.",
       "highlights": [
         "Kourion views",
         "Episkopi",
@@ -2613,7 +3805,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Seven-kilometre loop through Troodos National Forest Park. Black pine, golden oak, ridge views. In winter the air is crisp, the crowds thin. Eastern section: best vistas before lunch. Well-marked; weather changes fast—pack layers.",
+      "description": "Winter Troodos favorite. Seven-kilometre loop around Chionistra (Mount Olympus) at about 1,850 m through Troodos National Forest Park. Black pine, golden oak, ridge views. Forestry Department grade 1—smooth path, little climb. In winter the air is crisp, the crowds thin. Well-marked; weather changes fast—pack layers.",
       "highlights": [
         "Circular route",
         "Panoramic views",
@@ -2628,7 +3820,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Short trail to Cyprus's highest falls. Follow the Cold River up through mossy banks. Flow peaks in late winter; forest green, air cool. Fifteen metres into a pool. Wear waterproof boots. Ask in Platres about rainfall.",
+      "description": "Best winter waterfall hike. Official Forestry route is about 3 km linear between Troodos (above) and Psilo Dentro above Pano Platres, along Kryos Potamos. Grade 2–3: stream crossings, slippery stones. Flow peaks in late winter; forest green, air cool. Waterproof boots. Ask in Platres about rainfall.",
       "highlights": [
         "Waterfall",
         "Stream hike",
@@ -2643,11 +3835,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "The Atalante Trail is the gentle one. Four kilometres, easy grade, well-marked. It loops through ancient black pines and opens onto views of Mount Olympus. Ideal for families, or for anyone who wants a taste of Troodos without a full mountain workout. In winter it often stays clear when higher trails have snow. Fit hikers sometimes combine it with Artemis in one day; the junction is signed. Start from Troodos Square. Bring layers. The mountain weather can shift, but this trail forgives. You'll be back at the car in a couple of hours, ready for a village lunch.",
+      "description": "Full Troodos day hike. Official Forestry Atalanti Trail is a 14 km loop from Troodos Square around Chionistra, lower than Artemis—dense black pine and Troodos juniper (including an ~800-year-old specimen). Grade 2; about five hours. Drinking water about 3 km in; old chromium mine entrance near 5 km. Cross the Troodos–Prodromos road near 9 km and follow signs back to the square. Start early; pack lunch.",
       "highlights": [
-        "Family-friendly",
-        "Easy grade",
-        "Mountain views"
+        "14 km loop",
+        "Ancient juniper",
+        "Chromium mine viewpoint"
       ]
     }
   },
@@ -2658,10 +3850,10 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "The Persephone Trail runs through the Paphos Forest. Five kilometres, moderate grade. Named after the goddess of spring, and the name pays off in late winter when the clearings fill with cyclamen and anemones. February and March are the sweet spot. The trail has more variety than Artemis; forest, open sections, views of the western Troodos range. It's quieter too. Fewer people. More room to notice the small things. Can be snowy at elevation, so check conditions. If the weather holds, it's one of the loveliest walks in the mountains. Start from Troodos Square. Kakopetria and Caledonia Falls are within reach for a full day.",
+      "description": "Short Troodos classic. Official Persephone Trail runs about 3 km from near Troodos Square (police station side, ~1,720 m) to the Makria Kontarka viewpoint (~1,660 m)—linear, so return the same way or via the signed forest road. Grade 1. Dense black pine, endemic flora signs, views toward Limassol vineyards and Cape Gata on clear days. Quieter than Artemis.",
       "highlights": [
-        "Forest diversity",
-        "Wildflowers (late winter)",
+        "Viewpoint",
+        "Black pine forest",
         "Quiet trail"
       ]
     }
@@ -2688,7 +3880,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Starts at Baths of Aphrodite; winds through the peninsula. Kefalovrysia spring, Queen's Tower ruins. Mediterranean scrub, wild herbs. December and January: ideal temps. Well-marked. Allow three to four hours. Combine with Kolios or Vasilikon winery.",
+      "description": "Winter Akamas favorite. Official Forestry Adonis Trail is about 7.5 km circular from the Baths of Aphrodite (grade 2, ~3 hours). Shares the first ~2.5 km with Aphrodite toward Pyrgos tis Rigainas, then continues via Kefalovrysia and Queen's Tower. Rocky and uphill early. December and January: ideal temps. Combine with Vasilikon (Akamas loop) or Chrysorrogiatissa and Kolios (Paphos hills).",
       "highlights": [
         "Baths of Aphrodite",
         "Queen's Tower",
@@ -2703,7 +3895,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "The Aphrodite Trail shares its start with the Adonis Trail at the Baths of Aphrodite, then branches off. It climbs to Moutti tis Sotiras, three hundred and seventy metres up, and the views over Chrysochou Bay open out. You see the whole sweep of the coast, the Paphos Forest below, the curve of the peninsula. It's a winter trail. The coast stays mild when the mountains are cold. February and March bring wildflowers. The ridge can be exposed, so pack a wind layer. Four or five hours round trip. The Baths of Aphrodite café is waiting when you get back. So is a cold beer. You'll have earned it.",
+      "description": "Official Forestry Aphrodite Trail is about 7.5 km circular from the Baths of Aphrodite (grade 2, ~3 hours). Shares the early stretch with Adonis, then climbs toward Moutti tis Sotiras with Chrysochou Bay views. Winter is ideal—mild coast, wildflowers Feb–Mar. Pack a wind layer for the ridge.",
       "highlights": [
         "Bay views",
         "Endemic plants",
@@ -2718,7 +3910,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Avakas Gorge is a slot in the limestone. Walls rise thirty metres on either side. You walk through the river, over rocks, through narrow passages where the sky becomes a strip of blue. The centauria akamatis grows here and nowhere else. The place feels ancient, carved by water over millennia. Do not go after heavy rain. Flash floods are real. Check the forecast. December through April, when the river is low, is the window. Wear waterproof boots. The rocks are slippery. There's some scrambling. But the drama of the gorge is worth it. You emerge into the light at the end feeling like you've passed through something. Pay for parking at the car park. The walk takes two or three hours. Take your time.",
+      "description": "Avakas Gorge is a slot in the limestone. Official Forestry route is about 1.2 km linear into the gorge (grade 1–2, allow ~2 hours with care). Walls rise high on either side; river crossings and slip risk. Centauria akamantis grows here. Do not go after heavy rain—flash floods are real. December–April when the river is manageable. Waterproof boots; some scrambling.",
       "highlights": [
         "Limestone gorge",
         "Unique flora",
@@ -2733,7 +3925,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Millomeris is the gentler cousin of Caledonia Falls. Two and a half kilometres, easy grade, wooden walkways and steps. The waterfall drops fifteen metres into a pool. In winter the flow is strong after rain. Families manage it. You can be there and back in under two hours. The trailhead is signed from Pano Platres. The path follows the stream. Moss on the rocks. The sound of water. It's a half-day option when you don't want a full mountain workout, or when the weather suggests something shorter. Combine with a coffee in Platres. The village knows how to warm you up.",
+      "description": "Millomeris is the gentler cousin of Caledonia Falls. Official Forestry route is about 1.2 km linear from Pano Platres (grade 1, ~45 minutes). Wooden walkways and steps; the waterfall drops about 20 metres—the tallest in Troodos. Strong flow after rain. Families manage it. Combine with coffee in Platres.",
       "highlights": [
         "Waterfall",
         "Family-friendly",
@@ -2823,7 +4015,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "A circular trail at Smigies picnic site, five kilometres from Neo Chorio in the centre of the Akamas peninsula. Dense forest, old disused magnesium mines with abandoned kilns, and a connection with the Adonis Trail at Kefalovrysia. Views of Lara Bay, Chrysochou Bay, Latsi, Polis, and the Paphos Forest. Endemic flora and fauna—Cyprus germander, Cyprus viper. Winter temps are ideal; cooler than summer, fewer crowds. The long route rewards with forest solitude. Allow two to three hours. Combine with Kolios or Sterna winery and Polis for lunch.",
+      "description": "Official Forestry Smigies Trail offers short (~2.5 km / 1 h) and long (~7.5 km / 3 h) circular routes from Smigies picnic site (grade 2). Long route is the default here—Peana lookout, Lara and Chrysochou Bay views, connection with Adonis at Kefalovrysia. Abandoned magnesium kilns along the way. Winter temps ideal. Combine with Vasilikon or Sterna and Polis for lunch.",
       "highlights": [
         "Akamas forest",
         "Magnesium mines",
@@ -2853,7 +4045,7 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "A gentle three-kilometre circular trail in the Troodos Forest. Family-friendly; the first kilometre shares the path with the Mnimata Piskopon route. Panoramic views of the Solea Valley, Morphou Bay, and the tip of Mount Olympus. Endemic flora: Cyprus skullcap, Troodos Alyson, golden oak, Troodos sage. In winter the air is crisp and the forest quiet. Ideal for families or a short leg-stretcher after a mountain drive. Combine with Platres or Kakopetria for lunch. About an hour and a half round trip.",
+      "description": "Official Forestry circular: 3 km, about 1.5 hours, grade 1. Cliff-edge views of Chromium River, Solea Valley, Morphou Bay, and the tip of Chionistra through black pine and century-old junipers. First kilometre shared with Mnimata Piskopon. Endemic flora signs (Cyprus skullcap, Troodos Alyson, golden oak). Natura 2000 Troodos National Forest Park. Quiet winter leg-stretcher; picnic site nearby.",
       "highlights": [
         "Family-friendly",
         "Valley views",
@@ -2868,11 +4060,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Short loop from Smigies picnic site. Pissouromoutti peak at 420 metres. Pine forest, scenic views over the Akamas peninsula and Chrysochou Bay. Nearly a third of the trail is shaded; kid-friendly. May cross a riverbed after rain. Winter temps are ideal. Combine with Smigies long route or Adonis for a full Akamas day. Polis and Kolios winery on the loop back.",
+      "description": "Official Akamas circular from Smigies picnic site: 3 km, about 2 hours, Forestry grade 2. Climb to Pissouromoutti hill (about 400 m), then circle down. Views south to Lara and Geronisos, north over Chrysochou Bay. Juniper, lentisk, pine shade on warm days. Year-round; drinking water at the picnic site. Mythology ties the name to Adonis and Aphrodite’s night chase.",
       "highlights": [
         "Summit views",
         "Pine forest",
-        "Kid-friendly"
+        "Akamas panorama"
       ]
     }
   },
@@ -2928,9 +4120,9 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Linear trail commemorating three Cypriot bishops murdered in the Ottoman period. Starts at Kampos tou Livadiou picnic site; first kilometre is wheelchair-accessible. Dense black pine, cliff-edge views over Chromius River, Solea Valley, Morfou Bay. Connects to Kampos tou Livadiou trail. Terminates at forest road to Platania, Agios Nikolaos tis Stegis, or Kakopetria. NATURA 2000. Allow three hours. Fit hikers only; arrange transport for the linear route.",
+      "description": "Official Forestry linear: 8 km, about 3 hours, grade 3. Starts near Kampos tou Livadiou picnic site (first km shared with that circular); mostly downhill from ~1,700 m to ~980 m. Cliff-edge views of Chromium River, Solea Valley, Morphou Bay, and Chionistra. Black pine gives way to Calabrian pine below 1,400 m. Ends on the Platania–Agios Nikolaos tis Stegis forest road—continue to Kakopetria or Platania. Natura 2000. Arrange transport.",
       "highlights": [
-        "Historic",
+        "Historic name",
         "Panoramic views",
         "Black pine forest"
       ]
@@ -2958,11 +4150,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Linear trail in the Troodos Forest, around 1,100 metres elevation. Green pine forest, narrow valleys. 'Loumata ton Aeton' means Valley of the Eagles. Short but steep in places; ground can be rough. Allow an hour and a half. Good for a leg-stretcher or combined with Kampos tou Livadiou. Winter brings crisp air. Arrange transport for the linear route.",
+      "description": "Official Forestry linear: 2.5 km, about 1 hour, grade 2. Valley of the Eagles between about 1,110 m and 1,010 m. Smooth path through pine forest near Amiantos; river crossings when water is up. Short characterful leg-stretcher. Arrange transport for the linear route.",
       "highlights": [
         "Pine forest",
         "Eagle valley",
-        "Troodos"
+        "Short linear"
       ]
     }
   },
@@ -3063,9 +4255,9 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Beginner-friendly 1.5 km circular route through black pine forest. Thirty minutes. Ideal for families or a short leg-stretcher. Troodos Square nearby. Winter: often clear when higher trails have snow. Combine with Artemis, Atalante, or Platres.",
+      "description": "Official wheelchair-accessible circular: 1.5 km, about 30 minutes, grade 1. Gravel path through black pine and juniper near Kampos tou Livadiou picnic site (not Troodos Square). Viewpoint over Chromium River and Solea Valley; century-old trees; flora signs. Natura 2000. Ideal for families and first-timers.",
       "highlights": [
-        "Family-friendly",
+        "Wheelchair-accessible",
         "Black pine",
         "Short"
       ]
@@ -3258,11 +4450,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Hidden in plain sight. Three hundred metres from the Chrysovrysi Spring on the Karvounas–Troodos road, this short trail plunges into the heart of Troodos forest. Golden oak, dense pines, panoramic views. One hour out-and-back. Most drivers pass without noticing. Winter or cloudy days are ideal; the ridgeline is exposed.",
+      "description": "Official Forestry linear: 8 km downhill in about 1 hour, grade 2 (1,315–1,050 m). Historic path villagers used toward the Amiantos asbestos mine. Starts ~300 m from Chrysovrysi stone fountain on the Karvounas–Troodos road—fill bottles before you go. Dense Calabrian pine, golden oak, gabbro of the Troodos ophiolite; last stretch on a dirt farm road into Amiantos. Natura 2000. Arrange transport at Amiantos.",
       "highlights": [
-        "Hidden gem",
+        "Historic mine path",
         "Forest immersion",
-        "Panoramic views"
+        "Chrysovrysi spring"
       ]
     }
   },
@@ -3273,10 +4465,10 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Old quarry, fossilised marine organisms, panoramic hilltop views. Less known than Cyclops Cave, but Cape Greco's Kavos Trail rewards with dramatic cliffs and a glimpse into Cyprus's geological past. Circular route. Winter brings mild temps and few people. Combine with Konnos or Protaras for a coastal day.",
+      "description": "Official Cape Greco circular: 1.2 km, about 45 minutes, grade 1. Starts at the old quarry car park; slight climb to Kavos hill then loop down. Pine then juniper and lentisk scrub; panoramic views to Pedalio lighthouse, Agia Napa, and the south cliffs (rock climbing). Connects to Sea Caves–Agioi Anargyroi. Year-round winter sun option.",
       "highlights": [
         "Old quarry",
-        "Fossils",
+        "Hilltop panorama",
         "Cliff views"
       ]
     }
@@ -3523,16 +4715,16 @@
   },
   {
     "id": "agioi-anargyroi-circular",
-    "name": "Agioi Anargyroi (Circular)",
+    "name": "Konnos – Agioi Anargyroi",
     "region": "Famagusta",
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Easy loop from the Church of Agioi Anargyroi, Cape Greco. Dense flora—Phoenician juniper, endemic plants. Sea views, picnic area. Quieter than Cyclops Cave. Winter: mild, few crowds. Part of Cape Greco National Forest Park.",
+      "description": "Official Cape Greco circular: 4.8 km, about 2 hours, grade 1. Start at Konnos beach, Agioi Anargyroi church, or the Visitor Centre. Coastal scrub to the church over a sea cave, then Kamara tou Koraka natural bridge and Aphrodite temple ruins. Juniper, wild olive, carob. Part of the E4. Year-round winter sun classic.",
       "highlights": [
-        "Sea views",
-        "Endemic flora",
-        "Kamara tou Koraka area"
+        "Kamara tou Koraka",
+        "Agioi Anargyroi",
+        "Konnos bay views"
       ]
     }
   },
@@ -3543,11 +4735,131 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Linear coastal trail from Agioi Anargyroi. Sea caves, Kamara tou Koraka natural bridge, cliffside formations. E4 path. Winter brings fewer crowds than summer. Turquoise water, limestone. Easy underfoot.",
+      "description": "Official Cape Greco linear: 4 km, about 1.5 hours, grade 1. Sea Caves to Agioi Anargyroi church (or reverse). Rocky shoreline, then scrub to Kamara tou Koraka natural bridge. E4 path. Connects to Konnos–Agioi Anargyroi and Aphrodite (Cape Greco) trails. Winter means fewer crowds.",
       "highlights": [
         "Sea caves",
         "Kamara tou Koraka",
         "Coastal"
+      ]
+    }
+  },
+  {
+    "id": "trooditissa-phini",
+    "name": "Trooditissa – Phini",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear: 4.5 km downhill, about 2 hours, grade 1 (1,330–930 m). Starts on the Platres–Prodromos road ~400 m from Trooditissa Monastery; ends outside Phini. Calabrian pine, strawberry tree, golden oak. Chantara waterfall (~8 m) after crossing Trooditissa River. Forest road open to traffic—stay alert. Natura 2000.",
+      "highlights": [
+        "Chantara waterfall",
+        "Phini village",
+        "Forest road"
+      ]
+    }
+  },
+  {
+    "id": "prodromos-zoumi",
+    "name": "Prodromos – Zoumi",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear: about 6–6.2 km, 2.5 hours, grade 2 (1,500–1,300 m). Starts at the Department of Forests playground in Prodromos. First ~3 km uphill, then downhill to Zoumi with two finish options on the Pedoulas–Kakopetria road. Black pine, Marathasa and Morphou Bay views. Connects to Prodromos Dam–Stavroulia. Natura 2000.",
+      "highlights": [
+        "Marathasa views",
+        "Black pine",
+        "Forestry College forest"
+      ]
+    }
+  },
+  {
+    "id": "prodromos-dam-stavroulia",
+    "name": "Prodromos Dam – Stavroulia",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear: about 5.2–5.5 km, 2 hours, grade 3 (1,600–1,300 m). Starts ~200 m after Prodromos Dam on the Prodromos–Troodos Square road. Steep downhill; risk of slipping. Ancient black pines (some 500+ years), flora signs, Natura 2000 Forestry College forest. Shares sections with Prodromos–Zoumi; two finishes toward Pedoulas–Kakopetria.",
+      "highlights": [
+        "Ancient black pines",
+        "Steep descent",
+        "Natura 2000"
+      ]
+    }
+  },
+  {
+    "id": "psilo-dentro-pouziaris",
+    "name": "Psilo Dentro – Pouziaris",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular: 9 km, about 4 hours, grade 3 (1,690–1,190 m). Starts on the Moniatis–Troodos road near Psilo Dentro (Pano Platres). Calabrian then black pine; views to Kourris Dam, Limassol, and wine villages. Tiring ups and downs throughout. Natura 2000 Troodos National Forest Park.",
+      "highlights": [
+        "Full half-day",
+        "Kourris Dam views",
+        "Platres area"
+      ]
+    }
+  },
+  {
+    "id": "kannoures-agios-nikolaos",
+    "name": "Kannoures – Agios Nikolaos Stegis",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear: 9 km downhill, about 3.5 hours, grade 3 (1,655–870 m). From Karvounas–Troodos road (~1 km before Troodos Square) via closed chromium mine at Kannoures, then along Karkotis River crossings on wet stones. Ends at UNESCO Agios Nikolaos tis Stegis beside the bottling plant. Black pine to Calabrian pine. Natura 2000.",
+      "highlights": [
+        "Karkotis riverbed",
+        "UNESCO church finish",
+        "Undisturbed valley"
+      ]
+    }
+  },
+  {
+    "id": "moni-fylagra",
+    "name": "Moni – Fylagra",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear: 3 km, about 1 hour, grade 2 (1,000–700 m). Between Pelendri (Trimiklini–Pelendri road) and Fylagra on the Saittas–Kato Amiantos road. Historic vineyard path; ~2 km private land, ~1 km Moni State Forest. Views to Limassol bay and Kourris Dam. Recovering Calabrian pine after the 2007 fire. Local winery ~250 m west near Fylagra.",
+      "highlights": [
+        "Pelendri area",
+        "Kourris Dam views",
+        "Historic farm path"
+      ]
+    }
+  },
+  {
+    "id": "konnoi-cyclops",
+    "name": "Konnos – Cyclops Cave",
+    "region": "Famagusta",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Cape Greco circular: 1.7 km, about 45 minutes, grade 1. From Konnos beach parking along the rugged shore to Spilia tou Kyklopa (Cyclops Cave), then return via beach path. Turquoise Konnos and Agioi Anargyroi views. Part of the E4. Year-round classic.",
+      "highlights": [
+        "Cyclops Cave",
+        "Konnos beach",
+        "E4 coastal"
+      ]
+    }
+  },
+  {
+    "id": "aphrodite-cape-greco",
+    "name": "Aphrodite Trail (Cape Greco)",
+    "region": "Famagusta",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Cape Greco circular: 2 km, about 1 hour, grade 1. Starts at the Visitor Centre parking—distinct from the Akamas Aphrodite Trail. Down to the shore, links Sea Caves–Agioi Anargyroi, then up past Aphrodite temple ruins and shepherd cave walls. Views toward Pedalio lighthouse. Cypria Aphrodite cultural route and E4 sections. Year-round.",
+      "highlights": [
+        "Temple ruins",
+        "Kamara area",
+        "Visitor Centre start"
       ]
     }
   },
@@ -3588,7 +4900,7 @@
     "type": "event",
     "urls": [],
     "current": {
-      "description": "The Commandaria Festival celebrates Cyprus's oldest wine; the sweet, sun-dried wine that has been made in these hills since the Crusades. Koilani, Pera Pedi, and other Krasochoria villages host tastings, music, and traditional food. You can sample different producers, learn how Commandaria is made, and enjoy the mountain air. It's usually the first weekend of December, when the vines are bare and the villages are dressed for the occasion. A good excuse to explore the wine villages and fill a few bottles for the winter."
+      "description": "The Commandaria Festival celebrates Cyprus's oldest wine—the sweet, sun-dried wine made in these hills since the Crusades. Koilani usually hosts the main events; tastings and music spread across Krasochoria and UNESCO Commandaria villages such as Louvaras, Silikou, Doros, and Monagri. Sample producers, learn how Commandaria is made, and enjoy the mountain air. Usually the first weekend of December, when the vines are bare. Check dates annually."
     }
   },
   {
@@ -3618,7 +4930,7 @@
     "type": "event",
     "urls": [],
     "current": {
-      "description": "Music in the Gothic ruins. Classical, folk, sometimes both. The abbey's refectory becomes a concert hall; the arches throw the sound back. You sit under the stars with the mountain at your back. The programme changes each year; check ahead for winter dates. Even if you miss a concert, the abbey at night is worth the drive. The village spills down the hillside. Lights twinkle. It's one of those evenings that sticks in the memory."
+      "description": "Bellapais is in north Cyprus—crossing from the south requires the usual border arrangements; verify access before you travel. Music in the Gothic ruins. Classical, folk, sometimes both. The abbey's refectory becomes a concert hall; the arches throw the sound back. You sit under the stars with the mountain at your back. The programme changes each year; check ahead for winter dates. Even if you miss a concert, the abbey at night is worth the drive when access allows."
     }
   },
   {
@@ -3649,6 +4961,156 @@
     "urls": [],
     "current": {
       "description": "Runners from across Europe gather on the Limassol seafront in December. Full marathon, half, and 10k. The route follows the coast; the weather is cool, the views are sea and sky. Even if you're not running, the atmosphere is worth experiencing. The city wakes early. The promenade fills with supporters. Cheering, music, the steady rhythm of feet. It's usually the first Sunday of December. Plan your route if you're driving; roads close for the race. Or join the crowd and watch. The finishers' faces say it all."
+    }
+  },
+  {
+    "id": "kakopetria-christmas-village",
+    "name": "Kakopetria Christmas Village",
+    "region": "Troodos",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "One of Cyprus's eight official Christmas villages. The Solea Valley village dresses up for the season: garlands, evening music, mulled wine, crafts fairs, and open-air concerts. Stone houses, the Karkotis River, and the scent of melomakarona and kourabiedes. Weekends from late November; daily from 22 December. Combine with a trout lunch or a walk to Agios Nikolaos tis Stegis. The mountain air sharpens the appetite."
+    }
+  },
+  {
+    "id": "kyperounta-christmas-village",
+    "name": "Kyperounta Christmas Village",
+    "region": "Troodos",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "High-altitude Christmas market in the Pitsilia region. Vineyards and pine forests frame the village. Traditional treats, Kyperounta winery tastings, crafts, and concerts. The mountain air. Usually 10:00–19:00; shorter hours on 25 December. About 50 minutes from Limassol. Wrap up; it's cold up there. Check dates annually."
+    }
+  },
+  {
+    "id": "ayia-napa-cultural-winter",
+    "name": "Agia Napa Cultural Winter",
+    "region": "Ayia Napa",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "Weekly Thursday events from January to March. Greek and international jazz, traditional Cypriot dance, rebetiko, and cultural performances. The resort's quiet season becomes a stage for music and heritage. Check the municipality programme for dates and venues—schedules vary by year. A different side of Ayia Napa."
+    }
+  },
+  {
+    "id": "ayia-napa-winter-swimming",
+    "name": "Agia Napa Winter Swimming Festival",
+    "region": "Ayia Napa",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "International winter swimmers gather at Nissi or Makronissos Beach. Braving the cool sea in January. Even if you don't dive in, the spectacle is worth it—swimmers in caps, the winter light, the cheers. Dates vary; check ahead. A reminder that Cyprus never fully hibernates."
+    }
+  },
+  {
+    "id": "kalopanagiotis-christmas-village",
+    "name": "Kalopanagiotis Christmas Village",
+    "region": "Troodos",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "The Marathasa Valley village hosts one of the island's most atmospheric Christmas markets. Stone houses, cobbled lanes, and the UNESCO monastery of Agios Ioannis Lampadistis as a backdrop. Local products, traditional foods, music, workshops, and winter entertainment. Runs weekends from late November; daily from 23 December. Thermal springs and Byzantine frescoes nearby. A quieter alternative to Kakopetria."
+    }
+  },
+  {
+    "id": "omodos-christmas-market",
+    "name": "Omodos Christmas Market",
+    "region": "Limassol",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "The Krasochoria village of Omodos hosts a festive Christmas market in late December. The Community Park fills with stalls, live music—carols, rebetiko, jazz, folk—and workshops. Mega Santa meets children. Local products, warm wine, and handmade gifts. The cobbled square and monastery make a memorable setting. Usually 26–28 December, from 16:00. The village knows wine; expect good hospitality."
+    }
+  },
+  {
+    "id": "lania-christmas",
+    "name": "Lania Christmas",
+    "region": "Limassol",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "The village of lanes and vines lights up in early December. Crafts, treats, and a small-scale Christmas atmosphere. Lania is one of the fourteen authorised Commandaria villages—combine with Vasa for a wine-country day, or Omodos for Krasochoria (outside the Commandaria zone). Quieter than the big Christmas villages. The architecture and mountain views are the draw. Check dates; usually the first weekend of December."
+    }
+  },
+  {
+    "id": "green-monday",
+    "name": "Green Monday",
+    "region": "All",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "The first day of Orthodox Lent. Families head outdoors with picnics of fasting foods—lagana bread, olives, tahini, seafood. Kite flying fills the skies; the custom is that the kite carries away sins. Parks, hills, and coastlines fill with Cypriots. Polis-Latchi and other towns host festivals. It's a public holiday. Even if you're not fasting, the ritual and the kites are worth experiencing. Dates move with Easter; typically late February or early March."
+    }
+  },
+  {
+    "id": "famagusta-carnival",
+    "name": "Famagusta Carnival",
+    "region": "Paralimni",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "The Paralimni–Dherynia carnival brings floats, costumes, and thousands of revellers to the east coast. The grand parade rolls through Paralimni on the Sunday before Lent. Less hectic than Limassol, but no less colourful. Families line the route; the carnival king leads the procession. A regional institution. Usually early March. Arrive early for a good spot."
+    }
+  },
+  {
+    "id": "deryneia-christmas-village",
+    "name": "Deryneia Christmas Village",
+    "region": "Famagusta",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "Christmas Strawberry Land. Deryneia—Cyprus's strawberry capital—hosts one of the eight official Christmas villages. Traditional cuisine, handmade crafts, live music, and children's workshops. The Folk Art Museum and red-soil fields frame the village. Weekends from late November; daily from 23 December. The east coast's answer to the mountain villages. Combine with Paralimni or Protaras."
+    }
+  },
+  {
+    "id": "statos-agios-fotios-christmas",
+    "name": "Statos–Agios Fotios Christmas Village",
+    "region": "Paphos",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "High in the Paphos mountains at 950m. One of the eight official Christmas villages. Apple and grape country; the village produces wine, raisins, walnuts, almonds. Stone houses, local products, and a quiet mountain atmosphere. Chrysorrogiatissa and Agia Moni monasteries nearby. Runs from late November to Epiphany. A Paphos alternative to the Troodos villages."
+    }
+  },
+  {
+    "id": "cyprus-jazz-world-music-showcase",
+    "name": "Cyprus Jazz & World Music Showcase",
+    "region": "Limassol",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "Three days of Cypriot and international jazz at Rialto Theatre. Around 15 ensembles; contemporary Cypriot music, workshops, jam sessions, and after-parties. The showcase promotes local musicians to the industry and gives audiences a concentrated dose of the island's jazz scene. Usually early December. Tickets from €8 per day. A must for jazz lovers."
+    }
+  },
+  {
+    "id": "peloponnese-wine-festival",
+    "name": "Peloponnese Wine Festival",
+    "region": "Limassol",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "Greek terroirs in Cyprus. Around 25 Peloponnese wineries pour PDO and PGI wines at Carob Mill Restaurants. Masterclasses, open tastings, and professional sommeliers. A chance to taste Nemea, Mantinia, and other Greek regions without leaving the island. Usually early February. Tickets from around €10. Wine lovers take note."
+    }
+  },
+  {
+    "id": "portfolio-wine-tasting",
+    "name": "Portfolio Wine Tasting",
+    "region": "Paphos",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "A weekend of serious wine at Technopolis 20. Over 100 handpicked wines from Cyprus, Greece, Italy, and France; dozens of producers. Once trade-only, now open to enthusiasts. Two days in late January. Paphos's answer to the big Limassol tastings. Book early; it fills."
+    }
+  },
+  {
+    "id": "protaras-christmas",
+    "name": "Protaras Christmas Celebrations",
+    "region": "Protaras",
+    "type": "event",
+    "urls": [],
+    "current": {
+      "description": "Fig Tree Bay and the Protaras waterfront light up in December. Carol singers, festive stalls, and New Year events. Quieter than summer; the palm trees and sea give the season a Mediterranean twist. Combine with Cape Greco or Konnos for a coastal day."
     }
   },
   {

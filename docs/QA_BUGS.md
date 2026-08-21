@@ -1441,4 +1441,10 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | Expand Hidden gems editorial tags where copy implies quiet places but `bestFor` lacks the tag | P3 | Mechanism fixed (BUG-171); further curation is editorial |
 | Cookie-setting session routes (`admin/session`, `partner/session`) keep hand-rolled `{ ok: true }` + `Set-Cookie` | P3 | Already `{ ok: true }`; leave alone unless consolidating cookie helpers |
 
+### Fixed — enrich-places sync (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-224 | Data / hygiene | `scripts/enrich-places/places.json` drifted from `src/data` after Forestry trail-stats train (e.g. Atalante still “4 km easy”, Chrysovrysi “1 h out-and-back”) | Re-ran `npm run data:export`; `places-export.test.ts` in `data:validate` guards future drift |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

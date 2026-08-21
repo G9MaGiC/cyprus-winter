@@ -46,6 +46,8 @@ ENRICH_LIMIT=20 npm run data:enrich
 
 Review suggestions before applying. Suggested fields include `openingHours`, `contactPhone`, `description`, `highlights`. Apply changes manually to `src/data/attractions.ts`, `restaurants.ts`, `wineries.ts`, etc.
 
+**Keep in sync:** After editing `src/data/`, run `npm run data:export` so `places.json` matches the live catalog. `npm run data:validate` fails if the file drifts (Forestry trail stats, opening hours, etc.).
+
 ## Rate limits
 
 - ~1.5s delay between Google and crawl requests
