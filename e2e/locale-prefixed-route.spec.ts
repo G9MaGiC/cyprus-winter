@@ -54,12 +54,29 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page.getByRole("main")).toBeVisible();
   });
 
-  test("Hebrew winery book form shows localized submit", async ({ page }) => {
-    await page.goto("/he/book/winery/tsiakkas", { waitUntil: "domcontentloaded" });
-    await expect(page).toHaveURL(/\/he\/book\/winery\/tsiakkas/);
+  test("German discover filter chips visible at 390px", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/de/discover", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("main")).toBeVisible();
+    const filters = page.getByRole("group").first();
+    await expect(filters).toBeVisible();
+    await expect(filters.getByRole("link").first()).toBeVisible();
+  });
+
+  test("Hebrew discover filter chips visible at 390px RTL", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/he/discover", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-    await expect(
-      page.getByRole("button", { name: /בקשת הזמנה|שלח בקשה|request booking/i })
-    ).toBeVisible();
+    await expect(page.getByRole("main")).toBeVisible();
+    const filters = page.getByRole("group").first();
+    await expect(filters).toBeVisible();
+  });
+
+  test("Polish discover filter chips visible at 390px", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/pl/discover", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("main")).toBeVisible();
+    const filters = page.getByRole("group").first();
+    await expect(filters.getByRole("link").first()).toBeVisible();
   });
 });

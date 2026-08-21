@@ -171,6 +171,14 @@ describe("plan share copy feedback", () => {
   });
 });
 
+describe("filter chips layout stress", () => {
+  it("caps chip width on narrow viewports for long locale strings", () => {
+    const chips = readFileSync("src/components/FilterChips.tsx", "utf8");
+    expect(chips).toContain("max-w-[min(100%,11rem)]");
+    expect(chips).toContain("truncate");
+  });
+});
+
 describe("home state-aware discovery sections", () => {
   it("delegates editors and book tastings to HomeDiscoverySections client leaf", () => {
     const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");

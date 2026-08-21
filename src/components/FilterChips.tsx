@@ -39,7 +39,7 @@ export default function FilterChips({
           key={chip.id || "all"}
           href={getHref(chip)}
           aria-current={isActive(chip) ? "true" : undefined}
-          className={`${baseClass} min-w-0 snap-start ${isActive(chip) ? activeClassName : inactiveClass}`}
+          className={`${baseClass} min-w-0 max-w-[min(100%,11rem)] sm:max-w-none snap-start ${isActive(chip) ? activeClassName : inactiveClass}`}
         >
           {chip.emoji && <span className="mr-0.5 shrink-0">{chip.emoji}</span>}
           <span className="truncate min-w-0">{chip.label}</span>

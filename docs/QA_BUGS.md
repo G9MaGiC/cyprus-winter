@@ -1512,5 +1512,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-249 | Visual | Discover detail, bookings, search loading shells generic — flash vs live page rhythm | Structured skeletons with hero/header/result cards using `SKELETON` tokens; guard tests in `dr-leftover-polish.test.ts` |
 | BUG-250 | Visual | Plan share copy buttons lack calm terracotta confirmation per design brief | Terracotta ring + check icon on `linkCopied`/`copied` in `PlanShareBar`; guard test |
 | BUG-251 | UX | Home stacks editors/book-tastings for users who already have plan items | `HomeDiscoverySections` client leaf hides blocks when `hasContent`; RSC shell unchanged |
+| BUG-252 | i18n | Long DE/PL/HE filter labels overflow at 390px | `FilterChips` max-width cap on mobile; locale discover E2E at 390px |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
