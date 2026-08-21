@@ -1513,5 +1513,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-250 | Visual | Plan share copy buttons lack calm terracotta confirmation per design brief | Terracotta ring + check icon on `linkCopied`/`copied` in `PlanShareBar`; guard test |
 | BUG-251 | UX | Home stacks editors/book-tastings for users who already have plan items | `HomeDiscoverySections` client leaf hides blocks when `hasContent`; RSC shell unchanged |
 | BUG-252 | i18n | Long DE/PL/HE filter labels overflow at 390px | `FilterChips` max-width cap on mobile; locale discover E2E at 390px |
+| BUG-253 | UX | No consumer PWA install prompt despite Serwist SW | `InstallPromptBanner` via `SerwistProvider`; 2nd visit or plan gate; i18n ×7; iOS hint only |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

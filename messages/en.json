@@ -3235,5 +3235,14 @@
         "actions": "Cycling page actions"
       }
     }
+  },
+  "pwa": {
+    "prompt": {
+      "title": "Save Cyprus Winter",
+      "body": "Install for offline trails and your plan on the go.",
+      "install": "Install",
+      "dismiss": "Not now",
+      "iosHint": "Tap Share, then Add to Home Screen to save this guide."
+    }
   }
 }

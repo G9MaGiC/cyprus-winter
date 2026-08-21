@@ -171,6 +171,16 @@ describe("plan share copy feedback", () => {
   });
 });
 
+describe("pwa install prompt", () => {
+  it("mounts InstallPromptBanner from SerwistProvider", () => {
+    const serwist = readFileSync("src/app/serwist/index.tsx", "utf8");
+    const banner = readFileSync("src/components/InstallPromptBanner.tsx", "utf8");
+    expect(serwist).toContain("InstallPromptBanner");
+    expect(banner).toContain("PWA_INSTALL_DISMISSED_KEY");
+    expect(banner).toContain("beforeinstallprompt");
+  });
+});
+
 describe("filter chips layout stress", () => {
   it("caps chip width on narrow viewports for long locale strings", () => {
     const chips = readFileSync("src/components/FilterChips.tsx", "utf8");

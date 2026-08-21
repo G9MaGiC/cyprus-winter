@@ -1,6 +1,12 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
+import dynamic from "next/dynamic";
+
+const InstallPromptBanner = dynamic(
+  () => import("@/components/InstallPromptBanner").then((m) => m.default),
+  { ssr: false, loading: () => null }
+);
 
 interface SerwistProviderProps {
   swUrl: string;
@@ -19,5 +25,10 @@ export function SerwistProvider({ swUrl, children }: SerwistProviderProps) {
     });
   }, [swUrl]);
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <InstallPromptBanner />
+    </>
+  );
 }

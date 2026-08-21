@@ -3235,5 +3235,14 @@
         "actions": "Akcje strony kolarstwa"
       }
     }
+  },
+  "pwa": {
+    "prompt": {
+      "title": "Zapisz Cyprus Winter",
+      "body": "Zainstaluj, by mieć szlaki offline i plan pod ręką.",
+      "install": "Zainstaluj",
+      "dismiss": "Nie teraz",
+      "iosHint": "Dotknij Udostępnij, potem Dodaj do ekranu początkowego, aby zapisać przewodnik."
+    }
   }
 }

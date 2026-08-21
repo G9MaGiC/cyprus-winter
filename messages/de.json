@@ -3235,5 +3235,14 @@
         "actions": "Aktionen der Radseite"
       }
     }
+  },
+  "pwa": {
+    "prompt": {
+      "title": "Cyprus Winter speichern",
+      "body": "Installieren für offline Wege und Ihren Plan unterwegs.",
+      "install": "Installieren",
+      "dismiss": "Nicht jetzt",
+      "iosHint": "Tippen Sie auf Teilen, dann Zum Home-Bildschirm, um den Guide zu speichern."
+    }
   }
 }

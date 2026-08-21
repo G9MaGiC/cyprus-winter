@@ -3235,5 +3235,14 @@
         "actions": "Actions de la page vélo"
       }
     }
+  },
+  "pwa": {
+    "prompt": {
+      "title": "Enregistrer Cyprus Winter",
+      "body": "Installez pour les sentiers hors ligne et votre plan en déplacement.",
+      "install": "Installer",
+      "dismiss": "Pas maintenant",
+      "iosHint": "Appuyez sur Partager, puis Sur l'écran d'accueil pour enregistrer le guide."
+    }
   }
 }

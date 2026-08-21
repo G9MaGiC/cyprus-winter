@@ -13,3 +13,6 @@ export const ONBOARDING_TIP_DISCOVER_FILTER = "cyprus-winter-tip-discover-filter
 export const ONBOARDING_TIP_FIRST_ADD = "cyprus-winter-tip-first-add";
 /** First-visit discoverability pulse on default AI trigger (see globals.css `.ai-chat-trigger-pulse`). */
 export const AI_PULSE_SEEN_KEY = "cyprus-winter-ai-pulse-seen";
+/** PWA install prompt — visit count and dismiss gate. */
+export const PWA_VISIT_COUNT_KEY = "cyprus-winter-pwa-visit-count";
+export const PWA_INSTALL_DISMISSED_KEY = "cyprus-winter-pwa-install-dismissed";

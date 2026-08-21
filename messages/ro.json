@@ -3235,5 +3235,14 @@
         "actions": "Acțiuni pagină ciclism"
       }
     }
+  },
+  "pwa": {
+    "prompt": {
+      "title": "Salvează Cyprus Winter",
+      "body": "Instalează pentru trasee offline și planul tău în mișcare.",
+      "install": "Instalează",
+      "dismiss": "Nu acum",
+      "iosHint": "Atinge Partajare, apoi Adaugă pe ecranul principal pentru a salva ghidul."
+    }
   }
 }
