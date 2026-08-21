@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { partnerPortalPageMeta } from "@/lib/locale-page-meta";
+import { getLocale } from "next-intl/server";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  partnerPortalPageMeta,
-  "/partner",
-  routing.defaultLocale
-);
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return buildTranslatedHubMetadata("partner", locale);
+}
 
-export default function PartnerPortalSegmentLayout({
+export default function PartnerLayout({
   children,
 }: {
   children: React.ReactNode;

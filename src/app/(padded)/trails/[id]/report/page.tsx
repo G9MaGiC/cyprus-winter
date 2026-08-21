@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { trailReportPageMeta } from "@/lib/locale-page-meta";
+import { getLocale } from "next-intl/server";
 import { trails } from "@/data/trails";
 import TrailReportClient from "./TrailReportClient";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 export async function generateMetadata({
   params,
@@ -11,11 +10,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  return applyLocaleToMetadata(
-    trailReportPageMeta,
-    `/trails/${id}/report`,
-    routing.defaultLocale
-  );
+  const locale = await getLocale();
+  return buildTranslatedHubMetadata("trailReport", locale, `/trails/${id}/report`);
 }
 
 export function generateStaticParams() {

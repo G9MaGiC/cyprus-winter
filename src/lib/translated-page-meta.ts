@@ -148,6 +148,31 @@ export const TRANSLATED_HUB_META = {
     namespace: "bookings.page",
     robots: { index: false, follow: true },
   },
+  account: {
+    path: "/account",
+    namespace: "account",
+    robots: { index: false, follow: true },
+  },
+  accountSettings: {
+    path: "/account/settings",
+    namespace: "account.settings",
+    robots: { index: false, follow: true },
+  },
+  trailReport: {
+    path: "/trails/report",
+    namespace: "trails.report",
+    robots: { index: false, follow: true },
+  },
+  adminStats: {
+    path: "/admin/stats",
+    namespace: "admin.stats",
+    robots: { index: false, follow: false },
+  },
+  partner: {
+    path: "/partner",
+    namespace: "partner.portal",
+    robots: { index: false, follow: false },
+  },
 } as const satisfies Record<string, TranslatedHubMetaConfig>;
 
 export type TranslatedHubId = keyof typeof TRANSLATED_HUB_META;
@@ -155,10 +180,12 @@ export type TranslatedHubId = keyof typeof TRANSLATED_HUB_META;
 /**
  * Build locale-aware title/description/OG for `[locale]` hubs that currently
  * overrode padded `generateMetadata` with English `locale-page-meta` constants.
+ * @param pathOverride — e.g. `/trails/{id}/report` when the hub path is dynamic
  */
 export async function buildTranslatedHubMetadata(
   hub: TranslatedHubId,
-  locale: string
+  locale: string,
+  pathOverride?: string
 ): Promise<Metadata> {
   const config: TranslatedHubMetaConfig = TRANSLATED_HUB_META[hub];
   const t = await getTranslations({ locale, namespace: config.namespace });
@@ -198,5 +225,5 @@ export async function buildTranslatedHubMetadata(
     },
   };
 
-  return applyLocaleToMetadata(base, config.path, locale);
+  return applyLocaleToMetadata(base, pathOverride ?? config.path, locale);
 }

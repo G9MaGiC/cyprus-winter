@@ -1,6 +1,5 @@
 import TrailReportPage from "@/app/(padded)/trails/[id]/report/page";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { trailReportPageMeta } from "@/lib/locale-page-meta";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 export { generateStaticParams } from "@/app/(padded)/trails/[id]/report/page";
 
@@ -12,5 +11,5 @@ export async function generateMetadata({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await params;
-  return applyLocaleToMetadata(trailReportPageMeta, `/trails/${id}/report`, locale);
+  return buildTranslatedHubMetadata("trailReport", locale, `/trails/${id}/report`);
 }

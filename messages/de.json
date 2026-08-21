@@ -1200,6 +1200,10 @@
           "filter": "Filter",
           "count": "Anzahl"
         }
+      },
+      "meta": {
+        "title": "Admin — Funnel-Statistik | Cyprus Winter",
+        "description": "Interne Conversion- und Funnel-Analysen. Admin-Zugang erforderlich."
       }
     }
   },
@@ -1254,6 +1258,10 @@
         "saveFailed": "Speichern fehlgeschlagen. Der Bildpfad muss eine lokale /images/cyprus-Datei sein.",
         "unsafeImage": "Dieser Bildpfad ist nicht erlaubt.",
         "ephemeralNote": "Änderungen an Stunden und Hero-Bild sind vorübergehend — sie gehen bei Server-Neustart verloren, bis dauerhafte Speicherung kommt."
+      },
+      "meta": {
+        "title": "Partnerportal | Cyprus Winter",
+        "description": "Verifizierte Weingüter und Guides: Winterzeiten, Hero-Bild und Anfragen."
       }
     }
   },
@@ -1525,6 +1533,10 @@
         "backCta": "Zurück zu {name}",
         "addTitle": "{name} zu Ihrem Plan hinzufügen",
         "addCta": "{name} zu Ihrem Plan hinzufügen"
+      },
+      "meta": {
+        "title": "Trail-Bedingungen melden | Cyprus Winter",
+        "description": "Kurzes Update zu Trail-Bedingungen für andere Wanderer."
       }
     },
     "tips": {
@@ -2176,7 +2188,15 @@
           "suffix": "."
         }
       },
-      "backToAccount": "← Zurück zum Konto"
+      "backToAccount": "← Zurück zum Konto",
+      "meta": {
+        "title": "Einstellungen | Mein Konto | Cyprus Winter",
+        "description": "Interessen, Regionen und Benachrichtigungen personalisieren."
+      }
+    },
+    "meta": {
+      "title": "Mein Konto | Cyprus Winter",
+      "description": "Melden Sie sich an, um Plan und Buchungen geräteübergreifend zu synchronisieren."
     }
   },
   "search": {

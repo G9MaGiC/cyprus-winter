@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
-import { accountLayoutMeta } from "@/lib/locale-page-meta";
+import { getLocale } from "next-intl/server";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export const metadata: Metadata = applyLocaleToMetadata(
-  accountLayoutMeta,
-  "/account",
-  routing.defaultLocale
-);
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return buildTranslatedHubMetadata("account", locale);
+}
 
 export default function AccountLayout({
   children,

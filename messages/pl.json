@@ -1200,6 +1200,10 @@
           "filter": "Filtr",
           "count": "Liczba"
         }
+      },
+      "meta": {
+        "title": "Admin — statystyki lejka | Cyprus Winter",
+        "description": "Wewnętrzna analityka konwersji. Wymaga dostępu admina."
       }
     }
   },
@@ -1254,6 +1258,10 @@
         "saveFailed": "Nie zapisano. Ścieżka obrazu musi być lokalnym plikiem /images/cyprus.",
         "unsafeImage": "Ta ścieżka obrazu nie jest dozwolona.",
         "ephemeralNote": "Zmiany godzin i zdjęcia bohatera są tymczasowe — znikają po restarcie serwera, dopóki nie będzie trwałego magazynu."
+      },
+      "meta": {
+        "title": "Portal partnera | Cyprus Winter",
+        "description": "Zweryfikowane winnice i przewodnicy: godziny, zdjęcie i zgłoszenia."
       }
     }
   },
@@ -1525,6 +1533,10 @@
         "backCta": "Wróć do {name}",
         "addTitle": "Dodaj {name} do planu",
         "addCta": "Dodaj {name} do planu"
+      },
+      "meta": {
+        "title": "Zgłoś warunki szlaku | Cyprus Winter",
+        "description": "Krótka aktualizacja warunków szlaku dla innych turystów."
       }
     },
     "tips": {
@@ -2373,7 +2385,15 @@
           "suffix": "."
         }
       },
-      "backToAccount": "← Wróć do konta"
+      "backToAccount": "← Wróć do konta",
+      "meta": {
+        "title": "Ustawienia | Moje konto | Cyprus Winter",
+        "description": "Dostosuj zainteresowania, regiony i powiadomienia."
+      }
+    },
+    "meta": {
+      "title": "Moje konto | Cyprus Winter",
+      "description": "Zaloguj się, aby synchronizować plan i rezerwacje między urządzeniami."
     }
   },
   "onboarding": {

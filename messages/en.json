@@ -1200,6 +1200,10 @@
           "filter": "Filter",
           "count": "Count"
         }
+      },
+      "meta": {
+        "title": "Admin — funnel stats | Cyprus Winter",
+        "description": "Internal conversion and funnel analytics for Cyprus Winter operators. Requires admin access."
       }
     }
   },
@@ -1254,6 +1258,10 @@
         "saveFailed": "Could not save. Check the image path is a local /images/cyprus file.",
         "unsafeImage": "That image path is not allowed.",
         "ephemeralNote": "Hours and hero image changes are temporary — they reset when the server restarts until durable storage ships."
+      },
+      "meta": {
+        "title": "Partner portal | Cyprus Winter",
+        "description": "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests."
       }
     }
   },
@@ -1525,6 +1533,10 @@
         "backCta": "Back to {name}",
         "addTitle": "Add {name} to your plan",
         "addCta": "Add {name} to your plan"
+      },
+      "meta": {
+        "title": "Report trail conditions | Cyprus Winter",
+        "description": "Submit a quick update on trail conditions to help other hikers."
       }
     },
     "tips": {
@@ -2176,7 +2188,15 @@
           "suffix": "."
         }
       },
-      "backToAccount": "← Back to account"
+      "backToAccount": "← Back to account",
+      "meta": {
+        "title": "Settings | My account | Cyprus Winter",
+        "description": "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences."
+      }
+    },
+    "meta": {
+      "title": "My account | Cyprus Winter",
+      "description": "Sign in to sync your plan and bookings across devices. Your itinerary and tasting requests will follow you wherever you go."
     }
   },
   "search": {

@@ -36,6 +36,9 @@ describe("buildTranslatedHubMetadata", () => {
     expect(TRANSLATED_HUB_META.guidesTroodosDecember.path).toBe("/guides/troodos-december");
     expect(TRANSLATED_HUB_META.install.robots).toEqual({ index: false, follow: false });
     expect(TRANSLATED_HUB_META.bookings.namespace).toBe("bookings.page");
+    expect(TRANSLATED_HUB_META.account.path).toBe("/account");
+    expect(TRANSLATED_HUB_META.trailReport.namespace).toBe("trails.report");
+    expect(TRANSLATED_HUB_META.partner.robots).toEqual({ index: false, follow: false });
   });
 
   it("returns localized title/description and locale canonical", async () => {
@@ -53,5 +56,10 @@ describe("buildTranslatedHubMetadata", () => {
     const login = await buildTranslatedHubMetadata("login", "en");
     expect(privacy.robots).toEqual({ index: true, follow: true });
     expect(login.robots).toEqual({ index: false, follow: true });
+  });
+
+  it("honors pathOverride for dynamic hub paths", async () => {
+    const meta = await buildTranslatedHubMetadata("trailReport", "en", "/trails/artemis/report");
+    expect(meta.alternates?.canonical).toMatch(/\/trails\/artemis\/report$/);
   });
 });
