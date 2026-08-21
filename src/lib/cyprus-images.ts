@@ -190,6 +190,18 @@ const trailImages: Record<string, string> = {
   "kalidonia-alt": `${local}/cyprus-trail-waterfall.jpg`,
   pentadaktylos: `${local}/cyprus-st-hilarion.jpg`, // Pentadaktylos range, north Cyprus
   "larnaca-salt-lake": `${local}/cyprus-trail-coastal.jpg`,
+  "trooditissa-phini": `${local}/cyprus-trail-waterfall.jpg`,
+  "prodromos-zoumi": `${local}/cyprus-trail-troodos.jpg`,
+  "prodromos-dam-stavroulia": `${local}/cyprus-trail-troodos.jpg`,
+  "psilo-dentro-pouziaris": `${local}/cyprus-trail-troodos.jpg`,
+  "kannoures-agios-nikolaos": `${local}/cyprus-trail-troodos.jpg`,
+  "moni-fylagra": `${local}/cyprus-trail-troodos.jpg`,
+  "konnoi-cyclops": `${local}/cyprus-trail-coastal.jpg`,
+  "aphrodite-cape-greco": `${local}/cyprus-trail-coastal.jpg`,
+  chrysovrysi: `${local}/cyprus-trail-troodos.jpg`,
+  "kavos-trail": `${local}/cyprus-trail-coastal.jpg`,
+  "agioi-anargyroi-circular": `${local}/cyprus-trail-coastal.jpg`,
+  "sea-caves-anargyroi": `${local}/cyprus-trail-coastal.jpg`,
 };
 
 /** Map trail id to image URL. */

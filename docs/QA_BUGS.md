@@ -1413,6 +1413,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-213 | Grant | Annex II listed `wine-routes-*` hub shots but PNGs missing on disk after BUG-199/204 | Captured hub 1280/390; regen `ANNEX_II.pdf`; assert in grant-annex-pack test |
 | BUG-214 | Grant | Hub wireframes captured before large JPG heroes decoded → grey card placeholders | `waitImages` in capture script; recapture wine-routes(+slug); regen PDF |
 | BUG-215 | Data | Core trail km/duration/difficulty drifted from Forestry / Visit Cyprus Nature Trails guide (e.g. Atalante listed as 4 km easy vs official 14 km / 5 h) | Sync Artemis, Atalante, Persephone, Caledonia, Millomeris, Adonis, Aphrodite, Avakas, Smigies; retarget gentle Platres combo |
+| BUG-216 | Data | Remaining catalog trails drifted or missing vs Forestry guide (Chrysovrysi 1.5 km vs 8 km; Kavos 2.5 vs 1.2; missing Trooditissa–Phini, Prodromos routes, Pouziaris, Kannoures, Moni–Fylagra, Konnos–Cyclops, Cape Greco Aphrodite) | Pass 2: sync stats + add missing official trails; reuse regional stock images only |
 
 ### Still open — ops / human (do not invent)
 
