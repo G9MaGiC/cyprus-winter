@@ -89,6 +89,22 @@ Do **not** use `sm:pb-0` or `sm:hidden` for bottom chrome unless the element is 
 
 **Tablet gap (640–767px):** Avoid hiding mobile sticky bars at `sm` while BottomNav remains until `md`. Home category chips use `md:flex-wrap` for the same reason.
 
+## Motion and micro-interaction
+
+See [`docs/MOTION.md`](./MOTION.md) and [`docs/DESIGN_SUPER_BRIEF.md`](./DESIGN_SUPER_BRIEF.md).
+
+| Pattern | Token / class | Use |
+|---------|---------------|-----|
+| Button press | `CTA.primary` `active:scale-[0.99]` | Primary actions |
+| Card hover | `CARD.hover` | Desktop discover/plan cards |
+| Sticky filter bar | `STRIP.stickySandBar` | Discover, trails, events, plan day selector |
+| Sticky bottom add | `STRIP.stickyBottomBar` | Plan/trail sticky CTAs |
+| Section reveal | `.section-reveal` | First paint only; stagger ≤80ms; max 3 on home |
+| AI panel | `.ai-chat-panel-enter` | Panel open |
+| Reduced motion | `globals.css` + `motion-reduce:` | Required for all new animation |
+
+Do not add motion that blocks overlay precedence (cookie → onboarding → AI).
+
 ## E2E coverage
 
 CI gate `npm run test:e2e:gate:ci` runs:

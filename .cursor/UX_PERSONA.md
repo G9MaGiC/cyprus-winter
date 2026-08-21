@@ -58,3 +58,5 @@
 ## When in Doubt
 
 Ask: *Does this feel like Cyprus Winter — understated, warm, premium, discovery not hustle?*
+
+**Design references:** [`docs/DESIGN_SUPER_BRIEF.md`](../docs/DESIGN_SUPER_BRIEF.md) · [`docs/MOTION.md`](../docs/MOTION.md) · [`docs/UX_PATTERNS.md`](../docs/UX_PATTERNS.md) · [`docs/PHOTOGRAPHY_GUIDELINES.md`](../docs/PHOTOGRAPHY_GUIDELINES.md)

@@ -1502,4 +1502,10 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-244 | Visual | Plan loading skeleton lacked hero + sticky day tabs — flash vs live `ListPageHero` / `DaySelector` | Hero skeleton + sticky `STRIP.stickySandBar` day-selector strip |
 | BUG-245 | Visual | `PlanStickyAddBar` inlined `bg-background/98` instead of design token | Added `STRIP.stickyBottomBar`; applied on plan sticky add bar |
 
+### Fixed — design super brief docs (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-246 | Docs | Motion/UX system undocumented — no single source for section-reveal, skeleton parity, or photography art direction | Added `docs/DESIGN_SUPER_BRIEF.md`, `docs/MOTION.md`, `docs/PHOTOGRAPHY_GUIDELINES.md`; motion section in `docs/UX_PATTERNS.md`; cross-links from `.cursor/UX_PERSONA.md` |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
