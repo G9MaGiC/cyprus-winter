@@ -1447,4 +1447,10 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-224 | Data / hygiene | `scripts/enrich-places/places.json` drifted from `src/data` after Forestry trail-stats train (e.g. Atalante still “4 km easy”, Chrysovrysi “1 h out-and-back”) | Re-ran `npm run data:export`; `places-export.test.ts` in `data:validate` guards future drift |
 
+### Fixed — Right Now badge i18n (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-225 | i18n | Right Now discovery badges (`Hidden gem near you`, etc.) were hardcoded EN in `right-now-scoring.ts` and shown on locale routes | Stable badge keys + `home.rightNow.discoveryBadges.*` in all 7 locales; `RightNowCard` localizes |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

@@ -551,6 +551,12 @@
         "nearby": "קרוב",
         "local_secret": "סוד מקומי",
         "worth_visit": "שווה ביקור"
+      },
+      "discoveryBadges": {
+        "hidden_gem_near_you": "פנינה נסתרת לידכם",
+        "only_locals_know": "רק מקומיים מכירים את המקום",
+        "trending_today": "פופולרי היום",
+        "perfect_sunset_today": "מושלם לשקיעה היום"
       }
     },
     "placeOfDay": {

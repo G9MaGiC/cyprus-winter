@@ -576,6 +576,12 @@
         "nearby": "In der Nähe",
         "local_secret": "Lokales Geheimnis",
         "worth_visit": "Einen Besuch wert"
+      },
+      "discoveryBadges": {
+        "hidden_gem_near_you": "Geheimtipp in der Nähe",
+        "only_locals_know": "Nur Einheimische kennen diesen Ort",
+        "trending_today": "Heute beliebt",
+        "perfect_sunset_today": "Perfekt für den Sonnenuntergang heute"
       }
     },
     "placeOfDay": {

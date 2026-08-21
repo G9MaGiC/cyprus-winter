@@ -551,6 +551,12 @@
         "nearby": "Aproape",
         "local_secret": "Secret local",
         "worth_visit": "Merită o vizită"
+      },
+      "discoveryBadges": {
+        "hidden_gem_near_you": "Comoară ascunsă aproape",
+        "only_locals_know": "Doar localnicii știu de loc",
+        "trending_today": "Popular astăzi",
+        "perfect_sunset_today": "Perfect pentru apus azi"
       }
     },
     "placeOfDay": {

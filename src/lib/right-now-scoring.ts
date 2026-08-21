@@ -4,6 +4,7 @@ import { itemMatchesRegion, type RegionSlug } from "@/data/regions";
 import { getTimeBucket, getPlaceTimeSignals, matchesTimeBucket, isAdjacentBucket, type TimeBucket } from "@/lib/right-now-buckets";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { getPlaceOfDayIds } from "@/lib/place-of-day-ids";
+import type { DiscoveryBadge } from "@/lib/right-now-badges";
 import type { WeatherAtCoords } from "@/lib/weather-live";
 import { allPlaces } from "@/data";
 import { getAttractionById, getRestaurantById } from "@/data";
@@ -27,13 +28,6 @@ export type ScorablePlace = PlanItem & {
   /** For attractions, the actual subtype (beach, ancient, village, etc.); otherwise same as type */
   effectiveType?: string;
 };
-
-export type DiscoveryBadge =
-  | "Hidden gem near you"
-  | "Only locals know this spot"
-  | "Trending today"
-  | "Perfect for sunset today";
-
 /** Haversine distance in km */
 function haversineKm(
   lat1: number,
@@ -251,14 +245,14 @@ export function assignDiscoveryBadges(
     : null;
 
   return items.map((item) => {
-    if (item.id === trendingId) return { ...item, discoveryBadge: "Trending today" as const };
+    if (item.id === trendingId) return { ...item, discoveryBadge: "trending_today" as const };
     const effectiveType = item.effectiveType ?? item.type;
     if (current === "sunset" && clearWeather && ["beach", "restaurant", "ancient", "village", "nature"].includes(effectiveType)) {
-      return { ...item, discoveryBadge: "Perfect for sunset today" as const };
+      return { ...item, discoveryBadge: "perfect_sunset_today" as const };
     }
     if (item.localSecret) {
-      if (item.distanceKm < 25) return { ...item, discoveryBadge: "Hidden gem near you" as const };
-      return { ...item, discoveryBadge: "Only locals know this spot" as const };
+      if (item.distanceKm < 25) return { ...item, discoveryBadge: "hidden_gem_near_you" as const };
+      return { ...item, discoveryBadge: "only_locals_know" as const };
     }
     return { ...item, discoveryBadge: null };
   });
