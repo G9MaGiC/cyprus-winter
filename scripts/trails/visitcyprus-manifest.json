@@ -1,0 +1,300 @@
+{
+  "source": "visitcyprus.com",
+  "license": "Cyprus Tourism Organisation promotional assets — attribution required in docs",
+  "fetchedAt": "2026-08-21T21:38:51.806Z",
+  "mappedCount": 30,
+  "unmappedSlugs": [
+    "ezousa-walking-trail-circular-pafos-paphos-district-nature-trail",
+    "panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail"
+  ],
+  "trails": [
+    {
+      "slug": "adonis-circular-pafos-paphos-district-akamas-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/adonis-circular-pafos-paphos-district-akamas-forest-nature-trail/",
+      "title": "Adonis (Circular) - Pafos (Paphos) District, Akamas Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/be28adfff47893c4519c1307dc6b8866.jpg",
+      "localPath": "/images/cyprus/trails/trail-adonis.jpg",
+      "trailId": "adonis",
+      "fetchedAt": "2026-08-21T21:38:22.580Z"
+    },
+    {
+      "slug": "agia-eirini-limeria-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/agia-eirini-limeria-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail/",
+      "title": "Agia Eirini - Limeria (Linear) - Lefkosia (Nicosia) District, Adelfoi Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/245effadf41c6129f4fe7accc564ef86.jpg",
+      "localPath": "/images/cyprus/trails/trail-agia-irini.jpg",
+      "trailId": "agia-irini",
+      "fetchedAt": "2026-08-21T21:38:22.797Z"
+    },
+    {
+      "slug": "aphrodite-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/aphrodite-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail/",
+      "title": "Aphrodite (Circular), Ammochostos (Famagusta) District, Cape Gkreko National Forest Park Nature Trail Agia Napa",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/358873fad4914931314b94f2036b503a.jpg",
+      "localPath": "/images/cyprus/trails/trail-aphrodite-cape-greco.jpg",
+      "trailId": "aphrodite-cape-greco",
+      "fetchedAt": "2026-08-21T21:38:23.728Z"
+    },
+    {
+      "slug": "aphrodite-circular-pafos-paphos-district-akamas-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/aphrodite-circular-pafos-paphos-district-akamas-forest-nature-trail/",
+      "title": "Aphrodite (Circular) - Pafos (Paphos) District, Akamas Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/4d8c9898b5bb88437f053c8b957f47f3.jpg",
+      "localPath": "/images/cyprus/trails/trail-aphrodite.jpg",
+      "trailId": "aphrodite",
+      "fetchedAt": "2026-08-21T21:38:24.776Z"
+    },
+    {
+      "slug": "artemis-circular-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/artemis-circular-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Artemis (Circular) - Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/267b1948fa84309bc99f9c0289cabe44.jpg",
+      "localPath": "/images/cyprus/trails/trail-artemis.jpg",
+      "trailId": "artemis",
+      "fetchedAt": "2026-08-21T21:38:25.913Z"
+    },
+    {
+      "slug": "atalanti-circular-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/atalanti-circular-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail/",
+      "title": "Atalanti (Circular) - Lemesos (Limassol) / Lefkosia (Nicosia) Districts, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/852967248dd3e6cb3942a1fe6af42945.jpg",
+      "localPath": "/images/cyprus/trails/trail-atalante.jpg",
+      "trailId": "atalante",
+      "fetchedAt": "2026-08-21T21:38:27.046Z"
+    },
+    {
+      "slug": "avakas-gorge-linear-pafos-paphos-district-akamas-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/avakas-gorge-linear-pafos-paphos-district-akamas-forest-nature-trail/",
+      "title": "Avakas Gorge (Linear) - Pafos (Paphos) District, Akamas Forest Nature Trail (Temporarily closed)",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/2cebfdae7a8ea5d691033c085990a9d4.jpg",
+      "localPath": "/images/cyprus/trails/trail-avakas-gorge.jpg",
+      "trailId": "avakas-gorge",
+      "fetchedAt": "2026-08-21T21:38:27.354Z"
+    },
+    {
+      "slug": "chrysovrysi-linear-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/chrysovrysi-linear-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Chrysovrysi (Linear) - Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/3707d8f2be163bd14c78cf07586f13bb.jpg",
+      "localPath": "/images/cyprus/trails/trail-chrysovrysi.jpg",
+      "trailId": "chrysovrysi",
+      "fetchedAt": "2026-08-21T21:38:28.280Z"
+    },
+    {
+      "slug": "doxa-soi-o-theos-pyrofylakio-fire-lookout-station-madaris-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/doxa-soi-o-theos-pyrofylakio-fire-lookout-station-madaris-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail/",
+      "title": "Doxa soi o Theos - Pyrofylakio (Fire Lookout Station) Madaris (Linear) - Lefkosia (Nicosia) District, Adelfoi Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/5483e331a9bace540b3a2478fc014e25.jpg",
+      "localPath": "/images/cyprus/trails/trail-madari-ridge.jpg",
+      "trailId": "madari-ridge",
+      "fetchedAt": "2026-08-21T21:38:29.419Z"
+    },
+    {
+      "slug": "fragma-dam-prodromou-stavroulia-linear-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/fragma-dam-prodromou-stavroulia-linear-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail/",
+      "title": "Fragma (Dam) Prodromou - Stavroulia (Linear) - Lemesos (Limassol) / Lefkosia (Nicosia) Districts, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/13f34e2b533e12c6166f88368dcd8c07.jpg",
+      "localPath": "/images/cyprus/trails/trail-prodromos-dam-stavroulia.jpg",
+      "trailId": "prodromos-dam-stavroulia",
+      "fetchedAt": "2026-08-21T21:38:30.449Z"
+    },
+    {
+      "slug": "kalidonia-linear-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/kalidonia-linear-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Kalidonia (Linear) - Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/1d73e13563b8be946c0f00bab252d7ea.jpg",
+      "localPath": "/images/cyprus/trails/trail-caledonia-falls.jpg",
+      "trailId": "caledonia-falls",
+      "fetchedAt": "2026-08-21T21:38:31.475Z"
+    },
+    {
+      "slug": "kampos-tou-livadiou-circular-lemesos-limassol-lefkosia-nicosia-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/kampos-tou-livadiou-circular-lemesos-limassol-lefkosia-nicosia-district-troodos-forest-nature-trail/",
+      "title": "Kampos tou Livadiou (Circular) - Lemesos (Limassol) / Lefkosia (Nicosia) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/ba1b7eb9b8ad142948e3b9dce300b4c6.jpg",
+      "localPath": "/images/cyprus/trails/trail-kampos-tou-livadiou.jpg",
+      "trailId": "kampos-tou-livadiou",
+      "fetchedAt": "2026-08-21T21:38:32.289Z"
+    },
+    {
+      "slug": "kannoures-agios-nikolaos-tis-stegis-linear-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/kannoures-agios-nikolaos-tis-stegis-linear-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail/",
+      "title": "Kannoures - Agios Nikolaos tis Stegis (Linear) - Lemesos (Limassol) / Lefkosia (Nicosia) Districts, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/d48ed900e79fa9547169c26138b4cd8d.jpg",
+      "localPath": "/images/cyprus/trails/trail-kannoures-agios-nikolaos.jpg",
+      "trailId": "kannoures-agios-nikolaos",
+      "fetchedAt": "2026-08-21T21:38:33.914Z"
+    },
+    {
+      "slug": "kavos-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/kavos-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail/",
+      "title": "Kavos (Circular) - Ammochostos (Famagusta) District, Cape Gkreko National Forest Park Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/ea457adccaa9e569cff05de9b4f3b04d.jpg",
+      "localPath": "/images/cyprus/trails/trail-kavos-trail.jpg",
+      "trailId": "kavos-trail",
+      "fetchedAt": "2026-08-21T21:38:35.045Z"
+    },
+    {
+      "slug": "kionia-profitis-ilias-linear-lefkosia-nicosia-district-machairas-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/kionia-profitis-ilias-linear-lefkosia-nicosia-district-machairas-forest-nature-trail/",
+      "title": "Kionia - Profitis Ilias (Linear) - Lefkosia (Nicosia) District, Machairas Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/3749aaa8ee129d7e919bddcc7e09cd36.jpg",
+      "localPath": "/images/cyprus/trails/trail-kionia-profitis-elias.jpg",
+      "trailId": "kionia-profitis-elias",
+      "fetchedAt": "2026-08-21T21:38:36.185Z"
+    },
+    {
+      "slug": "konnoi-agioi-anargyroi-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/konnoi-agioi-anargyroi-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail/",
+      "title": "Konnoi ­- Agioi Anargyroi (Circular) - Ammochostos (Famagusta) District, Cape Gkreko National Forest Park Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/51a3864ed3ad604d2340c3f8fe249f94.jpg",
+      "localPath": "/images/cyprus/trails/trail-agioi-anargyroi-circular.jpg",
+      "trailId": "agioi-anargyroi-circular",
+      "fetchedAt": "2026-08-21T21:38:37.223Z"
+    },
+    {
+      "slug": "konnoi-cyclops-cave-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/konnoi-cyclops-cave-circular-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail/",
+      "title": "Konnoi - Cyclops Cave (Circular) - Ammochostos (Famagusta) District, Cape Gkreko National Forest Park Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/42121f00ffc451d0c288e11c1f28cbd4.jpg",
+      "localPath": "/images/cyprus/trails/trail-konnoi-cyclops.jpg",
+      "trailId": "konnoi-cyclops",
+      "fetchedAt": "2026-08-21T21:38:38.755Z"
+    },
+    {
+      "slug": "kyparissia-ydatofraktis-dam-germasogeias-linear-lemesos-limassol-district-lemesos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/kyparissia-ydatofraktis-dam-germasogeias-linear-lemesos-limassol-district-lemesos-forest-nature-trail/",
+      "title": "Kyparissia ­- Ydatofraktis (dam) Germasogeias (Linear) - Lemesos (Limassol) District, Lemesos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/737344dd8934cc52da9f7f85f2627abb.jpg",
+      "localPath": "/images/cyprus/trails/trail-germasogeia-kyparissia.jpg",
+      "trailId": "germasogeia-kyparissia",
+      "fetchedAt": "2026-08-21T21:38:39.059Z"
+    },
+    {
+      "slug": "livadi-circular-lefkosia-nicosia-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/livadi-circular-lefkosia-nicosia-district-troodos-forest-nature-trail/",
+      "title": "Livadi (Circular) - Lefkosia (Nicosia) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/0d0c19531d6e29f793ed165732978408.jpg",
+      "localPath": "/images/cyprus/trails/trail-livadi-trail.jpg",
+      "trailId": "livadi-trail",
+      "fetchedAt": "2026-08-21T21:38:39.260Z"
+    },
+    {
+      "slug": "loumata-ton-aeton-linear-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/loumata-ton-aeton-linear-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Loumata ton Aeton (Linear) - Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/780149ddfa09fbd86eb140fe6810d770.jpg",
+      "localPath": "/images/cyprus/trails/trail-loumata-ton-aeton.jpg",
+      "trailId": "loumata-ton-aeton",
+      "fetchedAt": "2026-08-21T21:38:39.462Z"
+    },
+    {
+      "slug": "mnimata-piskopon-linear-lefkosia-nicosia-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/mnimata-piskopon-linear-lefkosia-nicosia-district-troodos-forest-nature-trail/",
+      "title": "Mnimata Piskopon (Linear) - Lefkosia (Nicosia) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/398a8bc2e3f7f879ff0986359513be80.jpg",
+      "localPath": "/images/cyprus/trails/trail-mnimata-piskopon.jpg",
+      "trailId": "mnimata-piskopon",
+      "fetchedAt": "2026-08-21T21:38:40.959Z"
+    },
+    {
+      "slug": "persephone-linear-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/persephone-linear-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Persephone (Linear) - Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/aaa082d2257ab65aecf61c2340e9c5b9.jpg",
+      "localPath": "/images/cyprus/trails/trail-persephone.jpg",
+      "trailId": "persephone",
+      "fetchedAt": "2026-08-21T21:38:42.094Z"
+    },
+    {
+      "slug": "pissouromoutti-circular-pafos-paphos-district-akamas-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/pissouromoutti-circular-pafos-paphos-district-akamas-forest-nature-trail/",
+      "title": "Pissouromoutti (Circular) - Pafos (Paphos) District, Akamas Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/deb9f9efc56ef2a940bdf0d58ccaad5c.jpg",
+      "localPath": "/images/cyprus/trails/trail-pissouromoutti.jpg",
+      "trailId": "pissouromoutti",
+      "fetchedAt": "2026-08-21T21:38:43.231Z"
+    },
+    {
+      "slug": "prodromos-zoumi-linear-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/prodromos-zoumi-linear-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail/",
+      "title": "Prodromos - Zoumi (Linear) ­- Lemesos (Limassol) / Lefkosia (Nicosia) Districts, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/deb45d333d0414ba3de42155789fdb4a.jpg",
+      "localPath": "/images/cyprus/trails/trail-prodromos-zoumi.jpg",
+      "trailId": "prodromos-zoumi",
+      "fetchedAt": "2026-08-21T21:38:44.368Z"
+    },
+    {
+      "slug": "psilondentro-tall-tree-pouziaris-circular-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/psilondentro-tall-tree-pouziaris-circular-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Psilondentro (Tall Tree) - Pouziaris (Circular) ­- Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/00e7056ec788d5b42162a6c13dbba43c.jpg",
+      "localPath": "/images/cyprus/trails/trail-psilo-dentro-pouziaris.jpg",
+      "trailId": "psilo-dentro-pouziaris",
+      "fetchedAt": "2026-08-21T21:38:45.911Z"
+    },
+    {
+      "slug": "sea-caves-agioi-anargyroi-linear-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/sea-caves-agioi-anargyroi-linear-ammochostos-famagusta-district-cape-gkreko-national-forest-park-nature-trail/",
+      "title": "Sea Caves - Agioi Anargyroi (Linear) - Ammochostos (Famagusta) District, Cape Gkreko National Forest Park Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/88f135a483ef01fac8d7b920488085e4.jpg",
+      "localPath": "/images/cyprus/trails/trail-sea-caves-anargyroi.jpg",
+      "trailId": "sea-caves-anargyroi",
+      "fetchedAt": "2026-08-21T21:38:46.232Z"
+    },
+    {
+      "slug": "smigies-circular-pafos-paphos-district-akamas-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/smigies-circular-pafos-paphos-district-akamas-forest-nature-trail/",
+      "title": "Smigies (Circular) - Pafos (Paphos) District, Akamas Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/4695cb3b19cbf906e45dac0da0913068.jpg",
+      "localPath": "/images/cyprus/trails/trail-smigies.jpg",
+      "trailId": "smigies",
+      "fetchedAt": "2026-08-21T21:38:46.993Z"
+    },
+    {
+      "slug": "teisia-tis-madaris-circular-lefkosia-nicosia-lemesos-limassol-districts-adelfoi-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/teisia-tis-madaris-circular-lefkosia-nicosia-lemesos-limassol-districts-adelfoi-forest-nature-trail/",
+      "title": "Teisia tis Madaris (Circular) - Lefkosia (Nicosia) / Lemesos (Limassol) Districts, Adelfoi Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/924e149af069b8ea323a809fbb1171d4.jpg",
+      "localPath": "/images/cyprus/trails/trail-madari-ridge.jpg",
+      "trailId": "madari-ridge",
+      "fetchedAt": "2026-08-21T21:38:48.027Z"
+    },
+    {
+      "slug": "trooditissa-foini-linear-lemesos-limassol-district-troodos-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/trooditissa-foini-linear-lemesos-limassol-district-troodos-forest-nature-trail/",
+      "title": "Trooditissa - Foini (Linear) - Lemesos (Limassol) District, Troodos Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/2a14beb1aee2d71c6fecb12f25c690f7.jpg",
+      "localPath": "/images/cyprus/trails/trail-trooditissa-phini.jpg",
+      "trailId": "trooditissa-phini",
+      "fetchedAt": "2026-08-21T21:38:48.811Z"
+    },
+    {
+      "slug": "xyliatos-circular-lefkosia-nicosia-district-adelfoi-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/xyliatos-circular-lefkosia-nicosia-district-adelfoi-forest-nature-trail/",
+      "title": "Xyliatos (Circular) - Lefkosia (Nicosia) District, Adelfoi Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2015/11/1698b847c2e4fe98c05adcdc9d420590.jpg",
+      "localPath": "/images/cyprus/trails/trail-xyliatos-dam.jpg",
+      "trailId": "xyliatos-dam",
+      "fetchedAt": "2026-08-21T21:38:49.751Z"
+    },
+    {
+      "slug": "ezousa-walking-trail-circular-pafos-paphos-district-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/ezousa-walking-trail-circular-pafos-paphos-district-nature-trail/",
+      "title": "Ezousa Walking Trail (Circular), Pafos (Paphos) District Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2017/01/fe54cdae0a7c9c0aee243272209ca000.jpg",
+      "localPath": "/images/cyprus/trails/vc-ezousa-walking-trail-circular-pafos-paphos-distr.jpg",
+      "trailId": null,
+      "fetchedAt": "2026-08-21T21:38:50.782Z"
+    },
+    {
+      "slug": "panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail",
+      "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail/",
+      "title": "Panagia tou Araka - Stavros tou Agiasmati (Linear) - Lefkosia (Nicosia) District, Adelfoi Forest Nature Trail",
+      "imageUrl": "https://www.visitcyprus.com/wp-content/uploads/2022/06/d6086de322f98f66cc694f32ea284557.jpg",
+      "localPath": "/images/cyprus/trails/vc-panagia-tou-araka-stavros-tou-agiasmati-linear-l.jpg",
+      "trailId": null,
+      "fetchedAt": "2026-08-21T21:38:51.806Z"
+    }
+  ]
+}
