@@ -8,7 +8,7 @@
 import { readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { trails, type TrailDifficulty } from "../../src/data/trails";
+import { trails } from "../../src/data/trails";
 import { forestryNameToTrailId } from "./forestry-name-map";
 import { gradeToDifficulty } from "./forestry-parse-utils";
 import type { ForestryOutsideRecord } from "./scrape-forestry-trails";
