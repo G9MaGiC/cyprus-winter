@@ -7,6 +7,7 @@ import NavigateButton from "@/components/NavigateButton";
 import { useTranslations } from "next-intl";
 
 function TypeBadge({ type }: { type: PlanItem["type"] }) {
+  const tCommon = useTranslations("common");
   const tPlaceTypes = useTranslations("common.placeTypes");
   const style: Record<PlanItem["type"], string> = {
     trail: "bg-aegean/15 text-aegean",
