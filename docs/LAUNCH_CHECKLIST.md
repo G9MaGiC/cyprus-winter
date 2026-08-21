@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `636b86a` (main after PR #133 UX/UI QA merge)
+**Last updated:** 2026-08-21 · **Target commit:** `ebbf609` (main after PR #134 BUG-241 DaySelector sticky bar)
 
 ---
 
@@ -69,7 +69,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 621+ pass |
+| Unit tests | 622+ pass |
 | i18n keys | 2097 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 

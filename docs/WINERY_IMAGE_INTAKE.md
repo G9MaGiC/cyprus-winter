@@ -28,6 +28,21 @@ Workflow for replacing generic/regional winery hero images with **venue-accurate
 
 `kyperounta` is listed in some older notes but is **not** `isVerified` in `src/data/wineries.ts`. It stays on the Pitsilia mountain regional photo.
 
+### Verified partner outreach queue (Aug 2026)
+
+Use public contact channels from `src/data/wineries.ts` — do **not** invent partner emails. Track status in ops, not in code.
+
+| ID | Name | Hero status | Public contact | Ops action |
+|----|------|-------------|----------------|------------|
+| `domes-sergiou` | Dómes Sergiou | Partner asset ✓ | `bookingUrl` on domeswinery.com | Done |
+| `tsiakkas` | Tsiakkas | CC Pelendri vineyard (not tasting room) | `bookingUrl` + `contactPhone` | Request tasting-room interior |
+| `vouni-panayia` | Vouni Panayia | Laona regional fallback | `bookingUrl` + `contactPhone` | Request terrace/museum shot |
+| `zambartas` | Zambartas | Krasochoria Lofou winter CC | `bookingUrl` + `contactPhone` | Request cellar or tasting room |
+| `kolios` | Kolios | Pitsilia mountain regional | `bookingUrl` + `contactPhone` | Request vineyard/cellar at Statos |
+| `santo` | Santo | Krasochoria Lofou winter CC | `bookingUrl` + `contactPhone` | Request terrace with sea views |
+
+**Pass criteria for P0:** all six rows show venue-accurate hero (partner-provided or documented CC with attribution in `docs/QA_BUGS.md`).
+
 ---
 
 ## What we need from partners
@@ -141,7 +156,7 @@ Track in partner sprint:
 | Metric | Baseline (May 2026) | Aug 2026 (G10) | Target |
 |--------|----------------------|----------------|--------|
 | Wineries with per-id image | ~12 / 71 | 15 / 72 | 25 |
-| Verified partners with venue or village-accurate photo | 1 / 6 (domes-sergiou) | 2 / 6 (domes + Tsiakkas Pelendri CC); 2 Krasochoria on Lofou winter CC; 2 still Laona/mountain regional | 6 / 6 tasting-room or partner shots |
+| Verified partners with venue or village-accurate photo | 1 / 6 (domes-sergiou) | 2 / 6 (domes + Tsiakkas Pelendri CC); 4 still regional/Lofou CC — see outreach queue above | 6 / 6 tasting-room or partner shots |
 | Broken image paths | 0 | 0 (asserted in `cyprus-images.test.ts`) | 0 |
 
 ---
