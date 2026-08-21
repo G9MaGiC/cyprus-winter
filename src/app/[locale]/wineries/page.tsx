@@ -1,10 +1,9 @@
 import Page from "@/app/(padded)/wineries/page";
-import { wineriesPageMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
 export default Page;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return applyLocaleToMetadata(wineriesPageMeta, "/wineries", locale);
+  return buildTranslatedHubMetadata("wineries", locale);
 }

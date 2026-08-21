@@ -1,10 +1,9 @@
-import TeamPage from "@/app/(padded)/team/page";
-import { teamPageMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import Page from "@/app/(padded)/team/page";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export default TeamPage;
+export default Page;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return applyLocaleToMetadata(teamPageMeta, "/team", locale);
+  return buildTranslatedHubMetadata("team", locale);
 }

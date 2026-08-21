@@ -1,10 +1,9 @@
-import WineryListPage from "@/app/(padded)/book/winery/page";
-import { bookWineryIndexPageMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import Page from "@/app/(padded)/book/winery/page";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export default WineryListPage;
+export default Page;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return applyLocaleToMetadata(bookWineryIndexPageMeta, "/book/winery", locale);
+  return buildTranslatedHubMetadata("bookWinery", locale);
 }

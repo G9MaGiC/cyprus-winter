@@ -1,10 +1,9 @@
-import WeatherPage from "@/app/(padded)/weather/page";
-import { weatherHubPageMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import Page from "@/app/(padded)/weather/page";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export default WeatherPage;
+export default Page;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return applyLocaleToMetadata(weatherHubPageMeta, "/weather", locale);
+  return buildTranslatedHubMetadata("weather", locale);
 }

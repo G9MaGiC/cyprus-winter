@@ -1,10 +1,9 @@
-import AirportPage from "@/app/(padded)/airport/page";
-import { airportPageMeta } from "@/lib/locale-page-meta";
-import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import Page from "@/app/(padded)/airport/page";
+import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
-export default AirportPage;
+export default Page;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return applyLocaleToMetadata(airportPageMeta, "/airport", locale);
+  return buildTranslatedHubMetadata("airport", locale);
 }
