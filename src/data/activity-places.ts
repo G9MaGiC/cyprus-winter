@@ -289,7 +289,7 @@ export const activityPlaces: Attraction[] = [
       "Long flat beach and steady winter winds make Lady's Mile a local favourite for windsurfing and kitesurfing. Less crowded than summer. Wetsuit essential. Watch the salt lake flamingos on the drive in. Best on clear windy days Dec to Mar.",
     type: "nature",
     highlights: ["Windsurfing", "Kitesurfing", "Flat water"],
-    bestFor: ["Watersports", "Windsurfing", "Active adventure"],
+    bestFor: ["Watersports", "Windsurfing", "Active adventure", "Off-the-beaten-path"],
     winterTip: "Winter wind is reliable; water cold. Wetsuit essential. Akrotiri Salt Lake flamingos on the drive in—not Larnaca lake.",
     transport: "10 min west of Limassol port",
     parking: "Beach-side parking along Lady's Mile",
@@ -893,7 +893,7 @@ export const activityPlaces: Attraction[] = [
       "Gravel and tarmac loop through Kalavasos, Tochni, and Zygi fishing harbour. Orange groves in the valley, mild winter sun, fish tavernas on the coast. Forty to fifty kilometres of rolling Larnaca hinterland—quieter than Troodos when snow closes the peaks.",
     type: "nature",
     highlights: ["Village loop", "Zygi harbour", "Orange Valley"],
-    bestFor: ["Cycling", "Gravel riding", "Coastal lunch stop"],
+    bestFor: ["Cycling", "Gravel riding", "Coastal lunch stop", "Off-the-beaten-path"],
     backstory:
       "The corridor between Larnaca and Limassol is underrated cycling country. Kalavasos holds a Neolithic site at Tenta; Tochni is stone houses and silence; Zygi is working fishing boats and tavernas that serve what was caught that morning. Komoot and local clubs map loops of forty to sixty kilometres—mostly paved, some gravel through the Orange Valley, rolling elevation without Troodos severity. Winter is the season: mild air, bare vines, empty roads on weekdays. Start from Tochni or Kalavasos, roll to the coast for lunch, climb back through the valley. The Zenobia wreck and Larnaca marina are thirty minutes east if you want a second day on the water.",
     winterTip: "Weekday rides beat weekend traffic near the coast. Layer for descents; wind on exposed ridges. Zygi tavernas open for lunch year-round.",

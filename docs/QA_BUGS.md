@@ -1446,6 +1446,12 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-230 | Discover | Seven places with explicit “fewer visitors” / “off the main loop” copy lacked `Off-the-beaten-path` in `bestFor` (P3 backlog) | Tagged Salamis, Palaipafos, Buffavento, Panagia tou Araka, Savvas, Ayii Anargyri, Silikou Museum; audit test guards copy→tag alignment |
 
+### Fixed — hidden gems editorial tags pass 2 (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-231 | Discover | Fourteen more places with “quieter than” / “less crowded” / “fewer crowds” copy lacked `Off-the-beaten-path` in `bestFor` | Tagged Lady's Mile windsurf, Orange Valley cycle loop, Louvaras, Kato Platres, Pera Pedi, Kato Lefkara, Kato Drys, Adege, Yiannis, Hadjicharalambous, Papaioannou, Monolithos, Latsi Harbour, Pissouri Bay tavernas; extended audit test (Kourion excluded — major site, timing tip only) |
+
 ### Fixed — enrich-places sync (Aug 21, 2026)
 
 | ID | Area | Issue | Fix |

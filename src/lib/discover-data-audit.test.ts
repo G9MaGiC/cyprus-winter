@@ -332,6 +332,20 @@ describe("discover data audit — factual anchors (activity)", () => {
       "savvas",
       "ayii-anargyri",
       "silikou-museum",
+      "lady-mile-windsurf",
+      "larnaca-village-coastal-cycle",
+      "louvaras",
+      "kato-platres",
+      "adege",
+      "yiannis",
+      "hadjicharalambous",
+      "papaioannou",
+      "latsi-harbour",
+      "pissouri-tavernas",
+      "pera-pedi",
+      "lefkara-kato",
+      "kato-drys",
+      "monolithos",
     ] as const;
     for (const id of ids) {
       const item = allDiscoverItems.find((p) => p.id === id);
