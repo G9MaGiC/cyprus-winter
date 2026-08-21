@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Rezervări la crame"
     },
+    "guideBar": {
+      "ariaLabel": "Opțiuni de ghid pentru planul tău",
+      "title": "Ai nevoie de un ghid pentru drumețiile tale?",
+      "directoryCta": "Găsește un ghid licențiat",
+      "browseLicensed": "Răsfoiește ghizii licențiați",
+      "directoryCount": "{count} ghizi vorbesc limba ta în acest district",
+      "verifiedPartners": "Parteneri de drumeție verificați"
+    },
     "realism": {
       "aria": "Indicii de ritm pentru zi",
       "spreadRegions": "Aceste opriri acoperă zone diferite ale insulei—lasă timp de condus între ele.",

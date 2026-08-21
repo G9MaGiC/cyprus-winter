@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Winery bookings"
     },
+    "guideBar": {
+      "ariaLabel": "Guide options for your plan",
+      "title": "Need a guide for your hikes?",
+      "directoryCta": "Find a licensed guide",
+      "browseLicensed": "Browse licensed guides",
+      "directoryCount": "{count} guides speak your language in this district",
+      "verifiedPartners": "Verified hiking partners"
+    },
     "realism": {
       "aria": "Day pacing hints",
       "spreadRegions": "These stops span different parts of the island—allow drive time between them.",

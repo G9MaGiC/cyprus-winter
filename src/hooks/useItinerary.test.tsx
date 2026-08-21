@@ -335,6 +335,18 @@ describe("useItinerary", () => {
     expect(result.current.hasWineries).toBe(true);
   });
 
+  it("sets hasTrails when a trail is on the plan", async () => {
+    const { result } = renderHook(() => useItinerary(), { wrapper });
+
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+
+    act(() => {
+      result.current.addToDayIfMissing("artemis");
+    });
+
+    expect(result.current.hasTrails).toBe(true);
+  });
+
   it("persists days to localStorage after hydration", async () => {
     const { result } = renderHook(() => useItinerary(), { wrapper });
 

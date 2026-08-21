@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Rezerwacje winnic"
     },
+    "guideBar": {
+      "ariaLabel": "Opcje przewodnika dla planu",
+      "title": "Potrzebujesz przewodnika na szlaki?",
+      "directoryCta": "Znajdź licencjonowanego przewodnika",
+      "browseLicensed": "Przeglądaj licencjonowanych przewodników",
+      "directoryCount": "{count} przewodników mówi w Twoim języku w tym dystrykcie",
+      "verifiedPartners": "Zweryfikowani partnerzy trekkingowi"
+    },
     "dayLabel": "Dzień {day}",
     "aria": {
       "shareRegion": "Podsumowanie planu i udostępnianie",

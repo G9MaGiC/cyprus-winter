@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "הזמנות יקבים"
     },
+    "guideBar": {
+      "ariaLabel": "אפשרויות מדריך לתוכנית שלך",
+      "title": "צריך מדריך לטיולים שלך?",
+      "directoryCta": "מצא מדריך מורשה",
+      "browseLicensed": "עיין במדריכים מורשים",
+      "directoryCount": "{count} מדריכים מדברים את השפה שלך במחוז זה",
+      "verifiedPartners": "שותפי טיולים מאומתים"
+    },
     "realism": {
       "aria": "רמזים לקצב היום",
       "spreadRegions": "העצירות האלה במקומות שונים באי — השאירו זמן נסיעה ביניהן.",

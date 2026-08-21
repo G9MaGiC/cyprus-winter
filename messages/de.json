@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Weinbuchungen"
     },
+    "guideBar": {
+      "ariaLabel": "Führer-Optionen für Ihren Plan",
+      "title": "Brauchen Sie einen Führer für Ihre Wanderungen?",
+      "directoryCta": "Lizenzierten Führer finden",
+      "browseLicensed": "Lizenzierte Führer durchsuchen",
+      "directoryCount": "{count} Führer sprechen Ihre Sprache in diesem Bezirk",
+      "verifiedPartners": "Verifizierte Wanderpartner"
+    },
     "dayLabel": "Tag {day}",
     "aria": {
       "shareRegion": "Reiseplan-Übersicht und Teilen",

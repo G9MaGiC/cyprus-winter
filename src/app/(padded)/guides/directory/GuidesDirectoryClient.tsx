@@ -1,7 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import AppLink from "@/components/AppLink";
+import { trackProduct } from "@/lib/analytics";
 import {
   commonGuideLanguages,
   filterLicensedGuides,
@@ -23,9 +25,21 @@ export default function GuidesDirectoryClient({
   initialLanguage = null,
 }: Props) {
   const t = useTranslations("guides.directory");
+  const searchParams = useSearchParams();
+  const hasTrackedView = useRef(false);
   const [district, setDistrict] = useState<string | null>(initialDistrict);
   const [language, setLanguage] = useState<string | null>(initialLanguage);
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (hasTrackedView.current) return;
+    hasTrackedView.current = true;
+    trackProduct("guide_directory_view", {
+      source: searchParams.get("from") ?? "direct",
+      district: initialDistrict ?? "all",
+      language: initialLanguage ?? "all",
+    });
+  }, [initialDistrict, initialLanguage, searchParams]);
 
   const filtered = useMemo(
     () => filterLicensedGuides({ district, language, query }),

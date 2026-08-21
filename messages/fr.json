@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Réservations de domaines"
     },
+    "guideBar": {
+      "ariaLabel": "Options de guide pour votre plan",
+      "title": "Besoin d'un guide pour vos randonnées ?",
+      "directoryCta": "Trouver un guide agréé",
+      "browseLicensed": "Parcourir les guides agréés",
+      "directoryCount": "{count} guides parlent votre langue dans ce district",
+      "verifiedPartners": "Partenaires randonnée vérifiés"
+    },
     "realism": {
       "aria": "Repères de rythme pour la journée",
       "spreadRegions": "Ces arrêts sont éloignés — prévoyez du temps de route.",

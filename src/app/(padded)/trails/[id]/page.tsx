@@ -18,8 +18,8 @@ import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatReportTimestamp } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
-import { guides } from "@/data/guides";
-import { districtForTrailRegion } from "@/lib/guides-directory";
+import { matchGuideForTrail } from "@/lib/guide-match";
+import TrailBookGuideLink from "@/components/trails/TrailBookGuideLink";
 import SectionCard from "@/components/SectionCard";
 import TrailWeatherBadge from "@/components/TrailWeatherBadge";
 import { getLocalizedName } from "@/lib/localize";
@@ -69,6 +69,7 @@ export default async function TrailPage({
   const conditions = trailConditions[trail.id];
   const reports = await getLatestReportsByTrail(trail.id, 3);
   const latestReport = reports[0];
+  const guideMatch = matchGuideForTrail(trail.id, locale);
 
   const canonicalUrl = `${SITE_URL}/trails/${trail.id}`;
   const trailImageUrl = toAbsoluteUrl(getTrailImage(trail.id));
@@ -311,30 +312,16 @@ export default async function TrailPage({
                   {(() => {
                     const status = (latestReport?.status ?? conditions?.status) ?? "open";
                     const isUrgent = status === "caution" || status === "closed";
-                    const guideForTrail = guides.find(
-                      (g) => g.isVerified && g.trailIds.includes(trail.id)
-                    );
                     const linkClass = isUrgent
                       ? `gap-2 ${CTA.primaryCompact}`
                       : `inline-flex items-center min-h-[44px] gap-2 px-4 py-3 rounded-lg text-sm font-medium border-2 border-aegean/60 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`;
-                    if (guideForTrail) {
-                      return (
-                        <AppLink
-                          href={`/book/guide/${guideForTrail.id}?trail=${trail.id}`}
-                          className={linkClass}
-                        >
-                          {tTrailsDetail("bookGuide")}
-                        </AppLink>
-                      );
-                    }
-                    const directoryDistrict = districtForTrailRegion(trail.region);
-                    const directoryHref = directoryDistrict
-                      ? `/guides/directory?district=${directoryDistrict}`
-                      : "/guides/directory";
                     return (
-                      <AppLink href={directoryHref} className={linkClass}>
-                        {tTrailsDetail("bookGuide")}
-                      </AppLink>
+                      <TrailBookGuideLink
+                        verifiedGuideId={guideMatch.verifiedGuide?.id}
+                        trailId={trail.id}
+                        directoryHref={guideMatch.directoryHref}
+                        className={linkClass}
+                      />
                     );
                   })()}
                 </div>
