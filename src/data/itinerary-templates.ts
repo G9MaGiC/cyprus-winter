@@ -62,10 +62,10 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
     hasWineries: true,
     days: {
       1: ["artemis", "platres"],
-      2: ["atalante", "omodos"],
+      2: ["persephone", "omodos"],
       3: ["caledonia-falls", "kakopetria"],
       4: ["kykkos", "tsiakkas"],
-      5: ["persephone", "pedoulas"],
+      5: ["atalante", "pedoulas"],
     },
   },
   {
@@ -152,10 +152,10 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
     hasWineries: true,
     days: {
       1: ["artemis", "platres"],
-      2: ["atalante", "omodos"],
+      2: ["persephone", "omodos"],
       3: ["caledonia-falls", "kakopetria"],
       4: ["kykkos", "tsiakkas"],
-      5: ["persephone", "pedoulas"],
+      5: ["atalante", "pedoulas"],
       6: ["machairas-forest", "machairas"],
       7: ["vouni-panayia", "lofou"],
       8: ["pafos-mosaics", "tomb-of-kings"],
