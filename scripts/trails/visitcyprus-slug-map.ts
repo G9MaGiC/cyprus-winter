@@ -46,13 +46,13 @@ export const VISITCYPRUS_SLUG_TO_TRAIL_ID: Record<string, string> = {
     "madari-ridge",
   "trooditissa-foini-linear-lemesos-limassol-district-troodos-forest-nature-trail": "trooditissa-phini",
   "xyliatos-circular-lefkosia-nicosia-district-adelfoi-forest-nature-trail": "xyliatos-dam",
+  "ezousa-walking-trail-circular-pafos-paphos-district-nature-trail": "ezousa-valley",
+  "panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail":
+    "panagia-araka-stavros",
 };
 
-/** Visit Cyprus pages without a matching app trail id yet (images stored by slug). */
-export const VISITCYPRUS_UNMAPPED_SLUGS = [
-  "ezousa-walking-trail-circular-pafos-paphos-district-nature-trail",
-  "panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail",
-] as const;
+/** All Visit Cyprus nature-trail slugs are mapped (32 pages incl. Smigies alt URL). */
+export const VISITCYPRUS_UNMAPPED_SLUGS = [] as const;
 
 /** Alternate Smigies page outside nature-trails-2/ prefix. */
 export const VISITCYPRUS_ALT_TRAIL_SLUGS = [
@@ -61,9 +61,6 @@ export const VISITCYPRUS_ALT_TRAIL_SLUGS = [
 
 export const VISITCYPRUS_TRAIL_PAGE_URLS = [
   ...Object.keys(VISITCYPRUS_SLUG_TO_TRAIL_ID).map(
-    (slug) => `https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/${slug}/`,
-  ),
-  ...VISITCYPRUS_UNMAPPED_SLUGS.map(
     (slug) => `https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/${slug}/`,
   ),
   "https://www.visitcyprus.com/discover-cyprus/smigies-circular-pafos-paphos-district-akamas-forest-nature-trail/",

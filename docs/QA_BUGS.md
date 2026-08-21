@@ -1523,5 +1523,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-256 | E2E | BUG-252 locale filter tests failed on mobile — filters collapsed | Expand `#discover-filters-toggle` before chip assertions; home-smoke for state-aware sections |
 | BUG-257 | Data | Winery image intake metrics not in CI data gate | `classifyWineryImageSource`, `winery-image-intake.test.ts`, `npm run images:validate`; wired into `data:validate` |
 | BUG-258 | Data / assets | Trail heroes reused 4 regional stock photos (47 trails shared Troodos JPG) | Fetched 32 Visit Cyprus official pages; 29 mapped to app ids → `public/images/cyprus/trails/`; `npm run trails:fetch-images`, `docs/TRAIL_IMAGE_INTAKE.md` |
+| BUG-259 | Data | Ezousa Valley + Panagia tou Araka–Stavros tou Agiasmati on Visit Cyprus but missing from catalog | Added `ezousa-valley`, `panagia-araka-stavros` with official heroes; VC catalog 100% mapped |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

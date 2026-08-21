@@ -4864,6 +4864,36 @@
     }
   },
   {
+    "id": "ezousa-valley",
+    "name": "Ezousa Valley Walking Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official circular: 7.6 km, about 3 hours, grade 2 through the Ezousa Valley from Episkopi Environmental Information Centre. Oriental plane and alder shade the river crossing; the rock church of Saint Hilarion offers views over the valley to Paphos Forest and Troodos. Winter is mild and green—a strong Paphos hills alternative to the Akamas coast.",
+      "highlights": [
+        "Ezousa Valley",
+        "Saint Hilarion views",
+        "Plane-tree shade"
+      ]
+    }
+  },
+  {
+    "id": "panagia-araka-stavros",
+    "name": "Panagia tou Araka – Stavros tou Agiasmati",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official linear: 7 km, about 3 hours, grade 3 between UNESCO fresco churches at Lagoudera (Panagia tou Araka, 1192 AD) and Stavros tou Agiasmati (1494 AD). Pine forest, vineyards, and almond groves; views to Kionia, Madari, Troodos, and the Morphou plain. A 700-year oak stands at the Araka church entrance. Connects toward Madari and Lagoudera routes. Arrange transport for the linear leg.",
+      "highlights": [
+        "UNESCO churches",
+        "700-year oak",
+        "Madari views"
+      ]
+    }
+  },
+  {
     "id": "limassol-carnival",
     "name": "Limassol Carnival",
     "region": "Limassol",

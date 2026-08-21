@@ -182,6 +182,8 @@ const officialTrailImages: Record<string, string> = {
   smigies: `${trailsDir}/trail-smigies.jpg`,
   "trooditissa-phini": `${trailsDir}/trail-trooditissa-phini.jpg`,
   "xyliatos-dam": `${trailsDir}/trail-xyliatos-dam.jpg`,
+  "ezousa-valley": `${trailsDir}/trail-ezousa-valley.jpg`,
+  "panagia-araka-stavros": `${trailsDir}/trail-panagia-araka-stavros.jpg`,
 };
 
 /** Regional stock for trails without an official Visit Cyprus hero. */

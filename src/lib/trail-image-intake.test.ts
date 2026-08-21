@@ -16,8 +16,8 @@ describe("trail image intake (Visit Cyprus official heroes)", () => {
     }
   });
 
-  it("29 Forestry/Visit Cyprus trails use official per-id photos", () => {
-    expect(OFFICIAL_TRAIL_IDS.length).toBe(29);
+  it("31 Forestry/Visit Cyprus trails use official per-id photos", () => {
+    expect(OFFICIAL_TRAIL_IDS.length).toBe(31);
     for (const id of OFFICIAL_TRAIL_IDS) {
       expect(getTrailImage(id)).toMatch(/^\/images\/cyprus\/trails\/trail-/);
       expect(classifyTrailImageSource(id)).toBe("official");
@@ -38,8 +38,8 @@ describe("trail image intake (Visit Cyprus official heroes)", () => {
     for (const trail of trails) {
       counts[classifyTrailImageSource(trail.id)] += 1;
     }
-    expect(counts.official).toBe(29);
+    expect(counts.official).toBe(31);
     expect(counts.regional).toBeGreaterThan(10);
-    expect(trails.length).toBe(71);
+    expect(trails.length).toBe(73);
   });
 });
