@@ -2405,6 +2405,30 @@ export const trails: Trail[] = [
     trailheadCoords: { lat: 34.875, lng: 32.712 },
     locationText: "Paphos",
   },
+  {
+    id: "troodos-visitor-centre",
+    slug: "troodos-visitor-centre-botanical",
+    name: "Troodos Visitor Centre Botanical Trail",
+    region: "Troodos",
+    difficulty: "easy",
+    lengthKm: 0.25,
+    elevationGainM: 15,
+    durationMin: 20,
+    description:
+      "Official Forestry circular at the Troodos Visitor Centre: 250 m, gentle incline, wheelchair accessible. Thirty labelled endemic and indigenous plants of Troodos National Forest Park—including black pine, golden oak, Troodos sage, and Cyprus cedar. Educational loop on serpentinite; ideal before Artemis or Atalante.",
+    highlights: ["Endemic flora", "Wheelchair accessible", "Visitor Centre"],
+    winterNotes: "Open year-round when Visitor Centre is open. Snow possible on access road Jan–Mar.",
+    bestSeason: ["winter", "spring", "summer", "autumn"],
+    routeType: "loop",
+    trailhead: "Troodos Visitor Centre, Troodos Square area",
+    bring: ["Layers"],
+    localSecret: "Pair with the Visitor Centre exhibits—12 plant species here exist nowhere else on Earth.",
+    topSights: ["Labelled endemics", "Troodos sage", "Golden oak"],
+    combineWith: ["kampos-tou-livadiou", "platres", "persephone"],
+    trailheadCoords: { lat: 34.9346, lng: 32.8711 },
+    elevationMaxM: 1750,
+    locationText: "Troodos",
+  },
 ];
 
 /** Total trail count for display (e.g. hero subtitle). Kept in sync with trails.length. */
@@ -2947,4 +2971,5 @@ export const trailConditions: Record<string, TrailConditions> = {
   "argakas-dam": { trailId: "argakas-dam", status: "open", surface: "dry", tip: "Forest road loop with dam panorama. Short (8 km) or long (10 km) options." },
   symvoulas: { trailId: "symvoulas", status: "open", surface: "dry", tip: "Long Yialia valley circular. Start early from Nea Dimmata." },
   "venetian-bridges": { trailId: "venetian-bridges", status: "open", surface: "dry", tip: "Multi-section linear to three Venetian bridges. Arrange transport." },
+  "troodos-visitor-centre": { trailId: "troodos-visitor-centre", status: "open", surface: "dry", tip: "250 m wheelchair loop at Visitor Centre. Endemic plant labels." },
 };

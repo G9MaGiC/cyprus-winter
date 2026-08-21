@@ -18,7 +18,7 @@ Workflow for importing **official Forestry Department** trail stats from moa.gov
 | **Editorial polish** | 27 / 27 | `forestry-trail-copy.ts` + `npm run trails:polish-forestry` |
 | **Official VC heroes** | 31 | Unchanged — fd56 trails use regional stock |
 
-App total trails: **104** (73 state-forest/discovery + 27 fd56 outside-forest + 4 PDF-only Paphos routes).
+App total trails: **105** (31 VC + 31 fd56 + 6 PDF-only + 37 discovery/editorial).
 
 ---
 

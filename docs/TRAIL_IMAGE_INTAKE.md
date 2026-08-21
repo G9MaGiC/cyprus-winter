@@ -12,7 +12,7 @@ Workflow for replacing generic regional trail stock with **official Visit Cyprus
 
 | Tier | Count | Image source |
 |------|-------|--------------|
-| **Official** | 36 / 104 | `public/images/cyprus/trails/trail-{id}.jpg` (31 Visit Cyprus + 5 Forestry PDF) |
+| **Official** | 37 / 105 | `public/images/cyprus/trails/trail-{id}.jpg` (31 Visit Cyprus + 6 Forestry PDF) |
 | **Regional stock** | ~51 | Troodos / coastal / gorge / village shared assets |
 | **Fallback** | ~17 | Troodos default (discovery/hidden routes) |
 

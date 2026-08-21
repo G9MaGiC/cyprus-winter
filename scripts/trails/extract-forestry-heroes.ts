@@ -27,6 +27,7 @@ const CROP: Record<string, { x: number; y: number; w: number; h: number; page?: 
   "argakas-dam": { x: 0.34, y: 0.08, w: 0.33, h: 0.42, page: 1 },
   symvoulas: { x: 0, y: 0.05, w: 0.5, h: 0.35, page: 1 },
   "venetian-bridges": { x: 0, y: 0.22, w: 0.28, h: 0.55, page: 1 },
+  "troodos-visitor-centre": { x: 0.38, y: 0.22, w: 0.22, h: 0.32, page: 1 },
 };
 
 type Manifest = {
