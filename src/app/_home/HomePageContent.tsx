@@ -26,6 +26,7 @@ import {
 } from "@/app/_home/skeletons";
 import { TripModeChipsSkeleton } from "@/app/_home/TripModeChipsSkeleton";
 import TripReminderBanner from "@/components/TripReminderBanner";
+import HomeSectionReveal from "@/app/_home/HomeSectionReveal";
 
 type HomePageContentProps = {
   sharePath?: string;
@@ -58,12 +59,18 @@ export default async function HomePageContent({
       <Suspense fallback={<SearchSectionSkeleton />}>
         <HomeSearchSection locale={locale} />
       </Suspense>
-      <StartHereWithExplore />
-      <HomeWhyCyprusTeaser locale={locale} />
+      <HomeSectionReveal index={0}>
+        <StartHereWithExplore />
+      </HomeSectionReveal>
+      <HomeSectionReveal index={1}>
+        <HomeWhyCyprusTeaser locale={locale} />
+      </HomeSectionReveal>
       <Suspense fallback={<WeatherStripSkeleton />}>
         <HomeTrailConditionsStrip locale={locale} />
       </Suspense>
-      <RightNowNearYou />
+      <HomeSectionReveal index={2}>
+        <RightNowNearYou />
+      </HomeSectionReveal>
       <HomePlaceOfDay />
       <TripPlanSummaryChip />
 

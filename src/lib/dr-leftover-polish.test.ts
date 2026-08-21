@@ -127,6 +127,23 @@ describe("deprecated home/itinerary cleanup", () => {
   });
 });
 
+describe("home section reveal", () => {
+  it("wraps exactly three content sections with HomeSectionReveal", () => {
+    const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");
+    const matches = content.match(/<HomeSectionReveal/g);
+    expect(matches?.length).toBe(3);
+    expect(content).toContain('index={0}');
+    expect(content).toContain('index={1}');
+    expect(content).toContain('index={2}');
+  });
+
+  it("uses section-reveal class in HomeSectionReveal client wrapper", () => {
+    const reveal = readFileSync("src/app/_home/HomeSectionReveal.tsx", "utf8");
+    expect(reveal).toContain("section-reveal");
+    expect(reveal).toContain("700");
+  });
+});
+
 describe("trail place of day overlay keys", () => {
   it("returns a localizable overlayKey instead of English overlay copy", () => {
     const pick = getTrailPlaceOfDayPick();
