@@ -16,10 +16,8 @@ import ThisWeekGrid from "@/app/_home/ThisWeekGrid";
 import HomePlanningSection from "@/app/_home/HomePlanningSection";
 import HomeFooter from "@/app/_home/HomeFooter";
 import HomeShareSection from "@/app/_home/HomeShareSection";
-import EditorsPicks from "@/app/_home/EditorsPicks";
-import BookTastings from "@/app/_home/BookTastings";
+import HomeDiscoverySections from "@/app/_home/HomeDiscoverySections";
 import {
-  BookTastingsSkeleton,
   SearchSectionSkeleton,
   WeatherStripSkeleton,
   ThisWeekSkeleton,
@@ -40,10 +38,7 @@ export default async function HomePageContent({
   planSubtitle,
   locale,
 }: HomePageContentProps) {
-  const [tHome, tCommon] = await Promise.all([
-    locale ? getTranslations({ locale, namespace: "home" }) : getTranslations("home"),
-    locale ? getTranslations({ locale, namespace: "common" }) : getTranslations("common"),
-  ]);
+  const tHome = locale ? await getTranslations({ locale, namespace: "home" }) : await getTranslations("home");
 
   return (
     <>
@@ -85,26 +80,7 @@ export default async function HomePageContent({
         </Suspense>
       </HomeSection>
 
-      <HomeSection
-        id="editors-picks-heading"
-        title={tHome("editorsPicks.title")}
-        kicker={tHome("editorsPicksKicker")}
-        subtitle={tHome("discoverCurated")}
-        alt
-      >
-        <EditorsPicks locale={locale} />
-      </HomeSection>
-
-      <HomeSection
-        id="book-tastings-heading"
-        title={tCommon("bookTastings")}
-        kicker={tHome("bookTastings.kicker")}
-        subtitle={tHome("bookTastings.subtitle")}
-      >
-        <Suspense fallback={<BookTastingsSkeleton />}>
-          <BookTastings locale={locale} />
-        </Suspense>
-      </HomeSection>
+      <HomeDiscoverySections locale={locale} />
 
       <div id="plan-sentinel" className="h-px pointer-events-none -mb-px" aria-hidden />
       <HomePlanningSection planSubtitle={planSubtitle} />

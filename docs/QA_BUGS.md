@@ -1511,5 +1511,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-248 | Visual | `.ai-chat-trigger-pulse` keyframes unused — first-time AI discoverability missing | Wire pulse on default `AIAssistantTrigger` with `AI_PULSE_SEEN_KEY`; respects `useBlockingOverlaysActive`; unit tests |
 | BUG-249 | Visual | Discover detail, bookings, search loading shells generic — flash vs live page rhythm | Structured skeletons with hero/header/result cards using `SKELETON` tokens; guard tests in `dr-leftover-polish.test.ts` |
 | BUG-250 | Visual | Plan share copy buttons lack calm terracotta confirmation per design brief | Terracotta ring + check icon on `linkCopied`/`copied` in `PlanShareBar`; guard test |
+| BUG-251 | UX | Home stacks editors/book-tastings for users who already have plan items | `HomeDiscoverySections` client leaf hides blocks when `hasContent`; RSC shell unchanged |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

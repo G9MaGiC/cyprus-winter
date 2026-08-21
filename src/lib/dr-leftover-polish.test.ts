@@ -167,7 +167,18 @@ describe("plan share copy feedback", () => {
     const bar = readFileSync("src/components/plan/PlanShareBar.tsx", "utf8");
     expect(bar).toContain("ring-terracotta/40");
     expect(bar).toContain("CopyCheckIcon");
-    expect(bar).not.toContain("bg-aegean/15 text-aegean border border-aegean/25");
+    expect(bar).toContain("copySuccessClass");
+  });
+});
+
+describe("home state-aware discovery sections", () => {
+  it("delegates editors and book tastings to HomeDiscoverySections client leaf", () => {
+    const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");
+    const adaptive = readFileSync("src/app/_home/HomeDiscoverySections.tsx", "utf8");
+    expect(content).toContain("HomeDiscoverySections");
+    expect(content).not.toContain("EditorsPicks");
+    expect(adaptive).toContain("useItinerary");
+    expect(adaptive).toContain("hasContent");
   });
 });
 
