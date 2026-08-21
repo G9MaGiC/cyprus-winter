@@ -1491,5 +1491,6 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-238 | A11y | Terms privacy inline link lacked 44px hit area | Terracotta link matches booking fine-print pattern |
 | BUG-239 | A11y | Weather month event “Add to plan” link under 44px height | `min-h-[44px] items-center py-2` |
 | BUG-240 | A11y | `FilterChips` default `ariaLabel="Filters"` hardcoded EN | `ariaLabel` required; all callers already pass i18n labels |
+| BUG-241 | Visual | `DaySelector` still inlined `bg-sand/98` sticky bar after BUG-232 token train | `STRIP.stickySandBar` on plan day tabs; guard test in `dr-leftover-polish.test.ts` |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
