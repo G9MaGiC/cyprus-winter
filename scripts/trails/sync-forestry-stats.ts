@@ -25,11 +25,6 @@ type Mismatch = {
   app: string;
 };
 
-function fmtDiff(a: number | null | undefined, b: number): string {
-  if (a == null) return `? vs ${b}`;
-  return `${a} vs ${b}`;
-}
-
 async function main(): Promise<void> {
   const raw = await readFile(manifestPath, "utf8");
   const manifest = JSON.parse(raw) as Manifest;
