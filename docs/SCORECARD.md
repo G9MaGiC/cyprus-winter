@@ -7,8 +7,8 @@ Target state for launch readiness. Re-run checks after major releases.
 | **Product clarity** | PRD-aligned funnel; winter-differentiated copy in `src/data` | `.cursor/PRODUCT_DEEP.md`, editorial review | **4.5/5** — funnel solid; ~55 winery heroes still regional/generic |
 | **Core funnel** | Discover → Plan → Book E2E green; Plan server shell + client leaf | `npm run test:e2e:gate:ci`, `src/app/(padded)/plan/page.tsx` | **5/5** — CI Core Funnel + E2E Full green on `0fe7dcf` |
 | **Security** | Upstash + Supabase in prod; AI paths validated; admin HttpOnly session | Public `curl /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; `resolve-internal-path.test.ts` | **4.5/5** — chat/search hardened (BUG-122–124); admin cookie session shipped (DR-003); Upstash must still be verified in prod |
-| **Test & CI** | lint, typecheck, 440+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 452 unit tests; Core Funnel + E2E Full green on `0fe7dcf`; Actions on Node 24 runtime (PR #70) |
-| **i18n / SEO** | 7 locales validate; scan clean; hreflang for all locales | `npm run i18n:validate`, `npm run i18n:scan --fail`, `npm run build` | **5/5** — 1861 keys × 7; `fr`/`he`/`ro` chrome translated and labeled beta (editorial still EN) |
+| **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 611 unit tests; Core Funnel + E2E Full green on `main`; Actions on Node 20.19.0 |
+| **i18n / SEO** | 7 locales validate; scan clean; hreflang for all locales | `npm run i18n:validate`, `npm run i18n:scan --fail`, `npm run build` | **5/5** — 2095 keys × 7; `fr`/`he`/`ro` chrome translated and labeled beta (editorial still EN) |
 | **Data maintainability** | `npm run data:validate`; audit tests; no shadow duplicate place IDs | CI quality job + discover data audit tests | **5/5** |
 | **Mobile / Capacitor** | Documented remote URL strategy + error path | `docs/RUNBOOK.md` §5–6, `capacitor.config.ts` | **4.5/5** — sticky Plan/overlay model improved (BUG-127–134) |
 | **Merge hygiene** | Single PR per feature; CI green on GitHub before merge | PR checklist in `AGENTS.md` | **5/5** |
@@ -65,4 +65,4 @@ Details: `docs/QA_BUGS.md`
 - `docs/RUNBOOK.md` — incidents and env matrix
 - `docs/DEEP_REVIEW_2026-05-20.md` — security backlog (DR-*)
 
-Last updated: 2026-08-20.
+Last updated: 2026-08-21.

@@ -44,11 +44,12 @@ Unlike generic travel sites (TripAdvisor, Booking), we focus on **one island, on
 | **Discover** | Curated attractions by type (Beaches, Ancient sites, Villages, Wineries, Monasteries); filter chips; related places | `/discover`, `/discover/[id]` |
 | **Trails** | Trail conditions with difficulty/region filters; crowd-sourced reports; combine-with suggestions | `/trails`, `/trails/[id]`, `/trails/[id]/report` |
 | **Events** | Winter events (Epiphany, carnival, Commandaria, markets) by month | `/events` |
-| **Plan** | Day-by-day itinerary builder; winter templates; wineries, trails, attractions | `/plan` |
+| **Plan** | Day-by-day itinerary builder; winter templates; shareable links; wineries, trails, attractions | `/plan` |
 | **Team** | Expert profiles (CEO, CTO, CPO, Tourism, Growth, Design) with expertise and bios | `/team` |
 | **AI Assistant** | Chat with an AI guide about trails, wineries, villages; type or use voice; get itinerary suggestions | Global (chat bubble) |
 | **Bookings** | In-app winery tasting booking; request form; My Bookings page | `/book/winery/[id]`, `/bookings` |
-| **Account** | Placeholder for future sign-in and sync | `/account` |
+| **Account** | Supabase auth (email/password, magic link); settings; optional sync for bookings | `/account`, `/login`, `/register` |
+| **PWA** | Locale-aware web manifest; install prompt; offline plan queue | `/install`, `/manifests/[locale]` |
 
 ### Data Models
 
@@ -59,10 +60,8 @@ Unlike generic travel sites (TripAdvisor, Booking), we focus on **one island, on
 ### Potential Roadmap (Future)
 
 - **Seasonal content:** Winter-specific events, weather, quieter spots
-- **Save favourites** (persisted, e.g. localStorage / account)
-- **Share itinerary** (link or PDF)
-- **Offline / PWA** support for use without roaming
-- **Map view** for attractions and transport
+- **Save favourites** (persisted account-wide beyond localStorage)
+- **Map view** for attractions and transport (Discover map tab exists; broader map UX TBD)
 - **Recommendations** based on preferences (family, couples, culture, etc.)
 
 ---

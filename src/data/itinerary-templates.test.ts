@@ -27,4 +27,28 @@ describe("itinerary templates", () => {
     expect(ids).toContain("kourion");
     expect(ids).toContain("tsiakkas");
   });
+
+  it("never pairs Atalante with Omodos on the same template day", () => {
+    const offenders: string[] = [];
+    for (const template of ITINERARY_TEMPLATES) {
+      for (const [day, ids] of Object.entries(template.days)) {
+        if (ids.includes("atalante") && ids.includes("omodos")) {
+          offenders.push(`${template.key} day ${day}`);
+        }
+      }
+    }
+    expect(offenders, offenders.join("\n")).toEqual([]);
+  });
+
+  it("never pairs Artemis and Atalante on the same template day", () => {
+    const offenders: string[] = [];
+    for (const template of ITINERARY_TEMPLATES) {
+      for (const [day, ids] of Object.entries(template.days)) {
+        if (ids.includes("artemis") && ids.includes("atalante")) {
+          offenders.push(`${template.key} day ${day}`);
+        }
+      }
+    }
+    expect(offenders, offenders.join("\n")).toEqual([]);
+  });
 });

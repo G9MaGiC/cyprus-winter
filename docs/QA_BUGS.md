@@ -1459,4 +1459,12 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-226 | i18n | `guides.troodosDecember` still mirrored English on beta `fr`/`he`/`ro` (header, intro, meta, section labels) after BUG-220 copy fix in en/el/de/pl | Localized full guide block in fr, he, ro; Artemis/Atalante pacing copy preserved |
 
+### Fixed — project audit pass (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-227 | Data / Product | Kampos/Livadi/Almirolivado `combineWith` still listed Artemis + Atalante together after BUG-219 itinerary pacing train | Drop Atalante from gentle Kampos/Livadi pairs; Almirolivado → Platres/Pedoulas only; audit tests guard Chionistra doubles |
+| BUG-228 | Docs | SCORECARD/LAUNCH_CHECKLIST/README/AGENTS drifted (452 tests, 1861 keys, Node 24, Account “placeholder”, missing `check:conflict-markers`) | Sync to 611 tests, 2095 keys, Node 20.19.0; document auth/PWA/share; add conflict-marker gate to agent docs |
+| BUG-229 | Docs | Archived `TRAILS_ADDITIONS_PLAN.md` still showed pre-Forestry Chrysovrysi/Kavos km | Archive banner points to canonical `trails.ts` + BUG-215–216 |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
