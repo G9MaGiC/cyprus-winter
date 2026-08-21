@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-20 · **Target commit:** `main` after G1 health evidence
+**Last updated:** 2026-08-21 · **Target commit:** `main` after project audit pass
 
 ---
 
@@ -63,14 +63,14 @@ Run locally or trust latest CI ([GitHub Actions](https://github.com/G9MaGiC/cypr
 ```bash
 npm run lint && npm run typecheck && npm run test
 npm run i18n:validate && npm run i18n:scan --fail
-npm run data:validate && npm run build
+npm run data:validate && npm run check:conflict-markers && npm run build
 npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 ```
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 452+ pass |
-| i18n keys | 1861 × 7 locales |
+| Unit tests | 611+ pass |
+| i18n keys | 2095 × 7 locales |
 | CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — all green |
 
 ---

@@ -323,3 +323,30 @@ describe("discover data audit — factual anchors (activity)", () => {
     expect(ACTIVITY_PLACE_IDS.watersports).not.toContain("governors-beach");
   });
 });
+
+describe("discover data audit — Troodos trail pacing", () => {
+  it("Artemis and Atalante combineWith avoid same-day Chionistra doubles", () => {
+    const artemis = trails.find((t) => t.id === "artemis");
+    const atalante = trails.find((t) => t.id === "atalante");
+    expect(artemis?.combineWith).toBeDefined();
+    expect(atalante?.combineWith).toBeDefined();
+    expect(artemis!.combineWith).not.toContain("atalante");
+    expect(atalante!.combineWith).not.toContain("artemis");
+    expect(atalante!.combineWith).not.toContain("omodos");
+    expect(atalante!.combineWith).not.toContain("tsiakkas");
+  });
+
+  it("no trail combineWith lists both Artemis and Atalante", () => {
+    const offenders = trails.filter(
+      (t) =>
+        t.combineWith?.includes("artemis") && t.combineWith?.includes("atalante")
+    );
+    expect(offenders.map((t) => t.id)).toEqual([]);
+  });
+
+  it("full-day Almirolivado does not pair with Chionistra loop trails", () => {
+    const almirolivado = trails.find((t) => t.id === "almirolivado");
+    expect(almirolivado?.combineWith).not.toContain("artemis");
+    expect(almirolivado?.combineWith).not.toContain("atalante");
+  });
+});

@@ -1,4 +1,4 @@
-**Status**: Archived (historical).
+**Status**: Archived (historical). **Stats superseded:** Chrysovrysi is 8 km (Forestry grade 2), Kavos is 1.2 km — see `src/data/trails.ts` and BUG-215–216 in `docs/QA_BUGS.md`.
 
 **Canonical docs**: see docs/README.md and the specific canon for this topic.
 

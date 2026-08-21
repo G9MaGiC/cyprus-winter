@@ -36,6 +36,7 @@ npm run test
 npm run i18n:validate
 npm run i18n:scan --fail
 npm run data:validate
+npm run check:conflict-markers
 npm run build
 npm run test:e2e:gate:ci
 ```
@@ -54,6 +55,6 @@ The deprecated Superpowers plugin `/execute-plan` stub is overridden by `.cursor
 
 ## Before merging
 
-1. Lint, typecheck, unit tests, i18n validate/scan, **data:validate**, build
+1. Lint, typecheck, unit tests, i18n validate/scan, **data:validate**, **check:conflict-markers**, build
 2. E2E gate if touching funnel, overlays, or hub footers
 3. Log regressions in `docs/QA_BUGS.md`
