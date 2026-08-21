@@ -295,3 +295,21 @@ After approval, save this plan as:
 [`docs/superpowers/plans/2026-08-21-design-super-brief-execution.md`](docs/superpowers/plans/2026-08-21-design-super-brief-execution.md)
 
 Use `/execute-plan` or App Experts team with reference to MOTION.md + this file.
+
+---
+
+## Execution status (2026-08-21)
+
+| Branch | BUG | Status |
+|--------|-----|--------|
+| `cursor/design-docs-motion-043e` | BUG-246 | Merged |
+| `cursor/home-section-reveal-043e` | BUG-247 | Merged |
+| `cursor/ai-trigger-pulse-043e` | BUG-248 | Merged |
+| `cursor/skeleton-parity-043e` | BUG-249 | Merged |
+| `cursor/plan-share-feedback-043e` | BUG-250 | Merged |
+| `cursor/home-state-aware-043e` | BUG-251 | Merged (+ RSC fix `4daf6f7`) |
+| `cursor/i18n-layout-stress-043e` | BUG-252 | Merged |
+| `cursor/pwa-install-ux-043e` | BUG-253 | Merged |
+| `cursor/trail-report-ux-polish-043e` | BUG-254 | Skipped — success UI already sufficient |
+
+**Final main:** `4daf6f7` · **645 unit tests** · **2102 i18n keys × 7**

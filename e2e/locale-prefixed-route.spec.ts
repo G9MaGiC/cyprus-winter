@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
 /**
  * Smoke: locale-prefixed URLs resolve through proxy + next-intl (regression guard for intl middleware).
@@ -54,12 +54,20 @@ test.describe("Locale-prefixed routes", () => {
     await expect(page.getByRole("main")).toBeVisible();
   });
 
+  async function expandDiscoverFiltersIfMobile(page: Page) {
+    const toggle = page.locator("#discover-filters-toggle");
+    if (await toggle.isVisible()) {
+      await toggle.click();
+      await expect(page.locator("#discover-filters")).toBeVisible();
+    }
+  }
+
   test("German discover filter chips visible at 390px", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/de/discover", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("main")).toBeVisible();
-    const filters = page.getByRole("group").first();
-    await expect(filters).toBeVisible();
+    await expandDiscoverFiltersIfMobile(page);
+    const filters = page.getByRole("group", { name: "Nach Kategorie filtern" });
     await expect(filters.getByRole("link").first()).toBeVisible();
   });
 
@@ -68,15 +76,17 @@ test.describe("Locale-prefixed routes", () => {
     await page.goto("/he/discover", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("main")).toBeVisible();
-    const filters = page.getByRole("group").first();
-    await expect(filters).toBeVisible();
+    await expandDiscoverFiltersIfMobile(page);
+    const filters = page.getByRole("group", { name: "סינון לפי סוג מקום" });
+    await expect(filters.getByRole("link").first()).toBeVisible();
   });
 
   test("Polish discover filter chips visible at 390px", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/pl/discover", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("main")).toBeVisible();
-    const filters = page.getByRole("group").first();
+    await expandDiscoverFiltersIfMobile(page);
+    const filters = page.getByRole("group", { name: "Filtruj według kategorii" });
     await expect(filters.getByRole("link").first()).toBeVisible();
   });
 });
