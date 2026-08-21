@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { decodeItinerary } from "@/lib/itinerary-share";
-import { planSegmentMeta } from "@/lib/locale-page-meta";
 import { applyLocaleToMetadata, absoluteUrlForLocale } from "@/lib/locale-seo";
 import {
   buildPlanShareCopy,
@@ -48,12 +47,11 @@ export async function buildPlanPageMetadata(
   const ogAlt = copy ? tShare("ogImageAlt", { places: copy.placesLine }) : tMeta("ogTitle");
 
   const base: Metadata = {
-    ...planSegmentMeta,
     title,
     description,
     robots: preview ? { index: false, follow: true } : undefined,
     openGraph: {
-      ...(planSegmentMeta.openGraph ?? { type: "website" }),
+      type: "website",
       title,
       description,
       images: [{ url: ogImage, width: 1200, height: 630, alt: ogAlt }],

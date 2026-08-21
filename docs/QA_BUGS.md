@@ -1409,6 +1409,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-209 | i18n | Trails tips + airport BeforeYouGoChecklist rendered EN `winter-tips.ts` title/body | Resolve via `home.insiderTips.*`; localize checklist chrome |
 | BUG-210 | SEO / i18n | Guides Troodos / install / bookings still EN via `locale-page-meta` on `[locale]` (bookings padded hardcoded EN) | `buildTranslatedHubMetadata` + `bookings.page.meta` |
 | BUG-211 | SEO / i18n | Account / settings / trail report / admin / partner still EN `locale-page-meta` | Translated hub meta + `pathOverride` for `/trails/{id}/report` |
+| BUG-212 | SEO / i18n | Discover/Plan meta builders still spread EN `locale-page-meta`; Discover OG alt hardcoded EN | Localized builders; add `discover.page.meta.ogAlt`; delete dead `locale-page-meta.ts` |
 
 ### Still open — ops / human (do not invent)
 

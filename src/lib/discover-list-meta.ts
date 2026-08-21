@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { filterToSectionId } from "@/lib/discover-sections";
-import { discoverListPageMeta } from "@/lib/locale-page-meta";
 import { applyLocaleToMetadata, absoluteUrlForLocale } from "@/lib/locale-seo";
 import { SITE_URL } from "@/lib/site-url";
 
@@ -97,13 +96,13 @@ export async function buildDiscoverListMetadata(
   }
 
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-village-omodos.jpg`;
+  const ogAlt = t("ogAlt");
 
   const base: Metadata = {
-    ...discoverListPageMeta,
     title,
     description,
     openGraph: {
-      ...(discoverListPageMeta.openGraph ?? { type: "website" }),
+      type: "website",
       title,
       description,
       images: [
@@ -111,7 +110,7 @@ export async function buildDiscoverListMetadata(
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Omodos village, Cyprus winter — discover curated places",
+          alt: ogAlt,
         },
       ],
     },

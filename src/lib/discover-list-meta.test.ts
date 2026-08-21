@@ -1,12 +1,26 @@
 import type { DiscoverItem } from "@/data/discover";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
+  buildDiscoverListMetadata,
   discoverFilterPath,
   discoverSectionMetaKey,
   isDiscoverSectionFilterKey,
   isIndexedDiscoverFilter,
 } from "./discover-list-meta";
 import { buildDiscoverPageSchema } from "./discover-schema";
+
+vi.mock("next-intl/server", () => ({
+  getTranslations: async () => {
+    const bag: Record<string, string> = {
+      title: "Discover Cyprus Winter",
+      description: "Curated places.",
+      ogAlt: "Omodos village alt EL",
+    };
+    const t = (key: string) => bag[key] ?? key;
+    t.has = (key: string) => key in bag;
+    return t;
+  },
+}));
 
 describe("discover-list-meta", () => {
   it("maps section filter params to meta keys", () => {
@@ -28,6 +42,16 @@ describe("discover-list-meta", () => {
     expect(isDiscoverSectionFilterKey("wine")).toBe(true);
     expect(isIndexedDiscoverFilter("wellness")).toBe(true);
     expect(isIndexedDiscoverFilter("bogus")).toBe(false);
+  });
+
+  it("uses translated OG image alt instead of English constants", async () => {
+    const meta = await buildDiscoverListMetadata("el");
+    const images = meta.openGraph?.images;
+    const first = Array.isArray(images) ? images[0] : images;
+    expect(first && typeof first === "object" && "alt" in first ? first.alt : null).toBe(
+      "Omodos village alt EL"
+    );
+    expect(meta.title).toBe("Discover Cyprus Winter");
   });
 });
 
