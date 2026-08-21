@@ -14,6 +14,7 @@ type TrailsTipsSectionProps = {
 
 export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProps) {
   const t = useTranslations("trails.tips");
+  const tHome = useTranslations("home");
 
   return (
     <section aria-labelledby="tips-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
@@ -31,8 +32,12 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
                 key={tip.id}
                 className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0"
               >
-                <h3 className={`${TYPE.kicker} text-olive`}>{tip.title}</h3>
-                <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">{tip.body}</p>
+                <h3 className={`${TYPE.kicker} text-olive`}>
+                  {tHome(`insiderTips.${tip.id}.title`)}
+                </h3>
+                <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">
+                  {tHome(`insiderTips.${tip.id}.body`)}
+                </p>
               </div>
             ))}
           </div>

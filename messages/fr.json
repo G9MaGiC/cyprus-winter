@@ -341,7 +341,11 @@
     "clearDay": "Clear day",
     "clearDayTitle": "Clear Day {day}?",
     "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
-    "localeBeta": "bêta"
+    "localeBeta": "bêta",
+    "beforeYouGo": {
+      "heading": "Avant de partir",
+      "allSet": "Tout est prêt. Bon voyage."
+    }
   },
   "home": {
     "title": "Cyprus Winter",

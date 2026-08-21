@@ -341,6 +341,10 @@
       "restaurant": "Restaurant",
       "trail": "Wanderweg",
       "event": "Veranstaltung"
+    },
+    "beforeYouGo": {
+      "heading": "Bevor es losgeht",
+      "allSet": "Alles erledigt. Gute Reise."
     }
   },
   "home": {

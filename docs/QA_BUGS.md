@@ -1406,6 +1406,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-206 | Tests | WineryBookingForm had no component coverage (DR P2 leftover) | Vitest for form / alert / success+emailDelayed live region |
 | BUG-207 | SEO / i18n | Privacy/terms/events/auth still used EN `locale-page-meta` (or hardcoded EN) on padded + `[locale]` | Extend `TRANSLATED_HUB_META`; localize events/auth meta; fix `fr`/`he`/`ro` terms **titles/descriptions** only |
 | BUG-208 | Tests | GuideBookingForm had no component coverage (DR P2 twin of BUG-206) | Vitest for form / alert / success+emailDelayed live region |
+| BUG-209 | i18n | Trails tips + airport BeforeYouGoChecklist rendered EN `winter-tips.ts` title/body | Resolve via `home.insiderTips.*`; localize checklist chrome |
 
 ### Still open — ops / human (do not invent)
 

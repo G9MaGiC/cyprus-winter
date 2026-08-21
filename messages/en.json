@@ -341,7 +341,11 @@
     "done": "Done",
     "clearDay": "Clear day",
     "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime."
+    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "beforeYouGo": {
+      "heading": "Before you go",
+      "allSet": "All set. Have a safe trip."
+    }
   },
   "home": {
     "title": "Cyprus Winter",

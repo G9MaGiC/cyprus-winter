@@ -341,6 +341,10 @@
       "restaurant": "Restauracja",
       "trail": "Szlak",
       "event": "Wydarzenie"
+    },
+    "beforeYouGo": {
+      "heading": "Zanim wyruszysz",
+      "allSet": "Wszystko gotowe. Bezpiecznej podróży."
     }
   },
   "home": {

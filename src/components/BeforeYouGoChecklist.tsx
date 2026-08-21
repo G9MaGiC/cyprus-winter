@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { SECTION, TYPE } from "@/lib/design-tokens";
 import type { WinterTip } from "@/data/winter-tips";
 
@@ -38,7 +39,9 @@ export default function BeforeYouGoChecklist({
   tips,
   className = "",
 }: BeforeYouGoChecklistProps) {
-  const ids = useMemo(() => tips.map((t) => t.id), [tips]);
+  const t = useTranslations("common.beforeYouGo");
+  const tHome = useTranslations("home");
+  const ids = useMemo(() => tips.map((tip) => tip.id), [tips]);
   const [checked, setChecked] = useState<Set<string>>(() => new Set());
   const [hydrated, setHydrated] = useState(false);
 
@@ -73,16 +76,18 @@ export default function BeforeYouGoChecklist({
       className={className}
     >
       <h2 id="before-you-go-heading" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
-        Before you go
+        {t("heading")}
       </h2>
       {checkedCount === totalCount && totalCount > 0 && (
         <p className="text-sm text-terracotta font-medium mb-3" role="status">
-          All set. Have a safe trip.
+          {t("allSet")}
         </p>
       )}
       <ul className="space-y-3" role="list">
         {tips.map((tip) => {
           const isChecked = checked.has(tip.id);
+          const title = tHome(`insiderTips.${tip.id}.title`);
+          const body = tHome(`insiderTips.${tip.id}.body`);
           return (
             <li key={tip.id}>
               <label
@@ -122,13 +127,13 @@ export default function BeforeYouGoChecklist({
                   checked={isChecked}
                   onChange={() => toggle(tip.id)}
                   className="sr-only"
-                  aria-label={`${tip.title}. ${tip.body}`}
+                  aria-label={`${title}. ${body}`}
                 />
                 <span className="break-words">
                   <strong className={isChecked ? "line-through text-olive/50" : "text-olive"}>
-                    {tip.title}.
+                    {title}.
                   </strong>{" "}
-                  {tip.body}
+                  {body}
                 </span>
               </label>
             </li>
