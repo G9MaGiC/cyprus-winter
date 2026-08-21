@@ -18,6 +18,9 @@ export const COASTAL_TRAIL_IDS = [
   "petra-tou-romiou",
   "kavos-trail",
   "sea-caves-anargyroi",
+  "konnoi-cyclops",
+  "agioi-anargyroi-circular",
+  "aphrodite-cape-greco",
 ] as const;
 
 const sectionDefs: TrailSectionDef[] = [
@@ -37,6 +40,7 @@ const sectionDefs: TrailSectionDef[] = [
     trailIds: [
       "caledonia-falls",
       "millomeris-falls",
+      "trooditissa-phini",
       "avakas-gorge",
       "mesa-potamos",
     ],
@@ -51,7 +55,13 @@ const sectionDefs: TrailSectionDef[] = [
   },
   {
     id: "full-day",
-    trailIds: ["horteri", "caledonia-alternative", "kykkos-konizi"],
+    trailIds: [
+      "horteri",
+      "caledonia-alternative",
+      "kykkos-konizi",
+      "psilo-dentro-pouziaris",
+      "kannoures-agios-nikolaos",
+    ],
   },
 ];
 

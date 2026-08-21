@@ -14,6 +14,8 @@ describe("planGeographyBucket", () => {
   it("maps coastal trails and cycling to beach_coast", () => {
     expect(planGeographyBucket("cape-greco")).toBe("beach_coast");
     expect(planGeographyBucket("aphrodite")).toBe("beach_coast");
+    expect(planGeographyBucket("konnoi-cyclops")).toBe("beach_coast");
+    expect(planGeographyBucket("aphrodite-cape-greco")).toBe("beach_coast");
     expect(planGeographyBucket("limassol-coastal-cycle")).toBe("beach_coast");
   });
 

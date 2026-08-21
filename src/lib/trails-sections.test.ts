@@ -12,4 +12,20 @@ describe("buildTrailSections", () => {
       expect(section.trails.length).toBeGreaterThan(0);
     }
   });
+
+  it("surfaces official Cape Greco and new Forestry routes in curated sections", () => {
+    const byId = Object.fromEntries(buildTrailSections().map((s) => [s.id, s.trails.map((t) => t.id)]));
+    expect(byId.coastal).toEqual(
+      expect.arrayContaining([
+        "konnoi-cyclops",
+        "agioi-anargyroi-circular",
+        "aphrodite-cape-greco",
+        "kavos-trail",
+      ])
+    );
+    expect(byId.waterfall).toContain("trooditissa-phini");
+    expect(byId["full-day"]).toEqual(
+      expect.arrayContaining(["psilo-dentro-pouziaris", "kannoures-agios-nikolaos"])
+    );
+  });
 });
