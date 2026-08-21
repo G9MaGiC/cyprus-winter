@@ -25,6 +25,6 @@ export const DAY_COMBO_DEFS: DayComboDef[] = [
   { key: "waterfallVillage", ids: ["caledonia-falls", "kakopetria"] },
   { key: "kykkosWine", ids: ["kykkos", "tsiakkas"] },
   { key: "laceAncientWine", ids: ["lefkara", "choirokoitia", "domes-sergiou"] },
-  { key: "gentleTrailPlatres", ids: ["atalante", "platres"] },
+  { key: "gentleTrailPlatres", ids: ["millomeris-falls", "platres"] },
   { key: "paphosCoastAdonis", ids: ["tomb-of-kings", "adonis", "kolios"] },
 ];
