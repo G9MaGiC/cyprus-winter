@@ -1,4 +1,4 @@
-import { LAYOUT, CARD, SKELETON, SECTION, LAYER } from "@/lib/design-tokens";
+import { LAYOUT, CARD, SKELETON, SECTION, LAYER, STRIP } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 function CardSkeleton() {
@@ -79,7 +79,7 @@ export default async function DiscoverLoading() {
       <PlaceOfDaySkeleton />
 
       <div className="-mt-4 sm:-mt-6">
-        <div className={`sticky top-[calc(3.5rem+env(safe-area-inset-top,0px))] ${LAYER.stickyContent} bg-background/98 backdrop-blur-md border-b border-sand-200/60 -ml-[max(1.5rem,env(safe-area-inset-left))] -mr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] py-4 sm:py-5`}>
+        <div className={`sticky ${LAYOUT.stickyTop} ${LAYER.stickyContent} ${STRIP.stickySandBar} ${LAYOUT.stickyBarX} py-4 sm:py-5`}>
           <div className={`${LAYOUT.list} mx-auto space-y-3`}>
             <div className={`h-3 w-32 ${SKELETON.block}`} />
             <div className="flex gap-2.5 overflow-x-hidden pb-1">

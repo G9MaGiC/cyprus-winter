@@ -148,6 +148,9 @@ export const STRIP = {
   pyCompact: "py-3 sm:py-4",
   surfaceSand: "bg-sand-100/80 border-b border-sand-200/70",
   surfaceAegean: "bg-aegean/5 border-b border-sand-200/70",
+  /** Sticky filter/day bars on sand hub pages — matches DaySelector / Events filters. */
+  stickySandBar:
+    "bg-sand/98 backdrop-blur-md supports-[backdrop-filter]:bg-sand/98 border-b border-sand-200/80",
   /** Centered single-line strip link (weather). */
   linkCentered:
     "flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center min-h-[44px] py-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded-lg",
@@ -186,6 +189,9 @@ export const SECTION = {
   headingMarginLarge: "mb-8 sm:mb-10",
   /** Secondary aegean link — 44px touch target. Use for inline/secondary links (see Aegean usage: links, Pair with, See also). */
   aegeanLink: "inline-flex items-center min-h-[44px] py-2 text-aegean hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 rounded",
+  /** Map popup / footer direction links — 44px touch target on sand surfaces. */
+  mapDirectionsLink:
+    "inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded",
   /** Footer-style link block (e.g. "Pair with…", "See also…") below main content */
   footerBlock: "mt-10 pt-6 border-t border-sand-200/80",
   /** Top margin for sections within a page — use for consistent block spacing */

@@ -7,6 +7,7 @@ import NavigateButton from "@/components/NavigateButton";
 import { useTranslations } from "next-intl";
 
 function TypeBadge({ type }: { type: PlanItem["type"] }) {
+  const tCommon = useTranslations("common");
   const tPlaceTypes = useTranslations("common.placeTypes");
   const style: Record<PlanItem["type"], string> = {
     trail: "bg-aegean/15 text-aegean",
@@ -19,7 +20,7 @@ function TypeBadge({ type }: { type: PlanItem["type"] }) {
   const label: Record<PlanItem["type"], string> = {
     trail: tPlaceTypes("trail"),
     winery: tPlaceTypes("winery"),
-    attraction: "Place",
+    attraction: tCommon("place"),
     activity: tPlaceTypes("activity"),
     event: tPlaceTypes("event"),
     restaurant: tPlaceTypes("restaurant"),
@@ -98,7 +99,7 @@ export default function ItineraryCard({
             type="button"
             onClick={onRemove}
             className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label={`Remove ${place.name} from itinerary`}
+            aria-label={tCommon("aria.removeFromPlan", { name: place.name })}
           >
             {tCommon("remove")}
           </button>

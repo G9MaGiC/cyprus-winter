@@ -76,6 +76,8 @@
       "close": "Fermer",
       "addPlace": "Ajouter un lieu",
       "addPlaceToItinerary": "Ajouter un lieu à l’itinéraire",
+      "navigateTo": "Naviguer vers {name}",
+      "removeFromPlan": "Retirer {name} du plan",
       "clearRecentlyViewed": "Effacer les vus récemment",
       "shareOn": "Partager sur {label}",
       "siteFooter": "Pied de page",

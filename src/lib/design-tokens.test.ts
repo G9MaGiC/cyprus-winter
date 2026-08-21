@@ -31,6 +31,11 @@ describe("STRIP typography", () => {
     expect(STRIP.inlinePrimary).toContain("font-semibold");
     expect(STRIP.inlineRow).not.toContain("font-display");
   });
+
+  it("defines sticky sand bar for hub filter surfaces", () => {
+    expect(STRIP.stickySandBar).toContain("bg-sand/98");
+    expect(STRIP.stickySandBar).toContain("backdrop-blur-md");
+  });
 });
 
 describe("TYPE stat ramp", () => {

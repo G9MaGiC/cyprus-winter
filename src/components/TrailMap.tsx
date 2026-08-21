@@ -6,7 +6,7 @@ import MapInteractionGuard from "@/components/MapInteractionGuard";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Trail } from "@/data/trails";
-import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE, SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -167,7 +167,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                   href={directionsUrl(trail.trailheadCoords.lat, trail.trailheadCoords.lng)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-terracotta hover:underline"
+                  className={SECTION.mapDirectionsLink}
                 >
                     {tCommon("map.getDirections")} →
                 </a>
@@ -194,7 +194,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                     href={directionsUrl(w.lat, w.lng)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-terracotta hover:underline"
+                    className={SECTION.mapDirectionsLink}
                   >
                     {tCommon("map.getDirections")} →
                   </a>
@@ -234,7 +234,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
           href={trail.trailheadCoords ? directionsUrl(trail.trailheadCoords.lat, trail.trailheadCoords.lng) : "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-terracotta hover:underline"
+          className={SECTION.mapDirectionsLink}
         >
           {tCommon("map.openInMaps")} →
         </a>

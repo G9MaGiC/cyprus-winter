@@ -1478,4 +1478,18 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-228 | Docs | SCORECARD/LAUNCH_CHECKLIST/README/AGENTS drifted (452 tests, 1861 keys, Node 24, Account “placeholder”, missing `check:conflict-markers`) | Sync to 611 tests, 2095 keys, Node 20.19.0; document auth/PWA/share; add conflict-marker gate to agent docs |
 | BUG-229 | Docs | Archived `TRAILS_ADDITIONS_PLAN.md` still showed pre-Forestry Chrysovrysi/Kavos km | Archive banner points to canonical `trails.ts` + BUG-215–216 |
 
+### Fixed — UX/UI QA pass (Aug 21, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-232 | Visual | `StickyFilterBar` / discover loading filter skeleton used `bg-background/98` on sand hub pages — subtle sticky-bar flash vs live page | Added `STRIP.stickySandBar`; applied on `StickyFilterBar`, discover loading skeleton, events `ListPageWidgetStrip` |
+| BUG-233 | A11y / Mobile | `TrailMap` direction links lacked 44px touch targets and focus rings | `SECTION.mapDirectionsLink` on popup + footer links |
+| BUG-234 | A11y / Mobile | AI chat markdown links used bare `text-aegean hover:underline` without touch target | `SECTION.aegeanLink` in `AIChatMessages` |
+| BUG-235 | i18n / A11y | `NavigateButton` hardcoded EN label + `aria-label` | `common.nextOnPlan.navigate` + `common.aria.navigateTo` in all 7 locales |
+| BUG-236 | i18n / A11y | `ItineraryCard` remove control used EN “Remove … from itinerary” | `common.aria.removeFromPlan`; attraction badge uses `common.place` |
+| BUG-237 | i18n | `PlaceCards` type badges hardcoded EN | `common.placeTypes.*` / `common.place` via `useTranslations` |
+| BUG-238 | A11y | Terms privacy inline link lacked 44px hit area | Terracotta link matches booking fine-print pattern |
+| BUG-239 | A11y | Weather month event “Add to plan” link under 44px height | `min-h-[44px] items-center py-2` |
+| BUG-240 | A11y | `FilterChips` default `ariaLabel="Filters"` hardcoded EN | `ariaLabel` required; all callers already pass i18n labels |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

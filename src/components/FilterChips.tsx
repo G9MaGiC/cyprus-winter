@@ -13,7 +13,7 @@ type FilterChipsProps = {
   getHref: (chip: FilterChip) => string;
   activeClassName?: string;
   /** Accessible label for the filter group */
-  ariaLabel?: string;
+  ariaLabel: string;
 };
 
 const baseClass = PILL.base;
@@ -25,7 +25,7 @@ export default function FilterChips({
   isActive,
   getHref,
   activeClassName = defaultActiveClass,
-  ariaLabel = "Filters",
+  ariaLabel,
 }: FilterChipsProps) {
   return (
     <div

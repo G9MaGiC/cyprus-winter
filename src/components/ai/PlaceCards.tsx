@@ -2,6 +2,7 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { resolveInternalPath } from "@/lib/resolve-internal-path";
+import { useTranslations } from "next-intl";
 
 type Card = {
   type: string;
@@ -10,15 +11,16 @@ type Card = {
   reason: string;
 };
 
-const TYPE_LABELS: Record<string, string> = {
-  trail: "Trail",
-  winery: "Winery",
-  event: "Event",
-  place: "Place",
-};
-
 export function PlaceCards({ cards }: { cards: Card[] }) {
   const router = useRouter();
+  const tCommon = useTranslations("common");
+
+  function typeLabel(type: string): string {
+    if (type === "trail") return tCommon("placeTypes.trail");
+    if (type === "winery") return tCommon("placeTypes.winery");
+    if (type === "event") return tCommon("placeTypes.event");
+    return tCommon("place");
+  }
 
   function handleClick(card: Card) {
     if (card.type === "event") {
@@ -38,10 +40,10 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
           key={card.id}
           type="button"
           onClick={() => handleClick(card)}
-            className="flex items-start gap-2 p-2 rounded-lg bg-sand-100/80 hover:bg-sand-200/70 transition-colors text-left w-full min-h-[44px] py-3"
+          className="flex items-start gap-2 p-2 rounded-lg bg-sand-100/80 hover:bg-sand-200/70 transition-colors text-left w-full min-h-[44px] py-3"
         >
           <span className="shrink-0 mt-0.5 text-xs font-medium text-olive/60 uppercase tracking-wide w-12">
-            {TYPE_LABELS[card.type] ?? "Place"}
+            {typeLabel(card.type)}
           </span>
           <div className="min-w-0">
             <div className="text-sm font-medium text-charcoal truncate">{card.title}</div>

@@ -76,6 +76,8 @@
       "close": "Închide",
       "addPlace": "Adaugă loc",
       "addPlaceToItinerary": "Adaugă un loc în itinerar",
+      "navigateTo": "Navighează la {name}",
+      "removeFromPlan": "Elimină {name} din plan",
       "clearRecentlyViewed": "Șterge vizionate recent",
       "shareOn": "Distribuie pe {label}",
       "siteFooter": "Subsol site",
