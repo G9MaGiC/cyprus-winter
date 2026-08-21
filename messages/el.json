@@ -2728,7 +2728,8 @@
         "moreCount": "+{count} ακόμη",
         "ctaAria": "Κράτηση πεζοπορίας με οδηγό με {name}",
         "footerBrowseTrails": "Περιήγηση όλων των μονοπατιών",
-        "footerMyBookings": "Οι κρατήσεις μου"
+        "footerMyBookings": "Οι κρατήσεις μου",
+        "browseLicensedDirectory": "Όλοι οι επίσημοι οδηγοί (CTO) →"
       },
       "wineryList": {
         "meta": {
@@ -2832,6 +2833,56 @@
       "cards": {
         "imageAlt": "{name}, {region} — μονοπάτι {km} km {difficulty}",
         "duration": "{km} km · ~{hours}ώ"
+      }
+    },
+    "directory": {
+      "meta": {
+        "title": "Επίσημοι τουριστικοί οδηγοί | Cyprus Winter",
+        "description": "Επίσημοι οδηγοί Κύπρου ανά επαρχία και γλώσσα. Λίστα Υπουργείου Τουρισμού — επικοινωνήστε απευθείας."
+      },
+      "title": "Επίσημοι τουριστικοί οδηγοί",
+      "breadcrumb": "Επίσημοι οδηγοί",
+      "pageNavAria": "Κατάλογος επίσημων οδηγών",
+      "intro": "{count} επίσημοι οδηγοί από τη λίστα Visit Cyprus (Αύγ. 2026). Επικοινωνήστε απευθείας — ή κλείστε επαληθευμένο συνεργάτη πεζοπορίας στην εφαρμογή.",
+      "verifiedPartnersLink": "Κράτηση επαληθευμένων συνεργατών →",
+      "disclaimer": "Επίσημοι τουριστικοί οδηγοί καταχωρημένοι στο Υφυπουργείο Τουρισμού. Η Cyprus Winter εμφανίζει επίσημες επαφές· η κράτηση γίνεται απευθείας με τον οδηγό.",
+      "officialListLink": "Επίσημη λίστα στο Visit Cyprus",
+      "searchLabel": "Αναζήτηση οδηγών",
+      "searchPlaceholder": "Όνομα ή γλώσσα…",
+      "filterDistrict": "Επαρχία",
+      "filterLanguage": "Γλώσσα",
+      "allDistricts": "Όλες οι επαρχίες",
+      "allLanguages": "Όλες οι γλώσσες",
+      "resultCount": "{count} οδηγοί",
+      "empty": "Δεν βρέθηκαν οδηγοί με αυτά τα φίλτρα.",
+      "districts": {
+        "general": "Όλη η Κύπρος",
+        "lefkosia": "Λευκωσία",
+        "ammochostos": "Αμμόχωστος",
+        "larnaka": "Λάρνακα",
+        "lemesos": "Λεμεσός",
+        "pafos": "Πάφος"
+      },
+      "languages": {
+        "english": "English",
+        "greek": "Greek",
+        "german": "German",
+        "french": "French",
+        "polish": "Polish",
+        "russian": "Russian",
+        "italian": "Italian",
+        "spanish": "Spanish",
+        "arabic": "Arabic",
+        "turkish": "Turkish",
+        "romanian": "Romanian",
+        "swedish": "Swedish",
+        "dutch": "Dutch",
+        "hebrew": "Hebrew"
+      },
+      "verifiedCta": {
+        "title": "Επαληθευμένοι συνεργάτες πεζοπορίας",
+        "body": "Δέχονται αιτήματα μέσω Cyprus Winter — Τρόοδος, Ακάμας, πολιτισμός.",
+        "button": "Κράτηση επαληθευμένου οδηγού"
       }
     }
   },

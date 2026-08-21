@@ -2728,7 +2728,8 @@
         "moreCount": "+{count} mehr",
         "ctaAria": "Geführte Wanderung mit {name} buchen",
         "footerBrowseTrails": "Alle Wanderwege ansehen",
-        "footerMyBookings": "Meine Buchungen"
+        "footerMyBookings": "Meine Buchungen",
+        "browseLicensedDirectory": "Alle lizenzierten Führer (offizielle CTO-Liste) →"
       },
       "wineryList": {
         "meta": {
@@ -2832,6 +2833,56 @@
       "cards": {
         "imageAlt": "{name}, {region} — {km} km {difficulty}-Trail",
         "duration": "{km} km · ~{hours}h"
+      }
+    },
+    "directory": {
+      "meta": {
+        "title": "Lizenzierte Touristenführer | Cyprus Winter",
+        "description": "Offizielle zypriotische Touristenführer nach Bezirk und Sprache. Liste des Tourismusministeriums."
+      },
+      "title": "Lizenzierte Touristenführer",
+      "breadcrumb": "Lizenzierte Führer",
+      "pageNavAria": "Verzeichnis lizenzierter Führer",
+      "intro": "{count} lizenzierte Führer aus der offiziellen Visit-Cyprus-Liste (Aug. 2026). Direkt kontaktieren — oder verifizierten Winter-Wanderpartner in der App buchen.",
+      "verifiedPartnersLink": "Verifizierte Partner buchen →",
+      "disclaimer": "Lizenzierte Touristenführer beim zypriotischen Tourismusministerium. Cyprus Winter listet offizielle Kontakte; Buchung erfolgt direkt beim Führer.",
+      "officialListLink": "Offizielle Liste auf Visit Cyprus",
+      "searchLabel": "Führer suchen",
+      "searchPlaceholder": "Name oder Sprache…",
+      "filterDistrict": "Bezirk",
+      "filterLanguage": "Sprache",
+      "allDistricts": "Alle Bezirke",
+      "allLanguages": "Alle Sprachen",
+      "resultCount": "{count} Führer",
+      "empty": "Keine Führer für diese Filter.",
+      "districts": {
+        "general": "Ganz Zypern",
+        "lefkosia": "Lefkosia (Nikosia)",
+        "ammochostos": "Ammochostos (Famagusta)",
+        "larnaka": "Larnaka",
+        "lemesos": "Lemesos (Limassol)",
+        "pafos": "Pafos"
+      },
+      "languages": {
+        "english": "English",
+        "greek": "Greek",
+        "german": "German",
+        "french": "French",
+        "polish": "Polish",
+        "russian": "Russian",
+        "italian": "Italian",
+        "spanish": "Spanish",
+        "arabic": "Arabic",
+        "turkish": "Turkish",
+        "romanian": "Romanian",
+        "swedish": "Swedish",
+        "dutch": "Dutch",
+        "hebrew": "Hebrew"
+      },
+      "verifiedCta": {
+        "title": "Verifizierte Winter-Wanderpartner",
+        "body": "Anfragen über Cyprus Winter — Troodos, Akamas, Kultur.",
+        "button": "Verifizierten Führer buchen"
       }
     }
   },
