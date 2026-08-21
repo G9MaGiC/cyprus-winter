@@ -3295,6 +3295,36 @@
       },
       "aria": {
         "actions": "Aktionen der Radseite"
+      },
+      "officialRoutes": {
+        "title": "Offizielle Visit-Cyprus-Routen",
+        "intro": "Ausgewählte CTO-Radrouten mit Winterhinweisen. Karten und GPX auf Visit Cyprus — wir verlinken; Sie fahren in Ihrem Tempo.",
+        "officialIndexLink": "Vollständige Routensuche auf Visit Cyprus",
+        "filterRegion": "Nach Region filtern",
+        "allRegions": "Alle Regionen",
+        "resultCount": "{count} Routen",
+        "winterPick": "Winter-Tipp",
+        "viewOnVisitCyprus": "Route auf Visit Cyprus",
+        "downloadGpx": "GPX herunterladen",
+        "relatedPlace": "Unser Gebietsguide",
+        "regions": {
+          "lefkosia": "Lefkosia (Nikosia)",
+          "lemesos": "Lemesos (Limassol)",
+          "larnaka": "Larnaka (Larnaka)",
+          "pafos": "Pafos (Paphos)",
+          "ammochostos": "Ammochostos (Famagusta)",
+          "troodos": "Troodos"
+        },
+        "difficulty": {
+          "easy": "Leicht",
+          "moderate": "Mittel",
+          "demanding": "Anspruchsvoll"
+        },
+        "surface": {
+          "paved": "Asphalt",
+          "unpaved": "Unbefestigt",
+          "mixed": "Gemischt"
+        }
       }
     }
   },

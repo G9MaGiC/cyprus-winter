@@ -3295,6 +3295,36 @@
       },
       "aria": {
         "actions": "Actions de la page vélo"
+      },
+      "officialRoutes": {
+        "title": "Official Visit Cyprus routes",
+        "intro": "Curated CTO cycling routes with winter notes. Maps, GPX files, and full details on Visit Cyprus — we link out; you ride at your own pace.",
+        "officialIndexLink": "Full route search on Visit Cyprus",
+        "filterRegion": "Filter by region",
+        "allRegions": "All regions",
+        "resultCount": "{count} routes",
+        "winterPick": "Winter pick",
+        "viewOnVisitCyprus": "Route on Visit Cyprus",
+        "downloadGpx": "GPX download",
+        "relatedPlace": "Our guide to the area",
+        "regions": {
+          "lefkosia": "Lefkosia (Nicosia)",
+          "lemesos": "Lemesos (Limassol)",
+          "larnaka": "Larnaka (Larnaca)",
+          "pafos": "Pafos (Paphos)",
+          "ammochostos": "Ammochostos (Famagusta)",
+          "troodos": "Troodos"
+        },
+        "difficulty": {
+          "easy": "Easy",
+          "moderate": "Moderate",
+          "demanding": "Demanding"
+        },
+        "surface": {
+          "paved": "Paved",
+          "unpaved": "Unpaved",
+          "mixed": "Mixed"
+        }
       }
     }
   },

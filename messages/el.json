@@ -3295,6 +3295,36 @@
       },
       "aria": {
         "actions": "Ενέργειες σελίδας ποδηλασίας"
+      },
+      "officialRoutes": {
+        "title": "Επίσημες διαδρομές Visit Cyprus",
+        "intro": "Επιλεγμένες διαδρομές CTO με χειμωνιάτικες σημειώσεις. Χάρτες και GPX στο Visit Cyprus — εμείς συνδέουμε· εσείς οδηγείτε με δική σας ρυθμό.",
+        "officialIndexLink": "Πλήρης αναζήτηση στο Visit Cyprus",
+        "filterRegion": "Φίλτρο ανά περιοχή",
+        "allRegions": "Όλες οι περιοχές",
+        "resultCount": "{count} διαδρομές",
+        "winterPick": "Χειμωνιάτικη επιλογή",
+        "viewOnVisitCyprus": "Διαδρομή στο Visit Cyprus",
+        "downloadGpx": "Λήψη GPX",
+        "relatedPlace": "Ο οδηγός μας για την περιοχή",
+        "regions": {
+          "lefkosia": "Λευκωσία",
+          "lemesos": "Λεμεσός",
+          "larnaka": "Λάρνακα",
+          "pafos": "Πάφος",
+          "ammochostos": "Αμμόχωστος",
+          "troodos": "Τρόοδος"
+        },
+        "difficulty": {
+          "easy": "Εύκολη",
+          "moderate": "Μέτρια",
+          "demanding": "Απαιτητική"
+        },
+        "surface": {
+          "paved": "Άσφαλτος",
+          "unpaved": "Χωματόδρομος",
+          "mixed": "Μικτό"
+        }
       }
     }
   },
