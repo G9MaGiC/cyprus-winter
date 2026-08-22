@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Troodos trail, Cyprus winter",
+          alt: t("page.meta.ogAlt"),
         },
       ],
     },

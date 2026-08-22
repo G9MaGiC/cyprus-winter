@@ -147,6 +147,7 @@ function findTsLoaderLiterals(content: string, filePath: string): HardcodedHit[]
     if (!m) continue;
     const prop = m[1];
     const value = m[2].replace(/\\"/g, '"').trim();
+    if (prop === "id" || prop === "src" || prop === "objectPosition" || prop === "altKey") continue;
     if (!isLikelyUserFacing(value, "text")) continue;
     const suggestedKey = `home.loader.${prop}.${stableId(value)}`;
     hits.push({ file: filePath, line: lineNum, kind: "prop", attr: prop, value, suggestedKey });

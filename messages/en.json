@@ -1697,7 +1697,8 @@
       "meta": {
         "title": "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
         "description": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
-        "ogDescription": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length."
+        "ogDescription": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
+        "ogAlt": "Troodos pine forest trail, Cyprus winter"
       },
       "hero": {
         "title": "Winter Trails",
@@ -2449,6 +2450,14 @@
         "linkTrailsSuffix": "before heading up.",
         "linkWineries": "Winter wineries",
         "linkWineriesSuffix": "— fireside tastings, book ahead."
+      },
+      "footer": {
+        "hubBody": "Pick a month, then build a day around the weather—trails, villages, and tastings.",
+        "trails": "Trail conditions",
+        "events": "Winter events"
+      },
+      "aria": {
+        "actions": "Weather page actions"
       }
     },
     "month": {

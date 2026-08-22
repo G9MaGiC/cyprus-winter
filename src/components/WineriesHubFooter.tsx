@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import HubFooter from "@/components/HubFooter";
+import { WINE_ROUTES } from "@/data/wine-routes";
 import { SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -21,22 +22,14 @@ export default function WineriesHubFooter() {
           <AppLink href="/wine-routes" className={SECTION.aegeanLink}>
             {tWineries("footer.allRoutes")}
           </AppLink>
-          {" · "}
-          <AppLink href="/wine-routes/krasochoria" className={SECTION.aegeanLink}>
-            Krasochoria
-          </AppLink>
-          {" · "}
-          <AppLink href="/wine-routes/laona" className={SECTION.aegeanLink}>
-            Laona
-          </AppLink>
-          {" · "}
-          <AppLink href="/wine-routes/akamas" className={SECTION.aegeanLink}>
-            Akamas
-          </AppLink>
-          {" · "}
-          <AppLink href="/wine-routes/commandaria" className={SECTION.aegeanLink}>
-            Commandaria
-          </AppLink>
+          {WINE_ROUTES.map((route) => (
+            <span key={route.slug}>
+              {" · "}
+              <AppLink href={`/wine-routes/${route.slug}`} className={SECTION.aegeanLink}>
+                {route.title}
+              </AppLink>
+            </span>
+          ))}
         </p>
       }
     />

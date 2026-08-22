@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { CARD, LAYOUT, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
+import WeatherHubFooter from "@/components/WeatherHubFooter";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
@@ -241,6 +242,8 @@ export default async function WeatherPage() {
       </div>
 
       <WeatherPushOptIn />
+
+      <WeatherHubFooter />
 
       <div className={`${SECTION.blockTop} space-y-4 text-olive/80 text-sm max-w-2xl`}>
         <p>{tWeather("body.coastTroodos")}</p>

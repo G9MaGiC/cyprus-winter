@@ -1697,7 +1697,8 @@
       "meta": {
         "title": "Zimowe szlaki Cypru | Troodos, Pafos i Akamas",
         "description": "Szlaki Cypru zimą: Troodos, Pafos, Akamas. Warunki, trudność, długość. Porady trekkingowe. Szesnaście stopni, gdy w domu jest sześć.",
-        "ogDescription": "Szlaki Cypru zimą: Troodos, Pafos, Akamas. Warunki, trudność, długość."
+        "ogDescription": "Szlaki Cypru zimą: Troodos, Pafos, Akamas. Warunki, trudność, długość.",
+        "ogAlt": "Szlak w sosnowym lesie w Troodos, zima na Cyprze"
       },
       "hero": {
         "title": "Zimowe szlaki",
@@ -2295,6 +2296,14 @@
         "linkTrailsSuffix": "zanim ruszysz w górę.",
         "linkWineries": "Zimowe winnice",
         "linkWineriesSuffix": "— degustacje przy kominku, rezerwuj wcześniej."
+      },
+      "footer": {
+        "hubBody": "Wybierz miesiąc, a potem ułóż dzień pod pogodę — szlaki, wioski i degustacje.",
+        "trails": "Warunki na szlakach",
+        "events": "Zimowe wydarzenia"
+      },
+      "aria": {
+        "actions": "Akcje strony pogody"
       }
     },
     "month": {

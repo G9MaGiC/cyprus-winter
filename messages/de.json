@@ -1697,7 +1697,8 @@
       "meta": {
         "title": "Zypern Winterwanderwege | Troodos, Paphos & Akamas",
         "description": "Wanderwege auf Zypern im Winter: Troodos, Paphos, Akamas. Bedingungen, Schwierigkeit, Länge. Winterwandertipps. Sechzehn Grad, wenn daheim sechs sind.",
-        "ogDescription": "Wanderwege auf Zypern im Winter: Troodos, Paphos, Akamas. Bedingungen, Schwierigkeit, Länge."
+        "ogDescription": "Wanderwege auf Zypern im Winter: Troodos, Paphos, Akamas. Bedingungen, Schwierigkeit, Länge.",
+        "ogAlt": "Troodos-Pinienwald-Wanderweg im Winter auf Zypern"
       },
       "hero": {
         "title": "Winter-Wanderwege",
@@ -2385,6 +2386,14 @@
         "linkTrailsSuffix": "bevor Sie hinauffahren.",
         "linkWineries": "Winterliche Weingüter",
         "linkWineriesSuffix": "— Verkostungen am Kamin, besser vorab reservieren."
+      },
+      "footer": {
+        "hubBody": "Monat wählen, dann einen Tag nach dem Wetter planen — Trails, Dörfer und Verkostungen.",
+        "trails": "Trail-Bedingungen",
+        "events": "Winter-Events"
+      },
+      "aria": {
+        "actions": "Wetterseiten-Aktionen"
       }
     },
     "month": {

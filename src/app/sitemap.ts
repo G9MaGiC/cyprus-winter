@@ -57,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     e("/trails", 0.9, "daily"),
     e("/plan", 0.8, "monthly"),
     e("/events", 0.8),
+    e("/book/winery", 0.65, "monthly"),
   ];
 
   const secondary: MetadataRoute.Sitemap = [

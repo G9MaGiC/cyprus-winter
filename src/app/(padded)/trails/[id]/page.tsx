@@ -33,7 +33,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const trail = trails.find((t) => t.id === id || t.slug === id);
-  if (!trail) return { title: "Not found" };
+  if (!trail) notFound();
   const loc = trail.locationText ?? trail.region;
   const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length; // leave room for ellipsis

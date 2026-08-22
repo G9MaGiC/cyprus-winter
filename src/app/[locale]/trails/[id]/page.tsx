@@ -1,6 +1,8 @@
 import TrailPage from "@/app/(padded)/trails/[id]/page";
 import { trailDetailMetadata } from "@/lib/locale-metadata-dynamic";
 
+export { generateStaticParams } from "@/app/(padded)/trails/[id]/layout";
+
 export default TrailPage;
 
 export async function generateMetadata({

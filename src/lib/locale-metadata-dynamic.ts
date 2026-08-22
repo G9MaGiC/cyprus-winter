@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getDiscoverPlaceById } from "@/data";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
@@ -46,7 +47,7 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
 
 export async function trailDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const trail = trails.find((t) => t.id === id || t.slug === id);
-  if (!trail) return { title: "Not found" };
+  if (!trail) notFound();
   const loc = trail.locationText ?? trail.region;
   const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length;
