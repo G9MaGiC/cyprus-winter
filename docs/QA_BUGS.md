@@ -1522,5 +1522,12 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-255 | Build | `HomeDiscoverySections` imported server-only modules — Turbopack build fail | Client gate wraps server children; types moved to `src/types/before-install-prompt.ts` |
 | BUG-256 | E2E | BUG-252 locale filter tests failed on mobile — filters collapsed | Expand `#discover-filters-toggle` before chip assertions; home-smoke for state-aware sections |
 | BUG-257 | Data | Winery image intake metrics not in CI data gate | `classifyWineryImageSource`, `winery-image-intake.test.ts`, `npm run images:validate`; wired into `data:validate` |
+| BUG-258 | Data / assets | Trail heroes reused 4 regional stock photos (47 trails shared Troodos JPG) | Fetched 32 Visit Cyprus official pages; 29 mapped to app ids → `public/images/cyprus/trails/`; `npm run trails:fetch-images`, `docs/TRAIL_IMAGE_INTAKE.md` |
+| BUG-259 | Data | Ezousa Valley + Panagia tou Araka–Stavros tou Agiasmati on Visit Cyprus but missing from catalog | Added `ezousa-valley`, `panagia-araka-stavros` with official heroes; VC catalog 100% mapped |
+| BUG-260 | Data | 27 Forestry fd56 outside-forest trails missing from catalog | `npm run trails:scrape-forestry`, `forestry-name-map.ts`, 27 new trails in `trails.ts`; `docs/TRAIL_FORESTRY_INTAKE.md`; app total 100 trails |
+| BUG-261 | Data | fd56 stats drift on 4 pre-existing mapped trails | Re-aligned `vouni-panagias`, `millomeris-falls`, `ariadni`, `lefkara-path` to fd56; `npm run trails:sync-forestry-stats` |
+| BUG-262 | Content | fd56 trails had truncated auto-generated copy | `forestry-trail-copy.ts`, `npm run trails:polish-forestry`; PDF leaflet gap script for horteri/moni-fylagra |
+| BUG-263 | Data | PDF-only Paphos trails missing; horteri/chorteri conflated | Added `chorteri`, `argakas-dam`, `symvoulas`, `venetian-bridges`; `extract-forestry-heroes.ts`; 5 Forestry PDF heroes; app total 104 |
+| BUG-264 | Data | State-forest gap analysis; Troodos Visitor Centre PDF | `state-forest-gap-analysis.ts`, `troodos-visitor-centre` trail + hero; PDF map fixes (kyparissia, loumata); app total 105, 68 authoritative |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

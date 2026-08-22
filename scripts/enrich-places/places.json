@@ -3925,10 +3925,10 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Millomeris is the gentler cousin of Caledonia Falls. Official Forestry route is about 1.2 km linear from Pano Platres (grade 1, ~45 minutes). Wooden walkways and steps; the waterfall drops about 20 metres—the tallest in Troodos. Strong flow after rain. Families manage it. Combine with coffee in Platres.",
+      "description": "Official Forestry outside-forest route: 1.2 km linear, about 30 minutes, grade 3. Between Platres church and the village centre—or via a dirt road from the Platres–Limassol road near Psilo Dentro. Rich vegetation along Kryos River; opens to garrigue with views south. The waterfall is the tallest in Troodos (~20 m). Steeper and rougher than the boardwalk suggests—watch footing after rain.",
       "highlights": [
-        "Waterfall",
-        "Family-friendly",
+        "Millomeris waterfall",
+        "Kryos River gorge",
         "Platres area"
       ]
     }
@@ -4105,11 +4105,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Forest trail in the Laona hills. Vouni Panagias village sits above the Paphos wine route. The trail winds through scrub and pine with valley views. Combine with Vouni Panayia winery—one of Cyprus's most awarded—for a full Laona day. Winter brings crisp air and fewer visitors. Allow two to three hours. Panayia village for lunch.",
+      "description": "Official Forestry outside-forest circular: 9.8 km, about 3 hours, grade 3 from Pano Panagia (below the church, opposite the Cultural Center). Vineyards, Natura 2000 site of Vouni Panagias, and views of Akamas, Paphos Forest, and Troodos. Optional detour to Chrysorrogiatissa Monastery or a shorter return to the village. Fire lookout station access at Vouni.",
       "highlights": [
-        "Laona hills",
-        "Valley views",
-        "Wine route"
+        "Vouni Panagias Natura 2000",
+        "Akamas views",
+        "Vouni fire lookout"
       ]
     }
   },
@@ -4315,11 +4315,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Village-to-village walk linking Pano and Kato Lefkara. Stone paths, lace workshops, mountain views. Easy grade. Combine with Lefkara lace, Choirokoitia, or Zygi for fish. Winter: mild; the villages are quieter. Culture and gentle exercise.",
+      "description": "Official Forestry outside-forest linear: 2.5 km, about 1 hour, grade 3 (descending). Connects Pano Lefkara with Kato Drys through rural paths with views in all directions. Links to the Lefkara–Metamorfoseos church trail. Lace villages and stone paths—culture with a proper downhill workout.",
       "highlights": [
-        "Lefkara",
-        "Lace villages",
-        "Culture"
+        "Pano to Kato Lefkara",
+        "Descending grade 3",
+        "Rural views"
       ]
     }
   },
@@ -4525,11 +4525,11 @@
     "type": "trail",
     "urls": [],
     "current": {
-      "description": "Circular trail near Gerakies, a few hundred metres from the Kykkos road. Steep start to Kavallos fire lookout; then ridgeline walking with panoramic views of Paphos forest and Marathasa Valley. On clear days: Pentadaktylos, Morphou Bay. Best in winter—most of the trail is exposed. Combine with Rigaina's Baths for a full day.",
+      "description": "Official Forestry outside-forest circular: 3.3 km, 1–1.5 hours, grade 3. Starts on the Gerakies–Kykkos road near Tree Tops hotel. Climbs to Kavallos fire lookout with views over Paphos forest and Marathasa Valley; loops through Gerakies village. Steep start; exposed ridgelines—best in winter.",
       "highlights": [
-        "Kavallos fire tower",
-        "Marathasa Valley",
-        "Panoramic views"
+        "Kavallos fire lookout",
+        "Gerakies village",
+        "Marathasa Valley"
       ]
     }
   },
@@ -4860,6 +4860,516 @@
         "Temple ruins",
         "Kamara area",
         "Visitor Centre start"
+      ]
+    }
+  },
+  {
+    "id": "ezousa-valley",
+    "name": "Ezousa Valley Walking Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official circular: 7.6 km, about 3 hours, grade 2 through the Ezousa Valley from Episkopi Environmental Information Centre. Oriental plane and alder shade the river crossing; the rock church of Saint Hilarion offers views over the valley to Paphos Forest and Troodos. Winter is mild and green—a strong Paphos hills alternative to the Akamas coast.",
+      "highlights": [
+        "Ezousa Valley",
+        "Saint Hilarion views",
+        "Plane-tree shade"
+      ]
+    }
+  },
+  {
+    "id": "panagia-araka-stavros",
+    "name": "Panagia tou Araka – Stavros tou Agiasmati",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official linear: 7 km, about 3 hours, grade 3 between UNESCO fresco churches at Lagoudera (Panagia tou Araka, 1192 AD) and Stavros tou Agiasmati (1494 AD). Pine forest, vineyards, and almond groves; views to Kionia, Madari, Troodos, and the Morphou plain. A 700-year oak stands at the Araka church entrance. Connects toward Madari and Lagoudera routes. Arrange transport for the linear leg.",
+      "highlights": [
+        "UNESCO churches",
+        "700-year oak",
+        "Madari views"
+      ]
+    }
+  },
+  {
+    "id": "agiasma",
+    "name": "Agiasma Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular Paphos hills walk from Kathikas toward Pegeia. Two kilometres, grade 1, about 45 minutes through tall rock formations, vineyards, and a stone fountain with drinking water 800 m in. Excellent views of the Pegeia coastline on clear days.",
+      "highlights": [
+        "Rock formations",
+        "Stone fountain",
+        "Pegeia coast views"
+      ]
+    }
+  },
+  {
+    "id": "arnies",
+    "name": "Arnies Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular grade 3 loop outside Agios Dimitrianos with short (3 km) or long (4 km) options. Hermit cave of St Dimitrianos, the Arnies spring, vineyards, working farms, and village facilities including water and toilets.",
+      "highlights": [
+        "St Dimitrianos cave",
+        "Arnies spring",
+        "Village loop"
+      ]
+    }
+  },
+  {
+    "id": "treis-elies",
+    "name": "Treis Elies Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2.5 km along the Treis Elies River—grade 1, about one hour. Medieval bridges, cherry and walnut orchards, riparian shade, and the ruins of Agios Andronicos church. Return on the same path.",
+      "highlights": [
+        "Medieval bridges",
+        "River orchards",
+        "Agios Andronicos ruins"
+      ]
+    }
+  },
+  {
+    "id": "lemithou",
+    "name": "Lemithou Community Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2 km from the Leventis family residence through Kremmos Gorge, the Agros River, and the chapel of St George. Grade 2, about one hour. Can be made circular via the Treis Elies–Lemithou road.",
+      "highlights": [
+        "Kremmos Gorge",
+        "Agros River",
+        "St George chapel"
+      ]
+    }
+  },
+  {
+    "id": "kastrovounos",
+    "name": "Kastrovounos Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Short 800 m linear path in Kato Platres forest—grade 2, about 30 minutes. Views of Limassol, Troodos National Forest Park, and Paphos Forest. Well lit; popular for an evening stroll.",
+      "highlights": [
+        "Kato Platres forest",
+        "Troodos views",
+        "Lit evening path"
+      ]
+    }
+  },
+  {
+    "id": "dymes-pelendri",
+    "name": "Dymes Pelendri Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear village connector: 4.5 km, grade 1, about 1.5 hours from Dymes to Pelendri through orchards, pine, and the Deisi locality (throne of the Virgin Mary). Drinking fountain on route. Fire damage in 2007—regrowth ongoing.",
+      "highlights": [
+        "Dymes to Pelendri",
+        "Deisi viewpoint",
+        "Forest fountain"
+      ]
+    }
+  },
+  {
+    "id": "arsos",
+    "name": "Arsos Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2 km between Athkies and Poullin fountains in Arsos village—grade 1, 45 minutes. River walk past medieval Panagia chapel and a traditional oil mill. Can be walked in either direction.",
+      "highlights": [
+        "Village fountains",
+        "Panagia chapel",
+        "Traditional oil mill"
+      ]
+    }
+  },
+  {
+    "id": "kalevounari",
+    "name": "Kalevounari Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular 1.5 km loop in Kalevounari Park, Pano Polemidia—grade 1, 30 minutes. Views of the coast, western Limassol villages, and Troodos Mountains from the Polemidia picnic area.",
+      "highlights": [
+        "Coast views",
+        "Polemidia park",
+        "Troodos backdrop"
+      ]
+    }
+  },
+  {
+    "id": "germasogeia-weir",
+    "name": "Germasogeia Weir Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular 1.3 km around the Germasogeia reservoir peninsula—grade 1, 30 minutes. Stocked fishing (permit required), native Zoulatzia bush (Bosea cypria) on the 150 m south spur. Distinct from the longer Kyparissia dam trail.",
+      "highlights": [
+        "Reservoir loop",
+        "Zoulatzia bush",
+        "Fishing weir"
+      ]
+    }
+  },
+  {
+    "id": "agros-kato-mylos",
+    "name": "Agros Kato Mylos Trail",
+    "region": "Limassol",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular 6 km from Agros—grade 2, about two hours through apple, cherry, pear, and rose (Rosa damascena) orchards. Agros rose water country; wooded sections and village road finish.",
+      "highlights": [
+        "Rose orchards",
+        "Agros rose water",
+        "Mountain views"
+      ]
+    }
+  },
+  {
+    "id": "kalopanagiotis-oikos",
+    "name": "Kalopanayiotis Oikos Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 4 km, grade 2, 1.5 hours from Kalopanayiotis to Oikos via Kykkos water mill, Setrachos River, hot springs, and UNESCO Agios Ioannis Lampadistis Monastery. Stone bridge and orchard fields en route.",
+      "highlights": [
+        "UNESCO Lampadistis",
+        "Setrachos valley",
+        "Hot springs"
+      ]
+    }
+  },
+  {
+    "id": "archangelos-mylos-rodous",
+    "name": "Archangelos Mylos Tis Rodous Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 1 km, grade 1, 15–20 minutes from Archangelos church, Galata. Klarios riverside vegetation, Rodous mill buildings, and UNESCO Panagia Podithou church 200 m away.",
+      "highlights": [
+        "Rodous mill",
+        "Klarios riverside",
+        "UNESCO Podithou"
+      ]
+    }
+  },
+  {
+    "id": "lagoudera-agros",
+    "name": "Lagoudera Agros Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 6 km, grade 3, 2.5 hours from Lagoudera toward Agros through vineyards, orchards, and the Madari–Papoutsa ridge with panoramic views. Can link to Madari trail network at Adelfi Forest.",
+      "highlights": [
+        "Madari ridge views",
+        "Vineyard path",
+        "Lagoudera start"
+      ]
+    }
+  },
+  {
+    "id": "lagoudera-madari",
+    "name": "Lagoudera/agros Madari Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 7 km, grade 3, about three hours from Agros weir area toward Madari. Panoramic ridge walking; connects to the wider Madari fire-tower network.",
+      "highlights": [
+        "Madari connection",
+        "Ridge panoramas",
+        "Agros weir start"
+      ]
+    }
+  },
+  {
+    "id": "polystypos-hazelnut",
+    "name": "Polystypos Hazelnut Forest Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 1.3 km through Polystypos hazelnut forest and orchards—grade 2, 30–45 minutes. Village fountain, Makroulis walnut tree, and an ~840-year oak at the trail end.",
+      "highlights": [
+        "Hazelnut forest",
+        "840-year oak",
+        "Village fountain"
+      ]
+    }
+  },
+  {
+    "id": "pano-ambelia",
+    "name": "Pano Ambelia Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular grade 3 loop at Askas village entrance—about 0.5–1 hour through pine, abandoned orchards, and hazelnut groves. Pentadaktylos range views.",
+      "highlights": [
+        "Askas pine forest",
+        "Hazelnut groves",
+        "Pentadaktylos views"
+      ]
+    }
+  },
+  {
+    "id": "petros-vanezis",
+    "name": "Petros Vanezis Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular 1.5 km, grade 3, 30 minutes in Alona (Pitsilia). Stone village scenery, cherry and apple plantations, and a Natura 2000 river reach.",
+      "highlights": [
+        "Alona stone village",
+        "Orchard plantations",
+        "Natura 2000 river"
+      ]
+    }
+  },
+  {
+    "id": "gourri",
+    "name": "Gourri Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 3 km, grade 2, one hour from Gourri village fountain. Traditional dry-stone walls, local flora, and a natural waterfall at the trail end.",
+      "highlights": [
+        "Dry-stone walls",
+        "Natural waterfall",
+        "Gourri village"
+      ]
+    }
+  },
+  {
+    "id": "machairas-lazanias",
+    "name": "Machairas Lazanias Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 3 km, grade 3, one hour from Machairas Monastery. Crosses the Pediaios River with rich flora; E4 section linking to Lazanias–Fikardou routes.",
+      "highlights": [
+        "Pediaios River",
+        "E4 trail section",
+        "Machairas link"
+      ]
+    }
+  },
+  {
+    "id": "lazanias-fikardou",
+    "name": "Lazanias Fikarou Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2 km, grade 2, 45 minutes from Lazanias to UNESCO Fikardou village. Panoramic views, rich flora, E4 trail. Connects Machairas–Lazanias and Fikardou–Archontides.",
+      "highlights": [
+        "Fikardou village",
+        "E4 section",
+        "Panoramic views"
+      ]
+    }
+  },
+  {
+    "id": "fikardou-archontides",
+    "name": "Fikardou Archontides Center Trail",
+    "region": "Nicosia",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 5 km, grade 2, 1.5 hours from Fikardou church to Archontides. Ridge walking with Nicosia and countryside views; E4 section through rich flora.",
+      "highlights": [
+        "Ridge views",
+        "E4 trail",
+        "Archontides finish"
+      ]
+    }
+  },
+  {
+    "id": "choirokoitia-trail",
+    "name": "Choirokoitia Trail",
+    "region": "Larnaca",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2 km, grade 2, 45 minutes linking Choirokoitia village and the UNESCO Neolithic archaeological site. Walk from the site parking or from the village direction.",
+      "highlights": [
+        "UNESCO Neolithic site",
+        "Village connector",
+        "Archaeology walk"
+      ]
+    }
+  },
+  {
+    "id": "panagia-agapis-vavla",
+    "name": "Panagia Tis Agapis Vavla Trail",
+    "region": "Larnaca",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular 10.5 km, grade 2, 3–4 hours from Vavla village centre. Rural roads to Panagia tis Agapis church, then footpath along St Minas River and ridge roads with panoramic views.",
+      "highlights": [
+        "Panagia tis Agapis",
+        "St Minas River",
+        "Vavla loop"
+      ]
+    }
+  },
+  {
+    "id": "lefkara-metamorfoseos",
+    "name": "Lefkara Metamorfoseos Tou Sotiros Church Trail",
+    "region": "Larnaca",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Circular 2.3 km, grade 2, 1.5 hours from Pano Lefkara toward Vavatsinia. Views over Pano and Kato Lefkara, Kato Drys, Dipotamos dam, and Stavrovouni. Links to Lefkara–Kato Drys path.",
+      "highlights": [
+        "Lefkara panoramas",
+        "Metamorfoseos church",
+        "Stavrovouni views"
+      ]
+    }
+  },
+  {
+    "id": "profitis-ilias-konnoi",
+    "name": "Profitis Ilias Konnoi Trail",
+    "region": "Famagusta",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 8.5 km, grade 1, about three hours from Profitis Ilias church (Protaras) to Konnos beach. Coastal churches, E4 parallel sections, links to Agioi Saranda, Agios Ioannis, and Konnos–Cyclops trails.",
+      "highlights": [
+        "Profitis Ilias church",
+        "Coastal churches",
+        "Konnos beach finish"
+      ]
+    }
+  },
+  {
+    "id": "panagia-agios-ioannis",
+    "name": "Panagia Agios Ioannis Trail",
+    "region": "Famagusta",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2.8 km, grade 1, 45 minutes between Panagia church (Cape Greco road) and Agios Ioannis / Agioi Saranda churches. E4 parallel sections; combine with coastal Cape Greco loops.",
+      "highlights": [
+        "Coastal churches",
+        "E4 parallel",
+        "Cape Greco area"
+      ]
+    }
+  },
+  {
+    "id": "panagia-agioi-saranda",
+    "name": "Panagia Agioi Saranda Trail",
+    "region": "Famagusta",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Linear 2.5 km, grade 1, 45 minutes from Panagia church to Agioi Saranda church near Cape Greco. Picturesque chapel, E4 parallel route.",
+      "highlights": [
+        "Agioi Saranda church",
+        "E4 parallel",
+        "Cape Greco coast"
+      ]
+    }
+  },
+  {
+    "id": "chorteri",
+    "name": "Chorteri Nature Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular in the heart of Paphos Forest near Stavros tis Psokas: 5 km, about 3 hours, grade 3. Calabrian pine and endemic golden oak on the climb to Chorteri peak (1,290 m). Rather difficult uphill; excellent Stavros Valley views. Mouflon and red deer enclosures at the forest station. Start 1.5 km from Stavros tis Psokas on the Kykko road.",
+      "highlights": [
+        "Paphos Forest",
+        "Chorteri peak",
+        "Golden oak"
+      ]
+    }
+  },
+  {
+    "id": "argakas-dam",
+    "name": "Argakas Dam Nature Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular in Agios Merkourios valley, Paphos state forest: short route 8 km (~2 h) or long 10 km (~2.5 h) on forest roads with gentle inclines. Panoramic views of Argakas Dam, Argaka village, Akamas, and Chrysochou Bay. Calabrian pine, mouflon in the SPA, and riparian pockets. Trailhead near Argaka village.",
+      "highlights": [
+        "Argakas Dam",
+        "Akamas views",
+        "Mouflon habitat"
+      ]
+    }
+  },
+  {
+    "id": "symvoulas",
+    "name": "Symvoulas Nature Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry Yialia valley route: now circular from Nea Dimmata village square through Paphos Forest to the Symvoulas stream, Mavres–Pervoli, and Pomos (17 km, 3–5 hours). Bird's-eye views over Paphos Forest, Akamas, and Chrysochou Gulf. Named for historic forest council meetings. Linear Pomos option also documented (~11 km).",
+      "highlights": [
+        "Yialia valley",
+        "Akamas panorama",
+        "Symvoulas stream"
+      ]
+    }
+  },
+  {
+    "id": "venetian-bridges",
+    "name": "Venetian Bridges Trail",
+    "region": "Paphos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry linear connecting three protected Venetian bridges—Elias, Tzielefos (Tzelefos), and Roudias—through Paphos Forest from Kaminaria to Vretsia. Total 17 km, 6–8 hours in four sections (3.2 + 3.9 + 6.9 + 3 km). Part of the historic Camel Road. Walk one or two sections for a half-day; full traverse needs transport at both ends.",
+      "highlights": [
+        "Elias Bridge",
+        "Tzielefos Bridge",
+        "Roudias Bridge"
+      ]
+    }
+  },
+  {
+    "id": "troodos-visitor-centre",
+    "name": "Troodos Visitor Centre Botanical Trail",
+    "region": "Troodos",
+    "type": "trail",
+    "urls": [],
+    "current": {
+      "description": "Official Forestry circular at the Troodos Visitor Centre: 250 m, gentle incline, wheelchair accessible. Thirty labelled endemic and indigenous plants of Troodos National Forest Park—including black pine, golden oak, Troodos sage, and Cyprus cedar. Educational loop on serpentinite; ideal before Artemis or Atalante.",
+      "highlights": [
+        "Endemic flora",
+        "Wheelchair accessible",
+        "Visitor Centre"
       ]
     }
   },

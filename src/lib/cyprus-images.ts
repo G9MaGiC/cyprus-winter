@@ -148,38 +148,67 @@ export function getAttractionImage(id: string, type: string): string {
   return map[id] ?? fallbacks[type] ?? `${local}/cyprus-trail-troodos.jpg`;
 }
 
-const trailImages: Record<string, string> = {
-  artemis: `${local}/cyprus-trail-troodos.jpg`,
-  atalante: `${local}/cyprus-trail-troodos.jpg`,
-  persephone: `${local}/cyprus-trail-troodos.jpg`,
+const trailsDir = `${local}/trails`;
+const trailFallback = `${local}/cyprus-trail-troodos.jpg`;
+
+/** Visit Cyprus / Forestry official hero photos (npm run trails:fetch-images). */
+const officialTrailImages: Record<string, string> = {
+  adonis: `${trailsDir}/trail-adonis.jpg`,
+  "agia-irini": `${trailsDir}/trail-agia-irini.jpg`,
+  "agioi-anargyroi-circular": `${trailsDir}/trail-agioi-anargyroi-circular.jpg`,
+  aphrodite: `${trailsDir}/trail-aphrodite.jpg`,
+  "aphrodite-cape-greco": `${trailsDir}/trail-aphrodite-cape-greco.jpg`,
+  artemis: `${trailsDir}/trail-artemis.jpg`,
+  atalante: `${trailsDir}/trail-atalante.jpg`,
+  "avakas-gorge": `${trailsDir}/trail-avakas-gorge.jpg`,
+  "caledonia-falls": `${trailsDir}/trail-caledonia-falls.jpg`,
+  chrysovrysi: `${trailsDir}/trail-chrysovrysi.jpg`,
+  "germasogeia-kyparissia": `${trailsDir}/trail-germasogeia-kyparissia.jpg`,
+  "kampos-tou-livadiou": `${trailsDir}/trail-kampos-tou-livadiou.jpg`,
+  "kannoures-agios-nikolaos": `${trailsDir}/trail-kannoures-agios-nikolaos.jpg`,
+  "kavos-trail": `${trailsDir}/trail-kavos-trail.jpg`,
+  "kionia-profitis-elias": `${trailsDir}/trail-kionia-profitis-elias.jpg`,
+  "konnoi-cyclops": `${trailsDir}/trail-konnoi-cyclops.jpg`,
+  "livadi-trail": `${trailsDir}/trail-livadi-trail.jpg`,
+  "loumata-ton-aeton": `${trailsDir}/trail-loumata-ton-aeton.jpg`,
+  "madari-ridge": `${trailsDir}/trail-madari-ridge.jpg`,
+  "mnimata-piskopon": `${trailsDir}/trail-mnimata-piskopon.jpg`,
+  persephone: `${trailsDir}/trail-persephone.jpg`,
+  pissouromoutti: `${trailsDir}/trail-pissouromoutti.jpg`,
+  "prodromos-dam-stavroulia": `${trailsDir}/trail-prodromos-dam-stavroulia.jpg`,
+  "prodromos-zoumi": `${trailsDir}/trail-prodromos-zoumi.jpg`,
+  "psilo-dentro-pouziaris": `${trailsDir}/trail-psilo-dentro-pouziaris.jpg`,
+  "sea-caves-anargyroi": `${trailsDir}/trail-sea-caves-anargyroi.jpg`,
+  smigies: `${trailsDir}/trail-smigies.jpg`,
+  "trooditissa-phini": `${trailsDir}/trail-trooditissa-phini.jpg`,
+  "xyliatos-dam": `${trailsDir}/trail-xyliatos-dam.jpg`,
+  "ezousa-valley": `${trailsDir}/trail-ezousa-valley.jpg`,
+  "panagia-araka-stavros": `${trailsDir}/trail-panagia-araka-stavros.jpg`,
+  "moni-fylagra": `${trailsDir}/trail-moni-fylagra.jpg`,
+  chorteri: `${trailsDir}/trail-chorteri.jpg`,
+  "argakas-dam": `${trailsDir}/trail-argakas-dam.jpg`,
+  symvoulas: `${trailsDir}/trail-symvoulas.jpg`,
+  "venetian-bridges": `${trailsDir}/trail-venetian-bridges.jpg`,
+  "troodos-visitor-centre": `${trailsDir}/trail-troodos-visitor-centre.jpg`,
+};
+
+/** Regional stock for trails without an official Visit Cyprus hero. */
+const regionalTrailImages: Record<string, string> = {
   "olympus-summit": `${local}/cyprus-trail-troodos.jpg`,
-  "madari-ridge": `${local}/cyprus-trail-troodos.jpg`,
   horteri: `${local}/cyprus-trail-troodos.jpg`,
-  "caledonia-falls": `${local}/cyprus-trail-waterfall.jpg`,
   "millomeris-falls": `${local}/cyprus-trail-waterfall.jpg`,
   "caledonia-alternative": `${local}/cyprus-trail-waterfall.jpg`,
   "cape-greco": `${local}/cyprus-trail-coastal.jpg`,
-  "avakas-gorge": `${local}/cyprus-trail-gorge.jpg`,
-  adonis: `${local}/cyprus-trail-gorge.jpg`,
-  aphrodite: `${local}/cyprus-trail-coastal.jpg`,
   "petra-tou-romiou": `${local}/cyprus-trail-coastal.jpg`,
-  smigies: `${local}/cyprus-trail-gorge.jpg`,
   "stavros-tis-psokas": `${local}/cyprus-trail-troodos.jpg`,
-  "kampos-tou-livadiou": `${local}/cyprus-trail-troodos.jpg`,
-  pissouromoutti: `${local}/cyprus-trail-gorge.jpg`,
   "e4-troodos-platres": `${local}/cyprus-trail-troodos.jpg`,
   "vavatsinia-honeybee": `${local}/cyprus-village-omodos.jpg`,
   "vouni-panagias": `${local}/cyprus-trail-troodos.jpg`,
-  "mnimata-piskopon": `${local}/cyprus-trail-troodos.jpg`,
   "kryos-potamos-loop": `${local}/cyprus-trail-waterfall.jpg`,
-  "loumata-ton-aeton": `${local}/cyprus-trail-troodos.jpg`,
   "panagia-tis-amasgou": `${local}/cyprus-village-omodos.jpg`,
-  "xyliatos-dam": `${local}/cyprus-trail-troodos.jpg`,
   "selladi-stavros": `${local}/cyprus-trail-troodos.jpg`,
   "machairas-forest": `${local}/cyprus-trail-troodos.jpg`,
   "horteri-extended": `${local}/cyprus-trail-troodos.jpg`,
-  "agia-irini": `${local}/cyprus-trail-gorge.jpg`,
-  "livadi-trail": `${local}/cyprus-trail-troodos.jpg`,
   mylikouri: `${local}/cyprus-trail-troodos.jpg`,
   "persephone-extended": `${local}/cyprus-trail-troodos.jpg`,
   "dwarf-oaks": `${local}/cyprus-trail-troodos.jpg`,
@@ -188,25 +217,50 @@ const trailImages: Record<string, string> = {
   kionia: `${local}/cyprus-trail-troodos.jpg`,
   "trees-of-woe": `${local}/cyprus-trail-troodos.jpg`,
   "kalidonia-alt": `${local}/cyprus-trail-waterfall.jpg`,
-  pentadaktylos: `${local}/cyprus-st-hilarion.jpg`, // Pentadaktylos range, north Cyprus
+  pentadaktylos: `${local}/cyprus-st-hilarion.jpg`,
   "larnaca-salt-lake": `${local}/cyprus-trail-coastal.jpg`,
-  "trooditissa-phini": `${local}/cyprus-trail-waterfall.jpg`,
-  "prodromos-zoumi": `${local}/cyprus-trail-troodos.jpg`,
-  "prodromos-dam-stavroulia": `${local}/cyprus-trail-troodos.jpg`,
-  "psilo-dentro-pouziaris": `${local}/cyprus-trail-troodos.jpg`,
-  "kannoures-agios-nikolaos": `${local}/cyprus-trail-troodos.jpg`,
   "moni-fylagra": `${local}/cyprus-trail-troodos.jpg`,
-  "konnoi-cyclops": `${local}/cyprus-trail-coastal.jpg`,
-  "aphrodite-cape-greco": `${local}/cyprus-trail-coastal.jpg`,
-  chrysovrysi: `${local}/cyprus-trail-troodos.jpg`,
-  "kavos-trail": `${local}/cyprus-trail-coastal.jpg`,
-  "agioi-anargyroi-circular": `${local}/cyprus-trail-coastal.jpg`,
-  "sea-caves-anargyroi": `${local}/cyprus-trail-coastal.jpg`,
+  agiasma: `${local}/cyprus-trail-gorge.jpg`,
+  arnies: `${local}/cyprus-trail-gorge.jpg`,
+  "treis-elies": `${local}/cyprus-trail-waterfall.jpg`,
+  lemithou: `${local}/cyprus-trail-troodos.jpg`,
+  kastrovounos: `${local}/cyprus-trail-troodos.jpg`,
+  "dymes-pelendri": `${local}/cyprus-village-omodos.jpg`,
+  arsos: `${local}/cyprus-vineyard-lofou-january.jpg`,
+  kalevounari: `${local}/cyprus-governors-beach.jpg`,
+  "germasogeia-weir": `${local}/cyprus-trail-waterfall.jpg`,
+  "agros-kato-mylos": `${local}/cyprus-village-omodos.jpg`,
+  "kalopanagiotis-oikos": `${local}/cyprus-village-omodos.jpg`,
+  "archangelos-mylos-rodous": `${local}/cyprus-monastery-kykkos.jpg`,
+  "lagoudera-agros": `${local}/cyprus-trail-troodos.jpg`,
+  "lagoudera-madari": `${local}/cyprus-trail-troodos.jpg`,
+  "polystypos-hazelnut": `${local}/cyprus-trail-troodos.jpg`,
+  "pano-ambelia": `${local}/cyprus-trail-troodos.jpg`,
+  "petros-vanezis": `${local}/cyprus-village-omodos.jpg`,
+  gourri: `${local}/cyprus-trail-waterfall.jpg`,
+  "machairas-lazanias": `${local}/cyprus-monastery-kykkos.jpg`,
+  "lazanias-fikardou": `${local}/cyprus-village-omodos.jpg`,
+  "fikardou-archontides": `${local}/cyprus-village-omodos.jpg`,
+  "choirokoitia-trail": `${local}/cyprus-choirokoitia.jpg`,
+  "panagia-agapis-vavla": `${local}/cyprus-lefkara.jpg`,
+  "lefkara-metamorfoseos": `${local}/cyprus-lefkara.jpg`,
+  "profitis-ilias-konnoi": `${local}/cyprus-trail-coastal.jpg`,
+  "panagia-agios-ioannis": `${local}/cyprus-trail-coastal.jpg`,
+  "panagia-agioi-saranda": `${local}/cyprus-trail-coastal.jpg`,
 };
 
-/** Map trail id to image URL. */
+export type TrailImageSource = "official" | "regional" | "fallback";
+
+/** Classify how a trail hero image was resolved (for intake metrics). */
+export function classifyTrailImageSource(trailId: string): TrailImageSource {
+  if (officialTrailImages[trailId]) return "official";
+  if (regionalTrailImages[trailId]) return "regional";
+  return "fallback";
+}
+
+/** Map trail id to image URL. Official Visit Cyprus photos take precedence. */
 export function getTrailImage(trailId: string): string {
-  return trailImages[trailId] ?? `${local}/cyprus-trail-troodos.jpg`; // Troodos fallback
+  return officialTrailImages[trailId] ?? regionalTrailImages[trailId] ?? trailFallback;
 }
 
 /** Per-winery overrides (venue-specific or partner assets). */
