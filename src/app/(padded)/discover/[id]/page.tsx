@@ -54,7 +54,7 @@ export async function generateMetadata({
   const { id, locale = "en" } = await params;
   const tDetail = await getTranslations({ locale, namespace: "discover.detail" });
   const a = getDiscoverPlaceById(id);
-  if (!a) return { title: tDetail("metadata.notFound") };
+  if (!a) notFound();
   const typeLabel =
     a.type === "winery"
       ? tDetail("metadata.typeWinery")

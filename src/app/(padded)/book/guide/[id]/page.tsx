@@ -24,7 +24,7 @@ export async function generateMetadata({
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "book.pages.guideDetail" });
   const guide = guides.find((g) => g.id === id);
-  if (!guide) return { title: t("metaNotFound") };
+  if (!guide) notFound();
   const title = t("meta.title", { guideName: guide.name });
   const description = t("meta.description", { guideName: guide.name, region: guide.region });
   const alternates = buildStrategyAAlternates(`/book/guide/${id}`);

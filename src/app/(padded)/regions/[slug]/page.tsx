@@ -34,11 +34,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
-  if (!config)
-    return {
-      title: "Region not found | Cyprus Winter",
-      description: "Cyprus winter regions: Troodos, Paphos, Ayia Napa, Larnaca, Limassol. Explore trails, wineries, and villages.",
-    };
+  if (!config) notFound();
 
   return {
     title: `${config.title} | Cyprus Winter`,

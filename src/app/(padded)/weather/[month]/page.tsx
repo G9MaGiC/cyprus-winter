@@ -7,7 +7,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { getWeatherMonthDiscovery, MONTH_SLUGS, type MonthSlug } from "@/lib/weather-month-suggestions";
@@ -47,22 +47,12 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { month } = await params;
   const slug = month.toLowerCase() as MonthSlug;
-  const locale = await getLocale();
-  const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
 
-  if (!MONTH_SLUGS.includes(slug))
-    return {
-      title: tWeatherMonth("meta.notFoundTitle"),
-      description: tWeatherMonth("meta.notFoundDescription"),
-    };
+  if (!MONTH_SLUGS.includes(slug)) notFound();
 
   const monthName = SLUG_TO_WEATHER[slug];
   const row = weatherByMonth.find((r) => r.month === monthName);
-  if (!row)
-    return {
-      title: tWeatherMonth("meta.notFoundTitle"),
-      description: tWeatherMonth("meta.notFoundDescription"),
-    };
+  if (!row) notFound();
 
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;

@@ -26,7 +26,7 @@ const SLUG_TO_WEATHER: Record<MonthSlug, string> = {
 
 export async function discoverDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const a = getDiscoverPlaceById(id);
-  if (!a) return { title: "Not found" };
+  if (!a) notFound();
   const typeLabel =
     a.type === "winery" ? "Winery" : a.type === "restaurant" ? "Eat" : a.type.charAt(0).toUpperCase() + a.type.slice(1);
   const prefix = `${a.region}. ${typeLabel}. `;
@@ -66,7 +66,7 @@ export async function trailDetailMetadata(id: string, locale: string): Promise<M
 
 export async function bookWineryMetadata(id: string, locale: string): Promise<Metadata> {
   const winery = wineries.find((w) => w.id === id);
-  if (!winery) return { title: "Not found" };
+  if (!winery) notFound();
   const path = `/book/winery/${id}`;
   const base: Metadata = {
     title: `Book a tasting | ${winery.name} | Cyprus Winter`,
@@ -77,7 +77,7 @@ export async function bookWineryMetadata(id: string, locale: string): Promise<Me
 
 export async function bookGuideMetadata(id: string, locale: string): Promise<Metadata> {
   const guide = guides.find((g) => g.id === id);
-  if (!guide) return { title: "Not found" };
+  if (!guide) notFound();
   const path = `/book/guide/${id}`;
   const base: Metadata = {
     title: `Book a guided hike | ${guide.name} | Cyprus Winter`,
@@ -88,14 +88,7 @@ export async function bookGuideMetadata(id: string, locale: string): Promise<Met
 
 export async function regionSlugMetadata(slug: string, locale: string): Promise<Metadata> {
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
-  if (!config) {
-    const base: Metadata = {
-      title: "Region not found | Cyprus Winter",
-      description:
-        "Cyprus winter regions: Troodos, Paphos, Ayia Napa, Larnaca, Limassol. Explore trails, wineries, and villages.",
-    };
-    return applyLocaleToMetadata(base, `/regions/${slug}`, locale);
-  }
+  if (!config) notFound();
   const path = `/regions/${slug}`;
   const base: Metadata = {
     title: `${config.title} | Cyprus Winter`,
@@ -106,13 +99,7 @@ export async function regionSlugMetadata(slug: string, locale: string): Promise<
 
 export async function wineRouteSlugMetadata(slug: string, locale: string): Promise<Metadata> {
   const route = WINE_ROUTES.find((r) => r.slug === slug);
-  if (!route) {
-    const base: Metadata = {
-      title: "Wine route not found | Cyprus Winter",
-      description: "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings.",
-    };
-    return applyLocaleToMetadata(base, `/wine-routes/${slug}`, locale);
-  }
+  if (!route) notFound();
   const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
   const path = `/wine-routes/${slug}`;
   const base: Metadata = {
@@ -124,23 +111,11 @@ export async function wineRouteSlugMetadata(slug: string, locale: string): Promi
 
 export async function weatherMonthMetadata(month: string, locale: string): Promise<Metadata> {
   const slug = month.toLowerCase() as MonthSlug;
-  if (!MONTH_SLUGS.includes(slug)) {
-    const base: Metadata = {
-      title: "Weather not found | Cyprus Winter",
-      description: "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
-    };
-    return applyLocaleToMetadata(base, `/weather/${month}`, locale);
-  }
+  if (!MONTH_SLUGS.includes(slug)) notFound();
 
   const monthName = SLUG_TO_WEATHER[slug];
   const row = weatherByMonth.find((r) => r.month === monthName);
-  if (!row) {
-    const base: Metadata = {
-      title: "Weather not found | Cyprus Winter",
-      description: "Cyprus winter weather by month. Plan trails and wineries.",
-    };
-    return applyLocaleToMetadata(base, `/weather/${slug}`, locale);
-  }
+  if (!row) notFound();
 
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;

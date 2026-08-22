@@ -28,7 +28,7 @@ export async function generateMetadata({
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "book.pages.wineryDetail" });
   const winery = wineries.find((w) => w.id === id);
-  if (!winery) return { title: t("metaNotFound") };
+  if (!winery) notFound();
   const imageUrl = getAttractionImage(id, "winery");
   const title = t("meta.title", { wineryName: winery.name });
   const description = t("meta.description", { wineryName: winery.name, region: winery.region });

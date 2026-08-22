@@ -26,11 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   const t = await getTranslations("wineRoutes.page");
-  if (!route)
-    return {
-      title: t("meta.notFoundTitle"),
-      description: t("meta.notFoundDescription"),
-    };
+  if (!route) notFound();
 
   const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
   const alternates = buildStrategyAAlternates(`/wine-routes/${slug}`);
