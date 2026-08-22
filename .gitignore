@@ -50,3 +50,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+scripts/guides/TOURIST_GUIDES_AUG_2026_EN.pdf

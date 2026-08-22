@@ -37,6 +37,7 @@
     "analyze:old": "next experimental-analyze",
     "data:export": "npx tsx scripts/enrich-places/export-places.ts",
     "data:validate": "npx tsx scripts/validate-data.ts",
+    "guides:parse-pdf": "npx tsx scripts/guides/parse-tourist-guides-pdf.ts",
     "images:validate": "vitest run src/lib/cyprus-images.test.ts src/lib/winery-image-intake.test.ts",
     "check:conflict-markers": "node scripts/check-conflict-markers.mjs",
     "grant:wireframes": "node scripts/grant/capture-wireframes.mjs",

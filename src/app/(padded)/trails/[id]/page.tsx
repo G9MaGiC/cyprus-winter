@@ -19,6 +19,7 @@ import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatReportTimestamp } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { guides } from "@/data/guides";
+import { districtForTrailRegion } from "@/lib/guides-directory";
 import SectionCard from "@/components/SectionCard";
 import TrailWeatherBadge from "@/components/TrailWeatherBadge";
 import { getLocalizedName } from "@/lib/localize";
@@ -326,15 +327,14 @@ export default async function TrailPage({
                         </AppLink>
                       );
                     }
+                    const directoryDistrict = districtForTrailRegion(trail.region);
+                    const directoryHref = directoryDistrict
+                      ? `/guides/directory?district=${directoryDistrict}`
+                      : "/guides/directory";
                     return (
-                      <a
-                        href="https://www.cyprusactivetours.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={linkClass}
-                      >
+                      <AppLink href={directoryHref} className={linkClass}>
                         {tTrailsDetail("bookGuide")}
-                      </a>
+                      </AppLink>
                     );
                   })()}
                 </div>

@@ -2728,7 +2728,8 @@
         "moreCount": "+{count} więcej",
         "ctaAria": "Zarezerwuj wędrówkę z przewodnikiem z {name}",
         "footerBrowseTrails": "Przeglądaj wszystkie szlaki",
-        "footerMyBookings": "Moje rezerwacje"
+        "footerMyBookings": "Moje rezerwacje",
+        "browseLicensedDirectory": "Wszyscy licencjonowani przewodnicy (lista CTO) →"
       },
       "wineryList": {
         "meta": {
@@ -2832,6 +2833,56 @@
       "cards": {
         "imageAlt": "{name}, {region} — szlak {km} km {difficulty}",
         "duration": "{km} km · ~{hours}h"
+      }
+    },
+    "directory": {
+      "meta": {
+        "title": "Licencjonowani przewodnicy | Cyprus Winter",
+        "description": "Oficjalna lista przewodników turystycznych Cypru według dystryktu i języka."
+      },
+      "title": "Licencjonowani przewodnicy",
+      "breadcrumb": "Licencjonowani przewodnicy",
+      "pageNavAria": "Katalog licencjonowanych przewodników",
+      "intro": "{count} licencjonowanych przewodników z oficjalnej listy Visit Cyprus (sierp. 2026). Kontakt bezpośredni — lub rezerwacja zweryfikowanego partnera w aplikacji.",
+      "verifiedPartnersLink": "Rezerwuj zweryfikowanych partnerów →",
+      "disclaimer": "Przewodnicy zarejestrowani w cypryjskim Ministerstwie Turystyki. Cyprus Winter publikuje oficjalne kontakty; rezerwacja bezpośrednio u przewodnika.",
+      "officialListLink": "Oficjalna lista na Visit Cyprus",
+      "searchLabel": "Szukaj przewodników",
+      "searchPlaceholder": "Imię lub język…",
+      "filterDistrict": "Dystrykt",
+      "filterLanguage": "Język",
+      "allDistricts": "Wszystkie dystrykty",
+      "allLanguages": "Wszystkie języki",
+      "resultCount": "{count} przewodników",
+      "empty": "Brak przewodników dla tych filtrów.",
+      "districts": {
+        "general": "Cały Cypr",
+        "lefkosia": "Lefkosia (Nikozja)",
+        "ammochostos": "Ammochostos (Famagusta)",
+        "larnaka": "Larnaka",
+        "lemesos": "Lemesos (Limassol)",
+        "pafos": "Pafos"
+      },
+      "languages": {
+        "english": "English",
+        "greek": "Greek",
+        "german": "German",
+        "french": "French",
+        "polish": "Polish",
+        "russian": "Russian",
+        "italian": "Italian",
+        "spanish": "Spanish",
+        "arabic": "Arabic",
+        "turkish": "Turkish",
+        "romanian": "Romanian",
+        "swedish": "Swedish",
+        "dutch": "Dutch",
+        "hebrew": "Hebrew"
+      },
+      "verifiedCta": {
+        "title": "Zweryfikowani partnerzy trekkingowi",
+        "body": "Przyjmują zapytania przez Cyprus Winter — Troodos, Akamas, kultura.",
+        "button": "Zarezerwuj zweryfikowanego przewodnika"
       }
     }
   },

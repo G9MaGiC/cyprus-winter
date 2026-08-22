@@ -138,6 +138,10 @@ export const TRANSLATED_HUB_META = {
     path: "/guides/troodos-december",
     namespace: "guides.troodosDecember",
   },
+  guidesDirectory: {
+    path: "/guides/directory",
+    namespace: "guides.directory",
+  },
   install: {
     path: "/install",
     namespace: "install.page",
