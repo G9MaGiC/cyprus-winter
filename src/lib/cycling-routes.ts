@@ -1,11 +1,7 @@
 import { cyclingRoutes } from "@/data/cycling-routes";
-import {
-  CYCLING_ROUTE_REGIONS,
-  type CyclingRoute,
-  type CyclingRouteRegion,
-} from "@/lib/cycling-route-types";
+import type { CyclingRoute, CyclingRouteRegion } from "@/lib/cycling-route-types";
 
-export type { CyclingRoute, CyclingRouteRegion };
+export type { CyclingRoute, CyclingRouteRegion } from "@/lib/cycling-route-types";
 export { CYCLING_ROUTE_REGIONS, VC_CYCLING_INDEX_URL, VC_CYCLING_NATURE_URL } from "@/lib/cycling-route-types";
 
 export function cyclingRouteCount(): number {

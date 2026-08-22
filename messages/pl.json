@@ -55,7 +55,8 @@
     "closeMenu": "Zamknij menu",
     "mainNavigation": "Nawigacja główna",
     "cycling": "Kolarstwo",
-    "askAIBlockedAria": "Najpierw dokończ onboarding lub wybór cookies"
+    "askAIBlockedAria": "Najpierw dokończ onboarding lub wybór cookies",
+    "nature": "Nature"
   },
   "common": {
     "nav": {
@@ -3335,6 +3336,69 @@
       "install": "Zainstaluj",
       "dismiss": "Nie teraz",
       "iosHint": "Dotknij Udostępnij, potem Dodaj do ekranu początkowego, aby zapisać przewodnik."
+    }
+  },
+  "nature": {
+    "page": {
+      "meta": {
+        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
+        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
+        "ogAlt": "Cedar forest valley, Cyprus winter nature",
+        "schemaName": "Cyprus Winter Nature",
+        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+      },
+      "header": {
+        "title": "Nature in Cyprus winter",
+        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+      },
+      "footer": {
+        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
+        "trails": "Trail conditions",
+        "cycling": "Winter cycling",
+        "quietPlaces": "Quiet places"
+      },
+      "aria": {
+        "actions": "Nature page actions"
+      },
+      "excursions": {
+        "title": "Official sites of interest",
+        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
+        "officialIndexLink": "Full list on Visit Cyprus",
+        "filterRegion": "Filter by region",
+        "allRegions": "All regions",
+        "resultCount": "{count} sites",
+        "winterPick": "Winter pick",
+        "viewOnVisitCyprus": "Site on Visit Cyprus",
+        "relatedTrail": "Related trail",
+        "relatedPlace": "Our guide to the area",
+        "regions": {
+          "lefkosia": "Lefkosia (Nicosia)",
+          "lemesos": "Lemesos (Limassol)",
+          "larnaka": "Larnaka (Larnaca)",
+          "pafos": "Pafos (Paphos)",
+          "ammochostos": "Ammochostos (Famagusta)",
+          "troodos": "Troodos"
+        },
+        "kind": {
+          "visitor_centre": "Visitor centre",
+          "wetland": "Wetland",
+          "forest_park": "Forest park",
+          "valley": "Valley",
+          "botanic": "Botanic garden"
+        }
+      },
+      "crosslinks": {
+        "title": "Trails, climbing & birdlife",
+        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
+        "trails": "Our trails hub",
+        "cycling": "Winter cycling",
+        "climbing": "Climbing on Discover",
+        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "birdLife": "BirdLife Cyprus",
+        "cyprusRocks": "Cyprus Rocks (climbing topos)",
+        "climbingVc": "Climbing (Visit Cyprus)",
+        "trailsVc": "Nature trails (Visit Cyprus)"
+      }
     }
   }
 }
