@@ -45,10 +45,10 @@ Used by:
 
 `data:validate` runs `vc-trail-index-audit.test.ts` offline (no network). Run `trails:fetch-index` periodically when VC publishes new official trails.
 
-Pending VC slugs without app trails yet (add to slug map when intake lands):
+Pending VC slugs without app trails yet on **main** only (mapped on trail-images branch):
 
-- `ezousa-walking-trail-circular-pafos-paphos-district-nature-trail` → planned `ezousa-valley`
-- `panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail` → planned `panagia-araka-stavros`
+- `ezousa-walking-trail-circular-pafos-paphos-district-nature-trail` → `ezousa-valley`
+- `panagia-tou-araka-stavros-tou-agiasmati-linear-lefkosia-nicosia-district-adelfoi-forest-nature-trail` → `panagia-araka-stavros`
 
 ## Related
 

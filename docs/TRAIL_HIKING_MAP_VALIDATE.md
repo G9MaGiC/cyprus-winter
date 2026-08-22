@@ -29,7 +29,9 @@ Canonical list: `scripts/trails/authoritative-trail-ids.ts`
 
 ## Coverage on main (Aug 2026)
 
-~**34 / 68** authoritative ids in app; remainder lands with PR #138 (`cursor/trail-images-visitcyprus-043e`).
+On `main`: ~**34 / 68** authoritative ids. Full **68 / 68** coverage on `cursor/trail-images-visitcyprus-043e` (105 trails total).
+
+Run with `--strict` after trail intake merge to gate CI.
 
 ## CI
 
