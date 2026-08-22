@@ -7,6 +7,8 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { trails } from "@/data/trails";
+import BookGuideHubFooter from "@/components/BookGuideHubFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,10 +35,9 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
 }
 
 export default async function GuidesListPage() {
-  const [tNav, tCommon, tBookings, tBookPages, tGuidesDir] = await Promise.all([
+  const [tNav, tCommon, tBookPages, tGuidesDir] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
-    getTranslations("bookings"),
     getTranslations("book.pages"),
     getTranslations("guides.directory"),
   ]);
@@ -117,15 +118,9 @@ export default async function GuidesListPage() {
         })}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm">
-        <AppLink href="/trails" className={SECTION.aegeanLink}>
-          {tBookPages("guideList.footerBrowseTrails")}
-        </AppLink>
-        {" · "}
-        <AppLink href="/bookings" className={SECTION.aegeanLink}>
-          {tBookings("title")}
-        </AppLink>
-      </p>
+      <span id="book-guide-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <BookGuideHubFooter />
+      <StickyPlanBarBlock sentinelId="book-guide-plan-sentinel" />
     </div>
   );
 }

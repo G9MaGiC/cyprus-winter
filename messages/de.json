@@ -2401,7 +2401,8 @@
       "pageHeaderDescription": "Küste {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
         "notFoundTitle": "Wetter nicht gefunden | Cyprus Winter",
-        "notFoundDescription": "Zypern-Winterwetter nach Monaten: Dezember, Januar, Februar, März. Temperaturen an Küste und im Troodos."
+        "notFoundDescription": "Zypern-Winterwetter nach Monaten: Dezember, Januar, Februar, März. Temperaturen an Küste und im Troodos.",
+        "ogImageAlt": "Zypern Winterküste — Wetter {month}"
       },
       "hero": {
         "kicker": "Dieser Monat",
@@ -2427,7 +2428,11 @@
       },
       "footer": {
         "allMonths": "Alle Monate",
-        "troodosWinter": "Troodos im Winter"
+        "troodosWinter": "Troodos im Winter",
+        "hubBody": "Planen Sie einen Tag nach dem Wetter dieses Monats — Trails, Verkostungen, Events — oder fragen Sie die KI."
+      },
+      "aria": {
+        "actions": "Aktionen Wetter-Monatsseite"
       }
     }
   },
@@ -2757,8 +2762,13 @@
         "footerMyBookings": "Meine Buchungen",
         "browseLicensedDirectory": "Alle lizenzierten Führer (offizielle CTO-Liste) →",
         "partnerCount": "{count} verifizierte Partner in Troodos, Paphos, Nikosia und an der Ostküste",
-        "alsoWineries": "Lieber eine Weinprobe? Weingut besuchen"
-
+        "alsoWineries": "Lieber eine Weinprobe? Weingut besuchen",
+        "footer": {
+          "hubBody": "Fordern Sie eine geführte Wanderung an und ergänzen Sie Trails und Dörfer in Ihrem Plan — oder fragen Sie die KI."
+        },
+        "aria": {
+          "actions": "Aktionen Buchung Guide"
+        }
       },
       "wineryList": {
         "meta": {
@@ -2769,7 +2779,13 @@
         "ctaAria": "Verkostung bei {name} buchen",
         "footerBrowseWineries": "Alle Weingüter ansehen",
         "disclaimer": "Für Erwachsene im gesetzlichen Trinkalter. Verantwortlich genießen.",
-        "alsoGuides": "Troodos wandern? Lizenzierten Guide buchen"
+        "alsoGuides": "Troodos wandern? Lizenzierten Guide buchen",
+        "footer": {
+          "hubBody": "Buchen Sie eine Verkostung und planen Sie den Tag um Dorf oder Trail — oder fragen Sie die KI."
+        },
+        "aria": {
+          "actions": "Aktionen Buchung Verkostung"
+        }
       },
       "wineryDetail": {
         "metaNotFound": "Nicht gefunden",
@@ -2858,11 +2874,15 @@
       },
       "footer": {
         "troodosRegion": "Region Troodos",
-        "weatherByMonth": "Wetter nach Monat"
+        "weatherByMonth": "Wetter nach Monat",
+        "hubBody": "Fügen Sie einen Dezember-Trail hinzu — oder fragen Sie die KI nach Wanderung plus Dorf oder Weingut."
       },
       "cards": {
         "imageAlt": "{name}, {region} — {km} km {difficulty}-Trail",
         "duration": "{km} km · ~{hours}h"
+      },
+      "aria": {
+        "actions": "Aktionen Troodos-Dezember-Guide"
       }
     },
     "directory": {
@@ -2915,7 +2935,14 @@
         "button": "Verifizierten Führer buchen"
       },
       "verifiedPartnerBadge": "In-App-Buchung",
-      "verifiedPartnerBook": "Anfrage über Cyprus Winter"
+      "verifiedPartnerBook": "Anfrage über Cyprus Winter",
+      "footer": {
+        "hubBody": "Kontaktieren Sie einen lizenzierten Guide — oder buchen Sie einen verifizierten Partner in der App.",
+        "trails": "Trail-Bedingungen"
+      },
+      "aria": {
+        "actions": "Aktionen lizenzierter Guides"
+      }
     }
   },
   "install": {
@@ -3292,6 +3319,12 @@
       "aria": {
         "actions": "Weinrouten-Aktionen"
       }
+    },
+    "routeNames": {
+      "krasochoria": "Krasochoria",
+      "laona": "Laona",
+      "akamas": "Akamas",
+      "commandaria": "Commandaria"
     }
   },
   "cycling": {

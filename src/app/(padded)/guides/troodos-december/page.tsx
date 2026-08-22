@@ -7,6 +7,8 @@ import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
 import type { Trail } from "@/data/trails";
+import TroodosDecemberFooter from "@/components/TroodosDecemberFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
 
@@ -153,15 +155,9 @@ export default async function TroodosDecemberPage() {
         </div>
       </section>
 
-      <p className="mt-12 text-center text-olive/70 text-sm">
-        <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
-          {tGuide("footer.troodosRegion")}
-        </AppLink>
-        {" · "}
-        <AppLink href="/weather" className={SECTION.aegeanLink}>
-          {tGuide("footer.weatherByMonth")}
-        </AppLink>
-      </p>
+      <span id="troodos-december-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <TroodosDecemberFooter />
+      <StickyPlanBarBlock sentinelId="troodos-december-plan-sentinel" />
     </div>
   );
 }

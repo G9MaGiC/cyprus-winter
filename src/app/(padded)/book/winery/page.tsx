@@ -7,6 +7,8 @@ import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import BookWineryHubFooter from "@/components/BookWineryHubFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
 
@@ -27,10 +29,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function WineriesListPage() {
-  const [tNav, tCommon, tBookings, tBookPages] = await Promise.all([
+  const [tNav, tCommon, tBookPages] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
-    getTranslations("bookings"),
     getTranslations("book.pages"),
   ]);
   return (
@@ -129,15 +130,9 @@ export default async function WineriesListPage() {
         })()}
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm">
-        <AppLink href="/wineries" className={SECTION.aegeanLink}>
-          {tBookPages("wineryList.footerBrowseWineries")}
-        </AppLink>
-        {" · "}
-        <AppLink href="/bookings" className={SECTION.aegeanLink}>
-          {tBookings("title")}
-        </AppLink>
-      </p>
+      <span id="book-winery-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <BookWineryHubFooter />
+      <StickyPlanBarBlock sentinelId="book-winery-plan-sentinel" />
     </div>
   );
 }

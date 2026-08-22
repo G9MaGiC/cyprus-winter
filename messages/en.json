@@ -2360,6 +2360,12 @@
     }
   },
   "wineRoutes": {
+    "routeNames": {
+      "krasochoria": "Krasochoria",
+      "laona": "Laona",
+      "akamas": "Akamas",
+      "commandaria": "Commandaria"
+    },
     "page": {
       "meta": {
         "title": "{route} Wine Route Cyprus Winter | Wineries & Tastings",
@@ -2465,7 +2471,8 @@
       "pageHeaderDescription": "Coast {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
         "notFoundTitle": "Weather not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures."
+        "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
+        "ogImageAlt": "Cyprus winter coast—{month} weather"
       },
       "hero": {
         "kicker": "This month",
@@ -2491,7 +2498,11 @@
       },
       "footer": {
         "allMonths": "All months",
-        "troodosWinter": "Troodos winter"
+        "troodosWinter": "Troodos winter",
+        "hubBody": "Build a day around this month's weather—trails, tastings, and events—or ask the AI."
+      },
+      "aria": {
+        "actions": "Weather month page actions"
       }
     }
   },
@@ -2844,8 +2855,13 @@
         "footerMyBookings": "My bookings",
         "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →",
         "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast",
-        "alsoWineries": "Prefer a tasting? Book a winery visit"
-
+        "alsoWineries": "Prefer a tasting? Book a winery visit",
+        "footer": {
+          "hubBody": "Request a guided hike, then add trails and villages to your plan—or ask the AI for a winter day."
+        },
+        "aria": {
+          "actions": "Book a guide actions"
+        }
       },
       "wineryList": {
         "meta": {
@@ -2856,7 +2872,13 @@
         "ctaAria": "Book a tasting at {name}",
         "footerBrowseWineries": "Browse all wineries",
         "disclaimer": "For adults of legal drinking age. Drink responsibly.",
-        "alsoGuides": "Hiking Troodos? Book a licensed guide"
+        "alsoGuides": "Hiking Troodos? Book a licensed guide",
+        "footer": {
+          "hubBody": "Book a tasting, then build a day around the village or trail nearby—or ask the AI."
+        },
+        "aria": {
+          "actions": "Book a tasting actions"
+        }
       },
       "wineryDetail": {
         "meta": {
@@ -2953,7 +2975,14 @@
         "button": "Book a verified guide"
       },
       "verifiedPartnerBadge": "Books in-app",
-      "verifiedPartnerBook": "Request via Cyprus Winter"
+      "verifiedPartnerBook": "Request via Cyprus Winter",
+      "footer": {
+        "hubBody": "Contact a licensed guide directly—or book a verified hiking partner in-app and add stops to your plan.",
+        "trails": "Trail conditions"
+      },
+      "aria": {
+        "actions": "Licensed guides directory actions"
+      }
     },
     "troodosDecember": {
       "meta": {
@@ -2974,7 +3003,11 @@
       },
       "footer": {
         "troodosRegion": "Troodos region",
-        "weatherByMonth": "Weather by month"
+        "weatherByMonth": "Weather by month",
+        "hubBody": "Add a December trail to your plan—or ask the AI to pair a hike with a village or winery."
+      },
+      "aria": {
+        "actions": "Troodos December guide actions"
       },
       "cards": {
         "imageAlt": "{name}, {region} — {km} km {difficulty} trail",

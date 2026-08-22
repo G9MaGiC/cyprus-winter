@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 export default function WineriesHubFooter() {
   const tWineries = useTranslations("wineries.page");
   const tDiscover = useTranslations("discover");
+  const tRoutes = useTranslations("wineRoutes.routeNames");
 
   return (
     <HubFooter
@@ -26,7 +27,7 @@ export default function WineriesHubFooter() {
             <span key={route.slug}>
               {" · "}
               <AppLink href={`/wine-routes/${route.slug}`} className={SECTION.aegeanLink}>
-                {route.title}
+                {tRoutes(route.slug)}
               </AppLink>
             </span>
           ))}

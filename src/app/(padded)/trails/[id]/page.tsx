@@ -32,6 +32,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const tTrails = await getTranslations("trails");
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) notFound();
   const loc = trail.locationText ?? trail.region;
@@ -40,12 +41,18 @@ export async function generateMetadata({
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
   const alternates = buildStrategyAAlternates(`/trails/${id}`);
+  const imageAlt = tTrails("card.imageAlt", {
+    name: trail.name,
+    region: trail.region,
+    length: trail.lengthKm,
+    difficulty: trail.difficulty,
+  });
   return {
     title: `${trail.name} | Cyprus Winter Trails`,
     description: prefix + desc,
     alternates,
     openGraph: {
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region} — ${trail.lengthKm} km trail in Cyprus winter` }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: imageAlt }],
     },
   };
 }

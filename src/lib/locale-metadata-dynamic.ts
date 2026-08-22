@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { getDiscoverPlaceById } from "@/data";
 import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
@@ -24,11 +25,20 @@ const SLUG_TO_WEATHER: Record<MonthSlug, string> = {
   april: "April",
 };
 
+function discoverTypeLabel(
+  type: string,
+  tDetail: Awaited<ReturnType<typeof getTranslations>>
+): string {
+  if (type === "winery") return tDetail("metadata.typeWinery");
+  if (type === "restaurant") return tDetail("metadata.typeEat");
+  return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
 export async function discoverDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
-  const typeLabel =
-    a.type === "winery" ? "Winery" : a.type === "restaurant" ? "Eat" : a.type.charAt(0).toUpperCase() + a.type.slice(1);
+  const tDetail = await getTranslations({ locale, namespace: "discover.detail" });
+  const typeLabel = discoverTypeLabel(a.type, tDetail);
   const prefix = `${a.region}. ${typeLabel}. `;
   const maxDesc = 154 - prefix.length;
   const desc = a.description.slice(0, maxDesc).trim();
@@ -39,7 +49,12 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
     openGraph: {
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
+      images: [{
+        url: imageUrl,
+        width: 1200,
+        height: 630,
+        alt: tDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel }),
+      }],
     },
   };
   return applyLocaleToMetadata(base, path, locale);
@@ -48,6 +63,7 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
 export async function trailDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const trail = trails.find((t) => t.id === id || t.slug === id);
   if (!trail) notFound();
+  const tTrails = await getTranslations({ locale, namespace: "trails" });
   const loc = trail.locationText ?? trail.region;
   const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length;
@@ -58,7 +74,17 @@ export async function trailDetailMetadata(id: string, locale: string): Promise<M
     title: `${trail.name} | Cyprus Winter Trails`,
     description: prefix + desc,
     openGraph: {
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${trail.name}, ${trail.region} — ${trail.lengthKm} km trail in Cyprus winter` }],
+      images: [{
+        url: imageUrl,
+        width: 1200,
+        height: 630,
+        alt: tTrails("card.imageAlt", {
+          name: trail.name,
+          region: trail.region,
+          length: trail.lengthKm,
+          difficulty: trail.difficulty,
+        }),
+      }],
     },
   };
   return applyLocaleToMetadata(base, path, locale);
@@ -117,6 +143,7 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
   const row = weatherByMonth.find((r) => r.month === monthName);
   if (!row) notFound();
 
+  const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
@@ -126,7 +153,12 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
     title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
     description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
     openGraph: {
-      images: [{ url: ogImage, width: 1200, height: 630, alt: `Cyprus winter coast—${monthName} weather` }],
+      images: [{
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }),
+      }],
     },
   };
   return applyLocaleToMetadata(base, path, locale);

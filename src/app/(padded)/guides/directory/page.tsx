@@ -7,6 +7,8 @@ import { licensedGuideCount } from "@/lib/guides-directory";
 import { LOCALE_TO_GUIDE_LANGUAGE } from "@/lib/guides-directory-types";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import GuidesDirectoryFooter from "@/components/GuidesDirectoryFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -72,6 +74,10 @@ export default async function GuidesDirectoryPage({ searchParams }: PageProps) {
         initialDistrict={initialDistrict}
         initialLanguage={initialLanguage}
       />
+
+      <span id="guides-directory-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <GuidesDirectoryFooter />
+      <StickyPlanBarBlock sentinelId="guides-directory-plan-sentinel" />
     </div>
   );
 }

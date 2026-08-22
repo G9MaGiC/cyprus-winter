@@ -7,12 +7,11 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
+import WeatherMonthFooter from "@/components/WeatherMonthFooter";
 import { getTranslations } from "next-intl/server";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { getWeatherMonthDiscovery, MONTH_SLUGS, type MonthSlug } from "@/lib/weather-month-suggestions";
-
-export const dynamic = "force-dynamic";
 
 const SLUG_TO_WEATHER: Record<MonthSlug, string> = {
   november: "November",
@@ -47,6 +46,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { month } = await params;
   const slug = month.toLowerCase() as MonthSlug;
+  const tWeatherMonth = await getTranslations("weather.month");
 
   if (!MONTH_SLUGS.includes(slug)) notFound();
 
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
     alternates,
     openGraph: {
-      images: [{ url: ogImage, width: 1200, height: 630, alt: `Cyprus winter coast—${monthName} weather` }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }) }],
     },
   };
 }
@@ -269,19 +269,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         </div>
       </div>
 
-      <p className="mt-12 text-olive/70 text-sm">
-        <AppLink href="/weather" className={SECTION.aegeanLink}>
-          {tWeatherMonth("footer.allMonths")}
-        </AppLink>
-        {" · "}
-        <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
-          {tWeatherMonth("footer.troodosWinter")}
-        </AppLink>
-        {" · "}
-        <AppLink href="/plan" className={SECTION.aegeanLink}>
-          {tCommon("planYourTrip")}
-        </AppLink>
-      </p>
+      <WeatherMonthFooter />
     </div>
   );
 }

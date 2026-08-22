@@ -67,6 +67,7 @@ export async function generateMetadata({
   const snippet = prefix + desc + (a.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
   const alternates = buildStrategyAAlternates(`/discover/${id}`);
+  const imageAlt = tDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel });
   return {
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
@@ -79,7 +80,7 @@ export async function generateMetadata({
       description: snippet,
       url: alternates.canonical,
       type: "website",
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${a.name}, ${a.region}—Cyprus winter` }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: imageAlt }],
     },
     twitter: {
       card: "summary_large_image",
