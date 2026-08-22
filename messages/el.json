@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Κρατήσεις οινοποιείων"
     },
+    "guideBar": {
+      "ariaLabel": "Επιλογές ξεναγού για το πλάνο σας",
+      "title": "Χρειάζεστε ξεναγό για τις διαδρομές σας;",
+      "directoryCta": "Βρείτε πιστοποιημένο ξεναγό",
+      "browseLicensed": "Περιήγηση σε πιστοποιημένους ξεναγούς",
+      "directoryCount": "{count} ξεναγοί μιλούν τη γλώσσα σας σε αυτόν τον νομό",
+      "verifiedPartners": "Επαληθευμένοι συνεργάτες πεζοπορίας"
+    },
     "dayLabel": "Ημέρα {day}",
     "aria": {
       "shareRegion": "Σύνοψη προγράμματος και κοινοποίηση",
@@ -2729,7 +2737,8 @@
         "ctaAria": "Κράτηση πεζοπορίας με οδηγό με {name}",
         "footerBrowseTrails": "Περιήγηση όλων των μονοπατιών",
         "footerMyBookings": "Οι κρατήσεις μου",
-        "browseLicensedDirectory": "Όλοι οι επίσημοι οδηγοί (CTO) →"
+        "browseLicensedDirectory": "Όλοι οι επίσημοι οδηγοί (CTO) →",
+        "partnerCount": "{count} επαληθευμένοι συνεργάτες σε Τρόοδο, Πάφο, Λευκωσία και ανατολική ακτή"
       },
       "wineryList": {
         "meta": {
@@ -2883,7 +2892,9 @@
         "title": "Επαληθευμένοι συνεργάτες πεζοπορίας",
         "body": "Δέχονται αιτήματα μέσω Cyprus Winter — Τρόοδος, Ακάμας, πολιτισμός.",
         "button": "Κράτηση επαληθευμένου οδηγού"
-      }
+      },
+      "verifiedPartnerBadge": "Κράτηση στην εφαρμογή",
+      "verifiedPartnerBook": "Αίτημα μέσω Cyprus Winter"
     }
   },
   "install": {
@@ -3284,6 +3295,36 @@
       },
       "aria": {
         "actions": "Ενέργειες σελίδας ποδηλασίας"
+      },
+      "officialRoutes": {
+        "title": "Επίσημες διαδρομές Visit Cyprus",
+        "intro": "Επιλεγμένες διαδρομές CTO με χειμωνιάτικες σημειώσεις. Χάρτες και GPX στο Visit Cyprus — εμείς συνδέουμε· εσείς οδηγείτε με δική σας ρυθμό.",
+        "officialIndexLink": "Πλήρης αναζήτηση στο Visit Cyprus",
+        "filterRegion": "Φίλτρο ανά περιοχή",
+        "allRegions": "Όλες οι περιοχές",
+        "resultCount": "{count} διαδρομές",
+        "winterPick": "Χειμωνιάτικη επιλογή",
+        "viewOnVisitCyprus": "Διαδρομή στο Visit Cyprus",
+        "downloadGpx": "Λήψη GPX",
+        "relatedPlace": "Ο οδηγός μας για την περιοχή",
+        "regions": {
+          "lefkosia": "Λευκωσία",
+          "lemesos": "Λεμεσός",
+          "larnaka": "Λάρνακα",
+          "pafos": "Πάφος",
+          "ammochostos": "Αμμόχωστος",
+          "troodos": "Τρόοδος"
+        },
+        "difficulty": {
+          "easy": "Εύκολη",
+          "moderate": "Μέτρια",
+          "demanding": "Απαιτητική"
+        },
+        "surface": {
+          "paved": "Άσφαλτος",
+          "unpaved": "Χωματόδρομος",
+          "mixed": "Μικτό"
+        }
       }
     }
   },

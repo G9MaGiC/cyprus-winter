@@ -17,6 +17,7 @@ import PlanStartHere from "@/components/plan/PlanStartHere";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
 import PlanWineryBar from "@/components/plan/PlanWineryBar";
+import PlanGuideBar from "@/components/plan/PlanGuideBar";
 const PlacePickerModal = dynamic(() => import("@/components/plan/PlacePickerModal"), { ssr: false });
 import QuickStartSection from "@/components/plan/QuickStartSection";
 import BuildADaySection from "@/components/plan/BuildADaySection";
@@ -25,8 +26,9 @@ const TemplateChoiceModal = dynamic(() => import("@/components/plan/TemplateChoi
 import { usePlanPage } from "@/hooks/usePlanPage";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { track, trackProduct } from "@/lib/analytics";
+import { matchGuidesForPlanItemIds } from "@/lib/guide-match";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import { ITINERARY_TEMPLATES } from "@/data/itinerary-templates";
 import AppLink from "@/components/AppLink";
@@ -48,6 +50,7 @@ export default function PlanPageClient() {
   const t = useTranslations("onboarding");
   const tPlan = useTranslations("plan");
   const tNav = useTranslations("nav");
+  const locale = useLocale();
   const hasTrackedPlanView = useRef(false);
 
   const hasTrackedFirstAdd = useRef(false);
@@ -98,6 +101,7 @@ export default function PlanPageClient() {
     lastAddedId,
     hasContent,
     hasWineries,
+    hasTrails,
     copyItinerary,
     copyShareLink,
     linkCopied,
@@ -122,6 +126,9 @@ export default function PlanPageClient() {
     scrollToQuickStart,
     planReadOnly,
   } = plan;
+
+  const allPlanItemIds = Object.values(days).flat();
+  const guideMatch = matchGuidesForPlanItemIds(allPlanItemIds, locale);
 
   const quickStartBlock = (
     <>
@@ -291,6 +298,15 @@ export default function PlanPageClient() {
         )}
 
         {hasWineries && hydrated && <PlanWineryBar />}
+
+        {hasTrails && hydrated && (
+          <PlanGuideBar
+            verifiedGuides={guideMatch.verifiedGuides}
+            district={guideMatch.district}
+            language={guideMatch.language}
+            licensedCount={guideMatch.licensedCount}
+          />
+        )}
 
         <div id="plan-itinerary" className="flex flex-col gap-10 sm:gap-14 scroll-mt-24 sm:scroll-mt-28">
           {hasContent && (

@@ -8,6 +8,7 @@ import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
 import GuideBookingForm from "./GuideBookingForm";
+import GuidePartnerMeta from "@/components/guides/GuidePartnerMeta";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
@@ -51,10 +52,11 @@ export default async function GuideBookPage({
   const { trail } = await searchParams;
   const guide = guides.find((g) => g.id === id);
   if (!guide) notFound();
-  const [tNav, tCommon, tBookPages] = await Promise.all([
+  const [tNav, tCommon, tBookPages, tGuidesDir] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
     getTranslations("book.pages"),
+    getTranslations("guides.directory"),
   ]);
 
   const canonicalUrl = `${SITE_URL}/book/guide/${id}`;
@@ -97,6 +99,10 @@ export default async function GuideBookPage({
         <p className="text-olive/80 mt-1 break-words">
           {guide.name} · {guide.region}
         </p>
+        <GuidePartnerMeta
+          guide={guide}
+          districtLabel={tGuidesDir(`districts.${guide.district}`)}
+        />
         <p className="text-sm text-olive/70 mt-3 max-w-lg break-words prose-body">{guide.description}</p>
       </div>
 

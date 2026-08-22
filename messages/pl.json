@@ -1785,6 +1785,14 @@
     "wineryBar": {
       "ariaLabel": "Rezerwacje winnic"
     },
+    "guideBar": {
+      "ariaLabel": "Opcje przewodnika dla planu",
+      "title": "Potrzebujesz przewodnika na szlaki?",
+      "directoryCta": "Znajdź licencjonowanego przewodnika",
+      "browseLicensed": "Przeglądaj licencjonowanych przewodników",
+      "directoryCount": "{count} przewodników mówi w Twoim języku w tym dystrykcie",
+      "verifiedPartners": "Zweryfikowani partnerzy trekkingowi"
+    },
     "dayLabel": "Dzień {day}",
     "aria": {
       "shareRegion": "Podsumowanie planu i udostępnianie",
@@ -2729,7 +2737,8 @@
         "ctaAria": "Zarezerwuj wędrówkę z przewodnikiem z {name}",
         "footerBrowseTrails": "Przeglądaj wszystkie szlaki",
         "footerMyBookings": "Moje rezerwacje",
-        "browseLicensedDirectory": "Wszyscy licencjonowani przewodnicy (lista CTO) →"
+        "browseLicensedDirectory": "Wszyscy licencjonowani przewodnicy (lista CTO) →",
+        "partnerCount": "{count} zweryfikowanych partnerów w Troodos, Pafos, Nikozji i na wschodnim wybrzeżu"
       },
       "wineryList": {
         "meta": {
@@ -2883,7 +2892,9 @@
         "title": "Zweryfikowani partnerzy trekkingowi",
         "body": "Przyjmują zapytania przez Cyprus Winter — Troodos, Akamas, kultura.",
         "button": "Zarezerwuj zweryfikowanego przewodnika"
-      }
+      },
+      "verifiedPartnerBadge": "Rezerwacja w aplikacji",
+      "verifiedPartnerBook": "Zapytanie przez Cyprus Winter"
     }
   },
   "install": {
@@ -3284,6 +3295,36 @@
       },
       "aria": {
         "actions": "Akcje strony kolarstwa"
+      },
+      "officialRoutes": {
+        "title": "Oficjalne trasy Visit Cyprus",
+        "intro": "Wybrane trasy CTO z zimowymi wskazówkami. Mapy i GPX na Visit Cyprus — my linkujemy, Ty jedziesz we własnym tempie.",
+        "officialIndexLink": "Pełne wyszukiwanie tras na Visit Cyprus",
+        "filterRegion": "Filtruj według regionu",
+        "allRegions": "Wszystkie regiony",
+        "resultCount": "{count} tras",
+        "winterPick": "Zimowy wybór",
+        "viewOnVisitCyprus": "Trasa na Visit Cyprus",
+        "downloadGpx": "Pobierz GPX",
+        "relatedPlace": "Nasz przewodnik po okolicy",
+        "regions": {
+          "lefkosia": "Lefkosia (Nikozja)",
+          "lemesos": "Lemesos (Limassol)",
+          "larnaka": "Larnaka (Larnaka)",
+          "pafos": "Pafos (Paphos)",
+          "ammochostos": "Ammochostos (Famagusta)",
+          "troodos": "Troodos"
+        },
+        "difficulty": {
+          "easy": "Łatwa",
+          "moderate": "Średnia",
+          "demanding": "Wymagająca"
+        },
+        "surface": {
+          "paved": "Asfalt",
+          "unpaved": "Szutry",
+          "mixed": "Mieszana"
+        }
       }
     }
   },

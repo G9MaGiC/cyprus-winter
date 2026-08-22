@@ -29,6 +29,8 @@ export const TRACK_EVENTS = [
   "trip_length_recommendation_shown",
   "today_adapt_action_click",
   "hub_footer_click",
+  "guide_directory_view",
+  "guide_match_click",
 ] as const;
 
 export type TrackEventName = (typeof TRACK_EVENTS)[number];
@@ -61,6 +63,8 @@ export const PRODUCT_EVENTS = [
   "winery_detail_view",
   "discover_view",
   "discover_filter",
+  "guide_directory_view",
+  "guide_match_click",
 ] as const satisfies readonly TrackEventName[];
 
 export type ProductEventName = (typeof PRODUCT_EVENTS)[number];

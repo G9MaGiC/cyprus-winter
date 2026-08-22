@@ -157,6 +157,9 @@ export function useItinerary() {
   const hasWineries = Object.values(days).some((ids) =>
     ids.some((id) => getPlace(id)?.type === "winery")
   );
+  const hasTrails = Object.values(days).some((ids) =>
+    ids.some((id) => getPlace(id)?.type === "trail")
+  );
 
   const applyTemplate = useCallback((key: TemplateKey, mode: "replace" | "merge" = "replace") => {
     const template = getTemplateDays(key);
@@ -287,6 +290,7 @@ export function useItinerary() {
     getPlace,
     hasContent,
     hasWineries,
+    hasTrails,
     applyTemplate: applyTemplateReplace,
     mergeTemplate,
     clearDay,

@@ -3,6 +3,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { getCyclingHubContent } from "@/lib/cycling-hub";
+import CyclingOfficialRoutes from "@/components/cycling/CyclingOfficialRoutes";
 import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
@@ -108,6 +109,8 @@ export default async function CyclingPage() {
           </ul>
         </section>
       )}
+
+      <CyclingOfficialRoutes />
 
       <span id="cycling-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
       <CyclingFooter />

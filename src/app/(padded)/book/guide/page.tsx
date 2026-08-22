@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { guides } from "@/data/guides";
+import GuidePartnerMeta from "@/components/guides/GuidePartnerMeta";
 import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
@@ -32,11 +33,12 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
 }
 
 export default async function GuidesListPage() {
-  const [tNav, tCommon, tBookings, tBookPages] = await Promise.all([
+  const [tNav, tCommon, tBookings, tBookPages, tGuidesDir] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
     getTranslations("bookings"),
     getTranslations("book.pages"),
+    getTranslations("guides.directory"),
   ]);
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -56,6 +58,9 @@ export default async function GuidesListPage() {
         <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
         <p className="text-olive/70 max-w-2xl">
           {tBookPages("guideList.intro")}
+        </p>
+        <p className="text-sm text-olive/60 mt-2 max-w-2xl">
+          {tBookPages("guideList.partnerCount", { count: guides.filter((g) => g.isVerified).length })}
         </p>
         <p className="text-sm text-olive/60 mt-3 max-w-2xl">
           <AppLink href="/guides/directory" className={SECTION.aegeanLink}>
@@ -84,6 +89,10 @@ export default async function GuidesListPage() {
               </div>
               <h2 className={`${TYPE.cardTitle} mb-1`}>{guide.name}</h2>
               <p className="text-sm text-olive/70 mb-2">{guide.region}</p>
+              <GuidePartnerMeta
+                guide={guide}
+                districtLabel={tGuidesDir(`districts.${guide.district}`)}
+              />
               <p className="text-sm text-olive/80 mb-4 flex-1 line-clamp-3">{guide.description}</p>
               {trailNames.length > 0 && (
                 <p className="text-xs text-olive/60 mb-4">

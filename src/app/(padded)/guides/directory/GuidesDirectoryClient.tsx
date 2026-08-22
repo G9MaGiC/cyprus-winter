@@ -1,7 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import AppLink from "@/components/AppLink";
+import { trackProduct } from "@/lib/analytics";
 import {
   commonGuideLanguages,
   filterLicensedGuides,
@@ -10,6 +12,7 @@ import {
   type LicensedGuide,
   TOURIST_GUIDE_DISTRICTS,
 } from "@/lib/guides-directory";
+import { getVerifiedPartnerForLicensedId } from "@/lib/guide-partners";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -23,9 +26,21 @@ export default function GuidesDirectoryClient({
   initialLanguage = null,
 }: Props) {
   const t = useTranslations("guides.directory");
+  const searchParams = useSearchParams();
+  const hasTrackedView = useRef(false);
   const [district, setDistrict] = useState<string | null>(initialDistrict);
   const [language, setLanguage] = useState<string | null>(initialLanguage);
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (hasTrackedView.current) return;
+    hasTrackedView.current = true;
+    trackProduct("guide_directory_view", {
+      source: searchParams.get("from") ?? "direct",
+      district: initialDistrict ?? "all",
+      language: initialLanguage ?? "all",
+    });
+  }, [initialDistrict, initialLanguage, searchParams]);
 
   const filtered = useMemo(
     () => filterLicensedGuides({ district, language, query }),
@@ -144,10 +159,18 @@ function FilterChip({
 function GuideCard({ guide }: { guide: LicensedGuide }) {
   const t = useTranslations("guides.directory");
   const phone = guide.phones[0];
+  const verifiedPartner = getVerifiedPartnerForLicensedId(guide.id);
 
   return (
     <li className={`${CARD.base} ${CARD.content} ${CARD.hover}`}>
-      <p className={`${TYPE.cardTitle} text-charcoal`}>{formatGuideName(guide.name)}</p>
+      <div className="flex flex-wrap items-center gap-2 mb-1">
+        <p className={`${TYPE.cardTitle} text-charcoal`}>{formatGuideName(guide.name)}</p>
+        {verifiedPartner && (
+          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-aegean/15 text-aegean">
+            {t("verifiedPartnerBadge")}
+          </span>
+        )}
+      </div>
       <p className="text-xs text-olive/60 mt-0.5">{t(`districts.${guide.district}`)}</p>
       <p className="text-sm text-olive/80 mt-2 line-clamp-2">
         {guide.languages.map((l) => guideLanguageLabel(l)).join(" · ")}
@@ -162,6 +185,14 @@ function GuideCard({ guide }: { guide: LicensedGuide }) {
           {guide.email}
         </a>
       </div>
+      {verifiedPartner && (
+        <AppLink
+          href={`/book/guide/${verifiedPartner.id}?from=directory`}
+          className={`mt-3 inline-flex ${CTA.secondaryCompact}`}
+        >
+          {t("verifiedPartnerBook")}
+        </AppLink>
+      )}
     </li>
   );
 }

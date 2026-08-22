@@ -24,6 +24,8 @@ export const FUNNEL_ORDER = [
   "plan_view",
   "plan_add",
   "plan_share",
+  "guide_directory_view",
+  "guide_match_click",
   "hub_footer_click",
   "booking_start",
   "booking_complete",
