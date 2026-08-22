@@ -33,6 +33,7 @@
 .DS_Store
 *.pem
 cyprus-winter-clone/
+scripts/trails/vc-trail-index.json
 
 # debug
 npm-debug.log*
