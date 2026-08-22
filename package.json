@@ -39,6 +39,7 @@
     "data:validate": "npx tsx scripts/validate-data.ts",
     "trails:fetch-index": "npx tsx scripts/trails/fetch-vc-trail-index.ts",
     "trails:vc-gap": "npx tsx scripts/trails/vc-trail-gap.ts",
+    "trails:hiking-map-validate": "npx tsx scripts/trails/vc-hiking-map-validate.ts",
     "images:validate": "vitest run src/lib/cyprus-images.test.ts src/lib/winery-image-intake.test.ts",
     "check:conflict-markers": "node scripts/check-conflict-markers.mjs",
     "grant:wireframes": "node scripts/grant/capture-wireframes.mjs",

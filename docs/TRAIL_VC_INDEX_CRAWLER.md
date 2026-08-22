@@ -54,4 +54,5 @@ Pending VC slugs without app trails yet (add to slug map when intake lands):
 
 - `docs/TRAIL_IMAGE_INTAKE.md` (trail-images branch) — hero photo workflow
 - `docs/TRAIL_FORESTRY_INTAKE.md` — Forestry Department PDF gap analysis
-- `/nature` hub crosslink: `src/lib/nature-excursion-types.ts` → `visitCyprusTrails`
+- `docs/TRAIL_HIKING_MAP_VALIDATE.md` — 68 authoritative id validation
+- `/nature` hub crosslink: `src/lib/nature-excursion-types.ts` → `visitCyprusTrails` (nature branch)
