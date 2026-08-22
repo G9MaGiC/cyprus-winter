@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-21 · **Target commit:** `aaf2ef7` (main — winery image audit + plan-share E2E)
+**Last updated:** 2026-08-21 · **Target commit:** `e924c7f` (main — design train complete + image audit)
 
 ---
 
@@ -72,7 +72,7 @@ npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
 |-------|---------------------|
 | Unit tests | 650+ pass |
 | i18n keys | 2102 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `66f6f18` |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `e924c7f` |
 
 ---
 
