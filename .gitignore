@@ -34,6 +34,7 @@
 *.pem
 cyprus-winter-clone/
 scripts/trails/vc-trail-index.json
+scripts/guides/*.pdf
 
 # debug
 npm-debug.log*
