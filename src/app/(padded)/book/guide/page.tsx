@@ -67,6 +67,11 @@ export default async function GuidesListPage() {
             {tBookPages("guideList.browseLicensedDirectory")}
           </AppLink>
         </p>
+        <p className="text-sm text-olive/60 mt-3 max-w-2xl">
+          <AppLink href="/book/winery" className={SECTION.aegeanLink}>
+            {tBookPages("guideList.alsoWineries")}
+          </AppLink>
+        </p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -2,6 +2,7 @@ import "server-only";
 
 import { winterEvents } from "@/data/events";
 import { trails } from "@/data/trails";
+import { getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { getLocalizedName } from "@/lib/localize";
 import { getWeatherPromptKey, getWeatherRowForCurrentMonth } from "@/lib/home-weather-month";
@@ -123,6 +124,8 @@ export async function getHomeThisWeekGridProps(locale?: string): Promise<HomeThi
     trailName,
     trailLabel,
     trailHref: `/trails/${featuredTrailId}`,
+    trailImage: getTrailImage(featuredTrailId),
+    trailImageAlt: t("thisWeekGrid.trailPhotoAlt", { name: trailName }),
     trailStatus: featuredStatus?.status ?? null,
     addToPlanLabel: tCommon("addToPlan"),
     featuredTrailId,

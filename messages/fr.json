@@ -368,7 +368,7 @@
       "arriving": "Vous venez d’arriver ? Commencez ici",
       "explore": "Explorer",
       "planTrip": "Planifiez votre voyage",
-      "askGuide": "Demander à votre guide"
+      "askGuide": "Demander au guide IA"
     },
     "tripModes": {
       "aria": "Choisissez comment vous voyagez",
@@ -393,7 +393,8 @@
       "whatsOn": "À l’affiche",
       "events": "Événements",
       "browseWinterEvents": "Parcourir les événements d’hiver",
-      "eventsTeaser": "Épiphanie, carnaval, marchés — voyez ce qui se passe"
+      "eventsTeaser": "Épiphanie, carnaval, marchés — voyez ce qui se passe",
+      "trailPhotoAlt": "Sentier {name}, Chypre en hiver"
     },
     "editorsPicksKicker": "Sélection",
     "rightNowNearYou": "Autour de vous maintenant",
@@ -412,9 +413,10 @@
         "planTitle": "Plan",
         "planDesc": "Composez une journée selon l’heure, la météo et les lieux qui vous tiennent à cœur.",
         "planCta": "Composer une journée",
-        "bookTitle": "Réserver",
-        "bookDesc": "Réservez une dégustation ou une sortie guidée avant le week-end.",
-        "bookCta": "Réserver des dégustations"
+        "bookTitle": "Réserver des expériences",
+        "bookDesc": "Réservez une dégustation ou une randonnée guidée au Troodos avant le week-end.",
+        "bookCta": "Réserver des dégustations",
+        "bookGuideLink": "Randonnées guidées"
       },
       "browseByCategory": "Parcourir par catégorie",
       "alsoSubtitle": "Vous préférez la culture, la côte, ou les lieux calmes ?",
@@ -470,7 +472,13 @@
     "hero": {
       "imageAlt": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver",
       "familyPicksLink": "Sélection en famille",
-      "templateLink": "Modèle 48 heures"
+      "templateLink": "Modèle 48 heures",
+      "images": {
+        "troodosTrail": "Sentier Artémis, forêt de pins du Troodos, Chypre en hiver",
+        "omodosVillage": "Ruelle d'Omodos, Krasochoria, Chypre en hiver",
+        "winterVineyard": "Vignoble de montagne en lumière d'hiver, Chypre",
+        "kourionCoast": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver"
+      }
     },
     "search": {
       "srHeading": "Rechercher des lieux et des sentiers",
@@ -2826,7 +2834,9 @@
         "footerBrowseTrails": "Tous les sentiers",
         "footerMyBookings": "Mes réservations",
         "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →",
-        "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast"
+        "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast",
+        "alsoWineries": "Vous préférez une dégustation ? Réservez une visite de cave"
+
       },
       "wineryList": {
         "meta": {
@@ -2836,7 +2846,8 @@
         "intro": "Parcourez nos domaines partenaires et demandez une dégustation. Ils confirment par e-mail — en général sous un jour.",
         "ctaAria": "Réserver une dégustation à {name}",
         "footerBrowseWineries": "Tous les domaines",
-        "disclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération."
+        "disclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération.",
+        "alsoGuides": "Randonnée au Troodos ? Réservez un guide agréé"
       },
       "wineryDetail": {
         "metaNotFound": "Introuvable",

@@ -35,10 +35,12 @@ describe("home loaders", () => {
     vi.mocked(getTrailSummary).mockResolvedValue(null);
   });
 
-  it("getHomeHeroCopy uses i18n keys for micro-links", async () => {
+  it("getHomeHeroCopy uses i18n keys for micro-links and hero image", async () => {
     const copy = await getHomeHeroCopy("el");
     expect(copy.familyPicksLabel).toBe("hero.familyPicksLink");
     expect(copy.templateLabel).toBe("hero.templateLink");
+    expect(copy.imageSrc).toMatch(/^\/images\/cyprus\//);
+    expect(copy.imageAlt).toMatch(/^hero\.images\./);
   });
 
   it("getHomeWeatherStripProps returns translated prompt", async () => {
@@ -66,5 +68,6 @@ describe("home loaders", () => {
     const props = await getHomeThisWeekGridProps("en");
     expect(props.trailLabel).toContain("report.options.status.open.label");
     expect(props.trailLabel).toContain("report.options.surface.dry.label");
+    expect(props.trailImage).toMatch(/^\/images\/cyprus\//);
   });
 });

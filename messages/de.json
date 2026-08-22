@@ -368,7 +368,7 @@
       "arriving": "Gerade gelandet? Hier starten",
       "explore": "Entdecken",
       "planTrip": "Reise planen",
-      "askGuide": "Ask AI"
+      "askGuide": "KI-Reiseführer fragen"
     },
     "tripModes": {
       "aria": "Wählen Sie, wie Sie reisen",
@@ -393,7 +393,8 @@
       "whatsOn": "Was los ist",
       "events": "Veranstaltungen",
       "browseWinterEvents": "Winter-Veranstaltungen ansehen",
-      "eventsTeaser": "Epiphanie, Karneval, Märkte — stöbern Sie, was läuft"
+      "eventsTeaser": "Epiphanie, Karneval, Märkte — stöbern Sie, was läuft",
+      "trailPhotoAlt": "{name} Trail, Zypern im Winter"
     },
     "editorsPicks": {
       "title": "Tipps der Redaktion",
@@ -437,9 +438,10 @@
         "planTitle": "Planen",
         "planDesc": "Tag bauen oder Vorlage wählen. Speichert automatisch.",
         "planCta": "Tag planen",
-        "bookTitle": "Buchen",
-        "bookDesc": "Verkostungen reservieren, bevor Wochenenden voll sind.",
-        "bookCta": "Verkostungen buchen"
+        "bookTitle": "Erlebnisse buchen",
+        "bookDesc": "Weinprobe oder geführte Troodos-Wanderung vor dem Wochenende reservieren.",
+        "bookCta": "Verkostungen buchen",
+        "bookGuideLink": "Geführte Wanderungen"
       },
       "browseByCategory": "Nach Kategorie stöbern",
       "alsoSubtitle": "Außerdem: Kultur, Küsten, Klöster",
@@ -495,7 +497,13 @@
     "hero": {
       "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter",
       "familyPicksLink": "Familienfreundliche Tipps",
-      "templateLink": "48-Stunden-Vorlage"
+      "templateLink": "48-Stunden-Vorlage",
+      "images": {
+        "troodosTrail": "Artemis-Wanderweg, Troodos-Kiefernwald, Zypern im Winter",
+        "omodosVillage": "Gasse in Omodos, Krasochoria, Zypern im Winter",
+        "winterVineyard": "Weinberg im Bergwinterlicht, Zypern",
+        "kourionCoast": "Antikes Theater von Kourion, Mittelmeerküste, Zypern im Winter"
+      }
     },
     "search": {
       "srHeading": "Orte und Wanderwege suchen",
@@ -2739,7 +2747,9 @@
         "footerBrowseTrails": "Alle Wanderwege ansehen",
         "footerMyBookings": "Meine Buchungen",
         "browseLicensedDirectory": "Alle lizenzierten Führer (offizielle CTO-Liste) →",
-        "partnerCount": "{count} verifizierte Partner in Troodos, Paphos, Nikosia und an der Ostküste"
+        "partnerCount": "{count} verifizierte Partner in Troodos, Paphos, Nikosia und an der Ostküste",
+        "alsoWineries": "Lieber eine Weinprobe? Weingut besuchen"
+
       },
       "wineryList": {
         "meta": {
@@ -2749,7 +2759,8 @@
         "intro": "Stöbern Sie durch unsere Partnerweingüter und fragen Sie eine Verkostung an. Bestätigung per E‑Mail — meist innerhalb eines Tages.",
         "ctaAria": "Verkostung bei {name} buchen",
         "footerBrowseWineries": "Alle Weingüter ansehen",
-        "disclaimer": "Für Erwachsene im gesetzlichen Trinkalter. Verantwortlich genießen."
+        "disclaimer": "Für Erwachsene im gesetzlichen Trinkalter. Verantwortlich genießen.",
+        "alsoGuides": "Troodos wandern? Lizenzierten Guide buchen"
       },
       "wineryDetail": {
         "metaNotFound": "Nicht gefunden",

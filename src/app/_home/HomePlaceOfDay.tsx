@@ -9,6 +9,7 @@ import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
 import { trails } from "@/data/trails";
+import { useItinerary } from "@/hooks/useItinerary";
 import { useTranslations } from "next-intl";
 
 const PLACE_TYPES = ["attraction", "trail", "winery"] as const;
@@ -85,6 +86,12 @@ function getPlaceOfDayData({ overlays, fallbackTease }: PlaceOfDayI18n) {
 
 export default function HomePlaceOfDay() {
   const t = useTranslations("home.placeOfDay");
+  const { hasContent, hydrated } = useItinerary();
+
+  if (hydrated && hasContent) {
+    return null;
+  }
+
   const place = getPlaceOfDayData({
     overlays: {
       goodDay: t("overlays.goodDay"),

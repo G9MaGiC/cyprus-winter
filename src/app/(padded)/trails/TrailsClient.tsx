@@ -100,7 +100,7 @@ export default function TrailsClient({
           })}
           backHref="/"
           backLabel={tNav("home")}
-          backgroundImage="/images/cyprus/cyprus-trail-troodos.jpg"
+          backgroundImage="/images/cyprus/trails/trail-artemis.jpg"
           backgroundImageAlt={tTrailsPage("hero.imageAlt")}
           breadcrumbItems={[
             { label: tNav("home"), href: "/" },

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
@@ -12,6 +13,8 @@ export type HomeThisWeekGridViewProps = {
   trailName: string;
   trailLabel: string;
   trailHref: string;
+  trailImage: string;
+  trailImageAlt: string;
   trailStatus: "open" | "caution" | "closed" | null;
   addToPlanLabel: string;
   featuredTrailId: string;
@@ -37,6 +40,8 @@ export default function HomeThisWeekGridView({
   trailName,
   trailLabel,
   trailHref,
+  trailImage,
+  trailImageAlt,
   trailStatus,
   addToPlanLabel,
   featuredTrailId,
@@ -65,8 +70,22 @@ export default function HomeThisWeekGridView({
       </AppLink>
 
       <div
-        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group overflow-hidden`}
       >
+        <AppLink
+          href={trailHref}
+          className={`block relative h-28 sm:h-32 ${CARD.link} shrink-0`}
+          aria-label={trailImageAlt}
+        >
+          <Image
+            src={trailImage}
+            alt={trailImageAlt}
+            fill
+            className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, 33vw"
+          />
+          <div className={CARD.mediaOverlay} aria-hidden />
+        </AppLink>
         <AppLink href={trailHref} className={`flex-1 ${CARD.link} ${CARD.content}`}>
           <p className={`${TYPE.kicker} text-sage`}>{trailsKicker}</p>
           <p className={`${TYPE.cardTitleCompact} mt-0.5 truncate`} title={trailName}>
