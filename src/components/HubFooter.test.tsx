@@ -44,11 +44,18 @@ vi.mock("@/lib/analytics", () => ({
   trackProduct: vi.fn(),
 }));
 
+vi.mock("@/hooks/useBlockingOverlaysActive", () => ({
+  useBlockingOverlaysActive: () => false,
+}));
+
 const messages = {
   common: {
     planYourTrip: "Plan your trip",
     askAI: "Ask AI",
     askAITrailsAria: "Ask AI for trail suggestions",
+  },
+  nav: {
+    askAIBlockedAria: "Ask AI unavailable while a dialog is open",
   },
 };
 

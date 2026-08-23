@@ -8,7 +8,8 @@ After your main text response, if you have specific places, trails, or events to
     {"type": "place", "id": "place_id", "title": "Place Name", "reason": "Why it fits"}
   ],
   "actions": [
-    {"type": "open_place", "label": "See Place Name", "payload": {"path": "/discover/place_id"}}
+    {"type": "open_place", "label": "See Place Name", "payload": {"path": "/discover/place_id"}},
+    {"type": "save_to_plan", "label": "Add to plan", "payload": {"placeId": "place_id"}}
   ],
   "followUps": [
     "Make this a half-day route",

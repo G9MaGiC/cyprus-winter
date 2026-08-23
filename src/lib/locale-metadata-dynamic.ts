@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getDiscoverPlaceById } from "@/data";
-import { trails } from "@/data/trails";
 import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
 import { REGION_CONFIGS } from "@/data/regions";
@@ -11,6 +10,7 @@ import { weatherByMonth } from "@/data/weather";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 
 const MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
@@ -34,11 +34,22 @@ function discoverTypeLabel(
   return type.charAt(0).toUpperCase() + type.slice(1);
 }
 
+function trailDifficultyLabel(
+  difficulty: string,
+  tFilters: Awaited<ReturnType<typeof getTranslations>>
+): string {
+  const key = difficulty.toLowerCase();
+  if (key === "easy" || key === "moderate" || key === "hard" || key === "expert") {
+    return tFilters(`difficulty.${key}.label`);
+  }
+  return difficulty;
+}
+
 export async function discoverDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
-  const tDetail = await getTranslations({ locale, namespace: "discover.detail" });
-  const typeLabel = discoverTypeLabel(a.type, tDetail);
+  const tDiscoverDetail = await getTranslations({ locale, namespace: "discover.detail" });
+  const typeLabel = discoverTypeLabel(a.type, tDiscoverDetail);
   const prefix = `${a.region}. ${typeLabel}. `;
   const maxDesc = 154 - prefix.length;
   const desc = a.description.slice(0, maxDesc).trim();
@@ -53,7 +64,7 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
         url: imageUrl,
         width: 1200,
         height: 630,
-        alt: tDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel }),
+        alt: tDiscoverDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel }),
       }],
     },
   };
@@ -61,17 +72,26 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
 }
 
 export async function trailDetailMetadata(id: string, locale: string): Promise<Metadata> {
-  const trail = trails.find((t) => t.id === id || t.slug === id);
+  const trail = findTrailByIdOrSlug(id);
   if (!trail) notFound();
-  const tTrails = await getTranslations({ locale, namespace: "trails" });
+  const [tTrailDetail, tFilters, tTrails] = await Promise.all([
+    getTranslations({ locale, namespace: "trails.detail" }),
+    getTranslations({ locale, namespace: "trails.filters" }),
+    getTranslations({ locale, namespace: "trails" }),
+  ]);
   const loc = trail.locationText ?? trail.region;
-  const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
+  const difficultyLabel = trailDifficultyLabel(trail.difficulty, tFilters);
+  const prefix = tTrailDetail("meta.descriptionPrefix", {
+    location: loc,
+    lengthKm: trail.lengthKm,
+    difficulty: difficultyLabel,
+  });
   const maxDesc = 154 - prefix.length;
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
-  const path = `/trails/${id}`;
+  const path = `/trails/${trail.id}`;
   const base: Metadata = {
-    title: `${trail.name} | Cyprus Winter Trails`,
+    title: tTrailDetail("meta.title", { name: trail.name }),
     description: prefix + desc,
     openGraph: {
       images: [{
@@ -93,10 +113,11 @@ export async function trailDetailMetadata(id: string, locale: string): Promise<M
 export async function bookWineryMetadata(id: string, locale: string): Promise<Metadata> {
   const winery = wineries.find((w) => w.id === id);
   if (!winery) notFound();
+  const t = await getTranslations({ locale, namespace: "book.pages.wineryDetail" });
   const path = `/book/winery/${id}`;
   const base: Metadata = {
-    title: `Book a tasting | ${winery.name} | Cyprus Winter`,
-    description: `Book a winter tasting at ${winery.name} in ${winery.region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter.`,
+    title: t("meta.title", { wineryName: winery.name }),
+    description: t("meta.description", { wineryName: winery.name, region: winery.region }),
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -104,10 +125,11 @@ export async function bookWineryMetadata(id: string, locale: string): Promise<Me
 export async function bookGuideMetadata(id: string, locale: string): Promise<Metadata> {
   const guide = guides.find((g) => g.id === id);
   if (!guide) notFound();
+  const t = await getTranslations({ locale, namespace: "book.pages.guideDetail" });
   const path = `/book/guide/${id}`;
   const base: Metadata = {
-    title: `Book a guided hike | ${guide.name} | Cyprus Winter`,
-    description: `Request a guided winter hike with ${guide.name} in ${guide.region}. Small groups, local expertise. They'll confirm by email.`,
+    title: t("meta.title", { guideName: guide.name }),
+    description: t("meta.description", { guideName: guide.name, region: guide.region }),
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -150,8 +172,13 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
 
   const path = `/weather/${slug}`;
   const base: Metadata = {
-    title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
-    description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
+    title: tWeatherMonth("meta.title", { month: monthName }),
+    description: tWeatherMonth("meta.description", {
+      month: monthName,
+      coastRange,
+      troodosRange,
+      coastDesc: row.coastDesc,
+    }),
     openGraph: {
       images: [{
         url: ogImage,

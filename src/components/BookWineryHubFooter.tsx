@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import HubFooter from "@/components/HubFooter";
+import HubFooterSecondaryLinks from "@/components/HubFooterSecondaryLinks";
 import { SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -17,19 +18,17 @@ export default function BookWineryHubFooter() {
       askAiLabel={tDiscover("footer.askAi")}
       askAiAriaLabel={tDiscover("aria.askAi")}
       secondary={
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
+        <HubFooterSecondaryLinks>
           <AppLink href="/wineries" className={SECTION.aegeanLink}>
             {tBook("footerBrowseWineries")}
           </AppLink>
-          {" · "}
           <AppLink href="/book/guide" className={SECTION.aegeanLink}>
             {tBook("alsoGuides")}
           </AppLink>
-          {" · "}
           <AppLink href="/bookings" className={SECTION.aegeanLink}>
             {tBookings("title")}
           </AppLink>
-        </p>
+        </HubFooterSecondaryLinks>
       }
     />
   );

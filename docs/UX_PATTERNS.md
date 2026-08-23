@@ -8,13 +8,15 @@ Use on list/hub pages:
 
 - Discover index (`DiscoverFooter`)
 - Trails index (`TrailsFooter`)
-- Beaches, Villages, Wineries (`WineriesHubFooter`), Secrets
-- Events, Search
-- Regions (`/regions/[slug]`), Wine routes (`/wine-routes/[slug]`)
+- Beaches, Villages, Wineries (`WineriesHubFooter`), Secrets, Nature, Cycling
+- Events, Search, Airport, Weather (`WeatherHubFooter`), Weather month (`WeatherMonthFooter`)
+- Book guide (`BookGuideHubFooter`), Book winery (`BookWineryHubFooter`)
+- Guides directory (`GuidesDirectoryFooter`), Troodos December (`TroodosDecemberFooter`)
+- Regions (`/regions/[slug]`), Wine routes hub + slug (`/wine-routes`, `/wine-routes/[slug]`)
 
 - **Primary:** Plan (`/plan`) — `CTA.primaryCompact`
-- **Secondary:** Ask AI — dispatches `open-ai-assistant`; `CTA.secondaryCompact`
-- **Optional:** `onScrollToMap`, `secondary` slot (e.g. wineries wine routes, events weather link)
+- **Secondary:** Ask AI — `triggerAIAssistant()`; disabled when blocking overlays active; `CTA.secondaryCompact`
+- **Optional:** `onScrollToMap`, `secondary` slot via `HubFooterSecondaryLinks` (flex-wrap links, not inline `·` separators)
 - **Body:** page-specific copy (i18n)
 - **Sticky:** `StickyPlanBarBlock` with a page-specific sentinel id (trip-level, not per-card)
 - **Analytics:** `hub_footer_click` with `action` (`plan` | `ask_ai`) and `page` (pathname or `analyticsPage` prop). First-party via `trackProduct` (no marketing-cookie consent).

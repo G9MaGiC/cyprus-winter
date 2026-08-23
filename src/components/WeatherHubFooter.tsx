@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import HubFooter from "@/components/HubFooter";
+import HubFooterSecondaryLinks from "@/components/HubFooterSecondaryLinks";
 import { SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -16,15 +17,14 @@ export default function WeatherHubFooter() {
       askAiLabel={tDiscover("footer.askAi")}
       askAiAriaLabel={tDiscover("aria.askAi")}
       secondary={
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
+        <HubFooterSecondaryLinks>
           <AppLink href="/trails" className={SECTION.aegeanLink}>
             {tWeather("footer.trails")}
           </AppLink>
-          {" · "}
           <AppLink href="/events" className={SECTION.aegeanLink}>
             {tWeather("footer.events")}
           </AppLink>
-        </p>
+        </HubFooterSecondaryLinks>
       }
     />
   );

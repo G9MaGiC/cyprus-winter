@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import HubFooter from "@/components/HubFooter";
+import HubFooterSecondaryLinks from "@/components/HubFooterSecondaryLinks";
 import { SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -16,15 +17,14 @@ export default function WeatherMonthFooter() {
       askAiLabel={tDiscover("footer.askAi")}
       askAiAriaLabel={tDiscover("aria.askAi")}
       secondary={
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
+        <HubFooterSecondaryLinks>
           <AppLink href="/weather" className={SECTION.aegeanLink}>
             {tWeatherMonth("footer.allMonths")}
           </AppLink>
-          {" · "}
           <AppLink href="/regions/troodos" className={SECTION.aegeanLink}>
             {tWeatherMonth("footer.troodosWinter")}
           </AppLink>
-        </p>
+        </HubFooterSecondaryLinks>
       }
     />
   );

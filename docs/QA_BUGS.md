@@ -1530,4 +1530,35 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-263 | Data | PDF-only Paphos trails missing; horteri/chorteri conflated | Added `chorteri`, `argakas-dam`, `symvoulas`, `venetian-bridges`; `extract-forestry-heroes.ts`; 5 Forestry PDF heroes; app total 104 |
 | BUG-264 | Data | State-forest gap analysis; Troodos Visitor Centre PDF | `state-forest-gap-analysis.ts`, `troodos-visitor-centre` trail + hero; PDF map fixes (kyparissia, loumata); app total 105, 68 authoritative |
 
+### Fixed — QA sweep (Aug 23, 2026, main @ 0bef999)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-265 | UX | Weather hub footer not terminal — disclaimer/links rendered after `WeatherHubFooter`; missing sticky plan bar | Moved body copy above footer; added `weather-plan-sentinel` + `StickyPlanBarBlock` |
+| BUG-266 | UX | Weather month page duplicate Plan CTA (inline chip + HubFooter); missing sticky sentinel | Removed inline Plan chip; added `weather-month-plan-sentinel` + `StickyPlanBarBlock` |
+| BUG-267 | A11y | `HubFooter` Ask AI ignored blocking overlays (unlike `AIAssistantTrigger`) | `useBlockingOverlaysActive` + `triggerAIAssistant()` + disabled state + `nav.askAIBlockedAria` |
+| BUG-268 | SEO | Trail report metadata returned 200 title for invalid trail id | `notFound()` in padded + locale `generateMetadata` when trail missing |
+
+### Open — QA sweep (Aug 23, 2026, main @ 0bef999)
+
+| ID | Severity | Area | Issue | Fix status |
+|----|----------|------|-------|------------|
+| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env |
+| BUG-270 | P1 | SEO | Trail slug alias URLs (`/trails/artemis-trail`) 200 with canonical on slug vs JSON-LD `@id` on `trail.id` | Open — 301 slug→id or unify canonical |
+| BUG-271 | P1 | i18n | `locale-metadata-dynamic.ts`: book detail, trail title/description, weather month title/description still English on `[locale]` routes | Open |
+| BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Open |
+| BUG-273 | P2 | E2E | 5 flaky locale discover filter chip tests at 390px (`locale-prefixed-route.spec.ts`) | Fixed — `toPass` retry + expand filters before assert |
+| BUG-274 | P2 | E2E | `hub-footer.spec.ts` does not cover new hub routes (`/book/guide`, `/weather`, etc.) | Fixed — added book/guide, weather, guides/directory |
+| BUG-275 | P2 | UX | HubFooter secondary links use inline `·` — cramped on narrow mobile | Fixed — `HubFooterSecondaryLinks` flex-wrap component |
+| BUG-276 | P2 | UX | Guides directory empty filter state weak | Fixed — card empty state + clear filters button |
+| BUG-277 | P2 | Docs | `docs/UX_PATTERNS.md` hub inventory stale vs PR #147 footers | Fixed — updated hub inventory + secondary link pattern |
+| BUG-278 | P2 | Functional | AI `save_to_plan` may not pass `?add=` to `/plan` | Fixed — `placeId`/`id`/`path` payload in `ActionButtons` |
+
+### Fixed — P1 QA backlog (Aug 23, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-270 | SEO | Trail slug alias URLs 200 with canonical/JSON-LD mismatch | 308 redirect slug→id via `permanentRedirect`; metadata alternates use canonical id |
+| BUG-271 | i18n | Locale dynamic metadata English for book/trail/weather month | `locale-metadata-dynamic.ts` uses `book.pages.*`, `trails.detail.meta`, `weather.month.meta`; padded weather month metadata i18n |
+
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.

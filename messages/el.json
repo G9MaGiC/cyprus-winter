@@ -1592,6 +1592,10 @@
       }
     },
     "detail": {
+      "meta": {
+        "title": "{name} | Cyprus Winter Trails",
+        "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
+      },
       "aria": {
         "jumpToSection": "Μετάβαση σε ενότητα",
         "trailActions": "Ενέργειες μονοπατιού",
@@ -2310,6 +2314,8 @@
       "pageHeaderTitle": "Χειμερινός καιρός στην Κύπρο: {month}",
       "pageHeaderDescription": "Ακτή {coastMin}–{coastMax}°C, Τρόοδος {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
+        "title": "Χειμερινός καιρός στην Κύπρο {month} | Ακτή & Τρόοδος",
+        "description": "Χειμερινός καιρός στην Κύπρο {month}: ακτή {coastRange}, Τρόοδος {troodosRange}. {coastDesc} Σχεδιάστε μονοπάτια, οινοποιεία και χειμερινές εκδηλώσεις.",
         "notFoundTitle": "Δεν βρέθηκε ο καιρός | Cyprus Winter",
         "notFoundDescription": "Χειμερινός καιρός στην Κύπρο ανά μήνα: Δεκέμβριος, Ιανουάριος, Φεβρουάριος, Μάρτιος. Θερμοκρασίες σε ακτή και Τρόοδο.",
         "ogImageAlt": "Ακτή Κύπρου τον χειμώνα — καιρός {month}"

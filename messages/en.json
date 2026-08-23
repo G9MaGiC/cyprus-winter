@@ -1592,6 +1592,10 @@
       }
     },
     "detail": {
+      "meta": {
+        "title": "{name} | Cyprus Winter Trails",
+        "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
+      },
       "aria": {
         "jumpToSection": "Jump to section",
         "trailActions": "Trail actions",
@@ -2470,6 +2474,8 @@
       "pageHeaderTitle": "Cyprus Winter Weather: {month}",
       "pageHeaderDescription": "Coast {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
+        "title": "Cyprus Winter Weather {month} | Coast & Troodos",
+        "description": "Cyprus winter weather {month}: coast {coastRange}, Troodos {troodosRange}. {coastDesc} Plan trails, wineries, and winter events.",
         "notFoundTitle": "Weather not found | Cyprus Winter",
         "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
         "ogImageAlt": "Cyprus winter coast—{month} weather"

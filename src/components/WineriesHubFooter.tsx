@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import HubFooter from "@/components/HubFooter";
+import HubFooterSecondaryLinks from "@/components/HubFooterSecondaryLinks";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
@@ -18,20 +19,17 @@ export default function WineriesHubFooter() {
       askAiLabel={tDiscover("footer.askAi")}
       askAiAriaLabel={tDiscover("aria.askAi")}
       secondary={
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
-          {tWineries("footer.routesPrefix")}{" "}
+        <HubFooterSecondaryLinks>
+          <span>{tWineries("footer.routesPrefix")}</span>
           <AppLink href="/wine-routes" className={SECTION.aegeanLink}>
             {tWineries("footer.allRoutes")}
           </AppLink>
           {WINE_ROUTES.map((route) => (
-            <span key={route.slug}>
-              {" · "}
-              <AppLink href={`/wine-routes/${route.slug}`} className={SECTION.aegeanLink}>
-                {tRoutes(route.slug)}
-              </AppLink>
-            </span>
+            <AppLink key={route.slug} href={`/wine-routes/${route.slug}`} className={SECTION.aegeanLink}>
+              {tRoutes(route.slug)}
+            </AppLink>
           ))}
-        </p>
+        </HubFooterSecondaryLinks>
       }
     />
   );

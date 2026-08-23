@@ -8,6 +8,7 @@ import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
 import WeatherMonthFooter from "@/components/WeatherMonthFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
@@ -59,11 +60,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
   const alternates = buildStrategyAAlternates(`/weather/${slug}`);
 
+  const title = tWeatherMonth("meta.title", { month: monthName });
+  const description = tWeatherMonth("meta.description", {
+    month: monthName,
+    coastRange,
+    troodosRange,
+    coastDesc: row.coastDesc,
+  });
+
   return {
-    title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
-    description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
+    title,
+    description,
     alternates,
     openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
       images: [{ url: ogImage, width: 1200, height: 630, alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }) }],
     },
   };
@@ -263,13 +275,12 @@ export default async function WeatherMonthPage({ params }: Props) {
           <AppLink href="/discover?filter=winery" className={`px-5 py-2.5 rounded-lg ${CTA.secondaryCompact}`}>
             {tWeatherMonth("cta.winterWineries")}
           </AppLink>
-          <AppLink href="/plan" className={`px-5 py-2.5 rounded-lg ${CTA.chipTertiary}`}>
-            {tCommon("planYourTrip")}
-          </AppLink>
         </div>
       </div>
 
+      <span id="weather-month-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
       <WeatherMonthFooter />
+      <StickyPlanBarBlock sentinelId="weather-month-plan-sentinel" />
     </div>
   );
 }

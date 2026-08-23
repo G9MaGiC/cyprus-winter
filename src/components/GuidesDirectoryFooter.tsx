@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import HubFooter from "@/components/HubFooter";
+import HubFooterSecondaryLinks from "@/components/HubFooterSecondaryLinks";
 import { SECTION } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -16,15 +17,14 @@ export default function GuidesDirectoryFooter() {
       askAiLabel={tDiscover("footer.askAi")}
       askAiAriaLabel={tDiscover("aria.askAi")}
       secondary={
-        <p className="text-center text-olive/70 text-sm max-w-md mx-auto">
+        <HubFooterSecondaryLinks>
           <AppLink href="/book/guide" className={SECTION.aegeanLink}>
             {tGuides("verifiedPartnersLink")}
           </AppLink>
-          {" · "}
           <AppLink href="/trails" className={SECTION.aegeanLink}>
             {tGuides("footer.trails")}
           </AppLink>
-        </p>
+        </HubFooterSecondaryLinks>
       }
     />
   );

@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { getPlaceById } from "@/data";
-import { trails, trailConditions } from "@/data/trails";
+import { trailConditions } from "@/data/trails";
 import DetailActionFooter from "@/components/DetailActionFooter";
 import { LAYOUT, CTA, SECTION, TYPE, LAYER } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
-import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { buildStrategyAAlternates, localizedPathname } from "@/lib/seo-locale-urls";
 import TrailDetailBackLink from "@/app/(padded)/trails/TrailDetailBackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AppLink from "@/components/AppLink";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import TrailMapClient from "@/components/TrailMapClient";
 import TrailDetailStickyActions from "@/components/TrailDetailStickyActions";
@@ -23,8 +23,9 @@ import TrailBookGuideLink from "@/components/trails/TrailBookGuideLink";
 import SectionCard from "@/components/SectionCard";
 import TrailWeatherBadge from "@/components/TrailWeatherBadge";
 import { getLocalizedName } from "@/lib/localize";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
+import { findTrailByIdOrSlug, isTrailSlugAlias } from "@/lib/trail-resolve";
 
 export async function generateMetadata({
   params,
@@ -33,14 +34,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const tTrails = await getTranslations("trails");
-  const trail = trails.find((t) => t.id === id || t.slug === id);
+  const trail = findTrailByIdOrSlug(id);
   if (!trail) notFound();
   const loc = trail.locationText ?? trail.region;
   const prefix = `${loc}. ${trail.lengthKm} km, ${trail.difficulty}. `;
   const maxDesc = 154 - prefix.length; // leave room for ellipsis
   const desc = trail.description.slice(0, maxDesc).trim() + (trail.description.length > maxDesc ? "…" : "");
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
-  const alternates = buildStrategyAAlternates(`/trails/${id}`);
+  const alternates = buildStrategyAAlternates(`/trails/${trail.id}`);
   const imageAlt = tTrails("card.imageAlt", {
     name: trail.name,
     region: trail.region,
@@ -63,6 +64,13 @@ export default async function TrailPage({
   params: Promise<{ id: string; locale?: string }>;
 }) {
   const { id, locale = "en" } = await params;
+  const trail = findTrailByIdOrSlug(id);
+  if (!trail) notFound();
+  if (isTrailSlugAlias(id, trail)) {
+    const activeLocale = await getLocale();
+    permanentRedirect(localizedPathname(`/trails/${trail.id}`, activeLocale));
+  }
+
   const [tNav, tTrailsDetail, tCommon, tTrails, tDiscoverDetail] = await Promise.all([
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "trails.detail" }),
@@ -70,9 +78,6 @@ export default async function TrailPage({
     getTranslations({ locale, namespace: "trails" }),
     getTranslations({ locale, namespace: "discover.detail" }),
   ]);
-  const trail = trails.find((t) => t.id === id || t.slug === id);
-  if (!trail) notFound();
-
   const conditions = trailConditions[trail.id];
   const reports = await getLatestReportsByTrail(trail.id, 3);
   const latestReport = reports[0];

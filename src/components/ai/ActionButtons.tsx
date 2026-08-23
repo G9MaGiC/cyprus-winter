@@ -24,7 +24,15 @@ export function ActionButtons({ actions }: { actions: Action[] }) {
         break;
       }
       case "save_to_plan": {
-        router.push("/plan");
+        const rawPath = action.payload?.path;
+        const placeId = action.payload?.placeId ?? action.payload?.id;
+        const path =
+          typeof rawPath === "string" && rawPath.trim()
+            ? rawPath
+            : typeof placeId === "string" && placeId.trim()
+              ? `/plan?add=${encodeURIComponent(placeId.trim())}`
+              : "/plan";
+        router.push(resolveInternalPath(path));
         break;
       }
     }

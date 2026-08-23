@@ -1592,6 +1592,10 @@
       }
     },
     "detail": {
+      "meta": {
+        "title": "{name} | Cyprus Winter Trails",
+        "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
+      },
       "aria": {
         "jumpToSection": "Zu Abschnitt springen",
         "trailActions": "Trail-Aktionen",
@@ -2400,6 +2404,8 @@
       "pageHeaderTitle": "Zypern-Winterwetter: {month}",
       "pageHeaderDescription": "Küste {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
+        "title": "Zypern Winterwetter {month} | Küste & Troodos",
+        "description": "Zypern Winterwetter {month}: Küste {coastRange}, Troodos {troodosRange}. {coastDesc} Planen Sie Trails, Weingüter und Winterevents.",
         "notFoundTitle": "Wetter nicht gefunden | Cyprus Winter",
         "notFoundDescription": "Zypern-Winterwetter nach Monaten: Dezember, Januar, Februar, März. Temperaturen an Küste und im Troodos.",
         "ogImageAlt": "Zypern Winterküste — Wetter {month}"

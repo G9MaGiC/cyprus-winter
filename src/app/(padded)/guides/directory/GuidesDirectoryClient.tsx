@@ -26,6 +26,7 @@ export default function GuidesDirectoryClient({
   initialLanguage = null,
 }: Props) {
   const t = useTranslations("guides.directory");
+  const tCommon = useTranslations("common");
   const searchParams = useSearchParams();
   const hasTrackedView = useRef(false);
   const [district, setDistrict] = useState<string | null>(initialDistrict);
@@ -117,7 +118,20 @@ export default function GuidesDirectoryClient({
       </ul>
 
       {filtered.length === 0 && (
-        <p className="text-olive/70 text-sm">{t("empty")}</p>
+        <div className={`${CARD.base} ${CARD.content} text-center space-y-3`}>
+          <p className="text-olive/80 text-sm">{t("empty")}</p>
+          <button
+            type="button"
+            onClick={() => {
+              setDistrict(null);
+              setLanguage(null);
+              setQuery("");
+            }}
+            className={CTA.chipTertiary}
+          >
+            {tCommon("clearFilters")}
+          </button>
+        </div>
       )}
 
       <div className={`${CARD.base} ${CARD.content} border-l-4 border-l-aegean`}>

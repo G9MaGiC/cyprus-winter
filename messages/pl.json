@@ -1592,6 +1592,10 @@
       }
     },
     "detail": {
+      "meta": {
+        "title": "{name} | Cyprus Winter Trails",
+        "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
+      },
       "aria": {
         "jumpToSection": "Przejdź do sekcji",
         "trailActions": "Akcje szlaku",
@@ -2310,6 +2314,8 @@
       "pageHeaderTitle": "Zimowa pogoda na Cyprze: {month}",
       "pageHeaderDescription": "Wybrzeże {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
+        "title": "Pogoda zimowa na Cyprze {month} | Wybrzeże i Troodos",
+        "description": "Pogoda zimowa na Cyprze {month}: wybrzeże {coastRange}, Troodos {troodosRange}. {coastDesc} Planuj szlaki, winnice i zimowe wydarzenia.",
         "notFoundTitle": "Nie znaleziono pogody | Cyprus Winter",
         "notFoundDescription": "Zimowa pogoda na Cyprze według miesięcy: grudzień, styczeń, luty, marzec. Temperatury na wybrzeżu i w Troodos.",
         "ogImageAlt": "Wybrzeże Cypru zimą — pogoda {month}"
