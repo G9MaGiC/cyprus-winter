@@ -19,7 +19,7 @@
 | Golden | Accent on dark (hero, nav) |
 | Sage | Trails, tips, meta |
 
-Source: [`src/lib/design-tokens.ts`](../src/lib/design-tokens.ts), [`src/app/globals.css`](../src/app/globals.css).
+Source: [`src/lib/brand-colors.ts`](../src/lib/brand-colors.ts) (canonical hex), [`src/lib/design-tokens.ts`](../src/lib/design-tokens.ts), [`src/app/globals.css`](../src/app/globals.css) (CSS vars — guarded by `brand-colors.test.ts`).
 
 ### Typography
 

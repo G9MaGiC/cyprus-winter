@@ -4,27 +4,31 @@
  *
  * Brand checklist (new components): terracotta = primary CTA; aegean = secondary/contextual;
  * golden = accent on dark surfaces (nav, hero); imagery = Cyprus-specific, winter-appropriate.
+ *
+ * Color hex values: `src/lib/brand-colors.ts` (synced with globals.css via brand-colors.test.ts).
  */
+import { BRAND_COLORS } from "@/lib/brand-colors";
+
 export const TOKENS = {
   /** Base neutrals — warm sand/cream */
-  cloud: "#faf8f5",
-  sand: "#faf8f5",
-  sandMid: "#f5f2ed",
-  sandDark: "#eae6df",
+  cloud: BRAND_COLORS.cloud,
+  sand: BRAND_COLORS.sand,
+  sandMid: BRAND_COLORS.sandMid,
+  sandDark: BRAND_COLORS.sandDark,
   /** Text — earthy slate */
-  charcoal: "#252730",
-  olive: "#4a5162",
-  oliveMuted: "#6b7280",
+  charcoal: BRAND_COLORS.charcoal,
+  olive: BRAND_COLORS.olive,
+  oliveMuted: BRAND_COLORS.oliveMuted,
   /** Primary CTAs — terracotta clay */
-  terracotta: "#c96f52",
-  terracottaMuted: "#b85d42",
+  terracotta: BRAND_COLORS.terracotta,
+  terracottaMuted: BRAND_COLORS.terracottaMuted,
   /** Accents — golden hour */
-  golden: "#d4a853",
+  golden: BRAND_COLORS.golden,
   /** Secondary brand — Aegean sea */
-  aegean: "#1a6b7c",
+  aegean: BRAND_COLORS.aegean,
   /** Earth accent — trails, sustainable */
-  sage: "#6b8f7a",
-  sageMuted: "#8fa99a",
+  sage: BRAND_COLORS.sage,
+  sageMuted: BRAND_COLORS.sageMuted,
 } as const;
 
 /** Mobile-first: 44px touch target (Apple HIG, WCAG). Use min-h-[44px], min-w-[44px]. */

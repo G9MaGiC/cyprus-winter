@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Cyprus Winter — Mediterranean warmth: terracotta, aegean, golden, sand */
+  /* Cyprus Winter — Mediterranean warmth. Canonical hex: src/lib/brand-colors.ts */
   --background: #faf8f5;
   --foreground: #252730;
-  --terracotta: #b45b42;
-  --terracotta-muted: #9f4d37;
+  --terracotta: #c96f52;
+  --terracotta-muted: #b85d42;
   --olive: #4a5162;
   --olive-muted: #6b7280;
   --golden: #d4a853;
   --charcoal: #252730;
   --aegean: #1a6b7c;
-  --sage: #527561;
+  --sage: #6b8f7a;
+  --sage-muted: #8fa99a;
   /* cloud and sand share same hex — use sand for surfaces, cloud for body/background */
   --cloud: #faf8f5;
   --sand: #faf8f5;
   --sand-mid: #f5f2ed;
   --sand-dark: #eae6df;
+  --sand-300: #d4cfc5;
   /* Mobile-first: 44px touch target, thumb zone */
   --touch-target: 44px;
   --transition-smooth: 0.2s ease;
@@ -28,18 +30,18 @@
   --color-foreground: var(--charcoal);
   --color-terracotta: var(--terracotta);
   --color-terracotta-muted: var(--terracotta-muted);
-  --color-olive: #4a5162;
-  --color-olive-muted: #6b7280;
-  --color-golden: #d4a853;
-  --color-charcoal: #252730;
-  --color-aegean: #1a6b7c;
+  --color-olive: var(--olive);
+  --color-olive-muted: var(--olive-muted);
+  --color-golden: var(--golden);
+  --color-charcoal: var(--charcoal);
+  --color-aegean: var(--aegean);
   --color-sage: var(--sage);
-  --color-sage-muted: #8fa99a;
-  --color-cloud: #faf8f5;
-  --color-sand: #faf8f5;
-  --color-sand-100: #f5f2ed;
-  --color-sand-200: #eae6df;
-  --color-sand-300: #d4cfc5;
+  --color-sage-muted: var(--sage-muted);
+  --color-cloud: var(--cloud);
+  --color-sand: var(--sand);
+  --color-sand-100: var(--sand-mid);
+  --color-sand-200: var(--sand-dark);
+  --color-sand-300: var(--sand-300);
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), ui-serif, Georgia, serif;
 }
@@ -49,7 +51,7 @@ html {
   /* 16px base prevents iOS zoom on input focus */
   font-size: 16px;
   /* Subtle tap highlight for touch — terracotta tint */
-  -webkit-tap-highlight-color: rgba(180, 91, 66, 0.12);
+  -webkit-tap-highlight-color: rgba(201, 111, 82, 0.12);
 }
 
 body {
@@ -111,7 +113,7 @@ a:focus-visible {
 }
 
 ::selection {
-  background: rgba(180, 91, 66, 0.18);
+  background: rgba(201, 111, 82, 0.18);
   color: var(--charcoal);
 }
 
@@ -181,8 +183,8 @@ details summary::marker {
   }
 }
 @keyframes ai-chat-trigger-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(180, 91, 66, 0.2); }
-  50% { box-shadow: 0 0 0 8px rgba(180, 91, 66, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 111, 82, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 111, 82, 0); }
 }
 
 /* Section reveal — subtle fade-in for premium feel */
