@@ -252,6 +252,14 @@ export const CARD = {
   media: "aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0",
   /** Card image gradient — warm Mediterranean feel */
   mediaOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
+  /** Lighter overlay for editorial/home cards (Editors Picks, Book Tastings, Right Now). */
+  mediaOverlayLight:
+    "absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent pointer-events-none",
+  /** Compact Right Now thumbnail — lighter on narrow mobile strip. */
+  mediaOverlayCompact:
+    "absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent pointer-events-none sm:from-charcoal/60 sm:via-transparent",
+  /** Detail page hero — charcoal (not pure black) for brand consistency. */
+  heroOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
   /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
   info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
   /** Action cards (Plan, Events, StartHereWithExplore primary): larger padding, strong CTA */
@@ -346,4 +354,18 @@ export const PILL = {
   subtle:
     "bg-sand-100 text-sage hover:bg-terracotta/10 hover:text-terracotta text-sm active:scale-[0.98] motion-reduce:active:scale-100 border border-sand-200/70 hover:border-terracotta/30",
   active: "bg-terracotta text-white border border-terracotta/30 shadow-sm",
+} as const;
+
+/** Shared media interaction — one hover scale across card families. */
+export const MEDIA = {
+  hoverImage:
+    "object-cover group-hover:scale-[1.02] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out",
+} as const;
+
+/** Badge shapes — pill for type/category; chip for status on image overlays. */
+export const BADGE = {
+  base: "inline-flex items-center px-2.5 py-1 text-xs font-medium",
+  pill: "rounded-full",
+  chip: "rounded-md backdrop-blur-sm bg-white/85",
+  chipPlain: "rounded-md",
 } as const;

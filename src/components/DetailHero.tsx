@@ -38,10 +38,7 @@ export default function DetailHero({
           priority
           fetchPriority="high"
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
-          aria-hidden
-        />
+        <div className={CARD.heroOverlay} aria-hidden />
         <div className={`absolute bottom-0 left-0 right-0 ${CARD.contentLg} text-white`}>
           {badge && <div className="mb-3">{badge}</div>}
           <h1 className={`${TYPE.pageTitle} break-words drop-shadow-sm text-white`}>

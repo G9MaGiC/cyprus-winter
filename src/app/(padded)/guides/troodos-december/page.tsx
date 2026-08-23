@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import Image from "next/image";
 import { trails } from "@/data/trails";
-import { LAYOUT, CARD, SECTION, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CARD, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { DifficultyBadge } from "@/components/TrailBadges";
@@ -52,7 +52,7 @@ function TrailCard({
             src={getTrailImage(trail.id)}
             alt={imageAlt}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className={`${MEDIA.hoverImage} duration-300`}
             sizes="(max-width: 640px) 100vw, 192px"
           />
           <div className="absolute bottom-3 left-3">

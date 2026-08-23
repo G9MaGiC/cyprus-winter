@@ -3,7 +3,7 @@ import "server-only";
 import Image from "next/image";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import AppLink from "@/components/AppLink";
-import { CARD, TYPE } from "@/lib/design-tokens";
+import { CARD, TYPE, MEDIA } from "@/lib/design-tokens";
 import { getHomeEditorsPicks } from "@/app/_home/home-editors-picks-data";
 import { getTranslations } from "next-intl/server";
 
@@ -34,13 +34,10 @@ export default async function EditorsPicks({ locale }: Props) {
                 src={item.image}
                 alt={item.imageAlt}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className={MEDIA.hoverImage}
                 sizes="(max-width: 640px) 100vw, 50vw"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
-                aria-hidden
-              />
+              <div className={CARD.mediaOverlayLight} aria-hidden />
             </div>
             <div className={CARD.content}>
               <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={item.title}>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { CARD, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 
 export type HomeThisWeekGridViewProps = {
   weatherKicker: string;
@@ -81,7 +81,7 @@ export default function HomeThisWeekGridView({
             src={trailImage}
             alt={trailImageAlt}
             fill
-            className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+            className={MEDIA.hoverImage}
             sizes="(max-width: 640px) 100vw, 33vw"
           />
           <div className={CARD.mediaOverlay} aria-hidden />

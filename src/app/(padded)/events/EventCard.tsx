@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { CARD, CTA, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, TYPE, BADGE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { Link } from "@/i18n/navigation";
 import type { WinterEvent } from "@/data/events";
@@ -42,7 +42,7 @@ export default function EventCard({
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
         <span
-          className={`px-2.5 py-1 rounded-md text-xs font-medium capitalize ${typeColor}`}
+          className={`${BADGE.base} ${BADGE.pill} capitalize ${typeColor}`}
           aria-hidden
         >
           {typeLabel(event.type)}

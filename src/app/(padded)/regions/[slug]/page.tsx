@@ -12,7 +12,7 @@ import { wineries } from "@/data/wineries";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
-import { LAYOUT, CARD, TYPE, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CARD, TYPE, SECTION, MEDIA } from "@/lib/design-tokens";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
@@ -55,7 +55,7 @@ function TrailCard({ trail }: { trail: Trail }) {
           src={getTrailImage(trail.id)}
           alt={`${trail.name}, ${trail.region} — ${trail.lengthKm} km ${trail.difficulty} winter trail, Cyprus`}
           fill
-          className="object-cover group-hover:scale-105 transition-transform"
+          className={MEDIA.hoverImage}
           sizes="(max-width: 640px) 100vw, 33vw"
         />
         <div className="absolute bottom-3 left-3">
@@ -91,7 +91,7 @@ function PlaceCard({
           src={getAttractionImage(item.id, type)}
           alt={`${item.name}, ${type} in ${item.region}—Cyprus winter`}
           fill
-          className="object-cover group-hover:scale-105 transition-transform"
+          className={MEDIA.hoverImage}
           sizes="(max-width: 640px) 100vw, 33vw"
         />
       </div>

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { BOTTOM_NAV, LAYOUT, STRIP, TYPE } from "./design-tokens";
+import { BOTTOM_NAV, LAYOUT, STRIP, TYPE, CARD, MEDIA, BADGE } from "./design-tokens";
 
 describe("LAYOUT mobile bottom chrome", () => {
   it("aligns footer and main clearance with BottomNav md breakpoint", () => {
@@ -40,6 +40,24 @@ describe("STRIP typography", () => {
   it("defines sticky bottom bar for fixed add CTAs on sand pages", () => {
     expect(STRIP.stickyBottomBar).toContain("bg-background/98");
     expect(STRIP.stickyBottomBar).toContain("border-t");
+  });
+});
+
+describe("CARD media tokens", () => {
+  it("defines shared overlay and hover primitives", () => {
+    expect(CARD.mediaOverlay).toContain("from-charcoal/75");
+    expect(CARD.mediaOverlayLight).toContain("from-charcoal/60");
+    expect(CARD.heroOverlay).toContain("from-charcoal/75");
+    expect(MEDIA.hoverImage).toContain("scale-[1.02]");
+    expect(MEDIA.hoverImage).toContain("motion-reduce");
+  });
+});
+
+describe("BADGE tokens", () => {
+  it("defines pill and chip shapes for card badges", () => {
+    expect(BADGE.pill).toBe("rounded-full");
+    expect(BADGE.chip).toContain("rounded-md");
+    expect(BADGE.chip).toContain("backdrop-blur-sm");
   });
 });
 

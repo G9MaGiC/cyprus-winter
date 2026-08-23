@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
-import { CARD, TYPE, CALLOUT } from "@/lib/design-tokens";
+import { CARD, TYPE, CALLOUT, MEDIA, BADGE } from "@/lib/design-tokens";
 import { StatusBadge, DifficultyBadge } from "@/components/TrailBadges";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
@@ -57,7 +57,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             src={getTrailImage(trail.id)}
             alt={tTrails("card.imageAlt", { name: trail.name, region: trail.region, length: trail.lengthKm, difficulty: trail.difficulty })}
             fill
-            className="object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-out"
+            className={MEDIA.hoverImage}
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}
           />
           <div className={CARD.mediaOverlay} aria-hidden />
@@ -65,7 +65,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             {resolved ? (
               <StatusBadge status={resolved.status} />
             ) : (
-              <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium text-olive/80 backdrop-blur-sm bg-white/85">
+              <span className={`${BADGE.base} ${BADGE.chip} text-olive/80`}>
                 {tTrails("card.noReport")}
               </span>
             )}

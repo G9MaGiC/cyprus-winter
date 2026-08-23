@@ -4,7 +4,7 @@ import Image from "next/image";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import AppLink from "@/components/AppLink";
 import NavigateButton from "@/components/NavigateButton";
-import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
@@ -133,7 +133,7 @@ export default function HomePlaceOfDay() {
               src={place.image}
               alt={place.imageAlt}
               fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              className={MEDIA.hoverImage}
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div className={CARD.mediaOverlay} aria-hidden />
