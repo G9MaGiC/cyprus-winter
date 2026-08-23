@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: "website",
       url: alternates.canonical,
       locale,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: "Kourion ancient theatre above Mediterranean coast, Cyprus winter" }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: t("ogImageAlt") }],
     },
     twitter: {
       card: "summary_large_image",

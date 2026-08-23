@@ -42,7 +42,10 @@ const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const tHome = await getTranslations({ locale, namespace: "home" });
+  const [tHome, tMeta] = await Promise.all([
+    getTranslations({ locale, namespace: "home" }),
+    getTranslations({ locale, namespace: "meta" }),
+  ]);
   return {
     metadataBase: new URL(SITE_URL),
     title: "Cyprus Winter | Mediterranean Winter Escape",
@@ -55,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries, ancient sites. Plan or explore when you land.",
       type: "website",
       url: SITE_URL,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: "Kourion ancient theatre above Mediterranean coast, Cyprus winter" }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: tMeta("ogImageAlt") }],
     },
     twitter: {
       card: "summary_large_image",

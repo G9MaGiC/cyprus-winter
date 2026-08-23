@@ -198,4 +198,10 @@ async function main(): Promise<void> {
   console.log("Checksum:", createHash("sha256").update(JSON.stringify(guides)).digest("hex").slice(0, 12));
 }
 
-void main();
+const isCliEntry =
+  typeof process.argv[1] === "string" &&
+  fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isCliEntry) {
+  void main();
+}

@@ -109,6 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const trailPages: MetadataRoute.Sitemap = trails.map((t) =>
     entry(base, `/trails/${t.id}`, 0.8, "daily", now)
   );
+  // Canonical trail URLs use `id` (see trails/[id]/page.tsx); slug aliases are SSG-only, not listed here.
 
   const wineryBookingPages: MetadataRoute.Sitemap = wineries.map((w) =>
     entry(base, `/book/winery/${w.id}`, 0.6, "monthly", now)

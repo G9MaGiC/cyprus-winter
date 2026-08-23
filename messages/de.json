@@ -3241,7 +3241,8 @@
   },
   "meta": {
     "homeTitle": "Cyprus Winter | Mittelmeer im Winter",
-    "homeDescription": "Zypern im Winter: mild, unberührt, echt. Troodos-Wanderwege, Dörfer, Weingüter, antike Stätten. Sechzehn Grad, wenn daheim sechs sind. Planen Sie im Voraus oder erkunden Sie bei Ankunft."
+    "homeDescription": "Zypern im Winter: mild, unberührt, echt. Troodos-Wanderwege, Dörfer, Weingüter, antike Stätten. Sechzehn Grad, wenn daheim sechs sind. Planen Sie im Voraus oder erkunden Sie bei Ankunft.",
+    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
   },
   "ui": {
     "hero": {
