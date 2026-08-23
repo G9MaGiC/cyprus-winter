@@ -1547,12 +1547,12 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-270 | P1 | SEO | Trail slug alias URLs (`/trails/artemis-trail`) 200 with canonical on slug vs JSON-LD `@id` on `trail.id` | Open — 301 slug→id or unify canonical |
 | BUG-271 | P1 | i18n | `locale-metadata-dynamic.ts`: book detail, trail title/description, weather month title/description still English on `[locale]` routes | Open |
 | BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Open |
-| BUG-273 | P2 | E2E | 5 flaky locale discover filter chip tests at 390px (`locale-prefixed-route.spec.ts`) | Open |
-| BUG-274 | P2 | E2E | `hub-footer.spec.ts` does not cover new hub routes (`/book/guide`, `/weather`, etc.) | Open |
-| BUG-275 | P2 | UX | HubFooter secondary links use inline `·` — cramped on narrow mobile | Open |
-| BUG-276 | P2 | UX | Guides directory empty filter state weak | Open |
-| BUG-277 | P2 | Docs | `docs/UX_PATTERNS.md` hub inventory stale vs PR #147 footers | Open |
-| BUG-278 | P2 | Functional | AI `save_to_plan` may not pass `?add=` to `/plan` | Open |
+| BUG-273 | P2 | E2E | 5 flaky locale discover filter chip tests at 390px (`locale-prefixed-route.spec.ts`) | Fixed — `toPass` retry + expand filters before assert |
+| BUG-274 | P2 | E2E | `hub-footer.spec.ts` does not cover new hub routes (`/book/guide`, `/weather`, etc.) | Fixed — added book/guide, weather, guides/directory |
+| BUG-275 | P2 | UX | HubFooter secondary links use inline `·` — cramped on narrow mobile | Fixed — `HubFooterSecondaryLinks` flex-wrap component |
+| BUG-276 | P2 | UX | Guides directory empty filter state weak | Fixed — card empty state + clear filters button |
+| BUG-277 | P2 | Docs | `docs/UX_PATTERNS.md` hub inventory stale vs PR #147 footers | Fixed — updated hub inventory + secondary link pattern |
+| BUG-278 | P2 | Functional | AI `save_to_plan` may not pass `?add=` to `/plan` | Fixed — `placeId`/`id`/`path` payload in `ActionButtons` |
 
 ### Fixed — P1 QA backlog (Aug 23, 2026)
 

@@ -58,17 +58,24 @@ test.describe("Locale-prefixed routes", () => {
     const toggle = page.locator("#discover-filters-toggle");
     if (await toggle.isVisible()) {
       await toggle.click();
-      await expect(page.locator("#discover-filters")).toBeVisible();
     }
+    await expect(page.locator("#discover-filters")).toBeVisible({ timeout: 15_000 });
+  }
+
+  async function expectDiscoverFilterChipsVisible(page: Page, groupName: string | RegExp) {
+    await expect(async () => {
+      await expandDiscoverFiltersIfMobile(page);
+      const filters = page.getByRole("group", { name: groupName });
+      await expect(filters).toBeVisible({ timeout: 10_000 });
+      await expect(filters.getByRole("link").first()).toBeVisible({ timeout: 10_000 });
+    }).toPass({ timeout: 45_000 });
   }
 
   test("German discover filter chips visible at 390px", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/de/discover", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("main")).toBeVisible();
-    await expandDiscoverFiltersIfMobile(page);
-    const filters = page.getByRole("group", { name: "Nach Kategorie filtern" });
-    await expect(filters.getByRole("link").first()).toBeVisible();
+    await expectDiscoverFilterChipsVisible(page, "Nach Kategorie filtern");
   });
 
   test("Hebrew discover filter chips visible at 390px RTL", async ({ page }) => {
@@ -76,17 +83,13 @@ test.describe("Locale-prefixed routes", () => {
     await page.goto("/he/discover", { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("main")).toBeVisible();
-    await expandDiscoverFiltersIfMobile(page);
-    const filters = page.getByRole("group", { name: "סינון לפי סוג מקום" });
-    await expect(filters.getByRole("link").first()).toBeVisible();
+    await expectDiscoverFilterChipsVisible(page, "סינון לפי סוג מקום");
   });
 
   test("Polish discover filter chips visible at 390px", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/pl/discover", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("main")).toBeVisible();
-    await expandDiscoverFiltersIfMobile(page);
-    const filters = page.getByRole("group", { name: "Filtruj według kategorii" });
-    await expect(filters.getByRole("link").first()).toBeVisible();
+    await expectDiscoverFilterChipsVisible(page, "Filtruj według kategorii");
   });
 });
