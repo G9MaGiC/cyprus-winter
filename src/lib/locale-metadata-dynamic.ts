@@ -48,8 +48,8 @@ function trailDifficultyLabel(
 export async function discoverDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const a = getDiscoverPlaceById(id);
   if (!a) notFound();
-  const tDetail = await getTranslations({ locale, namespace: "discover.detail" });
-  const typeLabel = discoverTypeLabel(a.type, tDetail);
+  const tDiscoverDetail = await getTranslations({ locale, namespace: "discover.detail" });
+  const typeLabel = discoverTypeLabel(a.type, tDiscoverDetail);
   const prefix = `${a.region}. ${typeLabel}. `;
   const maxDesc = 154 - prefix.length;
   const desc = a.description.slice(0, maxDesc).trim();
@@ -64,7 +64,7 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
         url: imageUrl,
         width: 1200,
         height: 630,
-        alt: tDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel }),
+        alt: tDiscoverDetail("imageAlt", { name: a.name, region: a.region, type: typeLabel }),
       }],
     },
   };
@@ -74,14 +74,14 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
 export async function trailDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const trail = findTrailByIdOrSlug(id);
   if (!trail) notFound();
-  const [tDetail, tFilters, tTrails] = await Promise.all([
+  const [tTrailDetail, tFilters, tTrails] = await Promise.all([
     getTranslations({ locale, namespace: "trails.detail" }),
     getTranslations({ locale, namespace: "trails.filters" }),
     getTranslations({ locale, namespace: "trails" }),
   ]);
   const loc = trail.locationText ?? trail.region;
   const difficultyLabel = trailDifficultyLabel(trail.difficulty, tFilters);
-  const prefix = tDetail("meta.descriptionPrefix", {
+  const prefix = tTrailDetail("meta.descriptionPrefix", {
     location: loc,
     lengthKm: trail.lengthKm,
     difficulty: difficultyLabel,
@@ -91,7 +91,7 @@ export async function trailDetailMetadata(id: string, locale: string): Promise<M
   const imageUrl = toAbsoluteUrl(getTrailImage(trail.id));
   const path = `/trails/${trail.id}`;
   const base: Metadata = {
-    title: tDetail("meta.title", { name: trail.name }),
+    title: tTrailDetail("meta.title", { name: trail.name }),
     description: prefix + desc,
     openGraph: {
       images: [{
