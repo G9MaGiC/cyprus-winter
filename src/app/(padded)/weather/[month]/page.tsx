@@ -60,11 +60,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
   const alternates = buildStrategyAAlternates(`/weather/${slug}`);
 
+  const title = tWeatherMonth("meta.title", { month: monthName });
+  const description = tWeatherMonth("meta.description", {
+    month: monthName,
+    coastRange,
+    troodosRange,
+    coastDesc: row.coastDesc,
+  });
+
   return {
-    title: `Cyprus Winter Weather ${monthName} | Coast & Troodos`,
-    description: `Cyprus winter weather ${monthName}: coast ${coastRange}, Troodos ${troodosRange}. ${row.coastDesc} Plan trails, wineries, and winter events.`,
+    title,
+    description,
     alternates,
     openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
       images: [{ url: ogImage, width: 1200, height: 630, alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }) }],
     },
   };

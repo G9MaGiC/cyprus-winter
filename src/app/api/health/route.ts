@@ -17,7 +17,7 @@ export async function GET(req: Request) {
   try {
     limitResult = await rateLimit(req, 60, "health");
   } catch {
-    // Health must still expose authorized readiness diagnostics when Redis is missing.
+    // Health must still expose readiness diagnostics when Redis is missing in production.
     limitResult = null;
   }
   if (limitResult && !limitResult.ok) {

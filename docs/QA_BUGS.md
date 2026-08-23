@@ -1554,6 +1554,11 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-277 | P2 | Docs | `docs/UX_PATTERNS.md` hub inventory stale vs PR #147 footers | Open |
 | BUG-278 | P2 | Functional | AI `save_to_plan` may not pass `?add=` to `/plan` | Open |
 
-**Automated gates (Aug 23, 2026):** lint, typecheck, test (698), i18n:validate (2248×7), i18n:scan --fail, data:validate (84), check:conflict-markers, build (~5000 pages), test:coverage (~71% stmts) — all pass. E2E gate: 33 pass + 5 flaky (locale filters @ 390px); UX gate 27 pass, 1 skip — exit 0.
+### Fixed — P1 QA backlog (Aug 23, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-270 | SEO | Trail slug alias URLs 200 with canonical/JSON-LD mismatch | 308 redirect slug→id via `permanentRedirect`; metadata alternates use canonical id |
+| BUG-271 | i18n | Locale dynamic metadata English for book/trail/weather month | `locale-metadata-dynamic.ts` uses `book.pages.*`, `trails.detail.meta`, `weather.month.meta`; padded weather month metadata i18n |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
