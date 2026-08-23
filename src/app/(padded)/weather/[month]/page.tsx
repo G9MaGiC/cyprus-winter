@@ -8,6 +8,7 @@ import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { winterEvents } from "@/data/events";
 import WeatherMonthFooter from "@/components/WeatherMonthFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
@@ -263,13 +264,12 @@ export default async function WeatherMonthPage({ params }: Props) {
           <AppLink href="/discover?filter=winery" className={`px-5 py-2.5 rounded-lg ${CTA.secondaryCompact}`}>
             {tWeatherMonth("cta.winterWineries")}
           </AppLink>
-          <AppLink href="/plan" className={`px-5 py-2.5 rounded-lg ${CTA.chipTertiary}`}>
-            {tCommon("planYourTrip")}
-          </AppLink>
         </div>
       </div>
 
+      <span id="weather-month-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
       <WeatherMonthFooter />
+      <StickyPlanBarBlock sentinelId="weather-month-plan-sentinel" />
     </div>
   );
 }

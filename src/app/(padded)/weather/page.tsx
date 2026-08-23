@@ -3,6 +3,7 @@ import AppLink from "@/components/AppLink";
 import { CARD, LAYOUT, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import WeatherPushOptIn from "@/components/WeatherPushOptIn";
 import WeatherHubFooter from "@/components/WeatherHubFooter";
+import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
@@ -243,8 +244,6 @@ export default async function WeatherPage() {
 
       <WeatherPushOptIn />
 
-      <WeatherHubFooter />
-
       <div className={`${SECTION.blockTop} space-y-4 text-olive/80 text-sm max-w-2xl`}>
         <p>{tWeather("body.coastTroodos")}</p>
         <p>
@@ -261,6 +260,10 @@ export default async function WeatherPage() {
           {tWeather("body.linkWineriesSuffix")}
         </p>
       </div>
+
+      <span id="weather-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
+      <WeatherHubFooter />
+      <StickyPlanBarBlock sentinelId="weather-plan-sentinel" />
     </div>
   );
 }

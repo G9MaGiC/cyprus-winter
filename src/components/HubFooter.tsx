@@ -3,8 +3,9 @@
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import AppLink from "@/components/AppLink";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
+import { triggerAIAssistant } from "@/components/AIAssistantTrigger";
 import { TrackOnClick } from "@/components/TrackOnClick";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import { SECTION, CTA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -50,9 +51,13 @@ export default function HubFooter({
   const pathname = usePathname();
   const page = analyticsPage ?? pathname ?? "";
   const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+  const blocked = useBlockingOverlaysActive();
   const resolvedPrimaryLabel = primaryLabel ?? tCommon("planYourTrip");
   const resolvedAskAiLabel = askAiLabel ?? tCommon("askAI");
-  const resolvedAskAiAria = askAiAriaLabel ?? tCommon("askAITrailsAria");
+  const resolvedAskAiAria = blocked
+    ? tNav("askAIBlockedAria")
+    : (askAiAriaLabel ?? tCommon("askAITrailsAria"));
 
   return (
     <footer
@@ -76,8 +81,9 @@ export default function HubFooter({
           <TrackOnClick event="hub_footer_click" properties={{ action: "ask_ai", page }}>
             <button
               type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-              className={CTA.secondaryCompact}
+              disabled={blocked}
+              onClick={() => triggerAIAssistant()}
+              className={`${CTA.secondaryCompact} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
               aria-label={resolvedAskAiAria}
             >
               {resolvedAskAiLabel}
