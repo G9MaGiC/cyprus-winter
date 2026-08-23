@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, HOME, LAYOUT, TYPE } from "@/lib/design-tokens";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { useTranslations } from "next-intl";
 
@@ -19,13 +19,13 @@ export default function HomePlanningSection({
     <section
       id="planning-section"
       aria-labelledby="planning-heading"
-      className={`${SECTION.py} bg-background ${LAYOUT.safeAreaX} relative scroll-mt-24`}
+      className={`${HOME.sectionPy} bg-background ${LAYOUT.safeAreaX} relative scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2 id="planning-heading" className="sr-only">
           {t("srHeading")}
         </h2>
-        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
+        <div className={`grid sm:grid-cols-2 ${HOME.gridGap}`}>
           <AppLink
             href="/plan"
             prefetch="auto"

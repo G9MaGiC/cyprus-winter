@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import RightNowCard from "@/components/RightNowCard";
 import AppLink from "@/components/AppLink";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
@@ -28,7 +28,7 @@ function SectionShell({
     <section
       id="right-now"
       aria-labelledby="right-now-heading"
-      className={`${SECTION.pySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
+      className={`${HOME.sectionPySub} ${SECTION.alt} ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className={SECTION.headingGap}>
@@ -154,7 +154,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
   if (state === "loading") {
     return (
       <SectionShell title={sectionTitle}>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+        <div className={`grid grid-cols-1 ${HOME.gridGap} sm:grid-cols-2`}>
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
@@ -259,14 +259,14 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
           {tHome("rightNow.loaded.seeMore")}
         </AppLink>
       </div>
-      <div className={`${SECTION.headingGap} rounded-xl border border-aegean/20 bg-aegean/5 p-4`}>
+      <div className={`${SECTION.headingGap} rounded-xl border border-aegean/20 bg-aegean/5 p-3 sm:p-4`}>
         <p className={`${TYPE.kicker} text-aegean`}>
           {tHome("rightNow.adapt.kicker")}
         </p>
-        <p className="mt-1 text-sm text-olive/80">
+        <p className="mt-1 text-sm text-olive/80 hidden sm:block">
           {tHome("rightNow.adapt.body")}
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-3">
+        <div className="mt-2 sm:mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
           <TrackOnClick event="today_adapt_action_click" properties={{ action: "weather" }}>
             <AppLink href="/weather" className={SECTION.aegeanLink}>
               {tHome("rightNow.adapt.ctaWeather")}
@@ -284,7 +284,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
           </TrackOnClick>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+      <div className={`grid grid-cols-1 ${HOME.gridGap} sm:grid-cols-2`}>
         {items.map((item) => (
           <RightNowCard key={item.id} item={item} />
         ))}

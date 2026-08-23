@@ -203,6 +203,15 @@ describe("home state-aware discovery sections", () => {
   });
 });
 
+describe("home section rhythm", () => {
+  it("HomeSection uses HOME.sectionPy instead of ad-hoc padding", () => {
+    const section = readFileSync("src/app/_home/HomeSection.tsx", "utf8");
+    expect(section).toContain("HOME.sectionPy");
+    expect(section).toContain("HOME.headerMargin");
+    expect(section).not.toMatch(/py-10 sm:py-16/);
+  });
+});
+
 describe("home section reveal", () => {
   it("wraps exactly three content sections with HomeSectionReveal", () => {
     const content = readFileSync("src/app/_home/HomePageContent.tsx", "utf8");

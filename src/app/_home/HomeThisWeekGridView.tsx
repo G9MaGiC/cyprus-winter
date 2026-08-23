@@ -3,7 +3,7 @@
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { CARD, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
+import { CARD, HOME, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 
 export type HomeThisWeekGridViewProps = {
   weatherKicker: string;
@@ -52,7 +52,7 @@ export default function HomeThisWeekGridView({
   eventHref,
 }: HomeThisWeekGridViewProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+    <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap}`}>
       <AppLink
         href="/weather"
         prefetch="auto"

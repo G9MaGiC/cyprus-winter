@@ -1,6 +1,6 @@
 import "server-only";
 
-import { CARD, LAYOUT, SECTION } from "@/lib/design-tokens";
+import { CARD, HOME, LAYOUT } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 type Props = { locale?: string };
@@ -16,7 +16,7 @@ export default async function HomeWhyCyprusTeaser({ locale }: Props) {
   return (
     <section
       aria-labelledby="why-winter-teaser"
-      className={`${SECTION.pySub} bg-sand/50 ${LAYOUT.safeAreaX}`}
+      className={`${HOME.sectionPySub} bg-sand/50 ${LAYOUT.safeAreaX}`}
     >
       <div className={`${LAYOUT.listNarrow} mx-auto`}>
         <blockquote

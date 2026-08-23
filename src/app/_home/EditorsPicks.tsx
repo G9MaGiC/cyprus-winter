@@ -3,7 +3,7 @@ import "server-only";
 import Image from "next/image";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import AppLink from "@/components/AppLink";
-import { CARD, TYPE, MEDIA } from "@/lib/design-tokens";
+import { CARD, HOME, TYPE, MEDIA } from "@/lib/design-tokens";
 import { getHomeEditorsPicks } from "@/app/_home/home-editors-picks-data";
 import { getTranslations } from "next-intl/server";
 
@@ -17,7 +17,7 @@ export default async function EditorsPicks({ locale }: Props) {
   ]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+    <div className={`grid grid-cols-1 sm:grid-cols-2 ${HOME.gridGap}`}>
       {picks.map((item) => (
         <div
           key={item.id}

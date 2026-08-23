@@ -313,11 +313,26 @@ export const POST_HERO = {
   chipNav: "flex flex-wrap items-center justify-center gap-2",
 } as const;
 
+/**
+ * Home page rhythm — tighter mobile padding, full hub scale from lg.
+ * Use instead of SECTION.py on home-only sections to reduce scroll density on phones.
+ */
+export const HOME = {
+  /** Major home sections (Start Here, This Week, Editors, Planning) */
+  sectionPy: "py-8 sm:py-12 lg:py-20",
+  /** Strips and subsections (search, Right Now, Place of Day, teaser) */
+  sectionPySub: "py-5 sm:py-8",
+  /** Section header bottom margin — slightly tighter on mobile */
+  headerMargin: "mb-6 sm:mb-8 lg:mb-10",
+  /** Grid gap for home card grids (This Week, Editors) */
+  gridGap: "gap-4 sm:gap-6",
+} as const;
+
 /** Homepage hero primitives (server components compose these). */
 export const HERO = {
   /** Shorter on mobile for faster discovery; taller on desktop for impact */
   section:
-    "relative isolate overflow-hidden min-h-[68vh] min-[400px]:min-h-[72vh] sm:min-h-[84vh] flex flex-col items-center justify-end sm:justify-center pb-14 sm:pb-20 text-center w-full",
+    "relative isolate overflow-hidden min-h-[62vh] min-[400px]:min-h-[66vh] sm:min-h-[80vh] flex flex-col items-center justify-end sm:justify-center pb-12 sm:pb-20 text-center w-full",
   /** Simplified overlay — legibility without muddying the image */
   overlay:
     "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/5",
@@ -326,7 +341,7 @@ export const HERO = {
     "absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none",
   /** Panel — frosted glass over hero, Mediterranean warmth */
   panel:
-    "relative rounded-2xl bg-charcoal/40 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-6 sm:p-10 lg:p-12 transition-shadow duration-300",
+    "relative rounded-2xl bg-charcoal/40 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-5 sm:p-10 lg:p-12 transition-shadow duration-300",
 } as const;
 
 /** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */

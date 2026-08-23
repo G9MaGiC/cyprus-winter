@@ -2,7 +2,7 @@ import "server-only";
 
 import AppLink from "@/components/AppLink";
 import { getHomeInsiderTip } from "@/app/_home/home-insider-tip-data";
-import { CALLOUT, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { CALLOUT, HOME, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 type Props = { locale?: string };
@@ -29,7 +29,7 @@ export default async function HomeInsiderTip({ locale }: Props) {
   return (
     <section
       aria-labelledby="insider-tip-heading"
-      className={`${SECTION.pySub} ${LAYOUT.safeAreaX} bg-sand/50`}
+      className={`${HOME.sectionPySub} ${LAYOUT.safeAreaX} bg-sand/50`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`${CALLOUT.tip} rounded-2xl px-5 sm:px-6 py-5 sm:py-6`}>

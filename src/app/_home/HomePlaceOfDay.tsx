@@ -4,7 +4,7 @@ import Image from "next/image";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import AppLink from "@/components/AppLink";
 import NavigateButton from "@/components/NavigateButton";
-import { CARD, LAYOUT, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
+import { CARD, HOME, LAYOUT, TYPE, MEDIA } from "@/lib/design-tokens";
 import { allPlaces, getAttractionById, getPlaceById } from "@/data";
 import { getAttractionImage, getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
@@ -117,7 +117,7 @@ export default function HomePlaceOfDay() {
     <section
       id="place-of-day"
       aria-labelledby="place-of-day-heading"
-      className={`${SECTION.pySub} bg-background ${LAYOUT.safeAreaX} scroll-mt-24`}
+      className={`${HOME.sectionPySub} bg-background ${LAYOUT.safeAreaX} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div
