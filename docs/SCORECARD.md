@@ -64,6 +64,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #172 | Trail metadata difficulty i18n — `trails.badges` namespace (BUG-310) |
 | PR #174 | Beta plan funnel i18n — combos, banners, home titles (BUG-311) |
 | PR #176 | Beta soft-gap i18n — home footer, place picker, bookings page, day combos (BUG-312) |
+| PR #178 | Funnel i18n polish — error/airport/trails/plan meta all locales (BUG-313) |
 
 Details: `docs/QA_BUGS.md`
 

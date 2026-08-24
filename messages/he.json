@@ -22,12 +22,12 @@
     "cycling": "רכיבה"
   },
   "travelTrust": {
-    "aria": "Official travel information",
+    "aria": "מידע נסיעה רשמי",
     "heading": "לפני הנסיעה",
-    "body": "Entry rules and local conditions change. Use official sources—no hype, just facts.",
-    "visitCyprus": "Visit Cyprus (official tourism)",
-    "foreignTravelUk": "UK foreign travel advice — Cyprus",
-    "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
+    "body": "כללי כניסה ותנאים מקומיים משתנים. השתמשו במקורות רשמיים — עובדות בלבד.",
+    "visitCyprus": "Visit Cyprus (תיירות רשמית)",
+    "foreignTravelUk": "עצות נסיעה UK — קפריסין",
+    "emergency": "חירום 112 · מידע תיירות 1460 · אמבולנס 199"
   },
   "nav": {
     "discover": "גילוי",
@@ -56,7 +56,7 @@
     "mainNavigation": "ניווט ראשי",
     "cycling": "רכיבה",
     "askAIBlockedAria": "סיימו קודם את ההיכרות או בחירת העוגיות",
-    "nature": "Nature"
+    "nature": "טבע"
   },
   "common": {
     "nav": {
@@ -593,15 +593,15 @@
       }
     },
     "planningSection": {
-      "srHeading": "Planning and essentials",
-      "planTitle": "Plan your trip",
-      "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "srHeading": "תכנון וחיוניים",
+      "planTitle": "תכננו את הטיול",
+      "eventsTitle": "אירועי חורף",
+      "eventsDesc": "Epiphany, קarnaval, טעימות. מה קורה מתי.",
+      "defaultSubtitle": "תבניות, מפה ושיתוף במקום אחד — המשיכו בדף התכנון."
     },
     "recentlyViewed": {
-      "title": "Recently viewed",
-      "clear": "Clear"
+      "title": "נצפו לאחרונה",
+      "clear": "נקה"
     },
     "insiderTip": {
       "heading": "טיפ insider לחורף",
@@ -639,7 +639,7 @@
       "coastTemp": "בחוף לרוב 16–20°C",
       "troodosCooler": "טרודוס קריר יותר — בדקו תנאים",
       "sunset": "שקיעה ~17:00 בדצמבר",
-      "blockquote": "חוף מתון. הרים עם שלג. טיול בבוקר, ארוחה בחוץ. אתרים עתיקים ריקים, כפרים שקטים. עצירה בקפeneion. קפה. אף אחד לא ממהר.",
+      "blockquote": "חוף מתון. הרים עם שלג. טיול בבוקר, ארוחה בחוץ. אתרים עתיקים ריקים, כפרים שקטים. עצירה בקפה בכפר. קפה. אף אחד לא ממהר.",
       "rule": "כלל קטן: שביל אחד, כפר אחד, טעימה אחת. הוסיפו לתכנית תוך כדי.",
       "tagline": "הגעתם בשביל החום. הישארו בשביל הקצב."
     },
@@ -722,7 +722,7 @@
       },
       "check-conditions": {
         "title": "בדקו לפני שיוצאים",
-        "body": "מזג האוויר בטרודוס משתנה מהר. שלג ב-Olympus, בוץ אחרי גשם, קרח בצל. אתר הסki מפרסם תנאים. גם בתי קפה מקומיים. שאלו. אל תניחו."
+        "body": "מזג האוויר בטרודוס משתנה מהר. שלג ב-Olympus, בוץ אחרי גשם, קרח בצל. אתר הסקי מפרסם תנאים. גם בתי קפה מקומיים. שאלו. אל תניחו."
       },
       "microspikes": {
         "title": "Microspikes ל-Olympus",
@@ -734,7 +734,7 @@
       },
       "euro": {
         "title": "אירו, כרטיסים ומזומן",
-        "body": "קפריסין משתמשת באירו. כרטיסים עובדים כמעט בכל מקום. חנויות קטנות וקafenion לפעמים מעדיפים מזומן. שמרו ~20€ לקפה, תחרת ו-zivania."
+        "body": "קפריסין משתמשת באירו. כרטיסים עובדים כמעט בכל מקום. חנויות קטנות ובתי קפה בכפר לפעמים מעדיפים מזומן. שמרו ~20€ לקפה, תחרת ו-zivania."
       },
       "drive-left": {
         "title": "נסיעה בצד שמאל",
@@ -754,9 +754,9 @@
     }
   },
   "error": {
-    "title": "A small glitch",
-    "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-    "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+    "title": "תקלה קטנה",
+    "body": "תקלה קטנה. נסו שוב או חזרו לדף הבית — השבילים, הכפרים והטעימות עדיין כאן.",
+    "hint": "השתמשו בתפריט לגילוי, שבילים או תכנון. או הקישו על Ask AI — נכוון אתכם ל-Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -788,7 +788,7 @@
       "failed": "קשה להתחבר. נסו שוב בעוד רגע."
     },
     "rightNow": {
-      "locationDenied": "Enable location or pick a region."
+      "locationDenied": "הפעילו מיקום או בחרו אזור."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "נסו שוב בעוד רגע.",
@@ -1287,56 +1287,56 @@
   "airport": {
     "page": {
       "meta": {
-        "title": "Just Landed? | Cyprus Winter Airport Guide",
-        "description": "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here.",
-        "ogAlt": "Cyprus winter — Larnaca and Paphos airport guide"
+        "title": "נחתתם? | מדריך שדה תעופה Cyprus Winter",
+        "description": "הגעה ל-Larnaca ו-Paphos: מוניות, אוטובוסים, השכרת רכב. חוף מתון, טרודוס קריר יותר. מספרים וטיפים חיוניים. התחילו כאן.",
+        "ogAlt": "קפריסין בחורף — מדריך שדות Larnaca ו-Paphos"
       },
       "hero": {
-        "title": "Just landed?",
-        "description": "Transport from Larnaca and Paphos. Taxis, buses, car hire—you're sorted.",
-        "descriptionSecondary": "Coast mild, Troodos cooler. Pack layers.",
-        "imageAlt": "Cyprus coast, Mediterranean bay—welcome to the island",
-        "plan48Aria": "Plan your first 48 hours",
-        "plan48Cta": "Plan your first 48 hours"
+        "title": "נחתתם?",
+        "description": "תחבורה מ-Larnaca ו-Paphos. מוניות, אוטובוסים, השכרת רכב — מסודר.",
+        "descriptionSecondary": "חוף מתון, טרודוס קריר יותר. הביאו שכבות.",
+        "imageAlt": "חוף קפריסין, מפרץ ים תיכון — ברוכים הבאים לאי",
+        "plan48Aria": "תכננו את 48 השעות הראשונות",
+        "plan48Cta": "תכננו את 48 השעות הראשונות"
       },
       "essentials": {
-        "srHeading": "Essential numbers",
-        "emergency": "Emergency",
-        "touristInfo": "Tourist info",
-        "ambulance": "Ambulance",
-        "note": "Save these. Hope you never need them."
+        "srHeading": "מספרים חיוניים",
+        "emergency": "חירום",
+        "touristInfo": "מידע תיירות",
+        "ambulance": "אמבולנס",
+        "note": "שמרו אותם. מקווים שלא תצטרכו."
       },
       "firstHour": {
-        "title": "Your first hour",
+        "title": "השעה הראשונה",
         "steps": {
-          "arrivals": "Arrivals",
-          "baggage": "Baggage",
-          "transport": "Transport",
-          "out": "You're out"
+          "arrivals": "הגעה",
+          "baggage": "מזוודות",
+          "transport": "תחבורה",
+          "out": "יצאתם"
         }
       },
       "picker": {
-        "title": "Which airport?",
-        "aria": "Choose your airport"
+        "title": "איזה שדה תעופה?",
+        "aria": "בחרו שדה תעופה"
       },
       "sections": {
-        "transportTitle": "Transport",
-        "tipsTitle": "Things to know"
+        "transportTitle": "תחבורה",
+        "tipsTitle": "כדאי לדעת"
       },
       "quickActions": {
-        "aria": "Arrival quick actions",
-        "kicker": "Arrive faster"
+        "aria": "פעולות מהירות בהגעה",
+        "kicker": "הגיעו מהר יותר"
       },
       "footer": {
-        "body": "Drop your bags. Find a harbour café. Order a coffee and watch the light. Tonight, just arrive. The island isn't going anywhere.",
-        "planWeekCta": "Plan your first week",
-        "discoverCta": "Discover places",
-        "weatherCta": "Check weather",
-        "askAi": "Ask AI",
-        "askAiAria": "Ask AI for arrival and transport tips"
+        "body": "הורידו מזוודות. מצאו בית קפה בנמל. הזמינו קפה וצפו באור. הערב — רק להגיע. האי לא הולך לשום מקום.",
+        "planWeekCta": "תכננו את השבוע הראשון",
+        "discoverCta": "גלו מקומות",
+        "weatherCta": "בדקו מזג אוויר",
+        "askAi": "שאלו את ה-AI",
+        "askAiAria": "שאלו את ה-AI על הגעה ותחבורה"
       },
       "aria": {
-        "actions": "Airport page actions"
+        "actions": "פעולות דף שדה תעופה"
       }
     }
   },
@@ -1700,42 +1700,42 @@
     },
     "page": {
       "meta": {
-        "title": "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
-        "description": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
-        "ogDescription": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
-        "ogAlt": "Troodos pine forest trail, Cyprus winter"
+        "title": "שבילי חורף בקפריסין | Troodos, Paphos ו-Akamas",
+        "description": "שבילים בקפריסין בחורף: Troodos, Paphos, Akamas. תנאים, קושי, אורך. טיפים לטיול חורף. שישה עשר מעלות כשבבית שש.",
+        "ogDescription": "שבילים בקפריסין בחורף: Troodos, Paphos, Akamas. תנאים, קושי, אורך.",
+        "ogAlt": "שביל ביער אורנים בטרודוס, חורף קפריסין"
       },
       "hero": {
-        "title": "Winter Trails",
-        "description": "Pine forest, ridge views, empty paths. Sixteen degrees when home is six.",
-        "descriptionSecondary": "{open} open · {caution} caution · 8 regions",
-        "imageAlt": "Troodos pine forest trail, Cyprus winter",
-        "weatherAria": "View weather forecast"
+        "title": "שבילי חורף",
+        "description": "יער אורנים, מצוקים, שבילים ריקים. שישה עשר מעלות כשבבית שש.",
+        "descriptionSecondary": "{open} פתוחים · {caution} זהירות · 8 אזורים",
+        "imageAlt": "שביל ביער אורנים בטרודוס, חורף קפריסין",
+        "weatherAria": "צפו בתחזית מזג האוויר"
       },
       "search": {
-        "heading": "Search trails",
-        "placeholder": "Search trails by name, region, difficulty…"
+        "heading": "חיפוש שבילים",
+        "placeholder": "חיפוש לפי שם, אזור, קושי…"
       },
       "list": {
-        "filteredHeading": "{count} trails"
+        "filteredHeading": "{count} שבילים"
       },
       "groups": {
-        "open": "Open",
-        "caution": "Caution",
-        "closed": "Closed",
-        "noReport": "No report"
+        "open": "פתוחים",
+        "caution": "זהירות",
+        "closed": "סגורים",
+        "noReport": "אין דיווח"
       },
       "map": {
-        "heading": "Map ({count})",
-        "caption": "Updated from local reports."
+        "heading": "מפה ({count})",
+        "caption": "מעודכן מדיווחים מקומיים."
       },
       "bottomBar": {
-        "aria": "Add trails to your plan"
+        "aria": "הוסיפו שבילים לתכנית"
       },
       "sr": {
-        "filtered": "Showing {count} trails",
-        "allByCategory": "Showing all trails by category",
-        "browseByCategory": "Browse trails by category"
+        "filtered": "מציג {count} שבילים",
+        "allByCategory": "כל השבילים לפי קטגוריה",
+        "browseByCategory": "עיון בשבילים לפי קטגוריה"
       }
     },
     "sections": {
@@ -1907,10 +1907,10 @@
       "summaryEmpty": "הוסיפו מקומות להתחלה"
     },
     "suggestedForDay": {
-      "empty": "Add a place below to see suggestions that pair well with your day.",
-      "pairWith": "Pair with…",
-      "worksWell": "Works well with what you&apos;ve added. Tap to add.",
-      "addToDayAria": "Add {name} to day"
+      "empty": "הוסיפו מקום למטה כדי לראות הצעות שמתאימות ליום.",
+      "pairWith": "שלבו עם…",
+      "worksWell": "מתאים למה שהוספתם. הקישו להוספה.",
+      "addToDayAria": "הוסף {name} ליום"
     },
     "sustainability": {
       "aria": "הערות לקצב חורף",
@@ -1924,36 +1924,36 @@
       "winterTip": "טיפ חורף: אור היום דועך בסביבות חמש. התחילו שבילים עד עשר בבוקר והזמינו טעימות 24–48 שעות מראש."
     },
     "meta": {
-      "title": "Plan Cyprus Winter | Curated Plans & Trip Builder",
-      "description": "Curated Cyprus winter plans: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
-      "ogTitle": "Plan Cyprus Winter | Curated Plans & Trip Builder",
-      "ogDescription": "Curated Cyprus winter plans with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
+      "title": "תכנון חורף בקפריסין | תוכניות אוצרות ובונה טיול",
+      "description": "תוכניות חורף בקפריסין: 48 שעות עד 10 ימים. קצב מומחים, טיפים להזמנת יקבים, עצות עונתיות. שבילי Troodos, כפרים, חוף — תכננו מראש או במקום. חינם.",
+      "ogTitle": "תכנון חורף בקפריסין | תוכניות אוצרות",
+      "ogDescription": "תוכניות חורף עם קצב מומחים וטיפים ליקבים. שבילים, כפרים, חוף. מראש או במקום."
     },
     "templateChoiceModal": {
-      "title": "Apply {template}?",
-      "description": "Add to your plan or replace what you have.",
-      "cancel": "Cancel",
-      "replaceDay": "Replace day",
-      "addToPlan": "Add to plan"
+      "title": "להחיל {template}?",
+      "description": "להוסיף לתכנית או להחליף את מה שיש.",
+      "cancel": "ביטול",
+      "replaceDay": "החלפת יום",
+      "addToPlan": "הוסף לתכנית"
     },
     "comboChoiceModal": {
-      "title": "Add {combo}?",
-      "description": "Add to your plan or replace your day.",
-      "cancel": "Cancel",
-      "replaceDay": "Replace day",
-      "addToPlan": "Add to plan"
+      "title": "להוסיף {combo}?",
+      "description": "להוסיף לתכנית או להחליף את היום.",
+      "cancel": "ביטול",
+      "replaceDay": "החלפת יום",
+      "addToPlan": "הוסף לתכנית"
     },
     "map": {
-      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your plan",
-      "dayLabel": "Day {day}",
-      "viewDetails": "View details →",
-      "footer": "{count, plural, one {# place} other {# places}} on map. Numbers = day. Tap to explore.",
-      "noCoords": "Some of your places don't have map locations yet."
+      "ariaLabel": "מפה עם {count, plural, one {מקום #} other {# מקומות}} בתכנית",
+      "dayLabel": "יום {day}",
+      "viewDetails": "פרטים →",
+      "footer": "{count, plural, one {מקום #} other {# מקומות}} במפה. מספרים = יום. הקישו לחקור.",
+      "noCoords": "לחלק מהמקומות אין עדיין מיקום במפה."
     },
     "clipboard": {
       "heading": "Plan Cyprus Winter",
-      "dayLabel": "Day {day}:",
-      "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
+      "dayLabel": "יום {day}:",
+      "emptyFallback": "תכנית החורף שלכם בקפריסין. הוסיפו מקומות מגילוי או שבילים."
     },
     "startHere": {
       "kicker": "48 שעות",
@@ -2003,7 +2003,7 @@
       "trails": "התחילו ב-9. בדקו תנאים לפני שיוצאים.",
       "attractions": "כפרים, חורבות, מנזרים. בוקר באמצע השבוע הכי שקט. אור חורף רך. תכננו בוקר או אחר צהריים מאוחר.",
       "restaurants": "טברנות, דגים, fine dining. הזמינו מראש בחורף למקומות פופולריים.",
-      "events": "Epiphany, קarnaval, שווקים. תאריכים משתנים—בדקו מקורות רשמיים."
+      "events": "Epiphany, קarnaval, שווקים. תאריכים משתנים — בדקו מקורות רשמיים."
     }
   },
   "planQuick": {

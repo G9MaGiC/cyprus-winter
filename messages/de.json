@@ -48,7 +48,7 @@
     "team": "Team",
     "search": "Suche",
     "more": "Mehr",
-    "askAI": "Ask AI",
+    "askAI": "KI fragen",
     "searchAria": "Orte und Wanderwege suchen",
     "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
     "openMenu": "Menü öffnen",
@@ -56,7 +56,7 @@
     "mainNavigation": "Hauptnavigation",
     "cycling": "Radfahren",
     "askAIBlockedAria": "Zuerst Onboarding oder Cookie-Auswahl abschließen",
-    "nature": "Nature"
+    "nature": "Natur"
   },
   "common": {
     "nav": {
@@ -474,7 +474,7 @@
         "quietEscapesAria": "Ruhig — Dörfer, Geheimtipps",
         "mountains": "Berge",
         "mountainsAria": "Berge — Troodos‑Trails",
-        "wellness": "Wellness",
+        "wellness": "Erholung",
         "wellnessAria": "Wellness — Klöster, stille Orte",
         "regionAria": "Region {region}",
         "boulderingPlus": "Bouldern+",
@@ -872,7 +872,7 @@
         "watersports": "Wassersport",
         "quiet": "Ruhige Auszeiten",
         "mountains": "Berge",
-        "wellness": "Wellness",
+        "wellness": "Erholung",
         "relatedTrails": "Passende Wanderwege",
         "seeAllMountainTrails": "Troodos-Wanderwege",
         "browseAllTrails": "Alle Wanderwege",
@@ -1311,7 +1311,7 @@
         "steps": {
           "arrivals": "Ankunft",
           "baggage": "Gepäck",
-          "transport": "Transport",
+          "transport": "Anreise",
           "out": "Draußen"
         }
       },
@@ -1320,7 +1320,7 @@
         "aria": "Flughafen auswählen"
       },
       "sections": {
-        "transportTitle": "Transport",
+        "transportTitle": "Anreise",
         "tipsTitle": "Wissenswertes"
       },
       "footer": {
@@ -1794,7 +1794,7 @@
       "heading": "Wann reisen Sie?",
       "optionalSummary": "Optional: Reisedaten festlegen",
       "optionalHint": "Passende Vorlagen und eine Erinnerung vor der Anreise.",
-      "startLabel": "Start",
+      "startLabel": "Beginn",
       "endLabel": "Ende"
     },
     "wineryBar": {
