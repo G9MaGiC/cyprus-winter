@@ -1625,3 +1625,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-308 | i18n | Beta locales (fr/he/ro): `planQuick.*`, `home.templates.*`, bookings empty states still English; fr/ro itinerary terminology; Hebrew copy typos | `patch-beta-locale-plan-i18n.mjs` + overrides (228 keys); Hebrew `localPrefs` + plan share block |
+
+### Fixed — beta home editorial map sync (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-309 | i18n | Stale `editorial-fr.json` used itinerary wording; home/book chrome deltas not applied to beta locales | Plan terminology in editorial-fr; `apply-editorial-map` for fr/he/ro (485 keys each) |

@@ -368,7 +368,7 @@
       "arriving": "Tocmai ai ajuns? Începe aici",
       "explore": "Explorează",
       "planTrip": "Planifică-ți călătoria",
-      "askGuide": "Întreabă ghidul AI"
+      "askGuide": "Întreabă ghidul"
     },
     "tripModes": {
       "aria": "Alege cum călătorești",
@@ -413,8 +413,8 @@
         "planTitle": "Plan",
         "planDesc": "Construiește o zi în jurul orei, vremii și locurilor care te interesează.",
         "planCta": "Construiește o zi",
-        "bookTitle": "Rezervă experiențe",
-        "bookDesc": "Rezervă o degustare la crama sau o drumeție ghidată în Troodos înainte de weekend.",
+        "bookTitle": "Rezervă",
+        "bookDesc": "Rezervă o degustare sau o experiență ghidată înainte de weekend.",
         "bookCta": "Rezervă degustări",
         "bookGuideLink": "Drumeții ghidate"
       },
@@ -1758,8 +1758,8 @@
     "morning": "Morning",
     "afternoon": "Afternoon",
     "pageTitle": "Planifică-ți iarna în Cipru",
-    "pageDescHasContent": "Planul tău. Adaugă, distribuie sau ajustează mai jos.",
-    "pageDescEmpty": "Construiește un plan de iarnă. Alege un șablon sau adaugă locuri pe zile.",
+    "pageDescHasContent": "Planul tău. Adaugă mai multe, distribuie sau ajustează mai jos.",
+    "pageDescEmpty": "Construiește-ți planul de iarnă. Alege un șablon sau adaugă locuri zi de zi.",
     "pageDescSecondaryEmpty": "Se salvează automat.",
     "mapTitle": "Planul tău pe hartă",
     "mapCollapsibleHint": "Stops and driving context on the island map",
@@ -1883,7 +1883,7 @@
     },
     "dayLabel": "Day {day}",
     "aria": {
-      "shareRegion": "Plan summary and share",
+      "shareRegion": "Rezumatul planului și distribuire",
       "shareMenu": "Opțiuni de copiere și distribuire",
       "shareVia": "Distribuie prin",
       "savePlanCta": "Creează un cont ca să salvezi planul pe toate dispozitivele",
@@ -2705,7 +2705,7 @@
         "aria": "Informații de încredere pentru rezervare",
         "heading": "Înainte de trimitere",
         "verifiedRoute": "Rută de cerere {context} verificată.",
-        "emailConfirm": "Partenerul confirmă de obicei pe email în 24 de ore.",
+        "emailConfirm": "Confirmarea ajunge de obicei pe email în 24 de ore.",
         "noCharge": "Nu se ia nicio plată aici. Furnizorii confirmă mai întâi disponibilitatea.",
         "contextPartner": "partener",
         "contextGuide": "ghid"
@@ -2714,12 +2714,12 @@
         "aria": "Progresul rezervării",
         "stepDetails": "Detalii",
         "stepSent": "Cerere trimisă",
-        "stepConfirmation": "Partenerul confirmă"
+        "stepConfirmation": "Confirmare"
       },
       "states": {
         "heading": "Stări rezervare:",
-        "wineryBody": "Statusul începe ca cerere; confirmat doar după răspunsul partenerului.",
-        "guideBody": "Statusul începe ca cerere; confirmat doar după răspunsul ghidului.",
+        "wineryBody": "De la cerere acum la confirmare după răspunsul cramei.",
+        "guideBody": "De la cerere acum la confirmare după răspunsul ghidului.",
         "offlineQueue": "Dacă ești offline, cererea e pusă la coadă ca sincronizare în așteptare și retrimisă automat."
       }
     },
@@ -2731,7 +2731,7 @@
         "partySizeRequired": "Alege mărimea grupului"
       },
       "errors": {
-        "failed": "Cererea a eșuat",
+        "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
         "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
       },
@@ -2749,7 +2749,7 @@
         "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
         "nextStep2": "Ghidul confirmă pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
-        "sla": "Este o cerere, nu un loc confirmat. Nu se ia nicio plată aici. Dacă nu auzi nimic după două zile lucrătoare, contactează ghidul."
+        "sla": "E o cerere, nu un loc confirmat. Dacă nu auzi nimic după două zile lucrătoare, contactează ghidul."
       },
       "fields": {
         "date": {
@@ -2804,7 +2804,7 @@
         "partySizeRequired": "Alege mărimea grupului"
       },
       "errors": {
-        "failed": "Cererea a eșuat",
+        "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
         "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
       },
@@ -2821,7 +2821,7 @@
         "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
         "nextStep2": "Crama confirmă data și ora pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
-        "sla": "Nu se ia nicio plată în aplicație. Crama confirmă disponibilitatea separat. Dacă nu auzi nimic după două zile lucrătoare, sună la cramă."
+        "sla": "Fără taxă în aplicație până confirmă. Dacă nu auzi nimic după două zile lucrătoare, sună crama."
       },
       "fields": {
         "date": {
@@ -2968,7 +2968,7 @@
         },
         "meta": {
           "title": "Rezervă o degustare | {wineryName} | Cyprus Winter",
-          "description": "Rezervă o degustare de iarnă la {wineryName} în {region}. Focuri calde, încălzitoare, adesea proprietarul toarnă. Vor confirma pe email. Rezervă din timp. Cyprus Winter."
+          "description": "Rezervă o degustare de iarnă la {wineryName} în {region}. Focuri calde, încălzitoare, adesea proprietarul toarnă. Confirmare pe email. Rezervă din timp. Cyprus Winter."
         }
       }
     }
