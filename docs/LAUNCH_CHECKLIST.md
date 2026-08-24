@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-23 · **Target commit:** `d6837f0` (main — CTO audit P1/P2, PR #147)
+**Last updated:** 2026-08-24 · **Target commit:** `3610596` (main — design sprint A–F complete, PRs #150–#155)
 
 ---
 
@@ -65,14 +65,14 @@ npm run lint && npm run typecheck && npm run test
 npm run i18n:validate && npm run i18n:scan --fail
 npm run data:validate && npm run check:conflict-markers && npm run build
 npm run images:validate   # winery + attraction local image paths
-npm run test:e2e:gate:ci   # needs: npm run test:e2e:install
+npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: npm run test:e2e:install
 ```
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 698 pass |
-| i18n keys | 2248 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `d6837f0` (PR #147) |
+| Unit tests | 728 pass |
+| i18n keys | 2252 × 7 locales |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `3610596` (design sprint + photography trust) |
 
 ---
 
@@ -119,6 +119,7 @@ Test viewports: **390×844** (mobile), **1280** (desktop).
 
 ## 6. Post-launch sprint (P2 — first 2 weeks)
 
+- [x] Design sprint A–F (tokens, home calm, chrome, visual QA gate, photography trust) — PRs #150–#155
 - [ ] Partner winery image intake (verified partners first) — `docs/WINERY_IMAGE_INTAKE.md`
 - [ ] Confirm `productionReady` on public domain (not just preview)
 - [ ] Update `docs/SCORECARD.md` after each release train

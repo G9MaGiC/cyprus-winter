@@ -1543,10 +1543,15 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | ID | Severity | Area | Issue | Fix status |
 |----|----------|------|-------|------------|
-| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env |
-| BUG-270 | P1 | SEO | Trail slug alias URLs (`/trails/artemis-trail`) 200 with canonical on slug vs JSON-LD `@id` on `trail.id` | Open — 301 slug→id or unify canonical |
-| BUG-271 | P1 | i18n | `locale-metadata-dynamic.ts`: book detail, trail title/description, weather month title/description still English on `[locale]` routes | Open |
-| BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Open |
+| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env (human) |
+| BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Won't fix — needed so health reports missing Upstash when Redis unreachable |
+
+### Fixed — design sprint + launch hygiene (Aug 24, 2026, main @ 3610596)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-279 | Design | Design sprint A–F incomplete — tokens, home density, chrome, visual QA, photo trust | PRs #150–#155 merged; `docs/DESIGN_SUPER_BRIEF.md`, `photography-trust.test.ts`, `e2e/visual-qa-gate.spec.ts` |
+| BUG-280 | Docs | `LAUNCH_CHECKLIST.md` / `SCORECARD.md` stale after sprint (698 tests, old commit ref) | Updated to 728 tests, 2252 i18n keys, commit `3610596` |
 | BUG-273 | P2 | E2E | 5 flaky locale discover filter chip tests at 390px (`locale-prefixed-route.spec.ts`) | Fixed — `toPass` retry + expand filters before assert |
 | BUG-274 | P2 | E2E | `hub-footer.spec.ts` does not cover new hub routes (`/book/guide`, `/weather`, etc.) | Fixed — added book/guide, weather, guides/directory |
 | BUG-275 | P2 | UX | HubFooter secondary links use inline `·` — cramped on narrow mobile | Fixed — `HubFooterSecondaryLinks` flex-wrap component |

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
-import { CARD, CTA, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
+import { CARD, CTA, HOME, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import type { LocalizedFeaturedWinery } from "@/app/_home/home-featured-wineries-data";
 import { wineries } from "@/data/wineries";
@@ -24,7 +24,7 @@ export default function BookTastingsView({ featured }: Props) {
   });
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+    <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap}`}>
       {items.map((w) => (
         <div
           key={w.wineryId}
