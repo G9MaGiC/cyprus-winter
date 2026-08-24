@@ -8,7 +8,7 @@ Target state for launch readiness. Re-run checks after major releases.
 | **Design system** | Tokens, motion, card/chrome primitives; CI guards | `docs/DESIGN_SUPER_BRIEF.md`, `design-tokens.test.ts` | **5/5** — sprint A–F + `HOME`/`HUB` grid tokens on all list hubs (PRs #157–#158) |
 | **Core funnel** | Discover → Plan → Book E2E green; Plan server shell + client leaf | `npm run test:e2e:gate:ci`, `src/app/(padded)/plan/page.tsx` | **5/5** — E2E gate incl. visual QA (375/768/RTL) + hero load checks |
 | **Security** | Upstash + Supabase in prod; AI paths validated; admin HttpOnly session | Public `curl /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; `resolve-internal-path.test.ts` | **4.5/5** — chat/search hardened (BUG-122–124); admin cookie session shipped (DR-003); Upstash must still be verified in prod |
-| **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 728 unit tests; `images:validate` + `photography-trust.test.ts`; Actions on Node 20.19.0 |
+| **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 729 unit tests; `images:validate` + `photography-trust.test.ts`; Actions on Node 20.19.0 |
 | **i18n / SEO** | 7 locales validate; scan clean; hreflang for all locales | `npm run i18n:validate`, `npm run i18n:scan --fail`, `npm run build` | **5/5** — 2252 keys × 7; trail slug 308→id (BUG-270) |
 | **Data maintainability** | `npm run data:validate`; audit tests; no shadow duplicate place IDs | CI quality job + discover data audit tests | **5/5** |
 | **Mobile / Capacitor** | Documented remote URL strategy + error path | `docs/RUNBOOK.md` §5–6, `capacitor.config.ts` | **4.5/5** — sticky Plan/overlay model improved (BUG-127–134) |
@@ -57,6 +57,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | Design sprint | PRs #150–#155: tokens, cards, home calm, chrome, visual QA gate, photography trust |
 | PR #157 | Main hub visual token pass — `HOME`/`HUB`, footer rhythm, book card media, skeleton parity |
 | PR #158 | Secondary hub card grids — villages, beaches, wine-routes, regions, plan quick-start |
+| PR #159 | Launch doc hygiene + root loading skeleton tokens |
 
 Details: `docs/QA_BUGS.md`
 
