@@ -1631,3 +1631,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-309 | i18n | Stale `editorial-fr.json` used itinerary wording; home/book chrome deltas not applied to beta locales | Plan terminology in editorial-fr; `apply-editorial-map` for fr/he/ro (485 keys each) |
+
+### Fixed — trail metadata difficulty i18n (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-310 | i18n | `trailDetailMetadata` looked up `trails.filters.difficulty.*.label` (missing) → `MISSING_MESSAGE` on `/el/trails/*` | Use `trails.badges.difficulty.*.label` in `locale-metadata-dynamic.ts` |
