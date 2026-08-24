@@ -62,6 +62,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #168 | Plan template i18n — de/el/pl + beta fr/he/ro planQuick & home templates (BUG-307/308) |
 | PR #170 | Beta editorial map sync — fr/he/ro home/book chrome without plan regression (BUG-309) |
 | PR #172 | Trail metadata difficulty i18n — `trails.badges` namespace (BUG-310) |
+| PR #174 | Beta plan funnel i18n — combos, banners, home titles (BUG-311) |
 
 Details: `docs/QA_BUGS.md`
 
