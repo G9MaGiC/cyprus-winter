@@ -36,11 +36,11 @@ function discoverTypeLabel(
 
 function trailDifficultyLabel(
   difficulty: string,
-  tFilters: Awaited<ReturnType<typeof getTranslations>>
+  tBadges: Awaited<ReturnType<typeof getTranslations>>
 ): string {
   const key = difficulty.toLowerCase();
   if (key === "easy" || key === "moderate" || key === "hard" || key === "expert") {
-    return tFilters(`difficulty.${key}.label`);
+    return tBadges(`difficulty.${key}.label`);
   }
   return difficulty;
 }
@@ -74,13 +74,13 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
 export async function trailDetailMetadata(id: string, locale: string): Promise<Metadata> {
   const trail = findTrailByIdOrSlug(id);
   if (!trail) notFound();
-  const [tTrailDetail, tFilters, tTrails] = await Promise.all([
+  const [tTrailDetail, tBadges, tTrails] = await Promise.all([
     getTranslations({ locale, namespace: "trails.detail" }),
-    getTranslations({ locale, namespace: "trails.filters" }),
+    getTranslations({ locale, namespace: "trails.badges" }),
     getTranslations({ locale, namespace: "trails" }),
   ]);
   const loc = trail.locationText ?? trail.region;
-  const difficultyLabel = trailDifficultyLabel(trail.difficulty, tFilters);
+  const difficultyLabel = trailDifficultyLabel(trail.difficulty, tBadges);
   const prefix = tTrailDetail("meta.descriptionPrefix", {
     location: loc,
     lengthKm: trail.lengthKm,
