@@ -1,4 +1,4 @@
-import { LAYOUT, SECTION, CARD, SKELETON } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 export default async function RootLoading() {
@@ -29,11 +29,11 @@ export default async function RootLoading() {
         </div>
       </div>
       {/* Content skeleton */}
-      <div className={`${LAYOUT.safeAreaX} ${SECTION.py}`}>
+      <div className={`${LAYOUT.safeAreaX} ${HOME.sectionPy}`}>
         <div className={`${LAYOUT.list} mx-auto`}>
           <div className={`h-9 w-32 ${SKELETON.bar} mb-2 mx-auto`} />
           <div className={`h-4 w-64 ${SKELETON.block} mb-10 mx-auto`} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ${HOME.gridGap}`}>
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className={`${CARD.base} overflow-hidden`}>
                 <div className={SKELETON.media} />

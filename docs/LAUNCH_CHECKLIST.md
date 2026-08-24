@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-24 · **Target commit:** `541d9c8` (main — design sprint A–F + main hub visual tokens, PRs #150–#157)
+**Last updated:** 2026-08-24 · **Target commit:** `ca84b6d` (main — design sprint A–F + visual token pass, PRs #150–#158)
 
 ---
 
@@ -72,7 +72,7 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 |-------|---------------------|
 | Unit tests | 728 pass |
 | i18n keys | 2252 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `3610596` (design sprint + photography trust) |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `ca84b6d` (visual token pass complete) |
 
 ---
 
