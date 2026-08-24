@@ -69,7 +69,7 @@ docs/DESIGN_SUPER_BRIEF.md
 | Motion restraint | A | No gratuitous animation |
 | Motion delight | B | Discover reveal; home static until BUG-247 |
 | Loading perception | B+ | Plan/trails/events aligned; more routes pending |
-| Visual trust (photos) | C+ | Winery heroes still partner-dependent |
+| Visual trust (photos) | B- | CI gates for home/book heroes; partner tasting rooms still pending (~55 venues) |
 | Cognitive calm | B | Home/plan density for power users |
 
 ---
