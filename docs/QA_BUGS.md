@@ -1607,3 +1607,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-305 | i18n | Residual "itinerary" in common aria, help, account, plan meta, and AI copy | User-facing strings → "plan" in en + fr/he/ro leftovers; launch docs @ `7e223ce` |
+
+### Ops — launch gate script (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-306 | Ops | No single command to gate on live `productionReady` | `npm run health:production`; LAUNCH_CHECKLIST §1 step-by-step for Upstash + Supabase |
