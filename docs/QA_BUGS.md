@@ -1637,3 +1637,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-310 | i18n | `trailDetailMetadata` looked up `trails.filters.difficulty.*.label` (missing) → `MISSING_MESSAGE` on `/el/trails/*` | Use `trails.badges.difficulty.*.label` in `locale-metadata-dynamic.ts` |
+
+### Fixed — beta plan funnel i18n (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-311 | i18n | Beta `/plan` still showed English combos, banners, collapsibles (fr/he/ro) | Extended `beta-locale-plan-i18n-overrides` — 20 plan + 3 home keys per locale |
