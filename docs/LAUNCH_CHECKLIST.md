@@ -2,9 +2,11 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-24 · **Target commit:** `a84a51a` (main — plan copy hygiene PR #164)
+**Last updated:** 2026-08-24 · **Target commit:** `ae7032b` (main — PRs #161–#165 merged)
 
 **Production health (live check):** `https://cyprus-winter.vercel.app/api/health` → `productionReady: false` (Upstash + Supabase env still missing on Vercel — see §1).
+
+**Quick gate:** `npm run health:production` (exit 0 only when live `productionReady: true`).
 
 ---
 
@@ -26,6 +28,33 @@ Set in **Vercel → Project → Settings → Environment Variables → Productio
 | `HEALTH_SECRET` | Recommended (required for annex dump) | Bearer token for full `/api/health` diagnostics in production |
 
 **Never in production:** `STRESS_TEST_TOKEN`
+
+### Step-by-step (P0 — ~15 min)
+
+1. **Upstash Redis** — [console.upstash.com](https://console.upstash.com) → Create database → copy REST URL + token.
+2. **Supabase** — Project → Settings → API → copy `Project URL`, `anon` key, and `service_role` key.
+3. **Vercel** → Project → Settings → Environment Variables → **Production** → add:
+
+   | Variable | Value |
+   |----------|--------|
+   | `UPSTASH_REDIS_REST_URL` | Upstash REST URL |
+   | `UPSTASH_REDIS_REST_TOKEN` | Upstash REST token |
+   | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key |
+   | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role (server-only) |
+
+4. **Redeploy** production (Deployments → … → Redeploy) so env vars take effect.
+5. **Verify:**
+
+   ```bash
+   npm run health:production
+   # or:
+   curl -s "https://cyprus-winter.vercel.app/api/health" | jq '{ ok, productionReady }'
+   ```
+
+6. **Optional but recommended:** add `HEALTH_SECRET` (random 32+ chars) for authorized diagnostics; `RESEND_API_KEY` + `RESEND_FROM_EMAIL` for booking emails; one AI key (`GROQ_API_KEY` or `AI_GATEWAY_API_KEY`).
+
+See also `.env.example` and `docs/RUNBOOK.md` §6 for the full env matrix.
 
 ### Verify after deploy
 
@@ -74,7 +103,7 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 |-------|---------------------|
 | Unit tests | 729 pass |
 | i18n keys | 2273 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `7e223ce` |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `ae7032b` |
 
 ---
 

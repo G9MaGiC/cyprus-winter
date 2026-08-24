@@ -57,6 +57,7 @@
     "grant:wireframes": "node scripts/grant/capture-wireframes.mjs",
     "grant:annex-pdf": "node scripts/grant/build-annex-ii-pdf.mjs",
     "grant:health": "npx tsx scripts/grant/fetch-production-health.ts",
+    "health:production": "npx tsx scripts/ops/check-production-health.ts",
     "i18n:extract": "npx tsx scripts/i18n/extract.ts",
     "i18n:validate": "npx tsx scripts/i18n/validate-messages.ts",
     "i18n:coverage": "npx tsx scripts/i18n/coverage.ts",
