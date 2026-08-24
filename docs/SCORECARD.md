@@ -5,7 +5,7 @@ Target state for launch readiness. Re-run checks after major releases.
 | Dimension | 5/5 criteria | Verify | Status (2026-08-24) |
 |-----------|----------------|--------|---------------------|
 | **Product clarity** | PRD-aligned funnel; winter-differentiated copy in `src/data` | `.cursor/PRODUCT_DEEP.md`, editorial review | **4.5/5** — funnel solid; partner tasting-room photos still ops-gated (~55 venues) |
-| **Design system** | Tokens, motion, card/chrome primitives; CI guards | `docs/DESIGN_SUPER_BRIEF.md`, `design-tokens.test.ts` | **5/5** — sprint A–F on main (colors, cards, home calm, chrome, visual gate, photo trust) |
+| **Design system** | Tokens, motion, card/chrome primitives; CI guards | `docs/DESIGN_SUPER_BRIEF.md`, `design-tokens.test.ts` | **5/5** — sprint A–F + `HOME`/`HUB` grid tokens on all list hubs (PRs #157–#158) |
 | **Core funnel** | Discover → Plan → Book E2E green; Plan server shell + client leaf | `npm run test:e2e:gate:ci`, `src/app/(padded)/plan/page.tsx` | **5/5** — E2E gate incl. visual QA (375/768/RTL) + hero load checks |
 | **Security** | Upstash + Supabase in prod; AI paths validated; admin HttpOnly session | Public `curl /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; `resolve-internal-path.test.ts` | **4.5/5** — chat/search hardened (BUG-122–124); admin cookie session shipped (DR-003); Upstash must still be verified in prod |
 | **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 728 unit tests; `images:validate` + `photography-trust.test.ts`; Actions on Node 20.19.0 |
@@ -56,6 +56,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | BUG-265–278 | QA sweep: weather footers, HubFooter AI guard, trail metadata, hub links, E2E |
 | Design sprint | PRs #150–#155: tokens, cards, home calm, chrome, visual QA gate, photography trust |
 | PR #157 | Main hub visual token pass — `HOME`/`HUB`, footer rhythm, book card media, skeleton parity |
+| PR #158 | Secondary hub card grids — villages, beaches, wine-routes, regions, plan quick-start |
 
 Details: `docs/QA_BUGS.md`
 
