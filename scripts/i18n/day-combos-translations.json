@@ -115,5 +115,122 @@
       "label": "Wybrzeże Pafos i Adonis",
       "why": "Grobowce Królów, wybrzeże, degustacja u Adonisa."
     }
+  },
+  "fr": {
+    "trailAndVillage": {
+      "label": "Sentier et village",
+      "why": "Forêt de pins le matin, déjeuner au village à midi.",
+      "tip": "Partez sur Artemis à 9 h. Omodos se réchauffe avec un café et la dentelle."
+    },
+    "limassolCoastCommandaria": {
+      "label": "Côte de Limassol et Commandaria",
+      "why": "Théâtre antique, pause rapide, puis vin Commandaria."
+    },
+    "paphosMosaicsWine": {
+      "label": "Mosaïques de Paphos et vin",
+      "why": "Lumière matinale sur les sols, Vouni pour le déjeuner et la dégustation.",
+      "tip": "Maison de Thésée : 9–11 h. Réservez Vouni à l'avance."
+    },
+    "waterfallVillage": {
+      "label": "Cascade et village de pierre",
+      "why": "Caledonia après la pluie, Kakopetria pour déjeuner et pavés.",
+      "tip": "Idéal 1–2 jours après la pluie. Bottes imperméables."
+    },
+    "kykkosWine": {
+      "label": "Kykkos et vin",
+      "why": "Monastère et vues d'abord, dégustation Tsiakkas pour boucler la boucle.",
+      "tip": "Terrasse chauffée. Réservez à l'avance."
+    },
+    "laceAncientWine": {
+      "label": "Dentelle, antique et vin",
+      "why": "Lefkara, Choirokoitia, puis Dómes Sergiou."
+    },
+    "gentleTrailPlatres": {
+      "label": "Sentier doux et Platres",
+      "why": "Cascades de Millomeris, puis Platres pour les cafés et la vue.",
+      "tip": "Courte marche cascade à Platres. Souvent dégagée quand plus haut il y a de la neige."
+    },
+    "paphosCoastAdonis": {
+      "label": "Côte de Paphos et Adonis",
+      "why": "Tombeaux des Rois, stretch côtier, dégustation chez Adonis."
+    }
+  },
+  "he": {
+    "trailAndVillage": {
+      "label": "שביל וכפר",
+      "why": "יער אורנים בבוקר, צהריים בכפר.",
+      "tip": "התחילו Artemis ב-9. Omodos מתחמם עם קפה ותחרת."
+    },
+    "limassolCoastCommandaria": {
+      "label": "חוף Limassol ו-Commandaria",
+      "why": "תיאטרון עתיק, עצירה קצרה, אחר כך יין Commandaria."
+    },
+    "paphosMosaicsWine": {
+      "label": "פסיפסי Paphos ויין",
+      "why": "אור בוקר על הרצפות, Vouni לצהריים וטעימה.",
+      "tip": "בית Theseus: 9–11. הזמינו Vouni מראש."
+    },
+    "waterfallVillage": {
+      "label": "מפל וכפר אבן",
+      "why": "Caledonia אחרי גשם, Kakopetria לארוחה.",
+      "tip": "הכי טוב 1–2 ימים אחרי גשם. מגפיים אטומים."
+    },
+    "kykkosWine": {
+      "label": "Kykkos ויין",
+      "why": "מנזר ונוף קודם, טעימת Tsiakkas לסיום.",
+      "tip": "מרפסת עם מחממים. הזמינו מראש."
+    },
+    "laceAncientWine": {
+      "label": "תחרת, עתיק ויין",
+      "why": "Lefkara, Choirokoitia, אחר כך Dómes Sergiou."
+    },
+    "gentleTrailPlatres": {
+      "label": "שביל עדין ו-Platres",
+      "why": "מפלי Millomeris, אחר כך Platres לקafenion ונוף.",
+      "tip": "מסלול מפל קצר ב-Platres. לעיתים פנוי כשבגובה יש שלג."
+    },
+    "paphosCoastAdonis": {
+      "label": "חוף Paphos ו-Adonis",
+      "why": "קברי המלכים, קטע חוף, טעימה ב-Adonis."
+    }
+  },
+  "ro": {
+    "trailAndVillage": {
+      "label": "Traseu și sat",
+      "why": "Pădure de pin dimineața, prânz la sat la prânz.",
+      "tip": "Pornește Artemis la 9. Omodos se încălzește cu cafea și dantelă."
+    },
+    "limassolCoastCommandaria": {
+      "label": "Coasta Limassol și Commandaria",
+      "why": "Teatru antic, oprire rapidă, apoi vin Commandaria."
+    },
+    "paphosMosaicsWine": {
+      "label": "Mozaicuri Paphos și vin",
+      "why": "Lumină de dimineață pe podele, Vouni pentru prânz și degustare.",
+      "tip": "Casa lui Theseus: 9–11. Rezervă Vouni din timp."
+    },
+    "waterfallVillage": {
+      "label": "Cascadă și sat de piatră",
+      "why": "Caledonia după ploaie, Kakopetria pentru prânz.",
+      "tip": "Cel mai bine 1–2 zile după ploaie. Cizme impermeabile."
+    },
+    "kykkosWine": {
+      "label": "Kykkos și vin",
+      "why": "Mănăstire și priveliști mai întâi, degustare Tsiakkas la final.",
+      "tip": "Terasă cu încălzitoare. Rezervă din timp."
+    },
+    "laceAncientWine": {
+      "label": "Dantelă, antic și vin",
+      "why": "Lefkara, Choirokoitia, apoi Dómes Sergiou."
+    },
+    "gentleTrailPlatres": {
+      "label": "Traseu ușor și Platres",
+      "why": "Cascada Millomeris, apoi Platres pentru cafenele și priveliști.",
+      "tip": "Plimbare scurtă la cascadă lângă Platres. Adesea liber când sus e zăpadă."
+    },
+    "paphosCoastAdonis": {
+      "label": "Coasta Paphos și Adonis",
+      "why": "Mormintele Regilor, coastă, degustare la Adonis."
+    }
   }
 }

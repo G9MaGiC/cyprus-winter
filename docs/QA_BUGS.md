@@ -1643,3 +1643,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-311 | i18n | Beta `/plan` still showed English combos, banners, collapsibles (fr/he/ro) | Extended `beta-locale-plan-i18n-overrides` — 20 plan + 3 home keys per locale |
+
+### Fixed — beta locale soft-gap i18n (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-312 | i18n | Optional soft gaps on `/`, `/plan`, `/bookings` for fr/he/ro: `home.insiderTip*`, `whyCyprus`, `editorsPicks`/`featuredWineries` copy, `insiderTips`, `placeOfDay`, `plan.dayCombos`, `plan.share`/`daySelector`, `placePicker.*`, `bookings.page.*` still English | `beta-locale-soft-gaps-overrides.json` + `patch-beta-locale-soft-gaps.mjs`; extended `day-combos-translations.json` with fr/he/ro (~171 keys/locale applied) |
