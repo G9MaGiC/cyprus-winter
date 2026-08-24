@@ -1,7 +1,7 @@
 # G1 — live production health evidence
 
 **Status:** Public JSON captured. **`productionReady` is false.** Do not paste a fabricated `true` into IRIS.  
-**Captured:** 20 August 2026 against `https://cyprus-winter.vercel.app/api/health`  
+**Captured:** 24 August 2026 against `https://cyprus-winter.vercel.app/api/health`  
 **`cypruswinter.com`:** did not resolve from this agent environment (DNS). Recapture against the custom domain once DNS is live.
 
 Public body (also in `production-health-public.json`):
@@ -19,9 +19,8 @@ HTTP status was **503**. That matches the health route when required production 
 ## Recapture
 
 ```bash
-npm run grant:health
-# or:
-GRANT_HEALTH_URL=https://cypruswinter.com/api/health npm run grant:health
+npm run grant:health          # refresh docs/grant/production-health-public.json
+npm run health:production     # exit 0 only when live productionReady is true
 ```
 
 Authorized annex dump (checks only — no hints) needs `HEALTH_SECRET` on Vercel, then:
