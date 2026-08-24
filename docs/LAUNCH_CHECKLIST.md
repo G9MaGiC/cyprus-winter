@@ -2,7 +2,9 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-24 · **Target commit:** `ca84b6d` (main — design sprint A–F + visual token pass, PRs #150–#158)
+**Last updated:** 2026-08-24 · **Target commit:** `3183177` (main — design sprint A–F + visual token pass complete, PRs #150–#159)
+
+**Production health (live check):** `https://cyprus-winter.vercel.app/api/health` → `productionReady: false` (Upstash + Supabase env still missing on Vercel — see §1).
 
 ---
 
@@ -70,9 +72,9 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 728 pass |
+| Unit tests | 729 pass |
 | i18n keys | 2252 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `ca84b6d` (visual token pass complete) |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `3183177` |
 
 ---
 
@@ -120,8 +122,9 @@ Test viewports: **390×844** (mobile), **1280** (desktop).
 ## 6. Post-launch sprint (P2 — first 2 weeks)
 
 - [x] Design sprint A–F (tokens, home calm, chrome, visual QA gate, photography trust) — PRs #150–#155
+- [x] Main + secondary hub visual token pass — PRs #157–#159 (`HOME`/`HUB` grids, book card media, docs hygiene)
 - [ ] Partner winery image intake (verified partners first) — `docs/WINERY_IMAGE_INTAKE.md`
-- [ ] Confirm `productionReady` on public domain (not just preview)
+- [ ] Confirm `productionReady` on public domain (not just preview) — **blocked on §1 env vars**
 - [ ] Update `docs/SCORECARD.md` after each release train
 - [x] Admin HttpOnly session (DR-003) — `/admin/stats` uses `POST /api/admin/session`; secret is not stored in `sessionStorage`
 - [x] GitHub Actions Node 20 → 24 action runtime (PR #70: checkout/setup-node/upload-artifact @v7)
