@@ -55,6 +55,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | BUG-232–245 | UX/UI QA: sticky sand bars, loading skeleton parity, bottom bar tokens |
 | BUG-265–278 | QA sweep: weather footers, HubFooter AI guard, trail metadata, hub links, E2E |
 | Design sprint | PRs #150–#155: tokens, cards, home calm, chrome, visual QA gate, photography trust |
+| PR #157 | Main hub visual token pass — `HOME`/`HUB`, footer rhythm, book card media, skeleton parity |
 
 Details: `docs/QA_BUGS.md`
 

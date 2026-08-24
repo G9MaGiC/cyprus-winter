@@ -1,4 +1,4 @@
-import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
 
 function MonthSkeleton() {
   return (
@@ -25,7 +25,7 @@ export default function WeatherLoading() {
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
         <div className={`h-9 w-48 ${SKELETON.bar} mb-2`} />
         <div className={`h-4 max-w-lg ${SKELETON.block} mb-10`} />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <MonthSkeleton key={i} />
           ))}

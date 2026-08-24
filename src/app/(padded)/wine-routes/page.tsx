@@ -4,7 +4,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { WINE_ROUTES } from "@/data/wine-routes";
-import { LAYOUT, CTA, TYPE, SECTION, CARD } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA, TYPE, SECTION, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import HubFooter from "@/components/HubFooter";
@@ -87,7 +87,7 @@ export default async function WineRoutesHubPage() {
         </div>
       </PageHeader>
 
-      <ul className="grid sm:grid-cols-2 gap-6 mb-12 sm:mb-16">
+      <ul className={`grid sm:grid-cols-2 ${HOME.gridGap} mb-12 sm:mb-16`}>
         {WINE_ROUTES.map((route) => (
           <li key={route.slug}>
             <AppLink

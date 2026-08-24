@@ -1,4 +1,4 @@
-import { LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 export default async function RegionLoading() {
@@ -16,7 +16,7 @@ export default async function RegionLoading() {
         <div className={`h-10 w-48 ${SKELETON.bar} mb-4`} />
         <div className={`h-4 w-full max-w-2xl ${SKELETON.block} mb-2`} />
         <div className={`h-4 w-3/4 max-w-xl ${SKELETON.block}`} />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div key={i} className={`${CARD.base} overflow-hidden`}>
               <div className={SKELETON.media} />

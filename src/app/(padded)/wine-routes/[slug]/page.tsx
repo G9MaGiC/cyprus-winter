@@ -3,7 +3,7 @@ import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
-import { LAYOUT, SECTION, CARD, TYPE } from "@/lib/design-tokens";
+import { HOME, LAYOUT, SECTION, CARD, TYPE } from "@/lib/design-tokens";
 import Image from "next/image";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -119,7 +119,7 @@ export default async function WineRoutePage({ params }: Props) {
       <h2 id="wineries-list" className="sr-only">
         {tPage("wineriesOnRoute")}
       </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {routeWineries.map((w) => (
           <AttractionCard key={w.id} a={w} bookFrom={WINE_ROUTE_BOOK_FROM} />
         ))}

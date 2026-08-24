@@ -1,7 +1,7 @@
 "use client";
 
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
-import { SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, SECTION, TYPE } from "@/lib/design-tokens";
 import PushOptIn from "@/components/PushOptIn";
 import type { TripDates } from "@/hooks/useTripDates";
 import { useTranslations } from "next-intl";
@@ -23,7 +23,7 @@ function TripDatesFields({
   return (
     <>
       <h2 className={`${TYPE.subSectionTitle} text-olive text-base ${SECTION.headingGap}`}>{t("heading")}</h2>
-      <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 mb-5">
+      <div className={`grid sm:grid-cols-2 ${HOME.gridGap} mb-5`}>
         <label className="flex flex-col gap-2">
           <span className={`${TYPE.kicker} text-olive/60`}>{t("startLabel")}</span>
           <input

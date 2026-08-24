@@ -12,7 +12,7 @@ import { wineries } from "@/data/wineries";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
-import { LAYOUT, CARD, TYPE, SECTION, MEDIA } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, TYPE, SECTION, MEDIA } from "@/lib/design-tokens";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
@@ -162,7 +162,7 @@ export default async function RegionPage({ params }: Props) {
             >
               Trails
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionTrails.map((t) => (
                 <TrailCard key={t.id} trail={t} />
               ))}
@@ -188,7 +188,7 @@ export default async function RegionPage({ params }: Props) {
             >
               Villages
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionVillages.map((v) => (
                 <PlaceCard key={v.id} item={v} type="village" />
               ))}
@@ -204,7 +204,7 @@ export default async function RegionPage({ params }: Props) {
             >
               Beaches
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionBeaches.map((b) => (
                 <PlaceCard key={b.id} item={b} type="beach" />
               ))}
@@ -220,7 +220,7 @@ export default async function RegionPage({ params }: Props) {
             >
               Ancient sites
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionAncient.map((a) => (
                 <PlaceCard key={a.id} item={a} type="ancient" />
               ))}
@@ -236,7 +236,7 @@ export default async function RegionPage({ params }: Props) {
             >
               Wineries
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionWineries.slice(0, 9).map((w) => (
                 <PlaceCard key={w.id} item={w} type="winery" />
               ))}
@@ -287,7 +287,7 @@ export default async function RegionPage({ params }: Props) {
             >
               Monasteries & churches
             </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionMonasteries.map((m) => (
                 <PlaceCard key={m.id} item={m} type="monastery" />
               ))}

@@ -2,7 +2,7 @@
 
 import TrailCard from "@/components/TrailCard";
 import { trailConditions } from "@/data/trails";
-import { SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, SECTION, TYPE } from "@/lib/design-tokens";
 import type { Trail } from "@/data/trails";
 
 type BestConditionsNowProps = {
@@ -21,7 +21,7 @@ export default function BestConditionsNow({ trails }: BestConditionsNowProps) {
       <h2 id="best-now" className={`${TYPE.subSectionTitleLg} ${SECTION.headingGap}`}>
         Best conditions now
       </h2>
-      <div className="flex gap-3 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none sm:gap-6">
+      <div className={`flex gap-3 overflow-x-auto scroll-smooth scroll-touch pb-2 -mx-[max(1.5rem,env(safe-area-inset-left))] px-[max(1.5rem,env(safe-area-inset-left))] sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-3 sm:overflow-visible sm:snap-none ${HOME.gridGap}`}>
         {trails.map((trail) => (
           <div key={trail.id} className="shrink-0 w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none snap-start">
             <TrailCard trail={trail} conditions={trailConditions[trail.id]} featured />
