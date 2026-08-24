@@ -61,14 +61,14 @@
   "common": {
     "nav": {
       "discover": "Discover",
-      "trip": "Itinerary",
+      "trip": "Plan",
       "airport": "Airport"
     },
     "aria": {
       "planCta": "Build a day",
       "pageNavigation": "Page navigation",
       "viewPlan": "View your plan",
-      "placeInItinerary": "{id} is in your itinerary",
+      "placeInItinerary": "{id} is in your plan",
       "bottomNavigation": "Bottom navigation",
       "moreNavigation": "More navigation",
       "breadcrumb": "Breadcrumb",
@@ -76,7 +76,7 @@
       "selectLanguage": "Select language",
       "close": "Close",
       "addPlace": "Add place",
-      "addPlaceToItinerary": "Add a place to your itinerary",
+      "addPlaceToItinerary": "Add a place to your plan",
       "navigateTo": "Navigate to {name}",
       "removeFromPlan": "Remove {name} from plan",
       "clearRecentlyViewed": "Clear recently viewed",
@@ -99,7 +99,7 @@
     },
     "noscript": {
       "title": "JavaScript is required",
-      "body": "for full functionality. You can still browse trails and places, but features like the itinerary planner and chat require JavaScript."
+      "body": "for full functionality. You can still browse trails and places, but features like the plan builder and chat require JavaScript."
     },
     "map": {
       "openStreetMap": "OpenStreetMap",
@@ -160,7 +160,7 @@
       "thinking": "Thinking…",
       "slash": {
         "skillsDescription": "See what I can help with",
-        "skillsBody": "Here's what I can help with:\n\n**Trip planning** — Build a day or multi-day itinerary tailored to your dates and region.\n\n**Discover places** — Wineries, villages, beaches, ancient sites, monasteries.\n\n**Trails & hiking** — Suggestions by difficulty, region, and winter conditions.\n\n**Weather-adapted ideas** — What to do based on the forecast or your travel month.\n\n**Nearby places** — Share your location and I'll find what's close.\n\n**Airport arrival** — Transport from Larnaca or Paphos, first stops, opening-day tips.\n\n**Search & compare** — Compare trails, wineries, and events across the island.\n\nJust ask a question or tap a suggestion below to get started.",
+        "skillsBody": "Here's what I can help with:\n\n**Trip planning** — Build a day or multi-day plan tailored to your dates and region.\n\n**Discover places** — Wineries, villages, beaches, ancient sites, monasteries.\n\n**Trails & hiking** — Suggestions by difficulty, region, and winter conditions.\n\n**Weather-adapted ideas** — What to do based on the forecast or your travel month.\n\n**Nearby places** — Share your location and I'll find what's close.\n\n**Airport arrival** — Transport from Larnaca or Paphos, first stops, opening-day tips.\n\n**Search & compare** — Compare trails, wineries, and events across the island.\n\nJust ask a question or tap a suggestion below to get started.",
         "followUpPlan": "Plan my 3-day trip",
         "followUpWineries": "Best wineries near Limassol",
         "followUpHike": "Easy winter hike",
@@ -213,7 +213,7 @@
         "home": "Trails, wineries, villages, day plans — ask anything, or tap a suggestion below.",
         "trails": "Looking for a trail? I can help match one to today's weather and your fitness level.",
         "discover": "Exploring places? Tell me your region or what you're in the mood for — I'll narrow it down.",
-        "plan": "Building your plan? I can suggest what fits each day, or fill gaps in your itinerary.",
+        "plan": "Building your plan? I can suggest what fits each day, or fill gaps in your plan.",
         "airport": "Just arrived or planning to? I can help with transport, first stops, and your opening day.",
         "followUps": {
           "home": {
@@ -1883,7 +1883,7 @@
     },
     "dayLabel": "Day {day}",
     "aria": {
-      "shareRegion": "Itinerary summary and share",
+      "shareRegion": "Plan summary and share",
       "shareMenu": "Copy and share options",
       "shareVia": "Share via",
       "savePlanCta": "Create account to save your plan across devices",
@@ -1924,10 +1924,10 @@
       "winterTip": "Winter tip: daylight fades around 5pm. Start trails by 10am and book tastings 24–48h ahead."
     },
     "meta": {
-      "title": "Plan Cyprus Winter | Curated Itineraries & Trip Builder",
-      "description": "Curated Cyprus winter itineraries: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
-      "ogTitle": "Plan Cyprus Winter | Curated Itineraries & Trip Builder",
-      "ogDescription": "Curated Cyprus winter itineraries with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
+      "title": "Plan Cyprus Winter | Curated Plans & Trip Builder",
+      "description": "Curated Cyprus winter plans: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
+      "ogTitle": "Plan Cyprus Winter | Curated Plans & Trip Builder",
+      "ogDescription": "Curated Cyprus winter plans with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
     },
     "templateChoiceModal": {
       "title": "Apply {template}?",
@@ -2198,7 +2198,7 @@
     "signedOut": {
       "title": "Save your plan across devices",
       "description": "Sign in to sync your plan and bookings across devices.",
-      "body": "Create a free account and your itinerary and bookings will follow you wherever you go.",
+      "body": "Create a free account and your plan and bookings will follow you wherever you go.",
       "cta": {
         "create": "Create account",
         "signIn": "Sign in",
@@ -2270,7 +2270,7 @@
     },
     "meta": {
       "title": "My account | Cyprus Winter",
-      "description": "Sign in to sync your plan and bookings across devices. Your itinerary and tasting requests will follow you wherever you go."
+      "description": "Sign in to sync your plan and bookings across devices. Your plan and tasting requests will follow you wherever you go."
     }
   },
   "search": {
@@ -2575,12 +2575,12 @@
     },
     "tipPlanEmpty": "Add your first place — pick from Discover or use a template below.",
     "tipPlanEmptyLink": "Browse Discover",
-    "tipFirstAdd": "In your plan. Add more or share your itinerary.",
+    "tipFirstAdd": "In your plan. Add more or share your plan.",
     "tipDiscoverFilter": "Filter by villages, wineries, or trails.",
     "savePlan": "Save your plan — create account to sync"
   },
   "help": {
-    "planEmpty": "Tap “Add places” to start building your itinerary from Discover or Trails.",
+    "planEmpty": "Tap “Add places” to start building your plan from Discover or Trails.",
     "planFirstItem": "Great start. Add more places or switch days to plan your whole trip.",
     "discoverFilter": "Use filters to find exactly what you're looking for—wineries, trails, beaches, and more.",
     "bookingForm": "Fill in your details and the winery will confirm by email. Most respond within 24 hours.",
@@ -2631,7 +2631,7 @@
     },
     "register": {
       "title": "Join Cyprus Winter",
-      "subtitle": "Plan trails, wineries, villages. Sync your itinerary across devices.",
+      "subtitle": "Plan trails, wineries, villages. Sync your plan across devices.",
       "configTitle": "Create account",
       "configSubtitle": "Auth is being set up. You can still use the app—your plan saves on this device. Check back soon.",
       "errorEmailExists": "An account with that email already exists.",
@@ -3164,7 +3164,7 @@
             "booking": "<strong>Booking data</strong> (email, name, experience and date): to process winery and guide booking requests and communicate with you. <em>Legal basis: Contract performance.</em>",
             "trailReports": "<strong>Trail reports</strong> (note, optional email): to display crowd-sourced trail conditions. <em>Legal basis: Legitimate interest; consent where email is provided.</em>",
             "chat": "<strong>Chat messages</strong>: when you use Ask AI, your messages and context are sent to AI providers (OpenAI, xAI, Groq, Moonshot) to generate responses. <em>Legal basis: Legitimate interest.</em>",
-            "localPrefs": "<strong>Local preferences</strong> (interests, regions, itinerary): stored in your browser only. Not sent to our servers except as needed for features (e.g. plan share links)."
+            "localPrefs": "<strong>Local preferences</strong> (interests, regions, plan): stored in your browser only. Not sent to our servers except as needed for features (e.g. plan share links)."
           }
         },
         "s3": {
@@ -3373,7 +3373,7 @@
       "text_subtitle": "Often sixteen degrees when home is six.",
       "text_16": "Plan ahead or start exploring when you land.",
       "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your itinerary",
+      "aria-label_11": "View your plan",
       "aria-label_12": "Transport from airport, tips"
     }
   },

@@ -1883,7 +1883,7 @@
     },
     "dayLabel": "Day {day}",
     "aria": {
-      "shareRegion": "Rezumatul planului și distribuire",
+      "shareRegion": "Plan summary and share",
       "shareMenu": "Opțiuni de copiere și distribuire",
       "shareVia": "Distribuie prin",
       "savePlanCta": "Creează un cont ca să salvezi planul pe toate dispozitivele",
@@ -1924,10 +1924,10 @@
       "winterTip": "Sfat de iarnă: lumina se stinge pe la ora 17. Pornește traseele până la ora 10 și rezervă degustări cu 24–48 h înainte."
     },
     "meta": {
-      "title": "Plan Cyprus Winter | Curated Itineraries & Trip Builder",
-      "description": "Curated Cyprus winter itineraries: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
-      "ogTitle": "Plan Cyprus Winter | Curated Itineraries & Trip Builder",
-      "ogDescription": "Curated Cyprus winter itineraries with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
+      "title": "Plan Cyprus Winter | Curated Plans & Trip Builder",
+      "description": "Curated Cyprus winter plans: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
+      "ogTitle": "Plan Cyprus Winter | Curated Plans & Trip Builder",
+      "ogDescription": "Curated Cyprus winter plans with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
     },
     "templateChoiceModal": {
       "title": "Apply {template}?",
@@ -1944,7 +1944,7 @@
       "addToPlan": "Add to plan"
     },
     "map": {
-      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your itinerary",
+      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your plan",
       "dayLabel": "Day {day}",
       "viewDetails": "View details →",
       "footer": "{count, plural, one {# place} other {# places}} on map. Numbers = day. Tap to explore.",
@@ -2198,7 +2198,7 @@
     "signedOut": {
       "title": "Save your plan across devices",
       "description": "Sign in to sync your plan and bookings across devices.",
-      "body": "Create a free account and your itinerary and bookings will follow you wherever you go.",
+      "body": "Create a free account and your plan and bookings will follow you wherever you go.",
       "cta": {
         "create": "Create account",
         "signIn": "Sign in",
@@ -2270,7 +2270,7 @@
     },
     "meta": {
       "title": "My account | Cyprus Winter",
-      "description": "Sign in to sync your plan and bookings across devices. Your itinerary and tasting requests will follow you wherever you go."
+      "description": "Sign in to sync your plan and bookings across devices. Your plan and tasting requests will follow you wherever you go."
     }
   },
   "search": {
@@ -2575,12 +2575,12 @@
     },
     "tipPlanEmpty": "Add your first place — pick from Discover or use a template below.",
     "tipPlanEmptyLink": "Browse Discover",
-    "tipFirstAdd": "In your plan. Add more or share your itinerary.",
+    "tipFirstAdd": "In your plan. Add more or share your plan.",
     "tipDiscoverFilter": "Filter by villages, wineries, or trails.",
     "savePlan": "Save your plan — create account to sync"
   },
   "help": {
-    "planEmpty": "Tap “Add places” to start building your itinerary from Discover or Trails.",
+    "planEmpty": "Tap “Add places” to start building your plan from Discover or Trails.",
     "planFirstItem": "Great start. Add more places or switch days to plan your whole trip.",
     "discoverFilter": "Use filters to find exactly what you're looking for—wineries, trails, beaches, and more.",
     "bookingForm": "Fill in your details and the winery will confirm by email. Most respond within 24 hours.",
@@ -2622,7 +2622,7 @@
     },
     "register": {
       "title": "Alătură-te Cyprus Winter",
-      "subtitle": "Plan trails, wineries, villages. Sync your itinerary across devices.",
+      "subtitle": "Plan trails, wineries, villages. Sync your plan across devices.",
       "configTitle": "Create account",
       "configSubtitle": "Auth is being set up. You can still use the app—your plan saves on this device. Check back soon.",
       "errorEmailExists": "An account with that email already exists.",
@@ -3373,7 +3373,7 @@
       "text_subtitle": "Often sixteen degrees when home is six.",
       "text_16": "Plan ahead or start exploring when you land.",
       "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your itinerary",
+      "aria-label_11": "View your plan",
       "aria-label_12": "Transport from airport, tips"
     }
   },
