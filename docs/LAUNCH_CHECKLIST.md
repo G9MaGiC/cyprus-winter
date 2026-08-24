@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-24 · **Target commit:** `d430e47` (main — PRs #161–#174 merged)
+**Last updated:** 2026-08-24 · **Target commit:** `99d934d` (main — PRs #161–#176 merged)
 
 **Production health (live check):** `https://cyprus-winter.vercel.app/api/health` → `productionReady: false` (Upstash + Supabase env still missing on Vercel — see §1).
 
@@ -103,7 +103,7 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 |-------|---------------------|
 | Unit tests | 729 pass |
 | i18n keys | 2273 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `d430e47` (PR #174) |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `99d934d` (PR #176) |
 
 ---
 
@@ -117,7 +117,7 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 | Book | `/discover/tsiakkas` → Book tasting | Hero image ≠ generic only; back returns to discover |
 | Search | `/search?q=omodos` → result → back | Query preserved (GF4) |
 | i18n | `/el`, `/de` home + plan | No English leaks in nav/footer |
-| i18n beta | `/fr`, `/he`, `/ro` switcher + chrome | Locales labeled beta; nav/footer/errors not English (home editorial may still be) |
+| i18n beta | `/fr`, `/he`, `/ro` switcher + chrome | Locales labeled beta; nav/footer/errors not English; home/plan/bookings funnel chrome localized (BUG-312); detail/legal may still be English |
 | Bookings | Submit test booking (staging) | Email or Supabase row (if configured) |
 
 Test viewports: **390×844** (mobile), **1280** (desktop).
