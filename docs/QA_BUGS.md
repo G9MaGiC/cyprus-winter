@@ -1595,3 +1595,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-301 | UX | `InstallPromptBanner` used `LAYER.onboarding` (z-index conflict) | `LAYER.toast` — above cookie, below onboarding |
 | BUG-302 | i18n | Plan copy still said "itinerary" in user-facing strings | Plan namespace + `home.planSubtitle` → "plan" wording (×7 locales) |
 | BUG-303 | DX | Duplicate `error.tsx` implementations | Shared `AppErrorPage` used by root + padded error boundaries |
+
+### Fixed — plan template i18n (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-304 | i18n | Plan template cards and quick-add pills used English-only labels from `itinerary-templates.ts` / `plan-quick-add.ts` | `planQuick.templates.items.*` + `planQuick.quickAddPlaces.*`; wired in `QuickStartSection` + `DayContentPanel` |

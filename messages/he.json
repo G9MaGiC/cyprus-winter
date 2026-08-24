@@ -1001,7 +1001,6 @@
       "loading": "Loading map…",
       "emptyTitle": "No places with coordinates to display.",
       "emptyBody": "Browse the list above to explore places.",
-      "emptyBrowseCta": "גלו מקומות",
       "emptyBrowseCta": "Browse places",
       "sectionTitle": "Places on map",
       "sectionTitleWithCount": "Places on map ({count})",
@@ -2036,7 +2035,49 @@
     "tripFitCompress": "Compress plan",
     "tripFitExtend": "Extend with add-ons",
     "allTemplates": "All templates",
-    "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}"
+    "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}",
+    "templates": {
+      "items": {
+        "short-stay": {
+          "label": "Short stay",
+          "description": "48 hours: ancient coast, Troodos trail, village wine"
+        },
+        "classic": {
+          "label": "Classic",
+          "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace"
+        },
+        "mountain": {
+          "label": "Mountain",
+          "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos"
+        },
+        "coast-culture": {
+          "label": "Coast & Culture",
+          "description": "Beaches, UNESCO sites, wineries—east to west"
+        },
+        "family": {
+          "label": "Family",
+          "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch"
+        },
+        "workation": {
+          "label": "Workation week",
+          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather"
+        },
+        "classic-7": {
+          "label": "Classic Culture (7 days)",
+          "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep"
+        },
+        "mountain-10": {
+          "label": "Mountain Explorer (10 days)",
+          "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion"
+        }
+      }
+    },
+    "quickAddPlaces": {
+      "artemis": "Artemis Trail",
+      "kourion": "Kourion",
+      "domes-sergiou": "Dómes Sergiou",
+      "omodos": "Omodos"
+    }
   },
   "bookings": {
     "title": "ההזמנות שלי",
