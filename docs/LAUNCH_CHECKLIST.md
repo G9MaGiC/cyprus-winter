@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-24 · **Target commit:** `3610596` (main — design sprint A–F complete, PRs #150–#155)
+**Last updated:** 2026-08-24 · **Target commit:** `541d9c8` (main — design sprint A–F + main hub visual tokens, PRs #150–#157)
 
 ---
 

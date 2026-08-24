@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import AppLink from "@/components/AppLink";
-import { CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
+import { HOME, CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
@@ -153,7 +153,7 @@ export default function QuickStartSection({
           <h3 className={`${TYPE.kicker} text-terracotta`}>
             {tPlanQuick("forYou")}
           </h3>
-          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
+          <div className={`flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap} sm:overflow-visible`}>
             {forYou.map((template) => (
               <div key={template.key} className={templateCardClass}>
                 {renderTemplateCard(template, false, true)}
@@ -167,7 +167,7 @@ export default function QuickStartSection({
           <h3 className={`${TYPE.kicker} text-aegean`}>
             {tripLength != null ? tPlanQuick("forTrip", { days: tripLength }) : tPlanQuick("forYou")}
           </h3>
-          <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
+          <div className={`flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap} sm:overflow-visible`}>
             {recommended.map((template) => (
               <div key={template.key} className={templateCardClass}>
                 {renderTemplateCard(template, true, false)}
@@ -180,7 +180,7 @@ export default function QuickStartSection({
         <h3 className={`${TYPE.kicker} text-olive/70`}>
           {tPlanQuick("allTemplates")}
         </h3>
-        <div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 lg:gap-6 sm:overflow-visible">
+        <div className={`flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap} sm:overflow-visible`}>
           {othersToShow.map((template) => (
             <div key={template.key} className={templateCardClass}>
               {renderTemplateCard(template, false, false)}

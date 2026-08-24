@@ -3,7 +3,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { villages } from "@/data/attractions";
-import { LAYOUT, CTA } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import HubFooter from "@/components/HubFooter";
@@ -85,7 +85,7 @@ export default async function VillagesPage() {
         <h2 id="villages-list" className="sr-only">
           {tVillages("srHeading")}
         </h2>
-        <ul role="list" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
           {villages.map((village) => (
             <li key={village.id}><AttractionCard a={village} /></li>
           ))}

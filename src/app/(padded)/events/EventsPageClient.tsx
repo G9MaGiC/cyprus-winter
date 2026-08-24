@@ -6,7 +6,7 @@ import { winterEvents } from "@/data/events";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import HubFooter from "@/components/HubFooter";
 import AskAIButton from "@/components/AskAIButton";
-import { LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION, LAYER } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION, LAYER } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
@@ -191,7 +191,7 @@ export default function EventsPage() {
                 <p className={`text-sm text-olive/70 max-w-xl break-words ${SECTION.headingGap}`}>
                   {tPage("highlights.lead")}
                 </p>
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className={`grid sm:grid-cols-2 ${HOME.gridGap}`}>
                   {highlights.map((e) => (
                     <EventCard key={e.id} event={e} variant="highlight" />
                   ))}

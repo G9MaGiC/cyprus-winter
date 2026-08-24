@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { getCyclingHubContent } from "@/lib/cycling-hub";
 import CyclingOfficialRoutes from "@/components/cycling/CyclingOfficialRoutes";
-import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import CyclingFooter from "@/app/(padded)/cycling/CyclingFooter";
@@ -84,7 +84,7 @@ export default async function CyclingPage() {
         <h2 id="cycling-list" className="sr-only">
           {tCycling("srHeading")}
         </h2>
-        <ul role="list" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
           {places.map((place) => (
             <li key={place.id}>
               <AttractionCard a={place} />

@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { secretGems } from "@/data/secret-gems";
 import { getRelatedPlaces } from "@/lib/related-places";
-import { LAYOUT, CARD, EMPTY_STATE, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, EMPTY_STATE, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -68,7 +68,7 @@ export default async function SecretsPage() {
           </AppLink>
         </div>
       ) : (
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap} mt-10`}>
         {secretGems.map((g) => {
           const place = g.placeId ? getRelatedPlaces([g.placeId])[0] : null;
           return (

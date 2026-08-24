@@ -3,7 +3,7 @@ import DetailHero from "@/components/DetailHero";
 import { getPlaceById } from "@/data";
 import { trailConditions } from "@/data/trails";
 import DetailActionFooter from "@/components/DetailActionFooter";
-import { LAYOUT, CTA, SECTION, TYPE, LAYER } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA, SECTION, TYPE, LAYER } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates, localizedPathname } from "@/lib/seo-locale-urls";
 import TrailDetailBackLink from "@/app/(padded)/trails/TrailDetailBackLink";
@@ -438,7 +438,7 @@ export default async function TrailPage({
             )}
 
             {/* Highlights + Best season + What to bring — sage for trail/nature */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               <SectionCard title={tTrailsDetail("highlightsTitle")} borderAccent="sage">
                 <ul className="flex flex-wrap gap-2">
                   {trail.highlights.map((h) => (
