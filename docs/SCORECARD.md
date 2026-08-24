@@ -9,7 +9,7 @@ Target state for launch readiness. Re-run checks after major releases.
 | **Core funnel** | Discover → Plan → Book E2E green; Plan server shell + client leaf | `npm run test:e2e:gate:ci`, `src/app/(padded)/plan/page.tsx` | **5/5** — E2E gate incl. visual QA (375/768/RTL) + hero load checks |
 | **Security** | Upstash + Supabase in prod; AI paths validated; admin HttpOnly session | Public `curl /api/health` → `productionReady`; Bearer `HEALTH_SECRET` for `productionChecks`; `resolve-internal-path.test.ts` | **4.5/5** — chat/search hardened (BUG-122–124); admin cookie session shipped (DR-003); Upstash must still be verified in prod |
 | **Test & CI** | lint, typecheck, 600+ unit tests, E2E gate, build | `.github/workflows/ci.yml` | **5/5** — 729 unit tests; `images:validate` + `photography-trust.test.ts`; Actions on Node 20.19.0 |
-| **i18n / SEO** | 7 locales validate; scan clean; hreflang for all locales | `npm run i18n:validate`, `npm run i18n:scan --fail`, `npm run build` | **5/5** — 2253 keys × 7; trail slug 308→id (BUG-270) |
+| **i18n / SEO** | 7 locales validate; scan clean; hreflang for all locales | `npm run i18n:validate`, `npm run i18n:scan --fail`, `npm run build` | **5/5** — 2273 keys × 7; plan templates native in all locales (BUG-307/308) |
 | **Data maintainability** | `npm run data:validate`; audit tests; no shadow duplicate place IDs | CI quality job + discover data audit tests | **5/5** |
 | **Mobile / Capacitor** | Documented remote URL strategy + error path | `docs/RUNBOOK.md` §5–6, `capacitor.config.ts` | **4.5/5** — sticky Plan/overlay model improved (BUG-127–134) |
 | **Merge hygiene** | Single PR per feature; CI green on GitHub before merge | PR checklist in `AGENTS.md` | **5/5** |
@@ -59,6 +59,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #158 | Secondary hub card grids — villages, beaches, wine-routes, regions, plan quick-start |
 | PR #159 | Launch doc hygiene + root loading skeleton tokens |
 | PR #164 | Plan copy hygiene pass 2 — residual itinerary → plan (BUG-305) |
+| PR #168 | Plan template i18n — de/el/pl + beta fr/he/ro planQuick & home templates (BUG-307/308) |
 
 Details: `docs/QA_BUGS.md`
 
