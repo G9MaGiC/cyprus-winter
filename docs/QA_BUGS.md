@@ -1613,3 +1613,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-306 | Ops | No single command to gate on live `productionReady` | `npm run health:production`; LAUNCH_CHECKLIST §1 step-by-step for Upstash + Supabase |
+
+### Fixed — plan template native locales (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-307 | i18n | `planQuick.templates.items` still English in de/el/pl | Native labels + descriptions for all 8 templates in de, el, pl |

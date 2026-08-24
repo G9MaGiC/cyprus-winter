@@ -2039,36 +2039,36 @@
     "templates": {
       "items": {
         "short-stay": {
-          "label": "Short stay",
-          "description": "48 hours: ancient coast, Troodos trail, village wine"
+          "label": "Krótki pobyt",
+          "description": "48 godzin: starożytne wybrzeże, szlak Troodos, wino w wiosce"
         },
         "classic": {
-          "label": "Classic",
-          "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace"
+          "label": "Klasyczny",
+          "description": "Od wybrzeża do gór: ruiny Pafos, szlaki Troodos, koronka z Lefkary"
         },
         "mountain": {
-          "label": "Mountain",
-          "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos"
+          "label": "Góry",
+          "description": "Pętle Troodos i kamienne wioski—Artemis, Caledonia, Kykkos"
         },
         "coast-culture": {
-          "label": "Coast & Culture",
-          "description": "Beaches, UNESCO sites, wineries—east to west"
+          "label": "Wybrzeże i kultura",
+          "description": "Plaże, UNESCO, winnice—wschód na zachód"
         },
         "family": {
-          "label": "Family",
-          "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch"
+          "label": "Rodzina",
+          "description": "Spokojne tempo, 2 przystanki/dzień—plaże, muzea, lunch w wiosce"
         },
         "workation": {
-          "label": "Workation week",
-          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather"
+          "label": "Tydzień workation",
+          "description": "Praca zdalna w tygodniu, Troodos i wybrzeże w weekend—kawiarnie z wifi, łagodna pogoda"
         },
         "classic-7": {
-          "label": "Classic Culture (7 days)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep"
+          "label": "Klasyczna kultura (7 dni)",
+          "description": "Larnaka → Nikozja → Troodos → Pafos—pełne objazd wyspy"
         },
         "mountain-10": {
-          "label": "Mountain Explorer (10 days)",
-          "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion"
+          "label": "Eksplorator gór (10 dni)",
+          "description": "Baza Troodos, Pitsilia, Machairas, potem wybrzeże—głęboka piesza przygoda"
         }
       }
     },

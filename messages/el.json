@@ -2039,36 +2039,36 @@
     "templates": {
       "items": {
         "short-stay": {
-          "label": "Short stay",
-          "description": "48 hours: ancient coast, Troodos trail, village wine"
+          "label": "Σύντομη διαμονή",
+          "description": "48 ώρες: αρχαία ακτή, μονοπάτι Τροόδους, κρασί χωριού"
         },
         "classic": {
-          "label": "Classic",
-          "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace"
+          "label": "Κλασικό",
+          "description": "Από ακτή σε βουνά: ερείπια Πάφου, μονοπάτια Τροόδους, δαντέλα Λεύκαρα"
         },
         "mountain": {
-          "label": "Mountain",
-          "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos"
+          "label": "Βουνό",
+          "description": "Βρόχοι Τροόδους και πέτρινα χωριά—Άρτεμις, Καληδονία, Κύκκος"
         },
         "coast-culture": {
-          "label": "Coast & Culture",
-          "description": "Beaches, UNESCO sites, wineries—east to west"
+          "label": "Ακτή & Πολιτισμός",
+          "description": "Παραλίες, μνημεία UNESCO, οινοποιεία—ανατολή προς δύση"
         },
         "family": {
-          "label": "Family",
-          "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch"
+          "label": "Οικογένεια",
+          "description": "Ήπιος ρυθμός, 2 στάσεις/ημέρα—παραλίες, μουσεία, μεσημεριανό χωριού"
         },
         "workation": {
-          "label": "Workation week",
-          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather"
+          "label": "Εβδομάδα workation",
+          "description": "Τηλεργασία τις καθημερινές, Τρόοδος & ακτή τα Σ/Κ—καφέ με wifi, ήπιος καιρός"
         },
         "classic-7": {
-          "label": "Classic Culture (7 days)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep"
+          "label": "Κλασικός πολιτισμός (7 ημέρες)",
+          "description": "Λάρνακα → Λευκωσία → Τρόοδος → Πάφος—πλήρης περιήγηση νησιού"
         },
         "mountain-10": {
-          "label": "Mountain Explorer (10 days)",
-          "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion"
+          "label": "Εξερευνητής βουνού (10 ημέρες)",
+          "description": "Βάση Τροόδους, Πιτσιλιά, Μαχαιράς, μετά ακτή—βαθιά πεζοπορία"
         }
       }
     },
