@@ -22,12 +22,12 @@
     "cycling": "Ciclism"
   },
   "travelTrust": {
-    "aria": "Official travel information",
+    "aria": "Informații oficiale de călătorie",
     "heading": "Înainte de călătorie",
-    "body": "Entry rules and local conditions change. Use official sources—no hype, just facts.",
-    "visitCyprus": "Visit Cyprus (official tourism)",
-    "foreignTravelUk": "UK foreign travel advice — Cyprus",
-    "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
+    "body": "Regulile de intrare și condițiile locale se schimbă. Folosește surse oficiale — fapte, fără exagerări.",
+    "visitCyprus": "Visit Cyprus (turism oficial)",
+    "foreignTravelUk": "Sfaturi de călătorie UK — Cipru",
+    "emergency": "Urgență 112 · Info turiști 1460 · Ambulanță 199"
   },
   "nav": {
     "discover": "Descoperă",
@@ -56,7 +56,7 @@
     "mainNavigation": "Navigare principală",
     "cycling": "Ciclism",
     "askAIBlockedAria": "Finalizează mai întâi onboarding-ul sau alegerea cookie-urilor",
-    "nature": "Nature"
+    "nature": "Natură"
   },
   "common": {
     "nav": {
@@ -593,15 +593,15 @@
       }
     },
     "planningSection": {
-      "srHeading": "Planning and essentials",
-      "planTitle": "Plan your trip",
-      "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "srHeading": "Planificare și esențiale",
+      "planTitle": "Planifică-ți călătoria",
+      "eventsTitle": "Evenimente de iarnă",
+      "eventsDesc": "Bobotează, carnaval, degustări. Ce se întâmplă când.",
+      "defaultSubtitle": "Șabloane, hartă și distribuire într-un loc — continuă pe pagina Plan."
     },
     "recentlyViewed": {
-      "title": "Recently viewed",
-      "clear": "Clear"
+      "title": "Vizionate recent",
+      "clear": "Șterge"
     },
     "insiderTip": {
       "heading": "Sfat insider de iarnă",
@@ -754,9 +754,9 @@
     }
   },
   "error": {
-    "title": "A small glitch",
-    "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-    "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+    "title": "O mică problemă",
+    "body": "O mică problemă. Încearcă din nou sau mergi acasă — traseele, satele și degustările te așteaptă.",
+    "hint": "Folosește meniul pentru Descoperă, Trasee sau Plan. Sau atinge Ask AI — te ghidăm spre Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -788,7 +788,7 @@
       "failed": "Nu mă pot conecta. Încearcă din nou peste puțin."
     },
     "rightNow": {
-      "locationDenied": "Enable location or pick a region."
+      "locationDenied": "Activează locația sau alege o regiune."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Încearcă din nou peste puțin.",
@@ -1287,56 +1287,56 @@
   "airport": {
     "page": {
       "meta": {
-        "title": "Just Landed? | Cyprus Winter Airport Guide",
-        "description": "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here.",
-        "ogAlt": "Cyprus winter — Larnaca and Paphos airport guide"
+        "title": "Tocmai ai aterizat? | Ghid aeroport Cyprus Winter",
+        "description": "Sosiri Larnaca și Paphos: taxi, autobuz, mașină. Coastă blândă, Troodos mai rece. Numere și sfaturi esențiale. Începe aici.",
+        "ogAlt": "Cipru iarna — ghid aeroporturi Larnaca și Paphos"
       },
       "hero": {
-        "title": "Just landed?",
-        "description": "Transport from Larnaca and Paphos. Taxis, buses, car hire—you're sorted.",
-        "descriptionSecondary": "Coast mild, Troodos cooler. Pack layers.",
-        "imageAlt": "Cyprus coast, Mediterranean bay—welcome to the island",
-        "plan48Aria": "Plan your first 48 hours",
-        "plan48Cta": "Plan your first 48 hours"
+        "title": "Tocmai ai aterizat?",
+        "description": "Transport din Larnaca și Paphos. Taxi, autobuz, închiriere — totul rezolvat.",
+        "descriptionSecondary": "Coastă blândă, Troodos mai rece. Ia straturi.",
+        "imageAlt": "Coastă cipriotă, golf mediteranean — bun venit pe insulă",
+        "plan48Aria": "Planifică primele 48 de ore",
+        "plan48Cta": "Planifică primele 48 de ore"
       },
       "essentials": {
-        "srHeading": "Essential numbers",
-        "emergency": "Emergency",
-        "touristInfo": "Tourist info",
-        "ambulance": "Ambulance",
-        "note": "Save these. Hope you never need them."
+        "srHeading": "Numere esențiale",
+        "emergency": "Urgență",
+        "touristInfo": "Info turiști",
+        "ambulance": "Ambulanță",
+        "note": "Salvează-le. Speră să nu ai nevoie."
       },
       "firstHour": {
-        "title": "Your first hour",
+        "title": "Prima ta oră",
         "steps": {
-          "arrivals": "Arrivals",
-          "baggage": "Baggage",
+          "arrivals": "Sosiri",
+          "baggage": "Bagaje",
           "transport": "Transport",
-          "out": "You're out"
+          "out": "Ai ieșit"
         }
       },
       "picker": {
-        "title": "Which airport?",
-        "aria": "Choose your airport"
+        "title": "Ce aeroport?",
+        "aria": "Alege aeroportul"
       },
       "sections": {
         "transportTitle": "Transport",
-        "tipsTitle": "Things to know"
+        "tipsTitle": "De știut"
       },
       "quickActions": {
-        "aria": "Arrival quick actions",
-        "kicker": "Arrive faster"
+        "aria": "Acțiuni rapide la sosire",
+        "kicker": "Sosire mai rapidă"
       },
       "footer": {
-        "body": "Drop your bags. Find a harbour café. Order a coffee and watch the light. Tonight, just arrive. The island isn't going anywhere.",
-        "planWeekCta": "Plan your first week",
-        "discoverCta": "Discover places",
-        "weatherCta": "Check weather",
-        "askAi": "Ask AI",
-        "askAiAria": "Ask AI for arrival and transport tips"
+        "body": "Lasă bagajele. Găsește o cafenea în port. Comandă o cafea și privește lumina. Diseară, doar sosire. Insula nu pleacă nicăieri.",
+        "planWeekCta": "Planifică prima săptămână",
+        "discoverCta": "Descoperă locuri",
+        "weatherCta": "Verifică vremea",
+        "askAi": "Întreabă AI",
+        "askAiAria": "Întreabă AI despre sosire și transport"
       },
       "aria": {
-        "actions": "Airport page actions"
+        "actions": "Acțiuni pagină aeroport"
       }
     }
   },
@@ -1700,42 +1700,42 @@
     },
     "page": {
       "meta": {
-        "title": "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
-        "description": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
-        "ogDescription": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
-        "ogAlt": "Troodos pine forest trail, Cyprus winter"
+        "title": "Trasee de iarnă în Cipru | Troodos, Paphos și Akamas",
+        "description": "Trasee în Cipru iarna: Troodos, Paphos, Akamas. Condiții, dificultate, lungime. Sfaturi pentru drumeție. Șaisprezece grade când acasă sunt șase.",
+        "ogDescription": "Trasee în Cipru iarna: Troodos, Paphos, Akamas. Condiții, dificultate, lungime.",
+        "ogAlt": "Traseu prin pădure de pin Troodos, iarnă Cipru"
       },
       "hero": {
-        "title": "Winter Trails",
-        "description": "Pine forest, ridge views, empty paths. Sixteen degrees when home is six.",
-        "descriptionSecondary": "{open} open · {caution} caution · 8 regions",
-        "imageAlt": "Troodos pine forest trail, Cyprus winter",
-        "weatherAria": "View weather forecast"
+        "title": "Trasee de iarnă",
+        "description": "Pădure de pin, creste, poteci goale. Șaisprezece grade când acasă sunt șase.",
+        "descriptionSecondary": "{open} deschise · {caution} prudență · 8 regiuni",
+        "imageAlt": "Traseu prin pădure de pin Troodos, iarnă Cipru",
+        "weatherAria": "Vezi prognoza meteo"
       },
       "search": {
-        "heading": "Search trails",
-        "placeholder": "Search trails by name, region, difficulty…"
+        "heading": "Caută trasee",
+        "placeholder": "Caută după nume, regiune, dificultate…"
       },
       "list": {
-        "filteredHeading": "{count} trails"
+        "filteredHeading": "{count} trasee"
       },
       "groups": {
-        "open": "Open",
-        "caution": "Caution",
-        "closed": "Closed",
-        "noReport": "No report"
+        "open": "Deschise",
+        "caution": "Prudență",
+        "closed": "Închise",
+        "noReport": "Fără raport"
       },
       "map": {
-        "heading": "Map ({count})",
-        "caption": "Updated from local reports."
+        "heading": "Hartă ({count})",
+        "caption": "Actualizat din rapoarte locale."
       },
       "bottomBar": {
-        "aria": "Add trails to your plan"
+        "aria": "Adaugă trasee în plan"
       },
       "sr": {
-        "filtered": "Showing {count} trails",
-        "allByCategory": "Showing all trails by category",
-        "browseByCategory": "Browse trails by category"
+        "filtered": "Se afișează {count} trasee",
+        "allByCategory": "Toate traseele pe categorii",
+        "browseByCategory": "Răsfoiește trasee pe categorii"
       }
     },
     "sections": {
@@ -1881,7 +1881,7 @@
       "ogImageAlt": "{places} — plan de iarnă în Cipru",
       "recipientPreview": "Previzualizare link: {places}"
     },
-    "dayLabel": "Day {day}",
+    "dayLabel": "Ziua {day}",
     "aria": {
       "shareRegion": "Rezumatul planului și distribuire",
       "shareMenu": "Opțiuni de copiere și distribuire",
@@ -1907,10 +1907,10 @@
       "summaryEmpty": "Adaugă locuri pentru început"
     },
     "suggestedForDay": {
-      "empty": "Add a place below to see suggestions that pair well with your day.",
-      "pairWith": "Pair with…",
-      "worksWell": "Works well with what you&apos;ve added. Tap to add.",
-      "addToDayAria": "Add {name} to day"
+      "empty": "Adaugă un loc mai jos pentru sugestii potrivite zilei.",
+      "pairWith": "Potrivește cu…",
+      "worksWell": "Merge bine cu ce ai adăugat. Atinge pentru a adăuga.",
+      "addToDayAria": "Adaugă {name} în zi"
     },
     "sustainability": {
       "aria": "Note de ritm de iarnă",
@@ -1924,36 +1924,36 @@
       "winterTip": "Sfat de iarnă: lumina se stinge pe la ora 17. Pornește traseele până la ora 10 și rezervă degustări cu 24–48 h înainte."
     },
     "meta": {
-      "title": "Plan Cyprus Winter | Curated Plans & Trip Builder",
-      "description": "Curated Cyprus winter plans: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
-      "ogTitle": "Plan Cyprus Winter | Curated Plans & Trip Builder",
-      "ogDescription": "Curated Cyprus winter plans with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
+      "title": "Planifică Cipru iarna | Planuri selectate și constructor de călătorie",
+      "description": "Planuri de iarnă selectate pentru Cipru: 48 h până la 10 zile. Ritm expert, sfaturi rezervări crame, recomandări sezoniere. Trasee Troodos, sate, coastă — planifică din timp sau la fața locului. Gratuit.",
+      "ogTitle": "Planifică Cipru iarna | Planuri selectate",
+      "ogDescription": "Planuri de iarnă cu ritm expert și sfaturi pentru crame. Trasee, sate, coastă. Din timp sau la fața locului."
     },
     "templateChoiceModal": {
-      "title": "Apply {template}?",
-      "description": "Add to your plan or replace what you have.",
-      "cancel": "Cancel",
-      "replaceDay": "Replace day",
-      "addToPlan": "Add to plan"
+      "title": "Aplici {template}?",
+      "description": "Adaugă în plan sau înlocuiește ce ai.",
+      "cancel": "Anulează",
+      "replaceDay": "Înlocuiește ziua",
+      "addToPlan": "Adaugă în plan"
     },
     "comboChoiceModal": {
-      "title": "Add {combo}?",
-      "description": "Add to your plan or replace your day.",
-      "cancel": "Cancel",
-      "replaceDay": "Replace day",
-      "addToPlan": "Add to plan"
+      "title": "Adaugi {combo}?",
+      "description": "Adaugă în plan sau înlocuiește ziua.",
+      "cancel": "Anulează",
+      "replaceDay": "Înlocuiește ziua",
+      "addToPlan": "Adaugă în plan"
     },
     "map": {
-      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your plan",
-      "dayLabel": "Day {day}",
-      "viewDetails": "View details →",
-      "footer": "{count, plural, one {# place} other {# places}} on map. Numbers = day. Tap to explore.",
-      "noCoords": "Some of your places don't have map locations yet."
+      "ariaLabel": "Hartă cu {count, plural, one {# loc} other {# locuri}} în plan",
+      "dayLabel": "Ziua {day}",
+      "viewDetails": "Vezi detalii →",
+      "footer": "{count, plural, one {# loc} other {# locuri}} pe hartă. Numere = zi. Atinge pentru a explora.",
+      "noCoords": "Unele locuri nu au încă coordonate pe hartă."
     },
     "clipboard": {
       "heading": "Plan Cyprus Winter",
-      "dayLabel": "Day {day}:",
-      "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
+      "dayLabel": "Ziua {day}:",
+      "emptyFallback": "Planul tău de iarnă în Cipru. Adaugă locuri din Descoperă sau Trasee."
     },
     "startHere": {
       "kicker": "48 de ore",

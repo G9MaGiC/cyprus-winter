@@ -1649,3 +1649,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-312 | i18n | Optional soft gaps on `/`, `/plan`, `/bookings` for fr/he/ro: `home.insiderTip*`, `whyCyprus`, `editorsPicks`/`featuredWineries` copy, `insiderTips`, `placeOfDay`, `plan.dayCombos`, `plan.share`/`daySelector`, `placePicker.*`, `bookings.page.*` still English | `beta-locale-soft-gaps-overrides.json` + `patch-beta-locale-soft-gaps.mjs`; extended `day-combos-translations.json` with fr/he/ro (~171 keys/locale applied) |
+
+### Fixed — funnel i18n polish all locales (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-313 | i18n | Funnel-path English on error/travelTrust/airport/trails/plan meta for fr/he/ro; Hebrew typos in soft-gaps; tier-1 el/de/pl gaps | `beta-locale-funnel-polish-overrides.json` + `patch-locale-funnel-polish.mjs`; fixed `chrome-locale-overrides` plan terminology; Hebrew soft-gap typos |

@@ -22,12 +22,12 @@
     "cycling": "Vélo"
   },
   "travelTrust": {
-    "aria": "Official travel information",
+    "aria": "Informations de voyage officielles",
     "heading": "Avant le voyage",
-    "body": "Entry rules and local conditions change. Use official sources—no hype, just facts.",
-    "visitCyprus": "Visit Cyprus (official tourism)",
-    "foreignTravelUk": "UK foreign travel advice — Cyprus",
-    "emergency": "Emergency 112 · Tourist info 1460 · Ambulance 199"
+    "body": "Les règles d'entrée et les conditions locales changent. Utilisez des sources officielles — les faits, sans exagération.",
+    "visitCyprus": "Visit Cyprus (tourisme officiel)",
+    "foreignTravelUk": "Conseils aux voyageurs UK — Chypre",
+    "emergency": "Urgences 112 · Info touristique 1460 · Ambulance 199"
   },
   "nav": {
     "discover": "Découvrir",
@@ -593,15 +593,15 @@
       }
     },
     "planningSection": {
-      "srHeading": "Planning and essentials",
-      "planTitle": "Plan your trip",
-      "eventsTitle": "Winter events",
-      "eventsDesc": "Epiphany, carnival, tastings. What's on when.",
-      "defaultSubtitle": "Templates, map, and share in one place—continue on the full Plan page."
+      "srHeading": "Planification et essentiels",
+      "planTitle": "Planifiez votre voyage",
+      "eventsTitle": "Événements d'hiver",
+      "eventsDesc": "Épiphanie, carnaval, dégustations. Ce qui se passe quand.",
+      "defaultSubtitle": "Modèles, carte et partage au même endroit — continuez sur la page Plan."
     },
     "recentlyViewed": {
-      "title": "Recently viewed",
-      "clear": "Clear"
+      "title": "Consultés récemment",
+      "clear": "Effacer"
     },
     "insiderTip": {
       "heading": "Conseil d'insider hivernal",
@@ -729,7 +729,7 @@
         "body": "Le sommet de l'Olympus et les sentiers hauts du Troodos peuvent avoir neige et glace de janvier à mars. Les micro-crampons coûtent ~20 € et se fixent sur vos bottes. Si la météo frôle le gel, emportez-les."
       },
       "tell-someone": {
-        "title": "Dites votre itinéraire à quelqu'un",
+        "title": "Indiquez votre parcours à quelqu'un",
         "body": "Le réseau mobile est capricieux en montagne. Dites à votre hôtel ou à un ami quel sentier vous prenez et quand vous revenez. Urgence : 112."
       },
       "euro": {
@@ -754,9 +754,9 @@
     }
   },
   "error": {
-    "title": "A small glitch",
-    "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-    "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
+    "title": "Un petit contretemps",
+    "body": "Un petit contretemps. Réessayez ou revenez à l'accueil — sentiers, villages et dégustations vous attendent.",
+    "hint": "Utilisez le menu pour Découvrir, Sentiers ou Plan. Ou touchez Ask AI — on vous oriente vers Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -788,7 +788,7 @@
       "failed": "Connexion difficile. Réessayez dans un moment."
     },
     "rightNow": {
-      "locationDenied": "Enable location or pick a region."
+      "locationDenied": "Activez la localisation ou choisissez une région."
     },
     "api": {
       "SERVICE_UNAVAILABLE": "Réessayez dans un moment.",
@@ -1287,56 +1287,56 @@
   "airport": {
     "page": {
       "meta": {
-        "title": "Just Landed? | Cyprus Winter Airport Guide",
-        "description": "Larnaca & Paphos arrivals: taxis, buses, car hire. Coast mild, Troodos cooler. Essential numbers and tips. Just landed? Start here.",
-        "ogAlt": "Cyprus winter — Larnaca and Paphos airport guide"
+        "title": "Vous venez d'atterrir ? | Guide aéroport Cyprus Winter",
+        "description": "Arrivées Larnaca et Paphos : taxis, bus, location. Côte douce, Troodos plus frais. Numéros et conseils essentiels. Commencez ici.",
+        "ogAlt": "Chypre en hiver — guide aéroports Larnaca et Paphos"
       },
       "hero": {
-        "title": "Just landed?",
-        "description": "Transport from Larnaca and Paphos. Taxis, buses, car hire—you're sorted.",
-        "descriptionSecondary": "Coast mild, Troodos cooler. Pack layers.",
-        "imageAlt": "Cyprus coast, Mediterranean bay—welcome to the island",
-        "plan48Aria": "Plan your first 48 hours",
-        "plan48Cta": "Plan your first 48 hours"
+        "title": "Vous venez d'atterrir ?",
+        "description": "Transport depuis Larnaca et Paphos. Taxis, bus, location — tout est réglé.",
+        "descriptionSecondary": "Côte douce, Troodos plus frais. Superposez les vêtements.",
+        "imageAlt": "Côte chypriote, baie méditerranéenne — bienvenue sur l'île",
+        "plan48Aria": "Planifiez vos 48 premières heures",
+        "plan48Cta": "Planifiez vos 48 premières heures"
       },
       "essentials": {
-        "srHeading": "Essential numbers",
-        "emergency": "Emergency",
-        "touristInfo": "Tourist info",
+        "srHeading": "Numéros essentiels",
+        "emergency": "Urgences",
+        "touristInfo": "Info touristique",
         "ambulance": "Ambulance",
-        "note": "Save these. Hope you never need them."
+        "note": "Enregistrez-les. Espérez ne jamais en avoir besoin."
       },
       "firstHour": {
-        "title": "Your first hour",
+        "title": "Votre première heure",
         "steps": {
-          "arrivals": "Arrivals",
-          "baggage": "Baggage",
+          "arrivals": "Arrivées",
+          "baggage": "Bagages",
           "transport": "Transport",
-          "out": "You're out"
+          "out": "Vous êtes dehors"
         }
       },
       "picker": {
-        "title": "Which airport?",
-        "aria": "Choose your airport"
+        "title": "Quel aéroport ?",
+        "aria": "Choisissez votre aéroport"
       },
       "sections": {
         "transportTitle": "Transport",
-        "tipsTitle": "Things to know"
+        "tipsTitle": "À savoir"
       },
       "quickActions": {
-        "aria": "Arrival quick actions",
-        "kicker": "Arrive faster"
+        "aria": "Actions rapides à l'arrivée",
+        "kicker": "Arriver plus vite"
       },
       "footer": {
-        "body": "Drop your bags. Find a harbour café. Order a coffee and watch the light. Tonight, just arrive. The island isn't going anywhere.",
-        "planWeekCta": "Plan your first week",
-        "discoverCta": "Discover places",
-        "weatherCta": "Check weather",
-        "askAi": "Ask AI",
-        "askAiAria": "Ask AI for arrival and transport tips"
+        "body": "Posez vos bagages. Trouvez un café au port. Commandez un café et regardez la lumière. Ce soir, contentez-vous d'arriver. L'île n'ira nulle part.",
+        "planWeekCta": "Planifiez votre première semaine",
+        "discoverCta": "Découvrir des lieux",
+        "weatherCta": "Voir la météo",
+        "askAi": "Demander à l'IA",
+        "askAiAria": "Demander à l'IA pour l'arrivée et le transport"
       },
       "aria": {
-        "actions": "Airport page actions"
+        "actions": "Actions page aéroport"
       }
     }
   },
@@ -1700,42 +1700,42 @@
     },
     "page": {
       "meta": {
-        "title": "Cyprus Winter Trails | Troodos, Paphos & Akamas Hiking",
-        "description": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length. Winter hiking tips. Sixteen degrees when home is six. Plan your hike.",
-        "ogDescription": "Cyprus trails in winter: Troodos, Paphos, Akamas. Conditions, difficulty, length.",
-        "ogAlt": "Troodos pine forest trail, Cyprus winter"
+        "title": "Sentiers d'hiver à Chypre | Troodos, Paphos et Akamas",
+        "description": "Sentiers à Chypre en hiver : Troodos, Paphos, Akamas. Conditions, difficulté, longueur. Conseils randonnée hivernale. Seize degrés quand chez vous il en fait six.",
+        "ogDescription": "Sentiers à Chypre en hiver : Troodos, Paphos, Akamas. Conditions, difficulté, longueur.",
+        "ogAlt": "Sentier en forêt de pins du Troodos, hiver Chypre"
       },
       "hero": {
-        "title": "Winter Trails",
-        "description": "Pine forest, ridge views, empty paths. Sixteen degrees when home is six.",
-        "descriptionSecondary": "{open} open · {caution} caution · 8 regions",
-        "imageAlt": "Troodos pine forest trail, Cyprus winter",
-        "weatherAria": "View weather forecast"
+        "title": "Sentiers d'hiver",
+        "description": "Forêt de pins, crêtes, sentiers vides. Seize degrés quand chez vous il en fait six.",
+        "descriptionSecondary": "{open} ouverts · {caution} prudence · 8 régions",
+        "imageAlt": "Sentier en forêt de pins du Troodos, hiver Chypre",
+        "weatherAria": "Voir la météo"
       },
       "search": {
-        "heading": "Search trails",
-        "placeholder": "Search trails by name, region, difficulty…"
+        "heading": "Rechercher des sentiers",
+        "placeholder": "Rechercher par nom, région, difficulté…"
       },
       "list": {
-        "filteredHeading": "{count} trails"
+        "filteredHeading": "{count} sentiers"
       },
       "groups": {
-        "open": "Open",
-        "caution": "Caution",
-        "closed": "Closed",
-        "noReport": "No report"
+        "open": "Ouverts",
+        "caution": "Prudence",
+        "closed": "Fermés",
+        "noReport": "Pas de signalement"
       },
       "map": {
-        "heading": "Map ({count})",
-        "caption": "Updated from local reports."
+        "heading": "Carte ({count})",
+        "caption": "Mis à jour d'après les signalements locaux."
       },
       "bottomBar": {
-        "aria": "Add trails to your plan"
+        "aria": "Ajouter des sentiers au plan"
       },
       "sr": {
-        "filtered": "Showing {count} trails",
-        "allByCategory": "Showing all trails by category",
-        "browseByCategory": "Browse trails by category"
+        "filtered": "Affichage de {count} sentiers",
+        "allByCategory": "Tous les sentiers par catégorie",
+        "browseByCategory": "Parcourir les sentiers par catégorie"
       }
     },
     "sections": {
@@ -1881,7 +1881,7 @@
       "ogImageAlt": "{places} — plan d’hiver à Chypre",
       "recipientPreview": "Aperçu du lien : {places}"
     },
-    "dayLabel": "Day {day}",
+    "dayLabel": "Jour {day}",
     "aria": {
       "shareRegion": "Résumé du plan et partage",
       "shareMenu": "Options copier et partager",
@@ -1907,10 +1907,10 @@
       "summaryEmpty": "Ajoutez des lieux pour commencer"
     },
     "suggestedForDay": {
-      "empty": "Add a place below to see suggestions that pair well with your day.",
-      "pairWith": "Pair with…",
-      "worksWell": "Works well with what you&apos;ve added. Tap to add.",
-      "addToDayAria": "Add {name} to day"
+      "empty": "Ajoutez un lieu ci-dessous pour voir des suggestions qui s'accordent à votre journée.",
+      "pairWith": "À combiner avec…",
+      "worksWell": "S'accorde bien avec ce que vous avez ajouté. Touchez pour ajouter.",
+      "addToDayAria": "Ajouter {name} au jour"
     },
     "sustainability": {
       "aria": "Notes de rythme d’hiver",
@@ -1924,36 +1924,36 @@
       "winterTip": "Conseil d’hiver : la lumière baisse vers 17 h. Commencez les sentiers vers 10 h, réservez les dégustations 24–48 h à l’avance."
     },
     "meta": {
-      "title": "Plan Cyprus Winter | Curated Plans & Trip Builder",
-      "description": "Curated Cyprus winter plans: 48h to 10 days. Expert pacing, winery booking tips, seasonal advice. Troodos trails, villages, coast—plan ahead or when you land. Free.",
-      "ogTitle": "Plan Cyprus Winter | Curated Plans & Trip Builder",
-      "ogDescription": "Curated Cyprus winter plans with expert pacing and winery tips. Trails, villages, coast. Plan ahead or when you land."
+      "title": "Planifier Chypre en hiver | Plans sélectionnés et créateur de voyage",
+      "description": "Plans d'hiver sélectionnés pour Chypre : 48 h à 10 jours. Rythme expert, conseils de réservation en domaine, astuces saisonnières. Sentiers Troodos, villages, côte — planifiez à l'avance ou sur place. Gratuit.",
+      "ogTitle": "Planifier Chypre en hiver | Plans sélectionnés",
+      "ogDescription": "Plans d'hiver sélectionnés avec rythme expert et conseils domaines. Sentiers, villages, côte. À l'avance ou sur place."
     },
     "templateChoiceModal": {
-      "title": "Apply {template}?",
-      "description": "Add to your plan or replace what you have.",
-      "cancel": "Cancel",
-      "replaceDay": "Replace day",
-      "addToPlan": "Add to plan"
+      "title": "Appliquer {template} ?",
+      "description": "Ajouter au plan ou remplacer ce que vous avez.",
+      "cancel": "Annuler",
+      "replaceDay": "Remplacer le jour",
+      "addToPlan": "Ajouter au plan"
     },
     "comboChoiceModal": {
-      "title": "Add {combo}?",
-      "description": "Add to your plan or replace your day.",
-      "cancel": "Cancel",
-      "replaceDay": "Replace day",
-      "addToPlan": "Add to plan"
+      "title": "Ajouter {combo} ?",
+      "description": "Ajouter au plan ou remplacer votre journée.",
+      "cancel": "Annuler",
+      "replaceDay": "Remplacer le jour",
+      "addToPlan": "Ajouter au plan"
     },
     "map": {
       "ariaLabel": "Carte avec {count, plural, one {# lieu} other {# lieux}} sur votre plan",
-      "dayLabel": "Day {day}",
-      "viewDetails": "View details →",
-      "footer": "{count, plural, one {# place} other {# places}} on map. Numbers = day. Tap to explore.",
-      "noCoords": "Some of your places don't have map locations yet."
+      "dayLabel": "Jour {day}",
+      "viewDetails": "Voir les détails →",
+      "footer": "{count, plural, one {# lieu} other {# lieux}} sur la carte. Chiffres = jour. Touchez pour explorer.",
+      "noCoords": "Certains lieux n'ont pas encore de position sur la carte."
     },
     "clipboard": {
       "heading": "Plan Chypre hiver",
-      "dayLabel": "Day {day}:",
-      "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
+      "dayLabel": "Jour {day} :",
+      "emptyFallback": "Votre plan Chypre hiver. Ajoutez des lieux depuis Découvrir ou Sentiers pour commencer."
     },
     "startHere": {
       "kicker": "48 heures",
@@ -2139,7 +2139,7 @@
         "body": "Chargez des réservations depuis un autre appareil ou planifiez votre prochaine visite."
       },
       "tomorrowHighlight": {
-        "title": "Demain — {providers} — itinéraire prêt.",
+        "title": "Demain — {providers} — plan prêt.",
         "body": "Voir les détails ci-dessous ou ajouter au plan."
       },
       "groups": {
@@ -2419,7 +2419,7 @@
       "wineriesOnRoute": "Wineries on this route",
       "grapeVarieties": "Grape varieties",
       "winterTipLabel": "Winter tip",
-      "bookableHeading": "Réserver une dégustation sur cet itinéraire",
+      "bookableHeading": "Réserver une dégustation sur cette route",
       "bookableIntro": "Caves mises en avant, avec horaires d'hiver. Appelez avant si indiqué.",
       "map": {
         "heading": "{route} map ({count})",
@@ -2446,7 +2446,7 @@
       },
       "header": {
         "title": "Routes des vins",
-        "description": "Quatre itinéraires prêts pour l’hiver dans les collines de Limassol et Paphos. Choisissez une route, puis réservez une dégustation."
+        "description": "Quatre routes prêtes pour l'hiver dans les collines de Limassol et Paphos. Choisissez une route, puis réservez une dégustation."
       },
       "winterTipLabel": "Conseil d’hiver",
       "ctaOpen": "Ouvrir la route",

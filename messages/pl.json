@@ -56,7 +56,7 @@
     "mainNavigation": "Nawigacja główna",
     "cycling": "Kolarstwo",
     "askAIBlockedAria": "Najpierw dokończ onboarding lub wybór cookies",
-    "nature": "Nature"
+    "nature": "Natura"
   },
   "common": {
     "nav": {
@@ -474,7 +474,7 @@
         "quietEscapesAria": "Spokojnie — wioski, ukryte perełki",
         "mountains": "Góry",
         "mountainsAria": "Góry — szlaki Troodos",
-        "wellness": "Wellness",
+        "wellness": "Relaks",
         "wellnessAria": "Wellness — klasztory, ciche miejsca",
         "regionAria": "Region {region}",
         "boulderingPlus": "Boulder+",
@@ -872,7 +872,7 @@
         "watersports": "Sporty wodne",
         "quiet": "Ciche ucieczki",
         "mountains": "Góry",
-        "wellness": "Wellness",
+        "wellness": "Relaks",
         "relatedTrails": "Powiązane szlaki",
         "seeAllMountainTrails": "Szlaki Troodos",
         "browseAllTrails": "Wszystkie szlaki",
@@ -1311,7 +1311,7 @@
         "steps": {
           "arrivals": "Przyloty",
           "baggage": "Bagaż",
-          "transport": "Transport",
+          "transport": "Dojazd",
           "out": "Wychodzisz"
         }
       },
@@ -1320,7 +1320,7 @@
         "aria": "Wybierz lotnisko"
       },
       "sections": {
-        "transportTitle": "Transport",
+        "transportTitle": "Dojazd",
         "tipsTitle": "Warto wiedzieć"
       },
       "footer": {
