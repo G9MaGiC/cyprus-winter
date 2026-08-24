@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useState } from "react";
 import AppLink from "@/components/AppLink";
 import AttractionCard from "@/components/AttractionCard";
 import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
-import { SECTION, CTA, EMPTY_STATE, LAYOUT, TYPE } from "@/lib/design-tokens";
+import { SECTION, CTA, EMPTY_STATE, HOME, HUB, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { useTranslations } from "next-intl";
@@ -36,7 +36,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
             id={section.id}
             ref={idx === 0 ? ref : undefined}
             aria-labelledby={`section-${section.id}`}
-            className={`py-10 sm:py-14 ${idx % 2 === 1 ? `bg-sand/50 ${LAYOUT.stickyBarX}` : ""} ${shouldAnimate ? "section-reveal" : ""}`}
+            className={`${HUB.sectionPy} ${idx % 2 === 1 ? `bg-sand/50 ${LAYOUT.stickyBarX}` : ""} ${shouldAnimate ? "section-reveal" : ""}`}
             style={shouldAnimate ? { animationDelay: `${idx * 60}ms` } : undefined}
           >
             <h2
@@ -77,7 +77,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
               </div>
             ) : (
               <>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
                 {section.items.map((item) => (
                   <AttractionCard key={item.id} a={item} />
                 ))}

@@ -2,6 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import TrailCard from "@/components/TrailCard";
+import { HOME } from "@/lib/design-tokens";
 import { trailConditions } from "@/data/trails";
 import type { Trail, TrailConditions } from "@/data/trails";
 
@@ -43,7 +44,7 @@ export default function TrailStatusGroup({
           ▾
         </span>
       </summary>
-      <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+      <div className={`grid sm:grid-cols-2 ${HOME.gridGap}`}>
         {trails.map((trail) => (
           <TrailCard
             key={trail.id}

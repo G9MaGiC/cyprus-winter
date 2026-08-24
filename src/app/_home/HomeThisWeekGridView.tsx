@@ -74,7 +74,7 @@ export default function HomeThisWeekGridView({
       >
         <AppLink
           href={trailHref}
-          className={`block relative h-28 sm:h-32 ${CARD.link} shrink-0`}
+          className={`block relative ${CARD.media} ${CARD.link} shrink-0 group`}
           aria-label={trailImageAlt}
         >
           <Image

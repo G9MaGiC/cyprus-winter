@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import { wineries } from "@/data/wineries";
-import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, HOME, TYPE, SECTION, MEDIA, BADGE } from "@/lib/design-tokens";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -63,7 +63,7 @@ export default async function WineriesListPage() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {(() => {
           const sorted = [...wineries].sort((a, b) => {
             if (a.isVerified && !b.isVerified) return -1;
@@ -84,17 +84,25 @@ export default async function WineriesListPage() {
               {group.map((winery) => (
                 <div
                   key={winery.id}
-                  className={`${CARD.base} ${CARD.content} ${CARD.hover} rounded-xl overflow-hidden flex flex-col`}
+                  className={`overflow-hidden ${CARD.base} ${CARD.hover} ${CARD.interactive} group flex flex-col`}
                 >
-                  <div className="relative h-32 -mx-5 -mt-5 sm:-mx-6 sm:-mt-6 mb-3">
-                    <Image src={getAttractionImage(winery.id, "winery")} alt={winery.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
+                  <div className={CARD.media}>
+                    <Image
+                      src={getAttractionImage(winery.id, "winery")}
+                      alt={winery.name}
+                      fill
+                      className={MEDIA.hoverImage}
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                    <div className={CARD.mediaOverlayLight} aria-hidden />
                   </div>
+                  <div className={`${CARD.content} flex flex-col flex-1`}>
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
+                    <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                       {tCommon("wineTasting")}
                     </span>
                     {winery.isVerified && (
-                      <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
+                      <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                         {tCommon("verifiedPartner")}
                       </span>
                     )}
@@ -123,6 +131,7 @@ export default async function WineriesListPage() {
                   >
                     {tCommon("bookTasting")}
                   </AppLink>
+                  </div>
                 </div>
               ))}
             </Fragment>

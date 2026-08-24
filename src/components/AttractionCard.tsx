@@ -68,7 +68,7 @@ export default function AttractionCard({
         className={`block ${CARD.link}`}
         aria-label={`${a.name}, ${badgeLabel} in ${a.region}`}
       >
-        <div className="aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0">
+        <div className={CARD.media}>
           <Image
             src={getAttractionImage(a.id, a.type)}
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}

@@ -1,7 +1,7 @@
 import "server-only";
 
 import AppLink from "@/components/AppLink";
-import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { CTA, TYPE } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 const TEMPLATE_KEYS = ["short-stay", "classic", "classic-7", "mountain-10"] as const;
@@ -21,37 +21,29 @@ export default async function HomeTemplateLinks({ locale }: Props) {
     : await getTranslations("home");
 
   return (
-    <section
-      aria-labelledby="templates-heading"
-      className={`${LAYOUT.safeAreaX} ${SECTION.pySub} bg-sand/50`}
-    >
-      <div className={`${LAYOUT.list} mx-auto`}>
-        <header className="mb-4 sm:mb-5">
-          <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
-            {t("templates.kicker")}
-          </p>
-          <p className="text-sm text-olive/70">{t("templates.subtitle")}</p>
-        </header>
-        <div className="flex flex-wrap gap-2 sm:gap-3">
-          {TEMPLATE_KEYS.map((key) => (
-            <AppLink
-              key={key}
-              href={TEMPLATE_HREFS[key]}
-              className="inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <span>{t(`templates.items.${key}.label`)}</span>
-              <span className="text-xs text-olive/60 font-normal">
-                {t(`templates.items.${key}.hint`)}
-              </span>
-            </AppLink>
-          ))}
+    <section aria-labelledby="templates-heading">
+      <header className="mb-4 sm:mb-5">
+        <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
+          {t("templates.kicker")}
+        </p>
+        <p className="text-sm text-olive/70">{t("templates.subtitle")}</p>
+      </header>
+      <div className="flex flex-wrap gap-2 sm:gap-3">
+        {TEMPLATE_KEYS.map((key) => (
           <AppLink
-            href="/plan"
-            className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-olive/70 text-sm font-medium hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+            key={key}
+            href={TEMPLATE_HREFS[key]}
+            className={`inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
           >
-            {t("templates.allTemplates")}
+            <span>{t(`templates.items.${key}.label`)}</span>
+            <span className="text-xs text-olive/60 font-normal">
+              {t(`templates.items.${key}.hint`)}
+            </span>
           </AppLink>
-        </div>
+        ))}
+        <AppLink href="/plan" className={CTA.chipTertiary}>
+          {t("templates.allTemplates")}
+        </AppLink>
       </div>
     </section>
   );
