@@ -3,7 +3,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { wineries } from "@/data/wineries";
-import { LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import WineriesHubFooter from "@/components/WineriesHubFooter";
@@ -96,7 +96,7 @@ export default async function WineriesPage() {
             <p className="text-olive/70 text-sm mb-6 max-w-2xl">
               {tWineries("partners.body")}
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {partners.map((winery) => (
                 <AttractionCard key={winery.id} a={winery} bookFrom="wineries" />
               ))}
@@ -110,7 +110,7 @@ export default async function WineriesPage() {
       <h2 id="wineries-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
         {tWineries("listTitle")}
       </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {wineries.map((winery) => (
           <AttractionCard key={winery.id} a={winery} bookFrom="wineries" />
         ))}

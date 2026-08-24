@@ -1,4 +1,4 @@
-import { LAYOUT, CARD, SKELETON, SECTION, LAYER, STRIP } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, SKELETON, SECTION, LAYER, STRIP } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 function HeroSkeleton() {
@@ -46,7 +46,7 @@ export default async function PlanLoading() {
             ))}
           </div>
           <div className={`h-4 w-36 ${SKELETON.bar} mb-3`} />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap}`}>
             {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} className={`h-[72px] ${SKELETON.card}`} />
             ))}

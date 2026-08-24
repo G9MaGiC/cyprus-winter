@@ -1546,6 +1546,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env (human) |
 | BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Won't fix — needed so health reports missing Upstash when Redis unreachable |
 
+| BUG-281 | Design | Main hub visual drift — footer double padding, discover/trails `md:gap-20`, book flat thumbs, skeleton/grid mismatch | PR #157 — `HOME`/`HUB` tokens, card media unification across home/discover/trails/plan/book |
+
 ### Fixed — design sprint + launch hygiene (Aug 24, 2026, main @ 3610596)
 
 | ID | Area | Issue | Fix |
