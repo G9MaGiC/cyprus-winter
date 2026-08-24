@@ -368,7 +368,7 @@
       "arriving": "Vous venez d’arriver ? Commencez ici",
       "explore": "Explorer",
       "planTrip": "Planifiez votre voyage",
-      "askGuide": "Demander au guide IA"
+      "askGuide": "Demander à votre guide"
     },
     "tripModes": {
       "aria": "Choisissez comment vous voyagez",
@@ -413,8 +413,8 @@
         "planTitle": "Plan",
         "planDesc": "Composez une journée selon l’heure, la météo et les lieux qui vous tiennent à cœur.",
         "planCta": "Composer une journée",
-        "bookTitle": "Réserver des expériences",
-        "bookDesc": "Réservez une dégustation ou une randonnée guidée au Troodos avant le week-end.",
+        "bookTitle": "Réserver",
+        "bookDesc": "Réservez une dégustation ou une sortie guidée avant le week-end.",
         "bookCta": "Réserver des dégustations",
         "bookGuideLink": "Randonnées guidées"
       },
@@ -1759,7 +1759,7 @@
     "afternoon": "Afternoon",
     "pageTitle": "Planifiez votre hiver à Chypre",
     "pageDescHasContent": "Votre plan. Ajoutez, partagez ou ajustez ci-dessous.",
-    "pageDescEmpty": "Construisez un plan d'hiver. Choisissez un modèle ou ajoutez des lieux jour par jour.",
+    "pageDescEmpty": "Construisez un plan d’hiver. Choisissez un modèle ou ajoutez des lieux jour par jour.",
     "pageDescSecondaryEmpty": "Enregistrement automatique.",
     "mapTitle": "Votre plan sur la carte",
     "mapCollapsibleHint": "Stops and driving context on the island map",
@@ -1883,7 +1883,7 @@
     },
     "dayLabel": "Day {day}",
     "aria": {
-      "shareRegion": "Plan summary and share",
+      "shareRegion": "Résumé du plan et partage",
       "shareMenu": "Options copier et partager",
       "shareVia": "Partager via",
       "savePlanCta": "Créer un compte pour enregistrer votre plan sur tous vos appareils",
@@ -2705,7 +2705,7 @@
         "aria": "Informations de confiance sur la réservation",
         "heading": "Avant d’envoyer",
         "verifiedRoute": "Circuit de demande {context} vérifié.",
-        "emailConfirm": "Le partenaire confirme généralement par e-mail sous 24 heures.",
+        "emailConfirm": "La confirmation arrive en général par e-mail sous 24 heures.",
         "noCharge": "Aucun paiement n’est pris ici. Les prestataires confirment d’abord la disponibilité.",
         "contextPartner": "partenaire",
         "contextGuide": "guide"
@@ -2714,12 +2714,12 @@
         "aria": "Progression de la réservation",
         "stepDetails": "Détails",
         "stepSent": "Demande envoyée",
-        "stepConfirmation": "Le partenaire confirme"
+        "stepConfirmation": "Confirmation"
       },
       "states": {
         "heading": "États de réservation :",
-        "wineryBody": "Le statut commence en demande ; confirmé seulement après réponse du partenaire.",
-        "guideBody": "Le statut commence en demande ; confirmé seulement après réponse du guide.",
+        "wineryBody": "Demandé maintenant, confirmé après la réponse du partenaire.",
+        "guideBody": "Demandé maintenant, confirmé après la réponse du guide.",
         "offlineQueue": "Si vous êtes hors ligne, votre demande est mise en file d’attente et renvoyée automatiquement."
       }
     },
@@ -2731,7 +2731,7 @@
         "partySizeRequired": "Choisissez la taille du groupe"
       },
       "errors": {
-        "failed": "Demande échouée",
+        "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
       },
@@ -2749,7 +2749,7 @@
         "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
         "nextStep2": "Le guide confirme par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
-        "sla": "C’est une demande, pas un créneau confirmé. Aucun paiement n’est pris ici. Sans nouvelles après deux jours ouvrés, contactez le guide."
+        "sla": "C’est une demande, pas un créneau confirmé. Sans nouvelle après deux jours ouvrés, contactez le guide."
       },
       "fields": {
         "date": {
@@ -2804,7 +2804,7 @@
         "partySizeRequired": "Choisissez la taille du groupe"
       },
       "errors": {
-        "failed": "Demande échouée",
+        "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
       },
@@ -2821,7 +2821,7 @@
         "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
         "nextStep2": "Le domaine confirme la date et l’heure par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
-        "sla": "Aucun paiement n’est pris dans l’app. Le domaine confirme la disponibilité à part. Sans nouvelles après deux jours ouvrés, appelez le domaine."
+        "sla": "Aucun paiement dans l’app avant confirmation. Sans nouvelle après deux jours ouvrés, appelez le domaine."
       },
       "fields": {
         "date": {
@@ -2968,7 +2968,7 @@
         },
         "meta": {
           "title": "Réserver une dégustation | {wineryName} | Cyprus Winter",
-          "description": "Réservez une dégustation d’hiver à {wineryName} à {region}. Feu, chauffage, souvent le propriétaire qui verse. Ils confirment par e-mail. Réservez à l’avance. Cyprus Winter."
+          "description": "Réservez une dégustation d’hiver à {wineryName} à {region}. Feu, chauffage, souvent le propriétaire qui verse. Confirmation par e-mail. Réservez à l’avance. Cyprus Winter."
         }
       }
     }
