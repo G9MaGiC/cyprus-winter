@@ -58,7 +58,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #157 | Main hub visual token pass — `HOME`/`HUB`, footer rhythm, book card media, skeleton parity |
 | PR #158 | Secondary hub card grids — villages, beaches, wine-routes, regions, plan quick-start |
 | PR #159 | Launch doc hygiene + root loading skeleton tokens |
-| PR #161 | Strict UX/UI QA audit — overlay guards, RTL search, loading a11y, funnel polish (BUG-284–303) |
+| PR #163 | Plan template i18n — `planQuick.templates` + quick-add labels (BUG-304) |
 
 Details: `docs/QA_BUGS.md`
 

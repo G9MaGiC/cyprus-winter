@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-24 · **Target commit:** `856f8a3` (main — QA audit pass PR #161 + design sprint A–F)
+**Last updated:** 2026-08-24 · **Target commit:** `7e223ce` (main — QA audit PR #161, template i18n PR #163)
 
 **Production health (live check):** `https://cyprus-winter.vercel.app/api/health` → `productionReady: false` (Upstash + Supabase env still missing on Vercel — see §1).
 
@@ -73,8 +73,8 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 | Check | Expected (August 2026) |
 |-------|---------------------|
 | Unit tests | 729 pass |
-| i18n keys | 2253 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `856f8a3` |
+| i18n keys | 2273 × 7 locales |
+| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `7e223ce` |
 
 ---
 

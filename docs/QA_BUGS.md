@@ -1601,3 +1601,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-304 | i18n | Plan template cards and quick-add pills used English-only labels from `itinerary-templates.ts` / `plan-quick-add.ts` | `planQuick.templates.items.*` + `planQuick.quickAddPlaces.*`; wired in `QuickStartSection` + `DayContentPanel` |
+
+### Fixed — plan copy hygiene pass 2 (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-305 | i18n | Residual "itinerary" in common aria, help, account, plan meta, and AI copy | User-facing strings → "plan" in en + fr/he/ro leftovers; launch docs @ `7e223ce` |
