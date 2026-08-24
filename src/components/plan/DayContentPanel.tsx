@@ -5,7 +5,7 @@ import TimelineRow from "@/components/plan/TimelineRow";
 import SuggestedForDay from "@/components/SuggestedForDay";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
-import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
+import { PLAN_QUICK_ADD_PLACE_IDS } from "@/data/plan-quick-add";
 import PlanDayHints from "@/components/plan/PlanDayHints";
 import { useTranslations } from "next-intl";
 
@@ -80,10 +80,11 @@ function DayAddSection({
         {tPlanQuick("quickAddLabel", { day: activeDay })}
       </p>
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
-        {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
+        {PLAN_QUICK_ADD_PLACE_IDS.map((id) => {
           const inDay = activeItems.includes(id);
           const place = getPlace(id);
           if (!place) return null;
+          const label = tPlanQuick(`quickAddPlaces.${id}` as "quickAddPlaces.artemis");
           return (
             <button
               key={id}

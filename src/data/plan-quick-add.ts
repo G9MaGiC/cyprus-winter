@@ -1,7 +1,5 @@
-/** Quick-add places shown on Plan page (templates row and Add another stop). */
-export const PLAN_QUICK_ADD_PLACES = [
-  { id: "artemis", label: "Artemis Trail" },
-  { id: "kourion", label: "Kourion" },
-  { id: "domes-sergiou", label: "Dómes Sergiou" },
-  { id: "omodos", label: "Omodos" },
-] as const;
+/** Quick-add place IDs shown on Plan page (labels from planQuick.quickAddPlaces i18n). */
+export const PLAN_QUICK_ADD_PLACE_IDS = ["artemis", "kourion", "domes-sergiou", "omodos"] as const;
+
+/** @deprecated Use PLAN_QUICK_ADD_PLACE_IDS + i18n labels */
+export const PLAN_QUICK_ADD_PLACES = PLAN_QUICK_ADD_PLACE_IDS.map((id) => ({ id, label: id }));

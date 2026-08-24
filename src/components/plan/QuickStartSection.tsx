@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import { HOME, CARD, SECTION, TYPE, PILL } from "@/lib/design-tokens";
 import { ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
-import { PLAN_QUICK_ADD_PLACES } from "@/data/plan-quick-add";
+import { PLAN_QUICK_ADD_PLACE_IDS } from "@/data/plan-quick-add";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { getRecommendedTemplates } from "@/lib/personalization";
 import type { PlanItem } from "@/data";
@@ -44,6 +44,8 @@ export default function QuickStartSection({
   readOnly = false,
 }: QuickStartSectionProps) {
   const tPlanQuick = useTranslations("planQuick");
+  const tTemplate = (key: string, field: "label" | "description") =>
+    tPlanQuick(`templates.items.${key}.${field}` as "templates.items.short-stay.label");
   const activeDayItems = days[activeDay] ?? [];
   const { prefs, hydrated } = useUserPreferences();
 
@@ -106,8 +108,8 @@ export default function QuickStartSection({
           isForYou ? "border-l-4 border-l-terracotta bg-terracotta/[0.04]" : ""
         } ${isRecommended && !isForYou ? "border-l-4 border-l-aegean bg-aegean/[0.04]" : ""}`}
         aria-label={tPlanQuick("templateCardAria", {
-          label: template.label,
-          description: template.description,
+          label: tTemplate(template.key, "label"),
+          description: tTemplate(template.key, "description"),
           duration: template.duration,
           count: placeCount,
           preview,
@@ -116,7 +118,7 @@ export default function QuickStartSection({
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
             <span className={`${TYPE.cardTitle} block break-words`}>
-              {template.label}
+              {tTemplate(template.key, "label")}
             </span>
             {isForYou && (
               <span className={`${TYPE.kicker} text-terracotta mt-1 block`}>
@@ -136,7 +138,9 @@ export default function QuickStartSection({
             {template.duration}d
           </span>
         </div>
-        <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">{template.description}</span>
+        <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">
+          {tTemplate(template.key, "description")}
+        </span>
         {tripLength != null && (
           <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
             {getTripFitLabel(template.duration, tripLength)}
@@ -197,10 +201,11 @@ export default function QuickStartSection({
         {tPlanQuick("quickAddLabel", { day: activeDay })}
       </p>
       <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none scroll-smooth scroll-touch [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
-        {PLAN_QUICK_ADD_PLACES.map(({ id, label }) => {
+        {PLAN_QUICK_ADD_PLACE_IDS.map((id) => {
           const inDay = activeDayItems.includes(id);
           const place = getPlace(id);
           if (!place) return null;
+          const label = tPlanQuick(`quickAddPlaces.${id}` as "quickAddPlaces.artemis");
           return (
             <button
               key={id}
