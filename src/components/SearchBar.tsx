@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { getAttractionById } from "@/data";
 import { search, searchResultHref, type SearchResult } from "@/lib/search";
 import { useTranslations } from "next-intl";
-import { LAYER } from "@/lib/design-tokens";
+import { LAYER, SEARCH } from "@/lib/design-tokens";
 
 type SearchBarProps = {
   placeholder?: string;
@@ -109,10 +109,12 @@ export default function SearchBar({
     router.push(searchResultHref(r, normalizedQuery));
   };
 
+  const panelClass = `${SEARCH.panel} ${LAYER.popover}`;
+
   return (
     <div className={`relative w-full ${className}`}>
       <div className="relative">
-        <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-olive/50 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <svg className={SEARCH.icon} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
         <input
@@ -133,7 +135,7 @@ export default function SearchBar({
           aria-autocomplete="list"
           aria-activedescendant={activeId}
           id={inputId}
-          className="w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200"
+          className={SEARCH.input}
         />
       </div>
 
@@ -143,7 +145,7 @@ export default function SearchBar({
           ref={listRef}
           aria-labelledby={inputId}
           role="listbox"
-          className={`absolute top-full left-0 right-0 mt-2 py-2 rounded-lg bg-sand-100/95 border border-sand-200/80 max-h-96 overflow-y-auto ${LAYER.popover}`}
+          className={`${panelClass} ${SEARCH.panelList}`}
         >
           {results.map((r, i) => (
             <li
@@ -154,9 +156,7 @@ export default function SearchBar({
               aria-selected={i === activeIndex}
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => navigateToResult(r)}
-              className={`px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors ${
-                i === activeIndex ? "bg-terracotta/10" : ""
-              }`}
+              className={`${SEARCH.option} ${i === activeIndex ? SEARCH.optionActive : ""}`}
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="font-medium text-olive truncate">{r.item.name}</span>
@@ -169,31 +169,22 @@ export default function SearchBar({
       )}
 
       {focused && normalizedQuery.length > 0 && normalizedQuery.length < 2 && (
-        <div className={`absolute top-full left-0 right-0 mt-2 py-3 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-olive/60 text-sm`} role="status">
+        <div className={`${panelClass} ${SEARCH.panelStatus}`} role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
       {focused && normalizedQuery.length >= 2 && !hasResults && (
-        <div role="status" className={`absolute top-full left-0 right-0 mt-2 py-6 px-4 rounded-lg bg-sand-100/95 border border-sand-200/80 ${LAYER.popover} text-center text-olive/70 text-sm`}>
+        <div role="status" className={`${panelClass} ${SEARCH.panelEmpty}`}>
           <p className="mb-4">{tSearch("noResults", { query: normalizedQuery })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <AppLink
-              href="/discover"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
+            <AppLink href="/discover" className={SEARCH.recoveryLink}>
               {tSearch("browseDiscover")}
             </AppLink>
-            <AppLink
-              href="/trails"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
+            <AppLink href="/trails" className={SEARCH.recoveryLink}>
               {tSearch("viewTrails")}
             </AppLink>
-            <AppLink
-              href="/plan"
-              className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
+            <AppLink href="/plan" className={SEARCH.recoveryLink}>
               {tSearch("planTrip")}
             </AppLink>
           </div>

@@ -64,7 +64,7 @@ Full contract: [`docs/MOTION.md`](./MOTION.md).
 
 | Dimension | Grade | Notes |
 |-----------|-------|-------|
-| Design system | A | Tokens + UX_PATTERNS + CI guards; `MEDIA`/`BADGE` card primitives (Phase B) |
+docs/DESIGN_SUPER_BRIEF.md
 | Touch / thumb | A- | 44px, bottom chrome math |
 | Motion restraint | A | No gratuitous animation |
 | Motion delight | B | Discover reveal; home static until BUG-247 |

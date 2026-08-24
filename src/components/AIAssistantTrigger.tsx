@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import { AI_PULSE_SEEN_KEY } from "@/lib/local-storage-keys";
+import { AI_TRIGGER, CTA } from "@/lib/design-tokens";
 
 const OPEN_AI_EVENT = "open-ai-assistant";
 
@@ -55,23 +56,20 @@ export default function AIAssistantTrigger({ variant = "default", label }: AIAss
 
   const className =
     variant === "tertiaryOnDark"
-      ? "inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-white/90 hover:text-golden hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/60 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal touch-manipulation"
-      : "group relative min-h-[48px] w-full max-w-lg px-6 sm:px-10 py-4 sm:py-5 rounded-xl bg-golden text-charcoal font-semibold text-base sm:text-lg hover:bg-golden/90 hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex flex-wrap items-center justify-center gap-3 break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden focus-visible:ring-offset-2 focus-visible:ring-offset-background touch-manipulation";
+      ? `${CTA.tertiaryOnDark} touch-manipulation`
+      : AI_TRIGGER.default;
 
   return (
     <button
       type="button"
       disabled={blocked}
       onClick={handleClick}
-      className={`${className} ${showPulse ? "ai-chat-trigger-pulse" : ""} ${blocked ? "opacity-60 cursor-not-allowed" : ""}`}
+      className={`${className} ${showPulse ? "ai-chat-trigger-pulse" : ""} ${blocked ? AI_TRIGGER.disabled : ""}`}
       aria-label={blocked ? tNav("askAIBlockedAria") : tNav("askAIAria")}
     >
       {variant === "default" ? (
         <>
-          <span
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal/10 text-charcoal transition-colors group-hover:bg-charcoal/15"
-            aria-hidden
-          >
+          <span className={AI_TRIGGER.iconBadge} aria-hidden>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"

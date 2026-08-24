@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { BOTTOM_NAV, HOME, HERO, LAYOUT, STRIP, TYPE, CARD, MEDIA, BADGE } from "./design-tokens";
+import { BOTTOM_NAV, HOME, HERO, LAYOUT, STRIP, TYPE, CARD, MEDIA, BADGE, SEARCH, AI_TRIGGER, LOCATION } from "./design-tokens";
 
 describe("HOME rhythm tokens", () => {
   it("defines tighter mobile section padding than hub SECTION.py", () => {
@@ -74,6 +74,33 @@ describe("BADGE tokens", () => {
     expect(BADGE.pill).toBe("rounded-full");
     expect(BADGE.chip).toContain("rounded-md");
     expect(BADGE.chip).toContain("backdrop-blur-sm");
+  });
+});
+
+describe("SEARCH tokens", () => {
+  it("defines combobox input, panel, and recovery link primitives", () => {
+    expect(SEARCH.input).toContain("min-h-[44px]");
+    expect(SEARCH.input).toContain("focus-visible:ring-terracotta/20");
+    expect(SEARCH.panel).toContain("bg-sand-100/95");
+    expect(SEARCH.optionActive).toBe("bg-terracotta/10");
+    expect(SEARCH.recoveryLink).toContain("border-sand-200/80");
+  });
+});
+
+describe("AI_TRIGGER tokens", () => {
+  it("defines golden default trigger with reduced-motion press", () => {
+    expect(AI_TRIGGER.default).toContain("bg-golden");
+    expect(AI_TRIGGER.default).toContain("motion-reduce:active:scale-100");
+    expect(AI_TRIGGER.iconBadge).toContain("bg-charcoal/10");
+    expect(AI_TRIGGER.disabled).toContain("opacity-60");
+  });
+});
+
+describe("LOCATION tokens", () => {
+  it("defines terracotta primary and ghost secondary for consent actions", () => {
+    expect(LOCATION.primary).toContain("bg-terracotta");
+    expect(LOCATION.primary).toContain("min-h-[44px]");
+    expect(LOCATION.secondary).toContain("text-olive/70");
   });
 });
 
