@@ -1001,6 +1001,7 @@
       "loading": "Karte wird geladen…",
       "emptyTitle": "Keine Orte mit Koordinaten zum Anzeigen.",
       "emptyBody": "Durchsuchen Sie die Liste oben, um Orte zu entdecken.",
+      "emptyBrowseCta": "Orte entdecken",
       "sectionTitle": "Orte auf der Karte",
       "sectionTitleWithCount": "Orte auf der Karte ({count})",
       "curatedBy": "Kuratierte Auswahl vom Cyprus-Winter-Team.",

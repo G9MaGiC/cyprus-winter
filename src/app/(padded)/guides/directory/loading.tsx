@@ -3,18 +3,15 @@ import { getTranslations } from "next-intl/server";
 
 function CardSkeleton() {
   return (
-    <div className={`${CARD.base} overflow-hidden`}>
-      <div className={`${SKELETON.media} rounded-none`} />
-      <div className={`${CARD.content} space-y-2`}>
-        <div className={`h-5 w-3/4 ${SKELETON.block}`} />
-        <div className={`h-4 w-full ${SKELETON.block}`} />
-        <div className={`h-4 w-4/5 ${SKELETON.block}`} />
-      </div>
+    <div className={`${CARD.base} ${CARD.content} space-y-2`}>
+      <div className={`h-5 w-3/4 ${SKELETON.block}`} />
+      <div className={`h-4 w-full ${SKELETON.block}`} />
+      <div className={`h-4 w-4/5 ${SKELETON.block}`} />
     </div>
   );
 }
 
-export default async function VillagesLoading() {
+export default async function GuidesDirectoryLoading() {
   const t = await getTranslations("common");
   return (
     <div
@@ -27,9 +24,13 @@ export default async function VillagesLoading() {
       <div className="animate-pulse">
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
         <div className={`h-9 w-56 ${SKELETON.bar} mb-2`} />
-        <div className={`h-4 max-w-lg ${SKELETON.block} mb-4`} />
-        <div className={`h-11 w-32 ${SKELETON.block} mb-10`} />
-        <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
+        <div className={`h-4 max-w-lg ${SKELETON.block} mb-6`} />
+        <div className="flex flex-wrap gap-2 mb-8">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className={`h-11 w-24 ${SKELETON.block} rounded-full`} />
+          ))}
+        </div>
+        <div className={`grid gap-4 sm:grid-cols-2 ${HOME.gridGap}`}>
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <CardSkeleton key={i} />
           ))}

@@ -1,17 +1,39 @@
-import { LAYOUT } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
-export default function NatureLoading() {
+function CardSkeleton() {
+  return (
+    <div className={`${CARD.base} overflow-hidden`}>
+      <div className={`${SKELETON.media} rounded-none`} />
+      <div className={`${CARD.content} space-y-2`}>
+        <div className={`h-5 w-3/4 ${SKELETON.block}`} />
+        <div className={`h-4 w-full ${SKELETON.block}`} />
+        <div className={`h-4 w-4/5 ${SKELETON.block}`} />
+      </div>
+    </div>
+  );
+}
+
+export default async function NatureLoading() {
+  const t = await getTranslations("common");
   return (
     <div
-      className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse space-y-6`}
-      aria-hidden
+      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
+      aria-busy
+      aria-live="polite"
+      role="status"
+      aria-label={t("loading.content")}
     >
-      <div className="h-10 w-2/3 max-w-md rounded-lg bg-sand-200" />
-      <div className="h-4 w-full max-w-xl rounded bg-sand-200" />
-      <div className="grid gap-4 sm:grid-cols-2">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-48 rounded-2xl bg-sand-200" />
-        ))}
+      <div className="animate-pulse">
+        <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />
+        <div className={`h-9 w-56 ${SKELETON.bar} mb-2`} />
+        <div className={`h-4 max-w-lg ${SKELETON.block} mb-4`} />
+        <div className={`h-11 w-32 ${SKELETON.block} mb-10`} />
+        <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <CardSkeleton key={i} />
+          ))}
+        </div>
       </div>
     </div>
   );

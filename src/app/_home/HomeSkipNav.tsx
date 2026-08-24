@@ -10,7 +10,7 @@ export default function HomeSkipNav() {
   return (
     <nav
       aria-label={tCommon("skipToContent")}
-      className={`absolute left-4 top-4 ${LAYER.popover} flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2`}
+      className={`absolute start-4 top-4 ${LAYER.popover} flex -translate-y-full flex-col gap-2 rounded-lg border border-sand-200 bg-white p-2 shadow-lg transition-transform focus-within:translate-y-0 focus-within:outline-none focus-within:ring-2 focus-within:ring-terracotta focus-within:ring-offset-2`}
     >
       <AppLink
         href="#start-here"

@@ -1,4 +1,5 @@
 import { HOME, LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
 function SecretSkeleton() {
   return (
@@ -14,12 +15,15 @@ function SecretSkeleton() {
   );
 }
 
-export default function SecretsLoading() {
+export default async function SecretsLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
+      aria-live="polite"
       role="status"
+      aria-label={t("loading.content")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />

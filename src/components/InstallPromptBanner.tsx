@@ -91,7 +91,7 @@ export default function InstallPromptBanner() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] ${LAYER.onboarding} px-4 pb-4 sm:pb-6 transition-all ${TRANSITION.medium} ease-out translate-y-0 opacity-100 motion-reduce:transition-none`}
+      className={`fixed inset-x-0 bottom-[var(--cw-cookie-banner-offset,0px)] ${LAYER.toast} px-4 pb-4 sm:pb-6 transition-all ${TRANSITION.medium} ease-out translate-y-0 opacity-100 motion-reduce:transition-none`}
       role="region"
       aria-label={t("title")}
     >

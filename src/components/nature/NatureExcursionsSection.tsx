@@ -2,13 +2,14 @@
 
 import { useMemo, useState } from "react";
 import AppLink from "@/components/AppLink";
+import ClientPillFilter from "@/components/ClientPillFilter";
 import {
   filterNatureExcursions,
   NATURE_EXCURSION_REGIONS,
   type NatureExcursion,
   type NatureExcursionRegion,
 } from "@/lib/nature-excursions";
-import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, HOME, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 export default function NatureExcursionsSection() {
@@ -35,9 +36,9 @@ export default function NatureExcursionsSection() {
       </p>
 
       <div className="flex flex-wrap gap-2 mb-6" role="group" aria-label={t("filterRegion")}>
-        <FilterChip active={!region} onClick={() => setRegion(null)} label={t("allRegions")} />
+        <ClientPillFilter active={!region} onClick={() => setRegion(null)} label={t("allRegions")} />
         {NATURE_EXCURSION_REGIONS.map((r) => (
-          <FilterChip
+          <ClientPillFilter
             key={r}
             active={region === r}
             onClick={() => setRegion(region === r ? null : r)}
@@ -50,7 +51,7 @@ export default function NatureExcursionsSection() {
         {t("resultCount", { count: filtered.length })}
       </p>
 
-      <ul className="grid gap-4 sm:grid-cols-2">
+      <ul className={`grid sm:grid-cols-2 ${HOME.gridGap}`}>
         {filtered.map((site) => (
           <ExcursionCard key={site.id} site={site} />
         ))}
@@ -59,36 +60,11 @@ export default function NatureExcursionsSection() {
   );
 }
 
-function FilterChip({
-  active,
-  onClick,
-  label,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={`min-h-[44px] px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
-        active
-          ? "bg-terracotta text-white"
-          : "bg-white border border-sand-200 text-olive hover:border-terracotta/40"
-      }`}
-    >
-      {label}
-    </button>
-  );
-}
-
 function ExcursionCard({ site }: { site: NatureExcursion }) {
   const t = useTranslations("nature.page.excursions");
 
   return (
-    <li className={`${CARD.base} ${CARD.content} flex flex-col gap-3`}>
+    <li className={`${CARD.base} ${CARD.hover} ${CARD.content} flex flex-col gap-3`}>
       <div className="flex flex-wrap items-start gap-2">
         <h3 className={`${TYPE.cardTitle} text-charcoal flex-1 min-w-0`}>{site.name}</h3>
         {site.winterPick && (

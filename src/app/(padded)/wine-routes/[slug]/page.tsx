@@ -89,6 +89,7 @@ export default async function WineRoutePage({ params }: Props) {
             sizes="(max-width: 768px) 100vw, 800px"
             priority
           />
+          <div className={CARD.heroOverlay} aria-hidden />
         </div>
       )}
 

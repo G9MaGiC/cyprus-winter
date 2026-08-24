@@ -119,7 +119,7 @@ export default async function RootLayout({
         
         <a
           href="#main-content"
-          className={`fixed left-4 top-4 ${LAYER.skipNav} min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-terracotta text-white rounded-full font-medium -translate-y-[200%] focus-visible:translate-y-0 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
+          className={`fixed start-4 top-4 ${LAYER.skipNav} min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-terracotta text-white rounded-full font-medium -translate-y-[200%] focus-visible:translate-y-0 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
         >
           {tCommon("skipToContent")}
         </a>

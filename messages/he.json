@@ -1001,6 +1001,8 @@
       "loading": "Loading map…",
       "emptyTitle": "No places with coordinates to display.",
       "emptyBody": "Browse the list above to explore places.",
+      "emptyBrowseCta": "גלו מקומות",
+      "emptyBrowseCta": "Browse places",
       "sectionTitle": "Places on map",
       "sectionTitleWithCount": "Places on map ({count})",
       "curatedBy": "Curated by the Cyprus Winter team.",
@@ -1868,10 +1870,10 @@
       "daysCount": "{count, plural, one {# day} other {# days}}",
       "copyLink": "Copy link",
       "linkCopied": "Link copied",
-      "copyItinerary": "Copy itinerary (text)",
-      "copyItineraryShort": "Copy text",
+      "copyItinerary": "העתקת תוכנית (טקst)",
+      "copyItineraryShort": "העתקת טקst",
       "copied": "Copied",
-      "shareTextPrefix": "My Cyprus Winter itinerary —",
+      "shareTextPrefix": "התוכנית שלי לחורף בקפריסין —",
       "previewLineTwo": "{a} ו{b}",
       "previewLineThree": "{a}, {b} ו{c}",
       "previewLineMore": "{a}, {b} ועוד {count}",
@@ -1950,7 +1952,7 @@
       "noCoords": "Some of your places don't have map locations yet."
     },
     "clipboard": {
-      "heading": "Cyprus Winter Itinerary",
+      "heading": "Plan Cyprus Winter",
       "dayLabel": "Day {day}:",
       "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
     },

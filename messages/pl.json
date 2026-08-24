@@ -1001,6 +1001,7 @@
       "loading": "Ładowanie mapy…",
       "emptyTitle": "Brak miejsc z współrzędnymi do wyświetlenia.",
       "emptyBody": "Przeglądaj listę powyżej, aby odkrywać miejsca.",
+      "emptyBrowseCta": "Przeglądaj miejsca",
       "sectionTitle": "Miejsca na mapie",
       "sectionTitleWithCount": "Miejsca na mapie ({count})",
       "curatedBy": "Wyselekcjonowane przez zespół Cyprus Winter.",

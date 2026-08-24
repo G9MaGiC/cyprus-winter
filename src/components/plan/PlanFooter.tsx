@@ -1,8 +1,9 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
+import AskAIButton from "@/components/AskAIButton";
 import { useTranslations } from "next-intl";
-import { SECTION } from "@/lib/design-tokens";
+import { CTA, SECTION } from "@/lib/design-tokens";
 
 type PlanFooterProps = {
   hasWineries?: boolean;
@@ -34,10 +35,11 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
         {tPlan("footer.winterTip")}
       </p>
       <div
-        className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm"
+        className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm items-center"
         role="navigation"
         aria-label={tPlan("aria.quickLinks")}
       >
+        <AskAIButton className={`${CTA.chipTertiary} min-h-[44px]`} />
         {hasWineries && (
           <Link href="/bookings" className={SECTION.aegeanLink}>
             {tCommon("bookTastings")}

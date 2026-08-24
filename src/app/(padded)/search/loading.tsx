@@ -12,9 +12,8 @@ function NavSkeleton() {
 
 function SearchResultSkeleton() {
   return (
-    <div className={`${CARD.base} ${CARD.content} flex items-center gap-4`}>
-      <div className={`h-14 w-20 shrink-0 ${SKELETON.block} rounded-lg`} />
-      <div className="flex-1 min-w-0 space-y-2">
+    <div className={`${CARD.base} ${CARD.content}`}>
+      <div className="space-y-2">
         <div className={`h-5 w-32 ${SKELETON.bar}`} />
         <div className={`h-4 w-full max-w-xs ${SKELETON.block}`} />
       </div>

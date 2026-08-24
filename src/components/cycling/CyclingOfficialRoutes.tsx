@@ -8,6 +8,7 @@ import {
   formatRouteDistance,
 } from "@/lib/cycling-routes";
 import type { CyclingRoute, CyclingRouteRegion } from "@/lib/cycling-route-types";
+import ClientPillFilter from "@/components/ClientPillFilter";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -38,9 +39,9 @@ export default function CyclingOfficialRoutes() {
       </p>
 
       <div className="flex flex-wrap gap-2 mb-6" role="group" aria-label={t("filterRegion")}>
-        <FilterChip active={!region} onClick={() => setRegion(null)} label={t("allRegions")} />
+        <ClientPillFilter active={!region} onClick={() => setRegion(null)} label={t("allRegions")} />
         {CYCLING_ROUTE_REGIONS.map((r) => (
-          <FilterChip
+          <ClientPillFilter
             key={r}
             active={region === r}
             onClick={() => setRegion(region === r ? null : r)}
@@ -59,31 +60,6 @@ export default function CyclingOfficialRoutes() {
         ))}
       </ul>
     </section>
-  );
-}
-
-function FilterChip({
-  active,
-  onClick,
-  label,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={`min-h-[44px] px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
-        active
-          ? "bg-terracotta text-white"
-          : "bg-white border border-sand-200 text-olive hover:border-terracotta/40"
-      }`}
-    >
-      {label}
-    </button>
   );
 }
 

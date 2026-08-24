@@ -161,7 +161,7 @@ export default function StartHereWithExplore() {
               ))}
             </div>
             <div
-              className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-r from-transparent to-sand/80 md:hidden"
+              className="pointer-events-none absolute end-0 top-0 bottom-2 w-12 bg-gradient-to-l from-transparent to-sand/80 md:hidden"
               aria-hidden
             />
           </div>
