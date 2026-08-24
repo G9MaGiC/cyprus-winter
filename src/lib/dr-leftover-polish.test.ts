@@ -203,6 +203,26 @@ describe("home state-aware discovery sections", () => {
   });
 });
 
+describe("visual QA gate (Phase E)", () => {
+  it("defines viewport helpers and gate spec for 375/768/RTL", () => {
+    const helper = readFileSync("e2e/helpers/visual-qa.ts", "utf8");
+    const spec = readFileSync("e2e/visual-qa-gate.spec.ts", "utf8");
+    expect(helper).toContain("VIEWPORT_MOBILE");
+    expect(helper).toContain("width: 375");
+    expect(helper).toContain("VIEWPORT_TABLET");
+    expect(helper).toContain("width: 768");
+    expect(helper).toContain("expectNoHorizontalOverflow");
+    expect(spec).toContain("@375px Hebrew RTL");
+    expect(spec).toContain("/he/discover");
+  });
+
+  it("chains visual gate into test:e2e:gate:ci", () => {
+    const pkg = readFileSync("package.json", "utf8");
+    expect(pkg).toContain("test:e2e:visual-gate:ci");
+    expect(pkg).toContain("visual-qa-gate.spec.ts");
+  });
+});
+
 describe("chrome token adoption (Phase D)", () => {
   it("SearchBar uses SEARCH tokens for input and panels", () => {
     const bar = readFileSync("src/components/SearchBar.tsx", "utf8");
