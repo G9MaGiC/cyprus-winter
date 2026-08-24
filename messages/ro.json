@@ -571,25 +571,25 @@
       }
     },
     "placeOfDay": {
-      "kicker": "Today's pick — one place worth the drive",
-      "addToPlan": "Add to plan",
-      "seeDetails": "See details →",
-      "openAria": "Open {name}",
+      "kicker": "Alegerea zilei — un loc care merită drumul",
+      "addToPlan": "Adaugă în plan",
+      "seeDetails": "Vezi detalii →",
+      "openAria": "Deschide {name}",
       "overlays": {
-        "goodDay": "Good day for it",
-        "quietWeek": "Quiet this week",
-        "clearToday": "Clear today",
-        "bestAfternoon": "Best light in afternoon",
-        "worthVisit": "Worth a visit"
+        "goodDay": "Zi bună pentru asta",
+        "quietWeek": "Liniște săptămâna aceasta",
+        "clearToday": "Cer senin astăzi",
+        "bestAfternoon": "Cea mai bună lumină după-amiaza",
+        "worthVisit": "Merită o vizită"
       },
       "fallbackTease": {
-        "winery": "Heaters on the terrace.",
-        "village": "Cobbles to yourself midweek.",
-        "monastery": "Quiet this week.",
-        "nature": "Clear today.",
-        "ancient": "Best light in afternoon.",
-        "beach": "Quiet in winter.",
-        "trail": "Check reports before you go."
+        "winery": "Încălzitoare pe terasă.",
+        "village": "Pietruite doar pentru tine în timpul săptămânii.",
+        "monastery": "Liniște săptămâna aceasta.",
+        "nature": "Cer senin astăzi.",
+        "ancient": "Cea mai bună lumină după-amiaza.",
+        "beach": "Liniștit iarna.",
+        "trail": "Verifică rapoartele înainte de plecare."
       }
     },
     "planningSection": {
@@ -604,11 +604,11 @@
       "clear": "Clear"
     },
     "insiderTip": {
-      "heading": "Winter insider tip",
+      "heading": "Sfat insider de iarnă",
       "cta": {
-        "hiking": "Check trail conditions",
-        "practical": "See airport tips",
-        "default": "Explore places"
+        "hiking": "Verifică condițiile traseelor",
+        "practical": "Sfaturi aeroport",
+        "default": "Explorează locuri"
       }
     },
     "templates": {
@@ -636,15 +636,15 @@
     },
     "whyCyprus": {
       "title": "De ce Cipru iarna",
-      "coastTemp": "Coast often 16–20°C",
-      "troodosCooler": "Troodos cooler — check conditions",
-      "sunset": "Sunset ~5pm in December",
-      "blockquote": "Coast mild. Mountains with snow. Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Stop at a kafenion. Coffee. Nobody hurries.",
-      "rule": "A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.",
-      "tagline": "You came for the warmth. Stay for the pace."
+      "coastTemp": "Coasta adesea 16–20°C",
+      "troodosCooler": "Troodos mai rece — verifică condițiile",
+      "sunset": "Apus ~17:00 în decembrie",
+      "blockquote": "Coastă blândă. Munți cu zăpadă. Drumeție dimineața, prânz afară. Situri antice goale, sate liniștite. Pauză la kafenion. Cafea. Nimeni nu se grăbește.",
+      "rule": "O regulă mică: un traseu, un sat, o degustare. Adaugă în plan pe parcurs.",
+      "tagline": "Ai venit pentru căldură. Rămâi pentru ritm."
     },
     "whyCyprusTeaser": {
-      "quote": "Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Nobody hurries."
+      "quote": "Drumeție dimineața, prânz afară. Situri antice goale, sate liniștite. Nimeni nu se grăbește."
     },
     "editorsPicksOpenAria": "Deschide {title}",
     "editorsPicks": {
@@ -652,23 +652,23 @@
       "items": {
         "omodos": {
           "title": "Omodos",
-          "desc": "Cobbled streets, zivania, coffee in the wine heartland",
-          "imageAlt": "Omodos village, wine heartland, cobbled streets—Cyprus winter"
+          "desc": "Străzi pavate, zivania, cafea în inima podgoriei",
+          "imageAlt": "Sat Omodos, podgorie, străzi pavate—iarnă Cipru"
         },
         "pafos-mosaics": {
-          "title": "Pafos mosaics",
-          "desc": "Roman mosaics in soft winter light",
-          "imageAlt": "Pafos Roman mosaics in soft winter light—Cyprus"
+          "title": "Mozaicuri Paphos",
+          "desc": "Mozaicuri romane în lumină blândă de iarnă",
+          "imageAlt": "Mozaicuri romane la Paphos, lumină de iarnă—Cipru"
         },
         "artemis": {
-          "title": "Artemis Trail",
-          "desc": "7 km of pine forest and ridge views",
-          "imageAlt": "Artemis Trail, Troodos pine forest, Cyprus winter hiking"
+          "title": "Traseul Artemis",
+          "desc": "7 km de pădure de pin și priveliști de pe creastă",
+          "imageAlt": "Traseul Artemis, pădure de pin Troodos, drumeție iarnă Cipru"
         },
         "kourion": {
           "title": "Kourion",
-          "desc": "Roman ruins, sunset over the sea",
-          "imageAlt": "Kourion Greco-Roman ruins above Mediterranean, Cyprus winter"
+          "desc": "Ruine romane, apus deasupra mării",
+          "imageAlt": "Ruine greco-romane Kourion deasupra Mediteranei, iarnă Cipru"
         }
       }
     },
@@ -676,73 +676,73 @@
       "items": {
         "tsiakkas": {
           "title": "Tsiakkas",
-          "subtitle": "Troodos foothills · heaters on the terrace · book ahead",
-          "imageAlt": "Winter winery tasting in the Troodos foothills, Cyprus"
+          "subtitle": "Suburbii Troodos · încălzitoare pe terasă · rezervă din timp",
+          "imageAlt": "Degustare de iarnă la poalele Troodos, Cipru"
         },
         "vouni-panayia": {
           "title": "Vouni Panayia",
-          "subtitle": "Laona route · Commandaria comparisons · cosy winter room",
-          "imageAlt": "Wine villages in the Paphos hills in winter light, Cyprus"
+          "subtitle": "Ruta Laona · comparații Commandaria · cameră cosy",
+          "imageAlt": "Sate viticole în dealurile Paphos, lumină de iarnă, Cipru"
         },
         "domes-sergiou": {
           "title": "Dómes Sergiou",
-          "subtitle": "Between Larnaca & Limassol · indigenous varieties · modern",
-          "imageAlt": "Modern Cypriot winery tasting, Cyprus winter"
+          "subtitle": "Între Larnaca și Limassol · soiuri autohtone · modern",
+          "imageAlt": "Degustare cipriotă modernă, iarnă Cipru"
         }
       }
     },
     "insiderTips": {
       "daylight": {
-        "title": "Daylight is short",
-        "body": "December and January have the shortest days—roughly nine hours between sunrise and sunset. Plan outdoor activities for the morning. By late afternoon the light is already golden. Use it."
+        "title": "Lumină scurtă",
+        "body": "Decembrie și ianuarie au cele mai scurte zile—circa nouă ore între răsărit și apus. Planifică activități în aer liber dimineața. Spre seară lumina e deja aurie. Profită."
       },
       "layers": {
-        "title": "Layer up",
-        "body": "The coast might be 18°C while Troodos is 5°C. Bring a windproof jacket, a warm mid-layer, and a hat. Mountain cafés have fireplaces. Coastal tavernas have heaters. Dress for both."
+        "title": "Straturi",
+        "body": "Coasta poate fi 18°C iar Troodos 5°C. Ia o geacă rezistentă la vânt, un strat cald și o căciulă. Cafenelele montane au șeminee. Tavernele de coastă au încălzitoare. Îmbracă-te pentru ambele."
       },
       "book-ahead": {
-        "title": "Book winery tastings ahead",
-        "body": "Many wineries run small operations. In winter they appreciate a call or online booking. You'll often get the owner or winemaker pouring. Worth the extra step."
+        "title": "Rezervă degustările din timp",
+        "body": "Multe crame sunt mici. Iarna apreciază un telefon sau rezervare online. Adesea proprietarul sau vinificatorul toarnă personal. Merită efortul."
       },
       "weekday-quiet": {
-        "title": "Weekdays are quieter",
-        "body": "Omodos, Lefkara, and the main sites fill up on weekends. Tuesday or Wednesday? You'll have the cobbles to yourself. Villages feel different when the tour buses have gone. Plan big days for midweek."
+        "title": "În timpul săptămânii e liniște",
+        "body": "Omodos, Lefkara și siturile mari se umplu în weekend. Marți sau miercuri? Pietruitele sunt ale tale. Satele se simt altfel fără autocare. Planifică zilele mari la mijlocul săptămânii."
       },
       "kafenion-stop": {
-        "title": "Stop for a coffee",
-        "body": "Village kafenions are where locals meet. Order a Greek coffee, sit, watch. No rush. In winter the stove is lit and the pace is slow. The person at the next table often knows the best winery, trail, or taverna. The best advice isn't in a guidebook."
+        "title": "Oprește-te la cafea",
+        "body": "Kafenionurile din sat sunt locul de întâlnire al localnicilor. Comandă cafea grecească, stai, privește. Fără grabă. Iarna soba e aprinsă și ritmul e lent. Vecinul de masă știe adesea cea mai bună cramă sau traseu."
       },
       "winter-light": {
-        "title": "The light is different",
-        "body": "Winter sun stays low in the sky. Golden hour comes early—often mid-afternoon in December. Ancient sites, villages, the coast: everything looks different. Bring a camera. Or just watch. Plan ruins and villages for the afternoon and you'll see why."
+        "title": "Lumina e diferită",
+        "body": "Soarele de iarnă stă jos. Ora aurie vine devreme—adesea după-amiaza în decembrie. Situri, sate, coastă: totul arată altfel. Ia o cameră. Sau privește. Planifică ruine și sate după-amiaza."
       },
       "start-early": {
-        "title": "Start by 9am",
-        "body": "Winter days are short—finish hikes well before dusk. The morning air is crisp. The trails are quieter early. You'll thank yourself when you're back at the car with daylight to spare."
+        "title": "Pleacă la 9",
+        "body": "Zilele de iarnă sunt scurte—termină drumețiile înainte de amurg. Aerul de dimineață e proaspăt. Traseele sunt mai liniștite devreme. Vei fi mulțumit cu lumină la mașină."
       },
       "check-conditions": {
-        "title": "Check before you go",
-        "body": "Troodos weather changes fast. Snow on Olympus, mud after rain, ice on shaded sections. The ski resort posts conditions. So do local cafés. Ask. Don't assume."
+        "title": "Verifică înainte",
+        "body": "Vremea în Troodos se schimbă repede. Zăpadă pe Olympus, noroi după ploaie, gheață la umbră. Stațiunea de schi postează condiții. Întreabă. Nu presupune."
       },
       "microspikes": {
-        "title": "Microspikes for Olympus",
-        "body": "Olympus Summit and higher Troodos trails can have snow and ice from January to March. Microspikes cost €20 and fit over your boots. If the forecast is near freezing, bring them."
+        "title": "Microspikes pentru Olympus",
+        "body": "Vârful Olympus și traseele înalte din Troodos pot avea zăpadă și gheață ianuarie–martie. Microspikes costă ~20€. Dacă prognoza e aproape de îngheț, ia-le."
       },
       "tell-someone": {
-        "title": "Tell someone your route",
-        "body": "Phone signal is patchy in the mountains. Tell your hotel or a friend which trail you're on and when you expect back. Emergency: 112. The mountain doesn't care about your deadline."
+        "title": "Spune cuiva traseul",
+        "body": "Semnalul e slab la munte. Spune hotelului sau unui prieten ce traseu și când te întorci. Urgență: 112."
       },
       "euro": {
-        "title": "Euro, cards, and cash",
-        "body": "Cyprus uses the euro. Cards work almost everywhere. Small village shops and kafenions sometimes prefer cash. Keep €20 or so for coffee, lace, and zivania."
+        "title": "Euro, carduri, numerar",
+        "body": "Cipru folosește euro. Cardurile funcționează aproape peste tot. Magazine mici și kafenionuri preferă uneori cash. Păstrează ~20€ pentru cafea, dantelă și zivania."
       },
       "drive-left": {
-        "title": "Drive on the left",
-        "body": "British legacy. Rent a car if you want to reach villages and trails. The roads are good. Mountain bends can be tight. Take your time. The views are worth it."
+        "title": "Condu pe stânga",
+        "body": "Moștenire britanică. Închiriază mașină pentru sate și trasee. Drumurile sunt bune. Curbele montane pot fi strâmte. Ia-ți timpul. Priveliștea merită."
       },
       "emergency": {
-        "title": "Emergency numbers",
-        "body": "112 for EU emergency. 1460 for tourist information. 199 for ambulance. Save them. Hope you never need them."
+        "title": "Numere de urgență",
+        "body": "112 urgență UE. 1460 info turistică. 199 ambulanță. Salvează-le. Speră să nu ai nevoie."
       }
     }
   },
@@ -1822,56 +1822,56 @@
     },
     "dayCombos": {
       "trailAndVillage": {
-        "label": "Trail and village",
-        "why": "Pine forest in the morning, village lunch by noon.",
-        "tip": "Start Artemis by 9am. Omodos warms up with coffee and lace."
+        "label": "Traseu și sat",
+        "why": "Pădure de pin dimineața, prânz la sat la prânz.",
+        "tip": "Pornește Artemis la 9. Omodos se încălzește cu cafea și dantelă."
       },
       "limassolCoastCommandaria": {
-        "label": "Limassol coast & Commandaria",
-        "why": "Ancient theatre, quick dip, then sugar-mill wine."
+        "label": "Coasta Limassol și Commandaria",
+        "why": "Teatru antic, oprire rapidă, apoi vin Commandaria."
       },
       "paphosMosaicsWine": {
-        "label": "Paphos mosaics & wine",
-        "why": "Morning light on the floors, Vouni for lunch and tasting.",
-        "tip": "House of Theseus: 9–11am. Book Vouni ahead."
+        "label": "Mozaicuri Paphos și vin",
+        "why": "Lumină de dimineață pe podele, Vouni pentru prânz și degustare.",
+        "tip": "Casa lui Theseus: 9–11. Rezervă Vouni din timp."
       },
       "waterfallVillage": {
-        "label": "Waterfall and stone village",
-        "why": "Caledonia after rain, Kakopetria for lunch and cobbles.",
-        "tip": "Best 1–2 days after rainfall. Waterproof boots."
+        "label": "Cascadă și sat de piatră",
+        "why": "Caledonia după ploaie, Kakopetria pentru prânz.",
+        "tip": "Cel mai bine 1–2 zile după ploaie. Cizme impermeabile."
       },
       "kykkosWine": {
-        "label": "Kykkos and wine",
-        "why": "Monastery and views first, Tsiakkas tasting to close the loop.",
-        "tip": "Tsiakkas terrace has heaters. Book ahead."
+        "label": "Kykkos și vin",
+        "why": "Mănăstire și priveliști mai întâi, degustare Tsiakkas la final.",
+        "tip": "Terasă cu încălzitoare. Rezervă din timp."
       },
       "laceAncientWine": {
-        "label": "Lace, ancient & wine",
-        "why": "Lefkara lacemakers, Choirokoitia, then Dómes Sergiou."
+        "label": "Dantelă, antic și vin",
+        "why": "Lefkara, Choirokoitia, apoi Dómes Sergiou."
       },
       "gentleTrailPlatres": {
-        "label": "Gentle trail & Platres",
-        "why": "Cascada Millomeris, apoi Platres pentru cafenele și priveliște.",
-        "tip": "Plimbare scurtă la cascada din Platres. Adesea liberă când mai sus e zăpadă."
+        "label": "Traseu ușor și Platres",
+        "why": "Cascada Millomeris, apoi Platres pentru cafenele și priveliști.",
+        "tip": "Plimbare scurtă la cascadă lângă Platres. Adesea liber când sus e zăpadă."
       },
       "paphosCoastAdonis": {
-        "label": "Paphos coast & Adonis",
-        "why": "Tomb of Kings, coral bay stretch, Adonis for tasting."
+        "label": "Coasta Paphos și Adonis",
+        "why": "Mormintele Regilor, coastă, degustare la Adonis."
       }
     },
     "share": {
-      "copyAndShare": "Copy & share",
-      "placesLabel": "places",
-      "daysLabel": "days",
-      "downloadIcs": "Add to calendar",
-      "icsDownloaded": "Downloaded",
-      "placesCount": "{count, plural, one {# place} other {# places}}",
-      "daysCount": "{count, plural, one {# day} other {# days}}",
-      "copyLink": "Copy link",
-      "linkCopied": "Link copied",
+      "copyAndShare": "Copiază și distribuie",
+      "placesLabel": "locuri",
+      "daysLabel": "zile",
+      "downloadIcs": "Adaugă în calendar",
+      "icsDownloaded": "Descărcat",
+      "placesCount": "{count, plural, one {# loc} other {# locuri}}",
+      "daysCount": "{count, plural, one {# zi} other {# zile}}",
+      "copyLink": "Copiază linkul",
+      "linkCopied": "Link copiat",
       "copyItinerary": "Copiază planul (text)",
       "copyItineraryShort": "Copiază text",
-      "copied": "Copied",
+      "copied": "Copiat",
       "shareTextPrefix": "Planul meu Cyprus Winter —",
       "previewLineTwo": "{a} și {b}",
       "previewLineThree": "{a}, {b} și {c}",
@@ -1899,12 +1899,12 @@
       "shareLinkCopied": "Link de distribuire copiat în clipboard"
     },
     "daySelector": {
-      "tabLabelWithCount": "Day {day} · {count}",
-      "viewAllDays": "View all days",
-      "viewAllDaysCount": "View all {count} days",
+      "tabLabelWithCount": "Ziua {day} · {count}",
+      "viewAllDays": "Vezi toate zilele",
+      "viewAllDaysCount": "Vezi toate cele {count} zile",
       "unknownPlace": "…",
       "summarySeparator": " → ",
-      "summaryEmpty": "Add places to start"
+      "summaryEmpty": "Adaugă locuri pentru început"
     },
     "suggestedForDay": {
       "empty": "Add a place below to see suggestions that pair well with your day.",
@@ -1965,45 +1965,45 @@
   },
   "placePicker": {
     "tabs": {
-      "all": "All",
-      "wineries": "Wineries",
-      "trails": "Trails",
-      "attractions": "Attractions",
-      "eat": "Eat",
-      "events": "Events"
+      "all": "Toate",
+      "wineries": "Crămii",
+      "trails": "Trasee",
+      "attractions": "Atracții",
+      "eat": "Mâncare",
+      "events": "Evenimente"
     },
     "lists": {
-      "places": "places",
-      "wineries": "wineries",
-      "trails": "trails",
-      "attractions": "attractions",
-      "restaurants": "restaurants",
-      "events": "events"
+      "places": "locuri",
+      "wineries": "crămii",
+      "trails": "trasee",
+      "attractions": "atracții",
+      "restaurants": "restaurante",
+      "events": "evenimente"
     },
     "labels": {
-      "added": "Added"
+      "added": "Adăugat"
     },
     "search": {
-      "srLabel": "Search places by name or region",
-      "placeholder": "Search by name or region…",
-      "ariaLabel": "Search places by name or region"
+      "srLabel": "Caută locuri după nume sau regiune",
+      "placeholder": "Caută după nume sau regiune…",
+      "ariaLabel": "Caută locuri după nume sau regiune"
     },
     "aria": {
-      "tabList": "Place categories",
-      "itemAdded": "{name} (added to plan)",
-      "addItem": "Add {name} to plan"
+      "tabList": "Categorii de locuri",
+      "itemAdded": "{name} (adăugat în plan)",
+      "addItem": "Adaugă {name} în plan"
     },
     "empty": {
-      "noMatches": "No matches for that. Try another search, or pick a different tab.",
-      "noneInList": "No {tabLabel} in our list yet. Try another category or add from Discover."
+      "noMatches": "Niciun rezultat. Încearcă altă căutare sau alt tab.",
+      "noneInList": "Încă nu avem {tabLabel} în listă. Încearcă altă categorie sau adaugă din Descoperă."
     },
     "hints": {
-      "all": "Wineries, trails, villages, events. Pick what fits your day.",
-      "wineries": "Book ahead in winter. You'll often get the owner pouring.",
-      "trails": "Start by 9am. Check conditions before you go.",
-      "attractions": "Villages, ruins, monasteries. Weekday mornings are quietest. Winter light is softer. Plan for morning or late afternoon.",
-      "restaurants": "Tavernas, fish spots, fine dining. Reserve ahead in winter for popular places.",
-      "events": "Epiphany, carnival, markets. Dates may shift year to year—check official sources."
+      "all": "Crămii, trasee, sate, evenimente. Alege ce se potrivește zilei tale.",
+      "wineries": "Rezervă din timp iarna. Adesea proprietarul toarnă personal.",
+      "trails": "Pleacă la 9. Verifică condițiile înainte.",
+      "attractions": "Sate, ruine, mănăstiri. Diminețile din timpul săptămânii sunt cele mai liniștite. Lumina de iarnă e mai blândă. Planifică dimineața sau după-amiaza târziu.",
+      "restaurants": "Taverne, pește, fine dining. Rezervă iarna pentru locuri populare.",
+      "events": "Bobotează, carnaval, piețe. Datele pot varia—verifică surse oficiale."
     }
   },
   "planQuick": {
@@ -2112,9 +2112,9 @@
       "title": "Rezervările mele",
       "description": "Degustări și experiențe. Toate într-un loc.",
       "stats": {
-        "totalBookings": "{count, plural, one {booking} other {bookings}}",
-        "upcoming": "upcoming",
-        "confirmedCount": "{count} confirmed"
+        "totalBookings": "{count, plural, one {rezervare} other {rezervări}}",
+        "upcoming": "viitoare",
+        "confirmedCount": "{count} confirmate"
       },
       "sync": {
         "toggle": "Ai rezervat pe alt dispozitiv? Încarcă prin email",
@@ -2125,57 +2125,57 @@
         "mergeHint": "Le unim cu acest dispozitiv."
       },
       "loading": {
-        "aria": "Loading your bookings",
-        "sr": "Loading your bookings…"
+        "aria": "Se încarcă rezervările",
+        "sr": "Se încarcă rezervările…"
       },
       "empty": {
-        "aria": "Empty bookings state",
+        "aria": "Stare fără rezervări",
         "cta": {
-          "bookGuidedHike": "Book a guided hike"
+          "bookGuidedHike": "Rezervă drumeție ghidată"
         }
       },
       "noUpcoming": {
-        "title": "No upcoming bookings",
-        "body": "Load bookings from another device or plan your next visit."
+        "title": "Nicio rezervare viitoare",
+        "body": "Încarcă rezervări de pe alt dispozitiv sau planifică următoarea vizită."
       },
       "tomorrowHighlight": {
-        "title": "Tomorrow — {providers} — directions ready.",
-        "body": "View details below or add to your plan."
+        "title": "Mâine — {providers} — indicații gata.",
+        "body": "Vezi detaliile mai jos sau adaugă în plan."
       },
       "groups": {
-        "today": "Today",
-        "thisWeek": "This week",
-        "later": "Later"
+        "today": "Astăzi",
+        "thisWeek": "Săptămâna aceasta",
+        "later": "Mai târziu"
       },
       "relative": {
-        "today": "Today",
-        "tomorrow": "Tomorrow",
-        "inDays": "In {count} days"
+        "today": "Astăzi",
+        "tomorrow": "Mâine",
+        "inDays": "Peste {count} zile"
       },
       "today": {
-        "guidedHike": "Your guided hike is today — see details below.",
-        "tasting": "Your tasting is today — see winery details below."
+        "guidedHike": "Drumeția ghidată e astăzi — vezi detaliile mai jos.",
+        "tasting": "Degustarea e astăzi — vezi crama mai jos."
       },
       "tomorrow": {
-        "reminder": "Tomorrow — set a reminder if you like."
+        "reminder": "Mâine — setează un memento dacă vrei."
       },
       "cta": {
-        "viewTrails": "View trails",
-        "viewWinery": "View winery",
-        "modify": "Modify",
-        "bookAgain": "Book again",
-        "browseTrails": "Browse trails",
-        "visitWineryPage": "Visit winery page",
-        "discoverAll": "Discover all"
+        "viewTrails": "Vezi trasee",
+        "viewWinery": "Vezi cramă",
+        "modify": "Modifică",
+        "bookAgain": "Rezervă din nou",
+        "browseTrails": "Vezi trasee",
+        "visitWineryPage": "Pagina cramei",
+        "discoverAll": "Descoperă tot"
       },
       "past": {
-        "heading": "Past & cancelled"
+        "heading": "Trecute și anulate"
       },
       "bookMore": {
-        "title": "Book more",
-        "titleNoUpcoming": "Plan your next visit",
-        "body": "Add another tasting to your winter trip.",
-        "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
+        "title": "Rezervă mai mult",
+        "titleNoUpcoming": "Planifică următoarea vizită",
+        "body": "Adaugă o altă degustare în călătoria de iarnă.",
+        "bodyNoUpcoming": "Toate degustările sunt în trecut. Rezervă alta pentru următoarea călătorie."
       },
       "meta": {
         "title": "Rezervările mele | Cyprus Winter",

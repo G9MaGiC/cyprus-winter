@@ -571,25 +571,25 @@
       }
     },
     "placeOfDay": {
-      "kicker": "Today's pick — one place worth the drive",
-      "addToPlan": "Add to plan",
-      "seeDetails": "See details →",
-      "openAria": "Open {name}",
+      "kicker": "הבחירה להיום — מקום אחד ששווה את הנסיעה",
+      "addToPlan": "הוסף לתכנית",
+      "seeDetails": "פרטים →",
+      "openAria": "פתיחת {name}",
       "overlays": {
-        "goodDay": "Good day for it",
-        "quietWeek": "Quiet this week",
-        "clearToday": "Clear today",
-        "bestAfternoon": "Best light in afternoon",
-        "worthVisit": "Worth a visit"
+        "goodDay": "יום טוב לזה",
+        "quietWeek": "שקט השבוע",
+        "clearToday": "בהיר היום",
+        "bestAfternoon": "האור הטוב ביותר אחר־צהריים",
+        "worthVisit": "שווה ביקור"
       },
       "fallbackTease": {
-        "winery": "Heaters on the terrace.",
-        "village": "Cobbles to yourself midweek.",
-        "monastery": "Quiet this week.",
-        "nature": "Clear today.",
-        "ancient": "Best light in afternoon.",
-        "beach": "Quiet in winter.",
-        "trail": "Check reports before you go."
+        "winery": "מחממים במרפסת.",
+        "village": "ריצוף אבן בשבילכם באמצע השבוע.",
+        "monastery": "שקט השבוע.",
+        "nature": "בהיר היום.",
+        "ancient": "האור הטוב ביותר אחר־צהריים.",
+        "beach": "שקט בחורף.",
+        "trail": "בדקו דיווחים לפני שיוצאים."
       }
     },
     "planningSection": {
@@ -604,11 +604,11 @@
       "clear": "Clear"
     },
     "insiderTip": {
-      "heading": "Winter insider tip",
+      "heading": "טיפ insider לחורף",
       "cta": {
-        "hiking": "Check trail conditions",
-        "practical": "See airport tips",
-        "default": "Explore places"
+        "hiking": "בדקו תנאי שבילים",
+        "practical": "טיפים לשדה התעופה",
+        "default": "גלו מקומות"
       }
     },
     "templates": {
@@ -636,15 +636,15 @@
     },
     "whyCyprus": {
       "title": "למה קפריסין בחורף",
-      "coastTemp": "Coast often 16–20°C",
-      "troodosCooler": "Troodos cooler — check conditions",
-      "sunset": "Sunset ~5pm in December",
-      "blockquote": "Coast mild. Mountains with snow. Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Stop at a kafenion. Coffee. Nobody hurries.",
-      "rule": "A small rule: pick one trail, one village, one tasting. Add them to your plan as you go.",
-      "tagline": "You came for the warmth. Stay for the pace."
+      "coastTemp": "בחוף לרוב 16–20°C",
+      "troodosCooler": "טרודוס קריר יותר — בדקו תנאים",
+      "sunset": "שקיעה ~17:00 בדצמבר",
+      "blockquote": "חוף מתון. הרים עם שלג. טיול בבוקר, ארוחה בחוץ. אתרים עתיקים ריקים, כפרים שקטים. עצירה בקפeneion. קפה. אף אחד לא ממהר.",
+      "rule": "כלל קטן: שביל אחד, כפר אחד, טעימה אחת. הוסיפו לתכנית תוך כדי.",
+      "tagline": "הגעתם בשביל החום. הישארו בשביל הקצב."
     },
     "whyCyprusTeaser": {
-      "quote": "Hike in the morning, lunch outside. Ancient sites empty, villages quiet. Nobody hurries."
+      "quote": "טיול בבוקר, ארוחה בחוץ. אתרים עתיקים ריקים, כפרים שקטים. אף אחד לא ממהר."
     },
     "editorsPicksOpenAria": "פתיחת {title}",
     "editorsPicks": {
@@ -652,23 +652,23 @@
       "items": {
         "omodos": {
           "title": "Omodos",
-          "desc": "Cobbled streets, zivania, coffee in the wine heartland",
-          "imageAlt": "Omodos village, wine heartland, cobbled streets—Cyprus winter"
+          "desc": "רחובות מרוצפים, זיבאניה, קפה בלב אזור היין",
+          "imageAlt": "כפר Omodos, לב אזור היין, רחובות מרוצפים—חורף קפריסין"
         },
         "pafos-mosaics": {
-          "title": "Pafos mosaics",
-          "desc": "Roman mosaics in soft winter light",
-          "imageAlt": "Pafos Roman mosaics in soft winter light—Cyprus"
+          "title": "פסיפסי Paphos",
+          "desc": "פסיפסים רומיים באור חורף רך",
+          "imageAlt": "פסיפסים רומיים ב-Paphos באור חורף רך—קפריסין"
         },
         "artemis": {
-          "title": "Artemis Trail",
-          "desc": "7 km of pine forest and ridge views",
-          "imageAlt": "Artemis Trail, Troodos pine forest, Cyprus winter hiking"
+          "title": "שביל Artemis",
+          "desc": "7 ק\"מ יער אורנים ונוף מהרidge",
+          "imageAlt": "שביל Artemis, יער אורנים טרודוס, טיול חורף קפריסין"
         },
         "kourion": {
           "title": "Kourion",
-          "desc": "Roman ruins, sunset over the sea",
-          "imageAlt": "Kourion Greco-Roman ruins above Mediterranean, Cyprus winter"
+          "desc": "חורבות רומיות, שקיעה מעל הים",
+          "imageAlt": "חורבות יווניות-רומיות Kourion מעל הים התיכון, חורף קפריסין"
         }
       }
     },
@@ -676,73 +676,73 @@
       "items": {
         "tsiakkas": {
           "title": "Tsiakkas",
-          "subtitle": "Troodos foothills · heaters on the terrace · book ahead",
-          "imageAlt": "Winter winery tasting in the Troodos foothills, Cyprus"
+          "subtitle": "מר foothills טרודוס · מחממים במרפסת · הזמינו מראש",
+          "imageAlt": "טעימת יין חורפית במורדות טרודוס, קפריסין"
         },
         "vouni-panayia": {
           "title": "Vouni Panayia",
-          "subtitle": "Laona route · Commandaria comparisons · cosy winter room",
-          "imageAlt": "Wine villages in the Paphos hills in winter light, Cyprus"
+          "subtitle": "מסלול Laona · השוואות Commandaria · חדר חמים",
+          "imageAlt": "כפרי יין בגבעות Paphos באור חורף, קפריסין"
         },
         "domes-sergiou": {
           "title": "Dómes Sergiou",
-          "subtitle": "Between Larnaca & Limassol · indigenous varieties · modern",
-          "imageAlt": "Modern Cypriot winery tasting, Cyprus winter"
+          "subtitle": "בין Larnaca ל-Limassol · זנים מקומיים · מודרני",
+          "imageAlt": "טעימת יין קפריסאית מודרנית, חורף קפריסין"
         }
       }
     },
     "insiderTips": {
       "daylight": {
-        "title": "Daylight is short",
-        "body": "December and January have the shortest days—roughly nine hours between sunrise and sunset. Plan outdoor activities for the morning. By late afternoon the light is already golden. Use it."
+        "title": "האור קצר",
+        "body": "בדצמבר ובינואר הימים הקצרים ביותר—כ־9 שעות בין זריחה לשקיעה. תכננו פעילות בחוץ לבוקר. אחר הצהריים המאוחר האור כבר זהוב. נצלו אותו."
       },
       "layers": {
-        "title": "Layer up",
-        "body": "The coast might be 18°C while Troodos is 5°C. Bring a windproof jacket, a warm mid-layer, and a hat. Mountain cafés have fireplaces. Coastal tavernas have heaters. Dress for both."
+        "title": "שכבות",
+        "body": "בחוף אולי 18°C ובטרודוס 5°C. הביאו מעיל נגד רוח, שכבה חמה וכובע. בבתי קפה בהרים יש קמינים. בטברנות בחוף יש מחממים. התלבשו לשניהם."
       },
       "book-ahead": {
-        "title": "Book winery tastings ahead",
-        "body": "Many wineries run small operations. In winter they appreciate a call or online booking. You'll often get the owner or winemaker pouring. Worth the extra step."
+        "title": "הזמינו טעימות מראש",
+        "body": "יקבים רבים קטנים. בחורף הם מעריכים שיחה או הזמנה אונליין. לעיתים הבעלים או היינן מוזגים בעצמם. שווה את המאמץ."
       },
       "weekday-quiet": {
-        "title": "Weekdays are quieter",
-        "body": "Omodos, Lefkara, and the main sites fill up on weekends. Tuesday or Wednesday? You'll have the cobbles to yourself. Villages feel different when the tour buses have gone. Plan big days for midweek."
+        "title": "אמצע השבוע שקט יותר",
+        "body": "Omodos, Lefkara והאתרים העיקריים מתמלאים בסופ\"ש. שלישי או רביעי? הריצוף שלכם. הכפרים נראים אחרת כשאין אוטובוסי תיירים. תכננו ימים גדולים באמצע השבוע."
       },
       "kafenion-stop": {
-        "title": "Stop for a coffee",
-        "body": "Village kafenions are where locals meet. Order a Greek coffee, sit, watch. No rush. In winter the stove is lit and the pace is slow. The person at the next table often knows the best winery, trail, or taverna. The best advice isn't in a guidebook."
+        "title": "עצירה לקפה",
+        "body": "קפeneion בכפר הוא מקום המפגש של המקומיים. הזמינו קפה יווני, שבו, צפו. בלי לחץ. בחורף התנור דולק והקצב איטי. השולחן ליד לעיתים יודע על היקב, השביל או הטברנה הטובים."
       },
       "winter-light": {
-        "title": "The light is different",
-        "body": "Winter sun stays low in the sky. Golden hour comes early—often mid-afternoon in December. Ancient sites, villages, the coast: everything looks different. Bring a camera. Or just watch. Plan ruins and villages for the afternoon and you'll see why."
+        "title": "האור שונה",
+        "body": "שמש החורף נמוכה. שעת הזהב מגיעה מוקדם—לעיתים אחר צהריים מוקדם בדצמבר. אתרים, כפרים, חוף: הכל נראה אחרת. הביאו מצלמה. או פשוט תצפו. תכננו חורבות וכפרים לאחר הצהריים."
       },
       "start-early": {
-        "title": "Start by 9am",
-        "body": "Winter days are short—finish hikes well before dusk. The morning air is crisp. The trails are quieter early. You'll thank yourself when you're back at the car with daylight to spare."
+        "title": "התחילו ב-9",
+        "body": "ימי חורף קצרים—סיימו טיולים הרבה לפני הדמדומים. אוויר הבוקר צלול. השבילים שקטים מוקדם. תודו לעצמכם כשתחזרו לרכב עם אור."
       },
       "check-conditions": {
-        "title": "Check before you go",
-        "body": "Troodos weather changes fast. Snow on Olympus, mud after rain, ice on shaded sections. The ski resort posts conditions. So do local cafés. Ask. Don't assume."
+        "title": "בדקו לפני שיוצאים",
+        "body": "מזג האוויר בטרודוס משתנה מהר. שלג ב-Olympus, בוץ אחרי גשם, קרח בצל. אתר הסki מפרסם תנאים. גם בתי קפה מקומיים. שאלו. אל תניחו."
       },
       "microspikes": {
-        "title": "Microspikes for Olympus",
-        "body": "Olympus Summit and higher Troodos trails can have snow and ice from January to March. Microspikes cost €20 and fit over your boots. If the forecast is near freezing, bring them."
+        "title": "Microspikes ל-Olympus",
+        "body": "פסגת Olympus ושבילים גבוהים בטרודוס יכולים עם שלג וקרח מינואר עד מרץ. Microspikes עולים ~20€ ומתלבשים על הנעל. אם התחזית קרובה לקיפאון—קחו."
       },
       "tell-someone": {
-        "title": "Tell someone your route",
-        "body": "Phone signal is patchy in the mountains. Tell your hotel or a friend which trail you're on and when you expect back. Emergency: 112. The mountain doesn't care about your deadline."
+        "title": "ספרו למישהו על המסלול",
+        "body": "קליטה בהרים לקויה. ספרו למלון או לחבר איזה שביל ומתי אתם חוזרים. חירום: 112."
       },
       "euro": {
-        "title": "Euro, cards, and cash",
-        "body": "Cyprus uses the euro. Cards work almost everywhere. Small village shops and kafenions sometimes prefer cash. Keep €20 or so for coffee, lace, and zivania."
+        "title": "אירו, כרטיסים ומזומן",
+        "body": "קפריסין משתמשת באירו. כרטיסים עובדים כמעט בכל מקום. חנויות קטנות וקafenion לפעמים מעדיפים מזומן. שמרו ~20€ לקפה, תחרת ו-zivania."
       },
       "drive-left": {
-        "title": "Drive on the left",
-        "body": "British legacy. Rent a car if you want to reach villages and trails. The roads are good. Mountain bends can be tight. Take your time. The views are worth it."
+        "title": "נסיעה בצד שמאל",
+        "body": "מורשת בריטית. שכרו רכב להגיע לכפרים ושבילים. הכבישים טובים. פניות בהרים צרות. קחו את הזמן. הנוף שווה."
       },
       "emergency": {
-        "title": "Emergency numbers",
-        "body": "112 for EU emergency. 1460 for tourist information. 199 for ambulance. Save them. Hope you never need them."
+        "title": "מספרי חירום",
+        "body": "112 לחירום EU. 1460 למידע תיירות. 199 לאמבולנס. שמרו. מקווים שלא תצטרכו."
       }
     }
   },
@@ -1822,41 +1822,41 @@
     },
     "dayCombos": {
       "trailAndVillage": {
-        "label": "Trail and village",
-        "why": "Pine forest in the morning, village lunch by noon.",
-        "tip": "Start Artemis by 9am. Omodos warms up with coffee and lace."
+        "label": "שביל וכפר",
+        "why": "יער אורנים בבוקר, צהריים בכפר.",
+        "tip": "התחילו Artemis ב-9. Omodos מתחמם עם קפה ותחרת."
       },
       "limassolCoastCommandaria": {
-        "label": "Limassol coast & Commandaria",
-        "why": "Ancient theatre, quick dip, then sugar-mill wine."
+        "label": "חוף Limassol ו-Commandaria",
+        "why": "תיאטרון עתיק, עצירה קצרה, אחר כך יין Commandaria."
       },
       "paphosMosaicsWine": {
-        "label": "Paphos mosaics & wine",
-        "why": "Morning light on the floors, Vouni for lunch and tasting.",
-        "tip": "House of Theseus: 9–11am. Book Vouni ahead."
+        "label": "פסיפסי Paphos ויין",
+        "why": "אור בוקר על הרצפות, Vouni לצהריים וטעימה.",
+        "tip": "בית Theseus: 9–11. הזמינו Vouni מראש."
       },
       "waterfallVillage": {
-        "label": "Waterfall and stone village",
-        "why": "Caledonia after rain, Kakopetria for lunch and cobbles.",
-        "tip": "Best 1–2 days after rainfall. Waterproof boots."
+        "label": "מפל וכפר אבן",
+        "why": "Caledonia אחרי גשם, Kakopetria לארוחה.",
+        "tip": "הכי טוב 1–2 ימים אחרי גשם. מגפיים אטומים."
       },
       "kykkosWine": {
-        "label": "Kykkos and wine",
-        "why": "Monastery and views first, Tsiakkas tasting to close the loop.",
-        "tip": "Tsiakkas terrace has heaters. Book ahead."
+        "label": "Kykkos ויין",
+        "why": "מנזר ונוף קודם, טעימת Tsiakkas לסיום.",
+        "tip": "מרפסת עם מחממים. הזמינו מראש."
       },
       "laceAncientWine": {
-        "label": "Lace, ancient & wine",
-        "why": "Lefkara lacemakers, Choirokoitia, then Dómes Sergiou."
+        "label": "תחרת, עתיק ויין",
+        "why": "Lefkara, Choirokoitia, אחר כך Dómes Sergiou."
       },
       "gentleTrailPlatres": {
-        "label": "Gentle trail & Platres",
-        "why": "מפל מיילומריס ואז פלאטרס לקפה ונוף.",
-        "tip": "טיול קצר למפל בפלאטרס. לעיתים פתוח כשבגובה יש שלג."
+        "label": "שביל עדין ו-Platres",
+        "why": "מפלי Millomeris, אחר כך Platres לקafenion ונוף.",
+        "tip": "מסלול מפל קצר ב-Platres. לעיתים פנוי כשבגובה יש שלג."
       },
       "paphosCoastAdonis": {
-        "label": "Paphos coast & Adonis",
-        "why": "Tomb of Kings, coral bay stretch, Adonis for tasting."
+        "label": "חוף Paphos ו-Adonis",
+        "why": "קברי המלכים, קטע חוף, טעימה ב-Adonis."
       }
     },
     "share": {
@@ -1865,8 +1865,8 @@
       "daysLabel": "ימים",
       "downloadIcs": "הוספה ליומן",
       "icsDownloaded": "הורד",
-      "placesCount": "{count, plural, one {# place} other {# places}}",
-      "daysCount": "{count, plural, one {# day} other {# days}}",
+      "placesCount": "{count, plural, one {מקום #} other {# מקומות}}",
+      "daysCount": "{count, plural, one {יום #} other {# ימים}}",
       "copyLink": "העתקת קישור",
       "linkCopied": "הקישור הועתק",
       "copyItinerary": "העתקת תוכנית (טקסט)",
@@ -1965,45 +1965,45 @@
   },
   "placePicker": {
     "tabs": {
-      "all": "All",
-      "wineries": "Wineries",
-      "trails": "Trails",
-      "attractions": "Attractions",
-      "eat": "Eat",
-      "events": "Events"
+      "all": "הכל",
+      "wineries": "יקבים",
+      "trails": "שבילים",
+      "attractions": "אטרקציות",
+      "eat": "אוכל",
+      "events": "אירועים"
     },
     "lists": {
-      "places": "places",
-      "wineries": "wineries",
-      "trails": "trails",
-      "attractions": "attractions",
-      "restaurants": "restaurants",
-      "events": "events"
+      "places": "מקומות",
+      "wineries": "יקבים",
+      "trails": "שבילים",
+      "attractions": "אטרקציות",
+      "restaurants": "מסעדות",
+      "events": "אירועים"
     },
     "labels": {
-      "added": "Added"
+      "added": "נוסף"
     },
     "search": {
-      "srLabel": "Search places by name or region",
-      "placeholder": "Search by name or region…",
-      "ariaLabel": "Search places by name or region"
+      "srLabel": "חיפוש מקומות לפי שם או אזור",
+      "placeholder": "חיפוש לפי שם או אזור…",
+      "ariaLabel": "חיפוש מקומות לפי שם או אזור"
     },
     "aria": {
-      "tabList": "Place categories",
-      "itemAdded": "{name} (added to plan)",
-      "addItem": "Add {name} to plan"
+      "tabList": "קטגוריות מקומות",
+      "itemAdded": "{name} (נוסף לתכנית)",
+      "addItem": "הוסף {name} לתכנית"
     },
     "empty": {
-      "noMatches": "No matches for that. Try another search, or pick a different tab.",
-      "noneInList": "No {tabLabel} in our list yet. Try another category or add from Discover."
+      "noMatches": "אין התאמות. נסו חיפוש אחר או לשונית אחרת.",
+      "noneInList": "אין עדיין {tabLabel} ברשימה. נסו קטגוריה אחרת או הוסיפו מגילוי."
     },
     "hints": {
-      "all": "Wineries, trails, villages, events. Pick what fits your day.",
-      "wineries": "Book ahead in winter. You'll often get the owner pouring.",
-      "trails": "Start by 9am. Check conditions before you go.",
-      "attractions": "Villages, ruins, monasteries. Weekday mornings are quietest. Winter light is softer. Plan for morning or late afternoon.",
-      "restaurants": "Tavernas, fish spots, fine dining. Reserve ahead in winter for popular places.",
-      "events": "Epiphany, carnival, markets. Dates may shift year to year—check official sources."
+      "all": "יקבים, שבילים, כפרים, אירועים. בחרו מה מתאים ליום.",
+      "wineries": "הזמינו מראש בחורף. לעיתים הבעלים מוזג בעצמו.",
+      "trails": "התחילו ב-9. בדקו תנאים לפני שיוצאים.",
+      "attractions": "כפרים, חורבות, מנזרים. בוקר באמצע השבוע הכי שקט. אור חורף רך. תכננו בוקר או אחר צהריים מאוחר.",
+      "restaurants": "טברנות, דגים, fine dining. הזמינו מראש בחורף למקומות פופולריים.",
+      "events": "Epiphany, קarnaval, שווקים. תאריכים משתנים—בדקו מקורות רשמיים."
     }
   },
   "planQuick": {
@@ -2112,9 +2112,9 @@
       "title": "ההזמנות שלי",
       "description": "טעימות וחוויות. הכול במקום אחד.",
       "stats": {
-        "totalBookings": "{count, plural, one {booking} other {bookings}}",
-        "upcoming": "upcoming",
-        "confirmedCount": "{count} confirmed"
+        "totalBookings": "{count, plural, one {הזמנה} other {הזמנות}}",
+        "upcoming": "קרובות",
+        "confirmedCount": "{count} מאושרות"
       },
       "sync": {
         "toggle": "הזמנתם במכשיר אחר? טענו באימייל",
@@ -2125,57 +2125,57 @@
         "mergeHint": "נמזג עם המכשיר הזה."
       },
       "loading": {
-        "aria": "Loading your bookings",
-        "sr": "Loading your bookings…"
+        "aria": "טוען הזמנות",
+        "sr": "טוען הזמנות…"
       },
       "empty": {
-        "aria": "Empty bookings state",
+        "aria": "מצב הזמנות ריק",
         "cta": {
-          "bookGuidedHike": "Book a guided hike"
+          "bookGuidedHike": "הזמינו טיול מודרך"
         }
       },
       "noUpcoming": {
-        "title": "No upcoming bookings",
-        "body": "Load bookings from another device or plan your next visit."
+        "title": "אין הזמנות קרובות",
+        "body": "טענו הזמנות ממכשיר אחר או תכננו ביקור הבא."
       },
       "tomorrowHighlight": {
-        "title": "Tomorrow — {providers} — directions ready.",
-        "body": "View details below or add to your plan."
+        "title": "מחר — {providers} — הניווט מוכן.",
+        "body": "ראו פרטים למטה או הוסיפו לתכנית."
       },
       "groups": {
-        "today": "Today",
-        "thisWeek": "This week",
-        "later": "Later"
+        "today": "היום",
+        "thisWeek": "השבוע",
+        "later": "מאוחר יותר"
       },
       "relative": {
-        "today": "Today",
-        "tomorrow": "Tomorrow",
-        "inDays": "In {count} days"
+        "today": "היום",
+        "tomorrow": "מחר",
+        "inDays": "עוד {count} ימים"
       },
       "today": {
-        "guidedHike": "Your guided hike is today — see details below.",
-        "tasting": "Your tasting is today — see winery details below."
+        "guidedHike": "הטיול המודרך שלכם היום — פרטים למטה.",
+        "tasting": "הטעימה שלכם היום — פרטי היקב למטה."
       },
       "tomorrow": {
-        "reminder": "Tomorrow — set a reminder if you like."
+        "reminder": "מחר — הגדירו תזכורת אם תרצו."
       },
       "cta": {
-        "viewTrails": "View trails",
-        "viewWinery": "View winery",
-        "modify": "Modify",
-        "bookAgain": "Book again",
-        "browseTrails": "Browse trails",
-        "visitWineryPage": "Visit winery page",
-        "discoverAll": "Discover all"
+        "viewTrails": "צפו בשבילים",
+        "viewWinery": "צפו ביקב",
+        "modify": "שנו",
+        "bookAgain": "הזמינו שוב",
+        "browseTrails": "עיון בשבילים",
+        "visitWineryPage": "לדף היקב",
+        "discoverAll": "גלו הכל"
       },
       "past": {
-        "heading": "Past & cancelled"
+        "heading": "עבר ובוטל"
       },
       "bookMore": {
-        "title": "Book more",
-        "titleNoUpcoming": "Plan your next visit",
-        "body": "Add another tasting to your winter trip.",
-        "bodyNoUpcoming": "All your tastings are in the past. Book another for your next trip."
+        "title": "הזמינו עוד",
+        "titleNoUpcoming": "תכננו ביקור הבא",
+        "body": "הוסיפו טעימה נוספת לטיול החורף.",
+        "bodyNoUpcoming": "כל הטעימות בעבר. הזמינו אחת נוספת לטיול הבא."
       },
       "meta": {
         "title": "ההזמנות שלי | Cyprus Winter",
