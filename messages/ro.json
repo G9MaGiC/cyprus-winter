@@ -3164,7 +3164,7 @@
             "booking": "<strong>Booking data</strong> (email, name, experience and date): to process winery and guide booking requests and communicate with you. <em>Legal basis: Contract performance.</em>",
             "trailReports": "<strong>Trail reports</strong> (note, optional email): to display crowd-sourced trail conditions. <em>Legal basis: Legitimate interest; consent where email is provided.</em>",
             "chat": "<strong>Chat messages</strong>: when you use Ask AI, your messages and context are sent to AI providers (OpenAI, xAI, Groq, Moonshot) to generate responses. <em>Legal basis: Legitimate interest.</em>",
-            "localPrefs": "<strong>Local preferences</strong> (interests, regions, itinerary): stored in your browser only. Not sent to our servers except as needed for features (e.g. plan share links)."
+            "localPrefs": "<strong>Preferințe locale</strong> (interese, regiuni, plan): stocate doar în browser. Nu sunt trimise serverelor noastre, exceptând funcții necesare (ex. linkuri de partajare plan)."
           }
         },
         "s3": {
