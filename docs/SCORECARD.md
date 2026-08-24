@@ -61,6 +61,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #164 | Plan copy hygiene pass 2 — residual itinerary → plan (BUG-305) |
 | PR #168 | Plan template i18n — de/el/pl + beta fr/he/ro planQuick & home templates (BUG-307/308) |
 | PR #170 | Beta editorial map sync — fr/he/ro home/book chrome without plan regression (BUG-309) |
+| PR #172 | Trail metadata difficulty i18n — `trails.badges` namespace (BUG-310) |
 
 Details: `docs/QA_BUGS.md`
 
