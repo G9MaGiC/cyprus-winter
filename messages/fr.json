@@ -61,14 +61,14 @@
   "common": {
     "nav": {
       "discover": "Découvrir",
-      "trip": "Itinéraire",
+      "trip": "Plan",
       "airport": "Aéroport"
     },
     "aria": {
       "planCta": "Composer une journée",
       "pageNavigation": "Navigation de page",
       "viewPlan": "Voir votre plan",
-      "placeInItinerary": "{id} est dans votre itinéraire",
+      "placeInItinerary": "{id} est dans votre plan",
       "bottomNavigation": "Navigation inférieure",
       "moreNavigation": "Plus de navigation",
       "breadcrumb": "Fil d’Ariane",
@@ -76,7 +76,7 @@
       "selectLanguage": "Choisir la langue",
       "close": "Fermer",
       "addPlace": "Ajouter un lieu",
-      "addPlaceToItinerary": "Ajouter un lieu à l’itinéraire",
+      "addPlaceToItinerary": "Ajouter un lieu au plan",
       "navigateTo": "Naviguer vers {name}",
       "removeFromPlan": "Retirer {name} du plan",
       "clearRecentlyViewed": "Effacer les vus récemment",
@@ -94,7 +94,7 @@
     "nextOnPlan": {
       "aria": "Suite de votre plan",
       "prefix": "Ensuite",
-      "navigate": "Itinéraire"
+      "navigate": "Naviguer"
     },
     "noscript": {
       "title": "JavaScript est requis",
@@ -159,7 +159,7 @@
       "thinking": "Thinking…",
       "slash": {
         "skillsDescription": "Voir ce que je peux faire",
-        "skillsBody": "Voici ce que je peux faire :\n\n**Organisation du séjour** — Un itinéraire d’un ou plusieurs jours selon vos dates et la région.\n\n**Découvrir des lieux** — Domaines, villages, plages, sites antiques, monastères.\n\n**Sentiers et randonnées** — Suggestions selon la difficulté, la région et les conditions d’hiver.\n\n**Idées selon la météo** — Que faire d’après les prévisions ou le mois de voyage.\n\n**À proximité** — Partagez votre position, je trouverai ce qui est proche.\n\n**Arrivée à l’aéroport** — Transfert depuis Larnaca ou Paphos, premiers arrêts, conseils pour le jour d’arrivée.\n\n**Rechercher et comparer** — Comparez sentiers, domaines et événements sur l’île.\n\nPosez une question ou touchez une suggestion ci-dessous.",
+        "skillsBody": "Voici ce que je peux faire :\n\n**Organisation du séjour** — Un plan d'un ou plusieurs jours selon vos dates et la région.\n\n**Découvrir des lieux** — Domaines, villages, plages, sites antiques, monastères.\n\n**Sentiers et randonnées** — Suggestions selon la difficulté, la région et les conditions d'hiver.\n\n**Idées selon la météo** — Que faire d'après les prévisions ou le mois de voyage.\n\n**À proximité** — Partagez votre position, je trouverai ce qui est proche.\n\n**Arrivée à l'aéroport** — Transfert depuis Larnaca ou Paphos, premiers arrêts, conseils pour le jour d'arrivée.\n\n**Rechercher et comparer** — Comparez sentiers, domaines et événements sur l'île.\n\nPosez une question ou touchez une suggestion ci-dessous.",
         "followUpPlan": "Planifier mon séjour de 3 jours",
         "followUpWineries": "Meilleures caves près de Limassol",
         "followUpHike": "Randonnée hivernale facile",
@@ -193,7 +193,7 @@
         },
         "plan": {
           "0": "Ajouter un domaine près d’Omodos",
-          "1": "Meilleur itinéraire pour le jour 2 ?",
+          "1": "Meilleur plan pour le jour 2 ?",
           "2": "Remplir une journée culture et vin",
           "3": "Sentiers près de mon hôtel à Platres",
           "4": "Réserver des dégustations—quels domaines ?",
@@ -233,7 +233,7 @@
           },
           "plan": {
             "0": "Planifie ma journée",
-            "1": "Meilleur itinéraire jour 1",
+            "1": "Meilleur plan jour 1",
             "2": "Ajouter un arrêt domaine"
           },
           "airport": {
@@ -612,25 +612,25 @@
       }
     },
     "templates": {
-      "kicker": "Pre-built itineraries",
-      "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
-      "allTemplates": "All templates →",
+      "kicker": "Plans prêts à l'emploi",
+      "subtitle": "Sélection d'experts. Rythme réaliste. Commencez ici, puis ajustez.",
+      "allTemplates": "Tous les modèles →",
       "items": {
         "short-stay": {
-          "label": "48 hours",
-          "hint": "Trail, village, wine"
+          "label": "48 heures",
+          "hint": "Sentier, village, vin"
         },
         "classic": {
-          "label": "5 days",
-          "hint": "Coast to mountains"
+          "label": "5 jours",
+          "hint": "Côte aux montagnes"
         },
         "classic-7": {
-          "label": "7 days",
-          "hint": "Full island sweep"
+          "label": "7 jours",
+          "hint": "Tour complet de l'île"
         },
         "mountain-10": {
-          "label": "10 days",
-          "hint": "Hiker immersion"
+          "label": "10 jours",
+          "hint": "Immersion randonnée"
         }
       }
     },
@@ -1759,7 +1759,7 @@
     "afternoon": "Afternoon",
     "pageTitle": "Planifiez votre hiver à Chypre",
     "pageDescHasContent": "Votre plan. Ajoutez, partagez ou ajustez ci-dessous.",
-    "pageDescEmpty": "Composez votre plan d’hiver. Choisissez un modèle ou ajoutez des lieux jour par jour.",
+    "pageDescEmpty": "Construisez un plan d'hiver. Choisissez un modèle ou ajoutez des lieux jour par jour.",
     "pageDescSecondaryEmpty": "Enregistrement automatique.",
     "mapTitle": "Votre plan sur la carte",
     "mapCollapsibleHint": "Stops and driving context on the island map",
@@ -1870,7 +1870,7 @@
       "copyLink": "Copy link",
       "linkCopied": "Link copied",
       "copyItinerary": "Copier le plan (texte)",
-      "copyItineraryShort": "Copy text",
+      "copyItineraryShort": "Copier le texte",
       "copied": "Copied",
       "shareTextPrefix": "Mon plan Chypre hiver —",
       "previewLineTwo": "{a} et {b}",
@@ -2007,68 +2007,68 @@
     }
   },
   "planQuick": {
-    "kickerEmpty": "Templates",
-    "kickerHasContent": "Ideas",
-    "titleEmpty": "Pick a template to start",
-    "titleHasContent": "Add more to your plan",
-    "descEmpty": "Pre-built routes from coast to mountains. One click fills Day 1.",
-    "descHasContent": "Use a template to add or replace stops. Or tap a place below.",
-    "setDatesHint": "Open trip dates below to see templates matched to your length.",
-    "quickAddLabel": "Quick add to Day {day}",
-    "quickAddAriaAdded": "{label} added",
-    "quickAddAriaAdd": "Add {label} to Day {day}",
-    "browsePlacesCta": "Browse places",
-    "browsePlacesAria": "Browse places to add to your day",
-    "inlineAddAria": "Add a stop to Day {day}",
-    "forYou": "For you",
-    "forTrip": "For your {days}-day trip",
-    "browseTrailsAria": "Browse trails",
-    "browseTrailsLabel": "Trails",
-    "browseWineriesAria": "Browse wineries",
-    "browseWineriesLabel": "Wineries",
-    "seeWhatsOnAria": "See what's on",
-    "seeWhatsOnLabel": "What's on",
-    "fitsTripDays": "Fits your {days}-day trip",
-    "tripRecommendationBlurb": "Recommended for your {days}-day trip based on length fit and your saved preferences.",
-    "tripFitExact": "Exact length",
-    "tripFitNear": "Near match",
-    "tripFitCompress": "Compress plan",
-    "tripFitExtend": "Extend with add-ons",
-    "allTemplates": "All templates",
-    "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}",
+    "kickerEmpty": "Modèles",
+    "kickerHasContent": "Idées",
+    "titleEmpty": "Choisissez un modèle pour commencer",
+    "titleHasContent": "Ajoutez au plan",
+    "descEmpty": "Plans prêts de la côte aux montagnes. Un clic remplit le jour 1.",
+    "descHasContent": "Utilisez un modèle pour ajouter ou remplacer des arrêts. Ou touchez un lieu ci-dessous.",
+    "setDatesHint": "Ouvrez les dates du voyage ci-dessous pour voir les modèles adaptés à votre durée.",
+    "quickAddLabel": "Ajout rapide au jour {day}",
+    "quickAddAriaAdded": "{label} ajouté",
+    "quickAddAriaAdd": "Ajouter {label} au jour {day}",
+    "browsePlacesCta": "Parcourir les lieux",
+    "browsePlacesAria": "Parcourir les lieux à ajouter à votre journée",
+    "inlineAddAria": "Ajouter un arrêt au jour {day}",
+    "forYou": "Pour vous",
+    "forTrip": "Pour votre voyage de {days} jours",
+    "browseTrailsAria": "Parcourir les sentiers",
+    "browseTrailsLabel": "Sentiers",
+    "browseWineriesAria": "Parcourir les domaines",
+    "browseWineriesLabel": "Domaines",
+    "seeWhatsOnAria": "Voir ce qui se passe",
+    "seeWhatsOnLabel": "À l'affiche",
+    "fitsTripDays": "Convient à votre voyage de {days} jours",
+    "tripRecommendationBlurb": "Recommandé pour votre voyage de {days} jours selon la durée et vos préférences enregistrées.",
+    "tripFitExact": "Durée exacte",
+    "tripFitNear": "Proche",
+    "tripFitCompress": "Compresser le plan",
+    "tripFitExtend": "Prolonger avec des extras",
+    "allTemplates": "Tous les modèles",
+    "templateCardAria": "Utiliser le modèle {label} : {description}. {duration} jours, {count} lieux. {preview}",
     "templates": {
       "items": {
         "short-stay": {
-          "label": "Short stay",
-          "description": "48 hours: ancient coast, Troodos trail, village wine"
+          "label": "Court séjour",
+          "description": "48 heures : côte antique, sentier Troodos, vin de village"
         },
         "classic": {
-          "label": "Classic",
-          "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace"
+          "label": "Classique",
+          "description": "De la côte aux montagnes : ruines de Paphos, sentiers Troodos, dentelle de Lefkara"
         },
         "mountain": {
-          "label": "Mountain",
-          "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos"
+          "label": "Montagne",
+          "description": "Boucles du Troodos et villages de pierre—Artemis, Caledonia, Kykkos"
         },
         "coast-culture": {
-          "label": "Coast & Culture",
-          "description": "Beaches, UNESCO sites, wineries—east to west"
+          "label": "Côte & Culture",
+          "description": "Plages, sites UNESCO, domaines—est à ouest"
         },
         "family": {
-          "label": "Family",
-          "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch"
+          "label": "Famille",
+          "description": "Rythme doux, 2 arrêts/jour—plages, musées, déjeuner au village"
         },
         "workation": {
-          "label": "Workation week",
-          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather"
+          "label": "Semaine workation",
+          "description": "Télétravail en semaine, Troodos & côte le week-end—cafés wifi, temps doux"
         },
         "classic-7": {
-          "label": "Classic Culture (7 days)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep"
+          "label": "Culture classique (7 jours)",
+          "description": "Larnaca → Nicosie → Troodos → Paphos—tour complet de l'île"
         },
         "mountain-10": {
-          "label": "Mountain Explorer (10 days)",
-          "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion"
+          "label": "Explorateur montagne (10 jours)",
+          "description": "Base Troodos, Pitsilia, Machairas, puis côte—immersion randonnée"
         }
       }
     },
@@ -2081,16 +2081,16 @@
   },
   "bookings": {
     "title": "Mes réservations",
-    "empty": "No bookings yet",
-    "emptyBody": "Book a tasting from Discover, or load bookings from another device.",
-    "browseWineries": "Browse wineries",
-    "loadFromEmail": "Load bookings from another device",
-    "noMatch": "No bookings for that email. Try another, or book from Discover.",
-    "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.",
+    "empty": "Aucune réservation pour l'instant",
+    "emptyBody": "Réservez une dégustation depuis Découvrir, ou chargez des réservations depuis un autre appareil.",
+    "browseWineries": "Parcourir les domaines",
+    "loadFromEmail": "Charger les réservations depuis un autre appareil",
+    "noMatch": "Aucune réservation pour cet e-mail. Essayez un autre, ou réservez depuis Découvrir.",
+    "bookMore": "Réservez une dégustation ou une randonnée guidée depuis Découvrir et Sentiers. Ou chargez des réservations depuis un autre appareil.",
     "status": {
-      "confirmed": "confirmed",
-      "pending": "pending",
-      "cancelled": "cancelled"
+      "confirmed": "confirmée",
+      "pending": "en attente",
+      "cancelled": "annulée"
     },
     "errors": {
       "rateLimited": "Trop de demandes. Attendez un instant et réessayez.",

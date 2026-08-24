@@ -61,14 +61,14 @@
   "common": {
     "nav": {
       "discover": "Descoperă",
-      "trip": "Itinerar",
+      "trip": "Plan",
       "airport": "Aeroport"
     },
     "aria": {
       "planCta": "Construiește o zi",
       "pageNavigation": "Navigarea paginii",
       "viewPlan": "Vezi planul tău",
-      "placeInItinerary": "{id} este în itinerar",
+      "placeInItinerary": "{id} este în plan",
       "bottomNavigation": "Navigare jos",
       "moreNavigation": "Mai multe",
       "breadcrumb": "Firul paginii",
@@ -76,7 +76,7 @@
       "selectLanguage": "Alege limba",
       "close": "Închide",
       "addPlace": "Adaugă loc",
-      "addPlaceToItinerary": "Adaugă un loc în itinerar",
+      "addPlaceToItinerary": "Adaugă un loc în plan",
       "navigateTo": "Navighează la {name}",
       "removeFromPlan": "Elimină {name} din plan",
       "clearRecentlyViewed": "Șterge vizionate recent",
@@ -159,7 +159,7 @@
       "thinking": "Thinking…",
       "slash": {
         "skillsDescription": "Vezi cu ce te pot ajuta",
-        "skillsBody": "Cu acestea te pot ajuta:\n\n**Planificarea călătoriei** — Un itinerar de o zi sau de mai multe zile, pe datele și zona ta.\n\n**Descoperă locuri** — Crame, sate, plaje, situri antice, mănăstiri.\n\n**Trasee și drumeții** — Sugestii după dificultate, zonă și condiții de iarnă.\n\n**Idei după vreme** — Ce merită făcut după prognoză sau luna de călătorie.\n\n**În apropiere** — Spune-mi locația și găsesc ce e aproape.\n\n**Sosire pe aeroport** — Transfer din Larnaca sau Paphos, primele opriri, sfaturi pentru ziua sosirii.\n\n**Caută și compară** — Compară trasee, crame și evenimente pe insulă.\n\nPune o întrebare sau atinge o sugestie mai jos.",
+        "skillsBody": "Iată ce pot face:\n\n**Organizarea călătoriei** — Un plan de o zi sau mai multe zile, după date și regiune.\n\n**Descoperă locuri** — Crame, sate, plaje, situri antice, mănăstiri.\n\n**Trasee și drumeții** — Sugestii după dificultate, regiune și condiții de iarnă.\n\n**Idei după vreme** — Ce să faci după prognoză sau luna călătoriei.\n\n**În apropiere** — Partajează locația, găsesc ce e aproape.\n\n**Sosire la aeroport** — Transfer din Larnaca sau Paphos, primele opriri, sfaturi pentru ziua sosirii.\n\n**Caută și compară** — Compară trasee, crame și evenimente pe insulă.\n\nPune o întrebare sau atinge o sugestie mai jos.",
         "followUpPlan": "Planifică-mi călătoria de 3 zile",
         "followUpWineries": "Cele mai bune crame lângă Limassol",
         "followUpHike": "Drumeție de iarnă ușoară",
@@ -612,25 +612,25 @@
       }
     },
     "templates": {
-      "kicker": "Pre-built itineraries",
-      "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
-      "allTemplates": "All templates →",
+      "kicker": "Planuri gata făcute",
+      "subtitle": "Selecție de experți. Ritm realist. Începe aici, apoi ajustează.",
+      "allTemplates": "Toate șabloanele →",
       "items": {
         "short-stay": {
-          "label": "48 hours",
-          "hint": "Trail, village, wine"
+          "label": "48 de ore",
+          "hint": "Traseu, sat, vin"
         },
         "classic": {
-          "label": "5 days",
-          "hint": "Coast to mountains"
+          "label": "5 zile",
+          "hint": "De la coastă la munte"
         },
         "classic-7": {
-          "label": "7 days",
-          "hint": "Full island sweep"
+          "label": "7 zile",
+          "hint": "Tur complet al insulei"
         },
         "mountain-10": {
-          "label": "10 days",
-          "hint": "Hiker immersion"
+          "label": "10 zile",
+          "hint": "Imersiune pentru drumeți"
         }
       }
     },
@@ -1758,8 +1758,8 @@
     "morning": "Morning",
     "afternoon": "Afternoon",
     "pageTitle": "Planifică-ți iarna în Cipru",
-    "pageDescHasContent": "Planul tău. Adaugă mai multe, distribuie sau ajustează mai jos.",
-    "pageDescEmpty": "Construiește-ți planul de iarnă. Alege un șablon sau adaugă locuri zi de zi.",
+    "pageDescHasContent": "Planul tău. Adaugă, distribuie sau ajustează mai jos.",
+    "pageDescEmpty": "Construiește un plan de iarnă. Alege un șablon sau adaugă locuri pe zile.",
     "pageDescSecondaryEmpty": "Se salvează automat.",
     "mapTitle": "Planul tău pe hartă",
     "mapCollapsibleHint": "Stops and driving context on the island map",
@@ -2007,68 +2007,68 @@
     }
   },
   "planQuick": {
-    "kickerEmpty": "Templates",
-    "kickerHasContent": "Ideas",
-    "titleEmpty": "Pick a template to start",
-    "titleHasContent": "Add more to your plan",
-    "descEmpty": "Pre-built routes from coast to mountains. One click fills Day 1.",
-    "descHasContent": "Use a template to add or replace stops. Or tap a place below.",
-    "setDatesHint": "Open trip dates below to see templates matched to your length.",
-    "quickAddLabel": "Quick add to Day {day}",
-    "quickAddAriaAdded": "{label} added",
-    "quickAddAriaAdd": "Add {label} to Day {day}",
-    "browsePlacesCta": "Browse places",
-    "browsePlacesAria": "Browse places to add to your day",
-    "inlineAddAria": "Add a stop to Day {day}",
-    "forYou": "For you",
-    "forTrip": "For your {days}-day trip",
-    "browseTrailsAria": "Browse trails",
-    "browseTrailsLabel": "Trails",
-    "browseWineriesAria": "Browse wineries",
-    "browseWineriesLabel": "Wineries",
-    "seeWhatsOnAria": "See what's on",
-    "seeWhatsOnLabel": "What's on",
-    "fitsTripDays": "Fits your {days}-day trip",
-    "tripRecommendationBlurb": "Recommended for your {days}-day trip based on length fit and your saved preferences.",
-    "tripFitExact": "Exact length",
-    "tripFitNear": "Near match",
-    "tripFitCompress": "Compress plan",
-    "tripFitExtend": "Extend with add-ons",
-    "allTemplates": "All templates",
-    "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}",
+    "kickerEmpty": "Șabloane",
+    "kickerHasContent": "Idei",
+    "titleEmpty": "Alege un șablon pentru început",
+    "titleHasContent": "Adaugă mai mult în plan",
+    "descEmpty": "Rute pregătite de la coastă la munte. Un clic completează Ziua 1.",
+    "descHasContent": "Folosește un șablon pentru a adăuga sau înlocui opriri. Sau atinge un loc mai jos.",
+    "setDatesHint": "Deschide datele călătoriei mai jos pentru șabloane potrivite duratei.",
+    "quickAddLabel": "Adăugare rapidă la Ziua {day}",
+    "quickAddAriaAdded": "{label} adăugat",
+    "quickAddAriaAdd": "Adaugă {label} la Ziua {day}",
+    "browsePlacesCta": "Vezi locuri",
+    "browsePlacesAria": "Vezi locuri de adăugat în ziua ta",
+    "inlineAddAria": "Adaugă o oprire la Ziua {day}",
+    "forYou": "Pentru tine",
+    "forTrip": "Pentru călătoria ta de {days} zile",
+    "browseTrailsAria": "Vezi trasee",
+    "browseTrailsLabel": "Trasee",
+    "browseWineriesAria": "Vezi crame",
+    "browseWineriesLabel": "Crămii",
+    "seeWhatsOnAria": "Vezi ce se întâmplă",
+    "seeWhatsOnLabel": "Ce se întâmplă",
+    "fitsTripDays": "Se potrivește călătoriei tale de {days} zile",
+    "tripRecommendationBlurb": "Recomandat pentru călătoria ta de {days} zile, după durată și preferințele salvate.",
+    "tripFitExact": "Durată exactă",
+    "tripFitNear": "Aproape potrivit",
+    "tripFitCompress": "Comprimă planul",
+    "tripFitExtend": "Extinde cu extra",
+    "allTemplates": "Toate șabloanele",
+    "templateCardAria": "Folosește șablonul {label}: {description}. {duration} zile, {count} locuri. {preview}",
     "templates": {
       "items": {
         "short-stay": {
-          "label": "Short stay",
-          "description": "48 hours: ancient coast, Troodos trail, village wine"
+          "label": "Sejur scurt",
+          "description": "48 de ore: coastă antică, traseu Troodos, vin de sat"
         },
         "classic": {
-          "label": "Classic",
-          "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace"
+          "label": "Clasic",
+          "description": "De la coastă la munte: ruine Paphos, trasee Troodos, dantelă Lefkara"
         },
         "mountain": {
-          "label": "Mountain",
-          "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos"
+          "label": "Munte",
+          "description": "Bucle Troodos și sate de piatră—Artemis, Caledonia, Kykkos"
         },
         "coast-culture": {
-          "label": "Coast & Culture",
-          "description": "Beaches, UNESCO sites, wineries—east to west"
+          "label": "Coastă & Cultură",
+          "description": "Plaje, UNESCO, crame—de la est la vest"
         },
         "family": {
-          "label": "Family",
-          "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch"
+          "label": "Familie",
+          "description": "Ritm blând, 2 opriri/zi—plaje, muzee, prânz la sat"
         },
         "workation": {
-          "label": "Workation week",
-          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather"
+          "label": "Săptămână workation",
+          "description": "Remote în săptămână, Troodos & coastă în weekend—cafenele cu wifi, vreme blândă"
         },
         "classic-7": {
-          "label": "Classic Culture (7 days)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep"
+          "label": "Cultură clasică (7 zile)",
+          "description": "Larnaca → Nicosia → Troodos → Paphos—tur complet al insulei"
         },
         "mountain-10": {
-          "label": "Mountain Explorer (10 days)",
-          "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion"
+          "label": "Explorator montan (10 zile)",
+          "description": "Bază Troodos, Pitsilia, Machairas, apoi coastă—imersiune pentru drumeți"
         }
       }
     },
@@ -2081,16 +2081,16 @@
   },
   "bookings": {
     "title": "Rezervările mele",
-    "empty": "No bookings yet",
-    "emptyBody": "Book a tasting from Discover, or load bookings from another device.",
-    "browseWineries": "Browse wineries",
-    "loadFromEmail": "Load bookings from another device",
-    "noMatch": "No bookings for that email. Try another, or book from Discover.",
-    "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.",
+    "empty": "Încă nu ai rezervări",
+    "emptyBody": "Rezervă o degustare din Descoperă sau încarcă rezervări de pe alt dispozitiv.",
+    "browseWineries": "Vezi crame",
+    "loadFromEmail": "Încarcă rezervări de pe alt dispozitiv",
+    "noMatch": "Nicio rezervare pentru acel email. Încearcă altul sau rezervă din Descoperă.",
+    "bookMore": "Rezervă o degustare sau drumeție ghidată din Descoperă și Trasee. Sau încarcă rezervări de pe alt dispozitiv.",
     "status": {
-      "confirmed": "confirmed",
-      "pending": "pending",
-      "cancelled": "cancelled"
+      "confirmed": "confirmată",
+      "pending": "în așteptare",
+      "cancelled": "anulată"
     },
     "errors": {
       "rateLimited": "Prea multe cereri. Așteaptă un moment și încearcă din nou.",

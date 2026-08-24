@@ -612,25 +612,25 @@
       }
     },
     "templates": {
-      "kicker": "Pre-built itineraries",
-      "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
-      "allTemplates": "All templates →",
+      "kicker": "תבניות מוכנות",
+      "subtitle": "אוצרות מומחים. קצב ריאלי. התחילו כאן, ואז התאימו.",
+      "allTemplates": "כל התבניות →",
       "items": {
         "short-stay": {
-          "label": "48 hours",
-          "hint": "Trail, village, wine"
+          "label": "48 שעות",
+          "hint": "שביל, כפר, יין"
         },
         "classic": {
-          "label": "5 days",
-          "hint": "Coast to mountains"
+          "label": "5 ימים",
+          "hint": "מהחוף להרים"
         },
         "classic-7": {
-          "label": "7 days",
-          "hint": "Full island sweep"
+          "label": "7 ימים",
+          "hint": "סיבוב מלא באי"
         },
         "mountain-10": {
-          "label": "10 days",
-          "hint": "Hiker immersion"
+          "label": "10 ימים",
+          "hint": "טיולים עמוקים"
         }
       }
     },
@@ -1860,18 +1860,18 @@
       }
     },
     "share": {
-      "copyAndShare": "Copy & share",
-      "placesLabel": "places",
-      "daysLabel": "days",
-      "downloadIcs": "Add to calendar",
-      "icsDownloaded": "Downloaded",
+      "copyAndShare": "העתקה ושיתוף",
+      "placesLabel": "מקומות",
+      "daysLabel": "ימים",
+      "downloadIcs": "הוספה ליומן",
+      "icsDownloaded": "הורד",
       "placesCount": "{count, plural, one {# place} other {# places}}",
       "daysCount": "{count, plural, one {# day} other {# days}}",
-      "copyLink": "Copy link",
-      "linkCopied": "Link copied",
-      "copyItinerary": "העתקת תוכנית (טקst)",
-      "copyItineraryShort": "העתקת טקst",
-      "copied": "Copied",
+      "copyLink": "העתקת קישור",
+      "linkCopied": "הקישור הועתק",
+      "copyItinerary": "העתקת תוכנית (טקסט)",
+      "copyItineraryShort": "העתקת טקסט",
+      "copied": "הועתק",
       "shareTextPrefix": "התוכנית שלי לחורף בקפריסין —",
       "previewLineTwo": "{a} ו{b}",
       "previewLineThree": "{a}, {b} ו{c}",
@@ -1881,9 +1881,9 @@
       "ogImageAlt": "{places} — תוכנית חורף בקפריסין",
       "recipientPreview": "תצוגה מקדימה לקישור: {places}"
     },
-    "dayLabel": "Day {day}",
+    "dayLabel": "יום {day}",
     "aria": {
-      "shareRegion": "Plan summary and share",
+      "shareRegion": "סיכום תוכנית ושיתוף",
       "shareMenu": "אפשרויות העתקה ושיתוף",
       "shareVia": "שיתוף דרך",
       "savePlanCta": "צרו חשבון כדי לשמור את התכנית בכל המכשירים",
@@ -1899,12 +1899,12 @@
       "shareLinkCopied": "קישור השיתוף הועתק ללוח"
     },
     "daySelector": {
-      "tabLabelWithCount": "Day {day} · {count}",
-      "viewAllDays": "View all days",
-      "viewAllDaysCount": "View all {count} days",
+      "tabLabelWithCount": "יום {day} · {count}",
+      "viewAllDays": "הצג את כל הימים",
+      "viewAllDaysCount": "הצג את כל {count} הימים",
       "unknownPlace": "…",
       "summarySeparator": " → ",
-      "summaryEmpty": "Add places to start"
+      "summaryEmpty": "הוסיפו מקומות להתחלה"
     },
     "suggestedForDay": {
       "empty": "Add a place below to see suggestions that pair well with your day.",
@@ -2007,68 +2007,68 @@
     }
   },
   "planQuick": {
-    "kickerEmpty": "Templates",
-    "kickerHasContent": "Ideas",
-    "titleEmpty": "Pick a template to start",
-    "titleHasContent": "Add more to your plan",
-    "descEmpty": "Pre-built routes from coast to mountains. One click fills Day 1.",
-    "descHasContent": "Use a template to add or replace stops. Or tap a place below.",
-    "setDatesHint": "Open trip dates below to see templates matched to your length.",
-    "quickAddLabel": "Quick add to Day {day}",
-    "quickAddAriaAdded": "{label} added",
-    "quickAddAriaAdd": "Add {label} to Day {day}",
-    "browsePlacesCta": "Browse places",
-    "browsePlacesAria": "Browse places to add to your day",
-    "inlineAddAria": "Add a stop to Day {day}",
-    "forYou": "For you",
-    "forTrip": "For your {days}-day trip",
-    "browseTrailsAria": "Browse trails",
-    "browseTrailsLabel": "Trails",
-    "browseWineriesAria": "Browse wineries",
-    "browseWineriesLabel": "Wineries",
-    "seeWhatsOnAria": "See what's on",
-    "seeWhatsOnLabel": "What's on",
-    "fitsTripDays": "Fits your {days}-day trip",
-    "tripRecommendationBlurb": "Recommended for your {days}-day trip based on length fit and your saved preferences.",
-    "tripFitExact": "Exact length",
-    "tripFitNear": "Near match",
-    "tripFitCompress": "Compress plan",
-    "tripFitExtend": "Extend with add-ons",
-    "allTemplates": "All templates",
-    "templateCardAria": "Use {label} template: {description}. {duration} days, {count} places. {preview}",
+    "kickerEmpty": "תבניות",
+    "kickerHasContent": "רעיונות",
+    "titleEmpty": "בחרו תבנית להתחלה",
+    "titleHasContent": "הוסיפו לתכנית",
+    "descEmpty": "מסלולים מוכנים מהחוף להרים. לחיצה אחת ממלאת את יום 1.",
+    "descHasContent": "השתמשו בתבנית להוספה או החלפת תחנות. או הקישו על מקום למטה.",
+    "setDatesHint": "פתחו תאריכי נסיעה למטה כדי לראות תבניות שמתאימות לאורך הטיול.",
+    "quickAddLabel": "הוספה מהירה ליום {day}",
+    "quickAddAriaAdded": "{label} נוסף",
+    "quickAddAriaAdd": "הוסף {label} ליום {day}",
+    "browsePlacesCta": "עיון במקומות",
+    "browsePlacesAria": "עיון במקומות להוספה ליום",
+    "inlineAddAria": "הוסף תחנה ליום {day}",
+    "forYou": "בשבילכם",
+    "forTrip": "לטיול של {days} ימים",
+    "browseTrailsAria": "עיון בשבילים",
+    "browseTrailsLabel": "שבילים",
+    "browseWineriesAria": "עיון ביקבים",
+    "browseWineriesLabel": "יקבים",
+    "seeWhatsOnAria": "ראו מה קורה",
+    "seeWhatsOnLabel": "מה קורה",
+    "fitsTripDays": "מתאים לטיול של {days} ימים",
+    "tripRecommendationBlurb": "מומלץ לטיול של {days} ימים לפי אורך והעדפות שמורות.",
+    "tripFitExact": "אורך מדויק",
+    "tripFitNear": "קרוב",
+    "tripFitCompress": "כיווץ תכנית",
+    "tripFitExtend": "הארכה עם תוספות",
+    "allTemplates": "כל התבניות",
+    "templateCardAria": "השתמשו בתבנית {label}: {description}. {duration} ימים, {count} מקומות. {preview}",
     "templates": {
       "items": {
         "short-stay": {
-          "label": "Short stay",
-          "description": "48 hours: ancient coast, Troodos trail, village wine"
+          "label": "שהייה קצרה",
+          "description": "48 שעות: חוף עתיק, שביל טרודוס, יין כפרי"
         },
         "classic": {
-          "label": "Classic",
-          "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace"
+          "label": "קלאסי",
+          "description": "מהחוף להרים: חורבות כוריון, שבילי טרודוס, תחרת Lefkara"
         },
         "mountain": {
-          "label": "Mountain",
-          "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos"
+          "label": "הרים",
+          "description": "לולאות טרודוס וכפרי אבן—Artemis, Caledonia, Kykkos"
         },
         "coast-culture": {
-          "label": "Coast & Culture",
-          "description": "Beaches, UNESCO sites, wineries—east to west"
+          "label": "חוף ותרבות",
+          "description": "חופים, אתרי UNESCO, יקבים—ממזרח למערב"
         },
         "family": {
-          "label": "Family",
-          "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch"
+          "label": "משפחה",
+          "description": "קצב רגוע, 2 תחנות/יום—חופים, מוזיאונים, צהריים בכפר"
         },
         "workation": {
-          "label": "Workation week",
-          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather"
+          "label": "שבוע workation",
+          "description": "עבודה מרחוק בימות השבוע, טרודוס והחוף בסופ״ש—בתי קפה עם wifi, מזג אוויר נעים"
         },
         "classic-7": {
-          "label": "Classic Culture (7 days)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep"
+          "label": "תרבות קלאסית (7 ימים)",
+          "description": "Larnaca → Nicosia → Troodos → Paphos—סיבוב מלא באי"
         },
         "mountain-10": {
-          "label": "Mountain Explorer (10 days)",
-          "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion"
+          "label": "חוקר הרים (10 ימים)",
+          "description": "בסיס טרודוס, Pitsilia, Machairas, אחר כך החוף—טיולים עמוקים"
         }
       }
     },
@@ -2081,16 +2081,16 @@
   },
   "bookings": {
     "title": "ההזמנות שלי",
-    "empty": "No bookings yet",
-    "emptyBody": "Book a tasting from Discover, or load bookings from another device.",
-    "browseWineries": "Browse wineries",
-    "loadFromEmail": "Load bookings from another device",
-    "noMatch": "No bookings for that email. Try another, or book from Discover.",
-    "bookMore": "Book a tasting or guided hike from Discover and Trails. Or load bookings from another device.",
+    "empty": "אין עדיין הזמנות",
+    "emptyBody": "הזמינו טעימה מגילוי, או טענו הזמנות ממכשיר אחר.",
+    "browseWineries": "עיון ביקבים",
+    "loadFromEmail": "טעינת הזמנות ממכשיר אחר",
+    "noMatch": "לא נמצאו הזמנות לכתובת זו. נסו אחרת, או הזמינו מגילוי.",
+    "bookMore": "הזמינו טעימה או טיול מודרך מגילוי ושבילים. או טענו הזמנות ממכשיר אחר.",
     "status": {
-      "confirmed": "confirmed",
-      "pending": "pending",
-      "cancelled": "cancelled"
+      "confirmed": "מאושר",
+      "pending": "ממתין",
+      "cancelled": "בוטל"
     },
     "errors": {
       "rateLimited": "יותר מדי בקשות. המתינו רגע ונסו שוב.",
@@ -3164,7 +3164,7 @@
             "booking": "<strong>Booking data</strong> (email, name, experience and date): to process winery and guide booking requests and communicate with you. <em>Legal basis: Contract performance.</em>",
             "trailReports": "<strong>Trail reports</strong> (note, optional email): to display crowd-sourced trail conditions. <em>Legal basis: Legitimate interest; consent where email is provided.</em>",
             "chat": "<strong>Chat messages</strong>: when you use Ask AI, your messages and context are sent to AI providers (OpenAI, xAI, Groq, Moonshot) to generate responses. <em>Legal basis: Legitimate interest.</em>",
-            "localPrefs": "<strong>Local preferences</strong> (interests, regions, itinerary): stored in your browser only. Not sent to our servers except as needed for features (e.g. plan share links)."
+            "localPrefs": "<strong>העדפות מקומיות</strong> (תחומי עניין, אזורים, תוכנית): נשמרות רק בדפדפן שלכם. לא נשלחות לשרתים שלנו, אלא אם נדרש לתכונות (למשל קישורי שיתוף תוכנית)."
           }
         },
         "s3": {
