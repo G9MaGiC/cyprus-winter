@@ -60,6 +60,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #159 | Launch doc hygiene + root loading skeleton tokens |
 | PR #164 | Plan copy hygiene pass 2 — residual itinerary → plan (BUG-305) |
 | PR #168 | Plan template i18n — de/el/pl + beta fr/he/ro planQuick & home templates (BUG-307/308) |
+| PR #170 | Beta editorial map sync — fr/he/ro home/book chrome without plan regression (BUG-309) |
 
 Details: `docs/QA_BUGS.md`
 
