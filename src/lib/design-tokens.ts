@@ -328,6 +328,12 @@ export const HOME = {
   gridGap: "gap-4 sm:gap-6",
 } as const;
 
+/** List hub shells (Discover, Trails) — shared vertical rhythm and card grids. */
+export const HUB = {
+  shellGap: "gap-12 sm:gap-16",
+  sectionPy: "py-6 sm:py-8",
+} as const;
+
 /** Homepage hero primitives (server components compose these). */
 export const HERO = {
   /** Shorter on mobile for faster discovery; taller on desktop for impact */

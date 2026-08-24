@@ -1,4 +1,4 @@
-import { CARD, HERO, LAYOUT, SKELETON, STRIP } from "@/lib/design-tokens";
+import { CARD, HERO, HOME, LAYOUT, SKELETON, STRIP } from "@/lib/design-tokens";
 
 export function HomeHeroSkeleton() {
   return (
@@ -14,7 +14,7 @@ export function HomeHeroSkeleton() {
 
 export function EditorsPicksSkeleton() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" aria-hidden>
+    <div className={`grid grid-cols-1 sm:grid-cols-2 ${HOME.gridGap}`} aria-hidden>
       {[1, 2].map((i) => (
         <div key={i} className={`${CARD.base} overflow-hidden`}>
           <div className={`${SKELETON.media} rounded-t-xl`} />
@@ -30,7 +30,7 @@ export function EditorsPicksSkeleton() {
 
 export function BookTastingsSkeleton() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" aria-hidden>
+    <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap}`} aria-hidden>
       {[1, 2, 3].map((i) => (
         <div key={i} className={`${CARD.base} overflow-hidden`}>
           <div className={`${SKELETON.media} rounded-t-xl`} />
@@ -72,7 +72,7 @@ const thisWeekBorders = ["border-l-aegean/30", "border-l-sage/40", "border-l-gol
 
 export function ThisWeekSkeleton() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" aria-hidden>
+    <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap}`} aria-hidden>
       {[1, 2, 3].map((i) => (
         <div key={i} className={`${CARD.content} ${CARD.base} border-l-4 ${thisWeekBorders[i - 1]}`}>
           <div className="h-4 w-20 bg-olive/30 rounded mb-2" />

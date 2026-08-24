@@ -13,7 +13,7 @@ import {
   discoverSectionMetaKey,
 } from "@/lib/discover-list-meta";
 import { buildDiscoverListMetadata } from "@/lib/discover-list-meta";
-import { CTA, LAYOUT } from "@/lib/design-tokens";
+import { CTA, HUB, LAYOUT } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import SearchBar from "@/components/SearchBar";
 import DiscoverClient from "./DiscoverClient";
@@ -103,7 +103,7 @@ export default async function DiscoverPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(discoverSchema) }}
       />
-      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16 md:gap-20`}>
+      <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}>
         <ListPageHero
           backHref="/"
           backLabel={tNav("home")}

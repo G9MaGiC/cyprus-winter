@@ -3,7 +3,7 @@
 import AppLink from "@/components/AppLink";
 import { useEffect, useRef } from "react";
 import { trailConditions } from "@/data/trails";
-import { LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, HUB, LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import ListPageHero from "@/components/ListPageHero";
@@ -89,7 +89,7 @@ export default function TrailsClient({
     <div className="min-h-screen bg-sand">
       <SRStatus message={filterAnnouncement} />
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}
       >
         <ListPageHero
           title={tTrailsPage("hero.title")}
@@ -194,7 +194,7 @@ export default function TrailsClient({
             {filtered.length === 0 ? (
               <TrailsEmptyState />
             ) : safeStatus ? (
-              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className={`grid sm:grid-cols-2 ${HOME.gridGap}`}>
                 {filtered.map((trail) => (
                   <TrailCard
                     key={trail.id}

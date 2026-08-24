@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, HOME, SECTION, TYPE } from "@/lib/design-tokens";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { DAY_COMBO_DEFS } from "@/data/day-combos";
 import type { RelatedPlace } from "@/lib/related-places";
@@ -64,7 +64,7 @@ export default function BuildADaySection({ hasContent, onComboClick, readOnly = 
           {tPlan("curatedCombosDesc")}
         </p>
       </header>
-      <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {DAY_COMBO_DEFS.map((combo) => {
           const places = getRelatedPlaces(combo.ids);
           if (places.length === 0) return null;

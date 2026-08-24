@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { BOTTOM_NAV, HOME, HERO, LAYOUT, STRIP, TYPE, CARD, MEDIA, BADGE, SEARCH, AI_TRIGGER, LOCATION } from "./design-tokens";
+import { BOTTOM_NAV, HOME, HERO, HUB, LAYOUT, STRIP, TYPE, CARD, MEDIA, BADGE, SEARCH, AI_TRIGGER, LOCATION } from "./design-tokens";
 
 describe("HOME rhythm tokens", () => {
   it("defines tighter mobile section padding than hub SECTION.py", () => {
@@ -14,6 +14,13 @@ describe("HOME rhythm tokens", () => {
     expect(HERO.section).toContain("min-h-[62vh]");
     expect(HERO.section).toContain("pb-12");
     expect(HERO.panel).toContain("p-5 sm:p-10");
+  });
+});
+
+describe("HUB rhythm tokens", () => {
+  it("defines shared list hub shell and section padding", () => {
+    expect(HUB.shellGap).toBe("gap-12 sm:gap-16");
+    expect(HUB.sectionPy).toBe("py-6 sm:py-8");
   });
 });
 

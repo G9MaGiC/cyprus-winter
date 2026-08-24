@@ -1,4 +1,4 @@
-import { LAYOUT, CARD, SKELETON, SECTION, LAYER, STRIP } from "@/lib/design-tokens";
+import { HOME, HUB, LAYOUT, CARD, SKELETON, SECTION, LAYER, STRIP } from "@/lib/design-tokens";
 import { getTranslations } from "next-intl/server";
 
 function CardSkeleton() {
@@ -60,7 +60,7 @@ export default async function DiscoverLoading() {
   const t = await getTranslations("common");
   return (
     <div
-      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col gap-12 sm:gap-16`}
+      className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}
       aria-busy
       aria-live="polite"
       role="status"
@@ -93,9 +93,9 @@ export default async function DiscoverLoading() {
         <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX}`}>
           <div className={`h-4 w-full max-w-md pt-6 sm:pt-8 pb-2 ${SKELETON.block}`} />
           <div className="pt-2 space-y-12 sm:space-y-16">
-            <div className="py-10 sm:py-14">
+            <div className={HUB.sectionPy}>
               <div className={`h-8 w-40 mb-4 sm:mb-6 ${SKELETON.block}`} />
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
                 {[1, 2, 3, 4, 5, 6].map((i) => (
                   <CardSkeleton key={i} />
                 ))}

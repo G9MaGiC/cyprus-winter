@@ -93,7 +93,7 @@ export default function StartHereWithExplore() {
             item.id === "book" ? (
               <div
                 key={item.id}
-                className={`flex flex-col ${CARD.base} ${CARD.hover} overflow-hidden ${
+                className={`flex flex-col ${CARD.base} ${CARD.hover} ${CARD.interactive} overflow-hidden ${
                   item.variant === "primary"
                     ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
                     : "border-l-4 border-l-aegean/60"

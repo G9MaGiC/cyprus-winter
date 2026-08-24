@@ -35,7 +35,7 @@ import AppLink from "@/components/AppLink";
 import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import PlanSustainabilityStrip from "@/components/plan/PlanSustainabilityStrip";
 import PlanOfflineBanner from "@/components/plan/PlanOfflineBanner";
-import { LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
 const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
   ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
@@ -347,7 +347,7 @@ export default function PlanPageClient() {
           )}
         </div>
 
-        <div className={`${LAYOUT.safeAreaX} ${LAYOUT.list} mx-auto ${SECTION.blockGap} flex flex-col gap-6`}>
+        <div className={`${LAYOUT.safeAreaX} ${LAYOUT.list} mx-auto ${SECTION.blockGap} flex flex-col ${HOME.gridGap}`}>
           <PlanSustainabilityStrip />
           <TravelTrustStrip />
         </div>

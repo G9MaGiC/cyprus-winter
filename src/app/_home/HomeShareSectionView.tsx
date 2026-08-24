@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, LAYOUT, TYPE } from "@/lib/design-tokens";
 import ShareLinks from "@/components/ShareLinks";
 import BackToTopLink from "@/components/BackToTopLink";
 
@@ -24,7 +24,7 @@ export default function HomeShareSectionView({
   return (
     <section
       aria-labelledby="home-share-heading"
-      className={`bg-charcoal text-white ${SECTION.py} pb-[max(3rem,env(safe-area-inset-bottom))] text-center`}
+      className={`bg-charcoal text-white ${HOME.sectionPy} pb-[max(3rem,env(safe-area-inset-bottom))] text-center`}
     >
       <div className={`${LAYOUT.safeAreaX} ${LAYOUT.listNarrow} mx-auto`}>
         <h2 id="home-share-heading" className="sr-only">
