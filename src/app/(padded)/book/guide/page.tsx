@@ -56,7 +56,7 @@ export default async function GuidesListPage() {
       </nav>
 
       <div className={SECTION.headingMargin}>
-        <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
+        <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
         <p className="text-olive/70 max-w-2xl">
           {tBookPages("guideList.intro")}
         </p>

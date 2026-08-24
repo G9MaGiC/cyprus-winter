@@ -363,7 +363,7 @@
       "spring": "Coast mild. Mountains cooler. Plan as you go."
     },
     "degreesLine": "Sixteen degrees when home is six.",
-    "planSubtitle": "Build your itinerary. Add places from Discover—saves as you go.",
+    "planSubtitle": "Build your plan. Add places from Discover—saves as you go.",
     "cta": {
       "arriving": "Just arrived? Start here",
       "explore": "Explore",
@@ -1001,6 +1001,7 @@
       "loading": "Loading map…",
       "emptyTitle": "No places with coordinates to display.",
       "emptyBody": "Browse the list above to explore places.",
+      "emptyBrowseCta": "Browse places",
       "sectionTitle": "Places on map",
       "sectionTitleWithCount": "Places on map ({count})",
       "curatedBy": "Curated by the Cyprus Winter team.",
@@ -1757,10 +1758,10 @@
     "morning": "Morning",
     "afternoon": "Afternoon",
     "pageTitle": "Plan your Cyprus winter",
-    "pageDescHasContent": "Your itinerary. Add more, share, or tweak below.",
-    "pageDescEmpty": "Build your winter itinerary. Pick a template or add places day by day.",
+    "pageDescHasContent": "Your plan. Add more, share, or tweak below.",
+    "pageDescEmpty": "Build your winter plan. Pick a template or add places day by day.",
     "pageDescSecondaryEmpty": "Saves automatically.",
-    "mapTitle": "Your itinerary on the map",
+    "mapTitle": "Your plan on the map",
     "mapCollapsibleHint": "Stops and driving context on the island map",
     "addMoreCollapsibleTitle": "Add more to your plan",
     "addMoreCollapsibleSubtitle": "Templates, pairings, and themed days",
@@ -1868,10 +1869,10 @@
       "daysCount": "{count, plural, one {# day} other {# days}}",
       "copyLink": "Copy link",
       "linkCopied": "Link copied",
-      "copyItinerary": "Copy itinerary (text)",
+      "copyItinerary": "Copy plan (text)",
       "copyItineraryShort": "Copy text",
       "copied": "Copied",
-      "shareTextPrefix": "My Cyprus Winter itinerary —",
+      "shareTextPrefix": "My Cyprus Winter plan —",
       "previewLineTwo": "{a} and {b}",
       "previewLineThree": "{a}, {b} and {c}",
       "previewLineMore": "{a}, {b} and {count} more",
@@ -1887,14 +1888,14 @@
       "shareVia": "Share via",
       "savePlanCta": "Create account to save your plan across devices",
       "quickLinks": "Plan quick links",
-      "yourItinerary": "Your itinerary",
+      "yourItinerary": "Your plan",
       "clearDay": "Clear all places from Day {day}",
       "browsePlacesToAddDay": "Browse places to add to your day",
       "scrollToTemplates": "Scroll to templates",
       "addCombo": "Add {label} to plan",
       "selectDay": "Select day",
       "quickStartRegion": "Add places or use templates",
-      "itineraryCopied": "Itinerary copied to clipboard",
+      "itineraryCopied": "Plan copied to clipboard",
       "shareLinkCopied": "Share link copied to clipboard"
     },
     "daySelector": {
@@ -1943,14 +1944,14 @@
       "addToPlan": "Add to plan"
     },
     "map": {
-      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your itinerary",
+      "ariaLabel": "Map showing {count, plural, one {# place} other {# places}} on your plan",
       "dayLabel": "Day {day}",
       "viewDetails": "View details →",
       "footer": "{count, plural, one {# place} other {# places}} on map. Numbers = day. Tap to explore.",
       "noCoords": "Some of your places don't have map locations yet."
     },
     "clipboard": {
-      "heading": "Cyprus Winter Itinerary",
+      "heading": "Cyprus Winter Plan",
       "dayLabel": "Day {day}:",
       "emptyFallback": "Your Cyprus Winter plan. Add places from Discover or Trails to get going."
     },

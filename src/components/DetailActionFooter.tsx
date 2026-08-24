@@ -1,11 +1,12 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
+import { triggerAIAssistant } from "@/components/AIAssistantTrigger";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
-import { CTA } from "@/lib/design-tokens";
+import { AI_TRIGGER, CTA } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
 import { useTranslations } from "next-intl";
 
@@ -33,6 +34,8 @@ export default function DetailActionFooter({
   children,
 }: DetailActionFooterProps) {
   const tDiscover = useTranslations("discover");
+  const tNav = useTranslations("nav");
+  const blocked = useBlockingOverlaysActive();
 
   return (
     <footer
@@ -52,9 +55,10 @@ export default function DetailActionFooter({
         >
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-            className={`${CTA.secondaryCompact} w-full sm:w-auto justify-center`}
-            aria-label={tDiscover("aria.askAi")}
+            disabled={blocked}
+            onClick={() => triggerAIAssistant()}
+            className={`${CTA.secondaryCompact} w-full sm:w-auto justify-center ${blocked ? AI_TRIGGER.disabled : ""}`}
+            aria-label={blocked ? tNav("askAIBlockedAria") : tDiscover("aria.askAi")}
           >
             {tDiscover("footer.askAi")}
           </button>

@@ -13,6 +13,7 @@ import {
   TOURIST_GUIDE_DISTRICTS,
 } from "@/lib/guides-directory";
 import { getVerifiedPartnerForLicensedId } from "@/lib/guide-partners";
+import ClientPillFilter from "@/components/ClientPillFilter";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
@@ -79,9 +80,9 @@ export default function GuidesDirectoryClient({
         <div>
           <p className={`${TYPE.kicker} text-sage mb-2`}>{t("filterDistrict")}</p>
           <div className="flex flex-wrap gap-2" role="group" aria-label={t("filterDistrict")}>
-            <FilterChip active={!district} onClick={() => setDistrict(null)} label={t("allDistricts")} />
+            <ClientPillFilter active={!district} onClick={() => setDistrict(null)} label={t("allDistricts")} />
             {TOURIST_GUIDE_DISTRICTS.filter((d) => d !== "general").map((d) => (
-              <FilterChip
+              <ClientPillFilter
                 key={d}
                 active={district === d}
                 onClick={() => setDistrict(district === d ? null : d)}
@@ -94,9 +95,9 @@ export default function GuidesDirectoryClient({
         <div>
           <p className={`${TYPE.kicker} text-sage mb-2`}>{t("filterLanguage")}</p>
           <div className="flex flex-wrap gap-2" role="group" aria-label={t("filterLanguage")}>
-            <FilterChip active={!language} onClick={() => setLanguage(null)} label={t("allLanguages")} />
+            <ClientPillFilter active={!language} onClick={() => setLanguage(null)} label={t("allLanguages")} />
             {languageOptions.map((lang) => (
-              <FilterChip
+              <ClientPillFilter
                 key={lang}
                 active={language === lang}
                 onClick={() => setLanguage(language === lang ? null : lang)}
@@ -142,31 +143,6 @@ export default function GuidesDirectoryClient({
         </AppLink>
       </div>
     </div>
-  );
-}
-
-function FilterChip({
-  active,
-  onClick,
-  label,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={`min-h-[44px] px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
-        active
-          ? "bg-terracotta text-white"
-          : "bg-white border border-sand-200 text-olive hover:border-terracotta/40"
-      }`}
-    >
-      {label}
-    </button>
   );
 }
 

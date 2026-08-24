@@ -49,7 +49,7 @@ export default async function WineriesListPage() {
       </nav>
 
       <div className={SECTION.headingMargin}>
-        <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookTasting")}</h1>
+        <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookTasting")}</h1>
         <p className="text-olive/70 max-w-2xl">
           {tBookPages("wineryList.intro")}
         </p>

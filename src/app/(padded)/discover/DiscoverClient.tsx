@@ -19,7 +19,7 @@ import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
 import DiscoverSectionList from "./DiscoverSectionList";
 import DiscoverFooter from "./DiscoverFooter";
 import { SRStatus } from "@/components/SRStatus";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
+import AskAIButton from "@/components/AskAIButton";
 import AppLink from "@/components/AppLink";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 
@@ -220,13 +220,7 @@ export default function DiscoverClient({
               >
                 {tDiscover("page.clearFilter")}
               </AppLink>
-              <button
-                type="button"
-                onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-                className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
-              >
-                {tDiscover("askAI")}
-              </button>
+              <AskAIButton className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`} />
             </div>
           </div>
         ) : viewMode === "list" ? (

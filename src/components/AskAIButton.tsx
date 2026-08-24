@@ -1,7 +1,8 @@
 "use client";
 
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
-import { CTA } from "@/lib/design-tokens";
+import { triggerAIAssistant } from "@/components/AIAssistantTrigger";
+import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
+import { AI_TRIGGER, CTA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type AskAIButtonProps = {
@@ -15,16 +16,19 @@ export default function AskAIButton({
   label,
   ariaLabel,
 }: AskAIButtonProps) {
-  const t = useTranslations("common");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
+  const blocked = useBlockingOverlaysActive();
 
   return (
     <button
       type="button"
-      onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
-      className={className}
-      aria-label={ariaLabel ?? t("askAIAria")}
+      disabled={blocked}
+      onClick={() => triggerAIAssistant()}
+      className={`${className} ${blocked ? AI_TRIGGER.disabled : ""}`}
+      aria-label={blocked ? tNav("askAIBlockedAria") : (ariaLabel ?? tCommon("askAIAria"))}
     >
-      {label ?? t("askAI")}
+      {label ?? tCommon("askAI")}
     </button>
   );
 }

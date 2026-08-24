@@ -6,7 +6,7 @@ import { winterEvents } from "@/data/events";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import HubFooter from "@/components/HubFooter";
 import AskAIButton from "@/components/AskAIButton";
-import { HOME, LAYOUT, CARD, EMPTY_STATE, CTA, TYPE, SECTION, LAYER } from "@/lib/design-tokens";
+import { HOME, LAYOUT, CTA, CARD, EMPTY_STATE, TYPE, SECTION, LAYER, STRIP, HUB } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
 import ListPageWidgetStrip from "@/components/ListPageWidgetStrip";
 import type { WinterEvent } from "@/data/events";
@@ -86,7 +86,7 @@ export default function EventsPage() {
   return (
     <div className="min-h-screen bg-sand">
       <div
-        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst}`}
+        className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}
       >
         <ListPageHero
           title={tPage("hero.title")}
@@ -122,44 +122,47 @@ export default function EventsPage() {
         </ListPageWidgetStrip>
 
         {filtered.length === 0 ? (
-          <div
-            className={EMPTY_STATE}
-            role="status"
-            aria-live="polite"
-          >
-            <p className="text-olive/80 break-words max-w-sm mx-auto">
-              {tEvents("noMatch")}
-            </p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/events"
-                className={CTA.secondaryCompact}
-                aria-label={tEvents("clearFiltersAria")}
-              >
-                {tEvents("clearFilters")}
-              </Link>
-              <Link href="/discover" className={CTA.chipTertiary}>
-                {tSearch("browseDiscover")}
-              </Link>
-              <Link href="/plan" className={CTA.primaryCompact}>
-                {tCommon("planYourTrip")}
-              </Link>
-              <AskAIButton className={CTA.chipTertiary} />
+          <>
+            <div
+              className={EMPTY_STATE}
+              role="status"
+              aria-live="polite"
+            >
+              <p className="text-olive/80 break-words max-w-sm mx-auto">
+                {tEvents("noMatch")}
+              </p>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/events"
+                  className={CTA.secondaryCompact}
+                  aria-label={tEvents("clearFiltersAria")}
+                >
+                  {tEvents("clearFilters")}
+                </Link>
+                <Link href="/discover" className={CTA.chipTertiary}>
+                  {tSearch("browseDiscover")}
+                </Link>
+                <Link href="/plan" className={CTA.primaryCompact}>
+                  {tCommon("planYourTrip")}
+                </Link>
+                <AskAIButton className={CTA.chipTertiary} />
+              </div>
             </div>
+            <span id="events-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
             <HubFooter
               body={tPage("footer.hubBody")}
               ariaLabel={tPage("aria.actions")}
               askAiLabel={tDiscover("footer.askAi")}
               askAiAriaLabel={tDiscover("aria.askAi")}
-              className="mt-10"
             />
-          </div>
+            <StickyPlanBarBlock sentinelId="events-plan-sentinel" />
+          </>
         ) : (
           <>
             {monthNavMonths.length > 0 && (
               <nav
                 aria-label={tPage("monthNav.aria")}
-                className={`sticky ${LAYOUT.stickyTop} ${LAYER.stickyContent} ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 bg-sand/95 backdrop-blur-sm border-b border-sand-200/80 supports-[backdrop-filter]:bg-sand/90`}
+                className={`sticky ${LAYOUT.stickyTop} ${LAYER.stickyContent} ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 ${STRIP.stickySandBar}`}
               >
                 <p className={`${TYPE.kicker} text-olive/60 ${SECTION.titleGap}`}>{tPage("monthNav.title")}</p>
                 <div className="flex flex-wrap gap-2">

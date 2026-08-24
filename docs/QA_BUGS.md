@@ -1570,3 +1570,28 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-271 | i18n | Locale dynamic metadata English for book/trail/weather month | `locale-metadata-dynamic.ts` uses `book.pages.*`, `trails.detail.meta`, `weather.month.meta`; padded weather month metadata i18n |
 
 **Do not change:** guest booking GET still requires Bearer session **or** HMAC `?token=` when Supabase is configured.
+
+### Fixed — strict UX/UI QA audit pass (Aug 24, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-284 | UX | `AskAIButton` / detail & discover empty states fired AI without overlay guard | `useBlockingOverlaysActive` + `triggerAIAssistant` + `AI_TRIGGER.disabled` on `AskAIButton`, `DetailActionFooter`, discover/trails empty CTAs |
+| BUG-285 | RTL | `SEARCH.input` / `SEARCH.icon` LTR-hardcoded (`pl-11`, `left-4`) | Logical `ps-11 pe-4` + `start-4` in design tokens |
+| BUG-286 | A11y | `nature/loading.tsx` off-system (no i18n status, raw skeleton) | Matches hub loading pattern with `aria-live` + `loading.content` |
+| BUG-287 | UX | Events empty branch missing sticky Plan bar; nested HubFooter | Empty card isolated; sticky bar + footer outside; `STRIP.stickySandBar` on month nav |
+| BUG-288 | UX | Plan footer missing Ask AI; Discover footer label mismatch | `AskAIButton` on `PlanFooter`; default `planYourTrip` on Discover footer |
+| BUG-289 | Visual | Sticky bars not using `STRIP.stickyBottomBar` | Applied on `StickyPlanBar`, `StickyAddToPlanBar`, `TrailDetailStickyActions` |
+| BUG-290 | Visual | Duplicate filter chips (Nature, Cycling, Guides) vs `PILL.*` | Shared `ClientPillFilter` component |
+| BUG-291 | A11y | Secondary hub loadings missing `aria-label` / `aria-live` | beaches, villages, cycling, secrets, weather, team, wine-routes, guides directory |
+| BUG-292 | Visual | Search loading skeleton vs live card mismatch | Text-only card skeleton (no thumb) |
+| BUG-293 | A11y | Map controls below 44px touch target | `min-h-[44px]` on discover/trails/plan/wine route map controls |
+| BUG-294 | Visual | AI disclaimer low contrast | `text-xs text-sage` on disclaimer |
+| BUG-295 | Visual | Book hub h1 used `TYPE.sectionTitle` | `TYPE.pageTitle` on book/winery and book/guide list pages |
+| BUG-296 | Visual | Hero loading skeleton bleed used raw `-mx-4 sm:-mx-6` | `LAYOUT.heroBleedX` on discover/trails/events/plan loading |
+| BUG-297 | Visual | Wine route slug hero missing overlay | `CARD.heroOverlay` on route hero image |
+| BUG-298 | UX | Discover map empty state had no recovery CTAs | Browse places + Ask AI in `DiscoverMapPanel` |
+| BUG-299 | RTL | Skip link / home skip nav used `left-4` | `start-4` logical positioning |
+| BUG-300 | RTL | `StartHereWithExplore` chip fade hardcoded `right-0` | `end-0` + `bg-gradient-to-l` |
+| BUG-301 | UX | `InstallPromptBanner` used `LAYER.onboarding` (z-index conflict) | `LAYER.toast` — above cookie, below onboarding |
+| BUG-302 | i18n | Plan copy still said "itinerary" in user-facing strings | Plan namespace + `home.planSubtitle` → "plan" wording (×7 locales) |
+| BUG-303 | DX | Duplicate `error.tsx` implementations | Shared `AppErrorPage` used by root + padded error boundaries |

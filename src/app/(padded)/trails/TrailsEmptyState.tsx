@@ -1,8 +1,8 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
+import AskAIButton from "@/components/AskAIButton";
 import { CTA, EMPTY_STATE_LARGE } from "@/lib/design-tokens";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
 import { useTranslations } from "next-intl";
 
 export default function TrailsEmptyState() {
@@ -21,14 +21,10 @@ export default function TrailsEmptyState() {
         <AppLink href="/trails" className={`inline-flex justify-center min-w-[140px] ${CTA.primaryCompact}`}>
           {t("trails.emptyState.ctaAllTrails")}
         </AppLink>
-        <button
-          type="button"
-          onClick={() => window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))}
+        <AskAIButton
           className={CTA.secondaryCompact}
-          aria-label={t("common.askAITrailsAria")}
-        >
-          {t("common.askAI")}
-        </button>
+          ariaLabel={t("common.askAITrailsAria")}
+        />
         <AppLink href="/discover" className={CTA.secondaryCompact}>
           {t("nav.discover")}
         </AppLink>

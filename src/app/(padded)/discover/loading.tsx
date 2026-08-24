@@ -21,7 +21,7 @@ function CardSkeleton() {
 
 function HeroSkeleton() {
   return (
-    <section className={`relative -mx-4 sm:-mx-6 overflow-hidden ${SECTION.headingMarginLarge}`}>
+    <section className={`relative ${LAYOUT.heroBleedX} overflow-hidden ${SECTION.headingMarginLarge}`}>
       <div className={`relative aspect-[3/1] sm:aspect-[16/9] min-h-[260px] sm:min-h-[200px] ${SKELETON.block}`} />
       <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pt-[calc(4.5rem+env(safe-area-inset-top,0px))]">
         <div className={`h-4 w-16 ${SKELETON.block} mb-2`} />

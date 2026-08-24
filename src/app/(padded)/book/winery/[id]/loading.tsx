@@ -7,6 +7,8 @@ export default async function WineryBookingLoading() {
     <div
       className={`min-h-screen bg-sand ${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy} animate-pulse`}
       aria-busy
+      aria-live="polite"
+      role="status"
       aria-label={t("loading.bookingForm")}
     >
       <div className={`h-4 w-24 ${SKELETON.block} mb-6`} />

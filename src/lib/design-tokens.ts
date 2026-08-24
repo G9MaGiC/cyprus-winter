@@ -394,8 +394,8 @@ export const BADGE = {
 /** Search combobox — home strip and /search page. */
 export const SEARCH = {
   input:
-    "w-full min-h-[44px] pl-11 pr-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200",
-  icon: "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-olive/50 pointer-events-none",
+    "w-full min-h-[44px] ps-11 pe-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200",
+  icon: "absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-olive/50 pointer-events-none",
   panel:
     "absolute top-full left-0 right-0 mt-2 rounded-lg bg-sand-100/95 border border-sand-200/80",
   panelList: "py-2 max-h-96 overflow-y-auto",

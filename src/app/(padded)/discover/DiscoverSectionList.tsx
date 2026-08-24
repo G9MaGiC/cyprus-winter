@@ -3,7 +3,7 @@
 import { forwardRef, useEffect, useState } from "react";
 import AppLink from "@/components/AppLink";
 import AttractionCard from "@/components/AttractionCard";
-import { OPEN_AI_EVENT } from "@/components/AIAssistantTrigger";
+import AskAIButton from "@/components/AskAIButton";
 import { SECTION, CTA, EMPTY_STATE, HOME, HUB, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
@@ -63,16 +63,10 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                   >
                     {tCommon("allCategories")}
                   </AppLink>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      window.dispatchEvent(new CustomEvent(OPEN_AI_EVENT))
-                    }
+                  <AskAIButton
                     className={`min-w-[120px] justify-center ${CTA.secondaryCompact}`}
-                    aria-label={tCommon("askAIRecommendationsAria")}
-                  >
-                    {tCommon("askAI")}
-                  </button>
+                    ariaLabel={tCommon("askAIRecommendationsAria")}
+                  />
                 </div>
               </div>
             ) : (

@@ -1,4 +1,5 @@
 import { HOME, LAYOUT, CARD, SKELETON } from "@/lib/design-tokens";
+import { getTranslations } from "next-intl/server";
 
 function MonthSkeleton() {
   return (
@@ -14,12 +15,15 @@ function MonthSkeleton() {
   );
 }
 
-export default function WeatherLoading() {
+export default async function WeatherLoading() {
+  const t = await getTranslations("common");
   return (
     <div
       className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}
       aria-busy
+      aria-live="polite"
       role="status"
+      aria-label={t("loading.weatherMonth")}
     >
       <div className="animate-pulse">
         <div className={`h-4 w-20 ${SKELETON.block} mb-4`} />

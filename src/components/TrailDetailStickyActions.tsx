@@ -7,7 +7,7 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { FOOTER_SENTINEL_ID } from "@/lib/footer";
-import { LAYER, LAYOUT } from "@/lib/design-tokens";
+import { LAYER, LAYOUT, STRIP } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 
@@ -67,7 +67,7 @@ export default function TrailDetailStickyActions({ trailId, sentinelId }: TrailD
 
   return (
     <div
-      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} bg-white/95 backdrop-blur-sm border-t border-sand-200/80 shadow-sm ${LAYOUT.mobileBottomChromeHidden} py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
+      className={`fixed left-0 right-0 ${LAYOUT.fixedBottomAboveNavCookie} ${LAYER.stickyPlaceBar} ${STRIP.stickyBottomBar} shadow-sm ${LAYOUT.mobileBottomChromeHidden} py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
       role="complementary"
       aria-label={tCommon("aria.quickActions")}
     >
