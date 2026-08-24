@@ -4,27 +4,31 @@
  *
  * Brand checklist (new components): terracotta = primary CTA; aegean = secondary/contextual;
  * golden = accent on dark surfaces (nav, hero); imagery = Cyprus-specific, winter-appropriate.
+ *
+ * Color hex values: `src/lib/brand-colors.ts` (synced with globals.css via brand-colors.test.ts).
  */
+import { BRAND_COLORS } from "@/lib/brand-colors";
+
 export const TOKENS = {
   /** Base neutrals — warm sand/cream */
-  cloud: "#faf8f5",
-  sand: "#faf8f5",
-  sandMid: "#f5f2ed",
-  sandDark: "#eae6df",
+  cloud: BRAND_COLORS.cloud,
+  sand: BRAND_COLORS.sand,
+  sandMid: BRAND_COLORS.sandMid,
+  sandDark: BRAND_COLORS.sandDark,
   /** Text — earthy slate */
-  charcoal: "#252730",
-  olive: "#4a5162",
-  oliveMuted: "#6b7280",
+  charcoal: BRAND_COLORS.charcoal,
+  olive: BRAND_COLORS.olive,
+  oliveMuted: BRAND_COLORS.oliveMuted,
   /** Primary CTAs — terracotta clay */
-  terracotta: "#c96f52",
-  terracottaMuted: "#b85d42",
+  terracotta: BRAND_COLORS.terracotta,
+  terracottaMuted: BRAND_COLORS.terracottaMuted,
   /** Accents — golden hour */
-  golden: "#d4a853",
+  golden: BRAND_COLORS.golden,
   /** Secondary brand — Aegean sea */
-  aegean: "#1a6b7c",
+  aegean: BRAND_COLORS.aegean,
   /** Earth accent — trails, sustainable */
-  sage: "#6b8f7a",
-  sageMuted: "#8fa99a",
+  sage: BRAND_COLORS.sage,
+  sageMuted: BRAND_COLORS.sageMuted,
 } as const;
 
 /** Mobile-first: 44px touch target (Apple HIG, WCAG). Use min-h-[44px], min-w-[44px]. */
@@ -248,6 +252,14 @@ export const CARD = {
   media: "aspect-[4/3] relative overflow-hidden bg-sand-200/50 shrink-0",
   /** Card image gradient — warm Mediterranean feel */
   mediaOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
+  /** Lighter overlay for editorial/home cards (Editors Picks, Book Tastings, Right Now). */
+  mediaOverlayLight:
+    "absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent pointer-events-none",
+  /** Compact Right Now thumbnail — lighter on narrow mobile strip. */
+  mediaOverlayCompact:
+    "absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent pointer-events-none sm:from-charcoal/60 sm:via-transparent",
+  /** Detail page hero — charcoal (not pure black) for brand consistency. */
+  heroOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
   /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
   info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
   /** Action cards (Plan, Events, StartHereWithExplore primary): larger padding, strong CTA */
@@ -301,11 +313,26 @@ export const POST_HERO = {
   chipNav: "flex flex-wrap items-center justify-center gap-2",
 } as const;
 
+/**
+ * Home page rhythm — tighter mobile padding, full hub scale from lg.
+ * Use instead of SECTION.py on home-only sections to reduce scroll density on phones.
+ */
+export const HOME = {
+  /** Major home sections (Start Here, This Week, Editors, Planning) */
+  sectionPy: "py-8 sm:py-12 lg:py-20",
+  /** Strips and subsections (search, Right Now, Place of Day, teaser) */
+  sectionPySub: "py-5 sm:py-8",
+  /** Section header bottom margin — slightly tighter on mobile */
+  headerMargin: "mb-6 sm:mb-8 lg:mb-10",
+  /** Grid gap for home card grids (This Week, Editors) */
+  gridGap: "gap-4 sm:gap-6",
+} as const;
+
 /** Homepage hero primitives (server components compose these). */
 export const HERO = {
   /** Shorter on mobile for faster discovery; taller on desktop for impact */
   section:
-    "relative isolate overflow-hidden min-h-[68vh] min-[400px]:min-h-[72vh] sm:min-h-[84vh] flex flex-col items-center justify-end sm:justify-center pb-14 sm:pb-20 text-center w-full",
+    "relative isolate overflow-hidden min-h-[62vh] min-[400px]:min-h-[66vh] sm:min-h-[80vh] flex flex-col items-center justify-end sm:justify-center pb-12 sm:pb-20 text-center w-full",
   /** Simplified overlay — legibility without muddying the image */
   overlay:
     "absolute inset-0 pointer-events-none bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/5",
@@ -314,7 +341,7 @@ export const HERO = {
     "absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55 pointer-events-none",
   /** Panel — frosted glass over hero, Mediterranean warmth */
   panel:
-    "relative rounded-2xl bg-charcoal/40 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-6 sm:p-10 lg:p-12 transition-shadow duration-300",
+    "relative rounded-2xl bg-charcoal/40 backdrop-blur-xl ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] p-5 sm:p-10 lg:p-12 transition-shadow duration-300",
 } as const;
 
 /** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */
@@ -342,4 +369,18 @@ export const PILL = {
   subtle:
     "bg-sand-100 text-sage hover:bg-terracotta/10 hover:text-terracotta text-sm active:scale-[0.98] motion-reduce:active:scale-100 border border-sand-200/70 hover:border-terracotta/30",
   active: "bg-terracotta text-white border border-terracotta/30 shadow-sm",
+} as const;
+
+/** Shared media interaction — one hover scale across card families. */
+export const MEDIA = {
+  hoverImage:
+    "object-cover group-hover:scale-[1.02] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out",
+} as const;
+
+/** Badge shapes — pill for type/category; chip for status on image overlays. */
+export const BADGE = {
+  base: "inline-flex items-center px-2.5 py-1 text-xs font-medium",
+  pill: "rounded-full",
+  chip: "rounded-md backdrop-blur-sm bg-white/85",
+  chipPlain: "rounded-md",
 } as const;

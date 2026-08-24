@@ -1,5 +1,21 @@
 import { describe, it, expect } from "vitest";
-import { BOTTOM_NAV, LAYOUT, STRIP, TYPE } from "./design-tokens";
+import { BOTTOM_NAV, HOME, HERO, LAYOUT, STRIP, TYPE, CARD, MEDIA, BADGE } from "./design-tokens";
+
+describe("HOME rhythm tokens", () => {
+  it("defines tighter mobile section padding than hub SECTION.py", () => {
+    expect(HOME.sectionPy).toContain("py-8");
+    expect(HOME.sectionPy).toContain("lg:py-20");
+    expect(HOME.sectionPySub).toContain("py-5");
+    expect(HOME.headerMargin).toContain("mb-6");
+    expect(HOME.gridGap).toBe("gap-4 sm:gap-6");
+  });
+
+  it("shortens hero on mobile for faster discovery", () => {
+    expect(HERO.section).toContain("min-h-[62vh]");
+    expect(HERO.section).toContain("pb-12");
+    expect(HERO.panel).toContain("p-5 sm:p-10");
+  });
+});
 
 describe("LAYOUT mobile bottom chrome", () => {
   it("aligns footer and main clearance with BottomNav md breakpoint", () => {
@@ -40,6 +56,24 @@ describe("STRIP typography", () => {
   it("defines sticky bottom bar for fixed add CTAs on sand pages", () => {
     expect(STRIP.stickyBottomBar).toContain("bg-background/98");
     expect(STRIP.stickyBottomBar).toContain("border-t");
+  });
+});
+
+describe("CARD media tokens", () => {
+  it("defines shared overlay and hover primitives", () => {
+    expect(CARD.mediaOverlay).toContain("from-charcoal/75");
+    expect(CARD.mediaOverlayLight).toContain("from-charcoal/60");
+    expect(CARD.heroOverlay).toContain("from-charcoal/75");
+    expect(MEDIA.hoverImage).toContain("scale-[1.02]");
+    expect(MEDIA.hoverImage).toContain("motion-reduce");
+  });
+});
+
+describe("BADGE tokens", () => {
+  it("defines pill and chip shapes for card badges", () => {
+    expect(BADGE.pill).toBe("rounded-full");
+    expect(BADGE.chip).toContain("rounded-md");
+    expect(BADGE.chip).toContain("backdrop-blur-sm");
   });
 });
 

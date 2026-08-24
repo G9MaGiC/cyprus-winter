@@ -19,7 +19,7 @@
 | Golden | Accent on dark (hero, nav) |
 | Sage | Trails, tips, meta |
 
-Source: [`src/lib/design-tokens.ts`](../src/lib/design-tokens.ts), [`src/app/globals.css`](../src/app/globals.css).
+Source: [`src/lib/brand-colors.ts`](../src/lib/brand-colors.ts) (canonical hex), [`src/lib/design-tokens.ts`](../src/lib/design-tokens.ts), [`src/app/globals.css`](../src/app/globals.css) (CSS vars — guarded by `brand-colors.test.ts`).
 
 ### Typography
 
@@ -64,7 +64,7 @@ Full contract: [`docs/MOTION.md`](./MOTION.md).
 
 | Dimension | Grade | Notes |
 |-----------|-------|-------|
-| Design system | A | Tokens + UX_PATTERNS + CI guards |
+| Design system | A | Tokens + UX_PATTERNS + CI guards; `MEDIA`/`BADGE` card primitives (Phase B) |
 | Touch / thumb | A- | 44px, bottom chrome math |
 | Motion restraint | A | No gratuitous animation |
 | Motion delight | B | Discover reveal; home static until BUG-247 |

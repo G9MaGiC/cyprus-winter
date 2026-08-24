@@ -6,7 +6,7 @@ import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
 import { getAttractionImage } from "@/lib/cyprus-images";
-import { CARD, CTA, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, TYPE, MEDIA, BADGE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { Plus } from "lucide-react";
@@ -73,24 +73,24 @@ export default function AttractionCard({
             src={getAttractionImage(a.id, a.type)}
             alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
             fill
-            className="object-cover group-hover:scale-[1.03] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out"
+            className={MEDIA.hoverImage}
             sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
           />
           <div className={CARD.mediaOverlay} aria-hidden />
           <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-2">
             <span
-              className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}
+              className={`${BADGE.base} ${BADGE.pill} capitalize ${badge}`}
             >
               {badgeLabel}
             </span>
             {isSustainable && (
-              <span className="max-[360px]:hidden px-2.5 py-1 rounded-full text-xs font-medium bg-sage/20 text-olive/80">
+              <span className={`${BADGE.base} ${BADGE.pill} bg-sage/20 text-olive/80`}>
                 {tCommon("local")}
               </span>
             )}
             {isWinery && (a as Winery).isVerified && (
               <span
-                className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean"
+                className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}
                 title={tCommon("verifiedPartnerTitle")}
               >
                 {tCommon("verifiedPartner")}

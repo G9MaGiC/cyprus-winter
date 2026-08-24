@@ -1,6 +1,6 @@
 "use client";
 
-import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { HOME, LAYOUT, TYPE } from "@/lib/design-tokens";
 import SearchBar from "@/components/SearchBar";
 
 export type HomeSearchSectionViewProps = {
@@ -17,7 +17,7 @@ export default function HomeSearchSectionView({
   return (
     <section
       aria-labelledby="home-search-heading"
-      className={`${LAYOUT.safeAreaX} ${SECTION.pySub} bg-background`}
+      className={`${LAYOUT.safeAreaX} ${HOME.sectionPySub} bg-background`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2 id="home-search-heading" className="sr-only">

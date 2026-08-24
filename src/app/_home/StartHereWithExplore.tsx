@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { CARD, CTA, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, HOME, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type StartHereItem = {
@@ -74,11 +74,11 @@ export default function StartHereWithExplore() {
     <section
       id="start-here"
       aria-labelledby="start-here-explore-heading"
-      className={`${LAYOUT.safeAreaX} ${SECTION.py} ${SECTION.alt} scroll-mt-24`}
+      className={`${LAYOUT.safeAreaX} ${HOME.sectionPy} ${SECTION.alt} scroll-mt-24`}
     >
       <div className={`${LAYOUT.list} mx-auto`}>
-        <header className="text-center mb-8 sm:mb-10">
-          <p className="text-sm text-olive/80 mb-4">{tHome("startHere.prompt")}</p>
+        <header className={`text-center ${HOME.headerMargin}`}>
+          <p className="text-sm text-olive/80 mb-3 sm:mb-4">{tHome("startHere.prompt")}</p>
           <p className={`${TYPE.kicker} text-sage mb-2`}>{tHome("startHere.primaryPath")}</p>
           <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             {tHome("startHere.title")}
@@ -88,7 +88,7 @@ export default function StartHereWithExplore() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
+        <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap} ${HOME.headerMargin}`}>
           {startItems.map((item) =>
             item.id === "book" ? (
               <div
@@ -146,7 +146,7 @@ export default function StartHereWithExplore() {
           )}
         </div>
 
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-4 sm:mb-8">
           <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>{tHome("startHere.browseByCategory")}</p>
           <div className="relative">
             <div

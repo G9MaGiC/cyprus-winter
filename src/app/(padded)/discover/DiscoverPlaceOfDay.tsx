@@ -4,7 +4,7 @@ import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import NavigateButton from "@/components/NavigateButton";
-import { CARD, LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, LAYOUT, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import { getPlaceById } from "@/data";
 import { allDiscoverItems } from "@/data/discover";
 import { getDiscoverPlaceOfDayPicks } from "@/lib/discover-place-of-day";
@@ -55,13 +55,10 @@ function PlaceOfDayCard({
           src={place.image}
           alt={place.imageAlt}
           fill
-          className="object-cover group-hover:scale-[1.02] motion-reduce:group-hover:scale-100 transition-transform duration-300 ease-out"
+          className={MEDIA.hoverImage}
           sizes="(max-width: 640px) 100vw, 40vw"
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent pointer-events-none"
-          aria-hidden
-        />
+        <div className={CARD.mediaOverlay} aria-hidden />
         <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
           {overlay}
         </span>

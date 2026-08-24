@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
-import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, SECTION, TYPE, MEDIA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import type { LocalizedFeaturedWinery } from "@/app/_home/home-featured-wineries-data";
 import { wineries } from "@/data/wineries";
@@ -41,13 +41,10 @@ export default function BookTastingsView({ featured }: Props) {
                 src={w.image}
                 alt={w.imageAlt}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className={MEDIA.hoverImage}
                 sizes="(max-width: 640px) 100vw, 33vw"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
-                aria-hidden
-              />
+              <div className={CARD.mediaOverlayLight} aria-hidden />
             </div>
             <div className={`${CARD.content} min-h-[120px]`}>
               <p className={`${TYPE.kicker} mb-2`}>{tCommon("bookTastings")}</p>

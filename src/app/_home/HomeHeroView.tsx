@@ -68,9 +68,9 @@ export default function HomeHeroView({
           <p className="text-base sm:text-lg text-white/90 max-w-xl mx-auto font-light prose-intro text-balance mb-1">
             {headline}
           </p>
-          <p className="text-sm text-white/80 max-w-lg mx-auto mb-5">{seasonalLine}</p>
+          <p className="text-sm text-white/80 max-w-lg mx-auto mb-4 sm:mb-5">{seasonalLine}</p>
 
-          <p className="text-xs sm:text-sm text-center text-white/70 max-w-lg mx-auto mb-5 leading-relaxed">
+          <p className="text-xs sm:text-sm text-center text-white/70 max-w-lg mx-auto mb-4 sm:mb-5 leading-relaxed">
             <AppLink
               href="/discover?filter=family"
               className="text-white/95 underline decoration-white/35 underline-offset-2 hover:decoration-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20 rounded-sm"

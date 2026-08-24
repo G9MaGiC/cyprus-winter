@@ -3,7 +3,7 @@
 import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { CARD, TYPE } from "@/lib/design-tokens";
+import { CARD, TYPE, MEDIA } from "@/lib/design-tokens";
 import { isDiscoveryBadgeCode } from "@/lib/right-now-badges";
 import { useTranslations } from "next-intl";
 
@@ -68,13 +68,10 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
             src={item.image}
             alt=""
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className={MEDIA.hoverImage}
             sizes="80px 80px, (max-width: 640px) 80px, 50vw"
           />
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent sm:from-charcoal/60"
-            aria-hidden
-          />
+          <div className={CARD.mediaOverlayCompact} aria-hidden />
           <span
             className="absolute bottom-1 left-1 right-1 text-white text-xs font-medium truncate drop-shadow-sm sm:bottom-2 sm:left-2 sm:right-2"
             title={badge}
