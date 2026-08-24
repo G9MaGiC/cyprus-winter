@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { guides } from "@/data/guides";
 import GuidePartnerMeta from "@/components/guides/GuidePartnerMeta";
-import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, HOME, TYPE, SECTION, BADGE } from "@/lib/design-tokens";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -75,20 +75,20 @@ export default async function GuidesListPage() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {guides.map((guide) => {
           const trailNames = getTrailNames(guide);
           return (
             <div
               key={guide.id}
-              className={`${CARD.base} ${CARD.content} ${CARD.hover} rounded-xl overflow-hidden flex flex-col`}
+              className={`${CARD.base} ${CARD.content} ${CARD.hover} ${CARD.interactive} flex flex-col`}
             >
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
+                <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                   {tCommon("guidedHike")}
                 </span>
                 {guide.isVerified && (
-                  <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-aegean/20 text-aegean">
+                  <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                     {tCommon("verifiedPartner")}
                   </span>
                 )}

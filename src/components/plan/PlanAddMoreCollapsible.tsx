@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { HUB } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 import { useMatchMedia } from "@/hooks/useMatchMedia";
 
@@ -21,7 +22,7 @@ export default function PlanAddMoreCollapsible({
   const tPlan = useTranslations("plan");
 
   if (!hasContent || mdUp) {
-    return <div className="flex flex-col gap-12 sm:gap-16 md:gap-20">{children}</div>;
+    return <div className={`flex flex-col ${HUB.shellGap}`}>{children}</div>;
   }
 
   return (
@@ -36,7 +37,7 @@ export default function PlanAddMoreCollapsible({
           aria-hidden
         />
       </summary>
-      <div className="border-t border-sand-200/60 px-3 pb-6 pt-4 sm:px-5 flex flex-col gap-12 sm:gap-16">
+      <div className={`border-t border-sand-200/60 px-3 pb-6 pt-4 sm:px-5 flex flex-col ${HUB.shellGap}`}>
         {children}
       </div>
     </details>
