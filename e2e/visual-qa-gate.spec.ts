@@ -89,6 +89,26 @@ test.describe("Visual QA gate", () => {
       expect(box).not.toBeNull();
       expect(box!.height).toBeGreaterThanOrEqual(44);
     });
+
+    test("/book/winery/tsiakkas — hero image loads (photography trust)", async ({ page }) => {
+      await gotoAndSettle(page, "/book/winery/tsiakkas");
+      const hero = page.locator("main img").first();
+      await expect(hero).toBeVisible({ timeout: 15_000 });
+      await expect(async () => {
+        const width = await hero.evaluate((img: HTMLImageElement) => img.naturalWidth);
+        expect(width).toBeGreaterThan(0);
+      }).toPass({ timeout: 10_000 });
+    });
+
+    test("/discover/tsiakkas — card hero image loads", async ({ page }) => {
+      await gotoAndSettle(page, "/discover/tsiakkas");
+      const hero = page.locator("main img").first();
+      await expect(hero).toBeVisible({ timeout: 15_000 });
+      await expect(async () => {
+        const width = await hero.evaluate((img: HTMLImageElement) => img.naturalWidth);
+        expect(width).toBeGreaterThan(0);
+      }).toPass({ timeout: 10_000 });
+    });
   });
 
   test.describe("@768px LTR", () => {

@@ -203,6 +203,22 @@ describe("home state-aware discovery sections", () => {
   });
 });
 
+describe("photography trust (Phase F)", () => {
+  it("defines trust helpers and gates home/book editorial surfaces", () => {
+    const mod = readFileSync("src/lib/photography-trust.ts", "utf8");
+    const spec = readFileSync("src/lib/photography-trust.test.ts", "utf8");
+    expect(mod).toContain("isTrustedWineryHero");
+    expect(mod).toContain("OMODOS_TASTING_IMAGE");
+    expect(spec).toContain("homeFeaturedWineries");
+    expect(spec).toContain("homeEditorsPicks");
+  });
+
+  it("wires photography-trust into images:validate", () => {
+    const pkg = readFileSync("package.json", "utf8");
+    expect(pkg).toContain("photography-trust.test.ts");
+  });
+});
+
 describe("visual QA gate (Phase E)", () => {
   it("defines viewport helpers and gate spec for 375/768/RTL", () => {
     const helper = readFileSync("e2e/helpers/visual-qa.ts", "utf8");
