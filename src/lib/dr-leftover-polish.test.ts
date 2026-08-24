@@ -203,6 +203,29 @@ describe("home state-aware discovery sections", () => {
   });
 });
 
+describe("chrome token adoption (Phase D)", () => {
+  it("SearchBar uses SEARCH tokens for input and panels", () => {
+    const bar = readFileSync("src/components/SearchBar.tsx", "utf8");
+    expect(bar).toContain("SEARCH.input");
+    expect(bar).toContain("SEARCH.panel");
+    expect(bar).toContain("SEARCH.recoveryLink");
+    expect(bar).not.toMatch(/className="w-full min-h-\[44px\] pl-11/);
+  });
+
+  it("AIAssistantTrigger uses AI_TRIGGER and CTA.tertiaryOnDark", () => {
+    const trigger = readFileSync("src/components/AIAssistantTrigger.tsx", "utf8");
+    expect(trigger).toContain("AI_TRIGGER.default");
+    expect(trigger).toContain("CTA.tertiaryOnDark");
+    expect(trigger).toContain("AI_TRIGGER.iconBadge");
+  });
+
+  it("LocationActionButtons uses LOCATION tokens", () => {
+    const loc = readFileSync("src/components/LocationActionButtons.tsx", "utf8");
+    expect(loc).toContain("LOCATION.primary");
+    expect(loc).toContain("LOCATION.secondary");
+  });
+});
+
 describe("home section rhythm", () => {
   it("HomeSection uses HOME.sectionPy instead of ad-hoc padding", () => {
     const section = readFileSync("src/app/_home/HomeSection.tsx", "utf8");
