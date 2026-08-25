@@ -3067,72 +3067,72 @@
   "install": {
     "page": {
       "meta": {
-        "title": "Install on SiteGround | Cyprus Winter",
-        "description": "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup."
+        "title": "Installation sur SiteGround | Cyprus Winter",
+        "description": "Guide pas à pas pour déployer Cyprus Winter sur SiteGround shared hosting. Export statique, téléversement et configuration .htaccess."
       },
       "nav": {
-        "ariaLabel": "Page navigation",
-        "breadcrumbCurrent": "Install",
+        "ariaLabel": "Navigation de page",
+        "breadcrumbCurrent": "Installation",
         "backLabel": "Cyprus Winter"
       },
       "header": {
-        "kicker": "Deployment guide",
-        "title": "Install on SiteGround",
-        "body": "Cyprus Winter runs as static HTML, CSS, and JavaScript. SiteGround shared hosting can serve it directly—no Node.js required."
+        "kicker": "Guide de déploiement",
+        "title": "Installer sur SiteGround",
+        "body": "Cyprus Winter fonctionne en HTML, CSS et JavaScript statiques. SiteGround shared hosting peut le servir directement — Node.js n'est pas requis."
       },
       "requirements": {
-        "title": "Requirements",
+        "title": "Prérequis",
         "items": {
-          "node": "Node.js 18+ (for building locally)",
-          "siteground": "SiteGround shared hosting with cPanel or FTP access",
-          "domain": "Domain pointed to your SiteGround account"
+          "node": "Node.js 18+ (pour compiler en local)",
+          "siteground": "SiteGround shared hosting avec accès cPanel ou FTP",
+          "domain": "Domaine pointé vers votre compte SiteGround"
         }
       },
       "steps": {
-        "title": "Steps",
-        "codeSnippetAria": "Code snippet",
+        "title": "Étapes",
+        "codeSnippetAria": "Extrait de code",
         "items": {
           "s1": {
-            "title": "1. Configure for static export",
-            "body": "Add these to next.config.ts so Next.js generates static HTML instead of a Node server:",
-            "note": "API routes will not work on SiteGround—use Supabase or another backend if needed."
+            "title": "1. Configurer l'export statique",
+            "body": "Ajoutez ceci dans next.config.ts pour que Next.js génère du HTML statique au lieu d'un serveur Node :",
+            "note": "Les routes API ne fonctionnent pas sur SiteGround — utilisez Supabase ou un autre backend si besoin."
           },
           "s2": {
-            "title": "2. Build the static export",
-            "body": "On your computer, ensure Node.js 18+ is installed. Install dependencies and build:",
-            "note": "The build outputs to the out/ folder. SiteGround cannot run Node.js—you deploy static files only."
+            "title": "2. Compiler l'export statique",
+            "body": "Sur votre ordinateur, assurez-vous d'avoir Node.js 18+. Installez les dépendances et compilez :",
+            "note": "La compilation produit le dossier out/. SiteGround ne peut pas exécuter Node.js — vous déployez uniquement des fichiers statiques."
           },
           "s3": {
-            "title": "3. Upload to SiteGround",
-            "body": "Upload the contents of the out/ folder to your site's public_html directory. Use cPanel File Manager, FTP, or SFTP.",
-            "note": "Upload everything inside out/, including the _next folder and index.html. Do not upload the out folder itself—only its contents."
+            "title": "3. Téléverser sur SiteGround",
+            "body": "Téléversez le contenu du dossier out/ dans le répertoire public_html de votre site. Utilisez cPanel File Manager, FTP ou SFTP.",
+            "note": "Téléversez tout le contenu de out/, y compris _next et index.html. Ne téléversez pas le dossier out lui-même — seulement son contenu."
           },
           "s4": {
-            "title": "4. Add .htaccess for routing",
-            "body": "Create a .htaccess file in public_html so direct links (e.g. /trails, /discover) work correctly:",
-            "note": "This sends 404s for missing files to index.html so the app can handle routing. Adjust RewriteBase if the app lives in a subfolder."
+            "title": "4. Ajouter .htaccess pour le routage",
+            "body": "Créez un fichier .htaccess dans public_html pour que les liens directs (ex. /trails, /discover) fonctionnent correctement :",
+            "note": "Cela renvoie les 404 de fichiers manquants vers index.html pour que l'app gère le routage. Ajustez RewriteBase si l'app est dans un sous-dossier."
           },
           "s5": {
-            "title": "5. Verify",
-            "body": "Open your domain in a browser. Check the homepage, trails, and discover pages. Links and images should load."
+            "title": "5. Vérifier",
+            "body": "Ouvrez votre domaine dans un navigateur. Vérifiez l'accueil, les sentiers et Découvrir. Les liens et images doivent se charger."
           }
         }
       },
       "troubleshooting": {
-        "title": "Troubleshooting",
+        "title": "Dépannage",
         "items": {
           "blank": {
-            "label": "Blank page or 404 on refresh:",
-            "body": "Add or fix the .htaccess rewrite rules above."
+            "label": "Page blanche ou 404 au rechargement :",
+            "body": "Ajoutez ou corrigez les règles rewrite .htaccess ci-dessus."
           },
           "images": {
-            "label": "Images not loading:",
+            "label": "Images qui ne se chargent pas :",
             "config": "images.unoptimized: true",
-            "body": "Ensure {config} is set in next.config. Image paths must be correct in the built output."
+            "body": "Assurez-vous que {config} est défini dans next.config. Les chemins d'images doivent être corrects dans la sortie compilée."
           },
           "api": {
-            "label": "API or chat not working:",
-            "body": "SiteGround shared hosting cannot run Next.js API routes. Use Supabase, Vercel serverless, or another backend and point the app to it."
+            "label": "API ou chat ne fonctionne pas :",
+            "body": "SiteGround shared hosting ne peut pas exécuter les routes API Next.js. Utilisez Supabase, Vercel serverless ou un autre backend et pointez l'app vers celui-ci."
           }
         }
       },
@@ -3233,41 +3233,41 @@
   "secrets": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Secrets | Local Tips & Hidden Spots",
-        "description": "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips.",
-        "ogDescription": "Cyprus winter local secrets: quiet spots, kafenions, viewpoints. From people who live here.",
-        "ogAlt": "Cyprus winter local secrets"
+        "title": "Secrets Cyprus Winter | Conseils locaux et spots cachés",
+        "description": "Secrets locaux de Chypre en hiver : coins calmes, angles cachés, kafenions, belvédères. De la part de ceux qui y vivent. À combiner avec sentiers et villages.",
+        "ogDescription": "Secrets locaux de Chypre en hiver : coins calmes, kafenions, belvédères. De la part de ceux qui y vivent.",
+        "ogAlt": "Secrets locaux Cyprus Winter"
       },
       "header": {
-        "title": "Cyprus Winter Local Secrets",
-        "description": "Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place.",
-        "planCta": "Plan your trip"
+        "title": "Secrets locaux Cyprus Winter",
+        "description": "Conseils d'initiés de ceux qui vivent ici. Kafenions, belvédères, horaires, combinaisons. Chaque tip renvoie vers un sentier ou un lieu.",
+        "planCta": "Planifier votre voyage"
       },
       "sr": {
-        "tipsIndex": "Insider tips by region and type"
+        "tipsIndex": "Conseils d'initiés par région et type"
       },
       "empty": {
-        "body": "No secrets added yet.",
-        "ctaDiscover": "Discover places"
+        "body": "Pas encore de secrets ajoutés.",
+        "ctaDiscover": "Découvrir des lieux"
       },
       "card": {
-        "placePrefixTrail": "Trail",
-        "placePrefixPlace": "Place",
-        "goThere": "Go there →"
+        "placePrefixTrail": "Sentier",
+        "placePrefixPlace": "Lieu",
+        "goThere": "Y aller →"
       },
       "footer": {
-        "prefix": "Pair with trails and villages.",
-        "planLink": "Plan your day",
-        "hubBody": "Pair secrets with trails and villages. Add places to your plan—or ask the AI."
+        "prefix": "À combiner avec sentiers et villages.",
+        "planLink": "Planifier votre journée",
+        "hubBody": "Associez secrets, sentiers et villages. Ajoutez des lieux à votre plan — ou demandez à l'IA."
       },
       "aria": {
-        "actions": "Secrets page actions"
+        "actions": "Actions page secrets"
       },
       "types": {
-        "viewpoint": "Viewpoint",
+        "viewpoint": "Belvédère",
         "kafenion": "Kafenion",
-        "timing": "Timing",
-        "pairing": "Pairing",
+        "timing": "Horaire",
+        "pairing": "Combinaison",
         "spot": "Spot"
       }
     }
@@ -3444,63 +3444,63 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "Nature d'hiver à Chypre | Zones humides, forêts et centres d'accueil",
+        "description": "Sites nature officiels Visit Cyprus : lacs salés, centres Troodos, Akamas, cap Gkreko. Observation d'oiseaux, parcs forestiers et sentiers calmes en hiver.",
+        "ogAlt": "Vallée de cèdres, nature d'hiver à Chypre",
+        "schemaName": "Nature d'hiver à Chypre",
+        "schemaDescription": "Sites Visit Cyprus : zones humides, parcs forestiers, centres d'accueil et liens nature hiver."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "Nature à Chypre en hiver",
+        "description": "Lacs salés avec flamants, cèdres du Troodos, centres d'accueil de l'Akamas. Sites officiels Visit Cyprus — nous renvoyons ; vous explorez à votre rythme."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "Planifiez une matinée en zone humide, vérifiez les conditions des sentiers ou demandez au guide. L'hiver, la nature de l'île est à son plus calme.",
+        "trails": "Conditions des sentiers",
+        "cycling": "Vélo d'hiver",
+        "quietPlaces": "Lieux calmes"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "Actions page nature"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
+        "title": "Sites officiels d'intérêt",
+        "intro": "Sites nature du Deputy Ministry of Tourism — centres d'accueil, zones humides et parcs forestiers. Détails complets sur Visit Cyprus.",
+        "officialIndexLink": "Liste complète sur Visit Cyprus",
+        "filterRegion": "Filtrer par région",
+        "allRegions": "Toutes les régions",
         "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "winterPick": "Choix d'hiver",
+        "viewOnVisitCyprus": "Site sur Visit Cyprus",
+        "relatedTrail": "Sentier associé",
+        "relatedPlace": "Notre guide de la région",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
+          "lefkosia": "Lefkosia (Nicosie)",
           "lemesos": "Lemesos (Limassol)",
           "larnaka": "Larnaka (Larnaca)",
           "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "ammochostos": "Ammochostos (Famagouste)",
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "Centre d'accueil",
+          "wetland": "Zone humide",
+          "forest_park": "Parc forestier",
+          "valley": "Vallée",
+          "botanic": "Jardin botanique"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "title": "Sentiers, escalade et oiseaux",
+        "body": "Nous sélectionnons sentiers d'hiver et lieux d'activité dans l'app. Pour topos d'escalade et pages officielles d'ornithologie, utilisez ces partenaires de confiance — pas de scraping, juste des liens.",
+        "trails": "Notre hub sentiers",
+        "cycling": "Vélo d'hiver",
+        "climbing": "Escalade dans Découvrir",
+        "birdwatchingVc": "Observation d'oiseaux (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (topos d'escalade)",
+        "climbingVc": "Escalade (Visit Cyprus)",
+        "trailsVc": "Sentiers nature (Visit Cyprus)"
       }
     }
   }

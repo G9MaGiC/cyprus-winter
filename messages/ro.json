@@ -3067,72 +3067,72 @@
   "install": {
     "page": {
       "meta": {
-        "title": "Install on SiteGround | Cyprus Winter",
-        "description": "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup."
+        "title": "Instalare pe SiteGround | Cyprus Winter",
+        "description": "Instrucțiuni pas cu pas pentru a deploya Cyprus Winter pe SiteGround shared hosting. Export static, upload și configurare .htaccess."
       },
       "nav": {
-        "ariaLabel": "Page navigation",
-        "breadcrumbCurrent": "Install",
+        "ariaLabel": "Navigare pagină",
+        "breadcrumbCurrent": "Instalare",
         "backLabel": "Cyprus Winter"
       },
       "header": {
-        "kicker": "Deployment guide",
-        "title": "Install on SiteGround",
-        "body": "Cyprus Winter runs as static HTML, CSS, and JavaScript. SiteGround shared hosting can serve it directly—no Node.js required."
+        "kicker": "Ghid de deployment",
+        "title": "Instalare pe SiteGround",
+        "body": "Cyprus Winter rulează ca HTML, CSS și JavaScript static. SiteGround shared hosting îl poate servi direct — Node.js nu este necesar."
       },
       "requirements": {
-        "title": "Requirements",
+        "title": "Cerințe",
         "items": {
-          "node": "Node.js 18+ (for building locally)",
-          "siteground": "SiteGround shared hosting with cPanel or FTP access",
-          "domain": "Domain pointed to your SiteGround account"
+          "node": "Node.js 18+ (pentru build local)",
+          "siteground": "SiteGround shared hosting cu acces cPanel sau FTP",
+          "domain": "Domeniu indicat către contul SiteGround"
         }
       },
       "steps": {
-        "title": "Steps",
-        "codeSnippetAria": "Code snippet",
+        "title": "Pași",
+        "codeSnippetAria": "Fragment de cod",
         "items": {
           "s1": {
-            "title": "1. Configure for static export",
-            "body": "Add these to next.config.ts so Next.js generates static HTML instead of a Node server:",
-            "note": "API routes will not work on SiteGround—use Supabase or another backend if needed."
+            "title": "1. Configurare pentru export static",
+            "body": "Adaugă acestea în next.config.ts ca Next.js să genereze HTML static în loc de server Node:",
+            "note": "Rutele API nu funcționează pe SiteGround — folosește Supabase sau alt backend dacă e nevoie."
           },
           "s2": {
-            "title": "2. Build the static export",
-            "body": "On your computer, ensure Node.js 18+ is installed. Install dependencies and build:",
-            "note": "The build outputs to the out/ folder. SiteGround cannot run Node.js—you deploy static files only."
+            "title": "2. Build export static",
+            "body": "Pe computer, asigură-te că ai Node.js 18+. Instalează dependențele și fă build:",
+            "note": "Build-ul iese în folderul out/. SiteGround nu rulează Node.js — deployezi doar fișiere statice."
           },
           "s3": {
-            "title": "3. Upload to SiteGround",
-            "body": "Upload the contents of the out/ folder to your site's public_html directory. Use cPanel File Manager, FTP, or SFTP.",
-            "note": "Upload everything inside out/, including the _next folder and index.html. Do not upload the out folder itself—only its contents."
+            "title": "3. Upload pe SiteGround",
+            "body": "Încarcă conținutul folderului out/ în public_html al site-ului. Folosește cPanel File Manager, FTP sau SFTP.",
+            "note": "Încarcă tot din out/, inclusiv _next și index.html. Nu încărca folderul out — doar conținutul."
           },
           "s4": {
-            "title": "4. Add .htaccess for routing",
-            "body": "Create a .htaccess file in public_html so direct links (e.g. /trails, /discover) work correctly:",
-            "note": "This sends 404s for missing files to index.html so the app can handle routing. Adjust RewriteBase if the app lives in a subfolder."
+            "title": "4. Adaugă .htaccess pentru routing",
+            "body": "Creează un fișier .htaccess în public_html ca linkurile directe (ex. /trails, /discover) să funcționeze corect:",
+            "note": "Trimite 404-urile pentru fișiere lipsă către index.html ca aplicația să gestioneze routing-ul. Ajustează RewriteBase dacă aplicația e într-un subfolder."
           },
           "s5": {
-            "title": "5. Verify",
-            "body": "Open your domain in a browser. Check the homepage, trails, and discover pages. Links and images should load."
+            "title": "5. Verificare",
+            "body": "Deschide domeniul în browser. Verifică homepage, trasee și Descoperă. Linkurile și imaginile ar trebui să se încarce."
           }
         }
       },
       "troubleshooting": {
-        "title": "Troubleshooting",
+        "title": "Depanare",
         "items": {
           "blank": {
-            "label": "Blank page or 404 on refresh:",
-            "body": "Add or fix the .htaccess rewrite rules above."
+            "label": "Pagină goală sau 404 la refresh:",
+            "body": "Adaugă sau corectează regulile rewrite .htaccess de mai sus."
           },
           "images": {
-            "label": "Images not loading:",
+            "label": "Imaginile nu se încarcă:",
             "config": "images.unoptimized: true",
-            "body": "Ensure {config} is set in next.config. Image paths must be correct in the built output."
+            "body": "Asigură-te că {config} este setat în next.config. Căile imaginilor trebuie să fie corecte în output-ul build-ului."
           },
           "api": {
-            "label": "API or chat not working:",
-            "body": "SiteGround shared hosting cannot run Next.js API routes. Use Supabase, Vercel serverless, or another backend and point the app to it."
+            "label": "API sau chat nu funcționează:",
+            "body": "SiteGround shared hosting nu poate rula rute API Next.js. Folosește Supabase, Vercel serverless sau alt backend și direcționează aplicația."
           }
         }
       },
@@ -3233,42 +3233,42 @@
   "secrets": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Secrets | Local Tips & Hidden Spots",
-        "description": "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips.",
-        "ogDescription": "Cyprus winter local secrets: quiet spots, kafenions, viewpoints. From people who live here.",
-        "ogAlt": "Cyprus winter local secrets"
+        "title": "Secrete Cyprus Winter | Sfaturi locale și locuri ascunse",
+        "description": "Secrete locale din Cipru iarna: locuri liniștite, unghiuri ascunse, cafenele, puncte de vedere. De la oameni care trăiesc aici. Combină cu trasee și sate.",
+        "ogDescription": "Secrete locale iarna: locuri liniștite, cafenele, puncte de vedere. De la oameni care trăiesc aici.",
+        "ogAlt": "Secrete locale Cyprus Winter"
       },
       "header": {
-        "title": "Cyprus Winter Local Secrets",
-        "description": "Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place.",
-        "planCta": "Plan your trip"
+        "title": "Secrete locale Cyprus Winter",
+        "description": "Sfaturi de insider de la oameni care trăiesc aici. Cafenele, puncte de vedere, timing, combinații. Fiecare tip leagă un traseu sau loc.",
+        "planCta": "Planifică-ți călătoria"
       },
       "sr": {
-        "tipsIndex": "Insider tips by region and type"
+        "tipsIndex": "Sfaturi insider pe regiune și tip"
       },
       "empty": {
-        "body": "No secrets added yet.",
-        "ctaDiscover": "Discover places"
+        "body": "Niciun secret adăugat încă.",
+        "ctaDiscover": "Descoperă locuri"
       },
       "card": {
-        "placePrefixTrail": "Trail",
-        "placePrefixPlace": "Place",
-        "goThere": "Go there →"
+        "placePrefixTrail": "Traseu",
+        "placePrefixPlace": "Loc",
+        "goThere": "Mergi acolo →"
       },
       "footer": {
-        "prefix": "Pair with trails and villages.",
-        "planLink": "Plan your day",
-        "hubBody": "Pair secrets with trails and villages. Add places to your plan—or ask the AI."
+        "prefix": "Combină cu trasee și sate.",
+        "planLink": "Planifică-ți ziua",
+        "hubBody": "Combină secrete cu trasee și sate. Adaugă locuri în plan — sau întreabă AI-ul."
       },
       "aria": {
-        "actions": "Secrets page actions"
+        "actions": "Acțiuni pagină secrete"
       },
       "types": {
-        "viewpoint": "Viewpoint",
+        "viewpoint": "Punct de vedere",
         "kafenion": "Kafenion",
         "timing": "Timing",
-        "pairing": "Pairing",
-        "spot": "Spot"
+        "pairing": "Combinație",
+        "spot": "Loc"
       }
     }
   },
@@ -3444,36 +3444,36 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "Natură de iarnă în Cipru | Zone umede, păduri și centre de vizitare",
+        "description": "Situri natură oficiale Visit Cyprus: lacuri sărate, centre Troodos, Akamas, capul Gkreko. Birdwatching, parcuri forestiere și trasee liniștite iarna.",
+        "ogAlt": "Vale cu cedri, natură de iarnă în Cipru",
+        "schemaName": "Natură de iarnă în Cipru",
+        "schemaDescription": "Situri Visit Cyprus: zone umede, parcuri forestiere, centre de vizitare și legături natură iarnă."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "Natură în Cipru iarna",
+        "description": "Lacuri sărate cu flamingo, cedri Troodos, centre de vizitare Akamas. Situri oficiale Visit Cyprus — noi trimitem; tu explorezi în ritmul tău."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "Planifică o dimineață în zona umedă, verifică condițiile traseelor sau întreabă ghidul. Iarna, natura insulei e la cel mai calm.",
+        "trails": "Condiții trasee",
+        "cycling": "Ciclism de iarnă",
+        "quietPlaces": "Locuri liniștite"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "Acțiuni pagină natură"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "title": "Situri oficiale de interes",
+        "intro": "Situri natură Deputy Ministry of Tourism — centre de vizitare, zone umede și parcuri forestiere. Detalii complete pe Visit Cyprus.",
+        "officialIndexLink": "Listă completă pe Visit Cyprus",
+        "filterRegion": "Filtrează după regiune",
+        "allRegions": "Toate regiunile",
+        "resultCount": "{count} situri",
+        "winterPick": "Alegere de iarnă",
+        "viewOnVisitCyprus": "Sit pe Visit Cyprus",
+        "relatedTrail": "Traseu asociat",
+        "relatedPlace": "Ghidul nostru pentru zonă",
         "regions": {
           "lefkosia": "Lefkosia (Nicosia)",
           "lemesos": "Lemesos (Limassol)",
@@ -3483,24 +3483,24 @@
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "Centru de vizitare",
+          "wetland": "Zonă umedă",
+          "forest_park": "Parc forestier",
+          "valley": "Vale",
+          "botanic": "Grădină botanică"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
+        "title": "Trasee, escaladă și păsări",
+        "body": "Selectăm trasee de iarnă și locuri de activitate în app. Pentru topo-uri de escaladă și pagini oficiale de birdwatching, folosește acești parteneri de încredere — fără scraping, doar linkuri.",
+        "trails": "Hub-ul nostru de trasee",
+        "cycling": "Ciclism de iarnă",
+        "climbing": "Escaladă în Descoperă",
         "birdwatchingVc": "Birdwatching (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (topo-uri escaladă)",
+        "climbingVc": "Escaladă (Visit Cyprus)",
+        "trailsVc": "Trasee natură (Visit Cyprus)"
       }
     }
   }

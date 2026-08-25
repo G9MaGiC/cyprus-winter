@@ -3067,77 +3067,77 @@
   "install": {
     "page": {
       "meta": {
-        "title": "Install on SiteGround | Cyprus Winter",
-        "description": "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup."
+        "title": "התקנה ב-SiteGround | Cyprus Winter",
+        "description": "הוראות שלב-אחר-שלב לפריסת Cyprus Winter על SiteGround shared hosting. ייצוא סטטי, העלאה והגדרת .htaccess."
       },
       "nav": {
-        "ariaLabel": "Page navigation",
-        "breadcrumbCurrent": "Install",
+        "ariaLabel": "ניווט בדף",
+        "breadcrumbCurrent": "התקנה",
         "backLabel": "Cyprus Winter"
       },
       "header": {
-        "kicker": "Deployment guide",
-        "title": "Install on SiteGround",
-        "body": "Cyprus Winter runs as static HTML, CSS, and JavaScript. SiteGround shared hosting can serve it directly—no Node.js required."
+        "kicker": "מדריך פריסה",
+        "title": "התקנה ב-SiteGround",
+        "body": "Cyprus Winter פועל כ-HTML, CSS ו-JavaScript סטטיים. SiteGround shared hosting יכול להגיש זאת ישירות — לא נדרש Node.js."
       },
       "requirements": {
-        "title": "Requirements",
+        "title": "דרישות",
         "items": {
-          "node": "Node.js 18+ (for building locally)",
-          "siteground": "SiteGround shared hosting with cPanel or FTP access",
-          "domain": "Domain pointed to your SiteGround account"
+          "node": "Node.js 18+ (לבנייה מקומית)",
+          "siteground": "SiteGround shared hosting עם גישה ל-cPanel או FTP",
+          "domain": "דומיין מצביע לחשבון SiteGround שלכם"
         }
       },
       "steps": {
-        "title": "Steps",
-        "codeSnippetAria": "Code snippet",
+        "title": "שלבים",
+        "codeSnippetAria": "קטע קוד",
         "items": {
           "s1": {
-            "title": "1. Configure for static export",
-            "body": "Add these to next.config.ts so Next.js generates static HTML instead of a Node server:",
-            "note": "API routes will not work on SiteGround—use Supabase or another backend if needed."
+            "title": "1. הגדרה לייצוא סטטי",
+            "body": "הוסיפו את אלה ל-next.config.ts כדי ש-Next.js ייצור HTML סטטי במקום שרת Node:",
+            "note": "נתיבי API לא יעבדו ב-SiteGround — השתמשו ב-Supabase או backend אחר במידת הצורך."
           },
           "s2": {
-            "title": "2. Build the static export",
-            "body": "On your computer, ensure Node.js 18+ is installed. Install dependencies and build:",
-            "note": "The build outputs to the out/ folder. SiteGround cannot run Node.js—you deploy static files only."
+            "title": "2. בניית הייצוא הסטטי",
+            "body": "במחשב שלכם, ודאו ש-Node.js 18+ מותקן. התקינו תלויות ובנו:",
+            "note": "ה-build יוצא לתיקיית out/. SiteGround לא מריץ Node.js — מעלים רק קבצים סטטיים."
           },
           "s3": {
-            "title": "3. Upload to SiteGround",
-            "body": "Upload the contents of the out/ folder to your site's public_html directory. Use cPanel File Manager, FTP, or SFTP.",
-            "note": "Upload everything inside out/, including the _next folder and index.html. Do not upload the out folder itself—only its contents."
+            "title": "3. העלאה ל-SiteGround",
+            "body": "העלו את תוכן תיקיית out/ ל-public_html של האתר. השתמשו ב-cPanel File Manager, FTP או SFTP.",
+            "note": "העלו הכל מתוך out/, כולל _next ו-index.html. אל תעלו את תיקיית out עצמה — רק את תוכנה."
           },
           "s4": {
-            "title": "4. Add .htaccess for routing",
-            "body": "Create a .htaccess file in public_html so direct links (e.g. /trails, /discover) work correctly:",
-            "note": "This sends 404s for missing files to index.html so the app can handle routing. Adjust RewriteBase if the app lives in a subfolder."
+            "title": "4. הוספת .htaccess לניתוב",
+            "body": "צרו קובץ .htaccess ב-public_html כדי שקישורים ישירים (למשל /trails, /discover) יעבדו נכון:",
+            "note": "זה שולח 404 של קבצים חסרים ל-index.html כדי שהאפליקציה תטפל בניתוב. התאימו RewriteBase אם האפליקציה בתת-תיקייה."
           },
           "s5": {
-            "title": "5. Verify",
-            "body": "Open your domain in a browser. Check the homepage, trails, and discover pages. Links and images should load."
+            "title": "5. אימות",
+            "body": "פתחו את הדומיין בדפדפן. בדקו דף הבית, שבילים וגילוי. קישורים ותמונות צריכים להיטען."
           }
         }
       },
       "troubleshooting": {
-        "title": "Troubleshooting",
+        "title": "פתרון בעיות",
         "items": {
           "blank": {
-            "label": "Blank page or 404 on refresh:",
-            "body": "Add or fix the .htaccess rewrite rules above."
+            "label": "דף ריק או 404 ברענון:",
+            "body": "הוסיפו או תקנו את כללי rewrite של .htaccess למעלה."
           },
           "images": {
-            "label": "Images not loading:",
+            "label": "תמונות לא נטענות:",
             "config": "images.unoptimized: true",
-            "body": "Ensure {config} is set in next.config. Image paths must be correct in the built output."
+            "body": "ודאו ש-{config} מוגדר ב-next.config. נתיבי תמונות חייבים להיות נכונים בפלט ה-build."
           },
           "api": {
-            "label": "API or chat not working:",
-            "body": "SiteGround shared hosting cannot run Next.js API routes. Use Supabase, Vercel serverless, or another backend and point the app to it."
+            "label": "API או צ'אט לא עובד:",
+            "body": "SiteGround shared hosting לא יכול להריץ נתיבי API של Next.js. השתמשו ב-Supabase, Vercel serverless או backend אחר והפנו את האפליקציה אליו."
           }
         }
       },
       "footer": {
-        "backToAppLabel": "app"
+        "backToAppLabel": "אפליקציה"
       }
     }
   },
@@ -3233,42 +3233,42 @@
   "secrets": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Secrets | Local Tips & Hidden Spots",
-        "description": "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips.",
-        "ogDescription": "Cyprus winter local secrets: quiet spots, kafenions, viewpoints. From people who live here.",
-        "ogAlt": "Cyprus winter local secrets"
+        "title": "סודות Cyprus Winter | טיפים מקומיים ומקומות נסתרים",
+        "description": "סודות מקומיים של קפריסין בחורף: מקומות שקטים, זוויות נסתרות, בתי קפה מקומיים, נקודות תצפית. מאנשים שחיים כאן. שלבו עם שבילים וכפרים.",
+        "ogDescription": "סודות מקומיים בחורף: מקומות שקטים, בתי קפה מקומיים, נקודות תצפית. מאנשים שחיים כאן.",
+        "ogAlt": "סודות מקומיים Cyprus Winter"
       },
       "header": {
-        "title": "Cyprus Winter Local Secrets",
-        "description": "Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place.",
-        "planCta": "Plan your trip"
+        "title": "סודות מקומיים Cyprus Winter",
+        "description": "טיפים מבפנים מאנשים שחיים כאן. בתי קפה מקומיים, נקודות תצפית, תזמון, שילובים. כל טיפ מקשר לשביל או מקום.",
+        "planCta": "תכננו את הטיול"
       },
       "sr": {
-        "tipsIndex": "Insider tips by region and type"
+        "tipsIndex": "טיפים מבפנים לפי אזור וסוג"
       },
       "empty": {
-        "body": "No secrets added yet.",
-        "ctaDiscover": "Discover places"
+        "body": "עדיין לא נוספו סודות.",
+        "ctaDiscover": "גלו מקומות"
       },
       "card": {
-        "placePrefixTrail": "Trail",
-        "placePrefixPlace": "Place",
-        "goThere": "Go there →"
+        "placePrefixTrail": "שביל",
+        "placePrefixPlace": "מקום",
+        "goThere": "לשם →"
       },
       "footer": {
-        "prefix": "Pair with trails and villages.",
-        "planLink": "Plan your day",
-        "hubBody": "Pair secrets with trails and villages. Add places to your plan—or ask the AI."
+        "prefix": "שלבו עם שבילים וכפרים.",
+        "planLink": "תכננו את היום",
+        "hubBody": "שלבו סודות עם שבילים וכפרים. הוסיפו מקומות לתוכנית — או שאלו את ה-AI."
       },
       "aria": {
-        "actions": "Secrets page actions"
+        "actions": "פעולות דף הסודות"
       },
       "types": {
-        "viewpoint": "Viewpoint",
+        "viewpoint": "נקודת תצפית",
         "kafenion": "Kafenion",
-        "timing": "Timing",
-        "pairing": "Pairing",
-        "spot": "Spot"
+        "timing": "תזמון",
+        "pairing": "שילוב",
+        "spot": "מקום"
       }
     }
   },
@@ -3444,63 +3444,63 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "טבע בקפריסין בחורף | ביצות, יערות ומרכזי מבקרים",
+        "description": "אתרי טבע רשמיים של Visit Cyprus: אגמי מלח, מרכזי טרודוס, אקאמאס, כף Gkreko. צפייה בציפורים, פארקי יער ושבילים שקטים בחורף.",
+        "ogAlt": "עמק ארזים, טבע חורף בקפריסין",
+        "schemaName": "טבע חורף בקפריסין",
+        "schemaDescription": "אתרי Visit Cyprus: ביצות, פארקי יער, מרכזי מבקרים וקישורי טבע חורף."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "טבע בקפריסין בחורף",
+        "description": "אגמי מלח עם פלמינגו, ארזי טרודוס, מרכזי מבקרים באקאמאס. אתרים רשמיים מ-Visit Cyprus — אנחנו מקשרים; אתם חוקרים בקצב שלכם."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "תכננו בוקר בביצה, בדקו תנאי שבילים או שאלו את המדריך. החורף הוא כשטבע האי הכי שקט.",
+        "trails": "תנאי שבילים",
+        "cycling": "רכיבת חורף",
+        "quietPlaces": "מקומות שקטים"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "פעולות דף הטבע"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "title": "אתרים רשמיים לביקור",
+        "intro": "אתרי טבע של Deputy Ministry of Tourism — מרכזי מבקרים, ביצות ופארקי יער. פרטים מלאים ב-Visit Cyprus.",
+        "officialIndexLink": "רשימה מלאה ב-Visit Cyprus",
+        "filterRegion": "סינון לפי אזור",
+        "allRegions": "כל האזורים",
+        "resultCount": "{count} אתרים",
+        "winterPick": "בחירת חורף",
+        "viewOnVisitCyprus": "אתר ב-Visit Cyprus",
+        "relatedTrail": "שביל קשור",
+        "relatedPlace": "המדריך שלנו לאזור",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Lefkosia (ניקוסיה)",
+          "lemesos": "Lemesos (לימסול)",
+          "larnaka": "Larnaka (לרנקה)",
+          "pafos": "Pafos (פאפוס)",
+          "ammochostos": "Ammochostos (עמוחוסט)",
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "מרכז מבקרים",
+          "wetland": "ביצה",
+          "forest_park": "פארק יער",
+          "valley": "עמק",
+          "botanic": "גן בוטני"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "title": "שבילים, טיפוס וציפורים",
+        "body": "אנחנו בוחרים שבילי חורף ומקומות פעילות באפליקציה. לטופואים של טיפוס ודפי צפייה בציפורים רשמיים, השתמשו בשותפים מהימנים — בלי scraping, רק קישורים.",
+        "trails": "מרכז השבילים שלנו",
+        "cycling": "רכיבת חורף",
+        "climbing": "טיפוס ב-Discover",
+        "birdwatchingVc": "צפייה בציפורים (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (טופואים)",
+        "climbingVc": "טיפוס (Visit Cyprus)",
+        "trailsVc": "שבילי טבע (Visit Cyprus)"
       }
     }
   }
