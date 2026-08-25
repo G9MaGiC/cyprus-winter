@@ -2468,90 +2468,90 @@
   "weather": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Weather by Month | Coast & Troodos",
-        "description": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
-        "ogImageAlt": "Cyprus winter weather guide"
+        "title": "Météo hiver Chypre mois par mois | Côte & Troodos",
+        "description": "Météo hivernale à Chypre mois par mois : côte 18–20°C, Troodos 8–12°C. Prévoyez des couches, sentiers et domaines. Novembre à avril. Seize degrés quand il en fait six chez vous.",
+        "ogDescription": "Météo hivernale à Chypre mois par mois : côte 18–20°C, Troodos 8–12°C. Prévoyez des couches, sentiers et domaines.",
+        "ogImageAlt": "Guide météo hiver Chypre"
       },
-      "title": "Cyprus Winter Weather by Month",
-      "description": "Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries.",
+      "title": "Météo hiver Chypre mois par mois",
+      "description": "Températures côte et Troodos, mois par mois. Prévoyez des couches, sentiers et domaines.",
       "table": {
-        "month": "Month",
-        "coast": "Coast (°C)",
+        "month": "Mois",
+        "coast": "Côte (°C)",
         "coastConditions": "Conditions",
         "troodos": "Troodos (°C)",
         "troodosConditions": "Conditions"
       },
       "mobile": {
-        "details": "Details →"
+        "details": "Détails →"
       },
       "hero": {
-        "kicker": "Winter planning",
-        "heading": "Choose your month, then browse what fits",
-        "body": "Coast and Troodos temperatures shift through winter. Pick a month to see the conditions and events, then use Right now near you to adapt your day."
+        "kicker": "Planification hivernale",
+        "heading": "Choisissez votre mois, puis parcourez ce qui convient",
+        "body": "Les températures côte et Troodos évoluent tout l'hiver. Choisissez un mois pour voir conditions et événements, puis utilisez Autour de vous maintenant pour adapter votre journée."
       },
       "monthSelector": {
-        "aria": "Choose a month"
+        "aria": "Choisir un mois"
       },
       "gateway": {
-        "heading": "Browse winter ideas",
-        "monasteries": "Monasteries"
+        "heading": "Parcourir les idées d'hiver",
+        "monasteries": "Monastères"
       },
       "body": {
-        "coastTroodos": "Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.",
-        "linkTrails": "Check trail conditions",
-        "linkTrailsSuffix": "before heading up.",
-        "linkWineries": "Winter wineries",
-        "linkWineriesSuffix": "— fireside tastings, book ahead."
+        "coastTroodos": "La côte, c'est Larnaca, Limassol, Paphos — des hivers méditerranéens doux. Troodos, ce sont les montagnes : villages comme Platres et Omodos, et la station de ski sur l'Olympus. Prévoyez des couches ; l'écart entre côte et montagne peut dépasser 10°C.",
+        "linkTrails": "Vérifier les conditions des sentiers",
+        "linkTrailsSuffix": "avant de monter.",
+        "linkWineries": "Domaines d'hiver",
+        "linkWineriesSuffix": "— dégustations au coin du feu, réservez à l'avance."
       },
       "footer": {
-        "hubBody": "Pick a month, then build a day around the weather—trails, villages, and tastings.",
-        "trails": "Trail conditions",
-        "events": "Winter events"
+        "hubBody": "Choisissez un mois, puis construisez une journée selon la météo — sentiers, villages et dégustations.",
+        "trails": "Conditions des sentiers",
+        "events": "Événements d'hiver"
       },
       "aria": {
-        "actions": "Weather page actions"
+        "actions": "Actions page météo"
       }
     },
     "month": {
-      "pageHeaderTitle": "Cyprus Winter Weather: {month}",
-      "pageHeaderDescription": "Coast {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
+      "pageHeaderTitle": "Météo hiver Chypre : {month}",
+      "pageHeaderDescription": "Côte {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
-        "title": "Cyprus Winter Weather {month} | Coast & Troodos",
-        "description": "Cyprus winter weather {month}: coast {coastRange}, Troodos {troodosRange}. {coastDesc} Plan trails, wineries, and winter events.",
-        "notFoundTitle": "Weather not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
-        "ogImageAlt": "Cyprus winter coast—{month} weather"
+        "title": "Météo hiver Chypre {month} | Côte & Troodos",
+        "description": "Météo hivernale Chypre {month} : côte {coastRange}, Troodos {troodosRange}. {coastDesc} Planifiez sentiers, domaines et événements d'hiver.",
+        "notFoundTitle": "Météo introuvable | Cyprus Winter",
+        "notFoundDescription": "Météo hivernale Chypre par mois : décembre, janvier, février, mars. Températures côte et Troodos.",
+        "ogImageAlt": "Côte Chypre en hiver — météo {month}"
       },
       "hero": {
-        "kicker": "This month",
-        "heading": "{month} in Cyprus Winter",
-        "body": "Coast sits around {coastMid}°C and Troodos around {troodosMid}°C. Plan layers, then browse the winter picks below."
+        "kicker": "Ce mois-ci",
+        "heading": "{month} dans Cyprus Winter",
+        "body": "La côte avoisine {coastMid}°C et Troodos environ {troodosMid}°C. Prévoyez des couches, puis parcourez les sélections d'hiver ci-dessous."
       },
       "monthJump": {
-        "aria": "Jump to another month"
+        "aria": "Aller à un autre mois"
       },
       "gateway": {
-        "monasteries": "Monasteries"
+        "monasteries": "Monastères"
       },
       "monthDiscovery": {
-        "heading": "Browse what fits {month}"
+        "heading": "Parcourir ce qui convient en {month}"
       },
-      "conditionsHeading": "What to expect",
-      "conditionsCoastTitle": "Coast (Larnaca, Limassol, Paphos)",
-      "conditionsTroodosTitle": "Troodos (mountains, villages)",
-      "eventsHeading": "Winter events in {month}",
+      "conditionsHeading": "À quoi s'attendre",
+      "conditionsCoastTitle": "Côte (Larnaca, Limassol, Paphos)",
+      "conditionsTroodosTitle": "Troodos (montagnes, villages)",
+      "eventsHeading": "Événements d'hiver en {month}",
       "cta": {
-        "trailConditions": "Trail conditions",
-        "winterWineries": "Winter wineries"
+        "trailConditions": "Conditions des sentiers",
+        "winterWineries": "Domaines d'hiver"
       },
       "footer": {
-        "allMonths": "All months",
-        "troodosWinter": "Troodos winter",
-        "hubBody": "Build a day around this month's weather—trails, tastings, and events—or ask the AI."
+        "allMonths": "Tous les mois",
+        "troodosWinter": "Troodos en hiver",
+        "hubBody": "Construisez une journée selon la météo de ce mois — sentiers, dégustations et événements — ou demandez à l'IA."
       },
       "aria": {
-        "actions": "Weather month page actions"
+        "actions": "Actions page météo du mois"
       }
     }
   },
@@ -3006,61 +3006,61 @@
     },
     "directory": {
       "meta": {
-        "title": "Licensed Tourist Guides | Cyprus Winter",
-        "description": "Official Cyprus licensed tourist guides by district and language. Deputy Ministry of Tourism list — contact guides directly. Verified hiking partners available to book in-app."
+        "title": "Guides touristiques agréés | Cyprus Winter",
+        "description": "Guides touristiques agréés officiels de Chypre par district et langue. Liste du Vice-ministère du Tourisme — contactez les guides directement. Partenaires randonnée vérifiés réservables dans l'app."
       },
-      "title": "Licensed tourist guides",
-      "breadcrumb": "Licensed guides",
-      "pageNavAria": "Licensed guides directory",
-      "intro": "{count} licensed guides from the official Visit Cyprus list (Aug 2026). Contact them directly — or book a verified winter hiking partner in-app.",
-      "verifiedPartnersLink": "Book verified hiking partners →",
-      "disclaimer": "Licensed tourist guides registered with the Cyprus Deputy Ministry of Tourism. Cyprus Winter lists official contacts; booking and payment are directly with the guide.",
-      "officialListLink": "Official list on Visit Cyprus",
-      "searchLabel": "Search guides",
-      "searchPlaceholder": "Name or language…",
+      "title": "Guides touristiques agréés",
+      "breadcrumb": "Guides agréés",
+      "pageNavAria": "Répertoire de guides agréés",
+      "intro": "{count} guides agréés de la liste officielle Visit Cyprus (août 2026). Contactez-les directement — ou réservez un partenaire randonnée hivernal vérifié dans l'app.",
+      "verifiedPartnersLink": "Réserver des partenaires vérifiés →",
+      "disclaimer": "Guides touristiques agréés inscrits auprès du Vice-ministère du Tourisme de Chypre. Cyprus Winter affiche les contacts officiels ; réservation et paiement directement avec le guide.",
+      "officialListLink": "Liste officielle sur Visit Cyprus",
+      "searchLabel": "Rechercher des guides",
+      "searchPlaceholder": "Nom ou langue…",
       "filterDistrict": "District",
-      "filterLanguage": "Language",
-      "allDistricts": "All districts",
-      "allLanguages": "All languages",
+      "filterLanguage": "Langue",
+      "allDistricts": "Tous les districts",
+      "allLanguages": "Toutes les langues",
       "resultCount": "{count} guides",
-      "empty": "No guides match those filters. Try another district or language.",
+      "empty": "Aucun guide ne correspond à ces filtres. Essayez un autre district ou une autre langue.",
       "districts": {
-        "general": "Cyprus-wide",
-        "lefkosia": "Lefkosia (Nicosia)",
-        "ammochostos": "Ammochostos (Famagusta)",
+        "general": "Toute Chypre",
+        "lefkosia": "Lefkosia (Nicosie)",
+        "ammochostos": "Ammochostos (Famagouste)",
         "larnaka": "Larnaka (Larnaca)",
         "lemesos": "Lemesos (Limassol)",
         "pafos": "Pafos (Paphos)"
       },
       "languages": {
-        "english": "English",
-        "greek": "Greek",
-        "german": "German",
-        "french": "French",
-        "polish": "Polish",
-        "russian": "Russian",
-        "italian": "Italian",
-        "spanish": "Spanish",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "romanian": "Romanian",
-        "swedish": "Swedish",
-        "dutch": "Dutch",
-        "hebrew": "Hebrew"
+        "english": "Anglais",
+        "greek": "Grec",
+        "german": "Allemand",
+        "french": "Français",
+        "polish": "Polonais",
+        "russian": "Russe",
+        "italian": "Italien",
+        "spanish": "Espagnol",
+        "arabic": "Arabe",
+        "turkish": "Turc",
+        "romanian": "Roumain",
+        "swedish": "Suédois",
+        "dutch": "Néerlandais",
+        "hebrew": "Hébreu"
       },
       "verifiedCta": {
-        "title": "Verified winter hiking partners",
-        "body": "These guides accept requests through Cyprus Winter — Troodos, Akamas, and culture tours with email confirmation.",
-        "button": "Book a verified guide"
+        "title": "Partenaires randonnée hivernale vérifiés",
+        "body": "Ces guides acceptent les demandes via Cyprus Winter — Troodos, Akamas et visites culturelles avec confirmation par e-mail.",
+        "button": "Réserver un guide vérifié"
       },
-      "verifiedPartnerBadge": "Books in-app",
-      "verifiedPartnerBook": "Request via Cyprus Winter",
+      "verifiedPartnerBadge": "Réservation dans l'app",
+      "verifiedPartnerBook": "Demande via Cyprus Winter",
       "footer": {
-        "hubBody": "Contact a licensed guide directly—or book a verified hiking partner in-app and add stops to your plan.",
-        "trails": "Trail conditions"
+        "hubBody": "Contactez un guide agréé directement — ou réservez un partenaire randonnée vérifié dans l'app et ajoutez des étapes à votre plan.",
+        "trails": "Conditions des sentiers"
       },
       "aria": {
-        "actions": "Licensed guides directory actions"
+        "actions": "Actions du répertoire de guides agréés"
       }
     }
   },
@@ -3275,21 +3275,21 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Team | Cyprus Winter — Trails, Villages, Wineries",
-        "description": "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six."
+        "title": "Équipe | Cyprus Winter — Sentiers, villages, domaines",
+        "description": "Les personnes derrière Cyprus Winter. Sentiers, villages, domaines — Chypre en hiver mérite mieux. Rencontrez l'équipe qui a créé ce guide. Seize degrés quand il en fait six chez vous."
       },
-      "membersHeading": "Team members",
+      "membersHeading": "Membres de l'équipe",
       "header": {
-        "title": "Our Team",
-        "description": "Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
+        "title": "Notre équipe",
+        "description": "Designers, développeurs et experts du tourisme. Chypre en hiver mérite plus qu'une simple mention."
       },
       "cta": {
-        "prompt": "Meet the team behind your trip — and ask them anything.",
-        "askAi": "Ask AI",
-        "startPlanning": "Start planning",
-        "discoverPlaces": "Discover places"
+        "prompt": "Rencontrez l'équipe derrière votre voyage — et posez-leur toutes vos questions.",
+        "askAi": "Demander à l'IA",
+        "startPlanning": "Planifier votre voyage",
+        "discoverPlaces": "Découvrir des lieux"
       },
-      "outro": "Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That's a day we'd take. The island rewards the curious."
+      "outro": "Sentier le matin : Artemis ou Caledonia. Omodos ou Lefkara pour le déjeuner. Un domaine l'après-midi. Voilà une journée qu'on prendrait. L'île récompense les curieux."
     }
   },
   "terms": {

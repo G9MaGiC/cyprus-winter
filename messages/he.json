@@ -2468,90 +2468,90 @@
   "weather": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Weather by Month | Coast & Troodos",
-        "description": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
-        "ogImageAlt": "Cyprus winter weather guide"
+        "title": "מזג אוויר חורף בקפריסין לפי חודש | חוף ו-Troodos",
+        "description": "מזג אוויר חורפי בקפריסין לפי חודש: חוף 18–20°C, Troodos 8–12°C. שכבות, שבילים ויקבים. נובמבר עד אפריל. שש־עשרה מעלות כשבבית שש.",
+        "ogDescription": "מזג אוויר חורפי בקפריסין לפי חודש: חוף 18–20°C, Troodos 8–12°C. שכבות, שבילים ויקבים.",
+        "ogImageAlt": "מדריך מזג אוויר חורפי בקפריסין"
       },
-      "title": "Cyprus Winter Weather by Month",
-      "description": "Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries.",
+      "title": "מזג אוויר חורף בקפריסין לפי חודש",
+      "description": "טמפרטורות בחוף וב-Troodos חודש אחר חודש. תכננו שכבות, שבילים ויקבים.",
       "table": {
-        "month": "Month",
-        "coast": "Coast (°C)",
-        "coastConditions": "Conditions",
+        "month": "חודש",
+        "coast": "חוף (°C)",
+        "coastConditions": "תנאים",
         "troodos": "Troodos (°C)",
-        "troodosConditions": "Conditions"
+        "troodosConditions": "תנאים"
       },
       "mobile": {
-        "details": "Details →"
+        "details": "פרטים →"
       },
       "hero": {
-        "kicker": "Winter planning",
-        "heading": "Choose your month, then browse what fits",
-        "body": "Coast and Troodos temperatures shift through winter. Pick a month to see the conditions and events, then use Right now near you to adapt your day."
+        "kicker": "תכנון חורפי",
+        "heading": "בחרו את החודש שלכם וגלו מה מתאים",
+        "body": "טמפרטורות בחוף וב-Troodos משתנות לאורך החורף. בחרו חודש לראות תנאים ואירועים, ואז השתמשו בעכשיו לידכם כדי להתאים את היום."
       },
       "monthSelector": {
-        "aria": "Choose a month"
+        "aria": "בחירת חודש"
       },
       "gateway": {
-        "heading": "Browse winter ideas",
-        "monasteries": "Monasteries"
+        "heading": "רעיונות לחורף",
+        "monasteries": "מנזרים"
       },
       "body": {
-        "coastTroodos": "Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.",
-        "linkTrails": "Check trail conditions",
-        "linkTrailsSuffix": "before heading up.",
-        "linkWineries": "Winter wineries",
-        "linkWineriesSuffix": "— fireside tastings, book ahead."
+        "coastTroodos": "חוף פירושו Larnaca, Limassol, Paphos — חורפים ים-תיכוניים מתונים. Troodos הוא ההרים: כפרים כמו Platres ו-Omodos, ואתר הסקי על Olympus. קחו שכבות; ההפרש בין חוף להר יכול להגיע ליותר מ-10°C.",
+        "linkTrails": "בדקו תנאי שבילים",
+        "linkTrailsSuffix": "לפני שעולים.",
+        "linkWineries": "יקבים חורפיים",
+        "linkWineriesSuffix": "— טעימות ליד האח, הזמינו מראש."
       },
       "footer": {
-        "hubBody": "Pick a month, then build a day around the weather—trails, villages, and tastings.",
-        "trails": "Trail conditions",
-        "events": "Winter events"
+        "hubBody": "בחרו חודש ואז בנו יום סביב מזג האוויר — שבילים, כפרים וטעימות.",
+        "trails": "תנאי שבילים",
+        "events": "אירועי חורף"
       },
       "aria": {
-        "actions": "Weather page actions"
+        "actions": "פעולות דף מזג אוויר"
       }
     },
     "month": {
-      "pageHeaderTitle": "Cyprus Winter Weather: {month}",
-      "pageHeaderDescription": "Coast {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
+      "pageHeaderTitle": "מזג אוויר חורפי בקפריסין: {month}",
+      "pageHeaderDescription": "חוף {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
-        "title": "Cyprus Winter Weather {month} | Coast & Troodos",
-        "description": "Cyprus winter weather {month}: coast {coastRange}, Troodos {troodosRange}. {coastDesc} Plan trails, wineries, and winter events.",
-        "notFoundTitle": "Weather not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
-        "ogImageAlt": "Cyprus winter coast—{month} weather"
+        "title": "מזג אוויר חורפי בקפריסין {month} | חוף ו-Troodos",
+        "description": "מזג אוויר חורפי בקפריסין {month}: חוף {coastRange}, Troodos {troodosRange}. {coastDesc} תכננו שבילים, יקבים ואירועי חורף.",
+        "notFoundTitle": "מזג האוויר לא נמצא | Cyprus Winter",
+        "notFoundDescription": "מזג אוויר חורפי בקפריסין לפי חודש: דצמבר, ינואר, פברואר, מרץ. טמפרטורות בחוף וב-Troodos.",
+        "ogImageAlt": "חוף קפריסין בחורף — מזג אוויר {month}"
       },
       "hero": {
-        "kicker": "This month",
-        "heading": "{month} in Cyprus Winter",
-        "body": "Coast sits around {coastMid}°C and Troodos around {troodosMid}°C. Plan layers, then browse the winter picks below."
+        "kicker": "החודש הזה",
+        "heading": "{month} ב-Cyprus Winter",
+        "body": "החוף סביב {coastMid}°C ו-Troodos סביב {troodosMid}°C. תכננו שכבות ואז עיינו בהמלצות החורף למטה."
       },
       "monthJump": {
-        "aria": "Jump to another month"
+        "aria": "קפיצה לחודש אחר"
       },
       "gateway": {
-        "monasteries": "Monasteries"
+        "monasteries": "מנזרים"
       },
       "monthDiscovery": {
-        "heading": "Browse what fits {month}"
+        "heading": "גלו מה מתאים ל-{month}"
       },
-      "conditionsHeading": "What to expect",
-      "conditionsCoastTitle": "Coast (Larnaca, Limassol, Paphos)",
-      "conditionsTroodosTitle": "Troodos (mountains, villages)",
-      "eventsHeading": "Winter events in {month}",
+      "conditionsHeading": "מה לצפות",
+      "conditionsCoastTitle": "חוף (Larnaca, Limassol, Paphos)",
+      "conditionsTroodosTitle": "Troodos (הרים, כפרים)",
+      "eventsHeading": "אירועי חורף ב-{month}",
       "cta": {
-        "trailConditions": "Trail conditions",
-        "winterWineries": "Winter wineries"
+        "trailConditions": "תנאי שבילים",
+        "winterWineries": "יקבים חורפיים"
       },
       "footer": {
-        "allMonths": "All months",
-        "troodosWinter": "Troodos winter",
-        "hubBody": "Build a day around this month's weather—trails, tastings, and events—or ask the AI."
+        "allMonths": "כל החודשים",
+        "troodosWinter": "Troodos בחורף",
+        "hubBody": "בנו יום סביב מזג האוויר של החודש — שבילים, טעימות ואירועים — או שאלו את ה-AI."
       },
       "aria": {
-        "actions": "Weather month page actions"
+        "actions": "פעולות דף מזג אוויר חודשי"
       }
     }
   },
@@ -3006,61 +3006,61 @@
     },
     "directory": {
       "meta": {
-        "title": "Licensed Tourist Guides | Cyprus Winter",
-        "description": "Official Cyprus licensed tourist guides by district and language. Deputy Ministry of Tourism list — contact guides directly. Verified hiking partners available to book in-app."
+        "title": "מדריכי תיירות מורשים | Cyprus Winter",
+        "description": "מדריכי תיירות מורשים רשמיים של קפריסין לפי מחוז ושפה. רשימת משרד התיירות — צרו קשר ישירות. שותפי הליכה מאומתים זמינים להזמנה באפליקציה."
       },
-      "title": "Licensed tourist guides",
-      "breadcrumb": "Licensed guides",
-      "pageNavAria": "Licensed guides directory",
-      "intro": "{count} licensed guides from the official Visit Cyprus list (Aug 2026). Contact them directly — or book a verified winter hiking partner in-app.",
-      "verifiedPartnersLink": "Book verified hiking partners →",
-      "disclaimer": "Licensed tourist guides registered with the Cyprus Deputy Ministry of Tourism. Cyprus Winter lists official contacts; booking and payment are directly with the guide.",
-      "officialListLink": "Official list on Visit Cyprus",
-      "searchLabel": "Search guides",
-      "searchPlaceholder": "Name or language…",
-      "filterDistrict": "District",
-      "filterLanguage": "Language",
-      "allDistricts": "All districts",
-      "allLanguages": "All languages",
-      "resultCount": "{count} guides",
-      "empty": "No guides match those filters. Try another district or language.",
+      "title": "מדריכי תיירות מורשים",
+      "breadcrumb": "מדריכים מורשים",
+      "pageNavAria": "רשימת מדריכים מורשים",
+      "intro": "{count} מדריכים מורשים מהרשימה הרשמית של Visit Cyprus (אוג׳ 2026). צרו קשר ישירות — או הזמינו שותף הליכה חורפי מאומת באפליקציה.",
+      "verifiedPartnersLink": "הזמנת שותפים מאומתים →",
+      "disclaimer": "מדריכי תיירות מורשים הרשומים במשרד התיירות. Cyprus Winter מציגה אנשי קשר רשמיים; ההזמנה והתשלום ישירות עם המדריך.",
+      "officialListLink": "רשימה רשמית ב-Visit Cyprus",
+      "searchLabel": "חיפוש מדריכים",
+      "searchPlaceholder": "שם או שפה…",
+      "filterDistrict": "מחוז",
+      "filterLanguage": "שפה",
+      "allDistricts": "כל המחוזות",
+      "allLanguages": "כל השפות",
+      "resultCount": "{count} מדריכים",
+      "empty": "לא נמצאו מדריכים עם המסננים האלה. נסו מחוז או שפה אחרים.",
       "districts": {
-        "general": "Cyprus-wide",
-        "lefkosia": "Lefkosia (Nicosia)",
-        "ammochostos": "Ammochostos (Famagusta)",
-        "larnaka": "Larnaka (Larnaca)",
-        "lemesos": "Lemesos (Limassol)",
-        "pafos": "Pafos (Paphos)"
+        "general": "כל קפריסין",
+        "lefkosia": "לפקוסיה",
+        "ammochostos": "אמוחוסטוס",
+        "larnaka": "לרנקה",
+        "lemesos": "לימסול",
+        "pafos": "פאפוס"
       },
       "languages": {
-        "english": "English",
-        "greek": "Greek",
-        "german": "German",
-        "french": "French",
-        "polish": "Polish",
-        "russian": "Russian",
-        "italian": "Italian",
-        "spanish": "Spanish",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "romanian": "Romanian",
-        "swedish": "Swedish",
-        "dutch": "Dutch",
-        "hebrew": "Hebrew"
+        "english": "אנגלית",
+        "greek": "יוונית",
+        "german": "גרמנית",
+        "french": "צרפתית",
+        "polish": "פולנית",
+        "russian": "רוסית",
+        "italian": "איטלקית",
+        "spanish": "ספרדית",
+        "arabic": "ערבית",
+        "turkish": "טורקית",
+        "romanian": "רומנית",
+        "swedish": "שוודית",
+        "dutch": "הולנדית",
+        "hebrew": "עברית"
       },
       "verifiedCta": {
-        "title": "Verified winter hiking partners",
-        "body": "These guides accept requests through Cyprus Winter — Troodos, Akamas, and culture tours with email confirmation.",
-        "button": "Book a verified guide"
+        "title": "שותפי הליכה חורפיים מאומתים",
+        "body": "מדריכים אלה מקבלים בקשות דרך Cyprus Winter — Troodos, Akamas וסיורי תרבות עם אישור בדוא״ל.",
+        "button": "הזמנת מדריך מאומת"
       },
-      "verifiedPartnerBadge": "Books in-app",
-      "verifiedPartnerBook": "Request via Cyprus Winter",
+      "verifiedPartnerBadge": "הזמנה באפליקציה",
+      "verifiedPartnerBook": "בקשה דרך Cyprus Winter",
       "footer": {
-        "hubBody": "Contact a licensed guide directly—or book a verified hiking partner in-app and add stops to your plan.",
-        "trails": "Trail conditions"
+        "hubBody": "צרו קשר עם מדריך מורשה — או הזמינו שותף מאומת באפליקציה והוסיפו תחנות לתוכנית.",
+        "trails": "תנאי שבילים"
       },
       "aria": {
-        "actions": "Licensed guides directory actions"
+        "actions": "פעולות רשימת מדריכים מורשים"
       }
     }
   },
@@ -3275,21 +3275,21 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Team | Cyprus Winter — Trails, Villages, Wineries",
-        "description": "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six."
+        "title": "צוות | Cyprus Winter — שבילים, כפרים, יקבים",
+        "description": "האנשים מאחורי Cyprus Winter. שבילים, כפרים, יקבים — קפריסין בחורף ראויה ליותר. הכירו את הצוות שבנה את המדריך. שש־עשרה מעלות כשבבית שש."
       },
-      "membersHeading": "Team members",
+      "membersHeading": "חברי הצוות",
       "header": {
-        "title": "Our Team",
-        "description": "Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
+        "title": "הצוות שלנו",
+        "description": "מעצבים, מפתחים ומומחי תיירות. קפריסין בחורף ראויה ליותר מאזכור בשורה אחת."
       },
       "cta": {
-        "prompt": "Meet the team behind your trip — and ask them anything.",
-        "askAi": "Ask AI",
-        "startPlanning": "Start planning",
-        "discoverPlaces": "Discover places"
+        "prompt": "הכירו את הצוות מאחורי הטיול — ושאלו כל מה שתרצו.",
+        "askAi": "שאלו את ה-AI",
+        "startPlanning": "התחילו לתכנן",
+        "discoverPlaces": "גלו מקומות"
       },
-      "outro": "Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That's a day we'd take. The island rewards the curious."
+      "outro": "שביל בבוקר: Artemis או Caledonia. Omodos או Lefkara לארוחת צהריים. יקב אחר הצהריים. כך היינו מבלים יום. האי מתגמל את הסקרנים."
     }
   },
   "terms": {

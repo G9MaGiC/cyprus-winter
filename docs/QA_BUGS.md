@@ -1662,3 +1662,4 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-318 | i18n | Beta chrome batch 6 — place types, AI chrome, discover/trails maps & footers, events filters/months still EN in fr/he/ro | `beta-locale-chrome-batch6-overrides.json` + `patch-locale-chrome-batch6.mjs` (~69–79 keys/locale) |
 | BUG-319 | i18n | Beta chrome batch 7 — beaches, villages, wineries hubs and cycling official routes still EN in fr/he/ro | `beta-locale-chrome-batch7-overrides.json` + `patch-locale-chrome-batch7.mjs` (65 keys/locale) |
 | BUG-320 | i18n | Beta chrome batch 8 — install, secrets, nature hub pages still EN in fr/he/ro | `beta-locale-chrome-batch8-overrides.json` + `patch-locale-chrome-batch8.mjs` (100 keys/locale) |
+| BUG-321 | i18n | Beta chrome batch 9 — guides directory, weather hub/month, team page still EN in fr/he/ro | `beta-locale-chrome-batch9-overrides.json` + `patch-locale-chrome-batch9.mjs` (105 keys/locale) |
