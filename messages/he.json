@@ -291,15 +291,15 @@
     "askAITrailsAria": "Ask AI for trail suggestions",
     "askAIRecommendationsAria": "Ask AI for recommendations",
     "hubFooter": {
-      "prompt": "Add places to your plan—or ask the AI for ideas.",
+      "prompt": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI לרעיונות.",
       "aria": {
-        "actions": "Page actions"
+        "actions": "פעולות דף"
       }
     },
     "tripPlanSummary": {
-      "aria": "Your trip plan summary",
-      "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
-      "viewPlan": "View plan"
+      "aria": "סיכום תוכנית הטיול שלכם",
+      "places": "{count, plural, one {מקום # בתוכנית} other {# מקומות בתוכנית}}",
+      "viewPlan": "צפו בתוכנית"
     },
     "planYourTrip": "תכנן את הטיול",
     "winterHikingGuide": "Winter hiking guide",
@@ -333,11 +333,11 @@
       "content": "טוען תוכן"
     },
     "skipTo": {
-      "thisWeek": "Skip to This week",
-      "editorsPicks": "Skip to Editor's picks",
-      "plan": "Skip to Plan",
-      "search": "Skip to search",
-      "startHere": "Skip to Start here"
+      "thisWeek": "דלג לשבוע הזה",
+      "editorsPicks": "דלג לבחירות העורך",
+      "plan": "דלג לתוכנית",
+      "search": "דלג לחיפוש",
+      "startHere": "דלג להתחלה כאן"
     },
     "cancel": "ביטול",
     "done": "סיום",
@@ -457,7 +457,7 @@
         "quietEscapesAria": "מפלטים שקטים — כפרים, פנינים חבויות",
         "mountains": "הרים",
         "mountainsAria": "הרים — שבילי Troodos",
-        "wellness": "רוגע",
+        "wellness": "בריאות",
         "wellnessAria": "רוגע — מנזרים, מקומות שקטים",
         "regionAria": "אזור {region}"
       }
@@ -555,8 +555,8 @@
       "card": {
         "defaultTease": "שווה ביקור בחורף.",
         "add": "הוסף",
-        "distanceLessThanKm": "< 1 ק״מ",
-        "distanceKm": "{distance} ק״מ"
+        "distanceLessThanKm": "< 1 ק\"מ",
+        "distanceKm": "{distance} ק\"מ"
       },
       "reasons": {
         "nearby": "קרוב",
@@ -1279,8 +1279,8 @@
         "ephemeralNote": "שינויי שעות ותמונת הירו זמניים — הם מתאפסים כשהשרת מופעל מחדש עד לאחסון קבוע."
       },
       "meta": {
-        "title": "Partner portal | Cyprus Winter",
-        "description": "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests."
+        "title": "פורטל שותפים | Cyprus Winter",
+        "description": "יקבים ומדריכים מאומתים: שעות חורף, תמונת גיבור מקומית ובקשות טעימה."
       }
     }
   },
@@ -1677,8 +1677,8 @@
       "checkConditions": "בדקו תנאי שבילים"
     },
     "emptyState": {
-      "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-      "ctaAllTrails": "All trails"
+      "body": "אין שבילים שמתאימים למסננים. נסו סטטוס, קושי או אזור אחר — או שאלו את ה-AI. היא מכירה מטרודוס ועד החוף.",
+      "ctaAllTrails": "כל השבילים"
     },
     "filterBar": {
       "showingAll": "— Showing all"
@@ -2398,41 +2398,41 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "גלו שבילים, כפרים ויקבים באזור — והוסיפו לתוכנית.",
+        "weatherLink": "מזג אוויר לפי חודש"
       },
       "aria": {
-        "actions": "Region page actions"
+        "actions": "פעולות דף אזור"
       }
     }
   },
   "wineRoutes": {
     "page": {
       "meta": {
-        "title": "{route} Wine Route Cyprus Winter | Wineries & Tastings",
-        "description": "{route} wine route: {count, plural, one {# winery} other {# wineries}} open for winter tastings. Book ahead.",
-        "notFoundTitle": "Wine route not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings."
+        "title": "מסלול יין {route} Cyprus Winter | יקבים וטעימות",
+        "description": "מסלול יין {route}: {count, plural, one {יקב #} other {# יקבים}} פתוחים לטעימות חורף. הזמינו מראש.",
+        "notFoundTitle": "מסלול יין לא נמצא | Cyprus Winter",
+        "notFoundDescription": "מסלולי יין חורף בקפריסין: Krasochoria, Laona, Akamas, Commandaria. עיינו ביקבים לטעימות חורף."
       },
-      "routeTitle": "{route} Wine Route",
-      "routeBreadcrumb": "{route} Route",
-      "wineriesOnRoute": "Wineries on this route",
-      "grapeVarieties": "Grape varieties",
-      "winterTipLabel": "Winter tip",
+      "routeTitle": "מסלול יין {route}",
+      "routeBreadcrumb": "מסלול {route}",
+      "wineriesOnRoute": "יקבים במסלול זה",
+      "grapeVarieties": "זני ענבים",
+      "winterTipLabel": "טיפ לחורף",
       "bookableHeading": "הזמינו טעימה במסלול",
       "bookableIntro": "יקבים נבחרים עם שעות חורף. התקשרו מראש כשמצוין.",
       "map": {
-        "heading": "{route} map ({count})",
-        "caption": "Tap a marker to open a winery.",
-        "ariaLabel": "Map showing {count, plural, one {# winery} other {# wineries}} on this wine route",
-        "viewWinery": "View winery"
+        "heading": "מפת {route} ({count})",
+        "caption": "הקישו על סמן לפתיחת יקב.",
+        "ariaLabel": "מפה עם {count, plural, one {יקב #} other {# יקבים}} במסלול יין זה",
+        "viewWinery": "צפו ביקב"
       },
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "הזמינו טעימות מראש ושלבו מסלול זה עם כפר או שביל קרוב.",
+        "allWineries": "כל היקבים בקפריסין"
       },
       "aria": {
-        "actions": "Wine route actions"
+        "actions": "פעולות מסלול יין"
       }
     },
     "hub": {
@@ -2994,7 +2994,7 @@
       "footer": {
         "troodosRegion": "אזור טרודוס",
         "weatherByMonth": "מזג אוויר לפי חודש",
-        "hubBody": "Add a December trail to your plan—or ask the AI to pair a hike with a village or winery."
+        "hubBody": "הוסיפו שביל דצמבר לתוכנית — או שאלו את ה-AI לשלב טיול עם כפר או יקב."
       },
       "cards": {
         "imageAlt": "{name}, {region} — מסלול {km} ק\"מ {difficulty}",

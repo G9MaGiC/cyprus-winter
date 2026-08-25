@@ -291,15 +291,15 @@
     "askAITrailsAria": "Ask AI for trail suggestions",
     "askAIRecommendationsAria": "Ask AI for recommendations",
     "hubFooter": {
-      "prompt": "Add places to your plan—or ask the AI for ideas.",
+      "prompt": "Adaugă locuri în plan — sau întreabă AI-ul pentru idei.",
       "aria": {
-        "actions": "Page actions"
+        "actions": "Acțiuni pagină"
       }
     },
     "tripPlanSummary": {
-      "aria": "Your trip plan summary",
-      "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
-      "viewPlan": "View plan"
+      "aria": "Rezumatul planului tău de călătorie",
+      "places": "{count, plural, one {# loc în plan} other {# locuri în plan}}",
+      "viewPlan": "Vezi planul"
     },
     "planYourTrip": "Planifică călătoria",
     "winterHikingGuide": "Winter hiking guide",
@@ -333,11 +333,11 @@
       "content": "Se încarcă conținutul"
     },
     "skipTo": {
-      "thisWeek": "Skip to This week",
-      "editorsPicks": "Skip to Editor's picks",
-      "plan": "Skip to Plan",
-      "search": "Skip to search",
-      "startHere": "Skip to Start here"
+      "thisWeek": "Salt la Săptămâna aceasta",
+      "editorsPicks": "Salt la alegerile editorului",
+      "plan": "Salt la Plan",
+      "search": "Salt la căutare",
+      "startHere": "Salt la Începe aici"
     },
     "cancel": "Anulează",
     "done": "Gata",
@@ -1279,8 +1279,8 @@
         "ephemeralNote": "Ore și imaginea hero sunt temporare — se resetează la repornirea serverului până există stocare durabilă."
       },
       "meta": {
-        "title": "Partner portal | Cyprus Winter",
-        "description": "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests."
+        "title": "Portal parteneri | Cyprus Winter",
+        "description": "Crame și ghizi verificați: program de iarnă, imagine locală și cereri de degustare."
       }
     }
   },
@@ -1677,8 +1677,8 @@
       "checkConditions": "Verifică condițiile"
     },
     "emptyState": {
-      "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-      "ctaAllTrails": "All trails"
+      "body": "Niciun traseu nu se potrivește filtrelor. Încearcă alt status, dificultate sau regiune — sau întreabă AI-ul. Cunoaște de la Troodos până la coastă.",
+      "ctaAllTrails": "Toate traseele"
     },
     "filterBar": {
       "showingAll": "— Showing all"
@@ -2398,41 +2398,41 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Explorează trasee, sate și crame în această regiune — apoi adaugă alegerile în plan.",
+        "weatherLink": "Vreme pe luni"
       },
       "aria": {
-        "actions": "Region page actions"
+        "actions": "Acțiuni pagină regiune"
       }
     }
   },
   "wineRoutes": {
     "page": {
       "meta": {
-        "title": "{route} Wine Route Cyprus Winter | Wineries & Tastings",
-        "description": "{route} wine route: {count, plural, one {# winery} other {# wineries}} open for winter tastings. Book ahead.",
-        "notFoundTitle": "Wine route not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings."
+        "title": "Rută vin {route} Cyprus Winter | Crame și degustări",
+        "description": "Rută vin {route}: {count, plural, one {# cramă} other {# crame}} deschise pentru degustări de iarnă. Rezervă din timp.",
+        "notFoundTitle": "Rută vin negăsită | Cyprus Winter",
+        "notFoundDescription": "Rute vin de iarnă în Cipru: Krasochoria, Laona, Akamas, Commandaria. Parcurge cramele pentru degustări de iarnă."
       },
-      "routeTitle": "{route} Wine Route",
-      "routeBreadcrumb": "{route} Route",
-      "wineriesOnRoute": "Wineries on this route",
-      "grapeVarieties": "Grape varieties",
-      "winterTipLabel": "Winter tip",
+      "routeTitle": "Rută vin {route}",
+      "routeBreadcrumb": "Ruta {route}",
+      "wineriesOnRoute": "Crămii pe această rută",
+      "grapeVarieties": "Soiuri de struguri",
+      "winterTipLabel": "Sfat de iarnă",
       "bookableHeading": "Rezervă o degustare pe acest traseu",
       "bookableIntro": "Crame evidențiate, cu program de iarnă. Sunați înainte când este menționat.",
       "map": {
-        "heading": "{route} map ({count})",
-        "caption": "Tap a marker to open a winery.",
-        "ariaLabel": "Map showing {count, plural, one {# winery} other {# wineries}} on this wine route",
-        "viewWinery": "View winery"
+        "heading": "Hartă {route} ({count})",
+        "caption": "Atinge un marker pentru a deschide o cramă.",
+        "ariaLabel": "Hartă cu {count, plural, one {# cramă} other {# crame}} pe această rută vin",
+        "viewWinery": "Vezi crama"
       },
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "Rezervă degustări din timp și combină ruta cu un sat sau traseu din apropiere.",
+        "allWineries": "Toate cramele din Cipru"
       },
       "aria": {
-        "actions": "Wine route actions"
+        "actions": "Acțiuni rută vin"
       }
     },
     "hub": {
@@ -2994,7 +2994,7 @@
       "footer": {
         "troodosRegion": "Regiunea Troodos",
         "weatherByMonth": "Vremea pe luni",
-        "hubBody": "Add a December trail to your plan—or ask the AI to pair a hike with a village or winery."
+        "hubBody": "Adaugă un traseu de decembrie în plan — sau întreabă AI-ul să combine drumeția cu un sat sau o cramă."
       },
       "cards": {
         "imageAlt": "{name}, {region} — traseu {km} km {difficulty}",

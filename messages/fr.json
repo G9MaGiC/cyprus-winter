@@ -291,15 +291,15 @@
     "askAITrailsAria": "Ask AI for trail suggestions",
     "askAIRecommendationsAria": "Ask AI for recommendations",
     "hubFooter": {
-      "prompt": "Add places to your plan—or ask the AI for ideas.",
+      "prompt": "Ajoutez des lieux à votre plan — ou demandez des idées à l'IA.",
       "aria": {
-        "actions": "Page actions"
+        "actions": "Actions de page"
       }
     },
     "tripPlanSummary": {
-      "aria": "Your trip plan summary",
-      "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
-      "viewPlan": "View plan"
+      "aria": "Résumé de votre plan de voyage",
+      "places": "{count, plural, one {# lieu dans votre plan} other {# lieux dans votre plan}}",
+      "viewPlan": "Voir le plan"
     },
     "planYourTrip": "Planifier le voyage",
     "winterHikingGuide": "Winter hiking guide",
@@ -333,11 +333,11 @@
       "content": "Chargement du contenu"
     },
     "skipTo": {
-      "thisWeek": "Skip to This week",
-      "editorsPicks": "Skip to Editor's picks",
-      "plan": "Skip to Plan",
-      "search": "Skip to search",
-      "startHere": "Skip to Start here"
+      "thisWeek": "Aller à Cette semaine",
+      "editorsPicks": "Aller aux coups de cœur",
+      "plan": "Aller au plan",
+      "search": "Aller à la recherche",
+      "startHere": "Aller à Commencer ici"
     },
     "cancel": "Annuler",
     "done": "Terminé",
@@ -1279,8 +1279,8 @@
         "ephemeralNote": "Les horaires et l’image hero sont temporaires — ils se réinitialisent au redémarrage du serveur jusqu’à un stockage durable."
       },
       "meta": {
-        "title": "Partner portal | Cyprus Winter",
-        "description": "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests."
+        "title": "Portail partenaires | Cyprus Winter",
+        "description": "Domaines et guides vérifiés : horaires d'hiver, image locale et demandes de dégustation."
       }
     }
   },
@@ -1677,8 +1677,8 @@
       "checkConditions": "Vérifier les conditions"
     },
     "emptyState": {
-      "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-      "ctaAllTrails": "All trails"
+      "body": "Aucun sentier ne correspond à vos filtres. Essayez un autre statut, une autre difficulté ou une autre région — ou demandez à l'IA. Elle connaît le Troodos jusqu'à la côte.",
+      "ctaAllTrails": "Tous les sentiers"
     },
     "filterBar": {
       "showingAll": "— Showing all"
@@ -2398,41 +2398,41 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Explorez sentiers, villages et domaines dans cette région — puis ajoutez vos coups de cœur au plan.",
+        "weatherLink": "Météo mois par mois"
       },
       "aria": {
-        "actions": "Region page actions"
+        "actions": "Actions page région"
       }
     }
   },
   "wineRoutes": {
     "page": {
       "meta": {
-        "title": "{route} Wine Route Cyprus Winter | Wineries & Tastings",
-        "description": "{route} wine route: {count, plural, one {# winery} other {# wineries}} open for winter tastings. Book ahead.",
-        "notFoundTitle": "Wine route not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings."
+        "title": "Route des vins {route} Cyprus Winter | Domaines et dégustations",
+        "description": "Route des vins {route} : {count, plural, one {# domaine} other {# domaines}} ouverts pour dégustations d'hiver. Réservez à l'avance.",
+        "notFoundTitle": "Route des vins introuvable | Cyprus Winter",
+        "notFoundDescription": "Routes des vins d'hiver à Chypre : Krasochoria, Laona, Akamas, Commandaria. Parcourez les domaines pour dégustations hivernales."
       },
-      "routeTitle": "{route} Wine Route",
-      "routeBreadcrumb": "{route} Route",
-      "wineriesOnRoute": "Wineries on this route",
-      "grapeVarieties": "Grape varieties",
-      "winterTipLabel": "Winter tip",
+      "routeTitle": "Route des vins {route}",
+      "routeBreadcrumb": "Route {route}",
+      "wineriesOnRoute": "Domaines sur cette route",
+      "grapeVarieties": "Cépages",
+      "winterTipLabel": "Conseil d'hiver",
       "bookableHeading": "Réserver une dégustation sur cette route",
       "bookableIntro": "Caves mises en avant, avec horaires d'hiver. Appelez avant si indiqué.",
       "map": {
-        "heading": "{route} map ({count})",
-        "caption": "Tap a marker to open a winery.",
-        "ariaLabel": "Map showing {count, plural, one {# winery} other {# wineries}} on this wine route",
-        "viewWinery": "View winery"
+        "heading": "Carte {route} ({count})",
+        "caption": "Touchez un marqueur pour ouvrir un domaine.",
+        "ariaLabel": "Carte avec {count, plural, one {# domaine} other {# domaines}} sur cette route des vins",
+        "viewWinery": "Voir le domaine"
       },
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "Réservez les dégustations à l'avance et associez cette route à un village ou un sentier proche.",
+        "allWineries": "Tous les domaines de Chypre"
       },
       "aria": {
-        "actions": "Wine route actions"
+        "actions": "Actions route des vins"
       }
     },
     "hub": {
@@ -2994,7 +2994,7 @@
       "footer": {
         "troodosRegion": "Région Troodos",
         "weatherByMonth": "Météo mois par mois",
-        "hubBody": "Add a December trail to your plan—or ask the AI to pair a hike with a village or winery."
+        "hubBody": "Ajoutez un sentier de décembre à votre plan — ou demandez à l'IA d'associer une randonnée à un village ou un domaine."
       },
       "cards": {
         "imageAlt": "{name}, {region} — sentier {km} km {difficulty}",
