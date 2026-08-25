@@ -1655,3 +1655,9 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-313 | i18n | Funnel-path English on error/travelTrust/airport/trails/plan meta for fr/he/ro; Hebrew typos in soft-gaps; tier-1 el/de/pl gaps | `beta-locale-funnel-polish-overrides.json` + `patch-locale-funnel-polish.mjs`; fixed `chrome-locale-overrides` plan terminology; Hebrew soft-gap typos |
+
+### Fixed — Stavrovouni plan identity collision (Aug 25, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-314 | Functional | Monastery and nature trail shared `stavrovouni`; `getPlaceById` returned the monastery so adding the trail stored/showed the monastery | Rename trail id to `stavrovouni-trail`; keep `/trails/stavrovouni` via `TRAIL_LEGACY_IDS`; uniqueness test on `allPlaces` |

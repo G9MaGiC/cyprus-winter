@@ -103,6 +103,20 @@ describe("discover data audit — all sources", () => {
     expect(dupes, dupes.map(([id]) => id).join(", ")).toEqual([]);
   });
 
+  it("has unique allPlaces IDs so plan add cannot collapse two entities", () => {
+    const byId = new Map<string, string[]>();
+    for (const place of allPlaces) {
+      const labels = byId.get(place.id) ?? [];
+      labels.push(`${place.type}:${place.name}`);
+      byId.set(place.id, labels);
+    }
+    const dupes = [...byId.entries()].filter(([, labels]) => labels.length > 1);
+    expect(
+      dupes,
+      dupes.map(([id, labels]) => `${id} → ${labels.join(" | ")}`).join("\n")
+    ).toEqual([]);
+  });
+
   it("resolves all combineWith across attractions, wineries, restaurants, trails", () => {
     const issues = collectCombineIssues(combineSources, validIds);
     expect(issues, issues.join("\n")).toEqual([]);
