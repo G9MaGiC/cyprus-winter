@@ -1343,82 +1343,82 @@
   "beaches": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
-        "description": "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit. Free.",
-        "ogAlt": "Cyprus winter beach, golden light",
-        "schemaName": "Cyprus Winter Beaches",
-        "schemaDescription": "Best beaches in Cyprus winter: Nissi, Coral Bay, Konnos. Empty sand, golden light."
+        "title": "חופי קפריסין בחורף | Nissi, Coral Bay, Konnos",
+        "description": "החופים הטובים ביותר בקפריסין בחורף: Nissi Beach, Coral Bay, Konnos Bay. חול ריק, אור זהוב. טיולים בלי קהל. שישה עשר מעלות כשבבית שש. חינם.",
+        "ogAlt": "חוף קפריסין בחורף, אור זהוב",
+        "schemaName": "חופי קפריסין בחורף",
+        "schemaDescription": "החופים הטובים ביותר בקפריסין בחורף: Nissi, Coral Bay, Konnos. חול ריק, אור זהוב."
       },
       "header": {
-        "title": "Cyprus Beaches in Winter",
-        "description": "Empty sand, mild light. The sea is cold for swimming; winter beaches are for walks, coffee, and the light."
+        "title": "חופי קפריסין בחורף",
+        "description": "חול ריק, אור רך. הים קר לשחייה; חופי החורף מיועדים להליכה, קפה והאור."
       },
-      "srHeading": "Beaches in Cyprus winter",
+      "srHeading": "חופים בקפריסין בחורף",
       "footer": {
-        "body": "Combine a beach walk with ancient ruins or a village lunch.",
-        "hubBody": "Combine a beach walk with ancient ruins or a village lunch. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "שלבו טיול בחוף עם חורבות עתיקות או ארוחת צהריים בכפר.",
+        "hubBody": "שלבו טיול בחוף עם חורבות עתיקות או ארוחת צהריים בכפר. הוסיפו מקומות לתוכנית — או שאלו את ה-AI.",
+        "allPlaces": "ראו את כל המקומות",
+        "planDay": "תכננו את היום"
       },
       "aria": {
-        "actions": "Beaches page actions"
+        "actions": "פעולות דף החופים"
       }
     }
   },
   "villages": {
     "page": {
       "meta": {
-        "title": "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
-        "description": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six. Free.",
-        "ogDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland.",
-        "ogAlt": "Omodos village, Cyprus winter",
-        "schemaName": "Cyprus Winter Villages",
-        "schemaDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine."
+        "title": "כפרי קפריסין בחורף | Lefkara, Omodos, Platres",
+        "description": "כפרי קפריסין בחורף: Lefkara, Omodos, Platres. ריצוף, בתי קפה מקומיים, יין ליד האח. לב ההר והיין. שישה עשר מעלות כשבבית שש. חינם.",
+        "ogDescription": "כפרי קפריסין בחורף: Lefkara, Omodos, Platres. ריצוף, בתי קפה מקומיים, יין ליד האח. לב ההר והיין.",
+        "ogAlt": "כפר Omodos, קפריסין בחורף",
+        "schemaName": "כפרי קפריסין בחורף",
+        "schemaDescription": "כפרי קפריסין בחורף: Lefkara, Omodos, Platres. ריצוף, בתי קפה מקומיים, יין ליד האח."
       },
       "header": {
-        "title": "Cyprus Villages in Winter",
-        "description": "Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
+        "title": "כפרי קפריסין בחורף",
+        "description": "רחובות מרוצפים, לב אזור היין, תחרה וכסף. כפרי החורף שקטים יותר; הטברנות חמות, הנוף צלול."
       },
-      "srHeading": "Cyprus winter villages",
+      "srHeading": "כפרי קפריסין בחורף",
       "footer": {
-        "body": "Combine a village visit with a trail or winery.",
-        "hubBody": "Combine a village visit with a trail or winery. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "שלבו ביקור בכפר עם שביל או יקב.",
+        "hubBody": "שלבו ביקור בכפר עם שביל או יקב. הוסיפו מקומות לתוכנית — או שאלו את ה-AI.",
+        "allPlaces": "ראו את כל המקומות",
+        "planDay": "תכננו את היום"
       },
       "aria": {
-        "actions": "Villages page actions"
+        "actions": "פעולות דף הכפרים"
       }
     }
   },
   "wineries": {
     "page": {
       "meta": {
-        "title": "Cyprus Wineries in Winter | Wine Routes & Tastings",
-        "description": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
-        "ogAlt": "Cyprus winery village, winter",
-        "schemaName": "Cyprus Winter Wineries",
-        "schemaDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars."
+        "title": "יקבים בקפריסין בחורף | מסלולי יין וטעימות",
+        "description": "יקבים בקפריסין בחורף: Krasochoria, Laona, Commandaria. טעימות ליד האח, מרתפים חמימים. הזמינו מראש. שישה עשר מעלות כשבבית שש.",
+        "ogDescription": "יקבים בקפריסין בחורף: Krasochoria, Laona, Commandaria. טעימות ליד האח, מרתפים חמימים. הזמינו מראש.",
+        "ogAlt": "כפר יקב בקפריסין, חורף",
+        "schemaName": "יקבים בקפריסין בחורף",
+        "schemaDescription": "יקבים בקפריסין בחורף: Krasochoria, Laona, Commandaria. טעימות ליד האח, מרתפים חמימים."
       },
       "header": {
-        "title": "Cyprus Wineries in Winter",
-        "description": "Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
+        "title": "יקבים בקפריסין בחורף",
+        "description": "Krasochoria, Laona, Akamas. טעימות ליד האח, Commandaria, נוף טרודוס. התקשרו מראש — רבים פועלים בקצב נמוך בחורף. למבוגרים בגיל חוקי לשתיית אלכוהול."
       },
       "partners": {
-        "title": "Book with our partners",
-        "body": "Verified partners receive your booking request directly and confirm by email."
+        "title": "הזמינו דרך השותפים שלנו",
+        "body": "שותפים מאומתים מקבלים את בקשת ההזמנה ישירות ומאשרים במייל."
       },
-      "listTitle": "All wineries",
+      "listTitle": "כל היקבים",
       "footer": {
-        "pairingPrefix": "Pair a winery visit with a trail or village.",
-        "pairingLink": "Build a day",
-        "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "pairingPrefix": "שלבו ביקור ביקב עם שביל או כפר.",
+        "pairingLink": "בנו יום",
+        "routesPrefix": "גלו מסלולי יין:",
+        "hubBody": "שלבו ביקור ביקב עם שביל או כפר. הוסיפו מקומות לתוכנית — או שאלו את ה-AI.",
         "allRoutes": "כל מסלולי היין"
       },
       "aria": {
-        "actions": "Wineries page actions"
+        "actions": "פעולות דף היקבים"
       }
     }
   },
@@ -3401,33 +3401,33 @@
         "actions": "פעולות דף הרכיבה"
       },
       "officialRoutes": {
-        "title": "Official Visit Cyprus routes",
-        "intro": "Curated CTO cycling routes with winter notes. Maps, GPX files, and full details on Visit Cyprus — we link out; you ride at your own pace.",
-        "officialIndexLink": "Full route search on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} routes",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Route on Visit Cyprus",
-        "downloadGpx": "GPX download",
-        "relatedPlace": "Our guide to the area",
+        "title": "מסלולים רשמיים ב-Visit Cyprus",
+        "intro": "מסלולי CTO נבחרים עם הערות חורף. מפות, קבצי GPX ופרטים מלאים ב-Visit Cyprus — אנחנו מקשרים; אתם רוכבים בקצב שלכם.",
+        "officialIndexLink": "חיפוש מסלולים מלא ב-Visit Cyprus",
+        "filterRegion": "סינון לפי אזור",
+        "allRegions": "כל האזורים",
+        "resultCount": "{count} מסלולים",
+        "winterPick": "בחירת חורף",
+        "viewOnVisitCyprus": "מסלול ב-Visit Cyprus",
+        "downloadGpx": "הורדת GPX",
+        "relatedPlace": "המדריך שלנו לאזור",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Lefkosia (ניקוסיה)",
+          "lemesos": "Lemesos (לימסול)",
+          "larnaka": "Larnaka (לarnaca)",
+          "pafos": "Pafos (פafos)",
+          "ammochostos": "Ammochostos (פamagusta)",
           "troodos": "Troodos"
         },
         "difficulty": {
-          "easy": "Easy",
-          "moderate": "Moderate",
-          "demanding": "Demanding"
+          "easy": "קל",
+          "moderate": "בינוני",
+          "demanding": "תובעני"
         },
         "surface": {
-          "paved": "Paved",
-          "unpaved": "Unpaved",
-          "mixed": "Mixed"
+          "paved": "סלול",
+          "unpaved": "לא סלול",
+          "mixed": "מעורב"
         }
       }
     }

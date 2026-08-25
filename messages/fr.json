@@ -1343,82 +1343,82 @@
   "beaches": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
-        "description": "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit. Free.",
-        "ogAlt": "Cyprus winter beach, golden light",
-        "schemaName": "Cyprus Winter Beaches",
-        "schemaDescription": "Best beaches in Cyprus winter: Nissi, Coral Bay, Konnos. Empty sand, golden light."
+        "title": "Plages d'hiver à Chypre | Nissi, Coral Bay, Konnos",
+        "description": "Meilleures plages de Chypre en hiver : Nissi Beach, Coral Bay, Konnos Bay. Sable vide, lumière dorée. Promenades sans foule. Seize degrés quand il en fait six chez vous. Gratuit.",
+        "ogAlt": "Plage de Chypre en hiver, lumière dorée",
+        "schemaName": "Plages d'hiver à Chypre",
+        "schemaDescription": "Meilleures plages de Chypre en hiver : Nissi, Coral Bay, Konnos. Sable vide, lumière dorée."
       },
       "header": {
-        "title": "Cyprus Beaches in Winter",
-        "description": "Empty sand, mild light. The sea is cold for swimming; winter beaches are for walks, coffee, and the light."
+        "title": "Plages de Chypre en hiver",
+        "description": "Sable vide, lumière douce. La mer est froide pour nager ; les plages d'hiver, c'est pour marcher, prendre un café et profiter de la lumière."
       },
-      "srHeading": "Beaches in Cyprus winter",
+      "srHeading": "Plages de Chypre en hiver",
       "footer": {
-        "body": "Combine a beach walk with ancient ruins or a village lunch.",
-        "hubBody": "Combine a beach walk with ancient ruins or a village lunch. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "Combinez une promenade sur la plage avec des ruines antiques ou un déjeuner au village.",
+        "hubBody": "Combinez une promenade sur la plage avec des ruines antiques ou un déjeuner au village. Ajoutez des lieux à votre plan — ou demandez à l'IA.",
+        "allPlaces": "Voir tous les lieux",
+        "planDay": "Planifier votre journée"
       },
       "aria": {
-        "actions": "Beaches page actions"
+        "actions": "Actions page plages"
       }
     }
   },
   "villages": {
     "page": {
       "meta": {
-        "title": "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
-        "description": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six. Free.",
-        "ogDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland.",
-        "ogAlt": "Omodos village, Cyprus winter",
-        "schemaName": "Cyprus Winter Villages",
-        "schemaDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine."
+        "title": "Villages de Chypre en hiver | Lefkara, Omodos, Platres",
+        "description": "Villages de Chypre en hiver : Lefkara, Omodos, Platres. Pavés, kafenions, vin au coin du feu. Cœur montagne et vin. Seize degrés quand il en fait six chez vous. Gratuit.",
+        "ogDescription": "Villages de Chypre en hiver : Lefkara, Omodos, Platres. Pavés, kafenions, vin au coin du feu. Cœur montagne et vin.",
+        "ogAlt": "Village d'Omodos, Chypre en hiver",
+        "schemaName": "Villages d'hiver à Chypre",
+        "schemaDescription": "Villages de Chypre en hiver : Lefkara, Omodos, Platres. Pavés, kafenions, vin au coin du feu."
       },
       "header": {
-        "title": "Cyprus Villages in Winter",
-        "description": "Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
+        "title": "Villages de Chypre en hiver",
+        "description": "Rues pavées, cœur viticole, dentelle et argent. Les villages d'hiver sont plus calmes ; les tavernes chaleureuses, les vues nettes."
       },
-      "srHeading": "Cyprus winter villages",
+      "srHeading": "Villages de Chypre en hiver",
       "footer": {
-        "body": "Combine a village visit with a trail or winery.",
-        "hubBody": "Combine a village visit with a trail or winery. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "Combinez une visite de village avec un sentier ou un domaine.",
+        "hubBody": "Combinez une visite de village avec un sentier ou un domaine. Ajoutez des lieux à votre plan — ou demandez à l'IA.",
+        "allPlaces": "Voir tous les lieux",
+        "planDay": "Planifier votre journée"
       },
       "aria": {
-        "actions": "Villages page actions"
+        "actions": "Actions page villages"
       }
     }
   },
   "wineries": {
     "page": {
       "meta": {
-        "title": "Cyprus Wineries in Winter | Wine Routes & Tastings",
-        "description": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
-        "ogAlt": "Cyprus winery village, winter",
-        "schemaName": "Cyprus Winter Wineries",
-        "schemaDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars."
+        "title": "Domaines de Chypre en hiver | Routes des vins et dégustations",
+        "description": "Domaines de Chypre en hiver : Krasochoria, Laona, Commandaria. Dégustations au feu, caves douillettes. Réservez à l'avance. Seize degrés quand il en fait six chez vous.",
+        "ogDescription": "Domaines de Chypre en hiver : Krasochoria, Laona, Commandaria. Dégustations au feu, caves douillettes. Réservez à l'avance.",
+        "ogAlt": "Village viticole de Chypre, hiver",
+        "schemaName": "Domaines d'hiver à Chypre",
+        "schemaDescription": "Domaines de Chypre en hiver : Krasochoria, Laona, Commandaria. Dégustations au feu, caves douillettes."
       },
       "header": {
-        "title": "Cyprus Wineries in Winter",
-        "description": "Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
+        "title": "Domaines de Chypre en hiver",
+        "description": "Krasochoria, Laona, Akamas. Dégustations au feu, Commandaria, vues sur le Troodos. Appelez à l'avance — beaucoup tournent au ralenti en hiver. Réservé aux adultes en âge légal de consommer de l'alcool."
       },
       "partners": {
-        "title": "Book with our partners",
-        "body": "Verified partners receive your booking request directly and confirm by email."
+        "title": "Réserver avec nos partenaires",
+        "body": "Les partenaires vérifiés reçoivent votre demande de réservation directement et confirment par e-mail."
       },
-      "listTitle": "All wineries",
+      "listTitle": "Tous les domaines",
       "footer": {
-        "pairingPrefix": "Pair a winery visit with a trail or village.",
-        "pairingLink": "Build a day",
-        "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "pairingPrefix": "Associez une visite de domaine à un sentier ou un village.",
+        "pairingLink": "Composer une journée",
+        "routesPrefix": "Explorer les routes des vins :",
+        "hubBody": "Associez une visite de domaine à un sentier ou un village. Ajoutez des lieux à votre plan — ou demandez à l'IA.",
         "allRoutes": "Toutes les routes des vins"
       },
       "aria": {
-        "actions": "Wineries page actions"
+        "actions": "Actions page domaines"
       }
     }
   },
@@ -3401,33 +3401,33 @@
         "actions": "Actions de la page vélo"
       },
       "officialRoutes": {
-        "title": "Official Visit Cyprus routes",
-        "intro": "Curated CTO cycling routes with winter notes. Maps, GPX files, and full details on Visit Cyprus — we link out; you ride at your own pace.",
-        "officialIndexLink": "Full route search on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} routes",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Route on Visit Cyprus",
-        "downloadGpx": "GPX download",
-        "relatedPlace": "Our guide to the area",
+        "title": "Itinéraires officiels Visit Cyprus",
+        "intro": "Itinéraires CTO sélectionnés avec notes d'hiver. Cartes, fichiers GPX et détails sur Visit Cyprus — nous renvoyons ; vous roulez à votre rythme.",
+        "officialIndexLink": "Recherche complète sur Visit Cyprus",
+        "filterRegion": "Filtrer par région",
+        "allRegions": "Toutes les régions",
+        "resultCount": "{count} itinéraires",
+        "winterPick": "Choix d'hiver",
+        "viewOnVisitCyprus": "Itinéraire sur Visit Cyprus",
+        "downloadGpx": "Télécharger GPX",
+        "relatedPlace": "Notre guide de la région",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
+          "lefkosia": "Lefkosia (Nicosie)",
           "lemesos": "Lemesos (Limassol)",
           "larnaka": "Larnaka (Larnaca)",
           "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "ammochostos": "Ammochostos (Famagouste)",
           "troodos": "Troodos"
         },
         "difficulty": {
-          "easy": "Easy",
-          "moderate": "Moderate",
-          "demanding": "Demanding"
+          "easy": "Facile",
+          "moderate": "Modéré",
+          "demanding": "Exigeant"
         },
         "surface": {
-          "paved": "Paved",
-          "unpaved": "Unpaved",
-          "mixed": "Mixed"
+          "paved": "Revêtu",
+          "unpaved": "Non revêtu",
+          "mixed": "Mixte"
         }
       }
     }

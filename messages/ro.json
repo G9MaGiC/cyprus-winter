@@ -1343,82 +1343,82 @@
   "beaches": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
-        "description": "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit. Free.",
-        "ogAlt": "Cyprus winter beach, golden light",
-        "schemaName": "Cyprus Winter Beaches",
-        "schemaDescription": "Best beaches in Cyprus winter: Nissi, Coral Bay, Konnos. Empty sand, golden light."
+        "title": "Plaje de iarnă în Cipru | Nissi, Coral Bay, Konnos",
+        "description": "Cele mai bune plaje din Cipru iarna: Nissi Beach, Coral Bay, Konnos Bay. Nisip gol, lumină aurie. Plimbări fără aglomerație. Șaisprezece grade când acasă sunt șase. Gratuit.",
+        "ogAlt": "Plajă de iarnă în Cipru, lumină aurie",
+        "schemaName": "Plaje de iarnă în Cipru",
+        "schemaDescription": "Cele mai bune plaje din Cipru iarna: Nissi, Coral Bay, Konnos. Nisip gol, lumină aurie."
       },
       "header": {
-        "title": "Cyprus Beaches in Winter",
-        "description": "Empty sand, mild light. The sea is cold for swimming; winter beaches are for walks, coffee, and the light."
+        "title": "Plaje în Cipru iarna",
+        "description": "Nisip gol, lumină blândă. Marea e rece pentru înot; plajele de iarnă sunt pentru plimbări, cafea și lumină."
       },
-      "srHeading": "Beaches in Cyprus winter",
+      "srHeading": "Plaje în Cipru iarna",
       "footer": {
-        "body": "Combine a beach walk with ancient ruins or a village lunch.",
-        "hubBody": "Combine a beach walk with ancient ruins or a village lunch. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "Combină o plimbare pe plajă cu ruine antice sau prânz la sat.",
+        "hubBody": "Combină o plimbare pe plajă cu ruine antice sau prânz la sat. Adaugă locuri în plan — sau întreabă AI-ul.",
+        "allPlaces": "Vezi toate locurile",
+        "planDay": "Planifică-ți ziua"
       },
       "aria": {
-        "actions": "Beaches page actions"
+        "actions": "Acțiuni pagină plaje"
       }
     }
   },
   "villages": {
     "page": {
       "meta": {
-        "title": "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
-        "description": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six. Free.",
-        "ogDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland.",
-        "ogAlt": "Omodos village, Cyprus winter",
-        "schemaName": "Cyprus Winter Villages",
-        "schemaDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine."
+        "title": "Sate din Cipru iarna | Lefkara, Omodos, Platres",
+        "description": "Sate din Cipru iarna: Lefkara, Omodos, Platres. Pavaje, cafenele, vin lângă șemineu. Inima muntelui și a vinului. Șaisprezece grade când acasă sunt șase. Gratuit.",
+        "ogDescription": "Sate din Cipru iarna: Lefkara, Omodos, Platres. Pavaje, cafenele, vin lângă șemineu. Inima muntelui și a vinului.",
+        "ogAlt": "Sat Omodos, Cipru iarna",
+        "schemaName": "Sate de iarnă în Cipru",
+        "schemaDescription": "Sate din Cipru iarna: Lefkara, Omodos, Platres. Pavaje, cafenele, vin lângă șemineu."
       },
       "header": {
-        "title": "Cyprus Villages in Winter",
-        "description": "Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
+        "title": "Sate din Cipru iarna",
+        "description": "Străzi cu pavaj, inima vinului, dantelă și argint. Satele de iarnă sunt mai liniștite; tavernele calde, priveliștile clare."
       },
-      "srHeading": "Cyprus winter villages",
+      "srHeading": "Sate de iarnă în Cipru",
       "footer": {
-        "body": "Combine a village visit with a trail or winery.",
-        "hubBody": "Combine a village visit with a trail or winery. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "Combină o vizită la sat cu un traseu sau o cramă.",
+        "hubBody": "Combină o vizită la sat cu un traseu sau o cramă. Adaugă locuri în plan — sau întreabă AI-ul.",
+        "allPlaces": "Vezi toate locurile",
+        "planDay": "Planifică-ți ziua"
       },
       "aria": {
-        "actions": "Villages page actions"
+        "actions": "Acțiuni pagină sate"
       }
     }
   },
   "wineries": {
     "page": {
       "meta": {
-        "title": "Cyprus Wineries in Winter | Wine Routes & Tastings",
-        "description": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
-        "ogAlt": "Cyprus winery village, winter",
-        "schemaName": "Cyprus Winter Wineries",
-        "schemaDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars."
+        "title": "Crame din Cipru iarna | Rute viticole și degustări",
+        "description": "Crame din Cipru iarna: Krasochoria, Laona, Commandaria. Degustări lângă șemineu, pivnițe primitoare. Rezervă din timp. Șaisprezece grade când acasă sunt șase.",
+        "ogDescription": "Crame din Cipru iarna: Krasochoria, Laona, Commandaria. Degustări lângă șemineu, pivnițe primitoare. Rezervă din timp.",
+        "ogAlt": "Sat viticol din Cipru, iarnă",
+        "schemaName": "Crame de iarnă în Cipru",
+        "schemaDescription": "Crame din Cipru iarna: Krasochoria, Laona, Commandaria. Degustări lângă șemineu, pivnițe primitoare."
       },
       "header": {
-        "title": "Cyprus Wineries in Winter",
-        "description": "Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
+        "title": "Crame din Cipru iarna",
+        "description": "Krasochoria, Laona, Akamas. Degustări lângă șemineu, Commandaria, priveliști Troodos. Sună din timp — multe funcționează redus iarna. Pentru adulți cu vârsta legală de consum."
       },
       "partners": {
-        "title": "Book with our partners",
-        "body": "Verified partners receive your booking request directly and confirm by email."
+        "title": "Rezervă cu partenerii noștri",
+        "body": "Partenerii verificați primesc cererea de rezervare direct și confirmă prin email."
       },
-      "listTitle": "All wineries",
+      "listTitle": "Toate cramele",
       "footer": {
-        "pairingPrefix": "Pair a winery visit with a trail or village.",
-        "pairingLink": "Build a day",
-        "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "pairingPrefix": "Combină o vizită la cramă cu un traseu sau un sat.",
+        "pairingLink": "Construiește o zi",
+        "routesPrefix": "Explorează rutele viticole:",
+        "hubBody": "Combină o vizită la cramă cu un traseu sau un sat. Adaugă locuri în plan — sau întreabă AI-ul.",
         "allRoutes": "Toate rutele vinului"
       },
       "aria": {
-        "actions": "Wineries page actions"
+        "actions": "Acțiuni pagină crame"
       }
     }
   },
@@ -3401,16 +3401,16 @@
         "actions": "Acțiuni pagină ciclism"
       },
       "officialRoutes": {
-        "title": "Official Visit Cyprus routes",
-        "intro": "Curated CTO cycling routes with winter notes. Maps, GPX files, and full details on Visit Cyprus — we link out; you ride at your own pace.",
-        "officialIndexLink": "Full route search on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} routes",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Route on Visit Cyprus",
-        "downloadGpx": "GPX download",
-        "relatedPlace": "Our guide to the area",
+        "title": "Rute oficiale Visit Cyprus",
+        "intro": "Rute CTO selectate cu note de iarnă. Hărți, fișiere GPX și detalii pe Visit Cyprus — noi trimitem; tu pedalezi în ritmul tău.",
+        "officialIndexLink": "Căutare completă pe Visit Cyprus",
+        "filterRegion": "Filtrează după regiune",
+        "allRegions": "Toate regiunile",
+        "resultCount": "{count} rute",
+        "winterPick": "Alegere de iarnă",
+        "viewOnVisitCyprus": "Rută pe Visit Cyprus",
+        "downloadGpx": "Descarcă GPX",
+        "relatedPlace": "Ghidul nostru pentru zonă",
         "regions": {
           "lefkosia": "Lefkosia (Nicosia)",
           "lemesos": "Lemesos (Limassol)",
@@ -3420,14 +3420,14 @@
           "troodos": "Troodos"
         },
         "difficulty": {
-          "easy": "Easy",
-          "moderate": "Moderate",
-          "demanding": "Demanding"
+          "easy": "Ușor",
+          "moderate": "Moderat",
+          "demanding": "Exigent"
         },
         "surface": {
-          "paved": "Paved",
-          "unpaved": "Unpaved",
-          "mixed": "Mixed"
+          "paved": "Asfaltat",
+          "unpaved": "Neasfaltat",
+          "mixed": "Mixt"
         }
       }
     }
