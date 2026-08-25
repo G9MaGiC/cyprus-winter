@@ -800,21 +800,21 @@
   },
   "push": {
     "trip": {
-      "subscribed": "You're set. One reminder per day until you arrive.",
-      "title": "Get trip reminders",
-      "bodySoon": "We'll send up to three short reminders — one per day, 1–3 days before you leave. No spam.",
-      "bodyFar": "We'll remind you a few days before you leave. No spam.",
-      "buttonIdle": "Turn on reminders",
-      "buttonLoading": "Setting up…",
-      "buttonError": "Try again"
+      "subscribed": "הכל מוכן. תזכורת אחת ביום עד ההגעה.",
+      "title": "תזכורות לטיול",
+      "bodySoon": "עד שלוש תזכורות קצרות — אחת ביום, 1–3 ימים לפני היציאה. בלי ספאם.",
+      "bodyFar": "נזכיר לכם כמה ימים לפני היציאה. בלי ספאם.",
+      "buttonIdle": "הפעלת תזכורות",
+      "buttonLoading": "מגדירים…",
+      "buttonError": "נסו שוב"
     },
     "weather": {
-      "subscribed": "You're set. We'll send short weather updates up to 3 times a day.",
-      "title": "Weather digest",
-      "body": "Get short updates (morning, midday, evening) — coast and Troodos temps. No spam.",
-      "buttonIdle": "Turn on weather digest",
-      "buttonLoading": "Setting up…",
-      "buttonError": "Try again"
+      "subscribed": "הכל מוכן. עד 3 עדכוני מזג אוויר קצרים ביום.",
+      "title": "סיכום מזג אוויר",
+      "body": "עדכונים קצרים (בוקר, צהריים, ערב) — טמפרטורות חוף ו-Troodos. בלי ספאם.",
+      "buttonIdle": "הפעלת סיכום מזג אוויר",
+      "buttonLoading": "מגדירים…",
+      "buttonError": "נסו שוב"
     }
   },
   "notFound": {
@@ -2184,93 +2184,93 @@
     }
   },
   "account": {
-    "title": "My account",
-    "loading": "Loading…",
+    "title": "החשבון שלי",
+    "loading": "טוען…",
     "signedIn": {
-      "description": "Your plan and bookings, synced across devices.",
-      "signOut": "Sign out",
+      "description": "התוכנית וההזמנות שלכם, מסונכרנות בין מכשירים.",
+      "signOut": "התנתקות",
       "cta": {
-        "plan": "My plan",
-        "bookings": "View my bookings",
-        "settings": "Settings"
+        "plan": "התוכנית שלי",
+        "bookings": "ההזמנות שלי",
+        "settings": "הגדרות"
       }
     },
     "signedOut": {
-      "title": "Save your plan across devices",
-      "description": "Sign in to sync your plan and bookings across devices.",
-      "body": "Create a free account and your plan and bookings will follow you wherever you go.",
+      "title": "שמרו את התוכנית בכל המכשירים",
+      "description": "התחברו כדי לסנכרן תוכנית והזמנות בין מכשירים.",
+      "body": "צרו חשבון חינם — התוכנית וההזמנות ילכו איתכם לכל מקום.",
       "cta": {
-        "create": "Create account",
-        "signIn": "Sign in",
-        "skip": "Skip — use my plan on this device"
+        "create": "יצירת חשבון",
+        "signIn": "התחברות",
+        "skip": "דלג — השתמשו בתוכנית במכשיר זה"
       }
     },
     "notConfigured": {
-      "title": "Sign in coming soon",
-      "description": "Sign in (coming soon) will sync your plan and bookings across devices.",
-      "body": "Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device."
+      "title": "התחברות בקרוב",
+      "description": "התחברות (בקרוב) תסנכרן תוכנית והזמנות בין מכשירים.",
+      "body": "התוכנית וההזמנות נמצאות במכשיר זה. השתמשו בחיפוש לפי אימייל בדף ההזמנות כדי לטעון הזמנות ממכשיר אחר."
     },
     "settings": {
-      "title": "Settings",
-      "loading": "Loading…",
-      "description": "Personalize your experience. We use these to surface places and trails that match your style.",
+      "title": "הגדרות",
+      "loading": "טוען…",
+      "description": "התאימו את החוויה. נשתמש בזה כדי להציע מקומות ושבילים שמתאימים לסגנון שלכם.",
       "interests": {
-        "title": "Interests",
-        "body": "Pick what excites you. Discover, Right Now, and plan suggestions will lean toward these.",
+        "title": "תחומי עניין",
+        "body": "בחרו מה מעניין אתכם. גילוי, עכשיו בקרבתכם והצעות תכנון יתבססו על זה.",
         "labels": {
-          "active": "Hiking & trails",
+          "active": "טיולים ושבילים",
           "bouldering": "Bouldering+",
-          "climbing": "Rock climbing",
-          "cycling": "Cycling",
-          "culture": "History & archaeology",
-          "wine": "Wine & tastings",
-          "wellness": "Wellness & relaxation",
-          "villages": "Mountain villages"
+          "climbing": "טיפוס סלעים",
+          "cycling": "רכיבה",
+          "culture": "היסטוריה וארכיאולוגיה",
+          "wine": "יין וטעימות",
+          "wellness": "בריאות והרפיה",
+          "villages": "כפרי הרים"
         }
       },
       "travelStyle": {
-        "title": "Travel style",
-        "body": "Helps tailor suggestions (e.g. family-friendly spots, couples retreats).",
+        "title": "סגנון טיול",
+        "body": "עוזר להתאים הצעות (משפחות, זוגות, וכו').",
         "labels": {
-          "solo": "Solo",
-          "couple": "Couple",
-          "family": "Families",
-          "group": "Group",
-          "nomad": "Digital nomad"
+          "solo": "לבד",
+          "couple": "זוג",
+          "family": "משפחות",
+          "group": "קבוצה",
+          "nomad": "נווד דיגיטלי"
         }
       },
       "regions": {
-        "title": "Favorite regions",
-        "body": "We'll boost content from these areas in Discover and Right Now."
+        "title": "אזורים מועדפים",
+        "body": "נדגיש תוכן מאזורים אלה בגילוי ובעכשיו בקרבתכם."
       },
       "notifications": {
-        "title": "Notifications",
-        "body": "If you enable push, we'll use these preferences for alerts.",
-        "trails": "Trail condition updates (Troodos, etc.)",
-        "events": "Winter events and festivals"
+        "title": "התראות",
+        "body": "אם תפעילו push, נשתמש בהעדפות האלה להתראות.",
+        "trails": "עדכוני תנאי שבילים (Troodos וכו')",
+        "events": "אירועי חורף ופסטיבלים"
       },
       "privacy": {
-        "title": "Data & privacy",
-        "body": "Control what we keep on this device. For data we hold (bookings, trail reports), you can request export or deletion.",
-        "clear": "Clear recently viewed",
-        "cleared": "Recently viewed cleared",
-        "requestExport": "Request data export",
-        "requestDeletion": "Request deletion",
+        "title": "נתונים ופרטיות",
+        "body": "שליטה במה שנשמר במכשיר זה. לנתונים שאנו מחזיקים (הזמנות, דיווחי שבילים) אפשר לבקש ייצוא או מחיקה.",
+        "clear": "נקו צפיות אחרונות",
+        "cleared": "הצפיות האחרונות נוקו",
+        "requestExport": "בקשת ייצוא נתונים",
+        "requestDeletion": "בקשת מחיקה",
         "footer": {
-          "prefix": "Include the email used for bookings or trail reports. We respond within 30 days. See our",
-          "privacyPolicy": "Privacy Policy",
+          "prefix": "כללו את האימייל ששימש להזמנות או דיווחי שבילים. נענה תוך 30 יום. ראו את",
+          "privacyPolicy": "מדיניות הפרטיות",
           "suffix": "."
         }
       },
-      "backToAccount": "← Back to account",
+      "backToAccount": "← חזרה לחשבון",
       "meta": {
-        "title": "Settings | My account | Cyprus Winter",
-        "description": "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences."
+        "title": "הגדרות | החשבון שלי | Cyprus Winter",
+        "description": "התאימו את חוויית Cyprus Winter: תחומי עניין, אזורים והתראות."
       }
     },
     "meta": {
-      "title": "My account | Cyprus Winter",
-      "description": "Sign in to sync your plan and bookings across devices. Your plan and tasting requests will follow you wherever you go."
+      "title": "החשבון שלי | Cyprus Winter",
+      "description": "התחברו כדי לסנכרן תוכנית והזמנות בין מכשירים."
     }
   },
   "search": {
@@ -2588,15 +2588,15 @@
   },
   "auth": {
     "layout": {
-      "heroAlt": "Cyprus winter — trails, villages, wineries"
+      "heroAlt": "קפריסין בחורף — שבילים, כפרים, יקבים"
     },
     "social": {
-      "orContinueWith": "Or continue with",
+      "orContinueWith": "או המשיכו עם",
       "providers": {
         "google": "Google",
         "apple": "Apple"
       },
-      "aria": "{intent, select, signup {Sign up with {provider}} other {Sign in with {provider}}}"
+      "aria": "{intent, select, signup {הרשמה עם {provider}} other {התחברות עם {provider}}}"
     },
     "login": {
       "title": "ברוכים השבים",
@@ -2648,42 +2648,42 @@
       }
     },
     "forgot": {
-      "title": "Forgot your password?",
-      "subtitle": "Enter your email and we’ll send you a link to set a new password.",
-      "emailLabel": "Email",
+      "title": "שכחתם סיסמה?",
+      "subtitle": "הזינו אימייל ונשלח קישור לסיסמה חדשה.",
+      "emailLabel": "אימייל",
       "emailPlaceholder": "you@example.com",
-      "errorInvalidEmail": "Please enter a valid email address.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "successTitle": "Reset link sent",
-      "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
-      "ctaSend": "Send reset link",
-      "ctaSending": "Sending…",
+      "errorInvalidEmail": "אנא הזינו כתובת אימייל תקינה.",
+      "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
+      "successTitle": "קישור איפוס נשלח",
+      "successSubtitle": "שלחנו קישור איפוס סיסמה ל-<strong>{email}</strong>. לחצו עליו כדי להגדיר סיסמה חדשה.",
+      "ctaSend": "שליחת קישור איפוס",
+      "ctaSending": "שולחים…",
       "meta": {
         "title": "איפוס סיסמה | Cyprus Winter",
         "description": "בקשו קישור לאיפוס סיסמה לחשבון Cyprus Winter."
       }
     },
     "reset": {
-      "inlinePasswordHint": "At least 6 characters",
-      "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
-      "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "invalidLinkTitle": "Invalid or expired link",
-      "invalidLinkSubtitle": "This reset link may have expired. Request a new one to set your password.",
-      "configTitle": "Set new password",
-      "configSubtitle": "Auth is being set up. Use the reset link from your email when ready.",
-      "successTitle": "Password updated",
-      "successSubtitle": "Your password has been set. You can now sign in with your new password.",
-      "kicker": "Set new password",
-      "title": "Choose a new password",
-      "subtitle": "Enter your new password below.",
-      "newPasswordLabel": "New password",
-      "confirmPasswordLabel": "Confirm password",
+      "inlinePasswordHint": "לפחות 6 תווים",
+      "errorPasswordsDontMatch": "הסיסמאות לא תואמות. ודאו ששני השדות זהים.",
+      "errorPasswordTooShort": "הסיסמה קצרה מדי. השתמשו לפחות ב-6 תווים.",
+      "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
+      "invalidLinkTitle": "קישור לא תקין או שפג תוקפו",
+      "invalidLinkSubtitle": "ייתכן שהקישור פג. בקשו קישור חדש להגדרת סיסמה.",
+      "configTitle": "הגדרת סיסמה חדשה",
+      "configSubtitle": "ההתחברות בהקמה. השתמשו בקישור מהאימייל כשמוכן.",
+      "successTitle": "הסיסמה עודכנה",
+      "successSubtitle": "הסיסמה הוגדרה. אפשר להתחבר עם הסיסמה החדשה.",
+      "kicker": "סיסמה חדשה",
+      "title": "בחרו סיסמה חדשה",
+      "subtitle": "הזינו את הסיסמה החדשה למטה.",
+      "newPasswordLabel": "סיסמה חדשה",
+      "confirmPasswordLabel": "אימות סיסמה",
       "passwordPlaceholder": "••••••••",
-      "ariaShowPassword": "Show password",
-      "ariaHidePassword": "Hide password",
-      "ctaUpdate": "Update password",
-      "ctaUpdating": "Updating…",
+      "ariaShowPassword": "הצגת סיסמה",
+      "ariaHidePassword": "הסתרת סיסמה",
+      "ctaUpdate": "עדכון סיסמה",
+      "ctaUpdating": "מעדכנים…",
       "meta": {
         "title": "סיסמה חדשה | Cyprus Winter",
         "description": "בחרו סיסמה חדשה לחשבון Cyprus Winter."

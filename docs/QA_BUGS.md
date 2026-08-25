@@ -1656,3 +1656,4 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 |----|------|-------|-----|
 | BUG-313 | i18n | Funnel-path English on error/travelTrust/airport/trails/plan meta for fr/he/ro; Hebrew typos in soft-gaps; tier-1 el/de/pl gaps | `beta-locale-funnel-polish-overrides.json` + `patch-locale-funnel-polish.mjs`; fixed `chrome-locale-overrides` plan terminology; Hebrew soft-gap typos |
 | BUG-314 | i18n | Beta chrome batch 2 — onboarding, help, search page, auth login/register still English in fr/he/ro | `beta-locale-chrome-batch2-overrides.json` + `patch-locale-chrome-batch2.mjs` (~67–68 keys/locale) |
+| BUG-315 | i18n | Beta chrome batch 3 — account, auth forgot/reset, push, auth layout/social still English in fr/he/ro | `beta-locale-chrome-batch3-overrides.json` + `patch-locale-chrome-batch3.mjs` (~102 keys/locale) |
