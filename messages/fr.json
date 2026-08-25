@@ -818,10 +818,10 @@
     }
   },
   "notFound": {
-    "title": "Page not found",
-    "body": "No worries. This page doesn't exist or has been moved. These things happen. The island's still here. The trails, villages, and tastings are waiting. Head home or start exploring.",
-    "hint": "Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you're not sure where to start.",
-    "discoverCyprus": "Discover Cyprus"
+    "title": "Page introuvable",
+    "body": "Pas de souci. Cette page n'existe pas ou a été déplacée. Ça arrive. L'île est toujours là. Sentiers, villages et dégustations vous attendent. Retournez à l'accueil ou commencez à explorer.",
+    "hint": "Utilisez le menu pour Découvrir, Sentiers ou Plan. Ou touchez Demander à l'IA si vous ne savez pas par où commencer.",
+    "discoverCyprus": "Découvrir Chypre"
   },
   "discover": {
     "addToPlan": "Ajouter au plan",
@@ -1494,68 +1494,68 @@
       }
     },
     "report": {
-      "context": "Reporting: <strong>{name}</strong>. Help others by sharing what you saw. Quick and anonymous if you prefer.",
+      "context": "Signalement : <strong>{name}</strong>. Aidez les autres en partageant ce que vous avez vu. Rapide et anonyme si vous voulez.",
       "fields": {
-        "status": "Status",
-        "surface": "Surface",
-        "note": "Note (optional)",
-        "email": "Email (optional, for verification)"
+        "status": "Statut",
+        "surface": "Sol",
+        "note": "Note (facultatif)",
+        "email": "E-mail (facultatif, pour confirmation)"
       },
       "options": {
         "status": {
           "open": {
-            "label": "Open",
-            "desc": "Good to go"
+            "label": "Ouvert",
+            "desc": "Tout va bien"
           },
           "caution": {
-            "label": "Caution",
-            "desc": "Muddy, wind, or minor issues"
+            "label": "Prudence",
+            "desc": "Boue, vent ou petits problèmes"
           },
           "closed": {
-            "label": "Closed",
-            "desc": "Snow, ice, or unsafe"
+            "label": "Fermé",
+            "desc": "Neige, glace ou dangereux"
           }
         },
         "surface": {
           "dry": {
-            "label": "Dry",
-            "desc": "Firm ground, good grip"
+            "label": "Sec",
+            "desc": "Sol ferme, bonne adhérence"
           },
           "muddy": {
-            "label": "Muddy",
-            "desc": "Soft or wet patches"
+            "label": "Boueux",
+            "desc": "Zones molles ou humides"
           },
           "snow": {
-            "label": "Snow",
-            "desc": "Snow on the ground"
+            "label": "Neige",
+            "desc": "Neige au sol"
           },
           "icy": {
-            "label": "Icy",
-            "desc": "Ice, may need spikes"
+            "label": "Glacé",
+            "desc": "Glace, crampons peut-être nécessaires"
           }
         }
       },
       "placeholders": {
-        "note": "e.g. Muddy near the stream crossing. Microspikes helped.",
+        "note": "ex. boue près du gué. Micro-crampons utiles.",
         "email": "your@email.com"
       },
-      "errorHelp": "Check your connection, try again, or go back to the trail.",
+      "errorHelp": "Vérifiez votre connexion, réessayez ou retournez au sentier.",
       "submit": {
-        "idle": "Submit report",
-        "loading": "Submitting…"
+        "idle": "Envoyer le signalement",
+        "loading": "Envoi…"
       },
       "success": {
-        "aria": "Report submitted successfully",
-        "body": "Hikers heading to {region} will use this. Every report counts.",
-        "notStored": "Thanks — we received your report but couldn't save it to our database yet. Conditions on the trail page may not update until storage is back.",
-        "backTitle": "Back to {name}",
-        "backCta": "Back to {name}",
-        "addTitle": "Add {name} to your plan",
-        "addCta": "Add {name} to your plan"
+        "aria": "Signalement envoyé avec succès",
+        "body": "Les randonneurs vers {region} s'en serviront. Chaque signalement compte.",
+        "notStored": "Merci — nous avons reçu le signalement mais n'avons pas pu le sauvegarder. Les conditions sur la page sentier peuvent ne pas se mettre à jour tant que la sauvegarde ne revient pas.",
+        "backTitle": "Retour à {name}",
+        "backCta": "Retour à {name}",
+        "addTitle": "Ajouter {name} à votre plan",
+        "addCta": "Ajouter {name} à votre plan"
       },
       "meta": {
-        "title": "Report trail conditions | Cyprus Winter",
-        "description": "Submit a quick update on trail conditions to help other hikers."
+        "title": "Signaler les conditions du sentier | Cyprus Winter",
+        "description": "Envoyez une mise à jour rapide sur les conditions du sentier."
       }
     },
     "tips": {
@@ -2355,19 +2355,19 @@
         "learnMoreCta": "Learn more"
       },
       "highlights": {
-        "title": "Don't miss",
-        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+        "title": "À ne pas manquer",
+        "lead": "L'Épiphanie et le carnaval, c'est quand l'île montre son âme. Arrivez tôt. Habillez-vous chaudement."
       },
       "tips": {
-        "title": "Planning tips",
-        "item1": "Check official sites for exact dates — many events move year to year.",
-        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
-        "item3": "Arrive early for popular events. The best spots fill quickly.",
-        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+        "title": "Conseils de planification",
+        "item1": "Vérifiez les sites officiels pour les dates exactes — beaucoup d'événements changent chaque année.",
+        "item2": "Réservez tôt pour l'Épiphanie, le carnaval et les marchés de Noël.",
+        "item3": "Arrivez tôt aux événements populaires. Les meilleures places partent vite.",
+        "item4": "Combinez événements avec sentiers ou villages proches. Randonnée le matin, événement l'après-midi."
       },
       "footer": {
-        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
-        "weatherLink": "Weather by month"
+        "hubBody": "Ajoutez des événements à votre plan — ou demandez à l'IA ce qui se passe pendant votre visite.",
+        "weatherLink": "Météo par mois"
       },
       "aria": {
         "actions": "Events page actions"
@@ -2776,7 +2776,7 @@
           "placeholder": "marie@example.com"
         },
         "notes": {
-          "label": "Notes",
+          "label": "Remarques",
           "optional": "(facultatif)",
           "hint": "Niveau, expérience, préférence de sentier — tout ce qui les aide à préparer.",
           "placeholder": "Première randonnée d’hiver, envie de cascades, départ tôt — tout ce qui aide"
@@ -2842,7 +2842,7 @@
           "placeholder": "marie@example.com"
         },
         "notes": {
-          "label": "Notes",
+          "label": "Remarques",
           "optional": "(facultatif)",
           "hint": "Table au coin du feu ? Régime alimentaire ? Mentionnez-le — les domaines ont l’habitude.",
           "placeholder": "Allergies, occasion, coin du feu ou terrasse — tout ce qui les aide à vous accueillir"
@@ -2902,14 +2902,14 @@
         "ctaAria": "Réserver une randonnée guidée avec {name}",
         "footerBrowseTrails": "Tous les sentiers",
         "footerMyBookings": "Mes réservations",
-        "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →",
-        "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast",
+        "browseLicensedDirectory": "Tous les guides officiels (CTO) →",
+        "partnerCount": "{count} partenaires vérifiés au Troodos, Paphos, Nicosie et côte est",
         "alsoWineries": "Vous préférez une dégustation ? Réservez une visite de cave",
         "footer": {
-          "hubBody": "Request a guided hike, then add trails and villages to your plan—or ask the AI for a winter day."
+          "hubBody": "Demandez une randonnée guidée et ajoutez sentiers et villages à votre plan — ou demandez à l'IA."
         },
         "aria": {
-          "actions": "Book a guide actions"
+          "actions": "Actions page réservation guide"
         }
       },
       "wineryList": {
@@ -2923,10 +2923,10 @@
         "disclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération.",
         "alsoGuides": "Randonnée au Troodos ? Réservez un guide agréé",
         "footer": {
-          "hubBody": "Book a tasting, then build a day around the village or trail nearby—or ask the AI."
+          "hubBody": "Réservez une dégustation et construisez une journée autour d'un village ou sentier — ou demandez à l'IA."
         },
         "aria": {
-          "actions": "Book a tasting actions"
+          "actions": "Actions page réservation dégustation"
         }
       },
       "wineryDetail": {

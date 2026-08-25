@@ -818,10 +818,10 @@
     }
   },
   "notFound": {
-    "title": "Page not found",
-    "body": "No worries. This page doesn't exist or has been moved. These things happen. The island's still here. The trails, villages, and tastings are waiting. Head home or start exploring.",
-    "hint": "Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you're not sure where to start.",
-    "discoverCyprus": "Discover Cyprus"
+    "title": "הדף לא נמצא",
+    "body": "אין בעיה. הדף הזה לא קיים או הועבר. זה קורה. האי עדיין כאן. השבילים, הכפרים והטעימות מחכים. חזרו הביתה או התחילו לגלות.",
+    "hint": "השתמשו בתפריט לגילוי, שבילים או תכנון. או הקישו על שאלו את ה-AI אם לא בטוחים מאיפה להתחיל.",
+    "discoverCyprus": "גלו את קפריסין"
   },
   "discover": {
     "addToPlan": "הוסף לתכנית",
@@ -1494,68 +1494,68 @@
       }
     },
     "report": {
-      "context": "Reporting: <strong>{name}</strong>. Help others by sharing what you saw. Quick and anonymous if you prefer.",
+      "context": "דיווח: <strong>{name}</strong>. עזרו לאחרים לשתף מה ראיתם. מהיר ואנונימי אם תרצו.",
       "fields": {
-        "status": "Status",
-        "surface": "Surface",
-        "note": "Note (optional)",
-        "email": "Email (optional, for verification)"
+        "status": "סטטוס",
+        "surface": "משטח",
+        "note": "הערה (רשות)",
+        "email": "אימייל (רשות, לאישור)"
       },
       "options": {
         "status": {
           "open": {
-            "label": "Open",
-            "desc": "Good to go"
+            "label": "פתוח",
+            "desc": "הכל בסדר"
           },
           "caution": {
-            "label": "Caution",
-            "desc": "Muddy, wind, or minor issues"
+            "label": "זהירות",
+            "desc": "בוץ, רוח או בעיות קטנות"
           },
           "closed": {
-            "label": "Closed",
-            "desc": "Snow, ice, or unsafe"
+            "label": "סגור",
+            "desc": "שלג, קרח או לא בטוח"
           }
         },
         "surface": {
           "dry": {
-            "label": "Dry",
-            "desc": "Firm ground, good grip"
+            "label": "יבש",
+            "desc": "קרקע יציבה, אחיזה טובה"
           },
           "muddy": {
-            "label": "Muddy",
-            "desc": "Soft or wet patches"
+            "label": "בוצי",
+            "desc": "אזורים רכים או לחים"
           },
           "snow": {
-            "label": "Snow",
-            "desc": "Snow on the ground"
+            "label": "שלג",
+            "desc": "שלג על הקרקע"
           },
           "icy": {
-            "label": "Icy",
-            "desc": "Ice, may need spikes"
+            "label": "קרח",
+            "desc": "קרח, אולי צריך מיקרו-ספייקים"
           }
         }
       },
       "placeholders": {
-        "note": "e.g. Muddy near the stream crossing. Microspikes helped.",
+        "note": "למשל בוץ ליד מעבר הנחל. מיקרו-ספייקים עזרו.",
         "email": "your@email.com"
       },
-      "errorHelp": "Check your connection, try again, or go back to the trail.",
+      "errorHelp": "בדקו חיבור, נסו שוב או חזרו לשביל.",
       "submit": {
-        "idle": "Submit report",
-        "loading": "Submitting…"
+        "idle": "שליחת דיווח",
+        "loading": "שולחים…"
       },
       "success": {
-        "aria": "Report submitted successfully",
-        "body": "Hikers heading to {region} will use this. Every report counts.",
-        "notStored": "Thanks — we received your report but couldn't save it to our database yet. Conditions on the trail page may not update until storage is back.",
-        "backTitle": "Back to {name}",
-        "backCta": "Back to {name}",
-        "addTitle": "Add {name} to your plan",
-        "addCta": "Add {name} to your plan"
+        "aria": "הדיווח נשלח בהצלחה",
+        "body": "מטיילים לכיוון {region} ישתמשו בזה. כל דיווח חשוב.",
+        "notStored": "תודה — קיבלנו את הדיווח אבל לא הצלחנו לשמור. ייתכן שהתנאים בדף השביל לא יתעדכנו עד שהשמירה תחזור.",
+        "backTitle": "חזרה ל-{name}",
+        "backCta": "חזרה ל-{name}",
+        "addTitle": "הוספת {name} לתוכנית",
+        "addCta": "הוספת {name} לתוכנית"
       },
       "meta": {
-        "title": "Report trail conditions | Cyprus Winter",
-        "description": "Submit a quick update on trail conditions to help other hikers."
+        "title": "דיווח תנאי שביל | Cyprus Winter",
+        "description": "שלחו עדכון קצר על תנאי השביל."
       }
     },
     "tips": {
@@ -2355,19 +2355,19 @@
         "learnMoreCta": "Learn more"
       },
       "highlights": {
-        "title": "Don't miss",
-        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+        "title": "אל תפספסו",
+        "lead": "Epiphany וקarnaval — כשהאי מראה את הנשמה שלו. הגיעו מוקדם. התלבשו חם."
       },
       "tips": {
-        "title": "Planning tips",
-        "item1": "Check official sites for exact dates — many events move year to year.",
-        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
-        "item3": "Arrive early for popular events. The best spots fill quickly.",
-        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+        "title": "טיפים לתכנון",
+        "item1": "בדקו אתרים רשמיים לתאריכים מדויקים — הרבה אירועים משתנים משנה לשנה.",
+        "item2": "הזמינו מוקדם ל-Epiphany, קarnaval ושווקי חג.",
+        "item3": "הגיעו מוקדם לאירועים פופולריים. המקומות הטובים נגמרים מהר.",
+        "item4": "שלבו אירועים עם שבילים או כפרים קרובים. טיול בוקר, אירוע אחר הצהריים."
       },
       "footer": {
-        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
-        "weatherLink": "Weather by month"
+        "hubBody": "הוסיפו אירועים לתוכנית — או שאלו את ה-AI מה קורה בזמן הביקור.",
+        "weatherLink": "מזג אוויר לפי חודש"
       },
       "aria": {
         "actions": "Events page actions"
@@ -2773,7 +2773,7 @@
         },
         "guestEmail": {
           "label": "אימייל",
-          "placeholder": "john@example.com"
+          "placeholder": "name@example.com"
         },
         "notes": {
           "label": "הערות",
@@ -2839,7 +2839,7 @@
         },
         "guestEmail": {
           "label": "אימייל",
-          "placeholder": "john@example.com"
+          "placeholder": "name@example.com"
         },
         "notes": {
           "label": "הערות",
@@ -2902,14 +2902,14 @@
         "ctaAria": "הזמנת הליכה מודרכת עם {name}",
         "footerBrowseTrails": "כל השבילים",
         "footerMyBookings": "ההזמנות שלי",
-        "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →",
-        "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast",
+        "browseLicensedDirectory": "כל המדריכים הרשמיים (CTO) →",
+        "partnerCount": "{count} שותפים מאומתים ב-Troodos, Paphos, Nicosia וחוף המזרח",
         "alsoWineries": "מעדיפים טעימת יין? הזמינו ביקור ביקב",
         "footer": {
-          "hubBody": "Request a guided hike, then add trails and villages to your plan—or ask the AI for a winter day."
+          "hubBody": "בקשו טיול מודרך והוסיפו שבילים וכפרים לתוכנית — או שאלו את ה-AI."
         },
         "aria": {
-          "actions": "Book a guide actions"
+          "actions": "פעולות דף הזמנת מדריך"
         }
       },
       "wineryList": {
@@ -2923,10 +2923,10 @@
         "disclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות.",
         "alsoGuides": "מטיילים בטרודוס? הזמינו מדריך מורשה",
         "footer": {
-          "hubBody": "Book a tasting, then build a day around the village or trail nearby—or ask the AI."
+          "hubBody": "הזמינו טעימה ובנו יום סביב כפר או שביל — או שאלו את ה-AI."
         },
         "aria": {
-          "actions": "Book a tasting actions"
+          "actions": "פעולות דף הזמנת טעימה"
         }
       },
       "wineryDetail": {
