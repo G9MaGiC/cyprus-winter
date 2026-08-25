@@ -1009,42 +1009,42 @@
       "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
     },
     "detail": {
-      "pageNavAria": "Page navigation",
-      "articleAria": "{name}, {type} in {region}",
-      "imageAlt": "{name}, {region}—{type} in Cyprus winter",
-      "badgeEat": "Eat",
-      "bufferZoneWarning": "Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).",
+      "pageNavAria": "Navigation de page",
+      "articleAria": "{name}, {type} dans {region}",
+      "imageAlt": "{name}, {region} — {type} à Chypre en hiver",
+      "badgeEat": "Manger",
+      "bufferZoneWarning": "Vérifiez l'accès avant de partir. Zone tampon — les conditions peuvent changer. Confirmez avec des sources locales ou l'info touristique (1460).",
       "winter": {
-        "open": "Open in winter",
-        "seasonsLabel": "Seasons:",
+        "open": "Ouvert en hiver",
+        "seasonsLabel": "Saisons :",
         "seasons": {
-          "winter": "winter",
-          "spring": "spring",
-          "summer": "summer",
-          "autumn": "autumn"
+          "winter": "hiver",
+          "spring": "printemps",
+          "summer": "été",
+          "autumn": "automne"
         },
-        "indoorOutdoorLabel": "Setting:",
+        "indoorOutdoorLabel": "Cadre :",
         "indoorOutdoor": {
-          "indoor": "indoor",
-          "outdoor": "outdoor",
-          "mixed": "mixed"
+          "indoor": "intérieur",
+          "outdoor": "extérieur",
+          "mixed": "mixte"
         },
-        "budgetLabel": "Budget:",
+        "budgetLabel": "Budget :",
         "budget": {
-          "free": "free",
-          "low": "low",
-          "mid": "mid",
-          "high": "high"
+          "free": "gratuit",
+          "low": "bas",
+          "mid": "moyen",
+          "high": "élevé"
         },
-        "galleryHeading": "Gallery",
-        "galleryAlt": "{name} gallery photo {index}"
+        "galleryHeading": "Galerie",
+        "galleryAlt": "Photo {index} de la galerie {name}"
       },
       "practical": {
-        "title": "Practical info",
-        "hours": "Hours:",
-        "transport": "Transport:",
-        "parking": "Parking:",
-        "accessibility": "Accessibility:"
+        "title": "Infos pratiques",
+        "hours": "Horaires :",
+        "transport": "Accès :",
+        "parking": "Parking :",
+        "accessibility": "Accessibilité :"
       },
       "booking": {
         "title": "Réserver et contacter",
@@ -1067,72 +1067,72 @@
         "bookGuide": "Réserver un guide →",
         "alcoholDisclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération."
       },
-      "bestTimeLabel": "Best time:",
-      "directionsAria": "Get directions (opens in new tab)",
-      "directionsCta": "Get directions →",
-      "actionsAria": "Place actions",
+      "bestTimeLabel": "Meilleure période :",
+      "directionsAria": "Itinéraire (s'ouvre dans un nouvel onglet)",
+      "directionsCta": "Itinéraire →",
+      "actionsAria": "Actions sur le lieu",
       "footer": {
-        "body": "Add this place to your plan and pair it with a trail or village nearby."
+        "body": "Ajoutez ce lieu à votre plan et associez-le à un sentier ou village proche."
       },
       "headings": {
-        "highlights": "Highlights",
-        "greatFor": "Great for",
-        "dining": "Dining",
-        "shops": "Shops"
+        "highlights": "Points forts",
+        "greatFor": "Idéal pour",
+        "dining": "Restauration",
+        "shops": "Boutiques"
       },
       "whyNow": {
-        "title": "Why this now",
-        "bestFor": "Best for {types}.",
-        "regionFlow": "{region} is a practical stop for the same day plan flow.",
-        "saveCompare": "Add to your plan to pair it with a trail or village nearby."
+        "title": "Pourquoi maintenant",
+        "bestFor": "Idéal pour {types}.",
+        "regionFlow": "{region} est une étape pratique pour le même programme de journée.",
+        "saveCompare": "Ajoutez à votre plan pour l'associer à un sentier ou village proche."
       },
       "visitTaste": {
-        "title": "Visit & taste"
+        "title": "Visite & dégustation"
       },
-      "wineRoute": "Wine route: {route}",
+      "wineRoute": "Route des vins : {route}",
       "ourWines": {
-        "title": "Our wines"
+        "title": "Nos vins"
       },
       "location": {
-        "title": "Location"
+        "title": "Emplacement"
       },
-      "localSecretHeading": "Local secret",
-      "backstoryHeading": "Backstory",
+      "localSecretHeading": "Secret local",
+      "backstoryHeading": "Histoire",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this place. From people who live here.",
-        "seeAll": "See all local secrets →"
+        "title": "Secrets locaux",
+        "intro": "Conseils d'initiés pour ce lieu. De la part de ceux qui y vivent.",
+        "seeAll": "Tous les secrets locaux →"
       },
       "combineWith": {
-        "title": "Pair well with",
-        "description": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
-        "addToPlanAria": "Add {name} to plan"
+        "title": "Se marie bien avec",
+        "description": "Associez sentiers, villages ou domaines à proximité. Matin ici, après-midi ailleurs, ou l'inverse.",
+        "addToPlanAria": "Ajouter {name} au plan"
       },
       "map": {
-        "iframeTitle": "Map: {name}",
-        "loadMap": "Load map"
+        "iframeTitle": "Carte : {name}",
+        "loadMap": "Charger la carte"
       },
       "metadata": {
-        "notFound": "Not found",
-        "typeWinery": "Winery",
-        "typeEat": "Eat"
+        "notFound": "Introuvable",
+        "typeWinery": "Domaine",
+        "typeEat": "Manger"
       },
       "trustTiming": {
-        "title": "Trust and timing",
+        "title": "Confiance et timing",
         "body": "Détails partenaire vérifiés avec passation pratique. Ajoutez d’abord à votre plan, puis demandez au partenaire — confirmation par e-mail."
       },
       "similar": {
-        "title": "More {type} in {region}",
+        "title": "Plus de {type} dans {region}",
         "typeLabels": {
-          "winery": "wineries",
-          "restaurant": "eat & drink",
-          "beach": "beaches",
-          "ancient": "ancient sites",
+          "winery": "domaines",
+          "restaurant": "manger & boire",
+          "beach": "plages",
+          "ancient": "sites antiques",
           "village": "villages",
-          "monastery": "monasteries",
-          "activity": "active & indoor spots",
-          "nature": "nature & coasts",
-          "default": "places"
+          "monastery": "monastères",
+          "activity": "activités & intérieur",
+          "nature": "nature & côtes",
+          "default": "lieux"
         }
       }
     },
@@ -1559,37 +1559,37 @@
       }
     },
     "tips": {
-      "summary": "Before you go",
-      "disclaimer": "Conditions are crowd-sourced, not guaranteed. Hiking involves risks — prepare for weather, pack layers, and follow local advice.",
-      "shortChecklist": "Layers, conditions check, tell someone your route.",
-      "addToPlan": "Add to plan →",
-      "reportConditions": "Report conditions",
-      "buildDayHint": "Build a day — add trails to your plan",
-      "troodosGuide": "Troodos December guide →"
+      "summary": "Avant de partir",
+      "disclaimer": "Les conditions sont crowdsourcées, non garanties. La randonnée comporte des risques — préparez-vous à la météo, emportez des couches et suivez les conseils locaux.",
+      "shortChecklist": "Couches, vérification des conditions, dites votre itinéraire à quelqu'un.",
+      "addToPlan": "Ajouter au plan →",
+      "reportConditions": "Signaler les conditions",
+      "buildDayHint": "Construire une journée — ajoutez des sentiers à votre plan",
+      "troodosGuide": "Guide Troodos décembre →"
     },
     "filters": {
       "aria": {
-        "section": "Filter trails",
-        "status": "Filter by trail status",
-        "difficulty": "Filter by difficulty",
-        "region": "Filter by region"
+        "section": "Filtrer les sentiers",
+        "status": "Filtrer par statut du sentier",
+        "difficulty": "Filtrer par difficulté",
+        "region": "Filtrer par région"
       },
       "sr": {
-        "status": "Filter by status"
+        "status": "Filtrer par statut"
       },
       "labels": {
-        "difficulty": "Difficulty",
-        "region": "Region"
+        "difficulty": "Difficulté",
+        "region": "Région"
       },
       "all": {
-        "status": "All status",
-        "difficulties": "All difficulties",
-        "regions": "All regions"
+        "status": "Tous les statuts",
+        "difficulties": "Toutes les difficultés",
+        "regions": "Toutes les régions"
       },
       "status": {
-        "open": "Open ({count})",
-        "caution": "Caution ({count})",
-        "closed": "Closed ({count})"
+        "open": "Ouvert ({count})",
+        "caution": "Prudence ({count})",
+        "closed": "Fermé ({count})"
       }
     },
     "detail": {
@@ -1598,83 +1598,83 @@
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
-        "jumpToSection": "Jump to section",
-        "trailActions": "Trail actions",
+        "jumpToSection": "Aller à la section",
+        "trailActions": "Actions sur le sentier",
         "actionsGroup": "Actions"
       },
       "hero": {
-        "elevationGain": "{meters}m gain",
+        "elevationGain": "{meters}m de dénivelé",
         "elevationMax": "Max {meters}m",
-        "trailheadLabel": "Trailhead: {name}",
-        "navigateToTrailhead": "Navigate to trailhead →"
+        "trailheadLabel": "Départ : {name}",
+        "navigateToTrailhead": "Naviguer vers le départ →"
       },
       "nav": {
-        "overview": "Overview",
+        "overview": "Aperçu",
         "conditions": "Conditions",
-        "map": "Map",
-        "waypoints": "Waypoints",
-        "pairWith": "Pair with"
+        "map": "Carte",
+        "waypoints": "Points de passage",
+        "pairWith": "Associer avec"
       },
-      "topSightsTitle": "Top sights",
+      "topSightsTitle": "Incontournables",
       "conditions": {
-        "latestFromHikers": "Latest from hikers",
-        "communityReport": "Community report—not official. Timestamp shows when it was shared.",
-        "editorialConditions": "Seasonal guide snapshot—not a live report. Submit a report if you were just on the trail.",
-        "currentConditions": "Current conditions",
-        "titleNoData": "Trail conditions",
-        "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
-        "shareWhatYouSaw": "Share what you saw",
-        "beFirst": "Be the first to report",
-        "recentReportsCount": "{count} recent reports",
-        "surfaceLabel": "Surface: {surface}",
-        "temperatureAtTrailhead": "{temperature}°C at trailhead",
-        "windAtTrailhead": "{wind} km/h wind"
+        "latestFromHikers": "Derniers signalements des randonneurs",
+        "communityReport": "Signalement communautaire — pas officiel. L'horodatage indique quand il a été partagé.",
+        "editorialConditions": "Aperçu saisonnier — pas un signalement en direct. Envoyez un signalement si vous venez d'y être.",
+        "currentConditions": "Conditions actuelles",
+        "titleNoData": "Conditions du sentier",
+        "noRecentBody": "Pas de conditions récentes pour ce sentier. Vous venez de revenir ? Partagez ce que vous avez vu — une minute suffit.",
+        "shareWhatYouSaw": "Partagez ce que vous avez vu",
+        "beFirst": "Soyez le premier à signaler",
+        "recentReportsCount": "{count} signalements récents",
+        "surfaceLabel": "Sol : {surface}",
+        "temperatureAtTrailhead": "{temperature}°C au départ",
+        "windAtTrailhead": "Vent {wind} km/h"
       },
       "liveWeather": {
         "temperature": "{min}–{max}°C",
-        "rain": "Rain expected",
-        "live": "Live"
+        "rain": "Pluie prévue",
+        "live": "En direct"
       },
       "safety": {
-        "title": "Safety & essentials",
-        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go.",
-        "easyTitle": "Good to know",
-        "easyBody": "Emergency 112 · Tourist info 1460. Water, sun protection, and comfortable shoes are enough for this walk."
+        "title": "Sécurité & essentiels",
+        "body": "Urgences 112 · Info touristique 1460 · Ambulance 199. Couches, eau, téléphone chargé. Vérifiez les conditions avant de partir.",
+        "easyTitle": "Bon à savoir",
+        "easyBody": "Urgences 112 · Info touristique 1460. Eau, protection solaire et chaussures confortables suffisent pour cette balade."
       },
-      "bookGuide": "Book a guide",
-      "winterSafetyTitle": "Winter safety",
-      "routeMapTitle": "Route map",
-      "winterNotesTitle": "Winter notes",
-      "keyStopsTitle": "Key stops",
-      "localSecretTitle": "Local secret",
-      "highlightsTitle": "Highlights",
-      "bestSeasonTitle": "Best season",
-      "whatToBringTitle": "What to bring",
+      "bookGuide": "Réserver un guide",
+      "winterSafetyTitle": "Sécurité en hiver",
+      "routeMapTitle": "Carte du parcours",
+      "winterNotesTitle": "Notes d'hiver",
+      "keyStopsTitle": "Étapes clés",
+      "localSecretTitle": "Secret local",
+      "highlightsTitle": "Points forts",
+      "bestSeasonTitle": "Meilleure saison",
+      "whatToBringTitle": "Quoi emporter",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this trail. Pairings, timings, what to do after.",
-        "seeAll": "See all local secrets →"
+        "title": "Secrets locaux",
+        "intro": "Conseils d'initiés pour ce sentier. Associations, horaires, quoi faire après.",
+        "seeAll": "Tous les secrets locaux →"
       },
       "relatedPlaces": {
-        "title": "Pair well with",
-        "description": "Hike in the morning, village or winery in the afternoon. Start by 9am."
+        "title": "Se marie bien avec",
+        "description": "Randonnée le matin, village ou domaine l'après-midi. Partez vers 9 h."
       },
       "footer": {
-        "addToPlanBody": "Add this trail to your plan and pair with a village or winery in the afternoon.",
-        "viewAllTrails": "View all trails"
+        "addToPlanBody": "Ajoutez ce sentier à votre plan et associez-le à un village ou domaine l'après-midi.",
+        "viewAllTrails": "Voir tous les sentiers"
       }
     },
     "conditionsStrip": {
-      "heading": "Conditions today",
-      "ariaViewList": "Trail conditions today — view list",
-      "openCount": "{count} open",
-      "cautionCount": "{count} caution",
-      "closedCount": "{count} closed",
-      "noReports": "Check reports",
-      "goodToGo": "Good to go",
-      "cautionOnly": "{count} trails need caution",
-      "withClosed": "{count} trails closed — check before you go",
-      "checkConditions": "Check trail conditions"
+      "heading": "Conditions aujourd'hui",
+      "ariaViewList": "Conditions des sentiers aujourd'hui — voir la liste",
+      "openCount": "{count} ouverts",
+      "cautionCount": "{count} avec prudence",
+      "closedCount": "{count} fermés",
+      "noReports": "Consulter les signalements",
+      "goodToGo": "Bon à partir",
+      "cautionOnly": "{count} sentiers nécessitent de la prudence",
+      "withClosed": "{count} sentiers fermés — vérifiez avant de partir",
+      "checkConditions": "Vérifier les conditions"
     },
     "emptyState": {
       "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
@@ -2315,30 +2315,30 @@
     "noMatch": "Nothing matches these filters. Try a different type or region.",
     "page": {
       "hero": {
-        "title": "Winter events",
-        "description": "Epiphany, carnival, markets, tastings. The island fills the short days with light and noise. November to March.",
-        "imageAlt": "Kykkos monastery, Troodos—Cyprus winter culture and events",
-        "planAria": "Plan your trip",
-        "planCta": "Plan your trip",
-        "note": "Dates may shift year to year. Check official sources before you travel.",
+        "title": "Événements d'hiver",
+        "description": "Épiphanie, carnaval, marchés, dégustations. L'île remplit les jours courts de lumière et de vie. Novembre à mars.",
+        "imageAlt": "Monastère de Kykkos, Troodos — culture et événements d'hiver à Chypre",
+        "planAria": "Planifier votre voyage",
+        "planCta": "Planifier votre voyage",
+        "note": "Les dates peuvent varier d'une année à l'autre. Vérifiez les sources officielles avant de voyager.",
         "updated": "Mis à jour chaque mois. Les dates bougent encore — vérifiez les sources officielles."
       },
       "filters": {
-        "aria": "Filter events",
+        "aria": "Filtrer les événements",
         "typeLabel": "Type",
-        "regionLabel": "Region",
-        "byTypeAria": "Filter by type",
-        "byRegionAria": "Filter by region",
-        "unknown": "Unknown filter — showing all events.",
-        "togglePrefix": "Filters:",
-        "toggleAll": "All",
-        "toggleShow": "Show",
-        "toggleHide": "Hide"
+        "regionLabel": "Région",
+        "byTypeAria": "Filtrer par type",
+        "byRegionAria": "Filtrer par région",
+        "unknown": "Filtre inconnu — affichage de tous les événements.",
+        "togglePrefix": "Filtres :",
+        "toggleAll": "Tout",
+        "toggleShow": "Afficher",
+        "toggleHide": "Masquer"
       },
       "monthNav": {
-        "aria": "Jump to month",
-        "title": "Jump to month",
-        "jumpTo": "Jump to {month}"
+        "aria": "Aller au mois",
+        "title": "Aller au mois",
+        "jumpTo": "Aller à {month}"
       },
       "monthFull": {
         "Nov": "November",
@@ -2348,11 +2348,11 @@
         "Mar": "March"
       },
       "card": {
-        "whenWhereAria": "When: {dates}. Where: {venue}",
-        "exploreRegionAria": "Explore {region}",
-        "exploreRegionCta": "Explore {region} →",
-        "learnMoreAria": "Learn more about {name}",
-        "learnMoreCta": "Learn more"
+        "whenWhereAria": "Quand : {dates}. Où : {venue}",
+        "exploreRegionAria": "Explorer {region}",
+        "exploreRegionCta": "Explorer {region} →",
+        "learnMoreAria": "En savoir plus sur {name}",
+        "learnMoreCta": "En savoir plus"
       },
       "highlights": {
         "title": "À ne pas manquer",

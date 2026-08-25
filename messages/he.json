@@ -1009,42 +1009,42 @@
       "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
     },
     "detail": {
-      "pageNavAria": "Page navigation",
-      "articleAria": "{name}, {type} in {region}",
-      "imageAlt": "{name}, {region}—{type} in Cyprus winter",
-      "badgeEat": "Eat",
-      "bufferZoneWarning": "Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).",
+      "pageNavAria": "ניווט בדף",
+      "articleAria": "{name}, {type} ב{region}",
+      "imageAlt": "{name}, {region} — {type} בקפריסין בחורף",
+      "badgeEat": "אוכל",
+      "bufferZoneWarning": "בדקו גישה לפני שיוצאים. אזור buffer zone — התנאים עלולים להשתנות. אמתו עם מקורות מקומיים או מידע תיירותי (1460).",
       "winter": {
-        "open": "Open in winter",
-        "seasonsLabel": "Seasons:",
+        "open": "פתוח בחורף",
+        "seasonsLabel": "עונות:",
         "seasons": {
-          "winter": "winter",
-          "spring": "spring",
-          "summer": "summer",
-          "autumn": "autumn"
+          "winter": "חורף",
+          "spring": "אביב",
+          "summer": "קיץ",
+          "autumn": "סתיו"
         },
-        "indoorOutdoorLabel": "Setting:",
+        "indoorOutdoorLabel": "סביבה:",
         "indoorOutdoor": {
-          "indoor": "indoor",
-          "outdoor": "outdoor",
-          "mixed": "mixed"
+          "indoor": "פנים",
+          "outdoor": "חוץ",
+          "mixed": "מעורב"
         },
-        "budgetLabel": "Budget:",
+        "budgetLabel": "תקציב:",
         "budget": {
-          "free": "free",
-          "low": "low",
-          "mid": "mid",
-          "high": "high"
+          "free": "חינם",
+          "low": "נמוך",
+          "mid": "בינוני",
+          "high": "גבוה"
         },
-        "galleryHeading": "Gallery",
-        "galleryAlt": "{name} gallery photo {index}"
+        "galleryHeading": "גלריה",
+        "galleryAlt": "תמונה {index} בגלריית {name}"
       },
       "practical": {
-        "title": "Practical info",
-        "hours": "Hours:",
-        "transport": "Transport:",
-        "parking": "Parking:",
-        "accessibility": "Accessibility:"
+        "title": "מידע מעשי",
+        "hours": "שעות:",
+        "transport": "גישה:",
+        "parking": "חניה:",
+        "accessibility": "נגישות:"
       },
       "booking": {
         "title": "הזמנה ויצירת קשר",
@@ -1067,72 +1067,72 @@
         "bookGuide": "הזמנת מדריך →",
         "alcoholDisclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות."
       },
-      "bestTimeLabel": "Best time:",
-      "directionsAria": "Get directions (opens in new tab)",
-      "directionsCta": "Get directions →",
-      "actionsAria": "Place actions",
+      "bestTimeLabel": "הזמן הטוב ביותר:",
+      "directionsAria": "הוראות הגעה (נפתח בלשונית חדשה)",
+      "directionsCta": "הוראות הגעה →",
+      "actionsAria": "פעולות מקום",
       "footer": {
-        "body": "Add this place to your plan and pair it with a trail or village nearby."
+        "body": "הוסיפו את המקום לתוכנית ושלבו עם שביל או כפר בקרבת מקום."
       },
       "headings": {
-        "highlights": "Highlights",
-        "greatFor": "Great for",
-        "dining": "Dining",
-        "shops": "Shops"
+        "highlights": "דגשים",
+        "greatFor": "מתאים ל",
+        "dining": "אוכל",
+        "shops": "חנויות"
       },
       "whyNow": {
-        "title": "Why this now",
-        "bestFor": "Best for {types}.",
-        "regionFlow": "{region} is a practical stop for the same day plan flow.",
-        "saveCompare": "Add to your plan to pair it with a trail or village nearby."
+        "title": "למה עכשיו",
+        "bestFor": "מתאים ל{types}.",
+        "regionFlow": "{region} היא עצירה מעשית לאותו לוח יום.",
+        "saveCompare": "הוסיפו לתוכנית כדי לשלב עם שביל או כפר בקרבת מקום."
       },
       "visitTaste": {
-        "title": "Visit & taste"
+        "title": "ביקור וטעימה"
       },
-      "wineRoute": "Wine route: {route}",
+      "wineRoute": "מסלול יין: {route}",
       "ourWines": {
-        "title": "Our wines"
+        "title": "היינות שלנו"
       },
       "location": {
-        "title": "Location"
+        "title": "מיקום"
       },
-      "localSecretHeading": "Local secret",
-      "backstoryHeading": "Backstory",
+      "localSecretHeading": "סוד מקומי",
+      "backstoryHeading": "הסיפור",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this place. From people who live here.",
-        "seeAll": "See all local secrets →"
+        "title": "סודות מקומיים",
+        "intro": "טיפים מבפנים למקום הזה. מאנשים שחיים כאן.",
+        "seeAll": "כל הסודות המקומיים →"
       },
       "combineWith": {
-        "title": "Pair well with",
-        "description": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
-        "addToPlanAria": "Add {name} to plan"
+        "title": "מתאים לשילוב עם",
+        "description": "שלבו עם שבילים, כפרים או יקבים בקרבת מקום. בוקר כאן, אחר הצהריים במקום אחר, או להפך.",
+        "addToPlanAria": "הוסיפו את {name} לתוכנית"
       },
       "map": {
-        "iframeTitle": "Map: {name}",
-        "loadMap": "Load map"
+        "iframeTitle": "מפה: {name}",
+        "loadMap": "טעינת מפה"
       },
       "metadata": {
-        "notFound": "Not found",
-        "typeWinery": "Winery",
-        "typeEat": "Eat"
+        "notFound": "לא נמצא",
+        "typeWinery": "יקב",
+        "typeEat": "אוכל"
       },
       "trustTiming": {
-        "title": "Trust and timing",
+        "title": "אמון ותזמון",
         "body": "פרטי שותף מאומתים עם מסירה מעשית. הוסיפו קודם לתוכנית, ואז בקשו מהשותף — הם מאשרים באימייל."
       },
       "similar": {
-        "title": "More {type} in {region}",
+        "title": "עוד {type} ב{region}",
         "typeLabels": {
-          "winery": "wineries",
-          "restaurant": "eat & drink",
-          "beach": "beaches",
-          "ancient": "ancient sites",
-          "village": "villages",
-          "monastery": "monasteries",
-          "activity": "active & indoor spots",
-          "nature": "nature & coasts",
-          "default": "places"
+          "winery": "יקבים",
+          "restaurant": "אוכל ושתייה",
+          "beach": "חופים",
+          "ancient": "אתרים עתיקים",
+          "village": "כפרים",
+          "monastery": "מנזרים",
+          "activity": "פעילות ופנים",
+          "nature": "טבע וחופים",
+          "default": "מקומות"
         }
       }
     },
@@ -1559,37 +1559,37 @@
       }
     },
     "tips": {
-      "summary": "Before you go",
-      "disclaimer": "Conditions are crowd-sourced, not guaranteed. Hiking involves risks — prepare for weather, pack layers, and follow local advice.",
-      "shortChecklist": "Layers, conditions check, tell someone your route.",
-      "addToPlan": "Add to plan →",
-      "reportConditions": "Report conditions",
-      "buildDayHint": "Build a day — add trails to your plan",
-      "troodosGuide": "Troodos December guide →"
+      "summary": "לפני שיוצאים",
+      "disclaimer": "התנאים מגיעים מהקהילה, לא מובטחים. טיול רגל כרוך בסיכונים — התכוננו למזג אוויר, קחו שכבות ועקבו אחרי עצות מקומיות.",
+      "shortChecklist": "שכבות, בדיקת תנאים, ספרו למישהו את המסלול.",
+      "addToPlan": "הוספה לתוכנית →",
+      "reportConditions": "דיווח על תנאים",
+      "buildDayHint": "בנו יום — הוסיפו שבילים לתוכנית",
+      "troodosGuide": "מדריך Troodos דצמבר →"
     },
     "filters": {
       "aria": {
-        "section": "Filter trails",
-        "status": "Filter by trail status",
-        "difficulty": "Filter by difficulty",
-        "region": "Filter by region"
+        "section": "סינון שבילים",
+        "status": "סינון לפי סטטוס שביל",
+        "difficulty": "סינון לפי קושי",
+        "region": "סינון לפי אזור"
       },
       "sr": {
-        "status": "Filter by status"
+        "status": "סינון לפי סטטוס"
       },
       "labels": {
-        "difficulty": "Difficulty",
-        "region": "Region"
+        "difficulty": "קושי",
+        "region": "אזור"
       },
       "all": {
-        "status": "All status",
-        "difficulties": "All difficulties",
-        "regions": "All regions"
+        "status": "כל הסטטוסים",
+        "difficulties": "כל רמות הקושי",
+        "regions": "כל האזורים"
       },
       "status": {
-        "open": "Open ({count})",
-        "caution": "Caution ({count})",
-        "closed": "Closed ({count})"
+        "open": "פתוח ({count})",
+        "caution": "זהירות ({count})",
+        "closed": "סגור ({count})"
       }
     },
     "detail": {
@@ -1598,83 +1598,83 @@
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
-        "jumpToSection": "Jump to section",
-        "trailActions": "Trail actions",
-        "actionsGroup": "Actions"
+        "jumpToSection": "קפיצה לסעיף",
+        "trailActions": "פעולות שביל",
+        "actionsGroup": "פעולות"
       },
       "hero": {
-        "elevationGain": "{meters}m gain",
-        "elevationMax": "Max {meters}m",
-        "trailheadLabel": "Trailhead: {name}",
-        "navigateToTrailhead": "Navigate to trailhead →"
+        "elevationGain": "עלייה {meters} מ'",
+        "elevationMax": "מקס' {meters} מ'",
+        "trailheadLabel": "נקודת התחלה: {name}",
+        "navigateToTrailhead": "ניווט לנקודת ההתחלה →"
       },
       "nav": {
-        "overview": "Overview",
-        "conditions": "Conditions",
-        "map": "Map",
-        "waypoints": "Waypoints",
-        "pairWith": "Pair with"
+        "overview": "סקירה",
+        "conditions": "תנאים",
+        "map": "מפה",
+        "waypoints": "נקודות בדרך",
+        "pairWith": "שילוב עם"
       },
-      "topSightsTitle": "Top sights",
+      "topSightsTitle": "אטרקציות עיקריות",
       "conditions": {
-        "latestFromHikers": "Latest from hikers",
-        "communityReport": "Community report—not official. Timestamp shows when it was shared.",
-        "editorialConditions": "Seasonal guide snapshot—not a live report. Submit a report if you were just on the trail.",
-        "currentConditions": "Current conditions",
-        "titleNoData": "Trail conditions",
-        "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
-        "shareWhatYouSaw": "Share what you saw",
-        "beFirst": "Be the first to report",
-        "recentReportsCount": "{count} recent reports",
-        "surfaceLabel": "Surface: {surface}",
-        "temperatureAtTrailhead": "{temperature}°C at trailhead",
-        "windAtTrailhead": "{wind} km/h wind"
+        "latestFromHikers": "עדכונים אחרונים ממטיילים",
+        "communityReport": "דיווח קהילתי — לא רשמי. חותמת הזמן מראה מתי שותף.",
+        "editorialConditions": "תמונת מצב עונתית — לא דיווח חי. שלחו דיווח אם הייתם עכשיו על השביל.",
+        "currentConditions": "תנאים נוכחיים",
+        "titleNoData": "תנאי שביל",
+        "noRecentBody": "אין תנאים עדכניים לשביל הזה. חזרתם עכשיו? שתפו מה ראיתם — זה לוקח דקה.",
+        "shareWhatYouSaw": "שתפו מה ראיתם",
+        "beFirst": "היו הראשונים לדווח",
+        "recentReportsCount": "{count} דיווחים אחרונים",
+        "surfaceLabel": "משטח: {surface}",
+        "temperatureAtTrailhead": "{temperature}°C בנקודת ההתחלה",
+        "windAtTrailhead": "רוח {wind} קמ\"ש"
       },
       "liveWeather": {
         "temperature": "{min}–{max}°C",
-        "rain": "Rain expected",
-        "live": "Live"
+        "rain": "גשם צפוי",
+        "live": "חי"
       },
       "safety": {
-        "title": "Safety & essentials",
-        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go.",
-        "easyTitle": "Good to know",
-        "easyBody": "Emergency 112 · Tourist info 1460. Water, sun protection, and comfortable shoes are enough for this walk."
+        "title": "בטיחות וציוד",
+        "body": "חירום 112 · מידע תיירותי 1460 · אמבולנס 199. שכבות, מים, טלפון טעון. בדקו תנאים לפני שיוצאים.",
+        "easyTitle": "כדאי לדעת",
+        "easyBody": "חירום 112 · מידע תיירותי 1460. מים, הגנה מהשמש ונעליים נוחות מספיקים למסלול הזה."
       },
-      "bookGuide": "Book a guide",
-      "winterSafetyTitle": "Winter safety",
-      "routeMapTitle": "Route map",
-      "winterNotesTitle": "Winter notes",
-      "keyStopsTitle": "Key stops",
-      "localSecretTitle": "Local secret",
-      "highlightsTitle": "Highlights",
-      "bestSeasonTitle": "Best season",
-      "whatToBringTitle": "What to bring",
+      "bookGuide": "הזמנת מדריך",
+      "winterSafetyTitle": "בטיחות בחורף",
+      "routeMapTitle": "מפת מסלול",
+      "winterNotesTitle": "הערות חורף",
+      "keyStopsTitle": "עצירות מרכזיות",
+      "localSecretTitle": "סוד מקומי",
+      "highlightsTitle": "דגשים",
+      "bestSeasonTitle": "עונה מומלצת",
+      "whatToBringTitle": "מה לקחת",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this trail. Pairings, timings, what to do after.",
-        "seeAll": "See all local secrets →"
+        "title": "סודות מקומיים",
+        "intro": "טיפים מבפנים לשביל הזה. שילובים, תזמון, מה לעשות אחר כך.",
+        "seeAll": "כל הסודות המקומיים →"
       },
       "relatedPlaces": {
-        "title": "Pair well with",
-        "description": "Hike in the morning, village or winery in the afternoon. Start by 9am."
+        "title": "מתאים לשילוב עם",
+        "description": "טיול בוקר, כפר או יקב אחר הצהריים. צאו עד 9:00."
       },
       "footer": {
-        "addToPlanBody": "Add this trail to your plan and pair with a village or winery in the afternoon.",
-        "viewAllTrails": "View all trails"
+        "addToPlanBody": "הוסיפו את השביל לתוכנית ושלבו עם כפר או יקב אחר הצהריים.",
+        "viewAllTrails": "כל השבילים"
       }
     },
     "conditionsStrip": {
-      "heading": "Conditions today",
-      "ariaViewList": "Trail conditions today — view list",
-      "openCount": "{count} open",
-      "cautionCount": "{count} caution",
-      "closedCount": "{count} closed",
-      "noReports": "Check reports",
-      "goodToGo": "Good to go",
-      "cautionOnly": "{count} trails need caution",
-      "withClosed": "{count} trails closed — check before you go",
-      "checkConditions": "Check trail conditions"
+      "heading": "תנאים היום",
+      "ariaViewList": "תנאי שבילים היום — צפייה ברשימה",
+      "openCount": "{count} פתוחים",
+      "cautionCount": "{count} בזהירות",
+      "closedCount": "{count} סגורים",
+      "noReports": "בדקו דיווחים",
+      "goodToGo": "מוכנים לצאת",
+      "cautionOnly": "{count} שבילים דורשים זהירות",
+      "withClosed": "{count} שבילים סגורים — בדקו לפני שיוצאים",
+      "checkConditions": "בדקו תנאי שבילים"
     },
     "emptyState": {
       "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
@@ -2315,30 +2315,30 @@
     "noMatch": "Nothing matches these filters. Try a different type or region.",
     "page": {
       "hero": {
-        "title": "Winter events",
-        "description": "Epiphany, carnival, markets, tastings. The island fills the short days with light and noise. November to March.",
-        "imageAlt": "Kykkos monastery, Troodos—Cyprus winter culture and events",
-        "planAria": "Plan your trip",
-        "planCta": "Plan your trip",
-        "note": "Dates may shift year to year. Check official sources before you travel.",
+        "title": "אירועי חורף",
+        "description": "הגבורה, קרנבל, שווקים, טעימות. האי ממלא את הימים הקצרים באור ורוח חיים. נובמבר עד מרץ.",
+        "imageAlt": "מנזר Kykkos, Troodos — תרבות ואירועי חורף בקפריסין",
+        "planAria": "תכננו את הטיול",
+        "planCta": "תכננו את הטיול",
+        "note": "תאריכים עלולים להשתנות משנה לשנה. בדקו מקורות רשמיים לפני הנסיעה.",
         "updated": "מתעדכן מדי חודש. התאריכים עדיין זזים — בדקו במקורות הרשמיים."
       },
       "filters": {
-        "aria": "Filter events",
-        "typeLabel": "Type",
-        "regionLabel": "Region",
-        "byTypeAria": "Filter by type",
-        "byRegionAria": "Filter by region",
-        "unknown": "Unknown filter — showing all events.",
-        "togglePrefix": "Filters:",
-        "toggleAll": "All",
-        "toggleShow": "Show",
-        "toggleHide": "Hide"
+        "aria": "סינון אירועים",
+        "typeLabel": "סוג",
+        "regionLabel": "אזור",
+        "byTypeAria": "סינון לפי סוג",
+        "byRegionAria": "סינון לפי אזור",
+        "unknown": "מסנן לא מוכר — מוצגים כל האירועים.",
+        "togglePrefix": "מסננים:",
+        "toggleAll": "הכל",
+        "toggleShow": "הצג",
+        "toggleHide": "הסתר"
       },
       "monthNav": {
-        "aria": "Jump to month",
-        "title": "Jump to month",
-        "jumpTo": "Jump to {month}"
+        "aria": "קפיצה לחודש",
+        "title": "קפיצה לחודש",
+        "jumpTo": "קפיצה ל{month}"
       },
       "monthFull": {
         "Nov": "November",
@@ -2348,11 +2348,11 @@
         "Mar": "March"
       },
       "card": {
-        "whenWhereAria": "When: {dates}. Where: {venue}",
-        "exploreRegionAria": "Explore {region}",
-        "exploreRegionCta": "Explore {region} →",
-        "learnMoreAria": "Learn more about {name}",
-        "learnMoreCta": "Learn more"
+        "whenWhereAria": "מתי: {dates}. איפה: {venue}",
+        "exploreRegionAria": "גלו את {region}",
+        "exploreRegionCta": "גלו את {region} →",
+        "learnMoreAria": "למידע נוסף על {name}",
+        "learnMoreCta": "למידע נוסף"
       },
       "highlights": {
         "title": "אל תפספסו",

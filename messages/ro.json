@@ -1009,42 +1009,42 @@
       "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
     },
     "detail": {
-      "pageNavAria": "Page navigation",
-      "articleAria": "{name}, {type} in {region}",
-      "imageAlt": "{name}, {region}—{type} in Cyprus winter",
-      "badgeEat": "Eat",
-      "bufferZoneWarning": "Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).",
+      "pageNavAria": "Navigare pagină",
+      "articleAria": "{name}, {type} în {region}",
+      "imageAlt": "{name}, {region} — {type} în Cipru iarna",
+      "badgeEat": "Mâncare",
+      "bufferZoneWarning": "Verificați accesul înainte de plecare. Zonă tampon — condițiile se pot schimba. Confirmați cu surse locale sau info turistică (1460).",
       "winter": {
-        "open": "Open in winter",
-        "seasonsLabel": "Seasons:",
+        "open": "Deschis iarna",
+        "seasonsLabel": "Sezoane:",
         "seasons": {
-          "winter": "winter",
-          "spring": "spring",
-          "summer": "summer",
-          "autumn": "autumn"
+          "winter": "iarnă",
+          "spring": "primăvară",
+          "summer": "vară",
+          "autumn": "toamnă"
         },
-        "indoorOutdoorLabel": "Setting:",
+        "indoorOutdoorLabel": "Cadru:",
         "indoorOutdoor": {
-          "indoor": "indoor",
-          "outdoor": "outdoor",
-          "mixed": "mixed"
+          "indoor": "interior",
+          "outdoor": "exterior",
+          "mixed": "mixt"
         },
-        "budgetLabel": "Budget:",
+        "budgetLabel": "Buget:",
         "budget": {
-          "free": "free",
-          "low": "low",
-          "mid": "mid",
-          "high": "high"
+          "free": "gratuit",
+          "low": "mic",
+          "mid": "mediu",
+          "high": "ridicat"
         },
-        "galleryHeading": "Gallery",
-        "galleryAlt": "{name} gallery photo {index}"
+        "galleryHeading": "Galerie",
+        "galleryAlt": "Fotografie {index} din galeria {name}"
       },
       "practical": {
-        "title": "Practical info",
-        "hours": "Hours:",
-        "transport": "Transport:",
-        "parking": "Parking:",
-        "accessibility": "Accessibility:"
+        "title": "Informații practice",
+        "hours": "Program:",
+        "transport": "Acces:",
+        "parking": "Parcare:",
+        "accessibility": "Accesibilitate:"
       },
       "booking": {
         "title": "Rezervare și contact",
@@ -1067,72 +1067,72 @@
         "bookGuide": "Rezervă un ghid →",
         "alcoholDisclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil."
       },
-      "bestTimeLabel": "Best time:",
-      "directionsAria": "Get directions (opens in new tab)",
-      "directionsCta": "Get directions →",
-      "actionsAria": "Place actions",
+      "bestTimeLabel": "Cel mai bun moment:",
+      "directionsAria": "Indicații de orientare (se deschide într-o filă nouă)",
+      "directionsCta": "Indicații →",
+      "actionsAria": "Acțiuni loc",
       "footer": {
-        "body": "Add this place to your plan and pair it with a trail or village nearby."
+        "body": "Adăugați acest loc în plan și combinați-l cu un traseu sau sat din apropiere."
       },
       "headings": {
-        "highlights": "Highlights",
-        "greatFor": "Great for",
-        "dining": "Dining",
-        "shops": "Shops"
+        "highlights": "Repere",
+        "greatFor": "Ideal pentru",
+        "dining": "Restaurante",
+        "shops": "Magazine"
       },
       "whyNow": {
-        "title": "Why this now",
-        "bestFor": "Best for {types}.",
-        "regionFlow": "{region} is a practical stop for the same day plan flow.",
-        "saveCompare": "Add to your plan to pair it with a trail or village nearby."
+        "title": "De ce acum",
+        "bestFor": "Ideal pentru {types}.",
+        "regionFlow": "{region} este o oprire practică pentru același flux de plan al zilei.",
+        "saveCompare": "Adăugați în plan pentru a-l combina cu un traseu sau sat din apropiere."
       },
       "visitTaste": {
-        "title": "Visit & taste"
+        "title": "Vizită & degustare"
       },
-      "wineRoute": "Wine route: {route}",
+      "wineRoute": "Ruta vinului: {route}",
       "ourWines": {
-        "title": "Our wines"
+        "title": "Vinurile noastre"
       },
       "location": {
-        "title": "Location"
+        "title": "Locație"
       },
-      "localSecretHeading": "Local secret",
-      "backstoryHeading": "Backstory",
+      "localSecretHeading": "Secret local",
+      "backstoryHeading": "Poveste",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this place. From people who live here.",
-        "seeAll": "See all local secrets →"
+        "title": "Secrete locale",
+        "intro": "Sfaturi de insider pentru acest loc. De la oameni care trăiesc aici.",
+        "seeAll": "Toate secretele locale →"
       },
       "combineWith": {
-        "title": "Pair well with",
-        "description": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
-        "addToPlanAria": "Add {name} to plan"
+        "title": "Se potrivește cu",
+        "description": "Combinați cu trasee, sate sau crame din apropiere. Dimineața aici, după-amiaza în altă parte, sau invers.",
+        "addToPlanAria": "Adaugă {name} în plan"
       },
       "map": {
-        "iframeTitle": "Map: {name}",
-        "loadMap": "Load map"
+        "iframeTitle": "Hartă: {name}",
+        "loadMap": "Încarcă harta"
       },
       "metadata": {
-        "notFound": "Not found",
-        "typeWinery": "Winery",
-        "typeEat": "Eat"
+        "notFound": "Negăsit",
+        "typeWinery": "Cramă",
+        "typeEat": "Mâncare"
       },
       "trustTiming": {
-        "title": "Trust and timing",
+        "title": "Încredere și timing",
         "body": "Detalii partener verificate, cu predare practică. Adaugă mai întâi în plan, apoi cere partenerului — confirmă pe email."
       },
       "similar": {
-        "title": "More {type} in {region}",
+        "title": "Mai multe {type} în {region}",
         "typeLabels": {
-          "winery": "wineries",
-          "restaurant": "eat & drink",
-          "beach": "beaches",
-          "ancient": "ancient sites",
-          "village": "villages",
-          "monastery": "monasteries",
-          "activity": "active & indoor spots",
-          "nature": "nature & coasts",
-          "default": "places"
+          "winery": "crame",
+          "restaurant": "mâncare & băutură",
+          "beach": "plaje",
+          "ancient": "situri antice",
+          "village": "sate",
+          "monastery": "mănăstiri",
+          "activity": "activități & interior",
+          "nature": "natură & coastă",
+          "default": "locuri"
         }
       }
     },
@@ -1559,37 +1559,37 @@
       }
     },
     "tips": {
-      "summary": "Before you go",
-      "disclaimer": "Conditions are crowd-sourced, not guaranteed. Hiking involves risks — prepare for weather, pack layers, and follow local advice.",
-      "shortChecklist": "Layers, conditions check, tell someone your route.",
-      "addToPlan": "Add to plan →",
-      "reportConditions": "Report conditions",
-      "buildDayHint": "Build a day — add trails to your plan",
-      "troodosGuide": "Troodos December guide →"
+      "summary": "Înainte de plecare",
+      "disclaimer": "Condițiile sunt crowdsourcate, negarantate. Drumeția implică riscuri — pregătește-te pentru vreme, ia straturi și urmează sfaturile locale.",
+      "shortChecklist": "Straturi, verificare condiții, spune cuiva traseul tău.",
+      "addToPlan": "Adaugă în plan →",
+      "reportConditions": "Raportează condiții",
+      "buildDayHint": "Construiește o zi — adaugă trasee în plan",
+      "troodosGuide": "Ghid Troodos decembrie →"
     },
     "filters": {
       "aria": {
-        "section": "Filter trails",
-        "status": "Filter by trail status",
-        "difficulty": "Filter by difficulty",
-        "region": "Filter by region"
+        "section": "Filtrează trasee",
+        "status": "Filtrează după stare traseu",
+        "difficulty": "Filtrează după dificultate",
+        "region": "Filtrează după regiune"
       },
       "sr": {
-        "status": "Filter by status"
+        "status": "Filtrează după stare"
       },
       "labels": {
-        "difficulty": "Difficulty",
-        "region": "Region"
+        "difficulty": "Dificultate",
+        "region": "Regiune"
       },
       "all": {
-        "status": "All status",
-        "difficulties": "All difficulties",
-        "regions": "All regions"
+        "status": "Toate stările",
+        "difficulties": "Toate dificultățile",
+        "regions": "Toate regiunile"
       },
       "status": {
-        "open": "Open ({count})",
-        "caution": "Caution ({count})",
-        "closed": "Closed ({count})"
+        "open": "Deschis ({count})",
+        "caution": "Prudență ({count})",
+        "closed": "Închis ({count})"
       }
     },
     "detail": {
@@ -1598,83 +1598,83 @@
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
-        "jumpToSection": "Jump to section",
-        "trailActions": "Trail actions",
-        "actionsGroup": "Actions"
+        "jumpToSection": "Salt la secțiune",
+        "trailActions": "Acțiuni traseu",
+        "actionsGroup": "Acțiuni"
       },
       "hero": {
-        "elevationGain": "{meters}m gain",
+        "elevationGain": "{meters}m urcare",
         "elevationMax": "Max {meters}m",
-        "trailheadLabel": "Trailhead: {name}",
-        "navigateToTrailhead": "Navigate to trailhead →"
+        "trailheadLabel": "Plecare: {name}",
+        "navigateToTrailhead": "Navighează spre plecare →"
       },
       "nav": {
-        "overview": "Overview",
-        "conditions": "Conditions",
-        "map": "Map",
-        "waypoints": "Waypoints",
-        "pairWith": "Pair with"
+        "overview": "Prezentare",
+        "conditions": "Condiții",
+        "map": "Hartă",
+        "waypoints": "Puncte de pe traseu",
+        "pairWith": "Combină cu"
       },
-      "topSightsTitle": "Top sights",
+      "topSightsTitle": "Obiective principale",
       "conditions": {
-        "latestFromHikers": "Latest from hikers",
-        "communityReport": "Community report—not official. Timestamp shows when it was shared.",
-        "editorialConditions": "Seasonal guide snapshot—not a live report. Submit a report if you were just on the trail.",
-        "currentConditions": "Current conditions",
-        "titleNoData": "Trail conditions",
-        "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
-        "shareWhatYouSaw": "Share what you saw",
-        "beFirst": "Be the first to report",
-        "recentReportsCount": "{count} recent reports",
-        "surfaceLabel": "Surface: {surface}",
-        "temperatureAtTrailhead": "{temperature}°C at trailhead",
-        "windAtTrailhead": "{wind} km/h wind"
+        "latestFromHikers": "Ultimele de la drumeți",
+        "communityReport": "Raport comunitate — neoficial. Timestamp-ul arată când a fost partajat.",
+        "editorialConditions": "Instantaneu sezonier — nu un raport live. Trimite un raport dacă tocmai ai fost pe traseu.",
+        "currentConditions": "Condiții actuale",
+        "titleNoData": "Condiții traseu",
+        "noRecentBody": "Fără condiții recente pentru acest traseu. Tocmai te-ai întors? Spune ce ai văzut — durează un minut.",
+        "shareWhatYouSaw": "Spune ce ai văzut",
+        "beFirst": "Fii primul care raportează",
+        "recentReportsCount": "{count} rapoarte recente",
+        "surfaceLabel": "Suprafață: {surface}",
+        "temperatureAtTrailhead": "{temperature}°C la plecare",
+        "windAtTrailhead": "Vânt {wind} km/h"
       },
       "liveWeather": {
         "temperature": "{min}–{max}°C",
-        "rain": "Rain expected",
+        "rain": "Ploaie așteptată",
         "live": "Live"
       },
       "safety": {
-        "title": "Safety & essentials",
-        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go.",
-        "easyTitle": "Good to know",
-        "easyBody": "Emergency 112 · Tourist info 1460. Water, sun protection, and comfortable shoes are enough for this walk."
+        "title": "Siguranță & esențiale",
+        "body": "Urgențe 112 · Info turistică 1460 · Ambulanță 199. Straturi, apă, telefon încărcat. Verifică condițiile înainte de plecare.",
+        "easyTitle": "De știut",
+        "easyBody": "Urgențe 112 · Info turistică 1460. Apă, protecție solară și încălțăminte confortabilă sunt suficiente pentru această plimbare."
       },
-      "bookGuide": "Book a guide",
-      "winterSafetyTitle": "Winter safety",
-      "routeMapTitle": "Route map",
-      "winterNotesTitle": "Winter notes",
-      "keyStopsTitle": "Key stops",
-      "localSecretTitle": "Local secret",
-      "highlightsTitle": "Highlights",
-      "bestSeasonTitle": "Best season",
-      "whatToBringTitle": "What to bring",
+      "bookGuide": "Rezervă un ghid",
+      "winterSafetyTitle": "Siguranță iarna",
+      "routeMapTitle": "Hartă traseu",
+      "winterNotesTitle": "Note de iarnă",
+      "keyStopsTitle": "Opriri cheie",
+      "localSecretTitle": "Secret local",
+      "highlightsTitle": "Repere",
+      "bestSeasonTitle": "Cel mai bun sezon",
+      "whatToBringTitle": "Ce să aduci",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this trail. Pairings, timings, what to do after.",
-        "seeAll": "See all local secrets →"
+        "title": "Secrete locale",
+        "intro": "Sfaturi de insider pentru acest traseu. Combinații, timing, ce să faci după.",
+        "seeAll": "Toate secretele locale →"
       },
       "relatedPlaces": {
-        "title": "Pair well with",
-        "description": "Hike in the morning, village or winery in the afternoon. Start by 9am."
+        "title": "Se potrivește cu",
+        "description": "Drumeție dimineața, sat sau cramă după-amiaza. Plecați spre 9."
       },
       "footer": {
-        "addToPlanBody": "Add this trail to your plan and pair with a village or winery in the afternoon.",
-        "viewAllTrails": "View all trails"
+        "addToPlanBody": "Adaugă acest traseu în plan și combină-l cu un sat sau cramă după-amiaza.",
+        "viewAllTrails": "Vezi toate traseele"
       }
     },
     "conditionsStrip": {
-      "heading": "Conditions today",
-      "ariaViewList": "Trail conditions today — view list",
-      "openCount": "{count} open",
-      "cautionCount": "{count} caution",
-      "closedCount": "{count} closed",
-      "noReports": "Check reports",
-      "goodToGo": "Good to go",
-      "cautionOnly": "{count} trails need caution",
-      "withClosed": "{count} trails closed — check before you go",
-      "checkConditions": "Check trail conditions"
+      "heading": "Condiții azi",
+      "ariaViewList": "Condiții trasee azi — vezi lista",
+      "openCount": "{count} deschise",
+      "cautionCount": "{count} cu prudență",
+      "closedCount": "{count} închise",
+      "noReports": "Verifică rapoartele",
+      "goodToGo": "Pregătit de plecare",
+      "cautionOnly": "{count} trasee necesită prudență",
+      "withClosed": "{count} trasee închise — verifică înainte de plecare",
+      "checkConditions": "Verifică condițiile"
     },
     "emptyState": {
       "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
@@ -2315,30 +2315,30 @@
     "noMatch": "Nothing matches these filters. Try a different type or region.",
     "page": {
       "hero": {
-        "title": "Winter events",
-        "description": "Epiphany, carnival, markets, tastings. The island fills the short days with light and noise. November to March.",
-        "imageAlt": "Kykkos monastery, Troodos—Cyprus winter culture and events",
-        "planAria": "Plan your trip",
-        "planCta": "Plan your trip",
-        "note": "Dates may shift year to year. Check official sources before you travel.",
+        "title": "Evenimente de iarnă",
+        "description": "Bobotează, carnaval, piețe, degustări. Insula umple zilele scurte cu lumină și viață. Noiembrie până în martie.",
+        "imageAlt": "Mănăstirea Kykkos, Troodos — cultură și evenimente de iarnă în Cipru",
+        "planAria": "Planifică-ți călătoria",
+        "planCta": "Planifică-ți călătoria",
+        "note": "Datele pot varia de la an la an. Verificați sursele oficiale înainte de călătorie.",
         "updated": "Actualizat lunar. Datele încă se mută — verifică sursele oficiale."
       },
       "filters": {
-        "aria": "Filter events",
-        "typeLabel": "Type",
-        "regionLabel": "Region",
-        "byTypeAria": "Filter by type",
-        "byRegionAria": "Filter by region",
-        "unknown": "Unknown filter — showing all events.",
-        "togglePrefix": "Filters:",
-        "toggleAll": "All",
-        "toggleShow": "Show",
-        "toggleHide": "Hide"
+        "aria": "Filtrează evenimente",
+        "typeLabel": "Tip",
+        "regionLabel": "Regiune",
+        "byTypeAria": "Filtrează după tip",
+        "byRegionAria": "Filtrează după regiune",
+        "unknown": "Filtru necunoscut — se afișează toate evenimentele.",
+        "togglePrefix": "Filtre:",
+        "toggleAll": "Toate",
+        "toggleShow": "Arată",
+        "toggleHide": "Ascunde"
       },
       "monthNav": {
-        "aria": "Jump to month",
-        "title": "Jump to month",
-        "jumpTo": "Jump to {month}"
+        "aria": "Salt la lună",
+        "title": "Salt la lună",
+        "jumpTo": "Salt la {month}"
       },
       "monthFull": {
         "Nov": "November",
@@ -2348,11 +2348,11 @@
         "Mar": "March"
       },
       "card": {
-        "whenWhereAria": "When: {dates}. Where: {venue}",
-        "exploreRegionAria": "Explore {region}",
-        "exploreRegionCta": "Explore {region} →",
-        "learnMoreAria": "Learn more about {name}",
-        "learnMoreCta": "Learn more"
+        "whenWhereAria": "Când: {dates}. Unde: {venue}",
+        "exploreRegionAria": "Explorează {region}",
+        "exploreRegionCta": "Explorează {region} →",
+        "learnMoreAria": "Află mai multe despre {name}",
+        "learnMoreCta": "Află mai multe"
       },
       "highlights": {
         "title": "De neratat",
