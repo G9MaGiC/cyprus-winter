@@ -134,29 +134,29 @@
     "event": "Event",
     "eat": "Eat",
     "placeTypes": {
-      "beach": "Beach",
-      "ancientSite": "Ancient site",
-      "village": "Village",
-      "monastery": "Monastery",
-      "activity": "Activity",
-      "nature": "Nature",
-      "winery": "Winery",
-      "restaurant": "Restaurant",
-      "trail": "Trail",
-      "event": "Event"
+      "beach": "חוף",
+      "ancientSite": "אתר עתיק",
+      "village": "כפר",
+      "monastery": "מנזר",
+      "activity": "פעילות",
+      "nature": "טבע",
+      "winery": "יקב",
+      "restaurant": "מסעדה",
+      "trail": "שביל",
+      "event": "אירוע"
     },
     "timelineRemovedPlace": "This place was removed from our list",
     "ai": {
-      "title": "Cyprus Guide",
-      "subtitle": "Ask about trails, wineries, villages",
-      "clear": "Clear",
-      "closeAria": "Close chat",
-      "inputPlaceholder": "Ask about Cyprus…",
-      "sendAria": "Send message",
-      "startVoice": "Start voice input",
-      "stopVoice": "Stop listening",
-      "retry": "Retry",
-      "thinking": "Thinking…",
+      "title": "מדריך קפריסין",
+      "subtitle": "שאלו על שבילים, יקבים וכפרים",
+      "clear": "נקה שיחה",
+      "closeAria": "סגור צ'אט",
+      "inputPlaceholder": "שאלו על קפריסין…",
+      "sendAria": "שלח הודעה",
+      "startVoice": "התחל קלט קולי",
+      "stopVoice": "הפסק האזנה",
+      "retry": "נסו שוב",
+      "thinking": "חושב…",
       "slash": {
         "skillsDescription": "מה אני יכול לעזור",
         "skillsBody": "בזה אני יכול לעזור:\n\n**תכנון טיול** — מסלול ליום או לכמה ימים לפי התאריכים והאזור.\n\n**גילוי מקומות** — יקבים, כפרים, חופים, אתרים עתיקים, מנזרים.\n\n**שבילים וטיולים** — הצעות לפי רמת קושי, אזור ותנאי חורף.\n\n**רעיונות לפי מזג האוויר** — מה כדאי לפי התחזית או חודש הנסיעה.\n\n**בקרבת מקום** — שתפו מיקום ואמצא מה קרוב.\n\n**הגעה לשדה התעופה** — הסעה מלרנקה או מפאפוס, עצירות ראשונות, טיפים ליום ההגעה.\n\n**חיפוש והשוואה** — השוו שבילים, יקבים ואירועים באי.\n\nשאלו שאלה או הקישו על הצעה למטה.",
@@ -996,17 +996,17 @@
       }
     },
     "map": {
-      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Use arrow keys to pan; markers open place details.",
+      "ariaLabel": "מפה אינטראקטיבית עם {count, plural, one {מקום #} other {# מקומות}}. השתמשו בחיצים להזזה; סמנים פותחים פרטי מקום.",
       "openStreetMap": "OpenStreetMap",
-      "loading": "Loading map…",
-      "emptyTitle": "No places with coordinates to display.",
-      "emptyBody": "Browse the list above to explore places.",
-      "emptyBrowseCta": "Browse places",
-      "sectionTitle": "Places on map",
-      "sectionTitleWithCount": "Places on map ({count})",
-      "curatedBy": "Curated by the Cyprus Winter team.",
-      "view": "View →",
-      "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
+      "loading": "טוען מפה…",
+      "emptyTitle": "אין מקומות עם מיקום לתצוגה.",
+      "emptyBody": "עיינו ברשימה למעלה כדי לחקור מקומות.",
+      "emptyBrowseCta": "עיינו במקומות",
+      "sectionTitle": "מקומות על המפה",
+      "sectionTitleWithCount": "מקומות על המפה ({count})",
+      "curatedBy": "נבחר על ידי צוות Cyprus Winter.",
+      "view": "צפו →",
+      "footerCount": "{count, plural, one {מקום # על המפה. הקישו על סמן לחקירה.} other {# מקומות על המפה. הקישו על סמן לחקירה.}}"
     },
     "detail": {
       "pageNavAria": "ניווט בדף",
@@ -1137,15 +1137,15 @@
       }
     },
     "aria": {
-      "actions": "Discover actions",
-      "askAi": "Ask AI for trip suggestions",
-      "scrollToMap": "Scroll to map of places"
+      "actions": "פעולות גילוי",
+      "askAi": "שאלו את ה-AI להצעות לטיול",
+      "scrollToMap": "גלול למפת המקומות"
     },
     "footer": {
-      "body": "Add places to your plan—or ask the AI. It knows the island in winter.",
-      "addToPlan": "Add places to your plan",
-      "askAi": "Ask AI",
-      "seeMap": "See map"
+      "body": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI. הוא מכיר את האי בחורף.",
+      "addToPlan": "הוסיפו מקומות לתוכנית",
+      "askAi": "שאלו את ה-AI",
+      "seeMap": "צפו במפה"
     }
   },
   "admin": {
@@ -1428,19 +1428,19 @@
     "submitting": "Submitting…",
     "conditionsEditorial": "Winter snapshot",
     "card": {
-      "elevationGain": "{meters}m gain",
+      "elevationGain": "{meters} מ' עלייה",
       "temperature": "{value}°C",
-      "trailAria": "{name}, {length} km {difficulty} trail in {region}",
-      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter",
+      "trailAria": "{name}, שביל {length} ק\"מ {difficulty} באזור {region}",
+      "imageAlt": "{name}, {region} — שביל {length} ק\"מ {difficulty} בחורף בקפריסין",
       "noReport": "אין דיווח",
       "hikerReport": "דיווח מטייל"
     },
     "placeOfDay": {
-      "heading": "Trail of the day",
-      "badge": "Trail of the day",
-      "openAria": "Open {name}",
-      "pairWith": "Pair with",
-      "seeDetails": "See details",
+      "heading": "שביל היום",
+      "badge": "שביל היום",
+      "openAria": "פתח {name}",
+      "pairWith": "שלב עם",
+      "seeDetails": "צפו בפרטים",
       "overlay": {
         "open": "פתוח",
         "openWithTemp": "{temp}°C · פתוח",
@@ -1455,22 +1455,22 @@
     "reportError": "Didn't save. Try again or head back to the trail.",
     "reportAria": "Submit trail conditions report",
     "aria": {
-      "actions": "Trails actions",
-      "reportConditions": "Report trail conditions",
-      "scrollToMap": "Scroll to map of trails"
+      "actions": "פעולות שבילים",
+      "reportConditions": "דווח על תנאי שביל",
+      "scrollToMap": "גלול למפת השבילים"
     },
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go",
+          "title": "אפשר לצאת",
           "label": "פתוח"
         },
         "caution": {
-          "title": "Check conditions before you head out",
+          "title": "בדקו תנאים לפני שיוצאים",
           "label": "זהירות"
         },
         "closed": {
-          "title": "Best saved for another day",
+          "title": "עדיף לשמור ליום אחר",
           "label": "סגור"
         }
       },
@@ -1684,19 +1684,19 @@
       "showingAll": "— Showing all"
     },
     "quickFilters": {
-      "label": "Quick:",
+      "label": "מהיר:",
       "chips": {
-        "shortEasy": "Short & easy",
-        "openToday": "Open today",
-        "winterHighlights": "Winter highlights"
+        "shortEasy": "קצר וקל",
+        "openToday": "פתוחים היום",
+        "winterHighlights": "הדגשי חורף"
       }
     },
     "map": {
-      "viewTrail": "View trail",
-      "stops": "Stops",
+      "viewTrail": "צפו בשביל",
+      "stops": "עצירות",
       "popupMeta": "{region} · {km} km",
-      "trailheadLegend": "Trailhead",
-      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
+      "trailheadLegend": "נקודת התחלה",
+      "footerCount": "{count, plural, one {שביל # על המפה. הקישו על סמן לחקירה.} other {# שבילים על המפה. הקישו על סמן לחקירה.}}"
     },
     "page": {
       "meta": {
@@ -2310,9 +2310,9 @@
     }
   },
   "events": {
-    "clearFilters": "Clear filters",
-    "clearFiltersAria": "Clear filters and show all events",
-    "noMatch": "Nothing matches these filters. Try a different type or region.",
+    "clearFilters": "נקה מסננים",
+    "clearFiltersAria": "נקה מסננים והצג את כל האירועים",
+    "noMatch": "אין התאמה למסננים. נסו סוג או אזור אחר.",
     "page": {
       "hero": {
         "title": "אירועי חורף",
@@ -2341,11 +2341,11 @@
         "jumpTo": "קפיצה ל{month}"
       },
       "monthFull": {
-        "Nov": "November",
-        "Dec": "December",
-        "Jan": "January",
-        "Feb": "February",
-        "Mar": "March"
+        "Nov": "נובמבר",
+        "Dec": "דצמבר",
+        "Jan": "ינואר",
+        "Feb": "פברואר",
+        "Mar": "מרץ"
       },
       "card": {
         "whenWhereAria": "מתי: {dates}. איפה: {venue}",
@@ -2370,15 +2370,15 @@
         "weatherLink": "מזג אוויר לפי חודש"
       },
       "aria": {
-        "actions": "Events page actions"
+        "actions": "פעולות דף אירועים"
       },
       "types": {
-        "festival": "Festival",
-        "market": "Market",
-        "concert": "Concert",
-        "food": "Food & Wine",
-        "culture": "Culture",
-        "sport": "Sport"
+        "festival": "פסטיבל",
+        "market": "שוק",
+        "concert": "קונצרט",
+        "food": "אוכל ויין",
+        "culture": "תרבות",
+        "sport": "ספורט"
       },
       "monthShort": {
         "Nov": "נוב",

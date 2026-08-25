@@ -134,29 +134,29 @@
     "event": "Event",
     "eat": "Eat",
     "placeTypes": {
-      "beach": "Beach",
-      "ancientSite": "Ancient site",
-      "village": "Village",
-      "monastery": "Monastery",
-      "activity": "Activity",
-      "nature": "Nature",
-      "winery": "Winery",
+      "beach": "Plajă",
+      "ancientSite": "Sit arheologic",
+      "village": "Sat",
+      "monastery": "Mănăstire",
+      "activity": "Activitate",
+      "nature": "Natură",
+      "winery": "Cramă",
       "restaurant": "Restaurant",
-      "trail": "Trail",
-      "event": "Event"
+      "trail": "Traseu",
+      "event": "Eveniment"
     },
     "timelineRemovedPlace": "This place was removed from our list",
     "ai": {
-      "title": "Cyprus Guide",
-      "subtitle": "Ask about trails, wineries, villages",
-      "clear": "Clear",
-      "closeAria": "Close chat",
-      "inputPlaceholder": "Ask about Cyprus…",
-      "sendAria": "Send message",
-      "startVoice": "Start voice input",
-      "stopVoice": "Stop listening",
-      "retry": "Retry",
-      "thinking": "Thinking…",
+      "title": "Ghid Cipru",
+      "subtitle": "Întrebați despre trasee, crame și sate",
+      "clear": "Șterge conversația",
+      "closeAria": "Închide chatul",
+      "inputPlaceholder": "Întrebați despre Cipru…",
+      "sendAria": "Trimite mesaj",
+      "startVoice": "Pornește introducerea vocală",
+      "stopVoice": "Oprește ascultarea",
+      "retry": "Încearcă din nou",
+      "thinking": "Mă gândesc…",
       "slash": {
         "skillsDescription": "Vezi cu ce te pot ajuta",
         "skillsBody": "Iată ce pot face:\n\n**Organizarea călătoriei** — Un plan de o zi sau mai multe zile, după date și regiune.\n\n**Descoperă locuri** — Crame, sate, plaje, situri antice, mănăstiri.\n\n**Trasee și drumeții** — Sugestii după dificultate, regiune și condiții de iarnă.\n\n**Idei după vreme** — Ce să faci după prognoză sau luna călătoriei.\n\n**În apropiere** — Partajează locația, găsesc ce e aproape.\n\n**Sosire la aeroport** — Transfer din Larnaca sau Paphos, primele opriri, sfaturi pentru ziua sosirii.\n\n**Caută și compară** — Compară trasee, crame și evenimente pe insulă.\n\nPune o întrebare sau atinge o sugestie mai jos.",
@@ -996,17 +996,17 @@
       }
     },
     "map": {
-      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Use arrow keys to pan; markers open place details.",
+      "ariaLabel": "Hartă interactivă cu {count, plural, one {# loc} other {# locuri}}. Folosește săgețile pentru deplasare; markerii deschid detalii.",
       "openStreetMap": "OpenStreetMap",
-      "loading": "Loading map…",
-      "emptyTitle": "No places with coordinates to display.",
-      "emptyBody": "Browse the list above to explore places.",
-      "emptyBrowseCta": "Browse places",
-      "sectionTitle": "Places on map",
-      "sectionTitleWithCount": "Places on map ({count})",
-      "curatedBy": "Curated by the Cyprus Winter team.",
-      "view": "View →",
-      "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
+      "loading": "Se încarcă harta…",
+      "emptyTitle": "Niciun loc cu coordonate de afișat.",
+      "emptyBody": "Parcurge lista de mai sus pentru a explora locuri.",
+      "emptyBrowseCta": "Parcurge locuri",
+      "sectionTitle": "Locuri pe hartă",
+      "sectionTitleWithCount": "Locuri pe hartă ({count})",
+      "curatedBy": "Selectat de echipa Cyprus Winter.",
+      "view": "Vezi →",
+      "footerCount": "{count, plural, one {# loc pe hartă. Atinge un marker pentru a explora.} other {# locuri pe hartă. Atinge un marker pentru a explora.}}"
     },
     "detail": {
       "pageNavAria": "Navigare pagină",
@@ -1137,15 +1137,15 @@
       }
     },
     "aria": {
-      "actions": "Discover actions",
-      "askAi": "Ask AI for trip suggestions",
-      "scrollToMap": "Scroll to map of places"
+      "actions": "Acțiuni Descoperă",
+      "askAi": "Întreabă AI pentru sugestii de călătorie",
+      "scrollToMap": "Derulează la harta locurilor"
     },
     "footer": {
-      "body": "Add places to your plan—or ask the AI. It knows the island in winter.",
-      "addToPlan": "Add places to your plan",
-      "askAi": "Ask AI",
-      "seeMap": "See map"
+      "body": "Adaugă locuri în plan — sau întreabă AI-ul. Cunoaște insula iarna.",
+      "addToPlan": "Adaugă locuri în plan",
+      "askAi": "Întreabă AI",
+      "seeMap": "Vezi harta"
     }
   },
   "admin": {
@@ -1428,19 +1428,19 @@
     "submitting": "Submitting…",
     "conditionsEditorial": "Winter snapshot",
     "card": {
-      "elevationGain": "{meters}m gain",
+      "elevationGain": "{meters} m urcare",
       "temperature": "{value}°C",
-      "trailAria": "{name}, {length} km {difficulty} trail in {region}",
-      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter",
+      "trailAria": "{name}, traseu {length} km {difficulty} în {region}",
+      "imageAlt": "{name}, {region} — traseu {length} km {difficulty} iarna în Cipru",
       "noReport": "Fără raport",
       "hikerReport": "Raport de drumeție"
     },
     "placeOfDay": {
-      "heading": "Trail of the day",
-      "badge": "Trail of the day",
-      "openAria": "Open {name}",
-      "pairWith": "Pair with",
-      "seeDetails": "See details",
+      "heading": "Traseul zilei",
+      "badge": "Traseul zilei",
+      "openAria": "Deschide {name}",
+      "pairWith": "Combină cu",
+      "seeDetails": "Vezi detalii",
       "overlay": {
         "open": "Deschis",
         "openWithTemp": "{temp}°C · Deschis",
@@ -1455,22 +1455,22 @@
     "reportError": "Didn't save. Try again or head back to the trail.",
     "reportAria": "Submit trail conditions report",
     "aria": {
-      "actions": "Trails actions",
-      "reportConditions": "Report trail conditions",
-      "scrollToMap": "Scroll to map of trails"
+      "actions": "Acțiuni trasee",
+      "reportConditions": "Raportează condițiile traseului",
+      "scrollToMap": "Derulează la harta traseelor"
     },
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go",
+          "title": "Ești gata de plecare",
           "label": "Deschis"
         },
         "caution": {
-          "title": "Check conditions before you head out",
+          "title": "Verifică condițiile înainte de plecare",
           "label": "Atenție"
         },
         "closed": {
-          "title": "Best saved for another day",
+          "title": "Mai bine păstrează pentru altă zi",
           "label": "Închis"
         }
       },
@@ -1684,19 +1684,19 @@
       "showingAll": "— Showing all"
     },
     "quickFilters": {
-      "label": "Quick:",
+      "label": "Rapid:",
       "chips": {
-        "shortEasy": "Short & easy",
-        "openToday": "Open today",
-        "winterHighlights": "Winter highlights"
+        "shortEasy": "Scurt și ușor",
+        "openToday": "Deschise azi",
+        "winterHighlights": "Repere de iarnă"
       }
     },
     "map": {
-      "viewTrail": "View trail",
-      "stops": "Stops",
+      "viewTrail": "Vezi traseul",
+      "stops": "Opriri",
       "popupMeta": "{region} · {km} km",
-      "trailheadLegend": "Trailhead",
-      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
+      "trailheadLegend": "Punct de plecare",
+      "footerCount": "{count, plural, one {# traseu pe hartă. Atinge un marker pentru a explora.} other {# trasee pe hartă. Atinge un marker pentru a explora.}}"
     },
     "page": {
       "meta": {
@@ -2310,9 +2310,9 @@
     }
   },
   "events": {
-    "clearFilters": "Clear filters",
-    "clearFiltersAria": "Clear filters and show all events",
-    "noMatch": "Nothing matches these filters. Try a different type or region.",
+    "clearFilters": "Șterge filtrele",
+    "clearFiltersAria": "Șterge filtrele și afișează toate evenimentele",
+    "noMatch": "Nimic nu se potrivește cu aceste filtre. Încearcă alt tip sau altă regiune.",
     "page": {
       "hero": {
         "title": "Evenimente de iarnă",
@@ -2341,11 +2341,11 @@
         "jumpTo": "Salt la {month}"
       },
       "monthFull": {
-        "Nov": "November",
-        "Dec": "December",
-        "Jan": "January",
-        "Feb": "February",
-        "Mar": "March"
+        "Nov": "Noiembrie",
+        "Dec": "Decembrie",
+        "Jan": "Ianuarie",
+        "Feb": "Februarie",
+        "Mar": "Martie"
       },
       "card": {
         "whenWhereAria": "Când: {dates}. Unde: {venue}",
@@ -2370,14 +2370,14 @@
         "weatherLink": "Vreme pe luni"
       },
       "aria": {
-        "actions": "Events page actions"
+        "actions": "Acțiuni pagină evenimente"
       },
       "types": {
         "festival": "Festival",
-        "market": "Market",
+        "market": "Piață",
         "concert": "Concert",
-        "food": "Food & Wine",
-        "culture": "Culture",
+        "food": "Mâncare și vin",
+        "culture": "Cultură",
         "sport": "Sport"
       },
       "monthShort": {

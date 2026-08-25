@@ -134,29 +134,29 @@
     "event": "Event",
     "eat": "Eat",
     "placeTypes": {
-      "beach": "Beach",
-      "ancientSite": "Ancient site",
+      "beach": "Plage",
+      "ancientSite": "Site antique",
       "village": "Village",
-      "monastery": "Monastery",
-      "activity": "Activity",
+      "monastery": "Monastère",
+      "activity": "Activité",
       "nature": "Nature",
-      "winery": "Winery",
+      "winery": "Domaine",
       "restaurant": "Restaurant",
-      "trail": "Trail",
-      "event": "Event"
+      "trail": "Sentier",
+      "event": "Événement"
     },
     "timelineRemovedPlace": "This place was removed from our list",
     "ai": {
-      "title": "Cyprus Guide",
-      "subtitle": "Ask about trails, wineries, villages",
-      "clear": "Clear",
-      "closeAria": "Close chat",
-      "inputPlaceholder": "Ask about Cyprus…",
-      "sendAria": "Send message",
-      "startVoice": "Start voice input",
-      "stopVoice": "Stop listening",
-      "retry": "Retry",
-      "thinking": "Thinking…",
+      "title": "Guide Chypre",
+      "subtitle": "Posez vos questions sur sentiers, domaines et villages",
+      "clear": "Effacer",
+      "closeAria": "Fermer le chat",
+      "inputPlaceholder": "Posez une question sur Chypre…",
+      "sendAria": "Envoyer le message",
+      "startVoice": "Démarrer la saisie vocale",
+      "stopVoice": "Arrêter l'écoute",
+      "retry": "Réessayer",
+      "thinking": "Réflexion…",
       "slash": {
         "skillsDescription": "Voir ce que je peux faire",
         "skillsBody": "Voici ce que je peux faire :\n\n**Organisation du séjour** — Un plan d'un ou plusieurs jours selon vos dates et la région.\n\n**Découvrir des lieux** — Domaines, villages, plages, sites antiques, monastères.\n\n**Sentiers et randonnées** — Suggestions selon la difficulté, la région et les conditions d'hiver.\n\n**Idées selon la météo** — Que faire d'après les prévisions ou le mois de voyage.\n\n**À proximité** — Partagez votre position, je trouverai ce qui est proche.\n\n**Arrivée à l'aéroport** — Transfert depuis Larnaca ou Paphos, premiers arrêts, conseils pour le jour d'arrivée.\n\n**Rechercher et comparer** — Comparez sentiers, domaines et événements sur l'île.\n\nPosez une question ou touchez une suggestion ci-dessous.",
@@ -996,17 +996,17 @@
       }
     },
     "map": {
-      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Use arrow keys to pan; markers open place details.",
+      "ariaLabel": "Carte interactive avec {count, plural, one {# lieu} other {# lieux}}. Utilisez les flèches pour vous déplacer ; les marqueurs ouvrent les détails.",
       "openStreetMap": "OpenStreetMap",
-      "loading": "Loading map…",
-      "emptyTitle": "No places with coordinates to display.",
-      "emptyBody": "Browse the list above to explore places.",
+      "loading": "Chargement de la carte…",
+      "emptyTitle": "Aucun lieu avec coordonnées à afficher.",
+      "emptyBody": "Parcourez la liste ci-dessus pour explorer les lieux.",
       "emptyBrowseCta": "Parcourir les lieux",
-      "sectionTitle": "Places on map",
-      "sectionTitleWithCount": "Places on map ({count})",
-      "curatedBy": "Curated by the Cyprus Winter team.",
-      "view": "View →",
-      "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
+      "sectionTitle": "Lieux sur la carte",
+      "sectionTitleWithCount": "Lieux sur la carte ({count})",
+      "curatedBy": "Sélection de l'équipe Cyprus Winter.",
+      "view": "Voir →",
+      "footerCount": "{count, plural, one {# lieu sur la carte. Touchez un marqueur pour explorer.} other {# lieux sur la carte. Touchez un marqueur pour explorer.}}"
     },
     "detail": {
       "pageNavAria": "Navigation de page",
@@ -1137,15 +1137,15 @@
       }
     },
     "aria": {
-      "actions": "Discover actions",
-      "askAi": "Ask AI for trip suggestions",
-      "scrollToMap": "Scroll to map of places"
+      "actions": "Actions Découvrir",
+      "askAi": "Demander à l'IA des idées de voyage",
+      "scrollToMap": "Aller à la carte des lieux"
     },
     "footer": {
-      "body": "Add places to your plan—or ask the AI. It knows the island in winter.",
-      "addToPlan": "Add places to your plan",
-      "askAi": "Ask AI",
-      "seeMap": "See map"
+      "body": "Ajoutez des lieux à votre plan — ou demandez à l'IA. Elle connaît l'île en hiver.",
+      "addToPlan": "Ajouter des lieux au plan",
+      "askAi": "Demander à l'IA",
+      "seeMap": "Voir la carte"
     }
   },
   "admin": {
@@ -1428,19 +1428,19 @@
     "submitting": "Submitting…",
     "conditionsEditorial": "Winter snapshot",
     "card": {
-      "elevationGain": "{meters}m gain",
+      "elevationGain": "{meters} m de dénivelé",
       "temperature": "{value}°C",
-      "trailAria": "{name}, {length} km {difficulty} trail in {region}",
-      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter",
+      "trailAria": "{name}, sentier {length} km {difficulty} en {region}",
+      "imageAlt": "{name}, {region} — sentier {length} km {difficulty} en hiver à Chypre",
       "noReport": "Pas de rapport",
       "hikerReport": "Rapport randonneur"
     },
     "placeOfDay": {
-      "heading": "Trail of the day",
-      "badge": "Trail of the day",
-      "openAria": "Open {name}",
-      "pairWith": "Pair with",
-      "seeDetails": "See details",
+      "heading": "Sentier du jour",
+      "badge": "Sentier du jour",
+      "openAria": "Ouvrir {name}",
+      "pairWith": "À combiner avec",
+      "seeDetails": "Voir les détails",
       "overlay": {
         "open": "Ouvert",
         "openWithTemp": "{temp}°C · Ouvert",
@@ -1455,22 +1455,22 @@
     "reportError": "Didn't save. Try again or head back to the trail.",
     "reportAria": "Submit trail conditions report",
     "aria": {
-      "actions": "Trails actions",
-      "reportConditions": "Report trail conditions",
-      "scrollToMap": "Scroll to map of trails"
+      "actions": "Actions sentiers",
+      "reportConditions": "Signaler les conditions du sentier",
+      "scrollToMap": "Aller à la carte des sentiers"
     },
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go",
+          "title": "C'est parti",
           "label": "Ouvert"
         },
         "caution": {
-          "title": "Check conditions before you head out",
+          "title": "Vérifiez les conditions avant de partir",
           "label": "Attention"
         },
         "closed": {
-          "title": "Best saved for another day",
+          "title": "Mieux vaut garder pour un autre jour",
           "label": "Fermé"
         }
       },
@@ -1684,19 +1684,19 @@
       "showingAll": "— Showing all"
     },
     "quickFilters": {
-      "label": "Quick:",
+      "label": "Rapide :",
       "chips": {
-        "shortEasy": "Short & easy",
-        "openToday": "Open today",
-        "winterHighlights": "Winter highlights"
+        "shortEasy": "Court et facile",
+        "openToday": "Ouverts aujourd'hui",
+        "winterHighlights": "Temps forts d'hiver"
       }
     },
     "map": {
-      "viewTrail": "View trail",
-      "stops": "Stops",
+      "viewTrail": "Voir le sentier",
+      "stops": "Arrêts",
       "popupMeta": "{region} · {km} km",
-      "trailheadLegend": "Trailhead",
-      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
+      "trailheadLegend": "Départ du sentier",
+      "footerCount": "{count, plural, one {# sentier sur la carte. Touchez un marqueur pour explorer.} other {# sentiers sur la carte. Touchez un marqueur pour explorer.}}"
     },
     "page": {
       "meta": {
@@ -2310,9 +2310,9 @@
     }
   },
   "events": {
-    "clearFilters": "Clear filters",
-    "clearFiltersAria": "Clear filters and show all events",
-    "noMatch": "Nothing matches these filters. Try a different type or region.",
+    "clearFilters": "Effacer les filtres",
+    "clearFiltersAria": "Effacer les filtres et afficher tous les événements",
+    "noMatch": "Aucun événement ne correspond à ces filtres. Essayez un autre type ou une autre région.",
     "page": {
       "hero": {
         "title": "Événements d'hiver",
@@ -2341,11 +2341,11 @@
         "jumpTo": "Aller à {month}"
       },
       "monthFull": {
-        "Nov": "November",
-        "Dec": "December",
-        "Jan": "January",
-        "Feb": "February",
-        "Mar": "March"
+        "Nov": "Novembre",
+        "Dec": "Décembre",
+        "Jan": "Janvier",
+        "Feb": "Février",
+        "Mar": "Mars"
       },
       "card": {
         "whenWhereAria": "Quand : {dates}. Où : {venue}",
@@ -2370,13 +2370,13 @@
         "weatherLink": "Météo par mois"
       },
       "aria": {
-        "actions": "Events page actions"
+        "actions": "Actions page événements"
       },
       "types": {
         "festival": "Festival",
-        "market": "Market",
+        "market": "Marché",
         "concert": "Concert",
-        "food": "Food & Wine",
+        "food": "Gastronomie et vin",
         "culture": "Culture",
         "sport": "Sport"
       },
