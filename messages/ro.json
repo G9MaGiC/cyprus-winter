@@ -127,12 +127,12 @@
     "goHome": "Acasă",
     "tryAgain": "Încearcă din nou",
     "callAhead": "Sunați înainte",
-    "explore": "Explore",
-    "place": "Place",
-    "trail": "Trail",
-    "winery": "Winery",
-    "event": "Event",
-    "eat": "Eat",
+    "explore": "Explorează",
+    "place": "Loc",
+    "trail": "Traseu",
+    "winery": "Cramă",
+    "event": "Eveniment",
+    "eat": "Gastronomie",
     "placeTypes": {
       "beach": "Plajă",
       "ancientSite": "Sit arheologic",
@@ -145,7 +145,7 @@
       "trail": "Traseu",
       "event": "Eveniment"
     },
-    "timelineRemovedPlace": "This place was removed from our list",
+    "timelineRemovedPlace": "Acest loc a fost eliminat din lista noastră",
     "ai": {
       "title": "Ghid Cipru",
       "subtitle": "Întrebați despre trasee, crame și sate",
@@ -286,10 +286,10 @@
     "clearFilter": "Șterge filtrul",
     "viewOnMap": "Vezi pe hartă",
     "scrollToMap": "Mergi la hartă",
-    "askAI": "Ask AI",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "askAITrailsAria": "Ask AI for trail suggestions",
-    "askAIRecommendationsAria": "Ask AI for recommendations",
+    "askAI": "Întreabă AI",
+    "askAIAria": "Întreabă AI despre trasee, crame și idei de călătorie",
+    "askAITrailsAria": "Întreabă AI pentru sugestii de trasee",
+    "askAIRecommendationsAria": "Întreabă AI pentru recomandări",
     "hubFooter": {
       "prompt": "Adaugă locuri în plan — sau întreabă AI-ul pentru idei.",
       "aria": {
@@ -302,14 +302,14 @@
       "viewPlan": "Vezi planul"
     },
     "planYourTrip": "Planifică călătoria",
-    "winterHikingGuide": "Winter hiking guide",
-    "seeMap": "See map",
-    "emergency112": "Emergency 112",
+    "winterHikingGuide": "Ghid drumeții de iarnă",
+    "seeMap": "Vezi harta",
+    "emergency112": "Urgență 112",
     "trailsFooterDisclaimer": "Condițiile sunt de la utilizatori și nu sunt garantate. Folosește-ți judecata și urmează sfaturile locale.",
-    "discoverEmptyTitle": "No places here.",
-    "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
+    "discoverEmptyTitle": "Niciun loc aici.",
+    "discoverEmptyBody": "Încearcă alt filtru sau întreabă AI — cunoaște insula.",
+    "emergency": "Urgență",
+    "touristInfo": "Informații turistice",
     "ambulance": "Ambulance",
     "loading": {
       "generic": "Se încarcă",
@@ -341,9 +341,9 @@
     },
     "cancel": "Anulează",
     "done": "Gata",
-    "clearDay": "Clear day",
-    "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "clearDay": "Golește ziua",
+    "clearDayTitle": "Golești ziua {day}?",
+    "removeAllFromDay": "Elimină toate cele {count} {count, plural, one {loc} other {locuri}} din ziua {day}. Le poți adăuga din nou oricând.",
     "localeBeta": "beta",
     "beforeYouGo": {
       "heading": "Înainte să pleci",
@@ -1423,10 +1423,10 @@
     }
   },
   "trails": {
-    "addToPlan": "Add to plan",
-    "submitReport": "Submit report",
-    "submitting": "Submitting…",
-    "conditionsEditorial": "Winter snapshot",
+    "addToPlan": "Adaugă în plan",
+    "submitReport": "Trimite raportul",
+    "submitting": "Se trimite…",
+    "conditionsEditorial": "Instantaneu de iarnă",
     "card": {
       "elevationGain": "{meters} m urcare",
       "temperature": "{value}°C",
@@ -1448,12 +1448,12 @@
         "seeConditions": "Vezi condițiile"
       }
     },
-    "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-    "allTrails": "All trails",
-    "askAI": "Ask AI",
-    "clearFilters": "Clear filters",
-    "reportError": "Didn't save. Try again or head back to the trail.",
-    "reportAria": "Submit trail conditions report",
+    "noMatch": "Niciun traseu nu se potrivește filtrelor. Încearcă alt status, dificultate sau regiune — sau întreabă AI. Cunoaște de la Troodos până la coastă.",
+    "allTrails": "Toate traseele",
+    "askAI": "Întreabă AI",
+    "clearFilters": "Șterge filtrele",
+    "reportError": "Nu s-a salvat. Încearcă din nou sau revino la traseu.",
+    "reportAria": "Trimite raport despre starea traseului",
     "aria": {
       "actions": "Acțiuni trasee",
       "reportConditions": "Raportează condițiile traseului",
@@ -1594,7 +1594,7 @@
     },
     "detail": {
       "meta": {
-        "title": "{name} | Cyprus Winter Trails",
+        "title": "{name} | Trasee Cyprus Winter",
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
@@ -1681,7 +1681,7 @@
       "ctaAllTrails": "Toate traseele"
     },
     "filterBar": {
-      "showingAll": "— Showing all"
+      "showingAll": "— Afișare toate"
     },
     "quickFilters": {
       "label": "Rapid:",
@@ -3001,7 +3001,7 @@
         "duration": "{km} km · ~{hours}h"
       },
       "aria": {
-        "actions": "Troodos December guide actions"
+        "actions": "Acțiuni ghid Troodos decembrie"
       }
     },
     "directory": {

@@ -127,12 +127,12 @@
     "goHome": "Accueil",
     "tryAgain": "Réessayer",
     "callAhead": "Appelez avant",
-    "explore": "Explore",
-    "place": "Place",
-    "trail": "Trail",
-    "winery": "Winery",
-    "event": "Event",
-    "eat": "Eat",
+    "explore": "Explorer",
+    "place": "Lieu",
+    "trail": "Sentier",
+    "winery": "Domaine",
+    "event": "Événement",
+    "eat": "Restauration",
     "placeTypes": {
       "beach": "Plage",
       "ancientSite": "Site antique",
@@ -145,7 +145,7 @@
       "trail": "Sentier",
       "event": "Événement"
     },
-    "timelineRemovedPlace": "This place was removed from our list",
+    "timelineRemovedPlace": "Ce lieu a été retiré de notre liste",
     "ai": {
       "title": "Guide Chypre",
       "subtitle": "Posez vos questions sur sentiers, domaines et villages",
@@ -286,10 +286,10 @@
     "clearFilter": "Effacer le filtre",
     "viewOnMap": "Voir sur la carte",
     "scrollToMap": "Aller à la carte",
-    "askAI": "Ask AI",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "askAITrailsAria": "Ask AI for trail suggestions",
-    "askAIRecommendationsAria": "Ask AI for recommendations",
+    "askAI": "Demander à l'IA",
+    "askAIAria": "Demander à l'IA pour des sentiers, domaines et idées de voyage",
+    "askAITrailsAria": "Demander à l'IA pour des suggestions de sentiers",
+    "askAIRecommendationsAria": "Demander à l'IA pour des recommandations",
     "hubFooter": {
       "prompt": "Ajoutez des lieux à votre plan — ou demandez des idées à l'IA.",
       "aria": {
@@ -302,14 +302,14 @@
       "viewPlan": "Voir le plan"
     },
     "planYourTrip": "Planifier le voyage",
-    "winterHikingGuide": "Winter hiking guide",
-    "seeMap": "See map",
-    "emergency112": "Emergency 112",
+    "winterHikingGuide": "Guide randonnée hiver",
+    "seeMap": "Voir la carte",
+    "emergency112": "Urgence 112",
     "trailsFooterDisclaimer": "Les conditions sont issues des utilisateurs et non garanties. Faites preuve de jugement et suivez les conseils locaux.",
-    "discoverEmptyTitle": "No places here.",
-    "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
+    "discoverEmptyTitle": "Aucun lieu ici.",
+    "discoverEmptyBody": "Essayez un autre filtre ou demandez à l'IA — elle connaît l'île.",
+    "emergency": "Urgence",
+    "touristInfo": "Infos touristiques",
     "ambulance": "Ambulance",
     "loading": {
       "generic": "Chargement",
@@ -341,9 +341,9 @@
     },
     "cancel": "Annuler",
     "done": "Terminé",
-    "clearDay": "Clear day",
-    "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "clearDay": "Vider la journée",
+    "clearDayTitle": "Vider le jour {day} ?",
+    "removeAllFromDay": "Retirer les {count} {count, plural, one {lieu} other {lieux}} du jour {day}. Vous pourrez les rajouter à tout moment.",
     "localeBeta": "bêta",
     "beforeYouGo": {
       "heading": "Avant de partir",
@@ -1423,10 +1423,10 @@
     }
   },
   "trails": {
-    "addToPlan": "Add to plan",
-    "submitReport": "Submit report",
-    "submitting": "Submitting…",
-    "conditionsEditorial": "Winter snapshot",
+    "addToPlan": "Ajouter au plan",
+    "submitReport": "Envoyer le signalement",
+    "submitting": "Envoi…",
+    "conditionsEditorial": "Aperçu hivernal",
     "card": {
       "elevationGain": "{meters} m de dénivelé",
       "temperature": "{value}°C",
@@ -1448,12 +1448,12 @@
         "seeConditions": "Voir les conditions"
       }
     },
-    "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-    "allTrails": "All trails",
-    "askAI": "Ask AI",
-    "clearFilters": "Clear filters",
-    "reportError": "Didn't save. Try again or head back to the trail.",
-    "reportAria": "Submit trail conditions report",
+    "noMatch": "Aucun sentier ne correspond à vos filtres. Essayez un autre statut, une difficulté ou une région — ou demandez à l'IA. Elle connaît le Troodos jusqu'à la côte.",
+    "allTrails": "Tous les sentiers",
+    "askAI": "Demander à l'IA",
+    "clearFilters": "Effacer les filtres",
+    "reportError": "Non enregistré. Réessayez ou retournez au sentier.",
+    "reportAria": "Envoyer un signalement sur l'état du sentier",
     "aria": {
       "actions": "Actions sentiers",
       "reportConditions": "Signaler les conditions du sentier",
@@ -1594,7 +1594,7 @@
     },
     "detail": {
       "meta": {
-        "title": "{name} | Cyprus Winter Trails",
+        "title": "{name} | Sentiers Cyprus Winter",
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
@@ -1681,7 +1681,7 @@
       "ctaAllTrails": "Tous les sentiers"
     },
     "filterBar": {
-      "showingAll": "— Showing all"
+      "showingAll": "— Tous affichés"
     },
     "quickFilters": {
       "label": "Rapide :",
@@ -3001,7 +3001,7 @@
         "duration": "{km} km · ~{hours}h"
       },
       "aria": {
-        "actions": "Troodos December guide actions"
+        "actions": "Actions guide Troodos décembre"
       }
     },
     "directory": {

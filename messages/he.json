@@ -127,12 +127,12 @@
     "goHome": "דף הבית",
     "tryAgain": "נסו שוב",
     "callAhead": "התקשרו מראש",
-    "explore": "Explore",
-    "place": "Place",
-    "trail": "Trail",
-    "winery": "Winery",
-    "event": "Event",
-    "eat": "Eat",
+    "explore": "גלו",
+    "place": "מקום",
+    "trail": "שביל",
+    "winery": "יקב",
+    "event": "אירוע",
+    "eat": "אוכל",
     "placeTypes": {
       "beach": "חוף",
       "ancientSite": "אתר עתיק",
@@ -145,7 +145,7 @@
       "trail": "שביל",
       "event": "אירוע"
     },
-    "timelineRemovedPlace": "This place was removed from our list",
+    "timelineRemovedPlace": "מקום זה הוסר מהרשימה שלנו",
     "ai": {
       "title": "מדריך קפריסין",
       "subtitle": "שאלו על שבילים, יקבים וכפרים",
@@ -286,10 +286,10 @@
     "clearFilter": "נקה סינון",
     "viewOnMap": "הצגה במפה",
     "scrollToMap": "גלול למפה",
-    "askAI": "Ask AI",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "askAITrailsAria": "Ask AI for trail suggestions",
-    "askAIRecommendationsAria": "Ask AI for recommendations",
+    "askAI": "שאלו את ה-AI",
+    "askAIAria": "שאלו את ה-AI על שבילים, יקבים ורעיונות לטיול",
+    "askAITrailsAria": "שאלו את ה-AI להצעות שבילים",
+    "askAIRecommendationsAria": "שאלו את ה-AI להמלצות",
     "hubFooter": {
       "prompt": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI לרעיונות.",
       "aria": {
@@ -302,14 +302,14 @@
       "viewPlan": "צפו בתוכנית"
     },
     "planYourTrip": "תכנן את הטיול",
-    "winterHikingGuide": "Winter hiking guide",
-    "seeMap": "See map",
-    "emergency112": "Emergency 112",
+    "winterHikingGuide": "מדריך טיולים חורפי",
+    "seeMap": "ראו מפה",
+    "emergency112": "חירום 112",
     "trailsFooterDisclaimer": "התנאים מבוססי דיווחים ואינם מובטחים. השתמשו בשיקול דעת ועקבו אחר הנחיות מקומיות.",
-    "discoverEmptyTitle": "No places here.",
-    "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
+    "discoverEmptyTitle": "אין מקומות כאן.",
+    "discoverEmptyBody": "נסו מסנן אחר או שאלו את ה-AI — היא מכירה את האי.",
+    "emergency": "חירום",
+    "touristInfo": "מידע לתיירים",
     "ambulance": "Ambulance",
     "loading": {
       "generic": "טוען",
@@ -341,9 +341,9 @@
     },
     "cancel": "ביטול",
     "done": "סיום",
-    "clearDay": "Clear day",
-    "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "clearDay": "נקו יום",
+    "clearDayTitle": "לנקות יום {day}?",
+    "removeAllFromDay": "הסירו את כל {count} {count, plural, one {המקום} other {המקומות}} מיום {day}. תוכלו להוסיף שוב בכל עת.",
     "localeBeta": "בטא",
     "beforeYouGo": {
       "heading": "לפני שיוצאים",
@@ -1423,10 +1423,10 @@
     }
   },
   "trails": {
-    "addToPlan": "Add to plan",
-    "submitReport": "Submit report",
-    "submitting": "Submitting…",
-    "conditionsEditorial": "Winter snapshot",
+    "addToPlan": "הוסיפו לתוכנית",
+    "submitReport": "שלחו דיווח",
+    "submitting": "שולח…",
+    "conditionsEditorial": "תמונת מצב חורפית",
     "card": {
       "elevationGain": "{meters} מ' עלייה",
       "temperature": "{value}°C",
@@ -1448,12 +1448,12 @@
         "seeConditions": "ראו תנאים"
       }
     },
-    "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-    "allTrails": "All trails",
-    "askAI": "Ask AI",
-    "clearFilters": "Clear filters",
-    "reportError": "Didn't save. Try again or head back to the trail.",
-    "reportAria": "Submit trail conditions report",
+    "noMatch": "אין שבילים שמתאימים למסננים. נסו סטטוס, קושי או אזור אחר — או שאלו את ה-AI. היא מכירה מטרודוס ועד החוף.",
+    "allTrails": "כל השבילים",
+    "askAI": "שאלו את ה-AI",
+    "clearFilters": "נקו מסננים",
+    "reportError": "לא נשמר. נסו שוב או חזרו לשביל.",
+    "reportAria": "שליחת דיווח על מצב השביל",
     "aria": {
       "actions": "פעולות שבילים",
       "reportConditions": "דווח על תנאי שביל",
@@ -1594,7 +1594,7 @@
     },
     "detail": {
       "meta": {
-        "title": "{name} | Cyprus Winter Trails",
+        "title": "{name} | שבילי Cyprus Winter",
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
@@ -1681,7 +1681,7 @@
       "ctaAllTrails": "כל השבילים"
     },
     "filterBar": {
-      "showingAll": "— Showing all"
+      "showingAll": "— מציג הכל"
     },
     "quickFilters": {
       "label": "מהיר:",
@@ -3001,7 +3001,7 @@
         "duration": "{km} ק\"מ · ~{hours} ש'"
       },
       "aria": {
-        "actions": "Troodos December guide actions"
+        "actions": "פעולות מדריך מטרודוס דצמבר"
       }
     },
     "directory": {
