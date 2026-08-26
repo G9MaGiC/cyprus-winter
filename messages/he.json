@@ -310,7 +310,7 @@
     "discoverEmptyBody": "נסו מסנן אחר או שאלו את ה-AI — היא מכירה את האי.",
     "emergency": "חירום",
     "touristInfo": "מידע לתיירים",
-    "ambulance": "Ambulance",
+    "ambulance": "אמבולנס",
     "loading": {
       "generic": "טוען",
       "ellipsis": "טוען…",
@@ -2219,7 +2219,7 @@
         "body": "בחרו מה מעניין אתכם. גילוי, עכשיו בקרבתכם והצעות תכנון יתבססו על זה.",
         "labels": {
           "active": "טיולים ושבילים",
-          "bouldering": "Bouldering+",
+          "bouldering": "בולדרינג+",
           "climbing": "טיפוס סלעים",
           "cycling": "רכיבה",
           "culture": "היסטוריה וארכיאולוגיה",
@@ -2479,7 +2479,7 @@
         "month": "חודש",
         "coast": "חוף (°C)",
         "coastConditions": "תנאים",
-        "troodos": "Troodos (°C)",
+        "troodos": "מטרודוס (°C)",
         "troodosConditions": "תנאים"
       },
       "mobile": {
@@ -3265,7 +3265,7 @@
       },
       "types": {
         "viewpoint": "נקודת תצפית",
-        "kafenion": "Kafenion",
+        "kafenion": "בית קפה כפרי",
         "timing": "תזמון",
         "pairing": "שילוב",
         "spot": "מקום"
@@ -3361,20 +3361,20 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
     "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "תיאטרון קוריון העתיק מעל חוף הים התיכון, חורף בקפריסין"
   },
   "ui": {
     "hero": {
-      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+      "imageAlt": "תיאטרון קוריון העתיק, חוף הים התיכון, חורף בקפריסין"
     },
     "app__home_HomeHero": {
-      "text_13": "Winter in Cyprus",
-      "text_14": "Trails, villages, heritage",
-      "text_subtitle": "Often sixteen degrees when home is six.",
-      "text_16": "Plan ahead or start exploring when you land.",
-      "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your plan",
-      "aria-label_12": "Transport from airport, tips"
+      "text_13": "חורף בקפריסין",
+      "text_14": "שבילים, כפרים, מורשת",
+      "text_subtitle": "לעיתים שיש עשרה מעלות כשבבית יש שש.",
+      "text_16": "תכננו מראש או התחילו לגלות כשאתם נוחתים.",
+      "aria-label_10": "עבור לגילוי",
+      "aria-label_11": "צפו בתוכנית שלכם",
+      "aria-label_12": "תחבורה מהשדה, טיפים"
     }
   },
   "cycling": {

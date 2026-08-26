@@ -310,7 +310,7 @@
     "discoverEmptyBody": "Încearcă alt filtru sau întreabă AI — cunoaște insula.",
     "emergency": "Urgență",
     "touristInfo": "Informații turistice",
-    "ambulance": "Ambulance",
+    "ambulance": "Ambulanță",
     "loading": {
       "generic": "Se încarcă",
       "ellipsis": "Se încarcă…",
@@ -2219,7 +2219,7 @@
         "body": "Alege ce te entuziasmează. Descoperă, În apropiere și sugestiile de plan se vor baza pe acestea.",
         "labels": {
           "active": "Drumeții & trasee",
-          "bouldering": "Bouldering+",
+          "bouldering": "Boulder+",
           "climbing": "Escaladă",
           "cycling": "Ciclism",
           "culture": "Istorie & arheologie",
@@ -3265,7 +3265,7 @@
       },
       "types": {
         "viewpoint": "Punct de vedere",
-        "kafenion": "Kafenion",
+        "kafenion": "Cafenea",
         "timing": "Timing",
         "pairing": "Combinație",
         "spot": "Loc"
@@ -3361,20 +3361,20 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
     "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "Teatrul antic Kourion deasupra coastei Mediteranei, iarnă în Cipru"
   },
   "ui": {
     "hero": {
-      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+      "imageAlt": "Teatrul antic Kourion, coasta Mediteranei, iarnă în Cipru"
     },
     "app__home_HomeHero": {
-      "text_13": "Winter in Cyprus",
-      "text_14": "Trails, villages, heritage",
-      "text_subtitle": "Often sixteen degrees when home is six.",
-      "text_16": "Plan ahead or start exploring when you land.",
-      "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your plan",
-      "aria-label_12": "Transport from airport, tips"
+      "text_13": "Iarnă în Cipru",
+      "text_14": "Trasee, sate, patrimoniu",
+      "text_subtitle": "Adesea șaisprezece grade când acasă sunt șase.",
+      "text_16": "Planifică din timp sau începe să explorezi când aterizezi.",
+      "aria-label_10": "Mergi la Descoperă",
+      "aria-label_11": "Vezi planul tău",
+      "aria-label_12": "Transport de la aeroport, sfaturi"
     }
   },
   "cycling": {

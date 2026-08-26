@@ -2219,7 +2219,7 @@
         "body": "Choisissez ce qui vous attire. Découvrir, Autour de vous et les suggestions de plan s'appuieront sur ces choix.",
         "labels": {
           "active": "Randonnée & sentiers",
-          "bouldering": "Bouldering+",
+          "bouldering": "Bloc+",
           "climbing": "Escalade",
           "cycling": "Vélo",
           "culture": "Histoire & archéologie",
@@ -3361,20 +3361,20 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
     "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "Théâtre antique de Kourion au-dessus de la côte méditerranéenne, Chypre en hiver"
   },
   "ui": {
     "hero": {
-      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+      "imageAlt": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver"
     },
     "app__home_HomeHero": {
-      "text_13": "Winter in Cyprus",
-      "text_14": "Trails, villages, heritage",
-      "text_subtitle": "Often sixteen degrees when home is six.",
-      "text_16": "Plan ahead or start exploring when you land.",
-      "aria-label_10": "Go to Discover",
+      "text_13": "L'hiver à Chypre",
+      "text_14": "Sentiers, villages, patrimoine",
+      "text_subtitle": "Souvent seize degrés quand chez vous il en fait six.",
+      "text_16": "Planifiez à l'avance ou explorez dès votre arrivée.",
+      "aria-label_10": "Aller à Découvrir",
       "aria-label_11": "Voir votre plan",
-      "aria-label_12": "Transport from airport, tips"
+      "aria-label_12": "Transport depuis l'aéroport, conseils"
     }
   },
   "cycling": {

@@ -1,0 +1,47 @@
+{
+  "fr": {
+    "ui.hero.imageAlt": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver",
+    "ui.app__home_HomeHero.text_13": "L'hiver à Chypre",
+    "ui.app__home_HomeHero.text_14": "Sentiers, villages, patrimoine",
+    "ui.app__home_HomeHero.text_subtitle": "Souvent seize degrés quand chez vous il en fait six.",
+    "ui.app__home_HomeHero.text_16": "Planifiez à l'avance ou explorez dès votre arrivée.",
+    "ui.app__home_HomeHero.aria-label_10": "Aller à Découvrir",
+    "ui.app__home_HomeHero.aria-label_11": "Voir votre plan",
+    "ui.app__home_HomeHero.aria-label_12": "Transport depuis l'aéroport, conseils",
+    "meta.ogImageAlt": "Théâtre antique de Kourion au-dessus de la côte méditerranéenne, Chypre en hiver",
+    "common.ambulance": "Ambulance",
+    "account.settings.interests.labels.bouldering": "Bloc+",
+    "secrets.page.types.kafenion": "Kafenion",
+    "weather.page.table.troodos": "Troodos (°C)"
+  },
+  "he": {
+    "ui.hero.imageAlt": "תיאטרון קוריון העתיק, חוף הים התיכון, חורף בקפריסין",
+    "ui.app__home_HomeHero.text_13": "חורף בקפריסין",
+    "ui.app__home_HomeHero.text_14": "שבילים, כפרים, מורשת",
+    "ui.app__home_HomeHero.text_subtitle": "לעיתים שיש עשרה מעלות כשבבית יש שש.",
+    "ui.app__home_HomeHero.text_16": "תכננו מראש או התחילו לגלות כשאתם נוחתים.",
+    "ui.app__home_HomeHero.aria-label_10": "עבור לגילוי",
+    "ui.app__home_HomeHero.aria-label_11": "צפו בתוכנית שלכם",
+    "ui.app__home_HomeHero.aria-label_12": "תחבורה מהשדה, טיפים",
+    "meta.ogImageAlt": "תיאטרון קוריון העתיק מעל חוף הים התיכון, חורף בקפריסין",
+    "common.ambulance": "אמבולנס",
+    "account.settings.interests.labels.bouldering": "בולדרינג+",
+    "secrets.page.types.kafenion": "בית קפה כפרי",
+    "weather.page.table.troodos": "מטרודוס (°C)"
+  },
+  "ro": {
+    "ui.hero.imageAlt": "Teatrul antic Kourion, coasta Mediteranei, iarnă în Cipru",
+    "ui.app__home_HomeHero.text_13": "Iarnă în Cipru",
+    "ui.app__home_HomeHero.text_14": "Trasee, sate, patrimoniu",
+    "ui.app__home_HomeHero.text_subtitle": "Adesea șaisprezece grade când acasă sunt șase.",
+    "ui.app__home_HomeHero.text_16": "Planifică din timp sau începe să explorezi când aterizezi.",
+    "ui.app__home_HomeHero.aria-label_10": "Mergi la Descoperă",
+    "ui.app__home_HomeHero.aria-label_11": "Vezi planul tău",
+    "ui.app__home_HomeHero.aria-label_12": "Transport de la aeroport, sfaturi",
+    "meta.ogImageAlt": "Teatrul antic Kourion deasupra coastei Mediteranei, iarnă în Cipru",
+    "common.ambulance": "Ambulanță",
+    "account.settings.interests.labels.bouldering": "Boulder+",
+    "secrets.page.types.kafenion": "Cafenea",
+    "weather.page.table.troodos": "Troodos (°C)"
+  }
+}
