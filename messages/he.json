@@ -1,7 +1,7 @@
 {
   "footer": {
     "discover": "גילוי",
-    "plan": "תכנון",
+    "plan": "תוכנית",
     "airport": "שדה תעופה",
     "arriving": "בהגעה",
     "weather": "מזג אוויר",
@@ -31,7 +31,7 @@
   },
   "nav": {
     "discover": "גילוי",
-    "plan": "תכנון",
+    "plan": "תוכנית",
     "trails": "שבילים",
     "events": "אירועים",
     "airport": "שדה תעופה",
@@ -61,7 +61,7 @@
   "common": {
     "nav": {
       "discover": "גילוי",
-      "trip": "מסלול",
+      "trip": "תוכנית",
       "airport": "שדה תעופה"
     },
     "aria": {
@@ -410,7 +410,7 @@
         "discoverTitle": "גילוי",
         "discoverDesc": "חופים מתונים, עתיקות, כפרים, ומקומות ששווה להאט בשבילם.",
         "discoverCta": "התחילו לגלות",
-        "planTitle": "תכנון",
+        "planTitle": "תוכנית",
         "planDesc": "בנו יום לפי הזמן, מזג האוויר והמקומות שחשובים לכם.",
         "planCta": "בנו יום",
         "bookTitle": "הזמנה",
@@ -878,7 +878,7 @@
         "watersports": "ספורט ימי",
         "quiet": "מפלטים שקטים",
         "mountains": "הרים",
-        "wellness": "רוגע",
+        "wellness": "בריאות",
         "relatedTrails": "שבילים קשורים",
         "seeAllMountainTrails": "שבילי Troodos",
         "browseAllTrails": "כל השבילים",
@@ -1063,7 +1063,7 @@
         "buyWineAria": "קניית יין אונליין (נפתח בלשונית חדשה)",
         "buyWineCta": "קניית יין אונליין",
         "instagramAria": "עקבו אחרי @{handle} באינסטגרם (נפתח בלשונית חדשה)",
-        "instagramCta": "אינסטגרם @{handle}",
+        "instagramCta": "Instagram @{handle}",
         "bookGuide": "הזמנת מדריך →",
         "alcoholDisclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות."
       },
@@ -1488,7 +1488,7 @@
           "tip": "קטעים תלולים ומרחק ארוך יותר. הקצו 3–4 שעות. בדקו תנאים לפני היציאה."
         },
         "expert": {
-          "label": "מומחים",
+          "label": "מומחה",
           "tip": "שטח טכני, יום שלם. נדרשים ניסיון והכנה."
         }
       }
@@ -1604,13 +1604,13 @@
       },
       "hero": {
         "elevationGain": "עלייה {meters} מ'",
-        "elevationMax": "מקס' {meters} מ'",
+        "elevationMax": "מקס׳ {meters} מ'",
         "trailheadLabel": "נקודת התחלה: {name}",
         "navigateToTrailhead": "ניווט לנקודת ההתחלה →"
       },
       "nav": {
         "overview": "סקירה",
-        "conditions": "תנאים",
+        "conditions": "מצב",
         "map": "מפה",
         "waypoints": "נקודות בדרך",
         "pairWith": "שילוב עם"
@@ -2073,7 +2073,7 @@
       }
     },
     "quickAddPlaces": {
-      "artemis": "Artemis Trail",
+      "artemis": "שביל ארטמיס",
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
@@ -2232,7 +2232,7 @@
         "title": "סגנון טיול",
         "body": "עוזר להתאים הצעות (משפחות, זוגות, וכו').",
         "labels": {
-          "solo": "לבד",
+          "solo": "סולו",
           "couple": "זוג",
           "family": "משפחות",
           "group": "קבוצה",
@@ -2381,10 +2381,10 @@
         "sport": "ספורט"
       },
       "monthShort": {
-        "Nov": "נוב",
-        "Dec": "דצמ",
-        "Jan": "ינו",
-        "Feb": "פבר",
+        "Nov": "נוב׳",
+        "Dec": "דצמ׳",
+        "Jan": "ינו׳",
+        "Feb": "פבר׳",
         "Mar": "מרץ"
       },
       "meta": {
@@ -2478,9 +2478,9 @@
       "table": {
         "month": "חודש",
         "coast": "חוף (°C)",
-        "coastConditions": "תנאים",
+        "coastConditions": "מצב",
         "troodos": "מטרודוס (°C)",
-        "troodosConditions": "תנאים"
+        "troodosConditions": "מצב"
       },
       "mobile": {
         "details": "פרטים →"
@@ -3029,7 +3029,7 @@
         "lefkosia": "לפקוסיה",
         "ammochostos": "אמוחוסטוס",
         "larnaka": "לרנקה",
-        "lemesos": "לימסול",
+        "lemesos": "לימסול (Limassol)",
         "pafos": "פאפוס"
       },
       "languages": {
@@ -3413,9 +3413,9 @@
         "relatedPlace": "המדריך שלנו לאזור",
         "regions": {
           "lefkosia": "Lefkosia (ניקוסיה)",
-          "lemesos": "Lemesos (לימסול)",
-          "larnaka": "Larnaka (לarnaca)",
-          "pafos": "Pafos (פafos)",
+          "lemesos": "לימסול (Limassol)",
+          "larnaka": "לרנקה (Larnaca)",
+          "pafos": "פאפוס (Paphos)",
           "ammochostos": "Ammochostos (פamagusta)",
           "troodos": "Troodos"
         },
@@ -3476,9 +3476,9 @@
         "relatedPlace": "המדריך שלנו לאזור",
         "regions": {
           "lefkosia": "Lefkosia (ניקוסיה)",
-          "lemesos": "Lemesos (לימסול)",
-          "larnaka": "Larnaka (לרנקה)",
-          "pafos": "Pafos (פאפוס)",
+          "lemesos": "לימסול (Limassol)",
+          "larnaka": "לרנקה (Larnaca)",
+          "pafos": "פאפוס (Paphos)",
           "ammochostos": "Ammochostos (עמוחוסט)",
           "troodos": "Troodos"
         },

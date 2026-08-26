@@ -1,7 +1,7 @@
 {
   "footer": {
     "discover": "Découvrir",
-    "plan": "Plan",
+    "plan": "Programme",
     "airport": "Aéroport",
     "arriving": "À l’arrivée",
     "weather": "Météo",
@@ -31,7 +31,7 @@
   },
   "nav": {
     "discover": "Découvrir",
-    "plan": "Plan",
+    "plan": "Programme",
     "trails": "Sentiers",
     "events": "Événements",
     "airport": "Aéroport",
@@ -61,7 +61,7 @@
   "common": {
     "nav": {
       "discover": "Découvrir",
-      "trip": "Plan",
+      "trip": "Programme",
       "airport": "Aéroport"
     },
     "aria": {
@@ -410,7 +410,7 @@
         "discoverTitle": "Découvrir",
         "discoverDesc": "Côtes douces, ruines, villages — des lieux où l’on ralentit.",
         "discoverCta": "Commencer à explorer",
-        "planTitle": "Plan",
+        "planTitle": "Programme",
         "planDesc": "Composez une journée selon l’heure, la météo et les lieux qui vous tiennent à cœur.",
         "planCta": "Composer une journée",
         "bookTitle": "Réserver",
@@ -1240,7 +1240,7 @@
       "secret": {
         "aria": "Secret du portail partenaire",
         "placeholder": "Secret du portail",
-        "label": "Secret"
+        "label": "Code secret"
       },
       "submit": "Se connecter",
       "invalid": "E-mail ou secret non reconnu.",
@@ -1604,7 +1604,7 @@
       },
       "hero": {
         "elevationGain": "{meters}m de dénivelé",
-        "elevationMax": "Max {meters}m",
+        "elevationMax": "Max. {meters} m",
         "trailheadLabel": "Départ : {name}",
         "navigateToTrailhead": "Naviguer vers le départ →"
       },
@@ -2073,7 +2073,7 @@
       }
     },
     "quickAddPlaces": {
-      "artemis": "Artemis Trail",
+      "artemis": "Sentier Artémis",
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
@@ -2381,11 +2381,11 @@
         "sport": "Sport"
       },
       "monthShort": {
-        "Nov": "Nov",
-        "Dec": "Déc",
-        "Jan": "Jan",
-        "Feb": "Fév",
-        "Mar": "Mar"
+        "Nov": "Nov.",
+        "Dec": "Déc.",
+        "Jan": "Janv.",
+        "Feb": "Fév.",
+        "Mar": "Mars"
       },
       "meta": {
         "title": "Événements d’hiver à Chypre | Épiphanie, carnaval, marchés",
@@ -2998,7 +2998,7 @@
       },
       "cards": {
         "imageAlt": "{name}, {region} — sentier {km} km {difficulty}",
-        "duration": "{km} km · ~{hours}h"
+        "duration": "{km} km · ~{hours} h"
       },
       "aria": {
         "actions": "Actions guide Troodos décembre"
@@ -3265,10 +3265,10 @@
       },
       "types": {
         "viewpoint": "Belvédère",
-        "kafenion": "Kafenion",
+        "kafenion": "Café du village",
         "timing": "Horaire",
         "pairing": "Combinaison",
-        "spot": "Spot"
+        "spot": "Adresse"
       }
     }
   },
@@ -3469,7 +3469,7 @@
         "officialIndexLink": "Liste complète sur Visit Cyprus",
         "filterRegion": "Filtrer par région",
         "allRegions": "Toutes les régions",
-        "resultCount": "{count} sites",
+        "resultCount": "{count} lieux",
         "winterPick": "Choix d'hiver",
         "viewOnVisitCyprus": "Site sur Visit Cyprus",
         "relatedTrail": "Sentier associé",
@@ -3496,7 +3496,7 @@
         "trails": "Notre hub sentiers",
         "cycling": "Vélo d'hiver",
         "climbing": "Escalade dans Découvrir",
-        "birdwatchingVc": "Observation d'oiseaux (Visit Cyprus)",
+        "birdwatchingVc": "Observation des oiseaux (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
         "cyprusRocks": "Cyprus Rocks (topos d'escalade)",
         "climbingVc": "Escalade (Visit Cyprus)",

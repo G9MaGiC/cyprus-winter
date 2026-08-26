@@ -83,7 +83,7 @@
       "shareOn": "Distribuie pe {label}",
       "siteFooter": "Subsol site",
       "footerNav": "Planifică, explorează, esențiale",
-      "footerLegal": "Legal",
+      "footerLegal": "Informații legale",
       "quickActions": "Acțiuni rapide",
       "reportConditionsForTrail": "Raportează condițiile acestui traseu",
       "dismissNotification": "Închide notificarea",
@@ -445,7 +445,7 @@
         "activeAria": "Aventuri active — trasee, drumeții",
         "trailsAndHiking": "Trasee și drumeții",
         "trailsAndHikingAria": "Condiții pe trasee și drumeții în Troodos",
-        "boulderingPlus": "Bouldering+",
+        "boulderingPlus": "Boulder+",
         "boulderingPlusAria": "Bouldering și săli de cățărare în Cipru",
         "climbing": "Cățărare",
         "climbingAria": "Cățărare și stânci în Cipru",
@@ -872,7 +872,7 @@
         "toggleAll": "Toate",
         "toggleShow": "Arată",
         "toggleHide": "Ascunde",
-        "bouldering": "Bouldering+",
+        "bouldering": "Boulder+",
         "climbing": "Cățărare",
         "cycling": "Ciclism",
         "watersports": "Sporturi nautice",
@@ -1240,7 +1240,7 @@
       "secret": {
         "aria": "Secretul portalului partener",
         "placeholder": "Secret portal",
-        "label": "Secret"
+        "label": "Cod secret"
       },
       "submit": "Autentificare",
       "invalid": "E-mailul sau secretul nu este recunoscut.",
@@ -1604,7 +1604,7 @@
       },
       "hero": {
         "elevationGain": "{meters}m urcare",
-        "elevationMax": "Max {meters}m",
+        "elevationMax": "Max. {meters} m",
         "trailheadLabel": "Plecare: {name}",
         "navigateToTrailhead": "Navighează spre plecare →"
       },
@@ -1633,7 +1633,7 @@
       "liveWeather": {
         "temperature": "{min}–{max}°C",
         "rain": "Ploaie așteptată",
-        "live": "Live"
+        "live": "În direct"
       },
       "safety": {
         "title": "Siguranță & esențiale",
@@ -2073,7 +2073,7 @@
       }
     },
     "quickAddPlaces": {
-      "artemis": "Artemis Trail",
+      "artemis": "Traseul Artemis",
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
@@ -2650,7 +2650,7 @@
     "forgot": {
       "title": "Ai uitat parola?",
       "subtitle": "Introdu emailul și îți trimitem un link pentru o parolă nouă.",
-      "emailLabel": "Email",
+      "emailLabel": "E-mail",
       "emailPlaceholder": "you@example.com",
       "errorInvalidEmail": "Introdu o adresă de email validă.",
       "errorGeneric": "Ceva nu a mers. Încearcă din nou peste puțin.",
@@ -3022,7 +3022,7 @@
       "filterLanguage": "Limbă",
       "allDistricts": "Toate districtele",
       "allLanguages": "Toate limbile",
-      "resultCount": "{count} ghiduri",
+      "resultCount": "{count} ghizi",
       "empty": "Niciun ghid nu corespunde filtrelor. Încearcă alt district sau altă limbă.",
       "districts": {
         "general": "Tot Ciprul",
@@ -3137,7 +3137,7 @@
         }
       },
       "footer": {
-        "backToAppLabel": "app"
+        "backToAppLabel": "aplicație"
       }
     }
   },
@@ -3266,7 +3266,7 @@
       "types": {
         "viewpoint": "Punct de vedere",
         "kafenion": "Cafenea",
-        "timing": "Timing",
+        "timing": "Moment",
         "pairing": "Combinație",
         "spot": "Loc"
       }
@@ -3496,7 +3496,7 @@
         "trails": "Hub-ul nostru de trasee",
         "cycling": "Ciclism de iarnă",
         "climbing": "Escaladă în Descoperă",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "birdwatchingVc": "Observarea păsărilor (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
         "cyprusRocks": "Cyprus Rocks (topo-uri escaladă)",
         "climbingVc": "Escaladă (Visit Cyprus)",
