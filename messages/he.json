@@ -475,9 +475,9 @@
       "templateLink": "תבנית 48 שעות",
       "images": {
         "troodosTrail": "שביל ארטמיס, יער אורן בטרודוס, קפריסין בחורף",
-        "omodosVillage": "סמטת אומודוס, קrasochoria, קפריסין בחורף",
+        "omodosVillage": "סמטת אומודוס, Krasochoria, קפריסין בחורף",
         "winterVineyard": "כרם הרים באור חורף, קפריסין",
-        "kourionCoast": "תיאטרון קורion העתיק, חוף הים התיכון, קפריסין בחורף"
+        "kourionCoast": "תיאטרון קוריון העתיק, חוף הים התיכון, קפריסין בחורף"
       }
     },
     "search": {
@@ -3416,7 +3416,7 @@
           "lemesos": "לימסול (Limassol)",
           "larnaka": "לרנקה (Larnaca)",
           "pafos": "פאפוס (Paphos)",
-          "ammochostos": "Ammochostos (פamagusta)",
+          "ammochostos": "Ammochostos (עמוחוסט)",
           "troodos": "Troodos"
         },
         "difficulty": {

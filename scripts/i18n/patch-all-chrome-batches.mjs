@@ -9,9 +9,9 @@ import { fileURLToPath } from "node:url";
 
 const dir = dirname(fileURLToPath(import.meta.url));
 
-for (let n = 2; n <= 16; n++) {
+for (let n = 2; n <= 17; n++) {
   const script = join(dir, `patch-locale-chrome-batch${n}.mjs`);
   execSync(`node ${script}`, { stdio: "inherit" });
 }
 
-console.log("All chrome batches 2–16 applied.");
+console.log("All chrome batches 2–17 applied.");

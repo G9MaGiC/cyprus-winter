@@ -1,6 +1,6 @@
 # Beta locale (fr / he / ro) — intentional English holdouts
 
-After PR #179 chrome batches 2–16 (BUG-314–328), remaining keys that still match `messages/en.json` in beta locales fall into the categories below. **Do not machine-translate** legal/admin blocks or brand-attribution strings without product review.
+After PR #179 chrome batches 2–17 (BUG-314–329), remaining keys that still match `messages/en.json` in beta locales fall into the categories below. **Do not machine-translate** legal/admin blocks or brand-attribution strings without product review.
 
 ## Summary (post batch 16)
 
