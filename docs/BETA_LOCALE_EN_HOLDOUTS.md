@@ -30,6 +30,8 @@ node scripts/i18n/patch-locale-chrome-batch16.mjs
 
 Patch scripts live in `scripts/i18n/beta-locale-chrome-batch*-overrides.json`.
 
+Editorial re-apply maps (`scripts/i18n/editorial-{fr,he,ro}.json`) should match `messages/*` after chrome batches — run `node scripts/i18n/apply-editorial-map.mjs <locale> scripts/i18n/editorial-<locale>.json` only when intentionally refreshing editorial body copy.
+
 ---
 
 ## Union holdouts (~43 keys)
