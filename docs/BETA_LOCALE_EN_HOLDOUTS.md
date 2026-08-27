@@ -21,12 +21,12 @@ node scripts/i18n/patch-all-chrome-batches.mjs
 Or individually:
 
 ```bash
-for n in 2 3 4 5 6 7 8 9 10 11 12 13 14; do
+for n in 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17; do
   node scripts/i18n/patch-locale-chrome-batch${n}.mjs
 done
-node scripts/i18n/patch-locale-chrome-batch15.mjs
-node scripts/i18n/patch-locale-chrome-batch16.mjs
 ```
+
+Or: `node scripts/i18n/patch-all-chrome-batches.mjs`
 
 Patch scripts live in `scripts/i18n/beta-locale-chrome-batch*-overrides.json`.
 
@@ -89,6 +89,8 @@ Present in **fr, he, and ro** by design.
 | `plan.daySelector.summarySeparator` | ` → ` | Arrow separator |
 | `trails.card.temperature` | `{value}°C` | Unit template |
 | `trails.detail.liveWeather.temperature` | `{min}–{max}°C` | Unit template |
+| `home.rightNow.card.distanceLessThanKm` | `< 1 km` | Unit template (same in fr/ro/de/pl) |
+| `home.rightNow.card.distanceKm` | `{distance} km` | Unit template (same in fr/ro/de/pl) |
 | `trails.detail.meta.descriptionPrefix` | `{location}. {lengthKm} km, {difficulty}.` | SEO template |
 | `trails.map.popupMeta` | `{region} · {km} km` | Map popup template |
 | `account.settings.privacy.footer.suffix` | `.` | Punctuation |

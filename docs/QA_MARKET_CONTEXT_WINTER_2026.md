@@ -2,7 +2,7 @@
 
 **Status:** Living document  
 **Owner:** Product / QA  
-**Last updated:** May 2026  
+**Last updated:** Aug 2026  
 **Purpose:** Ground persona-based QA in official arrivals data, trade press, and 2026 risk factors.  
 **Related:** `docs/QA_PERSONAS_FULL_STACK_2026.md`, `docs/QA_PERSONA_JOURNEYS_2026.md`, `docs/QA_PERSONA_PRIORITIES_2026.md`, `docs/QA_PLAN.md`
 
@@ -14,7 +14,7 @@ Cyprus winter tourism in **early 2026** showed **record or near-record off-peak 
 
 **2026 is not a “normal” year for trust:** regional security events can produce **sharp arrival drops** (reported ~30% YoY declines in Mar–Apr 2026 in some trade coverage). QA must validate **factual, calm travel context**—not only sunny marketing.
 
-**Product locale alignment:** App ships `en`, `el`, `de`, `pl`, plus beta `ro`, `fr`, `he` (`src/i18n/routing.ts`). Core four match top winter markets. **`he`** uses RTL layout. **`ro`/`fr`/`he`** chrome (nav, footer, cookies, errors, booking lookup) is translated and labeled beta in the locale switcher; home/legal/editorial body copy is still English pending a translation sprint.
+**Product locale alignment:** App ships `en`, `el`, `de`, `pl`, plus beta `ro`, `fr`, `he` (`src/i18n/routing.ts`). Core four match top winter markets. **`he`** uses RTL layout. **`ro`/`fr`/`he`** have translated chrome, editorial, and **draft** privacy/terms; the locale switcher still shows a beta badge until lawyer/translator sign-off (`docs/BETA_LOCALE_GRADUATION.md`).
 
 ---
 
@@ -34,7 +34,7 @@ Cyprus winter tourism in **early 2026** showed **record or near-record off-peak 
 | Rank | Market | Share | Notes for product |
 |------|--------|-------|-------------------|
 | 1 | Poland | 18.6% | Often #1 in winter months; **pl** locale critical |
-| 2 | Israel | 18.1% | High spend segments cited in trade press; **no he locale** |
+| 2 | Israel | 18.1% | High spend segments cited in trade press; **he** locale (beta) |
 | 3 | United Kingdom | 15.8% | Anchor market; winter + VFR + half-term |
 | 4 | Greece | 9.6% | Weekends, cultural overlap; **el** locale |
 | 5 | Germany | 6.2% | Smaller share but **fast winter growth** in 2026 reporting |
