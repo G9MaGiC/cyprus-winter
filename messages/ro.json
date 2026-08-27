@@ -542,7 +542,7 @@
       },
       "adapt": {
         "kicker": "Ajustează ziua",
-        "body": "S-a schimbat vremea sau planurile au întârziat? Ajustează ziua dintr-o atingere, fără să o iei de la capăt.",
+        "body": "S-a schimbat vremea sau ai rămas în urmă cu planul? Ajustează ziua dintr-o atingere, fără să o iei de la capăt.",
         "ctaWeather": "Verifică vremea",
         "ctaPlan": "Ajustează planul",
         "ctaBookings": "Vezi rezervările"
@@ -584,7 +584,7 @@
       },
       "fallbackTease": {
         "winery": "Încălzitoare pe terasă.",
-        "village": "Pietruite doar pentru tine în timpul săptămânii.",
+        "village": "Străzi pietruite doar pentru tine în timpul săptămânii.",
         "monastery": "Liniște săptămâna aceasta.",
         "nature": "Cer senin astăzi.",
         "ancient": "Cea mai bună lumină după-amiaza.",
@@ -597,14 +597,14 @@
       "planTitle": "Planifică-ți călătoria",
       "eventsTitle": "Evenimente de iarnă",
       "eventsDesc": "Bobotează, carnaval, degustări. Ce se întâmplă când.",
-      "defaultSubtitle": "Șabloane, hartă și distribuire într-un loc — continuă pe pagina Plan."
+      "defaultSubtitle": "Șabloane, hartă și distribuire într-un loc — continuă pe pagina Planificare."
     },
     "recentlyViewed": {
       "title": "Vizionate recent",
       "clear": "Șterge"
     },
     "insiderTip": {
-      "heading": "Sfat insider de iarnă",
+      "heading": "Sfat de cunoscător de iarnă",
       "cta": {
         "hiking": "Verifică condițiile traseelor",
         "practical": "Sfaturi aeroport",
@@ -681,7 +681,7 @@
         },
         "vouni-panayia": {
           "title": "Vouni Panayia",
-          "subtitle": "Ruta Laona · comparații Commandaria · cameră cosy",
+          "subtitle": "Ruta Laona · comparații Commandaria · cameră călduroasă",
           "imageAlt": "Sate viticole în dealurile Paphos, lumină de iarnă, Cipru"
         },
         "domes-sergiou": {
@@ -693,11 +693,11 @@
     },
     "insiderTips": {
       "daylight": {
-        "title": "Lumină scurtă",
+        "title": "Zilele sunt scurte",
         "body": "Decembrie și ianuarie au cele mai scurte zile—circa nouă ore între răsărit și apus. Planifică activități în aer liber dimineața. Spre seară lumina e deja aurie. Profită."
       },
       "layers": {
-        "title": "Straturi",
+        "title": "Îmbracă-te pe straturi",
         "body": "Coasta poate fi 18°C iar Troodos 5°C. Ia o geacă rezistentă la vânt, un strat cald și o căciulă. Cafenelele montane au șeminee. Tavernele de coastă au încălzitoare. Îmbracă-te pentru ambele."
       },
       "book-ahead": {
@@ -706,7 +706,7 @@
       },
       "weekday-quiet": {
         "title": "În timpul săptămânii e liniște",
-        "body": "Omodos, Lefkara și siturile mari se umplu în weekend. Marți sau miercuri? Pietruitele sunt ale tale. Satele se simt altfel fără autocare. Planifică zilele mari la mijlocul săptămânii."
+        "body": "Omodos, Lefkara și siturile mari se umplu în weekend. Marți sau miercuri? Străzile pietruite sunt ale tale. Satele se simt altfel fără autocare. Planifică zilele mari la mijlocul săptămânii."
       },
       "kafenion-stop": {
         "title": "Oprește-te la cafea",
@@ -718,15 +718,15 @@
       },
       "start-early": {
         "title": "Pleacă la 9",
-        "body": "Zilele de iarnă sunt scurte—termină drumețiile înainte de amurg. Aerul de dimineață e proaspăt. Traseele sunt mai liniștite devreme. Vei fi mulțumit cu lumină la mașină."
+        "body": "Zilele de iarnă sunt scurte — termină drumețiile înainte de amurg. Aerul de dimineață e proaspăt. Traseele sunt mai liniștite devreme. Vei fi mulțumit să ajungi la mașină pe lumină."
       },
       "check-conditions": {
         "title": "Verifică înainte",
-        "body": "Vremea în Troodos se schimbă repede. Zăpadă pe Olympus, noroi după ploaie, gheață la umbră. Stațiunea de schi postează condiții. Întreabă. Nu presupune."
+        "body": "Vremea în Troodos se schimbă repede. Zăpadă pe Olympus, noroi după ploaie, gheață la umbră. Stațiunea de schi publică condițiile. La fel și cafenelele locale. Întreabă. Nu presupune."
       },
       "microspikes": {
-        "title": "Microspikes pentru Olympus",
-        "body": "Vârful Olympus și traseele înalte din Troodos pot avea zăpadă și gheață ianuarie–martie. Microspikes costă ~20€. Dacă prognoza e aproape de îngheț, ia-le."
+        "title": "Micro-crampoane pentru Olympus",
+        "body": "Vârful Olympus și traseele înalte din Troodos pot avea zăpadă și gheață ianuarie–martie. Micro-crampoanele costă ~20€ și se montează peste bocanci. Dacă prognoza e aproape de îngheț, ia-le."
       },
       "tell-someone": {
         "title": "Spune cuiva traseul",
@@ -734,7 +734,7 @@
       },
       "euro": {
         "title": "Euro, carduri, numerar",
-        "body": "Cipru folosește euro. Cardurile funcționează aproape peste tot. Magazine mici și kafenionuri preferă uneori cash. Păstrează ~20€ pentru cafea, dantelă și zivania."
+        "body": "Cipru folosește euro. Cardurile funcționează aproape peste tot. Magazine mici și kafenionuri preferă uneori numerar. Păstrează ~20€ pentru cafea, dantelă și zivania."
       },
       "drive-left": {
         "title": "Condu pe stânga",
@@ -742,7 +742,7 @@
       },
       "emergency": {
         "title": "Numere de urgență",
-        "body": "112 urgență UE. 1460 info turistică. 199 ambulanță. Salvează-le. Speră să nu ai nevoie."
+        "body": "112 urgență UE. 1460 info turistică. 199 ambulanță. Salvează-le. Sperăm să nu ai nevoie."
       }
     }
   },
@@ -862,7 +862,7 @@
         "kicker": "Zile selectate",
         "title": "Perechi de zi gata făcute",
         "body": "Combinații de dimineață și după-amiază care curg—adaugă una în plan dintr-o atingere.",
-        "seeAll": "Vezi toate perechile în Plan →"
+        "seeAll": "Vezi toate perechile în Planificare →"
       },
       "filters": {
         "all": "Toate",
@@ -1119,7 +1119,7 @@
       },
       "trustTiming": {
         "title": "Încredere și timing",
-        "body": "Detalii partener verificate, cu predare practică. Adaugă mai întâi în plan, apoi cere partenerului — confirmă pe email."
+        "body": "Detalii partener verificate, cu pași clari până la partener. Adaugă mai întâi în plan, apoi cere partenerului — confirmă pe email."
       },
       "similar": {
         "title": "Mai multe {type} în {region}",
@@ -1750,11 +1750,11 @@
   "plan": {
     "addToPlan": "Adaugă în plan",
     "addFirstPlace": "Adaugă primul loc",
-    "emptyDay": "Începe cu un loc. Sau întreabă AI—Troodos, Lefkara, Kourion. Știe insula.",
+    "emptyDay": "Începe cu un loc. Sau întreabă AI-ul — Troodos, Lefkara, Kourion. Știe insula.",
     "clearDay": "Golește ziua",
     "buildADay": "Construiește o zi",
     "curatedCombos": "Combinații selectate",
-    "curatedCombosDesc": "Dimineața într-un loc, după-amiaza în altul. Curg natural.",
+    "curatedCombosDesc": "Dimineața într-un loc, după-amiaza în altul. Se leagă bine.",
     "morning": "Dimineață",
     "afternoon": "După-amiază",
     "pageTitle": "Planifică-ți iarna în Cipru",
@@ -1768,7 +1768,7 @@
     "heroImageAlt": "Satul Omodos, inima vinului—planifică-ți iarna în Cipru",
     "daysUntilBanner": "{days, plural, =0 {Ești aici. Ziua 1 e gata.} =1 {Mâine. Ziua 1 e gata.} other {Mai sunt # zile — verifică mai jos.}}",
     "tripReminderBanner": "{days, plural, =0 {Călătoria ta e azi — planul pentru Ziua 1 e gata.} =1 {Mâine ești aici — planul pentru Ziua 1 e gata.} other {Mai sunt # zile până ajungi — planul pentru Ziua 1 e gata.}}",
-    "reviewPlan": "Revizuiește planul",
+    "reviewPlan": "Verifică planul",
     "addingToPlan": "Se adaugă în plan…",
     "addedToDayBanner": "S-a adăugat {name} în Ziua {day}.",
     "dayEmptyTitle": "Ziua {day} e goală",
@@ -1924,7 +1924,7 @@
       "winterTip": "Sfat de iarnă: lumina se stinge pe la ora 17. Pornește traseele până la ora 10 și rezervă degustări cu 24–48 h înainte."
     },
     "meta": {
-      "title": "Planifică Cipru iarna | Planuri selectate și constructor de călătorie",
+      "title": "Planifică iarna în Cipru | Planuri selectate și constructor de călătorie",
       "description": "Planuri de iarnă selectate pentru Cipru: 48 h până la 10 zile. Ritm expert, sfaturi rezervări crame, recomandări sezoniere. Trasee Troodos, sate, coastă — planifică din timp sau la fața locului. Gratuit.",
       "ogTitle": "Planifică Cipru iarna | Planuri selectate",
       "ogDescription": "Planuri de iarnă cu ritm expert și sfaturi pentru crame. Trasee, sate, coastă. Din timp sau la fața locului."
@@ -2320,7 +2320,7 @@
         "imageAlt": "Mănăstirea Kykkos, Troodos — cultură și evenimente de iarnă în Cipru",
         "planAria": "Planifică-ți călătoria",
         "planCta": "Planifică-ți călătoria",
-        "note": "Datele pot varia de la an la an. Verificați sursele oficiale înainte de călătorie.",
+        "note": "Datele pot varia de la an la an. Verifică sursele oficiale înainte de călătorie.",
         "updated": "Actualizat lunar. Datele încă se mută — verifică sursele oficiale."
       },
       "filters": {
@@ -2931,7 +2931,7 @@
       },
       "wineryDetail": {
         "metaNotFound": "Nu a fost găsit",
-        "intro": "Degustările de iarnă aici sunt calde — foc, încălzitoare și adesea proprietarul toarnă. Trimite cererea și vor confirma pe email.",
+        "intro": "Degustările de iarnă aici sunt călduroase — foc, încălzitoare și adesea proprietarul toarnă. Trimite cererea și vor confirma pe email.",
         "disclaimer": "Pentru adulți de vârstă legală. Beți cu măsură.",
         "practical": {
           "hours": "Program:",

@@ -604,7 +604,7 @@
       "clear": "Effacer"
     },
     "insiderTip": {
-      "heading": "Conseil d'insider hivernal",
+      "heading": "Conseil d'initié pour l'hiver",
       "cta": {
         "hiking": "Vérifier les conditions des sentiers",
         "practical": "Conseils aéroport",
@@ -639,9 +639,9 @@
       "coastTemp": "Côte souvent 16–20°C",
       "troodosCooler": "Troodos plus frais — vérifiez les conditions",
       "sunset": "Coucher de soleil ~17 h en décembre",
-      "blockquote": "Côte douce. Montagnes enneigées. Randonnée le matin, déjeuner dehors. Sites antiques vides, villages calmes. Pause au kafenion. Café. Personne ne presse.",
+      "blockquote": "Côte douce. Montagnes enneigées. Randonnée le matin, déjeuner dehors. Sites antiques vides, villages calmes. Pause au kafenion. Café. Personne ne se presse.",
       "rule": "Petite règle : un sentier, un village, une dégustation. Ajoutez au plan au fil de la route.",
-      "tagline": "Vous êtes venu pour la chaleur. Restez pour le rythme."
+      "tagline": "Vous êtes venus pour la chaleur. Restez pour le rythme."
     },
     "whyCyprusTeaser": {
       "quote": "Randonnée le matin, déjeuner dehors. Sites antiques vides, villages calmes. Personne ne presse."
@@ -738,7 +738,7 @@
       },
       "drive-left": {
         "title": "Conduisez à gauche",
-        "body": "Héritage britannique. Louez une voiture pour atteindre villages et sentiers. Les routes sont bonnes. Les virages de montagne peuvent être serrés. Prenez votre temps. La vue vaut le coup."
+        "body": "Héritage britannique. Louez une voiture pour atteindre les villages et les sentiers. Les routes sont bonnes. Les virages de montagne sont étroits. Prenez votre temps. Le paysage en vaut la peine."
       },
       "emergency": {
         "title": "Numéros d'urgence",
@@ -1760,7 +1760,7 @@
     "pageTitle": "Planifiez votre hiver à Chypre",
     "pageDescHasContent": "Votre plan. Ajoutez, partagez ou ajustez ci-dessous.",
     "pageDescEmpty": "Construisez un plan d'hiver. Choisissez un modèle ou ajoutez des lieux jour par jour.",
-    "pageDescSecondaryEmpty": "Enregistrement automatique.",
+    "pageDescSecondaryEmpty": "Enregistré automatiquement.",
     "mapTitle": "Votre plan sur la carte",
     "mapCollapsibleHint": "Arrêts et contexte routier sur la carte de l'île",
     "addMoreCollapsibleTitle": "Ajouter au plan",
