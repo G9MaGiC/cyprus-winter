@@ -205,6 +205,7 @@ npm run i18n:extract
 ### 8. Commands cheat sheet
 
 - **Validate catalogs**: `npm run i18n:validate`
+- **Editorial map drift (fr/he/ro)**: `npm run i18n:editorial-drift`
 - **Extract candidate strings**: `npm run i18n:extract`
 - **Typecheck**: `npm run typecheck`
 - **Tests**: `npm test`
@@ -215,4 +216,12 @@ If you add new locales:
 1. Add them to routing and `SupportedLocale` in `src/lib/localize.ts`.
 2. Create `messages/{locale}.json` matching the `en` key shape.
 3. Run `npm run i18n:validate` and fix any reported mismatches.
+
+### 9. Beta locales (fr / he / ro)
+
+Chrome batches 2–14 (PR #179) cover nav, footer, funnel, and hub UI for beta locales. Remaining EN-identical keys are documented in **[BETA_LOCALE_EN_HOLDOUTS.md](./BETA_LOCALE_EN_HOLDOUTS.md)** (brands, proper nouns, legal, templates). Re-apply patches:
+
+```bash
+node scripts/i18n/patch-all-chrome-batches.mjs
+```
 

@@ -1,0 +1,14 @@
+{
+  "fr": {
+    "guides.directory.districts.larnaka": "Larnaca (Larnaka)",
+    "guides.directory.districts.lemesos": "Limassol (Lemesos)",
+    "guides.directory.districts.pafos": "Paphos (Pafos)",
+    "cycling.page.officialRoutes.regions.lemesos": "Limassol (Lemesos)",
+    "cycling.page.officialRoutes.regions.larnaka": "Larnaca (Larnaka)",
+    "cycling.page.officialRoutes.regions.pafos": "Paphos (Pafos)",
+    "nature.page.excursions.regions.lemesos": "Limassol (Lemesos)",
+    "nature.page.excursions.regions.larnaka": "Larnaca (Larnaka)",
+    "nature.page.excursions.regions.pafos": "Paphos (Pafos)",
+    "weather.page.table.troodos": "Mont Troodos (°C)"
+  }
+}

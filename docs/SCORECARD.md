@@ -65,6 +65,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #174 | Beta plan funnel i18n — combos, banners, home titles (BUG-311) |
 | PR #176 | Beta soft-gap i18n — home footer, place picker, bookings page, day combos (BUG-312) |
 | PR #178 | Funnel i18n polish — error/airport/trails/plan meta all locales (BUG-313) |
+| PR #179 | Beta chrome batch 2–17 + holdouts doc — beta fr/he/ro chrome complete (BUG-314–329) |
 
 Details: `docs/QA_BUGS.md`
 

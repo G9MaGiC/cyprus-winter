@@ -1,7 +1,7 @@
 {
   "footer": {
     "discover": "גילוי",
-    "plan": "תכנון",
+    "plan": "תוכנית",
     "airport": "שדה תעופה",
     "arriving": "בהגעה",
     "weather": "מזג אוויר",
@@ -31,7 +31,7 @@
   },
   "nav": {
     "discover": "גילוי",
-    "plan": "תכנון",
+    "plan": "תוכנית",
     "trails": "שבילים",
     "events": "אירועים",
     "airport": "שדה תעופה",
@@ -61,7 +61,7 @@
   "common": {
     "nav": {
       "discover": "גילוי",
-      "trip": "מסלול",
+      "trip": "תוכנית",
       "airport": "שדה תעופה"
     },
     "aria": {
@@ -127,36 +127,36 @@
     "goHome": "דף הבית",
     "tryAgain": "נסו שוב",
     "callAhead": "התקשרו מראש",
-    "explore": "Explore",
-    "place": "Place",
-    "trail": "Trail",
-    "winery": "Winery",
-    "event": "Event",
-    "eat": "Eat",
+    "explore": "גלו",
+    "place": "מקום",
+    "trail": "שביל",
+    "winery": "יקב",
+    "event": "אירוע",
+    "eat": "אוכל",
     "placeTypes": {
-      "beach": "Beach",
-      "ancientSite": "Ancient site",
-      "village": "Village",
-      "monastery": "Monastery",
-      "activity": "Activity",
-      "nature": "Nature",
-      "winery": "Winery",
-      "restaurant": "Restaurant",
-      "trail": "Trail",
-      "event": "Event"
+      "beach": "חוף",
+      "ancientSite": "אתר עתיק",
+      "village": "כפר",
+      "monastery": "מנזר",
+      "activity": "פעילות",
+      "nature": "טבע",
+      "winery": "יקב",
+      "restaurant": "מסעדה",
+      "trail": "שביל",
+      "event": "אירוע"
     },
-    "timelineRemovedPlace": "This place was removed from our list",
+    "timelineRemovedPlace": "מקום זה הוסר מהרשימה שלנו",
     "ai": {
-      "title": "Cyprus Guide",
-      "subtitle": "Ask about trails, wineries, villages",
-      "clear": "Clear",
-      "closeAria": "Close chat",
-      "inputPlaceholder": "Ask about Cyprus…",
-      "sendAria": "Send message",
-      "startVoice": "Start voice input",
-      "stopVoice": "Stop listening",
-      "retry": "Retry",
-      "thinking": "Thinking…",
+      "title": "מדריך קפריסין",
+      "subtitle": "שאלו על שבילים, יקבים וכפרים",
+      "clear": "נקה שיחה",
+      "closeAria": "סגור צ'אט",
+      "inputPlaceholder": "שאלו על קפריסין…",
+      "sendAria": "שלח הודעה",
+      "startVoice": "התחל קלט קולי",
+      "stopVoice": "הפסק האזנה",
+      "retry": "נסו שוב",
+      "thinking": "חושב…",
       "slash": {
         "skillsDescription": "מה אני יכול לעזור",
         "skillsBody": "בזה אני יכול לעזור:\n\n**תכנון טיול** — מסלול ליום או לכמה ימים לפי התאריכים והאזור.\n\n**גילוי מקומות** — יקבים, כפרים, חופים, אתרים עתיקים, מנזרים.\n\n**שבילים וטיולים** — הצעות לפי רמת קושי, אזור ותנאי חורף.\n\n**רעיונות לפי מזג האוויר** — מה כדאי לפי התחזית או חודש הנסיעה.\n\n**בקרבת מקום** — שתפו מיקום ואמצא מה קרוב.\n\n**הגעה לשדה התעופה** — הסעה מלרנקה או מפאפוס, עצירות ראשונות, טיפים ליום ההגעה.\n\n**חיפוש והשוואה** — השוו שבילים, יקבים ואירועים באי.\n\nשאלו שאלה או הקישו על הצעה למטה.",
@@ -286,31 +286,31 @@
     "clearFilter": "נקה סינון",
     "viewOnMap": "הצגה במפה",
     "scrollToMap": "גלול למפה",
-    "askAI": "Ask AI",
-    "askAIAria": "Ask AI for trails, wineries, and trip ideas",
-    "askAITrailsAria": "Ask AI for trail suggestions",
-    "askAIRecommendationsAria": "Ask AI for recommendations",
+    "askAI": "שאלו את ה-AI",
+    "askAIAria": "שאלו את ה-AI על שבילים, יקבים ורעיונות לטיול",
+    "askAITrailsAria": "שאלו את ה-AI להצעות שבילים",
+    "askAIRecommendationsAria": "שאלו את ה-AI להמלצות",
     "hubFooter": {
-      "prompt": "Add places to your plan—or ask the AI for ideas.",
+      "prompt": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI לרעיונות.",
       "aria": {
-        "actions": "Page actions"
+        "actions": "פעולות דף"
       }
     },
     "tripPlanSummary": {
-      "aria": "Your trip plan summary",
-      "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
-      "viewPlan": "View plan"
+      "aria": "סיכום תוכנית הטיול שלכם",
+      "places": "{count, plural, one {מקום # בתוכנית} other {# מקומות בתוכנית}}",
+      "viewPlan": "צפו בתוכנית"
     },
     "planYourTrip": "תכנן את הטיול",
-    "winterHikingGuide": "Winter hiking guide",
-    "seeMap": "See map",
-    "emergency112": "Emergency 112",
+    "winterHikingGuide": "מדריך טיולים חורפי",
+    "seeMap": "ראו מפה",
+    "emergency112": "חירום 112",
     "trailsFooterDisclaimer": "התנאים מבוססי דיווחים ואינם מובטחים. השתמשו בשיקול דעת ועקבו אחר הנחיות מקומיות.",
-    "discoverEmptyTitle": "No places here.",
-    "discoverEmptyBody": "Try another filter or ask the AI—it knows the island.",
-    "emergency": "Emergency",
-    "touristInfo": "Tourist info",
-    "ambulance": "Ambulance",
+    "discoverEmptyTitle": "אין מקומות כאן.",
+    "discoverEmptyBody": "נסו מסנן אחר או שאלו את ה-AI — היא מכירה את האי.",
+    "emergency": "חירום",
+    "touristInfo": "מידע לתיירים",
+    "ambulance": "אמבולנס",
     "loading": {
       "generic": "טוען",
       "ellipsis": "טוען…",
@@ -333,17 +333,17 @@
       "content": "טוען תוכן"
     },
     "skipTo": {
-      "thisWeek": "Skip to This week",
-      "editorsPicks": "Skip to Editor's picks",
-      "plan": "Skip to Plan",
-      "search": "Skip to search",
-      "startHere": "Skip to Start here"
+      "thisWeek": "דלג לשבוע הזה",
+      "editorsPicks": "דלג לבחירות העורך",
+      "plan": "דלג לתוכנית",
+      "search": "דלג לחיפוש",
+      "startHere": "דלג להתחלה כאן"
     },
     "cancel": "ביטול",
     "done": "סיום",
-    "clearDay": "Clear day",
-    "clearDayTitle": "Clear Day {day}?",
-    "removeAllFromDay": "Remove all {count} {count, plural, one {place} other {places}} from Day {day}. You can add them back anytime.",
+    "clearDay": "נקו יום",
+    "clearDayTitle": "לנקות יום {day}?",
+    "removeAllFromDay": "הסירו את כל {count} {count, plural, one {המקום} other {המקומות}} מיום {day}. תוכלו להוסיף שוב בכל עת.",
     "localeBeta": "בטא",
     "beforeYouGo": {
       "heading": "לפני שיוצאים",
@@ -410,7 +410,7 @@
         "discoverTitle": "גילוי",
         "discoverDesc": "חופים מתונים, עתיקות, כפרים, ומקומות ששווה להאט בשבילם.",
         "discoverCta": "התחילו לגלות",
-        "planTitle": "תכנון",
+        "planTitle": "תוכנית",
         "planDesc": "בנו יום לפי הזמן, מזג האוויר והמקומות שחשובים לכם.",
         "planCta": "בנו יום",
         "bookTitle": "הזמנה",
@@ -457,7 +457,7 @@
         "quietEscapesAria": "מפלטים שקטים — כפרים, פנינים חבויות",
         "mountains": "הרים",
         "mountainsAria": "הרים — שבילי Troodos",
-        "wellness": "רוגע",
+        "wellness": "בריאות",
         "wellnessAria": "רוגע — מנזרים, מקומות שקטים",
         "regionAria": "אזור {region}"
       }
@@ -475,9 +475,9 @@
       "templateLink": "תבנית 48 שעות",
       "images": {
         "troodosTrail": "שביל ארטמיס, יער אורן בטרודוס, קפריסין בחורף",
-        "omodosVillage": "סמטת אומודוס, קrasochoria, קפריסין בחורף",
+        "omodosVillage": "סמטת אומודוס, Krasochoria, קפריסין בחורף",
         "winterVineyard": "כרם הרים באור חורף, קפריסין",
-        "kourionCoast": "תיאטרון קורion העתיק, חוף הים התיכון, קפריסין בחורף"
+        "kourionCoast": "תיאטרון קוריון העתיק, חוף הים התיכון, קפריסין בחורף"
       }
     },
     "search": {
@@ -555,8 +555,8 @@
       "card": {
         "defaultTease": "שווה ביקור בחורף.",
         "add": "הוסף",
-        "distanceLessThanKm": "< 1 ק״מ",
-        "distanceKm": "{distance} ק״מ"
+        "distanceLessThanKm": "< 1 ק\"מ",
+        "distanceKm": "{distance} ק\"מ"
       },
       "reasons": {
         "nearby": "קרוב",
@@ -800,28 +800,28 @@
   },
   "push": {
     "trip": {
-      "subscribed": "You're set. One reminder per day until you arrive.",
-      "title": "Get trip reminders",
-      "bodySoon": "We'll send up to three short reminders — one per day, 1–3 days before you leave. No spam.",
-      "bodyFar": "We'll remind you a few days before you leave. No spam.",
-      "buttonIdle": "Turn on reminders",
-      "buttonLoading": "Setting up…",
-      "buttonError": "Try again"
+      "subscribed": "הכל מוכן. תזכורת אחת ביום עד ההגעה.",
+      "title": "תזכורות לטיול",
+      "bodySoon": "עד שלוש תזכורות קצרות — אחת ביום, 1–3 ימים לפני היציאה. בלי ספאם.",
+      "bodyFar": "נזכיר לכם כמה ימים לפני היציאה. בלי ספאם.",
+      "buttonIdle": "הפעלת תזכורות",
+      "buttonLoading": "מגדירים…",
+      "buttonError": "נסו שוב"
     },
     "weather": {
-      "subscribed": "You're set. We'll send short weather updates up to 3 times a day.",
-      "title": "Weather digest",
-      "body": "Get short updates (morning, midday, evening) — coast and Troodos temps. No spam.",
-      "buttonIdle": "Turn on weather digest",
-      "buttonLoading": "Setting up…",
-      "buttonError": "Try again"
+      "subscribed": "הכל מוכן. עד 3 עדכוני מזג אוויר קצרים ביום.",
+      "title": "סיכום מזג אוויר",
+      "body": "עדכונים קצרים (בוקר, צהריים, ערב) — טמפרטורות חוף ו-Troodos. בלי ספאם.",
+      "buttonIdle": "הפעלת סיכום מזג אוויר",
+      "buttonLoading": "מגדירים…",
+      "buttonError": "נסו שוב"
     }
   },
   "notFound": {
-    "title": "Page not found",
-    "body": "No worries. This page doesn't exist or has been moved. These things happen. The island's still here. The trails, villages, and tastings are waiting. Head home or start exploring.",
-    "hint": "Use the menu to jump to Discover, Trails, or Plan. Or tap Ask AI if you're not sure where to start.",
-    "discoverCyprus": "Discover Cyprus"
+    "title": "הדף לא נמצא",
+    "body": "אין בעיה. הדף הזה לא קיים או הועבר. זה קורה. האי עדיין כאן. השבילים, הכפרים והטעימות מחכים. חזרו הביתה או התחילו לגלות.",
+    "hint": "השתמשו בתפריט לגילוי, שבילים או תכנון. או הקישו על שאלו את ה-AI אם לא בטוחים מאיפה להתחיל.",
+    "discoverCyprus": "גלו את קפריסין"
   },
   "discover": {
     "addToPlan": "הוסף לתכנית",
@@ -878,7 +878,7 @@
         "watersports": "ספורט ימי",
         "quiet": "מפלטים שקטים",
         "mountains": "הרים",
-        "wellness": "רוגע",
+        "wellness": "בריאות",
         "relatedTrails": "שבילים קשורים",
         "seeAllMountainTrails": "שבילי Troodos",
         "browseAllTrails": "כל השבילים",
@@ -996,55 +996,55 @@
       }
     },
     "map": {
-      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Use arrow keys to pan; markers open place details.",
+      "ariaLabel": "מפה אינטראקטיבית עם {count, plural, one {מקום #} other {# מקומות}}. השתמשו בחיצים להזזה; סמנים פותחים פרטי מקום.",
       "openStreetMap": "OpenStreetMap",
-      "loading": "Loading map…",
-      "emptyTitle": "No places with coordinates to display.",
-      "emptyBody": "Browse the list above to explore places.",
-      "emptyBrowseCta": "Browse places",
-      "sectionTitle": "Places on map",
-      "sectionTitleWithCount": "Places on map ({count})",
-      "curatedBy": "Curated by the Cyprus Winter team.",
-      "view": "View →",
-      "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
+      "loading": "טוען מפה…",
+      "emptyTitle": "אין מקומות עם מיקום לתצוגה.",
+      "emptyBody": "עיינו ברשימה למעלה כדי לחקור מקומות.",
+      "emptyBrowseCta": "עיינו במקומות",
+      "sectionTitle": "מקומות על המפה",
+      "sectionTitleWithCount": "מקומות על המפה ({count})",
+      "curatedBy": "נבחר על ידי צוות Cyprus Winter.",
+      "view": "צפו →",
+      "footerCount": "{count, plural, one {מקום # על המפה. הקישו על סמן לחקירה.} other {# מקומות על המפה. הקישו על סמן לחקירה.}}"
     },
     "detail": {
-      "pageNavAria": "Page navigation",
-      "articleAria": "{name}, {type} in {region}",
-      "imageAlt": "{name}, {region}—{type} in Cyprus winter",
-      "badgeEat": "Eat",
-      "bufferZoneWarning": "Check access before you go. Buffer zone area—conditions can change. Verify with local sources or tourism info (1460).",
+      "pageNavAria": "ניווט בדף",
+      "articleAria": "{name}, {type} ב{region}",
+      "imageAlt": "{name}, {region} — {type} בקפריסין בחורף",
+      "badgeEat": "אוכל",
+      "bufferZoneWarning": "בדקו גישה לפני שיוצאים. אזור buffer zone — התנאים עלולים להשתנות. אמתו עם מקורות מקומיים או מידע תיירותי (1460).",
       "winter": {
-        "open": "Open in winter",
-        "seasonsLabel": "Seasons:",
+        "open": "פתוח בחורף",
+        "seasonsLabel": "עונות:",
         "seasons": {
-          "winter": "winter",
-          "spring": "spring",
-          "summer": "summer",
-          "autumn": "autumn"
+          "winter": "חורף",
+          "spring": "אביב",
+          "summer": "קיץ",
+          "autumn": "סתיו"
         },
-        "indoorOutdoorLabel": "Setting:",
+        "indoorOutdoorLabel": "סביבה:",
         "indoorOutdoor": {
-          "indoor": "indoor",
-          "outdoor": "outdoor",
-          "mixed": "mixed"
+          "indoor": "פנים",
+          "outdoor": "חוץ",
+          "mixed": "מעורב"
         },
-        "budgetLabel": "Budget:",
+        "budgetLabel": "תקציב:",
         "budget": {
-          "free": "free",
-          "low": "low",
-          "mid": "mid",
-          "high": "high"
+          "free": "חינם",
+          "low": "נמוך",
+          "mid": "בינוני",
+          "high": "גבוה"
         },
-        "galleryHeading": "Gallery",
-        "galleryAlt": "{name} gallery photo {index}"
+        "galleryHeading": "גלריה",
+        "galleryAlt": "תמונה {index} בגלריית {name}"
       },
       "practical": {
-        "title": "Practical info",
-        "hours": "Hours:",
-        "transport": "Transport:",
-        "parking": "Parking:",
-        "accessibility": "Accessibility:"
+        "title": "מידע מעשי",
+        "hours": "שעות:",
+        "transport": "גישה:",
+        "parking": "חניה:",
+        "accessibility": "נגישות:"
       },
       "booking": {
         "title": "הזמנה ויצירת קשר",
@@ -1063,89 +1063,89 @@
         "buyWineAria": "קניית יין אונליין (נפתח בלשונית חדשה)",
         "buyWineCta": "קניית יין אונליין",
         "instagramAria": "עקבו אחרי @{handle} באינסטגרם (נפתח בלשונית חדשה)",
-        "instagramCta": "אינסטגרם @{handle}",
+        "instagramCta": "Instagram @{handle}",
         "bookGuide": "הזמנת מדריך →",
         "alcoholDisclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות."
       },
-      "bestTimeLabel": "Best time:",
-      "directionsAria": "Get directions (opens in new tab)",
-      "directionsCta": "Get directions →",
-      "actionsAria": "Place actions",
+      "bestTimeLabel": "הזמן הטוב ביותר:",
+      "directionsAria": "הוראות הגעה (נפתח בלשונית חדשה)",
+      "directionsCta": "הוראות הגעה →",
+      "actionsAria": "פעולות מקום",
       "footer": {
-        "body": "Add this place to your plan and pair it with a trail or village nearby."
+        "body": "הוסיפו את המקום לתוכנית ושלבו עם שביל או כפר בקרבת מקום."
       },
       "headings": {
-        "highlights": "Highlights",
-        "greatFor": "Great for",
-        "dining": "Dining",
-        "shops": "Shops"
+        "highlights": "דגשים",
+        "greatFor": "מתאים ל",
+        "dining": "אוכל",
+        "shops": "חנויות"
       },
       "whyNow": {
-        "title": "Why this now",
-        "bestFor": "Best for {types}.",
-        "regionFlow": "{region} is a practical stop for the same day plan flow.",
-        "saveCompare": "Add to your plan to pair it with a trail or village nearby."
+        "title": "למה עכשיו",
+        "bestFor": "מתאים ל{types}.",
+        "regionFlow": "{region} היא עצירה מעשית לאותו לוח יום.",
+        "saveCompare": "הוסיפו לתוכנית כדי לשלב עם שביל או כפר בקרבת מקום."
       },
       "visitTaste": {
-        "title": "Visit & taste"
+        "title": "ביקור וטעימה"
       },
-      "wineRoute": "Wine route: {route}",
+      "wineRoute": "מסלול יין: {route}",
       "ourWines": {
-        "title": "Our wines"
+        "title": "היינות שלנו"
       },
       "location": {
-        "title": "Location"
+        "title": "מיקום"
       },
-      "localSecretHeading": "Local secret",
-      "backstoryHeading": "Backstory",
+      "localSecretHeading": "סוד מקומי",
+      "backstoryHeading": "הסיפור",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this place. From people who live here.",
-        "seeAll": "See all local secrets →"
+        "title": "סודות מקומיים",
+        "intro": "טיפים מבפנים למקום הזה. מאנשים שחיים כאן.",
+        "seeAll": "כל הסודות המקומיים →"
       },
       "combineWith": {
-        "title": "Pair well with",
-        "description": "Pair with trails, villages, or wineries nearby. Morning here, afternoon elsewhere, or the other way around.",
-        "addToPlanAria": "Add {name} to plan"
+        "title": "מתאים לשילוב עם",
+        "description": "שלבו עם שבילים, כפרים או יקבים בקרבת מקום. בוקר כאן, אחר הצהריים במקום אחר, או להפך.",
+        "addToPlanAria": "הוסיפו את {name} לתוכנית"
       },
       "map": {
-        "iframeTitle": "Map: {name}",
-        "loadMap": "Load map"
+        "iframeTitle": "מפה: {name}",
+        "loadMap": "טעינת מפה"
       },
       "metadata": {
-        "notFound": "Not found",
-        "typeWinery": "Winery",
-        "typeEat": "Eat"
+        "notFound": "לא נמצא",
+        "typeWinery": "יקב",
+        "typeEat": "אוכל"
       },
       "trustTiming": {
-        "title": "Trust and timing",
+        "title": "אמון ותזמון",
         "body": "פרטי שותף מאומתים עם מסירה מעשית. הוסיפו קודם לתוכנית, ואז בקשו מהשותף — הם מאשרים באימייל."
       },
       "similar": {
-        "title": "More {type} in {region}",
+        "title": "עוד {type} ב{region}",
         "typeLabels": {
-          "winery": "wineries",
-          "restaurant": "eat & drink",
-          "beach": "beaches",
-          "ancient": "ancient sites",
-          "village": "villages",
-          "monastery": "monasteries",
-          "activity": "active & indoor spots",
-          "nature": "nature & coasts",
-          "default": "places"
+          "winery": "יקבים",
+          "restaurant": "אוכל ושתייה",
+          "beach": "חופים",
+          "ancient": "אתרים עתיקים",
+          "village": "כפרים",
+          "monastery": "מנזרים",
+          "activity": "פעילות ופנים",
+          "nature": "טבע וחופים",
+          "default": "מקומות"
         }
       }
     },
     "aria": {
-      "actions": "Discover actions",
-      "askAi": "Ask AI for trip suggestions",
-      "scrollToMap": "Scroll to map of places"
+      "actions": "פעולות גילוי",
+      "askAi": "שאלו את ה-AI להצעות לטיול",
+      "scrollToMap": "גלול למפת המקומות"
     },
     "footer": {
-      "body": "Add places to your plan—or ask the AI. It knows the island in winter.",
-      "addToPlan": "Add places to your plan",
-      "askAi": "Ask AI",
-      "seeMap": "See map"
+      "body": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI. הוא מכיר את האי בחורף.",
+      "addToPlan": "הוסיפו מקומות לתוכנית",
+      "askAi": "שאלו את ה-AI",
+      "seeMap": "צפו במפה"
     }
   },
   "admin": {
@@ -1279,8 +1279,8 @@
         "ephemeralNote": "שינויי שעות ותמונת הירו זמניים — הם מתאפסים כשהשרת מופעל מחדש עד לאחסון קבוע."
       },
       "meta": {
-        "title": "Partner portal | Cyprus Winter",
-        "description": "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests."
+        "title": "פורטל שותפים | Cyprus Winter",
+        "description": "יקבים ומדריכים מאומתים: שעות חורף, תמונת גיבור מקומית ובקשות טעימה."
       }
     }
   },
@@ -1343,104 +1343,104 @@
   "beaches": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Beaches | Nissi, Coral Bay, Konnos",
-        "description": "Best beaches in Cyprus winter: Nissi Beach, Coral Bay, Konnos Bay. Empty sand, golden light. Winter walks, no crowds. Sixteen degrees when home is six. Plan your visit. Free.",
-        "ogAlt": "Cyprus winter beach, golden light",
-        "schemaName": "Cyprus Winter Beaches",
-        "schemaDescription": "Best beaches in Cyprus winter: Nissi, Coral Bay, Konnos. Empty sand, golden light."
+        "title": "חופי קפריסין בחורף | Nissi, Coral Bay, Konnos",
+        "description": "החופים הטובים ביותר בקפריסין בחורף: Nissi Beach, Coral Bay, Konnos Bay. חול ריק, אור זהוב. טיולים בלי קהל. שישה עשר מעלות כשבבית שש. חינם.",
+        "ogAlt": "חוף קפריסין בחורף, אור זהוב",
+        "schemaName": "חופי קפריסין בחורף",
+        "schemaDescription": "החופים הטובים ביותר בקפריסין בחורף: Nissi, Coral Bay, Konnos. חול ריק, אור זהוב."
       },
       "header": {
-        "title": "Cyprus Beaches in Winter",
-        "description": "Empty sand, mild light. The sea is cold for swimming; winter beaches are for walks, coffee, and the light."
+        "title": "חופי קפריסין בחורף",
+        "description": "חול ריק, אור רך. הים קר לשחייה; חופי החורף מיועדים להליכה, קפה והאור."
       },
-      "srHeading": "Beaches in Cyprus winter",
+      "srHeading": "חופים בקפריסין בחורף",
       "footer": {
-        "body": "Combine a beach walk with ancient ruins or a village lunch.",
-        "hubBody": "Combine a beach walk with ancient ruins or a village lunch. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "שלבו טיול בחוף עם חורבות עתיקות או ארוחת צהריים בכפר.",
+        "hubBody": "שלבו טיול בחוף עם חורבות עתיקות או ארוחת צהריים בכפר. הוסיפו מקומות לתוכנית — או שאלו את ה-AI.",
+        "allPlaces": "ראו את כל המקומות",
+        "planDay": "תכננו את היום"
       },
       "aria": {
-        "actions": "Beaches page actions"
+        "actions": "פעולות דף החופים"
       }
     }
   },
   "villages": {
     "page": {
       "meta": {
-        "title": "Cyprus Villages in Winter | Lefkara, Omodos, Platres",
-        "description": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland. Plan or explore. Sixteen degrees when home is six. Free.",
-        "ogDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine. Mountain and wine heartland.",
-        "ogAlt": "Omodos village, Cyprus winter",
-        "schemaName": "Cyprus Winter Villages",
-        "schemaDescription": "Cyprus villages in winter: Lefkara, Omodos, Platres. Cobbles, kafenions, fireside wine."
+        "title": "כפרי קפריסין בחורף | Lefkara, Omodos, Platres",
+        "description": "כפרי קפריסין בחורף: Lefkara, Omodos, Platres. ריצוף, בתי קפה מקומיים, יין ליד האח. לב ההר והיין. שישה עשר מעלות כשבבית שש. חינם.",
+        "ogDescription": "כפרי קפריסין בחורף: Lefkara, Omodos, Platres. ריצוף, בתי קפה מקומיים, יין ליד האח. לב ההר והיין.",
+        "ogAlt": "כפר Omodos, קפריסין בחורף",
+        "schemaName": "כפרי קפריסין בחורף",
+        "schemaDescription": "כפרי קפריסין בחורף: Lefkara, Omodos, Platres. ריצוף, בתי קפה מקומיים, יין ליד האח."
       },
       "header": {
-        "title": "Cyprus Villages in Winter",
-        "description": "Cobbled streets, wine heartland, lace and silver. Winter villages are quieter; the tavernas warm, the views clear."
+        "title": "כפרי קפריסין בחורף",
+        "description": "רחובות מרוצפים, לב אזור היין, תחרה וכסף. כפרי החורף שקטים יותר; הטברנות חמות, הנוף צלול."
       },
-      "srHeading": "Cyprus winter villages",
+      "srHeading": "כפרי קפריסין בחורף",
       "footer": {
-        "body": "Combine a village visit with a trail or winery.",
-        "hubBody": "Combine a village visit with a trail or winery. Add places to your plan—or ask the AI.",
-        "allPlaces": "See all places",
-        "planDay": "Plan your day"
+        "body": "שלבו ביקור בכפר עם שביל או יקב.",
+        "hubBody": "שלבו ביקור בכפר עם שביל או יקב. הוסיפו מקומות לתוכנית — או שאלו את ה-AI.",
+        "allPlaces": "ראו את כל המקומות",
+        "planDay": "תכננו את היום"
       },
       "aria": {
-        "actions": "Villages page actions"
+        "actions": "פעולות דף הכפרים"
       }
     }
   },
   "wineries": {
     "page": {
       "meta": {
-        "title": "Cyprus Wineries in Winter | Wine Routes & Tastings",
-        "description": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead for winter visits. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars. Book ahead.",
-        "ogAlt": "Cyprus winery village, winter",
-        "schemaName": "Cyprus Winter Wineries",
-        "schemaDescription": "Cyprus winter wineries: Krasochoria, Laona, Commandaria. Fireside tastings, cosy cellars."
+        "title": "יקבים בקפריסין בחורף | מסלולי יין וטעימות",
+        "description": "יקבים בקפריסין בחורף: Krasochoria, Laona, Commandaria. טעימות ליד האח, מרתפים חמימים. הזמינו מראש. שישה עשר מעלות כשבבית שש.",
+        "ogDescription": "יקבים בקפריסין בחורף: Krasochoria, Laona, Commandaria. טעימות ליד האח, מרתפים חמימים. הזמינו מראש.",
+        "ogAlt": "כפר יקב בקפריסין, חורף",
+        "schemaName": "יקבים בקפריסין בחורף",
+        "schemaDescription": "יקבים בקפריסין בחורף: Krasochoria, Laona, Commandaria. טעימות ליד האח, מרתפים חמימים."
       },
       "header": {
-        "title": "Cyprus Wineries in Winter",
-        "description": "Krasochoria, Laona, Akamas. Fireside tastings, Commandaria, Troodos views. Call ahead—many run lean in winter. For adults of legal drinking age."
+        "title": "יקבים בקפריסין בחורף",
+        "description": "Krasochoria, Laona, Akamas. טעימות ליד האח, Commandaria, נוף טרודוס. התקשרו מראש — רבים פועלים בקצב נמוך בחורף. למבוגרים בגיל חוקי לשתיית אלכוהול."
       },
       "partners": {
-        "title": "Book with our partners",
-        "body": "Verified partners receive your booking request directly and confirm by email."
+        "title": "הזמינו דרך השותפים שלנו",
+        "body": "שותפים מאומתים מקבלים את בקשת ההזמנה ישירות ומאשרים במייל."
       },
-      "listTitle": "All wineries",
+      "listTitle": "כל היקבים",
       "footer": {
-        "pairingPrefix": "Pair a winery visit with a trail or village.",
-        "pairingLink": "Build a day",
-        "routesPrefix": "Explore wine routes:",
-        "hubBody": "Pair a winery visit with a trail or village. Add places to your plan—or ask the AI.",
+        "pairingPrefix": "שלבו ביקור ביקב עם שביל או כפר.",
+        "pairingLink": "בנו יום",
+        "routesPrefix": "גלו מסלולי יין:",
+        "hubBody": "שלבו ביקור ביקב עם שביל או כפר. הוסיפו מקומות לתוכנית — או שאלו את ה-AI.",
         "allRoutes": "כל מסלולי היין"
       },
       "aria": {
-        "actions": "Wineries page actions"
+        "actions": "פעולות דף היקבים"
       }
     }
   },
   "trails": {
-    "addToPlan": "Add to plan",
-    "submitReport": "Submit report",
-    "submitting": "Submitting…",
-    "conditionsEditorial": "Winter snapshot",
+    "addToPlan": "הוסיפו לתוכנית",
+    "submitReport": "שלחו דיווח",
+    "submitting": "שולח…",
+    "conditionsEditorial": "תמונת מצב חורפית",
     "card": {
-      "elevationGain": "{meters}m gain",
+      "elevationGain": "{meters} מ' עלייה",
       "temperature": "{value}°C",
-      "trailAria": "{name}, {length} km {difficulty} trail in {region}",
-      "imageAlt": "{name}, {region} — {length} km {difficulty} trail in Cyprus winter",
+      "trailAria": "{name}, שביל {length} ק\"מ {difficulty} באזור {region}",
+      "imageAlt": "{name}, {region} — שביל {length} ק\"מ {difficulty} בחורף בקפריסין",
       "noReport": "אין דיווח",
       "hikerReport": "דיווח מטייל"
     },
     "placeOfDay": {
-      "heading": "Trail of the day",
-      "badge": "Trail of the day",
-      "openAria": "Open {name}",
-      "pairWith": "Pair with",
-      "seeDetails": "See details",
+      "heading": "שביל היום",
+      "badge": "שביל היום",
+      "openAria": "פתח {name}",
+      "pairWith": "שלב עם",
+      "seeDetails": "צפו בפרטים",
       "overlay": {
         "open": "פתוח",
         "openWithTemp": "{temp}°C · פתוח",
@@ -1448,29 +1448,29 @@
         "seeConditions": "ראו תנאים"
       }
     },
-    "noMatch": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-    "allTrails": "All trails",
-    "askAI": "Ask AI",
-    "clearFilters": "Clear filters",
-    "reportError": "Didn't save. Try again or head back to the trail.",
-    "reportAria": "Submit trail conditions report",
+    "noMatch": "אין שבילים שמתאימים למסננים. נסו סטטוס, קושי או אזור אחר — או שאלו את ה-AI. היא מכירה מטרודוס ועד החוף.",
+    "allTrails": "כל השבילים",
+    "askAI": "שאלו את ה-AI",
+    "clearFilters": "נקו מסננים",
+    "reportError": "לא נשמר. נסו שוב או חזרו לשביל.",
+    "reportAria": "שליחת דיווח על מצב השביל",
     "aria": {
-      "actions": "Trails actions",
-      "reportConditions": "Report trail conditions",
-      "scrollToMap": "Scroll to map of trails"
+      "actions": "פעולות שבילים",
+      "reportConditions": "דווח על תנאי שביל",
+      "scrollToMap": "גלול למפת השבילים"
     },
     "badges": {
       "status": {
         "open": {
-          "title": "Good to go",
+          "title": "אפשר לצאת",
           "label": "פתוח"
         },
         "caution": {
-          "title": "Check conditions before you head out",
+          "title": "בדקו תנאים לפני שיוצאים",
           "label": "זהירות"
         },
         "closed": {
-          "title": "Best saved for another day",
+          "title": "עדיף לשמור ליום אחר",
           "label": "סגור"
         }
       },
@@ -1488,215 +1488,215 @@
           "tip": "קטעים תלולים ומרחק ארוך יותר. הקצו 3–4 שעות. בדקו תנאים לפני היציאה."
         },
         "expert": {
-          "label": "מומחים",
+          "label": "מומחה",
           "tip": "שטח טכני, יום שלם. נדרשים ניסיון והכנה."
         }
       }
     },
     "report": {
-      "context": "Reporting: <strong>{name}</strong>. Help others by sharing what you saw. Quick and anonymous if you prefer.",
+      "context": "דיווח: <strong>{name}</strong>. עזרו לאחרים לשתף מה ראיתם. מהיר ואנונימי אם תרצו.",
       "fields": {
-        "status": "Status",
-        "surface": "Surface",
-        "note": "Note (optional)",
-        "email": "Email (optional, for verification)"
+        "status": "סטטוס",
+        "surface": "משטח",
+        "note": "הערה (רשות)",
+        "email": "אימייל (רשות, לאישור)"
       },
       "options": {
         "status": {
           "open": {
-            "label": "Open",
-            "desc": "Good to go"
+            "label": "פתוח",
+            "desc": "הכל בסדר"
           },
           "caution": {
-            "label": "Caution",
-            "desc": "Muddy, wind, or minor issues"
+            "label": "זהירות",
+            "desc": "בוץ, רוח או בעיות קטנות"
           },
           "closed": {
-            "label": "Closed",
-            "desc": "Snow, ice, or unsafe"
+            "label": "סגור",
+            "desc": "שלג, קרח או לא בטוח"
           }
         },
         "surface": {
           "dry": {
-            "label": "Dry",
-            "desc": "Firm ground, good grip"
+            "label": "יבש",
+            "desc": "קרקע יציבה, אחיזה טובה"
           },
           "muddy": {
-            "label": "Muddy",
-            "desc": "Soft or wet patches"
+            "label": "בוצי",
+            "desc": "אזורים רכים או לחים"
           },
           "snow": {
-            "label": "Snow",
-            "desc": "Snow on the ground"
+            "label": "שלג",
+            "desc": "שלג על הקרקע"
           },
           "icy": {
-            "label": "Icy",
-            "desc": "Ice, may need spikes"
+            "label": "קרח",
+            "desc": "קרח, אולי צריך מיקרו-ספייקים"
           }
         }
       },
       "placeholders": {
-        "note": "e.g. Muddy near the stream crossing. Microspikes helped.",
+        "note": "למשל בוץ ליד מעבר הנחל. מיקרו-ספייקים עזרו.",
         "email": "your@email.com"
       },
-      "errorHelp": "Check your connection, try again, or go back to the trail.",
+      "errorHelp": "בדקו חיבור, נסו שוב או חזרו לשביל.",
       "submit": {
-        "idle": "Submit report",
-        "loading": "Submitting…"
+        "idle": "שליחת דיווח",
+        "loading": "שולחים…"
       },
       "success": {
-        "aria": "Report submitted successfully",
-        "body": "Hikers heading to {region} will use this. Every report counts.",
-        "notStored": "Thanks — we received your report but couldn't save it to our database yet. Conditions on the trail page may not update until storage is back.",
-        "backTitle": "Back to {name}",
-        "backCta": "Back to {name}",
-        "addTitle": "Add {name} to your plan",
-        "addCta": "Add {name} to your plan"
+        "aria": "הדיווח נשלח בהצלחה",
+        "body": "מטיילים לכיוון {region} ישתמשו בזה. כל דיווח חשוב.",
+        "notStored": "תודה — קיבלנו את הדיווח אבל לא הצלחנו לשמור. ייתכן שהתנאים בדף השביל לא יתעדכנו עד שהשמירה תחזור.",
+        "backTitle": "חזרה ל-{name}",
+        "backCta": "חזרה ל-{name}",
+        "addTitle": "הוספת {name} לתוכנית",
+        "addCta": "הוספת {name} לתוכנית"
       },
       "meta": {
-        "title": "Report trail conditions | Cyprus Winter",
-        "description": "Submit a quick update on trail conditions to help other hikers."
+        "title": "דיווח תנאי שביל | Cyprus Winter",
+        "description": "שלחו עדכון קצר על תנאי השביל."
       }
     },
     "tips": {
-      "summary": "Before you go",
-      "disclaimer": "Conditions are crowd-sourced, not guaranteed. Hiking involves risks — prepare for weather, pack layers, and follow local advice.",
-      "shortChecklist": "Layers, conditions check, tell someone your route.",
-      "addToPlan": "Add to plan →",
-      "reportConditions": "Report conditions",
-      "buildDayHint": "Build a day — add trails to your plan",
-      "troodosGuide": "Troodos December guide →"
+      "summary": "לפני שיוצאים",
+      "disclaimer": "התנאים מגיעים מהקהילה, לא מובטחים. טיול רגל כרוך בסיכונים — התכוננו למזג אוויר, קחו שכבות ועקבו אחרי עצות מקומיות.",
+      "shortChecklist": "שכבות, בדיקת תנאים, ספרו למישהו את המסלול.",
+      "addToPlan": "הוספה לתוכנית →",
+      "reportConditions": "דיווח על תנאים",
+      "buildDayHint": "בנו יום — הוסיפו שבילים לתוכנית",
+      "troodosGuide": "מדריך Troodos דצמבר →"
     },
     "filters": {
       "aria": {
-        "section": "Filter trails",
-        "status": "Filter by trail status",
-        "difficulty": "Filter by difficulty",
-        "region": "Filter by region"
+        "section": "סינון שבילים",
+        "status": "סינון לפי סטטוס שביל",
+        "difficulty": "סינון לפי קושי",
+        "region": "סינון לפי אזור"
       },
       "sr": {
-        "status": "Filter by status"
+        "status": "סינון לפי סטטוס"
       },
       "labels": {
-        "difficulty": "Difficulty",
-        "region": "Region"
+        "difficulty": "קושי",
+        "region": "אזור"
       },
       "all": {
-        "status": "All status",
-        "difficulties": "All difficulties",
-        "regions": "All regions"
+        "status": "כל הסטטוסים",
+        "difficulties": "כל רמות הקושי",
+        "regions": "כל האזורים"
       },
       "status": {
-        "open": "Open ({count})",
-        "caution": "Caution ({count})",
-        "closed": "Closed ({count})"
+        "open": "פתוח ({count})",
+        "caution": "זהירות ({count})",
+        "closed": "סגור ({count})"
       }
     },
     "detail": {
       "meta": {
-        "title": "{name} | Cyprus Winter Trails",
+        "title": "{name} | שבילי Cyprus Winter",
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
-        "jumpToSection": "Jump to section",
-        "trailActions": "Trail actions",
-        "actionsGroup": "Actions"
+        "jumpToSection": "קפיצה לסעיף",
+        "trailActions": "פעולות שביל",
+        "actionsGroup": "פעולות"
       },
       "hero": {
-        "elevationGain": "{meters}m gain",
-        "elevationMax": "Max {meters}m",
-        "trailheadLabel": "Trailhead: {name}",
-        "navigateToTrailhead": "Navigate to trailhead →"
+        "elevationGain": "עלייה {meters} מ'",
+        "elevationMax": "מקס׳ {meters} מ'",
+        "trailheadLabel": "נקודת התחלה: {name}",
+        "navigateToTrailhead": "ניווט לנקודת ההתחלה →"
       },
       "nav": {
-        "overview": "Overview",
-        "conditions": "Conditions",
-        "map": "Map",
-        "waypoints": "Waypoints",
-        "pairWith": "Pair with"
+        "overview": "סקירה",
+        "conditions": "מצב",
+        "map": "מפה",
+        "waypoints": "נקודות בדרך",
+        "pairWith": "שילוב עם"
       },
-      "topSightsTitle": "Top sights",
+      "topSightsTitle": "אטרקציות עיקריות",
       "conditions": {
-        "latestFromHikers": "Latest from hikers",
-        "communityReport": "Community report—not official. Timestamp shows when it was shared.",
-        "editorialConditions": "Seasonal guide snapshot—not a live report. Submit a report if you were just on the trail.",
-        "currentConditions": "Current conditions",
-        "titleNoData": "Trail conditions",
-        "noRecentBody": "No recent conditions for this trail. Just back? Share what you saw—it takes a minute.",
-        "shareWhatYouSaw": "Share what you saw",
-        "beFirst": "Be the first to report",
-        "recentReportsCount": "{count} recent reports",
-        "surfaceLabel": "Surface: {surface}",
-        "temperatureAtTrailhead": "{temperature}°C at trailhead",
-        "windAtTrailhead": "{wind} km/h wind"
+        "latestFromHikers": "עדכונים אחרונים ממטיילים",
+        "communityReport": "דיווח קהילתי — לא רשמי. חותמת הזמן מראה מתי שותף.",
+        "editorialConditions": "תמונת מצב עונתית — לא דיווח חי. שלחו דיווח אם הייתם עכשיו על השביל.",
+        "currentConditions": "תנאים נוכחיים",
+        "titleNoData": "תנאי שביל",
+        "noRecentBody": "אין תנאים עדכניים לשביל הזה. חזרתם עכשיו? שתפו מה ראיתם — זה לוקח דקה.",
+        "shareWhatYouSaw": "שתפו מה ראיתם",
+        "beFirst": "היו הראשונים לדווח",
+        "recentReportsCount": "{count} דיווחים אחרונים",
+        "surfaceLabel": "משטח: {surface}",
+        "temperatureAtTrailhead": "{temperature}°C בנקודת ההתחלה",
+        "windAtTrailhead": "רוח {wind} קמ\"ש"
       },
       "liveWeather": {
         "temperature": "{min}–{max}°C",
-        "rain": "Rain expected",
-        "live": "Live"
+        "rain": "גשם צפוי",
+        "live": "חי"
       },
       "safety": {
-        "title": "Safety & essentials",
-        "body": "Emergency 112 · Tourist info 1460 · Ambulance 199. Layers, water, charged phone. Check conditions before you go.",
-        "easyTitle": "Good to know",
-        "easyBody": "Emergency 112 · Tourist info 1460. Water, sun protection, and comfortable shoes are enough for this walk."
+        "title": "בטיחות וציוד",
+        "body": "חירום 112 · מידע תיירותי 1460 · אמבולנס 199. שכבות, מים, טלפון טעון. בדקו תנאים לפני שיוצאים.",
+        "easyTitle": "כדאי לדעת",
+        "easyBody": "חירום 112 · מידע תיירותי 1460. מים, הגנה מהשמש ונעליים נוחות מספיקים למסלול הזה."
       },
-      "bookGuide": "Book a guide",
-      "winterSafetyTitle": "Winter safety",
-      "routeMapTitle": "Route map",
-      "winterNotesTitle": "Winter notes",
-      "keyStopsTitle": "Key stops",
-      "localSecretTitle": "Local secret",
-      "highlightsTitle": "Highlights",
-      "bestSeasonTitle": "Best season",
-      "whatToBringTitle": "What to bring",
+      "bookGuide": "הזמנת מדריך",
+      "winterSafetyTitle": "בטיחות בחורף",
+      "routeMapTitle": "מפת מסלול",
+      "winterNotesTitle": "הערות חורף",
+      "keyStopsTitle": "עצירות מרכזיות",
+      "localSecretTitle": "סוד מקומי",
+      "highlightsTitle": "דגשים",
+      "bestSeasonTitle": "עונה מומלצת",
+      "whatToBringTitle": "מה לקחת",
       "localSecrets": {
-        "title": "Local secrets",
-        "intro": "Insider tips for this trail. Pairings, timings, what to do after.",
-        "seeAll": "See all local secrets →"
+        "title": "סודות מקומיים",
+        "intro": "טיפים מבפנים לשביל הזה. שילובים, תזמון, מה לעשות אחר כך.",
+        "seeAll": "כל הסודות המקומיים →"
       },
       "relatedPlaces": {
-        "title": "Pair well with",
-        "description": "Hike in the morning, village or winery in the afternoon. Start by 9am."
+        "title": "מתאים לשילוב עם",
+        "description": "טיול בוקר, כפר או יקב אחר הצהריים. צאו עד 9:00."
       },
       "footer": {
-        "addToPlanBody": "Add this trail to your plan and pair with a village or winery in the afternoon.",
-        "viewAllTrails": "View all trails"
+        "addToPlanBody": "הוסיפו את השביל לתוכנית ושלבו עם כפר או יקב אחר הצהריים.",
+        "viewAllTrails": "כל השבילים"
       }
     },
     "conditionsStrip": {
-      "heading": "Conditions today",
-      "ariaViewList": "Trail conditions today — view list",
-      "openCount": "{count} open",
-      "cautionCount": "{count} caution",
-      "closedCount": "{count} closed",
-      "noReports": "Check reports",
-      "goodToGo": "Good to go",
-      "cautionOnly": "{count} trails need caution",
-      "withClosed": "{count} trails closed — check before you go",
-      "checkConditions": "Check trail conditions"
+      "heading": "תנאים היום",
+      "ariaViewList": "תנאי שבילים היום — צפייה ברשימה",
+      "openCount": "{count} פתוחים",
+      "cautionCount": "{count} בזהירות",
+      "closedCount": "{count} סגורים",
+      "noReports": "בדקו דיווחים",
+      "goodToGo": "מוכנים לצאת",
+      "cautionOnly": "{count} שבילים דורשים זהירות",
+      "withClosed": "{count} שבילים סגורים — בדקו לפני שיוצאים",
+      "checkConditions": "בדקו תנאי שבילים"
     },
     "emptyState": {
-      "body": "No trails match your filters. Try different status, difficulty, or region—or ask the AI. It knows Troodos to coast.",
-      "ctaAllTrails": "All trails"
+      "body": "אין שבילים שמתאימים למסננים. נסו סטטוס, קושי או אזור אחר — או שאלו את ה-AI. היא מכירה מטרודוס ועד החוף.",
+      "ctaAllTrails": "כל השבילים"
     },
     "filterBar": {
-      "showingAll": "— Showing all"
+      "showingAll": "— מציג הכל"
     },
     "quickFilters": {
-      "label": "Quick:",
+      "label": "מהיר:",
       "chips": {
-        "shortEasy": "Short & easy",
-        "openToday": "Open today",
-        "winterHighlights": "Winter highlights"
+        "shortEasy": "קצר וקל",
+        "openToday": "פתוחים היום",
+        "winterHighlights": "הדגשי חורף"
       }
     },
     "map": {
-      "viewTrail": "View trail",
-      "stops": "Stops",
+      "viewTrail": "צפו בשביל",
+      "stops": "עצירות",
       "popupMeta": "{region} · {km} km",
-      "trailheadLegend": "Trailhead",
-      "footerCount": "{count, plural, one {# trail on map. Tap a marker to explore.} other {# trails on map. Tap a marker to explore.}}"
+      "trailheadLegend": "נקודת התחלה",
+      "footerCount": "{count, plural, one {שביל # על המפה. הקישו על סמן לחקירה.} other {# שבילים על המפה. הקישו על סמן לחקירה.}}"
     },
     "page": {
       "meta": {
@@ -2073,7 +2073,7 @@
       }
     },
     "quickAddPlaces": {
-      "artemis": "Artemis Trail",
+      "artemis": "שביל ארטמיס",
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
@@ -2184,207 +2184,207 @@
     }
   },
   "account": {
-    "title": "My account",
-    "loading": "Loading…",
+    "title": "החשבון שלי",
+    "loading": "טוען…",
     "signedIn": {
-      "description": "Your plan and bookings, synced across devices.",
-      "signOut": "Sign out",
+      "description": "התוכנית וההזמנות שלכם, מסונכרנות בין מכשירים.",
+      "signOut": "התנתקות",
       "cta": {
-        "plan": "My plan",
-        "bookings": "View my bookings",
-        "settings": "Settings"
+        "plan": "התוכנית שלי",
+        "bookings": "ההזמנות שלי",
+        "settings": "הגדרות"
       }
     },
     "signedOut": {
-      "title": "Save your plan across devices",
-      "description": "Sign in to sync your plan and bookings across devices.",
-      "body": "Create a free account and your plan and bookings will follow you wherever you go.",
+      "title": "שמרו את התוכנית בכל המכשירים",
+      "description": "התחברו כדי לסנכרן תוכנית והזמנות בין מכשירים.",
+      "body": "צרו חשבון חינם — התוכנית וההזמנות ילכו איתכם לכל מקום.",
       "cta": {
-        "create": "Create account",
-        "signIn": "Sign in",
-        "skip": "Skip — use my plan on this device"
+        "create": "יצירת חשבון",
+        "signIn": "התחברות",
+        "skip": "דלג — השתמשו בתוכנית במכשיר זה"
       }
     },
     "notConfigured": {
-      "title": "Sign in coming soon",
-      "description": "Sign in (coming soon) will sync your plan and bookings across devices.",
-      "body": "Your plan and bookings live on this device. Use the email lookup on the bookings page to pull in reservations from another device."
+      "title": "התחברות בקרוב",
+      "description": "התחברות (בקרוב) תסנכרן תוכנית והזמנות בין מכשירים.",
+      "body": "התוכנית וההזמנות נמצאות במכשיר זה. השתמשו בחיפוש לפי אימייל בדף ההזמנות כדי לטעון הזמנות ממכשיר אחר."
     },
     "settings": {
-      "title": "Settings",
-      "loading": "Loading…",
-      "description": "Personalize your experience. We use these to surface places and trails that match your style.",
+      "title": "הגדרות",
+      "loading": "טוען…",
+      "description": "התאימו את החוויה. נשתמש בזה כדי להציע מקומות ושבילים שמתאימים לסגנון שלכם.",
       "interests": {
-        "title": "Interests",
-        "body": "Pick what excites you. Discover, Right Now, and plan suggestions will lean toward these.",
+        "title": "תחומי עניין",
+        "body": "בחרו מה מעניין אתכם. גילוי, עכשיו בקרבתכם והצעות תכנון יתבססו על זה.",
         "labels": {
-          "active": "Hiking & trails",
-          "bouldering": "Bouldering+",
-          "climbing": "Rock climbing",
-          "cycling": "Cycling",
-          "culture": "History & archaeology",
-          "wine": "Wine & tastings",
-          "wellness": "Wellness & relaxation",
-          "villages": "Mountain villages"
+          "active": "טיולים ושבילים",
+          "bouldering": "בולדרינג+",
+          "climbing": "טיפוס סלעים",
+          "cycling": "רכיבה",
+          "culture": "היסטוריה וארכיאולוגיה",
+          "wine": "יין וטעימות",
+          "wellness": "בריאות והרפיה",
+          "villages": "כפרי הרים"
         }
       },
       "travelStyle": {
-        "title": "Travel style",
-        "body": "Helps tailor suggestions (e.g. family-friendly spots, couples retreats).",
+        "title": "סגנון טיול",
+        "body": "עוזר להתאים הצעות (משפחות, זוגות, וכו').",
         "labels": {
-          "solo": "Solo",
-          "couple": "Couple",
-          "family": "Families",
-          "group": "Group",
-          "nomad": "Digital nomad"
+          "solo": "סולו",
+          "couple": "זוג",
+          "family": "משפחות",
+          "group": "קבוצה",
+          "nomad": "נווד דיגיטלי"
         }
       },
       "regions": {
-        "title": "Favorite regions",
-        "body": "We'll boost content from these areas in Discover and Right Now."
+        "title": "אזורים מועדפים",
+        "body": "נדגיש תוכן מאזורים אלה בגילוי ובעכשיו בקרבתכם."
       },
       "notifications": {
-        "title": "Notifications",
-        "body": "If you enable push, we'll use these preferences for alerts.",
-        "trails": "Trail condition updates (Troodos, etc.)",
-        "events": "Winter events and festivals"
+        "title": "התראות",
+        "body": "אם תפעילו push, נשתמש בהעדפות האלה להתראות.",
+        "trails": "עדכוני תנאי שבילים (Troodos וכו')",
+        "events": "אירועי חורף ופסטיבלים"
       },
       "privacy": {
-        "title": "Data & privacy",
-        "body": "Control what we keep on this device. For data we hold (bookings, trail reports), you can request export or deletion.",
-        "clear": "Clear recently viewed",
-        "cleared": "Recently viewed cleared",
-        "requestExport": "Request data export",
-        "requestDeletion": "Request deletion",
+        "title": "נתונים ופרטיות",
+        "body": "שליטה במה שנשמר במכשיר זה. לנתונים שאנו מחזיקים (הזמנות, דיווחי שבילים) אפשר לבקש ייצוא או מחיקה.",
+        "clear": "נקו צפיות אחרונות",
+        "cleared": "הצפיות האחרונות נוקו",
+        "requestExport": "בקשת ייצוא נתונים",
+        "requestDeletion": "בקשת מחיקה",
         "footer": {
-          "prefix": "Include the email used for bookings or trail reports. We respond within 30 days. See our",
-          "privacyPolicy": "Privacy Policy",
+          "prefix": "כללו את האימייל ששימש להזמנות או דיווחי שבילים. נענה תוך 30 יום. ראו את",
+          "privacyPolicy": "מדיניות הפרטיות",
           "suffix": "."
         }
       },
-      "backToAccount": "← Back to account",
+      "backToAccount": "← חזרה לחשבון",
       "meta": {
-        "title": "Settings | My account | Cyprus Winter",
-        "description": "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences."
+        "title": "הגדרות | החשבון שלי | Cyprus Winter",
+        "description": "התאימו את חוויית Cyprus Winter: תחומי עניין, אזורים והתראות."
       }
     },
     "meta": {
-      "title": "My account | Cyprus Winter",
-      "description": "Sign in to sync your plan and bookings across devices. Your plan and tasting requests will follow you wherever you go."
+      "title": "החשבון שלי | Cyprus Winter",
+      "description": "התחברו כדי לסנכרן תוכנית והזמנות בין מכשירים."
     }
   },
   "search": {
     "page": {
       "meta": {
-        "title": "Search Cyprus Winter | Trails, Wineries, Places",
-        "description": "Search Cyprus winter: trails, wineries, villages, beaches, ancient sites. Find Troodos hikes, Paphos mosaics, Lefkara. Plan or explore when you land. Free search.",
-        "ogDescription": "Search Cyprus winter: trails, wineries, villages, beaches. Find Troodos hikes, Paphos mosaics, Lefkara.",
-        "ogAlt": "Cyprus winter — find trails and places"
+        "title": "חיפוש Cyprus Winter | שבילים, יקבים, מקומות",
+        "description": "חפשו קפריסין בחורף: שבילים, יקבים, כפרים, חופים, אתרים עתיקים. Troodos, פסיפסי Paphos, Lefkara. תכננו או גלו בנחיתה. חיפוש חינם.",
+        "ogDescription": "חפשו קפריסין בחורף: שבילים, יקבים, כפרים, חופים. Troodos, Paphos, Lefkara.",
+        "ogAlt": "קפריסין בחורף — מצאו שבילים ומקומות"
       }
     },
-    "title": "Find a place or trail",
-    "intro": "Places that feel real. Villages, wineries, beaches, trails, events.",
-    "resultsFor": "Results for “{query}”",
-    "placeholder": "Find a place or trail",
-    "typeAtLeastTwo": "Type at least 2 characters",
-    "noResults": "Nothing for \"{query}\". Try Troodos, Nissi, Omodos, or browse Discover.",
-    "noResultsHint": "Or tap Ask AI to find something.",
-    "browseDiscover": "Browse Discover",
-    "viewTrails": "View all trails",
-    "planTrip": "Plan your trip",
-    "browseByCategory": "Or browse by category",
+    "title": "מצאו מקום או שביל",
+    "intro": "מקומות שמרגישים אמיתיים. כפרים, יקבים, חופים, שבילים, אירועים.",
+    "resultsFor": "תוצאות עבור «{query}»",
+    "placeholder": "מצאו מקום או שביל",
+    "typeAtLeastTwo": "הקלידו לפחות 2 תווים",
+    "noResults": "אין תוצאות עבור \"{query}\". נסו Troodos, Nissi, Omodos, או עיינו בגילוי.",
+    "noResultsHint": "או הקישו על שאלו את ה-AI כדי למצוא משהו.",
+    "browseDiscover": "עיון בגילוי",
+    "viewTrails": "כל השבילים",
+    "planTrip": "תכננו את הטיול",
+    "browseByCategory": "או עיינו לפי קטגוריה",
     "footer": {
-      "hubBody": "Add places to your plan—or ask the AI. It knows the island in winter."
+      "hubBody": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI. היא מכירה את האי בחורף."
     },
     "aria": {
-      "actions": "Search page actions"
+      "actions": "פעולות דף חיפוש"
     },
     "category": {
-      "trails": "Trails",
-      "discover": "Discover",
-      "wineries": "Wineries",
-      "events": "Events",
-      "villages": "Villages",
-      "beaches": "Beaches",
+      "trails": "שבילים",
+      "discover": "גילוי",
+      "wineries": "יקבים",
+      "events": "אירועים",
+      "villages": "כפרים",
+      "beaches": "חופים",
       "cycling": "רכיבה"
     }
   },
   "events": {
-    "clearFilters": "Clear filters",
-    "clearFiltersAria": "Clear filters and show all events",
-    "noMatch": "Nothing matches these filters. Try a different type or region.",
+    "clearFilters": "נקה מסננים",
+    "clearFiltersAria": "נקה מסננים והצג את כל האירועים",
+    "noMatch": "אין התאמה למסננים. נסו סוג או אזור אחר.",
     "page": {
       "hero": {
-        "title": "Winter events",
-        "description": "Epiphany, carnival, markets, tastings. The island fills the short days with light and noise. November to March.",
-        "imageAlt": "Kykkos monastery, Troodos—Cyprus winter culture and events",
-        "planAria": "Plan your trip",
-        "planCta": "Plan your trip",
-        "note": "Dates may shift year to year. Check official sources before you travel.",
+        "title": "אירועי חורף",
+        "description": "הגבורה, קרנבל, שווקים, טעימות. האי ממלא את הימים הקצרים באור ורוח חיים. נובמבר עד מרץ.",
+        "imageAlt": "מנזר Kykkos, Troodos — תרבות ואירועי חורף בקפריסין",
+        "planAria": "תכננו את הטיול",
+        "planCta": "תכננו את הטיול",
+        "note": "תאריכים עלולים להשתנות משנה לשנה. בדקו מקורות רשמיים לפני הנסיעה.",
         "updated": "מתעדכן מדי חודש. התאריכים עדיין זזים — בדקו במקורות הרשמיים."
       },
       "filters": {
-        "aria": "Filter events",
-        "typeLabel": "Type",
-        "regionLabel": "Region",
-        "byTypeAria": "Filter by type",
-        "byRegionAria": "Filter by region",
-        "unknown": "Unknown filter — showing all events.",
-        "togglePrefix": "Filters:",
-        "toggleAll": "All",
-        "toggleShow": "Show",
-        "toggleHide": "Hide"
+        "aria": "סינון אירועים",
+        "typeLabel": "סוג",
+        "regionLabel": "אזור",
+        "byTypeAria": "סינון לפי סוג",
+        "byRegionAria": "סינון לפי אזור",
+        "unknown": "מסנן לא מוכר — מוצגים כל האירועים.",
+        "togglePrefix": "מסננים:",
+        "toggleAll": "הכל",
+        "toggleShow": "הצג",
+        "toggleHide": "הסתר"
       },
       "monthNav": {
-        "aria": "Jump to month",
-        "title": "Jump to month",
-        "jumpTo": "Jump to {month}"
+        "aria": "קפיצה לחודש",
+        "title": "קפיצה לחודש",
+        "jumpTo": "קפיצה ל{month}"
       },
       "monthFull": {
-        "Nov": "November",
-        "Dec": "December",
-        "Jan": "January",
-        "Feb": "February",
-        "Mar": "March"
+        "Nov": "נובמבר",
+        "Dec": "דצמבר",
+        "Jan": "ינואר",
+        "Feb": "פברואר",
+        "Mar": "מרץ"
       },
       "card": {
-        "whenWhereAria": "When: {dates}. Where: {venue}",
-        "exploreRegionAria": "Explore {region}",
-        "exploreRegionCta": "Explore {region} →",
-        "learnMoreAria": "Learn more about {name}",
-        "learnMoreCta": "Learn more"
+        "whenWhereAria": "מתי: {dates}. איפה: {venue}",
+        "exploreRegionAria": "גלו את {region}",
+        "exploreRegionCta": "גלו את {region} →",
+        "learnMoreAria": "למידע נוסף על {name}",
+        "learnMoreCta": "למידע נוסף"
       },
       "highlights": {
-        "title": "Don't miss",
-        "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
+        "title": "אל תפספסו",
+        "lead": "Epiphany וקarnaval — כשהאי מראה את הנשמה שלו. הגיעו מוקדם. התלבשו חם."
       },
       "tips": {
-        "title": "Planning tips",
-        "item1": "Check official sites for exact dates — many events move year to year.",
-        "item2": "Book early for Epiphany, Carnival, and Christmas markets.",
-        "item3": "Arrive early for popular events. The best spots fill quickly.",
-        "item4": "Pair events with nearby trails or villages. Hike in the morning, event in the afternoon."
+        "title": "טיפים לתכנון",
+        "item1": "בדקו אתרים רשמיים לתאריכים מדויקים — הרבה אירועים משתנים משנה לשנה.",
+        "item2": "הזמינו מוקדם ל-Epiphany, קarnaval ושווקי חג.",
+        "item3": "הגיעו מוקדם לאירועים פופולריים. המקומות הטובים נגמרים מהר.",
+        "item4": "שלבו אירועים עם שבילים או כפרים קרובים. טיול בוקר, אירוע אחר הצהריים."
       },
       "footer": {
-        "hubBody": "Add events to your plan—or ask the AI for what’s on when you visit.",
-        "weatherLink": "Weather by month"
+        "hubBody": "הוסיפו אירועים לתוכנית — או שאלו את ה-AI מה קורה בזמן הביקור.",
+        "weatherLink": "מזג אוויר לפי חודש"
       },
       "aria": {
-        "actions": "Events page actions"
+        "actions": "פעולות דף אירועים"
       },
       "types": {
-        "festival": "Festival",
-        "market": "Market",
-        "concert": "Concert",
-        "food": "Food & Wine",
-        "culture": "Culture",
-        "sport": "Sport"
+        "festival": "פסטיבל",
+        "market": "שוק",
+        "concert": "קונצרט",
+        "food": "אוכל ויין",
+        "culture": "תרבות",
+        "sport": "ספורט"
       },
       "monthShort": {
-        "Nov": "נוב",
-        "Dec": "דצמ",
-        "Jan": "ינו",
-        "Feb": "פבר",
+        "Nov": "נוב׳",
+        "Dec": "דצמ׳",
+        "Jan": "ינו׳",
+        "Feb": "פבר׳",
         "Mar": "מרץ"
       },
       "meta": {
@@ -2398,41 +2398,41 @@
   "regions": {
     "page": {
       "footer": {
-        "hubBody": "Explore trails, villages, and wineries in this region—then add picks to your plan.",
-        "weatherLink": "Weather by month"
+        "hubBody": "גלו שבילים, כפרים ויקבים באזור — והוסיפו לתוכנית.",
+        "weatherLink": "מזג אוויר לפי חודש"
       },
       "aria": {
-        "actions": "Region page actions"
+        "actions": "פעולות דף אזור"
       }
     }
   },
   "wineRoutes": {
     "page": {
       "meta": {
-        "title": "{route} Wine Route Cyprus Winter | Wineries & Tastings",
-        "description": "{route} wine route: {count, plural, one {# winery} other {# wineries}} open for winter tastings. Book ahead.",
-        "notFoundTitle": "Wine route not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter wine routes: Krasochoria, Laona, Akamas, Commandaria. Browse wineries for winter tastings."
+        "title": "מסלול יין {route} Cyprus Winter | יקבים וטעימות",
+        "description": "מסלול יין {route}: {count, plural, one {יקב #} other {# יקבים}} פתוחים לטעימות חורף. הזמינו מראש.",
+        "notFoundTitle": "מסלול יין לא נמצא | Cyprus Winter",
+        "notFoundDescription": "מסלולי יין חורף בקפריסין: Krasochoria, Laona, Akamas, Commandaria. עיינו ביקבים לטעימות חורף."
       },
-      "routeTitle": "{route} Wine Route",
-      "routeBreadcrumb": "{route} Route",
-      "wineriesOnRoute": "Wineries on this route",
-      "grapeVarieties": "Grape varieties",
-      "winterTipLabel": "Winter tip",
+      "routeTitle": "מסלול יין {route}",
+      "routeBreadcrumb": "מסלול {route}",
+      "wineriesOnRoute": "יקבים במסלול זה",
+      "grapeVarieties": "זני ענבים",
+      "winterTipLabel": "טיפ לחורף",
       "bookableHeading": "הזמינו טעימה במסלול",
       "bookableIntro": "יקבים נבחרים עם שעות חורף. התקשרו מראש כשמצוין.",
       "map": {
-        "heading": "{route} map ({count})",
-        "caption": "Tap a marker to open a winery.",
-        "ariaLabel": "Map showing {count, plural, one {# winery} other {# wineries}} on this wine route",
-        "viewWinery": "View winery"
+        "heading": "מפת {route} ({count})",
+        "caption": "הקישו על סמן לפתיחת יקב.",
+        "ariaLabel": "מפה עם {count, plural, one {יקב #} other {# יקבים}} במסלול יין זה",
+        "viewWinery": "צפו ביקב"
       },
       "footer": {
-        "hubBody": "Book tastings ahead and pair this route with a village or trail nearby.",
-        "allWineries": "All Cyprus wineries"
+        "hubBody": "הזמינו טעימות מראש ושלבו מסלול זה עם כפר או שביל קרוב.",
+        "allWineries": "כל היקבים בקפריסין"
       },
       "aria": {
-        "actions": "Wine route actions"
+        "actions": "פעולות מסלול יין"
       }
     },
     "hub": {
@@ -2468,142 +2468,142 @@
   "weather": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Weather by Month | Coast & Troodos",
-        "description": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries. November to April. Sixteen degrees when home is six.",
-        "ogDescription": "Cyprus winter weather by month: coast 18–20°C, Troodos 8–12°C. Pack layers, plan trails and wineries.",
-        "ogImageAlt": "Cyprus winter weather guide"
+        "title": "מזג אוויר חורף בקפריסין לפי חודש | חוף ו-Troodos",
+        "description": "מזג אוויר חורפי בקפריסין לפי חודש: חוף 18–20°C, Troodos 8–12°C. שכבות, שבילים ויקבים. נובמבר עד אפריל. שש־עשרה מעלות כשבבית שש.",
+        "ogDescription": "מזג אוויר חורפי בקפריסין לפי חודש: חוף 18–20°C, Troodos 8–12°C. שכבות, שבילים ויקבים.",
+        "ogImageAlt": "מדריך מזג אוויר חורפי בקפריסין"
       },
-      "title": "Cyprus Winter Weather by Month",
-      "description": "Coast and Troodos temperatures, month by month. Plan layers, trails, and wineries.",
+      "title": "מזג אוויר חורף בקפריסין לפי חודש",
+      "description": "טמפרטורות בחוף וב-Troodos חודש אחר חודש. תכננו שכבות, שבילים ויקבים.",
       "table": {
-        "month": "Month",
-        "coast": "Coast (°C)",
-        "coastConditions": "Conditions",
-        "troodos": "Troodos (°C)",
-        "troodosConditions": "Conditions"
+        "month": "חודש",
+        "coast": "חוף (°C)",
+        "coastConditions": "מצב",
+        "troodos": "מטרודוס (°C)",
+        "troodosConditions": "מצב"
       },
       "mobile": {
-        "details": "Details →"
+        "details": "פרטים →"
       },
       "hero": {
-        "kicker": "Winter planning",
-        "heading": "Choose your month, then browse what fits",
-        "body": "Coast and Troodos temperatures shift through winter. Pick a month to see the conditions and events, then use Right now near you to adapt your day."
+        "kicker": "תכנון חורפי",
+        "heading": "בחרו את החודש שלכם וגלו מה מתאים",
+        "body": "טמפרטורות בחוף וב-Troodos משתנות לאורך החורף. בחרו חודש לראות תנאים ואירועים, ואז השתמשו בעכשיו לידכם כדי להתאים את היום."
       },
       "monthSelector": {
-        "aria": "Choose a month"
+        "aria": "בחירת חודש"
       },
       "gateway": {
-        "heading": "Browse winter ideas",
-        "monasteries": "Monasteries"
+        "heading": "רעיונות לחורף",
+        "monasteries": "מנזרים"
       },
       "body": {
-        "coastTroodos": "Coast means Larnaca, Limassol, Paphos — mild Mediterranean winters. Troodos is the mountains: villages like Platres and Omodos, and the ski resort on Olympus. Pack layers; the difference between coast and mountain can be 10°C or more.",
-        "linkTrails": "Check trail conditions",
-        "linkTrailsSuffix": "before heading up.",
-        "linkWineries": "Winter wineries",
-        "linkWineriesSuffix": "— fireside tastings, book ahead."
+        "coastTroodos": "חוף פירושו Larnaca, Limassol, Paphos — חורפים ים-תיכוניים מתונים. Troodos הוא ההרים: כפרים כמו Platres ו-Omodos, ואתר הסקי על Olympus. קחו שכבות; ההפרש בין חוף להר יכול להגיע ליותר מ-10°C.",
+        "linkTrails": "בדקו תנאי שבילים",
+        "linkTrailsSuffix": "לפני שעולים.",
+        "linkWineries": "יקבים חורפיים",
+        "linkWineriesSuffix": "— טעימות ליד האח, הזמינו מראש."
       },
       "footer": {
-        "hubBody": "Pick a month, then build a day around the weather—trails, villages, and tastings.",
-        "trails": "Trail conditions",
-        "events": "Winter events"
+        "hubBody": "בחרו חודש ואז בנו יום סביב מזג האוויר — שבילים, כפרים וטעימות.",
+        "trails": "תנאי שבילים",
+        "events": "אירועי חורף"
       },
       "aria": {
-        "actions": "Weather page actions"
+        "actions": "פעולות דף מזג אוויר"
       }
     },
     "month": {
-      "pageHeaderTitle": "Cyprus Winter Weather: {month}",
-      "pageHeaderDescription": "Coast {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
+      "pageHeaderTitle": "מזג אוויר חורפי בקפריסין: {month}",
+      "pageHeaderDescription": "חוף {coastMin}–{coastMax}°C, Troodos {troodosMin}–{troodosMax}°C. {coastDesc}",
       "meta": {
-        "title": "Cyprus Winter Weather {month} | Coast & Troodos",
-        "description": "Cyprus winter weather {month}: coast {coastRange}, Troodos {troodosRange}. {coastDesc} Plan trails, wineries, and winter events.",
-        "notFoundTitle": "Weather not found | Cyprus Winter",
-        "notFoundDescription": "Cyprus winter weather by month: December, January, February, March. Coast and Troodos temperatures.",
-        "ogImageAlt": "Cyprus winter coast—{month} weather"
+        "title": "מזג אוויר חורפי בקפריסין {month} | חוף ו-Troodos",
+        "description": "מזג אוויר חורפי בקפריסין {month}: חוף {coastRange}, Troodos {troodosRange}. {coastDesc} תכננו שבילים, יקבים ואירועי חורף.",
+        "notFoundTitle": "מזג האוויר לא נמצא | Cyprus Winter",
+        "notFoundDescription": "מזג אוויר חורפי בקפריסין לפי חודש: דצמבר, ינואר, פברואר, מרץ. טמפרטורות בחוף וב-Troodos.",
+        "ogImageAlt": "חוף קפריסין בחורף — מזג אוויר {month}"
       },
       "hero": {
-        "kicker": "This month",
-        "heading": "{month} in Cyprus Winter",
-        "body": "Coast sits around {coastMid}°C and Troodos around {troodosMid}°C. Plan layers, then browse the winter picks below."
+        "kicker": "החודש הזה",
+        "heading": "{month} ב-Cyprus Winter",
+        "body": "החוף סביב {coastMid}°C ו-Troodos סביב {troodosMid}°C. תכננו שכבות ואז עיינו בהמלצות החורף למטה."
       },
       "monthJump": {
-        "aria": "Jump to another month"
+        "aria": "קפיצה לחודש אחר"
       },
       "gateway": {
-        "monasteries": "Monasteries"
+        "monasteries": "מנזרים"
       },
       "monthDiscovery": {
-        "heading": "Browse what fits {month}"
+        "heading": "גלו מה מתאים ל-{month}"
       },
-      "conditionsHeading": "What to expect",
-      "conditionsCoastTitle": "Coast (Larnaca, Limassol, Paphos)",
-      "conditionsTroodosTitle": "Troodos (mountains, villages)",
-      "eventsHeading": "Winter events in {month}",
+      "conditionsHeading": "מה לצפות",
+      "conditionsCoastTitle": "חוף (Larnaca, Limassol, Paphos)",
+      "conditionsTroodosTitle": "Troodos (הרים, כפרים)",
+      "eventsHeading": "אירועי חורף ב-{month}",
       "cta": {
-        "trailConditions": "Trail conditions",
-        "winterWineries": "Winter wineries"
+        "trailConditions": "תנאי שבילים",
+        "winterWineries": "יקבים חורפיים"
       },
       "footer": {
-        "allMonths": "All months",
-        "troodosWinter": "Troodos winter",
-        "hubBody": "Build a day around this month's weather—trails, tastings, and events—or ask the AI."
+        "allMonths": "כל החודשים",
+        "troodosWinter": "Troodos בחורף",
+        "hubBody": "בנו יום סביב מזג האוויר של החודש — שבילים, טעימות ואירועים — או שאלו את ה-AI."
       },
       "aria": {
-        "actions": "Weather month page actions"
+        "actions": "פעולות דף מזג אוויר חודשי"
       }
     }
   },
   "onboarding": {
     "welcome": "Cyprus Winter",
-    "description": "Trails, villages, wineries. Plan as you go — no account needed.",
-    "cta": "Explore",
-    "skip": "Skip",
-    "intentQuestion": "What matters most right now?",
-    "intentLabel": "Or tell us what you're here for",
-    "intentPlanning": "Planning my trip",
-    "intentExploring": "Exploring places",
-    "intentBrowsing": "Just browsing",
+    "description": "שבילים, כפרים, יקבים. תכננו תוך כדי תנועה — בלי חשבון.",
+    "cta": "גלו",
+    "skip": "דלג",
+    "intentQuestion": "מה הכי חשוב עכשיו?",
+    "intentLabel": "או ספרו לנו למה אתם כאן",
+    "intentPlanning": "תכנון הטיול",
+    "intentExploring": "גלו מקומות",
+    "intentBrowsing": "רק מסתכלים",
     "aria": {
-      "startExploring": "Start exploring places and trails",
-      "skip": "Skip onboarding",
-      "intentGroup": "Intent options",
-      "intentPlanning": "Planning my trip",
-      "intentExploring": "Exploring places",
-      "intentBrowsing": "Just browsing"
+      "startExploring": "התחילו לגלות מקומות ושבילים",
+      "skip": "דלג על ההיכרות",
+      "intentGroup": "אפשרויות כוונה",
+      "intentPlanning": "תכנון הטיול",
+      "intentExploring": "גלו מקומות",
+      "intentBrowsing": "רק מסתכלים"
     },
-    "tipPlanEmpty": "Add your first place — pick from Discover or use a template below.",
-    "tipPlanEmptyLink": "Browse Discover",
-    "tipFirstAdd": "In your plan. Add more or share your plan.",
-    "tipDiscoverFilter": "Filter by villages, wineries, or trails.",
-    "savePlan": "Save your plan — create account to sync"
+    "tipPlanEmpty": "הוסיפו מקום ראשון — מגילוי או מתבנית למטה.",
+    "tipPlanEmptyLink": "עיון בגילוי",
+    "tipFirstAdd": "בתוכנית שלכם. הוסיפו עוד או שתפו את התוכנית.",
+    "tipDiscoverFilter": "סננו לפי כפרים, יקבים או שבילים.",
+    "savePlan": "שמרו את התוכנית — צרו חשבון לסנכרון"
   },
   "help": {
-    "planEmpty": "Tap “Add places” to start building your plan from Discover or Trails.",
-    "planFirstItem": "Great start. Add more places or switch days to plan your whole trip.",
-    "discoverFilter": "Use filters to find exactly what you're looking for—wineries, trails, beaches, and more.",
-    "bookingForm": "Fill in your details and the winery will confirm by email. Most respond within 24 hours.",
-    "aiAssistant": "Ask me anything—best trails, winery recommendations, or help planning your day."
+    "planEmpty": "הקישו על «הוספת מקומות» כדי להתחיל לבנות את התוכנית מגילוי או שבילים.",
+    "planFirstItem": "התחלה טובה. הוסיפו עוד מקומות או החליפו ימים כדי לתכנן את כל הטיול.",
+    "discoverFilter": "השתמשו במסננים כדי למצוא בדיוק מה שאתם מחפשים — יקבים, שבילים, חופים ועוד.",
+    "bookingForm": "מלאו את הפרטים והיקב יאשר במייל. רובם עונים תוך 24 שעות.",
+    "aiAssistant": "שאלו אותי הכל — שבילים מומלצים, המלצות יקבים או עזרה בתכנון היום."
   },
   "auth": {
     "layout": {
-      "heroAlt": "Cyprus winter — trails, villages, wineries"
+      "heroAlt": "קפריסין בחורף — שבילים, כפרים, יקבים"
     },
     "social": {
-      "orContinueWith": "Or continue with",
+      "orContinueWith": "או המשיכו עם",
       "providers": {
         "google": "Google",
         "apple": "Apple"
       },
-      "aria": "{intent, select, signup {Sign up with {provider}} other {Sign in with {provider}}}"
+      "aria": "{intent, select, signup {הרשמה עם {provider}} other {התחברות עם {provider}}}"
     },
     "login": {
       "title": "ברוכים השבים",
-      "subtitle": "Your plan and bookings follow you. Trails, villages, wineries — all in one place.",
-      "configSubtitle": "Auth is being set up. For now, use the email lookup on the bookings page to load reservations from another device.",
-      "errorInvalidCredentials": "Email or password doesn’t match. Try again or use a magic link.",
-      "errorConfirmEmail": "Please confirm your email first. Check your inbox for the activation link.",
+      "subtitle": "התוכנית וההזמנות הולכות איתכם. שבילים, כפרים, יקבים — הכל במקום אחד.",
+      "configSubtitle": "ההתחברות בהקמה. בינתיים, השתמשו בחיפוש לפי אימייל בדף ההזמנות כדי לטעון הזמנות ממכשיר אחר.",
+      "errorInvalidCredentials": "האימייל או הסיסמה לא תואמים. נסו שוב או השתמשו בקישור קסם.",
+      "errorConfirmEmail": "אנא אשרו קודם את האימייל. בדקו את תיבת הדואר הנכנס לקישור ההפעלה.",
       "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
       "ctaSignIn": "התחברות",
       "ctaSigningIn": "מתחברים…",
@@ -2611,9 +2611,9 @@
       "ctaUseMagic": "קישור קסם",
       "ctaUsePassword": "סיסמה",
       "passwordLabel": "סיסמה",
-      "magicSentTitle": "Link sent",
-      "magicSentSubtitle": "We sent a sign-in link to <strong>{email}</strong>. Click it to sign in from this device.",
-      "ctaUseDifferentMethod": "Use a different method",
+      "magicSentTitle": "הקישור נשלח",
+      "magicSentSubtitle": "שלחנו קישור התחברות ל-<strong>{email}</strong>. לחצו עליו כדי להתחבר ממכשיר זה.",
+      "ctaUseDifferentMethod": "שיטה אחרת",
       "noAccountPrefix": "אין חשבון?",
       "meta": {
         "title": "התחברות | Cyprus Winter",
@@ -2622,21 +2622,21 @@
     },
     "register": {
       "title": "הצטרפות ל-Cyprus Winter",
-      "subtitle": "Plan trails, wineries, villages. Sync your plan across devices.",
-      "configTitle": "Create account",
-      "configSubtitle": "Auth is being set up. You can still use the app—your plan saves on this device. Check back soon.",
-      "errorEmailExists": "An account with that email already exists.",
-      "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
-      "errorInvalidEmail": "Please enter a valid email address.",
-      "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
+      "subtitle": "תכננו שבילים, יקבים, כפרים. סנכרנו את התוכנית בין מכשירים.",
+      "configTitle": "יצירת חשבון",
+      "configSubtitle": "ההתחברות בהקמה. עדיין אפשר להשתמש באפליקציה — התוכנית נשמרת במכשיר זה. חזרו בקרוב.",
+      "errorEmailExists": "כבר קיים חשבון עם האימייל הזה.",
+      "errorPasswordTooShort": "הסיסמה קצרה מדי. השתמשו לפחות ב-6 תווים.",
+      "errorInvalidEmail": "אנא הזינו כתובת אימייל תקינה.",
+      "errorPasswordsDontMatch": "הסיסמאות לא תואמות. ודאו ששני השדות זהים.",
       "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
-      "passwordHint": "At least 6 characters",
-      "successTitle": "Almost there",
-      "successSubtitle": "We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account, then sign in.",
-      "nameLabel": "Name (optional)",
-      "namePlaceholder": "Your name",
-      "confirmPasswordLabel": "Confirm password",
-      "passwordLabel": "Password",
+      "passwordHint": "לפחות 6 תווים",
+      "successTitle": "כמעט שם",
+      "successSubtitle": "שלחנו קישור אישור ל-<strong>{email}</strong>. לחצו עליו להפעלת החשבון, ואז התחברו.",
+      "nameLabel": "שם (אופציונלי)",
+      "namePlaceholder": "השם שלכם",
+      "confirmPasswordLabel": "אימות סיסמה",
+      "passwordLabel": "סיסמה",
       "ctaCreating": "יוצרים…",
       "ctaSignIn": "התחברות",
       "ctaCreate": "יצירת חשבון",
@@ -2648,42 +2648,42 @@
       }
     },
     "forgot": {
-      "title": "Forgot your password?",
-      "subtitle": "Enter your email and we’ll send you a link to set a new password.",
-      "emailLabel": "Email",
+      "title": "שכחתם סיסמה?",
+      "subtitle": "הזינו אימייל ונשלח קישור לסיסמה חדשה.",
+      "emailLabel": "אימייל",
       "emailPlaceholder": "you@example.com",
-      "errorInvalidEmail": "Please enter a valid email address.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "successTitle": "Reset link sent",
-      "successSubtitle": "We sent a password reset link to <strong>{email}</strong>. Click it to set a new password.",
-      "ctaSend": "Send reset link",
-      "ctaSending": "Sending…",
+      "errorInvalidEmail": "אנא הזינו כתובת אימייל תקינה.",
+      "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
+      "successTitle": "קישור איפוס נשלח",
+      "successSubtitle": "שלחנו קישור איפוס סיסמה ל-<strong>{email}</strong>. לחצו עליו כדי להגדיר סיסמה חדשה.",
+      "ctaSend": "שליחת קישור איפוס",
+      "ctaSending": "שולחים…",
       "meta": {
         "title": "איפוס סיסמה | Cyprus Winter",
         "description": "בקשו קישור לאיפוס סיסמה לחשבון Cyprus Winter."
       }
     },
     "reset": {
-      "inlinePasswordHint": "At least 6 characters",
-      "errorPasswordsDontMatch": "Passwords don’t match. Make sure both fields match.",
-      "errorPasswordTooShort": "Your password is too short. Use at least 6 characters.",
-      "errorGeneric": "Something went wrong. Try again in a moment.",
-      "invalidLinkTitle": "Invalid or expired link",
-      "invalidLinkSubtitle": "This reset link may have expired. Request a new one to set your password.",
-      "configTitle": "Set new password",
-      "configSubtitle": "Auth is being set up. Use the reset link from your email when ready.",
-      "successTitle": "Password updated",
-      "successSubtitle": "Your password has been set. You can now sign in with your new password.",
-      "kicker": "Set new password",
-      "title": "Choose a new password",
-      "subtitle": "Enter your new password below.",
-      "newPasswordLabel": "New password",
-      "confirmPasswordLabel": "Confirm password",
+      "inlinePasswordHint": "לפחות 6 תווים",
+      "errorPasswordsDontMatch": "הסיסמאות לא תואמות. ודאו ששני השדות זהים.",
+      "errorPasswordTooShort": "הסיסמה קצרה מדי. השתמשו לפחות ב-6 תווים.",
+      "errorGeneric": "משהו השתבש. נסו שוב בעוד רגע.",
+      "invalidLinkTitle": "קישור לא תקין או שפג תוקפו",
+      "invalidLinkSubtitle": "ייתכן שהקישור פג. בקשו קישור חדש להגדרת סיסמה.",
+      "configTitle": "הגדרת סיסמה חדשה",
+      "configSubtitle": "ההתחברות בהקמה. השתמשו בקישור מהאימייל כשמוכן.",
+      "successTitle": "הסיסמה עודכנה",
+      "successSubtitle": "הסיסמה הוגדרה. אפשר להתחבר עם הסיסמה החדשה.",
+      "kicker": "סיסמה חדשה",
+      "title": "בחרו סיסמה חדשה",
+      "subtitle": "הזינו את הסיסמה החדשה למטה.",
+      "newPasswordLabel": "סיסמה חדשה",
+      "confirmPasswordLabel": "אימות סיסמה",
       "passwordPlaceholder": "••••••••",
-      "ariaShowPassword": "Show password",
-      "ariaHidePassword": "Hide password",
-      "ctaUpdate": "Update password",
-      "ctaUpdating": "Updating…",
+      "ariaShowPassword": "הצגת סיסמה",
+      "ariaHidePassword": "הסתרת סיסמה",
+      "ctaUpdate": "עדכון סיסמה",
+      "ctaUpdating": "מעדכנים…",
       "meta": {
         "title": "סיסמה חדשה | Cyprus Winter",
         "description": "בחרו סיסמה חדשה לחשבון Cyprus Winter."
@@ -2773,7 +2773,7 @@
         },
         "guestEmail": {
           "label": "אימייל",
-          "placeholder": "john@example.com"
+          "placeholder": "name@example.com"
         },
         "notes": {
           "label": "הערות",
@@ -2839,7 +2839,7 @@
         },
         "guestEmail": {
           "label": "אימייל",
-          "placeholder": "john@example.com"
+          "placeholder": "name@example.com"
         },
         "notes": {
           "label": "הערות",
@@ -2902,14 +2902,14 @@
         "ctaAria": "הזמנת הליכה מודרכת עם {name}",
         "footerBrowseTrails": "כל השבילים",
         "footerMyBookings": "ההזמנות שלי",
-        "browseLicensedDirectory": "Browse all licensed guides (official CTO list) →",
-        "partnerCount": "{count} verified partners across Troodos, Paphos, Nicosia, and the east coast",
+        "browseLicensedDirectory": "כל המדריכים הרשמיים (CTO) →",
+        "partnerCount": "{count} שותפים מאומתים ב-Troodos, Paphos, Nicosia וחוף המזרח",
         "alsoWineries": "מעדיפים טעימת יין? הזמינו ביקור ביקב",
         "footer": {
-          "hubBody": "Request a guided hike, then add trails and villages to your plan—or ask the AI for a winter day."
+          "hubBody": "בקשו טיול מודרך והוסיפו שבילים וכפרים לתוכנית — או שאלו את ה-AI."
         },
         "aria": {
-          "actions": "Book a guide actions"
+          "actions": "פעולות דף הזמנת מדריך"
         }
       },
       "wineryList": {
@@ -2923,10 +2923,10 @@
         "disclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות.",
         "alsoGuides": "מטיילים בטרודוס? הזמינו מדריך מורשה",
         "footer": {
-          "hubBody": "Book a tasting, then build a day around the village or trail nearby—or ask the AI."
+          "hubBody": "הזמינו טעימה ובנו יום סביב כפר או שביל — או שאלו את ה-AI."
         },
         "aria": {
-          "actions": "Book a tasting actions"
+          "actions": "פעולות דף הזמנת טעימה"
         }
       },
       "wineryDetail": {
@@ -2994,150 +2994,150 @@
       "footer": {
         "troodosRegion": "אזור טרודוס",
         "weatherByMonth": "מזג אוויר לפי חודש",
-        "hubBody": "Add a December trail to your plan—or ask the AI to pair a hike with a village or winery."
+        "hubBody": "הוסיפו שביל דצמבר לתוכנית — או שאלו את ה-AI לשלב טיול עם כפר או יקב."
       },
       "cards": {
         "imageAlt": "{name}, {region} — מסלול {km} ק\"מ {difficulty}",
         "duration": "{km} ק\"מ · ~{hours} ש'"
       },
       "aria": {
-        "actions": "Troodos December guide actions"
+        "actions": "פעולות מדריך מטרודוס דצמבר"
       }
     },
     "directory": {
       "meta": {
-        "title": "Licensed Tourist Guides | Cyprus Winter",
-        "description": "Official Cyprus licensed tourist guides by district and language. Deputy Ministry of Tourism list — contact guides directly. Verified hiking partners available to book in-app."
+        "title": "מדריכי תיירות מורשים | Cyprus Winter",
+        "description": "מדריכי תיירות מורשים רשמיים של קפריסין לפי מחוז ושפה. רשימת משרד התיירות — צרו קשר ישירות. שותפי הליכה מאומתים זמינים להזמנה באפליקציה."
       },
-      "title": "Licensed tourist guides",
-      "breadcrumb": "Licensed guides",
-      "pageNavAria": "Licensed guides directory",
-      "intro": "{count} licensed guides from the official Visit Cyprus list (Aug 2026). Contact them directly — or book a verified winter hiking partner in-app.",
-      "verifiedPartnersLink": "Book verified hiking partners →",
-      "disclaimer": "Licensed tourist guides registered with the Cyprus Deputy Ministry of Tourism. Cyprus Winter lists official contacts; booking and payment are directly with the guide.",
-      "officialListLink": "Official list on Visit Cyprus",
-      "searchLabel": "Search guides",
-      "searchPlaceholder": "Name or language…",
-      "filterDistrict": "District",
-      "filterLanguage": "Language",
-      "allDistricts": "All districts",
-      "allLanguages": "All languages",
-      "resultCount": "{count} guides",
-      "empty": "No guides match those filters. Try another district or language.",
+      "title": "מדריכי תיירות מורשים",
+      "breadcrumb": "מדריכים מורשים",
+      "pageNavAria": "רשימת מדריכים מורשים",
+      "intro": "{count} מדריכים מורשים מהרשימה הרשמית של Visit Cyprus (אוג׳ 2026). צרו קשר ישירות — או הזמינו שותף הליכה חורפי מאומת באפליקציה.",
+      "verifiedPartnersLink": "הזמנת שותפים מאומתים →",
+      "disclaimer": "מדריכי תיירות מורשים הרשומים במשרד התיירות. Cyprus Winter מציגה אנשי קשר רשמיים; ההזמנה והתשלום ישירות עם המדריך.",
+      "officialListLink": "רשימה רשמית ב-Visit Cyprus",
+      "searchLabel": "חיפוש מדריכים",
+      "searchPlaceholder": "שם או שפה…",
+      "filterDistrict": "מחוז",
+      "filterLanguage": "שפה",
+      "allDistricts": "כל המחוזות",
+      "allLanguages": "כל השפות",
+      "resultCount": "{count} מדריכים",
+      "empty": "לא נמצאו מדריכים עם המסננים האלה. נסו מחוז או שפה אחרים.",
       "districts": {
-        "general": "Cyprus-wide",
-        "lefkosia": "Lefkosia (Nicosia)",
-        "ammochostos": "Ammochostos (Famagusta)",
-        "larnaka": "Larnaka (Larnaca)",
-        "lemesos": "Lemesos (Limassol)",
-        "pafos": "Pafos (Paphos)"
+        "general": "כל קפריסין",
+        "lefkosia": "לפקוסיה",
+        "ammochostos": "אמוחוסטוס",
+        "larnaka": "לרנקה",
+        "lemesos": "לימסול (Limassol)",
+        "pafos": "פאפוס"
       },
       "languages": {
-        "english": "English",
-        "greek": "Greek",
-        "german": "German",
-        "french": "French",
-        "polish": "Polish",
-        "russian": "Russian",
-        "italian": "Italian",
-        "spanish": "Spanish",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "romanian": "Romanian",
-        "swedish": "Swedish",
-        "dutch": "Dutch",
-        "hebrew": "Hebrew"
+        "english": "אנגלית",
+        "greek": "יוונית",
+        "german": "גרמנית",
+        "french": "צרפתית",
+        "polish": "פולנית",
+        "russian": "רוסית",
+        "italian": "איטלקית",
+        "spanish": "ספרדית",
+        "arabic": "ערבית",
+        "turkish": "טורקית",
+        "romanian": "רומנית",
+        "swedish": "שוודית",
+        "dutch": "הולנדית",
+        "hebrew": "עברית"
       },
       "verifiedCta": {
-        "title": "Verified winter hiking partners",
-        "body": "These guides accept requests through Cyprus Winter — Troodos, Akamas, and culture tours with email confirmation.",
-        "button": "Book a verified guide"
+        "title": "שותפי הליכה חורפיים מאומתים",
+        "body": "מדריכים אלה מקבלים בקשות דרך Cyprus Winter — Troodos, Akamas וסיורי תרבות עם אישור בדוא״ל.",
+        "button": "הזמנת מדריך מאומת"
       },
-      "verifiedPartnerBadge": "Books in-app",
-      "verifiedPartnerBook": "Request via Cyprus Winter",
+      "verifiedPartnerBadge": "הזמנה באפליקציה",
+      "verifiedPartnerBook": "בקשה דרך Cyprus Winter",
       "footer": {
-        "hubBody": "Contact a licensed guide directly—or book a verified hiking partner in-app and add stops to your plan.",
-        "trails": "Trail conditions"
+        "hubBody": "צרו קשר עם מדריך מורשה — או הזמינו שותף מאומת באפליקציה והוסיפו תחנות לתוכנית.",
+        "trails": "תנאי שבילים"
       },
       "aria": {
-        "actions": "Licensed guides directory actions"
+        "actions": "פעולות רשימת מדריכים מורשים"
       }
     }
   },
   "install": {
     "page": {
       "meta": {
-        "title": "Install on SiteGround | Cyprus Winter",
-        "description": "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup."
+        "title": "התקנה ב-SiteGround | Cyprus Winter",
+        "description": "הוראות שלב-אחר-שלב לפריסת Cyprus Winter על SiteGround shared hosting. ייצוא סטטי, העלאה והגדרת .htaccess."
       },
       "nav": {
-        "ariaLabel": "Page navigation",
-        "breadcrumbCurrent": "Install",
+        "ariaLabel": "ניווט בדף",
+        "breadcrumbCurrent": "התקנה",
         "backLabel": "Cyprus Winter"
       },
       "header": {
-        "kicker": "Deployment guide",
-        "title": "Install on SiteGround",
-        "body": "Cyprus Winter runs as static HTML, CSS, and JavaScript. SiteGround shared hosting can serve it directly—no Node.js required."
+        "kicker": "מדריך פריסה",
+        "title": "התקנה ב-SiteGround",
+        "body": "Cyprus Winter פועל כ-HTML, CSS ו-JavaScript סטטיים. SiteGround shared hosting יכול להגיש זאת ישירות — לא נדרש Node.js."
       },
       "requirements": {
-        "title": "Requirements",
+        "title": "דרישות",
         "items": {
-          "node": "Node.js 18+ (for building locally)",
-          "siteground": "SiteGround shared hosting with cPanel or FTP access",
-          "domain": "Domain pointed to your SiteGround account"
+          "node": "Node.js 18+ (לבנייה מקומית)",
+          "siteground": "SiteGround shared hosting עם גישה ל-cPanel או FTP",
+          "domain": "דומיין מצביע לחשבון SiteGround שלכם"
         }
       },
       "steps": {
-        "title": "Steps",
-        "codeSnippetAria": "Code snippet",
+        "title": "שלבים",
+        "codeSnippetAria": "קטע קוד",
         "items": {
           "s1": {
-            "title": "1. Configure for static export",
-            "body": "Add these to next.config.ts so Next.js generates static HTML instead of a Node server:",
-            "note": "API routes will not work on SiteGround—use Supabase or another backend if needed."
+            "title": "1. הגדרה לייצוא סטטי",
+            "body": "הוסיפו את אלה ל-next.config.ts כדי ש-Next.js ייצור HTML סטטי במקום שרת Node:",
+            "note": "נתיבי API לא יעבדו ב-SiteGround — השתמשו ב-Supabase או backend אחר במידת הצורך."
           },
           "s2": {
-            "title": "2. Build the static export",
-            "body": "On your computer, ensure Node.js 18+ is installed. Install dependencies and build:",
-            "note": "The build outputs to the out/ folder. SiteGround cannot run Node.js—you deploy static files only."
+            "title": "2. בניית הייצוא הסטטי",
+            "body": "במחשב שלכם, ודאו ש-Node.js 18+ מותקן. התקינו תלויות ובנו:",
+            "note": "ה-build יוצא לתיקיית out/. SiteGround לא מריץ Node.js — מעלים רק קבצים סטטיים."
           },
           "s3": {
-            "title": "3. Upload to SiteGround",
-            "body": "Upload the contents of the out/ folder to your site's public_html directory. Use cPanel File Manager, FTP, or SFTP.",
-            "note": "Upload everything inside out/, including the _next folder and index.html. Do not upload the out folder itself—only its contents."
+            "title": "3. העלאה ל-SiteGround",
+            "body": "העלו את תוכן תיקיית out/ ל-public_html של האתר. השתמשו ב-cPanel File Manager, FTP או SFTP.",
+            "note": "העלו הכל מתוך out/, כולל _next ו-index.html. אל תעלו את תיקיית out עצמה — רק את תוכנה."
           },
           "s4": {
-            "title": "4. Add .htaccess for routing",
-            "body": "Create a .htaccess file in public_html so direct links (e.g. /trails, /discover) work correctly:",
-            "note": "This sends 404s for missing files to index.html so the app can handle routing. Adjust RewriteBase if the app lives in a subfolder."
+            "title": "4. הוספת .htaccess לניתוב",
+            "body": "צרו קובץ .htaccess ב-public_html כדי שקישורים ישירים (למשל /trails, /discover) יעבדו נכון:",
+            "note": "זה שולח 404 של קבצים חסרים ל-index.html כדי שהאפליקציה תטפל בניתוב. התאימו RewriteBase אם האפליקציה בתת-תיקייה."
           },
           "s5": {
-            "title": "5. Verify",
-            "body": "Open your domain in a browser. Check the homepage, trails, and discover pages. Links and images should load."
+            "title": "5. אימות",
+            "body": "פתחו את הדומיין בדפדפן. בדקו דף הבית, שבילים וגילוי. קישורים ותמונות צריכים להיטען."
           }
         }
       },
       "troubleshooting": {
-        "title": "Troubleshooting",
+        "title": "פתרון בעיות",
         "items": {
           "blank": {
-            "label": "Blank page or 404 on refresh:",
-            "body": "Add or fix the .htaccess rewrite rules above."
+            "label": "דף ריק או 404 ברענון:",
+            "body": "הוסיפו או תקנו את כללי rewrite של .htaccess למעלה."
           },
           "images": {
-            "label": "Images not loading:",
+            "label": "תמונות לא נטענות:",
             "config": "images.unoptimized: true",
-            "body": "Ensure {config} is set in next.config. Image paths must be correct in the built output."
+            "body": "ודאו ש-{config} מוגדר ב-next.config. נתיבי תמונות חייבים להיות נכונים בפלט ה-build."
           },
           "api": {
-            "label": "API or chat not working:",
-            "body": "SiteGround shared hosting cannot run Next.js API routes. Use Supabase, Vercel serverless, or another backend and point the app to it."
+            "label": "API או צ'אט לא עובד:",
+            "body": "SiteGround shared hosting לא יכול להריץ נתיבי API של Next.js. השתמשו ב-Supabase, Vercel serverless או backend אחר והפנו את האפליקציה אליו."
           }
         }
       },
       "footer": {
-        "backToAppLabel": "app"
+        "backToAppLabel": "אפליקציה"
       }
     }
   },
@@ -3233,63 +3233,63 @@
   "secrets": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Secrets | Local Tips & Hidden Spots",
-        "description": "Cyprus winter local secrets: quiet spots, hidden angles, kafenions, viewpoints. From people who live here. Pair with trails and villages. Insider tips.",
-        "ogDescription": "Cyprus winter local secrets: quiet spots, kafenions, viewpoints. From people who live here.",
-        "ogAlt": "Cyprus winter local secrets"
+        "title": "סודות Cyprus Winter | טיפים מקומיים ומקומות נסתרים",
+        "description": "סודות מקומיים של קפריסין בחורף: מקומות שקטים, זוויות נסתרות, בתי קפה מקומיים, נקודות תצפית. מאנשים שחיים כאן. שלבו עם שבילים וכפרים.",
+        "ogDescription": "סודות מקומיים בחורף: מקומות שקטים, בתי קפה מקומיים, נקודות תצפית. מאנשים שחיים כאן.",
+        "ogAlt": "סודות מקומיים Cyprus Winter"
       },
       "header": {
-        "title": "Cyprus Winter Local Secrets",
-        "description": "Insider tips from people who live here. Kafenions, viewpoints, timings, pairings. Each links to a trail or place.",
-        "planCta": "Plan your trip"
+        "title": "סודות מקומיים Cyprus Winter",
+        "description": "טיפים מבפנים מאנשים שחיים כאן. בתי קפה מקומיים, נקודות תצפית, תזמון, שילובים. כל טיפ מקשר לשביל או מקום.",
+        "planCta": "תכננו את הטיול"
       },
       "sr": {
-        "tipsIndex": "Insider tips by region and type"
+        "tipsIndex": "טיפים מבפנים לפי אזור וסוג"
       },
       "empty": {
-        "body": "No secrets added yet.",
-        "ctaDiscover": "Discover places"
+        "body": "עדיין לא נוספו סודות.",
+        "ctaDiscover": "גלו מקומות"
       },
       "card": {
-        "placePrefixTrail": "Trail",
-        "placePrefixPlace": "Place",
-        "goThere": "Go there →"
+        "placePrefixTrail": "שביל",
+        "placePrefixPlace": "מקום",
+        "goThere": "לשם →"
       },
       "footer": {
-        "prefix": "Pair with trails and villages.",
-        "planLink": "Plan your day",
-        "hubBody": "Pair secrets with trails and villages. Add places to your plan—or ask the AI."
+        "prefix": "שלבו עם שבילים וכפרים.",
+        "planLink": "תכננו את היום",
+        "hubBody": "שלבו סודות עם שבילים וכפרים. הוסיפו מקומות לתוכנית — או שאלו את ה-AI."
       },
       "aria": {
-        "actions": "Secrets page actions"
+        "actions": "פעולות דף הסודות"
       },
       "types": {
-        "viewpoint": "Viewpoint",
-        "kafenion": "Kafenion",
-        "timing": "Timing",
-        "pairing": "Pairing",
-        "spot": "Spot"
+        "viewpoint": "נקודת תצפית",
+        "kafenion": "בית קפה כפרי",
+        "timing": "תזמון",
+        "pairing": "שילוב",
+        "spot": "מקום"
       }
     }
   },
   "team": {
     "page": {
       "meta": {
-        "title": "Team | Cyprus Winter — Trails, Villages, Wineries",
-        "description": "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six."
+        "title": "צוות | Cyprus Winter — שבילים, כפרים, יקבים",
+        "description": "האנשים מאחורי Cyprus Winter. שבילים, כפרים, יקבים — קפריסין בחורף ראויה ליותר. הכירו את הצוות שבנה את המדריך. שש־עשרה מעלות כשבבית שש."
       },
-      "membersHeading": "Team members",
+      "membersHeading": "חברי הצוות",
       "header": {
-        "title": "Our Team",
-        "description": "Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
+        "title": "הצוות שלנו",
+        "description": "מעצבים, מפתחים ומומחי תיירות. קפריסין בחורף ראויה ליותר מאזכור בשורה אחת."
       },
       "cta": {
-        "prompt": "Meet the team behind your trip — and ask them anything.",
-        "askAi": "Ask AI",
-        "startPlanning": "Start planning",
-        "discoverPlaces": "Discover places"
+        "prompt": "הכירו את הצוות מאחורי הטיול — ושאלו כל מה שתרצו.",
+        "askAi": "שאלו את ה-AI",
+        "startPlanning": "התחילו לתכנן",
+        "discoverPlaces": "גלו מקומות"
       },
-      "outro": "Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That's a day we'd take. The island rewards the curious."
+      "outro": "שביל בבוקר: Artemis או Caledonia. Omodos או Lefkara לארוחת צהריים. יקב אחר הצהריים. כך היינו מבלים יום. האי מתגמל את הסקרנים."
     }
   },
   "terms": {
@@ -3361,20 +3361,20 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
     "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "תיאטרון קוריון העתיק מעל חוף הים התיכון, חורף בקפריסין"
   },
   "ui": {
     "hero": {
-      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
+      "imageAlt": "תיאטרון קוריון העתיק, חוף הים התיכון, חורף בקפריסין"
     },
     "app__home_HomeHero": {
-      "text_13": "Winter in Cyprus",
-      "text_14": "Trails, villages, heritage",
-      "text_subtitle": "Often sixteen degrees when home is six.",
-      "text_16": "Plan ahead or start exploring when you land.",
-      "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your plan",
-      "aria-label_12": "Transport from airport, tips"
+      "text_13": "חורף בקפריסין",
+      "text_14": "שבילים, כפרים, מורשת",
+      "text_subtitle": "לעיתים שיש עשרה מעלות כשבבית יש שש.",
+      "text_16": "תכננו מראש או התחילו לגלות כשאתם נוחתים.",
+      "aria-label_10": "עבור לגילוי",
+      "aria-label_11": "צפו בתוכנית שלכם",
+      "aria-label_12": "תחבורה מהשדה, טיפים"
     }
   },
   "cycling": {
@@ -3401,33 +3401,33 @@
         "actions": "פעולות דף הרכיבה"
       },
       "officialRoutes": {
-        "title": "Official Visit Cyprus routes",
-        "intro": "Curated CTO cycling routes with winter notes. Maps, GPX files, and full details on Visit Cyprus — we link out; you ride at your own pace.",
-        "officialIndexLink": "Full route search on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} routes",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Route on Visit Cyprus",
-        "downloadGpx": "GPX download",
-        "relatedPlace": "Our guide to the area",
+        "title": "מסלולים רשמיים ב-Visit Cyprus",
+        "intro": "מסלולי CTO נבחרים עם הערות חורף. מפות, קבצי GPX ופרטים מלאים ב-Visit Cyprus — אנחנו מקשרים; אתם רוכבים בקצב שלכם.",
+        "officialIndexLink": "חיפוש מסלולים מלא ב-Visit Cyprus",
+        "filterRegion": "סינון לפי אזור",
+        "allRegions": "כל האזורים",
+        "resultCount": "{count} מסלולים",
+        "winterPick": "בחירת חורף",
+        "viewOnVisitCyprus": "מסלול ב-Visit Cyprus",
+        "downloadGpx": "הורדת GPX",
+        "relatedPlace": "המדריך שלנו לאזור",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Lefkosia (ניקוסיה)",
+          "lemesos": "לימסול (Limassol)",
+          "larnaka": "לרנקה (Larnaca)",
+          "pafos": "פאפוס (Paphos)",
+          "ammochostos": "Ammochostos (עמוחוסט)",
           "troodos": "Troodos"
         },
         "difficulty": {
-          "easy": "Easy",
-          "moderate": "Moderate",
-          "demanding": "Demanding"
+          "easy": "קל",
+          "moderate": "בינוני",
+          "demanding": "תובעני"
         },
         "surface": {
-          "paved": "Paved",
-          "unpaved": "Unpaved",
-          "mixed": "Mixed"
+          "paved": "סלול",
+          "unpaved": "לא סלול",
+          "mixed": "מעורב"
         }
       }
     }
@@ -3444,63 +3444,63 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "טבע בקפריסין בחורף | ביצות, יערות ומרכזי מבקרים",
+        "description": "אתרי טבע רשמיים של Visit Cyprus: אגמי מלח, מרכזי טרודוס, אקאמאס, כף Gkreko. צפייה בציפורים, פארקי יער ושבילים שקטים בחורף.",
+        "ogAlt": "עמק ארזים, טבע חורף בקפריסין",
+        "schemaName": "טבע חורף בקפריסין",
+        "schemaDescription": "אתרי Visit Cyprus: ביצות, פארקי יער, מרכזי מבקרים וקישורי טבע חורף."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "טבע בקפריסין בחורף",
+        "description": "אגמי מלח עם פלמינגו, ארזי טרודוס, מרכזי מבקרים באקאמאס. אתרים רשמיים מ-Visit Cyprus — אנחנו מקשרים; אתם חוקרים בקצב שלכם."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "תכננו בוקר בביצה, בדקו תנאי שבילים או שאלו את המדריך. החורף הוא כשטבע האי הכי שקט.",
+        "trails": "תנאי שבילים",
+        "cycling": "רכיבת חורף",
+        "quietPlaces": "מקומות שקטים"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "פעולות דף הטבע"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "title": "אתרים רשמיים לביקור",
+        "intro": "אתרי טבע של Deputy Ministry of Tourism — מרכזי מבקרים, ביצות ופארקי יער. פרטים מלאים ב-Visit Cyprus.",
+        "officialIndexLink": "רשימה מלאה ב-Visit Cyprus",
+        "filterRegion": "סינון לפי אזור",
+        "allRegions": "כל האזורים",
+        "resultCount": "{count} אתרים",
+        "winterPick": "בחירת חורף",
+        "viewOnVisitCyprus": "אתר ב-Visit Cyprus",
+        "relatedTrail": "שביל קשור",
+        "relatedPlace": "המדריך שלנו לאזור",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Lefkosia (ניקוסיה)",
+          "lemesos": "לימסול (Limassol)",
+          "larnaka": "לרנקה (Larnaca)",
+          "pafos": "פאפוס (Paphos)",
+          "ammochostos": "Ammochostos (עמוחוסט)",
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "מרכז מבקרים",
+          "wetland": "ביצה",
+          "forest_park": "פארק יער",
+          "valley": "עמק",
+          "botanic": "גן בוטני"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "title": "שבילים, טיפוס וציפורים",
+        "body": "אנחנו בוחרים שבילי חורף ומקומות פעילות באפליקציה. לטופואים של טיפוס ודפי צפייה בציפורים רשמיים, השתמשו בשותפים מהימנים — בלי scraping, רק קישורים.",
+        "trails": "מרכז השבילים שלנו",
+        "cycling": "רכיבת חורף",
+        "climbing": "טיפוס ב-Discover",
+        "birdwatchingVc": "צפייה בציפורים (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (טופואים)",
+        "climbingVc": "טיפוס (Visit Cyprus)",
+        "trailsVc": "שבילי טבע (Visit Cyprus)"
       }
     }
   }

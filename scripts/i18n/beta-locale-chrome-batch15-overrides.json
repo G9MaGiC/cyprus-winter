@@ -1,0 +1,23 @@
+{
+  "ro": {
+    "guides.directory.districts.lefkosia": "Nicosia (Lefkosia)",
+    "guides.directory.districts.ammochostos": "Famagusta (Ammochostos)",
+    "guides.directory.districts.lemesos": "Limassol (Lemesos)",
+    "guides.directory.districts.larnaka": "Larnaca (Larnaka)",
+    "guides.directory.districts.pafos": "Paphos (Pafos)",
+    "cycling.page.officialRoutes.regions.lefkosia": "Nicosia (Lefkosia)",
+    "cycling.page.officialRoutes.regions.ammochostos": "Famagusta (Ammochostos)",
+    "cycling.page.officialRoutes.regions.lemesos": "Limassol (Lemesos)",
+    "cycling.page.officialRoutes.regions.larnaka": "Larnaca (Larnaka)",
+    "cycling.page.officialRoutes.regions.pafos": "Paphos (Pafos)",
+    "nature.page.excursions.regions.lefkosia": "Nicosia (Lefkosia)",
+    "nature.page.excursions.regions.ammochostos": "Famagusta (Ammochostos)",
+    "nature.page.excursions.regions.lemesos": "Limassol (Lemesos)",
+    "nature.page.excursions.regions.larnaka": "Larnaca (Larnaka)",
+    "nature.page.excursions.regions.pafos": "Paphos (Pafos)",
+    "events.page.monthShort.Dec": "Dec.",
+    "events.page.monthShort.Feb": "Feb.",
+    "events.page.monthShort.Mar": "Mar.",
+    "weather.page.table.troodos": "Munții Troodos (°C)"
+  }
+}

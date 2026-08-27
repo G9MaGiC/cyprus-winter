@@ -1655,3 +1655,21 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | ID | Area | Issue | Fix |
 |----|------|-------|-----|
 | BUG-313 | i18n | Funnel-path English on error/travelTrust/airport/trails/plan meta for fr/he/ro; Hebrew typos in soft-gaps; tier-1 el/de/pl gaps | `beta-locale-funnel-polish-overrides.json` + `patch-locale-funnel-polish.mjs`; fixed `chrome-locale-overrides` plan terminology; Hebrew soft-gap typos |
+| BUG-314 | i18n | Beta chrome batch 2 — onboarding, help, search page, auth login/register still English in fr/he/ro | `beta-locale-chrome-batch2-overrides.json` + `patch-locale-chrome-batch2.mjs` (~67–68 keys/locale) |
+| BUG-315 | i18n | Beta chrome batch 3 — account, auth forgot/reset, push, auth layout/social still English in fr/he/ro | `beta-locale-chrome-batch3-overrides.json` + `patch-locale-chrome-batch3.mjs` (~102 keys/locale) |
+| BUG-316 | i18n | Beta chrome batch 4 — notFound, book pages, events tips, trails.report still English in fr/he/ro | `beta-locale-chrome-batch4-overrides.json` + `patch-locale-chrome-batch4.mjs` (~59–62 keys/locale) |
+| BUG-317 | i18n | Beta chrome batch 5 — discover.detail, trails.detail, trails hub filters/tips, events page chrome still EN in fr/he/ro | `beta-locale-chrome-batch5-overrides.json` + `patch-locale-chrome-batch5.mjs` (~172–173 keys/locale) |
+| BUG-318 | i18n | Beta chrome batch 6 — place types, AI chrome, discover/trails maps & footers, events filters/months still EN in fr/he/ro | `beta-locale-chrome-batch6-overrides.json` + `patch-locale-chrome-batch6.mjs` (~69–79 keys/locale) |
+| BUG-319 | i18n | Beta chrome batch 7 — beaches, villages, wineries hubs and cycling official routes still EN in fr/he/ro | `beta-locale-chrome-batch7-overrides.json` + `patch-locale-chrome-batch7.mjs` (65 keys/locale) |
+| BUG-320 | i18n | Beta chrome batch 8 — install, secrets, nature hub pages still EN in fr/he/ro | `beta-locale-chrome-batch8-overrides.json` + `patch-locale-chrome-batch8.mjs` (100 keys/locale) |
+| BUG-321 | i18n | Beta chrome batch 9 — guides directory, weather hub/month, team page still EN in fr/he/ro | `beta-locale-chrome-batch9-overrides.json` + `patch-locale-chrome-batch9.mjs` (105 keys/locale) |
+| BUG-322 | i18n | Beta chrome batch 10 — wine routes, regions, trails empty, skip links, hub footer sweep still EN in fr/he/ro | `beta-locale-chrome-batch10-overrides.json` + `patch-locale-chrome-batch10.mjs` (45 keys/locale) |
+| BUG-323 | i18n | Beta chrome batch 11 — common labels, AI chrome, trails hub filters/report, troodos aria still EN in fr/he/ro | `beta-locale-chrome-batch11-overrides.json` + `patch-locale-chrome-batch11.mjs` (34 keys/locale) |
+| BUG-324 | i18n | Beta chrome batch 12 — home hero, meta ogImageAlt, ambulance/bouldering/kafenion labels still EN in fr/he/ro | `beta-locale-chrome-batch12-overrides.json` + `patch-locale-chrome-batch12.mjs` (13 keys/locale) |
+| BUG-325 | i18n | Beta chrome batch 13 — final partial-EN sweep: nav/footer, events months, trails detail, districts still EN in fr/he/ro | `beta-locale-chrome-batch13-overrides.json` + `patch-locale-chrome-batch13.mjs` (~72–74 keys/locale) |
+| BUG-326 | i18n | Beta chrome batch 14 — RO cognates + selective FR forms; holdouts doc | `beta-locale-chrome-batch14-overrides.json` + `patch-locale-chrome-batch14.mjs`; `docs/BETA_LOCALE_EN_HOLDOUTS.md` |
+| BUG-327 | i18n | Beta chrome batch 15 — RO district labels (guides/cycling/nature), events months, Troodos weather label | `beta-locale-chrome-batch15-overrides.json` + `patch-locale-chrome-batch15.mjs` (18 keys/ro) |
+| BUG-328 | i18n | Beta chrome batch 16 — FR district labels + Troodos weather; `patch-all-chrome-batches.mjs` helper | `beta-locale-chrome-batch16-overrides.json` + `patch-locale-chrome-batch16.mjs` (10 keys/fr) |
+| BUG-329 | i18n | Beta chrome batch 17 — Hebrew hero alt typos, cycling Ammochostos label; sync `editorial-fr.json` drift | `beta-locale-chrome-batch17-overrides.json` + `patch-locale-chrome-batch17.mjs` (3 keys/he) |
+| BUG-330 | i18n | Sync `editorial-he.json` and `editorial-ro.json` with post-chrome `messages/*` (17 drift keys) | Editorial map hygiene for re-apply consistency |
+| BUG-331 | i18n | Add `npm run i18n:editorial-drift` gate for editorial-{fr,he,ro}.json vs messages | `scripts/i18n/check-editorial-drift.ts` |
