@@ -2479,7 +2479,7 @@
         "month": "Mois",
         "coast": "Côte (°C)",
         "coastConditions": "Conditions côtières",
-        "troodos": "Troodos (°C)",
+        "troodos": "Mont Troodos (°C)",
         "troodosConditions": "Conditions montagne"
       },
       "mobile": {
@@ -3028,9 +3028,9 @@
         "general": "Toute Chypre",
         "lefkosia": "Lefkosia (Nicosie)",
         "ammochostos": "Ammochostos (Famagouste)",
-        "larnaka": "Larnaka (Larnaca)",
-        "lemesos": "Lemesos (Limassol)",
-        "pafos": "Pafos (Paphos)"
+        "larnaka": "Larnaca (Larnaka)",
+        "lemesos": "Limassol (Lemesos)",
+        "pafos": "Paphos (Pafos)"
       },
       "languages": {
         "english": "Anglais",
@@ -3413,9 +3413,9 @@
         "relatedPlace": "Notre guide de la région",
         "regions": {
           "lefkosia": "Lefkosia (Nicosie)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
+          "lemesos": "Limassol (Lemesos)",
+          "larnaka": "Larnaca (Larnaka)",
+          "pafos": "Paphos (Pafos)",
           "ammochostos": "Ammochostos (Famagouste)",
           "troodos": "Troodos"
         },
@@ -3476,9 +3476,9 @@
         "relatedPlace": "Notre guide de la région",
         "regions": {
           "lefkosia": "Lefkosia (Nicosie)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
+          "lemesos": "Limassol (Lemesos)",
+          "larnaka": "Larnaca (Larnaka)",
+          "pafos": "Paphos (Pafos)",
           "ammochostos": "Ammochostos (Famagouste)",
           "troodos": "Troodos"
         },

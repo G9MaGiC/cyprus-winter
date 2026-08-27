@@ -221,9 +221,6 @@ If you add new locales:
 Chrome batches 2–14 (PR #179) cover nav, footer, funnel, and hub UI for beta locales. Remaining EN-identical keys are documented in **[BETA_LOCALE_EN_HOLDOUTS.md](./BETA_LOCALE_EN_HOLDOUTS.md)** (brands, proper nouns, legal, templates). Re-apply patches:
 
 ```bash
-for n in 2 3 4 5 6 7 8 9 10 11 12 13 14; do
-  node scripts/i18n/patch-locale-chrome-batch${n}.mjs
-done
-node scripts/i18n/patch-locale-chrome-batch15.mjs
+node scripts/i18n/patch-all-chrome-batches.mjs
 ```
 

@@ -1669,3 +1669,4 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-325 | i18n | Beta chrome batch 13 — final partial-EN sweep: nav/footer, events months, trails detail, districts still EN in fr/he/ro | `beta-locale-chrome-batch13-overrides.json` + `patch-locale-chrome-batch13.mjs` (~72–74 keys/locale) |
 | BUG-326 | i18n | Beta chrome batch 14 — RO cognates + selective FR forms; holdouts doc | `beta-locale-chrome-batch14-overrides.json` + `patch-locale-chrome-batch14.mjs`; `docs/BETA_LOCALE_EN_HOLDOUTS.md` |
 | BUG-327 | i18n | Beta chrome batch 15 — RO district labels (guides/cycling/nature), events months, Troodos weather label | `beta-locale-chrome-batch15-overrides.json` + `patch-locale-chrome-batch15.mjs` (18 keys/ro) |
+| BUG-328 | i18n | Beta chrome batch 16 — FR district labels + Troodos weather; `patch-all-chrome-batches.mjs` helper | `beta-locale-chrome-batch16-overrides.json` + `patch-locale-chrome-batch16.mjs` (10 keys/fr) |

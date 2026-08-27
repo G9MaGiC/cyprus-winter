@@ -1,30 +1,34 @@
 # Beta locale (fr / he / ro) — intentional English holdouts
 
-After PR #179 chrome batches 2–15 (BUG-314–327), remaining keys that still match `messages/en.json` in beta locales fall into the categories below. **Do not machine-translate** legal/admin blocks or brand-attribution strings without product review.
+After PR #179 chrome batches 2–16 (BUG-314–328), remaining keys that still match `messages/en.json` in beta locales fall into the categories below. **Do not machine-translate** legal/admin blocks or brand-attribution strings without product review.
 
-## Summary (post batch 15)
+## Summary (post batch 16)
 
 | Locale | EN-identical (excl. legal/admin) | Union (all 3 beta locales) |
 |--------|----------------------------------|----------------------------|
-| fr     | ~79 (includes valid French cognates) | ~43 |
+| fr     | ~68 (includes valid French cognates) | ~43 |
 | he     | ~43 | ~43 |
-| ro     | ~48 | ~43 |
+| ro     | ~45 | ~43 |
 
 Hebrew chrome is complete except for the shared union holdouts below. French and Romanian may still show **valid cognates** (e.g. `Villages`, `Culture`, `Ambulance`) — identical spelling to English but correct in those languages.
 
 ## Re-apply all chrome batches
 
 ```bash
+node scripts/i18n/patch-all-chrome-batches.mjs
+```
+
+Or individually:
+
+```bash
 for n in 2 3 4 5 6 7 8 9 10 11 12 13 14; do
   node scripts/i18n/patch-locale-chrome-batch${n}.mjs
 done
-```
-
-Patch scripts live in `scripts/i18n/beta-locale-chrome-batch*-overrides.json`. Batch 15 (RO districts) runs after batch 14:
-
-```bash
 node scripts/i18n/patch-locale-chrome-batch15.mjs
+node scripts/i18n/patch-locale-chrome-batch16.mjs
 ```
+
+Patch scripts live in `scripts/i18n/beta-locale-chrome-batch*-overrides.json`.
 
 ---
 
