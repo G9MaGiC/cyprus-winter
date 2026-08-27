@@ -205,6 +205,7 @@ npm run i18n:extract
 ### 8. Commands cheat sheet
 
 - **Validate catalogs**: `npm run i18n:validate`
+- **Editorial map drift (fr/he/ro)**: `npm run i18n:editorial-drift`
 - **Extract candidate strings**: `npm run i18n:extract`
 - **Typecheck**: `npm run typecheck`
 - **Tests**: `npm test`

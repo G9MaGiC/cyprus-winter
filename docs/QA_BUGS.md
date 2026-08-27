@@ -1672,3 +1672,4 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-328 | i18n | Beta chrome batch 16 — FR district labels + Troodos weather; `patch-all-chrome-batches.mjs` helper | `beta-locale-chrome-batch16-overrides.json` + `patch-locale-chrome-batch16.mjs` (10 keys/fr) |
 | BUG-329 | i18n | Beta chrome batch 17 — Hebrew hero alt typos, cycling Ammochostos label; sync `editorial-fr.json` drift | `beta-locale-chrome-batch17-overrides.json` + `patch-locale-chrome-batch17.mjs` (3 keys/he) |
 | BUG-330 | i18n | Sync `editorial-he.json` and `editorial-ro.json` with post-chrome `messages/*` (17 drift keys) | Editorial map hygiene for re-apply consistency |
+| BUG-331 | i18n | Add `npm run i18n:editorial-drift` gate for editorial-{fr,he,ro}.json vs messages | `scripts/i18n/check-editorial-drift.ts` |
