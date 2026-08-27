@@ -117,7 +117,7 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 | Book | `/discover/tsiakkas` → Book tasting | Hero image ≠ generic only; back returns to discover |
 | Search | `/search?q=omodos` → result → back | Query preserved (GF4) |
 | i18n | `/el`, `/de` home + plan | No English leaks in nav/footer |
-| i18n beta | `/fr`, `/he`, `/ro` switcher + chrome | Locales labeled beta; nav/footer/funnel chrome localized (PR #179); editorial quality (PR #182); privacy/terms draft translations (pending lawyer review, BUG-334); holdouts in `docs/BETA_LOCALE_EN_HOLDOUTS.md` |
+| i18n beta | `/fr`, `/he`, `/ro` | Chrome + editorial + draft legal shipped; switcher still shows beta until lawyer sign-off — `docs/BETA_LOCALE_GRADUATION.md` |
 | Bookings | Submit test booking (staging) | Email or Supabase row (if configured) |
 
 Test viewports: **390×844** (mobile), **1280** (desktop).

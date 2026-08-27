@@ -1676,6 +1676,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-332 | i18n | Wire `i18n:editorial-drift` into CI Quality job; SCORECARD marks PR #179 merged | `.github/workflows/ci.yml` |
 | BUG-333 | i18n | Beta editorial quality — HE broken Latin (קarnaval, הרidge, קפeneion), תוכנית spelling, FR+RO voice polish | `beta-locale-editorial-quality-overrides.json` + patch; expanded editorial maps with soft-gaps keys |
 | BUG-334 | i18n | Beta legal — privacy + terms body for fr/he/ro (71 keys/locale); pending lawyer review | `beta-locale-legal-overrides.json` + `patch-beta-locale-legal.mjs`; updated `beta-locale-chrome.test.ts` |
+| BUG-335 | i18n | Document beta → full locale graduation + readiness script (do not remove badge yet) | `docs/BETA_LOCALE_GRADUATION.md`; `npm run i18n:beta-readiness` |
 
 ### Merged — beta locale chrome (PR #179 → main `0aa9e41`, Aug 27 2026)
 

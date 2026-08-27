@@ -9,7 +9,8 @@ export const routing = defineRouting({
 
 export type Locale = (typeof routing.locales)[number];
 
-/** Locales with translated chrome (nav/footer/errors) but English editorial body copy. */
+/** Locales still labeled beta in the switcher until lawyer sign-off on privacy/terms.
+ *  Chrome/editorial/legal drafts shipped (PRs #179–#183). Graduation: docs/BETA_LOCALE_GRADUATION.md */
 export const BETA_LOCALES = ["fr", "he", "ro"] as const satisfies readonly Locale[];
 
 export function isBetaLocale(locale: string): locale is (typeof BETA_LOCALES)[number] {
