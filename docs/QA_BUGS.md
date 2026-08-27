@@ -1673,3 +1673,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-329 | i18n | Beta chrome batch 17 — Hebrew hero alt typos, cycling Ammochostos label; sync `editorial-fr.json` drift | `beta-locale-chrome-batch17-overrides.json` + `patch-locale-chrome-batch17.mjs` (3 keys/he) |
 | BUG-330 | i18n | Sync `editorial-he.json` and `editorial-ro.json` with post-chrome `messages/*` (17 drift keys) | Editorial map hygiene for re-apply consistency |
 | BUG-331 | i18n | Add `npm run i18n:editorial-drift` gate for editorial-{fr,he,ro}.json vs messages | `scripts/i18n/check-editorial-drift.ts` |
+| BUG-332 | i18n | Wire `i18n:editorial-drift` into CI Quality job; SCORECARD marks PR #179 merged | `.github/workflows/ci.yml` |
+
+### Merged — beta locale chrome (PR #179 → main `0aa9e41`, Aug 27 2026)
+
+Batches 2–17, editorial sync (BUG-330), drift script (BUG-331). See `docs/BETA_LOCALE_EN_HOLDOUTS.md`.
