@@ -38,14 +38,14 @@ We will **not** add on-chain tourism, golf, weddings, or diving to chase Deputy 
 
 | | Helpful | Harmful |
 |--|---------|---------|
-| **Internal** | **S:** Working Plan→Book funnel, trail reports, winery/guide requests, HMAC booking lookup, 7 locales (beta `he`/`fr`/`ro`), cycling hub, operational wine-route hours, admin KPI export, thin `/partner` accept/decline. **W:** Live `GET /api/health` on `cyprus-winter.vercel.app` still returns `productionReady: false` (Upstash/Supabase ops); partner overlay is in-memory; tasting-room photos still partner-gated; legal pages not translator-reviewed in beta locales. |
+| **Internal** | **S:** Working Plan→Book funnel, trail reports, winery/guide requests, HMAC booking lookup, 7 locales (beta `he`/`fr`/`ro` chrome+editorial+draft legal), cycling hub, operational wine-route hours, admin KPI export, thin `/partner` accept/decline. **W:** Live `GET /api/health` on `cyprus-winter.vercel.app` still returns `productionReady: false` (Upstash/Supabase ops); partner overlay is in-memory; tasting-room photos still partner-gated; beta legal pages await **lawyer/translator sign-off** before graduating badge (`docs/BETA_LOCALE_GRADUATION.md`). |
 | **External** | **O:** PRE-SEED international-startup window to 11 Sep 2026; Strategy 2035 year-round / accessibility / cycling; ReTour (CSTI/UNRF) as a later demonstrator. **T:** OTAs could add winter SKUs; DMO apps; evaluators reading us as a brochure; DNSH fail if we fake green numbers. |
 
 ### 1.4 Maturity (TRL)
 
 The web app is a **system prototype in an operational environment** (public Next.js app, typed content in git, API bookings with optional Supabase). Treat as **TRL 6–7**. PRE-SEED funds completion (partner portal, GTM, market research), not a lab rewrite.
 
-Risks: partners ignore hours updates; Hebrew legal copy needs a reviewer; Redis/Supabase misconfig fails closed in production. Mitigations: email-first partner loop already in data (`partnerEmail` on verified wineries); keep beta labels until legal review; health endpoint with annex-safe checks.
+Risks: partners ignore hours updates; Hebrew/FR/RO legal drafts need a reviewer before dropping beta badges; Redis/Supabase misconfig fails closed in production. Mitigations: email-first partner loop already in data (`partnerEmail` on verified wineries); keep beta labels until legal review (`docs/BETA_LOCALE_GRADUATION.md`); health endpoint with annex-safe checks.
 
 ---
 
@@ -88,7 +88,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 |----|--------|---------|------------------------|
 | WP1 Production gate | 0–3 | Upstash + Supabase; `productionReady: true`; Sentry | Public health captured **false** (`docs/grant/PRODUCTION_HEALTH.md`); secrets still ops |
 | WP2 Partner portal | 0–6 | Hours, hero URL, accept/decline on existing bookings | Thin `/partner` MVP shipped; durable overlay + magic-link still post-award |
-| WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Chrome + funnel editorial shipped; legal pending |
+| WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Chrome + editorial + **draft** privacy/terms shipped (PRs #179–#183); lawyer sign-off + graduate badge: `docs/BETA_LOCALE_GRADUATION.md` |
 | WP4 Visible intelligence | 0–12 | Accessibility/cycling/wine-route/plan DNSH screenshots | Shipped (G3–G8) |
 | WP5 Market + seed readiness | 12–18 | Research note, 25 SME leads, Seed-programme options | KPI CSV shipped (G9) including rural/mountain vs beach Plan mix |
 

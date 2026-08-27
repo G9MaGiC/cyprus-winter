@@ -76,6 +76,9 @@ jobs:
       - name: i18n editorial drift (fr/he/ro)
         run: npm run i18n:editorial-drift
 
+      - name: i18n beta readiness report
+        run: npm run i18n:beta-readiness
+
       - name: Typecheck
         run: npx tsc --noEmit
 
