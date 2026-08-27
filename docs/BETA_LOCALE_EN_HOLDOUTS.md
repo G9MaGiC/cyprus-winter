@@ -123,6 +123,7 @@ Logged in `docs/QA_BUGS.md` as BUG-314 through BUG-326. SCORECARD row: PR #179.
 
 ## Next steps (optional)
 
-1. Native copy review for `he` editorial/home body (chrome is done).
-2. Professional translation for `privacy.*` / `terms.*` per locale.
+1. Native copy review for `he` editorial/home body — **started** (BUG-333 quality pass); re-run after further soft-gaps.
+2. Professional translation for `privacy.*` / `terms.*` per locale (**legal track**).
 3. Replace beta `localeBeta` suffix when editorial catches up (`common.localeBeta`).
+4. Re-apply editorial quality: `node scripts/i18n/patch-beta-locale-editorial-quality.mjs` then `npm run i18n:editorial-drift`.
