@@ -87,7 +87,7 @@
       "quickActions": "Actions rapides",
       "reportConditionsForTrail": "Signaler l’état de ce sentier",
       "dismissNotification": "Fermer la notification",
-      "notifications": "Notifications"
+      "notifications": "Alertes"
     },
     "skipToContent": "Aller au contenu",
     "languageLabel": "Langue :",
@@ -1128,7 +1128,7 @@
           "restaurant": "manger & boire",
           "beach": "plages",
           "ancient": "sites antiques",
-          "village": "villages",
+          "village": "villages chypriotes",
           "monastery": "monastères",
           "activity": "activités & intérieur",
           "nature": "nature & côtes",
@@ -1311,7 +1311,7 @@
         "steps": {
           "arrivals": "Arrivées",
           "baggage": "Bagages",
-          "transport": "Transport",
+          "transport": "Transports",
           "out": "Vous êtes dehors"
         }
       },
@@ -1320,7 +1320,7 @@
         "aria": "Choisissez votre aéroport"
       },
       "sections": {
-        "transportTitle": "Transport",
+        "transportTitle": "Transports",
         "tipsTitle": "À savoir"
       },
       "quickActions": {
@@ -1610,7 +1610,7 @@
       },
       "nav": {
         "overview": "Aperçu",
-        "conditions": "Conditions",
+        "conditions": "État",
         "map": "Carte",
         "waypoints": "Points de passage",
         "pairWith": "Associer avec"
@@ -1977,7 +1977,7 @@
       "wineries": "domaines",
       "trails": "sentiers",
       "attractions": "sites",
-      "restaurants": "restaurants",
+      "restaurants": "restaurants locaux",
       "events": "événements"
     },
     "labels": {
@@ -2232,8 +2232,8 @@
         "title": "Style de voyage",
         "body": "Aide à adapter les suggestions (familles, escapades en couple, etc.).",
         "labels": {
-          "solo": "Solo",
-          "couple": "Couple",
+          "solo": "Seul",
+          "couple": "En couple",
           "family": "Familles",
           "group": "Groupe",
           "nomad": "Nomade digital"
@@ -2478,9 +2478,9 @@
       "table": {
         "month": "Mois",
         "coast": "Côte (°C)",
-        "coastConditions": "Conditions",
+        "coastConditions": "Conditions côtières",
         "troodos": "Troodos (°C)",
-        "troodosConditions": "Conditions"
+        "troodosConditions": "Conditions montagne"
       },
       "mobile": {
         "details": "Détails →"
@@ -2708,7 +2708,7 @@
         "emailConfirm": "La confirmation arrive en général par e-mail sous 24 heures.",
         "noCharge": "Aucun paiement n’est pris ici. Les prestataires confirment d’abord la disponibilité.",
         "contextPartner": "partenaire",
-        "contextGuide": "guide"
+        "contextGuide": "guide local"
       },
       "progress": {
         "aria": "Progression de la réservation",
@@ -3022,7 +3022,7 @@
       "filterLanguage": "Langue",
       "allDistricts": "Tous les districts",
       "allLanguages": "Toutes les langues",
-      "resultCount": "{count} guides",
+      "resultCount": "{count} guides locaux",
       "empty": "Aucun guide ne correspond à ces filtres. Essayez un autre district ou une autre langue.",
       "districts": {
         "general": "Toute Chypre",
@@ -3137,7 +3137,7 @@
         }
       },
       "footer": {
-        "backToAppLabel": "app"
+        "backToAppLabel": "application"
       }
     }
   },

@@ -216,3 +216,13 @@ If you add new locales:
 2. Create `messages/{locale}.json` matching the `en` key shape.
 3. Run `npm run i18n:validate` and fix any reported mismatches.
 
+### 9. Beta locales (fr / he / ro)
+
+Chrome batches 2–14 (PR #179) cover nav, footer, funnel, and hub UI for beta locales. Remaining EN-identical keys are documented in **[BETA_LOCALE_EN_HOLDOUTS.md](./BETA_LOCALE_EN_HOLDOUTS.md)** (brands, proper nouns, legal, templates). Re-apply patches:
+
+```bash
+for n in 2 3 4 5 6 7 8 9 10 11 12 13 14; do
+  node scripts/i18n/patch-locale-chrome-batch${n}.mjs
+done
+```
+

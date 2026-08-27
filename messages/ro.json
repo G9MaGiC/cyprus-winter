@@ -1,7 +1,7 @@
 {
   "footer": {
     "discover": "Descoperă",
-    "plan": "Plan",
+    "plan": "Planificare",
     "airport": "Aeroport",
     "arriving": "La sosire",
     "weather": "Vreme",
@@ -31,7 +31,7 @@
   },
   "nav": {
     "discover": "Descoperă",
-    "plan": "Plan",
+    "plan": "Planificare",
     "trails": "Trasee",
     "events": "Evenimente",
     "airport": "Aeroport",
@@ -61,7 +61,7 @@
   "common": {
     "nav": {
       "discover": "Descoperă",
-      "trip": "Plan",
+      "trip": "Planificare",
       "airport": "Aeroport"
     },
     "aria": {
@@ -141,7 +141,7 @@
       "activity": "Activitate",
       "nature": "Natură",
       "winery": "Cramă",
-      "restaurant": "Restaurant",
+      "restaurant": "Local gastronomic",
       "trail": "Traseu",
       "event": "Eveniment"
     },
@@ -268,7 +268,7 @@
     },
     "inYourPlan": "În planul tău",
     "viewPlan": "Vezi planul",
-    "local": "Local",
+    "local": "Din zonă",
     "verifiedPartner": "Partener verificat",
     "verifiedPartnerTitle": "Partener verificat: primește cereri de rezervare direct",
     "wineTasting": "Degustare de vin",
@@ -344,7 +344,7 @@
     "clearDay": "Golește ziua",
     "clearDayTitle": "Golești ziua {day}?",
     "removeAllFromDay": "Elimină toate cele {count} {count, plural, one {loc} other {locuri}} din ziua {day}. Le poți adăuga din nou oricând.",
-    "localeBeta": "beta",
+    "localeBeta": "în teste",
     "beforeYouGo": {
       "heading": "Înainte să pleci",
       "allSet": "Totul e gata. Călătorie plăcută."
@@ -410,7 +410,7 @@
         "discoverTitle": "Descoperă",
         "discoverDesc": "Litoral blând, ruine, sate și locuri care merită încetinit.",
         "discoverCta": "Începe să explorezi",
-        "planTitle": "Plan",
+        "planTitle": "Planificare",
         "planDesc": "Construiește o zi în jurul orei, vremii și locurilor care te interesează.",
         "planCta": "Construiește o zi",
         "bookTitle": "Rezervă",
@@ -457,7 +457,7 @@
         "quietEscapesAria": "Evadări liniștite — sate, locuri ascunse",
         "mountains": "Munți",
         "mountainsAria": "Munți — trasee în Troodos",
-        "wellness": "Wellness",
+        "wellness": "Bunăstare",
         "wellnessAria": "Wellness — mănăstiri, spații liniștite",
         "regionAria": "Regiunea {region}"
       }
@@ -878,7 +878,7 @@
         "watersports": "Sporturi nautice",
         "quiet": "Evadări liniștite",
         "mountains": "Munți",
-        "wellness": "Wellness",
+        "wellness": "Bunăstare",
         "relatedTrails": "Trasee conexe",
         "seeAllMountainTrails": "Răsfoiește traseele din Troodos",
         "browseAllTrails": "Răsfoiește toate traseele",
@@ -1251,7 +1251,7 @@
         "empty": "Nicio cerere încă.",
         "guest": "Oaspete",
         "meta": "{date} · grup de {party}",
-        "status": "Status",
+        "status": "Stare",
         "accept": "Acceptă",
         "decline": "Refuză",
         "acceptAria": "Acceptă cererea de la {guest}",
@@ -1311,7 +1311,7 @@
         "steps": {
           "arrivals": "Sosiri",
           "baggage": "Bagaje",
-          "transport": "Transport",
+          "transport": "Transfer",
           "out": "Ai ieșit"
         }
       },
@@ -1320,7 +1320,7 @@
         "aria": "Alege aeroportul"
       },
       "sections": {
-        "transportTitle": "Transport",
+        "transportTitle": "Transfer",
         "tipsTitle": "De știut"
       },
       "quickActions": {
@@ -1488,7 +1488,7 @@
           "tip": "Secțiuni abrupte și distanță mai mare. Rezervă 3–4 ore. Verifică condițiile."
         },
         "expert": {
-          "label": "Expert",
+          "label": "Avansat",
           "tip": "Teren tehnic, zi întreagă. Experiență și pregătire necesare."
         }
       }
@@ -2232,7 +2232,7 @@
         "title": "Stil de călătorie",
         "body": "Ajută la adaptarea sugestiilor (familii, escapade pentru cupluri, etc.).",
         "labels": {
-          "solo": "Solo",
+          "solo": "Singur",
           "couple": "Cuplu",
           "family": "Familii",
           "group": "Grup",
@@ -2373,15 +2373,15 @@
         "actions": "Acțiuni pagină evenimente"
       },
       "types": {
-        "festival": "Festival",
+        "festival": "Festival cultural",
         "market": "Piață",
-        "concert": "Concert",
+        "concert": "Concert live",
         "food": "Mâncare și vin",
         "culture": "Cultură",
-        "sport": "Sport"
+        "sport": "Sporturi"
       },
       "monthShort": {
-        "Nov": "Nov",
+        "Nov": "Noi",
         "Dec": "Dec",
         "Jan": "Ian",
         "Feb": "Feb",
@@ -2998,7 +2998,7 @@
       },
       "cards": {
         "imageAlt": "{name}, {region} — traseu {km} km {difficulty}",
-        "duration": "{km} km · ~{hours}h"
+        "duration": "{km} km · ~{hours} h"
       },
       "aria": {
         "actions": "Acțiuni ghid Troodos decembrie"
@@ -3018,7 +3018,7 @@
       "officialListLink": "Listă oficială pe Visit Cyprus",
       "searchLabel": "Caută ghiduri",
       "searchPlaceholder": "Nume sau limbă…",
-      "filterDistrict": "District",
+      "filterDistrict": "Regiune",
       "filterLanguage": "Limbă",
       "allDistricts": "Toate districtele",
       "allLanguages": "Toate limbile",
