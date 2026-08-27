@@ -40,5 +40,29 @@
     "home.insiderTips.drive-left.body": "Héritage britannique. Louez une voiture pour atteindre les villages et les sentiers. Les routes sont bonnes. Les virages de montagne sont étroits. Prenez votre temps. Le paysage en vaut la peine.",
     "plan.pageDescSecondaryEmpty": "Enregistré automatiquement.",
     "home.insiderTip.heading": "Conseil d'initié pour l'hiver"
+  },
+  "ro": {
+    "home.insiderTips.daylight.title": "Zilele sunt scurte",
+    "home.insiderTips.layers.title": "Îmbracă-te pe straturi",
+    "home.insiderTips.weekday-quiet.body": "Omodos, Lefkara și siturile mari se umplu în weekend. Marți sau miercuri? Străzile pietruite sunt ale tale. Satele se simt altfel fără autocare. Planifică zilele mari la mijlocul săptămânii.",
+    "home.placeOfDay.fallbackTease.village": "Străzi pietruite doar pentru tine în timpul săptămânii.",
+    "home.insiderTips.start-early.body": "Zilele de iarnă sunt scurte — termină drumețiile înainte de amurg. Aerul de dimineață e proaspăt. Traseele sunt mai liniștite devreme. Vei fi mulțumit să ajungi la mașină pe lumină.",
+    "home.insiderTips.emergency.body": "112 urgență UE. 1460 info turistică. 199 ambulanță. Salvează-le. Sperăm să nu ai nevoie.",
+    "home.insiderTips.euro.body": "Cipru folosește euro. Cardurile funcționează aproape peste tot. Magazine mici și kafenionuri preferă uneori numerar. Păstrează ~20€ pentru cafea, dantelă și zivania.",
+    "home.insiderTips.check-conditions.body": "Vremea în Troodos se schimbă repede. Zăpadă pe Olympus, noroi după ploaie, gheață la umbră. Stațiunea de schi publică condițiile. La fel și cafenelele locale. Întreabă. Nu presupune.",
+    "home.insiderTips.microspikes.title": "Micro-crampoane pentru Olympus",
+    "home.insiderTips.microspikes.body": "Vârful Olympus și traseele înalte din Troodos pot avea zăpadă și gheață ianuarie–martie. Micro-crampoanele costă ~20€ și se montează peste bocanci. Dacă prognoza e aproape de îngheț, ia-le.",
+    "home.insiderTip.heading": "Sfat de cunoscător de iarnă",
+    "home.featuredWineries.items.vouni-panayia.subtitle": "Ruta Laona · comparații Commandaria · cameră călduroasă",
+    "home.rightNow.adapt.body": "S-a schimbat vremea sau ai rămas în urmă cu planul? Ajustează ziua dintr-o atingere, fără să o iei de la capăt.",
+    "home.planningSection.defaultSubtitle": "Șabloane, hartă și distribuire într-un loc — continuă pe pagina Planificare.",
+    "plan.emptyDay": "Începe cu un loc. Sau întreabă AI-ul — Troodos, Lefkara, Kourion. Știe insula.",
+    "plan.reviewPlan": "Verifică planul",
+    "plan.meta.title": "Planifică iarna în Cipru | Planuri selectate și constructor de călătorie",
+    "plan.curatedCombosDesc": "Dimineața într-un loc, după-amiaza în altul. Se leagă bine.",
+    "discover.page.combosTeaser.seeAll": "Vezi toate perechile în Planificare →",
+    "discover.detail.trustTiming.body": "Detalii partener verificate, cu pași clari până la partener. Adaugă mai întâi în plan, apoi cere partenerului — confirmă pe email.",
+    "book.pages.wineryDetail.intro": "Degustările de iarnă aici sunt călduroase — foc, încălzitoare și adesea proprietarul toarnă. Trimite cererea și vor confirma pe email.",
+    "events.page.hero.note": "Datele pot varia de la an la an. Verifică sursele oficiale înainte de călătorie."
   }
 }

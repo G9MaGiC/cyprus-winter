@@ -1,5 +1,5 @@
 /**
- * Beta editorial quality pass (he/fr): broken Hebrew, Plan תוכנית, FR voice polish.
+ * Beta editorial quality pass (he/fr/ro): broken Hebrew, Plan תוכנית, FR/RO voice polish.
  * Run: node scripts/i18n/patch-beta-locale-editorial-quality.mjs
  */
 import * as fs from "node:fs";
