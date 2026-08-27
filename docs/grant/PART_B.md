@@ -80,7 +80,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 
 **Users:** Cultural explorers, active winter hikers, short-haul weekenders. Mobile-first (airport 4G).
 
-**GTM (18 months):** UK/DE/PL content complete; IL via Hebrew (legal still EN until reviewer); partnerships with wine association for 5 pilot cellars; do not contradict Visit Cyprus entry/safety. Channels: SEO locales, partner tasting emails, cycling/wine fairs only if budgeted travel is in Part A.
+**GTM (18 months):** UK/DE/PL content complete; IL via Hebrew (draft legal pending lawyer review); partnerships with wine association for 5 pilot cellars; do not contradict Visit Cyprus entry/safety. Channels: SEO locales, partner tasting emails, cycling/wine fairs only if budgeted travel is in Part A.
 
 ### 3.2 Work packages
 

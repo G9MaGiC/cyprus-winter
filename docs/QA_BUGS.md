@@ -1430,7 +1430,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | `cypruswinter.com` DNS unresolved (last capture) | P0 | Registrar / DNS |
 | IRIS PRE-SEED/0526 submit by 11 Sep 2026 13:00 | P0 | CVs, legal entity, 15% co-finance; pack not submitted |
 | Tasting-room photos for remaining verified partners | P1 | Partner press kits only — `docs/WINERY_IMAGE_INTAKE.md` |
-| `he`/`fr`/`ro` privacy/terms **body** still English | P1 | Legal review; do not machine-translate |
+| `he`/`fr`/`ro` privacy/terms drafts — **lawyer/translator sign-off** | P1 | Draft body shipped (BUG-334 / PR #183); keep beta badge until review — `docs/BETA_LOCALE_GRADUATION.md` |
 | Launch checklist sign-off blank | P1 | Engineering / Ops / Product / Content |
 | G2 partner overlay is in-memory `Map` | P1 | Durable store + magic-link post-award |
 
@@ -1678,6 +1678,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-334 | i18n | Beta legal — privacy + terms body for fr/he/ro (71 keys/locale); pending lawyer review | `beta-locale-legal-overrides.json` + `patch-beta-locale-legal.mjs`; updated `beta-locale-chrome.test.ts` |
 | BUG-335 | i18n | Document beta → full locale graduation + readiness script (do not remove badge yet) | `docs/BETA_LOCALE_GRADUATION.md`; `npm run i18n:beta-readiness` |
 | BUG-336 | docs | Post-beta i18n: grant WP3 + launch checklist + CI readiness report; SCORECARD #184 | `docs/grant/PART_B.md`; CI Quality `i18n:beta-readiness` |
+| BUG-337 | i18n | Tier-1 book guide/winery SEO meta still English in de/el/pl; stale “legal still EN” docs | `patch-tier1-book-meta.mjs` (5 keys × 3); holdouts + readiness distanceKm; market/QA docs |
 
 ### Merged — beta locale chrome (PR #179 → main `0aa9e41`, Aug 27 2026)
 

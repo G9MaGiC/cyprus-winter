@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-27 · **Target commit:** `8ee2a67` (main — beta i18n PRs #179–#184)
+**Last updated:** 2026-08-27 · **Target commit:** `26523a4` (main — beta i18n through PR #185)
 
 **Production health (live check):** `https://cyprus-winter.vercel.app/api/health` → `productionReady: false` (Upstash + Supabase env still missing on Vercel — see §1).
 

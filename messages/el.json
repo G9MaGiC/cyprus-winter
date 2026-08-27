@@ -2793,10 +2793,10 @@
           "serviceType": "Χειμερινή πεζοπορία με οδηγό"
         },
         "meta": {
-          "title": "Book a guided hike | {guideName} | Cyprus Winter",
-          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+          "title": "Κράτηση πεζοπορίας με οδηγό | {guideName} | Cyprus Winter",
+          "description": "Αίτημα για χειμερινή πεζοπορία με {guideName} στην περιοχή {region}. Μικρές ομάδες, τοπική εμπειρία. Επιβεβαίωση με email."
         },
-        "metaNotFound": "Not found"
+        "metaNotFound": "Δεν βρέθηκε"
       },
       "guideList": {
         "meta": {
@@ -2874,8 +2874,8 @@
           "priceRange": "€€"
         },
         "meta": {
-          "title": "Book a tasting | {wineryName} | Cyprus Winter",
-          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter."
+          "title": "Κράτηση γευσιγνωσίας | {wineryName} | Cyprus Winter",
+          "description": "Κλείστε χειμερινή γευσιγνωσία στο {wineryName} στην περιοχή {region}. Ζεστή φωτιά, θερμάστρες, συχνά σερβίρει ο ιδιοκτήτης. Επιβεβαίωση με email. Κλείστε νωρίς. Cyprus Winter."
         }
       }
     },

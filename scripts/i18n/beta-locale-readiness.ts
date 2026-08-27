@@ -33,7 +33,7 @@ function readBetaLocales(): string[] {
 }
 
 const INTENTIONAL =
-  /openStreetMap|Cyprus Winter|placeholder|instagramCta|ogNamedTitle|unknownPlace|summarySeparator|temperature|descriptionPrefix|popupMeta|editorsPicks\.items\..*\.title|featuredWineries\.items\..*\.title|planQuick\.quickAddPlaces|wineRoutes\.routeNames|footer\.(troodos|paphos)|onboarding\.welcome|^home\.title$|auth\.social\.providers|birdLife|images\.unoptimized|winterTip\.icon|jsonLd\.priceRange|footer\.suffix|finePrint\.bodySuffix|Google|Apple|Troodos|Paphos|Kourion|Omodos|Krasochoria|Laona|Akamas|Commandaria/i;
+  /openStreetMap|Cyprus Winter|placeholder|instagramCta|ogNamedTitle|unknownPlace|summarySeparator|temperature|descriptionPrefix|popupMeta|editorsPicks\.items\..*\.title|featuredWineries\.items\..*\.title|planQuick\.quickAddPlaces|wineRoutes\.routeNames|footer\.(troodos|paphos)|onboarding\.welcome|^home\.title$|auth\.social\.providers|birdLife|images\.unoptimized|winterTip\.icon|jsonLd\.priceRange|footer\.suffix|finePrint\.bodySuffix|distanceKm|distanceLessThanKm|Google|Apple|Troodos|Paphos|Kourion|Omodos|Krasochoria|Laona|Akamas|Commandaria/i;
 
 const en = flatten(
   JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, "messages/en.json"), "utf8")) as Record<

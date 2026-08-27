@@ -2793,10 +2793,10 @@
           "serviceType": "Geführte Winterwanderung"
         },
         "meta": {
-          "title": "Book a guided hike | {guideName} | Cyprus Winter",
-          "description": "Request a guided winter hike with {guideName} in {region}. Small groups, local expertise. They'll confirm by email."
+          "title": "Geführte Wanderung buchen | {guideName} | Cyprus Winter",
+          "description": "Geführte Winterwanderung mit {guideName} in {region} anfragen. Kleine Gruppen, lokales Know-how. Bestätigung per E‑Mail."
         },
-        "metaNotFound": "Not found"
+        "metaNotFound": "Nicht gefunden"
       },
       "guideList": {
         "meta": {
@@ -2874,8 +2874,8 @@
           "priceRange": "€€"
         },
         "meta": {
-          "title": "Book a tasting | {wineryName} | Cyprus Winter",
-          "description": "Book a winter tasting at {wineryName} in {region}. Cosy fires, heaters, often the owner pouring. They'll confirm by email. Book ahead. Cyprus Winter."
+          "title": "Verkostung buchen | {wineryName} | Cyprus Winter",
+          "description": "Winter-Verkostung bei {wineryName} in {region} buchen. Gemütliches Feuer, Heizstrahler, oft schenkt der Besitzer ein. Bestätigung per E‑Mail. Im Voraus buchen. Cyprus Winter."
         }
       }
     },
