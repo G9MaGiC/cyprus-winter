@@ -2382,10 +2382,10 @@
       },
       "monthShort": {
         "Nov": "Noi",
-        "Dec": "Dec",
+        "Dec": "Dec.",
         "Jan": "Ian",
-        "Feb": "Feb",
-        "Mar": "Mar"
+        "Feb": "Feb.",
+        "Mar": "Mar."
       },
       "meta": {
         "title": "Evenimente de iarnă în Cipru | Bobotează, carnaval, piețe",
@@ -2479,7 +2479,7 @@
         "month": "Lună",
         "coast": "Litoral (°C)",
         "coastConditions": "Condiții",
-        "troodos": "Troodos (°C)",
+        "troodos": "Munții Troodos (°C)",
         "troodosConditions": "Condiții"
       },
       "mobile": {
@@ -3026,11 +3026,11 @@
       "empty": "Niciun ghid nu corespunde filtrelor. Încearcă alt district sau altă limbă.",
       "districts": {
         "general": "Tot Ciprul",
-        "lefkosia": "Lefkosia (Nicosia)",
-        "ammochostos": "Ammochostos (Famagusta)",
-        "larnaka": "Larnaka",
-        "lemesos": "Lemesos (Limassol)",
-        "pafos": "Pafos"
+        "lefkosia": "Nicosia (Lefkosia)",
+        "ammochostos": "Famagusta (Ammochostos)",
+        "larnaka": "Larnaca (Larnaka)",
+        "lemesos": "Limassol (Lemesos)",
+        "pafos": "Paphos (Pafos)"
       },
       "languages": {
         "english": "Engleză",
@@ -3412,11 +3412,11 @@
         "downloadGpx": "Descarcă GPX",
         "relatedPlace": "Ghidul nostru pentru zonă",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Nicosia (Lefkosia)",
+          "lemesos": "Limassol (Lemesos)",
+          "larnaka": "Larnaca (Larnaka)",
+          "pafos": "Paphos (Pafos)",
+          "ammochostos": "Famagusta (Ammochostos)",
           "troodos": "Troodos"
         },
         "difficulty": {
@@ -3475,11 +3475,11 @@
         "relatedTrail": "Traseu asociat",
         "relatedPlace": "Ghidul nostru pentru zonă",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Nicosia (Lefkosia)",
+          "lemesos": "Limassol (Lemesos)",
+          "larnaka": "Larnaca (Larnaka)",
+          "pafos": "Paphos (Pafos)",
+          "ammochostos": "Famagusta (Ammochostos)",
           "troodos": "Troodos"
         },
         "kind": {
