@@ -77,14 +77,20 @@ describe("beta locale chrome", () => {
     }
   });
 
-  it("keeps full privacy policy body in English pending legal review", () => {
+  it("translates privacy and terms body for beta locales (pending lawyer review)", () => {
+    const legalMustDiffer = [
+      "privacy.page.sections.s1.body",
+      "privacy.page.sections.s5.outro",
+      "privacy.page.sections.s5.rights.access",
+      "terms.page.header.title",
+      "terms.page.sections.s1.body",
+      "terms.page.footer.privacyCta",
+    ];
     for (const locale of BETA_LOCALES) {
-      expect(nestedString(betaMessages[locale], "privacy.page.sections.s1.body")).toBe(
-        nestedString(en, "privacy.page.sections.s1.body"),
-      );
-      expect(nestedString(betaMessages[locale], "privacy.page.sections.s5.outro")).toBe(
-        nestedString(en, "privacy.page.sections.s5.outro"),
-      );
+      const messages = betaMessages[locale];
+      for (const key of legalMustDiffer) {
+        expect(nestedString(messages, key), `${locale} ${key}`).not.toBe(nestedString(en, key));
+      }
     }
   });
 

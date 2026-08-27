@@ -1675,6 +1675,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-331 | i18n | Add `npm run i18n:editorial-drift` gate for editorial-{fr,he,ro}.json vs messages | `scripts/i18n/check-editorial-drift.ts` |
 | BUG-332 | i18n | Wire `i18n:editorial-drift` into CI Quality job; SCORECARD marks PR #179 merged | `.github/workflows/ci.yml` |
 | BUG-333 | i18n | Beta editorial quality — HE broken Latin (קarnaval, הרidge, קפeneion), תוכנית spelling, FR+RO voice polish | `beta-locale-editorial-quality-overrides.json` + patch; expanded editorial maps with soft-gaps keys |
+| BUG-334 | i18n | Beta legal — privacy + terms body for fr/he/ro (71 keys/locale); pending lawyer review | `beta-locale-legal-overrides.json` + `patch-beta-locale-legal.mjs`; updated `beta-locale-chrome.test.ts` |
 
 ### Merged — beta locale chrome (PR #179 → main `0aa9e41`, Aug 27 2026)
 
