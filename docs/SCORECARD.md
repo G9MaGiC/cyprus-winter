@@ -67,6 +67,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #178 | Funnel i18n polish — error/airport/trails/plan meta all locales (BUG-313) |
 | PR #179 (merged) | Beta chrome batch 2–17 + holdouts doc + editorial drift gate — fr/he/ro chrome complete (BUG-314–331) |
 | PR #181 (merged) | CI Quality: `i18n:editorial-drift` (BUG-332) |
+| PR #182 | Beta editorial quality — HE MT fixes + FR polish; expanded editorial maps (BUG-333) |
 
 Details: `docs/QA_BUGS.md`
 
