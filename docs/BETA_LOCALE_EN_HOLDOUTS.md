@@ -130,6 +130,7 @@ Logged in `docs/QA_BUGS.md` as BUG-314 through BUG-326. SCORECARD row: PR #179.
 
 1. Native copy review for `he` editorial/home body — **started** (BUG-333 quality pass); re-run after further soft-gaps.
 2. Professional **lawyer review** of beta `privacy.*` / `terms.*` (BUG-334 shipped draft translations).
-3. Replace beta `localeBeta` suffix when editorial + legal review catch up (`common.localeBeta`).
+3. Replace beta `localeBeta` suffix **only after** checklist in **[BETA_LOCALE_GRADUATION.md](./BETA_LOCALE_GRADUATION.md)** (lawyer sign-off required).
 4. Re-apply editorial quality: `node scripts/i18n/patch-beta-locale-editorial-quality.mjs` then `npm run i18n:editorial-drift`.
 5. Re-apply legal: `node scripts/i18n/patch-beta-locale-legal.mjs`.
+6. Readiness: `npm run i18n:beta-readiness`.

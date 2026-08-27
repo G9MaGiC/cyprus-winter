@@ -219,9 +219,13 @@ If you add new locales:
 
 ### 9. Beta locales (fr / he / ro)
 
-Chrome batches 2–14 (PR #179) cover nav, footer, funnel, and hub UI for beta locales. Remaining EN-identical keys are documented in **[BETA_LOCALE_EN_HOLDOUTS.md](./BETA_LOCALE_EN_HOLDOUTS.md)** (brands, proper nouns, legal, templates). Re-apply patches:
+Chrome, editorial quality, and draft legal pages are shipped (PRs #179–#183). Remaining EN-identical keys: **[BETA_LOCALE_EN_HOLDOUTS.md](./BETA_LOCALE_EN_HOLDOUTS.md)**. To remove the switcher beta badge after lawyer review: **[BETA_LOCALE_GRADUATION.md](./BETA_LOCALE_GRADUATION.md)**.
 
 ```bash
 node scripts/i18n/patch-all-chrome-batches.mjs
+node scripts/i18n/patch-beta-locale-editorial-quality.mjs
+node scripts/i18n/patch-beta-locale-legal.mjs
+npm run i18n:editorial-drift
+npm run i18n:beta-readiness
 ```
 

@@ -63,6 +63,7 @@
     "i18n:coverage": "npx tsx scripts/i18n/coverage.ts",
     "i18n:scan": "npx tsx scripts/i18n/scan-hardcoded.ts",
     "i18n:editorial-drift": "npx tsx scripts/i18n/check-editorial-drift.ts",
+    "i18n:beta-readiness": "npx tsx scripts/i18n/beta-locale-readiness.ts",
     "i18n:check": "npm run i18n:validate && npm run i18n:coverage",
     "data:enrich": "npx tsx scripts/enrich-places/enrich.ts",
     "vapid-keys": "npx web-push generate-vapid-keys",

@@ -68,7 +68,8 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #179 (merged) | Beta chrome batch 2–17 + holdouts doc + editorial drift gate — fr/he/ro chrome complete (BUG-314–331) |
 | PR #181 (merged) | CI Quality: `i18n:editorial-drift` (BUG-332) |
 | PR #182 (merged) | Beta editorial quality — HE/FR/RO native polish; expanded editorial maps (BUG-333) |
-| PR #183 | Beta legal — privacy + terms body fr/he/ro (BUG-334, pending lawyer review) |
+| PR #183 (merged) | Beta legal — privacy + terms body fr/he/ro (BUG-334, pending lawyer review) |
+| — | Beta graduation checklist + `npm run i18n:beta-readiness` (`docs/BETA_LOCALE_GRADUATION.md`) |
 
 Details: `docs/QA_BUGS.md`
 
