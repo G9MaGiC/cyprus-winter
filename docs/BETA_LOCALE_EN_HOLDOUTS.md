@@ -109,11 +109,16 @@ Batch 14 applied selective French alternatives where a distinct form reads bette
 
 ---
 
-## Legal & admin (never MT in chrome batches)
+## Legal & admin
 
-- `privacy.*` — full privacy policy copy; lawyer/translator review only
-- `terms.*` — full terms copy; lawyer/translator review only
+- `privacy.*` / `terms.*` — **beta locales (fr/he/ro) translated in BUG-334** via `beta-locale-legal-overrides.json`. **Still pending professional lawyer/translator review** before treating as production-final.
 - `admin.stats.*` — internal admin UI; English acceptable for operators
+
+### Re-apply legal
+
+```bash
+node scripts/i18n/patch-beta-locale-legal.mjs
+```
 
 ---
 
@@ -124,6 +129,7 @@ Logged in `docs/QA_BUGS.md` as BUG-314 through BUG-326. SCORECARD row: PR #179.
 ## Next steps (optional)
 
 1. Native copy review for `he` editorial/home body — **started** (BUG-333 quality pass); re-run after further soft-gaps.
-2. Professional translation for `privacy.*` / `terms.*` per locale (**legal track**).
-3. Replace beta `localeBeta` suffix when editorial catches up (`common.localeBeta`).
+2. Professional **lawyer review** of beta `privacy.*` / `terms.*` (BUG-334 shipped draft translations).
+3. Replace beta `localeBeta` suffix when editorial + legal review catch up (`common.localeBeta`).
 4. Re-apply editorial quality: `node scripts/i18n/patch-beta-locale-editorial-quality.mjs` then `npm run i18n:editorial-drift`.
+5. Re-apply legal: `node scripts/i18n/patch-beta-locale-legal.mjs`.
