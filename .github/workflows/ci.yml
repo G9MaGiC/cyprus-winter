@@ -73,6 +73,9 @@ jobs:
       - name: i18n hardcoded scan
         run: npm run i18n:scan -- --fail
 
+      - name: i18n editorial drift (fr/he/ro)
+        run: npm run i18n:editorial-drift
+
       - name: Typecheck
         run: npx tsc --noEmit
 
