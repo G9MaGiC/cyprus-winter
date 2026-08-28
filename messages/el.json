@@ -825,7 +825,7 @@
   },
   "discover": {
     "addToPlan": "Προσθήκη στο πρόγραμμα",
-    "askAI": "Ask AI",
+    "askAI": "Ρωτήστε το AI",
     "bookTasting": "Κράτηση γευσιγνωσίας",
     "seeEverything": "Δείτε τα πάντα",
     "page": {
@@ -2963,20 +2963,20 @@
         "pafos": "Πάφος"
       },
       "languages": {
-        "english": "English",
-        "greek": "Greek",
-        "german": "German",
-        "french": "French",
-        "polish": "Polish",
-        "russian": "Russian",
-        "italian": "Italian",
-        "spanish": "Spanish",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "romanian": "Romanian",
-        "swedish": "Swedish",
-        "dutch": "Dutch",
-        "hebrew": "Hebrew"
+        "english": "Αγγλικά",
+        "greek": "Ελληνικά",
+        "german": "Γερμανικά",
+        "french": "Γαλλικά",
+        "polish": "Πολωνικά",
+        "russian": "Ρωσικά",
+        "italian": "Ιταλικά",
+        "spanish": "Ισπανικά",
+        "arabic": "Αραβικά",
+        "turkish": "Τουρκικά",
+        "romanian": "Ρουμανικά",
+        "swedish": "Σουηδικά",
+        "dutch": "Ολλανδικά",
+        "hebrew": "Εβραϊκά"
       },
       "verifiedCta": {
         "title": "Επαληθευμένοι συνεργάτες πεζοπορίας",
@@ -3291,7 +3291,7 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Χειμώνας στη Μεσόγειο",
     "homeDescription": "Κύπρος το χειμώνα: ήπιο, ανέπαφο, αληθινό. Μονοπάτια Τρόοδου, χωριά, οινοποιεία, αρχαία. Δεκαέξι βαθμοί όταν στο σπίτι έχετε έξι. Σχεδιάστε ή εξερευνήστε όταν προσγειωθείτε.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "Αρχαίο θέατρο Κουρίου πάνω από τη μεσογειακή ακτή, χειμώνας στην Κύπρο"
   },
   "ui": {
     "hero": {
@@ -3444,63 +3444,63 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "Φύση στην Κύπρο τον χειμώνα | Υγρότοποι, δάση και κέντρα επισκεπτών",
+        "description": "Επίσημοι φυσικοί προορισμοί Visit Cyprus: αλμυρές λίμνες, κέντρα Τρόοδους, Ακάμας, ακρωτήριο Γκρέκο. Παρατήρηση πουλιών, δασικά πάρκα και ήσυχα μονοπάτια τον χειμώνα.",
+        "ogAlt": "Κοιλάδα κέδρων, φύση χειμώνα στην Κύπρο",
+        "schemaName": "Φύση χειμώνα Cyprus Winter",
+        "schemaDescription": "Προορισμοί Visit Cyprus: υγρότοποι, δασικά πάρκα, κέντρα επισκεπτών και σύνδεσμοι φύσης χειμώνα."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "Φύση στην Κύπρο τον χειμώνα",
+        "description": "Αλμυρές λίμνες με φλαμίνγκο, κέδροι Τρόοδους, κέντρα επισκεπτών Ακάμα. Επίσημοι προορισμοί Visit Cyprus — εμείς συνδέουμε· εσείς εξερευνάτε με τον ρυθμό σας."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "Σχεδιάστε ένα πρωινό σε υγρότοπο, ελέγξτε συνθήκες μονοπατιών ή ρωτήστε τον οδηγό. Τον χειμώνα η φύση του νησιού είναι πιο ήσυχη.",
+        "trails": "Συνθήκες μονοπατιών",
+        "cycling": "Ποδηλασία χειμώνα",
+        "quietPlaces": "Ήσυχα μέρη"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "Ενέργειες σελίδας φύσης"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "title": "Επίσημοι προορισμοί",
+        "intro": "Φυσικοί προορισμοί Deputy Ministry of Tourism — κέντρα επισκεπτών, υγρότοποι και δασικά πάρκα. Πλήρη στοιχεία στο Visit Cyprus.",
+        "officialIndexLink": "Πλήρης λίστα στο Visit Cyprus",
+        "filterRegion": "Φιλτράρισμα ανά περιοχή",
+        "allRegions": "Όλες οι περιοχές",
+        "resultCount": "{count} προορισμοί",
+        "winterPick": "Επιλογή χειμώνα",
+        "viewOnVisitCyprus": "Σελίδα στο Visit Cyprus",
+        "relatedTrail": "Σχετικό μονοπάτι",
+        "relatedPlace": "Ο οδηγός μας για την περιοχή",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
-          "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
-          "ammochostos": "Ammochostos (Famagusta)",
+          "lefkosia": "Lefkosia (Λευκωσία)",
+          "lemesos": "Limassol (Λεμεσός)",
+          "larnaka": "Larnaca (Λάρνακα)",
+          "pafos": "Paphos (Πάφος)",
+          "ammochostos": "Ammochostos (Αμμόχωστος)",
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "Κέντρο επισκεπτών",
+          "wetland": "Υγρότοπος",
+          "forest_park": "Δασικό πάρκο",
+          "valley": "Κοιλάδα",
+          "botanic": "Βοτανικός κήπος"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "title": "Μονοπάτια, αναρρίχηση και πουλιά",
+        "body": "Επιλέγουμε χειμερινά μονοπάτια και μέρη δραστηριοτήτων στην εφαρμογή. Για topo αναρρίχησης και επίσημες σελίδες παρατήρησης πουλιών, χρησιμοποιήστε αυτούς τους αξιόπιστους συνεργάτες — χωρίς scraping, μόνο σύνδεσμοι.",
+        "trails": "Ο κόμβος μονοπατιών μας",
+        "cycling": "Ποδηλασία χειμώνα",
+        "climbing": "Αναρρίχηση στο Discover",
+        "birdwatchingVc": "Παρατήρηση πουλιών (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (topo αναρρίχησης)",
+        "climbingVc": "Αναρρίχηση (Visit Cyprus)",
+        "trailsVc": "Μονοπάτια φύσης (Visit Cyprus)"
       }
     }
   }

@@ -50,7 +50,7 @@
     "more": "Mehr",
     "askAI": "KI fragen",
     "searchAria": "Orte und Wanderwege suchen",
-    "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
+    "askAIAria": "KI nach Wanderwegen, Weingütern und Reiseideen fragen",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
     "mainNavigation": "Hauptnavigation",
@@ -267,10 +267,10 @@
     "clearFilter": "Filter zurücksetzen",
     "viewOnMap": "Auf der Karte ansehen",
     "scrollToMap": "Zur Karte scrollen",
-    "askAI": "Ask AI",
-    "askAIAria": "Ask AI nach Wanderwegen, Weingütern und Reiseideen",
-    "askAITrailsAria": "Ask AI nach Trail-Vorschlägen",
-    "askAIRecommendationsAria": "Ask AI nach Empfehlungen",
+    "askAI": "KI fragen",
+    "askAIAria": "KI nach Wanderwegen, Weingütern und Reiseideen fragen",
+    "askAITrailsAria": "KI nach Trail-Vorschlägen fragen",
+    "askAIRecommendationsAria": "KI nach Empfehlungen fragen",
     "hubFooter": {
       "prompt": "Orte zu Ihrem Plan hinzufügen—oder die KI nach Ideen fragen.",
       "aria": {
@@ -825,7 +825,7 @@
   },
   "discover": {
     "addToPlan": "Zum Plan hinzufügen",
-    "askAI": "Ask AI",
+    "askAI": "KI fragen",
     "bookTasting": "Verkostung buchen",
     "seeEverything": "Alles anzeigen",
     "page": {
@@ -1144,7 +1144,7 @@
     "footer": {
       "body": "Fügen Sie Orte zu Ihrem Plan hinzu—oder fragen Sie die AI. Sie kennt die Insel im Winter.",
       "addToPlan": "Orte zu Ihrem Plan hinzufügen",
-      "askAi": "Ask AI",
+      "askAi": "KI nach Reisevorschlägen fragen",
       "seeMap": "Karte ansehen"
     }
   },
@@ -1450,7 +1450,7 @@
     },
     "noMatch": "Keine Wanderwege passen zu Ihren Filtern. Ändern Sie Status, Schwierigkeit oder Region—oder fragen Sie die AI. Sie kennt Troodos bis Küste.",
     "allTrails": "Alle Wanderwege",
-    "askAI": "Ask AI",
+    "askAI": "KI fragen",
     "clearFilters": "Filter zurücksetzen",
     "reportError": "Nicht gespeichert. Erneut versuchen oder zurück zum Weg.",
     "reportAria": "Wegbedingungen-Bericht absenden",
@@ -2963,20 +2963,20 @@
         "pafos": "Pafos"
       },
       "languages": {
-        "english": "English",
-        "greek": "Greek",
-        "german": "German",
-        "french": "French",
-        "polish": "Polish",
-        "russian": "Russian",
-        "italian": "Italian",
-        "spanish": "Spanish",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "romanian": "Romanian",
-        "swedish": "Swedish",
-        "dutch": "Dutch",
-        "hebrew": "Hebrew"
+        "english": "Englisch",
+        "greek": "Griechisch",
+        "german": "Deutsch",
+        "french": "Französisch",
+        "polish": "Polnisch",
+        "russian": "Russisch",
+        "italian": "Italienisch",
+        "spanish": "Spanisch",
+        "arabic": "Arabisch",
+        "turkish": "Türkisch",
+        "romanian": "Rumänisch",
+        "swedish": "Schwedisch",
+        "dutch": "Niederländisch",
+        "hebrew": "Hebräisch"
       },
       "verifiedCta": {
         "title": "Verifizierte Winter-Wanderpartner",
@@ -3215,7 +3215,7 @@
       },
       "cta": {
         "prompt": "Lernen Sie das Team hinter Ihrer Reise kennen — und fragen Sie alles.",
-        "askAi": "Ask AI",
+        "askAi": "KI fragen",
         "startPlanning": "Plan starten",
         "discoverPlaces": "Orte entdecken"
       },
@@ -3291,7 +3291,7 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Mittelmeer im Winter",
     "homeDescription": "Zypern im Winter: mild, unberührt, echt. Troodos-Wanderwege, Dörfer, Weingüter, antike Stätten. Sechzehn Grad, wenn daheim sechs sind. Planen Sie im Voraus oder erkunden Sie bei Ankunft.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "Antikes Kourion-Theater über der Mittelmeerküste, Zypern im Winter"
   },
   "ui": {
     "hero": {
@@ -3444,63 +3444,63 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "Natur im Zypern-Winter | Feuchtgebiete, Wälder & Besucherzentren",
+        "description": "Offizielle Visit-Cyprus-Naturorte: Salzseen, Troodos-Zentren, Akamas, Kap Gkreko. Winter-Vogelbeobachtung, Waldparks und ruhige Wege.",
+        "ogAlt": "Zedernwaldtal, Zypern Winter-Natur",
+        "schemaName": "Zypern-Winter-Natur",
+        "schemaDescription": "Visit-Cyprus-Sehenswürdigkeiten: Feuchtgebiete, Waldparks, Besucherzentren und Winter-Natur-Querverweise."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "Natur auf Zypern im Winter",
+        "description": "Salzseen mit Flamingos, Troodos-Zedern, Akamas-Besucherzentren. Offizielle Visit-Cyprus-Orte — wir verlinken; Sie erkunden in Ihrem Tempo."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "Planen Sie einen Feuchtgebiet-Morgen, prüfen Sie Wegbedingungen oder fragen Sie den Guide. Im Winter ist die Natur der Insel am ruhigsten.",
+        "trails": "Wegbedingungen",
+        "cycling": "Winterradeln",
+        "quietPlaces": "Ruhige Orte"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "Aktionen Natur-Seite"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "title": "Offizielle Sehenswürdigkeiten",
+        "intro": "Naturorte des Deputy Ministry of Tourism — Besucherzentren, Feuchtgebiete und Waldparks. Alle Details auf Visit Cyprus.",
+        "officialIndexLink": "Vollständige Liste auf Visit Cyprus",
+        "filterRegion": "Nach Region filtern",
+        "allRegions": "Alle Regionen",
+        "resultCount": "{count} Orte",
+        "winterPick": "Winter-Tipp",
+        "viewOnVisitCyprus": "Seite auf Visit Cyprus",
+        "relatedTrail": "Zugehöriger Weg",
+        "relatedPlace": "Unser Guide zur Region",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
+          "lefkosia": "Lefkosia (Nikosia)",
+          "lemesos": "Limassol (Lemesos)",
           "larnaka": "Larnaka (Larnaca)",
-          "pafos": "Pafos (Paphos)",
+          "pafos": "Paphos (Pafos)",
           "ammochostos": "Ammochostos (Famagusta)",
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "Besucherzentrum",
+          "wetland": "Feuchtgebiet",
+          "forest_park": "Waldpark",
+          "valley": "Tal",
+          "botanic": "Botanischer Garten"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "title": "Wege, Klettern & Vogelwelt",
+        "body": "Wir kuratieren Winterwege und Aktivitätsorte in der App. Für Klettertopos und offizielle Vogelbeobachtungsseiten nutzen Sie diese vertrauenswürdigen Partner — kein Scraping, nur Links.",
+        "trails": "Unser Wege-Hub",
+        "cycling": "Winterradeln",
+        "climbing": "Klettern in Entdecken",
+        "birdwatchingVc": "Vogelbeobachtung (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (Klettertopos)",
+        "climbingVc": "Klettern (Visit Cyprus)",
+        "trailsVc": "Naturwege (Visit Cyprus)"
       }
     }
   }
