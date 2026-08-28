@@ -10,6 +10,8 @@ import { buildDiscoverFilterChipGroups } from "@/lib/discover-filter-chips";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { useTranslations } from "next-intl";
 
+import { buildDiscoverHubHref } from "@/lib/discover-hub-url";
+
 type DiscoverFilterBarProps = {
   sections: DiscoverSection[];
   filterParam: string;
@@ -19,13 +21,9 @@ type DiscoverFilterBarProps = {
   activeSectionTitle: string;
   hasWineriesInView: boolean;
   isActivityFilter: boolean;
-  onScrollToMap: () => void;
+  viewMode: "list" | "map";
+  onOpenMap: () => void;
 };
-
-function discoverFilterHref(chipId: string, isActive: boolean): string {
-  if (chipId === "" || isActive) return "/discover";
-  return `/discover?filter=${chipId}`;
-}
 
 export default function DiscoverFilterBar({
   sections,
@@ -36,7 +34,8 @@ export default function DiscoverFilterBar({
   activeSectionTitle,
   hasWineriesInView,
   isActivityFilter,
-  onScrollToMap,
+  viewMode,
+  onOpenMap,
 }: DiscoverFilterBarProps) {
   const tCommon = useTranslations("common");
   const tDiscover = useTranslations("discover");
@@ -49,6 +48,11 @@ export default function DiscoverFilterBar({
     const firstChip = filtersPanelRef.current.querySelector<HTMLElement>("a[href]");
     firstChip?.focus();
   }, [filtersExpanded]);
+
+  const viewMap = viewMode === "map";
+
+  const filterHref = (chipId: string, isActive: boolean) =>
+    buildDiscoverHubHref(isActive || chipId === "" ? "" : chipId, { viewMap });
 
   const chipGroups = buildDiscoverFilterChipGroups(sections.map((s) => s.id));
 
@@ -102,7 +106,7 @@ export default function DiscoverFilterBar({
         <FilterChips
           chips={practicalChips}
           isActive={isPracticalChipActive}
-          getHref={(chip) => discoverFilterHref(chip.id, isPracticalChipActive(chip))}
+          getHref={(chip) => filterHref(chip.id, isPracticalChipActive(chip))}
           ariaLabel={tDiscover("page.filterGroups.practicalAria")}
         />
       </div>
@@ -114,7 +118,7 @@ export default function DiscoverFilterBar({
         <FilterChips
           chips={placeChips}
           isActive={isPlaceChipActive}
-          getHref={(chip) => discoverFilterHref(chip.id, isPlaceChipActive(chip))}
+          getHref={(chip) => filterHref(chip.id, isPlaceChipActive(chip))}
           ariaLabel={tDiscover("page.filterGroups.placesAria")}
         />
       </div>
@@ -126,9 +130,7 @@ export default function DiscoverFilterBar({
         <FilterChips
           chips={activityChips}
           isActive={(chip) => filterParam === chip.id}
-          getHref={(chip) =>
-            discoverFilterHref(chip.id, filterParam === chip.id)
-          }
+          getHref={(chip) => filterHref(chip.id, filterParam === chip.id)}
           ariaLabel={tDiscover("page.filterGroups.winterMoodsAria")}
         />
       </div>
@@ -136,7 +138,10 @@ export default function DiscoverFilterBar({
       {filterParam && !sectionExists && (
         <p className="text-sm text-olive/70 break-words" role="alert">
           {tDiscover("page.filters.invalid")}{" "}
-          <AppLink href="/discover" className={SECTION.aegeanLink}>
+          <AppLink
+            href={buildDiscoverHubHref("", { viewMap })}
+            className={SECTION.aegeanLink}
+          >
             {tCommon("allCategories")}
           </AppLink>
         </p>
@@ -161,7 +166,10 @@ export default function DiscoverFilterBar({
                 : tCommon("filterPlaces")}
             </span>
             {filter && sectionExists && (
-              <AppLink href="/discover" className={`text-sm font-medium ${SECTION.aegeanLink}`}>
+              <AppLink
+                href={buildDiscoverHubHref("", { viewMap })}
+                className={`text-sm font-medium ${SECTION.aegeanLink}`}
+              >
                 {tCommon("clearFilter")}
               </AppLink>
             )}
@@ -213,7 +221,7 @@ export default function DiscoverFilterBar({
           )}
           <button
             type="button"
-            onClick={onScrollToMap}
+            onClick={onOpenMap}
             className="inline-flex items-center gap-2 min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={tDiscover("aria.scrollToMap")}
           >

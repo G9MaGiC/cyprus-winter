@@ -60,4 +60,27 @@ test.describe("Discover filters", () => {
     await page.keyboard.press("ArrowRight");
     await expect(mapTab).toBeFocused();
   });
+
+  test("?view=map loads map panel", async ({ page }) => {
+    await gotoStable(page, "/discover?view=map");
+    await expect(page.getByRole("main")).toBeVisible();
+    const mapTab = page.getByRole("tab", { name: /^Map$|^Karte$|^Mapa$|^Χάρτης$/i });
+    await expect(mapTab).toHaveAttribute("aria-selected", "true");
+    await expect(page.locator("#discover-map")).toBeVisible({ timeout: 20_000 });
+  });
+
+  test("filter chip preserves view=map in URL", async ({ page }) => {
+    await gotoStable(page, "/discover?view=map&filter=winery");
+    await expect(page).toHaveURL(/view=map/);
+    await expect(page).toHaveURL(/filter=winery/);
+  });
+
+  test("activity filter on map includes trail legend", async ({ page }) => {
+    await gotoStable(page, "/discover?view=map&filter=bouldering");
+    await expect(page.getByRole("main")).toBeVisible();
+    await expect(page.locator("#discover-map")).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByText(/Trail|Szlak|Μονοπάτι/i).first()).toBeVisible({
+      timeout: 20_000,
+    });
+  });
 });

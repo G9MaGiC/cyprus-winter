@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Miejsca na mapie ({count})",
       "curatedBy": "Wyselekcjonowane przez zespół Cyprus Winter.",
       "view": "Zobacz →",
-      "footerCount": "{count, plural, one {# miejsce na mapie. Dotknij znacznika, aby eksplorować.} other {# miejsc na mapie. Dotknij znacznika, aby eksplorować.}}"
+      "footerCount": "{count, plural, one {# miejsce na mapie. Dotknij znacznika, aby eksplorować.} other {# miejsc na mapie. Dotknij znacznika, aby eksplorować.}}",
+      "toolbar": {
+        "nearPlanDay": "Blisko dnia planu",
+        "nearPlanDayDisabled": "Ustaw daty w Planie i dodaj miejsca",
+        "resetView": "Resetuj widok",
+        "placeCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}}"
+      },
+      "focus": {
+        "dayLabel": "Dzień {day} planu"
+      },
+      "legend": {
+        "aria": "Typy znaczników",
+        "winery": "Winiarnia",
+        "village": "Wioska",
+        "trail": "Szlak",
+        "ancient": "Stanowisko",
+        "coast": "Wybrzeże i natura",
+        "eat": "Jedzenie",
+        "monastery": "Klasztor",
+        "activity": "Aktywność",
+        "other": "Miejsce"
+      }
     },
     "detail": {
       "pageNavAria": "Nawigacja strony",
