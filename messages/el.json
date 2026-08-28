@@ -866,7 +866,7 @@
         "toggleAll": "Όλα",
         "toggleShow": "Εμφάνιση",
         "toggleHide": "Απόκρυψη",
-        "bouldering": "Bouldering+",
+        "bouldering": "Μπούλντερινγκ+",
         "climbing": "Αναρρίχηση",
         "cycling": "Ποδηλασία",
         "watersports": "Θαλάσσια σπορ",
@@ -1235,7 +1235,7 @@
       "email": {
         "aria": "Επαληθευμένο email συνεργάτη",
         "placeholder": "Email συνεργάτη",
-        "label": "Email"
+        "label": "E-mail"
       },
       "secret": {
         "aria": "Μυστικό πύλης συνεργατών",
@@ -2435,7 +2435,7 @@
           "wine": "Κρασί & γευσιγνωσίες",
           "wellness": "Ευεξία & χαλάρωση",
           "villages": "Ορεινά χωριά",
-          "bouldering": "Bouldering+",
+          "bouldering": "Μπούλντερινγκ+",
           "climbing": "Αναρρίχηση σε βράχους",
           "cycling": "Ποδηλασία"
         }

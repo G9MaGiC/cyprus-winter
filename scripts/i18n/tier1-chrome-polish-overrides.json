@@ -5,14 +5,22 @@
     "secrets.page.types.timing": "Zeitpunkt",
     "events.page.monthShort.Nov": "Nov.",
     "events.page.monthShort.Jan": "Jan.",
-    "events.page.monthShort.Feb": "Feb."
+    "events.page.monthShort.Feb": "Feb.",
+    "discover.detail.headings.highlights": "Das Wichtigste",
+    "trails.detail.highlightsTitle": "Sehenswertes",
+    "account.settings.interests.labels.bouldering": "Bouldern+"
   },
   "el": {
-    "trails.detail.meta.title": "{name} | Μονοπάτια Cyprus Winter"
+    "trails.detail.meta.title": "{name} | Μονοπάτια Cyprus Winter",
+    "discover.page.filters.bouldering": "Μπούλντερινγκ+",
+    "account.settings.interests.labels.bouldering": "Μπούλντερινγκ+",
+    "partner.portal.email.label": "E-mail"
   },
   "pl": {
     "trails.detail.meta.title": "{name} | Szlaki Cyprus Winter",
     "secrets.page.types.kafenion": "Kawiarnia wiejska",
-    "events.page.monthShort.Mar": "Mar."
+    "events.page.monthShort.Mar": "Mar.",
+    "discover.detail.practical.parking": "Parkowanie:",
+    "book.pages.wineryDetail.practical.parking": "Parkowanie:"
   }
 }

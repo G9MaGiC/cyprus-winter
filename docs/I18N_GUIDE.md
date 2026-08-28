@@ -239,3 +239,5 @@ node scripts/i18n/patch-tier1-hub-chrome.mjs
 node scripts/i18n/patch-tier1-chrome-polish.mjs
 ```
 
+Funnel chrome for de/el/pl is complete modulo intentional cognates (`Region`, `Status`, `Filter`, `November`, etc.) and proper-noun holdouts. Re-apply all three scripts after message edits.
+

@@ -1075,7 +1075,7 @@
         "body": "Fügen Sie diesen Ort zu Ihrem Plan hinzu und kombinieren Sie ihn mit einem nahen Trail oder Dorf."
       },
       "headings": {
-        "highlights": "Highlights",
+        "highlights": "Das Wichtigste",
         "greatFor": "Ideal für",
         "dining": "Essen",
         "shops": "Geschäfte"
@@ -1647,7 +1647,7 @@
       "winterNotesTitle": "Winter-Hinweise",
       "keyStopsTitle": "Wichtige Stopps",
       "localSecretTitle": "Geheimtipp",
-      "highlightsTitle": "Highlights",
+      "highlightsTitle": "Sehenswertes",
       "bestSeasonTitle": "Beste Saison",
       "whatToBringTitle": "Was mitnehmen",
       "localSecrets": {
@@ -2223,7 +2223,7 @@
           "wine": "Wein & Verkostungen",
           "wellness": "Wellness & Entspannung",
           "villages": "Bergdörfer",
-          "bouldering": "Bouldering+",
+          "bouldering": "Bouldern+",
           "climbing": "Felsklettern",
           "cycling": "Radfahren"
         }
