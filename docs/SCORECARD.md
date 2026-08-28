@@ -74,7 +74,7 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #186 (merged) | Tier-1 book SEO meta de/el/pl + holdouts/docs sync (BUG-337) |
 | PR #187 (merged) | Tier-1 nature hub + Ask AI chrome + guides languages (BUG-338) |
 | PR #188 (merged) | Tier-1 trail meta + secrets/events polish (BUG-339) |
-| PR #189 (this) | Tier-1 discover/trails/account polish (BUG-340) |
+| PR #189 (merged) | Tier-1 discover/trails/account polish (BUG-340) — tier-1 de/el/pl complete |
 
 Details: `docs/QA_BUGS.md`
 
