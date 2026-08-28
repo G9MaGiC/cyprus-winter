@@ -825,7 +825,7 @@
   },
   "discover": {
     "addToPlan": "Dodaj do planu",
-    "askAI": "Ask AI",
+    "askAI": "Zapytaj AI",
     "bookTasting": "Zarezerwuj degustację",
     "seeEverything": "Zobacz wszystko",
     "page": {
@@ -2963,20 +2963,20 @@
         "pafos": "Pafos"
       },
       "languages": {
-        "english": "English",
-        "greek": "Greek",
-        "german": "German",
-        "french": "French",
-        "polish": "Polish",
-        "russian": "Russian",
-        "italian": "Italian",
-        "spanish": "Spanish",
-        "arabic": "Arabic",
-        "turkish": "Turkish",
-        "romanian": "Romanian",
-        "swedish": "Swedish",
-        "dutch": "Dutch",
-        "hebrew": "Hebrew"
+        "english": "Angielski",
+        "greek": "Grecki",
+        "german": "Niemiecki",
+        "french": "Francuski",
+        "polish": "Polski",
+        "russian": "Rosyjski",
+        "italian": "Włoski",
+        "spanish": "Hiszpański",
+        "arabic": "Arabski",
+        "turkish": "Turecki",
+        "romanian": "Rumuński",
+        "swedish": "Szwedzki",
+        "dutch": "Niderlandzki",
+        "hebrew": "Hebrajski"
       },
       "verifiedCta": {
         "title": "Zweryfikowani partnerzy trekkingowi",
@@ -3291,7 +3291,7 @@
   "meta": {
     "homeTitle": "Cyprus Winter | Morze Śródziemne zimą",
     "homeDescription": "Cypr zimą: łagodny, spokojny, autentyczny. Szlaki Troodos, wioski, winnice, starożytne miejsca. Szesnaście stopni, gdy w domu jest sześć. Planuj z wyprzedzeniem lub odkrywaj po wylądowaniu.",
-    "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
+    "ogImageAlt": "Antyczny teatr w Kourion nad wybrzeżem Morza Śródziemnego, zima na Cyprze"
   },
   "ui": {
     "hero": {
@@ -3444,63 +3444,63 @@
   "nature": {
     "page": {
       "meta": {
-        "title": "Cyprus Winter Nature | Wetlands, Forests & Visitor Centres",
-        "description": "Official Visit Cyprus nature sites: salt lakes, Troodos centres, Akamas, Cape Gkreko. Winter birding, forest parks, and quiet trails.",
-        "ogAlt": "Cedar forest valley, Cyprus winter nature",
-        "schemaName": "Cyprus Winter Nature",
-        "schemaDescription": "Visit Cyprus sites of interest: wetlands, forest parks, visitor centres, and winter nature crosslinks."
+        "title": "Natura na Cyprze zimą | Mokradła, lasy i centra dla odwiedzających",
+        "description": "Oficjalne miejsca przyrody Visit Cyprus: słone jeziora, centra Troodos, Akamas, przylądek Gkreko. Zimowe obserwacje ptaków, parki leśne i spokojne szlaki.",
+        "ogAlt": "Dolina cedrów, zimowa natura na Cyprze",
+        "schemaName": "Zimowa natura Cyprus Winter",
+        "schemaDescription": "Miejsca Visit Cyprus: mokradła, parki leśne, centra dla odwiedzających i zimowe linki przyrodnicze."
       },
       "header": {
-        "title": "Nature in Cyprus winter",
-        "description": "Salt lakes with flamingos, Troodos cedars, Akamas visitor centres. Official sites from Visit Cyprus — we link out; you explore at your pace."
+        "title": "Natura na Cyprze zimą",
+        "description": "Słone jeziora z flamingami, cedry Troodos, centra odwiedzających Akamas. Oficjalne miejsca Visit Cyprus — linkujemy; Ty zwiedzasz we własnym tempie."
       },
       "footer": {
-        "hubBody": "Plan a wetland morning, check trail conditions, or ask the guide. Winter is when the island's nature is at its calmest.",
-        "trails": "Trail conditions",
-        "cycling": "Winter cycling",
-        "quietPlaces": "Quiet places"
+        "hubBody": "Zaplanuj poranek na mokradłach, sprawdź warunki szlaków lub zapytaj przewodnika. Zimą natura wyspy jest najspokojniejsza.",
+        "trails": "Warunki szlaków",
+        "cycling": "Kolarstwo zimowe",
+        "quietPlaces": "Ciche miejsca"
       },
       "aria": {
-        "actions": "Nature page actions"
+        "actions": "Akcje strony natury"
       },
       "excursions": {
-        "title": "Official sites of interest",
-        "intro": "Deputy Ministry of Tourism nature sites — visitor centres, wetlands, and forest parks. Full details on Visit Cyprus.",
-        "officialIndexLink": "Full list on Visit Cyprus",
-        "filterRegion": "Filter by region",
-        "allRegions": "All regions",
-        "resultCount": "{count} sites",
-        "winterPick": "Winter pick",
-        "viewOnVisitCyprus": "Site on Visit Cyprus",
-        "relatedTrail": "Related trail",
-        "relatedPlace": "Our guide to the area",
+        "title": "Oficjalne miejsca",
+        "intro": "Miejsca przyrody Deputy Ministry of Tourism — centra dla odwiedzających, mokradła i parki leśne. Pełne szczegóły na Visit Cyprus.",
+        "officialIndexLink": "Pełna lista na Visit Cyprus",
+        "filterRegion": "Filtruj według regionu",
+        "allRegions": "Wszystkie regiony",
+        "resultCount": "{count} miejsc",
+        "winterPick": "Zimowy wybór",
+        "viewOnVisitCyprus": "Strona na Visit Cyprus",
+        "relatedTrail": "Powiązany szlak",
+        "relatedPlace": "Nasz przewodnik po okolicy",
         "regions": {
-          "lefkosia": "Lefkosia (Nicosia)",
-          "lemesos": "Lemesos (Limassol)",
+          "lefkosia": "Lefkosia (Nikozja)",
+          "lemesos": "Limassol (Lemesos)",
           "larnaka": "Larnaka (Larnaca)",
           "pafos": "Pafos (Paphos)",
           "ammochostos": "Ammochostos (Famagusta)",
           "troodos": "Troodos"
         },
         "kind": {
-          "visitor_centre": "Visitor centre",
-          "wetland": "Wetland",
-          "forest_park": "Forest park",
-          "valley": "Valley",
-          "botanic": "Botanic garden"
+          "visitor_centre": "Centrum dla odwiedzających",
+          "wetland": "Mokradło",
+          "forest_park": "Park leśny",
+          "valley": "Dolina",
+          "botanic": "Ogród botaniczny"
         }
       },
       "crosslinks": {
-        "title": "Trails, climbing & birdlife",
-        "body": "We curate winter trails and activity places in-app. For climbing topos and official birding pages, use these trusted partners — no scraping, just links.",
-        "trails": "Our trails hub",
-        "cycling": "Winter cycling",
-        "climbing": "Climbing on Discover",
-        "birdwatchingVc": "Birdwatching (Visit Cyprus)",
+        "title": "Szlaki, wspinaczka i ptaki",
+        "body": "W aplikacji wybieramy zimowe szlaki i miejsca aktywności. Do topo wspinaczkowych i oficjalnych stron obserwacji ptaków użyj tych zaufanych partnerów — bez scrapingu, tylko linki.",
+        "trails": "Nasz hub szlaków",
+        "cycling": "Kolarstwo zimowe",
+        "climbing": "Wspinaczka w Odkrywaj",
+        "birdwatchingVc": "Obserwacja ptaków (Visit Cyprus)",
         "birdLife": "BirdLife Cyprus",
-        "cyprusRocks": "Cyprus Rocks (climbing topos)",
-        "climbingVc": "Climbing (Visit Cyprus)",
-        "trailsVc": "Nature trails (Visit Cyprus)"
+        "cyprusRocks": "Cyprus Rocks (topo wspinaczkowe)",
+        "climbingVc": "Wspinaczka (Visit Cyprus)",
+        "trailsVc": "Szlaki przyrodnicze (Visit Cyprus)"
       }
     }
   }
