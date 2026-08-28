@@ -9,7 +9,8 @@ const intlMiddleware = createIntlMiddleware(routing);
 export default function proxy(request: NextRequest): NextResponse {
   // PWA manifests live at /manifests/[locale]. Locale middleware otherwise
   // rewrites /manifests/en → /en/manifests/en (404), breaking install + SW precache.
-  const response = shouldSkipLocaleProxy(request.nextUrl.pathname)
+  const pathname = request.nextUrl?.pathname ?? "";
+  const response = shouldSkipLocaleProxy(pathname)
     ? NextResponse.next()
     : intlMiddleware(request);
 
