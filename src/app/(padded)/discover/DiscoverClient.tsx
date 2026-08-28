@@ -87,7 +87,7 @@ export default function DiscoverClient({
     }));
   }, [sections, activitySection, filter, sectionExists, isActivity, hydrated, prefs.interests]);
 
-  const [viewMode, setViewMode] = useState<"list" | "map">("list");
+  const [viewMode, setViewMode] = useState<"list" | "map">(urlViewMap ? "map" : "list");
   const [mapFocusMode, setMapFocusMode] = useState(false);
   const [focusPrefLoaded, setFocusPrefLoaded] = useState(false);
   const firstSectionRef = useRef<HTMLElement | null>(null);
