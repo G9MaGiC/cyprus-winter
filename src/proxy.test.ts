@@ -4,7 +4,7 @@ import proxy from "./proxy";
 const intlHandler = vi.fn(() => ({ headers: new Headers() }));
 
 vi.mock("next-intl/middleware", () => ({
-  default: () => (...args: unknown[]) => intlHandler(...args),
+  default: () => () => intlHandler(),
 }));
 
 function mockRequest(pathname = "/"): Parameters<typeof proxy>[0] {
