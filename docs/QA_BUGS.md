@@ -1680,6 +1680,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-336 | docs | Post-beta i18n: grant WP3 + launch checklist + CI readiness report; SCORECARD #184 | `docs/grant/PART_B.md`; CI Quality `i18n:beta-readiness` |
 | BUG-337 | i18n | Tier-1 book guide/winery SEO meta still English in de/el/pl; stale “legal still EN” docs | `patch-tier1-book-meta.mjs` (5 keys × 3); holdouts + readiness distanceKm; market/QA docs |
 | BUG-338 | i18n | Tier-1 nature hub still English in de/el/pl; residual Ask AI chrome; guides language labels | `patch-tier1-hub-chrome.mjs` (43+ keys/locale); `meta.ogImageAlt` |
+| BUG-339 | i18n | Tier-1 trail detail meta title; secrets kafenion/timing; event month shorts | `patch-tier1-chrome-polish.mjs` |
 
 ### Merged — beta locale chrome (PR #179 → main `0aa9e41`, Aug 27 2026)
 

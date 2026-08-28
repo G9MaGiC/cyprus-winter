@@ -72,7 +72,8 @@ Required: `UPSTASH_REDIS_REST_*`, Supabase URL + service role key.
 | PR #184 (merged) | Beta graduation checklist + `npm run i18n:beta-readiness` (BUG-335) |
 | PR #185 (merged) | Post-beta docs hygiene — grant WP3 + CI readiness (BUG-336) |
 | PR #186 (merged) | Tier-1 book SEO meta de/el/pl + holdouts/docs sync (BUG-337) |
-| PR #187 (this) | Tier-1 nature hub + Ask AI chrome + guides languages (BUG-338) |
+| PR #187 (merged) | Tier-1 nature hub + Ask AI chrome + guides languages (BUG-338) |
+| PR #188 (this) | Tier-1 trail meta + secrets/events polish (BUG-339) |
 
 Details: `docs/QA_BUGS.md`
 

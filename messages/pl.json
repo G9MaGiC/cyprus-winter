@@ -1594,7 +1594,7 @@
     },
     "detail": {
       "meta": {
-        "title": "{name} | Cyprus Winter Trails",
+        "title": "{name} | Szlaki Cyprus Winter",
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
@@ -2295,7 +2295,7 @@
         "Dec": "Gru",
         "Jan": "Sty",
         "Feb": "Lut",
-        "Mar": "Mar"
+        "Mar": "Mar."
       },
       "meta": {
         "title": "Zimowe wydarzenia na Cyprze | Objawienie, karnawał, targi",
@@ -3195,7 +3195,7 @@
       },
       "types": {
         "viewpoint": "Punkt widokowy",
-        "kafenion": "Kafenion",
+        "kafenion": "Kawiarnia wiejska",
         "timing": "Pora",
         "pairing": "Połączenie",
         "spot": "Miejsce"

@@ -1,0 +1,18 @@
+{
+  "de": {
+    "trails.detail.meta.title": "{name} | Wanderwege Cyprus Winter",
+    "secrets.page.types.kafenion": "Dorfcafé",
+    "secrets.page.types.timing": "Zeitpunkt",
+    "events.page.monthShort.Nov": "Nov.",
+    "events.page.monthShort.Jan": "Jan.",
+    "events.page.monthShort.Feb": "Feb."
+  },
+  "el": {
+    "trails.detail.meta.title": "{name} | Μονοπάτια Cyprus Winter"
+  },
+  "pl": {
+    "trails.detail.meta.title": "{name} | Szlaki Cyprus Winter",
+    "secrets.page.types.kafenion": "Kawiarnia wiejska",
+    "events.page.monthShort.Mar": "Mar."
+  }
+}
