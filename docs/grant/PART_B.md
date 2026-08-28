@@ -80,7 +80,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 
 **Users:** Cultural explorers, active winter hikers, short-haul weekenders. Mobile-first (airport 4G).
 
-**GTM (18 months):** UK/DE/PL content complete; IL via Hebrew (draft legal pending lawyer review); partnerships with wine association for 5 pilot cellars; do not contradict Visit Cyprus entry/safety. Channels: SEO locales, partner tasting emails, cycling/wine fairs only if budgeted travel is in Part A.
+**GTM (18 months):** UK/DE/PL content complete (tier-1 i18n PRs #186–#189); IL via Hebrew (draft legal pending lawyer review); partnerships with wine association for 5 pilot cellars; do not contradict Visit Cyprus entry/safety. Channels: SEO locales, partner tasting emails, cycling/wine fairs only if budgeted travel is in Part A.
 
 ### 3.2 Work packages
 
@@ -88,7 +88,7 @@ Trademarks/domain: `[IP COUNSEL TBD]`. Optional later: registered word mark. Not
 |----|--------|---------|------------------------|
 | WP1 Production gate | 0–3 | Upstash + Supabase; `productionReady: true`; Sentry | Public health captured **false** (`docs/grant/PRODUCTION_HEALTH.md`); secrets still ops |
 | WP2 Partner portal | 0–6 | Hours, hero URL, accept/decline on existing bookings | Thin `/partner` MVP shipped; durable overlay + magic-link still post-award |
-| WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Chrome + editorial + **draft** privacy/terms shipped (PRs #179–#183); lawyer sign-off + graduate badge: `docs/BETA_LOCALE_GRADUATION.md` |
+| WP3 International | 0–9 | `he`/`fr`/`ro` body; legal review | Beta chrome/editorial/legal drafts (PRs #179–#183); tier-1 de/el/pl complete (#186–#189); lawyer sign-off + graduate badge: `docs/BETA_LOCALE_GRADUATION.md` |
 | WP4 Visible intelligence | 0–12 | Accessibility/cycling/wine-route/plan DNSH screenshots | Shipped (G3–G8) |
 | WP5 Market + seed readiness | 12–18 | Research note, 25 SME leads, Seed-programme options | KPI CSV shipped (G9) including rural/mountain vs beach Plan mix |
 
