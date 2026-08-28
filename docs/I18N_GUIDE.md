@@ -236,5 +236,6 @@ Book detail SEO meta and hub chrome patches for core winter markets:
 ```bash
 node scripts/i18n/patch-tier1-book-meta.mjs
 node scripts/i18n/patch-tier1-hub-chrome.mjs
+node scripts/i18n/patch-tier1-chrome-polish.mjs
 ```
 

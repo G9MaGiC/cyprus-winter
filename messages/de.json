@@ -1594,7 +1594,7 @@
     },
     "detail": {
       "meta": {
-        "title": "{name} | Cyprus Winter Trails",
+        "title": "{name} | Wanderwege Cyprus Winter",
         "descriptionPrefix": "{location}. {lengthKm} km, {difficulty}. "
       },
       "aria": {
@@ -2381,10 +2381,10 @@
         "sport": "Sport"
       },
       "monthShort": {
-        "Nov": "Nov",
+        "Nov": "Nov.",
         "Dec": "Dez",
-        "Jan": "Jan",
-        "Feb": "Feb",
+        "Jan": "Jan.",
+        "Feb": "Feb.",
         "Mar": "Mär"
       },
       "meta": {
@@ -3195,8 +3195,8 @@
       },
       "types": {
         "viewpoint": "Aussichtspunkt",
-        "kafenion": "Kafenion",
-        "timing": "Timing",
+        "kafenion": "Dorfcafé",
+        "timing": "Zeitpunkt",
         "pairing": "Kombination",
         "spot": "Geheimtipp"
       }
