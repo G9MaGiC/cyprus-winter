@@ -14,15 +14,28 @@ export default function FitMapBounds({ bounds, animate = true }: FitMapBoundsPro
   const map = useMap();
 
   useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      map.invalidateSize({ animate: false });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [map]);
+
+  useEffect(() => {
     if (!bounds) return;
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    map.fitBounds(bounds, {
-      padding: [24, 24],
-      maxZoom: 14,
-      animate: animate && !prefersReduced,
-    });
+    const fit = () => {
+      map.invalidateSize({ animate: false });
+      map.fitBounds(bounds, {
+        padding: [24, 24],
+        maxZoom: 14,
+        animate: animate && !prefersReduced,
+      });
+    };
+    fit();
+    const frame = requestAnimationFrame(fit);
+    return () => cancelAnimationFrame(frame);
   }, [map, bounds, animate]);
 
   return null;

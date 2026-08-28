@@ -88,8 +88,7 @@ export default function DiscoverClient({
   }, [sections, activitySection, filter, sectionExists, isActivity, hydrated, prefs.interests]);
 
   const [viewMode, setViewMode] = useState<"list" | "map">(urlViewMap ? "map" : "list");
-  const [mapFocusMode, setMapFocusMode] = useState(false);
-  const [focusPrefLoaded, setFocusPrefLoaded] = useState(false);
+  const [mapFocusMode, setMapFocusMode] = useState(() => loadMapFocusPreference());
   const firstSectionRef = useRef<HTMLElement | null>(null);
 
   const { dates, hydrated: datesHydrated } = useTripDates();
@@ -134,11 +133,6 @@ export default function DiscoverClient({
   useEffect(() => {
     setViewMode(urlViewMap ? "map" : "list");
   }, [urlViewMap]);
-
-  useEffect(() => {
-    setMapFocusMode(loadMapFocusPreference());
-    setFocusPrefLoaded(true);
-  }, []);
 
   const replaceDiscoverUrl = useCallback(
     (nextViewMap: boolean) => {
@@ -322,16 +316,14 @@ export default function DiscoverClient({
           </div>
         ) : (
           <div role="tabpanel" aria-labelledby="discover-tab-map">
-            {focusPrefLoaded ? (
-              <DiscoverMapPanel
-                sections={sectionsToShow}
-                isActivityFilter={isActivity}
-                planFocus={planFocus}
-                focusMode={mapFocusMode}
-                onFocusModeChange={handleFocusModeChange}
-                onResetView={handleResetMapView}
-              />
-            ) : null}
+            <DiscoverMapPanel
+              sections={sectionsToShow}
+              isActivityFilter={isActivity}
+              planFocus={planFocus}
+              focusMode={mapFocusMode}
+              onFocusModeChange={handleFocusModeChange}
+              onResetView={handleResetMapView}
+            />
           </div>
         )}
 
