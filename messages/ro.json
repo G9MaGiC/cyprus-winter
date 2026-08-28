@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Locuri pe hartă ({count})",
       "curatedBy": "Selectat de echipa Cyprus Winter.",
       "view": "Vezi →",
-      "footerCount": "{count, plural, one {# loc pe hartă. Atinge un marker pentru a explora.} other {# locuri pe hartă. Atinge un marker pentru a explora.}}"
+      "footerCount": "{count, plural, one {# loc pe hartă. Atinge un marker pentru a explora.} other {# locuri pe hartă. Atinge un marker pentru a explora.}}",
+      "toolbar": {
+        "nearPlanDay": "Near my plan day",
+        "nearPlanDayDisabled": "Set trip dates on Plan and add places to enable",
+        "resetView": "Reset view",
+        "placeCount": "{count, plural, one {# place} other {# places}}"
+      },
+      "focus": {
+        "dayLabel": "Day {day} of your plan"
+      },
+      "legend": {
+        "aria": "Map marker types",
+        "winery": "Winery",
+        "village": "Village",
+        "trail": "Trail",
+        "ancient": "Ancient site",
+        "coast": "Coast & nature",
+        "eat": "Eat",
+        "monastery": "Monastery",
+        "activity": "Activity",
+        "other": "Place"
+      }
     },
     "detail": {
       "pageNavAria": "Navigare pagină",

@@ -1362,7 +1362,7 @@ export const trails: Trail[] = [
     trailheadCoords: { lat: 34.838, lng: 32.918 },
   },
   {
-    id: "stavrovouni",
+    id: "stavrovouni-trail",
     slug: "stavrovouni-trail",
     name: "Stavrovouni Nature Trail",
     region: "Larnaca",
@@ -1400,7 +1400,7 @@ export const trails: Trail[] = [
     trailhead: "Agia Varvara Monastery, a few hundred metres after on left",
     bring: ["Sturdy boots", "Water"],
     localSecret: "Park at Agia Varvara if trailhead lot is full. Combine with Stavrovouni loop for a full workout.",
-    combineWith: ["stavrovouni", "lefkara", "larnaca-salt-lake"],
+    combineWith: ["stavrovouni-trail", "lefkara", "larnaca-salt-lake"],
     trailheadCoords: { lat: 34.808, lng: 33.42 },
   },
   {
@@ -2831,8 +2831,8 @@ export const trailConditions: Record<string, TrailConditions> = {
     temperatureC: 14,
     tip: "Family-friendly. Waterfall and monastery. Krasochoria nearby.",
   },
-  stavrovouni: {
-    trailId: "stavrovouni",
+  "stavrovouni-trail": {
+    trailId: "stavrovouni-trail",
     status: "open",
     surface: "dry",
     temperatureC: 15,

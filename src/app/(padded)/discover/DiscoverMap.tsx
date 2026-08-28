@@ -3,13 +3,26 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MapScrollWheelToggle from "@/components/MapScrollWheelToggle";
 import MapInteractionGuard from "@/components/MapInteractionGuard";
+import FitMapBounds from "@/components/map/FitMapBounds";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
-import { TOKENS, MAP_ICON_SHADOW, TYPE } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import type { MapBounds } from "@/lib/discover-map-focus";
+
+export type DiscoverMapPinKind =
+  | "winery"
+  | "village"
+  | "trail"
+  | "eat"
+  | "ancient"
+  | "coast"
+  | "monastery"
+  | "activity"
+  | "other";
 
 export type DiscoverMapPlace = {
   id: string;
@@ -18,42 +31,105 @@ export type DiscoverMapPlace = {
   region: string;
   lat: number;
   lng: number;
+  kind: DiscoverMapPinKind;
+  planDay?: number;
 };
 
-const placeIcon = L.divIcon({
-  html: `<span style="
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background: ${TOKENS.terracotta};
-    color: white;
-    border-radius: 50%;
-    font-weight: 600;
-    font-size: 10px;
-    box-shadow: ${MAP_ICON_SHADOW};
-    border: 2px solid white;
-  ">•</span>`,
-  className: "custom-marker",
-  iconSize: [28, 28],
-  iconAnchor: [14, 14],
-});
+const KIND_COLORS: Record<DiscoverMapPinKind, string> = {
+  winery: TOKENS.golden,
+  village: TOKENS.terracotta,
+  trail: TOKENS.sage,
+  eat: TOKENS.charcoal,
+  ancient: TOKENS.olive,
+  coast: TOKENS.aegean,
+  monastery: TOKENS.terracotta,
+  activity: TOKENS.sage,
+  other: TOKENS.terracotta,
+};
+
+const KIND_GLYPH: Record<DiscoverMapPinKind, string> = {
+  winery: "W",
+  village: "V",
+  trail: "T",
+  eat: "E",
+  ancient: "A",
+  coast: "C",
+  monastery: "M",
+  activity: "•",
+  other: "•",
+};
+
+function iconForKind(kind: DiscoverMapPinKind, highlighted: boolean): L.DivIcon {
+  const size = highlighted ? 32 : 28;
+  const fontSize = highlighted ? 11 : 10;
+  const border = highlighted ? "3px solid #fff" : "2px solid white";
+  const ring = highlighted ? `0 0 0 2px ${KIND_COLORS[kind]}` : "none";
+  return L.divIcon({
+    html: `<span style="
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${KIND_COLORS[kind]};
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: ${fontSize}px;
+      box-shadow: ${highlighted ? MAP_ICON_SHADOW : MAP_ICON_SHADOW_SM};
+      border: ${border};
+      outline: ${ring};
+    ">${KIND_GLYPH[kind]}</span>`,
+    className: "custom-marker",
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+  });
+}
 
 const CYPRUS_CENTER: [number, number] = [34.95, 33.2];
 
 type DiscoverMapProps = {
   places: DiscoverMapPlace[];
   className?: string;
+  focusBounds?: MapBounds | null;
+  highlightIds?: Set<string>;
+  dimUnhighlighted?: boolean;
+  showFooter?: boolean;
 };
 
-export default function DiscoverMap({ places, className = "" }: DiscoverMapProps) {
+export default function DiscoverMap({
+  places,
+  className = "",
+  focusBounds = null,
+  highlightIds,
+  dimUnhighlighted = false,
+  showFooter = true,
+}: DiscoverMapProps) {
   const tCommon = useTranslations("common");
   const tDiscover = useTranslations("discover");
   const [interactive, setInteractive] = useState(() => {
     if (typeof window === "undefined") return true;
     return !(window.matchMedia?.("(pointer: coarse)").matches ?? false);
   });
+
+  const displayBounds = useMemo((): MapBounds | null => {
+    if (focusBounds) return focusBounds;
+    if (places.length === 0) return null;
+    if (places.length === 1) {
+      const p = places[0];
+      const pad = 0.08;
+      return [
+        [p.lat - pad, p.lng - pad],
+        [p.lat + pad, p.lng + pad],
+      ];
+    }
+    const lats = places.map((p) => p.lat);
+    const lngs = places.map((p) => p.lng);
+    return [
+      [Math.min(...lats), Math.min(...lngs)],
+      [Math.max(...lats), Math.max(...lngs)],
+    ];
+  }, [focusBounds, places]);
 
   if (places.length === 0) return null;
 
@@ -96,40 +172,56 @@ export default function DiscoverMap({ places, className = "" }: DiscoverMapProps
       >
         <MapInteractionGuard interactive={interactive} />
         <MapScrollWheelToggle />
+        {displayBounds ? <FitMapBounds bounds={displayBounds} /> : null}
         <TileLayer
-          attribution={`&copy; <a href=\"https://www.openstreetmap.org/copyright\">${tDiscover("map.openStreetMap")}</a>`}
+          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">${tDiscover("map.openStreetMap")}</a>`}
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {places.map((p) => (
-          <Marker key={p.id} position={[p.lat, p.lng]} icon={placeIcon}>
-            <Popup>
-              <div className="min-w-[200px]">
-                <AppLink
-                  href={p.href}
-                  className={`${TYPE.cardTitle} block mb-1`}
-                >
-                  {p.name}
-                </AppLink>
-                <p className="text-xs text-olive/70 mb-3">{p.region}</p>
-                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
-                  <AddToItineraryButton placeId={p.id} label={tCommon("addToPlan")} className="text-sm min-h-[44px] px-4 py-2" />
-<AppLink
-                  href={p.href}
-                  className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
-                >
-                    {tDiscover("map.view")}
+        {places.map((p) => {
+          const highlighted = highlightIds?.has(p.id) ?? false;
+          const dimmed = dimUnhighlighted && highlightIds && highlightIds.size > 0 && !highlighted;
+          return (
+            <Marker
+              key={p.id}
+              position={[p.lat, p.lng]}
+              icon={iconForKind(p.kind, highlighted)}
+              opacity={dimmed ? 0.45 : 1}
+            >
+              <Popup>
+                <div className="min-w-[200px]">
+                  <p className="text-xs font-medium text-olive/60 mb-0.5">
+                    {tDiscover(`map.legend.${p.kind}`)}
+                  </p>
+                  <AppLink href={p.href} className={`${TYPE.cardTitle} block mb-1`}>
+                    {p.name}
                   </AppLink>
+                  <p className="text-xs text-olive/70 mb-3">{p.region}</p>
+                  <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
+                    <AddToItineraryButton
+                      placeId={p.id}
+                      label={tCommon("addToPlan")}
+                      className="text-sm min-h-[44px] px-4 py-2"
+                    />
+                    <AppLink
+                      href={p.href}
+                      className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
+                    >
+                      {tDiscover("map.view")}
+                    </AppLink>
+                  </div>
                 </div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+              </Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
-      <div className="shrink-0 px-4 py-3 bg-sand/60 border-t border-sand-200/70">
-        <p className="text-sm text-olive/70">
-          {tDiscover("map.footerCount", { count: places.length })}
-        </p>
-      </div>
+      {showFooter ? (
+        <div className="shrink-0 px-4 py-3 bg-sand/60 border-t border-sand-200/70">
+          <p className="text-sm text-olive/70">
+            {tDiscover("map.footerCount", { count: places.length })}
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }

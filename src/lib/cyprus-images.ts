@@ -247,6 +247,7 @@ const regionalTrailImages: Record<string, string> = {
   "profitis-ilias-konnoi": `${local}/cyprus-trail-coastal.jpg`,
   "panagia-agios-ioannis": `${local}/cyprus-trail-coastal.jpg`,
   "panagia-agioi-saranda": `${local}/cyprus-trail-coastal.jpg`,
+  "stavrovouni-trail": `${local}/cyprus-monastery-kykkos.jpg`,
 };
 
 export type TrailImageSource = "official" | "regional" | "fallback";

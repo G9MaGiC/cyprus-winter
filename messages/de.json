@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Orte auf der Karte ({count})",
       "curatedBy": "Kuratierte Auswahl vom Cyprus-Winter-Team.",
       "view": "Ansehen →",
-      "footerCount": "{count, plural, one {# Ort auf der Karte. Tippen Sie auf einen Marker.} other {# Orte auf der Karte. Tippen Sie auf einen Marker.}}"
+      "footerCount": "{count, plural, one {# Ort auf der Karte. Tippen Sie auf einen Marker.} other {# Orte auf der Karte. Tippen Sie auf einen Marker.}}",
+      "toolbar": {
+        "nearPlanDay": "In der Nähe meines Plantags",
+        "nearPlanDayDisabled": "Reisedaten im Plan setzen und Orte hinzufügen",
+        "resetView": "Ansicht zurücksetzen",
+        "placeCount": "{count, plural, one {# Ort} other {# Orte}}"
+      },
+      "focus": {
+        "dayLabel": "Tag {day} Ihres Plans"
+      },
+      "legend": {
+        "aria": "Markertypen",
+        "winery": "Weingut",
+        "village": "Dorf",
+        "trail": "Trail",
+        "ancient": "Antike Stätte",
+        "coast": "Küste & Natur",
+        "eat": "Essen",
+        "monastery": "Kloster",
+        "activity": "Aktivität",
+        "other": "Ort"
+      }
     },
     "detail": {
       "pageNavAria": "Seitennavigation",

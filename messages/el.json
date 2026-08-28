@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Μέρη στον χάρτη ({count})",
       "curatedBy": "Επιλογή από την ομάδα Cyprus Winter.",
       "view": "Δείτε →",
-      "footerCount": "{count, plural, one {# μέρος στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.} other {# μέρη στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.}}"
+      "footerCount": "{count, plural, one {# μέρος στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.} other {# μέρη στον χάρτη. Πατήστε έναν δείκτη για εξερεύνηση.}}",
+      "toolbar": {
+        "nearPlanDay": "Κοντά στην ημέρα του σχεδίου",
+        "nearPlanDayDisabled": "Ορίστε ημερομηνίες στο Σχέδιο και προσθέστε μέρη",
+        "resetView": "Επαναφορά",
+        "placeCount": "{count, plural, one {# μέρος} other {# μέρη}}"
+      },
+      "focus": {
+        "dayLabel": "Ημέρα {day} του σχεδίου"
+      },
+      "legend": {
+        "aria": "Τύποι δεικτών",
+        "winery": "Οινοποιείο",
+        "village": "Χωριό",
+        "trail": "Μονοπάτι",
+        "ancient": "Αρχαίος τόπος",
+        "coast": "Ακτή & φύση",
+        "eat": "Φαγητό",
+        "monastery": "Μοναστήρι",
+        "activity": "Δραστηριότητα",
+        "other": "Μέρος"
+      }
     },
     "detail": {
       "pageNavAria": "Πλοήγηση σελίδας",

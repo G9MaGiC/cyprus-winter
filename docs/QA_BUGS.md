@@ -1705,6 +1705,12 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | BUG-340 | i18n | Tier-1 discover/trails/account residual EN (highlights, bouldering, parking) | Extended `tier1-chrome-polish-overrides.json` |
 | BUG-341 | docs | Post-#189 hygiene — SCORECARD/launch/grant WP3 tier-1 complete | `0a3c581` target commit |
 
+### Fixed — Stavrovouni plan ID collision (Aug 28, 2026)
+
+| ID | Area | Issue | Fix |
+|----|------|-------|-----|
+| BUG-342 | Functional | Stavrovouni Monastery (attraction) and Stavrovouni Nature Trail shared `id: "stavrovouni"` — `getPlaceById("stavrovouni")` returned monastery; adding trail to plan stored wrong entity | Trail id → `stavrovouni-trail`; `TRAIL_LEGACY_IDS` keeps `/trails/stavrovouni` resolving; audit test guards unique `allPlaces` IDs |
+
 ### Merged — beta locale chrome (PR #179 → main `0aa9e41`, Aug 27 2026)
 
 Batches 2–17, editorial sync (BUG-330), drift script (BUG-331). See `docs/BETA_LOCALE_EN_HOLDOUTS.md`.

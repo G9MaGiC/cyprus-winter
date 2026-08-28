@@ -18,4 +18,11 @@ describe("trail-resolve", () => {
     expect(isTrailSlugAlias("artemis-trail", trail!)).toBe(true);
     expect(isTrailSlugAlias("artemis", trail!)).toBe(false);
   });
+
+  it("maps the pre-rename Stavrovouni trail URL to the unique trail id", () => {
+    const trail = findTrailByIdOrSlug("stavrovouni");
+    expect(trail?.id).toBe("stavrovouni-trail");
+    expect(isTrailSlugAlias("stavrovouni", trail!)).toBe(true);
+    expect(isTrailSlugAlias("stavrovouni-trail", trail!)).toBe(false);
+  });
 });
