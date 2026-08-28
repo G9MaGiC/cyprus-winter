@@ -78,9 +78,12 @@ test.describe("Discover filters", () => {
   test("activity filter on map includes trail legend", async ({ page }) => {
     await gotoStable(page, "/discover?view=map&filter=bouldering");
     await expect(page.getByRole("main")).toBeVisible();
-    await expect(page.locator("#discover-map")).toBeVisible({ timeout: 20_000 });
-    await expect(page.getByText(/Trail|Szlak|Μονοπάτι/i).first()).toBeVisible({
-      timeout: 20_000,
+    const mapSection = page.locator("#discover-map");
+    await expect(mapSection).toBeVisible({ timeout: 20_000 });
+    const legend = mapSection.getByRole("list", {
+      name: /Map marker types|Markertypen|Τύποι δεικτών|Typy znaczników/i,
     });
+    await expect(legend).toBeVisible({ timeout: 20_000 });
+    await expect(legend.getByText(/^Trail$|^Szlak$|^Μονοπάτι$|^Sentier$/i)).toBeVisible();
   });
 });

@@ -40,8 +40,8 @@ test("home hides editors picks when plan already has items", async ({ page }) =>
 
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("main")).toBeVisible();
-  await expect(page.locator("#editors-picks-heading")).toHaveCount(0);
-  await expect(page.locator("#book-tastings-heading")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: /Editor's picks/i })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: /Book tastings|Book a tasting/i })).toHaveCount(0);
 });
 
 test("home shows editors picks for new visitors without plan items", async ({ page }) => {
@@ -52,6 +52,10 @@ test("home shows editors picks for new visitors without plan items", async ({ pa
   });
 
   await page.goto("/", { waitUntil: "domcontentloaded" });
-  await expect(page.locator("#editors-picks-heading")).toBeVisible({ timeout: 10_000 });
-  await expect(page.locator("#book-tastings-heading")).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByRole("heading", { name: /Editor's picks/i }).first()).toBeVisible({
+    timeout: 10_000,
+  });
+  await expect(page.getByRole("heading", { name: /Book tastings|Book a tasting/i }).first()).toBeVisible({
+    timeout: 10_000,
+  });
 });
