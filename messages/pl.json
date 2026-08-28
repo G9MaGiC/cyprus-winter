@@ -1043,7 +1043,7 @@
         "title": "Informacje praktyczne",
         "hours": "Godziny:",
         "transport": "Dojazd:",
-        "parking": "Parking:",
+        "parking": "Parkowanie:",
         "accessibility": "Dostępność:"
       },
       "booking": {
@@ -2843,7 +2843,7 @@
         "practical": {
           "hours": "Godziny:",
           "transport": "Dojazd:",
-          "parking": "Parking:"
+          "parking": "Parkowanie:"
         },
         "other": {
           "or": "Albo",
