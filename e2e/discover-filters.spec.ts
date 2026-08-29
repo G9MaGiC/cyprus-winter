@@ -78,6 +78,14 @@ test.describe("Discover filters", () => {
   test("activity filter on map includes trail legend", async ({ page }) => {
     await gotoStable(page, "/discover?view=map&filter=bouldering");
     await expect(page.getByRole("main")).toBeVisible();
+    // Hydration can race the ?view=map URL state under full-suite load; make the
+    // map tab active deterministically instead of polling a hidden section.
+    const mapTab = page.getByRole("tab", { name: /^Map$|^Karte$|^Mapa$|^Χάρτης$/i });
+    await expect(mapTab).toBeVisible({ timeout: 20_000 });
+    if ((await mapTab.getAttribute("aria-selected")) !== "true") {
+      await mapTab.click();
+    }
+    await expect(mapTab).toHaveAttribute("aria-selected", "true", { timeout: 20_000 });
     const mapSection = page.locator("#discover-map");
     await expect(mapSection).toBeVisible({ timeout: 20_000 });
     const legend = mapSection.getByRole("list", {
