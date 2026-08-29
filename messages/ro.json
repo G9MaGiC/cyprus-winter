@@ -3012,7 +3012,7 @@
         "description": "Decembrie în Troodos: aer curat, trasee liniștite, adesea libere înainte de zăpadă. Artemis este bucla mai blândă pe Chionistra când crestele înalte țin zăpadă; Atalante este o drumeție de o zi, 14 km — plecați devreme când e fără gheață. Caledonia Falls curge puternic după ploaie."
       },
       "intro": {
-        "body": "Decembrie e momentul potrivit: sezonul de schi nu a început încă pe deplin, traseele sunt de obicei libere, iar satele sunt liniștite. Luați straturi — temperatura poate scădea la 2°C la altitudine. Verificați {trailConditionsLink} înainte de plecare; după episoade reci, traseele de la altitudine pot fi înghețate.",
+        "body": "Decembrie e momentul potrivit: sezonul de schi nu a început încă pe deplin, traseele sunt de obicei libere, iar satele sunt liniștite. Luați straturi — temperatura poate scădea la 2°C la altitudine. Verificați <trailConditionsLink>condițiile traseelor</trailConditionsLink> înainte de plecare; după episoade reci, traseele de la altitudine pot fi înghețate.",
         "trailConditionsLink": "condițiile traseelor"
       },
       "sections": {

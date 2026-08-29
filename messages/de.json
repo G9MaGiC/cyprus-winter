@@ -2936,7 +2936,7 @@
         "description": "Dezember im Troodos: klare Luft, ruhige Trails, oft frei vor dem Schnee-Peak. Artemis ist die sanftere Chionistra-Runde, wenn höhere Grate Schnee halten; Atalante ist eine Ganztages-Tour (14 km)—früh starten, wenn eisfrei. Caledonia Falls führt nach Regen viel Wasser."
       },
       "intro": {
-        "body": "Im Dezember passt vieles: Die Skisaison hat noch nicht richtig begonnen, die Trails sind meist frei, und die Dörfer sind ruhig. Schichten einpacken — in der Höhe können die Temperaturen auf 2°C fallen. Prüfen Sie {trailConditionsLink} bevor Sie losgehen; nach Kälteeinbrüchen können höhere Trails eisig sein.",
+        "body": "Im Dezember passt vieles: Die Skisaison hat noch nicht richtig begonnen, die Trails sind meist frei, und die Dörfer sind ruhig. Schichten einpacken — in der Höhe können die Temperaturen auf 2°C fallen. Prüfen Sie <trailConditionsLink>die Trail-Bedingungen</trailConditionsLink>, bevor Sie losgehen; nach Kälteeinbrüchen können höhere Trails eisig sein.",
         "trailConditionsLink": "Trail-Bedingungen"
       },
       "sections": {

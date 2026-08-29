@@ -37,6 +37,27 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-349] /guides/troodos-december crashed to the error page in every locale
+
+**Severity:** High
+**Area:** i18n / RSC
+**Page/Component:** `guides/troodos-december/page.tsx` + `guides.troodosDecember.intro.body` (all 7 locales)
+
+### Reproduction
+1. Open `/guides/troodos-december` (any locale)
+2. Page renders the "A small glitch" error boundary; server logs "Functions cannot be passed directly to Client Components"
+
+### Expected
+The December Troodos guide renders with an inline trail-conditions link.
+
+### Actual
+The message used the ICU-argument form `{trailConditionsLink}` while the page supplies a `t.rich` tag handler — next-intl interpolated the handler function itself as a React child, crashing SSR. Broken since PR #137; unnoticed because no test covers the route and the error page returns HTTP 200.
+
+### Fix status
+Fixed — message converted to tag form `<trailConditionsLink>…</trailConditionsLink>` with localized link text in all 7 locales; regression guard `rich-message-links.test.ts` forbids the `{…Link}` argument form repo-wide (it was the only occurrence).
+
+---
+
 ### [BUG-348] "Verified partner" badges shown while partner emails are dead placeholders
 
 **Severity:** High
