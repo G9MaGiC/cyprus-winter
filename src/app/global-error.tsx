@@ -1,6 +1,7 @@
 "use client";
 
 import * as Sentry from "@sentry/nextjs";
+import Link from "next/link";
 import { useEffect, type CSSProperties } from "react";
 
 type GlobalErrorProps = {
@@ -78,7 +79,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             >
               Try again
             </button>
-            <a
+            <Link
               href="/"
               style={{
                 ...actionStyle,
@@ -88,7 +89,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
               }}
             >
               Go home
-            </a>
+            </Link>
           </div>
         </main>
       </body>
