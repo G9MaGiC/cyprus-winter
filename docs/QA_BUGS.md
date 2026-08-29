@@ -37,6 +37,45 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-348] "Verified partner" badges shown while partner emails are dead placeholders
+
+**Severity:** High
+**Area:** Trust / Bookings
+**Page/Component:** AttractionCard, book winery/guide pages, wineries partners section, bookings API notification gates
+
+### Reproduction
+1. Open `/book/winery` or `/book/guide`
+2. Observe "Verified partner" badges on records whose `partnerEmail` is `…@cyprus-winter.example` (RFC 2606 — cannot receive mail); booking requests to them are silently unreceivable
+
+### Expected
+The verified claim appears only for partners the app can actually reach.
+
+### Fix status
+Fixed — `isPartnerVerified()` (`src/lib/partner-verification.ts`) requires `isVerified` **and** a deliverable (non-placeholder-TLD) `partnerEmail`; wired through all badge surfaces, the partner count/sort, the wineries partners section, and the API notification gates. Self-heals per partner as real addresses land in `src/data/` (a canary test fails on purpose when the first one does, so the assertion gets removed consciously). Ops follow-up: collect real partner addresses.
+
+---
+
+### [BUG-347] GitHub Actions: repo-wide instant startup_failure since 14:38 UTC 29 Aug
+
+**Severity:** High
+**Area:** Ops / CI
+**Page/Component:** GitHub Actions (account/repo settings — not repository code)
+
+### Reproduction
+1. Push any commit or open any PR
+2. Actions creates a run under a synthetic workflow (`path: "BuildFailed"`, empty name) that completes in 0s with `startup_failure`; the real `CI` workflow produces no runs
+
+### Expected
+`.github/workflows/ci.yml` runs on push/PR as it did through run #574 (03:23 UTC, green).
+
+### Actual
+Every trigger since 14:38 UTC fails at workflow-graph build with zero jobs and no logs. `.github/` is byte-identical to the last green run, and nothing in the repo changed at onset — the cause is account-side (Actions spending limit / failed payment, or an Actions policy change; a multi-hour GitHub incident is less likely at this duration). The reason banner is visible only in the repo's Actions UI.
+
+### Fix status
+Open — owner: check github.com **Settings → Billing** (Actions usage/limit) and repo **Settings → Actions**. All merges meanwhile were validated by the full local gate + all three E2E suites (see PR #199).
+
+---
+
 ### [BUG-346] UX/comms audit batch: persona-rule and consistency drift
 
 **Severity:** Medium

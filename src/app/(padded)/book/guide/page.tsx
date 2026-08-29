@@ -10,6 +10,7 @@ import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import BookGuideHubFooter from "@/components/BookGuideHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
+import { isPartnerVerified } from "@/lib/partner-verification";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("book.pages.guideList.meta");
@@ -60,9 +61,11 @@ export default async function GuidesListPage() {
         <p className="text-olive/70 max-w-2xl">
           {tBookPages("guideList.intro")}
         </p>
-        <p className="text-sm text-olive/60 mt-2 max-w-2xl">
-          {tBookPages("guideList.partnerCount", { count: guides.filter((g) => g.isVerified).length })}
-        </p>
+        {guides.some((g) => isPartnerVerified(g)) && (
+          <p className="text-sm text-olive/60 mt-2 max-w-2xl">
+            {tBookPages("guideList.partnerCount", { count: guides.filter((g) => isPartnerVerified(g)).length })}
+          </p>
+        )}
         <p className="text-sm text-olive/60 mt-3 max-w-2xl">
           <AppLink href="/guides/directory" className={SECTION.aegeanLink}>
             {tBookPages("guideList.browseLicensedDirectory")}
@@ -87,7 +90,7 @@ export default async function GuidesListPage() {
                 <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                   {tCommon("guidedHike")}
                 </span>
-                {guide.isVerified && (
+                {isPartnerVerified(guide) && (
                   <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                     {tCommon("verifiedPartner")}
                   </span>

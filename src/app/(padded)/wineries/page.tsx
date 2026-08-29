@@ -10,6 +10,7 @@ import WineriesHubFooter from "@/components/WineriesHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
+import { isPartnerVerified } from "@/lib/partner-verification";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
@@ -87,7 +88,7 @@ export default async function WineriesPage() {
       </PageHeader>
 
       {(() => {
-        const partners = wineries.filter((w) => w.isVerified);
+        const partners = wineries.filter((w) => isPartnerVerified(w));
         return partners.length > 0 ? (
           <section aria-labelledby="partners-heading" className="mb-12 sm:mb-16">
             <h2 id="partners-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>

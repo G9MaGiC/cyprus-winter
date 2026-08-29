@@ -14,6 +14,7 @@ import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
   return wineries.map((w) => ({ id: w.id }));
@@ -96,7 +97,7 @@ export default async function WineryBookPage({
           <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/20 text-terracotta">
             {tCommon("wineTasting")}
           </span>
-          {winery.isVerified && (
+          {isPartnerVerified(winery) && (
             <span
               className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean"
               title={tCommon("verifiedPartnerTitle")}
