@@ -187,8 +187,8 @@ export default function DiscoverMap({
               icon={iconForKind(p.kind, highlighted)}
               opacity={dimmed ? 0.45 : 1}
             >
-              <Popup>
-                <div className="min-w-[200px]">
+              <Popup maxWidth={280} minWidth={200} autoPanPadding={[24, 48]}>
+                <div className="min-w-[200px] max-h-[min(50vh,320px)] overflow-y-auto">
                   <p className="text-xs font-medium text-olive/60 mb-0.5">
                     {tDiscover(`map.legend.${p.kind}`)}
                   </p>
@@ -196,15 +196,15 @@ export default function DiscoverMap({
                     {p.name}
                   </AppLink>
                   <p className="text-xs text-olive/70 mb-3">{p.region}</p>
-                  <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
+                  <div className="flex flex-col gap-2">
                     <AddToItineraryButton
                       placeId={p.id}
                       label={tCommon("addToPlan")}
-                      className="text-sm min-h-[44px] px-4 py-2"
+                      className="text-sm min-h-[44px] px-4 py-2 w-full justify-center"
                     />
                     <AppLink
                       href={p.href}
-                      className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
+                      className="inline-flex items-center justify-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
                     >
                       {tDiscover("map.view")}
                     </AppLink>
