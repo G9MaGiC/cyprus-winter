@@ -43,7 +43,7 @@ export default function DetailActionFooter({
       aria-label={ariaLabel}
     >
       <div id={sentinelId} aria-hidden className="h-px absolute top-0 left-0 right-0 pointer-events-none" />
-      <p className="text-olive/70 text-sm break-words flex-1">{body}</p>
+      <p className="text-muted-ink text-sm break-words flex-1">{body}</p>
       <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 w-full sm:w-auto [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">
         {place ? <NavigateButton place={place} /> : null}
         <TrackOnClick event="plan_add" properties={{ placeId, placeType, source: "detail_footer" }}>

@@ -157,7 +157,7 @@ export default function DiscoverMap({
           <button
             type="button"
             onClick={() => setInteractive(false)}
-            className="inline-flex items-center justify-center min-h-[44px] px-3 py-2 rounded-full bg-white/90 border border-sand-200/80 text-xs font-medium text-olive/80 hover:text-olive hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center justify-center min-h-[44px] px-3 py-2 rounded-full bg-white/90 border border-sand-200/80 text-xs font-medium text-muted-ink hover:text-olive hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={tCommon("map.disableMapAria")}
           >
             {tCommon("map.disableMapCta")}
@@ -190,13 +190,13 @@ export default function DiscoverMap({
             >
               <Popup maxWidth={280} minWidth={200} autoPanPadding={[24, 48]}>
                 <div className="min-w-[200px] max-h-[min(50vh,320px)] overflow-y-auto">
-                  <p className="text-xs font-medium text-olive/60 mb-0.5">
+                  <p className="text-xs font-medium text-muted-ink mb-0.5">
                     {tDiscover(`map.legend.${p.kind}`)}
                   </p>
                   <AppLink href={p.href} className={`${TYPE.cardTitle} block mb-1`}>
                     {p.name}
                   </AppLink>
-                  <p className="text-xs text-olive/70 mb-3">{p.region}</p>
+                  <p className="text-xs text-muted-ink mb-3">{p.region}</p>
                   <div className="flex flex-col gap-2">
                     <AddToItineraryButton
                       placeId={p.id}
@@ -218,7 +218,7 @@ export default function DiscoverMap({
       </MapContainer>
       {showFooter ? (
         <div className="shrink-0 px-4 py-3 bg-sand/60 border-t border-sand-200/70">
-          <p className="text-sm text-olive/70">
+          <p className="text-sm text-muted-ink">
             {tDiscover("map.footerCount", { count: places.length })}
           </p>
         </div>

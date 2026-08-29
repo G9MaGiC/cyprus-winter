@@ -56,14 +56,14 @@ export default async function GuidesDirectoryPage({ searchParams }: PageProps) {
             { label: tCommon("breadcrumbs.bookGuide"), href: "/book/guide" },
             { label: tGuides("breadcrumb"), href: "/guides/directory", isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
 
       <header className={SECTION.headingMargin}>
         <h1 className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>{tGuides("title")}</h1>
-        <p className="text-olive/70 max-w-2xl">{tGuides("intro", { count: licensedGuideCount() })}</p>
-        <p className="text-sm text-olive/60 mt-3 max-w-2xl">
+        <p className="text-muted-ink max-w-2xl">{tGuides("intro", { count: licensedGuideCount() })}</p>
+        <p className="text-sm text-muted-ink mt-3 max-w-2xl">
           <AppLink href="/book/guide" className={SECTION.aegeanLink}>
             {tGuides("verifiedPartnersLink")}
           </AppLink>

@@ -15,7 +15,7 @@ function PlanMapLoading() {
       role="status"
       aria-live="polite"
     >
-      <p className="text-sm text-olive/60">{tCommon("loading.map")}</p>
+      <p className="text-sm text-muted-ink">{tCommon("loading.map")}</p>
     </div>
   );
 }
@@ -65,7 +65,7 @@ export default function PlanMapClient() {
   if (items.length === 0 && !hasContent) return null;
   if (items.length === 0 && hasContent) {
     return (
-      <p className="text-sm text-olive/70 py-6 rounded-xl border border-sand-200/80 bg-sand-100/50 text-center">
+      <p className="text-sm text-muted-ink py-6 rounded-xl border border-sand-200/80 bg-sand-100/50 text-center">
         {tMap("noCoords")}
       </p>
     );

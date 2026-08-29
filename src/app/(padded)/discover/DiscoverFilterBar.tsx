@@ -136,7 +136,7 @@ export default function DiscoverFilterBar({
       </div>
 
       {filterParam && !sectionExists && (
-        <p className="text-sm text-olive/70 break-words" role="alert">
+        <p className="text-sm text-muted-ink break-words" role="alert">
           {tDiscover("page.filters.invalid")}{" "}
           <AppLink
             href={buildDiscoverHubHref("", { viewMap })}
@@ -155,7 +155,7 @@ export default function DiscoverFilterBar({
         <div role="group" aria-labelledby="discover-filter-label" className="space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2 gap-y-1">
             <span
-              className={`${TYPE.kicker} text-olive/60 uppercase tracking-wider`}
+              className={`${TYPE.kicker} text-muted-ink uppercase tracking-wider`}
               id="discover-filter-label"
             >
               {filter && sectionExists
@@ -187,7 +187,7 @@ export default function DiscoverFilterBar({
               <span className="text-sm">
                 {tDiscover("page.filters.togglePrefix")} {activeFilterLabel}
               </span>
-              <span className="text-olive/60 text-xs" aria-hidden>
+              <span className="text-muted-ink text-xs" aria-hidden>
                 {filtersExpanded
                   ? tDiscover("page.filters.toggleHide")
                   : tDiscover("page.filters.toggleShow")}
@@ -222,10 +222,10 @@ export default function DiscoverFilterBar({
           <button
             type="button"
             onClick={onOpenMap}
-            className="inline-flex items-center gap-2 min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/70 hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center gap-2 min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-muted-ink hover:bg-sand-200/80 hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={tDiscover("aria.scrollToMap")}
           >
-            <svg className="w-4 h-4 shrink-0 text-olive/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <svg className="w-4 h-4 shrink-0 text-muted-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>

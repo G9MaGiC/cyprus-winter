@@ -50,7 +50,7 @@ export default function AccountPage() {
               {displayName && (
                 <p className={`${TYPE.cardTitle} text-charcoal`}>{displayName}</p>
               )}
-              <p className="text-sm text-olive/80 break-all">{email}</p>
+              <p className="text-sm text-muted-ink break-all">{email}</p>
             </div>
             <button
               type="button"
@@ -90,7 +90,7 @@ export default function AccountPage() {
           <p className="text-olive font-semibold">
             {tAccount("notConfigured.title")}
           </p>
-          <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
+          <p className="text-sm text-muted-ink mt-2 max-w-md mx-auto break-words">
             {tAccount("notConfigured.body")}
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -121,7 +121,7 @@ export default function AccountPage() {
         <p className="text-olive font-semibold">
           {tAccount("signedOut.title")}
         </p>
-        <p className="text-sm text-olive/80 mt-2 max-w-md mx-auto break-words">
+        <p className="text-sm text-muted-ink mt-2 max-w-md mx-auto break-words">
           {tAccount("signedOut.body")}
         </p>
         <div className="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
@@ -131,7 +131,7 @@ export default function AccountPage() {
           <AppLink href="/login" className={`px-6 py-3 ${CTA.secondaryCompact}`}>
             {tAccount("signedOut.cta.signIn")}
           </AppLink>
-          <AppLink href="/plan" className="inline-flex items-center min-h-[44px] px-6 py-3 text-sm text-olive/70 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
+          <AppLink href="/plan" className="inline-flex items-center min-h-[44px] px-6 py-3 text-sm text-muted-ink hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
             {tAccount("signedOut.cta.skip")}
           </AppLink>
         </div>

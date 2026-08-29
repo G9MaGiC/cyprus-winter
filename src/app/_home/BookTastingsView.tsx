@@ -51,7 +51,7 @@ export default function BookTastingsView({ featured }: Props) {
               <h3 className={`${TYPE.cardTitle} text-charcoal truncate`} title={w.name}>
                 {w.name}
               </h3>
-              <p className="text-sm text-olive/70 mt-1">{w.region}</p>
+              <p className="text-sm text-muted-ink mt-1">{w.region}</p>
               <p className="text-sm text-sage mt-3 leading-relaxed line-clamp-2 break-words">{w.subtitle}</p>
             </div>
           </AppLink>

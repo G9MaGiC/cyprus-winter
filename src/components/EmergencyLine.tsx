@@ -52,7 +52,7 @@ export default function EmergencyLine({ variant = "inline", className = "" }: Em
   if (variant === "pill") {
     return (
       <div
-        className={`inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 text-xs text-olive/80 mx-auto w-fit ${className}`}
+        className={`inline-flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 py-3 rounded-xl bg-sand-200/60 border border-sand-200/80 text-xs text-muted-ink mx-auto w-fit ${className}`}
       >
         <span>{content}</span>
       </div>
@@ -60,6 +60,6 @@ export default function EmergencyLine({ variant = "inline", className = "" }: Em
   }
 
   return (
-    <p className={`text-sm text-olive/60 break-words ${className}`}>{content}</p>
+    <p className={`text-sm text-muted-ink break-words ${className}`}>{content}</p>
   );
 }

@@ -75,18 +75,18 @@ export default async function InstallPage() {
             { label: tNav("home"), href: "/" },
             { label: tInstall("nav.breadcrumbCurrent"), href: "/install", isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
 
       <header className={SECTION.headingMarginLarge}>
-        <p className="text-golden text-sm font-medium tracking-[0.15em] uppercase mb-2">
+        <p className="text-golden-ink text-sm font-medium tracking-[0.15em] uppercase mb-2">
           {tInstall("header.kicker")}
         </p>
         <h1 className={`${TYPE.pageTitle} text-charcoal mt-2`}>
           {tInstall("header.title")}
         </h1>
-        <p className="mt-3 text-olive/80 text-base leading-relaxed max-w-xl">
+        <p className="mt-3 text-muted-ink text-base leading-relaxed max-w-xl">
           {tInstall("header.body")}
         </p>
       </header>
@@ -129,7 +129,7 @@ export default async function InstallPage() {
               </pre>
             )}
             {step.note && (
-              <p className="text-olive/70 text-sm leading-relaxed italic">
+              <p className="text-muted-ink text-sm leading-relaxed italic">
                 {step.note}
               </p>
             )}

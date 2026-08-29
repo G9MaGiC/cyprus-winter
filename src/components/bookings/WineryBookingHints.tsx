@@ -20,15 +20,15 @@ export default function WineryBookingHints({
       <p className="font-medium text-aegean">{t("hints.heading")}</p>
       {openingHours && (
         <p className="break-words">
-          <span className="text-olive/70">{t("hints.hoursLabel")}</span> {openingHours}
+          <span className="text-muted-ink">{t("hints.hoursLabel")}</span> {openingHours}
         </p>
       )}
       {bestTimeToVisit && (
         <p className="break-words">
-          <span className="text-olive/70">{t("hints.bestTimeLabel")}</span> {bestTimeToVisit}
+          <span className="text-muted-ink">{t("hints.bestTimeLabel")}</span> {bestTimeToVisit}
         </p>
       )}
-      <p className="text-olive/70 break-words">{WINERY_OFF_SEASON_HOURS}</p>
+      <p className="text-muted-ink break-words">{WINERY_OFF_SEASON_HOURS}</p>
     </div>
   );
 }

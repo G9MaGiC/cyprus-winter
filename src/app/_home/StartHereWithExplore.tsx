@@ -78,7 +78,7 @@ export default function StartHereWithExplore() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <header className={`text-center ${HOME.headerMargin}`}>
-          <p className="text-sm text-olive/80 mb-3 sm:mb-4">{tHome("startHere.prompt")}</p>
+          <p className="text-sm text-muted-ink mb-3 sm:mb-4">{tHome("startHere.prompt")}</p>
           <p className={`${TYPE.kicker} text-sage mb-2`}>{tHome("startHere.primaryPath")}</p>
           <h2 id="start-here-explore-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             {tHome("startHere.title")}
@@ -101,7 +101,7 @@ export default function StartHereWithExplore() {
               >
                 <div className={`flex-1 ${CARD.content}`}>
                   <p className={`${TYPE.cardTitle} text-charcoal`}>{item.title}</p>
-                  <p className="text-sm text-olive/70 mt-1 leading-relaxed line-clamp-3">{item.desc}</p>
+                  <p className="text-sm text-muted-ink mt-1 leading-relaxed line-clamp-3">{item.desc}</p>
                 </div>
                 <div className={`${CARD.footer} flex flex-wrap items-center gap-2`}>
                   <AppLink href={item.href} prefetch="auto" className={CTA.secondaryCompact}>
@@ -132,7 +132,7 @@ export default function StartHereWithExplore() {
               >
                 <div className={`flex-1 ${CARD.content}`}>
                   <p className={`${TYPE.cardTitle} text-charcoal`}>{item.title}</p>
-                  <p className="text-sm text-olive/70 mt-1 leading-relaxed line-clamp-2">{item.desc}</p>
+                  <p className="text-sm text-muted-ink mt-1 leading-relaxed line-clamp-2">{item.desc}</p>
                 </div>
                 <div className={CARD.footer}>
                   <span

@@ -29,7 +29,7 @@ export default function SectionCard({
   return (
     <section id={id} className={`${CARD.base} ${CARD.contentLg} border-s-4 ${accentClasses[borderAccent]} ${className}`}>
       <h2 className={`${TYPE.cardTitle} ${subtitle ? "mb-1.5" : SECTION.headingGap}`}>{title}</h2>
-      {subtitle && <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>{subtitle}</p>}
+      {subtitle && <p className={`text-sm text-muted-ink ${SECTION.headingGap}`}>{subtitle}</p>}
       {children}
     </section>
   );

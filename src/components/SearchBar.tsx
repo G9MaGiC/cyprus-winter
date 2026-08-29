@@ -160,9 +160,9 @@ export default function SearchBar({
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="font-medium text-olive truncate">{r.item.name}</span>
-                <span className="text-xs text-olive/60 shrink-0">{typeLabel(r)}</span>
+                <span className="text-xs text-muted-ink shrink-0">{typeLabel(r)}</span>
               </div>
-              <span className="text-sm text-olive/70 truncate block">{r.item.region}</span>
+              <span className="text-sm text-muted-ink truncate block">{r.item.region}</span>
             </li>
           ))}
         </ul>
@@ -176,7 +176,7 @@ export default function SearchBar({
       {focused && normalizedQuery.length >= 2 && !hasResults && (
         <div role="status" className={`${panelClass} ${SEARCH.panelEmpty}`}>
           <p className="mb-4">{tSearch("noResults", { query: normalizedQuery })}</p>
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">{tSearch("browseByCategory")}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-ink mb-2">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <AppLink href="/discover" className={SEARCH.recoveryLink}>
               {tSearch("browseDiscover")}

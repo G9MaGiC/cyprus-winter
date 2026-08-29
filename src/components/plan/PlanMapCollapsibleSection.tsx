@@ -27,7 +27,7 @@ export default function PlanMapCollapsibleSection() {
         >
           {tPlan("mapTitle")}
         </h2>
-        <p className={`text-xs text-olive/60 ${SECTION.headingGap}`}>{tPlan("mapCollapsibleHint")}</p>
+        <p className={`text-xs text-muted-ink ${SECTION.headingGap}`}>{tPlan("mapCollapsibleHint")}</p>
         <PlanMapClient />
       </section>
     );
@@ -41,7 +41,7 @@ export default function PlanMapCollapsibleSection() {
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl py-3 ps-1 pe-2 text-start -mx-1 select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
         <div className="min-w-0">
           <h2 className={`${TYPE.subSectionTitleLg} text-charcoal`}>{tPlan("mapTitle")}</h2>
-          <p className="text-xs text-olive/60 mt-0.5">
+          <p className="text-xs text-muted-ink mt-0.5">
             {tPlan("mapCollapsibleHint")}
           </p>
         </div>

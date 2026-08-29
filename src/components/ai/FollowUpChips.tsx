@@ -16,7 +16,7 @@ export function FollowUpChips({
           key={i}
           type="button"
           onClick={() => onSelect(chip)}
-          className="shrink-0 px-3 py-1 text-xs rounded-full border border-olive/20 text-olive/80 hover:bg-sand-100 hover:border-olive/40 transition-colors whitespace-nowrap min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="shrink-0 px-3 py-1 text-xs rounded-full border border-olive/20 text-muted-ink hover:bg-sand-100 hover:border-olive/40 transition-colors whitespace-nowrap min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           {chip}
         </button>

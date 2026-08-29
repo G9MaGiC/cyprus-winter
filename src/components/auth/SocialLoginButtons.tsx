@@ -90,7 +90,7 @@ export default function SocialLoginButtons({
           <div className="w-full border-t border-sand-200/80" />
         </div>
         <p className="relative flex justify-center text-sm">
-          <span className="bg-white/95 px-4 text-olive/70">{tAuth("social.orContinueWith")}</span>
+          <span className="bg-white/95 px-4 text-muted-ink">{tAuth("social.orContinueWith")}</span>
         </p>
       </div>
       <div

@@ -117,7 +117,7 @@ export default function TrailReportClient() {
             <span className="w-8 h-8 rounded-full bg-terracotta/20 text-terracotta flex items-center justify-center text-sm" aria-hidden>✓</span>
             {tCommon("thanksForReporting")}
           </p>
-          <p className="text-sm text-olive/70 mt-2">
+          <p className="text-sm text-muted-ink mt-2">
             {storedReport
               ? tReport("success.body", { region: trail.region })
               : tReport("success.notStored", { region: trail.region })}
@@ -161,13 +161,13 @@ export default function TrailReportClient() {
             { label: trail.name, href: `/trails/${trail.id}` },
             { label: tCommon("breadcrumbs.reportConditions"), href: `/trails/${trail.id}/report`, isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
       <h1 className={`${TYPE.sectionTitle} text-olive mt-4`}>
         {tCommon("reportConditions")}
       </h1>
-      <p className="text-olive/70 text-sm mt-1" id="report-context">
+      <p className="text-muted-ink text-sm mt-1" id="report-context">
         {tReport.rich("context", {
           name: trail.name,
           strong: (chunks) => <strong className="text-olive/90">{chunks}</strong>,
@@ -227,7 +227,7 @@ export default function TrailReportClient() {
             className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
             placeholder={tReport("placeholders.note")}
           />
-          <p className="mt-1 text-xs text-olive/60">{note.length}/500</p>
+          <p className="mt-1 text-xs text-muted-ink">{note.length}/500</p>
         </div>
 
         <div>
@@ -254,7 +254,7 @@ export default function TrailReportClient() {
             role="alert"
           >
             <p className="text-sm text-olive/90 break-words">{error}</p>
-            <p className="text-xs text-olive/70 mt-1">{tReport("errorHelp")}</p>
+            <p className="text-xs text-muted-ink mt-1">{tReport("errorHelp")}</p>
           </div>
         )}
 

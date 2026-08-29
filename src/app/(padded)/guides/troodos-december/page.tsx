@@ -63,10 +63,10 @@ function TrailCard({
           <h3 className={`${TYPE.cardTitle}`}>
             {trail.name}
           </h3>
-          <p className="text-sm text-olive/70 mt-0.5">
+          <p className="text-sm text-muted-ink mt-0.5">
             {durationLabel}
           </p>
-          <p className="text-sm text-olive/80 mt-2 line-clamp-2">
+          <p className="text-sm text-muted-ink mt-2 line-clamp-2">
             {trail.winterNotes ?? trail.description}
           </p>
         </div>
@@ -96,7 +96,7 @@ export default async function TroodosDecemberPage() {
       />
 
       <div className="prose prose-olive max-w-none mb-12">
-        <p className="text-olive/80">
+        <p className="text-muted-ink">
           {tGuide.rich("intro.body", {
             trailConditionsLink: (chunks) => (
               <AppLink href="/trails" className={SECTION.aegeanLink}>

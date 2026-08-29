@@ -92,7 +92,7 @@ export default function BeforeYouGoChecklist({
             <li key={tip.id}>
               <label
                 className={`flex gap-3 text-sm leading-relaxed cursor-pointer group focus-within:ring-2 focus-within:ring-terracotta/50 focus-within:ring-offset-2 focus-within:ring-offset-background rounded-lg p-2 -m-2 transition-colors ${
-                  isChecked ? "text-olive/60" : "text-olive/90"
+                  isChecked ? "text-muted-ink" : "text-olive/90"
                 }`}
               >
                 <span
@@ -130,7 +130,7 @@ export default function BeforeYouGoChecklist({
                   aria-label={`${title}. ${body}`}
                 />
                 <span className="break-words">
-                  <strong className={isChecked ? "line-through text-olive/50" : "text-olive"}>
+                  <strong className={isChecked ? "line-through text-muted-ink" : "text-olive"}>
                     {title}.
                   </strong>{" "}
                   {body}

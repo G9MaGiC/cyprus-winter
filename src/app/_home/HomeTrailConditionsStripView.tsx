@@ -31,9 +31,9 @@ export default function HomeTrailConditionsStripView({
           </span>
           <span className={`flex items-center gap-2 ${STRIP.meta}`}>
             {openLabel && <span className="text-sage font-medium">{openLabel}</span>}
-            {cautionLabel && <span className="text-golden font-medium">{cautionLabel}</span>}
+            {cautionLabel && <span className="text-golden-ink font-medium">{cautionLabel}</span>}
             {closedLabel && <span className="text-terracotta font-medium">{closedLabel}</span>}
-            {noReportLabel && <span className="text-olive/60">{noReportLabel}</span>}
+            {noReportLabel && <span className="text-muted-ink">{noReportLabel}</span>}
           </span>
         </div>
         <span className={STRIP.hint}>{summaryLabel}</span>

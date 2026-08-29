@@ -82,7 +82,7 @@ export default function RightNowCard({ item }: { item: RightNowItem }) {
         <div className="flex-1 p-2.5 sm:p-3 min-w-0 flex flex-col justify-center">
           <h3 className={`${TYPE.cardTitleCompact} truncate`}>{item.name}</h3>
           <p
-            className="text-xs text-olive/80 mt-0.5 truncate"
+            className="text-xs text-muted-ink mt-0.5 truncate"
             title={`${item.region} · ${distanceLabel}`}
           >
             {item.region} · {distanceLabel}

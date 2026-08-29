@@ -97,7 +97,7 @@ export default function InstallPromptBanner() {
     >
       <div className={`${CARD.base} mx-auto max-w-lg ${CARD.content} shadow-xl border border-sand-200/80`}>
         <p className="font-semibold text-charcoal mb-1">{t("title")}</p>
-        <p className="text-sm text-olive/80 mb-3">{iosMode ? t("iosHint") : t("body")}</p>
+        <p className="text-sm text-muted-ink mb-3">{iosMode ? t("iosHint") : t("body")}</p>
         <div className="flex flex-wrap gap-2">
           {!iosMode && (
             <button type="button" onClick={install} className={`${CTA.primaryCompact} min-h-[44px]`}>

@@ -89,7 +89,7 @@ export default function Breadcrumbs({ items, className }: BreadcrumbsProps) {
       aria-label={tCommon("aria.breadcrumb")}
       className={cn("py-3 px-4 sm:px-6", className)}
     >
-      <ol className="flex flex-wrap items-center gap-2 text-sm text-olive/60">
+      <ol className="flex flex-wrap items-center gap-2 text-sm text-muted-ink">
         {breadcrumbItems.map((item, index) => {
           const isLast = index === breadcrumbItems.length - 1;
           

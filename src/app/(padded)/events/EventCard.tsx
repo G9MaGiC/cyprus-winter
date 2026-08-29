@@ -8,10 +8,10 @@ import type { WinterEvent } from "@/data/events";
 
 const TYPE_COLORS: Record<string, string> = {
   festival: "bg-golden/20 text-charcoal",
-  market: "bg-terracotta/20 text-terracotta",
+  market: "bg-terracotta/20 text-terracotta-muted",
   concert: "bg-aegean/20 text-aegean",
   food: "bg-sage/20 text-olive",
-  culture: "bg-terracotta/15 text-terracotta",
+  culture: "bg-terracotta/15 text-terracotta-muted",
   sport: "bg-aegean/15 text-aegean",
 };
 
@@ -22,7 +22,7 @@ export default function EventCard({
   event: WinterEvent;
   variant?: "default" | "highlight";
 }) {
-  const typeColor = TYPE_COLORS[event.type] ?? "bg-sand-200/80 text-olive/80";
+  const typeColor = TYPE_COLORS[event.type] ?? "bg-sand-200/80 text-muted-ink";
   const tPage = useTranslations("events.page");
   const tCommon = useTranslations("common");
   const typeLabel = (type: string) => {
@@ -47,16 +47,16 @@ export default function EventCard({
         >
           {typeLabel(event.type)}
         </span>
-        <span className="text-xs text-olive/60" aria-hidden>
+        <span className="text-xs text-muted-ink" aria-hidden>
           ·
         </span>
-        <span className="text-sm text-olive/70 break-words">{event.region}</span>
+        <span className="text-sm text-muted-ink break-words">{event.region}</span>
       </div>
       <h3 className={`${TYPE.cardTitle} break-words`}>
         {event.name}
         {event.nameEl && (
           <span
-            className="ms-2 text-olive/60 font-normal text-base break-words"
+            className="ms-2 text-muted-ink font-normal text-base break-words"
             lang="el"
           >
             {event.nameEl}
@@ -73,7 +73,7 @@ export default function EventCard({
           {event.venue && <span>{event.venue}</span>}
         </p>
       )}
-      <p className="text-olive/80 text-sm mt-3 leading-relaxed break-words line-clamp-4">
+      <p className="text-muted-ink text-sm mt-3 leading-relaxed break-words line-clamp-4">
         {event.description}
       </p>
       <div className="flex flex-wrap gap-3 mt-4">

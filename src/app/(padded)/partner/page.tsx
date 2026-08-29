@@ -202,9 +202,9 @@ export default function PartnerPortalPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{t("title")}</h1>
-        <p className="text-sm text-olive/70 mb-6">{t("subtitle")}</p>
+        <p className="text-sm text-muted-ink mb-6">{t("subtitle")}</p>
         <form onSubmit={(e) => void handleSignIn(e)} className="flex flex-col gap-3 max-w-md">
-          <label className="text-sm text-olive/80" htmlFor="partner-email">
+          <label className="text-sm text-muted-ink" htmlFor="partner-email">
             {t("email.label")}
           </label>
           <input
@@ -220,7 +220,7 @@ export default function PartnerPortalPage() {
             aria-label={t("email.aria")}
             className={inputClass}
           />
-          <label className="text-sm text-olive/80" htmlFor="partner-secret">
+          <label className="text-sm text-muted-ink" htmlFor="partner-secret">
             {t("secret.label")}
           </label>
           <input
@@ -284,14 +284,14 @@ export default function PartnerPortalPage() {
         <div>
           <h1 className={TYPE.pageTitle}>{t("title")}</h1>
           {partner && (
-            <p className="text-sm text-olive/70 mt-2">{t("greeting", { name: partner.providerName })}</p>
+            <p className="text-sm text-muted-ink mt-2">{t("greeting", { name: partner.providerName })}</p>
           )}
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
             onClick={() => void handleSignOut()}
-            className="text-sm text-olive/60 hover:text-olive min-h-[44px] px-2"
+            className="text-sm text-muted-ink hover:text-olive min-h-[44px] px-2"
           >
             {t("signOut")}
           </button>
@@ -302,7 +302,7 @@ export default function PartnerPortalPage() {
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{t("requests.title")}</h2>
         {bookings.length === 0 ? (
-          <p className="text-sm text-olive/60">{t("requests.empty")}</p>
+          <p className="text-sm text-muted-ink">{t("requests.empty")}</p>
         ) : (
           <ul className="space-y-3">
             {bookings.map((booking) => (
@@ -315,12 +315,12 @@ export default function PartnerPortalPage() {
                     <p className="font-medium text-olive">
                       {t("requests.guest")}: {booking.guestName}
                     </p>
-                    <p className="text-sm text-olive/70 break-words">{booking.guestEmail}</p>
-                    <p className="text-sm text-olive/70 mt-1">
+                    <p className="text-sm text-muted-ink break-words">{booking.guestEmail}</p>
+                    <p className="text-sm text-muted-ink mt-1">
                       {t("requests.meta", { date: booking.date, party: booking.partySize })}
                     </p>
                   </div>
-                  <p className="text-sm text-olive/80">
+                  <p className="text-sm text-muted-ink">
                     {t("requests.status")}: {t(`status.${booking.status}`)}
                   </p>
                 </div>
@@ -356,7 +356,7 @@ export default function PartnerPortalPage() {
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{t("profile.title")}</h2>
         <form onSubmit={(e) => void handleSaveProfile(e)} className="flex flex-col gap-3 max-w-xl">
-          <label className="text-sm text-olive/80" htmlFor="partner-hours">
+          <label className="text-sm text-muted-ink" htmlFor="partner-hours">
             {t("profile.hoursLabel")}
           </label>
           <textarea
@@ -368,7 +368,7 @@ export default function PartnerPortalPage() {
             rows={3}
             className="w-full min-h-[88px] rounded-lg border border-sand-200/80 px-4 py-2 text-sm text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30"
           />
-          <label className="text-sm text-olive/80" htmlFor="partner-image">
+          <label className="text-sm text-muted-ink" htmlFor="partner-image">
             {t("profile.imageLabel")}
           </label>
           <input
@@ -380,8 +380,8 @@ export default function PartnerPortalPage() {
             placeholder={t("profile.imagePlaceholder")}
             className={inputClass}
           />
-          <p className="text-xs text-olive/60">{t("profile.imageHint")}</p>
-          <p className="text-xs text-olive/55">{t("profile.ephemeralNote")}</p>
+          <p className="text-xs text-muted-ink">{t("profile.imageHint")}</p>
+          <p className="text-xs text-muted-ink">{t("profile.ephemeralNote")}</p>
           <button type="submit" disabled={savingProfile} className={CTA.primaryCompact}>
             {t("profile.save")}
           </button>

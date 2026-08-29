@@ -4,14 +4,16 @@
   /* Cyprus Winter — Mediterranean warmth. Canonical hex: src/lib/brand-colors.ts */
   --background: #faf8f5;
   --foreground: #252730;
-  --terracotta: #c96f52;
-  --terracotta-muted: #b85d42;
+  --terracotta: #b55738;
+  --terracotta-muted: #9c4b30;
   --olive: #4a5162;
   --olive-muted: #6b7280;
+  --muted-ink: #646975;
   --golden: #d4a853;
+  --golden-ink: #886522;
   --charcoal: #252730;
   --aegean: #1a6b7c;
-  --sage: #6b8f7a;
+  --sage: #526c5c;
   --sage-muted: #8fa99a;
   /* cloud and sand share same hex — use sand for surfaces, cloud for body/background */
   --cloud: #faf8f5;
@@ -32,7 +34,9 @@
   --color-terracotta-muted: var(--terracotta-muted);
   --color-olive: var(--olive);
   --color-olive-muted: var(--olive-muted);
+  --color-muted-ink: var(--muted-ink);
   --color-golden: var(--golden);
+  --color-golden-ink: var(--golden-ink);
   --color-charcoal: var(--charcoal);
   --color-aegean: var(--aegean);
   --color-sage: var(--sage);
@@ -51,7 +55,7 @@ html {
   /* 16px base prevents iOS zoom on input focus */
   font-size: 16px;
   /* Subtle tap highlight for touch — terracotta tint */
-  -webkit-tap-highlight-color: rgba(201, 111, 82, 0.12);
+  -webkit-tap-highlight-color: rgba(181, 87, 56, 0.12);
 }
 
 body {
@@ -125,7 +129,7 @@ html[dir="rtl"] .font-display {
 }
 
 ::selection {
-  background: rgba(201, 111, 82, 0.18);
+  background: rgba(181, 87, 56, 0.18);
   color: var(--charcoal);
 }
 
@@ -195,8 +199,8 @@ details summary::marker {
   }
 }
 @keyframes ai-chat-trigger-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 111, 82, 0.2); }
-  50% { box-shadow: 0 0 0 8px rgba(201, 111, 82, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(181, 87, 56, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(181, 87, 56, 0); }
 }
 
 /* Section reveal — subtle fade-in for premium feel */

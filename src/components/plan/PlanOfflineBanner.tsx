@@ -16,7 +16,7 @@ export default function PlanOfflineBanner() {
     >
       <p className="font-medium text-olive">{t("title")}</p>
       <p>{t("body")}</p>
-      <p className="text-olive/75">{t("readOnly")}</p>
+      <p className="text-muted-ink">{t("readOnly")}</p>
     </div>
   );
 }

@@ -82,7 +82,7 @@ export default function PlanGuideBar({
           </AppLink>
         </TrackOnClick>
         {licensedCount > 0 && district && (
-          <p className="text-sm text-olive/60 w-full sm:w-auto">
+          <p className="text-sm text-muted-ink w-full sm:w-auto">
             {tPlan("directoryCount", { count: licensedCount })}
           </p>
         )}

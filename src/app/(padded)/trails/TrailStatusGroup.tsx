@@ -34,13 +34,13 @@ export default function TrailStatusGroup({
   return (
     <details className="group" open={defaultOpen}>
       <summary
-        className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-olive/80 mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center"
+        className="list-none cursor-pointer flex items-center gap-2 text-sm font-medium text-muted-ink mb-4 [&::-webkit-details-marker]:hidden [&::marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded min-h-[44px] items-center"
         role="button"
       >
         <span className={`w-2 h-2 rounded-full ${dotColor} shrink-0`} aria-hidden />
         {label} ({trails.length})
         <span
-          className="text-olive/50 group-open:rotate-180 ms-1 transition-transform duration-200"
+          className="text-muted-ink group-open:rotate-180 ms-1 transition-transform duration-200"
           aria-hidden
         >
           ▾
@@ -58,7 +58,7 @@ export default function TrailStatusGroup({
         ))}
       </div>
       {reportTrailId && (
-        <p className="mt-4 text-sm text-olive/70">
+        <p className="mt-4 text-sm text-muted-ink">
           <AppLink
             href={`/trails/${reportTrailId}/report`}
             className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"

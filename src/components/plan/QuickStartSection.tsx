@@ -132,17 +132,17 @@ export default function QuickStartSection({
             )}
           </div>
           <span
-            className="shrink-0 rounded-lg bg-sand-200/80 px-2.5 py-1 text-xs font-semibold text-olive/80 tabular-nums"
+            className="shrink-0 rounded-lg bg-sand-200/80 px-2.5 py-1 text-xs font-semibold text-muted-ink tabular-nums"
             aria-hidden
           >
             {template.duration}d
           </span>
         </div>
-        <span className="text-sm text-olive/70 mt-2 block break-words line-clamp-2 leading-relaxed">
+        <span className="text-sm text-muted-ink mt-2 block break-words line-clamp-2 leading-relaxed">
           {tTemplate(template.key, "description")}
         </span>
         {tripLength != null && (
-          <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-olive/70">
+          <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-muted-ink">
             {getTripFitLabel(template.duration, tripLength)}
           </span>
         )}
@@ -181,7 +181,7 @@ export default function QuickStartSection({
         </div>
       )}
       <div className="space-y-4">
-        <h3 className={`${TYPE.kicker} text-olive/70`}>
+        <h3 className={`${TYPE.kicker} text-muted-ink`}>
           {tPlanQuick("allTemplates")}
         </h3>
         <div className={`flex gap-4 overflow-x-auto pb-2 -mx-1 px-1 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x sm:grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap} sm:overflow-visible`}>
@@ -197,7 +197,7 @@ export default function QuickStartSection({
 
   const quickAddRow = !hasContent ? (
     <div className="space-y-4">
-      <p className="text-sm font-medium text-olive/80">
+      <p className="text-sm font-medium text-muted-ink">
         {tPlanQuick("quickAddLabel", { day: activeDay })}
       </p>
       <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-none scroll-smooth scroll-touch [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain min-h-[44px] items-center touch-pan-x">
@@ -212,7 +212,7 @@ export default function QuickStartSection({
               type="button"
               onClick={() => addToDay(id)}
               disabled={inDay || readOnly}
-              className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+              className={`shrink-0 snap-start transition-colors duration-200 ${PILL.base} ${inDay ? "bg-sand-200/80 text-muted-ink cursor-default" : PILL.neutral} disabled:active:scale-100`}
               aria-pressed={inDay}
               aria-label={
                 inDay
@@ -272,11 +272,11 @@ export default function QuickStartSection({
         >
           {hasContent ? tPlanQuick("titleHasContent") : tPlanQuick("titleEmpty")}
         </h2>
-        <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
+        <p className="text-sm text-muted-ink max-w-xl leading-relaxed">
           {hasContent ? tPlanQuick("descHasContent") : tPlanQuick("descEmpty")}
         </p>
         {!hasContent && tripLength == null && (
-          <p className="text-sm text-olive/60 max-w-xl mt-2">
+          <p className="text-sm text-muted-ink max-w-xl mt-2">
             {tPlanQuick("setDatesHint")}
           </p>
         )}

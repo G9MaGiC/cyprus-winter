@@ -18,7 +18,7 @@ export default function DetailPracticalInfo({ a, tDetail }: DetailPracticalInfoP
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-3`}>
-      <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
+      <h2 className={`text-xs font-semibold uppercase tracking-widest text-muted-ink ${SECTION.headingGap}`}>
         {tDetail("practical.title")}
       </h2>
       {a.openingHours && (

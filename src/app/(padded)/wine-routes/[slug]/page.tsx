@@ -97,10 +97,10 @@ export default async function WineRoutePage({ params }: Props) {
 
       {route.grapeVarieties.length > 0 && (
         <div className="mb-8">
-          <h2 className={`${TYPE.kicker} text-olive/70 mb-3`}>{tPage("grapeVarieties")}</h2>
+          <h2 className={`${TYPE.kicker} text-muted-ink mb-3`}>{tPage("grapeVarieties")}</h2>
           <div className="flex flex-wrap gap-2">
             {route.grapeVarieties.map((grape) => (
-              <span key={grape} className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-sand-100 text-olive/80 border border-sand-200/70">{grape}</span>
+              <span key={grape} className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-sand-100 text-muted-ink border border-sand-200/70">{grape}</span>
             ))}
           </div>
         </div>
@@ -108,7 +108,7 @@ export default async function WineRoutePage({ params }: Props) {
 
       {route.winterTip && (
         <div className={`${CARD.base} ${CARD.content} border-s-4 border-s-golden/30 mb-8`}>
-          <p className={`${TYPE.kicker} text-golden/80 mb-1`}>{tPage("winterTipLabel")}</p>
+          <p className={`${TYPE.kicker} text-golden-ink mb-1`}>{tPage("winterTipLabel")}</p>
           <p className="text-sm text-olive/90 leading-relaxed">{route.winterTip}</p>
         </div>
       )}

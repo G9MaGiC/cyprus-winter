@@ -25,7 +25,7 @@ export default function SearchResultCard({ result, searchQuery }: Props) {
   const region = result.item.region;
   const kind = result.kind;
   const sublabel = kind === "event" ? (result.item as { month: string }).month : region;
-  const badge = kindBadge[kind] ?? "bg-sand-100 text-olive/80";
+  const badge = kindBadge[kind] ?? "bg-sand-100 text-muted-ink";
 
   const kindLabel =
     kind === "trail"
@@ -50,7 +50,7 @@ export default function SearchResultCard({ result, searchQuery }: Props) {
             <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
               {name}
             </h3>
-            <p className="text-sm text-olive/70 mt-0.5 truncate" title={sublabel}>{sublabel}</p>
+            <p className="text-sm text-muted-ink mt-0.5 truncate" title={sublabel}>{sublabel}</p>
           </div>
           <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
             {kindLabel}

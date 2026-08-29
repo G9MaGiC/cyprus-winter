@@ -254,7 +254,7 @@ export default function TrailsClient({
           <h2 id="trails-map-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
             {tTrailsPage("map.heading", { count: filtered.length })}
           </h2>
-          <p className="text-xs text-olive/60 -mt-2 mb-3">
+          <p className="text-xs text-muted-ink -mt-2 mb-3">
             {tTrailsPage("map.caption")}
           </p>
           <div className="rounded-xl overflow-hidden border border-sand-200/80 h-[min(50vh,360px)] sm:h-[360px]">

@@ -145,7 +145,7 @@ export function AIAssistant() {
             <button
               type="button"
               onClick={clearChat}
-              className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-3 text-xs text-olive/70 hover:text-terracotta rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-3 text-xs text-muted-ink hover:text-terracotta rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
             >
               {tCommon("ai.clear")}
             </button>

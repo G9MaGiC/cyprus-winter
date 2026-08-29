@@ -19,11 +19,11 @@ export default function DiscoverCombosTeaser() {
       aria-labelledby="discover-combos-teaser-heading"
       className={`${CARD.base} ${CARD.contentLg} border-s-4 border-s-golden/40`}
     >
-      <span className={`${TYPE.kicker} text-golden`}>{tDiscover("kicker")}</span>
+      <span className={`${TYPE.kicker} text-golden-ink`}>{tDiscover("kicker")}</span>
       <h2 id="discover-combos-teaser-heading" className={`${TYPE.sectionTitle} text-olive mt-2 ${SECTION.titleGap}`}>
         {tDiscover("title")}
       </h2>
-      <p className="text-sm text-olive/70 max-w-xl leading-relaxed mb-6">{tDiscover("body")}</p>
+      <p className="text-sm text-muted-ink max-w-xl leading-relaxed mb-6">{tDiscover("body")}</p>
       <ul className="grid gap-4 sm:grid-cols-3 mb-6">
         {TEASER_KEYS.map((combo) => {
           const places = getRelatedPlaces(combo.ids);
@@ -32,7 +32,7 @@ export default function DiscoverCombosTeaser() {
           return (
             <li key={combo.key} className="rounded-xl border border-sand-200/80 bg-sand-100/40 p-4 flex flex-col">
               <h3 className={`${TYPE.cardTitle} text-base mb-1`}>{label}</h3>
-              <p className="text-xs text-olive/65 line-clamp-2 flex-1">{tCombos(`${combo.key}.why`)}</p>
+              <p className="text-xs text-muted-ink line-clamp-2 flex-1">{tCombos(`${combo.key}.why`)}</p>
               <AppLink
                 href={`/plan?add=${addIds}`}
                 className={`mt-3 ${CTA.secondaryCompact} text-center text-sm`}

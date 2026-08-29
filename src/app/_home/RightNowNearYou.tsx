@@ -35,7 +35,7 @@ function SectionShell({
           <h2 id="right-now-heading" className={`${TYPE.sectionTitle} ${SECTION.titleGap}`}>
             {title}
           </h2>
-          {subtitle && <p className="text-sm text-olive/70">{subtitle}</p>}
+          {subtitle && <p className="text-sm text-muted-ink">{subtitle}</p>}
         </header>
         {children}
       </div>
@@ -68,7 +68,7 @@ function DistanceToggle({
         className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
           value === "less"
             ? "bg-white text-olive shadow-sm"
-            : "text-olive/70 hover:text-olive"
+            : "text-muted-ink hover:text-olive"
         }`}
       >
         {tHome("rightNow.distance.closer")}
@@ -84,7 +84,7 @@ function DistanceToggle({
         className={`min-h-[44px] px-3 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
           value === "more"
             ? "bg-white text-olive shadow-sm"
-            : "text-olive/70 hover:text-olive"
+            : "text-muted-ink hover:text-olive"
         }`}
       >
         {tHome("rightNow.distance.farther")}
@@ -119,7 +119,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
     return (
       <SectionShell title={sectionTitle} subtitle={tHome("rightNow.subtitleConsent")}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
+          <p className={`text-muted-ink text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.consent.body")}
           </p>
           <LocationActionButtons
@@ -138,7 +138,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
     return (
       <SectionShell title={sectionTitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
+          <p className={`text-muted-ink text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.regionPicker.body")}
           </p>
           <RegionPickerChips
@@ -178,7 +178,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
       <SectionShell title={sectionTitle}>
         <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
           {state === "denied" ? (
-            <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
+            <p className={`text-muted-ink text-sm ${SECTION.headingGap}`}>
               {tErrors("rightNow.locationDenied")}
             </p>
           ) : lastErrorCode === "RATE_LIMITED" ? (
@@ -215,7 +215,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
     return (
       <SectionShell title={sectionTitle} subtitle={subtitle}>
           <div className="rounded-xl border border-sand-200/70 p-5 sm:p-6 bg-white/90 shadow-sm">
-          <p className={`text-olive/80 text-sm ${SECTION.headingGap}`}>
+          <p className={`text-muted-ink text-sm ${SECTION.headingGap}`}>
             {tHome("rightNow.empty.body", {
               scope: sourceMode === "region" ? tHome("rightNow.empty.scopeRegion") : tHome("rightNow.empty.scopeNow"),
             })}
@@ -229,7 +229,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
                   e.stopPropagation();
                   handlePickRegion();
                 }}
-                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-olive/80 text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="min-h-[44px] px-3 py-2 rounded-md border border-sand-200/80 text-muted-ink text-sm hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {tHome("rightNow.empty.changeRegion")}
               </button>
@@ -263,7 +263,7 @@ export default function RightNowNearYou({ title }: RightNowNearYouProps) {
         <p className={`${TYPE.kicker} text-aegean`}>
           {tHome("rightNow.adapt.kicker")}
         </p>
-        <p className="mt-1 text-sm text-olive/80 hidden sm:block">
+        <p className="mt-1 text-sm text-muted-ink hidden sm:block">
           {tHome("rightNow.adapt.body")}
         </p>
         <div className="mt-2 sm:mt-3 flex flex-wrap items-center gap-2 sm:gap-3">

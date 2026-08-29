@@ -10,9 +10,9 @@ import { useTranslations } from "next-intl";
 function typeBadge(type: RelatedPlace["type"], label: string) {
   const cls: Record<RelatedPlace["type"], string> = {
     trail: "bg-sage/15 text-sage",
-    winery: "bg-golden/15 text-golden",
+    winery: "bg-golden/15 text-golden-ink",
     attraction: "bg-aegean/15 text-aegean",
-    restaurant: "bg-sand-200/80 text-olive/80",
+    restaurant: "bg-sand-200/80 text-muted-ink",
     event: "bg-olive/10 text-olive",
   };
   return (
@@ -52,7 +52,7 @@ export default function BuildADaySection({ hasContent, onComboClick, readOnly = 
       <header>
         <span
           id="build-a-day-kicker"
-          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
+          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden-ink text-xs font-semibold uppercase tracking-wider"
           aria-hidden
         >
           {tPlan("curatedCombos")}
@@ -60,7 +60,7 @@ export default function BuildADaySection({ hasContent, onComboClick, readOnly = 
         <h2 id="build-a-day-heading" className={`mt-3 ${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
           {tPlan("buildADay")}
         </h2>
-        <p className="text-sm text-olive/70 max-w-xl leading-relaxed">
+        <p className="text-sm text-muted-ink max-w-xl leading-relaxed">
           {tPlan("curatedCombosDesc")}
         </p>
       </header>
@@ -87,15 +87,15 @@ export default function BuildADaySection({ hasContent, onComboClick, readOnly = 
               <h3 className={`${TYPE.cardTitle} text-base sm:text-lg mb-2`}>
                 {label}
               </h3>
-              <p className={`text-sm text-olive/70 mb-3 leading-relaxed`}>
+              <p className={`text-sm text-muted-ink mb-3 leading-relaxed`}>
                 {why}
               </p>
               {tip && tip !== `${combo.key}.tip` && (
-                <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-s-2 border-s-golden/40 ps-3`}>
+                <p className={`text-xs text-muted-ink ${SECTION.headingGap} italic border-s-2 border-s-golden/40 ps-3`}>
                   {tip}
                 </p>
               )}
-              <div className={`flex items-center gap-1.5 text-xs text-olive/50 ${SECTION.headingGap} uppercase tracking-wider`} aria-hidden>
+              <div className={`flex items-center gap-1.5 text-xs text-muted-ink ${SECTION.headingGap} uppercase tracking-wider`} aria-hidden>
                 <span>{tPlan("morning")}</span>
                 <span aria-hidden>→</span>
                 <span>{tPlan("afternoon")}</span>

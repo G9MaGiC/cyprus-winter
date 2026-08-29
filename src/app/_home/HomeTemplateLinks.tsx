@@ -26,7 +26,7 @@ export default async function HomeTemplateLinks({ locale }: Props) {
         <p id="templates-heading" className={`${TYPE.kicker} text-sage mb-2`}>
           {t("templates.kicker")}
         </p>
-        <p className="text-sm text-olive/70">{t("templates.subtitle")}</p>
+        <p className="text-sm text-muted-ink">{t("templates.subtitle")}</p>
       </header>
       <div className="flex flex-wrap gap-2 sm:gap-3">
         {TEMPLATE_KEYS.map((key) => (
@@ -36,7 +36,7 @@ export default async function HomeTemplateLinks({ locale }: Props) {
             className={`inline-flex flex-col sm:flex-row sm:items-center sm:gap-2 min-h-[44px] px-4 py-2.5 rounded-xl border border-sand-200/80 text-olive font-medium hover:border-terracotta/40 hover:text-terracotta hover:bg-terracotta/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
           >
             <span>{t(`templates.items.${key}.label`)}</span>
-            <span className="text-xs text-olive/60 font-normal">
+            <span className="text-xs text-muted-ink font-normal">
               {t(`templates.items.${key}.hint`)}
             </span>
           </AppLink>

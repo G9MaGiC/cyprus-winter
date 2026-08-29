@@ -44,7 +44,7 @@ export default function AttractionCard({
     winery: "bg-terracotta/20 text-terracotta",
     restaurant: "bg-golden/20 text-charcoal",
   };
-  const badge = typeColors[a.type] ?? "bg-sand-100 text-olive/80";
+  const badge = typeColors[a.type] ?? "bg-sand-100 text-muted-ink";
   const isSustainable = ["village", "monastery", "nature", "activity", "winery"].includes(
     a.type
   );
@@ -85,7 +85,7 @@ export default function AttractionCard({
               {badgeLabel}
             </span>
             {isSustainable && (
-              <span className={`${BADGE.base} ${BADGE.pill} bg-sage/20 text-olive/80`}>
+              <span className={`${BADGE.base} ${BADGE.pill} bg-sage/20 text-muted-ink`}>
                 {tCommon("local")}
               </span>
             )}
@@ -106,7 +106,7 @@ export default function AttractionCard({
           <h3 className={`${TYPE.cardTitle} line-clamp-2 duration-200`} title={a.name}>
             {a.name}
           </h3>
-          <p className="text-sm text-olive/70 mt-1 line-clamp-2 break-words">
+          <p className="text-sm text-muted-ink mt-1 line-clamp-2 break-words">
             {tease}
           </p>
           {hoursPreview && (
@@ -124,7 +124,7 @@ export default function AttractionCard({
             {(a.highlights ?? []).slice(0, 3).map((h, i) => (
               <span
                 key={`${h}-${i}`}
-                className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-olive/80 line-clamp-2 min-w-0 max-w-[180px] sm:max-w-[200px] break-words"
+                className="text-xs px-2.5 py-1 rounded-full bg-sand-200/70 text-muted-ink line-clamp-2 min-w-0 max-w-[180px] sm:max-w-[200px] break-words"
                 title={h}
               >
                 {h}

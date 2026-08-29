@@ -52,26 +52,26 @@ export default async function GuidesListPage() {
             { label: tNav("trails"), href: "/trails" },
             { label: tCommon("breadcrumbs.bookGuide"), href: "/book/guide", isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
 
       <div className={SECTION.headingMargin}>
         <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookGuide")}</h1>
-        <p className="text-olive/70 max-w-2xl">
+        <p className="text-muted-ink max-w-2xl">
           {tBookPages("guideList.intro")}
         </p>
         {guides.some((g) => isPartnerVerified(g)) && (
-          <p className="text-sm text-olive/60 mt-2 max-w-2xl">
+          <p className="text-sm text-muted-ink mt-2 max-w-2xl">
             {tBookPages("guideList.partnerCount", { count: guides.filter((g) => isPartnerVerified(g)).length })}
           </p>
         )}
-        <p className="text-sm text-olive/60 mt-3 max-w-2xl">
+        <p className="text-sm text-muted-ink mt-3 max-w-2xl">
           <AppLink href="/guides/directory" className={SECTION.aegeanLink}>
             {tBookPages("guideList.browseLicensedDirectory")}
           </AppLink>
         </p>
-        <p className="text-sm text-olive/60 mt-3 max-w-2xl">
+        <p className="text-sm text-muted-ink mt-3 max-w-2xl">
           <AppLink href="/book/winery" className={SECTION.aegeanLink}>
             {tBookPages("guideList.alsoWineries")}
           </AppLink>
@@ -97,14 +97,14 @@ export default async function GuidesListPage() {
                 )}
               </div>
               <h2 className={`${TYPE.cardTitle} mb-1`}>{guide.name}</h2>
-              <p className="text-sm text-olive/70 mb-2">{guide.region}</p>
+              <p className="text-sm text-muted-ink mb-2">{guide.region}</p>
               <GuidePartnerMeta
                 guide={guide}
                 districtLabel={tGuidesDir(`districts.${guide.district}`)}
               />
-              <p className="text-sm text-olive/80 mb-4 flex-1 line-clamp-3">{guide.description}</p>
+              <p className="text-sm text-muted-ink mb-4 flex-1 line-clamp-3">{guide.description}</p>
               {trailNames.length > 0 && (
-                <p className="text-xs text-olive/60 mb-4">
+                <p className="text-xs text-muted-ink mb-4">
                   {tBookPages("guideList.trailsPrefix")} {trailNames.slice(0, 4).join(", ")}
                   {trailNames.length > 4 ? ` ${tBookPages("guideList.moreCount", { count: trailNames.length - 4 })}` : ""}
                 </p>

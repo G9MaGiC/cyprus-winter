@@ -79,7 +79,7 @@ export default function DiscoverMapPanel({
             ? tDiscover("map.sectionTitleWithCount", { count: places.length })
             : tDiscover("map.sectionTitle")}
         </h2>
-        <p className="text-xs text-olive/60 -mt-2 mb-3">
+        <p className="text-xs text-muted-ink -mt-2 mb-3">
           {tDiscover("map.curatedBy")}
         </p>
 
@@ -94,7 +94,7 @@ export default function DiscoverMapPanel({
             />
             {legendKinds.length > 0 && (
               <ul
-                className="flex flex-wrap gap-x-4 gap-y-2 mb-3 text-xs text-olive/80"
+                className="flex flex-wrap gap-x-4 gap-y-2 mb-3 text-xs text-muted-ink"
                 aria-label={tDiscover("map.legend.aria")}
               >
                 {legendKinds.map((kind) => (
@@ -115,8 +115,8 @@ export default function DiscoverMapPanel({
         <div className={`${CARD.base} overflow-hidden bg-sand-100/50`}>
           {places.length === 0 ? (
             <div className="min-h-[280px] flex flex-col items-center justify-center gap-3 py-12 px-6 text-center">
-              <p className="text-sm text-olive/70">{tDiscover("map.emptyTitle")}</p>
-              <p className="text-xs text-olive/60">{tDiscover("map.emptyBody")}</p>
+              <p className="text-sm text-muted-ink">{tDiscover("map.emptyTitle")}</p>
+              <p className="text-xs text-muted-ink">{tDiscover("map.emptyBody")}</p>
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <AppLink href="/discover" className={CTA.primaryCompact}>
                   {tDiscover("map.emptyBrowseCta")}
@@ -136,7 +136,7 @@ export default function DiscoverMapPanel({
           )}
         </div>
         {places.length > 0 && (
-          <p className="text-sm text-olive/70 mt-3">
+          <p className="text-sm text-muted-ink mt-3">
             {tDiscover("map.footerCount", { count: places.length })}
           </p>
         )}

@@ -8,7 +8,7 @@ function TrailMapLoading() {
   const tCommon = useTranslations("common");
   return (
     <div className="h-[280px] sm:h-[320px] rounded-xl border border-sand-200/70 bg-sand-100/80 animate-pulse flex items-center justify-center">
-      <p className="text-sm text-olive/60">{tCommon("loading.map")}</p>
+      <p className="text-sm text-muted-ink">{tCommon("loading.map")}</p>
     </div>
   );
 }

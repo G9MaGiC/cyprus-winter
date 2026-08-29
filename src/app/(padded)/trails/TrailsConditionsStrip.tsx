@@ -71,7 +71,7 @@ export default function TrailsConditionsStrip({
               </span>
             )}
             {cautionCount > 0 && (
-              <span className="text-golden font-medium">
+              <span className="text-golden-ink font-medium">
                 {t("trails.conditionsStrip.cautionCount", {
                   count: cautionCount,
                 })}
@@ -85,7 +85,7 @@ export default function TrailsConditionsStrip({
               </span>
             )}
             {openCount === 0 && cautionCount === 0 && closedCount === 0 && (
-              <span className="text-olive/60">{t("trails.conditionsStrip.noReports")}</span>
+              <span className="text-muted-ink">{t("trails.conditionsStrip.noReports")}</span>
             )}
           </span>
         </div>

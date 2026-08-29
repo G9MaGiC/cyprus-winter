@@ -48,7 +48,7 @@ export default function DiscoverMapToolbar({
           {tDiscover("map.toolbar.resetView")}
         </button>
       )}
-      <span className="text-sm text-olive/70 ml-auto">
+      <span className="text-sm text-muted-ink ml-auto">
         {tDiscover("map.toolbar.placeCount", { count: placeCount })}
       </span>
     </div>

@@ -50,14 +50,14 @@ Open | In progress | Fixed | Won't fix
 2. **`text-olive/50–/70` opacity ladder** — 2.3–3.6:1 on light surfaces; mathematically cannot reach 4.5:1 at ≤0.7 alpha over near-white, any base color (×~1,400)
 3. **Sage labels `#6B8F7A`** — 3.4–3.6:1 for `prose-label` kickers (×~150)
 
-### Proposed remediation (computed, hue/saturation preserved)
-- terracotta → **#B55738** (4.79 under white, 4.52 as text on sand) — token-only change in `brand-colors.ts`/`globals.css` (+ test sync); re-check `bg-terracotta/10` chip text afterwards
-- sage text accents → **#5B7967** (4.53 on sand)
-- replace the muted-text opacity ladder with a solid muted-ink token ≈ **#666B78** (4.57 on sand-200, 5.33 on white) — this one is a repo-wide class migration (hundreds of `text-olive/60|70|80` call sites), not a token swap
-- `text-olive/50` decorative hints (2.3:1) should become the muted-ink token or gain size/weight
+### Remediation (shipped, hue/saturation preserved)
+- terracotta **#C96F52 → #B55738** (4.79 under white, 4.52 as text on sand); terracotta-muted **#B85D42 → #9C4B30** (derived, same ΔL — 6.06 under white) so hover states stay AA
+- sage **#6B8F7A → #526C5C** (4.71 on tinted panels, 5.74 under white)
+- new **`muted-ink` token #646975** (5.50 on white, 4.62 on tinted chips) replaces the `text-olive/50–/80` opacity ladder — 522 call sites migrated repo-wide, including `text-terracotta/70–/90`, `text-sage/80`, `text-aegean/80` → solid; new **`golden-ink` #886522** for golden-as-text on light surfaces (golden stays for dark); terracotta-on-tint chips (lang switcher, event/winery category chips, AI action buttons, form errors) → terracotta-muted. Verified: axe reports 0 contrast nodes on all 11 swept pages. Decorative aria-hidden glyphs (breadcrumb `/`, disclosure chevrons) intentionally stay faint; `text-olive/85–/90` pass AA (≥5.0) and remain
+- synced: `brand-colors.ts` (+`BRAND_RGB` 181, 87, 56), `globals.css` rgba ×4, `global-error.tsx`, `public/error.html`, Android manifest `theme_color`, skill doc palette table
 
 ### Fix status
-Open — palette change is a brand decision (persona: "terracotta confidence" vs "Accessibility… no compromise"). Audit + harness shipped: `e2e/a11y.spec.ts` gates the clean structural baseline and reports contrast (flip `CONTRAST_IS_FATAL` when the palette lands). P3-06 audit portion complete.
+Fixed — palette repaint applied per the computed proposal; `CONTRAST_IS_FATAL = true` in `e2e/a11y.spec.ts`, so contrast is now a hard gate alongside the structural rules. P3-06 complete.
 
 ---
 

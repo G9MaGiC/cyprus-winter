@@ -36,7 +36,7 @@ export default async function TeamPage() {
             key={member.id}
             className={`group ${CARD.base} ${CARD.content} ${CARD.hover} bg-sand-100/90`}
           >
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta/30 to-terracotta/20 flex items-center justify-center text-2xl font-display font-bold text-olive/80 mb-4">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta/30 to-terracotta/20 flex items-center justify-center text-2xl font-display font-bold text-muted-ink mb-4">
               {member.name
                 .split(" ")
                 .map((n) => n[0])
@@ -48,14 +48,14 @@ export default async function TeamPage() {
             <p className="text-terracotta font-medium text-sm mt-0.5 truncate" title={member.role}>
               {member.role}
             </p>
-            <p className="text-olive/80 text-sm mt-3 leading-relaxed prose-body break-words">
+            <p className="text-muted-ink text-sm mt-3 leading-relaxed prose-body break-words">
               {member.bio}
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               {member.expertise.map((e) => (
                 <span
                   key={e}
-                  className="text-xs px-2.5 py-1 rounded-md bg-sand-100 text-olive/80 break-words"
+                  className="text-xs px-2.5 py-1 rounded-md bg-sand-100 text-muted-ink break-words"
                 >
                   {e}
                 </span>
@@ -66,7 +66,7 @@ export default async function TeamPage() {
       </div>
 
       <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-s-4 border-s-terracotta/20 text-center`}>
-        <p className="text-sm text-olive/80 mb-4">{tTeam("cta.prompt")}</p>
+        <p className="text-sm text-muted-ink mb-4">{tTeam("cta.prompt")}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <AIAssistantTrigger label={tTeam("cta.askAi")} />
           <AppLink href="/plan" className={`px-6 py-3 ${CTA.primaryCompact}`}>
@@ -78,7 +78,7 @@ export default async function TeamPage() {
         </div>
       </div>
 
-      <p className="mt-12 text-center text-olive/70 text-sm max-w-md mx-auto leading-relaxed break-words">
+      <p className="mt-12 text-center text-muted-ink text-sm max-w-md mx-auto leading-relaxed break-words">
         {tTeam("outro")}
       </p>
     </div>

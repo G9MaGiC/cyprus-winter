@@ -105,10 +105,10 @@ export default async function WineRoutesHubPage() {
               </div>
               <div className={CARD.content}>
                 <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{route.title}</h2>
-                <p className="text-sm text-olive/75 leading-relaxed line-clamp-3">{route.description}</p>
+                <p className="text-sm text-muted-ink leading-relaxed line-clamp-3">{route.description}</p>
                 {route.winterTip && (
-                  <p className="mt-3 text-xs text-olive/60">
-                    <span className="font-medium text-olive/80">{tHub("winterTipLabel")}: </span>
+                  <p className="mt-3 text-xs text-muted-ink">
+                    <span className="font-medium text-muted-ink">{tHub("winterTipLabel")}: </span>
                     {route.winterTip}
                   </p>
                 )}

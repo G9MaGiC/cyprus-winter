@@ -14,8 +14,8 @@ export default function PlanSustainabilityStrip({ className = "" }: { className?
       className={`rounded-2xl border border-sand-200/80 bg-sand-100/40 px-4 py-4 sm:px-5 sm:py-5 ${className}`}
       aria-label={t("aria")}
     >
-      <p className={`${TYPE.kicker} text-olive/70`}>{t("heading")}</p>
-      <p className="text-sm text-olive/80 mt-1 leading-relaxed">{t("body")}</p>
+      <p className={`${TYPE.kicker} text-muted-ink`}>{t("heading")}</p>
+      <p className="text-sm text-muted-ink mt-1 leading-relaxed">{t("body")}</p>
       <ul className="mt-3 flex flex-col gap-2 text-sm">
         {links.map((link) => (
           <li key={link.id}>

@@ -19,14 +19,14 @@ export default async function DiscoverMapSection() {
         >
           {places.length > 0 ? tDiscover("map.sectionTitleWithCount", { count: places.length }) : tDiscover("map.sectionTitle")}
         </h2>
-        <p className="text-xs text-olive/60 -mt-2 mb-3">
+        <p className="text-xs text-muted-ink -mt-2 mb-3">
           {tDiscover("map.curatedBy")}
         </p>
         <div className="rounded-xl overflow-hidden border border-sand-200/80 bg-sand-100/50 shadow-[0_2px_12px_rgba(37,39,48,0.06)]">
           {places.length === 0 ? (
             <div className="min-h-[280px] flex flex-col items-center justify-center gap-2 py-12 px-6 text-center">
-              <p className="text-sm text-olive/70">{tDiscover("map.emptyTitle")}</p>
-              <p className="text-xs text-olive/60">{tDiscover("map.emptyBody")}</p>
+              <p className="text-sm text-muted-ink">{tDiscover("map.emptyTitle")}</p>
+              <p className="text-xs text-muted-ink">{tDiscover("map.emptyBody")}</p>
             </div>
           ) : (
             <DiscoverMapClient places={places} />

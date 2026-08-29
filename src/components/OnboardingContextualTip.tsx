@@ -54,7 +54,7 @@ export default function OnboardingContextualTip({
       <button
         type="button"
         onClick={onDismiss}
-        className="shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/50 hover:text-olive text-sm rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+        className="shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-ink hover:text-olive text-sm rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
         aria-label={tCommon("aria.dismissTip")}
       >
         ×

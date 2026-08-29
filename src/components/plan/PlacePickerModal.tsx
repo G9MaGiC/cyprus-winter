@@ -63,14 +63,14 @@ export default function PlacePickerModal({ activeDayItems, onAdd, onClose }: Pro
           <button
             type="button"
             onClick={handleClose}
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl text-olive/70 hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl text-muted-ink hover:text-olive hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={tCommon("aria.close")}
           >
             <span className="text-lg font-medium" aria-hidden>×</span>
           </button>
         </div>
         <div className="flex-1 overflow-y-auto overscroll-contain p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-6 sm:pb-6">
-          <p className="text-sm text-olive/70 mb-4">
+          <p className="text-sm text-muted-ink mb-4">
             {tPlan("placePickerIntro")}
           </p>
           <PlacePicker activeDayItems={activeDayItems} onAdd={handleAdd} />

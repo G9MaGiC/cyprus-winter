@@ -128,7 +128,7 @@ export function AIChatInput({
               className="w-full flex items-center gap-3 min-h-[44px] px-4 py-2.5 text-start hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
             >
               <span className="text-sm font-mono text-terracotta">{command}</span>
-              <span className="text-xs text-olive/60">{tCommon(`ai.slash.${descriptionKey}`)}</span>
+              <span className="text-xs text-muted-ink">{tCommon(`ai.slash.${descriptionKey}`)}</span>
             </button>
           ))}
         </div>
@@ -156,7 +156,7 @@ export function AIChatInput({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={tCommon("ai.inputPlaceholder")}
-            className="flex-1 bg-transparent border-none outline-none text-base text-olive placeholder:text-olive/50 focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
+            className="flex-1 bg-transparent border-none outline-none text-base text-olive placeholder:text-muted-ink focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
             disabled={loading}
           />
             <button

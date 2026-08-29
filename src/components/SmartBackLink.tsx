@@ -75,7 +75,7 @@ export default function SmartBackLink({
     <AppLink
       href={href}
       className={cn(
-        "inline-flex items-center gap-1 text-sm text-olive/70 hover:text-terracotta transition-colors",
+        "inline-flex items-center gap-1 text-sm text-muted-ink hover:text-terracotta transition-colors",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded px-2 -mx-2 min-h-[44px] py-2",
         className
       )}

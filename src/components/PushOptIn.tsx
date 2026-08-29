@@ -132,7 +132,7 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
   return (
     <div className={`${CARD.base} ${CARD.content} mt-4 bg-aegean/5 border-aegean/20`}>
       <p className="text-sm font-medium text-olive mb-2">{tPush("title")}</p>
-      <p className="text-xs text-olive/80 mb-3">
+      <p className="text-xs text-muted-ink mb-3">
         {variant === "far" ? tPush("bodyFar") : tPush("bodySoon")}
       </p>
       <button

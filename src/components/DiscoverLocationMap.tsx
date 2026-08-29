@@ -63,7 +63,7 @@ export default function DiscoverLocationMap({
           <button
             type="button"
             onClick={() => setShouldLoad(true)}
-            className="w-full h-full min-h-[200px] flex flex-col items-center justify-center gap-2 px-4 text-sm font-medium text-olive/70 hover:text-olive hover:bg-sand-100/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="w-full h-full min-h-[200px] flex flex-col items-center justify-center gap-2 px-4 text-sm font-medium text-muted-ink hover:text-olive hover:bg-sand-100/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={loadMapLabel}
           >
             <svg className="w-8 h-8 text-olive/40" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -81,7 +81,7 @@ export default function DiscoverLocationMap({
               />
             </svg>
             {loadMapLabel}
-            <span className="text-xs text-olive/50 font-normal">{name}</span>
+            <span className="text-xs text-muted-ink font-normal">{name}</span>
           </button>
         )}
       </div>

@@ -77,7 +77,7 @@ export default async function WineryBookPage({
             { label: winery.name, href: `/discover/${id}` },
             { label: tCommon("breadcrumbs.bookTasting"), href: canonicalUrl, isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
 
@@ -94,7 +94,7 @@ export default async function WineryBookPage({
             />
           </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/20 text-terracotta">
+          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/10 text-terracotta-muted">
             {tCommon("wineTasting")}
           </span>
           {isPartnerVerified(winery) && (
@@ -109,11 +109,11 @@ export default async function WineryBookPage({
         <h1 className={`${TYPE.pageTitle} mt-3`}>
           {tCommon("bookTasting")}
         </h1>
-        <p className="text-olive/80 mt-1 break-words">{winery.name} · {winery.region}</p>
+        <p className="text-muted-ink mt-1 break-words">{winery.name} · {winery.region}</p>
         {winery.bestFor && winery.bestFor.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-2">
             {winery.bestFor.slice(0, 4).map((tag) => (
-              <span key={tag} className="inline-block px-2 py-0.5 rounded-md text-xs bg-sand-200/80 text-olive/70">
+              <span key={tag} className="inline-block px-2 py-0.5 rounded-md text-xs bg-sand-200/80 text-muted-ink">
                 {tag}
               </span>
             ))}
@@ -121,7 +121,7 @@ export default async function WineryBookPage({
         )}
         {winery.tastingInfo && (
           <div className="mt-3 p-3 rounded-lg border border-sand-200/80 bg-white/70">
-            <p className="text-sm text-olive/80 break-words prose-body">{winery.tastingInfo}</p>
+            <p className="text-sm text-muted-ink break-words prose-body">{winery.tastingInfo}</p>
           </div>
         )}
         {winery.winterTip && (
@@ -133,7 +133,7 @@ export default async function WineryBookPage({
           </div>
         )}
         {winery.bestTimeToVisit && (
-          <p className="text-sm text-olive/70 mt-2 break-words">
+          <p className="text-sm text-muted-ink mt-2 break-words">
             <strong className="text-olive/85">{tBookPages("wineryDetail.bestTime.label")}</strong>{" "}
             {winery.bestTimeToVisit}
           </p>
@@ -150,17 +150,17 @@ export default async function WineryBookPage({
                     </div>
                   )}
                   <p className="text-xs font-medium text-olive truncate">{wine.name}</p>
-                  {wine.variety && <p className="text-xs text-olive/60 truncate">{wine.variety}</p>}
+                  {wine.variety && <p className="text-xs text-muted-ink truncate">{wine.variety}</p>}
                   {wine.price && <p className="text-xs font-medium text-terracotta mt-0.5">{wine.price}</p>}
                 </div>
               ))}
             </div>
           </div>
         )}
-        <p className="text-sm text-olive/70 mt-3 max-w-lg break-words prose-body">
+        <p className="text-sm text-muted-ink mt-3 max-w-lg break-words prose-body">
           {tBookPages("wineryDetail.intro")}
         </p>
-        <p className="text-xs text-olive/60 mt-2 break-words">
+        <p className="text-xs text-muted-ink mt-2 break-words">
           {tBookPages("wineryDetail.disclaimer")}
         </p>
       </div>
@@ -173,7 +173,7 @@ export default async function WineryBookPage({
       />
 
       {(winery.openingHours || winery.transport || winery.parking) && (
-        <div className="mt-6 rounded-lg border border-sand-200/70 bg-sand-100/60 p-4 space-y-2 text-sm text-olive/75">
+        <div className="mt-6 rounded-lg border border-sand-200/70 bg-sand-100/60 p-4 space-y-2 text-sm text-muted-ink">
           {winery.openingHours && (
             <p><strong className="text-olive/90">{tBookPages("wineryDetail.practical.hours")}</strong> {winery.openingHours}</p>
           )}
@@ -189,7 +189,7 @@ export default async function WineryBookPage({
       {(winery.bookingUrl || winery.contactPhone) && (
         <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>
           {winery.bookingUrl && (
-            <p className="text-sm text-olive/80">
+            <p className="text-sm text-muted-ink">
               {tBookPages("wineryDetail.other.or")}{" "}
               <a
                 href={winery.bookingUrl}
@@ -204,7 +204,7 @@ export default async function WineryBookPage({
             </p>
           )}
           {winery.contactPhone && (
-            <p className="text-sm text-olive/70">
+            <p className="text-sm text-muted-ink">
               {tBookPages("wineryDetail.other.callPrefix")}{" "}
               <a href={`tel:${winery.contactPhone}`} className="inline-flex items-center min-h-[44px] py-2 px-3 rounded-md text-terracotta hover:underline font-medium hover:bg-terracotta/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2">
                 {winery.contactPhone}
@@ -257,7 +257,7 @@ export default async function WineryBookPage({
                   className="block rounded-lg border border-sand-200/80 bg-white/70 p-3 hover:border-terracotta/30 transition-colors"
                 >
                   <p className="text-sm font-medium text-olive">{place.name}</p>
-                  <p className="text-xs text-olive/60 mt-0.5">{place.region}</p>
+                  <p className="text-xs text-muted-ink mt-0.5">{place.region}</p>
                 </AppLink>
               ))}
             </div>

@@ -35,7 +35,7 @@ export default function SuggestedForDay({
 
   if (activeDayItems.length === 0) {
     return (
-      <p className={embedded ? "text-xs text-olive/60" : "mb-4 text-xs text-olive/60"}>
+      <p className={embedded ? "text-xs text-muted-ink" : "mb-4 text-xs text-muted-ink"}>
         {t("empty")}
       </p>
     );
@@ -48,7 +48,7 @@ export default function SuggestedForDay({
       {!embedded && (
         <span className="text-xs font-semibold text-aegean uppercase tracking-wider block mb-2">{t("pairWith")}</span>
       )}
-      <p className="text-xs text-olive/70 mb-3">
+      <p className="text-xs text-muted-ink mb-3">
         {t("worksWell")}
       </p>
       <div className="flex flex-wrap gap-2">
@@ -61,7 +61,7 @@ export default function SuggestedForDay({
             className="inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2 rounded-lg text-sm font-medium bg-white border border-sand-200/80 text-olive hover:border-aegean/40 hover:bg-aegean/10 hover:text-aegean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <span className="truncate max-w-[140px]">{r.name}</span>
-            <span className="text-aegean/80 shrink-0">+</span>
+            <span className="text-aegean shrink-0">+</span>
           </button>
         ))}
       </div>

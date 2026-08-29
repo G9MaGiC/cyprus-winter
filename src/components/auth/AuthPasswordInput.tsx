@@ -21,7 +21,7 @@ export type AuthPasswordInputProps = {
 };
 
 const inputBase =
-  "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors duration-200";
+  "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-muted-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors duration-200";
 const inputError = "border-terracotta/40 focus-visible:ring-terracotta/50";
 
 function getStrengthKey(password: string): "tooShort" | "good" | "strong" | null {
@@ -52,7 +52,7 @@ export default function AuthPasswordInput({
   const strengthKey = showStrength ? getStrengthKey(value) : null;
   const strengthColor =
     strengthKey === "tooShort"
-      ? "text-olive/60"
+      ? "text-muted-ink"
       : strengthKey
         ? "text-sage font-medium"
         : "";
@@ -76,7 +76,7 @@ export default function AuthPasswordInput({
       {(hint || strengthKey) && (
         <div className="flex items-center justify-between mb-1.5">
           {hint && (
-            <p id={`${id}-hint`} className="text-xs text-olive/60">
+            <p id={`${id}-hint`} className="text-xs text-muted-ink">
               {hint}
             </p>
           )}
@@ -110,7 +110,7 @@ export default function AuthPasswordInput({
         <button
           type="button"
           onClick={() => setShowPassword((v) => !v)}
-          className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
+          className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-ink hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
           aria-label={showPassword ? tAuth("hide") : tAuth("show")}
           tabIndex={-1}
         >

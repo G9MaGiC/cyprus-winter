@@ -6,7 +6,7 @@ import EmergencyLine from "./EmergencyLine";
 import { useTranslations } from "next-intl";
 
 const footerLinkClass =
-  "min-h-[44px] py-2 inline-flex items-center text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded";
+  "min-h-[44px] py-2 inline-flex items-center text-muted-ink hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded";
 
 export type SiteFooterProps = {
   /** Translated labels (from getTranslations). Omit for root layout (English). */
@@ -94,7 +94,7 @@ export default function SiteFooter({ labels, localeSwitcher, LinkComponent = App
 
         <nav
           aria-label={tCommon("aria.footerLegal")}
-          className={`flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-olive/70 ${SECTION.headingGap}`}
+          className={`flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-muted-ink ${SECTION.headingGap}`}
         >
           <LinkComponent href="/privacy" prefetch="auto" className={footerLinkClass}>
             {L.privacy}
@@ -106,7 +106,7 @@ export default function SiteFooter({ labels, localeSwitcher, LinkComponent = App
 
         <EmergencyLine variant="pill" className={SECTION.headingGap} />
 
-        <p className={`text-xs text-olive/70 max-w-md mx-auto text-center leading-relaxed ${SECTION.headingGap}`}>
+        <p className={`text-xs text-muted-ink max-w-md mx-auto text-center leading-relaxed ${SECTION.headingGap}`}>
           {L.practical}
         </p>
 

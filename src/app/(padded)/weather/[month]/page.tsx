@@ -101,7 +101,7 @@ export default async function WeatherMonthPage({ params }: Props) {
 
   if (!row) notFound();
 
-  const clampedDescClass = "text-olive/80 text-sm line-clamp-2 leading-relaxed";
+  const clampedDescClass = "text-muted-ink text-sm line-clamp-2 leading-relaxed";
   const currentMonthChipClass = "border-terracotta/50 bg-terracotta/5";
   const otherMonthChipClass = "border-sand-200/80 hover:border-terracotta/30";
 
@@ -151,7 +151,7 @@ export default async function WeatherMonthPage({ params }: Props) {
           <h2 className={`${TYPE.sectionTitle} mt-2`}>
             {tWeatherMonth("hero.heading", { month: monthName })}
           </h2>
-          <p className="text-olive/80 mt-3 max-w-2xl prose-body break-words leading-relaxed">
+          <p className="text-muted-ink mt-3 max-w-2xl prose-body break-words leading-relaxed">
             {tWeatherMonth("hero.body", {
               coastMid,
               troodosMid,
@@ -179,7 +179,7 @@ export default async function WeatherMonthPage({ params }: Props) {
               >
                 <div className="flex flex-col">
                   <span className={`${TYPE.cardTitleCompact} ${isCurrent ? "text-terracotta" : "text-olive"}`}>{name}</span>
-                  <span className={`mt-1 text-xs ${isCurrent ? "text-terracotta/80" : "text-olive/70"}`}>
+                  <span className={`mt-1 text-xs ${isCurrent ? "text-terracotta" : "text-muted-ink"}`}>
                     {tWeatherPage("table.coast")} {monthRow.coastMinC}–{monthRow.coastMaxC}° · {tWeatherPage("table.troodos")} {monthRow.troodosMinC}–{monthRow.troodosMaxC}°
                   </span>
                 </div>
@@ -245,9 +245,9 @@ export default async function WeatherMonthPage({ params }: Props) {
                     className="block group"
                   >
                     <h3 className="font-medium text-olive group-hover:text-terracotta transition-colors">{e.name}</h3>
-                    <p className="text-sm text-olive/80 mt-1 line-clamp-2">{e.description}</p>
+                    <p className="text-sm text-muted-ink mt-1 line-clamp-2">{e.description}</p>
                     {e.dates && (
-                      <p className="text-xs text-olive/70 mt-2">{e.dates}</p>
+                      <p className="text-xs text-muted-ink mt-2">{e.dates}</p>
                     )}
                   </AppLink>
                   <AppLink

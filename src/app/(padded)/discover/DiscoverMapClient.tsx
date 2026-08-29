@@ -10,7 +10,7 @@ const DiscoverMap = dynamic(() => import("./DiscoverMap").then((m) => m.default)
   loading: () => (
     <div className="min-h-[280px] aspect-video w-full rounded-xl overflow-hidden border border-sand-200/80 bg-sand-200/50 flex flex-col items-center justify-center gap-3 animate-pulse">
       <div className="h-4 w-24 rounded-lg bg-sand-300/50" aria-hidden />
-      <p className="text-sm text-olive/60 animate-none">
+      <p className="text-sm text-muted-ink animate-none">
         <DiscoverMapLoadingLabel />
       </p>
     </div>

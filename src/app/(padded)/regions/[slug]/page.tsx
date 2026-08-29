@@ -66,7 +66,7 @@ function TrailCard({ trail }: { trail: Trail }) {
         <h3 className={`${TYPE.cardTitle} truncate`} title={trail.name}>
           {trail.name}
         </h3>
-        <p className="text-sm text-olive/70">
+        <p className="text-sm text-muted-ink">
           {trail.lengthKm} km · ~{durationH}h
         </p>
       </div>
@@ -99,7 +99,7 @@ function PlaceCard({
         <h3 className={`${TYPE.cardTitle} truncate`} title={item.name}>
           {item.name}
         </h3>
-        <p className="text-sm text-olive/70 line-clamp-2 break-words">{item.description}</p>
+        <p className="text-sm text-muted-ink line-clamp-2 break-words">{item.description}</p>
       </div>
     </AppLink>
   );
@@ -269,9 +269,9 @@ export default async function RegionPage({ params }: Props) {
                   className={`${CARD.base} ${CARD.content}`}
                 >
                   <h3 className="font-medium text-olive">{e.name}</h3>
-                  <p className="text-sm text-olive/80 mt-1">{e.description}</p>
+                  <p className="text-sm text-muted-ink mt-1">{e.description}</p>
                   {e.dates && (
-                    <p className="text-xs text-olive/70 mt-2">{e.dates}</p>
+                    <p className="text-xs text-muted-ink mt-2">{e.dates}</p>
                   )}
                 </li>
               ))}

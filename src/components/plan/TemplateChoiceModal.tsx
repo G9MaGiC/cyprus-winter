@@ -51,7 +51,7 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
         <h2 id="template-choice-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           {t("title", { template: templateLabel })}
         </h2>
-        <p id="template-choice-desc" className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
+        <p id="template-choice-desc" className={`text-muted-ink text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
           {t("description")}
         </p>
         <div className="flex flex-col-reverse sm:flex-row sm:flex-wrap gap-3 justify-end pt-2">

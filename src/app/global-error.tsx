@@ -62,7 +62,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
     <html lang="en">
       <body style={bodyStyle}>
         <main role="alert" style={cardStyle}>
-          <p style={{ margin: "0 0 8px", color: "#c96f52", fontWeight: 700 }}>
+          <p style={{ margin: "0 0 8px", color: "#b55738", fontWeight: 700 }}>
             Cyprus Winter
           </p>
           <h1 style={{ margin: 0, fontSize: "clamp(1.75rem, 6vw, 2.5rem)" }}>
@@ -75,7 +75,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             <button
               type="button"
               onClick={reset}
-              style={{ ...actionStyle, background: "#c96f52", color: "#ffffff" }}
+              style={{ ...actionStyle, background: "#b55738", color: "#ffffff" }}
             >
               Try again
             </button>

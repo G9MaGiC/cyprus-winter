@@ -31,14 +31,15 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | Background | `background`, `cloud` | #FAF8F5 | body, surfaces |
 | Background alt | `sand`, `sand-100` | #F5F2ED | cards, inputs |
 | Borders | `sand-200`, `sand-300` | #EAE6DF, #D4CFC5 | `sand-mid`, `sand-dark` in :root |
-| Primary accent (CTAs, links) | `terracotta` | #C96F52 | Use `TOKENS.terracotta` for inline styles (Leaflet, etc.) |
-| Primary muted | `terracotta-muted` | #B85D42 | Hover states |
+| Primary accent (CTAs, links) | `terracotta` | #B55738 | Use `TOKENS.terracotta` for inline styles (Leaflet, etc.) |
+| Primary muted | `terracotta-muted` | #9C4B30 | Hover states |
 | Secondary (text) | `olive` | #4A5162 | Body text |
-| Muted text | `olive-muted`, `olive/70` | #6B7280 | Labels, captions |
+| Muted text | `muted-ink`, `olive-muted` | #646975, #6B7280 | Labels, captions — use `text-muted-ink` (WCAG AA); never `text-olive/50-80` opacity |
 | Text, headings | `charcoal` | #252730 | Same as olive for contrast |
 | Accent (golden hour) | `golden` | #D4A853 | Nav, hero CTA |
 | Sea/water accent | `aegean` | #1A6B7C | Status open, secondary links, opt-in, navigation bars |
-| Earth accent | `sage` | #6B8F7A | Trail markers, sustainable badges |
+| Earth accent | `sage` | #526C5C | Trail markers, sustainable badges |
+| Golden as text on light | `golden-ink` | #886522 | Kickers/labels on light surfaces; `golden` itself is for dark surfaces only |
 
 ### CTA hierarchy
 

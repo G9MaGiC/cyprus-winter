@@ -23,7 +23,7 @@ export default function TrailsPlaceOfDay() {
       <div className={`${LAYOUT.list} mx-auto`}>
         <h2
           id="trails-place-of-day-heading"
-          className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}
+          className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}
         >
           {tTrails("placeOfDay.heading")}
         </h2>
@@ -64,7 +64,7 @@ export default function TrailsPlaceOfDay() {
                 {place.tease}
               </p>
               {place.pairWith && (
-                <p className="text-sm text-olive/80 mt-3">
+                <p className="text-sm text-muted-ink mt-3">
                   {tTrails("placeOfDay.pairWith")}{" "}
                   <AppLink
                     href={place.pairWith.href}
