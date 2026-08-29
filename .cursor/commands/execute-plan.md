@@ -2,11 +2,13 @@
 description: Execute a written implementation plan using the executing-plans skill (Cyprus Winter)
 ---
 
-Use the **executing-plans** Superpowers skill. Read it first:
+Use the **executing-plans** Superpowers skill if available. Locate it (first match wins):
 
-`~/.cursor/plugins/cache/cursor-public/superpowers/b7a8f76985f1e93e75dd2f2a3b424dc731bd9d37/skills/executing-plans/SKILL.md`
+1. An `executing-plans` skill already loaded in your environment (plugin or skills list).
+2. `~/.cursor/plugins/cache/cursor-public/superpowers/*/skills/executing-plans/SKILL.md` (glob — the cache hash varies per machine/version).
+3. **Not found?** Proceed without it: work through the plan task-by-task in order, verify after each task as the plan specifies, and stop to ask on any blocker or deviation.
 
-Announce at start: **"I'm using the executing-plans skill to implement this plan."**
+Announce at start: **"I'm using the executing-plans skill to implement this plan."** (or that you're following the plan directly, if the skill is unavailable).
 
 ## Plan source
 
@@ -48,9 +50,7 @@ Run `npm run test:e2e:gate:ci` when touching discover/plan/book funnel, hub foot
 
 ## When finished
 
-Use **finishing-a-development-branch** skill:
-
-`~/.cursor/plugins/cache/cursor-public/superpowers/b7a8f76985f1e93e75dd2f2a3b424dc731bd9d37/skills/finishing-a-development-branch/SKILL.md`
+Use the **finishing-a-development-branch** skill (locate it the same way as `executing-plans` above; if unavailable, do the equivalent by hand):
 
 Verify tests, present merge/PR options, execute the user's choice.
 
