@@ -15,6 +15,7 @@ import { useSearchParams } from "next/navigation";
 import { discoverDetailHref, getDiscoverTypeLabel } from "@/lib/discover-links";
 import { isCallAheadHours, placeCardHours } from "@/lib/place-card-hours";
 import { useTranslations } from "next-intl";
+import { isPartnerVerified } from "@/lib/partner-verification";
 
 export default function AttractionCard({
   a,
@@ -88,7 +89,7 @@ export default function AttractionCard({
                 {tCommon("local")}
               </span>
             )}
-            {isWinery && (a as Winery).isVerified && (
+            {isWinery && isPartnerVerified(a as Winery) && (
               <span
                 className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}
                 title={tCommon("verifiedPartnerTitle")}

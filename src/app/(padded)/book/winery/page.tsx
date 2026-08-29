@@ -11,6 +11,7 @@ import BookWineryHubFooter from "@/components/BookWineryHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
+import { isPartnerVerified } from "@/lib/partner-verification";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("book.pages.wineryList.meta");
@@ -66,8 +67,8 @@ export default async function WineriesListPage() {
       <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {(() => {
           const sorted = [...wineries].sort((a, b) => {
-            if (a.isVerified && !b.isVerified) return -1;
-            if (!a.isVerified && b.isVerified) return 1;
+            if (isPartnerVerified(a) && !isPartnerVerified(b)) return -1;
+            if (!isPartnerVerified(a) && isPartnerVerified(b)) return 1;
             return 0;
           });
 
@@ -101,7 +102,7 @@ export default async function WineriesListPage() {
                     <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                       {tCommon("wineTasting")}
                     </span>
-                    {winery.isVerified && (
+                    {isPartnerVerified(winery) && (
                       <span className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}>
                         {tCommon("verifiedPartner")}
                       </span>

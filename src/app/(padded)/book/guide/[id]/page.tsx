@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import GuideBookingForm from "./GuideBookingForm";
 import GuidePartnerMeta from "@/components/guides/GuidePartnerMeta";
 import { getLocale, getTranslations } from "next-intl/server";
+import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ id: g.id }));
@@ -86,7 +87,7 @@ export default async function GuideBookPage({
           <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean">
             {tBookPages("guideDetail.badge")}
           </span>
-          {guide.isVerified && (
+          {isPartnerVerified(guide) && (
             <span
               className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean"
               title={tBookPages("guideDetail.verifiedTitle")}

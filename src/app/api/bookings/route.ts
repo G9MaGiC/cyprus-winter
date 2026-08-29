@@ -18,6 +18,7 @@ import {
 } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
+import { isPartnerVerified } from "@/lib/partner-verification";
 import {
   createBookingLookupToken,
   isBookingLookupTokenConfigured,
@@ -253,7 +254,7 @@ export async function POST(req: Request) {
         } catch (e) {
           console.error("Guest email send failed:", e);
         }
-        if (winery.isVerified && winery.partnerEmail?.trim()) {
+        if (isPartnerVerified(winery) && winery.partnerEmail?.trim()) {
           try {
             wineryNotificationSent = await sendBookingRequestToWinery(booking, {
               name: winery.name,
@@ -275,7 +276,7 @@ export async function POST(req: Request) {
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
             confirmationSent,
-            ...(winery.isVerified && winery.partnerEmail?.trim()
+            ...(isPartnerVerified(winery) && winery.partnerEmail?.trim()
               ? { wineryNotificationSent }
               : {}),
           },
@@ -317,7 +318,7 @@ export async function POST(req: Request) {
         } catch (e) {
           console.error("Guest email send failed:", e);
         }
-        if (guide.isVerified && guide.partnerEmail?.trim()) {
+        if (isPartnerVerified(guide) && guide.partnerEmail?.trim()) {
           try {
             guideNotificationSent = await sendBookingRequestToGuide(
               booking,
@@ -340,7 +341,7 @@ export async function POST(req: Request) {
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
             confirmationSent,
-            ...(guide.isVerified && guide.partnerEmail?.trim()
+            ...(isPartnerVerified(guide) && guide.partnerEmail?.trim()
               ? { guideNotificationSent }
               : {}),
           },
