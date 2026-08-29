@@ -73,21 +73,21 @@ export default function PlanShareBar({
     >
       <div className={`${LAYOUT.list} mx-auto flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between`}>
         <p
-          className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-olive/80 leading-relaxed min-w-0"
+          className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-ink leading-relaxed min-w-0"
           aria-live="polite"
           role="status"
         >
           <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-terracotta/10 text-terracotta font-semibold tabular-nums">
             {totalPlaces}
           </span>
-          <span className="text-olive/60">{tPlan("share.placesLabel")}</span>
+          <span className="text-muted-ink">{tPlan("share.placesLabel")}</span>
           <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-aegean/10 text-aegean font-semibold tabular-nums">
             {activeDaysCount}/{displayDaysCount}
           </span>
-          <span className="text-olive/60">{tPlan("share.daysLabel")}</span>
-          <span className="text-olive/50">· {tPlan("autoSaved")}</span>
+          <span className="text-muted-ink">{tPlan("share.daysLabel")}</span>
+          <span className="text-muted-ink">· {tPlan("autoSaved")}</span>
           {sharePreviewLine ? (
-            <span className="basis-full text-olive/70">
+            <span className="basis-full text-muted-ink">
               {tPlan("share.recipientPreview", { places: sharePreviewLine })}
             </span>
           ) : null}
@@ -154,7 +154,7 @@ export default function PlanShareBar({
               aria-label={tPlan("aria.shareVia")}
             >
               {tPlan("share.copyAndShare")}
-              <span className={`text-olive/50 transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
+              <span className={`text-muted-ink transition-transform duration-200 ${shareMenuOpen ? "rotate-180" : ""}`} aria-hidden>
                 ▾
               </span>
             </button>

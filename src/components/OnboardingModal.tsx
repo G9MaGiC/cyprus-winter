@@ -191,7 +191,7 @@ export default function OnboardingModal() {
         </div>
 
         <div className={CARD.content}>
-          <p id="onboarding-description" className="prose-intro text-olive/80 mb-4">
+          <p id="onboarding-description" className="prose-intro text-muted-ink mb-4">
             {t("description")}
           </p>
 
@@ -210,7 +210,7 @@ export default function OnboardingModal() {
             <button
               type="button"
               onClick={handleDismiss}
-              className="min-h-[44px] px-4 text-sm text-olive/60 hover:text-olive/80 transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
+              className="min-h-[44px] px-4 text-sm text-muted-ink hover:text-muted-ink transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 flex items-center justify-center"
               aria-label={t("aria.skip")}
             >
               {t("skip")}
@@ -218,7 +218,7 @@ export default function OnboardingModal() {
           </div>
 
           <div className="border-t border-sand-200/60 pt-4 mt-2">
-            <p className={`${TYPE.kicker} text-olive/60 mb-2`}>{t("intentLabel")}</p>
+            <p className={`${TYPE.kicker} text-muted-ink mb-2`}>{t("intentLabel")}</p>
             <div className="flex flex-wrap gap-2" role="group" aria-label={t("aria.intentGroup")}>
               <button
                 type="button"

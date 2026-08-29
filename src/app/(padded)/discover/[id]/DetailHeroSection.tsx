@@ -52,7 +52,7 @@ export default function DetailHeroSection({
         {(seasonTags?.length || indoorOutdoor || budgetLevel) && (
           <section className="flex flex-wrap gap-2">
             {seasonTags?.length ? (
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sand-200/70 text-olive/80">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sand-200/70 text-muted-ink">
                 {tDetail("winter.seasonsLabel")}{" "}
                 {seasonTags
                   .map((s) => tDetail(`winter.seasons.${s}`))
@@ -60,13 +60,13 @@ export default function DetailHeroSection({
               </span>
             ) : null}
             {indoorOutdoor ? (
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sand-200/70 text-olive/80">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sand-200/70 text-muted-ink">
                 {tDetail("winter.indoorOutdoorLabel")}{" "}
                 {tDetail(`winter.indoorOutdoor.${indoorOutdoor}`)}
               </span>
             ) : null}
             {budgetLevel ? (
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sand-200/70 text-olive/80">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sand-200/70 text-muted-ink">
                 {tDetail("winter.budgetLabel")} {tDetail(`winter.budget.${budgetLevel}`)}
               </span>
             ) : null}

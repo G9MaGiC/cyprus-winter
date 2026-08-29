@@ -21,7 +21,7 @@ export type AuthInputProps = {
 };
 
 const inputBase =
-  "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors duration-200";
+  "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-muted-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors duration-200";
 const inputError = "border-terracotta/40 focus-visible:ring-terracotta/50";
 
 const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
@@ -61,7 +61,7 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
         {hint && (
           <p
             id={`${id}-hint`}
-            className="text-xs text-olive/60 mb-1.5"
+            className="text-xs text-muted-ink mb-1.5"
           >
             {hint}
           </p>

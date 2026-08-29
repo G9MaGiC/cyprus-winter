@@ -43,7 +43,7 @@ export default function TrailWeatherBadge({ lat, lng, temperatureLabel, rainLabe
       {weather.precipitationMm > 0 && (
         <span className="text-aegean/80">{rainLabel}</span>
       )}
-      <span className="text-olive/50 text-xs">{liveLabel}</span>
+      <span className="text-muted-ink text-xs">{liveLabel}</span>
     </div>
   );
 }

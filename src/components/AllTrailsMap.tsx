@@ -73,7 +73,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
           <button
             type="button"
             onClick={() => setInteractive(false)}
-            className="inline-flex items-center justify-center min-h-[44px] px-3 py-2 rounded-full bg-white/90 border border-sand-200/80 text-xs font-medium text-olive/80 hover:text-olive hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center justify-center min-h-[44px] px-3 py-2 rounded-full bg-white/90 border border-sand-200/80 text-xs font-medium text-muted-ink hover:text-olive hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={tCommon("map.disableMapAria")}
           >
             {tCommon("map.disableMapCta")}
@@ -109,7 +109,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
                 >
                   {trail.name}
                 </AppLink>
-                <p className="text-xs text-olive/70 mb-3">
+                <p className="text-xs text-muted-ink mb-3">
                   {tTrails("map.popupMeta", { region: trail.region, km: formatNumber(trail.lengthKm) })}
                 </p>
                 <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2">
@@ -131,7 +131,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
         ))}
       </MapContainer>
       <div className="shrink-0 px-4 py-2.5 bg-sand-100/80 border-t border-sand-200/70">
-        <p className="text-xs text-olive/70">
+        <p className="text-xs text-muted-ink">
           {tTrails("map.footerCount", { count: withCoords.length })}
         </p>
       </div>

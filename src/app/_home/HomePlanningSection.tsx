@@ -34,7 +34,7 @@ export default function HomePlanningSection({
             <h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
               {t("planTitle")}
             </h3>
-            <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-ink mt-2 leading-relaxed">
               {resolvedSubtitle}
             </p>
           </AppLink>
@@ -46,7 +46,7 @@ export default function HomePlanningSection({
             <h3 className={`${TYPE.subSectionTitleLg} text-charcoal group-hover:text-terracotta transition-colors`}>
               {t("eventsTitle")}
             </h3>
-            <p className="text-sm sm:text-base text-olive/80 mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-ink mt-2 leading-relaxed">
               {t("eventsDesc")}
             </p>
           </AppLink>

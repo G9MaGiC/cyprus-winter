@@ -56,7 +56,7 @@ export default async function WeatherPage() {
   ]);
 
   const monthSelectorSectionClassName = `${SECTION.blockTop} hidden md:block`;
-  const mobileClampClass = "text-olive/80 text-xs mt-0.5 line-clamp-1";
+  const mobileClampClass = "text-muted-ink text-xs mt-0.5 line-clamp-1";
 
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -73,7 +73,7 @@ export default async function WeatherPage() {
         <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50`}>
           <p className={`${TYPE.kicker} text-sage`}>{tWeather("hero.kicker")}</p>
           <h2 className={`${TYPE.sectionTitle} mt-2`}>{tWeather("hero.heading")}</h2>
-          <p className="text-olive/80 mt-3 max-w-2xl prose-body break-words leading-relaxed">{tWeather("hero.body")}</p>
+          <p className="text-muted-ink mt-3 max-w-2xl prose-body break-words leading-relaxed">{tWeather("hero.body")}</p>
         </div>
       </section>
 
@@ -91,7 +91,7 @@ export default async function WeatherPage() {
               >
                 <div className="flex flex-col">
                   <span className={`${TYPE.cardTitleCompact} text-olive`}>{row.month}</span>
-                  <span className="mt-1 text-xs text-olive/70">
+                  <span className="mt-1 text-xs text-muted-ink">
                     {tWeather("table.coast")} {row.coastMinC}–{row.coastMaxC}° · {tWeather("table.troodos")} {row.troodosMinC}–{row.troodosMaxC}°
                   </span>
                 </div>
@@ -117,14 +117,14 @@ export default async function WeatherPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="text-olive/60 text-xs">
+                    <p className="text-muted-ink text-xs">
                       {tWeather("table.coast")}
                     </p>
                     <p className="text-olive font-medium">{row.coastMinC}–{row.coastMaxC}°C</p>
                     <p className={mobileClampClass}>{shortSentence(row.coastDesc)}</p>
                   </div>
                   <div>
-                    <p className="text-olive/60 text-xs">
+                    <p className="text-muted-ink text-xs">
                       {tWeather("table.troodos")}
                     </p>
                     <p className="text-olive font-medium">{row.troodosMinC}–{row.troodosMaxC}°C</p>
@@ -197,13 +197,13 @@ export default async function WeatherPage() {
                 <td className="py-4 px-4 text-olive/90">
                   {row.coastMinC}–{row.coastMaxC}°C
                 </td>
-                <td className="py-4 px-4 text-sm text-olive/80 max-w-xs">
+                <td className="py-4 px-4 text-sm text-muted-ink max-w-xs">
                   {shortSentence(row.coastDesc)}
                 </td>
                 <td className="py-4 px-4 text-olive/90">
                   {row.troodosMinC}–{row.troodosMaxC}°C
                 </td>
-                <td className="py-4 px-4 text-sm text-olive/80 max-w-xs">
+                <td className="py-4 px-4 text-sm text-muted-ink max-w-xs">
                   {shortSentence(row.troodosDesc)}
                 </td>
               </tr>
@@ -244,7 +244,7 @@ export default async function WeatherPage() {
 
       <WeatherPushOptIn />
 
-      <div className={`${SECTION.blockTop} space-y-4 text-olive/80 text-sm max-w-2xl`}>
+      <div className={`${SECTION.blockTop} space-y-4 text-muted-ink text-sm max-w-2xl`}>
         <p>{tWeather("body.coastTroodos")}</p>
         <p>
           <AppLink href="/trails" className={SECTION.aegeanLink}>

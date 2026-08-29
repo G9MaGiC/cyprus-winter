@@ -30,7 +30,7 @@ export default function PlanAddMoreCollapsible({
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl p-4 sm:p-5 text-start select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
         <div className="min-w-0">
           <p className="font-display text-lg font-semibold text-charcoal">{tPlan("addMoreCollapsibleTitle")}</p>
-          <p className="text-xs text-olive/60 mt-0.5">{tPlan("addMoreCollapsibleSubtitle")}</p>
+          <p className="text-xs text-muted-ink mt-0.5">{tPlan("addMoreCollapsibleSubtitle")}</p>
         </div>
         <ChevronDown
           className="h-5 w-5 shrink-0 text-olive/45 transition-transform duration-200 group-open:rotate-180"

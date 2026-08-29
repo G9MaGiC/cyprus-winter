@@ -64,7 +64,7 @@ export default function HubFooter({
       className={`${SECTION.footerBlock} pt-14 sm:pt-16 pb-8 sm:pb-12 text-center ${className}`}
       aria-label={ariaLabel}
     >
-      <p className={`text-sm text-olive/70 ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}>
+      <p className={`text-sm text-muted-ink ${SECTION.headingGap} max-w-md mx-auto leading-relaxed`}>
         {body}
       </p>
       <div className="flex flex-col max-sm:items-stretch sm:flex-row sm:flex-wrap items-center justify-center gap-3 [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">

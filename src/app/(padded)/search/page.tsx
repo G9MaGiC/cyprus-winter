@@ -65,13 +65,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <BackLink href="/" label={tNav("home")} />
         <Breadcrumbs
           items={[{ label: tNav("home"), href: "/" }, { label: tNav("search"), href: "/search", isCurrent: true }]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
       <h1 className={`${TYPE.sectionTitle} mb-2`}>
         {tSearch("title")}
       </h1>
-      <p className="text-olive/80 text-sm mb-8">
+      <p className="text-muted-ink text-sm mb-8">
         {tSearch("intro")}
       </p>
       <SearchBar placeholder={tSearch("placeholder")} autoFocus initialQuery={q} syncUrl className="max-w-xl" />
@@ -90,10 +90,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       )}
       {hasNoResults && (
         <div className={`mt-6 ${EMPTY_STATE_COMPACT}`}>
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-ink mb-2">
             {tSearch("noResults", { query: q })}
           </p>
-          <p className="text-sm text-olive/80 mb-3">{tSearch("noResultsHint")}</p>
+          <p className="text-sm text-muted-ink mb-3">{tSearch("noResultsHint")}</p>
           <div className="flex flex-wrap gap-2">
             <AppLink href="/discover" className={`${CTA.chipTertiary} rounded-xl`}>
               {tSearch("browseDiscover")}
@@ -110,7 +110,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       )}
       {showBrowse && (
         <div className={SECTION.footerBlock}>
-          <p className="text-xs font-semibold uppercase tracking-wider text-olive/60 mb-3">{tSearch("browseByCategory")}</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-ink mb-3">{tSearch("browseByCategory")}</p>
           <div className="flex flex-wrap gap-2">
             {BROWSE_LINKS.map((link) => (
               <AppLink

@@ -59,7 +59,7 @@ export function RecentlyViewedStrip() {
     >
       <div className={`${LAYOUT.list} mx-auto`}>
         <div className={`flex items-center justify-between ${SECTION.titleGap}`}>
-          <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-olive/70`}>
+          <h2 id="recently-viewed-heading" className={`${TYPE.kicker} text-muted-ink`}>
             {tHome("recentlyViewed.title")}
           </h2>
           <button
@@ -71,7 +71,7 @@ export function RecentlyViewedStrip() {
                 setItems([]);
               });
             }}
-            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] py-2 px-3 -m-2 text-xs text-olive/50 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
+            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] py-2 px-3 -m-2 text-xs text-muted-ink hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded"
           >
             {tHome("recentlyViewed.clear")}
           </button>
@@ -83,7 +83,7 @@ export function RecentlyViewedStrip() {
               href={getItemPath(item)}
               className={`group ${CARD.base} ${CARD.hover} ${CARD.link} shrink-0 snap-start p-4 min-w-[180px] max-w-[220px] border-s-4 border-s-aegean/40`}
             >
-              <p className={`${TYPE.kicker} text-olive/60 mb-2`}>
+              <p className={`${TYPE.kicker} text-muted-ink mb-2`}>
                 {isPlaceTypeKey(item.type) ? tPlaceTypes(item.type) : item.type}
               </p>
               <p className={`${TYPE.cardTitleCompact} truncate`}>

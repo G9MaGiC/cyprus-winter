@@ -144,7 +144,7 @@ export default function AdminStatsPage() {
     return (
       <div className={`${LAYOUT.form} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tAdmin("title")}</h1>
-        <p className="text-sm text-olive/70 mb-6">
+        <p className="text-sm text-muted-ink mb-6">
           {tAdmin("subtitle")}
         </p>
         <form onSubmit={handleKeySubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
@@ -241,7 +241,7 @@ export default function AdminStatsPage() {
           <button
             type="button"
             onClick={() => void handleSignOut()}
-            className="text-sm text-olive/60 hover:text-olive min-h-[44px] px-2"
+            className="text-sm text-muted-ink hover:text-olive min-h-[44px] px-2"
           >
             {tAdmin("signOut")}
           </button>
@@ -253,7 +253,7 @@ export default function AdminStatsPage() {
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("bookingsThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10 mb-6">
           <p className="text-3xl font-bold text-olive">{number.format(bookings)}</p>
-          <p className="text-sm text-olive/70 mt-1">{tAdmin("bookingsThisMonth.total")}</p>
+          <p className="text-sm text-muted-ink mt-1">{tAdmin("bookingsThisMonth.total")}</p>
         </div>
       </section>
 
@@ -261,13 +261,13 @@ export default function AdminStatsPage() {
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("partnerRevenueThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-3xl font-bold text-olive">{currency.format(revenue)}</p>
-          <p className="text-sm text-olive/70 mt-1">{tAdmin("partnerRevenueThisMonth.subtitle")}</p>
+          <p className="text-sm text-muted-ink mt-1">{tAdmin("partnerRevenueThisMonth.subtitle")}</p>
           {byWinery.length > 0 && (
             <ul className="mt-4 space-y-2 text-sm">
               {byWinery.map((w) => (
                 <li key={w.providerId} className="flex justify-between">
                   <span className="text-olive">{w.providerName}</span>
-                  <span className="text-olive/80">{number.format(w.bookingCount)} × {currency.format(w.totalFeeEur)}</span>
+                  <span className="text-muted-ink">{number.format(w.bookingCount)} × {currency.format(w.totalFeeEur)}</span>
                 </li>
               ))}
             </ul>
@@ -278,7 +278,7 @@ export default function AdminStatsPage() {
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("funnelThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
-          <p className="text-sm text-olive/70 mb-4">{tAdmin("funnelThisMonth.subtitle")}</p>
+          <p className="text-sm text-muted-ink mb-4">{tAdmin("funnelThisMonth.subtitle")}</p>
           <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
@@ -290,13 +290,13 @@ export default function AdminStatsPage() {
               {funnel.map((row) => (
                 <tr key={row.event} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.event}</td>
-                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
+                  <td className="py-2 text-muted-ink text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {funnel.length === 0 && (
-            <p className="text-sm text-olive/60 py-4">{tAdmin("funnelThisMonth.empty")}</p>
+            <p className="text-sm text-muted-ink py-4">{tAdmin("funnelThisMonth.empty")}</p>
           )}
         </div>
       </section>
@@ -304,7 +304,7 @@ export default function AdminStatsPage() {
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("localeMix.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
-          <p className="text-sm text-olive/70 mb-4">{tAdmin("localeMix.subtitle")}</p>
+          <p className="text-sm text-muted-ink mb-4">{tAdmin("localeMix.subtitle")}</p>
           <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
@@ -316,13 +316,13 @@ export default function AdminStatsPage() {
               {locales.map((row) => (
                 <tr key={row.locale} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.locale}</td>
-                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
+                  <td className="py-2 text-muted-ink text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {locales.length === 0 && (
-            <p className="text-sm text-olive/60 py-4">{tAdmin("localeMix.empty")}</p>
+            <p className="text-sm text-muted-ink py-4">{tAdmin("localeMix.empty")}</p>
           )}
         </div>
       </section>
@@ -330,7 +330,7 @@ export default function AdminStatsPage() {
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("planGeography.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
-          <p className="text-sm text-olive/70 mb-4">{tAdmin("planGeography.subtitle")}</p>
+          <p className="text-sm text-muted-ink mb-4">{tAdmin("planGeography.subtitle")}</p>
           <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
@@ -342,13 +342,13 @@ export default function AdminStatsPage() {
               {geography.map((row) => (
                 <tr key={row.bucket} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{geographyLabel(row.bucket)}</td>
-                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
+                  <td className="py-2 text-muted-ink text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {geography.length === 0 && (
-            <p className="text-sm text-olive/60 py-4">{tAdmin("planGeography.empty")}</p>
+            <p className="text-sm text-muted-ink py-4">{tAdmin("planGeography.empty")}</p>
           )}
         </div>
       </section>
@@ -356,7 +356,7 @@ export default function AdminStatsPage() {
       <section className="mb-10">
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("discoverFilters.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
-          <p className="text-sm text-olive/70 mb-4">{tAdmin("discoverFilters.subtitle")}</p>
+          <p className="text-sm text-muted-ink mb-4">{tAdmin("discoverFilters.subtitle")}</p>
           <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
@@ -368,13 +368,13 @@ export default function AdminStatsPage() {
               {filters.map((row) => (
                 <tr key={row.filter} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.filter}</td>
-                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
+                  <td className="py-2 text-muted-ink text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {filters.length === 0 && (
-            <p className="text-sm text-olive/60 py-4">{tAdmin("discoverFilters.empty")}</p>
+            <p className="text-sm text-muted-ink py-4">{tAdmin("discoverFilters.empty")}</p>
           )}
         </div>
       </section>
@@ -383,7 +383,7 @@ export default function AdminStatsPage() {
         <p className="text-sm text-terracotta mb-6">{tAdmin("export.failed")}</p>
       )}
 
-      <p className="text-xs text-olive/50">
+      <p className="text-xs text-muted-ink">
         {tAdmin("storage", { storage: d.storage ?? tAdmin("storageUnknown") })}
       </p>
     </div>

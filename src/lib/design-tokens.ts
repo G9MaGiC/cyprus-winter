@@ -169,8 +169,8 @@ export const STRIP = {
   /** Inline stats row: temps, counts. */
   inlineRow: "text-sm sm:text-base text-charcoal",
   inlinePrimary: "font-semibold tabular-nums",
-  inlineSecondary: "text-olive/70",
-  meta: "text-sm text-olive/80",
+  inlineSecondary: "text-muted-ink",
+  meta: "text-sm text-muted-ink",
   hint: "text-sm text-sage group-hover:text-terracotta transition-colors shrink-0",
 } as const;
 
@@ -237,7 +237,7 @@ export const CTA = {
     "min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
   /** Secondary (outline) action inside a modal — e.g. "Replace day". */
   modalSecondary:
-    "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
+    "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-sand-200/80 text-muted-ink hover:border-terracotta/30 hover:text-terracotta transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
   /** Dismiss/cancel action inside a modal. */
   modalDismiss:
     "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
@@ -403,18 +403,18 @@ export const BADGE = {
 /** Search combobox — home strip and /search page. */
 export const SEARCH = {
   input:
-    "w-full min-h-[44px] ps-11 pe-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-olive/60 focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200",
-  icon: "absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-olive/50 pointer-events-none",
+    "w-full min-h-[44px] ps-11 pe-4 py-3 rounded-lg border border-sand-200/80 bg-sand-100/50 text-olive placeholder:text-muted-ink focus-visible:outline-none focus-visible:border-terracotta/50 focus-visible:ring-2 focus-visible:ring-terracotta/20 transition-colors duration-200",
+  icon: "absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-ink pointer-events-none",
   panel:
     "absolute top-full left-0 right-0 mt-2 rounded-lg bg-sand-100/95 border border-sand-200/80",
   panelList: "py-2 max-h-96 overflow-y-auto",
-  panelStatus: "py-3 px-4 text-olive/60 text-sm",
-  panelEmpty: "py-6 px-4 text-center text-olive/70 text-sm",
+  panelStatus: "py-3 px-4 text-muted-ink text-sm",
+  panelEmpty: "py-6 px-4 text-center text-muted-ink text-sm",
   option:
     "px-4 py-3 min-h-[44px] cursor-pointer hover:bg-terracotta/5 transition-colors",
   optionActive: "bg-terracotta/10",
   recoveryLink:
-    "inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-muted-ink hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
 } as const;
 
 /** AI concierge entry — golden default trigger + icon badge. */
@@ -431,5 +431,5 @@ export const LOCATION = {
   primary:
     "px-3 py-1.5 rounded-md bg-terracotta text-white text-sm font-medium hover:bg-terracotta-muted transition-colors min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   secondary:
-    "inline-flex items-center min-h-[44px] px-3 py-2 rounded-md text-olive/70 text-sm hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "inline-flex items-center min-h-[44px] px-3 py-2 rounded-md text-muted-ink text-sm hover:text-olive transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
 } as const;

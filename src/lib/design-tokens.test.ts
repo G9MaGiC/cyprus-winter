@@ -107,7 +107,7 @@ describe("LOCATION tokens", () => {
   it("defines terracotta primary and ghost secondary for consent actions", () => {
     expect(LOCATION.primary).toContain("bg-terracotta");
     expect(LOCATION.primary).toContain("min-h-[44px]");
-    expect(LOCATION.secondary).toContain("text-olive/70");
+    expect(LOCATION.secondary).toContain("text-muted-ink");
   });
 });
 

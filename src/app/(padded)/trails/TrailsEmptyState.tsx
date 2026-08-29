@@ -14,7 +14,7 @@ export default function TrailsEmptyState() {
       role="status"
       aria-live="polite"
     >
-      <p className="text-olive/80 leading-relaxed break-words mb-6">
+      <p className="text-muted-ink leading-relaxed break-words mb-6">
         {t("trails.emptyState.body")}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">

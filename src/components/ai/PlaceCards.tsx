@@ -42,12 +42,12 @@ export function PlaceCards({ cards }: { cards: Card[] }) {
           onClick={() => handleClick(card)}
           className="flex items-start gap-2 p-2 rounded-lg bg-sand-100/80 hover:bg-sand-200/70 transition-colors text-start w-full min-h-[44px] py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <span className="shrink-0 mt-0.5 text-xs font-medium text-olive/60 uppercase tracking-wide w-12">
+          <span className="shrink-0 mt-0.5 text-xs font-medium text-muted-ink uppercase tracking-wide w-12">
             {typeLabel(card.type)}
           </span>
           <div className="min-w-0">
             <div className="text-sm font-medium text-charcoal truncate">{card.title}</div>
-            <div className="text-xs text-olive/70 line-clamp-1">{card.reason}</div>
+            <div className="text-xs text-muted-ink line-clamp-1">{card.reason}</div>
           </div>
         </button>
       ))}

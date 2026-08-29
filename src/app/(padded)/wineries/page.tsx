@@ -94,7 +94,7 @@ export default async function WineriesPage() {
             <h2 id="partners-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
               {tWineries("partners.title")}
             </h2>
-            <p className="text-olive/70 text-sm mb-6 max-w-2xl">
+            <p className="text-muted-ink text-sm mb-6 max-w-2xl">
               {tWineries("partners.body")}
             </p>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>

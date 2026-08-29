@@ -15,12 +15,12 @@ export default function TrailsQuickFilters() {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className={`${TYPE.kicker} text-olive/60 me-1`}>{t("quickFilters.label")}</span>
+      <span className={`${TYPE.kicker} text-muted-ink me-1`}>{t("quickFilters.label")}</span>
       {QUICK_CHIPS.map((chip) => (
         <AppLink
           key={chip.id}
           href={chip.href}
-          className="px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="px-3 py-2 rounded-lg text-sm font-medium border border-sand-200/80 text-muted-ink hover:border-terracotta/30 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           {chip.label}
         </AppLink>

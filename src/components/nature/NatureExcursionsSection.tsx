@@ -23,8 +23,8 @@ export default function NatureExcursionsSection() {
       <h2 id="nature-excursions" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
         {t("title")}
       </h2>
-      <p className="text-sm text-olive/70 max-w-2xl mb-4">{t("intro")}</p>
-      <p className="text-sm text-olive/60 mb-6">
+      <p className="text-sm text-muted-ink max-w-2xl mb-4">{t("intro")}</p>
+      <p className="text-sm text-muted-ink mb-6">
         <a
           href="https://www.visitcyprus.com/discover-cyprus/nature/excursions/"
           target="_blank"
@@ -47,7 +47,7 @@ export default function NatureExcursionsSection() {
         ))}
       </div>
 
-      <p className="text-sm text-olive/60 mb-4" aria-live="polite">
+      <p className="text-sm text-muted-ink mb-4" aria-live="polite">
         {t("resultCount", { count: filtered.length })}
       </p>
 
@@ -74,15 +74,15 @@ function ExcursionCard({ site }: { site: NatureExcursion }) {
         )}
       </div>
       <div className="flex flex-wrap gap-2 text-xs">
-        <span className="px-2 py-0.5 rounded-full bg-sand-100 text-olive/80">
+        <span className="px-2 py-0.5 rounded-full bg-sand-100 text-muted-ink">
           {t(`regions.${site.region}`)}
         </span>
-        <span className="px-2 py-0.5 rounded-full bg-sand-100 text-olive/70">
+        <span className="px-2 py-0.5 rounded-full bg-sand-100 text-muted-ink">
           {t(`kind.${site.kind}`)}
         </span>
       </div>
-      <p className="text-sm text-olive/80 line-clamp-4 flex-1">{site.description}</p>
-      {site.winterNote && <p className="text-xs text-olive/60 italic">{site.winterNote}</p>}
+      <p className="text-sm text-muted-ink line-clamp-4 flex-1">{site.description}</p>
+      {site.winterNote && <p className="text-xs text-muted-ink italic">{site.winterNote}</p>}
       <div className="flex flex-wrap gap-3 pt-1">
         <a
           href={site.visitCyprusUrl}

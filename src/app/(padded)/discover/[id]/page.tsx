@@ -180,7 +180,7 @@ export default async function AttractionPage({
               { label: tNav("discover"), href: discoverBackHref },
               { label: a.name, href: canonicalUrl, isCurrent: true },
             ]}
-            className="py-1 px-0 text-xs text-olive/60"
+            className="py-1 px-0 text-xs text-muted-ink"
           />
         </nav>
 
@@ -196,7 +196,7 @@ export default async function AttractionPage({
 
             {/* Highlights + Great for */}
             <section>
-              <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+              <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                 {tDetail("headings.highlights")}
               </h2>
               <ul className="flex flex-wrap gap-2">
@@ -210,10 +210,10 @@ export default async function AttractionPage({
                 ))}
               </ul>
               <div className="mt-4">
-                <h3 className={`${TYPE.kicker} text-olive/70 mb-1`}>
+                <h3 className={`${TYPE.kicker} text-muted-ink mb-1`}>
                   {tDetail("headings.greatFor")}
                 </h3>
-                <p className="text-olive/80 text-base break-words">{a.bestFor.join(" · ")}</p>
+                <p className="text-muted-ink text-base break-words">{a.bestFor.join(" · ")}</p>
               </div>
               {isRestaurant(a) && (a.cuisine || a.priceRange) && (
                 <div className="mt-4 flex flex-wrap gap-3">
@@ -223,7 +223,7 @@ export default async function AttractionPage({
                     </span>
                   )}
                   {a.priceRange && (
-                    <span className="text-olive/70 text-sm">{a.priceRange}</span>
+                    <span className="text-muted-ink text-sm">{a.priceRange}</span>
                   )}
                 </div>
               )}
@@ -234,7 +234,7 @@ export default async function AttractionPage({
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80 space-y-4`}>
                 {a.diningVenues && a.diningVenues.length > 0 && (
                   <div>
-                    <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                    <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                       {tDetail("headings.dining")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
@@ -251,14 +251,14 @@ export default async function AttractionPage({
                 )}
                 {a.shops && a.shops.length > 0 && (
                   <div>
-                    <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                    <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                       {tDetail("headings.shops")}
                     </h2>
                     <ul className="flex flex-wrap gap-2">
                       {a.shops.map((s) => (
                         <li
                           key={s}
-                          className="px-3 py-1.5 rounded-md text-sm font-medium bg-white/90 border border-sand-200/80 text-olive/80"
+                          className="px-3 py-1.5 rounded-md text-sm font-medium bg-white/90 border border-sand-200/80 text-muted-ink"
                         >
                           {s}
                         </li>
@@ -272,12 +272,12 @@ export default async function AttractionPage({
             {/* Winery: Tasting info */}
             {isWinery(a) && a.tastingInfo && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                   {tDetail("visitTaste.title")}
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.tastingInfo}</p>
                 {a.wineRoute && (
-                  <p className="text-olive/70 text-sm mt-2 break-words">
+                  <p className="text-muted-ink text-sm mt-2 break-words">
                     {tDetail("wineRoute", { route: a.wineRoute })}
                   </p>
                 )}
@@ -290,7 +290,7 @@ export default async function AttractionPage({
 
             {isWinery(a) && a.signatureWines && a.signatureWines.length > 0 && (
               <section>
-                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                   {tDetail("ourWines.title")}
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
@@ -310,7 +310,7 @@ export default async function AttractionPage({
                       />
                     ) : (
                       <div
-                        className="absolute inset-0 flex items-center justify-center p-3 text-center text-xs font-medium text-olive/50"
+                        className="absolute inset-0 flex items-center justify-center p-3 text-center text-xs font-medium text-muted-ink"
                         aria-hidden
                       >
                         {wine.name}
@@ -320,7 +320,7 @@ export default async function AttractionPage({
                   <div className="p-4">
                     <p className={`${TYPE.cardTitleCompact} break-words`}>{wine.name}</p>
                     {wine.variety && (
-                      <p className="text-xs text-olive/70 mt-0.5 break-words">{wine.variety}</p>
+                      <p className="text-xs text-muted-ink mt-0.5 break-words">{wine.variety}</p>
                     )}
                     {wine.price && (
                       <p className="text-sm font-semibold text-terracotta mt-1">{wine.price}</p>
@@ -334,14 +334,14 @@ export default async function AttractionPage({
 
             {(a.winterTip || a.bestTimeToVisit || showInlineLocalSecret) && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip} space-y-4`}>
-                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                   {tDetail("localSecretHeading")}
                 </h2>
             {a.winterTip && (
               <p className="text-olive/90 text-base leading-relaxed break-words">{a.winterTip}</p>
             )}
             {a.bestTimeToVisit && (
-              <p className="text-olive/80 text-base break-words">
+              <p className="text-muted-ink text-base break-words">
                 <strong>{tDetail("bestTimeLabel")}</strong> {a.bestTimeToVisit}
               </p>
             )}
@@ -355,7 +355,7 @@ export default async function AttractionPage({
 
             {"backstory" in a && a.backstory && (
               <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90 border-sand-200/80`}>
-                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                   {tDetail("backstoryHeading")}
                 </h2>
                 <p className="text-olive/90 text-base leading-relaxed break-words">{a.backstory}</p>
@@ -363,14 +363,14 @@ export default async function AttractionPage({
             )}
 
             {"culturalNote" in a && a.culturalNote && !isBufferZoneCulturalNote(a.culturalNote) && (
-              <p className="text-olive/80 text-base italic break-words">
+              <p className="text-muted-ink text-base italic break-words">
                 {a.culturalNote}
               </p>
             )}
 
             {typeof a.latitude === "number" && typeof a.longitude === "number" && (
               <section>
-                <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                   {tDetail("location.title")}
                 </h2>
                 <DiscoverLocationMap
@@ -387,23 +387,23 @@ export default async function AttractionPage({
 
             {placeSecrets.length > 0 && (
               <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.tip}`}>
-                <h2 className={`text-xs font-semibold uppercase tracking-widest text-olive/70 ${SECTION.headingGap}`}>
+                <h2 className={`text-xs font-semibold uppercase tracking-widest text-muted-ink ${SECTION.headingGap}`}>
                   {tDetail("localSecrets.title")}
                 </h2>
-                <p className="text-sm text-olive/70 mb-4">
+                <p className="text-sm text-muted-ink mb-4">
                   {tDetail("localSecrets.intro")}
                 </p>
                 <div className="space-y-4">
                   {placeSecrets.map((s) => (
                     <div key={s.id} className="p-4 rounded-lg bg-white/80 border border-sand-200/80">
                       <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
-                      <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
+                      <p className="text-sm text-muted-ink leading-relaxed break-words">{s.body}</p>
                     </div>
                   ))}
                 </div>
                 <AppLink
                   href="/secrets"
-                  className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+                  className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
                   {tDetail("localSecrets.seeAll")}
                 </AppLink>
@@ -439,7 +439,7 @@ export default async function AttractionPage({
               const typeLabel = tDetail(`similar.typeLabels.${similarTypeKey}`);
               return (
                 <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-                  <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}>
+                  <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}>
                     {tDetail("similar.title", { type: typeLabel, region: a.region })}
                   </h2>
                   <ul className="flex flex-wrap gap-2">

@@ -133,7 +133,7 @@ export default function WeatherPushOptIn() {
   return (
     <div className={`${CARD.base} ${CARD.content} mt-6 bg-sage/10 border-sage/30`}>
       <p className="text-sm font-medium text-olive mb-2">{tPush("title")}</p>
-      <p className={`text-xs text-olive/80 ${SECTION.titleGap}`}>
+      <p className={`text-xs text-muted-ink ${SECTION.titleGap}`}>
         {tPush("body")}
       </p>
       <button

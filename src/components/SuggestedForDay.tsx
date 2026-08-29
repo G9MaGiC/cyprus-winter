@@ -35,7 +35,7 @@ export default function SuggestedForDay({
 
   if (activeDayItems.length === 0) {
     return (
-      <p className={embedded ? "text-xs text-olive/60" : "mb-4 text-xs text-olive/60"}>
+      <p className={embedded ? "text-xs text-muted-ink" : "mb-4 text-xs text-muted-ink"}>
         {t("empty")}
       </p>
     );
@@ -48,7 +48,7 @@ export default function SuggestedForDay({
       {!embedded && (
         <span className="text-xs font-semibold text-aegean uppercase tracking-wider block mb-2">{t("pairWith")}</span>
       )}
-      <p className="text-xs text-olive/70 mb-3">
+      <p className="text-xs text-muted-ink mb-3">
         {t("worksWell")}
       </p>
       <div className="flex flex-wrap gap-2">

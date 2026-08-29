@@ -49,7 +49,7 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
         <h2 id="clear-day-title" className={`${TYPE.sectionTitle} text-xl sm:text-2xl ${SECTION.titleGap}`}>
           {tCommon("clearDayTitle", { day: activeDay })}
         </h2>
-        <p id="clear-day-desc" className={`text-olive/80 text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
+        <p id="clear-day-desc" className={`text-muted-ink text-sm ${SECTION.headingGap} break-words leading-relaxed`}>
           {tCommon("removeAllFromDay", { count: placeCount, day: activeDay })}
         </p>
         <div className="flex flex-col-reverse sm:flex-row gap-3 justify-end pt-2">

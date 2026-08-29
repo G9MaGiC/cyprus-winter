@@ -62,7 +62,7 @@ export default async function SecretsPage() {
       <h2 className="sr-only">{tSecrets("sr.tipsIndex")}</h2>
       {secretGems.length === 0 ? (
         <div className={`mt-10 ${EMPTY_STATE}`} role="status" aria-live="polite">
-          <p className="text-olive/80 mb-4">{tSecrets("empty.body")}</p>
+          <p className="text-muted-ink mb-4">{tSecrets("empty.body")}</p>
           <AppLink href="/discover" className={CTA.secondaryCompact}>
             {tSecrets("empty.ctaDiscover")}
           </AppLink>
@@ -77,10 +77,10 @@ export default async function SecretsPage() {
               className={`${CARD.content} rounded-xl ${CARD.base} border-s-4 border-s-golden/50 ${CARD.hover}`}
             >
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-terracotta/80">
+                <span className="text-xs font-semibold uppercase tracking-wider text-terracotta">
                   {g.region}
                 </span>
-                <span className="text-xs text-olive/60">{typeLabels[g.type] ?? g.type}</span>
+                <span className="text-xs text-muted-ink">{typeLabels[g.type] ?? g.type}</span>
               </div>
               {place && (
                 <AppLink
@@ -100,11 +100,11 @@ export default async function SecretsPage() {
               <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
                 {g.title}
               </h3>
-              <p className="text-olive/80 text-sm leading-relaxed mb-4">{g.body}</p>
+              <p className="text-muted-ink text-sm leading-relaxed mb-4">{g.body}</p>
               {g.href && (
                 <AppLink
                   href={g.href}
-                  className={`inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 ${CARD.link}`}
+                  className={`inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta-muted ${CARD.link}`}
                 >
                   {tSecrets("card.goThere")}
                 </AppLink>

@@ -11,11 +11,12 @@ export const BRAND_COLORS = {
   charcoal: "#252730",
   olive: "#4a5162",
   oliveMuted: "#6b7280",
-  terracotta: "#c96f52",
-  terracottaMuted: "#b85d42",
+  mutedInk: "#666b78",
+  terracotta: "#b55738",
+  terracottaMuted: "#9c4b30",
   golden: "#d4a853",
   aegean: "#1a6b7c",
-  sage: "#6b8f7a",
+  sage: "#5b7967",
   sageMuted: "#8fa99a",
 } as const;
 
@@ -27,6 +28,7 @@ export const BRAND_CSS_VARS = {
   "terracotta-muted": BRAND_COLORS.terracottaMuted,
   olive: BRAND_COLORS.olive,
   "olive-muted": BRAND_COLORS.oliveMuted,
+  "muted-ink": BRAND_COLORS.mutedInk,
   golden: BRAND_COLORS.golden,
   charcoal: BRAND_COLORS.charcoal,
   aegean: BRAND_COLORS.aegean,
@@ -41,5 +43,5 @@ export const BRAND_CSS_VARS = {
 
 /** RGB components for rgba() in CSS (terracotta primary). */
 export const BRAND_RGB = {
-  terracotta: "201, 111, 82",
+  terracotta: "181, 87, 56",
 } as const;

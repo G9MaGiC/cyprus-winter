@@ -67,7 +67,7 @@ export default function AuthLayout({
         >
           {kicker && (
             <p
-              className={`text-xs font-semibold uppercase tracking-[0.15em] mb-2 ${variant === "success" ? "text-aegean" : "text-terracotta/90"}`}
+              className={`text-xs font-semibold uppercase tracking-[0.15em] mb-2 ${variant === "success" ? "text-aegean" : "text-terracotta"}`}
             >
               {kicker}
             </p>
@@ -75,13 +75,13 @@ export default function AuthLayout({
           <h1 className={`${TYPE.sectionTitle} text-charcoal ${SECTION.titleGap}`}>
             {title}
           </h1>
-          <p className="text-olive/80 text-base leading-relaxed mb-8">{subtitle}</p>
+          <p className="text-muted-ink text-base leading-relaxed mb-8">{subtitle}</p>
 
           {children}
         </div>
 
         {footer && (
-          <p className="mt-8 text-center text-sm text-olive/70">{footer}</p>
+          <p className="mt-8 text-center text-sm text-muted-ink">{footer}</p>
         )}
       </div>
     </div>

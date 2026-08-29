@@ -40,10 +40,10 @@ export default function RelatedPlacesBlock({
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} bg-sand-100/90`}>
-      <h2 className={`${TYPE.kicker} text-olive/70 ${SECTION.titleGap} flex items-center gap-2`}>
+      <h2 className={`${TYPE.kicker} text-muted-ink ${SECTION.titleGap} flex items-center gap-2`}>
         {title}
       </h2>
-      <p className={`text-olive/80 text-base ${SECTION.headingGap} leading-relaxed break-words`}>
+      <p className={`text-muted-ink text-base ${SECTION.headingGap} leading-relaxed break-words`}>
         {description}
       </p>
       <ul className="flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ export default function RelatedPlacesBlock({
               className="group inline-flex items-center min-h-[44px] gap-1.5 px-4 py-2.5 rounded-xl bg-sand-100/80 border border-sand-200/80 text-olive font-medium text-sm hover:bg-terracotta-muted hover:text-white hover:border-terracotta/30 transition-colors duration-150 max-w-full min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <span className="truncate">{r.name}</span>
-              <span className="text-terracotta/80 group-hover:text-white shrink-0 transition-colors" aria-hidden>→</span>
+              <span className="text-terracotta group-hover:text-white shrink-0 transition-colors" aria-hidden>→</span>
             </AppLink>
             {showAddToItinerary && (
               <AppLink

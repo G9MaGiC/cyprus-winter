@@ -39,7 +39,7 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
               components={{
                 a: ({ href, children }) => {
                   if (!href || !isSafeMarkdownHref(href)) {
-                    return <span className="text-olive/80">{children}</span>;
+                    return <span className="text-muted-ink">{children}</span>;
                   }
                   const isInternal = href.startsWith("/");
                   if (isInternal) {

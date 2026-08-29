@@ -26,7 +26,7 @@ function EmptyDayState({
       <p className={`${TYPE.subSectionTitleLg} text-olive ${SECTION.titleGap}`}>
         {tPlan("dayEmptyTitle", { day: activeDay })}
       </p>
-      <p className="text-sm text-olive/70 mb-6 leading-relaxed max-w-sm mx-auto">
+      <p className="text-sm text-muted-ink mb-6 leading-relaxed max-w-sm mx-auto">
         {tPlan("dayEmptyBody")}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -76,7 +76,7 @@ function DayAddSection({
       aria-label={tPlanQuick("inlineAddAria", { day: activeDay })}
       className="rounded-2xl border-2 border-dashed border-sand-200/90 bg-white/80 p-5 sm:p-6 transition-colors hover:border-terracotta/15"
     >
-      <p className={`text-sm font-medium text-olive/80 ${SECTION.headingGap}`}>
+      <p className={`text-sm font-medium text-muted-ink ${SECTION.headingGap}`}>
         {tPlanQuick("quickAddLabel", { day: activeDay })}
       </p>
       <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 sm:flex-wrap sm:overflow-visible sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch] overscroll-x-contain touch-pan-x min-h-[44px] items-center">
@@ -91,7 +91,7 @@ function DayAddSection({
               type="button"
               onClick={() => addToDay(id)}
               disabled={inDay || readOnly}
-              className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-olive/50 cursor-default" : PILL.neutral} disabled:active:scale-100`}
+              className={`shrink-0 snap-start ${PILL.base} ${inDay ? "bg-sand-200/80 text-muted-ink cursor-default" : PILL.neutral} disabled:active:scale-100`}
               aria-pressed={inDay}
               aria-label={
                 inDay
@@ -186,7 +186,7 @@ export default function DayContentPanel({
                   {tPlan("dayLabel", { day: activeDay })}
                 </span>
                 {activeItems.length > 0 && (
-                  <span className="text-sm text-olive/70">
+                  <span className="text-sm text-muted-ink">
                     {tPlan("placesCount", { count: activeItems.length })}
                   </span>
                 )}
@@ -195,7 +195,7 @@ export default function DayContentPanel({
                 <button
                   type="button"
                   onClick={onClearDay}
-                  className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-olive/60 hover:text-terracotta hover:underline underline-offset-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="min-h-[44px] inline-flex items-center px-3 py-2 text-sm text-muted-ink hover:text-terracotta hover:underline underline-offset-2 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   aria-label={tPlan("aria.clearDay", { day: activeDay })}
                 >
                   {tPlan("clearDay")}
@@ -203,7 +203,7 @@ export default function DayContentPanel({
               )}
             </div>
             {activeItems.length >= 3 && (
-              <p className="text-sm text-olive/60 mt-3 leading-relaxed" role="status">
+              <p className="text-sm text-muted-ink mt-3 leading-relaxed" role="status">
                 {tPlan("addAnotherStopHint")}
               </p>
             )}
@@ -223,7 +223,7 @@ export default function DayContentPanel({
                 {useBlocks ? (
                   <>
                     <div className={`pt-1 ${SECTION.headingGap} ps-12`}>
-                      <span className={`${TYPE.kicker} text-olive/70`}>{tPlan("morning")}</span>
+                      <span className={`${TYPE.kicker} text-muted-ink`}>{tPlan("morning")}</span>
                     </div>
                     <div className="space-y-0">
                       {morningIds.map((itemId, i) => (
@@ -243,7 +243,7 @@ export default function DayContentPanel({
                     {afternoonIds.length > 0 && (
                       <>
                         <div className={`mt-8 ${SECTION.headingGap} ps-12`}>
-                          <span className={`${TYPE.kicker} text-olive/60`}>{tPlan("afternoon")}</span>
+                          <span className={`${TYPE.kicker} text-muted-ink`}>{tPlan("afternoon")}</span>
                         </div>
                         <div className="space-y-0">
                           {afternoonIds.map((itemId, i) => (

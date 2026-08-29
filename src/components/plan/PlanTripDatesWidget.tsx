@@ -25,7 +25,7 @@ function TripDatesFields({
       <h2 className={`${TYPE.subSectionTitle} text-olive text-base ${SECTION.headingGap}`}>{t("heading")}</h2>
       <div className={`grid sm:grid-cols-2 ${HOME.gridGap} mb-5`}>
         <label className="flex flex-col gap-2">
-          <span className={`${TYPE.kicker} text-olive/60`}>{t("startLabel")}</span>
+          <span className={`${TYPE.kicker} text-muted-ink`}>{t("startLabel")}</span>
           <input
             type="date"
             value={dates.start ?? ""}
@@ -38,7 +38,7 @@ function TripDatesFields({
           />
         </label>
         <label className="flex flex-col gap-2">
-          <span className={`${TYPE.kicker} text-olive/60`}>{t("endLabel")}</span>
+          <span className={`${TYPE.kicker} text-muted-ink`}>{t("endLabel")}</span>
           <input
             type="date"
             value={dates.end ?? ""}
@@ -70,7 +70,7 @@ export default function PlanTripDatesWidget({
         <details className={`group ${cardClass}`}>
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl min-h-[48px] flex flex-col justify-center [&::-webkit-details-marker]:hidden">
             <span className={`${TYPE.subSectionTitle} text-olive text-base`}>{t("optionalSummary")}</span>
-            <span className="text-sm text-olive/60 mt-1">{t("optionalHint")}</span>
+            <span className="text-sm text-muted-ink mt-1">{t("optionalHint")}</span>
           </summary>
           <div className="mt-5 pt-5 border-t border-sand-200/80">
             <TripDatesFields dates={dates} setTripDates={setTripDates} withinSevenDays={withinSevenDays} />

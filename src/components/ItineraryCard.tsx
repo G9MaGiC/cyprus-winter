@@ -65,15 +65,15 @@ export default function ItineraryCard({
       }`}
     >
       {!inTimeline && (
-        <span className="shrink-0 w-8 h-8 rounded-full bg-sand-200/80 text-olive/70 font-semibold text-sm flex items-center justify-center">
+        <span className="shrink-0 w-8 h-8 rounded-full bg-sand-200/80 text-muted-ink font-semibold text-sm flex items-center justify-center">
           {index}
         </span>
       )}
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2 mb-1">
           <TypeBadge type={place.type} />
-          <span className="text-xs text-olive/50">·</span>
-          <span className="text-xs text-olive/60 truncate" title={place.region}>{place.region}</span>
+          <span className="text-xs text-muted-ink">·</span>
+          <span className="text-xs text-muted-ink truncate" title={place.region}>{place.region}</span>
         </div>
         <AppLink
           href={href}
@@ -98,7 +98,7 @@ export default function ItineraryCard({
           <button
             type="button"
             onClick={onRemove}
-            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-olive/60 hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-lg text-sm font-medium text-muted-ink hover:text-terracotta hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={tCommon("aria.removeFromPlan", { name: place.name })}
           >
             {tCommon("remove")}

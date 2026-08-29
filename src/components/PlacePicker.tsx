@@ -94,7 +94,7 @@ export default function PlacePicker({
   const renderList = (items: Place[], tabLabel: string) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 max-h-[min(55vh,400px)] sm:max-h-[360px] overflow-y-auto overscroll-contain scroll-touch touch-manipulation">
       {items.length === 0 ? (
-        <p className="text-sm text-olive/60 col-span-full py-4" role="status">
+        <p className="text-sm text-muted-ink col-span-full py-4" role="status">
           {search.trim()
             ? t("empty.noMatches")
             : t("empty.noneInList", { tabLabel })}
@@ -118,7 +118,7 @@ export default function PlacePicker({
             }`}
           >
             <span className="font-medium text-olive block truncate">{item.name}</span>
-            <span className="text-olive/60 text-sm truncate block">({item.region})</span>
+            <span className="text-muted-ink text-sm truncate block">({item.region})</span>
             {isAdded && (
               <span className="block text-terracotta text-xs mt-1">{t("labels.added")}</span>
             )}
@@ -141,7 +141,7 @@ export default function PlacePicker({
           onChange={(e) => setSearch(e.target.value)}
           placeholder={t("search.placeholder")}
           aria-label={t("search.ariaLabel")}
-          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-3 py-2 text-sm text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
+          className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-3 py-2 text-sm text-olive placeholder:text-muted-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0"
         />
       </div>
       <div
@@ -192,7 +192,7 @@ export default function PlacePicker({
       >
         {tab === "all" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">{t("hints.all")}</p>
+            <p className="text-xs text-muted-ink mb-2">{t("hints.all")}</p>
             {renderList(allFiltered, t("lists.places"))}
           </>
         )}
@@ -206,7 +206,7 @@ export default function PlacePicker({
       >
         {tab === "winery" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">{t("hints.wineries")}</p>
+            <p className="text-xs text-muted-ink mb-2">{t("hints.wineries")}</p>
             {renderList(wineriesFiltered, t("lists.wineries"))}
           </>
         )}
@@ -220,7 +220,7 @@ export default function PlacePicker({
       >
         {tab === "trail" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">{t("hints.trails")}</p>
+            <p className="text-xs text-muted-ink mb-2">{t("hints.trails")}</p>
             {renderList(trailsFiltered, t("lists.trails"))}
           </>
         )}
@@ -234,7 +234,7 @@ export default function PlacePicker({
       >
         {tab === "attraction" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">{t("hints.attractions")}</p>
+            <p className="text-xs text-muted-ink mb-2">{t("hints.attractions")}</p>
             {renderList(attractionsFiltered, t("lists.attractions"))}
           </>
         )}
@@ -248,7 +248,7 @@ export default function PlacePicker({
       >
         {tab === "restaurant" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">{t("hints.restaurants")}</p>
+            <p className="text-xs text-muted-ink mb-2">{t("hints.restaurants")}</p>
             {renderList(restaurantsFiltered, t("lists.restaurants"))}
           </>
         )}
@@ -262,7 +262,7 @@ export default function PlacePicker({
       >
         {tab === "event" && (
           <>
-            <p className="text-xs text-olive/60 mb-2">{t("hints.events")}</p>
+            <p className="text-xs text-muted-ink mb-2">{t("hints.events")}</p>
             {renderList(eventsFiltered, t("lists.events"))}
           </>
         )}

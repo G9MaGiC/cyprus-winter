@@ -28,20 +28,20 @@ export default function DetailBookingSection({ a, tDetail }: DetailBookingSectio
 
   return (
     <section className={`${CARD.base} ${CARD.contentLg} ${CALLOUT.cta}`}>
-      <h2 className={`${TYPE.kicker} text-olive/70 mb-1`}>
+      <h2 className={`${TYPE.kicker} text-muted-ink mb-1`}>
         {tDetail("booking.title")}
       </h2>
       <div className="mb-4 rounded-lg border border-aegean/20 bg-aegean/5 p-3">
         <p className="text-xs font-semibold uppercase tracking-wider text-aegean">
           {tDetail("trustTiming.title")}
         </p>
-        <p className="mt-1 text-sm text-olive/80">{tDetail("trustTiming.body")}</p>
+        <p className="mt-1 text-sm text-muted-ink">{tDetail("trustTiming.body")}</p>
       </div>
       {isWinery(a) && (
-        <p className="text-sm text-olive/60 mb-4">{tDetail("booking.alcoholDisclaimer")}</p>
+        <p className="text-sm text-muted-ink mb-4">{tDetail("booking.alcoholDisclaimer")}</p>
       )}
       {a.openingHours && /appointment|by appointment/i.test(String(a.openingHours)) && (
-        <p className="text-sm text-olive/70 mb-4">{tDetail("booking.appointmentHint")}</p>
+        <p className="text-sm text-muted-ink mb-4">{tDetail("booking.appointmentHint")}</p>
       )}
       <div className="flex flex-col gap-5">
         <div className="flex flex-wrap gap-3">

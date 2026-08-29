@@ -78,7 +78,7 @@ function PlaceOfDayCard({
           </AppLink>
           <p className="text-sm text-olive/90 mt-2 leading-relaxed">{place.tease}</p>
           {place.pairWith && (
-            <p className="text-sm text-olive/80 mt-3">
+            <p className="text-sm text-muted-ink mt-3">
               {t("pairWith")}{" "}
               <AppLink href={place.pairWith.href} className={`font-medium ${SECTION.aegeanLink}`}>
                 {place.pairWith.name}
@@ -86,7 +86,7 @@ function PlaceOfDayCard({
             </p>
           )}
           {alsoWorth.length > 0 && (
-            <p className="text-sm text-olive/80 mt-3">
+            <p className="text-sm text-muted-ink mt-3">
               {t("alsoWorth")}{" "}
               {alsoWorth.map((p, i) => (
                 <span key={p.id}>
@@ -122,7 +122,7 @@ function PlaceOfDayCard({
         <div className={`${LAYOUT.list} mx-auto`}>
           <h2
             id="discover-place-of-day-heading"
-            className={`${TYPE.kicker} text-olive/70 ${SECTION.headingGap}`}
+            className={`${TYPE.kicker} text-muted-ink ${SECTION.headingGap}`}
           >
             {t("kicker")}
           </h2>
@@ -144,7 +144,7 @@ function PlaceOfDayCard({
               <p id="discover-place-of-day-heading" className="font-display text-lg font-semibold text-charcoal">
                 {t("collapsibleTitle")}
               </p>
-              <p className="text-xs text-olive/60 mt-0.5">{t("collapsibleSubtitle")}</p>
+              <p className="text-xs text-muted-ink mt-0.5">{t("collapsibleSubtitle")}</p>
             </div>
             <span className="text-olive/45 group-open:rotate-180 transition-transform shrink-0" aria-hidden>
               ▾

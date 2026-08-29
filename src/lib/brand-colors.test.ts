@@ -46,7 +46,7 @@ describe("brand-colors", () => {
 
   it("globals.css uses canonical terracotta rgba for tap/selection/pulse", () => {
     const css = readFileSync(GLOBALS_CSS, "utf8");
-    expect(css).toContain("rgba(201, 111, 82");
+    expect(css).toContain("rgba(181, 87, 56");
     expect(css).not.toContain("rgba(180, 91, 66");
   });
 });

@@ -21,7 +21,7 @@ function AllTrailsMapLoading() {
       aria-live="polite"
       aria-busy="true"
     >
-      <p className="text-sm text-olive/60">{t("loading.map")}</p>
+      <p className="text-sm text-muted-ink">{t("loading.map")}</p>
     </div>
   );
 }

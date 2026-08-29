@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl";
 
 const chipBase =
   "inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
-const chipInactive = "bg-sand-200/80 text-olive/80 hover:bg-terracotta/10 hover:text-terracotta";
+const chipInactive = "bg-sand-200/80 text-muted-ink hover:bg-terracotta/10 hover:text-terracotta";
 const chipActive = "bg-terracotta text-white border border-terracotta/30 shadow-sm";
 
 export default function AccountSettingsPage() {
@@ -70,7 +70,7 @@ export default function AccountSettingsPage() {
         <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("interests.title")}
         </h2>
-        <p className="text-sm text-olive/80 mb-4">
+        <p className="text-sm text-muted-ink mb-4">
           {tSettings("interests.body")}
         </p>
         <div className="flex flex-wrap gap-2.5">
@@ -92,7 +92,7 @@ export default function AccountSettingsPage() {
         <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("travelStyle.title")}
         </h2>
-        <p className="text-sm text-olive/80 mb-4">
+        <p className="text-sm text-muted-ink mb-4">
           {tSettings("travelStyle.body")}
         </p>
         <div className="flex flex-wrap gap-2.5">
@@ -114,7 +114,7 @@ export default function AccountSettingsPage() {
         <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("regions.title")}
         </h2>
-        <p className="text-sm text-olive/80 mb-4">
+        <p className="text-sm text-muted-ink mb-4">
           {tSettings("regions.body")}
         </p>
         <div className="flex flex-wrap gap-2.5">
@@ -136,7 +136,7 @@ export default function AccountSettingsPage() {
         <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("notifications.title")}
         </h2>
-        <p className="text-sm text-olive/80 mb-4">
+        <p className="text-sm text-muted-ink mb-4">
           {tSettings("notifications.body")}
         </p>
         <div className="space-y-4">
@@ -170,7 +170,7 @@ export default function AccountSettingsPage() {
         <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.headingGap}`}>
           {tSettings("privacy.title")}
         </h2>
-        <p className="text-sm text-olive/80 mb-4">
+        <p className="text-sm text-muted-ink mb-4">
           {tSettings("privacy.body")}
         </p>
         <div className="flex flex-wrap gap-3">
@@ -194,7 +194,7 @@ export default function AccountSettingsPage() {
             {tSettings("privacy.requestDeletion")}
           </a>
         </div>
-        <p className="text-xs text-olive/60 mt-3">
+        <p className="text-xs text-muted-ink mt-3">
           {tSettings("privacy.footer.prefix")}{" "}
           <Link href="/privacy" className={SECTION.aegeanLink}>
             {tSettings("privacy.footer.privacyPolicy")}

@@ -45,7 +45,7 @@ export function DifficultyBadge({ difficulty }: { difficulty: TrailDifficulty })
   return (
     <span
       title={tBadges(`difficulty.${difficulty}.tip`)}
-      className={`${BADGE.base} ${BADGE.chip} ${difficultyTextColors[difficulty] ?? "text-olive/80"}`}
+      className={`${BADGE.base} ${BADGE.chip} ${difficultyTextColors[difficulty] ?? "text-muted-ink"}`}
     >
       {tBadges(`difficulty.${difficulty}.label`)}
     </span>

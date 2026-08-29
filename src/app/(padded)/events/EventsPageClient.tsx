@@ -128,7 +128,7 @@ export default function EventsPage() {
               role="status"
               aria-live="polite"
             >
-              <p className="text-olive/80 break-words max-w-sm mx-auto">
+              <p className="text-muted-ink break-words max-w-sm mx-auto">
                 {tEvents("noMatch")}
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
@@ -164,7 +164,7 @@ export default function EventsPage() {
                 aria-label={tPage("monthNav.aria")}
                 className={`sticky ${LAYOUT.stickyTop} ${LAYER.stickyContent} ${LAYOUT.stickyBarX} mt-4 py-3 sm:py-4 mb-6 sm:mb-8 ${STRIP.stickySandBar}`}
               >
-                <p className={`${TYPE.kicker} text-olive/60 ${SECTION.titleGap}`}>{tPage("monthNav.title")}</p>
+                <p className={`${TYPE.kicker} text-muted-ink ${SECTION.titleGap}`}>{tPage("monthNav.title")}</p>
                 <div className="flex flex-wrap gap-2">
                   {monthNavMonths.map((month) => (
                     <a
@@ -191,7 +191,7 @@ export default function EventsPage() {
                 >
                   {tPage("highlights.title")}
                 </h2>
-                <p className={`text-sm text-olive/70 max-w-xl break-words ${SECTION.headingGap}`}>
+                <p className={`text-sm text-muted-ink max-w-xl break-words ${SECTION.headingGap}`}>
                   {tPage("highlights.lead")}
                 </p>
                 <div className={`grid sm:grid-cols-2 ${HOME.gridGap}`}>
@@ -218,7 +218,7 @@ export default function EventsPage() {
                     >
                       {tPage(monthShortKey(month))}
                     </h2>
-                    <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>
+                    <p className={`text-sm text-muted-ink ${SECTION.headingGap}`}>
                       {tPage(`monthFull.${month}`)}
                     </p>
                     <ul className="space-y-6" role="list">

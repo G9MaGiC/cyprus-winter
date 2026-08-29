@@ -27,7 +27,7 @@ export default function PlanDayHints({ places }: PlanDayHintsProps) {
       {warnings.map((w) => (
         <li
           key={w.id}
-          className="text-sm text-olive/75 leading-relaxed ps-3 border-s-2 border-golden/50"
+          className="text-sm text-muted-ink leading-relaxed ps-3 border-s-2 border-golden/50"
         >
           {messageFor(w.id)}
         </li>

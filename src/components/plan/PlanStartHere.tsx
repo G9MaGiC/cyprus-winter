@@ -20,7 +20,7 @@ export default function PlanStartHere({ onJumpToTonight, onAddFirstStop }: PlanS
       <h2 id="plan-start-here-title" className={`${TYPE.subSectionTitle} text-olive ${SECTION.titleGap}`}>
         {t("title")}
       </h2>
-      <p className={`text-sm text-olive/80 leading-relaxed ${SECTION.headingGap}`}>{t("framing")}</p>
+      <p className={`text-sm text-muted-ink leading-relaxed ${SECTION.headingGap}`}>{t("framing")}</p>
       <div className="flex flex-col sm:flex-row flex-wrap gap-3">
         <button type="button" onClick={onJumpToTonight} className={CTA.primaryCompact}>
           {t("tonightCta")}

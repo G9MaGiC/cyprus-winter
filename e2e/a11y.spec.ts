@@ -4,15 +4,14 @@ import { AxeBuilder } from "@axe-core/playwright";
 /**
  * WCAG 2.2 AA sweep (P3-06 / BUG-351). Run: npm run test:a11y
  *
- * Structural rules (aria, landmarks, labels, names, focus order, forms)
- * are a hard gate — the app scans clean as of Aug 2026 and must stay so.
- * color-contrast is reported but not failed: every finding traces to three
- * brand-token roots (terracotta #C96F52, the text-olive/50–/70 opacity
- * ladder, sage labels) whose remediation is a palette decision tracked in
- * BUG-351. Flip CONTRAST_IS_FATAL once the new palette lands.
+ * Full hard gate: structural rules (aria, landmarks, labels, names, focus
+ * order, forms) AND color-contrast. The AA palette landed with BUG-351
+ * (terracotta #B55738, sage #5B7967, muted-ink #666B78 replacing the
+ * text-olive opacity ladder); decorative aria-hidden glyphs may stay
+ * faint, but visible text must use AA tokens.
  */
 
-const CONTRAST_IS_FATAL = false;
+const CONTRAST_IS_FATAL = true;
 
 const PAGES = [
   "/",

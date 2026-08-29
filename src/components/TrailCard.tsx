@@ -65,7 +65,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             {resolved ? (
               <StatusBadge status={resolved.status} />
             ) : (
-              <span className={`${BADGE.base} ${BADGE.chip} text-olive/80`}>
+              <span className={`${BADGE.base} ${BADGE.chip} text-muted-ink`}>
                 {tTrails("card.noReport")}
               </span>
             )}
@@ -87,7 +87,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
           >
             {trail.name}
           </h3>
-          <p className="text-sm text-olive/70 mt-1 line-clamp-1 break-words">
+          <p className="text-sm text-muted-ink mt-1 line-clamp-1 break-words">
             {teaser}
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-sage/80">

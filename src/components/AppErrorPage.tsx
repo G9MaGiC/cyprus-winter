@@ -26,10 +26,10 @@ export default function AppErrorPage({ error, reset }: AppErrorPageProps) {
     >
       <div className={`${LAYOUT.formNarrow} mx-auto text-center`}>
         <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>{t("title")}</h1>
-        <p className={`text-olive/80 leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
+        <p className={`text-muted-ink leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
           {t("body")}
         </p>
-        <p className={`text-olive/70 text-sm ${SECTION.headingGap}`}>{t("hint")}</p>
+        <p className={`text-muted-ink text-sm ${SECTION.headingGap}`}>{t("hint")}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button type="button" onClick={reset} className={CTA.primaryCompact}>
             {tCommon("tryAgain")}

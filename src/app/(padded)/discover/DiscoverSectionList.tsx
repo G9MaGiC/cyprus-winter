@@ -53,7 +53,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                 role="status"
                 aria-live="polite"
               >
-                <p className="text-olive/80 mb-4">
+                <p className="text-muted-ink mb-4">
                   {tCommon("discoverEmptyBody")}
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">

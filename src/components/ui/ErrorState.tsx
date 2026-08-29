@@ -59,7 +59,7 @@ export function ErrorState({
       <h3 className={`${TYPE.cardTitle} text-charcoal ${SECTION.titleGap}`}>
         {resolvedTitle}
       </h3>
-      <p className={`text-sm text-olive/80 ${SECTION.headingGap} max-w-md mx-auto break-words`}>
+      <p className={`text-sm text-muted-ink ${SECTION.headingGap} max-w-md mx-auto break-words`}>
         {message}
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center [&_a]:w-full [&_a]:sm:w-auto [&_button]:w-full [&_button]:sm:w-auto">

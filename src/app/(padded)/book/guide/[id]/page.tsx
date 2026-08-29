@@ -78,7 +78,7 @@ export default async function GuideBookPage({
             { label: tCommon("breadcrumbs.bookGuide"), href: "/book/guide" },
             { label: guide.name, href: `/book/guide/${id}`, isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
 
@@ -97,14 +97,14 @@ export default async function GuideBookPage({
           )}
         </div>
         <h1 className={`${TYPE.pageTitle} mt-3`}>{tBookPages("guideDetail.title")}</h1>
-        <p className="text-olive/80 mt-1 break-words">
+        <p className="text-muted-ink mt-1 break-words">
           {guide.name} · {guide.region}
         </p>
         <GuidePartnerMeta
           guide={guide}
           districtLabel={tGuidesDir(`districts.${guide.district}`)}
         />
-        <p className="text-sm text-olive/70 mt-3 max-w-lg break-words prose-body">{guide.description}</p>
+        <p className="text-sm text-muted-ink mt-3 max-w-lg break-words prose-body">{guide.description}</p>
       </div>
 
       <GuideBookingForm guide={guide} preselectedTrailId={trail ?? undefined} />
@@ -112,7 +112,7 @@ export default async function GuideBookPage({
       {(guide.bookingUrl || guide.contactPhone) && (
         <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>
           {guide.bookingUrl && (
-            <p className="text-sm text-olive/80">
+            <p className="text-sm text-muted-ink">
               {tBookPages("guideDetail.other.or")}{" "}
               <a
                 href={guide.bookingUrl}
@@ -126,7 +126,7 @@ export default async function GuideBookPage({
             </p>
           )}
           {guide.contactPhone && (
-            <p className="text-sm text-olive/70">
+            <p className="text-sm text-muted-ink">
               {tBookPages("guideDetail.other.callPrefix")}{" "}
               <a
                 href={`tel:${guide.contactPhone}`}

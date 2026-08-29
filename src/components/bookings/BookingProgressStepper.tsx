@@ -25,7 +25,7 @@ export default function BookingProgressStepper({
                 className={`h-1.5 rounded-full transition-colors duration-300 ${isActive ? "bg-terracotta" : "bg-sand-200"} ${isCurrent && currentStep === 2 ? "animate-pulse" : ""}`}
                 aria-hidden
               />
-              <p className={`mt-2 text-xs font-medium transition-colors duration-300 ${isActive ? "text-olive" : "text-olive/50"}`}>
+              <p className={`mt-2 text-xs font-medium transition-colors duration-300 ${isActive ? "text-olive" : "text-muted-ink"}`}>
                 {label}
               </p>
             </li>

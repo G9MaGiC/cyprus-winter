@@ -62,7 +62,7 @@ export default function RegionPickerChips({
             e.stopPropagation();
             onUseLocation();
           }}
-          className="text-sm text-olive/70 hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2 rounded"
+          className="text-sm text-muted-ink hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2 rounded"
         >
           {tCommon("useMyLocationInstead")}
         </button>

@@ -232,7 +232,7 @@ export default function DiscoverClient({
           />
         ) : null}
         {viewMode === "list" ? (
-          <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
+          <p className="pt-6 sm:pt-8 pb-2 text-sm text-muted-ink">
             {tDiscover("page.curatedLine")}
           </p>
         ) : null}
@@ -294,7 +294,7 @@ export default function DiscoverClient({
             <p className="text-lg font-semibold text-olive mb-2">
               {tDiscover("page.noResultsTitle")}
             </p>
-            <p className="text-olive/80 mb-6">{tDiscover("page.noResultsBody")}</p>
+            <p className="text-muted-ink mb-6">{tDiscover("page.noResultsBody")}</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <AppLink
                 href="/discover"

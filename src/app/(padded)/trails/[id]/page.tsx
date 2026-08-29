@@ -127,7 +127,7 @@ export default async function TrailPage({
               { label: tNav("trails"), href: "/trails" },
               { label: getLocalizedName(trail, locale), href: canonicalUrl, isCurrent: true },
             ]}
-            className="py-1 px-0 text-xs text-olive/60"
+            className="py-1 px-0 text-xs text-muted-ink"
           />
         </nav>
 
@@ -253,7 +253,7 @@ export default async function TrailPage({
               >
                 {latestReport ? (
                   <>
-                    <div className="flex flex-wrap gap-4 text-sm text-olive/80">
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-ink">
                       {latestReport.temperatureC != null && (
                         <span>
                           {tTrailsDetail("conditions.temperatureAtTrailhead", {
@@ -273,7 +273,7 @@ export default async function TrailPage({
                           surface: latestReport.surface,
                         })}
                       </span>
-                      <span className="text-olive/60">{formatReportTimestamp(latestReport.reportedAt, locale)}</span>
+                      <span className="text-muted-ink">{formatReportTimestamp(latestReport.reportedAt, locale)}</span>
                     </div>
                     {latestReport.note && (
                       <p className="mt-3 text-sm text-olive/90 italic break-words">
@@ -281,14 +281,14 @@ export default async function TrailPage({
                       </p>
                     )}
                     {reports.length > 1 && (
-                      <p className="mt-2 text-xs text-olive/60">
+                      <p className="mt-2 text-xs text-muted-ink">
                         {tTrailsDetail("conditions.recentReportsCount", { count: reports.length })}
                       </p>
                     )}
                   </>
                 ) : conditions ? (
                   <>
-                    <div className="flex flex-wrap gap-4 text-sm text-olive/80">
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-ink">
                       {conditions.temperatureC != null && (
                         <span>
                           {tTrailsDetail("conditions.temperatureAtTrailhead", {
@@ -309,7 +309,7 @@ export default async function TrailPage({
                         })}
                       </span>
                       {!conditions.lastReportedAt && (
-                        <span className="text-olive/60">{tTrails("conditionsEditorial")}</span>
+                        <span className="text-muted-ink">{tTrails("conditionsEditorial")}</span>
                       )}
                     </div>
                     {conditions.tip && (
@@ -346,7 +346,7 @@ export default async function TrailPage({
                 title={tTrailsDetail("conditions.titleNoData")}
                 borderAccent="aegean"
               >
-                <p className="text-sm text-olive/70 mb-4">
+                <p className="text-sm text-muted-ink mb-4">
                   {tTrailsDetail("conditions.noRecentBody")}
                 </p>
                 <AppLink href={`/trails/${trail.id}/report`} className={`gap-2 ${CTA.primaryCompact}`}>
@@ -416,10 +416,10 @@ export default async function TrailPage({
                       <div className="min-w-0">
                         <p className="font-medium text-olive break-words">{w.name}</p>
                         {w.km != null && (
-                          <span className="text-xs text-olive/60">@ {w.km} km</span>
+                          <span className="text-xs text-muted-ink">@ {w.km} km</span>
                         )}
                         {w.note && (
-                          <p className="text-sm text-olive/80 mt-0.5 break-words">{w.note}</p>
+                          <p className="text-sm text-muted-ink mt-0.5 break-words">{w.note}</p>
                         )}
                       </div>
                     </li>
@@ -452,7 +452,7 @@ export default async function TrailPage({
                 </ul>
               </SectionCard>
               <SectionCard title={tTrailsDetail("bestSeasonTitle")} borderAccent="sage">
-                <p className="text-olive/80 capitalize text-sm break-words">{trail.bestSeason.join(", ")}</p>
+                <p className="text-muted-ink capitalize text-sm break-words">{trail.bestSeason.join(", ")}</p>
               </SectionCard>
               {trail.bring && trail.bring.length > 0 && (
                 <SectionCard title={tTrailsDetail("whatToBringTitle")} borderAccent="sage">
@@ -473,20 +473,20 @@ export default async function TrailPage({
             {/* Local secrets for this trail */}
             {getSecretsForPlace(trail.id).length > 0 && (
               <SectionCard title={tTrailsDetail("localSecrets.title")} borderAccent="golden">
-                <p className="text-sm text-olive/70 mb-4">
+                <p className="text-sm text-muted-ink mb-4">
                   {tTrailsDetail("localSecrets.intro")}
                 </p>
                 <div className="space-y-4">
                   {getSecretsForPlace(trail.id).map((s) => (
                     <div key={s.id} className="p-4 rounded-xl bg-white/80 border border-sand-200/80">
                       <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
-                      <p className="text-sm text-olive/80 leading-relaxed break-words">{s.body}</p>
+                      <p className="text-sm text-muted-ink leading-relaxed break-words">{s.body}</p>
                     </div>
                   ))}
                 </div>
                 <AppLink
                   href="/secrets"
-                  className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+                  className="mt-4 inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:text-terracotta-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
                 >
                   {tTrailsDetail("localSecrets.seeAll")}
                 </AppLink>
@@ -507,7 +507,7 @@ export default async function TrailPage({
               </div>
             )}
 
-            <p className="text-xs text-olive/60 italic break-words pt-8">
+            <p className="text-xs text-muted-ink italic break-words pt-8">
               {tCommon("trailsFooterDisclaimer")}
             </p>
             <DetailActionFooter

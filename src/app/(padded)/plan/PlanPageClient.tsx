@@ -155,7 +155,7 @@ export default function PlanPageClient() {
           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl p-4 sm:p-5 text-start select-none [&::-webkit-details-marker]:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-sand min-h-[48px]">
             <div className="min-w-0">
               <p className="font-display text-lg font-semibold text-charcoal">{tPlan("combosCollapsibleTitle")}</p>
-              <p className="text-xs text-olive/60 mt-0.5">{tPlan("combosCollapsibleSubtitle")}</p>
+              <p className="text-xs text-muted-ink mt-0.5">{tPlan("combosCollapsibleSubtitle")}</p>
             </div>
             <span className="text-olive/45 group-open:rotate-180 transition-transform shrink-0" aria-hidden>
               ▾
@@ -188,7 +188,7 @@ export default function PlanPageClient() {
         )}
 
         {searchParams.get("add") && !hydrated && (
-          <p className={`text-sm text-olive/70 ${SECTION.headingGap}`} role="status" aria-live="polite">
+          <p className={`text-sm text-muted-ink ${SECTION.headingGap}`} role="status" aria-live="polite">
             {tPlan("addingToPlan")}
           </p>
         )}

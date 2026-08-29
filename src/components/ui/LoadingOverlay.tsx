@@ -42,7 +42,7 @@ export function LoadingOverlay({
             <div className="w-12 h-12 rounded-full border-4 border-sand-300 border-t-terracotta animate-spin" />
           </div>
           {message && (
-            <p className="mt-4 text-sm font-medium text-olive/80">{message}</p>
+            <p className="mt-4 text-sm font-medium text-muted-ink">{message}</p>
           )}
           <span className="sr-only">{message}</span>
         </div>

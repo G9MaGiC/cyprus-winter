@@ -79,7 +79,7 @@ export default async function AirportPage() {
         </ListPageHero>
 
         <section aria-label={tAirport("quickActions.aria")} className={`rounded-xl ${CARD.base} ${CARD.content} bg-white/95`}>
-          <p className={`${TYPE.kicker} text-olive/70 mb-3`}>{tAirport("quickActions.kicker")}</p>
+          <p className={`${TYPE.kicker} text-muted-ink mb-3`}>{tAirport("quickActions.kicker")}</p>
           <div className="grid gap-3 sm:grid-cols-3">
             <TrackOnClick event="arrival_quick_action_click" properties={{ action: "plan_48h" }}>
               <AppLink href="/plan?template=short-stay" className={`${CTA.primaryCompact} justify-center`} data-testid="airport-quick-plan">
@@ -123,7 +123,7 @@ export default async function AirportPage() {
               {tAirport("essentials.ambulance")} <strong>199</strong>
             </a>
           </p>
-          <p className="text-olive/70 text-xs mt-1">{tAirport("essentials.note")}</p>
+          <p className="text-muted-ink text-xs mt-1">{tAirport("essentials.note")}</p>
         </section>
 
         {/* Your first hour — orient jetlagged arrivals */}
@@ -214,12 +214,12 @@ export default async function AirportPage() {
                             {t.approxCost}
                           </p>
                           {t.duration && (
-                            <p className="text-olive/70 text-xs mt-0.5 break-words">
+                            <p className="text-muted-ink text-xs mt-0.5 break-words">
                               {t.duration}
                             </p>
                           )}
                           {t.tip && (
-                            <p className="text-olive/80 text-xs mt-1.5 italic break-words">
+                            <p className="text-muted-ink text-xs mt-1.5 italic break-words">
                               {t.tip}
                             </p>
                           )}
@@ -237,7 +237,7 @@ export default async function AirportPage() {
                         key={i}
                         className="flex gap-2 text-sm text-olive/90 leading-relaxed break-words"
                       >
-                        <span className="text-terracotta/70 shrink-0" aria-hidden>
+                        <span className="text-terracotta shrink-0" aria-hidden>
                           ·
                         </span>
                         <span>{tip}</span>

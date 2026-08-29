@@ -33,7 +33,7 @@ export default function TimelineRow({
     return (
       <div className="flex gap-4">
         <div className="flex flex-col items-center shrink-0">
-          <span className="w-8 h-8 rounded-full bg-sand-200/80 text-olive/50 flex items-center justify-center text-sm font-semibold">
+          <span className="w-8 h-8 rounded-full bg-sand-200/80 text-muted-ink flex items-center justify-center text-sm font-semibold">
             {index}
           </span>
           {showConnector && <span className="w-px h-5 sm:h-6 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
@@ -41,12 +41,12 @@ export default function TimelineRow({
         <div
           className={`flex-1 flex items-center justify-between ${CARD.content} rounded-xl border border-sand-200/80 bg-sand-100/50`}
         >
-          <span className="text-sm text-olive/60 italic">{tCommon("timelineRemovedPlace")}</span>
+          <span className="text-sm text-muted-ink italic">{tCommon("timelineRemovedPlace")}</span>
           {!readOnly && (
             <button
               type="button"
               onClick={() => removeFromDay(id)}
-              className="min-h-[44px] px-3 py-2 text-sm font-medium text-olive/70 hover:text-terracotta rounded-lg hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="min-h-[44px] px-3 py-2 text-sm font-medium text-muted-ink hover:text-terracotta rounded-lg hover:bg-terracotta/5 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               aria-label={tCommon("remove")}
             >
               {tCommon("remove")}
@@ -64,7 +64,7 @@ export default function TimelineRow({
           className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
             isLastAdded
               ? "bg-terracotta text-white ring-2 ring-terracotta/40 ring-offset-2 ring-offset-white"
-              : "bg-sand-200/80 text-olive/70"
+              : "bg-sand-200/80 text-muted-ink"
           }`}
         >
           {index}

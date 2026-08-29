@@ -79,7 +79,7 @@ export default function DaySelector({
               className={`shrink-0 snap-center min-w-[3.5rem] min-[400px]:min-w-[3.75rem] sm:min-w-[4.5rem] px-3 sm:px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 min-h-[44px] active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap ${
                 isActive
                   ? "bg-terracotta text-white shadow-sm"
-                  : "bg-white/90 border border-sand-200/80 text-olive/80 hover:border-terracotta/20 hover:bg-sand-100/60"
+                  : "bg-white/90 border border-sand-200/80 text-muted-ink hover:border-terracotta/20 hover:bg-sand-100/60"
               }`}
             >
             {count > 0
@@ -93,11 +93,11 @@ export default function DaySelector({
       {hasContent && displayDaysCount > 1 && (
         <details className="group mt-4 sm:mt-5">
           <summary className="list-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl min-h-[44px] flex items-center">
-            <span className="inline-flex items-center gap-2 text-sm font-medium text-olive/70 hover:text-terracotta min-h-[44px] py-2.5 px-3 rounded-xl hover:bg-terracotta/5 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-muted-ink hover:text-terracotta min-h-[44px] py-2.5 px-3 rounded-xl hover:bg-terracotta/5 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
               {activeDaysCount > 1
                 ? t("viewAllDaysCount", { count: activeDaysCount })
                 : t("viewAllDays")}
-              <span className="text-olive/50 group-open:rotate-180 transition-transform" aria-hidden>
+              <span className="text-muted-ink group-open:rotate-180 transition-transform" aria-hidden>
                 ▾
               </span>
             </span>
@@ -116,11 +116,11 @@ export default function DaySelector({
                   type="button"
                   onClick={() => setActiveDay(d)}
                   className={`w-full min-h-[44px] text-start px-4 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
-                    isActive ? "bg-terracotta/10 text-terracotta font-medium" : "bg-sand-100/60 text-olive/80 hover:bg-sand-200/60"
+                    isActive ? "bg-terracotta/10 text-terracotta font-medium" : "bg-sand-100/60 text-muted-ink hover:bg-sand-200/60"
                   }`}
                 >
                   <span className="font-medium shrink-0">{tPlan("dayLabel", { day: d })}</span>
-                  <span className="truncate text-olive/70">{summary}</span>
+                  <span className="truncate text-muted-ink">{summary}</span>
                 </button>
               );
             })}

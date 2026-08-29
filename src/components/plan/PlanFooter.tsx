@@ -31,7 +31,7 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
           </Link>
         </p>
       )}
-      <p className="text-olive/60 text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
+      <p className="text-muted-ink text-sm break-words text-center mb-6 max-w-xl mx-auto leading-relaxed">
         {tPlan("footer.winterTip")}
       </p>
       <div

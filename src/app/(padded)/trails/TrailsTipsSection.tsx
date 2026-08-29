@@ -20,10 +20,10 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
     <section aria-labelledby="tips-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
       <Disclosure id="tips-heading" summary={t("summary")} defaultOpen={false}>
         <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6 border-s-4 border-s-sage/50">
-          <p className={`text-xs text-olive/60 ${SECTION.headingGap} break-words italic`}>
+          <p className={`text-xs text-muted-ink ${SECTION.headingGap} break-words italic`}>
             {t("disclaimer")}
           </p>
-          <p className={`text-sm text-olive/80 break-words`}>
+          <p className={`text-sm text-muted-ink break-words`}>
             {t("shortChecklist")}
           </p>
           <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-sand-200/80 gap-4">
@@ -35,7 +35,7 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
                 <h3 className={`${TYPE.kicker} text-olive`}>
                   {tHome(`insiderTips.${tip.id}.title`)}
                 </h3>
-                <p className="text-sm text-olive/80 mt-1 leading-relaxed break-words">
+                <p className="text-sm text-muted-ink mt-1 leading-relaxed break-words">
                   {tHome(`insiderTips.${tip.id}.body`)}
                 </p>
               </div>
@@ -58,7 +58,7 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
                 </AppLink>
               )}
             </div>
-            <p className="text-xs text-olive/60">
+            <p className="text-xs text-muted-ink">
               {t("buildDayHint")}
             </p>
             <AppLink href="/guides/troodos-december" className={`text-sm ${SECTION.aegeanLink}`}>

@@ -13,11 +13,11 @@ export default function NotFound() {
         <h1 className={`${TYPE.sectionTitle} text-olive ${SECTION.titleGap}`}>
           {tNotFound("title")}
         </h1>
-        <p className="text-olive/60 text-sm mb-2" aria-hidden="true">404</p>
-        <p className={`text-olive/80 leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
+        <p className="text-muted-ink text-sm mb-2" aria-hidden="true">404</p>
+        <p className={`text-muted-ink leading-relaxed prose-body break-words ${SECTION.headingGap}`}>
           {tNotFound("body")}
         </p>
-        <p className={`text-olive/70 text-sm ${SECTION.headingGap}`}>
+        <p className={`text-muted-ink text-sm ${SECTION.headingGap}`}>
           {tNotFound("hint")}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

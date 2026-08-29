@@ -24,7 +24,7 @@ export default async function WineRouteBookableStops({ slug }: { slug: string })
       <h2 id="wine-route-bookable" className={TYPE.subSectionTitle}>
         {tPage("bookableHeading")}
       </h2>
-      <p className="text-sm text-olive/80 mt-2 leading-relaxed">{tPage("bookableIntro")}</p>
+      <p className="text-sm text-muted-ink mt-2 leading-relaxed">{tPage("bookableIntro")}</p>
       <ul className="mt-4 divide-y divide-sand-200/80">
         {stops.map((winery) => {
           const hours = placeCardHours(winery);

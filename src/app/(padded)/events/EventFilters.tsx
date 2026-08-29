@@ -39,7 +39,7 @@ export default function EventFilters({
   const filterGroup = (
     <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-end gap-4 lg:gap-6">
       <div className="flex flex-wrap items-center gap-2">
-        <span className={`${TYPE.kicker} text-olive/60 w-full sm:w-auto shrink-0`}>{tPage("filters.typeLabel")}</span>
+        <span className={`${TYPE.kicker} text-muted-ink w-full sm:w-auto shrink-0`}>{tPage("filters.typeLabel")}</span>
         <FilterChips
           chips={typeChips}
           isActive={(c) => (c.id === "" ? !typeFilter : typeFilter === c.id)}
@@ -48,7 +48,7 @@ export default function EventFilters({
         />
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <span className={`${TYPE.kicker} text-olive/60 w-full sm:w-auto shrink-0`}>{tPage("filters.regionLabel")}</span>
+        <span className={`${TYPE.kicker} text-muted-ink w-full sm:w-auto shrink-0`}>{tPage("filters.regionLabel")}</span>
         <FilterChips
           chips={regionChips}
           isActive={(c) => (c.id === "" ? !regionFilter : regionFilter === c.id)}
@@ -63,7 +63,7 @@ export default function EventFilters({
     <section aria-label={tPage("filters.aria")} className="mb-0">
       <div className={`${CARD.base} ${CARD.content}`}>
         {hasInvalidFilter && (
-          <p className="text-sm text-olive/70 mb-4" role="status">
+          <p className="text-sm text-muted-ink mb-4" role="status">
             {tPage("filters.unknown")}
           </p>
         )}
@@ -77,7 +77,7 @@ export default function EventFilters({
             id="event-filters-toggle"
           >
             <span className="text-sm">{tPage("filters.togglePrefix")} {hasFilters ? [typeFilterLabel, regionFilter].filter(Boolean).join(", ") : tPage("filters.toggleAll")}</span>
-            <span className="text-olive/60 text-xs" aria-hidden>
+            <span className="text-muted-ink text-xs" aria-hidden>
               {filtersExpanded ? tPage("filters.toggleHide") : tPage("filters.toggleShow")}
             </span>
           </button>

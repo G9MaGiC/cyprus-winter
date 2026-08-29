@@ -290,7 +290,7 @@ export default function BookingsPage() {
           <div className={`flex flex-wrap items-center gap-4 mb-8 rounded-xl ${CARD.base} ${CARD.content}`}>
             <div className="flex items-center gap-3">
               <span className="text-2xl font-display font-bold text-terracotta">{bookings.length}</span>
-              <span className="text-sm text-olive/70">
+              <span className="text-sm text-muted-ink">
                 {tBookingsPage("stats.totalBookings", { count: bookings.length })}
               </span>
             </div>
@@ -299,7 +299,7 @@ export default function BookingsPage() {
                 <span className="w-px h-6 bg-sand-200" aria-hidden />
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-display font-bold text-aegean">{upcoming.length}</span>
-                  <span className="text-sm text-olive/70">
+                  <span className="text-sm text-muted-ink">
                     {tBookingsPage("stats.upcoming")}
                   </span>
                 </div>
@@ -324,9 +324,9 @@ export default function BookingsPage() {
             aria-expanded={showSync}
             aria-controls="bookings-sync-panel"
             id="bookings-sync-toggle"
-            className="flex items-center justify-center min-h-[44px] gap-2 text-sm font-medium text-olive/80 hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded w-full sm:w-auto py-2"
+            className="flex items-center justify-center min-h-[44px] gap-2 text-sm font-medium text-muted-ink hover:text-terracotta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded w-full sm:w-auto py-2"
           >
-            <span aria-hidden className="text-olive/60">{showSync ? "▾" : "▸"}</span>
+            <span aria-hidden className="text-muted-ink">{showSync ? "▾" : "▸"}</span>
             {tBookingsPage("sync.toggle")}
           </button>
           {showSync && (
@@ -369,7 +369,7 @@ export default function BookingsPage() {
               <h2 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>
                 {tBookings("empty")}
               </h2>
-              <p className="text-sm text-olive/60 max-w-md mx-auto break-words mb-8">
+              <p className="text-sm text-muted-ink max-w-md mx-auto break-words mb-8">
                 {tBookings("bookMore")}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
@@ -397,7 +397,7 @@ export default function BookingsPage() {
               </div>
               {showSync && (
                 <div className="pt-4 border-t border-sand-200/80">
-                  <p className="text-xs text-olive/50 mb-3">
+                  <p className="text-xs text-muted-ink mb-3">
                     {tBookingsPage("sync.mergeHint")}
                   </p>
                   <BookingsEmailLookup
@@ -427,7 +427,7 @@ export default function BookingsPage() {
                 <p className="text-sm font-medium text-olive mb-1">
                   {tBookingsPage("noUpcoming.title")}
                 </p>
-                <p className="text-sm text-olive/70 mb-4">
+                <p className="text-sm text-muted-ink mb-4">
                   {tBookingsPage("noUpcoming.body")}
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -461,7 +461,7 @@ export default function BookingsPage() {
                     providers: tomorrowBookings.map((b) => b.providerName).join(" · "),
                   })}
                 </p>
-                <p className="text-xs text-olive/70 mt-1">
+                <p className="text-xs text-muted-ink mt-1">
                   {tBookingsPage("tomorrowHighlight.body")}
                 </p>
               </div>
@@ -511,11 +511,11 @@ export default function BookingsPage() {
                                   <span className={`${TYPE.cardTitle} block truncate`}>
                                     {b.providerName}
                                   </span>
-                                  <p className="text-sm text-olive/70 mt-1 break-words">
+                                  <p className="text-sm text-muted-ink mt-1 break-words">
                                     {formatDate(b.date, locale)} · {tCommon("peopleCount", { count: b.partySize })}
                                   </p>
                                   {isTodayOrTomorrow && (
-                                    <p className="text-xs text-olive/60 mt-2" role="status">
+                                    <p className="text-xs text-muted-ink mt-2" role="status">
                                       {days === 0
                                         ? todayCopy
                                         : tBookingsPage("tomorrow.reminder")}
@@ -571,10 +571,10 @@ export default function BookingsPage() {
                           <div className="flex flex-wrap items-center gap-2 mb-2">
                             <StatusBadge status={b.status} />
                           </div>
-                          <span className={`${TYPE.cardTitle} text-olive/80 block truncate`}>
+                          <span className={`${TYPE.cardTitle} text-muted-ink block truncate`}>
                             {b.providerName}
                           </span>
-                          <p className="text-sm text-olive/60 mt-1 break-words">
+                          <p className="text-sm text-muted-ink mt-1 break-words">
                             {formatDate(b.date, locale)} · {tCommon("peopleCount", { count: b.partySize })}
                           </p>
                           {providerValid && (
@@ -605,7 +605,7 @@ export default function BookingsPage() {
                 ? tBookingsPage("bookMore.titleNoUpcoming")
                 : tBookingsPage("bookMore.title")}
             </h2>
-            <p className={`text-sm text-olive/70 ${SECTION.headingGap} break-words`}>
+            <p className={`text-sm text-muted-ink ${SECTION.headingGap} break-words`}>
               {upcoming.length === 0
                 ? tBookingsPage("bookMore.bodyNoUpcoming")
                 : tBookingsPage("bookMore.body")}

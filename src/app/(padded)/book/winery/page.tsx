@@ -45,19 +45,19 @@ export default async function WineriesListPage() {
             { label: tNav("wineries"), href: "/wineries" },
             { label: tCommon("breadcrumbs.bookTasting"), href: "/book/winery", isCurrent: true },
           ]}
-          className="py-1 px-0 text-xs text-olive/60"
+          className="py-1 px-0 text-xs text-muted-ink"
         />
       </nav>
 
       <div className={SECTION.headingMargin}>
         <h1 className={`${TYPE.pageTitle} ${SECTION.headingGap}`}>{tCommon("breadcrumbs.bookTasting")}</h1>
-        <p className="text-olive/70 max-w-2xl">
+        <p className="text-muted-ink max-w-2xl">
           {tBookPages("wineryList.intro")}
         </p>
-        <p className="text-sm text-olive/60 mt-2 max-w-2xl">
+        <p className="text-sm text-muted-ink mt-2 max-w-2xl">
           {tBookPages("wineryList.disclaimer")}
         </p>
-        <p className="text-sm text-olive/60 mt-3 max-w-2xl">
+        <p className="text-sm text-muted-ink mt-3 max-w-2xl">
           <AppLink href="/book/guide" className={SECTION.aegeanLink}>
             {tBookPages("wineryList.alsoGuides")}
           </AppLink>
@@ -109,16 +109,16 @@ export default async function WineriesListPage() {
                     )}
                   </div>
                   <h3 className={`${TYPE.cardTitle} mb-1`}>{winery.name}</h3>
-                  <p className="text-sm text-olive/70 mb-2">{winery.region}</p>
+                  <p className="text-sm text-muted-ink mb-2">{winery.region}</p>
                   {winery.tastingInfo && (
-                    <p className="text-sm text-olive/80 mb-4 flex-1 line-clamp-2">{winery.tastingInfo}</p>
+                    <p className="text-sm text-muted-ink mb-4 flex-1 line-clamp-2">{winery.tastingInfo}</p>
                   )}
                   {winery.bestFor.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {winery.bestFor.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 rounded-full text-xs bg-sand-200/80 text-olive/70"
+                          className="px-2 py-0.5 rounded-full text-xs bg-sand-200/80 text-muted-ink"
                         >
                           {tag}
                         </span>

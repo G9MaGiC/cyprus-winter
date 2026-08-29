@@ -25,7 +25,7 @@ export default function NatureCrosslinksStrip() {
         <h2 id="nature-crosslinks" className={`${TYPE.cardTitle} text-charcoal mb-2`}>
           {t("title")}
         </h2>
-        <p className="text-sm text-olive/70 mb-4 max-w-2xl">{t("body")}</p>
+        <p className="text-sm text-muted-ink mb-4 max-w-2xl">{t("body")}</p>
         <ul className="flex flex-wrap gap-3">
           {links.map((link) => (
             <li key={link.label}>

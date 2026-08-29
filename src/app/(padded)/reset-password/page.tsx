@@ -36,7 +36,7 @@ export default function ResetPasswordPage() {
             <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.configTitle")}
             </h1>
-            <p className="text-olive/80 text-sm leading-relaxed mb-6">
+            <p className="text-muted-ink text-sm leading-relaxed mb-6">
               {tAuth("reset.configSubtitle")}
             </p>
             <AppLink href="/login" className={CTA.primaryCompact}>
@@ -84,7 +84,7 @@ export default function ResetPasswordPage() {
             <h1 className={`${TYPE.sectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.successTitle")}
             </h1>
-            <p className="text-olive/80 text-base leading-relaxed mb-6">
+            <p className="text-muted-ink text-base leading-relaxed mb-6">
               {tAuth("reset.successSubtitle")}
             </p>
             <AppLink href="/account" className={CTA.primaryCompact}>
@@ -116,7 +116,7 @@ export default function ResetPasswordPage() {
             <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.invalidLinkTitle")}
             </h1>
-            <p className="text-olive/80 text-sm leading-relaxed mb-6">
+            <p className="text-muted-ink text-sm leading-relaxed mb-6">
               {tAuth("reset.invalidLinkSubtitle")}
             </p>
             <AppLink href="/forgot-password" className={CTA.primaryCompact}>
@@ -129,7 +129,7 @@ export default function ResetPasswordPage() {
   }
 
   const inputBase =
-    "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors";
+    "w-full min-h-[48px] px-4 py-3 rounded-xl border border-sand-200/90 bg-white/95 text-charcoal placeholder:text-muted-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:border-terracotta/50 transition-colors";
 
   return (
     <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
@@ -137,13 +137,13 @@ export default function ResetPasswordPage() {
         <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
 
         <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-s-4 border-s-terracotta/50 shadow-md`}>
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta mb-2">
             {tAuth("reset.kicker")}
           </p>
           <h1 className={`${TYPE.sectionTitle} font-bold text-charcoal mb-2`}>
             {tAuth("reset.title")}
           </h1>
-          <p className="text-olive/80 text-base leading-relaxed mb-8">
+          <p className="text-muted-ink text-base leading-relaxed mb-8">
             {tAuth("reset.subtitle")}
           </p>
 
@@ -158,7 +158,7 @@ export default function ResetPasswordPage() {
               <label htmlFor="reset-password" className="block text-sm font-medium text-olive mb-2">
                 {tAuth("reset.newPasswordLabel")}
               </label>
-              <p id="reset-password-hint" className="text-xs text-olive/60 mb-1.5">
+              <p id="reset-password-hint" className="text-xs text-muted-ink mb-1.5">
                 {tAuth("reset.inlinePasswordHint")}
               </p>
               <div className="relative">
@@ -178,7 +178,7 @@ export default function ResetPasswordPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
-                  className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
+                  className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-ink hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
                   aria-label={showPassword ? tAuth("reset.ariaHidePassword") : tAuth("reset.ariaShowPassword")}
                 >
                   {showPassword ? (
@@ -218,7 +218,7 @@ export default function ResetPasswordPage() {
           </form>
         </div>
 
-        <p className="mt-8 text-center text-sm text-olive/70">
+        <p className="mt-8 text-center text-sm text-muted-ink">
           <AppLink href="/login" className="text-terracotta font-medium hover:text-terracotta-muted transition-colors">
             {tCommon("backTo", { label: tNav("signIn") })}
           </AppLink>

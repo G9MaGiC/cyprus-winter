@@ -37,10 +37,10 @@ export default function TrailsFilterBar({
     <StickyFilterBar ariaLabel={tTrails("filters.aria.section")}>
       <div className={`${LAYOUT.list} mx-auto space-y-4`}>
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span className={`${TYPE.kicker} text-olive/60 uppercase tracking-wider`}>
+          <span className={`${TYPE.kicker} text-muted-ink uppercase tracking-wider`}>
             {tTrails("filters.aria.section")}
           </span>
-          <span className="text-olive/60 text-sm">
+          <span className="text-muted-ink text-sm">
             {tTrails("page.list.filteredHeading", { count: filteredCount })}
           </span>
           {hasFilters && (
@@ -49,7 +49,7 @@ export default function TrailsFilterBar({
             </AppLink>
           )}
           {hasInvalidFilter && (
-            <span className="text-xs text-olive/60" role="status">
+            <span className="text-xs text-muted-ink" role="status">
               {tTrails("filterBar.showingAll")}
             </span>
           )}
