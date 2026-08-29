@@ -169,7 +169,9 @@ Routing: `src/app/(padded)/<route>/page.tsx` is the single implementation; `src/
 ### Attraction (`src/data/attractions.ts` — authoritative; abbreviated here)
 ```ts
 type Attraction = {
-  id: string;           // kebab-case, unique across ALL place data (data:validate enforces)
+  id: string;           // kebab-case; unique across all plan-addable places — attractions,
+                        // activities, wineries, restaurants, trails, events (the allPlaces
+                        // audit in data:validate enforces this; see BUG-342)
   name: string;
   region: string;       // e.g. "Ayia Napa", "Paphos"
   description: string;  // 1–2 sentences
@@ -191,7 +193,7 @@ type Attraction = {
   editorialPriority?: number;    // 1 = highest
 };
 ```
-Arrays: `beaches`, `natureSites`, `ancientSites`, `villages`, `monasteries` (wineries and activities join via `src/data/wineries.ts` / `activity-places.ts`).
+Arrays: `beaches`, `natureSites` (includes `activityPlaces` spread from `src/data/activity-places.ts`), `ancientSites`, `villages`, `monasteries`; wineries, restaurants, trails, and events live in their own `src/data/*` files and merge in the `discover.ts` / `index.ts` aggregates.
 
 ### Airport (`src/data/airport.ts`)
 ```ts
@@ -235,8 +237,8 @@ type TeamMember = {
 ## Adding New Content
 
 ### New attraction
-1. Add to appropriate array in `src/data/attractions.ts` (`beaches`, `natureSites`, `ancientSites`, `villages`, `monasteries`).
-2. Use valid `type`; keep `id` kebab-case and unique across all place data.
+1. Add to the appropriate array in `src/data/attractions.ts` (`beaches`, `natureSites`, `ancientSites`, `villages`, `monasteries`) — except records with `type: "activity"`, which go in `src/data/activity-places.ts` (they join `natureSites` via a spread).
+2. Use valid `type`; keep `id` kebab-case and unique across all plan-addable place data.
 3. If new type, add to union and handle in `AttractionCard` typeColors.
 4. Run `npm run data:validate` (unique IDs, `combineWith` references, audits).
 
