@@ -41,11 +41,12 @@ describe("buildAnnexHealthEvidence", () => {
   it("records url and status without inventing productionReady", () => {
     const evidence = buildAnnexHealthEvidence({
       capturedAt: new Date("2026-08-20T14:47:10.000Z"),
-      url: "https://cyprus-winter.vercel.app/api/health",
+      url: "https://cyprus-winter-three.vercel.app/api/health",
       httpStatus: 503,
       json: { ok: false, message: "Unavailable", productionReady: false },
     });
     expect(evidence.httpStatus).toBe(503);
     expect(evidence.public.productionReady).toBe(false);
+    expect(evidence.url).toContain("cyprus-winter-three.vercel.app");
   });
 });

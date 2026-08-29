@@ -4,7 +4,7 @@ One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK
 
 **Last updated:** 2026-08-29 · **Target:** PR #196 on top of `main` after PRs #191, #192, and #195
 
-**Production access (live check):** `https://cyprus-winter-three.vercel.app` returns HTTP 200 without authentication or `noindex`, and Next.js image optimization is active. `/api/health` returns HTTP 503 with `productionReady: false` because required Upstash and Supabase services are still unavailable. No custom domain is attached to Vercel, while production metadata currently points to `https://cypruswinter.com`.
+**Production access (live check):** `https://cyprus-winter-three.vercel.app` returns HTTP 200 without authentication or `noindex`, and Next.js image optimization is active. `/api/health` returns HTTP 503 with `productionReady: false` because required Upstash and Supabase services are still unavailable. Code defaults (`SITE_URL`, Capacitor, health scripts) now target this live alias; attach `cypruswinter.com` later via DNS + `NEXT_PUBLIC_SITE_URL`.
 
 **Quick gate:** `npm run health:production` (exit 0 only when live `productionReady: true`).
 
@@ -19,12 +19,12 @@ Live Vercel audit on 2026-08-29:
 - the production response does not send `x-robots-tag: noindex`
 - generated image URLs use `/_next/image`, confirming image optimization is active
 - `/api/health` returns HTTP 503 with `productionReady: false`
-- Vercel has no custom domain attached, but canonical, alternate, schema, Open Graph, and Twitter metadata point to `https://cypruswinter.com`
+- Vercel has no custom domain attached; code defaults now use `https://cyprus-winter-three.vercel.app` for canonical/OG until DNS is ready (override with `NEXT_PUBLIC_SITE_URL`)
 - Vercel reported no runtime error clusters in the previous 7 days
 
 Before public traffic:
 
-1. Attach `cypruswinter.com` to the Vercel project and verify DNS, or explicitly approve a `.vercel.app` alias and set `NEXT_PUBLIC_SITE_URL` to that final origin.
+1. Attach `cypruswinter.com` to the Vercel project and verify DNS, then set `NEXT_PUBLIC_SITE_URL=https://cypruswinter.com` (and `CAPACITOR_SERVER_URL`), **or** keep the approved `.vercel.app` alias as the public origin.
 2. Redeploy after the domain or environment change.
 3. Verify the public response and metadata:
 

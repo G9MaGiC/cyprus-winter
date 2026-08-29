@@ -275,11 +275,11 @@ Before launch, configure at least one of:
 
 ### Risk
 
-The Android app loads the web app from a remote URL (`server.url` in `capacitor.config.ts`). By default this is `https://cyprus-winter.vercel.app`. Capacitor docs note this is **not intended for production**; live-update or bundled content is preferred long term.
+The Android app loads the web app from a remote URL (`server.url` in `capacitor.config.ts`). By default this is the live public origin from `DEFAULT_PUBLIC_ORIGIN` (`https://cyprus-winter-three.vercel.app`). Capacitor docs note this is **not intended for production**; live-update or bundled content is preferred long term.
 
 ### Current Setup
 
-- **URL:** `CAPACITOR_SERVER_URL` env or fallback `https://cyprus-winter.vercel.app`
+- **URL:** `CAPACITOR_SERVER_URL` env or fallback `DEFAULT_PUBLIC_ORIGIN` (`https://cyprus-winter-three.vercel.app`)
 - **Error page:** `errorPath: "error.html"` shows when load fails (subject to WebView behavior; not all failure types trigger it)
 - **Limitations:** App depends on Vercel uptime and network; cold start when offline may hang; `errorPath` does not reliably cover DNS/TLS failures
 
