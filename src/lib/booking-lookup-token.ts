@@ -10,7 +10,7 @@ type TokenPayload = {
 };
 
 export type BookingLookupTokenResult =
-  | { ok: true; email: string }
+  | { ok: true; email: string; nonce: string }
   | { ok: false; reason: "INVALID" | "EXPIRED" | "MISMATCH" };
 
 export function isBookingLookupTokenConfigured(): boolean {
@@ -67,9 +67,7 @@ export function verifyBookingLookupToken(
 ): BookingLookupTokenResult {
   const secret = getTokenSecret();
   const parts = token.split(".");
-  if (parts.length !== 2) {
-    return { ok: false, reason: "INVALID" };
-  }
+  if (parts.length !== 2) return { ok: false, reason: "INVALID" };
   const [payloadEncoded, signature] = parts;
 
   const expectedSig = signPayload(payloadEncoded, secret);
@@ -84,7 +82,13 @@ export function verifyBookingLookupToken(
 
   try {
     const payload = JSON.parse(base64UrlDecode(payloadEncoded)) as TokenPayload;
-    if (!payload?.email || typeof payload.exp !== "number") {
+    if (
+      !payload?.email ||
+      typeof payload.email !== "string" ||
+      !payload.nonce ||
+      typeof payload.nonce !== "string" ||
+      typeof payload.exp !== "number"
+    ) {
       return { ok: false, reason: "INVALID" };
     }
     if (payload.exp <= Math.floor((options?.nowMs ?? Date.now()) / 1000)) {
@@ -96,7 +100,7 @@ export function verifyBookingLookupToken(
       return { ok: false, reason: "MISMATCH" };
     }
 
-    return { ok: true, email: payload.email };
+    return { ok: true, email: payload.email, nonce: payload.nonce };
   } catch {
     return { ok: false, reason: "INVALID" };
   }
