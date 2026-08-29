@@ -84,12 +84,12 @@ export default async function GuideBookPage({
 
       <div className="mt-6">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean">
+          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/10 text-aegean">
             {tBookPages("guideDetail.badge")}
           </span>
           {isPartnerVerified(guide) && (
             <span
-              className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/20 text-aegean"
+              className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-aegean/10 text-aegean"
               title={tBookPages("guideDetail.verifiedTitle")}
             >
               {tBookPages("guideDetail.verifiedLabel")}

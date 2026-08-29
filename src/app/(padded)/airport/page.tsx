@@ -183,10 +183,10 @@ export default async function AirportPage() {
                 >
                   {airport.code} — {airport.name}
                 </h2>
-                <p className="text-white/90 text-sm break-words mt-1">
+                <p className="text-white text-sm break-words mt-1">
                   {airport.city}
                   {CITY_GREEK[airport.city] && (
-                    <span className="ms-1.5 text-white/80">({CITY_GREEK[airport.city]})</span>
+                    <span className="ms-1.5 text-white">({CITY_GREEK[airport.city]})</span>
                   )}
                 </p>
               </div>
