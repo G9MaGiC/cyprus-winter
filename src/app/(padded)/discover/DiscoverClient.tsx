@@ -88,7 +88,7 @@ export default function DiscoverClient({
   }, [sections, activitySection, filter, sectionExists, isActivity, hydrated, prefs.interests]);
 
   const [viewMode, setViewMode] = useState<"list" | "map">(urlViewMap ? "map" : "list");
-  const [mapFocusMode, setMapFocusMode] = useState(() => loadMapFocusPreference());
+  const [mapFocusMode, setMapFocusMode] = useState(false);
   const firstSectionRef = useRef<HTMLElement | null>(null);
 
   const { dates, hydrated: datesHydrated } = useTripDates();
@@ -129,6 +129,10 @@ export default function DiscoverClient({
         ? tDiscover(`page.sections.${activeSection.id}`)
         : tDiscover("page.filters.all");
   const { stickyPlanVisible } = useStickyPlanBar();
+
+  useEffect(() => {
+    setMapFocusMode(loadMapFocusPreference());
+  }, []);
 
   useEffect(() => {
     setViewMode(urlViewMap ? "map" : "list");
