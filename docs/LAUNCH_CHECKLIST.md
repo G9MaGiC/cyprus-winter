@@ -2,7 +2,7 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-29 · **Target:** PR #196 on top of `main` after PRs #191, #192, and #195
+**Last updated:** 2026-08-29 · **Target:** PR #199 on top of `main` after PRs #196 and #198 (audit remediation BUG-346: RTL/Hebrew type, localized guest email, unified home metadata)
 
 **Production access (live check):** `https://cyprus-winter-three.vercel.app` returns HTTP 200 without authentication or `noindex`, and Next.js image optimization is active. `/api/health` returns HTTP 503 with `productionReady: false` because required Upstash and Supabase services are still unavailable. Code defaults (`SITE_URL`, Capacitor, health scripts) now target this live alias; attach `cypruswinter.com` later via DNS + `NEXT_PUBLIC_SITE_URL`.
 
