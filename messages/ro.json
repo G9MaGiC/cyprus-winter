@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Înainte să pleci",
       "allSet": "Totul e gata. Călătorie plăcută."
-    }
+    },
+    "useMyLocationInstead": "Folosește locația mea"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1766,7 +1767,8 @@
       "coastal": "Escapade pe coastă",
       "peak-views": "Priveliști de pe vârfuri",
       "full-day": "Provocări pe zi întreagă"
-    }
+    },
+    "bestConditionsNow": "Cele mai bune condiții acum"
   },
   "plan": {
     "addToPlan": "Adaugă în plan",
@@ -2376,7 +2378,7 @@
         "learnMoreCta": "Află mai multe"
       },
       "highlights": {
-        "title": "De neratat",
+        "title": "Merită văzute",
         "lead": "Bobotează și carnavalul — când insula își arată sufletul. Vino devreme. Îmbracă-te gros."
       },
       "tips": {
@@ -2424,6 +2426,12 @@
       },
       "aria": {
         "actions": "Acțiuni pagină regiune"
+      },
+      "sections": {
+        "ancient": "Situri antice",
+        "winterEvents": "Evenimente de iarnă",
+        "allWineries": "Toate cramele din Cipru",
+        "troodosDecember": "Trasee Troodos în decembrie"
       }
     }
   },
@@ -2968,8 +2976,7 @@
           "callSuffix": "ca să rezervi sau să verifici disponibilitatea — de obicei sunt bucuroși să ajute."
         },
         "winterTip": {
-          "heading": "Sfat de iarnă",
-          "icon": "💡"
+          "heading": "Sfat de iarnă"
         },
         "signatureWines": {
           "heading": "Ce ai putea gusta"
@@ -3387,15 +3394,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Teatrul antic Kourion, coasta Mediteranei, iarnă în Cipru"
-    },
-    "app__home_HomeHero": {
-      "text_13": "Iarnă în Cipru",
-      "text_14": "Trasee, sate, patrimoniu",
-      "text_subtitle": "Adesea șaisprezece grade când acasă sunt șase.",
-      "text_16": "Planifică din timp sau începe să explorezi când aterizezi.",
-      "aria-label_10": "Mergi la Descoperă",
-      "aria-label_11": "Vezi planul tău",
-      "aria-label_12": "Transport de la aeroport, sfaturi"
     }
   },
   "cycling": {

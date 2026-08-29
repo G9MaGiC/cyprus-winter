@@ -1,6 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
+import { useTranslations } from "next-intl";
 import TrailCard from "@/components/TrailCard";
 import { HOME } from "@/lib/design-tokens";
 import { trailConditions } from "@/data/trails";
@@ -24,6 +25,7 @@ export default function TrailStatusGroup({
   reportTrailId,
   noConditions = false,
 }: TrailStatusGroupProps) {
+  const tCommon = useTranslations("common");
   if (trails.length === 0) return null;
 
   const getConditions = (t: Trail): TrailConditions | undefined =>
@@ -61,7 +63,7 @@ export default function TrailStatusGroup({
             href={`/trails/${reportTrailId}/report`}
             className="inline-flex items-center min-h-[44px] py-2 font-medium text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
           >
-            Report conditions
+            {tCommon("reportConditions")}
           </AppLink>
         </p>
       )}

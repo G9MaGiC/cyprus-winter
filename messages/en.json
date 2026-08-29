@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Before you go",
       "allSet": "All set. Have a safe trip."
-    }
+    },
+    "useMyLocationInstead": "Use my location instead"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -368,7 +369,7 @@
       "arriving": "Just arrived? Start here",
       "explore": "Explore",
       "planTrip": "Plan your trip",
-      "askGuide": "Ask the AI guide"
+      "askGuide": "Ask your guide"
     },
     "tripModes": {
       "aria": "Choose how you are travelling",
@@ -1766,7 +1767,8 @@
       "coastal": "Coastal escapes",
       "peak-views": "Peak views",
       "full-day": "Full-day challenges"
-    }
+    },
+    "bestConditionsNow": "Best conditions now"
   },
   "plan": {
     "addToPlan": "Add to plan",
@@ -2286,7 +2288,7 @@
       "backToAccount": "← Back to account",
       "meta": {
         "title": "Settings | My account | Cyprus Winter",
-        "description": "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences."
+        "description": "Personalize your Cyprus Winter experience. Set interests, favourite regions, and notification preferences."
       }
     },
     "meta": {
@@ -2383,7 +2385,7 @@
         "learnMoreCta": "Learn more"
       },
       "highlights": {
-        "title": "Don't miss",
+        "title": "Worth catching",
         "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
       },
       "tips": {
@@ -2424,6 +2426,12 @@
       },
       "aria": {
         "actions": "Region page actions"
+      },
+      "sections": {
+        "ancient": "Ancient sites",
+        "winterEvents": "Winter events",
+        "allWineries": "All Cyprus wineries",
+        "troodosDecember": "Troodos trails in December"
       }
     }
   },
@@ -2972,8 +2980,7 @@
           "callSuffix": "to reserve or check availability — they're usually happy to help."
         },
         "winterTip": {
-          "heading": "Winter tip",
-          "icon": "💡"
+          "heading": "Winter tip"
         },
         "signatureWines": {
           "heading": "What you might taste"
@@ -3387,15 +3394,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
-    },
-    "app__home_HomeHero": {
-      "text_13": "Winter in Cyprus",
-      "text_14": "Trails, villages, heritage",
-      "text_subtitle": "Often sixteen degrees when home is six.",
-      "text_16": "Plan ahead or start exploring when you land.",
-      "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your plan",
-      "aria-label_12": "Transport from airport, tips"
     }
   },
   "cycling": {

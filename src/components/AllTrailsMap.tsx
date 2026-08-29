@@ -26,7 +26,7 @@ const trailIcon = L.divIcon({
     font-size: 11px;
     box-shadow: ${MAP_ICON_SHADOW};
     border: 2px solid white;
-  ">⛰</span>`,
+  ">T</span>`,
   className: "custom-marker",
   iconSize: [32, 32],
   iconAnchor: [16, 16],

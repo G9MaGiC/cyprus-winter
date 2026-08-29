@@ -6,7 +6,7 @@ import { getMessages } from "next-intl/server";
 import { schemaForLdJson } from "@/lib/schema-ldjson";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans, Fraunces, Noto_Sans_Hebrew, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
@@ -36,6 +36,22 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+// Neither brand face ships Hebrew glyphs; `he` gets Hebrew-capable equivalents
+// (applied via html[dir="rtl"] rules in globals.css, loaded only for that locale).
+const notoSansHebrew = Noto_Sans_Hebrew({
+  variable: "--font-sans-he",
+  subsets: ["hebrew"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const frankRuhlLibre = Frank_Ruhl_Libre({
+  variable: "--font-display-he",
+  subsets: ["hebrew"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
 import { pwaManifestHref } from "@/lib/pwa-manifest";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
@@ -48,22 +64,21 @@ export async function generateMetadata(): Promise<Metadata> {
   ]);
   return {
     metadataBase: new URL(SITE_URL),
-    title: "Cyprus Winter | Mediterranean Winter Escape",
-    description:
-      "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan trails, wineries, villages. Free trip planner.",
+    title: tMeta("homeTitle"),
+    description: tMeta("homeDescription"),
     manifest: pwaManifestHref(locale),
     keywords: ["Cyprus winter", "winter in Cyprus", "Cyprus trails", "Cyprus wineries", "Troodos hiking", "winter sun Europe", "Cyprus trip planning", "what to do Cyprus winter"],
     openGraph: {
-      title: "Cyprus Winter | Mediterranean Winter Escape",
-      description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries, ancient sites. Plan or explore when you land.",
+      title: tMeta("homeTitle"),
+      description: tMeta("homeDescription"),
       type: "website",
       url: SITE_URL,
       images: [{ url: ogImage, width: 1200, height: 630, alt: tMeta("ogImageAlt") }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Cyprus Winter | Mediterranean Winter Escape",
-      description: "Cyprus in winter: mild, uncrowded, real. Trails, villages, wineries. Plan or explore when you land.",
+      title: tMeta("homeTitle"),
+      description: tMeta("homeDescription"),
       images: [ogImage],
     },
     appleWebApp: {
@@ -79,7 +94,8 @@ const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Cyprus Winter",
-  description: "Cyprus in winter: Mediterranean escape. Trails, villages, wineries, ancient sites. Plan your trip or explore when you land.",
+  description:
+    "A quieter Cyprus in winter. Discover mild coastlines, mountain villages, open trails, wineries, and local places worth slowing down for.",
   url: SITE_URL,
 };
 
@@ -107,7 +123,9 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakarta.variable} ${fraunces.variable} font-sans antialiased min-h-screen bg-background`}
+        className={`${plusJakarta.variable} ${fraunces.variable} ${
+          dir === "rtl" ? `${notoSansHebrew.variable} ${frankRuhlLibre.variable}` : ""
+        } font-sans antialiased min-h-screen bg-background`}
       >
         {/* JavaScript disabled warning */}
         <noscript>

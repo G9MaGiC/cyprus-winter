@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
-import { CARD, LAYER, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, LAYER, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -64,7 +64,7 @@ export default function ClearDayModal({ activeDay, placeCount, onClose, onConfir
             ref={cancelRef}
             type="button"
             onClick={onClose}
-            className="min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto order-last sm:order-none"
+            className={`${CTA.modalPrimary} order-last sm:order-none`}
           >
             {tCommon("cancel")}
           </button>

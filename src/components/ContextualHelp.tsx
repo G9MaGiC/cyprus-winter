@@ -154,7 +154,7 @@ export default function ContextualHelp({
         <button
           type="button"
           onClick={handleDismiss}
-          className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-sand-100 transition-colors touch-manipulation"
+          className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-sand-100 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label={t("aria.dismissTip")}
         >
           <svg className="w-4 h-4 text-olive/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">

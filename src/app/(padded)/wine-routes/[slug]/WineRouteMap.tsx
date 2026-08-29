@@ -25,7 +25,7 @@ const wineryIcon = L.divIcon({
     font-size: 12px;
     box-shadow: ${MAP_ICON_SHADOW};
     border: 2px solid white;
-  ">🍷</span>`,
+  ">W</span>`,
   className: "custom-marker",
   iconSize: [30, 30],
   iconAnchor: [15, 15],

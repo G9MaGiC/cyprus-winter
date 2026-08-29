@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Bevor es losgeht",
       "allSet": "Alles erledigt. Gute Reise."
-    }
+    },
+    "useMyLocationInstead": "Stattdessen meinen Standort verwenden"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -368,7 +369,7 @@
       "arriving": "Gerade gelandet? Hier starten",
       "explore": "Entdecken",
       "planTrip": "Reise planen",
-      "askGuide": "KI-Reiseführer fragen"
+      "askGuide": "Ihren Guide fragen"
     },
     "tripModes": {
       "aria": "Wählen Sie, wie Sie reisen",
@@ -1766,7 +1767,8 @@
       "coastal": "Küstenausflüge",
       "peak-views": "Gipfelblicke",
       "full-day": "Ganztags-Herausforderungen"
-    }
+    },
+    "bestConditionsNow": "Beste Bedingungen jetzt"
   },
   "plan": {
     "addToPlan": "Zum Plan hinzufügen",
@@ -2376,7 +2378,7 @@
         "learnMoreCta": "Mehr erfahren"
       },
       "highlights": {
-        "title": "Nicht verpassen",
+        "title": "Sehenswert",
         "lead": "Epiphanias und Karneval zeigen die Seele der Insel. Kommen Sie früh. Warm anziehen."
       },
       "tips": {
@@ -2875,8 +2877,7 @@
           "callSuffix": "um zu reservieren oder Verfügbarkeit zu prüfen — meist helfen sie gerne."
         },
         "winterTip": {
-          "heading": "Wintertipp",
-          "icon": "💡"
+          "heading": "Wintertipp"
         },
         "signatureWines": {
           "heading": "Was Sie probieren könnten"
@@ -3317,15 +3318,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
-    },
-    "app__home_HomeHero": {
-      "text_13": "Winter auf Zypern",
-      "text_14": "Wanderwege, Dörfer, Kulturerbe",
-      "text_subtitle": "Oft sechzehn Grad, wenn daheim sechs sind.",
-      "text_16": "Planen Sie im Voraus oder starten Sie die Erkundung nach der Landung.",
-      "aria-label_10": "Zu Entdecken gehen",
-      "aria-label_11": "Ihren Reiseplan anzeigen",
-      "aria-label_12": "Transport vom Flughafen, Tipps"
     }
   },
   "regions": {
@@ -3336,6 +3328,12 @@
       },
       "aria": {
         "actions": "Regionenseite Aktionen"
+      },
+      "sections": {
+        "ancient": "Antike Stätten",
+        "winterEvents": "Winter-Events",
+        "allWineries": "Alle Weingüter Zyperns",
+        "troodosDecember": "Troodos-Trails im Dezember"
       }
     }
   },

@@ -173,7 +173,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/guides/troodos-december"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  Troodos trails in December →
+                  {tPage("sections.troodosDecember")} →
                 </AppLink>
               </p>
             )}
@@ -218,7 +218,7 @@ export default async function RegionPage({ params }: Props) {
               id="ancient"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Ancient sites
+              {tPage("sections.ancient")}
             </h2>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionAncient.map((a) => (
@@ -247,7 +247,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/wineries"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  All Cyprus wineries →
+                  {tPage("sections.allWineries")} →
                 </AppLink>
               </p>
             )}
@@ -260,7 +260,7 @@ export default async function RegionPage({ params }: Props) {
               id="events"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Winter events
+              {tPage("sections.winterEvents")}
             </h2>
             <ul className="space-y-3">
               {regionEvents.map((e) => (

@@ -232,6 +232,15 @@ export const CTA = {
   /** Secondary CTA: terracotta border for contextual hierarchy when primary is also terracotta (e.g. error/not-found pages). Aegean variant available as border-2 border-aegean text-aegean for alternate hierarchy. */
   secondaryCompact:
     "inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium border border-terracotta/80 text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  /** Primary action inside a modal (plan template/combo/clear-day dialogs). Compose layout ordering (e.g. order-last sm:order-none) at the call site. */
+  modalPrimary:
+    "min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
+  /** Secondary (outline) action inside a modal — e.g. "Replace day". */
+  modalSecondary:
+    "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
+  /** Dismiss/cancel action inside a modal. */
+  modalDismiss:
+    "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
 } as const;
 
 /** Empty-state card — use for "no results", "no items yet" blocks. */

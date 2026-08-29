@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTrapFocus } from "@/lib/useTrapFocus";
-import { CARD, LAYER, SECTION, TYPE } from "@/lib/design-tokens";
+import { CARD, CTA, LAYER, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -58,21 +58,21 @@ export default function TemplateChoiceModal({ templateLabel, onClose, onAddToPla
           <button
             type="button"
             onClick={onClose}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background order-last sm:order-none w-full sm:w-auto"
+            className={`${CTA.modalDismiss} order-last sm:order-none`}
           >
             {t("cancel")}
           </button>
           <button
             type="button"
             onClick={onReplace}
-            className="min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
+            className={CTA.modalSecondary}
           >
             {t("replaceDay")}
           </button>
           <button
             type="button"
             onClick={onAddToPlan}
-            className="min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
+            className={CTA.modalPrimary}
           >
             {t("addToPlan")}
           </button>

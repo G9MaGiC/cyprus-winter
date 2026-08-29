@@ -88,6 +88,18 @@ a:focus-visible {
   font-family: var(--font-display), "Fraunces", ui-serif, serif;
 }
 
+/* Hebrew (he, RTL): the Latin brand faces carry no Hebrew glyphs, so lead with
+   Hebrew-capable equivalents and keep the Latin faces as fallback. The
+   --font-*-he variables are attached in the root layout only for dir="rtl". */
+html[dir="rtl"] body,
+html[dir="rtl"] .font-sans {
+  font-family: var(--font-sans-he, var(--font-sans)), var(--font-sans, system-ui), sans-serif;
+}
+
+html[dir="rtl"] .font-display {
+  font-family: var(--font-display-he, var(--font-display)), var(--font-display, ui-serif), serif;
+}
+
 /* 2026 typographic scale — clear hierarchy */
 .prose-intro {
   font-size: 1.125rem;

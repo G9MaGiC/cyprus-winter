@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Avant de partir",
       "allSet": "Tout est prêt. Bon voyage."
-    }
+    },
+    "useMyLocationInstead": "Utiliser ma position"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1766,7 +1767,8 @@
       "coastal": "Escapades côtières",
       "peak-views": "Vues depuis les sommets",
       "full-day": "Défis journée complète"
-    }
+    },
+    "bestConditionsNow": "Meilleures conditions en ce moment"
   },
   "plan": {
     "addToPlan": "Ajouter au plan",
@@ -2376,7 +2378,7 @@
         "learnMoreCta": "En savoir plus"
       },
       "highlights": {
-        "title": "À ne pas manquer",
+        "title": "À découvrir",
         "lead": "L'Épiphanie et le carnaval, c'est quand l'île montre son âme. Arrivez tôt. Habillez-vous chaudement."
       },
       "tips": {
@@ -2424,6 +2426,12 @@
       },
       "aria": {
         "actions": "Actions page région"
+      },
+      "sections": {
+        "ancient": "Sites antiques",
+        "winterEvents": "Événements d'hiver",
+        "allWineries": "Tous les domaines de Chypre",
+        "troodosDecember": "Sentiers du Troodos en décembre"
       }
     }
   },
@@ -2968,8 +2976,7 @@
           "callSuffix": "pour réserver ou vérifier les disponibilités — ils aident volontiers."
         },
         "winterTip": {
-          "heading": "Conseil d’hiver",
-          "icon": "💡"
+          "heading": "Conseil d’hiver"
         },
         "signatureWines": {
           "heading": "Ce que vous pourriez déguster"
@@ -3387,15 +3394,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver"
-    },
-    "app__home_HomeHero": {
-      "text_13": "L'hiver à Chypre",
-      "text_14": "Sentiers, villages, patrimoine",
-      "text_subtitle": "Souvent seize degrés quand chez vous il en fait six.",
-      "text_16": "Planifiez à l'avance ou explorez dès votre arrivée.",
-      "aria-label_10": "Aller à Découvrir",
-      "aria-label_11": "Voir votre plan",
-      "aria-label_12": "Transport depuis l'aéroport, conseils"
     }
   },
   "cycling": {

@@ -37,6 +37,26 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-346] UX/comms audit batch: persona-rule and consistency drift
+
+**Severity:** Medium
+**Area:** UX / i18n / Comms / SEO
+**Page/Component:** plan modals, AI drawer, maps, regions/trails chrome, root metadata, `he` typography, Nissi/carnival copy
+
+### Reproduction
+Audit of main @ a77dbc4 (UI implementation, communications, persona USPs) — findings report on the audit artifact.
+
+### Expected
+UI and copy follow design-token, persona, and i18n contracts on every surface.
+
+### Actual
+Duplicated modal CTA strings; AI drawer components missing focus rings and using `animate-bounce`; emoji map markers (🍷/⛰) against the no-emoji rule; 7 hardcoded English strings; two competing home titles (root layout hardcoded, incl. "Free trip planner"); `he` rendered in system fallback (no Hebrew font); Nissi Beach chips contradicting its own winterTip; "Don't miss" urgency copy; orphaned `ui.app__home_HomeHero.*` namespace + unused 💡 key; stale "Your Island Guide" brand in docs.
+
+### Fix status
+Fixed — `CTA.modalPrimary/Secondary/Dismiss` tokens; AI drawer focus rings + `animate-pulse`; letter-glyph markers on all maps; leaked strings localized (×7 locales); root metadata resolves `meta.homeTitle/homeDescription`; Noto Sans Hebrew + Frank Ruhl Libre for `he` via `html[dir="rtl"]`; Nissi winter-framed; calmer events copy; orphan keys removed (editorial maps synced); docs re-branded. Still open (decisions needed): fabricated team roster, `.example` partner emails, email localization/from-domain, full RTL logical-properties pass, first-visit overlay stacking repro.
+
+---
+
 ### [BUG-345] Stale production origin defaults pointed at dead Vercel alias / unattached domain
 
 **Severity:** High
