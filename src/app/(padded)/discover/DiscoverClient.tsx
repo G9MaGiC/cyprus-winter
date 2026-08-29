@@ -1,9 +1,10 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import StickyPlanBar from "@/components/StickyPlanBar";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { useOnboardingContext } from "@/contexts/OnboardingContext";
 import OnboardingContextualTip from "@/components/OnboardingContextualTip";
 import RightNowNearYou from "@/app/_home/RightNowNearYou";
@@ -13,6 +14,10 @@ import { sortDiscoverItemsByInterests } from "@/lib/personalization";
 import { filterToSectionId } from "@/lib/discover-sections";
 import type { DiscoverSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
+import { getPlanDayIndex, getPlanDayMapFocus } from "@/lib/discover-map-focus";
+import { buildDiscoverHubHref } from "@/lib/discover-hub-url";
+import { useTripDates } from "@/hooks/useTripDates";
+import { useItinerary } from "@/hooks/useItinerary";
 import DiscoverFilterBar from "./DiscoverFilterBar";
 import DiscoverMapPanel from "./DiscoverMapPanel";
 import DiscoverPlaceOfDay from "./DiscoverPlaceOfDay";
@@ -23,21 +28,43 @@ import AskAIButton from "@/components/AskAIButton";
 import AppLink from "@/components/AppLink";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 
+const MAP_FOCUS_STORAGE_KEY = "cyprus-winter:discover-map-focus";
+
 type DiscoverClientProps = {
   sections: DiscoverSection[];
   activitySections?: DiscoverSection[];
 };
+
+function loadMapFocusPreference(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return localStorage.getItem(MAP_FOCUS_STORAGE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function saveMapFocusPreference(enabled: boolean): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(MAP_FOCUS_STORAGE_KEY, enabled ? "true" : "false");
+  } catch {
+    // ignore
+  }
+}
 
 export default function DiscoverClient({
   sections,
   activitySections = [],
 }: DiscoverClientProps) {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const { prefs, hydrated } = useUserPreferences();
   const { showTipDiscoverFilter, dismissTipDiscoverFilter } = useOnboardingContext();
   const t = useTranslations("onboarding");
   const tDiscover = useTranslations("discover");
   const filterParam = searchParams?.get("filter") ?? "";
+  const urlViewMap = searchParams?.get("view") === "map";
   const isActivity = isActivityFilterKey(filterParam);
   const filter = isActivity ? filterParam : filterToSectionId[filterParam];
   const activitySection = isActivity
@@ -60,16 +87,37 @@ export default function DiscoverClient({
     }));
   }, [sections, activitySection, filter, sectionExists, isActivity, hydrated, prefs.interests]);
 
-  const [viewMode, setViewMode] = useState<"list" | "map">("list");
+  const [viewMode, setViewMode] = useState<"list" | "map">(urlViewMap ? "map" : "list");
+  const [mapFocusMode, setMapFocusMode] = useState(false);
   const firstSectionRef = useRef<HTMLElement | null>(null);
+
+  const { dates, hydrated: datesHydrated } = useTripDates();
+  const { days, activeDay, hydrated: planHydrated } = useItinerary();
+
+  const planDay = useMemo(
+    () => getPlanDayIndex(dates, activeDay),
+    [dates, activeDay]
+  );
+
+  const planFocus = useMemo(
+    () =>
+      datesHydrated && planHydrated
+        ? getPlanDayMapFocus(days, planDay, dates)
+        : {
+            enabled: false,
+            planDay,
+            placeIds: [] as string[],
+            center: null,
+            bounds: null,
+          },
+    [days, planDay, dates, datesHydrated, planHydrated]
+  );
+
   const hasWineriesInView = sectionsToShow.some((s) =>
     s.items.some((i) => "type" in i && i.type === "winery")
   );
 
-  const totalCount = sectionsToShow.reduce(
-    (sum, s) => sum + s.items.length,
-    0
-  );
+  const totalCount = sectionsToShow.reduce((sum, s) => sum + s.items.length, 0);
   const activeSection = isActivity
     ? activitySection
     : sections.find((s) => s.id === filter);
@@ -82,31 +130,68 @@ export default function DiscoverClient({
         : tDiscover("page.filters.all");
   const { stickyPlanVisible } = useStickyPlanBar();
 
+  useEffect(() => {
+    setMapFocusMode(loadMapFocusPreference());
+  }, []);
+
+  useEffect(() => {
+    setViewMode(urlViewMap ? "map" : "list");
+  }, [urlViewMap]);
+
+  const replaceDiscoverUrl = useCallback(
+    (nextViewMap: boolean) => {
+      router.replace(buildDiscoverHubHref(filterParam, { viewMap: nextViewMap }));
+    },
+    [router, filterParam]
+  );
+
   const scrollBehavior = () =>
-    (typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ? "auto"
       : "smooth";
 
-  const scrollToMap = () => {
-    document
-      .getElementById("discover-map")
-      ?.scrollIntoView({ behavior: scrollBehavior() });
-  };
+  const openMapView = useCallback(() => {
+    setViewMode("map");
+    replaceDiscoverUrl(true);
+    requestAnimationFrame(() => {
+      document
+        .getElementById("discover-map")
+        ?.scrollIntoView({ behavior: scrollBehavior() });
+    });
+  }, [replaceDiscoverUrl]);
+
+  const setListView = useCallback(() => {
+    setViewMode("list");
+    replaceDiscoverUrl(false);
+  }, [replaceDiscoverUrl]);
+
+  const handleFocusModeChange = useCallback((enabled: boolean) => {
+    setMapFocusMode(enabled);
+    saveMapFocusPreference(enabled);
+  }, []);
+
+  const handleResetMapView = useCallback(() => {
+    setMapFocusMode(false);
+    saveMapFocusPreference(false);
+  }, []);
 
   useEffect(() => {
-    if (filter && firstSectionRef.current) {
+    if (filter && firstSectionRef.current && viewMode === "list") {
       firstSectionRef.current.scrollIntoView({ behavior: scrollBehavior() });
       const heading = firstSectionRef.current.querySelector("h2");
       if (heading instanceof HTMLElement) {
         heading.focus({ preventScroll: true });
       }
     }
-  }, [filter]);
+  }, [filter, viewMode]);
 
   const filterAnnouncement =
     filter && sectionExists
-      ? tDiscover("page.filterAnnouncement.showing", { section: activeSectionTitle, count: totalCount })
+      ? tDiscover("page.filterAnnouncement.showing", {
+          section: activeSectionTitle,
+          count: totalCount,
+        })
       : tDiscover("page.filterAnnouncement.all");
 
   return (
@@ -127,10 +212,11 @@ export default function DiscoverClient({
         activeSectionTitle={activeSectionTitle}
         hasWineriesInView={hasWineriesInView}
         isActivityFilter={isActivity}
-        onScrollToMap={scrollToMap}
+        viewMode={viewMode}
+        onOpenMap={openMapView}
       />
 
-      <DiscoverPlaceOfDay />
+      {viewMode === "list" ? <DiscoverPlaceOfDay /> : null}
 
       {viewMode === "list" && totalCount > 0 ? (
         <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX}`}>
@@ -139,15 +225,17 @@ export default function DiscoverClient({
       ) : null}
 
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} flex flex-col gap-4`}>
-        {filter && sectionExists && !isActivity && showTipDiscoverFilter && (
+        {filter && sectionExists && !isActivity && showTipDiscoverFilter && viewMode === "list" ? (
           <OnboardingContextualTip
             message={t("tipDiscoverFilter")}
             onDismiss={dismissTipDiscoverFilter}
           />
-        )}
-        <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
-          {tDiscover("page.curatedLine")}
-        </p>
+        ) : null}
+        {viewMode === "list" ? (
+          <p className="pt-6 sm:pt-8 pb-2 text-sm text-olive/70">
+            {tDiscover("page.curatedLine")}
+          </p>
+        ) : null}
 
         <div
           role="tablist"
@@ -159,14 +247,13 @@ export default function DiscoverClient({
             if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
               if (viewMode === "map") {
                 e.preventDefault();
-                setViewMode("list");
+                setListView();
                 document.getElementById("discover-tab-list")?.focus();
               }
             } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
               if (viewMode === "list") {
                 e.preventDefault();
-                setViewMode("map");
-                scrollToMap();
+                openMapView();
                 document.getElementById("discover-tab-map")?.focus();
               }
             }
@@ -179,7 +266,7 @@ export default function DiscoverClient({
             aria-controls="discover-list-panel"
             id="discover-tab-list"
             tabIndex={viewMode === "list" ? 0 : -1}
-            onClick={() => setViewMode("list")}
+            onClick={setListView}
             className={`min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
               viewMode === "list" ? CTA.chipPrimary : CTA.chipTertiary
             }`}
@@ -193,10 +280,7 @@ export default function DiscoverClient({
             aria-controls="discover-map"
             id="discover-tab-map"
             tabIndex={viewMode === "map" ? 0 : -1}
-            onClick={() => {
-              setViewMode("map");
-              scrollToMap();
-            }}
+            onClick={openMapView}
             className={`min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 ${
               viewMode === "map" ? CTA.chipPrimary : CTA.chipTertiary
             }`}
@@ -210,9 +294,7 @@ export default function DiscoverClient({
             <p className="text-lg font-semibold text-olive mb-2">
               {tDiscover("page.noResultsTitle")}
             </p>
-            <p className="text-olive/80 mb-6">
-              {tDiscover("page.noResultsBody")}
-            </p>
+            <p className="text-olive/80 mb-6">{tDiscover("page.noResultsBody")}</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <AppLink
                 href="/discover"
@@ -238,11 +320,18 @@ export default function DiscoverClient({
           </div>
         ) : (
           <div role="tabpanel" aria-labelledby="discover-tab-map">
-            <DiscoverMapPanel sections={sectionsToShow} />
+            <DiscoverMapPanel
+              sections={sectionsToShow}
+              isActivityFilter={isActivity}
+              planFocus={planFocus}
+              focusMode={mapFocusMode}
+              onFocusModeChange={handleFocusModeChange}
+              onResetView={handleResetMapView}
+            />
           </div>
         )}
 
-        <DiscoverFooter onScrollToMap={viewMode === "list" ? scrollToMap : undefined} />
+        <DiscoverFooter onScrollToMap={viewMode === "list" ? openMapView : undefined} />
       </div>
     </div>
   );

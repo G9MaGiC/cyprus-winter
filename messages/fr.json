@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Lieux sur la carte ({count})",
       "curatedBy": "Sélection de l'équipe Cyprus Winter.",
       "view": "Voir →",
-      "footerCount": "{count, plural, one {# lieu sur la carte. Touchez un marqueur pour explorer.} other {# lieux sur la carte. Touchez un marqueur pour explorer.}}"
+      "footerCount": "{count, plural, one {# lieu sur la carte. Touchez un marqueur pour explorer.} other {# lieux sur la carte. Touchez un marqueur pour explorer.}}",
+      "toolbar": {
+        "nearPlanDay": "Près d’une journée de mon programme",
+        "nearPlanDayDisabled": "Définissez les dates du séjour dans Plan et ajoutez des lieux",
+        "resetView": "Réinitialiser la vue",
+        "placeCount": "{count, plural, one {# lieu} other {# lieux}}"
+      },
+      "focus": {
+        "dayLabel": "Jour {day} de votre programme"
+      },
+      "legend": {
+        "aria": "Types de marqueurs",
+        "winery": "Domaine viticole",
+        "village": "Village",
+        "trail": "Sentier",
+        "ancient": "Site antique",
+        "coast": "Littoral et nature",
+        "eat": "Manger",
+        "monastery": "Monastère",
+        "activity": "Activité",
+        "other": "Lieu"
+      }
     },
     "detail": {
       "pageNavAria": "Navigation de page",

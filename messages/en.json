@@ -996,7 +996,7 @@
       }
     },
     "map": {
-      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Use arrow keys to pan; markers open place details.",
+      "ariaLabel": "Interactive map with {count, plural, one {# place} other {# places}}. Markers show place type. Use arrow keys to pan; tap a marker for details.",
       "openStreetMap": "OpenStreetMap",
       "loading": "Loading map…",
       "emptyTitle": "No places with coordinates to display.",
@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Places on map ({count})",
       "curatedBy": "Curated by the Cyprus Winter team.",
       "view": "View →",
-      "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}"
+      "footerCount": "{count, plural, one {# place on map. Tap a marker to explore.} other {# places on map. Tap a marker to explore.}}",
+      "toolbar": {
+        "nearPlanDay": "Near my plan day",
+        "nearPlanDayDisabled": "Set trip dates on Plan and add places to enable",
+        "resetView": "Reset view",
+        "placeCount": "{count, plural, one {# place} other {# places}}"
+      },
+      "focus": {
+        "dayLabel": "Day {day} of your plan"
+      },
+      "legend": {
+        "aria": "Map marker types",
+        "winery": "Winery",
+        "village": "Village",
+        "trail": "Trail",
+        "ancient": "Ancient site",
+        "coast": "Coast & nature",
+        "eat": "Eat",
+        "monastery": "Monastery",
+        "activity": "Activity",
+        "other": "Place"
+      }
     },
     "detail": {
       "pageNavAria": "Page navigation",

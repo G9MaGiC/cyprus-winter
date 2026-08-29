@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "מקומות על המפה ({count})",
       "curatedBy": "נבחר על ידי צוות Cyprus Winter.",
       "view": "צפו →",
-      "footerCount": "{count, plural, one {מקום # על המפה. הקישו על סמן לחקירה.} other {# מקומות על המפה. הקישו על סמן לחקירה.}}"
+      "footerCount": "{count, plural, one {מקום # על המפה. הקישו על סמן לחקירה.} other {# מקומות על המפה. הקישו על סמן לחקירה.}}",
+      "toolbar": {
+        "nearPlanDay": "ליד המקומות ביום המתוכנן שלי",
+        "nearPlanDayDisabled": "הגדירו תאריכי נסיעה ב־Plan והוסיפו מקומות כדי להפעיל",
+        "resetView": "איפוס התצוגה",
+        "placeCount": "{count, plural, one {מקום אחד} other {# מקומות}}"
+      },
+      "focus": {
+        "dayLabel": "יום {day} בתוכנית שלכם"
+      },
+      "legend": {
+        "aria": "סוגי סמנים במפה",
+        "winery": "יקב",
+        "village": "כפר",
+        "trail": "מסלול",
+        "ancient": "אתר עתיקות",
+        "coast": "חוף וטבע",
+        "eat": "אוכל",
+        "monastery": "מנזר",
+        "activity": "פעילות",
+        "other": "מקום"
+      }
     },
     "detail": {
       "pageNavAria": "ניווט בדף",

@@ -1006,7 +1006,28 @@
       "sectionTitleWithCount": "Locuri pe hartă ({count})",
       "curatedBy": "Selectat de echipa Cyprus Winter.",
       "view": "Vezi →",
-      "footerCount": "{count, plural, one {# loc pe hartă. Atinge un marker pentru a explora.} other {# locuri pe hartă. Atinge un marker pentru a explora.}}"
+      "footerCount": "{count, plural, one {# loc pe hartă. Atinge un marker pentru a explora.} other {# locuri pe hartă. Atinge un marker pentru a explora.}}",
+      "toolbar": {
+        "nearPlanDay": "În apropierea zilei din plan",
+        "nearPlanDayDisabled": "Setează datele călătoriei în Plan și adaugă locuri pentru activare",
+        "resetView": "Resetează harta",
+        "placeCount": "{count, plural, one {# loc} other {# locuri}}"
+      },
+      "focus": {
+        "dayLabel": "Ziua {day} din planul tău"
+      },
+      "legend": {
+        "aria": "Tipuri de marcatori",
+        "winery": "Cramă",
+        "village": "Sat",
+        "trail": "Traseu",
+        "ancient": "Situl antic",
+        "coast": "Coastă și natură",
+        "eat": "Mâncare",
+        "monastery": "Mănăstire",
+        "activity": "Activitate",
+        "other": "Loc"
+      }
     },
     "detail": {
       "pageNavAria": "Navigare pagină",
