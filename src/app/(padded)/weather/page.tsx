@@ -145,7 +145,7 @@ export default async function WeatherPage() {
 
       {/* Desktop: table */}
       <div className="hidden md:block overflow-x-auto scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch]">
-        <table className="w-full min-w-[600px] border-collapse text-left">
+        <table className="w-full min-w-[600px] border-collapse text-start">
           <thead>
             <tr className="border-b-2 border-sand-200/80">
               <th className={`py-3 px-4 ${TYPE.cardTitle}`}>

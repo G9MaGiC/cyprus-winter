@@ -32,7 +32,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
-          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
+          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-s-4 border-s-terracotta/50`}>
             <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.configTitle")}
             </h1>
@@ -77,7 +77,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/account" label={tCommon("backTo", { label: tNav("account") })} />
-          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-aegean/50`}>
+          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-s-4 border-s-aegean/50`}>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aegean mb-2">
               {tCommon("done")}
             </p>
@@ -112,7 +112,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
-          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
+          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-s-4 border-s-terracotta/50`}>
             <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.invalidLinkTitle")}
             </h1>
@@ -136,7 +136,7 @@ export default function ResetPasswordPage() {
       <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
 
-        <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-l-4 border-l-terracotta/50 shadow-md`}>
+        <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-s-4 border-s-terracotta/50 shadow-md`}>
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">
             {tAuth("reset.kicker")}
           </p>

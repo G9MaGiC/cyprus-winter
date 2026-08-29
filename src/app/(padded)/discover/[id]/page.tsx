@@ -346,7 +346,7 @@ export default async function AttractionPage({
               </p>
             )}
             {showInlineLocalSecret && a.localSecret && (
-              <p className="text-olive/90 text-base italic border-l-2 border-terracotta/30 pl-4 break-words">
+              <p className="text-olive/90 text-base italic border-s-2 border-terracotta/30 ps-4 break-words">
                 {a.localSecret}
               </p>
             )}

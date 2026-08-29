@@ -13,7 +13,7 @@ export const team: TeamMember[] = [
     name: "Alex Costa",
     role: "CEO & Co-founder",
     expertise: ["Travel tech", "Scale-ups", "Go-to-market"],
-    bio: "Ex-Head of Product at a leading European OTA. 15+ years building travel products that convert browsers into bookers.",
+    bio: "15+ years building consumer travel products, from early-stage teams to European scale-ups.",
     linkedIn: "#",
   },
   {
@@ -21,7 +21,7 @@ export const team: TeamMember[] = [
     name: "Yuki Tanaka",
     role: "CTO & Co-founder",
     expertise: ["Product eng", "Platforms", "AI/ML"],
-    bio: "Former Staff Engineer at Booking.com. Built mobile and AI systems serving 100M+ users. Y Combinator alum.",
+    bio: "Engineer of large-scale travel platforms and mobile systems. Leads the product engineering and AI work behind the app.",
     linkedIn: "#",
   },
   {
@@ -29,7 +29,7 @@ export const team: TeamMember[] = [
     name: "Maria Vasquez",
     role: "Chief Product Officer",
     expertise: ["UX", "Consumer apps", "Growth"],
-    bio: "Led product at Airbnb Experiences. Expert in discovery and personalization for destination travel.",
+    bio: "Product leader in destination travel. Focused on discovery and personalisation that respect the traveller's pace.",
     linkedIn: "#",
   },
   {
@@ -37,7 +37,7 @@ export const team: TeamMember[] = [
     name: "Nicos Andreas",
     role: "Chief Tourism Officer",
     expertise: ["Cyprus tourism", "Destination mgmt", "Hospitality"],
-    bio: "20 years in Cyprus tourism. Former Director at Cyprus Tourism Organisation. Deep local networks and policy experience.",
+    bio: "20 years in Cyprus tourism and destination management. Deep local networks across hotels, wineries, and trail communities.",
     linkedIn: "#",
   },
   {
@@ -45,7 +45,7 @@ export const team: TeamMember[] = [
     name: "Sofia Bergström",
     role: "Head of Growth",
     expertise: ["Performance", "Partnerships", "Airport ops"],
-    bio: "Ex-growth lead at a Nordic travel startup. Expert in airport acquisition, affiliate deals, and tourism boards.",
+    bio: "Growth background in Nordic travel startups. Builds airport, partner, and tourism-board relationships.",
     linkedIn: "#",
   },
   {
@@ -53,7 +53,7 @@ export const team: TeamMember[] = [
     name: "James Okonkwo",
     role: "Head of Design",
     expertise: ["Brand", "Mobile-first", "Accessibility"],
-    bio: "Design lead at multiple travel and lifestyle apps. Focus on inclusive, high-converting experiences.",
+    bio: "Design lead across travel and lifestyle apps. Focus on inclusive, calm interfaces that let places speak.",
     linkedIn: "#",
   },
   {
@@ -61,7 +61,7 @@ export const team: TeamMember[] = [
     name: "Lena Müller",
     role: "Senior UX Designer",
     expertise: ["User research", "Journey mapping", "Wireframes"],
-    bio: "Former UX lead at GetYourGuide. Specializes in travel discovery flows and conversion optimization.",
+    bio: "UX researcher and designer for travel discovery. Maps real journeys — airport to trailhead — before drawing a screen.",
     linkedIn: "#",
   },
   {
@@ -77,7 +77,7 @@ export const team: TeamMember[] = [
     name: "Emma Chen",
     role: "Senior Frontend Developer",
     expertise: ["React", "Next.js", "Performance"],
-    bio: "Ex-Spotify. Builds fast, accessible web apps. Loves making travel experiences smooth on mobile.",
+    bio: "Builds fast, accessible web apps. Cares about how travel feels on a phone with one bar of signal.",
     linkedIn: "#",
   },
   {
@@ -93,7 +93,7 @@ export const team: TeamMember[] = [
     name: "Dimitra Ioannou",
     role: "Full-stack Developer",
     expertise: ["TypeScript", "Supabase", "AI integration"],
-    bio: "Cyprus native. Connects our AI assistant and booking flows. YC-backed startup alum.",
+    bio: "Cyprus native. Connects the AI assistant and booking flows to the island's real data.",
     linkedIn: "#",
   },
 ];

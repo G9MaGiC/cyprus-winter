@@ -160,7 +160,7 @@ export default function PlanShareBar({
             </button>
             {shareMenuOpen && (
               <div
-                className={`absolute right-0 top-full mt-2 py-3 px-4 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] ${LAYER.popover} animate-in fade-in slide-in-from-top-2 duration-200`}
+                className={`absolute end-0 top-full mt-2 py-3 px-4 rounded-2xl bg-background border border-sand-200/80 shadow-xl min-w-[220px] ${LAYER.popover} animate-in fade-in slide-in-from-top-2 duration-200`}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") {
                     setShareMenuOpen(false);

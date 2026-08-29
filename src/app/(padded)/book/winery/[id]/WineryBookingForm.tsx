@@ -80,7 +80,7 @@ export default function WineryBookingForm({
         aria-live="polite"
       >
         <BookingProgressStepper currentStep={3} />
-        <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-terracotta/30">
+        <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-s-4 border-s-terracotta/30">
         <h2 className={`${TYPE.subSectionTitle} text-olive`}>
           {t("success.title")}
         </h2>
@@ -243,7 +243,7 @@ export default function WineryBookingForm({
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
         {notesLength > 0 && (
-          <p className="text-xs text-olive/50 mt-1 text-right tabular-nums">{notesLength}/500</p>
+          <p className="text-xs text-olive/50 mt-1 text-end tabular-nums">{notesLength}/500</p>
         )}
       </div>
 

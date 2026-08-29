@@ -19,7 +19,7 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
   return (
     <section aria-labelledby="tips-heading" className={`${SECTION.pySub} border-t border-sand-200/80`}>
       <Disclosure id="tips-heading" summary={t("summary")} defaultOpen={false}>
-        <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6 border-l-4 border-l-sage/50">
+        <div className="rounded-xl bg-sand-100/80 border border-sand-200/80 p-4 sm:p-6 border-s-4 border-s-sage/50">
           <p className={`text-xs text-olive/60 ${SECTION.headingGap} break-words italic`}>
             {t("disclaimer")}
           </p>
@@ -30,7 +30,7 @@ export default function TrailsTipsSection({ reportTrail }: TrailsTipsSectionProp
             {winterTipsHiking.slice(0, 4).map((tip) => (
               <div
                 key={tip.id}
-                className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:pl-0 sm:last:pr-0"
+                className="py-3 sm:py-0 sm:px-6 first:pt-0 last:pb-0 sm:first:ps-0 sm:last:pe-0"
               >
                 <h3 className={`${TYPE.kicker} text-olive`}>
                   {tHome(`insiderTips.${tip.id}.title`)}

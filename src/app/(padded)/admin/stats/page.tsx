@@ -279,18 +279,18 @@ export default function AdminStatsPage() {
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("funnelThisMonth.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">{tAdmin("funnelThisMonth.subtitle")}</p>
-          <table className="w-full text-left text-sm">
+          <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
                 <th className="py-2 font-medium text-olive">{tAdmin("funnelThisMonth.table.event")}</th>
-                <th className="py-2 font-medium text-olive text-right">{tAdmin("funnelThisMonth.table.count")}</th>
+                <th className="py-2 font-medium text-olive text-end">{tAdmin("funnelThisMonth.table.count")}</th>
               </tr>
             </thead>
             <tbody>
               {funnel.map((row) => (
                 <tr key={row.event} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.event}</td>
-                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
@@ -305,18 +305,18 @@ export default function AdminStatsPage() {
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("localeMix.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">{tAdmin("localeMix.subtitle")}</p>
-          <table className="w-full text-left text-sm">
+          <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
                 <th className="py-2 font-medium text-olive">{tAdmin("localeMix.table.locale")}</th>
-                <th className="py-2 font-medium text-olive text-right">{tAdmin("localeMix.table.count")}</th>
+                <th className="py-2 font-medium text-olive text-end">{tAdmin("localeMix.table.count")}</th>
               </tr>
             </thead>
             <tbody>
               {locales.map((row) => (
                 <tr key={row.locale} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.locale}</td>
-                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
@@ -331,18 +331,18 @@ export default function AdminStatsPage() {
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("planGeography.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">{tAdmin("planGeography.subtitle")}</p>
-          <table className="w-full text-left text-sm">
+          <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
                 <th className="py-2 font-medium text-olive">{tAdmin("planGeography.table.bucket")}</th>
-                <th className="py-2 font-medium text-olive text-right">{tAdmin("planGeography.table.count")}</th>
+                <th className="py-2 font-medium text-olive text-end">{tAdmin("planGeography.table.count")}</th>
               </tr>
             </thead>
             <tbody>
               {geography.map((row) => (
                 <tr key={row.bucket} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{geographyLabel(row.bucket)}</td>
-                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>
@@ -357,18 +357,18 @@ export default function AdminStatsPage() {
         <h2 className={`${TYPE.cardTitle} ${SECTION.headingGap}`}>{tAdmin("discoverFilters.title")}</h2>
         <div className="p-6 rounded-lg bg-olive/5 border border-olive/10">
           <p className="text-sm text-olive/70 mb-4">{tAdmin("discoverFilters.subtitle")}</p>
-          <table className="w-full text-left text-sm">
+          <table className="w-full text-start text-sm">
             <thead>
               <tr className="border-b border-sand-200/80">
                 <th className="py-2 font-medium text-olive">{tAdmin("discoverFilters.table.filter")}</th>
-                <th className="py-2 font-medium text-olive text-right">{tAdmin("discoverFilters.table.count")}</th>
+                <th className="py-2 font-medium text-olive text-end">{tAdmin("discoverFilters.table.count")}</th>
               </tr>
             </thead>
             <tbody>
               {filters.map((row) => (
                 <tr key={row.filter} className="border-b border-sand-100">
                   <td className="py-2 text-olive">{row.filter}</td>
-                  <td className="py-2 text-olive/80 text-right">{number.format(row.count)}</td>
+                  <td className="py-2 text-olive/80 text-end">{number.format(row.count)}</td>
                 </tr>
               ))}
             </tbody>

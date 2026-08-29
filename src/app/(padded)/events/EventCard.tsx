@@ -37,7 +37,7 @@ export default function EventCard({
       className={`${CARD.base} ${CARD.hover} ${CARD.content} ${
         variant === "highlight"
           ? "border-2 border-golden/40 bg-white"
-          : "border-l-4 border-l-terracotta/40"
+          : "border-s-4 border-s-terracotta/40"
       }`}
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -56,7 +56,7 @@ export default function EventCard({
         {event.name}
         {event.nameEl && (
           <span
-            className="ml-2 text-olive/60 font-normal text-base break-words"
+            className="ms-2 text-olive/60 font-normal text-base break-words"
             lang="el"
           >
             {event.nameEl}

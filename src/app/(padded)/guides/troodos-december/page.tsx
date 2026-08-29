@@ -55,7 +55,7 @@ function TrailCard({
             className={`${MEDIA.hoverImage} duration-300`}
             sizes="(max-width: 640px) 100vw, 192px"
           />
-          <div className="absolute bottom-3 left-3">
+          <div className="absolute bottom-3 start-3">
             <DifficultyBadge difficulty={trail.difficulty} />
           </div>
         </div>

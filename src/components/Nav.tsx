@@ -157,7 +157,7 @@ export default function Nav() {
                   aria-hidden
                   tabIndex={-1}
                 />
-                <div id="more-menu" ref={moreMenuRef} role="menu" className={`absolute right-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl ${LAYER.popover} min-w-[120px]`}>
+                <div id="more-menu" ref={moreMenuRef} role="menu" className={`absolute end-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl ${LAYER.popover} min-w-[120px]`}>
                   {moreLinksResolved.map((link) => (
                     <AppLink
                       key={link.href}

@@ -74,7 +74,7 @@ export default async function SecretsPage() {
           return (
             <article
               key={g.id}
-              className={`${CARD.content} rounded-xl ${CARD.base} border-l-4 border-l-golden/50 ${CARD.hover}`}
+              className={`${CARD.content} rounded-xl ${CARD.base} border-s-4 border-s-golden/50 ${CARD.hover}`}
             >
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <span className="text-xs font-semibold uppercase tracking-wider text-terracotta/80">

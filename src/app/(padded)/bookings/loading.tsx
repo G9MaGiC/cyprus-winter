@@ -27,7 +27,7 @@ function TrustStripSkeleton() {
 
 function BookingCardSkeleton() {
   return (
-    <div className={`${CARD.content} rounded-xl ${SKELETON.card} border-l-4 border-l-aegean/40`}>
+    <div className={`${CARD.content} rounded-xl ${SKELETON.card} border-s-4 border-s-aegean/40`}>
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div className="flex-1 space-y-2">
           <div className={`h-5 w-48 ${SKELETON.bar}`} />

@@ -44,7 +44,7 @@ export default function TrailsFilterBar({
             {tTrails("page.list.filteredHeading", { count: filteredCount })}
           </span>
           {hasFilters && (
-            <AppLink href="/trails" className={`text-sm font-medium ${SECTION.aegeanLink} ml-auto sm:ml-2`}>
+            <AppLink href="/trails" className={`text-sm font-medium ${SECTION.aegeanLink} ms-auto sm:ms-2`}>
               {tCommon("clearFilters")}
             </AppLink>
           )}

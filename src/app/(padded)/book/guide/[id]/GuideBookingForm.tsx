@@ -85,7 +85,7 @@ export default function GuideBookingForm({
         aria-live="polite"
       >
         <BookingProgressStepper currentStep={3} />
-        <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-l-4 border-l-aegean/40">
+        <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-s-4 border-s-aegean/40">
         <h2 className={`${TYPE.subSectionTitle} text-olive`}>{t("success.title")}</h2>
         <p className="text-olive/80 mt-2 leading-relaxed break-words">
           {t("success.body", { guideName: guide.name })}
@@ -289,7 +289,7 @@ export default function GuideBookingForm({
           className="w-full min-h-[44px] rounded-lg border border-sand-200/80 px-4 py-3 text-olive placeholder:text-olive/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-0 resize-none"
         />
         {notesLength > 0 && (
-          <p id="notes-count" className="text-xs text-olive/50 mt-1 text-right tabular-nums" aria-live="polite">
+          <p id="notes-count" className="text-xs text-olive/50 mt-1 text-end tabular-nums" aria-live="polite">
             {notesLength}/500
           </p>
         )}

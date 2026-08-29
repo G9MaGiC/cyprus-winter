@@ -91,7 +91,7 @@ export default function BuildADaySection({ hasContent, onComboClick, readOnly = 
                 {why}
               </p>
               {tip && tip !== `${combo.key}.tip` && (
-                <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-l-2 border-l-golden/40 pl-3`}>
+                <p className={`text-xs text-olive/60 ${SECTION.headingGap} italic border-s-2 border-s-golden/40 ps-3`}>
                   {tip}
                 </p>
               )}

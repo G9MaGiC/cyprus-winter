@@ -15,7 +15,7 @@ export default function TrailsQuickFilters() {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className={`${TYPE.kicker} text-olive/60 mr-1`}>{t("quickFilters.label")}</span>
+      <span className={`${TYPE.kicker} text-olive/60 me-1`}>{t("quickFilters.label")}</span>
       {QUICK_CHIPS.map((chip) => (
         <AppLink
           key={chip.id}

@@ -18,7 +18,7 @@ export default function BestConditionsNow({ trails }: BestConditionsNowProps) {
     <section
       aria-labelledby="best-now"
       role="complementary"
-      className={`${SECTION.pySub} pl-6 sm:pl-8 border-l-4 border-sage/50`}
+      className={`${SECTION.pySub} ps-6 sm:ps-8 border-s-4 border-sage/50`}
     >
       <h2 id="best-now" className={`${TYPE.subSectionTitleLg} ${SECTION.headingGap}`}>
         {t("bestConditionsNow")}

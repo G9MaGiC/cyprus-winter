@@ -56,7 +56,7 @@ export default function HomeThisWeekGridView({
       <AppLink
         href="/weather"
         prefetch="auto"
-        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-aegean rounded-xl group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-s-4 border-s-aegean rounded-xl group`}
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>{weatherKicker}</p>
@@ -70,7 +70,7 @@ export default function HomeThisWeekGridView({
       </AppLink>
 
       <div
-        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-l-4 border-l-sage flex flex-col group overflow-hidden`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.interactive} border-s-4 border-s-sage flex flex-col group overflow-hidden`}
       >
         <AppLink
           href={trailHref}
@@ -116,7 +116,7 @@ export default function HomeThisWeekGridView({
       <AppLink
         href={eventHref}
         prefetch="auto"
-        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-l-4 border-l-golden flex flex-col group`}
+        className={`${CARD.base} ${CARD.hover} ${CARD.link} ${CARD.interactive} border-s-4 border-s-golden flex flex-col group`}
       >
         <div className={CARD.content}>
           <p className={`${TYPE.kicker} text-sage`}>{eventsKicker}</p>

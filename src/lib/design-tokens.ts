@@ -269,7 +269,7 @@ export const CARD = {
     "absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent pointer-events-none sm:from-charcoal/60 sm:via-transparent",
   /** Detail page hero — charcoal (not pure black) for brand consistency. */
   heroOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
-  /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
+  /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-s-4 border-s-aegean|terracotta|golden */
   info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
   /** Action cards (Plan, Events, StartHereWithExplore primary): larger padding, strong CTA */
   action: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm hover:border-terracotta/30 hover:shadow-lg transition-all duration-200",
@@ -362,9 +362,9 @@ export const HERO = {
 /** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */
 export const CALLOUT = {
   /** Golden tip style (local secrets, buffer zone, insider tips). */
-  tip: "rounded-xl bg-golden/5 border-l-4 border-l-golden/50 border border-golden/20",
+  tip: "rounded-xl bg-golden/5 border-s-4 border-s-golden/50 border border-golden/20",
   /** Terracotta CTA-style accent (compose with CARD.base for book & contact blocks). */
-  cta: "border-l-4 border-l-terracotta/40",
+  cta: "border-s-4 border-s-terracotta/40",
 } as const;
 
 /** Skeleton loading — pulse + palette. Compose with h-* w-* for dimensions. */

@@ -40,7 +40,7 @@ export default function TrailStatusGroup({
         <span className={`w-2 h-2 rounded-full ${dotColor} shrink-0`} aria-hidden />
         {label} ({trails.length})
         <span
-          className="text-olive/50 group-open:rotate-180 ml-1 transition-transform duration-200"
+          className="text-olive/50 group-open:rotate-180 ms-1 transition-transform duration-200"
           aria-hidden
         >
           ▾

@@ -493,7 +493,7 @@ export default function BookingsPage() {
                           : tBookingsPage("today.tasting");
                         return (
                           <li key={b.id}>
-                            <div className={`${CARD.content} rounded-xl ${CARD.base} border-l-4 border-l-aegean/50 hover:shadow-md transition-shadow`}>
+                            <div className={`${CARD.content} rounded-xl ${CARD.base} border-s-4 border-s-aegean/50 hover:shadow-md transition-shadow`}>
                               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                                 <div className="min-w-0 flex-1">
                                   <div className="flex flex-wrap items-center gap-2 mb-2">

@@ -135,7 +135,7 @@ export default function GuidesDirectoryClient({
         </div>
       )}
 
-      <div className={`${CARD.base} ${CARD.content} border-l-4 border-l-aegean`}>
+      <div className={`${CARD.base} ${CARD.content} border-s-4 border-s-aegean`}>
         <p className={`${TYPE.cardTitle} text-charcoal mb-1`}>{t("verifiedCta.title")}</p>
         <p className="text-sm text-olive/70 mb-3">{t("verifiedCta.body")}</p>
         <AppLink href="/book/guide" className={CTA.secondaryCompact}>
