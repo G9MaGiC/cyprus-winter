@@ -32,6 +32,29 @@ function readBetaLocales(): string[] {
   return [...match[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
 }
 
+// Single words whose correct translation is spelled identically to English in
+// all beta locales' Latin scripts (fr today). Value-matched exactly, so an
+// untranslated sentence can never hide here.
+const COGNATE_VALUES = new Set([
+  "Village",
+  "Villages",
+  "Ambulance",
+  "Nature",
+  "Restaurant",
+  "Local",
+  "Culture",
+  "Distance",
+  "Expert",
+  "Actions",
+  "Notifications",
+  "Type",
+  "Festival",
+  "Concert",
+  "Sport",
+  "District",
+  "Date",
+]);
+
 const INTENTIONAL =
   /openStreetMap|Cyprus Winter|placeholder|instagramCta|ogNamedTitle|unknownPlace|summarySeparator|temperature|descriptionPrefix|popupMeta|editorsPicks\.items\..*\.title|featuredWineries\.items\..*\.title|planQuick\.quickAddPlaces|wineRoutes\.routeNames|footer\.(troodos|paphos)|onboarding\.welcome|^home\.title$|auth\.social\.providers|birdLife|images\.unoptimized|winterTip\.icon|jsonLd\.priceRange|footer\.suffix|finePrint\.bodySuffix|distanceKm|distanceLessThanKm|Google|Apple|Troodos|Paphos|Kourion|Omodos|Krasochoria|Laona|Akamas|Commandaria/i;
 
@@ -57,19 +80,22 @@ for (const loc of ["fr", "he", "ro"] as const) {
   let legalEn = 0;
   let adminEn = 0;
   let holdoutish = 0;
+  let cognates = 0;
   let otherEn = 0;
   for (const [k, v] of Object.entries(en)) {
     if (!v || msg[k] !== v) continue;
     if (k.startsWith("privacy.") || k.startsWith("terms.")) legalEn++;
     else if (k.startsWith("admin.")) adminEn++;
     else if (INTENTIONAL.test(k) || INTENTIONAL.test(v)) holdoutish++;
+    else if (COGNATE_VALUES.has(v)) cognates++;
     else otherEn++;
   }
   console.log(`${loc}:`);
   console.log(`  privacy/terms still === EN: ${legalEn} (expect 0 after BUG-334)`);
   console.log(`  admin EN-identical: ${adminEn}`);
   console.log(`  intentional holdout-like: ~${holdoutish}`);
-  console.log(`  other EN-identical (cognates/review): ${otherEn}`);
+  console.log(`  confirmed cognates: ${cognates}`);
+  console.log(`  other EN-identical (REVIEW NEEDED): ${otherEn}`);
 }
 
 console.log("");

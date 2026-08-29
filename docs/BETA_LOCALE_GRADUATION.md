@@ -10,6 +10,7 @@ How to remove the **beta** label from French, Hebrew, and Romanian once product 
 | Editorial quality | Done — PR #182 |
 | Privacy + terms **draft** translations | Done — PR #183 (BUG-334) |
 | Lawyer / translator **sign-off** on legal pages | **Pending** |
+| Automated readiness (`npm run i18n:beta-readiness`) | Clean as of Aug 2026 — 0 keys need review in fr/he/ro; the 26 fr EN-identical strings are confirmed cognates (classified in the script) |
 | Switcher `localeBeta` badge | **Still shown** |
 
 Code: `BETA_LOCALES` + `isBetaLocale` in `src/i18n/routing.ts`; UI in `src/components/LocaleLinks.tsx`.
