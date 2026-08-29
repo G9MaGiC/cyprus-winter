@@ -1,12 +1,12 @@
 import { guides, type Guide } from "@/data/guides";
 import { getPlaceById } from "@/data";
-import { trails } from "@/data/trails";
 import { districtForTrailRegion, filterLicensedGuides } from "@/lib/guides-directory";
 import {
   LOCALE_TO_GUIDE_LANGUAGE,
   type TouristGuideDistrict,
 } from "@/lib/guides-directory-types";
 import { sortGuidesByLocaleMatch } from "@/lib/guide-partners";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 export type GuideMatchResult = {
   verifiedGuides: Guide[];
@@ -18,7 +18,9 @@ export type GuideMatchResult = {
 };
 
 export function getVerifiedGuidesForTrail(trailId: string): Guide[] {
-  return guides.filter((g) => g.isVerified && g.trailIds.includes(trailId));
+  const trail = findTrailByIdOrSlug(trailId);
+  const canonicalId = trail?.id ?? trailId;
+  return guides.filter((g) => g.isVerified && g.trailIds.includes(canonicalId));
 }
 
 export function buildGuideDirectoryHref(options: {
@@ -81,7 +83,7 @@ export function matchGuideForTrail(
   licensedCount: number;
 } {
   const verified = sortGuidesByLocaleMatch(getVerifiedGuidesForTrail(trailId), locale);
-  const trail = trails.find((t) => t.id === trailId);
+  const trail = findTrailByIdOrSlug(trailId);
   const district = trail ? districtForTrailRegion(trail.region) ?? null : null;
   const language = locale ? (LOCALE_TO_GUIDE_LANGUAGE[locale] ?? null) : null;
   const licensedCount = filterLicensedGuides({ district, language }).length;

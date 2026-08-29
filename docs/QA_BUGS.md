@@ -37,6 +37,34 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-344] Legacy trail IDs break report/API/AI paths after Stavrovouni rename
+
+**Severity:** High
+**Area:** Functional / Data integrity
+**Page/Component:** `trail-resolve`, trail report, bookings API, resolve-internal-path, Auth redirects, CSP
+
+### Reproduction
+1. Open `/trails/stavrovouni/report` or AI path `/trails/stavrovouni`
+2. Submit trail report / guide booking with legacy id
+3. Auth magic link from `/de/login`
+
+### Expected
+Legacy trail id resolves to `stavrovouni-trail`; auth returns to `/de/account`; Sentry ingest allowed by CSP.
+
+### Actual
+Report/API/AI fell back to 404 or hub; auth redirect dropped locale; Sentry blocked by connect-src.
+
+### Fix status
+Fixed — `findTrailByIdOrSlug` wired through report/API/AI/related/plan-geography/guide booking; locale-aware auth redirects; Sentry hosts in CSP.
+
+### Follow-ups (same PR stack)
+- Social OAuth buttons now localize redirect URLs
+- AI `/discover/{trailId}` redirects to `/trails/{id}` (avoids discover 404)
+- SmartBackLink hidden on locale homes; onboarding dismiss safe without localStorage
+- Guide match + booking `?trail=` preselect honor legacy/slug ids
+
+---
+
 ### [BUG-343] Dev server / page refreshes every few seconds
 
 **Severity:** High

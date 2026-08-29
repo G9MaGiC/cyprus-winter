@@ -7,10 +7,12 @@
  */
 
 import AppLink from "@/components/AppLink";
-import { useSearchParams, usePathname } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { createDetailLink } from "@/lib/discover-links";
+import { getPathWithoutLocale } from "@/lib/nav";
 
 export { createDetailLink };
 
@@ -66,8 +68,8 @@ export default function SmartBackLink({
     label = tCommon("backTo", { label: tNav("home") });
   }
   
-  // Don't show if we're at the root
-  if (pathname === "/") return null;
+  // Don't show on home (including locale-prefixed homes like /de)
+  if (getPathWithoutLocale(pathname) === "/") return null;
 
   return (
     <AppLink

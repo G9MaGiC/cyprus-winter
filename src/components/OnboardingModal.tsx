@@ -26,19 +26,31 @@ export function useOnboarding() {
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       setMounted(true);
-      setShowOnboarding(!localStorage.getItem(ONBOARDING_KEY));
+      try {
+        setShowOnboarding(!localStorage.getItem(ONBOARDING_KEY));
+      } catch {
+        setShowOnboarding(true);
+      }
     });
     return () => cancelAnimationFrame(raf);
   }, []);
 
   const dismiss = useCallback(() => {
-    localStorage.setItem(ONBOARDING_KEY, "true");
+    try {
+      localStorage.setItem(ONBOARDING_KEY, "true");
+    } catch {
+      // Private mode / blocked storage — still dismiss the modal.
+    }
     setShowOnboarding(false);
   }, []);
 
   const reset = useCallback(() => {
-    localStorage.removeItem(ONBOARDING_KEY);
-    localStorage.removeItem(INTENT_KEY);
+    try {
+      localStorage.removeItem(ONBOARDING_KEY);
+      localStorage.removeItem(INTENT_KEY);
+    } catch {
+      // ignore
+    }
     setShowOnboarding(true);
   }, []);
 
@@ -53,7 +65,11 @@ function handleIntent(
   router: ReturnType<typeof useRouter>
 ) {
   if (value) {
-    localStorage.setItem(INTENT_KEY, value);
+    try {
+      localStorage.setItem(INTENT_KEY, value);
+    } catch {
+      // ignore
+    }
     track(`onboarding_intent_${value}` as "onboarding_intent_planning" | "onboarding_intent_exploring" | "onboarding_intent_browsing");
   }
   dismiss();
