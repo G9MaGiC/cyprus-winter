@@ -1,4 +1,4 @@
-import { getGuideById, getPlaceById } from "@/data";
+import { getGuideById, getPlaceById, getDiscoverPlaceById } from "@/data";
 import { isSafeInternalPath } from "@/lib/safe-internal-path";
 import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
@@ -16,7 +16,13 @@ export function resolveInternalPath(raw: string): string {
   const discoverMatch = base.match(/^\/discover\/([^/]+)$/);
   if (discoverMatch) {
     const id = discoverMatch[1];
-    if (!getPlaceById(id)) return "/discover";
+    // Trails are not discover detail pages — send AI/actions to the trail hub route.
+    const trail = findTrailByIdOrSlug(id);
+    if (trail) {
+      const resolved = `/trails/${trail.id}`;
+      return search ? `${resolved}?${search}` : resolved;
+    }
+    if (!getDiscoverPlaceById(id)) return "/discover";
     return search ? `${base}?${search}` : base;
   }
 

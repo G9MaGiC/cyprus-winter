@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { useAuth, type OAuthProvider } from "@/contexts/AuthContext";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { localizedPathname } from "@/lib/seo-locale-urls";
 
 const GOOGLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_GOOGLE_ENABLED === "true";
 const APPLE_ENABLED = process.env.NEXT_PUBLIC_AUTH_APPLE_ENABLED === "true";
@@ -55,6 +56,7 @@ export default function SocialLoginButtons({
   intent = "signin",
 }: SocialLoginButtonsProps) {
   const tAuth = useTranslations("auth");
+  const locale = useLocale();
   const { signInWithOAuth } = useAuth();
   const [loading, setLoading] = useState<OAuthProvider | null>(null);
 
@@ -69,9 +71,12 @@ export default function SocialLoginButtons({
   const handleClick = async (provider: OAuthProvider) => {
     setLoading(provider);
     try {
+      const path = redirectPath.startsWith("/") ? redirectPath : `/${redirectPath}`;
       const to =
         redirectTo ??
-        (typeof window !== "undefined" ? `${window.location.origin}${redirectPath.startsWith("/") ? redirectPath : `/${redirectPath}`}` : undefined);
+        (typeof window !== "undefined"
+          ? `${window.location.origin}${localizedPathname(path, locale)}`
+          : undefined);
       await signInWithOAuth(provider, to);
     } finally {
       setLoading(null);

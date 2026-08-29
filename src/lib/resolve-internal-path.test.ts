@@ -24,6 +24,11 @@ describe("resolveInternalPath", () => {
     expect(resolveInternalPath("/trails/stavrovouni")).toBe("/trails/stavrovouni-trail");
   });
 
+  it("redirects trail ids under /discover/ to /trails/{id}", () => {
+    expect(resolveInternalPath("/discover/artemis")).toBe("/trails/artemis");
+    expect(resolveInternalPath("/discover/stavrovouni-trail")).toBe("/trails/stavrovouni-trail");
+  });
+
   it("preserves query on safe paths", () => {
     expect(resolveInternalPath("/discover?filter=bouldering")).toBe(
       "/discover?filter=bouldering"

@@ -179,7 +179,13 @@ export default function GuideBookingForm({
             aria-describedby={fieldDescribedBy("trail-hint")}
             defaultValue={
               (() => {
-                const match = trailFromQuery && trailOptions.find((tr) => tr && (tr.id === trailFromQuery || tr.slug === trailFromQuery));
+                if (!trailFromQuery) return "";
+                const resolved = findTrailByIdOrSlug(trailFromQuery);
+                const match =
+                  trailOptions.find((tr) => tr && resolved && tr.id === resolved.id) ??
+                  trailOptions.find(
+                    (tr) => tr && (tr.id === trailFromQuery || tr.slug === trailFromQuery)
+                  );
                 return match ? match.id : "";
               })()
             }

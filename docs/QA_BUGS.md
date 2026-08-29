@@ -57,6 +57,12 @@ Report/API/AI fell back to 404 or hub; auth redirect dropped locale; Sentry bloc
 ### Fix status
 Fixed — `findTrailByIdOrSlug` wired through report/API/AI/related/plan-geography/guide booking; locale-aware auth redirects; Sentry hosts in CSP.
 
+### Follow-ups (same PR stack)
+- Social OAuth buttons now localize redirect URLs
+- AI `/discover/{trailId}` redirects to `/trails/{id}` (avoids discover 404)
+- SmartBackLink hidden on locale homes; onboarding dismiss safe without localStorage
+- Guide match + booking `?trail=` preselect honor legacy/slug ids
+
 ---
 
 ### [BUG-343] Dev server / page refreshes every few seconds
