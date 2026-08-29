@@ -31,6 +31,7 @@
     "test:e2e:core-funnel:ci": "CI=true PORT=3001 playwright test e2e/arrival-decision-flow.spec.ts e2e/discover-plan.spec.ts e2e/plan-book.spec.ts e2e/bookings.spec.ts e2e/locale-prefixed-route.spec.ts",
     "test:e2e:core-funnel:local": "playwright test e2e/arrival-decision-flow.spec.ts e2e/discover-plan.spec.ts e2e/plan-book.spec.ts e2e/bookings.spec.ts e2e/locale-prefixed-route.spec.ts --workers=1",
     "test:e2e:ux:ci": "CI=true PORT=3001 playwright test e2e/route-smoke.spec.ts e2e/hub-footer.spec.ts e2e/overlay-precedence.spec.ts e2e/discover-detail.spec.ts e2e/discover-filters.spec.ts e2e/home-smoke.spec.ts e2e/travel-trust.spec.ts e2e/plan-offline.spec.ts",
+    "test:a11y": "CI=true PORT=3001 playwright test e2e/a11y.spec.ts",
     "test:e2e:visual-gate:ci": "CI=true PORT=3001 playwright test e2e/visual-qa-gate.spec.ts",
     "test:e2e:gate:ci": "npm run test:e2e:core-funnel:ci && npm run test:e2e:ux:ci && npm run test:e2e:visual-gate:ci",
     "stress:api": "node scripts/stress-test-apis.mjs",
@@ -93,6 +94,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@capacitor/android": "^7.3.0",
     "@capacitor/cli": "^7.3.0",
     "@capacitor/core": "^7.3.0",

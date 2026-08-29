@@ -37,6 +37,30 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-351] WCAG 2.2 AA: color-contrast fails trace to three brand-token roots
+
+**Severity:** Medium
+**Area:** Accessibility / Design tokens
+**Page/Component:** app-wide (axe sweep of 11 key pages, 375px, all locales structurally clean)
+
+### Reproduction
+`npm run test:a11y` (new harness) — structural rules (aria, landmarks, labels, focus, forms) pass on every page; only `color-contrast` fires, ~2,000 nodes reducing to:
+
+1. **Terracotta `#C96F52`** — 3.57:1 under white CTA text (needs 4.5), 3.36–3.56:1 as link text on sand (×~430 nodes)
+2. **`text-olive/50–/70` opacity ladder** — 2.3–3.6:1 on light surfaces; mathematically cannot reach 4.5:1 at ≤0.7 alpha over near-white, any base color (×~1,400)
+3. **Sage labels `#6B8F7A`** — 3.4–3.6:1 for `prose-label` kickers (×~150)
+
+### Proposed remediation (computed, hue/saturation preserved)
+- terracotta → **#B55738** (4.79 under white, 4.52 as text on sand) — token-only change in `brand-colors.ts`/`globals.css` (+ test sync); re-check `bg-terracotta/10` chip text afterwards
+- sage text accents → **#5B7967** (4.53 on sand)
+- replace the muted-text opacity ladder with a solid muted-ink token ≈ **#666B78** (4.57 on sand-200, 5.33 on white) — this one is a repo-wide class migration (hundreds of `text-olive/60|70|80` call sites), not a token swap
+- `text-olive/50` decorative hints (2.3:1) should become the muted-ink token or gain size/weight
+
+### Fix status
+Open — palette change is a brand decision (persona: "terracotta confidence" vs "Accessibility… no compromise"). Audit + harness shipped: `e2e/a11y.spec.ts` gates the clean structural baseline and reports contrast (flip `CONTRAST_IS_FATAL` when the palette lands). P3-06 audit portion complete.
+
+---
+
 ### [BUG-350] /install crashed to the error page in every locale; route-smoke net added
 
 **Severity:** High
