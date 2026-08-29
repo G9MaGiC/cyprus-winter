@@ -1,6 +1,6 @@
 import { getGuideById, getPlaceById } from "@/data";
-import { trails } from "@/data/trails";
 import { isSafeInternalPath } from "@/lib/safe-internal-path";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 /**
  * Resolve AI / chat action paths to a safe in-app route.
@@ -23,7 +23,7 @@ export function resolveInternalPath(raw: string): string {
   const trailMatch = base.match(/^\/trails\/([^/]+)$/);
   if (trailMatch) {
     const segment = trailMatch[1];
-    const trail = trails.find((t) => t.id === segment || t.slug === segment);
+    const trail = findTrailByIdOrSlug(segment);
     if (!trail) return "/trails";
     const resolved = `/trails/${trail.id}`;
     return search ? `${resolved}?${search}` : resolved;

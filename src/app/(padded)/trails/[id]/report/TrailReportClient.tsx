@@ -3,12 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 import AppLink from "@/components/AppLink";
 import { useParams, notFound } from "next/navigation";
-import { trails } from "@/data/trails";
 import { LAYOUT, CTA, TYPE } from "@/lib/design-tokens";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { useTranslations } from "next-intl";
 import { getApiErrorCode, getRetryAfterSeconds, safeJson } from "@/lib/api-client";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 const STATUS_VALUES = ["open", "caution", "closed"] as const;
 const SURFACE_VALUES = ["dry", "muddy", "snow", "icy"] as const;
@@ -20,7 +20,7 @@ export default function TrailReportClient() {
   const tReport = useTranslations("trails.report");
   const params = useParams();
   const id = params?.id as string;
-  const trail = typeof id === "string" ? trails.find((t) => t.id === id || t.slug === id) : undefined;
+  const trail = typeof id === "string" ? findTrailByIdOrSlug(id) : undefined;
 
   const [status, setStatus] = useState<"open" | "caution" | "closed">("open");
   const [surface, setSurface] = useState<"dry" | "muddy" | "snow" | "icy">("dry");

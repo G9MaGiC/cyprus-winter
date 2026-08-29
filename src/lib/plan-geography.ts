@@ -3,9 +3,9 @@
  * Classifies from curated `src/data/` (place type, trail region, activity lists) — not invented GPS.
  */
 import { getAttractionById, getPlaceById } from "@/data";
-import { trails } from "@/data/trails";
 import { ACTIVITY_PLACE_IDS } from "@/lib/activity-catalog";
 import { COASTAL_TRAIL_IDS } from "@/lib/trails-sections";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 export const PLAN_GEOGRAPHY_BUCKETS = [
   "rural_mountain",
@@ -41,7 +41,7 @@ const COASTAL_ACTIVITY_IDS = new Set<string>([
 ]);
 
 function trailByPlaceId(id: string) {
-  return trails.find((t) => t.id === id || t.slug === id);
+  return findTrailByIdOrSlug(id);
 }
 
 export function planGeographyBucket(id: string | undefined | null): PlanGeographyBucket {

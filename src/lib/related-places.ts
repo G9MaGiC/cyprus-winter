@@ -1,20 +1,21 @@
 import { allAttractions } from "@/data";
 import { restaurants } from "@/data/restaurants";
-import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { wineries } from "@/data/wineries";
 import type { Attraction } from "@/data/attractions";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 /** Get place IDs that pair well with this place (trails, wineries, villages, restaurants). */
 export function getCombineWith(id: string): string[] {
-  const trail = trails.find((t) => t.id === id || t.slug === id);
-  if (trail?.combineWith?.length) return trail.combineWith;
+  // Prefer attraction/winery/restaurant when id is shared historically (e.g. stavrovouni monastery).
   const attr = allAttractions.find((a) => a.id === id);
   if (attr?.combineWith?.length) return attr.combineWith;
   const winery = wineries.find((w) => w.id === id);
   if (winery?.combineWith?.length) return winery.combineWith;
   const restaurant = restaurants.find((r) => r.id === id);
   if (restaurant?.combineWith?.length) return restaurant.combineWith;
+  const trail = findTrailByIdOrSlug(id);
+  if (trail?.combineWith?.length) return trail.combineWith;
   return [];
 }
 
@@ -43,7 +44,7 @@ export function getRelatedPlaces(ids: string[]): RelatedPlace[] {
       });
       continue;
     }
-    const trail = trails.find((t) => t.id === id || t.slug === id);
+    const trail = findTrailByIdOrSlug(id);
     if (trail) {
       result.push({
         id: trail.id,

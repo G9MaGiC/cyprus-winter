@@ -20,6 +20,10 @@ describe("resolveInternalPath", () => {
     expect(path).toBe("/trails/artemis");
   });
 
+  it("resolves legacy Stavrovouni trail id to stavrovouni-trail", () => {
+    expect(resolveInternalPath("/trails/stavrovouni")).toBe("/trails/stavrovouni-trail");
+  });
+
   it("preserves query on safe paths", () => {
     expect(resolveInternalPath("/discover?filter=bouldering")).toBe(
       "/discover?filter=bouldering"

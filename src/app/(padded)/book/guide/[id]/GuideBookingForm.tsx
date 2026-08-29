@@ -7,7 +7,7 @@ import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
 import BookingSuccessNextSteps from "@/components/bookings/BookingSuccessNextSteps";
 import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
-import { trails } from "@/data/trails";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import type { Guide } from "@/data/guides";
 import { useTranslations } from "next-intl";
 import { guideBookingSchema } from "@/lib/booking-schemas";
@@ -29,7 +29,7 @@ export default function GuideBookingForm({
   const trailFromQuery = preselectedTrailId ?? searchParams.get("trail");
 
   const trailOptions = guide.trailIds
-    .map((tid) => trails.find((tr) => tr.id === tid || tr.slug === tid))
+    .map((tid) => findTrailByIdOrSlug(tid))
     .filter(Boolean);
 
   const {
