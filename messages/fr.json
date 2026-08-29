@@ -1008,25 +1008,25 @@
       "view": "Voir →",
       "footerCount": "{count, plural, one {# lieu sur la carte. Touchez un marqueur pour explorer.} other {# lieux sur la carte. Touchez un marqueur pour explorer.}}",
       "toolbar": {
-        "nearPlanDay": "Near my plan day",
-        "nearPlanDayDisabled": "Set trip dates on Plan and add places to enable",
-        "resetView": "Reset view",
-        "placeCount": "{count, plural, one {# place} other {# places}}"
+        "nearPlanDay": "Près d’une journée de mon programme",
+        "nearPlanDayDisabled": "Définissez les dates du séjour dans Plan et ajoutez des lieux",
+        "resetView": "Réinitialiser la vue",
+        "placeCount": "{count, plural, one {# lieu} other {# lieux}}"
       },
       "focus": {
-        "dayLabel": "Day {day} of your plan"
+        "dayLabel": "Jour {day} de votre programme"
       },
       "legend": {
-        "aria": "Map marker types",
-        "winery": "Winery",
+        "aria": "Types de marqueurs",
+        "winery": "Domaine viticole",
         "village": "Village",
-        "trail": "Trail",
-        "ancient": "Ancient site",
-        "coast": "Coast & nature",
-        "eat": "Eat",
-        "monastery": "Monastery",
-        "activity": "Activity",
-        "other": "Place"
+        "trail": "Sentier",
+        "ancient": "Site antique",
+        "coast": "Littoral et nature",
+        "eat": "Manger",
+        "monastery": "Monastère",
+        "activity": "Activité",
+        "other": "Lieu"
       }
     },
     "detail": {

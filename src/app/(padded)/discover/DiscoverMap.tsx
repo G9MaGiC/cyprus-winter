@@ -10,7 +10,7 @@ import AppLink from "@/components/AppLink";
 import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { MapBounds } from "@/lib/discover-map-focus";
 
 export type DiscoverMapPinKind =
@@ -107,10 +107,11 @@ export default function DiscoverMap({
 }: DiscoverMapProps) {
   const tCommon = useTranslations("common");
   const tDiscover = useTranslations("discover");
-  const [interactive, setInteractive] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !(window.matchMedia?.("(pointer: coarse)").matches ?? false);
-  });
+  const [interactive, setInteractive] = useState(true);
+
+  useEffect(() => {
+    setInteractive(!(window.matchMedia?.("(pointer: coarse)").matches ?? false));
+  }, []);
 
   const displayBounds = useMemo((): MapBounds | null => {
     if (focusBounds) return focusBounds;

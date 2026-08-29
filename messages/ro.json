@@ -1008,25 +1008,25 @@
       "view": "Vezi →",
       "footerCount": "{count, plural, one {# loc pe hartă. Atinge un marker pentru a explora.} other {# locuri pe hartă. Atinge un marker pentru a explora.}}",
       "toolbar": {
-        "nearPlanDay": "Near my plan day",
-        "nearPlanDayDisabled": "Set trip dates on Plan and add places to enable",
-        "resetView": "Reset view",
-        "placeCount": "{count, plural, one {# place} other {# places}}"
+        "nearPlanDay": "În apropierea zilei din plan",
+        "nearPlanDayDisabled": "Setează datele călătoriei în Plan și adaugă locuri pentru activare",
+        "resetView": "Resetează harta",
+        "placeCount": "{count, plural, one {# loc} other {# locuri}}"
       },
       "focus": {
-        "dayLabel": "Day {day} of your plan"
+        "dayLabel": "Ziua {day} din planul tău"
       },
       "legend": {
-        "aria": "Map marker types",
-        "winery": "Winery",
-        "village": "Village",
-        "trail": "Trail",
-        "ancient": "Ancient site",
-        "coast": "Coast & nature",
-        "eat": "Eat",
-        "monastery": "Monastery",
-        "activity": "Activity",
-        "other": "Place"
+        "aria": "Tipuri de marcatori",
+        "winery": "Cramă",
+        "village": "Sat",
+        "trail": "Traseu",
+        "ancient": "Situl antic",
+        "coast": "Coastă și natură",
+        "eat": "Mâncare",
+        "monastery": "Mănăstire",
+        "activity": "Activitate",
+        "other": "Loc"
       }
     },
     "detail": {
