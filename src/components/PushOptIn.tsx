@@ -66,6 +66,11 @@ export default function PushOptIn({ tripStartDate, onSubscribed, variant = "soon
         return;
       }
 
+      if (process.env.NODE_ENV === "development") {
+        if (isMountedRef.current) setStatus("unsupported");
+        return;
+      }
+
       const reg = await navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" });
       await navigator.serviceWorker.ready;
       if (!isMountedRef.current) return;

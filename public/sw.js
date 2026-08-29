@@ -1,4 +1,4 @@
-const CACHE_NAME = "cyprus-winter-shell-v1";
+const CACHE_NAME = "cyprus-winter-shell-v2";
 const PRECACHE_URLS = ["/", "/plan", "/discover", "/trails", "/manifests/en"];
 
 function safeNotificationUrl(value) {
@@ -33,7 +33,19 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
   const isPrivatePath = ["/bookings", "/admin"].some((prefix) => url.pathname === prefix || url.pathname.startsWith(`${prefix}/`));
   const hasCredentials = request.headers.has("authorization") || request.headers.has("cookie");
-  if (request.method !== "GET" || url.origin !== self.location.origin || url.pathname.startsWith("/api/") || isPrivatePath || hasCredentials) {
+  // Never cache Next internals (HMR/chunks) or the SW script itself — that causes reload loops in dev and stale shells in prod.
+  const isNextInternal =
+    url.pathname.startsWith("/_next/") ||
+    url.pathname === "/sw.js" ||
+    url.pathname.startsWith("/monitoring");
+  if (
+    request.method !== "GET" ||
+    url.origin !== self.location.origin ||
+    url.pathname.startsWith("/api/") ||
+    isNextInternal ||
+    isPrivatePath ||
+    hasCredentials
+  ) {
     return;
   }
 

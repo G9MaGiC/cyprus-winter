@@ -2,11 +2,20 @@ import type { MetadataRoute } from "next";
 import { routing, type Locale } from "@/i18n/routing";
 import { TOKENS } from "@/lib/design-tokens";
 import { localizedPathname } from "@/lib/seo-locale-urls";
+import en from "../../messages/en.json";
+import el from "../../messages/el.json";
+import de from "../../messages/de.json";
+import pl from "../../messages/pl.json";
+import ro from "../../messages/ro.json";
+import fr from "../../messages/fr.json";
+import he from "../../messages/he.json";
 
 export type PwaManifest = MetadataRoute.Manifest & {
   lang?: string;
   dir?: "ltr" | "rtl";
 };
+
+const MESSAGES: Record<Locale, unknown> = { en, el, de, pl, ro, fr, he };
 
 function isAppLocale(locale: string): locale is Locale {
   return (routing.locales as readonly string[]).includes(locale);
@@ -27,8 +36,10 @@ function nestedString(messages: unknown, path: string): string {
   return cur;
 }
 
-async function loadMessages(locale: Locale): Promise<unknown> {
-  return (await import(`../../messages/${locale}.json`)).default;
+function loadMessages(locale: Locale): unknown {
+  // Static imports avoid a Turbopack hang on dynamic `import(\`messages/${locale}.json\`)`
+  // inside the /manifests/[locale] route handler during `next dev`.
+  return MESSAGES[locale];
 }
 
 /**
@@ -37,7 +48,7 @@ async function loadMessages(locale: Locale): Promise<unknown> {
 export async function buildPwaManifest(locale: string): Promise<PwaManifest | null> {
   if (!isAppLocale(locale)) return null;
 
-  const messages = await loadMessages(locale);
+  const messages = loadMessages(locale);
   const homePath = localizedPathname("/", locale);
   const planPath = localizedPathname("/plan", locale);
   const rightNowUrl = `${homePath}#right-now`;
