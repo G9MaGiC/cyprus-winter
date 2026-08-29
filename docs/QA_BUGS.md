@@ -44,10 +44,13 @@ Open | In progress | Fixed | Won't fix
 **Page/Component:** server boot (module evaluation), no route affected
 
 ### Reproduction
-`npm run build && next start` — exactly one `ReferenceError: window is not defined` with an RSC digest logs at startup (before any request). All routes render clean: route-smoke (40 routes) and the 31-page a11y sweep payloads carry no error digest. Digest hash changes across builds (e.g. 626903554, 3710247840), consistent with a chunk-hash-derived id — likely a module (Sentry/instrumentation neighborhood) touching `window` at import time during boot preload.
+`npm run build && next start`, request `/wine-routes/[slug]` — every render logged one caught `ReferenceError: window is not defined` with an RSC digest. Root cause: `page.tsx` (server component) statically imported `WineRouteMap`, whose module scope imports Leaflet and calls `L.divIcon(...)`; Leaflet reads `window` at import, so SSR evaluated and threw on each render, and Next recovered by deferring the subtree to the client. Payloads stayed digest-free (56-route exhaustive curl sweep verified), so no user-facing breakage — but one exception + stack per render, and the map skipped its SSR pass silently.
+
+### Fix
+`WineRouteMapClient.tsx` wraps the map in `next/dynamic(..., { ssr: false })` with a skeleton loader — the same pattern as `TrailMapClient`/`AllTrailsMapClient`. Verified: 0 window errors across 6 wine-route renders (was 1 each); Leaflet mounts client-side with all markers. Repo-wide scan confirms no other page imports a Leaflet component without an ssr:false wrapper.
 
 ### Fix status
-Open (cosmetic) — log noise only; no user-facing impact. Root-cause when touching instrumentation config.
+Fixed.
 
 ---
 
