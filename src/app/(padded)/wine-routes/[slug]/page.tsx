@@ -11,7 +11,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import AttractionCard from "@/components/AttractionCard";
 import PageHeader from "@/components/PageHeader";
 import { getTranslations } from "next-intl/server";
-import WineRouteMap from "./WineRouteMap";
+import WineRouteMap from "./WineRouteMapClient";
 import WineRouteBookableStops from "./WineRouteBookableStops";
 import { toAbsoluteUrl } from "@/lib/site-url";
 import { WINE_ROUTE_BOOK_FROM } from "@/lib/wine-route-stops";
