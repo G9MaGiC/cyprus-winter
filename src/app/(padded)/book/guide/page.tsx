@@ -6,7 +6,7 @@ import { LAYOUT, CTA, CARD, HOME, TYPE, SECTION, BADGE } from "@/lib/design-toke
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { trails } from "@/data/trails";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import BookGuideHubFooter from "@/components/BookGuideHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function getTrailNames(guide: (typeof guides)[0]): string[] {
   return guide.trailIds
-    .map((tid) => trails.find((t) => t.id === tid || t.slug === tid))
+    .map((tid) => findTrailByIdOrSlug(tid))
     .filter((t): t is NonNullable<typeof t> => t != null)
     .map((t) => t.name);
 }

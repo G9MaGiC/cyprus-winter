@@ -23,6 +23,7 @@ describe("proxy content security policy", () => {
         "img-src 'self' blob: data: https://images.unsplash.com https://cdn.shopify.com https://*.tile.openstreetmap.org",
         "frame-src 'self' https://www.openstreetmap.org",
         "frame-ancestors 'none'",
+        "connect-src 'self' https://api.moonshot.ai https://*.supabase.co https://*.ingest.sentry.io https://*.ingest.de.sentry.io https://*.sentry.io",
       ])
     );
   });

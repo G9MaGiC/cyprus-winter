@@ -29,7 +29,7 @@ export default function proxy(request: NextRequest): NextResponse {
     // Fonts from self
     "font-src 'self' https://fonts.gstatic.com",
     // Connect to self and external APIs
-    "connect-src 'self' https://api.moonshot.ai https://*.supabase.co",
+    "connect-src 'self' https://api.moonshot.ai https://*.supabase.co https://*.ingest.sentry.io https://*.ingest.de.sentry.io https://*.sentry.io",
     // OpenStreetMap detail-page embeds (Leaflet tiles + OSM iframe)
     "frame-src 'self' https://www.openstreetmap.org",
     // No nested framing of this app

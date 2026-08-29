@@ -108,7 +108,6 @@ export default async function RootLayout({
       </head>
       <body
         className={`${plusJakarta.variable} ${fraunces.variable} font-sans antialiased min-h-screen bg-background`}
-        suppressHydrationWarning
       >
         {/* JavaScript disabled warning */}
         <noscript>

@@ -4,6 +4,7 @@ import { getLocale } from "next-intl/server";
 import { trails } from "@/data/trails";
 import TrailReportClient from "./TrailReportClient";
 import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 export async function generateMetadata({
   params,
@@ -11,10 +12,10 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const trail = trails.find((t) => t.id === id || t.slug === id);
+  const trail = findTrailByIdOrSlug(id);
   if (!trail) notFound();
   const locale = await getLocale();
-  return buildTranslatedHubMetadata("trailReport", locale, `/trails/${id}/report`);
+  return buildTranslatedHubMetadata("trailReport", locale, `/trails/${trail.id}/report`);
 }
 
 export function generateStaticParams() {

@@ -8,7 +8,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useLocale } from "next-intl";
 import { getSupabaseBrowser } from "@/lib/supabase-browser";
+import { localizedPathname } from "@/lib/seo-locale-urls";
 import type { User, Session } from "@supabase/supabase-js";
 
 type AuthState = {
@@ -41,7 +43,13 @@ function isConfigured(): boolean {
   );
 }
 
+function absoluteAppUrl(path: string, locale: string): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  return `${window.location.origin}${localizedPathname(path, locale)}`;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const locale = useLocale();
   const [state, setState] = useState<AuthState>({
     user: null,
     session: null,
@@ -111,15 +119,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: typeof window !== "undefined" ? window.location.origin + "/account" : undefined },
+      options: { emailRedirectTo: absoluteAppUrl("/account", locale) },
     });
     return { error: error?.message ?? null };
-  }, []);
+  }, [locale]);
 
   const signInWithOAuth = useCallback(async (provider: OAuthProvider, redirectTo?: string) => {
     const supabase = getSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
-    const to = redirectTo ?? (typeof window !== "undefined" ? window.location.origin + "/account" : undefined);
+    const to = redirectTo ?? absoluteAppUrl("/account", locale);
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
       options: to ? { redirectTo: to } : undefined,
@@ -127,16 +135,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) return { error: error.message };
     if (data?.url) window.location.href = data.url;
     return { error: null };
-  }, []);
+  }, [locale]);
 
   const resetPassword = useCallback(async (email: string) => {
     const supabase = getSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-      redirectTo: typeof window !== "undefined" ? window.location.origin + "/reset-password" : undefined,
+      redirectTo: absoluteAppUrl("/reset-password", locale),
     });
     return { error: error?.message ?? null };
-  }, []);
+  }, [locale]);
 
   const updatePassword = useCallback(async (password: string) => {
     const supabase = getSupabaseBrowser();

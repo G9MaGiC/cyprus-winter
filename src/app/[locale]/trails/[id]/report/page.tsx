@@ -1,7 +1,7 @@
 import TrailReportPage from "@/app/(padded)/trails/[id]/report/page";
 import { notFound } from "next/navigation";
-import { trails } from "@/data/trails";
 import { buildTranslatedHubMetadata } from "@/lib/translated-page-meta";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 
 export { generateStaticParams } from "@/app/(padded)/trails/[id]/report/page";
 
@@ -13,7 +13,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale, id } = await params;
-  const trail = trails.find((t) => t.id === id || t.slug === id);
+  const trail = findTrailByIdOrSlug(id);
   if (!trail) notFound();
-  return buildTranslatedHubMetadata("trailReport", locale, `/trails/${id}/report`);
+  return buildTranslatedHubMetadata("trailReport", locale, `/trails/${trail.id}/report`);
 }

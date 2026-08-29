@@ -1,6 +1,6 @@
 import { createTrailReport } from "@/lib/trail-reports";
 import { rateLimit } from "@/lib/rate-limit";
-import { trails } from "@/data/trails";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import { z } from "zod";
 import {
   jsonError,
@@ -78,7 +78,7 @@ export async function POST(req: Request) {
     }
 
     const { trailId } = parsed.data;
-    const trail = trails.find((t) => t.id === trailId || t.slug === trailId);
+    const trail = findTrailByIdOrSlug(trailId);
     if (!trail) {
       return jsonError("NOT_FOUND", "Trail not found", 404);
     }

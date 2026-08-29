@@ -6,7 +6,7 @@ import { sendBookingConfirmation, sendBookingRequestToWinery, sendBookingRequest
 import { createBookingSchema } from "@/lib/booking-schema";
 import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
-import { trails } from "@/data/trails";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import { z } from "zod";
 import {
   jsonError,
@@ -287,7 +287,7 @@ export async function POST(req: Request) {
       if (!guide) {
         return jsonError("NOT_FOUND", "Guide not found", 404);
       }
-      const trail = trailId ? trails.find((t) => t.id === trailId || t.slug === trailId) : undefined;
+      const trail = trailId ? findTrailByIdOrSlug(trailId) : undefined;
       const notesWithTrail =
         trailId && trail
           ? (notes ? `${notes}\nTrail: ${trail.name}` : `Trail: ${trail.name}`)

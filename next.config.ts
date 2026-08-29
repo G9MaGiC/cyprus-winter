@@ -47,9 +47,11 @@ const nextConfig: NextConfig = {
       { source: "/trip", destination: "/plan", permanent: true },
     ];
   },
-  // Left off for simple static/CDN-style hosting; set false when `remotePatterns` + host align with next/image optimization.
+  // Optimize local and allowlisted remote images on Vercel.
   images: {
-    unoptimized: true,
+    unoptimized: false,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 86_400,
     remotePatterns: [
       {
         protocol: "https",
