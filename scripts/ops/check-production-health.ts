@@ -4,7 +4,7 @@
  *   npm run health:production
  *   HEALTH_URL=https://cypruswinter.com/api/health npm run health:production
  */
-const defaultUrl = "https://cyprus-winter.vercel.app/api/health";
+const defaultUrl = "https://cyprus-winter-three.vercel.app/api/health";
 const url = (process.env.HEALTH_URL || defaultUrl).replace(/\/$/, "");
 
 type PublicHealth = {
