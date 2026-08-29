@@ -3080,7 +3080,7 @@
           "images": {
             "label": "Obrazy się nie wczytują:",
             "config": "images.unoptimized: true",
-            "body": "Upewnij się, że {config} jest ustawione w next.config. Ścieżki obrazów muszą być poprawne w build output."
+            "body": "Upewnij się, że <config>images.unoptimized</config> jest ustawione w next.config. Ścieżki obrazów muszą być poprawne w build output."
           },
           "api": {
             "label": "API lub chat nie działa:",

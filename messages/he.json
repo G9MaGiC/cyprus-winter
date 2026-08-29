@@ -3156,7 +3156,7 @@
           "images": {
             "label": "תמונות לא נטענות:",
             "config": "images.unoptimized: true",
-            "body": "ודאו ש-{config} מוגדר ב-next.config. נתיבי תמונות חייבים להיות נכונים בפלט ה-build."
+            "body": "ודאו ש-<config>images.unoptimized</config> מוגדר ב-next.config. נתיבי תמונות חייבים להיות נכונים בפלט ה-build."
           },
           "api": {
             "label": "API או צ'אט לא עובד:",

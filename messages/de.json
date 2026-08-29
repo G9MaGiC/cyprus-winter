@@ -3080,7 +3080,7 @@
           "images": {
             "label": "Bilder laden nicht:",
             "config": "images.unoptimized: true",
-            "body": "Stellen Sie sicher, dass {config} in next.config gesetzt ist. Bildpfade müssen im Build-Ausgabeordner korrekt sein."
+            "body": "Stellen Sie sicher, dass <config>images.unoptimized</config> in next.config gesetzt ist. Bildpfade müssen im Build-Ausgabeordner korrekt sein."
           },
           "api": {
             "label": "API oder Chat funktioniert nicht:",

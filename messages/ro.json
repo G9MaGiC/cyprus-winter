@@ -3156,7 +3156,7 @@
           "images": {
             "label": "Imaginile nu se încarcă:",
             "config": "images.unoptimized: true",
-            "body": "Asigură-te că {config} este setat în next.config. Căile imaginilor trebuie să fie corecte în output-ul build-ului."
+            "body": "Asigură-te că <config>images.unoptimized</config> este setat în next.config. Căile imaginilor trebuie să fie corecte în output-ul build-ului."
           },
           "api": {
             "label": "API sau chat nu funcționează:",

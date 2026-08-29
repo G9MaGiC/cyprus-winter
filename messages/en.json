@@ -3156,7 +3156,7 @@
           "images": {
             "label": "Images not loading:",
             "config": "images.unoptimized: true",
-            "body": "Ensure {config} is set in next.config. Image paths must be correct in the built output."
+            "body": "Ensure <config>images.unoptimized</config> is set in next.config. Image paths must be correct in the built output."
           },
           "api": {
             "label": "API or chat not working:",

@@ -3080,7 +3080,7 @@
           "images": {
             "label": "Οι εικόνες δεν φορτώνουν:",
             "config": "images.unoptimized: true",
-            "body": "Βεβαιωθείτε ότι το {config} είναι ενεργό στο next.config. Τα paths των εικόνων πρέπει να είναι σωστά στο build output."
+            "body": "Βεβαιωθείτε ότι το <config>images.unoptimized</config> είναι ενεργό στο next.config. Τα paths των εικόνων πρέπει να είναι σωστά στο build output."
           },
           "api": {
             "label": "API ή chat δεν λειτουργεί:",

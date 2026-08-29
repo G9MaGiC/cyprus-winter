@@ -10,10 +10,13 @@ import { routing } from "@/i18n/routing";
  * page at render (BUG-349: /guides/troodos-december, broken since PR #137).
  */
 describe("rich message link tags", () => {
-  it("no locale uses the {…Link} argument form", () => {
+  it("no locale uses the argument form for known rich tag handlers", () => {
+    // Handler names passed to t.rich() across src/app — extend when adding one.
+    const richTags = ["[a-zA-Z]*Link", "config"];
+    const re = new RegExp(`\\{(?:${richTags.join("|")})\\}`, "g");
     for (const locale of routing.locales) {
       const raw = readFileSync(join(process.cwd(), "messages", `${locale}.json`), "utf8");
-      const hits = raw.match(/\{[a-zA-Z]*Link\}/g) ?? [];
+      const hits = raw.match(re) ?? [];
       expect(hits, `${locale}.json: ${hits.join(", ")}`).toEqual([]);
     }
   });
