@@ -1008,25 +1008,25 @@
       "view": "צפו →",
       "footerCount": "{count, plural, one {מקום # על המפה. הקישו על סמן לחקירה.} other {# מקומות על המפה. הקישו על סמן לחקירה.}}",
       "toolbar": {
-        "nearPlanDay": "Near my plan day",
-        "nearPlanDayDisabled": "Set trip dates on Plan and add places to enable",
-        "resetView": "Reset view",
-        "placeCount": "{count, plural, one {# place} other {# places}}"
+        "nearPlanDay": "ליד המקומות ביום המתוכנן שלי",
+        "nearPlanDayDisabled": "הגדירו תאריכי נסיעה ב־Plan והוסיפו מקומות כדי להפעיל",
+        "resetView": "איפוס התצוגה",
+        "placeCount": "{count, plural, one {מקום אחד} other {# מקומות}}"
       },
       "focus": {
-        "dayLabel": "Day {day} of your plan"
+        "dayLabel": "יום {day} בתוכנית שלכם"
       },
       "legend": {
-        "aria": "Map marker types",
-        "winery": "Winery",
-        "village": "Village",
-        "trail": "Trail",
-        "ancient": "Ancient site",
-        "coast": "Coast & nature",
-        "eat": "Eat",
-        "monastery": "Monastery",
-        "activity": "Activity",
-        "other": "Place"
+        "aria": "סוגי סמנים במפה",
+        "winery": "יקב",
+        "village": "כפר",
+        "trail": "מסלול",
+        "ancient": "אתר עתיקות",
+        "coast": "חוף וטבע",
+        "eat": "אוכל",
+        "monastery": "מנזר",
+        "activity": "פעילות",
+        "other": "מקום"
       }
     },
     "detail": {
