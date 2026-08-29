@@ -83,153 +83,56 @@ export async function sendBookingConfirmation(booking: Booking, localeInput?: st
   }
 }
 
-/**
- * Send booking request to verified partner winery. Called when winery has partnerEmail and isVerified.
- */
-export async function sendBookingRequestToWinery(
-  booking: Booking,
-  winery: { name: string; partnerEmail: string }
-): Promise<boolean> {
+export async function sendBookingRequestToWinery(booking: Booking, winery: { name: string; partnerEmail: string }): Promise<boolean> {
   if (!resend) return false;
-
   const guestName = escapeHtml(booking.guestName);
   const guestEmail = escapeHtml(booking.guestEmail);
   const providerName = escapeHtml(winery.name);
   const date = escapeHtml(booking.date);
   const partySize = String(booking.partySize);
   const notes = booking.notes ? escapeHtml(booking.notes) : "(none)";
-
   try {
-    const { error } = await resend.emails.send({
-      from,
-      to: winery.partnerEmail,
-      subject: `[Cyprus Winter] New tasting request: ${guestName} | ${date}`,
-      html: `
-        <h2>New booking request from Cyprus Winter</h2>
-        <p>A guest has requested a tasting at <strong>${providerName}</strong>.</p>
-        <ul>
-          <li><strong>Guest:</strong> ${guestName}</li>
-          <li><strong>Email:</strong> ${guestEmail}</li>
-          <li><strong>Date:</strong> ${date}</li>
-          <li><strong>Party size:</strong> ${partySize}</li>
-          <li><strong>Notes:</strong> ${notes}</li>
-        </ul>
-        <p>Please reply directly to the guest to confirm availability.</p>
-        <p>Cyprus Winter</p>
-      `,
-    });
-    if (error) {
-      console.error("Resend winery notification error:", error);
-      return false;
-    }
-    return true;
-  } catch (err) {
-    console.error("Winery notification send error:", err);
-    return false;
-  }
+    const { error } = await resend.emails.send({ from, to: winery.partnerEmail, subject: `[Cyprus Winter] New tasting request: ${guestName} | ${date}`, html: `<h2>New booking request from Cyprus Winter</h2><p>A guest has requested a tasting at <strong>${providerName}</strong>.</p><ul><li><strong>Guest:</strong> ${guestName}</li><li><strong>Email:</strong> ${guestEmail}</li><li><strong>Date:</strong> ${date}</li><li><strong>Party size:</strong> ${partySize}</li><li><strong>Notes:</strong> ${notes}</li></ul><p>Please reply directly to the guest to confirm availability.</p><p>Cyprus Winter</p>` });
+    if (error) console.error("Resend winery notification error:", error);
+    return !error;
+  } catch (err) { console.error("Winery notification send error:", err); return false; }
 }
 
-/**
- * Send booking request to verified partner guide. Called when guide has partnerEmail and isVerified.
- */
-export async function sendBookingRequestToGuide(
-  booking: Booking,
-  guide: { name: string; partnerEmail: string },
-  trailName?: string
-): Promise<boolean> {
+export async function sendBookingRequestToGuide(booking: Booking, guide: { name: string; partnerEmail: string }, trailName?: string): Promise<boolean> {
   if (!resend) return false;
-
   const guestName = escapeHtml(booking.guestName);
   const guestEmail = escapeHtml(booking.guestEmail);
   const providerName = escapeHtml(guide.name);
   const date = escapeHtml(booking.date);
   const partySize = String(booking.partySize);
   const notes = booking.notes ? escapeHtml(booking.notes) : "(none)";
-  const trailLine = trailName
-    ? `<li><strong>Trail:</strong> ${escapeHtml(trailName)}</li>`
-    : "";
-
+  const trailLine = trailName ? `<li><strong>Trail:</strong> ${escapeHtml(trailName)}</li>` : "";
   try {
-    const { error } = await resend.emails.send({
-      from,
-      to: guide.partnerEmail,
-      subject: `[Cyprus Winter] New guide request: ${guestName} | ${date}`,
-      html: `
-        <h2>New booking request from Cyprus Winter</h2>
-        <p>A guest has requested a guided hike with <strong>${providerName}</strong>.</p>
-        <ul>
-          <li><strong>Guest:</strong> ${guestName}</li>
-          <li><strong>Email:</strong> ${guestEmail}</li>
-          <li><strong>Date:</strong> ${date}</li>
-          <li><strong>Party size:</strong> ${partySize}</li>
-          ${trailLine}
-          <li><strong>Notes:</strong> ${notes}</li>
-        </ul>
-        <p>Please reply directly to the guest to confirm availability.</p>
-        <p>Cyprus Winter</p>
-      `,
-    });
-    if (error) {
-      console.error("Resend guide notification error:", error);
-      return false;
-    }
-    return true;
-  } catch (err) {
-    console.error("Guide notification send error:", err);
-    return false;
-  }
+    const { error } = await resend.emails.send({ from, to: guide.partnerEmail, subject: `[Cyprus Winter] New guide request: ${guestName} | ${date}`, html: `<h2>New booking request from Cyprus Winter</h2><p>A guest has requested a guided hike with <strong>${providerName}</strong>.</p><ul><li><strong>Guest:</strong> ${guestName}</li><li><strong>Email:</strong> ${guestEmail}</li><li><strong>Date:</strong> ${date}</li><li><strong>Party size:</strong> ${partySize}</li>${trailLine}<li><strong>Notes:</strong> ${notes}</li></ul><p>Please reply directly to the guest to confirm availability.</p><p>Cyprus Winter</p>` });
+    if (error) console.error("Resend guide notification error:", error);
+    return !error;
+  } catch (err) { console.error("Guide notification send error:", err); return false; }
 }
 
 function bookingLookupUrl(email: string): string {
-  if (!isBookingLookupTokenConfigured()) {
-    return `${SITE_URL}/bookings`;
-  }
-  try {
-    const token = createBookingLookupToken(email);
-    return `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
-  } catch (err) {
-    console.error("Booking lookup token create error:", err);
-    return `${SITE_URL}/bookings`;
-  }
+  return `${SITE_URL}/bookings`;
 }
 
-export async function sendBookingLookupTokenEmail(
-  email: string,
-  token: string,
-  localeInput?: string
-): Promise<boolean> {
+export async function sendBookingLookupTokenEmail(email: string, token: string, localeInput?: string): Promise<boolean> {
   if (!resend) return false;
-
   const locale = resolveLocale(localeInput);
   const t = await getTranslations({ locale, namespace: "email" });
   const dir = emailDir(locale);
   const safeEmail = `<strong>${escapeHtml(email)}</strong>`;
   const lookupUrl = `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
-
   try {
     const { error } = await resend.emails.send({
       from,
       to: email,
       subject: t("lookup.subject"),
-      html: `
-        <div dir="${dir}">
-        <h2>${escapeHtml(t("lookup.heading"))}</h2>
-        <p>${t("lookup.requestedFor", { email: safeEmail })}</p>
-        <p>${escapeHtml(t("lookup.useLink"))}</p>
-        <p><a href="${lookupUrl}">${escapeHtml(t("lookup.viewBookings"))}</a></p>
-        <p>${escapeHtml(t("lookup.ignore"))}</p>
-        <p>Cyprus Winter</p>
-        </div>
-      `,
+      html: `<div dir="${dir}"><h2>${escapeHtml(t("lookup.heading"))}</h2><p>${t("lookup.requestedFor", { email: safeEmail })}</p><p>${escapeHtml(t("lookup.useLink"))}</p><p><a href="${lookupUrl}">${escapeHtml(t("lookup.viewBookings"))}</a></p><p>${escapeHtml(t("lookup.ignore"))}</p></div>`,
     });
-
-    if (error) {
-      console.error("Resend booking lookup email error:", error);
-      return false;
-    }
-    return true;
-  } catch (err) {
-    console.error("Booking lookup email send error:", err);
-    return false;
-  }
+    if (error) console.error("Resend lookup token error:", error);
+    return !error;
+  } catch (err) { console.error("Lookup token email error:", err); return false; }
 }
