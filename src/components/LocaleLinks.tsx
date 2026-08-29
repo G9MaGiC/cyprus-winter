@@ -37,11 +37,11 @@ export default function LocaleLinks() {
               locale={locale}
               aria-current={locale === currentLocale ? "page" : undefined}
               aria-label={label}
-              className={`text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded px-2 py-1 min-h-[44px] inline-flex items-center ${locale === currentLocale ? "text-terracotta bg-terracotta/10" : "text-muted-ink hover:text-terracotta"}`}
+              className={`text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-1 rounded px-2 py-1 min-h-[44px] inline-flex items-center ${locale === currentLocale ? "text-terracotta-muted bg-terracotta/10" : "text-muted-ink hover:text-terracotta"}`}
             >
               {name}
               {isBetaLocale(locale) ? (
-                <span className="ms-1 font-normal text-muted-ink">({t("localeBeta")})</span>
+                <span className="ms-1 font-normal">({t("localeBeta")})</span>
               ) : null}
             </AppLink>
           );

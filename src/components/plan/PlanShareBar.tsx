@@ -77,7 +77,7 @@ export default function PlanShareBar({
           aria-live="polite"
           role="status"
         >
-          <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-terracotta/10 text-terracotta font-semibold tabular-nums">
+          <span className="inline-flex items-center min-h-[24px] px-2.5 rounded-lg bg-terracotta/10 text-terracotta-muted font-semibold tabular-nums">
             {totalPlaces}
           </span>
           <span className="text-muted-ink">{tPlan("share.placesLabel")}</span>

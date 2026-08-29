@@ -6,8 +6,8 @@ import { AxeBuilder } from "@axe-core/playwright";
  *
  * Full hard gate: structural rules (aria, landmarks, labels, names, focus
  * order, forms) AND color-contrast. The AA palette landed with BUG-351
- * (terracotta #B55738, sage #5B7967, muted-ink #666B78 replacing the
- * text-olive opacity ladder); decorative aria-hidden glyphs may stay
+ * (terracotta #B55738, sage #526C5C, muted-ink #646975, golden-ink
+ * #886522 replacing the alpha-text ladders); decorative aria-hidden glyphs may stay
  * faint, but visible text must use AA tokens.
  */
 

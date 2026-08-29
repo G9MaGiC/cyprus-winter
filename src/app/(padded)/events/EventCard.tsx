@@ -8,10 +8,10 @@ import type { WinterEvent } from "@/data/events";
 
 const TYPE_COLORS: Record<string, string> = {
   festival: "bg-golden/20 text-charcoal",
-  market: "bg-terracotta/20 text-terracotta",
+  market: "bg-terracotta/20 text-terracotta-muted",
   concert: "bg-aegean/20 text-aegean",
   food: "bg-sage/20 text-olive",
-  culture: "bg-terracotta/15 text-terracotta",
+  culture: "bg-terracotta/15 text-terracotta-muted",
   sport: "bg-aegean/15 text-aegean",
 };
 

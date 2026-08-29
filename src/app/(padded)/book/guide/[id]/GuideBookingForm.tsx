@@ -138,7 +138,7 @@ export default function GuideBookingForm({
       {error && (
         <p
           ref={errorRef}
-          className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words"
+          className="p-3 rounded-lg bg-terracotta/10 text-terracotta-muted text-sm break-words"
           role="alert"
           aria-live="polite"
           tabIndex={-1}

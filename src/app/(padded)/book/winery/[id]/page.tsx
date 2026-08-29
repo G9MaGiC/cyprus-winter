@@ -94,7 +94,7 @@ export default async function WineryBookPage({
             />
           </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/20 text-terracotta">
+          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-medium bg-terracotta/10 text-terracotta-muted">
             {tCommon("wineTasting")}
           </span>
           {isPartnerVerified(winery) && (

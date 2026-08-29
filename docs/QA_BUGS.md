@@ -52,8 +52,8 @@ Open | In progress | Fixed | Won't fix
 
 ### Remediation (shipped, hue/saturation preserved)
 - terracotta **#C96F52 → #B55738** (4.79 under white, 4.52 as text on sand); terracotta-muted **#B85D42 → #9C4B30** (derived, same ΔL — 6.06 under white) so hover states stay AA
-- sage **#6B8F7A → #5B7967** (4.53 on sand, 4.80 under white)
-- new **`muted-ink` token #666B78** (5.33 on white, 5.03 on sand) replaces the `text-olive/50–/80` opacity ladder — 522 call sites migrated repo-wide, including `text-terracotta/70–/90` → solid terracotta. Decorative aria-hidden glyphs (breadcrumb `/`, disclosure chevrons) intentionally stay faint; `text-olive/85–/90` pass AA (≥5.0) and remain
+- sage **#6B8F7A → #526C5C** (4.71 on tinted panels, 5.74 under white)
+- new **`muted-ink` token #646975** (5.50 on white, 4.62 on tinted chips) replaces the `text-olive/50–/80` opacity ladder — 522 call sites migrated repo-wide, including `text-terracotta/70–/90`, `text-sage/80`, `text-aegean/80` → solid; new **`golden-ink` #886522** for golden-as-text on light surfaces (golden stays for dark); terracotta-on-tint chips (lang switcher, event/winery category chips, AI action buttons, form errors) → terracotta-muted. Verified: axe reports 0 contrast nodes on all 11 swept pages. Decorative aria-hidden glyphs (breadcrumb `/`, disclosure chevrons) intentionally stay faint; `text-olive/85–/90` pass AA (≥5.0) and remain
 - synced: `brand-colors.ts` (+`BRAND_RGB` 181, 87, 56), `globals.css` rgba ×4, `global-error.tsx`, `public/error.html`, Android manifest `theme_color`, skill doc palette table
 
 ### Fix status

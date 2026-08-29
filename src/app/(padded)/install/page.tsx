@@ -80,7 +80,7 @@ export default async function InstallPage() {
       </nav>
 
       <header className={SECTION.headingMarginLarge}>
-        <p className="text-golden text-sm font-medium tracking-[0.15em] uppercase mb-2">
+        <p className="text-golden-ink text-sm font-medium tracking-[0.15em] uppercase mb-2">
           {tInstall("header.kicker")}
         </p>
         <h1 className={`${TYPE.pageTitle} text-charcoal mt-2`}>

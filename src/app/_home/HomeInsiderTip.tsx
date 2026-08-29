@@ -31,7 +31,7 @@ export default async function HomeInsiderTip({ locale }: Props) {
       <div className={`${CALLOUT.tip} ${CARD.content}`}>
         <h2
           id="insider-tip-heading"
-          className="font-display text-sm font-semibold uppercase tracking-wider text-golden mb-2"
+          className="font-display text-sm font-semibold uppercase tracking-wider text-golden-ink mb-2"
         >
           {t("insiderTip.heading")}
         </h2>
@@ -39,7 +39,7 @@ export default async function HomeInsiderTip({ locale }: Props) {
         <p className={`text-olive/90 text-sm leading-relaxed ${SECTION.headingGap}`}>{tip.body}</p>
         <AppLink
           href={ctaHref(tip.category)}
-          className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-golden hover:bg-golden/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2"
+          className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-golden-ink hover:bg-golden/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2"
         >
           {t(`insiderTip.cta.${key}`)} <span aria-hidden>→</span>
         </AppLink>

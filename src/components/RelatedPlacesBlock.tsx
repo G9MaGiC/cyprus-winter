@@ -59,7 +59,7 @@ export default function RelatedPlacesBlock({
             {showAddToItinerary && (
               <AppLink
                 href={`/plan?add=${r.id}`}
-                className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] gap-1 px-4 py-2.5 rounded-lg text-sm font-medium text-terracotta bg-terracotta/10 hover:bg-terracotta/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] gap-1 px-4 py-2.5 rounded-lg text-sm font-medium text-terracotta-muted bg-terracotta/10 hover:bg-terracotta/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 aria-label={addToPlanAria(r.name)}
               >
                 {addToPlanLabel}

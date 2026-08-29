@@ -180,7 +180,7 @@ export default function DayContentPanel({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3 flex-wrap">
                 <span
-                  className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-xl bg-terracotta/10 text-terracotta font-semibold text-sm"
+                  className="inline-flex items-center min-h-[44px] px-3 py-2 rounded-xl bg-terracotta/10 text-terracotta-muted font-semibold text-sm"
                   aria-hidden
                 >
                   {tPlan("dayLabel", { day: activeDay })}

@@ -134,7 +134,7 @@ export default function WineryBookingForm({
         <p className="mt-1">{tForm("states.offlineQueue")}</p>
       </div>
       {error && (
-        <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>
+        <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta-muted text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>
       )}
 
       <div>

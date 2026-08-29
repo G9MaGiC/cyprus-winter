@@ -24,7 +24,7 @@ export default function PlanFooter({ hasWineries, showAccountCTA }: PlanFooterPr
         <p className="text-center mb-4">
           <Link
             href="/register"
-            className="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg text-sm font-medium text-aegean hover:text-aegean/80 border border-aegean/50 hover:border-aegean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center min-h-[44px] px-4 rounded-lg text-sm font-medium text-aegean hover:text-aegean/90 border border-aegean/50 hover:border-aegean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2"
             aria-label={tPlan("aria.savePlanCta")}
           >
             {tOnboarding("savePlan")}

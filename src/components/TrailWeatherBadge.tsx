@@ -41,7 +41,7 @@ export default function TrailWeatherBadge({ lat, lng, temperatureLabel, rainLabe
         {temperatureLabel.replace("{min}", String(weather.minC)).replace("{max}", String(weather.maxC))}
       </span>
       {weather.precipitationMm > 0 && (
-        <span className="text-aegean/80">{rainLabel}</span>
+        <span className="text-aegean">{rainLabel}</span>
       )}
       <span className="text-muted-ink text-xs">{liveLabel}</span>
     </div>

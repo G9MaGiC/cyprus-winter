@@ -34,11 +34,12 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | Primary accent (CTAs, links) | `terracotta` | #B55738 | Use `TOKENS.terracotta` for inline styles (Leaflet, etc.) |
 | Primary muted | `terracotta-muted` | #9C4B30 | Hover states |
 | Secondary (text) | `olive` | #4A5162 | Body text |
-| Muted text | `muted-ink`, `olive-muted` | #666B78, #6B7280 | Labels, captions — use `text-muted-ink` (WCAG AA); never `text-olive/50-80` opacity |
+| Muted text | `muted-ink`, `olive-muted` | #646975, #6B7280 | Labels, captions — use `text-muted-ink` (WCAG AA); never `text-olive/50-80` opacity |
 | Text, headings | `charcoal` | #252730 | Same as olive for contrast |
 | Accent (golden hour) | `golden` | #D4A853 | Nav, hero CTA |
 | Sea/water accent | `aegean` | #1A6B7C | Status open, secondary links, opt-in, navigation bars |
-| Earth accent | `sage` | #5B7967 | Trail markers, sustainable badges |
+| Earth accent | `sage` | #526C5C | Trail markers, sustainable badges |
+| Golden as text on light | `golden-ink` | #886522 | Kickers/labels on light surfaces; `golden` itself is for dark surfaces only |
 
 ### CTA hierarchy
 

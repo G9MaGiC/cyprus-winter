@@ -108,7 +108,7 @@ export default async function WineRoutePage({ params }: Props) {
 
       {route.winterTip && (
         <div className={`${CARD.base} ${CARD.content} border-s-4 border-s-golden/30 mb-8`}>
-          <p className={`${TYPE.kicker} text-golden/80 mb-1`}>{tPage("winterTipLabel")}</p>
+          <p className={`${TYPE.kicker} text-golden-ink mb-1`}>{tPage("winterTipLabel")}</p>
           <p className="text-sm text-olive/90 leading-relaxed">{route.winterTip}</p>
         </div>
       )}

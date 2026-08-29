@@ -8,11 +8,12 @@
   --terracotta-muted: #9c4b30;
   --olive: #4a5162;
   --olive-muted: #6b7280;
-  --muted-ink: #666b78;
+  --muted-ink: #646975;
   --golden: #d4a853;
+  --golden-ink: #886522;
   --charcoal: #252730;
   --aegean: #1a6b7c;
-  --sage: #5b7967;
+  --sage: #526c5c;
   --sage-muted: #8fa99a;
   /* cloud and sand share same hex — use sand for surfaces, cloud for body/background */
   --cloud: #faf8f5;
@@ -35,6 +36,7 @@
   --color-olive-muted: var(--olive-muted);
   --color-muted-ink: var(--muted-ink);
   --color-golden: var(--golden);
+  --color-golden-ink: var(--golden-ink);
   --color-charcoal: var(--charcoal);
   --color-aegean: var(--aegean);
   --color-sage: var(--sage);

@@ -90,7 +90,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
           <p className="text-sm text-muted-ink mt-1 line-clamp-1 break-words">
             {teaser}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-sage/80">
+          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-sage">
             <span>{trail.lengthKm} km</span>
             <span aria-hidden>·</span>
             <span>{tTrails("card.elevationGain", { meters: trail.elevationGainM })}</span>

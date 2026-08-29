@@ -19,7 +19,7 @@ export default function DiscoverCombosTeaser() {
       aria-labelledby="discover-combos-teaser-heading"
       className={`${CARD.base} ${CARD.contentLg} border-s-4 border-s-golden/40`}
     >
-      <span className={`${TYPE.kicker} text-golden`}>{tDiscover("kicker")}</span>
+      <span className={`${TYPE.kicker} text-golden-ink`}>{tDiscover("kicker")}</span>
       <h2 id="discover-combos-teaser-heading" className={`${TYPE.sectionTitle} text-olive mt-2 ${SECTION.titleGap}`}>
         {tDiscover("title")}
       </h2>

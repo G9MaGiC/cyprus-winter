@@ -14,7 +14,7 @@ function TypeBadge({ type }: { type: PlanItem["type"] }) {
     winery: "bg-terracotta/15 text-terracotta",
     attraction: "bg-sage/15 text-olive",
     activity: "bg-aegean/10 text-aegean",
-    event: "bg-golden/15 text-golden",
+    event: "bg-golden/15 text-golden-ink",
     restaurant: "bg-golden/15 text-charcoal",
   };
   const label: Record<PlanItem["type"], string> = {

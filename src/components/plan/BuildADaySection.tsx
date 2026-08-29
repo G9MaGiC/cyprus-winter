@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 function typeBadge(type: RelatedPlace["type"], label: string) {
   const cls: Record<RelatedPlace["type"], string> = {
     trail: "bg-sage/15 text-sage",
-    winery: "bg-golden/15 text-golden",
+    winery: "bg-golden/15 text-golden-ink",
     attraction: "bg-aegean/15 text-aegean",
     restaurant: "bg-sand-200/80 text-muted-ink",
     event: "bg-olive/10 text-olive",
@@ -52,7 +52,7 @@ export default function BuildADaySection({ hasContent, onComboClick, readOnly = 
       <header>
         <span
           id="build-a-day-kicker"
-          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden text-xs font-semibold uppercase tracking-wider"
+          className="inline-flex items-center min-h-[28px] px-2.5 rounded-lg bg-golden/15 text-golden-ink text-xs font-semibold uppercase tracking-wider"
           aria-hidden
         >
           {tPlan("curatedCombos")}

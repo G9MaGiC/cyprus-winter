@@ -11,12 +11,13 @@ export const BRAND_COLORS = {
   charcoal: "#252730",
   olive: "#4a5162",
   oliveMuted: "#6b7280",
-  mutedInk: "#666b78",
+  mutedInk: "#646975",
   terracotta: "#b55738",
   terracottaMuted: "#9c4b30",
   golden: "#d4a853",
+  goldenInk: "#886522",
   aegean: "#1a6b7c",
-  sage: "#5b7967",
+  sage: "#526c5c",
   sageMuted: "#8fa99a",
 } as const;
 
@@ -30,6 +31,7 @@ export const BRAND_CSS_VARS = {
   "olive-muted": BRAND_COLORS.oliveMuted,
   "muted-ink": BRAND_COLORS.mutedInk,
   golden: BRAND_COLORS.golden,
+  "golden-ink": BRAND_COLORS.goldenInk,
   charcoal: BRAND_COLORS.charcoal,
   aegean: BRAND_COLORS.aegean,
   sage: BRAND_COLORS.sage,
