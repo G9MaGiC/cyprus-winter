@@ -3522,5 +3522,35 @@
       "dismiss": "Not now",
       "iosHint": "Tap Share, then Add to Home Screen to save this guide."
     }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Booking request: {provider} | Cyprus Winter",
+      "heading": "Booking request received",
+      "hi": "Hi {name},",
+      "submittedTasting": "Your tasting request for {provider} has been submitted.",
+      "submittedHike": "Your guided hike request for {provider} has been submitted.",
+      "date": "Date",
+      "partySize": "Party size",
+      "status": "Status",
+      "pendingTasting": "Pending (the winery will confirm by email)",
+      "pendingHike": "Pending (the guide will confirm by email)",
+      "whatNext": "What happens next:",
+      "step1": "Your request is saved in our system.",
+      "step2Tasting": "The winery typically replies within 24–48 hours on weekdays.",
+      "step2Hike": "The guide typically replies within 24–48 hours on weekdays.",
+      "step3": "Check {link} anytime with the same email.",
+      "myBookings": "My bookings",
+      "noReplyTasting": "If you do not hear back after two business days, contact the winery directly.",
+      "noReplyHike": "If you do not hear back after two business days, contact the guide directly."
+    },
+    "lookup": {
+      "subject": "Your secure bookings lookup link | Cyprus Winter",
+      "heading": "Your secure booking lookup link",
+      "requestedFor": "We received a request to view bookings for {email}.",
+      "useLink": "Use this secure link within 15 minutes:",
+      "viewBookings": "View my bookings",
+      "ignore": "If you didn't request this, you can ignore this email."
+    }
   }
 }

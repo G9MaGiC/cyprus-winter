@@ -213,7 +213,7 @@ export default function BookingsPage() {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "request_lookup_token", email }),
+        body: JSON.stringify({ action: "request_lookup_token", email, locale }),
       });
       const data = await res.json();
       if (!isMountedRef.current) return;

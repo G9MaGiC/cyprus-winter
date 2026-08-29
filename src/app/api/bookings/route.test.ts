@@ -163,7 +163,8 @@ describe("POST /api/bookings lookup token", () => {
     expect(res.status).toBe(200);
     expect(sendBookingLookupTokenEmail).toHaveBeenCalledWith(
       "guest@example.com",
-      expect.any(String)
+      expect.any(String),
+      undefined
     );
   });
 });

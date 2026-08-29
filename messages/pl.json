@@ -3522,5 +3522,35 @@
         "trailsVc": "Szlaki przyrodnicze (Visit Cyprus)"
       }
     }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Prośba o rezerwację: {provider} | Cyprus Winter",
+      "heading": "Otrzymaliśmy prośbę o rezerwację",
+      "hi": "Cześć {name},",
+      "submittedTasting": "Twoja prośba o degustację w {provider} została przesłana.",
+      "submittedHike": "Twoja prośba o wędrówkę z przewodnikiem ({provider}) została przesłana.",
+      "date": "Data",
+      "partySize": "Liczba osób",
+      "status": "Status",
+      "pendingTasting": "Oczekuje (winnica potwierdzi e-mailem)",
+      "pendingHike": "Oczekuje (przewodnik potwierdzi e-mailem)",
+      "whatNext": "Co dalej:",
+      "step1": "Twoja prośba została zapisana w naszym systemie.",
+      "step2Tasting": "Winnica zwykle odpowiada w ciągu 24–48 godzin w dni robocze.",
+      "step2Hike": "Przewodnik zwykle odpowiada w ciągu 24–48 godzin w dni robocze.",
+      "step3": "Sprawdź {link} w dowolnym momencie, używając tego samego adresu e-mail.",
+      "myBookings": "Moje rezerwacje",
+      "noReplyTasting": "Jeśli nie otrzymasz odpowiedzi w ciągu dwóch dni roboczych, skontaktuj się bezpośrednio z winnicą.",
+      "noReplyHike": "Jeśli nie otrzymasz odpowiedzi w ciągu dwóch dni roboczych, skontaktuj się bezpośrednio z przewodnikiem."
+    },
+    "lookup": {
+      "subject": "Bezpieczny link do rezerwacji | Cyprus Winter",
+      "heading": "Twój bezpieczny link do rezerwacji",
+      "requestedFor": "Otrzymaliśmy prośbę o wyświetlenie rezerwacji dla {email}.",
+      "useLink": "Użyj tego bezpiecznego linku w ciągu 15 minut:",
+      "viewBookings": "Zobacz moje rezerwacje",
+      "ignore": "Jeśli to nie Ty wysłałeś(-aś) tę prośbę, zignoruj tę wiadomość."
+    }
   }
 }

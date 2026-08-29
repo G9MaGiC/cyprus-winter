@@ -3522,5 +3522,35 @@
         "trailsVc": "Trasee natură (Visit Cyprus)"
       }
     }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Cerere de rezervare: {provider} | Cyprus Winter",
+      "heading": "Cererea de rezervare a fost primită",
+      "hi": "Bună, {name},",
+      "submittedTasting": "Cererea ta pentru o degustare la {provider} a fost trimisă.",
+      "submittedHike": "Cererea ta pentru o drumeție cu ghid ({provider}) a fost trimisă.",
+      "date": "Data",
+      "partySize": "Număr de persoane",
+      "status": "Stare",
+      "pendingTasting": "În așteptare (crama va confirma prin e-mail)",
+      "pendingHike": "În așteptare (ghidul va confirma prin e-mail)",
+      "whatNext": "Ce urmează:",
+      "step1": "Cererea ta a fost salvată în sistemul nostru.",
+      "step2Tasting": "Crama răspunde de obicei în 24–48 de ore, în zilele lucrătoare.",
+      "step2Hike": "Ghidul răspunde de obicei în 24–48 de ore, în zilele lucrătoare.",
+      "step3": "Verifică {link} oricând, cu același e-mail.",
+      "myBookings": "Rezervările mele",
+      "noReplyTasting": "Dacă nu primești răspuns după două zile lucrătoare, contactează crama direct.",
+      "noReplyHike": "Dacă nu primești răspuns după două zile lucrătoare, contactează ghidul direct."
+    },
+    "lookup": {
+      "subject": "Linkul tău securizat pentru rezervări | Cyprus Winter",
+      "heading": "Linkul tău securizat pentru rezervări",
+      "requestedFor": "Am primit o cerere de vizualizare a rezervărilor pentru {email}.",
+      "useLink": "Folosește acest link securizat în următoarele 15 minute:",
+      "viewBookings": "Vezi rezervările mele",
+      "ignore": "Dacă nu ai făcut tu această cerere, poți ignora acest e-mail."
+    }
   }
 }

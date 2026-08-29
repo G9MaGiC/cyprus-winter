@@ -3522,5 +3522,35 @@
         "trailsVc": "Naturwege (Visit Cyprus)"
       }
     }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Buchungsanfrage: {provider} | Cyprus Winter",
+      "heading": "Buchungsanfrage erhalten",
+      "hi": "Hallo {name},",
+      "submittedTasting": "Ihre Anfrage für eine Verkostung bei {provider} wurde übermittelt.",
+      "submittedHike": "Ihre Anfrage für eine geführte Wanderung mit {provider} wurde übermittelt.",
+      "date": "Datum",
+      "partySize": "Personen",
+      "status": "Status",
+      "pendingTasting": "Ausstehend (das Weingut bestätigt per E-Mail)",
+      "pendingHike": "Ausstehend (der Guide bestätigt per E-Mail)",
+      "whatNext": "So geht es weiter:",
+      "step1": "Ihre Anfrage ist in unserem System gespeichert.",
+      "step2Tasting": "Das Weingut antwortet werktags in der Regel innerhalb von 24–48 Stunden.",
+      "step2Hike": "Der Guide antwortet werktags in der Regel innerhalb von 24–48 Stunden.",
+      "step3": "Unter {link} können Sie den Status jederzeit mit derselben E-Mail-Adresse einsehen.",
+      "myBookings": "Meine Buchungen",
+      "noReplyTasting": "Wenn Sie nach zwei Werktagen keine Antwort erhalten, kontaktieren Sie das Weingut bitte direkt.",
+      "noReplyHike": "Wenn Sie nach zwei Werktagen keine Antwort erhalten, kontaktieren Sie den Guide bitte direkt."
+    },
+    "lookup": {
+      "subject": "Ihr sicherer Buchungslink | Cyprus Winter",
+      "heading": "Ihr sicherer Buchungslink",
+      "requestedFor": "Wir haben eine Anfrage erhalten, die Buchungen für {email} anzuzeigen.",
+      "useLink": "Nutzen Sie diesen sicheren Link innerhalb von 15 Minuten:",
+      "viewBookings": "Meine Buchungen anzeigen",
+      "ignore": "Falls Sie das nicht angefordert haben, können Sie diese E-Mail ignorieren."
+    }
   }
 }

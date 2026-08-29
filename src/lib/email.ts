@@ -2,12 +2,24 @@
  * Booking confirmation emails via Resend. Optional: skip if RESEND_API_KEY not set.
  */
 import { Resend } from "resend";
+import { getTranslations } from "next-intl/server";
 import type { Booking } from "./bookings";
 import { createBookingLookupToken, isBookingLookupTokenConfigured } from "./booking-lookup-token";
 import { SITE_URL } from "./site-url";
+import { routing, type Locale } from "@/i18n/routing";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const from = process.env.RESEND_FROM_EMAIL ?? "Cyprus Winter <bookings@cyprus-winter.app>";
+
+function resolveLocale(locale?: string): Locale {
+  return locale && (routing.locales as readonly string[]).includes(locale)
+    ? (locale as Locale)
+    : routing.defaultLocale;
+}
+
+function emailDir(locale: Locale): "rtl" | "ltr" {
+  return locale === "he" ? "rtl" : "ltr";
+}
 
 function escapeHtml(s: string): string {
   return s
@@ -18,41 +30,46 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-export async function sendBookingConfirmation(booking: Booking): Promise<boolean> {
+/** Guest confirmation, localized to the guest's UI locale (partner mail stays English). */
+export async function sendBookingConfirmation(booking: Booking, localeInput?: string): Promise<boolean> {
   if (!resend) return false;
 
-  const guestName = escapeHtml(booking.guestName);
-  const providerName = escapeHtml(booking.providerName);
+  const locale = resolveLocale(localeInput);
+  const t = await getTranslations({ locale, namespace: "email" });
+  const dir = emailDir(locale);
+
+  const providerHtml = `<strong>${escapeHtml(booking.providerName)}</strong>`;
   const date = escapeHtml(booking.date);
   const partySize = String(booking.partySize);
-
   const isGuide = booking.type === "guide_tour";
-  const entityLabel = isGuide ? "guided hike" : "tasting";
-  const confirmBy = isGuide ? "the guide" : "the winery";
+  const variant = isGuide ? "Hike" : "Tasting";
   const bookingsHref = bookingLookupUrl(booking.guestEmail);
+  const link = `<a href="${bookingsHref}">${escapeHtml(t("confirmation.myBookings"))}</a>`;
 
   try {
     const { error } = await resend.emails.send({
       from,
       to: booking.guestEmail,
-      subject: `Booking request: ${providerName} | Cyprus Winter`,
+      subject: t("confirmation.subject", { provider: booking.providerName }),
       html: `
-        <h2>Booking request received</h2>
-        <p>Hi ${guestName},</p>
-        <p>Your ${entityLabel} request for <strong>${providerName}</strong> has been submitted.</p>
+        <div dir="${dir}">
+        <h2>${escapeHtml(t("confirmation.heading"))}</h2>
+        <p>${escapeHtml(t("confirmation.hi", { name: booking.guestName }))}</p>
+        <p>${t(`confirmation.submitted${variant}`, { provider: providerHtml })}</p>
         <ul>
-          <li><strong>Date:</strong> ${date}</li>
-          <li><strong>Party size:</strong> ${partySize}</li>
-          <li><strong>Status:</strong> Pending (${confirmBy} will confirm by email)</li>
+          <li><strong>${escapeHtml(t("confirmation.date"))}:</strong> ${date}</li>
+          <li><strong>${escapeHtml(t("confirmation.partySize"))}:</strong> ${partySize}</li>
+          <li><strong>${escapeHtml(t("confirmation.status"))}:</strong> ${escapeHtml(t(`confirmation.pending${variant}`))}</li>
         </ul>
-        <p><strong>What happens next:</strong></p>
+        <p><strong>${escapeHtml(t("confirmation.whatNext"))}</strong></p>
         <ol>
-          <li>Your request is saved in our system.</li>
-          <li>${confirmBy} typically replies within <strong>24–48 hours</strong> on weekdays.</li>
-          <li>Check <a href="${bookingsHref}">My Bookings</a> anytime with the same email.</li>
+          <li>${escapeHtml(t("confirmation.step1"))}</li>
+          <li>${escapeHtml(t(`confirmation.step2${variant}`))}</li>
+          <li>${t("confirmation.step3", { link })}</li>
         </ol>
-        <p>If you do not hear back after two business days, contact ${confirmBy} directly.</p>
+        <p>${escapeHtml(t(`confirmation.noReply${variant}`))}</p>
         <p>Cyprus Winter</p>
+        </div>
       `,
     });
     if (error) {
@@ -178,25 +195,31 @@ function bookingLookupUrl(email: string): string {
 
 export async function sendBookingLookupTokenEmail(
   email: string,
-  token: string
+  token: string,
+  localeInput?: string
 ): Promise<boolean> {
   if (!resend) return false;
 
-  const safeEmail = escapeHtml(email);
+  const locale = resolveLocale(localeInput);
+  const t = await getTranslations({ locale, namespace: "email" });
+  const dir = emailDir(locale);
+  const safeEmail = `<strong>${escapeHtml(email)}</strong>`;
   const lookupUrl = `${SITE_URL}/bookings?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
 
   try {
     const { error } = await resend.emails.send({
       from,
       to: email,
-      subject: "Your secure bookings lookup link | Cyprus Winter",
+      subject: t("lookup.subject"),
       html: `
-        <h2>Your secure booking lookup link</h2>
-        <p>We received a request to view bookings for <strong>${safeEmail}</strong>.</p>
-        <p>Use this secure link within 15 minutes:</p>
-        <p><a href="${lookupUrl}">View my bookings</a></p>
-        <p>If you didn't request this, you can ignore this email.</p>
+        <div dir="${dir}">
+        <h2>${escapeHtml(t("lookup.heading"))}</h2>
+        <p>${t("lookup.requestedFor", { email: safeEmail })}</p>
+        <p>${escapeHtml(t("lookup.useLink"))}</p>
+        <p><a href="${lookupUrl}">${escapeHtml(t("lookup.viewBookings"))}</a></p>
+        <p>${escapeHtml(t("lookup.ignore"))}</p>
         <p>Cyprus Winter</p>
+        </div>
       `,
     });
 
