@@ -11,7 +11,6 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import AppLink from "@/components/AppLink";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { getLocale, getTranslations } from "next-intl/server";
-import { preload } from "react-dom";
 
 const AIRPORT_HERO_IMAGE = "/images/cyprus/cyprus-airport-coast.jpg";
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-airport-coast.jpg`;
@@ -42,7 +41,6 @@ const CITY_GREEK: Record<string, string> = {
 };
 
 export default async function AirportPage() {
-  preload(AIRPORT_HERO_IMAGE, { as: "image" });
   const [tNav, tAirport] = await Promise.all([
     getTranslations("nav"),
     getTranslations("airport.page"),

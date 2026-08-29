@@ -73,7 +73,7 @@ Scores are **relative** for prioritization debates, not precise forecasts.
 | P3-01 | **Hebrew critical paths** (book, plan, discover) | IL-01 | 5 | 7 | 0.6 | 4 | **5.3** | Partial (`he` + RTL; nav/plan/discover/book critical strings) |
 | P3-02 | **Romanian locale** (or EN first-visit path) | RO-01 | 3 | 6 | 0.5 | 4 | **2.3** | Partial (`ro` + critical-path copy) |
 | P3-03 | **French locale** | FR-01 | 2 | 5 | 0.5 | 4 | **1.3** | Partial (`fr` + critical-path copy) |
-| P3-04 | **LCP budget / hero image strategy** | PERF-01 | 9 | 5 | 0.8 | 2 | **18.0** | Partial (preload on discover/trails/plan/events/airport + fetchPriority) |
+| P3-04 | **LCP budget / hero image strategy** | PERF-01 | 9 | 5 | 0.8 | 2 | **18.0** | Done (baseline in `docs/PERF_BASELINE_2026-08.md`; raw-preload double-download removed — ~6.7MB/first-view across 5 pages; next lever: `/discover` 2MB RSC payload) |
 | P3-05 | **Offline read-only plan** | PERF-01 | 4 | 6 | 0.5 | 4 | **3.0** | Partial (offline banner + read-only edits; no SW cache) |
 | P3-06 | **WCAG 2.2 AA audit** (discover, plan, book) | A11Y-01 | 8 | 7 | 0.9 | 3 | **16.8** | Done (BUG-351 fixed): structure clean on 11 pages; AA palette shipped (terracotta #B55738, sage #526C5C, muted-ink #646975, golden-ink #886522); `npm run test:a11y` hard-gates structure + contrast |
 

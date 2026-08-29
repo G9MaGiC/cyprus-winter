@@ -6,7 +6,6 @@ import { SITE_URL } from "@/lib/site-url";
 import { getTrailsItemListSchema } from "@/lib/trails-schema";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { getTranslations } from "next-intl/server";
-import { preload } from "react-dom";
 
 const TRAILS_HERO_IMAGE = "/images/cyprus/trails/trail-artemis.jpg";
 
@@ -46,7 +45,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function TrailsPage() {
-  preload(TRAILS_HERO_IMAGE, { as: "image" });
   const reportsByTrail = await getLatestReportMap();
   return (
     <>
