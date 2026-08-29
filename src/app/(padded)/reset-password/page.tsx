@@ -170,7 +170,7 @@ export default function ResetPasswordPage() {
                   required
                   minLength={6}
                   autoComplete="new-password"
-                  className={`${inputBase} pr-12`}
+                  className={`${inputBase} pe-12`}
                   placeholder={tAuth("reset.passwordPlaceholder")}
                   disabled={loading}
                   aria-describedby="reset-password-hint"
@@ -178,7 +178,7 @@ export default function ResetPasswordPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
+                  className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
                   aria-label={showPassword ? tAuth("reset.ariaHidePassword") : tAuth("reset.ariaShowPassword")}
                 >
                   {showPassword ? (

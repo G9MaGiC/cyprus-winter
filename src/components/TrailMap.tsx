@@ -117,7 +117,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
         </div>
       )}
       {interactive && (
-        <div className="absolute top-3 right-3 z-[5]">
+        <div className="absolute top-3 end-3 z-[5]">
           <button
             type="button"
             onClick={() => setInteractive(false)}
@@ -169,7 +169,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                   rel="noopener noreferrer"
                   className={SECTION.mapDirectionsLink}
                 >
-                    {tCommon("map.getDirections")} →
+                    {tCommon("map.getDirections")} <span aria-hidden>→</span>
                 </a>
               </div>
             </Popup>
@@ -196,7 +196,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
                     rel="noopener noreferrer"
                     className={SECTION.mapDirectionsLink}
                   >
-                    {tCommon("map.getDirections")} →
+                    {tCommon("map.getDirections")} <span aria-hidden>→</span>
                   </a>
                 </div>
               </Popup>
@@ -236,7 +236,7 @@ export default function TrailMap({ trail, className = "" }: TrailMapProps) {
           rel="noopener noreferrer"
           className={SECTION.mapDirectionsLink}
         >
-          {tCommon("map.openInMaps")} →
+          {tCommon("map.openInMaps")} <span aria-hidden>→</span>
         </a>
       </div>
     </div>

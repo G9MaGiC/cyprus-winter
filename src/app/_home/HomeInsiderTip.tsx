@@ -41,7 +41,7 @@ export default async function HomeInsiderTip({ locale }: Props) {
           href={ctaHref(tip.category)}
           className="inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium text-golden hover:bg-golden/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2"
         >
-          {t(`insiderTip.cta.${key}`)} →
+          {t(`insiderTip.cta.${key}`)} <span aria-hidden>→</span>
         </AppLink>
       </div>
     </section>

@@ -104,7 +104,7 @@ export default function QuickStartSection({
         type="button"
         onClick={() => onTemplateClick(template.key)}
         disabled={readOnly}
-        className={`text-left w-full min-h-[96px] sm:min-h-[104px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 ${
+        className={`text-start w-full min-h-[96px] sm:min-h-[104px] ${CARD.planTemplate} ${CARD.interactive} p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background group disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 ${
           isForYou ? "border-l-4 border-l-terracotta bg-terracotta/[0.04]" : ""
         } ${isRecommended && !isForYou ? "border-l-4 border-l-aegean bg-aegean/[0.04]" : ""}`}
         aria-label={tPlanQuick("templateCardAria", {

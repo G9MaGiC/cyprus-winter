@@ -115,7 +115,7 @@ export default function DaySelector({
                   key={d}
                   type="button"
                   onClick={() => setActiveDay(d)}
-                  className={`w-full min-h-[44px] text-left px-4 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  className={`w-full min-h-[44px] text-start px-4 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     isActive ? "bg-terracotta/10 text-terracotta font-medium" : "bg-sand-100/60 text-olive/80 hover:bg-sand-200/60"
                   }`}
                 >

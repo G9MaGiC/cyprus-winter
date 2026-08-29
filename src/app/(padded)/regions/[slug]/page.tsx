@@ -173,7 +173,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/guides/troodos-december"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  {tPage("sections.troodosDecember")} →
+                  {tPage("sections.troodosDecember")} <span aria-hidden>→</span>
                 </AppLink>
               </p>
             )}
@@ -247,7 +247,7 @@ export default async function RegionPage({ params }: Props) {
                   href="/wineries"
                   className={`text-sm font-medium ${SECTION.aegeanLink}`}
                 >
-                  {tPage("sections.allWineries")} →
+                  {tPage("sections.allWineries")} <span aria-hidden>→</span>
                 </AppLink>
               </p>
             )}

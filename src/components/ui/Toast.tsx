@@ -111,7 +111,7 @@ export function ToastContainer({ toasts, onRemove }: ToastProps) {
 
   return (
     <div
-      className={`fixed right-4 top-4 ${LAYER.toast} flex flex-col gap-2 items-end`}
+      className={`fixed end-4 top-4 ${LAYER.toast} flex flex-col gap-2 items-end`}
       role="region"
       aria-label={tCommon("aria.notifications")}
     >

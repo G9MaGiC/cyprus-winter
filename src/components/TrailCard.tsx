@@ -61,7 +61,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}
           />
           <div className={CARD.mediaOverlay} aria-hidden />
-          <div className="absolute top-3 left-3 flex flex-wrap items-center gap-2">
+          <div className="absolute top-3 start-3 flex flex-wrap items-center gap-2">
             {resolved ? (
               <StatusBadge status={resolved.status} />
             ) : (
@@ -72,11 +72,11 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             <DifficultyBadge difficulty={trail.difficulty} />
           </div>
           {resolved?.temperatureC != null && (
-            <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 text-charcoal text-xs font-medium backdrop-blur-sm">
+            <div className="absolute top-3 end-3 px-2.5 py-1 rounded-lg bg-white/90 text-charcoal text-xs font-medium backdrop-blur-sm">
               {tTrails("card.temperature", { value: resolved.temperatureC })}
             </div>
           )}
-          <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm drop-shadow-md truncate block">
+          <span className="absolute bottom-3 start-3 end-3 text-white font-medium text-sm drop-shadow-md truncate block">
             {trail.region}
           </span>
         </div>
