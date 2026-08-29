@@ -857,7 +857,9 @@
         "family": "Rodzinne",
         "accessible": "Dostępne i spokojne",
         "hidden": "Ukryte perełki",
-        "local": "Lokalna zima"
+        "local": "Lokalna zima",
+        "showAll": "Pokaż wszystkie {count} miejsc",
+        "showAllAria": "Pokaż wszystkie {count} miejsc w sekcji {section}"
       },
       "filters": {
         "all": "Wszystko",

@@ -11,10 +11,17 @@ import { useTranslations } from "next-intl";
 
 type DiscoverSectionListProps = {
   sections: DiscoverSection[];
+  /**
+   * Render at most this many cards per section (multi-section overview).
+   * The full section stays one tap away at /discover?filter=<id>, which the
+   * server renders complete — capping cuts the overview page's HTML and
+   * hydration cost ~5x (237 cards -> ~54; see docs/PERF_BASELINE_2026-08.md).
+   */
+  capPerSection?: number;
 };
 
 const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListProps>(
-  function DiscoverSectionList({ sections }, ref) {
+  function DiscoverSectionList({ sections, capPerSection }, ref) {
     const tCommon = useTranslations("common");
     const tDiscover = useTranslations("discover");
     const [shouldAnimate, setShouldAnimate] = useState(true);
@@ -29,6 +36,11 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
           const sectionTitle = isActivityFilterKey(section.id)
             ? tDiscover(`page.filters.${section.id}`)
             : tDiscover(`page.sections.${section.id}`);
+          const visibleItems =
+            capPerSection && section.items.length > capPerSection
+              ? section.items.slice(0, capPerSection)
+              : section.items;
+          const hiddenCount = section.items.length - visibleItems.length;
 
           return (
           <section
@@ -72,10 +84,24 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
             ) : (
               <>
               <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-                {section.items.map((item) => (
+                {visibleItems.map((item) => (
                   <AttractionCard key={item.id} a={item} />
                 ))}
               </div>
+              {hiddenCount > 0 ? (
+                <div className="mt-6">
+                  <AppLink
+                    href={`/discover?filter=${section.id}`}
+                    className={CTA.secondaryCompact}
+                    aria-label={tDiscover("page.sections.showAllAria", {
+                      count: section.items.length,
+                      section: sectionTitle,
+                    })}
+                  >
+                    {tDiscover("page.sections.showAll", { count: section.items.length })}
+                  </AppLink>
+                </div>
+              ) : null}
               {section.trailLinks && section.trailLinks.length > 0 ? (
                 <div className={`mt-8 sm:mt-10 ${SECTION.headingGap}`}>
                   <h3 className={`${TYPE.cardTitle} text-charcoal mb-4`}>
