@@ -360,7 +360,9 @@ We do *not* target: summer beach-only travelers, party seekers, or ultra-budget 
 
 ## 8. ICP-to-Flow Alignment & UX Gaps
 
-*Review by Lena Müller, Senior UX Designer | March 2026*
+*Internal UX review | March 2026 — see the status update below for what has shipped since.*
+
+> **Status update (29 Aug 2026, verified against `main` @ PR #199):** most gaps in §8.2–§8.4 have shipped and this section is kept as historical context. Now in the product: **14-day plan** (was 5) with `classic-7`/`mountain-10` templates; **guide booking** (`/book/guide`, Troodos + Paphos forest guides incl. small-group hikes); **AI → plan actions** (`save_to_plan`, `build_day_plan`); **family and workation templates**; **family / accessible / cycling filters** and the `?filter=local` lane; day combos as first-class UI; drive-time + daylight hints; ICS export; winery price hints and click-to-call; share previews with story-grade OG. Still open: cultural/archaeological tour booking (supply), group-hike matching, Nadia's coworking/long-stay content, "Cyprus Wrapped".
 
 This section maps each ICP to the discovery → plan → book flows, key touchpoints (AI chat, booking form, plan builder), and friction points. It identifies which ICPs are best served by the current UX and where gaps exist.
 
