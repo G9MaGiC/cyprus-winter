@@ -4,36 +4,38 @@ One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK
 
 **Last updated:** 2026-08-29 · **Target:** PR #196 on top of `main` after PRs #191, #192, and #195
 
-**Production access (live check):** the current Vercel production aliases redirect to Vercel SSO and send `x-robots-tag: noindex`. Public health cannot be verified until deployment protection is disabled. The last recorded app health also reported `productionReady: false` because Upstash and Supabase were missing.
+**Production access (live check):** `https://cyprus-winter-three.vercel.app` returns HTTP 200 without authentication or `noindex`, and Next.js image optimization is active. `/api/health` returns HTTP 503 with `productionReady: false` because required Upstash and Supabase services are still unavailable. No custom domain is attached to Vercel, while production metadata currently points to `https://cypruswinter.com`.
 
 **Quick gate:** `npm run health:production` (exit 0 only when live `productionReady: true`).
 
 ---
 
-## 0. Public deployment access (P0 - block launch if protected)
+## 0. Public domain and canonical URL (P0 - block launch until aligned)
 
 Live Vercel audit on 2026-08-29:
 
 - latest `main` deployment is `READY`
-- production aliases return HTTP 302 to `vercel.com/sso-api`
-- the protection response sends `x-robots-tag: noindex`
-- no custom domain is attached to the project
+- `https://cyprus-winter-three.vercel.app/` returns HTTP 200 to an unauthenticated visitor
+- the production response does not send `x-robots-tag: noindex`
+- generated image URLs use `/_next/image`, confirming image optimization is active
+- `/api/health` returns HTTP 503 with `productionReady: false`
+- Vercel has no custom domain attached, but canonical, alternate, schema, Open Graph, and Twitter metadata point to `https://cypruswinter.com`
 - Vercel reported no runtime error clusters in the previous 7 days
 
 Before public traffic:
 
-1. In **Vercel -> Project -> Settings -> Deployment Protection**, disable protection for Production or add a production exception.
-2. Attach the intended custom domain, or explicitly approve one current `.vercel.app` alias as the launch URL.
-3. Set `NEXT_PUBLIC_SITE_URL` to that final public origin and redeploy.
-4. Verify the public origin does not redirect to Vercel SSO:
+1. Attach `cypruswinter.com` to the Vercel project and verify DNS, or explicitly approve a `.vercel.app` alias and set `NEXT_PUBLIC_SITE_URL` to that final origin.
+2. Redeploy after the domain or environment change.
+3. Verify the public response and metadata:
 
    ```bash
    curl -sSI "https://<your-public-domain>/" | sed -n '1,12p'
+   curl -s "https://<your-public-domain>/" | grep -Eo '<link rel="canonical"[^>]+>'
    ```
 
-5. Confirm there is no `x-robots-tag: noindex` response header, then run the health checks in section 1.
+4. Confirm the canonical URL matches the public origin, there is no `noindex` header, and the health checks in section 1 pass.
 
-**Pass criteria:** an unauthenticated visitor reaches the app, search crawlers are not forced to `noindex`, and the final domain is attached to the production deployment.
+**Pass criteria:** the final public domain reaches the production deployment, all canonical and social metadata use that domain, and unauthenticated visitors receive the app.
 
 ---
 
