@@ -3012,7 +3012,7 @@
         "description": "Décembre au Troodos : air vif, sentiers calmes, souvent dégagés avant les premières neiges. Artemis est la boucle plus douce autour de Chionistra quand les crêtes gardent la neige ; Atalante est une randonnée d'une journée de 14 km — partez tôt quand c'est sans glace. Caledonia Falls débite fort après la pluie."
       },
       "intro": {
-        "body": "Décembre est la période idéale : la saison de ski n'a pas vraiment commencé, les sentiers sont en général dégagés et les villages tranquilles. Empilez les couches — la température peut descendre à 2°C en altitude. Consultez {trailConditionsLink} avant de partir ; après un épisode de froid, les sentiers en hauteur peuvent être verglacés.",
+        "body": "Décembre est la période idéale : la saison de ski n'a pas vraiment commencé, les sentiers sont en général dégagés et les villages tranquilles. Empilez les couches — la température peut descendre à 2°C en altitude. Consultez <trailConditionsLink>l'état des sentiers</trailConditionsLink> avant de partir ; après un épisode de froid, les sentiers en hauteur peuvent être verglacés.",
         "trailConditionsLink": "les conditions des sentiers"
       },
       "sections": {
