@@ -37,6 +37,20 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-352] Boot-time "window is not defined" digest in production server log (cosmetic)
+
+**Severity:** Low
+**Area:** Build / observability
+**Page/Component:** server boot (module evaluation), no route affected
+
+### Reproduction
+`npm run build && next start` — exactly one `ReferenceError: window is not defined` with an RSC digest logs at startup (before any request). All routes render clean: route-smoke (40 routes) and the 31-page a11y sweep payloads carry no error digest. Digest hash changes across builds (e.g. 626903554, 3710247840), consistent with a chunk-hash-derived id — likely a module (Sentry/instrumentation neighborhood) touching `window` at import time during boot preload.
+
+### Fix status
+Open (cosmetic) — log noise only; no user-facing impact. Root-cause when touching instrumentation config.
+
+---
+
 ### [BUG-351] WCAG 2.2 AA: color-contrast fails trace to three brand-token roots
 
 **Severity:** Medium
