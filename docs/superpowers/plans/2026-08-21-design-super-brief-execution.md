@@ -4,31 +4,33 @@ overview: 'Turn the design super brief into a phased GitHub branch train: docume
 todos:
   - id: phase-0-docs
     content: 'Branch cursor/design-docs-motion-043e — DESIGN_SUPER_BRIEF.md, MOTION.md, UX_PATTERNS motion section, PHOTOGRAPHY_GUIDELINES.md'
-    status: pending
+    status: completed
   - id: pr-home-reveal
     content: 'Branch cursor/home-section-reveal-043e — HomeSectionReveal client wrapper, first 3 sections, guard test'
-    status: pending
+    status: completed
   - id: pr-ai-pulse
     content: Branch cursor/ai-trigger-pulse-043e — wire ai-chat-trigger-pulse with localStorage first-visit gate
-    status: pending
+    status: completed
   - id: pr-skeleton-parity
     content: 'Branch cursor/skeleton-parity-043e — structured loading for discover detail, bookings, search'
-    status: pending
+    status: completed
   - id: pr-share-feedback
     content: Branch cursor/plan-share-feedback-043e — calm visual confirmation on PlanShareBar copy actions
-    status: pending
+    status: completed
   - id: pr-state-aware-home
     content: Branch cursor/home-state-aware-043e — conditional home sections based on plan/trip state
-    status: pending
+    status: completed
   - id: pr-i18n-stress
     content: Branch cursor/i18n-layout-stress-043e — DE/PL/HE overflow fixes + locale E2E
-    status: pending
+    status: completed
   - id: pr-pwa-install
     content: Branch cursor/pwa-install-ux-043e — consumer install prompt with onboarding-style motion (optional Tier 3)
-    status: pending
+    status: completed
 isProject: false
 ---
 # Design Super Brief — Implementation Plan
+
+> **Status (29 Aug 2026):** all eight todos verified shipped on `main` — docs trio, `HomeSectionReveal`, AI trigger pulse (`AI_PULSE_SEEN_KEY`), skeleton parity (`discover/[id]`, `bookings`, `search` loading states), PlanShareBar copy feedback, state-aware home, 390px locale stress E2E, `InstallPromptBanner`. Kept for reference.
 
 ## Goal
 
