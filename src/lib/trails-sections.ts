@@ -51,7 +51,7 @@ const sectionDefs: TrailSectionDef[] = [
   },
   {
     id: "peak-views",
-    trailIds: ["olympus-summit", "madari-ridge", "stavrovouni"],
+    trailIds: ["olympus-summit", "madari-ridge", "stavrovouni-trail"],
   },
   {
     id: "full-day",

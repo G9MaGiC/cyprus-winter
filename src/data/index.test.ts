@@ -39,6 +39,16 @@ describe("getPlaceById", () => {
     expect(p).toBeDefined();
     expect(p?.type).toBe("activity");
   });
+
+  it("keeps Stavrovouni monastery and nature trail as distinct plan items", () => {
+    const monastery = getPlaceById("stavrovouni");
+    const trail = getPlaceById("stavrovouni-trail");
+    expect(monastery?.type).toBe("attraction");
+    expect(monastery?.name).toContain("Monastery");
+    expect(trail?.type).toBe("trail");
+    expect(trail?.id).toBe("stavrovouni-trail");
+    expect(trail?.name).toContain("Nature Trail");
+  });
 });
 
 describe("getAttractionById", () => {
