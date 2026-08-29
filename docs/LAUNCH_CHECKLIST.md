@@ -2,15 +2,42 @@
 
 One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK.md` §6 and `docs/SCORECARD.md`.
 
-**Last updated:** 2026-08-28 · **Target commit:** `0a3c581` (main — tier-1 i18n complete through PR #189)
+**Last updated:** 2026-08-29 · **Target:** PR #196 on top of `main` after PRs #191, #192, and #195
 
-**Production health (live check):** `https://cyprus-winter.vercel.app/api/health` → `productionReady: false` (Upstash + Supabase env still missing on Vercel — see §1).
+**Production access (live check):** the current Vercel production aliases redirect to Vercel SSO and send `x-robots-tag: noindex`. Public health cannot be verified until deployment protection is disabled. The last recorded app health also reported `productionReady: false` because Upstash and Supabase were missing.
 
 **Quick gate:** `npm run health:production` (exit 0 only when live `productionReady: true`).
 
 ---
 
-## 1. Production environment (P0 — block launch if missing)
+## 0. Public deployment access (P0 - block launch if protected)
+
+Live Vercel audit on 2026-08-29:
+
+- latest `main` deployment is `READY`
+- production aliases return HTTP 302 to `vercel.com/sso-api`
+- the protection response sends `x-robots-tag: noindex`
+- no custom domain is attached to the project
+- Vercel reported no runtime error clusters in the previous 7 days
+
+Before public traffic:
+
+1. In **Vercel -> Project -> Settings -> Deployment Protection**, disable protection for Production or add a production exception.
+2. Attach the intended custom domain, or explicitly approve one current `.vercel.app` alias as the launch URL.
+3. Set `NEXT_PUBLIC_SITE_URL` to that final public origin and redeploy.
+4. Verify the public origin does not redirect to Vercel SSO:
+
+   ```bash
+   curl -sSI "https://<your-public-domain>/" | sed -n '1,12p'
+   ```
+
+5. Confirm there is no `x-robots-tag: noindex` response header, then run the health checks in section 1.
+
+**Pass criteria:** an unauthenticated visitor reaches the app, search crawlers are not forced to `noindex`, and the final domain is attached to the production deployment.
+
+---
+
+## 1. Production environment (P0 - block launch if missing)
 
 Set in **Vercel → Project → Settings → Environment Variables → Production**:
 
@@ -49,7 +76,7 @@ Set in **Vercel → Project → Settings → Environment Variables → Productio
    ```bash
    npm run health:production
    # or:
-   curl -s "https://cyprus-winter.vercel.app/api/health" | jq '{ ok, productionReady }'
+   curl -s "https://<your-public-domain>/api/health" | jq '{ ok, productionReady }'
    ```
 
 6. **Optional but recommended:** add `HEALTH_SECRET` (random 32+ chars) for authorized diagnostics; `RESEND_API_KEY` + `RESEND_FROM_EMAIL` for booking emails; one AI key (`GROQ_API_KEY` or `AI_GATEWAY_API_KEY`).
@@ -87,7 +114,7 @@ Example authorized payload while Upstash is still missing (do **not** paste a fa
 
 ---
 
-## 2. Engineering gate (P0 — already green on `main`)
+## 2. Engineering gate (P0 - green in release PRs; rerun on final head)
 
 Run locally or trust latest CI ([GitHub Actions](https://github.com/G9MaGiC/cyprus-winter/actions)):
 
@@ -101,9 +128,9 @@ npm run test:e2e:gate:ci   # core funnel + UX + visual QA (375/768/RTL); needs: 
 
 | Check | Expected (August 2026) |
 |-------|---------------------|
-| Unit tests | 729 pass |
-| i18n keys | 2273 × 7 locales |
-| CI on `main` | Quality, Build, Core Funnel Gate, E2E Full, Dependency Security — green on `99d934d` (PR #176) |
+| Unit tests | Coverage suite passes; do not rely on a stale hardcoded count |
+| i18n | Validation, coverage, hardcoded scan, and editorial drift pass for all 7 locales |
+| Release CI | PR #192 run #565 and PR #195 run #568 passed all six jobs; PR #196 must also be green before launch |
 
 ---
 
@@ -153,7 +180,7 @@ Test viewports: **390×844** (mobile), **1280** (desktop).
 - [x] Design sprint A–F (tokens, home calm, chrome, visual QA gate, photography trust) — PRs #150–#155
 - [x] Main + secondary hub visual token pass — PRs #157–#159 (`HOME`/`HUB` grids, book card media, docs hygiene)
 - [ ] Partner winery image intake (verified partners first) — `docs/WINERY_IMAGE_INTAKE.md`
-- [ ] Confirm `productionReady` on public domain (not just preview) — **blocked on §1 env vars**
+- [ ] Confirm `productionReady` on public domain (not just preview) - **blocked on sections 0 and 1**
 - [ ] Update `docs/SCORECARD.md` after each release train
 - [x] Admin HttpOnly session (DR-003) — `/admin/stats` uses `POST /api/admin/session`; secret is not stored in `sessionStorage`
 - [x] GitHub Actions Node 20 → 24 action runtime (PR #70: checkout/setup-node/upload-artifact @v7)
