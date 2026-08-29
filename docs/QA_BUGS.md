@@ -37,6 +37,27 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-343] Dev server / page refreshes every few seconds
+
+**Severity:** High
+**Area:** Performance | Functional
+**Page/Component:** `next dev`, Sentry init, SerwistProvider, `/manifests/[locale]`, `public/sw.js`
+
+### Reproduction
+1. Run `npm run dev` and open any page
+2. Leave the tab open for ~30–60s
+
+### Expected
+Stable page; HMR only on real file edits.
+
+### Actual
+Sentry `debug: true` + `tracesSampleRate: 1` flooded the Node process until OOM restart; service worker registered in development fought HMR; locale proxy rewrote `/manifests/en` → 404 and broke SW precache.
+
+### Fix status
+Fixed — disable Sentry debug by default (opt-in `SENTRY_DEBUG=1`), zero dev traces; unregister SW in development; skip locale rewrite for `/manifests/*`; SW no longer caches `/_next/` / `/sw.js`.
+
+---
+
 ### [BUG-i18n-PLAN-URL] Plan `?add=` drops locale on `[locale]/plan`
 
 **Severity:** High  

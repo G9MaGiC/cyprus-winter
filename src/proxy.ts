@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "@/i18n/routing";
+import { shouldSkipLocaleProxy } from "@/lib/locale-proxy-skip";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
 // Chain next-intl (locale routing) with security headers
 export default function proxy(request: NextRequest): NextResponse {
-  const response = intlMiddleware(request);
+  // PWA manifests live at /manifests/[locale]. Locale middleware otherwise
+  // rewrites /manifests/en → /en/manifests/en (404), breaking install + SW precache.
+  const pathname = request.nextUrl?.pathname ?? "";
+  const response = shouldSkipLocaleProxy(pathname)
+    ? NextResponse.next()
+    : intlMiddleware(request);
 
   const isDev = process.env.NODE_ENV === "development";
   const scriptSrc = isDev
