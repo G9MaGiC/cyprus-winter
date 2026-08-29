@@ -13,18 +13,40 @@ import { AxeBuilder } from "@axe-core/playwright";
 
 const CONTRAST_IS_FATAL = true;
 
+// One page per route archetype: lists, details, forms, auth, legal text,
+// editorial, and RTL deep pages. Extend when adding a new archetype.
 const PAGES = [
   "/",
-  "/discover",
-  "/discover/nissi-beach",
-  "/trails",
-  "/trails/artemis",
-  "/plan",
+  "/airport",
+  "/beaches",
+  "/book/guide/troodos-guides",
   "/book/winery",
   "/book/winery/tsiakkas",
   "/bookings",
+  "/cycling",
+  "/discover",
+  "/discover/nissi-beach",
   "/events",
+  "/guides/directory",
+  "/guides/troodos-december",
+  "/install",
+  "/login",
+  "/nature",
+  "/plan",
+  "/privacy",
+  "/search",
+  "/secrets",
+  "/team",
+  "/trails",
+  "/trails/artemis",
+  "/trails/artemis/report",
+  "/villages",
+  "/weather",
+  "/weather/december",
+  "/wine-routes/krasochoria",
+  "/wineries",
   "/he",
+  "/he/plan",
 ];
 
 test.describe("accessibility — WCAG 2.2 AA", () => {

@@ -33,7 +33,7 @@
     "test:e2e:ux:ci": "CI=true PORT=3001 playwright test e2e/route-smoke.spec.ts e2e/hub-footer.spec.ts e2e/overlay-precedence.spec.ts e2e/discover-detail.spec.ts e2e/discover-filters.spec.ts e2e/home-smoke.spec.ts e2e/travel-trust.spec.ts e2e/plan-offline.spec.ts",
     "test:a11y": "CI=true PORT=3001 playwright test e2e/a11y.spec.ts",
     "test:e2e:visual-gate:ci": "CI=true PORT=3001 playwright test e2e/visual-qa-gate.spec.ts",
-    "test:e2e:gate:ci": "npm run test:e2e:core-funnel:ci && npm run test:e2e:ux:ci && npm run test:e2e:visual-gate:ci",
+    "test:e2e:gate:ci": "npm run test:e2e:core-funnel:ci && npm run test:e2e:ux:ci && npm run test:e2e:visual-gate:ci && npm run test:a11y",
     "stress:api": "node scripts/stress-test-apis.mjs",
     "analyze": "ANALYZE=true npm run build",
     "analyze:old": "next experimental-analyze",
