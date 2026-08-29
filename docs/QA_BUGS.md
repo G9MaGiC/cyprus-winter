@@ -37,6 +37,23 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-350] /install crashed to the error page in every locale; route-smoke net added
+
+**Severity:** High
+**Area:** i18n / RSC / QA coverage
+**Page/Component:** `install/page.tsx` + `install.page.troubleshooting.items.images.body` (all 7 locales); `e2e/route-smoke.spec.ts`
+
+### Reproduction
+1. Open `/install` (any locale) — "A small glitch" error boundary; server logs the BUG-349 signature (`["Ensure ", function, …]`)
+
+### Expected
+The install guide renders; no route can crash silently behind HTTP 200.
+
+### Fix status
+Fixed — message converted to `<config>images.unoptimized</config>` tag form ×7 locales; the rich-tag guard test now also forbids `{config}`. New `route-smoke.spec.ts` (wired into `test:e2e:ux:ci`) fetches ~40 routes and fails on any RSC error digest, closing the "error page returns 200" blind spot that hid BUG-349/350 for weeks. Full-route sweep of current build: only /install was broken.
+
+---
+
 ### [BUG-349] /guides/troodos-december crashed to the error page in every locale
 
 **Severity:** High
