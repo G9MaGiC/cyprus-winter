@@ -857,7 +857,9 @@
         "family": "Family-friendly",
         "accessible": "Accessible & gentle",
         "local": "Local winter",
-        "hidden": "Hidden gems"
+        "hidden": "Hidden gems",
+        "showAll": "Show all {count} places",
+        "showAllAria": "Show all {count} places in {section}"
       },
       "combosTeaser": {
         "kicker": "Curated days",

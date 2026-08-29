@@ -857,7 +857,9 @@
         "family": "Familienfreundlich",
         "accessible": "Barrierefrei & sanft",
         "hidden": "Geheimtipps",
-        "local": "Lokaler Winter"
+        "local": "Lokaler Winter",
+        "showAll": "Alle {count} Orte anzeigen",
+        "showAllAria": "Alle {count} Orte in {section} anzeigen"
       },
       "filters": {
         "all": "Alle",

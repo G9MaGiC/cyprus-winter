@@ -857,7 +857,9 @@
         "family": "Potrivit pentru familii",
         "accessible": "Accesibile și ușoare",
         "local": "Iarnă locală",
-        "hidden": "Locuri ascunse"
+        "hidden": "Locuri ascunse",
+        "showAll": "Afișează toate cele {count} locuri",
+        "showAllAria": "Afișează toate cele {count} locuri din {section}"
       },
       "combosTeaser": {
         "kicker": "Zile selectate",

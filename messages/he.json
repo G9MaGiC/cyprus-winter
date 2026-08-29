@@ -857,7 +857,9 @@
         "family": "מתאים למשפחות",
         "accessible": "נגיש ועדין",
         "local": "חורף מקומי",
-        "hidden": "פנינים חבויות"
+        "hidden": "פנינים חבויות",
+        "showAll": "הצגת כל {count} המקומות",
+        "showAllAria": "הצגת כל {count} המקומות בקטגוריה {section}"
       },
       "combosTeaser": {
         "kicker": "ימים נבחרים",

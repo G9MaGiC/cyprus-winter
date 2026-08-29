@@ -49,17 +49,31 @@ Guard rule: **never `preload()` a `/images/...` path directly** — the browser 
 reuse it for `next/image`. If a manual preload is ever needed, build the URL with
 `getImageProps` and pass `imageSrcSet`/`imageSizes`.
 
+## Fixed in a follow-up batch: `/discover` overview capped at 6 cards/section
+
+The overview rendered all 214 places as full cards (~2.0MB HTML, ~3.7s throttled
+hydration). Now the multi-section view renders 6 cards per section with a localized
+"Show all {count}" link to `/discover?filter=<sectionId>` — a view the server renders
+complete (verified: 53 village places uncapped), so users and crawlers lose nothing;
+JSON-LD keeps the full ItemList. Measured on `/discover` (same methodology):
+
+| Metric | Before | After |
+|--------|-------:|------:|
+| HTML | 2028KB | 893KB |
+| LCP (4× throttle) | 2452ms | 1012ms |
+| Long tasks >50ms | 3699ms | 928ms |
+| Unique places in DOM | 214 | 45 |
+
 ## Open levers (in impact order)
 
-1. **`/discover` ships a 2.0MB HTML/RSC payload** (full curated dataset inlined) and pays
-   ~3.7s of throttled main-thread time hydrating it — 5–8× every other page on both counts,
-   and its LCP (~2.4s) is the app's slowest despite an optimized hero. Lever: stop inlining
-   all sections/items; serve below-the-fold sections on demand (RSC streaming, pagination,
-   or a slimmer list payload per item). Architecture change — needs a design pass.
+1. **`/discover` RSC flight payload is still ~549KB** — `DiscoverClient` receives every
+   section's full `Attraction` objects as props for client-side filtering and the map.
+   Lever: project a lean list DTO (card + map fields only) across the boundary. Touches
+   the card/map/filter prop chain — do as its own reviewed change.
 2. **Shared JS ~1.5–1.8MB decoded (~500KB over the wire)** per first view. Typical for
    Next 16 + React 19 + next-intl + Leaflet-adjacent surfaces; no single outlier chunk.
-   Worth a bundle-analyze pass only after (1).
-3. `/book/winery` HTML is 633KB — same pattern as (1) at smaller scale (winery dataset).
+3. `/book/winery` HTML is 633KB — winery dataset inlined; same capping pattern applies
+   if the page ever grows.
 
 ## What is healthy
 

@@ -316,7 +316,11 @@ export default function DiscoverClient({
                 : undefined
             }
           >
-            <DiscoverSectionList ref={firstSectionRef} sections={sectionsToShow} />
+            <DiscoverSectionList
+              ref={firstSectionRef}
+              sections={sectionsToShow}
+              capPerSection={sectionsToShow.length > 1 ? 6 : undefined}
+            />
           </div>
         ) : (
           <div role="tabpanel" aria-labelledby="discover-tab-map">

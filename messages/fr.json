@@ -857,7 +857,9 @@
         "family": "En famille",
         "accessible": "Accessible et facile",
         "local": "Hiver local",
-        "hidden": "Pépites"
+        "hidden": "Pépites",
+        "showAll": "Voir les {count} lieux",
+        "showAllAria": "Voir les {count} lieux de la section {section}"
       },
       "combosTeaser": {
         "kicker": "Journées composées",
