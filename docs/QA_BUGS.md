@@ -37,6 +37,27 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-345] Stale production origin defaults pointed at dead Vercel alias / unattached domain
+
+**Severity:** High
+**Area:** SEO / Ops / Capacitor
+**Page/Component:** `site-url.ts`, Capacitor, health scripts
+
+### Reproduction
+1. Deploy without `NEXT_PUBLIC_SITE_URL`
+2. Inspect canonical/OG URLs and `npm run health:production` default host
+
+### Expected
+Defaults match the live public origin (`cyprus-winter-three.vercel.app`) until `cypruswinter.com` DNS is attached.
+
+### Actual
+Defaults used `cypruswinter.com` (unattached) and health/Capacitor used `cyprus-winter.vercel.app` (stale alias).
+
+### Fix status
+Fixed — `DEFAULT_PUBLIC_ORIGIN` shared across SITE_URL, Capacitor, and health/grant scripts.
+
+---
+
 ### [BUG-344] Legacy trail IDs break report/API/AI paths after Stavrovouni rename
 
 **Severity:** High
