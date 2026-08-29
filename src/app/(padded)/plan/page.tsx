@@ -1,5 +1,4 @@
 import PlanPageClient from "./PlanPageClient";
-import { preload } from "react-dom";
 import { buildPlanPageMetadata } from "@/lib/plan-share-meta";
 
 const PLAN_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
@@ -18,6 +17,5 @@ export async function generateMetadata({
 }
 
 export default function PlanPage() {
-  preload(PLAN_HERO_IMAGE, { as: "image" });
   return <PlanPageClient />;
 }
