@@ -142,39 +142,58 @@ When adding components, use:
 
 ```
 src/
-├── app/              # App Router pages
-│   ├── airport/      # LCA & PFO info
-│   ├── discover/     # Attractions list + [id] detail
-│   ├── trails/       # Troodos trail conditions
-│   ├── plan/         # Itinerary builder (client)
-│   ├── team/         # Expert team profiles
-│   └── page.tsx      # Home
-├── components/       # Reusable UI
-│   ├── Nav.tsx       # Global nav (client)
-│   └── AttractionCard.tsx
-└── data/             # Static content
-    ├── attractions.ts
-    ├── airport.ts
-    ├── trails.ts
-    ├── wineries.ts
-    └── team.ts
+├── app/
+│   ├── (padded)/         # Canonical page implementations, default-locale URLs
+│   │   ├── airport/  discover/  trails/  plan/  events/  book/  bookings/
+│   │   ├── weather/  wine-routes/  wineries/  villages/  beaches/  nature/
+│   │   ├── cycling/  regions/  guides/  search/  secrets/  team/  install/
+│   │   ├── account/  login/  register/  admin/  partner/  privacy/  terms/
+│   │   └── ...       # page-specific components live next to their page.tsx
+│   ├── [locale]/         # Thin wrappers: re-export the (padded) page + locale metadata
+│   ├── _home/            # Home sections: *-data.ts loaders + *View.tsx client leaves
+│   ├── api/              # Route handlers (Zod-validated): bookings, chat, trail-reports,
+│   │                     # track, health, weather, right-now, push, cron, admin, ...
+│   ├── manifests/        # Locale-aware PWA manifests
+│   └── page.tsx          # Home (default locale)
+├── components/           # Shared UI (Nav, cards, badges, maps, HubFooter, ...)
+├── data/                 # Curated content: attractions, trails, wineries, events,
+│                         # regions, itinerary-templates, secret-gems, weather, ...
+├── i18n/                 # next-intl routing (7 locales, `he` RTL, beta: fr/he/ro)
+└── lib/                  # design-tokens, nav-links, rate-limit, site-url, SEO helpers
 ```
+
+Routing: `src/app/(padded)/<route>/page.tsx` is the single implementation; `src/app/[locale]/<route>/page.tsx` re-exports it and adds locale-aware `generateMetadata`. When adding a route, create both.
 
 ## Data Models
 
-### Attraction (`src/data/attractions.ts`)
+### Attraction (`src/data/attractions.ts` — authoritative; abbreviated here)
 ```ts
 type Attraction = {
-  id: string;           // kebab-case, unique
+  id: string;           // kebab-case; unique across all plan-addable places — attractions,
+                        // activities, wineries, restaurants, trails, events (the allPlaces
+                        // audit in data:validate enforces this; see BUG-342)
   name: string;
   region: string;       // e.g. "Ayia Napa", "Paphos"
   description: string;  // 1–2 sentences
-  type: "beach" | "ancient" | "village" | "monastery" | "nature";
+  type: "beach" | "ancient" | "village" | "monastery" | "nature" | "winery" | "activity";
   highlights: string[]; // 3–5 short labels
-  image: string;        // path e.g. "/beaches/nissi.jpg"
   bestFor: string[];    // e.g. ["Families", "Swimming"]
+  // Winter/editorial enrichment (all optional):
+  winterTip?: string; bestTimeToVisit?: string; localSecret?: string;
+  backstory?: string; nameEl?: string; culturalNote?: string;
+  combineWith?: string[];        // related attraction/trail ids for day combos
+  // Practical info (all optional):
+  openingHours?: string; transport?: string; parking?: string; accessibility?: string;
+  bookingUrl?: string; contactPhone?: string; shopUrl?: string;
+  // Ranking/filtering (all optional):
+  latitude?: number; longitude?: number;   // Right Now distance
+  seasonTags?: ("winter" | "spring" | "summer" | "autumn")[];
+  indoorOutdoor?: "indoor" | "outdoor" | "mixed";
+  budgetLevel?: "free" | "low" | "mid" | "high";
+  editorialPriority?: number;    // 1 = highest
 };
 ```
+Arrays: `beaches`, `natureSites` (includes `activityPlaces` spread from `src/data/activity-places.ts`), `ancientSites`, `villages`, `monasteries`; wineries, restaurants, trails, and events live in their own `src/data/*` files and merge in the `discover.ts` / `index.ts` aggregates.
 
 ### Airport (`src/data/airport.ts`)
 ```ts
@@ -206,27 +225,40 @@ type TeamMember = {
 };
 ```
 
+## i18n (mandatory on every user-facing change)
+
+7 locales via next-intl: `en` (base), `el`, `de`, `pl`, plus beta `fr`, `he`, `ro` (`he` is RTL). Routing in `src/i18n/routing.ts` (`localePrefix: "as-needed"` — en unprefixed); messages in `messages/{locale}.json`.
+
+- **No hardcoded user-facing strings in components.** Server: `const t = await getTranslations("namespace")`. Client: `const t = useTranslations("namespace")`. CI runs `npm run i18n:scan --fail` and rejects violations.
+- Add every new key to **all 7** `messages/*.json` files (`npm run i18n:validate` fails on missing keys; `en` is the base).
+- Curated content in `src/data/` is English by design (localized via editorial maps — see `docs/I18N_GUIDE.md`); component chrome around it must use translations.
+- RSC boundary rule (from `AGENTS.md`): do not pass `Link` or `t` across server/client boundaries; use `*-data.ts` loaders + `*View.tsx` client leaves as in `src/app/_home/`.
+
 ## Adding New Content
 
 ### New attraction
-1. Add to appropriate array in `src/data/attractions.ts` (beaches, ancientSites, villages, monasteries).
-2. Use valid `type`; keep `id` kebab-case and unique.
+1. Add to the appropriate array in `src/data/attractions.ts` (`beaches`, `natureSites`, `ancientSites`, `villages`, `monasteries`) — except records with `type: "activity"`, which go in `src/data/activity-places.ts` (they join `natureSites` via a spread).
+2. Use valid `type`; keep `id` kebab-case and unique across all plan-addable place data.
 3. If new type, add to union and handle in `AttractionCard` typeColors.
+4. Run `npm run data:validate` (unique IDs, `combineWith` references, audits).
 
 ### New page
-1. Create `src/app/[route]/page.tsx`.
+1. Create `src/app/(padded)/[route]/page.tsx` and a thin `src/app/[locale]/[route]/page.tsx` wrapper that re-exports it with locale-aware `generateMetadata`.
 2. Use `LAYOUT.safeAreaX`, `LAYOUT.pagePy` (or `pagePyDetail` for detail pages), and appropriate `LAYOUT.list` / `LAYOUT.detail` / `LAYOUT.form` width.
-3. Add link to `Nav.tsx` links array.
+3. Add link to `src/lib/nav-links.ts` (`navPrimaryLinks` / `navMoreLinks`) with a `labelKey`, and add the key to the `nav` namespace in all 7 `messages/*.json`.
 4. Optionally add to homepage toolkit grid.
 
 ### New component
 - Use Tailwind with design tokens above.
 - Prefer server components; use `"use client"` only when needed (state, onClick, usePathname).
+- All user-facing strings through `useTranslations`/`getTranslations` (see i18n section).
 
 ## Quality Checklist
 
 - [ ] New pages include `Link` back (e.g. "← Back") where appropriate
 - [ ] Mobile-first: test layouts at 375px and up (chat components: test primary flows at 375px viewport)
 - [ ] No hardcoded hex in JSX — use Tailwind classes
-- [ ] Data files export typed arrays; keep content factual for Cyprus
+- [ ] No hardcoded user-facing strings — `npm run i18n:scan --fail` and `npm run i18n:validate` pass
+- [ ] Data files export typed arrays; keep content factual for Cyprus; `npm run data:validate` passes
 - [ ] Images: use gradient placeholders until real assets; path under `/public`
+- [ ] Full merge gate before claiming done: see `AGENTS.md` (lint, typecheck, test, i18n, data, build)

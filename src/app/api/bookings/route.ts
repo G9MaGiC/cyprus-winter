@@ -29,6 +29,7 @@ const MAX_BOOKING_BODY_BYTES = 32_000;
 const lookupRequestSchema = z.object({
   action: z.literal("request_lookup_token"),
   email: z.string().email().max(254),
+  locale: z.string().max(8).optional(),
 });
 
 const genericLookupResponse = {
@@ -111,7 +112,7 @@ async function authorizeBookingLookup(
   return null;
 }
 
-async function handleLookupTokenRequest(req: Request, email: string): Promise<Response> {
+async function handleLookupTokenRequest(req: Request, email: string, locale?: string): Promise<Response> {
   let lookupRateLimit: RateLimitResult;
   try {
     lookupRateLimit = await rateLimit(req, 5, "bookings-lookup-request");
@@ -129,7 +130,7 @@ async function handleLookupTokenRequest(req: Request, email: string): Promise<Re
   try {
     if (isBookingLookupTokenConfigured()) {
       const token = createBookingLookupToken(normalizedEmail, { ttlSeconds: 15 * 60 });
-      await sendBookingLookupTokenEmail(normalizedEmail, token);
+      await sendBookingLookupTokenEmail(normalizedEmail, token, locale);
     }
   } catch (err) {
     console.error("Booking lookup token request error:", err);
@@ -153,7 +154,7 @@ export async function POST(req: Request) {
 
   const lookupRequest = lookupRequestSchema.safeParse(body);
   if (lookupRequest.success) {
-    return handleLookupTokenRequest(req, lookupRequest.data.email);
+    return handleLookupTokenRequest(req, lookupRequest.data.email, lookupRequest.data.locale);
   }
 
   let limitResult: RateLimitResult;
@@ -193,6 +194,7 @@ export async function POST(req: Request) {
       guestName: raw.guestName,
       notes: raw.notes,
       trailId: raw.trailId,
+      locale: raw.locale,
     });
 
     if (!parsed.success) {
@@ -247,7 +249,7 @@ export async function POST(req: Request) {
       if (created) {
         await recordTrustedBookingEvent(booking);
         try {
-          confirmationSent = await sendBookingConfirmation(booking);
+          confirmationSent = await sendBookingConfirmation(booking, parsed.data.locale);
         } catch (e) {
           console.error("Guest email send failed:", e);
         }
@@ -311,7 +313,7 @@ export async function POST(req: Request) {
       if (created) {
         await recordTrustedBookingEvent(booking);
         try {
-          confirmationSent = await sendBookingConfirmation(booking);
+          confirmationSent = await sendBookingConfirmation(booking, parsed.data.locale);
         } catch (e) {
           console.error("Guest email send failed:", e);
         }

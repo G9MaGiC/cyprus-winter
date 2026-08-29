@@ -232,6 +232,15 @@ export const CTA = {
   /** Secondary CTA: terracotta border for contextual hierarchy when primary is also terracotta (e.g. error/not-found pages). Aegean variant available as border-2 border-aegean text-aegean for alternate hierarchy. */
   secondaryCompact:
     "inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium border border-terracotta/80 text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  /** Primary action inside a modal (plan template/combo/clear-day dialogs). Compose layout ordering (e.g. order-last sm:order-none) at the call site. */
+  modalPrimary:
+    "min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
+  /** Secondary (outline) action inside a modal — e.g. "Replace day". */
+  modalSecondary:
+    "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium border border-sand-200/80 text-olive/80 hover:border-terracotta/30 hover:text-terracotta transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
+  /** Dismiss/cancel action inside a modal. */
+  modalDismiss:
+    "min-h-[44px] px-4 py-2.5 rounded-xl text-sm font-medium text-olive border border-sand-200/80 hover:bg-sand-100 transition-all duration-200 active:scale-[0.98] motion-reduce:active:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto",
 } as const;
 
 /** Empty-state card — use for "no results", "no items yet" blocks. */
@@ -260,7 +269,7 @@ export const CARD = {
     "absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent pointer-events-none sm:from-charcoal/60 sm:via-transparent",
   /** Detail page hero — charcoal (not pure black) for brand consistency. */
   heroOverlay: "absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/20 to-transparent pointer-events-none",
-  /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-l-4 border-l-aegean|terracotta|golden */
+  /** Info cards (ThisWeekGrid, StartHereWithExplore): border accent, no image. Compose with border-s-4 border-s-aegean|terracotta|golden */
   info: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm",
   /** Action cards (Plan, Events, StartHereWithExplore primary): larger padding, strong CTA */
   action: "rounded-xl bg-white/90 border border-sand-200/80 shadow-sm hover:border-terracotta/30 hover:shadow-lg transition-all duration-200",
@@ -353,9 +362,9 @@ export const HERO = {
 /** Callout/tip boxes — shared styling for buffer-zone, local secret, and similar blocks. */
 export const CALLOUT = {
   /** Golden tip style (local secrets, buffer zone, insider tips). */
-  tip: "rounded-xl bg-golden/5 border-l-4 border-l-golden/50 border border-golden/20",
+  tip: "rounded-xl bg-golden/5 border-s-4 border-s-golden/50 border border-golden/20",
   /** Terracotta CTA-style accent (compose with CARD.base for book & contact blocks). */
-  cta: "border-l-4 border-l-terracotta/40",
+  cta: "border-s-4 border-s-terracotta/40",
 } as const;
 
 /** Skeleton loading — pulse + palette. Compose with h-* w-* for dimensions. */

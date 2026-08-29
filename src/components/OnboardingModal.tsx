@@ -170,7 +170,7 @@ export default function OnboardingModal() {
     >
       <div
         ref={panelRef}
-        className={`${CARD.base} mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl`}
+        className="rounded-xl bg-white border border-sand-200/80 mx-4 mb-4 sm:mx-auto sm:max-w-lg sm:mb-6 overflow-hidden shadow-xl"
       >
         {/* Hero image strip with gradient overlay */}
         <div className="relative min-h-[7rem] sm:min-h-[8rem] w-full bg-sand-200 overflow-hidden">

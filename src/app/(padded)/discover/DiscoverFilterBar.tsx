@@ -179,7 +179,7 @@ export default function DiscoverFilterBar({
             <button
               type="button"
               onClick={() => setFiltersExpanded((v) => !v)}
-              className="flex items-center justify-between w-full min-h-[44px] px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-left font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="flex items-center justify-between w-full min-h-[44px] px-4 py-3 rounded-lg border border-sand-200/80 bg-white/80 text-start font-medium text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               aria-expanded={filtersExpanded}
               aria-controls="discover-filters"
               id="discover-filters-toggle"

@@ -186,7 +186,7 @@ export default async function AirportPage() {
                 <p className="text-white/90 text-sm break-words mt-1">
                   {airport.city}
                   {CITY_GREEK[airport.city] && (
-                    <span className="ml-1.5 text-white/80">({CITY_GREEK[airport.city]})</span>
+                    <span className="ms-1.5 text-white/80">({CITY_GREEK[airport.city]})</span>
                   )}
                 </p>
               </div>

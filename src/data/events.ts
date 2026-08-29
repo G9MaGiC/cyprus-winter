@@ -21,7 +21,7 @@ export const winterEvents: WinterEvent[] = [
     nameEl: "Απόκριες Λεμεσού",
     region: "Limassol",
     description:
-      "Cyprus's biggest carnival runs for two weeks before Lent. King Carnival leads the Grand Parade through the old town; masquerade balls fill the theatres; and the streets come alive with floats, costumes, and music. The carnival has roots in Venetian and Byzantine traditions; a last burst of revelry before the fast. Locals spend months preparing costumes. If you're in Cyprus in late February or early March, don't miss it. The energy is infectious, and the seafront promenade turns into one long party.",
+      "Cyprus's biggest carnival runs for two weeks before Lent. King Carnival leads the Grand Parade through the old town; masquerade balls fill the theatres; and the streets come alive with floats, costumes, and music. The carnival has roots in Venetian and Byzantine traditions; a last burst of revelry before the fast. Locals spend months preparing costumes. If you're in Cyprus in late February or early March, it's worth planning around. The seafront promenade fills with floats and costumes, and the whole town joins in.",
     type: "festival",
     month: "Feb",
     dates: "2 weeks before Lent (late Feb / early Mar)",

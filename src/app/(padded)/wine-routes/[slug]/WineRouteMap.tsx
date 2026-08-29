@@ -25,7 +25,7 @@ const wineryIcon = L.divIcon({
     font-size: 12px;
     box-shadow: ${MAP_ICON_SHADOW};
     border: 2px solid white;
-  ">🍷</span>`,
+  ">W</span>`,
   className: "custom-marker",
   iconSize: [30, 30],
   iconAnchor: [15, 15],
@@ -74,7 +74,7 @@ export default function WineRouteMap({ routeTitle, center, wineries }: WineRoute
           </div>
         )}
         {interactive && (
-          <div className="absolute top-3 right-3 z-[5]">
+          <div className="absolute top-3 end-3 z-[5]">
             <button
               type="button"
               onClick={() => setInteractive(false)}
@@ -112,7 +112,7 @@ export default function WineRouteMap({ routeTitle, center, wineries }: WineRoute
                     href={`/discover/${w.id}`}
                     className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
                   >
-                    {tPage("map.viewWinery")} →
+                    {tPage("map.viewWinery")} <span aria-hidden>→</span>
                   </AppLink>
                 </div>
               </Popup>

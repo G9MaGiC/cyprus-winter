@@ -65,7 +65,7 @@ export default async function TeamPage() {
         ))}
       </div>
 
-      <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-l-4 border-l-terracotta/20 text-center`}>
+      <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-s-4 border-s-terracotta/20 text-center`}>
         <p className="text-sm text-olive/80 mb-4">{tTeam("cta.prompt")}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <AIAssistantTrigger label={tTeam("cta.askAi")} />

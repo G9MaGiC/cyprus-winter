@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Zanim wyruszysz",
       "allSet": "Wszystko gotowe. Bezpiecznej podróży."
-    }
+    },
+    "useMyLocationInstead": "Użyj mojej lokalizacji"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -368,7 +369,7 @@
       "arriving": "Właśnie przyleciałeś? Zacznij tutaj",
       "explore": "Odkrywaj",
       "planTrip": "Zaplanuj wycieczkę",
-      "askGuide": "Zapytaj przewodnika AI"
+      "askGuide": "Zapytaj przewodnika"
     },
     "tripModes": {
       "aria": "Wybierz, jak podróżujesz",
@@ -1766,7 +1767,8 @@
       "coastal": "Ucieczki nad morze",
       "peak-views": "Widoki ze szczytów",
       "full-day": "Wyzwania na cały dzień"
-    }
+    },
+    "bestConditionsNow": "Najlepsze warunki teraz"
   },
   "plan": {
     "addToPlan": "Dodaj do planu",
@@ -2286,7 +2288,7 @@
         "learnMoreCta": "Dowiedz się więcej"
       },
       "highlights": {
-        "title": "Nie przegap",
+        "title": "Warto zobaczyć",
         "lead": "Epifania i karnawał to dusza wyspy. Przyjedź wcześnie. Ubierz się ciepło."
       },
       "tips": {
@@ -2875,8 +2877,7 @@
           "callSuffix": "aby zarezerwować lub sprawdzić dostępność — zwykle chętnie pomagają."
         },
         "winterTip": {
-          "heading": "Zimowa wskazówka",
-          "icon": "💡"
+          "heading": "Zimowa wskazówka"
         },
         "signatureWines": {
           "heading": "Co możesz spróbować"
@@ -3235,7 +3236,7 @@
         "description": "Projektanci, deweloperzy i eksperci turystyczni. Cypr zimą zasługuje na więcej niż jedno zdanie."
       },
       "cta": {
-        "prompt": "Poznaj zespół stojący za Twoją podróżą — i zapytaj o wszystko.",
+        "prompt": "Masz pytania o podróż? Twój przewodnik zna wyspę.",
         "askAi": "Zapytaj AI",
         "startPlanning": "Zacznij planować",
         "discoverPlaces": "Odkrywaj miejsca"
@@ -3317,15 +3318,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
-    },
-    "app__home_HomeHero": {
-      "text_13": "Zima na Cyprze",
-      "text_14": "Szlaki, wioski, dziedzictwo",
-      "text_subtitle": "Często szesnaście stopni, gdy w domu jest sześć.",
-      "text_16": "Planuj z wyprzedzeniem lub zacznij odkrywać po wylądowaniu.",
-      "aria-label_10": "Przejdź do Odkrywaj",
-      "aria-label_11": "Zobacz plan podróży",
-      "aria-label_12": "Transport z lotniska, wskazówki"
     }
   },
   "regions": {
@@ -3336,6 +3328,12 @@
       },
       "aria": {
         "actions": "Akcje strony regionów"
+      },
+      "sections": {
+        "ancient": "Stanowiska archeologiczne",
+        "winterEvents": "Zimowe wydarzenia",
+        "allWineries": "Wszystkie winnice Cypru",
+        "troodosDecember": "Szlaki Troodos w grudniu"
       }
     }
   },
@@ -3523,6 +3521,36 @@
         "climbingVc": "Wspinaczka (Visit Cyprus)",
         "trailsVc": "Szlaki przyrodnicze (Visit Cyprus)"
       }
+    }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Prośba o rezerwację: {provider} | Cyprus Winter",
+      "heading": "Otrzymaliśmy prośbę o rezerwację",
+      "hi": "Cześć {name},",
+      "submittedTasting": "Twoja prośba o degustację w {provider} została przesłana.",
+      "submittedHike": "Twoja prośba o wędrówkę z przewodnikiem ({provider}) została przesłana.",
+      "date": "Data",
+      "partySize": "Liczba osób",
+      "status": "Status",
+      "pendingTasting": "Oczekuje (winnica potwierdzi e-mailem)",
+      "pendingHike": "Oczekuje (przewodnik potwierdzi e-mailem)",
+      "whatNext": "Co dalej:",
+      "step1": "Twoja prośba została zapisana w naszym systemie.",
+      "step2Tasting": "Winnica zwykle odpowiada w ciągu 24–48 godzin w dni robocze.",
+      "step2Hike": "Przewodnik zwykle odpowiada w ciągu 24–48 godzin w dni robocze.",
+      "step3": "Sprawdź {link} w dowolnym momencie, używając tego samego adresu e-mail.",
+      "myBookings": "Moje rezerwacje",
+      "noReplyTasting": "Jeśli nie otrzymasz odpowiedzi w ciągu dwóch dni roboczych, skontaktuj się bezpośrednio z winnicą.",
+      "noReplyHike": "Jeśli nie otrzymasz odpowiedzi w ciągu dwóch dni roboczych, skontaktuj się bezpośrednio z przewodnikiem."
+    },
+    "lookup": {
+      "subject": "Bezpieczny link do rezerwacji | Cyprus Winter",
+      "heading": "Twój bezpieczny link do rezerwacji",
+      "requestedFor": "Otrzymaliśmy prośbę o wyświetlenie rezerwacji dla {email}.",
+      "useLink": "Użyj tego bezpiecznego linku w ciągu 15 minut:",
+      "viewBookings": "Zobacz moje rezerwacje",
+      "ignore": "Jeśli to nie Ty wysłałeś(-aś) tę prośbę, zignoruj tę wiadomość."
     }
   }
 }

@@ -34,7 +34,7 @@ export default function AddToItineraryButton({
         data-testid={`add-to-plan-${placeId}`}
         className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
       >
-        {resolvedLabel} →
+        {resolvedLabel} <span aria-hidden>→</span>
       </AppLink>
     );
   }
@@ -52,7 +52,7 @@ export default function AddToItineraryButton({
           className={`${SECTION.aegeanLink} min-w-[44px] px-3 -my-3 -mx-1 text-sm font-medium touch-manipulation`}
           aria-label={tCommon("aria.viewPlan")}
         >
-          {tCommon("viewPlan")} →
+          {tCommon("viewPlan")} <span aria-hidden>→</span>
         </AppLink>
       </span>
     );
@@ -72,7 +72,7 @@ export default function AddToItineraryButton({
       className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
       aria-label={`${resolvedLabel}: ${placeId}`}
     >
-      {resolvedLabel} →
+      {resolvedLabel} <span aria-hidden>→</span>
     </button>
   );
 }

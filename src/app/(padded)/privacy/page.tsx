@@ -47,7 +47,7 @@ export default async function PrivacyPage() {
           <p className="text-olive/90 leading-relaxed mb-4">
             {tPrivacy("sections.s2.intro")}
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>
               {tPrivacy.rich("sections.s2.items.conversion", {
                 strong: (chunks) => <strong>{chunks}</strong>,
@@ -87,7 +87,7 @@ export default async function PrivacyPage() {
           <p className="text-olive/90 leading-relaxed mb-4">
             {tPrivacy("sections.s3.intro")}
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>
               {tPrivacy.rich("sections.s3.processors.supabase", {
                 strong: (chunks) => <strong>{chunks}</strong>,
@@ -118,7 +118,7 @@ export default async function PrivacyPage() {
           <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s4.title")}
           </h2>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>
               {tPrivacy.rich("sections.s4.items.conversion", { strong: (chunks) => <strong>{chunks}</strong> })}
             </li>
@@ -137,7 +137,7 @@ export default async function PrivacyPage() {
           <p className="text-olive/90 leading-relaxed mb-4">
             {tPrivacy("sections.s5.intro")}
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>{tPrivacy("sections.s5.rights.access")}</li>
             <li>{tPrivacy("sections.s5.rights.rectify")}</li>
             <li>{tPrivacy("sections.s5.rights.erase")}</li>
@@ -159,7 +159,7 @@ export default async function PrivacyPage() {
           <p className="text-olive/90 leading-relaxed mb-4">
             {tPrivacy("sections.s6.intro")}
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>{tPrivacy.rich("sections.s6.categories.essential", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
             <li>{tPrivacy.rich("sections.s6.categories.analytics", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
           </ul>

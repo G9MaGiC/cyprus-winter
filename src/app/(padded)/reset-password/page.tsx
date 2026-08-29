@@ -32,7 +32,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
-          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
+          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-s-4 border-s-terracotta/50`}>
             <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.configTitle")}
             </h1>
@@ -77,7 +77,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/account" label={tCommon("backTo", { label: tNav("account") })} />
-          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-aegean/50`}>
+          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-s-4 border-s-aegean/50`}>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aegean mb-2">
               {tCommon("done")}
             </p>
@@ -112,7 +112,7 @@ export default function ResetPasswordPage() {
       <div className="min-h-[60vh] bg-gradient-to-b from-sand-100/60 to-background">
         <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
           <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
-          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-l-4 border-l-terracotta/50`}>
+          <div className={`${CARD.base} ${CARD.contentLg} mt-10 border-s-4 border-s-terracotta/50`}>
             <h1 className={`${TYPE.subSectionTitle} text-charcoal mb-2`}>
               {tAuth("reset.invalidLinkTitle")}
             </h1>
@@ -136,7 +136,7 @@ export default function ResetPasswordPage() {
       <div className={`${LAYOUT.formNarrow} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
         <BackLink href="/login" label={tCommon("backTo", { label: tNav("signIn") })} />
 
-        <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-l-4 border-l-terracotta/50 shadow-md`}>
+        <div className={`${CARD.base} ${CARD.contentLg} mt-10 sm:mt-14 border-s-4 border-s-terracotta/50 shadow-md`}>
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta/90 mb-2">
             {tAuth("reset.kicker")}
           </p>
@@ -170,7 +170,7 @@ export default function ResetPasswordPage() {
                   required
                   minLength={6}
                   autoComplete="new-password"
-                  className={`${inputBase} pr-12`}
+                  className={`${inputBase} pe-12`}
                   placeholder={tAuth("reset.passwordPlaceholder")}
                   disabled={loading}
                   aria-describedby="reset-password-hint"
@@ -178,7 +178,7 @@ export default function ResetPasswordPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
+                  className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-olive/60 hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
                   aria-label={showPassword ? tAuth("reset.ariaHidePassword") : tAuth("reset.ariaShowPassword")}
                 >
                   {showPassword ? (

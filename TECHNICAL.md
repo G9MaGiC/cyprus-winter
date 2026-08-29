@@ -634,7 +634,7 @@ See `docs/STRESS_TEST_RESULTS.md` for detailed analysis.
 
 ```json
 {
-  "name": "Cyprus Winter — Your Island Guide",
+  "name": "Cyprus Winter — Plan Ahead or Start Exploring",
   "short_name": "Cyprus Winter",
   "description": "Discover Cyprus in winter: trails, ancient sites, villages, heritage",
   "start_url": "/",

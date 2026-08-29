@@ -29,7 +29,7 @@ export default async function PlanLoading() {
       >
         <HeroSkeleton />
 
-        <div className={`mb-8 rounded-xl bg-white/90 border border-sand-200/80 border-l-4 border-l-aegean/40 ${CARD.contentLg}`}>
+        <div className={`mb-8 rounded-xl bg-white/90 border border-sand-200/80 border-s-4 border-s-aegean/40 ${CARD.contentLg}`}>
           <div className={`h-5 w-40 ${SKELETON.bar} mb-4`} />
           <div className="flex flex-wrap gap-4">
             <div className={`h-10 w-32 ${SKELETON.block}`} />
@@ -65,7 +65,7 @@ export default async function PlanLoading() {
 
         <div className="space-y-6">
           <div className={`h-64 ${SKELETON.card} overflow-hidden`} />
-          <div className={`h-48 ${SKELETON.card} border-l-4 border-l-terracotta/40 p-6`} />
+          <div className={`h-48 ${SKELETON.card} border-s-4 border-s-terracotta/40 p-6`} />
         </div>
       </div>
     </div>

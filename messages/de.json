@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Bevor es losgeht",
       "allSet": "Alles erledigt. Gute Reise."
-    }
+    },
+    "useMyLocationInstead": "Stattdessen meinen Standort verwenden"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -368,7 +369,7 @@
       "arriving": "Gerade gelandet? Hier starten",
       "explore": "Entdecken",
       "planTrip": "Reise planen",
-      "askGuide": "KI-Reiseführer fragen"
+      "askGuide": "Ihren Guide fragen"
     },
     "tripModes": {
       "aria": "Wählen Sie, wie Sie reisen",
@@ -1766,7 +1767,8 @@
       "coastal": "Küstenausflüge",
       "peak-views": "Gipfelblicke",
       "full-day": "Ganztags-Herausforderungen"
-    }
+    },
+    "bestConditionsNow": "Beste Bedingungen jetzt"
   },
   "plan": {
     "addToPlan": "Zum Plan hinzufügen",
@@ -2376,7 +2378,7 @@
         "learnMoreCta": "Mehr erfahren"
       },
       "highlights": {
-        "title": "Nicht verpassen",
+        "title": "Sehenswert",
         "lead": "Epiphanias und Karneval zeigen die Seele der Insel. Kommen Sie früh. Warm anziehen."
       },
       "tips": {
@@ -2875,8 +2877,7 @@
           "callSuffix": "um zu reservieren oder Verfügbarkeit zu prüfen — meist helfen sie gerne."
         },
         "winterTip": {
-          "heading": "Wintertipp",
-          "icon": "💡"
+          "heading": "Wintertipp"
         },
         "signatureWines": {
           "heading": "Was Sie probieren könnten"
@@ -3235,7 +3236,7 @@
         "description": "Designer, Entwickler und Tourismus-Expert:innen. Zypern im Winter verdient mehr als eine Ein-Zeilen-Erwähnung."
       },
       "cta": {
-        "prompt": "Lernen Sie das Team hinter Ihrer Reise kennen — und fragen Sie alles.",
+        "prompt": "Fragen zu Ihrer Reise? Ihr Guide kennt die Insel.",
         "askAi": "KI fragen",
         "startPlanning": "Plan starten",
         "discoverPlaces": "Orte entdecken"
@@ -3317,15 +3318,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
-    },
-    "app__home_HomeHero": {
-      "text_13": "Winter auf Zypern",
-      "text_14": "Wanderwege, Dörfer, Kulturerbe",
-      "text_subtitle": "Oft sechzehn Grad, wenn daheim sechs sind.",
-      "text_16": "Planen Sie im Voraus oder starten Sie die Erkundung nach der Landung.",
-      "aria-label_10": "Zu Entdecken gehen",
-      "aria-label_11": "Ihren Reiseplan anzeigen",
-      "aria-label_12": "Transport vom Flughafen, Tipps"
     }
   },
   "regions": {
@@ -3336,6 +3328,12 @@
       },
       "aria": {
         "actions": "Regionenseite Aktionen"
+      },
+      "sections": {
+        "ancient": "Antike Stätten",
+        "winterEvents": "Winter-Events",
+        "allWineries": "Alle Weingüter Zyperns",
+        "troodosDecember": "Troodos-Trails im Dezember"
       }
     }
   },
@@ -3523,6 +3521,36 @@
         "climbingVc": "Klettern (Visit Cyprus)",
         "trailsVc": "Naturwege (Visit Cyprus)"
       }
+    }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Buchungsanfrage: {provider} | Cyprus Winter",
+      "heading": "Buchungsanfrage erhalten",
+      "hi": "Hallo {name},",
+      "submittedTasting": "Ihre Anfrage für eine Verkostung bei {provider} wurde übermittelt.",
+      "submittedHike": "Ihre Anfrage für eine geführte Wanderung mit {provider} wurde übermittelt.",
+      "date": "Datum",
+      "partySize": "Personen",
+      "status": "Status",
+      "pendingTasting": "Ausstehend (das Weingut bestätigt per E-Mail)",
+      "pendingHike": "Ausstehend (der Guide bestätigt per E-Mail)",
+      "whatNext": "So geht es weiter:",
+      "step1": "Ihre Anfrage ist in unserem System gespeichert.",
+      "step2Tasting": "Das Weingut antwortet werktags in der Regel innerhalb von 24–48 Stunden.",
+      "step2Hike": "Der Guide antwortet werktags in der Regel innerhalb von 24–48 Stunden.",
+      "step3": "Unter {link} können Sie den Status jederzeit mit derselben E-Mail-Adresse einsehen.",
+      "myBookings": "Meine Buchungen",
+      "noReplyTasting": "Wenn Sie nach zwei Werktagen keine Antwort erhalten, kontaktieren Sie das Weingut bitte direkt.",
+      "noReplyHike": "Wenn Sie nach zwei Werktagen keine Antwort erhalten, kontaktieren Sie den Guide bitte direkt."
+    },
+    "lookup": {
+      "subject": "Ihr sicherer Buchungslink | Cyprus Winter",
+      "heading": "Ihr sicherer Buchungslink",
+      "requestedFor": "Wir haben eine Anfrage erhalten, die Buchungen für {email} anzuzeigen.",
+      "useLink": "Nutzen Sie diesen sicheren Link innerhalb von 15 Minuten:",
+      "viewBookings": "Meine Buchungen anzeigen",
+      "ignore": "Falls Sie das nicht angefordert haben, können Sie diese E-Mail ignorieren."
     }
   }
 }

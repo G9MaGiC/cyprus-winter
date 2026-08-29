@@ -33,7 +33,7 @@ export default function OnboardingContextualTip({
 
   return (
     <div
-      className={`${CARD.info} border-l-4 border-aegean p-4 flex items-start gap-3 transition-opacity duration-200 ${
+      className={`${CARD.info} border-s-4 border-aegean p-4 flex items-start gap-3 transition-opacity duration-200 ${
         entered ? "opacity-100" : "opacity-0"
       }`}
       role="status"

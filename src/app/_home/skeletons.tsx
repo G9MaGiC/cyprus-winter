@@ -68,13 +68,13 @@ export function WeatherStripSkeleton() {
   );
 }
 
-const thisWeekBorders = ["border-l-aegean/30", "border-l-sage/40", "border-l-golden/40"] as const;
+const thisWeekBorders = ["border-s-aegean/30", "border-s-sage/40", "border-s-golden/40"] as const;
 
 export function ThisWeekSkeleton() {
   return (
     <div className={`grid grid-cols-1 sm:grid-cols-3 ${HOME.gridGap}`} aria-hidden>
       {[1, 2, 3].map((i) => (
-        <div key={i} className={`${CARD.content} ${CARD.base} border-l-4 ${thisWeekBorders[i - 1]}`}>
+        <div key={i} className={`${CARD.content} ${CARD.base} border-s-4 ${thisWeekBorders[i - 1]}`}>
           <div className="h-4 w-20 bg-olive/30 rounded mb-2" />
           <div className="h-8 w-32 bg-olive/30 rounded mt-1" />
           <div className="h-4 w-full bg-sand-300/60 rounded mt-2" />

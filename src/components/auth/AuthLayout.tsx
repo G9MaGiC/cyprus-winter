@@ -54,12 +54,12 @@ export default function AuthLayout({
 
       {/* Form panel — right on desktop, below image on mobile */}
       <div
-        className={`order-last flex flex-col ${LAYOUT.safeAreaX} py-8 sm:py-12 lg:py-16 lg:pl-12 lg:pr-16 xl:pl-16 xl:pr-24 bg-background`}
+        className={`order-last flex flex-col ${LAYOUT.safeAreaX} py-8 sm:py-12 lg:py-16 lg:ps-12 lg:pe-16 xl:ps-16 xl:pe-24 bg-background`}
       >
         <BackLink href={backHref} label={backLabel} />
 
         <div
-          className={`${CARD.base} ${CARD.contentLg} mt-8 sm:mt-10 lg:mt-12 border-l-4 ${variant === "success" ? "border-l-aegean/50" : "border-l-terracotta/50"}`}
+          className={`${CARD.base} ${CARD.contentLg} mt-8 sm:mt-10 lg:mt-12 border-s-4 ${variant === "success" ? "border-s-aegean/50" : "border-s-terracotta/50"}`}
           {...(variant === "success" && {
             role: "status",
             "aria-live": "polite",

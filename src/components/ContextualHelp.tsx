@@ -128,15 +128,15 @@ export default function ContextualHelp({
   const positionClasses = {
     top: "bottom-full left-1/2 -translate-x-1/2 mb-2",
     bottom: "top-full left-1/2 -translate-x-1/2 mt-2",
-    left: "right-full top-1/2 -translate-y-1/2 mr-2",
-    right: "left-full top-1/2 -translate-y-1/2 ml-2",
+    left: "end-full top-1/2 -translate-y-1/2 me-2",
+    right: "start-full top-1/2 -translate-y-1/2 ms-2",
   };
 
   const arrowClasses = {
-    top: "top-full left-1/2 -translate-x-1/2 border-l-transparent border-r-transparent border-b-transparent border-t-sand-200",
-    bottom: "bottom-full left-1/2 -translate-x-1/2 border-l-transparent border-r-transparent border-t-transparent border-b-sand-200",
-    left: "left-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-r-transparent border-l-sand-200",
-    right: "right-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-l-transparent border-r-sand-200",
+    top: "top-full left-1/2 -translate-x-1/2 border-s-transparent border-e-transparent border-b-transparent border-t-sand-200",
+    bottom: "bottom-full left-1/2 -translate-x-1/2 border-s-transparent border-e-transparent border-t-transparent border-b-sand-200",
+    left: "start-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-e-transparent border-s-sand-200",
+    right: "end-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-s-transparent border-e-sand-200",
   };
 
   return (
@@ -150,11 +150,11 @@ export default function ContextualHelp({
           className={cn("absolute w-0 h-0 border-8", arrowClasses[tip.position || "bottom"])}
           aria-hidden
         />
-        <p className="text-sm text-olive pr-6">{t(tip.messageKey)}</p>
+        <p className="text-sm text-olive pe-6">{t(tip.messageKey)}</p>
         <button
           type="button"
           onClick={handleDismiss}
-          className="absolute top-2 right-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-sand-100 transition-colors touch-manipulation"
+          className="absolute top-2 end-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-sand-100 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label={t("aria.dismissTip")}
         >
           <svg className="w-4 h-4 text-olive/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">

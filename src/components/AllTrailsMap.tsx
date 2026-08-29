@@ -26,7 +26,7 @@ const trailIcon = L.divIcon({
     font-size: 11px;
     box-shadow: ${MAP_ICON_SHADOW};
     border: 2px solid white;
-  ">⛰</span>`,
+  ">T</span>`,
   className: "custom-marker",
   iconSize: [32, 32],
   iconAnchor: [16, 16],
@@ -69,7 +69,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
         </div>
       )}
       {interactive && (
-        <div className="absolute top-3 right-3 z-[5]">
+        <div className="absolute top-3 end-3 z-[5]">
           <button
             type="button"
             onClick={() => setInteractive(false)}
@@ -122,7 +122,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
                     href={`/trails/${trail.id}`}
                     className="inline-flex items-center min-h-[44px] py-2 text-sm font-medium text-terracotta hover:underline"
                   >
-                    {tTrails("map.viewTrail")} →
+                    {tTrails("map.viewTrail")} <span aria-hidden>→</span>
                   </AppLink>
                 </div>
               </div>

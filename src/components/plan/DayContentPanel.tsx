@@ -222,7 +222,7 @@ export default function DayContentPanel({
               <div className="space-y-0">
                 {useBlocks ? (
                   <>
-                    <div className={`pt-1 ${SECTION.headingGap} pl-12`}>
+                    <div className={`pt-1 ${SECTION.headingGap} ps-12`}>
                       <span className={`${TYPE.kicker} text-olive/70`}>{tPlan("morning")}</span>
                     </div>
                     <div className="space-y-0">
@@ -242,7 +242,7 @@ export default function DayContentPanel({
                     </div>
                     {afternoonIds.length > 0 && (
                       <>
-                        <div className={`mt-8 ${SECTION.headingGap} pl-12`}>
+                        <div className={`mt-8 ${SECTION.headingGap} ps-12`}>
                           <span className={`${TYPE.kicker} text-olive/60`}>{tPlan("afternoon")}</span>
                         </div>
                         <div className="space-y-0">

@@ -43,12 +43,12 @@ export default function TrailsPlaceOfDay() {
               sizes="(max-width: 640px) 100vw, 40vw"
             />
             <div className={CARD.mediaOverlay} aria-hidden />
-            <span className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium drop-shadow-lg">
+            <span className="absolute bottom-4 start-4 end-4 text-white text-sm font-medium drop-shadow-lg">
               {place.overlayKey === "openWithTemp" && place.temperatureC != null
                 ? tTrails("placeOfDay.overlay.openWithTemp", { temp: place.temperatureC })
                 : tTrails(`placeOfDay.overlay.${place.overlayKey}`)}
             </span>
-            <span className={`absolute top-4 right-4 px-3 py-1.5 rounded-lg ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal`}>
+            <span className={`absolute top-4 end-4 px-3 py-1.5 rounded-lg ${TYPE.kicker} bg-white/95 backdrop-blur-sm text-charcoal`}>
               {tTrails("placeOfDay.badge")}
             </span>
           </AppLink>

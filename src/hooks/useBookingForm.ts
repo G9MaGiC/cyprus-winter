@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, type RefObject } from "react";
+import { useLocale } from "next-intl";
 import type { z } from "zod";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal } from "@/lib/bookings-storage";
@@ -50,6 +51,7 @@ export function useBookingForm(
 ): BookingFormState {
   const { type, providerId, schema, extraFields, validationLabels } = config;
 
+  const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [storageMode, setStorageMode] = useState<"database" | "memory" | null>(null);
@@ -135,6 +137,7 @@ export function useBookingForm(
       guestName: validated.guestName,
       guestEmail: validated.guestEmail,
       notes: validated.notes || undefined,
+      locale,
     };
 
     if (extraFields) {

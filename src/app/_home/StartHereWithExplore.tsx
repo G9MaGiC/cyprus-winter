@@ -95,8 +95,8 @@ export default function StartHereWithExplore() {
                 key={item.id}
                 className={`flex flex-col ${CARD.base} ${CARD.hover} ${CARD.interactive} overflow-hidden ${
                   item.variant === "primary"
-                    ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
-                    : "border-l-4 border-l-aegean/60"
+                    ? "border-s-4 border-s-terracotta min-h-[140px] sm:min-h-[160px]"
+                    : "border-s-4 border-s-aegean/60"
                 }`}
               >
                 <div className={`flex-1 ${CARD.content}`}>
@@ -125,8 +125,8 @@ export default function StartHereWithExplore() {
                 prefetch="auto"
                 className={`group flex flex-col ${CARD.base} ${CARD.hover} ${CARD.interactive} ${CARD.link} overflow-hidden ${
                   item.variant === "primary"
-                    ? "border-l-4 border-l-terracotta min-h-[140px] sm:min-h-[160px]"
-                    : "border-l-4 border-l-aegean/60"
+                    ? "border-s-4 border-s-terracotta min-h-[140px] sm:min-h-[160px]"
+                    : "border-s-4 border-s-aegean/60"
                 }`}
                 aria-label={item.title}
               >
@@ -150,7 +150,7 @@ export default function StartHereWithExplore() {
           <p className={`${TYPE.kicker} text-sage mb-3 text-center`}>{tHome("startHere.browseByCategory")}</p>
           <div className="relative">
             <div
-              className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-3 pb-2 -mx-1 md:mx-0 px-1 pr-14 md:px-0 md:pr-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex flex-nowrap md:flex-wrap overflow-x-auto scroll-smooth scroll-touch md:overflow-visible justify-start md:justify-center gap-3 pb-2 -mx-1 md:mx-0 px-1 pe-14 md:px-0 md:pe-0 snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               role="group"
               aria-label={tHome("startHere.aria.browseByCategory")}
             >

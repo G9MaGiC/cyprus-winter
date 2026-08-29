@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { routing } from "@/i18n/routing";
 
 const ISO_DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
@@ -48,6 +49,8 @@ export const createBookingSchema = z.object({
   guestName: z.string().min(1).max(200),
   notes: z.string().max(500).optional(),
   trailId: z.string().optional(),
+  /** UI locale for guest-facing emails; invalid values fall back to en. */
+  locale: z.enum(routing.locales).optional().catch(undefined),
 });
 
 export type CreateBookingInput = z.infer<typeof createBookingSchema>;

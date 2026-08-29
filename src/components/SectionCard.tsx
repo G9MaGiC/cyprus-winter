@@ -12,10 +12,10 @@ type SectionCardProps = {
 };
 
 const accentClasses: Record<BorderAccent, string> = {
-  terracotta: "border-l-terracotta/40",
-  aegean: "border-l-aegean/40",
-  golden: "border-l-golden/40",
-  sage: "border-l-sage/40",
+  terracotta: "border-s-terracotta/40",
+  aegean: "border-s-aegean/40",
+  golden: "border-s-golden/40",
+  sage: "border-s-sage/40",
 };
 
 export default function SectionCard({
@@ -27,7 +27,7 @@ export default function SectionCard({
   id,
 }: SectionCardProps) {
   return (
-    <section id={id} className={`${CARD.base} ${CARD.contentLg} border-l-4 ${accentClasses[borderAccent]} ${className}`}>
+    <section id={id} className={`${CARD.base} ${CARD.contentLg} border-s-4 ${accentClasses[borderAccent]} ${className}`}>
       <h2 className={`${TYPE.cardTitle} ${subtitle ? "mb-1.5" : SECTION.headingGap}`}>{title}</h2>
       {subtitle && <p className={`text-sm text-olive/60 ${SECTION.headingGap}`}>{subtitle}</p>}
       {children}

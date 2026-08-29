@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Avant de partir",
       "allSet": "Tout est prêt. Bon voyage."
-    }
+    },
+    "useMyLocationInstead": "Utiliser ma position"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1766,7 +1767,8 @@
       "coastal": "Escapades côtières",
       "peak-views": "Vues depuis les sommets",
       "full-day": "Défis journée complète"
-    }
+    },
+    "bestConditionsNow": "Meilleures conditions en ce moment"
   },
   "plan": {
     "addToPlan": "Ajouter au plan",
@@ -2376,7 +2378,7 @@
         "learnMoreCta": "En savoir plus"
       },
       "highlights": {
-        "title": "À ne pas manquer",
+        "title": "À découvrir",
         "lead": "L'Épiphanie et le carnaval, c'est quand l'île montre son âme. Arrivez tôt. Habillez-vous chaudement."
       },
       "tips": {
@@ -2424,6 +2426,12 @@
       },
       "aria": {
         "actions": "Actions page région"
+      },
+      "sections": {
+        "ancient": "Sites antiques",
+        "winterEvents": "Événements d'hiver",
+        "allWineries": "Tous les domaines de Chypre",
+        "troodosDecember": "Sentiers du Troodos en décembre"
       }
     }
   },
@@ -2968,8 +2976,7 @@
           "callSuffix": "pour réserver ou vérifier les disponibilités — ils aident volontiers."
         },
         "winterTip": {
-          "heading": "Conseil d’hiver",
-          "icon": "💡"
+          "heading": "Conseil d’hiver"
         },
         "signatureWines": {
           "heading": "Ce que vous pourriez déguster"
@@ -3305,7 +3312,7 @@
         "description": "Designers, développeurs et experts du tourisme. Chypre en hiver mérite plus qu'une simple mention."
       },
       "cta": {
-        "prompt": "Rencontrez l'équipe derrière votre voyage — et posez-leur toutes vos questions.",
+        "prompt": "Des questions sur votre voyage ? Votre guide connaît l'île.",
         "askAi": "Demander à l'IA",
         "startPlanning": "Planifier votre voyage",
         "discoverPlaces": "Découvrir des lieux"
@@ -3387,15 +3394,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver"
-    },
-    "app__home_HomeHero": {
-      "text_13": "L'hiver à Chypre",
-      "text_14": "Sentiers, villages, patrimoine",
-      "text_subtitle": "Souvent seize degrés quand chez vous il en fait six.",
-      "text_16": "Planifiez à l'avance ou explorez dès votre arrivée.",
-      "aria-label_10": "Aller à Découvrir",
-      "aria-label_11": "Voir votre plan",
-      "aria-label_12": "Transport depuis l'aéroport, conseils"
     }
   },
   "cycling": {
@@ -3523,6 +3521,36 @@
         "climbingVc": "Escalade (Visit Cyprus)",
         "trailsVc": "Sentiers nature (Visit Cyprus)"
       }
+    }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Demande de réservation : {provider} | Cyprus Winter",
+      "heading": "Demande de réservation reçue",
+      "hi": "Bonjour {name},",
+      "submittedTasting": "Votre demande de dégustation chez {provider} a bien été envoyée.",
+      "submittedHike": "Votre demande de randonnée guidée avec {provider} a bien été envoyée.",
+      "date": "Date",
+      "partySize": "Nombre de personnes",
+      "status": "Statut",
+      "pendingTasting": "En attente (le domaine confirmera par e-mail)",
+      "pendingHike": "En attente (le guide confirmera par e-mail)",
+      "whatNext": "Et ensuite :",
+      "step1": "Votre demande est enregistrée dans notre système.",
+      "step2Tasting": "Le domaine répond généralement sous 24–48 h en semaine.",
+      "step2Hike": "Le guide répond généralement sous 24–48 h en semaine.",
+      "step3": "Consultez {link} à tout moment avec la même adresse e-mail.",
+      "myBookings": "Mes réservations",
+      "noReplyTasting": "Sans réponse après deux jours ouvrés, contactez directement le domaine.",
+      "noReplyHike": "Sans réponse après deux jours ouvrés, contactez directement le guide."
+    },
+    "lookup": {
+      "subject": "Votre lien sécurisé de réservations | Cyprus Winter",
+      "heading": "Votre lien sécurisé de réservations",
+      "requestedFor": "Nous avons reçu une demande de consultation des réservations pour {email}.",
+      "useLink": "Utilisez ce lien sécurisé dans les 15 minutes :",
+      "viewBookings": "Voir mes réservations",
+      "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail."
     }
   }
 }

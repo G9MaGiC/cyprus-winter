@@ -13,7 +13,7 @@ export default function PlanStartHere({ onJumpToTonight, onAddFirstStop }: PlanS
 
   return (
     <section
-      className={`${CARD.info} border-l-4 border-l-aegean ${CARD.content} ${SECTION.headingGap}`}
+      className={`${CARD.info} border-s-4 border-s-aegean ${CARD.content} ${SECTION.headingGap}`}
       aria-labelledby="plan-start-here-title"
     >
       <p className={`${TYPE.kicker} ${SECTION.titleGap}`}>{t("kicker")}</p>

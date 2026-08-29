@@ -348,7 +348,8 @@
     "beforeYouGo": {
       "heading": "Before you go",
       "allSet": "All set. Have a safe trip."
-    }
+    },
+    "useMyLocationInstead": "Use my location instead"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -368,7 +369,7 @@
       "arriving": "Just arrived? Start here",
       "explore": "Explore",
       "planTrip": "Plan your trip",
-      "askGuide": "Ask the AI guide"
+      "askGuide": "Ask your guide"
     },
     "tripModes": {
       "aria": "Choose how you are travelling",
@@ -1766,7 +1767,8 @@
       "coastal": "Coastal escapes",
       "peak-views": "Peak views",
       "full-day": "Full-day challenges"
-    }
+    },
+    "bestConditionsNow": "Best conditions now"
   },
   "plan": {
     "addToPlan": "Add to plan",
@@ -2286,7 +2288,7 @@
       "backToAccount": "← Back to account",
       "meta": {
         "title": "Settings | My account | Cyprus Winter",
-        "description": "Personalize your Cyprus Winter experience. Set interests, favorite regions, and notification preferences."
+        "description": "Personalize your Cyprus Winter experience. Set interests, favourite regions, and notification preferences."
       }
     },
     "meta": {
@@ -2383,7 +2385,7 @@
         "learnMoreCta": "Learn more"
       },
       "highlights": {
-        "title": "Don't miss",
+        "title": "Worth catching",
         "lead": "Epiphany and Carnival are when the island shows its soul. Get there early. Wrap up warm."
       },
       "tips": {
@@ -2424,6 +2426,12 @@
       },
       "aria": {
         "actions": "Region page actions"
+      },
+      "sections": {
+        "ancient": "Ancient sites",
+        "winterEvents": "Winter events",
+        "allWineries": "All Cyprus wineries",
+        "troodosDecember": "Troodos trails in December"
       }
     }
   },
@@ -2972,8 +2980,7 @@
           "callSuffix": "to reserve or check availability — they're usually happy to help."
         },
         "winterTip": {
-          "heading": "Winter tip",
-          "icon": "💡"
+          "heading": "Winter tip"
         },
         "signatureWines": {
           "heading": "What you might taste"
@@ -3305,7 +3312,7 @@
         "description": "Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
       },
       "cta": {
-        "prompt": "Meet the team behind your trip — and ask them anything.",
+        "prompt": "Questions about your trip? Your guide knows the island.",
         "askAi": "Ask AI",
         "startPlanning": "Start planning",
         "discoverPlaces": "Discover places"
@@ -3387,15 +3394,6 @@
   "ui": {
     "hero": {
       "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
-    },
-    "app__home_HomeHero": {
-      "text_13": "Winter in Cyprus",
-      "text_14": "Trails, villages, heritage",
-      "text_subtitle": "Often sixteen degrees when home is six.",
-      "text_16": "Plan ahead or start exploring when you land.",
-      "aria-label_10": "Go to Discover",
-      "aria-label_11": "View your plan",
-      "aria-label_12": "Transport from airport, tips"
     }
   },
   "cycling": {
@@ -3523,6 +3521,36 @@
       "install": "Install",
       "dismiss": "Not now",
       "iosHint": "Tap Share, then Add to Home Screen to save this guide."
+    }
+  },
+  "email": {
+    "confirmation": {
+      "subject": "Booking request: {provider} | Cyprus Winter",
+      "heading": "Booking request received",
+      "hi": "Hi {name},",
+      "submittedTasting": "Your tasting request for {provider} has been submitted.",
+      "submittedHike": "Your guided hike request for {provider} has been submitted.",
+      "date": "Date",
+      "partySize": "Party size",
+      "status": "Status",
+      "pendingTasting": "Pending (the winery will confirm by email)",
+      "pendingHike": "Pending (the guide will confirm by email)",
+      "whatNext": "What happens next:",
+      "step1": "Your request is saved in our system.",
+      "step2Tasting": "The winery typically replies within 24–48 hours on weekdays.",
+      "step2Hike": "The guide typically replies within 24–48 hours on weekdays.",
+      "step3": "Check {link} anytime with the same email.",
+      "myBookings": "My bookings",
+      "noReplyTasting": "If you do not hear back after two business days, contact the winery directly.",
+      "noReplyHike": "If you do not hear back after two business days, contact the guide directly."
+    },
+    "lookup": {
+      "subject": "Your secure bookings lookup link | Cyprus Winter",
+      "heading": "Your secure booking lookup link",
+      "requestedFor": "We received a request to view bookings for {email}.",
+      "useLink": "Use this secure link within 15 minutes:",
+      "viewBookings": "View my bookings",
+      "ignore": "If you didn't request this, you can ignore this email."
     }
   }
 }

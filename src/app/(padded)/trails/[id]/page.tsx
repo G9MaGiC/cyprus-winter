@@ -431,7 +431,7 @@ export default async function TrailPage({
             {/* Local secret */}
             {trail.localSecret && (
               <SectionCard title={tTrailsDetail("localSecretTitle")} borderAccent="golden">
-                <p className="text-olive/90 text-sm italic border-l-2 border-terracotta/30 pl-4 break-words">
+                <p className="text-olive/90 text-sm italic border-s-2 border-terracotta/30 ps-4 break-words">
                   {trail.localSecret}
                 </p>
               </SectionCard>

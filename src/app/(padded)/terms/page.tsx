@@ -64,7 +64,7 @@ export default async function TermsPage() {
           <p className="text-olive/90 leading-relaxed mb-4">
             {tTerms("sections.s3.intro")}
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>{tTerms("sections.s3.items.licence")}</li>
             <li>{tTerms("sections.s3.items.ownership")}</li>
             <li>{tTerms("sections.s3.items.noHarm")}</li>
@@ -78,7 +78,7 @@ export default async function TermsPage() {
           <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tTerms("sections.s4.title")}
           </h2>
-          <ul className="list-disc pl-6 space-y-2 text-olive/90">
+          <ul className="list-disc ps-6 space-y-2 text-olive/90">
             <li>
               {tTerms.rich("sections.s4.items.trail", {
                 strong: (chunks) => <strong>{chunks}</strong>,

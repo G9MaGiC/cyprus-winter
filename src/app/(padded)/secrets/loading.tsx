@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 function SecretSkeleton() {
   return (
-    <div className={`${CARD.base} ${CARD.content} border-l-4 border-l-golden/30`}>
+    <div className={`${CARD.base} ${CARD.content} border-s-4 border-s-golden/30`}>
       <div className="flex justify-between mb-3">
         <div className={`h-3 w-16 ${SKELETON.block}`} />
         <div className={`h-3 w-12 ${SKELETON.block}`} />

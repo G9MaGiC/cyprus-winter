@@ -125,7 +125,7 @@ export function AIChatInput({
               key={command}
               type="button"
               onClick={() => setInput(command)}
-              className="w-full flex items-center gap-3 min-h-[44px] px-4 py-2.5 text-left hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
+              className="w-full flex items-center gap-3 min-h-[44px] px-4 py-2.5 text-start hover:bg-sand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2"
             >
               <span className="text-sm font-mono text-terracotta">{command}</span>
               <span className="text-xs text-olive/60">{tCommon(`ai.slash.${descriptionKey}`)}</span>

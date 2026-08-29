@@ -67,7 +67,7 @@ export const trails: Trail[] = [
     elevationGainM: 40,
     durationMin: 180,
     description:
-      "Winter Troodos favorite. Seven-kilometre loop around Chionistra (Mount Olympus) at about 1,850 m through Troodos National Forest Park. Black pine, golden oak, ridge views. Forestry Department grade 1—smooth path, little climb. In winter the air is crisp, the crowds thin. Well-marked; weather changes fast—pack layers.",
+      "Winter Troodos favourite. Seven-kilometre loop around Chionistra (Mount Olympus) at about 1,850 m through Troodos National Forest Park. Black pine, golden oak, ridge views. Forestry Department grade 1—smooth path, little climb. In winter the air is crisp, the crowds thin. Well-marked; weather changes fast—pack layers.",
     highlights: ["Circular route", "Panoramic views", "Black pine forest"],
     winterNotes:
       "Official guide lists March–November as most suitable; winter is doable when clear of ice. Can be icy after cold snaps; check conditions before starting.",
@@ -220,7 +220,7 @@ export const trails: Trail[] = [
     elevationGainM: 320,
     durationMin: 180,
     description:
-      "Winter Akamas favorite. Official Forestry Adonis Trail is about 7.5 km circular from the Baths of Aphrodite (grade 2, ~3 hours). Shares the first ~2.5 km with Aphrodite toward Pyrgos tis Rigainas, then continues via Kefalovrysia and Queen's Tower. Rocky and uphill early. December and January: ideal temps. Combine with Vasilikon (Akamas loop) or Chrysorrogiatissa and Kolios (Paphos hills).",
+      "Winter Akamas favourite. Official Forestry Adonis Trail is about 7.5 km circular from the Baths of Aphrodite (grade 2, ~3 hours). Shares the first ~2.5 km with Aphrodite toward Pyrgos tis Rigainas, then continues via Kefalovrysia and Queen's Tower. Rocky and uphill early. December and January: ideal temps. Combine with Vasilikon (Akamas loop) or Chrysorrogiatissa and Kolios (Paphos hills).",
     highlights: ["Baths of Aphrodite", "Queen's Tower", "Coastal views"],
     winterNotes: "Best season for this trail. Cool temps, fewer crowds. Some muddy patches after rain.",
     bestSeason: ["winter", "spring", "autumn"],

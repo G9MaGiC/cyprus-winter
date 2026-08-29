@@ -111,7 +111,7 @@ export default function PlacePicker({
                 ? t("aria.itemAdded", { name: item.name })
                 : t("aria.addItem", { name: item.name })
             }
-            className={`text-left p-3 sm:p-4 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+            className={`text-start p-3 sm:p-4 min-h-[44px] rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 min-w-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               isAdded
                 ? "border-terracotta/10 bg-terracotta/10"
                 : "border-sand-200/80 bg-white hover:border-terracotta/30"
@@ -147,7 +147,7 @@ export default function PlacePicker({
       <div
         role="tablist"
         aria-label={t("aria.tabList")}
-        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pr-4 -mx-1 sm:mx-0 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]`}
+        className={`flex gap-2 ${SECTION.headingGap} overflow-x-auto scroll-smooth scroll-touch pb-1 pe-4 -mx-1 sm:mx-0 sm:pe-0 sm:flex-wrap sm:overflow-visible scrollbar-none snap-x snap-mandatory overscroll-x-contain touch-pan-x [-webkit-overflow-scrolling:touch]`}
         onKeyDown={(e) => {
           const t = e.target as HTMLElement;
           if (t?.getAttribute?.("role") !== "tab") return;

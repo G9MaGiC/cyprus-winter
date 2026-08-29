@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { REGION_CONFIGS, getRegionShortLabel, type RegionSlug } from "@/data/regions";
 import { SECTION } from "@/lib/design-tokens";
 
@@ -15,6 +16,7 @@ export default function RegionPickerChips({
   onUseLocation,
   suggestedRegion,
 }: RegionPickerChipsProps) {
+  const tCommon = useTranslations("common");
   const configs = REGION_CONFIGS;
   const suggested = suggestedRegion && configs.some((c) => c.slug === suggestedRegion) ? suggestedRegion : null;
 
@@ -62,7 +64,7 @@ export default function RegionPickerChips({
           }}
           className="text-sm text-olive/70 hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/30 focus-visible:ring-offset-2 rounded"
         >
-          Use my location instead
+          {tCommon("useMyLocationInstead")}
         </button>
       )}
     </>

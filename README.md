@@ -1,4 +1,4 @@
-# Cyprus — Your Island Guide
+# Cyprus Winter
 
 A tourism app for Cyprus that meets visitors at the airport and keeps them engaged throughout their stay. Beautiful, useful, and habit-forming by design.
 
@@ -30,7 +30,7 @@ Unlike generic travel sites (TripAdvisor, Booking), we focus on **one island, on
 
 ### Positioning Statement
 
-> For travellers planning a Cyprus trip who want a clear, trustworthy guide from arrival to departure, Cyprus is a destination app that curates the best places and helps them build a personal itinerary. Unlike generic travel sites, we focus only on Cyprus and guide users from the moment they land.
+> For travellers planning a Cyprus trip who want a clear, trustworthy guide from arrival to departure, Cyprus Winter is a destination app that curates the best places and helps them build a personal itinerary. Unlike generic travel sites, we focus only on Cyprus and guide users from the moment they land.
 
 ---
 

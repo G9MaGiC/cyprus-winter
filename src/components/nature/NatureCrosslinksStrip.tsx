@@ -21,7 +21,7 @@ export default function NatureCrosslinksStrip() {
 
   return (
     <section aria-labelledby="nature-crosslinks" className="mt-12 sm:mt-16">
-      <div className={`${CARD.base} ${CARD.content} border-l-4 border-l-sage`}>
+      <div className={`${CARD.base} ${CARD.content} border-s-4 border-s-sage`}>
         <h2 id="nature-crosslinks" className={`${TYPE.cardTitle} text-charcoal mb-2`}>
           {t("title")}
         </h2>

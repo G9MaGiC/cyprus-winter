@@ -4,7 +4,6 @@ import { PILL } from "@/lib/design-tokens";
 export type FilterChip = {
   id: string;
   label: string;
-  emoji?: string;
 };
 
 type FilterChipsProps = {
@@ -29,7 +28,7 @@ export default function FilterChips({
 }: FilterChipsProps) {
   return (
     <div
-      className="flex gap-2.5 overflow-x-auto overflow-y-hidden pb-1 -mb-1 pr-4 sm:pr-0 sm:flex-wrap sm:overflow-visible scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory sm:snap-none overscroll-x-contain touch-pan-x"
+      className="flex gap-2.5 overflow-x-auto overflow-y-hidden pb-1 -mb-1 pe-4 sm:pe-0 sm:flex-wrap sm:overflow-visible scrollbar-none scroll-smooth scroll-touch snap-x snap-mandatory sm:snap-none overscroll-x-contain touch-pan-x"
       role="group"
       aria-label={ariaLabel}
       style={{ WebkitOverflowScrolling: "touch", scrollPaddingInline: "max(1rem, env(safe-area-inset-left))" } as React.CSSProperties}
@@ -41,7 +40,6 @@ export default function FilterChips({
           aria-current={isActive(chip) ? "true" : undefined}
           className={`${baseClass} min-w-0 max-w-[min(100%,11rem)] sm:max-w-none snap-start ${isActive(chip) ? activeClassName : inactiveClass}`}
         >
-          {chip.emoji && <span className="mr-0.5 shrink-0">{chip.emoji}</span>}
           <span className="truncate min-w-0">{chip.label}</span>
         </AppLink>
       ))}
