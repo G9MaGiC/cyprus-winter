@@ -26,6 +26,7 @@ npm run typecheck
 npm run test
 npm run i18n:validate
 npm run i18n:scan --fail
+npm run i18n:editorial-drift
 npm run data:validate
 npm run build
 npm run test:e2e:gate:ci
