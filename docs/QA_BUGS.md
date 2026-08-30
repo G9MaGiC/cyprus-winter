@@ -46,11 +46,14 @@ Open | In progress | Fixed | Won't fix
 ### Reproduction
 Intermittent only: Playwright strict-mode occasionally resolves `locator('#discover-map')` to 2 identical sections during page load (discover-filters spec, ~1 in 40 runs incl. retries). Not reproducible in isolation (4/4 attempts show exactly 1 element after settle). Reads as the SSR'd map panel and a client re-mount coexisting briefly during hydration.
 
-### Notes
-`DiscoverMapSection.tsx` also declares `id="discover-map"` but is dead code (no importers) — removing it eliminates one duplicate-id source outright. Root-cause the double-mount when touching the discover map next.
+### Root cause
+The app is correct: the final DOM always holds exactly one `#discover-map` (static-capture verified) and the section is rendered once. The duplicate is Next.js streaming mechanics — while a streamed segment is promoted from its `<div hidden>` container, the CSS id transiently resolves to two nodes, and Playwright strict-mode violations abort `toBeVisible` instantly instead of retrying, so a sample landing in that window fails the test. The accessibility tree only ever holds the live node (failure snapshots confirmed).
+
+### Fix
+Spec assertions switched from `locator("#discover-map")` to role-scoped `getByRole("region", …)` queries, which resolve via the accessibility tree and are immune to the hidden mid-promotion copy. The dead `DiscoverMapSection.tsx` duplicate-id source was removed earlier (PR #219). Proof: 72 repeat runs with retries disabled — 7 failures before the fix, 0 after.
 
 ### Fix status
-Open (flake-level) — documented so re-runs aren't mistaken for regressions.
+Fixed.
 
 ---
 
