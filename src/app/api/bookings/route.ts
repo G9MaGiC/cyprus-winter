@@ -18,6 +18,7 @@ import {
 } from "@/lib/api-response";
 import type { RateLimitResult } from "@/lib/rate-limit";
 import { sanitizeForStorage } from "@/lib/sanitize";
+import { isCiE2eTestMode } from "@/lib/test-mode";
 import { isPartnerVerified } from "@/lib/partner-verification";
 import {
   createBookingLookupToken,
@@ -170,7 +171,9 @@ export async function POST(req: Request) {
       limitResult.resetAt
     );
   }
-  if (process.env.NODE_ENV === "production" && !hasSupabase()) {
+  if (process.env.NODE_ENV === "production" && !hasSupabase() && !isCiE2eTestMode()) {
+    // Fail closed in real production; CI E2E production builds fall back to
+    // the in-memory store (same double-flag contract as rate limiting).
     return jsonError("SERVICE_UNAVAILABLE", "Booking storage is not configured.", 503);
   }
 
@@ -381,7 +384,9 @@ export async function GET(req: Request) {
       limitResult.resetAt
     );
   }
-  if (process.env.NODE_ENV === "production" && !hasSupabase()) {
+  if (process.env.NODE_ENV === "production" && !hasSupabase() && !isCiE2eTestMode()) {
+    // Fail closed in real production; CI E2E production builds fall back to
+    // the in-memory store (same double-flag contract as rate limiting).
     return jsonError("SERVICE_UNAVAILABLE", "Booking storage is not configured.", 503);
   }
 

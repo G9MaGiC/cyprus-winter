@@ -8,28 +8,51 @@ import { test, expect } from "@playwright/test";
  * land (BUG-269): booking storage 503s rather than silently degrading.
  */
 
-test.describe("API contract — booking engine fail-closed + validation", () => {
-  test("booking storage gates fail closed with the uniform error envelope", async ({ request }) => {
-    const post = await request.post("/api/bookings", {
-      data: {
-        type: "winery_tasting",
-        providerId: "tsiakkas",
-        date: "2026-12-05",
-        partySize: 2,
-        guestEmail: "contract@example.com",
-        guestName: "Contract Test",
-        idempotencyKey: crypto.randomUUID(),
-      },
-    });
-    expect(post.status()).toBe(503);
-    const body = await post.json();
-    expect(body.error.code).toBe("SERVICE_UNAVAILABLE");
-    expect(typeof body.error.message).toBe("string");
-    expect(body.message).toBe(body.error.message);
+test.describe("API contract — booking engine contracts + validation", () => {
+  test("real submit contract under the CI E2E memory store: create, replay, conflict, honeypot, lookup", async ({ request }) => {
+    // Gate scripts run the server with CI+E2E_TEST_MODE, so this exercises
+    // the genuine createBooking path (in-memory). Real production keeps the
+    // fail-closed 503 — pinned in route-fail-closed.test.ts.
+    const idempotencyKey = crypto.randomUUID();
+    const email = `contract-${Date.now()}@example.com`;
+    const payload = {
+      type: "winery_tasting",
+      providerId: "tsiakkas",
+      date: "2026-12-05",
+      partySize: 2,
+      guestEmail: email,
+      guestName: "Contract Test",
+      idempotencyKey,
+    };
 
-    const get = await request.get("/api/bookings?email=contract%40example.com");
-    expect(get.status()).toBe(503);
-    expect((await get.json()).error.code).toBe("SERVICE_UNAVAILABLE");
+    const created = await request.post("/api/bookings", { data: payload });
+    expect(created.status()).toBe(200);
+    const createdBody = await created.json();
+    expect(createdBody.storage).toBe("memory");
+    expect(createdBody.booking.status).toBe("pending");
+
+    const replayed = await request.post("/api/bookings", { data: payload });
+    expect(replayed.status()).toBe(200);
+    const replayedBody = await replayed.json();
+    expect(replayedBody.replayed).toBe(true);
+    expect(replayedBody.booking.id).toBe(createdBody.booking.id);
+
+    const conflict = await request.post("/api/bookings", {
+      data: { ...payload, partySize: 4 },
+    });
+    expect(conflict.status()).toBe(409);
+    expect((await conflict.json()).error.code).toBe("IDEMPOTENCY_CONFLICT");
+
+    const honeypot = await request.post("/api/bookings", {
+      data: { ...payload, idempotencyKey: crypto.randomUUID(), website: "spam.example" },
+    });
+    expect(honeypot.status()).toBe(200);
+    expect((await honeypot.json()).stored).toBe(false);
+
+    const lookup = await request.get(`/api/bookings?email=${encodeURIComponent(email)}`);
+    expect(lookup.status()).toBe(200);
+    const bookings = (await lookup.json()).bookings as { id: string }[];
+    expect(bookings.some((b) => b.id === createdBody.booking.id)).toBe(true);
   });
 
   test("malformed input is rejected before any storage gate", async ({ request }) => {

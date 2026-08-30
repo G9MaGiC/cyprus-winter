@@ -31,34 +31,8 @@ test("Bookings: submit winery booking and see it on My Bookings", async ({
   tomorrow.setDate(tomorrow.getDate() + 1);
   const dateStr = tomorrow.toISOString().split("T")[0];
 
-  // Keep this flow deterministic in CI/local by mocking booking API success.
-  await page.route("**/api/bookings", async (route) => {
-    if (route.request().method() === "POST") {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({
-          ok: true,
-          storage: "database",
-          booking: {
-            id: "e2e-booking-1",
-            type: "winery_tasting",
-            providerId: "tsiakkas",
-            providerName: "Tsiakkas Winery",
-            date: dateStr,
-            partySize: 2,
-            guestEmail: "e2e@example.com",
-            guestName: "E2E Test User",
-            status: "pending",
-            createdAt: new Date().toISOString(),
-          },
-        }),
-      });
-      return;
-    }
-    await route.continue();
-  });
-
+  // No API mock: CI+E2E_TEST_MODE runs the real POST against the in-memory
+  // store, so this covers UI -> API -> storage -> My Bookings end to end.
   await gotoStable(page, "/book/winery/tsiakkas");
   await page.evaluate(() => localStorage.removeItem("cyprus-bookings"));
 
