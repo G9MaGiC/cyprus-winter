@@ -78,8 +78,16 @@ no longer appear in the payload. `/discover` total: 893KB → **816KB** (flight 
    in (~414 lean item instances for 237 places across standard + activity sections).
    Lever: serialize the item catalog once and give sections id lists. Diminishing returns
    at current sizes; revisit if the catalog grows.
-2. **Shared JS ~1.5–1.8MB decoded (~500KB over the wire)** per first view. Typical for
-   Next 16 + React 19 + next-intl + Leaflet-adjacent surfaces; no single outlier chunk.
+2. **Curated catalog (~252KB chunk) ships in the app shell on every page** — even
+   `/privacy` and `/forgot-password`. Chain: `useItinerary` (plan bar in the shell)
+   imports `getPlaceById` from the `@/data` barrel for synchronous place resolution.
+   Lever: split the resolver out of the hook so only plan/discover surfaces (which
+   already import data) pay for it — needs a small API design pass on the hook.
+   (Fixed in the same follow-up batch: supabase-js, ~230KB, loaded eagerly in the
+   shell via `AuthContext` — now dynamically imported only when auth is configured
+   and exercised; unconfigured environments fetch nothing. Leaflet was verified
+   correctly lazy on all pages. The remaining shared JS after both catalog+auth
+   levers is framework baseline: react-dom, next-intl messages, zod on form pages.)
 3. `/book/winery` HTML is 633KB — winery dataset inlined; same capping pattern applies
    if the page ever grows.
 

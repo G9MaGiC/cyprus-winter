@@ -9,9 +9,8 @@ import {
   type ReactNode,
 } from "react";
 import { useLocale } from "next-intl";
-import { getSupabaseBrowser } from "@/lib/supabase-browser";
 import { localizedPathname } from "@/lib/seo-locale-urls";
-import type { User, Session } from "@supabase/supabase-js";
+import type { User, Session, SupabaseClient } from "@supabase/supabase-js";
 
 type AuthState = {
   user: User | null;
@@ -48,6 +47,18 @@ function absoluteAppUrl(path: string, locale: string): string | undefined {
   return `${window.location.origin}${localizedPathname(path, locale)}`;
 }
 
+/**
+ * supabase-js is ~230KB of client JS and AuthProvider sits in the app shell,
+ * so the library must never load eagerly on every page. It is dynamically
+ * imported only when auth is configured and actually exercised; with the env
+ * vars absent (e.g. CI, unconfigured prod) nothing is fetched at all.
+ */
+async function loadSupabaseBrowser(): Promise<SupabaseClient | null> {
+  if (!isConfigured() || typeof window === "undefined") return null;
+  const { getSupabaseBrowser } = await import("@/lib/supabase-browser");
+  return getSupabaseBrowser();
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const locale = useLocale();
   const [state, setState] = useState<AuthState>({
@@ -58,53 +69,64 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    const supabase = getSupabaseBrowser();
-    if (!supabase) {
-      queueMicrotask(() =>
-        setState((s) => ({ ...s, isLoading: false, isConfigured: false }))
-      );
-      return;
-    }
-
     let mounted = true;
+    let subscription: { unsubscribe: () => void } | null = null;
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!mounted) return;
-      setState((s) => ({
-        ...s,
-        user: session?.user ?? null,
-        session,
-        isLoading: false,
-      }));
-    }).catch(() => {});
+    loadSupabaseBrowser()
+      .then((supabase) => {
+        if (!supabase) {
+          if (mounted)
+            setState((s) => ({ ...s, isLoading: false, isConfigured: false }));
+          return;
+        }
+        if (!mounted) return;
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      if (!mounted) return;
-      setState((s) => ({
-        ...s,
-        user: session?.user ?? null,
-        session,
-        needsPasswordReset: event === "PASSWORD_RECOVERY" || undefined,
-      }));
-    });
+        supabase.auth
+          .getSession()
+          .then(({ data: { session } }) => {
+            if (!mounted) return;
+            setState((s) => ({
+              ...s,
+              user: session?.user ?? null,
+              session,
+              isLoading: false,
+            }));
+          })
+          .catch(() => {});
+
+        subscription = supabase.auth.onAuthStateChange((event, session) => {
+          if (!mounted) return;
+          setState((s) => ({
+            ...s,
+            user: session?.user ?? null,
+            session,
+            needsPasswordReset: event === "PASSWORD_RECOVERY" || undefined,
+          }));
+        }).data.subscription;
+        if (!mounted) {
+          subscription.unsubscribe();
+          subscription = null;
+        }
+      })
+      .catch(() => {
+        if (mounted) setState((s) => ({ ...s, isLoading: false }));
+      });
 
     return () => {
       mounted = false;
-      subscription.unsubscribe();
+      subscription?.unsubscribe();
     };
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     return { error: error?.message ?? null };
   }, []);
 
   const signUp = useCallback(async (email: string, password: string, name?: string) => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.signUp({
       email,
@@ -115,7 +137,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signInWithOtp = useCallback(async (email: string) => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.signInWithOtp({
       email,
@@ -125,7 +147,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const signInWithOAuth = useCallback(async (provider: OAuthProvider, redirectTo?: string) => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const to = redirectTo ?? absoluteAppUrl("/account", locale);
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -138,7 +160,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const resetPassword = useCallback(async (email: string) => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
       redirectTo: absoluteAppUrl("/reset-password", locale),
@@ -147,14 +169,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const updatePassword = useCallback(async (password: string) => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (!supabase) return { error: "Auth is not configured." };
     const { error } = await supabase.auth.updateUser({ password });
     return { error: error?.message ?? null };
   }, []);
 
   const signOut = useCallback(async () => {
-    const supabase = getSupabaseBrowser();
+    const supabase = await loadSupabaseBrowser();
     if (supabase) await supabase.auth.signOut();
   }, []);
 
