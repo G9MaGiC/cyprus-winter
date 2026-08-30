@@ -8,6 +8,7 @@ import {
   productionEnvReady,
   toAnnexProductionChecks,
 } from "@/lib/production-readiness";
+import { constantTimeEquals } from "@/lib/secret-compare";
 
 // Health check must run at request time (Supabase connectivity, env)
 export const dynamic = "force-dynamic";
@@ -26,7 +27,8 @@ export async function GET(req: Request) {
   const production = process.env.NODE_ENV === "production";
   const healthSecret = process.env.HEALTH_SECRET;
   const authorized = Boolean(
-    healthSecret && req.headers.get("authorization") === `Bearer ${healthSecret}`
+    healthSecret &&
+    constantTimeEquals(req.headers.get("authorization") ?? "", `Bearer ${healthSecret}`)
   );
   const exposeDetails = !production || authorized;
 

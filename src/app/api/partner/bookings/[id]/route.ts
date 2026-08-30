@@ -54,6 +54,20 @@ export async function PATCH(
     if (result.error === "forbidden") {
       return jsonError("FORBIDDEN", "Forbidden", 403);
     }
+    if (result.error === "invalid_transition") {
+      return jsonError(
+        "INVALID_TRANSITION",
+        "This booking can no longer change to that status. Refresh to see its current state.",
+        409
+      );
+    }
+    if (result.error === "conflict") {
+      return jsonError(
+        "CONFLICT",
+        "This booking was updated by another request. Refresh and try again.",
+        409
+      );
+    }
     return jsonError("NOT_FOUND", "Booking not found.", 404);
   }
 

@@ -151,7 +151,8 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
       .from("bookings")
       .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
       .eq("guest_email", emailNormalized)
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .limit(200);
     if (error) throw new Error(error.message);
     return (data ?? []).map((row) => rowToBooking(row as Record<string, unknown>));
   }
@@ -168,7 +169,8 @@ export async function getBookingsByProviderId(providerId: string): Promise<Booki
       .from("bookings")
       .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
       .eq("provider_id", providerId)
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .limit(500);
     if (error) throw new Error(error.message);
     return (data ?? []).map((row) => rowToBooking(row as Record<string, unknown>));
   }
@@ -178,11 +180,28 @@ export async function getBookingsByProviderId(providerId: string): Promise<Booki
     .sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1));
 }
 
+/**
+ * Booking status is a finite-state machine, not a free string:
+ *   pending   -> confirmed | cancelled
+ *   confirmed -> cancelled
+ *   cancelled -> (terminal)
+ * Same-status updates are idempotent no-ops (safe retries); everything else
+ * is invalid_transition. The Supabase update is compare-and-set on the
+ * status read, so two concurrent partner updates cannot both win.
+ */
+const ALLOWED_STATUS_TRANSITIONS: Record<BookingStatus, readonly BookingStatus[]> = {
+  pending: ["confirmed", "cancelled"],
+  confirmed: ["cancelled"],
+  cancelled: [],
+};
+
 export async function updateBookingStatus(
   id: string,
   status: BookingStatus,
   providerId: string
-): Promise<{ booking: Booking } | { error: "not_found" | "forbidden" }> {
+): Promise<
+  { booking: Booking } | { error: "not_found" | "forbidden" | "invalid_transition" | "conflict" }
+> {
   if (status !== "confirmed" && status !== "cancelled") {
     return { error: "not_found" };
   }
@@ -198,21 +217,31 @@ export async function updateBookingStatus(
     if (!existing) return { error: "not_found" };
     const current = rowToBooking(existing as Record<string, unknown>);
     if (current.providerId !== providerId) return { error: "forbidden" };
+    if (current.status === status) return { booking: current };
+    if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes(status)) {
+      return { error: "invalid_transition" };
+    }
     const { data: updated, error } = await supabase
       .from("bookings")
       .update({ status })
       .eq("id", id)
       .eq("provider_id", providerId)
+      .eq("status", current.status)
       .select("*")
       .maybeSingle();
     if (error) throw new Error(error.message);
-    if (!updated) return { error: "not_found" };
+    // CAS miss: the row changed between read and write (concurrent update).
+    if (!updated) return { error: "conflict" };
     return { booking: rowToBooking(updated as Record<string, unknown>) };
   }
 
   const current = memoryStore.find((b) => b.id === id);
   if (!current) return { error: "not_found" };
   if (current.providerId !== providerId) return { error: "forbidden" };
+  if (current.status === status) return { booking: current };
+  if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes(status)) {
+    return { error: "invalid_transition" };
+  }
   current.status = status;
   return { booking: current };
 }
