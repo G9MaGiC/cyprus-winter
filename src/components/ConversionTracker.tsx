@@ -4,7 +4,7 @@ import { usePathname } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { trackProduct } from "@/lib/analytics";
-import { getPlaceById } from "@/data";
+import { getPlanItemById as getPlaceById } from "@/data/plan-items";
 
 export default function ConversionTracker() {
   const pathname = usePathname();

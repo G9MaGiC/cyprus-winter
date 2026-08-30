@@ -3,7 +3,7 @@
  * Format: 1:id1,id2|2:id3|3: → /plan?plan=...
  * Only valid place IDs (known to getPlaceById) are included.
  */
-import { getPlaceById } from "@/data";
+import { getPlanItemById as getPlaceById } from "@/data/plan-items";
 
 export type ItineraryDays = Record<number, string[]>;
 

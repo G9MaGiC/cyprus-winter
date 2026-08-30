@@ -78,16 +78,17 @@ no longer appear in the payload. `/discover` total: 893KB → **816KB** (flight 
    in (~414 lean item instances for 237 places across standard + activity sections).
    Lever: serialize the item catalog once and give sections id lists. Diminishing returns
    at current sizes; revisit if the catalog grows.
-2. **Curated catalog (~252KB chunk) ships in the app shell on every page** — even
-   `/privacy` and `/forgot-password`. Chain: `useItinerary` (plan bar in the shell)
-   imports `getPlaceById` from the `@/data` barrel for synchronous place resolution.
-   Lever: split the resolver out of the hook so only plan/discover surfaces (which
-   already import data) pay for it — needs a small API design pass on the hook.
-   (Fixed in the same follow-up batch: supabase-js, ~230KB, loaded eagerly in the
-   shell via `AuthContext` — now dynamically imported only when auth is configured
-   and exercised; unconfigured environments fetch nothing. Leaflet was verified
-   correctly lazy on all pages. The remaining shared JS after both catalog+auth
-   levers is framework baseline: react-dom, next-intl messages, zod on form pages.)
+2. **Fixed: the curated catalog no longer ships in the app shell.** The shell reached
+   the `@/data` barrel through `useItinerary` (plan bar), the share/ICS libs, and
+   `ConversionTracker` in the root layout — all only needing `{id, name, region, type}`.
+   They now resolve through `src/data/plan-items.ts`, backed by the checked-in
+   generated projection `plan-items.generated.ts` (368 items + 50 trail-slug aliases,
+   regenerated with `npm run data:plan-items`, drift-guarded by a sync test).
+   Result: `/privacy` referenced JS 1268KB → **832KB**, zero catalog chunks; static
+   pages now sit at 832–948KB while search/discover/plan pages keep the catalog they
+   actually use. (Same arc fixed supabase-js, ~230KB, now lazy via `AuthContext`;
+   Leaflet verified lazy everywhere. Remaining shared JS is framework baseline:
+   react-dom, next-intl messages, zod on form pages.)
 3. `/book/winery` HTML is 633KB — winery dataset inlined; same capping pattern applies
    if the page ever grows.
 
