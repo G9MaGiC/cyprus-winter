@@ -7,7 +7,6 @@ import { getTrailsItemListSchema } from "@/lib/trails-schema";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { getTranslations } from "next-intl/server";
 
-const TRAILS_HERO_IMAGE = "/images/cyprus/trails/trail-artemis.jpg";
 
 const trailsAlternates = buildStrategyAAlternates("/trails");
 

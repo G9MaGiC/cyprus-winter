@@ -9,7 +9,7 @@ import {
   buildDiscoverMapPlacesFromSections,
 } from "@/lib/discover-map-places";
 import type { PlanDayMapFocus } from "@/lib/discover-map-focus";
-import type { DiscoverSection } from "@/lib/discover-sections";
+import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { CARD, CTA, SECTION, TYPE, LAYOUT, TOKENS } from "@/lib/design-tokens";
 import type { DiscoverMapPinKind } from "./DiscoverMap";
 import DiscoverMapClient from "./DiscoverMapClient";
@@ -28,7 +28,7 @@ const LEGEND_DOT: Record<DiscoverMapPinKind, string> = {
 };
 
 type DiscoverMapPanelProps = {
-  sections: DiscoverSection[];
+  sections: DiscoverCardSection[];
   isActivityFilter: boolean;
   planFocus: PlanDayMapFocus;
   focusMode: boolean;

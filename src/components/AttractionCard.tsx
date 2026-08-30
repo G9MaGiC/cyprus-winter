@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { Attraction } from "@/data/attractions";
 import type { Winery } from "@/data/wineries";
 import type { Restaurant } from "@/data/restaurants";
+import type { DiscoverCardItem } from "@/lib/discover-sections";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { CARD, CTA, TYPE, MEDIA, BADGE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
@@ -21,7 +22,7 @@ export default function AttractionCard({
   a,
   bookFrom,
 }: {
-  a: Attraction | Winery | Restaurant;
+  a: Attraction | Winery | Restaurant | DiscoverCardItem;
   /** Query `from` for book tasting back navigation (e.g. discover, wineries). */
   bookFrom?: string;
 }) {
@@ -89,7 +90,7 @@ export default function AttractionCard({
                 {tCommon("local")}
               </span>
             )}
-            {isWinery && isPartnerVerified(a as Winery) && (
+            {isWinery && "isVerified" in a && isPartnerVerified(a) && (
               <span
                 className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}
                 title={tCommon("verifiedPartnerTitle")}

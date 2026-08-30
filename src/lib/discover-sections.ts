@@ -25,6 +25,55 @@ export type DiscoverSection = {
   seeMore?: { href: string; labelKey: string };
 };
 
+/**
+ * Lean projection of a DiscoverItem for the /discover client boundary —
+ * exactly the fields AttractionCard, the map (id-based lookup), and
+ * interest sorting consume. Full items are ~319KB of JSON for the catalog;
+ * this projection is ~136KB, and every field added here ships to the
+ * browser twice (SSR HTML + RSC flight), so extend deliberately.
+ */
+export type DiscoverCardItem = {
+  id: string;
+  name: string;
+  type: DiscoverItem["type"];
+  region: string;
+  description: string;
+  highlights?: string[];
+  bestFor?: string[];
+  winterTip?: string;
+  bestTimeToVisit?: string;
+  openingHours?: string;
+  isVerified?: boolean;
+  partnerEmail?: string;
+};
+
+/** A DiscoverSection with its items projected for the client boundary. */
+export type DiscoverCardSection = Omit<DiscoverSection, "items"> & {
+  items: DiscoverCardItem[];
+};
+
+export function toDiscoverCardItem(item: DiscoverItem): DiscoverCardItem {
+  const lean: DiscoverCardItem = {
+    id: item.id,
+    name: item.name,
+    type: item.type,
+    region: item.region,
+    description: item.description,
+  };
+  if ("highlights" in item && item.highlights) lean.highlights = item.highlights;
+  if ("bestFor" in item && item.bestFor) lean.bestFor = item.bestFor;
+  if ("winterTip" in item && item.winterTip) lean.winterTip = item.winterTip;
+  if ("bestTimeToVisit" in item && item.bestTimeToVisit) lean.bestTimeToVisit = item.bestTimeToVisit;
+  if ("openingHours" in item && item.openingHours) lean.openingHours = item.openingHours;
+  if ("isVerified" in item && item.isVerified !== undefined) lean.isVerified = item.isVerified;
+  if ("partnerEmail" in item && item.partnerEmail) lean.partnerEmail = item.partnerEmail;
+  return lean;
+}
+
+export function toDiscoverCardSection(section: DiscoverSection): DiscoverCardSection {
+  return { ...section, items: section.items.map(toDiscoverCardItem) };
+}
+
 /** Maps URL filter param to section id. */
 export const filterToSectionId: Record<string, string> = {
   beach: "coasts",

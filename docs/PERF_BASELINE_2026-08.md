@@ -64,12 +64,20 @@ JSON-LD keeps the full ItemList. Measured on `/discover` (same methodology):
 | Long tasks >50ms | 3699ms | 928ms |
 | Unique places in DOM | 214 | 45 |
 
+## Fixed in a follow-up batch: lean `DiscoverCardItem` across the client boundary
+
+`DiscoverClient` received full catalog objects (~319KB of item JSON) as props. The
+boundary now serializes `DiscoverCardItem` — exactly the fields AttractionCard, the map
+(id lookup), and interest sorting consume (~136KB). Verified field-by-field: `seasonTags`,
+`latitude/longitude`, `nameEl`, `editorialPriority`, `budgetLevel`, `transport`, `parking`
+no longer appear in the payload. `/discover` total: 893KB → **816KB** (flight 549KB → 472KB).
+
 ## Open levers (in impact order)
 
-1. **`/discover` RSC flight payload is still ~549KB** — `DiscoverClient` receives every
-   section's full `Attraction` objects as props for client-side filtering and the map.
-   Lever: project a lean list DTO (card + map fields only) across the boundary. Touches
-   the card/map/filter prop chain — do as its own reviewed change.
+1. **Item duplication across sections** — a place serialized once per section it appears
+   in (~414 lean item instances for 237 places across standard + activity sections).
+   Lever: serialize the item catalog once and give sections id lists. Diminishing returns
+   at current sizes; revisit if the catalog grows.
 2. **Shared JS ~1.5–1.8MB decoded (~500KB over the wire)** per first view. Typical for
    Next 16 + React 19 + next-intl + Leaflet-adjacent surfaces; no single outlier chunk.
 3. `/book/winery` HTML is 633KB — winery dataset inlined; same capping pattern applies
