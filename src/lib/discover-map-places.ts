@@ -2,7 +2,7 @@ import { getPlaceById, getAttractionById } from "@/data";
 import { getPlaceCoords } from "@/lib/place-coords";
 import { allDiscoverItems, type DiscoverItem } from "@/data/discover";
 import type { Attraction } from "@/data/attractions";
-import type { DiscoverSection } from "@/lib/discover-sections";
+
 import { trails } from "@/data/trails";
 import type {
   DiscoverMapPinKind,
@@ -116,8 +116,15 @@ export type BuildDiscoverMapFromSectionsOptions = {
 };
 
 /** Build typed map places from filtered discover sections (+ trail links for activity filters). */
+/** Structural section shape: the map only reads item/trail-link ids, so both
+ * full DiscoverSection and lean DiscoverCardSection inputs are accepted. */
+type MapSourceSection = {
+  items: { id: string }[];
+  trailLinks?: { id: string }[];
+};
+
 export function buildDiscoverMapPlacesFromSections(
-  sections: DiscoverSection[],
+  sections: MapSourceSection[],
   options: BuildDiscoverMapFromSectionsOptions = {}
 ): DiscoverMapPlace[] {
   const { includeTrailLinks = false } = options;

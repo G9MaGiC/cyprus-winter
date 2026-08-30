@@ -1,7 +1,6 @@
 import PlanPageClient from "./PlanPageClient";
 import { buildPlanPageMetadata } from "@/lib/plan-share-meta";
 
-const PLAN_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 
 /**
  * Plan funnel entry: server shell wraps the client itinerary (localStorage, URL ?add=).

@@ -1,7 +1,7 @@
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems } from "@/data/discover";
-import { buildDiscoverSections } from "@/lib/discover-sections";
+import { buildDiscoverSections, toDiscoverCardSection } from "@/lib/discover-sections";
 import {
   ACTIVITY_FILTER_KEYS,
   buildActivitySection,
@@ -23,10 +23,15 @@ import { toSafeJsonForScript } from "@/lib/json-script";
 
 const DISCOVER_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 
-const standardSections = buildDiscoverSections(allDiscoverItems);
+// Lean-project items at the client boundary: DiscoverClient serializes its
+// props into the RSC flight payload, so it gets DiscoverCardItem, not the
+// full catalog objects (~319KB -> ~136KB of item JSON).
+const standardSections = buildDiscoverSections(allDiscoverItems).map(toDiscoverCardSection);
 const activitySections = ACTIVITY_FILTER_KEYS.map((key) =>
   buildActivitySection(key, allDiscoverItems)
-).filter((s): s is NonNullable<typeof s> => s != null);
+)
+  .filter((s): s is NonNullable<typeof s> => s != null)
+  .map(toDiscoverCardSection);
 
 export async function generateMetadata({
   searchParams,

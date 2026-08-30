@@ -5,7 +5,7 @@ import AppLink from "@/components/AppLink";
 import FilterChips from "@/components/FilterChips";
 import StickyFilterBar from "@/components/StickyFilterBar";
 import { SECTION, CTA, LAYOUT, TYPE } from "@/lib/design-tokens";
-import type { DiscoverSection } from "@/lib/discover-sections";
+import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { buildDiscoverFilterChipGroups } from "@/lib/discover-filter-chips";
 import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 import { useTranslations } from "next-intl";
@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 import { buildDiscoverHubHref } from "@/lib/discover-hub-url";
 
 type DiscoverFilterBarProps = {
-  sections: DiscoverSection[];
+  sections: DiscoverCardSection[];
   filterParam: string;
   filter: string | undefined;
   sectionExists: boolean;

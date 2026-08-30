@@ -12,7 +12,7 @@ import { CTA, EMPTY_STATE, LAYOUT } from "@/lib/design-tokens";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { sortDiscoverItemsByInterests } from "@/lib/personalization";
 import { filterToSectionId } from "@/lib/discover-sections";
-import type { DiscoverSection } from "@/lib/discover-sections";
+import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { getPlanDayIndex, getPlanDayMapFocus } from "@/lib/discover-map-focus";
 import { buildDiscoverHubHref } from "@/lib/discover-hub-url";
@@ -31,8 +31,8 @@ import { useStickyPlanBar } from "@/contexts/StickyPlanBarContext";
 const MAP_FOCUS_STORAGE_KEY = "cyprus-winter:discover-map-focus";
 
 type DiscoverClientProps = {
-  sections: DiscoverSection[];
-  activitySections?: DiscoverSection[];
+  sections: DiscoverCardSection[];
+  activitySections?: DiscoverCardSection[];
 };
 
 function loadMapFocusPreference(): boolean {

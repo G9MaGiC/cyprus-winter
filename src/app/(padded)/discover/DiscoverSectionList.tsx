@@ -5,12 +5,12 @@ import AppLink from "@/components/AppLink";
 import AttractionCard from "@/components/AttractionCard";
 import AskAIButton from "@/components/AskAIButton";
 import { SECTION, CTA, EMPTY_STATE, HOME, HUB, LAYOUT, TYPE } from "@/lib/design-tokens";
-import type { DiscoverSection } from "@/lib/discover-sections";
+import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { useTranslations } from "next-intl";
 
 type DiscoverSectionListProps = {
-  sections: DiscoverSection[];
+  sections: DiscoverCardSection[];
   /**
    * Render at most this many cards per section (multi-section overview).
    * The full section stays one tap away at /discover?filter=<id>, which the
