@@ -1,4 +1,4 @@
-import { getPlaceById, type PlanItem } from "@/data";
+import { getPlanItemById as getPlaceById, type PlanItem } from "@/data/plan-items";
 import type { ItineraryDays } from "@/lib/itinerary-share";
 
 const NAMED_ALL_MAX = 3;

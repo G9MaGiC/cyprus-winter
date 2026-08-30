@@ -70,7 +70,8 @@
     "vapid-keys": "npx web-push generate-vapid-keys",
     "android:sync": "cap sync android",
     "android:build:debug": "cd android && ./gradlew assembleDebug",
-    "android:build:release": "cap build android --androidreleasetype AAB"
+    "android:build:release": "cap build android --androidreleasetype AAB",
+    "data:plan-items": "npx tsx scripts/data/generate-plan-items.ts"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.43.0",

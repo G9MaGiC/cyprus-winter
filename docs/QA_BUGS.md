@@ -37,6 +37,23 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-353] Transient duplicate #discover-map during hydration (E2E flake source)
+
+**Severity:** Low
+**Area:** Discover / hydration
+**Page/Component:** `/discover?view=map` — `DiscoverMapPanel`
+
+### Reproduction
+Intermittent only: Playwright strict-mode occasionally resolves `locator('#discover-map')` to 2 identical sections during page load (discover-filters spec, ~1 in 40 runs incl. retries). Not reproducible in isolation (4/4 attempts show exactly 1 element after settle). Reads as the SSR'd map panel and a client re-mount coexisting briefly during hydration.
+
+### Notes
+`DiscoverMapSection.tsx` also declares `id="discover-map"` but is dead code (no importers) — removing it eliminates one duplicate-id source outright. Root-cause the double-mount when touching the discover map next.
+
+### Fix status
+Open (flake-level) — documented so re-runs aren't mistaken for regressions.
+
+---
+
 ### [BUG-352] Boot-time "window is not defined" digest in production server log (cosmetic)
 
 **Severity:** Low

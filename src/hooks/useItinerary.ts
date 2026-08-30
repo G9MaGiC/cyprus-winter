@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { getPlaceById, type PlanItem } from "@/data";
+import { getPlanItemById as getPlaceById, type PlanItem } from "@/data/plan-items";
 import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { buildPlanIcs, downloadPlanIcs } from "@/lib/plan-ics";
 import { buildPlanShareCopy, buildPlanSharePreview } from "@/lib/plan-share-preview";
