@@ -5,19 +5,24 @@ import { shouldSkipLocaleProxy } from "@/lib/locale-proxy-skip";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
+function generateNonce(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  let binary = "";
+  for (const b of bytes) binary += String.fromCharCode(b);
+  return btoa(binary);
+}
+
 // Chain next-intl (locale routing) with security headers
 export default function proxy(request: NextRequest): NextResponse {
-  // PWA manifests live at /manifests/[locale]. Locale middleware otherwise
-  // rewrites /manifests/en → /en/manifests/en (404), breaking install + SW precache.
-  const pathname = request.nextUrl?.pathname ?? "";
-  const response = shouldSkipLocaleProxy(pathname)
-    ? NextResponse.next()
-    : intlMiddleware(request);
-
   const isDev = process.env.NODE_ENV === "development";
+  // Per-request nonce lets production drop 'unsafe-inline' from script-src.
+  // Next reads the CSP from the *request* headers and stamps the nonce onto
+  // every script tag it emits; 'strict-dynamic' then trusts what those
+  // scripts load. Dev keeps unsafe-inline/eval — Fast Refresh needs them.
+  const nonce = generateNonce();
   const scriptSrc = isDev
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-    : "script-src 'self' 'unsafe-inline'";
+    : `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`;
 
   const cspHeader = [
     "default-src 'self'",
@@ -47,6 +52,20 @@ export default function proxy(request: NextRequest): NextResponse {
     // Upgrade HTTP to HTTPS
     "upgrade-insecure-requests",
   ].join("; ");
+
+  // PWA manifests live at /manifests/[locale]. Locale middleware otherwise
+  // rewrites /manifests/en → /en/manifests/en (404), breaking install + SW precache.
+  const pathname = request.nextUrl?.pathname ?? "";
+  if (!isDev) {
+    // Next reads the CSP from the REQUEST headers and stamps the nonce onto
+    // every script tag it renders — so this must be set before the response
+    // (intl rewrite or pass-through) is created from this request.
+    request.headers.set("content-security-policy", cspHeader);
+    request.headers.set("x-nonce", nonce);
+  }
+  const response = shouldSkipLocaleProxy(pathname)
+    ? NextResponse.next({ request: { headers: request.headers } })
+    : intlMiddleware(request);
 
   // Add security headers
   response.headers.set("Content-Security-Policy", cspHeader);
