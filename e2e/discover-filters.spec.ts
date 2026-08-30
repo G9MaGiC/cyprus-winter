@@ -66,7 +66,12 @@ test.describe("Discover filters", () => {
     await expect(page.getByRole("main")).toBeVisible();
     const mapTab = page.getByRole("tab", { name: /^Map$|^Karte$|^Mapa$|^Χάρτης$/i });
     await expect(mapTab).toHaveAttribute("aria-selected", "true");
-    await expect(page.locator("#discover-map")).toBeVisible({ timeout: 20_000 });
+    // Role-scoped: the CSS id can transiently resolve to 2 nodes while Next
+    // promotes the streamed segment from its hidden container (BUG-353);
+    // the accessibility tree only ever holds the live one.
+    await expect(
+      page.getByRole("region", { name: /Places on map|Orte auf der Karte|Μέρη στον χάρτη|Miejsca na mapie/i })
+    ).toBeVisible({ timeout: 20_000 });
   });
 
   test("filter chip preserves view=map in URL", async ({ page }) => {
@@ -86,7 +91,9 @@ test.describe("Discover filters", () => {
       await mapTab.click();
     }
     await expect(mapTab).toHaveAttribute("aria-selected", "true", { timeout: 20_000 });
-    const mapSection = page.locator("#discover-map");
+    const mapSection = page.getByRole("region", {
+      name: /Places on map|Orte auf der Karte|Μέρη στον χάρτη|Miejsca na mapie/i,
+    });
     await expect(mapSection).toBeVisible({ timeout: 20_000 });
     const legend = mapSection.getByRole("list", {
       name: /Map marker types|Markertypen|Τύποι δεικτών|Typy znaczników/i,
