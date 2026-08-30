@@ -7,6 +7,7 @@ import {
   deletePushSubscription,
 } from "@/lib/push-subscriptions";
 import { sendPush, isPushConfigured } from "@/lib/push";
+import { constantTimeEquals } from "@/lib/secret-compare";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -38,7 +39,7 @@ export async function GET(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
 
-  if (!secret || authHeader !== `Bearer ${secret}`) {
+  if (!secret || !authHeader || !constantTimeEquals(authHeader, `Bearer ${secret}`)) {
     return jsonError("UNAUTHORIZED", "Unauthorized", 401);
   }
 

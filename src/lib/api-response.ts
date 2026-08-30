@@ -14,6 +14,8 @@ export type ApiErrorCode =
   | "SERVER_ERROR"
   | "SERVICE_UNAVAILABLE"
   | "IDEMPOTENCY_CONFLICT"
+  | "INVALID_TRANSITION"
+  | "CONFLICT"
   | "PAYLOAD_TOO_LARGE";
 
 export type ApiErrorDetail = {

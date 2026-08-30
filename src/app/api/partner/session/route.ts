@@ -9,6 +9,7 @@ import {
 } from "@/lib/partner-session";
 import { partnerAuthUnavailable, readPartnerSession, unauthorizedPartner } from "@/lib/partner-auth";
 import { rateLimit } from "@/lib/rate-limit";
+import { constantTimeEquals } from "@/lib/secret-compare";
 import type { RateLimitResult } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -76,7 +77,7 @@ export async function POST(req: NextRequest) {
       ? (body as { secret: string }).secret.trim()
       : "";
 
-  if (!token || token !== secret) {
+  if (!token || !constantTimeEquals(token, secret)) {
     return unauthorizedPartner();
   }
 
