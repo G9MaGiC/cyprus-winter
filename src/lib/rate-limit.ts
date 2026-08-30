@@ -10,6 +10,8 @@ import {
   type RateLimitResult,
 } from "./rate-limit-shared";
 import { inMemoryRateLimit } from "./rate-limit-in-memory";
+// CI E2E has no external Redis service; see isCiE2eTestMode for the contract.
+import { isCiE2eTestMode as isCiE2eTest } from "./test-mode";
 import { redisRateLimit } from "./rate-limit-redis";
 
 export type { RateLimitResult } from "./rate-limit-shared";
@@ -37,11 +39,6 @@ function hasRedisEnv(): boolean {
   );
 }
 
-function isCiE2eTest(): boolean {
-  // CI E2E has no external Redis service. This flag is supplied only by the
-  // workflow test job, while production deployments still fail closed.
-  return process.env.CI === "true" && process.env.E2E_TEST_MODE === "true";
-}
 
 export async function rateLimit(
   req: Request,
