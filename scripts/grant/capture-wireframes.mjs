@@ -131,9 +131,14 @@ async function waitMainImages(page) {
   await page.locator("main img").first().waitFor({ state: "visible", timeout: 20_000 });
   await page.waitForFunction(
     () =>
-      [...document.querySelectorAll("main img")].every(
-        (img) => img.complete && img.naturalWidth > 0
-      ),
+      [...document.querySelectorAll("main img")].every((img) => {
+        // Shots are viewport-only: below-fold lazy images never start and
+        // must not stall the capture; complete alone also covers errored
+        // images (e.g. map tiles on networks that block tile hosts).
+        const r = img.getBoundingClientRect();
+        const inView = r.bottom > 0 && r.top < window.innerHeight;
+        return !inView || img.complete;
+      }),
     null,
     { timeout: 30_000 }
   );
