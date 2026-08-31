@@ -359,7 +359,8 @@
       "all": "Toate regiunile",
       "aria": "Filtrează după regiune",
       "showing": "{count} din {total} afișate"
-    }
+    },
+    "localeSwitchHeading": "Limbă"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2088,35 +2089,43 @@
       "items": {
         "short-stay": {
           "label": "Sejur scurt",
-          "description": "48 de ore: coastă antică, traseu Troodos, vin de sat"
+          "description": "48 de ore: coastă antică, traseu Troodos, vin de sat",
+          "bookingNote": "Rezervați degustarea la Tsiakkas — locurile de iarnă se ocupă repede."
         },
         "classic": {
           "label": "Clasic",
-          "description": "De la coastă la munte: ruine Paphos, trasee Troodos, dantelă Lefkara"
+          "description": "De la coastă la munte: ruine Paphos, trasee Troodos, dantelă Lefkara",
+          "bookingNote": "Rezervați degustările Tsiakkas și Kolios cu 24–48 h înainte."
         },
         "mountain": {
           "label": "Munte",
-          "description": "Bucle Troodos și sate de piatră—Artemis, Caledonia, Kykkos"
+          "description": "Bucle Troodos și sate de piatră—Artemis, Caledonia, Kykkos",
+          "bookingNote": "Tsiakkas după Kykkos — combinația perfectă de final de zi."
         },
         "coast-culture": {
           "label": "Coastă & Cultură",
-          "description": "Plaje, UNESCO, crame—de la est la vest"
+          "description": "Plaje, UNESCO, crame—de la est la vest",
+          "bookingNote": "Rezervați degustările Omodos/Tsiakkas; program de iarnă limitat."
         },
         "family": {
           "label": "Familie",
-          "description": "Ritm blând, 2 opriri/zi—plaje, muzee, prânz la sat"
+          "description": "Ritm blând, 2 opriri/zi—plaje, muzee, prânz la sat",
+          "bookingNote": "Sterna Boutique — rezervați degustarea de familie; iarna sunați cu 24 h înainte."
         },
         "workation": {
           "label": "Săptămână workation",
-          "description": "Remote în săptămână, Troodos & coastă în weekend—cafenele cu wifi, vreme blândă"
+          "description": "Remote în săptămână, Troodos & coastă în weekend—cafenele cu wifi, vreme blândă",
+          "bookingNote": "Rezervați devreme locurile de weekend la crame; în timpul săptămânii e mai liniștit."
         },
         "classic-7": {
           "label": "Cultură clasică (7 zile)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—tur complet al insulei"
+          "description": "Larnaca → Nicosia → Troodos → Paphos—tur complet al insulei",
+          "bookingNote": "Mai multe opriri la crame — rezervați din timp; personal redus iarna."
         },
         "mountain-10": {
           "label": "Explorator montan (10 zile)",
-          "description": "Bază Troodos, Pitsilia, Machairas, apoi coastă—imersiune pentru drumeți"
+          "description": "Bază Troodos, Pitsilia, Machairas, apoi coastă—imersiune pentru drumeți",
+          "bookingNote": "Vouni Panayia: rezervați degustarea. Zilele 8–10: relaxare pe coastă."
         }
       }
     },

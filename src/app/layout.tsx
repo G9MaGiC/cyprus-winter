@@ -10,6 +10,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { Plus_Jakarta_Sans, Fraunces, Noto_Sans_Hebrew, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import LocaleSuggestionBar from "@/components/LocaleSuggestionBar";
 import BottomNav from "@/components/BottomNav";
 import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
@@ -156,6 +157,7 @@ export default async function RootLayout({
               <WebVitalsReporter />
               <ScrollToTop />
               <Nav />
+              <LocaleSuggestionBar />
               <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
                 {children}
               </main>

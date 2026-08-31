@@ -359,7 +359,8 @@
       "all": "Wszystkie regiony",
       "aria": "Filtruj według regionu",
       "showing": "Wyświetlane: {count} z {total}"
-    }
+    },
+    "localeSwitchHeading": "Język"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2088,35 +2089,43 @@
       "items": {
         "short-stay": {
           "label": "Krótki pobyt",
-          "description": "48 godzin: starożytne wybrzeże, szlak Troodos, wino w wiosce"
+          "description": "48 godzin: starożytne wybrzeże, szlak Troodos, wino w wiosce",
+          "bookingNote": "Zarezerwuj degustację w Tsiakkas — zimowe terminy szybko się zapełniają."
         },
         "classic": {
           "label": "Klasyczny",
-          "description": "Od wybrzeża do gór: ruiny Pafos, szlaki Troodos, koronka z Lefkary"
+          "description": "Od wybrzeża do gór: ruiny Pafos, szlaki Troodos, koronka z Lefkary",
+          "bookingNote": "Degustacje w Tsiakkas i Kolios rezerwuj 24–48 h wcześniej."
         },
         "mountain": {
           "label": "Góry",
-          "description": "Pętle Troodos i kamienne wioski—Artemis, Caledonia, Kykkos"
+          "description": "Pętle Troodos i kamienne wioski—Artemis, Caledonia, Kykkos",
+          "bookingNote": "Tsiakkas po Kykkos — idealne domknięcie dnia."
         },
         "coast-culture": {
           "label": "Wybrzeże i kultura",
-          "description": "Plaże, UNESCO, winnice—wschód na zachód"
+          "description": "Plaże, UNESCO, winnice—wschód na zachód",
+          "bookingNote": "Rezerwuj degustacje Omodos/Tsiakkas; zimą ograniczone godziny."
         },
         "family": {
           "label": "Rodzina",
-          "description": "Spokojne tempo, 2 przystanki/dzień—plaże, muzea, lunch w wiosce"
+          "description": "Spokojne tempo, 2 przystanki/dzień—plaże, muzea, lunch w wiosce",
+          "bookingNote": "Sterna Boutique — zarezerwuj degustację rodzinną; zimą zadzwoń 24 h wcześniej."
         },
         "workation": {
           "label": "Tydzień workation",
-          "description": "Praca zdalna w tygodniu, Troodos i wybrzeże w weekend—kawiarnie z wifi, łagodna pogoda"
+          "description": "Praca zdalna w tygodniu, Troodos i wybrzeże w weekend—kawiarnie z wifi, łagodna pogoda",
+          "bookingNote": "Weekendowe terminy w winnicach rezerwuj wcześnie; w tygodniu jest spokojniej."
         },
         "classic-7": {
           "label": "Klasyczna kultura (7 dni)",
-          "description": "Larnaka → Nikozja → Troodos → Pafos—pełne objazd wyspy"
+          "description": "Larnaka → Nikozja → Troodos → Pafos—pełne objazd wyspy",
+          "bookingNote": "Kilka winnic po drodze — rezerwuj wcześniej; zimą mniejsza obsada."
         },
         "mountain-10": {
           "label": "Eksplorator gór (10 dni)",
-          "description": "Baza Troodos, Pitsilia, Machairas, potem wybrzeże—głęboka piesza przygoda"
+          "description": "Baza Troodos, Pitsilia, Machairas, potem wybrzeże—głęboka piesza przygoda",
+          "bookingNote": "Vouni Panayia: zarezerwuj degustację. Dni 8–10: wyciszenie na wybrzeżu."
         }
       }
     },

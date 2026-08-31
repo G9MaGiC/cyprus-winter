@@ -1,4 +1,6 @@
 import AppLink from "@/components/AppLink";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 import { CARD, CTA, TYPE } from "@/lib/design-tokens";
 import { isCallAheadHours, placeCardHours } from "@/lib/place-card-hours";
 import {
@@ -8,7 +10,12 @@ import {
 import { getTranslations } from "next-intl/server";
 
 export default async function WineRouteBookableStops({ slug }: { slug: string }) {
-  const stops = getBookableWineriesForRoute(slug);
+  // Pilot overlay + partner precedence (AUD-10); flag decided on the EN base.
+  const stops = await Promise.all(
+    getBookableWineriesForRoute(slug).map(async (w) =>
+      applyPartnerOpeningHours(await localizeWineryContent(w))
+    )
+  );
   if (stops.length === 0) return null;
 
   const [tPage, tCommon] = await Promise.all([
@@ -37,7 +44,7 @@ export default async function WineRouteBookableStops({ slug }: { slug: string })
                 <p className="font-display text-sm sm:text-base font-semibold text-charcoal">{winery.name}</p>
                 {hours ? (
                   <p className="text-xs text-aegean/90 mt-1 break-words">
-                    {isCallAheadHours(hours) ? `${tCommon("callAhead")} · ` : null}
+                    {(winery.hoursCallAhead ?? isCallAheadHours(hours)) ? `${tCommon("callAhead")} · ` : null}
                     {hours}
                   </p>
                 ) : null}

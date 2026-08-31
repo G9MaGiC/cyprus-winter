@@ -359,7 +359,8 @@
       "all": "Toutes les régions",
       "aria": "Filtrer par région",
       "showing": "{count} sur {total} affichés"
-    }
+    },
+    "localeSwitchHeading": "Langue"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2088,35 +2089,43 @@
       "items": {
         "short-stay": {
           "label": "Court séjour",
-          "description": "48 heures : côte antique, sentier Troodos, vin de village"
+          "description": "48 heures : côte antique, sentier Troodos, vin de village",
+          "bookingNote": "Réservez la dégustation chez Tsiakkas — les créneaux d’hiver se remplissent."
         },
         "classic": {
           "label": "Classique",
-          "description": "De la côte aux montagnes : ruines de Paphos, sentiers Troodos, dentelle de Lefkara"
+          "description": "De la côte aux montagnes : ruines de Paphos, sentiers Troodos, dentelle de Lefkara",
+          "bookingNote": "Réservez les dégustations Tsiakkas et Kolios 24–48 h à l’avance."
         },
         "mountain": {
           "label": "Montagne",
-          "description": "Boucles du Troodos et villages de pierre—Artemis, Caledonia, Kykkos"
+          "description": "Boucles du Troodos et villages de pierre—Artemis, Caledonia, Kykkos",
+          "bookingNote": "Tsiakkas après Kykkos — l’accord parfait de fin de journée."
         },
         "coast-culture": {
           "label": "Côte & Culture",
-          "description": "Plages, sites UNESCO, domaines—est à ouest"
+          "description": "Plages, sites UNESCO, domaines—est à ouest",
+          "bookingNote": "Réservez les dégustations Omodos/Tsiakkas ; horaires d’hiver limités."
         },
         "family": {
           "label": "Famille",
-          "description": "Rythme doux, 2 arrêts/jour—plages, musées, déjeuner au village"
+          "description": "Rythme doux, 2 arrêts/jour—plages, musées, déjeuner au village",
+          "bookingNote": "Sterna Boutique — réservez la dégustation famille ; en hiver, appelez 24 h avant."
         },
         "workation": {
           "label": "Semaine workation",
-          "description": "Télétravail en semaine, Troodos & côte le week-end—cafés wifi, temps doux"
+          "description": "Télétravail en semaine, Troodos & côte le week-end—cafés wifi, temps doux",
+          "bookingNote": "Réservez tôt les créneaux du week-end au domaine ; la semaine est plus calme."
         },
         "classic-7": {
           "label": "Culture classique (7 jours)",
-          "description": "Larnaca → Nicosie → Troodos → Paphos—tour complet de l'île"
+          "description": "Larnaca → Nicosie → Troodos → Paphos—tour complet de l'île",
+          "bookingNote": "Plusieurs domaines au programme — réservez à l’avance ; effectifs réduits en hiver."
         },
         "mountain-10": {
           "label": "Explorateur montagne (10 jours)",
-          "description": "Base Troodos, Pitsilia, Machairas, puis côte—immersion randonnée"
+          "description": "Base Troodos, Pitsilia, Machairas, puis côte—immersion randonnée",
+          "bookingNote": "Vouni Panayia : réservez la dégustation. Jours 8–10 : détente sur la côte."
         }
       }
     },

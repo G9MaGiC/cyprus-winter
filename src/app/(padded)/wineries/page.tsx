@@ -12,6 +12,8 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { isPartnerVerified } from "@/lib/partner-verification";
 import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
@@ -43,6 +45,12 @@ export default async function WineriesPage() {
     getTranslations("home"),
     getTranslations("wineries.page"),
   ]);
+
+  // AUD-10 card surfaces: pilot overlay + partner hours baked server-side
+  // (partner runtime hours win; also removes the client-side dead-Map split).
+  const localizedWineries = await Promise.all(
+    wineries.map(async (w) => applyPartnerOpeningHours(await localizeWineryContent(w)))
+  );
 
   const wineriesItemListSchema = {
     "@context": "https://schema.org",
@@ -89,7 +97,7 @@ export default async function WineriesPage() {
       </PageHeader>
 
       {(() => {
-        const partners = wineries.filter((w) => isPartnerVerified(w));
+        const partners = localizedWineries.filter((w) => isPartnerVerified(w));
         return partners.length > 0 ? (
           <section aria-labelledby="partners-heading" className="mb-12 sm:mb-16">
             <h2 id="partners-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
@@ -127,7 +135,7 @@ export default async function WineriesPage() {
         return <HubRegionFilter containerId="wineries-all-grid" groups={groups} total={wineries.length} />;
       })()}
       <div id="wineries-all-grid" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-        {wineries.map((winery) => (
+        {localizedWineries.map((winery) => (
           <div key={winery.id} data-hub-group={/\(([^)]+)\)\s*$/.exec(winery.region)?.[1] ?? winery.region}>
             <AttractionCard a={winery} bookFrom="wineries" />
           </div>

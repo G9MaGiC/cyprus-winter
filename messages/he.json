@@ -359,7 +359,8 @@
       "all": "כל האזורים",
       "aria": "סינון לפי אזור",
       "showing": "מוצגים {count} מתוך {total}"
-    }
+    },
+    "localeSwitchHeading": "שפה"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2088,35 +2089,43 @@
       "items": {
         "short-stay": {
           "label": "שהייה קצרה",
-          "description": "48 שעות: חוף עתיק, שביל טרודוס, יין כפרי"
+          "description": "48 שעות: חוף עתיק, שביל טרודוס, יין כפרי",
+          "bookingNote": "הזמינו טעימה בטסיאקאס — המקומות בחורף מתמלאים."
         },
         "classic": {
           "label": "קלאסי",
-          "description": "מהחוף להרים: חורבות כוריון, שבילי טרודוס, תחרת Lefkara"
+          "description": "מהחוף להרים: חורבות כוריון, שבילי טרודוס, תחרת Lefkara",
+          "bookingNote": "הזמינו טעימות בטסיאקאס ובקוליוס ⁦24–48⁩ שעות מראש."
         },
         "mountain": {
           "label": "הרים",
-          "description": "לולאות טרודוס וכפרי אבן—Artemis, Caledonia, Kykkos"
+          "description": "לולאות טרודוס וכפרי אבן—Artemis, Caledonia, Kykkos",
+          "bookingNote": "טסיאקאס אחרי קיקוס — שילוב מושלם לסוף היום."
         },
         "coast-culture": {
           "label": "חוף ותרבות",
-          "description": "חופים, אתרי UNESCO, יקבים—ממזרח למערב"
+          "description": "חופים, אתרי UNESCO, יקבים—ממזרח למערב",
+          "bookingNote": "הזמינו טעימות באומודוס/טסיאקאס; שעות החורף מוגבלות."
         },
         "family": {
           "label": "משפחה",
-          "description": "קצב רגוע, 2 תחנות/יום—חופים, מוזיאונים, צהריים בכפר"
+          "description": "קצב רגוע, 2 תחנות/יום—חופים, מוזיאונים, צהריים בכפר",
+          "bookingNote": "סטרנה בוטיק — הזמינו טעימה משפחתית; בחורף התקשרו 24 שעות מראש."
         },
         "workation": {
           "label": "שבוע workation",
-          "description": "עבודה מרחוק בימות השבוע, טרודוס והחוף בסופ״ש—בתי קפה עם wifi, מזג אוויר נעים"
+          "description": "עבודה מרחוק בימות השבוע, טרודוס והחוף בסופ״ש—בתי קפה עם wifi, מזג אוויר נעים",
+          "bookingNote": "הזמינו מוקדם מקומות ליקבים בסוף השבוע; באמצע השבוע שקט יותר."
         },
         "classic-7": {
           "label": "תרבות קלאסית (7 ימים)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—סיבוב מלא באי"
+          "description": "Larnaca → Nicosia → Troodos → Paphos—סיבוב מלא באי",
+          "bookingNote": "כמה עצירות ביקבים — הזמינו מראש; צוות מצומצם בחורף."
         },
         "mountain-10": {
           "label": "חוקר הרים (10 ימים)",
-          "description": "בסיס טרודוס, Pitsilia, Machairas, אחר כך החוף—טיולים עמוקים"
+          "description": "בסיס טרודוס, Pitsilia, Machairas, אחר כך החוף—טיולים עמוקים",
+          "bookingNote": "ווני פנאיה: הזמינו טעימה. ימים ⁦8–10⁩: הרפיה בחוף."
         }
       }
     },

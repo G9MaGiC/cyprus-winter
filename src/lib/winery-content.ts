@@ -1,6 +1,7 @@
 import "server-only";
 import { getTranslations } from "next-intl/server";
 import type { Winery } from "@/data/wineries";
+import { isCallAheadHours } from "@/lib/place-card-hours";
 
 /**
  * BUG-110 message-overlay pattern for winery decision-surface content
@@ -11,9 +12,8 @@ import type { Winery } from "@/data/wineries";
  * everything else falls back to the EN base record.
  *
  * Scope notes:
- * - Server surfaces only (book hub + book detail). Client card surfaces
- *   (AttractionCard hours/tease) stay on the EN base until the
- *   isCallAheadHours EN-regex in place-card-hours.ts is restructured.
+ * - Card surfaces read the precomputed `hoursCallAhead` flag (decided on the
+ *   EN base here) so the call-ahead badge survives translation.
  * - JSON-LD keeps reading the EN base record for structured-data
  *   consistency.
  * - The runtime partner overlay (applyPartnerOpeningHours) is applied AFTER
@@ -38,5 +38,11 @@ export async function localizeWineryContent(winery: Winery, locale?: string): Pr
       overlaid[field] = t(`${winery.id}.${field}`);
     }
   }
-  return { ...winery, ...overlaid };
+  return {
+    ...winery,
+    ...overlaid,
+    // The call-ahead badge is an EN-regex over the hours line — decide it on
+    // the EN base BEFORE overlaying, so it survives translation.
+    hoursCallAhead: isCallAheadHours(winery.openingHours ?? winery.tastingInfo),
+  };
 }

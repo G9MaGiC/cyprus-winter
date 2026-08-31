@@ -141,6 +141,13 @@ export default function QuickStartSection({
         <span className="text-sm text-muted-ink mt-2 block break-words line-clamp-2 leading-relaxed">
           {tTemplate(template.key, "description")}
         </span>
+        {/* Booking note: populated in data since day one but never rendered —
+            the Book-stage nudge the decision surface was missing (AUD-10). */}
+        {template.bookingNote && (
+          <span className="text-xs text-terracotta mt-1.5 block break-words leading-relaxed">
+            {tPlanQuick(`templates.items.${template.key}.bookingNote` as "templates.items.short-stay.label")}
+          </span>
+        )}
         {tripLength != null && (
           <span className="mt-2 inline-flex rounded-md bg-sand-100 px-2 py-1 text-xs font-medium text-muted-ink">
             {getTripFitLabel(template.duration, tripLength)}

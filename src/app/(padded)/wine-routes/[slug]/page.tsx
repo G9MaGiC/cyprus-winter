@@ -3,6 +3,8 @@ import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { wineriesForRoute } from "@/lib/wine-route-stops";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 import { HOME, LAYOUT, SECTION, CARD, TYPE } from "@/lib/design-tokens";
 import Image from "next/image";
 import HubFooter from "@/components/HubFooter";
@@ -62,7 +64,9 @@ export default async function WineRoutePage({ params }: Props) {
     getTranslations("discover"),
   ]);
 
-  const routeWineries = wineriesForRoute(slug);
+  const routeWineries = await Promise.all(
+    wineriesForRoute(slug).map(async (w) => applyPartnerOpeningHours(await localizeWineryContent(w)))
+  );
 
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>

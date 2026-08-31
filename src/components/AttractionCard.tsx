@@ -110,7 +110,9 @@ export default function AttractionCard({
           </p>
           {hoursPreview && (
             <p className="text-xs text-aegean/90 mt-1.5 break-words line-clamp-2" title={hours}>
-              {isCallAheadHours(hours) ? `${tCommon("callAhead")} · ` : null}
+              {/* Precomputed EN-base flag survives content overlays (AUD-10);
+                  regex fallback covers raw records. */}
+              {(("hoursCallAhead" in a ? a.hoursCallAhead : undefined) ?? isCallAheadHours(hours)) ? `${tCommon("callAhead")} · ` : null}
               {hoursPreview}
             </p>
           )}
@@ -139,7 +141,7 @@ export default function AttractionCard({
           <AppLink
             href={`/book/winery/${a.id}${bookFrom ? `?from=${bookFrom}` : ""}`}
             className={CTA.secondaryCompact}
-            aria-label={`${tCommon("bookTasting")} — ${a.name}`}
+            aria-label={`${tCommon("bookTasting")} — ${displayName}`}
           >
             {tCommon("bookTasting")}
           </AppLink>

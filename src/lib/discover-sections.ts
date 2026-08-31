@@ -1,4 +1,5 @@
 import type { DiscoverItem } from "@/data/discover";
+import { isCallAheadHours } from "@/lib/place-card-hours";
 import {
   beaches,
   natureSites,
@@ -35,6 +36,8 @@ export type DiscoverSection = {
 export type DiscoverCardItem = {
   id: string;
   name: string;
+  /** Native name for Greek-first card titles (ICPS §6.1 / AUD-100). */
+  nameEl?: string;
   type: DiscoverItem["type"];
   region: string;
   description: string;
@@ -43,6 +46,8 @@ export type DiscoverCardItem = {
   winterTip?: string;
   bestTimeToVisit?: string;
   openingHours?: string;
+  /** EN-base call-ahead decision — survives future content overlays (AUD-10). */
+  hoursCallAhead?: boolean;
   isVerified?: boolean;
   partnerEmail?: string;
 };
@@ -60,11 +65,16 @@ export function toDiscoverCardItem(item: DiscoverItem): DiscoverCardItem {
     region: item.region,
     description: item.description,
   };
+  if ("nameEl" in item && item.nameEl) lean.nameEl = item.nameEl;
   if ("highlights" in item && item.highlights) lean.highlights = item.highlights;
   if ("bestFor" in item && item.bestFor) lean.bestFor = item.bestFor;
   if ("winterTip" in item && item.winterTip) lean.winterTip = item.winterTip;
   if ("bestTimeToVisit" in item && item.bestTimeToVisit) lean.bestTimeToVisit = item.bestTimeToVisit;
   if ("openingHours" in item && item.openingHours) lean.openingHours = item.openingHours;
+  lean.hoursCallAhead = isCallAheadHours(
+    ("openingHours" in item ? item.openingHours : undefined) ??
+      ("tastingInfo" in item ? (item as { tastingInfo?: string }).tastingInfo : undefined)
+  );
   if ("isVerified" in item && item.isVerified !== undefined) lean.isVerified = item.isVerified;
   if ("partnerEmail" in item && item.partnerEmail) lean.partnerEmail = item.partnerEmail;
   return lean;

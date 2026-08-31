@@ -359,7 +359,8 @@
       "all": "Alle Regionen",
       "aria": "Nach Region filtern",
       "showing": "{count} von {total} angezeigt"
-    }
+    },
+    "localeSwitchHeading": "Sprache"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2088,35 +2089,43 @@
       "items": {
         "short-stay": {
           "label": "Kurzaufenthalt",
-          "description": "48 Stunden: antike Küste, Troodos-Trail, Dorfwein"
+          "description": "48 Stunden: antike Küste, Troodos-Trail, Dorfwein",
+          "bookingNote": "Tsiakkas-Verkostung anfragen — die Wintertermine füllen sich."
         },
         "classic": {
           "label": "Klassisch",
-          "description": "Küste bis Berge: Paphos-Ruinen, Troodos-Trails, Lefkara-Spitze"
+          "description": "Küste bis Berge: Paphos-Ruinen, Troodos-Trails, Lefkara-Spitze",
+          "bookingNote": "Verkostungen bei Tsiakkas und Kolios 24–48 h im Voraus reservieren."
         },
         "mountain": {
           "label": "Berge",
-          "description": "Troodos-Schleifen und Steindörfer—Artemis, Caledonia, Kykkos"
+          "description": "Troodos-Schleifen und Steindörfer—Artemis, Caledonia, Kykkos",
+          "bookingNote": "Tsiakkas nach Kykkos — der perfekte Tagesausklang."
         },
         "coast-culture": {
           "label": "Küste & Kultur",
-          "description": "Strände, UNESCO-Stätten, Weingüter—Ost bis West"
+          "description": "Strände, UNESCO-Stätten, Weingüter—Ost bis West",
+          "bookingNote": "Verkostungen in Omodos/Tsiakkas anfragen; im Winter eingeschränkte Zeiten."
         },
         "family": {
           "label": "Familie",
-          "description": "Sanftes Tempo, 2 Stopps/Tag—Strände, Museen, Dorfmittagessen"
+          "description": "Sanftes Tempo, 2 Stopps/Tag—Strände, Museen, Dorfmittagessen",
+          "bookingNote": "Sterna Boutique — Familienverkostung reservieren; im Winter 24 h vorher anrufen."
         },
         "workation": {
           "label": "Workation-Woche",
-          "description": "Remote unter der Woche, Troodos & Küste am Wochenende—WLAN-Cafés, mildes Wetter"
+          "description": "Remote unter der Woche, Troodos & Küste am Wochenende—WLAN-Cafés, mildes Wetter",
+          "bookingNote": "Wochenend-Termine im Weingut früh anfragen; unter der Woche ist es ruhiger."
         },
         "classic-7": {
           "label": "Klassische Kultur (7 Tage)",
-          "description": "Larnaka → Nikosia → Troodos → Paphos—volle Inselrunde"
+          "description": "Larnaka → Nikosia → Troodos → Paphos—volle Inselrunde",
+          "bookingNote": "Mehrere Weingut-Stopps — vorab anfragen; im Winter dünne Besetzung."
         },
         "mountain-10": {
           "label": "Berg-Explorer (10 Tage)",
-          "description": "Troodos-Basis, Pitsilia, Machairas, dann Küste—tiefes Wandererlebnis"
+          "description": "Troodos-Basis, Pitsilia, Machairas, dann Küste—tiefes Wandererlebnis",
+          "bookingNote": "Vouni Panayia: Verkostung anfragen. Tage 8–10: Ausklang an der Küste."
         }
       }
     },
