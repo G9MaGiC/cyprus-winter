@@ -311,11 +311,26 @@ Grep: `(^|[[:space:]"'\x60])(ml|mr|pl|pr)-([0-9[]|px)|(^|[[:space:]"'\x60])(left
 
 ## Appendix C — Gate runs (this session, 2026-08-31)
 
+Audit baseline (`ca827e6`):
 ```
 npm run build                     → exit 0 (compiled 23.4s)
 npm run test:a11y                 → exit 0 — 1 passed (2.5m) [31 routes, contrast fatal]
 npm run test:e2e:visual-gate:ci   → exit 0 — 17 passed (14.6s)
 ```
+
+Post-remediation (fix pass, this branch): lint · typecheck · vitest 781 passed ·
+i18n validate (7×2320) / scan / editorial-drift · data:validate · build — all green, and
+```
+npm run test:e2e:gate:ci → exit 0
+  core-funnel  38 passed
+  ux           44 passed (1 recovered flaky, 1 skipped)
+  visual-gate  17 passed
+  a11y (axe)    1 passed (31 routes, contrast fatal)
+```
+One regression was caught and fixed by this very gate during the pass: the new
+`SRStatus` live regions (sr-only = `position: absolute`) placed inside wide
+horizontal scroll rows expanded `documentElement.scrollWidth` — `SRStatus` is
+now pinned `position: fixed`, which never contributes to scroll geometry.
 Browser: Chromium 1194 binaries shimmed under the 1234 registry name (pinned CfT 151 egress-blocked in the audit container). A first run failed 18/18 on browser resolution — environmental, excluded.
 
 ## Appendix D — Amazement worksheets
