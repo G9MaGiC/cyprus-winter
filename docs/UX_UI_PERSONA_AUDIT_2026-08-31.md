@@ -370,13 +370,13 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-62 | Med | `/regions/[slug]` hardcoded EN section headings ("Trails", "Villages", "Beaches", "Wineries", "Monasteries & churches") in all 7 locales; `i18n:scan` structurally blind to multi-line JSX text | ✅ 5 headings → `tPage("sections.*")` ×7 locales |
 | AUD-63 | Med | Weather hub renders EN month names in every locale — h1, breadcrumb, chips, hero (29× "December", 0× "Dezember" on `/de/weather/december`) | ✅ `monthNames.*` keys ×7; data lookups keep EN keys (`weather/[month]/page.tsx`, `weather/page.tsx`, `locale-metadata-dynamic.ts`) |
 | AUD-64 | **High** | Guides directory made un-gated "verified… email confirmation" claims; `guide-partners.ts` filtered on raw `isVerified`, bypassing the AUD-01/BUG-348 `isPartnerVerified()` gate | ✅ helpers now gate on `isPartnerVerified()`; directory intro/CTA reworded to "licensed" ×7 (unit test updated to assert the gate) |
-| AUD-65 | Med | Soft 404s: every invalid dynamic slug (7 routes verified) serves the not-found page with HTTP 200 — streaming shell commits status before `notFound()` | ⏳ `generateStaticParams` + `dynamicParams=false` per route (project; = AUD-113) |
+| AUD-65 | Med | Soft 404s: every invalid dynamic slug (7 routes verified) serves the not-found page with HTTP 200 — streaming shell commits status before `notFound()` | ⏳ **architecture constraint, experiment recorded:** `dynamicParams=false` is inert because every route renders dynamically — the root layout's `getLocale()` (cookie-based locale on unprefixed URLs) forces request-time rendering, and `setRequestLocale` on pages can't override the root. Real 404s need a locale-detection redesign (= AUD-113) |
 | AUD-66 | Med | `/install` is a developer deployment guide shipped as a public 7-locale route; `sitemap.ts` listed it while robots+meta forbid indexing | ◐ sitemap entry removed; route content is a product decision |
 | AUD-67 | Med | Legal/GDPR contact addresses live on the unattached `cypruswinter.com` domain (no MX) — privacy/terms advertise unreachable mailboxes | ⏳ supply: needs a real mailbox |
 | AUD-68 | Med | Mega-hub flat scrolls at 375px: `/wineries` 47,974px, `/secrets` 33,989px, `/villages` 30,123px — zero facets or in-page nav (unlike `/discover`, `/events`) | ⏳ hub-facets project |
 | AUD-69 | Med | Region hub lede is keyword-stuffed meta copy rendered as the visible intro, EN-only ×7 (`regions.ts` feeds both metadata and PageHeader) | ⏳ editorial + data-layer i18n (AUD-10 class) |
 | AUD-70 | Low | Guides directory: "221 licensed guides" intro vs "158 guides" list on one screen — locale-language pre-filter never explained | ✅ "{count} of {total} — filtered" line ×7 whenever a filter (incl. the locale pre-filter) narrows the list; de noun fixed to "Gästeführer" |
-| AUD-71 | Low | 14 wineries carry `wineRoute` values matching no route page ("Laona–Akamas", "Pitsilia"…) — invisible to the wine-route feature; no `data:validate` rule ties them | ⏳ data + validator rule |
+| AUD-71 | Low | 14 wineries carry `wineRoute` values matching no route page ("Laona–Akamas", "Pitsilia"…) — invisible to the wine-route feature; no `data:validate` rule ties them | ✅ `wineriesForRoute()` substring resolver (Laona–Akamas now on both pages; laona 17→18, akamas 3→4, incl. localized metas that were also hardcoded EN) + `data:validate` guard: values must match a page or the documented no-page allowlist; official pageless routes stay as data |
 | AUD-72 | Low | Privacy/Terms "Last updated: March 2026" hardcoded, 6 months stale | ⏳ editorial |
 
 ### Lane B2 — booking deep states, auth, partner
@@ -391,12 +391,12 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-78 | Med | Offline queue drain delivered the request but (a) never added the booking to local storage and (b) left the "will be sent" alert up after delivery | ✅ drain stores the returned booking (unit-tested) and fires a drained event; mounted forms swap the stale offline message for the success state |
 | AUD-79 | Med | Booking 429 ignored its own `Retry-After: 53`: "wait a moment" copy, no countdown, submit stayed enabled | ✅ header parsed, 1s countdown `role="status"`, submit disabled until 0 (`useBookingForm.ts`) |
 | AUD-80 | Med | Server `VALIDATION_ERROR` genericized to "Something went wrong" — dropped the actionable reason; EN passthrough when a code was unmapped | ◐ per-code messages incl. `NOT_FOUND`/`IDEMPOTENCY_CONFLICT`, no EN passthrough (falls to localized generic); per-field highlight from server errors deferred |
-| AUD-81 | Med | Partner portal misreports its own state: unconfigured backend (503) surfaces as "Email or secret is not recognised" | ⏳ needs portal-state copy + partner-onboarding path |
+| AUD-81 | Med | Partner portal misreports its own state: unconfigured backend (503) surfaces as "Email or secret is not recognised" | ◐ status-mapped copy ×7 (503 "not set up yet", 429 wait, 401/403 credentials, else generic; verified live) — the partner-onboarding path itself remains a product decision |
 | AUD-82 | Med | `/bookings` says "set a reminder if you like" but offers no add-to-calendar while `/plan` ships ICS | ✅ per-booking "Add to calendar" ICS (`booking-ics.ts`), labels ×7 |
 | AUD-83 | Low | Status vocabulary split: form promises "requested", every badge says "pending" | ✅ states copy unified on "pending" ×7 |
 | AUD-84 | Low | `AuthPasswordInput` show/hide toggle `tabIndex={-1}` — keyboard users can never reveal the password (latent while auth unconfigured) | ✅ removed |
 | AUD-85 | Low | `/forgot-password` unconfigured state wears the reset page's copy ("Use the reset link from your email") for users who came to request one | ✅ own config copy ×7 + link to the bookings email lookup |
-| AUD-86 | Med | Guide bookings lose their trail: chosen trail lives only in free-text notes (which the old merge stripped — AUD-74), card shows no trail, "View trails" generic | ⏳ needs a `trailId` field on the booking record (API change) |
+| AUD-86 | Med | Guide bookings lose their trail: chosen trail lives only in free-text notes (which the old merge stripped — AUD-74), card shows no trail, "View trails" generic | ✅ `trailId` on the booking record end-to-end (API → local storage; no DB column needed — future migration 008 noted); `/bookings` cards show the trail, "View trail" links to it, change/book-again preselect it |
 
 ### Lane C2 — keyboard & structure
 
@@ -446,7 +446,7 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-118 | Med | `meta.homeTitle/homeDescription` a copy generation behind in all 6 non-EN; ro/fr/he served stale **English** titles live | ✅ retranslated ×6 |
 | AUD-119 | Low | Winery JSON-LD hygiene (relative image URL, prose openingHours, locality in addressRegion) | ✅ absolute image, `addressLocality`, non-spec prose hours dropped from markup (visible page keeps them) |
 | AUD-120 | Low | JSON-LD descriptions truncated mid-word without ellipsis | ✅ shared `truncateForSchema()` (word boundary + …) in all three schema builders |
-| AUD-121 | Low | 6 meta descriptions >160 chars (worst `/el/plan` 215) | ⏳ editorial |
+| AUD-121 | Low | 6 meta descriptions >160 chars (worst `/el/plan` 215) | ◐ catalog-wide sweep found ~70; the 26 worst (>185 chars, incl. `/el/plan` 215→150) and both over-length el titles trimmed ×6 locales (also fixed el meta "οδηγό"→"ξεναγό" and fr/ro "verified"→licensed residue); 161–185 accepted — word-boundary truncation |
 | AUD-122 | Low | `og:locale` bare codes ("he" not "he_IL"); detail `og:type` omitted | ✅ territory-qualified `og:locale` map injected by `applyLocaleToMetadata` + layouts; `og:type` article on discover/trail details |
 
 E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings ×7 no EN leaks; sitemap 474 URLs sane; robots sane; og:images resolve; AUD-01 JSON-LD phone gating held; BUG-165/175 escaping held.
@@ -465,7 +465,9 @@ E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings 
 
 **Backlog batch (same day, follow-up commit):** AUD-70, 78-residual, 82, 85, 93, 100-residual, 119, 120, 122 and 124 closed — per-booking calendar ICS, drained-queue → form success signal, native place names on every card surface (`nameEl` carried through `PlanItem` + regenerated index), breadcrumb/back-link dedupe, forgot-password copy ×7, filtered-count honesty in the guides directory (+ de "Gästeführer" terminology), JSON-LD/og hygiene (absolute winery image, `addressLocality`, word-boundary truncation, territory-qualified `og:locale`, detail `og:type`), and the ≤360px plan-gutter collapse. TrailCard/trail aria also localize the difficulty label (partial AUD-99), and TrailCard swaps `truncate` → `line-clamp-1` (AUD-125 class).
 
-**Remaining backlog (decision/supply/project):** AUD-65/113 (soft-404s), 67 (real legal mailbox), 68 (hub facets), 69 (region lede editorial), 71, 72, 81 (partner portal states), 86 (booking `trailId` — API change), 99 (enum localization beyond difficulty labels), 104/107 residuals, 117 (canonical strategy), 121 (meta lengths — editorial).
+**Batch 3 (same day, third commit):** AUD-71, 81 (states half), 86, 121 (worst offenders) closed — see the register rows. AUD-65/113's designed fix was experimentally disproven: `dynamicParams=false` + `setRequestLocale` cannot produce real 404s while the root layout's cookie-based `getLocale()` keeps every route request-rendered; it stays open as an architecture decision with the evidence recorded.
+
+**Remaining backlog (decision/supply/project):** AUD-65/113 (locale-detection redesign), 67 (real legal mailbox), 68 (hub facets), 69 (region lede editorial), 72, 81-residual (partner onboarding path), 99 (enum localization beyond difficulty labels), 104/107 residuals, 117 (canonical strategy), 121-residual (161–185-char metas, accepted).
 
 ## 8.4 Persona × dimension grid (16 QA personas, post-R2-fix)
 
@@ -513,6 +515,11 @@ npm run test:e2e:gate:ci              → exit 0
   core-funnel 38 passed · ux 44 passed (1 recovered flaky, 1 skipped)
   visual-gate 17 passed · a11y (axe, 31 routes, contrast fatal) 1 passed
 320px spot sweep (8 funnel routes, en+he+de) → 0px horizontal overflow
+
+Batch 3 (third commit, full rerun): vitest 790 (4 new: trailId round-trip,
+wineRoute guard ×3) · i18n 7×2348 · e2e gate 38+45+17+1 · 320px sweep 0px ·
+live: laona/akamas counts 18/4 with localized metas, portal 503 shows honest
+copy, booking API returns trailId, /el metas within limits.
 
 Backlog batch (follow-up commit, full rerun): lint · typecheck · vitest 786
 (plan-items index regenerated for the `nameEl` carry-through) · i18n 7×2345 ·

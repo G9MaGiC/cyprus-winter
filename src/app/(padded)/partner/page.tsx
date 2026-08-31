@@ -108,7 +108,17 @@ export default function PartnerPortalPage() {
         body: JSON.stringify({ email, secret }),
       });
       if (!res.ok) {
-        setAuthError("invalid");
+        // Honest state mapping (AUD-81): an unconfigured backend (503) or a
+        // rate limit (429) is not a wrong-credentials problem.
+        setAuthError(
+          res.status === 503
+            ? "unavailable"
+            : res.status === 429
+              ? "rateLimited"
+              : res.status === 401 || res.status === 403
+                ? "invalid"
+                : "generic"
+        );
         setLoading(false);
         return;
       }
@@ -119,7 +129,7 @@ export default function PartnerPortalPage() {
       setAuthenticated(true);
       await loadPortal();
     } catch {
-      setAuthError("invalid");
+      setAuthError("generic");
     } finally {
       setLoading(false);
     }
@@ -244,7 +254,19 @@ export default function PartnerPortalPage() {
             {t("submit")}
           </button>
         </form>
-        {authError && <p className="text-sm text-terracotta mt-2">{t("invalid")}</p>}
+        {authError && (
+          <p className="text-sm text-terracotta mt-2" role="alert">
+            {t(
+              authError === "unavailable"
+                ? "errors.unavailable"
+                : authError === "rateLimited"
+                  ? "errors.rateLimited"
+                  : authError === "generic"
+                    ? "errors.generic"
+                    : "invalid"
+            )}
+          </p>
+        )}
         <div className="mt-8">
           <BackLink href="/" label={tNav("home")} />
         </div>

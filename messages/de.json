@@ -1312,6 +1312,11 @@
       "meta": {
         "title": "Partnerportal | Cyprus Winter",
         "description": "Verifizierte Weingüter und Guides: Winterzeiten, Hero-Bild und Anfragen."
+      },
+      "errors": {
+        "unavailable": "Das Partnerportal ist in dieser Umgebung noch nicht eingerichtet. Versuchen Sie es später erneut oder kontaktieren Sie uns.",
+        "rateLimited": "Zu viele Anmeldeversuche. Warten Sie eine Minute und versuchen Sie es erneut.",
+        "generic": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
       }
     }
   },
@@ -1375,7 +1380,7 @@
     "page": {
       "meta": {
         "title": "Zyperns Winterstrände | Nissi, Coral Bay, Konnos",
-        "description": "Die besten Strände im zypriotischen Winter: Nissi Beach, Coral Bay, Konnos Bay. Leerer Sand, goldenes Licht. Winter-Spaziergänge ohne Trubel. Sechzehn Grad, wenn daheim sechs sind. Kostenlos.",
+        "description": "Zyperns beste Winterstrände: Nissi Beach, Coral Bay, Konnos Bay. Leerer Sand, goldenes Licht, Spaziergänge ohne Trubel. Sechzehn Grad, wenn daheim sechs sind.",
         "ogAlt": "Zypern-Strand im Winter, goldenes Licht",
         "schemaName": "Zyperns Winterstrände",
         "schemaDescription": "Beste Strände im zypriotischen Winter: Nissi, Coral Bay, Konnos. Leerer Sand, goldenes Licht."
@@ -1400,7 +1405,7 @@
     "page": {
       "meta": {
         "title": "Zyperns Dörfer im Winter | Lefkara, Omodos, Platres",
-        "description": "Zyperns Dörfer im Winter: Lefkara, Omodos, Platres. Kopfsteinpflaster, Kafenions, Wein am Kamin. Berg- und Weinland. Planen oder entdecken. Sechzehn Grad, wenn daheim sechs sind. Kostenlos.",
+        "description": "Zyperns Dörfer im Winter: Lefkara, Omodos, Platres. Kopfsteinpflaster, Kafenions, Wein am Kamin — Berg- und Weinland. Sechzehn Grad, wenn daheim sechs sind.",
         "ogDescription": "Zyperns Dörfer im Winter: Lefkara, Omodos, Platres. Kopfsteinpflaster, Kafenions, Wein am Kamin. Berg- und Weinland.",
         "ogAlt": "Dorf Omodos, Zypern im Winter",
         "schemaName": "Zyperns Winterdörfer",
@@ -1914,7 +1919,7 @@
     },
     "meta": {
       "title": "Zypern Winter planen | Kuratierte Reiserouten & Reiseplaner",
-      "description": "Kuratierte Winter-Reiserouten für Zypern: 48 Stunden bis 10 Tage. Expertentempo, Weingut-Buchungstipps, saisonale Hinweise. Troodos-Wanderwege, Dörfer, Küste—vorausplanen oder vor Ort. Kostenlos.",
+      "description": "Kuratierte Winter-Reiserouten für Zypern: 48 Stunden bis 10 Tage. Expertentempo, Weingut-Tipps, Troodos-Wanderwege, Dörfer und Küste. Kostenlos.",
       "ogTitle": "Zypern Winter planen | Kuratierte Reiserouten & Reiseplaner",
       "ogDescription": "Kuratierte Winter-Reiserouten für Zypern mit Expertentempo und Weingut-Tipps. Wanderwege, Dörfer, Küste. Vorausplanen oder vor Ort."
     },
@@ -2855,7 +2860,7 @@
       "guideList": {
         "meta": {
           "title": "Geführte Wanderung buchen | Cyprus Winter",
-          "description": "Geführte Winterwanderungen in Troodos, Paphos und Akamas. Lokale Guides für Artemis, Caledonia Falls, Adonis und mehr. Kleine Gruppen, Winter-Know-how. Im Voraus anfragen — Bestätigung per E‑Mail."
+          "description": "Geführte Winterwanderungen in Troodos, Paphos und Akamas. Lokale Guides für Artemis, Caledonia Falls, Adonis. Kleine Gruppen, Winter-Know-how."
         },
         "intro": "Lokale Guides für Troodos, Paphos und Akamas. Winter-Know-how, kleine Gruppen, erfahrene Leiter. Anfrage senden — Bestätigung per E‑Mail.",
         "trailsPrefix": "Wanderwege:",
@@ -3262,7 +3267,7 @@
     "page": {
       "meta": {
         "title": "Team | Cyprus Winter — Trails, Dörfer, Weingüter",
-        "description": "Die Menschen hinter Cyprus Winter. Trails, Dörfer, Weingüter — Zypern im Winter verdient mehr. Lernen Sie das Team kennen, das diesen Guide gebaut hat. Sechzehn Grad, wenn daheim sechs sind."
+        "description": "Die Menschen hinter Cyprus Winter. Trails, Dörfer, Weingüter — Zypern im Winter verdient mehr. Lernen Sie das Team hinter diesem Guide kennen."
       },
       "membersHeading": "Teammitglieder",
       "header": {

@@ -1312,6 +1312,11 @@
       "meta": {
         "title": "Partner portal | Cyprus Winter",
         "description": "Verified wineries and guides: update winter hours, set a local hero image, and accept or decline tasting requests."
+      },
+      "errors": {
+        "unavailable": "The partner portal isn't set up on this deployment yet. Please try again later or contact us.",
+        "rateLimited": "Too many sign-in attempts. Wait a minute, then try again.",
+        "generic": "Sign-in didn't go through. Check your connection and try again."
       }
     }
   },
@@ -2961,7 +2966,7 @@
       "guideList": {
         "meta": {
           "title": "Book a Guided Hike | Cyprus Winter",
-          "description": "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis, and more. Small groups, winter expertise. Book ahead and they'll confirm by email."
+          "description": "Guided winter hikes in Troodos, Paphos, and Akamas. Local guides for Artemis, Caledonia Falls, Adonis and more. Small groups, winter expertise. Book ahead."
         },
         "intro": "Local guides for Troodos, Paphos, and Akamas. Winter conditions know-how, small groups, experienced leaders. Request a hike and they'll confirm by email.",
         "trailsPrefix": "Trails:",

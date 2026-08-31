@@ -307,6 +307,9 @@ export async function POST(req: Request) {
         guestEmail,
         guestName: safeGuestName,
         notes: notesWithTrail != null ? sanitizeForStorage(notesWithTrail) : undefined,
+        // Structured field for the client (AUD-86); the notes fold above stays
+        // for email readability and DB rows (no trail_id column yet).
+        trailId: trail?.id,
         leadFeeEur: guide.partnerLeadFeeEur,
         idempotencyKey,
       });

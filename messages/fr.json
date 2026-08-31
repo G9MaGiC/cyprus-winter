@@ -1312,6 +1312,11 @@
       "meta": {
         "title": "Portail partenaires | Cyprus Winter",
         "description": "Domaines et guides vérifiés : horaires d'hiver, image locale et demandes de dégustation."
+      },
+      "errors": {
+        "unavailable": "Le portail partenaires n’est pas encore configuré sur ce déploiement. Réessayez plus tard ou contactez-nous.",
+        "rateLimited": "Trop de tentatives de connexion. Attendez une minute, puis réessayez.",
+        "generic": "La connexion n’a pas abouti. Vérifiez votre connexion et réessayez."
       }
     }
   },
@@ -1958,7 +1963,7 @@
     },
     "meta": {
       "title": "Planifier Chypre en hiver | Plans sélectionnés et créateur de voyage",
-      "description": "Plans d'hiver sélectionnés pour Chypre : 48 h à 10 jours. Rythme expert, conseils de réservation en domaine, astuces saisonnières. Sentiers Troodos, villages, côte — planifiez à l'avance ou sur place. Gratuit.",
+      "description": "Plans d’hiver sélectionnés pour Chypre : 48 h à 10 jours. Rythme expert, conseils domaines, sentiers du Troodos, villages et côte. Gratuit.",
       "ogTitle": "Planifier Chypre en hiver | Plans sélectionnés",
       "ogDescription": "Plans d'hiver sélectionnés avec rythme expert et conseils domaines. Sentiers, villages, côte. À l'avance ou sur place."
     },
@@ -2961,7 +2966,7 @@
       "guideList": {
         "meta": {
           "title": "Réserver une randonnée guidée | Cyprus Winter",
-          "description": "Randonnées guidées d’hiver à Troodos, Paphos et Akamas. Guides locaux pour Artemis, Caledonia Falls, Adonis, et d’autres. Petits groupes, connaissance de l’hiver. Réservez ; ils confirment par e-mail."
+          "description": "Randonnées guidées d’hiver à Troodos, Paphos et Akamas : Artemis, Caledonia Falls, Adonis. Petits groupes, connaissance de l’hiver. Réservez à l’avance."
         },
         "intro": "Guides locaux pour Troodos, Paphos et Akamas. Conditions d’hiver, petits groupes, accompagnateurs expérimentés. Demandez une randonnée ; ils confirment par e-mail.",
         "trailsPrefix": "Sentiers :",
@@ -2982,7 +2987,7 @@
       "wineryList": {
         "meta": {
           "title": "Réserver une dégustation | Cyprus Winter",
-          "description": "Parcourez les domaines partenaires à Chypre et réservez une dégustation d’hiver. Feu douillet, le propriétaire qui verse, petits groupes. Réservez — les week-ends d’hiver se remplissent."
+          "description": "Parcourez les domaines partenaires à Chypre et réservez une dégustation d’hiver. Feu douillet, petits groupes — les week-ends d’hiver se remplissent vite."
         },
         "intro": "Parcourez nos domaines partenaires et demandez une dégustation. Ils confirment par e-mail — en général sous 24–48 h en semaine.",
         "ctaAria": "Réserver une dégustation à {name}",
@@ -3073,7 +3078,7 @@
     "directory": {
       "meta": {
         "title": "Guides touristiques agréés | Cyprus Winter",
-        "description": "Guides touristiques agréés officiels de Chypre par district et langue. Liste du Vice-ministère du Tourisme — contactez les guides directement. Partenaires randonnée vérifiés réservables dans l'app."
+        "description": "Guides touristiques agréés de Chypre par district et langue. Liste du Vice-ministère du Tourisme — contactez les guides directement ou réservez dans l’app."
       },
       "title": "Guides touristiques agréés",
       "breadcrumb": "Guides agréés",

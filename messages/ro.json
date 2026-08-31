@@ -1312,6 +1312,11 @@
       "meta": {
         "title": "Portal parteneri | Cyprus Winter",
         "description": "Crame și ghizi verificați: program de iarnă, imagine locală și cereri de degustare."
+      },
+      "errors": {
+        "unavailable": "Portalul partenerilor nu este încă configurat pe această instalare. Încercați mai târziu sau contactați-ne.",
+        "rateLimited": "Prea multe încercări de autentificare. Așteptați un minut și încercați din nou.",
+        "generic": "Autentificarea nu a reușit. Verificați conexiunea și încercați din nou."
       }
     }
   },
@@ -1958,7 +1963,7 @@
     },
     "meta": {
       "title": "Planifică iarna în Cipru | Planuri selectate și constructor de călătorie",
-      "description": "Planuri de iarnă selectate pentru Cipru: 48 h până la 10 zile. Ritm expert, sfaturi rezervări crame, recomandări sezoniere. Trasee Troodos, sate, coastă — planifică din timp sau la fața locului. Gratuit.",
+      "description": "Planuri de iarnă selectate pentru Cipru: 48 h până la 10 zile. Ritm expert, sfaturi pentru crame, trasee Troodos, sate și coastă. Gratuit.",
       "ogTitle": "Planifică Cipru iarna | Planuri selectate",
       "ogDescription": "Planuri de iarnă cu ritm expert și sfaturi pentru crame. Trasee, sate, coastă. Din timp sau la fața locului."
     },
@@ -2961,7 +2966,7 @@
       "guideList": {
         "meta": {
           "title": "Rezervă o drumeție ghidată | Cyprus Winter",
-          "description": "Drumeții ghidate de iarnă în Troodos, Paphos și Akamas. Ghizi locali pentru Artemis, Caledonia Falls, Adonis și altele. Grupuri mici, experiență de iarnă. Rezervă din timp și vor confirma pe email."
+          "description": "Drumeții ghidate de iarnă în Troodos, Paphos și Akamas: Artemis, Caledonia Falls, Adonis. Grupuri mici, experiență de iarnă. Rezervă din timp."
         },
         "intro": "Ghizi locali pentru Troodos, Paphos și Akamas. Cunosc condițiile de iarnă, grupuri mici, lideri experimentați. Cere o drumeție și vor confirma pe email.",
         "trailsPrefix": "Trasee:",
@@ -3073,7 +3078,7 @@
     "directory": {
       "meta": {
         "title": "Ghiduri turistice licențiate | Cyprus Winter",
-        "description": "Ghiduri turistice licențiate oficiale din Cipru, pe district și limbă. Lista Vice-ministerului Turismului — contactează ghizii direct. Parteneri de drumeție verificați disponibili pentru rezervare în aplicație."
+        "description": "Ghizi turistici licențiați din Cipru, pe district și limbă. Lista Vice-ministerului Turismului — contactează ghizii direct sau rezervă în aplicație."
       },
       "title": "Ghiduri turistice licențiate",
       "breadcrumb": "Ghiduri licențiate",

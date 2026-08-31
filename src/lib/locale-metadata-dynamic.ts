@@ -11,6 +11,7 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
 import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
+import { wineriesForRoute } from "@/lib/wine-route-stops";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 
 const MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
@@ -169,11 +170,14 @@ export async function regionSlugMetadata(slug: string, locale: string): Promise<
 export async function wineRouteSlugMetadata(slug: string, locale: string): Promise<Metadata> {
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   if (!route) notFound();
-  const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
+  // Combined labels ("Laona–Akamas") count on both routes (AUD-71); localized
+  // via the same keys the page uses instead of hardcoded EN.
+  const count = wineriesForRoute(slug).length;
+  const t = await getTranslations({ locale, namespace: "wineRoutes.page" });
   const path = `/wine-routes/${slug}`;
   const base: Metadata = {
-    title: `${route.title} Wine Route Cyprus Winter | Wineries & Tastings`,
-    description: `${route.description} ${count} wineries open for winter tastings. Book ahead.`,
+    title: t("meta.title", { route: route.title }),
+    description: t("meta.description", { route: route.title, count }),
   };
   return applyLocaleToMetadata(base, path, locale);
 }

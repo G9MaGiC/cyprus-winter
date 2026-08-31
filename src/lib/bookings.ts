@@ -20,6 +20,11 @@ export type Booking = {
   status: BookingStatus;
   createdAt: string;
   notes?: string;
+  /** Chosen trail for guide tours (AUD-86). Carried on the returned/local
+      record only — the bookings table has no trail_id column yet (future
+      migration 008); DB-sourced rows omit it and the client's field-wise
+      merge keeps the locally stored value. */
+  trailId?: string;
 };
 
 const memoryStore: Booking[] = [];

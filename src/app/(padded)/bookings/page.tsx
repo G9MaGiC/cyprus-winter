@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import AppLink from "@/components/AppLink";
 import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import PageHeader from "@/components/PageHeader";
 import type { Booking } from "@/lib/bookings";
 import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/bookings-storage";
@@ -520,11 +521,22 @@ export default function BookingsPage() {
                         const placeValid = !!getPlaceById(b.providerId);
                         const guideValid = !!getGuideById(b.providerId);
                         const providerValid = placeValid || guideValid;
-                        const viewHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
+                        // Structured trail from the API/local record (AUD-86) —
+                        // link straight to it instead of the generic hub.
+                        const bookedTrail = isGuide && b.trailId ? findTrailByIdOrSlug(b.trailId) : undefined;
+                        const viewHref = isGuide
+                          ? bookedTrail
+                            ? `/trails/${bookedTrail.id}`
+                            : "/trails"
+                          : `/discover/${b.providerId}`;
                         const viewLabel = isGuide
-                          ? tBookingsPage("cta.viewTrails")
+                          ? bookedTrail
+                            ? tBookingsPage("cta.viewTrail")
+                            : tBookingsPage("cta.viewTrails")
                           : tBookingsPage("cta.viewWinery");
-                        const modifyHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}?from=bookings`;
+                        const modifyHref = isGuide
+                          ? `/book/guide/${b.providerId}?from=bookings${bookedTrail ? `&trail=${encodeURIComponent(bookedTrail.id)}` : ""}`
+                          : `/book/winery/${b.providerId}?from=bookings`;
                         const todayCopy = isGuide
                           ? tBookingsPage("today.guidedHike")
                           : tBookingsPage("today.tasting");
@@ -550,6 +562,7 @@ export default function BookingsPage() {
                                   </span>
                                   <p className="text-sm text-muted-ink mt-1 break-words">
                                     {formatDate(b.date, locale)} · {tCommon("peopleCount", { count: b.partySize })}
+                                    {bookedTrail && <> · {bookedTrail.name}</>}
                                   </p>
                                   {isTodayOrTomorrow && (
                                     <p className="text-xs text-muted-ink mt-2" role="status">
@@ -613,7 +626,10 @@ export default function BookingsPage() {
                     const placeValid = !!getPlaceById(b.providerId);
                     const guideValid = !!getGuideById(b.providerId);
                     const providerValid = placeValid || guideValid;
-                    const bookAgainHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}?from=bookings`;
+                    const pastTrail = isGuide && b.trailId ? findTrailByIdOrSlug(b.trailId) : undefined;
+                    const bookAgainHref = isGuide
+                      ? `/book/guide/${b.providerId}?from=bookings${pastTrail ? `&trail=${encodeURIComponent(pastTrail.id)}` : ""}`
+                      : `/book/winery/${b.providerId}?from=bookings`;
                     const secondaryHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
                     const secondaryLabel = isGuide
                       ? tBookingsPage("cta.browseTrails")

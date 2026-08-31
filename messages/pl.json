@@ -894,7 +894,7 @@
       },
       "meta": {
         "title": "Odkrywaj Cyprus Winter | Plaże, wioski, winnice",
-        "description": "Cypr zimą: wyselekcjonowane miejsca z prawdziwym klimatem. Plaże, stanowiska archeologiczne, wioski, winnice — plus bouldering, rower i przybrzeżne przygody. Szesnaście stopni, gdy w domu jest sześć.",
+        "description": "Cypr zimą: wyselekcjonowane miejsca z prawdziwym klimatem. Plaże, zabytki, wioski, winnice, rower i wybrzeże. Szesnaście stopni, gdy w domu jest sześć.",
         "filters": {
           "nature": {
             "title": "Natura i wybrzeże Cypr zimą | Plaże, wąwozy i szlaki",
@@ -1312,6 +1312,11 @@
       "meta": {
         "title": "Portal partnera | Cyprus Winter",
         "description": "Zweryfikowane winnice i przewodnicy: godziny, zdjęcie i zgłoszenia."
+      },
+      "errors": {
+        "unavailable": "Portal partnerów nie jest jeszcze skonfigurowany w tym wdrożeniu. Spróbuj później lub skontaktuj się z nami.",
+        "rateLimited": "Zbyt wiele prób logowania. Odczekaj minutę i spróbuj ponownie.",
+        "generic": "Logowanie się nie powiodło. Sprawdź połączenie i spróbuj ponownie."
       }
     }
   },
@@ -1914,7 +1919,7 @@
     },
     "meta": {
       "title": "Zaplanuj Zimę na Cyprze | Sprawdzone Trasy & Planer Podróży",
-      "description": "Sprawdzone zimowe trasy po Cyprze: od 48 godzin do 10 dni. Eksperckie tempo, wskazówki rezerwacji winiarni, porady sezonowe. Szlaki Troodos, wioski, wybrzeże—planuj z wyprzedzeniem lub na miejscu. Za darmo.",
+      "description": "Sprawdzone zimowe trasy po Cyprze: od 48 godzin do 10 dni. Eksperckie tempo, wskazówki do winnic, szlaki Troodos, wioski i wybrzeże. Za darmo.",
       "ogTitle": "Zaplanuj Zimę na Cyprze | Sprawdzone Trasy & Planer Podróży",
       "ogDescription": "Sprawdzone zimowe trasy po Cyprze z eksperckim tempem i wskazówkami winiarni. Szlaki, wioski, wybrzeże. Planuj z wyprzedzeniem lub na miejscu."
     },
@@ -2855,7 +2860,7 @@
       "guideList": {
         "meta": {
           "title": "Zarezerwuj wędrówkę z przewodnikiem | Cyprus Winter",
-          "description": "Zimowe wędrówki z przewodnikiem w Troodos, Pafos i Akamas. Lokalni przewodnicy na Artemis, Caledonia Falls, Adonis i więcej. Małe grupy, zimowe doświadczenie. Rezerwuj z wyprzedzeniem — potwierdzenie mailem."
+          "description": "Zimowe wędrówki z przewodnikiem w Troodos, Pafos i Akamas: Artemis, Caledonia Falls, Adonis. Małe grupy, zimowe doświadczenie. Rezerwuj z wyprzedzeniem."
         },
         "intro": "Lokalni przewodnicy na Troodos, Pafos i Akamas. Wiedza o zimowych warunkach, małe grupy, doświadczeni liderzy. Wyślij prośbę — potwierdzą mailem.",
         "trailsPrefix": "Szlaki:",

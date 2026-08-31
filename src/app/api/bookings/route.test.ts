@@ -73,6 +73,28 @@ describe("POST /api/bookings", () => {
     expect(data.stored).toBe(false);
   });
 
+  it("returns the chosen trail as a structured field on guide bookings (AUD-86)", async () => {
+    const res = await POST(
+      postReq(
+        {
+          type: "guide_tour",
+          providerId: "cyprus-active-tours",
+          trailId: "artemis",
+          date: "2099-03-16",
+          idempotencyKey: "test-booking-key-trail-001",
+          partySize: 2,
+          guestEmail: "trail@example.com",
+          guestName: "Trail Guest",
+        },
+        "127.0.0.61"
+      )
+    );
+    expect(res.status).toBe(200);
+    const json = await res.json();
+    expect(json.booking.trailId).toBe("artemis");
+    expect(json.booking.notes).toContain("Trail:");
+  });
+
   it("returns 404 for unknown winery", async () => {
     const res = await POST(
       postReq({ ...validBody, providerId: "unknown-winery-xyz" }, "127.0.0.4")
