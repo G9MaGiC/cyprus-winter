@@ -1,6 +1,11 @@
 /**
  * Rate limiter for API routes. Uses Upstash Redis when configured.
- * Production intentionally fails closed if the distributed limiter is absent.
+ *
+ * Write / abuse-sensitive scopes fail closed in production when Redis is
+ * absent. Low-risk public-read scopes may fall back to per-instance
+ * in-memory limits so weather, Right Now, and analytics keep working
+ * while Upstash is still being wired (BUG-354). `productionReady` and
+ * bookings/chat still require distributed Redis.
  */
 
 import {
@@ -13,6 +18,7 @@ import { inMemoryRateLimit } from "./rate-limit-in-memory";
 // CI E2E has no external Redis service; see isCiE2eTestMode for the contract.
 import { isCiE2eTestMode as isCiE2eTest } from "./test-mode";
 import { redisRateLimit } from "./rate-limit-redis";
+import { logger } from "./logger";
 
 export type { RateLimitResult } from "./rate-limit-shared";
 
@@ -32,6 +38,15 @@ export type RateLimitScope =
   | "right-now"
   | "partner";
 
+/** Public-read scopes that may use in-memory limits without Upstash. */
+export const MEMORY_FALLBACK_SCOPES: ReadonlySet<RateLimitScope> = new Set([
+  "weather",
+  "right-now",
+  "vapid",
+  "health",
+  "track",
+]);
+
 function hasRedisEnv(): boolean {
   return Boolean(
     process.env.UPSTASH_REDIS_REST_URL &&
@@ -39,6 +54,9 @@ function hasRedisEnv(): boolean {
   );
 }
 
+function allowsMemoryFallback(scope: RateLimitScope): boolean {
+  return MEMORY_FALLBACK_SCOPES.has(scope) || isCiE2eTest();
+}
 
 export async function rateLimit(
   req: Request,
@@ -48,13 +66,26 @@ export async function rateLimit(
 ): Promise<RateLimitResult> {
   if (shouldBypass(req)) return bypassResult();
 
-  if (process.env.NODE_ENV === "production" && !hasRedisEnv() && !isCiE2eTest()) {
+  if (
+    process.env.NODE_ENV === "production" &&
+    !hasRedisEnv() &&
+    !allowsMemoryFallback(scope)
+  ) {
     throw new Error("Distributed rate limiting is required in production.");
   }
 
   const identifier = `${scope}:${key?.trim() || getClientId(req)}`;
   if (hasRedisEnv()) {
     return redisRateLimit(identifier, limit);
+  }
+  if (
+    process.env.NODE_ENV === "production" &&
+    MEMORY_FALLBACK_SCOPES.has(scope) &&
+    !isCiE2eTest()
+  ) {
+    logger.warn(
+      `[rate-limit] in-memory fallback for "${scope}" (Upstash not configured)`
+    );
   }
   return inMemoryRateLimit(identifier, limit, req);
 }
