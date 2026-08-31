@@ -18,7 +18,6 @@ import { inMemoryRateLimit } from "./rate-limit-in-memory";
 // CI E2E has no external Redis service; see isCiE2eTestMode for the contract.
 import { isCiE2eTestMode as isCiE2eTest } from "./test-mode";
 import { redisRateLimit } from "./rate-limit-redis";
-import { logger } from "./logger";
 
 export type { RateLimitResult } from "./rate-limit-shared";
 
@@ -58,6 +57,8 @@ function allowsMemoryFallback(scope: RateLimitScope): boolean {
   return MEMORY_FALLBACK_SCOPES.has(scope) || isCiE2eTest();
 }
 
+const warnedMemoryFallback = new Set<RateLimitScope>();
+
 export async function rateLimit(
   req: Request,
   limit: number,
@@ -81,9 +82,12 @@ export async function rateLimit(
   if (
     process.env.NODE_ENV === "production" &&
     MEMORY_FALLBACK_SCOPES.has(scope) &&
-    !isCiE2eTest()
+    !isCiE2eTest() &&
+    !warnedMemoryFallback.has(scope)
   ) {
-    logger.warn(
+    warnedMemoryFallback.add(scope);
+    // console.warn (not logger.warn) — logger is silent in production.
+    console.warn(
       `[rate-limit] in-memory fallback for "${scope}" (Upstash not configured)`
     );
   }
