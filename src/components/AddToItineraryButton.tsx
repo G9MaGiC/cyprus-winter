@@ -58,7 +58,7 @@ export default function AddToItineraryButton({
       <span
         ref={inPlanRef}
         data-testid={`in-plan-${placeId}`}
-        className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
+        className={`inline-flex max-w-full flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
       >
         <span aria-hidden>✓</span> {tCommon("inYourPlan")}
         <AppLink
