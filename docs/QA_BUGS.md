@@ -37,25 +37,25 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
-### [BUG-354] Weather / Right Now / track APIs 503 on live production without Upstash
+### [BUG-354] Weather / Right Now APIs 503 on live production without Upstash
 
 **Severity:** High
 **Area:** Functional / Ops bridge
-**Page/Component:** `/api/weather`, `/api/right-now`, `/api/track`, `/api/push/vapid`
+**Page/Component:** `/api/weather`, `/api/right-now`, `/api/push/vapid`, `/api/health`
 
 ### Reproduction
 1. Production `cyprus-winter-three.vercel.app` with no `UPSTASH_REDIS_REST_*`
 2. `GET /api/weather?lat=34.9&lng=33.0` → 503 `SERVICE_UNAVAILABLE` ("Rate limiting unavailable")
-3. Same for `/api/right-now` and `POST /api/track` — home weather badges and Right Near You stay empty; funnel analytics never land
+3. Same for `/api/right-now` — home weather badges and Right Near You stay empty
 
 ### Expected
-Low-risk public-read APIs keep serving with per-instance in-memory limits until Upstash is configured. Bookings, chat, partner, trail-reports, and push-subscribe stay fail-closed. `productionReady` remains false until Upstash + Supabase are set.
+Low-risk public-read APIs keep serving with per-instance in-memory limits until Upstash is configured. Bookings, chat, partner, trail-reports, push-subscribe, **and track** stay fail-closed (`track` can write Supabase `conversion_events`). `productionReady` remains false until Upstash + Supabase are set.
 
 ### Actual
-Every rate-limited route threw when Redis was absent, so discovery personalization and analytics were dead even though they do not need shared storage.
+Every rate-limited route threw when Redis was absent, so discovery personalization was dead even though weather/right-now do not need shared storage.
 
 ### Fix status
-Fixed — `MEMORY_FALLBACK_SCOPES` in `src/lib/rate-limit.ts` (weather, right-now, vapid, health, track). Write/abuse-sensitive scopes unchanged. Ops still owns BUG-269 for full `productionReady: true`.
+Fixed — `MEMORY_FALLBACK_SCOPES` in `src/lib/rate-limit.ts` (weather, right-now, vapid, health). Write/abuse-sensitive scopes including `track` unchanged. Ops still owns BUG-269 for full `productionReady: true`.
 
 ---
 
@@ -1793,7 +1793,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | ID | Severity | Area | Issue | Fix status |
 |----|----------|------|-------|------------|
-| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env (human). BUG-354 soft-degrades weather/right-now/track until then. |
+| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env (human). BUG-354 soft-degrades weather/right-now until then; track stays fail-closed. |
 | BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Won't fix — needed so health reports missing Upstash when Redis unreachable |
 
 ### Fixed — design sprint + launch hygiene (Aug 24, 2026, main @ 3183177)

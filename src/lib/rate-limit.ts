@@ -3,9 +3,10 @@
  *
  * Write / abuse-sensitive scopes fail closed in production when Redis is
  * absent. Low-risk public-read scopes may fall back to per-instance
- * in-memory limits so weather, Right Now, and analytics keep working
- * while Upstash is still being wired (BUG-354). `productionReady` and
- * bookings/chat still require distributed Redis.
+ * in-memory limits so weather and Right Now keep working while Upstash
+ * is still being wired (BUG-354). `track` stays fail-closed because it
+ * can persist to Supabase. `productionReady` and bookings/chat still
+ * require distributed Redis.
  */
 
 import {
@@ -37,13 +38,14 @@ export type RateLimitScope =
   | "right-now"
   | "partner";
 
-/** Public-read scopes that may use in-memory limits without Upstash. */
+/** Public-read scopes that may use in-memory limits without Upstash.
+ *  `track` stays fail-closed — it can write to Supabase `conversion_events`
+ *  and must not accept unbounded writes when Redis is missing (Codex P1). */
 export const MEMORY_FALLBACK_SCOPES: ReadonlySet<RateLimitScope> = new Set([
   "weather",
   "right-now",
   "vapid",
   "health",
-  "track",
 ]);
 
 function hasRedisEnv(): boolean {

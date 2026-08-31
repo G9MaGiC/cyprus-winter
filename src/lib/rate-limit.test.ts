@@ -40,14 +40,14 @@ describe("rateLimit production soft-degrade (BUG-354)", () => {
     });
   }
 
-  it("allows weather/right-now/track without Upstash in production", async () => {
+  it("allows weather/right-now without Upstash in production", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("CI", "");
     vi.stubEnv("E2E_TEST_MODE", "");
     vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
     vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
 
-    for (const scope of ["weather", "right-now", "track", "vapid", "health"] as const) {
+    for (const scope of ["weather", "right-now", "vapid", "health"] as const) {
       expect(MEMORY_FALLBACK_SCOPES.has(scope)).toBe(true);
       const result = await rateLimit(req(), 30, scope);
       expect(result.ok).toBe(true);
@@ -55,7 +55,7 @@ describe("rateLimit production soft-degrade (BUG-354)", () => {
     }
   });
 
-  it("still fails closed for bookings/chat without Upstash in production", async () => {
+  it("still fails closed for bookings/chat/track without Upstash in production", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("CI", "");
     vi.stubEnv("E2E_TEST_MODE", "");
@@ -69,6 +69,9 @@ describe("rateLimit production soft-degrade (BUG-354)", () => {
       /Distributed rate limiting/
     );
     await expect(rateLimit(req(), 10, "trail-reports")).rejects.toThrow(
+      /Distributed rate limiting/
+    );
+    await expect(rateLimit(req(), 120, "track")).rejects.toThrow(
       /Distributed rate limiting/
     );
   });
