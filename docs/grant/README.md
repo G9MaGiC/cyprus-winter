@@ -55,7 +55,7 @@ GRANT_SHOTS=cycling,discover-cycling npm run grant:wireframes
 # practical filters must wait on place-card titles (not the chip label):
 GRANT_SHOTS=discover,discover-accessible,discover-family npm run grant:wireframes
 # or from the live prototype:
-GRANT_BASE_URL=https://cyprus-winter.vercel.app npm run grant:wireframes
+GRANT_BASE_URL=https://cyprus-winter-three.vercel.app npm run grant:wireframes
 
 npm run grant:health
 npm run grant:annex-pdf

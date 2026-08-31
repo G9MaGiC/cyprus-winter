@@ -3,7 +3,7 @@
 	"appName": "Cyprus Winter",
 	"webDir": "public",
 	"server": {
-		"url": "https://cyprus-winter.vercel.app",
+		"url": "https://cyprus-winter-three.vercel.app",
 		"cleartext": false,
 		"errorPath": "error.html"
 	},
