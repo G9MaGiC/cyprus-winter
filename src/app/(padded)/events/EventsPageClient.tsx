@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import HubFooter from "@/components/HubFooter";
+import HubSkipNav from "@/components/HubSkipNav";
 import AskAIButton from "@/components/AskAIButton";
 import { HOME, LAYOUT, CTA, CARD, EMPTY_STATE, TYPE, SECTION, LAYER, STRIP, HUB } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
@@ -99,6 +100,7 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-sand">
+      <HubSkipNav targets={[{ href: "#events-content", labelKey: "results" }]} />
       <div
         className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}
       >
@@ -173,6 +175,9 @@ export default function EventsPage() {
           </>
         ) : (
           <>
+            {/* Skip-nav landing point — the list region starts here whether or
+                not the month nav / highlights render. */}
+            <div id="events-content" className="scroll-mt-24" />
             {monthNavMonths.length > 0 && (
               <nav
                 aria-label={tPage("monthNav.aria")}

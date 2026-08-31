@@ -341,7 +341,9 @@
       "editorsPicks": "Salt la alegerile editorului",
       "plan": "Salt la Plan",
       "search": "Salt la căutare",
-      "startHere": "Salt la Începe aici"
+      "startHere": "Salt la Începe aici",
+      "results": "Salt la rezultate",
+      "map": "Salt la hartă"
     },
     "cancel": "Anulează",
     "done": "Gata",
@@ -2090,42 +2092,50 @@
         "short-stay": {
           "label": "Sejur scurt",
           "description": "48 de ore: coastă antică, traseu Troodos, vin de sat",
-          "bookingNote": "Rezervați degustarea la Tsiakkas — locurile de iarnă se ocupă repede."
+          "bookingNote": "Rezervați degustarea la Tsiakkas — locurile de iarnă se ocupă repede.",
+          "seasonalNote": "Lumina scade pe la 17:00. Începeți Kourion până la 10:00."
         },
         "classic": {
           "label": "Clasic",
           "description": "De la coastă la munte: ruine Paphos, trasee Troodos, dantelă Lefkara",
-          "bookingNote": "Rezervați degustările Tsiakkas și Kolios cu 24–48 h înainte."
+          "bookingNote": "Rezervați degustările Tsiakkas și Kolios cu 24–48 h înainte.",
+          "seasonalNote": "2–3 opriri pe zi. Grupați Kourion + mozaicurile (aceeași coastă)."
         },
         "mountain": {
           "label": "Munte",
           "description": "Bucle Troodos și sate de piatră—Artemis, Caledonia, Kykkos",
-          "bookingNote": "Tsiakkas după Kykkos — combinația perfectă de final de zi."
+          "bookingNote": "Tsiakkas după Kykkos — combinația perfectă de final de zi.",
+          "seasonalNote": "Luați haine în straturi. Potecile pot fi înghețate; verificați condițiile."
         },
         "coast-culture": {
           "label": "Coastă & Cultură",
           "description": "Plaje, UNESCO, crame—de la est la vest",
-          "bookingNote": "Rezervați degustările Omodos/Tsiakkas; program de iarnă limitat."
+          "bookingNote": "Rezervați degustările Omodos/Tsiakkas; program de iarnă limitat.",
+          "seasonalNote": "Coastă blândă; combinați Kourion + Governor's Beach (aproape una de alta)."
         },
         "family": {
           "label": "Familie",
           "description": "Ritm blând, 2 opriri/zi—plaje, muzee, prânz la sat",
-          "bookingNote": "Sterna Boutique — rezervați degustarea de familie; iarna sunați cu 24 h înainte."
+          "bookingNote": "Sterna Boutique — rezervați degustarea de familie; iarna sunați cu 24 h înainte.",
+          "seasonalNote": "Maximum două opriri pe zi. Plouă? Înlocuiți ziua 3 cu Muzeul Ciprului + Leventis (Nicosia) — variantă la interior."
         },
         "workation": {
           "label": "Săptămână workation",
           "description": "Remote în săptămână, Troodos & coastă în weekend—cafenele cu wifi, vreme blândă",
-          "bookingNote": "Rezervați devreme locurile de weekend la crame; în timpul săptămânii e mai liniștit."
+          "bookingNote": "Rezervați devreme locurile de weekend la crame; în timpul săptămânii e mai liniștit.",
+          "seasonalNote": "Verificați /weather pentru luna călătoriei. În weekend: potecile înainte de 10:00."
         },
         "classic-7": {
           "label": "Cultură clasică (7 zile)",
           "description": "Larnaca → Nicosia → Troodos → Paphos—tur complet al insulei",
-          "bookingNote": "Mai multe opriri la crame — rezervați din timp; personal redus iarna."
+          "bookingNote": "Mai multe opriri la crame — rezervați din timp; personal redus iarna.",
+          "seasonalNote": "Dec: sate de Crăciun. Ian: migdali înfloriți. Începeți devreme muzeele din Nicosia."
         },
         "mountain-10": {
           "label": "Explorator montan (10 zile)",
           "description": "Bază Troodos, Pitsilia, Machairas, apoi coastă—imersiune pentru drumeți",
-          "bookingNote": "Vouni Panayia: rezervați degustarea. Zilele 8–10: relaxare pe coastă."
+          "bookingNote": "Vouni Panayia: rezervați degustarea. Zilele 8–10: relaxare pe coastă.",
+          "seasonalNote": "Ian–mar: zăpadă pe Olimp. Verificați zilnic condițiile de pe poteci."
         }
       }
     },
@@ -2134,6 +2144,10 @@
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
+    },
+    "seasonalTip": {
+      "kicker": "Sfatul touroperatorului",
+      "dismissAria": "Închide sfatul"
     }
   },
   "bookings": {

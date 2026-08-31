@@ -341,7 +341,9 @@
       "editorsPicks": "Aller aux coups de cœur",
       "plan": "Aller au plan",
       "search": "Aller à la recherche",
-      "startHere": "Aller à Commencer ici"
+      "startHere": "Aller à Commencer ici",
+      "results": "Aller aux résultats",
+      "map": "Aller à la carte"
     },
     "cancel": "Annuler",
     "done": "Terminé",
@@ -2090,42 +2092,50 @@
         "short-stay": {
           "label": "Court séjour",
           "description": "48 heures : côte antique, sentier Troodos, vin de village",
-          "bookingNote": "Réservez la dégustation chez Tsiakkas — les créneaux d’hiver se remplissent."
+          "bookingNote": "Réservez la dégustation chez Tsiakkas — les créneaux d’hiver se remplissent.",
+          "seasonalNote": "La nuit tombe vers 17 h. Commencez Kourion avant 10 h."
         },
         "classic": {
           "label": "Classique",
           "description": "De la côte aux montagnes : ruines de Paphos, sentiers Troodos, dentelle de Lefkara",
-          "bookingNote": "Réservez les dégustations Tsiakkas et Kolios 24–48 h à l’avance."
+          "bookingNote": "Réservez les dégustations Tsiakkas et Kolios 24–48 h à l’avance.",
+          "seasonalNote": "2–3 étapes par jour. Regroupez Kourion + mosaïques (même côte)."
         },
         "mountain": {
           "label": "Montagne",
           "description": "Boucles du Troodos et villages de pierre—Artemis, Caledonia, Kykkos",
-          "bookingNote": "Tsiakkas après Kykkos — l’accord parfait de fin de journée."
+          "bookingNote": "Tsiakkas après Kykkos — l’accord parfait de fin de journée.",
+          "seasonalNote": "Prévoyez des couches. Les sentiers peuvent être verglacés ; vérifiez les conditions."
         },
         "coast-culture": {
           "label": "Côte & Culture",
           "description": "Plages, sites UNESCO, domaines—est à ouest",
-          "bookingNote": "Réservez les dégustations Omodos/Tsiakkas ; horaires d’hiver limités."
+          "bookingNote": "Réservez les dégustations Omodos/Tsiakkas ; horaires d’hiver limités.",
+          "seasonalNote": "Côte douce ; combinez Kourion + Governor's Beach (tout proches)."
         },
         "family": {
           "label": "Famille",
           "description": "Rythme doux, 2 arrêts/jour—plages, musées, déjeuner au village",
-          "bookingNote": "Sterna Boutique — réservez la dégustation famille ; en hiver, appelez 24 h avant."
+          "bookingNote": "Sterna Boutique — réservez la dégustation famille ; en hiver, appelez 24 h avant.",
+          "seasonalNote": "Deux étapes par jour maximum. Pluie ? Remplacez le jour 3 par Cyprus Museum + Leventis (Nicosie) — repli en intérieur."
         },
         "workation": {
           "label": "Semaine workation",
           "description": "Télétravail en semaine, Troodos & côte le week-end—cafés wifi, temps doux",
-          "bookingNote": "Réservez tôt les créneaux du week-end au domaine ; la semaine est plus calme."
+          "bookingNote": "Réservez tôt les créneaux du week-end au domaine ; la semaine est plus calme.",
+          "seasonalNote": "Consultez /weather pour votre mois. Week-ends : sentiers avant 10 h."
         },
         "classic-7": {
           "label": "Culture classique (7 jours)",
           "description": "Larnaca → Nicosie → Troodos → Paphos—tour complet de l'île",
-          "bookingNote": "Plusieurs domaines au programme — réservez à l’avance ; effectifs réduits en hiver."
+          "bookingNote": "Plusieurs domaines au programme — réservez à l’avance ; effectifs réduits en hiver.",
+          "seasonalNote": "Déc : villages de Noël. Janv : amandiers en fleurs. Commencez tôt les musées de Nicosie."
         },
         "mountain-10": {
           "label": "Explorateur montagne (10 jours)",
           "description": "Base Troodos, Pitsilia, Machairas, puis côte—immersion randonnée",
-          "bookingNote": "Vouni Panayia : réservez la dégustation. Jours 8–10 : détente sur la côte."
+          "bookingNote": "Vouni Panayia : réservez la dégustation. Jours 8–10 : détente sur la côte.",
+          "seasonalNote": "Janv–mars : neige sur l'Olympe. Vérifiez chaque jour l'état des sentiers."
         }
       }
     },
@@ -2134,6 +2144,10 @@
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
+    },
+    "seasonalTip": {
+      "kicker": "Conseil de voyagiste",
+      "dismissAria": "Masquer le conseil"
     }
   },
   "bookings": {

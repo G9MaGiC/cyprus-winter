@@ -1,7 +1,11 @@
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
-import { allDiscoverItems } from "@/data/discover";
+import { allDiscoverItems, type DiscoverItem } from "@/data/discover";
 import { buildDiscoverSections, toDiscoverCardSection } from "@/lib/discover-sections";
+import { localizeWineryContent, LOCALIZED_WINERY_IDS } from "@/lib/winery-content";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import type { Winery } from "@/data/wineries";
+import HubSkipNav from "@/components/HubSkipNav";
 import {
   ACTIVITY_FILTER_KEYS,
   buildActivitySection,
@@ -23,15 +27,40 @@ import { toSafeJsonForScript } from "@/lib/json-script";
 
 const DISCOVER_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 
+// Winery items get the AUD-10 locale overlay + live partner hours (in that
+// precedence order) before projection, so sections are built per request —
+// the page is already request-rendered (root layout resolves the locale per
+// request), and the section filters are cheap in-memory passes.
+async function localizeItems(items: DiscoverItem[]): Promise<DiscoverItem[]> {
+  return Promise.all(
+    items.map(async (item) => {
+      if (item.type !== "winery") return item;
+      // Ids in the pilot set are Winery records by the overlay guard test
+      // (`type: "winery"` alone doesn't discriminate — Attractions carry it too).
+      const localized = LOCALIZED_WINERY_IDS.has(item.id)
+        ? await localizeWineryContent(item as Winery)
+        : item;
+      return applyPartnerOpeningHours(localized);
+    })
+  );
+}
+
 // Lean-project items at the client boundary: DiscoverClient serializes its
 // props into the RSC flight payload, so it gets DiscoverCardItem, not the
 // full catalog objects (~319KB -> ~136KB of item JSON).
-const standardSections = buildDiscoverSections(allDiscoverItems).map(toDiscoverCardSection);
-const activitySections = ACTIVITY_FILTER_KEYS.map((key) =>
-  buildActivitySection(key, allDiscoverItems)
-)
-  .filter((s): s is NonNullable<typeof s> => s != null)
-  .map(toDiscoverCardSection);
+async function buildCardSections() {
+  const standardSections = await Promise.all(
+    buildDiscoverSections(allDiscoverItems).map(async (s) =>
+      toDiscoverCardSection({ ...s, items: await localizeItems(s.items) })
+    )
+  );
+  const activitySections = await Promise.all(
+    ACTIVITY_FILTER_KEYS.map((key) => buildActivitySection(key, allDiscoverItems))
+      .filter((s): s is NonNullable<typeof s> => s != null)
+      .map(async (s) => toDiscoverCardSection({ ...s, items: await localizeItems(s.items) }))
+  );
+  return { standardSections, activitySections };
+}
 
 export async function generateMetadata({
   searchParams,
@@ -50,6 +79,7 @@ export default async function DiscoverPage({
 }) {
   const locale = await getLocale();
   const resolvedParams = searchParams ? await searchParams : {};
+  const { standardSections, activitySections } = await buildCardSections();
   const filterParam =
     typeof resolvedParams.filter === "string"
       ? resolvedParams.filter
@@ -106,6 +136,7 @@ export default async function DiscoverPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(discoverSchema) }}
       />
+      <HubSkipNav targets={[{ href: "#discover-content", labelKey: "results" }]} />
       <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}>
         <ListPageHero
           backHref="/"

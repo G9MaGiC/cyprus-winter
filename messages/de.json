@@ -321,7 +321,9 @@
       "editorsPicks": "Zu Redaktions-Tipps springen",
       "plan": "Zum Plan springen",
       "search": "Zur Suche springen",
-      "startHere": "Zu Start hier springen"
+      "startHere": "Zu Start hier springen",
+      "results": "Zu den Ergebnissen springen",
+      "map": "Zur Karte springen"
     },
     "cancel": "Abbrechen",
     "done": "Fertig",
@@ -2090,42 +2092,50 @@
         "short-stay": {
           "label": "Kurzaufenthalt",
           "description": "48 Stunden: antike Küste, Troodos-Trail, Dorfwein",
-          "bookingNote": "Tsiakkas-Verkostung anfragen — die Wintertermine füllen sich."
+          "bookingNote": "Tsiakkas-Verkostung anfragen — die Wintertermine füllen sich.",
+          "seasonalNote": "Tageslicht bis ca. 17 Uhr. Kourion bis 10 Uhr starten."
         },
         "classic": {
           "label": "Klassisch",
           "description": "Küste bis Berge: Paphos-Ruinen, Troodos-Trails, Lefkara-Spitze",
-          "bookingNote": "Verkostungen bei Tsiakkas und Kolios 24–48 h im Voraus reservieren."
+          "bookingNote": "Verkostungen bei Tsiakkas und Kolios 24–48 h im Voraus reservieren.",
+          "seasonalNote": "2–3 Stopps pro Tag. Kourion + Mosaike bündeln (gleiche Küste)."
         },
         "mountain": {
           "label": "Berge",
           "description": "Troodos-Schleifen und Steindörfer—Artemis, Caledonia, Kykkos",
-          "bookingNote": "Tsiakkas nach Kykkos — der perfekte Tagesausklang."
+          "bookingNote": "Tsiakkas nach Kykkos — der perfekte Tagesausklang.",
+          "seasonalNote": "Schichten einpacken. Wege können vereist sein; Bedingungen prüfen."
         },
         "coast-culture": {
           "label": "Küste & Kultur",
           "description": "Strände, UNESCO-Stätten, Weingüter—Ost bis West",
-          "bookingNote": "Verkostungen in Omodos/Tsiakkas anfragen; im Winter eingeschränkte Zeiten."
+          "bookingNote": "Verkostungen in Omodos/Tsiakkas anfragen; im Winter eingeschränkte Zeiten.",
+          "seasonalNote": "Sanfte Küste; Kourion + Governor's Beach kombinieren (nahe beieinander)."
         },
         "family": {
           "label": "Familie",
           "description": "Sanftes Tempo, 2 Stopps/Tag—Strände, Museen, Dorfmittagessen",
-          "bookingNote": "Sterna Boutique — Familienverkostung reservieren; im Winter 24 h vorher anrufen."
+          "bookingNote": "Sterna Boutique — Familienverkostung reservieren; im Winter 24 h vorher anrufen.",
+          "seasonalNote": "Maximal zwei Stopps pro Tag. Regen? Tag 3 gegen Cyprus Museum + Leventis (Nikosia) tauschen — Indoor-Reserve."
         },
         "workation": {
           "label": "Workation-Woche",
           "description": "Remote unter der Woche, Troodos & Küste am Wochenende—WLAN-Cafés, mildes Wetter",
-          "bookingNote": "Wochenend-Termine im Weingut früh anfragen; unter der Woche ist es ruhiger."
+          "bookingNote": "Wochenend-Termine im Weingut früh anfragen; unter der Woche ist es ruhiger.",
+          "seasonalNote": "/weather für den Reisemonat prüfen. Wochenenden: Trails vor 10 Uhr."
         },
         "classic-7": {
           "label": "Klassische Kultur (7 Tage)",
           "description": "Larnaka → Nikosia → Troodos → Paphos—volle Inselrunde",
-          "bookingNote": "Mehrere Weingut-Stopps — vorab anfragen; im Winter dünne Besetzung."
+          "bookingNote": "Mehrere Weingut-Stopps — vorab anfragen; im Winter dünne Besetzung.",
+          "seasonalNote": "Dez: Weihnachtsdörfer. Jan: Mandelblüte. Museen in Nikosia früh starten."
         },
         "mountain-10": {
           "label": "Berg-Explorer (10 Tage)",
           "description": "Troodos-Basis, Pitsilia, Machairas, dann Küste—tiefes Wandererlebnis",
-          "bookingNote": "Vouni Panayia: Verkostung anfragen. Tage 8–10: Ausklang an der Küste."
+          "bookingNote": "Vouni Panayia: Verkostung anfragen. Tage 8–10: Ausklang an der Küste.",
+          "seasonalNote": "Jan–März: Schnee auf dem Olymp. Trail-Bedingungen täglich prüfen."
         }
       }
     },
@@ -2134,6 +2144,10 @@
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
+    },
+    "seasonalTip": {
+      "kicker": "Tipp vom Reiseveranstalter",
+      "dismissAria": "Hinweis ausblenden"
     }
   },
   "bookings": {

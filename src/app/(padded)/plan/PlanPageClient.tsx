@@ -14,6 +14,7 @@ import PlanMapCollapsibleSection from "@/components/plan/PlanMapCollapsibleSecti
 import PlanAddMoreCollapsible from "@/components/plan/PlanAddMoreCollapsible";
 import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStartHere from "@/components/plan/PlanStartHere";
+import PlanSeasonalTip from "@/components/plan/PlanSeasonalTip";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
 import PlanWineryBar from "@/components/plan/PlanWineryBar";
@@ -116,6 +117,8 @@ export default function PlanPageClient() {
     sharePreviewLine,
     shareText,
     templateAppliedFromUrl,
+    appliedTemplateKey,
+    dismissAppliedTemplateTip,
     totalPlaces,
     activeDaysCount,
     displayDaysCount,
@@ -280,6 +283,13 @@ export default function PlanPageClient() {
             onAddFirstStop={() => {
               if (!planReadOnly) setShowBrowseModal(true);
             }}
+          />
+        )}
+
+        {hasContent && hydrated && appliedTemplateKey && (
+          <PlanSeasonalTip
+            templateKey={appliedTemplateKey}
+            onDismiss={dismissAppliedTemplateTip}
           />
         )}
 

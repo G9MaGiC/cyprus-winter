@@ -12,6 +12,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { isPartnerVerified } from "@/lib/partner-verification";
 import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
+import HubSkipNav from "@/components/HubSkipNav";
 import { localizeWineryContent } from "@/lib/winery-content";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 
@@ -75,6 +76,7 @@ export default async function WineriesPage() {
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(wineriesItemListSchema) }} />
+      <HubSkipNav targets={[{ href: "#wineries-list", labelKey: "results" }]} />
       <PageHeader
         backHref="/discover"
         backLabel={tNav("discover")}
@@ -117,7 +119,7 @@ export default async function WineriesPage() {
 
       <div id="wineries-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
-      <h2 id="wineries-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
+      <h2 id="wineries-list" className={`scroll-mt-24 ${TYPE.sectionTitle} ${SECTION.headingGap}`}>
         {tWineries("listTitle")}
       </h2>
       {/* Region facets over the ~50-card flat scroll (AUD-68). Server still

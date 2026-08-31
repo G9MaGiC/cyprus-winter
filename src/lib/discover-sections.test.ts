@@ -10,7 +10,9 @@ import {
   isFamilyFriendly,
   isOffBeatenPath,
   PRACTICAL_DISCOVER_FILTERS,
+  toDiscoverCardItem,
 } from "@/lib/discover-sections";
+import { wineries } from "@/data/wineries";
 
 describe("buildDiscoverSections", () => {
   it("excludes curated activity places from default Coasts section", () => {
@@ -91,6 +93,21 @@ describe("buildDiscoverSections", () => {
     expect(localIds.has("larnaca-salt-lake")).toBe(false);
     expect(coastsIds.has("larnaca-aliki")).toBe(true);
     expect(ancientIds.has("kition")).toBe(true);
+  });
+});
+
+describe("toDiscoverCardItem call-ahead flag", () => {
+  it("prefers a precomputed hoursCallAhead over recomputing on (possibly localized) text", () => {
+    const base = wineries.find((w) => w.id === "tsiakkas")!;
+    // Simulate the AUD-10 overlay: hours line translated, flag decided on EN base.
+    const overlaid = {
+      ...base,
+      openingHours: "Δευ–Παρ 9:00–17:00 — καλέστε πριν την επίσκεψη",
+      hoursCallAhead: true,
+    };
+    expect(toDiscoverCardItem(overlaid).hoursCallAhead).toBe(true);
+    // Raw records still fall back to the EN regex.
+    expect(typeof toDiscoverCardItem(base).hoursCallAhead).toBe("boolean");
   });
 });
 

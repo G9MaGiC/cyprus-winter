@@ -342,7 +342,9 @@
       "editorsPicks": "Skip to Editor's picks",
       "plan": "Skip to Plan",
       "search": "Skip to search",
-      "startHere": "Skip to Start here"
+      "startHere": "Skip to Start here",
+      "results": "Skip to results",
+      "map": "Skip to map"
     },
     "cancel": "Cancel",
     "done": "Done",
@@ -2090,42 +2092,50 @@
         "short-stay": {
           "label": "Short stay",
           "description": "48 hours: ancient coast, Troodos trail, village wine",
-          "bookingNote": "Book Tsiakkas tasting—winter slots fill."
+          "bookingNote": "Book Tsiakkas tasting—winter slots fill.",
+          "seasonalNote": "Daylight ends ~5pm. Start Kourion by 10am."
         },
         "classic": {
           "label": "Classic",
           "description": "Coast to mountains: Paphos ruins, Troodos trails, Lefkara lace",
-          "bookingNote": "Reserve Tsiakkas and Kolios tastings 24–48h ahead."
+          "bookingNote": "Reserve Tsiakkas and Kolios tastings 24–48h ahead.",
+          "seasonalNote": "2–3 stops/day. Group Kourion + mosaics (same coast)."
         },
         "mountain": {
           "label": "Mountain",
           "description": "Troodos loops and stone villages—Artemis, Caledonia, Kykkos",
-          "bookingNote": "Tsiakkas after Kykkos—perfect end-of-day pairing."
+          "bookingNote": "Tsiakkas after Kykkos—perfect end-of-day pairing.",
+          "seasonalNote": "Pack layers. Trails can be icy; check conditions."
         },
         "coast-culture": {
           "label": "Coast & Culture",
           "description": "Beaches, UNESCO sites, wineries—east to west",
-          "bookingNote": "Book Omodos/Tsiakkas tastings; winter hours limited."
+          "bookingNote": "Book Omodos/Tsiakkas tastings; winter hours limited.",
+          "seasonalNote": "Gentle coast; combine Kourion + Governor's Beach (nearby)."
         },
         "family": {
           "label": "Family",
           "description": "Gentle pace, 2 stops/day—beaches, museums, village lunch",
-          "bookingNote": "Sterna Boutique—reserve family tasting; call 24h ahead in winter."
+          "bookingNote": "Sterna Boutique—reserve family tasting; call 24h ahead in winter.",
+          "seasonalNote": "Two stops per day max. Rain? Swap day 3 for Cyprus Museum + Leventis (Nicosia)—indoor backup."
         },
         "workation": {
           "label": "Workation week",
           "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather",
-          "bookingNote": "Book weekend winery slots early; weekdays are quieter."
+          "bookingNote": "Book weekend winery slots early; weekdays are quieter.",
+          "seasonalNote": "Check /weather for your month. Weekends: trails before 10am."
         },
         "classic-7": {
           "label": "Classic Culture (7 days)",
           "description": "Larnaca → Nicosia → Troodos → Paphos—full island sweep",
-          "bookingNote": "Multiple winery stops—book ahead; lean staffing in winter."
+          "bookingNote": "Multiple winery stops—book ahead; lean staffing in winter.",
+          "seasonalNote": "Dec: Christmas villages. Jan: Almond blossoms. Start Nicosia museums early."
         },
         "mountain-10": {
           "label": "Mountain Explorer (10 days)",
           "description": "Troodos base, Pitsilia, Machairas, then coast—deep hiker immersion",
-          "bookingNote": "Vouni Panayia: book tasting. Days 8–10: coast wind-down."
+          "bookingNote": "Vouni Panayia: book tasting. Days 8–10: coast wind-down.",
+          "seasonalNote": "Jan–Mar: Snow on Olympus. Check trail conditions daily."
         }
       }
     },
@@ -2134,6 +2144,10 @@
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
+    },
+    "seasonalTip": {
+      "kicker": "Tour operator tip",
+      "dismissAria": "Dismiss tip"
     }
   },
   "bookings": {

@@ -71,10 +71,14 @@ export function toDiscoverCardItem(item: DiscoverItem): DiscoverCardItem {
   if ("winterTip" in item && item.winterTip) lean.winterTip = item.winterTip;
   if ("bestTimeToVisit" in item && item.bestTimeToVisit) lean.bestTimeToVisit = item.bestTimeToVisit;
   if ("openingHours" in item && item.openingHours) lean.openingHours = item.openingHours;
-  lean.hoursCallAhead = isCallAheadHours(
-    ("openingHours" in item ? item.openingHours : undefined) ??
-      ("tastingInfo" in item ? (item as { tastingInfo?: string }).tastingInfo : undefined)
-  );
+  // Overlaid records (localizeWineryContent) carry the flag decided on the EN
+  // base; recomputing over their localized hours line would silently drop it.
+  lean.hoursCallAhead =
+    ("hoursCallAhead" in item ? item.hoursCallAhead : undefined) ??
+    isCallAheadHours(
+      ("openingHours" in item ? item.openingHours : undefined) ??
+        ("tastingInfo" in item ? (item as { tastingInfo?: string }).tastingInfo : undefined)
+    );
   if ("isVerified" in item && item.isVerified !== undefined) lean.isVerified = item.isVerified;
   if ("partnerEmail" in item && item.partnerEmail) lean.partnerEmail = item.partnerEmail;
   return lean;

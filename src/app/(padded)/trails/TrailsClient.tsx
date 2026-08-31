@@ -6,6 +6,7 @@ import { trailConditions } from "@/data/trails";
 import { HOME, HUB, LAYOUT, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import TrailCard from "@/components/TrailCard";
 import StickyPlanBar from "@/components/StickyPlanBar";
+import HubSkipNav from "@/components/HubSkipNav";
 import ListPageHero from "@/components/ListPageHero";
 import AllTrailsMapClient from "@/components/AllTrailsMapClient";
 import SearchBar from "@/components/SearchBar";
@@ -87,6 +88,12 @@ export default function TrailsClient({
   return (
     <TrailListReportsProvider reports={reportsByTrail}>
     <div className="min-h-screen bg-sand">
+      <HubSkipNav
+        targets={[
+          { href: "#trail-list", labelKey: "results" },
+          { href: "#trails-map", labelKey: "map" },
+        ]}
+      />
       <SRStatus message={filterAnnouncement} />
       <div
         className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}
@@ -175,7 +182,7 @@ export default function TrailsClient({
         {hasFilters ? (
           <section
             aria-labelledby="trail-list-heading"
-            className={`${SECTION.pySub} pb-8 sm:pb-12`}
+            className={`scroll-mt-24 ${SECTION.pySub} pb-8 sm:pb-12`}
             id="trail-list"
           >
             <div className={`flex flex-wrap items-center justify-between gap-2 ${SECTION.headingGap}`}>
@@ -236,7 +243,7 @@ export default function TrailsClient({
         ) : (
           <section
             aria-labelledby="trail-sections-heading"
-            className={`${SECTION.pySub} pb-8 sm:pb-12`}
+            className={`scroll-mt-24 ${SECTION.pySub} pb-8 sm:pb-12`}
             id="trail-list"
           >
             <h2 id="trail-sections-heading" className="sr-only">
@@ -249,7 +256,7 @@ export default function TrailsClient({
         <section
           id="trails-map"
           aria-labelledby="trails-map-heading"
-          className={`${SECTION.pySub} border-t border-sand-200/80`}
+          className={`scroll-mt-24 ${SECTION.pySub} border-t border-sand-200/80`}
         >
           <h2 id="trails-map-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
             {tTrailsPage("map.heading", { count: filtered.length })}
