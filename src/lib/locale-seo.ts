@@ -44,7 +44,26 @@ export function buildPathAlternates(
 }
 
 /**
- * Set canonical, hreflang, and openGraph.url for a segment (default or locale-prefixed).
+ * og:locale wants territory-qualified codes (bare "he" is invalid to
+ * Facebook's parser; AUD-122). en_GB matches the primary UK market.
+ */
+const OG_LOCALES: Record<string, string> = {
+  en: "en_GB",
+  el: "el_GR",
+  de: "de_DE",
+  pl: "pl_PL",
+  fr: "fr_FR",
+  he: "he_IL",
+  ro: "ro_RO",
+};
+
+export function ogLocaleFor(locale: string): string {
+  return OG_LOCALES[locale] ?? locale;
+}
+
+/**
+ * Set canonical, hreflang, openGraph.url and og:locale for a segment
+ * (default or locale-prefixed).
  */
 export function applyLocaleToMetadata(
   base: Metadata,
@@ -61,7 +80,7 @@ export function applyLocaleToMetadata(
       languages,
     },
     openGraph: base.openGraph
-      ? { ...base.openGraph, url: canonical }
+      ? { locale: ogLocaleFor(locale), ...base.openGraph, url: canonical }
       : undefined,
   };
 }

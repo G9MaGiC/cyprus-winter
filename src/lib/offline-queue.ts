@@ -5,6 +5,8 @@
  */
 
 const STORAGE_KEY = "cyprus-winter-offline-queue";
+/** Fired on window after a drain delivers at least one queued mutation. */
+export const OFFLINE_QUEUE_DRAINED_EVENT = "cyprus-winter:offline-queue-drained";
 const MAX_ITEMS = 50;
 const ALLOWED_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 const RETRYABLE_CLIENT_STATUSES = new Set([408, 425, 429]);
@@ -132,6 +134,13 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
     } catch {
       // Network error: leave in queue for the next online event.
     }
+  }
+  if (succeeded > 0 && typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+    // Let mounted forms replace their stale "will be sent when back online"
+    // message with the delivered state (AUD B2-06 residual).
+    window.dispatchEvent(
+      new CustomEvent(OFFLINE_QUEUE_DRAINED_EVENT, { detail: { succeeded } })
+    );
   }
   return { processed: items.length, succeeded };
 }

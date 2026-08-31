@@ -2199,7 +2199,8 @@
         "bookAgain": "Rezervă din nou",
         "browseTrails": "Vezi trasee",
         "visitWineryPage": "Pagina cramei",
-        "discoverAll": "Descoperă tot"
+        "discoverAll": "Descoperă tot",
+        "addToCalendar": "Adaugă în calendar"
       },
       "past": {
         "heading": "Trecute și anulate"
@@ -2214,7 +2215,11 @@
         "title": "Rezervările mele | Cyprus Winter",
         "description": "Degustări și experiențe. Toate într-un loc."
       },
-      "cancelHint": "Vrei să modifici sau să anulezi? Răspunde la emailul de confirmare sau sună direct crama ori ghidul — fără costuri în ambele cazuri."
+      "cancelHint": "Vrei să modifici sau să anulezi? Răspunde la emailul de confirmare sau sună direct crama ori ghidul — fără costuri în ambele cazuri.",
+      "ics": {
+        "tasting": "degustare de vin",
+        "guidedHike": "drumeție ghidată"
+      }
     }
   },
   "account": {
@@ -2715,7 +2720,10 @@
       "meta": {
         "title": "Resetare parolă | Cyprus Winter",
         "description": "Solicită un link de resetare pentru contul Cyprus Winter."
-      }
+      },
+      "configTitle": "Resetează-ți parola",
+      "configSubtitle": "Autentificarea este încă în curs de configurare, așa că e-mailurile de resetare nu pot fi trimise deocamdată. Rezervările rămân salvate pe acest dispozitiv — le puteți încărca și prin e-mail în „Rezervările mele”.",
+      "configBookingsCta": "Mergi la „Rezervările mele”"
     },
     "reset": {
       "inlinePasswordHint": "Cel puțin 6 caractere",
@@ -3119,7 +3127,8 @@
       },
       "aria": {
         "actions": "Acțiuni director ghizi licențiați"
-      }
+      },
+      "resultCountFiltered": "{count} din {total} ghizi — cu filtre"
     }
   },
   "install": {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { wineries } from "@/data/wineries";
 import { getPlaceById } from "@/data/index";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import BookWineryBackLink from "@/components/BookWineryBackLink";
@@ -276,12 +276,15 @@ export default async function WineryBookPage({
             description: winery.tastingInfo || winery.description,
             address: {
               "@type": "PostalAddress",
-              addressRegion: winery.region,
+              // "Pelendri (Limassol)" is a locality, not a region (AUD-119)
+              addressLocality: winery.region,
               addressCountry: "CY",
             },
-            ...(imageUrl ? { image: imageUrl } : {}),
+            ...(imageUrl ? { image: toAbsoluteUrl(imageUrl) } : {}),
             ...(winery.contactPhone ? { telephone: winery.contactPhone } : {}),
-            ...(winery.openingHours ? { openingHours: winery.openingHours } : {}),
+            // openingHours is curated prose, not the Mo-Fr 09:00-17:00 spec
+            // format — the visible page shows it; invalid markup helps nobody
+            // (AUD-119). Re-add once the data carries structured hours.
             ...(winery.latitude && winery.longitude ? {
               geo: {
                 "@type": "GeoCoordinates",

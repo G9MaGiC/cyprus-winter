@@ -25,6 +25,9 @@ export const allAttractions: Attraction[] = [
 export type PlanItem = {
   id: string;
   name: string;
+  /** Native name (Greek-first standard, ICPS §6.1) — carried through so plan
+      surfaces can render it via getLocalizedName (AUD-100). */
+  nameEl?: string;
   region: string;
   type: "attraction" | "activity" | "trail" | "winery" | "event" | "restaurant";
 };
@@ -42,6 +45,7 @@ export const allPlaces: PlanItem[] = [
   ...baseAttractions.map((a) => ({
     id: a.id,
     name: a.name,
+    nameEl: a.nameEl,
     region: a.region,
     type: planTypeForAttraction(a.type),
   })),
@@ -54,18 +58,21 @@ export const allPlaces: PlanItem[] = [
   ...restaurants.map((r) => ({
     id: r.id,
     name: r.name,
+    nameEl: r.nameEl,
     region: r.region,
     type: "restaurant" as const,
   })),
   ...trails.map((t) => ({
     id: t.id,
     name: t.name,
+    nameEl: t.nameEl,
     region: t.region,
     type: "trail" as const,
   })),
   ...winterEvents.map((e) => ({
     id: e.id,
     name: e.name,
+    nameEl: e.nameEl,
     region: e.region,
     type: "event" as const,
   })),

@@ -5,7 +5,8 @@ import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
 import { searchResultHref, type SearchResult } from "@/lib/search";
 import { CARD, TYPE } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
 
 const kindBadge: Record<string, string> = {
   place: "bg-terracotta/20 text-terracotta",
@@ -21,7 +22,8 @@ type Props = {
 
 export default function SearchResultCard({ result, searchQuery }: Props) {
   const tCommon = useTranslations("common");
-  const name = result.item.name;
+  const locale = useLocale();
+  const name = getLocalizedName(result.item, locale);
   const region = result.item.region;
   const kind = result.kind;
   const sublabel = kind === "event" ? (result.item as { month: string }).month : region;

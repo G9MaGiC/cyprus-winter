@@ -10,6 +10,7 @@ import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/booki
 
 import { formatDate, daysUntil, getUpcomingDateGroup } from "@/lib/format";
 import BookingsEmailLookup from "@/components/BookingsEmailLookup";
+import { downloadBookingIcs } from "@/lib/booking-ics";
 import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { useLocale, useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
@@ -558,22 +559,38 @@ export default function BookingsPage() {
                                     </p>
                                   )}
                                 </div>
-                                {providerValid && (
-                                  <div className="flex flex-wrap gap-2 shrink-0">
-                                    <AppLink
-                                      href={viewHref}
-                                      className={`px-4 py-2 rounded-lg ${CTA.secondaryCompact}`}
-                                    >
-                                      {viewLabel}
-                                    </AppLink>
-                                    <AppLink
-                                      href={modifyHref}
-                                      className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
-                                    >
-                                      {tBookingsPage("cta.modify")}
-                                    </AppLink>
-                                  </div>
-                                )}
+                                <div className="flex flex-wrap gap-2 shrink-0">
+                                  {providerValid && (
+                                    <>
+                                      <AppLink
+                                        href={viewHref}
+                                        className={`px-4 py-2 rounded-lg ${CTA.secondaryCompact}`}
+                                      >
+                                        {viewLabel}
+                                      </AppLink>
+                                      <AppLink
+                                        href={modifyHref}
+                                        className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
+                                      >
+                                        {tBookingsPage("cta.modify")}
+                                      </AppLink>
+                                    </>
+                                  )}
+                                  {/* The page says "set a reminder if you like" — give the
+                                      calendar entry instead of homework (AUD-82). */}
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      downloadBookingIcs(b, {
+                                        summary: `${b.providerName} — ${isGuide ? tBookingsPage("ics.guidedHike") : tBookingsPage("ics.tasting")}`,
+                                        description: `${tBookings(`status.${b.status}`)} · ${tCommon("peopleCount", { count: b.partySize })}${b.notes ? `\n${b.notes}` : ""}`,
+                                      })
+                                    }
+                                    className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
+                                  >
+                                    {tBookingsPage("cta.addToCalendar")}
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </li>

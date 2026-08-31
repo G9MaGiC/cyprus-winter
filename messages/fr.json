@@ -2199,7 +2199,8 @@
         "bookAgain": "Réserver à nouveau",
         "browseTrails": "Parcourir les sentiers",
         "visitWineryPage": "Page du domaine",
-        "discoverAll": "Tout découvrir"
+        "discoverAll": "Tout découvrir",
+        "addToCalendar": "Ajouter au calendrier"
       },
       "past": {
         "heading": "Passées et annulées"
@@ -2214,7 +2215,11 @@
         "title": "Mes réservations | Cyprus Winter",
         "description": "Dégustations et expériences. Tout au même endroit."
       },
-      "cancelHint": "Besoin de modifier ou d’annuler ? Répondez à l’e-mail de confirmation ou appelez directement le domaine ou le guide — sans frais dans les deux cas."
+      "cancelHint": "Besoin de modifier ou d’annuler ? Répondez à l’e-mail de confirmation ou appelez directement le domaine ou le guide — sans frais dans les deux cas.",
+      "ics": {
+        "tasting": "dégustation de vin",
+        "guidedHike": "randonnée guidée"
+      }
     }
   },
   "account": {
@@ -2715,7 +2720,10 @@
       "meta": {
         "title": "Réinitialiser le mot de passe | Cyprus Winter",
         "description": "Demandez un lien de réinitialisation pour votre compte Cyprus Winter."
-      }
+      },
+      "configTitle": "Réinitialiser votre mot de passe",
+      "configSubtitle": "La connexion est encore en cours de configuration, les e-mails de réinitialisation ne peuvent donc pas encore être envoyés. Vos réservations restent enregistrées sur cet appareil — vous pouvez aussi les charger par e-mail dans « Mes réservations ».",
+      "configBookingsCta": "Aller à « Mes réservations »"
     },
     "reset": {
       "inlinePasswordHint": "Au moins 6 caractères",
@@ -3119,7 +3127,8 @@
       },
       "aria": {
         "actions": "Actions du répertoire de guides agréés"
-      }
+      },
+      "resultCountFiltered": "{count} guides locaux sur {total} — filtres actifs"
     }
   },
   "install": {

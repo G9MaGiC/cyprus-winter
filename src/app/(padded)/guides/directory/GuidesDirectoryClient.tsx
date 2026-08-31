@@ -7,6 +7,7 @@ import { trackProduct } from "@/lib/analytics";
 import {
   commonGuideLanguages,
   filterLicensedGuides,
+  licensedGuideCount,
   formatGuideName,
   guideLanguageLabel,
   type LicensedGuide,
@@ -50,6 +51,8 @@ export default function GuidesDirectoryClient({
   );
 
   const languageOptions = useMemo(() => commonGuideLanguages(), []);
+  const totalGuides = useMemo(() => licensedGuideCount(), []);
+  const isFiltered = Boolean(district || language || query.trim());
 
   return (
     <div className="space-y-6">
@@ -108,8 +111,13 @@ export default function GuidesDirectoryClient({
         </div>
       </div>
 
+      {/* The intro promises the full official count; when a filter (incl. the
+          silent locale-language pre-filter) narrows the list, say so instead
+          of showing two contradicting numbers (AUD-70). */}
       <p className="text-sm text-muted-ink" aria-live="polite">
-        {t("resultCount", { count: filtered.length })}
+        {isFiltered && filtered.length < totalGuides
+          ? t("resultCountFiltered", { count: filtered.length, total: totalGuides })
+          : t("resultCount", { count: filtered.length })}
       </p>
 
       <ul className="grid gap-4 sm:grid-cols-2">

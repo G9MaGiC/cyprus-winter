@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { ogLocaleFor } from "@/lib/locale-seo";
 import { pwaManifestHref } from "@/lib/pwa-manifest";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: t("homeDescription"),
       type: "website",
       url: alternates.canonical,
-      locale,
+      locale: ogLocaleFor(locale),
       images: [{ url: ogImage, width: 1200, height: 630, alt: t("ogImageAlt") }],
     },
     // Card type only: title/description/image fall back to each page's og:* —

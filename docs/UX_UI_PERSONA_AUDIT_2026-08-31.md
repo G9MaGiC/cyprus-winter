@@ -375,7 +375,7 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-67 | Med | Legal/GDPR contact addresses live on the unattached `cypruswinter.com` domain (no MX) — privacy/terms advertise unreachable mailboxes | ⏳ supply: needs a real mailbox |
 | AUD-68 | Med | Mega-hub flat scrolls at 375px: `/wineries` 47,974px, `/secrets` 33,989px, `/villages` 30,123px — zero facets or in-page nav (unlike `/discover`, `/events`) | ⏳ hub-facets project |
 | AUD-69 | Med | Region hub lede is keyword-stuffed meta copy rendered as the visible intro, EN-only ×7 (`regions.ts` feeds both metadata and PageHeader) | ⏳ editorial + data-layer i18n (AUD-10 class) |
-| AUD-70 | Low | Guides directory: "221 licensed guides" intro vs "158 guides" list on one screen — locale-language pre-filter never explained | ⏳ |
+| AUD-70 | Low | Guides directory: "221 licensed guides" intro vs "158 guides" list on one screen — locale-language pre-filter never explained | ✅ "{count} of {total} — filtered" line ×7 whenever a filter (incl. the locale pre-filter) narrows the list; de noun fixed to "Gästeführer" |
 | AUD-71 | Low | 14 wineries carry `wineRoute` values matching no route page ("Laona–Akamas", "Pitsilia"…) — invisible to the wine-route feature; no `data:validate` rule ties them | ⏳ data + validator rule |
 | AUD-72 | Low | Privacy/Terms "Last updated: March 2026" hardcoded, 6 months stale | ⏳ editorial |
 
@@ -388,14 +388,14 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-75 | **High** | Fallback trust copy said "call the guide or use their booking link below" — guide phones are suppressed and 6/7 guides have no link; only `tel:` on page were 112/1460/199 | ✅ reworded ×7 + directory fallback link on unverified guide pages (`book/guide/[id]/page.tsx`) |
 | AUD-76 | Med | Progress stepper filled "Partner confirms" (3/3) solid at submission while the booking is pending | ✅ `currentStep={2}` on success (hollow step 3) |
 | AUD-77 | Med | Booking honeypot was dead code: API checks a `website` field no form rendered | ✅ honeypot field + JSON passthrough in both forms (SR-invisible, `tabIndex=-1`, static 1px clip — no absolute positioning per the SRStatus scroll-geometry lesson) |
-| AUD-78 | Med | Offline queue drain delivered the request but (a) never added the booking to local storage and (b) left the "will be sent" alert up after delivery | ◐ (a) fixed — drain now stores the returned booking (unit-tested); (b) residual: drain→form signal deferred |
+| AUD-78 | Med | Offline queue drain delivered the request but (a) never added the booking to local storage and (b) left the "will be sent" alert up after delivery | ✅ drain stores the returned booking (unit-tested) and fires a drained event; mounted forms swap the stale offline message for the success state |
 | AUD-79 | Med | Booking 429 ignored its own `Retry-After: 53`: "wait a moment" copy, no countdown, submit stayed enabled | ✅ header parsed, 1s countdown `role="status"`, submit disabled until 0 (`useBookingForm.ts`) |
 | AUD-80 | Med | Server `VALIDATION_ERROR` genericized to "Something went wrong" — dropped the actionable reason; EN passthrough when a code was unmapped | ◐ per-code messages incl. `NOT_FOUND`/`IDEMPOTENCY_CONFLICT`, no EN passthrough (falls to localized generic); per-field highlight from server errors deferred |
 | AUD-81 | Med | Partner portal misreports its own state: unconfigured backend (503) surfaces as "Email or secret is not recognised" | ⏳ needs portal-state copy + partner-onboarding path |
-| AUD-82 | Med | `/bookings` says "set a reminder if you like" but offers no add-to-calendar while `/plan` ships ICS | ⏳ per-booking ICS quick win, backlog |
+| AUD-82 | Med | `/bookings` says "set a reminder if you like" but offers no add-to-calendar while `/plan` ships ICS | ✅ per-booking "Add to calendar" ICS (`booking-ics.ts`), labels ×7 |
 | AUD-83 | Low | Status vocabulary split: form promises "requested", every badge says "pending" | ✅ states copy unified on "pending" ×7 |
 | AUD-84 | Low | `AuthPasswordInput` show/hide toggle `tabIndex={-1}` — keyboard users can never reveal the password (latent while auth unconfigured) | ✅ removed |
-| AUD-85 | Low | `/forgot-password` unconfigured state wears the reset page's copy ("Use the reset link from your email") for users who came to request one | ⏳ copy + config-state rework |
+| AUD-85 | Low | `/forgot-password` unconfigured state wears the reset page's copy ("Use the reset link from your email") for users who came to request one | ✅ own config copy ×7 + link to the bookings email lookup |
 | AUD-86 | Med | Guide bookings lose their trail: chosen trail lives only in free-text notes (which the old merge stripped — AUD-74), card shows no trail, "View trails" generic | ⏳ needs a `trailId` field on the booking record (API change) |
 
 ### Lane C2 — keyboard & structure
@@ -408,7 +408,7 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-90 | Med | Every card cost 3 tab stops (~120 through `/discover`): card link + "Add to plan →" + duplicate "+" with identical action | ✅ duplicate removed → 2 stops/card |
 | AUD-91 | Med | Primary CTAs at conversion moments rendered 44px against the repo's own 48px primary rule (QA_PLAN §2.5): detail add-to-plan, plan combos, home cards | ✅ `CTA.primaryCompact` → `min-h-[48px]` |
 | AUD-92 | Low | `/plan` native date-input segments could show zero focus indication (2 of 8 segment stops) | ✅ `focus-within` ring on the wrappers (`PlanTripDatesWidget.tsx`) |
-| AUD-93 | Low | "← Home" (BackLink) + "Home" (Breadcrumbs) adjacent duplicate tab stops on padded pages | ⏳ PageHeader-level dedupe |
+| AUD-93 | Low | "← Home" (BackLink) + "Home" (Breadcrumbs) adjacent duplicate tab stops on padded pages | ✅ deduped in `PageHeader` + `ListPageHero` (deeper crumbs keep their non-duplicate items) |
 
 ### Lane D2 — tier-1 native walks (el/pl full, he re-walk, de@320)
 
@@ -420,7 +420,7 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-97 | Med | Greek misspelling "Λευκάρια" for Λεύκαρα in shipped combo copy | ✅ corrected (el-wide sweep) |
 | AUD-98 | Med | `AttractionCard` aria-label + img alt hardcoded EN template literals in all locales ("Nissi Beach, Παραλία in Ayia Napa") — `i18n:scan` blind to attribute template literals | ✅ `common.aria.placeCard`/`placeCardImageAlt` keys ×7 |
 | AUD-99 | Med | Finite data enums (activities, difficulty, route type) interpolated raw into localized sentences → "Ιδανικό για shopping and crafts", "7 km szlak easy" | ⏳ enum-localization project (extends AUD-10) |
-| AUD-100 | Med | 90× `nameEl` exists in data but no card/list surface used it — `/el` read translated-tourist exactly where ICPS §6.1 demands Greek-first | ◐ `AttractionCard` now renders `getLocalizedName()`; TrailCard/ItineraryCard/SearchResultCard deferred |
+| AUD-100 | Med | 90× `nameEl` exists in data but no card/list surface used it — `/el` read translated-tourist exactly where ICPS §6.1 demands Greek-first | ✅ `AttractionCard`, `TrailCard`, `SearchResultCard` and `ItineraryCard` (via `nameEl` carried through `PlanItem`) all render `getLocalizedName()` |
 | AUD-101 | Low | Greek AI-assistant voice informal singular vs the app's formal σας (de correctly uses Sie) | ✅ 5 opener strings formalized |
 | AUD-102 | Med | el mixed "οδηγός" (driver/guidebook) with "ξεναγός" (licensed guide) after the AUD-01 rewording — both in one sentence on the hub | ✅ `ξεναγ` sweep over guide surfaces |
 | AUD-103 | Low | Guides hub footer dropped "and add stops to your plan" in de/el/pl | ✅ restored ×3 |
@@ -444,10 +444,10 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-116 | Med | Events JSON-LD: 26 Events, none with `startDate` (invalid for rich results); zero invented dates — discipline held | ✅ truthful `eventSchedule.byMonth` from the month field; still no fabricated dates |
 | AUD-117 | Med | Canonical split-brain: `/el` home Strategy A vs locale subpages Strategy B; sitemap unprefixed-only (474 URLs); two parallel helper modules | ⏳ strategy unification project |
 | AUD-118 | Med | `meta.homeTitle/homeDescription` a copy generation behind in all 6 non-EN; ro/fr/he served stale **English** titles live | ✅ retranslated ×6 |
-| AUD-119 | Low | Winery JSON-LD hygiene (relative image URL, prose openingHours, locality in addressRegion) | ⏳ |
-| AUD-120 | Low | JSON-LD descriptions truncated mid-word without ellipsis | ⏳ |
+| AUD-119 | Low | Winery JSON-LD hygiene (relative image URL, prose openingHours, locality in addressRegion) | ✅ absolute image, `addressLocality`, non-spec prose hours dropped from markup (visible page keeps them) |
+| AUD-120 | Low | JSON-LD descriptions truncated mid-word without ellipsis | ✅ shared `truncateForSchema()` (word boundary + …) in all three schema builders |
 | AUD-121 | Low | 6 meta descriptions >160 chars (worst `/el/plan` 215) | ⏳ editorial |
-| AUD-122 | Low | `og:locale` bare codes ("he" not "he_IL"); detail `og:type` omitted | ⏳ |
+| AUD-122 | Low | `og:locale` bare codes ("he" not "he_IL"); detail `og:type` omitted | ✅ territory-qualified `og:locale` map injected by `applyLocaleToMetadata` + layouts; `og:type` article on discover/trail details |
 
 E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings ×7 no EN leaks; sitemap 474 URLs sane; robots sane; og:images resolve; AUD-01 JSON-LD phone gating held; BUG-165/175 escaping held.
 
@@ -456,14 +456,16 @@ E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings 
 | ID | Sev | Finding | Status |
 |---|---|---|---|
 | AUD-123 | Med | AUD-41 correction (§8.1): "Wanderwege" needed 74px, cap was 72px — still ellipsized at 375 | ✅ cap → 76px (≥360px); ≤360px keeps 56px by design |
-| AUD-124 | Med | `/plan` timeline cards get 182px of a 320px viewport (double start-gutter ≈96px); readable but cramped | ⏳ 320px gutter collapse |
+| AUD-124 | Med | `/plan` timeline cards get 182px of a 320px viewport (double start-gutter ≈96px); readable but cramped | ✅ ≤360px timeline column slims (24px badge, 8px gap) — cards re-measured at 198px, 0 overflow |
 | AUD-125 | Med | `/search` 6px horizontal overflow at 320px — two stacked causes: the in-plan chip's `inline-flex flex-wrap` min-content resolving unwrapped, and `truncate` (nowrap) card text setting the grid track's min-content to the full line | ✅ `max-w-full` on the chip **and** `truncate` → `line-clamp-1 break-words` in `SearchResultCard` (re-measured: 0px overflow, all 8 spot routes) |
 
 ## 8.3 Round-2 remediation status
 
-**Fixed and re-validated this pass (44):** AUD-60…64, 66 (sitemap half), 73…80 (78/80 partial), 83, 84, 87…92, 94…98, 100 (AttractionCard), 101…103, 105, 106, 108…112, 114…116, 118, 123, 125 — plus the pl e-mail normalization and the two §8.1 corrections. i18n catalog now **7 × 2338 keys**, parity-validated, editorial maps auto-synced.
+**Fixed and re-validated this pass (44 + a same-day backlog batch, below):** AUD-60…64, 66 (sitemap half), 73…80 (78/80 partial), 83, 84, 87…92, 94…98, 100 (AttractionCard), 101…103, 105, 106, 108…112, 114…116, 118, 123, 125 — plus the pl e-mail normalization and the two §8.1 corrections. i18n catalog now **7 × 2338 keys**, parity-validated, editorial maps auto-synced.
 
-**Backlog (decision/supply/project):** AUD-65/113 (soft-404s), 67 (real legal mailbox), 68 (hub facets), 69 (region lede editorial), 70–72, 81 (partner portal states), 82 (booking ICS), 85, 86 (booking `trailId`), 93, 99 (enum localization), 100-residual (TrailCard/ItineraryCard/SearchResultCard native names), 104/107 residuals, 117 (canonical strategy), 119–122, 124 (320px plan gutter), 78-residual (drain→form signal), 80-residual (server field highlight).
+**Backlog batch (same day, follow-up commit):** AUD-70, 78-residual, 82, 85, 93, 100-residual, 119, 120, 122 and 124 closed — per-booking calendar ICS, drained-queue → form success signal, native place names on every card surface (`nameEl` carried through `PlanItem` + regenerated index), breadcrumb/back-link dedupe, forgot-password copy ×7, filtered-count honesty in the guides directory (+ de "Gästeführer" terminology), JSON-LD/og hygiene (absolute winery image, `addressLocality`, word-boundary truncation, territory-qualified `og:locale`, detail `og:type`), and the ≤360px plan-gutter collapse. TrailCard/trail aria also localize the difficulty label (partial AUD-99), and TrailCard swaps `truncate` → `line-clamp-1` (AUD-125 class).
+
+**Remaining backlog (decision/supply/project):** AUD-65/113 (soft-404s), 67 (real legal mailbox), 68 (hub facets), 69 (region lede editorial), 71, 72, 81 (partner portal states), 86 (booking `trailId` — API change), 99 (enum localization beyond difficulty labels), 104/107 residuals, 117 (canonical strategy), 121 (meta lengths — editorial).
 
 ## 8.4 Persona × dimension grid (16 QA personas, post-R2-fix)
 
@@ -511,4 +513,12 @@ npm run test:e2e:gate:ci              → exit 0
   core-funnel 38 passed · ux 44 passed (1 recovered flaky, 1 skipped)
   visual-gate 17 passed · a11y (axe, 31 routes, contrast fatal) 1 passed
 320px spot sweep (8 funnel routes, en+he+de) → 0px horizontal overflow
+
+Backlog batch (follow-up commit, full rerun): lint · typecheck · vitest 786
+(plan-items index regenerated for the `nameEl` carry-through) · i18n 7×2345 ·
+data:validate · build · e2e gate 38+45+17+1 all passed (no flakes) · 320px
+sweep 0px · live checks: single Home tab stop on every hub, deeper crumbs
+keep non-duplicate items, `/el` plan renders Λεύκαρα / Μονοπάτι Αρτέμιδος,
+plan cards 198px at 320 (was 182), booking "Add to calendar" present,
+he_IL og:locale, article og:type, absolute winery JSON-LD image.
 ```

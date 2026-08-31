@@ -2199,7 +2199,8 @@
         "bookAgain": "Book again",
         "browseTrails": "Browse trails",
         "visitWineryPage": "Visit winery page",
-        "discoverAll": "Discover all"
+        "discoverAll": "Discover all",
+        "addToCalendar": "Add to calendar"
       },
       "past": {
         "heading": "Past & cancelled"
@@ -2214,7 +2215,11 @@
         "title": "My bookings | Cyprus Winter",
         "description": "View and manage your Cyprus Winter winery tastings and experiences. All bookings in one place. Sync from any device. Confirmations by email."
       },
-      "cancelHint": "Need to change or cancel? Reply to your confirmation email or call the winery or guide directly — no charge either way."
+      "cancelHint": "Need to change or cancel? Reply to your confirmation email or call the winery or guide directly — no charge either way.",
+      "ics": {
+        "tasting": "wine tasting",
+        "guidedHike": "guided hike"
+      }
     }
   },
   "account": {
@@ -2724,7 +2729,10 @@
       "meta": {
         "title": "Reset password | Cyprus Winter",
         "description": "Request a password reset link for your Cyprus Winter account."
-      }
+      },
+      "configTitle": "Reset your password",
+      "configSubtitle": "Sign-in is still being set up, so reset emails can't be sent yet. Your bookings stay saved on this device — you can also load them by email under My Bookings.",
+      "configBookingsCta": "Go to My Bookings"
     },
     "reset": {
       "inlinePasswordHint": "At least 6 characters",
@@ -3089,7 +3097,8 @@
       },
       "aria": {
         "actions": "Licensed guides directory actions"
-      }
+      },
+      "resultCountFiltered": "{count} of {total} guides — filtered"
     },
     "troodosDecember": {
       "meta": {

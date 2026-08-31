@@ -26,6 +26,12 @@ export default function PageHeader({
 }: PageHeaderProps) {
   const tCommon = useTranslations("common");
   const resolvedBackLabel = backLabel ?? tCommon("back");
+  // The back link already provides a tab stop to backHref — drop the breadcrumb
+  // that duplicates it so keyboard users don't hit two adjacent stops for the
+  // same target (AUD-93).
+  const dedupedBreadcrumbs = breadcrumbItems?.filter(
+    (item) => item.isCurrent || item.href !== backHref
+  );
 
   return (
     <div className={SECTION.headingMarginLarge}>
@@ -36,8 +42,8 @@ export default function PageHeader({
       >
         <span aria-hidden>←</span> {resolvedBackLabel}
       </AppLink>
-      {breadcrumbItems && breadcrumbItems.length > 1 && (
-        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-muted-ink" />
+      {dedupedBreadcrumbs && dedupedBreadcrumbs.length > 1 && (
+        <Breadcrumbs items={dedupedBreadcrumbs} className="py-1 px-0 text-xs text-muted-ink" />
       )}
       </nav>
       <h1 className={`${TYPE.pageTitle} mt-3 sm:mt-4`}>

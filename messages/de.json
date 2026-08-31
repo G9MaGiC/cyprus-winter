@@ -2199,7 +2199,8 @@
         "bookAgain": "Erneut buchen",
         "browseTrails": "Wanderwege entdecken",
         "visitWineryPage": "Zur Weingut-Seite",
-        "discoverAll": "Alles entdecken"
+        "discoverAll": "Alles entdecken",
+        "addToCalendar": "Zum Kalender hinzufügen"
       },
       "past": {
         "heading": "Vergangen & storniert"
@@ -2214,7 +2215,11 @@
         "title": "Meine Buchungen | Cyprus Winter",
         "description": "Ihre Verkostungen und Erlebnisse. Alles an einem Ort."
       },
-      "cancelHint": "Ändern oder stornieren? Antworten Sie auf die Bestätigungs-E-Mail oder rufen Sie das Weingut bzw. den Guide direkt an — in beiden Fällen kostenlos."
+      "cancelHint": "Ändern oder stornieren? Antworten Sie auf die Bestätigungs-E-Mail oder rufen Sie das Weingut bzw. den Guide direkt an — in beiden Fällen kostenlos.",
+      "ics": {
+        "tasting": "Weinverkostung",
+        "guidedHike": "geführte Wanderung"
+      }
     }
   },
   "account": {
@@ -2634,7 +2639,10 @@
       "meta": {
         "title": "Passwort zurücksetzen | Cyprus Winter",
         "description": "Link zum Zurücksetzen des Cyprus-Winter-Passworts anfordern."
-      }
+      },
+      "configTitle": "Passwort zurücksetzen",
+      "configSubtitle": "Die Anmeldung wird noch eingerichtet, daher können noch keine E-Mails zum Zurücksetzen versendet werden. Ihre Anfragen bleiben auf diesem Gerät gespeichert — unter „Meine Buchungen“ können Sie sie auch per E-Mail laden.",
+      "configBookingsCta": "Zu „Meine Buchungen“"
     },
     "reset": {
       "inlinePasswordHint": "Mindestens 6 Zeichen",
@@ -2999,7 +3007,7 @@
       "filterLanguage": "Sprache",
       "allDistricts": "Alle Bezirke",
       "allLanguages": "Alle Sprachen",
-      "resultCount": "{count} Führer",
+      "resultCount": "{count} Gästeführer",
       "empty": "Keine Führer für diese Filter.",
       "districts": {
         "general": "Ganz Zypern",
@@ -3038,7 +3046,8 @@
       },
       "aria": {
         "actions": "Aktionen lizenzierter Guides"
-      }
+      },
+      "resultCountFiltered": "{count} von {total} Gästeführern — gefiltert"
     }
   },
   "install": {

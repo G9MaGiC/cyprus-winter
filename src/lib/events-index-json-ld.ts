@@ -1,4 +1,5 @@
 import { winterEvents } from "@/data/events";
+import { truncateForSchema } from "@/lib/schema-text";
 import { startDateForEventJsonLd } from "@/lib/event-json-ld";
 
 // schema.org Schedule.byMonth (1–12). The data holds a month, never a made-up
@@ -31,7 +32,7 @@ export function buildEventsIndexJsonLd(eventsUrl: string) {
         item: {
           "@type": "Event",
           name: evt.name,
-          description: evt.description.slice(0, 160),
+          description: truncateForSchema(evt.description),
           location: {
             "@type": "Place",
             name: evt.venue || evt.region,

@@ -60,6 +60,7 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
     openGraph: {
+      type: "article",
       images: [{
         url: imageUrl,
         width: 1200,
@@ -94,6 +95,7 @@ export async function trailDetailMetadata(id: string, locale: string): Promise<M
     title: tTrailDetail("meta.title", { name: trail.name }),
     description: prefix + desc,
     openGraph: {
+      type: "article",
       images: [{
         url: imageUrl,
         width: 1200,

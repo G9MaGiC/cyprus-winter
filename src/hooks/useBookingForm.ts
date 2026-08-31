@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import type { z } from "zod";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal } from "@/lib/bookings-storage";
-import { addMutation } from "@/lib/offline-queue";
+import { addMutation, OFFLINE_QUEUE_DRAINED_EVENT } from "@/lib/offline-queue";
 import {
   formatZodErrors,
   localizeBookingFieldErrors,
@@ -66,8 +66,24 @@ export function useBookingForm(
   const [todayStr, setTodayStr] = useState("");
   const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const idempotencyKeyRef = useRef<string | null>(null);
+  const queuedOfflineRef = useRef(false);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
+
+  // When the offline queue drains, THIS form's queued request was delivered
+  // (and stored locally by the drain) — swap the stale "will be sent" message
+  // for the real success state (AUD B2-06 residual).
+  useEffect(() => {
+    const onDrained = () => {
+      if (!queuedOfflineRef.current) return;
+      queuedOfflineRef.current = false;
+      idempotencyKeyRef.current = null;
+      setError(null);
+      setDone(true);
+    };
+    window.addEventListener(OFFLINE_QUEUE_DRAINED_EVENT, onDrained);
+    return () => window.removeEventListener(OFFLINE_QUEUE_DRAINED_EVENT, onDrained);
+  }, []);
 
   useEffect(() => {
     setTodayStr(toLocalDateInputValue());
@@ -209,6 +225,7 @@ export function useBookingForm(
       const isNetworkError = /failed to fetch|network error/i.test(msg);
       if (isNetworkError && typeof navigator !== "undefined") {
         addMutation({ type: mutationType, url: "/api/bookings", method: "POST", body });
+        queuedOfflineRef.current = true;
         setError(tErrors.offlineQueued);
       } else {
         idempotencyKeyRef.current = null;

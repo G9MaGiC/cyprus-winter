@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { schemaForLdJson } from "@/lib/schema-ldjson";
 import { SITE_URL } from "@/lib/site-url";
+import { ogLocaleFor } from "@/lib/locale-seo";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { Plus_Jakarta_Sans, Fraunces, Noto_Sans_Hebrew, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
@@ -72,6 +73,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: tMeta("homeTitle"),
       description: tMeta("homeDescription"),
       type: "website",
+      locale: ogLocaleFor("en"),
       url: SITE_URL,
       images: [{ url: ogImage, width: 1200, height: 630, alt: tMeta("ogImageAlt") }],
     },
