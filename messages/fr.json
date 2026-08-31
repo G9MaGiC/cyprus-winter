@@ -509,7 +509,8 @@
       "goodToGo": "Sentiers du Troodos praticables",
       "cautionOnly": "{count, plural, one {# sentier demande de la prudence} other {# sentiers demandent de la prudence}}",
       "withClosed": "{count} sentiers fermés — vérifiez avant de partir",
-      "checkConditions": "Vérifiez l’état des sentiers avant Troodos"
+      "checkConditions": "Vérifiez l’état des sentiers avant Troodos",
+      "asOf": "données de {date}"
     },
     "weatherStrip": {
       "aria": "Météo d’hiver à Chypre — températures côte et Troodos. Voir la météo.",
@@ -1795,7 +1796,8 @@
       "loop": "Boucle",
       "outAndBack": "Aller-retour",
       "pointToPoint": "En ligne"
-    }
+    },
+    "asOf": "données de {date}"
   },
   "plan": {
     "addToPlan": "Ajouter au plan",
@@ -2857,7 +2859,8 @@
       "errors": {
         "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
-        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
+        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne.",
+        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la."
       },
       "success": {
         "title": "Demande envoyée",
@@ -2930,7 +2933,8 @@
       "errors": {
         "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
-        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
+        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne.",
+        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la."
       },
       "success": {
         "title": "Demande envoyée",
@@ -3650,6 +3654,16 @@
       "useLink": "Utilisez ce lien sécurisé dans les 15 minutes :",
       "viewBookings": "Voir mes réservations",
       "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} a confirmé votre réservation",
+      "subjectCancelled": "Mise à jour de votre demande — {provider}",
+      "headingConfirmed": "Votre réservation est confirmée",
+      "headingCancelled": "Votre demande n’a pas pu être confirmée",
+      "bodyConfirmed": "{provider} a confirmé votre demande pour le {date} ({partySize} personnes).",
+      "bodyCancelled": "{provider} ne peut pas accueillir votre demande pour le {date} ({partySize} personnes). Aucun montant n’a été prélevé.",
+      "nextConfirmed": "Un changement ou une annulation ? Répondez à cet e-mail ou appelez directement — sans frais.",
+      "nextCancelled": "Les créneaux d’hiver partent vite — d’autres domaines et guides licenciés sont sur Cyprus Winter."
     }
   },
   "data": {

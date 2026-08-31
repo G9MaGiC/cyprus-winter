@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jsonError, jsonRateLimitedFromResult } from "@/lib/api-response";
 import { updateBookingStatus, type BookingStatus } from "@/lib/bookings";
+import { sendBookingStatusEmail } from "@/lib/email";
 import { isPartnerIdentity, requirePartner } from "@/lib/partner-auth";
 import { rateLimit } from "@/lib/rate-limit";
 import type { RateLimitResult } from "@/lib/rate-limit";
@@ -71,5 +72,13 @@ export async function PATCH(
     return jsonError("NOT_FOUND", "Booking not found.", 404);
   }
 
-  return NextResponse.json({ booking: result.booking });
+  // Guest status email (AUD-08): only on a real transition — the idempotent
+  // no-op retry must not re-send. Email failure never fails the update; the
+  // flag lets the portal show whether the guest was notified.
+  let statusEmailSent = false;
+  if (result.changed) {
+    statusEmailSent = await sendBookingStatusEmail(result.booking);
+  }
+
+  return NextResponse.json({ booking: result.booking, statusEmailSent });
 }

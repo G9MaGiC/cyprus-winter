@@ -1,7 +1,8 @@
 import "server-only";
 
-import { trailConditions } from "@/data/trails";
-import { getTranslations } from "next-intl/server";
+import { trailConditions, TRAIL_CONDITIONS_AS_OF } from "@/data/trails";
+import { formatMonthYear } from "@/lib/format";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { HomeTrailConditionsStripViewProps } from "@/app/_home/HomeTrailConditionsStripView";
 
 const TROODOS_TRAILS = ["artemis", "atalante", "caledonia-falls", "olympus-summit", "persephone"] as const;
@@ -38,9 +39,15 @@ export async function getHomeTrailConditionsStripProps(
     summaryLabel = t("trailConditionsStrip.checkConditions");
   }
 
+  const resolvedLocale = locale ?? (await getLocale());
+
   return {
     aria: t("trailConditionsStrip.aria"),
     heading: t("trailConditionsStrip.heading"),
+    // The counts summarize the editorial snapshot — date them (AUD-12).
+    asOfLabel: t("trailConditionsStrip.asOf", {
+      date: formatMonthYear(TRAIL_CONDITIONS_AS_OF, resolvedLocale),
+    }),
     openLabel: open > 0 ? t("trailConditionsStrip.open", { count: open }) : null,
     cautionLabel: caution > 0 ? t("trailConditionsStrip.caution", { count: caution }) : null,
     closedLabel: closed > 0 ? t("trailConditionsStrip.closed", { count: closed }) : null,

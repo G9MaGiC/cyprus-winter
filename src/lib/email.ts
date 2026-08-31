@@ -84,6 +84,61 @@ export async function sendBookingConfirmation(booking: Booking, localeInput?: st
 }
 
 /**
+ * Guest status email when a partner confirms or declines (AUD-08: the status
+ * used to change silently — the guest only ever saw it by revisiting
+ * /bookings). Bookings don't persist the guest's UI locale yet (same gap as
+ * trail_id — future migration 008), so callers without one get the default
+ * locale; the catalog keys are ×7 and ready for when it lands.
+ */
+export async function sendBookingStatusEmail(
+  booking: Booking,
+  localeInput?: string
+): Promise<boolean> {
+  if (!resend) return false;
+  if (booking.status !== "confirmed" && booking.status !== "cancelled") return false;
+
+  const locale = resolveLocale(localeInput);
+  const t = await getTranslations({ locale, namespace: "email" });
+  const dir = emailDir(locale);
+  const confirmed = booking.status === "confirmed";
+  const providerHtml = `<strong>${escapeHtml(booking.providerName)}</strong>`;
+  const bookingsHref = bookingLookupUrl(booking.guestEmail);
+  const link = `<a href="${bookingsHref}">${escapeHtml(t("confirmation.myBookings"))}</a>`;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: booking.guestEmail,
+      subject: t(confirmed ? "status.subjectConfirmed" : "status.subjectCancelled", {
+        provider: booking.providerName,
+      }),
+      html: `
+        <div dir="${dir}">
+        <h2>${escapeHtml(t(confirmed ? "status.headingConfirmed" : "status.headingCancelled"))}</h2>
+        <p>${escapeHtml(t("confirmation.hi", { name: booking.guestName }))}</p>
+        <p>${t(confirmed ? "status.bodyConfirmed" : "status.bodyCancelled", {
+          provider: providerHtml,
+          date: escapeHtml(booking.date),
+          partySize: String(booking.partySize),
+        })}</p>
+        <p>${escapeHtml(t(confirmed ? "status.nextConfirmed" : "status.nextCancelled"))}</p>
+        <p>${t("confirmation.step3", { link })}</p>
+        <p>Cyprus Winter</p>
+        </div>
+      `,
+    });
+    if (error) {
+      console.error("Resend status email error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Status email send error:", err);
+    return false;
+  }
+}
+
+/**
  * Send booking request to verified partner winery. Called when winery has partnerEmail and isVerified.
  */
 export async function sendBookingRequestToWinery(

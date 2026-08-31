@@ -3,6 +3,8 @@
 import { StatusStrip, StatusStripLink } from "@/components/StatusStrip";
 import { STRIP } from "@/lib/design-tokens";
 import { useTranslations, useLocale } from "next-intl";
+import { TRAIL_CONDITIONS_AS_OF } from "@/data/trails";
+import { formatMonthYear } from "@/lib/format";
 
 type TrailsConditionsStripProps = {
   openCount: number;
@@ -87,6 +89,10 @@ export default function TrailsConditionsStrip({
             {openCount === 0 && cautionCount === 0 && closedCount === 0 && (
               <span className="text-muted-ink">{t("trails.conditionsStrip.noReports")}</span>
             )}
+            {/* The counts summarize the editorial snapshot — date them (AUD-12). */}
+            <span className="text-muted-ink">
+              {t("trails.asOf", { date: formatMonthYear(TRAIL_CONDITIONS_AS_OF, locale) })}
+            </span>
           </span>
         </div>
         <span className={STRIP.hint}>{label}</span>

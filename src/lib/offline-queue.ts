@@ -7,6 +7,10 @@
 const STORAGE_KEY = "cyprus-winter-offline-queue";
 /** Fired on window after a drain delivers at least one queued mutation. */
 export const OFFLINE_QUEUE_DRAINED_EVENT = "cyprus-winter:offline-queue-drained";
+/** Fired on window after a drain permanently discards at least one mutation
+    (non-retryable 4xx). Mounted forms use it to replace the stale "will be
+    sent when back online" promise with a visible failure (AUD-21). */
+export const OFFLINE_QUEUE_DROPPED_EVENT = "cyprus-winter:offline-queue-dropped";
 const MAX_ITEMS = 50;
 const ALLOWED_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 const RETRYABLE_CLIENT_STATUSES = new Set([408, 425, 429]);
@@ -100,6 +104,7 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
   if (items.length === 0) return { processed: 0, succeeded: 0 };
 
   let succeeded = 0;
+  let dropped = 0;
   for (const item of items) {
     try {
       const res = await fetch(item.url, {
@@ -130,16 +135,24 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
         // Validation/auth/not-found errors are permanent for this queued payload.
         // Retrying them forever would hide the failure and waste requests.
         removeMutation(item.id);
+        dropped++;
       }
     } catch {
       // Network error: leave in queue for the next online event.
     }
   }
-  if (succeeded > 0 && typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+  const canDispatch =
+    typeof window !== "undefined" && typeof window.dispatchEvent === "function";
+  if (succeeded > 0 && canDispatch) {
     // Let mounted forms replace their stale "will be sent when back online"
     // message with the delivered state (AUD B2-06 residual).
     window.dispatchEvent(
       new CustomEvent(OFFLINE_QUEUE_DRAINED_EVENT, { detail: { succeeded } })
+    );
+  }
+  if (dropped > 0 && canDispatch) {
+    window.dispatchEvent(
+      new CustomEvent(OFFLINE_QUEUE_DROPPED_EVENT, { detail: { dropped } })
     );
   }
   return { processed: items.length, succeeded };

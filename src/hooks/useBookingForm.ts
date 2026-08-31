@@ -5,7 +5,11 @@ import { useLocale } from "next-intl";
 import type { z } from "zod";
 import { track } from "@/lib/analytics";
 import { addBookingToLocal } from "@/lib/bookings-storage";
-import { addMutation, OFFLINE_QUEUE_DRAINED_EVENT } from "@/lib/offline-queue";
+import {
+  addMutation,
+  OFFLINE_QUEUE_DRAINED_EVENT,
+  OFFLINE_QUEUE_DROPPED_EVENT,
+} from "@/lib/offline-queue";
 import {
   formatZodErrors,
   localizeBookingFieldErrors,
@@ -45,6 +49,8 @@ type ErrorStrings = {
   failed: string;
   fallback: string;
   offlineQueued: string;
+  /** Shown when the queued request was permanently rejected on drain (AUD-21). */
+  offlineDropped: string;
   /** Localized messages by API error code — the server's own message is EN-only (BUG: raw EN in all locales). */
   apiByCode?: Record<string, string>;
 };
@@ -84,6 +90,23 @@ export function useBookingForm(
     window.addEventListener(OFFLINE_QUEUE_DRAINED_EVENT, onDrained);
     return () => window.removeEventListener(OFFLINE_QUEUE_DRAINED_EVENT, onDrained);
   }, []);
+
+  // The drain permanently rejected queued work (non-retryable 4xx). Same
+  // queue-level coarseness as onDrained: if THIS form queued and something
+  // was dropped, surface the failure instead of the stale offline promise
+  // (AUD-21). Reset the idempotency key so a corrected resubmission is a
+  // fresh request, not a payload-mismatch conflict with the rejected one.
+  useEffect(() => {
+    const onDropped = () => {
+      if (!queuedOfflineRef.current) return;
+      queuedOfflineRef.current = false;
+      idempotencyKeyRef.current = null;
+      setDone(false);
+      setError(tErrors.offlineDropped);
+    };
+    window.addEventListener(OFFLINE_QUEUE_DROPPED_EVENT, onDropped);
+    return () => window.removeEventListener(OFFLINE_QUEUE_DROPPED_EVENT, onDropped);
+  }, [tErrors.offlineDropped]);
 
   useEffect(() => {
     setTodayStr(toLocalDateInputValue());

@@ -19,6 +19,7 @@ vi.mock("@/lib/email", () => ({
   sendBookingRequestToWinery: vi.fn().mockResolvedValue(false),
   sendBookingRequestToGuide: vi.fn().mockResolvedValue(false),
   sendBookingLookupTokenEmail: vi.fn().mockResolvedValue(true),
+  sendBookingStatusEmail: vi.fn().mockResolvedValue(true),
 }));
 
 function jsonReq(url: string, method: string, body?: unknown, cookie?: string, ip = "203.0.113.10") {

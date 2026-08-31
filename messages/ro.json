@@ -509,7 +509,8 @@
       "goodToGo": "Traseele din Troodos sunt bune de parcurs",
       "cautionOnly": "{count, plural, one {# traseu necesită atenție} few {# trasee necesită atenție} other {# de trasee necesită atenție}}",
       "withClosed": "{count} trasee închise — verifică înainte să pleci",
-      "checkConditions": "Verifică condițiile pe trasee înainte de Troodos"
+      "checkConditions": "Verifică condițiile pe trasee înainte de Troodos",
+      "asOf": "actualizat: {date}"
     },
     "weatherStrip": {
       "aria": "Vremea de iarnă în Cipru — temperaturi pe litoral și în Troodos. Verifică vremea.",
@@ -1795,7 +1796,8 @@
       "loop": "Circuit",
       "outAndBack": "Dus-întors",
       "pointToPoint": "Din punct în punct"
-    }
+    },
+    "asOf": "actualizat: {date}"
   },
   "plan": {
     "addToPlan": "Adaugă în plan",
@@ -2857,7 +2859,8 @@
       "errors": {
         "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
-        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
+        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online.",
+        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți."
       },
       "success": {
         "title": "Cerere trimisă",
@@ -2930,7 +2933,8 @@
       "errors": {
         "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
-        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
+        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online.",
+        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți."
       },
       "success": {
         "title": "Cerere trimisă",
@@ -3650,6 +3654,16 @@
       "useLink": "Folosește acest link securizat în următoarele 15 minute:",
       "viewBookings": "Vezi rezervările mele",
       "ignore": "Dacă nu ai făcut tu această cerere, poți ignora acest e-mail."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} v-a confirmat rezervarea",
+      "subjectCancelled": "Actualizare privind cererea dvs. — {provider}",
+      "headingConfirmed": "Rezervarea dvs. este confirmată",
+      "headingCancelled": "Cererea nu a putut fi confirmată",
+      "bodyConfirmed": "{provider} v-a confirmat cererea pentru {date} ({partySize} persoane).",
+      "bodyCancelled": "{provider} nu poate găzdui cererea pentru {date} ({partySize} persoane). Nu s-a perceput nicio taxă.",
+      "nextConfirmed": "Doriți o modificare sau o anulare? Răspundeți la acest e-mail sau sunați direct — fără costuri.",
+      "nextCancelled": "Locurile de iarnă se ocupă repede — pe Cyprus Winter găsiți alte crame și ghizi licențiați."
     }
   },
   "data": {

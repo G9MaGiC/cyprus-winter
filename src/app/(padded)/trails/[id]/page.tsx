@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { getPlaceById } from "@/data";
-import { trailConditions } from "@/data/trails";
+import { trailConditions, TRAIL_CONDITIONS_AS_OF } from "@/data/trails";
 import DetailActionFooter from "@/components/DetailActionFooter";
 import { HOME, LAYOUT, CTA, SECTION, TYPE, LAYER } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
@@ -16,7 +16,7 @@ import TrailMapClient from "@/components/TrailMapClient";
 import TrailDetailStickyActions from "@/components/TrailDetailStickyActions";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
-import { formatReportTimestamp } from "@/lib/format";
+import { formatMonthYear, formatReportTimestamp } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { matchGuideForTrail } from "@/lib/guide-match";
 import TrailBookGuideLink from "@/components/trails/TrailBookGuideLink";
@@ -311,7 +311,10 @@ export default async function TrailPage({
                         })}
                       </span>
                       {!conditions.lastReportedAt && (
-                        <span className="text-muted-ink">{tTrails("conditionsEditorial")}</span>
+                        <span className="text-muted-ink">
+                          {tTrails("conditionsEditorial")} ·{" "}
+                          {tTrails("asOf", { date: formatMonthYear(TRAIL_CONDITIONS_AS_OF, locale) })}
+                        </span>
                       )}
                     </div>
                     {conditions.tip && (

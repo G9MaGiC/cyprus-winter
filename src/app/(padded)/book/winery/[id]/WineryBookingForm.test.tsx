@@ -93,6 +93,7 @@ const messages = {
         failed: "Request failed",
         fallback: "Try again",
         offlineQueued: "Queued",
+        offlineDropped: "Dropped",
       },
       validation: {
         dateRequired: "Pick a date",

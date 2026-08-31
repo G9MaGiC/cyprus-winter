@@ -1,5 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { addMutation, getQueue, processQueue } from "./offline-queue";
+import {
+  addMutation,
+  getQueue,
+  processQueue,
+  OFFLINE_QUEUE_DROPPED_EVENT,
+} from "./offline-queue";
 
 class MemoryStorage {
   private readonly store = new Map<string, string>();
@@ -59,6 +64,35 @@ describe("offline queue", () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(getQueue()).toEqual([]);
+  });
+
+  it("announces permanently dropped mutations instead of discarding silently (AUD-21)", async () => {
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValue(new Response(null, { status: 422 }));
+    const dispatched: Event[] = [];
+    vi.stubGlobal("fetch", fetchMock);
+    vi.stubGlobal("window", {
+      localStorage: storage,
+      dispatchEvent: (e: Event) => {
+        dispatched.push(e);
+        return true;
+      },
+    });
+
+    addMutation({
+      type: "winery_booking",
+      url: "/api/bookings",
+      method: "POST",
+      body: "{}",
+    });
+
+    await processQueue();
+
+    expect(getQueue()).toEqual([]);
+    const droppedEvents = dispatched.filter((e) => e.type === OFFLINE_QUEUE_DROPPED_EVENT);
+    expect(droppedEvents).toHaveLength(1);
+    expect((droppedEvents[0] as CustomEvent).detail).toEqual({ dropped: 1 });
   });
 
   it("deduplicates concurrent queue processors so a booking mutation posts once", async () => {

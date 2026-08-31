@@ -534,7 +534,8 @@
       "goodToGo": "Troodos-Trails gut begehbar",
       "cautionOnly": "{count, plural, one {# Weg erfordert Vorsicht} other {# Wege erfordern Vorsicht}}",
       "withClosed": "{count} Trails geschlossen — vorher prüfen",
-      "checkConditions": "Trail-Bedingungen vor Troodos prüfen"
+      "checkConditions": "Trail-Bedingungen vor Troodos prüfen",
+      "asOf": "Stand: {date}"
     },
     "weatherStrip": {
       "aria": "Zypern-Winterwetter — Temperaturen an Küste und im Troodos. Wetter ansehen.",
@@ -1795,7 +1796,8 @@
       "loop": "Rundweg",
       "outAndBack": "Hin und zurück",
       "pointToPoint": "Streckenwanderung"
-    }
+    },
+    "asOf": "Stand: {date}"
   },
   "plan": {
     "addToPlan": "Zum Plan hinzufügen",
@@ -2729,7 +2731,8 @@
       "errors": {
         "failed": "Anfrage fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-        "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
+        "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind.",
+        "offlineDropped": "Ihre gespeicherte Anfrage konnte nicht gesendet werden — der Server hat sie abgelehnt. Bitte prüfen Sie die Angaben und senden Sie sie erneut."
       },
       "success": {
         "title": "Anfrage gesendet",
@@ -2802,7 +2805,8 @@
       "errors": {
         "failed": "Anfrage fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-        "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind."
+        "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind.",
+        "offlineDropped": "Ihre gespeicherte Anfrage konnte nicht gesendet werden — der Server hat sie abgelehnt. Bitte prüfen Sie die Angaben und senden Sie sie erneut."
       },
       "success": {
         "title": "Anfrage gesendet",
@@ -3650,6 +3654,16 @@
       "useLink": "Nutzen Sie diesen sicheren Link innerhalb von 15 Minuten:",
       "viewBookings": "Meine Buchungen anzeigen",
       "ignore": "Falls Sie das nicht angefordert haben, können Sie diese E-Mail ignorieren."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} hat Ihre Buchung bestätigt",
+      "subjectCancelled": "Neuigkeiten zu Ihrer Anfrage bei {provider}",
+      "headingConfirmed": "Ihre Buchung ist bestätigt",
+      "headingCancelled": "Ihre Anfrage konnte nicht bestätigt werden",
+      "bodyConfirmed": "{provider} hat Ihre Anfrage für den {date} bestätigt ({partySize} Personen).",
+      "bodyCancelled": "{provider} kann Ihre Anfrage für den {date} ({partySize} Personen) nicht annehmen. Es wurde nichts berechnet.",
+      "nextConfirmed": "Änderung oder Stornierung? Antworten Sie auf diese E-Mail oder rufen Sie direkt an — kostenlos.",
+      "nextCancelled": "Wintertermine füllen sich schnell — auf Cyprus Winter finden Sie weitere buchbare Weingüter und lizenzierte Guides."
     }
   },
   "data": {

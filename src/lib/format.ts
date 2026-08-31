@@ -84,3 +84,14 @@ export function formatReportTimestamp(iso: string, locale?: string): string {
     return "Invalid Date";
   }
 }
+
+/** Month + year for the editorial conditions as-of chip (AUD-12). */
+export function formatMonthYear(iso: string, locale?: string): string {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "Invalid Date";
+    return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(d);
+  } catch {
+    return "Invalid Date";
+  }
+}

@@ -509,7 +509,8 @@
       "goodToGo": "Troodos trails good to go",
       "cautionOnly": "{count, plural, one {# trail needs caution} other {# trails need caution}}",
       "withClosed": "{count} trails closed — check before you go",
-      "checkConditions": "Check trail conditions before Troodos"
+      "checkConditions": "Check trail conditions before Troodos",
+      "asOf": "as of {date}"
     },
     "weatherStrip": {
       "aria": "Cyprus winter weather — Coast and Troodos temperatures. Check weather.",
@@ -1795,7 +1796,8 @@
       "loop": "Loop",
       "outAndBack": "Out & back",
       "pointToPoint": "Point to point"
-    }
+    },
+    "asOf": "as of {date}"
   },
   "plan": {
     "addToPlan": "Add to plan",
@@ -2857,7 +2859,8 @@
       "errors": {
         "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
-        "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
+        "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online.",
+        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again."
       },
       "success": {
         "title": "Request sent",
@@ -2936,7 +2939,8 @@
       "errors": {
         "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
-        "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online."
+        "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online.",
+        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again."
       },
       "success": {
         "title": "Request sent",
@@ -3650,6 +3654,16 @@
       "useLink": "Use this secure link within 15 minutes:",
       "viewBookings": "View my bookings",
       "ignore": "If you didn't request this, you can ignore this email."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} confirmed your booking",
+      "subjectCancelled": "Update on your {provider} request",
+      "headingConfirmed": "Your booking is confirmed",
+      "headingCancelled": "Your request couldn't be confirmed",
+      "bodyConfirmed": "{provider} confirmed your request for {date} ({partySize} guests).",
+      "bodyCancelled": "{provider} can't host your request for {date} ({partySize} guests). Nothing was charged.",
+      "nextConfirmed": "Need to change or cancel? Reply to this email or call the venue — no charge.",
+      "nextCancelled": "Winter slots move fast — other bookable wineries and licensed guides are on Cyprus Winter."
     }
   },
   "data": {

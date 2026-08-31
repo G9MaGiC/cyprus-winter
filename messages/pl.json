@@ -534,7 +534,8 @@
       "goodToGo": "Szlaki Troodos w dobrym stanie",
       "cautionOnly": "{count, plural, one {# szlak wymaga ostrożności} few {# szlaki wymagają ostrożności} many {# szlaków wymaga ostrożności} other {# szlaku wymaga ostrożności}}",
       "withClosed": "{count} szlaki zamknięte — sprawdź przed wyjściem",
-      "checkConditions": "Sprawdź warunki szlaków przed Troodos"
+      "checkConditions": "Sprawdź warunki szlaków przed Troodos",
+      "asOf": "stan na {date}"
     },
     "weatherStrip": {
       "aria": "Zimowa pogoda na Cyprze — temperatury na wybrzeżu i w Troodos. Zobacz pogodę.",
@@ -1795,7 +1796,8 @@
       "loop": "Pętla",
       "outAndBack": "Tam i z powrotem",
       "pointToPoint": "Z punktu do punktu"
-    }
+    },
+    "asOf": "stan na {date}"
   },
   "plan": {
     "addToPlan": "Dodaj do planu",
@@ -2729,7 +2731,8 @@
       "errors": {
         "failed": "Prośba nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
-        "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci."
+        "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci.",
+        "offlineDropped": "Zapisanego zgłoszenia nie udało się wysłać — serwer je odrzucił. Sprawdź dane i wyślij ponownie."
       },
       "success": {
         "title": "Wysłano prośbę",
@@ -2802,7 +2805,8 @@
       "errors": {
         "failed": "Prośba nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
-        "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci."
+        "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci.",
+        "offlineDropped": "Zapisanego zgłoszenia nie udało się wysłać — serwer je odrzucił. Sprawdź dane i wyślij ponownie."
       },
       "success": {
         "title": "Wysłano prośbę",
@@ -3650,6 +3654,16 @@
       "useLink": "Użyj tego bezpiecznego linku w ciągu 15 minut:",
       "viewBookings": "Zobacz moje rezerwacje",
       "ignore": "Jeśli to nie Ty wysłałeś(-aś) tę prośbę, zignoruj tę wiadomość."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} potwierdza Twoją rezerwację",
+      "subjectCancelled": "Aktualizacja Twojego zgłoszenia — {provider}",
+      "headingConfirmed": "Rezerwacja potwierdzona",
+      "headingCancelled": "Zgłoszenia nie udało się potwierdzić",
+      "bodyConfirmed": "{provider} potwierdza Twoje zgłoszenie na {date} ({partySize} os.).",
+      "bodyCancelled": "{provider} nie może przyjąć zgłoszenia na {date} ({partySize} os.). Nic nie zostało pobrane.",
+      "nextConfirmed": "Zmiana lub odwołanie? Odpowiedz na tę wiadomość albo zadzwoń — bez opłat.",
+      "nextCancelled": "Zimowe terminy szybko znikają — na Cyprus Winter znajdziesz inne winnice i licencjonowanych przewodników."
     }
   },
   "data": {

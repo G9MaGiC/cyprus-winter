@@ -9,7 +9,8 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { formatReportedAgo } from "@/lib/format";
 import type { Trail, TrailConditions } from "@/data/trails";
-import { trailConditions as editorialConditions } from "@/data/trails";
+import { trailConditions as editorialConditions, TRAIL_CONDITIONS_AS_OF } from "@/data/trails";
+import { formatMonthYear } from "@/lib/format";
 import { useTrailListReports } from "@/components/TrailListReportsProvider";
 import {
   resolveTrailCardConditions,
@@ -120,7 +121,10 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             ) : view.source === "editorial" ? (
               <>
                 <span aria-hidden>·</span>
+                {/* Static snapshot must carry its date or it reads as live (AUD-12). */}
                 <span>{tTrails("conditionsEditorial")}</span>
+                <span aria-hidden>·</span>
+                <span>{tTrails("asOf", { date: formatMonthYear(TRAIL_CONDITIONS_AS_OF, locale) })}</span>
               </>
             ) : (
               <>

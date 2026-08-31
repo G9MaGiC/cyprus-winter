@@ -65,6 +65,7 @@ export default function WineryBookingForm({
       failed: t("errors.failed"),
       fallback: t("errors.fallback"),
       offlineQueued: t("errors.offlineQueued"),
+      offlineDropped: t("errors.offlineDropped"),
       apiByCode: {
         VALIDATION_ERROR: tApiErrors("VALIDATION_ERROR"),
         BAD_REQUEST: tApiErrors("BAD_REQUEST"),

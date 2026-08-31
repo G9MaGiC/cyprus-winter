@@ -205,7 +205,8 @@ export async function updateBookingStatus(
   status: BookingStatus,
   providerId: string
 ): Promise<
-  { booking: Booking } | { error: "not_found" | "forbidden" | "invalid_transition" | "conflict" }
+  | { booking: Booking; changed: boolean }
+  | { error: "not_found" | "forbidden" | "invalid_transition" | "conflict" }
 > {
   if (status !== "confirmed" && status !== "cancelled") {
     return { error: "not_found" };
@@ -222,7 +223,9 @@ export async function updateBookingStatus(
     if (!existing) return { error: "not_found" };
     const current = rowToBooking(existing as Record<string, unknown>);
     if (current.providerId !== providerId) return { error: "forbidden" };
-    if (current.status === status) return { booking: current };
+    // `changed: false` on the idempotent no-op lets callers skip side effects
+    // (the guest status email) on a safe retry of the same update.
+    if (current.status === status) return { booking: current, changed: false };
     if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes(status)) {
       return { error: "invalid_transition" };
     }
@@ -237,18 +240,18 @@ export async function updateBookingStatus(
     if (error) throw new Error(error.message);
     // CAS miss: the row changed between read and write (concurrent update).
     if (!updated) return { error: "conflict" };
-    return { booking: rowToBooking(updated as Record<string, unknown>) };
+    return { booking: rowToBooking(updated as Record<string, unknown>), changed: true };
   }
 
   const current = memoryStore.find((b) => b.id === id);
   if (!current) return { error: "not_found" };
   if (current.providerId !== providerId) return { error: "forbidden" };
-  if (current.status === status) return { booking: current };
+  if (current.status === status) return { booking: current, changed: false };
   if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes(status)) {
     return { error: "invalid_transition" };
   }
   current.status = status;
-  return { booking: current };
+  return { booking: current, changed: true };
 }
 
 function rowToBooking(row: Record<string, unknown>): Booking {
