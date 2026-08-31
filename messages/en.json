@@ -88,7 +88,9 @@
       "reportConditionsForTrail": "Report conditions for this trail",
       "dismissNotification": "Dismiss notification",
       "notifications": "Notifications",
-      "addedToPlan": "Added to your plan."
+      "addedToPlan": "Added to your plan.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — in Cyprus winter light"
     },
     "skipToContent": "Skip to main content",
     "languageLabel": "Language:",
@@ -799,7 +801,9 @@
       "RATE_LIMITED": "Too many requests. Please wait a moment.",
       "SERVER_ERROR": "Something went wrong. Please try again.",
       "VALIDATION_ERROR": "Something went wrong. Please try again.",
-      "BAD_REQUEST": "Something went wrong. Please try again."
+      "BAD_REQUEST": "Something went wrong. Please try again.",
+      "NOT_FOUND": "This listing is no longer available.",
+      "IDEMPOTENCY_CONFLICT": "This request was already sent — check My bookings before trying again."
     }
   },
   "push": {
@@ -2439,7 +2443,12 @@
         "ancient": "Ancient sites",
         "winterEvents": "Winter events",
         "allWineries": "All Cyprus wineries",
-        "troodosDecember": "Troodos trails in December"
+        "troodosDecember": "Troodos trails in December",
+        "trails": "Trails",
+        "villages": "Villages",
+        "beaches": "Beaches",
+        "wineries": "Wineries",
+        "monasteries": "Monasteries & churches"
       }
     }
   },
@@ -2589,6 +2598,14 @@
       },
       "aria": {
         "actions": "Weather month page actions"
+      },
+      "monthNames": {
+        "november": "November",
+        "december": "December",
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April"
       }
     }
   },
@@ -2746,7 +2763,7 @@
         "noCharge": "No payment is taken here. Providers confirm availability first.",
         "contextPartner": "partner",
         "contextGuide": "guide",
-        "requestLoggedFallback": "Your request is saved here right away — to be sure, call the {context} or use their booking link below."
+        "requestLoggedFallback": "Your request is saved here right away — to be sure of your date, also arrange it with the {context} directly."
       },
       "progress": {
         "aria": "Booking progress",
@@ -2756,10 +2773,11 @@
       },
       "states": {
         "heading": "Booking states:",
-        "wineryBody": "Status starts as requested; confirmed only after the partner replies.",
-        "guideBody": "Status starts as requested; confirmed only after the guide replies.",
+        "wineryBody": "Status starts as pending; confirmed only after the partner replies.",
+        "guideBody": "Status starts as pending; confirmed only after the guide replies.",
         "offlineQueue": "If you are offline, your request is queued as sync pending and retried automatically."
-      }
+      },
+      "successUnverified": "We've saved your request under My bookings. To be sure of your date, also contact the {context} directly — no payment is taken in-app."
     },
     "guideForm": {
       "validation": {
@@ -2928,7 +2946,9 @@
         },
         "jsonLd": {
           "serviceType": "Guided winter hike"
-        }
+        },
+        "directoryFallback": "Need direct contact details? Licensed guides are listed with phone numbers in the official guides directory.",
+        "directoryFallbackLink": "Open the guides directory →"
       },
       "guideList": {
         "meta": {
@@ -3020,7 +3040,7 @@
       "title": "Licensed tourist guides",
       "breadcrumb": "Licensed guides",
       "pageNavAria": "Licensed guides directory",
-      "intro": "{count} licensed guides from the official Visit Cyprus list (Aug 2026). Contact them directly — or book a verified winter hiking partner in-app.",
+      "intro": "{count} licensed guides from the official Visit Cyprus list (Aug 2026). Contact them directly — or book a licensed hiking guide in-app.",
       "verifiedPartnersLink": "Book licensed hiking guides →",
       "disclaimer": "Licensed tourist guides registered with the Cyprus Deputy Ministry of Tourism. Cyprus Winter lists official contacts; booking and payment are directly with the guide.",
       "officialListLink": "Official list on Visit Cyprus",
@@ -3057,9 +3077,9 @@
         "hebrew": "Hebrew"
       },
       "verifiedCta": {
-        "title": "Verified winter hiking partners",
-        "body": "These guides accept requests through Cyprus Winter — Troodos, Akamas, and culture tours with email confirmation.",
-        "button": "Book a verified guide"
+        "title": "Licensed hiking guides — bookable in-app",
+        "body": "These guides take requests through Cyprus Winter — Troodos, Akamas, and culture tours.",
+        "button": "Book a licensed guide"
       },
       "verifiedPartnerBadge": "Books in-app",
       "verifiedPartnerBook": "Request via Cyprus Winter",

@@ -88,7 +88,9 @@
       "reportConditionsForTrail": "Zgłoś warunki dla tego szlaku",
       "dismissNotification": "Zamknij powiadomienie",
       "notifications": "Powiadomienia",
-      "addedToPlan": "Dodano do planu."
+      "addedToPlan": "Dodano do planu.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — w zimowym świetle Cypru"
     },
     "skipToContent": "Przejdź do treści",
     "languageLabel": "Język:",
@@ -333,7 +335,7 @@
       "body": "Używamy niezbędnych plików cookie do działania serwisu i opcjonalnych analityk do ulepszeń. Klikając „Akceptuj”, zezwalasz na analitykę.",
       "accept": "Akceptuj",
       "learnMore": "Dowiedz się więcej",
-      "srAnnounce": "Informacja o cookies: wybierz Akceptuję lub Tylko niezbędne na dole ekranu."
+      "srAnnounce": "Informacja o cookies: wybierz Akceptuj lub Tylko niezbędne na dole ekranu."
     },
     "placeTypes": {
       "beach": "Plaża",
@@ -369,14 +371,14 @@
     "degreesLine": "Szesnaście stopni, gdy w domu jest sześć.",
     "planSubtitle": "Zbuduj plan podróży. Dodawaj miejsca z Discover — zapisuje się automatycznie.",
     "cta": {
-      "arriving": "Właśnie przyleciałeś? Zacznij tutaj",
+      "arriving": "Dopiero po przylocie? Zacznij tutaj",
       "explore": "Odkrywaj",
       "planTrip": "Zaplanuj wycieczkę",
       "askGuide": "Zapytaj przewodnika"
     },
     "tripModes": {
       "aria": "Wybierz, jak podróżujesz",
-      "arriving": "Właśnie przyjechałem",
+      "arriving": "Świeżo po przylocie",
       "planning": "Planowanie",
       "exploring": "Odkrywanie"
     },
@@ -434,7 +436,7 @@
       "prompt": "No dobrze — dokąd chcesz najpierw?",
       "primaryPath": "Główna ścieżka",
       "title": "Zacznij tutaj",
-      "subtitle": "Właśnie przyleciałeś czy jeszcze planujesz? Od ruin po degustacje w wioskach — zacznij gdzie chcesz.",
+      "subtitle": "Świeżo po przylocie czy jeszcze na etapie planów? Od ruin po degustacje w wioskach — zacznij gdzie chcesz.",
       "card": {
         "discoverTitle": "Odkrywaj",
         "discoverDesc": "Miejsca, które czujesz jako prawdziwe. Ruiny, wybrzeża, wioski, dziedzictwo.",
@@ -670,7 +672,7 @@
       "sunset": "Zachód słońca ~17:00 w grudniu",
       "blockquote": "Łagodne wybrzeże. Góry ze śniegiem. Rano szlak, obiad na zewnątrz. Puste zabytki, ciche wioski. Postój w kafenion. Kawa. Nikt się nie spieszy.",
       "rule": "Mała zasada: jeden szlak, jedna wieś, jedna degustacja. Dodawaj do planu w drodze.",
-      "tagline": "Przyjechałeś po ciepło. Zostań dla tempa."
+      "tagline": "Ciepło przyciąga. Tempo zatrzymuje."
     },
     "whyCyprusTeaser": {
       "quote": "Rano szlak, obiad na zewnątrz. Puste zabytki, ciche wioski. Nikt się nie spieszy."
@@ -799,7 +801,9 @@
       "RATE_LIMITED": "Za dużo zapytań. Odczekaj chwilę.",
       "SERVER_ERROR": "Coś poszło nie tak. Spróbuj ponownie.",
       "VALIDATION_ERROR": "Coś poszło nie tak. Spróbuj ponownie.",
-      "BAD_REQUEST": "Coś poszło nie tak. Spróbuj ponownie."
+      "BAD_REQUEST": "Coś poszło nie tak. Spróbuj ponownie.",
+      "NOT_FOUND": "Ta pozycja nie jest już dostępna.",
+      "IDEMPOTENCY_CONFLICT": "Ta prośba została już wysłana — sprawdź swoje rezerwacje, zanim spróbujesz ponownie."
     }
   },
   "push": {
@@ -2150,7 +2154,7 @@
         "submit": "Wczytaj rezerwacje",
         "sendLookupLink": "Wyślij link",
         "resendLookupLink": "Wyślij link ponownie",
-        "loadByEmail": "Wczytaj przez email",
+        "loadByEmail": "Wczytaj przez e-mail",
         "mergeHint": "Połączymy rezerwacje z tym urządzeniem."
       },
       "loading": {
@@ -2423,6 +2427,14 @@
       },
       "aria": {
         "actions": "Akcje strony pogody miesiąca"
+      },
+      "monthNames": {
+        "november": "Listopad",
+        "december": "Grudzień",
+        "january": "Styczeń",
+        "february": "Luty",
+        "march": "Marzec",
+        "april": "Kwiecień"
       }
     }
   },
@@ -2828,7 +2840,9 @@
           "title": "Zarezerwuj wędrówkę z przewodnikiem | {guideName} | Cyprus Winter",
           "description": "Poproś o zimową wędrówkę z przewodnikiem {guideName} w regionie {region}. Małe grupy, lokalna wiedza. Potwierdzenie mailem."
         },
-        "metaNotFound": "Nie znaleziono"
+        "metaNotFound": "Nie znaleziono",
+        "directoryFallback": "Potrzebujesz bezpośredniego kontaktu? Licencjonowani przewodnicy z numerami telefonów są w oficjalnym katalogu przewodników.",
+        "directoryFallbackLink": "Otwórz katalog przewodników →"
       },
       "guideList": {
         "meta": {
@@ -2914,12 +2928,12 @@
       "trust": {
         "aria": "Informacje o zaufaniu rezerwacji",
         "heading": "Przed wysłaniem",
-        "verifiedRoute": "Zweryfikowana trasa zapytania {context}.",
+        "verifiedRoute": "Zweryfikowana ścieżka zapytania do {context}.",
         "emailConfirm": "Partner zwykle potwierdza e-mailem w ciągu 24–48 godzin w dni robocze.",
         "noCharge": "Tu nie pobieramy płatności. Dostawcy najpierw potwierdzają dostępność.",
         "contextPartner": "partnera",
         "contextGuide": "przewodnika",
-        "requestLoggedFallback": "Twoja prośba zostaje od razu zapisana — dla pewności zadzwoń do {context} lub skorzystaj z linku rezerwacji poniżej."
+        "requestLoggedFallback": "Twoja prośba zostaje od razu zapisana — aby mieć pewność terminu, umów się też bezpośrednio z winiarnią lub przewodnikiem."
       },
       "progress": {
         "aria": "Postęp rezerwacji",
@@ -2929,10 +2943,11 @@
       },
       "states": {
         "heading": "Statusy rezerwacji:",
-        "wineryBody": "Status zaczyna się jako prośba; potwierdzenie dopiero po odpowiedzi partnera.",
-        "guideBody": "Status zaczyna się jako prośba; potwierdzenie dopiero po odpowiedzi przewodnika.",
+        "wineryBody": "Status zaczyna się jako „oczekująca”; potwierdzenie dopiero po odpowiedzi partnera.",
+        "guideBody": "Status zaczyna się jako „oczekująca”; potwierdzenie dopiero po odpowiedzi przewodnika.",
         "offlineQueue": "Offline zapytanie trafia do kolejki synchronizacji i jest ponawiane automatycznie."
-      }
+      },
+      "successUnverified": "Zapisaliśmy Twoją prośbę w Twoich rezerwacjach. Aby mieć pewność terminu, skontaktuj się też bezpośrednio z winiarnią lub przewodnikiem — w aplikacji nie pobieramy żadnych płatności."
     }
   },
   "guides": {
@@ -2974,7 +2989,7 @@
       "title": "Licencjonowani przewodnicy",
       "breadcrumb": "Licencjonowani przewodnicy",
       "pageNavAria": "Katalog licencjonowanych przewodników",
-      "intro": "{count} licencjonowanych przewodników z oficjalnej listy Visit Cyprus (sierp. 2026). Kontakt bezpośredni — lub rezerwacja zweryfikowanego partnera w aplikacji.",
+      "intro": "{count} licencjonowanych przewodników z oficjalnej listy Visit Cyprus (sie. 2026). Skontaktuj się bezpośrednio — albo zarezerwuj licencjonowanego przewodnika w aplikacji.",
       "verifiedPartnersLink": "Zarezerwuj licencjonowanego przewodnika →",
       "disclaimer": "Przewodnicy zarejestrowani w cypryjskim Ministerstwie Turystyki. Cyprus Winter publikuje oficjalne kontakty; rezerwacja bezpośrednio u przewodnika.",
       "officialListLink": "Oficjalna lista na Visit Cyprus",
@@ -3011,14 +3026,14 @@
         "hebrew": "Hebrajski"
       },
       "verifiedCta": {
-        "title": "Zweryfikowani partnerzy trekkingowi",
-        "body": "Przyjmują zapytania przez Cyprus Winter — Troodos, Akamas, kultura.",
-        "button": "Zarezerwuj zweryfikowanego przewodnika"
+        "title": "Licencjonowani przewodnicy górscy — rezerwacja w aplikacji",
+        "body": "Ci przewodnicy przyjmują prośby przez Cyprus Winter — Troodos, Akamas i trasy kulturowe.",
+        "button": "Zarezerwuj licencjonowanego przewodnika"
       },
       "verifiedPartnerBadge": "Rezerwacja w aplikacji",
       "verifiedPartnerBook": "Zapytanie przez Cyprus Winter",
       "footer": {
-        "hubBody": "Skontaktuj się z licencjonowanym przewodnikiem — albo zarezerwuj licencjonowanego przewodnika górskiego w aplikacji.",
+        "hubBody": "Skontaktuj się z licencjonowanym przewodnikiem — albo zarezerwuj licencjonowanego przewodnika górskiego w aplikacji i dodaj przystanki do planu.",
         "trails": "Warunki na szlakach"
       },
       "aria": {
@@ -3321,8 +3336,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Morze Śródziemne zimą",
-    "homeDescription": "Cypr zimą: łagodny, spokojny, autentyczny. Szlaki Troodos, wioski, winnice, starożytne miejsca. Szesnaście stopni, gdy w domu jest sześć. Planuj z wyprzedzeniem lub odkrywaj po wylądowaniu.",
+    "homeTitle": "Cyprus Winter | Szlaki, wioski, winnice i spokojne dni",
+    "homeDescription": "Spokojniejszy Cypr zimą. Odkryj łagodne wybrzeża, górskie wioski, otwarte szlaki, winnice i lokalne miejsca, dla których warto zwolnić.",
     "ogImageAlt": "Antyczny teatr w Kourion nad wybrzeżem Morza Śródziemnego, zima na Cyprze"
   },
   "ui": {
@@ -3343,7 +3358,12 @@
         "ancient": "Stanowiska archeologiczne",
         "winterEvents": "Zimowe wydarzenia",
         "allWineries": "Wszystkie winnice Cypru",
-        "troodosDecember": "Szlaki Troodos w grudniu"
+        "troodosDecember": "Szlaki Troodos w grudniu",
+        "trails": "Szlaki",
+        "villages": "Wioski",
+        "beaches": "Plaże",
+        "wineries": "Winnice",
+        "monasteries": "Klasztory i kościoły"
       }
     }
   },

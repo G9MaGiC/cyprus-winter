@@ -47,10 +47,12 @@ export default function SearchResultCard({ result, searchQuery }: Props) {
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <h3 className={`${TYPE.cardTitle} truncate`} title={name}>
+            {/* line-clamp-1, not truncate: nowrap text sets the grid track's
+                min-content to the full line and overflows 320px viewports (AUD R2). */}
+            <h3 className={`${TYPE.cardTitle} line-clamp-1 break-words`} title={name}>
               {name}
             </h3>
-            <p className="text-sm text-muted-ink mt-0.5 truncate" title={sublabel}>{sublabel}</p>
+            <p className="text-sm text-muted-ink mt-0.5 line-clamp-1 break-words" title={sublabel}>{sublabel}</p>
           </div>
           <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
             {kindLabel}

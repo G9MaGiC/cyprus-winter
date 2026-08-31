@@ -36,6 +36,8 @@ export type BookingFormState = {
   errorRef: RefObject<HTMLParagraphElement | null>;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   todayStr: string;
+  /** Seconds left of a server-imposed rate-limit lockout (0 = none). */
+  retryAfterSeconds: number;
   validateFieldOnBlur: (name: string, value: string) => void;
 };
 
@@ -62,6 +64,7 @@ export function useBookingForm(
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [notesLength, setNotesLength] = useState(0);
   const [todayStr, setTodayStr] = useState("");
+  const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const idempotencyKeyRef = useRef<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
@@ -69,6 +72,14 @@ export function useBookingForm(
   useEffect(() => {
     setTodayStr(toLocalDateInputValue());
   }, []);
+
+  // Count the rate-limit lockout down so the UI can show a real number and
+  // re-enable submit when the window has actually passed (AUD B2-07).
+  useEffect(() => {
+    if (retryAfterSeconds <= 0) return;
+    const timer = setTimeout(() => setRetryAfterSeconds((s) => (s > 1 ? s - 1 : 0)), 1000);
+    return () => clearTimeout(timer);
+  }, [retryAfterSeconds]);
 
   const toFieldErrors = useCallback(
     (raw: Record<string, string>) =>
@@ -142,6 +153,13 @@ export function useBookingForm(
       locale,
     };
 
+    // Honeypot passthrough: empty for humans (field is off-screen and out of
+    // the tab order); a bot auto-filling the DOM form trips the API's check.
+    const honeypot = formData.get("website");
+    if (typeof honeypot === "string" && honeypot.trim()) {
+      bodyObj.website = honeypot;
+    }
+
     if (extraFields) {
       for (const key of Object.keys(extraFields)) {
         if (validated[key]) bodyObj[key] = validated[key];
@@ -161,15 +179,17 @@ export function useBookingForm(
       const data = await res.json();
 
       if (!res.ok) {
+        if (res.status === 429) {
+          const ra = Number(res.headers.get("retry-after"));
+          if (Number.isFinite(ra) && ra > 0) setRetryAfterSeconds(Math.ceil(ra));
+        }
         const code =
           typeof data.error === "object" && data.error !== null
             ? (data.error.code as string | undefined)
             : undefined;
-        const msg =
-          (code ? tErrors.apiByCode?.[code] : undefined) ??
-          data.message ??
-          (typeof data.error === "string" ? data.error : data.error?.message) ??
-          tErrors.failed;
+        // Never surface the server's message text: it is English-only, so any
+        // unmapped code must fall back to the localized generic instead.
+        const msg = (code ? tErrors.apiByCode?.[code] : undefined) ?? tErrors.failed;
         throw new Error(msg);
       }
 
@@ -180,7 +200,9 @@ export function useBookingForm(
 
       // booking_complete is recorded by the server after durable creation,
       // so clients cannot forge conversion funnel data.
-      addBookingToLocal(data.booking);
+      if (data.booking) {
+        addBookingToLocal(data.booking);
+      }
       idempotencyKeyRef.current = null;
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";
@@ -251,6 +273,7 @@ export function useBookingForm(
     errorRef,
     handleSubmit,
     todayStr,
+    retryAfterSeconds,
     validateFieldOnBlur,
   };
 }

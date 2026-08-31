@@ -5,6 +5,7 @@
 **Method:** delta audit — every finding deduped against `docs/QA_BUGS.md` (…BUG-353), the RICE backlog (`docs/QA_PERSONA_PRIORITIES_2026.md`), and `docs/ICPS.md` §8; three hard buckets: **NEW** / **KNOWN-STILL-OPEN** / **PREVIOUSLY-FIXED** (re-verified, then dropped or reported as regression). Prior audit docs were treated as leads, never as evidence.
 **Evidence key:** `[S]` static file:line · `[L]` live observation (route @ viewport/locale, production build) · `[G]` gate run this session.
 **Rubric:** repo conventions only — severity Critical/High/Medium/Low per `.cursor/agents/audit-explore.md`; golden-path steps scored with the amazement rubric (Relief + Specificity + Payoff, 0–2 each; ≤3 ⇒ redesign candidate).
+**Round 2:** a same-day stricter pass (uncovered routes, 320px, full native walks, keyboard transcripts, SEO dimension, adversarial re-verification of the Round-1 fixes) follows in the "Round 2" section at the end — findings AUD-60…125.
 
 **Environment caveats:** e2e/screenshot evidence ran on Chromium build 1194 shimmed under the Playwright-1.62.1 registry name (the pinned Chrome-for-Testing 151 download is egress-blocked in the audit container). Two container artifacts were investigated and **excluded** as non-findings: `document.fonts.ready` wedging in headless (a `local()` fallback-font quirk) and slow first-hit `next/image` AVIF encodes.
 
@@ -336,3 +337,178 @@ Browser: Chromium 1194 binaries shimmed under the 1234 registry name (pinned CfT
 ## Appendix D — Amazement worksheets
 
 Embedded in §3 per persona. Redesign candidates (≤3): Anders trail-report loop (3), Nadia search step (3), **Family template day (2)**.
+
+---
+
+# Round 2 — stricter pass (same day, same branch)
+
+Round 1 was deliberately capped (≈15 findings/lane, ~11 routes walked, 375/768 only, tier-1 locales spot-checked). Round 2 removed the caps and re-ran six lanes at the raised bar: **~20 previously unwalked routes; 320px added** (+1280 funnel pass); **full el/pl native walks + he re-walk of fixed surfaces**; keyboard-only GF1→GF3 transcripts; a **SEO/share/metadata** dimension; and an **adversarial re-verification of every Round-1 fix**. Severity bar raised per plan: any broken funnel step at any supported viewport = High minimum; missing states on a new surface = High; generic-where-primary = Medium minimum.
+
+## 8.0 Round-2 verdict
+
+The Round-1 fixes largely held under attack (§8.1) — but two of them were **less fixed than §0.1 claimed**, and the uncovered surfaces hid 2 more High-class funnel breaks (`/events#id` deep links dead on cold load; the `/wineries` hub's primary CTA pointing at the empty "My bookings" page). The stricter lens produced **66 verified findings (0 Critical, 8 High, ~30 Medium, ~28 Low)** — AUD-60…125 below — of which **44 were fixed and re-validated the same day** (§8.3); the rest are decision/supply items now in the backlog. Instrumented sweep of 60 route×viewport captures: zero bad HTTP statuses, zero missing h1, and (after fixes) **zero horizontal overflow at 320/375/768 including RTL**.
+
+## 8.1 Fix-pass re-verification (lane F2 + C2 adversarial)
+
+11 of 13 sampled Round-1 fixes **held** when attacked at 320px, in `he`, and keyboard-only: ItineraryCard wrap, cookie-banner portal tab order, plan realism warning, GF6 add-failure state, Escape guard, SRStatus announcements, localized server errors, sync-toggle retitle, map overflow, alias search, EventCard chips. Two did not:
+
+- **AUD-06 correction — the "blocked Ask-AI press focuses the banner" fix was dead code.** All 5 open paths route through `triggerAIAssistant()`, which early-returned *without dispatching* when a blocking overlay was active, so the focus branch in `AIAssistant.handleOpen` was unreachable (AUD-87 below; now fixed at the trigger choke point).
+- **AUD-41 correction — "Wanderwege" still ellipsized at 375px.** The Round-1 cap raise (56→72px) was 2px short of the label's 74px (AUD-123; cap now 76px, with the ≤360px 56px cap kept as an accepted trade-off — full labels remain in `aria-label`).
+
+Both corrections are themselves fixed and re-verified in this pass. Lesson recorded: a fix that changes *where* logic runs must be re-verified at the *entry point*, not the destination.
+
+## 8.2 Round-2 findings register (AUD-60…125)
+
+Same format and dedupe protocol as §4; every row personally verified. Status: ✅ fixed this pass · ⏳ backlog (decision/supply/project) · ◐ partially fixed (residual noted).
+
+### Lane A2 — previously unwalked surfaces
+
+| ID | Sev | Finding (evidence) | Status |
+|---|---|---|---|
+| AUD-60 | **High** | `/events#<id>` deep links never scroll on cold load (scrollY stays 0 with target 10–11k px down); warm hash-nav lands cards under the fixed nav. Weather-month pages and `/privacy#cookies` link these anchors. | ✅ `scroll-mt-24` on cards/sections + mount-time hash scroll (reduced-motion-aware), `EventCard.tsx`, `EventsPageClient.tsx`, `privacy/page.tsx` |
+| AUD-61 | **High** | `/wineries` hub primary CTA "Book a tasting" linked to `/bookings` (the user's empty status page), not the booking flow (`wineries/page.tsx:81`) | ✅ → `/book/winery` |
+| AUD-62 | Med | `/regions/[slug]` hardcoded EN section headings ("Trails", "Villages", "Beaches", "Wineries", "Monasteries & churches") in all 7 locales; `i18n:scan` structurally blind to multi-line JSX text | ✅ 5 headings → `tPage("sections.*")` ×7 locales |
+| AUD-63 | Med | Weather hub renders EN month names in every locale — h1, breadcrumb, chips, hero (29× "December", 0× "Dezember" on `/de/weather/december`) | ✅ `monthNames.*` keys ×7; data lookups keep EN keys (`weather/[month]/page.tsx`, `weather/page.tsx`, `locale-metadata-dynamic.ts`) |
+| AUD-64 | **High** | Guides directory made un-gated "verified… email confirmation" claims; `guide-partners.ts` filtered on raw `isVerified`, bypassing the AUD-01/BUG-348 `isPartnerVerified()` gate | ✅ helpers now gate on `isPartnerVerified()`; directory intro/CTA reworded to "licensed" ×7 (unit test updated to assert the gate) |
+| AUD-65 | Med | Soft 404s: every invalid dynamic slug (7 routes verified) serves the not-found page with HTTP 200 — streaming shell commits status before `notFound()` | ⏳ `generateStaticParams` + `dynamicParams=false` per route (project; = AUD-113) |
+| AUD-66 | Med | `/install` is a developer deployment guide shipped as a public 7-locale route; `sitemap.ts` listed it while robots+meta forbid indexing | ◐ sitemap entry removed; route content is a product decision |
+| AUD-67 | Med | Legal/GDPR contact addresses live on the unattached `cypruswinter.com` domain (no MX) — privacy/terms advertise unreachable mailboxes | ⏳ supply: needs a real mailbox |
+| AUD-68 | Med | Mega-hub flat scrolls at 375px: `/wineries` 47,974px, `/secrets` 33,989px, `/villages` 30,123px — zero facets or in-page nav (unlike `/discover`, `/events`) | ⏳ hub-facets project |
+| AUD-69 | Med | Region hub lede is keyword-stuffed meta copy rendered as the visible intro, EN-only ×7 (`regions.ts` feeds both metadata and PageHeader) | ⏳ editorial + data-layer i18n (AUD-10 class) |
+| AUD-70 | Low | Guides directory: "221 licensed guides" intro vs "158 guides" list on one screen — locale-language pre-filter never explained | ⏳ |
+| AUD-71 | Low | 14 wineries carry `wineRoute` values matching no route page ("Laona–Akamas", "Pitsilia"…) — invisible to the wine-route feature; no `data:validate` rule ties them | ⏳ data + validator rule |
+| AUD-72 | Low | Privacy/Terms "Last updated: March 2026" hardcoded, 6 months stale | ⏳ editorial |
+
+### Lane B2 — booking deep states, auth, partner
+
+| ID | Sev | Finding | Status |
+|---|---|---|---|
+| AUD-73 | **High** | Post-submit success panel still promised partner email confirmation for **unverified** partners — contradicting the trust strip shown 30s earlier | ✅ success body/next-steps/emailDelayed gated on `isPartnerVerified`; honest `successUnverified` copy ×7; stepper stays at step 2 |
+| AUD-74 | **High** | AUD-08's auto-status-check disabled itself after first run: the sync merge overwrote local bookings with the API's email-stripped public view (lost `guestEmail`/`guestName`/`notes` → no future auto-checks) | ✅ field-wise `mergePreferringApi()` keeps non-empty local fields (`bookings-storage.ts`, unit-tested) |
+| AUD-75 | **High** | Fallback trust copy said "call the guide or use their booking link below" — guide phones are suppressed and 6/7 guides have no link; only `tel:` on page were 112/1460/199 | ✅ reworded ×7 + directory fallback link on unverified guide pages (`book/guide/[id]/page.tsx`) |
+| AUD-76 | Med | Progress stepper filled "Partner confirms" (3/3) solid at submission while the booking is pending | ✅ `currentStep={2}` on success (hollow step 3) |
+| AUD-77 | Med | Booking honeypot was dead code: API checks a `website` field no form rendered | ✅ honeypot field + JSON passthrough in both forms (SR-invisible, `tabIndex=-1`, static 1px clip — no absolute positioning per the SRStatus scroll-geometry lesson) |
+| AUD-78 | Med | Offline queue drain delivered the request but (a) never added the booking to local storage and (b) left the "will be sent" alert up after delivery | ◐ (a) fixed — drain now stores the returned booking (unit-tested); (b) residual: drain→form signal deferred |
+| AUD-79 | Med | Booking 429 ignored its own `Retry-After: 53`: "wait a moment" copy, no countdown, submit stayed enabled | ✅ header parsed, 1s countdown `role="status"`, submit disabled until 0 (`useBookingForm.ts`) |
+| AUD-80 | Med | Server `VALIDATION_ERROR` genericized to "Something went wrong" — dropped the actionable reason; EN passthrough when a code was unmapped | ◐ per-code messages incl. `NOT_FOUND`/`IDEMPOTENCY_CONFLICT`, no EN passthrough (falls to localized generic); per-field highlight from server errors deferred |
+| AUD-81 | Med | Partner portal misreports its own state: unconfigured backend (503) surfaces as "Email or secret is not recognised" | ⏳ needs portal-state copy + partner-onboarding path |
+| AUD-82 | Med | `/bookings` says "set a reminder if you like" but offers no add-to-calendar while `/plan` ships ICS | ⏳ per-booking ICS quick win, backlog |
+| AUD-83 | Low | Status vocabulary split: form promises "requested", every badge says "pending" | ✅ states copy unified on "pending" ×7 |
+| AUD-84 | Low | `AuthPasswordInput` show/hide toggle `tabIndex={-1}` — keyboard users can never reveal the password (latent while auth unconfigured) | ✅ removed |
+| AUD-85 | Low | `/forgot-password` unconfigured state wears the reset page's copy ("Use the reset link from your email") for users who came to request one | ⏳ copy + config-state rework |
+| AUD-86 | Med | Guide bookings lose their trail: chosen trail lives only in free-text notes (which the old merge stripped — AUD-74), card shows no trail, "View trails" generic | ⏳ needs a `trailId` field on the booking record (API change) |
+
+### Lane C2 — keyboard & structure
+
+| ID | Sev | Finding | Status |
+|---|---|---|---|
+| AUD-87 | **High** | AUD-06 correction (§8.1): blocked Ask-AI press was still a silent no-op — the focus-the-banner fix was unreachable dead code | ✅ focus logic moved into `triggerAIAssistant()` (the choke point all 5 paths use) |
+| AUD-88 | Med | Discover-card "+" quick-add unmounted under focus with no handoff/announcement (AUD-07 covered `AddToItineraryButton` only) | ✅ duplicate "+" removed entirely (see AUD-90) |
+| AUD-89 | Med | AI drawer opened from the mobile menu lost focus to `<body>` on Escape (restore target unmounted with the menu) | ✅ fallback to the nav toggle when `previouslyFocusedRef` is disconnected |
+| AUD-90 | Med | Every card cost 3 tab stops (~120 through `/discover`): card link + "Add to plan →" + duplicate "+" with identical action | ✅ duplicate removed → 2 stops/card |
+| AUD-91 | Med | Primary CTAs at conversion moments rendered 44px against the repo's own 48px primary rule (QA_PLAN §2.5): detail add-to-plan, plan combos, home cards | ✅ `CTA.primaryCompact` → `min-h-[48px]` |
+| AUD-92 | Low | `/plan` native date-input segments could show zero focus indication (2 of 8 segment stops) | ✅ `focus-within` ring on the wrappers (`PlanTripDatesWidget.tsx`) |
+| AUD-93 | Low | "← Home" (BackLink) + "Home" (Breadcrumbs) adjacent duplicate tab stops on padded pages | ⏳ PageHeader-level dedupe |
+
+### Lane D2 — tier-1 native walks (el/pl full, he re-walk, de@320)
+
+| ID | Sev | Finding | Status |
+|---|---|---|---|
+| AUD-94 | Med | Cookie `srAnnounce` named buttons that don't exist in 5/7 locales (de "Nur notwendige" vs button "Nur essenziell", pl/he/ro/fr similar) | ✅ aligned ×5 |
+| AUD-95 | Med | `requestLoggedFallback` `{context}` interpolation ungrammatical in el/he/ro — renders on **every** booking form (el "καλέστε το οδηγού" garbled; he "אל שותף" = "a partner") | ✅ el accusative "τον {context}" + "ξεναγό", he "ה{context}", ro rephrased |
+| AUD-96 | Med | New he SLA range "24–48" rendered visually reversed ("48–24") in RTL | ✅ LTR isolates (U+2066/U+2069) around numeric ranges |
+| AUD-97 | Med | Greek misspelling "Λευκάρια" for Λεύκαρα in shipped combo copy | ✅ corrected (el-wide sweep) |
+| AUD-98 | Med | `AttractionCard` aria-label + img alt hardcoded EN template literals in all locales ("Nissi Beach, Παραλία in Ayia Napa") — `i18n:scan` blind to attribute template literals | ✅ `common.aria.placeCard`/`placeCardImageAlt` keys ×7 |
+| AUD-99 | Med | Finite data enums (activities, difficulty, route type) interpolated raw into localized sentences → "Ιδανικό για shopping and crafts", "7 km szlak easy" | ⏳ enum-localization project (extends AUD-10) |
+| AUD-100 | Med | 90× `nameEl` exists in data but no card/list surface used it — `/el` read translated-tourist exactly where ICPS §6.1 demands Greek-first | ◐ `AttractionCard` now renders `getLocalizedName()`; TrailCard/ItineraryCard/SearchResultCard deferred |
+| AUD-101 | Low | Greek AI-assistant voice informal singular vs the app's formal σας (de correctly uses Sie) | ✅ 5 opener strings formalized |
+| AUD-102 | Med | el mixed "οδηγός" (driver/guidebook) with "ξεναγός" (licensed guide) after the AUD-01 rewording — both in one sentence on the hub | ✅ `ξεναγ` sweep over guide surfaces |
+| AUD-103 | Low | Guides hub footer dropped "and add stops to your plan" in de/el/pl | ✅ restored ×3 |
+| AUD-104 | Low | AUD-41 residual at ≤360px (see AUD-123) | ◐ 56px cap kept ≤360 by design; full label in aria |
+| AUD-105 | Low | de ◇-flags: "Share-Link in die Zwischenablage kopiert", calqued verifiedRoute | ✅ "Link zum Teilen kopiert" etc. (U+2011 "E‑Mail" kept — file-wide convention, not drift) |
+| AUD-106 | Low | pl ◇-flags: "trasa zapytania" calque (trasa = physical trail); "przez email"/"e-mail" split on one screen | ✅ "ścieżka" + e-mail normalized |
+| AUD-107 | Low | he register split singular-masculine vs plural-neutral on one screen, incl. new strings | ◐ new-batch strings pluralized; app-wide register unification is an editorial project |
+| AUD-108 | Low | pl home hero addressed every user as male ("Właśnie przyleciałeś?") | ✅ de-gendered ("Dopiero po przylocie?") |
+| AUD-109 | Low | fr/ro ◇-flags: straight apostrophe, masculine-default "sûr", noun-stack verifiedRoute | ✅ |
+| AUD-110 | Low | el ◇-flags: unidiomatic "ωράριο… μικρότερο" (idiom: μειωμένο ωράριο), accented month abbreviations | ✅ |
+
+### Lane E2 — SEO / share / metadata
+
+| ID | Sev | Finding | Status |
+|---|---|---|---|
+| AUD-111 | **High** | Plan ICS wrote a literal `\n` between places (pre-escaped join, then `escapeIcsText` re-escaped) — calendars show "Lefkara (Larnaca)\nOmodos" | ✅ join with real newline; 2-place unit test |
+| AUD-112 | Med | Share links dropped the locale — localized share text wrapped an EN landing URL (`/he/plan` verified) | ✅ `localizedPathname()` on `sharePath` (`useItinerary.ts`) |
+| AUD-113 | Med | Soft-404 (= AUD-65, SEO surface) | ⏳ |
+| AUD-114 | Med | Homepage Twitter card leaked onto every page without its own twitter block (og correct, twitter wrong) | ✅ layouts slimmed to `twitter: { card }` only |
+| AUD-115 | Med | Book pages: zero `og:*` tags; root cause `applyLocaleToMetadata` only emits og when the base builder provides it | ✅ og builders for book/winery + book/guide (title/description/type/image) |
+| AUD-116 | Med | Events JSON-LD: 26 Events, none with `startDate` (invalid for rich results); zero invented dates — discipline held | ✅ truthful `eventSchedule.byMonth` from the month field; still no fabricated dates |
+| AUD-117 | Med | Canonical split-brain: `/el` home Strategy A vs locale subpages Strategy B; sitemap unprefixed-only (474 URLs); two parallel helper modules | ⏳ strategy unification project |
+| AUD-118 | Med | `meta.homeTitle/homeDescription` a copy generation behind in all 6 non-EN; ro/fr/he served stale **English** titles live | ✅ retranslated ×6 |
+| AUD-119 | Low | Winery JSON-LD hygiene (relative image URL, prose openingHours, locality in addressRegion) | ⏳ |
+| AUD-120 | Low | JSON-LD descriptions truncated mid-word without ellipsis | ⏳ |
+| AUD-121 | Low | 6 meta descriptions >160 chars (worst `/el/plan` 215) | ⏳ editorial |
+| AUD-122 | Low | `og:locale` bare codes ("he" not "he_IL"); detail `og:type` omitted | ⏳ |
+
+E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings ×7 no EN leaks; sitemap 474 URLs sane; robots sane; og:images resolve; AUD-01 JSON-LD phone gating held; BUG-165/175 escaping held.
+
+### Lanes F2/O2 — corrections & instrumented sweep
+
+| ID | Sev | Finding | Status |
+|---|---|---|---|
+| AUD-123 | Med | AUD-41 correction (§8.1): "Wanderwege" needed 74px, cap was 72px — still ellipsized at 375 | ✅ cap → 76px (≥360px); ≤360px keeps 56px by design |
+| AUD-124 | Med | `/plan` timeline cards get 182px of a 320px viewport (double start-gutter ≈96px); readable but cramped | ⏳ 320px gutter collapse |
+| AUD-125 | Med | `/search` 6px horizontal overflow at 320px — two stacked causes: the in-plan chip's `inline-flex flex-wrap` min-content resolving unwrapped, and `truncate` (nowrap) card text setting the grid track's min-content to the full line | ✅ `max-w-full` on the chip **and** `truncate` → `line-clamp-1 break-words` in `SearchResultCard` (re-measured: 0px overflow, all 8 spot routes) |
+
+## 8.3 Round-2 remediation status
+
+**Fixed and re-validated this pass (44):** AUD-60…64, 66 (sitemap half), 73…80 (78/80 partial), 83, 84, 87…92, 94…98, 100 (AttractionCard), 101…103, 105, 106, 108…112, 114…116, 118, 123, 125 — plus the pl e-mail normalization and the two §8.1 corrections. i18n catalog now **7 × 2338 keys**, parity-validated, editorial maps auto-synced.
+
+**Backlog (decision/supply/project):** AUD-65/113 (soft-404s), 67 (real legal mailbox), 68 (hub facets), 69 (region lede editorial), 70–72, 81 (partner portal states), 82 (booking ICS), 85, 86 (booking `trailId`), 93, 99 (enum localization), 100-residual (TrailCard/ItineraryCard/SearchResultCard native names), 104/107 residuals, 117 (canonical strategy), 119–122, 124 (320px plan gutter), 78-residual (drain→form signal), 80-residual (server field highlight).
+
+## 8.4 Persona × dimension grid (16 QA personas, post-R2-fix)
+
+Scores 1–5 per `docs/QA_PERSONAS_FULL_STACK_2026.md` layers; scored against this branch after the Round-2 fixes. Return column = post-book/repeat loop.
+
+| Persona | Market fit | Trust | Discover | Plan | Book | Return | i18n | Mobile | A11y | SEO |
+|---|---|---|---|---|---|---|---|---|---|---|
+| UK-01 Margaret & David | 4 | 4 | 4 | 3 | 4 | 3 | 5 | 4 | 4 | 4 |
+| PL-01 Kasia & Tomasz | 4 | 4 | 4 | 3 | 4 | 3 | 4 | 4 | 4 | 3 |
+| IL-01 Yael & Omri | 4 | 4 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 3 |
+| GR-01 Nikos | 3 | 4 | 3 | 4 | 4 | 3 | 3 | 4 | 4 | 3 |
+| DE-01 Stefan & Lena | 4 | 4 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 4 |
+| DE-02 Anna | 4 | 4 | 4 | 3 | 4 | 3 | 4 | 4 | 4 | 4 |
+| NORD-01 Oskar & Ingrid | 4 | 4 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 4 |
+| RO-01 Andrei & Elena | 4 | 4 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 3 |
+| UK-02 James | 4 | 4 | 4 | 4 | 4 | 3 | 5 | 4 | 4 | 4 |
+| A11Y-01 Priya | — | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | — |
+| PERF-01 Marcus | — | 4 | 4 | 4 | 4 | 4 | — | 4 | — | 4 |
+| B2B-01 Elena V. | 3 | 3 | — | — | 3 | 2 | 4 | 4 | — | — |
+| LB-01 Rina | 4 | 4 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 3 |
+| FR-01 Claire | 4 | 4 | 4 | 4 | 4 | 3 | 4 | 4 | 4 | 3 |
+| US-01 Sam | 4 | 4 | 4 | 4 | 4 | 3 | 5 | 4 | 4 | 4 |
+| CRISIS-01 Composite | 4 | 4 | — | 4 | 4 | — | 4 | 4 | — | 4 |
+
+Grid notes (what still holds scores down): Return ≤3 everywhere = post-book loop gaps (AUD-81/82/85/86); GR-01 i18n 3 = enum mixing + native-name residual (AUD-99/100); B2B-01 Return 2 = partner portal dead end (AUD-81); PL/IL/GR/RO/LB/FR SEO 3 = canonical split-brain + meta length (AUD-117/121). GR-01 Market fit 3 = Local content depth (KNOWN, §5). Amazement re-scores on newly walked flows: weather-month 5 (post-AUD-63), events-deep-link 5 (post-AUD-60, was 1), auth/account 3 (config states honest but AUD-85 copy), partner portal **2 — redesign candidate** (AUD-81).
+
+## 8.5 Method deltas vs Round 1
+
+320px added to the viewport matrix (repo QA matrix already listed it; now exercised); instrumented capture harness records per-shot HTTP status, h1 presence, `dir`, and horizontal overflow (60 captures, manifest in scratchpad); keyboard transcripts recorded stop-by-stop; native-language review flags (◇) resolved into concrete string fixes ×7 locales rather than left as annotations; every Round-1 fix attacked at its entry point (the §8.1 lesson).
+
+## 8.6 Round-2 gate runs (post-fix, this branch)
+
+```
+npm run lint / typecheck              → clean
+npm run test (vitest)                 → 786 passed (145 files; 3 suites updated to assert the new
+                                        gated-trust behavior; +3 new tests pin the merge,
+                                        ICS-newline, and drain-persist fixes)
+npm run i18n:validate                 → 7 locales × 2338 keys
+npm run i18n:scan -- --fail           → 0 hardcoded strings
+npm run i18n:editorial-drift          → pass (fr/he/ro maps auto-synced)
+npm run data:validate                 → OK
+npm run check:conflict-markers        → OK
+npm run build                         → exit 0
+npm run test:e2e:gate:ci              → exit 0
+  core-funnel 38 passed · ux 44 passed (1 recovered flaky, 1 skipped)
+  visual-gate 17 passed · a11y (axe, 31 routes, contrast fatal) 1 passed
+320px spot sweep (8 funnel routes, en+he+de) → 0px horizontal overflow
+```

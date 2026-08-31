@@ -35,7 +35,16 @@ export function AIAssistant() {
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
-    previouslyFocusedRef.current?.focus?.();
+    const previous = previouslyFocusedRef.current;
+    if (previous?.isConnected) {
+      previous.focus?.();
+    } else {
+      // Trigger unmounted (e.g. drawer opened from the mobile menu, which
+      // closes itself) — fall back to the nav's menu button instead of body.
+      document
+        .querySelector<HTMLElement>("nav button[aria-expanded]")
+        ?.focus?.();
+    }
   }, []);
 
   useEffect(() => {

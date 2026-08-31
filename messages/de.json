@@ -88,7 +88,9 @@
       "reportConditionsForTrail": "Wegbedingungen für diesen Trail melden",
       "dismissNotification": "Benachrichtigung schließen",
       "notifications": "Benachrichtigungen",
-      "addedToPlan": "Zu Ihrem Plan hinzugefügt."
+      "addedToPlan": "Zu Ihrem Plan hinzugefügt.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — im winterlichen Licht Zyperns"
     },
     "skipToContent": "Zum Hauptinhalt",
     "languageLabel": "Sprache:",
@@ -333,7 +335,7 @@
       "body": "Wir nutzen notwendige Cookies für den Dienst und optionale Analytics zur Verbesserung. Mit „Akzeptieren“ erlauben Sie Analytics.",
       "accept": "Akzeptieren",
       "learnMore": "Mehr erfahren",
-      "srAnnounce": "Cookie-Hinweis: Wählen Sie unten am Bildschirm Akzeptieren oder Nur notwendige."
+      "srAnnounce": "Cookie-Hinweis: Wählen Sie unten am Bildschirm Akzeptieren oder Nur essenziell."
     },
     "placeTypes": {
       "beach": "Strand",
@@ -799,7 +801,9 @@
       "RATE_LIMITED": "Zu viele Anfragen. Bitte warten Sie kurz.",
       "SERVER_ERROR": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
       "VALIDATION_ERROR": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
-      "BAD_REQUEST": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+      "BAD_REQUEST": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "NOT_FOUND": "Dieser Eintrag ist nicht mehr verfügbar.",
+      "IDEMPOTENCY_CONFLICT": "Diese Anfrage wurde bereits gesendet — prüfen Sie Ihre Buchungen, bevor Sie es erneut versuchen."
     }
   },
   "push": {
@@ -1851,7 +1855,7 @@
       "selectDay": "Tag auswählen",
       "quickStartRegion": "Orte hinzufügen oder Vorlagen nutzen",
       "itineraryCopied": "Reiseplan in die Zwischenablage kopiert",
-      "shareLinkCopied": "Share-Link in die Zwischenablage kopiert",
+      "shareLinkCopied": "Link zum Teilen kopiert",
       "removedFromPlan": "{name} wurde aus Ihrem Plan entfernt."
     },
     "daySelector": {
@@ -2513,6 +2517,14 @@
       },
       "aria": {
         "actions": "Aktionen Wetter-Monatsseite"
+      },
+      "monthNames": {
+        "november": "November",
+        "december": "Dezember",
+        "january": "Januar",
+        "february": "Februar",
+        "march": "März",
+        "april": "April"
       }
     }
   },
@@ -2828,7 +2840,9 @@
           "title": "Geführte Wanderung buchen | {guideName} | Cyprus Winter",
           "description": "Geführte Winterwanderung mit {guideName} in {region} anfragen. Kleine Gruppen, lokales Know-how. Bestätigung per E‑Mail."
         },
-        "metaNotFound": "Nicht gefunden"
+        "metaNotFound": "Nicht gefunden",
+        "directoryFallback": "Sie brauchen direkte Kontaktdaten? Lizenzierte Guides stehen mit Telefonnummern im offiziellen Guide-Verzeichnis.",
+        "directoryFallbackLink": "Zum Guide-Verzeichnis →"
       },
       "guideList": {
         "meta": {
@@ -2914,12 +2928,12 @@
       "trust": {
         "aria": "Vertrauensinformationen zur Buchung",
         "heading": "Vor dem Absenden",
-        "verifiedRoute": "Verifizierte {context}-Anfrageroute.",
+        "verifiedRoute": "Geprüfter Anfrageweg zum {context}.",
         "emailConfirm": "Der Partner bestätigt in der Regel per E-Mail innerhalb von 24–48 Stunden an Werktagen.",
         "noCharge": "Hier wird keine Zahlung genommen. Anbieter bestätigen zuerst die Verfügbarkeit.",
         "contextPartner": "Partner",
         "contextGuide": "Guide",
-        "requestLoggedFallback": "Ihre Anfrage wird sofort hier gespeichert — rufen Sie zur Sicherheit den {context} an oder nutzen Sie den Buchungslink unten."
+        "requestLoggedFallback": "Ihre Anfrage wird sofort hier gespeichert — um den Termin zu sichern, vereinbaren Sie ihn zusätzlich direkt mit dem {context}."
       },
       "progress": {
         "aria": "Buchungsfortschritt",
@@ -2929,10 +2943,11 @@
       },
       "states": {
         "heading": "Buchungsstatus:",
-        "wineryBody": "Status beginnt als Anfrage; bestätigt erst nach Partnerantwort.",
-        "guideBody": "Status beginnt als Anfrage; bestätigt erst nach Antwort des Guides.",
+        "wineryBody": "Der Status beginnt als „ausstehend“; bestätigt erst nach Antwort des Partners.",
+        "guideBody": "Der Status beginnt als „ausstehend“; bestätigt erst nach Antwort des Guides.",
         "offlineQueue": "Offline wird Ihre Anfrage in die Sync-Warteschlange gestellt und automatisch wiederholt."
-      }
+      },
+      "successUnverified": "Wir haben Ihre Anfrage unter Ihren Buchungen gespeichert. Um Ihren Termin zu sichern, kontaktieren Sie zusätzlich den {context} direkt — in der App wird nichts bezahlt."
     }
   },
   "guides": {
@@ -2974,7 +2989,7 @@
       "title": "Lizenzierte Touristenführer",
       "breadcrumb": "Lizenzierte Führer",
       "pageNavAria": "Verzeichnis lizenzierter Führer",
-      "intro": "{count} lizenzierte Führer aus der offiziellen Visit-Cyprus-Liste (Aug. 2026). Direkt kontaktieren — oder verifizierten Winter-Wanderpartner in der App buchen.",
+      "intro": "{count} lizenzierte Guides von der offiziellen Visit-Cyprus-Liste (Aug. 2026). Kontaktieren Sie sie direkt — oder buchen Sie einen lizenzierten Wanderführer in der App.",
       "verifiedPartnersLink": "Lizenzierte Wanderführer buchen →",
       "disclaimer": "Lizenzierte Touristenführer beim zypriotischen Tourismusministerium. Cyprus Winter listet offizielle Kontakte; Buchung erfolgt direkt beim Führer.",
       "officialListLink": "Offizielle Liste auf Visit Cyprus",
@@ -3011,14 +3026,14 @@
         "hebrew": "Hebräisch"
       },
       "verifiedCta": {
-        "title": "Verifizierte Winter-Wanderpartner",
-        "body": "Anfragen über Cyprus Winter — Troodos, Akamas, Kultur.",
-        "button": "Verifizierten Führer buchen"
+        "title": "Lizenzierte Wanderführer — in der App buchbar",
+        "body": "Diese Guides nehmen Anfragen über Cyprus Winter entgegen — Troodos, Akamas und Kulturtouren.",
+        "button": "Lizenzierten Guide buchen"
       },
       "verifiedPartnerBadge": "In-App-Buchung",
       "verifiedPartnerBook": "Anfrage über Cyprus Winter",
       "footer": {
-        "hubBody": "Kontaktieren Sie einen lizenzierten Guide — oder buchen Sie einen lizenzierten Wanderführer in der App.",
+        "hubBody": "Kontaktieren Sie einen lizenzierten Guide — oder buchen Sie einen lizenzierten Wanderführer in der App und fügen Sie Stopps zu Ihrem Plan hinzu.",
         "trails": "Trail-Bedingungen"
       },
       "aria": {
@@ -3321,8 +3336,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Mittelmeer im Winter",
-    "homeDescription": "Zypern im Winter: mild, unberührt, echt. Troodos-Wanderwege, Dörfer, Weingüter, antike Stätten. Sechzehn Grad, wenn daheim sechs sind. Planen Sie im Voraus oder erkunden Sie bei Ankunft.",
+    "homeTitle": "Cyprus Winter | Wanderwege, Dörfer, Weingüter und ruhige Tage",
+    "homeDescription": "Ein ruhigeres Zypern im Winter. Entdecken Sie milde Küsten, Bergdörfer, offene Wanderwege, Weingüter und lokale Orte, für die es sich lohnt, langsamer zu machen.",
     "ogImageAlt": "Antikes Kourion-Theater über der Mittelmeerküste, Zypern im Winter"
   },
   "ui": {
@@ -3343,7 +3358,12 @@
         "ancient": "Antike Stätten",
         "winterEvents": "Winter-Events",
         "allWineries": "Alle Weingüter Zyperns",
-        "troodosDecember": "Troodos-Trails im Dezember"
+        "troodosDecember": "Troodos-Trails im Dezember",
+        "trails": "Wanderwege",
+        "villages": "Dörfer",
+        "beaches": "Strände",
+        "wineries": "Weingüter",
+        "monasteries": "Klöster und Kirchen"
       }
     }
   },

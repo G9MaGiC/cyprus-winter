@@ -25,6 +25,7 @@ export default function GuideBookingForm({
   const t = useTranslations("book.guideForm");
   const tForm = useTranslations("book.form");
   const tApiErrors = useTranslations("errors.api");
+  const tRateLimited = useTranslations("errors.rateLimited");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
   const searchParams = useSearchParams();
@@ -47,6 +48,7 @@ export default function GuideBookingForm({
     errorRef,
     handleSubmit,
     todayStr,
+    retryAfterSeconds,
     validateFieldOnBlur,
   } = useBookingForm(
     {
@@ -73,6 +75,8 @@ export default function GuideBookingForm({
         RATE_LIMITED: tApiErrors("RATE_LIMITED"),
         SERVICE_UNAVAILABLE: tApiErrors("SERVICE_UNAVAILABLE"),
         SERVER_ERROR: tApiErrors("SERVER_ERROR"),
+        NOT_FOUND: tApiErrors("NOT_FOUND"),
+        IDEMPOTENCY_CONFLICT: tApiErrors("IDEMPOTENCY_CONFLICT"),
       },
     }
   );
@@ -93,11 +97,14 @@ export default function GuideBookingForm({
         role="status"
         aria-live="polite"
       >
-        <BookingProgressStepper currentStep={3} />
+        {/* Step 3 stays hollow while the booking is pending (B2-04). */}
+        <BookingProgressStepper currentStep={2} />
         <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-s-4 border-s-aegean/40">
         <h2 className={`${TYPE.subSectionTitle} text-olive`}>{t("success.title")}</h2>
         <p className="text-muted-ink mt-2 leading-relaxed break-words">
-          {t("success.body", { guideName: guide.name })}
+          {isPartnerVerified(guide)
+            ? t("success.body", { guideName: guide.name })
+            : tForm("successUnverified", { context: tForm("trust.contextGuide") })}
           {storageMode === "memory" && (
             <>
               {" "}
@@ -112,12 +119,13 @@ export default function GuideBookingForm({
         <p className="text-muted-ink text-sm mt-3 break-words">
           {t("success.tip")}
         </p>
-        {emailDelayed && (
+        {isPartnerVerified(guide) && emailDelayed && (
           <p className="text-muted-ink text-sm mt-3 break-words">
             {t("success.emailDelayed")}
           </p>
         )}
-        <BookingSuccessNextSteps namespace="book.guideForm" />
+        {/* Email-confirmation next steps are only true for verified partners (B2-01). */}
+        {isPartnerVerified(guide) && <BookingSuccessNextSteps namespace="book.guideForm" />}
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}
@@ -137,6 +145,13 @@ export default function GuideBookingForm({
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <BookingProgressStepper currentStep={loading ? 2 : 1} />
+      {/* Honeypot — the API rejects submissions that fill this. Off-screen and
+          out of the tab/AT order so real users never see it (do not use
+          display:none: some bots skip invisible fields). */}
+      <div aria-hidden className="h-px w-px overflow-hidden">
+        <label htmlFor="website">{"Website"}</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <BookingTrustStrip variant="guide" verified={isPartnerVerified(guide)} />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-muted-ink">
         <p>
@@ -153,6 +168,11 @@ export default function GuideBookingForm({
           tabIndex={-1}
         >
           {error}
+        </p>
+      )}
+      {retryAfterSeconds > 0 && (
+        <p className="text-sm text-muted-ink" role="status" aria-live="polite">
+          {tRateLimited("waitThenRetry", { seconds: retryAfterSeconds })}
         </p>
       )}
 
@@ -306,7 +326,7 @@ export default function GuideBookingForm({
 
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || retryAfterSeconds > 0}
         aria-busy={loading}
         aria-label={loading ? t("submit.ariaSending") : t("submit.ariaIdle")}
         className={`w-full mt-6 py-4 rounded-lg justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:disabled:ring-0 ${CTA.primaryCompact}`}

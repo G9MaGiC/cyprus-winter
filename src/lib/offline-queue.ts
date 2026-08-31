@@ -107,6 +107,21 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
       });
 
       if (res.ok) {
+        // Persist the created booking locally: without this, a drained booking
+        // is invisible on this device (/bookings reads localStorage) and the
+        // form's stale offline message becomes actively false (AUD B2-06).
+        if (item.type === "winery_booking" || item.type === "guide_booking") {
+          try {
+            const data = await res.json();
+            if (data?.booking) {
+              const { addBookingToLocal } = await import("@/lib/bookings-storage");
+              addBookingToLocal(data.booking);
+            }
+          } catch {
+            // Response parse failure — the booking still exists server-side;
+            // the email lookup remains the recovery path.
+          }
+        }
         removeMutation(item.id);
         succeeded++;
       } else if (res.status >= 400 && res.status < 500 && !RETRYABLE_CLIENT_STATUSES.has(res.status)) {

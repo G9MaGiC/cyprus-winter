@@ -112,7 +112,6 @@ export default function AuthPasswordInput({
           onClick={() => setShowPassword((v) => !v)}
           className="absolute end-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-ink hover:text-olive transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40"
           aria-label={showPassword ? tAuth("hide") : tAuth("show")}
-          tabIndex={-1}
         >
           {showPassword ? (
             <svg

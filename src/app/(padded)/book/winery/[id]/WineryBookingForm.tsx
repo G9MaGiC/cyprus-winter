@@ -28,6 +28,7 @@ export default function WineryBookingForm({
   const t = useTranslations("book.wineryForm");
   const tForm = useTranslations("book.form");
   const tApiErrors = useTranslations("errors.api");
+  const tRateLimited = useTranslations("errors.rateLimited");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
 
@@ -44,6 +45,7 @@ export default function WineryBookingForm({
     errorRef,
     handleSubmit,
     todayStr,
+    retryAfterSeconds,
     validateFieldOnBlur,
   } = useBookingForm(
     {
@@ -69,6 +71,8 @@ export default function WineryBookingForm({
         RATE_LIMITED: tApiErrors("RATE_LIMITED"),
         SERVICE_UNAVAILABLE: tApiErrors("SERVICE_UNAVAILABLE"),
         SERVER_ERROR: tApiErrors("SERVER_ERROR"),
+        NOT_FOUND: tApiErrors("NOT_FOUND"),
+        IDEMPOTENCY_CONFLICT: tApiErrors("IDEMPOTENCY_CONFLICT"),
       },
     }
   );
@@ -89,13 +93,17 @@ export default function WineryBookingForm({
         role="status"
         aria-live="polite"
       >
-        <BookingProgressStepper currentStep={3} />
+        {/* Step 3 ("Partner confirms") stays hollow: at submit time the booking
+            is pending — a filled bar would contradict the pending badge (B2-04). */}
+        <BookingProgressStepper currentStep={2} />
         <div className="p-6 rounded-lg bg-sand-100/90 border border-sand-200/70 border-s-4 border-s-terracotta/30">
         <h2 className={`${TYPE.subSectionTitle} text-olive`}>
           {t("success.title")}
         </h2>
         <p className="text-muted-ink mt-2 leading-relaxed break-words">
-          {t("success.body", { wineryName })}
+          {partnerVerified
+            ? t("success.body", { wineryName })
+            : tForm("successUnverified", { context: tForm("trust.contextPartner") })}
           {storageMode === "memory" && (
             <>
               {" "}
@@ -110,12 +118,13 @@ export default function WineryBookingForm({
         <p className="text-muted-ink text-sm mt-3 break-words">
           {t("success.tip")}
         </p>
-        {emailDelayed && (
+        {partnerVerified && emailDelayed && (
           <p className="text-muted-ink text-sm mt-3 break-words">
             {t("success.emailDelayed")}
           </p>
         )}
-        <BookingSuccessNextSteps namespace="book.wineryForm" />
+        {/* The email-confirmation next steps are only true for verified partners (B2-01). */}
+        {partnerVerified && <BookingSuccessNextSteps namespace="book.wineryForm" />}
         <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3 [&_a]:w-full [&_a]:sm:w-auto">
           <AppLink href="/plan" className={`${CTA.primaryCompact} justify-center`}>
             {tCommon("viewPlan")}
@@ -135,6 +144,13 @@ export default function WineryBookingForm({
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <BookingProgressStepper currentStep={loading ? 2 : 1} />
+      {/* Honeypot — the API rejects submissions that fill this. Off-screen and
+          out of the tab/AT order so real users never see it (do not use
+          display:none: some bots skip invisible fields). */}
+      <div aria-hidden className="h-px w-px overflow-hidden">
+        <label htmlFor="website">{"Website"}</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <BookingTrustStrip variant="winery" verified={partnerVerified} />
       <WineryBookingHints openingHours={openingHours} bestTimeToVisit={bestTimeToVisit} />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-muted-ink">
@@ -145,6 +161,11 @@ export default function WineryBookingForm({
       </div>
       {error && (
         <p ref={errorRef} className="p-3 rounded-lg bg-terracotta/10 text-terracotta-muted text-sm break-words" role="alert" aria-live="polite" tabIndex={-1}>{error}</p>
+      )}
+      {retryAfterSeconds > 0 && (
+        <p className="text-sm text-muted-ink" role="status" aria-live="polite">
+          {tRateLimited("waitThenRetry", { seconds: retryAfterSeconds })}
+        </p>
       )}
 
       <div>
@@ -259,7 +280,7 @@ export default function WineryBookingForm({
 
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || retryAfterSeconds > 0}
         aria-busy={loading}
         aria-label={loading ? t("submit.ariaSending") : t("submit.ariaIdle")}
         className={`w-full mt-6 py-4 rounded-lg justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:disabled:ring-0 ${CTA.primaryCompact}`}

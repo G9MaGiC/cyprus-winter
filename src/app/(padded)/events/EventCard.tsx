@@ -34,7 +34,7 @@ export default function EventCard({
   return (
     <article
       id={event.id}
-      className={`${CARD.base} ${CARD.hover} ${CARD.content} ${
+      className={`scroll-mt-24 ${CARD.base} ${CARD.hover} ${CARD.content} ${
         variant === "highlight"
           ? "border-2 border-golden/40 bg-white"
           : "border-s-4 border-s-terracotta/40"

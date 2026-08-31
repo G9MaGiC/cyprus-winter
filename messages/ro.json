@@ -88,7 +88,9 @@
       "reportConditionsForTrail": "Raportează condițiile acestui traseu",
       "dismissNotification": "Închide notificarea",
       "notifications": "Notificări",
-      "addedToPlan": "Adăugat în planul tău."
+      "addedToPlan": "Adăugat în planul tău.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — în lumina iernii din Cipru"
     },
     "skipToContent": "Sari la conținut",
     "languageLabel": "Limbă:",
@@ -120,7 +122,7 @@
       "body": "Folosim cookie-uri esențiale pentru serviciu și analize opționale. „Accept” permite analizele.",
       "accept": "Acceptă",
       "learnMore": "Află mai mult",
-      "srAnnounce": "Notificare cookie: alegeți Accept sau Doar esențiale în partea de jos a ecranului."
+      "srAnnounce": "Notificare cookie: alegeți Acceptă sau Doar esențiale în partea de jos a ecranului."
     },
     "shareColon": "Distribuie:",
     "bookTasting": "Rezervă o degustare",
@@ -799,7 +801,9 @@
       "RATE_LIMITED": "Prea multe cereri. Așteaptă un moment.",
       "SERVER_ERROR": "Ceva nu a mers. Încearcă din nou.",
       "VALIDATION_ERROR": "Ceva nu a mers. Încearcă din nou.",
-      "BAD_REQUEST": "Ceva nu a mers. Încearcă din nou."
+      "BAD_REQUEST": "Ceva nu a mers. Încearcă din nou.",
+      "NOT_FOUND": "Această înregistrare nu mai este disponibilă.",
+      "IDEMPOTENCY_CONFLICT": "Cererea a fost deja trimisă — verifică rezervările tale înainte să încerci din nou."
     }
   },
   "push": {
@@ -2439,7 +2443,12 @@
         "ancient": "Situri antice",
         "winterEvents": "Evenimente de iarnă",
         "allWineries": "Toate cramele din Cipru",
-        "troodosDecember": "Trasee Troodos în decembrie"
+        "troodosDecember": "Trasee Troodos în decembrie",
+        "trails": "Trasee",
+        "villages": "Sate",
+        "beaches": "Plaje",
+        "wineries": "Crame",
+        "monasteries": "Mănăstiri și biserici"
       }
     }
   },
@@ -2589,6 +2598,14 @@
       },
       "aria": {
         "actions": "Acțiuni pagină lună meteo"
+      },
+      "monthNames": {
+        "november": "Noiembrie",
+        "december": "Decembrie",
+        "january": "Ianuarie",
+        "february": "Februarie",
+        "march": "Martie",
+        "april": "Aprilie"
       }
     }
   },
@@ -2746,7 +2763,7 @@
         "noCharge": "Nu se ia nicio plată aici. Furnizorii confirmă mai întâi disponibilitatea.",
         "contextPartner": "partener",
         "contextGuide": "ghid",
-        "requestLoggedFallback": "Cererea ta se salvează aici imediat — pentru siguranță, sună {context} sau folosește linkul de rezervare de mai jos."
+        "requestLoggedFallback": "Cererea ta se salvează aici imediat — pentru a-ți garanta data, aranjează și direct cu partenerul."
       },
       "progress": {
         "aria": "Progresul rezervării",
@@ -2756,10 +2773,11 @@
       },
       "states": {
         "heading": "Stări rezervare:",
-        "wineryBody": "De la cerere acum la confirmare după răspunsul cramei.",
-        "guideBody": "De la cerere acum la confirmare după răspunsul ghidului.",
+        "wineryBody": "Starea începe ca „în așteptare”; se confirmă doar după răspunsul partenerului.",
+        "guideBody": "Starea începe ca „în așteptare”; se confirmă doar după răspunsul ghidului.",
         "offlineQueue": "Dacă ești offline, cererea e pusă la coadă ca sincronizare în așteptare și retrimisă automat."
-      }
+      },
+      "successUnverified": "Ți-am salvat cererea în rezervările tale. Pentru siguranța datei, contactează și direct partenerul — nu se face nicio plată în aplicație."
     },
     "guideForm": {
       "validation": {
@@ -2928,7 +2946,9 @@
           "title": "Rezervă o drumeție ghidată | {guideName} | Cyprus Winter",
           "description": "Cere o drumeție ghidată de iarnă cu {guideName} în {region}. Grupuri mici, experiență locală. Va confirma pe email."
         },
-        "metaNotFound": "Nu a fost găsit"
+        "metaNotFound": "Nu a fost găsit",
+        "directoryFallback": "Ai nevoie de date de contact directe? Ghizii licențiați sunt listați cu numere de telefon în directorul oficial al ghizilor.",
+        "directoryFallbackLink": "Deschide directorul ghizilor →"
       },
       "guideList": {
         "meta": {
@@ -3050,7 +3070,7 @@
       "title": "Ghiduri turistice licențiate",
       "breadcrumb": "Ghiduri licențiate",
       "pageNavAria": "Director ghizi licențiați",
-      "intro": "{count} ghiduri licențiate din lista oficială Visit Cyprus (aug. 2026). Contactează-i direct — sau rezervă un partener de drumeție de iarnă verificat în aplicație.",
+      "intro": "{count} ghizi licențiați din lista oficială Visit Cyprus (aug. 2026). Contactează-i direct — sau rezervă un ghid montan licențiat în aplicație.",
       "verifiedPartnersLink": "Rezervă un ghid licențiat →",
       "disclaimer": "Ghiduri turistice licențiate înregistrate la Vice-ministerul Turismului din Cipru. Cyprus Winter listează contacte oficiale; rezervarea și plata se fac direct cu ghidul.",
       "officialListLink": "Listă oficială pe Visit Cyprus",
@@ -3087,9 +3107,9 @@
         "hebrew": "Ebraică"
       },
       "verifiedCta": {
-        "title": "Parteneri de drumeție de iarnă verificați",
-        "body": "Acești ghizi acceptă cereri prin Cyprus Winter — Troodos, Akamas și tururi culturale cu confirmare prin e-mail.",
-        "button": "Rezervă un ghid verificat"
+        "title": "Ghizi montani licențiați — rezervare în aplicație",
+        "body": "Acești ghizi primesc cereri prin Cyprus Winter — Troodos, Akamas și tururi culturale.",
+        "button": "Rezervă un ghid licențiat"
       },
       "verifiedPartnerBadge": "Rezervare în aplicație",
       "verifiedPartnerBook": "Cerere prin Cyprus Winter",
@@ -3397,8 +3417,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
-    "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
+    "homeTitle": "Cyprus Winter | Trasee, sate, crame și zile tihnite",
+    "homeDescription": "Un Cipru mai liniștit iarna. Descoperă coaste blânde, sate de munte, trasee deschise, crame și locuri autentice pentru care merită să încetinești.",
     "ogImageAlt": "Teatrul antic Kourion deasupra coastei Mediteranei, iarnă în Cipru"
   },
   "ui": {

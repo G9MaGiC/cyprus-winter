@@ -66,6 +66,33 @@ describe("mergeBookings", () => {
     expect(result[0].status).toBe("confirmed");
   });
 
+  it("preserves local-only fields the API's public view strips (AUD B2-02)", () => {
+    const local = [
+      booking({
+        id: "b1",
+        guestEmail: "claire@example.com",
+        guestName: "Claire",
+        notes: "Trail: Artemis Trail",
+        status: "pending",
+        createdAt: "2026-03-12T10:00:00Z",
+      }),
+    ];
+    const api = [
+      {
+        ...booking({ id: "b1", status: "confirmed", createdAt: "2026-03-12T10:00:00Z" }),
+        guestEmail: "",
+        guestName: undefined,
+        notes: undefined,
+      } as unknown as Booking,
+    ];
+    const result = mergeBookings(local, api);
+    expect(result).toHaveLength(1);
+    expect(result[0].status).toBe("confirmed");
+    expect(result[0].guestEmail).toBe("claire@example.com");
+    expect(result[0].guestName).toBe("Claire");
+    expect(result[0].notes).toBe("Trail: Artemis Trail");
+  });
+
   it("keeps local-only bookings that are not on the API", () => {
     const local = [
       booking({ id: "local-only", status: "pending", createdAt: "2026-03-11T10:00:00Z" }),

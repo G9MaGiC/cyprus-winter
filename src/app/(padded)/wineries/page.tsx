@@ -78,7 +78,7 @@ export default async function WineriesPage() {
         ]}
       >
         <div className="mt-4 flex flex-wrap gap-3">
-          <AppLink href="/bookings" className={CTA.primaryCompact}>
+          <AppLink href="/book/winery" className={CTA.primaryCompact}>
             {tCommon("bookTasting")}
           </AppLink>
           <AppLink href="/plan" className={CTA.secondaryCompact} aria-label={tHome("aria.plan")}>

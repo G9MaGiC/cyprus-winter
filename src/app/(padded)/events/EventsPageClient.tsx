@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -31,6 +31,20 @@ const REGIONS_LIST = Array.from(new Set(winterEvents.map((e) => e.region)))
   .sort();
 
 export default function EventsPage() {
+  // Cold-load hash navigation: the route skeleton streams before this client
+  // tree mounts, so the browser's native #anchor jump has already been lost —
+  // re-run it once content is on screen (AUD A2-01 / plan→event deep links).
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash.slice(1) : "";
+    if (!hash) return;
+    const target = document.getElementById(decodeURIComponent(hash));
+    if (!target) return;
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? ("auto" as const)
+      : ("smooth" as const);
+    target.scrollIntoView({ behavior, block: "start" });
+  }, []);
+
   const tNav = useTranslations("nav");
   const tEvents = useTranslations("events");
   const tPage = useTranslations("events.page");
@@ -210,6 +224,7 @@ export default function EventsPage() {
                   <section
                     key={month}
                     id={`month-${month}`}
+                    className="scroll-mt-24"
                     aria-labelledby={`heading-${month}`}
                   >
                     <h2

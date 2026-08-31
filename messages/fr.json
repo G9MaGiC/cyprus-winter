@@ -88,7 +88,9 @@
       "reportConditionsForTrail": "Signaler l’état de ce sentier",
       "dismissNotification": "Fermer la notification",
       "notifications": "Alertes",
-      "addedToPlan": "Ajouté à votre plan."
+      "addedToPlan": "Ajouté à votre plan.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — dans la lumière d’hiver de Chypre"
     },
     "skipToContent": "Aller au contenu",
     "languageLabel": "Langue :",
@@ -120,7 +122,7 @@
       "body": "Nous utilisons des cookies essentiels pour le service et des statistiques optionnelles. « Accepter » autorise les statistiques.",
       "accept": "Accepter",
       "learnMore": "En savoir plus",
-      "srAnnounce": "Avis cookies : choisissez Accepter ou Essentiels uniquement en bas de l’écran."
+      "srAnnounce": "Avis cookies : choisissez Accepter ou Essentiel seulement en bas de l’écran."
     },
     "shareColon": "Partager :",
     "bookTasting": "Réserver une dégustation",
@@ -799,7 +801,9 @@
       "RATE_LIMITED": "Trop de demandes. Attendez un instant.",
       "SERVER_ERROR": "Un problème est survenu. Réessayez.",
       "VALIDATION_ERROR": "Un problème est survenu. Réessayez.",
-      "BAD_REQUEST": "Un problème est survenu. Réessayez."
+      "BAD_REQUEST": "Un problème est survenu. Réessayez.",
+      "NOT_FOUND": "Cette fiche n’est plus disponible.",
+      "IDEMPOTENCY_CONFLICT": "Cette demande a déjà été envoyée — vérifiez vos réservations avant de réessayer."
     }
   },
   "push": {
@@ -2439,7 +2443,12 @@
         "ancient": "Sites antiques",
         "winterEvents": "Événements d'hiver",
         "allWineries": "Tous les domaines de Chypre",
-        "troodosDecember": "Sentiers du Troodos en décembre"
+        "troodosDecember": "Sentiers du Troodos en décembre",
+        "trails": "Sentiers",
+        "villages": "Villages",
+        "beaches": "Plages",
+        "wineries": "Domaines viticoles",
+        "monasteries": "Monastères et églises"
       }
     }
   },
@@ -2589,6 +2598,14 @@
       },
       "aria": {
         "actions": "Actions page météo du mois"
+      },
+      "monthNames": {
+        "november": "Novembre",
+        "december": "Décembre",
+        "january": "Janvier",
+        "february": "Février",
+        "march": "Mars",
+        "april": "Avril"
       }
     }
   },
@@ -2741,12 +2758,12 @@
       "trust": {
         "aria": "Informations de confiance sur la réservation",
         "heading": "Avant d’envoyer",
-        "verifiedRoute": "Circuit de demande {context} vérifié.",
+        "verifiedRoute": "Canal de demande vérifié — {context}.",
         "emailConfirm": "Le partenaire confirme généralement par e-mail sous 24–48 h en semaine.",
         "noCharge": "Aucun paiement n’est pris ici. Les prestataires confirment d’abord la disponibilité.",
         "contextPartner": "partenaire",
         "contextGuide": "guide local",
-        "requestLoggedFallback": "Votre demande est enregistrée ici immédiatement — pour être sûr, appelez le {context} ou utilisez son lien de réservation ci-dessous."
+        "requestLoggedFallback": "Votre demande est enregistrée ici immédiatement — par sécurité, organisez-la aussi directement avec le {context}."
       },
       "progress": {
         "aria": "Progression de la réservation",
@@ -2756,10 +2773,11 @@
       },
       "states": {
         "heading": "États de réservation :",
-        "wineryBody": "Demandé maintenant, confirmé après la réponse du partenaire.",
-        "guideBody": "Demandé maintenant, confirmé après la réponse du guide.",
+        "wineryBody": "Le statut démarre « en attente » ; confirmé seulement après la réponse du partenaire.",
+        "guideBody": "Le statut démarre « en attente » ; confirmé seulement après la réponse du guide.",
         "offlineQueue": "Si vous êtes hors ligne, votre demande est mise en file d’attente et renvoyée automatiquement."
-      }
+      },
+      "successUnverified": "Votre demande est enregistrée dans vos réservations. Par sécurité, contactez aussi directement le {context} — aucun paiement ne se fait dans l’app."
     },
     "guideForm": {
       "validation": {
@@ -2928,7 +2946,9 @@
           "title": "Réserver une randonnée guidée | {guideName} | Cyprus Winter",
           "description": "Demandez une randonnée d’hiver guidée avec {guideName} à {region}. Petits groupes, connaissance du terrain. Confirmation par e-mail."
         },
-        "metaNotFound": "Introuvable"
+        "metaNotFound": "Introuvable",
+        "directoryFallback": "Besoin d’un contact direct ? Les guides agréés figurent avec leurs numéros dans l’annuaire officiel des guides.",
+        "directoryFallbackLink": "Ouvrir l’annuaire des guides →"
       },
       "guideList": {
         "meta": {
@@ -3050,7 +3070,7 @@
       "title": "Guides touristiques agréés",
       "breadcrumb": "Guides agréés",
       "pageNavAria": "Répertoire de guides agréés",
-      "intro": "{count} guides agréés de la liste officielle Visit Cyprus (août 2026). Contactez-les directement — ou réservez un partenaire randonnée hivernal vérifié dans l'app.",
+      "intro": "{count} guides agréés de la liste officielle Visit Cyprus (août 2026). Contactez-les directement — ou réservez un guide de randonnée agréé dans l’app.",
       "verifiedPartnersLink": "Réserver un guide agréé →",
       "disclaimer": "Guides touristiques agréés inscrits auprès du Vice-ministère du Tourisme de Chypre. Cyprus Winter affiche les contacts officiels ; réservation et paiement directement avec le guide.",
       "officialListLink": "Liste officielle sur Visit Cyprus",
@@ -3087,14 +3107,14 @@
         "hebrew": "Hébreu"
       },
       "verifiedCta": {
-        "title": "Partenaires randonnée hivernale vérifiés",
-        "body": "Ces guides acceptent les demandes via Cyprus Winter — Troodos, Akamas et visites culturelles avec confirmation par e-mail.",
-        "button": "Réserver un guide vérifié"
+        "title": "Guides de randonnée agréés — réservables dans l’app",
+        "body": "Ces guides reçoivent les demandes via Cyprus Winter — Troodos, Akamas et circuits culturels.",
+        "button": "Réserver un guide agréé"
       },
       "verifiedPartnerBadge": "Réservation dans l'app",
       "verifiedPartnerBook": "Demande via Cyprus Winter",
       "footer": {
-        "hubBody": "Contactez un guide agréé directement — ou réservez un guide de randonnée agréé dans l'app et ajoutez des étapes à votre plan.",
+        "hubBody": "Contactez un guide agréé directement — ou réservez un guide de randonnée agréé dans l’app et ajoutez des étapes à votre plan.",
         "trails": "Conditions des sentiers"
       },
       "aria": {
@@ -3397,8 +3417,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
-    "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
+    "homeTitle": "Cyprus Winter | Sentiers, villages, domaines et jours paisibles",
+    "homeDescription": "Un Chypre plus paisible en hiver. Découvrez des côtes douces, des villages de montagne, des sentiers ouverts, des domaines viticoles et des lieux qui invitent à ralentir.",
     "ogImageAlt": "Théâtre antique de Kourion au-dessus de la côte méditerranéenne, Chypre en hiver"
   },
   "ui": {

@@ -4,6 +4,7 @@ import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { toSafeJsonForScript } from "@/lib/json-script";
+import AppLink from "@/components/AppLink";
 import BackLink from "@/components/BackLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { notFound } from "next/navigation";
@@ -108,6 +109,15 @@ export default async function GuideBookPage({
       </div>
 
       <GuideBookingForm guide={guide} preselectedTrailId={trail ?? undefined} />
+
+      {!isPartnerVerified(guide) && (
+        <p className="mt-4 text-sm text-muted-ink">
+          {tBookPages("guideDetail.directoryFallback")}{" "}
+          <AppLink href="/guides/directory" className={SECTION.aegeanLink}>
+            {tBookPages("guideDetail.directoryFallbackLink")}
+          </AppLink>
+        </p>
+      )}
 
       {(guide.bookingUrl || (guide.contactPhone && isPartnerVerified(guide))) && (
         <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>

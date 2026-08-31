@@ -118,6 +118,19 @@ export async function bookWineryMetadata(id: string, locale: string): Promise<Me
   const base: Metadata = {
     title: t("meta.title", { wineryName: winery.name }),
     description: t("meta.description", { wineryName: winery.name, region: winery.region }),
+    // Book pages are texted/DMed ("book this one?") — they need a real share
+    // card (AUD E2-05); this locale builder is the one that actually serves.
+    openGraph: {
+      title: t("meta.title", { wineryName: winery.name }),
+      description: t("meta.description", { wineryName: winery.name, region: winery.region }),
+      type: "website",
+      images: [{
+        url: toAbsoluteUrl(getAttractionImage(id, "winery")),
+        width: 1200,
+        height: 630,
+        alt: winery.name,
+      }],
+    },
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -130,6 +143,12 @@ export async function bookGuideMetadata(id: string, locale: string): Promise<Met
   const base: Metadata = {
     title: t("meta.title", { guideName: guide.name }),
     description: t("meta.description", { guideName: guide.name, region: guide.region }),
+    openGraph: {
+      title: t("meta.title", { guideName: guide.name }),
+      description: t("meta.description", { guideName: guide.name, region: guide.region }),
+      type: "website",
+      ...(guide.image ? { images: [{ url: toAbsoluteUrl(guide.image), width: 1200, height: 630, alt: guide.name }] } : {}),
+    },
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -166,15 +185,16 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
   if (!row) notFound();
 
   const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
+  const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
   const path = `/weather/${slug}`;
   const base: Metadata = {
-    title: tWeatherMonth("meta.title", { month: monthName }),
+    title: tWeatherMonth("meta.title", { month: monthLabel }),
     description: tWeatherMonth("meta.description", {
-      month: monthName,
+      month: monthLabel,
       coastRange,
       troodosRange,
       coastDesc: row.coastDesc,
@@ -184,7 +204,7 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
         url: ogImage,
         width: 1200,
         height: 630,
-        alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }),
+        alt: tWeatherMonth("meta.ogImageAlt", { month: monthLabel }),
       }],
     },
   };

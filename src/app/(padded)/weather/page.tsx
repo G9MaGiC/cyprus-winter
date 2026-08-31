@@ -49,11 +49,17 @@ function shortSentence(desc: string): string {
 }
 
 export default async function WeatherPage() {
-  const [tNav, tWeather, tHome] = await Promise.all([
+  const [tNav, tWeather, tHome, tWeatherMonth] = await Promise.all([
     getTranslations("nav"),
     getTranslations("weather.page"),
     getTranslations("home"),
+    getTranslations("weather.month"),
   ]);
+  // Localized month label from the slug; row.month stays the EN data key (AUD A2-04).
+  const monthLabel = (m: string) => {
+    const slug = MONTH_TO_SLUG[m];
+    return slug ? tWeatherMonth(`monthNames.${slug}` as "monthNames.december") : m;
+  };
 
   const monthSelectorSectionClassName = `${SECTION.blockTop} hidden md:block`;
   const mobileClampClass = "text-muted-ink text-xs mt-0.5 line-clamp-1";
@@ -90,7 +96,7 @@ export default async function WeatherPage() {
                 className={`${CARD.compact} shrink-0 px-4 py-3 rounded-xl border border-sand-200/80 hover:border-terracotta/30`}
               >
                 <div className="flex flex-col">
-                  <span className={`${TYPE.cardTitleCompact} text-olive`}>{row.month}</span>
+                  <span className={`${TYPE.cardTitleCompact} text-olive`}>{monthLabel(row.month)}</span>
                   <span className="mt-1 text-xs text-muted-ink">
                     {tWeather("table.coast")} {row.coastMinC}–{row.coastMaxC}° · {tWeather("table.troodos")} {row.troodosMinC}–{row.troodosMaxC}°
                   </span>
@@ -108,7 +114,7 @@ export default async function WeatherPage() {
           const content = (
               <div className="rounded-xl border border-sand-200/80 bg-white/90 p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-2">
-                  <span className={`${TYPE.cardTitle}`}>{row.month}</span>
+                  <span className={`${TYPE.cardTitle}`}>{monthLabel(row.month)}</span>
                   {slug && (
                     <span className="text-xs font-medium text-terracotta">
                       {tWeather("mobile.details")}
@@ -188,10 +194,10 @@ export default async function WeatherPage() {
                       href={`/weather/${slug}`}
                       className="font-medium text-olive hover:text-terracotta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 rounded min-h-[44px] inline-flex items-center"
                     >
-                      {row.month}
+                      {monthLabel(row.month)}
                     </AppLink>
                   ) : (
-                    <span className="font-medium text-olive">{row.month}</span>
+                    <span className="font-medium text-olive">{monthLabel(row.month)}</span>
                   )}
                 </td>
                 <td className="py-4 px-4 text-olive/90">

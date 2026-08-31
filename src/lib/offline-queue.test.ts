@@ -79,4 +79,35 @@ describe("offline queue", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(getQueue()).toEqual([]);
   });
+
+  it("stores the created booking locally when a drained booking succeeds (AUD B2-06)", async () => {
+    const created = {
+      id: "bk-drained",
+      type: "winery_tasting",
+      providerId: "tsiakkas",
+      providerName: "Tsiakkas",
+      date: "2026-03-15",
+      partySize: 2,
+      status: "pending",
+      createdAt: "2026-03-12T10:00:00Z",
+    };
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValue(Response.json({ booking: created }, { status: 201 }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    addMutation({
+      type: "winery_booking",
+      url: "/api/bookings",
+      method: "POST",
+      body: JSON.stringify({ providerId: "tsiakkas" }),
+    });
+
+    await processQueue();
+
+    expect(getQueue()).toEqual([]);
+    const stored = JSON.parse(storage.getItem("cyprus-bookings") ?? "[]");
+    expect(stored).toHaveLength(1);
+    expect(stored[0].id).toBe("bk-drained");
+  });
 });

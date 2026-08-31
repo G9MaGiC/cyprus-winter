@@ -74,6 +74,9 @@ export function usePlanUrlActions({
       });
       return;
     }
+    // A later valid ?add= must clear a previous failure — the alert is state,
+    // so it would otherwise stick for the life of the mounted page.
+    setAddFailed(false);
     const uniqueIds = [...new Set(places.map((p) => p.id))];
     for (const id of uniqueIds) {
       addToDayIfMissing(id);

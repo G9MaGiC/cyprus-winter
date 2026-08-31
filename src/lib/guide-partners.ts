@@ -1,3 +1,4 @@
+import { isPartnerVerified } from "@/lib/partner-verification";
 import { guides, type Guide } from "@/data/guides";
 import { licensedGuides } from "@/data/guides-directory";
 import { LOCALE_TO_GUIDE_LANGUAGE } from "@/lib/guides-directory-types";
@@ -19,7 +20,7 @@ export function sortGuidesByLocaleMatch(guideList: Guide[], locale?: string | nu
 }
 
 export function getVerifiedPartnerForLicensedId(licensedId: string): Guide | undefined {
-  return guides.find((g) => g.isVerified && g.licensedGuideId === licensedId);
+  return guides.find((g) => isPartnerVerified(g) && g.licensedGuideId === licensedId);
 }
 
 export function getLicensedGuideForPartner(guide: Guide) {
@@ -28,5 +29,5 @@ export function getLicensedGuideForPartner(guide: Guide) {
 }
 
 export function verifiedPartnersByDistrict(district: Guide["district"]): Guide[] {
-  return guides.filter((g) => g.isVerified && g.district === district);
+  return guides.filter((g) => isPartnerVerified(g) && g.district === district);
 }
