@@ -1,5 +1,5 @@
 /**
- * Ensure scripts/i18n/editorial-{fr,he,ro}.json matches messages/{locale}.json
+ * Ensure scripts/i18n/editorial-{fr,he,ro,de,el,pl}.json matches messages/{locale}.json
  * for all mapped keys (post-chrome source of truth is messages).
  *
  * Run: npm run i18n:editorial-drift
@@ -9,7 +9,9 @@ import * as path from "node:path";
 
 const PROJECT_ROOT = path.resolve(import.meta.dirname, "../..");
 const MESSAGES_DIR = path.join(PROJECT_ROOT, "messages");
-const EDITORIAL_LOCALES = ["fr", "he", "ro"] as const;
+// Tier-1 (de/el/pl) added with the AUD-10 pilot — the 19.2 project's
+// drift-gate half (docs/ICPS.md §6.1 action item).
+const EDITORIAL_LOCALES = ["fr", "he", "ro", "de", "el", "pl"] as const;
 
 function flattenStrings(
   obj: Record<string, unknown>,

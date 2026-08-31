@@ -3628,5 +3628,57 @@
       "viewBookings": "View my bookings",
       "ignore": "If you didn't request this, you can ignore this email."
     }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Guided tour & tasting Mon–Fri 12:00 & 14:00, Sat 11:00, 13:00 & 15:00. À la carte tastings by glass. Private tours from €70. Min 4 for guided.",
+        "winterTip": "Heated terrace in winter. Ask about the Xynisteri lees-aged.",
+        "bestTimeToVisit": "Dec to Mar, 11:00–14:00. Book ahead.",
+        "openingHours": "Mon–Fri 10:00–16:00, Sat 11:00–17:00. Closed Sun except select dates.",
+        "transport": "Pelendri, Pitsilia. ~45 min from Limassol.",
+        "parking": "On-site."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Tours and tastings; private tours with complimentary welcome glass and seasonal fruits.",
+        "winterTip": "Ask for a comparative Commandaria tasting—younger and older vintages side by side.",
+        "bestTimeToVisit": "Dec to Feb, 2–3 hours. Combine with lunch in Panayia village.",
+        "openingHours": "9:00–16:00",
+        "transport": "Archiepiskopou Makariou III Ave 60, Panayia 8640. Laona route.",
+        "parking": "On-site."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection €20 (4 wines + Commandaria barrel); Seasonal €15; Wine & Canapés €25. 60–90 min. Book at zambartaswineries.com/book-now.",
+        "winterTip": "25 min from Limassol. Winemaker's Selection includes exclusive Commandaria barrel sample.",
+        "bestTimeToVisit": "Dec to Mar, 14:00–16:00 for a quiet tasting.",
+        "openingHours": "Mon–Fri 10:00–17:00, Sat–Sun 10:00–18:00 (winter). Prior appointment recommended.",
+        "transport": "Agios Amvrosios, Krasochoria. ~25 min from Limassol.",
+        "parking": "On-site."
+      },
+      "kolios": {
+        "tastingInfo": "Guided tour 12:30pm, meze lunch 1pm (€23 incl. wine). Tasting free; book 1–2 days ahead.",
+        "winterTip": "Book lunch 1–2 days ahead. Bring cash—they may not take cards. The meze is authentic village food, not tourist meze. February is quiet; the views and wine are worth the drive.",
+        "bestTimeToVisit": "Dec to Feb, 11am for tour and lunch. Quieter than summer; heaters indoors.",
+        "openingHours": "Winter (Oct–Feb): Mon–Sat 9am–3pm. Summer (Mar–Sep): Mon–Sat 8:30am–5pm. Sunday: private parties only (50+ guests).",
+        "transport": "About 25 min from Paphos. From Statos Agios Fotios village, follow signs 1 km toward Chrysorrogiatissa.",
+        "parking": "On-site parking."
+      },
+      "santo": {
+        "tastingInfo": "Restaurant 12:00–16:00 in season; tastings by appointment Nov–Mar. Book ahead for groups.",
+        "winterTip": "Book lunch for sea views; the terrace fills at weekends. Sunset in Dec is ~17:00.",
+        "bestTimeToVisit": "Dec to Mar, 12:00–14:00 or late afternoon for golden hour.",
+        "openingHours": "Restaurant 12:00–16:00; check for winter variations.",
+        "transport": "Hill above Limassol; Krasochoria corridor.",
+        "parking": "On-site."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Tastings by appointment; online shop for bottles €14 to 20",
+        "winterTip": "Skarinou is a short drive from Larnaca or Limassol; ideal for a winter afternoon. Their Atypon 01 red blend and Xynisteri Single Vineyard are standouts. Can't visit? Order online.",
+        "bestTimeToVisit": "Dec to Mar, book ahead",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Short drive from Larnaca or Limassol (A1). Skarinou exit.",
+        "parking": "On site"
+      }
+    }
   }
 }

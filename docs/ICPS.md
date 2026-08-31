@@ -372,7 +372,7 @@ Each priority market gets a **native experience bar**, not just translated chrom
 
 **Known gaps this standard exposes (tracked in `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md`):**
 
-1. **Curated data layer is English in every locale** on decision surfaces — winery `bookingNote`/hours/`winterTip`/`goodFor`, attraction descriptions/backstories, secret-gem tips render EN even on `/de` and `/el` (`src/data/wineries.ts`, `src/data/attractions.ts`). The BUG-110 message-overlay pattern (shipped for Home) is the fix path. Until then the ✓ chrome sits on ◇ content.
+1. **Curated data layer is English in every locale** on decision surfaces — winery hours/`tastingInfo`/`winterTip`, attraction descriptions/backstories, secret-gem tips render EN even on `/de` and `/el` (`src/data/wineries.ts`, `src/data/attractions.ts`). The BUG-110 message-overlay pattern (shipped for Home) is the fix path. **Pilot shipped (Aug 2026):** `localizeWineryContent()` overlays the 6 partner wineries' Book-stage fields ×7 locales on `/book/winery` hub + detail (`data.wineries.*` in the catalogs, guarded by `winery-content.test.ts`); non-EN pilot strings are ◇ pending native review. The remaining data layer (65 wineries, attractions, trails, secret gems, client card surfaces) is still EN.
 2. **Tier-1 headline drift:** el/de/pl still carry the previous-generation home headline ("Ucieknij przed zimnem…" / "Dem Winter entfliehen…" / "Ξεφύγετε από το κρύο…") while en/he/ro/fr carry the current "A quieter side of the island." The editorial-drift gate covers beta locales only — either re-anchor tier-1 to the current positioning or record the split as intentional market copy.
 3. **Locale reachability:** the switcher lives only in the footer (~23k px of scroll on long hubs) and "(beta)" is never explained in-product.
 
@@ -383,7 +383,7 @@ Each priority market gets a **native experience bar**, not just translated chrom
 - **Partnerships:** Prioritize wineries, cultural guides, and trail operators for Claire/Anders; nomad hubs and long-stay for Nadia.
 - **Content:** Lead with Cultural Explorer and Active Adventurer content; add Digital Nomad and Family as secondary pillars.
 - **Voice:** Use UX_PERSONA tone—warm, understated, discovery-led. Avoid FOMO and hype.
-- **i18n / native experience:** Adopt the §6.1 native-experience standard: extend the editorial-drift gate to el/de/pl (today it guards beta locales only), localize curated decision-surface data via the BUG-110 overlay pattern (winery booking notes/hours first — Book-stage content converts), and route all ◇ hook lines through native review before use.
+- **i18n / native experience:** Adopt the §6.1 native-experience standard. **Done (Aug 2026):** the editorial-drift gate now covers el/de/pl (seeded `editorial-{de,el,pl}.json`), and the winery Book-stage pilot ships the BUG-110 overlay for the 6 partner wineries ×7 locales. **Still open:** extend the overlay to the remaining data layer, and route all ◇ lines (incl. the pilot's non-EN winery strings) through native review.
 
 ---
 

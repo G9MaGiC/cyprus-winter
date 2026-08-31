@@ -3628,5 +3628,57 @@
       "viewBookings": "Vezi rezervările mele",
       "ignore": "Dacă nu ai făcut tu această cerere, poți ignora acest e-mail."
     }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Tur ghidat și degustare lun.–vin. la 12:00 și 14:00, sâm. la 11:00, 13:00 și 15:00. Degustări à la carte, la pahar. Tururi private de la 70 €. Minim 4 persoane pentru tur.",
+        "winterTip": "Terasă încălzită iarna. Întrebați de Xynisteri maturat pe drojdii.",
+        "bestTimeToVisit": "Dec.–mar., 11:00–14:00. Rezervați din timp.",
+        "openingHours": "Lun.–vin. 10:00–16:00, sâm. 11:00–17:00. Duminică închis, cu excepția unor date selectate.",
+        "transport": "Pelendri, Pitsilia. Cca 45 min de la Limassol.",
+        "parking": "La fața locului."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Tururi și degustări; la tururile private, pahar de bun venit și fructe de sezon din partea casei.",
+        "winterTip": "Cereți o degustare comparativă de Commandaria — ani mai tineri și mai vechi, unul lângă altul.",
+        "bestTimeToVisit": "Dec.–feb., 2–3 ore. Combinați cu un prânz în satul Panayia.",
+        "openingHours": "9:00–16:00",
+        "transport": "Bd. Archiepiskopou Makariou III 60, Panayia 8640. Ruta Laona.",
+        "parking": "La fața locului."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection 20 € (4 vinuri + Commandaria din butoi); Seasonal 15 €; Wine & Canapés 25 €. 60–90 min. Rezervare la zambartaswineries.com/book-now.",
+        "winterTip": "25 min de la Limassol. Winemaker's Selection include o mostră exclusivă de Commandaria din butoi.",
+        "bestTimeToVisit": "Dec.–mar., 14:00–16:00 pentru o degustare liniștită.",
+        "openingHours": "Lun.–vin. 10:00–17:00, sâm.–dum. 10:00–18:00 (iarna). Se recomandă programare în prealabil.",
+        "transport": "Agios Amvrosios, Krasochoria. Cca 25 min de la Limassol.",
+        "parking": "La fața locului."
+      },
+      "kolios": {
+        "tastingInfo": "Tur ghidat la 12:30, prânz meze la 13:00 (23 € cu vin inclus). Degustare gratuită; rezervați cu 1–2 zile înainte.",
+        "winterTip": "Rezervați prânzul cu 1–2 zile înainte. Luați numerar — s-ar putea să nu accepte carduri. Mezele sunt mâncare autentică de sat, nu meze pentru turiști. Februarie e liniștit; priveliștea și vinul merită drumul.",
+        "bestTimeToVisit": "Dec.–feb., la 11:00 pentru tur și prânz. Mai liniștit decât vara; încălzitoare în interior.",
+        "openingHours": "Iarna (oct.–feb.): lun.–sâm. 9:00–15:00. Vara (mar.–sep.): lun.–sâm. 8:30–17:00. Duminică: doar evenimente private (peste 50 de invitați).",
+        "transport": "Cam 25 min de la Paphos. Din satul Statos Agios Fotios, urmați indicatoarele 1 km spre Chrysorrogiatissa.",
+        "parking": "Parcare la fața locului."
+      },
+      "santo": {
+        "tastingInfo": "Restaurant 12:00–16:00 în sezon; degustări cu programare nov.–mar. Pentru grupuri, rezervați din timp.",
+        "winterTip": "Rezervați prânzul cu vedere la mare; terasa se umple în weekenduri. Apusul în decembrie e pe la 17:00.",
+        "bestTimeToVisit": "Dec.–mar., 12:00–14:00 sau după-amiaza târziu pentru ora de aur.",
+        "openingHours": "Restaurant 12:00–16:00; verificați variațiile de iarnă.",
+        "transport": "Deal deasupra orașului Limassol; coridorul Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Degustări cu programare; magazin online cu sticle între 14 și 20 €.",
+        "winterTip": "Skarinou e la un drum scurt din Larnaca sau Limassol; ideal pentru o după-amiază de iarnă. Se remarcă cupajul roșu Atypon 01 și Xynisteri Single Vineyard. Nu puteți ajunge? Comandați online.",
+        "bestTimeToVisit": "Dec.–mar., cu rezervare.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Drum scurt din Larnaca sau Limassol (A1). Ieșirea Skarinou.",
+        "parking": "La fața locului."
+      }
+    }
   }
 }

@@ -3628,5 +3628,57 @@
       "viewBookings": "Meine Buchungen anzeigen",
       "ignore": "Falls Sie das nicht angefordert haben, können Sie diese E-Mail ignorieren."
     }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Führung & Verkostung Mo–Fr 12:00 & 14:00, Sa 11:00, 13:00 & 15:00. Verkostungen à la carte im Glas. Private Führungen ab 70 €. Führung ab 4 Personen.",
+        "winterTip": "Beheizte Terrasse im Winter. Fragen Sie nach dem auf der Hefe gereiften Xynisteri.",
+        "bestTimeToVisit": "Dez. bis März, 11:00–14:00. Vorab anfragen.",
+        "openingHours": "Mo–Fr 10:00–16:00, Sa 11:00–17:00. Sonntags geschlossen, außer an ausgewählten Terminen.",
+        "transport": "Pelendri, Pitsilia. Ca. 45 Min. von Limassol.",
+        "parking": "Vor Ort."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Führungen und Verkostungen; private Führungen mit Willkommensglas und Früchten der Saison.",
+        "winterTip": "Fragen Sie nach einer vergleichenden Commandaria-Verkostung — jüngere und ältere Jahrgänge nebeneinander.",
+        "bestTimeToVisit": "Dez. bis Feb., 2–3 Stunden. Mit einem Mittagessen im Dorf Panayia verbinden.",
+        "openingHours": "9:00–16:00",
+        "transport": "Archiepiskopou-Makariou-III-Ave 60, Panayia 8640. Laona-Route.",
+        "parking": "Vor Ort."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection 20 € (4 Weine + Commandaria aus dem Fass); Seasonal 15 €; Wine & Canapés 25 €. 60–90 Min. Buchung unter zambartaswineries.com/book-now.",
+        "winterTip": "25 Min. von Limassol. Die Winemaker's Selection enthält eine exklusive Commandaria-Fassprobe.",
+        "bestTimeToVisit": "Dez. bis März, 14:00–16:00 für eine ruhige Verkostung.",
+        "openingHours": "Mo–Fr 10:00–17:00, Sa–So 10:00–18:00 (Winter). Vorherige Terminvereinbarung empfohlen.",
+        "transport": "Agios Amvrosios, Krasochoria. Ca. 25 Min. von Limassol.",
+        "parking": "Vor Ort."
+      },
+      "kolios": {
+        "tastingInfo": "Führung 12:30 Uhr, Meze-Mittagessen 13:00 Uhr (23 € inkl. Wein). Verkostung kostenlos; 1–2 Tage im Voraus anfragen.",
+        "winterTip": "Mittagessen 1–2 Tage im Voraus anfragen. Bargeld mitnehmen — Karten werden womöglich nicht akzeptiert. Die Meze sind echtes Dorfessen, keine Touristen-Meze. Der Februar ist ruhig; Aussicht und Wein lohnen die Fahrt.",
+        "bestTimeToVisit": "Dez. bis Feb., 11:00 Uhr für Führung und Mittagessen. Ruhiger als im Sommer; Heizstrahler innen.",
+        "openingHours": "Winter (Okt.–Feb.): Mo–Sa 9:00–15:00. Sommer (März–Sep.): Mo–Sa 8:30–17:00. Sonntag: nur private Feiern (ab 50 Gästen).",
+        "transport": "Etwa 25 Min. von Paphos. Vom Dorf Statos Agios Fotios der Beschilderung 1 km Richtung Chrysorrogiatissa folgen.",
+        "parking": "Parkplätze vor Ort."
+      },
+      "santo": {
+        "tastingInfo": "Restaurant 12:00–16:00 in der Saison; Verkostungen nach Vereinbarung Nov.–März. Für Gruppen vorab anfragen.",
+        "winterTip": "Reservieren Sie das Mittagessen mit Meerblick; die Terrasse füllt sich am Wochenende. Sonnenuntergang im Dez. gegen 17:00 Uhr.",
+        "bestTimeToVisit": "Dez. bis März, 12:00–14:00 oder später Nachmittag zur goldenen Stunde.",
+        "openingHours": "Restaurant 12:00–16:00; Winteränderungen bitte prüfen.",
+        "transport": "Hügel oberhalb von Limassol; Krasochoria-Korridor.",
+        "parking": "Vor Ort."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Verkostungen nach Vereinbarung; Onlineshop mit Flaschen von 14 bis 20 €.",
+        "winterTip": "Skarinou liegt nur eine kurze Fahrt von Larnaka oder Limassol entfernt; ideal für einen Winternachmittag. Hervorzuheben sind die rote Cuvée Atypon 01 und der Xynisteri Single Vineyard. Kein Besuch möglich? Online bestellen.",
+        "bestTimeToVisit": "Dez. bis März, vorab anfragen.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Kurze Fahrt von Larnaka oder Limassol (A1). Ausfahrt Skarinou.",
+        "parking": "Vor Ort."
+      }
+    }
   }
 }

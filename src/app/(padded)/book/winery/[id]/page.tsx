@@ -14,6 +14,7 @@ import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { localizeWineryContent } from "@/lib/winery-content";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
@@ -56,7 +57,10 @@ export default async function WineryBookPage({
   const { id } = await params;
   const found = wineries.find((w) => w.id === id);
   if (!found) notFound();
-  const winery = applyPartnerOpeningHours(found);
+  // Locale content overlay first (AUD-10 pilot), then partner runtime hours:
+  // live partner data beats curated translation. JSON-LD below reads `found`
+  // (the EN base) for structured-data consistency.
+  const winery = applyPartnerOpeningHours(await localizeWineryContent(found));
   const imageUrl = getAttractionImage(id, "winery");
   const [tNav, tCommon, tBookPages] = await Promise.all([
     getTranslations("nav"),
@@ -272,8 +276,8 @@ export default async function WineryBookPage({
           __html: toSafeJsonForScript({
             "@context": "https://schema.org",
             "@type": "FoodEstablishment",
-            name: winery.name,
-            description: winery.tastingInfo || winery.description,
+            name: found.name,
+            description: found.tastingInfo || found.description,
             address: {
               "@type": "PostalAddress",
               // "Pelendri (Limassol)" is a locality, not a region (AUD-119)

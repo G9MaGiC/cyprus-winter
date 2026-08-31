@@ -3628,5 +3628,57 @@
       "viewBookings": "Voir mes réservations",
       "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail."
     }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Visite guidée et dégustation lun.–ven. 12 h et 14 h, sam. 11 h, 13 h et 15 h. Dégustations à la carte au verre. Visites privées à partir de 70 €. Minimum 4 personnes pour la visite guidée.",
+        "winterTip": "Terrasse chauffée en hiver. Demandez le Xynisteri élevé sur lies.",
+        "bestTimeToVisit": "Déc. à mars, 11 h–14 h. Réservez à l’avance.",
+        "openingHours": "Lun.–ven. 10 h–16 h, sam. 11 h–17 h. Fermé le dimanche sauf dates ponctuelles.",
+        "transport": "Pelendri, Pitsilia. Environ 45 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Visites et dégustations ; visites privées avec verre de bienvenue offert et fruits de saison.",
+        "winterTip": "Demandez une dégustation comparative de Commandaria — millésimes jeunes et anciens côte à côte.",
+        "bestTimeToVisit": "Déc. à fév., 2–3 heures. À combiner avec un déjeuner au village de Panayia.",
+        "openingHours": "9 h–16 h",
+        "transport": "Avenue Archiepiskopou Makariou III 60, Panayia 8640. Route de la Laona.",
+        "parking": "Sur place."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection 20 € (4 vins + Commandaria au fût) ; Seasonal 15 € ; Wine & Canapés 25 €. 60–90 min. Réservation sur zambartaswineries.com/book-now.",
+        "winterTip": "25 min de Limassol. La Winemaker's Selection inclut un échantillon exclusif de Commandaria au fût.",
+        "bestTimeToVisit": "Déc. à mars, 14 h–16 h pour une dégustation tranquille.",
+        "openingHours": "Lun.–ven. 10 h–17 h, sam.–dim. 10 h–18 h (hiver). Rendez-vous préalable recommandé.",
+        "transport": "Agios Amvrosios, Krasochoria. Environ 25 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "kolios": {
+        "tastingInfo": "Visite guidée à 12 h 30, déjeuner mezze à 13 h (23 € vin compris). Dégustation gratuite ; réservez 1–2 jours à l’avance.",
+        "winterTip": "Réservez le déjeuner 1–2 jours à l’avance. Prévoyez des espèces — les cartes ne sont pas toujours acceptées. Les mezze sont une vraie cuisine de village, pas des mezze pour touristes. Février est calme ; la vue et le vin valent la route.",
+        "bestTimeToVisit": "Déc. à fév., 11 h pour la visite et le déjeuner. Plus calme qu’en été ; chauffage à l’intérieur.",
+        "openingHours": "Hiver (oct.–fév.) : lun.–sam. 9 h–15 h. Été (mars–sept.) : lun.–sam. 8 h 30–17 h. Dimanche : réceptions privées uniquement (50 pers. et plus).",
+        "transport": "Environ 25 min de Paphos. Depuis le village de Statos Agios Fotios, suivez les panneaux sur 1 km vers Chrysorrogiatissa.",
+        "parking": "Parking sur place."
+      },
+      "santo": {
+        "tastingInfo": "Restaurant 12 h–16 h en saison ; dégustations sur rendez-vous de nov. à mars. Réservez à l’avance pour les groupes.",
+        "winterTip": "Réservez un déjeuner face à la mer ; la terrasse se remplit le week-end. Coucher de soleil en déc. vers 17 h.",
+        "bestTimeToVisit": "Déc. à mars, 12 h–14 h ou en fin d’après-midi pour l’heure dorée.",
+        "openingHours": "Restaurant 12 h–16 h ; vérifiez les horaires d’hiver.",
+        "transport": "Colline au-dessus de Limassol ; corridor des Krasochoria.",
+        "parking": "Sur place."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Dégustations sur rendez-vous ; boutique en ligne, bouteilles de 14 à 20 €.",
+        "winterTip": "Skarinou est à une courte route de Larnaca ou Limassol ; idéal pour un après-midi d’hiver. L’assemblage rouge Atypon 01 et le Xynisteri Single Vineyard se distinguent. Pas de visite possible ? Commandez en ligne.",
+        "bestTimeToVisit": "Déc. à mars, sur réservation.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Courte route depuis Larnaca ou Limassol (A1). Sortie Skarinou.",
+        "parking": "Sur place."
+      }
+    }
   }
 }

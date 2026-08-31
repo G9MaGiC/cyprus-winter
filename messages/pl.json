@@ -3628,5 +3628,57 @@
       "viewBookings": "Zobacz moje rezerwacje",
       "ignore": "Jeśli to nie Ty wysłałeś(-aś) tę prośbę, zignoruj tę wiadomość."
     }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Zwiedzanie z degustacją pn.–pt. 12:00 i 14:00, sob. 11:00, 13:00 i 15:00. Degustacje à la carte na kieliszki. Prywatne zwiedzanie od 70 €. Zwiedzanie od 4 osób.",
+        "winterTip": "Zimą podgrzewany taras. Zapytaj o Xynisteri dojrzewające na osadzie.",
+        "bestTimeToVisit": "Grudzień–marzec, 11:00–14:00. Rezerwuj wcześniej.",
+        "openingHours": "Pn.–pt. 10:00–16:00, sob. 11:00–17:00. W niedziele nieczynne poza wybranymi terminami.",
+        "transport": "Pelendri, Pitsilia. Ok. 45 min z Limasolu.",
+        "parking": "Na miejscu."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Zwiedzanie i degustacje; przy zwiedzaniu prywatnym powitalny kieliszek i owoce sezonowe gratis.",
+        "winterTip": "Poproś o porównawczą degustację Commandarii — młodsze i starsze roczniki obok siebie.",
+        "bestTimeToVisit": "Grudzień–luty, 2–3 godziny. Połącz z obiadem we wsi Panayia.",
+        "openingHours": "9:00–16:00",
+        "transport": "Archiepiskopou Makariou III Ave 60, Panayia 8640. Trasa Laona.",
+        "parking": "Na miejscu."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection 20 € (4 wina + Commandaria z beczki); Seasonal 15 €; Wine & Canapés 25 €. 60–90 min. Rezerwacja: zambartaswineries.com/book-now.",
+        "winterTip": "25 min z Limasolu. Winemaker's Selection obejmuje ekskluzywną próbkę Commandarii z beczki.",
+        "bestTimeToVisit": "Grudzień–marzec, 14:00–16:00 na spokojną degustację.",
+        "openingHours": "Pn.–pt. 10:00–17:00, sob.–niedz. 10:00–18:00 (zimą). Zalecana wcześniejsza rezerwacja.",
+        "transport": "Agios Amvrosios, Krasochoria. Ok. 25 min z Limasolu.",
+        "parking": "Na miejscu."
+      },
+      "kolios": {
+        "tastingInfo": "Zwiedzanie 12:30, obiad meze 13:00 (23 € z winem). Degustacja bezpłatna; rezerwuj 1–2 dni wcześniej.",
+        "winterTip": "Obiad rezerwuj 1–2 dni wcześniej. Weź gotówkę — mogą nie przyjmować kart. Meze to prawdziwa wiejska kuchnia, nie turystyczna. Luty jest spokojny; widoki i wino są warte dojazdu.",
+        "bestTimeToVisit": "Grudzień–luty, 11:00 na zwiedzanie i obiad. Spokojniej niż latem; w środku grzejniki.",
+        "openingHours": "Zima (paź–luty): pn.–sob. 9:00–15:00. Lato (mar–wrz): pn.–sob. 8:30–17:00. Niedziela: tylko imprezy prywatne (od 50 osób).",
+        "transport": "Około 25 min z Pafos. Ze wsi Statos Agios Fotios jedź 1 km za znakami w stronę Chrysorrogiatissy.",
+        "parking": "Parking na miejscu."
+      },
+      "santo": {
+        "tastingInfo": "Restauracja 12:00–16:00 w sezonie; degustacje po umówieniu XI–III. Grupy — rezerwacja z wyprzedzeniem.",
+        "winterTip": "Zarezerwuj obiad z widokiem na morze; taras zapełnia się w weekendy. Zachód słońca w grudniu ok. 17:00.",
+        "bestTimeToVisit": "Grudzień–marzec, 12:00–14:00 lub późne popołudnie na złotą godzinę.",
+        "openingHours": "Restauracja 12:00–16:00; zimą sprawdź ewentualne zmiany.",
+        "transport": "Wzgórze nad Limasolem; korytarz Krasochorii.",
+        "parking": "Na miejscu."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Degustacje po umówieniu; sklep online, butelki 14–20 €.",
+        "winterTip": "Skarinou to krótka trasa z Larnaki lub Limasolu; idealna na zimowe popołudnie. Wyróżniają się czerwony kupaż Atypon 01 i Xynisteri Single Vineyard. Nie możesz przyjechać? Zamów online.",
+        "bestTimeToVisit": "Grudzień–marzec, z rezerwacją.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Krótka trasa z Larnaki lub Limasolu (A1). Zjazd Skarinou.",
+        "parking": "Na miejscu."
+      }
+    }
   }
 }

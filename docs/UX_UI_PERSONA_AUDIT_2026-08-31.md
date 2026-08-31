@@ -238,7 +238,7 @@ Personas: all · Stage: Plan · Dedupe: NEW (grep "one letter", "vertical", "pla
 ### 6.2 Projects (RICE-lite: Reach × Impact × Confidence / Effort)
 | Project | Findings | R | I | C | E | Score |
 |---|---|---|---|---|---|---|
-| Native decision-surface content (BUG-110 overlay for winery/attraction data) + drift-gate for tier-1 | AUD-10, AUD-19, AUD-47, AUD-49 | 8 | 8 | 0.9 | 3 | **19.2** |
+| Native decision-surface content (BUG-110 overlay for winery/attraction data) + drift-gate for tier-1 — **pilot shipped on this branch**: `localizeWineryContent()` overlay (BUG-110 pattern) for the 6 partner wineries × 6 Book-stage fields × 7 locales on the book hub + detail (server surfaces; JSON-LD stays EN base; partner runtime hours win over the locale overlay), guarded by `winery-content.test.ts` across all 7 catalogs; drift gate + `apply-editorial-map` widened to de/el/pl with seeded `editorial-{de,el,pl}.json`. Remainder = the ~2,700-string content pipeline (65 wineries, attractions/trails/secret-gems, client card surfaces pending the `isCallAheadHours` restructuring) + native review of the shipped ◇ translations | AUD-10, AUD-19, AUD-47, AUD-49 | 8 | 8 | 0.9 | 3 | **19.2** |
 | Post-book lifecycle: auto-refetch, status emails, cancel/change path | AUD-08, AUD-09, AUD-21 | 6 | 8 | 0.9 | 3 | 14.4 |
 | Conditions trust loop: as-of surfaces + visible reports + report-void fix | AUD-12 + Anders 3/6 step | 5 | 7 | 0.8 | 2 | 14.0 |
 | Locale reachability: switcher entry point in Nav/More + wrong-locale suggestion bar + beta explainer | AUD-18, AUD-50 | 6 | 6 | 0.8 | 2 | 14.4 |
@@ -469,7 +469,9 @@ E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings 
 
 **Batch 4 (same day, fourth commit):** AUD-68, 69, 117 closed and 99 advanced (routeType) — see the register rows. Catalog 7×2364.
 
-**Remaining backlog (decision/supply/project):** AUD-65/113 (locale-detection redesign), 67 (real legal mailbox), 72 (legal "last updated"), 81-residual (partner onboarding path), 99-residual (free-text activities/bestFor — the AUD-10 data-layer project), 104/107 residuals, 121-residual (161–185-char metas, accepted).
+**Batch 5 (same day, fifth commit) — the AUD-10 / RICE-19.2 pilot:** winery Book-stage content localized via the BUG-110 message-overlay pattern for the 6 partner wineries ×7 locales (`data.wineries.*`, 252 catalog strings; non-EN flagged ◇ pending native review per ICPS §6.1), server surfaces only, with the editorial-drift gate extended to tier-1 de/el/pl. Verified live: Greek tastingInfo/winterTip on `/el/book/winery/tsiakkas`, Sie-register German hours on `/de`, bidi-isolated times on `/he`, EN JSON-LD and non-pilot cards unchanged. Catalog 7×2400.
+
+**Remaining backlog (decision/supply/project):** AUD-65/113 (locale-detection redesign), 67 (real legal mailbox), 72 (legal "last updated"), 81-residual (partner onboarding path), the AUD-10 content pipeline beyond the pilot (65 wineries + attractions/trails/secret-gems + client card surfaces), 104/107 residuals, 121-residual (161–185-char metas, accepted), native review of all ◇ translations shipped on this branch.
 
 ## 8.4 Persona × dimension grid (16 QA personas, post-R2-fix)
 
