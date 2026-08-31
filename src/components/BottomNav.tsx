@@ -64,14 +64,16 @@ export default function BottomNav() {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        closeMore();
+        // Outside tap: close without the Escape-path focus restore — yanking
+        // focus back to the More trigger mid-interaction fights the pointer.
+        setMoreOpen(false);
       }
     };
     if (moreOpen) {
       document.addEventListener("click", handleClickOutside);
     }
     return () => document.removeEventListener("click", handleClickOutside);
-  }, [moreOpen, closeMore]);
+  }, [moreOpen]);
 
   useEffect(() => {
     if (!moreOpen) return;
@@ -124,7 +126,7 @@ export default function BottomNav() {
           >
             <NavIcon href={link.href} active={isActive(pathname, link.href)} />
             <span
-              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[72px] max-[360px]:max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(link.labelKey)}
             </span>
@@ -147,7 +149,7 @@ export default function BottomNav() {
           >
             <NavIcon href={planLink.href} active={isActive(pathname, planLink.href)} />
             <span
-              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[72px] max-[360px]:max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(planLink.labelKey)}
             </span>

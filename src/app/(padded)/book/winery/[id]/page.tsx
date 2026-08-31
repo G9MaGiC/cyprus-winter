@@ -170,6 +170,7 @@ export default async function WineryBookPage({
         wineryName={winery.name}
         openingHours={winery.openingHours}
         bestTimeToVisit={winery.bestTimeToVisit}
+        partnerVerified={isPartnerVerified(winery)}
       />
 
       {(winery.openingHours || winery.transport || winery.parking) && (

@@ -87,7 +87,8 @@
       "quickActions": "Schnellaktionen",
       "reportConditionsForTrail": "Wegbedingungen für diesen Trail melden",
       "dismissNotification": "Benachrichtigung schließen",
-      "notifications": "Benachrichtigungen"
+      "notifications": "Benachrichtigungen",
+      "addedToPlan": "Zu Ihrem Plan hinzugefügt."
     },
     "skipToContent": "Zum Hauptinhalt",
     "languageLabel": "Sprache:",
@@ -331,7 +332,8 @@
       "title": "Cookie-Einwilligung.",
       "body": "Wir nutzen notwendige Cookies für den Dienst und optionale Analytics zur Verbesserung. Mit „Akzeptieren“ erlauben Sie Analytics.",
       "accept": "Akzeptieren",
-      "learnMore": "Mehr erfahren"
+      "learnMore": "Mehr erfahren",
+      "srAnnounce": "Cookie-Hinweis: Wählen Sie unten am Bildschirm Akzeptieren oder Nur notwendige."
     },
     "placeTypes": {
       "beach": "Strand",
@@ -349,7 +351,8 @@
       "heading": "Bevor es losgeht",
       "allSet": "Alles erledigt. Gute Reise."
     },
-    "useMyLocationInstead": "Stattdessen meinen Standort verwenden"
+    "useMyLocationInstead": "Stattdessen meinen Standort verwenden",
+    "localeBetaHint": "Beta-Sprachen: Einige Inhalte können noch auf Englisch erscheinen."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -513,13 +516,13 @@
     },
     "trailConditionsStrip": {
       "aria": "Troodos-Trail-Bedingungen — Status vor dem Start prüfen",
-      "heading": "Trails heute",
+      "heading": "Troodos-Wege: Winterstatus",
       "open": "{count} offen",
       "caution": "{count} Vorsicht",
       "closed": "{count} geschlossen",
       "checkReports": "Berichte prüfen",
       "goodToGo": "Troodos-Trails gut begehbar",
-      "cautionOnly": "{count} Trails mit Vorsicht",
+      "cautionOnly": "{count, plural, one {# Weg erfordert Vorsicht} other {# Wege erfordern Vorsicht}}",
       "withClosed": "{count} Trails geschlossen — vorher prüfen",
       "checkConditions": "Trail-Bedingungen vor Troodos prüfen"
     },
@@ -638,7 +641,7 @@
       }
     },
     "templates": {
-      "kicker": "Fertige Reiserouten",
+      "kicker": "Fertige Pläne",
       "subtitle": "Kuratiert von Experten. Realistisches Tempo. Hier starten, dann anpassen.",
       "allTemplates": "Alle Vorlagen →",
       "items": {
@@ -1107,7 +1110,7 @@
       "whyNow": {
         "title": "Warum jetzt",
         "bestFor": "Ideal für {types}.",
-        "regionFlow": "{region} ist ein praktischer Stopp für denselben Tagesplan.",
+        "regionFlow": "Lässt sich am selben Tag gut mit weiteren Stopps in {region} verbinden.",
         "saveCompare": "Zum Plan hinzufügen und mit einem nahen Trail oder Dorf kombinieren."
       },
       "visitTaste": {
@@ -1689,14 +1692,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "Bedingungen heute",
+      "heading": "Winterstatus der Wege",
       "ariaViewList": "Trail-Bedingungen heute — Liste ansehen",
       "openCount": "{count} geöffnet",
       "cautionCount": "{count} mit Vorsicht",
       "closedCount": "{count} gesperrt",
       "noReports": "Berichte prüfen",
       "goodToGo": "Alles bereit",
-      "cautionOnly": "{count} Wege erfordern Vorsicht",
+      "cautionOnly": "{count, plural, one {# Weg erfordert Vorsicht} other {# Wege erfordern Vorsicht}}",
       "withClosed": "{count} Wege gesperrt — vorher prüfen",
       "checkConditions": "Trail-Bedingungen prüfen"
     },
@@ -1785,7 +1788,7 @@
     "pageTitle": "Planen Sie Ihren Zypern-Winter",
     "pageDescHasContent": "Ihr Reiseplan. Fügen Sie mehr hinzu, teilen Sie ihn oder passen Sie ihn unten an.",
     "pageDescEmpty": "Erstellen Sie Ihren Winter-Reiseplan. Wählen Sie eine Vorlage oder fügen Sie Orte Tag für Tag hinzu.",
-    "pageDescSecondaryEmpty": "Wird automatisch gespeichert.",
+    "pageDescSecondaryEmpty": "Wird automatisch auf diesem Gerät gespeichert.",
     "mapTitle": "Ihr Reiseplan auf der Karte",
     "mapCollapsibleHint": "Stopps und Fahrkontext auf der Inselkarte",
     "addMoreCollapsibleTitle": "Mehr zum Plan hinzufügen",
@@ -1806,7 +1809,7 @@
     "combosCollapsibleSubtitle": "Vormittag und Nachmittag, die gut zusammenpassen",
     "placesCount": "{count, plural, one {# Ort} other {# Orte}}",
     "addAnotherStopHint": "Fügen Sie einen weiteren Stopp hinzu oder wechseln Sie oben den Tag.",
-    "autoSaved": "Automatisch gespeichert",
+    "autoSaved": "Automatisch auf diesem Gerät gespeichert",
     "addFailedAlert": {
       "message": "Dieser Ort ist nicht mehr in unserer Liste.",
       "browseDiscoverLabel": "Entdecken durchsuchen",
@@ -1831,7 +1834,7 @@
       "directoryCta": "Lizenzierten Führer finden",
       "browseLicensed": "Lizenzierte Führer durchsuchen",
       "directoryCount": "{count} Führer sprechen Ihre Sprache in diesem Bezirk",
-      "verifiedPartners": "Verifizierte Wanderpartner"
+      "verifiedPartners": "Lizenzierte Wanderführer"
     },
     "dayLabel": "Tag {day}",
     "aria": {
@@ -1848,7 +1851,8 @@
       "selectDay": "Tag auswählen",
       "quickStartRegion": "Orte hinzufügen oder Vorlagen nutzen",
       "itineraryCopied": "Reiseplan in die Zwischenablage kopiert",
-      "shareLinkCopied": "Share-Link in die Zwischenablage kopiert"
+      "shareLinkCopied": "Share-Link in die Zwischenablage kopiert",
+      "removedFromPlan": "{name} wurde aus Ihrem Plan entfernt."
     },
     "daySelector": {
       "tabLabelWithCount": "Tag {day} · {count}",
@@ -2142,7 +2146,7 @@
         "confirmedCount": "{count} bestätigt"
       },
       "sync": {
-        "toggle": "Auf anderem Gerät gebucht? Per E-Mail laden",
+        "toggle": "Nach Bestätigungen suchen — oder Buchungen per E-Mail laden",
         "submit": "Buchungen laden",
         "sendLookupLink": "Lookup-Link senden",
         "resendLookupLink": "Link erneut senden",
@@ -2187,7 +2191,7 @@
       "cta": {
         "viewTrails": "Wanderwege ansehen",
         "viewWinery": "Weingut ansehen",
-        "modify": "Ändern",
+        "modify": "Änderung anfragen",
         "bookAgain": "Erneut buchen",
         "browseTrails": "Wanderwege entdecken",
         "visitWineryPage": "Zur Weingut-Seite",
@@ -2205,7 +2209,8 @@
       "meta": {
         "title": "Meine Buchungen | Cyprus Winter",
         "description": "Ihre Verkostungen und Erlebnisse. Alles an einem Ort."
-      }
+      },
+      "cancelHint": "Ändern oder stornieren? Antworten Sie auf die Bestätigungs-E-Mail oder rufen Sie das Weingut bzw. den Guide direkt an — in beiden Fällen kostenlos."
     }
   },
   "account": {
@@ -2332,7 +2337,8 @@
     },
     "aria": {
       "actions": "Suchseite Aktionen"
-    }
+    },
+    "resultsCount": "{count, plural, one {# Vorschlag verfügbar} other {# Vorschläge verfügbar}}"
   },
   "events": {
     "clearFilters": "Filter zurücksetzen",
@@ -2796,7 +2802,8 @@
       "hints": {
         "heading": "Vor der Buchung",
         "hoursLabel": "Öffnungszeiten:",
-        "bestTimeLabel": "Beste Zeit:"
+        "bestTimeLabel": "Beste Zeit:",
+        "offSeasonHours": "Nov–Mär vorher anrufen — außerhalb der Saison sind die Öffnungszeiten oft kürzer."
       }
     },
     "pages": {
@@ -2847,9 +2854,9 @@
       "wineryList": {
         "meta": {
           "title": "Weinverkostung buchen | Cyprus Winter",
-          "description": "Verifizierte zyprische Weingüter entdecken und eine Winterverkostung buchen. Kaminfeuer, der Besitzer schenkt ein, kleine Gruppen. Im Voraus buchen — Winterwochenenden sind beliebt."
+          "description": "Ausgewählte zyprische Weingüter entdecken und eine Winterverkostung buchen. Kaminfeuer, der Besitzer schenkt ein, kleine Gruppen. Im Voraus buchen — Winterwochenenden sind beliebt."
         },
-        "intro": "Stöbern Sie durch unsere Partnerweingüter und fragen Sie eine Verkostung an. Bestätigung per E‑Mail — meist innerhalb eines Tages.",
+        "intro": "Stöbern Sie durch unsere Partnerweingüter und fragen Sie eine Verkostung an. Bestätigung per E‑Mail — meist innerhalb von 24–48 Stunden an Werktagen.",
         "ctaAria": "Verkostung bei {name} buchen",
         "footerBrowseWineries": "Alle Weingüter ansehen",
         "disclaimer": "Für Erwachsene im gesetzlichen Trinkalter. Verantwortlich genießen.",
@@ -2908,10 +2915,11 @@
         "aria": "Vertrauensinformationen zur Buchung",
         "heading": "Vor dem Absenden",
         "verifiedRoute": "Verifizierte {context}-Anfrageroute.",
-        "emailConfirm": "Der Partner bestätigt in der Regel innerhalb von 24 Stunden per E-Mail.",
+        "emailConfirm": "Der Partner bestätigt in der Regel per E-Mail innerhalb von 24–48 Stunden an Werktagen.",
         "noCharge": "Hier wird keine Zahlung genommen. Anbieter bestätigen zuerst die Verfügbarkeit.",
         "contextPartner": "Partner",
-        "contextGuide": "Guide"
+        "contextGuide": "Guide",
+        "requestLoggedFallback": "Ihre Anfrage wird sofort hier gespeichert — rufen Sie zur Sicherheit den {context} an oder nutzen Sie den Buchungslink unten."
       },
       "progress": {
         "aria": "Buchungsfortschritt",
@@ -2967,7 +2975,7 @@
       "breadcrumb": "Lizenzierte Führer",
       "pageNavAria": "Verzeichnis lizenzierter Führer",
       "intro": "{count} lizenzierte Führer aus der offiziellen Visit-Cyprus-Liste (Aug. 2026). Direkt kontaktieren — oder verifizierten Winter-Wanderpartner in der App buchen.",
-      "verifiedPartnersLink": "Verifizierte Partner buchen →",
+      "verifiedPartnersLink": "Lizenzierte Wanderführer buchen →",
       "disclaimer": "Lizenzierte Touristenführer beim zypriotischen Tourismusministerium. Cyprus Winter listet offizielle Kontakte; Buchung erfolgt direkt beim Führer.",
       "officialListLink": "Offizielle Liste auf Visit Cyprus",
       "searchLabel": "Führer suchen",
@@ -3010,7 +3018,7 @@
       "verifiedPartnerBadge": "In-App-Buchung",
       "verifiedPartnerBook": "Anfrage über Cyprus Winter",
       "footer": {
-        "hubBody": "Kontaktieren Sie einen lizenzierten Guide — oder buchen Sie einen verifizierten Partner in der App.",
+        "hubBody": "Kontaktieren Sie einen lizenzierten Guide — oder buchen Sie einen lizenzierten Wanderführer in der App.",
         "trails": "Trail-Bedingungen"
       },
       "aria": {

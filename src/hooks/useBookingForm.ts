@@ -43,6 +43,8 @@ type ErrorStrings = {
   failed: string;
   fallback: string;
   offlineQueued: string;
+  /** Localized messages by API error code — the server's own message is EN-only (BUG: raw EN in all locales). */
+  apiByCode?: Record<string, string>;
 };
 
 export function useBookingForm(
@@ -159,7 +161,12 @@ export function useBookingForm(
       const data = await res.json();
 
       if (!res.ok) {
+        const code =
+          typeof data.error === "object" && data.error !== null
+            ? (data.error.code as string | undefined)
+            : undefined;
         const msg =
+          (code ? tErrors.apiByCode?.[code] : undefined) ??
           data.message ??
           (typeof data.error === "string" ? data.error : data.error?.message) ??
           tErrors.failed;

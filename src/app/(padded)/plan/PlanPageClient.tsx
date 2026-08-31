@@ -193,7 +193,7 @@ export default function PlanPageClient() {
           </p>
         )}
 
-        {searchParams.get("add") === "failed" && <PlanAddFailedAlert />}
+        {(plan.addFailed || searchParams.get("add") === "failed") && <PlanAddFailedAlert />}
 
         <header>
           <ListPageHero

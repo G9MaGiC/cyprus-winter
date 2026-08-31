@@ -118,7 +118,7 @@ export default function DetailHeroSection({
         {"culturalNote" in a && isBufferZoneCulturalNote(a.culturalNote) && (
           <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
             <p className="text-sm font-medium text-charcoal flex items-start gap-2">
-              <span className="text-golden shrink-0" aria-hidden>⚠</span>
+              <span className="text-golden-ink shrink-0" aria-hidden>{"⚠︎"}</span>
               <span>{tDetail("bufferZoneWarning")}</span>
             </p>
           </div>

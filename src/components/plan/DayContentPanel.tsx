@@ -1,7 +1,8 @@
 "use client";
 
-import { type RefObject } from "react";
+import { useCallback, useState, type RefObject } from "react";
 import TimelineRow from "@/components/plan/TimelineRow";
+import { SRStatus } from "@/components/SRStatus";
 import SuggestedForDay from "@/components/SuggestedForDay";
 import { CARD, CTA, EMPTY_STATE_DASHED, PILL, SECTION, TYPE } from "@/lib/design-tokens";
 import type { PlanItem } from "@/data";
@@ -99,7 +100,7 @@ function DayAddSection({
                   : tPlanQuick("quickAddAriaAdd", { label, day: activeDay })
               }
             >
-              {inDay ? `${tPlanQuick("quickAddAriaAdded", { label })} ` : ""}
+              {inDay ? <span aria-hidden>✓ </span> : null}
               {label}
             </button>
           );
@@ -154,6 +155,17 @@ export default function DayContentPanel({
   readOnly = false,
 }: DayContentPanelProps) {
   const tPlan = useTranslations("plan");
+  // Removals leave aria-live's default aria-relevant ("additions text") silent,
+  // and the remove button unmounts under focus — announce them explicitly (BUG-360).
+  const [removedMessage, setRemovedMessage] = useState("");
+  const announceRemoveFromDay = useCallback(
+    (id: string) => {
+      const name = getPlace(id)?.name;
+      removeFromDay(id);
+      if (name) setRemovedMessage(tPlan("aria.removedFromPlan", { name }));
+    },
+    [getPlace, removeFromDay, tPlan]
+  );
   const useBlocks = activeItems.length >= 3;
   const mid = Math.ceil(activeItems.length / 2);
   const morningIds = useBlocks ? activeItems.slice(0, mid) : activeItems;
@@ -165,6 +177,7 @@ export default function DayContentPanel({
 
   return (
     <section aria-label={tPlan("aria.yourItinerary")} className="space-y-6 sm:space-y-10 scroll-mt-24 sm:scroll-mt-28">
+      <SRStatus message={removedMessage} />
       <div id="day-panel" role="tabpanel" aria-live="polite" aria-atomic="false" className="space-y-6 sm:space-y-8">
         {lastAddedPlace && (
           <div
@@ -235,7 +248,7 @@ export default function DayContentPanel({
                           lastAddedId={lastAddedId}
                           lastAddedCardRef={lastAddedCardRef}
                           getPlace={getPlace}
-                          removeFromDay={removeFromDay}
+                          removeFromDay={announceRemoveFromDay}
                           readOnly={readOnly}
                         />
                       ))}
@@ -255,7 +268,7 @@ export default function DayContentPanel({
                               lastAddedId={lastAddedId}
                               lastAddedCardRef={lastAddedCardRef}
                               getPlace={getPlace}
-                              removeFromDay={removeFromDay}
+                              removeFromDay={announceRemoveFromDay}
                               readOnly={readOnly}
                             />
                           ))}
@@ -274,7 +287,7 @@ export default function DayContentPanel({
                         lastAddedId={lastAddedId}
                         lastAddedCardRef={lastAddedCardRef}
                         getPlace={getPlace}
-                        removeFromDay={removeFromDay}
+                        removeFromDay={announceRemoveFromDay}
                         readOnly={readOnly}
                       />
                     ))}

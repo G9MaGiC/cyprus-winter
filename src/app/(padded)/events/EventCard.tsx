@@ -92,7 +92,7 @@ export default function EventCard({
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`px-4 py-2.5 rounded-lg ${CTA.chipTertiary}`}
+            className={CTA.chipTertiary}
             aria-label={tPage("card.learnMoreAria", { name: event.name })}
           >
             {tPage("card.learnMoreCta")}

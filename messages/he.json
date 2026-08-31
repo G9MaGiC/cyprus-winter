@@ -87,7 +87,8 @@
       "quickActions": "פעולות מהירות",
       "reportConditionsForTrail": "דיווח על תנאי השביל",
       "dismissNotification": "סגירת התראה",
-      "notifications": "התראות"
+      "notifications": "התראות",
+      "addedToPlan": "נוסף לתוכנית שלך."
     },
     "skipToContent": "דלגו לתוכן",
     "languageLabel": "שפה:",
@@ -118,7 +119,8 @@
       "title": "הסכמה לעוגיות.",
       "body": "אנחנו משתמשים בעוגיות חיוניות לשירות ובאנליטיקה אופציונלית. «אישור» מאפשר אנליטיקה.",
       "accept": "אישור",
-      "learnMore": "למידע נוסף"
+      "learnMore": "למידע נוסף",
+      "srAnnounce": "הודעת עוגיות: בחרו קבלה או חיוני בלבד בתחתית המסך."
     },
     "shareColon": "שיתוף:",
     "bookTasting": "הזמנת טעימה",
@@ -349,7 +351,8 @@
       "heading": "לפני שיוצאים",
       "allSet": "הכול מוכן. נסיעה בטוחה."
     },
-    "useMyLocationInstead": "השתמשו במיקום שלי"
+    "useMyLocationInstead": "השתמשו במיקום שלי",
+    "localeBetaHint": "שפות בטא: חלק מהתוכן עשוי עדיין להופיע באנגלית."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -488,13 +491,13 @@
     },
     "trailConditionsStrip": {
       "aria": "תנאי שבילי Troodos — בדקו סטטוס לפני היציאה",
-      "heading": "שבילים היום",
+      "heading": "שבילי טרודוס: מצב חורף",
       "open": "{count} פתוחים",
       "caution": "{count} זהירות",
       "closed": "{count} סגורים",
       "checkReports": "דיווחים",
       "goodToGo": "שבילי Troodos במצב טוב",
-      "cautionOnly": "{count} שבילים דורשים זהירות",
+      "cautionOnly": "{count, plural, one {שביל אחד דורש זהירות} other {# שבילים דורשים זהירות}}",
       "withClosed": "{count} שבילים סגורים — בדקו לפני היציאה",
       "checkConditions": "בדקו תנאי שבילים לפני Troodos"
     },
@@ -613,7 +616,7 @@
       }
     },
     "templates": {
-      "kicker": "תבניות מוכנות",
+      "kicker": "תוכניות מוכנות",
       "subtitle": "נבחרו בידי מומחים. קצב ריאלי. התחילו כאן, ואז התאימו.",
       "allTemplates": "כל התבניות →",
       "items": {
@@ -1107,7 +1110,7 @@
       "whyNow": {
         "title": "למה עכשיו",
         "bestFor": "מתאים ל{types}.",
-        "regionFlow": "{region} היא עצירה מעשית לאותו לוח יום.",
+        "regionFlow": "קל לשלב עם עצירות נוספות ב{region} באותו יום.",
         "saveCompare": "הוסיפו לתוכנית כדי לשלב עם שביל או כפר בקרבת מקום."
       },
       "visitTaste": {
@@ -1689,14 +1692,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "תנאים היום",
+      "heading": "מצב השבילים בחורף",
       "ariaViewList": "תנאי שבילים היום — צפייה ברשימה",
       "openCount": "{count} פתוחים",
       "cautionCount": "{count} בזהירות",
       "closedCount": "{count} סגורים",
       "noReports": "בדקו דיווחים",
       "goodToGo": "מוכנים לצאת",
-      "cautionOnly": "{count} שבילים דורשים זהירות",
+      "cautionOnly": "{count, plural, one {שביל אחד דורש זהירות} other {# שבילים דורשים זהירות}}",
       "withClosed": "{count} שבילים סגורים — בדקו לפני שיוצאים",
       "checkConditions": "בדקו תנאי שבילים"
     },
@@ -1785,7 +1788,7 @@
     "pageTitle": "תכננו את החורף בקפריסין",
     "pageDescHasContent": "התוכנית שלכם. הוסיפו, שתפו או עדכנו למטה.",
     "pageDescEmpty": "בנו תוכנית חורף. בחרו תבנית או הוסיפו מקומות יום־יום.",
-    "pageDescSecondaryEmpty": "נשמר אוטומטית.",
+    "pageDescSecondaryEmpty": "נשמר אוטומטית במכשיר הזה.",
     "mapTitle": "התוכנית שלכם על המפה",
     "mapCollapsibleHint": "תחנות והקשר נסיעה על מפת האי",
     "addMoreCollapsibleTitle": "הוסיפו לתוכנית",
@@ -1806,7 +1809,7 @@
     "combosCollapsibleSubtitle": "שילובי בוקר ואחר צהריים שמתחברים",
     "placesCount": "{count, plural, one {מקום #} other {# מקומות}}",
     "addAnotherStopHint": "הוסיפו תחנה נוספת, או החליפו יום למעלה.",
-    "autoSaved": "נשמר אוטומטית",
+    "autoSaved": "נשמר אוטומטית במכשיר זה",
     "addFailedAlert": {
       "message": "המקום הזה כבר לא ברשימה שלנו.",
       "browseDiscoverLabel": "עיון בגילוי",
@@ -1831,7 +1834,7 @@
       "directoryCta": "מצא מדריך מורשה",
       "browseLicensed": "עיין במדריכים מורשים",
       "directoryCount": "{count} מדריכים מדברים את השפה שלך במחוז זה",
-      "verifiedPartners": "שותפי טיולים מאומתים"
+      "verifiedPartners": "מדריכי טיולים מורשים"
     },
     "realism": {
       "aria": "רמזים לקצב היום",
@@ -1921,7 +1924,8 @@
       "selectDay": "בחירת יום",
       "quickStartRegion": "הוסיפו מקומות או השתמשו בתבניות",
       "itineraryCopied": "התוכנית הועתקה ללוח",
-      "shareLinkCopied": "קישור השיתוף הועתק ללוח"
+      "shareLinkCopied": "קישור השיתוף הועתק ללוח",
+      "removedFromPlan": "{name} הוסר מהתוכנית שלך."
     },
     "daySelector": {
       "tabLabelWithCount": "יום {day} · {count}",
@@ -2142,7 +2146,7 @@
         "confirmedCount": "{count} מאושרות"
       },
       "sync": {
-        "toggle": "הזמנתם במכשיר אחר? טענו באימייל",
+        "toggle": "בדקו אישורים — או טענו הזמנות באמצעות אימייל",
         "submit": "טעינת הזמנות",
         "sendLookupLink": "שלחו קישור",
         "resendLookupLink": "שלחו קישור שוב",
@@ -2187,7 +2191,7 @@
       "cta": {
         "viewTrails": "צפו בשבילים",
         "viewWinery": "צפו ביקב",
-        "modify": "שנו",
+        "modify": "בקשת שינוי",
         "bookAgain": "הזמינו שוב",
         "browseTrails": "עיון בשבילים",
         "visitWineryPage": "לדף היקב",
@@ -2205,7 +2209,8 @@
       "meta": {
         "title": "ההזמנות שלי | Cyprus Winter",
         "description": "טעימות וחוויות. הכול במקום אחד."
-      }
+      },
+      "cancelHint": "רוצים לשנות או לבטל? השיבו למייל האישור או התקשרו ישירות ליקב או למדריך — ללא עלות בכל מקרה."
     }
   },
   "account": {
@@ -2332,7 +2337,8 @@
       "villages": "כפרים",
       "beaches": "חופים",
       "cycling": "רכיבה"
-    }
+    },
+    "resultsCount": "{count, plural, one {הצעה אחת זמינה} other {# הצעות זמינות}}"
   },
   "events": {
     "clearFilters": "נקה מסננים",
@@ -2736,10 +2742,11 @@
         "aria": "מידע אמון להזמנה",
         "heading": "לפני השליחה",
         "verifiedRoute": "מסלול בקשת {context} מאומת.",
-        "emailConfirm": "אישור בדרך כלל מגיע באימייל תוך 24 שעות.",
+        "emailConfirm": "השותף מאשר בדרך כלל במייל בתוך 24–48 שעות בימי חול.",
         "noCharge": "אין תשלום כאן. הספקים מאשרים זמינות קודם.",
         "contextPartner": "שותף",
-        "contextGuide": "מדריך"
+        "contextGuide": "מדריך",
+        "requestLoggedFallback": "הבקשה שלכם נשמרת כאן מיד — ליתר ביטחון, התקשרו אל {context} או השתמשו בקישור ההזמנה למטה."
       },
       "progress": {
         "aria": "התקדמות הזמנה",
@@ -2895,7 +2902,8 @@
       "hints": {
         "heading": "לפני ההזמנה",
         "hoursLabel": "שעות:",
-        "bestTimeLabel": "זמן מומלץ:"
+        "bestTimeLabel": "זמן מומלץ:",
+        "offSeasonHours": "התקשרו מראש בנוב׳–מרץ — שעות הפתיחה קצרות יותר מחוץ לעונה."
       }
     },
     "pages": {
@@ -2946,9 +2954,9 @@
       "wineryList": {
         "meta": {
           "title": "הזמנת טעימת יין | Cyprus Winter",
-          "description": "עיון ביקבים מאומתים בקפריסין והזמנת טעימת חורף. אח חמה, הבעלים מוזג, קבוצות קטנות. הזמינו מראש — סופי שבוע בחורף מתמלאים."
+          "description": "עיון ביקבים נבחרים בקפריסין והזמנת טעימת חורף. אח חמה, הבעלים מוזג, קבוצות קטנות. הזמינו מראש — סופי שבוע בחורף מתמלאים."
         },
-        "intro": "עיינו ביקבי השותפים ובקשו טעימה. יאשרו באימייל — בדרך כלל תוך יום.",
+        "intro": "עיינו ביקבי השותפים ובקשו טעימה. יאשרו באימייל — בדרך כלל תוך 24–48 שעות בימי חול.",
         "ctaAria": "הזמנת טעימה ב-{name}",
         "footerBrowseWineries": "כל היקבים",
         "disclaimer": "למבוגרים בגיל החוקי לשתייה. שתו באחריות.",
@@ -3043,7 +3051,7 @@
       "breadcrumb": "מדריכים מורשים",
       "pageNavAria": "רשימת מדריכים מורשים",
       "intro": "{count} מדריכים מורשים מהרשימה הרשמית של Visit Cyprus (אוג׳ 2026). צרו קשר ישירות — או הזמינו שותף הליכה חורפי מאומת באפליקציה.",
-      "verifiedPartnersLink": "הזמנת שותפים מאומתים →",
+      "verifiedPartnersLink": "הזמינו מדריך מורשה →",
       "disclaimer": "מדריכי תיירות מורשים הרשומים במשרד התיירות. Cyprus Winter מציגה אנשי קשר רשמיים; ההזמנה והתשלום ישירות עם המדריך.",
       "officialListLink": "רשימה רשמית ב-Visit Cyprus",
       "searchLabel": "חיפוש מדריכים",
@@ -3086,7 +3094,7 @@
       "verifiedPartnerBadge": "הזמנה באפליקציה",
       "verifiedPartnerBook": "בקשה דרך Cyprus Winter",
       "footer": {
-        "hubBody": "צרו קשר עם מדריך מורשה — או הזמינו שותף מאומת באפליקציה והוסיפו תחנות לתוכנית.",
+        "hubBody": "צרו קשר עם מדריך מורשה — או הזמינו מדריך מורשה באפליקציה והוסיפו תחנות לתוכנית.",
         "trails": "תנאי שבילים"
       },
       "aria": {

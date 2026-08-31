@@ -87,7 +87,8 @@
       "quickActions": "Szybkie akcje",
       "reportConditionsForTrail": "Zgłoś warunki dla tego szlaku",
       "dismissNotification": "Zamknij powiadomienie",
-      "notifications": "Powiadomienia"
+      "notifications": "Powiadomienia",
+      "addedToPlan": "Dodano do planu."
     },
     "skipToContent": "Przejdź do treści",
     "languageLabel": "Język:",
@@ -331,7 +332,8 @@
       "title": "Zgoda na pliki cookie.",
       "body": "Używamy niezbędnych plików cookie do działania serwisu i opcjonalnych analityk do ulepszeń. Klikając „Akceptuj”, zezwalasz na analitykę.",
       "accept": "Akceptuj",
-      "learnMore": "Dowiedz się więcej"
+      "learnMore": "Dowiedz się więcej",
+      "srAnnounce": "Informacja o cookies: wybierz Akceptuję lub Tylko niezbędne na dole ekranu."
     },
     "placeTypes": {
       "beach": "Plaża",
@@ -349,7 +351,8 @@
       "heading": "Zanim wyruszysz",
       "allSet": "Wszystko gotowe. Bezpiecznej podróży."
     },
-    "useMyLocationInstead": "Użyj mojej lokalizacji"
+    "useMyLocationInstead": "Użyj mojej lokalizacji",
+    "localeBetaHint": "Języki beta: część treści może nadal być po angielsku."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -513,13 +516,13 @@
     },
     "trailConditionsStrip": {
       "aria": "Warunki szlaków Troodos — sprawdź status przed wyjściem",
-      "heading": "Szlaki dziś",
+      "heading": "Szlaki Troodos: stan zimowy",
       "open": "{count} otwarte",
       "caution": "{count} ostrożnie",
       "closed": "{count} zamknięte",
       "checkReports": "Zobacz raporty",
       "goodToGo": "Szlaki Troodos w dobrym stanie",
-      "cautionOnly": "{count} szlaki wymagają ostrożności",
+      "cautionOnly": "{count, plural, one {# szlak wymaga ostrożności} few {# szlaki wymagają ostrożności} many {# szlaków wymaga ostrożności} other {# szlaku wymaga ostrożności}}",
       "withClosed": "{count} szlaki zamknięte — sprawdź przed wyjściem",
       "checkConditions": "Sprawdź warunki szlaków przed Troodos"
     },
@@ -638,7 +641,7 @@
       }
     },
     "templates": {
-      "kicker": "Gotowe plany podróży",
+      "kicker": "Gotowe plany",
       "subtitle": "Kuracja ekspertów. Realistyczne tempo. Zacznij tutaj, potem dopasuj.",
       "allTemplates": "Wszystkie szablony →",
       "items": {
@@ -1107,7 +1110,7 @@
       "whyNow": {
         "title": "Dlaczego teraz",
         "bestFor": "Najlepsze dla {types}.",
-        "regionFlow": "{region} to praktyczny przystanek w tym samym planie dnia.",
+        "regionFlow": "Łatwo połączyć z innymi miejscami w regionie {region} tego samego dnia.",
         "saveCompare": "Dodaj do planu i połącz z pobliskim szlakiem lub wioską."
       },
       "visitTaste": {
@@ -1689,14 +1692,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "Warunki dzisiaj",
+      "heading": "Zimowy stan szlaków",
       "ariaViewList": "Warunki na szlakach dzisiaj — pokaż listę",
       "openCount": "{count} otwartych",
       "cautionCount": "{count} z ostrożnością",
       "closedCount": "{count} zamkniętych",
       "noReports": "Sprawdź raporty",
       "goodToGo": "Można ruszać",
-      "cautionOnly": "{count} szlaki wymagają ostrożności",
+      "cautionOnly": "{count, plural, one {# szlak wymaga ostrożności} few {# szlaki wymagają ostrożności} many {# szlaków wymaga ostrożności} other {# szlaku wymaga ostrożności}}",
       "withClosed": "{count} szlaków zamkniętych — sprawdź zanim wyruszysz",
       "checkConditions": "Sprawdź warunki na szlakach"
     },
@@ -1785,7 +1788,7 @@
     "pageTitle": "Zaplanuj zimę na Cyprze",
     "pageDescHasContent": "Twój plan. Dodaj więcej, udostępnij lub popraw poniżej.",
     "pageDescEmpty": "Zbuduj zimowy plan podróży. Wybierz szablon lub dodawaj miejsca dzień po dniu.",
-    "pageDescSecondaryEmpty": "Zapisuje się automatycznie.",
+    "pageDescSecondaryEmpty": "Zapisuje się automatycznie na tym urządzeniu.",
     "mapTitle": "Twój plan na mapie",
     "mapCollapsibleHint": "Przystanki i kontekst dojazdu na mapie wyspy",
     "addMoreCollapsibleTitle": "Dodaj więcej do planu",
@@ -1806,7 +1809,7 @@
     "combosCollapsibleSubtitle": "Poranek i popołudnie, które do siebie pasują",
     "placesCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}}",
     "addAnotherStopHint": "Dodaj kolejny postój albo zmień dzień powyżej.",
-    "autoSaved": "Automatycznie zapisane",
+    "autoSaved": "Zapisywane automatycznie na tym urządzeniu",
     "addFailedAlert": {
       "message": "To miejsce już nie znajduje się na naszej liście.",
       "browseDiscoverLabel": "Przeglądaj Odkrywaj",
@@ -1831,7 +1834,7 @@
       "directoryCta": "Znajdź licencjonowanego przewodnika",
       "browseLicensed": "Przeglądaj licencjonowanych przewodników",
       "directoryCount": "{count} przewodników mówi w Twoim języku w tym dystrykcie",
-      "verifiedPartners": "Zweryfikowani partnerzy trekkingowi"
+      "verifiedPartners": "Licencjonowani przewodnicy górscy"
     },
     "dayLabel": "Dzień {day}",
     "aria": {
@@ -1848,7 +1851,8 @@
       "selectDay": "Wybierz dzień",
       "quickStartRegion": "Dodaj miejsca lub użyj szablonów",
       "itineraryCopied": "Plan skopiowano do schowka",
-      "shareLinkCopied": "Link do udostępniania skopiowano do schowka"
+      "shareLinkCopied": "Link do udostępniania skopiowano do schowka",
+      "removedFromPlan": "Usunięto {name} z planu."
     },
     "daySelector": {
       "tabLabelWithCount": "Dzień {day} · {count}",
@@ -2142,7 +2146,7 @@
         "confirmedCount": "{count} potwierdzone"
       },
       "sync": {
-        "toggle": "Zarezerwowano na innym urządzeniu? Wczytaj przez email",
+        "toggle": "Sprawdź potwierdzenia — lub wczytaj rezerwacje przez e-mail",
         "submit": "Wczytaj rezerwacje",
         "sendLookupLink": "Wyślij link",
         "resendLookupLink": "Wyślij link ponownie",
@@ -2187,7 +2191,7 @@
       "cta": {
         "viewTrails": "Zobacz szlaki",
         "viewWinery": "Zobacz winnicę",
-        "modify": "Zmień",
+        "modify": "Poproś o zmianę",
         "bookAgain": "Zarezerwuj ponownie",
         "browseTrails": "Przeglądaj szlaki",
         "visitWineryPage": "Strona winnicy",
@@ -2205,7 +2209,8 @@
       "meta": {
         "title": "Moje rezerwacje | Cyprus Winter",
         "description": "Twoje degustacje i doświadczenia. Wszystko w jednym miejscu."
-      }
+      },
+      "cancelHint": "Chcesz zmienić lub odwołać? Odpowiedz na e-mail z potwierdzeniem albo zadzwoń bezpośrednio do winiarni lub przewodnika — bez opłat."
     }
   },
   "search": {
@@ -2242,7 +2247,8 @@
     },
     "aria": {
       "actions": "Akcje strony wyszukiwania"
-    }
+    },
+    "resultsCount": "{count, plural, one {# dostępna podpowiedź} few {# dostępne podpowiedzi} many {# dostępnych podpowiedzi} other {# podpowiedzi}}"
   },
   "events": {
     "clearFilters": "Wyczyść filtry",
@@ -2796,7 +2802,8 @@
       "hints": {
         "heading": "Przed rezerwacją",
         "hoursLabel": "Godziny:",
-        "bestTimeLabel": "Najlepszy czas:"
+        "bestTimeLabel": "Najlepszy czas:",
+        "offSeasonHours": "Zadzwoń wcześniej (listopad–marzec) — poza sezonem godziny otwarcia bywają krótsze."
       }
     },
     "pages": {
@@ -2847,9 +2854,9 @@
       "wineryList": {
         "meta": {
           "title": "Zarezerwuj degustację wina | Cyprus Winter",
-          "description": "Przeglądaj zweryfikowane cypryjskie winnice i zarezerwuj zimową degustację. Przytulny ogień, właściciel nalewa, małe grupy. Rezerwuj wcześniej — zimowe weekendy się zapełniają."
+          "description": "Przeglądaj wyselekcjonowane cypryjskie winnice i zarezerwuj zimową degustację. Przytulny ogień, właściciel nalewa, małe grupy. Rezerwuj wcześniej — zimowe weekendy się zapełniają."
         },
-        "intro": "Przeglądaj nasze partnerskie winnice i poproś o degustację. Potwierdzą mailem — zwykle w ciągu jednego dnia.",
+        "intro": "Przeglądaj nasze partnerskie winnice i poproś o degustację. Potwierdzą mailem — zwykle w ciągu 24–48 godzin w dni robocze.",
         "ctaAria": "Zarezerwuj degustację w {name}",
         "footerBrowseWineries": "Przeglądaj wszystkie winnice",
         "disclaimer": "Dla dorosłych w wieku legalnym do spożycia alkoholu. Pij odpowiedzialnie.",
@@ -2908,10 +2915,11 @@
         "aria": "Informacje o zaufaniu rezerwacji",
         "heading": "Przed wysłaniem",
         "verifiedRoute": "Zweryfikowana trasa zapytania {context}.",
-        "emailConfirm": "Partner zwykle potwierdza e-mailem w ciągu 24 godzin.",
+        "emailConfirm": "Partner zwykle potwierdza e-mailem w ciągu 24–48 godzin w dni robocze.",
         "noCharge": "Tu nie pobieramy płatności. Dostawcy najpierw potwierdzają dostępność.",
         "contextPartner": "partnera",
-        "contextGuide": "przewodnika"
+        "contextGuide": "przewodnika",
+        "requestLoggedFallback": "Twoja prośba zostaje od razu zapisana — dla pewności zadzwoń do {context} lub skorzystaj z linku rezerwacji poniżej."
       },
       "progress": {
         "aria": "Postęp rezerwacji",
@@ -2967,7 +2975,7 @@
       "breadcrumb": "Licencjonowani przewodnicy",
       "pageNavAria": "Katalog licencjonowanych przewodników",
       "intro": "{count} licencjonowanych przewodników z oficjalnej listy Visit Cyprus (sierp. 2026). Kontakt bezpośredni — lub rezerwacja zweryfikowanego partnera w aplikacji.",
-      "verifiedPartnersLink": "Rezerwuj zweryfikowanych partnerów →",
+      "verifiedPartnersLink": "Zarezerwuj licencjonowanego przewodnika →",
       "disclaimer": "Przewodnicy zarejestrowani w cypryjskim Ministerstwie Turystyki. Cyprus Winter publikuje oficjalne kontakty; rezerwacja bezpośrednio u przewodnika.",
       "officialListLink": "Oficjalna lista na Visit Cyprus",
       "searchLabel": "Szukaj przewodników",
@@ -3010,7 +3018,7 @@
       "verifiedPartnerBadge": "Rezerwacja w aplikacji",
       "verifiedPartnerBook": "Zapytanie przez Cyprus Winter",
       "footer": {
-        "hubBody": "Skontaktuj się z licencjonowanym przewodnikiem — albo zarezerwuj zweryfikowanego partnera w aplikacji.",
+        "hubBody": "Skontaktuj się z licencjonowanym przewodnikiem — albo zarezerwuj licencjonowanego przewodnika górskiego w aplikacji.",
         "trails": "Warunki na szlakach"
       },
       "aria": {

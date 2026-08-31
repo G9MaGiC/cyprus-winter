@@ -58,7 +58,7 @@ export default function ItineraryCard({
   return (
     <div
       ref={lastAdded && !inTimeline ? cardRef : undefined}
-      className={`group flex items-center gap-4 ${CARD.content} ${CARD.base} transition-all duration-200 ${
+      className={`group flex flex-wrap items-center gap-x-4 gap-y-2 ${CARD.content} ${CARD.base} transition-all duration-200 ${
         lastAdded
           ? "ring-2 ring-terracotta/40 border-terracotta/30 shadow-md"
           : CARD.hover
@@ -69,7 +69,7 @@ export default function ItineraryCard({
           {index}
         </span>
       )}
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 basis-40 min-w-0">
         <div className="flex flex-wrap items-center gap-2 mb-1">
           <TypeBadge type={place.type} />
           <span className="text-xs text-muted-ink">·</span>
@@ -83,7 +83,7 @@ export default function ItineraryCard({
           {place.name}
         </AppLink>
       </div>
-      <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
+      <div className="flex w-full sm:w-auto items-center gap-2 sm:shrink-0 flex-wrap justify-end">
         <NavigateButton place={place} />
         {place.type === "winery" && (
           <AppLink

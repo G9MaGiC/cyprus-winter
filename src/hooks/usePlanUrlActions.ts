@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
 import type { PlanItem } from "@/data";
@@ -28,7 +28,9 @@ function isValidTemplate(value: string | null): value is TemplateKey {
  * Handles URL params ?add= and ?template= for the Plan page.
  * Supports all templates: ?template=short-stay, ?template=classic, ?template=classic-7, etc.
  * Uses refs internally to avoid processing the same param twice.
- * Returns nothing — side effects only.
+ * Returns { addFailed } — the URL is also patched to ?add=failed for reload/share
+ * parity, but the alert must render from state: patching via history.replaceState
+ * never re-renders useSearchParams (BUG-356 / AUD-03).
  */
 export function usePlanUrlActions({
   hydrated,
@@ -43,6 +45,7 @@ export function usePlanUrlActions({
   const locale = useLocale();
   const processedAddRef = useRef<string | null>(null);
   const processedTemplateRef = useRef<string | null>(null);
+  const [addFailed, setAddFailed] = useState(false);
 
   useEffect(() => {
     if (!hydrated || mutationsDisabled) return;
@@ -64,6 +67,7 @@ export function usePlanUrlActions({
     const ids = parseAddParam(addParam);
     const places = ids.map((id) => getPlace(id)).filter((p): p is PlanItem => !!p);
     if (places.length === 0) {
+      setAddFailed(true);
       patchPlanUrlSearchParams((p) => {
         p.delete("add");
         p.set("add", "failed");
@@ -82,4 +86,6 @@ export function usePlanUrlActions({
     });
     patchPlanUrlSearchParams((p) => p.delete("add"));
   }, [hydrated, mutationsDisabled, searchParams, addToDayIfMissing, getPlace, locale]);
+
+  return { addFailed };
 }

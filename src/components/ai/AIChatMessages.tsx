@@ -27,8 +27,8 @@ function ChatMessage({ message, onRetry, retryLabel }: { message: Message; onRet
       <div
         className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
-            ? "bg-terracotta text-white rounded-br-md"
-            : "bg-sand-100 text-olive rounded-bl-md"
+            ? "bg-terracotta text-white rounded-ee-md"
+            : "bg-sand-100 text-olive rounded-es-md"
         }`}
       >
         {isUser ? (
@@ -122,7 +122,7 @@ export function AIChatMessages({ messages, loading, onRetry }: AIChatMessagesPro
       ))}
       {loading && (
         <div className="flex justify-start mb-4" role="status" aria-label={tCommon("ai.thinking")}>
-          <div className="bg-sand-100 rounded-2xl rounded-bl-md px-4 py-3">
+          <div className="bg-sand-100 rounded-2xl rounded-es-md px-4 py-3">
             <div className="flex gap-1">
               <span className="w-2 h-2 bg-olive/40 rounded-full animate-pulse motion-reduce:animate-none" style={{ animationDelay: "0ms" }} />
               <span className="w-2 h-2 bg-olive/40 rounded-full animate-pulse motion-reduce:animate-none" style={{ animationDelay: "150ms" }} />

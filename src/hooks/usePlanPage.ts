@@ -56,7 +56,7 @@ export function usePlanPage() {
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  usePlanUrlActions({
+  const { addFailed } = usePlanUrlActions({
     hydrated,
     hasContent,
     getPlace,
@@ -193,6 +193,7 @@ export function usePlanPage() {
     hydrated,
     copied,
     planReadOnly,
+    addFailed,
     addToDayIfMissing: guardedAddToDay,
     removeFromDay: guardedRemoveFromDay,
     getPlace,

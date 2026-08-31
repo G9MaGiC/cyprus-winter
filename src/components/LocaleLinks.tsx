@@ -47,6 +47,9 @@ export default function LocaleLinks() {
           );
         })}
       </div>
+      <p className="mt-2 text-center text-xs text-muted-ink">
+        {t("localeBetaHint")}
+      </p>
     </div>
   );
 }

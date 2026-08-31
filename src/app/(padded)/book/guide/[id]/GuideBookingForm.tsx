@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import AppLink from "@/components/AppLink";
 import BookingProgressStepper from "@/components/bookings/BookingProgressStepper";
 import BookingTrustStrip from "@/components/bookings/BookingTrustStrip";
+import { isPartnerVerified } from "@/lib/partner-verification";
 import BookingSuccessNextSteps from "@/components/bookings/BookingSuccessNextSteps";
 import { useSearchParams } from "next/navigation";
 import { CTA, TYPE } from "@/lib/design-tokens";
@@ -23,6 +24,7 @@ export default function GuideBookingForm({
 }) {
   const t = useTranslations("book.guideForm");
   const tForm = useTranslations("book.form");
+  const tApiErrors = useTranslations("errors.api");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
   const searchParams = useSearchParams();
@@ -65,6 +67,13 @@ export default function GuideBookingForm({
       failed: t("errors.failed"),
       fallback: t("errors.fallback"),
       offlineQueued: t("errors.offlineQueued"),
+      apiByCode: {
+        VALIDATION_ERROR: tApiErrors("VALIDATION_ERROR"),
+        BAD_REQUEST: tApiErrors("BAD_REQUEST"),
+        RATE_LIMITED: tApiErrors("RATE_LIMITED"),
+        SERVICE_UNAVAILABLE: tApiErrors("SERVICE_UNAVAILABLE"),
+        SERVER_ERROR: tApiErrors("SERVER_ERROR"),
+      },
     }
   );
 
@@ -128,7 +137,7 @@ export default function GuideBookingForm({
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <BookingProgressStepper currentStep={loading ? 2 : 1} />
-      <BookingTrustStrip variant="guide" />
+      <BookingTrustStrip variant="guide" verified={isPartnerVerified(guide)} />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-muted-ink">
         <p>
           <strong>{tForm("states.heading")}</strong> {tForm("states.guideBody")}

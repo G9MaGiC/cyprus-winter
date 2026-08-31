@@ -87,7 +87,8 @@
       "quickActions": "Quick actions",
       "reportConditionsForTrail": "Report conditions for this trail",
       "dismissNotification": "Dismiss notification",
-      "notifications": "Notifications"
+      "notifications": "Notifications",
+      "addedToPlan": "Added to your plan."
     },
     "skipToContent": "Skip to main content",
     "languageLabel": "Language:",
@@ -119,7 +120,8 @@
       "title": "Cookie consent.",
       "body": "We use essential cookies for the service and optional analytics to improve it. By clicking \"Accept\" you allow analytics.",
       "accept": "Accept",
-      "learnMore": "Learn more"
+      "learnMore": "Learn more",
+      "srAnnounce": "Cookie notice: choose Accept or Essential only at the bottom of the screen."
     },
     "shareColon": "Share:",
     "bookTasting": "Book a tasting",
@@ -349,7 +351,8 @@
       "heading": "Before you go",
       "allSet": "All set. Have a safe trip."
     },
-    "useMyLocationInstead": "Use my location instead"
+    "useMyLocationInstead": "Use my location instead",
+    "localeBetaHint": "Beta languages: some content may still appear in English."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -488,13 +491,13 @@
     },
     "trailConditionsStrip": {
       "aria": "Troodos trail conditions — check status before you go",
-      "heading": "Trails today",
+      "heading": "Troodos trails: winter status",
       "open": "{count} open",
       "caution": "{count} caution",
       "closed": "{count} closed",
       "checkReports": "Check reports",
       "goodToGo": "Troodos trails good to go",
-      "cautionOnly": "{count} trails need caution",
+      "cautionOnly": "{count, plural, one {# trail needs caution} other {# trails need caution}}",
       "withClosed": "{count} trails closed — check before you go",
       "checkConditions": "Check trail conditions before Troodos"
     },
@@ -613,7 +616,7 @@
       }
     },
     "templates": {
-      "kicker": "Pre-built itineraries",
+      "kicker": "Pre-built plans",
       "subtitle": "Expert-curated. Realistic pacing. Start here, then tweak.",
       "allTemplates": "All templates →",
       "items": {
@@ -1107,7 +1110,7 @@
       "whyNow": {
         "title": "Why this now",
         "bestFor": "Best for {types}.",
-        "regionFlow": "{region} is a practical stop for the same day plan flow.",
+        "regionFlow": "Easy to pair with other stops in {region} on the same day.",
         "saveCompare": "Add to your plan to pair it with a trail or village nearby."
       },
       "visitTaste": {
@@ -1689,14 +1692,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "Conditions today",
+      "heading": "Winter trail status",
       "ariaViewList": "Trail conditions today — view list",
       "openCount": "{count} open",
       "cautionCount": "{count} caution",
       "closedCount": "{count} closed",
       "noReports": "Check reports",
       "goodToGo": "Good to go",
-      "cautionOnly": "{count} trails need caution",
+      "cautionOnly": "{count, plural, one {# trail needs caution} other {# trails need caution}}",
       "withClosed": "{count} trails closed — check before you go",
       "checkConditions": "Check trail conditions"
     },
@@ -1785,7 +1788,7 @@
     "pageTitle": "Plan your Cyprus winter",
     "pageDescHasContent": "Your plan. Add more, share, or tweak below.",
     "pageDescEmpty": "Build your winter plan. Pick a template or add places day by day.",
-    "pageDescSecondaryEmpty": "Saves automatically.",
+    "pageDescSecondaryEmpty": "Saves automatically on this device.",
     "mapTitle": "Your plan on the map",
     "mapCollapsibleHint": "Stops and driving context on the island map",
     "addMoreCollapsibleTitle": "Add more to your plan",
@@ -1806,7 +1809,7 @@
     "combosCollapsibleSubtitle": "Morning and afternoon combos that flow",
     "placesCount": "{count, plural, one {# place} other {# places}}",
     "addAnotherStopHint": "Add another stop, or switch day above.",
-    "autoSaved": "Auto-saved",
+    "autoSaved": "Auto-saved on this device",
     "addFailedAlert": {
       "message": "That place is no longer in our list.",
       "browseDiscoverLabel": "Browse Discover",
@@ -1831,7 +1834,7 @@
       "directoryCta": "Find a licensed guide",
       "browseLicensed": "Browse licensed guides",
       "directoryCount": "{count} guides speak your language in this district",
-      "verifiedPartners": "Verified hiking partners"
+      "verifiedPartners": "Licensed hiking guides"
     },
     "realism": {
       "aria": "Day pacing hints",
@@ -1921,7 +1924,8 @@
       "selectDay": "Select day",
       "quickStartRegion": "Add places or use templates",
       "itineraryCopied": "Plan copied to clipboard",
-      "shareLinkCopied": "Share link copied to clipboard"
+      "shareLinkCopied": "Share link copied to clipboard",
+      "removedFromPlan": "{name} removed from your plan."
     },
     "daySelector": {
       "tabLabelWithCount": "Day {day} · {count}",
@@ -1934,7 +1938,7 @@
     "suggestedForDay": {
       "empty": "Add a place below to see suggestions that pair well with your day.",
       "pairWith": "Pair with…",
-      "worksWell": "Works well with what you&apos;ve added. Tap to add.",
+      "worksWell": "Works well with what you’ve added. Tap to add.",
       "addToDayAria": "Add {name} to day"
     },
     "sustainability": {
@@ -2142,7 +2146,7 @@
         "confirmedCount": "{count} confirmed"
       },
       "sync": {
-        "toggle": "Booked on another device? Load by email",
+        "toggle": "Check for confirmation updates — or load bookings by email",
         "submit": "Load bookings",
         "sendLookupLink": "Send lookup link",
         "resendLookupLink": "Resend link",
@@ -2187,7 +2191,7 @@
       "cta": {
         "viewTrails": "View trails",
         "viewWinery": "View winery",
-        "modify": "Modify",
+        "modify": "Request a change",
         "bookAgain": "Book again",
         "browseTrails": "Browse trails",
         "visitWineryPage": "Visit winery page",
@@ -2205,7 +2209,8 @@
       "meta": {
         "title": "My bookings | Cyprus Winter",
         "description": "View and manage your Cyprus Winter winery tastings and experiences. All bookings in one place. Sync from any device. Confirmations by email."
-      }
+      },
+      "cancelHint": "Need to change or cancel? Reply to your confirmation email or call the winery or guide directly — no charge either way."
     }
   },
   "account": {
@@ -2332,7 +2337,8 @@
       "villages": "Villages",
       "beaches": "Beaches",
       "cycling": "Cycling"
-    }
+    },
+    "resultsCount": "{count, plural, one {# suggestion available} other {# suggestions available}}"
   },
   "events": {
     "clearFilters": "Clear filters",
@@ -2736,10 +2742,11 @@
         "aria": "Booking trust information",
         "heading": "Before you submit",
         "verifiedRoute": "Verified {context} request route.",
-        "emailConfirm": "The partner usually confirms by email within 24 hours.",
+        "emailConfirm": "The partner usually confirms by email within 24–48 hours on weekdays.",
         "noCharge": "No payment is taken here. Providers confirm availability first.",
         "contextPartner": "partner",
-        "contextGuide": "guide"
+        "contextGuide": "guide",
+        "requestLoggedFallback": "Your request is saved here right away — to be sure, call the {context} or use their booking link below."
       },
       "progress": {
         "aria": "Booking progress",
@@ -2831,7 +2838,8 @@
       "hints": {
         "heading": "Before you book",
         "hoursLabel": "Hours:",
-        "bestTimeLabel": "Best time:"
+        "bestTimeLabel": "Best time:",
+        "offSeasonHours": "Call ahead Nov–Mar — hours are often shorter off-season."
       },
       "validation": {
         "dateRequired": "Choose a date in the future",
@@ -2946,9 +2954,9 @@
       "wineryList": {
         "meta": {
           "title": "Book a Wine Tasting | Cyprus Winter",
-          "description": "Browse verified Cyprus wineries and book a winter tasting. Cosy fires, the owner pouring, small groups. Book ahead — winter weekends fill."
+          "description": "Browse curated Cyprus wineries and book a winter tasting. Cosy fires, the owner pouring, small groups. Book ahead — winter weekends fill."
         },
-        "intro": "Browse our partner wineries and request a tasting. They'll confirm by email — usually within a day.",
+        "intro": "Browse our partner wineries and request a tasting. They'll confirm by email — usually within 24–48 hours on weekdays.",
         "ctaAria": "Book a tasting at {name}",
         "footerBrowseWineries": "Browse all wineries",
         "disclaimer": "For adults of legal drinking age. Drink responsibly.",
@@ -3007,13 +3015,13 @@
     "directory": {
       "meta": {
         "title": "Licensed Tourist Guides | Cyprus Winter",
-        "description": "Official Cyprus licensed tourist guides by district and language. Deputy Ministry of Tourism list — contact guides directly. Verified hiking partners available to book in-app."
+        "description": "Official Cyprus licensed tourist guides by district and language. Deputy Ministry of Tourism list — contact guides directly. Licensed hiking guides available to book in-app."
       },
       "title": "Licensed tourist guides",
       "breadcrumb": "Licensed guides",
       "pageNavAria": "Licensed guides directory",
       "intro": "{count} licensed guides from the official Visit Cyprus list (Aug 2026). Contact them directly — or book a verified winter hiking partner in-app.",
-      "verifiedPartnersLink": "Book verified hiking partners →",
+      "verifiedPartnersLink": "Book licensed hiking guides →",
       "disclaimer": "Licensed tourist guides registered with the Cyprus Deputy Ministry of Tourism. Cyprus Winter lists official contacts; booking and payment are directly with the guide.",
       "officialListLink": "Official list on Visit Cyprus",
       "searchLabel": "Search guides",
@@ -3056,7 +3064,7 @@
       "verifiedPartnerBadge": "Books in-app",
       "verifiedPartnerBook": "Request via Cyprus Winter",
       "footer": {
-        "hubBody": "Contact a licensed guide directly—or book a verified hiking partner in-app and add stops to your plan.",
+        "hubBody": "Contact a licensed guide directly—or book a licensed hiking guide in-app and add stops to your plan.",
         "trails": "Trail conditions"
       },
       "aria": {

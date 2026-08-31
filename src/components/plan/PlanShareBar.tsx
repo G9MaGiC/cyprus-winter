@@ -101,7 +101,6 @@ export default function PlanShareBar({
               linkCopied,
               `${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100`
             )}`}
-            aria-label={tPlan("share.copyLink")}
           >
             {linkCopied ? (
               <>
@@ -119,7 +118,6 @@ export default function PlanShareBar({
               copied,
               CTA.secondaryCompact
             )}`}
-            aria-label={tPlan("share.copyItinerary")}
           >
             {copied ? (
               <>
@@ -139,8 +137,7 @@ export default function PlanShareBar({
                   ? "bg-aegean/15 text-aegean border border-aegean/25"
                   : CTA.secondaryCompact
               }`}
-              aria-label={tPlan("share.downloadIcs")}
-            >
+              >
               {icsDownloaded ? tPlan("share.icsDownloaded") : tPlan("share.downloadIcs")}
             </button>
           )}

@@ -87,7 +87,8 @@
       "quickActions": "Acțiuni rapide",
       "reportConditionsForTrail": "Raportează condițiile acestui traseu",
       "dismissNotification": "Închide notificarea",
-      "notifications": "Notificări"
+      "notifications": "Notificări",
+      "addedToPlan": "Adăugat în planul tău."
     },
     "skipToContent": "Sari la conținut",
     "languageLabel": "Limbă:",
@@ -118,7 +119,8 @@
       "title": "Consimțământ cookies.",
       "body": "Folosim cookie-uri esențiale pentru serviciu și analize opționale. „Accept” permite analizele.",
       "accept": "Acceptă",
-      "learnMore": "Află mai mult"
+      "learnMore": "Află mai mult",
+      "srAnnounce": "Notificare cookie: alegeți Accept sau Doar esențiale în partea de jos a ecranului."
     },
     "shareColon": "Distribuie:",
     "bookTasting": "Rezervă o degustare",
@@ -349,7 +351,8 @@
       "heading": "Înainte să pleci",
       "allSet": "Totul e gata. Călătorie plăcută."
     },
-    "useMyLocationInstead": "Folosește locația mea"
+    "useMyLocationInstead": "Folosește locația mea",
+    "localeBetaHint": "Limbi beta: o parte din conținut poate apărea încă în engleză."
   },
   "home": {
     "title": "Cyprus Winter",
@@ -488,13 +491,13 @@
     },
     "trailConditionsStrip": {
       "aria": "Condiții pe traseele din Troodos — verifică starea înainte să pleci",
-      "heading": "Trasee astăzi",
+      "heading": "Trasee Troodos: situația de iarnă",
       "open": "{count} deschise",
       "caution": "{count} cu atenție",
       "closed": "{count} închise",
       "checkReports": "Vezi rapoartele",
       "goodToGo": "Traseele din Troodos sunt bune de parcurs",
-      "cautionOnly": "{count} trasee cer atenție",
+      "cautionOnly": "{count, plural, one {# traseu necesită atenție} few {# trasee necesită atenție} other {# de trasee necesită atenție}}",
       "withClosed": "{count} trasee închise — verifică înainte să pleci",
       "checkConditions": "Verifică condițiile pe trasee înainte de Troodos"
     },
@@ -1107,7 +1110,7 @@
       "whyNow": {
         "title": "De ce acum",
         "bestFor": "Ideal pentru {types}.",
-        "regionFlow": "{region} este o oprire practică pentru același flux de plan al zilei.",
+        "regionFlow": "Ușor de combinat cu alte opriri din {region} în aceeași zi.",
         "saveCompare": "Adăugați în plan pentru a-l combina cu un traseu sau sat din apropiere."
       },
       "visitTaste": {
@@ -1689,14 +1692,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "Condiții azi",
+      "heading": "Starea traseelor iarna",
       "ariaViewList": "Condiții trasee azi — vezi lista",
       "openCount": "{count} deschise",
       "cautionCount": "{count} cu prudență",
       "closedCount": "{count} închise",
       "noReports": "Verifică rapoartele",
       "goodToGo": "Pregătit de plecare",
-      "cautionOnly": "{count} trasee necesită prudență",
+      "cautionOnly": "{count, plural, one {# traseu necesită atenție} few {# trasee necesită atenție} other {# de trasee necesită atenție}}",
       "withClosed": "{count} trasee închise — verifică înainte de plecare",
       "checkConditions": "Verifică condițiile"
     },
@@ -1785,7 +1788,7 @@
     "pageTitle": "Planifică-ți iarna în Cipru",
     "pageDescHasContent": "Planul tău. Adaugă, distribuie sau ajustează mai jos.",
     "pageDescEmpty": "Construiește un plan de iarnă. Alege un șablon sau adaugă locuri pe zile.",
-    "pageDescSecondaryEmpty": "Se salvează automat.",
+    "pageDescSecondaryEmpty": "Se salvează automat pe acest dispozitiv.",
     "mapTitle": "Planul tău pe hartă",
     "mapCollapsibleHint": "Opriri și context rutier pe harta insulei",
     "addMoreCollapsibleTitle": "Adaugă mai mult în plan",
@@ -1806,7 +1809,7 @@
     "combosCollapsibleSubtitle": "Combinații dimineață și după-amiază care curg",
     "placesCount": "{count, plural, one {# loc} other {# locuri}}",
     "addAnotherStopHint": "Adaugă o oprire sau schimbă ziua mai sus.",
-    "autoSaved": "Salvat automat",
+    "autoSaved": "Salvat automat pe acest dispozitiv",
     "addFailedAlert": {
       "message": "Locul nu mai e pe lista noastră.",
       "browseDiscoverLabel": "Răsfoiește Descoperă",
@@ -1831,7 +1834,7 @@
       "directoryCta": "Găsește un ghid licențiat",
       "browseLicensed": "Răsfoiește ghizii licențiați",
       "directoryCount": "{count} ghizi vorbesc limba ta în acest district",
-      "verifiedPartners": "Parteneri de drumeție verificați"
+      "verifiedPartners": "Ghizi montani licențiați"
     },
     "realism": {
       "aria": "Indicii de ritm pentru zi",
@@ -1921,7 +1924,8 @@
       "selectDay": "Alege ziua",
       "quickStartRegion": "Adaugă locuri sau folosește șabloane",
       "itineraryCopied": "Plan copiat în clipboard",
-      "shareLinkCopied": "Link de distribuire copiat în clipboard"
+      "shareLinkCopied": "Link de distribuire copiat în clipboard",
+      "removedFromPlan": "{name} a fost eliminat din plan."
     },
     "daySelector": {
       "tabLabelWithCount": "Ziua {day} · {count}",
@@ -2142,7 +2146,7 @@
         "confirmedCount": "{count} confirmate"
       },
       "sync": {
-        "toggle": "Ai rezervat pe alt dispozitiv? Încarcă prin email",
+        "toggle": "Verifică confirmările — sau încarcă rezervările prin email",
         "submit": "Încarcă rezervările",
         "sendLookupLink": "Trimite linkul",
         "resendLookupLink": "Retrimite linkul",
@@ -2187,7 +2191,7 @@
       "cta": {
         "viewTrails": "Vezi trasee",
         "viewWinery": "Vezi cramă",
-        "modify": "Modifică",
+        "modify": "Cere o modificare",
         "bookAgain": "Rezervă din nou",
         "browseTrails": "Vezi trasee",
         "visitWineryPage": "Pagina cramei",
@@ -2205,7 +2209,8 @@
       "meta": {
         "title": "Rezervările mele | Cyprus Winter",
         "description": "Degustări și experiențe. Toate într-un loc."
-      }
+      },
+      "cancelHint": "Vrei să modifici sau să anulezi? Răspunde la emailul de confirmare sau sună direct crama ori ghidul — fără costuri în ambele cazuri."
     }
   },
   "account": {
@@ -2332,7 +2337,8 @@
       "villages": "Sate",
       "beaches": "Plaje",
       "cycling": "Ciclism"
-    }
+    },
+    "resultsCount": "{count, plural, one {# sugestie disponibilă} few {# sugestii disponibile} other {# de sugestii disponibile}}"
   },
   "events": {
     "clearFilters": "Șterge filtrele",
@@ -2736,10 +2742,11 @@
         "aria": "Informații de încredere pentru rezervare",
         "heading": "Înainte de trimitere",
         "verifiedRoute": "Rută de cerere {context} verificată.",
-        "emailConfirm": "Confirmarea ajunge de obicei pe email în 24 de ore.",
+        "emailConfirm": "Partenerul confirmă de obicei prin email în 24–48 de ore, în zilele lucrătoare.",
         "noCharge": "Nu se ia nicio plată aici. Furnizorii confirmă mai întâi disponibilitatea.",
         "contextPartner": "partener",
-        "contextGuide": "ghid"
+        "contextGuide": "ghid",
+        "requestLoggedFallback": "Cererea ta se salvează aici imediat — pentru siguranță, sună {context} sau folosește linkul de rezervare de mai jos."
       },
       "progress": {
         "aria": "Progresul rezervării",
@@ -2895,7 +2902,8 @@
       "hints": {
         "heading": "Înainte de rezervare",
         "hoursLabel": "Program:",
-        "bestTimeLabel": "Cel mai bun moment:"
+        "bestTimeLabel": "Cel mai bun moment:",
+        "offSeasonHours": "Sună înainte (nov–mar) — în extrasezon programul e adesea mai scurt."
       }
     },
     "pages": {
@@ -2946,9 +2954,9 @@
       "wineryList": {
         "meta": {
           "title": "Rezervă o degustare | Cyprus Winter",
-          "description": "Răsfoiește crame verificate din Cipru și rezervă o degustare de iarnă. Focuri calde, proprietarul toarnă, grupuri mici. Rezervă din timp — weekendurile de iarnă se umplu."
+          "description": "Răsfoiește crame selectate din Cipru și rezervă o degustare de iarnă. Focuri calde, proprietarul toarnă, grupuri mici. Rezervă din timp — weekendurile de iarnă se umplu."
         },
-        "intro": "Răsfoiește cramele partenere și cere o degustare. Vor confirma pe email — de obicei într-o zi.",
+        "intro": "Răsfoiește cramele partenere și cere o degustare. Vor confirma pe email — de obicei în 24–48 de ore, în zilele lucrătoare.",
         "ctaAria": "Rezervă o degustare la {name}",
         "footerBrowseWineries": "Răsfoiește toate cramele",
         "disclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil.",
@@ -3043,7 +3051,7 @@
       "breadcrumb": "Ghiduri licențiate",
       "pageNavAria": "Director ghizi licențiați",
       "intro": "{count} ghiduri licențiate din lista oficială Visit Cyprus (aug. 2026). Contactează-i direct — sau rezervă un partener de drumeție de iarnă verificat în aplicație.",
-      "verifiedPartnersLink": "Rezervă parteneri verificați →",
+      "verifiedPartnersLink": "Rezervă un ghid licențiat →",
       "disclaimer": "Ghiduri turistice licențiate înregistrate la Vice-ministerul Turismului din Cipru. Cyprus Winter listează contacte oficiale; rezervarea și plata se fac direct cu ghidul.",
       "officialListLink": "Listă oficială pe Visit Cyprus",
       "searchLabel": "Caută ghiduri",
@@ -3086,7 +3094,7 @@
       "verifiedPartnerBadge": "Rezervare în aplicație",
       "verifiedPartnerBook": "Cerere prin Cyprus Winter",
       "footer": {
-        "hubBody": "Contactează un ghid licențiat direct — sau rezervă un partener verificat în aplicație și adaugă opriri în plan.",
+        "hubBody": "Contactează un ghid licențiat direct — sau rezervă un ghid montan licențiat în aplicație și adaugă opriri în plan.",
         "trails": "Condiții pe trasee"
       },
       "aria": {

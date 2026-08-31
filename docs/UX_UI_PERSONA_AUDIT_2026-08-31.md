@@ -23,6 +23,16 @@
 
 ---
 
+## 0.1 Remediation status (fix pass, same day / same branch)
+
+A fix pass followed the audit on this branch. **Fixed and re-verified against the full gate suite:** AUD-01 (trust copy gated on `isPartnerVerified`, fabricated guide phones suppressed incl. JSON-LD, "verified partner" wording → "licensed guides" across surfaces, SLA unified to 24–48h weekdays ×7 locales), AUD-02 (ItineraryCard actions wrap under the title on mobile), AUD-03 (add-failure via React state), AUD-04 (family Day 1 → Konnos Bay + coast↔coast realism warning), AUD-05 (Escape handler guarded; desktop More restores focus), AUD-06 (banner portals to an early-body anchor, announces on appear, blocked Ask-AI presses focus the banner), AUD-07 (add/remove announced via SRStatus, focus handed to "View plan", slug-leaking aria-labels removed), AUD-08 (auto status re-check on mount + retitled sync toggle), AUD-09 (cancel/change guidance + "Modify" → "Request a change"), AUD-12 (list headings de-scoped from "today" to winter-status framing), AUD-13 (cross-language search aliases de/pl/el/he/ro/fr), AUD-15 (`max-w-full` on the detail map), AUD-16, AUD-17, AUD-20 (dead Toast/Skeleton/LoadingOverlay deleted; `UX_PATTERNS.md` corrected), AUD-22, AUD-24 (server errors localized by code ×7), AUD-28 (partial: `color-scheme: light` declared + decision recorded), AUD-40…45, AUD-47, AUD-50…55, and the EventCard chip-shape drift from AUD-57.
+
+**Correction to the register:** AUD-20 originally claimed `LAYER.toast` was orphaned — it is consumed by `InstallPromptBanner`; the token stays (its doc comment now names the consumer). The dead-component half of the finding stands and is fixed.
+
+**Deliberately not fixed here (need product/editorial/supply decisions or are projects):** AUD-10 (native data-layer content — the §6.2 top project), AUD-11, AUD-14 (workation restructure), AUD-18 (locale switcher entry point), AUD-19 (tier-1 headline decision), AUD-21, AUD-23, AUD-25 (per-locale advisory URLs need verified sources), AUD-26, AUD-27 (menu-semantics rework beyond the Escape fixes), AUD-46, AUD-48, AUD-49, AUD-56, AUD-58, AUD-59, and the §5 known-open ledger.
+
+---
+
 ## 1. Executive scorecard — vs `docs/SCORECARD.md` (2026-08-24, self-rated 4.7/5)
 
 | Dimension | Self | Audit | Why (finding IDs) |
@@ -156,7 +166,7 @@ Personas: all · Stage: Plan · Dedupe: NEW (grep "one letter", "vertical", "pla
 | AUD-17 | SearchBar Escape blurs the input (APG: keep focus); populated listbox has no result-count announcement | `[S]` `src/components/SearchBar.tsx:72-77,142-168` | A11Y-01 | y |
 | AUD-18 | Locale switcher is footer-only — measured ~23,400px of scroll on /he/trails@375; prefixed wrong-locale landers get zero UI affordance (Accept-Language 307 works on unprefixed first visit only) | `[S]` `src/components/LocaleLinks.tsx` sole mount `[L]` measured | IL-01, RO-01, Nadia | n |
 | AUD-19 | Tier-1 home headline is a different copy generation: el/de/pl carry "Escape the cold…" while en/he/ro/fr carry "A quieter side of the island."; the editorial-drift gate guards beta locales only — intent unverifiable, needs an editorial decision either way | `[S]` `messages/{el,de,pl}.json` `home.headline` vs en/he/ro/fr | Local, DE, PL | y (decide + extend gate) |
-| AUD-20 | The documented feedback layer is dead code: `ui/Toast.tsx` (+`useToast`), `ui/Skeleton.tsx`, `ui/LoadingOverlay.tsx` have zero importers; `LAYER.toast z-[95]` orphaned; `docs/UX_PATTERNS.md` documents a system that never mounts (its warning variant would fail AA if it ever did) | `[S]` verified zero importers | all | y (delete or mount) |
+| AUD-20 | The documented feedback layer is dead code: `ui/Toast.tsx` (+`useToast`), `ui/Skeleton.tsx`, `ui/LoadingOverlay.tsx` have zero importers; `docs/UX_PATTERNS.md` documents a system that never mounts (its warning variant would fail AA if it ever did). *Correction: `LAYER.toast` is NOT orphaned — `InstallPromptBanner` uses it; token kept.* | `[S]` verified zero importers | all | y (delete or mount) |
 | AUD-21 | Offline queue keeps only half its promise: non-retryable failures are silently discarded; successful retries never appear in /bookings | `[S]` `src/lib/offline-queue.ts:106-114` | UK-01, PERF-01 | n |
 | AUD-22 | "Auto-saved" / "Saves automatically." overstate durability — plan + bookings are this-browser-only; no save nudge at booking success; clearing site data destroys both unwarned | `[S]` `PlanShareBar.tsx:88`; `PlanPageClient.tsx:355` | UK-01, DE-01 | y ("on this device" + one success-screen sync line) |
 | AUD-23 | No price signal on guide booking or plan (winery-only "from €" shipped); PL-01's budget lens unanswered | `[S]` `src/data/guides.ts:3-22` (no guest price field) | PL-01, RO-01 | y (guides) |
@@ -242,39 +252,39 @@ Formatted per `docs/QA_PLAN.md` §5; SLA class per §6 (Critical = before launch
 ```markdown
 ### [BUG-354] Booking trust strip claims verified 24h email route while no partner email is deliverable
 **Severity:** Critical  **Area:** Functional/Trust  **Page/Component:** /book/winery/[id], /book/guide/[id], PlanGuideBar, BookingTrustStrip
-Reproduction: open any booking form → trust strip shows "Verified … request route." + "confirms by email within 24 hours"; all partnerEmail values are .example (partner-verification.ts); api never sends. Expected: claims gated on isPartnerVerified(); honest fallback. Fix status: Open (audit 2026-08-31, AUD-01)
+Reproduction: open any booking form → trust strip shows "Verified … request route." + "confirms by email within 24 hours"; all partnerEmail values are .example (partner-verification.ts); api never sends. Expected: claims gated on isPartnerVerified(); honest fallback. Fix status: Fixed on this branch (audit 2026-08-31, AUD-01)
 
 ### [BUG-355] /plan itinerary item names render one letter per line at 375px
 **Severity:** Critical  **Area:** Visual/Mobile  **Page/Component:** /plan, ItineraryCard
-Reproduction: add 2+ places, view /plan at 375px → title column ~8px, name renders vertically (en + he). Expected: readable name; actions wrap below. Fix status: Open (AUD-02)
+Reproduction: add 2+ places, view /plan at 375px → title column ~8px, name renders vertically (en + he). Expected: readable name; actions wrap below. Fix status: Fixed on this branch (AUD-02)
 
 ### [BUG-356] GF6 regression: /plan?add=<invalid-id> shows no failure alert until reload
 **Severity:** High  **Area:** Functional  **Page/Component:** /plan, usePlanUrlActions, plan-url-params
-Fix status: Open (AUD-03)
+Fix status: Fixed on this branch (AUD-03)
 
 ### [BUG-357] Family template Day 1 spans Protaras↔Paphos with no realism warning (coast↔coast blind spot)
 **Severity:** High  **Area:** Functional/Content  **Page/Component:** itinerary-templates.ts, plan-realism.ts
-Fix status: Open (AUD-04)
+Fix status: Fixed on this branch (AUD-04)
 
 ### [BUG-358] Global Escape handler steals focus to hamburger on every Escape (<lg)
 **Severity:** High  **Area:** A11y  **Page/Component:** Nav.tsx
-Fix status: Open (AUD-05)
+Fix status: Fixed on this branch (AUD-05)
 
 ### [BUG-359] Cookie consent banner unreachable by announcement, last in DOM, silently disables Ask AI
 **Severity:** High  **Area:** A11y  **Page/Component:** CookieConsentBanner, ClientComponents, AIAssistant
-Fix status: Open (AUD-06)
+Fix status: Fixed on this branch (AUD-06)
 
 ### [BUG-360] Core plan add/remove silent + focus-dropping for assistive tech; aria-labels leak raw ids
 **Severity:** High  **Area:** A11y  **Page/Component:** AddToItineraryButton, DayContentPanel, ItineraryCard
-Fix status: Open (AUD-07)
+Fix status: Fixed on this branch (AUD-07)
 
 ### [BUG-361] /bookings never re-fetches on the booking device; pending status stale forever; no status emails
 **Severity:** High  **Area:** Functional  **Page/Component:** /bookings, partner PATCH, email.ts
-Fix status: Open (AUD-08)
+Fix status: Fixed on this branch (AUD-08)
 
 ### [BUG-362] No guest cancel/change path; "Modify" files a duplicate request
 **Severity:** High  **Area:** Functional/Trust  **Page/Component:** /bookings
-Fix status: Open (AUD-09)
+Fix status: Fixed on this branch (AUD-09)
 
 ### [BUG-363] Curated data-layer content (winery hours/notes, attraction backstories, gem tips) is EN in all locales
 **Severity:** High  **Area:** i18n  **Page/Component:** src/data/*, /de|el|pl|he book + detail surfaces

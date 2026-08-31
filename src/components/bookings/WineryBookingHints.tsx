@@ -1,6 +1,5 @@
 "use client";
 
-import { WINERY_OFF_SEASON_HOURS } from "@/data/wineries";
 import { useTranslations } from "next-intl";
 
 type WineryBookingHintsProps = {
@@ -28,7 +27,7 @@ export default function WineryBookingHints({
           <span className="text-muted-ink">{t("hints.bestTimeLabel")}</span> {bestTimeToVisit}
         </p>
       )}
-      <p className="text-muted-ink break-words">{WINERY_OFF_SEASON_HOURS}</p>
+      <p className="text-muted-ink break-words">{t("hints.offSeasonHours")}</p>
     </div>
   );
 }

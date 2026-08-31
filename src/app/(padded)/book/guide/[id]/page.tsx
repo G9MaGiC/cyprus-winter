@@ -109,7 +109,7 @@ export default async function GuideBookPage({
 
       <GuideBookingForm guide={guide} preselectedTrailId={trail ?? undefined} />
 
-      {(guide.bookingUrl || guide.contactPhone) && (
+      {(guide.bookingUrl || (guide.contactPhone && isPartnerVerified(guide))) && (
         <section className={`${SECTION.blockTop} space-y-4`} aria-label={tBookPages("otherWaysAria")}>
           {guide.bookingUrl && (
             <p className="text-sm text-muted-ink">
@@ -125,7 +125,7 @@ export default async function GuideBookPage({
               </a>
             </p>
           )}
-          {guide.contactPhone && (
+          {guide.contactPhone && isPartnerVerified(guide) && (
             <p className="text-sm text-muted-ink">
               {tBookPages("guideDetail.other.callPrefix")}{" "}
               <a
@@ -154,7 +154,9 @@ export default async function GuideBookPage({
               addressCountry: "CY",
             },
             ...(imageUrl ? { image: imageUrl } : {}),
-            ...(guide.contactPhone ? { telephone: guide.contactPhone } : {}),
+            ...(guide.contactPhone && isPartnerVerified(guide)
+              ? { telephone: guide.contactPhone }
+              : {}),
             ...(guide.bookingUrl ? { sameAs: [guide.bookingUrl] } : {}),
             url: canonicalUrl,
             serviceType: tBookPages("guideDetail.jsonLd.serviceType"),

@@ -101,6 +101,35 @@ export default function BookingsPage() {
     }, 5000);
   };
 
+  // Auto-check for status updates once per visit: with localStorage-only reads a
+  // "pending" badge stays stale forever on the very device that booked (BUG-361).
+  // Silent best-effort — any failure keeps the local view.
+  const autoRefreshedRef = useRef(false);
+  useEffect(() => {
+    if (loading || autoRefreshedRef.current) return;
+    if (authConfigured && !session?.access_token) return;
+    const email = bookings.find((b) => b.guestEmail)?.guestEmail;
+    const hasPending = bookings.some((b) => b.status === "pending");
+    if (!email || !hasPending) return;
+    autoRefreshedRef.current = true;
+    (async () => {
+      try {
+        const headers = session?.access_token
+          ? { Authorization: `Bearer ${session.access_token}` }
+          : undefined;
+        const res = await fetch(`/api/bookings?email=${encodeURIComponent(email)}`, { headers });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!isMountedRef.current) return;
+        applyRemoteBookings((data.bookings ?? []) as Booking[]);
+      } catch {
+        // offline or rate-limited — local view stays authoritative
+      }
+    })();
+    // applyRemoteBookings is stable enough for a fire-once effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, bookings, authConfigured, session?.access_token]);
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const email = params.get("email");
@@ -465,6 +494,13 @@ export default function BookingsPage() {
                   {tBookingsPage("tomorrowHighlight.body")}
                 </p>
               </div>
+            )}
+
+            {/* Change/cancel guidance — there is no in-app cancel flow (BUG-362) */}
+            {upcoming.length > 0 && (
+              <p className="mb-6 text-sm text-muted-ink">
+                {tBookingsPage("cancelHint")}
+              </p>
             )}
 
             {/* Upcoming — grouped by Today / This week / Later */}

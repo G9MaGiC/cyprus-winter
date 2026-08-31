@@ -17,14 +17,17 @@ export default function WineryBookingForm({
   wineryName,
   openingHours,
   bestTimeToVisit,
+  partnerVerified = false,
 }: {
   wineryId: string;
   wineryName: string;
   openingHours?: string;
   bestTimeToVisit?: string;
+  partnerVerified?: boolean;
 }) {
   const t = useTranslations("book.wineryForm");
   const tForm = useTranslations("book.form");
+  const tApiErrors = useTranslations("errors.api");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
 
@@ -60,6 +63,13 @@ export default function WineryBookingForm({
       failed: t("errors.failed"),
       fallback: t("errors.fallback"),
       offlineQueued: t("errors.offlineQueued"),
+      apiByCode: {
+        VALIDATION_ERROR: tApiErrors("VALIDATION_ERROR"),
+        BAD_REQUEST: tApiErrors("BAD_REQUEST"),
+        RATE_LIMITED: tApiErrors("RATE_LIMITED"),
+        SERVICE_UNAVAILABLE: tApiErrors("SERVICE_UNAVAILABLE"),
+        SERVER_ERROR: tApiErrors("SERVER_ERROR"),
+      },
     }
   );
 
@@ -125,7 +135,7 @@ export default function WineryBookingForm({
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
       <BookingProgressStepper currentStep={loading ? 2 : 1} />
-      <BookingTrustStrip variant="winery" />
+      <BookingTrustStrip variant="winery" verified={partnerVerified} />
       <WineryBookingHints openingHours={openingHours} bestTimeToVisit={bestTimeToVisit} />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-muted-ink">
         <p>

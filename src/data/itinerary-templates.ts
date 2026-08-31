@@ -96,7 +96,7 @@ export const ITINERARY_TEMPLATES: ItineraryTemplateMeta[] = [
     bookingNote: "Sterna Boutique—reserve family tasting; call 24h ahead in winter.",
     hasWineries: true,
     days: {
-      1: ["fig-tree-bay", "coral-bay"],
+      1: ["fig-tree-bay", "konnos-bay"],
       2: ["choirokoitia", "lefkara"],
       3: ["caledonia-falls", "kakopetria"],
       4: ["leventis-museum", "platres"],

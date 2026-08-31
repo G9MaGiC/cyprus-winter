@@ -18,6 +18,7 @@ export default function Nav() {
   const moreMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
   const closeMobileMenu = useCallback(() => {
     setOpen(false);
     requestAnimationFrame(() => mobileMenuButtonRef.current?.focus());
@@ -35,15 +36,21 @@ export default function Nav() {
   const allLinks = [...navPrimaryLinks, ...moreLinksResolved];
 
   useEffect(() => {
+    // Only act when one of our menus is actually open — an unconditional handler
+    // steals focus from every modal's own Escape restore (BUG-358 / AUD-05).
+    if (!open && !moreOpen) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        closeMobileMenu();
-        setMoreOpen(false);
+        if (open) closeMobileMenu();
+        if (moreOpen) {
+          setMoreOpen(false);
+          requestAnimationFrame(() => moreButtonRef.current?.focus());
+        }
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [closeMobileMenu]);
+  }, [closeMobileMenu, open, moreOpen]);
 
   useEffect(() => {
     if (!moreOpen || !moreMenuRef.current) return;
@@ -137,6 +144,7 @@ export default function Nav() {
           <div className="relative">
             <button
               type="button"
+              ref={moreButtonRef}
               onClick={() => setMoreOpen(!moreOpen)}
               aria-expanded={moreOpen}
               aria-haspopup="true"

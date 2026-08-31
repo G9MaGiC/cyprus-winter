@@ -70,7 +70,7 @@ export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
  * - popover: home skip nav, menus (`z-[45]`)
  * - modal: AI assistant panel when open (`z-50`)
  * - cookieBanner: CookieConsentBanner (`z-[90]`)
- * - toast: ToastContainer (`z-[95]`)
+ * - toast: transient banners above cookie chrome — used by InstallPromptBanner (`z-[95]`)
  * - onboarding: OnboardingModal (`z-[100]`)
  * - stickyPlaceBar: StickyAddToPlanBar, TrailDetailStickyActions (`z-30`–`z-40`)
  */
@@ -85,10 +85,10 @@ export const LAYER = {
   topOverlay: "z-[70]",
   /** Cookie consent banner — above chrome, below onboarding. */
   cookieBanner: "z-[90]",
+  toast: "z-[95]",
   /** First-run onboarding sheet — top of blocking stack. */
   onboarding: "z-[100]",
   /** Toasts — above cookie banner, below onboarding. */
-  toast: "z-[95]",
   /** Mobile sticky place actions below nav, above content. */
   stickyPlaceBar: "z-30",
   /** Sticky content: filter bars, day selectors, in-page sticky headers. */
