@@ -11,6 +11,7 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { isPartnerVerified } from "@/lib/partner-verification";
+import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
@@ -111,9 +112,25 @@ export default async function WineriesPage() {
       <h2 id="wineries-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
         {tWineries("listTitle")}
       </h2>
-      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
+      {/* Region facets over the ~50-card flat scroll (AUD-68). Server still
+          renders every card; the bar only shows/hides them. */}
+      {(() => {
+        const districtOf = (region: string) => /\(([^)]+)\)\s*$/.exec(region)?.[1] ?? region;
+        const counts = new Map<string, number>();
+        for (const w of wineries) {
+          const d = districtOf(w.region);
+          counts.set(d, (counts.get(d) ?? 0) + 1);
+        }
+        const groups: HubFilterGroup[] = [...counts.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .map(([value, count]) => ({ value, label: value, count }));
+        return <HubRegionFilter containerId="wineries-all-grid" groups={groups} total={wineries.length} />;
+      })()}
+      <div id="wineries-all-grid" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {wineries.map((winery) => (
-          <AttractionCard key={winery.id} a={winery} bookFrom="wineries" />
+          <div key={winery.id} data-hub-group={/\(([^)]+)\)\s*$/.exec(winery.region)?.[1] ?? winery.region}>
+            <AttractionCard a={winery} bookFrom="wineries" />
+          </div>
         ))}
       </div>
 

@@ -22,20 +22,21 @@ describe("locale-seo", () => {
     expect(Object.keys(langs).length).toBe(routing.locales.length + 1);
   });
 
-  it("buildPathAlternates matches active locale canonical", () => {
-    const a = buildPathAlternates("/events", "de");
-    expect(a.canonical).toBe(`${SITE_URL}/de/events`);
+  it("buildPathAlternates canonicalizes to the unprefixed default-locale URL (Strategy A, AUD-117)", () => {
+    const a = buildPathAlternates("/events");
+    expect(a.canonical).toBe(`${SITE_URL}/events`);
     expect(a.languages?.de).toBe(`${SITE_URL}/de/events`);
   });
 
-  it("applyLocaleToMetadata sets canonical and openGraph.url", () => {
+  it("applyLocaleToMetadata sets Strategy-A canonical and openGraph.url; locale URL stays in hreflang", () => {
     const out = applyLocaleToMetadata(
       { title: "T", openGraph: { title: "T", type: "website" } },
       "/search",
       "pl"
     );
-    expect(out.alternates?.canonical).toBe(`${SITE_URL}/pl/search`);
-    expect(out.openGraph?.url).toBe(`${SITE_URL}/pl/search`);
+    expect(out.alternates?.canonical).toBe(`${SITE_URL}/search`);
+    expect(out.openGraph?.url).toBe(`${SITE_URL}/search`);
+    expect(out.openGraph?.locale).toBe("pl_PL");
     expect(out.alternates?.languages?.pl).toBe(`${SITE_URL}/pl/search`);
   });
 });

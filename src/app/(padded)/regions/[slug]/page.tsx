@@ -145,11 +145,13 @@ export default async function RegionPage({ params }: Props) {
       <PageHeader
         backHref="/"
         backLabel={tNav("home")}
-        title={config.title}
-        description={config.description}
+        // Localized human intro, not the EN keyword string regions.ts keeps
+        // for search snippets (AUD-69).
+        title={tPage(`regions.${config.slug}.title`)}
+        description={tPage(`regions.${config.slug}.intro`)}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
-          { label: config.title, href: `/regions/${config.slug}`, isCurrent: true },
+          { label: tPage(`regions.${config.slug}.title`), href: `/regions/${config.slug}`, isCurrent: true },
         ]}
       />
 

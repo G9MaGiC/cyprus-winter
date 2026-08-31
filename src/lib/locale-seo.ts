@@ -33,12 +33,13 @@ export function alternateLanguageUrls(path: string): Record<string, string> {
   return languages;
 }
 
-export function buildPathAlternates(
-  path: string,
-  activeLocale: string
-): NonNullable<Metadata["alternates"]> {
+export function buildPathAlternates(path: string): NonNullable<Metadata["alternates"]> {
   return {
-    canonical: absoluteUrlForLocale(path, activeLocale),
+    // Strategy A (docs/INTERNATIONAL_SEO.md): ONE canonical — the unprefixed
+    // default-locale URL — for every locale variant; locale URLs live in
+    // hreflang only. Self-canonicalizing locale pages were the Strategy-B
+    // half of the split-brain (AUD-117).
+    canonical: absoluteUrlForLocale(path, routing.defaultLocale),
     languages: alternateLanguageUrls(path),
   };
 }
@@ -63,14 +64,15 @@ export function ogLocaleFor(locale: string): string {
 
 /**
  * Set canonical, hreflang, openGraph.url and og:locale for a segment
- * (default or locale-prefixed).
+ * (default or locale-prefixed). Canonical + og:url follow Strategy A —
+ * the unprefixed default-locale URL, matching `buildStrategyAAlternates`.
  */
 export function applyLocaleToMetadata(
   base: Metadata,
   pathWithoutLocale: string,
   locale: string
 ): Metadata {
-  const canonical = absoluteUrlForLocale(pathWithoutLocale, locale);
+  const canonical = absoluteUrlForLocale(pathWithoutLocale, routing.defaultLocale);
   const languages = alternateLanguageUrls(pathWithoutLocale);
   return {
     ...base,

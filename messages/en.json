@@ -354,7 +354,12 @@
       "allSet": "All set. Have a safe trip."
     },
     "useMyLocationInstead": "Use my location instead",
-    "localeBetaHint": "Beta languages: some content may still appear in English."
+    "localeBetaHint": "Beta languages: some content may still appear in English.",
+    "hubFilter": {
+      "all": "All regions",
+      "aria": "Filter by region",
+      "showing": "{count} of {total} shown"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1782,7 +1787,12 @@
       "peak-views": "Peak views",
       "full-day": "Full-day challenges"
     },
-    "bestConditionsNow": "Best conditions now"
+    "bestConditionsNow": "Best conditions now",
+    "routeTypes": {
+      "loop": "Loop",
+      "outAndBack": "Out & back",
+      "pointToPoint": "Point to point"
+    }
   },
   "plan": {
     "addToPlan": "Add to plan",
@@ -2459,6 +2469,28 @@
         "beaches": "Beaches",
         "wineries": "Wineries",
         "monasteries": "Monasteries & churches"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Troodos Mountains in Winter",
+          "intro": "Pine-forest trails, painted churches and wine villages under Olympus — with a small ski scene when the snow lands. This is Cyprus's winter heart."
+        },
+        "paphos": {
+          "title": "Paphos Winter",
+          "intro": "Mild coast, deep history: Coral Bay walks, the Pafos mosaics, the Adonis Trail and the Laona wine villages — all within an easy winter drive."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa & Cape Greco Winter",
+          "intro": "The east coast at its quietest: empty Nissi and Fig Tree Bay sand, the Cape Greco coastal path and sea caves in soft winter light."
+        },
+        "larnaca": {
+          "title": "Larnaca Winter",
+          "intro": "Lefkara lace, ancient Kition and Hala Sultan Tekke on the salt lake — flamingo season — with easy day trips into the hills."
+        },
+        "limassol": {
+          "title": "Limassol Winter",
+          "intro": "Kourion above the sea, Kolossi castle and the Krasochoria wine villages — Commandaria country — plus carnival and the marathon as winter turns to spring."
+        }
       }
     }
   },

@@ -354,7 +354,12 @@
       "allSet": "Alles erledigt. Gute Reise."
     },
     "useMyLocationInstead": "Stattdessen meinen Standort verwenden",
-    "localeBetaHint": "Beta-Sprachen: Einige Inhalte können noch auf Englisch erscheinen."
+    "localeBetaHint": "Beta-Sprachen: Einige Inhalte können noch auf Englisch erscheinen.",
+    "hubFilter": {
+      "all": "Alle Regionen",
+      "aria": "Nach Region filtern",
+      "showing": "{count} von {total} angezeigt"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1782,7 +1787,12 @@
       "peak-views": "Gipfelblicke",
       "full-day": "Ganztags-Herausforderungen"
     },
-    "bestConditionsNow": "Beste Bedingungen jetzt"
+    "bestConditionsNow": "Beste Bedingungen jetzt",
+    "routeTypes": {
+      "loop": "Rundweg",
+      "outAndBack": "Hin und zurück",
+      "pointToPoint": "Streckenwanderung"
+    }
   },
   "plan": {
     "addToPlan": "Zum Plan hinzufügen",
@@ -3378,6 +3388,28 @@
         "beaches": "Strände",
         "wineries": "Weingüter",
         "monasteries": "Klöster und Kirchen"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Das Troodos-Gebirge im Winter",
+          "intro": "Kiefernwald-Trails, bemalte Kirchen und Weindörfer unterhalb des Olymp — dazu etwas Ski, wenn der Schnee liegt. Das winterliche Herz Zyperns."
+        },
+        "paphos": {
+          "title": "Paphos im Winter",
+          "intro": "Milde Küste, tiefe Geschichte: Spaziergänge an der Coral Bay, die Mosaiken von Paphos, der Adonis-Trail und die Weindörfer der Laona — alles in kurzer Winterfahrt erreichbar."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa & Kap Greco im Winter",
+          "intro": "Die Ostküste in ihrer ruhigsten Zeit: leerer Sand an Nissi und Fig Tree Bay, der Küstenpfad am Kap Greco und Meereshöhlen in weichem Winterlicht."
+        },
+        "larnaca": {
+          "title": "Larnaka im Winter",
+          "intro": "Lefkara-Spitze, das antike Kition und die Hala-Sultan-Tekke am Salzsee — Flamingozeit — mit einfachen Tagesausflügen in die Hügel."
+        },
+        "limassol": {
+          "title": "Limassol im Winter",
+          "intro": "Kourion über dem Meer, die Burg Kolossi und die Krasochoria-Weindörfer — Commandaria-Land — dazu Karneval und Marathon, wenn der Winter in den Frühling übergeht."
+        }
       }
     }
   },

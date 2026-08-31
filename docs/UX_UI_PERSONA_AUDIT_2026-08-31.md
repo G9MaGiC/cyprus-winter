@@ -373,8 +373,8 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-65 | Med | Soft 404s: every invalid dynamic slug (7 routes verified) serves the not-found page with HTTP 200 — streaming shell commits status before `notFound()` | ⏳ **architecture constraint, experiment recorded:** `dynamicParams=false` is inert because every route renders dynamically — the root layout's `getLocale()` (cookie-based locale on unprefixed URLs) forces request-time rendering, and `setRequestLocale` on pages can't override the root. Real 404s need a locale-detection redesign (= AUD-113) |
 | AUD-66 | Med | `/install` is a developer deployment guide shipped as a public 7-locale route; `sitemap.ts` listed it while robots+meta forbid indexing | ◐ sitemap entry removed; route content is a product decision |
 | AUD-67 | Med | Legal/GDPR contact addresses live on the unattached `cypruswinter.com` domain (no MX) — privacy/terms advertise unreachable mailboxes | ⏳ supply: needs a real mailbox |
-| AUD-68 | Med | Mega-hub flat scrolls at 375px: `/wineries` 47,974px, `/secrets` 33,989px, `/villages` 30,123px — zero facets or in-page nav (unlike `/discover`, `/events`) | ⏳ hub-facets project |
-| AUD-69 | Med | Region hub lede is keyword-stuffed meta copy rendered as the visible intro, EN-only ×7 (`regions.ts` feeds both metadata and PageHeader) | ⏳ editorial + data-layer i18n (AUD-10 class) |
+| AUD-68 | Med | Mega-hub flat scrolls at 375px: `/wineries` 47,974px, `/secrets` 33,989px, `/villages` 30,123px — zero facets or in-page nav (unlike `/discover`, `/events`) | ✅ shared `HubRegionFilter` chips on all three (progressive enhancement — server renders every card, the bar shows/hides via `data-hub-group`, live count announced; measured: wineries 44k→26k px on the largest region, villages 28k→10k, secrets 34k→12k) |
+| AUD-69 | Med | Region hub lede is keyword-stuffed meta copy rendered as the visible intro, EN-only ×7 (`regions.ts` feeds both metadata and PageHeader) | ✅ human titles + intros written ×5 regions ×7 locales (`regions.page.regions.*`); visible header uses them everywhere; EN metadata keeps the keyword copy for snippets, non-EN metadata now localized |
 | AUD-70 | Low | Guides directory: "221 licensed guides" intro vs "158 guides" list on one screen — locale-language pre-filter never explained | ✅ "{count} of {total} — filtered" line ×7 whenever a filter (incl. the locale pre-filter) narrows the list; de noun fixed to "Gästeführer" |
 | AUD-71 | Low | 14 wineries carry `wineRoute` values matching no route page ("Laona–Akamas", "Pitsilia"…) — invisible to the wine-route feature; no `data:validate` rule ties them | ✅ `wineriesForRoute()` substring resolver (Laona–Akamas now on both pages; laona 17→18, akamas 3→4, incl. localized metas that were also hardcoded EN) + `data:validate` guard: values must match a page or the documented no-page allowlist; official pageless routes stay as data |
 | AUD-72 | Low | Privacy/Terms "Last updated: March 2026" hardcoded, 6 months stale | ⏳ editorial |
@@ -419,7 +419,7 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-96 | Med | New he SLA range "24–48" rendered visually reversed ("48–24") in RTL | ✅ LTR isolates (U+2066/U+2069) around numeric ranges |
 | AUD-97 | Med | Greek misspelling "Λευκάρια" for Λεύκαρα in shipped combo copy | ✅ corrected (el-wide sweep) |
 | AUD-98 | Med | `AttractionCard` aria-label + img alt hardcoded EN template literals in all locales ("Nissi Beach, Παραλία in Ayia Napa") — `i18n:scan` blind to attribute template literals | ✅ `common.aria.placeCard`/`placeCardImageAlt` keys ×7 |
-| AUD-99 | Med | Finite data enums (activities, difficulty, route type) interpolated raw into localized sentences → "Ιδανικό για shopping and crafts", "7 km szlak easy" | ⏳ enum-localization project (extends AUD-10) |
+| AUD-99 | Med | Finite data enums (activities, difficulty, route type) interpolated raw into localized sentences → "Ιδανικό για shopping and crafts", "7 km szlak easy" | ◐ difficulty labels (batch 3) + routeType chips (loop/out-and-back/point-to-point ×7, card + detail) localized; free-text activities/bestFor remain the AUD-10-class residual |
 | AUD-100 | Med | 90× `nameEl` exists in data but no card/list surface used it — `/el` read translated-tourist exactly where ICPS §6.1 demands Greek-first | ✅ `AttractionCard`, `TrailCard`, `SearchResultCard` and `ItineraryCard` (via `nameEl` carried through `PlanItem`) all render `getLocalizedName()` |
 | AUD-101 | Low | Greek AI-assistant voice informal singular vs the app's formal σας (de correctly uses Sie) | ✅ 5 opener strings formalized |
 | AUD-102 | Med | el mixed "οδηγός" (driver/guidebook) with "ξεναγός" (licensed guide) after the AUD-01 rewording — both in one sentence on the hub | ✅ `ξεναγ` sweep over guide surfaces |
@@ -442,7 +442,7 @@ Same format and dedupe protocol as §4; every row personally verified. Status: �
 | AUD-114 | Med | Homepage Twitter card leaked onto every page without its own twitter block (og correct, twitter wrong) | ✅ layouts slimmed to `twitter: { card }` only |
 | AUD-115 | Med | Book pages: zero `og:*` tags; root cause `applyLocaleToMetadata` only emits og when the base builder provides it | ✅ og builders for book/winery + book/guide (title/description/type/image) |
 | AUD-116 | Med | Events JSON-LD: 26 Events, none with `startDate` (invalid for rich results); zero invented dates — discipline held | ✅ truthful `eventSchedule.byMonth` from the month field; still no fabricated dates |
-| AUD-117 | Med | Canonical split-brain: `/el` home Strategy A vs locale subpages Strategy B; sitemap unprefixed-only (474 URLs); two parallel helper modules | ⏳ strategy unification project |
+| AUD-117 | Med | Canonical split-brain: `/el` home Strategy A vs locale subpages Strategy B; sitemap unprefixed-only (474 URLs); two parallel helper modules | ✅ `docs/INTERNATIONAL_SEO.md` already adopts Strategy A — `locale-seo.ts` was simply violating it; canonical + og:url now the unprefixed default-locale URL everywhere (verified live on `/el/discover/lefkara`), hreflang cluster unchanged, tests updated |
 | AUD-118 | Med | `meta.homeTitle/homeDescription` a copy generation behind in all 6 non-EN; ro/fr/he served stale **English** titles live | ✅ retranslated ×6 |
 | AUD-119 | Low | Winery JSON-LD hygiene (relative image URL, prose openingHours, locality in addressRegion) | ✅ absolute image, `addressLocality`, non-spec prose hours dropped from markup (visible page keeps them) |
 | AUD-120 | Low | JSON-LD descriptions truncated mid-word without ellipsis | ✅ shared `truncateForSchema()` (word boundary + …) in all three schema builders |
@@ -467,7 +467,9 @@ E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings 
 
 **Batch 3 (same day, third commit):** AUD-71, 81 (states half), 86, 121 (worst offenders) closed — see the register rows. AUD-65/113's designed fix was experimentally disproven: `dynamicParams=false` + `setRequestLocale` cannot produce real 404s while the root layout's cookie-based `getLocale()` keeps every route request-rendered; it stays open as an architecture decision with the evidence recorded.
 
-**Remaining backlog (decision/supply/project):** AUD-65/113 (locale-detection redesign), 67 (real legal mailbox), 68 (hub facets), 69 (region lede editorial), 72, 81-residual (partner onboarding path), 99 (enum localization beyond difficulty labels), 104/107 residuals, 117 (canonical strategy), 121-residual (161–185-char metas, accepted).
+**Batch 4 (same day, fourth commit):** AUD-68, 69, 117 closed and 99 advanced (routeType) — see the register rows. Catalog 7×2364.
+
+**Remaining backlog (decision/supply/project):** AUD-65/113 (locale-detection redesign), 67 (real legal mailbox), 72 (legal "last updated"), 81-residual (partner onboarding path), 99-residual (free-text activities/bestFor — the AUD-10 data-layer project), 104/107 residuals, 121-residual (161–185-char metas, accepted).
 
 ## 8.4 Persona × dimension grid (16 QA personas, post-R2-fix)
 
@@ -520,6 +522,12 @@ Batch 3 (third commit, full rerun): vitest 790 (4 new: trailId round-trip,
 wineRoute guard ×3) · i18n 7×2348 · e2e gate 38+45+17+1 · 320px sweep 0px ·
 live: laona/akamas counts 18/4 with localized metas, portal 503 shows honest
 copy, booking API returns trailId, /el metas within limits.
+
+Batch 4 (fourth commit, full rerun): vitest 790 · i18n 7×2364 · e2e gate
+38+45+17+1 · 320px sweep 0px · live: Strategy-A canonical on /el detail with
+full hreflang cluster, region ledes localized (el/de verified), Rundweg on
+/de trail detail, hub filter chips measured shrinking wineries 44k→26k px /
+villages 28k→10k / secrets 34k→12k with aria-live counts.
 
 Backlog batch (follow-up commit, full rerun): lint · typecheck · vitest 786
 (plan-items index regenerated for the `nameEl` carry-through) · i18n 7×2345 ·

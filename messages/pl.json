@@ -354,7 +354,12 @@
       "allSet": "Wszystko gotowe. Bezpiecznej podróży."
     },
     "useMyLocationInstead": "Użyj mojej lokalizacji",
-    "localeBetaHint": "Języki beta: część treści może nadal być po angielsku."
+    "localeBetaHint": "Języki beta: część treści może nadal być po angielsku.",
+    "hubFilter": {
+      "all": "Wszystkie regiony",
+      "aria": "Filtruj według regionu",
+      "showing": "Wyświetlane: {count} z {total}"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1782,7 +1787,12 @@
       "peak-views": "Widoki ze szczytów",
       "full-day": "Wyzwania na cały dzień"
     },
-    "bestConditionsNow": "Najlepsze warunki teraz"
+    "bestConditionsNow": "Najlepsze warunki teraz",
+    "routeTypes": {
+      "loop": "Pętla",
+      "outAndBack": "Tam i z powrotem",
+      "pointToPoint": "Z punktu do punktu"
+    }
   },
   "plan": {
     "addToPlan": "Dodaj do planu",
@@ -3378,6 +3388,28 @@
         "beaches": "Plaże",
         "wineries": "Winnice",
         "monasteries": "Klasztory i kościoły"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Góry Troodos zimą",
+          "intro": "Szlaki wśród sosen, malowane cerkwie i winne wioski pod Olimpem — a gdy spadnie śnieg, odrobina nart. Zimowe serce Cypru."
+        },
+        "paphos": {
+          "title": "Pafos zimą",
+          "intro": "Łagodne wybrzeże, głęboka historia: spacery po Coral Bay, mozaiki z Pafos, szlak Adonisa i winne wioski Laony — wszystko w zasięgu krótkiej zimowej trasy."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa i Cape Greco zimą",
+          "intro": "Wschodnie wybrzeże w najspokojniejszej odsłonie: pusty piasek Nissi i Fig Tree Bay, nadmorski szlak Cape Greco i morskie jaskinie w miękkim zimowym świetle."
+        },
+        "larnaca": {
+          "title": "Larnaka zimą",
+          "intro": "Koronki z Lefkary, starożytne Kition i Hala Sultan Tekke nad słonym jeziorem — sezon flamingów — plus łatwe wycieczki w głąb wzgórz."
+        },
+        "limassol": {
+          "title": "Limassol zimą",
+          "intro": "Kourion nad morzem, zamek Kolossi i winne wioski Krasochoria — kraina Commandarii — a do tego karnawał i maraton, gdy zima przechodzi w wiosnę."
+        }
       }
     }
   },

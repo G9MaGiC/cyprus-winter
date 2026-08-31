@@ -33,6 +33,8 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
   const tBadges = useTranslations("trails.badges");
   const displayName = getLocalizedName(trail, locale);
   const difficultyLabel = tBadges(`difficulty.${trail.difficulty}.label`);
+  const routeTypeKey =
+    trail.routeType === "loop" ? "loop" : trail.routeType === "out-and-back" ? "outAndBack" : "pointToPoint";
   const editorial = hideEditorial ? undefined : (conditions ?? editorialConditions[trail.id]);
   const view = resolveTrailCardConditions(editorial, reports[trail.id]);
   const resolved = trailConditionsFromView(trail.id, view);
@@ -105,7 +107,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             {trail.routeType && (
               <>
                 <span aria-hidden>·</span>
-                <span className="capitalize">{trail.routeType.replace("-", " ")}</span>
+                <span>{tTrails(`routeTypes.${routeTypeKey}`)}</span>
               </>
             )}
             {view.source === "report" && resolved?.lastReportedAt ? (

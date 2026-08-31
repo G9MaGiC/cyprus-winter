@@ -354,7 +354,12 @@
       "allSet": "Tout est prêt. Bon voyage."
     },
     "useMyLocationInstead": "Utiliser ma position",
-    "localeBetaHint": "Langues bêta : certains contenus peuvent encore apparaître en anglais."
+    "localeBetaHint": "Langues bêta : certains contenus peuvent encore apparaître en anglais.",
+    "hubFilter": {
+      "all": "Toutes les régions",
+      "aria": "Filtrer par région",
+      "showing": "{count} sur {total} affichés"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1782,7 +1787,12 @@
       "peak-views": "Vues depuis les sommets",
       "full-day": "Défis journée complète"
     },
-    "bestConditionsNow": "Meilleures conditions en ce moment"
+    "bestConditionsNow": "Meilleures conditions en ce moment",
+    "routeTypes": {
+      "loop": "Boucle",
+      "outAndBack": "Aller-retour",
+      "pointToPoint": "En ligne"
+    }
   },
   "plan": {
     "addToPlan": "Ajouter au plan",
@@ -2459,6 +2469,28 @@
         "beaches": "Plages",
         "wineries": "Domaines viticoles",
         "monasteries": "Monastères et églises"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Le Troodos en hiver",
+          "intro": "Sentiers sous les pins, églises peintes et villages du vin sous l’Olympe — et un peu de ski quand la neige s’invite. Le cœur hivernal de Chypre."
+        },
+        "paphos": {
+          "title": "Paphos en hiver",
+          "intro": "Côte douce, histoire profonde : promenades à Coral Bay, mosaïques de Paphos, sentier d’Adonis et villages du vin de la Laona — le tout à une courte route d’hiver."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa et le cap Greco en hiver",
+          "intro": "La côte est au plus calme : sable désert à Nissi et Fig Tree Bay, sentier côtier du cap Greco et grottes marines dans une douce lumière d’hiver."
+        },
+        "larnaca": {
+          "title": "Larnaca en hiver",
+          "intro": "Dentelle de Lefkara, l’antique Kition et la Hala Sultan Tekke au bord du lac salé — saison des flamants — avec de faciles escapades vers les collines."
+        },
+        "limassol": {
+          "title": "Limassol en hiver",
+          "intro": "Kourion au-dessus de la mer, le château de Kolossi et les villages du vin des Krasochoria — pays de la Commandaria — plus le carnaval et le marathon quand l’hiver glisse vers le printemps."
+        }
       }
     }
   },

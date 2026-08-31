@@ -142,8 +142,10 @@ export default async function TrailPage({
                 )}
                 <DifficultyBadge difficulty={trail.difficulty} />
                 {trail.routeType && (
-                  <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md capitalize">
-                    {trail.routeType.replace("-", " ")}
+                  <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md">
+                    {tTrails(
+                      `routeTypes.${trail.routeType === "loop" ? "loop" : trail.routeType === "out-and-back" ? "outAndBack" : "pointToPoint"}`
+                    )}
                   </span>
                 )}
               </div>

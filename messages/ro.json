@@ -354,7 +354,12 @@
       "allSet": "Totul e gata. Călătorie plăcută."
     },
     "useMyLocationInstead": "Folosește locația mea",
-    "localeBetaHint": "Limbi beta: o parte din conținut poate apărea încă în engleză."
+    "localeBetaHint": "Limbi beta: o parte din conținut poate apărea încă în engleză.",
+    "hubFilter": {
+      "all": "Toate regiunile",
+      "aria": "Filtrează după regiune",
+      "showing": "{count} din {total} afișate"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -1782,7 +1787,12 @@
       "peak-views": "Priveliști de pe vârfuri",
       "full-day": "Provocări pe zi întreagă"
     },
-    "bestConditionsNow": "Cele mai bune condiții acum"
+    "bestConditionsNow": "Cele mai bune condiții acum",
+    "routeTypes": {
+      "loop": "Circuit",
+      "outAndBack": "Dus-întors",
+      "pointToPoint": "Din punct în punct"
+    }
   },
   "plan": {
     "addToPlan": "Adaugă în plan",
@@ -2459,6 +2469,28 @@
         "beaches": "Plaje",
         "wineries": "Crame",
         "monasteries": "Mănăstiri și biserici"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Munții Troodos iarna",
+          "intro": "Trasee prin păduri de pin, biserici pictate și sate de vin sub Olimp — plus puțin schi când se așterne zăpada. Inima de iarnă a Ciprului."
+        },
+        "paphos": {
+          "title": "Paphos iarna",
+          "intro": "Coastă blândă, istorie adâncă: plimbări la Coral Bay, mozaicurile din Paphos, traseul Adonis și satele de vin din Laona — totul la o scurtă plimbare de iarnă cu mașina."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa și Capul Greco iarna",
+          "intro": "Coasta de est în cea mai liniștită formă: nisip gol la Nissi și Fig Tree Bay, poteca de coastă Capul Greco și peșteri marine în lumina blândă de iarnă."
+        },
+        "larnaca": {
+          "title": "Larnaca iarna",
+          "intro": "Dantelă de Lefkara, anticul Kition și Hala Sultan Tekke pe lacul sărat — sezonul flamingo — cu excursii ușoare de o zi spre dealuri."
+        },
+        "limassol": {
+          "title": "Limassol iarna",
+          "intro": "Kourion deasupra mării, castelul Kolossi și satele de vin Krasochoria — ținutul Commandariei — plus carnaval și maraton când iarna trece spre primăvară."
+        }
       }
     }
   },

@@ -159,10 +159,13 @@ export async function bookGuideMetadata(id: string, locale: string): Promise<Met
 export async function regionSlugMetadata(slug: string, locale: string): Promise<Metadata> {
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
   if (!config) notFound();
+  const t = await getTranslations({ locale, namespace: "regions.page" });
   const path = `/regions/${slug}`;
   const base: Metadata = {
-    title: `${config.title} | Cyprus Winter`,
-    description: config.description,
+    title: `${t(`regions.${slug}.title`)} | Cyprus Winter`,
+    // EN pages keep the keyword-dense regions.ts copy for search snippets;
+    // non-EN pages get the localized intro instead of English (AUD-69).
+    description: locale === "en" ? config.description : t(`regions.${slug}.intro`),
   };
   return applyLocaleToMetadata(base, path, locale);
 }
