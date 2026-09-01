@@ -4,8 +4,11 @@
  * pulling in the server-only overlay module. Mirrors winery-content-ids.ts.
  */
 
-/** Slice-3 pilot: flagship in-template places every persona routes through. */
+/** Covered set. Slice 3: flagship in-template places every persona routes
+    through. Slice 4 (batch 13): the remaining itinerary-template attractions
+    with populated Book-stage fields — full template coverage. */
 export const LOCALIZED_ATTRACTION_IDS: ReadonlySet<string> = new Set([
+  // Slice 3 — flagship pilot
   "kourion",
   "pafos-mosaics",
   "omodos",
@@ -15,6 +18,17 @@ export const LOCALIZED_ATTRACTION_IDS: ReadonlySet<string> = new Set([
   "governors-beach",
   "konnos-bay",
   "kakopetria",
+  // Slice 4 — remaining template stops
+  "coral-bay",
+  "tomb-of-kings",
+  "choirokoitia",
+  "cyprus-museum",
+  "leventis-museum",
+  "polis",
+  "pedoulas",
+  "platres",
+  "lofou",
+  "machairas",
 ]);
 
 export const LOCALIZED_ATTRACTION_FIELDS = [

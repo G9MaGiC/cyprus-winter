@@ -3817,6 +3817,46 @@
         "winterTip": "Tavernele cu păstrăv de lângă râu sunt primitoare iarna. Încercați păstrăvul cu migdale sau cârnații locali.",
         "bestTimeToVisit": "Dec–feb, la prânz sau după-amiaza devreme (mai cald în vale)",
         "openingHours": "Taverne 12–22; magazine 9–18"
+      },
+      "coral-bay": {
+        "winterTip": "Apusuri de iarnă pe la 17:00 în dec–ian. Mai puțină lume, blând pentru o plimbare.",
+        "bestTimeToVisit": "După-amiaza târziu pentru apus; combinați cu mozaicurile din Paphos sau Mormintele Regilor.",
+        "openingHours": "Țărm liber tot anul. Tavernele sunt adesea deschise."
+      },
+      "tomb-of-kings": {
+        "winterTip": "Lumina de iarnă aruncă umbre lungi în morminte; atmosferic pentru fotografii. Situl e mai răcoros ca vara. Combinați cu mozaicurile din Paphos și portul.",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "choirokoitia": {
+        "winterTip": "Diminețile de iarnă pot fi cețoase; dramatic pentru fotografii. Situl e compact; alocați 1–1,5 ore.",
+        "bestTimeToVisit": "Dec–feb, 10:00–12:00 (mai cald, mai puțină ceață)",
+        "openingHours": "Zilnic 8:30–17:00 (iarna: 16 sep–15 apr)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Cea mai bună evadare pe ploaie. Sălile rămân calde și uscate. Combinați cu strada Ledra și o cafenea; muzeul e în centrul Nicosiei.",
+        "openingHours": "Mar–vin 8–18, sâm 9–17, dum 10–13; închis lunea"
+      },
+      "leventis-museum": {
+        "winterTip": "Intrare gratuită. Refugiu ideal pe ploaie. Lângă strada Ledra; combinați cu o plimbare prin orașul vechi și o cafenea. Alocați două ore.",
+        "openingHours": "Mar–dum 10–16:30; închis lunea și de sărbătorile legale"
+      },
+      "polis": {
+        "winterTip": "Poarta către Akamas. Faceți Adonis sau Afrodita dimineața, portul Polis la prânz. Peștele e proaspăt. Crama Vasilikon e pe bucla Akamas.",
+        "openingHours": "Taverne 12–22; magazine 9–18"
+      },
+      "pedoulas": {
+        "openingHours": "Biserica: cheia la muzeu; muzeul 9–16"
+      },
+      "platres": {
+        "winterTip": "Sezonul de schi (ian–mar) aduce agitație; decembrie și sfârșitul lui martie sunt mai liniștite. Vremea la munte se schimbă repede; verificați înainte de urcare.",
+        "bestTimeToVisit": "Dec–mar, bază pentru 2–3 zile de drumeții"
+      },
+      "lofou": {
+        "winterTip": "Diminețile de iarnă din timpul săptămânii sunt cele mai liniștite. Opriți-vă la o cafea în drum spre sau dinspre Omodos. Satul nu vă așteaptă."
+      },
+      "machairas": {
+        "winterTip": "Excursie ușoară de o zi din Nicosia. Potecile din pădure sunt liniștite iarna. Combinați vizita la mănăstire cu o plimbare. Îmbrăcați-vă decent.",
+        "openingHours": "Zilnic 8–12, 14–18"
       }
     }
   }

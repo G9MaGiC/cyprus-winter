@@ -3817,6 +3817,46 @@
         "winterTip": "Die Forellen-Tavernen am Fluss sind im Winter gemütlich. Forelle mit Mandeln oder die lokalen Würste probieren.",
         "bestTimeToVisit": "Dez. bis Feb., mittags oder früh am Nachmittag (im Tal wärmer)",
         "openingHours": "Tavernen 12–22; Läden 9–18"
+      },
+      "coral-bay": {
+        "winterTip": "Wintersonnenuntergänge Dez.–Jan. gegen 17 Uhr. Weniger Besucher, mild für einen Spaziergang.",
+        "bestTimeToVisit": "Spätnachmittags zum Sonnenuntergang; mit den Paphos-Mosaiken oder den Königsgräbern kombinieren.",
+        "openingHours": "Frei zugänglicher Strand, ganzjährig. Die Tavernen haben oft geöffnet."
+      },
+      "tomb-of-kings": {
+        "winterTip": "Das Winterlicht wirft lange Schatten in die Gräber; stimmungsvoll für Fotos. Kühler als im Sommer. Mit den Paphos-Mosaiken und dem Hafen kombinieren.",
+        "openingHours": "Täglich 8:30–17:00 (Winter)"
+      },
+      "choirokoitia": {
+        "winterTip": "Wintermorgen können neblig sein; dramatisch für Fotos. Das Gelände ist kompakt; 1 bis 1,5 Stunden einplanen.",
+        "bestTimeToVisit": "Dez. bis Feb., 10–12 Uhr (wärmer, weniger Nebel)",
+        "openingHours": "Täglich 8:30–17:00 (Winter, 16. Sep. bis 15. Apr.)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Die beste Zuflucht für Regentage. Die Säle sind warm und trocken. Mit der Ledra-Straße und einem Café kombinieren; das Museum liegt im Zentrum Nikosias.",
+        "openingHours": "Di–Fr 8–18, Sa 9–17, So 10–13; montags geschlossen"
+      },
+      "leventis-museum": {
+        "winterTip": "Eintritt frei. Ideale Zuflucht bei Regen. Nahe der Ledra-Straße; mit Altstadtbummel und Café kombinieren. Zwei Stunden einplanen.",
+        "openingHours": "Di–So 10–16:30; montags und an Feiertagen geschlossen"
+      },
+      "polis": {
+        "winterTip": "Das Tor zum Akamas. Morgens Adonis- oder Aphrodite-Trail, mittags der Hafen von Polis. Der Fisch ist frisch. Das Weingut Vasilikon liegt an der Akamas-Schleife.",
+        "openingHours": "Tavernen 12–22; Läden 9–18"
+      },
+      "pedoulas": {
+        "openingHours": "Kirche: Schlüssel im Museum; Museum 9–16"
+      },
+      "platres": {
+        "winterTip": "Die Skisaison (Jan.–März) bringt Trubel; Dezember und Ende März sind ruhiger. Das Bergwetter schlägt schnell um; vor der Auffahrt prüfen.",
+        "bestTimeToVisit": "Dez. bis März, Basis für 2–3 Wandertage"
+      },
+      "lofou": {
+        "winterTip": "Winterliche Wochentagsmorgen sind am ruhigsten. Auf dem Weg von oder nach Omodos auf einen Kaffee anhalten. Das Dorf rechnet nicht mit Ihnen."
+      },
+      "machairas": {
+        "winterTip": "Leichter Tagesausflug ab Nikosia. Die Waldwege sind im Winter ruhig. Klosterbesuch mit einem Spaziergang verbinden. Dezente Kleidung.",
+        "openingHours": "Täglich 8–12, 14–18"
       }
     }
   }

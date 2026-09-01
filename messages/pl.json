@@ -3817,6 +3817,46 @@
         "winterTip": "Tawerny z pstrągiem nad rzeką są zimą przytulne. Spróbuj pstrąga z migdałami albo lokalnych kiełbas.",
         "bestTimeToVisit": "Gru–lut, obiad lub wczesne popołudnie (w dolinie cieplej)",
         "openingHours": "Tawerny 12–22; sklepy 9–18"
+      },
+      "coral-bay": {
+        "winterTip": "Zimowe zachody słońca gru–sty ok. 17:00. Mniej ludzi, łagodnie na spacer.",
+        "bestTimeToVisit": "Późne popołudnie na zachód słońca; połącz z mozaikami Pafos lub Grobowcami Królewskimi.",
+        "openingHours": "Otwarte wybrzeże przez cały rok. Tawerny zwykle czynne."
+      },
+      "tomb-of-kings": {
+        "winterTip": "Zimowe światło kładzie w grobowcach długie cienie; nastrojowo na zdjęciach. Chłodniej niż latem. Połącz z mozaikami Pafos i portem.",
+        "openingHours": "Codziennie 8:30–17:00 (zima)"
+      },
+      "choirokoitia": {
+        "winterTip": "Zimowe poranki bywają mgliste; efektownie na zdjęciach. Stanowisko jest zwarte; zaplanuj 1–1,5 godz.",
+        "bestTimeToVisit": "Gru–lut, 10:00–12:00 (cieplej, mniej mgły)",
+        "openingHours": "Codziennie 8:30–17:00 (zima: 16 wrz–15 kwi)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Najlepsza ucieczka na deszczowy dzień. W salach ciepło i sucho. Połącz z ulicą Ledra i kawiarnią; muzeum leży w centrum Nikozji.",
+        "openingHours": "Wt–pt 8–18, sob 9–17, niedz 10–13; poniedziałek nieczynne"
+      },
+      "leventis-museum": {
+        "winterTip": "Wstęp bezpłatny. Idealne schronienie na deszcz. Blisko ulicy Ledra; połącz ze spacerem po starówce i kawą. Zaplanuj dwie godziny.",
+        "openingHours": "Wt–niedz 10–16:30; poniedziałki i święta nieczynne"
+      },
+      "polis": {
+        "winterTip": "Brama Akamas. Rano szlak Adonisa lub Afrodyty, na obiad port w Polis. Ryby są świeże. Winnica Vasilikon leży na pętli Akamas.",
+        "openingHours": "Tawerny 12–22; sklepy 9–18"
+      },
+      "pedoulas": {
+        "openingHours": "Kościół: klucz w muzeum; muzeum 9–16"
+      },
+      "platres": {
+        "winterTip": "Sezon narciarski (sty–mar) ożywia miasteczko; grudzień i koniec marca są spokojniejsze. Pogoda w górach zmienia się szybko; sprawdź przed wyjazdem.",
+        "bestTimeToVisit": "Gru–mar, baza na 2–3 dni wędrówek"
+      },
+      "lofou": {
+        "winterTip": "Zimowe poranki w dni robocze są najcichsze. Zatrzymaj się na kawę w drodze do lub z Omodos. Wioska się ciebie nie spodziewa."
+      },
+      "machairas": {
+        "winterTip": "Łatwa jednodniowa wycieczka z Nikozji. Leśne szlaki są zimą ciche. Połącz wizytę w klasztorze ze spacerem. Ubierz się skromnie.",
+        "openingHours": "Codziennie 8–12, 14–18"
       }
     }
   }

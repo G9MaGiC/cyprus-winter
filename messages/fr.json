@@ -3817,6 +3817,46 @@
         "winterTip": "Les tavernes à truite au bord de la rivière sont douillettes en hiver. Goûtez la truite aux amandes ou les saucisses locales.",
         "bestTimeToVisit": "Déc. à fév., au déjeuner ou en début d’après-midi (plus doux dans la vallée)",
         "openingHours": "Tavernes 12 h – 22 h ; boutiques 9 h – 18 h"
+      },
+      "coral-bay": {
+        "winterTip": "Couchers de soleil d’hiver vers 17 h de déc. à janv. Moins de monde, doux pour une balade.",
+        "bestTimeToVisit": "En fin d’après-midi pour le coucher de soleil ; à combiner avec les mosaïques de Paphos ou les Tombeaux des Rois.",
+        "openingHours": "Rivage en accès libre toute l’année. Les tavernes restent souvent ouvertes."
+      },
+      "tomb-of-kings": {
+        "winterTip": "La lumière d’hiver étire les ombres dans les tombeaux ; très photogénique. Le site est plus frais qu’en été. À combiner avec les mosaïques de Paphos et le port.",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "choirokoitia": {
+        "winterTip": "Les matins d’hiver sont parfois brumeux ; spectaculaire en photo. Le site est compact ; comptez 1 h à 1 h 30.",
+        "bestTimeToVisit": "Déc. à fév., 10 h – 12 h (plus doux, moins de brume)",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver, du 16 sept. au 15 avr.)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Le meilleur refuge des jours de pluie. Les salles restent chaudes et sèches. À combiner avec la rue Ledra et un café ; le musée est au centre de Nicosie.",
+        "openingHours": "Mar–ven 8 h – 18 h, sam. 9 h – 17 h, dim. 10 h – 13 h ; fermé le lundi"
+      },
+      "leventis-museum": {
+        "winterTip": "Entrée gratuite. Refuge idéal les jours de pluie. Près de la rue Ledra ; à combiner avec une flânerie dans la vieille ville et un café. Comptez deux heures.",
+        "openingHours": "Mar–dim. 10 h – 16 h 30 ; fermé le lundi et les jours fériés"
+      },
+      "polis": {
+        "winterTip": "La porte de l’Akamas. Le sentier d’Adonis ou d’Aphrodite le matin, le port de Polis au déjeuner. Le poisson est frais. Le domaine Vasilikon est sur la boucle de l’Akamas.",
+        "openingHours": "Tavernes 12 h – 22 h ; boutiques 9 h – 18 h"
+      },
+      "pedoulas": {
+        "openingHours": "Église : clé au musée ; musée 9 h – 16 h"
+      },
+      "platres": {
+        "winterTip": "La saison de ski (janv. à mars) anime le village ; décembre et fin mars sont plus calmes. La météo de montagne change vite ; vérifiez avant de monter.",
+        "bestTimeToVisit": "Déc. à mars, camp de base pour 2 à 3 jours de randonnée"
+      },
+      "lofou": {
+        "winterTip": "Les matins d’hiver en semaine sont les plus calmes. Arrêtez-vous pour un café en allant à Omodos ou en revenant. Le village ne vous attend pas."
+      },
+      "machairas": {
+        "winterTip": "Excursion facile à la journée depuis Nicosie. Les sentiers forestiers sont calmes en hiver. Combinez la visite du monastère avec une marche. Tenue correcte exigée.",
+        "openingHours": "Tous les jours 8 h – 12 h, 14 h – 18 h"
       }
     }
   }

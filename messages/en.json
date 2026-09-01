@@ -3817,6 +3817,46 @@
         "winterTip": "Trout tavernas by the river are cosy in winter. Try trout with almonds or the local sausages.",
         "bestTimeToVisit": "Dec to Feb, lunch or early afternoon (warmer in the valley)",
         "openingHours": "Tavernas 12 to 22; shops 9 to 18"
+      },
+      "coral-bay": {
+        "winterTip": "Winter sunsets around 5pm Dec to Jan. Fewer crowds, mild for a stroll.",
+        "bestTimeToVisit": "Late afternoon for sunset; combine with Pafos mosaics or Tomb of Kings.",
+        "openingHours": "Open shoreline year-round. Tavernas often stay open."
+      },
+      "tomb-of-kings": {
+        "winterTip": "Winter light casts long shadows in the tombs; atmospheric for photos. Site is cooler than summer. Combine with Pafos mosaics and harbour.",
+        "openingHours": "Daily 8:30 to 17:00 (winter)"
+      },
+      "choirokoitia": {
+        "winterTip": "Winter mornings can be misty; dramatic for photos. The site is compact; allow 1 to 1.5 hours.",
+        "bestTimeToVisit": "Dec to Feb, 10am to 12pm (warmer, less mist)",
+        "openingHours": "Daily 8:30 to 17:00 (winter 16 Sep to 15 Apr)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Best rainy-day escape. The galleries stay warm and dry. Combine with Ledra Street and a café; the museum sits in central Nicosia.",
+        "openingHours": "Tue to Fri 8 to 18, Sat 9 to 17, Sun 10 to 13; closed Mon"
+      },
+      "leventis-museum": {
+        "winterTip": "Free entry. Ideal rainy-day refuge. Near Ledra Street; combine with old-town wander and a café. Allow two hours.",
+        "openingHours": "Tue to Sun 10 to 16:30; closed Mon and public holidays"
+      },
+      "polis": {
+        "winterTip": "Gateway to Akamas. Do Adonis or Aphrodite in the morning, Polis harbour for lunch. The fish is fresh. Vasilikon winery is on the Akamas loop.",
+        "openingHours": "Tavernas 12 to 22; shops 9 to 18"
+      },
+      "pedoulas": {
+        "openingHours": "Church: key from museum; museum 9 to 16"
+      },
+      "platres": {
+        "winterTip": "Ski season (Jan to Mar) brings buzz; off-season Dec and late Mar are quieter. Mountain weather changes fast; check before heading up.",
+        "bestTimeToVisit": "Dec to Mar, base for 2 to 3 days of hiking"
+      },
+      "lofou": {
+        "winterTip": "Winter weekday mornings are quietest. Stop for coffee on the way to or from Omodos. The village doesn't expect you."
+      },
+      "machairas": {
+        "winterTip": "Easy day trip from Nicosia. The forest trails are quiet in winter. Combine monastery visit with a walk. Dress modestly.",
+        "openingHours": "Daily 8 to 12, 14 to 18"
       }
     }
   }
