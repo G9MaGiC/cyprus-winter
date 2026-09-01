@@ -3772,6 +3772,52 @@
         "transport": "Satul Omodos; dealurile Afamis–Laona.",
         "parking": "La fața locului."
       }
+    },
+    "attractions": {
+      "kourion": {
+        "winterTip": "Teatrul e orientat spre vest; iarna apusul e pe la 16:30. Luați o haină de vânt; pe faleză bate briza.",
+        "bestTimeToVisit": "Dec–mar, după-amiaza târziu pentru apus",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "pafos-mosaics": {
+        "winterTip": "Lumina de iarnă e mai blândă și mai joasă; ideală pentru fotografierea mozaicurilor fără umbre dure. Aglomerația scade până la 11:00.",
+        "bestTimeToVisit": "Dec–feb, 9–11 dimineața sau după-amiaza târziu pentru lumina aurie",
+        "openingHours": "Zilnic 8:30–17:00 (iarna), 8:30–19:30 (vara)"
+      },
+      "omodos": {
+        "winterTip": "Diminețile de iarnă din timpul săptămânii sunt liniștite; localnicii se adună la kafenion la cafea. Curtea mănăstirii strălucește în soarele jos.",
+        "bestTimeToVisit": "Dec–mar, 10:00–14:00 (cel mai cald), sau rămâneți la apus",
+        "openingHours": "Magazine 9–18; curtea mănăstirii cu acces liber; muzeu 9–17"
+      },
+      "lefkara": {
+        "winterTip": "Dantelăresele stau în praguri; lumina de iarnă e ideală pentru fotografii. Luați ceva gros; satul e la 700 m.",
+        "bestTimeToVisit": "Dec–feb, dimineți din timpul săptămânii (mai puține grupuri)",
+        "openingHours": "Magazine 9–18; unele se închid la prânz"
+      },
+      "kykkos": {
+        "winterTip": "Drumul poate fi înzăpezit ian–feb. Verificați condițiile. Pădurea în lumina iernii. Alocați minimum o jumătate de zi.",
+        "openingHours": "Zilnic 10–18 (iarna); muzeu 10–16"
+      },
+      "fig-tree-bay": {
+        "winterTip": "Golf adăpostit; blând pentru plimbări de iarnă. Cafenelele de pe promenadă rămân deschise. Combinați cu Protaras și Capul Greco.",
+        "bestTimeToVisit": "Dimineața sau după-amiaza; întâi traseul Capul Greco, apoi Fig Tree Bay.",
+        "openingHours": "Țărm liber tot anul. Cafenelele de pe promenadă sunt adesea deschise."
+      },
+      "governors-beach": {
+        "winterTip": "Ideală pentru un prânz de iarnă pe coastă; 18°C și soare. Tavernele de pe faleză sunt deschise tot anul. Combinați cu Kourion sau Kolossi.",
+        "bestTimeToVisit": "La prânz; Kourion dimineața, Governor's Beach pentru pește.",
+        "openingHours": "Țărm liber tot anul. Tavernele de pe faleză sunt adesea deschise."
+      },
+      "konnos-bay": {
+        "winterTip": "Combinați cu poteca de coastă Capul Greco; startul e în apropiere. Soare de iarnă și nisip pustiu.",
+        "bestTimeToVisit": "Dimineața; întâi traseul Capul Greco, Konnos pentru o pauză.",
+        "openingHours": "Țărm liber tot anul. Fără facilități pe nisip."
+      },
+      "kakopetria": {
+        "winterTip": "Tavernele cu păstrăv de lângă râu sunt primitoare iarna. Încercați păstrăvul cu migdale sau cârnații locali.",
+        "bestTimeToVisit": "Dec–feb, la prânz sau după-amiaza devreme (mai cald în vale)",
+        "openingHours": "Taverne 12–22; magazine 9–18"
+      }
     }
   }
 }

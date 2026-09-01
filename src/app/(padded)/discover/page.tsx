@@ -2,9 +2,8 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems, type DiscoverItem } from "@/data/discover";
 import { buildDiscoverSections, toDiscoverCardSection } from "@/lib/discover-sections";
-import { localizeWineryContent, LOCALIZED_WINERY_IDS } from "@/lib/winery-content";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
-import type { Winery } from "@/data/wineries";
 import HubSkipNav from "@/components/HubSkipNav";
 import {
   ACTIVITY_FILTER_KEYS,
@@ -34,13 +33,11 @@ const DISCOVER_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 async function localizeItems(items: DiscoverItem[]): Promise<DiscoverItem[]> {
   return Promise.all(
     items.map(async (item) => {
-      if (item.type !== "winery") return item;
-      // Ids in the pilot set are Winery records by the overlay guard test
-      // (`type: "winery"` alone doesn't discriminate — Attractions carry it too).
-      const localized = LOCALIZED_WINERY_IDS.has(item.id)
-        ? await localizeWineryContent(item as Winery)
-        : item;
-      return applyPartnerOpeningHours(localized);
+      // Covered wineries AND pilot attractions localize (id-gated inside);
+      // live partner hours still apply to winery records only, after the
+      // overlay (precedence contract).
+      const localized = await localizeDiscoverContent(item);
+      return item.type === "winery" ? applyPartnerOpeningHours(localized) : localized;
     })
   );
 }

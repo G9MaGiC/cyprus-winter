@@ -3772,6 +3772,52 @@
         "transport": "Village d’Omodos ; collines d’Afamis–Laona.",
         "parking": "Sur place."
       }
+    },
+    "attractions": {
+      "kourion": {
+        "winterTip": "Le théâtre regarde vers l’ouest ; coucher de soleil d’hiver vers 16 h 30. Prévoyez un coupe-vent ; la falaise prend la brise.",
+        "bestTimeToVisit": "Déc. à mars, en fin d’après-midi pour le coucher de soleil",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "pafos-mosaics": {
+        "winterTip": "La lumière d’hiver, plus douce et plus basse, est idéale pour photographier les mosaïques sans ombres dures. La foule se disperse vers 11 h.",
+        "bestTimeToVisit": "Déc. à fév., 9 h – 11 h ou fin d’après-midi pour la lumière dorée",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver), 8 h 30 – 19 h 30 (été)"
+      },
+      "omodos": {
+        "winterTip": "En semaine, les matins d’hiver sont calmes ; les habitants se retrouvent au kafenion. La cour du monastère s’illumine sous le soleil bas.",
+        "bestTimeToVisit": "Déc. à mars, 10 h – 14 h (le plus doux), ou restez pour le coucher de soleil",
+        "openingHours": "Boutiques 9 h – 18 h ; cour du monastère en accès libre ; musée 9 h – 17 h"
+      },
+      "lefkara": {
+        "winterTip": "Les dentellières s’installent sur le pas des portes ; la lumière d’hiver est idéale pour les photos. Prévoyez une couche chaude ; le village est à 700 m.",
+        "bestTimeToVisit": "Déc. à fév., en semaine le matin (moins de groupes)",
+        "openingHours": "Boutiques 9 h – 18 h ; certaines ferment à midi"
+      },
+      "kykkos": {
+        "winterTip": "La route peut être enneigée de janv. à fév. Vérifiez les conditions. La forêt sous la lumière d’hiver. Comptez au moins une demi-journée.",
+        "openingHours": "Tous les jours 10 h – 18 h (hiver) ; musée 10 h – 16 h"
+      },
+      "fig-tree-bay": {
+        "winterTip": "Baie abritée, douce pour les balades d’hiver. Les cafés de la promenade restent ouverts. À combiner avec Protaras et le cap Greco.",
+        "bestTimeToVisit": "Matin ou après-midi ; le sentier du cap Greco d’abord, puis Fig Tree Bay.",
+        "openingHours": "Rivage en accès libre toute l’année. Les cafés de la promenade restent souvent ouverts."
+      },
+      "governors-beach": {
+        "winterTip": "Idéale pour un déjeuner d’hiver en bord de mer ; 18 °C et du soleil. Les tavernes de la falaise ouvrent toute l’année. À combiner avec Kourion ou Kolossi.",
+        "bestTimeToVisit": "Au déjeuner ; Kourion le matin, Governor's Beach pour le poisson.",
+        "openingHours": "Rivage en accès libre toute l’année. Les tavernes de la falaise restent souvent ouvertes."
+      },
+      "konnos-bay": {
+        "winterTip": "À combiner avec le sentier côtier du cap Greco ; le départ est tout proche. Soleil d’hiver et sable désert.",
+        "bestTimeToVisit": "Le matin ; le sentier du cap Greco d’abord, Konnos pour la pause.",
+        "openingHours": "Rivage en accès libre toute l’année. Aucun équipement sur le sable."
+      },
+      "kakopetria": {
+        "winterTip": "Les tavernes à truite au bord de la rivière sont douillettes en hiver. Goûtez la truite aux amandes ou les saucisses locales.",
+        "bestTimeToVisit": "Déc. à fév., au déjeuner ou en début d’après-midi (plus doux dans la vallée)",
+        "openingHours": "Tavernes 12 h – 22 h ; boutiques 9 h – 18 h"
+      }
     }
   }
 }

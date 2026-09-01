@@ -3772,6 +3772,52 @@
         "transport": "Omodos village; Afamis–Laona hills.",
         "parking": "On-site."
       }
+    },
+    "attractions": {
+      "kourion": {
+        "winterTip": "The theatre faces west; sunset in winter around 4:30pm. Bring a wind layer; the cliff catches breezes.",
+        "bestTimeToVisit": "Dec to Mar, late afternoon for sunset",
+        "openingHours": "Daily 8:30 to 17:00 (winter)"
+      },
+      "pafos-mosaics": {
+        "winterTip": "Winter light is softer and lower; ideal for photographing mosaics without harsh shadows. Crowds thin out by 11am.",
+        "bestTimeToVisit": "Dec to Feb, 9 to 11am or late afternoon for golden light",
+        "openingHours": "Daily 8:30 to 17:00 (winter), 8:30 to 19:30 (summer)"
+      },
+      "omodos": {
+        "winterTip": "Winter weekday mornings are quiet; locals gather at kafenions for coffee. The monastery courtyard glows in low sun.",
+        "bestTimeToVisit": "Dec to Mar, 10am to 2pm (warmest), or stay for sunset",
+        "openingHours": "Shops 9 to 18; monastery courtyard free; museum 9 to 17"
+      },
+      "lefkara": {
+        "winterTip": "Lacemakers sit in doorways; winter light is ideal for photos. Bring a warm layer; it's 700m up.",
+        "bestTimeToVisit": "Dec to Feb, weekday mornings (fewer tour groups)",
+        "openingHours": "Shops 9 to 18; some close for lunch"
+      },
+      "kykkos": {
+        "winterTip": "The drive can be snowy in Jan to Feb. Check road conditions. The forest in winter light. Allow half a day minimum.",
+        "openingHours": "Daily 10 to 18 (winter); museum 10 to 16"
+      },
+      "fig-tree-bay": {
+        "winterTip": "Protected bay; mild for winter walks. Promenade cafés stay open. Combine with Protaras and Cape Greco.",
+        "bestTimeToVisit": "Morning or afternoon; Cape Greco trail first, then Fig Tree Bay.",
+        "openingHours": "Open shoreline year-round. Promenade cafés often stay open."
+      },
+      "governors-beach": {
+        "winterTip": "Ideal for a winter coastal lunch; 18°C and sunny. Cliff tavernas open year-round. Combine with Kourion or Kolossi.",
+        "bestTimeToVisit": "Lunch; Kourion in the morning, Governor's Beach for fish.",
+        "openingHours": "Open shoreline year-round. Cliff tavernas often stay open."
+      },
+      "konnos-bay": {
+        "winterTip": "Combine with Cape Greco Coastal Path; trailhead nearby. Winter sun and empty sand.",
+        "bestTimeToVisit": "Morning; do Cape Greco trail first, Konnos for a break.",
+        "openingHours": "Open shoreline year-round. No facilities on the sand."
+      },
+      "kakopetria": {
+        "winterTip": "Trout tavernas by the river are cosy in winter. Try trout with almonds or the local sausages.",
+        "bestTimeToVisit": "Dec to Feb, lunch or early afternoon (warmer in the valley)",
+        "openingHours": "Tavernas 12 to 22; shops 9 to 18"
+      }
     }
   }
 }
