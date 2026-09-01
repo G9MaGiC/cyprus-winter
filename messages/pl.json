@@ -4635,6 +4635,74 @@
       "psilo-dentro-pouziaris": {
         "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Ryzyko poślizgu. Tylko dla wprawionych.",
         "localSecret": "Zaparkuj przy restauracji Psilo Dentro. Platres jest o krok — rozgrzewka po wędrówce."
+      },
+      "mesa-potamos": {
+        "winterNotes": "Łagodnie. Dobra opcja na zimę. Wiosną najsilniejszy nurt.",
+        "localSecret": "Z Limassol: droga na Saittas, Kato Amiantos. Wypatruj znaków do wodospadu. Klasztor to niespodzianka."
+      },
+      "stavrovouni-trail": {
+        "winterNotes": "Najlepiej zimą. Odsłonięty — zero cienia. Unikaj w deszczu.",
+        "localSecret": "Idź zgodnie ze wskazówkami zegara — tak widać znaki. Połącz z Agia Varvara–Stavrovouni na duży dzień."
+      },
+      "argakas-dam": {
+        "winterNotes": "Łagodny las Pafos. Drogi leśne bywają błotniste po deszczu.",
+        "localSecret": "Nagrodą jest widok na zaporę — zostaw czas na północnym punkcie widokowym, zanim zamkniesz pętlę."
+      },
+      "karvounarka": {
+        "winterNotes": "Zimowa mgła dodaje atmosfery. Drugi odcinek po drodze — latem odsłonięty.",
+        "localSecret": "Połącz z Moutti tis Athasias i jaskinią. Restauracje w Vavatsinii na obiad."
+      },
+      "moutti-anemwn": {
+        "winterNotes": "Zimą cicho. Na szczycie wieje — stąd nazwa.",
+        "localSecret": "Połącz z Gefyrią na dłuższy dzień. Las Pafos ma inny charakter niż Troodos."
+      },
+      "agia-tilliria": {
+        "winterNotes": "Chłodno i cicho. Okolica ma inny klimat — bardziej odludna.",
+        "localSecret": "Wróć asfaltem, by zamknąć pętlę. Widok na morze z lasu to na Cyprze rzadkość."
+      },
+      "kastrovounos": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Połącz z Millomeris lub pstrągiem w Platres na łagodne pół dnia w Troodos."
+      },
+      "lazanias-fikardou": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Zakończ w Fikardou przy zachowanych kamiennych domach — zorganizuj auto na obu końcach."
+      },
+      "kalevounari": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Krótka ucieczka z Limassol — połącz z jazem Germasogeia na podwójną pętlę."
+      },
+      "germasogeia-weir": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "To nie 13-kilometrowa Kyparissia — to łatwa pętla półwyspu przy jazie."
+      },
+      "kalopanagiotis-oikos": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Zacznij od klasztoru i fresków, potem idź ku Oikos."
+      },
+      "dymes-pelendri": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Klimat starej mulnej ścieżki — cichy łącznik Krasochorii między wioskami."
+      },
+      "fikardou-archontides": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Część łańcucha E4 Machairas–Fikardou — rozplanuj pełny liniowy dzień."
+      },
+      "selladi-trypilos": {
+        "winterNotes": "Możliwy śnieg i mgła. Sprawdź warunki. Mało miejsc parkingowych.",
+        "localSecret": "Parking szybko się zapełnia. Jedź wcześnie. Cedry nie przypominają niczego innego na wyspie."
+      },
+      "polystypos-hazelnut": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Nagrodą jest wiekowy dąb na końcu — zostaw czas, by przystanąć."
+      },
+      "archangelos-mylos-rodous": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Krótkie zestawienie kościołów UNESCO — Galata i Kakopetria w jeden dzień."
+      },
+      "agros-kato-mylos": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Po pętli zatrzymaj się w Agros na loukoumi i produkty różane."
       }
     }
   }

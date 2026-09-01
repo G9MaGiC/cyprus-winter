@@ -4635,6 +4635,74 @@
       "psilo-dentro-pouziaris": {
         "winterNotes": "Le guide officiel indique mars–novembre. Risque de glissade. Bons marcheurs seulement.",
         "localSecret": "Garez-vous au restaurant Psilo Dentro. Platres est à quelques mètres pour se réchauffer après."
+      },
+      "mesa-potamos": {
+        "winterNotes": "Doux. Bonne option d'hiver. Le débit culmine au printemps.",
+        "localSecret": "Depuis Limassol : route de Saittas, Kato Amiantos. Guettez les panneaux de la cascade. Le monastère est la surprise."
+      },
+      "stavrovouni-trail": {
+        "winterNotes": "Au mieux en hiver. Exposé — aucune ombre. À éviter sous la pluie.",
+        "localSecret": "Faites-le dans le sens horaire — les panneaux sont visibles ainsi. À combiner avec Agia Varvara–Stavrovouni pour une grande journée."
+      },
+      "argakas-dam": {
+        "winterNotes": "Douce forêt de Paphos. Les pistes forestières peuvent être boueuses après la pluie.",
+        "localSecret": "La vue sur le barrage est la récompense — prenez le temps au belvédère nord avant de boucler."
+      },
+      "karvounarka": {
+        "winterNotes": "La brume d'hiver ajoute de l'atmosphère. Second tronçon sur route — exposé en été.",
+        "localSecret": "À combiner avec Moutti tis Athasias pour la grotte. Les restaurants de Vavatsinia pour déjeuner."
+      },
+      "moutti-anemwn": {
+        "winterNotes": "Calme en hiver. Venteux au sommet — d'où le nom.",
+        "localSecret": "À combiner avec Gefyria pour une journée plus longue. La forêt de Paphos a un autre caractère que le Troodos."
+      },
+      "agia-tilliria": {
+        "winterNotes": "Frais et calme. La région a un autre parfum — plus reculée.",
+        "localSecret": "Revenez par l'asphalte pour boucler. La vue sur la mer depuis la forêt est rare à Chypre."
+      },
+      "kastrovounos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "À combiner avec Millomeris ou la truite de Platres pour une douce demi-journée dans le Troodos."
+      },
+      "lazanias-fikardou": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Terminez à Fikardou et ses maisons de pierre préservées — prévoyez une voiture à chaque extrémité."
+      },
+      "kalevounari": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Courte échappée de Limassol — à combiner avec le déversoir de Germasogeia pour une double boucle."
+      },
+      "germasogeia-weir": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Pas la randonnée de 13 km de Kyparissia — c'est la boucle facile de la presqu'île du déversoir."
+      },
+      "kalopanagiotis-oikos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Commencez au monastère pour les fresques, puis marchez vers Oikos."
+      },
+      "dymes-pelendri": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Un air d'ancien chemin muletier — un discret trait d'union des Krasochoria entre les villages."
+      },
+      "fikardou-archontides": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Maillon de la chaîne E4 Machairas–Fikardou — planifiez la journée linéaire complète."
+      },
+      "selladi-trypilos": {
+        "winterNotes": "Neige et brouillard possibles. Vérifiez les conditions. Stationnement limité.",
+        "localSecret": "Le parking se remplit vite. Allez-y tôt. Les cèdres ne ressemblent à rien d'autre sur l'île."
+      },
+      "polystypos-hazelnut": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Le chêne ancestral au bout est la récompense — prenez le temps de vous attarder."
+      },
+      "archangelos-mylos-rodous": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Courte combinaison d'églises UNESCO — Galata et Kakopetria en une journée."
+      },
+      "agros-kato-mylos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Après la boucle, arrêtez-vous à Agros pour les loukoumia et les produits à la rose."
       }
     }
   }

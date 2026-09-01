@@ -65,6 +65,24 @@ export const LOCALIZED_TRAIL_IDS: ReadonlySet<string> = new Set([
   "gnafkio",
   "kionia-profitis-elias",
   "psilo-dentro-pouziaris",
+  // Slice 17 (batch 26) — next 17 by content richness
+  "mesa-potamos",
+  "stavrovouni-trail",
+  "argakas-dam",
+  "karvounarka",
+  "moutti-anemwn",
+  "agia-tilliria",
+  "kastrovounos",
+  "lazanias-fikardou",
+  "kalevounari",
+  "germasogeia-weir",
+  "kalopanagiotis-oikos",
+  "dymes-pelendri",
+  "fikardou-archontides",
+  "selladi-trypilos",
+  "polystypos-hazelnut",
+  "archangelos-mylos-rodous",
+  "agros-kato-mylos",
 ]);
 
 export const LOCALIZED_TRAIL_FIELDS = [
