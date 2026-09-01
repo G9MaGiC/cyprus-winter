@@ -4453,6 +4453,60 @@
         "winterNotes": "Drumeție de iarnă ideală. Fără zăpadă, temperaturi blânde. Bună pentru a scăpa de frigul din altă parte.",
         "winterSafety": "Drumeție de iarnă ideală; blândă, fără zăpadă. Vântul de coastă poate fi tăios; luați un strat în plus. Poteca e bine marcată.",
         "localSecret": "Porniți din golful Konnos și mergeți spre peșterile marine. Lumina pe calcar e cea mai frumoasă după-amiaza. Combinați cu Konnos — o baie vara sau o cafea iarna."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Porțiuni noroioase. Posibil zăpadă la capătul dinspre Troodos. Porniți devreme.",
+        "winterSafety": "Traseu liniar: aranjați transportul. Porțiuni noroioase; posibil zăpadă la capătul dinspre Troodos. Drumeție de o zi întreagă; porniți devreme.",
+        "localSecret": "Cascada Caledonia de la km 4 e jumătatea drumului. Opriți-vă acolo. Odihniți-vă. Cascada e răsplata înaintea ultimei porțiuni spre Troodos. Aranjați transportul înainte de plecare."
+      },
+      "horteri": {
+        "winterNotes": "Posibil zăpadă ian.–mar. Pot fi necesari colțari ușori. Porniți devreme.",
+        "winterSafety": "Doar pentru drumeți experimentați. Zăpadă probabilă ian.–mar. la altitudine. Colțarii ușori sunt esențiali. Spuneți cuiva ruta voastră. Urgențe: 112.",
+        "localSecret": "Singurătatea e răsplata. Veți vedea puțini oameni. Creasta împădurită are momente de liniște pură. Meritați-vă prânzul din Platres."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Potecă liniară de gradul 3. Noroioasă și alunecoasă după ploaie. Debit puternic al cascadei la sfârșitul iernii.",
+        "winterSafety": "Gradul 3 — porțiuni abrupte și traversări de pârâu. Podețele de lemn alunecă atunci când sunt ude. Nu e un traseu pentru începători, în ciuda distanței scurte.",
+        "localSecret": "Mergeți la Millomeris când Caledonia e prea mult. Debitul culminează la 1–2 zile după ploaie. Apoi păstrăv în Platres."
+      },
+      "aphrodite": {
+        "winterNotes": "Drumeție de iarnă ideală. Temperaturi blânde de coastă. Flori sălbatice feb.–mar.",
+        "winterSafety": "Drumeție de coastă ideală iarna. Temperaturi răcoroase, flori sălbatice feb.–mar. Luați un strat de vânt; creastă expusă.",
+        "localSecret": "Moutti tis Sotiras e punctul cel mai înalt. Opriți-vă acolo. Priveliștea golfului se deschide. Cafeneaua de la Băile Afroditei vă așteaptă la final. Ați meritat-o."
+      },
+      "almirolivado": {
+        "winterNotes": "Cel mai bine iarna. Lacul apare doar după zăpadă sau ploi puternice. Alunecos pe polei.",
+        "winterSafety": "Porțiunile pot fi alunecoase pe polei. Nu încercați singuri. Urgențe: 112.",
+        "localSecret": "Mergeți cu cineva care îl cunoaște. Lacul apare doar după zăpadă sau ploaie. Ocolul până la ienupărul uriaș adaugă 1 km și merită."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie; poate fi zăpadă. Liniar — aranjați transportul la ambele capete. Atenție la intersecțiile drumurilor forestiere la început.",
+        "localSecret": "Primul kilometru e comun cu Kampos tou Livadiou. Priveliștile de pe marginea stâncilor sunt răsplata. Kakopetria pentru prânz la final."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie; adesea senin când traseele mai înalte au zăpadă. Atenție la intersecțiile drumurilor forestiere la început.",
+        "localSecret": "Priveliștea văii Solea se deschide la jumătatea buclei. Mai liniștit decât Artemis și Atalante. Combinați cu tavernele cu păstrăv din Platres."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Cel mai bine iarna. Evitați ploaia. Șerpii sunt mai puțin activi. Nu mergeți singuri.",
+        "winterSafety": "Nu faceți drumeția singuri. Posibili șerpi în lunile calde. Semnal slab. Spuneți cuiva ruta voastră.",
+        "localSecret": "La km 5, drum vechi de pietriș — la dreapta la rezervorul de apă. La stânga în curbă, nu la dreapta. Foarte puțini cunosc acest traseu."
+      },
+      "smigies": {
+        "winterNotes": "Drumeție de iarnă ideală. Răcoare, umbra pădurii. Câteva porțiuni noroioase după ploaie. Risc de alunecare pe porțiunile stâncoase.",
+        "localSecret": "Ruta lungă trece pe lângă cuptoarele abandonate — o felie de istorie a Akamasului. Legați-vă de traseul Adonis la Kefalovrysia pentru o zi mai lungă."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Liniar la vale — aranjați transportul la Phini. Drum împărțit cu vehiculele.",
+        "localSecret": "La final, loukoumia din Phini și muzeul de ceramică Pilavakion. Parte din coridorul de ciclism CTO Prodromos–Psilo Dentro."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Traversări frecvente de râu — risc mare de alunecare după ploaie. Aranjați transportul la Kakopetria.",
+        "localSecret": "Încheiați la Agios Nikolaos tis Stegis; continuați 3 km pe șosea până în cartierul vechi din Kakopetria."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Ghidul oficial indică aprilie–noiembrie; iarna nivelul râului crește — risc de alunecare la traversări. Liniar — aranjați transportul.",
+        "localSecret": "Valea Vulturilor. Scurtă, dar cu caracter. Asociați-o cu Chrysovrysi sau Grădina Botanică Amiantos."
       }
     }
   }

@@ -4453,6 +4453,60 @@
         "winterNotes": "Ideale Winterwanderung. Kein Schnee, milde Temperaturen. Gut, um der Kälte anderswo zu entkommen.",
         "winterSafety": "Ideale Winterwanderung; mild, kein Schnee. Der Küstenwind kann schneidend sein; eine Extraschicht mitnehmen. Der Weg ist gut markiert.",
         "localSecret": "An der Konnos-Bucht starten und Richtung Meereshöhlen gehen. Das Licht auf dem Kalkstein ist nachmittags am schönsten. Mit Konnos verbinden — im Sommer zum Baden, im Winter auf einen Kaffee."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Schlammige Abschnitte. Am Troodos-Ende Schnee möglich. Früh starten.",
+        "winterSafety": "Streckenwanderung: Transport organisieren. Schlammige Abschnitte; am Troodos-Ende Schnee möglich. Tagestour; früh starten.",
+        "localSecret": "Der Caledonia-Wasserfall bei km 4 ist die Mitte. Dort anhalten. Ausruhen. Der Wasserfall ist die Belohnung vor dem letzten Stück nach Troodos. Die Mitfahrt vor dem Start organisieren."
+      },
+      "horteri": {
+        "winterNotes": "Jan.–März Schnee möglich. Microspikes können nötig sein. Früh starten.",
+        "winterSafety": "Nur für erfahrene Wanderer. Jan.–März in der Höhe Schnee wahrscheinlich. Microspikes unerlässlich. Jemandem die Route mitteilen. Notruf: 112.",
+        "localSecret": "Die Einsamkeit ist die Belohnung. Man begegnet kaum jemandem. Der Waldgrat hat Momente reiner Stille. Das Mittagessen in Platres verdienen."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Linearer Weg in Grad 3. Nach Regen schlammig und rutschig. Im Spätwinter starker Wasserfall.",
+        "winterSafety": "Grad 3 — steile Abschnitte und Bachquerungen. Die Holzstege sind bei Nässe rutschig. Trotz der kurzen Distanz keine Anfängerroute.",
+        "localSecret": "Millomeris gehen, wenn Caledonia zu viel ist. Der Wasserstand ist 1–2 Tage nach Regen am höchsten. Danach Forelle in Platres."
+      },
+      "aphrodite": {
+        "winterNotes": "Ideale Winterwanderung. Milde Küstentemperaturen. Feb.–März Wildblumen.",
+        "winterSafety": "Ideale Küstenwanderung im Winter. Kühle Temperaturen, Feb.–März Wildblumen. Windschicht mitnehmen; exponierter Grat.",
+        "localSecret": "Moutti tis Sotiras ist der höchste Punkt. Dort anhalten. Der Blick über die Bucht öffnet sich. Das Café an den Bädern der Aphrodite wartet am Ende. Verdient."
+      },
+      "almirolivado": {
+        "winterNotes": "Am besten im Winter. Der See erscheint nur nach Schnee oder starkem Regen. Bei Eis rutschig.",
+        "winterSafety": "Abschnitte können bei Eis rutschig sein. Nicht allein versuchen. Notruf: 112.",
+        "localSecret": "Mit jemandem gehen, der den Weg kennt. Der See erscheint nur nach Schnee oder Regen. Der Abstecher zum riesigen Wacholder kostet 1 km extra und lohnt sich."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Der offizielle Führer nennt März–November; Schnee möglich. Streckenwanderung — Transport an beiden Enden organisieren. Am Anfang auf die Forststraßen-Abzweige achten.",
+        "localSecret": "Der erste Kilometer verläuft gemeinsam mit Kampos tou Livadiou. Die Ausblicke von den Klippenrändern sind die Belohnung. Zum Schluss Mittagessen in Kakopetria."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Der offizielle Führer nennt März–November; oft schneefrei, wenn höhere Wege Schnee haben. Am Anfang auf die Forststraßen-Abzweige achten.",
+        "localSecret": "Auf halber Runde öffnet sich der Blick ins Solea-Tal. Ruhiger als Artemis und Atalante. Mit den Forellen-Tavernen von Platres verbinden."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Am besten im Winter. Regen meiden. Schlangen weniger aktiv. Nicht allein gehen.",
+        "winterSafety": "Nicht allein wandern. In warmen Monaten Schlangen möglich. Empfang lückenhaft. Jemandem die Route mitteilen.",
+        "localSecret": "Bei km 5 alte Schotterstraße — am Wassertank rechts. An der Kurve links, nicht rechts. Nur sehr wenige kennen diesen Weg."
+      },
+      "smigies": {
+        "winterNotes": "Ideale Winterwanderung. Kühle Temperaturen, Waldschatten. Nach Regen einige schlammige Stellen. Rutschgefahr auf felsigen Abschnitten.",
+        "localSecret": "Die lange Route passiert die verlassenen Brennöfen — ein Stück Akamas-Geschichte. Bei Kefalovrysia mit dem Adonis-Weg verbinden, wenn ein längerer Tag gewünscht ist."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Der offizielle Führer nennt März–November. Bergab-Strecke — Transport in Phini organisieren. Die Straße wird mit Fahrzeugen geteilt.",
+        "localSecret": "Am Ende Loukoumia aus Phini und das Keramikmuseum Pilavakion. Teil des CTO-Radkorridors Prodromos–Psilo Dentro."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Der offizielle Führer nennt März–November. Häufige Flussquerungen — nach Regen hohe Rutschgefahr. Transport in Kakopetria organisieren.",
+        "localSecret": "Bei Agios Nikolaos tis Stegis enden; dann 3 km auf der Straße weiter in Kakopetrias alte Nachbarschaft."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Der offizielle Führer nennt April–November; im Winter steigt der Fluss — Rutschgefahr an den Querungen. Streckenwanderung — Transport organisieren.",
+        "localSecret": "Das Tal der Adler. Kurz, aber mit Charakter. Mit Chrysovrysi oder dem Botanischen Garten von Amiantos kombinieren."
       }
     }
   }

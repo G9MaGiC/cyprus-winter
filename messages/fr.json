@@ -4453,6 +4453,60 @@
         "winterNotes": "Randonnée d'hiver idéale. Pas de neige, températures douces. Parfait pour fuir le froid d'ailleurs.",
         "winterSafety": "Randonnée d'hiver idéale ; douce, sans neige. Le vent côtier peut être vif ; prenez une épaisseur. Sentier bien balisé.",
         "localSecret": "Partez de la baie de Konnos et marchez vers les grottes marines. La lumière sur le calcaire est la plus belle l'après-midi. Combinez avec Konnos — baignade l'été, café l'hiver."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Sections boueuses. Neige possible côté Troodos. Partez tôt.",
+        "winterSafety": "Itinéraire linéaire : organisez un transport. Sections boueuses ; neige possible côté Troodos. Randonnée à la journée ; partez tôt.",
+        "localSecret": "La cascade de Caledonia au km 4 marque la mi-parcours. Arrêtez-vous-y. Reposez-vous. La cascade est la récompense avant la dernière montée vers Troodos. Organisez votre navette avant de partir."
+      },
+      "horteri": {
+        "winterNotes": "Neige possible de janv. à mars. Microspikes parfois nécessaires. Partez tôt.",
+        "winterSafety": "Réservé aux randonneurs expérimentés. Neige probable de janv. à mars en altitude. Microspikes indispensables. Prévenez quelqu'un de votre itinéraire. Urgences : 112.",
+        "localSecret": "La solitude est la récompense. Vous croiserez peu de monde. La crête forestière offre des moments de pur silence. Méritez votre déjeuner à Platres."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Sentier linéaire de niveau 3. Boueux et glissant après la pluie. Fort débit de la cascade en fin d'hiver.",
+        "winterSafety": "Niveau 3 — sections raides et traversées de ruisseau. Les passerelles en bois glissent quand elles sont mouillées. Pas un itinéraire pour débutants malgré la courte distance.",
+        "localSecret": "Faites Millomeris quand Caledonia en demande trop. Le débit culmine 1 à 2 jours après la pluie. Truite à Platres ensuite."
+      },
+      "aphrodite": {
+        "winterNotes": "Randonnée d'hiver idéale. Températures côtières douces. Fleurs sauvages de fév. à mars.",
+        "winterSafety": "Randonnée côtière d'hiver idéale. Températures fraîches, fleurs sauvages de fév. à mars. Prenez un coupe-vent ; crête exposée.",
+        "localSecret": "Moutti tis Sotiras est le point culminant. Arrêtez-vous-y. La vue sur la baie s'ouvre. Le café des Bains d'Aphrodite vous attend à l'arrivée. Vous l'avez mérité."
+      },
+      "almirolivado": {
+        "winterNotes": "Au mieux en hiver. Le lac n'apparaît qu'après la neige ou de fortes pluies. Glissant par temps de gel.",
+        "winterSafety": "Des sections peuvent glisser par temps de gel. Ne tentez pas seul. Urgences : 112.",
+        "localSecret": "Allez-y avec quelqu'un qui connaît. Le lac n'apparaît qu'après la neige ou la pluie. Le détour vers le genévrier géant ajoute 1 km et en vaut la peine."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Le guide officiel indique mars–novembre ; neige possible. Linéaire — organisez un transport aux deux extrémités. Attention aux embranchements forestiers au départ.",
+        "localSecret": "Le premier kilomètre est commun avec Kampos tou Livadiou. Les vues depuis le bord des falaises sont la récompense. Kakopetria pour déjeuner à l'arrivée."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Le guide officiel indique mars–novembre ; souvent dégagé quand les sentiers plus hauts sont enneigés. Attention aux embranchements forestiers au départ.",
+        "localSecret": "La vue sur la vallée de Solea s'ouvre à mi-boucle. Plus calme qu'Artémis et Atalante. À combiner avec les tavernes à truites de Platres."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Au mieux en hiver. Évitez la pluie. Serpents moins actifs. N'y allez pas seul.",
+        "winterSafety": "Ne randonnez pas seul. Serpents possibles aux mois chauds. Réseau aléatoire. Prévenez quelqu'un de votre itinéraire.",
+        "localSecret": "Au km 5, vieille piste — à droite au réservoir d'eau. À gauche dans le virage, pas à droite. Très peu connaissent ce sentier."
+      },
+      "smigies": {
+        "winterNotes": "Randonnée d'hiver idéale. Fraîcheur, ombre de la forêt. Quelques passages boueux après la pluie. Risque de glissade sur les sections rocheuses.",
+        "localSecret": "La grande boucle passe devant les fours abandonnés — une page d'histoire de l'Akamas. Reliez-vous au sentier d'Adonis à Kefalovrysia pour une journée plus longue."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Linéaire en descente — organisez un transport à Phini. Route partagée avec les véhicules.",
+        "localSecret": "À l'arrivée, loukoumia de Phini et musée de la céramique Pilavakion. Sur le corridor cyclable CTO Prodromos–Psilo Dentro."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Traversées de rivière fréquentes — fort risque de glissade après la pluie. Organisez un transport à Kakopetria.",
+        "localSecret": "Terminez à Agios Nikolaos tis Stegis ; poursuivez 3 km par la route jusqu'au vieux quartier de Kakopetria."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Le guide officiel indique avril–novembre ; en hiver la rivière monte — risque de glissade aux traversées. Linéaire — organisez un transport.",
+        "localSecret": "La vallée des Aigles. Courte mais pleine de caractère. À associer à Chrysovrysi ou au jardin botanique d'Amiantos."
       }
     }
   }

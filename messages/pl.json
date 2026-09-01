@@ -4453,6 +4453,60 @@
         "winterNotes": "Idealna zimowa wędrówka. Bez śniegu, łagodnie. Dobra ucieczka od zimna gdzie indziej.",
         "winterSafety": "Idealna zimowa wędrówka; łagodnie, bez śniegu. Wiatr od morza potrafi być przenikliwy; weź dodatkową warstwę. Szlak dobrze oznakowany.",
         "localSecret": "Zacznij w zatoce Konnos i idź ku morskim jaskiniom. Światło na wapieniu jest najlepsze po południu. Połącz z Konnos — latem na kąpiel, zimą na kawę."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Błotniste odcinki. Od strony Troodos możliwy śnieg. Startuj wcześnie.",
+        "winterSafety": "Trasa punkt-punkt: zorganizuj transport. Błotniste odcinki; od strony Troodos możliwy śnieg. Całodniowa wędrówka; startuj wcześnie.",
+        "localSecret": "Wodospad Caledonia na 4. kilometrze to półmetek. Zatrzymaj się tam. Odpocznij. Wodospad to nagroda przed ostatnim podejściem do Troodos. Podwózkę umów przed startem."
+      },
+      "horteri": {
+        "winterNotes": "Śnieg możliwy I–III. Mogą być potrzebne raczki. Startuj wcześnie.",
+        "winterSafety": "Tylko dla doświadczonych. Śnieg na wysokości prawdopodobny I–III. Raczki niezbędne. Powiedz komuś, którędy idziesz. Numer alarmowy: 112.",
+        "localSecret": "Nagrodą jest samotność. Spotkasz niewielu ludzi. Leśna grań ma momenty czystej ciszy. Zasłuż na obiad w Platres."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Liniowa ścieżka w skali 3. Po deszczu błoto i ślizgawica. Późną zimą silny nurt wodospadu.",
+        "winterSafety": "Skala 3 — strome odcinki i przejścia przez potok. Drewniane kładki śliskie, gdy mokre. Mimo krótkiego dystansu to nie trasa dla początkujących.",
+        "localSecret": "Idź na Millomeris, gdy Caledonia to za dużo. Nurt kulminuje 1–2 dni po deszczu. Potem pstrąg w Platres."
+      },
+      "aphrodite": {
+        "winterNotes": "Idealna zimowa wędrówka. Łagodne nadmorskie temperatury. Dzikie kwiaty II–III.",
+        "winterSafety": "Idealna zimowa wędrówka wybrzeżem. Chłodno, dzikie kwiaty II–III. Weź warstwę od wiatru; odsłonięta grań.",
+        "localSecret": "Moutti tis Sotiras to najwyższy punkt. Zatrzymaj się tam. Widok na zatokę się otwiera. Kawiarnia przy Kąpielisku Afrodyty czeka na mecie. Zasłużone."
+      },
+      "almirolivado": {
+        "winterNotes": "Najlepiej zimą. Jezioro pojawia się tylko po śniegu lub ulewie. Ślisko przy oblodzeniu.",
+        "winterSafety": "Odcinki bywają śliskie przy oblodzeniu. Nie próbuj w pojedynkę. Numer alarmowy: 112.",
+        "localSecret": "Idź z kimś, kto zna trasę. Jezioro pojawia się tylko po śniegu lub deszczu. Zboczenie do olbrzymiego jałowca dodaje 1 km i jest tego warte."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad; może być śnieżnie. Trasa liniowa — zorganizuj transport na obu końcach. Uważaj na skrzyżowania dróg leśnych na starcie.",
+        "localSecret": "Pierwszy kilometr biegnie wspólnie z Kampos tou Livadiou. Nagrodą są widoki z krawędzi urwisk. Na koniec obiad w Kakopetrii."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad; często czysto, gdy wyższe szlaki są pod śniegiem. Uważaj na skrzyżowania dróg leśnych na starcie.",
+        "localSecret": "W połowie pętli otwiera się widok na dolinę Solea. Ciszej niż na Artemis i Atalante. Połącz z tawernami z pstrągiem w Platres."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Najlepiej zimą. Unikaj deszczu. Węże mniej aktywne. Nie idź w pojedynkę.",
+        "winterSafety": "Nie wędruj w pojedynkę. W ciepłych miesiącach możliwe węże. Zasięg słaby. Powiedz komuś, którędy idziesz.",
+        "localSecret": "Na 5. km stara szutrówka — przy zbiorniku na wodę w prawo. Na zakręcie w lewo, nie w prawo. Bardzo niewielu zna ten szlak."
+      },
+      "smigies": {
+        "winterNotes": "Idealna zimowa wędrówka. Chłodno, cień lasu. Po deszczu trochę błota. Ryzyko poślizgu na skalnych odcinkach.",
+        "localSecret": "Dłuższy wariant mija opuszczone piece wapiennicze — kawałek historii Akamas. Przy Kefalovrysii połącz z Adonisem, jeśli chcesz dłuższy dzień."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Liniowa w dół — zorganizuj transport w Phini. Droga dzielona z pojazdami.",
+        "localSecret": "Na mecie loukoumia z Phini i muzeum ceramiki Pilavakion. Część korytarza rowerowego CTO Prodromos–Psilo Dentro."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Częste przejścia przez rzekę — po deszczu wysokie ryzyko poślizgu. Zorganizuj transport w Kakopetrii.",
+        "localSecret": "Zakończ przy Agios Nikolaos tis Stegis; potem 3 km drogą do starej dzielnicy Kakopetrii."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Oficjalny przewodnik podaje kwiecień–listopad; zimą rzeka przybiera — ryzyko poślizgu na przejściach. Trasa liniowa — zorganizuj transport.",
+        "localSecret": "Dolina Orłów. Krótka, ale z charakterem. Połącz z Chrysovrysi lub Ogrodem Botanicznym Amiantos."
       }
     }
   }

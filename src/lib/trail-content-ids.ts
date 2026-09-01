@@ -18,6 +18,19 @@ export const LOCALIZED_TRAIL_IDS: ReadonlySet<string> = new Set([
   "avakas-gorge",
   "panagia-araka-stavros",
   "cape-greco",
+  // Slice 14 (batch 23) — next 12 by content richness
+  "caledonia-alternative",
+  "horteri",
+  "millomeris-falls",
+  "aphrodite",
+  "almirolivado",
+  "mnimata-piskopon",
+  "kampos-tou-livadiou",
+  "kykkos-konizi",
+  "smigies",
+  "trooditissa-phini",
+  "kannoures-agios-nikolaos",
+  "loumata-ton-aeton",
 ]);
 
 export const LOCALIZED_TRAIL_FIELDS = [

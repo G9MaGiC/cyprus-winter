@@ -4453,6 +4453,60 @@
         "winterNotes": "Ideal winter hike. No snow, mild temps. Good for escaping cold elsewhere.",
         "winterSafety": "Ideal winter hike; mild, no snow. Coastal wind can be brisk; bring a layer. Path well-marked.",
         "localSecret": "Start at Konnos Bay and walk toward the sea caves. The light on the limestone is best in the afternoon. Combine with Konnos for a swim in summer or a coffee in winter."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Muddy sections. Snow possible at Troodos end. Start early.",
+        "winterSafety": "Point-to-point: arrange transport. Muddy sections; snow possible at Troodos end. Full-day hike; start early.",
+        "localSecret": "Caledonia Falls at km 4 is the midpoint. Stop there. Rest. The waterfall is the reward before the push to Troodos. Arrange your lift before you start."
+      },
+      "horteri": {
+        "winterNotes": "Snow possible Jan to Mar. Microspikes may be needed. Start early.",
+        "winterSafety": "For experienced hikers only. Snow likely Jan to Mar at elevation. Microspikes essential. Tell someone your route. Emergency: 112.",
+        "localSecret": "The solitude is the reward. You'll see few people. The forest ridge has moments of pure quiet. Earn your Platres lunch."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Grade 3 linear path. Muddy and slippery after rain. Strong waterfall flow in late winter.",
+        "winterSafety": "Grade 3—steep sections and stream crossings. Wooden walkways slippery when wet. Not a beginner route despite the short distance.",
+        "localSecret": "Do Millomeris when Caledonia is too much. Flow peaks 1–2 days after rain. Platres trout after."
+      },
+      "aphrodite": {
+        "winterNotes": "Ideal winter hike. Mild coast temps. Wildflowers Feb to Mar.",
+        "winterSafety": "Ideal winter coastal hike. Cool temps, wildflowers Feb to Mar. Carry wind layer; exposed ridge.",
+        "localSecret": "Moutti tis Sotiras is the high point. Stop there. The bay views open out. The Baths of Aphrodite café awaits when you're done. You've earned it."
+      },
+      "almirolivado": {
+        "winterNotes": "Best in winter. Lake appears only after snow or heavy rain. Slippery when icy.",
+        "winterSafety": "Sections can be slippery when icy. Do not attempt alone. Emergency: 112.",
+        "localSecret": "Go with someone who knows it. The lake appears only after snow or rain. Detour to the giant juniper adds 1 km and is worth it."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Official guide lists March–November; can be snowy. Linear—arrange transport at both ends. Watch forest-road junctions at the start.",
+        "localSecret": "The first km is shared with Kampos tou Livadiou. Views from the cliff edges are the reward. Kakopetria for lunch at the end."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Official guide lists March–November as most suitable; often clear when higher trails have snow. Watch forest-road junctions at the start.",
+        "localSecret": "The Solea Valley view opens up halfway round. Quieter than Artemis and Atalante. Combine with Platres trout tavernas."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Best in winter. Avoid rain. Snakes less active. Do not go alone.",
+        "winterSafety": "Do not hike alone. Snakes possible in warm months. Signal patchy. Tell someone your route.",
+        "localSecret": "At 5 km, old gravel road—go right at water tank. Left at curve, not right. Very few know this trail."
+      },
+      "smigies": {
+        "winterNotes": "Ideal winter hike. Cool temps, forest shade. Some muddy patches after rain. Slip risk on rocky sections.",
+        "localSecret": "The long route passes the abandoned kilns; a slice of Akamas history. Connect with Adonis at Kefalovrysia if you want a longer day."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Official guide lists March–November. Downhill linear—arrange transport at Phini. Road shared with vehicles.",
+        "localSecret": "Phini loukoumia and Pilavakion ceramics museum at the end. Part of the CTO Prodromos–Psilo Dentro cycling corridor."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Official guide lists March–November. Frequent river crossings—high slip risk after rain. Arrange transport at Kakopetria.",
+        "localSecret": "Finish at Agios Nikolaos tis Stegis; continue 3 km by road into Kakopetria’s old neighbourhood."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Official guide lists April–November; winter river levels rise—risk of slipping at crossings. Linear—arrange transport.",
+        "localSecret": "Valley of the Eagles. Short but characterful. Pair with Chrysovrysi or Amiantos Botanical Garden."
       }
     }
   }
