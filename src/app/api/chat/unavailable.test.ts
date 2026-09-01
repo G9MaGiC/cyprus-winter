@@ -14,7 +14,10 @@ function chatReq() {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "x-forwarded-for": "127.0.0.91",
+      // Unique to this file: bookings/route.test.ts uses 127.0.0.91, and the
+      // in-memory rate limiter is shared per worker — a colliding IP turns
+      // this request into a 429 depending on file order (observed flake).
+      "x-forwarded-for": "127.0.0.191",
     },
     body: JSON.stringify({
       messages: [{ role: "user", content: "Hello" }],

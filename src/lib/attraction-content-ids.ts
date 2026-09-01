@@ -51,6 +51,26 @@ export const LOCALIZED_ATTRACTION_IDS: ReadonlySet<string> = new Set([
   "buffavento",
   "st-hilarion",
   "chrysorrogiatissa",
+  // Slice 8 (batch 17) — final ≥2-field attractions (completes the class)
+  "athalassa-forest-park",
+  "mackenzie-larnaca-coast",
+  "agros",
+  "koilani",
+  "palaipafos",
+  "kalopanagiotis",
+  "foini",
+  "stavrovouni",
+  "salamis",
+  "tzelefos-bridge",
+  "bellapais",
+  "st-george-alamanou",
+  "fikardou",
+  "cape-greco-climbing",
+  "st-neophytos",
+  "trooditissa",
+  "troodos-cycling-hub",
+  "paphos-castle",
+  "amahti",
 ]);
 
 export const LOCALIZED_ATTRACTION_FIELDS = [

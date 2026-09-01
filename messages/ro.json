@@ -4009,6 +4009,82 @@
       "chrysorrogiatissa": {
         "winterTip": "Regiunea Paphos rămâne blândă. Priveliștile asupra districtului sunt clare iarna. Cumpărați o sticlă. Combinați cu Vouni Panayia pentru o zi întreagă de vin și mănăstire.",
         "openingHours": "Zilnic 9–12, 15–18 (iarna); muzeu 9–13, 14–17"
+      },
+      "athalassa-forest-park": {
+        "winterTip": "După ploaie rămâneți pe traseele principale — potecile laterale sunt noroioase. Centrul de vizitatori e deschis în zilele lucrătoare; verificați programul în extrasezon. Straturi pentru coborârile pe bicicletă.",
+        "openingHours": "Parcul e deschis din zori până în amurg. Programul centrului variază — în extrasezon sunați înainte."
+      },
+      "mackenzie-larnaca-coast": {
+        "winterTip": "Verificați prognoza vântului pentru kite; diminețile calme sunt mai bune pentru snorkeling și SUP. Costum de 3 mm dec–feb. Scufundările la Zenobia se rezervă separat, din marina Larnaca.",
+        "openingHours": "Țărm liber tot anul. Școlile și închirierile de echipament sunt sezoniere."
+      },
+      "agros": {
+        "winterTip": "Trandafirii înfloresc apr–mai. Iarna fabrica folosește recolta depozitată. Tururile continuă. Apă de trandafiri, loukoumi. Tavernele sunt calde. Aerul de munte e rece.",
+        "openingHours": "Fabrica de trandafiri 8–17; tururi cu programare"
+      },
+      "koilani": {
+        "winterTip": "Festivalul Commandaria în decembrie. Muzeul vinului 10–16. Chiar și în ianuarie tavernele sunt calde. Combinați cu Vlassides, Omodos, Pera Pedi. Planificați o masă.",
+        "openingHours": "Muzeul vinului 10–16; taverne 12–22"
+      },
+      "palaipafos": {
+        "winterTip": "Mai liniștit decât mozaicurile principale din Paphos. Mai puține grupuri iarna. Combinați cu Mormintele Regilor și Vouni Panayia pentru o zi întreagă în Paphos.",
+        "openingHours": "Mar–dum 8:30–17:00; închis lunea (din 1 iul. 2024)"
+      },
+      "kalopanagiotis": {
+        "winterTip": "Izvoarele termale sunt de două ori binevenite iarna. Valea e rece și limpede. Rezervați o baie. Podul și biserica Lampadistis. Alocați o oră.",
+        "openingHours": "Programul băilor variază; podul și satul sunt mereu deschise"
+      },
+      "foini": {
+        "winterTip": "Un ocol în drum spre Platres sau Troodos. Muzeul și atelierele rămân deschise. Iarna e liniștită. Luați acasă un ulcior mic sau un bol.",
+        "openingHours": "Muzeu 9–16 (verificați programul de iarnă); atelierele variază"
+      },
+      "stavrovouni": {
+        "winterTip": "În zilele senine de iarnă, priveliștea Mesaoriei din parcare e vizita pentru cei mai mulți. Femeile nu pot intra în mănăstirea propriu-zisă.",
+        "openingHours": "Bărbați: 8–12, 15–17; capela de la bază: întrebați la fața locului"
+      },
+      "salamis": {
+        "winterTip": "Nordul Ciprului. Verificați accesul și regulile de trecere. Iarna e blândă pentru explorare; arșița verii poate fi nemiloasă. Alocați o dimineață întreagă.",
+        "openingHours": "Zilnic 9–17 (nordul Ciprului; poate varia)"
+      },
+      "tzelefos-bridge": {
+        "winterTip": "Drumul poate fi alunecos după ploaie. Purtați bocanci impermeabili. Taverna din Milia la prânz. Combinați cu capetele de traseu Vretsia sau Roudias.",
+        "bestTimeToVisit": "Dec–mar, la mijlocul dimineții, înainte să se așeze norii"
+      },
+      "bellapais": {
+        "winterTip": "Concerte de iarnă în trapeza mănăstirii. Verificați programul. Îmbrăcați-vă gros; piatra ține frigul. Abația în amurg.",
+        "openingHours": "Zilnic 9–17 (iarna); poate varia în nordul Ciprului"
+      },
+      "st-george-alamanou": {
+        "winterTip": "Mănăstire de coastă; mai blândă decât Troodos. Ținută decentă. Combinați cu poteca Capul Greco, apoi lăsați-le pe măicuțe în pace.",
+        "openingHours": "Mănăstire activă; sunați înainte. Ținută decentă obligatorie."
+      },
+      "fikardou": {
+        "winterTip": "Sat UNESCO. Muzeul e deschis 9–16. Iarna e liniștită. Combinați cu o zi la Nicosia sau în Troodos. Liniștea e darul.",
+        "openingHours": "Muzeu 9–16; satul e mereu deschis"
+      },
+      "cape-greco-climbing": {
+        "winterTip": "Coastă blândă când Troodos e rece. Verificați vântul; crestele expuse cer zile calme. Cățărare cu ghid recomandată dacă zona e nouă pentru voi.",
+        "bestTimeToVisit": "Dec–mar, dimineața pentru vânt calm"
+      },
+      "st-neophytos": {
+        "winterTip": "Regiunea Paphos rămâne blândă iarna. Ideal pentru o vizită de dimineață. Combinați cu Vouni Panayia sau Tsangarides pentru o zi întreagă.",
+        "openingHours": "Zilnic 9–13, 14–18 (iarna)"
+      },
+      "trooditissa": {
+        "winterTip": "Drumul dinspre Platres poate fi înzăpezit ian–feb. Sunați înainte. Când e deschis, drumul printre pini e esența.",
+        "openingHours": "Zilnic 8–12, 14–17. După ninsoare sunați înainte."
+      },
+      "troodos-cycling-hub": {
+        "winterTip": "Verificați vremea; zăpada închide drumurile înalte ian–mar. Traseele de altitudine medie sunt adesea libere toată iarna. Lumini pentru zilele scurte.",
+        "bestTimeToVisit": "Dec–mar, 10:00–15:00"
+      },
+      "paphos-castle": {
+        "winterTip": "Plimbarea prin port iarna e blândă și fără aglomerație. Interiorul castelului e mic; vizită de 30 min. Combinați cu mozaicurile din Paphos.",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "amahti": {
+        "winterTip": "Iarna e ideală; arșița verii poate fi brutală. Combinați cu Governor's Beach pentru o zi pe coastă.",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
       }
     }
   }

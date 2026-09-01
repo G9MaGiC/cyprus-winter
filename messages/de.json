@@ -4009,6 +4009,82 @@
       "chrysorrogiatissa": {
         "winterTip": "Die Region Paphos bleibt mild. Der Blick über den Bezirk ist im Winter klar. Eine Flasche kaufen. Mit Vouni Panayia zu einem vollen Wein-und-Kloster-Tag kombinieren.",
         "openingHours": "Täglich 9–12, 15–18 (Winter); Museum 9–13, 14–17"
+      },
+      "athalassa-forest-park": {
+        "winterTip": "Nach Regen auf den Hauptwegen bleiben — die Seitenpfade sind matschig. Besucherzentrum werktags geöffnet; außerhalb der Saison Zeiten prüfen. Schichten für Radabfahrten.",
+        "openingHours": "Park von Sonnenauf- bis -untergang geöffnet. Zeiten des Besucherzentrums variieren — außerhalb der Saison vorher anrufen."
+      },
+      "mackenzie-larnaca-coast": {
+        "winterTip": "Windvorhersage fürs Kiten prüfen; ruhige Morgen sind besser für Schnorcheln und SUP. 3-mm-Neopren Dez.–Feb. Zenobia-Tauchgänge separat ab der Marina Larnaca buchen.",
+        "openingHours": "Frei zugänglicher Strand, ganzjährig. Schulen und Verleih saisonal."
+      },
+      "agros": {
+        "winterTip": "Die Rosen blühen Apr.–Mai. Im Winter arbeitet die Fabrik mit gelagerter Ernte. Führungen laufen weiter. Rosenwasser, Loukoumi. Die Tavernen sind warm. Die Bergluft ist kalt.",
+        "openingHours": "Rosenfabrik 8–17; Führungen nach Absprache"
+      },
+      "koilani": {
+        "winterTip": "Commandaria-Festival im Dezember. Weinmuseum 10–16. Selbst im Januar sind die Tavernen warm. Mit Vlassides, Omodos, Pera Pedi kombinieren. Zeit zum Essen einplanen.",
+        "openingHours": "Weinmuseum 10–16; Tavernen 12–22"
+      },
+      "palaipafos": {
+        "winterTip": "Ruhiger als die Hauptmosaiken von Paphos. Im Winter weniger Reisegruppen. Mit den Königsgräbern und Vouni Panayia zu einem vollen Paphos-Tag kombinieren.",
+        "openingHours": "Di–So 8:30–17:00; montags geschlossen (seit 1. Juli 2024)"
+      },
+      "kalopanagiotis": {
+        "winterTip": "Die Thermalquellen sind im Winter doppelt willkommen. Das Tal ist kalt und klar. Ein Bad reservieren. Die Brücke und die Lampadistis-Kirche. Eine Stunde einplanen.",
+        "openingHours": "Thermalbäder variieren; Brücke und Dorf immer zugänglich"
+      },
+      "foini": {
+        "winterTip": "Abstecher auf dem Weg nach Platres oder Troodos. Museum und Werkstätten bleiben offen. Der Winter ist still. Einen kleinen Krug oder eine Schale mitnehmen.",
+        "openingHours": "Museum 9–16 (Winterzeiten prüfen); Werkstätten variieren"
+      },
+      "stavrovouni": {
+        "winterTip": "An klaren Wintertagen ist der Mesaoria-Blick vom Parkplatz für die meisten der eigentliche Besuch. Frauen dürfen das eigentliche Kloster nicht betreten.",
+        "openingHours": "Männer: 8–12, 15–17; Kapelle am Fuß: vor Ort fragen"
+      },
+      "salamis": {
+        "winterTip": "Nordzypern. Zugang und Übertrittsregeln prüfen. Der Winter ist mild zum Erkunden; die Sommerhitze kann gnadenlos sein. Einen ganzen Vormittag einplanen.",
+        "openingHours": "Täglich 9–17 (Nordzypern; kann abweichen)"
+      },
+      "tzelefos-bridge": {
+        "winterTip": "Die Straße kann nach Regen rutschig sein. Wasserdichte Stiefel tragen. Mittags die Taverne in Milia. Mit den Einstiegen Vretsia oder Roudias kombinieren.",
+        "bestTimeToVisit": "Dez. bis März, am Vormittag, bevor sich Wolken festsetzen"
+      },
+      "bellapais": {
+        "winterTip": "Winterkonzerte im Refektorium. Termine im Programm prüfen. Warm anziehen; der Stein hält die Kälte. Die Abtei in der Dämmerung.",
+        "openingHours": "Täglich 9–17 (Winter); in Nordzypern ggf. abweichend"
+      },
+      "st-george-alamanou": {
+        "winterTip": "Küstenkloster; milder als das Troodos. Dezente Kleidung. Mit dem Kap-Greco-Pfad verbinden, dann die Schwestern in Ruhe lassen.",
+        "openingHours": "Aktives Kloster; vorher anrufen. Dezente Kleidung erforderlich."
+      },
+      "fikardou": {
+        "winterTip": "UNESCO-Dorf. Das Museum öffnet 9–16. Der Winter ist still. Mit einem Nikosia- oder Troodos-Tag kombinieren. Die Stille ist das Geschenk.",
+        "openingHours": "Museum 9–16; Dorf immer zugänglich"
+      },
+      "cape-greco-climbing": {
+        "winterTip": "Milde Küste, wenn das Troodos kalt ist. Wind prüfen; exponierte Grate brauchen ruhige Tage. Geführtes Klettern empfohlen, wenn das Gebiet neu ist.",
+        "bestTimeToVisit": "Dez. bis März, morgens bei ruhigem Wind"
+      },
+      "st-neophytos": {
+        "winterTip": "Die Region Paphos bleibt im Winter mild. Ideal für einen Vormittagsbesuch. Mit Vouni Panayia oder Tsangarides zu einem vollen Tag kombinieren.",
+        "openingHours": "Täglich 9–13, 14–18 (Winter)"
+      },
+      "trooditissa": {
+        "winterTip": "Die Straße von Platres kann Jan.–Feb. verschneit sein. Vorher anrufen. Wenn offen, ist die Fahrt durch die Pinien der eigentliche Grund.",
+        "openingHours": "Täglich 8–12, 14–17. Nach Schneefall vorher anrufen."
+      },
+      "troodos-cycling-hub": {
+        "winterTip": "Wetter prüfen; Schnee sperrt die höheren Straßen Jan.–März. Mittellagen-Routen sind oft den ganzen Winter frei. Licht für die kurzen Tage.",
+        "bestTimeToVisit": "Dez. bis März, 10–15 Uhr"
+      },
+      "paphos-castle": {
+        "winterTip": "Der Hafenspaziergang ist im Winter mild und leer. Das Innere der Burg ist klein; 30 Min. Besuch. Mit den Paphos-Mosaiken kombinieren.",
+        "openingHours": "Täglich 8:30–17:00 (Winter)"
+      },
+      "amahti": {
+        "winterTip": "Der Winter ist ideal; die Sommerhitze kann brutal sein. Mit Governor's Beach zu einem Küstentag kombinieren.",
+        "openingHours": "Täglich 8:30–17:00 (Winter)"
       }
     }
   }

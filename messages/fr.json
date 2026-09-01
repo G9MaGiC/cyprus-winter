@@ -4009,6 +4009,82 @@
       "chrysorrogiatissa": {
         "winterTip": "La région de Paphos reste douce. Les vues sur le district sont dégagées en hiver. Achetez une bouteille. À combiner avec Vouni Panayia pour une journée vin et monastère.",
         "openingHours": "Tous les jours 9 h – 12 h, 15 h – 18 h (hiver) ; musée 9 h – 13 h, 14 h – 17 h"
+      },
+      "athalassa-forest-park": {
+        "winterTip": "Après la pluie, restez sur les pistes principales — les sentiers latéraux sont boueux. Centre des visiteurs ouvert en semaine ; vérifiez les horaires hors saison. Des couches pour les descentes à vélo.",
+        "openingHours": "Parc ouvert de l’aube au crépuscule. Les horaires du centre varient — hors saison, appelez avant."
+      },
+      "mackenzie-larnaca-coast": {
+        "winterTip": "Vérifiez le vent pour le kite ; les matins calmes conviennent mieux au snorkeling et au SUP. Combinaison 3 mm de déc. à fév. Les plongées sur le Zenobia se réservent à part, depuis la marina de Larnaca.",
+        "openingHours": "Rivage en accès libre toute l’année. Écoles et location de matériel saisonnières."
+      },
+      "agros": {
+        "winterTip": "Les roses fleurissent d’avr. à mai. En hiver, la fabrique travaille la récolte stockée. Les visites continuent. Eau de rose, loukoums. Les tavernes sont chaudes. L’air de montagne est froid.",
+        "openingHours": "Fabrique de roses 8 h – 17 h ; visites sur arrangement"
+      },
+      "koilani": {
+        "winterTip": "Festival de la Commandaria en décembre. Musée du vin 10 h – 16 h. Même en janvier, les tavernes sont chaudes. À combiner avec Vlassides, Omodos, Pera Pedi. Prévoyez de manger.",
+        "openingHours": "Musée du vin 10 h – 16 h ; tavernes 12 h – 22 h"
+      },
+      "palaipafos": {
+        "winterTip": "Plus calme que les mosaïques principales de Paphos. Moins de groupes en hiver. À combiner avec les Tombeaux des Rois et Vouni Panayia pour une journée complète à Paphos.",
+        "openingHours": "Mar–dim. 8 h 30 – 17 h ; fermé le lundi (depuis le 1er juil. 2024)"
+      },
+      "kalopanagiotis": {
+        "winterTip": "Les sources thermales sont doublement bienvenues en hiver. La vallée est froide et vive. Réservez un bain. Le pont et l’église Lampadistis. Comptez une heure.",
+        "openingHours": "Horaires des bains variables ; pont et village toujours ouverts"
+      },
+      "foini": {
+        "winterTip": "Détour sur la route de Platres ou du Troodos. Le musée et les ateliers restent ouverts. L’hiver est calme. Repartez avec une petite cruche ou un bol.",
+        "openingHours": "Musée 9 h – 16 h (vérifiez les horaires d’hiver) ; ateliers variables"
+      },
+      "stavrovouni": {
+        "winterTip": "Par temps clair en hiver, la vue sur la Mesaoria depuis le parking constitue la visite pour la plupart. Les femmes ne peuvent pas entrer dans le monastère proprement dit.",
+        "openingHours": "Hommes : 8 h – 12 h, 15 h – 17 h ; chapelle en contrebas : demandez sur place"
+      },
+      "salamis": {
+        "winterTip": "Chypre du Nord. Vérifiez l’accès et les règles de passage. L’hiver est doux pour explorer ; la chaleur d’été peut être écrasante. Comptez une matinée entière.",
+        "openingHours": "Tous les jours 9 h – 17 h (nord de Chypre ; horaires variables)"
+      },
+      "tzelefos-bridge": {
+        "winterTip": "La route peut être glissante après la pluie. Portez des chaussures imperméables. Taverne de Milia au déjeuner. À combiner avec les départs de Vretsia ou Roudias.",
+        "bestTimeToVisit": "Déc. à mars, en milieu de matinée avant que les nuages s’installent"
+      },
+      "bellapais": {
+        "winterTip": "Concerts d’hiver dans le réfectoire. Consultez le programme. Couvrez-vous ; la pierre garde le froid. L’abbaye au crépuscule.",
+        "openingHours": "Tous les jours 9 h – 17 h (hiver) ; peut varier dans le nord de Chypre"
+      },
+      "st-george-alamanou": {
+        "winterTip": "Couvent côtier, plus doux que le Troodos. Tenue correcte. À combiner avec le sentier du cap Greco, puis laissez les sœurs en paix.",
+        "openingHours": "Couvent en activité ; appelez avant. Tenue correcte exigée."
+      },
+      "fikardou": {
+        "winterTip": "Village UNESCO. Le musée ouvre de 9 h à 16 h. L’hiver est calme. À combiner avec une journée à Nicosie ou dans le Troodos. Le silence est le cadeau.",
+        "openingHours": "Musée 9 h – 16 h ; village toujours ouvert"
+      },
+      "cape-greco-climbing": {
+        "winterTip": "Côte douce quand le Troodos est froid. Vérifiez le vent ; les arêtes exposées exigent des jours calmes. Escalade guidée recommandée si vous découvrez le secteur.",
+        "bestTimeToVisit": "Déc. à mars, le matin pour un vent calme"
+      },
+      "st-neophytos": {
+        "winterTip": "La région de Paphos reste douce en hiver. Idéal pour une visite matinale. À combiner avec Vouni Panayia ou Tsangarides pour une journée complète.",
+        "openingHours": "Tous les jours 9 h – 13 h, 14 h – 18 h (hiver)"
+      },
+      "trooditissa": {
+        "winterTip": "La route depuis Platres peut être enneigée de janv. à fév. Appelez avant. Quand c’est ouvert, la route sous les pins est l’essentiel.",
+        "openingHours": "Tous les jours 8 h – 12 h, 14 h – 17 h. Après la neige, appelez avant."
+      },
+      "troodos-cycling-hub": {
+        "winterTip": "Vérifiez la météo ; la neige ferme les routes hautes de janv. à mars. Les itinéraires de moyenne altitude restent souvent dégagés tout l’hiver. Des lumières pour les jours courts.",
+        "bestTimeToVisit": "Déc. à mars, 10 h – 15 h"
+      },
+      "paphos-castle": {
+        "winterTip": "La promenade du port en hiver est douce et sans foule. L’intérieur du château est petit ; visite de 30 min. À combiner avec les mosaïques de Paphos.",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "amahti": {
+        "winterTip": "L’hiver est idéal ; la chaleur d’été peut être brutale. À combiner avec Governor's Beach pour une journée côtière.",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
       }
     }
   }
