@@ -40,6 +40,17 @@ export const LOCALIZED_ATTRACTION_IDS: ReadonlySet<string> = new Set([
   "st-sozomenos",
   "panagia-asinou",
   "st-john-lampadistis",
+  // Slice 7 (batch 16) — painted-church circuit, northern castles, ancient
+  "gerakopetra-boulders",
+  "panagia-tou-moutoulla",
+  "angeloktisti",
+  "idalion",
+  "archangelos-michail",
+  "panagia-tou-araka",
+  "st-nicholas-roof",
+  "buffavento",
+  "st-hilarion",
+  "chrysorrogiatissa",
 ]);
 
 export const LOCALIZED_ATTRACTION_FIELDS = [

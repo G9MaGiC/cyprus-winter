@@ -3969,6 +3969,46 @@
       "st-john-lampadistis": {
         "winterTip": "Godziny zimowe 16 wrz–15 kwi (Ministerstwo Kultury, sie 2025). Ubierz się skromnie. Połącz z weneckim mostem we wsi.",
         "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
+      },
+      "gerakopetra-boulders": {
+        "winterTip": "Najlepszy sezon gru–mar w suche dni. Sektory północno-wschodnie pozostają zimne — zacznij przed południem albo jedź do Episkopi za słońcem. Weź warstwy do asekuracji. Po deszczu odczekaj 24 godziny — piaskowiec musi wyschnąć. Szutrowa droga bywa błotnista; 4×4 pomaga, ale nie jest konieczne.",
+        "bestTimeToVisit": "Gru–mar, 10:00–15:00"
+      },
+      "panagia-tou-moutoulla": {
+        "winterTip": "Godziny zimowe 16 wrz–15 kwi (Ministerstwo Kultury, sie 2025). Najmniejszy z grupy; daj sobie czas, potem jedź do Pedoulas.",
+        "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
+      },
+      "angeloktisti": {
+        "winterTip": "Cichy wiejski kościół. Większość autokarów go pomija. Zimowe poranki są idealne. Połącz z Zygi lub Lefkarą na dzień w głębi regionu Larnaki.",
+        "openingHours": "Zima (1 paź–31 kwi): pon–sob 7:00–16:45, niedz 9:30–16:45 (DMT 2025). Potwierdź na miejscu."
+      },
+      "idalion": {
+        "winterTip": "Zimą mniej odwiedzających. Możesz mieć stanowisko tylko dla siebie. Drzewa oliwne i widoki ze wzgórza są warte zjazdu z Nikozji.",
+        "openingHours": "Muzeum lokalne pon–pt 8:30–16:00 (DMT 2025). Godziny parku archeologicznego bywają różne — tel. 22 444818."
+      },
+      "archangelos-michail": {
+        "winterTip": "Godziny zimowe 16 wrz–15 kwi (Ministerstwo Kultury, sie 2025). Jeśli drzwi są zamknięte, zapytaj w Muzeum Sztuki Ludowej albo w kawiarni.",
+        "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
+      },
+      "panagia-tou-araka": {
+        "winterTip": "Godziny zimowe 16 wrz–15 kwi (Ministerstwo Kultury, sie 2025). Przed jazdą do Lagoudery potwierdź, że drzwi są otwarte.",
+        "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
+      },
+      "st-nicholas-roof": {
+        "winterTip": "Godziny zimowe 16 wrz–15 kwi (Ministerstwo Kultury, sie 2025). Połącz ze starą dzielnicą Kakopetrii i obiadem z pstrągiem.",
+        "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
+      },
+      "buffavento": {
+        "winterTip": "Północny Cypr. Ubierz się ciepło; zamek łapie wiatr. Przed podróżą sprawdź przejście graniczne z południa. Pogodne zimowe dni dają najlepszą widoczność. Podejście rozgrzewa.",
+        "openingHours": "Codziennie 9–17 (północny Cypr; może się różnić)"
+      },
+      "st-hilarion": {
+        "winterTip": "Północny Cypr. Przed wyjazdem sprawdź przejście graniczne z południa; warunki się zmieniają. Ubierz się ciepło; zamek łapie wiatr. Pogodne zimowe dni dają najlepszą widoczność.",
+        "openingHours": "Codziennie 9–17 (północny Cypr; może się różnić)"
+      },
+      "chrysorrogiatissa": {
+        "winterTip": "Region Pafos pozostaje łagodny. Widoki na okolicę są zimą przejrzyste. Kup butelkę. Połącz z Vouni Panayia na pełny dzień wina i klasztoru.",
+        "openingHours": "Codziennie 9–12, 15–18 (zima); muzeum 9–13, 14–17"
       }
     }
   }

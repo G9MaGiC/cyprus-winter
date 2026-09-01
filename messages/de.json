@@ -3969,6 +3969,46 @@
       "st-john-lampadistis": {
         "winterTip": "Winteröffnung 16. Sep. bis 15. Apr. (Kulturministerium, Aug. 2025). Dezente Kleidung. Mit der venezianischen Brücke im Dorf kombinieren.",
         "openingHours": "Di–Sa 10:00–16:30, So 11:00–16:30 (Winter, 16. Sep. bis 15. Apr.). Montags geschlossen. Vor Ort bestätigen."
+      },
+      "gerakopetra-boulders": {
+        "winterTip": "Beste Saison Dez.–März an trockenen Tagen. Die Nordost-Sektoren bleiben kalt — am Vormittag starten oder für Sonne nach Episkopi. Schichten zum Sichern mitnehmen. Nach Regen 24 Stunden warten — der Sandstein muss trocknen. Die Schotterstraße kann matschig sein; Allrad hilfreich, aber nicht nötig.",
+        "bestTimeToVisit": "Dez. bis März, 10–15 Uhr"
+      },
+      "panagia-tou-moutoulla": {
+        "winterTip": "Winteröffnung 16. Sep. bis 15. Apr. (Kulturministerium, Aug. 2025). Die kleinste der Gruppe; Zeit einplanen, dann weiter nach Pedoulas.",
+        "openingHours": "Di–Sa 10:00–16:30, So 11:00–16:30 (Winter, 16. Sep. bis 15. Apr.). Montags geschlossen. Vor Ort bestätigen."
+      },
+      "angeloktisti": {
+        "winterTip": "Stille Dorfkirche. Die meisten Reisebusse fahren vorbei. Wintermorgen sind ideal. Mit Zygi oder Lefkara zu einem Tag im Hinterland von Larnaca kombinieren.",
+        "openingHours": "Winter (1. Okt. bis 31. Apr.): Mo–Sa 7:00–16:45, So 9:30–16:45 (DMT 2025). Vor Ort bestätigen."
+      },
+      "idalion": {
+        "winterTip": "Im Winter weniger Besucher. Vielleicht haben Sie die Stätte für sich. Die Olivenbäume und der Hügelblick lohnen den Abstecher von Nikosia.",
+        "openingHours": "Lokalmuseum Mo–Fr 8:30–16:00 (DMT 2025). Die Zeiten des Archäologieparks variieren — Tel. 22 444818."
+      },
+      "archangelos-michail": {
+        "winterTip": "Winteröffnung 16. Sep. bis 15. Apr. (Kulturministerium, Aug. 2025). Wenn die Tür verschlossen ist, im Volkskunstmuseum oder Café fragen.",
+        "openingHours": "Di–Sa 10:00–16:30, So 11:00–16:30 (Winter, 16. Sep. bis 15. Apr.). Montags geschlossen. Vor Ort bestätigen."
+      },
+      "panagia-tou-araka": {
+        "winterTip": "Winteröffnung 16. Sep. bis 15. Apr. (Kulturministerium, Aug. 2025). Vor der Fahrt nach Lagoudera bestätigen, dass die Tür offen ist.",
+        "openingHours": "Di–Sa 10:00–16:30, So 11:00–16:30 (Winter, 16. Sep. bis 15. Apr.). Montags geschlossen. Vor Ort bestätigen."
+      },
+      "st-nicholas-roof": {
+        "winterTip": "Winteröffnung 16. Sep. bis 15. Apr. (Kulturministerium, Aug. 2025). Mit dem alten Viertel von Kakopetria und einem Forellen-Mittagessen kombinieren.",
+        "openingHours": "Di–Sa 10:00–16:30, So 11:00–16:30 (Winter, 16. Sep. bis 15. Apr.). Montags geschlossen. Vor Ort bestätigen."
+      },
+      "buffavento": {
+        "winterTip": "Nordzypern. Warm anziehen; die Burg fängt den Wind. Vor der Fahrt den Grenzübertritt vom Süden bestätigen. Klare Wintertage bieten die beste Sicht. Der Aufstieg wärmt.",
+        "openingHours": "Täglich 9–17 (Nordzypern; kann abweichen)"
+      },
+      "st-hilarion": {
+        "winterTip": "Nordzypern. Vor der Fahrt den Grenzübertritt vom Süden bestätigen; die Lage kann sich ändern. Warm anziehen; die Burg fängt den Wind. Klare Wintertage bieten die beste Sicht.",
+        "openingHours": "Täglich 9–17 (Nordzypern; kann abweichen)"
+      },
+      "chrysorrogiatissa": {
+        "winterTip": "Die Region Paphos bleibt mild. Der Blick über den Bezirk ist im Winter klar. Eine Flasche kaufen. Mit Vouni Panayia zu einem vollen Wein-und-Kloster-Tag kombinieren.",
+        "openingHours": "Täglich 9–12, 15–18 (Winter); Museum 9–13, 14–17"
       }
     }
   }

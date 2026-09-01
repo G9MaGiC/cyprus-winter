@@ -3969,6 +3969,46 @@
       "st-john-lampadistis": {
         "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Îmbrăcați-vă decent. Combinați cu podul venețian din sat.",
         "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "gerakopetra-boulders": {
+        "winterTip": "Sezonul de vârf dec–mar în zilele uscate. Sectoarele de nord-est rămân reci — începeți la mijlocul dimineții sau mergeți la Episkopi pentru soare. Luați straturi pentru asigurare. Așteptați 24 de ore după ploaie — gresia trebuie să se usuce. Drumul de pietriș poate fi noroios; 4×4 e util, dar nu esențial.",
+        "bestTimeToVisit": "Dec–mar, 10:00–15:00"
+      },
+      "panagia-tou-moutoulla": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Cea mai mică din grup; lăsați-vă timp, apoi continuați spre Pedoulas.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "angeloktisti": {
+        "winterTip": "Biserică de sat liniștită. Majoritatea autocarelor o ocolesc. Diminețile de iarnă sunt ideale. Combinați cu Zygi sau Lefkara pentru o zi în interiorul regiunii Larnaca.",
+        "openingHours": "Iarna (1 oct–31 apr): lun–sâm 7:00–16:45, dum 9:30–16:45 (DMT 2025). Confirmați la fața locului."
+      },
+      "idalion": {
+        "winterTip": "Mai puțini vizitatori iarna. S-ar putea să aveți situl doar pentru voi. Măslinii și priveliștea de pe deal merită ocolul de la Nicosia.",
+        "openingHours": "Muzeul local lun–vin 8:30–16:00 (DMT 2025). Programul parcului arheologic variază — tel. 22 444818."
+      },
+      "archangelos-michail": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Dacă ușa e încuiată, întrebați la Muzeul de Artă Populară sau la cafenea.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "panagia-tou-araka": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Confirmați că ușa e deschisă înainte de drumul spre Lagoudera.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "st-nicholas-roof": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Combinați cu cartierul vechi din Kakopetria și un prânz cu păstrăv.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "buffavento": {
+        "winterTip": "Nordul Ciprului. Îmbrăcați-vă gros; castelul prinde vântul. Verificați trecerea graniței dinspre sud înainte de drum. Zilele senine de iarnă oferă cea mai bună vizibilitate. Urcușul vă încălzește.",
+        "openingHours": "Zilnic 9–17 (nordul Ciprului; poate varia)"
+      },
+      "st-hilarion": {
+        "winterTip": "Nordul Ciprului. Verificați trecerea graniței dinspre sud înainte de plecare; condițiile se pot schimba. Îmbrăcați-vă gros; castelul prinde vântul. Zilele senine de iarnă oferă cea mai bună vizibilitate.",
+        "openingHours": "Zilnic 9–17 (nordul Ciprului; poate varia)"
+      },
+      "chrysorrogiatissa": {
+        "winterTip": "Regiunea Paphos rămâne blândă. Priveliștile asupra districtului sunt clare iarna. Cumpărați o sticlă. Combinați cu Vouni Panayia pentru o zi întreagă de vin și mănăstire.",
+        "openingHours": "Zilnic 9–12, 15–18 (iarna); muzeu 9–13, 14–17"
       }
     }
   }

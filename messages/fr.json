@@ -3969,6 +3969,46 @@
       "st-john-lampadistis": {
         "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Tenue correcte exigée. À combiner avec le pont vénitien du village.",
         "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "gerakopetra-boulders": {
+        "winterTip": "Pleine saison de déc. à mars par temps sec. Les secteurs nord-est restent froids — commencez en milieu de matinée ou filez à Episkopi pour le soleil. Prévoyez des couches pour l’assurage. Attendez 24 h après la pluie — le grès doit sécher. La piste peut être boueuse ; 4×4 utile mais pas indispensable.",
+        "bestTimeToVisit": "Déc. à mars, 10 h – 15 h"
+      },
+      "panagia-tou-moutoulla": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). La plus petite du groupe ; prenez le temps, puis continuez vers Pedoulas.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "angeloktisti": {
+        "winterTip": "Église de village paisible. La plupart des bus touristiques passent sans s’arrêter. Les matins d’hiver sont parfaits. À combiner avec Zygi ou Lefkara pour une journée dans l’arrière-pays de Larnaca.",
+        "openingHours": "Hiver (du 1er oct. au 31 avr.) : lun–sam. 7 h – 16 h 45, dim. 9 h 30 – 16 h 45 (DMT 2025). À confirmer sur place."
+      },
+      "idalion": {
+        "winterTip": "Moins de visiteurs en hiver. Vous aurez peut-être le site pour vous. Les oliviers et la vue depuis la colline valent le détour depuis Nicosie.",
+        "openingHours": "Musée local lun–ven 8 h 30 – 16 h (DMT 2025). Les horaires du parc archéologique varient — tél. 22 444818."
+      },
+      "archangelos-michail": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Si la porte est fermée, demandez au musée d’art populaire ou au café.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "panagia-tou-araka": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Confirmez que la porte est ouverte avant de rouler jusqu’à Lagoudera.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "st-nicholas-roof": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). À combiner avec le vieux quartier de Kakopetria et une truite au déjeuner.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "buffavento": {
+        "winterTip": "Chypre du Nord. Couvrez-vous ; le château prend le vent. Vérifiez le passage de la ligne verte depuis le sud avant de partir. Les journées d’hiver dégagées offrent la meilleure visibilité. La montée réchauffe.",
+        "openingHours": "Tous les jours 9 h – 17 h (nord de Chypre ; horaires variables)"
+      },
+      "st-hilarion": {
+        "winterTip": "Chypre du Nord. Vérifiez le passage de la ligne verte depuis le sud avant de partir ; la situation peut changer. Couvrez-vous ; le château prend le vent. Les journées d’hiver dégagées offrent la meilleure visibilité.",
+        "openingHours": "Tous les jours 9 h – 17 h (nord de Chypre ; horaires variables)"
+      },
+      "chrysorrogiatissa": {
+        "winterTip": "La région de Paphos reste douce. Les vues sur le district sont dégagées en hiver. Achetez une bouteille. À combiner avec Vouni Panayia pour une journée vin et monastère.",
+        "openingHours": "Tous les jours 9 h – 12 h, 15 h – 18 h (hiver) ; musée 9 h – 13 h, 14 h – 17 h"
       }
     }
   }
