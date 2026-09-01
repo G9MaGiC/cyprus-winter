@@ -67,13 +67,13 @@
     "aria": {
       "planCta": "בנו יום",
       "pageNavigation": "ניווט בדף",
-      "viewPlan": "צפה בתוכנית שלך",
+      "viewPlan": "צפו בתוכנית שלכם",
       "placeInItinerary": "{id} בתוכנית",
       "bottomNavigation": "ניווט תחתון",
       "moreNavigation": "עוד ניווט",
       "breadcrumb": "נתיב דפים",
       "dismissTip": "סגירת טיפ",
-      "selectLanguage": "בחר שפה",
+      "selectLanguage": "בחרו שפה",
       "close": "סגירה",
       "addPlace": "הוספת מקום",
       "addPlaceToItinerary": "הוסיפו מקום לתוכנית",
@@ -113,7 +113,7 @@
       "openInMaps": "פתיחה במפות"
     },
     "addToPlan": "הוסיפו לתוכנית",
-    "addPlace": "הוסף מקום",
+    "addPlace": "הוסיפו מקום",
     "openAria": "פתיחת {name}",
     "cookies": {
       "essentialOnly": "חיוני בלבד",
@@ -153,10 +153,10 @@
     "ai": {
       "title": "מדריך קפריסין",
       "subtitle": "שאלו על שבילים, יקבים וכפרים",
-      "clear": "נקה שיחה",
-      "closeAria": "סגור צ'אט",
+      "clear": "נקו שיחה",
+      "closeAria": "סגרו צ׳אט",
       "inputPlaceholder": "שאלו על קפריסין…",
-      "sendAria": "שלח הודעה",
+      "sendAria": "שלחו הודעה",
       "startVoice": "התחל קלט קולי",
       "stopVoice": "הפסק האזנה",
       "retry": "נסו שוב",
@@ -271,7 +271,7 @@
       "winery": "יקב"
     },
     "inYourPlan": "בתוכנית שלכם",
-    "viewPlan": "צפה בתוכנית",
+    "viewPlan": "צפו בתוכנית",
     "local": "מקומי",
     "verifiedPartner": "שותף מאומת",
     "verifiedPartnerTitle": "שותף מאומת: מקבל בקשות הזמנה ישירות",
@@ -283,13 +283,13 @@
     "reportAnotherTrail": "דיווח על שביל נוסף",
     "thanksForReporting": "תודה על הדיווח.",
     "remove": "הסר",
-    "bookTastings": "הזמן טעימות",
+    "bookTastings": "הזמינו טעימות",
     "exploreWineries": "גלו יקבים",
     "allCategories": "כל הקטגוריות",
     "filterPlaces": "סינון מקומות",
-    "clearFilter": "נקה סינון",
+    "clearFilter": "נקו סינון",
     "viewOnMap": "הצגה במפה",
-    "scrollToMap": "גלול למפה",
+    "scrollToMap": "גללו למפה",
     "askAI": "שאלו את ה-AI",
     "askAIAria": "שאלו את ה-AI על שבילים, יקבים ורעיונות לטיול",
     "askAITrailsAria": "שאלו את ה-AI להצעות שבילים",
@@ -305,7 +305,7 @@
       "places": "{count, plural, one {מקום # בתוכנית} other {# מקומות בתוכנית}}",
       "viewPlan": "צפו בתוכנית"
     },
-    "planYourTrip": "תכנן את הטיול",
+    "planYourTrip": "תכננו את הטיול",
     "winterHikingGuide": "מדריך טיולים חורפי",
     "seeMap": "ראו מפה",
     "emergency112": "חירום 112",
@@ -337,13 +337,13 @@
       "content": "טוען תוכן"
     },
     "skipTo": {
-      "thisWeek": "דלג לשבוע הזה",
-      "editorsPicks": "דלג לבחירות העורך",
-      "plan": "דלג לתוכנית",
-      "search": "דלג לחיפוש",
-      "startHere": "דלג להתחלה כאן",
-      "results": "דלג לתוצאות",
-      "map": "דלג למפה"
+      "thisWeek": "דלגו לשבוע הזה",
+      "editorsPicks": "דלגו לבחירות העורך",
+      "plan": "דלגו לתוכנית",
+      "search": "דלגו לחיפוש",
+      "startHere": "דלגו להתחלה כאן",
+      "results": "דלגו לתוצאות",
+      "map": "דלגו למפה"
     },
     "cancel": "ביטול",
     "done": "סיום",
@@ -458,7 +458,7 @@
         "accessible": "נגיש ועדין",
         "accessibleAria": "מקומות נגישים ועדינים",
         "all": "הכל",
-        "seeAll": "הצג הכל",
+        "seeAll": "הצגו הכל",
         "culture": "תרבות",
         "coasts": "חופים",
         "monasteries": "מנזרים",
@@ -577,8 +577,8 @@
       "card": {
         "defaultTease": "שווה ביקור בחורף.",
         "add": "הוסף",
-        "distanceLessThanKm": "< 1 ק\"מ",
-        "distanceKm": "{distance} ק\"מ"
+        "distanceLessThanKm": "< 1 ק״מ",
+        "distanceKm": "{distance} ק״מ"
       },
       "reasons": {
         "nearby": "קרוב",
@@ -684,7 +684,7 @@
         },
         "artemis": {
           "title": "שביל Artemis",
-          "desc": "7 ק\"מ יער אורנים ונופים מהרכס",
+          "desc": "7 ק״מ יער אורנים ונופים מהרכס",
           "imageAlt": "שביל Artemis, יער אורנים טרודוס, טיול חורף קפריסין"
         },
         "kourion": {
@@ -728,7 +728,7 @@
       },
       "weekday-quiet": {
         "title": "אמצע השבוע שקט יותר",
-        "body": "Omodos, Lefkara והאתרים העיקריים מתמלאים בסופ\"ש. שלישי או רביעי? הריצוף כולו שלכם. הכפרים נראים אחרת כשאין אוטובוסי תיירים. תכננו ימים גדולים באמצע השבוע."
+        "body": "Omodos, Lefkara והאתרים העיקריים מתמלאים בסופ״ש. שלישי או רביעי? הריצוף כולו שלכם. הכפרים נראים אחרת כשאין אוטובוסי תיירים. תכננו ימים גדולים באמצע השבוע."
       },
       "kafenion-stop": {
         "title": "עצירה לקפה",
@@ -1186,7 +1186,7 @@
     "aria": {
       "actions": "פעולות גילוי",
       "askAi": "שאלו את ה-AI להצעות לטיול",
-      "scrollToMap": "גלול למפת המקומות"
+      "scrollToMap": "גללו למפת המקומות"
     },
     "footer": {
       "body": "הוסיפו מקומות לתוכנית — או שאלו את ה-AI. הוא מכיר את האי בחורף.",
@@ -1480,18 +1480,18 @@
     "submitting": "שולח…",
     "conditionsEditorial": "תמונת מצב חורפית",
     "card": {
-      "elevationGain": "{meters} מ' עלייה",
+      "elevationGain": "{meters} מ׳ עלייה",
       "temperature": "{value}°C",
-      "trailAria": "{name}, שביל {length} ק\"מ {difficulty} באזור {region}",
-      "imageAlt": "{name}, {region} — שביל {length} ק\"מ {difficulty} בחורף בקפריסין",
+      "trailAria": "{name}, שביל {length} ק״מ {difficulty} באזור {region}",
+      "imageAlt": "{name}, {region} — שביל {length} ק״מ {difficulty} בחורף בקפריסין",
       "noReport": "אין דיווח",
       "hikerReport": "דיווח מטייל"
     },
     "placeOfDay": {
       "heading": "שביל היום",
       "badge": "שביל היום",
-      "openAria": "פתח {name}",
-      "pairWith": "שלב עם",
+      "openAria": "פתחו {name}",
+      "pairWith": "שלבו עם",
       "seeDetails": "צפו בפרטים",
       "overlay": {
         "open": "פתוח",
@@ -1509,7 +1509,7 @@
     "aria": {
       "actions": "פעולות שבילים",
       "reportConditions": "דווח על תנאי שביל",
-      "scrollToMap": "גלול למפת השבילים"
+      "scrollToMap": "גללו למפת השבילים"
     },
     "badges": {
       "status": {
@@ -1655,8 +1655,8 @@
         "actionsGroup": "פעולות"
       },
       "hero": {
-        "elevationGain": "עלייה {meters} מ'",
-        "elevationMax": "מקס׳ {meters} מ'",
+        "elevationGain": "עלייה {meters} מ׳",
+        "elevationMax": "מקס׳ {meters} מ׳",
         "trailheadLabel": "נקודת התחלה: {name}",
         "navigateToTrailhead": "ניווט לנקודת ההתחלה →"
       },
@@ -1680,7 +1680,7 @@
         "recentReportsCount": "{count} דיווחים אחרונים",
         "surfaceLabel": "משטח: {surface}",
         "temperatureAtTrailhead": "{temperature}°C בנקודת ההתחלה",
-        "windAtTrailhead": "רוח {wind} קמ\"ש"
+        "windAtTrailhead": "רוח {wind} קמ״ש"
       },
       "liveWeather": {
         "temperature": "{min}–{max}°C",
@@ -1960,8 +1960,8 @@
     },
     "daySelector": {
       "tabLabelWithCount": "יום {day} · {count}",
-      "viewAllDays": "הצג את כל הימים",
-      "viewAllDaysCount": "הצג את כל {count} הימים",
+      "viewAllDays": "הצגו את כל הימים",
+      "viewAllDaysCount": "הצגו את כל {count} הימים",
       "unknownPlace": "…",
       "summarySeparator": " → ",
       "summaryEmpty": "הוסיפו מקומות להתחלה"
@@ -1970,7 +1970,7 @@
       "empty": "הוסיפו מקום למטה כדי לראות הצעות שמתאימות ליום.",
       "pairWith": "שלבו עם…",
       "worksWell": "מתאים למה שהוספתם. הקישו להוספה.",
-      "addToDayAria": "הוסף {name} ליום"
+      "addToDayAria": "הוסיפו {name} ליום"
     },
     "sustainability": {
       "aria": "הערות לקצב חורף",
@@ -2051,7 +2051,7 @@
     "aria": {
       "tabList": "קטגוריות מקומות",
       "itemAdded": "{name} (נוסף לתוכנית)",
-      "addItem": "הוסף {name} לתוכנית"
+      "addItem": "הוסיפו {name} לתוכנית"
     },
     "empty": {
       "noMatches": "אין התאמות. נסו חיפוש אחר או לשונית אחרת.",
@@ -2076,10 +2076,10 @@
     "setDatesHint": "פתחו תאריכי נסיעה למטה כדי לראות תבניות שמתאימות לאורך הטיול.",
     "quickAddLabel": "הוספה מהירה ליום {day}",
     "quickAddAriaAdded": "{label} נוסף",
-    "quickAddAriaAdd": "הוסף {label} ליום {day}",
+    "quickAddAriaAdd": "הוסיפו {label} ליום {day}",
     "browsePlacesCta": "עיון במקומות",
     "browsePlacesAria": "עיון במקומות להוספה ליום",
-    "inlineAddAria": "הוסף תחנה ליום {day}",
+    "inlineAddAria": "הוסיפו תחנה ליום {day}",
     "forYou": "בשבילכם",
     "forTrip": "לטיול של {days} ימים",
     "browseTrailsAria": "עיון בשבילים",
@@ -2120,7 +2120,7 @@
           "label": "חוף ותרבות",
           "description": "חופים, אתרי UNESCO, יקבים—ממזרח למערב",
           "bookingNote": "הזמינו טעימות באומודוס/טסיאקאס; שעות החורף מוגבלות.",
-          "seasonalNote": "חוף נינוח; שלבו את קוריון וגברנורס ביץ' (קרובים זה לזה)."
+          "seasonalNote": "חוף נינוח; שלבו את קוריון וגברנורס ביץ׳ (קרובים זה לזה)."
         },
         "family": {
           "label": "משפחה",
@@ -2289,7 +2289,7 @@
       "cta": {
         "create": "יצירת חשבון",
         "signIn": "התחברות",
-        "skip": "דלג — השתמשו בתוכנית במכשיר זה"
+        "skip": "דלגו — השתמשו בתוכנית במכשיר זה"
       }
     },
     "notConfigured": {
@@ -2317,7 +2317,7 @@
       },
       "travelStyle": {
         "title": "סגנון טיול",
-        "body": "עוזר להתאים הצעות (משפחות, זוגות, וכו').",
+        "body": "עוזר להתאים הצעות (משפחות, זוגות, וכו׳).",
         "labels": {
           "solo": "סולו",
           "couple": "זוג",
@@ -2333,7 +2333,7 @@
       "notifications": {
         "title": "התראות",
         "body": "אם תפעילו push, נשתמש בהעדפות האלה להתראות.",
-        "trails": "עדכוני תנאי שבילים (Troodos וכו')",
+        "trails": "עדכוני תנאי שבילים (Troodos וכו׳)",
         "events": "אירועי חורף ופסטיבלים"
       },
       "privacy": {
@@ -2374,7 +2374,7 @@
     "resultsFor": "תוצאות עבור «{query}»",
     "placeholder": "מצאו מקום או שביל",
     "typeAtLeastTwo": "הקלידו לפחות 2 תווים",
-    "noResults": "אין תוצאות עבור \"{query}\". נסו Troodos, Nissi, Omodos, או עיינו בגילוי.",
+    "noResults": "אין תוצאות עבור «{query}». נסו Troodos, Nissi, Omodos, או עיינו בגילוי.",
     "noResultsHint": "או הקישו על שאלו את ה-AI כדי למצוא משהו.",
     "browseDiscover": "עיון בגילוי",
     "viewTrails": "כל השבילים",
@@ -2398,8 +2398,8 @@
     "resultsCount": "{count, plural, one {הצעה אחת זמינה} other {# הצעות זמינות}}"
   },
   "events": {
-    "clearFilters": "נקה מסננים",
-    "clearFiltersAria": "נקה מסננים והצג את כל האירועים",
+    "clearFilters": "נקו מסננים",
+    "clearFiltersAria": "נקו מסננים והציגו את כל האירועים",
     "noMatch": "אין התאמה למסננים. נסו סוג או אזור אחר.",
     "page": {
       "hero": {
@@ -2696,7 +2696,7 @@
     "intentBrowsing": "רק מסתכלים",
     "aria": {
       "startExploring": "התחילו לגלות מקומות ושבילים",
-      "skip": "דלג על ההיכרות",
+      "skip": "דלגו על ההיכרות",
       "intentGroup": "אפשרויות כוונה",
       "intentPlanning": "תכנון הטיול",
       "intentExploring": "גלו מקומות",
@@ -2822,8 +2822,8 @@
       }
     },
     "password": {
-      "show": "הצג סיסמה",
-      "hide": "הסתר סיסמה",
+      "show": "הצגו סיסמה",
+      "hide": "הסתירו סיסמה",
       "strength": {
         "tooShort": "לפחות 6 תווים",
         "good": "טוב",
@@ -3119,7 +3119,7 @@
       },
       "header": {
         "title": "מסלולי טרודוס הטובים ביותר בדצמבר",
-        "description": "דצמבר בטרודוס: אוויר צלול, שבילים שקטים, לעיתים פנויים לפני שלג השיא. Artemis הוא הלולאה העדינה יותר סביב Chionistra כשבחלקים הגבוהים יש שלג; Atalante הוא טיול יום מלא של 14 ק\"מ — צאו מוקדם כשאין קרח. Caledonia Falls זורם חזק אחרי גשם."
+        "description": "דצמבר בטרודוס: אוויר צלול, שבילים שקטים, לעיתים פנויים לפני שלג השיא. Artemis הוא הלולאה העדינה יותר סביב Chionistra כשבחלקים הגבוהים יש שלג; Atalante הוא טיול יום מלא של 14 ק״מ — צאו מוקדם כשאין קרח. Caledonia Falls זורם חזק אחרי גשם."
       },
       "intro": {
         "body": "דצמבר הוא חלון מושלם: עונת הסקי עדיין לא התחילה במלואה, השבילים בדרך כלל פנויים והכפרים שקטים. ארזו שכבות — הטמפרטורה יכולה לרדת ל-2°C בגובה. בדקו <trailConditionsLink>את מצב השבילים</trailConditionsLink> לפני שיוצאים; אחרי גל קור, שבילים גבוהים עלולים להיות קפואים.",
@@ -3135,8 +3135,8 @@
         "hubBody": "הוסיפו שביל דצמבר לתוכנית — או שאלו את ה-AI לשלב טיול עם כפר או יקב."
       },
       "cards": {
-        "imageAlt": "{name}, {region} — מסלול {km} ק\"מ {difficulty}",
-        "duration": "{km} ק\"מ · ~{hours} ש'"
+        "imageAlt": "{name}, {region} — מסלול {km} ק״מ {difficulty}",
+        "duration": "{km} ק״מ · ~{hours} ש׳"
       },
       "aria": {
         "actions": "פעולות מדריך מטרודוס דצמבר"
@@ -3270,7 +3270,7 @@
             "body": "ודאו ש-<config>images.unoptimized</config> מוגדר ב-next.config. נתיבי תמונות חייבים להיות נכונים בפלט ה-build."
           },
           "api": {
-            "label": "API או צ'אט לא עובד:",
+            "label": "API או צ׳אט לא עובד:",
             "body": "SiteGround shared hosting לא יכול להריץ נתיבי API של Next.js. השתמשו ב-Supabase, Vercel serverless או backend אחר והפנו את האפליקציה אליו."
           }
         }
@@ -3293,16 +3293,16 @@
       "sections": {
         "s1": {
           "title": "1. מי אנחנו",
-          "body": "Cyprus Winter (\"אנחנו\", \"שלנו\") הוא שירות מידע תיירותי ותכנון טיולים. מדיניות פרטיות זו מסבירה כיצד אנו מעבדים את הנתונים האישיים שלכם כאשר אתם משתמשים באתר ובשירותים שלנו."
+          "body": "Cyprus Winter («אנחנו», «שלנו») הוא שירות מידע תיירותי ותכנון טיולים. מדיניות פרטיות זו מסבירה כיצד אנו מעבדים את הנתונים האישיים שלכם כאשר אתם משתמשים באתר ובשירותים שלנו."
         },
         "s2": {
           "title": "2. אילו נתונים אנו אוספים וכיצד אנו משתמשים בהם",
           "intro": "אנו אוספים את הנתונים הבאים, למטרות ועל בסיס העילות המשפטיות המפורטות להלן:",
           "items": {
             "conversion": "<strong>נתוני המרה ושימוש</strong> (מזהה סשן, נתיב, user-agent, שם אירוע): כדי להבין כיצד משתמשים בשירות ולשפר אותו. <em>עילה משפטית: עניין לגיטימי.</em>",
-            "booking": "<strong>נתוני הזמנה</strong> (דוא\"ל, שם, חוויה ותאריך): כדי לטפל בבקשות הזמנה ליקבים ולמדריכים ולתקשר עמכם. <em>עילה משפטית: ביצוע חוזה.</em>",
-            "trailReports": "<strong>דיווחי שבילים</strong> (הערה, דוא\"ל אופציונלי): כדי להציג תנאי שבילים שמגיעים מהקהילה. <em>עילה משפטית: עניין לגיטימי; הסכמה כאשר מסופק דוא\"ל.</em>",
-            "chat": "<strong>הודעות צ'אט</strong>: כאשר אתם משתמשים ב-Ask AI, ההודעות וההקשר שלכם נשלחים לספקי בינה מלאכותית (OpenAI, xAI, Groq, Moonshot) כדי לייצר תשובות. <em>עילה משפטית: עניין לגיטימי.</em>",
+            "booking": "<strong>נתוני הזמנה</strong> (דוא״ל, שם, חוויה ותאריך): כדי לטפל בבקשות הזמנה ליקבים ולמדריכים ולתקשר עמכם. <em>עילה משפטית: ביצוע חוזה.</em>",
+            "trailReports": "<strong>דיווחי שבילים</strong> (הערה, דוא״ל אופציונלי): כדי להציג תנאי שבילים שמגיעים מהקהילה. <em>עילה משפטית: עניין לגיטימי; הסכמה כאשר מסופק דוא״ל.</em>",
+            "chat": "<strong>הודעות צ׳אט</strong>: כאשר אתם משתמשים ב-Ask AI, ההודעות וההקשר שלכם נשלחים לספקי בינה מלאכותית (OpenAI, xAI, Groq, Moonshot) כדי לייצר תשובות. <em>עילה משפטית: עניין לגיטימי.</em>",
             "localPrefs": "<strong>העדפות מקומיות</strong> (תחומי עניין, אזורים, תוכנית): נשמרות רק בדפדפן שלכם. לא נשלחות לשרתים שלנו, אלא אם נדרש לתכונות (למשל קישורי שיתוף תוכנית)."
           }
         },
@@ -3311,8 +3311,8 @@
           "intro": "אנו משתמשים במעבדים הבאים להפעלת השירות:",
           "processors": {
             "supabase": "<strong>Supabase</strong> — מסד נתונים ואחסון (אירועי המרה, הזמנות, דיווחי שבילים)",
-            "resend": "<strong>Resend</strong> — משלוח דוא\"ל לאישורי הזמנה",
-            "ai": "<strong>ספקי בינה מלאכותית</strong> — OpenAI, xAI, Groq, Moonshot — לתשובות בצ'אט Ask AI",
+            "resend": "<strong>Resend</strong> — משלוח דוא״ל לאישורי הזמנה",
+            "ai": "<strong>ספקי בינה מלאכותית</strong> — OpenAI, xAI, Groq, Moonshot — לתשובות בצ׳אט Ask AI",
             "vercel": "<strong>Vercel</strong> — אחסון אתר ואנליטיקה (אנונימית)"
           },
           "transfers": "ייתכן שהנתונים יועברו למדינות מחוץ ל-EU. במקרים הנדרשים אנו מסתמכים על החלטות הלימה או על אמצעי הגנה מתאימים (למשל Standard Contractual Clauses)."
@@ -3323,7 +3323,7 @@
             "conversion": "<strong>אירועי המרה:</strong> עד שנתיים.",
             "bookings": "<strong>הזמנות:</strong> ככל שנדרש למעקב אחר הזמנות ולחובות חוקיות (בדרך כלל עד שנתיים לאחר תאריך החוויה).",
             "trailReports": "<strong>דיווחי שבילים:</strong> ללא הגבלת זמן, אלא אם תבקשו מחיקה (ראו להלן).",
-            "chat": "<strong>הודעות צ'אט:</strong> אינן נשמרות לטווח ארוך; מעובדות בזמן אמת על ידי ספקי הבינה המלאכותית בהתאם למדיניותם."
+            "chat": "<strong>הודעות צ׳אט:</strong> אינן נשמרות לטווח ארוך; מעובדות בזמן אמת על ידי ספקי הבינה המלאכותית בהתאם למדיניותם."
           }
         },
         "s5": {
@@ -3332,14 +3332,14 @@
           "rights": {
             "access": "לעיין בנתונים שלכם",
             "rectify": "לתקן נתונים לא מדויקים",
-            "erase": "לבקש מחיקה (\"הזכות להישכח\")",
+            "erase": "לבקש מחיקה («הזכות להישכח»)",
             "restrict": "להגביל את העיבוד",
             "portability": "ניידות נתונים (ייצוא)",
             "object": "להתנגד לעיבוד",
             "withdraw": "למשוך הסכמה (כאשר רלוונטי)",
             "complaint": "להגיש תלונה לרשות פיקוח"
           },
-          "outro": "כדי לממש זכויות אלה, פנו אלינו בכתובת הדוא\"ל שלהלן. לגבי נתונים הקשורים להזמנה, ציינו את כתובת הדוא\"ל שבה השתמשתם. לגבי דיווחי שבילים, ציינו את הדוא\"ל אם סיפקתם אותו. נשיב בתוך 30 יום."
+          "outro": "כדי לממש זכויות אלה, פנו אלינו בכתובת הדוא״ל שלהלן. לגבי נתונים הקשורים להזמנה, ציינו את כתובת הדוא״ל שבה השתמשתם. לגבי דיווחי שבילים, ציינו את הדוא״ל אם סיפקתם אותו. נשיב בתוך 30 יום."
         },
         "s6": {
           "title": "6. עוגיות וטכנולוגיות דומות",
@@ -3444,7 +3444,7 @@
       "sections": {
         "s1": {
           "title": "1. קבלה",
-          "body": "בשימוש ב-Cyprus Winter (\"השירות\"), אתם מסכימים לתנאי שימוש אלה ול<privacyPolicyLink>מדיניות הפרטיות</privacyPolicyLink> שלנו. אם אינכם מסכימים, אל תשתמשו בשירות.",
+          "body": "בשימוש ב-Cyprus Winter («השירות»), אתם מסכימים לתנאי שימוש אלה ול<privacyPolicyLink>מדיניות הפרטיות</privacyPolicyLink> שלנו. אם אינכם מסכימים, אל תשתמשו בשירות.",
           "privacyPolicyLink": "מדיניות הפרטיות"
         },
         "s2": {
@@ -3521,7 +3521,7 @@
         "description": "דרכי יער, לולאות סכרים וקילומטרים שקטים בחוף. אוויר קריר, מעט תנועה. שכבות לירידות."
       },
       "srHeading": "מקומות לרכיבה בקפריסין בחורף",
-      "trailsTitle": "שלב עם שביל",
+      "trailsTitle": "שלבו עם שביל",
       "footer": {
         "hubBody": "בנו לולאה, בדקו תנאים בטרודוס או שאלו את המדריך. החורף הוא עונת הרכיבה.",
         "discoverFilter": "רכיבה ב-Discover",
