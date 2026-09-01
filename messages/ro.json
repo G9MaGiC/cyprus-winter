@@ -3771,6 +3771,70 @@
         "openingHours": "10:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
         "transport": "Satul Omodos; dealurile Afamis–Laona.",
         "parking": "La fața locului."
+      },
+      "mystes": {
+        "tastingInfo": "Degustări cu programare; tururi și platouri de brânzeturi/mezeluri.",
+        "winterTip": "La 33 km est de Paphos. Rezervați din timp. Soiuri autohtone — Giannoudi, Promara, Xynisteri oranj.",
+        "bestTimeToVisit": "Dec–mar; priveliște spre vale de pe terasă.",
+        "openingHours": "Cu programare; nov–mar sunați înainte de vizită.",
+        "transport": "Pano Archimandrita, 550 m. Cca 33 km de Paphos.",
+        "parking": "La fața locului."
+      },
+      "loukas": {
+        "tastingInfo": "Degustări în sezon; nov–mar sunați înainte — în afara sezonului vizita fără programare nu e garantată.",
+        "winterTip": "La pas din piața mănăstirii. Fără rezervare. Arce de piatră, farmec de sat.",
+        "bestTimeToVisit": "Dec–mar; întâi satul, apoi degustarea.",
+        "openingHours": "Variază; nov–mar sunați înainte de vizită.",
+        "transport": "Centrul satului Omodos; 5 min de piața mănăstirii.",
+        "parking": "În sat."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Tururi și degustări 10:00–18:00; restaurant 11:00–19:00. Rezervare obligatorie.",
+        "winterTip": "În inima satului Omodos. Combinați turul cu restaurantul Playia.",
+        "bestTimeToVisit": "Dec–mar, dimineața târziu, înainte de prânz.",
+        "openingHours": "10:00–18:00; restaurant 11:00–19:00. În afara sezonului sunați înainte.",
+        "transport": "Satul Omodos, poalele Munților Troodos.",
+        "parking": "La fața locului."
+      },
+      "komos": {
+        "tastingInfo": "Degustări în sezon; nov–mar sunați înainte. Cafenelele satului sunt aproape.",
+        "winterTip": "Întâi mănăstirea și piața, apoi degustarea în pivniță. Prânz la cafenelele satului.",
+        "bestTimeToVisit": "Dec–mar; dimineața târziu, înainte de prânz.",
+        "openingHours": "Variază; nov–mar sunați înainte de vizită.",
+        "transport": "Centrul satului Omodos.",
+        "parking": "În sat; la pas din piața mănăstirii."
+      },
+      "avakas": {
+        "tastingInfo": "Cu programare; ideal după plimbarea prin defileu.",
+        "winterTip": "Defileul Avakas dimineața, apoi crama. Sunați din parcare la final — sunt obișnuiți cu drumeții.",
+        "bestTimeToVisit": "Defileul dimineața, degustarea după-amiaza.",
+        "openingHours": "Cu programare; nov–mar sunați înainte de vizită.",
+        "transport": "Satul Statos, 1.000 m. Lângă defileul Avakas.",
+        "parking": "La fața locului."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Tururi și degustări; brânzeturi și mezeluri. Cu programare; nov–mar sunați înainte.",
+        "winterTip": "La 28 km de Nicosia. Priveliște de pe terasă spre munții Pitsilia.",
+        "bestTimeToVisit": "Dec–mar; rezervați din timp.",
+        "openingHours": "Cu programare; nov–mar sunați înainte de vizită.",
+        "transport": "Kalo Chorio Orinis, la 28 km sud-vest de Nicosia.",
+        "parking": "La fața locului."
+      },
+      "kalamos": {
+        "tastingInfo": "Degustări și tururi 8:00–16:00 în sezon; nov–mar sunați înainte.",
+        "winterTip": "La 20 min de Paphos. O jumătate de zi ușoară.",
+        "bestTimeToVisit": "Dec–mar; combinați cu Paphos sau Akamas.",
+        "openingHours": "8:00–16:00 lun–dum în sezon; nov–mar sunați înainte.",
+        "transport": "Kira Eleni 6, Amargeti 8642. Cca 20 min de Paphos.",
+        "parking": "La fața locului."
+      },
+      "christoudia": {
+        "tastingInfo": "Tururi și degustări; brunch cu bucătărie cipriotă. 9:00–17:00 în sezon; nov–mar sunați înainte.",
+        "winterTip": "Degustări lângă șemineu. Kato Drys, dealurile Larnacăi.",
+        "bestTimeToVisit": "Dec–mar; rezervați din timp.",
+        "openingHours": "9:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Kato Drys, regiunea Larnaca.",
+        "parking": "La fața locului."
       }
     },
     "attractions": {

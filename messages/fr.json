@@ -3771,6 +3771,70 @@
         "openingHours": "10 h – 17 h en saison ; de nov. à mars, appelez avant de venir.",
         "transport": "Village d’Omodos ; collines d’Afamis–Laona.",
         "parking": "Sur place."
+      },
+      "mystes": {
+        "tastingInfo": "Dégustations sur rendez-vous ; visites et plateaux fromage/charcuterie.",
+        "winterTip": "À 33 km à l’est de Paphos. Réservez à l’avance. Cépages indigènes — giannoudi, promara, xynisteri orange.",
+        "bestTimeToVisit": "Déc. à mars ; vue sur la vallée depuis la terrasse.",
+        "openingHours": "Sur rendez-vous ; de nov. à mars, appelez avant de venir.",
+        "transport": "Pano Archimandrita, 550 m. Env. 33 km de Paphos.",
+        "parking": "Sur place."
+      },
+      "loukas": {
+        "tastingInfo": "Dégustations en saison ; de nov. à mars, appelez avant — hors saison, la visite sans rendez-vous n’est pas garantie.",
+        "winterTip": "À pied depuis la place du monastère. Sans réservation. Arches de pierre, charme villageois.",
+        "bestTimeToVisit": "Déc. à mars ; le village d’abord, la dégustation ensuite.",
+        "openingHours": "Horaires variables ; de nov. à mars, appelez avant de venir.",
+        "transport": "Centre d’Omodos ; à 5 min de la place du monastère.",
+        "parking": "Au village."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Visites et dégustations 10 h – 18 h ; restaurant 11 h – 19 h. Réservation obligatoire.",
+        "winterTip": "Au cœur d’Omodos. Combinez la visite avec le restaurant Playia.",
+        "bestTimeToVisit": "Déc. à mars, en fin de matinée avant le déjeuner.",
+        "openingHours": "10 h – 18 h ; restaurant 11 h – 19 h. Hors saison, appelez avant de venir.",
+        "transport": "Village d’Omodos, contreforts du Troodos.",
+        "parking": "Sur place."
+      },
+      "komos": {
+        "tastingInfo": "Dégustations en saison ; de nov. à mars, appelez avant. Cafés du village à proximité.",
+        "winterTip": "Le monastère et la place d’abord, puis la dégustation en cave. Déjeuner dans les cafés du village.",
+        "bestTimeToVisit": "Déc. à mars ; en fin de matinée, avant le déjeuner.",
+        "openingHours": "Horaires variables ; de nov. à mars, appelez avant de venir.",
+        "transport": "Centre d’Omodos.",
+        "parking": "Au village ; à pied depuis la place du monastère."
+      },
+      "avakas": {
+        "tastingInfo": "Sur rendez-vous ; idéal après la marche dans les gorges.",
+        "winterTip": "Les gorges d’Avakas le matin, le domaine ensuite. Appelez depuis le parking en sortant — ils ont l’habitude des randonneurs.",
+        "bestTimeToVisit": "Gorges le matin, dégustation l’après-midi.",
+        "openingHours": "Sur rendez-vous ; de nov. à mars, appelez avant de venir.",
+        "transport": "Village de Statos, 1 000 m. Près des gorges d’Avakas.",
+        "parking": "Sur place."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Visites et dégustations ; fromages et charcuterie. Sur rendez-vous ; de nov. à mars, appelez avant.",
+        "winterTip": "À 28 km de Nicosie. Vue depuis la terrasse sur les montagnes de Pitsilia.",
+        "bestTimeToVisit": "Déc. à mars ; réservez à l’avance.",
+        "openingHours": "Sur rendez-vous ; de nov. à mars, appelez avant de venir.",
+        "transport": "Kalo Chorio Orinis, à 28 km au sud-ouest de Nicosie.",
+        "parking": "Sur place."
+      },
+      "kalamos": {
+        "tastingInfo": "Dégustations et visites 8 h – 16 h en saison ; de nov. à mars, appelez avant.",
+        "winterTip": "À 20 min de Paphos. Une demi-journée facile.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Paphos ou l’Akamas.",
+        "openingHours": "8 h – 16 h lun–dim. en saison ; de nov. à mars, appelez avant.",
+        "transport": "Kira Eleni 6, Amargeti 8642. Env. 20 min de Paphos.",
+        "parking": "Sur place."
+      },
+      "christoudia": {
+        "tastingInfo": "Visites et dégustations ; brunch de cuisine chypriote. 9 h – 17 h en saison ; de nov. à mars, appelez avant.",
+        "winterTip": "Dégustations au coin du feu. Kato Drys, collines de Larnaca.",
+        "bestTimeToVisit": "Déc. à mars ; réservez à l’avance.",
+        "openingHours": "9 h – 17 h en saison ; de nov. à mars, appelez avant de venir.",
+        "transport": "Kato Drys, région de Larnaca.",
+        "parking": "Sur place."
       }
     },
     "attractions": {

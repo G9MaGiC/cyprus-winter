@@ -24,6 +24,15 @@ export const LOCALIZED_WINERY_IDS: ReadonlySet<string> = new Set([
   "vasilikon",
   "fikardos",
   "oenou-yi",
+  // Slice 6 (batch 15) — next richest estates
+  "mystes",
+  "loukas",
+  "ktima-vassiliades",
+  "komos",
+  "avakas",
+  "aes-ambelis",
+  "kalamos",
+  "christoudia",
 ]);
 
 export const LOCALIZED_WINERY_FIELDS = [

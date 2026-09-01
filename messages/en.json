@@ -3771,6 +3771,70 @@
         "openingHours": "10:00–17:00 in season; call ahead Nov–Mar.",
         "transport": "Omodos village; Afamis–Laona hills.",
         "parking": "On-site."
+      },
+      "mystes": {
+        "tastingInfo": "Tastings by appointment; tours and cheese/charcuterie platters.",
+        "winterTip": "33 km east of Paphos. Book ahead. Indigenous varieties—Giannoudi, Promara, Orange Xynisteri.",
+        "bestTimeToVisit": "Dec to Mar; valley views from terrace.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Pano Archimandrita, 550 m. ~33 km from Paphos.",
+        "parking": "On-site."
+      },
+      "loukas": {
+        "tastingInfo": "Tastings in season; call ahead Nov–Mar—drop-in not guaranteed off-season.",
+        "winterTip": "Walk from monastery square. No reservation needed. Stone arches, village charm.",
+        "bestTimeToVisit": "Dec to Mar; do village first, then tasting.",
+        "openingHours": "Varies; call ahead Nov–Mar.",
+        "transport": "Omodos village centre; 5 min from monastery square.",
+        "parking": "Village."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Tours and tastings 10:00–18:00; restaurant 11:00–19:00. Reservations required.",
+        "winterTip": "In the heart of Omodos. Combine tour with Playia restaurant.",
+        "bestTimeToVisit": "Dec to Mar, late morning before lunch.",
+        "openingHours": "10:00–18:00; restaurant 11:00–19:00. Call ahead off-season.",
+        "transport": "Omodos village, Troodos foothills.",
+        "parking": "On-site."
+      },
+      "komos": {
+        "tastingInfo": "Tastings in season; call ahead Nov–Mar. Village cafés nearby.",
+        "winterTip": "Do monastery and square first, then cellar tasting. Village cafés for lunch.",
+        "bestTimeToVisit": "Dec to Mar; late morning before lunch.",
+        "openingHours": "Varies; call ahead Nov–Mar.",
+        "transport": "Omodos village centre.",
+        "parking": "Village; walk from monastery square."
+      },
+      "avakas": {
+        "tastingInfo": "By appointment; ideal after gorge walk.",
+        "winterTip": "Do Avakas Gorge in the morning, then winery. Call from car park when done—they're used to hikers.",
+        "bestTimeToVisit": "Morning gorge, afternoon tasting.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Statos village, 1,000 m. Near Avakas Gorge.",
+        "parking": "On-site."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Tours and tastings; cheese and charcuterie. By appointment; call ahead Nov–Mar.",
+        "winterTip": "28 km from Nicosia. Terrace views over Pitsilia mountains.",
+        "bestTimeToVisit": "Dec to Mar; book ahead.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Kalo Chorio Orinis, 28 km SW of Nicosia.",
+        "parking": "On-site."
+      },
+      "kalamos": {
+        "tastingInfo": "Tastings and tours 8:00–16:00 in season; call ahead Nov–Mar.",
+        "winterTip": "20 min from Paphos. Easy half-day.",
+        "bestTimeToVisit": "Dec to Mar; combine with Paphos or Akamas.",
+        "openingHours": "8:00–16:00 Mon–Sun in season; call ahead Nov–Mar.",
+        "transport": "Kira Eleni 6, Amargeti 8642. ~20 min from Paphos.",
+        "parking": "On-site."
+      },
+      "christoudia": {
+        "tastingInfo": "Tours and tastings; brunch with Cypriot cuisine. 9:00–17:00 in season; call ahead Nov–Mar.",
+        "winterTip": "Fireplace tastings. Kato Drys, Larnaca hills.",
+        "bestTimeToVisit": "Dec to Mar; book ahead.",
+        "openingHours": "9:00–17:00 in season; call ahead Nov–Mar.",
+        "transport": "Kato Drys, Larnaca region.",
+        "parking": "On-site."
       }
     },
     "attractions": {

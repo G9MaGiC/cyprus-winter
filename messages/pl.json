@@ -3771,6 +3771,70 @@
         "openingHours": "10:00–17:00 w sezonie; lis–mar zadzwoń przed wizytą.",
         "transport": "Wioska Omodos; wzgórza Afamis–Laona.",
         "parking": "Na miejscu."
+      },
+      "mystes": {
+        "tastingInfo": "Degustacje po umówieniu; zwiedzanie i deski serów/wędlin.",
+        "winterTip": "33 km na wschód od Pafos. Rezerwuj wcześniej. Rodzime odmiany — Giannoudi, Promara, pomarańczowe Xynisteri.",
+        "bestTimeToVisit": "Gru–mar; z tarasu widok na dolinę.",
+        "openingHours": "Po umówieniu; lis–mar zadzwoń przed wizytą.",
+        "transport": "Pano Archimandrita, 550 m n.p.m. Ok. 33 km z Pafos.",
+        "parking": "Na miejscu."
+      },
+      "loukas": {
+        "tastingInfo": "Degustacje w sezonie; lis–mar zadzwoń wcześniej — poza sezonem wizyta bez zapowiedzi nie jest gwarantowana.",
+        "winterTip": "Spacer od placu przy klasztorze. Bez rezerwacji. Kamienne łuki, urok wioski.",
+        "bestTimeToVisit": "Gru–mar; najpierw wioska, potem degustacja.",
+        "openingHours": "Zmienne godziny; lis–mar zadzwoń przed wizytą.",
+        "transport": "Centrum Omodos; 5 min od placu przy klasztorze.",
+        "parking": "We wsi."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Zwiedzanie i degustacje 10:00–18:00; restauracja 11:00–19:00. Wymagana rezerwacja.",
+        "winterTip": "W sercu Omodos. Połącz zwiedzanie z restauracją Playia.",
+        "bestTimeToVisit": "Gru–mar, późny poranek przed obiadem.",
+        "openingHours": "10:00–18:00; restauracja 11:00–19:00. Poza sezonem zadzwoń przed wizytą.",
+        "transport": "Wioska Omodos, podnóża Troodos.",
+        "parking": "Na miejscu."
+      },
+      "komos": {
+        "tastingInfo": "Degustacje w sezonie; lis–mar zadzwoń przed wizytą. Wiejskie kawiarnie obok.",
+        "winterTip": "Najpierw klasztor i plac, potem degustacja w piwnicy. Obiad w wiejskich kawiarniach.",
+        "bestTimeToVisit": "Gru–mar; późny poranek przed obiadem.",
+        "openingHours": "Zmienne godziny; lis–mar zadzwoń przed wizytą.",
+        "transport": "Centrum Omodos.",
+        "parking": "We wsi; spacer od placu przy klasztorze."
+      },
+      "avakas": {
+        "tastingInfo": "Po umówieniu; idealne po przejściu wąwozu.",
+        "winterTip": "Rano wąwóz Avakas, potem winnica. Zadzwoń z parkingu po przejściu — są przyzwyczajeni do turystów pieszych.",
+        "bestTimeToVisit": "Rano wąwóz, po południu degustacja.",
+        "openingHours": "Po umówieniu; lis–mar zadzwoń przed wizytą.",
+        "transport": "Wioska Statos, 1000 m n.p.m. Blisko wąwozu Avakas.",
+        "parking": "Na miejscu."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Zwiedzanie i degustacje; sery i wędliny. Po umówieniu; lis–mar zadzwoń przed wizytą.",
+        "winterTip": "28 km od Nikozji. Z tarasu widok na góry Pitsilii.",
+        "bestTimeToVisit": "Gru–mar; rezerwuj wcześniej.",
+        "openingHours": "Po umówieniu; lis–mar zadzwoń przed wizytą.",
+        "transport": "Kalo Chorio Orinis, 28 km na pd.-zach. od Nikozji.",
+        "parking": "Na miejscu."
+      },
+      "kalamos": {
+        "tastingInfo": "Degustacje i zwiedzanie 8:00–16:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "winterTip": "20 min z Pafos. Łatwe pół dnia.",
+        "bestTimeToVisit": "Gru–mar; połącz z Pafos lub Akamas.",
+        "openingHours": "8:00–16:00 pon–niedz w sezonie; lis–mar zadzwoń przed wizytą.",
+        "transport": "Kira Eleni 6, Amargeti 8642. Ok. 20 min z Pafos.",
+        "parking": "Na miejscu."
+      },
+      "christoudia": {
+        "tastingInfo": "Zwiedzanie i degustacje; brunch z kuchnią cypryjską. 9:00–17:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "winterTip": "Degustacje przy kominku. Kato Drys, wzgórza Larnaki.",
+        "bestTimeToVisit": "Gru–mar; rezerwuj wcześniej.",
+        "openingHours": "9:00–17:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "transport": "Kato Drys, region Larnaki.",
+        "parking": "Na miejscu."
       }
     },
     "attractions": {

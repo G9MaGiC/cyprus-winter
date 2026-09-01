@@ -3771,6 +3771,70 @@
         "openingHours": "10:00–17:00 in der Saison; Nov.–März vorher anrufen.",
         "transport": "Dorf Omodos; Afamis-Laona-Hügel.",
         "parking": "Vor Ort."
+      },
+      "mystes": {
+        "tastingInfo": "Verkostungen nach Vereinbarung; Führungen und Käse-/Wurstplatten.",
+        "winterTip": "33 km östlich von Paphos. Vorab reservieren. Autochthone Sorten — Giannoudi, Promara, Orange Xynisteri.",
+        "bestTimeToVisit": "Dez. bis März; Talblick von der Terrasse.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Pano Archimandrita, 550 m. Ca. 33 km von Paphos.",
+        "parking": "Vor Ort."
+      },
+      "loukas": {
+        "tastingInfo": "Verkostungen in der Saison; Nov.–März vorher anrufen — außerhalb der Saison ist Vorbeikommen nicht garantiert.",
+        "winterTip": "Zu Fuß vom Klosterplatz. Keine Reservierung nötig. Steinbögen, Dorfcharme.",
+        "bestTimeToVisit": "Dez. bis März; erst das Dorf, dann die Verkostung.",
+        "openingHours": "Wechselnd; Nov.–März vorher anrufen.",
+        "transport": "Ortskern von Omodos; 5 Min. vom Klosterplatz.",
+        "parking": "Im Dorf."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Führungen und Verkostungen 10:00–18:00; Restaurant 11:00–19:00. Reservierung erforderlich.",
+        "winterTip": "Im Herzen von Omodos. Die Führung mit dem Restaurant Playia kombinieren.",
+        "bestTimeToVisit": "Dez. bis März, am späten Vormittag vor dem Mittagessen.",
+        "openingHours": "10:00–18:00; Restaurant 11:00–19:00. Außerhalb der Saison vorher anrufen.",
+        "transport": "Dorf Omodos, Troodos-Ausläufer.",
+        "parking": "Vor Ort."
+      },
+      "komos": {
+        "tastingInfo": "Verkostungen in der Saison; Nov.–März vorher anrufen. Dorfcafés in der Nähe.",
+        "winterTip": "Erst Kloster und Platz, dann die Kellerverkostung. Mittags in die Dorfcafés.",
+        "bestTimeToVisit": "Dez. bis März; am späten Vormittag vor dem Mittagessen.",
+        "openingHours": "Wechselnd; Nov.–März vorher anrufen.",
+        "transport": "Ortskern von Omodos.",
+        "parking": "Im Dorf; zu Fuß vom Klosterplatz."
+      },
+      "avakas": {
+        "tastingInfo": "Nach Vereinbarung; ideal nach der Schluchtwanderung.",
+        "winterTip": "Morgens die Avakas-Schlucht, danach das Weingut. Vom Parkplatz aus anrufen — man ist dort an Wanderer gewöhnt.",
+        "bestTimeToVisit": "Morgens Schlucht, nachmittags Verkostung.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Dorf Statos, 1.000 m. Nahe der Avakas-Schlucht.",
+        "parking": "Vor Ort."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Führungen und Verkostungen; Käse und Wurstwaren. Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "winterTip": "28 km von Nikosia. Terrassenblick über die Pitsilia-Berge.",
+        "bestTimeToVisit": "Dez. bis März; vorab reservieren.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Kalo Chorio Orinis, 28 km südwestlich von Nikosia.",
+        "parking": "Vor Ort."
+      },
+      "kalamos": {
+        "tastingInfo": "Verkostungen und Führungen 8:00–16:00 in der Saison; Nov.–März vorher anrufen.",
+        "winterTip": "20 Min. von Paphos. Ein leichter halber Tag.",
+        "bestTimeToVisit": "Dez. bis März; mit Paphos oder Akamas kombinieren.",
+        "openingHours": "8:00–16:00 Mo–So in der Saison; Nov.–März vorher anrufen.",
+        "transport": "Kira Eleni 6, Amargeti 8642. Ca. 20 Min. von Paphos.",
+        "parking": "Vor Ort."
+      },
+      "christoudia": {
+        "tastingInfo": "Führungen und Verkostungen; Brunch mit zyprischer Küche. 9:00–17:00 in der Saison; Nov.–März vorher anrufen.",
+        "winterTip": "Verkostungen am Kamin. Kato Drys, Hügel von Larnaca.",
+        "bestTimeToVisit": "Dez. bis März; vorab reservieren.",
+        "openingHours": "9:00–17:00 in der Saison; Nov.–März vorher anrufen.",
+        "transport": "Kato Drys, Region Larnaca.",
+        "parking": "Vor Ort."
       }
     },
     "attractions": {
