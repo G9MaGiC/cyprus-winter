@@ -94,6 +94,9 @@ export default function AttractionCard({
                 title={tCommon("verifiedPartnerTitle")}
               >
                 {tCommon("verifiedPartner")}
+                {/* title is desktop-hover-only; give SR users the meaning too
+                    (AUD-46 — the booking page carries the visible line). */}
+                <span className="sr-only"> — {tCommon("verifiedPartnerTitle")}</span>
               </span>
             )}
           </div>

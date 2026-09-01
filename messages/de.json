@@ -362,7 +362,8 @@
       "aria": "Nach Region filtern",
       "showing": "{count} von {total} angezeigt"
     },
-    "localeSwitchHeading": "Sprache"
+    "localeSwitchHeading": "Sprache",
+    "fromPrice": "ab {price} €"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2745,7 +2746,7 @@
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaTrails": "Wanderwege ansehen",
         "nextStepsHeading": "Was als Nächstes passiert",
-        "nextStep1": "Wir speichern Ihre Anfrage und senden eine Kopie per E-Mail, sobald möglich.",
+        "nextStep1": "Wir speichern Ihre Anfrage sofort und senden Ihnen eine Kopie per E-Mail, sobald der E-Mail-Versand aktiv ist.",
         "nextStep2": "Der Guide bestätigt per E-Mail—meist innerhalb von 24–48 Stunden an Werktagen.",
         "nextStep3": "Status jederzeit unter Meine Buchungen mit derselben E-Mail.",
         "sla": "Das ist eine Anfrage, kein bestätigter Platz. Hier wird keine Zahlung genommen. Wenn Sie nach zwei Werktagen nichts hören, kontaktieren Sie den Guide."
@@ -2818,7 +2819,7 @@
         "ctaBookings": "Meine Buchungen ansehen",
         "ctaDiscover": "Mehr entdecken",
         "nextStepsHeading": "Was als Nächstes passiert",
-        "nextStep1": "Wir speichern Ihre Anfrage und senden eine Kopie per E-Mail, sobald möglich.",
+        "nextStep1": "Wir speichern Ihre Anfrage sofort und senden Ihnen eine Kopie per E-Mail, sobald der E-Mail-Versand aktiv ist.",
         "nextStep2": "Das Weingut bestätigt Datum und Uhrzeit per E-Mail—meist innerhalb von 24–48 Stunden an Werktagen.",
         "nextStep3": "Status jederzeit unter Meine Buchungen mit derselben E-Mail.",
         "sla": "In der App wird keine Zahlung genommen. Das Weingut bestätigt die Verfügbarkeit separat. Wenn Sie nach zwei Werktagen nichts hören, rufen Sie das Weingut an."
@@ -2992,10 +2993,10 @@
         "stepConfirmation": "Partner bestätigt"
       },
       "states": {
-        "heading": "Buchungsstatus:",
+        "heading": "So geht es mit Ihrer Anfrage weiter",
         "wineryBody": "Der Status beginnt als „ausstehend“; bestätigt erst nach Antwort des Partners.",
         "guideBody": "Der Status beginnt als „ausstehend“; bestätigt erst nach Antwort des Guides.",
-        "offlineQueue": "Offline wird Ihre Anfrage in die Sync-Warteschlange gestellt und automatisch wiederholt."
+        "offlineQueue": "Offline? Ihre Anfrage wird auf dem Gerät gespeichert und automatisch gesendet, sobald Sie wieder online sind."
       },
       "successUnverified": "Wir haben Ihre Anfrage unter Ihren Buchungen gespeichert. Um Ihren Termin zu sichern, kontaktieren Sie zusätzlich den {context} direkt — in der App wird nichts bezahlt."
     }

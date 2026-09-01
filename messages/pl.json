@@ -362,7 +362,8 @@
       "aria": "Filtruj według regionu",
       "showing": "Wyświetlane: {count} z {total}"
     },
-    "localeSwitchHeading": "Język"
+    "localeSwitchHeading": "Język",
+    "fromPrice": "od {price} €"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2745,7 +2746,7 @@
         "ctaBookings": "Zobacz moje rezerwacje",
         "ctaTrails": "Przeglądaj szlaki",
         "nextStepsHeading": "Co dalej",
-        "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
+        "nextStep1": "Zapisujemy zgłoszenie od razu, a kopię e-mailem wyślemy, gdy tylko wysyłka e-maili będzie aktywna.",
         "nextStep2": "Przewodnik potwierdza mailem—zwykle w 24–48 h w dni robocze.",
         "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
         "sla": "To prośba, nie potwierdzone miejsce. Tu nie pobieramy płatności. Jeśli po dwóch dniach roboczych nie będzie odpowiedzi, skontaktuj się z przewodnikiem."
@@ -2818,7 +2819,7 @@
         "ctaBookings": "Zobacz moje rezerwacje",
         "ctaDiscover": "Odkrywaj dalej",
         "nextStepsHeading": "Co dalej",
-        "nextStep1": "Zapisujemy prośbę i wysyłamy kopię e-mailem, gdy to możliwe.",
+        "nextStep1": "Zapisujemy zgłoszenie od razu, a kopię e-mailem wyślemy, gdy tylko wysyłka e-maili będzie aktywna.",
         "nextStep2": "Winnica potwierdza datę i godzinę mailem—zwykle w 24–48 h w dni robocze.",
         "nextStep3": "Status w Rezerwacjach z tym samym adresem e-mail.",
         "sla": "W aplikacji nie pobieramy płatności. Winnica potwierdza dostępność osobno. Jeśli po dwóch dniach roboczych nie będzie odpowiedzi, zadzwoń do winnicy."
@@ -2992,10 +2993,10 @@
         "stepConfirmation": "Partner potwierdza"
       },
       "states": {
-        "heading": "Statusy rezerwacji:",
+        "heading": "Co dzieje się ze zgłoszeniem",
         "wineryBody": "Status zaczyna się jako „oczekująca”; potwierdzenie dopiero po odpowiedzi partnera.",
         "guideBody": "Status zaczyna się jako „oczekująca”; potwierdzenie dopiero po odpowiedzi przewodnika.",
-        "offlineQueue": "Offline zapytanie trafia do kolejki synchronizacji i jest ponawiane automatycznie."
+        "offlineQueue": "Brak internetu? Zgłoszenie zapisuje się na urządzeniu i wyśle się automatycznie po odzyskaniu połączenia."
       },
       "successUnverified": "Zapisaliśmy Twoją prośbę w Twoich rezerwacjach. Aby mieć pewność terminu, skontaktuj się też bezpośrednio z winiarnią lub przewodnikiem — w aplikacji nie pobieramy żadnych płatności."
     }

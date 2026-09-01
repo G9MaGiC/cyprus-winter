@@ -362,7 +362,8 @@
       "aria": "Filter by region",
       "showing": "{count} of {total} shown"
     },
-    "localeSwitchHeading": "Language"
+    "localeSwitchHeading": "Language",
+    "fromPrice": "from €{price}"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2842,10 +2843,10 @@
         "stepConfirmation": "Partner confirms"
       },
       "states": {
-        "heading": "Booking states:",
+        "heading": "How your request progresses",
         "wineryBody": "Status starts as pending; confirmed only after the partner replies.",
         "guideBody": "Status starts as pending; confirmed only after the guide replies.",
-        "offlineQueue": "If you are offline, your request is queued as sync pending and retried automatically."
+        "offlineQueue": "Offline? Your request is saved on this device and sent automatically when you're back online."
       },
       "successUnverified": "We've saved your request under My bookings. To be sure of your date, also contact the {context} directly — no payment is taken in-app."
     },
@@ -2873,7 +2874,7 @@
         "ctaBookings": "View my bookings",
         "ctaTrails": "Browse trails",
         "nextStepsHeading": "What happens next",
-        "nextStep1": "We save your request and email you a copy when delivery is available.",
+        "nextStep1": "We save your request straight away and email you a copy once email sending is enabled.",
         "nextStep2": "The guide confirms by email—usually within 24–48 hours on weekdays.",
         "nextStep3": "Track status anytime under My Bookings with the same email.",
         "sla": "This is a request, not a confirmed slot. No payment is taken here. If you hear nothing after two business days, contact the guide."
@@ -2952,7 +2953,7 @@
         "ctaBookings": "View my bookings",
         "ctaDiscover": "Discover more",
         "nextStepsHeading": "What happens next",
-        "nextStep1": "We save your request and email you a copy when delivery is available.",
+        "nextStep1": "We save your request straight away and email you a copy once email sending is enabled.",
         "nextStep2": "The winery confirms date and time by email—usually within 24–48 hours on weekdays.",
         "nextStep3": "Track status anytime under My Bookings with the same email.",
         "sla": "No payment is taken in-app. The winery confirms availability separately. If you hear nothing after two business days, call the winery."

@@ -362,7 +362,8 @@
       "aria": "Filtrer par région",
       "showing": "{count} sur {total} affichés"
     },
-    "localeSwitchHeading": "Langue"
+    "localeSwitchHeading": "Langue",
+    "fromPrice": "à partir de {price} €"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2842,10 +2843,10 @@
         "stepConfirmation": "Confirmation"
       },
       "states": {
-        "heading": "États de réservation :",
+        "heading": "Ce qu’il advient de votre demande",
         "wineryBody": "Le statut démarre « en attente » ; confirmé seulement après la réponse du partenaire.",
         "guideBody": "Le statut démarre « en attente » ; confirmé seulement après la réponse du guide.",
-        "offlineQueue": "Si vous êtes hors ligne, votre demande est mise en file d’attente et renvoyée automatiquement."
+        "offlineQueue": "Hors ligne ? Votre demande est enregistrée sur l’appareil et envoyée automatiquement dès le retour de la connexion."
       },
       "successUnverified": "Votre demande est enregistrée dans vos réservations. Par sécurité, contactez aussi directement le {context} — aucun paiement ne se fait dans l’app."
     },
@@ -2873,7 +2874,7 @@
         "ctaBookings": "Voir mes réservations",
         "ctaTrails": "Parcourir les sentiers",
         "nextStepsHeading": "La suite",
-        "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
+        "nextStep1": "Nous enregistrons votre demande immédiatement et vous en envoyons une copie par e-mail dès que l’envoi d’e-mails est actif.",
         "nextStep2": "Le guide confirme par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
         "sla": "C’est une demande, pas un créneau confirmé. Sans nouvelle après deux jours ouvrés, contactez le guide."
@@ -2946,7 +2947,7 @@
         "ctaBookings": "Voir mes réservations",
         "ctaDiscover": "Découvrir davantage",
         "nextStepsHeading": "La suite",
-        "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
+        "nextStep1": "Nous enregistrons votre demande immédiatement et vous en envoyons une copie par e-mail dès que l’envoi d’e-mails est actif.",
         "nextStep2": "Le domaine confirme la date et l’heure par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
         "sla": "Aucun paiement dans l’app avant confirmation. Sans nouvelle après deux jours ouvrés, appelez le domaine."

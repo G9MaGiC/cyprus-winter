@@ -22,12 +22,29 @@ type Props = {
 
 export default function SearchResultCard({ result, searchQuery }: Props) {
   const tCommon = useTranslations("common");
+  const tBadges = useTranslations("trails.badges");
   const locale = useLocale();
   const name = getLocalizedName(result.item, locale);
   const region = result.item.region;
   const kind = result.kind;
   const sublabel = kind === "event" ? (result.item as { month: string }).month : region;
   const badge = kindBadge[kind] ?? "bg-sand-100 text-muted-ink";
+
+  // Winter cue / price hint (AUD-11): enriched by lib/search from data the
+  // index already holds — trails get length + difficulty, places get the
+  // call-ahead flag and a "from €" tasting price where one is listed.
+  const cueParts: string[] = [];
+  if (result.kind === "trail" && result.item.lengthKm != null && result.item.difficulty) {
+    cueParts.push(`${result.item.lengthKm} km`);
+    cueParts.push(
+      tBadges(`difficulty.${result.item.difficulty}.label` as "difficulty.easy.label")
+    );
+  }
+  if (result.kind === "place") {
+    if (result.item.hoursCallAhead) cueParts.push(tCommon("callAhead"));
+    if (result.item.priceFrom != null)
+      cueParts.push(tCommon("fromPrice", { price: result.item.priceFrom }));
+  }
 
   const kindLabel =
     kind === "trail"
@@ -55,6 +72,11 @@ export default function SearchResultCard({ result, searchQuery }: Props) {
               {name}
             </h3>
             <p className="text-sm text-muted-ink mt-0.5 line-clamp-1 break-words" title={sublabel}>{sublabel}</p>
+            {cueParts.length > 0 && (
+              <p className="text-xs text-sage mt-1 line-clamp-1 break-words">
+                {cueParts.join(" · ")}
+              </p>
+            )}
           </div>
           <span className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-medium capitalize ${badge}`}>
             {kindLabel}

@@ -110,6 +110,11 @@ export default async function WineryBookPage({
             </span>
           )}
         </div>
+        {/* The title tooltip is desktop-only — touch users need the claim
+            explained in visible text on the decision surface (AUD-46). */}
+        {isPartnerVerified(winery) && (
+          <p className="mt-1.5 text-xs text-muted-ink">{tCommon("verifiedPartnerTitle")}</p>
+        )}
         <h1 className={`${TYPE.pageTitle} mt-3`}>
           {tCommon("bookTasting")}
         </h1>

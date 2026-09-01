@@ -17,9 +17,11 @@ import { Link } from "@/i18n/navigation";
 import EventCard from "./EventCard";
 import EventFilters from "./EventFilters";
 
-const MONTH_ORDER = ["Nov", "Dec", "Jan", "Feb", "Mar"] as const;
+import { orderedSeasonMonths, type SeasonMonth } from "./season-months";
 
-function monthShortKey(month: (typeof MONTH_ORDER)[number]) {
+export type { SeasonMonth } from "./season-months";
+
+function monthShortKey(month: SeasonMonth) {
   return `monthShort.${month}` as const;
 }
 
@@ -31,7 +33,7 @@ const REGIONS_LIST = Array.from(new Set(winterEvents.map((e) => e.region)))
   .filter((r) => r !== "All")
   .sort();
 
-export default function EventsPage() {
+export default function EventsPage({ seasonAnchor = null }: { seasonAnchor?: SeasonMonth | null }) {
   // Cold-load hash navigation: the route skeleton streams before this client
   // tree mounts, so the browser's native #anchor jump has already been lost —
   // re-run it once content is on screen (AUD A2-01 / plan→event deep links).
@@ -67,9 +69,20 @@ export default function EventsPage() {
     });
   }, [typeFilter, regionFilter]);
 
+  const seasonMonths = useMemo(() => orderedSeasonMonths(seasonAnchor), [seasonAnchor]);
+
+  // "Don't miss" follows the anchored season order too — a November visitor
+  // shouldn't scroll past February's carnival before Epiphany (AUD-59).
   const highlights = useMemo(
-    () => filtered.filter((e) => HIGHLIGHT_IDS.includes(e.id)),
-    [filtered]
+    () =>
+      filtered
+        .filter((e) => HIGHLIGHT_IDS.includes(e.id))
+        .sort(
+          (a, b) =>
+            seasonMonths.indexOf(a.month as SeasonMonth) -
+            seasonMonths.indexOf(b.month as SeasonMonth)
+        ),
+    [filtered, seasonMonths]
   );
   const regular = useMemo(
     () => filtered.filter((e) => !HIGHLIGHT_IDS.includes(e.id)),
@@ -85,7 +98,7 @@ export default function EventsPage() {
     return acc;
   }, [regular]);
 
-  const monthNavMonths = MONTH_ORDER.filter((m) => byMonth[m]?.length);
+  const monthNavMonths = seasonMonths.filter((m) => byMonth[m]?.length);
 
   const hasInvalidFilter = Boolean((typeFromUrl && !typeFilter) || (regionFromUrl && !regionFilter));
 
@@ -222,7 +235,7 @@ export default function EventsPage() {
             )}
 
             <div className={SECTION.blockGap}>
-              {MONTH_ORDER.map((month) => {
+              {seasonMonths.map((month) => {
                 const events = byMonth[month];
                 if (!events?.length) return null;
                 return (

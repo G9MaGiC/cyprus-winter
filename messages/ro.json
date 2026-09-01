@@ -362,7 +362,8 @@
       "aria": "Filtrează după regiune",
       "showing": "{count} din {total} afișate"
     },
-    "localeSwitchHeading": "Limbă"
+    "localeSwitchHeading": "Limbă",
+    "fromPrice": "de la {price} €"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2842,10 +2843,10 @@
         "stepConfirmation": "Confirmare"
       },
       "states": {
-        "heading": "Stări rezervare:",
+        "heading": "Ce se întâmplă cu cererea dvs.",
         "wineryBody": "Starea începe ca „în așteptare”; se confirmă doar după răspunsul partenerului.",
         "guideBody": "Starea începe ca „în așteptare”; se confirmă doar după răspunsul ghidului.",
-        "offlineQueue": "Dacă ești offline, cererea e pusă la coadă ca sincronizare în așteptare și retrimisă automat."
+        "offlineQueue": "Sunteți offline? Cererea se salvează pe dispozitiv și se trimite automat când reveniți online."
       },
       "successUnverified": "Ți-am salvat cererea în rezervările tale. Pentru siguranța datei, contactează și direct partenerul — nu se face nicio plată în aplicație."
     },
@@ -2873,7 +2874,7 @@
         "ctaBookings": "Vezi rezervările mele",
         "ctaTrails": "Răsfoiește traseele",
         "nextStepsHeading": "Ce urmează",
-        "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
+        "nextStep1": "Salvăm cererea imediat și vă trimitem o copie pe e-mail de îndată ce trimiterea e-mailurilor este activă.",
         "nextStep2": "Ghidul confirmă pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
         "sla": "E o cerere, nu un loc confirmat. Dacă nu auzi nimic după două zile lucrătoare, contactează ghidul."
@@ -2946,7 +2947,7 @@
         "ctaBookings": "Vezi rezervările mele",
         "ctaDiscover": "Descoperă mai mult",
         "nextStepsHeading": "Ce urmează",
-        "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
+        "nextStep1": "Salvăm cererea imediat și vă trimitem o copie pe e-mail de îndată ce trimiterea e-mailurilor este activă.",
         "nextStep2": "Crama confirmă data și ora pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
         "sla": "Fără taxă în aplicație până confirmă. Dacă nu auzi nimic după două zile lucrătoare, sună crama."

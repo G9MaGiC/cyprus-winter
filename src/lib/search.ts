@@ -7,11 +7,35 @@ import { expandSearchToken } from "@/data/search-aliases";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
 import { createDetailLink } from "@/lib/discover-links";
+import { isCallAheadHours } from "@/lib/place-card-hours";
 
 export type SearchResult =
-  | { kind: "place"; item: PlanItem; href: string }
-  | { kind: "trail"; item: { id: string; name: string; region: string }; href: string }
-  | { kind: "event"; item: { id: string; name: string; region: string; month: string }; href: string };
+  | {
+      kind: "place";
+      /** Winter cue / price hint fields are enriched from data already in the
+          search index — no new payload (AUD-11). `hoursCallAhead` is decided
+          on the EN base like everywhere else; `priceFrom` is the cheapest
+          listed signature-wine tasting in whole euros. */
+      item: PlanItem & { hoursCallAhead?: boolean; priceFrom?: number };
+      href: string;
+    }
+  | {
+      kind: "trail";
+      item: {
+        id: string;
+        name: string;
+        nameEl?: string;
+        region: string;
+        lengthKm?: number;
+        difficulty?: string;
+      };
+      href: string;
+    }
+  | {
+      kind: "event";
+      item: { id: string; name: string; nameEl?: string; region: string; month: string };
+      href: string;
+    };
 
 function normalize(s: string): string {
   return s
@@ -78,6 +102,14 @@ function matchScore(
   return total;
 }
 
+/** Cheapest listed signature-wine tasting, whole euros (e.g. "€15" → 15). */
+function wineryPriceFrom(a: { signatureWines?: { price?: string }[] }): number | undefined {
+  const prices = (a.signatureWines ?? [])
+    .map((w) => Number(/\d+(?:\.\d+)?/.exec(w.price ?? "")?.[0]))
+    .filter((n) => Number.isFinite(n));
+  return prices.length > 0 ? Math.min(...prices) : undefined;
+}
+
 function toSearchResult(p: PlanItem): SearchResult {
   const href =
     p.type === "trail"
@@ -86,13 +118,40 @@ function toSearchResult(p: PlanItem): SearchResult {
         ? `/events#${encodeURIComponent(p.id)}`
         : `/discover/${p.id}`;
   if (p.type === "trail") {
-    return { kind: "trail", item: { id: p.id, name: p.name, region: p.region }, href };
+    const t = trailById.get(p.id);
+    return {
+      kind: "trail",
+      item: {
+        id: p.id,
+        name: p.name,
+        nameEl: p.nameEl,
+        region: p.region,
+        lengthKm: t?.lengthKm,
+        difficulty: t?.difficulty,
+      },
+      href,
+    };
   }
   if (p.type === "event") {
     const e = eventById.get(p.id);
-    return { kind: "event", item: { id: p.id, name: p.name, region: p.region, month: e?.month ?? "" }, href };
+    return {
+      kind: "event",
+      item: { id: p.id, name: p.name, nameEl: p.nameEl, region: p.region, month: e?.month ?? "" },
+      href,
+    };
   }
-  return { kind: "place", item: p, href };
+  const a = getAttractionById(p.id);
+  if (!a) return { kind: "place", item: p, href };
+  const extra = a as { openingHours?: string; tastingInfo?: string; signatureWines?: { price?: string }[] };
+  return {
+    kind: "place",
+    item: {
+      ...p,
+      hoursCallAhead: isCallAheadHours(extra.openingHours ?? extra.tastingInfo) || undefined,
+      priceFrom: wineryPriceFrom(extra),
+    },
+    href,
+  };
 }
 
 export function search(query: string, limit = 20): SearchResult[] {

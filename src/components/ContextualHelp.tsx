@@ -8,6 +8,7 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { LAYER } from "@/lib/design-tokens";
 
 type HelpTip = {
   id: string;
@@ -141,7 +142,7 @@ export default function ContextualHelp({
 
   return (
     <div
-      className={cn("absolute z-[45]", positionClasses[tip.position || "bottom"], className)}
+      className={cn("absolute", LAYER.popover, positionClasses[tip.position || "bottom"], className)}
       role="tooltip"
     >
       <div className="relative bg-white rounded-xl shadow-lg border border-sand-200/80 p-4 max-w-xs animate-in fade-in slide-in-from-bottom-2">

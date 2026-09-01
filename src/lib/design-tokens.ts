@@ -93,6 +93,10 @@ export const LAYER = {
   stickyPlaceBar: "z-30",
   /** Sticky content: filter bars, day selectors, in-page sticky headers. */
   stickyContent: "z-10",
+  /** Cross-page "next on your plan" ribbon — above sticky content bars. */
+  nextOnPlan: "z-20",
+  /** Overlays inside relative map containers (controls, chips, legends). */
+  mapOverlay: "z-[5]",
   /** Skip-to-content link — always on top. */
   skipNav: "z-[9999]",
 } as const;
