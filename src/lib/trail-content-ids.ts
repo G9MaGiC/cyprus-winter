@@ -47,6 +47,24 @@ export const LOCALIZED_TRAIL_IDS: ReadonlySet<string> = new Set([
   "sea-caves-anargyroi",
   "pissouromoutti",
   "chorteri",
+  // Slice 16 (batch 25) — next 17 by content richness
+  "agioi-anargyroi-circular",
+  "kavos-trail",
+  "prodromos-dam-stavroulia",
+  "troodos-visitor-centre",
+  "politiko-machairas",
+  "symvoulas",
+  "ariadni",
+  "prodromos-zoumi",
+  "vavatsinia-honeybee",
+  "vouni-panagias",
+  "agia-varvara-stavrovouni",
+  "konnoi-cyclops",
+  "cape-aspro",
+  "treis-elies",
+  "gnafkio",
+  "kionia-profitis-elias",
+  "psilo-dentro-pouziaris",
 ]);
 
 export const LOCALIZED_TRAIL_FIELDS = [

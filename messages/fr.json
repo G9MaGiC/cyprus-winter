@@ -4567,6 +4567,74 @@
       "chorteri": {
         "winterNotes": "Frais en altitude. Boueux après la pluie. Le café de la station forestière ouvre en saison.",
         "localSecret": "Passez voir les mouflons de la station avant de partir — la forêt récompense les départs matinaux."
+      },
+      "agioi-anargyroi-circular": {
+        "winterNotes": "Marche d'hiver idéale. Douce. Plus calme qu'en été. Toute l'année selon le guide officiel.",
+        "localSecret": "Trois points de départ — garez-vous au plus tranquille. À combiner avec Kavos ou la grotte du Cyclope pour une journée entière dans le parc."
+      },
+      "kavos-trail": {
+        "winterNotes": "Marche d'hiver idéale. Douce, côtière. Falaises rocheuses abruptes côté sud — restez sur le sentier.",
+        "localSecret": "Moins fréquenté que le sentier du Cyclope. À combiner avec Grottes marines–Agioi Anargyroi pour une plus longue journée côtière."
+      },
+      "prodromos-dam-stavroulia": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Forte descente — bons marcheurs seulement. Organisez un transport.",
+        "localSecret": "À combiner avec Prodromos–Zoumi pour une journée Marathasa plus complète. Attention aux appuis dans la descente."
+      },
+      "troodos-visitor-centre": {
+        "winterNotes": "Ouvert toute l'année quand le centre des visiteurs l'est. Neige possible sur la route d'accès de janv. à mars.",
+        "localSecret": "À combiner avec les expositions du centre — 12 espèces de plantes d'ici n'existent nulle part ailleurs sur Terre."
+      },
+      "politiko-machairas": {
+        "winterNotes": "L'hiver est magique — le ruisseau coule, tout verdit. Première moitié exposée ; seconde ombragée.",
+        "localSecret": "Allez-y après la pluie. La traversée du pont est le point fort. Le café de Machairas réchauffe ensuite."
+      },
+      "symvoulas": {
+        "winterNotes": "Longue journée forestière. Comptez 4 h et plus. Plus frais en altitude ; emportez de l'eau.",
+        "localSecret": "Partez tôt pour le panorama de l'Akamas au point de vue de mi-parcours — la lumière du golfe est la plus belle avant midi."
+      },
+      "ariadni": {
+        "winterNotes": "Boucle de niveau 3. Sections exposées ; partez tôt. L'hiver est la saison confortable.",
+        "localSecret": "Les jours nuageux rendent la crête agréable. Le village de Gerakies pour une halte d'après-marche."
+      },
+      "prodromos-zoumi": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Risque de glissade. Linéaire — organisez un transport.",
+        "localSecret": "À Zoumi, vous pouvez enchaîner sur Barrage de Prodromos–Stavroulia. Les tavernes de Prodromos pour déjeuner."
+      },
+      "vavatsinia-honeybee": {
+        "winterNotes": "Marche d'hiver facile. Village à 700 m ; couvrez-vous. Calme et paisible.",
+        "localSecret": "L'un des neuf villages du miel du Larnaka rural. Infos sur l'apithérapie et la communication des abeilles le long du sentier."
+      },
+      "vouni-panagias": {
+        "winterNotes": "Boucle de niveau 3 dans les collines de Laona. Frais en hiver ; parfois boueux. Comptez une matinée entière.",
+        "localSecret": "À combiner avec le domaine Vouni Panayia. La route de Laona récompense ceux qui marchent et dégustent."
+      },
+      "agia-varvara-stavrovouni": {
+        "winterNotes": "Évitez les marches en bois quand elles sont mouillées — glissantes. Au mieux par temps sec.",
+        "localSecret": "Garez-vous à Agia Varvara si le parking du départ est plein. À combiner avec la boucle de Stavrovouni pour un vrai entraînement."
+      },
+      "konnoi-cyclops": {
+        "winterNotes": "Marche d'hiver idéale. Douce, sans neige. Toute l'année selon le guide officiel.",
+        "localSecret": "Café et sports nautiques à Konnos. À combiner avec la boucle d'Agioi Anargyroi pour une matinée plus complète dans le parc."
+      },
+      "cape-aspro": {
+        "winterNotes": "Idéal en hiver. Aucune ombre. Les jours nuageux ajoutent du drame.",
+        "localSecret": "Passage étroit au départ — praticable mais prudence. L'alliance des falaises et de la mer est inoubliable."
+      },
+      "treis-elies": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Au mieux après la pluie, quand la rivière coule — sinon, une douce échappée de Limassol quand même."
+      },
+      "gnafkio": {
+        "winterNotes": "L'hiver apporte la neige sur le Troodos. La mousse et le vert sont saisissants.",
+        "localSecret": "Partez de Kykkos–Tsakistra pour avoir la descente raide en premier. Près du départ de Gnafkio se trouve Panthea."
+      },
+      "kionia-profitis-elias": {
+        "winterNotes": "Randonnée d'hiver idéale. Forêt fraîche. Le départ de Profitis Elias demande 5 km de piste.",
+        "localSecret": "Partez de Kionia pour descendre vers Profitis Elias. Prévoyez une voiture à chaque extrémité."
+      },
+      "psilo-dentro-pouziaris": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Risque de glissade. Bons marcheurs seulement.",
+        "localSecret": "Garez-vous au restaurant Psilo Dentro. Platres est à quelques mètres pour se réchauffer après."
       }
     }
   }

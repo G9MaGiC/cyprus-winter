@@ -4567,6 +4567,74 @@
       "chorteri": {
         "winterNotes": "Răcoros la altitudine. Noroios după ploaie. Cafeneaua stației forestiere e deschisă sezonier.",
         "localSecret": "Combinați cu o vizită la muflonii stației înainte de start — pădurea răsplătește plecarea devreme."
+      },
+      "agioi-anargyroi-circular": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă. Mai liniștit decât vara. Tot anul, conform ghidului oficial.",
+        "localSecret": "Trei puncte de pornire — parcați la cel mai liniștit. Combinați cu Kavos sau Peștera Ciclopului pentru o zi întreagă în parc."
+      },
+      "kavos-trail": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă, de coastă. Faleze stâncoase abrupte pe partea sudică — rămâneți pe potecă.",
+        "localSecret": "Mai puțin aglomerat decât traseul Ciclopului. Combinați cu Peșterile Marine–Agioi Anargyroi pentru o zi de coastă mai lungă."
+      },
+      "prodromos-dam-stavroulia": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Coborâre abruptă — doar pentru drumeți în formă. Aranjați transportul.",
+        "localSecret": "Combinați cu Prodromos–Zoumi pentru o zi Marathasa mai plină. Atenție la pași la coborâre."
+      },
+      "troodos-visitor-centre": {
+        "winterNotes": "Deschis tot anul când centrul de vizitatori e deschis. Posibil zăpadă pe drumul de acces ian.–mar.",
+        "localSecret": "Combinați cu expozițiile centrului — 12 specii de plante de aici nu există nicăieri altundeva pe Pământ."
+      },
+      "politiko-machairas": {
+        "winterNotes": "Iarna e magică — pârâul curge, totul înverzește. Prima jumătate expusă; a doua umbrită.",
+        "localSecret": "Mergeți după ploaie. Traversarea podului e punctul culminant. Cafeneaua Machairas încălzește după."
+      },
+      "symvoulas": {
+        "winterNotes": "O zi lungă de pădure. Socotiți 4+ ore. Mai răcoare la altitudine; luați apă.",
+        "localSecret": "Porniți devreme pentru panorama Akamas de la punctul de belvedere de la mijloc — lumina golfului e cea mai frumoasă înainte de prânz."
+      },
+      "ariadni": {
+        "winterNotes": "Buclă de gradul 3. Porțiuni expuse; porniți devreme. Iarna e sezonul confortabil.",
+        "localSecret": "Zilele înnorate fac creasta plăcută. Satul Gerakies pentru o oprire după drumeție."
+      },
+      "prodromos-zoumi": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Risc de alunecare. Liniar — aranjați transportul.",
+        "localSecret": "De la Zoumi puteți continua pe Barajul Prodromos–Stavroulia. Tavernele din Prodromos pentru prânz."
+      },
+      "vavatsinia-honeybee": {
+        "winterNotes": "Plimbare de iarnă ușoară. Satul e la 700 m; îmbrăcați-vă gros. Liniștit și pașnic.",
+        "localSecret": "Unul dintre cele nouă Sate ale Mierii din Larnaca rurală. Pe traseu, informații despre apiterapie și comunicarea albinelor."
+      },
+      "vouni-panagias": {
+        "winterNotes": "Buclă de gradul 3 în dealurile Laona. Răcoros iarna; poate fi noroios. Socotiți o dimineață întreagă.",
+        "localSecret": "Combinați cu crama Vouni Panayia. Ruta Laona îi răsplătește pe cei care merg și degustă."
+      },
+      "agia-varvara-stavrovouni": {
+        "winterNotes": "Evitați treptele de lemn când sunt ude — alunecoase. Cel mai bine pe vreme uscată.",
+        "localSecret": "Parcați la Agia Varvara dacă parcarea de la start e plină. Combinați cu bucla Stavrovouni pentru un antrenament complet."
+      },
+      "konnoi-cyclops": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă, fără zăpadă. Tot anul, conform ghidului oficial.",
+        "localSecret": "Cafenea și sporturi nautice la Konnos. Combinați cu bucla Agioi Anargyroi pentru o dimineață mai plină în parc."
+      },
+      "cape-aspro": {
+        "winterNotes": "Ideal iarna. Deloc umbră. Zilele înnorate adaugă dramatism.",
+        "localSecret": "Porțiune îngustă la început — se trece, dar cu grijă. Combinația de faleze și mare e de neuitat."
+      },
+      "treis-elies": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Cel mai bine după ploaie, când râul curge — altfel, tot o evadare blândă din Limassol."
+      },
+      "gnafkio": {
+        "winterNotes": "Iarna aduce zăpadă pe Troodos. Mușchiul și verdele sunt uluitoare.",
+        "localSecret": "Porniți de la Kykkos–Tsakistra ca să aveți coborârea abruptă la început. Lângă startul Gnafkio se află Panthea."
+      },
+      "kionia-profitis-elias": {
+        "winterNotes": "Drumeție de iarnă ideală. Pădure răcoroasă. Startul de la Profitis Elias cere 5 km de drum de pământ.",
+        "localSecret": "Porniți de la Kionia pentru coborâre spre Profitis Elias. Aranjați mașină la ambele capete."
+      },
+      "psilo-dentro-pouziaris": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Risc de alunecare. Doar pentru drumeți în formă.",
+        "localSecret": "Parcați la restaurantul Psilo Dentro. Platres e la câțiva metri pentru încălzire după drumeție."
       }
     }
   }

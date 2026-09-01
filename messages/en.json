@@ -4567,6 +4567,74 @@
       "chorteri": {
         "winterNotes": "Cool at elevation. Can be muddy after rain. Forest station café open seasonally.",
         "localSecret": "Combine with a mouflon visit at the station before you start—the forest rewards an early start."
+      },
+      "agioi-anargyroi-circular": {
+        "winterNotes": "Ideal winter walk. Mild. Quieter than summer. Year-round per official guide.",
+        "localSecret": "Three start points—park at whichever is quietest. Pair with Kavos or Cyclops for a full park day."
+      },
+      "kavos-trail": {
+        "winterNotes": "Ideal winter walk. Mild, coastal. Steep rocky cliffs on the south side—stay on path.",
+        "localSecret": "Less crowded than Cyclops. Pair with Sea Caves–Agioi Anargyroi for a longer coastal day."
+      },
+      "prodromos-dam-stavroulia": {
+        "winterNotes": "Official guide lists March–November. Steep downhill—fit hikers only. Arrange transport.",
+        "localSecret": "Pair with Prodromos–Zoumi for a fuller Marathasa day. Watch footing on the descent."
+      },
+      "troodos-visitor-centre": {
+        "winterNotes": "Open year-round when Visitor Centre is open. Snow possible on access road Jan–Mar.",
+        "localSecret": "Pair with the Visitor Centre exhibits—12 plant species here exist nowhere else on Earth."
+      },
+      "politiko-machairas": {
+        "winterNotes": "Winter is magic—stream flows, greenery. First half exposed; second half shaded.",
+        "localSecret": "Go after rain. The bridge crossing is the highlight. Machairas café for post-hike warmth."
+      },
+      "symvoulas": {
+        "winterNotes": "Long forest day. Allow 4+ hours. Cooler at elevation; carry water.",
+        "localSecret": "Start early for the Akamas panorama at the mid-trail view point—the gulf light is best before noon."
+      },
+      "ariadni": {
+        "winterNotes": "Grade 3 circular. Exposed sections; start early. Winter is the comfortable season.",
+        "localSecret": "Cloudy days make the ridgeline comfortable. Gerakies village for a post-hike stop."
+      },
+      "prodromos-zoumi": {
+        "winterNotes": "Official guide lists March–November. Risk of slipping. Linear—arrange transport.",
+        "localSecret": "At Zoumi you can continue on Prodromos Dam–Stavroulia. Prodromos taverns for lunch."
+      },
+      "vavatsinia-honeybee": {
+        "winterNotes": "Easy winter walk. Village at 700m; wrap up. Quiet and peaceful.",
+        "localSecret": "One of the nine Rural Larnaka Honey Villages. Apitherapy and bee communication info along the path."
+      },
+      "vouni-panagias": {
+        "winterNotes": "Grade 3 Laona hills loop. Cool in winter; can be muddy. Allow a full morning.",
+        "localSecret": "Combine with Vouni Panayia winery. The Laona route rewards those who hike and taste."
+      },
+      "agia-varvara-stavrovouni": {
+        "winterNotes": "Avoid wooden steps when wet—slippery. Best in dry conditions.",
+        "localSecret": "Park at Agia Varvara if trailhead lot is full. Combine with Stavrovouni loop for a full workout."
+      },
+      "konnoi-cyclops": {
+        "winterNotes": "Ideal winter walk. Mild, no snow. Year-round per official guide.",
+        "localSecret": "Café and water sports at Konnos. Pair with Agioi Anargyroi loop for a fuller park morning."
+      },
+      "cape-aspro": {
+        "winterNotes": "Ideal in winter. No shade at all. Cloudy days add drama.",
+        "localSecret": "Narrow section at start—passable but careful. The combination of cliffs and sea is unforgettable."
+      },
+      "treis-elies": {
+        "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
+        "localSecret": "Best after rain when the river runs—otherwise still a gentle Limassol escape."
+      },
+      "gnafkio": {
+        "winterNotes": "Winter brings snow on Troodos. The moss and green are stunning.",
+        "localSecret": "Start from Kykkos–Tsakistra for steep descent first. Near Gnafkio trailhead is Panthea."
+      },
+      "kionia-profitis-elias": {
+        "winterNotes": "Ideal winter hike. Cool forest. Profitis Elias start needs 5 km dirt road.",
+        "localSecret": "Start from Kionia for downhill to Profitis Elias. Arrange car at both ends."
+      },
+      "psilo-dentro-pouziaris": {
+        "winterNotes": "Official guide lists March–November. Risk of slipping. Fit hikers only.",
+        "localSecret": "Park at Psilo Dentro restaurant. Platres is metres away for post-hike warmth."
       }
     }
   }

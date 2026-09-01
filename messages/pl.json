@@ -4567,6 +4567,74 @@
       "chorteri": {
         "winterNotes": "Chłodno na wysokości. Błotniście po deszczu. Kawiarnia przy stacji leśnej czynna sezonowo.",
         "localSecret": "Przed startem odwiedź muflony przy stacji — las nagradza wczesne wyjście."
+      },
+      "agioi-anargyroi-circular": {
+        "winterNotes": "Idealny zimowy spacer. Łagodnie. Ciszej niż latem. Według oficjalnego przewodnika przez cały rok.",
+        "localSecret": "Trzy punkty startowe — zaparkuj przy najcichszym. Połącz z Kavos lub Jaskinią Cyklopa na pełny dzień w parku."
+      },
+      "kavos-trail": {
+        "winterNotes": "Idealny zimowy spacer. Łagodnie, nadmorsko. Strome skalne urwiska od południa — trzymaj się ścieżki.",
+        "localSecret": "Mniej tłoczno niż na szlaku Cyklopa. Połącz z Jaskiniami Morskimi–Agioi Anargyroi na dłuższy dzień na wybrzeżu."
+      },
+      "prodromos-dam-stavroulia": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Stromo w dół — tylko dla wprawionych. Zorganizuj transport.",
+        "localSecret": "Połącz z Prodromos–Zoumi na pełniejszy dzień w Marathasie. Uważaj na stopy przy zejściu."
+      },
+      "troodos-visitor-centre": {
+        "winterNotes": "Czynny cały rok, gdy otwarte jest Centrum Turystyczne. I–III możliwy śnieg na drodze dojazdowej.",
+        "localSecret": "Połącz z wystawami Centrum — 12 gatunków roślin stąd nie występuje nigdzie indziej na Ziemi."
+      },
+      "politiko-machairas": {
+        "winterNotes": "Zima jest magiczna — strumień płynie, wszystko zielone. Pierwsza połowa odsłonięta; druga w cieniu.",
+        "localSecret": "Idź po deszczu. Przejście przez most to punkt kulminacyjny. Kawiarnia przy Machairas rozgrzeje po wędrówce."
+      },
+      "symvoulas": {
+        "winterNotes": "Długi leśny dzień. Licz 4+ godziny. Chłodniej na wysokości; weź wodę.",
+        "localSecret": "Startuj wcześnie po panoramę Akamas z punktu widokowego w połowie trasy — światło nad zatoką najlepsze przed południem."
+      },
+      "ariadni": {
+        "winterNotes": "Pętla w skali 3. Odsłonięte odcinki; startuj wcześnie. Zima to komfortowa pora.",
+        "localSecret": "W pochmurne dni grań jest przyjemna. Wioska Gerakies na postój po wędrówce."
+      },
+      "prodromos-zoumi": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Ryzyko poślizgu. Liniowa — zorganizuj transport.",
+        "localSecret": "Z Zoumi można kontynuować na Prodromos Dam–Stavroulia. Tawerny Prodromos na obiad."
+      },
+      "vavatsinia-honeybee": {
+        "winterNotes": "Łatwy zimowy spacer. Wioska na 700 m; ubierz się ciepło. Cicho i spokojnie.",
+        "localSecret": "Jedna z dziewięciu Miodowych Wiosek okolic Larnaki. Po drodze informacje o apiterapii i komunikacji pszczół."
+      },
+      "vouni-panagias": {
+        "winterNotes": "Pętla w skali 3 po wzgórzach Laony. Zimą chłodno; bywa błotniście. Licz pełny poranek.",
+        "localSecret": "Połącz z winiarnią Vouni Panayia. Trasa Laona nagradza tych, którzy wędrują i degustują."
+      },
+      "agia-varvara-stavrovouni": {
+        "winterNotes": "Unikaj drewnianych stopni, gdy mokre — ślisko. Najlepiej przy suchej pogodzie.",
+        "localSecret": "Zaparkuj w Agia Varvara, jeśli parking przy starcie pełny. Połącz z pętlą Stavrovouni na pełny trening."
+      },
+      "konnoi-cyclops": {
+        "winterNotes": "Idealny zimowy spacer. Łagodnie, bez śniegu. Według oficjalnego przewodnika przez cały rok.",
+        "localSecret": "Kawiarnia i sporty wodne w Konnos. Połącz z pętlą Agioi Anargyroi na pełniejszy poranek w parku."
+      },
+      "cape-aspro": {
+        "winterNotes": "Idealnie zimą. Zero cienia. Pochmurne dni dodają dramatyzmu.",
+        "localSecret": "Wąski odcinek na starcie — przejezdny, ale ostrożnie. Połączenie klifów i morza zostaje w pamięci."
+      },
+      "treis-elies": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Najlepiej po deszczu, gdy płynie rzeka — inaczej wciąż łagodna ucieczka z Limassol."
+      },
+      "gnafkio": {
+        "winterNotes": "Zima przynosi śnieg w Troodos. Mech i zieleń zapierają dech.",
+        "localSecret": "Startuj z Kykkos–Tsakistra, by strome zejście mieć na początku. Przy starcie Gnafkio jest Panthea."
+      },
+      "kionia-profitis-elias": {
+        "winterNotes": "Idealna zimowa wędrówka. Chłodny las. Start od Profitis Elias wymaga 5 km szutrówki.",
+        "localSecret": "Startuj z Kionii, by schodzić do Profitis Elias. Zorganizuj auto na obu końcach."
+      },
+      "psilo-dentro-pouziaris": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Ryzyko poślizgu. Tylko dla wprawionych.",
+        "localSecret": "Zaparkuj przy restauracji Psilo Dentro. Platres jest o krok — rozgrzewka po wędrówce."
       }
     }
   }
