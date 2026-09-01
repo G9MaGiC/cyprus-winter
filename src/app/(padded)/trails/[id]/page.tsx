@@ -23,6 +23,7 @@ import TrailBookGuideLink from "@/components/trails/TrailBookGuideLink";
 import SectionCard from "@/components/SectionCard";
 import TrailWeatherBadge from "@/components/TrailWeatherBadge";
 import { getLocalizedName } from "@/lib/localize";
+import { localizeTrailContent } from "@/lib/trail-content";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { findTrailByIdOrSlug, isTrailSlugAlias } from "@/lib/trail-resolve";
@@ -82,6 +83,9 @@ export default async function TrailPage({
   const reports = await getLatestReportsByTrail(trail.id, 3);
   const latestReport = reports[0];
   const guideMatch = matchGuideForTrail(trail.id, locale);
+  // AUD-10 slice 13: decision-surface copy overlaid per locale; schema and
+  // metadata keep reading the EN base `trail` record.
+  const localizedTrail = await localizeTrailContent(trail, locale);
 
   const canonicalUrl = `${SITE_URL}/trails/${trail.id}`;
   const trailImageUrl = toAbsoluteUrl(getTrailImage(trail.id));
@@ -389,9 +393,9 @@ export default async function TrailPage({
             </SectionCard>
 
             {/* Winter safety — directly after Safety & essentials */}
-            {trail.winterSafety && (
+            {localizedTrail.winterSafety && (
               <SectionCard title={tTrailsDetail("winterSafetyTitle")} borderAccent="terracotta">
-                <p className="text-olive/90 text-sm leading-relaxed break-words">{trail.winterSafety}</p>
+                <p className="text-olive/90 text-sm leading-relaxed break-words">{localizedTrail.winterSafety}</p>
               </SectionCard>
             )}
 
@@ -403,9 +407,9 @@ export default async function TrailPage({
             )}
 
             {/* Winter notes */}
-            {trail.winterNotes && (
+            {localizedTrail.winterNotes && (
               <SectionCard title={tTrailsDetail("winterNotesTitle")} borderAccent="golden">
-                <p className="text-olive/90 text-sm leading-relaxed break-words">{trail.winterNotes}</p>
+                <p className="text-olive/90 text-sm leading-relaxed break-words">{localizedTrail.winterNotes}</p>
               </SectionCard>
             )}
 
@@ -434,10 +438,10 @@ export default async function TrailPage({
             )}
 
             {/* Local secret */}
-            {trail.localSecret && (
+            {localizedTrail.localSecret && (
               <SectionCard title={tTrailsDetail("localSecretTitle")} borderAccent="golden">
                 <p className="text-olive/90 text-sm italic border-s-2 border-terracotta/30 ps-4 break-words">
-                  {trail.localSecret}
+                  {localizedTrail.localSecret}
                 </p>
               </SectionCard>
             )}

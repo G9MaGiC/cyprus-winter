@@ -4402,6 +4402,58 @@
         "winterTip": "L’hiver est idéal ; la chaleur d’été peut être brutale. À combiner avec Governor's Beach pour une journée côtière.",
         "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
       }
+    },
+    "trails": {
+      "petra-tou-romiou": {
+        "winterNotes": "Marche d'hiver idéale ; températures douces et moins de monde. Les vagues forcissent après les tempêtes ; les jours agités, restez bien en retrait de la ligne d'eau.",
+        "winterSafety": "Ne vous baignez pas ici ; les courants sont forts même par mer calme. Par tempête hivernale, restez en retrait de la ligne d'eau ; des vagues isolées montent plus haut que prévu. Le vent côtier peut être vif ; prenez une épaisseur.",
+        "localSecret": "Une fois rassasié du rocher d'Aphrodite, marchez vers l'est jusqu'aux criques plus calmes. Les falaises basses offrent de meilleures vues photo, surtout en fin d'après-midi quand la lumière tombe derrière vous."
+      },
+      "artemis": {
+        "winterNotes": "Le guide officiel recommande mars–novembre ; faisable en hiver hors gel. Le sentier peut être verglacé après un coup de froid ; vérifiez les conditions avant de partir.",
+        "winterSafety": "Après un coup de froid, les sections hautes peuvent être verglacées. Emportez des crampons légers (microspikes) si la prévision frôle zéro. Le centre des visiteurs du Troodos affiche les conditions. Réseau aléatoire ; prévenez quelqu'un de votre itinéraire.",
+        "localSecret": "Partez dans le sens antihoraire ; la section est offre les plus belles vues, et vous y arrivez avant midi. Le plus calme : les matins de semaine."
+      },
+      "olympus-summit": {
+        "winterNotes": "Neige/verglas fréquents de janv. à mars. Microspikes recommandés. Vérifiez le statut de la station ; l'accès au domaine peut être restreint.",
+        "winterSafety": "Neige et verglas fréquents de janv. à mars. Microspikes ou crampons souvent nécessaires. Vérifiez le statut de la station ; l'accès peut être restreint. Ne tentez rien par jour blanc ou grand vent. Urgences : 112.",
+        "localSecret": "Par temps clair d'hiver, on voit les deux côtes. Partez tôt ; les nuages montent souvent vers midi. Le café de la station réchauffe après la marche."
+      },
+      "caledonia-falls": {
+        "winterNotes": "Sections boueuses après la pluie. Fort risque de glissade aux traversées de rivière. Portez des chaussures imperméables. Le débit de la cascade culmine en fin d'hiver/printemps.",
+        "winterSafety": "Rochers glissants près de la cascade. Restez sur le sentier. Le torrent peut monter vite après la pluie ; ne tentez rien par temps d'orage. Sentier parfois boueux ; chaussures imperméables indispensables.",
+        "localSecret": "La cascade est la plus impressionnante 1 à 2 jours après la pluie. Vérifiez le débit en ligne ou demandez dans les cafés de Platres."
+      },
+      "adonis": {
+        "winterNotes": "La meilleure saison pour ce sentier. Températures fraîches, moins de foule. Quelques passages boueux après la pluie.",
+        "winterSafety": "L'hiver est idéal ; évitez la chaleur estivale. Quelques passages boueux après la pluie. Restez sur le sentier balisé ; l'Akamas recèle par endroits des munitions non explosées.",
+        "localSecret": "Remplissez votre gourde à la source Kefalovrysia. Le café des Bains d'Aphrodite, au départ, fait un bon café d'après-marche. Au retour de la boucle, combinez avec le domaine Kolios ou Vasilikon."
+      },
+      "madari-ridge": {
+        "winterNotes": "Parfois venteux. Neige sur la crête de janv. à fév. Par temps clair, la côte s'étend à perte de vue.",
+        "winterSafety": "La crête est exposée ; le refroidissement éolien est marqué. Neige possible de janv. à fév. Vue à 360° par temps clair. Urgences : 112.",
+        "localSecret": "La tour de guet au km 2,5. Montez-y si vous pouvez ; la vue à 360° vaut les pas en plus. Le domaine Kyperounta est proche — parmi les plus hauts d'Europe. Combinez si vous avez le temps."
+      },
+      "atalante": {
+        "winterNotes": "Le guide officiel recommande mars–novembre ; en hiver seulement hors gel. Plus long qu'Artémis — partez tôt.",
+        "winterSafety": "Longue boucle — ne la sous-estimez pas. Verglas après un coup de froid ; microspikes si besoin. Prévenez quelqu'un de votre itinéraire. Urgences : 112.",
+        "localSecret": "Faites Artémis et Atalante des jours différents. Les enchaîner fait une très longue sortie ; le circuit commun de Chionistra est le trait d'union."
+      },
+      "avakas-gorge": {
+        "winterNotes": "Vérifiez la météo ; à éviter après la pluie. Les gorges peuvent être glissantes. Au mieux de déc. à avr., quand la rivière est praticable.",
+        "winterSafety": "N'entrez PAS après de fortes pluies ; risque de crue subite. Les gorges peuvent être glissantes. Au mieux de déc. à avr., quand la rivière est basse. Urgences : 112.",
+        "localSecret": "Au point le plus étroit, le ciel devient un ruban. Allez lentement. Le domaine Avakas est proche ; combinez les gorges avec une dégustation. Appelez avant de venir."
+      },
+      "panagia-araka-stavros": {
+        "winterNotes": "Plus frais au-dessus de 1 000 m. Montées et descentes de niveau 3. Les églises peuvent avoir des horaires d'hiver réduits — vérifiez avant d'y aller.",
+        "winterSafety": "Itinéraire linéaire — organisez une récupération à Stavros tou Agiasmati ou revenez par la route. Niveau 3 ; glissant par temps humide.",
+        "localSecret": "Commencez par Panagia tou Araka pour les fresques, puis marchez vers Agiasmati tant que la lumière est encore belle sur les vignes."
+      },
+      "cape-greco": {
+        "winterNotes": "Randonnée d'hiver idéale. Pas de neige, températures douces. Parfait pour fuir le froid d'ailleurs.",
+        "winterSafety": "Randonnée d'hiver idéale ; douce, sans neige. Le vent côtier peut être vif ; prenez une épaisseur. Sentier bien balisé.",
+        "localSecret": "Partez de la baie de Konnos et marchez vers les grottes marines. La lumière sur le calcaire est la plus belle l'après-midi. Combinez avec Konnos — baignade l'été, café l'hiver."
+      }
     }
   }
 }

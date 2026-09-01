@@ -4402,6 +4402,58 @@
         "winterTip": "Iarna e ideală; arșița verii poate fi brutală. Combinați cu Governor's Beach pentru o zi pe coastă.",
         "openingHours": "Zilnic 8:30–17:00 (iarna)"
       }
+    },
+    "trails": {
+      "petra-tou-romiou": {
+        "winterNotes": "Plimbare de iarnă ideală; temperaturi blânde și mai puțină lume. Valurile pot fi mai puternice după furtuni; în zilele agitate stați bine în spatele liniei apei.",
+        "winterSafety": "Nu înotați aici; curenții sunt puternici chiar și în zilele calme. În furtunile de iarnă stați departe de linia apei; valuri izolate urcă mai sus decât v-ați aștepta. Vântul de coastă poate fi tăios; luați un strat în plus.",
+        "localSecret": "După ce v-ați săturat de Stânca Afroditei, mergeți spre est către golfulețele mai liniștite. Falezele joase oferă unghiuri mai bune pentru fotografii, mai ales după-amiaza târziu, cu lumina în spate."
+      },
+      "artemis": {
+        "winterNotes": "Ghidul oficial recomandă martie–noiembrie; iarna e fezabil când nu e gheață. După valurile de frig poate fi polei; verificați condițiile înainte de plecare.",
+        "winterSafety": "După valurile de frig, secțiunile înalte pot fi înghețate. Luați colțari ușori (microspikes) dacă prognoza e aproape de zero. Centrul de vizitatori Troodos publică starea traseelor. Semnalul e slab pe alocuri; spuneți cuiva ruta voastră.",
+        "localSecret": "Porniți în sens antiorar; secțiunea estică are cele mai bune priveliști și ajungeți la ele înainte de prânz. Cel mai liniștit: diminețile din timpul săptămânii."
+      },
+      "olympus-summit": {
+        "winterNotes": "Zăpadă/gheață frecvente ian.–mar. Se recomandă colțari ușori. Verificați starea stațiunii de schi; accesul poate fi restricționat.",
+        "winterSafety": "Zăpadă și gheață frecvente ian.–mar. Adesea sunt necesari colțari ușori sau colțari. Verificați starea stațiunii de schi; accesul poate fi restricționat. Nu încercați pe vizibilitate zero sau vânt puternic. Urgențe: 112.",
+        "localSecret": "În zilele senine de iarnă se văd ambele coaste. Porniți devreme; norii se adună adesea până la prânz. Cafeneaua stațiunii încălzește după drumeție."
+      },
+      "caledonia-falls": {
+        "winterNotes": "Porțiuni noroioase după ploaie. Risc mare de alunecare la traversările râului. Purtați bocanci impermeabili. Debitul cascadei e maxim la sfârșitul iernii/primăvara.",
+        "winterSafety": "Stânci alunecoase lângă cascadă. Rămâneți pe potecă. Pârâul poate crește repede după ploaie; nu încercați pe furtună. Poteca poate fi noroioasă; bocancii impermeabili sunt esențiali.",
+        "localSecret": "Cascada impresionează cel mai mult la 1–2 zile după ploaie. Verificați debitul online sau întrebați în cafenelele din Platres."
+      },
+      "adonis": {
+        "winterNotes": "Cel mai bun sezon pentru acest traseu. Temperaturi răcoroase, mai puțină aglomerație. Câteva porțiuni noroioase după ploaie.",
+        "winterSafety": "Iarna e ideală; evitați arșița verii. Câteva porțiuni noroioase după ploaie. Rămâneți pe poteca marcată; în Akamas există pe alocuri muniție neexplodată.",
+        "localSecret": "Umpleți sticla la izvorul Kefalovrysia. Cafeneaua de la Băile Afroditei, la start, face o cafea bună după drumeție. Pe bucla de întoarcere, combinați cu crama Kolios sau Vasilikon."
+      },
+      "madari-ridge": {
+        "winterNotes": "Poate fi vânt. Zăpadă pe creastă ian.–feb. În zilele senine coasta se întinde până departe.",
+        "winterSafety": "Creasta e expusă; senzația de frig dată de vânt e semnificativă. Posibil zăpadă ian.–feb. Priveliști la 360° în zilele senine. Urgențe: 112.",
+        "localSecret": "Turnul de veghe pentru incendii de la km 2,5. Urcați dacă puteți; priveliștea la 360° merită pașii în plus. Crama Kyperounta e aproape — printre cele mai înalte din Europa. Combinați dacă aveți timp."
+      },
+      "atalante": {
+        "winterNotes": "Ghidul oficial recomandă martie–noiembrie; iarna doar fără gheață. Mai lung decât Artemis — porniți devreme.",
+        "winterSafety": "Buclă lungă — nu o subestimați. Gheață după valurile de frig; colțari ușori la nevoie. Spuneți cuiva ruta voastră. Urgențe: 112.",
+        "localSecret": "Faceți Artemis și Atalante în zile diferite. Împreună devin o tură foarte lungă; circuitul comun Chionistra este legătura."
+      },
+      "avakas-gorge": {
+        "winterNotes": "Verificați vremea; evitați după ploaie. Cheile pot fi alunecoase. Cel mai bine dec.–apr., când râul e traversabil.",
+        "winterSafety": "NU intrați după ploi puternice; risc de viitură. Cheile pot fi alunecoase. Cel mai bine dec.–apr., când apa e mică. Urgențe: 112.",
+        "localSecret": "În punctul cel mai îngust, cerul devine o fâșie. Mergeți încet. Crama Avakas e aproape; combinați cheile cu o degustare. Sunați înainte."
+      },
+      "panagia-araka-stavros": {
+        "winterNotes": "Mai răcoare peste 1.000 m. Urcușuri și coborâșuri de gradul 3. Bisericile pot avea iarna program redus — verificați înainte să plecați.",
+        "winterSafety": "Traseu liniar — aranjați preluarea la Stavros tou Agiasmati sau întoarceți-vă pe șosea. Gradul 3; alunecos pe umezeală.",
+        "localSecret": "Începeți la Panagia tou Araka cu frescele, apoi mergeți spre Agiasmati cât lumina mai cade frumos pe vii."
+      },
+      "cape-greco": {
+        "winterNotes": "Drumeție de iarnă ideală. Fără zăpadă, temperaturi blânde. Bună pentru a scăpa de frigul din altă parte.",
+        "winterSafety": "Drumeție de iarnă ideală; blândă, fără zăpadă. Vântul de coastă poate fi tăios; luați un strat în plus. Poteca e bine marcată.",
+        "localSecret": "Porniți din golful Konnos și mergeți spre peșterile marine. Lumina pe calcar e cea mai frumoasă după-amiaza. Combinați cu Konnos — o baie vara sau o cafea iarna."
+      }
     }
   }
 }

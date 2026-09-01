@@ -4402,6 +4402,58 @@
         "winterTip": "Zima jest idealna; letni upał bywa brutalny. Połącz z Governor's Beach na nadmorski dzień.",
         "openingHours": "Codziennie 8:30–17:00 (zima)"
       }
+    },
+    "trails": {
+      "petra-tou-romiou": {
+        "winterNotes": "Idealny zimowy spacer; łagodne temperatury i mniej ludzi. Po sztormach fale bywają silniejsze; w burzliwe dni trzymaj się z dala od linii wody.",
+        "winterSafety": "Nie pływaj tutaj; prądy są silne nawet w spokojne dni. Podczas zimowych sztormów trzymaj się z dala od linii wody; pojedyncze fale sięgają wyżej, niż się spodziewasz. Wiatr od morza potrafi być przenikliwy; weź dodatkową warstwę.",
+        "localSecret": "Gdy nacieszysz się Skałą Afrodyty, idź na wschód ku cichszym zatoczkom. Niskie klify dają lepsze kadry, zwłaszcza późnym popołudniem, gdy światło masz za plecami."
+      },
+      "artemis": {
+        "winterNotes": "Oficjalny przewodnik poleca marzec–listopad; zimą da się przejść, gdy nie ma lodu. Po mrozach bywa oblodzenie; sprawdź warunki przed startem.",
+        "winterSafety": "Po mrozach wyższe odcinki bywają oblodzone. Weź raczki, jeśli prognoza jest bliska zera. Centrum Turystyczne Troodos publikuje warunki. Zasięg bywa słaby; powiedz komuś, którędy idziesz.",
+        "localSecret": "Ruszaj przeciwnie do wskazówek zegara; wschodni odcinek ma najlepsze widoki i trafisz na nie przed południem. Najciszej w dni powszednie rano."
+      },
+      "olympus-summit": {
+        "winterNotes": "Śnieg/lód częste I–III. Zalecane raczki. Sprawdź status ośrodka narciarskiego; dostęp może być ograniczony.",
+        "winterSafety": "Śnieg i lód częste I–III. Często potrzebne raczki lub raki. Sprawdź status ośrodka narciarskiego; dostęp może być ograniczony. Nie próbuj przy zerowej widoczności ani silnym wietrze. Numer alarmowy: 112.",
+        "localSecret": "W pogodne zimowe dni widać oba wybrzeża. Startuj wcześnie; chmury często zbierają się do południa. Kawiarnia przy ośrodku narciarskim rozgrzeje po wędrówce."
+      },
+      "caledonia-falls": {
+        "winterNotes": "Po deszczu błotniste odcinki. Wysokie ryzyko poślizgu przy przejściach przez rzekę. Załóż wodoodporne buty. Wodospad kulminuje późną zimą/wiosną.",
+        "winterSafety": "Śliskie skały przy wodospadzie. Trzymaj się ścieżki. Potok może szybko przybrać po deszczu; nie próbuj w czasie burzy. Szlak bywa błotnisty; wodoodporne buty niezbędne.",
+        "localSecret": "Wodospad robi największe wrażenie 1–2 dni po deszczu. Sprawdź przepływ online lub zapytaj w kawiarniach w Platres."
+      },
+      "adonis": {
+        "winterNotes": "Najlepsza pora na ten szlak. Chłodno, mniej tłumów. Po deszczu trochę błota.",
+        "winterSafety": "Zima jest idealna; unikaj letnich upałów. Po deszczu trochę błota. Trzymaj się oznakowanej ścieżki; na Akamas miejscami zalegają niewybuchy.",
+        "localSecret": "Uzupełnij wodę przy źródle Kefalovrysia. Kawiarnia przy Kąpielisku Afrodyty na starcie robi dobrą kawę po wędrówce. W drodze powrotnej połącz z winiarnią Kolios lub Vasilikon."
+      },
+      "madari-ridge": {
+        "winterNotes": "Bywa wietrznie. Na grani śnieg I–II. W pogodne dni wybrzeże rozciąga się po horyzont.",
+        "winterSafety": "Grań jest odsłonięta; odczuwalny chłód wiatru znaczny. Śnieg możliwy I–II. W pogodne dni widok 360°. Numer alarmowy: 112.",
+        "localSecret": "Wieża przeciwpożarowa na 2,5 km. Wejdź, jeśli możesz; widok 360° wart jest dodatkowych kroków. Nieopodal winiarnia Kyperounta — jedna z najwyżej położonych w Europie. Połącz, jeśli masz czas."
+      },
+      "atalante": {
+        "winterNotes": "Oficjalny przewodnik poleca marzec–listopad; zimą tylko bez lodu. Dłuższy niż Artemis — startuj wcześnie.",
+        "winterSafety": "Długa pętla — nie lekceważ jej. Po mrozach lód; w razie potrzeby raczki. Powiedz komuś, którędy idziesz. Numer alarmowy: 112.",
+        "localSecret": "Artemis i Atalante rób w różne dni. Razem to bardzo długa wyprawa; łącznikiem jest wspólny krąg Chionistry."
+      },
+      "avakas-gorge": {
+        "winterNotes": "Sprawdź pogodę; unikaj po deszczu. Wąwóz bywa śliski. Najlepiej XII–IV, gdy rzeka jest do przejścia.",
+        "winterSafety": "NIE wchodź po ulewie; ryzyko gwałtownej powodzi. Wąwóz bywa śliski. Najlepiej XII–IV, gdy woda jest niska. Numer alarmowy: 112.",
+        "localSecret": "W najwęższym miejscu niebo staje się paskiem. Idź powoli. Nieopodal winiarnia Avakas; połącz wąwóz z degustacją. Zadzwoń wcześniej."
+      },
+      "panagia-araka-stavros": {
+        "winterNotes": "Chłodniej powyżej 1000 m. Podejścia i zejścia w skali 3. Kościoły mogą mieć zimą ograniczone godziny — sprawdź przed wyjściem.",
+        "winterSafety": "Trasa liniowa — umów odbiór przy Stavros tou Agiasmati albo wróć drogą. Skala 3; ślisko po deszczu.",
+        "localSecret": "Zacznij od Panagia tou Araka i fresków, a potem idź ku Agiasmati, póki światło jeszcze ładnie kładzie się na winnicach."
+      },
+      "cape-greco": {
+        "winterNotes": "Idealna zimowa wędrówka. Bez śniegu, łagodnie. Dobra ucieczka od zimna gdzie indziej.",
+        "winterSafety": "Idealna zimowa wędrówka; łagodnie, bez śniegu. Wiatr od morza potrafi być przenikliwy; weź dodatkową warstwę. Szlak dobrze oznakowany.",
+        "localSecret": "Zacznij w zatoce Konnos i idź ku morskim jaskiniom. Światło na wapieniu jest najlepsze po południu. Połącz z Konnos — latem na kąpiel, zimą na kawę."
+      }
     }
   }
 }

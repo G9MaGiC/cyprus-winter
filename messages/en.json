@@ -4402,6 +4402,58 @@
         "winterTip": "Winter is ideal; summer heat can be brutal. Combine with Governor's Beach for a coastal day.",
         "openingHours": "Daily 8:30 to 17:00 (winter)"
       }
+    },
+    "trails": {
+      "petra-tou-romiou": {
+        "winterNotes": "Ideal winter walk; mild temperatures and fewer people. Waves can be stronger after storms; stay well back from the waterline on rough days.",
+        "winterSafety": "Do not swim here; currents are strong even on calm days. Stay back from the waterline in winter storms; rogue waves can reach higher than expected. Coastal wind can be brisk; bring a layer.",
+        "localSecret": "Walk east toward the quieter coves once you've had your fill of Aphrodite's Rock. The low bluffs give better views for photos, especially late afternoon when the light drops behind you."
+      },
+      "artemis": {
+        "winterNotes": "Official guide lists March–November as most suitable; winter is doable when clear of ice. Can be icy after cold snaps; check conditions before starting.",
+        "winterSafety": "After cold snaps, higher sections can be icy. Carry microspikes if forecast is near freezing. Troodos Visitor Centre posts conditions. Phone signal patchy; tell someone your route.",
+        "localSecret": "Start anti-clockwise; the eastern section has the best views and you hit them before lunch. Quietest on weekday mornings."
+      },
+      "olympus-summit": {
+        "winterNotes": "Snow/ice common Jan to Mar. Microspikes recommended. Check resort status; ski area may restrict access.",
+        "winterSafety": "Snow and ice common Jan to Mar. Microspikes or crampons often required. Check ski resort status; access may be restricted. Do not attempt in whiteout or high wind. Emergency: 112.",
+        "localSecret": "On clear winter days you can see both coasts. Start early; cloud often builds by midday. Ski resort café for post-hike warmth."
+      },
+      "caledonia-falls": {
+        "winterNotes": "Muddy sections after rain. High slip risk at river crossings. Wear waterproof boots. Waterfall flow peaks in late winter/spring.",
+        "winterSafety": "Slippery rocks near the falls. Stay on the path. Stream can rise quickly after rain; do not attempt in storm conditions. Trail can be muddy; waterproof boots essential.",
+        "localSecret": "The falls are most impressive 1 to 2 days after rain. Check flow online or ask at Platres cafés."
+      },
+      "adonis": {
+        "winterNotes": "Best season for this trail. Cool temps, fewer crowds. Some muddy patches after rain.",
+        "winterSafety": "Winter is ideal; avoid summer heat. Some muddy patches after rain. Stay on marked path; Akamas has unexploded ordnance in places.",
+        "localSecret": "Refill at Kefalovrysia spring. The Baths of Aphrodite café at the trailhead does a good post-hike coffee. Combine with Kolios or Vasilikon winery on the loop back."
+      },
+      "madari-ridge": {
+        "winterNotes": "Can be windy. Snow on ridge in Jan to Feb. On clear days the coast stretches out.",
+        "winterSafety": "Ridge is exposed; wind chill significant. Snow possible Jan to Feb. 360° views on clear days. Emergency: 112.",
+        "localSecret": "The fire watchtower at km 2.5. Climb it if you can. The 360° views are worth the extra steps. Kyperounta Winery is nearby—among Europe's highest wineries. Combine if you have time."
+      },
+      "atalante": {
+        "winterNotes": "Official guide lists March–November as most suitable; winter only when ice-free. Longer than Artemis—start early.",
+        "winterSafety": "Long loop—do not underestimate. Ice after cold snaps; microspikes if needed. Tell someone your route. Emergency: 112.",
+        "localSecret": "Do Artemis and Atalante on different days. Combining both is a very long outing; the shared Chionistra circuit is the link."
+      },
+      "avakas-gorge": {
+        "winterNotes": "Check weather; avoid after rain. Gorge can be slippery. Best Dec to Apr when river is manageable.",
+        "winterSafety": "Do NOT enter after heavy rain; flash flood risk. Gorge can be slippery. Best Dec to Apr when river is low. Emergency: 112.",
+        "localSecret": "The narrowest point is where the sky becomes a strip. Go slow. Avakas Winery nearby; combine gorge walk with a tasting. Call ahead."
+      },
+      "panagia-araka-stavros": {
+        "winterNotes": "Cooler at 1,000 m+. Grade 3 ups and downs. Churches may have limited winter hours—check before you go.",
+        "winterSafety": "Linear route—arrange pickup at Stavros tou Agiasmati or return via road. Grade 3; can be slippery when wet.",
+        "localSecret": "Start at Panagia tou Araka for the frescoes first, then walk toward Agiasmati while the light is still good on the vineyards."
+      },
+      "cape-greco": {
+        "winterNotes": "Ideal winter hike. No snow, mild temps. Good for escaping cold elsewhere.",
+        "winterSafety": "Ideal winter hike; mild, no snow. Coastal wind can be brisk; bring a layer. Path well-marked.",
+        "localSecret": "Start at Konnos Bay and walk toward the sea caves. The light on the limestone is best in the afternoon. Combine with Konnos for a swim in summer or a coffee in winter."
+      }
     }
   }
 }
