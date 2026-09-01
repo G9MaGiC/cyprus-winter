@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jsonError, jsonRateLimitedFromResult } from "@/lib/api-response";
-import { ensurePartnerOverlaysLoaded, getPartnerOverlay, setPartnerOverlay } from "@/lib/partner-overlay";
+import { getPartnerOverlay } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded, setPartnerOverlay } from "@/lib/partner-overlay-store";
 import { isSafePartnerImageUrl } from "@/lib/partner-image-url";
 import { isPartnerIdentity, requirePartner } from "@/lib/partner-auth";
 import { rateLimit } from "@/lib/rate-limit";

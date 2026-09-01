@@ -88,7 +88,10 @@ export default function AttractionCard({
                 {tCommon("local")}
               </span>
             )}
-            {isWinery && "isVerified" in a && isPartnerVerified(a) && (
+            {isWinery &&
+              ("partnerVerified" in a
+                ? (a as { partnerVerified?: boolean }).partnerVerified
+                : "isVerified" in a && isPartnerVerified(a)) && (
               <span
                 className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}
                 title={tCommon("verifiedPartnerTitle")}

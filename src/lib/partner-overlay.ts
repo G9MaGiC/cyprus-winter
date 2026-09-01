@@ -1,4 +1,4 @@
-import { getSupabase, hasSupabase } from "./supabase";
+import { isCallAheadHours } from "./call-ahead";
 
 export type PartnerOverlay = {
   openingHours?: string;
@@ -6,46 +6,32 @@ export type PartnerOverlay = {
 };
 
 /**
- * Partner-edited display fields (AUD-26). Reads stay synchronous — every
- * consumer renders inside a request — while the backing store is Supabase
- * since migration 009: `setPartnerOverlay` writes through to the
- * `partner_overlays` table, and `ensurePartnerOverlaysLoaded()` hydrates the
- * per-instance cache (TTL'd) at each overlay-consuming server entry point.
- * Without Supabase (dev/tests) the cache alone is the store, which preserves
- * the previous in-memory behavior exactly.
+ * Partner-edited display fields (AUD-26) — the client-safe half. This module
+ * holds only the per-instance cache and synchronous reads, so client
+ * components (AttractionCard → place-card-hours) can import it without
+ * dragging @supabase/supabase-js into the bundle. The durable store —
+ * Supabase hydration and write-through — lives in the server-only
+ * partner-overlay-store.ts, which mutates this cache through the two
+ * cache-* functions below. On the client the cache is simply empty (as it
+ * was before migration 009); server renders bake the applied hours in.
  */
 const overlays = new Map<string, PartnerOverlay>();
-let lastLoadedAt = 0;
-const CACHE_TTL_MS = 60_000;
 
 export function resetPartnerOverlaysForTests(): void {
   overlays.clear();
-  lastLoadedAt = 0;
 }
 
-/** Hydrate the overlay cache from Supabase when configured and stale.
-    Fail-open: a load error keeps whatever the cache already holds. */
-export async function ensurePartnerOverlaysLoaded(): Promise<void> {
-  if (!hasSupabase()) return;
-  const now = Date.now();
-  if (now - lastLoadedAt < CACHE_TTL_MS) return;
-  const supabase = getSupabase();
-  if (!supabase) return;
-  const { data, error } = await supabase
-    .from("partner_overlays")
-    .select("provider_id,opening_hours,image_url");
-  if (error) {
-    console.error("Partner overlay load failed:", error.message);
-    return;
-  }
+/** Store-internal: replace the whole cache (hydration). */
+export function replacePartnerOverlayCache(
+  entries: Iterable<readonly [string, PartnerOverlay]>
+): void {
   overlays.clear();
-  for (const row of data ?? []) {
-    const overlay: PartnerOverlay = {};
-    if (row.opening_hours) overlay.openingHours = String(row.opening_hours);
-    if (row.image_url) overlay.imageUrl = String(row.image_url);
-    overlays.set(String(row.provider_id), overlay);
-  }
-  lastLoadedAt = now;
+  for (const [id, overlay] of entries) overlays.set(id, overlay);
+}
+
+/** Store-internal: cache one entry (write-through read-your-writes). */
+export function cachePartnerOverlay(providerId: string, overlay: PartnerOverlay): void {
+  overlays.set(providerId, overlay);
 }
 
 export function getPartnerOverlay(providerId: string): PartnerOverlay | undefined {
@@ -61,39 +47,9 @@ export function partnerOpeningHours(providerId: string): string | undefined {
 export function applyPartnerOpeningHours<T extends { id: string; openingHours?: string }>(place: T): T {
   const hours = partnerOpeningHours(place.id);
   if (!hours) return place;
-  return { ...place, openingHours: hours };
-}
-
-/** Write-through: the durable row first (when Supabase is configured — a
-    failed upsert throws so the caller can surface it), then the cache so the
-    writing instance reads its own write immediately. */
-export async function setPartnerOverlay(
-  providerId: string,
-  patch: PartnerOverlay
-): Promise<PartnerOverlay> {
-  const current = overlays.get(providerId) ?? {};
-  const next: PartnerOverlay = { ...current };
-  if (typeof patch.openingHours === "string") {
-    next.openingHours = patch.openingHours.trim().slice(0, 500);
-  }
-  if (typeof patch.imageUrl === "string") {
-    next.imageUrl = patch.imageUrl.trim();
-  }
-
-  const supabase = getSupabase();
-  if (supabase) {
-    const { error } = await supabase.from("partner_overlays").upsert({
-      provider_id: providerId,
-      opening_hours: next.openingHours ?? null,
-      image_url: next.imageUrl ?? null,
-      updated_at: new Date().toISOString(),
-    });
-    if (error) {
-      console.error("Partner overlay upsert failed:", error.message, { providerId });
-      throw new Error(error.message);
-    }
-  }
-
-  overlays.set(providerId, next);
-  return next;
+  // Partner hours replace whatever the record carried, so the call-ahead
+  // decision must follow the hours actually shown — a stale EN-base flag
+  // would say "Call ahead" next to "Open daily 10:00–17:00" (or hide a
+  // warning the partner just added).
+  return { ...place, openingHours: hours, hoursCallAhead: isCallAheadHours(hours) } as T;
 }

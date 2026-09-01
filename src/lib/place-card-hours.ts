@@ -1,12 +1,6 @@
 import { partnerOpeningHours } from "./partner-overlay";
 
-const CALL_AHEAD_RE =
-  /call ahead|by appointment|appointment recommended|reservations required/i;
-
-export function isCallAheadHours(text: string | undefined): boolean {
-  if (!text) return false;
-  return CALL_AHEAD_RE.test(text);
-}
+export { isCallAheadHours } from "./call-ahead";
 
 export function placeCardHours(place: {
   id?: string;

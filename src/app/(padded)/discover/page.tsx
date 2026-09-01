@@ -1,9 +1,10 @@
 import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems, type DiscoverItem } from "@/data/discover";
-import { buildDiscoverSections, toDiscoverCardSection } from "@/lib/discover-sections";
+import { buildDiscoverSections, toDiscoverCardSection, type DiscoverSection } from "@/lib/discover-sections";
 import { localizeDiscoverContent } from "@/lib/discover-content";
-import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 import HubSkipNav from "@/components/HubSkipNav";
 import {
   ACTIVITY_FILTER_KEYS,
@@ -29,34 +30,44 @@ const DISCOVER_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 // Winery items get the AUD-10 locale overlay + live partner hours (in that
 // precedence order) before projection, so sections are built per request —
 // the page is already request-rendered (root layout resolves the locale per
-// request), and the section filters are cheap in-memory passes.
-async function localizeItems(items: DiscoverItem[]): Promise<DiscoverItem[]> {
+// request), and the section filters are cheap in-memory passes. Sections
+// overlap heavily (wine/local/hidden/family share items), so each unique
+// item is localized exactly once and sections map through the result.
+async function localizeById(sections: { items: DiscoverItem[] }[]): Promise<Map<string, DiscoverItem>> {
   await ensurePartnerOverlaysLoaded();
-  return Promise.all(
-    items.map(async (item) => {
+  const unique = new Map<string, DiscoverItem>();
+  for (const section of sections) {
+    for (const item of section.items) unique.set(item.id, item);
+  }
+  const localizedById = new Map<string, DiscoverItem>();
+  await Promise.all(
+    [...unique.values()].map(async (item) => {
       // Covered wineries AND pilot attractions localize (id-gated inside);
       // live partner hours still apply to winery records only, after the
       // overlay (precedence contract).
       const localized = await localizeDiscoverContent(item);
-      return item.type === "winery" ? applyPartnerOpeningHours(localized) : localized;
+      localizedById.set(
+        item.id,
+        item.type === "winery" ? applyPartnerOpeningHours(localized) : localized
+      );
     })
   );
+  return localizedById;
 }
 
 // Lean-project items at the client boundary: DiscoverClient serializes its
 // props into the RSC flight payload, so it gets DiscoverCardItem, not the
 // full catalog objects (~319KB -> ~136KB of item JSON).
 async function buildCardSections() {
-  const standardSections = await Promise.all(
-    buildDiscoverSections(allDiscoverItems).map(async (s) =>
-      toDiscoverCardSection({ ...s, items: await localizeItems(s.items) })
-    )
-  );
-  const activitySections = await Promise.all(
-    ACTIVITY_FILTER_KEYS.map((key) => buildActivitySection(key, allDiscoverItems))
-      .filter((s): s is NonNullable<typeof s> => s != null)
-      .map(async (s) => toDiscoverCardSection({ ...s, items: await localizeItems(s.items) }))
-  );
+  const standard = buildDiscoverSections(allDiscoverItems);
+  const activity = ACTIVITY_FILTER_KEYS.map((key) => buildActivitySection(key, allDiscoverItems))
+    .filter((s): s is NonNullable<ReturnType<typeof buildActivitySection>> => s != null);
+  const localizedById = await localizeById([...standard, ...activity]);
+  function withLocalized<S extends DiscoverSection>(s: S) {
+    return toDiscoverCardSection({ ...s, items: s.items.map((item: DiscoverItem) => localizedById.get(item.id) ?? item) });
+  }
+  const standardSections = standard.map(withLocalized);
+  const activitySections = activity.map(withLocalized);
   return { standardSections, activitySections };
 }
 

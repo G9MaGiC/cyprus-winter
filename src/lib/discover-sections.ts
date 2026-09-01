@@ -1,5 +1,6 @@
 import type { DiscoverItem } from "@/data/discover";
-import { isCallAheadHours } from "@/lib/place-card-hours";
+import { isCallAheadHours } from "@/lib/call-ahead";
+import { isPartnerVerified } from "@/lib/partner-verification";
 import {
   beaches,
   natureSites,
@@ -46,10 +47,14 @@ export type DiscoverCardItem = {
   winterTip?: string;
   bestTimeToVisit?: string;
   openingHours?: string;
+  /** Winery tasting line — placeCardHours' fallback when openingHours is
+      absent (~19 wineries), so cards keep their hours preview. */
+  tastingInfo?: string;
   /** EN-base call-ahead decision — survives future content overlays (AUD-10). */
   hoursCallAhead?: boolean;
-  isVerified?: boolean;
-  partnerEmail?: string;
+  /** Server-computed isPartnerVerified() so raw partner emails never enter
+      the client payload. */
+  partnerVerified?: boolean;
 };
 
 /** A DiscoverSection with its items projected for the client boundary. */
@@ -71,6 +76,9 @@ export function toDiscoverCardItem(item: DiscoverItem): DiscoverCardItem {
   if ("winterTip" in item && item.winterTip) lean.winterTip = item.winterTip;
   if ("bestTimeToVisit" in item && item.bestTimeToVisit) lean.bestTimeToVisit = item.bestTimeToVisit;
   if ("openingHours" in item && item.openingHours) lean.openingHours = item.openingHours;
+  if ("tastingInfo" in item && (item as { tastingInfo?: string }).tastingInfo) {
+    lean.tastingInfo = (item as { tastingInfo?: string }).tastingInfo;
+  }
   // Overlaid records (localizeWineryContent) carry the flag decided on the EN
   // base; recomputing over their localized hours line would silently drop it.
   lean.hoursCallAhead =
@@ -79,8 +87,11 @@ export function toDiscoverCardItem(item: DiscoverItem): DiscoverCardItem {
       ("openingHours" in item ? item.openingHours : undefined) ??
         ("tastingInfo" in item ? (item as { tastingInfo?: string }).tastingInfo : undefined)
     );
-  if ("isVerified" in item && item.isVerified !== undefined) lean.isVerified = item.isVerified;
-  if ("partnerEmail" in item && item.partnerEmail) lean.partnerEmail = item.partnerEmail;
+  if ("isVerified" in item || "partnerEmail" in item) {
+    lean.partnerVerified = isPartnerVerified(
+      item as { isVerified?: boolean; partnerEmail?: string }
+    );
+  }
   return lean;
 }
 

@@ -13,7 +13,8 @@ import Image from "next/image";
 import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
-import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 import { localizeWineryContent } from "@/lib/winery-content";
 import { isPartnerVerified } from "@/lib/partner-verification";
 

@@ -8,7 +8,8 @@ import { CARD, CTA, EMPTY_STATE_DASHED, PILL, SECTION, TYPE } from "@/lib/design
 import type { PlanItem } from "@/data";
 import { PLAN_QUICK_ADD_PLACE_IDS } from "@/data/plan-quick-add";
 import PlanDayHints from "@/components/plan/PlanDayHints";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
 
 function EmptyDayState({
   activeDay,
@@ -155,16 +156,20 @@ export default function DayContentPanel({
   readOnly = false,
 }: DayContentPanelProps) {
   const tPlan = useTranslations("plan");
+  const locale = useLocale();
   // Removals leave aria-live's default aria-relevant ("additions text") silent,
   // and the remove button unmounts under focus — announce them explicitly (BUG-360).
+  // The announced name must match the one on the card the user acted on, so
+  // it goes through getLocalizedName like the visible plan UI does.
   const [removedMessage, setRemovedMessage] = useState("");
   const announceRemoveFromDay = useCallback(
     (id: string) => {
-      const name = getPlace(id)?.name;
+      const place = getPlace(id);
+      const name = place ? getLocalizedName(place, locale) : undefined;
       removeFromDay(id);
       if (name) setRemovedMessage(tPlan("aria.removedFromPlan", { name }));
     },
-    [getPlace, removeFromDay, tPlan]
+    [getPlace, locale, removeFromDay, tPlan]
   );
   const useBlocks = activeItems.length >= 3;
   const mid = Math.ceil(activeItems.length / 2);

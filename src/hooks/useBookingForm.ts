@@ -243,6 +243,14 @@ export function useBookingForm(
         throw new Error(msg);
       }
 
+      // The honeypot path answers 200 with stored:false and no booking —
+      // showing the success screen would tell a real user (autofilled hidden
+      // field) their request was saved when nothing was stored anywhere.
+      if (data.stored === false) {
+        idempotencyKeyRef.current = null;
+        throw new Error(tErrors.failed);
+      }
+
       setDone(true);
       setStorageMode(data.storage ?? null);
       setEmailDelayed(data.emailStatus?.confirmationSent === false);

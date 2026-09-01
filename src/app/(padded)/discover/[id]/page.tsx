@@ -32,7 +32,8 @@ import DetailPracticalInfo from "./DetailPracticalInfo";
 import DetailBookingSection from "./DetailBookingSection";
 import DiscoverLocationMap from "@/components/DiscoverLocationMap";
 import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
-import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 import { localizeDiscoverContent } from "@/lib/discover-content";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {

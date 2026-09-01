@@ -14,7 +14,8 @@ import { isPartnerVerified } from "@/lib/partner-verification";
 import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
 import HubSkipNav from "@/components/HubSkipNav";
 import { localizeWineryContent } from "@/lib/winery-content";
-import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 

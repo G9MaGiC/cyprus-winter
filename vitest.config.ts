@@ -31,6 +31,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
+      // Unit tests run outside the React Server environment, where the real
+      // `server-only` module throws by design — stub it so server-only lib
+      // modules (partner-overlay-store, the content overlays) stay testable.
+      "server-only": resolve(__dirname, "./src/test/server-only-stub.ts"),
     },
   },
 });
