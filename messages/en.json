@@ -3979,6 +3979,80 @@
         "openingHours": "By appointment; call ahead Nov–Mar.",
         "transport": "Koilani, Krasochoria.",
         "parking": "On-site."
+      },
+      "agios-theodoros": {
+        "tastingInfo": "By appointment only.",
+        "winterTip": "Off the main loop. Agios Theodoros. Mavro, Xynisteri, sweet wine. Call ahead.",
+        "bestTimeToVisit": "Dec to Mar.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Agios Theodoros, Limassol hills.",
+        "parking": "On-site."
+      },
+      "fikardou-winery": {
+        "tastingInfo": "By appointment",
+        "winterTip": "UNESCO Fikardou. Village and wine. Snow possible in deep winter. Magical.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Fikardou village, UNESCO site. ~50 min from Nicosia.",
+        "parking": "On-site."
+      },
+      "sygkrasi": {
+        "tastingInfo": "By appointment",
+        "winterTip": "Kathikas. Akamas loop. Trail in the morning, wine after. The Farmyard for lunch.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Kathikas village. On the Akamas–Laona loop.",
+        "parking": "On-site."
+      },
+      "syndesmos": {
+        "tastingInfo": "Call ahead for visits.",
+        "winterTip": "Cooperative; community-driven. Call ahead. Groups welcome.",
+        "bestTimeToVisit": "Dec to Mar; slow afternoon.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Agios Georgios, Laona route.",
+        "parking": "On-site."
+      },
+      "petrides": {
+        "tastingInfo": "By appointment only.",
+        "winterTip": "Western Paphos. Phinikas. Boutique. Valley views. Book ahead.",
+        "bestTimeToVisit": "Dec to Mar; quiet afternoon.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Phinikas, western Laona.",
+        "parking": "On-site."
+      },
+      "makrikontas": {
+        "tastingInfo": "By appointment",
+        "winterTip": "Quiet Vouni. Book ahead. Hidden Krasochoria. Omodos and Lania nearby.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Vouni village, Krasochoria. ~40 min from Limassol.",
+        "parking": "On-site."
+      },
+      "yiannis": {
+        "tastingInfo": "By appointment.",
+        "winterTip": "Kilani is quieter than Omodos. Reserve for winter. Combine with Koilani and Vlassides.",
+        "bestTimeToVisit": "Dec to Mar.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Kilani, Krasochoria.",
+        "parking": "On-site."
+      },
+      "dafermou": {
+        "tastingInfo": "Tours and tastings; book ahead",
+        "winterTip": "Larnaca hills. Modern, indigenous. Mild in winter. Lefkara nearby.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Larnaca hills. ~25 min from Larnaca.",
+        "parking": "On-site."
+      },
+      "nicolaides": {
+        "tastingInfo": "By appointment",
+        "winterTip": "High-altitude Pitsilia. Cooler in winter. Tasting room warms you. Kykkos nearby.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Pitsilia. ~50 min from Limassol.",
+        "parking": "On-site."
+      },
+      "solia": {
+        "tastingInfo": "By appointment; call ahead",
+        "winterTip": "Off the main routes. Intimate. Combine with Agros or Machairas.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Nicosia hills. ~45 min from capital.",
+        "parking": "On-site."
       }
     },
     "attractions": {

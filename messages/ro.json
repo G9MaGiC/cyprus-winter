@@ -3979,6 +3979,80 @@
         "openingHours": "Cu programare; sunați înainte nov.–mar.",
         "transport": "Koilani, Krasochoria.",
         "parking": "La fața locului."
+      },
+      "agios-theodoros": {
+        "tastingInfo": "Doar cu programare.",
+        "winterTip": "În afara buclei principale. Agios Theodoros. Mavro, Xynisteri, vin dulce. Sunați înainte.",
+        "bestTimeToVisit": "Dec.–mar.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Agios Theodoros, dealurile Limassolului.",
+        "parking": "La fața locului."
+      },
+      "fikardou-winery": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Fikardou, sit UNESCO. Sat și vin. Posibil ninsoare în plină iarnă. Magic.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Fikardou, sit UNESCO. Cca 50 min de Nicosia.",
+        "parking": "La fața locului."
+      },
+      "sygkrasi": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Kathikas. Bucla Akamas. Traseu dimineața, vin după. The Farmyard la prânz.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Kathikas. Pe bucla Akamas–Laona.",
+        "parking": "La fața locului."
+      },
+      "syndesmos": {
+        "tastingInfo": "Pentru vizite, sunați înainte.",
+        "winterTip": "Cooperativă; condusă de comunitate. Sunați înainte. Grupurile sunt binevenite.",
+        "bestTimeToVisit": "Dec.–mar.; o după-amiază lentă.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Agios Georgios, ruta Laona.",
+        "parking": "La fața locului."
+      },
+      "petrides": {
+        "tastingInfo": "Doar cu programare.",
+        "winterTip": "Vestul Paphosului. Phinikas. Boutique. Priveliști spre vale. Rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar.; o după-amiază liniștită.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Phinikas, Laona de vest.",
+        "parking": "La fața locului."
+      },
+      "makrikontas": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Vouni cea liniștită. Rezervați din timp. Krasochoria ascunsă. Omodos și Lania în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Vouni, Krasochoria. Cca 40 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "yiannis": {
+        "tastingInfo": "Cu programare.",
+        "winterTip": "Kilani e mai liniștit decât Omodos. Rezervați pentru iarnă. Combinați cu Koilani și Vlassides.",
+        "bestTimeToVisit": "Dec.–mar.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Kilani, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "dafermou": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Dealurile Larnacăi. Modern, soiuri indigene. Blând iarna. Lefkara în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Dealurile Larnacăi. Cca 25 min de Larnaca.",
+        "parking": "La fața locului."
+      },
+      "nicolaides": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Pitsilia de altitudine. Mai răcoros iarna. Sala de degustare te încălzește. Kykkos în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Pitsilia. Cca 50 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "solia": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "În afara rutelor principale. Intim. Combinați cu Agros sau Machairas.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Dealurile Nicosiei. Cca 45 min de capitală.",
+        "parking": "La fața locului."
       }
     },
     "attractions": {

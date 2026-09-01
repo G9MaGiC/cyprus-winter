@@ -3979,6 +3979,80 @@
         "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
         "transport": "Koilani, Krasochoria.",
         "parking": "Na miejscu."
+      },
+      "agios-theodoros": {
+        "tastingInfo": "Tylko po umówieniu.",
+        "winterTip": "Poza główną pętlą. Agios Theodoros. Mavro, Xynisteri, wino słodkie. Zadzwoń wcześniej.",
+        "bestTimeToVisit": "Grudzień–marzec.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Agios Theodoros, wzgórza Limassol.",
+        "parking": "Na miejscu."
+      },
+      "fikardou-winery": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Fikardou z listy UNESCO. Wioska i wino. W środku zimy możliwy śnieg. Magia.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wioska Fikardou, obiekt UNESCO. Ok. 50 min od Nikozji.",
+        "parking": "Na miejscu."
+      },
+      "sygkrasi": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Kathikas. Pętla Akamas. Rano szlak, potem wino. Na obiad The Farmyard.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wioska Kathikas. Na pętli Akamas–Laona.",
+        "parking": "Na miejscu."
+      },
+      "syndesmos": {
+        "tastingInfo": "W sprawie wizyt zadzwoń wcześniej.",
+        "winterTip": "Spółdzielnia; napędzana przez społeczność. Zadzwoń wcześniej. Grupy mile widziane.",
+        "bestTimeToVisit": "Grudzień–marzec; spokojne popołudnie.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Agios Georgios, trasa Laona.",
+        "parking": "Na miejscu."
+      },
+      "petrides": {
+        "tastingInfo": "Tylko po umówieniu.",
+        "winterTip": "Zachodnie Pafos. Phinikas. Butikowa. Widok na dolinę. Rezerwuj wcześniej.",
+        "bestTimeToVisit": "Grudzień–marzec; ciche popołudnie.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Phinikas, zachodnia Laona.",
+        "parking": "Na miejscu."
+      },
+      "makrikontas": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Ciche Vouni. Rezerwuj wcześniej. Ukryte Krasochoria. W pobliżu Omodos i Lania.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wioska Vouni, Krasochoria. Ok. 40 min od Limassol.",
+        "parking": "Na miejscu."
+      },
+      "yiannis": {
+        "tastingInfo": "Po umówieniu.",
+        "winterTip": "Kilani jest cichsze niż Omodos. Rezerwuj na zimę. Połącz z Koilani i Vlassides.",
+        "bestTimeToVisit": "Grudzień–marzec.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Kilani, Krasochoria.",
+        "parking": "Na miejscu."
+      },
+      "dafermou": {
+        "tastingInfo": "Zwiedzanie i degustacje; rezerwuj wcześniej",
+        "winterTip": "Wzgórza Larnaki. Nowocześnie, rodzime szczepy. Zimą łagodnie. W pobliżu Lefkara.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wzgórza Larnaki. Ok. 25 min od Larnaki.",
+        "parking": "Na miejscu."
+      },
+      "nicolaides": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Wysoko położona Pitsilia. Zimą chłodniej. Sala degustacyjna rozgrzewa. W pobliżu Kykkos.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Pitsilia. Ok. 50 min od Limassol.",
+        "parking": "Na miejscu."
+      },
+      "solia": {
+        "tastingInfo": "Po umówieniu; zadzwoń wcześniej",
+        "winterTip": "Z dala od głównych tras. Kameralnie. Połącz z Agros lub Machairas.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wzgórza Nikozji. Ok. 45 min od stolicy.",
+        "parking": "Na miejscu."
       }
     },
     "attractions": {

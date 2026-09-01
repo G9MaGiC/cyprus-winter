@@ -3979,6 +3979,80 @@
         "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
         "transport": "Koilani, Krasochoria.",
         "parking": "Sur place."
+      },
+      "agios-theodoros": {
+        "tastingInfo": "Uniquement sur rendez-vous.",
+        "winterTip": "À l’écart de la boucle principale. Agios Theodoros. Mavro, xynisteri, vin doux. Appelez avant de venir.",
+        "bestTimeToVisit": "Déc. à mars.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Agios Theodoros, collines de Limassol.",
+        "parking": "Sur place."
+      },
+      "fikardou-winery": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Fikardou, classé UNESCO. Village et vin. Neige possible au cœur de l’hiver. Magique.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Fikardou, site UNESCO. À env. 50 min de Nicosie.",
+        "parking": "Sur place."
+      },
+      "sygkrasi": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Kathikas. Boucle de l’Akamas. Sentier le matin, vin ensuite. The Farmyard pour déjeuner.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Kathikas. Sur la boucle Akamas–Laona.",
+        "parking": "Sur place."
+      },
+      "syndesmos": {
+        "tastingInfo": "Appelez avant pour organiser une visite.",
+        "winterTip": "Coopérative portée par la communauté. Appelez avant de venir. Groupes bienvenus.",
+        "bestTimeToVisit": "Déc. à mars ; après-midi tranquille.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Agios Georgios, route de Laona.",
+        "parking": "Sur place."
+      },
+      "petrides": {
+        "tastingInfo": "Uniquement sur rendez-vous.",
+        "winterTip": "Ouest de Paphos. Phinikas. Boutique. Vue sur la vallée. Réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars ; après-midi calme.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Phinikas, Laona occidentale.",
+        "parking": "Sur place."
+      },
+      "makrikontas": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Vouni la tranquille. Réservez à l’avance. Krasochoria secrète. Omodos et Lania à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Vouni, Krasochoria. À env. 40 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "yiannis": {
+        "tastingInfo": "Sur rendez-vous.",
+        "winterTip": "Kilani est plus calme qu’Omodos. Réservez pour l’hiver. À combiner avec Koilani et Vlassides.",
+        "bestTimeToVisit": "Déc. à mars.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Kilani, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "dafermou": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Collines de Larnaca. Moderne, cépages indigènes. Hiver doux. Lefkara à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Collines de Larnaca. À env. 25 min de Larnaca.",
+        "parking": "Sur place."
+      },
+      "nicolaides": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Pitsilia d’altitude. Plus frais en hiver. La salle de dégustation vous réchauffe. Kykkos à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Pitsilia. À env. 50 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "solia": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir",
+        "winterTip": "À l’écart des grands axes. Intimiste. À combiner avec Agros ou Machairas.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Collines de Nicosie. À env. 45 min de la capitale.",
+        "parking": "Sur place."
       }
     },
     "attractions": {
