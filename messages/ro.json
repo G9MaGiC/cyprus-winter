@@ -4507,6 +4507,66 @@
       "loumata-ton-aeton": {
         "winterNotes": "Ghidul oficial indică aprilie–noiembrie; iarna nivelul râului crește — risc de alunecare la traversări. Liniar — aranjați transportul.",
         "localSecret": "Valea Vulturilor. Scurtă, dar cu caracter. Asociați-o cu Chrysovrysi sau Grădina Botanică Amiantos."
+      },
+      "livadi-trail": {
+        "winterNotes": "Ghidul oficial indică aprilie–octombrie; adesea senin când traseele mai înalte au zăpadă. Bun pentru familii.",
+        "localSecret": "Scurt și plăcut. Combinați cu locul de picnic Kampos tou Livadiou. Ideal pentru începători sau familii."
+      },
+      "stavros-tis-psokas": {
+        "winterNotes": "Răcoros și liniștit iarna. Drumul poate fi accidentat; verificați condițiile. Mai puțină lume decât pe traseele de coastă.",
+        "localSecret": "Muflonii se zăresc uneori dimineața devreme. Drumul forestier de acces are un aer de aventură; un 4x4 ajută pe vreme umedă."
+      },
+      "venetian-bridges": {
+        "winterNotes": "Pădure izolată. Aer de iarnă proaspăt; zile mai scurte — porniți devreme pentru ruta completă.",
+        "localSecret": "Secțiunea 2, de la Tzielefos la locul de picnic Pera Vasa, e clasica jumătate de zi — păstrați traversarea completă pentru o zi lungă de iarnă."
+      },
+      "chrysovrysi": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Liniar la vale — aranjați o preluare la Amiantos. Apă de izvor la start.",
+        "localSecret": "Umpleți bidoanele la Chrysovrysi. Încheiați lângă Grădina Botanică Amiantos / centrul de vizitatori al Geoparcului."
+      },
+      "moni-fylagra": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Porțiuni stâncoase — risc de alunecare. Liniar; socotiți 2 ore dacă vă întoarceți pe același drum.",
+        "localSecret": "Vizitați apoi Timios Stavros din Pelendri (UNESCO). Cramele din Krasochoria sunt aproape."
+      },
+      "aphrodite-cape-greco": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă. Tot anul, conform ghidului oficial. Nu e traseul Afroditei din Akamas.",
+        "localSecret": "Buclă scurtă care se leagă de Peșterile Marine și de Konnos–Agioi Anargyroi. Cea mai frumoasă lumină pe calcar: după-amiaza târziu."
+      },
+      "ezousa-valley": {
+        "winterNotes": "Dealurile blânde ale Paphosului. Valea poate fi noroioasă după ploaie. Centrul are expoziții și documentare.",
+        "localSecret": "Priveliștea de la biserica din stâncă e răsplata — porniți spre finalul dimineții, când lumina se deschide peste vale."
+      },
+      "machairas-forest": {
+        "winterNotes": "Drumeție de iarnă bună. Mănăstirea e la 870 m; îmbrăcați-vă gros. Adesea senin când Troodos are zăpadă.",
+        "localSecret": "Mănăstirea e piesa centrală. Potecă de pădure, aer de munte. Apoi Agros pentru loukoumi și produse din trandafiri."
+      },
+      "vretsia-roudias": {
+        "winterNotes": "Liniștit iarna. Pădure răcoroasă. Drumul spre Vretsia pare greșit — continuați.",
+        "localSecret": "Nu încercați dinspre Agios Ioannis — intrați prin Vretsia. Ruinele morii de apă de la jumătatea drumului sporesc senzația timpului."
+      },
+      "persephone": {
+        "winterNotes": "Flori sălbatice feb.–mar. în poieni. Poate fi polei după valurile de frig; verificați condițiile.",
+        "localSecret": "De la sfârșitul lui februarie la începutul lui martie: căutați ciclamene și anemone în poieni. Mai puțin aglomerat decât Artemis."
+      },
+      "kryos-potamos-loop": {
+        "winterNotes": "Noroios după ploaie. Purtați bocanci impermeabili. Debitul pârâului e puternic iarna.",
+        "localSecret": "Pârâul, mușchiul, pădurea. O mostră mai blândă a văii Caledonia. Apoi păstrăv la Psilo Dendro."
+      },
+      "e4-troodos-platres": {
+        "winterNotes": "Verificați condițiile; posibil zăpadă la altitudine. Adesea senin în decembrie sau martie.",
+        "localSecret": "O mostră din E4 complet. Drumeții în formă pot adăuga cascada Caledonia ca ocol. Platres pentru încălzire după."
+      },
+      "sea-caves-anargyroi": {
+        "winterNotes": "Iarna = mai puțină aglomerație. Blând. Plimbare de coastă ideală. Tot anul, conform ghidului oficial.",
+        "localSecret": "Nu ratați ienupărul protejat, bătut de vânt, după curba de la Cape Greco. Loc de picnic la vest de biserică."
+      },
+      "pissouromoutti": {
+        "winterNotes": "Drumeție de iarnă ideală. Porțiuni răcoroase, umbrite. Risc de alunecare după ploaie.",
+        "localSecret": "Priveliștile de pe vârf se deschid sus. Combinați cu ruta lungă Smigies pentru o dimineață întreagă. Prânz în Polis."
+      },
+      "chorteri": {
+        "winterNotes": "Răcoros la altitudine. Noroios după ploaie. Cafeneaua stației forestiere e deschisă sezonier.",
+        "localSecret": "Combinați cu o vizită la muflonii stației înainte de start — pădurea răsplătește plecarea devreme."
       }
     }
   }

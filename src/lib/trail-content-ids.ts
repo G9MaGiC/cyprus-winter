@@ -31,6 +31,22 @@ export const LOCALIZED_TRAIL_IDS: ReadonlySet<string> = new Set([
   "trooditissa-phini",
   "kannoures-agios-nikolaos",
   "loumata-ton-aeton",
+  // Slice 15 (batch 24) — next 15 by content richness
+  "livadi-trail",
+  "stavros-tis-psokas",
+  "venetian-bridges",
+  "chrysovrysi",
+  "moni-fylagra",
+  "aphrodite-cape-greco",
+  "ezousa-valley",
+  "machairas-forest",
+  "vretsia-roudias",
+  "persephone",
+  "kryos-potamos-loop",
+  "e4-troodos-platres",
+  "sea-caves-anargyroi",
+  "pissouromoutti",
+  "chorteri",
 ]);
 
 export const LOCALIZED_TRAIL_FIELDS = [

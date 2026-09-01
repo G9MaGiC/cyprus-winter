@@ -4507,6 +4507,66 @@
       "loumata-ton-aeton": {
         "winterNotes": "Oficjalny przewodnik podaje kwiecień–listopad; zimą rzeka przybiera — ryzyko poślizgu na przejściach. Trasa liniowa — zorganizuj transport.",
         "localSecret": "Dolina Orłów. Krótka, ale z charakterem. Połącz z Chrysovrysi lub Ogrodem Botanicznym Amiantos."
+      },
+      "livadi-trail": {
+        "winterNotes": "Oficjalny przewodnik podaje kwiecień–październik; często czysto, gdy wyższe szlaki są pod śniegiem. Dobry dla rodzin.",
+        "localSecret": "Krótki i przyjemny. Połącz z miejscem piknikowym Kampos tou Livadiou. Idealny na pierwszy raz i dla rodzin."
+      },
+      "stavros-tis-psokas": {
+        "winterNotes": "Zimą chłodno i cicho. Droga bywa wyboista; sprawdź warunki. Mniej ludzi niż na szlakach nadmorskich.",
+        "localSecret": "Wczesnym rankiem można czasem wypatrzyć muflony. Leśna droga dojazdowa to mała przygoda; w deszczu przydaje się 4x4."
+      },
+      "venetian-bridges": {
+        "winterNotes": "Odległy las. Rześkie zimowe powietrze; krótszy dzień — na pełną trasę startuj wcześnie.",
+        "localSecret": "Odcinek 2, od Tzielefos do miejsca piknikowego Pera Vasa, to klasyczne pół dnia — pełną trawersę zostaw na długi zimowy dzień."
+      },
+      "chrysovrysi": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Liniowa w dół — umów podwiezienie w Amiantos. Źródło na starcie.",
+        "localSecret": "Napełnij manierki przy Chrysovrysi. Zakończ przy Ogrodzie Botanicznym Amiantos / Centrum Geoparku."
+      },
+      "moni-fylagra": {
+        "winterNotes": "Oficjalny przewodnik podaje marzec–listopad. Skaliste odcinki — ryzyko poślizgu. Liniowa; licz 2 godziny, jeśli wracasz tą samą drogą.",
+        "localSecret": "Potem odwiedź Timios Stavros w Pelendri (UNESCO). Nieopodal winiarnie Krasochorii."
+      },
+      "aphrodite-cape-greco": {
+        "winterNotes": "Idealny zimowy spacer. Łagodnie. Według oficjalnego przewodnika przez cały rok. To nie szlak Afrodyty na Akamas.",
+        "localSecret": "Krótka pętla, która łączy się z Jaskiniami Morskimi i Konnos–Agioi Anargyroi. Najlepsze światło na wapieniu późnym popołudniem."
+      },
+      "ezousa-valley": {
+        "winterNotes": "Łagodne wzgórza Pafos. Dolina bywa błotnista po deszczu. Centrum ma wystawy i filmy dokumentalne.",
+        "localSecret": "Nagrodą jest widok ze skalnego kościoła — zaplanuj start późnym rankiem, gdy światło otwiera dolinę."
+      },
+      "machairas-forest": {
+        "winterNotes": "Dobra zimowa wędrówka. Klasztor na 870 m; ubierz się ciepło. Często czysto, gdy Troodos jest pod śniegiem.",
+        "localSecret": "Klasztor to serce trasy. Leśny szlak, górskie powietrze. Potem Agros na loukoumi i produkty różane."
+      },
+      "vretsia-roudias": {
+        "winterNotes": "Zimą cicho. Chłodny las. Droga do Vretsii wygląda jak pomyłka — jedź dalej.",
+        "localSecret": "Nie próbuj od Agios Ioannis — wejdź od Vretsii. Ruiny młyna wodnego w połowie drogi wzmacniają poczucie czasu."
+      },
+      "persephone": {
+        "winterNotes": "II–III dzikie kwiaty na polanach. Po mrozach bywa oblodzenie; sprawdź warunki.",
+        "localSecret": "Koniec lutego–początek marca: wypatruj cyklamenów i zawilców na polanach. Mniej tłoczno niż na Artemis."
+      },
+      "kryos-potamos-loop": {
+        "winterNotes": "Błoto po deszczu. Załóż wodoodporne buty. Zimowy nurt potoku jest silny.",
+        "localSecret": "Potok, mech, las. Łagodniejsza wersja doliny Caledonii. Potem pstrąg w Psilo Dendro."
+      },
+      "e4-troodos-platres": {
+        "winterNotes": "Sprawdź warunki; na wysokości możliwy śnieg. Często czysto w grudniu lub marcu.",
+        "localSecret": "Przedsmak całego E4. W dobrej formie można zahaczyć o wodospad Caledonia. Potem Platres na rozgrzewkę."
+      },
+      "sea-caves-anargyroi": {
+        "winterNotes": "Zima = mniej tłumów. Łagodnie. Idealny spacer wybrzeżem. Według oficjalnego przewodnika przez cały rok.",
+        "localSecret": "Nie przegap smaganego wiatrem chronionego jałowca za zakrętem na Cape Greco. Miejsce piknikowe na zachód od kościoła."
+      },
+      "pissouromoutti": {
+        "winterNotes": "Idealna zimowa wędrówka. Chłodne, zacienione odcinki. Po deszczu ryzyko poślizgu.",
+        "localSecret": "Na szczycie otwierają się widoki. Połącz z długą trasą Smigies na pełny poranek. Obiad w Polis."
+      },
+      "chorteri": {
+        "winterNotes": "Chłodno na wysokości. Błotniście po deszczu. Kawiarnia przy stacji leśnej czynna sezonowo.",
+        "localSecret": "Przed startem odwiedź muflony przy stacji — las nagradza wczesne wyjście."
       }
     }
   }

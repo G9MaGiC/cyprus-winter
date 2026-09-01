@@ -4507,6 +4507,66 @@
       "loumata-ton-aeton": {
         "winterNotes": "Der offizielle Führer nennt April–November; im Winter steigt der Fluss — Rutschgefahr an den Querungen. Streckenwanderung — Transport organisieren.",
         "localSecret": "Das Tal der Adler. Kurz, aber mit Charakter. Mit Chrysovrysi oder dem Botanischen Garten von Amiantos kombinieren."
+      },
+      "livadi-trail": {
+        "winterNotes": "Der offizielle Führer nennt April–Oktober; oft schneefrei, wenn höhere Wege Schnee haben. Gut für Familien.",
+        "localSecret": "Kurz und schön. Mit dem Picknickplatz Kampos tou Livadiou verbinden. Ideal für Einsteiger und Familien."
+      },
+      "stavros-tis-psokas": {
+        "winterNotes": "Kühl und still im Winter. Die Straße kann holprig sein; Bedingungen prüfen. Weniger Leute als an den Küstenwegen.",
+        "localSecret": "Frühmorgens werden manchmal Mufflons gesichtet. Die Forststraße hinein ist ein kleines Abenteuer; bei Nässe hilft ein 4x4."
+      },
+      "venetian-bridges": {
+        "winterNotes": "Abgelegener Wald. Klare Winterluft; kürzere Tage — für die volle Route früh starten.",
+        "localSecret": "Abschnitt 2 von Tzielefos zum Picknickplatz Pera Vasa ist der klassische halbe Tag — die volle Traverse für einen langen Wintertag aufheben."
+      },
+      "chrysovrysi": {
+        "winterNotes": "Der offizielle Führer nennt März–November. Bergab-Strecke — Mitfahrt in Amiantos organisieren. Quellwasser am Start.",
+        "localSecret": "Die Feldflaschen an der Chrysovrysi-Quelle füllen. Nahe dem Botanischen Garten von Amiantos / Geopark-Besucherzentrum enden."
+      },
+      "moni-fylagra": {
+        "winterNotes": "Der offizielle Führer nennt März–November. Felsige Abschnitte — Rutschgefahr. Linear; 2 Stunden einplanen, wenn es denselben Weg zurückgeht.",
+        "localSecret": "Danach Timios Stavros in Pelendri (UNESCO) besuchen. Die Krasochoria-Weingüter sind nah."
+      },
+      "aphrodite-cape-greco": {
+        "winterNotes": "Idealer Winterspaziergang. Mild. Laut offiziellem Führer ganzjährig. Nicht der Aphrodite-Weg im Akamas.",
+        "localSecret": "Kurze Runde, die sich mit den Meereshöhlen und Konnos–Agioi Anargyroi verknüpft. Das Licht auf dem Kalkstein ist am späten Nachmittag am schönsten."
+      },
+      "ezousa-valley": {
+        "winterNotes": "Milde Paphos-Hügel. Das Tal kann nach Regen schlammig sein. Das Zentrum zeigt Ausstellungen und Dokumentationen.",
+        "localSecret": "Der Blick von der Felsenkirche ist die Belohnung — einen späten Vormittagsstart planen, damit sich das Licht im Tal öffnet."
+      },
+      "machairas-forest": {
+        "winterNotes": "Gute Winterwanderung. Das Kloster liegt auf 870 m; warm anziehen. Oft klar, wenn Troodos Schnee hat.",
+        "localSecret": "Das Kloster ist das Herzstück. Waldweg, Bergluft. Danach Agros für Loukoumi und Rosenprodukte."
+      },
+      "vretsia-roudias": {
+        "winterNotes": "Still im Winter. Kühler Wald. Die Straße nach Vretsia fühlt sich falsch an — weiterfahren.",
+        "localSecret": "Nicht von Agios Ioannis aus versuchen — über Vretsia gehen. Die Wassermühlen-Ruinen auf halbem Weg verstärken das Gefühl von Zeit."
+      },
+      "persephone": {
+        "winterNotes": "Feb.–März Wildblumen auf den Lichtungen. Nach Kälteeinbrüchen kann es vereist sein; Bedingungen prüfen.",
+        "localSecret": "Ende Feb. bis Anfang März: auf den Lichtungen nach Alpenveilchen und Anemonen Ausschau halten. Weniger voll als Artemis."
+      },
+      "kryos-potamos-loop": {
+        "winterNotes": "Nach Regen schlammig. Wasserdichte Stiefel tragen. Der Bach führt im Winter viel Wasser.",
+        "localSecret": "Der Bach, das Moos, der Wald. Eine sanftere Kostprobe des Caledonia-Tals. Danach Forelle im Psilo Dendro."
+      },
+      "e4-troodos-platres": {
+        "winterNotes": "Bedingungen prüfen; in der Höhe Schnee möglich. Im Dezember oder März oft frei.",
+        "localSecret": "Eine Kostprobe des ganzen E4. Fitte Wanderer nehmen den Caledonia-Wasserfall als Abstecher mit. Platres wärmt danach."
+      },
+      "sea-caves-anargyroi": {
+        "winterNotes": "Winter = weniger Andrang. Mild. Ideale Küstenwanderung. Laut offiziellem Führer ganzjährig.",
+        "localSecret": "Den windgepeitschten, geschützten Wacholder nach der Cape-Greco-Abzweigung nicht verpassen. Picknickplatz westlich der Kirche."
+      },
+      "pissouromoutti": {
+        "winterNotes": "Ideale Winterwanderung. Kühle, schattige Abschnitte. Nach Regen Rutschgefahr.",
+        "localSecret": "Oben öffnet sich der Gipfelblick. Mit der langen Smigies-Runde zu einem vollen Vormittag verbinden. Mittagessen in Polis."
+      },
+      "chorteri": {
+        "winterNotes": "Kühl in der Höhe. Nach Regen schlammig. Das Café der Forststation öffnet saisonal.",
+        "localSecret": "Vor dem Start die Mufflons an der Station besuchen — der Wald belohnt den frühen Aufbruch."
       }
     }
   }

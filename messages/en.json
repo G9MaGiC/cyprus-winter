@@ -4507,6 +4507,66 @@
       "loumata-ton-aeton": {
         "winterNotes": "Official guide lists April–November; winter river levels rise—risk of slipping at crossings. Linear—arrange transport.",
         "localSecret": "Valley of the Eagles. Short but characterful. Pair with Chrysovrysi or Amiantos Botanical Garden."
+      },
+      "livadi-trail": {
+        "winterNotes": "Official guide lists April–October as most suitable; often clear when higher trails have snow. Good for families.",
+        "localSecret": "Short and sweet. Pair with Kampos tou Livadiou picnic site. Ideal for first-timers or families."
+      },
+      "stavros-tis-psokas": {
+        "winterNotes": "Cool and quiet in winter. Road can be rough; check conditions. Fewer people than coastal trails.",
+        "localSecret": "Mouflon sometimes spotted early morning. The forestry road in can be adventurous; 4x4 helps in wet weather."
+      },
+      "venetian-bridges": {
+        "winterNotes": "Remote forest. Crisp winter air; shorter daylight—start early for full route.",
+        "localSecret": "Section 2 past Tzielefos to Pera Vasa picnic site is the classic half-day—save the full traverse for a long winter daylight."
+      },
+      "chrysovrysi": {
+        "winterNotes": "Official guide lists March–November. Downhill linear—arrange a lift at Amiantos. Spring water at the start.",
+        "localSecret": "Fill canteens at Chrysovrysi. End near Amiantos Botanical Garden / Geopark Visitor Centre."
+      },
+      "moni-fylagra": {
+        "winterNotes": "Official guide lists March–November. Rocky sections—risk of slipping. Linear; allow 2 hours if returning the same way.",
+        "localSecret": "Visit Timios Stavros in Pelendri (UNESCO) after. Krasochoria wineries nearby."
+      },
+      "aphrodite-cape-greco": {
+        "winterNotes": "Ideal winter walk. Mild. Year-round per official guide. Not the Akamas Aphrodite Trail.",
+        "localSecret": "Short loop that stitches into Sea Caves and Konnos–Agioi Anargyroi. Best light late afternoon on limestone."
+      },
+      "ezousa-valley": {
+        "winterNotes": "Mild Paphos hills. Valley can be muddy after rain. Centre has exhibits and documentaries.",
+        "localSecret": "The view from the rock church is the payoff—plan a late-morning start so the valley light opens up."
+      },
+      "machairas-forest": {
+        "winterNotes": "Good winter hike. Monastery at 870m; wrap up. Often clear when Troodos has snow.",
+        "localSecret": "The monastery is the centrepiece. Forest trail, mountain air. Agros for loukoumi and rose products after."
+      },
+      "vretsia-roudias": {
+        "winterNotes": "Quiet in winter. Cool forest. Road to Vretsia can feel like the wrong way—keep going.",
+        "localSecret": "Do not attempt from Agios Ioannis—use Vretsia. The watermill ruins halfway add to the sense of time."
+      },
+      "persephone": {
+        "winterNotes": "Feb to Mar wildflowers in clearings. Can be icy after cold snaps; check conditions.",
+        "localSecret": "Late Feb to early Mar: look for cyclamen and anemones in the clearings. Less crowded than Artemis."
+      },
+      "kryos-potamos-loop": {
+        "winterNotes": "Muddy after rain. Wear waterproof boots. Winter flow in the stream is strong.",
+        "localSecret": "The stream, the moss, the forest. A gentler taste of the Caledonia valley. Psilo Dendro for trout after."
+      },
+      "e4-troodos-platres": {
+        "winterNotes": "Check conditions; snow possible at elevation. Often clear in December or March.",
+        "localSecret": "A taste of the full E4. Fit hikers can tag Caledonia Falls as a detour. Platres for post-hike warmth."
+      },
+      "sea-caves-anargyroi": {
+        "winterNotes": "Winter = fewer crowds. Mild. Ideal coastal walk. Year-round per official guide.",
+        "localSecret": "Don’t miss the windswept protected juniper after the Cape Greco turn. Picnic site west of the church."
+      },
+      "pissouromoutti": {
+        "winterNotes": "Ideal winter hike. Cool, shaded sections. Risk of slipping after rain.",
+        "localSecret": "The summit views open out at the top. Combine with Smigies long route for a full morning. Polis for lunch."
+      },
+      "chorteri": {
+        "winterNotes": "Cool at elevation. Can be muddy after rain. Forest station café open seasonally.",
+        "localSecret": "Combine with a mouflon visit at the station before you start—the forest rewards an early start."
       }
     }
   }
