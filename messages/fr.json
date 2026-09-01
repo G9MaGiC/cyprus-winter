@@ -4703,6 +4703,142 @@
       "agros-kato-mylos": {
         "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
         "localSecret": "Après la boucle, arrêtez-vous à Agros pour les loukoumia et les produits à la rose."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Marche d'hiver facile. Douce. Bien pour les familles.",
+        "localSecret": "Doux et calme. Oliveraies et lumière d'hiver. Les domaines des Krasochoria sont proches."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Marche d'hiver facile. Douce. Bien pour les familles. Barrage et forêt.",
+        "localSecret": "Un favori du dimanche. La vue sur le barrage s'ouvre en montant. Calme en hiver."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Vérifiez les conditions ; neige possible. Souvent dégagé en décembre ou en mars.",
+        "localSecret": "Plus calme qu'Artémis. Crête et forêt. Truite à Platres ensuite."
+      },
+      "horteri-extended": {
+        "winterNotes": "Frais en altitude. Souvent dégagé. Platres tout près pour se réchauffer.",
+        "localSecret": "Plus calme qu'Artémis. Plus qu'un dégourdissement de jambes. La truite de Platres récompense."
+      },
+      "agia-irini": {
+        "winterNotes": "Randonnée d'hiver idéale. Fraîche, ombragée. Sol rocheux.",
+        "localSecret": "L'une des plus belles gorges de Chypre. Passages étroits, plantes endémiques. Organisez un transport."
+      },
+      "mylikouri": {
+        "winterNotes": "Vif en hiver. Souvent dégagé. Truite à Kakopetria ensuite.",
+        "localSecret": "Un classique de la vallée de Solea. Forêt, ruisseaux. La truite de Kakopetria récompense."
+      },
+      "persephone-extended": {
+        "winterNotes": "Frais en altitude. Souvent dégagé. Platres à proximité.",
+        "localSecret": "Encore plus de Perséphone. Forêt, montagne. Truite à Platres ensuite."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Souvent dégagé. Doux. Bien pour les familles.",
+        "localSecret": "Chêne doré, pin noir. Court et doux. Idéal pour une mise en jambes."
+      },
+      "lefkara-path": {
+        "winterNotes": "Sentier descendant de niveau 3. Douces collines de Larnaca. Villages plus calmes en hiver.",
+        "localSecret": "Dentelle et pierre. De village en village. Poisson à Zygi ensuite."
+      },
+      "potamia-dam": {
+        "winterNotes": "Doux. Bonne échappée de la capitale. Vues sur le barrage et l'eau.",
+        "localSecret": "Barrage, oiseaux, eau. Échappée facile de la capitale. Loukoumia à Agros ensuite."
+      },
+      "kionia": {
+        "winterNotes": "Vif. Vérifiez les conditions. Platres à proximité.",
+        "localSecret": "Une solide demi-journée. Forêt et crêtes. Truite à Platres."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Vif. Frais en altitude. Platres ou Kakopetria ensuite.",
+        "localSecret": "Le nom raconte une histoire. Forêt, montagne. Caractère du Troodos."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Boue possible. Chaussures imperméables. La cascade récompense.",
+        "localSecret": "Un autre chemin vers les mêmes chutes. Forêt, ruisseau. Platres réchauffe ensuite."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Doux. Vues sur la côte. Vérifiez l'accès. Bellapais et St Hilarion à proximité.",
+        "localSecret": "Les Cinq Doigts. Côte et chaîne. L'abbaye de Bellapais en ligne de mire."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Flamants en hiver. Plat, facile. Idéal pour les ornithologues.",
+        "localSecret": "Flamants, sel, mosquée. Plat. L'hiver est la haute saison des oiseaux."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Marche d'hiver idéale. Forêt fraîche. La grotte est la récompense.",
+        "localSecret": "Choisi par les locaux, pas par les touristes. À combiner avec Karvounarka pour une boucle plus longue."
+      },
+      "panthea": {
+        "winterNotes": "Au mieux en hiver. Le temps couvert ajoute du drame.",
+        "localSecret": "Le refuge au départ est magique. Laissez des voitures aux deux extrémités pour une marche en aller simple."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Frais et agréable. Pas d'ombre par endroits — l'hiver est idéal.",
+        "localSecret": "Les domaines des Krasochoria sont proches. Ajoutez une dégustation pour une journée Limassol complète."
+      },
+      "agiasma": {
+        "winterNotes": "Douces collines de Paphos. Parfois boueux après la pluie.",
+        "localSecret": "Ajoutez une halte vin à Kathikas — les collines de Laona récompensent un départ en fin de matinée."
+      },
+      "arnies": {
+        "winterNotes": "Douces collines de Paphos. Niveau 3 par endroits ; comptez 1 à 2 heures.",
+        "localSecret": "Prenez la grande boucle si vous avez le temps — la source ne donne pas son nom au sentier pour rien."
+      },
+      "lemithou": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Revenez par la route — cela fait une journée en boucle avec Treis Elies."
+      },
+      "arsos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Les villages viticoles des Krasochoria sont proches — Arsos récompense la lenteur."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Niveau 3 — organisez un transport. Plus frais et plus calme en hiver.",
+        "localSecret": "Près du départ de Panagia tou Araka — églises UNESCO plus marche de crête."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Linéaire de niveau 3 — voiture aux deux extrémités ou retour par la route.",
+        "localSecret": "Reliez à la crête de Madari pour une journée Adelfi complète, si la forme suit."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Courte boucle de niveau 3 — exposée en été ; l'hiver est confortable.",
+        "localSecret": "Départ tranquille à Askas — à combiner avec Kakopetria ou l'arrière-pays de Machairas."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Niveau 3 — sections raides. L'hiver est plus frais et plus calme.",
+        "localSecret": "Le caractère de la Pitsilia en une courte boucle — avec un déjeuner à Kakopetria."
+      },
+      "gourri": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Cascade à l'arrivée — allez-y après la pluie pour le meilleur débit."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magie après la pluie — ruisseau et verdure. Traversées de rivière de niveau 3.",
+        "localSecret": "Prolongez vers Fikardou — un final dans un village UNESCO."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Faites d'abord le site, puis marchez vers le village pour le contexte."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Longue boucle ; emportez de l'eau. Douces collines de Larnaca.",
+        "localSecret": "Prévoyez une matinée entière — l'arrière-pays de Larnaca est au plus calme en hiver."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Avant la marche, un peu de shopping de dentelle à Pano Lefkara."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Douce marche côtière d'hiver. Organisez une récupération à Konnos.",
+        "localSecret": "Terminez à Konnos pour une baignade l'été ; l'hiver, c'est sentiers vides et air doux."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Un classique côtier doux toute l'année.",
+        "localSecret": "Enchaînez avec Profitis Ilias–Konnos pour une plus longue journée côtière à Protaras."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Marche côtière d'hiver idéale ; peu de monde.",
+        "localSecret": "Courte marche d'église en église — avec la boucle Konnos–Agioi Anargyroi."
       }
     }
   }

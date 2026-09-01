@@ -4703,6 +4703,142 @@
       "agros-kato-mylos": {
         "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
         "localSecret": "Stop for loukoumi and rose products in Agros after the loop."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Easy winter walk. Mild. Good for families.",
+        "localSecret": "Gentle, quiet. Olive groves and winter light. Krasochoria wineries nearby."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Easy winter walk. Mild. Good for families. Dam and forest.",
+        "localSecret": "A Sunday favourite. The dam views open up as you climb. Quiet in winter."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Check conditions; snow possible. Often clear in December or March.",
+        "localSecret": "Quieter than Artemis. Ridge and forest. Platres for trout after."
+      },
+      "horteri-extended": {
+        "winterNotes": "Cool at elevation. Often clear. Platres nearby for warmth.",
+        "localSecret": "Quieter than Artemis. More than a leg-stretcher. Platres trout rewards."
+      },
+      "agia-irini": {
+        "winterNotes": "Ideal winter hike. Cool, shaded. Rocky underfoot.",
+        "localSecret": "One of Cyprus's finest gorges. Narrow sections, endemic plants. Arrange transport."
+      },
+      "mylikouri": {
+        "winterNotes": "Crisp in winter. Often clear. Kakopetria for trout after.",
+        "localSecret": "Solea Valley classic. Forest, streams. Kakopetria trout rewards."
+      },
+      "persephone-extended": {
+        "winterNotes": "Cool at elevation. Often clear. Platres nearby.",
+        "localSecret": "More Persephone. Forest, mountain. Platres trout after."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Often clear. Gentle. Good for families.",
+        "localSecret": "Golden oak, black pine. Short and gentle. Ideal for a soft start."
+      },
+      "lefkara-path": {
+        "winterNotes": "Grade 3 descending trail. Mild Larnaca hills. Quieter villages in winter.",
+        "localSecret": "Lace and stone. Village to village. Zygi for fish after."
+      },
+      "potamia-dam": {
+        "winterNotes": "Mild. Good capital escape. Dam and water views.",
+        "localSecret": "Dam, birds, water. Easy capital escape. Agros for loukoumi after."
+      },
+      "kionia": {
+        "winterNotes": "Crisp. Check conditions. Platres nearby.",
+        "localSecret": "Solid half-day. Forest and ridges. Platres trout."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Crisp. Cool at elevation. Platres or Kakopetria after.",
+        "localSecret": "The name tells a story. Forest, mountain. Troodos character."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Muddy sections possible. Waterproof boots. Falls reward.",
+        "localSecret": "Different path to the same falls. Forest, stream. Platres warms you after."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Mild. Coast views. Check access. Bellapais and St Hilarion nearby.",
+        "localSecret": "Five Fingers. Coast and range. Bellapais abbey in view."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Flamingos in winter. Flat, easy. Ideal for birdwatchers.",
+        "localSecret": "Flamingos, salt, mosque. Flat. Winter is peak bird season."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Ideal winter walk. Cool forest. Cave is the reward.",
+        "localSecret": "Chosen by locals, not tourists. Combine with Karvounarka for a longer loop."
+      },
+      "panthea": {
+        "winterNotes": "Best in winter. Cloudy weather adds drama.",
+        "localSecret": "The refuge at the start is magical. Park cars at both ends for a one-way hike."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Cool and pleasant. No shade in sections—winter is ideal.",
+        "localSecret": "Krasochoria wineries nearby. Combine with a tasting for a full Limassol day."
+      },
+      "agiasma": {
+        "winterNotes": "Mild Paphos hills. Can be muddy after rain.",
+        "localSecret": "Pair with a Kathikas wine stop—the Laona hills reward a late-morning start."
+      },
+      "arnies": {
+        "winterNotes": "Mild Paphos hills. Grade 3 in places; allow 1–2 hours.",
+        "localSecret": "Take the long route if you have time—the spring names the trail for a reason."
+      },
+      "lemithou": {
+        "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
+        "localSecret": "Walk back via the road for a circular day with Treis Elies."
+      },
+      "arsos": {
+        "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
+        "localSecret": "Krasochoria wine villages nearby—Arsos rewards a slow pace."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Grade 3—arrange transport. Cooler and quieter in winter.",
+        "localSecret": "Near Panagia tou Araka trailhead—UNESCO churches plus ridge walking."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Grade 3 linear—car at both ends or return via road.",
+        "localSecret": "Link with madari-ridge for a full Adelfi day if fitness allows."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Grade 3 short loop—exposed in summer; winter is comfortable.",
+        "localSecret": "Quiet Askas start—combine with Kakopetria or Machairas hinterland."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Grade 3—steep sections. Winter is cooler and quieter.",
+        "localSecret": "Pitsilia character in a short loop—pair with Kakopetria lunch."
+      },
+      "gourri": {
+        "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
+        "localSecret": "Waterfall at the end—go after rain for best flow."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magic after rain—stream and greenery. Grade 3 river crossings.",
+        "localSecret": "Extend toward Fikardou for a UNESCO village finish."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
+        "localSecret": "Do the site first, then walk toward the village for context."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Long loop; carry water. Mild Larnaca hills.",
+        "localSecret": "Allow a full morning—Larnaca hinterland at its calmest in winter."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Official outside-forest trail. Winter is a good season—cooler and quieter.",
+        "localSecret": "Combine with lace shopping in Pano Lefkara before the walk."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Mild coastal winter walk. Arrange pickup at Konnos.",
+        "localSecret": "End at Konnos for a swim in summer; winter means empty trails and mild air."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Year-round mild coastal classic.",
+        "localSecret": "Stitch into Profitis Ilias–Konnos for a longer Protaras coastal day."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Ideal winter coastal walk; few crowds.",
+        "localSecret": "Short church-to-church walk—pair with Konnos–Agioi Anargyroi loop."
       }
     }
   }

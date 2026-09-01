@@ -4703,6 +4703,142 @@
       "agros-kato-mylos": {
         "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
         "localSecret": "După buclă, opriți-vă în Agros pentru loukoumi și produse din trandafiri."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Plimbare de iarnă ușoară. Blândă. Bună pentru familii.",
+        "localSecret": "Blând, liniștit. Livezi de măslini și lumină de iarnă. Cramele Krasochoria sunt aproape."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Plimbare de iarnă ușoară. Blândă. Bună pentru familii. Baraj și pădure.",
+        "localSecret": "Un favorit de duminică. Priveliștea barajului se deschide pe măsură ce urcați. Liniștit iarna."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Verificați condițiile; posibil zăpadă. Adesea senin în decembrie sau martie.",
+        "localSecret": "Mai liniștit decât Artemis. Creastă și pădure. Apoi păstrăv în Platres."
+      },
+      "horteri-extended": {
+        "winterNotes": "Răcoros la altitudine. Adesea senin. Platres e aproape pentru încălzire.",
+        "localSecret": "Mai liniștit decât Artemis. Mai mult decât o dezmorțire. Păstrăvul din Platres răsplătește."
+      },
+      "agia-irini": {
+        "winterNotes": "Drumeție de iarnă ideală. Răcoroasă, umbrită. Teren stâncos.",
+        "localSecret": "Unul dintre cele mai frumoase defilee ale Ciprului. Pasaje înguste, plante endemice. Aranjați transportul."
+      },
+      "mylikouri": {
+        "winterNotes": "Proaspăt iarna. Adesea senin. Apoi păstrăv în Kakopetria.",
+        "localSecret": "Un clasic al văii Solea. Pădure, pâraie. Păstrăvul din Kakopetria răsplătește."
+      },
+      "persephone-extended": {
+        "winterNotes": "Răcoros la altitudine. Adesea senin. Platres în apropiere.",
+        "localSecret": "Mai multă Persefona. Pădure, munte. Apoi păstrăv în Platres."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Adesea senin. Blând. Bun pentru familii.",
+        "localSecret": "Stejar auriu, pin negru. Scurt și blând. Ideal pentru un început lin."
+      },
+      "lefkara-path": {
+        "winterNotes": "Traseu descendent de gradul 3. Dealurile blânde ale Larnacăi. Sate mai liniștite iarna.",
+        "localSecret": "Dantelă și piatră. Din sat în sat. Apoi pește la Zygi."
+      },
+      "potamia-dam": {
+        "winterNotes": "Blând. O evadare bună din capitală. Priveliști cu baraj și apă.",
+        "localSecret": "Baraj, păsări, apă. Evadare ușoară din capitală. Apoi loukoumi în Agros."
+      },
+      "kionia": {
+        "winterNotes": "Proaspăt. Verificați condițiile. Platres în apropiere.",
+        "localSecret": "O jumătate de zi solidă. Pădure și creste. Păstrăv în Platres."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Proaspăt. Răcoros la altitudine. Apoi Platres sau Kakopetria.",
+        "localSecret": "Numele spune o poveste. Pădure, munte. Caracter de Troodos."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Posibil noroi. Bocanci impermeabili. Cascada răsplătește.",
+        "localSecret": "Alt drum spre aceleași cascade. Pădure, pârâu. Platres încălzește după."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Blând. Priveliști spre coastă. Verificați accesul. Bellapais și St Hilarion în apropiere.",
+        "localSecret": "Cele Cinci Degete. Coastă și lanț muntos. Abația Bellapais în raza privirii."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Flamingo iarna. Plat, ușor. Ideal pentru ornitologi.",
+        "localSecret": "Flamingo, sare, moschee. Plat. Iarna e vârful sezonului păsărilor."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Plimbare de iarnă ideală. Pădure răcoroasă. Peștera e răsplata.",
+        "localSecret": "Ales de localnici, nu de turiști. Combinați cu Karvounarka pentru o buclă mai lungă."
+      },
+      "panthea": {
+        "winterNotes": "Cel mai bine iarna. Vremea înnorată adaugă dramatism.",
+        "localSecret": "Refugiul de la start e magic. Lăsați mașini la ambele capete pentru un traseu într-un singur sens."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Răcoros și plăcut. Fără umbră pe porțiuni — iarna e ideală.",
+        "localSecret": "Cramele Krasochoria sunt aproape. Combinați cu o degustare pentru o zi Limassol completă."
+      },
+      "agiasma": {
+        "winterNotes": "Dealurile blânde ale Paphosului. Poate fi noroios după ploaie.",
+        "localSecret": "Combinați cu o oprire la vin în Kathikas — dealurile Laona răsplătesc un start spre prânz."
+      },
+      "arnies": {
+        "winterNotes": "Dealurile blânde ale Paphosului. Gradul 3 pe alocuri; socotiți 1–2 ore.",
+        "localSecret": "Luați ruta lungă dacă aveți timp — izvorul nu dă numele traseului degeaba."
+      },
+      "lemithou": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Întoarceți-vă pe șosea — iese o zi circulară cu Treis Elies."
+      },
+      "arsos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Satele viticole Krasochoria sunt aproape — Arsos răsplătește pasul lent."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Gradul 3 — aranjați transportul. Mai răcoros și mai liniștit iarna.",
+        "localSecret": "Aproape de startul Panagia tou Araka — biserici UNESCO plus mers pe creastă."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Liniar de gradul 3 — mașină la ambele capete sau întoarcere pe șosea.",
+        "localSecret": "Legați cu creasta Madari pentru o zi Adelfi completă, dacă vă ține condiția."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Buclă scurtă de gradul 3 — expusă vara; iarna e confortabilă.",
+        "localSecret": "Start liniștit din Askas — combinați cu Kakopetria sau hinterlandul Machairas."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Gradul 3 — porțiuni abrupte. Iarna e mai răcoroasă și mai liniștită.",
+        "localSecret": "Caracter de Pitsilia într-o buclă scurtă — combinați cu un prânz în Kakopetria."
+      },
+      "gourri": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Cascadă la final — mergeți după ploaie pentru cel mai bun debit."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magie după ploaie — pârâu și verdeață. Traversări de râu de gradul 3.",
+        "localSecret": "Prelungiți spre Fikardou — un final într-un sat UNESCO."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Întâi situl, apoi mergeți spre sat — pentru context."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Buclă lungă; luați apă. Dealurile blânde ale Larnacăi.",
+        "localSecret": "Socotiți o dimineață întreagă — hinterlandul Larnacăi e cel mai calm iarna."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Înainte de plimbare, cumpărături de dantelă în Pano Lefkara."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Plimbare de coastă blândă iarna. Aranjați preluarea la Konnos.",
+        "localSecret": "Încheiați la Konnos cu o baie vara; iarna înseamnă poteci goale și aer blând."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Un clasic de coastă blând tot anul.",
+        "localSecret": "Legați cu Profitis Ilias–Konnos pentru o zi de coastă mai lungă în Protaras."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Plimbare de coastă ideală iarna; puțină lume.",
+        "localSecret": "Scurtă plimbare din biserică în biserică — combinați cu bucla Konnos–Agioi Anargyroi."
       }
     }
   }

@@ -4703,6 +4703,142 @@
       "agros-kato-mylos": {
         "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
         "localSecret": "Po pętli zatrzymaj się w Agros na loukoumi i produkty różane."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Łatwy zimowy spacer. Łagodnie. Dobry dla rodzin.",
+        "localSecret": "Łagodnie, cicho. Gaje oliwne i zimowe światło. Nieopodal winiarnie Krasochorii."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Łatwy zimowy spacer. Łagodnie. Dobry dla rodzin. Zapora i las.",
+        "localSecret": "Niedzielny faworyt. Widok na zaporę otwiera się przy podejściu. Zimą cicho."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Sprawdź warunki; możliwy śnieg. Często czysto w grudniu lub marcu.",
+        "localSecret": "Ciszej niż na Artemis. Grań i las. Potem pstrąg w Platres."
+      },
+      "horteri-extended": {
+        "winterNotes": "Chłodno na wysokości. Często czysto. Platres blisko na rozgrzewkę.",
+        "localSecret": "Ciszej niż na Artemis. Więcej niż rozprostowanie nóg. Pstrąg z Platres nagradza."
+      },
+      "agia-irini": {
+        "winterNotes": "Idealna zimowa wędrówka. Chłodno, cieniście. Skalisto pod nogami.",
+        "localSecret": "Jeden z najpiękniejszych wąwozów Cypru. Wąskie przejścia, rośliny endemiczne. Zorganizuj transport."
+      },
+      "mylikouri": {
+        "winterNotes": "Rześko zimą. Często czysto. Potem pstrąg w Kakopetrii.",
+        "localSecret": "Klasyk doliny Solea. Las, strumienie. Pstrąg z Kakopetrii nagradza."
+      },
+      "persephone-extended": {
+        "winterNotes": "Chłodno na wysokości. Często czysto. Platres blisko.",
+        "localSecret": "Więcej Persefony. Las, góry. Potem pstrąg w Platres."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Często czysto. Łagodnie. Dobre dla rodzin.",
+        "localSecret": "Dąb złocisty, sosna czarna. Krótko i łagodnie. Idealne na miękki początek."
+      },
+      "lefkara-path": {
+        "winterNotes": "Zejściowy szlak w skali 3. Łagodne wzgórza Larnaki. Zimą cichsze wioski.",
+        "localSecret": "Koronka i kamień. Od wioski do wioski. Potem ryba w Zygi."
+      },
+      "potamia-dam": {
+        "winterNotes": "Łagodnie. Dobra ucieczka ze stolicy. Widoki na zaporę i wodę.",
+        "localSecret": "Zapora, ptaki, woda. Łatwa ucieczka ze stolicy. Potem loukoumi w Agros."
+      },
+      "kionia": {
+        "winterNotes": "Rześko. Sprawdź warunki. Platres blisko.",
+        "localSecret": "Solidne pół dnia. Las i granie. Pstrąg w Platres."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Rześko. Chłodno na wysokości. Potem Platres lub Kakopetria.",
+        "localSecret": "Nazwa opowiada historię. Las, góry. Charakter Troodos."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Możliwe błoto. Wodoodporne buty. Wodospad nagradza.",
+        "localSecret": "Inna ścieżka do tych samych wodospadów. Las, strumień. Platres rozgrzewa potem."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Łagodnie. Widoki na wybrzeże. Sprawdź dostęp. Nieopodal Bellapais i St Hilarion.",
+        "localSecret": "Pięć Palców. Wybrzeże i pasmo. Opactwo Bellapais w zasięgu wzroku."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Zimą flamingi. Płasko, łatwo. Idealne dla obserwatorów ptaków.",
+        "localSecret": "Flamingi, sól, meczet. Płasko. Zima to szczyt sezonu ptasiego."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Idealny zimowy spacer. Chłodny las. Nagrodą jest jaskinia.",
+        "localSecret": "Wybór miejscowych, nie turystów. Połącz z Karvounarką na dłuższą pętlę."
+      },
+      "panthea": {
+        "winterNotes": "Najlepiej zimą. Pochmurna pogoda dodaje dramatyzmu.",
+        "localSecret": "Schronisko na starcie jest magiczne. Zostaw auta na obu końcach na wędrówkę w jedną stronę."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Chłodno i przyjemnie. Miejscami brak cienia — zima jest idealna.",
+        "localSecret": "Nieopodal winiarnie Krasochorii. Połącz z degustacją na pełny dzień w Limassol."
+      },
+      "agiasma": {
+        "winterNotes": "Łagodne wzgórza Pafos. Po deszczu bywa błotniście.",
+        "localSecret": "Połącz z winnym przystankiem w Kathikas — wzgórza Laony nagradzają start późnym rankiem."
+      },
+      "arnies": {
+        "winterNotes": "Łagodne wzgórza Pafos. Miejscami skala 3; licz 1–2 godziny.",
+        "localSecret": "Wybierz dłuższą trasę, jeśli masz czas — źródło nie bez powodu daje szlakowi nazwę."
+      },
+      "lemithou": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Wróć drogą — wyjdzie okrężny dzień z Treis Elies."
+      },
+      "arsos": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Nieopodal winne wioski Krasochorii — Arsos nagradza powolne tempo."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Skala 3 — zorganizuj transport. Zimą chłodniej i ciszej.",
+        "localSecret": "Blisko startu Panagia tou Araka — kościoły UNESCO plus wędrówka granią."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Liniowa w skali 3 — auto na obu końcach albo powrót drogą.",
+        "localSecret": "Połącz z granią Madari na pełny dzień w Adelfi, jeśli starczy sił."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Krótka pętla w skali 3 — latem odsłonięta; zimą komfortowo.",
+        "localSecret": "Cichy start w Askas — połącz z Kakopetrią lub zapleczem Machairas."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Skala 3 — strome odcinki. Zimą chłodniej i ciszej.",
+        "localSecret": "Charakter Pitsilii w krótkiej pętli — połącz z obiadem w Kakopetrii."
+      },
+      "gourri": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Wodospad na końcu — idź po deszczu, gdy nurt najlepszy."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magia po deszczu — strumień i zieleń. Przejścia przez rzekę w skali 3.",
+        "localSecret": "Przedłuż ku Fikardou — finał w wiosce UNESCO."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Najpierw stanowisko archeologiczne, potem spacer ku wiosce — dla kontekstu."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Długa pętla; weź wodę. Łagodne wzgórza Larnaki.",
+        "localSecret": "Licz pełny poranek — zaplecze Larnaki zimą jest najspokojniejsze."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Oficjalny szlak poza lasem. Zima to dobra pora — chłodniej i ciszej.",
+        "localSecret": "Przed spacerem połącz z zakupami koronek w Pano Lefkara."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Łagodny nadmorski zimowy spacer. Umów odbiór w Konnos.",
+        "localSecret": "Latem zakończ kąpielą w Konnos; zima to puste szlaki i łagodne powietrze."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Całoroczny łagodny klasyk wybrzeża.",
+        "localSecret": "Zszyj z Profitis Ilias–Konnos na dłuższy nadmorski dzień w Protaras."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Idealny zimowy spacer wybrzeżem; mało ludzi.",
+        "localSecret": "Krótki spacer od kościoła do kościoła — połącz z pętlą Konnos–Agioi Anargyroi."
       }
     }
   }

@@ -4703,6 +4703,142 @@
       "agros-kato-mylos": {
         "winterNotes": "Offizieller Weg außerhalb des Waldes. Der Winter ist eine gute Saison — kühler und ruhiger.",
         "localSecret": "Nach der Runde in Agros für Loukoumi und Rosenprodukte anhalten."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Leichter Winterspaziergang. Mild. Gut für Familien.",
+        "localSecret": "Sanft und still. Olivenhaine und Winterlicht. Die Krasochoria-Weingüter sind nah."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Leichter Winterspaziergang. Mild. Gut für Familien. Damm und Wald.",
+        "localSecret": "Ein Sonntagsliebling. Der Blick auf den Damm öffnet sich beim Aufstieg. Still im Winter."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Bedingungen prüfen; Schnee möglich. Im Dezember oder März oft frei.",
+        "localSecret": "Ruhiger als Artemis. Grat und Wald. Danach Forelle in Platres."
+      },
+      "horteri-extended": {
+        "winterNotes": "Kühl in der Höhe. Oft klar. Platres wärmt in der Nähe.",
+        "localSecret": "Ruhiger als Artemis. Mehr als ein Beinevertreten. Die Platres-Forelle belohnt."
+      },
+      "agia-irini": {
+        "winterNotes": "Ideale Winterwanderung. Kühl, schattig. Felsiger Untergrund.",
+        "localSecret": "Eine der schönsten Schluchten Zyperns. Enge Passagen, endemische Pflanzen. Transport organisieren."
+      },
+      "mylikouri": {
+        "winterNotes": "Frisch im Winter. Oft klar. Danach Forelle in Kakopetria.",
+        "localSecret": "Ein Klassiker des Solea-Tals. Wald, Bäche. Die Kakopetria-Forelle belohnt."
+      },
+      "persephone-extended": {
+        "winterNotes": "Kühl in der Höhe. Oft klar. Platres in der Nähe.",
+        "localSecret": "Mehr Persephone. Wald, Berg. Danach Forelle in Platres."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Oft klar. Sanft. Gut für Familien.",
+        "localSecret": "Goldeiche, Schwarzkiefer. Kurz und sanft. Ideal für einen weichen Einstieg."
+      },
+      "lefkara-path": {
+        "winterNotes": "Absteigender Weg in Grad 3. Milde Larnaka-Hügel. Im Winter stillere Dörfer.",
+        "localSecret": "Spitze und Stein. Von Dorf zu Dorf. Danach Fisch in Zygi."
+      },
+      "potamia-dam": {
+        "winterNotes": "Mild. Gute Flucht aus der Hauptstadt. Damm- und Wasserblicke.",
+        "localSecret": "Damm, Vögel, Wasser. Leichte Flucht aus der Hauptstadt. Danach Loukoumi in Agros."
+      },
+      "kionia": {
+        "winterNotes": "Frisch. Bedingungen prüfen. Platres in der Nähe.",
+        "localSecret": "Ein solider halber Tag. Wald und Grate. Forelle in Platres."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Frisch. Kühl in der Höhe. Danach Platres oder Kakopetria.",
+        "localSecret": "Der Name erzählt eine Geschichte. Wald, Berg. Troodos-Charakter."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Schlamm möglich. Wasserdichte Stiefel. Der Wasserfall belohnt.",
+        "localSecret": "Ein anderer Weg zu denselben Fällen. Wald, Bach. Platres wärmt danach."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Mild. Küstenblicke. Zugang prüfen. Bellapais und St. Hilarion in der Nähe.",
+        "localSecret": "Die fünf Finger. Küste und Gebirgszug. Die Abtei von Bellapais im Blick."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Im Winter Flamingos. Flach, leicht. Ideal für Vogelbeobachter.",
+        "localSecret": "Flamingos, Salz, Moschee. Flach. Der Winter ist die beste Vogelsaison."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Idealer Winterspaziergang. Kühler Wald. Die Höhle ist die Belohnung.",
+        "localSecret": "Von Einheimischen gewählt, nicht von Touristen. Mit Karvounarka zu einer längeren Runde verbinden."
+      },
+      "panthea": {
+        "winterNotes": "Am besten im Winter. Bewölktes Wetter sorgt für Dramatik.",
+        "localSecret": "Die Schutzhütte am Start ist magisch. Autos an beiden Enden abstellen für eine One-Way-Tour."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Kühl und angenehm. Abschnittsweise kein Schatten — der Winter ist ideal.",
+        "localSecret": "Die Krasochoria-Weingüter sind nah. Mit einer Verkostung zu einem vollen Limassol-Tag verbinden."
+      },
+      "agiasma": {
+        "winterNotes": "Milde Paphos-Hügel. Nach Regen mitunter schlammig.",
+        "localSecret": "Mit einem Weinstopp in Kathikas verbinden — die Laona-Hügel belohnen einen späten Vormittagsstart."
+      },
+      "arnies": {
+        "winterNotes": "Milde Paphos-Hügel. Stellenweise Grad 3; 1–2 Stunden einplanen.",
+        "localSecret": "Die lange Route nehmen, wenn Zeit ist — die Quelle gibt dem Weg nicht umsonst den Namen."
+      },
+      "lemithou": {
+        "winterNotes": "Offizieller Weg außerhalb des Waldes. Der Winter ist eine gute Saison — kühler und ruhiger.",
+        "localSecret": "Über die Straße zurückgehen — so wird ein Rundtag mit Treis Elies daraus."
+      },
+      "arsos": {
+        "winterNotes": "Offizieller Weg außerhalb des Waldes. Der Winter ist eine gute Saison — kühler und ruhiger.",
+        "localSecret": "Die Krasochoria-Weindörfer sind nah — Arsos belohnt ein langsames Tempo."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Grad 3 — Transport organisieren. Im Winter kühler und ruhiger.",
+        "localSecret": "Nahe dem Startpunkt der Panagia tou Araka — UNESCO-Kirchen plus Gratwandern."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Linear in Grad 3 — Auto an beiden Enden oder Rückweg über die Straße.",
+        "localSecret": "Mit dem Madari-Grat zu einem vollen Adelfi-Tag verbinden, wenn die Kondition reicht."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Kurze Grad-3-Runde — im Sommer exponiert; der Winter ist angenehm.",
+        "localSecret": "Stiller Start in Askas — mit Kakopetria oder dem Machairas-Hinterland verbinden."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Grad 3 — steile Abschnitte. Der Winter ist kühler und ruhiger.",
+        "localSecret": "Pitsilia-Charakter in einer kurzen Runde — mit einem Mittagessen in Kakopetria verbinden."
+      },
+      "gourri": {
+        "winterNotes": "Offizieller Weg außerhalb des Waldes. Der Winter ist eine gute Saison — kühler und ruhiger.",
+        "localSecret": "Wasserfall am Ende — nach Regen hingehen, dann ist der Fluss am schönsten."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magie nach Regen — Bach und Grün. Flussquerungen in Grad 3.",
+        "localSecret": "Richtung Fikardou verlängern — ein Finale im UNESCO-Dorf."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Offizieller Weg außerhalb des Waldes. Der Winter ist eine gute Saison — kühler und ruhiger.",
+        "localSecret": "Erst die Ausgrabungsstätte, dann Richtung Dorf gehen — für den Zusammenhang."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Lange Runde; Wasser mitnehmen. Milde Larnaka-Hügel.",
+        "localSecret": "Einen vollen Vormittag einplanen — das Larnaka-Hinterland ist im Winter am stillsten."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Offizieller Weg außerhalb des Waldes. Der Winter ist eine gute Saison — kühler und ruhiger.",
+        "localSecret": "Vor dem Spaziergang mit Spitzen-Einkauf in Pano Lefkara verbinden."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Milder Küsten-Winterspaziergang. Abholung an der Konnos-Bucht organisieren.",
+        "localSecret": "Im Sommer zum Baden an der Konnos-Bucht enden; im Winter heißt es leere Wege und milde Luft."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Ein ganzjährig milder Küstenklassiker.",
+        "localSecret": "Mit Profitis Ilias–Konnos zu einem längeren Protaras-Küstentag verknüpfen."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Idealer Küsten-Winterspaziergang; wenig Andrang.",
+        "localSecret": "Kurzer Weg von Kirche zu Kirche — mit der Konnos–Agioi-Anargyroi-Runde verbinden."
       }
     }
   }
