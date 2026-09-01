@@ -44,6 +44,17 @@ export const LOCALIZED_WINERY_IDS: ReadonlySet<string> = new Set([
   "ambeli",
   "lambouri",
   "nichteri",
+  // Slice 10 (batch 19) — next 10 by content richness
+  "sodap",
+  "iona",
+  "tsangarides",
+  "savvas",
+  "monagri",
+  "silikou-museum",
+  "hadjicharalambous",
+  "semeli",
+  "zambeli",
+  "krasas",
 ]);
 
 export const LOCALIZED_WINERY_FIELDS = [

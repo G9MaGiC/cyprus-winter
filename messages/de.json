@@ -3910,6 +3910,75 @@
         "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
         "transport": "Agios Dimitrianos, westliche Laona-Route.",
         "parking": "Vor Ort."
+      },
+      "sodap": {
+        "tastingInfo": "Touren und Verkostungen; vorab reservieren",
+        "winterTip": "Historische Genossenschaft. Industrieller Maßstab, Geschichte mit Erbe. Leicht vom Zentrum Limassols zu erreichen.",
+        "openingHours": "Nach Vereinbarung; Touren vorab reservieren. Nov.–März vorher anrufen.",
+        "transport": "Uferpromenade von Limassol. Zentral.",
+        "parking": "Vor Ort."
+      },
+      "iona": {
+        "tastingInfo": "Pairings 15–25 €; vorab reservieren.",
+        "winterTip": "Das Wein-und-Käse-Pairing reservieren. Troodos-Blick aus dem Verkostungsraum.",
+        "bestTimeToVisit": "Dez. bis März; mit einem Mittagessen in Koilani verbinden.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Vor Ort."
+      },
+      "tsangarides": {
+        "tastingInfo": "Verkostungen nach Vereinbarung. Mo–Sa 9:00–17:00; So geschlossen.",
+        "winterTip": "Der steingebaute Verkostungsraum ist gemütlich. Laona-Route — mit Vouni Panayia verbinden.",
+        "bestTimeToVisit": "Dez. bis März, vorab reservieren.",
+        "openingHours": "Mo–Sa 9:00–17:00",
+        "transport": "Lemona, Paphos 8545.",
+        "parking": "Vor Ort."
+      },
+      "savvas": {
+        "tastingInfo": "Nach Vereinbarung.",
+        "winterTip": "Mit dem Commandaria-Museum in Silikou verbinden. Steinkeller, Jahrhunderte an Tradition.",
+        "bestTimeToVisit": "Dez. bis März; vorher anrufen.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Silikou 650 m, Commandaria-Zone.",
+        "parking": "Vor Ort."
+      },
+      "monagri": {
+        "tastingInfo": "Vorher anrufen; Gruppentouren willkommen.",
+        "winterTip": "Monagri-Genossenschaft. Commandaria-Zone. Kellertouren. Gruppen willkommen.",
+        "bestTimeToVisit": "Dez. bis März; vorher anrufen.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Monagri, Commandaria-Zone.",
+        "parking": "Vor Ort."
+      },
+      "silikou-museum": {
+        "tastingInfo": "Öffnungszeiten im Dorf erfragen; Verkostungen zeitweise möglich",
+        "winterTip": "Vorher anrufen. Silikou liegt abseits der Hauptrunde; weniger Besucher, mehr Raum zum Durchatmen. Mit dem Weingut Savvas zu einem vollen Commandaria-Tag verbinden."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "Nach Vereinbarung; Mitmach-Erlebnisse möglich",
+        "winterTip": "Dorf Stroumbi, Paphos-Hügel. Das Mitmach-Erlebnis buchen, wenn Zeit ist. Teil der Laona-Route; mit Fikardos oder Tsangarides verbinden."
+      },
+      "semeli": {
+        "tastingInfo": "Verkostungen nach Vereinbarung",
+        "winterTip": "Das nächstgelegene Qualitätsweingut bei Nikosia. Mit Lefkara oder Machairas verbinden. Vorab reservieren.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Ca. 40 Min. von Nikosia. Ausläufer der Mesaoria.",
+        "parking": "Vor Ort."
+      },
+      "zambeli": {
+        "tastingInfo": "Nach Vereinbarung",
+        "winterTip": "Stiller Favorit am Limassol-Korridor. Heizstrahler im Winter. Kolossi und Kourion in der Nähe.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Limassol-Korridor. Ca. 20 Min. von Limassol.",
+        "parking": "Vor Ort."
+      },
+      "krasas": {
+        "tastingInfo": "Verkostungen 10 €; vorab reservieren.",
+        "winterTip": "Vierte Generation in Koilani. Historischer Keller. Vorab reservieren.",
+        "bestTimeToVisit": "Dez. bis März; mit der Koilani-Runde verbinden.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Vor Ort."
       }
     },
     "attractions": {

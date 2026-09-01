@@ -3910,6 +3910,75 @@
         "openingHours": "Cu programare; sunați înainte nov.–mar.",
         "transport": "Agios Dimitrianos, ruta vestică Laona.",
         "parking": "La fața locului."
+      },
+      "sodap": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Cooperativă istorică. Scară industrială, poveste de patrimoniu. Ușor de ajuns din centrul Limassolului.",
+        "openingHours": "Cu programare; rezervați tururile din timp. Nov.–mar. sunați înainte.",
+        "transport": "Faleza Limassol. Central.",
+        "parking": "La fața locului."
+      },
+      "iona": {
+        "tastingInfo": "Asocieri 15–25 €; rezervați din timp.",
+        "winterTip": "Rezervați asocierea vin și brânză. Priveliști spre Troodos din sala de degustare.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu un prânz în Koilani.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "tsangarides": {
+        "tastingInfo": "Degustări cu programare. Lun.–sâm. 9:00–17:00; duminică închis.",
+        "winterTip": "Sala de degustare din piatră e primitoare. Ruta Laona — combinați cu Vouni Panayia.",
+        "bestTimeToVisit": "Dec.–mar., rezervați din timp.",
+        "openingHours": "Lun.–sâm. 9:00–17:00",
+        "transport": "Lemona, Paphos 8545.",
+        "parking": "La fața locului."
+      },
+      "savvas": {
+        "tastingInfo": "Cu programare.",
+        "winterTip": "Combinați cu Muzeul Commandaria din Silikou. Pivniță de piatră, secole de tradiție.",
+        "bestTimeToVisit": "Dec.–mar.; sunați înainte.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Silikou 650 m, zona Commandaria.",
+        "parking": "La fața locului."
+      },
+      "monagri": {
+        "tastingInfo": "Sunați înainte; tururile de grup sunt binevenite.",
+        "winterTip": "Cooperativa Monagri. Zona Commandaria. Tururi de pivniță. Grupurile sunt binevenite.",
+        "bestTimeToVisit": "Dec.–mar.; sunați înainte.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Monagri, zona Commandaria.",
+        "parking": "La fața locului."
+      },
+      "silikou-museum": {
+        "tastingInfo": "Contactați satul pentru program; degustări uneori disponibile",
+        "winterTip": "Sunați înainte. Silikou e în afara buclei principale; mai puțini vizitatori, mai mult spațiu să respiri. Combinați cu crama Savvas pentru o zi întreagă de Commandaria."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "Cu programare; experiențe practice disponibile",
+        "winterTip": "Satul Stroumbi, dealurile Paphosului. Rezervați experiența practică dacă aveți timp. Parte din ruta Laona; combinați cu Fikardos sau Tsangarides."
+      },
+      "semeli": {
+        "tastingInfo": "Degustări cu programare",
+        "winterTip": "Cea mai apropiată cramă de calitate de Nicosia. Combinați cu Lefkara sau Machairas. Rezervați din timp.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Cca 40 min de Nicosia. Poalele Mesaoriei.",
+        "parking": "La fața locului."
+      },
+      "zambeli": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Preferat liniștit pe coridorul Limassol. Încălzitoare iarna. Kolossi și Kourion în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Coridorul Limassol. Cca 20 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "krasas": {
+        "tastingInfo": "Degustări 10 €; rezervați din timp.",
+        "winterTip": "A patra generație în Koilani. Pivniță istorică. Rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu bucla Koilani.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "La fața locului."
       }
     },
     "attractions": {

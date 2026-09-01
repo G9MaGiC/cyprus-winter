@@ -3910,6 +3910,75 @@
         "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
         "transport": "Agios Dimitrianos, zachodnia trasa Laony.",
         "parking": "Na miejscu."
+      },
+      "sodap": {
+        "tastingInfo": "Zwiedzanie i degustacje; rezerwuj wcześniej",
+        "winterTip": "Historyczna spółdzielnia. Przemysłowa skala, opowieść o dziedzictwie. Łatwo z centrum Limassol.",
+        "openingHours": "Po umówieniu; zwiedzanie rezerwuj wcześniej. XI–III zadzwoń wcześniej.",
+        "transport": "Nabrzeże Limassol. Centralnie.",
+        "parking": "Na miejscu."
+      },
+      "iona": {
+        "tastingInfo": "Zestawy degustacyjne 15–25 €; rezerwuj wcześniej.",
+        "winterTip": "Zarezerwuj zestaw wino i ser. Widok na Troodos z sali degustacyjnej.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz z obiadem w Koilani.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Na miejscu."
+      },
+      "tsangarides": {
+        "tastingInfo": "Degustacje po umówieniu. Pn.–sob. 9:00–17:00; niedziela nieczynne.",
+        "winterTip": "Kamienna sala degustacyjna jest przytulna. Trasa Laona — połącz z Vouni Panayia.",
+        "bestTimeToVisit": "Grudzień–marzec, rezerwuj wcześniej.",
+        "openingHours": "Pn.–sob. 9:00–17:00",
+        "transport": "Lemona, Pafos 8545.",
+        "parking": "Na miejscu."
+      },
+      "savvas": {
+        "tastingInfo": "Po umówieniu.",
+        "winterTip": "Połącz z Muzeum Commandarii w Silikou. Kamienna piwnica, wieki tradycji.",
+        "bestTimeToVisit": "Grudzień–marzec; zadzwoń wcześniej.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Silikou 650 m, strefa Commandarii.",
+        "parking": "Na miejscu."
+      },
+      "monagri": {
+        "tastingInfo": "Zadzwoń wcześniej; grupy zwiedzające mile widziane.",
+        "winterTip": "Spółdzielnia Monagri. Strefa Commandarii. Zwiedzanie piwnic. Grupy mile widziane.",
+        "bestTimeToVisit": "Grudzień–marzec; zadzwoń wcześniej.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Monagri, strefa Commandarii.",
+        "parking": "Na miejscu."
+      },
+      "silikou-museum": {
+        "tastingInfo": "O godziny pytaj w wiosce; degustacje bywają dostępne",
+        "winterTip": "Zadzwoń wcześniej. Silikou leży poza główną pętlą; mniej zwiedzających, więcej przestrzeni. Połącz z winiarnią Savvas na pełny dzień Commandarii."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "Po umówieniu; dostępne warsztaty praktyczne",
+        "winterTip": "Wioska Stroumbi, wzgórza Pafos. Jeśli masz czas, zarezerwuj warsztaty. Część trasy Laona; połącz z Fikardos lub Tsangarides."
+      },
+      "semeli": {
+        "tastingInfo": "Degustacje po umówieniu",
+        "winterTip": "Najbliższa Nikozji winiarnia z klasą. Połącz z Lefkarą lub Machairas. Rezerwuj wcześniej.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Ok. 40 min od Nikozji. Podnóża Mesaorii.",
+        "parking": "Na miejscu."
+      },
+      "zambeli": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Cichy faworyt na korytarzu Limassol. Zimą grzejniki. W pobliżu Kolossi i Kourion.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Korytarz Limassol. Ok. 20 min od Limassol.",
+        "parking": "Na miejscu."
+      },
+      "krasas": {
+        "tastingInfo": "Degustacje 10 €; rezerwuj wcześniej.",
+        "winterTip": "Czwarte pokolenie w Koilani. Zabytkowa piwnica. Rezerwuj wcześniej.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz z pętlą po Koilani.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Na miejscu."
       }
     },
     "attractions": {

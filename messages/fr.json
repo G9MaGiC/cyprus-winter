@@ -3910,6 +3910,75 @@
         "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
         "transport": "Agios Dimitrianos, route ouest de Laona.",
         "parking": "Sur place."
+      },
+      "sodap": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Coopérative historique. Échelle industrielle, récit patrimonial. Facile depuis le centre de Limassol.",
+        "openingHours": "Sur rendez-vous ; réservez les visites à l’avance. De nov. à mars, appelez avant de venir.",
+        "transport": "Front de mer de Limassol. Central.",
+        "parking": "Sur place."
+      },
+      "iona": {
+        "tastingInfo": "Accords 15–25 € ; réservez à l’avance.",
+        "winterTip": "Réservez l’accord vin-fromage. Vue sur le Troodos depuis la salle de dégustation.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec un déjeuner à Koilani.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "tsangarides": {
+        "tastingInfo": "Dégustations sur rendez-vous. Lun.–sam. 9 h–17 h ; fermé le dimanche.",
+        "winterTip": "La salle de dégustation en pierre est cosy. Route de Laona — à combiner avec Vouni Panayia.",
+        "bestTimeToVisit": "Déc. à mars, réservez à l’avance.",
+        "openingHours": "Lun.–sam. 9 h–17 h",
+        "transport": "Lemona, Paphos 8545.",
+        "parking": "Sur place."
+      },
+      "savvas": {
+        "tastingInfo": "Sur rendez-vous.",
+        "winterTip": "À combiner avec le musée de la commandaria à Silikou. Cave en pierre, des siècles de tradition.",
+        "bestTimeToVisit": "Déc. à mars ; appelez avant de venir.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Silikou 650 m, zone de la commandaria.",
+        "parking": "Sur place."
+      },
+      "monagri": {
+        "tastingInfo": "Appelez avant de venir ; visites de groupe bienvenues.",
+        "winterTip": "Coopérative de Monagri. Zone de la commandaria. Visites de cave. Groupes bienvenus.",
+        "bestTimeToVisit": "Déc. à mars ; appelez avant de venir.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Monagri, zone de la commandaria.",
+        "parking": "Sur place."
+      },
+      "silikou-museum": {
+        "tastingInfo": "Contactez le village pour les horaires ; dégustations parfois possibles",
+        "winterTip": "Appelez avant de venir. Silikou est à l’écart de la boucle principale ; moins de visiteurs, plus d’air. À combiner avec le domaine Savvas pour une journée commandaria complète."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "Sur rendez-vous ; expériences participatives disponibles",
+        "winterTip": "Village de Stroumbi, collines de Paphos. Réservez l’expérience participative si vous avez le temps. Sur la route de Laona ; à combiner avec Fikardos ou Tsangarides."
+      },
+      "semeli": {
+        "tastingInfo": "Dégustations sur rendez-vous",
+        "winterTip": "Le domaine de qualité le plus proche de Nicosie. À combiner avec Lefkara ou Machairas. Réservez à l’avance.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "À env. 40 min de Nicosie. Contreforts de la Mesaoria.",
+        "parking": "Sur place."
+      },
+      "zambeli": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Favori discret du corridor de Limassol. Chauffages en hiver. Kolossi et Kourion à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Corridor de Limassol. À env. 20 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "krasas": {
+        "tastingInfo": "Dégustations 10 € ; réservez à l’avance.",
+        "winterTip": "Quatrième génération à Koilani. Cave historique. Réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec la boucle de Koilani.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Sur place."
       }
     },
     "attractions": {

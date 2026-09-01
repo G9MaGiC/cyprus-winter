@@ -3910,6 +3910,75 @@
         "openingHours": "By appointment; call ahead Nov–Mar.",
         "transport": "Agios Dimitrianos, western Laona route.",
         "parking": "On-site."
+      },
+      "sodap": {
+        "tastingInfo": "Tours and tastings; book ahead",
+        "winterTip": "Historic cooperative. Industrial scale, heritage story. Easy from Limassol centre.",
+        "openingHours": "By appointment; book ahead for tours. Call ahead Nov–Mar.",
+        "transport": "Limassol seafront. Central.",
+        "parking": "On-site."
+      },
+      "iona": {
+        "tastingInfo": "Pairings €15–25; book ahead.",
+        "winterTip": "Book the wine-and-cheese pairing. Troodos views from the tasting room.",
+        "bestTimeToVisit": "Dec to Mar; combine with Koilani lunch.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "On-site."
+      },
+      "tsangarides": {
+        "tastingInfo": "Tastings by appointment. Mon–Sat 9:00–17:00; closed Sun.",
+        "winterTip": "Stone-built tasting room is cosy. Laona route—combine with Vouni Panayia.",
+        "bestTimeToVisit": "Dec to Mar, book ahead.",
+        "openingHours": "Mon–Sat 9:00–17:00",
+        "transport": "Lemona, Paphos 8545.",
+        "parking": "On-site."
+      },
+      "savvas": {
+        "tastingInfo": "By appointment.",
+        "winterTip": "Combine with Commandaria Museum in Silikou. Stone cellar, centuries of tradition.",
+        "bestTimeToVisit": "Dec to Mar; call ahead.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Silikou 650 m, Commandaria zone.",
+        "parking": "On-site."
+      },
+      "monagri": {
+        "tastingInfo": "Call ahead; group tours welcome.",
+        "winterTip": "Monagri cooperative. Commandaria zone. Cellar tours. Groups welcome.",
+        "bestTimeToVisit": "Dec to Mar; call ahead.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Monagri, Commandaria zone.",
+        "parking": "On-site."
+      },
+      "silikou-museum": {
+        "tastingInfo": "Contact village for hours; tastings sometimes available",
+        "winterTip": "Call ahead. Silikou is off the main loop; fewer visitors, more room to breathe. Combine with Savvas winery for a full Commandaria day."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "By appointment; hands-on experiences available",
+        "winterTip": "Stroumbi village, Paphos hills. Book the hands-on experience if you have time. Part of the Laona route; combine with Fikardos or Tsangarides."
+      },
+      "semeli": {
+        "tastingInfo": "Tastings by appointment",
+        "winterTip": "Nicosia's closest quality winery. Combine with Lefkara or Machairas. Book ahead.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "~40 min from Nicosia. Mesaoria foothills.",
+        "parking": "On-site."
+      },
+      "zambeli": {
+        "tastingInfo": "By appointment",
+        "winterTip": "Quiet favourite on the Limassol corridor. Heaters in winter. Kolossi and Kourion nearby.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Limassol corridor. ~20 min from Limassol.",
+        "parking": "On-site."
+      },
+      "krasas": {
+        "tastingInfo": "Tastings €10; book ahead.",
+        "winterTip": "Fourth generation in Koilani. Historic cellar. Book ahead.",
+        "bestTimeToVisit": "Dec to Mar; combine with Koilani loop.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "On-site."
       }
     },
     "attractions": {
