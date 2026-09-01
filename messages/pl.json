@@ -3716,6 +3716,54 @@
         "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
         "transport": "Krótka trasa z Larnaki lub Limasolu (A1). Zjazd Skarinou.",
         "parking": "Na miejscu."
+      },
+      "sterna-boutique": {
+        "tastingInfo": "Degustacje 5 €; oliwki, chleb, ser. Zwiedzanie jaskini i muzeum.",
+        "winterTip": "Największą atrakcją jest starożytna piwnica w jaskini. Na obiad — wioska Kathikas.",
+        "bestTimeToVisit": "Gru–mar; połącz ze szlakiem Adonisa lub Afrodyty.",
+        "openingHours": "9:30–18:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "transport": "Kathikas, winna pętla Akamas.",
+        "parking": "Na miejscu."
+      },
+      "vlassides": {
+        "tastingInfo": "Zwiedzanie z przewodnikiem 10 €; Rainbow (3 wina) 7,50 €; 4×4 (4 wina + 4 sery) 18 €; Meet Winemaker 50 € (min. 4 os.). Pon–pt 11:00–16:00 po umówieniu.",
+        "winterTip": "Rezerwuj co najmniej 1 dzień wcześniej. Wyróżniają się Shiraz i Cabernet.",
+        "bestTimeToVisit": "Gru–mar, 11:00–13:00 lub 13:30–15:00.",
+        "openingHours": "Pon–pt 11:00–16:00 po umówieniu. Niedziele i święta nieczynne.",
+        "transport": "Koilani. Z Ayios Amvrosios jedź trasą Vouni–Kilani; znak 1,5 km za Vouni.",
+        "parking": "Na miejscu."
+      },
+      "kyperounta": {
+        "tastingInfo": "Degustacje z serami i wędlinami. Rezerwuj wcześniej — zimą zdecydowanie wskazane.",
+        "winterTip": "Sty–lut dzwoń przed wizytą; śnieg potrafi zamknąć drogę. Ubierz się ciepło. Grudzień i marzec są pewniejsze.",
+        "bestTimeToVisit": "Grudzień lub marzec. Unikaj szczytu śniegu sty–lut.",
+        "openingHours": "Po umówieniu. Godziny ustal telefonicznie; warunki na drodze zmienne gru–lut.",
+        "transport": "50 km z Limassol, 75 km z Nikozji. Pitsilia, Troodos.",
+        "parking": "Na miejscu."
+      },
+      "vasilikon": {
+        "tastingInfo": "Degustacje z deskami serów. Winnica 8:30–18:00; restauracja 10:00–16:00.",
+        "winterTip": "Połącz ze szlakiem Adonisa lub Afrodyty. Kathikas leży na pętli Akamas.",
+        "bestTimeToVisit": "Gru–mar; restauracja w porze obiadu.",
+        "openingHours": "Winnica 8:30–18:00, restauracja 10:00–16:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "transport": "Kathikas 8573, Pafos.",
+        "parking": "Na miejscu."
+      },
+      "fikardos": {
+        "tastingInfo": "6 win 10 €; zwiedzanie 5 € (do 18 lat gratis). Opcjonalne deski. Zwiedzanie w dni robocze 14:30.",
+        "winterTip": "Taras łapie zimowe słońce. 10 min od starej Pafos, 20 min od portu.",
+        "bestTimeToVisit": "Gru–mar, 11:00–14:00.",
+        "openingHours": "Pon–pt 8:00–13:00 i 14:30–17:00, sob 8:00–13:00. Niedziela nieczynne.",
+        "transport": "Michalaki Savvidi 22, Mesogi. Ok. 10 min z Pafos.",
+        "parking": "Na miejscu."
+      },
+      "oenou-yi": {
+        "tastingInfo": "Zwiedzanie i degustacje 10:00–17:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "winterTip": "Najpierw klasztor i wioska, potem Oenou Yi. Z obiektu widok na góry.",
+        "bestTimeToVisit": "Gru–mar; połącz z pętlą Omodos.",
+        "openingHours": "10:00–17:00 w sezonie; lis–mar zadzwoń przed wizytą.",
+        "transport": "Wioska Omodos; wzgórza Afamis–Laona.",
+        "parking": "Na miejscu."
       }
     }
   }

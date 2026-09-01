@@ -3716,6 +3716,54 @@
         "openingHours": "By appointment; call ahead Nov–Mar.",
         "transport": "Short drive from Larnaca or Limassol (A1). Skarinou exit.",
         "parking": "On site"
+      },
+      "sterna-boutique": {
+        "tastingInfo": "Tastings €5; olives, bread, cheese. Cave and museum tours.",
+        "winterTip": "Ancient cave cellar is the draw. Kathikas village does lunch.",
+        "bestTimeToVisit": "Dec to Mar; combine with Adonis or Aphrodite trail.",
+        "openingHours": "9:30–18:00 in season; call ahead Nov–Mar.",
+        "transport": "Kathikas, Akamas wine loop.",
+        "parking": "On-site."
+      },
+      "vlassides": {
+        "tastingInfo": "Guided tour €10; Rainbow (3 wines) €7.50; 4×4 (4 wines + 4 cheeses) €18; Meet Winemaker €50 (min 4). Mon–Fri 11:00–16:00 by appointment.",
+        "winterTip": "Book at least 1 day ahead. Shiraz and Cabernet are standouts.",
+        "bestTimeToVisit": "Dec to Mar, 11:00–13:00 or 13:30–15:00.",
+        "openingHours": "Mon–Fri 11:00–16:00 by appointment. Closed Sun & holidays.",
+        "transport": "Koilani. From Ayios Amvrosios, follow Vouni–Kilani; sign 1.5 km past Vouni.",
+        "parking": "On-site."
+      },
+      "kyperounta": {
+        "tastingInfo": "Tastings with cheese and charcuterie. Book ahead—strongly recommended in winter.",
+        "winterTip": "Call ahead Jan–Feb; snow can close the road. Wrap up warm. December or March are safer.",
+        "bestTimeToVisit": "Dec or Mar. Avoid peak snow Jan–Feb.",
+        "openingHours": "By appointment. Call for hours; road conditions vary Dec–Feb.",
+        "transport": "50 km from Limassol, 75 km from Nicosia. Pitsilia, Troodos.",
+        "parking": "On-site."
+      },
+      "vasilikon": {
+        "tastingInfo": "Tastings with cheese platters. Winery 8:30–18:00; restaurant 10:00–16:00.",
+        "winterTip": "Combine with Adonis or Aphrodite trail. Kathikas is on the Akamas loop.",
+        "bestTimeToVisit": "Dec to Mar; restaurant at lunch.",
+        "openingHours": "Winery 8:30–18:00, restaurant 10:00–16:00 in season; call ahead Nov–Mar.",
+        "transport": "Kathikas 8573, Paphos.",
+        "parking": "On-site."
+      },
+      "fikardos": {
+        "tastingInfo": "6 wines €10; tour €5 (free under 18). Optional food platters. Tours weekdays 14:30.",
+        "winterTip": "Terrace catches winter sun. 10 min from Paphos old town, 20 min from harbour.",
+        "bestTimeToVisit": "Dec to Mar, 11:00–14:00.",
+        "openingHours": "Mon–Fri 8:00–13:00 & 14:30–17:00, Sat 8:00–13:00. Closed Sun.",
+        "transport": "22 Michalaki Savvidi, Mesogi. ~10 min from Paphos.",
+        "parking": "On-site."
+      },
+      "oenou-yi": {
+        "tastingInfo": "Tours and tastings 10:00–17:00 in season; call ahead Nov–Mar.",
+        "winterTip": "Do monastery and village first, then Oenou Yi. Mountain views from facility.",
+        "bestTimeToVisit": "Dec to Mar; combine with Omodos loop.",
+        "openingHours": "10:00–17:00 in season; call ahead Nov–Mar.",
+        "transport": "Omodos village; Afamis–Laona hills.",
+        "parking": "On-site."
       }
     }
   }

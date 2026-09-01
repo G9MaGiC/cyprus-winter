@@ -3716,6 +3716,54 @@
         "openingHours": "Cu programare; sunați înainte nov.–mar.",
         "transport": "Drum scurt din Larnaca sau Limassol (A1). Ieșirea Skarinou.",
         "parking": "La fața locului."
+      },
+      "sterna-boutique": {
+        "tastingInfo": "Degustări 5 €; măsline, pâine, brânză. Tururi în peșteră și muzeu.",
+        "winterTip": "Pivnița antică din peșteră e punctul forte. Pentru prânz, satul Kathikas.",
+        "bestTimeToVisit": "Dec–mar; combinați cu traseul Adonis sau Afrodita.",
+        "openingHours": "9:30–18:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Kathikas, bucla vinului din Akamas.",
+        "parking": "La fața locului."
+      },
+      "vlassides": {
+        "tastingInfo": "Tur ghidat 10 €; Rainbow (3 vinuri) 7,50 €; 4×4 (4 vinuri + 4 brânzeturi) 18 €; Meet Winemaker 50 € (min. 4). Lun–vin 11:00–16:00 cu programare.",
+        "winterTip": "Rezervați cu cel puțin o zi înainte. Shiraz și Cabernet ies în evidență.",
+        "bestTimeToVisit": "Dec–mar, 11:00–13:00 sau 13:30–15:00.",
+        "openingHours": "Lun–vin 11:00–16:00 cu programare. Închis duminica și de sărbători.",
+        "transport": "Koilani. Din Ayios Amvrosios urmați Vouni–Kilani; indicator la 1,5 km după Vouni.",
+        "parking": "La fața locului."
+      },
+      "kyperounta": {
+        "tastingInfo": "Degustări cu brânzeturi și mezeluri. Rezervați din timp — puternic recomandat iarna.",
+        "winterTip": "Ian–feb sunați înainte; zăpada poate închide drumul. Îmbrăcați-vă gros. Decembrie sau martie sunt mai sigure.",
+        "bestTimeToVisit": "Decembrie sau martie. Evitați vârful de zăpadă ian–feb.",
+        "openingHours": "Cu programare. Sunați pentru program; starea drumului variază dec–feb.",
+        "transport": "La 50 km de Limassol, 75 km de Nicosia. Pitsilia, Troodos.",
+        "parking": "La fața locului."
+      },
+      "vasilikon": {
+        "tastingInfo": "Degustări cu platouri de brânzeturi. Crama 8:30–18:00; restaurantul 10:00–16:00.",
+        "winterTip": "Combinați cu traseul Adonis sau Afrodita. Kathikas e pe bucla Akamas.",
+        "bestTimeToVisit": "Dec–mar; restaurantul la prânz.",
+        "openingHours": "Crama 8:30–18:00, restaurantul 10:00–16:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Kathikas 8573, Paphos.",
+        "parking": "La fața locului."
+      },
+      "fikardos": {
+        "tastingInfo": "6 vinuri 10 €; tur 5 € (gratuit sub 18 ani). Platouri opționale. Tururi în zilele lucrătoare la 14:30.",
+        "winterTip": "Terasa prinde soarele de iarnă. La 10 min de orașul vechi Paphos, 20 min de port.",
+        "bestTimeToVisit": "Dec–mar, 11:00–14:00.",
+        "openingHours": "Lun–vin 8:00–13:00 și 14:30–17:00, sâm 8:00–13:00. Închis duminica.",
+        "transport": "Michalaki Savvidi 22, Mesogi. Cca 10 min de Paphos.",
+        "parking": "La fața locului."
+      },
+      "oenou-yi": {
+        "tastingInfo": "Tururi și degustări 10:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
+        "winterTip": "Întâi mănăstirea și satul, apoi Oenou Yi. Priveliște montană de la cramă.",
+        "bestTimeToVisit": "Dec–mar; combinați cu bucla Omodos.",
+        "openingHours": "10:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Satul Omodos; dealurile Afamis–Laona.",
+        "parking": "La fața locului."
       }
     }
   }

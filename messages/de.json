@@ -3716,6 +3716,54 @@
         "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
         "transport": "Kurze Fahrt von Larnaka oder Limassol (A1). Ausfahrt Skarinou.",
         "parking": "Vor Ort."
+      },
+      "sterna-boutique": {
+        "tastingInfo": "Verkostungen 5 €; Oliven, Brot, Käse. Führungen durch Höhlenkeller und Museum.",
+        "winterTip": "Der antike Höhlenkeller ist die Attraktion. Mittagessen im Dorf Kathikas.",
+        "bestTimeToVisit": "Dez. bis März; mit dem Adonis- oder Aphrodite-Trail kombinieren.",
+        "openingHours": "9:30–18:00 in der Saison; Nov.–März vorher anrufen.",
+        "transport": "Kathikas, Akamas-Weinschleife.",
+        "parking": "Vor Ort."
+      },
+      "vlassides": {
+        "tastingInfo": "Führung 10 €; Rainbow (3 Weine) 7,50 €; 4×4 (4 Weine + 4 Käse) 18 €; Meet Winemaker 50 € (mind. 4 Pers.). Mo–Fr 11:00–16:00 nach Vereinbarung.",
+        "winterTip": "Mindestens 1 Tag im Voraus reservieren. Shiraz und Cabernet stechen heraus.",
+        "bestTimeToVisit": "Dez. bis März, 11:00–13:00 oder 13:30–15:00.",
+        "openingHours": "Mo–Fr 11:00–16:00 nach Vereinbarung. Sonn- und Feiertage geschlossen.",
+        "transport": "Koilani. Ab Ayios Amvrosios der Strecke Vouni–Kilani folgen; Schild 1,5 km hinter Vouni.",
+        "parking": "Vor Ort."
+      },
+      "kyperounta": {
+        "tastingInfo": "Verkostungen mit Käse und Wurstwaren. Vorab reservieren — im Winter dringend empfohlen.",
+        "winterTip": "Jan.–Feb. vorher anrufen; Schnee kann die Straße sperren. Warm anziehen. Dezember oder März sind sicherer.",
+        "bestTimeToVisit": "Dezember oder März. Die Schneespitze Jan.–Feb. meiden.",
+        "openingHours": "Nach Vereinbarung. Öffnungszeiten telefonisch erfragen; Straßenverhältnisse Dez.–Feb. wechselhaft.",
+        "transport": "50 km von Limassol, 75 km von Nikosia. Pitsilia, Troodos.",
+        "parking": "Vor Ort."
+      },
+      "vasilikon": {
+        "tastingInfo": "Verkostungen mit Käseplatten. Weingut 8:30–18:00; Restaurant 10:00–16:00.",
+        "winterTip": "Mit dem Adonis- oder Aphrodite-Trail kombinieren. Kathikas liegt an der Akamas-Schleife.",
+        "bestTimeToVisit": "Dez. bis März; Restaurant mittags.",
+        "openingHours": "Weingut 8:30–18:00, Restaurant 10:00–16:00 in der Saison; Nov.–März vorher anrufen.",
+        "transport": "Kathikas 8573, Paphos.",
+        "parking": "Vor Ort."
+      },
+      "fikardos": {
+        "tastingInfo": "6 Weine 10 €; Führung 5 € (unter 18 frei). Optionale Platten. Führungen werktags 14:30.",
+        "winterTip": "Die Terrasse fängt die Wintersonne. 10 Min. von der Altstadt von Paphos, 20 Min. vom Hafen.",
+        "bestTimeToVisit": "Dez. bis März, 11:00–14:00.",
+        "openingHours": "Mo–Fr 8:00–13:00 und 14:30–17:00, Sa 8:00–13:00. Sonntags geschlossen.",
+        "transport": "Michalaki Savvidi 22, Mesogi. Ca. 10 Min. von Paphos.",
+        "parking": "Vor Ort."
+      },
+      "oenou-yi": {
+        "tastingInfo": "Führungen und Verkostungen 10:00–17:00 in der Saison; Nov.–März vorher anrufen.",
+        "winterTip": "Erst Kloster und Dorf, dann Oenou Yi. Bergblick vom Gebäude.",
+        "bestTimeToVisit": "Dez. bis März; mit der Omodos-Schleife kombinieren.",
+        "openingHours": "10:00–17:00 in der Saison; Nov.–März vorher anrufen.",
+        "transport": "Dorf Omodos; Afamis-Laona-Hügel.",
+        "parking": "Vor Ort."
       }
     }
   }
