@@ -29,6 +29,17 @@ export const LOCALIZED_ATTRACTION_IDS: ReadonlySet<string> = new Set([
   "platres",
   "lofou",
   "machairas",
+  // Slice 5 — top non-template attractions by visitor relevance
+  "nissi-beach",
+  "kolossi",
+  "kition",
+  "larnaca-aliki",
+  "lara-bay",
+  "limassol-marina",
+  "ayia-napa-sea-caves",
+  "st-sozomenos",
+  "panagia-asinou",
+  "st-john-lampadistis",
 ]);
 
 export const LOCALIZED_ATTRACTION_FIELDS = [

@@ -3857,6 +3857,54 @@
       "machairas": {
         "winterTip": "Łatwa jednodniowa wycieczka z Nikozji. Leśne szlaki są zimą ciche. Połącz wizytę w klasztorze ze spacerem. Ubierz się skromnie.",
         "openingHours": "Codziennie 8–12, 14–18"
+      },
+      "nissi-beach": {
+        "winterTip": "Zimą spokojnie. Idealna na cichy spacer lub kawę w nadmorskiej kawiarni. Morze za zimne na kąpiel.",
+        "bestTimeToVisit": "Rano lub późnym popołudniem dla światła; połącz z Cape Greco lub Protaras.",
+        "openingHours": "Otwarte wybrzeże przez cały rok. Kawiarnie sezonowe."
+      },
+      "kolossi": {
+        "winterTip": "Połącz z degustacją Commandarii; Zambartas jest blisko, a Kolios na wzgórzach Pafos. Zamek zajmuje 30–45 min.",
+        "bestTimeToVisit": "Gru–mar, przed południem (dość ciepło, by wejść na dach)",
+        "openingHours": "Codziennie 8:30–17:00 (zima)"
+      },
+      "kition": {
+        "winterTip": "Zimą czynne w dni robocze 8:30–16:00; sobota i niedziela nieczynne. Połącz z jeziorem solnym lub Angeloktisti — nie planuj Larnaki tylko na weekend.",
+        "bestTimeToVisit": "Wt–pt rano; potem flamingi nad jeziorem solnym",
+        "openingHours": "Pon–pt 8:30–16:00 (zima: 16 wrz–15 kwi). Sobota i niedziela nieczynne."
+      },
+      "larnaca-aliki": {
+        "winterTip": "Flamingi zwykle od listopada do marca; szczyt w środku zimy. Przyjdź wcześnie. Trzymaj się ścieżki — jezioro to rezerwat.",
+        "bestTimeToVisit": "Lis–mar, o świcie lub późnym popołudniem",
+        "openingHours": "Otwarte przez cały rok. Ścieżka wokół jeziora bez biletu."
+      },
+      "lara-bay": {
+        "winterTip": "Zimą bez gniazd; plaża jest pusta. Na dojazd zalecany napęd 4×4. Połącz ze szlakami Akamas.",
+        "bestTimeToVisit": "Rano; połącz ze szlakiem Adonisa lub Afrodyty, obiad w Polis.",
+        "openingHours": "Otwarte wybrzeże przez cały rok. Brak infrastruktury; weź wodę."
+      },
+      "limassol-marina": {
+        "winterTip": "Mniej tłumów niż latem. Łagodne wieczory. Kawiarnie przy promenadzie otwarte. Połącz z Kolossi, Kourion lub starym miastem.",
+        "bestTimeToVisit": "Gru–mar, późne popołudnie na złote światło",
+        "openingHours": "Promenada zawsze otwarta. Sklepy i kawiarnie w godzinach sezonowych."
+      },
+      "ayia-napa-sea-caves": {
+        "winterTip": "Zimowe światło jest złote i niskie; idealne do fotografii. Morze za zimne na kąpiel; weź coś od wiatru. Połącz ze szlakiem Cape Greco.",
+        "bestTimeToVisit": "Późne popołudnie na złote światło; połącz z Cape Greco i Konnos.",
+        "openingHours": "Otwarty klif przez cały rok."
+      },
+      "st-sozomenos": {
+        "winterTip": "Zimowe światło jest niskie i złote — idealne do fotografii. Ubierz się warstwowo; teren jest odsłonięty. Połącz z muzeami Nikozji lub ulicą Ledra na pełny dzień w stolicy.",
+        "bestTimeToVisit": "Rano lub późnym popołudniem; zimowe światło łagodzi ruiny. Przed wyjazdem sprawdź dostęp i status strefy buforowej.",
+        "openingHours": "Sprawdź dostęp — obszar strefy buforowej. Potwierdź przed wizytą."
+      },
+      "panagia-asinou": {
+        "winterTip": "Godziny zimowe 16 wrz–15 kwi: wt–sob 10:00–16:30, niedz 11:00–16:30 (Visit Cyprus). Poniedziałek nieczynne. Połącz z Nikitari i Idalion.",
+        "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
+      },
+      "st-john-lampadistis": {
+        "winterTip": "Godziny zimowe 16 wrz–15 kwi (Ministerstwo Kultury, sie 2025). Ubierz się skromnie. Połącz z weneckim mostem we wsi.",
+        "openingHours": "Wt–sob 10:00–16:30, niedz 11:00–16:30 (zima: 16 wrz–15 kwi). Poniedziałek nieczynne. Potwierdź na miejscu."
       }
     }
   }

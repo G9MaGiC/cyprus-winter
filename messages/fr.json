@@ -3857,6 +3857,54 @@
       "machairas": {
         "winterTip": "Excursion facile à la journée depuis Nicosie. Les sentiers forestiers sont calmes en hiver. Combinez la visite du monastère avec une marche. Tenue correcte exigée.",
         "openingHours": "Tous les jours 8 h – 12 h, 14 h – 18 h"
+      },
+      "nissi-beach": {
+        "winterTip": "Calme en hiver. Idéale pour une promenade paisible ou un café en bord de plage. Mer trop froide pour la baignade.",
+        "bestTimeToVisit": "Le matin ou en fin d’après-midi pour la lumière ; à combiner avec le cap Greco ou Protaras.",
+        "openingHours": "Rivage en accès libre toute l’année. Cafés saisonniers."
+      },
+      "kolossi": {
+        "winterTip": "À combiner avec une dégustation de Commandaria ; Zambartas est tout près, ou Kolios dans les collines de Paphos. Le château se visite en 30 à 45 min.",
+        "bestTimeToVisit": "Déc. à mars, en milieu de matinée (assez doux pour monter sur le toit)",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "kition": {
+        "winterTip": "Horaires d’hiver en semaine, 8 h 30 – 16 h ; fermé samedi et dimanche. À combiner avec le lac salé ou Angeloktisti — pas pour une journée à Larnaca limitée au week-end.",
+        "bestTimeToVisit": "Mar–ven le matin ; les flamants du lac salé ensuite",
+        "openingHours": "Lun–ven 8 h 30 – 16 h (hiver, du 16 sept. au 15 avr.). Fermé sam. et dim."
+      },
+      "larnaca-aliki": {
+        "winterTip": "Flamants roses généralement de novembre à mars ; pic au cœur de l’hiver. Venez tôt. Restez sur le sentier — le lac est une réserve protégée.",
+        "bestTimeToVisit": "Nov. à mars, aux premières lueurs ou en fin d’après-midi",
+        "openingHours": "Accès libre toute l’année. Sentier du lac sans billet."
+      },
+      "lara-bay": {
+        "winterTip": "Pas de nidification en hiver ; la plage est déserte. 4×4 recommandé pour la piste d’accès. À combiner avec les sentiers de l’Akamas.",
+        "bestTimeToVisit": "Le matin ; à combiner avec le sentier d’Adonis ou d’Aphrodite, Polis au déjeuner.",
+        "openingHours": "Rivage en accès libre toute l’année. Aucun équipement ; emportez de l’eau."
+      },
+      "limassol-marina": {
+        "winterTip": "Moins de monde qu’en été. Soirées douces. Les cafés de la promenade restent ouverts. À combiner avec Kolossi, Kourion ou la vieille ville.",
+        "bestTimeToVisit": "Déc. à mars, en fin d’après-midi pour la lumière dorée",
+        "openingHours": "Promenade toujours ouverte. Boutiques et cafés aux horaires saisonniers."
+      },
+      "ayia-napa-sea-caves": {
+        "winterTip": "La lumière d’hiver, dorée et basse, est idéale pour la photo. Mer trop froide pour la baignade ; prévoyez un coupe-vent. À combiner avec le sentier du cap Greco.",
+        "bestTimeToVisit": "En fin d’après-midi pour la lumière dorée ; à combiner avec le cap Greco et Konnos.",
+        "openingHours": "Falaises en accès libre toute l’année."
+      },
+      "st-sozomenos": {
+        "winterTip": "La lumière d’hiver, basse et dorée, est idéale pour la photo. Habillez-vous en couches ; le site est exposé. À combiner avec les musées de Nicosie ou la rue Ledra pour une journée complète dans la capitale.",
+        "bestTimeToVisit": "Le matin ou en fin d’après-midi ; la lumière d’hiver adoucit les ruines. Vérifiez l’accès et le statut de la zone tampon avant de partir.",
+        "openingHours": "Vérifiez l’accès — zone tampon. À confirmer avant la visite."
+      },
+      "panagia-asinou": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. : mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (Visit Cyprus). Fermé le lundi. À combiner avec Nikitari et Idalion.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "st-john-lampadistis": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Tenue correcte exigée. À combiner avec le pont vénitien du village.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
       }
     }
   }

@@ -3857,6 +3857,54 @@
       "machairas": {
         "winterTip": "Excursie ușoară de o zi din Nicosia. Potecile din pădure sunt liniștite iarna. Combinați vizita la mănăstire cu o plimbare. Îmbrăcați-vă decent.",
         "openingHours": "Zilnic 8–12, 14–18"
+      },
+      "nissi-beach": {
+        "winterTip": "Liniștită iarna. Ideală pentru o plimbare tihnită sau o cafea la o cafenea de plajă. Marea e rece pentru înot.",
+        "bestTimeToVisit": "Dimineața sau după-amiaza târziu pentru lumină; combinați cu Capul Greco sau Protaras.",
+        "openingHours": "Țărm liber tot anul. Cafenelele au program sezonier."
+      },
+      "kolossi": {
+        "winterTip": "Combinați cu o degustare de Commandaria; Zambartas e aproape, sau Kolios în dealurile din Paphos. Castelul durează 30–45 min.",
+        "bestTimeToVisit": "Dec–mar, la mijlocul dimineții (destul de cald pentru acoperiș)",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "kition": {
+        "winterTip": "Programul de iarnă e în zilele lucrătoare 8:30–16:00; închis sâmbăta și duminica. Combinați cu lacul sărat sau Angeloktisti — nu pentru o zi la Larnaca doar în weekend.",
+        "bestTimeToVisit": "Mar–vin dimineața; apoi flamingii de la lacul sărat",
+        "openingHours": "Lun–vin 8:30–16:00 (iarna: 16 sep–15 apr). Închis sâm și dum."
+      },
+      "larnaca-aliki": {
+        "winterTip": "Flamingii apar de regulă din noiembrie până în martie; vârful e la mijlocul iernii. Veniți devreme. Rămâneți pe potecă — lacul e rezervație protejată.",
+        "bestTimeToVisit": "Nov–mar, la prima lumină sau după-amiaza târziu",
+        "openingHours": "Acces liber tot anul. Fără bilet pentru poteca lacului."
+      },
+      "lara-bay": {
+        "winterTip": "Fără cuibărit iarna; plaja e goală. Se recomandă 4×4 pentru drumul de acces. Combinați cu traseele din Akamas.",
+        "bestTimeToVisit": "Dimineața; combinați cu traseul Adonis sau Afrodita, Polis la prânz.",
+        "openingHours": "Țărm liber tot anul. Fără facilități; luați apă."
+      },
+      "limassol-marina": {
+        "winterTip": "Mai puțină aglomerație ca vara. Seri blânde. Cafenelele de pe promenadă rămân deschise. Combinați cu Kolossi, Kourion sau orașul vechi.",
+        "bestTimeToVisit": "Dec–mar, după-amiaza târziu pentru lumina aurie",
+        "openingHours": "Promenada e mereu deschisă. Magazinele și cafenelele au program sezonier."
+      },
+      "ayia-napa-sea-caves": {
+        "winterTip": "Lumina de iarnă e aurie și joasă; ideală pentru fotografie. Marea e prea rece pentru înot; luați o haină de vânt. Combinați cu traseul Capul Greco.",
+        "bestTimeToVisit": "După-amiaza târziu pentru lumina aurie; combinați cu Capul Greco și Konnos.",
+        "openingHours": "Faleză cu acces liber tot anul."
+      },
+      "st-sozomenos": {
+        "winterTip": "Lumina de iarnă e joasă și aurie — ideală pentru fotografie. Îmbrăcați-vă în straturi; situl e expus. Combinați cu muzeele din Nicosia sau strada Ledra pentru o zi întreagă în zona capitalei.",
+        "bestTimeToVisit": "Dimineața sau după-amiaza târziu; lumina de iarnă îndulcește ruinele. Verificați accesul și statutul zonei-tampon înainte de drum.",
+        "openingHours": "Verificați accesul — zonă-tampon. Confirmați înainte de vizită."
+      },
+      "panagia-asinou": {
+        "winterTip": "Program de iarnă 16 sep–15 apr: mar–sâm 10:00–16:30, dum 11:00–16:30 (Visit Cyprus). Închis lunea. Combinați cu Nikitari și Idalion.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "st-john-lampadistis": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Îmbrăcați-vă decent. Combinați cu podul venețian din sat.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
       }
     }
   }

@@ -3857,6 +3857,54 @@
       "machairas": {
         "winterTip": "Easy day trip from Nicosia. The forest trails are quiet in winter. Combine monastery visit with a walk. Dress modestly.",
         "openingHours": "Daily 8 to 12, 14 to 18"
+      },
+      "nissi-beach": {
+        "winterTip": "Quiet in winter. Ideal for a peaceful walk or coffee at a beach café. Sea cold for swimming.",
+        "bestTimeToVisit": "Morning or late afternoon for light; combine with Cape Greco or Protaras.",
+        "openingHours": "Open shoreline year-round. Cafés seasonal."
+      },
+      "kolossi": {
+        "winterTip": "Combine with a Commandaria tasting; Zambartas is nearby, or Kolios in the Paphos hills. Castle takes 30 to 45 min.",
+        "bestTimeToVisit": "Dec to Mar, mid-morning (warm enough to climb to roof)",
+        "openingHours": "Daily 8:30 to 17:00 (winter)"
+      },
+      "kition": {
+        "winterTip": "Winter hours are weekdays 8:30 to 16:00; closed Saturday and Sunday. Combine with the salt lake or Angeloktisti, not a weekend-only Larnaca day.",
+        "bestTimeToVisit": "Tue to Fri morning; salt lake flamingos after",
+        "openingHours": "Mon to Fri 8:30 to 16:00 (winter 16 Sep to 15 Apr). Closed Sat and Sun."
+      },
+      "larnaca-aliki": {
+        "winterTip": "Flamingos typically from November to March; peak mid-winter. Arrive early. Stay on the path — the lake is a protected reserve.",
+        "bestTimeToVisit": "Nov to Mar, first light or late afternoon",
+        "openingHours": "Open shoreline year-round. No ticket for the lake path."
+      },
+      "lara-bay": {
+        "winterTip": "No nesting in winter; beach is empty. 4WD recommended for the access road. Combine with Akamas trails.",
+        "bestTimeToVisit": "Morning; combine with Adonis or Aphrodite trail, Polis for lunch.",
+        "openingHours": "Open shoreline year-round. No facilities; pack water."
+      },
+      "limassol-marina": {
+        "winterTip": "Fewer crowds than summer. Mild evenings. The promenade cafés stay open. Pair with Kolossi, Kourion, or the old town.",
+        "bestTimeToVisit": "Dec to Mar, late afternoon for golden light",
+        "openingHours": "Promenade always open. Shops and cafés seasonal hours."
+      },
+      "ayia-napa-sea-caves": {
+        "winterTip": "Winter light is golden and low; ideal for photography. Sea too cold for swimming; bring a wind layer. Combine with Cape Greco trail.",
+        "bestTimeToVisit": "Late afternoon for golden light; combine with Cape Greco and Konnos.",
+        "openingHours": "Open cliff-top year-round."
+      },
+      "st-sozomenos": {
+        "winterTip": "Winter light is low and golden—ideal for photography. Dress in layers; the site is exposed. Combine with Nicosia museums or Ledra Street for a full day in the capital area.",
+        "bestTimeToVisit": "Morning or late afternoon; winter light softens the ruins. Check access and buffer zone status before travelling.",
+        "openingHours": "Check access—buffer zone area. Verify before visiting."
+      },
+      "panagia-asinou": {
+        "winterTip": "Winter hours 16 Sep to 15 Apr: Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (Visit Cyprus). Closed Mon. Combine with Nikitari and Idalion.",
+        "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally."
+      },
+      "st-john-lampadistis": {
+        "winterTip": "Winter hours 16 Sep to 15 Apr (Deputy Ministry of Culture, Aug 2025). Dress modestly. Combine with the Venetian bridge in the village.",
+        "openingHours": "Tue to Sat 10:00 to 16:30, Sun 11:00 to 16:30 (winter 16 Sep to 15 Apr). Closed Mon. Confirm locally."
       }
     }
   }
