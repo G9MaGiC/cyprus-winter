@@ -95,6 +95,29 @@ describe("POST /api/bookings", () => {
     expect(json.booking.notes).toContain("Trail:");
   });
 
+  it("persists the guest locale on the booking record (migration 008)", async () => {
+    const res = await POST(
+      postReq(
+        {
+          type: "guide_tour",
+          providerId: "cyprus-active-tours",
+          trailId: "artemis",
+          locale: "el",
+          date: "2099-03-17",
+          idempotencyKey: "test-booking-key-locale-001",
+          partySize: 2,
+          guestEmail: "locale@example.com",
+          guestName: "Locale Guest",
+        },
+        "127.0.0.62"
+      )
+    );
+    expect(res.status).toBe(200);
+    const json = await res.json();
+    expect(json.booking.locale).toBe("el");
+    expect(json.booking.trailId).toBe("artemis");
+  });
+
   it("returns 404 for unknown winery", async () => {
     const res = await POST(
       postReq({ ...validBody, providerId: "unknown-winery-xyz" }, "127.0.0.4")

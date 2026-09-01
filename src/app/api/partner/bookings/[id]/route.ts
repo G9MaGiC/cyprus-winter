@@ -77,7 +77,9 @@ export async function PATCH(
   // flag lets the portal show whether the guest was notified.
   let statusEmailSent = false;
   if (result.changed) {
-    statusEmailSent = await sendBookingStatusEmail(result.booking);
+    // Since migration 008 the booking carries the guest's UI locale; the
+    // sender falls back to the default locale for legacy rows without one.
+    statusEmailSent = await sendBookingStatusEmail(result.booking, result.booking.locale);
   }
 
   return NextResponse.json({ booking: result.booking, statusEmailSent });

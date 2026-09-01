@@ -20,11 +20,14 @@ export type Booking = {
   status: BookingStatus;
   createdAt: string;
   notes?: string;
-  /** Chosen trail for guide tours (AUD-86). Carried on the returned/local
-      record only — the bookings table has no trail_id column yet (future
-      migration 008); DB-sourced rows omit it and the client's field-wise
-      merge keeps the locally stored value. */
+  /** Chosen trail for guide tours (AUD-86). Persisted as `trail_id` since
+      migration 008; legacy DB rows may omit it and the client's field-wise
+      merge keeps the locally stored value for those. */
   trailId?: string;
+  /** Guest UI locale at booking time (migration 008); guest-facing status
+      emails render in it. Absent on legacy rows — senders fall back to the
+      default locale. */
+  locale?: string;
 };
 
 const memoryStore: Booking[] = [];
@@ -122,6 +125,8 @@ export async function createBooking(input: CreateBookingInput): Promise<CreateBo
       notes: input.notes ?? null,
       created_at: createdAt,
       lead_fee_eur: leadFeeEur ?? null,
+      locale: input.locale ?? null,
+      trail_id: input.trailId ?? null,
     });
     if (error) {
       // Two concurrent requests can both miss the lookup; the primary-key conflict
@@ -154,7 +159,7 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
     const emailNormalized = email.trim().toLowerCase();
     const { data, error } = await supabase
       .from("bookings")
-      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes,trail_id,locale")
       .eq("guest_email", emailNormalized)
       .order("created_at", { ascending: false })
       .limit(200);
@@ -172,7 +177,7 @@ export async function getBookingsByProviderId(providerId: string): Promise<Booki
   if (supabase) {
     const { data, error } = await supabase
       .from("bookings")
-      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes,trail_id,locale")
       .eq("provider_id", providerId)
       .order("created_at", { ascending: false })
       .limit(500);
@@ -268,6 +273,8 @@ function rowToBooking(row: Record<string, unknown>): Booking {
     status: (row.status as BookingStatus) ?? "pending",
     createdAt: String(row.created_at),
     notes: row.notes ? String(row.notes) : undefined,
+    trailId: row.trail_id ? String(row.trail_id) : undefined,
+    locale: row.locale ? String(row.locale) : undefined,
   };
 }
 

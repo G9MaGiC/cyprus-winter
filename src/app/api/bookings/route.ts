@@ -243,6 +243,7 @@ export async function POST(req: Request) {
         guestEmail,
         guestName: safeGuestName,
         notes: notes != null ? sanitizeForStorage(notes) : undefined,
+        locale: parsed.data.locale,
         leadFeeEur: winery.partnerLeadFeeEur,
         idempotencyKey,
       });
@@ -307,9 +308,10 @@ export async function POST(req: Request) {
         guestEmail,
         guestName: safeGuestName,
         notes: notesWithTrail != null ? sanitizeForStorage(notesWithTrail) : undefined,
-        // Structured field for the client (AUD-86); the notes fold above stays
-        // for email readability and DB rows (no trail_id column yet).
+        // Structured field (AUD-86), persisted as trail_id since migration
+        // 008; the notes fold above stays for email readability.
         trailId: trail?.id,
+        locale: parsed.data.locale,
         leadFeeEur: guide.partnerLeadFeeEur,
         idempotencyKey,
       });
