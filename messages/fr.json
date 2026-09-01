@@ -3835,6 +3835,81 @@
         "openingHours": "9 h – 17 h en saison ; de nov. à mars, appelez avant de venir.",
         "transport": "Kato Drys, région de Larnaca.",
         "parking": "Sur place."
+      },
+      "ayia-mavri": {
+        "tastingInfo": "11 h–16 h en saison ; de nov. à mars, appelez avant de venir. Visite du vignoble, dégustations, fromages et gourmandises.",
+        "winterTip": "Cocon en hiver. Koilani à 900 m ; commandaria et vins secs.",
+        "bestTimeToVisit": "11 h–14 h ; à combiner avec un déjeuner à Koilani.",
+        "openingHours": "11 h–16 h en saison ; de nov. à mars, appelez avant de venir."
+      },
+      "meletiou": {
+        "tastingInfo": "Dégustations presque tous les jours en saison ; de nov. à mars, appelez avant de venir.",
+        "winterTip": "La terrasse capte le soleil de l’après-midi. Le village de Kathikas assure le déjeuner.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec le sentier d’Adonis ou d’Aphrodite.",
+        "openingHours": "Appelez pour connaître les horaires d’hiver.",
+        "transport": "Kathikas, route des vins de l’Akamas.",
+        "parking": "Sur place."
+      },
+      "makarounas": {
+        "tastingInfo": "Standard gratuite ; Classic 7 € ; Premium 12 € ; visite du vignoble 50 €. Le plateau de grand-mère en terrasse.",
+        "winterTip": "À 14 km à l’est de Paphos. Vue depuis la terrasse ; réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars, 11 h–15 h.",
+        "openingHours": "Lun.–ven. 11 h–15 h, sam. 11 h–17 h. Réservation obligatoire."
+      },
+      "argyrides": {
+        "tastingInfo": "Dégustations pour groupes sur demande. Réservez à l’avance.",
+        "winterTip": "Maison vieille de 200 ans. La pierre garde le soleil en hiver.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Omodos et Koilani.",
+        "openingHours": "Lun.–ven. 8 h–16 h. Fermé le week-end.",
+        "transport": "Vasa Koilaniou, à env. 25 km de Limassol.",
+        "parking": "Sur place."
+      },
+      "cholettis": {
+        "tastingInfo": "Sur rendez-vous ; meze disponibles.",
+        "winterTip": "Réservez l’accord meze. Fromage et olives font chanter le vin. Le plateau de Laona a une tout autre ambiance.",
+        "bestTimeToVisit": "Déc. à mars ; prévoyez de rester.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Statos, plateau de Laona.",
+        "parking": "Sur place."
+      },
+      "adege": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir.",
+        "winterTip": "Domaine familial à Vasa. Hospitalité villageoise ; appelez avant de venir. Lefkada vaut le détour.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Omodos ou Louvaras.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Vasa, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "stavrinos": {
+        "tastingInfo": "Sur rendez-vous ; horaires d’hiver.",
+        "winterTip": "Dégustations au coin du feu. Réservez à l’avance. Vue sur la montagne et flambée — un favori de l’hiver.",
+        "bestTimeToVisit": "Déc. à mars ; réservez votre place près du feu.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Dhoros, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "ambeli": {
+        "tastingInfo": "Dégustations presque tous les jours en saison ; de nov. à mars, appelez avant de venir.",
+        "winterTip": "Ski ou sentier d’Artémis le matin, Ambeli l’après-midi. Vue sur la forêt.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec les sentiers de Platres.",
+        "openingHours": "Appelez pour connaître les horaires d’hiver.",
+        "transport": "Village de Platres.",
+        "parking": "Sur place."
+      },
+      "lambouri": {
+        "tastingInfo": "Dégustations sur rendez-vous ; réservez à l’avance",
+        "winterTip": "Salle de dégustation cosy ; chauffages en hiver. Koilani compte dix domaines ; Lambouri sort du lot.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Koilani, Krasochoria. À env. 40 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "nichteri": {
+        "tastingInfo": "Uniquement sur rendez-vous",
+        "winterTip": "Appelez avant de venir ; ils apprécient d’être prévenus. Les murs de pierre gardent la chaleur.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec la boucle des collines de Paphos.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Agios Dimitrianos, route ouest de Laona.",
+        "parking": "Sur place."
       }
     },
     "attractions": {

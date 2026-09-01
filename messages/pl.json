@@ -3835,6 +3835,81 @@
         "openingHours": "9:00–17:00 w sezonie; lis–mar zadzwoń przed wizytą.",
         "transport": "Kato Drys, region Larnaki.",
         "parking": "Na miejscu."
+      },
+      "ayia-mavri": {
+        "tastingInfo": "11:00–16:00 w sezonie; XI–III zadzwoń wcześniej. Zwiedzanie winnicy, degustacje, sery i przysmaki.",
+        "winterTip": "Przytulnie zimą. Koilani na 900 m; Commandaria i wina wytrawne.",
+        "bestTimeToVisit": "11:00–14:00; połącz z obiadem w Koilani.",
+        "openingHours": "11:00–16:00 w sezonie; XI–III zadzwoń wcześniej."
+      },
+      "meletiou": {
+        "tastingInfo": "Degustacje przez większość dni w sezonie; XI–III zadzwoń wcześniej.",
+        "winterTip": "Taras łapie popołudniowe słońce. W wiosce Kathikas zjesz obiad.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz ze szlakiem Adonisa lub Afrodyty.",
+        "openingHours": "Zadzwoń, by poznać zimowe godziny.",
+        "transport": "Kathikas, szlak winny Akamas.",
+        "parking": "Na miejscu."
+      },
+      "makarounas": {
+        "tastingInfo": "Standard bezpłatnie; Classic 7 €; Premium 12 €; zwiedzanie winnicy 50 €. Talerz babci na tarasie.",
+        "winterTip": "14 km na wschód od Pafos. Widoki z tarasu; rezerwuj wcześniej.",
+        "bestTimeToVisit": "Grudzień–marzec, 11:00–15:00.",
+        "openingHours": "Pn.–pt. 11:00–15:00, sob. 11:00–17:00. Wymagana rezerwacja."
+      },
+      "argyrides": {
+        "tastingInfo": "Degustacje dla grup na zamówienie. Rezerwuj wcześniej.",
+        "winterTip": "Dom sprzed 200 lat. Kamień trzyma zimą ciepło słońca.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz z Omodos i Koilani.",
+        "openingHours": "Pn.–pt. 8:00–16:00. W weekendy nieczynne.",
+        "transport": "Vasa Koilaniou, ok. 25 km od Limassol.",
+        "parking": "Na miejscu."
+      },
+      "cholettis": {
+        "tastingInfo": "Po umówieniu; dostępne meze.",
+        "winterTip": "Zarezerwuj zestaw z meze. Ser i oliwki sprawiają, że wino śpiewa. Płaskowyż Laona ma inny klimat.",
+        "bestTimeToVisit": "Grudzień–marzec; zaplanuj dłuższy pobyt.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Statos, płaskowyż Laona.",
+        "parking": "Na miejscu."
+      },
+      "adege": {
+        "tastingInfo": "Po umówieniu; zadzwoń wcześniej.",
+        "winterTip": "Rodzinna winiarnia w Vasie. Wiejska gościnność; zadzwoń wcześniej. Lefkada jest warta przejażdżki.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz z Omodos lub Louvaras.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Vasa, Krasochoria.",
+        "parking": "Na miejscu."
+      },
+      "stavrinos": {
+        "tastingInfo": "Po umówieniu; godziny zimowe.",
+        "winterTip": "Degustacje przy kominku. Rezerwuj wcześniej. Widok na góry i ogień — zimowy faworyt.",
+        "bestTimeToVisit": "Grudzień–marzec; zajmij miejsce przy ogniu.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wioska Dhoros, Krasochoria.",
+        "parking": "Na miejscu."
+      },
+      "ambeli": {
+        "tastingInfo": "Degustacje przez większość dni w sezonie; XI–III zadzwoń wcześniej.",
+        "winterTip": "Rano narty lub szlak Artemidy, po południu Ambeli. Widok na las.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz ze szlakami Platres.",
+        "openingHours": "Zadzwoń, by poznać zimowe godziny.",
+        "transport": "Wioska Platres.",
+        "parking": "Na miejscu."
+      },
+      "lambouri": {
+        "tastingInfo": "Degustacje po umówieniu; rezerwuj wcześniej",
+        "winterTip": "Przytulna sala degustacyjna; zimą grzejniki. Koilani ma dziesięć winiarni; Lambouri się wyróżnia.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Koilani, Krasochoria. Ok. 40 min od Limassol.",
+        "parking": "Na miejscu."
+      },
+      "nichteri": {
+        "tastingInfo": "Tylko po umówieniu",
+        "winterTip": "Zadzwoń wcześniej; docenią uprzedzenie. Kamienne mury trzymają ciepło.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz z pętlą po wzgórzach Pafos.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Agios Dimitrianos, zachodnia trasa Laony.",
+        "parking": "Na miejscu."
       }
     },
     "attractions": {

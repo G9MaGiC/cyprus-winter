@@ -3835,6 +3835,81 @@
         "openingHours": "9:00–17:00 in season; call ahead Nov–Mar.",
         "transport": "Kato Drys, Larnaca region.",
         "parking": "On-site."
+      },
+      "ayia-mavri": {
+        "tastingInfo": "11:00–16:00 in season; call ahead Nov–Mar. Vineyard tour, tastings, cheese and delicacies.",
+        "winterTip": "Cosy in winter. Koilani at 900 m; Commandaria and dry wines.",
+        "bestTimeToVisit": "11:00–14:00; combine with Koilani lunch.",
+        "openingHours": "11:00–16:00 in season; call ahead Nov–Mar."
+      },
+      "meletiou": {
+        "tastingInfo": "Tastings most days in season; call ahead Nov–Mar.",
+        "winterTip": "Terrace catches afternoon sun. Kathikas village does lunch.",
+        "bestTimeToVisit": "Dec to Mar; combine with Adonis or Aphrodite trail.",
+        "openingHours": "Call ahead for winter hours.",
+        "transport": "Kathikas, Akamas wine route.",
+        "parking": "On-site."
+      },
+      "makarounas": {
+        "tastingInfo": "Free standard; Classic €7; Premium €12; vineyard tour €50. Grandma's platter on terrace.",
+        "winterTip": "14 km east of Paphos. Terrace views; book ahead.",
+        "bestTimeToVisit": "Dec to Mar, 11:00–15:00.",
+        "openingHours": "Mon–Fri 11:00–15:00, Sat 11:00–17:00. Reservations required."
+      },
+      "argyrides": {
+        "tastingInfo": "Tastings for groups upon request. Book ahead.",
+        "winterTip": "200-year-old house. Stone holds the sun in winter.",
+        "bestTimeToVisit": "Dec to Mar; combine with Omodos, Koilani.",
+        "openingHours": "Mon–Fri 8:00–16:00. Closed weekends.",
+        "transport": "Vasa Koilaniou, ~25 km from Limassol.",
+        "parking": "On-site."
+      },
+      "cholettis": {
+        "tastingInfo": "By appointment; meze available.",
+        "winterTip": "Book the meze pairing. Cheese and olives make the wine sing. Laona plateau has a different vibe.",
+        "bestTimeToVisit": "Dec to Mar; plan to stay.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Statos, Laona plateau.",
+        "parking": "On-site."
+      },
+      "adege": {
+        "tastingInfo": "By appointment; call ahead.",
+        "winterTip": "Family-run in Vasa. Village hospitality; call ahead. Lefkada is worth the drive.",
+        "bestTimeToVisit": "Dec to Mar; combine with Omodos or Louvaras.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Vasa, Krasochoria.",
+        "parking": "On-site."
+      },
+      "stavrinos": {
+        "tastingInfo": "By appointment; winter hours.",
+        "winterTip": "Fireplace tastings. Book ahead. Mountain views and fire—winter favourite.",
+        "bestTimeToVisit": "Dec to Mar; claim a seat by the fire.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Dhoros village, Krasochoria.",
+        "parking": "On-site."
+      },
+      "ambeli": {
+        "tastingInfo": "Tastings most days in season; call ahead Nov–Mar.",
+        "winterTip": "Ski or Artemis in the morning, Ambeli in the afternoon. Forest views.",
+        "bestTimeToVisit": "Dec to Mar; combine with Platres trails.",
+        "openingHours": "Call ahead for winter hours.",
+        "transport": "Platres village.",
+        "parking": "On-site."
+      },
+      "lambouri": {
+        "tastingInfo": "Tastings by appointment; book ahead",
+        "winterTip": "Cosy tasting room; heaters in winter. Koilani has ten wineries; Lambouri is a standout.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Koilani, Krasochoria. ~40 min from Limassol.",
+        "parking": "On-site."
+      },
+      "nichteri": {
+        "tastingInfo": "By appointment only",
+        "winterTip": "Call ahead; they appreciate notice. Stone walls hold warmth.",
+        "bestTimeToVisit": "Dec to Mar; combine with Paphos hills loop.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Agios Dimitrianos, western Laona route.",
+        "parking": "On-site."
       }
     },
     "attractions": {

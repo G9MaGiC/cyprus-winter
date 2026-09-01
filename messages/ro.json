@@ -3835,6 +3835,81 @@
         "openingHours": "9:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
         "transport": "Kato Drys, regiunea Larnaca.",
         "parking": "La fața locului."
+      },
+      "ayia-mavri": {
+        "tastingInfo": "11:00–16:00 în sezon; nov.–mar. sunați înainte. Tur al viei, degustări, brânzeturi și delicatese.",
+        "winterTip": "Primitor iarna. Koilani la 900 m; Commandaria și vinuri seci.",
+        "bestTimeToVisit": "11:00–14:00; combinați cu un prânz în Koilani.",
+        "openingHours": "11:00–16:00 în sezon; nov.–mar. sunați înainte."
+      },
+      "meletiou": {
+        "tastingInfo": "Degustări în majoritatea zilelor în sezon; nov.–mar. sunați înainte.",
+        "winterTip": "Terasa prinde soarele de după-amiază. Satul Kathikas are prânz bun.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu traseul Adonis sau Afrodita.",
+        "openingHours": "Sunați pentru programul de iarnă.",
+        "transport": "Kathikas, ruta vinului din Akamas.",
+        "parking": "La fața locului."
+      },
+      "makarounas": {
+        "tastingInfo": "Standard gratuit; Classic 7 €; Premium 12 €; tur al viei 50 €. Platoul bunicii pe terasă.",
+        "winterTip": "La 14 km est de Paphos. Priveliști de pe terasă; rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar., 11:00–15:00.",
+        "openingHours": "Lun.–vin. 11:00–15:00, sâm. 11:00–17:00. Rezervare obligatorie."
+      },
+      "argyrides": {
+        "tastingInfo": "Degustări pentru grupuri la cerere. Rezervați din timp.",
+        "winterTip": "Casă veche de 200 de ani. Piatra păstrează soarele iarna.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu Omodos și Koilani.",
+        "openingHours": "Lun.–vin. 8:00–16:00. Închis în weekend.",
+        "transport": "Vasa Koilaniou, la cca 25 km de Limassol.",
+        "parking": "La fața locului."
+      },
+      "cholettis": {
+        "tastingInfo": "Cu programare; meze disponibile.",
+        "winterTip": "Rezervați acordul cu meze. Brânza și măslinele fac vinul să cânte. Platoul Laona are o altă atmosferă.",
+        "bestTimeToVisit": "Dec.–mar.; plănuiți să rămâneți.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Statos, platoul Laona.",
+        "parking": "La fața locului."
+      },
+      "adege": {
+        "tastingInfo": "Cu programare; sunați înainte.",
+        "winterTip": "Afacere de familie în Vasa. Ospitalitate de sat; sunați înainte. Lefkada merită drumul.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu Omodos sau Louvaras.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Vasa, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "stavrinos": {
+        "tastingInfo": "Cu programare; program de iarnă.",
+        "winterTip": "Degustări lângă șemineu. Rezervați din timp. Priveliști montane și foc — preferatul iernii.",
+        "bestTimeToVisit": "Dec.–mar.; prindeți un loc lângă foc.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Dhoros, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "ambeli": {
+        "tastingInfo": "Degustări în majoritatea zilelor în sezon; nov.–mar. sunați înainte.",
+        "winterTip": "Schi sau traseul Artemis dimineața, Ambeli după-amiaza. Priveliști de pădure.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu traseele din Platres.",
+        "openingHours": "Sunați pentru programul de iarnă.",
+        "transport": "Satul Platres.",
+        "parking": "La fața locului."
+      },
+      "lambouri": {
+        "tastingInfo": "Degustări cu programare; rezervați din timp",
+        "winterTip": "Sală de degustare primitoare; încălzitoare iarna. Koilani are zece crame; Lambouri iese în evidență.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Koilani, Krasochoria. Cca 40 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "nichteri": {
+        "tastingInfo": "Doar cu programare",
+        "winterTip": "Sunați înainte; apreciază să fie anunțați. Zidurile de piatră păstrează căldura.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu bucla dealurilor din Paphos.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Agios Dimitrianos, ruta vestică Laona.",
+        "parking": "La fața locului."
       }
     },
     "attractions": {
