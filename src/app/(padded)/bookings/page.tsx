@@ -80,12 +80,16 @@ export default function BookingsPage() {
   const [tokenSent, setTokenSent] = useState(false);
   const canDirectLookup = !authConfigured || Boolean(session?.access_token);
 
-  const applyRemoteBookings = (apiBookings: Booking[]) => {
+  // `silent` = the caller is a background refresh, not a user-initiated email
+  // lookup: merge and re-render, but never set the lookup-panel result banner
+  // ("No bookings found…"/"Loaded N") the user didn't ask for.
+  const applyRemoteBookings = (apiBookings: Booking[], { silent = false } = {}) => {
     const local = loadLocalBookings();
     const merged = mergeBookings(local, apiBookings);
     saveLocalBookings(merged);
     if (!isMountedRef.current) return;
     setBookings(merged);
+    if (silent) return;
     if (successTimerRef.current) clearTimeout(successTimerRef.current);
     if (apiBookings.length === 0) {
       setEmailSuccess(tBookings("emailLookup.noMatch"));
@@ -123,7 +127,7 @@ export default function BookingsPage() {
         if (!res.ok) return;
         const data = await res.json();
         if (!isMountedRef.current) return;
-        applyRemoteBookings((data.bookings ?? []) as Booking[]);
+        applyRemoteBookings((data.bookings ?? []) as Booking[], { silent: true });
       } catch {
         // offline or rate-limited — local view stays authoritative
       }

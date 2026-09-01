@@ -105,6 +105,8 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
 
   let succeeded = 0;
   let dropped = 0;
+  const succeededTypes: string[] = [];
+  const droppedTypes: string[] = [];
   for (const item of items) {
     try {
       const res = await fetch(item.url, {
@@ -131,11 +133,13 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
         }
         removeMutation(item.id);
         succeeded++;
+        succeededTypes.push(item.type);
       } else if (res.status >= 400 && res.status < 500 && !RETRYABLE_CLIENT_STATUSES.has(res.status)) {
         // Validation/auth/not-found errors are permanent for this queued payload.
         // Retrying them forever would hide the failure and waste requests.
         removeMutation(item.id);
         dropped++;
+        droppedTypes.push(item.type);
       }
     } catch {
       // Network error: leave in queue for the next online event.
@@ -143,16 +147,25 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
   }
   const canDispatch =
     typeof window !== "undefined" && typeof window.dispatchEvent === "function";
+  // DROPPED must fire BEFORE DRAINED: both listeners in useBookingForm gate on
+  // the same queuedOfflineRef, so when a drain both delivers some other
+  // mutation and permanently rejects this form's booking, the failure must
+  // win the ref — the reverse order would show a success screen for a
+  // booking the server refused (fail-open).
+  if (dropped > 0 && canDispatch) {
+    window.dispatchEvent(
+      new CustomEvent(OFFLINE_QUEUE_DROPPED_EVENT, {
+        detail: { dropped, types: droppedTypes },
+      })
+    );
+  }
   if (succeeded > 0 && canDispatch) {
     // Let mounted forms replace their stale "will be sent when back online"
     // message with the delivered state (AUD B2-06 residual).
     window.dispatchEvent(
-      new CustomEvent(OFFLINE_QUEUE_DRAINED_EVENT, { detail: { succeeded } })
-    );
-  }
-  if (dropped > 0 && canDispatch) {
-    window.dispatchEvent(
-      new CustomEvent(OFFLINE_QUEUE_DROPPED_EVENT, { detail: { dropped } })
+      new CustomEvent(OFFLINE_QUEUE_DRAINED_EVENT, {
+        detail: { succeeded, types: succeededTypes },
+      })
     );
   }
   return { processed: items.length, succeeded };

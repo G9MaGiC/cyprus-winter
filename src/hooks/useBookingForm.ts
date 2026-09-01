@@ -76,12 +76,21 @@ export function useBookingForm(
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
 
+  // Both drain listeners scope to this form's own queue type — a drain can
+  // deliver a trail report while rejecting this booking (or vice versa), and
+  // the coarse queue-level signal would tell the wrong story.
+  const queueMutationType = type === "winery_tasting" ? "winery_booking" : "guide_booking";
+  const eventTouchesThisForm = (e: Event): boolean => {
+    const types = (e as CustomEvent<{ types?: string[] }>).detail?.types;
+    return !Array.isArray(types) || types.includes(queueMutationType);
+  };
+
   // When the offline queue drains, THIS form's queued request was delivered
   // (and stored locally by the drain) — swap the stale "will be sent" message
   // for the real success state (AUD B2-06 residual).
   useEffect(() => {
-    const onDrained = () => {
-      if (!queuedOfflineRef.current) return;
+    const onDrained = (e: Event) => {
+      if (!queuedOfflineRef.current || !eventTouchesThisForm(e)) return;
       queuedOfflineRef.current = false;
       idempotencyKeyRef.current = null;
       setError(null);
@@ -89,16 +98,17 @@ export function useBookingForm(
     };
     window.addEventListener(OFFLINE_QUEUE_DRAINED_EVENT, onDrained);
     return () => window.removeEventListener(OFFLINE_QUEUE_DRAINED_EVENT, onDrained);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queueMutationType]);
 
-  // The drain permanently rejected queued work (non-retryable 4xx). Same
-  // queue-level coarseness as onDrained: if THIS form queued and something
-  // was dropped, surface the failure instead of the stale offline promise
-  // (AUD-21). Reset the idempotency key so a corrected resubmission is a
-  // fresh request, not a payload-mismatch conflict with the rejected one.
+  // The drain permanently rejected queued work of this form's type
+  // (non-retryable 4xx) — surface the failure instead of the stale offline
+  // promise (AUD-21). Fires before DRAINED so on a mixed drain the failure
+  // wins the queued flag. Reset the idempotency key so a corrected
+  // resubmission is a fresh request, not a payload-mismatch conflict.
   useEffect(() => {
-    const onDropped = () => {
-      if (!queuedOfflineRef.current) return;
+    const onDropped = (e: Event) => {
+      if (!queuedOfflineRef.current || !eventTouchesThisForm(e)) return;
       queuedOfflineRef.current = false;
       idempotencyKeyRef.current = null;
       setDone(false);
@@ -106,7 +116,8 @@ export function useBookingForm(
     };
     window.addEventListener(OFFLINE_QUEUE_DROPPED_EVENT, onDropped);
     return () => window.removeEventListener(OFFLINE_QUEUE_DROPPED_EVENT, onDropped);
-  }, [tErrors.offlineDropped]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tErrors.offlineDropped, queueMutationType]);
 
   useEffect(() => {
     setTodayStr(toLocalDateInputValue());
@@ -206,7 +217,7 @@ export function useBookingForm(
     }
 
     const body = JSON.stringify(bodyObj);
-    const mutationType = type === "winery_tasting" ? "winery_booking" : "guide_booking";
+    const mutationType = queueMutationType;
 
     try {
       const res = await fetch("/api/bookings", {

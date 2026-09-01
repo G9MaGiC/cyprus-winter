@@ -4,10 +4,7 @@
  * plan-ics.ts conventions: all-day events, RFC 5545 text escaping.
  */
 import type { Booking } from "@/lib/bookings";
-
-function escapeIcsText(s: string): string {
-  return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-}
+import { escapeIcsText } from "@/lib/ics";
 
 function toIcsDate(isoDate: string): string {
   return isoDate.replaceAll("-", "");

@@ -14,6 +14,7 @@ import { useTranslations } from "next-intl";
 import { guideBookingSchema } from "@/lib/booking-schemas";
 import { fieldDescribedBy } from "@/lib/form-a11y";
 import { useBookingForm } from "@/hooks/useBookingForm";
+import { useApiErrorMessages } from "@/hooks/useApiErrorMessages";
 
 export default function GuideBookingForm({
   guide,
@@ -24,7 +25,7 @@ export default function GuideBookingForm({
 }) {
   const t = useTranslations("book.guideForm");
   const tForm = useTranslations("book.form");
-  const tApiErrors = useTranslations("errors.api");
+  const apiByCode = useApiErrorMessages();
   const tRateLimited = useTranslations("errors.rateLimited");
   const tCommon = useTranslations("common");
   const tBookings = useTranslations("bookings");
@@ -70,15 +71,7 @@ export default function GuideBookingForm({
       fallback: t("errors.fallback"),
       offlineQueued: t("errors.offlineQueued"),
       offlineDropped: t("errors.offlineDropped"),
-      apiByCode: {
-        VALIDATION_ERROR: tApiErrors("VALIDATION_ERROR"),
-        BAD_REQUEST: tApiErrors("BAD_REQUEST"),
-        RATE_LIMITED: tApiErrors("RATE_LIMITED"),
-        SERVICE_UNAVAILABLE: tApiErrors("SERVICE_UNAVAILABLE"),
-        SERVER_ERROR: tApiErrors("SERVER_ERROR"),
-        NOT_FOUND: tApiErrors("NOT_FOUND"),
-        IDEMPOTENCY_CONFLICT: tApiErrors("IDEMPOTENCY_CONFLICT"),
-      },
+      apiByCode,
     }
   );
 
@@ -151,7 +144,19 @@ export default function GuideBookingForm({
           display:none: some bots skip invisible fields). */}
       <div aria-hidden className="h-px w-px overflow-hidden">
         <label htmlFor="website">{"Website"}</label>
-        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        {/* one-time-code + the 1Password/LastPass/Bitwarden opt-outs stop the
+            managers that DO fill fields despite autoComplete="off" — a filled
+            honeypot silently swallows a real user's booking (review finding). */}
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="one-time-code"
+          data-1p-ignore
+          data-lpignore="true"
+          data-bwignore
+        />
       </div>
       <BookingTrustStrip variant="guide" verified={isPartnerVerified(guide)} />
       <div className="rounded-lg border border-sand-200/80 bg-sand-100/60 p-3 text-xs text-muted-ink">

@@ -363,7 +363,13 @@
       "showing": "{count} of {total} shown"
     },
     "localeSwitchHeading": "Language",
-    "fromPrice": "from €{price}"
+    "fromPrice": "from €{price}",
+    "localeSuggest": {
+      "body": "This page is also available in English.",
+      "cta": "Switch to English",
+      "dismiss": "Dismiss",
+      "aria": "Language suggestion"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2241,7 +2247,8 @@
         "browseTrails": "Browse trails",
         "visitWineryPage": "Visit winery page",
         "discoverAll": "Discover all",
-        "addToCalendar": "Add to calendar"
+        "addToCalendar": "Add to calendar",
+        "viewTrail": "View trail"
       },
       "past": {
         "heading": "Past & cancelled"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -115,6 +116,22 @@ export default async function RootLayout({
   const messages = await getMessages();
   const locale = await getLocale();
   const tCommon = await getTranslations({ locale, namespace: "common" });
+
+  // The suggestion bar addresses a visitor who reads the TARGET language, so
+  // it needs every locale's own copy, not the current catalog's — built here
+  // (server) from the catalogs so the i18n gates see the strings (they were
+  // previously hardcoded in the component; review finding).
+  const localeSuggestStrings = Object.fromEntries(
+    await Promise.all(
+      routing.locales.map(async (l) => {
+        const t = await getTranslations({ locale: l, namespace: "common.localeSuggest" });
+        return [
+          l,
+          { body: t("body"), cta: t("cta"), dismiss: t("dismiss"), aria: t("aria") },
+        ] as const;
+      })
+    )
+  );
   const dir = locale === "he" ? "rtl" : "ltr";
 
   return (
@@ -157,7 +174,7 @@ export default async function RootLayout({
               <WebVitalsReporter />
               <ScrollToTop />
               <Nav />
-              <LocaleSuggestionBar />
+              <LocaleSuggestionBar strings={localeSuggestStrings} />
               <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
                 {children}
               </main>

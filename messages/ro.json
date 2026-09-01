@@ -363,7 +363,13 @@
       "showing": "{count} din {total} afișate"
     },
     "localeSwitchHeading": "Limbă",
-    "fromPrice": "de la {price} €"
+    "fromPrice": "de la {price} €",
+    "localeSuggest": {
+      "body": "Această pagină este disponibilă și în română.",
+      "cta": "Treci la română",
+      "dismiss": "Închide",
+      "aria": "Sugestie de limbă"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2241,7 +2247,8 @@
         "browseTrails": "Vezi trasee",
         "visitWineryPage": "Pagina cramei",
         "discoverAll": "Descoperă tot",
-        "addToCalendar": "Adaugă în calendar"
+        "addToCalendar": "Adaugă în calendar",
+        "viewTrail": "Vezi traseul"
       },
       "past": {
         "heading": "Trecute și anulate"

@@ -363,7 +363,13 @@
       "showing": "{count} von {total} angezeigt"
     },
     "localeSwitchHeading": "Sprache",
-    "fromPrice": "ab {price} €"
+    "fromPrice": "ab {price} €",
+    "localeSuggest": {
+      "body": "Diese Seite gibt es auch auf Deutsch.",
+      "cta": "Zu Deutsch wechseln",
+      "dismiss": "Ausblenden",
+      "aria": "Sprachvorschlag"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2241,7 +2247,8 @@
         "browseTrails": "Wanderwege entdecken",
         "visitWineryPage": "Zur Weingut-Seite",
         "discoverAll": "Alles entdecken",
-        "addToCalendar": "Zum Kalender hinzufügen"
+        "addToCalendar": "Zum Kalender hinzufügen",
+        "viewTrail": "Wanderweg ansehen"
       },
       "past": {
         "heading": "Vergangen & storniert"

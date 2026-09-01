@@ -363,7 +363,13 @@
       "showing": "מוצגים {count} מתוך {total}"
     },
     "localeSwitchHeading": "שפה",
-    "fromPrice": "החל מ־{price} €"
+    "fromPrice": "החל מ־{price} €",
+    "localeSuggest": {
+      "body": "העמוד הזה זמין גם בעברית.",
+      "cta": "מעבר לעברית",
+      "dismiss": "סגירה",
+      "aria": "הצעת שפה"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2241,7 +2247,8 @@
         "browseTrails": "עיון בשבילים",
         "visitWineryPage": "לדף היקב",
         "discoverAll": "גלו הכל",
-        "addToCalendar": "הוספה ליומן"
+        "addToCalendar": "הוספה ליומן",
+        "viewTrail": "צפו בשביל"
       },
       "past": {
         "heading": "עבר ובוטל"

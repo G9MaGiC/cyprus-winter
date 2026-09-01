@@ -41,9 +41,16 @@ export function AIAssistant() {
     } else {
       // Trigger unmounted (e.g. drawer opened from the mobile menu, which
       // closes itself) — fall back to the nav's menu button instead of body.
-      document
-        .querySelector<HTMLElement>("nav button[aria-expanded]")
-        ?.focus?.();
+      // The first match is the desktop More button, display:none on mobile
+      // (focus() on it is a no-op) — pick the first VISIBLE candidate, which
+      // on mobile is the hamburger.
+      const candidates = document.querySelectorAll<HTMLElement>("nav button[aria-expanded]");
+      for (const el of candidates) {
+        if (el.offsetParent !== null) {
+          el.focus?.();
+          break;
+        }
+      }
     }
   }, []);
 

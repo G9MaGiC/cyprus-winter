@@ -3,10 +3,7 @@
  */
 import type { PlanItem } from "@/data";
 import { MAX_DAYS } from "@/lib/itinerary-share";
-
-function escapeIcsText(s: string): string {
-  return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-}
+import { escapeIcsText } from "@/lib/ics";
 
 function formatIcsDate(d: Date): string {
   const pad = (n: number) => String(n).padStart(2, "0");

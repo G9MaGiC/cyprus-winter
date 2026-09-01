@@ -363,7 +363,13 @@
       "showing": "Εμφανίζονται {count} από {total}"
     },
     "localeSwitchHeading": "Γλώσσα",
-    "fromPrice": "από {price} €"
+    "fromPrice": "από {price} €",
+    "localeSuggest": {
+      "body": "Αυτή η σελίδα είναι διαθέσιμη και στα Ελληνικά.",
+      "cta": "Αλλαγή στα Ελληνικά",
+      "dismiss": "Κλείσιμο",
+      "aria": "Πρόταση γλώσσας"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2241,7 +2247,8 @@
         "browseTrails": "Περιήγηση σε μονοπάτια",
         "visitWineryPage": "Σελίδα οινοποιείου",
         "discoverAll": "Ανακαλύψτε όλα",
-        "addToCalendar": "Προσθήκη στο ημερολόγιο"
+        "addToCalendar": "Προσθήκη στο ημερολόγιο",
+        "viewTrail": "Δείτε το μονοπάτι"
       },
       "past": {
         "heading": "Προηγούμενες & ακυρωμένες"

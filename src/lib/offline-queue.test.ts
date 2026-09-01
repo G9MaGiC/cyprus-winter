@@ -3,6 +3,7 @@ import {
   addMutation,
   getQueue,
   processQueue,
+  OFFLINE_QUEUE_DRAINED_EVENT,
   OFFLINE_QUEUE_DROPPED_EVENT,
 } from "./offline-queue";
 
@@ -92,7 +93,34 @@ describe("offline queue", () => {
     expect(getQueue()).toEqual([]);
     const droppedEvents = dispatched.filter((e) => e.type === OFFLINE_QUEUE_DROPPED_EVENT);
     expect(droppedEvents).toHaveLength(1);
-    expect((droppedEvents[0] as CustomEvent).detail).toEqual({ dropped: 1 });
+    expect((droppedEvents[0] as CustomEvent).detail).toEqual({
+      dropped: 1,
+      types: ["winery_booking"],
+    });
+  });
+
+  it("fires DROPPED before DRAINED on a mixed drain so a rejected booking fails safe", async () => {
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      // First queued item (trail report) delivers, second (booking) is rejected.
+      .mockResolvedValueOnce(new Response(null, { status: 200 }))
+      .mockResolvedValueOnce(new Response(null, { status: 422 }));
+    const order: string[] = [];
+    vi.stubGlobal("fetch", fetchMock);
+    vi.stubGlobal("window", {
+      localStorage: storage,
+      dispatchEvent: (e: Event) => {
+        order.push(e.type);
+        return true;
+      },
+    });
+
+    addMutation({ type: "trail_report", url: "/api/trail-reports", method: "POST", body: "{}" });
+    addMutation({ type: "winery_booking", url: "/api/bookings", method: "POST", body: "{}" });
+
+    await processQueue();
+
+    expect(order).toEqual([OFFLINE_QUEUE_DROPPED_EVENT, OFFLINE_QUEUE_DRAINED_EVENT]);
   });
 
   it("deduplicates concurrent queue processors so a booking mutation posts once", async () => {
