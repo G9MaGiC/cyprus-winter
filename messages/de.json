@@ -4053,6 +4053,104 @@
         "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
         "transport": "Hügel bei Nikosia. Ca. 45 Min. von der Hauptstadt.",
         "parking": "Vor Ort."
+      },
+      "ezousa": {
+        "tastingInfo": "Nach Vereinbarung; Verkostungsraum. Meze-Begleitung nach Absprache.",
+        "winterTip": "Die Meze-Begleitung reservieren. Kannaviou liegt abseits der Hauptrouten; authentisch.",
+        "bestTimeToVisit": "Nach Vereinbarung."
+      },
+      "hadjipavlou": {
+        "tastingInfo": "Verkostungen nach Vereinbarung",
+        "winterTip": "Familie in dritter Generation; authentische Commandaria und Bergweine. Der Steinkeller ist im Winter gemütlich.",
+        "bestTimeToVisit": "Dez. bis März, vorher anrufen"
+      },
+      "olympus-winery": {
+        "tastingInfo": "Touren und Verkostungen. 08:00–17:00.",
+        "winterTip": "Mit Ski oder Wanderung verbinden. Die Straße kann Jan.–Feb. verschneit sein; vorher anrufen.",
+        "openingHours": "08:00–17:00. Im Winter vorher anrufen."
+      },
+      "minous": {
+        "tastingInfo": "Vorher anrufen; oft auch spontan möglich",
+        "winterTip": "Vorher anrufen. Die Tavernen von Pachna bieten Mittagessen. Der Stein speichert im Winter die Sonne."
+      },
+      "tria-elit": {
+        "tastingInfo": "Verkostungen 8–12 €; Gruppen bitte reservieren.",
+        "winterTip": "Die Terrasse fängt die Wintersonne ein. Ein leichter halber Tag ab Limassol.",
+        "bestTimeToVisit": "Dez. bis März; mit Kourion oder einem Mittagessen am Hafen verbinden."
+      },
+      "ayii-anargyri": {
+        "tastingInfo": "Nur nach Vereinbarung.",
+        "winterTip": "Friedliches Miliou. Talblick. Vorab reservieren.",
+        "bestTimeToVisit": "Dez. bis März; ein stiller Nachmittag.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Miliou, Laona-Route.",
+        "parking": "Vor Ort."
+      },
+      "pittali": {
+        "tastingInfo": "Nach Vereinbarung; vorher anrufen",
+        "winterTip": "Hochgelegenes Pitsilia. Vorher anrufen. Mit der Madari-Kammwanderung verbinden. Der Berg macht die Arbeit."
+      },
+      "papaioannou": {
+        "tastingInfo": "Verkostungen in der Saison; Nov.–März vorher anrufen.",
+        "winterTip": "Dorf Vasa. Der große Keller ist sehenswert. Gruppen willkommen. Mit Koilani und Vlassides verbinden."
+      },
+      "karseras": {
+        "tastingInfo": "Nach Vereinbarung; vorher anrufen",
+        "winterTip": "Nahe Platres. Morgens Artemis- oder Caledonia-Weg, nachmittags Karseras. Eine Commandaria-Wiederbelebungsgeschichte."
+      },
+      "evangelou": {
+        "tastingInfo": "Nach Vereinbarung",
+        "winterTip": "Pera Pedi, Krasochoria. Vorab reservieren. Mit Omodos und Koilani zu einem vollen Weindorf-Tag verbinden."
+      },
+      "chrysoroyiatissa-winery": {
+        "tastingInfo": "Verkostungen im Kloster; Öffnungszeiten prüfen",
+        "winterTip": "Klostergelände. Spirituell und weinselig zugleich. Mit Vouni Panayia und dem Dorf Panayia verbinden. Ein Juwel der Laona-Route."
+      },
+      "loel": {
+        "tastingInfo": "Touren und Verkostungen; vorab reservieren",
+        "winterTip": "Hochmoderne Anlage. Erbe trifft Moderne. Leicht von Limassol zu erreichen."
+      },
+      "etko-olympus": {
+        "tastingInfo": "Verkostungen und Touren; Öffnungszeiten prüfen",
+        "winterTip": "Der älteste Name im zyprischen Wein. Das Dorf Omodos zu Ihren Füßen. Vorab reservieren."
+      },
+      "revecca": {
+        "tastingInfo": "Nur nach Vereinbarung",
+        "winterTip": "Kleine Chargen. Vorher anrufen. Agios Mamas ist stilles Commandaria-Land."
+      },
+      "mallia": {
+        "tastingInfo": "Touren und Verkostungen; vorab reservieren",
+        "winterTip": "Großer Produktionsstandort. Touren vorab reservieren. Erbe und Größe."
+      },
+      "monolithos": {
+        "tastingInfo": "Nach Vereinbarung; vorher anrufen",
+        "winterTip": "Abseits der Hauptrunde. Vorher anrufen. Boutique-Charakter."
+      },
+      "antoniades": {
+        "tastingInfo": "Touren und Verkostungen; vorher Kontakt aufnehmen",
+        "winterTip": "Ihr Nama — uralte Commandaria. Nach dem Erbe der Pithari-Krüge fragen."
+      },
+      "ayios-savas": {
+        "tastingInfo": "Touren und Verkostungen; vorab reservieren",
+        "winterTip": "Küstenreben. Anders als Bergwein. Governor's Beach und Kourion in der Nähe."
+      },
+      "povis": {
+        "tastingInfo": "Nach Vereinbarung; vorher anrufen",
+        "winterTip": "Klein und persönlich. Vorher anrufen. Das Kloster Chrysorrogiatissa in der Nähe."
+      },
+      "anama": {
+        "tastingInfo": "Nach Vereinbarung",
+        "winterTip": "Commandaria aus Larnaka. Friedliches Dorf. Mit Stavrovouni oder Zygi verbinden.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Hügel von Larnaka. Ca. 30 Min. von Larnaka.",
+        "parking": "Vor Ort."
+      },
+      "linos": {
+        "tastingInfo": "Nach Vereinbarung",
+        "winterTip": "Nahe Platres. Mit Caledonia oder Artemis verbinden. Bergcharakter.",
+        "openingHours": "Nach Vereinbarung; Nov.–März vorher anrufen.",
+        "transport": "Kato Platres. Ca. 45 Min. von Limassol.",
+        "parking": "Vor Ort."
       }
     },
     "attractions": {

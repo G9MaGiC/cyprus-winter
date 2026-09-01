@@ -4053,6 +4053,104 @@
         "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
         "transport": "Wzgórza Nikozji. Ok. 45 min od stolicy.",
         "parking": "Na miejscu."
+      },
+      "ezousa": {
+        "tastingInfo": "Po umówieniu; sala degustacyjna. Meze po wcześniejszym ustaleniu.",
+        "winterTip": "Zarezerwuj zestaw z meze. Kannaviou leży z dala od głównych tras; autentycznie.",
+        "bestTimeToVisit": "Po umówieniu."
+      },
+      "hadjipavlou": {
+        "tastingInfo": "Degustacje po umówieniu",
+        "winterTip": "Rodzina od trzech pokoleń; autentyczna Commandaria i górskie wina. Kamienna piwnica jest zimą przytulna.",
+        "bestTimeToVisit": "Grudzień–marzec, zadzwoń wcześniej"
+      },
+      "olympus-winery": {
+        "tastingInfo": "Zwiedzanie i degustacje. 08:00–17:00.",
+        "winterTip": "Połącz z nartami lub wędrówką. Droga bywa zaśnieżona I–II; zadzwoń wcześniej.",
+        "openingHours": "08:00–17:00. Zimą zadzwoń wcześniej."
+      },
+      "minous": {
+        "tastingInfo": "Zadzwoń wcześniej; często przyjmują bez zapowiedzi",
+        "winterTip": "Zadzwoń wcześniej. Tawerny w Pachnie serwują obiad. Kamień trzyma zimą ciepło słońca."
+      },
+      "tria-elit": {
+        "tastingInfo": "Degustacje 8–12 €; grupy z rezerwacją.",
+        "winterTip": "Taras łapie zimowe słońce. Łatwe pół dnia z Limassol.",
+        "bestTimeToVisit": "Grudzień–marzec; połącz z Kourion lub obiadem w porcie."
+      },
+      "ayii-anargyri": {
+        "tastingInfo": "Tylko po umówieniu.",
+        "winterTip": "Spokojne Miliou. Widok na dolinę. Rezerwuj wcześniej.",
+        "bestTimeToVisit": "Grudzień–marzec; ciche popołudnie.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Miliou, trasa Laona.",
+        "parking": "Na miejscu."
+      },
+      "pittali": {
+        "tastingInfo": "Po umówieniu; zadzwoń wcześniej",
+        "winterTip": "Wysoko położona Pitsilia. Zadzwoń wcześniej. Połącz z wędrówką granią Madari. Góra robi swoje."
+      },
+      "papaioannou": {
+        "tastingInfo": "Degustacje w sezonie; XI–III zadzwoń wcześniej.",
+        "winterTip": "Wioska Vasa. Wielka piwnica jest warta zobaczenia. Grupy mile widziane. Połącz z Koilani i Vlassides."
+      },
+      "karseras": {
+        "tastingInfo": "Po umówieniu; zadzwoń wcześniej",
+        "winterTip": "Blisko Platres. Rano Artemis lub Caledonia, po południu Karseras. Historia odrodzenia Commandarii."
+      },
+      "evangelou": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Pera Pedi, Krasochoria. Rezerwuj wcześniej. Połącz z Omodos i Koilani na pełny dzień wśród winnych wiosek."
+      },
+      "chrysoroyiatissa-winery": {
+        "tastingInfo": "Degustacje przy klasztorze; sprawdź godziny",
+        "winterTip": "Teren klasztoru. Duchowo i winnie zarazem. Połącz z Vouni Panayia i wioską Panayia. Perła trasy Laona."
+      },
+      "loel": {
+        "tastingInfo": "Zwiedzanie i degustacje; rezerwuj wcześniej",
+        "winterTip": "Nowoczesny zakład. Dziedzictwo spotyka nowoczesność. Łatwy dojazd z Limassol."
+      },
+      "etko-olympus": {
+        "tastingInfo": "Degustacje i zwiedzanie; sprawdź godziny",
+        "winterTip": "Najstarsza marka cypryjskiego wina. Wioska Omodos u stóp. Rezerwuj wcześniej."
+      },
+      "revecca": {
+        "tastingInfo": "Tylko po umówieniu",
+        "winterTip": "Małe partie. Zadzwoń wcześniej. Agios Mamas to spokojna kraina Commandarii."
+      },
+      "mallia": {
+        "tastingInfo": "Zwiedzanie i degustacje; rezerwuj wcześniej",
+        "winterTip": "Duży zakład produkcyjny. Zwiedzanie rezerwuj wcześniej. Dziedzictwo i skala."
+      },
+      "monolithos": {
+        "tastingInfo": "Po umówieniu; zadzwoń wcześniej",
+        "winterTip": "Poza główną pętlą. Zadzwoń wcześniej. Butikowy charakter."
+      },
+      "antoniades": {
+        "tastingInfo": "Zwiedzanie i degustacje; skontaktuj się wcześniej",
+        "winterTip": "Ich Nama — starożytna Commandaria. Zapytaj o dziedzictwo glinianych pithari."
+      },
+      "ayios-savas": {
+        "tastingInfo": "Zwiedzanie i degustacje; rezerwuj wcześniej",
+        "winterTip": "Nadmorskie winnice. Inaczej niż wino górskie. W pobliżu Governor's Beach i Kourion."
+      },
+      "povis": {
+        "tastingInfo": "Po umówieniu; zadzwoń wcześniej",
+        "winterTip": "Małe i osobiste. Zadzwoń wcześniej. W pobliżu klasztor Chrysorrogiatissa."
+      },
+      "anama": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Commandaria z Larnaki. Spokojna wioska. Połącz ze Stavrovouni lub Zygi.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Wzgórza Larnaki. Ok. 30 min od Larnaki.",
+        "parking": "Na miejscu."
+      },
+      "linos": {
+        "tastingInfo": "Po umówieniu",
+        "winterTip": "Blisko Platres. Połącz z Caledonią lub Artemis. Górski charakter.",
+        "openingHours": "Po umówieniu; XI–III zadzwoń wcześniej.",
+        "transport": "Kato Platres. Ok. 45 min od Limassol.",
+        "parking": "Na miejscu."
       }
     },
     "attractions": {

@@ -4053,6 +4053,104 @@
         "openingHours": "Cu programare; sunați înainte nov.–mar.",
         "transport": "Dealurile Nicosiei. Cca 45 min de capitală.",
         "parking": "La fața locului."
+      },
+      "ezousa": {
+        "tastingInfo": "Cu programare; sală de degustare. Acord cu meze la cerere.",
+        "winterTip": "Rezervați acordul cu meze. Kannaviou e în afara rutelor principale; autentic.",
+        "bestTimeToVisit": "Cu programare."
+      },
+      "hadjipavlou": {
+        "tastingInfo": "Degustări cu programare",
+        "winterTip": "Familie la a treia generație; Commandaria autentică și vinuri de munte. Pivnița de piatră e primitoare iarna.",
+        "bestTimeToVisit": "Dec.–mar., sunați înainte"
+      },
+      "olympus-winery": {
+        "tastingInfo": "Tururi și degustări. 08:00–17:00.",
+        "winterTip": "Combinați cu schi sau drumeție. Drumul poate fi înzăpezit ian.–feb.; sunați înainte.",
+        "openingHours": "08:00–17:00. Iarna sunați înainte."
+      },
+      "minous": {
+        "tastingInfo": "Sunați înainte; adesea primesc și fără programare",
+        "winterTip": "Sunați înainte. Tavernele din Pachna au prânz. Piatra păstrează soarele iarna."
+      },
+      "tria-elit": {
+        "tastingInfo": "Degustări 8–12 €; rezervați pentru grupuri.",
+        "winterTip": "Terasa prinde soarele de iarnă. O jumătate de zi ușoară din Limassol.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu Kourion sau un prânz în port."
+      },
+      "ayii-anargyri": {
+        "tastingInfo": "Doar cu programare.",
+        "winterTip": "Miliou cea pașnică. Priveliști spre vale. Rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar.; o după-amiază liniștită.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Miliou, ruta Laona.",
+        "parking": "La fața locului."
+      },
+      "pittali": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "Pitsilia de altitudine. Sunați înainte. Combinați cu creasta Madari. Muntele face treaba."
+      },
+      "papaioannou": {
+        "tastingInfo": "Degustări în sezon; nov.–mar. sunați înainte.",
+        "winterTip": "Satul Vasa. Pivnița mare merită văzută. Grupurile sunt binevenite. Combinați cu Koilani și Vlassides."
+      },
+      "karseras": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "Lângă Platres. Artemis sau Caledonia dimineața, Karseras după-amiaza. O poveste de renaștere a Commandariei."
+      },
+      "evangelou": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Pera Pedi, Krasochoria. Rezervați din timp. Combinați cu Omodos și Koilani pentru o zi întreagă printre satele vinului."
+      },
+      "chrysoroyiatissa-winery": {
+        "tastingInfo": "Degustări la mănăstire; verificați programul",
+        "winterTip": "Incinta mănăstirii. Spiritual și vinicol deopotrivă. Combinați cu Vouni Panayia și satul Panayia. O bijuterie a rutei Laona."
+      },
+      "loel": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Facilitate ultramodernă. Patrimoniul întâlnește modernul. Drum ușor din Limassol."
+      },
+      "etko-olympus": {
+        "tastingInfo": "Degustări și tururi; verificați programul",
+        "winterTip": "Cel mai vechi nume din vinul cipriot. Satul Omodos la picioarele voastre. Rezervați din timp."
+      },
+      "revecca": {
+        "tastingInfo": "Doar cu programare",
+        "winterTip": "Producție mică. Sunați înainte. Agios Mamas e ținutul liniștit al Commandariei."
+      },
+      "mallia": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Sit mare de producție. Rezervați tururile din timp. Patrimoniu și anvergură."
+      },
+      "monolithos": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "În afara buclei principale. Sunați înainte. Caracter boutique."
+      },
+      "antoniades": {
+        "tastingInfo": "Tururi și degustări; contactați-i înainte",
+        "winterTip": "Nama lor — Commandaria străveche. Întrebați despre moștenirea vaselor pithari."
+      },
+      "ayios-savas": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Vii de coastă. Altfel decât vinul de munte. Governor's Beach și Kourion în apropiere."
+      },
+      "povis": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "Mic și personal. Sunați înainte. Mănăstirea Chrysorrogiatissa în apropiere."
+      },
+      "anama": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Commandaria din Larnaca. Sat pașnic. Combinați cu Stavrovouni sau Zygi.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Dealurile Larnacăi. Cca 30 min de Larnaca.",
+        "parking": "La fața locului."
+      },
+      "linos": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Lângă Platres. Combinați cu Caledonia sau Artemis. Caracter montan.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Kato Platres. Cca 45 min de Limassol.",
+        "parking": "La fața locului."
       }
     },
     "attractions": {

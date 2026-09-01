@@ -66,6 +66,28 @@ export const LOCALIZED_WINERY_IDS: ReadonlySet<string> = new Set([
   "dafermou",
   "nicolaides",
   "solia",
+  // Slice 12 (batch 21) — final 21 wineries; completes the class (71 of 71)
+  "ezousa",
+  "hadjipavlou",
+  "olympus-winery",
+  "minous",
+  "tria-elit",
+  "ayii-anargyri",
+  "pittali",
+  "papaioannou",
+  "karseras",
+  "evangelou",
+  "chrysoroyiatissa-winery",
+  "loel",
+  "etko-olympus",
+  "revecca",
+  "mallia",
+  "monolithos",
+  "antoniades",
+  "ayios-savas",
+  "povis",
+  "anama",
+  "linos",
 ]);
 
 export const LOCALIZED_WINERY_FIELDS = [

@@ -4053,6 +4053,104 @@
         "openingHours": "By appointment; call ahead Nov–Mar.",
         "transport": "Nicosia hills. ~45 min from capital.",
         "parking": "On-site."
+      },
+      "ezousa": {
+        "tastingInfo": "By appointment; tasting room. Meze pairing when arranged.",
+        "winterTip": "Book the meze pairing. Kannaviou is off the main routes; authentic.",
+        "bestTimeToVisit": "By appointment."
+      },
+      "hadjipavlou": {
+        "tastingInfo": "Tastings by appointment",
+        "winterTip": "Third-generation family; authentic Commandaria and mountain wines. Stone cellar is cosy in winter.",
+        "bestTimeToVisit": "Dec to Mar, call ahead"
+      },
+      "olympus-winery": {
+        "tastingInfo": "Tours and tastings. 08:00–17:00.",
+        "winterTip": "Combine with ski or hike. Road can be snowy Jan–Feb; call ahead.",
+        "openingHours": "08:00–17:00. Call ahead in winter."
+      },
+      "minous": {
+        "tastingInfo": "Call ahead; often available for drop-in",
+        "winterTip": "Call ahead. Pachna tavernas do lunch. Stone holds the sun in winter."
+      },
+      "tria-elit": {
+        "tastingInfo": "Tastings €8–12; reserve for groups.",
+        "winterTip": "Terrace catches winter sun. Easy half-day from Limassol.",
+        "bestTimeToVisit": "Dec to Mar; combine with Kourion or harbour lunch."
+      },
+      "ayii-anargyri": {
+        "tastingInfo": "By appointment only.",
+        "winterTip": "Peaceful Miliou. Valley views. Book ahead.",
+        "bestTimeToVisit": "Dec to Mar; quiet afternoon.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Miliou, Laona route.",
+        "parking": "On-site."
+      },
+      "pittali": {
+        "tastingInfo": "By appointment; call ahead",
+        "winterTip": "High-altitude Pitsilia. Call ahead. Combine with Madari Ridge walk. The mountain does the work."
+      },
+      "papaioannou": {
+        "tastingInfo": "Tastings in season; call ahead Nov–Mar.",
+        "winterTip": "Vasa village. The grand cellar is worth seeing. Groups welcome. Combine with Koilani and Vlassides."
+      },
+      "karseras": {
+        "tastingInfo": "By appointment; call ahead",
+        "winterTip": "Near Platres. Do Artemis or Caledonia in the morning, Karseras in the afternoon. Commandaria revival story."
+      },
+      "evangelou": {
+        "tastingInfo": "By appointment",
+        "winterTip": "Pera Pedi Krasochoria. Book ahead. Combine with Omodos and Koilani for a full wine-village day."
+      },
+      "chrysoroyiatissa-winery": {
+        "tastingInfo": "Tastings at monastery; check hours",
+        "winterTip": "Monastery grounds. Spiritual and vinous. Combine with Vouni Panayia and Panayia village. Laona route gem."
+      },
+      "loel": {
+        "tastingInfo": "Tastings and tours; book ahead",
+        "winterTip": "State-of-the-art facility. Heritage meets modern. Easy drive from Limassol."
+      },
+      "etko-olympus": {
+        "tastingInfo": "Tastings and tours; check hours",
+        "winterTip": "Oldest name in Cypriot wine. Omodos village at your feet. Book ahead."
+      },
+      "revecca": {
+        "tastingInfo": "By appointment only",
+        "winterTip": "Small-batch. Call ahead. Agios Mamas is quiet Commandaria country."
+      },
+      "mallia": {
+        "tastingInfo": "Tours and tastings; book ahead",
+        "winterTip": "Major production site. Book ahead for tours. Heritage and scale."
+      },
+      "monolithos": {
+        "tastingInfo": "By appointment; call ahead",
+        "winterTip": "Off the main loop. Call ahead. Boutique character."
+      },
+      "antoniades": {
+        "tastingInfo": "Tours and tastings; contact ahead",
+        "winterTip": "Their Nama—ancient Commandaria. Ask about the pithari jar heritage."
+      },
+      "ayios-savas": {
+        "tastingInfo": "Tours and tastings; book ahead",
+        "winterTip": "Coastal vines. Different from mountain wine. Governor's Beach and Kourion nearby."
+      },
+      "povis": {
+        "tastingInfo": "By appointment; call ahead",
+        "winterTip": "Small and personal. Call ahead. Chrysorrogiatissa Monastery nearby."
+      },
+      "anama": {
+        "tastingInfo": "By appointment",
+        "winterTip": "Larnaca Commandaria. Peaceful village. Combine with Stavrovouni or Zygi.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Larnaca hills. ~30 min from Larnaca.",
+        "parking": "On-site."
+      },
+      "linos": {
+        "tastingInfo": "By appointment",
+        "winterTip": "Near Platres. Combine with Caledonia or Artemis. Mountain character.",
+        "openingHours": "By appointment; call ahead Nov–Mar.",
+        "transport": "Kato Platres. ~45 min from Limassol.",
+        "parking": "On-site."
       }
     },
     "attractions": {
