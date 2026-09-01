@@ -13,7 +13,7 @@ import Image from "next/image";
 import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
-import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
 import { localizeWineryContent } from "@/lib/winery-content";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
@@ -60,6 +60,7 @@ export default async function WineryBookPage({
   // Locale content overlay first (AUD-10 pilot), then partner runtime hours:
   // live partner data beats curated translation. JSON-LD below reads `found`
   // (the EN base) for structured-data consistency.
+  await ensurePartnerOverlaysLoaded();
   const winery = applyPartnerOpeningHours(await localizeWineryContent(found));
   const imageUrl = getAttractionImage(id, "winery");
   const [tNav, tCommon, tBookPages] = await Promise.all([

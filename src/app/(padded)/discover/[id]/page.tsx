@@ -32,7 +32,7 @@ import DetailPracticalInfo from "./DetailPracticalInfo";
 import DetailBookingSection from "./DetailBookingSection";
 import DiscoverLocationMap from "@/components/DiscoverLocationMap";
 import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
-import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
 import { localizeDiscoverContent } from "@/lib/discover-content";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
@@ -115,6 +115,7 @@ export default async function AttractionPage({
   // additionally gets the AUD-10 locale overlay — covered wineries since
   // batch 5, pilot attractions since slice 3 (this surface previously showed
   // EN base fields even for covered wineries).
+  await ensurePartnerOverlaysLoaded();
   const base = applyPartnerOpeningHours(found);
   const a = applyPartnerOpeningHours(await localizeDiscoverContent(found, locale));
 

@@ -14,7 +14,7 @@ import { isPartnerVerified } from "@/lib/partner-verification";
 import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
 import HubSkipNav from "@/components/HubSkipNav";
 import { localizeWineryContent } from "@/lib/winery-content";
-import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
@@ -49,6 +49,7 @@ export default async function WineriesPage() {
 
   // AUD-10 card surfaces: pilot overlay + partner hours baked server-side
   // (partner runtime hours win; also removes the client-side dead-Map split).
+  await ensurePartnerOverlaysLoaded();
   const localizedWineries = await Promise.all(
     wineries.map(async (w) => applyPartnerOpeningHours(await localizeWineryContent(w)))
   );

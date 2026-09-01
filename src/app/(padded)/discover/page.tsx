@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { allDiscoverItems, type DiscoverItem } from "@/data/discover";
 import { buildDiscoverSections, toDiscoverCardSection } from "@/lib/discover-sections";
 import { localizeDiscoverContent } from "@/lib/discover-content";
-import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { applyPartnerOpeningHours, ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay";
 import HubSkipNav from "@/components/HubSkipNav";
 import {
   ACTIVITY_FILTER_KEYS,
@@ -31,6 +31,7 @@ const DISCOVER_HERO_IMAGE = "/images/cyprus/cyprus-village-omodos.jpg";
 // the page is already request-rendered (root layout resolves the locale per
 // request), and the section filters are cheap in-memory passes.
 async function localizeItems(items: DiscoverItem[]): Promise<DiscoverItem[]> {
+  await ensurePartnerOverlaysLoaded();
   return Promise.all(
     items.map(async (item) => {
       // Covered wineries AND pilot attractions localize (id-gated inside);
