@@ -66,7 +66,7 @@ export default async function WineriesListPage() {
 
       <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {(() => {
-          const sorted = [...wineries].sort((a, b) => {
+          const sorted = wineries.filter((winery) => winery.isBookable !== false && Boolean(winery.bookingUrl)).sort((a, b) => {
             if (isPartnerVerified(a) && !isPartnerVerified(b)) return -1;
             if (!isPartnerVerified(a) && isPartnerVerified(b)) return 1;
             return 0;
