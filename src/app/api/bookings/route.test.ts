@@ -89,6 +89,8 @@ describe("POST /api/bookings", () => {
     expect(data.ok).toBe(true);
     expect(data.booking).toBeDefined();
     expect(data.booking.providerId).toBe("tsiakkas");
+    expect(data.partnerConnected).toBe(false);
+    expect(data.message).toMatch(/contact the winery directly/i);
   });
 
   it("rejects reusing an idempotency key with different booking details", async () => {
