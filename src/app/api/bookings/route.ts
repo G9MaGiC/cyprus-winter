@@ -292,7 +292,7 @@ export async function POST(req: Request) {
     }
 
     if (type === "guide_tour") {
-      const guide = guides.find((g) => g.id === providerId);
+      const guide = guides.find((g) => g.id === providerId && g.isPublic !== false);
       if (!guide) {
         return jsonError("NOT_FOUND", "Guide not found", 404);
       }
