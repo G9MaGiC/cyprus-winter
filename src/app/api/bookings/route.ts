@@ -273,8 +273,11 @@ export async function POST(req: Request) {
         {
           booking,
           message: created
-            ? "Booking request sent. The winery will be in touch."
+            ? isPartnerVerified(winery)
+              ? "Booking request sent. The winery will be in touch."
+              : "Request saved. Contact the winery directly to confirm availability."
             : "This booking request was already received.",
+          partnerConnected: isPartnerVerified(winery),
           replayed: !created,
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
@@ -338,8 +341,11 @@ export async function POST(req: Request) {
         {
           booking,
           message: created
-            ? "Booking request sent. The guide will be in touch."
+            ? isPartnerVerified(guide)
+              ? "Booking request sent. The guide will be in touch."
+              : "Request saved. Contact the guide directly to confirm availability."
             : "This booking request was already received.",
+          partnerConnected: isPartnerVerified(guide),
           replayed: !created,
           storage: hasSupabase() ? "database" : "memory",
           emailStatus: {
