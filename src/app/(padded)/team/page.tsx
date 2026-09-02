@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import { team } from "@/data/team";
 import { LAYOUT, CTA, CARD, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
@@ -29,43 +28,13 @@ export default async function TeamPage() {
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("team"), href: "/team", isCurrent: true }]}
       />
 
-      <h2 className="sr-only">{tTeam("membersHeading")}</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {team.map((member) => (
-          <article
-            key={member.id}
-            className={`group ${CARD.base} ${CARD.content} ${CARD.hover} bg-sand-100/90`}
-          >
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta/30 to-terracotta/20 flex items-center justify-center text-2xl font-display font-bold text-muted-ink mb-4">
-              {member.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
-            <h3 className={`${TYPE.subSectionTitle} text-olive group-hover:text-terracotta transition-colors truncate`}>
-              {member.name}
-            </h3>
-            <p className="text-terracotta font-medium text-sm mt-0.5 truncate" title={member.role}>
-              {member.role}
-            </p>
-            <p className="text-muted-ink text-sm mt-3 leading-relaxed prose-body break-words">
-              {member.bio}
-            </p>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {member.expertise.map((e) => (
-                <span
-                  key={e}
-                  className="text-xs px-2.5 py-1 rounded-md bg-sand-100 text-muted-ink break-words"
-                >
-                  {e}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))}
+      <div className={`${CARD.base} ${CARD.content} bg-sand-100/90 border-s-4 border-s-terracotta/20 text-center`}>
+        <p className="text-muted-ink max-w-2xl mx-auto leading-relaxed">
+          {tTeam("outro")}
+        </p>
       </div>
 
-      <div className={`mt-16 ${CARD.base} ${CARD.content} bg-sand-100/90 border-s-4 border-s-terracotta/20 text-center`}>
+      <div className={`mt-8 ${CARD.base} ${CARD.content} bg-sand-100/90 border-s-4 border-s-terracotta/20 text-center`}>
         <p className="text-sm text-muted-ink mb-4">{tTeam("cta.prompt")}</p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <AIAssistantTrigger label={tTeam("cta.askAi")} />
@@ -78,9 +47,6 @@ export default async function TeamPage() {
         </div>
       </div>
 
-      <p className="mt-12 text-center text-muted-ink text-sm max-w-md mx-auto leading-relaxed break-words">
-        {tTeam("outro")}
-      </p>
     </div>
   );
 }
