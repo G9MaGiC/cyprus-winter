@@ -18,6 +18,10 @@ export type Guide = {
   bookingUrl?: string;
   partnerEmail?: string;
   isVerified?: boolean;
+  /** False keeps an unverified draft record out of public and booking surfaces. */
+  isPublic?: boolean;
+  sourceUrl?: string;
+  lastVerifiedAt?: string;
   partnerLeadFeeEur?: number;
 };
 
@@ -34,6 +38,7 @@ export const guides: Guide[] = [
     contactPhone: "+357 99 123456",
     bookingUrl: "https://www.cyprusactivetours.com/",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+cyprus-active-tours@cyprus-winter.example",
     partnerLeadFeeEur: 10,
   },
@@ -48,6 +53,7 @@ export const guides: Guide[] = [
     trailIds: ["artemis", "atalante", "caledonia-falls", "olympus-summit", "madari-ridge"],
     contactPhone: "+357 25 421123",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+troodos-guides@cyprus-winter.example",
     partnerLeadFeeEur: 10,
   },
@@ -62,6 +68,7 @@ export const guides: Guide[] = [
     trailIds: ["adonis", "aphrodite", "avakas-gorge"],
     contactPhone: "+357 26 654321",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+akamas-explorer@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
@@ -76,6 +83,7 @@ export const guides: Guide[] = [
     trailIds: ["smigies", "stavros-tis-psokas", "vouni-panagias", "pissouromoutti"],
     contactPhone: "+357 26 701234",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+paphos-forest-guides@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
@@ -90,6 +98,7 @@ export const guides: Guide[] = [
     trailIds: ["millomeris-falls", "kryos-potamos-loop", "kampos-tou-livadiou", "horteri"],
     contactPhone: "+357 25 431567",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+platres-trail-co@cyprus-winter.example",
     partnerLeadFeeEur: 10,
   },
@@ -104,6 +113,7 @@ export const guides: Guide[] = [
     trailIds: ["cape-greco"],
     contactPhone: "+357 23 812345",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+cape-coast-guides@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
@@ -118,6 +128,7 @@ export const guides: Guide[] = [
     trailIds: ["xyliatos-dam", "machairas-forest"],
     contactPhone: "+357 22 901234",
     isVerified: true,
+    isPublic: false,
     partnerEmail: "bookings+nicosia-outdoor@cyprus-winter.example",
     partnerLeadFeeEur: 8,
   },
