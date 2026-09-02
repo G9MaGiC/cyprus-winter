@@ -71,7 +71,8 @@
     "android:sync": "cap sync android",
     "android:build:debug": "cd android && ./gradlew assembleDebug",
     "android:build:release": "cap build android --androidreleasetype AAB",
-    "data:plan-items": "npx tsx scripts/data/generate-plan-items.ts"
+    "data:plan-items": "npx tsx scripts/data/generate-plan-items.ts",
+    "i18n:export-review": "node scripts/i18n/export-native-review.mjs"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.43.0",
