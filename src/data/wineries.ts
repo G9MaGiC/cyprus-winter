@@ -220,6 +220,8 @@ const wineryRecords: Winery[] = [
     transport: "50 km from Limassol, 75 km from Nicosia. Pitsilia, Troodos.",
     parking: "On-site.",
     combineWith: ["olympus-summit", "platres", "artemis"],
+    sourceUrl: "https://kyperoundawinery.com/en/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "santo",
@@ -307,6 +309,8 @@ const wineryRecords: Winery[] = [
     latitude: 34.834,
     longitude: 32.432,
     combineWith: ["vouni-panayia", "pafos-mosaics", "chrysorrogiatissa"],
+    sourceUrl: "https://www.fikardoswines.com.cy/bookings/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "vlassides",
@@ -338,6 +342,8 @@ const wineryRecords: Winery[] = [
       { name: "Eddial", variety: "Sparkling", price: "€7/glass" },
     ],
     combineWith: ["koilani", "omodos", "tsiakkas"],
+    sourceUrl: "https://vlassideswinery.com/visits/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "vasilikon",
@@ -368,6 +374,8 @@ const wineryRecords: Winery[] = [
       { name: "Xinisteri Single Vineyard", variety: "Xynisteri", price: "—" },
     ],
     combineWith: ["adonis", "kolios", "polis", "polis-harbour", "smigies"],
+    sourceUrl: "https://vasilikon.com/contact-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ktima-vassiliades",
@@ -397,6 +405,9 @@ const wineryRecords: Winery[] = [
       { name: "Geroklima", variety: "Maratheftiko", price: "—" },
     ],
     combineWith: ["omodos", "tsiakkas", "artemis"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ayia-mavri",
@@ -479,6 +490,9 @@ const wineryRecords: Winery[] = [
     contactPhone: "+357 99 651707",
     latitude: 34.847,
     longitude: 32.808,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "aes-ambelis",
@@ -525,6 +539,8 @@ const wineryRecords: Winery[] = [
     localSecret: "Only winery in Cyprus with 100% estate grapes. Lefkada is a standout.",
     latitude: 34.86,
     longitude: 32.47,
+    sourceUrl: "https://www.makarounaswinery.com/visit/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "minous",
@@ -568,6 +584,8 @@ const wineryRecords: Winery[] = [
     latitude: 34.851,
     longitude: 33.304,
     combineWith: ["lefkara", "platres"],
+    sourceUrl: "https://www.christoudia.com/wine-tasting-near-lefkara/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "tria-elit",
@@ -587,6 +605,9 @@ const wineryRecords: Winery[] = [
     bestTimeToVisit: "Dec to Mar; combine with Kourion or harbour lunch.",
     latitude: 34.73,
     longitude: 32.87,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "nichteri",
@@ -610,6 +631,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.90,
     longitude: 32.57,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "meletiou",
@@ -633,6 +657,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.839,
     longitude: 32.382,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "iona",
@@ -656,6 +683,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.823,
     longitude: 32.892,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "komos",
@@ -679,6 +709,9 @@ const wineryRecords: Winery[] = [
     parking: "Village; walk from monastery square.",
     latitude: 34.847,
     longitude: 32.808,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "adege",
@@ -702,6 +735,9 @@ const wineryRecords: Winery[] = [
     localSecret: "Vasa is quieter than Omodos. Mountain air and Lefkada. Reserve—they appreciate it.",
     transport: "Vasa, Krasochoria.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "syndesmos",
@@ -725,6 +761,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.88,
     longitude: 32.37,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "savvas",
@@ -748,6 +787,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.83,
     longitude: 32.88,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ayii-anargyri",
@@ -796,6 +838,8 @@ const wineryRecords: Winery[] = [
     latitude: 34.84,
     longitude: 32.91,
     combineWith: ["omodos", "koilani", "vlassides"],
+    sourceUrl: "https://argyrideswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kalamos",
@@ -820,6 +864,8 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.86,
     longitude: 32.54,
+    sourceUrl: "https://www.kalamoswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "cholettis",
@@ -843,6 +889,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.85,
     longitude: 32.56,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "yiannis",
@@ -866,6 +915,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.82,
     longitude: 32.86,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "petrides",
@@ -889,6 +941,9 @@ const wineryRecords: Winery[] = [
     parking: "On-site.",
     latitude: 34.85,
     longitude: 32.50,
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "monagri",
@@ -912,6 +967,9 @@ const wineryRecords: Winery[] = [
     localSecret: "Ask for the cellar tour. Deep Commandaria country. The cooperative story is worth hearing.",
     transport: "Monagri, Commandaria zone.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "loukas",
@@ -935,6 +993,9 @@ const wineryRecords: Winery[] = [
     localSecret: "One of the few Omodos wineries where you can drop in. Ideal for first-timers.",
     transport: "Omodos village centre; 5 min from monastery square.",
     parking: "Village.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "stavrinos",
@@ -958,6 +1019,9 @@ const wineryRecords: Winery[] = [
     localSecret: "Rosé is crisp even in winter. Ask. The fireplace is the draw.",
     transport: "Dhoros village, Krasochoria.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "avakas",
@@ -1005,6 +1069,9 @@ const wineryRecords: Winery[] = [
     localSecret: "Ask to see the cellar. Koilani wine heritage. Generations in the stone.",
     transport: "Koilani, Krasochoria.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "agios-theodoros",
@@ -1028,6 +1095,9 @@ const wineryRecords: Winery[] = [
     longitude: 32.84,
     transport: "Agios Theodoros, Limassol hills.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ambeli",
@@ -1051,6 +1121,9 @@ const wineryRecords: Winery[] = [
     localSecret: "Lefkada has character. Village knows how to warm you up.",
     transport: "Platres village.",
     parking: "On-site.",
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "domes-sergiou",
@@ -1152,6 +1225,8 @@ const wineryRecords: Winery[] = [
       { name: "Promara white 2021", variety: "Promara", price: "€24" },
     ],
     combineWith: ["chrysorrogiatissa", "pafos-mosaics", "vouni-panayia"],
+    sourceUrl: "https://mysteswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "oenou-yi",
@@ -1177,6 +1252,8 @@ const wineryRecords: Winery[] = [
     transport: "Omodos village; Afamis–Laona hills.",
     parking: "On-site.",
     combineWith: ["omodos", "loukas", "ktima-vassiliades", "artemis"],
+    sourceUrl: "https://oenouyiwine.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "sterna-boutique",
@@ -1247,6 +1324,8 @@ const wineryRecords: Winery[] = [
     winterTip: "Stroumbi village, Paphos hills. Book the hands-on experience if you have time. Part of the Laona route; combine with Fikardos or Tsangarides.",
     localSecret: "Their small-batch Chardonnay and Cabernet Sauvignon. The family pours and tells the story. Stroumbi is quieter than Omodos.",
     combineWith: ["fikardos", "tsangarides", "pafos-mosaics"],
+    sourceUrl: "https://hchwinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "pittali",
@@ -1268,6 +1347,8 @@ const wineryRecords: Winery[] = [
     winterTip: "High-altitude Pitsilia. Call ahead. Combine with Madari Ridge walk. The mountain does the work.",
     localSecret: "Their great-grandfather planted vines in 1910. The story is in every bottle. Ask about the rescued old vineyards.",
     combineWith: ["madari-ridge", "kyperounta", "platres"],
+    sourceUrl: "https://pittaliwinery.com",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "papaioannou",
@@ -1289,6 +1370,8 @@ const wineryRecords: Winery[] = [
     winterTip: "Vasa village. The grand cellar is worth seeing. Groups welcome. Combine with Koilani and Vlassides.",
     localSecret: "Their Petra white and red blends. Ask about them. Vasa is quieter than Omodos.",
     combineWith: ["koilani", "vlassides", "omodos"],
+    sourceUrl: "https://papaioannouwinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "karseras",
@@ -1470,6 +1553,8 @@ const wineryRecords: Winery[] = [
     latitude: 34.71,
     longitude: 32.82,
     combineWith: ["omodos", "kolossi", "santo", "kourion"],
+    sourceUrl: "https://www.antoniadeswinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "ayios-savas",
@@ -1508,6 +1593,9 @@ const wineryRecords: Winery[] = [
     latitude: 34.92,
     longitude: 32.62,
     combineWith: ["chrysorrogiatissa", "vouni-panayia", "pafos-mosaics"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "lambouri",
@@ -1529,6 +1617,9 @@ const wineryRecords: Winery[] = [
     transport: "Koilani, Krasochoria. ~40 min from Limassol.",
     parking: "On-site.",
     combineWith: ["omodos", "koilani", "tsiakkas", "lania"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "sodap",
@@ -1685,6 +1776,9 @@ const wineryRecords: Winery[] = [
     transport: "Limassol corridor. ~20 min from Limassol.",
     parking: "On-site.",
     combineWith: ["kolossi", "kourion", "omodos"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "linos",
@@ -1707,6 +1801,9 @@ const wineryRecords: Winery[] = [
     latitude: 34.87,
     longitude: 32.86,
     combineWith: ["platres", "caledonia-falls", "artemis", "psilo-dendro"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "makrikontas",
@@ -1729,6 +1826,9 @@ const wineryRecords: Winery[] = [
     latitude: 34.82,
     longitude: 32.77,
     combineWith: ["omodos", "lania", "silikou-museum"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "fikardou-winery",
@@ -1751,6 +1851,9 @@ const wineryRecords: Winery[] = [
     latitude: 34.97,
     longitude: 33.18,
     combineWith: ["fikardou", "machairas", "agros"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "sygkrasi",
@@ -1774,6 +1877,9 @@ const wineryRecords: Winery[] = [
     transport: "Kathikas village. On the Akamas–Laona loop.",
     parking: "On-site.",
     combineWith: ["adonis", "aphrodite", "the-farmyard", "vasilikon"],
+    isPublic: false,
+    isBookable: false,
+    lastVerifiedAt: "2026-09-02",
   },
 ];
 
