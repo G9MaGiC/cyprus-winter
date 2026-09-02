@@ -23,30 +23,27 @@ function entry(
   base: string,
   path: string,
   priority: number,
-  changeFreq: ChangeFreq = "weekly",
-  lastModified: string
+  changeFreq: ChangeFreq = "weekly"
 ): MetadataRoute.Sitemap[number] {
   return {
     url: `${base}${path}`,
     changeFrequency: changeFreq,
     priority,
-    lastModified,
   };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE_URL;
-  const now = new Date().toISOString();
   const e = (path: string, priority: number, changeFreq?: ChangeFreq) =>
-    entry(base, path, priority, changeFreq, now);
+    entry(base, path, priority, changeFreq);
 
   const discoverActivityFilters: MetadataRoute.Sitemap = ACTIVITY_FILTER_KEYS.map(
-    (filter) => entry(base, `/discover?filter=${filter}`, 0.75, "weekly", now)
+    (filter) => entry(base, `/discover?filter=${filter}`, 0.75, "weekly")
   );
 
   const discoverSectionFilters: MetadataRoute.Sitemap =
     DISCOVER_SECTION_FILTER_KEYS.map((filter) =>
-      entry(base, `/discover?filter=${filter}`, 0.78, "weekly", now)
+      entry(base, `/discover?filter=${filter}`, 0.78, "weekly")
     );
 
   const hub: MetadataRoute.Sitemap = [
@@ -77,17 +74,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const regions: MetadataRoute.Sitemap = REGION_CONFIGS.map((c) =>
-    entry(base, `/regions/${c.slug}`, 0.8, "weekly", now)
+    entry(base, `/regions/${c.slug}`, 0.8, "weekly")
   );
 
   const weatherMonths: MetadataRoute.Sitemap = [
     ...WEATHER_MONTH_SLUGS.map((slug) =>
-      entry(base, `/weather/${slug}`, 0.7, "monthly", now)
+      entry(base, `/weather/${slug}`, 0.7, "monthly")
     ),
   ];
 
   const wineRoutes: MetadataRoute.Sitemap = WINE_ROUTES.map((r) =>
-    entry(base, `/wine-routes/${r.slug}`, 0.7, "monthly", now)
+    entry(base, `/wine-routes/${r.slug}`, 0.7, "monthly")
   );
 
   const support: MetadataRoute.Sitemap = [
@@ -103,21 +100,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...new Set([...allAttractions.map((a) => a.id), ...restaurants.map((r) => r.id)]),
   ];
   const discoverPages: MetadataRoute.Sitemap = discoverIds.map((id) =>
-    entry(base, `/discover/${id}`, 0.8, "weekly", now)
+    entry(base, `/discover/${id}`, 0.8, "weekly")
   );
 
   const trailPages: MetadataRoute.Sitemap = trails.map((t) =>
-    entry(base, `/trails/${t.id}`, 0.8, "daily", now)
+    entry(base, `/trails/${t.id}`, 0.8, "daily")
   );
   // Canonical trail URLs use `id` (see trails/[id]/page.tsx); slug aliases are SSG-only, not listed here.
 
   const wineryBookingPages: MetadataRoute.Sitemap = wineries.map((w) =>
-    entry(base, `/book/winery/${w.id}`, 0.6, "monthly", now)
+    entry(base, `/book/winery/${w.id}`, 0.6, "monthly")
   );
 
   const guideBookingPages: MetadataRoute.Sitemap = [
-    entry(base, "/book/guide", 0.6, "monthly", now),
-    ...guides.map((g) => entry(base, `/book/guide/${g.id}`, 0.6, "monthly", now)),
+    entry(base, "/book/guide", 0.6, "monthly"),
+    ...guides.map((g) => entry(base, `/book/guide/${g.id}`, 0.6, "monthly")),
   ];
 
   return [
