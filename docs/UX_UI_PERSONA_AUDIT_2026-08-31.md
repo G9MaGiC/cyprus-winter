@@ -24,7 +24,24 @@
 
 ---
 
+## 0.0 Final state (2026-09-02, after batch 36)
+
+**This document is a log.** Everything from §0.1 down records the audit as it unfolded — the sections below are dated snapshots plus a per-batch remediation log (§8.3), and several early summaries describe states that later batches changed. For any single finding, its **register row** (§4 / §8.2) is kept current and is the authority.
+
+Where the branch ended up, 36 batches later:
+
+- **Every executable register item is closed.** The round-1 and round-2 registers (AUD-01…59, AUD-60…125) carry ✅/◐ statuses with per-batch citations; nothing marked ⏳ remains that code can fix.
+- **The audit's top project (AUD-10) shipped in full:** the entire Discover/Trails decision surface renders natively in all 7 locales — 71 wineries, 58 attractions, 105 trails, 305 `bestFor` tags; catalog 7×2312 → 7×3400, EN data layer and JSON-LD contracts intact.
+- **Four adversarial self-review passes** (batches 11, 31, 34, 36) caught and fixed 23 defects in this branch's own code before any human review.
+- **Schema/infra:** migrations 008 (booking locale + trail persisted; localized status emails) and 009 (durable partner overlays); invalid dynamic slugs answer real HTTP 404s (batches 35–36).
+- **Handoff ready:** `docs/i18n-review/` holds per-locale native-review sheets for every ◇ translation, CI-guarded for freshness.
+- **Still open, none code-shaped:** real legal mailbox (AUD-67), legal "last updated" (AUD-72), partner onboarding path (AUD-81-residual), guide prices (AUD-23), family-lane curation (AUD-58), workation restructure (AUD-14), tier-1 headline decision (AUD-19), verified per-locale advisory links (AUD-25), the §5 known-open ledger, the guest-cancel product decision, secret-gems copy if that class is ever added, and the native ◇ review itself.
+
+---
+
 ## 0.1 Remediation status (fix pass, same day / same branch)
+
+> *Audit-time snapshot (round 1, 2026-08-31). The "deliberately not fixed" list below describes that first pass only — most of it was closed by later batches: AUD-10 (batches 5–32), AUD-26 (batch 30), AUD-27 (batches 6–7), AUD-11/46/48/56/59 (batch 9), AUD-21 (batch 8), AUD-18 (batch 6). Still genuinely open as product/editorial items: AUD-14 (workation restructure), AUD-19 (tier-1 headline decision), AUD-23 (guide prices), AUD-25 (verified per-locale advisory links), AUD-58 (family curation) and the §5 ledger; AUD-49's practical surface shrank to near-zero once AUD-10 completed (native content replaced the EN fallback on /he).*
 
 A fix pass followed the audit on this branch. **Fixed and re-verified against the full gate suite:** AUD-01 (trust copy gated on `isPartnerVerified`, fabricated guide phones suppressed incl. JSON-LD, "verified partner" wording → "licensed guides" across surfaces, SLA unified to 24–48h weekdays ×7 locales), AUD-02 (ItineraryCard actions wrap under the title on mobile), AUD-03 (add-failure via React state), AUD-04 (family Day 1 → Konnos Bay + coast↔coast realism warning), AUD-05 (Escape handler guarded; desktop More restores focus), AUD-06 (banner portals to an early-body anchor, announces on appear, blocked Ask-AI presses focus the banner), AUD-07 (add/remove announced via SRStatus, focus handed to "View plan", slug-leaking aria-labels removed), AUD-08 (auto status re-check on mount + retitled sync toggle), AUD-09 (cancel/change guidance + "Modify" → "Request a change"), AUD-12 (list headings de-scoped from "today" to winter-status framing), AUD-13 (cross-language search aliases de/pl/el/he/ro/fr), AUD-15 (`max-w-full` on the detail map), AUD-16, AUD-17, AUD-20 (dead Toast/Skeleton/LoadingOverlay deleted; `UX_PATTERNS.md` corrected), AUD-22, AUD-24 (server errors localized by code ×7), AUD-28 (partial: `color-scheme: light` declared + decision recorded), AUD-40…45, AUD-47, AUD-50…55, and the EventCard chip-shape drift from AUD-57.
 
@@ -35,6 +52,8 @@ A fix pass followed the audit on this branch. **Fixed and re-verified against th
 ---
 
 ## 1. Executive scorecard — vs `docs/SCORECARD.md` (2026-08-24, self-rated 4.7/5)
+
+> *Audit-time snapshot (2026-08-31, pre-remediation). Most cited findings were subsequently fixed — see §0.0 and the register rows for current statuses.*
 
 | Dimension | Self | Audit | Why (finding IDs) |
 |---|---|---|---|
@@ -54,6 +73,8 @@ A fix pass followed the audit on this branch. **Fixed and re-verified against th
 ---
 
 ## 2. Persona × funnel matrix
+
+> *Audit-time snapshot (2026-08-31, pre-remediation) — the cited finding IDs mark where friction was found, not where it remains; see the register rows.*
 
 Cells: ✅ solid · finding IDs = friction · **GAP** = nothing serves the cell. (Stages: Land → Orient → Discover → Plan → Book → Return; +i18n column for the persona's native locale.)
 
@@ -555,11 +576,13 @@ E2 verified-fine (not re-flagged): hreflang 7+x-default complete; share strings 
 
 **Batch 36 (2026-09-02, thirty-sixth commit) — fourth review pass: 5 findings in the batch-35 proxy work, all fixed.** An adversarial review of the 404 change (it touches every request, so it earned its own pass) surfaced five defects: (1) **trail slug aliases broken** — the valid-slug set held only trail ids while the `[id]` layout SSGs ids *and* slug aliases (50 trails) plus a legacy id, so URLs like `/trails/artemis-trail` that used to resolve to the canonical page (a `permanentRedirect` carried in the streamed RSC payload as `NEXT_REDIRECT;…;308` — the status line itself says 200, the same shell-commit mechanics as the old soft-404s) were hard-404ing; the set is now the id∪slug∪legacy union (105→156), with `TRAIL_LEGACY_IDS` exported so generator, guard test and page share one source; (2) **prototype-member crash** — `FAMILY_BY_SEGMENT[rest[0]]` on probes like `/constructor/x` or `/__proto__/x` returned inherited `Object.prototype` members and threw in the proxy (HTTP 500 on paths vulnerability scanners routinely hit); now `Object.hasOwn`, plus a belt-and-braces try/catch in `proxy.ts` so no future bug in the lookup can ever 500 a request; (3) **weather case regression** — the weather page deliberately lowercases its param, so `/weather/December` rendered 200 before batch 35 and 404'd after; the lookup now lowercases for that family; (4) the drift-guard test mirrored the generator's wrong trails source instead of the layout's real `generateStaticParams`, certifying the broken set — it now builds the same union independently; (5) a timestamp-only churn of `scripts/cycling/vc-cycling-index.json` had ridden the batch-35 commit — reverted. New unit cases cover aliases, case-insensitivity and prototype-name probes.
 
+**Batch 37 (2026-09-02, thirty-seventh commit) — the document tells the truth top-down.** The doc had grown as a log: §0.1's "deliberately not fixed" list, the §1 scorecard, the §2 matrix and the §8.4 grid all describe audit-time states that 30+ later batches changed, and a top-down reader met the stale picture first. Now §0.0 ("Final state") opens the document with where the branch actually ended — every executable register item closed across 36 batches, four review passes (23 self-caught defects), the complete AUD-10 register, migrations, real 404s, the ◇ handoff — and each historical section carries a dated snapshot stamp pointing at the register rows as the authority. The truth-up also corrected the record where inference had drifted: AUD-18 did ship (batch 6), but AUD-14, AUD-19 and AUD-25 remain genuinely open product/editorial items (now listed in §0.0 alongside the round-2 leftovers), and AUD-49 is noted as subsumed by AUD-10's completion rather than closed. No code changes.
+
 **Remaining backlog (decision/supply/project):** 67 (real legal mailbox), 72 (legal "last updated"), 81-residual (partner onboarding path), guest-side cancel action (product decision — migration 008 shipped, the data model is ready), AUD-10 secret-gems editorial copy if that class is ever added to the data (winery, attraction and trail classes are all complete), AUD-23 (guide price signal — needs real guide prices, supply), AUD-58 (family-lane curation — editorial), 104-residual (≤360px cap by design), 121-residual (161–185-char metas, accepted), `useTrapFocus` consolidation (deferred, not a defect), native review of all ◇ translations shipped on this branch (handoff package ready: `docs/i18n-review/` — batch 33).
 
 ## 8.4 Persona × dimension grid (16 QA personas, post-R2-fix)
 
-Scores 1–5 per `docs/QA_PERSONAS_FULL_STACK_2026.md` layers; scored against this branch after the Round-2 fixes. Return column = post-book/repeat loop.
+Scores 1–5 per `docs/QA_PERSONAS_FULL_STACK_2026.md` layers; scored against this branch after the Round-2 fixes — *i.e. before batches 7–36; the i18n, SEO and Book columns in particular improved materially afterwards (native content ×7, real 404s, per-locale status emails). The grid is kept as the audit-time measurement; see §0.0 for the final state.* Return column = post-book/repeat loop.
 
 | Persona | Market fit | Trust | Discover | Plan | Book | Return | i18n | Mobile | A11y | SEO |
 |---|---|---|---|---|---|---|---|---|---|---|
