@@ -12,8 +12,9 @@ export type Winery = {
   winterOpen?: boolean;
   /** Book tasting / tour: external URL */
   bookingUrl?: string;
-  /** Contact phone (international format) */
+  /** Public business contact details, not booking-partner authorization. */
   contactPhone?: string;
+  contactEmail?: string;
   /** Buy wine online */
   shopUrl?: string;
   /** Winter-specific tip */
@@ -48,13 +49,17 @@ export type Winery = {
   transport?: string;
   /** Parking info */
   parking?: string;
+  isPublic?: boolean;
+  isBookable?: boolean;
+  sourceUrl?: string;
+  lastVerifiedAt?: string;
 };
 
 /** Standard off-season hours disclaimer — append to tastingInfo/openingHours when hours may shrink. */
 export const WINERY_OFF_SEASON_HOURS =
   "Call ahead Nov–Mar—hours often shorter off-season.";
 
-export const wineries: Winery[] = [
+const wineryRecords: Winery[] = [
   {
     id: "tsiakkas",
     name: "Tsiakkas Winery",
@@ -67,10 +72,11 @@ export const wineries: Winery[] = [
     bestFor: ["Couples", "Wine enthusiasts", "Winter tastings"],
     wineRoute: "Krasochoria",
     tastingInfo: "Guided tour & tasting Mon–Fri 12:00 & 14:00, Sat 11:00, 13:00 & 15:00. À la carte tastings by glass. Private tours from €70. Min 4 for guided.",
-    openingHours: "Mon–Fri 10:00–16:00, Sat 11:00–17:00. Closed Sun except select dates.",
+    openingHours: "Nov–Apr Mon–Fri 10:00–16:00; Sat 11:00–17:00 year-round. Closed Sundays, public holidays, and 1–6 January.",
     winterOpen: true,
-    bookingUrl: "https://tsiakkaswinery.com/experiences/",
-    contactPhone: "+357 99 244795",
+    bookingUrl: "https://tsiakkaswinery.resos.com/",
+    contactPhone: "+357 96 844111",
+    contactEmail: "visit@tsiakkaswinery.com",
     winterTip: "Heated terrace in winter. Ask about the Xynisteri lees-aged.",
     bestTimeToVisit: "Dec to Mar, 11:00–14:00. Book ahead.",
     localSecret: "They'll point you to the best halloumi in Pelendri for a proper pairing.",
@@ -80,9 +86,10 @@ export const wineries: Winery[] = [
     latitude: 34.895,
     longitude: 32.968,
     combineWith: ["omodos", "artemis", "lania"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+tsiakkas@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://tsiakkaswinery.com/contact-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "vouni-panayia",
@@ -100,6 +107,7 @@ export const wineries: Winery[] = [
     winterOpen: true,
     bookingUrl: "https://www.vounipanayiawinery.com/",
     contactPhone: "+357 99 755159",
+    contactEmail: "info@vounipanayiawinery.com",
     winterTip: "Ask for a comparative Commandaria tasting—younger and older vintages side by side.",
     bestTimeToVisit: "Dec to Feb, 2–3 hours. Combine with lunch in Panayia village.",
     localSecret: "The Panayia church has a revered icon; locals often combine a quick stop.",
@@ -109,9 +117,10 @@ export const wineries: Winery[] = [
     latitude: 34.918,
     longitude: 32.618,
     combineWith: ["pafos-mosaics", "palaipafos", "polis"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+vouni-panayia@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://www.vounipanayiawinery.com/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "zambartas",
@@ -141,9 +150,10 @@ export const wineries: Winery[] = [
       { name: "Shiraz–Lefkada", variety: "65% Shiraz, 35% Lefkada", price: "~€12–15" },
     ],
     combineWith: ["kourion", "kolossi", "governors-beach"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+zambartas@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://zambartaswineries.com/visit-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kolios",
@@ -161,6 +171,7 @@ export const wineries: Winery[] = [
     openingHours: "Winter (Oct–Feb): Mon–Sat 9am–3pm. Summer (Mar–Sep): Mon–Sat 8:30am–5pm. Sunday: private parties only (50+ guests).",
     bookingUrl: "https://www.kolioswinery.com.cy/book-a-table/",
     contactPhone: "+357 26 724090",
+    contactEmail: "kolioswinery@cytanet.com.cy",
     winterTip: "Book lunch 1–2 days ahead. Bring cash—they may not take cards. The meze is authentic village food, not tourist meze. February is quiet; the views and wine are worth the drive.",
     bestTimeToVisit: "Dec to Feb, 11am for tour and lunch. Quieter than summer; heaters indoors.",
     localSecret: "Their Persefoni (Xynisteri) and Maratheftiko are award-winners. Wines cost €5–14 at the cellar—far below retail. The Iris white, from the rare Spourtiko grape, is a standout. Ask to see the underground cellar; the natural spring runs through it.",
@@ -179,9 +190,10 @@ export const wineries: Winery[] = [
     ],
     transport: "About 25 min from Paphos. From Statos Agios Fotios village, follow signs 1 km toward Chrysorrogiatissa.",
     parking: "On-site parking.",
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+kolios@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
+    sourceUrl: "https://www.kolioswinery.com.cy/contact/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "kyperounta",
@@ -233,9 +245,12 @@ export const wineries: Winery[] = [
     latitude: 34.69,
     longitude: 33.02,
     combineWith: ["kourion", "governors-beach"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+santo@cyprus-winter.example",
-    partnerLeadFeeEur: 8,
+    isPublic: false,
+    isBookable: false,
+    sourceUrl: "https://santowines.gr/visit-us/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "tsangarides",
@@ -1067,9 +1082,8 @@ export const wineries: Winery[] = [
     bestTimeToVisit: "Dec to Mar, book ahead",
     localSecret: "Their Atypon 02 (Assyrtiko & Xynisteri blend) and Rosé Maratheftiko 2024 surprise people who think they know Cypriot wine. Ask about the Atypon range; the name means 'unexpected'.",
     combineWith: ["lefkara", "kolossi", "governors-beach", "choirokoitia", "kourion", "cape-greco", "kato-drys", "vavla", "lefkara-kato"],
-    isVerified: true,
+    isVerified: false,
     partnerEmail: "bookings+domes-sergiou@cyprus-winter.example",
-    partnerLeadFeeEur: 5,
     signatureWines: [
       {
         name: "Xynisteri 2023",
@@ -1103,6 +1117,11 @@ export const wineries: Winery[] = [
     instagramHandle: "domeswinery",
     latitude: 34.8192,
     longitude: 33.3589,
+    contactPhone: "+357 99 317070",
+    contactEmail: "erin.b@domes-sergiouwinery.com",
+    isBookable: false,
+    sourceUrl: "https://wineriesofcyprus.com/item/domes-sergiou-winery/",
+    lastVerifiedAt: "2026-09-02",
   },
   {
     id: "mystes",
@@ -1757,6 +1776,8 @@ export const wineries: Winery[] = [
     combineWith: ["adonis", "aphrodite", "the-farmyard", "vasilikon"],
   },
 ];
+
+export const wineries: Winery[] = wineryRecords.filter((winery) => winery.isPublic !== false);
 
 export function getWineryById(id: string): Winery | undefined {
   return wineries.find((w) => w.id === id);
