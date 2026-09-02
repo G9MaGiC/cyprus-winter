@@ -25,6 +25,7 @@ const dump = execFileSync(
     `
 import { allDiscoverIds } from "./src/data/index";
 import { trails } from "./src/data/trails";
+import { TRAIL_LEGACY_IDS } from "./src/lib/trail-resolve";
 import { wineries } from "./src/data/wineries";
 import { guides } from "./src/data/guides";
 import { WINE_ROUTES } from "./src/data/wine-routes";
@@ -33,7 +34,13 @@ import { MONTH_SLUGS } from "./src/lib/weather-month-suggestions";
 import { routing } from "./src/i18n/routing";
 console.log(JSON.stringify({
   discover: allDiscoverIds,
-  trails: trails.map((t) => t.id),
+  // Trails accept slug aliases and legacy ids too — the [id] layout SSGs both
+  // forms and the page 308-redirects aliases to the canonical id URL.
+  trails: [...new Set([
+    ...trails.map((t) => t.id),
+    ...trails.map((t) => t.slug).filter(Boolean),
+    ...Object.keys(TRAIL_LEGACY_IDS),
+  ])],
   bookWinery: wineries.map((w) => w.id),
   bookGuide: guides.map((g) => g.id),
   wineRoutes: WINE_ROUTES.map((r) => r.slug),

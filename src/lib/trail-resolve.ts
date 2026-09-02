@@ -3,8 +3,10 @@ import { trails, type Trail } from "@/data/trails";
 /**
  * Extra URL segments that still resolve to a trail after an id rename.
  * Needed when the old trail id is owned by another plan entity (attraction).
+ * Exported so the 404 proxy's valid-slug set (route-ids.generated.ts) treats
+ * these exactly like the page does.
  */
-const TRAIL_LEGACY_IDS: Record<string, string> = {
+export const TRAIL_LEGACY_IDS: Record<string, string> = {
   stavrovouni: "stavrovouni-trail",
 };
 

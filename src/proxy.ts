@@ -66,9 +66,15 @@ export default function proxy(request: NextRequest): NextResponse {
   }
   // Invalid dynamic slugs rewrite onto a URL no route matches, which renders
   // the styled not-found page with a REAL 404 status (AUD-65/113) — the only
-  // pre-render point where the status can still be influenced. Fail-open:
-  // valid slugs and unknown shapes fall through to the normal chain.
-  const notFoundTarget = invalidSlugRewriteTarget(pathname);
+  // pre-render point where the status can still be influenced. Fail-open in
+  // both senses: valid slugs and unknown shapes fall through to the normal
+  // chain, and any unexpected throw must never 500 the request from here.
+  let notFoundTarget: string | null = null;
+  try {
+    notFoundTarget = invalidSlugRewriteTarget(pathname);
+  } catch {
+    notFoundTarget = null;
+  }
   const response = notFoundTarget
     ? NextResponse.rewrite(new URL(notFoundTarget, request.url), {
         request: { headers: request.headers },

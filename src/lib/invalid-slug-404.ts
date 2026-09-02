@@ -31,7 +31,9 @@ export function invalidSlugRewriteTarget(pathname: string): string | null {
 
   let family: string | undefined;
   let slug: string | undefined;
-  if (rest.length === 2 && FAMILY_BY_SEGMENT[rest[0]]) {
+  // Object.hasOwn: a plain [] lookup would surface Object.prototype members
+  // for probes like /constructor/x or /__proto__/x and crash the proxy.
+  if (rest.length === 2 && Object.hasOwn(FAMILY_BY_SEGMENT, rest[0])) {
     family = FAMILY_BY_SEGMENT[rest[0]];
     slug = rest[1];
   } else if (
@@ -50,6 +52,9 @@ export function invalidSlugRewriteTarget(pathname: string): string | null {
   } catch {
     // keep the raw segment; it will simply not match any known id
   }
+  // The weather page deliberately lowercases its param before validating
+  // (weather/[month]/page.tsx), so /weather/December must stay a 200.
+  if (family === "weather") decoded = decoded.toLowerCase();
   if (ROUTE_ID_SETS[family].has(decoded)) return null;
 
   return `${pathname.replace(/\/+$/, "")}/__404__`;

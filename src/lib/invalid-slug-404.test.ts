@@ -11,6 +11,25 @@ describe("invalidSlugRewriteTarget (404 proxy rewrite)", () => {
     expect(invalidSlugRewriteTarget("/weather/december")).toBeNull();
   });
 
+  it("passes trail slug aliases and legacy ids through (they 308-redirect downstream)", () => {
+    expect(invalidSlugRewriteTarget("/trails/artemis-trail")).toBeNull();
+    expect(invalidSlugRewriteTarget("/he/trails/aphrodite-trail")).toBeNull();
+    expect(invalidSlugRewriteTarget("/trails/stavrovouni")).toBeNull();
+  });
+
+  it("matches weather months case-insensitively (the page lowercases its param)", () => {
+    expect(invalidSlugRewriteTarget("/weather/December")).toBeNull();
+    expect(invalidSlugRewriteTarget("/de/weather/JANUARY")).toBeNull();
+    expect(invalidSlugRewriteTarget("/weather/Tuesday")).toBe("/weather/Tuesday/__404__");
+  });
+
+  it("never trips on Object.prototype member names in the path", () => {
+    expect(invalidSlugRewriteTarget("/constructor/x")).toBeNull();
+    expect(invalidSlugRewriteTarget("/__proto__/x")).toBeNull();
+    expect(invalidSlugRewriteTarget("/de/toString/x")).toBeNull();
+    expect(invalidSlugRewriteTarget("/hasOwnProperty/x")).toBeNull();
+  });
+
   it("rewrites unknown slugs to a non-matching sub-path", () => {
     expect(invalidSlugRewriteTarget("/discover/zzz-not-real")).toBe(
       "/discover/zzz-not-real/__404__"

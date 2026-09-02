@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { allDiscoverIds } from "@/data";
 import { trails } from "@/data/trails";
+import { TRAIL_LEGACY_IDS } from "@/lib/trail-resolve";
 import { wineries } from "@/data/wineries";
 import { guides } from "@/data/guides";
 import { WINE_ROUTES } from "@/data/wine-routes";
@@ -19,7 +20,13 @@ import { LOCALES, ROUTE_ID_SETS } from "@/lib/route-ids.generated";
 
 const EXPECTED: Record<string, string[]> = {
   discover: allDiscoverIds,
-  trails: trails.map((t) => t.id),
+  // The trails [id] layout SSGs ids AND slug aliases, and trail-resolve.ts
+  // accepts legacy ids — all three are valid URLs (aliases 308-redirect).
+  trails: [
+    ...trails.map((t) => t.id),
+    ...trails.map((t) => t.slug).filter(Boolean),
+    ...Object.keys(TRAIL_LEGACY_IDS),
+  ],
   bookWinery: wineries.map((w) => w.id),
   bookGuide: guides.map((g) => g.id),
   wineRoutes: WINE_ROUTES.map((r) => r.slug),
