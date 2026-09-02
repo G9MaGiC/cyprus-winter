@@ -2267,6 +2267,15 @@
       "ics": {
         "tasting": "dégustation de vin",
         "guidedHike": "randonnée guidée"
+      },
+      "cancel": {
+        "button": "Annuler la demande",
+        "confirmBody": "Annuler cette demande ? {provider} sera prévenu.",
+        "confirmYes": "Oui, annuler",
+        "keep": "Garder la demande",
+        "success": "Demande annulée.",
+        "errorFailed": "Annulation impossible. Réessayez dans un instant.",
+        "errorConflict": "Cette réservation vient de changer. Actualisez pour voir son état actuel."
       }
     }
   },
@@ -3688,7 +3697,11 @@
       "bodyConfirmed": "{provider} a confirmé votre demande pour le {date} ({partySize} personnes).",
       "bodyCancelled": "{provider} ne peut pas accueillir votre demande pour le {date} ({partySize} personnes). Aucun montant n’a été prélevé.",
       "nextConfirmed": "Un changement ou une annulation ? Répondez à cet e-mail ou appelez directement — sans frais.",
-      "nextCancelled": "Les créneaux d’hiver partent vite — d’autres domaines et guides licenciés sont sur Cyprus Winter."
+      "nextCancelled": "Les créneaux d’hiver partent vite — d’autres domaines et guides licenciés sont sur Cyprus Winter.",
+      "subjectGuestCancelled": "Votre demande à {provider} est annulée",
+      "headingGuestCancelled": "Votre demande est annulée",
+      "bodyGuestCancelled": "Vous avez annulé votre demande à {provider} pour le {date} ({partySize} personnes). Rien n’a été facturé.",
+      "nextGuestCancelled": "Changement d’avis ? Vous pouvez envoyer une nouvelle demande à tout moment — les créneaux d’hiver sont souvent flexibles."
     }
   },
   "data": {

@@ -2267,6 +2267,15 @@
       "ics": {
         "tasting": "wine tasting",
         "guidedHike": "guided hike"
+      },
+      "cancel": {
+        "button": "Cancel request",
+        "confirmBody": "Cancel this request? {provider} will be notified.",
+        "confirmYes": "Yes, cancel",
+        "keep": "Keep request",
+        "success": "Request cancelled.",
+        "errorFailed": "Could not cancel. Try again in a moment.",
+        "errorConflict": "This booking just changed. Refresh to see its current state."
       }
     }
   },
@@ -3688,7 +3697,11 @@
       "bodyConfirmed": "{provider} confirmed your request for {date} ({partySize} guests).",
       "bodyCancelled": "{provider} can't host your request for {date} ({partySize} guests). Nothing was charged.",
       "nextConfirmed": "Need to change or cancel? Reply to this email or call the venue — no charge.",
-      "nextCancelled": "Winter slots move fast — other bookable wineries and licensed guides are on Cyprus Winter."
+      "nextCancelled": "Winter slots move fast — other bookable wineries and licensed guides are on Cyprus Winter.",
+      "subjectGuestCancelled": "Your {provider} request is cancelled",
+      "headingGuestCancelled": "Your request is cancelled",
+      "bodyGuestCancelled": "You cancelled your request to {provider} for {date} ({partySize} guests). Nothing was charged.",
+      "nextGuestCancelled": "Changed your mind? You can send a new request any time — winter slots are usually flexible."
     }
   },
   "data": {

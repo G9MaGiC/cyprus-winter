@@ -259,6 +259,60 @@ export async function updateBookingStatus(
   return { booking: current, changed: true };
 }
 
+/**
+ * Guest-initiated cancellation. Authorization is possession of the booking id
+ * PLUS the exact guest email it was created with (the same proof the email
+ * lookup uses) — and an email mismatch answers `not_found`, indistinguishable
+ * from a missing booking, so ids cannot be probed for existence. Same FSM,
+ * idempotent no-op, and compare-and-set semantics as updateBookingStatus.
+ */
+export async function cancelBookingAsGuest(
+  id: string,
+  guestEmail: string
+): Promise<
+  | { booking: Booking; changed: boolean }
+  | { error: "not_found" | "invalid_transition" | "conflict" }
+> {
+  const normalized = guestEmail.trim().toLowerCase();
+
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data: existing, error: lookupError } = await supabase
+      .from("bookings")
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+    if (lookupError) throw new Error(lookupError.message);
+    if (!existing) return { error: "not_found" };
+    const current = rowToBooking(existing as Record<string, unknown>);
+    if (current.guestEmail !== normalized) return { error: "not_found" };
+    if (current.status === "cancelled") return { booking: current, changed: false };
+    if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes("cancelled")) {
+      return { error: "invalid_transition" };
+    }
+    const { data: updated, error } = await supabase
+      .from("bookings")
+      .update({ status: "cancelled" })
+      .eq("id", id)
+      .eq("status", current.status)
+      .select("*")
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!updated) return { error: "conflict" };
+    return { booking: rowToBooking(updated as Record<string, unknown>), changed: true };
+  }
+
+  const current = memoryStore.find((b) => b.id === id);
+  if (!current) return { error: "not_found" };
+  if (current.guestEmail !== normalized) return { error: "not_found" };
+  if (current.status === "cancelled") return { booking: current, changed: false };
+  if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes("cancelled")) {
+    return { error: "invalid_transition" };
+  }
+  current.status = "cancelled";
+  return { booking: current, changed: true };
+}
+
 function rowToBooking(row: Record<string, unknown>): Booking {
   const type = row.type === "guide_tour" ? "guide_tour" : "winery_tasting";
   return {

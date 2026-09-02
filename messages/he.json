@@ -2267,6 +2267,15 @@
       "ics": {
         "tasting": "טעימת יין",
         "guidedHike": "טיול מודרך"
+      },
+      "cancel": {
+        "button": "ביטול הבקשה",
+        "confirmBody": "לבטל את הבקשה? {provider} יקבל הודעה.",
+        "confirmYes": "כן, לבטל",
+        "keep": "להשאיר את הבקשה",
+        "success": "הבקשה בוטלה.",
+        "errorFailed": "הביטול לא הצליח. נסו שוב בעוד רגע.",
+        "errorConflict": "ההזמנה השתנתה זה עתה. רעננו כדי לראות את המצב הנוכחי."
       }
     }
   },
@@ -3688,7 +3697,11 @@
       "bodyConfirmed": "{provider} אישרו את הבקשה שלכם ל־{date} ({partySize} אורחים).",
       "bodyCancelled": "{provider} לא יכולים לארח את הבקשה שלכם ל־{date} ({partySize} אורחים). לא בוצע שום חיוב.",
       "nextConfirmed": "רוצים לשנות או לבטל? השיבו למייל הזה או התקשרו ישירות — ללא עלות.",
-      "nextCancelled": "מקומות החורף מתמלאים מהר — ב־Cyprus Winter תמצאו עוד יקבים ומדריכים מורשים להזמנה."
+      "nextCancelled": "מקומות החורף מתמלאים מהר — ב־Cyprus Winter תמצאו עוד יקבים ומדריכים מורשים להזמנה.",
+      "subjectGuestCancelled": "הבקשה שלכם אל {provider} בוטלה",
+      "headingGuestCancelled": "הבקשה שלכם בוטלה",
+      "bodyGuestCancelled": "ביטלתם את הבקשה אל {provider} לתאריך {date} (⁦{partySize}⁩ אורחים). לא בוצע חיוב.",
+      "nextGuestCancelled": "התחרטתם? אפשר לשלוח בקשה חדשה בכל עת — מועדי החורף בדרך כלל גמישים."
     }
   },
   "data": {

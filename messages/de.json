@@ -2267,6 +2267,15 @@
       "ics": {
         "tasting": "Weinverkostung",
         "guidedHike": "geführte Wanderung"
+      },
+      "cancel": {
+        "button": "Anfrage stornieren",
+        "confirmBody": "Diese Anfrage stornieren? {provider} wird benachrichtigt.",
+        "confirmYes": "Ja, stornieren",
+        "keep": "Anfrage behalten",
+        "success": "Anfrage storniert.",
+        "errorFailed": "Stornieren nicht möglich. Versuchen Sie es gleich noch einmal.",
+        "errorConflict": "Diese Buchung hat sich gerade geändert. Aktualisieren Sie die Seite."
       }
     }
   },
@@ -3688,7 +3697,11 @@
       "bodyConfirmed": "{provider} hat Ihre Anfrage für den {date} bestätigt ({partySize} Personen).",
       "bodyCancelled": "{provider} kann Ihre Anfrage für den {date} ({partySize} Personen) nicht annehmen. Es wurde nichts berechnet.",
       "nextConfirmed": "Änderung oder Stornierung? Antworten Sie auf diese E-Mail oder rufen Sie direkt an — kostenlos.",
-      "nextCancelled": "Wintertermine füllen sich schnell — auf Cyprus Winter finden Sie weitere buchbare Weingüter und lizenzierte Guides."
+      "nextCancelled": "Wintertermine füllen sich schnell — auf Cyprus Winter finden Sie weitere buchbare Weingüter und lizenzierte Guides.",
+      "subjectGuestCancelled": "Ihre Anfrage an {provider} ist storniert",
+      "headingGuestCancelled": "Ihre Anfrage ist storniert",
+      "bodyGuestCancelled": "Sie haben Ihre Anfrage an {provider} für den {date} ({partySize} Gäste) storniert. Es wurde nichts berechnet.",
+      "nextGuestCancelled": "Anders überlegt? Sie können jederzeit eine neue Anfrage senden — Wintertermine sind meist flexibel."
     }
   },
   "data": {

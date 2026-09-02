@@ -2267,6 +2267,15 @@
       "ics": {
         "tasting": "degustare de vin",
         "guidedHike": "drumeție ghidată"
+      },
+      "cancel": {
+        "button": "Anulați cererea",
+        "confirmBody": "Anulați această cerere? {provider} va fi notificat.",
+        "confirmYes": "Da, anulați",
+        "keep": "Păstrați cererea",
+        "success": "Cererea a fost anulată.",
+        "errorFailed": "Anularea nu a reușit. Încercați din nou peste puțin timp.",
+        "errorConflict": "Această rezervare tocmai s-a schimbat. Reîmprospătați pentru starea curentă."
       }
     }
   },
@@ -3688,7 +3697,11 @@
       "bodyConfirmed": "{provider} v-a confirmat cererea pentru {date} ({partySize} persoane).",
       "bodyCancelled": "{provider} nu poate găzdui cererea pentru {date} ({partySize} persoane). Nu s-a perceput nicio taxă.",
       "nextConfirmed": "Doriți o modificare sau o anulare? Răspundeți la acest e-mail sau sunați direct — fără costuri.",
-      "nextCancelled": "Locurile de iarnă se ocupă repede — pe Cyprus Winter găsiți alte crame și ghizi licențiați."
+      "nextCancelled": "Locurile de iarnă se ocupă repede — pe Cyprus Winter găsiți alte crame și ghizi licențiați.",
+      "subjectGuestCancelled": "Cererea dvs. către {provider} a fost anulată",
+      "headingGuestCancelled": "Cererea dvs. a fost anulată",
+      "bodyGuestCancelled": "Ați anulat cererea către {provider} pentru {date} ({partySize} persoane). Nu s-a perceput nimic.",
+      "nextGuestCancelled": "V-ați răzgândit? Puteți trimite oricând o cerere nouă — intervalele de iarnă sunt de obicei flexibile."
     }
   },
   "data": {

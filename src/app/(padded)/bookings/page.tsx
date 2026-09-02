@@ -16,6 +16,93 @@ import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { useLocale, useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
 
+/**
+ * Guest-side cancel (the migration-008 arc's last step): a two-step inline
+ * confirm, then POST /api/bookings/[id]/cancel authorized by the booking's
+ * own guest email from local storage. The server treats an email mismatch as
+ * 404, so this only works for bookings this browser actually created/looked
+ * up.
+ */
+function CancelBookingButton({
+  booking,
+  onCancelled,
+}: {
+  booking: Booking;
+  onCancelled: (booking: Booking) => void;
+}) {
+  const tCancel = useTranslations("bookings.page.cancel");
+  const [confirming, setConfirming] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (booking.status === "cancelled" || !booking.guestEmail) return null;
+
+  const cancel = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/bookings/${encodeURIComponent(booking.id)}/cancel`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ guestEmail: booking.guestEmail }),
+      });
+      if (!res.ok) {
+        setError(res.status === 409 ? tCancel("errorConflict") : tCancel("errorFailed"));
+        return;
+      }
+      onCancelled({ ...booking, status: "cancelled" });
+    } catch {
+      setError(tCancel("errorFailed"));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (!confirming) {
+    return (
+      <button
+        type="button"
+        onClick={() => setConfirming(true)}
+        className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
+      >
+        {tCancel("button")}
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2 basis-full sm:basis-auto">
+      <span className="text-xs text-muted-ink">
+        {tCancel("confirmBody", { provider: booking.providerName })}
+      </span>
+      <button
+        type="button"
+        onClick={cancel}
+        disabled={busy}
+        className={`px-3 py-1.5 rounded-lg text-sm font-medium bg-terracotta/15 text-terracotta hover:bg-terracotta/25 disabled:opacity-60`}
+      >
+        {tCancel("confirmYes")}
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setConfirming(false);
+          setError(null);
+        }}
+        disabled={busy}
+        className={`px-3 py-1.5 rounded-lg ${CTA.chipTertiary} disabled:opacity-60`}
+      >
+        {tCancel("keep")}
+      </button>
+      {error && (
+        <span role="alert" className="text-xs text-terracotta basis-full">
+          {error}
+        </span>
+      )}
+    </div>
+  );
+}
+
 function StatusBadge({ status }: { status: Booking["status"] }) {
   const tBookings = useTranslations("bookings");
   const style =
@@ -61,6 +148,31 @@ export default function BookingsPage() {
     setBookings(local);
     setLoading(false);
   }, []);
+
+  // Guest-side cancel: flip only the status in local storage (the record's
+  // other fields — guestEmail, notes — stay authoritative locally, per the
+  // AUD-74 merge lesson), then announce for SR users.
+  const [cancelMessage, setCancelMessage] = useState<string | null>(null);
+  const cancelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    return () => {
+      if (cancelTimerRef.current) clearTimeout(cancelTimerRef.current);
+    };
+  }, []);
+  const tCancel = useTranslations("bookings.page.cancel");
+  const handleCancelled = useCallback(
+    (updated: Booking) => {
+      const merged = loadLocalBookings().map((x) =>
+        x.id === updated.id ? { ...x, status: "cancelled" as const } : x
+      );
+      saveLocalBookings(merged);
+      refreshBookings();
+      setCancelMessage(tCancel("success"));
+      if (cancelTimerRef.current) clearTimeout(cancelTimerRef.current);
+      cancelTimerRef.current = setTimeout(() => setCancelMessage(null), 4000);
+    },
+    [refreshBookings, tCancel]
+  );
 
   useEffect(() => {
     refreshBookings();
@@ -319,6 +431,10 @@ export default function BookingsPage() {
         />
 
         <TravelTrustStrip className="mb-8" />
+
+        <p role="status" aria-live="polite" className={cancelMessage ? "mb-4 text-sm font-medium text-terracotta" : "sr-only"}>
+          {cancelMessage ?? ""}
+        </p>
 
         {/* Stats bar */}
         {!loading && bookings.length > 0 && (
@@ -607,6 +723,7 @@ export default function BookingsPage() {
                                   >
                                     {tBookingsPage("cta.addToCalendar")}
                                   </button>
+                                  <CancelBookingButton booking={b} onCancelled={handleCancelled} />
                                 </div>
                               </div>
                             </div>

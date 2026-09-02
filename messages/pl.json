@@ -2267,6 +2267,15 @@
       "ics": {
         "tasting": "degustacja wina",
         "guidedHike": "wędrówka z przewodnikiem"
+      },
+      "cancel": {
+        "button": "Anuluj prośbę",
+        "confirmBody": "Anulować tę prośbę? {provider} otrzyma powiadomienie.",
+        "confirmYes": "Tak, anuluj",
+        "keep": "Zachowaj prośbę",
+        "success": "Prośba anulowana.",
+        "errorFailed": "Nie udało się anulować. Spróbuj za chwilę.",
+        "errorConflict": "Ta rezerwacja właśnie się zmieniła. Odśwież, aby zobaczyć aktualny stan."
       }
     }
   },
@@ -3688,7 +3697,11 @@
       "bodyConfirmed": "{provider} potwierdza Twoje zgłoszenie na {date} ({partySize} os.).",
       "bodyCancelled": "{provider} nie może przyjąć zgłoszenia na {date} ({partySize} os.). Nic nie zostało pobrane.",
       "nextConfirmed": "Zmiana lub odwołanie? Odpowiedz na tę wiadomość albo zadzwoń — bez opłat.",
-      "nextCancelled": "Zimowe terminy szybko znikają — na Cyprus Winter znajdziesz inne winnice i licencjonowanych przewodników."
+      "nextCancelled": "Zimowe terminy szybko znikają — na Cyprus Winter znajdziesz inne winnice i licencjonowanych przewodników.",
+      "subjectGuestCancelled": "Twoja prośba do {provider} została anulowana",
+      "headingGuestCancelled": "Prośba anulowana",
+      "bodyGuestCancelled": "Anulowano prośbę do {provider} na {date} ({partySize} os.). Nic nie zostało pobrane.",
+      "nextGuestCancelled": "Zmiana planów? Nową prośbę możesz wysłać w każdej chwili — zimowe terminy są zwykle elastyczne."
     }
   },
   "data": {
