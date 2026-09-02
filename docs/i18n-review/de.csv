@@ -1061,6 +1061,7 @@
 "guides.directory.verifiedCta.button","edited","Book a verified guide","Book a licensed guide","Lizenzierten Guide buchen"
 "guides.directory.verifiedCta.title","edited","Verified winter hiking partners","Licensed hiking guides — bookable in-app","Lizenzierte Wanderführer — in der App buchbar"
 "guides.directory.verifiedPartnersLink","edited","Book verified hiking partners →","Book licensed hiking guides →","Lizenzierte Wanderführer buchen →"
+"home.headline","edited","","A quieter side of the island.","Die ruhigere Seite der Insel."
 "home.templates.kicker","edited","Pre-built itineraries","Pre-built plans","Fertige Pläne"
 "home.trailConditionsStrip.asOf","new","","as of {date}","Stand: {date}"
 "home.trailConditionsStrip.cautionOnly","edited","{count} trails need caution","{count, plural, one {# trail needs caution} other {# trails need caution}}","{count, plural, one {# Weg erfordert Vorsicht} other {# Wege erfordern Vorsicht}}"

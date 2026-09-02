@@ -1076,6 +1076,7 @@
 "guides.directory.verifiedCta.button","edited","Book a verified guide","Book a licensed guide","Κράτηση αδειούχου ξεναγού"
 "guides.directory.verifiedCta.title","edited","Verified winter hiking partners","Licensed hiking guides — bookable in-app","Αδειούχοι ξεναγοί πεζοπορίας — κράτηση στην εφαρμογή"
 "guides.directory.verifiedPartnersLink","edited","Book verified hiking partners →","Book licensed hiking guides →","Κλείστε αδειούχο ξεναγό πεζοπορίας →"
+"home.headline","edited","","A quieter side of the island.","Η πιο ήσυχη πλευρά του νησιού."
 "home.templates.kicker","edited","Pre-built itineraries","Pre-built plans","Έτοιμα πλάνα"
 "home.trailConditionsStrip.asOf","new","","as of {date}","ενημέρωση: {date}"
 "home.trailConditionsStrip.cautionOnly","edited","{count} trails need caution","{count, plural, one {# trail needs caution} other {# trails need caution}}","{count, plural, one {# μονοπάτι θέλει προσοχή} other {# μονοπάτια θέλουν προσοχή}}"
