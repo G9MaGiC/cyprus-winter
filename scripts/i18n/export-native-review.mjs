@@ -8,16 +8,31 @@
  * native speaker can open in any spreadsheet app — no repo tooling required —
  * plus a README with per-locale register guidance.
  *
- * Usage: npm run i18n:export-review   (writes docs/i18n-review/)
+ * A row is exported when the translation changed on the branch ("new"/
+ * "edited") — or when the EN SOURCE changed while the translation did not
+ * ("source-changed"): those are exactly the strings most likely to be stale,
+ * so hiding them would defeat the sheet's purpose. `en_was` carries the old
+ * EN wherever it differs.
+ *
+ * Usage:
+ *   npm run i18n:export-review              writes docs/i18n-review/
+ *   npm run i18n:export-review -- --check   verifies the committed sheets are
+ *                                           current (no writes; exit 1 when
+ *                                           stale). Skipped with exit 0 when
+ *                                           HEAD *is* the merge-base (e.g. on
+ *                                           main after merge) — the sheets are
+ *                                           a snapshot of the branch, and
+ *                                           there is no diff basis there.
  */
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const OUT = join(ROOT, "docs/i18n-review");
 const LOCALES = ["de", "el", "pl", "fr", "he", "ro"];
+const CHECK = process.argv.includes("--check");
 
 function flatten(obj, prefix = "", into = new Map()) {
   for (const [key, value] of Object.entries(obj)) {
@@ -31,28 +46,37 @@ function readCatalog(locale) {
   return flatten(JSON.parse(readFileSync(join(ROOT, `messages/${locale}.json`), "utf8")));
 }
 
+const git = (...args) =>
+  execFileSync("git", args, { cwd: ROOT, maxBuffer: 1e8, encoding: "utf8" }).trim();
+
 function readBaseCatalog(base, locale) {
-  const raw = execFileSync("git", ["show", `${base}:messages/${locale}.json`], {
-    cwd: ROOT,
-    maxBuffer: 1e8,
-    encoding: "utf8",
-  });
-  return flatten(JSON.parse(raw));
+  return flatten(JSON.parse(git("show", `${base}:messages/${locale}.json`)));
 }
 
 // Quote every field; double internal quotes (RFC 4180).
 const csvField = (v) => `"${v.replace(/"/g, '""')}"`;
 const csvRow = (cells) => cells.map(csvField).join(",");
 
-const base = execFileSync("git", ["merge-base", "HEAD", "origin/main"], {
-  cwd: ROOT,
-  encoding: "utf8",
-}).trim();
+const base = git("merge-base", "HEAD", "origin/main");
+if (CHECK && base === git("rev-parse", "HEAD")) {
+  console.log("HEAD is the merge-base — sheets are a branch snapshot; freshness check skipped.");
+  process.exit(0);
+}
 
 const en = readCatalog("en");
+const baseEn = readBaseCatalog(base, "en");
 const counts = {};
+let stale = false;
 
-mkdirSync(OUT, { recursive: true });
+if (!CHECK) mkdirSync(OUT, { recursive: true });
+
+function verify(file, content) {
+  const committed = existsSync(file) ? readFileSync(file, "utf8") : null;
+  if (committed !== content) {
+    stale = true;
+    console.error(`STALE: ${file} does not match the current catalogs — run npm run i18n:export-review`);
+  }
+}
 
 for (const locale of LOCALES) {
   const branch = readCatalog(locale);
@@ -60,38 +84,45 @@ for (const locale of LOCALES) {
   const rows = [];
   for (const [key, value] of branch) {
     const prev = before.get(key);
-    if (prev === value) continue;
-    const status = prev === undefined ? "new" : "edited";
     const source = en.get(key);
+    const prevSource = baseEn.get(key);
+    const translationChanged = prev !== value;
+    const sourceChanged = prevSource !== undefined && prevSource !== source;
+    if (!translationChanged && !sourceChanged) continue;
+    const status = prev === undefined ? "new" : translationChanged ? "edited" : "source-changed";
     if (source === undefined) {
       throw new Error(`${locale}: ${key} has no EN source — catalog parity broken`);
     }
-    rows.push([key, status, source, value]);
+    rows.push([key, status, sourceChanged ? prevSource : "", source, value]);
   }
   rows.sort((a, b) => a[0].localeCompare(b[0]));
   counts[locale] = {
     total: rows.length,
     added: rows.filter((r) => r[1] === "new").length,
     edited: rows.filter((r) => r[1] === "edited").length,
+    sourceChanged: rows.filter((r) => r[1] === "source-changed").length,
   };
   // BOM so Excel detects UTF-8 (Greek/Hebrew otherwise mangle on open).
   const csv =
     "﻿" +
-    csvRow(["key", "status", "en", "translation"]) +
+    csvRow(["key", "status", "en_was", "en", "translation"]) +
     "\n" +
     rows.map(csvRow).join("\n") +
     "\n";
-  writeFileSync(join(OUT, `${locale}.csv`), csv);
-  console.log(`${locale}.csv: ${counts[locale].total} rows (${counts[locale].added} new, ${counts[locale].edited} edited)`);
+  const file = join(OUT, `${locale}.csv`);
+  if (CHECK) verify(file, csv);
+  else writeFileSync(file, csv);
+  console.log(
+    `${locale}.csv: ${counts[locale].total} rows (${counts[locale].added} new, ${counts[locale].edited} edited, ${counts[locale].sourceChanged} source-changed)`
+  );
 }
 
 const countsTable = LOCALES.map(
-  (l) => `| ${l} | ${counts[l].total} | ${counts[l].added} | ${counts[l].edited} |`
+  (l) =>
+    `| ${l} | ${counts[l].total} | ${counts[l].added} | ${counts[l].edited} | ${counts[l].sourceChanged} |`
 ).join("\n");
 
-writeFileSync(
-  join(OUT, "README.md"),
-  `# Native review sheets
+const readme = `# Native review sheets
 
 Every non-EN string added or changed on the audit branch (◇ in
 [UX_UI_PERSONA_AUDIT_2026-08-31.md](../UX_UI_PERSONA_AUDIT_2026-08-31.md))
@@ -102,11 +133,17 @@ BOM, so Excel renders Greek/Hebrew correctly).
 Columns: \`key\` (catalog path — the prefix tells you the surface:
 \`data.wineries.*\`, \`data.attractions.*\`, \`data.trails.*\` are place
 content, \`data.bestFor.*\` are short audience/context tags, everything else
-is app UI copy), \`status\` (\`new\` on this branch, or \`edited\`),
-\`en\` (the English source), \`translation\` (the string to review).
+is app UI copy), \`status\`, \`en_was\` (the previous English source, when it
+changed), \`en\` (the current English source), \`translation\` (the string to
+review).
 
-| Locale | Rows | New | Edited |
-|---|---|---|---|
+Statuses: \`new\` — added on this branch; \`edited\` — translation changed on
+this branch; \`source-changed\` — the ENGLISH changed but the translation did
+not, so check it still matches the current \`en\` (these are the likeliest
+stale rows).
+
+| Locale | Rows | New | Edited | Source-changed |
+|---|---|---|---|---|
 ${countsTable}
 
 ## What to check per locale
@@ -132,13 +169,26 @@ ${countsTable}
 ## Handing corrections back
 
 Edit only the \`translation\` column (keep \`key\` untouched) and return the
-CSV — corrections are then patched into \`messages/<locale>.json\` and the
-tier-1 drift maps re-pinned.
+CSV — corrections are then patched into \`messages/<locale>.json\`, the
+tier-1 drift maps re-pinned, and the sheets regenerated (CI fails if they
+drift from the catalogs — see below).
 
 ## Regenerating
 
 \`npm run i18n:export-review\` rebuilds every sheet from the current
-catalogs against the branch's merge-base with \`origin/main\`.
-`
-);
-console.log(`README.md written; base ${base.slice(0, 7)}`);
+catalogs against the branch's merge-base with \`origin/main\`. CI runs
+\`npm run i18n:export-review -- --check\` so a catalog edit that isn't
+reflected here fails the Quality job instead of silently staling the
+sheets.
+`;
+
+const readmeFile = join(OUT, "README.md");
+if (CHECK) verify(readmeFile, readme);
+else writeFileSync(readmeFile, readme);
+
+if (CHECK) {
+  if (stale) process.exit(1);
+  console.log(`sheets are current; base ${base.slice(0, 7)}`);
+} else {
+  console.log(`README.md written; base ${base.slice(0, 7)}`);
+}

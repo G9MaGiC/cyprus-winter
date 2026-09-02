@@ -91,8 +91,18 @@ describe("bestFor display overlay (AUD-99)", () => {
     expect(formatBestForSentence(["Couples", "Photography"], "en")).toBe("couples and photography");
     expect(formatBestForSentence(["Paare", "Fotografie"], "de")).toBe("Paare und Fotografie");
     expect(formatBestForSentence(["ζευγάρια", "φωτογραφία"], "el")).toBe("ζευγάρια και φωτογραφία");
-    // Hebrew fuses the conjunction onto the last word — no "ו-" hyphen form.
+    // Hebrew fuses the conjunction onto a Hebrew last word — no "ו-" hyphen form.
     expect(formatBestForSentence(["זוגות", "צילום"], "he")).toBe("זוגות וצילום");
+    // …but a Latin label takes the hyphenated "ו-" form plus LTR isolates
+    // (the live case: winery sygkrasi keeps "The Farmyard" untranslated).
+    expect(formatBestForSentence(["יום באקמס", "The Farmyard"], "he")).toBe(
+      "יום באקמס ו-⁦The Farmyard⁩"
+    );
+    // A Latin-initial FIRST label gets a maqaf so the frame's fused "ל{types}"
+    // reads "ל־" before it.
+    expect(formatBestForSentence(["The Farmyard", "קרבה לחוף"], "he")).toBe(
+      "־⁦The Farmyard⁩ וקרבה לחוף"
+    );
     expect(formatBestForSentence(["Solo"], "fr")).toBe("Solo");
   });
 });

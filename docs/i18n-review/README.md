@@ -9,17 +9,23 @@ BOM, so Excel renders Greek/Hebrew correctly).
 Columns: `key` (catalog path — the prefix tells you the surface:
 `data.wineries.*`, `data.attractions.*`, `data.trails.*` are place
 content, `data.bestFor.*` are short audience/context tags, everything else
-is app UI copy), `status` (`new` on this branch, or `edited`),
-`en` (the English source), `translation` (the string to review).
+is app UI copy), `status`, `en_was` (the previous English source, when it
+changed), `en` (the current English source), `translation` (the string to
+review).
 
-| Locale | Rows | New | Edited |
-|---|---|---|---|
-| de | 1124 | 1088 | 36 |
-| el | 1144 | 1088 | 56 |
-| pl | 1126 | 1088 | 38 |
-| fr | 1120 | 1088 | 32 |
-| he | 1177 | 1088 | 89 |
-| ro | 1118 | 1088 | 30 |
+Statuses: `new` — added on this branch; `edited` — translation changed on
+this branch; `source-changed` — the ENGLISH changed but the translation did
+not, so check it still matches the current `en` (these are the likeliest
+stale rows).
+
+| Locale | Rows | New | Edited | Source-changed |
+|---|---|---|---|---|
+| de | 1126 | 1088 | 37 | 1 |
+| el | 1145 | 1088 | 56 | 1 |
+| pl | 1128 | 1088 | 39 | 1 |
+| fr | 1121 | 1088 | 32 | 1 |
+| he | 1180 | 1088 | 91 | 1 |
+| ro | 1120 | 1088 | 30 | 2 |
 
 ## What to check per locale
 
@@ -44,10 +50,14 @@ is app UI copy), `status` (`new` on this branch, or `edited`),
 ## Handing corrections back
 
 Edit only the `translation` column (keep `key` untouched) and return the
-CSV — corrections are then patched into `messages/<locale>.json` and the
-tier-1 drift maps re-pinned.
+CSV — corrections are then patched into `messages/<locale>.json`, the
+tier-1 drift maps re-pinned, and the sheets regenerated (CI fails if they
+drift from the catalogs — see below).
 
 ## Regenerating
 
 `npm run i18n:export-review` rebuilds every sheet from the current
-catalogs against the branch's merge-base with `origin/main`.
+catalogs against the branch's merge-base with `origin/main`. CI runs
+`npm run i18n:export-review -- --check` so a catalog edit that isn't
+reflected here fails the Quality job instead of silently staling the
+sheets.
