@@ -36,6 +36,7 @@ function getTrailNames(guide: (typeof guides)[0]): string[] {
 }
 
 export default async function GuidesListPage() {
+  const publicGuides = guides.filter((guide) => guide.isPublic !== false);
   const [tNav, tCommon, tBookPages, tGuidesDir] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),
@@ -61,9 +62,9 @@ export default async function GuidesListPage() {
         <p className="text-muted-ink max-w-2xl">
           {tBookPages("guideList.intro")}
         </p>
-        {guides.some((g) => isPartnerVerified(g)) && (
+        {publicGuides.some((g) => isPartnerVerified(g)) && (
           <p className="text-sm text-muted-ink mt-2 max-w-2xl">
-            {tBookPages("guideList.partnerCount", { count: guides.filter((g) => isPartnerVerified(g)).length })}
+            {tBookPages("guideList.partnerCount", { count: publicGuides.filter((g) => isPartnerVerified(g)).length })}
           </p>
         )}
         <p className="text-sm text-muted-ink mt-3 max-w-2xl">
@@ -79,7 +80,7 @@ export default async function GuidesListPage() {
       </div>
 
       <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-        {guides.map((guide) => {
+        {publicGuides.map((guide) => {
           const trailNames = getTrailNames(guide);
           return (
             <div
