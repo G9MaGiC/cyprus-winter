@@ -1060,9 +1060,9 @@ const wineryRecords: Winery[] = [
     transport: "Short drive from Larnaca or Limassol (A1). Skarinou exit.",
     parking: "On site",
     backstory:
-      "The Sergiou family brings a fresh perspective to Cypriot winemaking. From their base in Skarinou, between Larnaca and Limassol, they work exclusively with indigenous varieties; Xynisteri, Morokanella, Assyrtiko, Maratheftiko; and their Atypon range (the name means 'unexpected') has become a talking point among wine lovers. They sell direct via their online shop and welcome visitors for tastings by appointment.",
+      "A new Skarinou producer focused on indigenous Cypriot varieties. Public information confirms online wine sales, but regular winery visits and tastings have not yet been officially opened.",
     description:
-      "The Sergiou family makes wine in Skarinou, between Limassol and Larnaca. Indigenous varieties only: Xynisteri, Morokanella, Assyrtiko, Maratheftiko, and the Atypon blends. They often pour the tastings themselves and tell the story behind each bottle. Book ahead.",
+      "A Skarinou producer working with indigenous Cypriot varieties. Its wines are available online, but the winery is not currently confirmed as open for regular public visits or tastings.",
     type: "winery",
     highlights: [
       "Xynisteri Single Vineyard",
@@ -1074,9 +1074,9 @@ const wineryRecords: Winery[] = [
     image: "/images/cyprus/cyprus-winery-troodos.jpg",
     bestFor: ["Modern Cypriot wine", "Couples", "Wine enthusiasts", "Easy drive from Larnaca/Limassol"],
     wineRoute: "Larnaca–Limassol corridor",
-    tastingInfo: "Tastings by appointment; online shop for bottles €14 to 20",
-    winterOpen: true,
-    bookingUrl: "https://domeswinery.com/pages/contact",
+    tastingInfo: "Online wine sales available. Public visits and tastings are not currently confirmed.",
+    winterOpen: false,
+    bookingUrl: "https://domeswinery.com/",
     shopUrl: "https://domeswinery.com/collections/all",
     winterTip: "Skarinou is a short drive from Larnaca or Limassol; ideal for a winter afternoon. Their Atypon 01 red blend and Xynisteri Single Vineyard are standouts. Can't visit? Order online.",
     bestTimeToVisit: "Dec to Mar, book ahead",
