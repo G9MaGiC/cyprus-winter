@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import { LAYOUT, CTA, CARD, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -46,7 +46,6 @@ export default async function TeamPage() {
           </AppLink>
         </div>
       </div>
-
     </div>
   );
 }
