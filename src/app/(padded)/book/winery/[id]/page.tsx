@@ -16,6 +16,7 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 import { localizeWineryContent } from "@/lib/winery-content";
+import { getBestForLocalizer } from "@/lib/best-for";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
@@ -63,6 +64,8 @@ export default async function WineryBookPage({
   // (the EN base) for structured-data consistency.
   await ensurePartnerOverlaysLoaded();
   const winery = applyPartnerOpeningHours(await localizeWineryContent(found));
+  // AUD-99 residual: bestFor chips display localized; data keeps EN tokens.
+  const localizeBestFor = await getBestForLocalizer();
   const imageUrl = getAttractionImage(id, "winery");
   const [tNav, tCommon, tBookPages] = await Promise.all([
     getTranslations("nav"),
@@ -125,7 +128,7 @@ export default async function WineryBookPage({
           <div className="flex flex-wrap gap-1.5 mt-2">
             {winery.bestFor.slice(0, 4).map((tag) => (
               <span key={tag} className="inline-block px-2 py-0.5 rounded-md text-xs bg-sand-200/80 text-muted-ink">
-                {tag}
+                {localizeBestFor(tag)}
               </span>
             ))}
           </div>

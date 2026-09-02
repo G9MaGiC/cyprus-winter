@@ -35,6 +35,7 @@ import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
 import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 import { localizeDiscoverContent } from "@/lib/discover-content";
+import { formatBestForSentence, getBestForLocalizer } from "@/lib/best-for";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -121,6 +122,10 @@ export default async function AttractionPage({
   const a = applyPartnerOpeningHours(await localizeDiscoverContent(found, locale));
 
   const typeLabel = getDiscoverTypeLabel(a.type, tDetail, tCommon);
+  // AUD-99 residual: bestFor tokens are EN matching keys — localize per token
+  // for display only (search/personalization/JSON-LD keep the EN values).
+  const localizeBestFor = await getBestForLocalizer(locale);
+  const bestForTypes = formatBestForSentence(a.bestFor.slice(0, 2).map(localizeBestFor), locale);
   const placeSecrets = getSecretsForPlace(a.id);
   const showInlineLocalSecret = Boolean(a.localSecret) && placeSecrets.length === 0;
 
@@ -198,6 +203,7 @@ export default async function AttractionPage({
             locale={locale}
             typeLabel={typeLabel}
             tDetail={tDetail}
+            bestForTypes={bestForTypes}
           />
 
           <div className="space-y-10 sm:space-y-14 mt-10 sm:mt-14">
@@ -221,7 +227,7 @@ export default async function AttractionPage({
                 <h3 className={`${TYPE.kicker} text-muted-ink mb-1`}>
                   {tDetail("headings.greatFor")}
                 </h3>
-                <p className="text-muted-ink text-base break-words">{a.bestFor.join(" · ")}</p>
+                <p className="text-muted-ink text-base break-words">{a.bestFor.map(localizeBestFor).join(" · ")}</p>
               </div>
               {isRestaurant(a) && (a.cuisine || a.priceRange) && (
                 <div className="mt-4 flex flex-wrap gap-3">
