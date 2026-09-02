@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { jsonError, jsonRateLimitedFromResult } from "@/lib/api-response";
+import {
+  jsonError,
+  jsonRateLimitedFromResult,
+  rateLimitSuccessHeaders,
+  readJsonBody,
+  RequestBodyTooLargeError,
+} from "@/lib/api-response";
 import { cancelBookingAsGuest } from "@/lib/bookings";
 import { sendCancellationNoticeToPartner, sendGuestCancellationEmail } from "@/lib/email";
 import { getGuideById } from "@/data/guides";
@@ -40,10 +46,15 @@ export async function POST(
     return jsonError("VALIDATION_ERROR", "Booking id is required.", 400);
   }
 
+  // Bounded read: this is a public, unauthenticated endpoint — the same
+  // memory-pressure guard the sibling POST /api/bookings enforces.
   let body: unknown;
   try {
-    body = await req.json();
-  } catch {
+    body = await readJsonBody(req, 4_000);
+  } catch (err) {
+    if (err instanceof RequestBodyTooLargeError) {
+      return jsonError("VALIDATION_ERROR", "Request body too large.", 413);
+    }
     return jsonError("VALIDATION_ERROR", "Invalid JSON body", 400);
   }
   const parsed = cancelSchema.safeParse(body);
@@ -90,10 +101,15 @@ export async function POST(
     }
   }
 
-  return NextResponse.json({
-    booking: result.booking,
-    changed: result.changed,
-    guestEmailSent,
-    partnerNotified,
-  });
+  return NextResponse.json(
+    {
+      booking: result.booking,
+      changed: result.changed,
+      guestEmailSent,
+      partnerNotified,
+    },
+    // no-store: the response carries guest PII; the X-RateLimit headers are
+    // the contract for all rate-limited routes (api-response.ts).
+    { headers: rateLimitSuccessHeaders(limitResult.remaining, 10, limitResult.bypassed) }
+  );
 }

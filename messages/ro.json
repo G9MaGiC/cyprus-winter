@@ -2263,14 +2263,14 @@
         "title": "Rezervările mele | Cyprus Winter",
         "description": "Degustări și experiențe. Toate într-un loc."
       },
-      "cancelHint": "Vrei să modifici sau să anulezi? Răspunde la emailul de confirmare sau sună direct crama ori ghidul — fără costuri în ambele cazuri.",
+      "cancelHint": "S-au schimbat planurile? Anulați orice cerere direct pe cardul ei de mai jos — fără costuri. Pentru schimbarea datei, folosiți „Cereți o modificare”.",
       "ics": {
         "tasting": "degustare de vin",
         "guidedHike": "drumeție ghidată"
       },
       "cancel": {
         "button": "Anulați cererea",
-        "confirmBody": "Anulați această cerere? {provider} va fi notificat.",
+        "confirmBody": "Anulați cererea către {provider}? Acest lucru nu poate fi anulat ulterior.",
         "confirmYes": "Da, anulați",
         "keep": "Păstrați cererea",
         "success": "Cererea a fost anulată.",

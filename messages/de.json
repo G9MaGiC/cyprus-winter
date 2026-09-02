@@ -2263,14 +2263,14 @@
         "title": "Meine Buchungen | Cyprus Winter",
         "description": "Ihre Verkostungen und Erlebnisse. Alles an einem Ort."
       },
-      "cancelHint": "Ändern oder stornieren? Antworten Sie auf die Bestätigungs-E-Mail oder rufen Sie das Weingut bzw. den Guide direkt an — in beiden Fällen kostenlos.",
+      "cancelHint": "Pläne geändert? Stornieren Sie jede Anfrage direkt auf ihrer Karte unten — kostenfrei. Für Terminänderungen nutzen Sie „Änderung anfragen“.",
       "ics": {
         "tasting": "Weinverkostung",
         "guidedHike": "geführte Wanderung"
       },
       "cancel": {
         "button": "Anfrage stornieren",
-        "confirmBody": "Diese Anfrage stornieren? {provider} wird benachrichtigt.",
+        "confirmBody": "Diese Anfrage an {provider} stornieren? Das lässt sich nicht rückgängig machen.",
         "confirmYes": "Ja, stornieren",
         "keep": "Anfrage behalten",
         "success": "Anfrage storniert.",

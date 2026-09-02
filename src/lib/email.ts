@@ -353,7 +353,9 @@ export async function sendCancellationNoticeToPartner(
     const { error } = await resend.emails.send({
       from,
       to: partner.partnerEmail,
-      subject: `[Cyprus Winter] Request cancelled: ${escapeHtml(booking.guestName)} | ${escapeHtml(booking.date)}`,
+      // Subjects are plain text — HTML-escaping here would show literal
+      // entities ("Anne &amp; Tom") in the partner's inbox.
+      subject: `[Cyprus Winter] Request cancelled: ${booking.guestName} | ${booking.date}`,
       html: `
         <h2>A request was cancelled by the guest</h2>
         <p>The following request to <strong>${escapeHtml(partner.name)}</strong> was cancelled by the guest — no action is needed.</p>

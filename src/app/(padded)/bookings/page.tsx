@@ -149,9 +149,13 @@ export default function BookingsPage() {
     setLoading(false);
   }, []);
 
-  // Guest-side cancel: flip only the status in local storage (the record's
-  // other fields — guestEmail, notes — stay authoritative locally, per the
-  // AUD-74 merge lesson), then announce for SR users.
+  // Guest-side cancel: flip only the status (the record's other fields —
+  // guestEmail, notes — stay authoritative locally, per the AUD-74 merge
+  // lesson), then announce for SR users. React state updates from memory
+  // FIRST — a failed localStorage write must not leave the UI announcing
+  // success while the list still shows the old status (the same reason
+  // applyRemoteBookings sets state from its merged array); storage is
+  // best-effort for other tabs and the next visit.
   const [cancelMessage, setCancelMessage] = useState<string | null>(null);
   const cancelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
@@ -162,16 +166,20 @@ export default function BookingsPage() {
   const tCancel = useTranslations("bookings.page.cancel");
   const handleCancelled = useCallback(
     (updated: Booking) => {
-      const merged = loadLocalBookings().map((x) =>
+      const merged = bookings.map((x) =>
         x.id === updated.id ? { ...x, status: "cancelled" as const } : x
       );
-      saveLocalBookings(merged);
-      refreshBookings();
+      setBookings(merged);
+      try {
+        saveLocalBookings(merged);
+      } catch {
+        // state above is already correct; storage catches up on next sync
+      }
       setCancelMessage(tCancel("success"));
       if (cancelTimerRef.current) clearTimeout(cancelTimerRef.current);
       cancelTimerRef.current = setTimeout(() => setCancelMessage(null), 4000);
     },
-    [refreshBookings, tCancel]
+    [bookings, tCancel]
   );
 
   useEffect(() => {
@@ -195,9 +203,20 @@ export default function BookingsPage() {
   // `silent` = the caller is a background refresh, not a user-initiated email
   // lookup: merge and re-render, but never set the lookup-panel result banner
   // ("No bookings found…"/"Loaded N") the user didn't ask for.
-  const applyRemoteBookings = (apiBookings: Booking[], { silent = false } = {}) => {
+  const applyRemoteBookings = (
+    apiBookings: Booking[],
+    { silent = false, guestEmail }: { silent?: boolean; guestEmail?: string } = {}
+  ) => {
+    // The public API view strips guestEmail; the server matched these records
+    // by exactly the email we queried with, so restoring it locally is
+    // faithful — and the in-app cancel button needs it on devices that only
+    // ever synced via lookup (the cross-device path the emailed link uses).
+    const normalizedEmail = guestEmail?.trim().toLowerCase();
+    const enriched = normalizedEmail
+      ? apiBookings.map((b) => (b.guestEmail ? b : { ...b, guestEmail: normalizedEmail }))
+      : apiBookings;
     const local = loadLocalBookings();
-    const merged = mergeBookings(local, apiBookings);
+    const merged = mergeBookings(local, enriched);
     saveLocalBookings(merged);
     if (!isMountedRef.current) return;
     setBookings(merged);
@@ -239,7 +258,7 @@ export default function BookingsPage() {
         if (!res.ok) return;
         const data = await res.json();
         if (!isMountedRef.current) return;
-        applyRemoteBookings((data.bookings ?? []) as Booking[], { silent: true });
+        applyRemoteBookings((data.bookings ?? []) as Booking[], { silent: true, guestEmail: email });
       } catch {
         // offline or rate-limited — local view stays authoritative
       }
@@ -284,7 +303,7 @@ export default function BookingsPage() {
             tBookings("errors.lookupExpired");
           throw new Error(msg);
         }
-        applyRemoteBookings((data.bookings ?? []) as Booking[]);
+        applyRemoteBookings((data.bookings ?? []) as Booking[], { guestEmail: email });
       } catch (err) {
         if (!isMountedRef.current) return;
         const msg = err instanceof Error ? err.message : "";
@@ -334,7 +353,7 @@ export default function BookingsPage() {
           tBookings("errors.failedToLoad");
         throw new Error(msg);
       }
-      applyRemoteBookings((data.bookings ?? []) as Booking[]);
+      applyRemoteBookings((data.bookings ?? []) as Booking[], { guestEmail: email });
     } catch (err) {
       if (!isMountedRef.current) return;
       const msg = err instanceof Error ? err.message : "";
@@ -618,7 +637,8 @@ export default function BookingsPage() {
               </div>
             )}
 
-            {/* Change/cancel guidance — there is no in-app cancel flow (BUG-362) */}
+            {/* Change/cancel guidance — cancel is in-app since batch 41; the
+                hint points at the card button, email stays the fallback. */}
             {upcoming.length > 0 && (
               <p className="mb-6 text-sm text-muted-ink">
                 {tBookingsPage("cancelHint")}

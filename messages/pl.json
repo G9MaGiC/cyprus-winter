@@ -2263,14 +2263,14 @@
         "title": "Moje rezerwacje | Cyprus Winter",
         "description": "Twoje degustacje i doświadczenia. Wszystko w jednym miejscu."
       },
-      "cancelHint": "Chcesz zmienić lub odwołać? Odpowiedz na e-mail z potwierdzeniem albo zadzwoń bezpośrednio do winiarni lub przewodnika — bez opłat.",
+      "cancelHint": "Zmiana planów? Anuluj dowolną prośbę bezpośrednio na jej karcie poniżej — bez opłat. Aby zmienić termin, użyj „Poproś o zmianę”.",
       "ics": {
         "tasting": "degustacja wina",
         "guidedHike": "wędrówka z przewodnikiem"
       },
       "cancel": {
         "button": "Anuluj prośbę",
-        "confirmBody": "Anulować tę prośbę? {provider} otrzyma powiadomienie.",
+        "confirmBody": "Anulować prośbę do {provider}? Tego nie można cofnąć.",
         "confirmYes": "Tak, anuluj",
         "keep": "Zachowaj prośbę",
         "success": "Prośba anulowana.",

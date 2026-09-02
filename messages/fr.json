@@ -2263,14 +2263,14 @@
         "title": "Mes réservations | Cyprus Winter",
         "description": "Dégustations et expériences. Tout au même endroit."
       },
-      "cancelHint": "Besoin de modifier ou d’annuler ? Répondez à l’e-mail de confirmation ou appelez directement le domaine ou le guide — sans frais dans les deux cas.",
+      "cancelHint": "Changement de plans ? Annulez toute demande directement sur sa carte ci-dessous — sans frais. Pour changer de date, utilisez « Demander une modification ».",
       "ics": {
         "tasting": "dégustation de vin",
         "guidedHike": "randonnée guidée"
       },
       "cancel": {
         "button": "Annuler la demande",
-        "confirmBody": "Annuler cette demande ? {provider} sera prévenu.",
+        "confirmBody": "Annuler cette demande à {provider} ? Cette action est irréversible.",
         "confirmYes": "Oui, annuler",
         "keep": "Garder la demande",
         "success": "Demande annulée.",
