@@ -72,7 +72,8 @@
     "android:build:debug": "cd android && ./gradlew assembleDebug",
     "android:build:release": "cap build android --androidreleasetype AAB",
     "data:plan-items": "npx tsx scripts/data/generate-plan-items.ts",
-    "i18n:export-review": "node scripts/i18n/export-native-review.mjs"
+    "i18n:export-review": "node scripts/i18n/export-native-review.mjs",
+    "generate:route-ids": "node scripts/generate-route-ids.mjs"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.43.0",

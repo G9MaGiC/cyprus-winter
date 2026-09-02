@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "@/i18n/routing";
 import { shouldSkipLocaleProxy } from "@/lib/locale-proxy-skip";
+import { invalidSlugRewriteTarget } from "@/lib/invalid-slug-404";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
@@ -63,9 +64,18 @@ export default function proxy(request: NextRequest): NextResponse {
     request.headers.set("content-security-policy", cspHeader);
     request.headers.set("x-nonce", nonce);
   }
-  const response = shouldSkipLocaleProxy(pathname)
-    ? NextResponse.next({ request: { headers: request.headers } })
-    : intlMiddleware(request);
+  // Invalid dynamic slugs rewrite onto a URL no route matches, which renders
+  // the styled not-found page with a REAL 404 status (AUD-65/113) — the only
+  // pre-render point where the status can still be influenced. Fail-open:
+  // valid slugs and unknown shapes fall through to the normal chain.
+  const notFoundTarget = invalidSlugRewriteTarget(pathname);
+  const response = notFoundTarget
+    ? NextResponse.rewrite(new URL(notFoundTarget, request.url), {
+        request: { headers: request.headers },
+      })
+    : shouldSkipLocaleProxy(pathname)
+      ? NextResponse.next({ request: { headers: request.headers } })
+      : intlMiddleware(request);
 
   // Add security headers
   response.headers.set("Content-Security-Policy", cspHeader);
