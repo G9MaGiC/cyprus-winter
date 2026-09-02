@@ -37,6 +37,27 @@ Open | In progress | Fixed | Won't fix
 
 ## Active Bugs
 
+### [BUG-355] Public trust and booking copy exceeded operational reality
+
+**Severity:** High
+**Area:** Trust / Commercial readiness
+**Page/Component:** `/team`, booking API responses, readiness scorecard
+
+### Reproduction
+1. Open `/team` and observe named executives and staff with placeholder profile links.
+2. Submit a request for a provider whose contact uses an RFC 2606 placeholder domain.
+3. Observe copy promising that the provider will respond even though no notification can be delivered.
+
+### Expected
+Only verified, authorized people and partners are presented as real. A disconnected request is described as saved, with clear instructions to contact the provider directly.
+
+### Actual
+The public interface overstated team and partner readiness.
+
+### Fix status
+Fixed in `codex/launch-truth-hardening`: fictional public team records removed; disconnected booking responses expose `partnerConnected: false` and give accurate next-step copy; the scorecard now reflects broken CI and production blockers.
+
+
 ### [BUG-354] Weather / Right Now APIs 503 on live production without Upstash
 
 **Severity:** High
