@@ -47,3 +47,55 @@ Official reference used for future onboarding:
 7. Set `isPublic: true` where applicable.
 8. Set `isVerified: true` only after the commercial authorization is complete.
 9. Store `sourceUrl` and `lastVerifiedAt`.
+
+## Second-pass winery quarantine
+
+With project-owner approval, the following records were retained in source history but set to `isPublic: false` and `isBookable: false` after they could not be corroborated reliably, appeared to duplicate another winery identity, or used placeholder-style operational details:
+
+- `ktima-vassiliades` (duplicate identity risk with Oenou Yi, Ktima Vassiliades)
+- `olympus-winery` (duplicate identity risk with ETKO / Olympus)
+- `tria-elit`
+- `nichteri`
+- `meletiou`
+- `iona`
+- `komos`
+- `adege`
+- `syndesmos`
+- `savvas`
+- `cholettis`
+- `yiannis`
+- `petrides`
+- `monagri`
+- `loukas`
+- `stavrinos`
+- `krasas`
+- `agios-theodoros`
+- `ambeli`
+- `povis`
+- `lambouri`
+- `zambeli`
+- `linos`
+- `makrikontas`
+- `fikardou-winery`
+- `sygkrasi`
+
+Quarantine is reversible. A record may be restored after a primary business website, official tourism listing, current operational contact details, and publication status are verified.
+
+## Source-confirmed records tagged in the second pass
+
+Primary business URLs and `lastVerifiedAt` metadata were added for:
+
+- Kyperounta Winery
+- Domaine Vlassides
+- Christoudia Winery
+- Fikardos Winery
+- Vasilikon Winery
+- Makarounas Winery
+- Argyrides Winery
+- Kalamos Winery
+- Mystes Winery
+- Oenou Yi Winery
+- Hadjicharalambous Boutique Winery
+- Pittali Winery
+- Papaioannou Winery
+- M. Antoniades Winery
