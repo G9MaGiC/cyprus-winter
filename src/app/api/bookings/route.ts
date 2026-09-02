@@ -230,7 +230,9 @@ export async function POST(req: Request) {
     const successLimitRemaining = Math.min(limitResult.remaining, emailLimitResult.remaining);
 
     if (type === "winery_tasting") {
-      const winery = wineries.find((w) => w.id === providerId);
+      const winery = wineries.find(
+        (w) => w.id === providerId && w.isBookable !== false && Boolean(w.bookingUrl)
+      );
       if (!winery) {
         return jsonError("NOT_FOUND", "Winery not found", 404);
       }
