@@ -8,7 +8,7 @@
 
 - **Positioning:** A **curated, destination-only** winter guide and planning surface for Cyprus (Nov–Mar focus in the PRD; the app serves year-round content with a **winter-differentiated** story).
 - **Job to be done:** Move visitors from **inspiration → shortlist → day-by-day plan → high-intent actions** (book a tasting, report trail conditions, use AI for discovery).
-- **Not:** A generic OTA, not a summer-sun brochure site. **Trust** comes from curation, real places, team visibility, and consistent UX—not algorithmic noise.
+- **Not:** A generic OTA, not a summer-sun brochure site. **Trust** comes from curation, real places, a transparent curation method (/team), and consistent UX—not algorithmic noise.
 
 **Core loop (revenue + engagement):** **Discover / Search / Trails / Events** → **Plan** (itinerary, templates) → **Book** (winery flows, `bookings`) → **return** (My Bookings, email sync, local storage merge).
 

@@ -45,7 +45,7 @@
     "bookings": "Rezervări",
     "secrets": "Secrete locale",
     "account": "Cont",
-    "team": "Echipă",
+    "team": "Cum alegem",
     "search": "Căutare",
     "more": "Mai mult",
     "askAI": "Întreabă AI",
@@ -3414,21 +3414,38 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Echipă | Cyprus Winter — Trasee, sate, crame",
-        "description": "Oamenii din spatele Cyprus Winter. Trasee, sate, crame — Cipru iarna merită mai mult. Cunoaște echipa care a creat acest ghid. Șaisprezece grade când acasă sunt șase."
+        "title": "Cum alegem locurile | Cyprus Winter",
+        "description": "Fără plasări plătite, fără broșuri de vară: cum selectează și verifică Cyprus Winter traseele, satele și cramele — și ce înseamnă cu adevărat insigna de partener verificat."
       },
-      "membersHeading": "Membri ai echipei",
       "header": {
-        "title": "Echipa noastră",
-        "description": "Designeri, dezvoltatori și experți în turism. Cipru iarna merită mai mult decât o mențiune de o linie."
+        "title": "Cum alegem locurile",
+        "description": "Cyprus Winter este un ghid curatoriat, nu un catalog. Aici explicăm exact cum ajunge un loc în ghid — și ce verificăm înainte."
+      },
+      "sections": {
+        "walked": {
+          "title": "Parcurse iarna",
+          "body": "Fiecare traseu, sat și cramă de aici este ales pentru cum este cu adevărat între noiembrie și martie — program de iarnă, starea traseelor, lumină și liniște — nu pentru cum arată în fotografii în august. Notele sezoniere sunt scrise pentru luni anume, iar când iarna schimbă ceva, pagina o spune."
+        },
+        "sources": {
+          "title": "Verificate cu surse",
+          "body": "Datele din spatele fiecărei pagini sunt validate automat la fiecare modificare, iar afirmațiile factuale din cercetarea noastră au citări. Acolo unde programul de iarnă chiar variază, scriem „sunați înainte” în loc să ghicim."
+        },
+        "partners": {
+          "title": "Verificați, niciodată plătiți",
+          "body": "Niciun loc nu plătește ca să apară aici, iar ordinea nu este de vânzare. Insigna „Partener verificat” înseamnă un singur lucru: avem un canal de contact confirmat cu partenerul, astfel încât cererea de rezervare chiar ajunge la el. Peste tot în rest, textele de rezervare vă spun onest că cererea este înregistrată — nu confirmată."
+        },
+        "corrections": {
+          "title": "Când greșim",
+          "body": "Iarna se schimbă repede — o furtună închide un traseu, o cramă își scurtează programul. Pe paginile traseelor puteți raporta condițiile, iar orice altceva pare depășit merită să ne spuneți prin asistentul de mai jos."
+        }
       },
       "cta": {
-        "prompt": "Ai întrebări despre călătorie? Ghidul tău cunoaște insula.",
-        "askAi": "Întreabă AI",
-        "startPlanning": "Începe planificarea",
-        "discoverPlaces": "Descoperă locuri"
+        "prompt": "Întrebări despre călătorie? Asistentul cunoaște insula.",
+        "askAi": "Întrebați AI-ul",
+        "startPlanning": "Începeți planificarea",
+        "discoverPlaces": "Descoperiți locuri"
       },
-      "outro": "Traseu dimineața: Artemis sau Caledonia. Omodos sau Lefkara la prânz. O cramă după-amiaza. Așa am petrece o zi. Insula răsplătește curioșii."
+      "outro": "Un traseu dimineața: Artemis sau Caledonia. Omodos sau Lefkara la prânz. O cramă după-amiaza. O astfel de zi am alege-o. Insula îi răsplătește pe cei curioși."
     }
   },
   "terms": {

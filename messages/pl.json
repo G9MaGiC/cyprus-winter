@@ -45,7 +45,7 @@
     "bookings": "Rezerwacje",
     "secrets": "Lokalne sekrety",
     "account": "Konto",
-    "team": "Zespół",
+    "team": "Jak wybieramy",
     "search": "Szukaj",
     "more": "Więcej",
     "askAI": "Zapytaj AI",
@@ -3311,21 +3311,38 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Zespół | Cyprus Winter — szlaki, wioski, winnice",
-        "description": "Ludzie stojący za Cyprus Winter. Szlaki, wioski, winnice — Cypr zimą zasługuje na więcej. Poznaj zespół, który stworzył ten przewodnik. Szesnaście stopni, gdy w domu jest sześć."
+        "title": "Jak wybieramy miejsca | Cyprus Winter",
+        "description": "Bez płatnych miejsc, bez wakacyjnych folderów: jak Cyprus Winter wybiera i weryfikuje szlaki, wioski i winnice — i co naprawdę oznacza odznaka zweryfikowanego partnera."
       },
-      "membersHeading": "Członkowie zespołu",
       "header": {
-        "title": "Nasz zespół",
-        "description": "Projektanci, deweloperzy i eksperci turystyczni. Cypr zimą zasługuje na więcej niż jedno zdanie."
+        "title": "Jak wybieramy miejsca",
+        "description": "Cyprus Winter to starannie dobrany przewodnik, nie katalog. Tu dokładnie opisujemy, jak miejsce trafia do przewodnika — i co sprawdzamy, zanim się w nim znajdzie."
+      },
+      "sections": {
+        "walked": {
+          "title": "Przetestowane zimą",
+          "body": "Każdy szlak, wioska i winnica są tu wybrane za to, jakie są naprawdę między listopadem a marcem — zimowe godziny otwarcia, stan szlaków, światło i spokój — a nie za to, jak wychodzą na zdjęciach w sierpniu. Sezonowe notatki piszemy dla konkretnych miesięcy, a gdy zima coś zmienia, strona o tym mówi."
+        },
+        "sources": {
+          "title": "Sprawdzone w źródłach",
+          "body": "Dane każdej strony są automatycznie walidowane przy każdej zmianie, a fakty w naszych materiałach mają odnośniki do źródeł. Tam, gdzie zimowe godziny naprawdę bywają zmienne, piszemy „zadzwoń wcześniej”, zamiast zgadywać."
+        },
+        "partners": {
+          "title": "Zweryfikowani, nigdy opłaceni",
+          "body": "Żadne miejsce nie płaci za obecność tutaj, a kolejność nie jest na sprzedaż. Odznaka „Zweryfikowany partner” znaczy dokładnie jedno: mamy potwierdzony kontakt z partnerem, więc prośba o rezerwację naprawdę do niego dociera. Wszędzie indziej teksty rezerwacji uczciwie mówią, że prośba została zapisana — nie potwierdzona."
+        },
+        "corrections": {
+          "title": "Gdy się mylimy",
+          "body": "Zima zmienia się szybko — burza zamyka szlak, winnica skraca godziny. Na stronach szlaków można zgłaszać warunki, a o wszystkim innym, co wygląda na nieaktualne, warto dać nam znać przez asystenta poniżej."
+        }
       },
       "cta": {
-        "prompt": "Masz pytania o podróż? Twój przewodnik zna wyspę.",
+        "prompt": "Pytania o podróż? Asystent zna wyspę.",
         "askAi": "Zapytaj AI",
         "startPlanning": "Zacznij planować",
         "discoverPlaces": "Odkrywaj miejsca"
       },
-      "outro": "Rano szlak: Artemis albo Caledonia. Na lunch Omodos lub Lefkara. Po południu winnica. To byłby nasz dzień. Wyspa nagradza ciekawych."
+      "outro": "Rano szlak: Artemida albo Kaledonia. Omodos lub Lefkara na obiad. Po południu winnica. Taki dzień byśmy wybrali. Wyspa nagradza ciekawych."
     }
   },
   "terms": {

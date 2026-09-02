@@ -45,7 +45,7 @@
     "bookings": "Buchungen",
     "secrets": "Lokale Geheimtipps",
     "account": "Konto",
-    "team": "Team",
+    "team": "Unsere Auswahl",
     "search": "Suche",
     "more": "Mehr",
     "askAI": "KI fragen",
@@ -3311,21 +3311,38 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Team | Cyprus Winter — Trails, Dörfer, Weingüter",
-        "description": "Die Menschen hinter Cyprus Winter. Trails, Dörfer, Weingüter — Zypern im Winter verdient mehr. Lernen Sie das Team hinter diesem Guide kennen."
+        "title": "Wie wir Orte auswählen | Cyprus Winter",
+        "description": "Keine bezahlten Platzierungen, keine Sommerbroschüren: wie Cyprus Winter seine Wanderwege, Dörfer und Weingüter auswählt und prüft — und was das Partner-Abzeichen wirklich bedeutet."
       },
-      "membersHeading": "Teammitglieder",
       "header": {
-        "title": "Unser Team",
-        "description": "Designer, Entwickler und Tourismus-Expert:innen. Zypern im Winter verdient mehr als eine Ein-Zeilen-Erwähnung."
+        "title": "Wie wir Orte auswählen",
+        "description": "Cyprus Winter ist ein kuratierter Reiseführer, kein Verzeichnis. Hier steht genau, wie Orte aufgenommen werden — und was wir vorher prüfen."
+      },
+      "sections": {
+        "walked": {
+          "title": "Im Winter erlaufen",
+          "body": "Jeder Wanderweg, jedes Dorf und jedes Weingut hier ist danach ausgewählt, wie es zwischen November und März wirklich ist — Winteröffnungszeiten, Wegverhältnisse, Licht und Ruhe — nicht danach, wie es im August fotografiert aussieht. Die Saisonhinweise sind für konkrete Monate geschrieben, und wenn der Winter etwas ändert, steht es auf der Seite."
+        },
+        "sources": {
+          "title": "An Quellen geprüft",
+          "body": "Die Daten hinter jeder Seite werden bei jeder Änderung automatisch validiert, und Tatsachenangaben in unserer Recherche tragen Quellenangaben. Wo Winteröffnungszeiten wirklich schwanken, schreiben wir „vorher anrufen“, statt zu raten."
+        },
+        "partners": {
+          "title": "Verifiziert, nie bezahlt",
+          "body": "Kein Ort bezahlt dafür, hier zu erscheinen, und das Ranking steht nicht zum Verkauf. Das Abzeichen „Verifizierter Partner“ bedeutet genau eines: Wir haben einen bestätigten Kontaktweg zu diesem Partner, sodass eine Buchungsanfrage ihn tatsächlich erreicht. Überall sonst sagt der Buchungstext ehrlich, dass eine Anfrage protokolliert und nicht bestätigt ist."
+        },
+        "corrections": {
+          "title": "Wenn wir falschliegen",
+          "body": "Der Winter ändert sich schnell — ein Sturm sperrt einen Weg, ein Verkostungsraum verkürzt seine Zeiten. Auf den Wanderweg-Seiten können Sie Bedingungen melden, und alles andere, das veraltet wirkt, können Sie uns über den Assistenten unten mitteilen."
+        }
       },
       "cta": {
         "prompt": "Fragen zu Ihrer Reise? Ihr Guide kennt die Insel.",
         "askAi": "KI fragen",
-        "startPlanning": "Plan starten",
+        "startPlanning": "Planung starten",
         "discoverPlaces": "Orte entdecken"
       },
-      "outro": "Morgens ein Trail: Artemis oder Caledonia. Mittags Omodos oder Lefkara. Nachmittags ein Weingut. So würden wir den Tag planen. Die Insel belohnt Neugier."
+      "outro": "Morgens ein Trail: Artemis oder Caledonia. Omodos oder Lefkara zum Mittagessen. Nachmittags ein Weingut. So einen Tag würden wir nehmen. Die Insel belohnt die Neugierigen."
     }
   },
   "terms": {

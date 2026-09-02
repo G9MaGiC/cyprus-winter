@@ -45,7 +45,7 @@
     "bookings": "Bookings",
     "secrets": "Local secrets",
     "account": "Account",
-    "team": "Team",
+    "team": "How we choose",
     "search": "Search",
     "more": "More",
     "askAI": "Ask AI",
@@ -3414,13 +3414,30 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Team | Cyprus Winter — Trails, Villages, Wineries",
-        "description": "The people behind Cyprus Winter. Trails, villages, wineries—Cyprus in winter deserves more. Meet the team who built this guide. Sixteen degrees when home is six."
+        "title": "How we choose places | Cyprus Winter",
+        "description": "No pay-for-placement, no summer brochures: how Cyprus Winter selects and verifies its trails, villages and wineries — and what the verified-partner badge really means."
       },
-      "membersHeading": "Team members",
       "header": {
-        "title": "Our Team",
-        "description": "Designers, developers, and tourism experts. Cyprus in winter deserves more than a one-line mention."
+        "title": "How we choose places",
+        "description": "Cyprus Winter is a curated guide, not a listing service. Here is exactly how places get in — and what we check before they do."
+      },
+      "sections": {
+        "walked": {
+          "title": "Walked in winter",
+          "body": "Every trail, village and winery here is chosen for how it actually is between November and March — winter opening hours, trail conditions, light and quiet — not for how it photographs in August. Seasonal notes are written for specific months, and when winter changes something, the page says so."
+        },
+        "sources": {
+          "title": "Checked against sources",
+          "body": "The data behind each page is validated automatically on every change, and factual claims in our research carry citations. Where winter hours genuinely vary, we say “call ahead” instead of guessing."
+        },
+        "partners": {
+          "title": "Verified, never paid",
+          "body": "No place pays to appear here, and ranking is not for sale. A “Verified partner” badge means one thing only: we hold a confirmed contact route to that partner, so a booking request actually reaches them. Everywhere else, the booking copy tells you honestly that a request is logged, not confirmed."
+        },
+        "corrections": {
+          "title": "When we're wrong",
+          "body": "Winter changes fast — a storm closes a trail, a tasting room shortens its hours. Trail pages take condition reports, and anything else that looks stale is worth telling us about through the assistant below."
+        }
       },
       "cta": {
         "prompt": "Questions about your trip? Your guide knows the island.",

@@ -94,7 +94,6 @@ async function extractData(out: Record<string, string>): Promise<void> {
       winterTipsHiking,
       winterTipsPractical,
     } = await import(importPath(path.join(SRC, "data/winter-tips.ts")));
-    const { team } = await import(importPath(path.join(SRC, "data/team.ts")));
     const BADGES: Record<string, { name?: string; description?: string }> = {};
     try {
       const mod = await import(importPath(path.join(SRC, "data/badges.ts")));
@@ -144,12 +143,6 @@ async function extractData(out: Record<string, string>): Promise<void> {
       add(out, `data.winterTips.${tip.id}.body`, tip.body);
     }
 
-    for (const m of team) {
-      add(out, `data.team.${m.id}.name`, m.name);
-      add(out, `data.team.${m.id}.role`, m.role);
-      add(out, `data.team.${m.id}.bio`, m.bio);
-      (m.expertise || []).forEach((exp: string, i: number) => add(out, `data.team.${m.id}.expertise.${i}`, exp));
-    }
 
     for (const [id, b] of Object.entries(BADGES)) {
       const badge = b as { name?: string; description?: string };
@@ -215,7 +208,7 @@ async function extractLib(out: Record<string, string>): Promise<void> {
     airport: "Airport",
     secrets: "Local secrets",
     account: "Account",
-    team: "Team",
+    team: "How we choose",
     search: "Search",
   };
   const addNav = (link: { href: string; labelKey: string }) => {
