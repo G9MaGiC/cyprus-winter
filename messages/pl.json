@@ -2130,9 +2130,9 @@
         },
         "workation": {
           "label": "Tydzień workation",
-          "description": "Praca zdalna w tygodniu, Troodos i wybrzeże w weekend—kawiarnie z wifi, łagodna pogoda",
-          "bookingNote": "Weekendowe terminy w winnicach rezerwuj wcześnie; w tygodniu jest spokojniej.",
-          "seasonalNote": "Sprawdź /weather dla swojego miesiąca. Weekendy: szlaki przed 10:00."
+          "description": "W tygodniu praca zdalna i jeden łatwy przystanek po pracy; w weekend Troodos i Pafos — kawiarnie z wifi, łagodna pogoda",
+          "bookingNote": "Sobotni slot w winnicy rezerwuj wcześnie; w tygodniu jest spokojniej.",
+          "seasonalNote": "Sprawdź /weather dla swojego miesiąca. Weekendowe szlaki przed 10:00; przystanki w tygodniu mieszczą się po pracy."
         },
         "classic-7": {
           "label": "Klasyczna kultura (7 dni)",

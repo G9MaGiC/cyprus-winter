@@ -2130,9 +2130,9 @@
         },
         "workation": {
           "label": "Săptămână workation",
-          "description": "Remote în săptămână, Troodos & coastă în weekend—cafenele cu wifi, vreme blândă",
-          "bookingNote": "Rezervați devreme locurile de weekend la crame; în timpul săptămânii e mai liniștit.",
-          "seasonalNote": "Verificați /weather pentru luna călătoriei. În weekend: potecile înainte de 10:00."
+          "description": "În timpul săptămânii muncă la distanță cu o oprire ușoară după program; în weekend Troodos și Paphos — cafenele cu wifi, vreme blândă",
+          "bookingNote": "Rezervați din timp vizita la cramă de sâmbătă; în timpul săptămânii este mai liniște.",
+          "seasonalNote": "Verificați /weather pentru luna dvs. Traseele de weekend înainte de ora 10; opririle din timpul săptămânii încap după program."
         },
         "classic-7": {
           "label": "Cultură clasică (7 zile)",

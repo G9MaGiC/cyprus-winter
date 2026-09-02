@@ -2130,9 +2130,9 @@
         },
         "workation": {
           "label": "Semaine workation",
-          "description": "Télétravail en semaine, Troodos & côte le week-end—cafés wifi, temps doux",
-          "bookingNote": "Réservez tôt les créneaux du week-end au domaine ; la semaine est plus calme.",
-          "seasonalNote": "Consultez /weather pour votre mois. Week-ends : sentiers avant 10 h."
+          "description": "Semaine en télétravail avec une halte facile après le travail ; Troodos et Paphos le week-end — cafés wifi, temps doux",
+          "bookingNote": "Réservez tôt le créneau du domaine le samedi ; la semaine est plus calme.",
+          "seasonalNote": "Consultez /weather pour votre mois. Sentiers du week-end avant 10 h ; les haltes de semaine tiennent après le travail."
         },
         "classic-7": {
           "label": "Culture classique (7 jours)",

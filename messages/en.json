@@ -2130,9 +2130,9 @@
         },
         "workation": {
           "label": "Workation week",
-          "description": "Remote weekdays, Troodos & coast on weekends—wifi cafés, mild weather",
-          "bookingNote": "Book weekend winery slots early; weekdays are quieter.",
-          "seasonalNote": "Check /weather for your month. Weekends: trails before 10am."
+          "description": "Remote weekdays with one easy stop after work; Troodos and Paphos on the weekend—wifi cafés, mild weather",
+          "bookingNote": "Book the Saturday winery slot early; weekdays are quieter.",
+          "seasonalNote": "Check /weather for your month. Weekend trails before 10am; weekday stops fit after a workday."
         },
         "classic-7": {
           "label": "Classic Culture (7 days)",

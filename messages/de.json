@@ -2130,9 +2130,9 @@
         },
         "workation": {
           "label": "Workation-Woche",
-          "description": "Remote unter der Woche, Troodos & Küste am Wochenende—WLAN-Cafés, mildes Wetter",
-          "bookingNote": "Wochenend-Termine im Weingut früh anfragen; unter der Woche ist es ruhiger.",
-          "seasonalNote": "/weather für den Reisemonat prüfen. Wochenenden: Trails vor 10 Uhr."
+          "description": "Werktags remote mit einem einfachen Stopp nach der Arbeit; am Wochenende Troodos und Paphos — WLAN-Cafés, mildes Wetter",
+          "bookingNote": "Reservieren Sie den Weingut-Termin am Samstag früh; unter der Woche ist es ruhiger.",
+          "seasonalNote": "Prüfen Sie /weather für Ihren Monat. Wochenend-Trails vor 10 Uhr; die Wochentagsstopps passen nach Feierabend."
         },
         "classic-7": {
           "label": "Klassische Kultur (7 Tage)",
