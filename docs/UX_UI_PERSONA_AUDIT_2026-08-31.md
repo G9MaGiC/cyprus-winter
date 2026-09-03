@@ -24,11 +24,11 @@
 
 ---
 
-## 0.0 Final state (2026-09-03, after batch 43)
+## 0.0 Final state (2026-09-03, after batch 44)
 
 **This document is a log.** Everything from §0.1 down records the audit as it unfolded — the sections below are dated snapshots plus a per-batch remediation log (§8.3), and several early summaries describe states that later batches changed. For any single finding, its **register row** (§4 / §8.2) is kept current and is the authority.
 
-Where the branch ended up, 43 batches later:
+Where the branch ended up, 44 batches later:
 
 - **Every executable register item is closed.** The round-1 and round-2 registers (AUD-01…59, AUD-60…125) carry ✅/◐ statuses with per-batch citations; nothing marked ⏳ remains that code can fix.
 - **The audit's top project (AUD-10) shipped in full:** the entire Discover/Trails decision surface renders natively in all 7 locales — 71 wineries, 58 attractions, 105 trails, 305 `bestFor` tags; catalog 7×2312 → 7×3400, EN data layer and JSON-LD contracts intact.
