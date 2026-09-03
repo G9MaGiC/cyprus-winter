@@ -44,4 +44,11 @@ async function main() {
   console.log(`Wrote ${slugs.length} slugs to ${OUT}`);
 }
 
-void main();
+// Run only as a CLI entry — tests import the helpers above, and an import-time
+// main() would refetch and re-stamp the committed index on every vitest run.
+const isCliEntry =
+  typeof process.argv[1] === "string" && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isCliEntry) {
+  void main();
+}

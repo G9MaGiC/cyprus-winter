@@ -112,4 +112,11 @@ async function main() {
   process.exit(failed ? 1 : 0);
 }
 
-void main();
+// Run only as a CLI entry — the test imports buildVcTrailGapReport, and an
+// import-time main() would fetch the network and process.exit() the test worker.
+const isCliEntry =
+  typeof process.argv[1] === "string" && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isCliEntry) {
+  void main();
+}
