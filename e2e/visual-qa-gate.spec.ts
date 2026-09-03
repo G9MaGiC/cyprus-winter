@@ -98,6 +98,7 @@ test.describe("Visual QA gate", () => {
         const width = await hero.evaluate((img: HTMLImageElement) => img.naturalWidth);
         expect(width).toBeGreaterThan(0);
       }).toPass({ timeout: 10_000 });
+      await expectNoHorizontalOverflow(page);
     });
 
     test("/discover/tsiakkas — card hero image loads", async ({ page }) => {
@@ -108,6 +109,15 @@ test.describe("Visual QA gate", () => {
         const width = await hero.evaluate((img: HTMLImageElement) => img.naturalWidth);
         expect(width).toBeGreaterThan(0);
       }).toPass({ timeout: 10_000 });
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("/trails/artemis — trail detail without overflow (AUD-15 class)", async ({ page }) => {
+      // Detail routes were the visual gate's uncovered class: AUD-15's 5px
+      // overflow was live on every discover detail while the gate stayed green.
+      await gotoAndSettle(page, "/trails/artemis");
+      await expect(page.getByRole("main")).toContainText(/Artemis/i);
+      await expectNoHorizontalOverflow(page);
     });
 
     test("populated plan — itinerary title readable at 375px (AUD-02 guard)", async ({ page }) => {
@@ -203,6 +213,15 @@ test.describe("Visual QA gate", () => {
       const filters = page.getByRole("group", { name: "סינון לפי סוג מקום" });
       await expect(filters).toBeVisible({ timeout: 15_000 });
       await expect(filters.getByRole("link").first()).toBeVisible();
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("/he/discover/tsiakkas — RTL detail without overflow (AUD-15 class)", async ({ page }) => {
+      // AUD-15 reproduced LTR+RTL; RTL overflow bugs often differ, so the
+      // detail class gets its own RTL check.
+      await gotoAndSettle(page, "/he/discover/tsiakkas");
+      await expectRtlDocument(page);
+      await expect(page.locator("main img").first()).toBeVisible({ timeout: 15_000 });
       await expectNoHorizontalOverflow(page);
     });
 
