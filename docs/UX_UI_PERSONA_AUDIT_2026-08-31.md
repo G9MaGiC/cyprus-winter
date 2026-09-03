@@ -312,7 +312,7 @@ Fix status: Fixed on this branch (AUD-09)
 
 ### [BUG-363] Curated data-layer content (winery hours/notes, attraction backstories, gem tips) is EN in all locales
 **Severity:** High  **Area:** i18n  **Page/Component:** src/data/*, /de|el|pl|he book + detail surfaces
-Fix status: Open (AUD-10; fix path = BUG-110 overlay pattern; standard: docs/ICPS.md §6.1)
+Fix status: Fixed on this branch (AUD-10 — closed by batches 5–32: full display-time overlay, 71 wineries + 58 attractions + 105 trails + 305 bestFor tags ×7 locales; standard: docs/ICPS.md §6.1; ◇ native review pending via docs/i18n-review/)
 ```
 
 ---
