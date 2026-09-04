@@ -29,6 +29,7 @@ const ROUTES = [
   "/install",
   "/login",
   "/nature",
+  "/partner/join",
   "/plan",
   "/privacy",
   "/regions/troodos",

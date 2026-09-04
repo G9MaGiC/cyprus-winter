@@ -9,7 +9,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        // /partner/join is the public onboarding page inside the disallowed
+        // portal prefix; the longer allow match outranks the /partner rules.
+        allow: ["/", "/partner/join", "/*/partner/join"],
         disallow: [
           "/admin/",
           "/partner/",
