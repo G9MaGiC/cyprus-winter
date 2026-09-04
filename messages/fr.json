@@ -5405,6 +5405,90 @@
       "cape-greco-konnos": {
         "title": "Cap Greco : le sentier, puis Konnos",
         "body": "Marchez le sentier côtier du cap Greco le matin. Descendez à la baie de Konnos pour une pause — sable blanc, eau émeraude. En hiver, elle sera peut-être à vous. Prenez un coupe-vent ; les falaises canalisent la brise. Déjeuner à Protaras ou à Fig Tree Bay. Le sentier mérite la plage."
+      },
+      "tomb-of-kings-mosaics": {
+        "title": "Tombeaux des Rois : puis les mosaïques",
+        "body": "Faites les tombeaux le matin ; la lumière allonge les ombres dans les chambres. Comptez une heure. Puis les mosaïques de Paphos ou le port pour déjeuner. Les Tombeaux des Rois sont au nord du port ; mosaïques et château sont à quinze minutes. L'hiver a de l'atmosphère — frais sous terre, doux au-dessus. Combinez avec le village de Kouklia pour un rythme plus lent."
+      },
+      "palaipafos-kouklia": {
+        "title": "Palaipafos : un café à Kouklia",
+        "body": "Le sanctuaire d'Aphrodite. Des ruines d'hiver, plus calmes que les grandes mosaïques de Paphos. Le village de Kouklia enveloppe le site. Arrêtez-vous pour un café — les ruines par-dessus votre épaule. Les Tombeaux des Rois et le port sont à un court trajet. Le rythme ici est plus lent. Le village ne vous attend pas. C'est justement l'idée."
+      },
+      "solea-valley-trout": {
+        "title": "Vallée de Solea : la truite au coin du feu",
+        "body": "Kakopetria, Galata, Kalopanagiotis. Truite, mezze, bords de rivière, cheminées. Mylikouri ou Kampos tou Livadiou le matin, puis Kakopetria ou Galata pour déjeuner. Le psaróvrasto est le classique. La vallée récompense la conduite lente. Douillette en hiver. Agios Nikolaos tis Stegis est sur la boucle."
+      },
+      "tzelefos-dawn": {
+        "title": "Tzelefos à l'aube",
+        "body": "Le pont avant neuf heures, en hiver. La brume sur le Diarizos, la mousse mouillée, personne d'autre. Garez-vous à Agios Nikolaos et descendez à pied. L'arche dans la lumière grise vaut le réveil. Le gîte de Milia fait le petit-déjeuner si vous y avez dormi. Sinon, repartez par la forêt, lentement."
+      },
+      "ineia-kafenion-intel": {
+        "title": "Kafenion d'Ineia : demandez l'état de la piste",
+        "body": "Avant Gerakopetra, arrêtez-vous sur la place d'Ineia. Commandez un café. Demandez si la piste est sèche. Le kafenion sait. Les grimpeurs qui sautent cette étape rebroussent parfois chemin, boueux. Le village a aussi les dernières toilettes avant la falaise. Les petites choses comptent."
+      },
+      "pomos-pier-snorkel": {
+        "title": "Jetée de Pomos : masque et tuba le long du mur",
+        "body": "Quand la mer est plate, les poissons s'abritent sous la jetée de pierre. Chaussons de récif, masque, combinaison d'hiver ou lycra épais. Le port travaille — respectez les bateaux. Un matin de semaine, vous partagerez peut-être l'eau avec un seul pêcheur qui répare ses filets. Café d'après à la camionnette de la plage."
+      },
+      "tochni-agrotourism-stay": {
+        "title": "Tochni : deux nuits minimum",
+        "body": "Une nuit est une pause. À deux nuits, Tochni opère. Cuisinez dans la cuisine de la maison d'hôtes. Marchez le petit sentier au crépuscule. Choirokoitia le jour, le silence du village le soir. La pierre dorée s'embrase à seize heures en décembre."
+      },
+      "asinou-before-museum": {
+        "title": "Asinou avant le musée",
+        "body": "Voyez d'abord Panagia tis Asinou à Nikitari — 1105, fresques comnènes dans la nef. Puis le Musée de Chypre à Nicosie. Les panneaux du musée prennent sens une fois qu'on s'est tenu devant l'original. Les matins de semaine, l'église sera peut-être à vous seuls."
+      },
+      "vretsia-early-start": {
+        "title": "Vretsia : partez tôt, prévenez quelqu'un",
+        "body": "Village abandonné, sentier forestier jusqu'au pont de Roudias. Isolé. Partez pour neuf heures en hiver — la lumière est courte. Dites votre itinéraire à quelqu'un. Les ruines du moulin à mi-chemin. Le pont au bout. Ça vaut la peine. Ce n'est pas une promenade anodine."
+      },
+      "green-bay-turtle-rock": {
+        "title": "Green Bay : les tortues côté est",
+        "body": "La baie de Prasinada. Plongée du bord ou masque et tuba. Le rocher aux poissons est au centre ; les tortues croisent souvent au-dessus des herbiers, côté est. La visibilité d'hiver bat celle d'été. Combinaison 5 mm. Le matin, avant que le vent se lève."
+      },
+      "episkopi-winter-sun": {
+        "title": "Falaise d'Episkopi : session au soleil d'hiver",
+        "body": "Quand Gerakopetra gèle, la face sud d'Episkopi attrape le soleil de janvier. Commencez à onze heures. Les surplombs du bas sèchent plus vite après la pluie. Le domaine Zambartas sur la route du retour. Le secret de semaine des grimpeurs de Paphos."
+      },
+      "kato-platres-trout": {
+        "title": "Kato Platres : la rivière après le sentier",
+        "body": "Artemis ou Caledonia depuis Platres le matin. Évitez la foule de la place. Mangez au Psilo Dendro de Kato Platres — la truite au bord de la rivière, le feu allumé. Le bruit du Kryos Potamos. L'enchaînement des gens d'ici."
+      },
+      "amphorae-history-dive": {
+        "title": "Grottes aux Amphores : regarder, ne pas toucher",
+        "body": "En bateau depuis le port de Paphos. Des jarres romaines au plafond de la grotte, à douze mètres. La visibilité d'hiver bat souvent celle d'été. Les amphores sont protégées — regarder, ne pas toucher. Demandez les tortues sur la boucle de Moulia. Combinaison 5 mm de décembre à février."
+      },
+      "amiantos-geopark-first": {
+        "title": "Amiantos : le musée avant les sentiers",
+        "body": "Regardez d'abord le documentaire du Géoparc. Puis le jardin géologique — les roches en ordre stratigraphique. Puis les sentiers dans la pinède qui se régénère. Le bâtiment de l'école de la mine est l'essentiel. 3 €. Parfois de la neige en hiver. Un patrimoine industriel honnête."
+      },
+      "silikou-valley-morning": {
+        "title": "Vallée de Silikou : brume puis soleil",
+        "body": "Entrez quand la brume remplit la vallée du Commandaria. Attendez vingt minutes au café du musée. Les terrasses apparaissent. Marchez vers Doros. Le domaine Savvas si vous avez appelé avant. Omodos peut attendre."
+      },
+      "lagoudera-araka-key": {
+        "title": "Lagoudera : la clé de l'église d'Araka",
+        "body": "Panagia tou Araka — fresques de 1192, parmi les plus beaux ensembles comnènes de l'île. La clé se demande au village. Courte montée raide. Voyez-la avant le déjeuner à Kakopetria. Habillez-vous sobrement. Nuages d'hiver dans la vallée ; l'église souvent dégagée au-dessus."
+      },
+      "kalavasos-tenta-first": {
+        "title": "Kalavasos : Tenta avant Lefkara",
+        "body": "Le site néolithique de Tenta — sept mille ans, structures en dôme, ouvert en hiver. Voyez-le avant la dentelle de Lefkara. Le contraste compte. Puis un déjeuner de poisson à Zygi, sur la côte. Le corridor doux entre Larnaca et Limassol."
+      },
+      "mackenzie-calm-mornings": {
+        "title": "Mackenzie : avant le vent",
+        "body": "Les matins de semaine avant dix heures — baie calme, zones claires pour le masque ou le paddle. Les écoles de kite arrivent quand le vent monte. La jetée de Finikoudes d'abord si vous voulez marcher plus long ; Mackenzie pour la rame. Les bateaux du Zenobia partent de la marina, pas d'ici."
+      },
+      "larnaca-cycle-tochni-start": {
+        "title": "Vallée des Oranges : départ à Tochni",
+        "body": "Garez-vous sur la place de Tochni, roulez vers Kalavasos et descendez à Zygi pour déjeuner. Inversez la boucle si le vent vient de la mer. Quarante kilomètres, presque tout du calme. Les ruines de Tenta s'il vous reste trente minutes."
+      },
+      "eptagoneia-kafenion-beta": {
+        "title": "Eptagoneia : demandez au kafenion",
+        "body": "Les gens d'ici savent quels blocs de calcaire sèchent en premier après la pluie — ceux orientés à l'est, près de la route de Kellaki. Le café d'abord. Puis une demi-journée sur le rocher entre Klirou et Arakapas, sans la route de la Laona."
+      },
+      "athalassa-botanical-first": {
+        "title": "Athalassa : le jardin puis le tour du lac",
+        "body": "Le jardin botanique gratuit à l'entrée principale — commencez là. Puis le sentier du lac dans le sens inverse des aiguilles. La plupart s'arrêtent au café. Vous, vous gagnez une heure de pins tranquilles avant que la circulation de Nicosie vous rappelle."
       }
     }
   }
