@@ -3,6 +3,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { secretGems } from "@/data/secret-gems";
+import { localizeSecretGems } from "@/lib/secret-gem-content";
 import { getRelatedPlaces } from "@/lib/related-places";
 import { HOME, LAYOUT, CARD, EMPTY_STATE, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
@@ -39,6 +40,7 @@ export default async function SecretsPage() {
     getTranslations("secrets.page"),
     getTranslations("discover"),
   ]);
+  const gems = await localizeSecretGems(secretGems);
   const typeLabels: Record<string, string> = {
     viewpoint: tSecrets("types.viewpoint"),
     kafenion: tSecrets("types.kafenion"),
@@ -82,7 +84,7 @@ export default async function SecretsPage() {
       })()}
       </div>
       <div id="secrets-grid" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-        {secretGems.map((g) => {
+        {gems.map((g) => {
           const place = g.placeId ? getRelatedPlaces([g.placeId])[0] : null;
           return (
             <article

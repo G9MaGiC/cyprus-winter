@@ -5176,6 +5176,60 @@
       "winter-visit": "Winterbesuch",
       "winter-walks": "Winterspaziergänge",
       "winter-waterfront": "Winterliche Uferpromenade"
+    },
+    "secretGems": {
+      "kourion-bench": {
+        "title": "Die Bank von Kourion",
+        "body": "Über die Bank mit Meerblick spricht niemand. Sie steht am äußersten Rand des Theaters, mit Blick hinunter auf die Bucht. Gehen Sie im Dezember um 16 Uhr. Das Licht trifft die Ruinen, die Küste glüht. An einem Wochentag haben Sie sie für sich. Governor's Beach ist fünfzehn Minuten entfernt — morgens Ruinen, mittags Fisch."
+      },
+      "omodos-blue-door": {
+        "title": "Das Kafenion mit der blauen Tür",
+        "body": "Am Platz von Omodos gibt es ein Kafenion mit blauer Tür — das, in das die Winzer gehen. Bestellen Sie einen griechischen Kaffee. Setzen Sie sich. Die Zivania ist hier besser als in den Touristenlokalen. An Wintermorgen brennt der Ofen, und das Dorf ist noch nicht wach. Nur keine Eile."
+      },
+      "pafos-far-cafe": {
+        "title": "Hafen von Paphos, das hintere Café",
+        "body": "Das Café am hinteren Ende des Hafens, hinter der Festung. Dienstag, 15 Uhr. Den Sonnenuntergang haben Sie für sich. Die Fischerboote, der Stein, das Licht. Im Sommer ist es überfüllt. Im Winter? Leer. Bestellen Sie einen Kaffee. Bleiben Sie bis fünf."
+      },
+      "artemis-psilo-dendro": {
+        "title": "Artemis, dann Psilo Dendro",
+        "body": "Gehen Sie den Artemis am Vormittag. Seien Sie um 13 Uhr fertig. Dann fahren Sie nach Platres und essen in der Taverne Psilo Dendro — der am Fluss. Der Besitzer kennt jeden Wanderer. Bestellen Sie die Forelle mit Mandeln. Der Kamin, die Bergluft. Es ist die Kombination, die die Einheimischen wählen. Nicht auslassen."
+      },
+      "lefkara-kato": {
+        "title": "Pano auslassen. In Kato anfangen.",
+        "body": "Alle gehen zuerst nach Pano Lefkara. Fangen Sie stattdessen in Kato Lefkara an — dem unteren Dorf. Ruhiger. Die Klöpplerinnen sitzen in den Türöffnungen. Weniger Reisegruppen. Gehen Sie hinauf nach Pano, wenn Sie so weit sind. Die Silberläden gibt es in beiden. Kato hat das Tempo."
+      },
+      "nissi-winter-coffee": {
+        "title": "Nissi im Winter: das Café, das offen bleibt",
+        "body": "Eines der Strandcafés bleibt den ganzen Winter offen. Das mit dem Holzdeck. Bestellen Sie einen Kaffee. Setzen Sie sich. Die Felseninsel, der Horizont, der leere Sand. Im Sommer bekämen Sie hier nie einen Platz. Im Dezember? Vielleicht sind Sie ganz allein. Das Licht ist anders. Nehmen Sie es mit."
+      },
+      "kalopanagiotis-springs": {
+        "title": "Die Thermalquellen vor der Brücke",
+        "body": "Alle besuchen die venezianische Brücke. Die Thermalquellen liegen am Dorfrand — fragen Sie im Museum oder irgendeinen Einheimischen. Ein Bad im Winter fühlt sich wie ein Geschenk an. Das Tal ist kalt, das Wasser warm. Gehen Sie früh. Danach die Brücke. Die Lampadistis-Kirche. In dieser Reihenfolge."
+      },
+      "avakas-post-hike": {
+        "title": "Avakas-Schlucht, dann Avakas-Weingut",
+        "body": "Gehen Sie die Schlucht am Vormittag. Die engste Stelle — wo der Himmel zum Streifen wird — langsam. Wenn Sie fertig sind, rufen Sie das Weingut Avakas an. Man ist dort Wanderer gewohnt. Der Xynisteri von Bergreben hat einen eigenen Charakter. Fragen Sie. Man erklärt es Ihnen. Zehn Autominuten vom Ausgangspunkt."
+      },
+      "lara-picnic": {
+        "title": "Lara Beach: Picknick einpacken",
+        "body": "Keine Liegen. Keine Bars. Raue Küste. Packen Sie ein Picknick ein, nehmen Sie Wasser mit. Im Winter sind die Schildkröten fort und der Strand ist leer. Vielleicht sehen Sie stundenlang niemanden. Für die Zufahrt ist ein Geländewagen empfohlen. Der goldene Sand, das türkisfarbene Wasser — das ist der Akamas. Bringen Sie alles mit. Lassen Sie nichts zurück."
+      },
+      "marina-far-end": {
+        "title": "Das hintere Ende der Marina",
+        "body": "Alle drängen sich am Eingang. Gehen Sie ans hintere Ende, Richtung alter Festung. Weniger Touristen, dieselbe Aussicht. Die Superjachten, das Wasser. Bestellen Sie zuerst einen Kaffee. Setzen Sie sich. Lassen Sie die Marina wirken. Wählen Sie dann ein Restaurant. Überstürzen Sie nichts. Die Promenade belohnt den Weg. Im Winter trifft das Licht um vier das Wasser."
+      },
+      "sea-caves-afternoon": {
+        "title": "Sea Caves: nach 15 Uhr",
+        "body": "Der Kalkstein glüht bernsteinfarben, wenn die Sonne tief steht. Gehen Sie im Winter nach 15 Uhr. Der Lichtwinkel trifft die Bögen. Nehmen Sie eine Windjacke mit — die Klippen fangen die Brise. Im Sommer ist es überfüllt. Im Dezember? Vielleicht haben Sie die Höhlen für sich. Kombinieren Sie mit der Konnos-Bucht: den Küstenpfad gehen, hinunter auf einen Kaffee. Das Licht erledigt den Rest."
+      },
+      "tomb-of-kings-light": {
+        "title": "Königsgräber: am späten Nachmittag",
+        "body": "Die unterirdischen Gräber bleiben kühl. Im Winter ist der Kontrast zur milden Küstenluft eindrücklich. Gehen Sie am Vormittag, wenn Sie zuerst die Gräber wollen. Oder am späten Nachmittag: das Licht auf dem Stein, die Schatten lang. Im Winter schließt die Anlage um 17 Uhr. Seien Sie um halb vier dort. Anderthalb Stunden gehören Ihnen. Die Dimension wirkt anders, wenn die Sonne tief steht."
+      },
+      "millomeris-platres": {
+        "title": "Millomeris, dann Mittagessen in Platres",
+        "body": "Gehen Sie Millomeris am Vormittag. Kurzer Weg. Der Wasserfall. Um zwölf fertig. Fahren Sie nach Platres. Die Forellentavernen oder ein Café am Fluss. Ein sanfter halber Tag. Ideal, wenn Sie keinen vollen Bergtag wollen. Das Dorf kennt Wanderer. Bestellen Sie die Forelle mit Mandeln. Der Kamin. Der Berg kann warten."
+      }
     }
   }
 }

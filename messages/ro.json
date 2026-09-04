@@ -5176,6 +5176,60 @@
       "winter-visit": "vizită de iarnă",
       "winter-walks": "plimbări de iarnă",
       "winter-waterfront": "faleză de iarnă"
+    },
+    "secretGems": {
+      "kourion-bench": {
+        "title": "Banca de la Kourion",
+        "body": "Nimeni nu vorbește despre banca ce privește marea. E la marginea teatrului, cu vedere spre golf. Mergi la patru după-amiaza, în decembrie. Lumina cade pe ruine, coasta strălucește. Într-o zi de lucru o ai doar pentru tine. Governor's Beach e la cincisprezece minute — ruine dimineața, pește la prânz."
+      },
+      "omodos-blue-door": {
+        "title": "Cafeneaua cu ușa albastră",
+        "body": "În piața din Omodos e o cafenea cu ușă albastră — cea în care intră vinificatorii. Comandă o cafea grecească. Așază-te. Zivania e aici mai bună decât în localurile turistice. În diminețile de iarnă soba e aprinsă, iar satul încă nu s-a trezit. Nu te grăbi."
+      },
+      "pafos-far-cafe": {
+        "title": "Portul din Paphos, cafeneaua din capăt",
+        "body": "Cafeneaua din capătul portului, dincolo de castel. Marți, la trei după-amiaza. Apusul e doar al tău. Bărcile pescărești, piatra, lumina. Vara e plin. Iarna? Gol. Comandă o cafea. Rămâi până la cinci."
+      },
+      "artemis-psilo-dendro": {
+        "title": "Artemis, apoi Psilo Dendro",
+        "body": "Fă traseul Artemis dimineața. Termină până la unu. Apoi condu spre Platres și mănâncă la taverna Psilo Dendro — cea de lângă râu. Patronul cunoaște fiecare drumeț. Comandă păstrăvul cu migdale. Șemineul, aerul de munte. E combinația localnicilor. N-o rata."
+      },
+      "lefkara-kato": {
+        "title": "Sari peste Pano. Începe cu Kato.",
+        "body": "Toți merg întâi la Pano Lefkara. Începe în schimb cu Kato Lefkara — satul de jos. Mai liniștit. Dantelăresele stau în praguri. Mai puține grupuri. Urcă la Pano când vine momentul. Argintării sunt în ambele. Kato are ritmul potrivit."
+      },
+      "nissi-winter-coffee": {
+        "title": "Nissi iarna: cafeneaua care rămâne deschisă",
+        "body": "Una dintre cafenelele de pe plajă rămâne deschisă toată iarna. Cea cu terasa de lemn. Comandă o cafea. Așază-te. Insulița de stâncă, orizontul, nisipul gol. Vara n-ai prinde loc. În decembrie? S-ar putea să fii singurul om. Lumina e altfel. Ia-o cu tine."
+      },
+      "kalopanagiotis-springs": {
+        "title": "Izvoarele termale de dinaintea podului",
+        "body": "Toți vizitează podul venețian. Izvoarele termale sunt la marginea satului — întreabă la muzeu sau orice localnic. O baie iarna e ca un dar. Valea e rece, apa e caldă. Mergi devreme. Podul după. Biserica Lampadistis. În ordinea asta."
+      },
+      "avakas-post-hike": {
+        "title": "Cheile Avakas, apoi crama Avakas",
+        "body": "Străbate cheile dimineața. În punctul cel mai îngust — unde cerul devine o fâșie — mergi încet. Când termini, sună la crama Avakas. Sunt obișnuiți cu drumeții. Xynisteri din vii de munte are alt caracter. Întreabă. Îți vor povesti. Zece minute cu mașina de la capătul traseului."
+      },
+      "lara-picnic": {
+        "title": "Plaja Lara: ia-ți picnic",
+        "body": "Fără șezlonguri. Fără baruri. Coastă sălbatică. Ia-ți picnic și apă. Iarna țestoasele au plecat, iar plaja e goală. Poți să nu vezi pe nimeni ore întregi. Pentru drumul de acces se recomandă 4x4. Nisipul auriu, apa turcoaz — acesta e Akamas. Adu totul cu tine. Nu lăsa nimic în urmă."
+      },
+      "marina-far-end": {
+        "title": "Capătul îndepărtat al marinei",
+        "body": "Toți se strâng la intrare. Mergi până în capăt, spre vechiul fort. Mai puțini turiști, aceleași priveliști. Iahturile, apa. Comandă întâi o cafea. Așază-te. Lasă marina să se așeze. Apoi alege un restaurant. Nu grăbi apropierea. Promenada răsplătește plimbarea. Iarna lumina atinge apa la patru."
+      },
+      "sea-caves-afternoon": {
+        "title": "Sea Caves: după ora trei",
+        "body": "Calcarul capătă culoarea chihlimbarului când soarele coboară. Iarna, mergi după ora trei. Unghiul luminii cade pe arcade. Ia-ți ceva de vânt — falezele prind briza. Vara e plin. În decembrie? S-ar putea să ai peșterile doar pentru tine. Combină cu golful Konnos: mergi pe poteca de coastă, coboară la o cafea. Lumina face restul."
+      },
+      "tomb-of-kings-light": {
+        "title": "Mormintele Regilor: după-amiaza târziu",
+        "body": "Mormintele subterane rămân răcoroase. Iarna, contrastul cu aerul blând al coastei e izbitor. Mergi spre prânz dacă vrei întâi mormintele. Sau după-amiaza târziu: lumina pe piatră, umbrele lungi. Iarna, situl se închide la cinci. Fii acolo până la trei și jumătate. Ai o oră și jumătate. Scara se simte altfel când soarele e jos."
+      },
+      "millomeris-platres": {
+        "title": "Millomeris, apoi prânz la Platres",
+        "body": "Fă Millomeris dimineața. Traseu scurt. Cascada. Gata până la amiază. Condu spre Platres. Tavernele cu păstrăv sau o cafenea lângă râu. O jumătate de zi blândă. Ideală când nu vrei o zi întreagă de munte. Satul îi știe pe drumeți. Comandă păstrăvul cu migdale. Șemineul. Muntele mai așteaptă."
+      }
     }
   }
 }

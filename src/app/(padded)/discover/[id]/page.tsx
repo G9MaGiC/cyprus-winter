@@ -15,6 +15,7 @@ import RelatedPlacesBlock from "@/components/RelatedPlacesBlock";
 import DetailActionFooter from "@/components/DetailActionFooter";
 import StickyAddToPlanBar from "@/components/StickyAddToPlanBar";
 import { getSecretsForPlace } from "@/data/secret-gems";
+import { localizeSecretGems } from "@/lib/secret-gem-content";
 import { getSimilarDiscoverPlaces } from "@/lib/related-places";
 import TrackView from "@/components/TrackView";
 import TrackEventOnMount from "@/components/TrackEventOnMount";
@@ -126,7 +127,7 @@ export default async function AttractionPage({
   // for display only (search/personalization/JSON-LD keep the EN values).
   const localizeBestFor = await getBestForLocalizer(locale);
   const bestForTypes = formatBestForSentence(a.bestFor.slice(0, 2).map(localizeBestFor), locale);
-  const placeSecrets = getSecretsForPlace(a.id);
+  const placeSecrets = await localizeSecretGems(getSecretsForPlace(a.id), locale);
   const showInlineLocalSecret = Boolean(a.localSecret) && placeSecrets.length === 0;
 
   const canonicalUrl = `${SITE_URL}/discover/${id}`;

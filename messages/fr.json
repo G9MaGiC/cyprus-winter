@@ -5176,6 +5176,60 @@
       "winter-visit": "visite hivernale",
       "winter-walks": "promenades d’hiver",
       "winter-waterfront": "front de mer en hiver"
+    },
+    "secretGems": {
+      "kourion-bench": {
+        "title": "Le banc de Kourion",
+        "body": "Personne ne parle du banc qui fait face à la mer. Il est tout au bord du théâtre, dominant la baie. Allez-y à seize heures en décembre. La lumière frappe les ruines, la côte s'embrase. En semaine, vous l'aurez pour vous. Governor's Beach est à quinze minutes — ruines le matin, poisson à midi."
+      },
+      "omodos-blue-door": {
+        "title": "Le kafenion à la porte bleue",
+        "body": "Sur la place d'Omodos, il y a un kafenion à la porte bleue — celui des vignerons. Commandez un café grec. Asseyez-vous. La zivania y est meilleure que dans les adresses touristiques. Les matins d'hiver, le poêle est allumé et le village dort encore. Ne vous pressez pas."
+      },
+      "pafos-far-cafe": {
+        "title": "Port de Paphos, le café du bout",
+        "body": "Le café tout au bout du port, passé le château. Mardi, quinze heures. Le coucher de soleil sera pour vous. Les barques de pêche, la pierre, la lumière. L'été, c'est bondé. L'hiver ? Vide. Commandez un café. Restez jusqu'à dix-sept heures."
+      },
+      "artemis-psilo-dendro": {
+        "title": "Artemis, puis Psilo Dendro",
+        "body": "Faites Artemis le matin. Terminez pour treize heures. Puis roulez jusqu'à Platres et mangez à la taverne Psilo Dendro — celle au bord de la rivière. Le patron connaît chaque randonneur. Commandez la truite aux amandes. La cheminée, l'air de la montagne. C'est l'enchaînement des gens d'ici. Ne le sautez pas."
+      },
+      "lefkara-kato": {
+        "title": "Laissez Pano. Commencez par Kato.",
+        "body": "Tout le monde va d'abord à Pano Lefkara. Commencez plutôt par Kato Lefkara — le village d'en bas. Plus calme. Les dentellières sont assises sur le pas des portes. Moins de groupes. Montez à Pano quand vous serez prêts. Les argenteries sont dans les deux. Kato a le bon rythme."
+      },
+      "nissi-winter-coffee": {
+        "title": "Nissi en hiver : le café qui reste ouvert",
+        "body": "Un des cafés de la plage reste ouvert tout l'hiver. Celui à la terrasse en bois. Commandez un café. Asseyez-vous. L'îlot rocheux, l'horizon, le sable vide. L'été, vous n'auriez jamais de place. En décembre ? Vous serez peut-être seuls. La lumière est différente. Prenez-la."
+      },
+      "kalopanagiotis-springs": {
+        "title": "Les sources thermales avant le pont",
+        "body": "Tout le monde visite le pont vénitien. Les sources thermales sont en bordure du village — demandez au musée ou à n'importe quel habitant. Un bain en hiver a des airs de cadeau. La vallée est froide, l'eau est chaude. Allez-y tôt. Le pont ensuite. L'église de Lampadistis. Dans cet ordre."
+      },
+      "avakas-post-hike": {
+        "title": "Gorges d'Avakas, puis domaine Avakas",
+        "body": "Faites les gorges le matin. Au passage le plus étroit — là où le ciel devient un ruban — allez doucement. Une fois sortis, appelez le domaine Avakas. Ils ont l'habitude des randonneurs. Le Xynisteri de vignes de montagne a un autre caractère. Demandez. Ils vous raconteront. À dix minutes en voiture du départ du sentier."
+      },
+      "lara-picnic": {
+        "title": "Plage de Lara : prévoyez un pique-nique",
+        "body": "Pas de transats. Pas de bars. Une côte brute. Prévoyez un pique-nique, emportez de l'eau. En hiver, les tortues sont parties et la plage est vide. Vous pouvez ne croiser personne pendant des heures. 4x4 recommandé pour la piste d'accès. Le sable doré, l'eau turquoise — c'est l'Akamas. Apportez tout. Ne laissez rien."
+      },
+      "marina-far-end": {
+        "title": "Le bout de la marina",
+        "body": "Tout le monde s'agglutine près de l'entrée. Marchez jusqu'au bout, vers le vieux fort. Moins de touristes, mêmes vues. Les yachts, l'eau. Commandez d'abord un café. Asseyez-vous. Laissez la marina se poser. Choisissez ensuite un restaurant. Ne brusquez pas l'approche. La promenade récompense la marche. En hiver, la lumière touche l'eau à seize heures."
+      },
+      "sea-caves-afternoon": {
+        "title": "Sea Caves : après quinze heures",
+        "body": "Le calcaire prend des teintes d'ambre quand le soleil est bas. En hiver, allez-y après quinze heures. L'angle de la lumière frappe les arches. Prenez un coupe-vent — les falaises attrapent la brise. L'été, c'est bondé. En décembre ? Les grottes seront peut-être à vous. Combinez avec la baie de Konnos : suivez le sentier côtier, descendez prendre un café. La lumière fait le reste."
+      },
+      "tomb-of-kings-light": {
+        "title": "Tombeaux des Rois : en fin d'après-midi",
+        "body": "Les tombeaux souterrains restent frais. En hiver, le contraste avec l'air doux de la côte saisit. Allez-y en milieu de matinée si vous voulez d'abord les tombeaux. Ou en fin d'après-midi : la lumière sur la pierre, les ombres longues. Le site ferme à dix-sept heures en hiver. Soyez-y pour quinze heures trente. Vous aurez une heure et demie. L'échelle frappe autrement quand le soleil est bas."
+      },
+      "millomeris-platres": {
+        "title": "Millomeris, puis déjeuner à Platres",
+        "body": "Faites Millomeris le matin. Sentier court. La cascade. Terminé pour midi. Roulez jusqu'à Platres. Les tavernes à truite ou un café au bord de la rivière. Une demi-journée douce. Idéale quand vous ne voulez pas d'une vraie journée de montagne. Le village connaît les randonneurs. Commandez la truite aux amandes. La cheminée. La montagne attendra."
+      }
     }
   }
 }

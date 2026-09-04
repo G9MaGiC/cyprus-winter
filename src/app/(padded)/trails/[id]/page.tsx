@@ -18,6 +18,7 @@ import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
 import { formatMonthYear, formatReportTimestamp } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
+import { localizeSecretGems } from "@/lib/secret-gem-content";
 import { matchGuideForTrail } from "@/lib/guide-match";
 import TrailBookGuideLink from "@/components/trails/TrailBookGuideLink";
 import SectionCard from "@/components/SectionCard";
@@ -86,6 +87,7 @@ export default async function TrailPage({
   // AUD-10 slice 13: decision-surface copy overlaid per locale; schema and
   // metadata keep reading the EN base `trail` record.
   const localizedTrail = await localizeTrailContent(trail, locale);
+  const trailSecrets = await localizeSecretGems(getSecretsForPlace(trail.id), locale);
 
   const canonicalUrl = `${SITE_URL}/trails/${trail.id}`;
   const trailImageUrl = toAbsoluteUrl(getTrailImage(trail.id));
@@ -480,13 +482,13 @@ export default async function TrailPage({
             </div>
 
             {/* Local secrets for this trail */}
-            {getSecretsForPlace(trail.id).length > 0 && (
+            {trailSecrets.length > 0 && (
               <SectionCard title={tTrailsDetail("localSecrets.title")} borderAccent="golden">
                 <p className="text-sm text-muted-ink mb-4">
                   {tTrailsDetail("localSecrets.intro")}
                 </p>
                 <div className="space-y-4">
-                  {getSecretsForPlace(trail.id).map((s) => (
+                  {trailSecrets.map((s) => (
                     <div key={s.id} className="p-4 rounded-xl bg-white/80 border border-sand-200/80">
                       <h3 className={`${TYPE.cardTitle} ${SECTION.titleGap}`}>{s.title}</h3>
                       <p className="text-sm text-muted-ink leading-relaxed break-words">{s.body}</p>
