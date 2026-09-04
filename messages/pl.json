@@ -3174,7 +3174,7 @@
         },
         "desktop": {
           "title": "Komputer — Chrome lub Edge",
-          "body": "Kliknij ikonę instalacji po prawej stronie paska adresu albo wybierz „Zainstaluj” z menu przeglądarki i potwierdź. Safari i Firefox nie oferują instalacji na komputerze — tam wystarczy zakładka."
+          "body": "Kliknij ikonę instalacji po prawej stronie paska adresu albo wybierz „Zainstaluj” z menu przeglądarki i potwierdź. W Safari na Macu (macOS Sonoma i nowsze) wybierz zamiast tego „Plik” → „Dodaj do Docka”. Firefox nie oferuje instalacji na komputerze — tam wystarczy zakładka."
         }
       },
       "notes": {

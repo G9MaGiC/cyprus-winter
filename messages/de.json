@@ -3174,7 +3174,7 @@
         },
         "desktop": {
           "title": "Computer — Chrome oder Edge",
-          "body": "Klicken Sie auf das Installationssymbol rechts in der Adressleiste oder wählen Sie „Installieren“ im Browsermenü und bestätigen Sie. Safari und Firefox bieten am Computer keine Installation — dort hilft ein Lesezeichen."
+          "body": "Klicken Sie auf das Installationssymbol rechts in der Adressleiste oder wählen Sie „Installieren“ im Browsermenü und bestätigen Sie. In Safari auf dem Mac (ab macOS Sonoma) wählen Sie stattdessen „Ablage“ → „Zum Dock hinzufügen“. Firefox bietet am Computer keine Installation — dort hilft ein Lesezeichen."
         }
       },
       "notes": {

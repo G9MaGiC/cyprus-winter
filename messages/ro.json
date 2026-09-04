@@ -3277,7 +3277,7 @@
         },
         "desktop": {
           "title": "Computer — Chrome sau Edge",
-          "body": "Apasă pictograma de instalare din dreapta barei de adrese sau alege „Instalează” din meniul browserului și confirmă. Safari și Firefox nu oferă instalare pe computer — acolo ajunge un semn de carte."
+          "body": "Apasă pictograma de instalare din dreapta barei de adrese sau alege „Instalează” din meniul browserului și confirmă. În Safari pe Mac (macOS Sonoma și mai nou) alege în schimb „Fișier” → „Adaugă în Dock”. Firefox nu oferă instalare pe computer — acolo ajunge un semn de carte."
         }
       },
       "notes": {

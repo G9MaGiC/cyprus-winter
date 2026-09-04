@@ -3277,7 +3277,7 @@
         },
         "desktop": {
           "title": "Computer — Chrome or Edge",
-          "body": "Click the install icon at the right end of the address bar, or choose Install from the browser menu, and confirm. Safari and Firefox don't offer desktop installation — a bookmark works there."
+          "body": "Click the install icon at the right end of the address bar, or choose Install from the browser menu, and confirm. In Safari on a Mac (macOS Sonoma and newer), choose File → Add to Dock instead. Firefox doesn't offer desktop installation — a bookmark works there."
         }
       },
       "notes": {
