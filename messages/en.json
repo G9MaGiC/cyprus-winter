@@ -2910,7 +2910,8 @@
         "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online.",
-        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again."
+        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again.",
+        "serverField": "Please check this field."
       },
       "success": {
         "title": "Request sent",
@@ -2990,7 +2991,8 @@
         "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online.",
-        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again."
+        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again.",
+        "serverField": "Please check this field."
       },
       "success": {
         "title": "Request sent",

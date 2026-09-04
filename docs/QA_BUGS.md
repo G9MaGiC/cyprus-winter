@@ -232,7 +232,7 @@ UI and copy follow design-token, persona, and i18n contracts on every surface.
 Duplicated modal CTA strings; AI drawer components missing focus rings and using `animate-bounce`; emoji map markers (🍷/⛰) against the no-emoji rule; 7 hardcoded English strings; two competing home titles (root layout hardcoded, incl. "Free trip planner"); `he` rendered in system fallback (no Hebrew font); Nissi Beach chips contradicting its own winterTip; "Don't miss" urgency copy; orphaned `ui.app__home_HomeHero.*` namespace + unused 💡 key; stale "Your Island Guide" brand in docs.
 
 ### Fix status
-Fixed — `CTA.modalPrimary/Secondary/Dismiss` tokens; AI drawer focus rings + `animate-pulse`; letter-glyph markers on all maps; leaked strings localized (×7 locales); root metadata resolves `meta.homeTitle/homeDescription`; Noto Sans Hebrew + Frank Ruhl Libre for `he` via `html[dir="rtl"]`; Nissi winter-framed; calmer events copy; orphan keys removed (editorial maps synced); docs re-branded. Follow-up batch: logical-properties pass on the worst RTL offenders (ContextualHelp, TrailCard, AuthPasswordInput, 5 map controls, Toast, PlaceOfDay overlays, plan/discover `text-left`, arrows wrapped `aria-hidden`); onboarding sheet made opaque (`bg-white` — hero text ghosted through `bg-white/95` on first visit; verified on production build; the cookie+onboarding simultaneity itself is designed and E2E-asserted). Still open (decisions needed): fabricated team roster, `.example` partner emails, email localization/from-domain, remaining long-tail physical-direction utilities.
+Fixed — `CTA.modalPrimary/Secondary/Dismiss` tokens; AI drawer focus rings + `animate-pulse`; letter-glyph markers on all maps; leaked strings localized (×7 locales); root metadata resolves `meta.homeTitle/homeDescription`; Noto Sans Hebrew + Frank Ruhl Libre for `he` via `html[dir="rtl"]`; Nissi winter-framed; calmer events copy; orphan keys removed (editorial maps synced); docs re-branded. Follow-up batch: logical-properties pass on the worst RTL offenders (ContextualHelp, TrailCard, AuthPasswordInput, 5 map controls, Toast, PlaceOfDay overlays, plan/discover `text-left`, arrows wrapped `aria-hidden`); onboarding sheet made opaque (`bg-white` — hero text ghosted through `bg-white/95` on first visit; verified on production build; the cookie+onboarding simultaneity itself is designed and E2E-asserted). Still open (decisions needed): `.example` partner emails, email localization/from-domain, remaining long-tail physical-direction utilities. (The fabricated team roster was later replaced by the honest "How we choose places" page — batch 38.)
 
 ---
 
@@ -1701,7 +1701,8 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 | Tasting-room photos for remaining verified partners | P1 | Partner press kits only — `docs/WINERY_IMAGE_INTAKE.md` |
 | `he`/`fr`/`ro` privacy/terms drafts — **lawyer/translator sign-off** | P1 | Draft body shipped (BUG-334 / PR #183); keep beta badge until review — `docs/BETA_LOCALE_GRADUATION.md` |
 | Launch checklist sign-off blank | P1 | Engineering / Ops / Product / Content |
-| G2 partner overlay is in-memory `Map` | P1 | Durable store + magic-link post-award |
+
+*(A former row here — "G2 partner overlay is in-memory `Map`" — closed in batch 30: durable Supabase store via migration 009. The post-award magic-link partner editing idea remains product backlog, not an open defect.)*
 
 ### Still open — product / debt (not inventing features)
 

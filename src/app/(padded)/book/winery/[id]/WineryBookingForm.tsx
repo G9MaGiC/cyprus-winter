@@ -67,6 +67,7 @@ export default function WineryBookingForm({
       fallback: t("errors.fallback"),
       offlineQueued: t("errors.offlineQueued"),
       offlineDropped: t("errors.offlineDropped"),
+      serverField: t("errors.serverField"),
       apiByCode,
     }
   );

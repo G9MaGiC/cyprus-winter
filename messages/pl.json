@@ -2782,7 +2782,8 @@
         "failed": "Prośba nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
         "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci.",
-        "offlineDropped": "Zapisanego zgłoszenia nie udało się wysłać — serwer je odrzucił. Sprawdź dane i wyślij ponownie."
+        "offlineDropped": "Zapisanego zgłoszenia nie udało się wysłać — serwer je odrzucił. Sprawdź dane i wyślij ponownie.",
+        "serverField": "Sprawdź to pole."
       },
       "success": {
         "title": "Wysłano prośbę",
@@ -2856,7 +2857,8 @@
         "failed": "Prośba nie powiodła się",
         "fallback": "Coś poszło nie tak — sprawdź połączenie i spróbuj ponownie.",
         "offlineQueued": "Jesteś offline — Twoje zgłoszenie zostało zapisane i zostanie wysłane automatycznie, gdy wrócisz do sieci.",
-        "offlineDropped": "Zapisanego zgłoszenia nie udało się wysłać — serwer je odrzucił. Sprawdź dane i wyślij ponownie."
+        "offlineDropped": "Zapisanego zgłoszenia nie udało się wysłać — serwer je odrzucił. Sprawdź dane i wyślij ponownie.",
+        "serverField": "Sprawdź to pole."
       },
       "success": {
         "title": "Wysłano prośbę",

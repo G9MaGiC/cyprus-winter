@@ -2910,7 +2910,8 @@
         "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne.",
-        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la."
+        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la.",
+        "serverField": "Veuillez vérifier ce champ."
       },
       "success": {
         "title": "Demande envoyée",
@@ -2984,7 +2985,8 @@
         "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
         "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne.",
-        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la."
+        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la.",
+        "serverField": "Veuillez vérifier ce champ."
       },
       "success": {
         "title": "Demande envoyée",

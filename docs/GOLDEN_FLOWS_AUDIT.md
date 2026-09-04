@@ -20,6 +20,10 @@
 
 ### GF6 — Empty/invalid states → clear next step
 - **Plan page** provides “Adding to your plan…” and failed add alert ✅
+- *Correction (Aug 2026 audit, AUD-03):* the failed-add alert later regressed silently — `plan-url-params` patched the URL via raw `history.replaceState`, which never re-renders `useSearchParams`, so `/plan?add=<bad-id>` showed nothing until a manual reload. Fixed by signalling the failure through React state in `usePlanUrlActions`; see `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` (AUD-03).
 
 ## Fixed P0 issues (this pass)
-- **SmartBackLink locale drop**: switched to `AppLink` so internal “back” links preserve locale.\n  - File: `src/components/SmartBackLink.tsx`\n- **SearchBar robustness**: coerces `query` to string so URL sync cannot produce `q=undefined`.\n  - File: `src/components/SearchBar.tsx`\n+
+- **SmartBackLink locale drop**: switched to `AppLink` so internal “back” links preserve locale.
+  - File: `src/components/SmartBackLink.tsx`
+- **SearchBar robustness**: coerces `query` to string so URL sync cannot produce `q=undefined`.
+  - File: `src/components/SearchBar.tsx`

@@ -202,14 +202,21 @@ export async function POST(req: Request) {
     });
 
     if (!parsed.success) {
-      const msg = parsed.error.issues[0]?.message ?? "Invalid input";
-      return jsonError("VALIDATION_ERROR", msg, 400);
+      const issue = parsed.error.issues[0];
+      const msg = issue?.message ?? "Invalid input";
+      // Name the failing field so the form can mark the input itself, not
+      // just a generic banner (AUD-80 residual). Body-level issues have an
+      // empty path and carry no field.
+      const field = typeof issue?.path[0] === "string" ? issue.path[0] : undefined;
+      return jsonError("VALIDATION_ERROR", msg, 400, field ? [{ field, message: msg }] : undefined);
     }
 
     const { type, providerId, date, idempotencyKey, partySize, guestEmail, guestName, notes, trailId } = parsed.data;
     const safeGuestName = sanitizeForStorage(guestName);
     if (!safeGuestName) {
-      return jsonError("VALIDATION_ERROR", "Guest name is required", 400);
+      return jsonError("VALIDATION_ERROR", "Guest name is required", 400, [
+        { field: "guestName", message: "Guest name is required" },
+      ]);
     }
 
     const emailRateLimitKey = createHash("sha256")

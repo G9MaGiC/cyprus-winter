@@ -2782,7 +2782,8 @@
         "failed": "Anfrage fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
         "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind.",
-        "offlineDropped": "Ihre gespeicherte Anfrage konnte nicht gesendet werden — der Server hat sie abgelehnt. Bitte prüfen Sie die Angaben und senden Sie sie erneut."
+        "offlineDropped": "Ihre gespeicherte Anfrage konnte nicht gesendet werden — der Server hat sie abgelehnt. Bitte prüfen Sie die Angaben und senden Sie sie erneut.",
+        "serverField": "Bitte prüfen Sie dieses Feld."
       },
       "success": {
         "title": "Anfrage gesendet",
@@ -2856,7 +2857,8 @@
         "failed": "Anfrage fehlgeschlagen",
         "fallback": "Etwas ist schiefgelaufen — prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
         "offlineQueued": "Sie sind offline — Ihre Anfrage wurde gespeichert und wird automatisch gesendet, sobald Sie wieder online sind.",
-        "offlineDropped": "Ihre gespeicherte Anfrage konnte nicht gesendet werden — der Server hat sie abgelehnt. Bitte prüfen Sie die Angaben und senden Sie sie erneut."
+        "offlineDropped": "Ihre gespeicherte Anfrage konnte nicht gesendet werden — der Server hat sie abgelehnt. Bitte prüfen Sie die Angaben und senden Sie sie erneut.",
+        "serverField": "Bitte prüfen Sie dieses Feld."
       },
       "success": {
         "title": "Anfrage gesendet",

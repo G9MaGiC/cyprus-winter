@@ -2910,7 +2910,8 @@
         "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
         "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online.",
-        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți."
+        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți.",
+        "serverField": "Verificați acest câmp."
       },
       "success": {
         "title": "Cerere trimisă",
@@ -2984,7 +2985,8 @@
         "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
         "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online.",
-        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți."
+        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți.",
+        "serverField": "Verificați acest câmp."
       },
       "success": {
         "title": "Cerere trimisă",

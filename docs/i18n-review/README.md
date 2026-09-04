@@ -20,12 +20,12 @@ stale rows).
 
 | Locale | Rows | New | Edited | Source-changed |
 |---|---|---|---|---|
-| de | 19 | 19 | 0 | 0 |
-| el | 19 | 19 | 0 | 0 |
-| pl | 19 | 19 | 0 | 0 |
-| fr | 19 | 19 | 0 | 0 |
-| he | 19 | 19 | 0 | 0 |
-| ro | 19 | 19 | 0 | 0 |
+| de | 2 | 2 | 0 | 0 |
+| el | 2 | 2 | 0 | 0 |
+| pl | 2 | 2 | 0 | 0 |
+| fr | 2 | 2 | 0 | 0 |
+| he | 2 | 2 | 0 | 0 |
+| ro | 2 | 2 | 0 | 0 |
 
 ## What to check per locale
 
