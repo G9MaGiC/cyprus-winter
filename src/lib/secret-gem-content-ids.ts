@@ -8,8 +8,8 @@
 export const LOCALIZED_SECRET_GEM_FIELDS = ["title", "body"] as const;
 export type LocalizedSecretGemField = (typeof LOCALIZED_SECRET_GEM_FIELDS)[number];
 
-/** Slice 1 (batch 52): gems attached to flagship template/discover places. */
 export const LOCALIZED_SECRET_GEM_IDS: ReadonlySet<string> = new Set([
+  // Slice 1 (batch 52): gems attached to flagship template/discover places.
   "kourion-bench",
   "omodos-blue-door",
   "pafos-far-cafe",
@@ -23,4 +23,27 @@ export const LOCALIZED_SECRET_GEM_IDS: ReadonlySet<string> = new Set([
   "sea-caves-afternoon",
   "tomb-of-kings-light",
   "millomeris-platres",
+  // Slice 2 (batch 53): next 22 in data order.
+  "zambartas-aes-ambelis",
+  "bellapais-tree",
+  "louvaras-before-omodos",
+  "leventis-first",
+  "ledra-buffer-zone",
+  "kouklia-cafe",
+  "adonis-polis-loop",
+  "st-hilarion-window",
+  "kolossi-sugar-mill",
+  "governors-coves",
+  "choirokoitia-mist",
+  "fikardou-square",
+  "kyperounta-fire-tower",
+  "rainy-nicosia",
+  "lofou-before-omodos",
+  "zygi-fish-tavernas",
+  "laiki-geitonia-market",
+  "vavla-quiet-escape",
+  "foini-potters",
+  "kritou-terra-akamas",
+  "kormakitis-maronite",
+  "statos-village-wine",
 ]);
