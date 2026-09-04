@@ -1333,7 +1333,39 @@
         "unavailable": "Portal partnerów nie jest jeszcze skonfigurowany w tym wdrożeniu. Spróbuj później lub skontaktuj się z nami.",
         "rateLimited": "Zbyt wiele prób logowania. Odczekaj minutę i spróbuj ponownie.",
         "generic": "Logowanie się nie powiodło. Sprawdź połączenie i spróbuj ponownie."
-      }
+      },
+      "joinPrompt": "Nie jesteś jeszcze partnerem?",
+      "joinLink": "Zobacz, jak działają wpis i weryfikacja"
+    },
+    "join": {
+      "meta": {
+        "title": "Zostań partnerem | Cyprus Winter",
+        "description": "Jak winnice i licencjonowani przewodnicy trafiają do Cyprus Winter: bezpłatne wpisy, weryfikacja na podstawie licencji, nigdy płatne pozycje."
+      },
+      "header": {
+        "title": "Zostań partnerem",
+        "description": "Cyprus Winter poleca miejsca i przewodników, których sami polecilibyśmy w styczniu — nigdy miejsc, które za to płacą. Tak działają wpis i weryfikacja."
+      },
+      "sections": {
+        "what": {
+          "title": "Czym jest wpis",
+          "body": "Bezpłatny wpis redakcyjny — zimowe godziny, szczere notatki, treści w siedmiu językach. Pozycji nie da się kupić, a partnerzy nie płacą za obecność. Goście rezerwują bezpośrednio u Was; nie pobieramy prowizji od gości."
+        },
+        "who": {
+          "title": "Kto może dołączyć",
+          "body": "Licencjonowani przewodnicy (licencja Wiceministerstwa Turystyki) oraz cypryjskie winnice i miejsca naprawdę otwarte zimą. Jeśli godziny zmieniają się z sezonem — właśnie to chcemy pokazywać."
+        },
+        "verify": {
+          "title": "Jak działa weryfikacja",
+          "body": "Odznaka „Zweryfikowano” znaczy jedno: potwierdziliśmy licencję lub działalność oraz kontakt rezerwacyjny, który naprawdę do Was dociera. Dopóki taki kontakt nie działa, wpis pozostaje widoczny, ale nie deklaruje weryfikacji — nie pokazujemy odznak, za którymi nie stoimy."
+        },
+        "now": {
+          "title": "Jak zacząć dziś",
+          "body": "Obecni partnerzy logują się do portalu partnera, by zarządzać godzinami, zdjęciami i prośbami o rezerwację. Licencjonowani przewodnicy są już w publicznym katalogu z oficjalnego rejestru. Bezpośredni kontakt dla nowych partnerów ruszy wkrótce — do tego czasu nie publikujemy adresu, który prowadzi donikąd."
+        }
+      },
+      "portalCta": "Logowanie partnera",
+      "directoryCta": "Katalog licencjonowanych przewodników"
     }
   },
   "airport": {
@@ -3353,7 +3385,8 @@
         "startPlanning": "Zacznij planować",
         "discoverPlaces": "Odkrywaj miejsca"
       },
-      "outro": "Rano szlak: Artemida albo Kaledonia. Omodos lub Lefkara na obiad. Po południu winnica. Taki dzień byśmy wybrali. Wyspa nagradza ciekawych."
+      "outro": "Rano szlak: Artemida albo Kaledonia. Omodos lub Lefkara na obiad. Po południu winnica. Taki dzień byśmy wybrali. Wyspa nagradza ciekawych.",
+      "partnersJoinLink": "Prowadzisz winnicę albo wycieczki z przewodnikiem? Zobacz, jak zostać partnerem"
     }
   },
   "terms": {

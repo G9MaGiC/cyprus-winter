@@ -1333,7 +1333,39 @@
         "unavailable": "Portalul partenerilor nu este încă configurat pe această instalare. Încercați mai târziu sau contactați-ne.",
         "rateLimited": "Prea multe încercări de autentificare. Așteptați un minut și încercați din nou.",
         "generic": "Autentificarea nu a reușit. Verificați conexiunea și încercați din nou."
-      }
+      },
+      "joinPrompt": "Nu sunteți încă partener?",
+      "joinLink": "Vedeți cum funcționează listarea și verificarea"
+    },
+    "join": {
+      "meta": {
+        "title": "Deveniți partener | Cyprus Winter",
+        "description": "Cum ajung cramele și ghizii licențiați pe Cyprus Winter: listări gratuite, verificare pe baza licenței, niciodată poziții plătite."
+      },
+      "header": {
+        "title": "Deveniți partener",
+        "description": "Cyprus Winter listează locuri și ghizi pe care i-am recomanda noi înșine în ianuarie — niciodată locuri care plătesc. Iată cum funcționează listarea și verificarea."
+      },
+      "sections": {
+        "what": {
+          "title": "Ce este o listare",
+          "body": "O listare editorială gratuită — program de iarnă, note oneste, conținut în șapte limbi. Nicio poziție nu se poate cumpăra, iar partenerii nu plătesc taxă de listare. Oaspeții rezervă direct la dumneavoastră; nu luăm comision de la oaspeți."
+        },
+        "who": {
+          "title": "Cine poate participa",
+          "body": "Ghizi turistici licențiați (licența Viceministerului Turismului) și crame sau locuri din Cipru deschise cu adevărat iarna. Dacă programul se schimbă cu sezonul, exact asta vrem să arătăm."
+        },
+        "verify": {
+          "title": "Cum funcționează verificarea",
+          "body": "Insigna „Verificat” înseamnă un singur lucru: am confirmat licența sau afacerea și un contact de rezervări care chiar ajunge la dumneavoastră. Până când un contact funcțional este conectat, listarea rămâne vizibilă, dar nu pretinde verificare — nu afișăm insigne pe care nu le putem susține."
+        },
+        "now": {
+          "title": "Cum începeți azi",
+          "body": "Partenerii existenți se conectează la portalul partenerilor pentru program, fotografii și cereri de rezervare. Ghizii licențiați apar deja în catalogul public din registrul oficial. Un contact direct de înscriere vine în curând — până atunci nu publicăm o adresă care nu duce nicăieri."
+        }
+      },
+      "portalCta": "Autentificare partener",
+      "directoryCta": "Catalogul ghizilor licențiați"
     }
   },
   "airport": {
@@ -3456,7 +3488,8 @@
         "startPlanning": "Începeți planificarea",
         "discoverPlaces": "Descoperiți locuri"
       },
-      "outro": "Un traseu dimineața: Artemis sau Caledonia. Omodos sau Lefkara la prânz. O cramă după-amiaza. O astfel de zi am alege-o. Insula îi răsplătește pe cei curioși."
+      "outro": "Un traseu dimineața: Artemis sau Caledonia. Omodos sau Lefkara la prânz. O cramă după-amiaza. O astfel de zi am alege-o. Insula îi răsplătește pe cei curioși.",
+      "partnersJoinLink": "Aveți o cramă sau ghidați drumeții? Iată cum deveniți partener"
     }
   },
   "terms": {

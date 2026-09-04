@@ -96,6 +96,10 @@ export const TRANSLATED_HUB_META = {
     path: "/team",
     namespace: "team.page",
   },
+  partnerJoin: {
+    path: "/partner/join",
+    namespace: "partner.join",
+  },
   bookWinery: {
     path: "/book/winery",
     namespace: "book.pages.wineryList",

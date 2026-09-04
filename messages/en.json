@@ -1333,7 +1333,39 @@
         "unavailable": "The partner portal isn't set up on this deployment yet. Please try again later or contact us.",
         "rateLimited": "Too many sign-in attempts. Wait a minute, then try again.",
         "generic": "Sign-in didn't go through. Check your connection and try again."
-      }
+      },
+      "joinPrompt": "Not a partner yet?",
+      "joinLink": "See how listing and verification work"
+    },
+    "join": {
+      "meta": {
+        "title": "Become a Partner | Cyprus Winter",
+        "description": "How wineries and licensed guides get listed on Cyprus Winter: free listings, license-based verification, never pay-for-placement."
+      },
+      "header": {
+        "title": "Become a partner",
+        "description": "Cyprus Winter lists places and guides we would recommend in January — never places that pay. Here is how a listing works and how verification is earned."
+      },
+      "sections": {
+        "what": {
+          "title": "What a listing is",
+          "body": "A free editorial listing — winter hours, honest notes, native-language content in seven languages. Nobody can buy a placement, and partners never pay a listing fee. Guests book directly with you; we take no commission from guests."
+        },
+        "who": {
+          "title": "Who can join",
+          "body": "Licensed tourist guides (Deputy Ministry of Tourism license) and Cyprus wineries or venues that genuinely open in winter. If your hours change with the season, that is exactly what we want to show."
+        },
+        "verify": {
+          "title": "How verification works",
+          "body": "The \"Verified\" badge means one thing: we have confirmed your license or business and a booking contact that actually reaches you. Until a reachable contact is wired, a listing stays visible but never claims verification — we do not show badges we cannot stand behind."
+        },
+        "now": {
+          "title": "How to start today",
+          "body": "Existing partners sign in to the partner portal to manage winter hours, photos, and booking requests. Licensed guides already appear in the public directory from the official register. A direct onboarding contact opens soon — until it does, we will not publish an address that goes nowhere."
+        }
+      },
+      "portalCta": "Partner sign-in",
+      "directoryCta": "Licensed-guide directory"
     }
   },
   "airport": {
@@ -3456,7 +3488,8 @@
         "startPlanning": "Start planning",
         "discoverPlaces": "Discover places"
       },
-      "outro": "Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That's a day we'd take. The island rewards the curious."
+      "outro": "Trail in the morning: Artemis or Caledonia. Omodos or Lefkara for lunch. A winery in the afternoon. That's a day we'd take. The island rewards the curious.",
+      "partnersJoinLink": "Run a winery or guide hikes? See how to become a partner"
     }
   },
   "terms": {

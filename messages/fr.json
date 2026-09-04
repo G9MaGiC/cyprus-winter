@@ -1333,7 +1333,39 @@
         "unavailable": "Le portail partenaires n’est pas encore configuré sur ce déploiement. Réessayez plus tard ou contactez-nous.",
         "rateLimited": "Trop de tentatives de connexion. Attendez une minute, puis réessayez.",
         "generic": "La connexion n’a pas abouti. Vérifiez votre connexion et réessayez."
-      }
+      },
+      "joinPrompt": "Pas encore partenaire ?",
+      "joinLink": "Voir comment fonctionnent l’inscription et la vérification"
+    },
+    "join": {
+      "meta": {
+        "title": "Devenir partenaire | Cyprus Winter",
+        "description": "Comment les domaines viticoles et les guides licenciés sont référencés sur Cyprus Winter : inscriptions gratuites, vérification par la licence, jamais de placement payant."
+      },
+      "header": {
+        "title": "Devenir partenaire",
+        "description": "Cyprus Winter référence des lieux et des guides que nous recommanderions nous-mêmes en janvier — jamais des lieux qui paient. Voici comment fonctionnent l’inscription et la vérification."
+      },
+      "sections": {
+        "what": {
+          "title": "Ce qu’est une inscription",
+          "body": "Une inscription éditoriale gratuite — horaires d’hiver, notes honnêtes, contenus en sept langues. Aucune place ne s’achète et les partenaires ne paient aucun frais. Les visiteurs réservent directement auprès de vous ; nous ne prenons aucune commission aux visiteurs."
+        },
+        "who": {
+          "title": "Qui peut rejoindre",
+          "body": "Les guides touristiques licenciés (licence du Vice-ministère du Tourisme) et les domaines ou lieux chypriotes réellement ouverts en hiver. Si vos horaires changent avec la saison, c’est exactement ce que nous voulons montrer."
+        },
+        "verify": {
+          "title": "Comment fonctionne la vérification",
+          "body": "Le badge « Vérifié » signifie une seule chose : nous avons confirmé votre licence ou votre établissement et un contact de réservation qui vous parvient réellement. Tant qu’un contact joignable n’est pas en place, l’inscription reste visible mais ne revendique aucune vérification — nous n’affichons pas de badge que nous ne pouvons pas assumer."
+        },
+        "now": {
+          "title": "Comment commencer aujourd’hui",
+          "body": "Les partenaires existants se connectent au portail partenaire pour gérer horaires d’hiver, photos et demandes de réservation. Les guides licenciés figurent déjà dans l’annuaire public issu du registre officiel. Un contact d’intégration direct arrive bientôt — d’ici là, nous ne publions pas d’adresse qui ne mène nulle part."
+        }
+      },
+      "portalCta": "Connexion partenaire",
+      "directoryCta": "Annuaire des guides licenciés"
     }
   },
   "airport": {
@@ -3456,7 +3488,8 @@
         "startPlanning": "Commencer à planifier",
         "discoverPlaces": "Découvrir des lieux"
       },
-      "outro": "Un sentier le matin : Artémis ou Caledonia. Omodos ou Lefkara pour déjeuner. Un domaine l’après-midi. Voilà une journée que nous prendrions. L’île récompense les curieux."
+      "outro": "Un sentier le matin : Artémis ou Caledonia. Omodos ou Lefkara pour déjeuner. Un domaine l’après-midi. Voilà une journée que nous prendrions. L’île récompense les curieux.",
+      "partnersJoinLink": "Vous tenez un domaine ou guidez des randonnées ? Voici comment devenir partenaire"
     }
   },
   "terms": {
