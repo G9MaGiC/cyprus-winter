@@ -5317,6 +5317,94 @@
       "statos-village-wine": {
         "title": "Statos: the village behind the wine",
         "body": "Statos is a wine village. Chrysorrogiatissa monastery is nearby. But the village itself—stone houses, a square, a kafenion—gets overlooked. Stop. Walk. The pace is slower than Omodos or Koilani. Tria Elit winery is here. The village feeds into the wine; the wine doesn't define the village. Winter light. Silence. The kind of place you find when you're not looking."
+      },
+      "kiti-angeloktisti": {
+        "title": "Kiti: the church the buses miss",
+        "body": "Kiti village, near Larnaca airport. The church of Angeloktisti—built by angels, the legend says—holds a 6th-century mosaic of the Virgin and Child. One of the oldest surviving Byzantine mosaics in the eastern Mediterranean. Most tour buses skip it. The village is quiet. The church is small, intimate. Allow forty minutes. Combine with Zygi for fish lunch, or Larnaca. It's the kind of detour that changes your sense of the island."
+      },
+      "kolios-meze-cash": {
+        "title": "Kolios: book the lunch, bring cash",
+        "body": "The meze at Kolios isn't tourist meze—it's village food, cooked by the owner's wife. Authentic. Book one or two days ahead. February is quiet; you'll have the mountain views and the cellar mostly to yourself. They may not take cards—bring cash. The wine is €5–14 at the cellar, well below retail. The Iris white, from the rare Spourtiko grape, is a standout. Chrysorrogiatissa is ten minutes away; do both in a morning."
+      },
+      "zambartas-winemaker": {
+        "title": "Zambartas: ask for the barrel sample",
+        "body": "Book the Winemaker's Selection (€20)—it's the one that includes an exclusive barrel sample of their Commandaria. Marcos Zambartas still leads tastings when he's in. The platter—halloumi, lountza, fruit, bread with organic olive oil—pairs well. Twenty-five minutes from Limassol. Do Kourion or Kolossi in the morning; Zambartas in the afternoon. Winter hours: Mon–Fri to 5pm, weekends to 6pm."
+      },
+      "tsiakkas-heights": {
+        "title": "Tsiakkas: the vineyard at 1,460 metres",
+        "body": "Their Petralona vineyard at 1,460m is among the highest in Europe. Ask about it. The Promara 2020 was voted one of Decanter's 100 best wines in the world. Book a tour at 12:00 or 14:00—the terrace has heaters in winter. Pelendri village; combine with Artemis trail or Omodos. The family often pours; they'll point you to the best halloumi in the village."
+      },
+      "vasilikon-akamas": {
+        "title": "Vasilikon: on the Akamas loop",
+        "body": "Kathikas sits at 650–700m on the Akamas–Laona edge. Do Adonis or Aphrodite trail in the morning, Polis harbour for lunch, then Vasilikon on the loop back. Their Xynisteri has PDO status; Ayios Onoufrios is the flagship red. No appointment needed—Mon–Sun 8:30–18:00. The cellar, museum, and terrace overlook the Akamas. Cheese platters with tastings. Quieter than Omodos."
+      },
+      "vlassides-rainbow": {
+        "title": "Vlassides: the Rainbow tasting",
+        "body": "Sophocles Vlassides studied at UC Davis; the winery was shortlisted for the Mies van der Rohe Award. The Rainbow tasting (€7.50) pours three wines; the 4×4 (€18) pairs four wines with four cheeses. Book at least a day ahead. Koilani village, Krasochoria. Their Shiraz and Cabernet are standouts—fruit-forward, minimal oak. The building itself is worth seeing."
+      },
+      "santo-sunset": {
+        "title": "Santo: time the sunset",
+        "body": "Book lunch for 12–2; in winter the terrace fills at weekends. Sunset in December is around 5pm—time it right and you get the golden hour with a glass. Their Ayios Onoufrios red pairs well with meze. On a mild day you can sit outside with a blanket. Kourion and Governor's Beach are nearby for a full Limassol coast day."
+      },
+      "kyperounta-snow": {
+        "title": "Kyperounta: Europe's highest",
+        "body": "At 1,400m Kyperounta is among Europe's highest wineries by facility altitude—Tsiakkas's Petralona vineyard reaches higher still. Call ahead in Jan–Feb—snow can close the road. December or March are safer. Wrap up warm; the tasting room has heaters but the drive up is half the adventure. Combine with Olympus Summit or Artemis trail. The high-altitude wines have minerality you won't find at sea level."
+      },
+      "domes-atupon": {
+        "title": "Domes Sergiou: the Atypon range",
+        "body": "Atypon means 'unexpected'—ask about it. Their Atypon 02 (Assyrtiko & Xynisteri) and Rosé Maratheftiko 2024 surprise people who think they know Cypriot wine. Skarinou is a short drive from Larnaca or Limassol. Indigenous varieties only. Can't visit? Order from their online shop. Book tastings ahead."
+      },
+      "tsangarides-organic": {
+        "title": "Tsangarides: a century in Lemona",
+        "body": "The family has made wine in Lemona for over a century; commercial since 2005. Mattaro 2005 and Cabernet 2005 both won gold. Mon–Sat 9–5; closed Sunday. Their Agios Efrem red (Grenache, Mataro, Shiraz) is worth asking about. Part of the Laona route; combine with Vouni Panayia and Chrysorrogiatissa for a full Paphos hills day."
+      },
+      "vouni-panayia-commandaria": {
+        "title": "Vouni Panayia: compare the vintages",
+        "body": "Ask for a comparative Commandaria tasting—younger and older vintages side by side. You'll taste what time does to the wine. The museum and film add context. Panayia village church has a revered icon; locals combine a quick stop. Winter hours 9–4. Combine with Pafos mosaics or Polis for a full Laona day."
+      },
+      "psilo-dendro-trout": {
+        "title": "Psilo Dendro: trout with almonds",
+        "body": "The one by the river. Order the trout with almonds—psaróvrasto, poached in wine and herbs. The owner knows every hiker. Do Artemis or Caledonia in the morning; finish by 1pm. Drive to Platres. The fireplace, the mountain air. It's the pairing locals do. Don't skip it."
+      },
+      "polis-harbour-trail": {
+        "title": "Polis: the trail earns the meal",
+        "body": "Do Adonis or Aphrodite in the morning. Finish by 1pm. Polis harbour for lunch. The tavernas serve what the boats brought in. Vasilikon winery is on the loop back. Two days if you can: hike, eat, sleep, repeat. The harbour knows hikers. Order what's fresh."
+      },
+      "the-farmyard-akamas": {
+        "title": "The Farmyard: book ahead",
+        "body": "Wiz 50 Best top 5. Ethnic Asian comfort in Kathikas. Do Adonis or Aphrodite in the morning, then book lunch. Reserve 1–2 days ahead; weekends fill. Vasilikon and Sygkrasi wineries are minutes away. The Akamas trails earn you this meal. The village setting and the food make it a destination."
+      },
+      "kakopetria-psarovrasto": {
+        "title": "Kakopetria: psaróvrasto by the river",
+        "body": "Trout poached in wine and herbs. The tavernas line the Kryos Potamos. Do Caledonia or Kryos Potamos loop in the morning, Kakopetria for lunch. Galata's UNESCO painted churches are nearby—allow time to wander. Fireplace, mountain air. Kakopetria knows hikers. Psaróvrasto is the order."
+      },
+      "zygi-sunday": {
+        "title": "Zygi: where Cypriots go for fish",
+        "body": "Between Larnaca and Limassol. No ruins, no lace. Just fish. The tavernas line the harbour; they serve what the boats brought in. Sunday is locals' day. Octopus, sea bream, calamari. The pace is slow. The coffee after is obligatory. Combine with Choirokoitia or Lefkara. Tourists rarely find it."
+      },
+      "kourion-bench-lunch": {
+        "title": "Kourion: the bench, then Episkopi",
+        "body": "There's a bench at the far edge of the theatre facing the sea. Go at 4pm in December—the light hits the ruins. You'll have it to yourself on a weekday. Then Episkopi village for meze. Kourion in the morning, Episkopi for lunch. Governor's Beach is fifteen minutes away if you want fish instead."
+      },
+      "latsi-quiet-alternative": {
+        "title": "Latsi: the quiet harbour",
+        "body": "Closer to the Baths of Aphrodite trailhead than Polis. Simpler, quieter. Do Adonis or Aphrodite in the morning, Latsi for lunch before the loop back. Fresh fish, harbour views. The drive along the coast is part of the day. Less crowded than Polis harbour. Vasilikon winery on the loop home."
+      },
+      "troodos-square-warmth": {
+        "title": "Troodos Square: post-hike warmth",
+        "body": "After Artemis, Atalante, or Persephone. Hot chocolate, coffee, sandwiches. Snow possible—cosy inside. The square is the Troodos hub. Essential post-hike warmth. Olympus ski resort is nearby when snow falls. Simple, no fuss. The mountains do the work; Troodos Square restores you."
+      },
+      "omodos-tavernas-blue-door": {
+        "title": "Omodos: the kafenion with the blue door",
+        "body": "In Omodos square, there's a kafenion with a blue door—the one the winemakers use. Order a Greek coffee. Sit. The zivania is better here than in the tourist spots. Winter mornings, the stove is lit. After Tsiakkas or Artemis, Omodos is the natural lunch stop. Meze, wine, the pace of the village. Reserve weekends."
+      },
+      "governors-beach-cliffs": {
+        "title": "Governor's Beach: white cliffs, dark sand",
+        "body": "White cliffs above dark volcanic sand. On a mild December afternoon you can sit outside with a blanket. The fish is fresh. Do Kourion or Kolossi in the morning, fish at lunch. Fifteen minutes from Kourion. Zambartas winery is an easy add-on. The contrast—white cliffs, dark sand—is striking in winter light."
+      },
+      "cape-greco-konnos": {
+        "title": "Cape Greco: trail then Konnos",
+        "body": "Walk the Cape Greco Coastal Path in the morning. Drop down to Konnos Bay for a break—white sand, emerald water. In winter you might have it to yourself. Bring a wind layer; the cliffs funnel the breeze. Protaras or Fig Tree Bay for lunch. The trail earns the beach."
       }
     }
   }

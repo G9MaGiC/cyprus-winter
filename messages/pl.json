@@ -5317,6 +5317,94 @@
       "statos-village-wine": {
         "title": "Statos: wioska za winem",
         "body": "Statos to wioska winiarska. Klasztor Chrysorrogiatissa jest niedaleko. Ale sama wioska — kamienne domy, plac, kafenion — umyka uwadze. Zatrzymaj się. Przejdź się. Tempo wolniejsze niż w Omodos czy Koilani. Winnica Tria Elit jest tutaj. Wioska karmi wino; wino nie definiuje wioski. Zimowe światło. Cisza. Takie miejsce znajduje się wtedy, gdy się nie szuka."
+      },
+      "kiti-angeloktisti": {
+        "title": "Kiti: kościół, który omijają autokary",
+        "body": "Wioska Kiti, blisko lotniska w Larnace. Kościół Angeloktisti — zbudowany przez aniołów, głosi legenda — kryje mozaikę Marii z Dzieciątkiem z VI wieku. Jedna z najstarszych zachowanych mozaik bizantyjskich wschodniego Śródziemnomorza. Większość autokarów ją omija. Wioska jest cicha. Kościół mały, kameralny. Licz czterdzieści minut. Połącz z rybą w Zygi albo z Larnaką. Taki objazd zmienia sposób patrzenia na wyspę."
+      },
+      "kolios-meze-cash": {
+        "title": "Kolios: zarezerwuj obiad, weź gotówkę",
+        "body": "Meze u Koliosa to nie meze dla turystów — to wiejskie jedzenie, gotowane przez żonę właściciela. Autentyczne. Rezerwuj dzień lub dwa wcześniej. Luty jest cichy; widoki na góry i piwniczka będą niemal twoje. Mogą nie przyjmować kart — weź gotówkę. Wino kosztuje 5–14 € z piwniczki, dużo poniżej cen sklepowych. Białe Iris z rzadkiego szczepu Spourtiko wyróżnia się. Chrysorrogiatissa jest dziesięć minut stąd; zrób oba w jedno przedpołudnie."
+      },
+      "zambartas-winemaker": {
+        "title": "Zambartas: poproś o próbkę z beczki",
+        "body": "Zarezerwuj Winemaker's Selection (20 €) — to ta z ekskluzywną próbką Commandarii prosto z beczki. Marcos Zambartas często sam prowadzi degustacje, gdy jest na miejscu. Deska — halloumi, lountza, owoce, chleb z organiczną oliwą — dobrze się komponuje. Dwadzieścia pięć minut z Limassol. Rano Kurion albo Kolossi; po południu Zambartas. Zimowe godziny: pon.–pt. do siedemnastej, weekendy do osiemnastej."
+      },
+      "tsiakkas-heights": {
+        "title": "Tsiakkas: winnica na 1460 metrach",
+        "body": "Ich winnica Petralona na 1460 m należy do najwyżej położonych w Europie. Zapytaj o nią. Promara 2020 trafiła na listę 100 najlepszych win świata Decantera. Zarezerwuj zwiedzanie na dwunastą albo czternastą — taras ma zimą grzejniki. Wioska Pelendri; połącz ze szlakiem Artemis albo Omodos. Często nalewa sama rodzina; wskażą ci też najlepsze halloumi we wsi."
+      },
+      "vasilikon-akamas": {
+        "title": "Vasilikon: na pętli Akamas",
+        "body": "Kathikas leży na 650–700 m, na krawędzi Akamas i Laony. Rano szlak Adonisa albo Afrodyty, w porze obiadu port w Polis, potem Vasilikon na pętli powrotnej. Ich Xynisteri ma status ChNP; Ayios Onoufrios to flagowe czerwone. Bez umawiania — pon.–niedz. 8:30–18:00. Piwnica, muzeum i taras patrzą na Akamas. Deski serów do degustacji. Ciszej niż w Omodos."
+      },
+      "vlassides-rainbow": {
+        "title": "Vlassides: degustacja Rainbow",
+        "body": "Sophocles Vlassides studiował na UC Davis; winiarnia trafiła na krótką listę nagrody Miesa van der Rohe. Rainbow (7,50 €) to trzy wina; 4×4 (18 €) łączy cztery wina z czterema serami. Rezerwuj co najmniej dzień wcześniej. Wioska Koilani, Krasochoria. Shiraz i Cabernet wyróżniają się — owocowe, mało dębu. Sam budynek wart jest obejrzenia."
+      },
+      "santo-sunset": {
+        "title": "Santo: wyceluj w zachód słońca",
+        "body": "Zarezerwuj obiad na dwunastą–czternastą; zimą taras zapełnia się w weekendy. Słońce w grudniu zachodzi około siedemnastej — dobrze wycelujesz i złota godzina z kieliszkiem jest twoja. Czerwone Ayios Onoufrios pasuje do meze. W łagodny dzień można siedzieć na zewnątrz z kocem. Kurion i Governor's Beach są blisko — pełny dzień na wybrzeżu Limassol."
+      },
+      "kyperounta-snow": {
+        "title": "Kyperounta: europejskie wysokości",
+        "body": "Na 1400 m Kyperounta należy do najwyżej położonych winiarni Europy — winnica Petralona Tsiakkasa sięga jeszcze wyżej. W styczniu–lutym dzwoń wcześniej — śnieg może zamknąć drogę. Grudzień i marzec są bezpieczniejsze. Ubierz się ciepło; sala degustacyjna ma ogrzewanie, ale podjazd to połowa przygody. Połącz ze szczytem Olimpu albo szlakiem Artemis. Wina z wysokości mają mineralność, której nie znajdziesz nad morzem."
+      },
+      "domes-atupon": {
+        "title": "Domes Sergiou: seria Atypon",
+        "body": "Atypon znaczy „nieoczekiwany” — zapytaj o nią. Atypon 02 (Assyrtiko i Xynisteri) oraz różowe Maratheftiko 2024 zaskakują tych, którym się zdaje, że znają cypryjskie wino. Skarinou to krótka trasa z Larnaki albo Limassol. Wyłącznie rodzime szczepy. Nie dasz rady przyjechać? Mają sklep online. Degustacje rezerwuj wcześniej."
+      },
+      "tsangarides-organic": {
+        "title": "Tsangarides: stulecie w Lemonie",
+        "body": "Rodzina robi wino w Lemonie od ponad wieku; komercyjnie od 2005. Mattaro 2005 i Cabernet 2005 zdobyły złoto. Pon.–sob. 9–17; niedziela zamknięte. O czerwone Agios Efrem (Grenache, Mataro, Shiraz) warto zapytać. Część trasy Laona; połącz z Vouni Panayia i Chrysorrogiatissą na pełny dzień we wzgórzach Pafos."
+      },
+      "vouni-panayia-commandaria": {
+        "title": "Vouni Panayia: porównaj roczniki",
+        "body": "Poproś o porównawczą degustację Commandarii — młodsze i starsze roczniki obok siebie. Posmakujesz, co czas robi z winem. Muzeum i film dodają kontekstu. Kościół w wiosce Panayia ma czczoną ikonę; miejscowi łączą krótki postój. Zimowe godziny 9–16. Połącz z mozaikami Pafos albo Polis na pełny dzień w Laonie."
+      },
+      "psilo-dendro-trout": {
+        "title": "Psilo Dendro: pstrąg z migdałami",
+        "body": "Ta nad rzeką. Zamów pstrąga z migdałami — psaróvrasto, duszonego w winie i ziołach. Właściciel zna każdego wędrowca. Rano Artemis albo Caledonia; skończ do trzynastej. Jedź do Platres. Kominek, górskie powietrze. Zestawienie miejscowych. Nie odpuszczaj."
+      },
+      "polis-harbour-trail": {
+        "title": "Polis: szlak zapracował na posiłek",
+        "body": "Rano Adonis albo Afrodyta. Skończ do trzynastej. Obiad w porcie w Polis. Tawerny podają to, co przywiozły łodzie. Winnica Vasilikon jest na pętli powrotnej. Dwa dni, jeśli możesz: szlak, jedzenie, sen, powtórka. Port zna wędrowców. Zamawiaj to, co świeże."
+      },
+      "the-farmyard-akamas": {
+        "title": "The Farmyard: rezerwuj wcześniej",
+        "body": "Top 5 listy Wiz 50 Best. Azjatycka kuchnia komfortowa w Kathikas. Rano Adonis albo Afrodyta, potem rezerwuj obiad. Rezerwacja dzień–dwa wcześniej; weekendy się zapełniają. Winnice Vasilikon i Sygkrasi są kilka minut stąd. Szlaki Akamas zapracowały na ten posiłek. Wiejska sceneria i jedzenie czynią z niego cel sam w sobie."
+      },
+      "kakopetria-psarovrasto": {
+        "title": "Kakopetria: psaróvrasto nad rzeką",
+        "body": "Pstrąg duszony w winie i ziołach. Tawerny ciągną się wzdłuż Kryos Potamos. Rano Caledonia albo pętla Kryos Potamos, obiad w Kakopetrii. Malowane kościoły UNESCO w Galacie są obok — zostaw czas na spacer. Kominek, górskie powietrze. Kakopetria zna wędrowców. Zamawia się psaróvrasto."
+      },
+      "zygi-sunday": {
+        "title": "Zygi: tu Cypryjczycy jadą na rybę",
+        "body": "Między Larnaką a Limassol. Bez ruin, bez koronek. Tylko ryba. Tawerny wzdłuż portu; podają to, co przywiozły łodzie. Niedziela to dzień miejscowych. Ośmiornica, dorada, kalmary. Tempo powolne. Kawa po jedzeniu obowiązkowa. Połącz z Choirokoitią albo Lefkarą. Turyści rzadko tu trafiają."
+      },
+      "kourion-bench-lunch": {
+        "title": "Kurion: ławka, potem Episkopi",
+        "body": "Na skraju teatru stoi ławka z widokiem na morze. Idź o szesnastej w grudniu — światło pada na ruiny. W dzień powszedni będzie tylko twoja. Potem wioska Episkopi na meze. Kurion rano, Episkopi w porze obiadu. Governor's Beach jest piętnaście minut stąd, jeśli wolisz rybę."
+      },
+      "latsi-quiet-alternative": {
+        "title": "Latsi: cichy port",
+        "body": "Bliżej początku szlaku Kąpielisk Afrodyty niż Polis. Prościej, ciszej. Rano Adonis albo Afrodyta, obiad w Latsi przed pętlą powrotną. Świeża ryba, widok na port. Jazda wzdłuż wybrzeża to część dnia. Mniej tłoczno niż w porcie Polis. Winnica Vasilikon po drodze do domu."
+      },
+      "troodos-square-warmth": {
+        "title": "Plac Troodos: ciepło po szlaku",
+        "body": "Po Artemis, Atalante albo Persefonie. Gorąca czekolada, kawa, kanapki. Możliwy śnieg — w środku przytulnie. Plac to węzeł Troodos. Niezbędne ciepło po wędrówce. Gdy spadnie śnieg, ośrodek narciarski na Olimpie jest obok. Prosto, bez ceregieli. Góry robią swoje; plac Troodos stawia cię na nogi."
+      },
+      "omodos-tavernas-blue-door": {
+        "title": "Omodos: kafenion z niebieskimi drzwiami",
+        "body": "Na placu w Omodos jest kafenion z niebieskimi drzwiami — ten, do którego chodzą winiarze. Zamów grecką kawę. Usiądź. Zivania jest tu lepsza niż w turystycznych miejscach. W zimowe poranki piec się pali. Po Tsiakkasie albo Artemis Omodos to naturalny przystanek na obiad. Meze, wino, rytm wioski. W weekendy rezerwuj."
+      },
+      "governors-beach-cliffs": {
+        "title": "Governor's Beach: białe klify, ciemny piasek",
+        "body": "Białe klify nad ciemnym wulkanicznym piaskiem. W łagodne grudniowe popołudnie posiedzisz na zewnątrz z kocem. Ryba jest świeża. Rano Kurion albo Kolossi, w porze obiadu ryba. Piętnaście minut od Kurionu. Winnica Zambartas to łatwy dodatek. Kontrast — białe klify, ciemny piasek — robi wrażenie w zimowym świetle."
+      },
+      "cape-greco-konnos": {
+        "title": "Cape Greco: szlak, potem Konnos",
+        "body": "Rano przejdź nadmorską ścieżkę Cape Greco. Zejdź do zatoki Konnos na przerwę — biały piasek, szmaragdowa woda. Zimą możesz mieć ją dla siebie. Weź coś od wiatru; klify kierunkują bryzę. Obiad w Protaras albo przy Fig Tree Bay. Szlak zapracował na plażę."
       }
     }
   }
