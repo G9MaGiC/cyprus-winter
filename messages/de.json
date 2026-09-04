@@ -1333,7 +1333,39 @@
         "unavailable": "Das Partnerportal ist in dieser Umgebung noch nicht eingerichtet. Versuchen Sie es später erneut oder kontaktieren Sie uns.",
         "rateLimited": "Zu viele Anmeldeversuche. Warten Sie eine Minute und versuchen Sie es erneut.",
         "generic": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut."
-      }
+      },
+      "joinPrompt": "Noch kein Partner?",
+      "joinLink": "So funktionieren Eintrag und Verifizierung"
+    },
+    "join": {
+      "meta": {
+        "title": "Partner werden | Cyprus Winter",
+        "description": "So werden Weingüter und lizenzierte Gästeführer bei Cyprus Winter gelistet: kostenlose Einträge, Verifizierung über die Lizenz, niemals bezahlte Platzierungen."
+      },
+      "header": {
+        "title": "Partner werden",
+        "description": "Cyprus Winter listet Orte und Guides, die wir im Januar selbst empfehlen würden — niemals Orte, die dafür bezahlen. So funktionieren Eintrag und Verifizierung."
+      },
+      "sections": {
+        "what": {
+          "title": "Was ein Eintrag ist",
+          "body": "Ein kostenloser redaktioneller Eintrag — Winteröffnungszeiten, ehrliche Hinweise, Inhalte in sieben Sprachen. Platzierungen sind nicht käuflich, und Partner zahlen keine Listungsgebühr. Gäste buchen direkt bei Ihnen; wir nehmen keine Provision von Gästen."
+        },
+        "who": {
+          "title": "Wer mitmachen kann",
+          "body": "Lizenzierte Gästeführer (Lizenz des Vize-Tourismusministeriums) sowie zyprische Weingüter und Orte, die im Winter wirklich geöffnet sind. Wenn sich Ihre Zeiten mit der Saison ändern, ist genau das, was wir zeigen möchten."
+        },
+        "verify": {
+          "title": "So funktioniert die Verifizierung",
+          "body": "Das Abzeichen „Verifiziert“ bedeutet genau eines: Wir haben Ihre Lizenz bzw. Ihren Betrieb und einen Buchungskontakt bestätigt, der Sie tatsächlich erreicht. Bis ein erreichbarer Kontakt eingerichtet ist, bleibt ein Eintrag sichtbar, behauptet aber keine Verifizierung — wir zeigen keine Abzeichen, für die wir nicht einstehen können."
+        },
+        "now": {
+          "title": "So starten Sie heute",
+          "body": "Bestehende Partner melden sich im Partnerportal an und verwalten Winterzeiten, Fotos und Buchungsanfragen. Lizenzierte Gästeführer erscheinen bereits über das offizielle Register im öffentlichen Verzeichnis. Ein direkter Onboarding-Kontakt folgt in Kürze — bis dahin veröffentlichen wir keine Adresse, die ins Leere läuft."
+        }
+      },
+      "portalCta": "Partner-Anmeldung",
+      "directoryCta": "Verzeichnis lizenzierter Gästeführer"
     }
   },
   "airport": {
@@ -1865,7 +1897,8 @@
       "directoryCta": "Lizenzierten Führer finden",
       "browseLicensed": "Lizenzierte Führer durchsuchen",
       "directoryCount": "{count} Führer sprechen Ihre Sprache in diesem Bezirk",
-      "verifiedPartners": "Lizenzierte Wanderführer"
+      "verifiedPartners": "Lizenzierte Wanderführer",
+      "rateHint": "Richtwerte: 100–150 € halber Tag, 150–400 € ganzer Tag — den Endpreis bestätigt Ihr Guide."
     },
     "dayLabel": "Tag {day}",
     "aria": {
@@ -2989,7 +3022,8 @@
           "title": "Verkostung buchen | {wineryName} | Cyprus Winter",
           "description": "Winter-Verkostung bei {wineryName} in {region} buchen. Gemütliches Feuer, Heizstrahler, oft schenkt der Besitzer ein. Bestätigung per E‑Mail. Im Voraus buchen. Cyprus Winter."
         }
-      }
+      },
+      "guideRateRange": "Richtwerte für lizenzierte Gästeführer: 100–150 € pro halben Tag, 150–400 € pro ganzen Tag (Angaben des zyprischen Gästeführerverbands) — den endgültigen Preis bestätigt Ihr Guide."
     },
     "form": {
       "trust": {
@@ -3351,7 +3385,8 @@
         "startPlanning": "Planung starten",
         "discoverPlaces": "Orte entdecken"
       },
-      "outro": "Morgens ein Trail: Artemis oder Caledonia. Omodos oder Lefkara zum Mittagessen. Nachmittags ein Weingut. So einen Tag würden wir nehmen. Die Insel belohnt die Neugierigen."
+      "outro": "Morgens ein Trail: Artemis oder Caledonia. Omodos oder Lefkara zum Mittagessen. Nachmittags ein Weingut. So einen Tag würden wir nehmen. Die Insel belohnt die Neugierigen.",
+      "partnersJoinLink": "Sie führen ein Weingut oder Wanderungen? So werden Sie Partner"
     }
   },
   "terms": {

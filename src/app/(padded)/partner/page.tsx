@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import AppLink from "@/components/AppLink";
 import BackLink from "@/components/BackLink";
 import { LAYOUT, SECTION, SKELETON, TYPE, CTA } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
@@ -267,6 +268,12 @@ export default function PartnerPortalPage() {
             )}
           </p>
         )}
+        <p className="text-sm text-muted-ink mt-6">
+          {t("joinPrompt")}{" "}
+          <AppLink href="/partner/join" className={SECTION.aegeanLink}>
+            {t("joinLink")}
+          </AppLink>
+        </p>
         <div className="mt-8">
           <BackLink href="/" label={tNav("home")} />
         </div>

@@ -63,6 +63,12 @@ export default async function HowWeChoosePage() {
       <p className="mt-12 text-center text-muted-ink text-sm max-w-md mx-auto leading-relaxed break-words">
         {tTeam("outro")}
       </p>
+
+      <p className="mt-6 text-center text-sm max-w-md mx-auto">
+        <AppLink href="/partner/join" className={SECTION.aegeanLink}>
+          {tTeam("partnersJoinLink")}
+        </AppLink>
+      </p>
     </div>
   );
 }

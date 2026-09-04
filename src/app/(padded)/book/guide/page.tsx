@@ -66,6 +66,7 @@ export default async function GuidesListPage() {
             {tBookPages("guideList.partnerCount", { count: guides.filter((g) => isPartnerVerified(g)).length })}
           </p>
         )}
+        <p className="text-sm text-muted-ink mt-2 max-w-2xl">{tBookPages("guideRateRange")}</p>
         <p className="text-sm text-muted-ink mt-3 max-w-2xl">
           <AppLink href="/guides/directory" className={SECTION.aegeanLink}>
             {tBookPages("guideList.browseLicensedDirectory")}
