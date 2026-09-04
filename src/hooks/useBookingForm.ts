@@ -53,6 +53,8 @@ type ErrorStrings = {
   offlineDropped: string;
   /** Localized messages by API error code — the server's own message is EN-only (BUG: raw EN in all locales). */
   apiByCode?: Record<string, string>;
+  /** Inline marker for a field the server named in a VALIDATION_ERROR (AUD-80 residual). */
+  serverField?: string;
 };
 
 export function useBookingForm(
@@ -219,6 +221,19 @@ export function useBookingForm(
     const body = JSON.stringify(bodyObj);
     const mutationType = queueMutationType;
 
+    // Field the server named in a VALIDATION_ERROR detail, if it maps to an
+    // input this form actually renders — lets the catch path mark and focus
+    // the field itself instead of only the banner (AUD-80 residual).
+    let serverInvalidField: string | null = null;
+    const knownFields = new Set([
+      "date",
+      "partySize",
+      "guestName",
+      "guestEmail",
+      "notes",
+      ...(extraFields ? Object.keys(extraFields) : []),
+    ]);
+
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
@@ -237,6 +252,15 @@ export function useBookingForm(
           typeof data.error === "object" && data.error !== null
             ? (data.error.code as string | undefined)
             : undefined;
+        if (code === "VALIDATION_ERROR") {
+          const details = (data.error as { details?: unknown }).details;
+          const first = Array.isArray(details) ? details[0] : undefined;
+          const field =
+            first && typeof first === "object" && typeof (first as { field?: unknown }).field === "string"
+              ? (first as { field: string }).field
+              : undefined;
+          if (field && knownFields.has(field)) serverInvalidField = field;
+        }
         // Never surface the server's message text: it is English-only, so any
         // unmapped code must fall back to the localized generic instead.
         const msg = (code ? tErrors.apiByCode?.[code] : undefined) ?? tErrors.failed;
@@ -272,8 +296,20 @@ export function useBookingForm(
       } else {
         idempotencyKeyRef.current = null;
         setError(msg || tErrors.fallback);
+        if (serverInvalidField) {
+          setFieldErrors({ [serverInvalidField]: tErrors.serverField ?? tErrors.failed });
+        }
       }
       setTimeout(() => {
+        // A field the server named gets focus itself (its inline error and
+        // aria-invalid render alongside); otherwise scroll to the banner.
+        if (serverInvalidField) {
+          const el = form.elements.namedItem(serverInvalidField);
+          if (el instanceof HTMLElement) {
+            el.focus();
+            return;
+          }
+        }
         const behavior =
           typeof window !== "undefined" &&
           window.matchMedia("(prefers-reduced-motion: reduce)").matches

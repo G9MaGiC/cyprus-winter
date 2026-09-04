@@ -2910,7 +2910,8 @@
         "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online.",
-        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again."
+        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again.",
+        "serverField": "Please check this field."
       },
       "success": {
         "title": "Request sent",
@@ -2990,7 +2991,8 @@
         "failed": "Request failed",
         "fallback": "Something went wrong — check your connection and try again.",
         "offlineQueued": "You're offline — your request has been saved and will be sent automatically when you're back online.",
-        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again."
+        "offlineDropped": "Your saved request couldn't be sent — the server rejected it. Please check your details and submit again.",
+        "serverField": "Please check this field."
       },
       "success": {
         "title": "Request sent",
@@ -3249,78 +3251,40 @@
   "install": {
     "page": {
       "meta": {
-        "title": "Install on SiteGround | Cyprus Winter",
-        "description": "Step-by-step instructions to deploy Cyprus Winter on SiteGround shared hosting. Static export, upload, and .htaccess setup."
-      },
-      "nav": {
-        "ariaLabel": "Page navigation",
-        "breadcrumbCurrent": "Install",
-        "backLabel": "Cyprus Winter"
+        "title": "Save Cyprus Winter to your phone | Cyprus Winter",
+        "description": "Add Cyprus Winter to your home screen from your browser — no app store. Your plan and recently viewed pages keep working offline."
       },
       "header": {
-        "kicker": "Deployment guide",
-        "title": "Install on SiteGround",
-        "body": "Cyprus Winter runs as static HTML, CSS, and JavaScript. SiteGround shared hosting can serve it directly—no Node.js required."
+        "title": "Save Cyprus Winter to your phone",
+        "description": "Cyprus Winter installs straight from your browser — no app store, a few seconds, almost no space. It stays the same site, always current."
       },
-      "requirements": {
-        "title": "Requirements",
+      "benefits": {
+        "title": "What you get",
         "items": {
-          "node": "Node.js 18+ (for building locally)",
-          "siteground": "SiteGround shared hosting with cPanel or FTP access",
-          "domain": "Domain pointed to your SiteGround account"
+          "offline": "Your plan and recently viewed pages keep working when the signal drops in the mountains — bookings and live weather still need a connection.",
+          "icon": "An icon on your home screen that opens the guide full-screen, like an app.",
+          "shortcuts": "On Android, pressing and holding the icon offers shortcuts straight to your plan and to what's good right now."
         }
       },
-      "steps": {
-        "title": "Steps",
-        "codeSnippetAria": "Code snippet",
-        "items": {
-          "s1": {
-            "title": "1. Configure for static export",
-            "body": "Add these to next.config.ts so Next.js generates static HTML instead of a Node server:",
-            "note": "API routes will not work on SiteGround—use Supabase or another backend if needed."
-          },
-          "s2": {
-            "title": "2. Build the static export",
-            "body": "On your computer, ensure Node.js 18+ is installed. Install dependencies and build:",
-            "note": "The build outputs to the out/ folder. SiteGround cannot run Node.js—you deploy static files only."
-          },
-          "s3": {
-            "title": "3. Upload to SiteGround",
-            "body": "Upload the contents of the out/ folder to your site's public_html directory. Use cPanel File Manager, FTP, or SFTP.",
-            "note": "Upload everything inside out/, including the _next folder and index.html. Do not upload the out folder itself—only its contents."
-          },
-          "s4": {
-            "title": "4. Add .htaccess for routing",
-            "body": "Create a .htaccess file in public_html so direct links (e.g. /trails, /discover) work correctly:",
-            "note": "This sends 404s for missing files to index.html so the app can handle routing. Adjust RewriteBase if the app lives in a subfolder."
-          },
-          "s5": {
-            "title": "5. Verify",
-            "body": "Open your domain in a browser. Check the homepage, trails, and discover pages. Links and images should load."
-          }
+      "platforms": {
+        "android": {
+          "title": "Android — Chrome",
+          "body": "Open the browser menu, choose Add to Home screen (on some phones: Install app) and confirm. If an install bar appears at the bottom of the page, its button does the same thing."
+        },
+        "ios": {
+          "title": "iPhone and iPad — Safari",
+          "body": "Tap Share, scroll to Add to Home Screen and tap Add. The guide then opens full-screen from its own icon."
+        },
+        "desktop": {
+          "title": "Computer — Chrome or Edge",
+          "body": "Click the install icon at the right end of the address bar, or choose Install from the browser menu, and confirm. In Safari on a Mac (macOS Sonoma and newer), choose File → Add to Dock instead. Firefox doesn't offer desktop installation — a bookmark works there."
         }
       },
-      "troubleshooting": {
-        "title": "Troubleshooting",
-        "items": {
-          "blank": {
-            "label": "Blank page or 404 on refresh:",
-            "body": "Add or fix the .htaccess rewrite rules above."
-          },
-          "images": {
-            "label": "Images not loading:",
-            "config": "images.unoptimized: true",
-            "body": "Ensure <config>images.unoptimized</config> is set in next.config. Image paths must be correct in the built output."
-          },
-          "api": {
-            "label": "API or chat not working:",
-            "body": "SiteGround shared hosting cannot run Next.js API routes. Use Supabase, Vercel serverless, or another backend and point the app to it."
-          }
-        }
+      "notes": {
+        "body": "Installing needs no app-store account and nothing to update by hand — it's this website in an app frame, so it's always current. Remove it any time the way you'd remove any app."
       },
-      "footer": {
-        "backToAppLabel": "app"
-      }
+      "homeCta": "Explore the guide",
+      "planCta": "Open your plan"
     }
   },
   "privacy": {

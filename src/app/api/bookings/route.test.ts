@@ -63,6 +63,22 @@ describe("POST /api/bookings", () => {
     expect(data.error?.code).toBe("VALIDATION_ERROR");
   });
 
+  it("names the failing field in validation error details (AUD-80)", async () => {
+    const res = await POST(postReq({ ...validBody, partySize: "not-a-number" }, "127.0.0.33"));
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error?.code).toBe("VALIDATION_ERROR");
+    expect(data.error?.details?.[0]?.field).toBe("partySize");
+  });
+
+  it("names guestName when sanitization strips it to empty (AUD-80)", async () => {
+    const res = await POST(postReq({ ...validBody, guestName: "<b></b>" }, "127.0.0.34"));
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error?.code).toBe("VALIDATION_ERROR");
+    expect(data.error?.details?.[0]?.field).toBe("guestName");
+  });
+
   it("silently drops honeypot submissions", async () => {
     const res = await POST(
       postReq({ ...validBody, website: "https://bot.example" }, "127.0.0.41")

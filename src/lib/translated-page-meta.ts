@@ -156,7 +156,6 @@ export const TRANSLATED_HUB_META = {
   install: {
     path: "/install",
     namespace: "install.page",
-    robots: { index: false, follow: false },
   },
   bookings: {
     path: "/bookings",

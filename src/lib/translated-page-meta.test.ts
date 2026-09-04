@@ -34,7 +34,8 @@ describe("buildTranslatedHubMetadata", () => {
     expect(TRANSLATED_HUB_META.events.namespace).toBe("events.page");
     expect(TRANSLATED_HUB_META.login.robots).toEqual({ index: false, follow: true });
     expect(TRANSLATED_HUB_META.guidesTroodosDecember.path).toBe("/guides/troodos-december");
-    expect(TRANSLATED_HUB_META.install.robots).toEqual({ index: false, follow: false });
+    // /install became a guest-facing public page in batch 51 — no robots override.
+    expect("robots" in TRANSLATED_HUB_META.install).toBe(false);
     expect(TRANSLATED_HUB_META.bookings.namespace).toBe("bookings.page");
     expect(TRANSLATED_HUB_META.account.path).toBe("/account");
     expect(TRANSLATED_HUB_META.trailReport.namespace).toBe("trails.report");

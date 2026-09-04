@@ -9,7 +9,7 @@ Structured audit following the Deep Project Review plan on branch `feat/persona-
 | Architecture | 4/5 | Coherent static-data funnel; Plan/Events still client-heavy |
 | Security | 4/5 | Strong validation; `debug-log` prod-gated; Upstash required in prod |
 | Funnel / UX | 4/5 | Persona backlog largely shipped; travel-trust E2E added |
-| i18n / SEO | 3/5 | 7 locales structurally complete; `fr`/`he`/`ro` ~43% English copy |
+| i18n / SEO | 3/5 | 7 locales structurally complete; `fr`/`he`/`ro` ~43% English copy *(superseded — all 7 locales fully localized as of Aug 2026; see `UX_UI_PERSONA_AUDIT_2026-08-31.md`)* |
 | Performance | 3/5 | Hero preload on discover/trails/plan/events/airport; Plan client LCP |
 | a11y | 3/5 | Booking forms + discover filter inert; no axe in CI |
 | Tests / CI | 4/5 | 563 unit tests; E2E gate expanded; component tests still 0 |
@@ -71,7 +71,7 @@ Structured audit following the Deep Project Review plan on branch `feat/persona-
 - **1829 keys × 7 locales** — structural parity passing.
 - Book detail `generateMetadata` localized (`book.pages.*Detail.meta.*`).
 - Guide loading skeleton uses `common.loading.bookingForm`.
-- **Gap:** ~793 long strings in `fr`/`he`/`ro` still English; critical-path overrides in `scripts/i18n/critical-locale-overrides.json`.
+- **Gap:** ~793 long strings in `fr`/`he`/`ro` still English; critical-path overrides in `scripts/i18n/critical-locale-overrides.json`. *(Superseded — closed by the Aug 2026 audit remediation: all 7 locales carry full localized copy, pending native review.)*
 
 ---
 
