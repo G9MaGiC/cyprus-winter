@@ -106,6 +106,7 @@ export default async function GuideBookPage({
           districtLabel={tGuidesDir(`districts.${guide.district}`)}
         />
         <p className="text-sm text-muted-ink mt-3 max-w-lg break-words prose-body">{guide.description}</p>
+        <p className="text-sm text-muted-ink mt-3 max-w-lg">{tBookPages("guideRateRange")}</p>
       </div>
 
       <GuideBookingForm guide={guide} preselectedTrailId={trail ?? undefined} />

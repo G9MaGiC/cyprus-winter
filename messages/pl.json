@@ -1865,7 +1865,8 @@
       "directoryCta": "Znajdź licencjonowanego przewodnika",
       "browseLicensed": "Przeglądaj licencjonowanych przewodników",
       "directoryCount": "{count} przewodników mówi w Twoim języku w tym dystrykcie",
-      "verifiedPartners": "Licencjonowani przewodnicy górscy"
+      "verifiedPartners": "Licencjonowani przewodnicy górscy",
+      "rateHint": "Orientacyjne stawki: 100–150 € pół dnia, 150–400 € cały dzień — ostateczną cenę potwierdza przewodnik."
     },
     "dayLabel": "Dzień {day}",
     "aria": {
@@ -2989,7 +2990,8 @@
           "title": "Zarezerwuj degustację | {wineryName} | Cyprus Winter",
           "description": "Zarezerwuj zimową degustację w {wineryName} w regionie {region}. Przytulny ogień, grzejniki, często leje sam właściciel. Potwierdzenie mailem. Rezerwuj z wyprzedzeniem. Cyprus Winter."
         }
-      }
+      },
+      "guideRateRange": "Orientacyjne stawki licencjonowanych przewodników: 100–150 € za pół dnia, 150–400 € za cały dzień (dane Cypryjskiego Stowarzyszenia Przewodników) — ostateczną cenę potwierdza przewodnik."
     },
     "form": {
       "trust": {

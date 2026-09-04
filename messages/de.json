@@ -1865,7 +1865,8 @@
       "directoryCta": "Lizenzierten Führer finden",
       "browseLicensed": "Lizenzierte Führer durchsuchen",
       "directoryCount": "{count} Führer sprechen Ihre Sprache in diesem Bezirk",
-      "verifiedPartners": "Lizenzierte Wanderführer"
+      "verifiedPartners": "Lizenzierte Wanderführer",
+      "rateHint": "Richtwerte: 100–150 € halber Tag, 150–400 € ganzer Tag — den Endpreis bestätigt Ihr Guide."
     },
     "dayLabel": "Tag {day}",
     "aria": {
@@ -2989,7 +2990,8 @@
           "title": "Verkostung buchen | {wineryName} | Cyprus Winter",
           "description": "Winter-Verkostung bei {wineryName} in {region} buchen. Gemütliches Feuer, Heizstrahler, oft schenkt der Besitzer ein. Bestätigung per E‑Mail. Im Voraus buchen. Cyprus Winter."
         }
-      }
+      },
+      "guideRateRange": "Richtwerte für lizenzierte Gästeführer: 100–150 € pro halben Tag, 150–400 € pro ganzen Tag (Angaben des zyprischen Gästeführerverbands) — den endgültigen Preis bestätigt Ihr Guide."
     },
     "form": {
       "trust": {

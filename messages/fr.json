@@ -1865,7 +1865,8 @@
       "directoryCta": "Trouver un guide agréé",
       "browseLicensed": "Parcourir les guides agréés",
       "directoryCount": "{count} guides parlent votre langue dans ce district",
-      "verifiedPartners": "Guides de randonnée agréés"
+      "verifiedPartners": "Guides de randonnée agréés",
+      "rateHint": "Tarifs indicatifs : 100–150 € la demi-journée, 150–400 € la journée — tarif final confirmé par votre guide."
     },
     "realism": {
       "aria": "Repères de rythme pour la journée",
@@ -3117,7 +3118,8 @@
           "title": "Réserver une dégustation | {wineryName} | Cyprus Winter",
           "description": "Réservez une dégustation d’hiver à {wineryName} à {region}. Feu, chauffage, souvent le propriétaire qui verse. Confirmation par e-mail. Réservez à l’avance. Cyprus Winter."
         }
-      }
+      },
+      "guideRateRange": "Tarifs indicatifs des guides licenciés : 100–150 € la demi-journée, 150–400 € la journée (chiffres de l’association des guides de Chypre) — votre guide confirme le tarif final."
     }
   },
   "guides": {

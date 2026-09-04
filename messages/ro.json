@@ -1865,7 +1865,8 @@
       "directoryCta": "Găsește un ghid licențiat",
       "browseLicensed": "Răsfoiește ghizii licențiați",
       "directoryCount": "{count} ghizi vorbesc limba ta în acest district",
-      "verifiedPartners": "Ghizi montani licențiați"
+      "verifiedPartners": "Ghizi montani licențiați",
+      "rateHint": "Tarife orientative: 100–150 € jumătate de zi, 150–400 € zi întreagă — preț final confirmat de ghid."
     },
     "realism": {
       "aria": "Indicii de ritm pentru zi",
@@ -3117,7 +3118,8 @@
           "title": "Rezervă o degustare | {wineryName} | Cyprus Winter",
           "description": "Rezervă o degustare de iarnă la {wineryName} în {region}. Focuri calde, încălzitoare, adesea proprietarul toarnă. Confirmare pe email. Rezervă din timp. Cyprus Winter."
         }
-      }
+      },
+      "guideRateRange": "Tarife orientative ale ghizilor licențiați: 100–150 € pe jumătate de zi, 150–400 € pe zi întreagă (date ale Asociației Ghizilor din Cipru) — prețul final este confirmat de ghid."
     }
   },
   "guides": {

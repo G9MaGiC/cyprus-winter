@@ -38,6 +38,7 @@ export default function PlanGuideBar({
       className="rounded-2xl border border-sand-200/90 bg-white/90 p-5 sm:p-6 flex flex-col gap-3 sm:gap-4 shadow-sm"
     >
       <p className={`${TYPE.cardTitle} text-charcoal`}>{tPlan("title")}</p>
+      <p className="text-sm text-muted-ink">{tPlan("rateHint")}</p>
       <div className="flex flex-wrap items-center gap-3 sm:gap-4 min-h-[44px]">
         {primaryGuide ? (
           <TrackOnClick
