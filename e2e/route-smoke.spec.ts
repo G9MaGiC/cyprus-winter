@@ -37,6 +37,7 @@ const ROUTES = [
   "/search",
   "/secrets",
   "/team",
+  "/partner/join",
   "/terms",
   "/trails",
   "/trails/artemis",
