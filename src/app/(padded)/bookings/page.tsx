@@ -239,7 +239,7 @@ export default function BookingsPage() {
   };
 
   // Auto-check for status updates once per visit: with localStorage-only reads a
-  // "pending" badge stays stale forever on the very device that booked (BUG-361).
+  // "pending" badge stays stale forever on the very device that booked (BUG-362).
   // Silent best-effort — any failure keeps the local view.
   const autoRefreshedRef = useRef(false);
   useEffect(() => {

@@ -1,6 +1,12 @@
 /**
  * Rate limiter for API routes. Uses Upstash Redis when configured.
- * Production intentionally fails closed if the distributed limiter is absent.
+ *
+ * Write / abuse-sensitive scopes fail closed in production when Redis is
+ * absent. Low-risk public-read scopes may fall back to per-instance
+ * in-memory limits so weather and Right Now keep working while Upstash
+ * is still being wired (BUG-354). `track` stays fail-closed because it
+ * can persist to Supabase. `productionReady` and bookings/chat still
+ * require distributed Redis.
  */
 
 import {
@@ -33,6 +39,16 @@ export type RateLimitScope =
   | "right-now"
   | "partner";
 
+/** Public-read scopes that may use in-memory limits without Upstash.
+ *  `track` stays fail-closed — it can write to Supabase `conversion_events`
+ *  and must not accept unbounded writes when Redis is missing (Codex P1). */
+export const MEMORY_FALLBACK_SCOPES: ReadonlySet<RateLimitScope> = new Set([
+  "weather",
+  "right-now",
+  "vapid",
+  "health",
+]);
+
 function hasRedisEnv(): boolean {
   return Boolean(
     process.env.UPSTASH_REDIS_REST_URL &&
@@ -40,6 +56,11 @@ function hasRedisEnv(): boolean {
   );
 }
 
+function allowsMemoryFallback(scope: RateLimitScope): boolean {
+  return MEMORY_FALLBACK_SCOPES.has(scope) || isCiE2eTest();
+}
+
+const warnedMemoryFallback = new Set<RateLimitScope>();
 
 export async function rateLimit(
   req: Request,
@@ -49,13 +70,29 @@ export async function rateLimit(
 ): Promise<RateLimitResult> {
   if (shouldBypass(req)) return bypassResult();
 
-  if (process.env.NODE_ENV === "production" && !hasRedisEnv() && !isCiE2eTest()) {
+  if (
+    process.env.NODE_ENV === "production" &&
+    !hasRedisEnv() &&
+    !allowsMemoryFallback(scope)
+  ) {
     throw new Error("Distributed rate limiting is required in production.");
   }
 
   const identifier = `${scope}:${key?.trim() || getClientId(req)}`;
   if (hasRedisEnv()) {
     return redisRateLimit(identifier, limit);
+  }
+  if (
+    process.env.NODE_ENV === "production" &&
+    MEMORY_FALLBACK_SCOPES.has(scope) &&
+    !isCiE2eTest() &&
+    !warnedMemoryFallback.has(scope)
+  ) {
+    warnedMemoryFallback.add(scope);
+    // console.warn (not logger.warn) — logger is silent in production.
+    console.warn(
+      `[rate-limit] in-memory fallback for "${scope}" (Upstash not configured)`
+    );
   }
   return inMemoryRateLimit(identifier, limit, req);
 }

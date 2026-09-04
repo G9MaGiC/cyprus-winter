@@ -58,7 +58,7 @@ export function AIAssistant() {
     const handleOpen = () => {
       if (blockingOverlayActive()) {
         // Never a silent no-op: hand focus to the blocking overlay (cookie
-        // banner / onboarding) so the user learns what to answer first (BUG-359).
+        // banner / onboarding) so the user learns what to answer first (BUG-360).
         document
           .querySelector<HTMLElement>('[data-overlay-active="true"] button')
           ?.focus();

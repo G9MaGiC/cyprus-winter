@@ -7,7 +7,7 @@ type BookingTrustStripProps = {
   /**
    * Whether the partner passes isPartnerVerified() (deliverable contact).
    * The "Verified … route" + email-SLA claims are only true for verified
-   * partners — for everyone else show the honest request-logged line (BUG-354).
+   * partners — for everyone else show the honest request-logged line (BUG-355).
    */
   verified?: boolean;
 };

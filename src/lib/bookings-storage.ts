@@ -12,7 +12,7 @@ const STORAGE_KEY = "cyprus-bookings";
  * local `pending` — BUG-172) but local-only fields survive, because the API's
  * public view strips guestEmail/guestName/notes and a whole-record overwrite
  * would erase them — permanently disabling the pending-status auto-check,
- * which keys on a stored guestEmail (BUG-361 / AUD B2-02).
+ * which keys on a stored guestEmail (BUG-362 / AUD B2-02).
  */
 export function mergeBookings(local: Booking[], api: Booking[]): Booking[] {
   const byId = new Map<string, Booking>();

@@ -30,7 +30,7 @@ function isValidTemplate(value: string | null): value is TemplateKey {
  * Uses refs internally to avoid processing the same param twice.
  * Returns { addFailed } — the URL is also patched to ?add=failed for reload/share
  * parity, but the alert must render from state: patching via history.replaceState
- * never re-renders useSearchParams (BUG-356 / AUD-03).
+ * never re-renders useSearchParams (BUG-357 / AUD-03).
  */
 export function usePlanUrlActions({
   hydrated,

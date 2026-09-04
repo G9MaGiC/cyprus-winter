@@ -39,7 +39,7 @@ export default function Nav() {
 
   useEffect(() => {
     // Only act when one of our menus is actually open — an unconditional handler
-    // steals focus from every modal's own Escape restore (BUG-358 / AUD-05).
+    // steals focus from every modal's own Escape restore (BUG-359 / AUD-05).
     if (!open && !moreOpen) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {

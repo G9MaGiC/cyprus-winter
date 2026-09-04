@@ -20,7 +20,7 @@ export function triggerAIAssistant() {
   if (blockingOverlayActive()) {
     // Never a silent no-op: hand focus to the blocking overlay (cookie banner /
     // onboarding) so the user learns what to answer first. This is the single
-    // choke point every Ask-AI path routes through (BUG-359 follow-up).
+    // choke point every Ask-AI path routes through (BUG-360 follow-up).
     document
       .querySelector<HTMLElement>(
         '[data-overlay-priority="blocking"][data-overlay-active="true"] button'

@@ -4,7 +4,7 @@ One-page ops + engineering gate before public traffic. Complements `docs/RUNBOOK
 
 **Last updated:** 2026-08-29 · **Target:** PR #199 on top of `main` after PRs #196 and #198 (audit remediation BUG-346: RTL/Hebrew type, localized guest email, unified home metadata)
 
-**Production access (live check):** `https://cyprus-winter-three.vercel.app` returns HTTP 200 without authentication or `noindex`, and Next.js image optimization is active. `/api/health` returns HTTP 503 with `productionReady: false` because required Upstash and Supabase services are still unavailable. Code defaults (`SITE_URL`, Capacitor, health scripts) now target this live alias; attach `cypruswinter.com` later via DNS + `NEXT_PUBLIC_SITE_URL`.
+**Production access (live check):** `https://cyprus-winter-three.vercel.app` returns HTTP 200 without authentication or `noindex`, and Next.js image optimization is active. `/api/health` returns HTTP 503 with `productionReady: false` because required Upstash and Supabase services are still unavailable. Weather / Right Now soft-degrade to per-instance in-memory rate limits until Upstash is set (BUG-354); bookings, chat, and track stay fail-closed. Code defaults (`SITE_URL`, Capacitor, health scripts) now target this live alias; attach `cypruswinter.com` later via DNS + `NEXT_PUBLIC_SITE_URL`.
 
 **Quick gate:** `npm run health:production` (exit 0 only when live `productionReady: true`).
 

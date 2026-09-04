@@ -96,7 +96,7 @@ describe("SearchBar", () => {
     fireEvent.focus(input);
     fireEvent.change(input, { target: { value: "o" } });
     // Two status regions exist: the visible hint panel and the SR results-count
-    // announcer (BUG-360-adjacent fix) — assert across both.
+    // announcer (BUG-361-adjacent fix) — assert across both.
     const statusText = screen.getAllByRole("status").map((el) => el.textContent).join(" ");
     expect(statusText).toContain("Type at least 2 characters");
   });

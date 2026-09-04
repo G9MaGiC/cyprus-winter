@@ -39,20 +39,42 @@ Open | In progress | Fixed | Won't fix
 
 ### Fixed — UX/UI persona audit remediation (PR #227, Aug 31 – Sep 3 2026)
 
-The ten findings the audit drafted as provisional entries (`docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` §6.3) — numbers made final at triage (owner-approved, Sep 3 2026); all fixed on the audit branch before merge. Per-finding evidence lives in the audit register (§4/§8.2) and per-batch notes (§8.3).
+The ten findings the audit drafted as provisional entries (`docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` §6.3, drafted as 354–363) — renumbered **+1 at the main merge** because PR #228's BUG-354 (Upstash soft-degrade) landed on main first; numbers below are final (owner-approved triage, Sep 3 2026). All ten fixed on the audit branch before merge; per-finding evidence lives in the audit register (§4/§8.2) and per-batch notes (§8.3).
 
 | ID | Severity | Area | Issue | Fixed by |
 |----|----------|------|-------|----------|
-| BUG-354 | Critical | Functional/Trust | Booking trust strip claimed a "Verified … request route" with 24h email confirmation while every partnerEmail was an undeliverable placeholder | AUD-01, round-1 fix pass (claims gated on `isPartnerVerified()`, honest fallback, fabricated phones suppressed) |
-| BUG-355 | Critical | Visual/Mobile | /plan itinerary names rendered one letter per line at 375px (title column ~8px) | AUD-02, round-1 fix pass (actions stack under the title below `sm:`) |
-| BUG-356 | High | Functional | GF6 regression: `/plan?add=<invalid-id>` showed no failure alert until reload | AUD-03, round-1 fix pass (failure surfaced via React state) |
-| BUG-357 | High | Functional/Content | Family template Day 1 spanned Protaras↔Paphos with no realism warning (coast↔coast blind spot) | AUD-04, round-1 fix pass (Day 1 → Konnos Bay; coast↔coast warning added) |
-| BUG-358 | High | A11y | Global Escape handler stole focus to the hamburger on every Escape press (<lg) | AUD-05, round-1 fix pass (handler guarded; More restores focus) |
-| BUG-359 | High | A11y | Consent banner last in DOM, never announced, silently disabled Ask AI | AUD-06, round-1 + round-2 choke-point fix (early-body portal, announce on appear, blocked presses focus the banner) |
-| BUG-360 | High | A11y | Core plan add/remove silent + focus-dropping for AT; aria-labels leaked raw ids | AUD-07, round-1 fix pass (SRStatus announcements, focus handoff, labels cleaned) |
-| BUG-361 | High | Functional | /bookings never re-fetched on the booking device; no guest status emails on partner confirm/decline | AUD-08, batches 1+8 (auto re-check on mount; transition-gated status emails), localized via migration 008 (batch 29) |
-| BUG-362 | High | Functional/Trust | No guest cancel/change path; "Modify" filed a duplicate request | AUD-09, round-1 ("Request a change" + guidance); real in-app guest cancel shipped batch 41 (anti-enumeration API, idempotent, localized emails) |
-| BUG-363 | High | i18n | Curated data-layer content (winery hours/notes, attraction backstories, trail tips) was EN in every locale | AUD-10, batches 5–32: display-time overlay ×7 locales — 71 wineries, 58 attractions, 105 trails, 305 bestFor tags (◇ native review pending: `docs/i18n-review/`) |
+| BUG-355 | Critical | Functional/Trust | Booking trust strip claimed a "Verified … request route" with 24h email confirmation while every partnerEmail was an undeliverable placeholder | AUD-01, round-1 fix pass (claims gated on `isPartnerVerified()`, honest fallback, fabricated phones suppressed) |
+| BUG-356 | Critical | Visual/Mobile | /plan itinerary names rendered one letter per line at 375px (title column ~8px) | AUD-02, round-1 fix pass (actions stack under the title below `sm:`); populated-plan gate guard added batch 45 |
+| BUG-357 | High | Functional | GF6 regression: `/plan?add=<invalid-id>` showed no failure alert until reload | AUD-03, round-1 fix pass (failure surfaced via React state) |
+| BUG-358 | High | Functional/Content | Family template Day 1 spanned Protaras↔Paphos with no realism warning (coast↔coast blind spot) | AUD-04, round-1 fix pass (Day 1 → Konnos Bay; coast↔coast warning added) |
+| BUG-359 | High | A11y | Global Escape handler stole focus to the hamburger on every Escape press (<lg) | AUD-05, round-1 fix pass (handler guarded; More restores focus) |
+| BUG-360 | High | A11y | Consent banner last in DOM, never announced, silently disabled Ask AI | AUD-06, round-1 + round-2 choke-point fix (early-body portal, announce on appear, blocked presses focus the banner) |
+| BUG-361 | High | A11y | Core plan add/remove silent + focus-dropping for AT; aria-labels leaked raw ids | AUD-07, round-1 fix pass (SRStatus announcements, focus handoff, labels cleaned) |
+| BUG-362 | High | Functional | /bookings never re-fetched on the booking device; no guest status emails on partner confirm/decline | AUD-08, batches 1+8 (auto re-check on mount; transition-gated status emails), localized via migration 008 (batch 29) |
+| BUG-363 | High | Functional/Trust | No guest cancel/change path; "Modify" filed a duplicate request | AUD-09, round-1 ("Request a change" + guidance); real in-app guest cancel shipped batch 41 (anti-enumeration API, idempotent, localized emails) |
+| BUG-364 | High | i18n | Curated data-layer content (winery hours/notes, attraction backstories, trail tips) was EN in every locale | AUD-10, batches 5–32: display-time overlay ×7 locales — 71 wineries, 58 attractions, 105 trails, 305 bestFor tags (◇ native review pending: `docs/i18n-review/`) |
+
+---
+
+### [BUG-354] Weather / Right Now APIs 503 on live production without Upstash
+
+**Severity:** High
+**Area:** Functional / Ops bridge
+**Page/Component:** `/api/weather`, `/api/right-now`, `/api/push/vapid`, `/api/health`
+
+### Reproduction
+1. Production `cyprus-winter-three.vercel.app` with no `UPSTASH_REDIS_REST_*`
+2. `GET /api/weather?lat=34.9&lng=33.0` → 503 `SERVICE_UNAVAILABLE` ("Rate limiting unavailable")
+3. Same for `/api/right-now` — home weather badges and Right Near You stay empty
+
+### Expected
+Low-risk public-read APIs keep serving with per-instance in-memory limits until Upstash is configured. Bookings, chat, partner, trail-reports, push-subscribe, **and track** stay fail-closed (`track` can write Supabase `conversion_events`). `productionReady` remains false until Upstash + Supabase are set.
+
+### Actual
+Every rate-limited route threw when Redis was absent, so discovery personalization was dead even though weather/right-now do not need shared storage.
+
+### Fix status
+Fixed — `MEMORY_FALLBACK_SCOPES` in `src/lib/rate-limit.ts` (weather, right-now, vapid, health). Write/abuse-sensitive scopes including `track` unchanged. Ops still owns BUG-269 for full `productionReady: true`.
 
 ---
 
@@ -1790,7 +1812,7 @@ Full inventory of `docs/QA_BUGS.md` (BUG-001–161) plus live health, deep-revie
 
 | ID | Severity | Area | Issue | Fix status |
 |----|----------|------|-------|------------|
-| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env (human) |
+| BUG-269 | P0 | Ops | Production `/api/health` returns `productionReady: false` — missing Vercel env (`UPSTASH_REDIS_*`, Supabase) | Open — configure Vercel production env (human). BUG-354 soft-degrades weather/right-now until then; track stays fail-closed. |
 | BUG-272 | P1 | API | `/api/health` fail-open when rate limit throws (unlike other routes) | Won't fix — needed so health reports missing Upstash when Redis unreachable |
 
 ### Fixed — design sprint + launch hygiene (Aug 24, 2026, main @ 3183177)

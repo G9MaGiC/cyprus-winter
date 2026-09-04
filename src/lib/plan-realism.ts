@@ -67,7 +67,7 @@ export function analyzePlanDay(places: PlanItem[]): PlanDayWarning[] {
     const hasCoast =
       zones.has("paphos") || zones.has("limassol") || zones.has("east") || zones.has("larnaca");
     // Cross-island coast pairs are the longest same-day drives on the island —
-    // Paphos↔east (~2h+) and Paphos↔Larnaca warn like Troodos↔coast (BUG-357).
+    // Paphos↔east (~2h+) and Paphos↔Larnaca warn like Troodos↔coast (BUG-358).
     const crossIslandCoast =
       zones.has("paphos") && (zones.has("east") || zones.has("larnaca"));
     if ((hasTroodos && hasCoast) || crossIslandCoast) {

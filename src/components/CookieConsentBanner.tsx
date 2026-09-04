@@ -28,7 +28,7 @@ export default function CookieConsentBanner() {
   const choice = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const bannerRef = useRef<HTMLDivElement>(null);
   // aria-live never announces a region that is inserted pre-populated —
-  // announce arrival explicitly, after a settle tick (BUG-359).
+  // announce arrival explicitly, after a settle tick (BUG-360).
   const [announce, setAnnounce] = useState("");
   useEffect(() => {
     if (choice !== null) return;
@@ -67,7 +67,7 @@ export default function CookieConsentBanner() {
   if (choice !== null) return null;
 
   // Portal to the early-body anchor so the banner sits at the start of the
-  // tab/reading order instead of after the footer (BUG-359). The anchor is
+  // tab/reading order instead of after the footer (BUG-360). The anchor is
   // rendered by the root layout; fall back to in-place render if absent.
   const anchor =
     typeof document !== "undefined"

@@ -269,7 +269,7 @@ Personas: all · Stage: Plan · Dedupe: NEW (grep "one letter", "vertical", "pla
 | Menu semantics + hub skip-nav consolidation on `useTrapFocus` — **shipped** (batch 6: all three `role="menu"` sites converted to disclosures; batch 7: `HubSkipNav` on `/trails`, `/discover`, `/wineries`, `/events`); only the trap consolidation stays deliberately deferred (different event models; not a defect) | AUD-27 | 4 | 5 | 0.9 | 2 | 9.0 |
 | Dark-scheme decision (record it; `color-scheme: light`; optional dark set via existing tokens) | AUD-28 | 5 | 4 | 0.6 | 4 | 3.0 |
 
-### 6.3 Proposed `docs/QA_BUGS.md` entries — **triaged 2026-09-03 (owner-approved): numbers final, appended to the log as the PR #227 Fixed section; drafts below kept as the audit-time record**
+### 6.3 Proposed `docs/QA_BUGS.md` entries — **triaged 2026-09-03 (owner-approved) and appended to the log as the PR #227 Fixed section; final numbers are BUG-355…364 (+1 from the drafts below — main's PR #228 claimed BUG-354 first); drafts kept as the audit-time record**
 
 Formatted per `docs/QA_PLAN.md` §5; SLA class per §6 (Critical = before launch, High = 1 sprint).
 

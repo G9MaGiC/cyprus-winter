@@ -158,7 +158,7 @@ export default function DayContentPanel({
   const tPlan = useTranslations("plan");
   const locale = useLocale();
   // Removals leave aria-live's default aria-relevant ("additions text") silent,
-  // and the remove button unmounts under focus — announce them explicitly (BUG-360).
+  // and the remove button unmounts under focus — announce them explicitly (BUG-361).
   // The announced name must match the one on the card the user acted on, so
   // it goes through getLocalizedName like the visible plan UI does.
   const [removedMessage, setRemovedMessage] = useState("");

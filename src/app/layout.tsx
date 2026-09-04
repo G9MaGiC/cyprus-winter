@@ -162,7 +162,7 @@ export default async function RootLayout({
         </a>
         {/* Early-body anchor: CookieConsentBanner portals here so the consent
             choice sits at the START of the tab/reading order, not ~100 stops
-            after the footer (BUG-359). Mount timing stays deferred in
+            after the footer (BUG-360). Mount timing stays deferred in
             ClientComponents for the LCP fix. */}
         <div id="pre-nav-overlays"></div>
         <NextIntlClientProvider messages={messages}>

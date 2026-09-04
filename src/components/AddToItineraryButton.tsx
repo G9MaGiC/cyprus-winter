@@ -32,7 +32,7 @@ export default function AddToItineraryButton({
   const inPlanRef = useRef<HTMLSpanElement>(null);
 
   // The add button unmounts under the pointer/focus when the state flips —
-  // hand focus to the replacing "View plan" link and announce (BUG-360).
+  // hand focus to the replacing "View plan" link and announce (BUG-361).
   useEffect(() => {
     if (justAdded) {
       inPlanRef.current?.querySelector("a")?.focus();
