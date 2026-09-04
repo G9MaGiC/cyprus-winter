@@ -44,6 +44,9 @@ export type Winery = {
   longitude?: number;
   /** Opening hours (e.g. "By appointment") */
   openingHours?: string;
+  /** Computed from the EN base at overlay time — the call-ahead badge must
+      survive translation (AUD-10; see place-card-hours.ts). Never set in data. */
+  hoursCallAhead?: boolean;
   /** Transport / directions */
   transport?: string;
   /** Parking info */

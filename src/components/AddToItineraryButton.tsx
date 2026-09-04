@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import AppLink from "@/components/AppLink";
+import { SRStatus } from "@/components/SRStatus";
 import { useItinerary } from "@/hooks/useItinerary";
 import { CTA, SECTION } from "@/lib/design-tokens";
 import { track, trackProduct } from "@/lib/analytics";
@@ -26,6 +28,16 @@ export default function AddToItineraryButton({
   const allIds = Object.values(days ?? {}).flat();
   const isInItinerary = hydrated && allIds.includes(placeId);
   const resolvedLabel = label ?? tCommon("addToPlan");
+  const [justAdded, setJustAdded] = useState(false);
+  const inPlanRef = useRef<HTMLSpanElement>(null);
+
+  // The add button unmounts under the pointer/focus when the state flips —
+  // hand focus to the replacing "View plan" link and announce (BUG-361).
+  useEffect(() => {
+    if (justAdded) {
+      inPlanRef.current?.querySelector("a")?.focus();
+    }
+  }, [justAdded]);
 
   if (!hydrated) {
     return (
@@ -41,10 +53,12 @@ export default function AddToItineraryButton({
 
   if (isInItinerary) {
     return (
+      <>
+      <SRStatus message={justAdded ? tCommon("aria.addedToPlan") : ""} />
       <span
+        ref={inPlanRef}
         data-testid={`in-plan-${placeId}`}
-        className={`inline-flex flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
-        aria-label={tCommon("aria.placeInItinerary", { id: placeId })}
+        className={`inline-flex max-w-full flex-wrap items-center gap-2 min-h-[44px] px-5 py-3 rounded-lg bg-aegean/15 text-aegean font-medium ${className}`}
       >
         <span aria-hidden>✓</span> {tCommon("inYourPlan")}
         <AppLink
@@ -55,24 +69,28 @@ export default function AddToItineraryButton({
           {tCommon("viewPlan")} <span aria-hidden>→</span>
         </AppLink>
       </span>
+      </>
     );
   }
 
   const handleInlineAdd = () => {
     addToDayIfMissing(placeId);
+    setJustAdded(true);
     track("inline_plan_add_click", { place_id: placeId });
     trackProduct("plan_add", { item_id: placeId, source: "inline_button" });
   };
 
   return (
+    <>
+    <SRStatus message="" />
     <button
       type="button"
       onClick={handleInlineAdd}
       data-testid={`add-to-plan-${placeId}`}
       className={`${CTA.primaryCompact} w-full sm:w-auto gap-2 ${className}`}
-      aria-label={`${resolvedLabel}: ${placeId}`}
     >
       {resolvedLabel} <span aria-hidden>→</span>
     </button>
+    </>
   );
 }

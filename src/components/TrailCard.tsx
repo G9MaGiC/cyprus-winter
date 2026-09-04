@@ -9,13 +9,15 @@ import { TrackOnClick } from "@/components/TrackOnClick";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { formatReportedAgo } from "@/lib/format";
 import type { Trail, TrailConditions } from "@/data/trails";
-import { trailConditions as editorialConditions } from "@/data/trails";
+import { trailConditions as editorialConditions, TRAIL_CONDITIONS_AS_OF } from "@/data/trails";
+import { formatMonthYear } from "@/lib/format";
 import { useTrailListReports } from "@/components/TrailListReportsProvider";
 import {
   resolveTrailCardConditions,
   trailConditionsFromView,
 } from "@/lib/trail-card-conditions";
 import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
 
 type Props = {
   trail: Trail;
@@ -29,6 +31,11 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
   const locale = useLocale();
   const tTrails = useTranslations("trails");
   const reports = useTrailListReports();
+  const tBadges = useTranslations("trails.badges");
+  const displayName = getLocalizedName(trail, locale);
+  const difficultyLabel = tBadges(`difficulty.${trail.difficulty}.label`);
+  const routeTypeKey =
+    trail.routeType === "loop" ? "loop" : trail.routeType === "out-and-back" ? "outAndBack" : "pointToPoint";
   const editorial = hideEditorial ? undefined : (conditions ?? editorialConditions[trail.id]);
   const view = resolveTrailCardConditions(editorial, reports[trail.id]);
   const resolved = trailConditionsFromView(trail.id, view);
@@ -46,7 +53,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
       <AppLink
         href={`/trails/${trail.id}`}
         className={`block ${CARD.link}`}
-        aria-label={tTrails("card.trailAria", { name: trail.name, length: trail.lengthKm, difficulty: trail.difficulty, region: trail.region })}
+        aria-label={tTrails("card.trailAria", { name: displayName, length: trail.lengthKm, difficulty: difficultyLabel, region: trail.region })}
       >
         <div
           className={`relative overflow-hidden bg-olive/10 shrink-0 ${
@@ -55,7 +62,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
         >
           <Image
             src={getTrailImage(trail.id)}
-            alt={tTrails("card.imageAlt", { name: trail.name, region: trail.region, length: trail.lengthKm, difficulty: trail.difficulty })}
+            alt={tTrails("card.imageAlt", { name: displayName, region: trail.region, length: trail.lengthKm, difficulty: difficultyLabel })}
             fill
             className={MEDIA.hoverImage}
             sizes={featured ? "(max-width: 640px) 100vw, 33vw" : "(max-width: 640px) 100vw, 50vw"}
@@ -81,11 +88,13 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
           </span>
         </div>
         <div className={CARD.content}>
+          {/* line-clamp-1, not truncate: nowrap titles inflate grid-track
+              min-content and overflow 320px viewports (AUD-125 class). */}
           <h3
-            className={`${TYPE.cardTitle} truncate ${featured ? "text-xl" : ""}`}
-            title={trail.name}
+            className={`${TYPE.cardTitle} line-clamp-1 break-words ${featured ? "text-xl" : ""}`}
+            title={displayName}
           >
-            {trail.name}
+            {displayName}
           </h3>
           <p className="text-sm text-muted-ink mt-1 line-clamp-1 break-words">
             {teaser}
@@ -99,7 +108,7 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             {trail.routeType && (
               <>
                 <span aria-hidden>·</span>
-                <span className="capitalize">{trail.routeType.replace("-", " ")}</span>
+                <span>{tTrails(`routeTypes.${routeTypeKey}`)}</span>
               </>
             )}
             {view.source === "report" && resolved?.lastReportedAt ? (
@@ -112,7 +121,10 @@ export default function TrailCard({ trail, conditions, featured, hideEditorial }
             ) : view.source === "editorial" ? (
               <>
                 <span aria-hidden>·</span>
+                {/* Static snapshot must carry its date or it reads as live (AUD-12). */}
                 <span>{tTrails("conditionsEditorial")}</span>
+                <span aria-hidden>·</span>
+                <span>{tTrails("asOf", { date: formatMonthYear(TRAIL_CONDITIONS_AS_OF, locale) })}</span>
               </>
             ) : (
               <>

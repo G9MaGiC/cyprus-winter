@@ -25,18 +25,25 @@ export default function ForgotPasswordPage() {
   }, [sent]);
 
   if (!isConfigured) {
+    // Own copy, not reset-password's: a user here has no reset link yet, so
+    // "use the reset link from your email" reads as the wrong page (AUD-85).
     return (
       <AuthLayout
         variant="forgot"
-        kicker={tAuth("reset.configTitle")}
-        title={tAuth("reset.configTitle")}
-        subtitle={tAuth("reset.configSubtitle")}
+        kicker={tAuth("forgot.configTitle")}
+        title={tAuth("forgot.configTitle")}
+        subtitle={tAuth("forgot.configSubtitle")}
         backHref="/login"
         backLabel={tCommon("backTo", { label: tNav("signIn") })}
       >
-        <AppLink href="/login" className={CTA.primaryCompact}>
-          {tCommon("backTo", { label: tNav("signIn") })}
-        </AppLink>
+        <div className="flex flex-wrap gap-3">
+          <AppLink href="/login" className={CTA.primaryCompact}>
+            {tCommon("backTo", { label: tNav("signIn") })}
+          </AppLink>
+          <AppLink href="/bookings" className={CTA.secondaryCompact}>
+            {tAuth("forgot.configBookingsCta")}
+          </AppLink>
+        </div>
       </AuthLayout>
     );
   }

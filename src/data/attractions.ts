@@ -30,6 +30,9 @@ export type Attraction = {
   culturalNote?: string;
   /** Opening hours (winter) */
   openingHours?: string;
+  /** EN-base call-ahead decision, attached by the AUD-10 content overlay so
+      the badge survives translation (mirrors Winery.hoursCallAhead). */
+  hoursCallAhead?: boolean;
   /** Transport options (bus, taxi, car) */
   transport?: string;
   /** Parking info */

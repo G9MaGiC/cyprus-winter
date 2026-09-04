@@ -3,10 +3,7 @@
  */
 import type { PlanItem } from "@/data";
 import { MAX_DAYS } from "@/lib/itinerary-share";
-
-function escapeIcsText(s: string): string {
-  return s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-}
+import { escapeIcsText } from "@/lib/ics";
 
 function formatIcsDate(d: Date): string {
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -46,7 +43,9 @@ export function buildPlanIcs(
       .map((p) => `${p!.name} (${p!.region})`);
 
     const summary = `Cyprus Winter — Day ${dayNum}`;
-    const description = names.length > 0 ? names.join("\\n") : "Add places in the app";
+    // Join with a real newline — escapeIcsText encodes it once; pre-escaping
+    // here double-escapes and calendars display a literal "\n" (AUD E2-01).
+    const description = names.length > 0 ? names.join("\n") : "Add places in the app";
 
     eventIndex += 1;
     lines.push(

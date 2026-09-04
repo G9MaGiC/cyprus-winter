@@ -10,6 +10,7 @@ import { PARTNER_SESSION_COOKIE, createPartnerSessionToken } from "@/lib/partner
 import { findVerifiedPartnerByEmail } from "@/lib/partner-identity";
 import { resolveWineryImage } from "@/lib/cyprus-images";
 import { resetPartnerOverlaysForTests } from "@/lib/partner-overlay";
+import { sendBookingStatusEmail } from "@/lib/email";
 
 const secret = "partner-portal-secret-16";
 const tsiakkasEmail = "bookings+tsiakkas@cyprus-winter.example";
@@ -19,6 +20,7 @@ vi.mock("@/lib/email", () => ({
   sendBookingRequestToWinery: vi.fn().mockResolvedValue(false),
   sendBookingRequestToGuide: vi.fn().mockResolvedValue(false),
   sendBookingLookupTokenEmail: vi.fn().mockResolvedValue(true),
+  sendBookingStatusEmail: vi.fn().mockResolvedValue(true),
 }));
 
 function jsonReq(url: string, method: string, body?: unknown, cookie?: string, ip = "203.0.113.10") {
@@ -152,6 +154,7 @@ describe("partner portal API", () => {
           partySize: 3,
           guestEmail: "guest-c@example.com",
           guestName: "Guest C",
+          locale: "de",
         }),
       })
     );
@@ -172,6 +175,11 @@ describe("partner portal API", () => {
     );
     expect(patched.status).toBe(200);
     expect(((await patched.json()) as { booking: { status: string } }).booking.status).toBe("confirmed");
+    // Migration 008: the status email renders in the guest's persisted locale.
+    expect(vi.mocked(sendBookingStatusEmail)).toHaveBeenLastCalledWith(
+      expect.objectContaining({ id: booking.id, locale: "de" }),
+      "de"
+    );
 
     const token = createBookingLookupToken("guest-c@example.com");
     const guest = await getGuestBookings(

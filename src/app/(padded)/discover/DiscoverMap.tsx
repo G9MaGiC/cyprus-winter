@@ -7,7 +7,7 @@ import FitMapBounds from "@/components/map/FitMapBounds";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
-import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE, LAYER } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
@@ -141,7 +141,7 @@ export default function DiscoverMap({
       aria-label={tDiscover("map.ariaLabel", { count: places.length })}
     >
       {!interactive && (
-        <div className="absolute inset-0 z-[5] flex items-end justify-center p-3 pointer-events-none">
+        <div className={`absolute inset-0 ${LAYER.mapOverlay} flex items-end justify-center p-3 pointer-events-none`}>
           <button
             type="button"
             onClick={() => setInteractive(true)}
@@ -153,7 +153,7 @@ export default function DiscoverMap({
         </div>
       )}
       {interactive && (
-        <div className="absolute top-3 end-3 z-[5]">
+        <div className={`absolute top-3 end-3 ${LAYER.mapOverlay}`}>
           <button
             type="button"
             onClick={() => setInteractive(false)}

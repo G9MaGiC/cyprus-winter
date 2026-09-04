@@ -6,6 +6,7 @@
  * Does not download the Forestry mega map PDF (~158 MB). Compares src/data/trails.ts
  * to the committed authoritative union from Visit Cyprus + Forestry tiers.
  */
+import { fileURLToPath } from "node:url";
 import { trails } from "../../src/data/trails";
 import {
   AUTHORITATIVE_TRAIL_ID_COUNT,
@@ -95,4 +96,11 @@ async function main() {
   if (failed && strict) process.exit(1);
 }
 
-void main();
+// Run only as a CLI entry — tests import buildHikingMapValidationReport, and an
+// import-time main() would print the full report into every vitest run.
+const isCliEntry =
+  typeof process.argv[1] === "string" && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isCliEntry) {
+  void main();
+}

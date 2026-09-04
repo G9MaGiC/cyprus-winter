@@ -145,11 +145,13 @@ export default async function RegionPage({ params }: Props) {
       <PageHeader
         backHref="/"
         backLabel={tNav("home")}
-        title={config.title}
-        description={config.description}
+        // Localized human intro, not the EN keyword string regions.ts keeps
+        // for search snippets (AUD-69).
+        title={tPage(`regions.${config.slug}.title`)}
+        description={tPage(`regions.${config.slug}.intro`)}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
-          { label: config.title, href: `/regions/${config.slug}`, isCurrent: true },
+          { label: tPage(`regions.${config.slug}.title`), href: `/regions/${config.slug}`, isCurrent: true },
         ]}
       />
 
@@ -160,7 +162,7 @@ export default async function RegionPage({ params }: Props) {
               id="trails"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Trails
+              {tPage("sections.trails")}
             </h2>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionTrails.map((t) => (
@@ -186,7 +188,7 @@ export default async function RegionPage({ params }: Props) {
               id="villages"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Villages
+              {tPage("sections.villages")}
             </h2>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionVillages.map((v) => (
@@ -202,7 +204,7 @@ export default async function RegionPage({ params }: Props) {
               id="beaches"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Beaches
+              {tPage("sections.beaches")}
             </h2>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionBeaches.map((b) => (
@@ -234,7 +236,7 @@ export default async function RegionPage({ params }: Props) {
               id="wineries"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Wineries
+              {tPage("sections.wineries")}
             </h2>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionWineries.slice(0, 9).map((w) => (
@@ -285,7 +287,7 @@ export default async function RegionPage({ params }: Props) {
               id="monasteries"
               className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}
             >
-              Monasteries & churches
+              {tPage("sections.monasteries")}
             </h2>
             <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
               {regionMonasteries.map((m) => (

@@ -25,6 +25,7 @@ function useTestBookingForm() {
       failed: "Failed",
       fallback: "Try again",
       offlineQueued: "Queued",
+      offlineDropped: "Dropped",
     }
   );
 }

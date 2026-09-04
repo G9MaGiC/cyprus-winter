@@ -4,8 +4,10 @@ import { getWineryById } from "@/data/wineries";
 import {
   getBookableWineriesForRoute,
   getWineRouteBySlug,
+  wineriesForRoute,
   wineRouteBookHref,
 } from "@/lib/wine-route-stops";
+import { wineries } from "@/data/wineries";
 import { isCallAheadHours, placeCardHours } from "@/lib/place-card-hours";
 
 describe("wine-route-stops (G6)", () => {
@@ -49,6 +51,58 @@ describe("wine-route-stops (G6)", () => {
         if (isCallAheadHours(hours)) {
           expect(hours!.toLowerCase()).toMatch(/appointment|call|request|visit/i);
         }
+      }
+    }
+  });
+});
+
+/**
+ * Official Cyprus wine routes and area labels that carry no page yet — data
+ * may reference them, but any NEW wineRoute value must either match a
+ * published page slug or be added here consciously (AUD-71 guard).
+ */
+const WINE_ROUTES_WITHOUT_PAGE = new Set([
+  "pitsilia",
+  "nicosia",
+  "troodos",
+  "limassol",
+  "limassol corridor",
+  "limassol coast",
+  "larnaca",
+  "larnaca hills",
+  "larnaca\u2013limassol corridor",
+]);
+
+describe("wineRoute data guard (AUD-71)", () => {
+  it("every wineRoute value maps to a published route page or the documented no-page list", () => {
+    const pageSlugs = WINE_ROUTES.map((r) => r.slug);
+    for (const w of wineries) {
+      if (!w.wineRoute) continue;
+      const value = w.wineRoute.toLowerCase();
+      const matchesPage = pageSlugs.some((slug) => value.includes(slug));
+      expect(
+        matchesPage || WINE_ROUTES_WITHOUT_PAGE.has(value),
+        `${w.id}: wineRoute "${w.wineRoute}" matches no route page and is not in the documented no-page list`,
+      ).toBe(true);
+    }
+  });
+
+  it("wineriesForRoute matches combined labels on both routes (Laona\u2013Akamas)", () => {
+    const laona = wineriesForRoute("laona").map((w) => w.id);
+    const akamas = wineriesForRoute("akamas").map((w) => w.id);
+    const combined = wineries.filter((w) => w.wineRoute === "Laona\u2013Akamas").map((w) => w.id);
+    expect(combined.length).toBeGreaterThan(0);
+    for (const id of combined) {
+      expect(laona, `laona should include combined-label winery ${id}`).toContain(id);
+      expect(akamas, `akamas should include combined-label winery ${id}`).toContain(id);
+    }
+  });
+
+  it("wineriesForRoute is a superset of the curated bookable stops", () => {
+    for (const route of WINE_ROUTES) {
+      const all = new Set(wineriesForRoute(route.slug).map((w) => w.id));
+      for (const id of route.bookableWineryIds) {
+        expect(all, `${route.slug}: bookable stop ${id} missing from wineriesForRoute`).toContain(id);
       }
     }
   });

@@ -152,7 +152,7 @@ export default async function PrivacyPage() {
           </p>
         </section>
 
-        <section id="cookies">
+        <section id="cookies" className="scroll-mt-24">
           <h2 className={`${TYPE.subSectionTitle} text-charcoal ${SECTION.blockTop} ${SECTION.titleGap}`}>
             {tPrivacy("sections.s6.title")}
           </h2>

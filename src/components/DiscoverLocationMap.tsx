@@ -47,7 +47,7 @@ export default function DiscoverLocationMap({
 
   return (
     <div ref={containerRef}>
-      <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] bg-olive/5">
+      <div className="rounded-xl overflow-hidden border border-sand-200/80 aspect-video min-h-[200px] max-w-full bg-olive/5">
         {shouldLoad ? (
           <iframe
             title={iframeTitle}

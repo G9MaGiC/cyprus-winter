@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jsonError, jsonRateLimitedFromResult } from "@/lib/api-response";
-import { getPartnerOverlay, setPartnerOverlay } from "@/lib/partner-overlay";
+import { getPartnerOverlay } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded, setPartnerOverlay } from "@/lib/partner-overlay-store";
 import { isSafePartnerImageUrl } from "@/lib/partner-image-url";
 import { isPartnerIdentity, requirePartner } from "@/lib/partner-auth";
 import { rateLimit } from "@/lib/rate-limit";
@@ -29,6 +30,7 @@ export async function GET(req: NextRequest) {
   const partner = requirePartner(req);
   if (!isPartnerIdentity(partner)) return partner;
 
+  await ensurePartnerOverlaysLoaded();
   return NextResponse.json({
     partner: {
       providerId: partner.providerId,
@@ -40,7 +42,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
-/** Update winter hours and/or a local /images/cyprus hero path. Overlay is in-memory (process). */
+/** Update winter hours and/or a local /images/cyprus hero path. Durable since migration 009 (write-through to partner_overlays). */
 export async function PATCH(req: NextRequest) {
   const limited = await limitPartner(req, 20);
   if (limited) return limited;
@@ -81,6 +83,11 @@ export async function PATCH(req: NextRequest) {
     patch.imageUrl = imageUrl.trim();
   }
 
-  const overlay = setPartnerOverlay(partner.providerId, patch);
+  let overlay;
+  try {
+    overlay = await setPartnerOverlay(partner.providerId, patch);
+  } catch {
+    return jsonError("SERVICE_UNAVAILABLE", "Could not save your changes. Try again in a moment.", 503);
+  }
   return NextResponse.json({ overlay });
 }

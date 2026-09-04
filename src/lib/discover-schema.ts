@@ -1,4 +1,5 @@
 import type { DiscoverItem } from "@/data/discover";
+import { truncateForSchema } from "@/lib/schema-text";
 
 export type DiscoverSchemaBreadcrumb = {
   name: string;
@@ -34,7 +35,7 @@ export function buildDiscoverItemListSchema(
       item: {
         "@type": "TouristAttraction",
         name: item.name,
-        description: item.description.slice(0, 160),
+        description: truncateForSchema(item.description),
         url: `${siteUrl}/discover/${item.id}`,
         address: {
           "@type": "PostalAddress",

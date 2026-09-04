@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/site-url";
+import { truncateForSchema } from "@/lib/schema-text";
 import { trails } from "@/data/trails";
 
 export function getTrailsItemListSchema() {
@@ -16,7 +17,7 @@ export function getTrailsItemListSchema() {
       item: {
         "@type": "TouristAttraction",
         name: t.name,
-        description: t.description.slice(0, 160),
+        description: truncateForSchema(t.description),
         url: `${SITE_URL}/trails/${t.id}`,
         address: { "@type": "PostalAddress", addressLocality: t.region, addressCountry: "CY" },
         additionalProperty: [

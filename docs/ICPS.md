@@ -1,7 +1,7 @@
 # Cyprus Winter — ICPs & personas (canonical)
 
 **Owner:** Product / Growth  
-**Last updated:** May 2026  
+**Last updated:** Aug 2026  
 **Use for:** product prioritization, acquisition, messaging, partnerships, and QA golden-path coverage.  
 **Canon:** This is the single authoritative ICP/persona reference. Historical snapshots live in `docs/archive/`.
 
@@ -17,6 +17,14 @@ Use this table when making trade-offs. It reflects the current “who we build f
 | 4 | **Winter Sun Family** | **Emerging** | €60 | Seasonal repeat; reassurance + family-proof UX |
 
 Secondary segments (not primary conversion targets unless campaigns demand it): Local / Expat / Bleisure.
+
+### Market reality check (verified 31 Aug 2026 vs `docs/QA_MARKET_CONTEXT_WINTER_2026.md`)
+
+The ranking above is a conversion-lens ordering, not an arrivals ranking — keep both in view:
+
+- **Winter arrivals mix (Jan 2026):** Poland 18.6% · Israel 18.1% · UK 15.8% · Greece 9.6% · Germany 6.2%. UK leads Feb (19.3%) and full-year 2025 (~31.8%). Claire (UK) as Primary holds on spend + season-length; Nadia's PL/IL framing matches the #1–#2 winter markets, which supports her Growth tag and argues for treating **pl** and **he** experience quality as conversion work, not localization polish (trade press cites Israeli winter spend ~€145/day — the highest of the top five).
+- **Anders' home market:** the "Scandinavia/Germany" profile is directionally right but the data supports **Germany** as the operative market (+82.4% YoY Jan 2026, fastest mover; Nordics are outside the top five). Keep the persona, weight de-locale quality and DE-01-style expectations (precision, GPX/ICS, official-vs-community signals) above Nordic-specific work.
+- **Family:** UK half-term concentration shows in the Feb UK share spike — school-holiday windows remain the right campaign trigger.
 
 ## Golden paths + amazement audit cadence
 
@@ -348,6 +356,26 @@ We do *not* target: summer beach-only travelers, party seekers, or ultra-budget 
 
 ---
 
+### 6.1 Native-language experience standard (per market)
+
+Each priority market gets a **native experience bar**, not just translated chrome. Hook lines marked ✓ are verbatim from the shipped catalogs (`messages/*.json`, already through native editorial passes); lines marked ◇ are proposals — **route through the native-review step before shipping** (same bar as BUG-333's beta editorial pass).
+
+| Market / locale | Persona lens | Native hook | Primary CTA (✓ shipped) | What "native" must mean here |
+|---|---|---|---|---|
+| UK / **en** | Claire, Family | ✓ "Sixteen degrees when home is six." | "Plan your trip" | Baseline voice: short, warm, no FOMO; "Plan" never "itinerary". |
+| Greece / **el** | Local (Nikos), Claire-adjacent culture | ◇ "Το νησί σας τον χειμώνα. Λιγότερος κόσμος, το ίδιο φως." | ✓ "Σχεδιάστε το ταξίδι σας" | Greek-first, not translated-tourist: Greek titles on cards, endonyms (Λευκάρα, Όμοδος), formal register (matches shipped copy), Nicosia/weekend framing for locals. |
+| Germany / **de** | Anders (DE-01), Family | ◇ "Troodos-Wege. Wintersonne. Vorher die Bedingungen prüfen." | ✓ "Reise planen" | Formal *Sie* (as shipped), precise numbers/units, conditions freshness visible, GPX/ICS expectations, no superlatives. |
+| Poland / **pl** | Nadia, PL-01 value architects | ✓ "Szesnaście stopni, gdy w domu jest sześć." + ◇ "Zaplanuj zimową ucieczkę." | ✓ "Zaplanuj wycieczkę" | Polish exonyms where natural (Nikozja, Larnaka, Pafos, Limasol), transparent "od X €" pricing, value framing without bargain-bin tone. |
+| Israel / **he** | IL-01 weekenders, Nadia | ✓ "שש־עשרה מעלות כשבבית שש." + ◇ "סוף שבוע של שמש, שבילים וכפרים." | ✓ "תכנן את הטיול" | Full RTL incl. bidi isolation on mixed-language text, weekend-trip framing, phone/WhatsApp contact affordances, calm factual travel context in crisis weeks. |
+| Romania / **ro** | RO-01 first-timers | ✓ "Șaisprezece grade când acasă sunt șase." + ◇ "Trasee, sate, crame — planuri clare pentru prima vizită." | ✓ "Planifică călătoria" | First-timer confidence: package-style day combos with durations, visible trust signals, no assumed prior knowledge of Cyprus. |
+| France / **fr** | FR-01 slow travelers | ✓ "Seize degrés quand il en fait six chez vous." + ◇ "Villages, vignobles, chemins tranquilles." | ✓ "Planifier le voyage" | Wine depth (appellation-style detail for Commandaria/Krasochoria), unhurried tone, realistic transport notes. |
+
+**Known gaps this standard exposes (tracked in `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md`):**
+
+1. **Curated data layer is English in every locale** on decision surfaces — winery hours/`tastingInfo`/`winterTip`, attraction descriptions/backstories, secret-gem tips render EN even on `/de` and `/el` (`src/data/wineries.ts`, `src/data/attractions.ts`). The BUG-110 message-overlay pattern (shipped for Home) is the fix path. **Pilot shipped (Aug 2026):** `localizeWineryContent()` overlays the 6 partner wineries' Book-stage fields ×7 locales on `/book/winery` hub + detail (`data.wineries.*` in the catalogs, guarded by `winery-content.test.ts`); non-EN pilot strings are ◇ pending native review. The remaining data layer (65 wineries, attractions, trails, secret gems, client card surfaces) is still EN.
+2. **Tier-1 headline drift:** el/de/pl still carry the previous-generation home headline ("Ucieknij przed zimnem…" / "Dem Winter entfliehen…" / "Ξεφύγετε από το κρύο…") while en/he/ro/fr carry the current "A quieter side of the island." The editorial-drift gate covers beta locales only — either re-anchor tier-1 to the current positioning or record the split as intentional market copy.
+3. **Locale reachability:** the switcher lives only in the footer (~23k px of scroll on long hubs) and "(beta)" is never explained in-product.
+
 ## 7. Action Items for the Team
 
 - **Product:** Ensure itinerary templates and filters map to Claire (cultural) and Anders (trails). Add family filter and nomad hub content for Nadia and Family.
@@ -355,6 +383,7 @@ We do *not* target: summer beach-only travelers, party seekers, or ultra-budget 
 - **Partnerships:** Prioritize wineries, cultural guides, and trail operators for Claire/Anders; nomad hubs and long-stay for Nadia.
 - **Content:** Lead with Cultural Explorer and Active Adventurer content; add Digital Nomad and Family as secondary pillars.
 - **Voice:** Use UX_PERSONA tone—warm, understated, discovery-led. Avoid FOMO and hype.
+- **i18n / native experience:** Adopt the §6.1 native-experience standard. **Done (Aug 2026):** the editorial-drift gate now covers el/de/pl (seeded `editorial-{de,el,pl}.json`), and the winery Book-stage pilot ships the BUG-110 overlay for the 6 partner wineries ×7 locales. **Still open:** extend the overlay to the remaining data layer, and route all ◇ lines (incl. the pilot's non-EN winery strings) through native review.
 
 ---
 

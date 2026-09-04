@@ -2436,6 +2436,12 @@ export const TRAIL_COUNT = trails.length;
 
 // Editorial static snapshots for UX when live reports are unavailable (not real-time telemetry).
 // As-of May 2026; Phase 2 may replace with API/dynamic data.
+
+/** When the editorial snapshot below was curated — surfaced on every surface
+    that renders it (AUD-12: static data must not read as live telemetry).
+    Update alongside any snapshot refresh. */
+export const TRAIL_CONDITIONS_AS_OF = "2026-05-15";
+
 export const trailConditions: Record<string, TrailConditions> = {
   artemis: {
     trailId: "artemis",

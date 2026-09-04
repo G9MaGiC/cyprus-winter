@@ -1,4 +1,6 @@
 import type { DiscoverItem } from "@/data/discover";
+import { isCallAheadHours } from "@/lib/call-ahead";
+import { isPartnerVerified } from "@/lib/partner-verification";
 import {
   beaches,
   natureSites,
@@ -35,6 +37,8 @@ export type DiscoverSection = {
 export type DiscoverCardItem = {
   id: string;
   name: string;
+  /** Native name for Greek-first card titles (ICPS §6.1 / AUD-100). */
+  nameEl?: string;
   type: DiscoverItem["type"];
   region: string;
   description: string;
@@ -43,8 +47,14 @@ export type DiscoverCardItem = {
   winterTip?: string;
   bestTimeToVisit?: string;
   openingHours?: string;
-  isVerified?: boolean;
-  partnerEmail?: string;
+  /** Winery tasting line — placeCardHours' fallback when openingHours is
+      absent (~19 wineries), so cards keep their hours preview. */
+  tastingInfo?: string;
+  /** EN-base call-ahead decision — survives future content overlays (AUD-10). */
+  hoursCallAhead?: boolean;
+  /** Server-computed isPartnerVerified() so raw partner emails never enter
+      the client payload. */
+  partnerVerified?: boolean;
 };
 
 /** A DiscoverSection with its items projected for the client boundary. */
@@ -60,13 +70,28 @@ export function toDiscoverCardItem(item: DiscoverItem): DiscoverCardItem {
     region: item.region,
     description: item.description,
   };
+  if ("nameEl" in item && item.nameEl) lean.nameEl = item.nameEl;
   if ("highlights" in item && item.highlights) lean.highlights = item.highlights;
   if ("bestFor" in item && item.bestFor) lean.bestFor = item.bestFor;
   if ("winterTip" in item && item.winterTip) lean.winterTip = item.winterTip;
   if ("bestTimeToVisit" in item && item.bestTimeToVisit) lean.bestTimeToVisit = item.bestTimeToVisit;
   if ("openingHours" in item && item.openingHours) lean.openingHours = item.openingHours;
-  if ("isVerified" in item && item.isVerified !== undefined) lean.isVerified = item.isVerified;
-  if ("partnerEmail" in item && item.partnerEmail) lean.partnerEmail = item.partnerEmail;
+  if ("tastingInfo" in item && (item as { tastingInfo?: string }).tastingInfo) {
+    lean.tastingInfo = (item as { tastingInfo?: string }).tastingInfo;
+  }
+  // Overlaid records (localizeWineryContent) carry the flag decided on the EN
+  // base; recomputing over their localized hours line would silently drop it.
+  lean.hoursCallAhead =
+    ("hoursCallAhead" in item ? item.hoursCallAhead : undefined) ??
+    isCallAheadHours(
+      ("openingHours" in item ? item.openingHours : undefined) ??
+        ("tastingInfo" in item ? (item as { tastingInfo?: string }).tastingInfo : undefined)
+    );
+  if ("isVerified" in item || "partnerEmail" in item) {
+    lean.partnerVerified = isPartnerVerified(
+      item as { isVerified?: boolean; partnerEmail?: string }
+    );
+  }
   return lean;
 }
 

@@ -33,6 +33,11 @@ export default function ListPageHero({
 }: ListPageHeroProps) {
   const tCommon = useTranslations("common");
   const resolvedBackLabel = backLabel ?? tCommon("back");
+  // The back link already provides a tab stop to backHref — drop the breadcrumb
+  // that duplicates it (adjacent duplicate stops; AUD-93).
+  const dedupedBreadcrumbs = breadcrumbItems?.filter(
+    (item) => item.isCurrent || item.href !== backHref
+  );
   const textMb = hasWidgetStrip ? "mb-6 sm:mb-8" : SECTION.headingMarginLarge;
   const navBlock = (
     <>
@@ -42,8 +47,8 @@ export default function ListPageHero({
       >
         <span aria-hidden>←</span> {resolvedBackLabel}
       </AppLink>
-      {breadcrumbItems && breadcrumbItems.length > 1 && (
-        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-white/80" />
+      {dedupedBreadcrumbs && dedupedBreadcrumbs.length > 1 && (
+        <Breadcrumbs items={dedupedBreadcrumbs} className="py-1 px-0 text-xs text-white/80" />
       )}
     </>
   );
@@ -55,8 +60,8 @@ export default function ListPageHero({
       >
         <span aria-hidden>←</span> {resolvedBackLabel}
       </AppLink>
-      {breadcrumbItems && breadcrumbItems.length > 1 && (
-        <Breadcrumbs items={breadcrumbItems} className="py-1 px-0 text-xs text-muted-ink" />
+      {dedupedBreadcrumbs && dedupedBreadcrumbs.length > 1 && (
+        <Breadcrumbs items={dedupedBreadcrumbs} className="py-1 px-0 text-xs text-muted-ink" />
       )}
     </>
   );

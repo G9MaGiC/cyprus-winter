@@ -8,7 +8,7 @@
 
 - **Positioning:** A **curated, destination-only** winter guide and planning surface for Cyprus (Nov–Mar focus in the PRD; the app serves year-round content with a **winter-differentiated** story).
 - **Job to be done:** Move visitors from **inspiration → shortlist → day-by-day plan → high-intent actions** (book a tasting, report trail conditions, use AI for discovery).
-- **Not:** A generic OTA, not a summer-sun brochure site. **Trust** comes from curation, real places, team visibility, and consistent UX—not algorithmic noise.
+- **Not:** A generic OTA, not a summer-sun brochure site. **Trust** comes from curation, real places, a transparent curation method (/team), and consistent UX—not algorithmic noise.
 
 **Core loop (revenue + engagement):** **Discover / Search / Trails / Events** → **Plan** (itinerary, templates) → **Book** (winery flows, `bookings`) → **return** (My Bookings, email sync, local storage merge).
 
@@ -25,8 +25,11 @@ From `PRD.md`—keep these in mind for copy, UX, and features:
 | **Cultural Explorer** | Authenticity, pace, “no empty days” | Rich detail pages, Plan, wine/culture, clear “what’s open in winter” |
 | **Active Adventurer** | Trail quality, conditions, safety | Troodos focus, reports, maps, honest difficulty/seasonality |
 | **Digital Nomad** | Cost, WiFi, weekend exploration | Fast search, Plan for weekends, less fluff, scannable |
+| **Winter Sun Family** | Value, reassurance, kid logistics | Family filter + template, accessibility notes, 2–3 stops/day pacing, indoor backups |
+| **Local / Expat** | Rediscover home, “not tourist content” | `?filter=local` lane, `/events`, `/secrets`, Greek-first voice on `el` |
+| **Bleisure** | Max value in minimal time | `/airport` → `short-stay` template, one-trail-one-village-one-evening plans |
 
-All: **mobile-first**, often on **4G** at the airport or trailhead; **EUR**; **winter light and temperature** are differentiators vs home.
+All: **mobile-first**, often on **4G** at the airport or trailhead; **EUR**; **winter light and temperature** are differentiators vs home. Canonical detail + native-language experience standard per market: `docs/ICPS.md` (§6.1).
 
 ---
 

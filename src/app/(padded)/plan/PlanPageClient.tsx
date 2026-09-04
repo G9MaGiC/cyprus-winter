@@ -14,6 +14,7 @@ import PlanMapCollapsibleSection from "@/components/plan/PlanMapCollapsibleSecti
 import PlanAddMoreCollapsible from "@/components/plan/PlanAddMoreCollapsible";
 import PlanShareBar from "@/components/plan/PlanShareBar";
 import PlanStartHere from "@/components/plan/PlanStartHere";
+import PlanSeasonalTip from "@/components/plan/PlanSeasonalTip";
 import PlanStickyAddBar from "@/components/plan/PlanStickyAddBar";
 import PlanTripDatesWidget from "@/components/plan/PlanTripDatesWidget";
 import PlanWineryBar from "@/components/plan/PlanWineryBar";
@@ -37,12 +38,17 @@ import PlanSustainabilityStrip from "@/components/plan/PlanSustainabilityStrip";
 import PlanOfflineBanner from "@/components/plan/PlanOfflineBanner";
 import { HOME, LAYOUT, CTA, SECTION } from "@/lib/design-tokens";
 
-const TEMPLATE_LABELS: Record<string, string> = Object.fromEntries(
-  ITINERARY_TEMPLATES.map((t) => [t.key, t.label])
-);
-
 export default function PlanPageClient() {
   const searchParams = useSearchParams();
+  const tPlanQuick = useTranslations("planQuick");
+  // Localized template names — the TS `label` is the EN base; interpolating it
+  // into the localized modal title leaked English names (AUD-99 class).
+  const templateLabels: Record<string, string> = Object.fromEntries(
+    ITINERARY_TEMPLATES.map((t) => [
+      t.key,
+      tPlanQuick(`templates.items.${t.key}.label` as "templates.items.short-stay.label"),
+    ])
+  );
   const plan = usePlanPage();
   const { setPlanItemCount, showTipPlanEmpty, dismissTipPlanEmpty, showTipFirstAdd, dismissTipFirstAdd } =
     useOnboardingContext();
@@ -111,6 +117,8 @@ export default function PlanPageClient() {
     sharePreviewLine,
     shareText,
     templateAppliedFromUrl,
+    appliedTemplateKey,
+    dismissAppliedTemplateTip,
     totalPlaces,
     activeDaysCount,
     displayDaysCount,
@@ -193,7 +201,7 @@ export default function PlanPageClient() {
           </p>
         )}
 
-        {searchParams.get("add") === "failed" && <PlanAddFailedAlert />}
+        {(plan.addFailed || searchParams.get("add") === "failed") && <PlanAddFailedAlert />}
 
         <header>
           <ListPageHero
@@ -275,6 +283,13 @@ export default function PlanPageClient() {
             onAddFirstStop={() => {
               if (!planReadOnly) setShowBrowseModal(true);
             }}
+          />
+        )}
+
+        {hasContent && hydrated && appliedTemplateKey && (
+          <PlanSeasonalTip
+            templateKey={appliedTemplateKey}
+            onDismiss={dismissAppliedTemplateTip}
           />
         )}
 
@@ -381,7 +396,7 @@ export default function PlanPageClient() {
 
         {templateChoice && hasContent && (
           <TemplateChoiceModal
-            templateLabel={TEMPLATE_LABELS[templateChoice] ?? templateChoice}
+            templateLabel={templateLabels[templateChoice] ?? templateChoice}
             onClose={() => setTemplateChoice(null)}
             onAddToPlan={handleAddTemplate}
             onReplace={handleReplaceTemplate}

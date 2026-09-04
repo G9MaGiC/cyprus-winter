@@ -10,12 +10,11 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { CARD, CTA, TYPE, MEDIA, BADGE } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { TrackOnClick } from "@/components/TrackOnClick";
-import { Plus } from "lucide-react";
-import { useItinerary } from "@/hooks/useItinerary";
 import { useSearchParams } from "next/navigation";
 import { discoverDetailHref, getDiscoverTypeLabel } from "@/lib/discover-links";
 import { isCallAheadHours, placeCardHours } from "@/lib/place-card-hours";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
 export default function AttractionCard({
@@ -27,13 +26,12 @@ export default function AttractionCard({
   bookFrom?: string;
 }) {
   const tCommon = useTranslations("common");
+  const locale = useLocale();
+  const displayName = getLocalizedName(a, locale);
   const tDiscover = useTranslations("discover.detail");
   const searchParams = useSearchParams();
   const discoverFilter = searchParams.get("filter");
   const detailHref = discoverDetailHref(a.id, discoverFilter);
-  const { days, hydrated, addToDayIfMissing } = useItinerary();
-  const allIds = Object.values(days ?? {}).flat();
-  const isInItinerary = hydrated && allIds.includes(a.id);
   const badgeLabel = getDiscoverTypeLabel(a.type, tDiscover, tCommon);
   const typeColors: Record<string, string> = {
     beach: "bg-aegean/20 text-aegean",
@@ -68,12 +66,12 @@ export default function AttractionCard({
       <AppLink
         href={detailHref}
         className={`block ${CARD.link}`}
-        aria-label={`${a.name}, ${badgeLabel} in ${a.region}`}
+        aria-label={tCommon("aria.placeCard", { name: displayName, type: badgeLabel, region: a.region })}
       >
         <div className={CARD.media}>
           <Image
             src={getAttractionImage(a.id, a.type)}
-            alt={`${a.name}, ${a.region}—${a.type} in Cyprus winter light`}
+            alt={tCommon("aria.placeCardImageAlt", { name: displayName, region: a.region })}
             fill
             className={MEDIA.hoverImage}
             sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
@@ -90,12 +88,18 @@ export default function AttractionCard({
                 {tCommon("local")}
               </span>
             )}
-            {isWinery && "isVerified" in a && isPartnerVerified(a) && (
+            {isWinery &&
+              ("partnerVerified" in a
+                ? (a as { partnerVerified?: boolean }).partnerVerified
+                : "isVerified" in a && isPartnerVerified(a)) && (
               <span
                 className={`${BADGE.base} ${BADGE.pill} bg-aegean/20 text-aegean`}
                 title={tCommon("verifiedPartnerTitle")}
               >
                 {tCommon("verifiedPartner")}
+                {/* title is desktop-hover-only; give SR users the meaning too
+                    (AUD-46 — the booking page carries the visible line). */}
+                <span className="sr-only"> — {tCommon("verifiedPartnerTitle")}</span>
               </span>
             )}
           </div>
@@ -104,15 +108,17 @@ export default function AttractionCard({
           </span>
         </div>
         <div className={CARD.content}>
-          <h3 className={`${TYPE.cardTitle} line-clamp-2 duration-200`} title={a.name}>
-            {a.name}
+          <h3 className={`${TYPE.cardTitle} line-clamp-2 duration-200`} title={displayName}>
+            {displayName}
           </h3>
           <p className="text-sm text-muted-ink mt-1 line-clamp-2 break-words">
             {tease}
           </p>
           {hoursPreview && (
             <p className="text-xs text-aegean/90 mt-1.5 break-words line-clamp-2" title={hours}>
-              {isCallAheadHours(hours) ? `${tCommon("callAhead")} · ` : null}
+              {/* Precomputed EN-base flag survives content overlays (AUD-10);
+                  regex fallback covers raw records. */}
+              {(("hoursCallAhead" in a ? a.hoursCallAhead : undefined) ?? isCallAheadHours(hours)) ? `${tCommon("callAhead")} · ` : null}
               {hoursPreview}
             </p>
           )}
@@ -141,7 +147,7 @@ export default function AttractionCard({
           <AppLink
             href={`/book/winery/${a.id}${bookFrom ? `?from=${bookFrom}` : ""}`}
             className={CTA.secondaryCompact}
-            aria-label={`${tCommon("bookTasting")} — ${a.name}`}
+            aria-label={`${tCommon("bookTasting")} — ${displayName}`}
           >
             {tCommon("bookTasting")}
           </AppLink>
@@ -149,16 +155,6 @@ export default function AttractionCard({
         <TrackOnClick event="plan_add" properties={{ placeId: a.id, source: "attraction_card" }}>
           <AddToItineraryButton placeId={a.id} className="text-sm" />
         </TrackOnClick>
-        {hydrated && !isInItinerary && (
-          <button
-            type="button"
-            onClick={() => addToDayIfMissing(a.id)}
-            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg border border-sand-200/80 text-aegean hover:bg-aegean/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aegean/50 focus-visible:ring-offset-2 shrink-0"
-            aria-label={`${tCommon("addToPlan")}: ${a.name}`}
-          >
-            <Plus className="h-5 w-5" aria-hidden />
-          </button>
-        )}
       </div>
     </div>
   );

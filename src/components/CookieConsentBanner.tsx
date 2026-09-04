@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import AppLink from "@/components/AppLink";
+import { SRStatus } from "@/components/SRStatus";
 import { CTA, LAYER, LAYOUT, SECTION } from "@/lib/design-tokens";
 import { getCookieConsent, setCookieConsent } from "@/lib/cookie-consent";
 import { dispatchBlockingOverlayDirty } from "@/lib/blocking-overlay-events";
@@ -25,6 +27,14 @@ export default function CookieConsentBanner() {
   const tCommon = useTranslations("common");
   const choice = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const bannerRef = useRef<HTMLDivElement>(null);
+  // aria-live never announces a region that is inserted pre-populated —
+  // announce arrival explicitly, after a settle tick (BUG-360).
+  const [announce, setAnnounce] = useState("");
+  useEffect(() => {
+    if (choice !== null) return;
+    const t = setTimeout(() => setAnnounce(tCommon("cookies.srAnnounce")), 400);
+    return () => clearTimeout(t);
+  }, [choice, tCommon]);
 
   useEffect(() => {
     if (choice !== null) return;
@@ -56,7 +66,15 @@ export default function CookieConsentBanner() {
 
   if (choice !== null) return null;
 
-  return (
+  // Portal to the early-body anchor so the banner sits at the start of the
+  // tab/reading order instead of after the footer (BUG-360). The anchor is
+  // rendered by the root layout; fall back to in-place render if absent.
+  const anchor =
+    typeof document !== "undefined"
+      ? document.getElementById("pre-nav-overlays")
+      : null;
+
+  const banner = (
     <div
       ref={bannerRef}
       data-overlay-priority="blocking"
@@ -96,6 +114,9 @@ export default function CookieConsentBanner() {
           </button>
         </div>
       </div>
+      <SRStatus message={announce} />
     </div>
   );
+
+  return anchor ? createPortal(banner, anchor) : banner;
 }

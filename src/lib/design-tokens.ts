@@ -70,7 +70,7 @@ export const NAV_OFFSET = "calc(3.5rem+env(safe-area-inset-top,0px))";
  * - popover: home skip nav, menus (`z-[45]`)
  * - modal: AI assistant panel when open (`z-50`)
  * - cookieBanner: CookieConsentBanner (`z-[90]`)
- * - toast: ToastContainer (`z-[95]`)
+ * - toast: transient banners above cookie chrome — used by InstallPromptBanner (`z-[95]`)
  * - onboarding: OnboardingModal (`z-[100]`)
  * - stickyPlaceBar: StickyAddToPlanBar, TrailDetailStickyActions (`z-30`–`z-40`)
  */
@@ -85,14 +85,18 @@ export const LAYER = {
   topOverlay: "z-[70]",
   /** Cookie consent banner — above chrome, below onboarding. */
   cookieBanner: "z-[90]",
+  toast: "z-[95]",
   /** First-run onboarding sheet — top of blocking stack. */
   onboarding: "z-[100]",
   /** Toasts — above cookie banner, below onboarding. */
-  toast: "z-[95]",
   /** Mobile sticky place actions below nav, above content. */
   stickyPlaceBar: "z-30",
   /** Sticky content: filter bars, day selectors, in-page sticky headers. */
   stickyContent: "z-10",
+  /** Cross-page "next on your plan" ribbon — above sticky content bars. */
+  nextOnPlan: "z-20",
+  /** Overlays inside relative map containers (controls, chips, legends). */
+  mapOverlay: "z-[5]",
   /** Skip-to-content link — always on top. */
   skipNav: "z-[9999]",
 } as const;
@@ -228,7 +232,9 @@ export const CTA = {
   chipTertiary:
     "inline-flex items-center min-h-[44px] px-4 py-2.5 rounded-full bg-sand-100 text-sage hover:bg-terracotta/10 hover:text-terracotta text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   primaryCompact:
-    "inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    // 48px, not the 44px floor: QA_PLAN §2.5 requires 48px for PRIMARY CTAs and
+    // this token is the primary action on card/detail/plan surfaces (AUD C2-05).
+    "inline-flex items-center justify-center min-h-[48px] px-4 py-2 rounded-lg text-sm font-medium bg-terracotta text-white hover:bg-terracotta-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   /** Secondary CTA: terracotta border for contextual hierarchy when primary is also terracotta (e.g. error/not-found pages). Aegean variant available as border-2 border-aegean text-aegean for alternate hierarchy. */
   secondaryCompact:
     "inline-flex items-center min-h-[44px] px-4 py-2 rounded-lg text-sm font-medium border border-terracotta/80 text-terracotta hover:bg-terracotta/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background",

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { isCallAheadHours, placeCardHours } from "./place-card-hours";
-import { resetPartnerOverlaysForTests, setPartnerOverlay } from "./partner-overlay";
+import { cachePartnerOverlay, resetPartnerOverlaysForTests } from "./partner-overlay";
 
 describe("placeCardHours", () => {
   afterEach(() => {
@@ -12,7 +12,7 @@ describe("placeCardHours", () => {
   });
 
   it("prefers partner overlay hours when an id is present", () => {
-    setPartnerOverlay("tsiakkas", { openingHours: "Winter overlay: Tue–Sat 11:00–15:00." });
+    cachePartnerOverlay("tsiakkas", { openingHours: "Winter overlay: Tue–Sat 11:00–15:00." });
     expect(
       placeCardHours({ id: "tsiakkas", openingHours: "Mon–Fri 10:00–16:00, Sat 11:00–17:00. Closed Sun except select dates." })
     ).toBe("Winter overlay: Tue–Sat 11:00–15:00.");

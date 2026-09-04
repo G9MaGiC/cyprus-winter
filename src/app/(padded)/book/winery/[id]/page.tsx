@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { wineries } from "@/data/wineries";
 import { getPlaceById } from "@/data/index";
 import { LAYOUT, SECTION, TYPE } from "@/lib/design-tokens";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import BookWineryBackLink from "@/components/BookWineryBackLink";
@@ -14,6 +14,9 @@ import WineryBookingForm from "./WineryBookingForm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { getBestForLocalizer } from "@/lib/best-for";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
 export function generateStaticParams() {
@@ -56,7 +59,13 @@ export default async function WineryBookPage({
   const { id } = await params;
   const found = wineries.find((w) => w.id === id);
   if (!found) notFound();
-  const winery = applyPartnerOpeningHours(found);
+  // Locale content overlay first (AUD-10 pilot), then partner runtime hours:
+  // live partner data beats curated translation. JSON-LD below reads `found`
+  // (the EN base) for structured-data consistency.
+  await ensurePartnerOverlaysLoaded();
+  const winery = applyPartnerOpeningHours(await localizeWineryContent(found));
+  // AUD-99 residual: bestFor chips display localized; data keeps EN tokens.
+  const localizeBestFor = await getBestForLocalizer();
   const imageUrl = getAttractionImage(id, "winery");
   const [tNav, tCommon, tBookPages] = await Promise.all([
     getTranslations("nav"),
@@ -106,6 +115,11 @@ export default async function WineryBookPage({
             </span>
           )}
         </div>
+        {/* The title tooltip is desktop-only — touch users need the claim
+            explained in visible text on the decision surface (AUD-46). */}
+        {isPartnerVerified(winery) && (
+          <p className="mt-1.5 text-xs text-muted-ink">{tCommon("verifiedPartnerTitle")}</p>
+        )}
         <h1 className={`${TYPE.pageTitle} mt-3`}>
           {tCommon("bookTasting")}
         </h1>
@@ -114,7 +128,7 @@ export default async function WineryBookPage({
           <div className="flex flex-wrap gap-1.5 mt-2">
             {winery.bestFor.slice(0, 4).map((tag) => (
               <span key={tag} className="inline-block px-2 py-0.5 rounded-md text-xs bg-sand-200/80 text-muted-ink">
-                {tag}
+                {localizeBestFor(tag)}
               </span>
             ))}
           </div>
@@ -170,6 +184,7 @@ export default async function WineryBookPage({
         wineryName={winery.name}
         openingHours={winery.openingHours}
         bestTimeToVisit={winery.bestTimeToVisit}
+        partnerVerified={isPartnerVerified(winery)}
       />
 
       {(winery.openingHours || winery.transport || winery.parking) && (
@@ -271,16 +286,19 @@ export default async function WineryBookPage({
           __html: toSafeJsonForScript({
             "@context": "https://schema.org",
             "@type": "FoodEstablishment",
-            name: winery.name,
-            description: winery.tastingInfo || winery.description,
+            name: found.name,
+            description: found.tastingInfo || found.description,
             address: {
               "@type": "PostalAddress",
-              addressRegion: winery.region,
+              // "Pelendri (Limassol)" is a locality, not a region (AUD-119)
+              addressLocality: winery.region,
               addressCountry: "CY",
             },
-            ...(imageUrl ? { image: imageUrl } : {}),
+            ...(imageUrl ? { image: toAbsoluteUrl(imageUrl) } : {}),
             ...(winery.contactPhone ? { telephone: winery.contactPhone } : {}),
-            ...(winery.openingHours ? { openingHours: winery.openingHours } : {}),
+            // openingHours is curated prose, not the Mo-Fr 09:00-17:00 spec
+            // format — the visible page shows it; invalid markup helps nobody
+            // (AUD-119). Re-add once the data carries structured hours.
             ...(winery.latitude && winery.longitude ? {
               geo: {
                 "@type": "GeoCoordinates",

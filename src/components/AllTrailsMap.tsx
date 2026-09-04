@@ -7,7 +7,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
 import type { Trail } from "@/data/trails";
-import { TOKENS, MAP_ICON_SHADOW, TYPE } from "@/lib/design-tokens";
+import { TOKENS, MAP_ICON_SHADOW, TYPE, LAYER } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
@@ -57,7 +57,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
   return (
     <div className={`relative flex flex-col h-full min-h-[280px] overflow-hidden rounded-xl border border-sand-200/70 bg-sand-100/50 ${className}`}>
       {!interactive && (
-        <div className="absolute inset-0 z-[5] flex items-end justify-center p-3 pointer-events-none">
+        <div className={`absolute inset-0 ${LAYER.mapOverlay} flex items-end justify-center p-3 pointer-events-none`}>
           <button
             type="button"
             onClick={() => setInteractive(true)}
@@ -69,7 +69,7 @@ export default function AllTrailsMap({ trails, className = "" }: AllTrailsMapPro
         </div>
       )}
       {interactive && (
-        <div className="absolute top-3 end-3 z-[5]">
+        <div className={`absolute top-3 end-3 ${LAYER.mapOverlay}`}>
           <button
             type="button"
             onClick={() => setInteractive(false)}

@@ -47,7 +47,11 @@ describe("buildTranslatedHubMetadata", () => {
     expect(en.title).toContain("Beaches");
     expect(el.title).toContain("Παραλίες");
     expect(en.title).not.toEqual(el.title);
-    expect(el.alternates?.canonical).toContain("/el/beaches");
+    // Strategy A (AUD-117): one canonical — the unprefixed URL — for every
+    // locale; the locale URL lives in hreflang.
+    expect(el.alternates?.canonical).toMatch(/\/beaches$/);
+    expect(el.alternates?.canonical).not.toContain("/el/");
+    expect((el.alternates?.languages as Record<string, string>)?.el).toContain("/el/beaches");
     expect(en.alternates?.canonical).toMatch(/\/beaches$/);
   });
 

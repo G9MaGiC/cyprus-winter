@@ -19,7 +19,7 @@ Use **explore/grep/read** (or subagent explore) to evidence every finding—**no
 
 - **Discover → Plan → Book** paths: dead ends, missing back navigation, unclear CTAs.
 - **Conversion instrumentation:** `conversion_events` / `src/lib/funnel.ts` — are key actions still emitted after UI changes?
-- **Personas:** Cultural Explorer (depth, wine/culture), Active Adventurer (trails, conditions), Digital Nomad (speed, scannability)—does each critical flow serve them?
+- **Personas:** all seven canonical ICPs (`docs/ICPS.md`): Cultural Explorer (depth, wine/culture), Active Adventurer (trails, conditions), Digital Nomad (speed, scannability), Winter Sun Family (kid logistics, reassurance), Local/Expat (`?filter=local`, Greek-first on `el`), Bleisure (`/airport` → short-stay)—does each critical flow serve them, in their locale (§6.1 native-experience standard)?
 
 ### Navigation & routing
 

@@ -5,6 +5,12 @@
  */
 
 const STORAGE_KEY = "cyprus-winter-offline-queue";
+/** Fired on window after a drain delivers at least one queued mutation. */
+export const OFFLINE_QUEUE_DRAINED_EVENT = "cyprus-winter:offline-queue-drained";
+/** Fired on window after a drain permanently discards at least one mutation
+    (non-retryable 4xx). Mounted forms use it to replace the stale "will be
+    sent when back online" promise with a visible failure (AUD-21). */
+export const OFFLINE_QUEUE_DROPPED_EVENT = "cyprus-winter:offline-queue-dropped";
 const MAX_ITEMS = 50;
 const ALLOWED_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 const RETRYABLE_CLIENT_STATUSES = new Set([408, 425, 429]);
@@ -98,6 +104,9 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
   if (items.length === 0) return { processed: 0, succeeded: 0 };
 
   let succeeded = 0;
+  let dropped = 0;
+  const succeededTypes: string[] = [];
+  const droppedTypes: string[] = [];
   for (const item of items) {
     try {
       const res = await fetch(item.url, {
@@ -107,16 +116,57 @@ async function processQueueOnce(): Promise<ProcessQueueResult> {
       });
 
       if (res.ok) {
+        // Persist the created booking locally: without this, a drained booking
+        // is invisible on this device (/bookings reads localStorage) and the
+        // form's stale offline message becomes actively false (AUD B2-06).
+        if (item.type === "winery_booking" || item.type === "guide_booking") {
+          try {
+            const data = await res.json();
+            if (data?.booking) {
+              const { addBookingToLocal } = await import("@/lib/bookings-storage");
+              addBookingToLocal(data.booking);
+            }
+          } catch {
+            // Response parse failure — the booking still exists server-side;
+            // the email lookup remains the recovery path.
+          }
+        }
         removeMutation(item.id);
         succeeded++;
+        succeededTypes.push(item.type);
       } else if (res.status >= 400 && res.status < 500 && !RETRYABLE_CLIENT_STATUSES.has(res.status)) {
         // Validation/auth/not-found errors are permanent for this queued payload.
         // Retrying them forever would hide the failure and waste requests.
         removeMutation(item.id);
+        dropped++;
+        droppedTypes.push(item.type);
       }
     } catch {
       // Network error: leave in queue for the next online event.
     }
+  }
+  const canDispatch =
+    typeof window !== "undefined" && typeof window.dispatchEvent === "function";
+  // DROPPED must fire BEFORE DRAINED: both listeners in useBookingForm gate on
+  // the same queuedOfflineRef, so when a drain both delivers some other
+  // mutation and permanently rejects this form's booking, the failure must
+  // win the ref — the reverse order would show a success screen for a
+  // booking the server refused (fail-open).
+  if (dropped > 0 && canDispatch) {
+    window.dispatchEvent(
+      new CustomEvent(OFFLINE_QUEUE_DROPPED_EVENT, {
+        detail: { dropped, types: droppedTypes },
+      })
+    );
+  }
+  if (succeeded > 0 && canDispatch) {
+    // Let mounted forms replace their stale "will be sent when back online"
+    // message with the delivered state (AUD B2-06 residual).
+    window.dispatchEvent(
+      new CustomEvent(OFFLINE_QUEUE_DRAINED_EVENT, {
+        detail: { succeeded, types: succeededTypes },
+      })
+    );
   }
   return { processed: items.length, succeeded };
 }

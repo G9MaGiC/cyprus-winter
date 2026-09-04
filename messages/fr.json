@@ -26,7 +26,7 @@
     "heading": "Avant le voyage",
     "body": "Les règles d'entrée et les conditions locales changent. Utilisez des sources officielles — les faits, sans exagération.",
     "visitCyprus": "Visit Cyprus (tourisme officiel)",
-    "foreignTravelUk": "Conseils aux voyageurs UK — Chypre",
+    "advisory": "France Diplomatie : Conseils aux voyageurs — Chypre",
     "emergency": "Urgences 112 · Info touristique 1460 · Ambulance 199"
   },
   "nav": {
@@ -45,7 +45,7 @@
     "bookings": "Réservations",
     "secrets": "Secrets locaux",
     "account": "Compte",
-    "team": "Équipe",
+    "team": "Notre sélection",
     "search": "Rechercher",
     "more": "Plus",
     "askAI": "Demander à l'IA",
@@ -87,7 +87,10 @@
       "quickActions": "Actions rapides",
       "reportConditionsForTrail": "Signaler l’état de ce sentier",
       "dismissNotification": "Fermer la notification",
-      "notifications": "Alertes"
+      "notifications": "Alertes",
+      "addedToPlan": "Ajouté à votre plan.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — dans la lumière d’hiver de Chypre"
     },
     "skipToContent": "Aller au contenu",
     "languageLabel": "Langue :",
@@ -118,7 +121,8 @@
       "title": "Cookies.",
       "body": "Nous utilisons des cookies essentiels pour le service et des statistiques optionnelles. « Accepter » autorise les statistiques.",
       "accept": "Accepter",
-      "learnMore": "En savoir plus"
+      "learnMore": "En savoir plus",
+      "srAnnounce": "Avis cookies : choisissez Accepter ou Essentiel seulement en bas de l’écran."
     },
     "shareColon": "Partager :",
     "bookTasting": "Réserver une dégustation",
@@ -337,7 +341,9 @@
       "editorsPicks": "Aller aux coups de cœur",
       "plan": "Aller au plan",
       "search": "Aller à la recherche",
-      "startHere": "Aller à Commencer ici"
+      "startHere": "Aller à Commencer ici",
+      "results": "Aller aux résultats",
+      "map": "Aller à la carte"
     },
     "cancel": "Annuler",
     "done": "Terminé",
@@ -349,7 +355,21 @@
       "heading": "Avant de partir",
       "allSet": "Tout est prêt. Bon voyage."
     },
-    "useMyLocationInstead": "Utiliser ma position"
+    "useMyLocationInstead": "Utiliser ma position",
+    "localeBetaHint": "Langues bêta : certains contenus peuvent encore apparaître en anglais.",
+    "hubFilter": {
+      "all": "Toutes les régions",
+      "aria": "Filtrer par région",
+      "showing": "{count} sur {total} affichés"
+    },
+    "localeSwitchHeading": "Langue",
+    "fromPrice": "à partir de {price} €",
+    "localeSuggest": {
+      "body": "Cette page est aussi disponible en français.",
+      "cta": "Passer au français",
+      "dismiss": "Fermer",
+      "aria": "Suggestion de langue"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -488,15 +508,16 @@
     },
     "trailConditionsStrip": {
       "aria": "État des sentiers du Troodos — vérifiez avant de partir",
-      "heading": "Sentiers du jour",
+      "heading": "Sentiers du Troodos : état hivernal",
       "open": "{count} ouverts",
       "caution": "{count} prudence",
       "closed": "{count} fermés",
       "checkReports": "Voir les signalements",
       "goodToGo": "Sentiers du Troodos praticables",
-      "cautionOnly": "{count} sentiers à emprunter avec prudence",
+      "cautionOnly": "{count, plural, one {# sentier demande de la prudence} other {# sentiers demandent de la prudence}}",
       "withClosed": "{count} sentiers fermés — vérifiez avant de partir",
-      "checkConditions": "Vérifiez l’état des sentiers avant Troodos"
+      "checkConditions": "Vérifiez l’état des sentiers avant Troodos",
+      "asOf": "données de {date}"
     },
     "weatherStrip": {
       "aria": "Météo d’hiver à Chypre — températures côte et Troodos. Voir la météo.",
@@ -613,7 +634,7 @@
       }
     },
     "templates": {
-      "kicker": "Plans prêts à l'emploi",
+      "kicker": "Plans prêts à l’emploi",
       "subtitle": "Sélection d'experts. Rythme réaliste. Commencez ici, puis ajustez.",
       "allTemplates": "Tous les modèles →",
       "items": {
@@ -796,7 +817,9 @@
       "RATE_LIMITED": "Trop de demandes. Attendez un instant.",
       "SERVER_ERROR": "Un problème est survenu. Réessayez.",
       "VALIDATION_ERROR": "Un problème est survenu. Réessayez.",
-      "BAD_REQUEST": "Un problème est survenu. Réessayez."
+      "BAD_REQUEST": "Un problème est survenu. Réessayez.",
+      "NOT_FOUND": "Cette fiche n’est plus disponible.",
+      "IDEMPOTENCY_CONFLICT": "Cette demande a déjà été envoyée — vérifiez vos réservations avant de réessayer."
     }
   },
   "push": {
@@ -1107,7 +1130,7 @@
       "whyNow": {
         "title": "Pourquoi maintenant",
         "bestFor": "Idéal pour {types}.",
-        "regionFlow": "{region} est une étape pratique pour le même programme de journée.",
+        "regionFlow": "Facile à combiner avec d’autres étapes à {region} le même jour.",
         "saveCompare": "Ajoutez à votre plan pour l'associer à un sentier ou village proche."
       },
       "visitTaste": {
@@ -1305,6 +1328,11 @@
       "meta": {
         "title": "Portail partenaires | Cyprus Winter",
         "description": "Domaines et guides vérifiés : horaires d'hiver, image locale et demandes de dégustation."
+      },
+      "errors": {
+        "unavailable": "Le portail partenaires n’est pas encore configuré sur ce déploiement. Réessayez plus tard ou contactez-nous.",
+        "rateLimited": "Trop de tentatives de connexion. Attendez une minute, puis réessayez.",
+        "generic": "La connexion n’a pas abouti. Vérifiez votre connexion et réessayez."
       }
     }
   },
@@ -1689,14 +1717,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "Conditions aujourd'hui",
+      "heading": "État hivernal des sentiers",
       "ariaViewList": "Conditions des sentiers aujourd'hui — voir la liste",
       "openCount": "{count} ouverts",
       "cautionCount": "{count} avec prudence",
       "closedCount": "{count} fermés",
       "noReports": "Consulter les signalements",
       "goodToGo": "Bon à partir",
-      "cautionOnly": "{count} sentiers nécessitent de la prudence",
+      "cautionOnly": "{count, plural, one {# sentier demande de la prudence} other {# sentiers demandent de la prudence}}",
       "withClosed": "{count} sentiers fermés — vérifiez avant de partir",
       "checkConditions": "Vérifier les conditions"
     },
@@ -1770,7 +1798,13 @@
       "peak-views": "Vues depuis les sommets",
       "full-day": "Défis journée complète"
     },
-    "bestConditionsNow": "Meilleures conditions en ce moment"
+    "bestConditionsNow": "Meilleures conditions en ce moment",
+    "routeTypes": {
+      "loop": "Boucle",
+      "outAndBack": "Aller-retour",
+      "pointToPoint": "En ligne"
+    },
+    "asOf": "données de {date}"
   },
   "plan": {
     "addToPlan": "Ajouter au plan",
@@ -1785,7 +1819,7 @@
     "pageTitle": "Planifiez votre hiver à Chypre",
     "pageDescHasContent": "Votre plan. Ajoutez, partagez ou ajustez ci-dessous.",
     "pageDescEmpty": "Construisez un plan d'hiver. Choisissez un modèle ou ajoutez des lieux jour par jour.",
-    "pageDescSecondaryEmpty": "Enregistré automatiquement.",
+    "pageDescSecondaryEmpty": "S’enregistre automatiquement sur cet appareil.",
     "mapTitle": "Votre plan sur la carte",
     "mapCollapsibleHint": "Arrêts et contexte routier sur la carte de l'île",
     "addMoreCollapsibleTitle": "Ajouter au plan",
@@ -1806,7 +1840,7 @@
     "combosCollapsibleSubtitle": "Combinaisons matin et après-midi qui s'enchaînent",
     "placesCount": "{count, plural, one {# lieu} other {# lieux}}",
     "addAnotherStopHint": "Ajoutez une autre étape, ou changez de jour ci-dessus.",
-    "autoSaved": "Enregistrement automatique",
+    "autoSaved": "Enregistré automatiquement sur cet appareil",
     "addFailedAlert": {
       "message": "Ce lieu n’est plus dans notre liste.",
       "browseDiscoverLabel": "Parcourir Découvrir",
@@ -1831,7 +1865,7 @@
       "directoryCta": "Trouver un guide agréé",
       "browseLicensed": "Parcourir les guides agréés",
       "directoryCount": "{count} guides parlent votre langue dans ce district",
-      "verifiedPartners": "Partenaires randonnée vérifiés"
+      "verifiedPartners": "Guides de randonnée agréés"
     },
     "realism": {
       "aria": "Repères de rythme pour la journée",
@@ -1921,7 +1955,8 @@
       "selectDay": "Choisir le jour",
       "quickStartRegion": "Ajouter des lieux ou utiliser des modèles",
       "itineraryCopied": "Plan copié dans le presse-papiers",
-      "shareLinkCopied": "Lien de partage copié dans le presse-papiers"
+      "shareLinkCopied": "Lien de partage copié dans le presse-papiers",
+      "removedFromPlan": "{name} retiré de votre plan."
     },
     "daySelector": {
       "tabLabelWithCount": "Jour {day} · {count}",
@@ -1950,7 +1985,7 @@
     },
     "meta": {
       "title": "Planifier Chypre en hiver | Plans sélectionnés et créateur de voyage",
-      "description": "Plans d'hiver sélectionnés pour Chypre : 48 h à 10 jours. Rythme expert, conseils de réservation en domaine, astuces saisonnières. Sentiers Troodos, villages, côte — planifiez à l'avance ou sur place. Gratuit.",
+      "description": "Plans d’hiver sélectionnés pour Chypre : 48 h à 10 jours. Rythme expert, conseils domaines, sentiers du Troodos, villages et côte. Gratuit.",
       "ogTitle": "Planifier Chypre en hiver | Plans sélectionnés",
       "ogDescription": "Plans d'hiver sélectionnés avec rythme expert et conseils domaines. Sentiers, villages, côte. À l'avance ou sur place."
     },
@@ -2065,35 +2100,51 @@
       "items": {
         "short-stay": {
           "label": "Court séjour",
-          "description": "48 heures : côte antique, sentier Troodos, vin de village"
+          "description": "48 heures : côte antique, sentier Troodos, vin de village",
+          "bookingNote": "Réservez la dégustation chez Tsiakkas — les créneaux d’hiver se remplissent.",
+          "seasonalNote": "La nuit tombe vers 17 h. Commencez Kourion avant 10 h."
         },
         "classic": {
           "label": "Classique",
-          "description": "De la côte aux montagnes : ruines de Paphos, sentiers Troodos, dentelle de Lefkara"
+          "description": "De la côte aux montagnes : ruines de Paphos, sentiers Troodos, dentelle de Lefkara",
+          "bookingNote": "Réservez les dégustations Tsiakkas et Kolios 24–48 h à l’avance.",
+          "seasonalNote": "2–3 étapes par jour. Regroupez Kourion + mosaïques (même côte)."
         },
         "mountain": {
           "label": "Montagne",
-          "description": "Boucles du Troodos et villages de pierre—Artemis, Caledonia, Kykkos"
+          "description": "Boucles du Troodos et villages de pierre—Artemis, Caledonia, Kykkos",
+          "bookingNote": "Tsiakkas après Kykkos — l’accord parfait de fin de journée.",
+          "seasonalNote": "Prévoyez des couches. Les sentiers peuvent être verglacés ; vérifiez les conditions."
         },
         "coast-culture": {
           "label": "Côte & Culture",
-          "description": "Plages, sites UNESCO, domaines—est à ouest"
+          "description": "Plages, sites UNESCO, domaines—est à ouest",
+          "bookingNote": "Réservez les dégustations Omodos/Tsiakkas ; horaires d’hiver limités.",
+          "seasonalNote": "Côte douce ; combinez Kourion + Governor's Beach (tout proches)."
         },
         "family": {
           "label": "Famille",
-          "description": "Rythme doux, 2 arrêts/jour—plages, musées, déjeuner au village"
+          "description": "Rythme doux, 2 arrêts/jour—plages, musées, déjeuner au village",
+          "bookingNote": "Sterna Boutique — réservez la dégustation famille ; en hiver, appelez 24 h avant.",
+          "seasonalNote": "Deux étapes par jour maximum. Pluie ? Remplacez le jour 3 par Cyprus Museum + Leventis (Nicosie) — repli en intérieur."
         },
         "workation": {
           "label": "Semaine workation",
-          "description": "Télétravail en semaine, Troodos & côte le week-end—cafés wifi, temps doux"
+          "description": "Semaine en télétravail avec une halte facile après le travail ; Troodos et Paphos le week-end — cafés wifi, temps doux",
+          "bookingNote": "Réservez tôt le créneau du domaine le samedi ; la semaine est plus calme.",
+          "seasonalNote": "Consultez /weather pour votre mois. Sentiers du week-end avant 10 h ; les haltes de semaine tiennent après le travail."
         },
         "classic-7": {
           "label": "Culture classique (7 jours)",
-          "description": "Larnaca → Nicosie → Troodos → Paphos—tour complet de l'île"
+          "description": "Larnaca → Nicosie → Troodos → Paphos—tour complet de l'île",
+          "bookingNote": "Plusieurs domaines au programme — réservez à l’avance ; effectifs réduits en hiver.",
+          "seasonalNote": "Déc : villages de Noël. Janv : amandiers en fleurs. Commencez tôt les musées de Nicosie."
         },
         "mountain-10": {
           "label": "Explorateur montagne (10 jours)",
-          "description": "Base Troodos, Pitsilia, Machairas, puis côte—immersion randonnée"
+          "description": "Base Troodos, Pitsilia, Machairas, puis côte—immersion randonnée",
+          "bookingNote": "Vouni Panayia : réservez la dégustation. Jours 8–10 : détente sur la côte.",
+          "seasonalNote": "Janv–mars : neige sur l'Olympe. Vérifiez chaque jour l'état des sentiers."
         }
       }
     },
@@ -2102,6 +2153,10 @@
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
+    },
+    "seasonalTip": {
+      "kicker": "Conseil de voyagiste",
+      "dismissAria": "Masquer le conseil"
     }
   },
   "bookings": {
@@ -2142,7 +2197,7 @@
         "confirmedCount": "{count} confirmée(s)"
       },
       "sync": {
-        "toggle": "Réservé sur un autre appareil ? Charger par e-mail",
+        "toggle": "Vérifier les confirmations — ou charger les réservations par e-mail",
         "submit": "Charger les réservations",
         "sendLookupLink": "Envoyer le lien",
         "resendLookupLink": "Renvoyer le lien",
@@ -2187,11 +2242,13 @@
       "cta": {
         "viewTrails": "Voir les sentiers",
         "viewWinery": "Voir le domaine",
-        "modify": "Modifier",
+        "modify": "Demander une modification",
         "bookAgain": "Réserver à nouveau",
         "browseTrails": "Parcourir les sentiers",
         "visitWineryPage": "Page du domaine",
-        "discoverAll": "Tout découvrir"
+        "discoverAll": "Tout découvrir",
+        "addToCalendar": "Ajouter au calendrier",
+        "viewTrail": "Voir le sentier"
       },
       "past": {
         "heading": "Passées et annulées"
@@ -2205,6 +2262,20 @@
       "meta": {
         "title": "Mes réservations | Cyprus Winter",
         "description": "Dégustations et expériences. Tout au même endroit."
+      },
+      "cancelHint": "Changement de plans ? Annulez toute demande directement sur sa carte ci-dessous — sans frais. Pour changer de date, utilisez « Demander une modification ».",
+      "ics": {
+        "tasting": "dégustation de vin",
+        "guidedHike": "randonnée guidée"
+      },
+      "cancel": {
+        "button": "Annuler la demande",
+        "confirmBody": "Annuler cette demande à {provider} ? Cette action est irréversible.",
+        "confirmYes": "Oui, annuler",
+        "keep": "Garder la demande",
+        "success": "Demande annulée.",
+        "errorFailed": "Annulation impossible. Réessayez dans un instant.",
+        "errorConflict": "Cette réservation vient de changer. Actualisez pour voir son état actuel."
       }
     }
   },
@@ -2332,7 +2403,8 @@
       "villages": "Villages",
       "beaches": "Plages",
       "cycling": "Vélo"
-    }
+    },
+    "resultsCount": "{count, plural, one {# suggestion disponible} other {# suggestions disponibles}}"
   },
   "events": {
     "clearFilters": "Effacer les filtres",
@@ -2433,7 +2505,34 @@
         "ancient": "Sites antiques",
         "winterEvents": "Événements d'hiver",
         "allWineries": "Tous les domaines de Chypre",
-        "troodosDecember": "Sentiers du Troodos en décembre"
+        "troodosDecember": "Sentiers du Troodos en décembre",
+        "trails": "Sentiers",
+        "villages": "Villages",
+        "beaches": "Plages",
+        "wineries": "Domaines viticoles",
+        "monasteries": "Monastères et églises"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Le Troodos en hiver",
+          "intro": "Sentiers sous les pins, églises peintes et villages du vin sous l’Olympe — et un peu de ski quand la neige s’invite. Le cœur hivernal de Chypre."
+        },
+        "paphos": {
+          "title": "Paphos en hiver",
+          "intro": "Côte douce, histoire profonde : promenades à Coral Bay, mosaïques de Paphos, sentier d’Adonis et villages du vin de la Laona — le tout à une courte route d’hiver."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa et le cap Greco en hiver",
+          "intro": "La côte est au plus calme : sable désert à Nissi et Fig Tree Bay, sentier côtier du cap Greco et grottes marines dans une douce lumière d’hiver."
+        },
+        "larnaca": {
+          "title": "Larnaca en hiver",
+          "intro": "Dentelle de Lefkara, l’antique Kition et la Hala Sultan Tekke au bord du lac salé — saison des flamants — avec de faciles escapades vers les collines."
+        },
+        "limassol": {
+          "title": "Limassol en hiver",
+          "intro": "Kourion au-dessus de la mer, le château de Kolossi et les villages du vin des Krasochoria — pays de la Commandaria — plus le carnaval et le marathon quand l’hiver glisse vers le printemps."
+        }
       }
     }
   },
@@ -2583,6 +2682,14 @@
       },
       "aria": {
         "actions": "Actions page météo du mois"
+      },
+      "monthNames": {
+        "november": "Novembre",
+        "december": "Décembre",
+        "january": "Janvier",
+        "february": "Février",
+        "march": "Mars",
+        "april": "Avril"
       }
     }
   },
@@ -2692,7 +2799,10 @@
       "meta": {
         "title": "Réinitialiser le mot de passe | Cyprus Winter",
         "description": "Demandez un lien de réinitialisation pour votre compte Cyprus Winter."
-      }
+      },
+      "configTitle": "Réinitialiser votre mot de passe",
+      "configSubtitle": "La connexion est encore en cours de configuration, les e-mails de réinitialisation ne peuvent donc pas encore être envoyés. Vos réservations restent enregistrées sur cet appareil — vous pouvez aussi les charger par e-mail dans « Mes réservations ».",
+      "configBookingsCta": "Aller à « Mes réservations »"
     },
     "reset": {
       "inlinePasswordHint": "Au moins 6 caractères",
@@ -2735,11 +2845,12 @@
       "trust": {
         "aria": "Informations de confiance sur la réservation",
         "heading": "Avant d’envoyer",
-        "verifiedRoute": "Circuit de demande {context} vérifié.",
-        "emailConfirm": "La confirmation arrive en général par e-mail sous 24 heures.",
+        "verifiedRoute": "Canal de demande vérifié — {context}.",
+        "emailConfirm": "Le partenaire confirme généralement par e-mail sous 24–48 h en semaine.",
         "noCharge": "Aucun paiement n’est pris ici. Les prestataires confirment d’abord la disponibilité.",
         "contextPartner": "partenaire",
-        "contextGuide": "guide local"
+        "contextGuide": "guide local",
+        "requestLoggedFallback": "Votre demande est enregistrée ici immédiatement — par sécurité, organisez-la aussi directement avec le {context}."
       },
       "progress": {
         "aria": "Progression de la réservation",
@@ -2748,11 +2859,12 @@
         "stepConfirmation": "Confirmation"
       },
       "states": {
-        "heading": "États de réservation :",
-        "wineryBody": "Demandé maintenant, confirmé après la réponse du partenaire.",
-        "guideBody": "Demandé maintenant, confirmé après la réponse du guide.",
-        "offlineQueue": "Si vous êtes hors ligne, votre demande est mise en file d’attente et renvoyée automatiquement."
-      }
+        "heading": "Ce qu’il advient de votre demande",
+        "wineryBody": "Le statut démarre « en attente » ; confirmé seulement après la réponse du partenaire.",
+        "guideBody": "Le statut démarre « en attente » ; confirmé seulement après la réponse du guide.",
+        "offlineQueue": "Hors ligne ? Votre demande est enregistrée sur l’appareil et envoyée automatiquement dès le retour de la connexion."
+      },
+      "successUnverified": "Votre demande est enregistrée dans vos réservations. Par sécurité, contactez aussi directement le {context} — aucun paiement ne se fait dans l’app."
     },
     "guideForm": {
       "validation": {
@@ -2764,7 +2876,8 @@
       "errors": {
         "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
-        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
+        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne.",
+        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la."
       },
       "success": {
         "title": "Demande envoyée",
@@ -2777,7 +2890,7 @@
         "ctaBookings": "Voir mes réservations",
         "ctaTrails": "Parcourir les sentiers",
         "nextStepsHeading": "La suite",
-        "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
+        "nextStep1": "Nous enregistrons votre demande immédiatement et vous en envoyons une copie par e-mail dès que l’envoi d’e-mails est actif.",
         "nextStep2": "Le guide confirme par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
         "sla": "C’est une demande, pas un créneau confirmé. Sans nouvelle après deux jours ouvrés, contactez le guide."
@@ -2837,7 +2950,8 @@
       "errors": {
         "failed": "La réservation a échoué",
         "fallback": "Un problème est survenu — vérifiez la connexion et réessayez.",
-        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne."
+        "offlineQueued": "Vous êtes hors ligne — votre demande a été enregistrée et sera envoyée automatiquement dès que vous serez de nouveau en ligne.",
+        "offlineDropped": "Votre demande enregistrée n’a pas pu être envoyée — le serveur l’a refusée. Vérifiez vos informations et renvoyez-la."
       },
       "success": {
         "title": "Demande envoyée",
@@ -2849,7 +2963,7 @@
         "ctaBookings": "Voir mes réservations",
         "ctaDiscover": "Découvrir davantage",
         "nextStepsHeading": "La suite",
-        "nextStep1": "Nous enregistrons votre demande et vous envoyons une copie par e-mail dès que l’envoi est possible.",
+        "nextStep1": "Nous enregistrons votre demande immédiatement et vous en envoyons une copie par e-mail dès que l’envoi d’e-mails est actif.",
         "nextStep2": "Le domaine confirme la date et l’heure par e-mail — en général sous 24–48 heures en semaine.",
         "nextStep3": "Suivez le statut à tout moment dans Mes réservations, avec le même e-mail.",
         "sla": "Aucun paiement dans l’app avant confirmation. Sans nouvelle après deux jours ouvrés, appelez le domaine."
@@ -2895,7 +3009,8 @@
       "hints": {
         "heading": "Avant de réserver",
         "hoursLabel": "Horaires :",
-        "bestTimeLabel": "Meilleur moment :"
+        "bestTimeLabel": "Meilleur moment :",
+        "offSeasonHours": "Appelez avant votre visite (nov–mars) — hors saison, les horaires sont souvent réduits."
       }
     },
     "pages": {
@@ -2920,12 +3035,14 @@
           "title": "Réserver une randonnée guidée | {guideName} | Cyprus Winter",
           "description": "Demandez une randonnée d’hiver guidée avec {guideName} à {region}. Petits groupes, connaissance du terrain. Confirmation par e-mail."
         },
-        "metaNotFound": "Introuvable"
+        "metaNotFound": "Introuvable",
+        "directoryFallback": "Besoin d’un contact direct ? Les guides agréés figurent avec leurs numéros dans l’annuaire officiel des guides.",
+        "directoryFallbackLink": "Ouvrir l’annuaire des guides →"
       },
       "guideList": {
         "meta": {
           "title": "Réserver une randonnée guidée | Cyprus Winter",
-          "description": "Randonnées guidées d’hiver à Troodos, Paphos et Akamas. Guides locaux pour Artemis, Caledonia Falls, Adonis, et d’autres. Petits groupes, connaissance de l’hiver. Réservez ; ils confirment par e-mail."
+          "description": "Randonnées guidées d’hiver à Troodos, Paphos et Akamas : Artemis, Caledonia Falls, Adonis. Petits groupes, connaissance de l’hiver. Réservez à l’avance."
         },
         "intro": "Guides locaux pour Troodos, Paphos et Akamas. Conditions d’hiver, petits groupes, accompagnateurs expérimentés. Demandez une randonnée ; ils confirment par e-mail.",
         "trailsPrefix": "Sentiers :",
@@ -2946,9 +3063,9 @@
       "wineryList": {
         "meta": {
           "title": "Réserver une dégustation | Cyprus Winter",
-          "description": "Parcourez les domaines partenaires à Chypre et réservez une dégustation d’hiver. Feu douillet, le propriétaire qui verse, petits groupes. Réservez — les week-ends d’hiver se remplissent."
+          "description": "Parcourez les domaines partenaires à Chypre et réservez une dégustation d’hiver. Feu douillet, petits groupes — les week-ends d’hiver se remplissent vite."
         },
-        "intro": "Parcourez nos domaines partenaires et demandez une dégustation. Ils confirment par e-mail — en général sous un jour.",
+        "intro": "Parcourez nos domaines partenaires et demandez une dégustation. Ils confirment par e-mail — en général sous 24–48 h en semaine.",
         "ctaAria": "Réserver une dégustation à {name}",
         "footerBrowseWineries": "Tous les domaines",
         "disclaimer": "Réservé aux adultes en âge légal de consommer de l’alcool. Buvez avec modération.",
@@ -3037,13 +3154,13 @@
     "directory": {
       "meta": {
         "title": "Guides touristiques agréés | Cyprus Winter",
-        "description": "Guides touristiques agréés officiels de Chypre par district et langue. Liste du Vice-ministère du Tourisme — contactez les guides directement. Partenaires randonnée vérifiés réservables dans l'app."
+        "description": "Guides touristiques agréés de Chypre par district et langue. Liste du Vice-ministère du Tourisme — contactez les guides directement ou réservez dans l’app."
       },
       "title": "Guides touristiques agréés",
       "breadcrumb": "Guides agréés",
       "pageNavAria": "Répertoire de guides agréés",
-      "intro": "{count} guides agréés de la liste officielle Visit Cyprus (août 2026). Contactez-les directement — ou réservez un partenaire randonnée hivernal vérifié dans l'app.",
-      "verifiedPartnersLink": "Réserver des partenaires vérifiés →",
+      "intro": "{count} guides agréés de la liste officielle Visit Cyprus (août 2026). Contactez-les directement — ou réservez un guide de randonnée agréé dans l’app.",
+      "verifiedPartnersLink": "Réserver un guide agréé →",
       "disclaimer": "Guides touristiques agréés inscrits auprès du Vice-ministère du Tourisme de Chypre. Cyprus Winter affiche les contacts officiels ; réservation et paiement directement avec le guide.",
       "officialListLink": "Liste officielle sur Visit Cyprus",
       "searchLabel": "Rechercher des guides",
@@ -3079,19 +3196,20 @@
         "hebrew": "Hébreu"
       },
       "verifiedCta": {
-        "title": "Partenaires randonnée hivernale vérifiés",
-        "body": "Ces guides acceptent les demandes via Cyprus Winter — Troodos, Akamas et visites culturelles avec confirmation par e-mail.",
-        "button": "Réserver un guide vérifié"
+        "title": "Guides de randonnée agréés — réservables dans l’app",
+        "body": "Ces guides reçoivent les demandes via Cyprus Winter — Troodos, Akamas et circuits culturels.",
+        "button": "Réserver un guide agréé"
       },
       "verifiedPartnerBadge": "Réservation dans l'app",
       "verifiedPartnerBook": "Demande via Cyprus Winter",
       "footer": {
-        "hubBody": "Contactez un guide agréé directement — ou réservez un partenaire randonnée vérifié dans l'app et ajoutez des étapes à votre plan.",
+        "hubBody": "Contactez un guide agréé directement — ou réservez un guide de randonnée agréé dans l’app et ajoutez des étapes à votre plan.",
         "trails": "Conditions des sentiers"
       },
       "aria": {
         "actions": "Actions du répertoire de guides agréés"
-      }
+      },
+      "resultCountFiltered": "{count} guides locaux sur {total} — filtres actifs"
     }
   },
   "install": {
@@ -3305,21 +3423,38 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Équipe | Cyprus Winter — Sentiers, villages, domaines",
-        "description": "Les personnes derrière Cyprus Winter. Sentiers, villages, domaines — Chypre en hiver mérite mieux. Rencontrez l'équipe qui a créé ce guide. Seize degrés quand il en fait six chez vous."
+        "title": "Comment nous choisissons les lieux | Cyprus Winter",
+        "description": "Pas de placement payant, pas de brochures d’été : comment Cyprus Winter sélectionne et vérifie sentiers, villages et domaines — et ce que signifie vraiment le badge de partenaire vérifié."
       },
-      "membersHeading": "Membres de l'équipe",
       "header": {
-        "title": "Notre équipe",
-        "description": "Designers, développeurs et experts du tourisme. Chypre en hiver mérite plus qu'une simple mention."
+        "title": "Comment nous choisissons les lieux",
+        "description": "Cyprus Winter est un guide sélectif, pas un annuaire. Voici exactement comment un lieu y entre — et ce que nous vérifions avant."
+      },
+      "sections": {
+        "walked": {
+          "title": "Parcourus en hiver",
+          "body": "Chaque sentier, village et domaine est choisi pour ce qu’il est réellement entre novembre et mars — horaires d’hiver, état des sentiers, lumière et calme — et non pour ce qu’il donne en photo au mois d’août. Les notes saisonnières sont écrites pour des mois précis, et quand l’hiver change quelque chose, la page le dit."
+        },
+        "sources": {
+          "title": "Vérifiés aux sources",
+          "body": "Les données de chaque page sont validées automatiquement à chaque modification, et les affirmations factuelles de nos recherches citent leurs sources. Là où les horaires d’hiver varient vraiment, nous écrivons « appelez avant » plutôt que de deviner."
+        },
+        "partners": {
+          "title": "Vérifiés, jamais payés",
+          "body": "Aucun lieu ne paie pour figurer ici, et le classement n’est pas à vendre. Le badge « Partenaire vérifié » signifie une seule chose : nous disposons d’un canal de contact confirmé avec ce partenaire, si bien qu’une demande de réservation lui parvient réellement. Partout ailleurs, les textes de réservation vous disent honnêtement qu’une demande est enregistrée, pas confirmée."
+        },
+        "corrections": {
+          "title": "Quand nous nous trompons",
+          "body": "L’hiver change vite — une tempête ferme un sentier, une salle de dégustation réduit ses horaires. Les pages de sentiers acceptent des signalements de conditions, et tout ce qui semble dépassé mérite de nous être signalé via l’assistant ci-dessous."
+        }
       },
       "cta": {
-        "prompt": "Des questions sur votre voyage ? Votre guide connaît l'île.",
-        "askAi": "Demander à l'IA",
-        "startPlanning": "Planifier votre voyage",
+        "prompt": "Des questions sur votre voyage ? L’assistant connaît l’île.",
+        "askAi": "Demander à l’IA",
+        "startPlanning": "Commencer à planifier",
         "discoverPlaces": "Découvrir des lieux"
       },
-      "outro": "Sentier le matin : Artemis ou Caledonia. Omodos ou Lefkara pour le déjeuner. Un domaine l'après-midi. Voilà une journée qu'on prendrait. L'île récompense les curieux."
+      "outro": "Un sentier le matin : Artémis ou Caledonia. Omodos ou Lefkara pour déjeuner. Un domaine l’après-midi. Voilà une journée que nous prendrions. L’île récompense les curieux."
     }
   },
   "terms": {
@@ -3389,8 +3524,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
-    "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
+    "homeTitle": "Cyprus Winter | Sentiers, villages, domaines et jours paisibles",
+    "homeDescription": "Un Chypre plus paisible en hiver. Découvrez des côtes douces, des villages de montagne, des sentiers ouverts, des domaines viticoles et des lieux qui invitent à ralentir.",
     "ogImageAlt": "Théâtre antique de Kourion au-dessus de la côte méditerranéenne, Chypre en hiver"
   },
   "ui": {
@@ -3553,6 +3688,1495 @@
       "useLink": "Utilisez ce lien sécurisé dans les 15 minutes :",
       "viewBookings": "Voir mes réservations",
       "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} a confirmé votre réservation",
+      "subjectCancelled": "Mise à jour de votre demande — {provider}",
+      "headingConfirmed": "Votre réservation est confirmée",
+      "headingCancelled": "Votre demande n’a pas pu être confirmée",
+      "bodyConfirmed": "{provider} a confirmé votre demande pour le {date} ({partySize} personnes).",
+      "bodyCancelled": "{provider} ne peut pas accueillir votre demande pour le {date} ({partySize} personnes). Aucun montant n’a été prélevé.",
+      "nextConfirmed": "Un changement ou une annulation ? Répondez à cet e-mail ou appelez directement — sans frais.",
+      "nextCancelled": "Les créneaux d’hiver partent vite — d’autres domaines et guides licenciés sont sur Cyprus Winter.",
+      "subjectGuestCancelled": "Votre demande à {provider} est annulée",
+      "headingGuestCancelled": "Votre demande est annulée",
+      "bodyGuestCancelled": "Vous avez annulé votre demande à {provider} pour le {date} ({partySize} personnes). Rien n’a été facturé.",
+      "nextGuestCancelled": "Changement d’avis ? Vous pouvez envoyer une nouvelle demande à tout moment — les créneaux d’hiver sont souvent flexibles."
+    }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Visite guidée et dégustation lun.–ven. 12 h et 14 h, sam. 11 h, 13 h et 15 h. Dégustations à la carte au verre. Visites privées à partir de 70 €. Minimum 4 personnes pour la visite guidée.",
+        "winterTip": "Terrasse chauffée en hiver. Demandez le Xynisteri élevé sur lies.",
+        "bestTimeToVisit": "Déc. à mars, 11 h–14 h. Réservez à l’avance.",
+        "openingHours": "Lun.–ven. 10 h–16 h, sam. 11 h–17 h. Fermé le dimanche sauf dates ponctuelles.",
+        "transport": "Pelendri, Pitsilia. Environ 45 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Visites et dégustations ; visites privées avec verre de bienvenue offert et fruits de saison.",
+        "winterTip": "Demandez une dégustation comparative de Commandaria — millésimes jeunes et anciens côte à côte.",
+        "bestTimeToVisit": "Déc. à fév., 2–3 heures. À combiner avec un déjeuner au village de Panayia.",
+        "openingHours": "9 h–16 h",
+        "transport": "Avenue Archiepiskopou Makariou III 60, Panayia 8640. Route de la Laona.",
+        "parking": "Sur place."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection 20 € (4 vins + Commandaria au fût) ; Seasonal 15 € ; Wine & Canapés 25 €. 60–90 min. Réservation sur zambartaswineries.com/book-now.",
+        "winterTip": "25 min de Limassol. La Winemaker's Selection inclut un échantillon exclusif de Commandaria au fût.",
+        "bestTimeToVisit": "Déc. à mars, 14 h–16 h pour une dégustation tranquille.",
+        "openingHours": "Lun.–ven. 10 h–17 h, sam.–dim. 10 h–18 h (hiver). Rendez-vous préalable recommandé.",
+        "transport": "Agios Amvrosios, Krasochoria. Environ 25 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "kolios": {
+        "tastingInfo": "Visite guidée à 12 h 30, déjeuner mezze à 13 h (23 € vin compris). Dégustation gratuite ; réservez 1–2 jours à l’avance.",
+        "winterTip": "Réservez le déjeuner 1–2 jours à l’avance. Prévoyez des espèces — les cartes ne sont pas toujours acceptées. Les mezze sont une vraie cuisine de village, pas des mezze pour touristes. Février est calme ; la vue et le vin valent la route.",
+        "bestTimeToVisit": "Déc. à fév., 11 h pour la visite et le déjeuner. Plus calme qu’en été ; chauffage à l’intérieur.",
+        "openingHours": "Hiver (oct.–fév.) : lun.–sam. 9 h–15 h. Été (mars–sept.) : lun.–sam. 8 h 30–17 h. Dimanche : réceptions privées uniquement (50 pers. et plus).",
+        "transport": "Environ 25 min de Paphos. Depuis le village de Statos Agios Fotios, suivez les panneaux sur 1 km vers Chrysorrogiatissa.",
+        "parking": "Parking sur place."
+      },
+      "santo": {
+        "tastingInfo": "Restaurant 12 h–16 h en saison ; dégustations sur rendez-vous de nov. à mars. Réservez à l’avance pour les groupes.",
+        "winterTip": "Réservez un déjeuner face à la mer ; la terrasse se remplit le week-end. Coucher de soleil en déc. vers 17 h.",
+        "bestTimeToVisit": "Déc. à mars, 12 h–14 h ou en fin d’après-midi pour l’heure dorée.",
+        "openingHours": "Restaurant 12 h–16 h ; vérifiez les horaires d’hiver.",
+        "transport": "Colline au-dessus de Limassol ; corridor des Krasochoria.",
+        "parking": "Sur place."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Dégustations sur rendez-vous ; boutique en ligne, bouteilles de 14 à 20 €.",
+        "winterTip": "Skarinou est à une courte route de Larnaca ou Limassol ; idéal pour un après-midi d’hiver. L’assemblage rouge Atypon 01 et le Xynisteri Single Vineyard se distinguent. Pas de visite possible ? Commandez en ligne.",
+        "bestTimeToVisit": "Déc. à mars, sur réservation.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Courte route depuis Larnaca ou Limassol (A1). Sortie Skarinou.",
+        "parking": "Sur place."
+      },
+      "sterna-boutique": {
+        "tastingInfo": "Dégustations 5 € ; olives, pain, fromage. Visites de la cave troglodyte et du musée.",
+        "winterTip": "Le cellier troglodyte antique fait le détour. Pour déjeuner, le village de Kathikas.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec le sentier d’Adonis ou d’Aphrodite.",
+        "openingHours": "9 h 30 – 18 h en saison ; de nov. à mars, appelez avant de venir.",
+        "transport": "Kathikas, boucle des vins de l’Akamas.",
+        "parking": "Sur place."
+      },
+      "vlassides": {
+        "tastingInfo": "Visite guidée 10 € ; Rainbow (3 vins) 7,50 € ; 4×4 (4 vins + 4 fromages) 18 € ; Meet Winemaker 50 € (min. 4). Lun–ven 11 h – 16 h sur rendez-vous.",
+        "winterTip": "Réservez au moins 1 jour à l’avance. Le shiraz et le cabernet se distinguent.",
+        "bestTimeToVisit": "Déc. à mars, 11 h – 13 h ou 13 h 30 – 15 h.",
+        "openingHours": "Lun–ven 11 h – 16 h sur rendez-vous. Fermé dim. et jours fériés.",
+        "transport": "Koilani. Depuis Ayios Amvrosios, suivez Vouni–Kilani ; panneau 1,5 km après Vouni.",
+        "parking": "Sur place."
+      },
+      "kyperounta": {
+        "tastingInfo": "Dégustations avec fromages et charcuterie. Réservez à l’avance — vivement conseillé en hiver.",
+        "winterTip": "De janv. à fév., appelez avant : la neige peut couper la route. Couvrez-vous. Décembre ou mars sont plus sûrs.",
+        "bestTimeToVisit": "Décembre ou mars. Évitez le pic de neige de janv. à fév.",
+        "openingHours": "Sur rendez-vous. Appelez pour les horaires ; l’état de la route varie de déc. à fév.",
+        "transport": "À 50 km de Limassol, 75 km de Nicosie. Pitsilia, Troodos.",
+        "parking": "Sur place."
+      },
+      "vasilikon": {
+        "tastingInfo": "Dégustations avec plateaux de fromages. Domaine 8 h 30 – 18 h ; restaurant 10 h – 16 h.",
+        "winterTip": "À combiner avec le sentier d’Adonis ou d’Aphrodite. Kathikas est sur la boucle de l’Akamas.",
+        "bestTimeToVisit": "Déc. à mars ; restaurant au déjeuner.",
+        "openingHours": "Domaine 8 h 30 – 18 h, restaurant 10 h – 16 h en saison ; de nov. à mars, appelez avant de venir.",
+        "transport": "Kathikas 8573, Paphos.",
+        "parking": "Sur place."
+      },
+      "fikardos": {
+        "tastingInfo": "6 vins 10 € ; visite 5 € (gratuit moins de 18 ans). Plateaux en option. Visites en semaine à 14 h 30.",
+        "winterTip": "La terrasse prend le soleil d’hiver. À 10 min de la vieille ville de Paphos, 20 min du port.",
+        "bestTimeToVisit": "Déc. à mars, 11 h – 14 h.",
+        "openingHours": "Lun–ven 8 h – 13 h et 14 h 30 – 17 h, sam. 8 h – 13 h. Fermé le dimanche.",
+        "transport": "22 Michalaki Savvidi, Mesogi. Env. 10 min de Paphos.",
+        "parking": "Sur place."
+      },
+      "oenou-yi": {
+        "tastingInfo": "Visites et dégustations 10 h – 17 h en saison ; de nov. à mars, appelez avant de venir.",
+        "winterTip": "Faites d’abord le monastère et le village, puis Oenou Yi. Vue sur les montagnes depuis le domaine.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec la boucle d’Omodos.",
+        "openingHours": "10 h – 17 h en saison ; de nov. à mars, appelez avant de venir.",
+        "transport": "Village d’Omodos ; collines d’Afamis–Laona.",
+        "parking": "Sur place."
+      },
+      "mystes": {
+        "tastingInfo": "Dégustations sur rendez-vous ; visites et plateaux fromage/charcuterie.",
+        "winterTip": "À 33 km à l’est de Paphos. Réservez à l’avance. Cépages indigènes — giannoudi, promara, xynisteri orange.",
+        "bestTimeToVisit": "Déc. à mars ; vue sur la vallée depuis la terrasse.",
+        "openingHours": "Sur rendez-vous ; de nov. à mars, appelez avant de venir.",
+        "transport": "Pano Archimandrita, 550 m. Env. 33 km de Paphos.",
+        "parking": "Sur place."
+      },
+      "loukas": {
+        "tastingInfo": "Dégustations en saison ; de nov. à mars, appelez avant — hors saison, la visite sans rendez-vous n’est pas garantie.",
+        "winterTip": "À pied depuis la place du monastère. Sans réservation. Arches de pierre, charme villageois.",
+        "bestTimeToVisit": "Déc. à mars ; le village d’abord, la dégustation ensuite.",
+        "openingHours": "Horaires variables ; de nov. à mars, appelez avant de venir.",
+        "transport": "Centre d’Omodos ; à 5 min de la place du monastère.",
+        "parking": "Au village."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Visites et dégustations 10 h – 18 h ; restaurant 11 h – 19 h. Réservation obligatoire.",
+        "winterTip": "Au cœur d’Omodos. Combinez la visite avec le restaurant Playia.",
+        "bestTimeToVisit": "Déc. à mars, en fin de matinée avant le déjeuner.",
+        "openingHours": "10 h – 18 h ; restaurant 11 h – 19 h. Hors saison, appelez avant de venir.",
+        "transport": "Village d’Omodos, contreforts du Troodos.",
+        "parking": "Sur place."
+      },
+      "komos": {
+        "tastingInfo": "Dégustations en saison ; de nov. à mars, appelez avant. Cafés du village à proximité.",
+        "winterTip": "Le monastère et la place d’abord, puis la dégustation en cave. Déjeuner dans les cafés du village.",
+        "bestTimeToVisit": "Déc. à mars ; en fin de matinée, avant le déjeuner.",
+        "openingHours": "Horaires variables ; de nov. à mars, appelez avant de venir.",
+        "transport": "Centre d’Omodos.",
+        "parking": "Au village ; à pied depuis la place du monastère."
+      },
+      "avakas": {
+        "tastingInfo": "Sur rendez-vous ; idéal après la marche dans les gorges.",
+        "winterTip": "Les gorges d’Avakas le matin, le domaine ensuite. Appelez depuis le parking en sortant — ils ont l’habitude des randonneurs.",
+        "bestTimeToVisit": "Gorges le matin, dégustation l’après-midi.",
+        "openingHours": "Sur rendez-vous ; de nov. à mars, appelez avant de venir.",
+        "transport": "Village de Statos, 1 000 m. Près des gorges d’Avakas.",
+        "parking": "Sur place."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Visites et dégustations ; fromages et charcuterie. Sur rendez-vous ; de nov. à mars, appelez avant.",
+        "winterTip": "À 28 km de Nicosie. Vue depuis la terrasse sur les montagnes de Pitsilia.",
+        "bestTimeToVisit": "Déc. à mars ; réservez à l’avance.",
+        "openingHours": "Sur rendez-vous ; de nov. à mars, appelez avant de venir.",
+        "transport": "Kalo Chorio Orinis, à 28 km au sud-ouest de Nicosie.",
+        "parking": "Sur place."
+      },
+      "kalamos": {
+        "tastingInfo": "Dégustations et visites 8 h – 16 h en saison ; de nov. à mars, appelez avant.",
+        "winterTip": "À 20 min de Paphos. Une demi-journée facile.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Paphos ou l’Akamas.",
+        "openingHours": "8 h – 16 h lun–dim. en saison ; de nov. à mars, appelez avant.",
+        "transport": "Kira Eleni 6, Amargeti 8642. Env. 20 min de Paphos.",
+        "parking": "Sur place."
+      },
+      "christoudia": {
+        "tastingInfo": "Visites et dégustations ; brunch de cuisine chypriote. 9 h – 17 h en saison ; de nov. à mars, appelez avant.",
+        "winterTip": "Dégustations au coin du feu. Kato Drys, collines de Larnaca.",
+        "bestTimeToVisit": "Déc. à mars ; réservez à l’avance.",
+        "openingHours": "9 h – 17 h en saison ; de nov. à mars, appelez avant de venir.",
+        "transport": "Kato Drys, région de Larnaca.",
+        "parking": "Sur place."
+      },
+      "ayia-mavri": {
+        "tastingInfo": "11 h–16 h en saison ; de nov. à mars, appelez avant de venir. Visite du vignoble, dégustations, fromages et gourmandises.",
+        "winterTip": "Cocon en hiver. Koilani à 900 m ; commandaria et vins secs.",
+        "bestTimeToVisit": "11 h–14 h ; à combiner avec un déjeuner à Koilani.",
+        "openingHours": "11 h–16 h en saison ; de nov. à mars, appelez avant de venir."
+      },
+      "meletiou": {
+        "tastingInfo": "Dégustations presque tous les jours en saison ; de nov. à mars, appelez avant de venir.",
+        "winterTip": "La terrasse capte le soleil de l’après-midi. Le village de Kathikas assure le déjeuner.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec le sentier d’Adonis ou d’Aphrodite.",
+        "openingHours": "Appelez pour connaître les horaires d’hiver.",
+        "transport": "Kathikas, route des vins de l’Akamas.",
+        "parking": "Sur place."
+      },
+      "makarounas": {
+        "tastingInfo": "Standard gratuite ; Classic 7 € ; Premium 12 € ; visite du vignoble 50 €. Le plateau de grand-mère en terrasse.",
+        "winterTip": "À 14 km à l’est de Paphos. Vue depuis la terrasse ; réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars, 11 h–15 h.",
+        "openingHours": "Lun.–ven. 11 h–15 h, sam. 11 h–17 h. Réservation obligatoire."
+      },
+      "argyrides": {
+        "tastingInfo": "Dégustations pour groupes sur demande. Réservez à l’avance.",
+        "winterTip": "Maison vieille de 200 ans. La pierre garde le soleil en hiver.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Omodos et Koilani.",
+        "openingHours": "Lun.–ven. 8 h–16 h. Fermé le week-end.",
+        "transport": "Vasa Koilaniou, à env. 25 km de Limassol.",
+        "parking": "Sur place."
+      },
+      "cholettis": {
+        "tastingInfo": "Sur rendez-vous ; meze disponibles.",
+        "winterTip": "Réservez l’accord meze. Fromage et olives font chanter le vin. Le plateau de Laona a une tout autre ambiance.",
+        "bestTimeToVisit": "Déc. à mars ; prévoyez de rester.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Statos, plateau de Laona.",
+        "parking": "Sur place."
+      },
+      "adege": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir.",
+        "winterTip": "Domaine familial à Vasa. Hospitalité villageoise ; appelez avant de venir. Lefkada vaut le détour.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Omodos ou Louvaras.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Vasa, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "stavrinos": {
+        "tastingInfo": "Sur rendez-vous ; horaires d’hiver.",
+        "winterTip": "Dégustations au coin du feu. Réservez à l’avance. Vue sur la montagne et flambée — un favori de l’hiver.",
+        "bestTimeToVisit": "Déc. à mars ; réservez votre place près du feu.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Dhoros, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "ambeli": {
+        "tastingInfo": "Dégustations presque tous les jours en saison ; de nov. à mars, appelez avant de venir.",
+        "winterTip": "Ski ou sentier d’Artémis le matin, Ambeli l’après-midi. Vue sur la forêt.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec les sentiers de Platres.",
+        "openingHours": "Appelez pour connaître les horaires d’hiver.",
+        "transport": "Village de Platres.",
+        "parking": "Sur place."
+      },
+      "lambouri": {
+        "tastingInfo": "Dégustations sur rendez-vous ; réservez à l’avance",
+        "winterTip": "Salle de dégustation cosy ; chauffages en hiver. Koilani compte dix domaines ; Lambouri sort du lot.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Koilani, Krasochoria. À env. 40 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "nichteri": {
+        "tastingInfo": "Uniquement sur rendez-vous",
+        "winterTip": "Appelez avant de venir ; ils apprécient d’être prévenus. Les murs de pierre gardent la chaleur.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec la boucle des collines de Paphos.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Agios Dimitrianos, route ouest de Laona.",
+        "parking": "Sur place."
+      },
+      "sodap": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Coopérative historique. Échelle industrielle, récit patrimonial. Facile depuis le centre de Limassol.",
+        "openingHours": "Sur rendez-vous ; réservez les visites à l’avance. De nov. à mars, appelez avant de venir.",
+        "transport": "Front de mer de Limassol. Central.",
+        "parking": "Sur place."
+      },
+      "iona": {
+        "tastingInfo": "Accords 15–25 € ; réservez à l’avance.",
+        "winterTip": "Réservez l’accord vin-fromage. Vue sur le Troodos depuis la salle de dégustation.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec un déjeuner à Koilani.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "tsangarides": {
+        "tastingInfo": "Dégustations sur rendez-vous. Lun.–sam. 9 h–17 h ; fermé le dimanche.",
+        "winterTip": "La salle de dégustation en pierre est cosy. Route de Laona — à combiner avec Vouni Panayia.",
+        "bestTimeToVisit": "Déc. à mars, réservez à l’avance.",
+        "openingHours": "Lun.–sam. 9 h–17 h",
+        "transport": "Lemona, Paphos 8545.",
+        "parking": "Sur place."
+      },
+      "savvas": {
+        "tastingInfo": "Sur rendez-vous.",
+        "winterTip": "À combiner avec le musée de la commandaria à Silikou. Cave en pierre, des siècles de tradition.",
+        "bestTimeToVisit": "Déc. à mars ; appelez avant de venir.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Silikou 650 m, zone de la commandaria.",
+        "parking": "Sur place."
+      },
+      "monagri": {
+        "tastingInfo": "Appelez avant de venir ; visites de groupe bienvenues.",
+        "winterTip": "Coopérative de Monagri. Zone de la commandaria. Visites de cave. Groupes bienvenus.",
+        "bestTimeToVisit": "Déc. à mars ; appelez avant de venir.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Monagri, zone de la commandaria.",
+        "parking": "Sur place."
+      },
+      "silikou-museum": {
+        "tastingInfo": "Contactez le village pour les horaires ; dégustations parfois possibles",
+        "winterTip": "Appelez avant de venir. Silikou est à l’écart de la boucle principale ; moins de visiteurs, plus d’air. À combiner avec le domaine Savvas pour une journée commandaria complète."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "Sur rendez-vous ; expériences participatives disponibles",
+        "winterTip": "Village de Stroumbi, collines de Paphos. Réservez l’expérience participative si vous avez le temps. Sur la route de Laona ; à combiner avec Fikardos ou Tsangarides."
+      },
+      "semeli": {
+        "tastingInfo": "Dégustations sur rendez-vous",
+        "winterTip": "Le domaine de qualité le plus proche de Nicosie. À combiner avec Lefkara ou Machairas. Réservez à l’avance.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "À env. 40 min de Nicosie. Contreforts de la Mesaoria.",
+        "parking": "Sur place."
+      },
+      "zambeli": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Favori discret du corridor de Limassol. Chauffages en hiver. Kolossi et Kourion à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Corridor de Limassol. À env. 20 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "krasas": {
+        "tastingInfo": "Dégustations 10 € ; réservez à l’avance.",
+        "winterTip": "Quatrième génération à Koilani. Cave historique. Réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec la boucle de Koilani.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "agios-theodoros": {
+        "tastingInfo": "Uniquement sur rendez-vous.",
+        "winterTip": "À l’écart de la boucle principale. Agios Theodoros. Mavro, xynisteri, vin doux. Appelez avant de venir.",
+        "bestTimeToVisit": "Déc. à mars.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Agios Theodoros, collines de Limassol.",
+        "parking": "Sur place."
+      },
+      "fikardou-winery": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Fikardou, classé UNESCO. Village et vin. Neige possible au cœur de l’hiver. Magique.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Fikardou, site UNESCO. À env. 50 min de Nicosie.",
+        "parking": "Sur place."
+      },
+      "sygkrasi": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Kathikas. Boucle de l’Akamas. Sentier le matin, vin ensuite. The Farmyard pour déjeuner.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Kathikas. Sur la boucle Akamas–Laona.",
+        "parking": "Sur place."
+      },
+      "syndesmos": {
+        "tastingInfo": "Appelez avant pour organiser une visite.",
+        "winterTip": "Coopérative portée par la communauté. Appelez avant de venir. Groupes bienvenus.",
+        "bestTimeToVisit": "Déc. à mars ; après-midi tranquille.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Agios Georgios, route de Laona.",
+        "parking": "Sur place."
+      },
+      "petrides": {
+        "tastingInfo": "Uniquement sur rendez-vous.",
+        "winterTip": "Ouest de Paphos. Phinikas. Boutique. Vue sur la vallée. Réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars ; après-midi calme.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Phinikas, Laona occidentale.",
+        "parking": "Sur place."
+      },
+      "makrikontas": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Vouni la tranquille. Réservez à l’avance. Krasochoria secrète. Omodos et Lania à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Village de Vouni, Krasochoria. À env. 40 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "yiannis": {
+        "tastingInfo": "Sur rendez-vous.",
+        "winterTip": "Kilani est plus calme qu’Omodos. Réservez pour l’hiver. À combiner avec Koilani et Vlassides.",
+        "bestTimeToVisit": "Déc. à mars.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Kilani, Krasochoria.",
+        "parking": "Sur place."
+      },
+      "dafermou": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Collines de Larnaca. Moderne, cépages indigènes. Hiver doux. Lefkara à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Collines de Larnaca. À env. 25 min de Larnaca.",
+        "parking": "Sur place."
+      },
+      "nicolaides": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Pitsilia d’altitude. Plus frais en hiver. La salle de dégustation vous réchauffe. Kykkos à proximité.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Pitsilia. À env. 50 min de Limassol.",
+        "parking": "Sur place."
+      },
+      "solia": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir",
+        "winterTip": "À l’écart des grands axes. Intimiste. À combiner avec Agros ou Machairas.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Collines de Nicosie. À env. 45 min de la capitale.",
+        "parking": "Sur place."
+      },
+      "ezousa": {
+        "tastingInfo": "Sur rendez-vous ; salle de dégustation. Accord meze sur arrangement.",
+        "winterTip": "Réservez l’accord meze. Kannaviou est à l’écart des grands axes ; authentique.",
+        "bestTimeToVisit": "Sur rendez-vous."
+      },
+      "hadjipavlou": {
+        "tastingInfo": "Dégustations sur rendez-vous",
+        "winterTip": "Famille depuis trois générations ; commandaria authentique et vins de montagne. La cave en pierre est un cocon en hiver.",
+        "bestTimeToVisit": "Déc. à mars, appelez avant de venir"
+      },
+      "olympus-winery": {
+        "tastingInfo": "Visites et dégustations. 8 h–17 h.",
+        "winterTip": "À combiner avec ski ou randonnée. La route peut être enneigée de janv. à fév. ; appelez avant de venir.",
+        "openingHours": "8 h–17 h. En hiver, appelez avant de venir."
+      },
+      "minous": {
+        "tastingInfo": "Appelez avant ; souvent ouverts aux visites spontanées",
+        "winterTip": "Appelez avant de venir. Les tavernes de Pachna assurent le déjeuner. La pierre garde le soleil en hiver."
+      },
+      "tria-elit": {
+        "tastingInfo": "Dégustations 8–12 € ; réservez pour les groupes.",
+        "winterTip": "La terrasse capte le soleil d’hiver. Une demi-journée facile depuis Limassol.",
+        "bestTimeToVisit": "Déc. à mars ; à combiner avec Kourion ou un déjeuner au port."
+      },
+      "ayii-anargyri": {
+        "tastingInfo": "Uniquement sur rendez-vous.",
+        "winterTip": "Miliou la paisible. Vue sur la vallée. Réservez à l’avance.",
+        "bestTimeToVisit": "Déc. à mars ; après-midi calme.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Miliou, route de Laona.",
+        "parking": "Sur place."
+      },
+      "pittali": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir",
+        "winterTip": "Pitsilia d’altitude. Appelez avant de venir. À combiner avec la crête de Madari. La montagne fait le travail."
+      },
+      "papaioannou": {
+        "tastingInfo": "Dégustations en saison ; de nov. à mars, appelez avant de venir.",
+        "winterTip": "Village de Vasa. La grande cave vaut le coup d’œil. Groupes bienvenus. À combiner avec Koilani et Vlassides."
+      },
+      "karseras": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir",
+        "winterTip": "Près de Platres. Artémis ou Caledonia le matin, Karseras l’après-midi. Une histoire de renaissance de la commandaria."
+      },
+      "evangelou": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Pera Pedi, Krasochoria. Réservez à l’avance. À combiner avec Omodos et Koilani pour une journée complète de villages du vin."
+      },
+      "chrysoroyiatissa-winery": {
+        "tastingInfo": "Dégustations au monastère ; vérifiez les horaires",
+        "winterTip": "Dans l’enceinte du monastère. Spirituel et vineux à la fois. À combiner avec Vouni Panayia et le village de Panayia. Un joyau de la route de Laona."
+      },
+      "loel": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Installations ultramodernes. Le patrimoine rencontre le moderne. Trajet facile depuis Limassol."
+      },
+      "etko-olympus": {
+        "tastingInfo": "Dégustations et visites ; vérifiez les horaires",
+        "winterTip": "Le plus ancien nom du vin chypriote. Le village d’Omodos à vos pieds. Réservez à l’avance."
+      },
+      "revecca": {
+        "tastingInfo": "Uniquement sur rendez-vous",
+        "winterTip": "Petites cuvées. Appelez avant de venir. Agios Mamas, c’est la commandaria côté calme."
+      },
+      "mallia": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Grand site de production. Réservez les visites à l’avance. Patrimoine et envergure."
+      },
+      "monolithos": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir",
+        "winterTip": "À l’écart de la boucle principale. Appelez avant de venir. Caractère boutique."
+      },
+      "antoniades": {
+        "tastingInfo": "Visites et dégustations ; contactez-les avant de venir",
+        "winterTip": "Leur Nama — la commandaria antique. Demandez l’histoire des jarres pithari."
+      },
+      "ayios-savas": {
+        "tastingInfo": "Visites et dégustations ; réservez à l’avance",
+        "winterTip": "Vignes côtières. Autre chose que le vin de montagne. Governor's Beach et Kourion à proximité."
+      },
+      "povis": {
+        "tastingInfo": "Sur rendez-vous ; appelez avant de venir",
+        "winterTip": "Petit et personnel. Appelez avant de venir. Le monastère de Chrysorrogiatissa à proximité."
+      },
+      "anama": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "La commandaria côté Larnaca. Village paisible. À combiner avec Stavrovouni ou Zygi.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Collines de Larnaca. À env. 30 min de Larnaca.",
+        "parking": "Sur place."
+      },
+      "linos": {
+        "tastingInfo": "Sur rendez-vous",
+        "winterTip": "Près de Platres. À combiner avec Caledonia ou Artémis. Caractère montagnard.",
+        "openingHours": "Sur rendez-vous ; appelez avant votre visite de nov. à mars.",
+        "transport": "Kato Platres. À env. 45 min de Limassol.",
+        "parking": "Sur place."
+      }
+    },
+    "attractions": {
+      "kourion": {
+        "winterTip": "Le théâtre regarde vers l’ouest ; coucher de soleil d’hiver vers 16 h 30. Prévoyez un coupe-vent ; la falaise prend la brise.",
+        "bestTimeToVisit": "Déc. à mars, en fin d’après-midi pour le coucher de soleil",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "pafos-mosaics": {
+        "winterTip": "La lumière d’hiver, plus douce et plus basse, est idéale pour photographier les mosaïques sans ombres dures. La foule se disperse vers 11 h.",
+        "bestTimeToVisit": "Déc. à fév., 9 h – 11 h ou fin d’après-midi pour la lumière dorée",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver), 8 h 30 – 19 h 30 (été)"
+      },
+      "omodos": {
+        "winterTip": "En semaine, les matins d’hiver sont calmes ; les habitants se retrouvent au kafenion. La cour du monastère s’illumine sous le soleil bas.",
+        "bestTimeToVisit": "Déc. à mars, 10 h – 14 h (le plus doux), ou restez pour le coucher de soleil",
+        "openingHours": "Boutiques 9 h – 18 h ; cour du monastère en accès libre ; musée 9 h – 17 h"
+      },
+      "lefkara": {
+        "winterTip": "Les dentellières s’installent sur le pas des portes ; la lumière d’hiver est idéale pour les photos. Prévoyez une couche chaude ; le village est à 700 m.",
+        "bestTimeToVisit": "Déc. à fév., en semaine le matin (moins de groupes)",
+        "openingHours": "Boutiques 9 h – 18 h ; certaines ferment à midi"
+      },
+      "kykkos": {
+        "winterTip": "La route peut être enneigée de janv. à fév. Vérifiez les conditions. La forêt sous la lumière d’hiver. Comptez au moins une demi-journée.",
+        "openingHours": "Tous les jours 10 h – 18 h (hiver) ; musée 10 h – 16 h"
+      },
+      "fig-tree-bay": {
+        "winterTip": "Baie abritée, douce pour les balades d’hiver. Les cafés de la promenade restent ouverts. À combiner avec Protaras et le cap Greco.",
+        "bestTimeToVisit": "Matin ou après-midi ; le sentier du cap Greco d’abord, puis Fig Tree Bay.",
+        "openingHours": "Rivage en accès libre toute l’année. Les cafés de la promenade restent souvent ouverts."
+      },
+      "governors-beach": {
+        "winterTip": "Idéale pour un déjeuner d’hiver en bord de mer ; 18 °C et du soleil. Les tavernes de la falaise ouvrent toute l’année. À combiner avec Kourion ou Kolossi.",
+        "bestTimeToVisit": "Au déjeuner ; Kourion le matin, Governor's Beach pour le poisson.",
+        "openingHours": "Rivage en accès libre toute l’année. Les tavernes de la falaise restent souvent ouvertes."
+      },
+      "konnos-bay": {
+        "winterTip": "À combiner avec le sentier côtier du cap Greco ; le départ est tout proche. Soleil d’hiver et sable désert.",
+        "bestTimeToVisit": "Le matin ; le sentier du cap Greco d’abord, Konnos pour la pause.",
+        "openingHours": "Rivage en accès libre toute l’année. Aucun équipement sur le sable."
+      },
+      "kakopetria": {
+        "winterTip": "Les tavernes à truite au bord de la rivière sont douillettes en hiver. Goûtez la truite aux amandes ou les saucisses locales.",
+        "bestTimeToVisit": "Déc. à fév., au déjeuner ou en début d’après-midi (plus doux dans la vallée)",
+        "openingHours": "Tavernes 12 h – 22 h ; boutiques 9 h – 18 h"
+      },
+      "coral-bay": {
+        "winterTip": "Couchers de soleil d’hiver vers 17 h de déc. à janv. Moins de monde, doux pour une balade.",
+        "bestTimeToVisit": "En fin d’après-midi pour le coucher de soleil ; à combiner avec les mosaïques de Paphos ou les Tombeaux des Rois.",
+        "openingHours": "Rivage en accès libre toute l’année. Les tavernes restent souvent ouvertes."
+      },
+      "tomb-of-kings": {
+        "winterTip": "La lumière d’hiver étire les ombres dans les tombeaux ; très photogénique. Le site est plus frais qu’en été. À combiner avec les mosaïques de Paphos et le port.",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "choirokoitia": {
+        "winterTip": "Les matins d’hiver sont parfois brumeux ; spectaculaire en photo. Le site est compact ; comptez 1 h à 1 h 30.",
+        "bestTimeToVisit": "Déc. à fév., 10 h – 12 h (plus doux, moins de brume)",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver, du 16 sept. au 15 avr.)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Le meilleur refuge des jours de pluie. Les salles restent chaudes et sèches. À combiner avec la rue Ledra et un café ; le musée est au centre de Nicosie.",
+        "openingHours": "Mar–ven 8 h – 18 h, sam. 9 h – 17 h, dim. 10 h – 13 h ; fermé le lundi"
+      },
+      "leventis-museum": {
+        "winterTip": "Entrée gratuite. Refuge idéal les jours de pluie. Près de la rue Ledra ; à combiner avec une flânerie dans la vieille ville et un café. Comptez deux heures.",
+        "openingHours": "Mar–dim. 10 h – 16 h 30 ; fermé le lundi et les jours fériés"
+      },
+      "polis": {
+        "winterTip": "La porte de l’Akamas. Le sentier d’Adonis ou d’Aphrodite le matin, le port de Polis au déjeuner. Le poisson est frais. Le domaine Vasilikon est sur la boucle de l’Akamas.",
+        "openingHours": "Tavernes 12 h – 22 h ; boutiques 9 h – 18 h"
+      },
+      "pedoulas": {
+        "openingHours": "Église : clé au musée ; musée 9 h – 16 h"
+      },
+      "platres": {
+        "winterTip": "La saison de ski (janv. à mars) anime le village ; décembre et fin mars sont plus calmes. La météo de montagne change vite ; vérifiez avant de monter.",
+        "bestTimeToVisit": "Déc. à mars, camp de base pour 2 à 3 jours de randonnée"
+      },
+      "lofou": {
+        "winterTip": "Les matins d’hiver en semaine sont les plus calmes. Arrêtez-vous pour un café en allant à Omodos ou en revenant. Le village ne vous attend pas."
+      },
+      "machairas": {
+        "winterTip": "Excursion facile à la journée depuis Nicosie. Les sentiers forestiers sont calmes en hiver. Combinez la visite du monastère avec une marche. Tenue correcte exigée.",
+        "openingHours": "Tous les jours 8 h – 12 h, 14 h – 18 h"
+      },
+      "nissi-beach": {
+        "winterTip": "Calme en hiver. Idéale pour une promenade paisible ou un café en bord de plage. Mer trop froide pour la baignade.",
+        "bestTimeToVisit": "Le matin ou en fin d’après-midi pour la lumière ; à combiner avec le cap Greco ou Protaras.",
+        "openingHours": "Rivage en accès libre toute l’année. Cafés saisonniers."
+      },
+      "kolossi": {
+        "winterTip": "À combiner avec une dégustation de Commandaria ; Zambartas est tout près, ou Kolios dans les collines de Paphos. Le château se visite en 30 à 45 min.",
+        "bestTimeToVisit": "Déc. à mars, en milieu de matinée (assez doux pour monter sur le toit)",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "kition": {
+        "winterTip": "Horaires d’hiver en semaine, 8 h 30 – 16 h ; fermé samedi et dimanche. À combiner avec le lac salé ou Angeloktisti — pas pour une journée à Larnaca limitée au week-end.",
+        "bestTimeToVisit": "Mar–ven le matin ; les flamants du lac salé ensuite",
+        "openingHours": "Lun–ven 8 h 30 – 16 h (hiver, du 16 sept. au 15 avr.). Fermé sam. et dim."
+      },
+      "larnaca-aliki": {
+        "winterTip": "Flamants roses généralement de novembre à mars ; pic au cœur de l’hiver. Venez tôt. Restez sur le sentier — le lac est une réserve protégée.",
+        "bestTimeToVisit": "Nov. à mars, aux premières lueurs ou en fin d’après-midi",
+        "openingHours": "Accès libre toute l’année. Sentier du lac sans billet."
+      },
+      "lara-bay": {
+        "winterTip": "Pas de nidification en hiver ; la plage est déserte. 4×4 recommandé pour la piste d’accès. À combiner avec les sentiers de l’Akamas.",
+        "bestTimeToVisit": "Le matin ; à combiner avec le sentier d’Adonis ou d’Aphrodite, Polis au déjeuner.",
+        "openingHours": "Rivage en accès libre toute l’année. Aucun équipement ; emportez de l’eau."
+      },
+      "limassol-marina": {
+        "winterTip": "Moins de monde qu’en été. Soirées douces. Les cafés de la promenade restent ouverts. À combiner avec Kolossi, Kourion ou la vieille ville.",
+        "bestTimeToVisit": "Déc. à mars, en fin d’après-midi pour la lumière dorée",
+        "openingHours": "Promenade toujours ouverte. Boutiques et cafés aux horaires saisonniers."
+      },
+      "ayia-napa-sea-caves": {
+        "winterTip": "La lumière d’hiver, dorée et basse, est idéale pour la photo. Mer trop froide pour la baignade ; prévoyez un coupe-vent. À combiner avec le sentier du cap Greco.",
+        "bestTimeToVisit": "En fin d’après-midi pour la lumière dorée ; à combiner avec le cap Greco et Konnos.",
+        "openingHours": "Falaises en accès libre toute l’année."
+      },
+      "st-sozomenos": {
+        "winterTip": "La lumière d’hiver, basse et dorée, est idéale pour la photo. Habillez-vous en couches ; le site est exposé. À combiner avec les musées de Nicosie ou la rue Ledra pour une journée complète dans la capitale.",
+        "bestTimeToVisit": "Le matin ou en fin d’après-midi ; la lumière d’hiver adoucit les ruines. Vérifiez l’accès et le statut de la zone tampon avant de partir.",
+        "openingHours": "Vérifiez l’accès — zone tampon. À confirmer avant la visite."
+      },
+      "panagia-asinou": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. : mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (Visit Cyprus). Fermé le lundi. À combiner avec Nikitari et Idalion.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "st-john-lampadistis": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Tenue correcte exigée. À combiner avec le pont vénitien du village.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "gerakopetra-boulders": {
+        "winterTip": "Pleine saison de déc. à mars par temps sec. Les secteurs nord-est restent froids — commencez en milieu de matinée ou filez à Episkopi pour le soleil. Prévoyez des couches pour l’assurage. Attendez 24 h après la pluie — le grès doit sécher. La piste peut être boueuse ; 4×4 utile mais pas indispensable.",
+        "bestTimeToVisit": "Déc. à mars, 10 h – 15 h"
+      },
+      "panagia-tou-moutoulla": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). La plus petite du groupe ; prenez le temps, puis continuez vers Pedoulas.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "angeloktisti": {
+        "winterTip": "Église de village paisible. La plupart des bus touristiques passent sans s’arrêter. Les matins d’hiver sont parfaits. À combiner avec Zygi ou Lefkara pour une journée dans l’arrière-pays de Larnaca.",
+        "openingHours": "Hiver (du 1er oct. au 31 avr.) : lun–sam. 7 h – 16 h 45, dim. 9 h 30 – 16 h 45 (DMT 2025). À confirmer sur place."
+      },
+      "idalion": {
+        "winterTip": "Moins de visiteurs en hiver. Vous aurez peut-être le site pour vous. Les oliviers et la vue depuis la colline valent le détour depuis Nicosie.",
+        "openingHours": "Musée local lun–ven 8 h 30 – 16 h (DMT 2025). Les horaires du parc archéologique varient — tél. 22 444818."
+      },
+      "archangelos-michail": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Si la porte est fermée, demandez au musée d’art populaire ou au café.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "panagia-tou-araka": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). Confirmez que la porte est ouverte avant de rouler jusqu’à Lagoudera.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "st-nicholas-roof": {
+        "winterTip": "Horaires d’hiver du 16 sept. au 15 avr. (ministère de la Culture, août 2025). À combiner avec le vieux quartier de Kakopetria et une truite au déjeuner.",
+        "openingHours": "Mar–sam. 10 h – 16 h 30, dim. 11 h – 16 h 30 (hiver, du 16 sept. au 15 avr.). Fermé le lundi. À confirmer sur place."
+      },
+      "buffavento": {
+        "winterTip": "Chypre du Nord. Couvrez-vous ; le château prend le vent. Vérifiez le passage de la ligne verte depuis le sud avant de partir. Les journées d’hiver dégagées offrent la meilleure visibilité. La montée réchauffe.",
+        "openingHours": "Tous les jours 9 h – 17 h (nord de Chypre ; horaires variables)"
+      },
+      "st-hilarion": {
+        "winterTip": "Chypre du Nord. Vérifiez le passage de la ligne verte depuis le sud avant de partir ; la situation peut changer. Couvrez-vous ; le château prend le vent. Les journées d’hiver dégagées offrent la meilleure visibilité.",
+        "openingHours": "Tous les jours 9 h – 17 h (nord de Chypre ; horaires variables)"
+      },
+      "chrysorrogiatissa": {
+        "winterTip": "La région de Paphos reste douce. Les vues sur le district sont dégagées en hiver. Achetez une bouteille. À combiner avec Vouni Panayia pour une journée vin et monastère.",
+        "openingHours": "Tous les jours 9 h – 12 h, 15 h – 18 h (hiver) ; musée 9 h – 13 h, 14 h – 17 h"
+      },
+      "athalassa-forest-park": {
+        "winterTip": "Après la pluie, restez sur les pistes principales — les sentiers latéraux sont boueux. Centre des visiteurs ouvert en semaine ; vérifiez les horaires hors saison. Des couches pour les descentes à vélo.",
+        "openingHours": "Parc ouvert de l’aube au crépuscule. Les horaires du centre varient — hors saison, appelez avant."
+      },
+      "mackenzie-larnaca-coast": {
+        "winterTip": "Vérifiez le vent pour le kite ; les matins calmes conviennent mieux au snorkeling et au SUP. Combinaison 3 mm de déc. à fév. Les plongées sur le Zenobia se réservent à part, depuis la marina de Larnaca.",
+        "openingHours": "Rivage en accès libre toute l’année. Écoles et location de matériel saisonnières."
+      },
+      "agros": {
+        "winterTip": "Les roses fleurissent d’avr. à mai. En hiver, la fabrique travaille la récolte stockée. Les visites continuent. Eau de rose, loukoums. Les tavernes sont chaudes. L’air de montagne est froid.",
+        "openingHours": "Fabrique de roses 8 h – 17 h ; visites sur arrangement"
+      },
+      "koilani": {
+        "winterTip": "Festival de la Commandaria en décembre. Musée du vin 10 h – 16 h. Même en janvier, les tavernes sont chaudes. À combiner avec Vlassides, Omodos, Pera Pedi. Prévoyez de manger.",
+        "openingHours": "Musée du vin 10 h – 16 h ; tavernes 12 h – 22 h"
+      },
+      "palaipafos": {
+        "winterTip": "Plus calme que les mosaïques principales de Paphos. Moins de groupes en hiver. À combiner avec les Tombeaux des Rois et Vouni Panayia pour une journée complète à Paphos.",
+        "openingHours": "Mar–dim. 8 h 30 – 17 h ; fermé le lundi (depuis le 1er juil. 2024)"
+      },
+      "kalopanagiotis": {
+        "winterTip": "Les sources thermales sont doublement bienvenues en hiver. La vallée est froide et vive. Réservez un bain. Le pont et l’église Lampadistis. Comptez une heure.",
+        "openingHours": "Horaires des bains variables ; pont et village toujours ouverts"
+      },
+      "foini": {
+        "winterTip": "Détour sur la route de Platres ou du Troodos. Le musée et les ateliers restent ouverts. L’hiver est calme. Repartez avec une petite cruche ou un bol.",
+        "openingHours": "Musée 9 h – 16 h (vérifiez les horaires d’hiver) ; ateliers variables"
+      },
+      "stavrovouni": {
+        "winterTip": "Par temps clair en hiver, la vue sur la Mesaoria depuis le parking constitue la visite pour la plupart. Les femmes ne peuvent pas entrer dans le monastère proprement dit.",
+        "openingHours": "Hommes : 8 h – 12 h, 15 h – 17 h ; chapelle en contrebas : demandez sur place"
+      },
+      "salamis": {
+        "winterTip": "Chypre du Nord. Vérifiez l’accès et les règles de passage. L’hiver est doux pour explorer ; la chaleur d’été peut être écrasante. Comptez une matinée entière.",
+        "openingHours": "Tous les jours 9 h – 17 h (nord de Chypre ; horaires variables)"
+      },
+      "tzelefos-bridge": {
+        "winterTip": "La route peut être glissante après la pluie. Portez des chaussures imperméables. Taverne de Milia au déjeuner. À combiner avec les départs de Vretsia ou Roudias.",
+        "bestTimeToVisit": "Déc. à mars, en milieu de matinée avant que les nuages s’installent"
+      },
+      "bellapais": {
+        "winterTip": "Concerts d’hiver dans le réfectoire. Consultez le programme. Couvrez-vous ; la pierre garde le froid. L’abbaye au crépuscule.",
+        "openingHours": "Tous les jours 9 h – 17 h (hiver) ; peut varier dans le nord de Chypre"
+      },
+      "st-george-alamanou": {
+        "winterTip": "Couvent côtier, plus doux que le Troodos. Tenue correcte. À combiner avec le sentier du cap Greco, puis laissez les sœurs en paix.",
+        "openingHours": "Couvent en activité ; appelez avant. Tenue correcte exigée."
+      },
+      "fikardou": {
+        "winterTip": "Village UNESCO. Le musée ouvre de 9 h à 16 h. L’hiver est calme. À combiner avec une journée à Nicosie ou dans le Troodos. Le silence est le cadeau.",
+        "openingHours": "Musée 9 h – 16 h ; village toujours ouvert"
+      },
+      "cape-greco-climbing": {
+        "winterTip": "Côte douce quand le Troodos est froid. Vérifiez le vent ; les arêtes exposées exigent des jours calmes. Escalade guidée recommandée si vous découvrez le secteur.",
+        "bestTimeToVisit": "Déc. à mars, le matin pour un vent calme"
+      },
+      "st-neophytos": {
+        "winterTip": "La région de Paphos reste douce en hiver. Idéal pour une visite matinale. À combiner avec Vouni Panayia ou Tsangarides pour une journée complète.",
+        "openingHours": "Tous les jours 9 h – 13 h, 14 h – 18 h (hiver)"
+      },
+      "trooditissa": {
+        "winterTip": "La route depuis Platres peut être enneigée de janv. à fév. Appelez avant. Quand c’est ouvert, la route sous les pins est l’essentiel.",
+        "openingHours": "Tous les jours 8 h – 12 h, 14 h – 17 h. Après la neige, appelez avant."
+      },
+      "troodos-cycling-hub": {
+        "winterTip": "Vérifiez la météo ; la neige ferme les routes hautes de janv. à mars. Les itinéraires de moyenne altitude restent souvent dégagés tout l’hiver. Des lumières pour les jours courts.",
+        "bestTimeToVisit": "Déc. à mars, 10 h – 15 h"
+      },
+      "paphos-castle": {
+        "winterTip": "La promenade du port en hiver est douce et sans foule. L’intérieur du château est petit ; visite de 30 min. À combiner avec les mosaïques de Paphos.",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      },
+      "amahti": {
+        "winterTip": "L’hiver est idéal ; la chaleur d’été peut être brutale. À combiner avec Governor's Beach pour une journée côtière.",
+        "openingHours": "Tous les jours 8 h 30 – 17 h (hiver)"
+      }
+    },
+    "trails": {
+      "petra-tou-romiou": {
+        "winterNotes": "Marche d'hiver idéale ; températures douces et moins de monde. Les vagues forcissent après les tempêtes ; les jours agités, restez bien en retrait de la ligne d'eau.",
+        "winterSafety": "Ne vous baignez pas ici ; les courants sont forts même par mer calme. Par tempête hivernale, restez en retrait de la ligne d'eau ; des vagues isolées montent plus haut que prévu. Le vent côtier peut être vif ; prenez une épaisseur.",
+        "localSecret": "Une fois rassasié du rocher d'Aphrodite, marchez vers l'est jusqu'aux criques plus calmes. Les falaises basses offrent de meilleures vues photo, surtout en fin d'après-midi quand la lumière tombe derrière vous."
+      },
+      "artemis": {
+        "winterNotes": "Le guide officiel recommande mars–novembre ; faisable en hiver hors gel. Le sentier peut être verglacé après un coup de froid ; vérifiez les conditions avant de partir.",
+        "winterSafety": "Après un coup de froid, les sections hautes peuvent être verglacées. Emportez des crampons légers (microspikes) si la prévision frôle zéro. Le centre des visiteurs du Troodos affiche les conditions. Réseau aléatoire ; prévenez quelqu'un de votre itinéraire.",
+        "localSecret": "Partez dans le sens antihoraire ; la section est offre les plus belles vues, et vous y arrivez avant midi. Le plus calme : les matins de semaine."
+      },
+      "olympus-summit": {
+        "winterNotes": "Neige/verglas fréquents de janv. à mars. Microspikes recommandés. Vérifiez le statut de la station ; l'accès au domaine peut être restreint.",
+        "winterSafety": "Neige et verglas fréquents de janv. à mars. Microspikes ou crampons souvent nécessaires. Vérifiez le statut de la station ; l'accès peut être restreint. Ne tentez rien par jour blanc ou grand vent. Urgences : 112.",
+        "localSecret": "Par temps clair d'hiver, on voit les deux côtes. Partez tôt ; les nuages montent souvent vers midi. Le café de la station réchauffe après la marche."
+      },
+      "caledonia-falls": {
+        "winterNotes": "Sections boueuses après la pluie. Fort risque de glissade aux traversées de rivière. Portez des chaussures imperméables. Le débit de la cascade culmine en fin d'hiver/printemps.",
+        "winterSafety": "Rochers glissants près de la cascade. Restez sur le sentier. Le torrent peut monter vite après la pluie ; ne tentez rien par temps d'orage. Sentier parfois boueux ; chaussures imperméables indispensables.",
+        "localSecret": "La cascade est la plus impressionnante 1 à 2 jours après la pluie. Vérifiez le débit en ligne ou demandez dans les cafés de Platres."
+      },
+      "adonis": {
+        "winterNotes": "La meilleure saison pour ce sentier. Températures fraîches, moins de foule. Quelques passages boueux après la pluie.",
+        "winterSafety": "L'hiver est idéal ; évitez la chaleur estivale. Quelques passages boueux après la pluie. Restez sur le sentier balisé ; l'Akamas recèle par endroits des munitions non explosées.",
+        "localSecret": "Remplissez votre gourde à la source Kefalovrysia. Le café des Bains d'Aphrodite, au départ, fait un bon café d'après-marche. Au retour de la boucle, combinez avec le domaine Kolios ou Vasilikon."
+      },
+      "madari-ridge": {
+        "winterNotes": "Parfois venteux. Neige sur la crête de janv. à fév. Par temps clair, la côte s'étend à perte de vue.",
+        "winterSafety": "La crête est exposée ; le refroidissement éolien est marqué. Neige possible de janv. à fév. Vue à 360° par temps clair. Urgences : 112.",
+        "localSecret": "La tour de guet au km 2,5. Montez-y si vous pouvez ; la vue à 360° vaut les pas en plus. Le domaine Kyperounta est proche — parmi les plus hauts d'Europe. Combinez si vous avez le temps."
+      },
+      "atalante": {
+        "winterNotes": "Le guide officiel recommande mars–novembre ; en hiver seulement hors gel. Plus long qu'Artémis — partez tôt.",
+        "winterSafety": "Longue boucle — ne la sous-estimez pas. Verglas après un coup de froid ; microspikes si besoin. Prévenez quelqu'un de votre itinéraire. Urgences : 112.",
+        "localSecret": "Faites Artémis et Atalante des jours différents. Les enchaîner fait une très longue sortie ; le circuit commun de Chionistra est le trait d'union."
+      },
+      "avakas-gorge": {
+        "winterNotes": "Vérifiez la météo ; à éviter après la pluie. Les gorges peuvent être glissantes. Au mieux de déc. à avr., quand la rivière est praticable.",
+        "winterSafety": "N'entrez PAS après de fortes pluies ; risque de crue subite. Les gorges peuvent être glissantes. Au mieux de déc. à avr., quand la rivière est basse. Urgences : 112.",
+        "localSecret": "Au point le plus étroit, le ciel devient un ruban. Allez lentement. Le domaine Avakas est proche ; combinez les gorges avec une dégustation. Appelez avant de venir."
+      },
+      "panagia-araka-stavros": {
+        "winterNotes": "Plus frais au-dessus de 1 000 m. Montées et descentes de niveau 3. Les églises peuvent avoir des horaires d'hiver réduits — vérifiez avant d'y aller.",
+        "winterSafety": "Itinéraire linéaire — organisez une récupération à Stavros tou Agiasmati ou revenez par la route. Niveau 3 ; glissant par temps humide.",
+        "localSecret": "Commencez par Panagia tou Araka pour les fresques, puis marchez vers Agiasmati tant que la lumière est encore belle sur les vignes."
+      },
+      "cape-greco": {
+        "winterNotes": "Randonnée d'hiver idéale. Pas de neige, températures douces. Parfait pour fuir le froid d'ailleurs.",
+        "winterSafety": "Randonnée d'hiver idéale ; douce, sans neige. Le vent côtier peut être vif ; prenez une épaisseur. Sentier bien balisé.",
+        "localSecret": "Partez de la baie de Konnos et marchez vers les grottes marines. La lumière sur le calcaire est la plus belle l'après-midi. Combinez avec Konnos — baignade l'été, café l'hiver."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Sections boueuses. Neige possible côté Troodos. Partez tôt.",
+        "winterSafety": "Itinéraire linéaire : organisez un transport. Sections boueuses ; neige possible côté Troodos. Randonnée à la journée ; partez tôt.",
+        "localSecret": "La cascade de Caledonia au km 4 marque la mi-parcours. Arrêtez-vous-y. Reposez-vous. La cascade est la récompense avant la dernière montée vers Troodos. Organisez votre navette avant de partir."
+      },
+      "horteri": {
+        "winterNotes": "Neige possible de janv. à mars. Microspikes parfois nécessaires. Partez tôt.",
+        "winterSafety": "Réservé aux randonneurs expérimentés. Neige probable de janv. à mars en altitude. Microspikes indispensables. Prévenez quelqu'un de votre itinéraire. Urgences : 112.",
+        "localSecret": "La solitude est la récompense. Vous croiserez peu de monde. La crête forestière offre des moments de pur silence. Méritez votre déjeuner à Platres."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Sentier linéaire de niveau 3. Boueux et glissant après la pluie. Fort débit de la cascade en fin d'hiver.",
+        "winterSafety": "Niveau 3 — sections raides et traversées de ruisseau. Les passerelles en bois glissent quand elles sont mouillées. Pas un itinéraire pour débutants malgré la courte distance.",
+        "localSecret": "Faites Millomeris quand Caledonia en demande trop. Le débit culmine 1 à 2 jours après la pluie. Truite à Platres ensuite."
+      },
+      "aphrodite": {
+        "winterNotes": "Randonnée d'hiver idéale. Températures côtières douces. Fleurs sauvages de fév. à mars.",
+        "winterSafety": "Randonnée côtière d'hiver idéale. Températures fraîches, fleurs sauvages de fév. à mars. Prenez un coupe-vent ; crête exposée.",
+        "localSecret": "Moutti tis Sotiras est le point culminant. Arrêtez-vous-y. La vue sur la baie s'ouvre. Le café des Bains d'Aphrodite vous attend à l'arrivée. Vous l'avez mérité."
+      },
+      "almirolivado": {
+        "winterNotes": "Au mieux en hiver. Le lac n'apparaît qu'après la neige ou de fortes pluies. Glissant par temps de gel.",
+        "winterSafety": "Des sections peuvent glisser par temps de gel. Ne tentez pas seul. Urgences : 112.",
+        "localSecret": "Allez-y avec quelqu'un qui connaît. Le lac n'apparaît qu'après la neige ou la pluie. Le détour vers le genévrier géant ajoute 1 km et en vaut la peine."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Le guide officiel indique mars–novembre ; neige possible. Linéaire — organisez un transport aux deux extrémités. Attention aux embranchements forestiers au départ.",
+        "localSecret": "Le premier kilomètre est commun avec Kampos tou Livadiou. Les vues depuis le bord des falaises sont la récompense. Kakopetria pour déjeuner à l'arrivée."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Le guide officiel indique mars–novembre ; souvent dégagé quand les sentiers plus hauts sont enneigés. Attention aux embranchements forestiers au départ.",
+        "localSecret": "La vue sur la vallée de Solea s'ouvre à mi-boucle. Plus calme qu'Artémis et Atalante. À combiner avec les tavernes à truites de Platres."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Au mieux en hiver. Évitez la pluie. Serpents moins actifs. N'y allez pas seul.",
+        "winterSafety": "Ne randonnez pas seul. Serpents possibles aux mois chauds. Réseau aléatoire. Prévenez quelqu'un de votre itinéraire.",
+        "localSecret": "Au km 5, vieille piste — à droite au réservoir d'eau. À gauche dans le virage, pas à droite. Très peu connaissent ce sentier."
+      },
+      "smigies": {
+        "winterNotes": "Randonnée d'hiver idéale. Fraîcheur, ombre de la forêt. Quelques passages boueux après la pluie. Risque de glissade sur les sections rocheuses.",
+        "localSecret": "La grande boucle passe devant les fours abandonnés — une page d'histoire de l'Akamas. Reliez-vous au sentier d'Adonis à Kefalovrysia pour une journée plus longue."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Linéaire en descente — organisez un transport à Phini. Route partagée avec les véhicules.",
+        "localSecret": "À l'arrivée, loukoumia de Phini et musée de la céramique Pilavakion. Sur le corridor cyclable CTO Prodromos–Psilo Dentro."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Traversées de rivière fréquentes — fort risque de glissade après la pluie. Organisez un transport à Kakopetria.",
+        "localSecret": "Terminez à Agios Nikolaos tis Stegis ; poursuivez 3 km par la route jusqu'au vieux quartier de Kakopetria."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Le guide officiel indique avril–novembre ; en hiver la rivière monte — risque de glissade aux traversées. Linéaire — organisez un transport.",
+        "localSecret": "La vallée des Aigles. Courte mais pleine de caractère. À associer à Chrysovrysi ou au jardin botanique d'Amiantos."
+      },
+      "livadi-trail": {
+        "winterNotes": "Le guide officiel indique avril–octobre ; souvent dégagé quand les sentiers plus hauts sont enneigés. Bien pour les familles.",
+        "localSecret": "Court et charmant. À combiner avec l'aire de pique-nique de Kampos tou Livadiou. Idéal pour débuter ou en famille."
+      },
+      "stavros-tis-psokas": {
+        "winterNotes": "Frais et calme en hiver. La route peut être cahoteuse ; vérifiez les conditions. Moins de monde que sur les sentiers côtiers.",
+        "localSecret": "On aperçoit parfois des mouflons tôt le matin. La piste forestière d'accès a un goût d'aventure ; un 4x4 aide par temps humide."
+      },
+      "venetian-bridges": {
+        "winterNotes": "Forêt isolée. Air d'hiver vif ; jours plus courts — partez tôt pour la route complète.",
+        "localSecret": "La section 2, de Tzielefos à l'aire de pique-nique de Pera Vasa, est la demi-journée classique — gardez la traversée complète pour une longue journée d'hiver."
+      },
+      "chrysovrysi": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Linéaire en descente — organisez une navette à Amiantos. Eau de source au départ.",
+        "localSecret": "Remplissez les gourdes à Chrysovrysi. Terminez près du jardin botanique d'Amiantos / centre des visiteurs du géoparc."
+      },
+      "moni-fylagra": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Sections rocheuses — risque de glissade. Linéaire ; comptez 2 heures si vous revenez par le même chemin.",
+        "localSecret": "Visitez ensuite Timios Stavros à Pelendri (UNESCO). Les domaines des Krasochoria sont proches."
+      },
+      "aphrodite-cape-greco": {
+        "winterNotes": "Marche d'hiver idéale. Douce. Toute l'année selon le guide officiel. À ne pas confondre avec le sentier d'Aphrodite de l'Akamas.",
+        "localSecret": "Petite boucle qui se relie aux grottes marines et à Konnos–Agioi Anargyroi. La plus belle lumière sur le calcaire : en fin d'après-midi."
+      },
+      "ezousa-valley": {
+        "winterNotes": "Collines douces de Paphos. La vallée peut être boueuse après la pluie. Le centre propose expositions et documentaires.",
+        "localSecret": "La vue depuis l'église rupestre est la récompense — partez en fin de matinée pour que la lumière ouvre la vallée."
+      },
+      "machairas-forest": {
+        "winterNotes": "Bonne randonnée d'hiver. Le monastère est à 870 m ; couvrez-vous. Souvent dégagé quand le Troodos est enneigé.",
+        "localSecret": "Le monastère est la pièce maîtresse. Sentier forestier, air de montagne. Agros ensuite, pour les loukoumia et les produits à la rose."
+      },
+      "vretsia-roudias": {
+        "winterNotes": "Calme en hiver. Forêt fraîche. La route de Vretsia semble être la mauvaise — continuez.",
+        "localSecret": "Ne tentez pas depuis Agios Ioannis — passez par Vretsia. Les ruines du moulin à eau, à mi-chemin, renforcent le sentiment du temps."
+      },
+      "persephone": {
+        "winterNotes": "Fleurs sauvages de fév. à mars dans les clairières. Verglas possible après un coup de froid ; vérifiez les conditions.",
+        "localSecret": "De fin février à début mars : cherchez cyclamens et anémones dans les clairières. Moins fréquenté qu'Artémis."
+      },
+      "kryos-potamos-loop": {
+        "winterNotes": "Boueux après la pluie. Portez des chaussures imperméables. Le débit du torrent est fort en hiver.",
+        "localSecret": "Le torrent, la mousse, la forêt. Un avant-goût plus doux de la vallée de Caledonia. Truite au Psilo Dendro ensuite."
+      },
+      "e4-troodos-platres": {
+        "winterNotes": "Vérifiez les conditions ; neige possible en altitude. Souvent dégagé en décembre ou en mars.",
+        "localSecret": "Un avant-goût du E4 complet. Les bons marcheurs ajoutent la cascade de Caledonia en détour. Platres pour se réchauffer ensuite."
+      },
+      "sea-caves-anargyroi": {
+        "winterNotes": "Hiver = moins de monde. Doux. Marche côtière idéale. Toute l'année selon le guide officiel.",
+        "localSecret": "Ne manquez pas le genévrier protégé, battu par les vents, après le virage de Cape Greco. Aire de pique-nique à l'ouest de l'église."
+      },
+      "pissouromoutti": {
+        "winterNotes": "Randonnée d'hiver idéale. Sections fraîches et ombragées. Risque de glissade après la pluie.",
+        "localSecret": "Les vues du sommet s'ouvrent tout en haut. À combiner avec la grande boucle de Smigies pour une matinée complète. Déjeuner à Polis."
+      },
+      "chorteri": {
+        "winterNotes": "Frais en altitude. Boueux après la pluie. Le café de la station forestière ouvre en saison.",
+        "localSecret": "Passez voir les mouflons de la station avant de partir — la forêt récompense les départs matinaux."
+      },
+      "agioi-anargyroi-circular": {
+        "winterNotes": "Marche d'hiver idéale. Douce. Plus calme qu'en été. Toute l'année selon le guide officiel.",
+        "localSecret": "Trois points de départ — garez-vous au plus tranquille. À combiner avec Kavos ou la grotte du Cyclope pour une journée entière dans le parc."
+      },
+      "kavos-trail": {
+        "winterNotes": "Marche d'hiver idéale. Douce, côtière. Falaises rocheuses abruptes côté sud — restez sur le sentier.",
+        "localSecret": "Moins fréquenté que le sentier du Cyclope. À combiner avec Grottes marines–Agioi Anargyroi pour une plus longue journée côtière."
+      },
+      "prodromos-dam-stavroulia": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Forte descente — bons marcheurs seulement. Organisez un transport.",
+        "localSecret": "À combiner avec Prodromos–Zoumi pour une journée Marathasa plus complète. Attention aux appuis dans la descente."
+      },
+      "troodos-visitor-centre": {
+        "winterNotes": "Ouvert toute l'année quand le centre des visiteurs l'est. Neige possible sur la route d'accès de janv. à mars.",
+        "localSecret": "À combiner avec les expositions du centre — 12 espèces de plantes d'ici n'existent nulle part ailleurs sur Terre."
+      },
+      "politiko-machairas": {
+        "winterNotes": "L'hiver est magique — le ruisseau coule, tout verdit. Première moitié exposée ; seconde ombragée.",
+        "localSecret": "Allez-y après la pluie. La traversée du pont est le point fort. Le café de Machairas réchauffe ensuite."
+      },
+      "symvoulas": {
+        "winterNotes": "Longue journée forestière. Comptez 4 h et plus. Plus frais en altitude ; emportez de l'eau.",
+        "localSecret": "Partez tôt pour le panorama de l'Akamas au point de vue de mi-parcours — la lumière du golfe est la plus belle avant midi."
+      },
+      "ariadni": {
+        "winterNotes": "Boucle de niveau 3. Sections exposées ; partez tôt. L'hiver est la saison confortable.",
+        "localSecret": "Les jours nuageux rendent la crête agréable. Le village de Gerakies pour une halte d'après-marche."
+      },
+      "prodromos-zoumi": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Risque de glissade. Linéaire — organisez un transport.",
+        "localSecret": "À Zoumi, vous pouvez enchaîner sur Barrage de Prodromos–Stavroulia. Les tavernes de Prodromos pour déjeuner."
+      },
+      "vavatsinia-honeybee": {
+        "winterNotes": "Marche d'hiver facile. Village à 700 m ; couvrez-vous. Calme et paisible.",
+        "localSecret": "L'un des neuf villages du miel du Larnaka rural. Infos sur l'apithérapie et la communication des abeilles le long du sentier."
+      },
+      "vouni-panagias": {
+        "winterNotes": "Boucle de niveau 3 dans les collines de Laona. Frais en hiver ; parfois boueux. Comptez une matinée entière.",
+        "localSecret": "À combiner avec le domaine Vouni Panayia. La route de Laona récompense ceux qui marchent et dégustent."
+      },
+      "agia-varvara-stavrovouni": {
+        "winterNotes": "Évitez les marches en bois quand elles sont mouillées — glissantes. Au mieux par temps sec.",
+        "localSecret": "Garez-vous à Agia Varvara si le parking du départ est plein. À combiner avec la boucle de Stavrovouni pour un vrai entraînement."
+      },
+      "konnoi-cyclops": {
+        "winterNotes": "Marche d'hiver idéale. Douce, sans neige. Toute l'année selon le guide officiel.",
+        "localSecret": "Café et sports nautiques à Konnos. À combiner avec la boucle d'Agioi Anargyroi pour une matinée plus complète dans le parc."
+      },
+      "cape-aspro": {
+        "winterNotes": "Idéal en hiver. Aucune ombre. Les jours nuageux ajoutent du drame.",
+        "localSecret": "Passage étroit au départ — praticable mais prudence. L'alliance des falaises et de la mer est inoubliable."
+      },
+      "treis-elies": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Au mieux après la pluie, quand la rivière coule — sinon, une douce échappée de Limassol quand même."
+      },
+      "gnafkio": {
+        "winterNotes": "L'hiver apporte la neige sur le Troodos. La mousse et le vert sont saisissants.",
+        "localSecret": "Partez de Kykkos–Tsakistra pour avoir la descente raide en premier. Près du départ de Gnafkio se trouve Panthea."
+      },
+      "kionia-profitis-elias": {
+        "winterNotes": "Randonnée d'hiver idéale. Forêt fraîche. Le départ de Profitis Elias demande 5 km de piste.",
+        "localSecret": "Partez de Kionia pour descendre vers Profitis Elias. Prévoyez une voiture à chaque extrémité."
+      },
+      "psilo-dentro-pouziaris": {
+        "winterNotes": "Le guide officiel indique mars–novembre. Risque de glissade. Bons marcheurs seulement.",
+        "localSecret": "Garez-vous au restaurant Psilo Dentro. Platres est à quelques mètres pour se réchauffer après."
+      },
+      "mesa-potamos": {
+        "winterNotes": "Doux. Bonne option d'hiver. Le débit culmine au printemps.",
+        "localSecret": "Depuis Limassol : route de Saittas, Kato Amiantos. Guettez les panneaux de la cascade. Le monastère est la surprise."
+      },
+      "stavrovouni-trail": {
+        "winterNotes": "Au mieux en hiver. Exposé — aucune ombre. À éviter sous la pluie.",
+        "localSecret": "Faites-le dans le sens horaire — les panneaux sont visibles ainsi. À combiner avec Agia Varvara–Stavrovouni pour une grande journée."
+      },
+      "argakas-dam": {
+        "winterNotes": "Douce forêt de Paphos. Les pistes forestières peuvent être boueuses après la pluie.",
+        "localSecret": "La vue sur le barrage est la récompense — prenez le temps au belvédère nord avant de boucler."
+      },
+      "karvounarka": {
+        "winterNotes": "La brume d'hiver ajoute de l'atmosphère. Second tronçon sur route — exposé en été.",
+        "localSecret": "À combiner avec Moutti tis Athasias pour la grotte. Les restaurants de Vavatsinia pour déjeuner."
+      },
+      "moutti-anemwn": {
+        "winterNotes": "Calme en hiver. Venteux au sommet — d'où le nom.",
+        "localSecret": "À combiner avec Gefyria pour une journée plus longue. La forêt de Paphos a un autre caractère que le Troodos."
+      },
+      "agia-tilliria": {
+        "winterNotes": "Frais et calme. La région a un autre parfum — plus reculée.",
+        "localSecret": "Revenez par l'asphalte pour boucler. La vue sur la mer depuis la forêt est rare à Chypre."
+      },
+      "kastrovounos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "À combiner avec Millomeris ou la truite de Platres pour une douce demi-journée dans le Troodos."
+      },
+      "lazanias-fikardou": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Terminez à Fikardou et ses maisons de pierre préservées — prévoyez une voiture à chaque extrémité."
+      },
+      "kalevounari": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Courte échappée de Limassol — à combiner avec le déversoir de Germasogeia pour une double boucle."
+      },
+      "germasogeia-weir": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Pas la randonnée de 13 km de Kyparissia — c'est la boucle facile de la presqu'île du déversoir."
+      },
+      "kalopanagiotis-oikos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Commencez au monastère pour les fresques, puis marchez vers Oikos."
+      },
+      "dymes-pelendri": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Un air d'ancien chemin muletier — un discret trait d'union des Krasochoria entre les villages."
+      },
+      "fikardou-archontides": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Maillon de la chaîne E4 Machairas–Fikardou — planifiez la journée linéaire complète."
+      },
+      "selladi-trypilos": {
+        "winterNotes": "Neige et brouillard possibles. Vérifiez les conditions. Stationnement limité.",
+        "localSecret": "Le parking se remplit vite. Allez-y tôt. Les cèdres ne ressemblent à rien d'autre sur l'île."
+      },
+      "polystypos-hazelnut": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Le chêne ancestral au bout est la récompense — prenez le temps de vous attarder."
+      },
+      "archangelos-mylos-rodous": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Courte combinaison d'églises UNESCO — Galata et Kakopetria en une journée."
+      },
+      "agros-kato-mylos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Après la boucle, arrêtez-vous à Agros pour les loukoumia et les produits à la rose."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Marche d'hiver facile. Douce. Bien pour les familles.",
+        "localSecret": "Doux et calme. Oliveraies et lumière d'hiver. Les domaines des Krasochoria sont proches."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Marche d'hiver facile. Douce. Bien pour les familles. Barrage et forêt.",
+        "localSecret": "Un favori du dimanche. La vue sur le barrage s'ouvre en montant. Calme en hiver."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Vérifiez les conditions ; neige possible. Souvent dégagé en décembre ou en mars.",
+        "localSecret": "Plus calme qu'Artémis. Crête et forêt. Truite à Platres ensuite."
+      },
+      "horteri-extended": {
+        "winterNotes": "Frais en altitude. Souvent dégagé. Platres tout près pour se réchauffer.",
+        "localSecret": "Plus calme qu'Artémis. Plus qu'un dégourdissement de jambes. La truite de Platres récompense."
+      },
+      "agia-irini": {
+        "winterNotes": "Randonnée d'hiver idéale. Fraîche, ombragée. Sol rocheux.",
+        "localSecret": "L'une des plus belles gorges de Chypre. Passages étroits, plantes endémiques. Organisez un transport."
+      },
+      "mylikouri": {
+        "winterNotes": "Vif en hiver. Souvent dégagé. Truite à Kakopetria ensuite.",
+        "localSecret": "Un classique de la vallée de Solea. Forêt, ruisseaux. La truite de Kakopetria récompense."
+      },
+      "persephone-extended": {
+        "winterNotes": "Frais en altitude. Souvent dégagé. Platres à proximité.",
+        "localSecret": "Encore plus de Perséphone. Forêt, montagne. Truite à Platres ensuite."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Souvent dégagé. Doux. Bien pour les familles.",
+        "localSecret": "Chêne doré, pin noir. Court et doux. Idéal pour une mise en jambes."
+      },
+      "lefkara-path": {
+        "winterNotes": "Sentier descendant de niveau 3. Douces collines de Larnaca. Villages plus calmes en hiver.",
+        "localSecret": "Dentelle et pierre. De village en village. Poisson à Zygi ensuite."
+      },
+      "potamia-dam": {
+        "winterNotes": "Doux. Bonne échappée de la capitale. Vues sur le barrage et l'eau.",
+        "localSecret": "Barrage, oiseaux, eau. Échappée facile de la capitale. Loukoumia à Agros ensuite."
+      },
+      "kionia": {
+        "winterNotes": "Vif. Vérifiez les conditions. Platres à proximité.",
+        "localSecret": "Une solide demi-journée. Forêt et crêtes. Truite à Platres."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Vif. Frais en altitude. Platres ou Kakopetria ensuite.",
+        "localSecret": "Le nom raconte une histoire. Forêt, montagne. Caractère du Troodos."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Boue possible. Chaussures imperméables. La cascade récompense.",
+        "localSecret": "Un autre chemin vers les mêmes chutes. Forêt, ruisseau. Platres réchauffe ensuite."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Doux. Vues sur la côte. Vérifiez l'accès. Bellapais et St Hilarion à proximité.",
+        "localSecret": "Les Cinq Doigts. Côte et chaîne. L'abbaye de Bellapais en ligne de mire."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Flamants en hiver. Plat, facile. Idéal pour les ornithologues.",
+        "localSecret": "Flamants, sel, mosquée. Plat. L'hiver est la haute saison des oiseaux."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Marche d'hiver idéale. Forêt fraîche. La grotte est la récompense.",
+        "localSecret": "Choisi par les locaux, pas par les touristes. À combiner avec Karvounarka pour une boucle plus longue."
+      },
+      "panthea": {
+        "winterNotes": "Au mieux en hiver. Le temps couvert ajoute du drame.",
+        "localSecret": "Le refuge au départ est magique. Laissez des voitures aux deux extrémités pour une marche en aller simple."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Frais et agréable. Pas d'ombre par endroits — l'hiver est idéal.",
+        "localSecret": "Les domaines des Krasochoria sont proches. Ajoutez une dégustation pour une journée Limassol complète."
+      },
+      "agiasma": {
+        "winterNotes": "Douces collines de Paphos. Parfois boueux après la pluie.",
+        "localSecret": "Ajoutez une halte vin à Kathikas — les collines de Laona récompensent un départ en fin de matinée."
+      },
+      "arnies": {
+        "winterNotes": "Douces collines de Paphos. Niveau 3 par endroits ; comptez 1 à 2 heures.",
+        "localSecret": "Prenez la grande boucle si vous avez le temps — la source ne donne pas son nom au sentier pour rien."
+      },
+      "lemithou": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Revenez par la route — cela fait une journée en boucle avec Treis Elies."
+      },
+      "arsos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Les villages viticoles des Krasochoria sont proches — Arsos récompense la lenteur."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Niveau 3 — organisez un transport. Plus frais et plus calme en hiver.",
+        "localSecret": "Près du départ de Panagia tou Araka — églises UNESCO plus marche de crête."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Linéaire de niveau 3 — voiture aux deux extrémités ou retour par la route.",
+        "localSecret": "Reliez à la crête de Madari pour une journée Adelfi complète, si la forme suit."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Courte boucle de niveau 3 — exposée en été ; l'hiver est confortable.",
+        "localSecret": "Départ tranquille à Askas — à combiner avec Kakopetria ou l'arrière-pays de Machairas."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Niveau 3 — sections raides. L'hiver est plus frais et plus calme.",
+        "localSecret": "Le caractère de la Pitsilia en une courte boucle — avec un déjeuner à Kakopetria."
+      },
+      "gourri": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Cascade à l'arrivée — allez-y après la pluie pour le meilleur débit."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magie après la pluie — ruisseau et verdure. Traversées de rivière de niveau 3.",
+        "localSecret": "Prolongez vers Fikardou — un final dans un village UNESCO."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Faites d'abord le site, puis marchez vers le village pour le contexte."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Longue boucle ; emportez de l'eau. Douces collines de Larnaca.",
+        "localSecret": "Prévoyez une matinée entière — l'arrière-pays de Larnaca est au plus calme en hiver."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Sentier officiel hors forêt. L'hiver est une bonne saison — plus frais et plus calme.",
+        "localSecret": "Avant la marche, un peu de shopping de dentelle à Pano Lefkara."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Douce marche côtière d'hiver. Organisez une récupération à Konnos.",
+        "localSecret": "Terminez à Konnos pour une baignade l'été ; l'hiver, c'est sentiers vides et air doux."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Un classique côtier doux toute l'année.",
+        "localSecret": "Enchaînez avec Profitis Ilias–Konnos pour une plus longue journée côtière à Protaras."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Marche côtière d'hiver idéale ; peu de monde.",
+        "localSecret": "Courte marche d'église en église — avec la boucle Konnos–Agioi Anargyroi."
+      }
+    },
+    "bestFor": {
+      "1-week-trip": "séjour d’une semaine",
+      "accessible-from-limassol": "accès facile depuis Limassol",
+      "active-adventure": "aventure active",
+      "active-day": "journée active",
+      "active-exploration": "exploration active",
+      "active-explorers": "explorateurs actifs",
+      "advanced-adventure": "aventure exigeante",
+      "after-adonis": "après les bains d’Adonis",
+      "after-akamas-trails": "après les sentiers de l’Akamas",
+      "after-angeloktisti": "après Angeloktisti",
+      "after-aphrodite": "après le sentier d’Aphrodite",
+      "after-artemis": "après le sentier d’Artémis",
+      "after-caledonia": "après les chutes de Caledonia",
+      "after-kryos-potamos": "après Kryos Potamos",
+      "after-palaipafos": "après Palaipafos",
+      "after-trails": "après la randonnée",
+      "after-troodos-trails": "après les sentiers du Troodos",
+      "after-wineries": "après les domaines viticoles",
+      "agrotourism": "agrotourisme",
+      "akamas-day": "journée dans l’Akamas",
+      "akamas-exploration": "exploration de l’Akamas",
+      "akamas-loop": "boucle de l’Akamas",
+      "altitude": "altitude",
+      "ancient-sites": "sites antiques",
+      "archaeology": "archéologie",
+      "architecture": "architecture",
+      "art-history": "histoire de l’art",
+      "art-lovers": "amateurs d’art",
+      "asian-cuisine": "cuisine asiatique",
+      "authentic": "expérience authentique",
+      "authentic-cyprus": "Chypre authentique",
+      "authentic-experience": "expérience authentique",
+      "authentic-zygi": "Zygi authentique",
+      "ayia-napa": "Ayia Napa",
+      "balanced-pace": "rythme équilibré",
+      "beach-day-add-on": "complément d’une journée plage",
+      "beaches": "plages",
+      "birdwatching": "observation des oiseaux",
+      "bleisure": "travail et détente",
+      "bouldering": "escalade de bloc",
+      "boutique": "esprit boutique",
+      "boutique-seekers": "amateurs de domaines confidentiels",
+      "byzantine-art": "art byzantin",
+      "cape-greco-area": "secteur du cap Greco",
+      "cape-greco-combo": "à combiner avec le cap Greco",
+      "capital-dining": "restaurants de la capitale",
+      "capital-visitors": "visiteurs de la capitale",
+      "choirokoitia-combo": "à combiner avec Choirokoitia",
+      "city-combo": "à combiner avec la ville",
+      "city-dining": "restaurants en ville",
+      "city-dinner": "dîner en ville",
+      "city-history": "histoire de la ville",
+      "city-vibe": "ambiance urbaine",
+      "coastal": "ambiance littorale",
+      "coastal-adventure": "aventure côtière",
+      "coastal-combo": "à combiner avec la côte",
+      "coastal-dining": "repas en bord de mer",
+      "coastal-lunch": "déjeuner en bord de mer",
+      "coastal-lunch-stop": "pause déjeuner sur la côte",
+      "coastal-stroll": "balade en bord de mer",
+      "coastal-walk": "marche côtière",
+      "commandaria": "Commandaria",
+      "commandaria-lovers": "amateurs de Commandaria",
+      "commandaria-purists": "puristes de la Commandaria",
+      "commandaria-route": "route de la Commandaria",
+      "commandaria-tour": "circuit de la Commandaria",
+      "couples": "couples",
+      "craft-culture": "artisanat et culture",
+      "craft-wine": "vin artisanal",
+      "crafts": "artisanat",
+      "cultural-heritage": "patrimoine culturel",
+      "culture": "culture",
+      "cycling": "cyclisme",
+      "day-trip": "excursion à la journée",
+      "day-trip-from-nicosia": "excursion à la journée depuis Nicosie",
+      "deep-immersion": "immersion en profondeur",
+      "discovery": "découvertes",
+      "diving": "plongée",
+      "dramatic-scenery": "paysages spectaculaires",
+      "easy-access": "accès facile",
+      "easy-drive-from-larnaca-limassol": "trajet facile depuis Larnaca/Limassol",
+      "easy-drive-from-limassol": "trajet facile depuis Limassol",
+      "easy-from-limassol": "facile depuis Limassol",
+      "easy-ride": "sortie à vélo facile",
+      "eco-conscious": "voyage éco-responsable",
+      "exploration": "exploration",
+      "families": "familles",
+      "family-friendly": "ambiance familiale",
+      "family-heritage": "héritage familial",
+      "family-run": "domaine familial",
+      "family-run-feel": "esprit familial",
+      "fine-dining": "gastronomie",
+      "first-time-visitors": "première visite",
+      "first-timers": "débutants",
+      "first-visit": "première visite",
+      "fish": "poisson",
+      "fish-lovers": "amateurs de poisson",
+      "floral-heritage": "patrimoine floral",
+      "food-pairing": "accords mets et vins",
+      "food-wine": "gastronomie et vin",
+      "foodies": "gourmets",
+      "gentle-walks": "promenades douces",
+      "gravel-riding": "vélo gravel",
+      "groups": "groupes",
+      "half-day-from-limassol": "demi-journée depuis Limassol",
+      "half-day-outing": "sortie d’une demi-journée",
+      "half-day-trip": "excursion d’une demi-journée",
+      "harbour-lunch": "déjeuner sur le port",
+      "harbour-walk": "balade sur le port",
+      "heritage": "patrimoine",
+      "hidden-gem": "trésor caché",
+      "hiking": "randonnée",
+      "hiking-base": "camp de base de randonnée",
+      "history": "histoire",
+      "history-buffs": "passionnés d’histoire",
+      "history-overview": "panorama historique",
+      "kakopetria-area": "secteur de Kakopetria",
+      "kalopanagiotis-visit": "visite de Kalopanagiotis",
+      "kayaking": "kayak",
+      "kids": "enfants",
+      "kitesurfing": "kitesurf",
+      "kolossi-combo": "à combiner avec Kolossi",
+      "kourion-combo": "à combiner avec Kourion",
+      "krasochoria": "Krasochoria",
+      "krasochoria-tour": "circuit des Krasochoria",
+      "kyrenia": "Kyrenia",
+      "lace-village": "village de la dentelle",
+      "laona-day": "journée dans la Laona",
+      "laona-route": "route de la Laona",
+      "larnaca": "Larnaca",
+      "larnaca-day": "journée à Larnaca",
+      "larnaca-day-trip": "excursion à la journée à Larnaca",
+      "larnaca-hills": "collines de Larnaca",
+      "larnaca-hinterland": "arrière-pays de Larnaca",
+      "larnaca-villages": "villages de Larnaca",
+      "lefkara-combo": "à combiner avec Lefkara",
+      "lefkara-path-combo": "à combiner avec le sentier de Lefkara",
+      "limassol": "Limassol",
+      "literary-history": "histoire littéraire",
+      "local-experience": "expérience locale",
+      "lunch-tasting": "déjeuner et dégustation",
+      "lunch-wine": "déjeuner et vin",
+      "machairas-combo": "à combiner avec Machairas",
+      "medieval-art": "art médiéval",
+      "medieval-history": "histoire médiévale",
+      "modern-cypriot-wine": "vin chypriote moderne",
+      "modern-wine": "vin moderne",
+      "modern-wine-style": "style de vin moderne",
+      "mosaics-combo": "à combiner avec les mosaïques",
+      "mountain": "cadre montagnard",
+      "mountain-biking": "VTT",
+      "mountain-day": "journée en montagne",
+      "mountain-drive": "route de montagne",
+      "mountain-escape": "escapade en montagne",
+      "mountain-lunch": "déjeuner en montagne",
+      "mountain-scenery": "paysages de montagne",
+      "mountain-views": "vues sur les montagnes",
+      "mountain-wine": "vin de montagne",
+      "mountain-wine-route": "route des vins de montagne",
+      "mountains": "montagnes",
+      "museum": "musée",
+      "museum-day": "journée musées",
+      "museum-lovers": "amateurs de musées",
+      "museum-visit": "visite de musée",
+      "mythology": "mythologie",
+      "natural-wine-fans": "amateurs de vin nature",
+      "nature": "nature",
+      "nature-culture": "nature et culture",
+      "nature-wine": "nature et vin",
+      "north-cyprus": "Chypre du Nord",
+      "off-the-beaten-path": "hors des sentiers battus",
+      "old-nicosia": "vieille Nicosie",
+      "old-town": "vieille ville",
+      "omodos-day": "journée à Omodos",
+      "omodos-visit": "visite d’Omodos",
+      "organic-enthusiasts": "adeptes du bio",
+      "organic-wine": "vin bio",
+      "organic-wine-lovers": "amateurs de vin bio",
+      "pafos": "Pafos",
+      "painted-churches": "églises peintes",
+      "paphos-day": "journée à Paphos",
+      "paphos-day-trip": "excursion à la journée à Paphos",
+      "paphos-hinterland": "arrière-pays de Paphos",
+      "paphos-region": "région de Paphos",
+      "paphos-wine-route": "route des vins de Paphos",
+      "peace-quiet": "paix et tranquillité",
+      "peaceful": "ambiance paisible",
+      "peaceful-escape": "escapade paisible",
+      "peaceful-stop": "halte paisible",
+      "pedoulas-visit": "visite de Pedoulas",
+      "photography": "photographie",
+      "pilgrimage": "pèlerinage",
+      "platres": "Platres",
+      "platres-day": "journée à Platres",
+      "post-avakas": "après les gorges d’Avakas",
+      "post-hike-lunch": "déjeuner après la randonnée",
+      "post-trail": "après le sentier",
+      "prehistory": "préhistoire",
+      "production-tours": "visites de la production",
+      "protaras": "Protaras",
+      "quick-lunch": "déjeuner rapide",
+      "quick-visit": "visite rapide",
+      "quiet-escape": "escapade tranquille",
+      "quiet-escapes": "escapades tranquilles",
+      "quiet-reflection": "recueillement",
+      "quiet-village": "village tranquille",
+      "rainy-day": "jour de pluie",
+      "rainy-day-activity": "activité pour jour de pluie",
+      "rainy-day-alternative": "alternative pour jour de pluie",
+      "rainy-day-nicosia": "jour de pluie à Nicosie",
+      "rainy-day-options": "options pour jours de pluie",
+      "relaxation": "détente",
+      "relaxed": "ambiance décontractée",
+      "remote-workers": "télétravailleurs",
+      "rock-climbing": "escalade",
+      "rose-products": "produits à la rose",
+      "ruins-lunch": "déjeuner près des ruines",
+      "salt-lake-combo": "à combiner avec le lac salé",
+      "scenic-drive": "route panoramique",
+      "sea-views": "vue sur la mer",
+      "secluded": "cadre isolé",
+      "serious-trekkers": "randonneurs aguerris",
+      "serious-wine-lovers": "amateurs de vin exigeants",
+      "shopping": "shopping",
+      "ski-trip-add-on": "complément d’une sortie ski",
+      "ski-wine": "ski et vin",
+      "slow-pace": "rythme tranquille",
+      "slow-travel": "slow travel",
+      "snorkeling": "snorkeling",
+      "snorkelling": "snorkeling",
+      "souvenirs": "souvenirs",
+      "spa": "spa",
+      "special-evening": "soirée spéciale",
+      "special-occasions": "grandes occasions",
+      "spiritual-retreat": "retraite spirituelle",
+      "stopover": "halte en chemin",
+      "sunday-lunch": "déjeuner du dimanche",
+      "sunny-winter-tastings": "dégustations hivernales au soleil",
+      "sunset": "coucher de soleil",
+      "sunset-dining": "dîner au coucher du soleil",
+      "sunsets": "couchers de soleil",
+      "sweet-wine": "vin doux",
+      "terroir-focus": "accent sur le terroir",
+      "the-farmyard": "The Farmyard",
+      "traditional": "ambiance traditionnelle",
+      "traditional-cyprus": "Chypre traditionnelle",
+      "traditional-food": "cuisine traditionnelle",
+      "trail-combo": "à combiner avec une randonnée",
+      "troodos": "Troodos",
+      "troodos-churches": "églises du Troodos",
+      "troodos-combo": "à combiner avec le Troodos",
+      "troodos-day": "journée dans le Troodos",
+      "troodos-drive": "route du Troodos",
+      "troodos-villages": "villages du Troodos",
+      "trout-lovers": "amateurs de truite",
+      "unesco-churches": "églises UNESCO",
+      "unique": "expérience unique",
+      "unique-experience": "expérience unique",
+      "unique-scenery": "paysages uniques",
+      "unique-setting": "cadre unique",
+      "urban-cyprus": "Chypre urbaine",
+      "valley-lunch": "déjeuner dans la vallée",
+      "views": "panoramas",
+      "village": "cadre villageois",
+      "village-charm": "charme villageois",
+      "village-circuit": "circuit des villages",
+      "village-day": "journée dans les villages",
+      "village-experience": "expérience villageoise",
+      "village-feel": "atmosphère de village",
+      "village-lunch": "déjeuner au village",
+      "village-walk": "balade dans le village",
+      "village-wine-combo": "village et vin",
+      "villages": "villages",
+      "walking": "marche",
+      "water-sports": "sports nautiques",
+      "watersports": "sports nautiques",
+      "weekend": "week-end",
+      "weekend-hikers": "randonneurs du week-end",
+      "wellness": "bien-être",
+      "windsurfing": "planche à voile",
+      "wine": "vin",
+      "wine-culture": "vin et culture",
+      "wine-enthusiasts": "passionnés de vin",
+      "wine-geeks": "férus de vin",
+      "wine-history": "histoire du vin",
+      "wine-lovers": "amateurs de vin",
+      "wine-monastery": "vin et monastère",
+      "wine-route": "route des vins",
+      "wine-route-stop": "étape sur la route des vins",
+      "wine-village": "vin et village",
+      "wine-village-combo": "vin et village combinés",
+      "winter-activities": "activités hivernales",
+      "winter-ambience": "ambiance hivernale",
+      "winter-drive": "route hivernale",
+      "winter-escape": "escapade hivernale",
+      "winter-exploration": "exploration hivernale",
+      "winter-lunch": "déjeuner d’hiver",
+      "winter-scenery": "paysages d’hiver",
+      "winter-sun": "soleil d’hiver",
+      "winter-tastings": "dégustations d’hiver",
+      "winter-trails": "sentiers d’hiver",
+      "winter-village": "village en hiver",
+      "winter-visit": "visite hivernale",
+      "winter-walks": "promenades d’hiver",
+      "winter-waterfront": "front de mer en hiver"
     }
   }
 }

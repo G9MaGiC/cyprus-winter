@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
-import { wineries } from "@/data/wineries";
 import { WINE_ROUTES } from "@/data/wine-routes";
+import { wineriesForRoute } from "@/lib/wine-route-stops";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 import { HOME, LAYOUT, SECTION, CARD, TYPE } from "@/lib/design-tokens";
 import Image from "next/image";
 import HubFooter from "@/components/HubFooter";
@@ -28,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations("wineRoutes.page");
   if (!route) notFound();
 
-  const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
+  const count = wineriesForRoute(slug).length;
   const alternates = buildStrategyAAlternates(`/wine-routes/${slug}`);
   const ogImage = toAbsoluteUrl(route.heroImage || "/images/cyprus/cyprus-village-omodos.jpg");
   return {
@@ -62,7 +65,10 @@ export default async function WineRoutePage({ params }: Props) {
     getTranslations("discover"),
   ]);
 
-  const routeWineries = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug);
+  await ensurePartnerOverlaysLoaded();
+  const routeWineries = await Promise.all(
+    wineriesForRoute(slug).map(async (w) => applyPartnerOpeningHours(await localizeWineryContent(w)))
+  );
 
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>

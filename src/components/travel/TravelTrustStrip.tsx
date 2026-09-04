@@ -1,11 +1,13 @@
 "use client";
 
+import { advisoryLinkForLocale } from "@/lib/advisory-links";
 import { SECTION, TYPE } from "@/lib/design-tokens";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
-/** Calm official-travel links (P0-02). */
+/** Calm official-travel links (P0-02); advisory per locale (AUD-25). */
 export default function TravelTrustStrip({ className = "" }: { className?: string }) {
   const t = useTranslations("travelTrust");
+  const locale = useLocale();
 
   return (
     <aside
@@ -27,12 +29,12 @@ export default function TravelTrustStrip({ className = "" }: { className?: strin
         </li>
         <li>
           <a
-            href="https://www.gov.uk/foreign-travel-advice/cyprus"
+            href={advisoryLinkForLocale(locale)}
             target="_blank"
             rel="noopener noreferrer"
             className={`${SECTION.aegeanLink} min-h-[44px] inline-flex items-center`}
           >
-            {t("foreignTravelUk")}
+            {t("advisory")}
           </a>
         </li>
         <li className="text-muted-ink pt-1">{t("emergency")}</li>

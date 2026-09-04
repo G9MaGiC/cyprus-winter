@@ -131,4 +131,11 @@ async function main() {
   );
 }
 
-void main();
+// Run only as a CLI entry — tests (and vc-trail-gap.ts) import from this module,
+// and an import-time main() would refetch and rewrite the committed index.
+const isCliEntry =
+  typeof process.argv[1] === "string" && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isCliEntry) {
+  void main();
+}

@@ -12,6 +12,7 @@ const bookingFormState = vi.hoisted(() => ({
     error: null as string | null,
     fieldErrors: {} as Record<string, string>,
     notesLength: 0,
+    retryAfterSeconds: 0,
     setNotesLength: vi.fn(),
     successRef: { current: null } as React.RefObject<HTMLDivElement | null>,
     errorRef: { current: null } as React.RefObject<HTMLParagraphElement | null>,
@@ -104,6 +105,7 @@ const messages = {
         failed: "Request failed",
         fallback: "Try again",
         offlineQueued: "Queued",
+        offlineDropped: "Dropped",
       },
       validation: {
         dateRequired: "Pick a date",
@@ -145,6 +147,8 @@ const messages = {
       },
     },
     form: {
+      successUnverified:
+        "We've saved your request under My bookings. To be sure of your date, also contact the {context} directly — no payment is taken in-app.",
       states: {
         heading: "Booking states:",
         guideBody: "Requested until guide confirms.",
@@ -168,16 +172,31 @@ const messages = {
     },
   },
   bookings: { title: "My Bookings" },
+  errors: {
+    api: {
+      VALIDATION_ERROR: "Check the form fields.",
+      BAD_REQUEST: "Something in the request was off.",
+      RATE_LIMITED: "Too many requests.",
+      SERVICE_UNAVAILABLE: "Service unavailable.",
+      SERVER_ERROR: "Server error.",
+      NOT_FOUND: "Not found.",
+      IDEMPOTENCY_CONFLICT: "Already submitted.",
+    },
+    rateLimited: {
+      waitThenRetry:
+        "{seconds, plural, one {Wait # second, then try again.} other {Wait # seconds, then try again.}}",
+    },
+  },
   common: {
     viewPlan: "View plan",
     peopleCount: "{count, plural, one {# person} other {# people}}",
   },
 };
 
-function renderForm() {
+function renderForm(guideOverride?: Partial<Guide>) {
   return render(
     <NextIntlClientProvider locale="en" messages={messages}>
-      <GuideBookingForm guide={guide} />
+      <GuideBookingForm guide={{ ...guide, ...guideOverride }} />
     </NextIntlClientProvider>
   );
 }
@@ -221,14 +240,26 @@ describe("GuideBookingForm", () => {
     expect(alert.textContent).toContain("Request failed");
   });
 
-  it("shows success live region with email-delayed note", () => {
+  it("shows success live region with email-delayed note when guide is verified", () => {
+    bookingFormState.value.done = true;
+    bookingFormState.value.emailDelayed = true;
+    renderForm({ partnerEmail: "tours@cyprus-active.com" });
+    const status = screen.getByRole("status");
+    expect(status.textContent).toContain("Request sent");
+    expect(status.textContent).toContain("Cyprus Active Tours");
+    expect(status.textContent).toContain("Email may be delayed");
+    // Step 3 ("Guide confirms") stays hollow while the request is pending (B2-04).
+    expect(screen.getByTestId("stepper").textContent).toContain("step-2");
+  });
+
+  it("shows honest unverified success copy without email promises by default", () => {
     bookingFormState.value.done = true;
     bookingFormState.value.emailDelayed = true;
     renderForm();
     const status = screen.getByRole("status");
     expect(status.textContent).toContain("Request sent");
-    expect(status.textContent).toContain("Cyprus Active Tours");
-    expect(status.textContent).toContain("Email may be delayed");
-    expect(screen.getByTestId("stepper").textContent).toContain("step-3");
+    expect(status.textContent).toContain("contact the guide directly");
+    expect(status.textContent).not.toContain("Email may be delayed");
+    expect(screen.getByTestId("stepper").textContent).toContain("step-2");
   });
 });

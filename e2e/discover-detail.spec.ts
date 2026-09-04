@@ -32,8 +32,10 @@ test("Discover to detail: can navigate to a place and see content", async ({
   // Cards live in #discover-content; section-reveal animates from opacity 0 for ~500ms
   const firstCard = page.locator('#discover-content a[href*="/discover/"]').first();
 
-  // Ensure reveal/viewport triggers before asserting visibility.
-  await page.locator('#discover-content').scrollIntoViewIfNeeded();
+  // Ensure reveal/viewport triggers before asserting visibility. `.first()`:
+  // the id transiently resolves to 2 nodes during load (streaming/hydration
+  // artifact — seen intermittently across gate runs since before batch 7).
+  await page.locator('#discover-content').first().scrollIntoViewIfNeeded();
   await firstCard.scrollIntoViewIfNeeded();
 
   // In CI/headless, reveal animations can keep cards at opacity:0 (Playwright treats as hidden).

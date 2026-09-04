@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { LAYOUT, TOKENS } from "@/lib/design-tokens";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
+import { ogLocaleFor } from "@/lib/locale-seo";
 import { pwaManifestHref } from "@/lib/pwa-manifest";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
@@ -30,14 +31,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       description: t("homeDescription"),
       type: "website",
       url: alternates.canonical,
-      locale,
+      locale: ogLocaleFor(locale),
       images: [{ url: ogImage, width: 1200, height: 630, alt: t("ogImageAlt") }],
     },
+    // Card type only: title/description/image fall back to each page's og:* —
+    // a full twitter block here leaks the HOMEPAGE card onto every page that
+    // doesn't define its own (metadata merges per top-level key; AUD E2-04).
     twitter: {
       card: "summary_large_image",
-      title: t("homeTitle"),
-      description: t("homeDescription"),
-      images: [ogImage],
     },
     appleWebApp: {
       capable: true,

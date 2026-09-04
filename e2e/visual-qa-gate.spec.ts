@@ -98,6 +98,7 @@ test.describe("Visual QA gate", () => {
         const width = await hero.evaluate((img: HTMLImageElement) => img.naturalWidth);
         expect(width).toBeGreaterThan(0);
       }).toPass({ timeout: 10_000 });
+      await expectNoHorizontalOverflow(page);
     });
 
     test("/discover/tsiakkas — card hero image loads", async ({ page }) => {
@@ -108,6 +109,30 @@ test.describe("Visual QA gate", () => {
         const width = await hero.evaluate((img: HTMLImageElement) => img.naturalWidth);
         expect(width).toBeGreaterThan(0);
       }).toPass({ timeout: 10_000 });
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("/trails/artemis — trail detail without overflow (AUD-15 class)", async ({ page }) => {
+      // Detail routes were the visual gate's uncovered class: AUD-15's 5px
+      // overflow was live on every discover detail while the gate stayed green.
+      await gotoAndSettle(page, "/trails/artemis");
+      await expect(page.getByRole("main")).toContainText(/Artemis/i);
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("populated plan — itinerary title readable at 375px (AUD-02 guard)", async ({ page }) => {
+      // AUD-02 shipped because the gate only ever checked an empty plan: the
+      // title column collapsed to ~24×216px (one letter per line). Populate
+      // via the same ?add= path plan-share uses and bound the title's box.
+      await gotoAndSettle(page, "/plan?add=lefkara");
+      const title = page.getByRole("main").locator('a[href$="/discover/lefkara"]').first();
+      await expect(title).toBeVisible({ timeout: 15_000 });
+      const box = await title.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box!.width, "title column must not collapse").toBeGreaterThanOrEqual(100);
+      expect(box!.height, "title must not stack one letter per line").toBeLessThanOrEqual(120);
+      await expect(page.getByRole("button", { name: /remove/i }).first()).toBeVisible();
+      await expectNoHorizontalOverflow(page);
     });
   });
 
@@ -188,6 +213,28 @@ test.describe("Visual QA gate", () => {
       const filters = page.getByRole("group", { name: "סינון לפי סוג מקום" });
       await expect(filters).toBeVisible({ timeout: 15_000 });
       await expect(filters.getByRole("link").first()).toBeVisible();
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("/he/discover/tsiakkas — RTL detail without overflow (AUD-15 class)", async ({ page }) => {
+      // AUD-15 reproduced LTR+RTL; RTL overflow bugs often differ, so the
+      // detail class gets its own RTL check.
+      await gotoAndSettle(page, "/he/discover/tsiakkas");
+      await expectRtlDocument(page);
+      await expect(page.locator("main img").first()).toBeVisible({ timeout: 15_000 });
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("/he/plan populated — itinerary title readable at 375px (AUD-02 guard)", async ({ page }) => {
+      // AUD-02 reproduced in Hebrew too; the href selector is locale-proof.
+      await gotoAndSettle(page, "/he/plan?add=lefkara");
+      await expectRtlDocument(page);
+      const title = page.getByRole("main").locator('a[href$="/discover/lefkara"]').first();
+      await expect(title).toBeVisible({ timeout: 15_000 });
+      const box = await title.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box!.width, "title column must not collapse").toBeGreaterThanOrEqual(100);
+      expect(box!.height, "title must not stack one letter per line").toBeLessThanOrEqual(120);
       await expectNoHorizontalOverflow(page);
     });
   });

@@ -52,6 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!MONTH_SLUGS.includes(slug)) notFound();
 
   const monthName = SLUG_TO_WEATHER[slug];
+  const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
   const row = weatherByMonth.find((r) => r.month === monthName);
   if (!row) notFound();
 
@@ -60,9 +61,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
   const alternates = buildStrategyAAlternates(`/weather/${slug}`);
 
-  const title = tWeatherMonth("meta.title", { month: monthName });
+  const title = tWeatherMonth("meta.title", { month: monthLabel });
   const description = tWeatherMonth("meta.description", {
-    month: monthName,
+    month: monthLabel,
     coastRange,
     troodosRange,
     coastDesc: row.coastDesc,
@@ -76,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: alternates.canonical,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }) }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: tWeatherMonth("meta.ogImageAlt", { month: monthLabel }) }],
     },
   };
 }
@@ -95,6 +96,7 @@ export default async function WeatherMonthPage({ params }: Props) {
   ]);
 
   const monthName = SLUG_TO_WEATHER[slug];
+  const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
   const row = weatherByMonth.find((r) => r.month === monthName);
   const eventMonth = SLUG_TO_EVENT_MONTH[slug];
   const events = winterEvents.filter((e) => e.month === eventMonth);
@@ -129,7 +131,7 @@ export default async function WeatherMonthPage({ params }: Props) {
       <PageHeader
         backHref="/weather"
         backLabel={tNav("weather")}
-        title={tWeatherMonth("pageHeaderTitle", { month: monthName })}
+        title={tWeatherMonth("pageHeaderTitle", { month: monthLabel })}
         description={tWeatherMonth("pageHeaderDescription", {
           coastMin: row.coastMinC,
           coastMax: row.coastMaxC,
@@ -140,7 +142,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
           { label: tNav("weather"), href: "/weather" },
-          { label: monthName, href: `/weather/${slug}`, isCurrent: true },
+          { label: monthLabel, href: `/weather/${slug}`, isCurrent: true },
         ]}
       />
 
@@ -149,7 +151,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         <div className={`${CARD.base} ${CARD.contentLg} bg-sand-100/50`}>
           <p className={`${TYPE.kicker} text-sage`}>{tWeatherMonth("hero.kicker")}</p>
           <h2 className={`${TYPE.sectionTitle} mt-2`}>
-            {tWeatherMonth("hero.heading", { month: monthName })}
+            {tWeatherMonth("hero.heading", { month: monthLabel })}
           </h2>
           <p className="text-muted-ink mt-3 max-w-2xl prose-body break-words leading-relaxed">
             {tWeatherMonth("hero.body", {
@@ -221,7 +223,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         {/* Month-specific discovery links */}
         <section aria-labelledby="month-discovery">
           <h2 id="month-discovery" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
-            {tWeatherMonth("monthDiscovery.heading", { month: monthName })}
+            {tWeatherMonth("monthDiscovery.heading", { month: monthLabel })}
           </h2>
           <div className="flex flex-wrap gap-3">
             {monthDiscovery.map((d) => (
@@ -235,7 +237,7 @@ export default async function WeatherMonthPage({ params }: Props) {
         {events.length > 0 && (
           <section aria-labelledby="events">
             <h2 id="events" className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
-              {tWeatherMonth("eventsHeading", { month: monthName })}
+              {tWeatherMonth("eventsHeading", { month: monthLabel })}
             </h2>
             <ul className="space-y-3">
               {events.map((e) => (

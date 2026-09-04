@@ -12,6 +12,8 @@ type DetailHeroSectionProps = {
   locale: string;
   typeLabel: string;
   tDetail: (key: string, values?: Record<string, string>) => string;
+  /** Localized, pre-joined bestFor pair for the whyNow sentence (AUD-99). */
+  bestForTypes: string;
 };
 
 export default function DetailHeroSection({
@@ -19,6 +21,7 @@ export default function DetailHeroSection({
   locale,
   typeLabel,
   tDetail,
+  bestForTypes,
 }: DetailHeroSectionProps) {
   const seasonTags = "seasonTags" in a ? (a.seasonTags as string[] | undefined) : undefined;
   const indoorOutdoor = "indoorOutdoor" in a ? (a.indoorOutdoor as string | undefined) : undefined;
@@ -99,9 +102,7 @@ export default function DetailHeroSection({
             <li className="flex gap-2">
               <span className="text-aegean" aria-hidden>•</span>
               <span>
-                {tDetail("whyNow.bestFor", {
-                  types: a.bestFor.slice(0, 2).join(" and ").toLowerCase(),
-                })}
+                {tDetail("whyNow.bestFor", { types: bestForTypes })}
               </span>
             </li>
             <li className="flex gap-2">
@@ -118,7 +119,7 @@ export default function DetailHeroSection({
         {"culturalNote" in a && isBufferZoneCulturalNote(a.culturalNote) && (
           <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
             <p className="text-sm font-medium text-charcoal flex items-start gap-2">
-              <span className="text-golden shrink-0" aria-hidden>⚠</span>
+              <span className="text-golden-ink shrink-0" aria-hidden>{"⚠︎"}</span>
               <span>{tDetail("bufferZoneWarning")}</span>
             </p>
           </div>

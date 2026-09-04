@@ -73,7 +73,7 @@ Hidden onboarding: `pointer-events-none`, `aria-hidden`, not in tab order.
 
 ## Z-index (`LAYER`)
 
-See comments in `design-tokens.ts`. Cookie and onboarding sit above chrome; AI panel uses `LAYER.modal` when open; toasts use `LAYER.toast` (`z-[95]`).
+See comments in `design-tokens.ts`. Cookie and onboarding sit above chrome; AI panel uses `LAYER.modal` when open. `LAYER.toast` (`z-[95]`) hosts transient banners (InstallPromptBanner); there is no toast *component* system — action feedback is inline on the triggering control (see PlanShareBar) plus an `SRStatus` announcement.
 
 ## Mobile bottom chrome (all viewports)
 

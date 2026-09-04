@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import DetailHero from "@/components/DetailHero";
 import { getPlaceById } from "@/data";
-import { trailConditions } from "@/data/trails";
+import { trailConditions, TRAIL_CONDITIONS_AS_OF } from "@/data/trails";
 import DetailActionFooter from "@/components/DetailActionFooter";
 import { HOME, LAYOUT, CTA, SECTION, TYPE, LAYER } from "@/lib/design-tokens";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
@@ -16,13 +16,14 @@ import TrailMapClient from "@/components/TrailMapClient";
 import TrailDetailStickyActions from "@/components/TrailDetailStickyActions";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { getLatestReportsByTrail } from "@/lib/trail-reports";
-import { formatReportTimestamp } from "@/lib/format";
+import { formatMonthYear, formatReportTimestamp } from "@/lib/format";
 import { getSecretsForPlace } from "@/data/secret-gems";
 import { matchGuideForTrail } from "@/lib/guide-match";
 import TrailBookGuideLink from "@/components/trails/TrailBookGuideLink";
 import SectionCard from "@/components/SectionCard";
 import TrailWeatherBadge from "@/components/TrailWeatherBadge";
 import { getLocalizedName } from "@/lib/localize";
+import { localizeTrailContent } from "@/lib/trail-content";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { findTrailByIdOrSlug, isTrailSlugAlias } from "@/lib/trail-resolve";
@@ -82,6 +83,9 @@ export default async function TrailPage({
   const reports = await getLatestReportsByTrail(trail.id, 3);
   const latestReport = reports[0];
   const guideMatch = matchGuideForTrail(trail.id, locale);
+  // AUD-10 slice 13: decision-surface copy overlaid per locale; schema and
+  // metadata keep reading the EN base `trail` record.
+  const localizedTrail = await localizeTrailContent(trail, locale);
 
   const canonicalUrl = `${SITE_URL}/trails/${trail.id}`;
   const trailImageUrl = toAbsoluteUrl(getTrailImage(trail.id));
@@ -142,8 +146,10 @@ export default async function TrailPage({
                 )}
                 <DifficultyBadge difficulty={trail.difficulty} />
                 {trail.routeType && (
-                  <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md capitalize">
-                    {trail.routeType.replace("-", " ")}
+                  <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-white/25 backdrop-blur-md">
+                    {tTrails(
+                      `routeTypes.${trail.routeType === "loop" ? "loop" : trail.routeType === "out-and-back" ? "outAndBack" : "pointToPoint"}`
+                    )}
                   </span>
                 )}
               </div>
@@ -309,7 +315,10 @@ export default async function TrailPage({
                         })}
                       </span>
                       {!conditions.lastReportedAt && (
-                        <span className="text-muted-ink">{tTrails("conditionsEditorial")}</span>
+                        <span className="text-muted-ink">
+                          {tTrails("conditionsEditorial")} ·{" "}
+                          {tTrails("asOf", { date: formatMonthYear(TRAIL_CONDITIONS_AS_OF, locale) })}
+                        </span>
                       )}
                     </div>
                     {conditions.tip && (
@@ -384,9 +393,9 @@ export default async function TrailPage({
             </SectionCard>
 
             {/* Winter safety — directly after Safety & essentials */}
-            {trail.winterSafety && (
+            {localizedTrail.winterSafety && (
               <SectionCard title={tTrailsDetail("winterSafetyTitle")} borderAccent="terracotta">
-                <p className="text-olive/90 text-sm leading-relaxed break-words">{trail.winterSafety}</p>
+                <p className="text-olive/90 text-sm leading-relaxed break-words">{localizedTrail.winterSafety}</p>
               </SectionCard>
             )}
 
@@ -398,9 +407,9 @@ export default async function TrailPage({
             )}
 
             {/* Winter notes */}
-            {trail.winterNotes && (
+            {localizedTrail.winterNotes && (
               <SectionCard title={tTrailsDetail("winterNotesTitle")} borderAccent="golden">
-                <p className="text-olive/90 text-sm leading-relaxed break-words">{trail.winterNotes}</p>
+                <p className="text-olive/90 text-sm leading-relaxed break-words">{localizedTrail.winterNotes}</p>
               </SectionCard>
             )}
 
@@ -429,10 +438,10 @@ export default async function TrailPage({
             )}
 
             {/* Local secret */}
-            {trail.localSecret && (
+            {localizedTrail.localSecret && (
               <SectionCard title={tTrailsDetail("localSecretTitle")} borderAccent="golden">
                 <p className="text-olive/90 text-sm italic border-s-2 border-terracotta/30 ps-4 break-words">
-                  {trail.localSecret}
+                  {localizedTrail.localSecret}
                 </p>
               </SectionCard>
             )}

@@ -9,42 +9,49 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "nissi-beach",
     "name": "Nissi Beach",
+    "nameEl": "Παραλία Νησί",
     "region": "Ayia Napa",
     "type": "attraction"
   },
   {
     "id": "fig-tree-bay",
     "name": "Fig Tree Bay",
+    "nameEl": "Παραλία Συκιά",
     "region": "Protaras",
     "type": "attraction"
   },
   {
     "id": "konnos-bay",
     "name": "Konnos Bay",
+    "nameEl": "Κόλπος Κόννος",
     "region": "Cape Greco",
     "type": "attraction"
   },
   {
     "id": "coral-bay",
     "name": "Coral Bay",
+    "nameEl": "Παραλία Κοραλ",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "lara-bay",
     "name": "Lara Bay",
+    "nameEl": "Παραλία Λάρα",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "ayia-napa-sea-caves",
     "name": "Sea Caves",
+    "nameEl": "Θαλάσσιες Σπηλιές",
     "region": "Ayia Napa",
     "type": "attraction"
   },
   {
     "id": "governors-beach",
     "name": "Governor's Beach",
+    "nameEl": "Παραλία Κυβερνήτη",
     "region": "Limassol",
     "type": "attraction"
   },
@@ -321,492 +328,574 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "pafos-mosaics",
     "name": "Pafos Archaeological Site",
+    "nameEl": "Πάφος",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "kourion",
     "name": "Kourion",
+    "nameEl": "Κούριον",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "tomb-of-kings",
     "name": "Tombs of the Kings",
+    "nameEl": "Τάφοι των Βασιλέων",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "salamis",
     "name": "Salamis",
+    "nameEl": "Σαλαμίνα",
     "region": "Famagusta",
     "type": "attraction"
   },
   {
     "id": "st-hilarion",
     "name": "St Hilarion Castle",
+    "nameEl": "Κάστρο Αγίου Ιλαρίωνα",
     "region": "Kyrenia",
     "type": "attraction"
   },
   {
     "id": "amahti",
     "name": "Amathus",
+    "nameEl": "Αμαθούς",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "choirokoitia",
     "name": "Choirokoitia",
+    "nameEl": "Χοιροκοιτία",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "kolossi",
     "name": "Kolossi Castle",
+    "nameEl": "Κόλοσσι",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "palaipafos",
     "name": "Palaipafos (Kouklia)",
+    "nameEl": "Παλαίπαφος (Κούκλια)",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "buffavento",
     "name": "Buffavento Castle",
+    "nameEl": "Μπουφαβέντο",
     "region": "Kyrenia",
     "type": "attraction"
   },
   {
     "id": "cyprus-museum",
     "name": "Cyprus Museum",
+    "nameEl": "Κυπριακό Μουσείο",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "bellapais",
     "name": "Bellapais Abbey",
+    "nameEl": "Μπελαπάις",
     "region": "Kyrenia",
     "type": "attraction"
   },
   {
     "id": "leventis-museum",
     "name": "Leventis Municipal Museum",
+    "nameEl": "Μουσείο Λεβέντη",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "paphos-castle",
     "name": "Paphos Castle",
+    "nameEl": "Κάστρο Πάφου",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "angeloktisti",
     "name": "Angeloktisti (Kiti)",
+    "nameEl": "Αγγελόκτιστη",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "idalion",
     "name": "Ancient Idalion",
+    "nameEl": "Ιδάλιον",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "kition",
     "name": "Ancient Kition",
+    "nameEl": "Κίτιον",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "kalopanagiotis",
     "name": "Kalopanagiotis",
+    "nameEl": "Καλοπαναγιώτης",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "lefkara",
     "name": "Lefkara",
+    "nameEl": "Λεύκαρα",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "polis",
     "name": "Polis Chrysochous",
+    "nameEl": "Πόλις Χρυσοχούς",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "omodos",
     "name": "Omodos",
+    "nameEl": "Όμοδος",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "kakopetria",
     "name": "Kakopetria",
+    "nameEl": "Κακοπετριά",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "lania",
     "name": "Lania",
+    "nameEl": "Λάνια",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "lefke",
     "name": "Lefke",
+    "nameEl": "Λεύκα",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "foini",
     "name": "Foini",
+    "nameEl": "Φοινί",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "pedoulas",
     "name": "Pedoulas",
+    "nameEl": "Πεδουλάς",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "platres",
     "name": "Platres",
+    "nameEl": "Πλάτρες",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "pera-pedi",
     "name": "Pera Pedi",
+    "nameEl": "Πέρα Πέδι",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "agros",
     "name": "Agros",
+    "nameEl": "Αγρός",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "fikardou",
     "name": "Fikardou",
+    "nameEl": "Φυκάρδου",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "koilani",
     "name": "Koilani",
+    "nameEl": "Κοίλανη",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "lefkara-kato",
     "name": "Kato Lefkara",
+    "nameEl": "Κάτω Λεύκαρα",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "vavla",
     "name": "Vavla",
+    "nameEl": "Βαυλά",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "galata",
     "name": "Galata",
+    "nameEl": "Γαλάτα",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "zodiakos",
     "name": "Zodiakos",
+    "nameEl": "Ζωδιακός",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "kato-drys",
     "name": "Kato Drys",
+    "nameEl": "Κάτω Δρύς",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "louvaras",
     "name": "Louvaras",
+    "nameEl": "Λούβαρας",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "lofou",
     "name": "Lofou",
+    "nameEl": "Λόφου",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "kampi-farmaka",
     "name": "Kampi Farmaka",
+    "nameEl": "Κάμπη του Φαρμάκα",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "koili",
     "name": "Koili",
+    "nameEl": "Κοίλι",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "kritou-terra",
     "name": "Kritou Terra",
+    "nameEl": "Κρήτου Τέρρα",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "kormakitis",
     "name": "Kormakitis",
+    "nameEl": "Κορμακίτης",
     "region": "Kyrenia",
     "type": "attraction"
   },
   {
     "id": "tochni",
     "name": "Tochni",
+    "nameEl": "Τόχνη",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "droushia",
     "name": "Droushia",
+    "nameEl": "Δρούσια",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "ineia",
     "name": "Ineia",
+    "nameEl": "Ίνεια",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "prodromos",
     "name": "Prodromos",
+    "nameEl": "Προδρόμος",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "milia",
     "name": "Milia",
+    "nameEl": "Μηλιά",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "spilia",
     "name": "Spilia",
+    "nameEl": "Σπήλια",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "pelathousa",
     "name": "Pelathousa",
+    "nameEl": "Πελαθούσα",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "trimiklini",
     "name": "Trimiklini",
+    "nameEl": "Τριμίκλινι",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "moutoullas",
     "name": "Moutoullas",
+    "nameEl": "Μουτουλλάς",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "statos-agios-fotios",
     "name": "Statos–Agios Fotios",
+    "nameEl": "Στατός–Άγιος Φώτιος",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "nikitari",
     "name": "Nikitari",
+    "nameEl": "Νικητάρι",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "kato-platres",
     "name": "Kato Platres",
+    "nameEl": "Κάτω Πλάτρες",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "vretsia",
     "name": "Vretsia",
+    "nameEl": "Βρέτσια",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "kellaki",
     "name": "Kellaki (Prastio)",
+    "nameEl": "Κελλάκι",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "kannavia",
     "name": "Kannavia",
+    "nameEl": "Κανναβιά",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "doros",
     "name": "Doros",
+    "nameEl": "Δωρός",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "monagri-village",
     "name": "Monagri",
+    "nameEl": "Μονάγρι",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "silikou",
     "name": "Silikou",
+    "nameEl": "Συλίκου",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "polystipos",
     "name": "Polystipos",
+    "nameEl": "Πολύστυπος",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "alona",
     "name": "Alona",
+    "nameEl": "Άλωνα",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "apsiou",
     "name": "Apsiou",
+    "nameEl": "Αψιού",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "amiantos",
     "name": "Amiantos",
+    "nameEl": "Αμίαντος",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "kalavasos",
     "name": "Kalavasos",
+    "nameEl": "Καλαβασός",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "peristerona",
     "name": "Peristerona",
+    "nameEl": "Περιστερώνα",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "lagoudera",
     "name": "Lagoudera",
+    "nameEl": "Λαγουδερά",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "mitsero",
     "name": "Mitsero",
+    "nameEl": "Μιτσερό",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "kykkos",
     "name": "Kykkos Monastery",
+    "nameEl": "Ιερά Μονή Κύκκου",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "st-neophytos",
     "name": "Agios Neophytos Monastery",
+    "nameEl": "Μονή Αγίου Νεοφύτου",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "trooditissa",
     "name": "Trooditissa Monastery",
+    "nameEl": "Μονή Τροοδίτισσας",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "machairas",
     "name": "Machairas Monastery",
+    "nameEl": "Ιερά Μονή Μαχαιρά",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "chrysorrogiatissa",
     "name": "Chrysorrogiatissa Monastery",
+    "nameEl": "Ιερά Μονή Χρυσορρογιάτισσας",
     "region": "Paphos",
     "type": "attraction"
   },
   {
     "id": "st-john-lampadistis",
     "name": "Agios Ioannis Lampadistis",
+    "nameEl": "Άγιος Ιωάννης ο Λαμπαδιστής",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "panagia-tou-araka",
     "name": "Panagia tou Araka",
+    "nameEl": "Παναγία του Άρακος",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "st-george-alamanou",
     "name": "Agios Georgios Alamanou",
+    "nameEl": "Αγιος Γεώργιος Αλαμάνου",
     "region": "Limassol",
     "type": "attraction"
   },
   {
     "id": "stavrovouni",
     "name": "Stavrovouni Monastery",
+    "nameEl": "Σταυροβούνι",
     "region": "Larnaca",
     "type": "attraction"
   },
   {
     "id": "archangelos-michail",
     "name": "Archangelos Michail (Pedoulas)",
+    "nameEl": "Άγιος Μιχαήλ Αρχάγγελος",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "st-nicholas-roof",
     "name": "Agios Nikolaos tis Stegis",
+    "nameEl": "Άγιος Νικόλαος της Στέγης",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "panagia-tou-moutoulla",
     "name": "Panagia tou Moutoulla",
+    "nameEl": "Παναγία του Μουτουλλά",
     "region": "Troodos",
     "type": "attraction"
   },
   {
     "id": "panagia-asinou",
     "name": "Panagia tis Asinou",
+    "nameEl": "Παναγία της Ασίνου",
     "region": "Nicosia",
     "type": "attraction"
   },
   {
     "id": "st-sozomenos",
     "name": "Agios Sozomenos",
+    "nameEl": "Άγιος Σωζόμενος",
     "region": "Nicosia",
     "type": "attraction"
   },
@@ -1377,6 +1466,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "lefkara-tavernas",
     "name": "Lefkara Village Tavernas",
+    "nameEl": "Λεύκαρα",
     "region": "Larnaca",
     "type": "restaurant"
   },
@@ -1431,18 +1521,21 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "artemis",
     "name": "Artemis Trail",
+    "nameEl": "Μονοπάτι Αρτέμιδος",
     "region": "Troodos",
     "type": "trail"
   },
   {
     "id": "caledonia-falls",
     "name": "Caledonia Falls",
+    "nameEl": "Καταρράκτες Καληδονίας",
     "region": "Troodos",
     "type": "trail"
   },
   {
     "id": "atalante",
     "name": "Atalante Trail",
+    "nameEl": "Μονοπάτι Αταλάντης",
     "region": "Troodos",
     "type": "trail"
   },
@@ -1455,30 +1548,35 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "olympus-summit",
     "name": "Olympus Summit Trail",
+    "nameEl": "Όλυμπος",
     "region": "Troodos",
     "type": "trail"
   },
   {
     "id": "adonis",
     "name": "Adonis Trail",
+    "nameEl": "Μονοπάτι Αδώνη",
     "region": "Paphos",
     "type": "trail"
   },
   {
     "id": "aphrodite",
     "name": "Aphrodite Trail",
+    "nameEl": "Μονοπάτι Αφροδίτης",
     "region": "Paphos",
     "type": "trail"
   },
   {
     "id": "avakas-gorge",
     "name": "Avakas Gorge",
+    "nameEl": "Φαράγγι Αβάκα",
     "region": "Paphos",
     "type": "trail"
   },
   {
     "id": "millomeris-falls",
     "name": "Millomeris Falls",
+    "nameEl": "Καταρράκτης Μιλλωμέρη",
     "region": "Troodos",
     "type": "trail"
   },
@@ -1491,6 +1589,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "cape-greco",
     "name": "Cape Greco Coastal Path",
+    "nameEl": "Ακρωτήρι Γκρέκο",
     "region": "Ayia Napa",
     "type": "trail"
   },
@@ -1503,6 +1602,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "madari-ridge",
     "name": "Madari Ridge Walk",
+    "nameEl": "Μαδάρι",
     "region": "Troodos",
     "type": "trail"
   },
@@ -2061,6 +2161,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "limassol-carnival",
     "name": "Limassol Carnival",
+    "nameEl": "Απόκριες Λεμεσού",
     "region": "Limassol",
     "type": "event"
   },
@@ -2079,12 +2180,14 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "commandaria-festival",
     "name": "Commandaria Festival",
+    "nameEl": "Γιορτή Κουμανταριά",
     "region": "Limassol",
     "type": "event"
   },
   {
     "id": "troodos-ski-season",
     "name": "Troodos Ski Season",
+    "nameEl": "Σκι Όλυμπος",
     "region": "Troodos",
     "type": "event"
   },
@@ -2133,6 +2236,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "ayia-napa-cultural-winter",
     "name": "Agia Napa Cultural Winter",
+    "nameEl": "Πολιτιστικός Χειμώνας Αγίας Νάπας",
     "region": "Ayia Napa",
     "type": "event"
   },
@@ -2145,6 +2249,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "kalopanagiotis-christmas-village",
     "name": "Kalopanagiotis Christmas Village",
+    "nameEl": "Χριστουγεννιάτικο Χωριό Καλοπαναγιώτης",
     "region": "Troodos",
     "type": "event"
   },
@@ -2163,18 +2268,21 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "green-monday",
     "name": "Green Monday",
+    "nameEl": "Καθαρά Δευτέρα",
     "region": "All",
     "type": "event"
   },
   {
     "id": "famagusta-carnival",
     "name": "Famagusta Carnival",
+    "nameEl": "Καρναβάλι Αμμοχώστου",
     "region": "Paralimni",
     "type": "event"
   },
   {
     "id": "deryneia-christmas-village",
     "name": "Deryneia Christmas Village",
+    "nameEl": "Χριστουγεννιάτικο Χωριό Δερύνειας",
     "region": "Famagusta",
     "type": "event"
   },
@@ -2211,6 +2319,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "epiphany-cyprus",
     "name": "Epiphany (Theophania)",
+    "nameEl": "Θεοφάνεια",
     "region": "All",
     "type": "event"
   }

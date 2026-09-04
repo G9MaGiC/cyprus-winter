@@ -84,6 +84,61 @@ export async function sendBookingConfirmation(booking: Booking, localeInput?: st
 }
 
 /**
+ * Guest status email when a partner confirms or declines (AUD-08: the status
+ * used to change silently — the guest only ever saw it by revisiting
+ * /bookings). Bookings don't persist the guest's UI locale yet (same gap as
+ * trail_id — future migration 008), so callers without one get the default
+ * locale; the catalog keys are ×7 and ready for when it lands.
+ */
+export async function sendBookingStatusEmail(
+  booking: Booking,
+  localeInput?: string
+): Promise<boolean> {
+  if (!resend) return false;
+  if (booking.status !== "confirmed" && booking.status !== "cancelled") return false;
+
+  const locale = resolveLocale(localeInput);
+  const t = await getTranslations({ locale, namespace: "email" });
+  const dir = emailDir(locale);
+  const confirmed = booking.status === "confirmed";
+  const providerHtml = `<strong>${escapeHtml(booking.providerName)}</strong>`;
+  const bookingsHref = bookingLookupUrl(booking.guestEmail);
+  const link = `<a href="${bookingsHref}">${escapeHtml(t("confirmation.myBookings"))}</a>`;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: booking.guestEmail,
+      subject: t(confirmed ? "status.subjectConfirmed" : "status.subjectCancelled", {
+        provider: booking.providerName,
+      }),
+      html: `
+        <div dir="${dir}">
+        <h2>${escapeHtml(t(confirmed ? "status.headingConfirmed" : "status.headingCancelled"))}</h2>
+        <p>${escapeHtml(t("confirmation.hi", { name: booking.guestName }))}</p>
+        <p>${t(confirmed ? "status.bodyConfirmed" : "status.bodyCancelled", {
+          provider: providerHtml,
+          date: escapeHtml(booking.date),
+          partySize: String(booking.partySize),
+        })}</p>
+        <p>${escapeHtml(t(confirmed ? "status.nextConfirmed" : "status.nextCancelled"))}</p>
+        <p>${t("confirmation.step3", { link })}</p>
+        <p>Cyprus Winter</p>
+        </div>
+      `,
+    });
+    if (error) {
+      console.error("Resend status email error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Status email send error:", err);
+    return false;
+  }
+}
+
+/**
  * Send booking request to verified partner winery. Called when winery has partnerEmail and isVerified.
  */
 export async function sendBookingRequestToWinery(
@@ -230,6 +285,95 @@ export async function sendBookingLookupTokenEmail(
     return true;
   } catch (err) {
     console.error("Booking lookup email send error:", err);
+    return false;
+  }
+}
+
+/**
+ * Guest-initiated cancellation: confirmation to the guest in their own locale.
+ * Distinct from the partner-decline copy in sendBookingStatusEmail — the
+ * guest chose this, so "{provider} can't host your request" would be wrong.
+ */
+export async function sendGuestCancellationEmail(
+  booking: Booking,
+  localeInput?: string
+): Promise<boolean> {
+  if (!resend) return false;
+  if (booking.status !== "cancelled") return false;
+
+  const locale = resolveLocale(localeInput);
+  const t = await getTranslations({ locale, namespace: "email" });
+  const dir = emailDir(locale);
+  const providerHtml = `<strong>${escapeHtml(booking.providerName)}</strong>`;
+  const bookingsHref = bookingLookupUrl(booking.guestEmail);
+  const link = `<a href="${bookingsHref}">${escapeHtml(t("confirmation.myBookings"))}</a>`;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: booking.guestEmail,
+      subject: t("status.subjectGuestCancelled", { provider: booking.providerName }),
+      html: `
+        <div dir="${dir}">
+        <h2>${escapeHtml(t("status.headingGuestCancelled"))}</h2>
+        <p>${escapeHtml(t("confirmation.hi", { name: booking.guestName }))}</p>
+        <p>${t("status.bodyGuestCancelled", {
+          provider: providerHtml,
+          date: escapeHtml(booking.date),
+          partySize: String(booking.partySize),
+        })}</p>
+        <p>${escapeHtml(t("status.nextGuestCancelled"))}</p>
+        <p>${t("confirmation.step3", { link })}</p>
+        <p>Cyprus Winter</p>
+        </div>
+      `,
+    });
+    if (error) {
+      console.error("Resend guest cancellation email error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Guest cancellation email send error:", err);
+    return false;
+  }
+}
+
+/**
+ * Notice to a verified partner that the guest cancelled their request.
+ * Partner mail stays English, matching the request notifications.
+ */
+export async function sendCancellationNoticeToPartner(
+  booking: Booking,
+  partner: { name: string; partnerEmail: string }
+): Promise<boolean> {
+  if (!resend) return false;
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: partner.partnerEmail,
+      // Subjects are plain text — HTML-escaping here would show literal
+      // entities ("Anne &amp; Tom") in the partner's inbox.
+      subject: `[Cyprus Winter] Request cancelled: ${booking.guestName} | ${booking.date}`,
+      html: `
+        <h2>A request was cancelled by the guest</h2>
+        <p>The following request to <strong>${escapeHtml(partner.name)}</strong> was cancelled by the guest — no action is needed.</p>
+        <ul>
+          <li><strong>Guest:</strong> ${escapeHtml(booking.guestName)}</li>
+          <li><strong>Date:</strong> ${escapeHtml(booking.date)}</li>
+          <li><strong>Party size:</strong> ${String(booking.partySize)}</li>
+        </ul>
+        <p>Cyprus Winter</p>
+      `,
+    });
+    if (error) {
+      console.error("Resend partner cancellation notice error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Partner cancellation notice send error:", err);
     return false;
   }
 }

@@ -28,6 +28,19 @@ describe("itinerary templates", () => {
     expect(ids).toContain("tsiakkas");
   });
 
+  it("keeps workation weekdays light (AUD-14: one after-work stop max on days 1-5)", () => {
+    const workation = ITINERARY_TEMPLATES.find((t) => t.key === "workation");
+    expect(workation).toBeDefined();
+    for (const day of [1, 2, 3, 4, 5]) {
+      expect(
+        workation!.days[day]?.length ?? 0,
+        `workation day ${day} must stay a remote workday`
+      ).toBeLessThanOrEqual(1);
+    }
+    expect(workation!.days[6]?.length).toBeGreaterThan(1);
+    expect(workation!.days[7]?.length).toBeGreaterThan(1);
+  });
+
   it("never pairs Atalante with Omodos on the same template day", () => {
     const offenders: string[] = [];
     for (const template of ITINERARY_TEMPLATES) {

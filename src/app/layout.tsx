@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import dynamic from "next/dynamic";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { schemaForLdJson } from "@/lib/schema-ldjson";
 import { SITE_URL } from "@/lib/site-url";
+import { ogLocaleFor } from "@/lib/locale-seo";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { Plus_Jakarta_Sans, Fraunces, Noto_Sans_Hebrew, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import LocaleSuggestionBar from "@/components/LocaleSuggestionBar";
 import BottomNav from "@/components/BottomNav";
 import FooterWithTranslations from "@/components/FooterWithTranslations";
 import ConversionTrackerClient from "@/components/ConversionTrackerClient";
@@ -72,14 +75,15 @@ export async function generateMetadata(): Promise<Metadata> {
       title: tMeta("homeTitle"),
       description: tMeta("homeDescription"),
       type: "website",
+      locale: ogLocaleFor("en"),
       url: SITE_URL,
       images: [{ url: ogImage, width: 1200, height: 630, alt: tMeta("ogImageAlt") }],
     },
+    // Card type only: title/description/image fall back to each page's og:* —
+    // a full twitter block here leaks the HOMEPAGE card onto every page that
+    // doesn't define its own (metadata merges per top-level key; AUD E2-04).
     twitter: {
       card: "summary_large_image",
-      title: tMeta("homeTitle"),
-      description: tMeta("homeDescription"),
-      images: [ogImage],
     },
     appleWebApp: {
       capable: true,
@@ -112,6 +116,22 @@ export default async function RootLayout({
   const messages = await getMessages();
   const locale = await getLocale();
   const tCommon = await getTranslations({ locale, namespace: "common" });
+
+  // The suggestion bar addresses a visitor who reads the TARGET language, so
+  // it needs every locale's own copy, not the current catalog's — built here
+  // (server) from the catalogs so the i18n gates see the strings (they were
+  // previously hardcoded in the component; review finding).
+  const localeSuggestStrings = Object.fromEntries(
+    await Promise.all(
+      routing.locales.map(async (l) => {
+        const t = await getTranslations({ locale: l, namespace: "common.localeSuggest" });
+        return [
+          l,
+          { body: t("body"), cta: t("cta"), dismiss: t("dismiss"), aria: t("aria") },
+        ] as const;
+      })
+    )
+  );
   const dir = locale === "he" ? "rtl" : "ltr";
 
   return (
@@ -140,6 +160,11 @@ export default async function RootLayout({
         >
           {tCommon("skipToContent")}
         </a>
+        {/* Early-body anchor: CookieConsentBanner portals here so the consent
+            choice sits at the START of the tab/reading order, not ~100 stops
+            after the footer (BUG-360). Mount timing stays deferred in
+            ClientComponents for the LCP fix. */}
+        <div id="pre-nav-overlays"></div>
         <NextIntlClientProvider messages={messages}>
           <SerwistProvider swUrl="/sw.js">
           <DebugErrorBoundary>
@@ -149,6 +174,7 @@ export default async function RootLayout({
               <WebVitalsReporter />
               <ScrollToTop />
               <Nav />
+              <LocaleSuggestionBar strings={localeSuggestStrings} />
               <main id="main-content" className={`pt-0 min-h-screen ${LAYOUT.mainPaddingBottom}`}>
                 {children}
               </main>

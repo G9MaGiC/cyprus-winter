@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useItinerary } from "@/hooks/useItinerary";
 import { useTripDates } from "@/hooks/useTripDates";
 import NavigateButton from "@/components/NavigateButton";
-import { LAYOUT } from "@/lib/design-tokens";
+import { LAYER, LAYOUT } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
 /**
@@ -58,7 +58,7 @@ export default function NextOnPlanBar() {
     <div
       role="complementary"
       aria-label={tCommon("nextOnPlan.aria")}
-      className={`sticky ${LAYOUT.stickyTop} z-20 flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
+      className={`sticky ${LAYOUT.stickyTop} ${LAYER.nextOnPlan} flex items-center gap-3 ${LAYOUT.safeAreaX} py-2 bg-aegean/95 text-white backdrop-blur-sm border-b border-aegean/80 shadow-sm`}
     >
       <span className="text-xs font-medium text-white/80 shrink-0">{tCommon("nextOnPlan.prefix")}</span>
       <AppLink

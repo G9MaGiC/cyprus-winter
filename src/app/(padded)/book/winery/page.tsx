@@ -10,6 +10,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import BookWineryHubFooter from "@/components/BookWineryHubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { getBestForLocalizer } from "@/lib/best-for";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { isPartnerVerified } from "@/lib/partner-verification";
 
@@ -35,6 +37,12 @@ export default async function WineriesListPage() {
     getTranslations("common"),
     getTranslations("book.pages"),
   ]);
+
+  // AUD-10 pilot: overlay localized Book-stage content for the covered ids
+  // (localizeWineryContent is a no-op for the rest).
+  const localizedWineries = await Promise.all(wineries.map((w) => localizeWineryContent(w)));
+  // AUD-99 residual: bestFor chips display localized; data keeps EN tokens.
+  const localizeBestFor = await getBestForLocalizer();
   return (
     <div className={`min-h-screen bg-sand ${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <nav className={`flex flex-col gap-1 ${SECTION.headingGap}`} aria-label={tBookPages("pageNavAria")}>
@@ -66,7 +74,7 @@ export default async function WineriesListPage() {
 
       <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
         {(() => {
-          const sorted = [...wineries].sort((a, b) => {
+          const sorted = [...localizedWineries].sort((a, b) => {
             if (isPartnerVerified(a) && !isPartnerVerified(b)) return -1;
             if (!isPartnerVerified(a) && isPartnerVerified(b)) return 1;
             return 0;
@@ -120,7 +128,7 @@ export default async function WineriesListPage() {
                           key={tag}
                           className="px-2 py-0.5 rounded-full text-xs bg-sand-200/80 text-muted-ink"
                         >
-                          {tag}
+                          {localizeBestFor(tag)}
                         </span>
                       ))}
                     </div>

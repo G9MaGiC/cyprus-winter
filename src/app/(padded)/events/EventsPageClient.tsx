@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { winterEvents } from "@/data/events";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import HubFooter from "@/components/HubFooter";
+import HubSkipNav from "@/components/HubSkipNav";
 import AskAIButton from "@/components/AskAIButton";
 import { HOME, LAYOUT, CTA, CARD, EMPTY_STATE, TYPE, SECTION, LAYER, STRIP, HUB } from "@/lib/design-tokens";
 import ListPageHero from "@/components/ListPageHero";
@@ -16,9 +17,11 @@ import { Link } from "@/i18n/navigation";
 import EventCard from "./EventCard";
 import EventFilters from "./EventFilters";
 
-const MONTH_ORDER = ["Nov", "Dec", "Jan", "Feb", "Mar"] as const;
+import { orderedSeasonMonths, type SeasonMonth } from "./season-months";
 
-function monthShortKey(month: (typeof MONTH_ORDER)[number]) {
+export type { SeasonMonth } from "./season-months";
+
+function monthShortKey(month: SeasonMonth) {
   return `monthShort.${month}` as const;
 }
 
@@ -30,7 +33,21 @@ const REGIONS_LIST = Array.from(new Set(winterEvents.map((e) => e.region)))
   .filter((r) => r !== "All")
   .sort();
 
-export default function EventsPage() {
+export default function EventsPage({ seasonAnchor = null }: { seasonAnchor?: SeasonMonth | null }) {
+  // Cold-load hash navigation: the route skeleton streams before this client
+  // tree mounts, so the browser's native #anchor jump has already been lost —
+  // re-run it once content is on screen (AUD A2-01 / plan→event deep links).
+  useEffect(() => {
+    const hash = typeof window !== "undefined" ? window.location.hash.slice(1) : "";
+    if (!hash) return;
+    const target = document.getElementById(decodeURIComponent(hash));
+    if (!target) return;
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? ("auto" as const)
+      : ("smooth" as const);
+    target.scrollIntoView({ behavior, block: "start" });
+  }, []);
+
   const tNav = useTranslations("nav");
   const tEvents = useTranslations("events");
   const tPage = useTranslations("events.page");
@@ -52,9 +69,20 @@ export default function EventsPage() {
     });
   }, [typeFilter, regionFilter]);
 
+  const seasonMonths = useMemo(() => orderedSeasonMonths(seasonAnchor), [seasonAnchor]);
+
+  // "Don't miss" follows the anchored season order too — a November visitor
+  // shouldn't scroll past February's carnival before Epiphany (AUD-59).
   const highlights = useMemo(
-    () => filtered.filter((e) => HIGHLIGHT_IDS.includes(e.id)),
-    [filtered]
+    () =>
+      filtered
+        .filter((e) => HIGHLIGHT_IDS.includes(e.id))
+        .sort(
+          (a, b) =>
+            seasonMonths.indexOf(a.month as SeasonMonth) -
+            seasonMonths.indexOf(b.month as SeasonMonth)
+        ),
+    [filtered, seasonMonths]
   );
   const regular = useMemo(
     () => filtered.filter((e) => !HIGHLIGHT_IDS.includes(e.id)),
@@ -70,7 +98,7 @@ export default function EventsPage() {
     return acc;
   }, [regular]);
 
-  const monthNavMonths = MONTH_ORDER.filter((m) => byMonth[m]?.length);
+  const monthNavMonths = seasonMonths.filter((m) => byMonth[m]?.length);
 
   const hasInvalidFilter = Boolean((typeFromUrl && !typeFilter) || (regionFromUrl && !regionFilter));
 
@@ -85,6 +113,7 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-sand">
+      <HubSkipNav targets={[{ href: "#events-content", labelKey: "results" }]} />
       <div
         className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyHeroFirst} overflow-x-hidden flex flex-col ${HUB.shellGap}`}
       >
@@ -159,6 +188,9 @@ export default function EventsPage() {
           </>
         ) : (
           <>
+            {/* Skip-nav landing point — the list region starts here whether or
+                not the month nav / highlights render. */}
+            <div id="events-content" className="scroll-mt-24" />
             {monthNavMonths.length > 0 && (
               <nav
                 aria-label={tPage("monthNav.aria")}
@@ -203,13 +235,14 @@ export default function EventsPage() {
             )}
 
             <div className={SECTION.blockGap}>
-              {MONTH_ORDER.map((month) => {
+              {seasonMonths.map((month) => {
                 const events = byMonth[month];
                 if (!events?.length) return null;
                 return (
                   <section
                     key={month}
                     id={`month-${month}`}
+                    className="scroll-mt-24"
                     aria-labelledby={`heading-${month}`}
                   >
                     <h2

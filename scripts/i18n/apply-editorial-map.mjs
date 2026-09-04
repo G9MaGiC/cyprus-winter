@@ -1,14 +1,14 @@
 /**
  * Apply flat key → string maps onto locale JSON files.
- * Usage: node scripts/i18n/apply-editorial-map.mjs <he|fr|ro> <map.json>
+ * Usage: node scripts/i18n/apply-editorial-map.mjs <he|fr|ro|de|el|pl> <map.json>
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const locale = process.argv[2];
 const mapPath = process.argv[3];
-if (!locale || !mapPath || !["he", "fr", "ro"].includes(locale)) {
-  console.error("Usage: node scripts/i18n/apply-editorial-map.mjs <he|fr|ro> <map.json>");
+if (!locale || !mapPath || !["he", "fr", "ro", "de", "el", "pl"].includes(locale)) {
+  console.error("Usage: node scripts/i18n/apply-editorial-map.mjs <he|fr|ro|de|el|pl> <map.json>");
   process.exit(1);
 }
 

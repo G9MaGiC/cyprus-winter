@@ -33,6 +33,9 @@ import DetailBookingSection from "./DetailBookingSection";
 import DiscoverLocationMap from "@/components/DiscoverLocationMap";
 import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
+import { localizeDiscoverContent } from "@/lib/discover-content";
+import { formatBestForSentence, getBestForLocalizer } from "@/lib/best-for";
 
 function isWinery(a: Attraction | Restaurant): a is Winery {
   return a.type === "winery";
@@ -110,9 +113,19 @@ export default async function AttractionPage({
   ]);
   const found = getDiscoverPlaceById(id);
   if (!found) notFound();
-  const a = applyPartnerOpeningHours(found);
+  // JSON-LD reads the EN base (+ live partner hours); the rendered record
+  // additionally gets the AUD-10 locale overlay — covered wineries since
+  // batch 5, pilot attractions since slice 3 (this surface previously showed
+  // EN base fields even for covered wineries).
+  await ensurePartnerOverlaysLoaded();
+  const base = applyPartnerOpeningHours(found);
+  const a = applyPartnerOpeningHours(await localizeDiscoverContent(found, locale));
 
   const typeLabel = getDiscoverTypeLabel(a.type, tDetail, tCommon);
+  // AUD-99 residual: bestFor tokens are EN matching keys — localize per token
+  // for display only (search/personalization/JSON-LD keep the EN values).
+  const localizeBestFor = await getBestForLocalizer(locale);
+  const bestForTypes = formatBestForSentence(a.bestFor.slice(0, 2).map(localizeBestFor), locale);
   const placeSecrets = getSecretsForPlace(a.id);
   const showInlineLocalSecret = Boolean(a.localSecret) && placeSecrets.length === 0;
 
@@ -121,26 +134,26 @@ export default async function AttractionPage({
 
   const attractionSchema = {
     "@context": "https://schema.org",
-    "@type": isRestaurant(a) ? "Restaurant" : "TouristAttraction",
-    name: a.name,
-    description: a.description.slice(0, 160),
+    "@type": isRestaurant(base) ? "Restaurant" : "TouristAttraction",
+    name: base.name,
+    description: base.description.slice(0, 160),
     image: imageUrl,
     url: canonicalUrl,
-    address: { "@type": "PostalAddress", addressLocality: a.region, addressCountry: "CY" },
-    ...(isRestaurant(a) && a.cuisine && { servesCuisine: a.cuisine }),
+    address: { "@type": "PostalAddress", addressLocality: base.region, addressCountry: "CY" },
+    ...(isRestaurant(base) && base.cuisine && { servesCuisine: base.cuisine }),
   };
 
-  const localBusinessSchema = isWinery(a)
+  const localBusinessSchema = isWinery(base)
     ? {
         "@context": "https://schema.org",
         "@type": "Winery",
-        name: a.name,
-        description: a.description.slice(0, 160),
+        name: base.name,
+        description: base.description.slice(0, 160),
         image: imageUrl,
         url: canonicalUrl,
-        address: { "@type": "PostalAddress", addressLocality: a.region, addressCountry: "CY" },
-        ...(a.openingHours && { openingHours: a.openingHours }),
-        ...(a.contactPhone && { telephone: a.contactPhone }),
+        address: { "@type": "PostalAddress", addressLocality: base.region, addressCountry: "CY" },
+        ...(base.openingHours && { openingHours: base.openingHours }),
+        ...(base.contactPhone && { telephone: base.contactPhone }),
       }
     : null;
 
@@ -166,8 +179,8 @@ export default async function AttractionPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(breadcrumbSchema) }} />
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} ${LAYOUT.detailMobileStickyClearance}`}>
         <TrackView
-          id={a.id}
-          name={a.name}
+          id={base.id}
+          name={base.name}
           type={getPlaceById(a.id)?.type ?? a.type}
           region={a.region}
         />
@@ -190,6 +203,7 @@ export default async function AttractionPage({
             locale={locale}
             typeLabel={typeLabel}
             tDetail={tDetail}
+            bestForTypes={bestForTypes}
           />
 
           <div className="space-y-10 sm:space-y-14 mt-10 sm:mt-14">
@@ -213,7 +227,7 @@ export default async function AttractionPage({
                 <h3 className={`${TYPE.kicker} text-muted-ink mb-1`}>
                   {tDetail("headings.greatFor")}
                 </h3>
-                <p className="text-muted-ink text-base break-words">{a.bestFor.join(" · ")}</p>
+                <p className="text-muted-ink text-base break-words">{a.bestFor.map(localizeBestFor).join(" · ")}</p>
               </div>
               {isRestaurant(a) && (a.cuisine || a.priceRange) && (
                 <div className="mt-4 flex flex-wrap gap-3">

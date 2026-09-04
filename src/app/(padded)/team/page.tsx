@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
-import { team } from "@/data/team";
-import { LAYOUT, CTA, CARD, TYPE } from "@/lib/design-tokens";
+import { LAYOUT, CTA, CARD, TYPE, SECTION } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import AIAssistantTrigger from "@/components/AIAssistantTrigger";
 import { getLocale, getTranslations } from "next-intl/server";
+
+// §5.2 decision (batch 38): the fabricated team roster is gone. The route now
+// carries the honest trust page — how places are chosen and verified — which
+// is the claim the product can actually stand behind.
+
+const SECTION_KEYS = ["walked", "sources", "partners", "corrections"] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -17,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function TeamPage() {
+export default async function HowWeChoosePage() {
   const [tNav, tTeam] = await Promise.all([getTranslations("nav"), getTranslations("team.page")]);
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
@@ -29,39 +34,16 @@ export default async function TeamPage() {
         breadcrumbItems={[{ label: tNav("home"), href: "/" }, { label: tNav("team"), href: "/team", isCurrent: true }]}
       />
 
-      <h2 className="sr-only">{tTeam("membersHeading")}</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {team.map((member) => (
-          <article
-            key={member.id}
-            className={`group ${CARD.base} ${CARD.content} ${CARD.hover} bg-sand-100/90`}
-          >
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta/30 to-terracotta/20 flex items-center justify-center text-2xl font-display font-bold text-muted-ink mb-4">
-              {member.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
-            <h3 className={`${TYPE.subSectionTitle} text-olive group-hover:text-terracotta transition-colors truncate`}>
-              {member.name}
-            </h3>
-            <p className="text-terracotta font-medium text-sm mt-0.5 truncate" title={member.role}>
-              {member.role}
+      <div className="grid sm:grid-cols-2 gap-6">
+        {SECTION_KEYS.map((key) => (
+          <section key={key} className={`${CARD.base} ${CARD.content} bg-sand-100/90`}>
+            <h2 className={`${TYPE.subSectionTitle} text-olive ${SECTION.headingGap}`}>
+              {tTeam(`sections.${key}.title`)}
+            </h2>
+            <p className="text-muted-ink text-sm leading-relaxed prose-body break-words">
+              {tTeam(`sections.${key}.body`)}
             </p>
-            <p className="text-muted-ink text-sm mt-3 leading-relaxed prose-body break-words">
-              {member.bio}
-            </p>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {member.expertise.map((e) => (
-                <span
-                  key={e}
-                  className="text-xs px-2.5 py-1 rounded-md bg-sand-100 text-muted-ink break-words"
-                >
-                  {e}
-                </span>
-              ))}
-            </div>
-          </article>
+          </section>
         ))}
       </div>
 

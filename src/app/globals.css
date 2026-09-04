@@ -2,6 +2,9 @@
 
 :root {
   /* Cyprus Winter — Mediterranean warmth. Canonical hex: src/lib/brand-colors.ts */
+  /* Single light palette by decision (AUD-28): declare it so UA widgets (form
+     controls, scrollbars) don't half-invert under a dark OS scheme. */
+  color-scheme: light;
   --background: #faf8f5;
   --foreground: #252730;
   --terracotta: #b55738;

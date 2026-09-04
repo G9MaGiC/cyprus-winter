@@ -8,6 +8,7 @@ import { buildPlanSharePath, MAX_DAYS } from "@/lib/itinerary-share";
 import { buildPlanIcs, downloadPlanIcs } from "@/lib/plan-ics";
 import { buildPlanShareCopy, buildPlanSharePreview } from "@/lib/plan-share-preview";
 import { toAbsoluteUrl } from "@/lib/site-url";
+import { localizedPathname } from "@/lib/seo-locale-urls";
 import { getTemplateDays, ITINERARY_TEMPLATES, type TemplateKey } from "@/data/itinerary-templates";
 import { trackProduct } from "@/lib/analytics";
 import {
@@ -220,7 +221,9 @@ export function useItinerary() {
     }
   }, [days, getPlace, locale, tPlanClip]);
 
-  const sharePath = hasContent ? buildPlanSharePath(days) : "/plan";
+  // Locale-prefixed: a Hebrew share message must land its recipient on the
+  // Hebrew plan page, not the English one (AUD E2-02).
+  const sharePath = localizedPathname(hasContent ? buildPlanSharePath(days) : "/plan", locale);
   const shareCopy = buildPlanShareCopy(buildPlanSharePreview(hasContent ? days : null), {
     two: (a, b) => tShare("previewLineTwo", { a, b }),
     three: (a, b, c) => tShare("previewLineThree", { a, b, c }),

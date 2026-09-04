@@ -1,5 +1,18 @@
 import { winterEvents } from "@/data/events";
+import { truncateForSchema } from "@/lib/schema-text";
 import { startDateForEventJsonLd } from "@/lib/event-json-ld";
+
+// schema.org Schedule.byMonth (1–12). The data holds a month, never a made-up
+// date — emit a truthful eventSchedule instead of fabricating startDate
+// (seasonal-discipline rule; AUD E2-06).
+const MONTH_TO_NUMBER: Record<string, number> = {
+  Nov: 11,
+  Dec: 12,
+  Jan: 1,
+  Feb: 2,
+  Mar: 3,
+  Apr: 4,
+};
 
 /** ItemList JSON-LD for the events index; `eventsUrl` must be the canonical events page URL (any locale). */
 export function buildEventsIndexJsonLd(eventsUrl: string) {
@@ -19,7 +32,7 @@ export function buildEventsIndexJsonLd(eventsUrl: string) {
         item: {
           "@type": "Event",
           name: evt.name,
-          description: evt.description.slice(0, 160),
+          description: truncateForSchema(evt.description),
           location: {
             "@type": "Place",
             name: evt.venue || evt.region,
@@ -27,6 +40,14 @@ export function buildEventsIndexJsonLd(eventsUrl: string) {
           },
           url: `${eventsUrl}#${evt.id}`,
           ...(startDate ? { startDate } : {}),
+          ...(!startDate && MONTH_TO_NUMBER[evt.month]
+            ? {
+                eventSchedule: {
+                  "@type": "Schedule",
+                  byMonth: [MONTH_TO_NUMBER[evt.month]],
+                },
+              }
+            : {}),
         },
       };
     }),

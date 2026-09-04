@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "@/i18n/navigation";
 import { getAttractionById } from "@/data";
 import { search, searchResultHref, type SearchResult } from "@/lib/search";
 import { useTranslations } from "next-intl";
+import { SRStatus } from "@/components/SRStatus";
 import { LAYER, SEARCH } from "@/lib/design-tokens";
 
 type SearchBarProps = {
@@ -34,6 +35,11 @@ export default function SearchBar({
   const [query, setQuery] = useState(initialQuery ?? "");
   const normalizedQuery = query.trim();
   const [focused, setFocused] = useState(false);
+  // Opens only after user input: autofocus with a prefilled query must not
+  // auto-open suggestions over identical results (AUD-43), and Escape closes
+  // the dropdown while keeping focus in the input, per the combobox pattern
+  // (AUD-17) — typing again reopens.
+  const [dirty, setDirty] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
@@ -62,7 +68,7 @@ export default function SearchBar({
     return () => clearTimeout(t);
   }, [query, syncUrl, router, pathname]);
 
-  const showDropdown = focused && results.length > 0;
+  const showDropdown = focused && dirty && results.length > 0;
   const hasResults = results.length > 0;
   const activeId = showDropdown && activeIndex >= 0 && results[activeIndex]
     ? `${resultsId}-option-${activeIndex}`
@@ -70,9 +76,8 @@ export default function SearchBar({
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
-      setFocused(false);
+      setDirty(false);
       setActiveIndex(-1);
-      inputRef.current?.blur();
       return;
     }
     if (!showDropdown) return;
@@ -121,7 +126,7 @@ export default function SearchBar({
           ref={inputRef}
           type="search"
           value={query}
-          onChange={(e) => { setQuery(e.target.value ?? ""); setActiveIndex(-1); }}
+          onChange={(e) => { setQuery(e.target.value ?? ""); setActiveIndex(-1); setDirty(true); }}
           onFocus={() => setFocused(true)}
           onBlur={() => setTimeout(() => setFocused(false), 150)}
           onKeyDown={handleKeyDown}
@@ -139,6 +144,7 @@ export default function SearchBar({
         />
       </div>
 
+      <SRStatus message={showDropdown ? tSearch("resultsCount", { count: results.length }) : ""} />
       {showDropdown && (
         <ul
           id={resultsId}
@@ -168,12 +174,12 @@ export default function SearchBar({
         </ul>
       )}
 
-      {focused && normalizedQuery.length > 0 && normalizedQuery.length < 2 && (
+      {focused && dirty && normalizedQuery.length > 0 && normalizedQuery.length < 2 && (
         <div className={`${panelClass} ${SEARCH.panelStatus}`} role="status">
           {tSearch("typeAtLeastTwo")}
         </div>
       )}
-      {focused && normalizedQuery.length >= 2 && !hasResults && (
+      {focused && dirty && normalizedQuery.length >= 2 && !hasResults && (
         <div role="status" className={`${panelClass} ${SEARCH.panelEmpty}`}>
           <p className="mb-4">{tSearch("noResults", { query: normalizedQuery })}</p>
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-ink mb-2">{tSearch("browseByCategory")}</p>

@@ -20,6 +20,14 @@ export type Booking = {
   status: BookingStatus;
   createdAt: string;
   notes?: string;
+  /** Chosen trail for guide tours (AUD-86). Persisted as `trail_id` since
+      migration 008; legacy DB rows may omit it and the client's field-wise
+      merge keeps the locally stored value for those. */
+  trailId?: string;
+  /** Guest UI locale at booking time (migration 008); guest-facing status
+      emails render in it. Absent on legacy rows — senders fall back to the
+      default locale. */
+  locale?: string;
 };
 
 const memoryStore: Booking[] = [];
@@ -117,6 +125,8 @@ export async function createBooking(input: CreateBookingInput): Promise<CreateBo
       notes: input.notes ?? null,
       created_at: createdAt,
       lead_fee_eur: leadFeeEur ?? null,
+      locale: input.locale ?? null,
+      trail_id: input.trailId ?? null,
     });
     if (error) {
       // Two concurrent requests can both miss the lookup; the primary-key conflict
@@ -149,7 +159,7 @@ export async function getBookingsByEmail(email: string): Promise<Booking[]> {
     const emailNormalized = email.trim().toLowerCase();
     const { data, error } = await supabase
       .from("bookings")
-      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes,trail_id,locale")
       .eq("guest_email", emailNormalized)
       .order("created_at", { ascending: false })
       .limit(200);
@@ -167,7 +177,7 @@ export async function getBookingsByProviderId(providerId: string): Promise<Booki
   if (supabase) {
     const { data, error } = await supabase
       .from("bookings")
-      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes")
+      .select("id,type,provider_id,provider_name,date,party_size,guest_email,guest_name,status,created_at,notes,trail_id,locale")
       .eq("provider_id", providerId)
       .order("created_at", { ascending: false })
       .limit(500);
@@ -195,17 +205,24 @@ const ALLOWED_STATUS_TRANSITIONS: Record<BookingStatus, readonly BookingStatus[]
   cancelled: [],
 };
 
-export async function updateBookingStatus(
+type BookingTransitionResult =
+  | { booking: Booking; changed: boolean }
+  | { error: "not_found" | "forbidden" | "invalid_transition" | "conflict" };
+
+/**
+ * The single FSM implementation both status paths share (partner update and
+ * guest cancel): lookup → caller-supplied authorization → idempotent no-op on
+ * a same-status retry (`changed: false` lets callers skip side effects like
+ * emails) → transition check → compare-and-set write (Supabase) or in-place
+ * update (memory). `authorize` returns the error to surface on failure, so
+ * the guest path can make an email mismatch indistinguishable from a missing
+ * booking while the partner path answers `forbidden`.
+ */
+async function transitionBookingStatus(
   id: string,
   status: BookingStatus,
-  providerId: string
-): Promise<
-  { booking: Booking } | { error: "not_found" | "forbidden" | "invalid_transition" | "conflict" }
-> {
-  if (status !== "confirmed" && status !== "cancelled") {
-    return { error: "not_found" };
-  }
-
+  authorize: (booking: Booking) => "ok" | "forbidden" | "not_found"
+): Promise<BookingTransitionResult> {
   const supabase = getSupabase();
   if (supabase) {
     const { data: existing, error: lookupError } = await supabase
@@ -216,8 +233,9 @@ export async function updateBookingStatus(
     if (lookupError) throw new Error(lookupError.message);
     if (!existing) return { error: "not_found" };
     const current = rowToBooking(existing as Record<string, unknown>);
-    if (current.providerId !== providerId) return { error: "forbidden" };
-    if (current.status === status) return { booking: current };
+    const auth = authorize(current);
+    if (auth !== "ok") return { error: auth };
+    if (current.status === status) return { booking: current, changed: false };
     if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes(status)) {
       return { error: "invalid_transition" };
     }
@@ -225,25 +243,54 @@ export async function updateBookingStatus(
       .from("bookings")
       .update({ status })
       .eq("id", id)
-      .eq("provider_id", providerId)
       .eq("status", current.status)
       .select("*")
       .maybeSingle();
     if (error) throw new Error(error.message);
     // CAS miss: the row changed between read and write (concurrent update).
     if (!updated) return { error: "conflict" };
-    return { booking: rowToBooking(updated as Record<string, unknown>) };
+    return { booking: rowToBooking(updated as Record<string, unknown>), changed: true };
   }
 
   const current = memoryStore.find((b) => b.id === id);
   if (!current) return { error: "not_found" };
-  if (current.providerId !== providerId) return { error: "forbidden" };
-  if (current.status === status) return { booking: current };
+  const auth = authorize(current);
+  if (auth !== "ok") return { error: auth };
+  if (current.status === status) return { booking: current, changed: false };
   if (!ALLOWED_STATUS_TRANSITIONS[current.status]?.includes(status)) {
     return { error: "invalid_transition" };
   }
   current.status = status;
-  return { booking: current };
+  return { booking: current, changed: true };
+}
+
+export async function updateBookingStatus(
+  id: string,
+  status: BookingStatus,
+  providerId: string
+): Promise<BookingTransitionResult> {
+  if (status !== "confirmed" && status !== "cancelled") {
+    return { error: "not_found" };
+  }
+  return transitionBookingStatus(id, status, (booking) =>
+    booking.providerId === providerId ? "ok" : "forbidden"
+  );
+}
+
+/**
+ * Guest-initiated cancellation. Authorization is possession of the booking id
+ * PLUS the exact guest email it was created with (the same proof the email
+ * lookup uses) — and an email mismatch answers `not_found`, indistinguishable
+ * from a missing booking, so ids cannot be probed for existence.
+ */
+export async function cancelBookingAsGuest(
+  id: string,
+  guestEmail: string
+): Promise<BookingTransitionResult> {
+  const normalized = guestEmail.trim().toLowerCase();
+  return transitionBookingStatus(id, "cancelled", (booking) =>
+    booking.guestEmail === normalized ? "ok" : "not_found"
+  );
 }
 
 function rowToBooking(row: Record<string, unknown>): Booking {
@@ -260,6 +307,8 @@ function rowToBooking(row: Record<string, unknown>): Booking {
     status: (row.status as BookingStatus) ?? "pending",
     createdAt: String(row.created_at),
     notes: row.notes ? String(row.notes) : undefined,
+    trailId: row.trail_id ? String(row.trail_id) : undefined,
+    locale: row.locale ? String(row.locale) : undefined,
   };
 }
 

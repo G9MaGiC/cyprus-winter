@@ -26,4 +26,18 @@ describe("buildPlanIcs", () => {
     expect(ics).toContain("DTSTART;VALUE=DATE:20260114");
     expect(ics).toContain("DTEND;VALUE=DATE:20260115");
   });
+
+  it("separates multiple places with a single RFC 5545 newline escape (AUD E2-01)", () => {
+    const places: Record<string, PlanItem> = {
+      a: { id: "a", name: "Lefkara", region: "Larnaca", type: "attraction" },
+      b: { id: "b", name: "Omodos", region: "Limassol", type: "attraction" },
+    };
+    const ics = buildPlanIcs({ 1: ["a", "b"] }, (id) => places[id], {
+      tripStart: new Date(Date.UTC(2026, 0, 1)),
+    });
+    // exactly "\n" (backslash + n), not the double-escaped "\\n" calendars
+    // used to display literally
+    expect(ics).toContain("DESCRIPTION:Lefkara (Larnaca)\\nOmodos (Limassol)");
+    expect(ics).not.toContain("\\\\n");
+  });
 });

@@ -1,5 +1,23 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+// This test asserts provider-unavailability handling, not rate limiting —
+// but the in-memory limiter is process state shared across every file a
+// vitest worker runs, which made this order-dependently flaky (it still
+// flaked after moving to a unique IP). Stub the limiter to always allow so
+// the 503 path is deterministic regardless of what ran before.
+vi.mock("@/lib/rate-limit", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/rate-limit")>();
+  return {
+    ...actual,
+    rateLimit: vi.fn(async () => ({
+      ok: true,
+      remaining: 999999,
+      resetAt: Date.now() + 60_000,
+      bypassed: true,
+    })),
+  };
+});
+
 const AI_ENV_KEYS = [
   "AI_GATEWAY_API_KEY",
   "XAI_API_KEY",
@@ -14,7 +32,7 @@ function chatReq() {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "x-forwarded-for": "127.0.0.91",
+      "x-forwarded-for": "127.0.0.191",
     },
     body: JSON.stringify({
       messages: [{ role: "user", content: "Hello" }],

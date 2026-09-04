@@ -26,7 +26,7 @@
     "heading": "Înainte de călătorie",
     "body": "Regulile de intrare și condițiile locale se schimbă. Folosește surse oficiale — fapte, fără exagerări.",
     "visitCyprus": "Visit Cyprus (turism oficial)",
-    "foreignTravelUk": "Sfaturi de călătorie UK — Cipru",
+    "advisory": "MAE: Condiții de călătorie — Republica Cipru",
     "emergency": "Urgență 112 · Info turiști 1460 · Ambulanță 199"
   },
   "nav": {
@@ -45,7 +45,7 @@
     "bookings": "Rezervări",
     "secrets": "Secrete locale",
     "account": "Cont",
-    "team": "Echipă",
+    "team": "Cum alegem",
     "search": "Căutare",
     "more": "Mai mult",
     "askAI": "Întreabă AI",
@@ -87,7 +87,10 @@
       "quickActions": "Acțiuni rapide",
       "reportConditionsForTrail": "Raportează condițiile acestui traseu",
       "dismissNotification": "Închide notificarea",
-      "notifications": "Notificări"
+      "notifications": "Notificări",
+      "addedToPlan": "Adăugat în planul tău.",
+      "placeCard": "{name} — {type}, {region}",
+      "placeCardImageAlt": "{name}, {region} — în lumina iernii din Cipru"
     },
     "skipToContent": "Sari la conținut",
     "languageLabel": "Limbă:",
@@ -118,7 +121,8 @@
       "title": "Consimțământ cookies.",
       "body": "Folosim cookie-uri esențiale pentru serviciu și analize opționale. „Accept” permite analizele.",
       "accept": "Acceptă",
-      "learnMore": "Află mai mult"
+      "learnMore": "Află mai mult",
+      "srAnnounce": "Notificare cookie: alegeți Acceptă sau Doar esențiale în partea de jos a ecranului."
     },
     "shareColon": "Distribuie:",
     "bookTasting": "Rezervă o degustare",
@@ -337,7 +341,9 @@
       "editorsPicks": "Salt la alegerile editorului",
       "plan": "Salt la Plan",
       "search": "Salt la căutare",
-      "startHere": "Salt la Începe aici"
+      "startHere": "Salt la Începe aici",
+      "results": "Salt la rezultate",
+      "map": "Salt la hartă"
     },
     "cancel": "Anulează",
     "done": "Gata",
@@ -349,7 +355,21 @@
       "heading": "Înainte să pleci",
       "allSet": "Totul e gata. Călătorie plăcută."
     },
-    "useMyLocationInstead": "Folosește locația mea"
+    "useMyLocationInstead": "Folosește locația mea",
+    "localeBetaHint": "Limbi beta: o parte din conținut poate apărea încă în engleză.",
+    "hubFilter": {
+      "all": "Toate regiunile",
+      "aria": "Filtrează după regiune",
+      "showing": "{count} din {total} afișate"
+    },
+    "localeSwitchHeading": "Limbă",
+    "fromPrice": "de la {price} €",
+    "localeSuggest": {
+      "body": "Această pagină este disponibilă și în română.",
+      "cta": "Treci la română",
+      "dismiss": "Închide",
+      "aria": "Sugestie de limbă"
+    }
   },
   "home": {
     "title": "Cyprus Winter",
@@ -488,15 +508,16 @@
     },
     "trailConditionsStrip": {
       "aria": "Condiții pe traseele din Troodos — verifică starea înainte să pleci",
-      "heading": "Trasee astăzi",
+      "heading": "Trasee Troodos: situația de iarnă",
       "open": "{count} deschise",
       "caution": "{count} cu atenție",
       "closed": "{count} închise",
       "checkReports": "Vezi rapoartele",
       "goodToGo": "Traseele din Troodos sunt bune de parcurs",
-      "cautionOnly": "{count} trasee cer atenție",
+      "cautionOnly": "{count, plural, one {# traseu necesită atenție} few {# trasee necesită atenție} other {# de trasee necesită atenție}}",
       "withClosed": "{count} trasee închise — verifică înainte să pleci",
-      "checkConditions": "Verifică condițiile pe trasee înainte de Troodos"
+      "checkConditions": "Verifică condițiile pe trasee înainte de Troodos",
+      "asOf": "actualizat: {date}"
     },
     "weatherStrip": {
       "aria": "Vremea de iarnă în Cipru — temperaturi pe litoral și în Troodos. Verifică vremea.",
@@ -796,7 +817,9 @@
       "RATE_LIMITED": "Prea multe cereri. Așteaptă un moment.",
       "SERVER_ERROR": "Ceva nu a mers. Încearcă din nou.",
       "VALIDATION_ERROR": "Ceva nu a mers. Încearcă din nou.",
-      "BAD_REQUEST": "Ceva nu a mers. Încearcă din nou."
+      "BAD_REQUEST": "Ceva nu a mers. Încearcă din nou.",
+      "NOT_FOUND": "Această înregistrare nu mai este disponibilă.",
+      "IDEMPOTENCY_CONFLICT": "Cererea a fost deja trimisă — verifică rezervările tale înainte să încerci din nou."
     }
   },
   "push": {
@@ -1107,7 +1130,7 @@
       "whyNow": {
         "title": "De ce acum",
         "bestFor": "Ideal pentru {types}.",
-        "regionFlow": "{region} este o oprire practică pentru același flux de plan al zilei.",
+        "regionFlow": "Ușor de combinat cu alte opriri din {region} în aceeași zi.",
         "saveCompare": "Adăugați în plan pentru a-l combina cu un traseu sau sat din apropiere."
       },
       "visitTaste": {
@@ -1305,6 +1328,11 @@
       "meta": {
         "title": "Portal parteneri | Cyprus Winter",
         "description": "Crame și ghizi verificați: program de iarnă, imagine locală și cereri de degustare."
+      },
+      "errors": {
+        "unavailable": "Portalul partenerilor nu este încă configurat pe această instalare. Încercați mai târziu sau contactați-ne.",
+        "rateLimited": "Prea multe încercări de autentificare. Așteptați un minut și încercați din nou.",
+        "generic": "Autentificarea nu a reușit. Verificați conexiunea și încercați din nou."
       }
     }
   },
@@ -1689,14 +1717,14 @@
       }
     },
     "conditionsStrip": {
-      "heading": "Condiții azi",
+      "heading": "Starea traseelor iarna",
       "ariaViewList": "Condiții trasee azi — vezi lista",
       "openCount": "{count} deschise",
       "cautionCount": "{count} cu prudență",
       "closedCount": "{count} închise",
       "noReports": "Verifică rapoartele",
       "goodToGo": "Pregătit de plecare",
-      "cautionOnly": "{count} trasee necesită prudență",
+      "cautionOnly": "{count, plural, one {# traseu necesită atenție} few {# trasee necesită atenție} other {# de trasee necesită atenție}}",
       "withClosed": "{count} trasee închise — verifică înainte de plecare",
       "checkConditions": "Verifică condițiile"
     },
@@ -1770,7 +1798,13 @@
       "peak-views": "Priveliști de pe vârfuri",
       "full-day": "Provocări pe zi întreagă"
     },
-    "bestConditionsNow": "Cele mai bune condiții acum"
+    "bestConditionsNow": "Cele mai bune condiții acum",
+    "routeTypes": {
+      "loop": "Circuit",
+      "outAndBack": "Dus-întors",
+      "pointToPoint": "Din punct în punct"
+    },
+    "asOf": "actualizat: {date}"
   },
   "plan": {
     "addToPlan": "Adaugă în plan",
@@ -1785,7 +1819,7 @@
     "pageTitle": "Planifică-ți iarna în Cipru",
     "pageDescHasContent": "Planul tău. Adaugă, distribuie sau ajustează mai jos.",
     "pageDescEmpty": "Construiește un plan de iarnă. Alege un șablon sau adaugă locuri pe zile.",
-    "pageDescSecondaryEmpty": "Se salvează automat.",
+    "pageDescSecondaryEmpty": "Se salvează automat pe acest dispozitiv.",
     "mapTitle": "Planul tău pe hartă",
     "mapCollapsibleHint": "Opriri și context rutier pe harta insulei",
     "addMoreCollapsibleTitle": "Adaugă mai mult în plan",
@@ -1806,7 +1840,7 @@
     "combosCollapsibleSubtitle": "Combinații dimineață și după-amiază care curg",
     "placesCount": "{count, plural, one {# loc} other {# locuri}}",
     "addAnotherStopHint": "Adaugă o oprire sau schimbă ziua mai sus.",
-    "autoSaved": "Salvat automat",
+    "autoSaved": "Salvat automat pe acest dispozitiv",
     "addFailedAlert": {
       "message": "Locul nu mai e pe lista noastră.",
       "browseDiscoverLabel": "Răsfoiește Descoperă",
@@ -1831,7 +1865,7 @@
       "directoryCta": "Găsește un ghid licențiat",
       "browseLicensed": "Răsfoiește ghizii licențiați",
       "directoryCount": "{count} ghizi vorbesc limba ta în acest district",
-      "verifiedPartners": "Parteneri de drumeție verificați"
+      "verifiedPartners": "Ghizi montani licențiați"
     },
     "realism": {
       "aria": "Indicii de ritm pentru zi",
@@ -1921,7 +1955,8 @@
       "selectDay": "Alege ziua",
       "quickStartRegion": "Adaugă locuri sau folosește șabloane",
       "itineraryCopied": "Plan copiat în clipboard",
-      "shareLinkCopied": "Link de distribuire copiat în clipboard"
+      "shareLinkCopied": "Link de distribuire copiat în clipboard",
+      "removedFromPlan": "{name} a fost eliminat din plan."
     },
     "daySelector": {
       "tabLabelWithCount": "Ziua {day} · {count}",
@@ -1950,7 +1985,7 @@
     },
     "meta": {
       "title": "Planifică iarna în Cipru | Planuri selectate și constructor de călătorie",
-      "description": "Planuri de iarnă selectate pentru Cipru: 48 h până la 10 zile. Ritm expert, sfaturi rezervări crame, recomandări sezoniere. Trasee Troodos, sate, coastă — planifică din timp sau la fața locului. Gratuit.",
+      "description": "Planuri de iarnă selectate pentru Cipru: 48 h până la 10 zile. Ritm expert, sfaturi pentru crame, trasee Troodos, sate și coastă. Gratuit.",
       "ogTitle": "Planifică Cipru iarna | Planuri selectate",
       "ogDescription": "Planuri de iarnă cu ritm expert și sfaturi pentru crame. Trasee, sate, coastă. Din timp sau la fața locului."
     },
@@ -2065,35 +2100,51 @@
       "items": {
         "short-stay": {
           "label": "Sejur scurt",
-          "description": "48 de ore: coastă antică, traseu Troodos, vin de sat"
+          "description": "48 de ore: coastă antică, traseu Troodos, vin de sat",
+          "bookingNote": "Rezervați degustarea la Tsiakkas — locurile de iarnă se ocupă repede.",
+          "seasonalNote": "Lumina scade pe la 17:00. Începeți Kourion până la 10:00."
         },
         "classic": {
           "label": "Clasic",
-          "description": "De la coastă la munte: ruine Paphos, trasee Troodos, dantelă Lefkara"
+          "description": "De la coastă la munte: ruine Paphos, trasee Troodos, dantelă Lefkara",
+          "bookingNote": "Rezervați degustările Tsiakkas și Kolios cu 24–48 h înainte.",
+          "seasonalNote": "2–3 opriri pe zi. Grupați Kourion + mozaicurile (aceeași coastă)."
         },
         "mountain": {
           "label": "Munte",
-          "description": "Bucle Troodos și sate de piatră—Artemis, Caledonia, Kykkos"
+          "description": "Bucle Troodos și sate de piatră—Artemis, Caledonia, Kykkos",
+          "bookingNote": "Tsiakkas după Kykkos — combinația perfectă de final de zi.",
+          "seasonalNote": "Luați haine în straturi. Potecile pot fi înghețate; verificați condițiile."
         },
         "coast-culture": {
           "label": "Coastă & Cultură",
-          "description": "Plaje, UNESCO, crame—de la est la vest"
+          "description": "Plaje, UNESCO, crame—de la est la vest",
+          "bookingNote": "Rezervați degustările Omodos/Tsiakkas; program de iarnă limitat.",
+          "seasonalNote": "Coastă blândă; combinați Kourion + Governor's Beach (aproape una de alta)."
         },
         "family": {
           "label": "Familie",
-          "description": "Ritm blând, 2 opriri/zi—plaje, muzee, prânz la sat"
+          "description": "Ritm blând, 2 opriri/zi—plaje, muzee, prânz la sat",
+          "bookingNote": "Sterna Boutique — rezervați degustarea de familie; iarna sunați cu 24 h înainte.",
+          "seasonalNote": "Maximum două opriri pe zi. Plouă? Înlocuiți ziua 3 cu Muzeul Ciprului + Leventis (Nicosia) — variantă la interior."
         },
         "workation": {
           "label": "Săptămână workation",
-          "description": "Remote în săptămână, Troodos & coastă în weekend—cafenele cu wifi, vreme blândă"
+          "description": "În timpul săptămânii muncă la distanță cu o oprire ușoară după program; în weekend Troodos și Paphos — cafenele cu wifi, vreme blândă",
+          "bookingNote": "Rezervați din timp vizita la cramă de sâmbătă; în timpul săptămânii este mai liniște.",
+          "seasonalNote": "Verificați /weather pentru luna dvs. Traseele de weekend înainte de ora 10; opririle din timpul săptămânii încap după program."
         },
         "classic-7": {
           "label": "Cultură clasică (7 zile)",
-          "description": "Larnaca → Nicosia → Troodos → Paphos—tur complet al insulei"
+          "description": "Larnaca → Nicosia → Troodos → Paphos—tur complet al insulei",
+          "bookingNote": "Mai multe opriri la crame — rezervați din timp; personal redus iarna.",
+          "seasonalNote": "Dec: sate de Crăciun. Ian: migdali înfloriți. Începeți devreme muzeele din Nicosia."
         },
         "mountain-10": {
           "label": "Explorator montan (10 zile)",
-          "description": "Bază Troodos, Pitsilia, Machairas, apoi coastă—imersiune pentru drumeți"
+          "description": "Bază Troodos, Pitsilia, Machairas, apoi coastă—imersiune pentru drumeți",
+          "bookingNote": "Vouni Panayia: rezervați degustarea. Zilele 8–10: relaxare pe coastă.",
+          "seasonalNote": "Ian–mar: zăpadă pe Olimp. Verificați zilnic condițiile de pe poteci."
         }
       }
     },
@@ -2102,6 +2153,10 @@
       "kourion": "Kourion",
       "domes-sergiou": "Dómes Sergiou",
       "omodos": "Omodos"
+    },
+    "seasonalTip": {
+      "kicker": "Sfatul touroperatorului",
+      "dismissAria": "Închide sfatul"
     }
   },
   "bookings": {
@@ -2142,7 +2197,7 @@
         "confirmedCount": "{count} confirmate"
       },
       "sync": {
-        "toggle": "Ai rezervat pe alt dispozitiv? Încarcă prin email",
+        "toggle": "Verifică confirmările — sau încarcă rezervările prin email",
         "submit": "Încarcă rezervările",
         "sendLookupLink": "Trimite linkul",
         "resendLookupLink": "Retrimite linkul",
@@ -2187,11 +2242,13 @@
       "cta": {
         "viewTrails": "Vezi trasee",
         "viewWinery": "Vezi cramă",
-        "modify": "Modifică",
+        "modify": "Cere o modificare",
         "bookAgain": "Rezervă din nou",
         "browseTrails": "Vezi trasee",
         "visitWineryPage": "Pagina cramei",
-        "discoverAll": "Descoperă tot"
+        "discoverAll": "Descoperă tot",
+        "addToCalendar": "Adaugă în calendar",
+        "viewTrail": "Vezi traseul"
       },
       "past": {
         "heading": "Trecute și anulate"
@@ -2205,6 +2262,20 @@
       "meta": {
         "title": "Rezervările mele | Cyprus Winter",
         "description": "Degustări și experiențe. Toate într-un loc."
+      },
+      "cancelHint": "S-au schimbat planurile? Anulați orice cerere direct pe cardul ei de mai jos — fără costuri. Pentru schimbarea datei, folosiți „Cereți o modificare”.",
+      "ics": {
+        "tasting": "degustare de vin",
+        "guidedHike": "drumeție ghidată"
+      },
+      "cancel": {
+        "button": "Anulați cererea",
+        "confirmBody": "Anulați cererea către {provider}? Acest lucru nu poate fi anulat ulterior.",
+        "confirmYes": "Da, anulați",
+        "keep": "Păstrați cererea",
+        "success": "Cererea a fost anulată.",
+        "errorFailed": "Anularea nu a reușit. Încercați din nou peste puțin timp.",
+        "errorConflict": "Această rezervare tocmai s-a schimbat. Reîmprospătați pentru starea curentă."
       }
     }
   },
@@ -2332,7 +2403,8 @@
       "villages": "Sate",
       "beaches": "Plaje",
       "cycling": "Ciclism"
-    }
+    },
+    "resultsCount": "{count, plural, one {# sugestie disponibilă} few {# sugestii disponibile} other {# de sugestii disponibile}}"
   },
   "events": {
     "clearFilters": "Șterge filtrele",
@@ -2433,7 +2505,34 @@
         "ancient": "Situri antice",
         "winterEvents": "Evenimente de iarnă",
         "allWineries": "Toate cramele din Cipru",
-        "troodosDecember": "Trasee Troodos în decembrie"
+        "troodosDecember": "Trasee Troodos în decembrie",
+        "trails": "Trasee",
+        "villages": "Sate",
+        "beaches": "Plaje",
+        "wineries": "Crame",
+        "monasteries": "Mănăstiri și biserici"
+      },
+      "regions": {
+        "troodos": {
+          "title": "Munții Troodos iarna",
+          "intro": "Trasee prin păduri de pin, biserici pictate și sate de vin sub Olimp — plus puțin schi când se așterne zăpada. Inima de iarnă a Ciprului."
+        },
+        "paphos": {
+          "title": "Paphos iarna",
+          "intro": "Coastă blândă, istorie adâncă: plimbări la Coral Bay, mozaicurile din Paphos, traseul Adonis și satele de vin din Laona — totul la o scurtă plimbare de iarnă cu mașina."
+        },
+        "ayia-napa": {
+          "title": "Ayia Napa și Capul Greco iarna",
+          "intro": "Coasta de est în cea mai liniștită formă: nisip gol la Nissi și Fig Tree Bay, poteca de coastă Capul Greco și peșteri marine în lumina blândă de iarnă."
+        },
+        "larnaca": {
+          "title": "Larnaca iarna",
+          "intro": "Dantelă de Lefkara, anticul Kition și Hala Sultan Tekke pe lacul sărat — sezonul flamingo — cu excursii ușoare de o zi spre dealuri."
+        },
+        "limassol": {
+          "title": "Limassol iarna",
+          "intro": "Kourion deasupra mării, castelul Kolossi și satele de vin Krasochoria — ținutul Commandariei — plus carnaval și maraton când iarna trece spre primăvară."
+        }
       }
     }
   },
@@ -2583,6 +2682,14 @@
       },
       "aria": {
         "actions": "Acțiuni pagină lună meteo"
+      },
+      "monthNames": {
+        "november": "Noiembrie",
+        "december": "Decembrie",
+        "january": "Ianuarie",
+        "february": "Februarie",
+        "march": "Martie",
+        "april": "Aprilie"
       }
     }
   },
@@ -2692,7 +2799,10 @@
       "meta": {
         "title": "Resetare parolă | Cyprus Winter",
         "description": "Solicită un link de resetare pentru contul Cyprus Winter."
-      }
+      },
+      "configTitle": "Resetează-ți parola",
+      "configSubtitle": "Autentificarea este încă în curs de configurare, așa că e-mailurile de resetare nu pot fi trimise deocamdată. Rezervările rămân salvate pe acest dispozitiv — le puteți încărca și prin e-mail în „Rezervările mele”.",
+      "configBookingsCta": "Mergi la „Rezervările mele”"
     },
     "reset": {
       "inlinePasswordHint": "Cel puțin 6 caractere",
@@ -2736,10 +2846,11 @@
         "aria": "Informații de încredere pentru rezervare",
         "heading": "Înainte de trimitere",
         "verifiedRoute": "Rută de cerere {context} verificată.",
-        "emailConfirm": "Confirmarea ajunge de obicei pe email în 24 de ore.",
+        "emailConfirm": "Partenerul confirmă de obicei prin email în 24–48 de ore, în zilele lucrătoare.",
         "noCharge": "Nu se ia nicio plată aici. Furnizorii confirmă mai întâi disponibilitatea.",
         "contextPartner": "partener",
-        "contextGuide": "ghid"
+        "contextGuide": "ghid",
+        "requestLoggedFallback": "Cererea ta se salvează aici imediat — pentru a-ți garanta data, aranjează și direct cu partenerul."
       },
       "progress": {
         "aria": "Progresul rezervării",
@@ -2748,11 +2859,12 @@
         "stepConfirmation": "Confirmare"
       },
       "states": {
-        "heading": "Stări rezervare:",
-        "wineryBody": "De la cerere acum la confirmare după răspunsul cramei.",
-        "guideBody": "De la cerere acum la confirmare după răspunsul ghidului.",
-        "offlineQueue": "Dacă ești offline, cererea e pusă la coadă ca sincronizare în așteptare și retrimisă automat."
-      }
+        "heading": "Ce se întâmplă cu cererea dvs.",
+        "wineryBody": "Starea începe ca „în așteptare”; se confirmă doar după răspunsul partenerului.",
+        "guideBody": "Starea începe ca „în așteptare”; se confirmă doar după răspunsul ghidului.",
+        "offlineQueue": "Sunteți offline? Cererea se salvează pe dispozitiv și se trimite automat când reveniți online."
+      },
+      "successUnverified": "Ți-am salvat cererea în rezervările tale. Pentru siguranța datei, contactează și direct partenerul — nu se face nicio plată în aplicație."
     },
     "guideForm": {
       "validation": {
@@ -2764,7 +2876,8 @@
       "errors": {
         "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
-        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
+        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online.",
+        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți."
       },
       "success": {
         "title": "Cerere trimisă",
@@ -2777,7 +2890,7 @@
         "ctaBookings": "Vezi rezervările mele",
         "ctaTrails": "Răsfoiește traseele",
         "nextStepsHeading": "Ce urmează",
-        "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
+        "nextStep1": "Salvăm cererea imediat și vă trimitem o copie pe e-mail de îndată ce trimiterea e-mailurilor este activă.",
         "nextStep2": "Ghidul confirmă pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
         "sla": "E o cerere, nu un loc confirmat. Dacă nu auzi nimic după două zile lucrătoare, contactează ghidul."
@@ -2837,7 +2950,8 @@
       "errors": {
         "failed": "Rezervarea a eșuat",
         "fallback": "Ceva nu a mers — verifică conexiunea și încearcă din nou.",
-        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online."
+        "offlineQueued": "Ești offline — cererea a fost salvată și se va trimite automat când revii online.",
+        "offlineDropped": "Cererea salvată nu a putut fi trimisă — serverul a respins-o. Verificați datele și retrimiteți."
       },
       "success": {
         "title": "Cerere trimisă",
@@ -2849,7 +2963,7 @@
         "ctaBookings": "Vezi rezervările mele",
         "ctaDiscover": "Descoperă mai mult",
         "nextStepsHeading": "Ce urmează",
-        "nextStep1": "Salvăm cererea și îți trimitem o copie pe email când livrarea e disponibilă.",
+        "nextStep1": "Salvăm cererea imediat și vă trimitem o copie pe e-mail de îndată ce trimiterea e-mailurilor este activă.",
         "nextStep2": "Crama confirmă data și ora pe email—de obicei în 24–48 de ore în zilele lucrătoare.",
         "nextStep3": "Urmărește starea oricând la Rezervările mele, cu același email.",
         "sla": "Fără taxă în aplicație până confirmă. Dacă nu auzi nimic după două zile lucrătoare, sună crama."
@@ -2895,7 +3009,8 @@
       "hints": {
         "heading": "Înainte de rezervare",
         "hoursLabel": "Program:",
-        "bestTimeLabel": "Cel mai bun moment:"
+        "bestTimeLabel": "Cel mai bun moment:",
+        "offSeasonHours": "Sună înainte (nov–mar) — în extrasezon programul e adesea mai scurt."
       }
     },
     "pages": {
@@ -2920,12 +3035,14 @@
           "title": "Rezervă o drumeție ghidată | {guideName} | Cyprus Winter",
           "description": "Cere o drumeție ghidată de iarnă cu {guideName} în {region}. Grupuri mici, experiență locală. Va confirma pe email."
         },
-        "metaNotFound": "Nu a fost găsit"
+        "metaNotFound": "Nu a fost găsit",
+        "directoryFallback": "Ai nevoie de date de contact directe? Ghizii licențiați sunt listați cu numere de telefon în directorul oficial al ghizilor.",
+        "directoryFallbackLink": "Deschide directorul ghizilor →"
       },
       "guideList": {
         "meta": {
           "title": "Rezervă o drumeție ghidată | Cyprus Winter",
-          "description": "Drumeții ghidate de iarnă în Troodos, Paphos și Akamas. Ghizi locali pentru Artemis, Caledonia Falls, Adonis și altele. Grupuri mici, experiență de iarnă. Rezervă din timp și vor confirma pe email."
+          "description": "Drumeții ghidate de iarnă în Troodos, Paphos și Akamas: Artemis, Caledonia Falls, Adonis. Grupuri mici, experiență de iarnă. Rezervă din timp."
         },
         "intro": "Ghizi locali pentru Troodos, Paphos și Akamas. Cunosc condițiile de iarnă, grupuri mici, lideri experimentați. Cere o drumeție și vor confirma pe email.",
         "trailsPrefix": "Trasee:",
@@ -2946,9 +3063,9 @@
       "wineryList": {
         "meta": {
           "title": "Rezervă o degustare | Cyprus Winter",
-          "description": "Răsfoiește crame verificate din Cipru și rezervă o degustare de iarnă. Focuri calde, proprietarul toarnă, grupuri mici. Rezervă din timp — weekendurile de iarnă se umplu."
+          "description": "Răsfoiește crame selectate din Cipru și rezervă o degustare de iarnă. Focuri calde, proprietarul toarnă, grupuri mici. Rezervă din timp — weekendurile de iarnă se umplu."
         },
-        "intro": "Răsfoiește cramele partenere și cere o degustare. Vor confirma pe email — de obicei într-o zi.",
+        "intro": "Răsfoiește cramele partenere și cere o degustare. Vor confirma pe email — de obicei în 24–48 de ore, în zilele lucrătoare.",
         "ctaAria": "Rezervă o degustare la {name}",
         "footerBrowseWineries": "Răsfoiește toate cramele",
         "disclaimer": "Pentru adulți de vârstă legală pentru consumul de alcool. Consumați responsabil.",
@@ -3037,13 +3154,13 @@
     "directory": {
       "meta": {
         "title": "Ghiduri turistice licențiate | Cyprus Winter",
-        "description": "Ghiduri turistice licențiate oficiale din Cipru, pe district și limbă. Lista Vice-ministerului Turismului — contactează ghizii direct. Parteneri de drumeție verificați disponibili pentru rezervare în aplicație."
+        "description": "Ghizi turistici licențiați din Cipru, pe district și limbă. Lista Vice-ministerului Turismului — contactează ghizii direct sau rezervă în aplicație."
       },
       "title": "Ghiduri turistice licențiate",
       "breadcrumb": "Ghiduri licențiate",
       "pageNavAria": "Director ghizi licențiați",
-      "intro": "{count} ghiduri licențiate din lista oficială Visit Cyprus (aug. 2026). Contactează-i direct — sau rezervă un partener de drumeție de iarnă verificat în aplicație.",
-      "verifiedPartnersLink": "Rezervă parteneri verificați →",
+      "intro": "{count} ghizi licențiați din lista oficială Visit Cyprus (aug. 2026). Contactează-i direct — sau rezervă un ghid montan licențiat în aplicație.",
+      "verifiedPartnersLink": "Rezervă un ghid licențiat →",
       "disclaimer": "Ghiduri turistice licențiate înregistrate la Vice-ministerul Turismului din Cipru. Cyprus Winter listează contacte oficiale; rezervarea și plata se fac direct cu ghidul.",
       "officialListLink": "Listă oficială pe Visit Cyprus",
       "searchLabel": "Caută ghiduri",
@@ -3079,19 +3196,20 @@
         "hebrew": "Ebraică"
       },
       "verifiedCta": {
-        "title": "Parteneri de drumeție de iarnă verificați",
-        "body": "Acești ghizi acceptă cereri prin Cyprus Winter — Troodos, Akamas și tururi culturale cu confirmare prin e-mail.",
-        "button": "Rezervă un ghid verificat"
+        "title": "Ghizi montani licențiați — rezervare în aplicație",
+        "body": "Acești ghizi primesc cereri prin Cyprus Winter — Troodos, Akamas și tururi culturale.",
+        "button": "Rezervă un ghid licențiat"
       },
       "verifiedPartnerBadge": "Rezervare în aplicație",
       "verifiedPartnerBook": "Cerere prin Cyprus Winter",
       "footer": {
-        "hubBody": "Contactează un ghid licențiat direct — sau rezervă un partener verificat în aplicație și adaugă opriri în plan.",
+        "hubBody": "Contactează un ghid licențiat direct — sau rezervă un ghid montan licențiat în aplicație și adaugă opriri în plan.",
         "trails": "Condiții pe trasee"
       },
       "aria": {
         "actions": "Acțiuni director ghizi licențiați"
-      }
+      },
+      "resultCountFiltered": "{count} din {total} ghizi — cu filtre"
     }
   },
   "install": {
@@ -3305,21 +3423,38 @@
   "team": {
     "page": {
       "meta": {
-        "title": "Echipă | Cyprus Winter — Trasee, sate, crame",
-        "description": "Oamenii din spatele Cyprus Winter. Trasee, sate, crame — Cipru iarna merită mai mult. Cunoaște echipa care a creat acest ghid. Șaisprezece grade când acasă sunt șase."
+        "title": "Cum alegem locurile | Cyprus Winter",
+        "description": "Fără plasări plătite, fără broșuri de vară: cum selectează și verifică Cyprus Winter traseele, satele și cramele — și ce înseamnă cu adevărat insigna de partener verificat."
       },
-      "membersHeading": "Membri ai echipei",
       "header": {
-        "title": "Echipa noastră",
-        "description": "Designeri, dezvoltatori și experți în turism. Cipru iarna merită mai mult decât o mențiune de o linie."
+        "title": "Cum alegem locurile",
+        "description": "Cyprus Winter este un ghid curatoriat, nu un catalog. Aici explicăm exact cum ajunge un loc în ghid — și ce verificăm înainte."
+      },
+      "sections": {
+        "walked": {
+          "title": "Parcurse iarna",
+          "body": "Fiecare traseu, sat și cramă de aici este ales pentru cum este cu adevărat între noiembrie și martie — program de iarnă, starea traseelor, lumină și liniște — nu pentru cum arată în fotografii în august. Notele sezoniere sunt scrise pentru luni anume, iar când iarna schimbă ceva, pagina o spune."
+        },
+        "sources": {
+          "title": "Verificate cu surse",
+          "body": "Datele din spatele fiecărei pagini sunt validate automat la fiecare modificare, iar afirmațiile factuale din cercetarea noastră au citări. Acolo unde programul de iarnă chiar variază, scriem „sunați înainte” în loc să ghicim."
+        },
+        "partners": {
+          "title": "Verificați, niciodată plătiți",
+          "body": "Niciun loc nu plătește ca să apară aici, iar ordinea nu este de vânzare. Insigna „Partener verificat” înseamnă un singur lucru: avem un canal de contact confirmat cu partenerul, astfel încât cererea de rezervare chiar ajunge la el. Peste tot în rest, textele de rezervare vă spun onest că cererea este înregistrată — nu confirmată."
+        },
+        "corrections": {
+          "title": "Când greșim",
+          "body": "Iarna se schimbă repede — o furtună închide un traseu, o cramă își scurtează programul. Pe paginile traseelor puteți raporta condițiile, iar orice altceva pare depășit merită să ne spuneți prin asistentul de mai jos."
+        }
       },
       "cta": {
-        "prompt": "Ai întrebări despre călătorie? Ghidul tău cunoaște insula.",
-        "askAi": "Întreabă AI",
-        "startPlanning": "Începe planificarea",
-        "discoverPlaces": "Descoperă locuri"
+        "prompt": "Întrebări despre călătorie? Asistentul cunoaște insula.",
+        "askAi": "Întrebați AI-ul",
+        "startPlanning": "Începeți planificarea",
+        "discoverPlaces": "Descoperiți locuri"
       },
-      "outro": "Traseu dimineața: Artemis sau Caledonia. Omodos sau Lefkara la prânz. O cramă după-amiaza. Așa am petrece o zi. Insula răsplătește curioșii."
+      "outro": "Un traseu dimineața: Artemis sau Caledonia. Omodos sau Lefkara la prânz. O cramă după-amiaza. O astfel de zi am alege-o. Insula îi răsplătește pe cei curioși."
     }
   },
   "terms": {
@@ -3389,8 +3524,8 @@
     }
   },
   "meta": {
-    "homeTitle": "Cyprus Winter | Mediterranean Winter Escape",
-    "homeDescription": "Cyprus in winter: mild, uncrowded, real. Troodos trails, villages, wineries, ancient sites. Sixteen degrees when home is six. Plan or explore when you land.",
+    "homeTitle": "Cyprus Winter | Trasee, sate, crame și zile tihnite",
+    "homeDescription": "Un Cipru mai liniștit iarna. Descoperă coaste blânde, sate de munte, trasee deschise, crame și locuri autentice pentru care merită să încetinești.",
     "ogImageAlt": "Teatrul antic Kourion deasupra coastei Mediteranei, iarnă în Cipru"
   },
   "ui": {
@@ -3553,6 +3688,1495 @@
       "useLink": "Folosește acest link securizat în următoarele 15 minute:",
       "viewBookings": "Vezi rezervările mele",
       "ignore": "Dacă nu ai făcut tu această cerere, poți ignora acest e-mail."
+    },
+    "status": {
+      "subjectConfirmed": "{provider} v-a confirmat rezervarea",
+      "subjectCancelled": "Actualizare privind cererea dvs. — {provider}",
+      "headingConfirmed": "Rezervarea dvs. este confirmată",
+      "headingCancelled": "Cererea nu a putut fi confirmată",
+      "bodyConfirmed": "{provider} v-a confirmat cererea pentru {date} ({partySize} persoane).",
+      "bodyCancelled": "{provider} nu poate găzdui cererea pentru {date} ({partySize} persoane). Nu s-a perceput nicio taxă.",
+      "nextConfirmed": "Doriți o modificare sau o anulare? Răspundeți la acest e-mail sau sunați direct — fără costuri.",
+      "nextCancelled": "Locurile de iarnă se ocupă repede — pe Cyprus Winter găsiți alte crame și ghizi licențiați.",
+      "subjectGuestCancelled": "Cererea dvs. către {provider} a fost anulată",
+      "headingGuestCancelled": "Cererea dvs. a fost anulată",
+      "bodyGuestCancelled": "Ați anulat cererea către {provider} pentru {date} ({partySize} persoane). Nu s-a perceput nimic.",
+      "nextGuestCancelled": "V-ați răzgândit? Puteți trimite oricând o cerere nouă — intervalele de iarnă sunt de obicei flexibile."
+    }
+  },
+  "data": {
+    "wineries": {
+      "tsiakkas": {
+        "tastingInfo": "Tur ghidat și degustare lun.–vin. la 12:00 și 14:00, sâm. la 11:00, 13:00 și 15:00. Degustări à la carte, la pahar. Tururi private de la 70 €. Minim 4 persoane pentru tur.",
+        "winterTip": "Terasă încălzită iarna. Întrebați de Xynisteri maturat pe drojdii.",
+        "bestTimeToVisit": "Dec.–mar., 11:00–14:00. Rezervați din timp.",
+        "openingHours": "Lun.–vin. 10:00–16:00, sâm. 11:00–17:00. Duminică închis, cu excepția unor date selectate.",
+        "transport": "Pelendri, Pitsilia. Cca 45 min de la Limassol.",
+        "parking": "La fața locului."
+      },
+      "vouni-panayia": {
+        "tastingInfo": "Tururi și degustări; la tururile private, pahar de bun venit și fructe de sezon din partea casei.",
+        "winterTip": "Cereți o degustare comparativă de Commandaria — ani mai tineri și mai vechi, unul lângă altul.",
+        "bestTimeToVisit": "Dec.–feb., 2–3 ore. Combinați cu un prânz în satul Panayia.",
+        "openingHours": "9:00–16:00",
+        "transport": "Bd. Archiepiskopou Makariou III 60, Panayia 8640. Ruta Laona.",
+        "parking": "La fața locului."
+      },
+      "zambartas": {
+        "tastingInfo": "Winemaker's Selection 20 € (4 vinuri + Commandaria din butoi); Seasonal 15 €; Wine & Canapés 25 €. 60–90 min. Rezervare la zambartaswineries.com/book-now.",
+        "winterTip": "25 min de la Limassol. Winemaker's Selection include o mostră exclusivă de Commandaria din butoi.",
+        "bestTimeToVisit": "Dec.–mar., 14:00–16:00 pentru o degustare liniștită.",
+        "openingHours": "Lun.–vin. 10:00–17:00, sâm.–dum. 10:00–18:00 (iarna). Se recomandă programare în prealabil.",
+        "transport": "Agios Amvrosios, Krasochoria. Cca 25 min de la Limassol.",
+        "parking": "La fața locului."
+      },
+      "kolios": {
+        "tastingInfo": "Tur ghidat la 12:30, prânz meze la 13:00 (23 € cu vin inclus). Degustare gratuită; rezervați cu 1–2 zile înainte.",
+        "winterTip": "Rezervați prânzul cu 1–2 zile înainte. Luați numerar — s-ar putea să nu accepte carduri. Mezele sunt mâncare autentică de sat, nu meze pentru turiști. Februarie e liniștit; priveliștea și vinul merită drumul.",
+        "bestTimeToVisit": "Dec.–feb., la 11:00 pentru tur și prânz. Mai liniștit decât vara; încălzitoare în interior.",
+        "openingHours": "Iarna (oct.–feb.): lun.–sâm. 9:00–15:00. Vara (mar.–sep.): lun.–sâm. 8:30–17:00. Duminică: doar evenimente private (peste 50 de invitați).",
+        "transport": "Cam 25 min de la Paphos. Din satul Statos Agios Fotios, urmați indicatoarele 1 km spre Chrysorrogiatissa.",
+        "parking": "Parcare la fața locului."
+      },
+      "santo": {
+        "tastingInfo": "Restaurant 12:00–16:00 în sezon; degustări cu programare nov.–mar. Pentru grupuri, rezervați din timp.",
+        "winterTip": "Rezervați prânzul cu vedere la mare; terasa se umple în weekenduri. Apusul în decembrie e pe la 17:00.",
+        "bestTimeToVisit": "Dec.–mar., 12:00–14:00 sau după-amiaza târziu pentru ora de aur.",
+        "openingHours": "Restaurant 12:00–16:00; verificați variațiile de iarnă.",
+        "transport": "Deal deasupra orașului Limassol; coridorul Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "domes-sergiou": {
+        "tastingInfo": "Degustări cu programare; magazin online cu sticle între 14 și 20 €.",
+        "winterTip": "Skarinou e la un drum scurt din Larnaca sau Limassol; ideal pentru o după-amiază de iarnă. Se remarcă cupajul roșu Atypon 01 și Xynisteri Single Vineyard. Nu puteți ajunge? Comandați online.",
+        "bestTimeToVisit": "Dec.–mar., cu rezervare.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Drum scurt din Larnaca sau Limassol (A1). Ieșirea Skarinou.",
+        "parking": "La fața locului."
+      },
+      "sterna-boutique": {
+        "tastingInfo": "Degustări 5 €; măsline, pâine, brânză. Tururi în peșteră și muzeu.",
+        "winterTip": "Pivnița antică din peșteră e punctul forte. Pentru prânz, satul Kathikas.",
+        "bestTimeToVisit": "Dec–mar; combinați cu traseul Adonis sau Afrodita.",
+        "openingHours": "9:30–18:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Kathikas, bucla vinului din Akamas.",
+        "parking": "La fața locului."
+      },
+      "vlassides": {
+        "tastingInfo": "Tur ghidat 10 €; Rainbow (3 vinuri) 7,50 €; 4×4 (4 vinuri + 4 brânzeturi) 18 €; Meet Winemaker 50 € (min. 4). Lun–vin 11:00–16:00 cu programare.",
+        "winterTip": "Rezervați cu cel puțin o zi înainte. Shiraz și Cabernet ies în evidență.",
+        "bestTimeToVisit": "Dec–mar, 11:00–13:00 sau 13:30–15:00.",
+        "openingHours": "Lun–vin 11:00–16:00 cu programare. Închis duminica și de sărbători.",
+        "transport": "Koilani. Din Ayios Amvrosios urmați Vouni–Kilani; indicator la 1,5 km după Vouni.",
+        "parking": "La fața locului."
+      },
+      "kyperounta": {
+        "tastingInfo": "Degustări cu brânzeturi și mezeluri. Rezervați din timp — puternic recomandat iarna.",
+        "winterTip": "Ian–feb sunați înainte; zăpada poate închide drumul. Îmbrăcați-vă gros. Decembrie sau martie sunt mai sigure.",
+        "bestTimeToVisit": "Decembrie sau martie. Evitați vârful de zăpadă ian–feb.",
+        "openingHours": "Cu programare. Sunați pentru program; starea drumului variază dec–feb.",
+        "transport": "La 50 km de Limassol, 75 km de Nicosia. Pitsilia, Troodos.",
+        "parking": "La fața locului."
+      },
+      "vasilikon": {
+        "tastingInfo": "Degustări cu platouri de brânzeturi. Crama 8:30–18:00; restaurantul 10:00–16:00.",
+        "winterTip": "Combinați cu traseul Adonis sau Afrodita. Kathikas e pe bucla Akamas.",
+        "bestTimeToVisit": "Dec–mar; restaurantul la prânz.",
+        "openingHours": "Crama 8:30–18:00, restaurantul 10:00–16:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Kathikas 8573, Paphos.",
+        "parking": "La fața locului."
+      },
+      "fikardos": {
+        "tastingInfo": "6 vinuri 10 €; tur 5 € (gratuit sub 18 ani). Platouri opționale. Tururi în zilele lucrătoare la 14:30.",
+        "winterTip": "Terasa prinde soarele de iarnă. La 10 min de orașul vechi Paphos, 20 min de port.",
+        "bestTimeToVisit": "Dec–mar, 11:00–14:00.",
+        "openingHours": "Lun–vin 8:00–13:00 și 14:30–17:00, sâm 8:00–13:00. Închis duminica.",
+        "transport": "Michalaki Savvidi 22, Mesogi. Cca 10 min de Paphos.",
+        "parking": "La fața locului."
+      },
+      "oenou-yi": {
+        "tastingInfo": "Tururi și degustări 10:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
+        "winterTip": "Întâi mănăstirea și satul, apoi Oenou Yi. Priveliște montană de la cramă.",
+        "bestTimeToVisit": "Dec–mar; combinați cu bucla Omodos.",
+        "openingHours": "10:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Satul Omodos; dealurile Afamis–Laona.",
+        "parking": "La fața locului."
+      },
+      "mystes": {
+        "tastingInfo": "Degustări cu programare; tururi și platouri de brânzeturi/mezeluri.",
+        "winterTip": "La 33 km est de Paphos. Rezervați din timp. Soiuri autohtone — Giannoudi, Promara, Xynisteri oranj.",
+        "bestTimeToVisit": "Dec–mar; priveliște spre vale de pe terasă.",
+        "openingHours": "Cu programare; nov–mar sunați înainte de vizită.",
+        "transport": "Pano Archimandrita, 550 m. Cca 33 km de Paphos.",
+        "parking": "La fața locului."
+      },
+      "loukas": {
+        "tastingInfo": "Degustări în sezon; nov–mar sunați înainte — în afara sezonului vizita fără programare nu e garantată.",
+        "winterTip": "La pas din piața mănăstirii. Fără rezervare. Arce de piatră, farmec de sat.",
+        "bestTimeToVisit": "Dec–mar; întâi satul, apoi degustarea.",
+        "openingHours": "Variază; nov–mar sunați înainte de vizită.",
+        "transport": "Centrul satului Omodos; 5 min de piața mănăstirii.",
+        "parking": "În sat."
+      },
+      "ktima-vassiliades": {
+        "tastingInfo": "Tururi și degustări 10:00–18:00; restaurant 11:00–19:00. Rezervare obligatorie.",
+        "winterTip": "În inima satului Omodos. Combinați turul cu restaurantul Playia.",
+        "bestTimeToVisit": "Dec–mar, dimineața târziu, înainte de prânz.",
+        "openingHours": "10:00–18:00; restaurant 11:00–19:00. În afara sezonului sunați înainte.",
+        "transport": "Satul Omodos, poalele Munților Troodos.",
+        "parking": "La fața locului."
+      },
+      "komos": {
+        "tastingInfo": "Degustări în sezon; nov–mar sunați înainte. Cafenelele satului sunt aproape.",
+        "winterTip": "Întâi mănăstirea și piața, apoi degustarea în pivniță. Prânz la cafenelele satului.",
+        "bestTimeToVisit": "Dec–mar; dimineața târziu, înainte de prânz.",
+        "openingHours": "Variază; nov–mar sunați înainte de vizită.",
+        "transport": "Centrul satului Omodos.",
+        "parking": "În sat; la pas din piața mănăstirii."
+      },
+      "avakas": {
+        "tastingInfo": "Cu programare; ideal după plimbarea prin defileu.",
+        "winterTip": "Defileul Avakas dimineața, apoi crama. Sunați din parcare la final — sunt obișnuiți cu drumeții.",
+        "bestTimeToVisit": "Defileul dimineața, degustarea după-amiaza.",
+        "openingHours": "Cu programare; nov–mar sunați înainte de vizită.",
+        "transport": "Satul Statos, 1.000 m. Lângă defileul Avakas.",
+        "parking": "La fața locului."
+      },
+      "aes-ambelis": {
+        "tastingInfo": "Tururi și degustări; brânzeturi și mezeluri. Cu programare; nov–mar sunați înainte.",
+        "winterTip": "La 28 km de Nicosia. Priveliște de pe terasă spre munții Pitsilia.",
+        "bestTimeToVisit": "Dec–mar; rezervați din timp.",
+        "openingHours": "Cu programare; nov–mar sunați înainte de vizită.",
+        "transport": "Kalo Chorio Orinis, la 28 km sud-vest de Nicosia.",
+        "parking": "La fața locului."
+      },
+      "kalamos": {
+        "tastingInfo": "Degustări și tururi 8:00–16:00 în sezon; nov–mar sunați înainte.",
+        "winterTip": "La 20 min de Paphos. O jumătate de zi ușoară.",
+        "bestTimeToVisit": "Dec–mar; combinați cu Paphos sau Akamas.",
+        "openingHours": "8:00–16:00 lun–dum în sezon; nov–mar sunați înainte.",
+        "transport": "Kira Eleni 6, Amargeti 8642. Cca 20 min de Paphos.",
+        "parking": "La fața locului."
+      },
+      "christoudia": {
+        "tastingInfo": "Tururi și degustări; brunch cu bucătărie cipriotă. 9:00–17:00 în sezon; nov–mar sunați înainte.",
+        "winterTip": "Degustări lângă șemineu. Kato Drys, dealurile Larnacăi.",
+        "bestTimeToVisit": "Dec–mar; rezervați din timp.",
+        "openingHours": "9:00–17:00 în sezon; nov–mar sunați înainte de vizită.",
+        "transport": "Kato Drys, regiunea Larnaca.",
+        "parking": "La fața locului."
+      },
+      "ayia-mavri": {
+        "tastingInfo": "11:00–16:00 în sezon; nov.–mar. sunați înainte. Tur al viei, degustări, brânzeturi și delicatese.",
+        "winterTip": "Primitor iarna. Koilani la 900 m; Commandaria și vinuri seci.",
+        "bestTimeToVisit": "11:00–14:00; combinați cu un prânz în Koilani.",
+        "openingHours": "11:00–16:00 în sezon; nov.–mar. sunați înainte."
+      },
+      "meletiou": {
+        "tastingInfo": "Degustări în majoritatea zilelor în sezon; nov.–mar. sunați înainte.",
+        "winterTip": "Terasa prinde soarele de după-amiază. Satul Kathikas are prânz bun.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu traseul Adonis sau Afrodita.",
+        "openingHours": "Sunați pentru programul de iarnă.",
+        "transport": "Kathikas, ruta vinului din Akamas.",
+        "parking": "La fața locului."
+      },
+      "makarounas": {
+        "tastingInfo": "Standard gratuit; Classic 7 €; Premium 12 €; tur al viei 50 €. Platoul bunicii pe terasă.",
+        "winterTip": "La 14 km est de Paphos. Priveliști de pe terasă; rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar., 11:00–15:00.",
+        "openingHours": "Lun.–vin. 11:00–15:00, sâm. 11:00–17:00. Rezervare obligatorie."
+      },
+      "argyrides": {
+        "tastingInfo": "Degustări pentru grupuri la cerere. Rezervați din timp.",
+        "winterTip": "Casă veche de 200 de ani. Piatra păstrează soarele iarna.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu Omodos și Koilani.",
+        "openingHours": "Lun.–vin. 8:00–16:00. Închis în weekend.",
+        "transport": "Vasa Koilaniou, la cca 25 km de Limassol.",
+        "parking": "La fața locului."
+      },
+      "cholettis": {
+        "tastingInfo": "Cu programare; meze disponibile.",
+        "winterTip": "Rezervați acordul cu meze. Brânza și măslinele fac vinul să cânte. Platoul Laona are o altă atmosferă.",
+        "bestTimeToVisit": "Dec.–mar.; plănuiți să rămâneți.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Statos, platoul Laona.",
+        "parking": "La fața locului."
+      },
+      "adege": {
+        "tastingInfo": "Cu programare; sunați înainte.",
+        "winterTip": "Afacere de familie în Vasa. Ospitalitate de sat; sunați înainte. Lefkada merită drumul.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu Omodos sau Louvaras.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Vasa, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "stavrinos": {
+        "tastingInfo": "Cu programare; program de iarnă.",
+        "winterTip": "Degustări lângă șemineu. Rezervați din timp. Priveliști montane și foc — preferatul iernii.",
+        "bestTimeToVisit": "Dec.–mar.; prindeți un loc lângă foc.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Dhoros, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "ambeli": {
+        "tastingInfo": "Degustări în majoritatea zilelor în sezon; nov.–mar. sunați înainte.",
+        "winterTip": "Schi sau traseul Artemis dimineața, Ambeli după-amiaza. Priveliști de pădure.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu traseele din Platres.",
+        "openingHours": "Sunați pentru programul de iarnă.",
+        "transport": "Satul Platres.",
+        "parking": "La fața locului."
+      },
+      "lambouri": {
+        "tastingInfo": "Degustări cu programare; rezervați din timp",
+        "winterTip": "Sală de degustare primitoare; încălzitoare iarna. Koilani are zece crame; Lambouri iese în evidență.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Koilani, Krasochoria. Cca 40 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "nichteri": {
+        "tastingInfo": "Doar cu programare",
+        "winterTip": "Sunați înainte; apreciază să fie anunțați. Zidurile de piatră păstrează căldura.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu bucla dealurilor din Paphos.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Agios Dimitrianos, ruta vestică Laona.",
+        "parking": "La fața locului."
+      },
+      "sodap": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Cooperativă istorică. Scară industrială, poveste de patrimoniu. Ușor de ajuns din centrul Limassolului.",
+        "openingHours": "Cu programare; rezervați tururile din timp. Nov.–mar. sunați înainte.",
+        "transport": "Faleza Limassol. Central.",
+        "parking": "La fața locului."
+      },
+      "iona": {
+        "tastingInfo": "Asocieri 15–25 €; rezervați din timp.",
+        "winterTip": "Rezervați asocierea vin și brânză. Priveliști spre Troodos din sala de degustare.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu un prânz în Koilani.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "tsangarides": {
+        "tastingInfo": "Degustări cu programare. Lun.–sâm. 9:00–17:00; duminică închis.",
+        "winterTip": "Sala de degustare din piatră e primitoare. Ruta Laona — combinați cu Vouni Panayia.",
+        "bestTimeToVisit": "Dec.–mar., rezervați din timp.",
+        "openingHours": "Lun.–sâm. 9:00–17:00",
+        "transport": "Lemona, Paphos 8545.",
+        "parking": "La fața locului."
+      },
+      "savvas": {
+        "tastingInfo": "Cu programare.",
+        "winterTip": "Combinați cu Muzeul Commandaria din Silikou. Pivniță de piatră, secole de tradiție.",
+        "bestTimeToVisit": "Dec.–mar.; sunați înainte.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Silikou 650 m, zona Commandaria.",
+        "parking": "La fața locului."
+      },
+      "monagri": {
+        "tastingInfo": "Sunați înainte; tururile de grup sunt binevenite.",
+        "winterTip": "Cooperativa Monagri. Zona Commandaria. Tururi de pivniță. Grupurile sunt binevenite.",
+        "bestTimeToVisit": "Dec.–mar.; sunați înainte.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Monagri, zona Commandaria.",
+        "parking": "La fața locului."
+      },
+      "silikou-museum": {
+        "tastingInfo": "Contactați satul pentru program; degustări uneori disponibile",
+        "winterTip": "Sunați înainte. Silikou e în afara buclei principale; mai puțini vizitatori, mai mult spațiu să respiri. Combinați cu crama Savvas pentru o zi întreagă de Commandaria."
+      },
+      "hadjicharalambous": {
+        "tastingInfo": "Cu programare; experiențe practice disponibile",
+        "winterTip": "Satul Stroumbi, dealurile Paphosului. Rezervați experiența practică dacă aveți timp. Parte din ruta Laona; combinați cu Fikardos sau Tsangarides."
+      },
+      "semeli": {
+        "tastingInfo": "Degustări cu programare",
+        "winterTip": "Cea mai apropiată cramă de calitate de Nicosia. Combinați cu Lefkara sau Machairas. Rezervați din timp.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Cca 40 min de Nicosia. Poalele Mesaoriei.",
+        "parking": "La fața locului."
+      },
+      "zambeli": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Preferat liniștit pe coridorul Limassol. Încălzitoare iarna. Kolossi și Kourion în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Coridorul Limassol. Cca 20 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "krasas": {
+        "tastingInfo": "Degustări 10 €; rezervați din timp.",
+        "winterTip": "A patra generație în Koilani. Pivniță istorică. Rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu bucla Koilani.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Koilani, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "agios-theodoros": {
+        "tastingInfo": "Doar cu programare.",
+        "winterTip": "În afara buclei principale. Agios Theodoros. Mavro, Xynisteri, vin dulce. Sunați înainte.",
+        "bestTimeToVisit": "Dec.–mar.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Agios Theodoros, dealurile Limassolului.",
+        "parking": "La fața locului."
+      },
+      "fikardou-winery": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Fikardou, sit UNESCO. Sat și vin. Posibil ninsoare în plină iarnă. Magic.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Fikardou, sit UNESCO. Cca 50 min de Nicosia.",
+        "parking": "La fața locului."
+      },
+      "sygkrasi": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Kathikas. Bucla Akamas. Traseu dimineața, vin după. The Farmyard la prânz.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Kathikas. Pe bucla Akamas–Laona.",
+        "parking": "La fața locului."
+      },
+      "syndesmos": {
+        "tastingInfo": "Pentru vizite, sunați înainte.",
+        "winterTip": "Cooperativă; condusă de comunitate. Sunați înainte. Grupurile sunt binevenite.",
+        "bestTimeToVisit": "Dec.–mar.; o după-amiază lentă.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Agios Georgios, ruta Laona.",
+        "parking": "La fața locului."
+      },
+      "petrides": {
+        "tastingInfo": "Doar cu programare.",
+        "winterTip": "Vestul Paphosului. Phinikas. Boutique. Priveliști spre vale. Rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar.; o după-amiază liniștită.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Phinikas, Laona de vest.",
+        "parking": "La fața locului."
+      },
+      "makrikontas": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Vouni cea liniștită. Rezervați din timp. Krasochoria ascunsă. Omodos și Lania în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Satul Vouni, Krasochoria. Cca 40 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "yiannis": {
+        "tastingInfo": "Cu programare.",
+        "winterTip": "Kilani e mai liniștit decât Omodos. Rezervați pentru iarnă. Combinați cu Koilani și Vlassides.",
+        "bestTimeToVisit": "Dec.–mar.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Kilani, Krasochoria.",
+        "parking": "La fața locului."
+      },
+      "dafermou": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Dealurile Larnacăi. Modern, soiuri indigene. Blând iarna. Lefkara în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Dealurile Larnacăi. Cca 25 min de Larnaca.",
+        "parking": "La fața locului."
+      },
+      "nicolaides": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Pitsilia de altitudine. Mai răcoros iarna. Sala de degustare te încălzește. Kykkos în apropiere.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Pitsilia. Cca 50 min de Limassol.",
+        "parking": "La fața locului."
+      },
+      "solia": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "În afara rutelor principale. Intim. Combinați cu Agros sau Machairas.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Dealurile Nicosiei. Cca 45 min de capitală.",
+        "parking": "La fața locului."
+      },
+      "ezousa": {
+        "tastingInfo": "Cu programare; sală de degustare. Acord cu meze la cerere.",
+        "winterTip": "Rezervați acordul cu meze. Kannaviou e în afara rutelor principale; autentic.",
+        "bestTimeToVisit": "Cu programare."
+      },
+      "hadjipavlou": {
+        "tastingInfo": "Degustări cu programare",
+        "winterTip": "Familie la a treia generație; Commandaria autentică și vinuri de munte. Pivnița de piatră e primitoare iarna.",
+        "bestTimeToVisit": "Dec.–mar., sunați înainte"
+      },
+      "olympus-winery": {
+        "tastingInfo": "Tururi și degustări. 08:00–17:00.",
+        "winterTip": "Combinați cu schi sau drumeție. Drumul poate fi înzăpezit ian.–feb.; sunați înainte.",
+        "openingHours": "08:00–17:00. Iarna sunați înainte."
+      },
+      "minous": {
+        "tastingInfo": "Sunați înainte; adesea primesc și fără programare",
+        "winterTip": "Sunați înainte. Tavernele din Pachna au prânz. Piatra păstrează soarele iarna."
+      },
+      "tria-elit": {
+        "tastingInfo": "Degustări 8–12 €; rezervați pentru grupuri.",
+        "winterTip": "Terasa prinde soarele de iarnă. O jumătate de zi ușoară din Limassol.",
+        "bestTimeToVisit": "Dec.–mar.; combinați cu Kourion sau un prânz în port."
+      },
+      "ayii-anargyri": {
+        "tastingInfo": "Doar cu programare.",
+        "winterTip": "Miliou cea pașnică. Priveliști spre vale. Rezervați din timp.",
+        "bestTimeToVisit": "Dec.–mar.; o după-amiază liniștită.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Miliou, ruta Laona.",
+        "parking": "La fața locului."
+      },
+      "pittali": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "Pitsilia de altitudine. Sunați înainte. Combinați cu creasta Madari. Muntele face treaba."
+      },
+      "papaioannou": {
+        "tastingInfo": "Degustări în sezon; nov.–mar. sunați înainte.",
+        "winterTip": "Satul Vasa. Pivnița mare merită văzută. Grupurile sunt binevenite. Combinați cu Koilani și Vlassides."
+      },
+      "karseras": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "Lângă Platres. Artemis sau Caledonia dimineața, Karseras după-amiaza. O poveste de renaștere a Commandariei."
+      },
+      "evangelou": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Pera Pedi, Krasochoria. Rezervați din timp. Combinați cu Omodos și Koilani pentru o zi întreagă printre satele vinului."
+      },
+      "chrysoroyiatissa-winery": {
+        "tastingInfo": "Degustări la mănăstire; verificați programul",
+        "winterTip": "Incinta mănăstirii. Spiritual și vinicol deopotrivă. Combinați cu Vouni Panayia și satul Panayia. O bijuterie a rutei Laona."
+      },
+      "loel": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Facilitate ultramodernă. Patrimoniul întâlnește modernul. Drum ușor din Limassol."
+      },
+      "etko-olympus": {
+        "tastingInfo": "Degustări și tururi; verificați programul",
+        "winterTip": "Cel mai vechi nume din vinul cipriot. Satul Omodos la picioarele voastre. Rezervați din timp."
+      },
+      "revecca": {
+        "tastingInfo": "Doar cu programare",
+        "winterTip": "Producție mică. Sunați înainte. Agios Mamas e ținutul liniștit al Commandariei."
+      },
+      "mallia": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Sit mare de producție. Rezervați tururile din timp. Patrimoniu și anvergură."
+      },
+      "monolithos": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "În afara buclei principale. Sunați înainte. Caracter boutique."
+      },
+      "antoniades": {
+        "tastingInfo": "Tururi și degustări; contactați-i înainte",
+        "winterTip": "Nama lor — Commandaria străveche. Întrebați despre moștenirea vaselor pithari."
+      },
+      "ayios-savas": {
+        "tastingInfo": "Tururi și degustări; rezervați din timp",
+        "winterTip": "Vii de coastă. Altfel decât vinul de munte. Governor's Beach și Kourion în apropiere."
+      },
+      "povis": {
+        "tastingInfo": "Cu programare; sunați înainte",
+        "winterTip": "Mic și personal. Sunați înainte. Mănăstirea Chrysorrogiatissa în apropiere."
+      },
+      "anama": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Commandaria din Larnaca. Sat pașnic. Combinați cu Stavrovouni sau Zygi.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Dealurile Larnacăi. Cca 30 min de Larnaca.",
+        "parking": "La fața locului."
+      },
+      "linos": {
+        "tastingInfo": "Cu programare",
+        "winterTip": "Lângă Platres. Combinați cu Caledonia sau Artemis. Caracter montan.",
+        "openingHours": "Cu programare; sunați înainte nov.–mar.",
+        "transport": "Kato Platres. Cca 45 min de Limassol.",
+        "parking": "La fața locului."
+      }
+    },
+    "attractions": {
+      "kourion": {
+        "winterTip": "Teatrul e orientat spre vest; iarna apusul e pe la 16:30. Luați o haină de vânt; pe faleză bate briza.",
+        "bestTimeToVisit": "Dec–mar, după-amiaza târziu pentru apus",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "pafos-mosaics": {
+        "winterTip": "Lumina de iarnă e mai blândă și mai joasă; ideală pentru fotografierea mozaicurilor fără umbre dure. Aglomerația scade până la 11:00.",
+        "bestTimeToVisit": "Dec–feb, 9–11 dimineața sau după-amiaza târziu pentru lumina aurie",
+        "openingHours": "Zilnic 8:30–17:00 (iarna), 8:30–19:30 (vara)"
+      },
+      "omodos": {
+        "winterTip": "Diminețile de iarnă din timpul săptămânii sunt liniștite; localnicii se adună la kafenion la cafea. Curtea mănăstirii strălucește în soarele jos.",
+        "bestTimeToVisit": "Dec–mar, 10:00–14:00 (cel mai cald), sau rămâneți la apus",
+        "openingHours": "Magazine 9–18; curtea mănăstirii cu acces liber; muzeu 9–17"
+      },
+      "lefkara": {
+        "winterTip": "Dantelăresele stau în praguri; lumina de iarnă e ideală pentru fotografii. Luați ceva gros; satul e la 700 m.",
+        "bestTimeToVisit": "Dec–feb, dimineți din timpul săptămânii (mai puține grupuri)",
+        "openingHours": "Magazine 9–18; unele se închid la prânz"
+      },
+      "kykkos": {
+        "winterTip": "Drumul poate fi înzăpezit ian–feb. Verificați condițiile. Pădurea în lumina iernii. Alocați minimum o jumătate de zi.",
+        "openingHours": "Zilnic 10–18 (iarna); muzeu 10–16"
+      },
+      "fig-tree-bay": {
+        "winterTip": "Golf adăpostit; blând pentru plimbări de iarnă. Cafenelele de pe promenadă rămân deschise. Combinați cu Protaras și Capul Greco.",
+        "bestTimeToVisit": "Dimineața sau după-amiaza; întâi traseul Capul Greco, apoi Fig Tree Bay.",
+        "openingHours": "Țărm liber tot anul. Cafenelele de pe promenadă sunt adesea deschise."
+      },
+      "governors-beach": {
+        "winterTip": "Ideală pentru un prânz de iarnă pe coastă; 18°C și soare. Tavernele de pe faleză sunt deschise tot anul. Combinați cu Kourion sau Kolossi.",
+        "bestTimeToVisit": "La prânz; Kourion dimineața, Governor's Beach pentru pește.",
+        "openingHours": "Țărm liber tot anul. Tavernele de pe faleză sunt adesea deschise."
+      },
+      "konnos-bay": {
+        "winterTip": "Combinați cu poteca de coastă Capul Greco; startul e în apropiere. Soare de iarnă și nisip pustiu.",
+        "bestTimeToVisit": "Dimineața; întâi traseul Capul Greco, Konnos pentru o pauză.",
+        "openingHours": "Țărm liber tot anul. Fără facilități pe nisip."
+      },
+      "kakopetria": {
+        "winterTip": "Tavernele cu păstrăv de lângă râu sunt primitoare iarna. Încercați păstrăvul cu migdale sau cârnații locali.",
+        "bestTimeToVisit": "Dec–feb, la prânz sau după-amiaza devreme (mai cald în vale)",
+        "openingHours": "Taverne 12–22; magazine 9–18"
+      },
+      "coral-bay": {
+        "winterTip": "Apusuri de iarnă pe la 17:00 în dec–ian. Mai puțină lume, blând pentru o plimbare.",
+        "bestTimeToVisit": "După-amiaza târziu pentru apus; combinați cu mozaicurile din Paphos sau Mormintele Regilor.",
+        "openingHours": "Țărm liber tot anul. Tavernele sunt adesea deschise."
+      },
+      "tomb-of-kings": {
+        "winterTip": "Lumina de iarnă aruncă umbre lungi în morminte; atmosferic pentru fotografii. Situl e mai răcoros ca vara. Combinați cu mozaicurile din Paphos și portul.",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "choirokoitia": {
+        "winterTip": "Diminețile de iarnă pot fi cețoase; dramatic pentru fotografii. Situl e compact; alocați 1–1,5 ore.",
+        "bestTimeToVisit": "Dec–feb, 10:00–12:00 (mai cald, mai puțină ceață)",
+        "openingHours": "Zilnic 8:30–17:00 (iarna: 16 sep–15 apr)"
+      },
+      "cyprus-museum": {
+        "winterTip": "Cea mai bună evadare pe ploaie. Sălile rămân calde și uscate. Combinați cu strada Ledra și o cafenea; muzeul e în centrul Nicosiei.",
+        "openingHours": "Mar–vin 8–18, sâm 9–17, dum 10–13; închis lunea"
+      },
+      "leventis-museum": {
+        "winterTip": "Intrare gratuită. Refugiu ideal pe ploaie. Lângă strada Ledra; combinați cu o plimbare prin orașul vechi și o cafenea. Alocați două ore.",
+        "openingHours": "Mar–dum 10–16:30; închis lunea și de sărbătorile legale"
+      },
+      "polis": {
+        "winterTip": "Poarta către Akamas. Faceți Adonis sau Afrodita dimineața, portul Polis la prânz. Peștele e proaspăt. Crama Vasilikon e pe bucla Akamas.",
+        "openingHours": "Taverne 12–22; magazine 9–18"
+      },
+      "pedoulas": {
+        "openingHours": "Biserica: cheia la muzeu; muzeul 9–16"
+      },
+      "platres": {
+        "winterTip": "Sezonul de schi (ian–mar) aduce agitație; decembrie și sfârșitul lui martie sunt mai liniștite. Vremea la munte se schimbă repede; verificați înainte de urcare.",
+        "bestTimeToVisit": "Dec–mar, bază pentru 2–3 zile de drumeții"
+      },
+      "lofou": {
+        "winterTip": "Diminețile de iarnă din timpul săptămânii sunt cele mai liniștite. Opriți-vă la o cafea în drum spre sau dinspre Omodos. Satul nu vă așteaptă."
+      },
+      "machairas": {
+        "winterTip": "Excursie ușoară de o zi din Nicosia. Potecile din pădure sunt liniștite iarna. Combinați vizita la mănăstire cu o plimbare. Îmbrăcați-vă decent.",
+        "openingHours": "Zilnic 8–12, 14–18"
+      },
+      "nissi-beach": {
+        "winterTip": "Liniștită iarna. Ideală pentru o plimbare tihnită sau o cafea la o cafenea de plajă. Marea e rece pentru înot.",
+        "bestTimeToVisit": "Dimineața sau după-amiaza târziu pentru lumină; combinați cu Capul Greco sau Protaras.",
+        "openingHours": "Țărm liber tot anul. Cafenelele au program sezonier."
+      },
+      "kolossi": {
+        "winterTip": "Combinați cu o degustare de Commandaria; Zambartas e aproape, sau Kolios în dealurile din Paphos. Castelul durează 30–45 min.",
+        "bestTimeToVisit": "Dec–mar, la mijlocul dimineții (destul de cald pentru acoperiș)",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "kition": {
+        "winterTip": "Programul de iarnă e în zilele lucrătoare 8:30–16:00; închis sâmbăta și duminica. Combinați cu lacul sărat sau Angeloktisti — nu pentru o zi la Larnaca doar în weekend.",
+        "bestTimeToVisit": "Mar–vin dimineața; apoi flamingii de la lacul sărat",
+        "openingHours": "Lun–vin 8:30–16:00 (iarna: 16 sep–15 apr). Închis sâm și dum."
+      },
+      "larnaca-aliki": {
+        "winterTip": "Flamingii apar de regulă din noiembrie până în martie; vârful e la mijlocul iernii. Veniți devreme. Rămâneți pe potecă — lacul e rezervație protejată.",
+        "bestTimeToVisit": "Nov–mar, la prima lumină sau după-amiaza târziu",
+        "openingHours": "Acces liber tot anul. Fără bilet pentru poteca lacului."
+      },
+      "lara-bay": {
+        "winterTip": "Fără cuibărit iarna; plaja e goală. Se recomandă 4×4 pentru drumul de acces. Combinați cu traseele din Akamas.",
+        "bestTimeToVisit": "Dimineața; combinați cu traseul Adonis sau Afrodita, Polis la prânz.",
+        "openingHours": "Țărm liber tot anul. Fără facilități; luați apă."
+      },
+      "limassol-marina": {
+        "winterTip": "Mai puțină aglomerație ca vara. Seri blânde. Cafenelele de pe promenadă rămân deschise. Combinați cu Kolossi, Kourion sau orașul vechi.",
+        "bestTimeToVisit": "Dec–mar, după-amiaza târziu pentru lumina aurie",
+        "openingHours": "Promenada e mereu deschisă. Magazinele și cafenelele au program sezonier."
+      },
+      "ayia-napa-sea-caves": {
+        "winterTip": "Lumina de iarnă e aurie și joasă; ideală pentru fotografie. Marea e prea rece pentru înot; luați o haină de vânt. Combinați cu traseul Capul Greco.",
+        "bestTimeToVisit": "După-amiaza târziu pentru lumina aurie; combinați cu Capul Greco și Konnos.",
+        "openingHours": "Faleză cu acces liber tot anul."
+      },
+      "st-sozomenos": {
+        "winterTip": "Lumina de iarnă e joasă și aurie — ideală pentru fotografie. Îmbrăcați-vă în straturi; situl e expus. Combinați cu muzeele din Nicosia sau strada Ledra pentru o zi întreagă în zona capitalei.",
+        "bestTimeToVisit": "Dimineața sau după-amiaza târziu; lumina de iarnă îndulcește ruinele. Verificați accesul și statutul zonei-tampon înainte de drum.",
+        "openingHours": "Verificați accesul — zonă-tampon. Confirmați înainte de vizită."
+      },
+      "panagia-asinou": {
+        "winterTip": "Program de iarnă 16 sep–15 apr: mar–sâm 10:00–16:30, dum 11:00–16:30 (Visit Cyprus). Închis lunea. Combinați cu Nikitari și Idalion.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "st-john-lampadistis": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Îmbrăcați-vă decent. Combinați cu podul venețian din sat.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "gerakopetra-boulders": {
+        "winterTip": "Sezonul de vârf dec–mar în zilele uscate. Sectoarele de nord-est rămân reci — începeți la mijlocul dimineții sau mergeți la Episkopi pentru soare. Luați straturi pentru asigurare. Așteptați 24 de ore după ploaie — gresia trebuie să se usuce. Drumul de pietriș poate fi noroios; 4×4 e util, dar nu esențial.",
+        "bestTimeToVisit": "Dec–mar, 10:00–15:00"
+      },
+      "panagia-tou-moutoulla": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Cea mai mică din grup; lăsați-vă timp, apoi continuați spre Pedoulas.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "angeloktisti": {
+        "winterTip": "Biserică de sat liniștită. Majoritatea autocarelor o ocolesc. Diminețile de iarnă sunt ideale. Combinați cu Zygi sau Lefkara pentru o zi în interiorul regiunii Larnaca.",
+        "openingHours": "Iarna (1 oct–31 apr): lun–sâm 7:00–16:45, dum 9:30–16:45 (DMT 2025). Confirmați la fața locului."
+      },
+      "idalion": {
+        "winterTip": "Mai puțini vizitatori iarna. S-ar putea să aveți situl doar pentru voi. Măslinii și priveliștea de pe deal merită ocolul de la Nicosia.",
+        "openingHours": "Muzeul local lun–vin 8:30–16:00 (DMT 2025). Programul parcului arheologic variază — tel. 22 444818."
+      },
+      "archangelos-michail": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Dacă ușa e încuiată, întrebați la Muzeul de Artă Populară sau la cafenea.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "panagia-tou-araka": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Confirmați că ușa e deschisă înainte de drumul spre Lagoudera.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "st-nicholas-roof": {
+        "winterTip": "Program de iarnă 16 sep–15 apr (Ministerul Culturii, aug. 2025). Combinați cu cartierul vechi din Kakopetria și un prânz cu păstrăv.",
+        "openingHours": "Mar–sâm 10:00–16:30, dum 11:00–16:30 (iarna: 16 sep–15 apr). Închis lunea. Confirmați la fața locului."
+      },
+      "buffavento": {
+        "winterTip": "Nordul Ciprului. Îmbrăcați-vă gros; castelul prinde vântul. Verificați trecerea graniței dinspre sud înainte de drum. Zilele senine de iarnă oferă cea mai bună vizibilitate. Urcușul vă încălzește.",
+        "openingHours": "Zilnic 9–17 (nordul Ciprului; poate varia)"
+      },
+      "st-hilarion": {
+        "winterTip": "Nordul Ciprului. Verificați trecerea graniței dinspre sud înainte de plecare; condițiile se pot schimba. Îmbrăcați-vă gros; castelul prinde vântul. Zilele senine de iarnă oferă cea mai bună vizibilitate.",
+        "openingHours": "Zilnic 9–17 (nordul Ciprului; poate varia)"
+      },
+      "chrysorrogiatissa": {
+        "winterTip": "Regiunea Paphos rămâne blândă. Priveliștile asupra districtului sunt clare iarna. Cumpărați o sticlă. Combinați cu Vouni Panayia pentru o zi întreagă de vin și mănăstire.",
+        "openingHours": "Zilnic 9–12, 15–18 (iarna); muzeu 9–13, 14–17"
+      },
+      "athalassa-forest-park": {
+        "winterTip": "După ploaie rămâneți pe traseele principale — potecile laterale sunt noroioase. Centrul de vizitatori e deschis în zilele lucrătoare; verificați programul în extrasezon. Straturi pentru coborârile pe bicicletă.",
+        "openingHours": "Parcul e deschis din zori până în amurg. Programul centrului variază — în extrasezon sunați înainte."
+      },
+      "mackenzie-larnaca-coast": {
+        "winterTip": "Verificați prognoza vântului pentru kite; diminețile calme sunt mai bune pentru snorkeling și SUP. Costum de 3 mm dec–feb. Scufundările la Zenobia se rezervă separat, din marina Larnaca.",
+        "openingHours": "Țărm liber tot anul. Școlile și închirierile de echipament sunt sezoniere."
+      },
+      "agros": {
+        "winterTip": "Trandafirii înfloresc apr–mai. Iarna fabrica folosește recolta depozitată. Tururile continuă. Apă de trandafiri, loukoumi. Tavernele sunt calde. Aerul de munte e rece.",
+        "openingHours": "Fabrica de trandafiri 8–17; tururi cu programare"
+      },
+      "koilani": {
+        "winterTip": "Festivalul Commandaria în decembrie. Muzeul vinului 10–16. Chiar și în ianuarie tavernele sunt calde. Combinați cu Vlassides, Omodos, Pera Pedi. Planificați o masă.",
+        "openingHours": "Muzeul vinului 10–16; taverne 12–22"
+      },
+      "palaipafos": {
+        "winterTip": "Mai liniștit decât mozaicurile principale din Paphos. Mai puține grupuri iarna. Combinați cu Mormintele Regilor și Vouni Panayia pentru o zi întreagă în Paphos.",
+        "openingHours": "Mar–dum 8:30–17:00; închis lunea (din 1 iul. 2024)"
+      },
+      "kalopanagiotis": {
+        "winterTip": "Izvoarele termale sunt de două ori binevenite iarna. Valea e rece și limpede. Rezervați o baie. Podul și biserica Lampadistis. Alocați o oră.",
+        "openingHours": "Programul băilor variază; podul și satul sunt mereu deschise"
+      },
+      "foini": {
+        "winterTip": "Un ocol în drum spre Platres sau Troodos. Muzeul și atelierele rămân deschise. Iarna e liniștită. Luați acasă un ulcior mic sau un bol.",
+        "openingHours": "Muzeu 9–16 (verificați programul de iarnă); atelierele variază"
+      },
+      "stavrovouni": {
+        "winterTip": "În zilele senine de iarnă, priveliștea Mesaoriei din parcare e vizita pentru cei mai mulți. Femeile nu pot intra în mănăstirea propriu-zisă.",
+        "openingHours": "Bărbați: 8–12, 15–17; capela de la bază: întrebați la fața locului"
+      },
+      "salamis": {
+        "winterTip": "Nordul Ciprului. Verificați accesul și regulile de trecere. Iarna e blândă pentru explorare; arșița verii poate fi nemiloasă. Alocați o dimineață întreagă.",
+        "openingHours": "Zilnic 9–17 (nordul Ciprului; poate varia)"
+      },
+      "tzelefos-bridge": {
+        "winterTip": "Drumul poate fi alunecos după ploaie. Purtați bocanci impermeabili. Taverna din Milia la prânz. Combinați cu capetele de traseu Vretsia sau Roudias.",
+        "bestTimeToVisit": "Dec–mar, la mijlocul dimineții, înainte să se așeze norii"
+      },
+      "bellapais": {
+        "winterTip": "Concerte de iarnă în trapeza mănăstirii. Verificați programul. Îmbrăcați-vă gros; piatra ține frigul. Abația în amurg.",
+        "openingHours": "Zilnic 9–17 (iarna); poate varia în nordul Ciprului"
+      },
+      "st-george-alamanou": {
+        "winterTip": "Mănăstire de coastă; mai blândă decât Troodos. Ținută decentă. Combinați cu poteca Capul Greco, apoi lăsați-le pe măicuțe în pace.",
+        "openingHours": "Mănăstire activă; sunați înainte. Ținută decentă obligatorie."
+      },
+      "fikardou": {
+        "winterTip": "Sat UNESCO. Muzeul e deschis 9–16. Iarna e liniștită. Combinați cu o zi la Nicosia sau în Troodos. Liniștea e darul.",
+        "openingHours": "Muzeu 9–16; satul e mereu deschis"
+      },
+      "cape-greco-climbing": {
+        "winterTip": "Coastă blândă când Troodos e rece. Verificați vântul; crestele expuse cer zile calme. Cățărare cu ghid recomandată dacă zona e nouă pentru voi.",
+        "bestTimeToVisit": "Dec–mar, dimineața pentru vânt calm"
+      },
+      "st-neophytos": {
+        "winterTip": "Regiunea Paphos rămâne blândă iarna. Ideal pentru o vizită de dimineață. Combinați cu Vouni Panayia sau Tsangarides pentru o zi întreagă.",
+        "openingHours": "Zilnic 9–13, 14–18 (iarna)"
+      },
+      "trooditissa": {
+        "winterTip": "Drumul dinspre Platres poate fi înzăpezit ian–feb. Sunați înainte. Când e deschis, drumul printre pini e esența.",
+        "openingHours": "Zilnic 8–12, 14–17. După ninsoare sunați înainte."
+      },
+      "troodos-cycling-hub": {
+        "winterTip": "Verificați vremea; zăpada închide drumurile înalte ian–mar. Traseele de altitudine medie sunt adesea libere toată iarna. Lumini pentru zilele scurte.",
+        "bestTimeToVisit": "Dec–mar, 10:00–15:00"
+      },
+      "paphos-castle": {
+        "winterTip": "Plimbarea prin port iarna e blândă și fără aglomerație. Interiorul castelului e mic; vizită de 30 min. Combinați cu mozaicurile din Paphos.",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      },
+      "amahti": {
+        "winterTip": "Iarna e ideală; arșița verii poate fi brutală. Combinați cu Governor's Beach pentru o zi pe coastă.",
+        "openingHours": "Zilnic 8:30–17:00 (iarna)"
+      }
+    },
+    "trails": {
+      "petra-tou-romiou": {
+        "winterNotes": "Plimbare de iarnă ideală; temperaturi blânde și mai puțină lume. Valurile pot fi mai puternice după furtuni; în zilele agitate stați bine în spatele liniei apei.",
+        "winterSafety": "Nu înotați aici; curenții sunt puternici chiar și în zilele calme. În furtunile de iarnă stați departe de linia apei; valuri izolate urcă mai sus decât v-ați aștepta. Vântul de coastă poate fi tăios; luați un strat în plus.",
+        "localSecret": "După ce v-ați săturat de Stânca Afroditei, mergeți spre est către golfulețele mai liniștite. Falezele joase oferă unghiuri mai bune pentru fotografii, mai ales după-amiaza târziu, cu lumina în spate."
+      },
+      "artemis": {
+        "winterNotes": "Ghidul oficial recomandă martie–noiembrie; iarna e fezabil când nu e gheață. După valurile de frig poate fi polei; verificați condițiile înainte de plecare.",
+        "winterSafety": "După valurile de frig, secțiunile înalte pot fi înghețate. Luați colțari ușori (microspikes) dacă prognoza e aproape de zero. Centrul de vizitatori Troodos publică starea traseelor. Semnalul e slab pe alocuri; spuneți cuiva ruta voastră.",
+        "localSecret": "Porniți în sens antiorar; secțiunea estică are cele mai bune priveliști și ajungeți la ele înainte de prânz. Cel mai liniștit: diminețile din timpul săptămânii."
+      },
+      "olympus-summit": {
+        "winterNotes": "Zăpadă/gheață frecvente ian.–mar. Se recomandă colțari ușori. Verificați starea stațiunii de schi; accesul poate fi restricționat.",
+        "winterSafety": "Zăpadă și gheață frecvente ian.–mar. Adesea sunt necesari colțari ușori sau colțari. Verificați starea stațiunii de schi; accesul poate fi restricționat. Nu încercați pe vizibilitate zero sau vânt puternic. Urgențe: 112.",
+        "localSecret": "În zilele senine de iarnă se văd ambele coaste. Porniți devreme; norii se adună adesea până la prânz. Cafeneaua stațiunii încălzește după drumeție."
+      },
+      "caledonia-falls": {
+        "winterNotes": "Porțiuni noroioase după ploaie. Risc mare de alunecare la traversările râului. Purtați bocanci impermeabili. Debitul cascadei e maxim la sfârșitul iernii/primăvara.",
+        "winterSafety": "Stânci alunecoase lângă cascadă. Rămâneți pe potecă. Pârâul poate crește repede după ploaie; nu încercați pe furtună. Poteca poate fi noroioasă; bocancii impermeabili sunt esențiali.",
+        "localSecret": "Cascada impresionează cel mai mult la 1–2 zile după ploaie. Verificați debitul online sau întrebați în cafenelele din Platres."
+      },
+      "adonis": {
+        "winterNotes": "Cel mai bun sezon pentru acest traseu. Temperaturi răcoroase, mai puțină aglomerație. Câteva porțiuni noroioase după ploaie.",
+        "winterSafety": "Iarna e ideală; evitați arșița verii. Câteva porțiuni noroioase după ploaie. Rămâneți pe poteca marcată; în Akamas există pe alocuri muniție neexplodată.",
+        "localSecret": "Umpleți sticla la izvorul Kefalovrysia. Cafeneaua de la Băile Afroditei, la start, face o cafea bună după drumeție. Pe bucla de întoarcere, combinați cu crama Kolios sau Vasilikon."
+      },
+      "madari-ridge": {
+        "winterNotes": "Poate fi vânt. Zăpadă pe creastă ian.–feb. În zilele senine coasta se întinde până departe.",
+        "winterSafety": "Creasta e expusă; senzația de frig dată de vânt e semnificativă. Posibil zăpadă ian.–feb. Priveliști la 360° în zilele senine. Urgențe: 112.",
+        "localSecret": "Turnul de veghe pentru incendii de la km 2,5. Urcați dacă puteți; priveliștea la 360° merită pașii în plus. Crama Kyperounta e aproape — printre cele mai înalte din Europa. Combinați dacă aveți timp."
+      },
+      "atalante": {
+        "winterNotes": "Ghidul oficial recomandă martie–noiembrie; iarna doar fără gheață. Mai lung decât Artemis — porniți devreme.",
+        "winterSafety": "Buclă lungă — nu o subestimați. Gheață după valurile de frig; colțari ușori la nevoie. Spuneți cuiva ruta voastră. Urgențe: 112.",
+        "localSecret": "Faceți Artemis și Atalante în zile diferite. Împreună devin o tură foarte lungă; circuitul comun Chionistra este legătura."
+      },
+      "avakas-gorge": {
+        "winterNotes": "Verificați vremea; evitați după ploaie. Cheile pot fi alunecoase. Cel mai bine dec.–apr., când râul e traversabil.",
+        "winterSafety": "NU intrați după ploi puternice; risc de viitură. Cheile pot fi alunecoase. Cel mai bine dec.–apr., când apa e mică. Urgențe: 112.",
+        "localSecret": "În punctul cel mai îngust, cerul devine o fâșie. Mergeți încet. Crama Avakas e aproape; combinați cheile cu o degustare. Sunați înainte."
+      },
+      "panagia-araka-stavros": {
+        "winterNotes": "Mai răcoare peste 1.000 m. Urcușuri și coborâșuri de gradul 3. Bisericile pot avea iarna program redus — verificați înainte să plecați.",
+        "winterSafety": "Traseu liniar — aranjați preluarea la Stavros tou Agiasmati sau întoarceți-vă pe șosea. Gradul 3; alunecos pe umezeală.",
+        "localSecret": "Începeți la Panagia tou Araka cu frescele, apoi mergeți spre Agiasmati cât lumina mai cade frumos pe vii."
+      },
+      "cape-greco": {
+        "winterNotes": "Drumeție de iarnă ideală. Fără zăpadă, temperaturi blânde. Bună pentru a scăpa de frigul din altă parte.",
+        "winterSafety": "Drumeție de iarnă ideală; blândă, fără zăpadă. Vântul de coastă poate fi tăios; luați un strat în plus. Poteca e bine marcată.",
+        "localSecret": "Porniți din golful Konnos și mergeți spre peșterile marine. Lumina pe calcar e cea mai frumoasă după-amiaza. Combinați cu Konnos — o baie vara sau o cafea iarna."
+      },
+      "caledonia-alternative": {
+        "winterNotes": "Porțiuni noroioase. Posibil zăpadă la capătul dinspre Troodos. Porniți devreme.",
+        "winterSafety": "Traseu liniar: aranjați transportul. Porțiuni noroioase; posibil zăpadă la capătul dinspre Troodos. Drumeție de o zi întreagă; porniți devreme.",
+        "localSecret": "Cascada Caledonia de la km 4 e jumătatea drumului. Opriți-vă acolo. Odihniți-vă. Cascada e răsplata înaintea ultimei porțiuni spre Troodos. Aranjați transportul înainte de plecare."
+      },
+      "horteri": {
+        "winterNotes": "Posibil zăpadă ian.–mar. Pot fi necesari colțari ușori. Porniți devreme.",
+        "winterSafety": "Doar pentru drumeți experimentați. Zăpadă probabilă ian.–mar. la altitudine. Colțarii ușori sunt esențiali. Spuneți cuiva ruta voastră. Urgențe: 112.",
+        "localSecret": "Singurătatea e răsplata. Veți vedea puțini oameni. Creasta împădurită are momente de liniște pură. Meritați-vă prânzul din Platres."
+      },
+      "millomeris-falls": {
+        "winterNotes": "Potecă liniară de gradul 3. Noroioasă și alunecoasă după ploaie. Debit puternic al cascadei la sfârșitul iernii.",
+        "winterSafety": "Gradul 3 — porțiuni abrupte și traversări de pârâu. Podețele de lemn alunecă atunci când sunt ude. Nu e un traseu pentru începători, în ciuda distanței scurte.",
+        "localSecret": "Mergeți la Millomeris când Caledonia e prea mult. Debitul culminează la 1–2 zile după ploaie. Apoi păstrăv în Platres."
+      },
+      "aphrodite": {
+        "winterNotes": "Drumeție de iarnă ideală. Temperaturi blânde de coastă. Flori sălbatice feb.–mar.",
+        "winterSafety": "Drumeție de coastă ideală iarna. Temperaturi răcoroase, flori sălbatice feb.–mar. Luați un strat de vânt; creastă expusă.",
+        "localSecret": "Moutti tis Sotiras e punctul cel mai înalt. Opriți-vă acolo. Priveliștea golfului se deschide. Cafeneaua de la Băile Afroditei vă așteaptă la final. Ați meritat-o."
+      },
+      "almirolivado": {
+        "winterNotes": "Cel mai bine iarna. Lacul apare doar după zăpadă sau ploi puternice. Alunecos pe polei.",
+        "winterSafety": "Porțiunile pot fi alunecoase pe polei. Nu încercați singuri. Urgențe: 112.",
+        "localSecret": "Mergeți cu cineva care îl cunoaște. Lacul apare doar după zăpadă sau ploaie. Ocolul până la ienupărul uriaș adaugă 1 km și merită."
+      },
+      "mnimata-piskopon": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie; poate fi zăpadă. Liniar — aranjați transportul la ambele capete. Atenție la intersecțiile drumurilor forestiere la început.",
+        "localSecret": "Primul kilometru e comun cu Kampos tou Livadiou. Priveliștile de pe marginea stâncilor sunt răsplata. Kakopetria pentru prânz la final."
+      },
+      "kampos-tou-livadiou": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie; adesea senin când traseele mai înalte au zăpadă. Atenție la intersecțiile drumurilor forestiere la început.",
+        "localSecret": "Priveliștea văii Solea se deschide la jumătatea buclei. Mai liniștit decât Artemis și Atalante. Combinați cu tavernele cu păstrăv din Platres."
+      },
+      "kykkos-konizi": {
+        "winterNotes": "Cel mai bine iarna. Evitați ploaia. Șerpii sunt mai puțin activi. Nu mergeți singuri.",
+        "winterSafety": "Nu faceți drumeția singuri. Posibili șerpi în lunile calde. Semnal slab. Spuneți cuiva ruta voastră.",
+        "localSecret": "La km 5, drum vechi de pietriș — la dreapta la rezervorul de apă. La stânga în curbă, nu la dreapta. Foarte puțini cunosc acest traseu."
+      },
+      "smigies": {
+        "winterNotes": "Drumeție de iarnă ideală. Răcoare, umbra pădurii. Câteva porțiuni noroioase după ploaie. Risc de alunecare pe porțiunile stâncoase.",
+        "localSecret": "Ruta lungă trece pe lângă cuptoarele abandonate — o felie de istorie a Akamasului. Legați-vă de traseul Adonis la Kefalovrysia pentru o zi mai lungă."
+      },
+      "trooditissa-phini": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Liniar la vale — aranjați transportul la Phini. Drum împărțit cu vehiculele.",
+        "localSecret": "La final, loukoumia din Phini și muzeul de ceramică Pilavakion. Parte din coridorul de ciclism CTO Prodromos–Psilo Dentro."
+      },
+      "kannoures-agios-nikolaos": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Traversări frecvente de râu — risc mare de alunecare după ploaie. Aranjați transportul la Kakopetria.",
+        "localSecret": "Încheiați la Agios Nikolaos tis Stegis; continuați 3 km pe șosea până în cartierul vechi din Kakopetria."
+      },
+      "loumata-ton-aeton": {
+        "winterNotes": "Ghidul oficial indică aprilie–noiembrie; iarna nivelul râului crește — risc de alunecare la traversări. Liniar — aranjați transportul.",
+        "localSecret": "Valea Vulturilor. Scurtă, dar cu caracter. Asociați-o cu Chrysovrysi sau Grădina Botanică Amiantos."
+      },
+      "livadi-trail": {
+        "winterNotes": "Ghidul oficial indică aprilie–octombrie; adesea senin când traseele mai înalte au zăpadă. Bun pentru familii.",
+        "localSecret": "Scurt și plăcut. Combinați cu locul de picnic Kampos tou Livadiou. Ideal pentru începători sau familii."
+      },
+      "stavros-tis-psokas": {
+        "winterNotes": "Răcoros și liniștit iarna. Drumul poate fi accidentat; verificați condițiile. Mai puțină lume decât pe traseele de coastă.",
+        "localSecret": "Muflonii se zăresc uneori dimineața devreme. Drumul forestier de acces are un aer de aventură; un 4x4 ajută pe vreme umedă."
+      },
+      "venetian-bridges": {
+        "winterNotes": "Pădure izolată. Aer de iarnă proaspăt; zile mai scurte — porniți devreme pentru ruta completă.",
+        "localSecret": "Secțiunea 2, de la Tzielefos la locul de picnic Pera Vasa, e clasica jumătate de zi — păstrați traversarea completă pentru o zi lungă de iarnă."
+      },
+      "chrysovrysi": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Liniar la vale — aranjați o preluare la Amiantos. Apă de izvor la start.",
+        "localSecret": "Umpleți bidoanele la Chrysovrysi. Încheiați lângă Grădina Botanică Amiantos / centrul de vizitatori al Geoparcului."
+      },
+      "moni-fylagra": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Porțiuni stâncoase — risc de alunecare. Liniar; socotiți 2 ore dacă vă întoarceți pe același drum.",
+        "localSecret": "Vizitați apoi Timios Stavros din Pelendri (UNESCO). Cramele din Krasochoria sunt aproape."
+      },
+      "aphrodite-cape-greco": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă. Tot anul, conform ghidului oficial. Nu e traseul Afroditei din Akamas.",
+        "localSecret": "Buclă scurtă care se leagă de Peșterile Marine și de Konnos–Agioi Anargyroi. Cea mai frumoasă lumină pe calcar: după-amiaza târziu."
+      },
+      "ezousa-valley": {
+        "winterNotes": "Dealurile blânde ale Paphosului. Valea poate fi noroioasă după ploaie. Centrul are expoziții și documentare.",
+        "localSecret": "Priveliștea de la biserica din stâncă e răsplata — porniți spre finalul dimineții, când lumina se deschide peste vale."
+      },
+      "machairas-forest": {
+        "winterNotes": "Drumeție de iarnă bună. Mănăstirea e la 870 m; îmbrăcați-vă gros. Adesea senin când Troodos are zăpadă.",
+        "localSecret": "Mănăstirea e piesa centrală. Potecă de pădure, aer de munte. Apoi Agros pentru loukoumi și produse din trandafiri."
+      },
+      "vretsia-roudias": {
+        "winterNotes": "Liniștit iarna. Pădure răcoroasă. Drumul spre Vretsia pare greșit — continuați.",
+        "localSecret": "Nu încercați dinspre Agios Ioannis — intrați prin Vretsia. Ruinele morii de apă de la jumătatea drumului sporesc senzația timpului."
+      },
+      "persephone": {
+        "winterNotes": "Flori sălbatice feb.–mar. în poieni. Poate fi polei după valurile de frig; verificați condițiile.",
+        "localSecret": "De la sfârșitul lui februarie la începutul lui martie: căutați ciclamene și anemone în poieni. Mai puțin aglomerat decât Artemis."
+      },
+      "kryos-potamos-loop": {
+        "winterNotes": "Noroios după ploaie. Purtați bocanci impermeabili. Debitul pârâului e puternic iarna.",
+        "localSecret": "Pârâul, mușchiul, pădurea. O mostră mai blândă a văii Caledonia. Apoi păstrăv la Psilo Dendro."
+      },
+      "e4-troodos-platres": {
+        "winterNotes": "Verificați condițiile; posibil zăpadă la altitudine. Adesea senin în decembrie sau martie.",
+        "localSecret": "O mostră din E4 complet. Drumeții în formă pot adăuga cascada Caledonia ca ocol. Platres pentru încălzire după."
+      },
+      "sea-caves-anargyroi": {
+        "winterNotes": "Iarna = mai puțină aglomerație. Blând. Plimbare de coastă ideală. Tot anul, conform ghidului oficial.",
+        "localSecret": "Nu ratați ienupărul protejat, bătut de vânt, după curba de la Cape Greco. Loc de picnic la vest de biserică."
+      },
+      "pissouromoutti": {
+        "winterNotes": "Drumeție de iarnă ideală. Porțiuni răcoroase, umbrite. Risc de alunecare după ploaie.",
+        "localSecret": "Priveliștile de pe vârf se deschid sus. Combinați cu ruta lungă Smigies pentru o dimineață întreagă. Prânz în Polis."
+      },
+      "chorteri": {
+        "winterNotes": "Răcoros la altitudine. Noroios după ploaie. Cafeneaua stației forestiere e deschisă sezonier.",
+        "localSecret": "Combinați cu o vizită la muflonii stației înainte de start — pădurea răsplătește plecarea devreme."
+      },
+      "agioi-anargyroi-circular": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă. Mai liniștit decât vara. Tot anul, conform ghidului oficial.",
+        "localSecret": "Trei puncte de pornire — parcați la cel mai liniștit. Combinați cu Kavos sau Peștera Ciclopului pentru o zi întreagă în parc."
+      },
+      "kavos-trail": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă, de coastă. Faleze stâncoase abrupte pe partea sudică — rămâneți pe potecă.",
+        "localSecret": "Mai puțin aglomerat decât traseul Ciclopului. Combinați cu Peșterile Marine–Agioi Anargyroi pentru o zi de coastă mai lungă."
+      },
+      "prodromos-dam-stavroulia": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Coborâre abruptă — doar pentru drumeți în formă. Aranjați transportul.",
+        "localSecret": "Combinați cu Prodromos–Zoumi pentru o zi Marathasa mai plină. Atenție la pași la coborâre."
+      },
+      "troodos-visitor-centre": {
+        "winterNotes": "Deschis tot anul când centrul de vizitatori e deschis. Posibil zăpadă pe drumul de acces ian.–mar.",
+        "localSecret": "Combinați cu expozițiile centrului — 12 specii de plante de aici nu există nicăieri altundeva pe Pământ."
+      },
+      "politiko-machairas": {
+        "winterNotes": "Iarna e magică — pârâul curge, totul înverzește. Prima jumătate expusă; a doua umbrită.",
+        "localSecret": "Mergeți după ploaie. Traversarea podului e punctul culminant. Cafeneaua Machairas încălzește după."
+      },
+      "symvoulas": {
+        "winterNotes": "O zi lungă de pădure. Socotiți 4+ ore. Mai răcoare la altitudine; luați apă.",
+        "localSecret": "Porniți devreme pentru panorama Akamas de la punctul de belvedere de la mijloc — lumina golfului e cea mai frumoasă înainte de prânz."
+      },
+      "ariadni": {
+        "winterNotes": "Buclă de gradul 3. Porțiuni expuse; porniți devreme. Iarna e sezonul confortabil.",
+        "localSecret": "Zilele înnorate fac creasta plăcută. Satul Gerakies pentru o oprire după drumeție."
+      },
+      "prodromos-zoumi": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Risc de alunecare. Liniar — aranjați transportul.",
+        "localSecret": "De la Zoumi puteți continua pe Barajul Prodromos–Stavroulia. Tavernele din Prodromos pentru prânz."
+      },
+      "vavatsinia-honeybee": {
+        "winterNotes": "Plimbare de iarnă ușoară. Satul e la 700 m; îmbrăcați-vă gros. Liniștit și pașnic.",
+        "localSecret": "Unul dintre cele nouă Sate ale Mierii din Larnaca rurală. Pe traseu, informații despre apiterapie și comunicarea albinelor."
+      },
+      "vouni-panagias": {
+        "winterNotes": "Buclă de gradul 3 în dealurile Laona. Răcoros iarna; poate fi noroios. Socotiți o dimineață întreagă.",
+        "localSecret": "Combinați cu crama Vouni Panayia. Ruta Laona îi răsplătește pe cei care merg și degustă."
+      },
+      "agia-varvara-stavrovouni": {
+        "winterNotes": "Evitați treptele de lemn când sunt ude — alunecoase. Cel mai bine pe vreme uscată.",
+        "localSecret": "Parcați la Agia Varvara dacă parcarea de la start e plină. Combinați cu bucla Stavrovouni pentru un antrenament complet."
+      },
+      "konnoi-cyclops": {
+        "winterNotes": "Plimbare de iarnă ideală. Blândă, fără zăpadă. Tot anul, conform ghidului oficial.",
+        "localSecret": "Cafenea și sporturi nautice la Konnos. Combinați cu bucla Agioi Anargyroi pentru o dimineață mai plină în parc."
+      },
+      "cape-aspro": {
+        "winterNotes": "Ideal iarna. Deloc umbră. Zilele înnorate adaugă dramatism.",
+        "localSecret": "Porțiune îngustă la început — se trece, dar cu grijă. Combinația de faleze și mare e de neuitat."
+      },
+      "treis-elies": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Cel mai bine după ploaie, când râul curge — altfel, tot o evadare blândă din Limassol."
+      },
+      "gnafkio": {
+        "winterNotes": "Iarna aduce zăpadă pe Troodos. Mușchiul și verdele sunt uluitoare.",
+        "localSecret": "Porniți de la Kykkos–Tsakistra ca să aveți coborârea abruptă la început. Lângă startul Gnafkio se află Panthea."
+      },
+      "kionia-profitis-elias": {
+        "winterNotes": "Drumeție de iarnă ideală. Pădure răcoroasă. Startul de la Profitis Elias cere 5 km de drum de pământ.",
+        "localSecret": "Porniți de la Kionia pentru coborâre spre Profitis Elias. Aranjați mașină la ambele capete."
+      },
+      "psilo-dentro-pouziaris": {
+        "winterNotes": "Ghidul oficial indică martie–noiembrie. Risc de alunecare. Doar pentru drumeți în formă.",
+        "localSecret": "Parcați la restaurantul Psilo Dentro. Platres e la câțiva metri pentru încălzire după drumeție."
+      },
+      "mesa-potamos": {
+        "winterNotes": "Blând. O opțiune bună de iarnă. Primăvara, debit maxim.",
+        "localSecret": "Din Limassol: drumul Saittas, Kato Amiantos. Căutați indicatoarele cascadei. Mănăstirea e surpriza."
+      },
+      "stavrovouni-trail": {
+        "winterNotes": "Cel mai bine iarna. Expus — deloc umbră. Evitați pe ploaie.",
+        "localSecret": "Mergeți în sensul acelor de ceasornic — așa se văd indicatoarele. Combinați cu Agia Varvara–Stavrovouni pentru o zi mare."
+      },
+      "argakas-dam": {
+        "winterNotes": "Pădure blândă de Paphos. Drumurile forestiere pot fi noroioase după ploaie.",
+        "localSecret": "Priveliștea barajului e răsplata — lăsați timp la belvederea nordică înainte de a închide bucla."
+      },
+      "karvounarka": {
+        "winterNotes": "Ceața de iarnă adaugă atmosferă. A doua porțiune pe șosea — expusă vara.",
+        "localSecret": "Combinați cu Moutti tis Athasias pentru peșteră. Restaurantele din Vavatsinia pentru prânz."
+      },
+      "moutti-anemwn": {
+        "winterNotes": "Liniștit iarna. Vânt pe vârf — de aici numele.",
+        "localSecret": "Combinați cu Gefyria pentru o zi mai lungă. Pădurea Paphos are alt caracter decât Troodos."
+      },
+      "agia-tilliria": {
+        "winterNotes": "Răcoros și liniștit. Zona are alt aer — mai retrasă.",
+        "localSecret": "Întoarceți-vă pe asfalt pentru un traseu circular. Priveliștea mării din pădure e rară în Cipru."
+      },
+      "kastrovounos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Combinați cu Millomeris sau păstrăvul din Platres pentru o jumătate de zi blândă în Troodos."
+      },
+      "lazanias-fikardou": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Încheiați la Fikardou, cu casele de piatră conservate — aranjați mașină la ambele capete."
+      },
+      "kalevounari": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "O scurtă evadare din Limassol — combinați cu stăvilarul Germasogeia pentru o buclă dublă."
+      },
+      "germasogeia-weir": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Nu e drumeția de 13 km Kyparissia — aceasta e bucla ușoară a peninsulei stăvilarului."
+      },
+      "kalopanagiotis-oikos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Începeți la mănăstire cu frescele, apoi mergeți spre Oikos."
+      },
+      "dymes-pelendri": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Aer de vechi drum de catâri — o legătură liniștită a Krasochoriei între sate."
+      },
+      "fikardou-archontides": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Parte din lanțul E4 Machairas–Fikardou — planificați ziua liniară completă."
+      },
+      "selladi-trypilos": {
+        "winterNotes": "Posibil zăpadă și ceață. Verificați condițiile. Parcare limitată.",
+        "localSecret": "Parcarea se umple repede. Mergeți devreme. Cedrii nu seamănă cu nimic altceva de pe insulă."
+      },
+      "polystypos-hazelnut": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Stejarul străvechi de la capăt e răsplata — lăsați timp să zăboviți."
+      },
+      "archangelos-mylos-rodous": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "O scurtă pereche de biserici UNESCO — Galata și Kakopetria într-o zi."
+      },
+      "agros-kato-mylos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "După buclă, opriți-vă în Agros pentru loukoumi și produse din trandafiri."
+      },
+      "panagia-tis-amasgou": {
+        "winterNotes": "Plimbare de iarnă ușoară. Blândă. Bună pentru familii.",
+        "localSecret": "Blând, liniștit. Livezi de măslini și lumină de iarnă. Cramele Krasochoria sunt aproape."
+      },
+      "xyliatos-dam": {
+        "winterNotes": "Plimbare de iarnă ușoară. Blândă. Bună pentru familii. Baraj și pădure.",
+        "localSecret": "Un favorit de duminică. Priveliștea barajului se deschide pe măsură ce urcați. Liniștit iarna."
+      },
+      "selladi-stavros": {
+        "winterNotes": "Verificați condițiile; posibil zăpadă. Adesea senin în decembrie sau martie.",
+        "localSecret": "Mai liniștit decât Artemis. Creastă și pădure. Apoi păstrăv în Platres."
+      },
+      "horteri-extended": {
+        "winterNotes": "Răcoros la altitudine. Adesea senin. Platres e aproape pentru încălzire.",
+        "localSecret": "Mai liniștit decât Artemis. Mai mult decât o dezmorțire. Păstrăvul din Platres răsplătește."
+      },
+      "agia-irini": {
+        "winterNotes": "Drumeție de iarnă ideală. Răcoroasă, umbrită. Teren stâncos.",
+        "localSecret": "Unul dintre cele mai frumoase defilee ale Ciprului. Pasaje înguste, plante endemice. Aranjați transportul."
+      },
+      "mylikouri": {
+        "winterNotes": "Proaspăt iarna. Adesea senin. Apoi păstrăv în Kakopetria.",
+        "localSecret": "Un clasic al văii Solea. Pădure, pâraie. Păstrăvul din Kakopetria răsplătește."
+      },
+      "persephone-extended": {
+        "winterNotes": "Răcoros la altitudine. Adesea senin. Platres în apropiere.",
+        "localSecret": "Mai multă Persefona. Pădure, munte. Apoi păstrăv în Platres."
+      },
+      "dwarf-oaks": {
+        "winterNotes": "Adesea senin. Blând. Bun pentru familii.",
+        "localSecret": "Stejar auriu, pin negru. Scurt și blând. Ideal pentru un început lin."
+      },
+      "lefkara-path": {
+        "winterNotes": "Traseu descendent de gradul 3. Dealurile blânde ale Larnacăi. Sate mai liniștite iarna.",
+        "localSecret": "Dantelă și piatră. Din sat în sat. Apoi pește la Zygi."
+      },
+      "potamia-dam": {
+        "winterNotes": "Blând. O evadare bună din capitală. Priveliști cu baraj și apă.",
+        "localSecret": "Baraj, păsări, apă. Evadare ușoară din capitală. Apoi loukoumi în Agros."
+      },
+      "kionia": {
+        "winterNotes": "Proaspăt. Verificați condițiile. Platres în apropiere.",
+        "localSecret": "O jumătate de zi solidă. Pădure și creste. Păstrăv în Platres."
+      },
+      "trees-of-woe": {
+        "winterNotes": "Proaspăt. Răcoros la altitudine. Apoi Platres sau Kakopetria.",
+        "localSecret": "Numele spune o poveste. Pădure, munte. Caracter de Troodos."
+      },
+      "kalidonia-alt": {
+        "winterNotes": "Posibil noroi. Bocanci impermeabili. Cascada răsplătește.",
+        "localSecret": "Alt drum spre aceleași cascade. Pădure, pârâu. Platres încălzește după."
+      },
+      "pentadaktylos": {
+        "winterNotes": "Blând. Priveliști spre coastă. Verificați accesul. Bellapais și St Hilarion în apropiere.",
+        "localSecret": "Cele Cinci Degete. Coastă și lanț muntos. Abația Bellapais în raza privirii."
+      },
+      "larnaca-salt-lake": {
+        "winterNotes": "Flamingo iarna. Plat, ușor. Ideal pentru ornitologi.",
+        "localSecret": "Flamingo, sare, moschee. Plat. Iarna e vârful sezonului păsărilor."
+      },
+      "moutti-athasias": {
+        "winterNotes": "Plimbare de iarnă ideală. Pădure răcoroasă. Peștera e răsplata.",
+        "localSecret": "Ales de localnici, nu de turiști. Combinați cu Karvounarka pentru o buclă mai lungă."
+      },
+      "panthea": {
+        "winterNotes": "Cel mai bine iarna. Vremea înnorată adaugă dramatism.",
+        "localSecret": "Refugiul de la start e magic. Lăsați mașini la ambele capete pentru un traseu într-un singur sens."
+      },
+      "germasogeia-kyparissia": {
+        "winterNotes": "Răcoros și plăcut. Fără umbră pe porțiuni — iarna e ideală.",
+        "localSecret": "Cramele Krasochoria sunt aproape. Combinați cu o degustare pentru o zi Limassol completă."
+      },
+      "agiasma": {
+        "winterNotes": "Dealurile blânde ale Paphosului. Poate fi noroios după ploaie.",
+        "localSecret": "Combinați cu o oprire la vin în Kathikas — dealurile Laona răsplătesc un start spre prânz."
+      },
+      "arnies": {
+        "winterNotes": "Dealurile blânde ale Paphosului. Gradul 3 pe alocuri; socotiți 1–2 ore.",
+        "localSecret": "Luați ruta lungă dacă aveți timp — izvorul nu dă numele traseului degeaba."
+      },
+      "lemithou": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Întoarceți-vă pe șosea — iese o zi circulară cu Treis Elies."
+      },
+      "arsos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Satele viticole Krasochoria sunt aproape — Arsos răsplătește pasul lent."
+      },
+      "lagoudera-agros": {
+        "winterNotes": "Gradul 3 — aranjați transportul. Mai răcoros și mai liniștit iarna.",
+        "localSecret": "Aproape de startul Panagia tou Araka — biserici UNESCO plus mers pe creastă."
+      },
+      "lagoudera-madari": {
+        "winterNotes": "Liniar de gradul 3 — mașină la ambele capete sau întoarcere pe șosea.",
+        "localSecret": "Legați cu creasta Madari pentru o zi Adelfi completă, dacă vă ține condiția."
+      },
+      "pano-ambelia": {
+        "winterNotes": "Buclă scurtă de gradul 3 — expusă vara; iarna e confortabilă.",
+        "localSecret": "Start liniștit din Askas — combinați cu Kakopetria sau hinterlandul Machairas."
+      },
+      "petros-vanezis": {
+        "winterNotes": "Gradul 3 — porțiuni abrupte. Iarna e mai răcoroasă și mai liniștită.",
+        "localSecret": "Caracter de Pitsilia într-o buclă scurtă — combinați cu un prânz în Kakopetria."
+      },
+      "gourri": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Cascadă la final — mergeți după ploaie pentru cel mai bun debit."
+      },
+      "machairas-lazanias": {
+        "winterNotes": "Magie după ploaie — pârâu și verdeață. Traversări de râu de gradul 3.",
+        "localSecret": "Prelungiți spre Fikardou — un final într-un sat UNESCO."
+      },
+      "choirokoitia-trail": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Întâi situl, apoi mergeți spre sat — pentru context."
+      },
+      "panagia-agapis-vavla": {
+        "winterNotes": "Buclă lungă; luați apă. Dealurile blânde ale Larnacăi.",
+        "localSecret": "Socotiți o dimineață întreagă — hinterlandul Larnacăi e cel mai calm iarna."
+      },
+      "lefkara-metamorfoseos": {
+        "winterNotes": "Traseu oficial în afara pădurii. Iarna e un sezon bun — mai răcoros și mai liniștit.",
+        "localSecret": "Înainte de plimbare, cumpărături de dantelă în Pano Lefkara."
+      },
+      "profitis-ilias-konnoi": {
+        "winterNotes": "Plimbare de coastă blândă iarna. Aranjați preluarea la Konnos.",
+        "localSecret": "Încheiați la Konnos cu o baie vara; iarna înseamnă poteci goale și aer blând."
+      },
+      "panagia-agios-ioannis": {
+        "winterNotes": "Un clasic de coastă blând tot anul.",
+        "localSecret": "Legați cu Profitis Ilias–Konnos pentru o zi de coastă mai lungă în Protaras."
+      },
+      "panagia-agioi-saranda": {
+        "winterNotes": "Plimbare de coastă ideală iarna; puțină lume.",
+        "localSecret": "Scurtă plimbare din biserică în biserică — combinați cu bucla Konnos–Agioi Anargyroi."
+      }
+    },
+    "bestFor": {
+      "1-week-trip": "sejur de o săptămână",
+      "accessible-from-limassol": "acces ușor din Limassol",
+      "active-adventure": "aventură activă",
+      "active-day": "zi activă",
+      "active-exploration": "explorare activă",
+      "active-explorers": "exploratori activi",
+      "advanced-adventure": "aventură solicitantă",
+      "after-adonis": "după Băile lui Adonis",
+      "after-akamas-trails": "după traseele din Akamas",
+      "after-angeloktisti": "după Angeloktisti",
+      "after-aphrodite": "după traseul Afroditei",
+      "after-artemis": "după traseul Artemis",
+      "after-caledonia": "după cascada Caledonia",
+      "after-kryos-potamos": "după Kryos Potamos",
+      "after-palaipafos": "după Palaipafos",
+      "after-trails": "după drumeție",
+      "after-troodos-trails": "după traseele din Troodos",
+      "after-wineries": "după crame",
+      "agrotourism": "agroturism",
+      "akamas-day": "o zi în Akamas",
+      "akamas-exploration": "explorarea Akamasului",
+      "akamas-loop": "circuit în Akamas",
+      "altitude": "altitudine",
+      "ancient-sites": "situri antice",
+      "archaeology": "arheologie",
+      "architecture": "arhitectură",
+      "art-history": "istoria artei",
+      "art-lovers": "iubitorii de artă",
+      "asian-cuisine": "bucătărie asiatică",
+      "authentic": "experiență autentică",
+      "authentic-cyprus": "Ciprul autentic",
+      "authentic-experience": "experiență autentică",
+      "authentic-zygi": "Zygi autentic",
+      "ayia-napa": "Ayia Napa",
+      "balanced-pace": "ritm echilibrat",
+      "beach-day-add-on": "completare la o zi de plajă",
+      "beaches": "plaje",
+      "birdwatching": "observarea păsărilor",
+      "bleisure": "muncă și relaxare",
+      "bouldering": "bouldering",
+      "boutique": "caracter boutique",
+      "boutique-seekers": "amatorii de crame boutique",
+      "byzantine-art": "artă bizantină",
+      "cape-greco-area": "zona Cape Greco",
+      "cape-greco-combo": "combinat cu Cape Greco",
+      "capital-dining": "mese în capitală",
+      "capital-visitors": "vizitatorii capitalei",
+      "choirokoitia-combo": "combinat cu Choirokoitia",
+      "city-combo": "combinat cu orașul",
+      "city-dining": "mese în oraș",
+      "city-dinner": "cină în oraș",
+      "city-history": "istoria orașului",
+      "city-vibe": "atmosferă urbană",
+      "coastal": "atmosferă de litoral",
+      "coastal-adventure": "aventură pe coastă",
+      "coastal-combo": "combinat cu litoralul",
+      "coastal-dining": "mese lângă mare",
+      "coastal-lunch": "prânz lângă mare",
+      "coastal-lunch-stop": "oprire de prânz pe coastă",
+      "coastal-stroll": "plimbare pe malul mării",
+      "coastal-walk": "drum pe coastă",
+      "commandaria": "Commandaria",
+      "commandaria-lovers": "iubitorii de Commandaria",
+      "commandaria-purists": "puriștii Commandariei",
+      "commandaria-route": "ruta Commandariei",
+      "commandaria-tour": "tur al Commandariei",
+      "couples": "cupluri",
+      "craft-culture": "meșteșuguri și cultură",
+      "craft-wine": "vin artizanal",
+      "crafts": "meșteșuguri",
+      "cultural-heritage": "patrimoniu cultural",
+      "culture": "cultură",
+      "cycling": "ciclism",
+      "day-trip": "excursie de o zi",
+      "day-trip-from-nicosia": "excursie de o zi din Nicosia",
+      "deep-immersion": "cunoaștere în profunzime",
+      "discovery": "descoperiri",
+      "diving": "scufundări",
+      "dramatic-scenery": "peisaje spectaculoase",
+      "easy-access": "acces ușor",
+      "easy-drive-from-larnaca-limassol": "drum ușor din Larnaca/Limassol",
+      "easy-drive-from-limassol": "drum ușor din Limassol",
+      "easy-from-limassol": "aproape de Limassol",
+      "easy-ride": "tură ușoară pe bicicletă",
+      "eco-conscious": "călătorie eco-responsabilă",
+      "exploration": "explorare",
+      "families": "familii",
+      "family-friendly": "prietenos cu familiile",
+      "family-heritage": "moștenire de familie",
+      "family-run": "afacere de familie",
+      "family-run-feel": "atmosferă de familie",
+      "fine-dining": "bucătărie rafinată",
+      "first-time-visitors": "prima vizită",
+      "first-timers": "începători",
+      "first-visit": "prima vizită",
+      "fish": "pește",
+      "fish-lovers": "iubitorii de pește",
+      "floral-heritage": "patrimoniu floral",
+      "food-pairing": "asocierea vinului cu mâncarea",
+      "food-wine": "mâncare și vin",
+      "foodies": "gurmanzi",
+      "gentle-walks": "plimbări liniștite",
+      "gravel-riding": "ciclism gravel",
+      "groups": "grupuri",
+      "half-day-from-limassol": "jumătate de zi din Limassol",
+      "half-day-outing": "ieșire de o jumătate de zi",
+      "half-day-trip": "excursie de o jumătate de zi",
+      "harbour-lunch": "prânz în port",
+      "harbour-walk": "plimbare prin port",
+      "heritage": "patrimoniu",
+      "hidden-gem": "comoară ascunsă",
+      "hiking": "drumeții",
+      "hiking-base": "bază pentru drumeții",
+      "history": "istorie",
+      "history-buffs": "pasionații de istorie",
+      "history-overview": "privire asupra istoriei",
+      "kakopetria-area": "zona Kakopetria",
+      "kalopanagiotis-visit": "vizită la Kalopanagiotis",
+      "kayaking": "caiac",
+      "kids": "copii",
+      "kitesurfing": "kitesurfing",
+      "kolossi-combo": "combinat cu Kolossi",
+      "kourion-combo": "combinat cu Kourion",
+      "krasochoria": "Krasochoria",
+      "krasochoria-tour": "tur al Krasochoriei",
+      "kyrenia": "Kyrenia",
+      "lace-village": "satul dantelei",
+      "laona-day": "o zi în Laona",
+      "laona-route": "ruta Laona",
+      "larnaca": "Larnaca",
+      "larnaca-day": "o zi în Larnaca",
+      "larnaca-day-trip": "excursie de o zi la Larnaca",
+      "larnaca-hills": "dealurile Larnacăi",
+      "larnaca-hinterland": "împrejurimile Larnacăi",
+      "larnaca-villages": "satele Larnacăi",
+      "lefkara-combo": "combinat cu Lefkara",
+      "lefkara-path-combo": "combinat cu poteca Lefkarei",
+      "limassol": "Limassol",
+      "literary-history": "istorie literară",
+      "local-experience": "experiență locală",
+      "lunch-tasting": "prânz și degustare",
+      "lunch-wine": "prânz și vin",
+      "machairas-combo": "combinat cu Machairas",
+      "medieval-art": "artă medievală",
+      "medieval-history": "istorie medievală",
+      "modern-cypriot-wine": "vin cipriot modern",
+      "modern-wine": "vin modern",
+      "modern-wine-style": "stil de vin modern",
+      "mosaics-combo": "combinat cu mozaicurile",
+      "mountain": "cadru montan",
+      "mountain-biking": "mountain biking",
+      "mountain-day": "o zi la munte",
+      "mountain-drive": "drum montan",
+      "mountain-escape": "evadare la munte",
+      "mountain-lunch": "prânz la munte",
+      "mountain-scenery": "peisaj montan",
+      "mountain-views": "priveliști spre munți",
+      "mountain-wine": "vin de munte",
+      "mountain-wine-route": "rută montană a vinului",
+      "mountains": "munți",
+      "museum": "muzeu",
+      "museum-day": "zi de muzee",
+      "museum-lovers": "iubitorii de muzee",
+      "museum-visit": "vizită la muzeu",
+      "mythology": "mitologie",
+      "natural-wine-fans": "fanii vinului natural",
+      "nature": "natură",
+      "nature-culture": "natură și cultură",
+      "nature-wine": "natură și vin",
+      "north-cyprus": "Ciprul de Nord",
+      "off-the-beaten-path": "locuri neumblate",
+      "old-nicosia": "Nicosia veche",
+      "old-town": "orașul vechi",
+      "omodos-day": "o zi în Omodos",
+      "omodos-visit": "vizită la Omodos",
+      "organic-enthusiasts": "entuziaștii produselor bio",
+      "organic-wine": "vin organic",
+      "organic-wine-lovers": "iubitorii de vin organic",
+      "pafos": "Pafos",
+      "painted-churches": "biserici pictate",
+      "paphos-day": "o zi în Paphos",
+      "paphos-day-trip": "excursie de o zi la Paphos",
+      "paphos-hinterland": "împrejurimile orașului Paphos",
+      "paphos-region": "regiunea Paphos",
+      "paphos-wine-route": "ruta vinului din Paphos",
+      "peace-quiet": "pace și liniște",
+      "peaceful": "atmosferă liniștită",
+      "peaceful-escape": "evadare liniștită",
+      "peaceful-stop": "oprire liniștită",
+      "pedoulas-visit": "vizită la Pedoulas",
+      "photography": "fotografie",
+      "pilgrimage": "pelerinaj",
+      "platres": "Platres",
+      "platres-day": "o zi la Platres",
+      "post-avakas": "după cheile Avakas",
+      "post-hike-lunch": "prânz după drumeție",
+      "post-trail": "după traseu",
+      "prehistory": "preistorie",
+      "production-tours": "tururi ale producției",
+      "protaras": "Protaras",
+      "quick-lunch": "prânz rapid",
+      "quick-visit": "vizită scurtă",
+      "quiet-escape": "evadare liniștită",
+      "quiet-escapes": "refugii liniștite",
+      "quiet-reflection": "reculegere",
+      "quiet-village": "sat liniștit",
+      "rainy-day": "zi ploioasă",
+      "rainy-day-activity": "activitate pentru o zi ploioasă",
+      "rainy-day-alternative": "alternativă pentru o zi ploioasă",
+      "rainy-day-nicosia": "zi ploioasă în Nicosia",
+      "rainy-day-options": "opțiuni pentru zile ploioase",
+      "relaxation": "relaxare",
+      "relaxed": "atmosferă relaxată",
+      "remote-workers": "cei care lucrează de la distanță",
+      "rock-climbing": "cățărare",
+      "rose-products": "produse din trandafiri",
+      "ruins-lunch": "prânz lângă ruine",
+      "salt-lake-combo": "combinat cu Lacul Sărat",
+      "scenic-drive": "drum panoramic",
+      "sea-views": "vedere la mare",
+      "secluded": "loc retras",
+      "serious-trekkers": "drumeți experimentați",
+      "serious-wine-lovers": "cunoscători serioși de vin",
+      "shopping": "cumpărături",
+      "ski-trip-add-on": "completare la o zi de schi",
+      "ski-wine": "schi și vin",
+      "slow-pace": "ritm lent",
+      "slow-travel": "călătorie în ritm lent",
+      "snorkeling": "snorkeling",
+      "snorkelling": "snorkeling",
+      "souvenirs": "suveniruri",
+      "spa": "spa",
+      "special-evening": "seară specială",
+      "special-occasions": "ocazii speciale",
+      "spiritual-retreat": "refugiu spiritual",
+      "stopover": "oprire pe traseu",
+      "sunday-lunch": "prânz de duminică",
+      "sunny-winter-tastings": "degustări de iarnă însorite",
+      "sunset": "apus",
+      "sunset-dining": "cină la apus",
+      "sunsets": "apusuri",
+      "sweet-wine": "vin dulce",
+      "terroir-focus": "accent pe terroir",
+      "the-farmyard": "The Farmyard",
+      "traditional": "atmosferă tradițională",
+      "traditional-cyprus": "Ciprul tradițional",
+      "traditional-food": "mâncare tradițională",
+      "trail-combo": "combinat cu o drumeție",
+      "troodos": "Troodos",
+      "troodos-churches": "bisericile din Troodos",
+      "troodos-combo": "combinat cu Troodos",
+      "troodos-day": "o zi în Troodos",
+      "troodos-drive": "drum prin Troodos",
+      "troodos-villages": "satele din Troodos",
+      "trout-lovers": "iubitorii de păstrăv",
+      "unesco-churches": "biserici UNESCO",
+      "unique": "experiență unică",
+      "unique-experience": "experiență unică",
+      "unique-scenery": "peisaj unic",
+      "unique-setting": "cadru unic",
+      "urban-cyprus": "Ciprul urban",
+      "valley-lunch": "prânz în vale",
+      "views": "priveliști",
+      "village": "cadru rural",
+      "village-charm": "farmec de sat",
+      "village-circuit": "circuit al satelor",
+      "village-day": "o zi prin sate",
+      "village-experience": "experiență rurală",
+      "village-feel": "atmosferă de sat",
+      "village-lunch": "prânz la sat",
+      "village-walk": "plimbare prin sat",
+      "village-wine-combo": "sat și vin",
+      "villages": "sate",
+      "walking": "plimbări",
+      "water-sports": "sporturi nautice",
+      "watersports": "sporturi nautice",
+      "weekend": "weekend",
+      "weekend-hikers": "drumeții de weekend",
+      "wellness": "wellness",
+      "windsurfing": "windsurfing",
+      "wine": "vin",
+      "wine-culture": "vin și cultură",
+      "wine-enthusiasts": "entuziaștii vinului",
+      "wine-geeks": "pasionații de vin",
+      "wine-history": "istoria vinului",
+      "wine-lovers": "iubitorii de vin",
+      "wine-monastery": "vin și mănăstire",
+      "wine-route": "ruta vinului",
+      "wine-route-stop": "oprire pe ruta vinului",
+      "wine-village": "vin și sat",
+      "wine-village-combo": "vin combinat cu sat",
+      "winter-activities": "activități de iarnă",
+      "winter-ambience": "atmosferă de iarnă",
+      "winter-drive": "drum de iarnă",
+      "winter-escape": "evadare de iarnă",
+      "winter-exploration": "explorare de iarnă",
+      "winter-lunch": "prânz de iarnă",
+      "winter-scenery": "peisaj de iarnă",
+      "winter-sun": "soare de iarnă",
+      "winter-tastings": "degustări de iarnă",
+      "winter-trails": "trasee de iarnă",
+      "winter-village": "sat în iarnă",
+      "winter-visit": "vizită de iarnă",
+      "winter-walks": "plimbări de iarnă",
+      "winter-waterfront": "faleză de iarnă"
     }
   }
 }

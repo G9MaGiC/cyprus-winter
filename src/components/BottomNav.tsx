@@ -64,14 +64,16 @@ export default function BottomNav() {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        closeMore();
+        // Outside tap: close without the Escape-path focus restore — yanking
+        // focus back to the More trigger mid-interaction fights the pointer.
+        setMoreOpen(false);
       }
     };
     if (moreOpen) {
       document.addEventListener("click", handleClickOutside);
     }
     return () => document.removeEventListener("click", handleClickOutside);
-  }, [moreOpen, closeMore]);
+  }, [moreOpen]);
 
   useEffect(() => {
     if (!moreOpen) return;
@@ -124,7 +126,7 @@ export default function BottomNav() {
           >
             <NavIcon href={link.href} active={isActive(pathname, link.href)} />
             <span
-              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[76px] max-[360px]:max-w-[56px] text-center ${isActive(pathname, link.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(link.labelKey)}
             </span>
@@ -147,7 +149,7 @@ export default function BottomNav() {
           >
             <NavIcon href={planLink.href} active={isActive(pathname, planLink.href)} />
             <span
-              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
+              className={`text-xs max-[400px]:text-[10.5px] leading-tight font-medium whitespace-nowrap truncate max-w-[76px] max-[360px]:max-w-[56px] text-center ${isActive(pathname, planLink.href) ? "text-golden" : "text-white/80"}`}
             >
               {t(planLink.labelKey)}
             </span>
@@ -162,7 +164,6 @@ export default function BottomNav() {
             type="button"
             onClick={() => setMoreOpen((v) => !v)}
             aria-expanded={moreOpen}
-            aria-haspopup="true"
             aria-label={tCommon("aria.moreNavigation")}
             className={`flex flex-col items-center justify-center min-h-[48px] min-w-[44px] gap-0.5 py-2 px-1.5 max-[375px]:px-1 sm:px-2 rounded-xl transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal active:bg-white/5 ${
               isOverflowActive ? "text-golden" : "text-white/80"
@@ -174,24 +175,26 @@ export default function BottomNav() {
             </span>
           </button>
           {moreOpen && (
+            /* Disclosure of nav links — not a menu widget (AUD-27). */
             <div
               ref={moreMenuRef}
               className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 min-w-[140px] py-2 rounded-xl bg-charcoal/98 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-sm"
-              role="menu"
             >
-              {overflowLinksResolved.map((link) => (
-                <AppLink
-                  key={link.href}
-                  href={link.href}
-                  prefetch={false}
-                  onClick={closeMore}
-                  role="menuitem"
-                  aria-current={isActive(pathname, link.href) ? "page" : undefined}
-                  className="block min-h-[44px] px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 rounded mx-1"
-                >
-                  {t(link.labelKey)}
-                </AppLink>
-              ))}
+              <ul>
+                {overflowLinksResolved.map((link) => (
+                  <li key={link.href}>
+                    <AppLink
+                      href={link.href}
+                      prefetch={false}
+                      onClick={closeMore}
+                      aria-current={isActive(pathname, link.href) ? "page" : undefined}
+                      className="block min-h-[44px] px-4 py-2 text-sm font-medium text-white/90 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 rounded mx-1"
+                    >
+                      {t(link.labelKey)}
+                    </AppLink>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>

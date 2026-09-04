@@ -43,6 +43,15 @@ describe("booking status transitions", () => {
     expect("booking" in again && again.booking.status).toBe("confirmed");
   });
 
+  it("flags real transitions vs no-op retries so callers can gate side effects (AUD-08)", async () => {
+    const b = await seedBooking();
+    const first = await updateBookingStatus(b.id, "confirmed", "tsiakkas");
+    expect("changed" in first && first.changed).toBe(true);
+    // The retry must not re-send the guest status email.
+    const retry = await updateBookingStatus(b.id, "confirmed", "tsiakkas");
+    expect("changed" in retry && retry.changed).toBe(false);
+  });
+
   it("rejects reviving a cancelled booking", async () => {
     const b = await seedBooking();
     await updateBookingStatus(b.id, "cancelled", "tsiakkas");

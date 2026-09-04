@@ -34,7 +34,7 @@ function TripDatesFields({
               const nextEnd = nextStart && dates.end && dates.end < nextStart ? nextStart : dates.end;
               setTripDates(nextStart, nextEnd);
             }}
-            className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-within:ring-2 focus-within:ring-terracotta/40 focus-within:ring-offset-2"
           />
         </label>
         <label className="flex flex-col gap-2">
@@ -44,7 +44,7 @@ function TripDatesFields({
             value={dates.end ?? ""}
             min={dates.start ?? undefined}
             onChange={(e) => setTripDates(dates.start, e.target.value || null)}
-            className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="min-h-[44px] w-full px-4 py-2.5 rounded-xl border border-sand-200 bg-white text-charcoal text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-within:ring-2 focus-within:ring-terracotta/40 focus-within:ring-offset-2"
           />
         </label>
       </div>

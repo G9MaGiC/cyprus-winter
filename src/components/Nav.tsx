@@ -9,15 +9,18 @@ import { LAYOUT, LAYER } from "@/lib/design-tokens";
 import { isActive } from "@/lib/nav";
 import { navMoreLinks, navPrimaryLinks } from "@/lib/nav-links";
 import { useAuth } from "@/contexts/AuthContext";
+import LocaleLinks from "@/components/LocaleLinks";
 
 export default function Nav() {
   const pathname = usePathname();
   const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
   const closeMobileMenu = useCallback(() => {
     setOpen(false);
     requestAnimationFrame(() => mobileMenuButtonRef.current?.focus());
@@ -35,15 +38,21 @@ export default function Nav() {
   const allLinks = [...navPrimaryLinks, ...moreLinksResolved];
 
   useEffect(() => {
+    // Only act when one of our menus is actually open — an unconditional handler
+    // steals focus from every modal's own Escape restore (BUG-359 / AUD-05).
+    if (!open && !moreOpen) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        closeMobileMenu();
-        setMoreOpen(false);
+        if (open) closeMobileMenu();
+        if (moreOpen) {
+          setMoreOpen(false);
+          requestAnimationFrame(() => moreButtonRef.current?.focus());
+        }
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [closeMobileMenu]);
+  }, [closeMobileMenu, open, moreOpen]);
 
   useEffect(() => {
     if (!moreOpen || !moreMenuRef.current) return;
@@ -137,9 +146,9 @@ export default function Nav() {
           <div className="relative">
             <button
               type="button"
+              ref={moreButtonRef}
               onClick={() => setMoreOpen(!moreOpen)}
               aria-expanded={moreOpen}
-              aria-haspopup="true"
               aria-controls="more-menu"
               className={`inline-flex items-center min-h-[44px] min-w-[44px] justify-center px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal ${
                 moreLinksResolved.some((l) => isActive(pathname, l.href))
@@ -157,22 +166,33 @@ export default function Nav() {
                   aria-hidden
                   tabIndex={-1}
                 />
-                <div id="more-menu" ref={moreMenuRef} role="menu" className={`absolute end-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl ${LAYER.popover} min-w-[120px]`}>
-                  {moreLinksResolved.map((link) => (
-                    <AppLink
-                      key={link.href}
-                      href={link.href}
-                      prefetch={false}
-                      role="menuitem"
-                      aria-current={isActive(pathname, link.href) ? "page" : undefined}
-                      onClick={() => setMoreOpen(false)}
-                      className={`block min-h-[44px] px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${
-                        isActive(pathname, link.href) ? "text-golden" : "text-white/90 hover:text-golden"
-                      }`}
-                    >
-                      {t(link.labelKey)}
-                    </AppLink>
-                  ))}
+                {/* Disclosure of nav links, not a menu widget: links navigate,
+                    there are no menuitem semantics to honor (AUD-27). */}
+                <div id="more-menu" ref={moreMenuRef} className={`absolute end-0 top-full mt-1 py-2 rounded-lg bg-charcoal border border-terracotta/10 shadow-xl ${LAYER.popover} min-w-[260px]`}>
+                  <ul>
+                    {moreLinksResolved.map((link) => (
+                      <li key={link.href}>
+                        <AppLink
+                          href={link.href}
+                          prefetch={false}
+                          aria-current={isActive(pathname, link.href) ? "page" : undefined}
+                          onClick={() => setMoreOpen(false)}
+                          className={`block min-h-[44px] px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${
+                            isActive(pathname, link.href) ? "text-golden" : "text-white/90 hover:text-golden"
+                          }`}
+                        >
+                          {t(link.labelKey)}
+                        </AppLink>
+                      </li>
+                    ))}
+                  </ul>
+                  {/* Locale switcher entry point — was footer-only (AUD-18/50). */}
+                  <div className="mt-2 border-t border-white/10 px-4 pt-3 pb-1">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-1">
+                      {tCommon("localeSwitchHeading")}
+                    </p>
+                    <LocaleLinks variant="menu" onNavigate={() => setMoreOpen(false)} />
+                  </div>
                 </div>
               </>
             )}
@@ -223,7 +243,9 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div id="mobile-menu" ref={mobileMenuRef} role="menu" className="lg:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
+        /* Navigation panel (already inside the nav landmark) — role="menu"
+           with zero menuitems was the AUD-27 misuse. */
+        <div id="mobile-menu" ref={mobileMenuRef} className="lg:hidden border-t border-terracotta/10 bg-charcoal/98 py-4 pl-[max(1.5rem,env(safe-area-inset-left))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] flex flex-col gap-2">
           <AppLink
             href="/search"
             prefetch={false}
@@ -240,20 +262,30 @@ export default function Nav() {
           >
             {t("askAI")}
           </button>
-          {allLinks.map((link) => (
-            <AppLink
-              key={link.href}
-              href={link.href}
-              prefetch={false}
-              aria-current={isActive(pathname, link.href) ? "page" : undefined}
-              onClick={closeMobileMenu}
-              className={`min-h-[44px] flex items-center py-3 font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${
-                isActive(pathname, link.href) ? "text-golden" : "text-white"
-              }`}
-            >
-              {t(link.labelKey)}
-            </AppLink>
-          ))}
+          <ul className="flex flex-col gap-2">
+            {allLinks.map((link) => (
+              <li key={link.href}>
+                <AppLink
+                  href={link.href}
+                  prefetch={false}
+                  aria-current={isActive(pathname, link.href) ? "page" : undefined}
+                  onClick={closeMobileMenu}
+                  className={`min-h-[44px] flex items-center py-3 font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-golden/50 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal rounded ${
+                    isActive(pathname, link.href) ? "text-golden" : "text-white"
+                  }`}
+                >
+                  {t(link.labelKey)}
+                </AppLink>
+              </li>
+            ))}
+          </ul>
+          {/* Locale switcher entry point — was footer-only (AUD-18/50). */}
+          <div className="mt-3 border-t border-white/10 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/60 mb-1">
+              {tCommon("localeSwitchHeading")}
+            </p>
+            <LocaleLinks variant="menu" onNavigate={closeMobileMenu} />
+          </div>
         </div>
       )}
     </nav>

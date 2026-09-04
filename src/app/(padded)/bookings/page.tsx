@@ -4,15 +4,104 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import AppLink from "@/components/AppLink";
 import { LAYOUT, CTA, EMPTY_STATE_DASHED, CARD, SECTION, TYPE } from "@/lib/design-tokens";
 import { getPlaceById, getGuideById } from "@/data";
+import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
 import PageHeader from "@/components/PageHeader";
 import type { Booking } from "@/lib/bookings";
 import { loadLocalBookings, saveLocalBookings, mergeBookings } from "@/lib/bookings-storage";
 
 import { formatDate, daysUntil, getUpcomingDateGroup } from "@/lib/format";
 import BookingsEmailLookup from "@/components/BookingsEmailLookup";
+import { downloadBookingIcs } from "@/lib/booking-ics";
 import TravelTrustStrip from "@/components/travel/TravelTrustStrip";
 import { useLocale, useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
+
+/**
+ * Guest-side cancel (the migration-008 arc's last step): a two-step inline
+ * confirm, then POST /api/bookings/[id]/cancel authorized by the booking's
+ * own guest email from local storage. The server treats an email mismatch as
+ * 404, so this only works for bookings this browser actually created/looked
+ * up.
+ */
+function CancelBookingButton({
+  booking,
+  onCancelled,
+}: {
+  booking: Booking;
+  onCancelled: (booking: Booking) => void;
+}) {
+  const tCancel = useTranslations("bookings.page.cancel");
+  const [confirming, setConfirming] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (booking.status === "cancelled" || !booking.guestEmail) return null;
+
+  const cancel = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/bookings/${encodeURIComponent(booking.id)}/cancel`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ guestEmail: booking.guestEmail }),
+      });
+      if (!res.ok) {
+        setError(res.status === 409 ? tCancel("errorConflict") : tCancel("errorFailed"));
+        return;
+      }
+      onCancelled({ ...booking, status: "cancelled" });
+    } catch {
+      setError(tCancel("errorFailed"));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (!confirming) {
+    return (
+      <button
+        type="button"
+        onClick={() => setConfirming(true)}
+        className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
+      >
+        {tCancel("button")}
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2 basis-full sm:basis-auto">
+      <span className="text-xs text-muted-ink">
+        {tCancel("confirmBody", { provider: booking.providerName })}
+      </span>
+      <button
+        type="button"
+        onClick={cancel}
+        disabled={busy}
+        className={`px-3 py-1.5 rounded-lg text-sm font-medium bg-terracotta/15 text-terracotta hover:bg-terracotta/25 disabled:opacity-60`}
+      >
+        {tCancel("confirmYes")}
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setConfirming(false);
+          setError(null);
+        }}
+        disabled={busy}
+        className={`px-3 py-1.5 rounded-lg ${CTA.chipTertiary} disabled:opacity-60`}
+      >
+        {tCancel("keep")}
+      </button>
+      {error && (
+        <span role="alert" className="text-xs text-terracotta basis-full">
+          {error}
+        </span>
+      )}
+    </div>
+  );
+}
 
 function StatusBadge({ status }: { status: Booking["status"] }) {
   const tBookings = useTranslations("bookings");
@@ -60,6 +149,39 @@ export default function BookingsPage() {
     setLoading(false);
   }, []);
 
+  // Guest-side cancel: flip only the status (the record's other fields —
+  // guestEmail, notes — stay authoritative locally, per the AUD-74 merge
+  // lesson), then announce for SR users. React state updates from memory
+  // FIRST — a failed localStorage write must not leave the UI announcing
+  // success while the list still shows the old status (the same reason
+  // applyRemoteBookings sets state from its merged array); storage is
+  // best-effort for other tabs and the next visit.
+  const [cancelMessage, setCancelMessage] = useState<string | null>(null);
+  const cancelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    return () => {
+      if (cancelTimerRef.current) clearTimeout(cancelTimerRef.current);
+    };
+  }, []);
+  const tCancel = useTranslations("bookings.page.cancel");
+  const handleCancelled = useCallback(
+    (updated: Booking) => {
+      const merged = bookings.map((x) =>
+        x.id === updated.id ? { ...x, status: "cancelled" as const } : x
+      );
+      setBookings(merged);
+      try {
+        saveLocalBookings(merged);
+      } catch {
+        // state above is already correct; storage catches up on next sync
+      }
+      setCancelMessage(tCancel("success"));
+      if (cancelTimerRef.current) clearTimeout(cancelTimerRef.current);
+      cancelTimerRef.current = setTimeout(() => setCancelMessage(null), 4000);
+    },
+    [bookings, tCancel]
+  );
+
   useEffect(() => {
     refreshBookings();
   }, [refreshBookings]);
@@ -78,12 +200,27 @@ export default function BookingsPage() {
   const [tokenSent, setTokenSent] = useState(false);
   const canDirectLookup = !authConfigured || Boolean(session?.access_token);
 
-  const applyRemoteBookings = (apiBookings: Booking[]) => {
+  // `silent` = the caller is a background refresh, not a user-initiated email
+  // lookup: merge and re-render, but never set the lookup-panel result banner
+  // ("No bookings found…"/"Loaded N") the user didn't ask for.
+  const applyRemoteBookings = (
+    apiBookings: Booking[],
+    { silent = false, guestEmail }: { silent?: boolean; guestEmail?: string } = {}
+  ) => {
+    // The public API view strips guestEmail; the server matched these records
+    // by exactly the email we queried with, so restoring it locally is
+    // faithful — and the in-app cancel button needs it on devices that only
+    // ever synced via lookup (the cross-device path the emailed link uses).
+    const normalizedEmail = guestEmail?.trim().toLowerCase();
+    const enriched = normalizedEmail
+      ? apiBookings.map((b) => (b.guestEmail ? b : { ...b, guestEmail: normalizedEmail }))
+      : apiBookings;
     const local = loadLocalBookings();
-    const merged = mergeBookings(local, apiBookings);
+    const merged = mergeBookings(local, enriched);
     saveLocalBookings(merged);
     if (!isMountedRef.current) return;
     setBookings(merged);
+    if (silent) return;
     if (successTimerRef.current) clearTimeout(successTimerRef.current);
     if (apiBookings.length === 0) {
       setEmailSuccess(tBookings("emailLookup.noMatch"));
@@ -100,6 +237,35 @@ export default function BookingsPage() {
       if (isMountedRef.current) setEmailSuccess(null);
     }, 5000);
   };
+
+  // Auto-check for status updates once per visit: with localStorage-only reads a
+  // "pending" badge stays stale forever on the very device that booked (BUG-362).
+  // Silent best-effort — any failure keeps the local view.
+  const autoRefreshedRef = useRef(false);
+  useEffect(() => {
+    if (loading || autoRefreshedRef.current) return;
+    if (authConfigured && !session?.access_token) return;
+    const email = bookings.find((b) => b.guestEmail)?.guestEmail;
+    const hasPending = bookings.some((b) => b.status === "pending");
+    if (!email || !hasPending) return;
+    autoRefreshedRef.current = true;
+    (async () => {
+      try {
+        const headers = session?.access_token
+          ? { Authorization: `Bearer ${session.access_token}` }
+          : undefined;
+        const res = await fetch(`/api/bookings?email=${encodeURIComponent(email)}`, { headers });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!isMountedRef.current) return;
+        applyRemoteBookings((data.bookings ?? []) as Booking[], { silent: true, guestEmail: email });
+      } catch {
+        // offline or rate-limited — local view stays authoritative
+      }
+    })();
+    // applyRemoteBookings is stable enough for a fire-once effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, bookings, authConfigured, session?.access_token]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -137,7 +303,7 @@ export default function BookingsPage() {
             tBookings("errors.lookupExpired");
           throw new Error(msg);
         }
-        applyRemoteBookings((data.bookings ?? []) as Booking[]);
+        applyRemoteBookings((data.bookings ?? []) as Booking[], { guestEmail: email });
       } catch (err) {
         if (!isMountedRef.current) return;
         const msg = err instanceof Error ? err.message : "";
@@ -187,7 +353,7 @@ export default function BookingsPage() {
           tBookings("errors.failedToLoad");
         throw new Error(msg);
       }
-      applyRemoteBookings((data.bookings ?? []) as Booking[]);
+      applyRemoteBookings((data.bookings ?? []) as Booking[], { guestEmail: email });
     } catch (err) {
       if (!isMountedRef.current) return;
       const msg = err instanceof Error ? err.message : "";
@@ -284,6 +450,10 @@ export default function BookingsPage() {
         />
 
         <TravelTrustStrip className="mb-8" />
+
+        <p role="status" aria-live="polite" className={cancelMessage ? "mb-4 text-sm font-medium text-terracotta" : "sr-only"}>
+          {cancelMessage ?? ""}
+        </p>
 
         {/* Stats bar */}
         {!loading && bookings.length > 0 && (
@@ -467,6 +637,14 @@ export default function BookingsPage() {
               </div>
             )}
 
+            {/* Change/cancel guidance — cancel is in-app since batch 41; the
+                hint points at the card button, email stays the fallback. */}
+            {upcoming.length > 0 && (
+              <p className="mb-6 text-sm text-muted-ink">
+                {tBookingsPage("cancelHint")}
+              </p>
+            )}
+
             {/* Upcoming — grouped by Today / This week / Later */}
             {groupLabels.map(
               ({ key, label }) =>
@@ -483,11 +661,22 @@ export default function BookingsPage() {
                         const placeValid = !!getPlaceById(b.providerId);
                         const guideValid = !!getGuideById(b.providerId);
                         const providerValid = placeValid || guideValid;
-                        const viewHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
+                        // Structured trail from the API/local record (AUD-86) —
+                        // link straight to it instead of the generic hub.
+                        const bookedTrail = isGuide && b.trailId ? findTrailByIdOrSlug(b.trailId) : undefined;
+                        const viewHref = isGuide
+                          ? bookedTrail
+                            ? `/trails/${bookedTrail.id}`
+                            : "/trails"
+                          : `/discover/${b.providerId}`;
                         const viewLabel = isGuide
-                          ? tBookingsPage("cta.viewTrails")
+                          ? bookedTrail
+                            ? tBookingsPage("cta.viewTrail")
+                            : tBookingsPage("cta.viewTrails")
                           : tBookingsPage("cta.viewWinery");
-                        const modifyHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}?from=bookings`;
+                        const modifyHref = isGuide
+                          ? `/book/guide/${b.providerId}?from=bookings${bookedTrail ? `&trail=${encodeURIComponent(bookedTrail.id)}` : ""}`
+                          : `/book/winery/${b.providerId}?from=bookings`;
                         const todayCopy = isGuide
                           ? tBookingsPage("today.guidedHike")
                           : tBookingsPage("today.tasting");
@@ -513,6 +702,7 @@ export default function BookingsPage() {
                                   </span>
                                   <p className="text-sm text-muted-ink mt-1 break-words">
                                     {formatDate(b.date, locale)} · {tCommon("peopleCount", { count: b.partySize })}
+                                    {bookedTrail && <> · {bookedTrail.name}</>}
                                   </p>
                                   {isTodayOrTomorrow && (
                                     <p className="text-xs text-muted-ink mt-2" role="status">
@@ -522,22 +712,39 @@ export default function BookingsPage() {
                                     </p>
                                   )}
                                 </div>
-                                {providerValid && (
-                                  <div className="flex flex-wrap gap-2 shrink-0">
-                                    <AppLink
-                                      href={viewHref}
-                                      className={`px-4 py-2 rounded-lg ${CTA.secondaryCompact}`}
-                                    >
-                                      {viewLabel}
-                                    </AppLink>
-                                    <AppLink
-                                      href={modifyHref}
-                                      className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
-                                    >
-                                      {tBookingsPage("cta.modify")}
-                                    </AppLink>
-                                  </div>
-                                )}
+                                <div className="flex flex-wrap gap-2 shrink-0">
+                                  {providerValid && (
+                                    <>
+                                      <AppLink
+                                        href={viewHref}
+                                        className={`px-4 py-2 rounded-lg ${CTA.secondaryCompact}`}
+                                      >
+                                        {viewLabel}
+                                      </AppLink>
+                                      <AppLink
+                                        href={modifyHref}
+                                        className={`px-4 py-2 rounded-lg ${CTA.primaryCompact}`}
+                                      >
+                                        {tBookingsPage("cta.modify")}
+                                      </AppLink>
+                                    </>
+                                  )}
+                                  {/* The page says "set a reminder if you like" — give the
+                                      calendar entry instead of homework (AUD-82). */}
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      downloadBookingIcs(b, {
+                                        summary: `${b.providerName} — ${isGuide ? tBookingsPage("ics.guidedHike") : tBookingsPage("ics.tasting")}`,
+                                        description: `${tBookings(`status.${b.status}`)} · ${tCommon("peopleCount", { count: b.partySize })}${b.notes ? `\n${b.notes}` : ""}`,
+                                      })
+                                    }
+                                    className={`px-4 py-2 rounded-lg ${CTA.chipTertiary}`}
+                                  >
+                                    {tBookingsPage("cta.addToCalendar")}
+                                  </button>
+                                  <CancelBookingButton booking={b} onCancelled={handleCancelled} />
+                                </div>
                               </div>
                             </div>
                           </li>
@@ -560,7 +767,10 @@ export default function BookingsPage() {
                     const placeValid = !!getPlaceById(b.providerId);
                     const guideValid = !!getGuideById(b.providerId);
                     const providerValid = placeValid || guideValid;
-                    const bookAgainHref = isGuide ? `/book/guide/${b.providerId}` : `/book/winery/${b.providerId}?from=bookings`;
+                    const pastTrail = isGuide && b.trailId ? findTrailByIdOrSlug(b.trailId) : undefined;
+                    const bookAgainHref = isGuide
+                      ? `/book/guide/${b.providerId}?from=bookings${pastTrail ? `&trail=${encodeURIComponent(pastTrail.id)}` : ""}`
+                      : `/book/winery/${b.providerId}?from=bookings`;
                     const secondaryHref = isGuide ? "/trails" : `/discover/${b.providerId}`;
                     const secondaryLabel = isGuide
                       ? tBookingsPage("cta.browseTrails")

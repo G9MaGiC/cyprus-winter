@@ -33,25 +33,46 @@ export function alternateLanguageUrls(path: string): Record<string, string> {
   return languages;
 }
 
-export function buildPathAlternates(
-  path: string,
-  activeLocale: string
-): NonNullable<Metadata["alternates"]> {
+export function buildPathAlternates(path: string): NonNullable<Metadata["alternates"]> {
   return {
-    canonical: absoluteUrlForLocale(path, activeLocale),
+    // Strategy A (docs/INTERNATIONAL_SEO.md): ONE canonical — the unprefixed
+    // default-locale URL — for every locale variant; locale URLs live in
+    // hreflang only. Self-canonicalizing locale pages were the Strategy-B
+    // half of the split-brain (AUD-117).
+    canonical: absoluteUrlForLocale(path, routing.defaultLocale),
     languages: alternateLanguageUrls(path),
   };
 }
 
 /**
- * Set canonical, hreflang, and openGraph.url for a segment (default or locale-prefixed).
+ * og:locale wants territory-qualified codes (bare "he" is invalid to
+ * Facebook's parser; AUD-122). en_GB matches the primary UK market.
+ */
+const OG_LOCALES: Record<string, string> = {
+  en: "en_GB",
+  el: "el_GR",
+  de: "de_DE",
+  pl: "pl_PL",
+  fr: "fr_FR",
+  he: "he_IL",
+  ro: "ro_RO",
+};
+
+export function ogLocaleFor(locale: string): string {
+  return OG_LOCALES[locale] ?? locale;
+}
+
+/**
+ * Set canonical, hreflang, openGraph.url and og:locale for a segment
+ * (default or locale-prefixed). Canonical + og:url follow Strategy A —
+ * the unprefixed default-locale URL, matching `buildStrategyAAlternates`.
  */
 export function applyLocaleToMetadata(
   base: Metadata,
   pathWithoutLocale: string,
   locale: string
 ): Metadata {
-  const canonical = absoluteUrlForLocale(pathWithoutLocale, locale);
+  const canonical = absoluteUrlForLocale(pathWithoutLocale, routing.defaultLocale);
   const languages = alternateLanguageUrls(pathWithoutLocale);
   return {
     ...base,
@@ -61,7 +82,7 @@ export function applyLocaleToMetadata(
       languages,
     },
     openGraph: base.openGraph
-      ? { ...base.openGraph, url: canonical }
+      ? { locale: ogLocaleFor(locale), ...base.openGraph, url: canonical }
       : undefined,
   };
 }

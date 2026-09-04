@@ -11,6 +11,11 @@ import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getLocale, getTranslations } from "next-intl/server";
 import { toSafeJsonForScript } from "@/lib/json-script";
 import { isPartnerVerified } from "@/lib/partner-verification";
+import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
+import HubSkipNav from "@/components/HubSkipNav";
+import { localizeWineryContent } from "@/lib/winery-content";
+import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
+import { ensurePartnerOverlaysLoaded } from "@/lib/partner-overlay-store";
 
 const ogImage = `${SITE_URL}/images/cyprus/cyprus-winery-troodos.jpg`;
 
@@ -43,6 +48,13 @@ export default async function WineriesPage() {
     getTranslations("wineries.page"),
   ]);
 
+  // AUD-10 card surfaces: pilot overlay + partner hours baked server-side
+  // (partner runtime hours win; also removes the client-side dead-Map split).
+  await ensurePartnerOverlaysLoaded();
+  const localizedWineries = await Promise.all(
+    wineries.map(async (w) => applyPartnerOpeningHours(await localizeWineryContent(w)))
+  );
+
   const wineriesItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -66,6 +78,7 @@ export default async function WineriesPage() {
   return (
     <div className={`${LAYOUT.list} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePy}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toSafeJsonForScript(wineriesItemListSchema) }} />
+      <HubSkipNav targets={[{ href: "#wineries-list", labelKey: "results" }]} />
       <PageHeader
         backHref="/discover"
         backLabel={tNav("discover")}
@@ -78,7 +91,7 @@ export default async function WineriesPage() {
         ]}
       >
         <div className="mt-4 flex flex-wrap gap-3">
-          <AppLink href="/bookings" className={CTA.primaryCompact}>
+          <AppLink href="/book/winery" className={CTA.primaryCompact}>
             {tCommon("bookTasting")}
           </AppLink>
           <AppLink href="/plan" className={CTA.secondaryCompact} aria-label={tHome("aria.plan")}>
@@ -88,7 +101,7 @@ export default async function WineriesPage() {
       </PageHeader>
 
       {(() => {
-        const partners = wineries.filter((w) => isPartnerVerified(w));
+        const partners = localizedWineries.filter((w) => isPartnerVerified(w));
         return partners.length > 0 ? (
           <section aria-labelledby="partners-heading" className="mb-12 sm:mb-16">
             <h2 id="partners-heading" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
@@ -108,12 +121,28 @@ export default async function WineriesPage() {
 
       <div id="wineries-plan-sentinel" className="h-px pointer-events-none" aria-hidden />
 
-      <h2 id="wineries-list" className={`${TYPE.sectionTitle} ${SECTION.headingGap}`}>
+      <h2 id="wineries-list" className={`scroll-mt-24 ${TYPE.sectionTitle} ${SECTION.headingGap}`}>
         {tWineries("listTitle")}
       </h2>
-      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-        {wineries.map((winery) => (
-          <AttractionCard key={winery.id} a={winery} bookFrom="wineries" />
+      {/* Region facets over the ~50-card flat scroll (AUD-68). Server still
+          renders every card; the bar only shows/hides them. */}
+      {(() => {
+        const districtOf = (region: string) => /\(([^)]+)\)\s*$/.exec(region)?.[1] ?? region;
+        const counts = new Map<string, number>();
+        for (const w of wineries) {
+          const d = districtOf(w.region);
+          counts.set(d, (counts.get(d) ?? 0) + 1);
+        }
+        const groups: HubFilterGroup[] = [...counts.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .map(([value, count]) => ({ value, label: value, count }));
+        return <HubRegionFilter containerId="wineries-all-grid" groups={groups} total={wineries.length} />;
+      })()}
+      <div id="wineries-all-grid" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
+        {localizedWineries.map((winery) => (
+          <div key={winery.id} data-hub-group={/\(([^)]+)\)\s*$/.exec(winery.region)?.[1] ?? winery.region}>
+            <AttractionCard a={winery} bookFrom="wineries" />
+          </div>
         ))}
       </div>
 

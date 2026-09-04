@@ -34,7 +34,7 @@ export default function EventCard({
   return (
     <article
       id={event.id}
-      className={`${CARD.base} ${CARD.hover} ${CARD.content} ${
+      className={`scroll-mt-24 ${CARD.base} ${CARD.hover} ${CARD.content} ${
         variant === "highlight"
           ? "border-2 border-golden/40 bg-white"
           : "border-s-4 border-s-terracotta/40"
@@ -92,7 +92,7 @@ export default function EventCard({
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`px-4 py-2.5 rounded-lg ${CTA.chipTertiary}`}
+            className={CTA.chipTertiary}
             aria-label={tPage("card.learnMoreAria", { name: event.name })}
           >
             {tPage("card.learnMoreCta")}

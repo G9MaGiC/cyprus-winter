@@ -95,7 +95,10 @@ describe("SearchBar", () => {
     const input = screen.getByRole("combobox", { name: "Search places and trails" });
     fireEvent.focus(input);
     fireEvent.change(input, { target: { value: "o" } });
-    expect(screen.getByRole("status").textContent).toContain("Type at least 2 characters");
+    // Two status regions exist: the visible hint panel and the SR results-count
+    // announcer (BUG-361-adjacent fix) — assert across both.
+    const statusText = screen.getAllByRole("status").map((el) => el.textContent).join(" ");
+    expect(statusText).toContain("Type at least 2 characters");
   });
 
   it("opens a listbox of results and navigates on Enter", async () => {

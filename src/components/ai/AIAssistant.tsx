@@ -35,12 +35,35 @@ export function AIAssistant() {
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
-    previouslyFocusedRef.current?.focus?.();
+    const previous = previouslyFocusedRef.current;
+    if (previous?.isConnected) {
+      previous.focus?.();
+    } else {
+      // Trigger unmounted (e.g. drawer opened from the mobile menu, which
+      // closes itself) — fall back to the nav's menu button instead of body.
+      // The first match is the desktop More button, display:none on mobile
+      // (focus() on it is a no-op) — pick the first VISIBLE candidate, which
+      // on mobile is the hamburger.
+      const candidates = document.querySelectorAll<HTMLElement>("nav button[aria-expanded]");
+      for (const el of candidates) {
+        if (el.offsetParent !== null) {
+          el.focus?.();
+          break;
+        }
+      }
+    }
   }, []);
 
   useEffect(() => {
     const handleOpen = () => {
-      if (blockingOverlayActive()) return;
+      if (blockingOverlayActive()) {
+        // Never a silent no-op: hand focus to the blocking overlay (cookie
+        // banner / onboarding) so the user learns what to answer first (BUG-360).
+        document
+          .querySelector<HTMLElement>('[data-overlay-active="true"] button')
+          ?.focus();
+        return;
+      }
       setIsOpen(true);
     };
     if (typeof window !== "undefined") {

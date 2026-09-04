@@ -18,6 +18,9 @@ export function usePlanPage() {
   const [comboChoice, setComboChoice] = useState<ComboChoice | null>(null);
   const [showBrowseModal, setShowBrowseModal] = useState(false);
   const [templateAppliedFromUrl, setTemplateAppliedFromUrl] = useState<TemplateKey | null>(null);
+  // Which template the visitor last applied (any path: card, modal, or URL) —
+  // drives the one-shot seasonal-pacing tip; session-only by design.
+  const [appliedTemplateKey, setAppliedTemplateKey] = useState<TemplateKey | null>(null);
 
   const { dates, setTripDates, hydrated: datesHydrated, daysUntil, withinSevenDays, tripLength } =
     useTripDates();
@@ -56,13 +59,16 @@ export function usePlanPage() {
   const lastAddedCardRef = useRef<HTMLDivElement | null>(null);
   const quickStartRef = useRef<HTMLDivElement | null>(null);
 
-  usePlanUrlActions({
+  const { addFailed } = usePlanUrlActions({
     hydrated,
     hasContent,
     getPlace,
     addToDayIfMissing,
     applyTemplate,
-    onTemplateApplied: setTemplateAppliedFromUrl,
+    onTemplateApplied: (key) => {
+      setTemplateAppliedFromUrl(key);
+      setAppliedTemplateKey(key);
+    },
     mutationsDisabled: planReadOnly,
   });
 
@@ -95,6 +101,7 @@ export function usePlanPage() {
       if (planReadOnly) return;
       if (!hasContent) {
         applyTemplate(key as TemplateKey);
+        setAppliedTemplateKey(key as TemplateKey);
         return;
       }
       setTemplateChoice(key);
@@ -105,14 +112,18 @@ export function usePlanPage() {
   const handleReplaceTemplate = useCallback(() => {
     if (planReadOnly || !templateChoice) return;
     applyTemplate(templateChoice as TemplateKey);
+    setAppliedTemplateKey(templateChoice as TemplateKey);
     setTemplateChoice(null);
   }, [planReadOnly, templateChoice, applyTemplate]);
 
   const handleAddTemplate = useCallback(() => {
     if (planReadOnly || !templateChoice) return;
     mergeTemplate(templateChoice as TemplateKey);
+    setAppliedTemplateKey(templateChoice as TemplateKey);
     setTemplateChoice(null);
   }, [planReadOnly, templateChoice, mergeTemplate]);
+
+  const dismissAppliedTemplateTip = useCallback(() => setAppliedTemplateKey(null), []);
 
   const handleComboClick = useCallback(
     (ids: string[], label: string) => {
@@ -193,6 +204,7 @@ export function usePlanPage() {
     hydrated,
     copied,
     planReadOnly,
+    addFailed,
     addToDayIfMissing: guardedAddToDay,
     removeFromDay: guardedRemoveFromDay,
     getPlace,
@@ -210,6 +222,8 @@ export function usePlanPage() {
     sharePreviewLine,
     shareText,
     templateAppliedFromUrl,
+    appliedTemplateKey,
+    dismissAppliedTemplateTip,
     // Derived
     totalPlaces,
     activeDaysCount,

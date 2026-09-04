@@ -11,6 +11,7 @@ import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
 import { findTrailByIdOrSlug } from "@/lib/trail-resolve";
+import { wineriesForRoute } from "@/lib/wine-route-stops";
 import { SITE_URL, toAbsoluteUrl } from "@/lib/site-url";
 
 const MONTH_SLUGS = ["november", "december", "january", "february", "march", "april"] as const;
@@ -60,6 +61,7 @@ export async function discoverDetailMetadata(id: string, locale: string): Promis
     title: `${a.name} | Cyprus Winter`,
     description: snippet,
     openGraph: {
+      type: "article",
       images: [{
         url: imageUrl,
         width: 1200,
@@ -94,6 +96,7 @@ export async function trailDetailMetadata(id: string, locale: string): Promise<M
     title: tTrailDetail("meta.title", { name: trail.name }),
     description: prefix + desc,
     openGraph: {
+      type: "article",
       images: [{
         url: imageUrl,
         width: 1200,
@@ -118,6 +121,19 @@ export async function bookWineryMetadata(id: string, locale: string): Promise<Me
   const base: Metadata = {
     title: t("meta.title", { wineryName: winery.name }),
     description: t("meta.description", { wineryName: winery.name, region: winery.region }),
+    // Book pages are texted/DMed ("book this one?") — they need a real share
+    // card (AUD E2-05); this locale builder is the one that actually serves.
+    openGraph: {
+      title: t("meta.title", { wineryName: winery.name }),
+      description: t("meta.description", { wineryName: winery.name, region: winery.region }),
+      type: "website",
+      images: [{
+        url: toAbsoluteUrl(getAttractionImage(id, "winery")),
+        width: 1200,
+        height: 630,
+        alt: winery.name,
+      }],
+    },
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -130,6 +146,12 @@ export async function bookGuideMetadata(id: string, locale: string): Promise<Met
   const base: Metadata = {
     title: t("meta.title", { guideName: guide.name }),
     description: t("meta.description", { guideName: guide.name, region: guide.region }),
+    openGraph: {
+      title: t("meta.title", { guideName: guide.name }),
+      description: t("meta.description", { guideName: guide.name, region: guide.region }),
+      type: "website",
+      ...(guide.image ? { images: [{ url: toAbsoluteUrl(guide.image), width: 1200, height: 630, alt: guide.name }] } : {}),
+    },
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -137,10 +159,13 @@ export async function bookGuideMetadata(id: string, locale: string): Promise<Met
 export async function regionSlugMetadata(slug: string, locale: string): Promise<Metadata> {
   const config = REGION_CONFIGS.find((c) => c.slug === slug);
   if (!config) notFound();
+  const t = await getTranslations({ locale, namespace: "regions.page" });
   const path = `/regions/${slug}`;
   const base: Metadata = {
-    title: `${config.title} | Cyprus Winter`,
-    description: config.description,
+    title: `${t(`regions.${slug}.title`)} | Cyprus Winter`,
+    // EN pages keep the keyword-dense regions.ts copy for search snippets;
+    // non-EN pages get the localized intro instead of English (AUD-69).
+    description: locale === "en" ? config.description : t(`regions.${slug}.intro`),
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -148,11 +173,14 @@ export async function regionSlugMetadata(slug: string, locale: string): Promise<
 export async function wineRouteSlugMetadata(slug: string, locale: string): Promise<Metadata> {
   const route = WINE_ROUTES.find((r) => r.slug === slug);
   if (!route) notFound();
-  const count = wineries.filter((w) => w.wineRoute?.toLowerCase() === slug).length;
+  // Combined labels ("Laona–Akamas") count on both routes (AUD-71); localized
+  // via the same keys the page uses instead of hardcoded EN.
+  const count = wineriesForRoute(slug).length;
+  const t = await getTranslations({ locale, namespace: "wineRoutes.page" });
   const path = `/wine-routes/${slug}`;
   const base: Metadata = {
-    title: `${route.title} Wine Route Cyprus Winter | Wineries & Tastings`,
-    description: `${route.description} ${count} wineries open for winter tastings. Book ahead.`,
+    title: t("meta.title", { route: route.title }),
+    description: t("meta.description", { route: route.title, count }),
   };
   return applyLocaleToMetadata(base, path, locale);
 }
@@ -166,15 +194,16 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
   if (!row) notFound();
 
   const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
+  const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
   const path = `/weather/${slug}`;
   const base: Metadata = {
-    title: tWeatherMonth("meta.title", { month: monthName }),
+    title: tWeatherMonth("meta.title", { month: monthLabel }),
     description: tWeatherMonth("meta.description", {
-      month: monthName,
+      month: monthLabel,
       coastRange,
       troodosRange,
       coastDesc: row.coastDesc,
@@ -184,7 +213,7 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
         url: ogImage,
         width: 1200,
         height: 630,
-        alt: tWeatherMonth("meta.ogImageAlt", { month: monthName }),
+        alt: tWeatherMonth("meta.ogImageAlt", { month: monthLabel }),
       }],
     },
   };

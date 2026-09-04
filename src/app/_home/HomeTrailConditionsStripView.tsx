@@ -6,6 +6,8 @@ import { STRIP } from "@/lib/design-tokens";
 export type HomeTrailConditionsStripViewProps = {
   aria: string;
   heading: string;
+  /** Dated editorial snapshot marker (AUD-12). */
+  asOfLabel: string;
   openLabel: string | null;
   cautionLabel: string | null;
   closedLabel: string | null;
@@ -16,6 +18,7 @@ export type HomeTrailConditionsStripViewProps = {
 export default function HomeTrailConditionsStripView({
   aria,
   heading,
+  asOfLabel,
   openLabel,
   cautionLabel,
   closedLabel,
@@ -34,6 +37,7 @@ export default function HomeTrailConditionsStripView({
             {cautionLabel && <span className="text-golden-ink font-medium">{cautionLabel}</span>}
             {closedLabel && <span className="text-terracotta font-medium">{closedLabel}</span>}
             {noReportLabel && <span className="text-muted-ink">{noReportLabel}</span>}
+            <span className="text-muted-ink">{asOfLabel}</span>
           </span>
         </div>
         <span className={STRIP.hint}>{summaryLabel}</span>

@@ -31,9 +31,9 @@ export default function TimelineRow({
   const p = getPlace(id);
   if (!p) {
     return (
-      <div className="flex gap-4">
+      <div className="flex gap-4 max-[360px]:gap-2">
         <div className="flex flex-col items-center shrink-0">
-          <span className="w-8 h-8 rounded-full bg-sand-200/80 text-muted-ink flex items-center justify-center text-sm font-semibold">
+          <span className="w-8 h-8 max-[360px]:w-6 max-[360px]:h-6 max-[360px]:text-xs rounded-full bg-sand-200/80 text-muted-ink flex items-center justify-center text-sm font-semibold">
             {index}
           </span>
           {showConnector && <span className="w-px h-5 sm:h-6 bg-sand-200/70 mt-2 shrink-0 min-w-[1px]" aria-hidden />}
@@ -58,10 +58,10 @@ export default function TimelineRow({
   }
   const isLastAdded = lastAddedId === id;
   return (
-    <div ref={isLastAdded ? lastAddedCardRef : undefined} className="flex gap-4 transition-opacity duration-200">
+    <div ref={isLastAdded ? lastAddedCardRef : undefined} className="flex gap-4 max-[360px]:gap-2 transition-opacity duration-200">
       <div className="flex flex-col items-center shrink-0">
         <span
-          className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
+          className={`w-8 h-8 max-[360px]:w-6 max-[360px]:h-6 max-[360px]:text-xs rounded-full flex items-center justify-center text-sm font-semibold shrink-0 transition-all duration-200 ${
             isLastAdded
               ? "bg-terracotta text-white ring-2 ring-terracotta/40 ring-offset-2 ring-offset-white"
               : "bg-sand-200/80 text-muted-ink"

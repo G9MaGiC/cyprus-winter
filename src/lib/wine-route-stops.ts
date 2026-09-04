@@ -1,5 +1,5 @@
 import { getWineRouteBySlug } from "@/data/wine-routes";
-import { getWineryById, type Winery } from "@/data/wineries";
+import { getWineryById, wineries, type Winery } from "@/data/wineries";
 
 export { getWineRouteBySlug };
 
@@ -17,4 +17,14 @@ export function getBookableWineriesForRoute(slug: string): Winery[] {
     const winery = getWineryById(id);
     return winery ? [winery] : [];
   });
+}
+
+/**
+ * All wineries affiliated with a published route slug. Substring match (not
+ * equality) so combined labels like "Laona\u2013Akamas" surface on both the
+ * laona and akamas pages instead of matching neither (AUD-71).
+ */
+export function wineriesForRoute(slug: string): Winery[] {
+  const needle = slug.toLowerCase();
+  return wineries.filter((w) => w.wineRoute?.toLowerCase().includes(needle));
 }

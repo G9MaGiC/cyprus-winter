@@ -5,6 +5,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { villages } from "@/data/attractions";
 import { HOME, LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
+import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
 import PageHeader from "@/components/PageHeader";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -85,9 +86,18 @@ export default async function VillagesPage() {
         <h2 id="villages-list" className="sr-only">
           {tVillages("srHeading")}
         </h2>
-        <ul role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
+        {/* Region facets over the ~30k-px flat scroll (AUD-68). */}
+        {(() => {
+          const counts = new Map<string, number>();
+          for (const v of villages) counts.set(v.region, (counts.get(v.region) ?? 0) + 1);
+          const groups: HubFilterGroup[] = [...counts.entries()]
+            .sort((a, b) => b[1] - a[1])
+            .map(([value, count]) => ({ value, label: value, count }));
+          return <HubRegionFilter containerId="villages-grid" groups={groups} total={villages.length} />;
+        })()}
+        <ul id="villages-grid" role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
           {villages.map((village) => (
-            <li key={village.id}><AttractionCard a={village} /></li>
+            <li key={village.id} data-hub-group={village.region}><AttractionCard a={village} /></li>
           ))}
         </ul>
       </section>
