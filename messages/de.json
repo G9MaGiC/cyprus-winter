@@ -3148,78 +3148,40 @@
   "install": {
     "page": {
       "meta": {
-        "title": "Installation auf SiteGround | Cyprus Winter",
-        "description": "Schritt-für-Schritt-Anleitung, um Cyprus Winter auf SiteGround Shared Hosting bereitzustellen. Static Export, Upload und .htaccess-Setup."
-      },
-      "nav": {
-        "ariaLabel": "Seitennavigation",
-        "breadcrumbCurrent": "Installation",
-        "backLabel": "Cyprus Winter"
+        "title": "Cyprus Winter aufs Handy holen | Cyprus Winter",
+        "description": "Fügen Sie Cyprus Winter direkt aus dem Browser dem Startbildschirm hinzu — ohne App-Store. Ihr Plan und zuletzt geöffnete Seiten funktionieren auch offline."
       },
       "header": {
-        "kicker": "Deployment-Guide",
-        "title": "Installation auf SiteGround",
-        "body": "Cyprus Winter läuft als statisches HTML, CSS und JavaScript. SiteGround Shared Hosting kann es direkt ausliefern — kein Node.js erforderlich."
+        "title": "Cyprus Winter aufs Handy holen",
+        "description": "Cyprus Winter lässt sich direkt aus dem Browser installieren — ohne App-Store, in wenigen Sekunden, fast ohne Speicherplatz. Es bleibt dieselbe Website, immer aktuell."
       },
-      "requirements": {
-        "title": "Voraussetzungen",
+      "benefits": {
+        "title": "Was Sie bekommen",
         "items": {
-          "node": "Node.js 18+ (für lokales Bauen)",
-          "siteground": "SiteGround Shared Hosting mit cPanel- oder FTP-Zugriff",
-          "domain": "Domain ist auf Ihr SiteGround-Konto gerichtet"
+          "offline": "Ihr Plan und zuletzt geöffnete Seiten funktionieren weiter, wenn in den Bergen das Signal wegbricht — Buchungen und Live-Wetter brauchen weiterhin eine Verbindung.",
+          "icon": "Ein Symbol auf dem Startbildschirm, das den Guide im Vollbild öffnet — wie eine App.",
+          "shortcuts": "Unter Android öffnet langes Drücken des Symbols Schnellzugriffe auf Ihren Plan und auf das, was sich gerade lohnt."
         }
       },
-      "steps": {
-        "title": "Schritte",
-        "codeSnippetAria": "Codeausschnitt",
-        "items": {
-          "s1": {
-            "title": "1. Für Static Export konfigurieren",
-            "body": "Fügen Sie dies in next.config.ts ein, damit Next.js statisches HTML statt eines Node-Servers erzeugt:",
-            "note": "API-Routen funktionieren auf SiteGround nicht — nutzen Sie bei Bedarf Supabase oder ein anderes Backend."
-          },
-          "s2": {
-            "title": "2. Static Export bauen",
-            "body": "Stellen Sie auf Ihrem Computer sicher, dass Node.js 18+ installiert ist. Abhängigkeiten installieren und bauen:",
-            "note": "Der Build landet im Ordner out/. SiteGround kann kein Node.js ausführen — Sie deployen nur statische Dateien."
-          },
-          "s3": {
-            "title": "3. Zu SiteGround hochladen",
-            "body": "Laden Sie den Inhalt des Ordners out/ in public_html Ihrer Website hoch. Nutzen Sie cPanel File Manager, FTP oder SFTP.",
-            "note": "Laden Sie alles in out/ hoch, inkl. _next und index.html. Nicht den out-Ordner selbst hochladen — nur seinen Inhalt."
-          },
-          "s4": {
-            "title": "4. .htaccess für Routing hinzufügen",
-            "body": "Erstellen Sie eine .htaccess in public_html, damit direkte Links (z. B. /trails, /discover) korrekt funktionieren:",
-            "note": "Das leitet 404s für fehlende Dateien an index.html, damit die App das Routing übernimmt. Passen Sie RewriteBase an, wenn die App in einem Unterordner liegt."
-          },
-          "s5": {
-            "title": "5. Prüfen",
-            "body": "Öffnen Sie Ihre Domain im Browser. Prüfen Sie Startseite, Trails und Entdecken. Links und Bilder sollten laden."
-          }
+      "platforms": {
+        "android": {
+          "title": "Android — Chrome",
+          "body": "Öffnen Sie das Browsermenü, wählen Sie „Zum Startbildschirm hinzufügen“ (auf manchen Geräten: „App installieren“) und bestätigen Sie. Erscheint unten auf der Seite eine Installationsleiste, tut deren Knopf dasselbe."
+        },
+        "ios": {
+          "title": "iPhone und iPad — Safari",
+          "body": "Tippen Sie auf „Teilen“, scrollen Sie zu „Zum Home-Bildschirm“ und tippen Sie auf „Hinzufügen“. Der Guide öffnet sich dann im Vollbild über sein eigenes Symbol."
+        },
+        "desktop": {
+          "title": "Computer — Chrome oder Edge",
+          "body": "Klicken Sie auf das Installationssymbol rechts in der Adressleiste oder wählen Sie „Installieren“ im Browsermenü und bestätigen Sie. Safari und Firefox bieten am Computer keine Installation — dort hilft ein Lesezeichen."
         }
       },
-      "troubleshooting": {
-        "title": "Fehlerbehebung",
-        "items": {
-          "blank": {
-            "label": "Leere Seite oder 404 beim Aktualisieren:",
-            "body": "Fügen Sie die .htaccess-Rewrite-Regeln oben hinzu oder korrigieren Sie sie."
-          },
-          "images": {
-            "label": "Bilder laden nicht:",
-            "config": "images.unoptimized: true",
-            "body": "Stellen Sie sicher, dass <config>images.unoptimized</config> in next.config gesetzt ist. Bildpfade müssen im Build-Ausgabeordner korrekt sein."
-          },
-          "api": {
-            "label": "API oder Chat funktioniert nicht:",
-            "body": "SiteGround Shared Hosting kann Next.js API-Routen nicht ausführen. Nutzen Sie Supabase, Vercel Serverless oder ein anderes Backend und verknüpfen Sie die App damit."
-          }
-        }
+      "notes": {
+        "body": "Die Installation braucht kein App-Store-Konto, und nichts muss von Hand aktualisiert werden — es ist diese Website in einem App-Rahmen, also immer aktuell. Entfernen lässt sie sich jederzeit wie jede andere App."
       },
-      "footer": {
-        "backToAppLabel": "App"
-      }
+      "homeCta": "Den Guide entdecken",
+      "planCta": "Ihren Plan öffnen"
     }
   },
   "privacy": {

@@ -3251,78 +3251,40 @@
   "install": {
     "page": {
       "meta": {
-        "title": "התקנה ב-SiteGround | Cyprus Winter",
-        "description": "הוראות שלב-אחר-שלב לפריסת Cyprus Winter על SiteGround shared hosting. ייצוא סטטי, העלאה והגדרת .htaccess."
-      },
-      "nav": {
-        "ariaLabel": "ניווט בדף",
-        "breadcrumbCurrent": "התקנה",
-        "backLabel": "Cyprus Winter"
+        "title": "שמרו את Cyprus Winter בטלפון | Cyprus Winter",
+        "description": "הוסיפו את Cyprus Winter למסך הבית ישירות מהדפדפן — בלי חנות אפליקציות. התוכנית שלכם ודפים שנצפו לאחרונה עובדים גם בלי חיבור."
       },
       "header": {
-        "kicker": "מדריך פריסה",
-        "title": "התקנה ב-SiteGround",
-        "body": "Cyprus Winter פועל כ-HTML, CSS ו-JavaScript סטטיים. SiteGround shared hosting יכול להגיש זאת ישירות — לא נדרש Node.js."
+        "title": "שמרו את Cyprus Winter בטלפון",
+        "description": "Cyprus Winter מותקן ישירות מהדפדפן — בלי חנות אפליקציות, בתוך שניות, כמעט בלי מקום. זה נשאר אותו אתר, תמיד מעודכן."
       },
-      "requirements": {
-        "title": "דרישות",
+      "benefits": {
+        "title": "מה מקבלים",
         "items": {
-          "node": "Node.js 18+ (לבנייה מקומית)",
-          "siteground": "SiteGround shared hosting עם גישה ל-cPanel או FTP",
-          "domain": "דומיין מצביע לחשבון SiteGround שלכם"
+          "offline": "התוכנית שלכם ודפים שנצפו לאחרונה ממשיכים לעבוד כשהקליטה נעלמת בהרים — הזמנות ומזג אוויר חי עדיין צריכים חיבור.",
+          "icon": "סמל במסך הבית שפותח את המדריך במסך מלא, כמו אפליקציה.",
+          "shortcuts": "ב-Android, לחיצה ארוכה על הסמל פותחת קיצורי דרך לתוכנית שלכם ולמה שכדאי ממש עכשיו."
         }
       },
-      "steps": {
-        "title": "שלבים",
-        "codeSnippetAria": "קטע קוד",
-        "items": {
-          "s1": {
-            "title": "1. הגדרה לייצוא סטטי",
-            "body": "הוסיפו את אלה ל-next.config.ts כדי ש-Next.js ייצור HTML סטטי במקום שרת Node:",
-            "note": "נתיבי API לא יעבדו ב-SiteGround — השתמשו ב-Supabase או backend אחר במידת הצורך."
-          },
-          "s2": {
-            "title": "2. בניית הייצוא הסטטי",
-            "body": "במחשב שלכם, ודאו ש-Node.js 18+ מותקן. התקינו תלויות ובנו:",
-            "note": "ה-build יוצא לתיקיית out/. SiteGround לא מריץ Node.js — מעלים רק קבצים סטטיים."
-          },
-          "s3": {
-            "title": "3. העלאה ל-SiteGround",
-            "body": "העלו את תוכן תיקיית out/ ל-public_html של האתר. השתמשו ב-cPanel File Manager, FTP או SFTP.",
-            "note": "העלו הכל מתוך out/, כולל _next ו-index.html. אל תעלו את תיקיית out עצמה — רק את תוכנה."
-          },
-          "s4": {
-            "title": "4. הוספת .htaccess לניתוב",
-            "body": "צרו קובץ .htaccess ב-public_html כדי שקישורים ישירים (למשל /trails, /discover) יעבדו נכון:",
-            "note": "זה שולח 404 של קבצים חסרים ל-index.html כדי שהאפליקציה תטפל בניתוב. התאימו RewriteBase אם האפליקציה בתת-תיקייה."
-          },
-          "s5": {
-            "title": "5. אימות",
-            "body": "פתחו את הדומיין בדפדפן. בדקו דף הבית, שבילים וגילוי. קישורים ותמונות צריכים להיטען."
-          }
+      "platforms": {
+        "android": {
+          "title": "Android — Chrome",
+          "body": "פתחו את תפריט הדפדפן, בחרו «הוספה למסך הבית» (בחלק מהטלפונים: «התקנת אפליקציה») ואשרו. אם מופיע פס התקנה בתחתית הדף, הכפתור שלו עושה את אותו הדבר."
+        },
+        "ios": {
+          "title": "iPhone ו-iPad — Safari",
+          "body": "הקישו על «שיתוף», גללו אל «הוספה למסך הבית» והקישו על «הוספה». המדריך נפתח אז במסך מלא מהסמל שלו."
+        },
+        "desktop": {
+          "title": "מחשב — Chrome או Edge",
+          "body": "לחצו על סמל ההתקנה בקצה שורת הכתובת או בחרו «התקנה» מתפריט הדפדפן ואשרו. Safari ו-Firefox לא מציעים התקנה במחשב — שם מספיקה סימנייה."
         }
       },
-      "troubleshooting": {
-        "title": "פתרון בעיות",
-        "items": {
-          "blank": {
-            "label": "דף ריק או 404 ברענון:",
-            "body": "הוסיפו או תקנו את כללי rewrite של .htaccess למעלה."
-          },
-          "images": {
-            "label": "תמונות לא נטענות:",
-            "config": "images.unoptimized: true",
-            "body": "ודאו ש-<config>images.unoptimized</config> מוגדר ב-next.config. נתיבי תמונות חייבים להיות נכונים בפלט ה-build."
-          },
-          "api": {
-            "label": "API או צ׳אט לא עובד:",
-            "body": "SiteGround shared hosting לא יכול להריץ נתיבי API של Next.js. השתמשו ב-Supabase, Vercel serverless או backend אחר והפנו את האפליקציה אליו."
-          }
-        }
+      "notes": {
+        "body": "ההתקנה לא דורשת חשבון בחנות אפליקציות ואין מה לעדכן ידנית — זה האתר הזה במסגרת של אפליקציה, ולכן תמיד מעודכן. אפשר להסיר בכל רגע, כמו כל אפליקציה."
       },
-      "footer": {
-        "backToAppLabel": "אפליקציה"
-      }
+      "homeCta": "לגלות את המדריך",
+      "planCta": "לפתוח את התוכנית שלכם"
     }
   },
   "privacy": {

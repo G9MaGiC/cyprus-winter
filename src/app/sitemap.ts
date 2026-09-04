@@ -93,6 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const support: MetadataRoute.Sitemap = [
     e("/team", 0.5, "monthly"),
     e("/partner/join", 0.4, "monthly"),
+    e("/install", 0.3, "monthly"),
     e("/guides/directory", 0.65),
     e("/guides/troodos-december", 0.7),
     e("/privacy", 0.3, "monthly"),

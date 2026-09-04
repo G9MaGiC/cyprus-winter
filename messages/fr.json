@@ -3251,78 +3251,40 @@
   "install": {
     "page": {
       "meta": {
-        "title": "Installation sur SiteGround | Cyprus Winter",
-        "description": "Guide pas à pas pour déployer Cyprus Winter sur SiteGround shared hosting. Export statique, téléversement et configuration .htaccess."
-      },
-      "nav": {
-        "ariaLabel": "Navigation de page",
-        "breadcrumbCurrent": "Installation",
-        "backLabel": "Cyprus Winter"
+        "title": "Enregistrer Cyprus Winter sur votre téléphone | Cyprus Winter",
+        "description": "Ajoutez Cyprus Winter à votre écran d'accueil depuis le navigateur — sans app store. Votre programme et les pages récemment consultées fonctionnent aussi hors ligne."
       },
       "header": {
-        "kicker": "Guide de déploiement",
-        "title": "Installer sur SiteGround",
-        "body": "Cyprus Winter fonctionne en HTML, CSS et JavaScript statiques. SiteGround shared hosting peut le servir directement — Node.js n'est pas requis."
+        "title": "Enregistrer Cyprus Winter sur votre téléphone",
+        "description": "Cyprus Winter s'installe directement depuis le navigateur — sans app store, en quelques secondes, presque sans espace. C'est toujours le même site, toujours à jour."
       },
-      "requirements": {
-        "title": "Prérequis",
+      "benefits": {
+        "title": "Ce que vous y gagnez",
         "items": {
-          "node": "Node.js 18+ (pour compiler en local)",
-          "siteground": "SiteGround shared hosting avec accès cPanel ou FTP",
-          "domain": "Domaine pointé vers votre compte SiteGround"
+          "offline": "Votre programme et les pages récemment consultées continuent de fonctionner quand le signal disparaît en montagne — les réservations et la météo en direct demandent toujours une connexion.",
+          "icon": "Une icône sur l'écran d'accueil qui ouvre le guide en plein écran, comme une application.",
+          "shortcuts": "Sur Android, un appui long sur l'icône propose des raccourcis vers votre programme et vers ce qui vaut le coup en ce moment."
         }
       },
-      "steps": {
-        "title": "Étapes",
-        "codeSnippetAria": "Extrait de code",
-        "items": {
-          "s1": {
-            "title": "1. Configurer l'export statique",
-            "body": "Ajoutez ceci dans next.config.ts pour que Next.js génère du HTML statique au lieu d'un serveur Node :",
-            "note": "Les routes API ne fonctionnent pas sur SiteGround — utilisez Supabase ou un autre backend si besoin."
-          },
-          "s2": {
-            "title": "2. Compiler l'export statique",
-            "body": "Sur votre ordinateur, assurez-vous d'avoir Node.js 18+. Installez les dépendances et compilez :",
-            "note": "La compilation produit le dossier out/. SiteGround ne peut pas exécuter Node.js — vous déployez uniquement des fichiers statiques."
-          },
-          "s3": {
-            "title": "3. Téléverser sur SiteGround",
-            "body": "Téléversez le contenu du dossier out/ dans le répertoire public_html de votre site. Utilisez cPanel File Manager, FTP ou SFTP.",
-            "note": "Téléversez tout le contenu de out/, y compris _next et index.html. Ne téléversez pas le dossier out lui-même — seulement son contenu."
-          },
-          "s4": {
-            "title": "4. Ajouter .htaccess pour le routage",
-            "body": "Créez un fichier .htaccess dans public_html pour que les liens directs (ex. /trails, /discover) fonctionnent correctement :",
-            "note": "Cela renvoie les 404 de fichiers manquants vers index.html pour que l'app gère le routage. Ajustez RewriteBase si l'app est dans un sous-dossier."
-          },
-          "s5": {
-            "title": "5. Vérifier",
-            "body": "Ouvrez votre domaine dans un navigateur. Vérifiez l'accueil, les sentiers et Découvrir. Les liens et images doivent se charger."
-          }
+      "platforms": {
+        "android": {
+          "title": "Android — Chrome",
+          "body": "Ouvrez le menu du navigateur, choisissez « Ajouter à l'écran d'accueil » (sur certains téléphones : « Installer l'application ») et confirmez. Si une barre d'installation apparaît en bas de page, son bouton fait la même chose."
+        },
+        "ios": {
+          "title": "iPhone et iPad — Safari",
+          "body": "Touchez « Partager », faites défiler jusqu'à « Sur l'écran d'accueil », puis touchez « Ajouter ». Le guide s'ouvre ensuite en plein écran depuis sa propre icône."
+        },
+        "desktop": {
+          "title": "Ordinateur — Chrome ou Edge",
+          "body": "Cliquez sur l'icône d'installation à droite de la barre d'adresse, ou choisissez « Installer » dans le menu du navigateur, puis confirmez. Safari et Firefox ne proposent pas d'installation sur ordinateur — un signet y suffit."
         }
       },
-      "troubleshooting": {
-        "title": "Dépannage",
-        "items": {
-          "blank": {
-            "label": "Page blanche ou 404 au rechargement :",
-            "body": "Ajoutez ou corrigez les règles rewrite .htaccess ci-dessus."
-          },
-          "images": {
-            "label": "Images qui ne se chargent pas :",
-            "config": "images.unoptimized: true",
-            "body": "Assurez-vous que <config>images.unoptimized</config> est défini dans next.config. Les chemins d'images doivent être corrects dans la sortie compilée."
-          },
-          "api": {
-            "label": "API ou chat ne fonctionne pas :",
-            "body": "SiteGround shared hosting ne peut pas exécuter les routes API Next.js. Utilisez Supabase, Vercel serverless ou un autre backend et pointez l'app vers celui-ci."
-          }
-        }
+      "notes": {
+        "body": "L'installation ne demande aucun compte d'app store et rien à mettre à jour à la main — c'est ce site dans un cadre d'application, donc toujours à jour. Retirez-le à tout moment, comme n'importe quelle application."
       },
-      "footer": {
-        "backToAppLabel": "application"
-      }
+      "homeCta": "Explorer le guide",
+      "planCta": "Ouvrir votre programme"
     }
   },
   "privacy": {
