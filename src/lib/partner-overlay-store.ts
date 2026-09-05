@@ -44,28 +44,59 @@ export async function ensurePartnerOverlaysLoaded(): Promise<void> {
 
 /** Write-through: the durable row first (when Supabase is configured — a
     failed upsert throws so the caller can surface it), then the cache so the
-    writing instance reads its own write immediately. */
+    writing instance reads its own write immediately.
+
+    Partial patches must not clobber omitted fields. The in-memory cache is
+    empty on a cold isolate, so merging from it and upserting both columns
+    would write `image_url: null` on a hours-only save. Read the durable row
+    when Supabase is configured, and only send columns the caller patched
+    (PostgREST upsert updates listed columns only). */
 export async function setPartnerOverlay(
   providerId: string,
   patch: PartnerOverlay
 ): Promise<PartnerOverlay> {
-  const current = getPartnerOverlay(providerId) ?? {};
+  const supabase = getSupabase();
+  let current: PartnerOverlay = getPartnerOverlay(providerId) ?? {};
+
+  if (supabase) {
+    const { data, error: readError } = await supabase
+      .from("partner_overlays")
+      .select("opening_hours,image_url")
+      .eq("provider_id", providerId)
+      .maybeSingle();
+    if (readError) {
+      console.error("Partner overlay read failed:", readError.message, { providerId });
+      throw new Error(readError.message);
+    }
+    if (data) {
+      current = {};
+      if (data.opening_hours) current.openingHours = String(data.opening_hours);
+      if (data.image_url) current.imageUrl = String(data.image_url);
+    }
+  }
+
   const next: PartnerOverlay = { ...current };
+  const row: {
+    provider_id: string;
+    updated_at: string;
+    opening_hours?: string | null;
+    image_url?: string | null;
+  } = {
+    provider_id: providerId,
+    updated_at: new Date().toISOString(),
+  };
+
   if (typeof patch.openingHours === "string") {
     next.openingHours = patch.openingHours.trim().slice(0, 500);
+    row.opening_hours = next.openingHours || null;
   }
   if (typeof patch.imageUrl === "string") {
     next.imageUrl = patch.imageUrl.trim();
+    row.image_url = next.imageUrl || null;
   }
 
-  const supabase = getSupabase();
   if (supabase) {
-    const { error } = await supabase.from("partner_overlays").upsert({
-      provider_id: providerId,
-      opening_hours: next.openingHours ?? null,
-      image_url: next.imageUrl ?? null,
-      updated_at: new Date().toISOString(),
-    });
+    const { error } = await supabase.from("partner_overlays").upsert(row);
     if (error) {
       console.error("Partner overlay upsert failed:", error.message, { providerId });
       throw new Error(error.message);
