@@ -22,13 +22,14 @@ function loadCatalog(locale: string): Record<string, unknown> {
 }
 
 describe("secret-gem content overlay (AUD-10 final class)", () => {
-  it("covers only ids that exist in the secret-gem data", () => {
+  it("registry and data cover exactly the same ids (the class is complete — a new gem must ship with catalog coverage)", () => {
     for (const id of LOCALIZED_SECRET_GEM_IDS) {
       expect(
         secretGems.some((g) => g.id === id),
         `LOCALIZED_SECRET_GEM_IDS contains unknown gem id ${id}`
       ).toBe(true);
     }
+    expect(new Set(secretGems.map((g) => g.id))).toEqual(LOCALIZED_SECRET_GEM_IDS);
   });
 
   for (const locale of LOCALES) {
