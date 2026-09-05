@@ -5176,6 +5176,320 @@
       "winter-visit": "zimowa wizyta",
       "winter-walks": "zimowe spacery",
       "winter-waterfront": "zimowa promenada"
+    },
+    "secretGems": {
+      "kourion-bench": {
+        "title": "Ławka w Kurionie",
+        "body": "Nikt nie mówi o ławce z widokiem na morze. Stoi na samym skraju teatru, patrząc w dół na zatokę. Idź o szesnastej w grudniu. Światło pada na ruiny, wybrzeże się żarzy. W dzień powszedni będziesz mieć ją tylko dla siebie. Governor's Beach jest piętnaście minut stąd — rano ruiny, w porze obiadu ryba."
+      },
+      "omodos-blue-door": {
+        "title": "Kafenion z niebieskimi drzwiami",
+        "body": "Na placu w Omodos jest kafenion z niebieskimi drzwiami — ten, do którego chodzą winiarze. Zamów grecką kawę. Usiądź. Zivania jest tu lepsza niż w turystycznych miejscach. W zimowe poranki piec już się pali, a wioska jeszcze się nie obudziła. Nie spiesz się."
+      },
+      "pafos-far-cafe": {
+        "title": "Port w Pafos, ta dalsza kawiarnia",
+        "body": "Kawiarnia na samym końcu portu, za zamkiem. Wtorek, piętnasta. Zachód słońca będziesz mieć dla siebie. Kutry rybackie, kamień, światło. Latem tłok. Zimą? Pusto. Zamów kawę. Zostań do siedemnastej."
+      },
+      "artemis-psilo-dendro": {
+        "title": "Artemis, a potem Psilo Dendro",
+        "body": "Przejdź Artemis rano. Skończ do trzynastej. Potem jedź do Platres i zjedz w tawernie Psilo Dendro — tej nad rzeką. Właściciel zna każdego wędrowca. Zamów pstrąga z migdałami. Kominek, górskie powietrze. To zestawienie, które wybierają miejscowi. Nie odpuszczaj."
+      },
+      "lefkara-kato": {
+        "title": "Odpuść Pano. Zacznij od Kato.",
+        "body": "Wszyscy idą najpierw do Pano Lefkary. Zacznij od Kato Lefkary — dolnej wioski. Ciszej. Koronczarki siedzą w progach. Mniej wycieczek. Wejdź do Pano, kiedy przyjdzie pora. Sklepy ze srebrem są w obu. Kato ma właściwe tempo."
+      },
+      "nissi-winter-coffee": {
+        "title": "Nissi zimą: kawiarnia, która nie zamyka",
+        "body": "Jedna z plażowych kawiarni jest otwarta całą zimę. Ta z drewnianym tarasem. Zamów kawę. Usiądź. Skalna wysepka, horyzont, pusty piasek. Latem nie znalazłoby się tu miejsca. W grudniu? Możesz mieć wszystko tylko dla siebie. Światło jest inne. Zabierz je ze sobą."
+      },
+      "kalopanagiotis-springs": {
+        "title": "Gorące źródła przed mostem",
+        "body": "Wszyscy odwiedzają wenecki most. Gorące źródła są na skraju wioski — zapytaj w muzeum albo kogokolwiek z miejscowych. Zimowa kąpiel jest jak prezent. Dolina jest zimna, woda ciepła. Idź wcześnie. Potem most. Kościół Lampadistisa. W tej kolejności."
+      },
+      "avakas-post-hike": {
+        "title": "Wąwóz Avakas, potem winnica Avakas",
+        "body": "Przejdź wąwóz rano. W najwęższym miejscu — tam, gdzie niebo staje się paskiem — zwolnij. Kiedy skończysz, zadzwoń do winnicy Avakas. Są przyzwyczajeni do wędrowców. Xynisteri z górskich winorośli ma inny charakter. Zapytaj. Wytłumaczą. Dziesięć minut autem od początku szlaku."
+      },
+      "lara-picnic": {
+        "title": "Plaża Lara: weź piknik",
+        "body": "Żadnych leżaków. Żadnych barów. Surowe wybrzeże. Weź piknik i wodę. Zimą żółwie już odpłynęły, a plaża jest pusta. Możesz godzinami nie spotkać nikogo. Na drogę dojazdową zalecany napęd 4x4. Złoty piasek, turkusowa woda — to jest Akamas. Przywieź wszystko ze sobą. Nie zostawiaj niczego."
+      },
+      "marina-far-end": {
+        "title": "Daleki koniec mariny",
+        "body": "Wszyscy tłoczą się przy wejściu. Przejdź na daleki koniec, w stronę starego fortu. Mniej turystów, te same widoki. Superjachty, woda. Najpierw zamów kawę. Usiądź. Pozwól marinie osiąść. Potem wybierz restaurację. Nie spiesz się z decyzją. Promenada wynagradza spacer. Zimą światło pada na wodę o szesnastej."
+      },
+      "sea-caves-afternoon": {
+        "title": "Sea Caves: po piętnastej",
+        "body": "Wapień żarzy się bursztynowo, gdy słońce jest nisko. Zimą idź po piętnastej. Kąt światła trafia w łuki. Weź coś od wiatru — klify łapią bryzę. Latem tłok. W grudniu? Możesz mieć jaskinie tylko dla siebie. Połącz z zatoką Konnos: przejdź ścieżką wzdłuż wybrzeża, zejdź na kawę. Resztę zrobi światło."
+      },
+      "tomb-of-kings-light": {
+        "title": "Groby Królewskie: późnym popołudniem",
+        "body": "Podziemne grobowce pozostają chłodne. Zimą kontrast z łagodnym nadmorskim powietrzem robi wrażenie. Idź przed południem, jeśli chcesz najpierw grobowce. Albo późnym popołudniem: światło na kamieniu, długie cienie. Zimą teren zamykają o siedemnastej. Bądź na miejscu do wpół do czwartej. Będziesz mieć półtorej godziny. Skala działa inaczej, gdy słońce jest nisko."
+      },
+      "millomeris-platres": {
+        "title": "Millomeris, potem obiad w Platres",
+        "body": "Przejdź Millomeris rano. Krótki szlak. Wodospad. Skończ do południa. Jedź do Platres. Tawerny z pstrągiem albo kawiarnia nad rzeką. Łagodne pół dnia. Idealne, gdy nie chcesz pełnego górskiego wyjścia. Wioska zna wędrowców. Zamów pstrąga z migdałami. Kominek. Góry poczekają."
+      },
+      "zambartas-aes-ambelis": {
+        "title": "Zambartas, potem Aes Ambelis",
+        "body": "Dwadzieścia minut od Limassol. Zrób oba w jedno popołudnie. Najpierw Zambartas — czysto, nowocześnie, Lefkada to sztandarowe wino. Potem Aes Ambelis obok. Porównaj style. Dojazd między nimi to nic. Winiarze się znają. Sami ci opowiedzą. Dwie posiadłości, jedna wyprawa."
+      },
+      "bellapais-tree": {
+        "title": "Drzewo Lenistwa",
+        "body": "Durrell pisał, że kto pod nim usiądzie, ten leniwieje. Miał rację. Na placu w Bellapais zamów kawę pod drzewem. Zimowe popołudnie tam to tradycja. Opactwo nad tobą. Wioska poniżej. Nie spiesz się. Drzewo stoi od stuleci. Poczeka."
+      },
+      "louvaras-before-omodos": {
+        "title": "Louvaras przed Omodos",
+        "body": "Na szlaku wina Limassol–Trodos. Louvaras jest cichszy niż Omodos. Zatrzymaj się najpierw na kawę. Kafeniony umieją przyjąć obcych. Potem ruszaj do Omodos i Koilani. Albo odwrotnie. Louvaras nie krzyczy. Czeka. Kamień trzyma zimą słońce."
+      },
+      "leventis-first": {
+        "title": "Leventis przed Muzeum Cypryjskim",
+        "body": "Większość rusza prosto do Muzeum Cypryjskiego. Idź najpierw do Leventis. Wstęp wolny, kameralnie, historia Nikozji opowiedziana tak, jak duże muzeum nie potrafi. Dwie godziny. Potem Muzeum Cypryjskie. Z tym kontekstem Kurion, Pafos, Choirokoitia ożyją. W deszczowy dzień: Leventis, potem kawiarnia na Ledrze. Podziękujesz sobie."
+      },
+      "ledra-buffer-zone": {
+        "title": "Ulica Ledra: przejdź o jedenastej",
+        "body": "Piesze przejście do strefy buforowej. Przed południem, koło jedenastej, światło jest miękkie, a kolejka krótsza. Przejdź. Puste sklepy, posterunki ONZ, linia namalowana na ziemi. Zajmuje pięć minut. Ciężar zostaje. Połącz z Leventis albo kawiarnią na Ledrze. Nie spiesz się przy przejściu. Ono znaczy."
+      },
+      "kouklia-cafe": {
+        "title": "Kouklia: kawiarnia przy ruinach",
+        "body": "Palaipafos leży w samej wiosce. Jest kawiarnia. Zamów kawę. Ruiny masz za ramieniem. Tempo tu wolniejsze niż w porcie w Pafos. Mniej autokarów. Świątynia Afrodyty, rzymskie mozaiki — są tuż obok. Usiądź. Wioska się nie spieszy. Ty też nie musisz."
+      },
+      "adonis-polis-loop": {
+        "title": "Adonis albo Afrodyta, potem Polis",
+        "body": "Przejdź szlak rano. Skończ do trzynastej. Jedź do Polis na obiad. Portowe tawerny podają rybę, która jest świeża. Winnica Vasilikon leży na pętli Akamas w drodze powrotnej. Albo odpuść wino i po prostu jedz. Szlak zapracował na ten posiłek. Polis umie karmić wędrowców. Dwa dni, jeśli możesz: szlak, jedzenie, sen, powtórka."
+      },
+      "st-hilarion-window": {
+        "title": "St Hilarion: Okno Królowej",
+        "body": "W dolnym dziedzińcu jest okno, które kadruje morze. To jest to ujęcie. Bądź wcześnie — przed dziesiątą — a może będziesz mieć je dla siebie. Zamek się wspina; Okno Królowej jest warte schodów. Wybrzeże rozpościera się w dole. Kirenia, port, horyzont. Ubierz się warstwowo. Wiatr nie ustaje nigdy. Ale okno? Warte schodów."
+      },
+      "kolossi-sugar-mill": {
+        "title": "Kolossi: darmowa część",
+        "body": "Wszyscy płacą za zamek. Ruiny cukrowni obok są za darmo. Podejdź. Przez osiemset lat robiono tu Commandarię. Kamienie mają klimat. Rzadko tłoczno. Najpierw zamek — wejdź na dach. Potem ruiny. Połącz z degustacją w Zambartas (Limassol) albo Kolios (wzgórza Pafos). Pół godziny w Kolossi. Reszta popołudnia dla wina."
+      },
+      "governors-coves": {
+        "title": "Governor's Beach: znajdź swoją zatoczkę",
+        "body": "Wybrzeże to sznur zatoczek. Nie zatrzymuj się przy pierwszej. Jedź dalej. Znajdź własny zakątek. Białe klify, ciemny wulkaniczny piasek — kontrast w zimowym świetle robi wrażenie. W łagodne grudniowe popołudnie tawerny na klifie podają obiad. Usiądź na zewnątrz z kocem. Ryba jest świeża. Amathus i Kurion są piętnaście minut stąd. Rano ruiny, w porze obiadu ryba. Wybrzeże nagradza cierpliwych."
+      },
+      "choirokoitia-mist": {
+        "title": "Choirokoitia: mglisty poranek",
+        "body": "Zimowe poranki bywają mgliste. Idź wcześnie. Osada na wzgórzu zdaje się zawieszona między przeszłością a teraźniejszością. Siedem tysięcy lat. Mur obronny nabiera sensu ze szczytu. Najpierw wejdź tam. Zrekonstruowane okrągłe domy — zobaczysz układ. Licz półtorej godziny. Potem Lefkara na koronki i obiad. Albo Muzeum Cypryjskie w Nikozji dla kontekstu. Choirokoitia zasługuje na poranek."
+      },
+      "fikardou-square": {
+        "title": "Fikardou: stań na placu",
+        "body": "Wioska była niemal opuszczona. Dziś to żywe muzeum. Obejdziesz ją w dwadzieścia minut. Daj sobie godzinę. Stań na placu. Słuchaj. Drewniane balkony. Kamień. Region Pitsilia rozlewa się wokół. Klucz do muzeum jest w Muzeum Sztuki Ludowej — zapytaj tam. Muzeum Życia Wiejskiego opowiada, jak przetrwały górskie rodziny. Cofnij się o krok. Cisza jest darem."
+      },
+      "kyperounta-fire-tower": {
+        "title": "Grzbiet Madari: wieża przeciwpożarowa",
+        "body": "Na wysokości dwóch i pół kilometra szlaku Madari stoi wieża obserwacyjna. Wejdź, jeśli możesz. Widok na pełne koło jest wart dodatkowych stopni. Winnica Kyperounta jest niedaleko — jedna z najwyżej położonych w Europie. Połącz szlak z degustacją. Zadzwoń wcześniej. Są przyzwyczajeni do wędrowców. Światło doliny zimą jest złote. Nie omijaj wieży."
+      },
+      "rainy-nicosia": {
+        "title": "Deszczowy dzień: Nikozja",
+        "body": "Gdy góry mokre, a wybrzeże szare, Nikozja działa. Najpierw Leventis — za darmo, kameralnie. Potem Muzeum Cypryjskie — dziewięć tysięcy lat. Potem kawiarnia na Ledrze. Przejście przez strefę buforową, jeśli masz siłę. Stare miasto. Można spędzić cały dzień w środku i wciąż czuć, że widziało się Cypr. Deszcz za oknem blednie. Sale cię trzymają."
+      },
+      "lofou-before-omodos": {
+        "title": "Lofou: przed Omodos",
+        "body": "Lofou leży nad Omodos na szlaku wina. Mniej autokarów. Kamienne domy, cichy plac i kafeniony, z których miejscowi naprawdę korzystają. Zatrzymaj się na kawę w drodze do lub z Omodos. Wioska niczego nie odgrywa. Po prostu jest. W zimowe poranki w tygodniu plac może być tylko twój. Winnica Krasas i Monagri są niedaleko. Droga między Lofou a Omodos to jedna z najładniejszych w Krasochorii."
+      },
+      "zygi-fish-tavernas": {
+        "title": "Zygi: wioska rybacka",
+        "body": "Między Larnaką a Limassol. Bez ruin, bez koronek. Tylko ryba. Tawerny ciągną się wzdłuż portu; podają to, co łodzie przywiozły rano. Jedzą tu miejscowi. Turyści rzadko trafiają. Zimowy obiad nad wodą — ośmiornica, dorada, kalmary. Tempo powolne. Kawa po jedzeniu obowiązkowa. Połącz z Kiti i kościołem Angeloktisti albo Choirokoitią. Do Zygi Cypryjczycy jeżdżą na niedzielną rybę. Ty też jedź."
+      },
+      "laiki-geitonia-market": {
+        "title": "Laiki Geitonia: targ starego miasta",
+        "body": "Stare miasto Nikozji. Laiki Geitonia to odrestaurowana dzielnica — wąskie uliczki, pracownie rzemiosła, kawiarnie. Mniej grup niż na Ledrze. Powłócz się. Znajdź uliczkę targową. Zimą światło pada na kamień. Połącz z Leventis albo przejściem przez strefę buforową. Miejscowi wciąż kupują tu zioła i miód. Miejsce, które czuć zamieszkane, nie wyreżyserowane."
+      },
+      "vavla-quiet-escape": {
+        "title": "Vavla: wioska, o której nikt nie wspomina",
+        "body": "Między Larnaką a Trodosem. Bez koronek, bez sławy szlaku wina. Tylko ciche uliczki, gaje oliwne i pensjonaty, które oferują ciszę. Zimą możesz być jedynym gościem. Wioska leży w fałdzie wzgórz. Przejdź uliczki. Znajdź kafenion. Tempo powolne. Takie miejsce, gdzie zostajesz na noc i żałujesz, że nie na dwie. Zrób z niej bazę na Lefkarę, Choirokoitię albo Trodos. Albo nie. Po prostu tam bądź."
+      },
+      "foini-potters": {
+        "title": "Foini: popatrz na garncarza",
+        "body": "Foini słynie z garncarstwa. Pracownie są w wiosce. Zapytaj w dowolnym sklepie — wskażą ci drogę. Popatrz na garncarza przy kole. Zapach gliny i dymu z drewna. Są dumni z rzemiosła. To nie pokaz; tak tu się pracuje. Ciszej niż w Omodos. Wioska ma inny rytm. Połącz z Platres albo szlakiem w Trodosie. Foini nagradza ciekawych. Daj sobie przedpołudnie."
+      },
+      "kritou-terra-akamas": {
+        "title": "Kritou Terra: wioska Akamas",
+        "body": "Przed Polis, przed Kąpieliskami Afrodyty. Kritou Terra leży na wzgórzach nad Akamas. Kilkuset mieszkańców. Jeden kafenion. Zero autokarów. Widoki schodzą aż do wybrzeża. Zatrzymaj się na kawę, jeśli jedziesz do Lary albo na początek szlaku Adonisa. Wioska się ciebie nie spodziewa. O to chodzi. Droga przez nią jest malownicza. Jedź powoli."
+      },
+      "kormakitis-maronite": {
+        "title": "Kormakitis: wioska maronicka",
+        "body": "Północny Cypr. Kormakitis to jedna z czterech wiosek maronickich — arabskojęzycznych Cypryjczyków, którzy żyją tu od XII wieku. Kościół, plac, poczucie kultury, która przetrwała. Nie leży na głównej pętli turystycznej. Potrzebujesz auta. Ale jeśli zwiedzasz północ — Bellapais, St Hilarion, Kirenię — dodaj Kormakitis. Ta wioska mówi innym Cyprem. Zimowe poranki są ciche. Światło na kamieniu jest warte drogi."
+      },
+      "statos-village-wine": {
+        "title": "Statos: wioska za winem",
+        "body": "Statos to wioska winiarska. Klasztor Chrysorrogiatissa jest niedaleko. Ale sama wioska — kamienne domy, plac, kafenion — umyka uwadze. Zatrzymaj się. Przejdź się. Tempo wolniejsze niż w Omodos czy Koilani. Winnica Tria Elit jest tutaj. Wioska karmi wino; wino nie definiuje wioski. Zimowe światło. Cisza. Takie miejsce znajduje się wtedy, gdy się nie szuka."
+      },
+      "kiti-angeloktisti": {
+        "title": "Kiti: kościół, który omijają autokary",
+        "body": "Wioska Kiti, blisko lotniska w Larnace. Kościół Angeloktisti — zbudowany przez aniołów, głosi legenda — kryje mozaikę Marii z Dzieciątkiem z VI wieku. Jedna z najstarszych zachowanych mozaik bizantyjskich wschodniego Śródziemnomorza. Większość autokarów ją omija. Wioska jest cicha. Kościół mały, kameralny. Licz czterdzieści minut. Połącz z rybą w Zygi albo z Larnaką. Taki objazd zmienia sposób patrzenia na wyspę."
+      },
+      "kolios-meze-cash": {
+        "title": "Kolios: zarezerwuj obiad, weź gotówkę",
+        "body": "Meze u Koliosa to nie meze dla turystów — to wiejskie jedzenie, gotowane przez żonę właściciela. Autentyczne. Rezerwuj dzień lub dwa wcześniej. Luty jest cichy; widoki na góry i piwniczka będą niemal twoje. Mogą nie przyjmować kart — weź gotówkę. Wino kosztuje 5–14 € z piwniczki, dużo poniżej cen sklepowych. Białe Iris z rzadkiego szczepu Spourtiko wyróżnia się. Chrysorrogiatissa jest dziesięć minut stąd; zrób oba w jedno przedpołudnie."
+      },
+      "zambartas-winemaker": {
+        "title": "Zambartas: poproś o próbkę z beczki",
+        "body": "Zarezerwuj Winemaker's Selection (20 €) — to ta z ekskluzywną próbką Commandarii prosto z beczki. Marcos Zambartas często sam prowadzi degustacje, gdy jest na miejscu. Deska — halloumi, lountza, owoce, chleb z organiczną oliwą — dobrze się komponuje. Dwadzieścia pięć minut z Limassol. Rano Kurion albo Kolossi; po południu Zambartas. Zimowe godziny: pon.–pt. do siedemnastej, weekendy do osiemnastej."
+      },
+      "tsiakkas-heights": {
+        "title": "Tsiakkas: winnica na 1460 metrach",
+        "body": "Ich winnica Petralona na 1460 m należy do najwyżej położonych w Europie. Zapytaj o nią. Promara 2020 trafiła na listę 100 najlepszych win świata Decantera. Zarezerwuj zwiedzanie na dwunastą albo czternastą — taras ma zimą grzejniki. Wioska Pelendri; połącz ze szlakiem Artemis albo Omodos. Często nalewa sama rodzina; wskażą ci też najlepsze halloumi we wsi."
+      },
+      "vasilikon-akamas": {
+        "title": "Vasilikon: na pętli Akamas",
+        "body": "Kathikas leży na 650–700 m, na krawędzi Akamas i Laony. Rano szlak Adonisa albo Afrodyty, w porze obiadu port w Polis, potem Vasilikon na pętli powrotnej. Ich Xynisteri ma status ChNP; Ayios Onoufrios to flagowe czerwone. Bez umawiania — pon.–niedz. 8:30–18:00. Piwnica, muzeum i taras patrzą na Akamas. Deski serów do degustacji. Ciszej niż w Omodos."
+      },
+      "vlassides-rainbow": {
+        "title": "Vlassides: degustacja Rainbow",
+        "body": "Sophocles Vlassides studiował na UC Davis; winiarnia trafiła na krótką listę nagrody Miesa van der Rohe. Rainbow (7,50 €) to trzy wina; 4×4 (18 €) łączy cztery wina z czterema serami. Rezerwuj co najmniej dzień wcześniej. Wioska Koilani, Krasochoria. Shiraz i Cabernet wyróżniają się — owocowe, mało dębu. Sam budynek wart jest obejrzenia."
+      },
+      "santo-sunset": {
+        "title": "Santo: wyceluj w zachód słońca",
+        "body": "Zarezerwuj obiad na dwunastą–czternastą; zimą taras zapełnia się w weekendy. Słońce w grudniu zachodzi około siedemnastej — dobrze wycelujesz i złota godzina z kieliszkiem jest twoja. Czerwone Ayios Onoufrios pasuje do meze. W łagodny dzień można siedzieć na zewnątrz z kocem. Kurion i Governor's Beach są blisko — pełny dzień na wybrzeżu Limassol."
+      },
+      "kyperounta-snow": {
+        "title": "Kyperounta: europejskie wysokości",
+        "body": "Na 1400 m Kyperounta należy do najwyżej położonych winiarni Europy — winnica Petralona Tsiakkasa sięga jeszcze wyżej. W styczniu–lutym dzwoń wcześniej — śnieg może zamknąć drogę. Grudzień i marzec są bezpieczniejsze. Ubierz się ciepło; sala degustacyjna ma ogrzewanie, ale podjazd to połowa przygody. Połącz ze szczytem Olimpu albo szlakiem Artemis. Wina z wysokości mają mineralność, której nie znajdziesz nad morzem."
+      },
+      "domes-atupon": {
+        "title": "Domes Sergiou: seria Atypon",
+        "body": "Atypon znaczy „nieoczekiwany” — zapytaj o nią. Atypon 02 (Assyrtiko i Xynisteri) oraz różowe Maratheftiko 2024 zaskakują tych, którym się zdaje, że znają cypryjskie wino. Skarinou to krótka trasa z Larnaki albo Limassol. Wyłącznie rodzime szczepy. Nie dasz rady przyjechać? Mają sklep online. Degustacje rezerwuj wcześniej."
+      },
+      "tsangarides-organic": {
+        "title": "Tsangarides: stulecie w Lemonie",
+        "body": "Rodzina robi wino w Lemonie od ponad wieku; komercyjnie od 2005. Mattaro 2005 i Cabernet 2005 zdobyły złoto. Pon.–sob. 9–17; niedziela zamknięte. O czerwone Agios Efrem (Grenache, Mataro, Shiraz) warto zapytać. Część trasy Laona; połącz z Vouni Panayia i Chrysorrogiatissą na pełny dzień we wzgórzach Pafos."
+      },
+      "vouni-panayia-commandaria": {
+        "title": "Vouni Panayia: porównaj roczniki",
+        "body": "Poproś o porównawczą degustację Commandarii — młodsze i starsze roczniki obok siebie. Posmakujesz, co czas robi z winem. Muzeum i film dodają kontekstu. Kościół w wiosce Panayia ma czczoną ikonę; miejscowi łączą krótki postój. Zimowe godziny 9–16. Połącz z mozaikami Pafos albo Polis na pełny dzień w Laonie."
+      },
+      "psilo-dendro-trout": {
+        "title": "Psilo Dendro: pstrąg z migdałami",
+        "body": "Ta nad rzeką. Zamów pstrąga z migdałami — psaróvrasto, duszonego w winie i ziołach. Właściciel zna każdego wędrowca. Rano Artemis albo Caledonia; skończ do trzynastej. Jedź do Platres. Kominek, górskie powietrze. Zestawienie miejscowych. Nie odpuszczaj."
+      },
+      "polis-harbour-trail": {
+        "title": "Polis: szlak zapracował na posiłek",
+        "body": "Rano Adonis albo Afrodyta. Skończ do trzynastej. Obiad w porcie w Polis. Tawerny podają to, co przywiozły łodzie. Winnica Vasilikon jest na pętli powrotnej. Dwa dni, jeśli możesz: szlak, jedzenie, sen, powtórka. Port zna wędrowców. Zamawiaj to, co świeże."
+      },
+      "the-farmyard-akamas": {
+        "title": "The Farmyard: rezerwuj wcześniej",
+        "body": "Top 5 listy Wiz 50 Best. Azjatycka kuchnia komfortowa w Kathikas. Rano Adonis albo Afrodyta, potem rezerwuj obiad. Rezerwacja dzień–dwa wcześniej; weekendy się zapełniają. Winnice Vasilikon i Sygkrasi są kilka minut stąd. Szlaki Akamas zapracowały na ten posiłek. Wiejska sceneria i jedzenie czynią z niego cel sam w sobie."
+      },
+      "kakopetria-psarovrasto": {
+        "title": "Kakopetria: psaróvrasto nad rzeką",
+        "body": "Pstrąg duszony w winie i ziołach. Tawerny ciągną się wzdłuż Kryos Potamos. Rano Caledonia albo pętla Kryos Potamos, obiad w Kakopetrii. Malowane kościoły UNESCO w Galacie są obok — zostaw czas na spacer. Kominek, górskie powietrze. Kakopetria zna wędrowców. Zamawia się psaróvrasto."
+      },
+      "zygi-sunday": {
+        "title": "Zygi: tu Cypryjczycy jadą na rybę",
+        "body": "Między Larnaką a Limassol. Bez ruin, bez koronek. Tylko ryba. Tawerny wzdłuż portu; podają to, co przywiozły łodzie. Niedziela to dzień miejscowych. Ośmiornica, dorada, kalmary. Tempo powolne. Kawa po jedzeniu obowiązkowa. Połącz z Choirokoitią albo Lefkarą. Turyści rzadko tu trafiają."
+      },
+      "kourion-bench-lunch": {
+        "title": "Kurion: ławka, potem Episkopi",
+        "body": "Na skraju teatru stoi ławka z widokiem na morze. Idź o szesnastej w grudniu — światło pada na ruiny. W dzień powszedni będzie tylko twoja. Potem wioska Episkopi na meze. Kurion rano, Episkopi w porze obiadu. Governor's Beach jest piętnaście minut stąd, jeśli wolisz rybę."
+      },
+      "latsi-quiet-alternative": {
+        "title": "Latsi: cichy port",
+        "body": "Bliżej początku szlaku Kąpielisk Afrodyty niż Polis. Prościej, ciszej. Rano Adonis albo Afrodyta, obiad w Latsi przed pętlą powrotną. Świeża ryba, widok na port. Jazda wzdłuż wybrzeża to część dnia. Mniej tłoczno niż w porcie Polis. Winnica Vasilikon po drodze do domu."
+      },
+      "troodos-square-warmth": {
+        "title": "Plac Troodos: ciepło po szlaku",
+        "body": "Po Artemis, Atalante albo Persefonie. Gorąca czekolada, kawa, kanapki. Możliwy śnieg — w środku przytulnie. Plac to węzeł Troodos. Niezbędne ciepło po wędrówce. Gdy spadnie śnieg, ośrodek narciarski na Olimpie jest obok. Prosto, bez ceregieli. Góry robią swoje; plac Troodos stawia cię na nogi."
+      },
+      "omodos-tavernas-blue-door": {
+        "title": "Omodos: kafenion z niebieskimi drzwiami",
+        "body": "Na placu w Omodos jest kafenion z niebieskimi drzwiami — ten, do którego chodzą winiarze. Zamów grecką kawę. Usiądź. Zivania jest tu lepsza niż w turystycznych miejscach. W zimowe poranki piec się pali. Po Tsiakkasie albo Artemis Omodos to naturalny przystanek na obiad. Meze, wino, rytm wioski. W weekendy rezerwuj."
+      },
+      "governors-beach-cliffs": {
+        "title": "Governor's Beach: białe klify, ciemny piasek",
+        "body": "Białe klify nad ciemnym wulkanicznym piaskiem. W łagodne grudniowe popołudnie posiedzisz na zewnątrz z kocem. Ryba jest świeża. Rano Kurion albo Kolossi, w porze obiadu ryba. Piętnaście minut od Kurionu. Winnica Zambartas to łatwy dodatek. Kontrast — białe klify, ciemny piasek — robi wrażenie w zimowym świetle."
+      },
+      "cape-greco-konnos": {
+        "title": "Cape Greco: szlak, potem Konnos",
+        "body": "Rano przejdź nadmorską ścieżkę Cape Greco. Zejdź do zatoki Konnos na przerwę — biały piasek, szmaragdowa woda. Zimą możesz mieć ją dla siebie. Weź coś od wiatru; klify kierunkują bryzę. Obiad w Protaras albo przy Fig Tree Bay. Szlak zapracował na plażę."
+      },
+      "tomb-of-kings-mosaics": {
+        "title": "Groby Królewskie: potem mozaiki",
+        "body": "Groby zwiedź rano; światło rzuca w komorach długie cienie. Licz godzinę. Potem mozaiki Pafos albo port na obiad. Groby Królewskie leżą na północ od portu; mozaiki i zamek są piętnaście minut stąd. Zima ma klimat — chłodno pod ziemią, łagodnie na górze. Połącz z wioską Kouklia dla wolniejszego tempa."
+      },
+      "palaipafos-kouklia": {
+        "title": "Palaipafos: kawa w Kouklii",
+        "body": "Sanktuarium Afrodyty. Zimowe ruiny, ciszej niż przy głównych mozaikach Pafos. Wioska Kouklia oplata stanowisko. Zatrzymaj się na kawę — ruiny za ramieniem. Groby Królewskie i port Pafos to krótka jazda. Tempo tu wolniejsze. Wioska się ciebie nie spodziewa. O to chodzi."
+      },
+      "solea-valley-trout": {
+        "title": "Dolina Solea: pstrąg przy ogniu",
+        "body": "Kakopetria, Galata, Kalopanagiotis. Pstrąg, meze, brzegi rzeki, kominki. Rano Mylikouri albo Kampos tou Livadiou, potem Kakopetria albo Galata na obiad. Psaróvrasto to klasyka. Dolina nagradza wolną jazdę. Zimą przytulnie. Agios Nikolaos tis Stegis jest na pętli."
+      },
+      "tzelefos-dawn": {
+        "title": "Tzelefos o świcie",
+        "body": "Most przed dziewiątą, zimą. Mgła nad Diarizos, mokry mech, nikogo więcej. Zaparkuj przy Agios Nikolaos i zejdź pieszo. Łuk w szarym świetle wart jest wczesnej pobudki. Jeśli nocujesz w Milii, robią śniadanie. Jeśli nie — wracaj przez las powoli."
+      },
+      "ineia-kafenion-intel": {
+        "title": "Kafenion w Inei: zapytaj o drogę",
+        "body": "Przed Gerakopetrą zatrzymaj się na placu w Inei. Zamów kawę. Zapytaj, czy szutrowa droga jest sucha. Kafenion wie. Wspinacze, którzy pomijają ten krok, czasem zawracają ubłoceni. W wiosce jest też ostatnia toaleta przed skałą. Drobiazgi się liczą."
+      },
+      "pomos-pier-snorkel": {
+        "title": "Molo w Pomos: snorkeling przy falochronie",
+        "body": "Gdy morze jest gładkie, ryby chowają się pod kamiennym molem. Buty do wody, maska, zimowa pianka albo gruba koszulka. Port pracuje — szanuj łodzie. W powszedni poranek możesz dzielić wodę z jednym rybakiem łatającym sieci. Po pływaniu kawa przy furgonetce na plaży."
+      },
+      "tochni-agrotourism-stay": {
+        "title": "Tochni: minimum dwie noce",
+        "body": "Jedna noc to postój. Przy dwóch nocach Tochni zaczyna działać. Gotuj w kuchni pensjonatu. Przejdź krótki szlak o zmierzchu. Za dnia Choirokoitia, wieczorem cisza wioski. Złoty kamień zapala się o szesnastej w grudniu."
+      },
+      "asinou-before-museum": {
+        "title": "Asinou przed muzeum",
+        "body": "Najpierw zobacz Panagię tis Asinou koło Nikitari — rok 1105, komneńskie freski w nawie. Potem Muzeum Cypryjskie w Nikozji. Muzealne plansze nabierają sensu, gdy stało się przy oryginale. W powszednie poranki możesz mieć kościół tylko dla siebie."
+      },
+      "vretsia-early-start": {
+        "title": "Vretsia: wyjdź wcześnie, powiedz komuś",
+        "body": "Opuszczona wioska, leśny szlak do mostu Roudias. Odludzie. Zimą wychodź do dziewiątej — światła jest mało. Powiedz komuś, dokąd idziesz. W połowie ruiny młyna wodnego. Na końcu most. Warto. To nie jest niedzielny spacer."
+      },
+      "green-bay-turtle-rock": {
+        "title": "Green Bay: żółwie po wschodniej stronie",
+        "body": "Zatoka Prasinada. Nurkowanie z brzegu albo snorkeling. Skała z rybami jest pośrodku zatoki; żółwie często krążą nad trawą morską po wschodniej stronie. Zimowa widoczność bije letnią. Pianka 5 mm. Rano, zanim zerwie się wiatr."
+      },
+      "episkopi-winter-sun": {
+        "title": "Skała Episkopi: sesja w zimowym słońcu",
+        "body": "Gdy Gerakopetra zamarza, południowa ściana Episkopi łapie styczniowe słońce. Zaczynaj o jedenastej. Dolne przewieszenia schną po deszczu szybciej. Winnica Zambartas po drodze w dół. Powszedni sekret wspinaczy z Pafos."
+      },
+      "kato-platres-trout": {
+        "title": "Kato Platres: rzeka po szlaku",
+        "body": "Rano Artemis albo Caledonia z Platres. Omiń tłumy na placu. Zjedz w Psilo Dendro w Kato Platres — pstrąg nad rzeką, ogień w kominku. Szum Kryos Potamos. Zestawienie miejscowych."
+      },
+      "amphorae-history-dive": {
+        "title": "Jaskinie Amfor: patrz, nie dotykaj",
+        "body": "Łodzią z portu w Pafos. Rzymskie dzbany na stropie jaskini, na dwunastu metrach. Zimowa widoczność często bije letnią. Amfory są chronione — patrz, nie dotykaj. Zapytaj o żółwie na pętli Moulia. Od grudnia do lutego pianka 5 mm."
+      },
+      "amiantos-geopark-first": {
+        "title": "Amiantos: muzeum przed szlakami",
+        "body": "Najpierw obejrzyj film dokumentalny Geoparku. Potem ogród geologiczny — skały w porządku stratygraficznym. Potem szlaki w odradzającą się sosnę. Budynek szkoły kopalni jest sednem. 3 €. Zimą czasem śnieg. Uczciwe dziedzictwo przemysłowe."
+      },
+      "silikou-valley-morning": {
+        "title": "Dolina Silikou: mgła, potem słońce",
+        "body": "Wjedź, gdy mgła wypełnia dolinę Commandarii. Odczekaj dwadzieścia minut w kawiarni przy muzeum. Tarasy się wyłaniają. Idź w stronę Doros. Winnica Savvas, jeśli zadzwonisz wcześniej. Omodos może poczekać."
+      },
+      "lagoudera-araka-key": {
+        "title": "Lagoudera: klucz do kościoła Araka",
+        "body": "Panagia tou Araka — freski z 1192 roku, jedne z najświetniejszych dzieł komneńskich na wyspie. Klucz w wiosce. Krótkie strome podejście. Zobacz przed obiadem w Kakopetrii. Ubierz się skromnie. Zimowe chmury w dolinie; kościół często ponad nimi, w słońcu."
+      },
+      "kalavasos-tenta-first": {
+        "title": "Kalavasos: Tenta przed Lefkarą",
+        "body": "Neolityczna Tenta — siedem tysięcy lat, kopulaste budowle, otwarta zimą. Zobacz ją przed koronkami Lefkary. Kontrast ma znaczenie. Potem ryba w Zygi na wybrzeżu. Łagodny korytarz między Larnaką a Limassol."
+      },
+      "mackenzie-calm-mornings": {
+        "title": "Mackenzie: zanim zerwie się wiatr",
+        "body": "Powszednie poranki przed dziesiątą — spokojna zatoka, czysta woda do snorkelingu albo SUP-a. Szkoły kite'a zjawiają się, gdy wiatr rośnie. Najpierw molo Finikoudes, jeśli chcesz dłuższego spaceru; Mackenzie na wiosłowanie. Łodzie na wrak Zenobii odpływają z mariny, nie stąd."
+      },
+      "larnaca-cycle-tochni-start": {
+        "title": "Dolina Pomarańczy: start w Tochni",
+        "body": "Zaparkuj przy placu w Tochni, tocz się ku Kalavasos i w dół do Zygi na obiad. Odwróć pętlę, jeśli wiatr wieje od morza. Czterdzieści kilometrów, przeważnie cicho. Ruiny Tenty, jeśli masz pół godziny zapasu."
+      },
+      "eptagoneia-kafenion-beta": {
+        "title": "Eptagoneia: zapytaj w kafenionie",
+        "body": "Miejscowi wiedzą, które wapienne bloki schną po deszczu pierwsze — te wschodnie przy drodze na Kellaki. Najpierw kawa. Potem pół dnia na skale między Klirou a Arakapas, bez jazdy do Laony."
+      },
+      "athalassa-botanical-first": {
+        "title": "Athalassa: ogród, potem pętla jeziora",
+        "body": "Darmowy ogród botaniczny przy głównej bramie — najpierw tam. Potem szlak wokół jeziora przeciwnie do wskazówek zegara. Większość kończy przy kawiarni. Ty dostajesz godzinę cichej sosny, zanim ruch Nikozji zawoła cię z powrotem."
+      }
     }
   }
 }
