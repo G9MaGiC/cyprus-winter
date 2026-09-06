@@ -35,6 +35,12 @@ export type CyclingRoute = {
   winterPick?: boolean;
 };
 
+/** Client-safe (no data import): renders "16 km" / "131.2 km". */
+export function formatRouteDistance(km: number | null): string | null {
+  if (km == null) return null;
+  return km % 1 === 0 ? `${km} km` : `${km.toFixed(1)} km`;
+}
+
 export const VC_CYCLING_INDEX_URL =
   "https://www.visitcyprus.com/discover-cyprus/routes/cycling-routes-routes/" as const;
 

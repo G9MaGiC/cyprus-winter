@@ -4,19 +4,28 @@ import { useMemo, useState } from "react";
 import AppLink from "@/components/AppLink";
 import ClientPillFilter from "@/components/ClientPillFilter";
 import {
-  filterNatureExcursions,
   NATURE_EXCURSION_REGIONS,
   type NatureExcursion,
   type NatureExcursionRegion,
-} from "@/lib/nature-excursions";
+} from "@/lib/nature-excursion-types";
 import { CARD, CTA, HOME, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
-export default function NatureExcursionsSection() {
+/** The server page localizes the list (data-layer overlay) and passes it
+    down — filtering happens over the prop, so the EN base data module stays
+    out of the client bundle. */
+export default function NatureExcursionsSection({
+  excursions,
+}: {
+  excursions: NatureExcursion[];
+}) {
   const t = useTranslations("nature.page.excursions");
   const [region, setRegion] = useState<NatureExcursionRegion | null>(null);
 
-  const filtered = useMemo(() => filterNatureExcursions({ region }), [region]);
+  const filtered = useMemo(
+    () => (region ? excursions.filter((e) => e.region === region) : excursions),
+    [excursions, region]
+  );
 
   return (
     <section aria-labelledby="nature-excursions" className="mt-12 sm:mt-16">

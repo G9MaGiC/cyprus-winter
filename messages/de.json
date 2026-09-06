@@ -5582,6 +5582,141 @@
           "2": "Linksverkehr. Notruf 112 · Touristeninfo 1460."
         }
       }
+    },
+    "wineRoutes": {
+      "krasochoria": {
+        "title": "Krasochoria",
+        "description": "Die Weindörfer von Limassol — Omodos, Koilani, Louvaras, Pera Pedi, Pelendri. Bergblicke, autochthone Sorten, süße Weine im Commandaria-Stil. Nov.–März vorher anrufen.",
+        "winterTip": "Die meisten Keller öffnen im Winter nur am Wochenende. Rufen Sie einen Tag vorher an — oft schenkt dann der Winzer selbst aus."
+      },
+      "laona": {
+        "title": "Laona",
+        "description": "Die Hügeldörfer von Paphos — Panayia, Lemona, Stroumbi, Statos. Gemütliche Verkostungen, alte Reben, winterliches Kaminfeuer. Nicht zu verwechseln mit der UNESCO-Zone der Commandaria.",
+        "winterTip": "Winterbesucher bekommen Verkostungen am Kamin und Führungen ohne Eile. Vouni Panayia und Tsangarides sind die Ankerstationen."
+      },
+      "akamas": {
+        "title": "Akamas",
+        "description": "Kathikas und die Akamas-Halbinsel. Trockene Weiße und Rosés mit Meerblick. Kombinieren Sie mit dem Adonis- oder Aphrodite-Weg und den Bädern der Aphrodite.",
+        "winterTip": "Verbinden Sie eine Morgenwanderung auf dem Aphrodite-Weg mit einer Nachmittagsverkostung in Kathikas — zwanzig Minuten auseinander."
+      },
+      "commandaria": {
+        "title": "Commandaria",
+        "description": "Zyperns ältester Wein — süß, sonnengetrocknet. Die vierzehn UNESCO-genannten Dörfer: Silikou, Doros, Monagri, Louvaras, Lania, Agios Mamas und weitere. Nicht Omodos oder Koilani (Krasochoria, aber außerhalb der Zone).",
+        "winterTip": "Commandaria-Erzeuger empfangen Spontanbesucher im Winter bereitwilliger. Monagri und Lania haben die zugänglichsten Keller."
+      }
+    },
+    "natureExcursions": {
+      "akrotiri-salt-lake": {
+        "description": "Zyperns größtes Binnenfeuchtgebiet — Flamingos, Kraniche und Greifvögel Nov.–März, wenn Winterregen den See füllt. Schilfgürtel und flaches Wasser; im Sommer oft trockener.",
+        "winterNote": "Höhepunkt des Vogelzugs; Fernglas und leise Schuhe mitnehmen."
+      },
+      "larnaca-salt-lake": {
+        "description": "Flamingos und die Hala-Sultan-Tekke am Rand von Larnaka. Flache Wege; einer der klassischen Winter-Beobachtungspunkte der Insel.",
+        "winterNote": "Kombinieren Sie den Besuch mit dem Salzsee-Rundweg in unserem Trails-Bereich."
+      },
+      "athalassa-visitor-centre": {
+        "description": "Kiefern und Macchia am Südostrand von Nikosia — Besucherzentrum, botanischer Garten und ein 16 km langer Radweg durch den grünen Gürtel der Hauptstadt.",
+        "winterNote": "Schnelle Ausweichoption, wenn das Troodos vereist ist; nach Regen auf den Hauptwegen bleiben."
+      },
+      "cape-gkreko-park": {
+        "description": "Meeresklippen, Kiefernbuschwerk und Küstenpfade an der Ostspitze Zyperns. Wintersonne ohne die Troodos-Kälte.",
+        "winterNote": "Kombinieren Sie den Park mit unserem Cape-Greco-Weg für einen ganzen Küstenmorgen."
+      },
+      "cedar-valley": {
+        "description": "Endemische Zypern-Zedern in einem Troodos-Tal — Zufahrt über eine ruhige Waldstraße; Jan.–Feb. ist auf der Anfahrt Schnee möglich.",
+        "winterNote": "Prüfen Sie vor der Fahrt den Straßenzustand; an klaren Wintertagen lohnt der Umweg."
+      },
+      "troodos-botanic-garden": {
+        "description": "Alpine und endemische Pflanzen am Troodos-Platz — klein, fokussiert und innen warm, wenn es draußen kalt ist.",
+        "winterNote": "Die Öffnungszeiten des Besucherzentrums sind außerhalb der Saison kürzer; kombinieren Sie mit einem tiefer gelegenen Weg, falls Schnee die Straßen sperrt."
+      },
+      "troodos-environmental-centre": {
+        "description": "Zentrum der Forstbehörde zum Troodos-Geopark — Geologie, Bergbaugeschichte und winterlicher Bergkontext vor der Wanderung."
+      },
+      "akamas-geology-centre": {
+        "description": "Zentrum in Pano Arodes am Rand des Akamas — Fossilien, Geologie und Hintergrund zu Wegen und Küste der Halbinsel."
+      },
+      "akamas-avifauna-kathikas": {
+        "description": "Regionalzentrum in Kathikas für die Vögel und endemischen Pflanzen des Akamas — starten Sie hier vor dem Adonis- oder Aphrodite-Weg."
+      },
+      "akrotiri-env-centre": {
+        "description": "Bildungszentrum an den Akrotiri-Feuchtgebieten — Ausstellungen zur Ökologie des Salzsees und zu Zugvögeln."
+      },
+      "cape-gkreko-env-centre": {
+        "description": "Ausstellungen zur Küstenökologie am Kap Gkreko — nützlicher Hintergrund vor Klippenpfaden und Meereshöhlen."
+      },
+      "episkopi-env-centre": {
+        "description": "Umweltzentrum des Bezirks Paphos oberhalb von Episkopi — Blick ins Ezousa-Tal und Erläuterungen zu den lokalen Lebensräumen."
+      }
+    },
+    "cyclingRoutes": {
+      "athalassa-forest-park": {
+        "description": "Sechzehn Kilometer asphaltierter Weg im grünen Gürtel von Nikosia. Einheimische fahren ihn das ganze Jahr; Winterregen hält die Kiefern frisch und den Parkplatz wochentags leer.",
+        "winterNote": "Die einfachste Winterrunde der Hauptstadt, wenn das Troodos eingeschneit ist."
+      },
+      "cy-rc06-divine-coast": {
+        "description": "Vom Governor's Beach zur Pissouri-Bucht und zurück entlang der Küste von Limassol — Kourion-Theater, Marina und lange flache Kilometer zwischen den Anstiegen.",
+        "winterNote": "Milder Küstenwinter; starten Sie früh, damit das Tageslicht für die volle Runde reicht."
+      },
+      "cy-rc04-heart-of-koumandaria": {
+        "description": "Commandaria-Weindörfer und wellige Krasochoria-Straßen. Steindörfer, Rebterrassen und Klosterstopps zwischen den Hügeln von Limassol.",
+        "winterNote": "Kahle Reben und goldenes Licht — eine der schönsten Winter-Rennradrunden der Insel."
+      },
+      "cy-rc15-sea-of-green-coast": {
+        "description": "Tochni, die UNESCO-Stätte Choirokoitia, Vavla und die Ausläufer von Limassol — Dorfsträßchen und Anstiege durchs Orangental ohne die Härte des Troodos.",
+        "winterNote": "Wochentags leere Straßen; kombinieren Sie die Tour mit einem Fisch-Mittagessen in Zygi."
+      },
+      "cy-rc19-kornos-lefkara": {
+        "description": "Spitzenklöppler-Dörfer und Bergblicke oberhalb von Larnaka. Lefkara-Silber und Lefkara-Spitze; im Januar kühlere Luft als an der Küste."
+      },
+      "pafos-1-castle-loop": {
+        "description": "Orangenhaine, die Felskirche von Episkopi und Blicke ins Ezousa-Tal. Anstieg zu Troodos-Blicken; überwiegend bergab zurück zum Hafen von Paphos.",
+        "winterNote": "Die Küste bleibt mild; der Anstieg im Tal kann kühl sein — Schichten für oben einpacken."
+      },
+      "pafos-3-akamas-lara": {
+        "description": "Der Rand des Akamas: Agios Georgios, Lara-Bucht, Fontana Amorosa und die Bäder der Aphrodite. Schotter und Asphalt; spektakuläre Winterküste."
+      },
+      "polis-argaka-loop": {
+        "description": "Die Küstenstraße der Chrysochou-Bucht durch den Hafen von Polis und das Dorf Argaka. Ruhige Winterkilometer an der Nordwestküste der Insel."
+      },
+      "main-11-troodos-pafos": {
+        "description": "Bergabfahrt vom Troodos Richtung Paphos — Kiefernwald, Serpentinen und lange Abfahrt zur Küste, wenn die Bedingungen es zulassen.",
+        "winterNote": "Prüfen Sie Schnee und Eis auf den Gipfelstraßen des Troodos, bevor Sie sich festlegen."
+      },
+      "main-3-solea-valley": {
+        "description": "Von der Hauptstadt ins Solea-Tal und in die Troodos-Ausläufer. Lange Tagestour durch Kakopetria, Kiefernwald und Bergdörfer.",
+        "winterNote": "Volles Tageslicht nötig; das obere Solea kann kalt und gelegentlich vereist sein."
+      },
+      "lemesos-1-amathous": {
+        "description": "Kurze Küstenrunde von Limassol zur archäologischen Stätte Amathus. Flach, asphaltiert, ideal für eine Winter-Morgenrunde."
+      },
+      "lemesos-3-fasouri-pachna": {
+        "description": "Rundtour durch die Vororte von Limassol ins Rebland bei Pachna. Wellige Hügel; ruhiger als im Sommer."
+      },
+      "agia-napa-xylofagou": {
+        "description": "Ostküstenroute von Agia Napa nach Xylofagou und ins Hinterland des Bezirks Famagusta. Flache Winterkilometer."
+      },
+      "eurovelo-8": {
+        "description": "Der zyprische Abschnitt des europäischen Mittelmeer-Radkorridors. Küstenverbindungen zwischen den größeren Städten."
+      },
+      "cy-rc08-ancient-vasilikos": {
+        "description": "Die Hügel des Bezirks Larnaka durch die Dörfer der Vasilikos-Halbinsel. Ländliche Sträßchen über der Südostküste."
+      },
+      "amathus-mtb-basic": {
+        "description": "Einsteiger-Geländerunde bei der antiken Stadt Amathus. Waldwege und sanfte Anstiege über der Küste von Limassol."
+      },
+      "alaminos-mtb-moderate": {
+        "description": "Singletrails und Forstwege in den Ausläufern von Larnaka. Mäßig technisches Fahren; nach Regen Wintermatsch."
+      },
+      "alaminos-mtb-demanding": {
+        "description": "Die längere, steilere Alaminos-Variante für erfahrene Mountainbiker. Nach Stürmen den Wegzustand prüfen."
+      },
+      "lefkosia-3-asinou": {
+        "description": "Tour im Bezirk Nikosia Richtung Adelfoi-Wald und Asinou-Gegend. Kiefernduftende Anstiege ohne den Troodos-Gipfel."
+      },
+      "cy-rc18-traditional-villages": {
+        "description": "Runde durchs Hinterland von Limassol, durch Steindörfer und Sträßchen im Weinland. Kultur und Anstiege in einer Tour."
+      }
     }
   }
 }

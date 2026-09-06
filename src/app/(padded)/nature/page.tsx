@@ -6,6 +6,7 @@ import NatureFooter from "@/app/(padded)/nature/NatureFooter";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { natureExcursions } from "@/data/nature-excursions";
+import { localizeNatureExcursions } from "@/lib/nature-excursion-content";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { SITE_URL } from "@/lib/site-url";
 import { LAYOUT, CTA } from "@/lib/design-tokens";
@@ -38,6 +39,9 @@ export default async function NaturePage() {
     getTranslations("common"),
     getTranslations("nature.page"),
   ]);
+  // Excursion prose localizes server-side and crosses the client boundary as
+  // a prop (data-layer arc); the JSON-LD below keeps reading the EN base.
+  const localizedExcursions = await localizeNatureExcursions(natureExcursions);
 
   const schema = {
     "@context": "https://schema.org",
@@ -77,7 +81,7 @@ export default async function NaturePage() {
         </AppLink>
       </PageHeader>
 
-      <NatureExcursionsSection />
+      <NatureExcursionsSection excursions={localizedExcursions} />
       <NatureCrosslinksStrip />
 
       <span id="nature-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />

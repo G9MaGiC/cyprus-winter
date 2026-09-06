@@ -4,21 +4,24 @@ import { useMemo, useState } from "react";
 import AppLink from "@/components/AppLink";
 import {
   CYCLING_ROUTE_REGIONS,
-  filterCyclingRoutes,
   formatRouteDistance,
-} from "@/lib/cycling-routes";
-import type { CyclingRoute, CyclingRouteRegion } from "@/lib/cycling-route-types";
+  type CyclingRoute,
+  type CyclingRouteRegion,
+} from "@/lib/cycling-route-types";
 import ClientPillFilter from "@/components/ClientPillFilter";
 import { CARD, CTA, SECTION, TYPE } from "@/lib/design-tokens";
 import { useTranslations } from "next-intl";
 
-export default function CyclingOfficialRoutes() {
+/** The server page localizes the list (data-layer overlay) and passes it
+    down — filtering happens over the prop, so the EN base data module stays
+    out of the client bundle. */
+export default function CyclingOfficialRoutes({ routes }: { routes: CyclingRoute[] }) {
   const t = useTranslations("cycling.page.officialRoutes");
   const [region, setRegion] = useState<CyclingRouteRegion | null>(null);
 
   const filtered = useMemo(
-    () => filterCyclingRoutes({ region, bikeType: null }),
-    [region]
+    () => (region ? routes.filter((r) => r.region === region) : routes),
+    [routes, region]
   );
 
   return (

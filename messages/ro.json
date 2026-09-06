@@ -5582,6 +5582,141 @@
           "2": "Se conduce pe stânga. Urgențe 112 · Informații turistice 1460."
         }
       }
+    },
+    "wineRoutes": {
+      "krasochoria": {
+        "title": "Krasochoria",
+        "description": "Satele viticole din Limassol — Omodos, Koilani, Louvaras, Pera Pedi, Pelendri. Priveliști montane, soiuri autohtone, vinuri dulci în stil Commandaria. Noiembrie–martie sună înainte.",
+        "winterTip": "Majoritatea cramelor deschid iarna doar în weekend. Sună cu o zi înainte — de multe ori toarnă chiar vinificatorul."
+      },
+      "laona": {
+        "title": "Laona",
+        "description": "Satele de deal din Paphos — Panayia, Lemona, Stroumbi, Statos. Degustări tihnite, vii bătrâne, foc de șemineu iarna. Diferită de zona UNESCO a Commandariei.",
+        "winterTip": "Iarna primești degustări lângă șemineu și tururi fără grabă. Vouni Panayia și Tsangarides sunt opririle de bază."
+      },
+      "akamas": {
+        "title": "Akamas",
+        "description": "Kathikas și peninsula Akamas. Vinuri albe seci și rosé cu vedere la mare. Combină cu traseul Adonis sau Afrodita și Băile Afroditei.",
+        "winterTip": "Îmbină o drumeție de dimineață pe traseul Afroditei cu o degustare de după-amiază în Kathikas — la douăzeci de minute distanță."
+      },
+      "commandaria": {
+        "title": "Commandaria",
+        "description": "Cel mai vechi vin al Ciprului — dulce, din struguri uscați la soare. Cele paisprezece sate numite de UNESCO: Silikou, Doros, Monagri, Louvaras, Lania, Agios Mamas și altele. Nu Omodos sau Koilani (Krasochoria, dar în afara zonei).",
+        "winterTip": "Producătorii de Commandaria primesc iarna mai ușor vizite neanunțate. Monagri și Lania au cele mai accesibile crame."
+      }
+    },
+    "natureExcursions": {
+      "akrotiri-salt-lake": {
+        "description": "Cea mai mare zonă umedă interioară a Ciprului — flamingo, cocori și răpitoare noiembrie–martie, când ploile de iarnă umplu lacul. Stufăriș și apă mică; vara adesea seacă.",
+        "winterNote": "Vârful migrației păsărilor; ia binoclul și încălțăminte silențioasă."
+      },
+      "larnaca-salt-lake": {
+        "description": "Flamingo și Hala Sultan Tekke la marginea Larnacăi. Poteci plate; unul dintre punctele emblematice de birdwatching de iarnă ale insulei.",
+        "winterNote": "Combină cu bucla lacului sărat din secțiunea noastră Trasee."
+      },
+      "athalassa-visitor-centre": {
+        "description": "Pini și tufăriș la marginea de sud-est a Nicosiei — centru de vizitare, grădină botanică și o pistă de biciclete de 16 km prin centura verde a capitalei.",
+        "winterNote": "Evadare rapidă când Troodos e înghețat; după ploaie rămâi pe drumurile principale."
+      },
+      "cape-gkreko-park": {
+        "description": "Faleze, pini pitici și poteci de coastă la vârful estic al Ciprului. Soare de iarnă fără frigul din Troodos.",
+        "winterNote": "Combină cu traseul nostru Cape Greco pentru o dimineață întreagă pe coastă."
+      },
+      "cedar-valley": {
+        "description": "Cedrii endemici ai Ciprului într-o vale din Troodos — acces pe un drum forestier liniștit; ianuarie–februarie posibilă zăpadă pe drum.",
+        "winterNote": "Verifică starea drumului înainte de plecare; în zilele senine de iarnă merită ocolul."
+      },
+      "troodos-botanic-garden": {
+        "description": "Plante alpine și endemice la Piața Troodos — mică, la obiect și caldă înăuntru când afară e frig.",
+        "winterNote": "Programul centrului se scurtează în extrasezon; combină cu un traseu de altitudine mai mică dacă zăpada închide drumurile."
+      },
+      "troodos-environmental-centre": {
+        "description": "Centrul Departamentului Silvic din Geoparcul Troodos — geologie, istoria mineritului și contextul muntelui iarna, înainte de traseu."
+      },
+      "akamas-geology-centre": {
+        "description": "Centru în Pano Arodes, la marginea Akamasului — fosile, geologie și context pentru traseele și coasta peninsulei."
+      },
+      "akamas-avifauna-kathikas": {
+        "description": "Centrul regional din Kathikas pentru păsările și plantele endemice din Akamas — începe de aici înainte de traseele Adonis sau Afrodita."
+      },
+      "akrotiri-env-centre": {
+        "description": "Centru educațional lângă zonele umede Akrotiri — expoziții despre ecologia lacului sărat și păsările migratoare."
+      },
+      "cape-gkreko-env-centre": {
+        "description": "Expoziții de ecologie costieră la Cape Gkreko — context util înainte de potecile de pe faleză și peșterile marine."
+      },
+      "episkopi-env-centre": {
+        "description": "Centrul de mediu al districtului Paphos, deasupra satului Episkopi — priveliști spre valea Ezousa și interpretarea habitatelor locale."
+      }
+    },
+    "cyclingRoutes": {
+      "athalassa-forest-park": {
+        "description": "Șaisprezece kilometri de pistă asfaltată în centura verde a Nicosiei. Localnicii o parcurg tot anul; ploaia de iarnă ține pinii proaspeți și parcarea liberă în timpul săptămânii.",
+        "winterNote": "Cea mai ușoară buclă de iarnă a capitalei când Troodos e sub zăpadă."
+      },
+      "cy-rc06-divine-coast": {
+        "description": "De la Governor's Beach la golful Pissouri și înapoi de-a lungul coastei Limassol — teatrul Kourion, marina și kilometri lungi de plat între urcușuri.",
+        "winterNote": "Iarnă blândă pe coastă; pleacă devreme ca să prinzi lumina pentru bucla întreagă."
+      },
+      "cy-rc04-heart-of-koumandaria": {
+        "description": "Satele de vin ale Commandariei și drumurile ondulate din Krasochoria. Cătune de piatră, terase de viță și opriri la mănăstiri printre dealurile Limassolului.",
+        "winterNote": "Vii desfrunzite și lumină aurie — una dintre cele mai frumoase ture de șosea de iarnă de pe insulă."
+      },
+      "cy-rc15-sea-of-green-coast": {
+        "description": "Tochni, situl UNESCO Choirokoitia, Vavla și dealurile joase ale Limassolului — ulițe de sat și urcușuri prin valea portocalilor, fără asprimea din Troodos.",
+        "winterNote": "Drumuri goale în timpul săptămânii; combină cu un prânz cu pește la Zygi."
+      },
+      "cy-rc19-kornos-lefkara": {
+        "description": "Satele dantelei și priveliști montane deasupra Larnacăi. Argint și dantelă de Lefkara; în ianuarie aer mai răcoros decât pe coastă."
+      },
+      "pafos-1-castle-loop": {
+        "description": "Livezi de portocali, biserica din stâncă de la Episkopi și priveliști spre valea Ezousa. Urcuș cu vederi spre Troodos; întoarcere mai mult la vale spre portul Pafos.",
+        "winterNote": "Coasta rămâne blândă; urcușul prin vale poate fi răcoros — ia un strat pentru vârf."
+      },
+      "pafos-3-akamas-lara": {
+        "description": "Marginea Akamasului: Agios Georgios, golful Lara, Fontana Amorosa și Băile Afroditei. Pietriș și asfalt; coastă de iarnă spectaculoasă."
+      },
+      "polis-argaka-loop": {
+        "description": "Drumul de coastă al golfului Chrysochou, prin portul Polis și satul Argaka. Kilometri liniștiți de iarnă pe țărmul de nord-vest al insulei."
+      },
+      "main-11-troodos-pafos": {
+        "description": "Coborâre montană din Troodos spre Pafos — pădure de pini, serpentine și vale lungă până la coastă, când condițiile permit.",
+        "winterNote": "Verifică zăpada și gheața pe drumurile de creastă din Troodos înainte să pornești."
+      },
+      "main-3-solea-valley": {
+        "description": "Din capitală spre valea Solea și poalele Troodosului. Tură lungă de o zi prin Kakopetria, pădure de pini și sate de munte.",
+        "winterNote": "E nevoie de toată lumina zilei; Solea de sus poate fi rece și pe alocuri înghețată."
+      },
+      "lemesos-1-amathous": {
+        "description": "Buclă scurtă de coastă din Limassol până la situl arheologic Amathus. Plată, asfaltată, ideală pentru o tură de dimineață iarna."
+      },
+      "lemesos-3-fasouri-pachna": {
+        "description": "Tură circulară prin suburbiile Limassolului spre ținutul viilor de la Pachna. Dealuri ondulate; mai liniște decât vara."
+      },
+      "agia-napa-xylofagou": {
+        "description": "Traseu pe coasta de est care leagă Agia Napa de Xylofagou și interiorul districtului Famagusta. Kilometri plați de iarnă."
+      },
+      "eurovelo-8": {
+        "description": "Secțiunea cipriotă a coridorului ciclist mediteranean european. Legături de coastă între orașele mari."
+      },
+      "cy-rc08-ancient-vasilikos": {
+        "description": "Dealurile districtului Larnaca prin satele peninsulei Vasilikos. Ulițe rurale deasupra coastei de sud-est."
+      },
+      "amathus-mtb-basic": {
+        "description": "Buclă off-road de inițiere lângă anticul Amathus. Drumuri forestiere și urcușuri blânde deasupra coastei Limassol."
+      },
+      "alaminos-mtb-moderate": {
+        "description": "Poteci înguste și drumuri forestiere pe dealurile Larnacăi. Pedalare moderat tehnică; noroi de iarnă după ploaie."
+      },
+      "alaminos-mtb-demanding": {
+        "description": "Varianta Alaminos mai lungă și mai abruptă, pentru bicicliști montani experimentați. Verifică starea potecilor după furtuni."
+      },
+      "lefkosia-3-asinou": {
+        "description": "Tură în districtul Nicosia spre pădurea Adelfoi și zona Asinou. Urcușuri cu parfum de pin, fără vârful Troodos."
+      },
+      "cy-rc18-traditional-villages": {
+        "description": "Buclă prin interiorul Limassolului, prin sate de piatră și ulițe din ținutul vinului. Cultură și urcuș într-o singură tură."
+      }
     }
   }
 }

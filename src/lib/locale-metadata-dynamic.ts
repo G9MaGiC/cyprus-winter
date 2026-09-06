@@ -8,6 +8,7 @@ import { REGION_CONFIGS } from "@/data/regions";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { weatherByMonth } from "@/data/weather";
 import { localizeWeatherRow } from "@/lib/weather-content";
+import { localizeWineRoute } from "@/lib/wine-route-content";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
@@ -172,8 +173,11 @@ export async function regionSlugMetadata(slug: string, locale: string): Promise<
 }
 
 export async function wineRouteSlugMetadata(slug: string, locale: string): Promise<Metadata> {
-  const route = WINE_ROUTES.find((r) => r.slug === slug);
-  if (!route) notFound();
+  const baseRoute = WINE_ROUTES.find((r) => r.slug === slug);
+  if (!baseRoute) notFound();
+  // Localize the title before it splices into the localized ICU frames —
+  // route names are Greek place-words that take native forms on el/he.
+  const route = await localizeWineRoute(baseRoute, locale);
   // Combined labels ("Laona–Akamas") count on both routes (AUD-71); localized
   // via the same keys the page uses instead of hardcoded EN.
   const count = wineriesForRoute(slug).length;

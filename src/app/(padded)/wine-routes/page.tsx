@@ -4,6 +4,7 @@ import AppLink from "@/components/AppLink";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { WINE_ROUTES } from "@/data/wine-routes";
+import { localizeWineRoutes } from "@/lib/wine-route-content";
 import { HOME, LAYOUT, CTA, TYPE, SECTION, CARD } from "@/lib/design-tokens";
 import PageHeader from "@/components/PageHeader";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -40,6 +41,9 @@ export default async function WineRoutesHubPage() {
     getTranslations("wineRoutes.hub"),
     getTranslations("discover"),
   ]);
+  // Data-layer overlay for the route cards; the JSON-LD below keeps reading
+  // the EN base per the register contract.
+  const localizedRoutes = await localizeWineRoutes(WINE_ROUTES);
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -88,7 +92,7 @@ export default async function WineRoutesHubPage() {
       </PageHeader>
 
       <ul className={`grid sm:grid-cols-2 ${HOME.gridGap} mb-12 sm:mb-16`}>
-        {WINE_ROUTES.map((route) => (
+        {localizedRoutes.map((route) => (
           <li key={route.slug}>
             <AppLink
               href={`/wine-routes/${route.slug}`}
