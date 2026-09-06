@@ -186,6 +186,14 @@ test.describe("Visual QA gate", () => {
         linkName: "גילוי",
         menuButton: "פתחו תפריט",
       },
+      {
+        // The tallest RTL hub (78 gem cards, AUD-68 facets) — a long flat
+        // list is exactly where a sideways wobble hides from spot checks.
+        path: "/he/secrets",
+        navName: "ניווט ראשי",
+        linkName: "גילוי",
+        menuButton: "פתחו תפריט",
+      },
     ];
 
     for (const { path, navName, linkName, menuButton } of rtlRoutes) {

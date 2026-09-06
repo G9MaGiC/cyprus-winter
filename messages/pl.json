@@ -5493,6 +5493,32 @@
         "title": "Athalassa: ogród, potem pętla jeziora",
         "body": "Darmowy ogród botaniczny przy głównej bramie — najpierw tam. Potem szlak wokół jeziora przeciwnie do wskazówek zegara. Większość kończy przy kawiarni. Ty dostajesz godzinę cichej sosny, zanim ruch Nikozji zawoła cię z powrotem."
       }
+    },
+    "weather": {
+      "november": {
+        "coastDesc": "Wciąż łagodnie. Lekka kurtka na wieczory. Plaże puste, ruiny w najlepszym wydaniu.",
+        "troodosDesc": "Chłodne poranki. Szlaki czyste. Sezon narciarski jeszcze nie ruszył; najlepszy czas na wędrówki."
+      },
+      "december": {
+        "coastDesc": "Łagodne dni, chłodne noce. Ubierz się warstwowo. Jarmarki świąteczne i grzane wino.",
+        "troodosDesc": "Od połowy miesiąca wysoko możliwy śnieg. Ośrodek narciarski zwykle otwiera się, gdy śnieg pozwoli — sprawdź przed wyjazdem."
+      },
+      "january": {
+        "coastDesc": "Najchłodniejszy miesiąc. Wciąż słonecznie. Ruiny i wioski; zabierz coś ciepłego.",
+        "troodosDesc": "Szczyt sezonu narciarskiego na Olimpie, póki śnieg się trzyma. Niższe szlaki po przymrozkach bywają oblodzone — zarezerwuj degustacje; w winiarniach jest ciepło."
+      },
+      "february": {
+        "coastDesc": "Podobnie jak w styczniu. Migdałowce kwitną od końca lutego. Dłuższe dni.",
+        "troodosDesc": "Narty często trzymają do wczesnej wiosny; niższe partie topnieją pierwsze. Krokusy i cyklameny."
+      },
+      "march": {
+        "coastDesc": "Wiosenne światło. Dzikie kwiaty w głębi lądu. Morze wciąż zimne; spacery po plaży jak najbardziej.",
+        "troodosDesc": "Najlepszy miesiąc na wędrówki. Śnieg topnieje, szlaki się otwierają. Szlak Persefony kwitnie."
+      },
+      "april": {
+        "coastDesc": "Ciepło. Niektórzy pływają. Termin Wielkanocy się zmienia; wioski budzą się do życia.",
+        "troodosDesc": "Góry zielone. Wszystkie szlaki otwarte. Wiosenna przejrzystość."
+      }
     }
   }
 }

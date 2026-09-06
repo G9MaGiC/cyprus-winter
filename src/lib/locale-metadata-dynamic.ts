@@ -7,6 +7,7 @@ import { guides } from "@/data/guides";
 import { REGION_CONFIGS } from "@/data/regions";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { weatherByMonth } from "@/data/weather";
+import { localizeWeatherRow } from "@/lib/weather-content";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
@@ -190,8 +191,10 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
   if (!MONTH_SLUGS.includes(slug)) notFound();
 
   const monthName = SLUG_TO_WEATHER[slug];
-  const row = weatherByMonth.find((r) => r.month === monthName);
-  if (!row) notFound();
+  const baseRow = weatherByMonth.find((r) => r.month === monthName);
+  if (!baseRow) notFound();
+  // Localize the spliced coastDesc so the SERP snippet is single-language.
+  const row = await localizeWeatherRow(baseRow, locale);
 
   const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
   const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");

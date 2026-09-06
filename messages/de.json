@@ -5493,6 +5493,32 @@
         "title": "Athalassa: erst der Garten, dann die Seerunde",
         "body": "Der freie botanische Garten am Haupttor — zuerst dorthin. Dann den Seeweg gegen den Uhrzeigersinn. Die meisten bleiben am Café hängen. Sie bekommen eine Stunde stiller Kiefern, bevor Nikosias Verkehr Sie zurückruft."
       }
+    },
+    "weather": {
+      "november": {
+        "coastDesc": "Noch mild. Leichte Jacke für die Abende. Strände leer, Ruinen von ihrer besten Seite.",
+        "troodosDesc": "Kühle Morgen. Wege frei. Noch keine Skisaison; beste Zeit zum Wandern."
+      },
+      "december": {
+        "coastDesc": "Milde Tage, kühle Nächte. Zwiebellook. Weihnachtsmärkte und Glühwein.",
+        "troodosDesc": "Ab Monatsmitte oben Schnee möglich. Das Skigebiet öffnet meist, sobald der Schnee es zulässt — prüfen Sie es vor der Fahrt."
+      },
+      "january": {
+        "coastDesc": "Kältester Monat. Weiter sonnig. Ruinen und Dörfer; packen Sie eine warme Schicht ein.",
+        "troodosDesc": "Höhepunkt der Skisaison am Olymp, solange der Schnee hält. Untere Wege können nach Frost vereist sein — buchen Sie Verkostungen; in den Weingütern ist es warm."
+      },
+      "february": {
+        "coastDesc": "Ähnlich wie der Januar. Mandelblüte ab Ende Februar. Längere Tage.",
+        "troodosDesc": "Ski hält oft bis in den Frühling; tiefere Lagen tauen zuerst. Krokusse und Alpenveilchen."
+      },
+      "march": {
+        "coastDesc": "Frühlingslicht. Wildblumen im Landesinneren. Das Meer noch kalt; Strandspaziergänge gehen gut.",
+        "troodosDesc": "Bester Wandermonat. Der Schnee schmilzt, die Wege öffnen. Der Persephone-Weg blüht."
+      },
+      "april": {
+        "coastDesc": "Warm. Manche schwimmen. Der Ostertermin variiert; die Dörfer erwachen.",
+        "troodosDesc": "Die Berge grün. Alle Wege offen. Frühlingsklarheit."
+      }
     }
   }
 }

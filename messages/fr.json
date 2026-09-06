@@ -5493,6 +5493,32 @@
         "title": "Athalassa : le jardin puis le tour du lac",
         "body": "Le jardin botanique gratuit à l'entrée principale — commencez là. Puis le sentier du lac dans le sens inverse des aiguilles. La plupart s'arrêtent au café. Vous, vous gagnez une heure de pins tranquilles avant que la circulation de Nicosie vous rappelle."
       }
+    },
+    "weather": {
+      "november": {
+        "coastDesc": "Encore doux. Une veste légère pour le soir. Plages vides, les ruines sous leur meilleur jour.",
+        "troodosDesc": "Matins frais. Sentiers dégagés. Pas encore la saison de ski ; idéal pour la randonnée."
+      },
+      "december": {
+        "coastDesc": "Journées douces, nuits fraîches. Habillez-vous en couches. Marchés de Noël et vin chaud.",
+        "troodosDesc": "Neige possible en altitude dès la mi-décembre. La station de ski ouvre en général dès que la neige le permet — vérifiez avant de partir."
+      },
+      "january": {
+        "coastDesc": "Le mois le plus frais. Toujours ensoleillé. Ruines et villages ; prévoyez une couche chaude.",
+        "troodosDesc": "Pleine saison de ski sur l’Olympe tant que la neige tient. Les sentiers plus bas peuvent être verglacés après le gel — réservez vos dégustations ; il fait chaud dans les caves."
+      },
+      "february": {
+        "coastDesc": "Semblable à janvier. Amandiers en fleurs dès fin février. Les jours rallongent.",
+        "troodosDesc": "Le ski tient souvent jusqu’au début du printemps ; les altitudes plus basses dégèlent en premier. Crocus et cyclamens."
+      },
+      "march": {
+        "coastDesc": "Lumière de printemps. Fleurs sauvages dans l’intérieur des terres. La mer encore froide ; les balades sur la plage, oui.",
+        "troodosDesc": "Le meilleur mois de randonnée. La neige fond, les sentiers ouvrent. Le sentier Perséphone fleurit."
+      },
+      "april": {
+        "coastDesc": "Chaud. Certains se baignent. La date de Pâques varie ; les villages s’animent.",
+        "troodosDesc": "La montagne verdit. Tous les sentiers ouverts. Clarté printanière."
+      }
     }
   }
 }

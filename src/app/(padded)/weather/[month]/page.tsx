@@ -6,6 +6,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
+import { localizeWeatherRow } from "@/lib/weather-content";
 import { winterEvents } from "@/data/events";
 import WeatherMonthFooter from "@/components/WeatherMonthFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -53,8 +54,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const monthName = SLUG_TO_WEATHER[slug];
   const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
-  const row = weatherByMonth.find((r) => r.month === monthName);
-  if (!row) notFound();
+  const baseRow = weatherByMonth.find((r) => r.month === monthName);
+  if (!baseRow) notFound();
+  // The description splices coastDesc into a localized ICU frame — the
+  // overlay keeps the SERP snippet single-language (data-layer arc).
+  const row = await localizeWeatherRow(baseRow);
 
   const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
   const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
@@ -97,11 +101,12 @@ export default async function WeatherMonthPage({ params }: Props) {
 
   const monthName = SLUG_TO_WEATHER[slug];
   const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
-  const row = weatherByMonth.find((r) => r.month === monthName);
+  const baseRow = weatherByMonth.find((r) => r.month === monthName);
   const eventMonth = SLUG_TO_EVENT_MONTH[slug];
   const events = winterEvents.filter((e) => e.month === eventMonth);
 
-  if (!row) notFound();
+  if (!baseRow) notFound();
+  const row = await localizeWeatherRow(baseRow);
 
   const clampedDescClass = "text-muted-ink text-sm line-clamp-2 leading-relaxed";
   const currentMonthChipClass = "border-terracotta/50 bg-terracotta/5";
@@ -169,6 +174,9 @@ export default async function WeatherMonthPage({ params }: Props) {
             const name = SLUG_TO_WEATHER[m];
             const monthRow = weatherByMonth.find((r) => r.month === name);
             if (!monthRow) return null;
+            // Localized label; row.month stays the EN data key (same rule as
+            // the /weather hub's monthLabel helper).
+            const label = tWeatherMonth(`monthNames.${m}` as "monthNames.december");
             const isCurrent = m === slug;
             return (
               <AppLink
@@ -180,7 +188,7 @@ export default async function WeatherMonthPage({ params }: Props) {
                   }`}
               >
                 <div className="flex flex-col">
-                  <span className={`${TYPE.cardTitleCompact} ${isCurrent ? "text-terracotta" : "text-olive"}`}>{name}</span>
+                  <span className={`${TYPE.cardTitleCompact} ${isCurrent ? "text-terracotta" : "text-olive"}`}>{label}</span>
                   <span className={`mt-1 text-xs ${isCurrent ? "text-terracotta" : "text-muted-ink"}`}>
                     {tWeatherPage("table.coast")} {monthRow.coastMinC}–{monthRow.coastMaxC}° · {tWeatherPage("table.troodos")} {monthRow.troodosMinC}–{monthRow.troodosMaxC}°
                   </span>

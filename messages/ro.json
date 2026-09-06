@@ -5493,6 +5493,32 @@
         "title": "Athalassa: grădina, apoi bucla lacului",
         "body": "Grădina botanică gratuită de la poarta principală — întâi acolo. Apoi poteca lacului în sens invers acelor de ceas. Cei mai mulți se opresc la cafenea. Tu câștigi o oră de pini liniștiți înainte ca traficul Nicosiei să te cheme înapoi."
       }
+    },
+    "weather": {
+      "november": {
+        "coastDesc": "Încă blând. O geacă subțire pentru seri. Plaje goale, ruinele în cea mai bună lumină.",
+        "troodosDesc": "Dimineți răcoroase. Trasee curate. Sezonul de schi n-a început; ideal pentru drumeții."
+      },
+      "december": {
+        "coastDesc": "Zile blânde, nopți reci. Îmbracă-te în straturi. Târguri de Crăciun și vin fiert.",
+        "troodosDesc": "Posibil ninsoare la altitudine din mijlocul lunii. Pârtia se deschide de obicei când zăpada permite — verifică înainte să pleci."
+      },
+      "january": {
+        "coastDesc": "Cea mai rece lună. Tot însorită. Ruine și sate; ia un strat călduros.",
+        "troodosDesc": "Vârful sezonului de schi pe Olimp cât ține zăpada. Traseele joase pot fi înghețate după ger — rezervă degustări; cramele sunt calde înăuntru."
+      },
+      "february": {
+        "coastDesc": "Asemănătoare cu ianuarie. Migdalii înfloresc de la sfârșitul lui februarie. Zile mai lungi.",
+        "troodosDesc": "Schiul ține adesea până la începutul primăverii; cotele joase se topesc primele. Brândușe și ciclame."
+      },
+      "march": {
+        "coastDesc": "Lumină de primăvară. Flori sălbatice în interior. Marea încă rece; plimbările pe plajă merg de minune.",
+        "troodosDesc": "Cea mai bună lună de drumeții. Zăpada se topește, traseele se deschid. Traseul Persefona înflorește."
+      },
+      "april": {
+        "coastDesc": "Cald. Unii înoată. Data Paștelui variază; satele prind viață.",
+        "troodosDesc": "Muntele verde. Toate traseele deschise. Claritate de primăvară."
+      }
     }
   }
 }
