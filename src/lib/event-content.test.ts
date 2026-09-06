@@ -8,13 +8,12 @@ import {
 } from "@/lib/event-content-ids";
 
 /**
- * Guard for the winter-event overlay — mirrors secret-gem-content.test.ts
- * while the class ships in slices: every covered id must exist in data,
- * every covered field must be non-empty in all 7 catalogs, EN must mirror
- * the base record verbatim, and the el `name` must equal the record's
- * `nameEl` where one exists (the Greek-first projection and the overlay
- * must never disagree). The set-equality assertion lands with slice 2,
- * when the class completes.
+ * Guard for the winter-event overlay — mirrors secret-gem-content.test.ts:
+ * registry, data and all 7 catalogs must cover exactly the same ids (the
+ * class is complete — a new event must ship with coverage), every covered
+ * field must be non-empty in all 7 catalogs, EN must mirror the base record
+ * verbatim, and the el `name` must equal the record's `nameEl` where one
+ * exists (the Greek-first projection and the overlay must never disagree).
  */
 
 const LOCALES = ["en", "de", "el", "pl", "ro", "fr", "he"] as const;
@@ -33,13 +32,8 @@ function eventsNs(locale: string): Record<string, Record<string, string>> {
 }
 
 describe("winter-event content overlay (data-layer arc, class 6)", () => {
-  it("every registry id exists in data and every catalog id is registered", () => {
-    for (const id of LOCALIZED_EVENT_IDS) {
-      expect(
-        winterEvents.some((e) => e.id === id),
-        `LOCALIZED_EVENT_IDS contains unknown event id ${id}`
-      ).toBe(true);
-    }
+  it("registry, data and catalogs cover exactly the same ids (the class is complete — a new event must ship with coverage)", () => {
+    expect(new Set(winterEvents.map((e) => e.id))).toEqual(LOCALIZED_EVENT_IDS);
     for (const locale of LOCALES) {
       expect(new Set(Object.keys(eventsNs(locale)))).toEqual(LOCALIZED_EVENT_IDS);
     }

@@ -5796,6 +5796,84 @@
         "description": "Weekly Thursday events from January to March. Greek and international jazz, traditional Cypriot dance, rebetiko, and cultural performances. The resort's quiet season becomes a stage for music and heritage. Check the municipality programme for dates and venues—schedules vary by year. A different side of Ayia Napa.",
         "dates": "Jan to Mar, Thursdays 19:30",
         "venue": "Agia Napa municipality"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Agia Napa Winter Swimming Festival",
+        "description": "International winter swimmers gather at Nissi or Makronissos Beach. Braving the cool sea in January. Even if you don't dive in, the spectacle is worth it—swimmers in caps, the winter light, the cheers. Dates vary; check ahead. A reminder that Cyprus never fully hibernates.",
+        "dates": "Mid-January (check annually)",
+        "venue": "Nissi or Makronissos Beach"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Kalopanagiotis Christmas Village",
+        "description": "The Marathasa Valley village hosts one of the island's most atmospheric Christmas markets. Stone houses, cobbled lanes, and the UNESCO monastery of Agios Ioannis Lampadistis as a backdrop. Local products, traditional foods, music, workshops, and winter entertainment. Runs weekends from late November; daily from 23 December. Thermal springs and Byzantine frescoes nearby. A quieter alternative to Kakopetria.",
+        "dates": "Weekends late Nov to 22 Dec; daily 23 Dec–6 Jan",
+        "venue": "Kalopanagiotis village"
+      },
+      "omodos-christmas-market": {
+        "name": "Omodos Christmas Market",
+        "description": "The Krasochoria village of Omodos hosts a festive Christmas market in late December. The Community Park fills with stalls, live music—carols, rebetiko, jazz, folk—and workshops. Mega Santa meets children. Local products, warm wine, and handmade gifts. The cobbled square and monastery make a memorable setting. Usually 26–28 December, from 16:00. The village knows wine; expect good hospitality.",
+        "dates": "Usually 26–28 December",
+        "venue": "Omodos village square"
+      },
+      "lania-christmas": {
+        "name": "Lania Christmas",
+        "description": "The village of lanes and vines lights up in early December. Crafts, treats, and a small-scale Christmas atmosphere. Lania is one of the fourteen authorised Commandaria villages—combine with Vasa for a wine-country day, or Omodos for Krasochoria (outside the Commandaria zone). Quieter than the big Christmas villages. The architecture and mountain views are the draw. Check dates; usually the first weekend of December.",
+        "dates": "Usually first weekend of December",
+        "venue": "Lania village"
+      },
+      "green-monday": {
+        "name": "Green Monday",
+        "description": "The first day of Orthodox Lent. Families head outdoors with picnics of fasting foods—lagana bread, olives, tahini, seafood. Kite flying fills the skies; the custom is that the kite carries away sins. Parks, hills, and coastlines fill with Cypriots. Polis-Latchi and other towns host festivals. It's a public holiday. Even if you're not fasting, the ritual and the kites are worth experiencing. Dates move with Easter; typically late February or early March.",
+        "dates": "First day of Lent (varies with Easter)",
+        "venue": "Parks, beaches, hills across Cyprus"
+      },
+      "famagusta-carnival": {
+        "name": "Famagusta Carnival",
+        "description": "The Paralimni–Dherynia carnival brings floats, costumes, and thousands of revellers to the east coast. The grand parade rolls through Paralimni on the Sunday before Lent. Less hectic than Limassol, but no less colourful. Families line the route; the carnival king leads the procession. A regional institution. Usually early March. Arrive early for a good spot.",
+        "dates": "Sunday before Lent (early Mar)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Deryneia Christmas Village",
+        "description": "Christmas Strawberry Land. Deryneia—Cyprus's strawberry capital—hosts one of the eight official Christmas villages. Traditional cuisine, handmade crafts, live music, and children's workshops. The Folk Art Museum and red-soil fields frame the village. Weekends from late November; daily from 23 December. The east coast's answer to the mountain villages. Combine with Paralimni or Protaras.",
+        "dates": "Weekends late Nov to 22 Dec; daily 23 Dec–6 Jan",
+        "venue": "Deryneia village"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Statos–Agios Fotios Christmas Village",
+        "description": "High in the Paphos mountains at 950m. One of the eight official Christmas villages. Apple and grape country; the village produces wine, raisins, walnuts, almonds. Stone houses, local products, and a quiet mountain atmosphere. Chrysorrogiatissa and Agia Moni monasteries nearby. Runs from late November to Epiphany. A Paphos alternative to the Troodos villages.",
+        "dates": "Late Nov to 6 Jan",
+        "venue": "Statos-Agios Fotios village"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Three days of Cypriot and international jazz at Rialto Theatre. Around 15 ensembles; contemporary Cypriot music, workshops, jam sessions, and after-parties. The showcase promotes local musicians to the industry and gives audiences a concentrated dose of the island's jazz scene. Usually early December. Tickets from €8 per day. A must for jazz lovers.",
+        "dates": "Usually first weekend of December",
+        "venue": "Rialto Theatre, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Peloponnese Wine Festival",
+        "description": "Greek terroirs in Cyprus. Around 25 Peloponnese wineries pour PDO and PGI wines at Carob Mill Restaurants. Masterclasses, open tastings, and professional sommeliers. A chance to taste Nemea, Mantinia, and other Greek regions without leaving the island. Usually early February. Tickets from around €10. Wine lovers take note.",
+        "dates": "Usually early February",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "A weekend of serious wine at Technopolis 20. Over 100 handpicked wines from Cyprus, Greece, Italy, and France; dozens of producers. Once trade-only, now open to enthusiasts. Two days in late January. Paphos's answer to the big Limassol tastings. Book early; it fills.",
+        "dates": "Late January (2 days)",
+        "venue": "Technopolis 20, Paphos"
+      },
+      "protaras-christmas": {
+        "name": "Protaras Christmas Celebrations",
+        "description": "Fig Tree Bay and the Protaras waterfront light up in December. Carol singers, festive stalls, and New Year events. Quieter than summer; the palm trees and sea give the season a Mediterranean twist. Combine with Cape Greco or Konnos for a coastal day.",
+        "dates": "Through December into early Jan",
+        "venue": "Protaras waterfront"
+      },
+      "epiphany-cyprus": {
+        "name": "Epiphany (Theophania)",
+        "description": "On January 6, Cyprus marks Epiphany; the baptism of Christ. Priests throw a wooden cross into the sea; young men dive from boats and the harbour wall to retrieve it. Whoever finds it receives a blessing for the year. The ceremony takes place at harbours and beaches across the island; Larnaca, Limassol, Paphos, and other coastal towns. Crowds gather, hymns are sung, and even in winter the bravest swimmers take the plunge. It's a public holiday, and the atmosphere is solemn and celebratory at once. Wrap up warm and arrive early for a good spot.",
+        "dates": "6 January",
+        "venue": "Coastal towns"
       }
     }
   }

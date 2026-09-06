@@ -5796,6 +5796,84 @@
         "description": "Des rendez-vous hebdomadaires le jeudi, de janvier à mars. Jazz grec et international, danse traditionnelle chypriote, rebetiko et spectacles culturels. La saison calme de la station devient une scène pour la musique et le patrimoine. Consultez le programme de la municipalité pour les dates et les lieux — ils changent chaque année. Un autre visage d’Agia Napa.",
         "dates": "Janv. à mars, le jeudi à 19:30",
         "venue": "Municipalité d’Agia Napa"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Festival de nage hivernale d’Agia Napa",
+        "description": "Des nageurs d’hiver du monde entier se retrouvent à la plage de Nissi ou de Makronissos. En janvier, ils bravent la mer fraîche. Même sans plonger, le spectacle vaut le coup — nageurs en bonnet, lumière d’hiver, acclamations. Les dates varient ; vérifiez à l’avance. Un rappel que Chypre n’hiberne jamais tout à fait.",
+        "dates": "Mi-janvier (vérifier chaque année)",
+        "venue": "Plage de Nissi ou de Makronissos"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Village de Noël de Kalopanagiotis",
+        "description": "Le village de la vallée de Marathasa accueille l’un des marchés de Noël les plus atmosphériques de l’île. Maisons de pierre, ruelles pavées et le monastère UNESCO d’Agios Ioannis Lampadistis en toile de fond. Produits locaux, plats traditionnels, musique, ateliers et animations d’hiver. Les week-ends dès fin novembre ; tous les jours à partir du 23 décembre. Sources thermales et fresques byzantines à proximité. L’alternative plus paisible à Kakopetria.",
+        "dates": "Week-ends fin nov. – 22 déc. ; tous les jours 23 déc. – 6 janv.",
+        "venue": "Village de Kalopanagiotis"
+      },
+      "omodos-christmas-market": {
+        "name": "Marché de Noël d’Omodos",
+        "description": "Le village viticole d’Omodos dresse un marché de Noël festif fin décembre. Le parc communal se remplit d’étals, de musique live — chants de Noël, rebetiko, jazz, folk — et d’ateliers. Mega Santa accueille les enfants. Produits locaux, vin chaud et cadeaux faits main. La place pavée et le monastère composent un décor mémorable. En général du 26 au 28 décembre, à partir de 16:00. Le village s’y connaît en vin ; attendez-vous à une belle hospitalité.",
+        "dates": "En général du 26 au 28 décembre",
+        "venue": "Place du village d’Omodos"
+      },
+      "lania-christmas": {
+        "name": "Noël à Lania",
+        "description": "Le village des ruelles et des vignes s’illumine début décembre. Artisanat, douceurs et une atmosphère de Noël à petite échelle. Lania est l’un des quatorze villages autorisés du Commandaria — à combiner avec Vasa pour une journée en pays du vin, ou avec Omodos pour les Krasochoria (hors zone Commandaria). Plus calme que les grands villages de Noël. L’architecture et les vues sur la montagne font l’attrait. Vérifiez les dates ; en général le premier week-end de décembre.",
+        "dates": "En général le premier week-end de décembre",
+        "venue": "Village de Lania"
+      },
+      "green-monday": {
+        "name": "Lundi Vert",
+        "description": "Le premier jour du Carême orthodoxe. Les familles sortent pique-niquer avec des mets de jeûne — pain lagana, olives, tahini, fruits de mer. Les cerfs-volants remplissent le ciel ; la coutume veut qu’ils emportent les péchés. Parcs, collines et littoraux se remplissent de Chypriotes. Polis-Latchi et d’autres villes organisent des fêtes. C’est un jour férié. Même sans jeûner, le rituel et les cerfs-volants valent le détour. La date suit Pâques ; typiquement fin février ou début mars.",
+        "dates": "Premier jour du Carême (varie avec Pâques)",
+        "venue": "Parcs, plages et collines dans tout Chypre"
+      },
+      "famagusta-carnival": {
+        "name": "Carnaval de Famagouste",
+        "description": "Le carnaval de Paralimni–Dherynia amène chars, costumes et des milliers de fêtards sur la côte est. La grande parade traverse Paralimni le dimanche avant le Carême. Moins frénétique que Limassol, mais tout aussi coloré. Les familles bordent le parcours ; le roi du carnaval mène le cortège. Une institution régionale. En général début mars. Arrivez tôt pour une bonne place.",
+        "dates": "Dimanche avant le Carême (début mars)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Village de Noël de Deryneia",
+        "description": "Le pays des fraises de Noël. Deryneia — capitale chypriote de la fraise — accueille l’un des huit villages de Noël officiels. Cuisine traditionnelle, artisanat, musique live et ateliers pour enfants. Le musée d’art populaire et les champs de terre rouge encadrent le village. Les week-ends dès fin novembre ; tous les jours à partir du 23 décembre. La réponse de la côte est aux villages de montagne. À combiner avec Paralimni ou Protaras.",
+        "dates": "Week-ends fin nov. – 22 déc. ; tous les jours 23 déc. – 6 janv.",
+        "venue": "Village de Deryneia"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Village de Noël de Statos–Agios Fotios",
+        "description": "Haut dans les montagnes de Paphos, à 950 m. L’un des huit villages de Noël officiels. Pays de pommes et de raisin ; le village produit vin, raisins secs, noix, amandes. Maisons de pierre, produits locaux et une atmosphère de montagne paisible. Les monastères de Chrysorrogiatissa et d’Agia Moni à proximité. De fin novembre à l’Épiphanie. L’alternative pafiote aux villages du Troodos.",
+        "dates": "Fin nov. – 6 janv.",
+        "venue": "Village de Statos-Agios Fotios"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Trois jours de jazz chypriote et international au théâtre Rialto. Une quinzaine d’ensembles ; musique chypriote contemporaine, ateliers, jam sessions et afters. La vitrine présente les musiciens locaux à la profession et offre au public une dose concentrée de la scène jazz de l’île. En général début décembre. Billets à partir de 8 € par jour. Incontournable pour les amateurs de jazz.",
+        "dates": "En général le premier week-end de décembre",
+        "venue": "Théâtre Rialto, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Festival des vins du Péloponnèse",
+        "description": "Les terroirs grecs à Chypre. Environ 25 domaines du Péloponnèse servent des vins AOP et IGP aux Carob Mill Restaurants. Masterclasses, dégustations ouvertes et sommeliers professionnels. L’occasion de goûter Nemea, Mantinia et d’autres régions grecques sans quitter l’île. En général début février. Billets à partir d’environ 10 €. Avis aux amateurs de vin.",
+        "dates": "En général début février",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "Un week-end de vin sérieux au Technopolis 20. Plus de 100 vins triés sur le volet de Chypre, de Grèce, d’Italie et de France ; des dizaines de producteurs. Autrefois réservé aux professionnels, désormais ouvert aux passionnés. Deux jours fin janvier. La réponse de Paphos aux grandes dégustations de Limassol. Réservez tôt ; cela se remplit.",
+        "dates": "Fin janvier (2 jours)",
+        "venue": "Technopolis 20, Paphos"
+      },
+      "protaras-christmas": {
+        "name": "Fêtes de Noël de Protaras",
+        "description": "Fig Tree Bay et le front de mer de Protaras s’illuminent en décembre. Chanteurs de Noël, étals de fête et événements du Nouvel An. Plus calme que l’été ; palmiers et mer donnent à la saison une touche méditerranéenne. À combiner avec Cape Greco ou Konnos pour une journée côtière.",
+        "dates": "Tout décembre jusqu’à début janv.",
+        "venue": "Front de mer de Protaras"
+      },
+      "epiphany-cyprus": {
+        "name": "Épiphanie (Théophanie)",
+        "description": "Le 6 janvier, Chypre célèbre l’Épiphanie — le baptême du Christ. Les prêtres jettent une croix de bois à la mer ; de jeunes hommes plongent des bateaux et du môle pour la récupérer. Celui qui la trouve reçoit la bénédiction de l’année. La cérémonie a lieu dans les ports et sur les plages de toute l’île — Larnaca, Limassol, Paphos et d’autres villes côtières. Les foules se rassemblent, les hymnes s’élèvent, et même en hiver les plus braves se jettent à l’eau. C’est un jour férié, et l’atmosphère est à la fois solennelle et joyeuse. Couvrez-vous et arrivez tôt pour une bonne place.",
+        "dates": "6 janvier",
+        "venue": "Villes côtières"
       }
     }
   }

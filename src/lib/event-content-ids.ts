@@ -1,9 +1,8 @@
 /**
  * Explicit coverage for the winter-event overlay (data-layer arc, class 6).
- * Only ids listed here carry `data.events.{id}.*` catalog keys — everything
- * else falls back to the EN base record. Slice 1 (batch 60) covers the first
- * 13 events in data order; slice 2 takes the remaining 13 and adds the
- * set-equality guard that makes the class complete.
+ * The class is COMPLETE: all 26 events carry `data.events.{id}.*` catalog
+ * keys, and the guard asserts full set equality with the data — a new event
+ * cannot ship without catalog coverage.
  */
 
 export const LOCALIZED_EVENT_FIELDS = ["name", "description", "dates", "venue"] as const;
@@ -24,4 +23,18 @@ export const LOCALIZED_EVENT_IDS: ReadonlySet<string> = new Set([
   "kakopetria-christmas-village",
   "kyperounta-christmas-village",
   "ayia-napa-cultural-winter",
+  // Slice 2 (batch 61): the remaining 13 — the class completes.
+  "ayia-napa-winter-swimming",
+  "kalopanagiotis-christmas-village",
+  "omodos-christmas-market",
+  "lania-christmas",
+  "green-monday",
+  "famagusta-carnival",
+  "deryneia-christmas-village",
+  "statos-agios-fotios-christmas",
+  "cyprus-jazz-world-music-showcase",
+  "peloponnese-wine-festival",
+  "portfolio-wine-tasting",
+  "protaras-christmas",
+  "epiphany-cyprus",
 ]);

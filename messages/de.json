@@ -5796,6 +5796,84 @@
         "description": "Wöchentliche Donnerstagsveranstaltungen von Januar bis März. Griechischer und internationaler Jazz, traditioneller zyprischer Tanz, Rebetiko und Kulturaufführungen. Die stille Saison des Badeorts wird zur Bühne für Musik und Erbe. Prüfen Sie das Programm der Gemeinde für Termine und Orte — die Pläne wechseln jährlich. Eine andere Seite von Agia Napa.",
         "dates": "Jan. bis März, donnerstags 19:30 Uhr",
         "venue": "Gemeinde Agia Napa"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Winterschwimm-Festival Agia Napa",
+        "description": "Internationale Winterschwimmer treffen sich am Nissi- oder Makronissos-Strand. Im Januar trotzen sie dem kühlen Meer. Auch ohne selbst hineinzuspringen lohnt das Spektakel — Schwimmer in Badekappen, das Winterlicht, der Jubel. Die Termine variieren; vorher prüfen. Eine Erinnerung daran, dass Zypern nie ganz in Winterschlaf fällt.",
+        "dates": "Mitte Januar (jährlich prüfen)",
+        "venue": "Nissi- oder Makronissos-Strand"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Weihnachtsdorf Kalopanagiotis",
+        "description": "Das Dorf im Marathasa-Tal richtet einen der stimmungsvollsten Weihnachtsmärkte der Insel aus. Steinhäuser, Kopfsteingassen und das UNESCO-Kloster Agios Ioannis Lampadistis als Kulisse. Lokale Produkte, traditionelle Speisen, Musik, Workshops und Winterunterhaltung. An den Wochenenden ab Ende November, täglich ab dem 23. Dezember. Thermalquellen und byzantinische Fresken in der Nähe. Die ruhigere Alternative zu Kakopetria.",
+        "dates": "Wochenenden Ende Nov. bis 22. Dez.; täglich 23. Dez.–6. Jan.",
+        "venue": "Dorf Kalopanagiotis"
+      },
+      "omodos-christmas-market": {
+        "name": "Weihnachtsmarkt Omodos",
+        "description": "Das Krasochoria-Dorf Omodos richtet Ende Dezember einen festlichen Weihnachtsmarkt aus. Der Gemeindepark füllt sich mit Ständen, Livemusik — Weihnachtslieder, Rebetiko, Jazz, Folk — und Workshops. Mega Santa empfängt die Kinder. Lokale Produkte, warmer Wein und handgemachte Geschenke. Der gepflasterte Platz und das Kloster geben eine denkwürdige Kulisse. Meist 26.–28. Dezember, ab 16:00 Uhr. Das Dorf versteht sich auf Wein; rechnen Sie mit guter Gastfreundschaft.",
+        "dates": "Meist 26.–28. Dezember",
+        "venue": "Dorfplatz von Omodos"
+      },
+      "lania-christmas": {
+        "name": "Weihnachten in Lania",
+        "description": "Das Dorf der Gassen und Reben erstrahlt Anfang Dezember. Kunsthandwerk, Leckereien und Weihnachtsstimmung im Kleinen. Lania ist eines der vierzehn zugelassenen Commandaria-Dörfer — kombinieren Sie mit Vasa für einen Weinland-Tag oder mit Omodos für die Krasochoria (außerhalb der Commandaria-Zone). Ruhiger als die großen Weihnachtsdörfer. Architektur und Bergblicke sind der eigentliche Magnet. Termine prüfen; meist das erste Dezemberwochenende.",
+        "dates": "Meist am ersten Dezemberwochenende",
+        "venue": "Dorf Lania"
+      },
+      "green-monday": {
+        "name": "Grüner Montag",
+        "description": "Der erste Tag der orthodoxen Fastenzeit. Familien ziehen mit Picknicks aus Fastenspeisen hinaus — Lagana-Brot, Oliven, Tahini, Meeresfrüchte. Drachen füllen den Himmel; der Brauch will, dass der Drachen die Sünden davonträgt. Parks, Hügel und Küsten füllen sich mit Zyprern. Polis-Latchi und andere Orte richten Feste aus. Es ist ein Feiertag. Auch ohne zu fasten lohnen das Ritual und die Drachen. Der Termin wandert mit Ostern; typisch Ende Februar oder Anfang März.",
+        "dates": "Erster Fastentag (wandert mit Ostern)",
+        "venue": "Parks, Strände und Hügel in ganz Zypern"
+      },
+      "famagusta-carnival": {
+        "name": "Karneval von Famagusta",
+        "description": "Der Karneval von Paralimni–Dherynia bringt Wagen, Kostüme und Tausende Feiernde an die Ostküste. Die große Parade rollt am Sonntag vor der Fastenzeit durch Paralimni. Weniger hektisch als Limassol, aber nicht weniger farbenfroh. Familien säumen die Strecke; der Karnevalskönig führt den Zug an. Eine regionale Institution. Meist Anfang März. Kommen Sie früh für einen guten Platz.",
+        "dates": "Sonntag vor der Fastenzeit (Anfang März)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Weihnachtsdorf Deryneia",
+        "description": "Weihnachts-Erdbeerland. Deryneia — Zyperns Erdbeerhauptstadt — richtet eines der acht offiziellen Weihnachtsdörfer aus. Traditionelle Küche, Kunsthandwerk, Livemusik und Kinderworkshops. Das Volkskunstmuseum und die rotbraunen Felder rahmen das Dorf. An den Wochenenden ab Ende November, täglich ab dem 23. Dezember. Die Antwort der Ostküste auf die Bergdörfer. Kombinieren Sie mit Paralimni oder Protaras.",
+        "dates": "Wochenenden Ende Nov. bis 22. Dez.; täglich 23. Dez.–6. Jan.",
+        "venue": "Dorf Deryneia"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Weihnachtsdorf Statos–Agios Fotios",
+        "description": "Hoch in den Bergen von Paphos auf 950 m. Eines der acht offiziellen Weihnachtsdörfer. Apfel- und Traubenland; das Dorf erzeugt Wein, Rosinen, Walnüsse, Mandeln. Steinhäuser, lokale Produkte und eine stille Bergstimmung. Die Klöster Chrysorrogiatissa und Agia Moni in der Nähe. Von Ende November bis zum Dreikönigstag. Die Paphos-Alternative zu den Troodos-Dörfern.",
+        "dates": "Ende Nov. bis 6. Jan.",
+        "venue": "Dorf Statos-Agios Fotios"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Drei Tage zyprischer und internationaler Jazz im Rialto-Theater. Rund 15 Ensembles; zeitgenössische zyprische Musik, Workshops, Jamsessions und Afterpartys. Die Schau bringt lokale Musiker vor die Branche und gibt dem Publikum eine geballte Dosis der Jazzszene der Insel. Meist Anfang Dezember. Tickets ab 8 € pro Tag. Ein Muss für Jazzfans.",
+        "dates": "Meist am ersten Dezemberwochenende",
+        "venue": "Rialto-Theater, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Peloponnes-Weinfestival",
+        "description": "Griechische Terroirs auf Zypern. Rund 25 Weingüter der Peloponnes schenken in den Carob Mill Restaurants PDO- und PGI-Weine aus. Masterclasses, offene Verkostungen und professionelle Sommeliers. Die Gelegenheit, Nemea, Mantinia und andere griechische Regionen zu probieren, ohne die Insel zu verlassen. Meist Anfang Februar. Tickets ab etwa 10 €. Weinfreunde, vormerken.",
+        "dates": "Meist Anfang Februar",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "Ein Wochenende ernsthaften Weins im Technopolis 20. Über 100 handverlesene Weine aus Zypern, Griechenland, Italien und Frankreich; Dutzende Erzeuger. Früher nur für den Fachhandel, heute offen für Liebhaber. Zwei Tage Ende Januar. Paphos' Antwort auf die großen Limassol-Verkostungen. Früh buchen; es füllt sich.",
+        "dates": "Ende Januar (2 Tage)",
+        "venue": "Technopolis 20, Paphos"
+      },
+      "protaras-christmas": {
+        "name": "Weihnachtsfeiern in Protaras",
+        "description": "Fig Tree Bay und die Uferpromenade von Protaras erstrahlen im Dezember. Weihnachtssänger, festliche Stände und Silvesterveranstaltungen. Ruhiger als im Sommer; Palmen und Meer geben der Saison eine mediterrane Note. Kombinieren Sie mit Cape Greco oder Konnos für einen Küstentag.",
+        "dates": "Durch den Dezember bis Anfang Jan.",
+        "venue": "Uferpromenade von Protaras"
+      },
+      "epiphany-cyprus": {
+        "name": "Epiphanias (Theophania)",
+        "description": "Am 6. Januar begeht Zypern Epiphanias — die Taufe Christi. Priester werfen ein Holzkreuz ins Meer; junge Männer springen von Booten und der Hafenmauer, um es zu bergen. Wer es findet, erhält den Segen für das Jahr. Die Zeremonie findet an Häfen und Stränden der ganzen Insel statt — Larnaka, Limassol, Paphos und andere Küstenstädte. Menschenmengen versammeln sich, Hymnen erklingen, und selbst im Winter wagen die Mutigsten den Sprung. Es ist ein Feiertag, die Stimmung zugleich feierlich und festlich. Ziehen Sie sich warm an und kommen Sie früh für einen guten Platz.",
+        "dates": "6. Januar",
+        "venue": "Küstenstädte"
       }
     }
   }

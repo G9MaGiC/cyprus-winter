@@ -5796,6 +5796,84 @@
         "description": "Cotygodniowe czwartkowe wydarzenia od stycznia do marca. Grecki i międzynarodowy jazz, tradycyjny cypryjski taniec, rebetiko i występy kulturalne. Cichy sezon kurortu staje się sceną dla muzyki i dziedzictwa. Sprawdź program gminy — terminy i miejsca zmieniają się co roku. Inna twarz Agia Napy.",
         "dates": "Sty.–mar., czwartki 19:30",
         "venue": "Gmina Agia Napa"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Festiwal Zimowego Pływania w Agia Napie",
+        "description": "Międzynarodowi zimowi pływacy zbierają się na plaży Nissi lub Makronissos. W styczniu stawiają czoła chłodnemu morzu. Nawet jeśli nie wskoczysz, widowisko jest tego warte — pływacy w czepkach, zimowe światło, doping. Terminy się zmieniają; sprawdź wcześniej. Przypomnienie, że Cypr nigdy w pełni nie zapada w sen zimowy.",
+        "dates": "Połowa stycznia (sprawdzaj co roku)",
+        "venue": "Plaża Nissi lub Makronissos"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Świąteczna Wioska Kalopanagiotis",
+        "description": "Wioska w dolinie Marathasa gości jeden z najbardziej klimatycznych jarmarków świątecznych na wyspie. Kamienne domy, brukowane uliczki i klasztor UNESCO Agios Ioannis Lampadistis w tle. Lokalne produkty, tradycyjne potrawy, muzyka, warsztaty i zimowe atrakcje. Weekendy od końca listopada; codziennie od 23 grudnia. Obok termalne źródła i bizantyjskie freski. Spokojniejsza alternatywa dla Kakopetrii.",
+        "dates": "Weekendy koniec lis. – 22 gru.; codziennie 23 gru. – 6 sty.",
+        "venue": "Wioska Kalopanagiotis"
+      },
+      "omodos-christmas-market": {
+        "name": "Jarmark Bożonarodzeniowy w Omodos",
+        "description": "Winna wioska Omodos urządza pod koniec grudnia świąteczny jarmark. Park Gminny wypełnia się straganami, muzyką na żywo — kolędy, rebetiko, jazz, folk — i warsztatami. Mega Santa wita dzieci. Lokalne produkty, grzane wino i ręcznie robione prezenty. Brukowany plac i klasztor tworzą niezapomnianą scenerię. Zwykle 26–28 grudnia, od 16:00. Wioska zna się na winie; spodziewaj się dobrej gościnności.",
+        "dates": "Zwykle 26–28 grudnia",
+        "venue": "Plac wioski Omodos"
+      },
+      "lania-christmas": {
+        "name": "Boże Narodzenie w Lanii",
+        "description": "Wioska uliczek i winorośli rozświetla się na początku grudnia. Rękodzieło, przysmaki i kameralny świąteczny klimat. Lania to jedna z czternastu uznanych wiosek Commandarii — połącz z Vasą na winny dzień albo z Omodos i Krasochorią (poza strefą Commandarii). Ciszej niż w wielkich świątecznych wioskach. Architektura i górskie widoki to główny magnes. Sprawdź daty; zwykle pierwszy weekend grudnia.",
+        "dates": "Zwykle pierwszy weekend grudnia",
+        "venue": "Wioska Lania"
+      },
+      "green-monday": {
+        "name": "Zielony Poniedziałek",
+        "description": "Pierwszy dzień prawosławnego Wielkiego Postu. Rodziny ruszają na piknik z postnym jedzeniem — chleb lagana, oliwki, tahini, owoce morza. Niebo wypełniają latawce; zwyczaj mówi, że latawiec unosi grzechy. Parki, wzgórza i wybrzeża pełne są Cypryjczyków. Polis-Latchi i inne miasta urządzają festyny. To dzień wolny od pracy. Nawet bez postu rytuał i latawce warte są przeżycia. Data wędruje z Wielkanocą; zwykle koniec lutego lub początek marca.",
+        "dates": "Pierwszy dzień postu (zależnie od Wielkanocy)",
+        "venue": "Parki, plaże i wzgórza w całym Cyprze"
+      },
+      "famagusta-carnival": {
+        "name": "Karnawał Famagusty",
+        "description": "Karnawał Paralimni–Dherynia sprowadza platformy, kostiumy i tysiące bawiących się na wschodnie wybrzeże. Wielka parada przechodzi przez Paralimni w niedzielę przed Wielkim Postem. Mniej gorączkowo niż w Limassol, ale nie mniej kolorowo. Rodziny ustawiają się wzdłuż trasy; pochód prowadzi król karnawału. Regionalna instytucja. Zwykle początek marca. Przyjdź wcześnie na dobre miejsce.",
+        "dates": "Niedziela przed Wielkim Postem (początek mar.)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Świąteczna Wioska Deryneia",
+        "description": "Świąteczna Kraina Truskawek. Deryneia — truskawkowa stolica Cypru — gości jedną z ośmiu oficjalnych świątecznych wiosek. Tradycyjna kuchnia, rękodzieło, muzyka na żywo i warsztaty dla dzieci. Muzeum Sztuki Ludowej i czerwone pola okalają wioskę. Weekendy od końca listopada; codziennie od 23 grudnia. Odpowiedź wschodniego wybrzeża na górskie wioski. Połącz z Paralimni lub Protaras.",
+        "dates": "Weekendy koniec lis. – 22 gru.; codziennie 23 gru. – 6 sty.",
+        "venue": "Wioska Deryneia"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Świąteczna Wioska Statos–Agios Fotios",
+        "description": "Wysoko w górach Pafos, na 950 m. Jedna z ośmiu oficjalnych świątecznych wiosek. Kraina jabłek i winogron; wioska produkuje wino, rodzynki, orzechy włoskie, migdały. Kamienne domy, lokalne produkty i cicha górska atmosfera. Obok klasztory Chrysorrogiatissa i Agia Moni. Od końca listopada do Trzech Króli. Pafoska alternatywa dla wiosek Troodos.",
+        "dates": "Koniec lis. – 6 sty.",
+        "venue": "Wioska Statos-Agios Fotios"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Trzy dni cypryjskiego i międzynarodowego jazzu w Teatrze Rialto. Około 15 zespołów; współczesna cypryjska muzyka, warsztaty, jam sessions i afterparty. Przegląd promuje lokalnych muzyków w branży i daje publiczności skondensowaną dawkę wyspiarskiej sceny jazzowej. Zwykle początek grudnia. Bilety od 8 € za dzień. Obowiązkowy dla fanów jazzu.",
+        "dates": "Zwykle pierwszy weekend grudnia",
+        "venue": "Teatr Rialto, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Festiwal Win Peloponezu",
+        "description": "Greckie terroir na Cyprze. Około 25 winiarni z Peloponezu nalewa wina PDO i PGI w Carob Mill Restaurants. Masterclassy, otwarte degustacje i zawodowi sommelierzy. Okazja, by spróbować Nemei, Mantinii i innych greckich regionów bez opuszczania wyspy. Zwykle początek lutego. Bilety od około 10 €. Miłośnicy wina, notujcie.",
+        "dates": "Zwykle początek lutego",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "Weekend poważnego wina w Technopolis 20. Ponad 100 starannie wybranych win z Cypru, Grecji, Włoch i Francji; dziesiątki producentów. Kiedyś tylko dla branży, dziś otwarte dla entuzjastów. Dwa dni pod koniec stycznia. Pafoska odpowiedź na wielkie degustacje Limassol. Rezerwuj wcześnie; miejsca znikają.",
+        "dates": "Koniec stycznia (2 dni)",
+        "venue": "Technopolis 20, Pafos"
+      },
+      "protaras-christmas": {
+        "name": "Świąteczne Obchody w Protaras",
+        "description": "Fig Tree Bay i nabrzeże Protaras rozświetlają się w grudniu. Kolędnicy, świąteczne stragany i sylwestrowe wydarzenia. Ciszej niż latem; palmy i morze nadają świętom śródziemnomorski rys. Połącz z Cape Greco lub Konnos na nadmorski dzień.",
+        "dates": "Przez grudzień do początku sty.",
+        "venue": "Nabrzeże Protaras"
+      },
+      "epiphany-cyprus": {
+        "name": "Epifania (Teofania)",
+        "description": "6 stycznia Cypr obchodzi Epifanię — chrzest Chrystusa. Kapłani rzucają do morza drewniany krzyż; młodzi mężczyźni skaczą z łodzi i falochronu, by go wydobyć. Kto go znajdzie, otrzymuje błogosławieństwo na cały rok. Ceremonia odbywa się w portach i na plażach całej wyspy — Larnaka, Limassol, Pafos i inne nadmorskie miasta. Zbierają się tłumy, brzmią hymny, a nawet zimą najodważniejsi pływacy dają nura. To dzień świąteczny, a atmosfera jest zarazem podniosła i radosna. Ubierz się ciepło i przyjdź wcześnie na dobre miejsce.",
+        "dates": "6 stycznia",
+        "venue": "Miasta nadmorskie"
       }
     }
   }

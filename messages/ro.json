@@ -5796,6 +5796,84 @@
         "description": "Evenimente săptămânale, în fiecare joi, din ianuarie până în martie. Jazz grecesc și internațional, dans tradițional cipriot, rebetiko și spectacole culturale. Sezonul liniștit al stațiunii devine scenă pentru muzică și moștenire. Verifică programul primăriei pentru date și locații — se schimbă de la an la an. O altă față a Agiei Napa.",
         "dates": "Ian.–mar., joia la 19:30",
         "venue": "Primăria Agia Napa"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Festivalul de Înot de Iarnă din Agia Napa",
+        "description": "Înotători de iarnă din toată lumea se adună pe plaja Nissi sau Makronissos. În ianuarie înfruntă marea rece. Chiar dacă nu sari în apă, spectacolul merită — înotători cu căști de baie, lumina de iarnă, uralele. Datele variază; verifică din timp. O amintire că Ciprul nu hibernează niciodată de tot.",
+        "dates": "Mijlocul lui ianuarie (verifică anual)",
+        "venue": "Plaja Nissi sau Makronissos"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Satul de Crăciun Kalopanagiotis",
+        "description": "Satul din valea Marathasa găzduiește unul dintre cele mai atmosferice târguri de Crăciun ale insulei. Case de piatră, ulițe pietruite și mănăstirea UNESCO Agios Ioannis Lampadistis drept fundal. Produse locale, mâncăruri tradiționale, muzică, ateliere și distracții de iarnă. Weekenduri de la sfârșitul lui noiembrie; zilnic din 23 decembrie. Izvoare termale și fresce bizantine în apropiere. Alternativa mai liniștită la Kakopetria.",
+        "dates": "Weekenduri sfârșit de nov. – 22 dec.; zilnic 23 dec. – 6 ian.",
+        "venue": "Satul Kalopanagiotis"
+      },
+      "omodos-christmas-market": {
+        "name": "Târgul de Crăciun din Omodos",
+        "description": "Satul viticol Omodos organizează la sfârșitul lui decembrie un târg de Crăciun festiv. Parcul comunal se umple de tarabe, muzică live — colinde, rebetiko, jazz, folk — și ateliere. Mega Santa îi întâmpină pe copii. Produse locale, vin cald și cadouri lucrate manual. Piața pietruită și mănăstirea oferă un decor memorabil. De obicei 26–28 decembrie, de la 16:00. Satul se pricepe la vin; așteaptă-te la ospitalitate pe măsură.",
+        "dates": "De obicei 26–28 decembrie",
+        "venue": "Piața satului Omodos"
+      },
+      "lania-christmas": {
+        "name": "Crăciunul la Lania",
+        "description": "Satul ulițelor și al viței de vie se luminează la începutul lui decembrie. Artizanat, bunătăți și o atmosferă de Crăciun la scară mică. Lania e unul dintre cele paisprezece sate autorizate ale Commandariei — combină cu Vasa pentru o zi în ținutul vinului, sau cu Omodos pentru Krasochoria (în afara zonei Commandaria). Mai liniștit decât marile sate de Crăciun. Arhitectura și priveliștile montane sunt atracția. Verifică datele; de obicei primul weekend din decembrie.",
+        "dates": "De obicei primul weekend din decembrie",
+        "venue": "Satul Lania"
+      },
+      "green-monday": {
+        "name": "Lunea Verde",
+        "description": "Prima zi a Postului Mare ortodox. Familiile ies la picnic cu bucate de post — pâine lagana, măsline, tahini, fructe de mare. Zmeiele umplu cerul; obiceiul spune că zmeul duce păcatele departe. Parcurile, dealurile și coastele se umplu de ciprioți. Polis-Latchi și alte orașe organizează serbări. E zi liberă. Chiar dacă nu ții post, ritualul și zmeiele merită trăite. Data se mută odată cu Paștele; de regulă sfârșit de februarie sau început de martie.",
+        "dates": "Prima zi de post (variază cu Paștele)",
+        "venue": "Parcuri, plaje și dealuri în tot Ciprul"
+      },
+      "famagusta-carnival": {
+        "name": "Carnavalul din Famagusta",
+        "description": "Carnavalul Paralimni–Dherynia aduce care alegorice, costume și mii de petrecăreți pe coasta de est. Marea paradă străbate Paralimni în duminica dinaintea Postului. Mai puțin agitat decât Limassol, dar nu mai puțin colorat. Familiile se înșiră de-a lungul traseului; regele carnavalului conduce alaiul. O instituție a regiunii. De obicei la început de martie. Vino devreme pentru un loc bun.",
+        "dates": "Duminica dinaintea Postului (început de mar.)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Satul de Crăciun Deryneia",
+        "description": "Țara Căpșunilor de Crăciun. Deryneia — capitala căpșunilor din Cipru — găzduiește unul dintre cele opt sate de Crăciun oficiale. Bucătărie tradițională, artizanat, muzică live și ateliere pentru copii. Muzeul de Artă Populară și câmpurile roșiatice încadrează satul. Weekenduri de la sfârșitul lui noiembrie; zilnic din 23 decembrie. Răspunsul coastei de est la satele de munte. Combină cu Paralimni sau Protaras.",
+        "dates": "Weekenduri sfârșit de nov. – 22 dec.; zilnic 23 dec. – 6 ian.",
+        "venue": "Satul Deryneia"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Satul de Crăciun Statos–Agios Fotios",
+        "description": "Sus, în munții din Paphos, la 950 m. Unul dintre cele opt sate de Crăciun oficiale. Ținut de mere și struguri; satul produce vin, stafide, nuci, migdale. Case de piatră, produse locale și o atmosferă montană liniștită. Mănăstirile Chrysorrogiatissa și Agia Moni în apropiere. De la sfârșitul lui noiembrie până la Bobotează. Alternativa din Paphos la satele din Troodos.",
+        "dates": "Sfârșit de nov. – 6 ian.",
+        "venue": "Satul Statos-Agios Fotios"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Trei zile de jazz cipriot și internațional la Teatrul Rialto. În jur de 15 ansambluri; muzică cipriotă contemporană, ateliere, jam sessions și after-party-uri. Vitrina promovează muzicienii locali în industrie și oferă publicului o doză concentrată din scena de jazz a insulei. De obicei la început de decembrie. Bilete de la 8 € pe zi. Obligatoriu pentru iubitorii de jazz.",
+        "dates": "De obicei primul weekend din decembrie",
+        "venue": "Teatrul Rialto, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Festivalul Vinurilor din Pelopones",
+        "description": "Terroiruri grecești în Cipru. În jur de 25 de crame din Pelopones toarnă vinuri DOP și IGP la Carob Mill Restaurants. Masterclassuri, degustări deschise și somelieri profesioniști. O ocazie să guști Nemea, Mantinia și alte regiuni grecești fără să părăsești insula. De obicei la început de februarie. Bilete de la circa 10 €. Iubitorii de vin să-și noteze.",
+        "dates": "De obicei la început de februarie",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "Un weekend de vin serios la Technopolis 20. Peste 100 de vinuri alese din Cipru, Grecia, Italia și Franța; zeci de producători. Cândva doar pentru profesioniști, acum deschis pasionaților. Două zile la sfârșitul lui ianuarie. Răspunsul Paphosului la marile degustări din Limassol. Rezervă devreme; se umple.",
+        "dates": "Sfârșit de ianuarie (2 zile)",
+        "venue": "Technopolis 20, Paphos"
+      },
+      "protaras-christmas": {
+        "name": "Sărbătorile de Crăciun din Protaras",
+        "description": "Fig Tree Bay și faleza din Protaras se luminează în decembrie. Colindători, tarabe festive și evenimente de Anul Nou. Mai liniștit decât vara; palmierii și marea dau sezonului o notă mediteraneeană. Combină cu Cape Greco sau Konnos pentru o zi pe coastă.",
+        "dates": "Tot decembrie, până la început de ian.",
+        "venue": "Faleza din Protaras"
+      },
+      "epiphany-cyprus": {
+        "name": "Boboteaza (Theophania)",
+        "description": "Pe 6 ianuarie, Ciprul sărbătorește Boboteaza — botezul lui Hristos. Preoții aruncă în mare o cruce de lemn; tineri sar din bărci și de pe digul portului ca să o scoată. Cine o găsește primește binecuvântarea anului. Ceremonia are loc în porturi și pe plaje din toată insula — Larnaca, Limassol, Paphos și alte orașe de coastă. Mulțimile se adună, se cântă imnuri, iar chiar și iarna cei mai curajoși se aruncă în apă. E zi liberă, iar atmosfera e deopotrivă solemnă și de sărbătoare. Îmbracă-te gros și vino devreme pentru un loc bun.",
+        "dates": "6 ianuarie",
+        "venue": "Orașele de coastă"
       }
     }
   }
