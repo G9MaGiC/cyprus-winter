@@ -62,7 +62,6 @@ export default async function SecretsPage() {
         </AppLink>
       </PageHeader>
 
-      <h2 className="sr-only">{tSecrets("sr.tipsIndex")}</h2>
       {secretGems.length === 0 ? (
         <div className={`mt-10 ${EMPTY_STATE}`} role="status" aria-live="polite">
           <p className="text-muted-ink mb-4">{tSecrets("empty.body")}</p>
@@ -72,6 +71,7 @@ export default async function SecretsPage() {
         </div>
       ) : (
       <>
+      <h2 className="sr-only">{tSecrets("sr.tipsIndex")}</h2>
       {/* Region facets over the ~34k-px flat scroll (AUD-68). */}
       <div className="mt-10">
       {(() => {

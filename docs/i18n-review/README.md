@@ -1,8 +1,10 @@
 # Native review sheets
 
-Every non-EN string added or changed on the audit branch (◇ in
-[UX_UI_PERSONA_AUDIT_2026-08-31.md](../UX_UI_PERSONA_AUDIT_2026-08-31.md))
-is pending review by a native speaker. Each CSV in this folder holds one
+Every non-EN string added or changed since the audit baseline
+(`main@ca827e6`, the commit
+[UX_UI_PERSONA_AUDIT_2026-08-31.md](../UX_UI_PERSONA_AUDIT_2026-08-31.md)
+measured — ◇ in that report) is pending review by a native speaker,
+across every batch and merge since. Each CSV in this folder holds one
 locale's full review surface — open it in any spreadsheet app (UTF-8 with
 BOM, so Excel renders Greek/Hebrew correctly).
 
@@ -20,12 +22,12 @@ stale rows).
 
 | Locale | Rows | New | Edited | Source-changed |
 |---|---|---|---|---|
-| de | 156 | 156 | 0 | 0 |
-| el | 156 | 156 | 0 | 0 |
-| pl | 156 | 156 | 0 | 0 |
-| fr | 156 | 156 | 0 | 0 |
-| he | 156 | 156 | 0 | 0 |
-| ro | 156 | 156 | 0 | 0 |
+| de | 1351 | 1302 | 48 | 1 |
+| el | 1372 | 1302 | 69 | 1 |
+| pl | 1354 | 1302 | 51 | 1 |
+| fr | 1348 | 1302 | 45 | 1 |
+| he | 1418 | 1302 | 115 | 1 |
+| ro | 1348 | 1302 | 44 | 2 |
 
 ## What to check per locale
 
@@ -57,7 +59,8 @@ drift from the catalogs — see below).
 ## Regenerating
 
 `npm run i18n:export-review` rebuilds every sheet from the current
-catalogs against the branch's merge-base with `origin/main`. CI runs
+catalogs against the pinned audit baseline (`main@ca827e6`),
+so the surface survives branch restarts and merges intact. CI runs
 `npm run i18n:export-review -- --check` so a catalog edit that isn't
 reflected here fails the Quality job instead of silently staling the
 sheets.

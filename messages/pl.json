@@ -19,7 +19,8 @@
     "planYourTrip": "Zaplanuj wycieczkę",
     "privacy": "Prywatność",
     "terms": "Regulamin",
-    "cycling": "Kolarstwo"
+    "cycling": "Kolarstwo",
+    "install": "Zainstaluj aplikację"
   },
   "travelTrust": {
     "aria": "Oficjalne informacje podróżne",
@@ -56,7 +57,8 @@
     "mainNavigation": "Nawigacja główna",
     "cycling": "Kolarstwo",
     "askAIBlockedAria": "Najpierw dokończ onboarding lub wybór cookies",
-    "nature": "Natura"
+    "nature": "Natura",
+    "install": "Zainstaluj aplikację"
   },
   "common": {
     "nav": {
@@ -3593,7 +3595,8 @@
       "body": "Zainstaluj, by mieć szlaki offline i plan pod ręką.",
       "install": "Zainstaluj",
       "dismiss": "Nie teraz",
-      "iosHint": "Dotknij Udostępnij, potem Dodaj do ekranu początkowego, aby zapisać przewodnik."
+      "iosHint": "Dotknij Udostępnij, potem Dodaj do ekranu początkowego, aby zapisać przewodnik.",
+      "guideLink": "Zobacz pełny przewodnik"
     }
   },
   "nature": {

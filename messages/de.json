@@ -19,7 +19,8 @@
     "planYourTrip": "Reise planen",
     "privacy": "Datenschutz",
     "terms": "AGB",
-    "cycling": "Radfahren"
+    "cycling": "Radfahren",
+    "install": "App installieren"
   },
   "travelTrust": {
     "aria": "Offizielle Reiseinformationen",
@@ -56,7 +57,8 @@
     "mainNavigation": "Hauptnavigation",
     "cycling": "Radfahren",
     "askAIBlockedAria": "Zuerst Onboarding oder Cookie-Auswahl abschließen",
-    "nature": "Natur"
+    "nature": "Natur",
+    "install": "App installieren"
   },
   "common": {
     "nav": {
@@ -3593,7 +3595,8 @@
       "body": "Installieren für offline Wege und Ihren Plan unterwegs.",
       "install": "Installieren",
       "dismiss": "Nicht jetzt",
-      "iosHint": "Tippen Sie auf Teilen, dann Zum Home-Bildschirm, um den Guide zu speichern."
+      "iosHint": "Tippen Sie auf Teilen, dann Zum Home-Bildschirm, um den Guide zu speichern.",
+      "guideLink": "Zur vollständigen Anleitung"
     }
   },
   "nature": {

@@ -2,11 +2,13 @@
 /**
  * Native-review handoff export.
  *
- * Every non-EN string added or changed on this branch (measured against the
- * merge-base with origin/main) is pending native review (the audit's ◇ flag).
- * This script extracts exactly those strings into per-locale CSV sheets a
- * native speaker can open in any spreadsheet app — no repo tooling required —
- * plus a README with per-locale register guidance.
+ * Every non-EN string added or changed since the audit baseline (main@ca827e6,
+ * PR #225 — pinned below, NOT the rolling merge-base: a merge-base-scoped diff
+ * silently dropped 19 still-unreviewed keys when the branch restarted from a
+ * merged PR) is pending native review (the audit's ◇ flag). This script
+ * extracts exactly those strings into per-locale CSV sheets a native speaker
+ * can open in any spreadsheet app — no repo tooling required — plus a README
+ * with per-locale register guidance.
  *
  * A row is exported when the translation changed on the branch ("new"/
  * "edited") — or when the EN SOURCE changed while the translation did not
@@ -18,11 +20,9 @@
  *   npm run i18n:export-review              writes docs/i18n-review/
  *   npm run i18n:export-review -- --check   verifies the committed sheets are
  *                                           current (no writes; exit 1 when
- *                                           stale). Skipped with exit 0 when
- *                                           HEAD *is* the merge-base (e.g. on
- *                                           main after merge) — the sheets are
- *                                           a snapshot of the branch, and
- *                                           there is no diff basis there.
+ *                                           stale). The pinned baseline gives
+ *                                           the check a diff basis everywhere,
+ *                                           main after merge included.
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -57,11 +57,11 @@ function readBaseCatalog(base, locale) {
 const csvField = (v) => `"${v.replace(/"/g, '""')}"`;
 const csvRow = (cells) => cells.map(csvField).join(",");
 
-const base = git("merge-base", "HEAD", "origin/main");
-if (CHECK && base === git("rev-parse", "HEAD")) {
-  console.log("HEAD is the merge-base — sheets are a branch snapshot; freshness check skipped.");
-  process.exit(0);
-}
+// The audit's fixed baseline: main@ca827e6 (PR #225), the commit the persona
+// audit measured. Everything shipped since is ◇ until a native speaker signs
+// it off, however many merges and branch restarts happen in between.
+const AUDIT_BASELINE = "ca827e6";
+const base = git("rev-parse", `${AUDIT_BASELINE}^{commit}`);
 
 const en = readCatalog("en");
 const baseEn = readBaseCatalog(base, "en");
@@ -124,9 +124,11 @@ const countsTable = LOCALES.map(
 
 const readme = `# Native review sheets
 
-Every non-EN string added or changed on the audit branch (◇ in
-[UX_UI_PERSONA_AUDIT_2026-08-31.md](../UX_UI_PERSONA_AUDIT_2026-08-31.md))
-is pending review by a native speaker. Each CSV in this folder holds one
+Every non-EN string added or changed since the audit baseline
+(\`main@${base.slice(0, 7)}\`, the commit
+[UX_UI_PERSONA_AUDIT_2026-08-31.md](../UX_UI_PERSONA_AUDIT_2026-08-31.md)
+measured — ◇ in that report) is pending review by a native speaker,
+across every batch and merge since. Each CSV in this folder holds one
 locale's full review surface — open it in any spreadsheet app (UTF-8 with
 BOM, so Excel renders Greek/Hebrew correctly).
 
@@ -176,7 +178,8 @@ drift from the catalogs — see below).
 ## Regenerating
 
 \`npm run i18n:export-review\` rebuilds every sheet from the current
-catalogs against the branch's merge-base with \`origin/main\`. CI runs
+catalogs against the pinned audit baseline (\`main@${base.slice(0, 7)}\`),
+so the surface survives branch restarts and merges intact. CI runs
 \`npm run i18n:export-review -- --check\` so a catalog edit that isn't
 reflected here fails the Quality job instead of silently staling the
 sheets.

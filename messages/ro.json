@@ -19,7 +19,8 @@
     "planYourTrip": "Planifică-ți călătoria",
     "privacy": "Confidențialitate",
     "terms": "Termeni",
-    "cycling": "Ciclism"
+    "cycling": "Ciclism",
+    "install": "Instalează aplicația"
   },
   "travelTrust": {
     "aria": "Informații oficiale de călătorie",
@@ -56,7 +57,8 @@
     "mainNavigation": "Navigare principală",
     "cycling": "Ciclism",
     "askAIBlockedAria": "Finalizează mai întâi onboarding-ul sau alegerea cookie-urilor",
-    "nature": "Natură"
+    "nature": "Natură",
+    "install": "Instalează aplicația"
   },
   "common": {
     "nav": {
@@ -3593,7 +3595,8 @@
       "body": "Instalează pentru trasee offline și planul tău în mișcare.",
       "install": "Instalează",
       "dismiss": "Nu acum",
-      "iosHint": "Atinge Partajare, apoi Adaugă pe ecranul principal pentru a salva ghidul."
+      "iosHint": "Atinge Partajare, apoi Adaugă pe ecranul principal pentru a salva ghidul.",
+      "guideLink": "Vezi ghidul complet"
     }
   },
   "nature": {

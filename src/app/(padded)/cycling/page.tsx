@@ -6,6 +6,7 @@ import { getCyclingHubContent } from "@/lib/cycling-hub";
 import CyclingOfficialRoutes from "@/components/cycling/CyclingOfficialRoutes";
 import { HOME, LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import PageHeader from "@/components/PageHeader";
 import CyclingFooter from "@/app/(padded)/cycling/CyclingFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -41,6 +42,9 @@ export default async function CyclingPage() {
     getTranslations("cycling.page"),
   ]);
   const { places, trailLinks } = getCyclingHubContent();
+  // AUD-10 overlay for the card grid (id-gated no-op off coverage); the
+  // JSON-LD below keeps reading the EN base per the register contract.
+  const localizedPlaces = await Promise.all(places.map((p) => localizeDiscoverContent(p)));
   const cyclingItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -85,7 +89,7 @@ export default async function CyclingPage() {
           {tCycling("srHeading")}
         </h2>
         <ul role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-          {places.map((place) => (
+          {localizedPlaces.map((place) => (
             <li key={place.id}>
               <AttractionCard a={place} />
             </li>

@@ -19,7 +19,8 @@
     "planYourTrip": "Planifiez votre voyage",
     "privacy": "Confidentialité",
     "terms": "Conditions",
-    "cycling": "Vélo"
+    "cycling": "Vélo",
+    "install": "Installer l'application"
   },
   "travelTrust": {
     "aria": "Informations de voyage officielles",
@@ -56,7 +57,8 @@
     "mainNavigation": "Navigation principale",
     "cycling": "Vélo",
     "askAIBlockedAria": "Terminez d’abord l’accueil ou le choix des cookies",
-    "nature": "Nature"
+    "nature": "Nature",
+    "install": "Installer l'application"
   },
   "common": {
     "nav": {
@@ -3593,7 +3595,8 @@
       "body": "Installez pour les sentiers hors ligne et votre plan en déplacement.",
       "install": "Installer",
       "dismiss": "Pas maintenant",
-      "iosHint": "Appuyez sur Partager, puis Sur l'écran d'accueil pour enregistrer le guide."
+      "iosHint": "Appuyez sur Partager, puis Sur l'écran d'accueil pour enregistrer le guide.",
+      "guideLink": "Voir le guide complet"
     }
   },
   "nature": {

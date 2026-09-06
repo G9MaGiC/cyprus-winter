@@ -24,6 +24,7 @@ export type SiteFooterProps = {
     troodos: string;
     paphos: string;
     practical: string;
+    install: string;
     privacy: string;
     terms: string;
   };
@@ -47,6 +48,7 @@ const DEFAULT_LABELS = {
   troodos: "Troodos",
   paphos: "Paphos",
   practical: "Drive on the left. Pack layers. The island rewards the curious. Tap Ask AI anytime.",
+  install: "Install the app",
   privacy: "Privacy",
   terms: "Terms",
 };
@@ -63,6 +65,7 @@ const FOOTER_LINKS: { href: string; key: keyof typeof DEFAULT_LABELS }[] = [
   { href: "/cycling", key: "cycling" },
   { href: "/regions/troodos", key: "troodos" },
   { href: "/regions/paphos", key: "paphos" },
+  { href: "/install", key: "install" },
 ];
 
 export default function SiteFooter({ labels, localeSwitcher, LinkComponent = AppLink }: SiteFooterProps) {

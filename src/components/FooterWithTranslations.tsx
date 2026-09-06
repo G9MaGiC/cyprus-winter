@@ -20,6 +20,7 @@ export default async function FooterWithTranslations() {
     troodos: t("troodos"),
     paphos: t("paphos"),
     practical: t("practical"),
+    install: t("install"),
     privacy: t("privacy"),
     terms: t("terms"),
   };

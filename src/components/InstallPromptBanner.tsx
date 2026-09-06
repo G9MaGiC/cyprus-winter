@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import AppLink from "@/components/AppLink";
 import { CARD, CTA, LAYER, TRANSITION } from "@/lib/design-tokens";
 import { useBlockingOverlaysActive } from "@/hooks/useBlockingOverlaysActive";
 import { PWA_INSTALL_DISMISSED_KEY, PWA_VISIT_COUNT_KEY } from "@/lib/local-storage-keys";
@@ -97,7 +98,20 @@ export default function InstallPromptBanner() {
     >
       <div className={`${CARD.base} mx-auto max-w-lg ${CARD.content} shadow-xl border border-sand-200/80`}>
         <p className="font-semibold text-charcoal mb-1">{t("title")}</p>
-        <p className="text-sm text-muted-ink mb-3">{iosMode ? t("iosHint") : t("body")}</p>
+        <p className="text-sm text-muted-ink mb-3">
+          {iosMode ? t("iosHint") : t("body")}
+          {iosMode && (
+            <>
+              {" "}
+              <AppLink
+                href="/install"
+                className="inline-flex items-center min-h-[44px] py-2 -my-2 text-aegean underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50 rounded"
+              >
+                {t("guideLink")}
+              </AppLink>
+            </>
+          )}
+        </p>
         <div className="flex flex-wrap gap-2">
           {!iosMode && (
             <button type="button" onClick={install} className={`${CTA.primaryCompact} min-h-[44px]`}>

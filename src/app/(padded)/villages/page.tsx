@@ -5,6 +5,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { villages } from "@/data/attractions";
 import { HOME, LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import HubRegionFilter, { type HubFilterGroup } from "@/components/HubRegionFilter";
 import PageHeader from "@/components/PageHeader";
 import HubFooter from "@/components/HubFooter";
@@ -43,6 +44,9 @@ export default async function VillagesPage() {
     getTranslations("discover"),
   ]);
 
+  // AUD-10 overlay for the card grid (id-gated no-op off coverage); the
+  // JSON-LD below keeps reading the EN base per the register contract.
+  const localizedVillages = await Promise.all(villages.map((v) => localizeDiscoverContent(v)));
   const villagesItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -96,7 +100,7 @@ export default async function VillagesPage() {
           return <HubRegionFilter containerId="villages-grid" groups={groups} total={villages.length} />;
         })()}
         <ul id="villages-grid" role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-          {villages.map((village) => (
+          {localizedVillages.map((village) => (
             <li key={village.id} data-hub-group={village.region}><AttractionCard a={village} /></li>
           ))}
         </ul>

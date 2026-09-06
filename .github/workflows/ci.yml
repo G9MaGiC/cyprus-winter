@@ -77,9 +77,8 @@ jobs:
         run: npm run i18n:editorial-drift
 
       # The committed native-review sheets (docs/i18n-review) must match the
-      # catalogs. The script needs real history to find the merge-base with
-      # origin/main (checkout is shallow), and skips itself when HEAD *is*
-      # the merge-base (post-merge on main there is no diff basis).
+      # catalogs. The script diffs against the pinned audit baseline
+      # (main@ca827e6), so it needs real history (checkout is shallow).
       - name: i18n review sheets freshness
         run: |
           git fetch origin main --unshallow 2>/dev/null || git fetch origin main
