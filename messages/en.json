@@ -5963,6 +5963,91 @@
         "openingHours": "Cafés and tavernas; typically 9–18 or lunch hours",
         "transport": "Kouklia village, near Palaipafos. ~25 min from Paphos.",
         "parking": "Village; near ancient site."
+      },
+      "seasons-oriental": {
+        "description": "Wiz 50 Best #2 for 2025. Ethnic Asian cuisine at Four Seasons Hotel, Limassol. Cantonese-based cuisine under Head Chef Guan Ruijiong. Winter menu and terrace. Reserve ahead. A notch of sophistication for special evenings. Combine with Kourion or Kolossi for a coastal day, then dinner.",
+        "winterTip": "Reserve ahead. Winter terrace when mild. Wiz 50 Best top 3.",
+        "bestTimeToVisit": "Dinner; book well ahead",
+        "localSecret": "Cantonese-based, head chef Guan Ruijiong. A different flavour to Mediterranean Cyprus."
+      },
+      "kiti-tavernas": {
+        "description": "Post-Angeloktisti church. The Byzantine church of Angeloktisti in Kiti draws visitors; the village tavernas do lunch. Simple Cypriot fare, meze, village pace. Church first—the 6th-century mosaic is one of the oldest in the eastern Mediterranean—then lunch. Combine with Zygi for fish or Lefkara for lace. Larnaca Salt Lake and Cape Greco are within reach.",
+        "winterTip": "Church first, then lunch. Allow 40 min for the church. Combine with Zygi or Lefkara for a full day.",
+        "bestTimeToVisit": "Lunch; after morning at church",
+        "localSecret": "The Angeloktisti mosaics, then village lunch. Kiti rewards the slow. Most tour buses skip it.",
+        "openingHours": "Tavernas typically 12–15:30, 19–22",
+        "transport": "Kiti village, near Larnaca airport. ~15 min from Larnaca.",
+        "parking": "Village; near church."
+      },
+      "platres-trout": {
+        "description": "The trout tavernas of Platres. Order psaróvrasto—trout poached in wine and herbs. Fireplace, mountain air, the sound of the Kryos Potamos. After Artemis, Caledonia, or Kampos tou Livadiou. The village knows hikers. Psilo Dendro is the classic; others line the river. Winter lunch by the fire.",
+        "winterTip": "Trout by the fire. After Artemis, Caledonia, or Atalante. Finish trail by 1pm, Platres for lunch.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "Psilo Dendro by the river is the classic. Psaróvrasto—trout, wine, herbs. The mountain does the work.",
+        "openingHours": "Typically 12–15:30, 19–22; Psilo Dendro and others",
+        "transport": "Platres village. ~45 min from Limassol.",
+        "parking": "Village parking; walk to river tavernas."
+      },
+      "latsi-harbour": {
+        "description": "Harbour fish on the Akamas edge. Latsi serves what the boats bring in—simpler than Polis, closer to the Baths of Aphrodite trailhead. Winter lunch by the water. Combine with Adonis, Aphrodite, or Smigies in the morning; Latsi for lunch before the loop back. The drive along the coast is part of the day. Less crowded than Polis harbour.",
+        "winterTip": "Closer to Baths of Aphrodite than Polis. Do trail first, Latsi for lunch. Simpler, quieter than Polis harbour.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "On the Akamas loop. Fresh fish, harbour views. Latsi is the quiet alternative to Polis. The drive along the coast rewards.",
+        "openingHours": "Tavernas typically 12–15:30, 19–23",
+        "transport": "Latsi harbour, north of Polis. ~40 min from Paphos.",
+        "parking": "Harbour area."
+      },
+      "nicosia-tavernas": {
+        "description": "Laiki Geitonia and the old town. Tavernas tucked in cobbled streets. Meze, souvlaki, halloumi. Winter evenings are cosy. Combine with Leventis Museum, Cyprus Museum, or a rainy-day capital explore. The old town has a different rhythm. Reserve for popular spots.",
+        "winterTip": "Laiki Geitonia. Cozy in winter. Combine with museums.",
+        "bestTimeToVisit": "Lunch or dinner; reserve for popular spots",
+        "localSecret": "The old town rhythm. Meze, halloumi, the pace of the capital."
+      },
+      "pissouri-tavernas": {
+        "description": "Cliff tavernas above Pissouri Bay. Sunset views over the curve of the coast. Meze, fish, local wine. Winter sunsets around five. The bay stays mild when the mountains are cold. Combine with Petra tou Romiou coastal path, Kourion ruins, or Avakas Gorge. A west-Limassol lunch or dinner.",
+        "winterTip": "Cliff tavernas. Sunset around 5pm in winter. Mild bay temps. Do Avakas or Petra tou Romiou in the morning.",
+        "bestTimeToVisit": "Late lunch or early dinner for sunset",
+        "localSecret": "The curve of the bay. Cliff seating. Sunset with a glass. Pissouri is quieter than Limassol—the bay rewards.",
+        "openingHours": "Tavernas typically 12–15:30, 19–23",
+        "transport": "Pissouri Bay. ~35 min from Limassol, ~25 min from Paphos.",
+        "parking": "Bay and cliff area."
+      },
+      "omodos-tavernas": {
+        "description": "The cobbled square of Omodos. Tavernas under the plane trees. Meze, kleftiko, halloumi, local wine. After a Krasochoria winery loop—Tsiakkas, Oenou Yi, Lania, Loukas—or the Artemis trail, Omodos is the natural lunch stop. The monastery overlooks the village. Winter sun on the square. The pace is slow. Reserve on weekends.",
+        "winterTip": "Cobbled square. Winter sun. After Tsiakkas, Lania, or Artemis trail. Reserve weekends.",
+        "bestTimeToVisit": "Lunch; reserve weekends",
+        "localSecret": "The natural lunch stop on the Krasochoria loop. Meze, wine, the pace of the village. One kafenion has a blue door—the winemakers use it.",
+        "openingHours": "Tavernas typically 12–15:30, 19–22; square cafés all day",
+        "transport": "Omodos village, Krasochoria. ~40 min from Limassol.",
+        "parking": "Village square; fills at weekends."
+      },
+      "limassol-marina-restaurants": {
+        "description": "Superyachts. Cobbled promenade. The marina sits between the old town and the sea—Mediterranean, fish, Italian, sushi. In winter the crowds thin and the light on the water is golden. The cafés and restaurants stay open; sit outside with a blanket on mild December evenings. This is urban Cyprus at its best. Not the villages—the city pulse, the marina buzz, the promenade stroll. Reserve for waterfront tables; the popular spots fill. Pair with Kolossi or Kourion in the morning, then come here for dinner. The contrast hits.",
+        "winterTip": "Fewer crowds than summer. Mild December evenings: sit outside with a blanket. The light on the water at dusk. Reserve waterfront tables for popular spots.",
+        "bestTimeToVisit": "Dinner; sunset from the promenade. Reserve ahead for weekend waterfront tables.",
+        "localSecret": "The far end of the promenade, toward the old fort. Fewer tourists, same views. Order a coffee first. Walk the marina. Then eat. Don't rush the approach.",
+        "openingHours": "Most venues 10–23; some close 22. Varies by restaurant—check individual listings.",
+        "transport": "Walk from old town (10 min). Bus 30 to Marina; taxi from centre.",
+        "parking": "Underground marina car park; surface spaces along the promenade."
+      },
+      "protaras-tavernas": {
+        "description": "Protaras waterfront and inland. Fish tavernas by the sea; village meze spots. Winter: fewer crowds, mild evenings. Do the Cape Greco trail in the morning, Protaras for lunch. Fig Tree Bay and Konnos are nearby. The pace is slower than summer. Reserve for popular spots.",
+        "winterTip": "Fewer crowds than summer. Do Cape Greco trail in the morning, Protaras for lunch. Mild evenings.",
+        "bestTimeToVisit": "Lunch; after Cape Greco trail",
+        "localSecret": "Winter Protaras is quieter. Fish and meze. The pace slows. Cape Greco trail earns you the meal.",
+        "openingHours": "Tavernas typically 12–15:30, 19–23",
+        "transport": "Protaras waterfront. ~45 min from Larnaca.",
+        "parking": "Waterfront and village."
+      },
+      "larnaca-old-town": {
+        "description": "Larnaca seafront and old town. Meze, fish, souvlaki. The Finikoudes promenade and the backstreets. Winter: mild; sit outside with a blanket. Combine with Salt Lake, Kiti, Choirokoitia, or Zygi. The city has its own rhythm.",
+        "winterTip": "Mild winter. Finikoudes and backstreets. Salt Lake flamingos nearby.",
+        "localSecret": "Seafront and old town. Meze, fish. The city rhythm."
+      },
+      "pafos-harbour": {
+        "description": "Pafos harbour and castle area. Fish, meze, harbour views. Winter sunsets. Combine with Pafos mosaics, Tomb of Kings, or Coral Bay. The castle lights up at dusk. Reserve for waterfront spots.",
+        "winterTip": "Harbour views. Winter sunsets. Castle lights at dusk.",
+        "localSecret": "Harbour and castle. Fish, meze. Dusk is the hour."
       }
     }
   }

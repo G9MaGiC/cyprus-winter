@@ -5963,6 +5963,91 @@
         "openingHours": "Cafenele și taverne; de obicei 9–18 sau la orele prânzului",
         "transport": "Satul Kouklia, lângă Palaipafos. ~25 min din Paphos.",
         "parking": "În sat; lângă situl antic."
+      },
+      "seasons-oriental": {
+        "description": "Nr. 2 în Wiz 50 Best pentru 2025. Bucătărie asiatică la hotelul Four Seasons, Limassol. Bază cantoneză, sub head chef Guan Ruijiong. Meniu de iarnă și terasă. Rezervă din timp. O treaptă de rafinament pentru seri speciale. Combină cu Kourion sau Kolossi pentru o zi pe coastă, apoi cină.",
+        "winterTip": "Rezervă din timp. Terasă de iarnă când vremea e blândă. Top 3 în Wiz 50 Best.",
+        "bestTimeToVisit": "Cină; rezervă cu mult timp înainte",
+        "localSecret": "Bază cantoneză, head chef Guan Ruijiong. Un alt gust decât Ciprul mediteranean."
+      },
+      "kiti-tavernas": {
+        "description": "După biserica Angeloktisti. Biserica bizantină Angeloktisti din Kiti atrage vizitatorii; prânzul îl fac tavernele satului. Bucate cipriote simple, meze, ritm de sat. Întâi biserica — mozaicul din secolul al VI-lea e printre cele mai vechi din estul Mediteranei —, apoi masa. Combină cu Zygi pentru pește sau Lefkara pentru dantelă. Lacul Sărat din Larnaca și Cape Greco sunt în apropiere.",
+        "winterTip": "Întâi biserica, apoi prânzul. Lasă 40 de minute pentru biserică. Combină cu Zygi sau Lefkara pentru o zi întreagă.",
+        "bestTimeToVisit": "La prânz; după dimineața la biserică",
+        "localSecret": "Mozaicurile de la Angeloktisti, apoi prânz în sat. Kiti îi răsplătește pe cei fără grabă. Mai toate autocarele îl ocolesc.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Kiti, lângă aeroportul Larnaca. ~15 min din Larnaca.",
+        "parking": "În sat; lângă biserică."
+      },
+      "platres-trout": {
+        "description": "Tavernele cu păstrăv din Platres. Comandă psaróvrasto — păstrăv fiert ușor în vin și ierburi. Șemineu, aer de munte, susurul râului Kryos Potamos. După Artemis, Caledonia sau Kampos tou Livadiou. Satul cunoaște drumeții. Psilo Dendro e clasicul; altele se înșiră pe râu. Prânz de iarnă lângă foc.",
+        "winterTip": "Păstrăv lângă foc. După Artemis, Caledonia sau Atalante. Termină traseul până la 13, Platres la prânz.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Psilo Dendro, de lângă râu, e clasicul. Psaróvrasto — păstrăv, vin, ierburi. Muntele face restul.",
+        "openingHours": "De obicei 12–15:30, 19–22; Psilo Dendro și altele",
+        "transport": "Satul Platres. ~45 min din Limassol.",
+        "parking": "Parcarea satului; până la tavernele de pe râu pe jos."
+      },
+      "latsi-harbour": {
+        "description": "Pește de port la marginea Akamasului. Latsi servește ce aduc bărcile — mai simplu decât Polis, mai aproape de startul traseului de la Băile Afroditei. Prânz de iarnă lângă apă. Combină dimineața Adonis, Afrodita sau Smigies; Latsi la prânz înainte de drumul înapoi. Șoseaua de coastă e parte din zi. Mai puțină lume decât în portul Polis.",
+        "winterTip": "Mai aproape de Băile Afroditei decât Polis. Întâi traseul, Latsi la prânz. Mai simplu, mai liniștit decât portul Polis.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Pe bucla Akamas. Pește proaspăt, vedere la port. Latsi e alternativa liniștită la Polis. Drumul de coastă răsplătește.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Portul Latsi, la nord de Polis. ~40 min din Paphos.",
+        "parking": "Zona portului."
+      },
+      "nicosia-tavernas": {
+        "description": "Laiki Geitonia și orașul vechi. Taverne ascunse pe străduțe pietruite. Meze, souvlaki, halloumi. Serile de iarnă sunt intime. Combină cu Muzeul Leventis, Muzeul Ciprului sau o explorare a capitalei pe ploaie. Orașul vechi are alt ritm. Rezervă la localurile căutate.",
+        "winterTip": "Laiki Geitonia. Intim iarna. Combină cu muzeele.",
+        "bestTimeToVisit": "Prânz sau cină; rezervă la localurile căutate",
+        "localSecret": "Ritmul orașului vechi. Meze, halloumi, tempoul capitalei."
+      },
+      "pissouri-tavernas": {
+        "description": "Taverne pe faleză deasupra golfului Pissouri. Vedere spre apus peste arcul coastei. Meze, pește, vin local. Apusuri de iarnă pe la cinci. Golful rămâne blând când munții sunt reci. Combină cu poteca de coastă Petra tou Romiou, ruinele Kourion sau cheile Avakas. Prânz sau cină în vestul Limassolului.",
+        "winterTip": "Taverne pe faleză. Iarna apusul e pe la 17. Golf blând. Dimineața Avakas sau Petra tou Romiou.",
+        "bestTimeToVisit": "Prânz târziu sau cină devreme, pentru apus",
+        "localSecret": "Arcul golfului. Locuri pe faleză. Apus cu un pahar. Pissouri e mai liniștit decât Limassol — golful răsplătește.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Golful Pissouri. ~35 min din Limassol, ~25 min din Paphos.",
+        "parking": "La golf și pe faleză."
+      },
+      "omodos-tavernas": {
+        "description": "Piața pietruită din Omodos. Taverne sub platani. Meze, kleftiko, halloumi, vin local. După o buclă a cramelor din Krasochoria — Tsiakkas, Oenou Yi, Lania, Loukas — sau traseul Artemis, Omodos e oprirea firească de prânz. Mănăstirea veghează satul. Soare de iarnă în piață. Ritmul e lent. Rezervă în weekend.",
+        "winterTip": "Piață pietruită. Soare de iarnă. După Tsiakkas, Lania sau traseul Artemis. Rezervă în weekend.",
+        "bestTimeToVisit": "La prânz; rezervă în weekend",
+        "localSecret": "Oprirea firească pe bucla Krasochoria. Meze, vin, ritmul satului. Un kafenion are ușa albastră — acolo stau vinificatorii.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22; cafenelele din piață toată ziua",
+        "transport": "Satul Omodos, Krasochoria. ~40 min din Limassol.",
+        "parking": "Piața satului; se umple în weekend."
+      },
+      "limassol-marina-restaurants": {
+        "description": "Superyachturi. Promenadă pietruită. Marina stă între orașul vechi și mare — mediteranean, pește, italian, sushi. Iarna mulțimile se răresc, iar lumina de pe apă devine aurie. Cafenelele și restaurantele rămân deschise; stai afară cu o pătură în serile blânde de decembrie. Acesta e Ciprul urban în cea mai bună formă. Nu satele — pulsul orașului, forfota marinei, plimbarea pe promenadă. Rezervă mesele de la apă; localurile căutate se umplu. Combină cu Kolossi sau Kourion dimineața, apoi vino aici la cină. Contrastul își face efectul.",
+        "winterTip": "Mai puțină lume decât vara. Seri blânde de decembrie: stai afară cu o pătură. Lumina de pe apă la asfințit. Rezervă mesele de la apă la localurile căutate.",
+        "bestTimeToVisit": "Cină; apusul de pe promenadă. Rezervă din timp mesele de la apă în weekend.",
+        "localSecret": "Capătul îndepărtat al promenadei, spre vechiul fort. Mai puțini turiști, aceleași priveliști. Comandă întâi o cafea. Dă ocol marinei. Apoi mănâncă. Nu grăbi apropierea.",
+        "openingHours": "Majoritatea localurilor 10–23; unele închid la 22. Diferă de la un restaurant la altul — verifică fiecare în parte.",
+        "transport": "Pe jos din orașul vechi (10 min). Autobuzul 30 până la marina; taxi din centru.",
+        "parking": "Parcare subterană la marina; locuri de-a lungul promenadei."
+      },
+      "protaras-tavernas": {
+        "description": "Malul din Protaras și interiorul. Taverne cu pește la mare; localuri cu meze în sat. Iarna: mai puțină lume, seri blânde. Dimineața traseul Cape Greco, Protaras la prânz. Fig Tree Bay și Konnos sunt alături. Ritmul e mai lent decât vara. Rezervă la localurile căutate.",
+        "winterTip": "Mai puțină lume decât vara. Dimineața traseul Cape Greco, Protaras la prânz. Seri blânde.",
+        "bestTimeToVisit": "La prânz; după traseul Cape Greco",
+        "localSecret": "Protarasul de iarnă e mai liniștit. Pește și meze. Ritmul scade. Traseul Cape Greco îți câștigă masa.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Malul din Protaras. ~45 min din Larnaca.",
+        "parking": "Pe mal și în sat."
+      },
+      "larnaca-old-town": {
+        "description": "Faleza și orașul vechi din Larnaca. Meze, pește, souvlaki. Promenada Finikoudes și străduțele din spate. Iarna: blândă; stai afară cu o pătură. Combină cu Lacul Sărat, Kiti, Choirokoitia sau Zygi. Orașul are ritmul lui.",
+        "winterTip": "Iarnă blândă. Finikoudes și străduțele. Flamingii Lacului Sărat sunt aproape.",
+        "localSecret": "Faleza și orașul vechi. Meze, pește. Ritmul orașului."
+      },
+      "pafos-harbour": {
+        "description": "Portul și zona castelului din Pafos. Pește, meze, vedere la port. Apusuri de iarnă. Combină cu mozaicurile din Pafos, Mormintele Regilor sau Coral Bay. Castelul se aprinde la asfințit. Rezervă locurile de la apă.",
+        "winterTip": "Vedere la port. Apusuri de iarnă. Luminile castelului la asfințit.",
+        "localSecret": "Portul și castelul. Pește, meze. Asfințitul e ora potrivită."
       }
     }
   }
