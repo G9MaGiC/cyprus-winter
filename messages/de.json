@@ -5519,6 +5519,69 @@
         "coastDesc": "Warm. Manche schwimmen. Der Ostertermin variiert; die Dörfer erwachen.",
         "troodosDesc": "Die Berge grün. Alle Wege offen. Frühlingsklarheit."
       }
+    },
+    "airport": {
+      "lca": {
+        "city": "Larnaka",
+        "transport": {
+          "taxi": {
+            "type": "Taxi",
+            "description": "Meet & Greet, feste Preise. Am besten bei später Ankunft oder für Gruppen.",
+            "approxCost": "25 bis 45 € nach Larnaka, 50 bis 70 € nach Limassol, 80 bis 100 € nach Paphos",
+            "duration": "15 bis 60 Min.",
+            "tip": "Buchen Sie online vor für die besten Preise; die Fahrer erwarten Sie in der Ankunftshalle."
+          },
+          "bus": {
+            "type": "Bus",
+            "description": "Kapnos-Shuttle zu den großen Ferienorten. Bequem und günstig.",
+            "approxCost": "8 bis 15 € pro Strecke",
+            "duration": "30 bis 90 Min.",
+            "tip": "Prüfen Sie die Fahrpläne für Ihren Ort; Buchung online oder am Schalter."
+          },
+          "car-rental": {
+            "type": "Mietwagen",
+            "description": "Linksverkehr. Internationaler Führerschein wird anerkannt.",
+            "approxCost": "25 bis 60 €/Tag",
+            "tip": "Buchen Sie im Voraus; die großen Anbieter sitzen in der Ankunftshalle."
+          }
+        },
+        "tips": {
+          "0": "Kostenloses WLAN in der Ankunftshalle. Trinken Sie einen Kaffee und planen Sie in Ruhe.",
+          "1": "EU-SIM-Karten funktionieren. Lokale SIMs für Daten gibt es in der Ankunftshalle.",
+          "2": "Nur Euro (€). Geldautomaten und Wechselstube in der Ankunftshalle. Kleine Dorfläden bevorzugen Bargeld.",
+          "3": "Notruf 112 · Touristeninfo 1460 · Speichern Sie beide."
+        }
+      },
+      "pfo": {
+        "city": "Paphos",
+        "transport": {
+          "taxi": {
+            "type": "Taxi",
+            "description": "Meet & Greet in der Ankunftshalle. Feste Tarife nach Paphos, Coral Bay, Limassol.",
+            "approxCost": "25 bis 35 € nach Paphos, 60 bis 80 € nach Limassol, 120 bis 150 € nach Larnaka",
+            "duration": "15 bis 90 Min.",
+            "tip": "Vorbuchen erspart Warteschlangen; rund um die Uhr verfügbar."
+          },
+          "bus": {
+            "type": "Bus",
+            "description": "Linie 612 zum Hafen von Paphos und in die Ferienorte. Günstig und unkompliziert.",
+            "approxCost": "2 bis 4 €",
+            "duration": "30 bis 45 Min.",
+            "tip": "Fährt regelmäßig; prüfen Sie die Abendzeiten."
+          },
+          "car-rental": {
+            "type": "Mietwagen",
+            "description": "Ideal, wenn Sie Mosaiken, Strände und Weindörfer vorhaben. Der Westen belohnt ein Auto.",
+            "approxCost": "25 bis 60 €/Tag",
+            "tip": "Mosaiken, Dörfer, Lara Beach: alles in einer Stunde erreichbar. Vorab buchen, und Sie sind startklar."
+          }
+        },
+        "tips": {
+          "0": "Kleiner als Larnaka. Meist schneller durch die Kontrollen.",
+          "1": "Antike Stätten, Strände und Weindörfer in Reichweite. Coral Bay, Mosaiken, Lara Beach.",
+          "2": "Linksverkehr. Notruf 112 · Touristeninfo 1460."
+        }
+      }
     }
   }
 }

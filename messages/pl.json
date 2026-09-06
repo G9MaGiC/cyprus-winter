@@ -5519,6 +5519,69 @@
         "coastDesc": "Ciepło. Niektórzy pływają. Termin Wielkanocy się zmienia; wioski budzą się do życia.",
         "troodosDesc": "Góry zielone. Wszystkie szlaki otwarte. Wiosenna przejrzystość."
       }
+    },
+    "airport": {
+      "lca": {
+        "city": "Larnaka",
+        "transport": {
+          "taxi": {
+            "type": "Taksówka",
+            "description": "Kierowca czeka z tabliczką, stałe stawki. Najlepsza przy późnych przylotach i dla grup.",
+            "approxCost": "25 do 45 € do Larnaki, 50 do 70 € do Limassol, 80 do 100 € do Pafos",
+            "duration": "15 do 60 min",
+            "tip": "Zarezerwuj online — wyjdzie taniej; kierowcy czekają w hali przylotów."
+          },
+          "bus": {
+            "type": "Autobus",
+            "description": "Shuttle Kapnos do głównych kurortów. Wygodnie i tanio.",
+            "approxCost": "8 do 15 € w jedną stronę",
+            "duration": "30 do 90 min",
+            "tip": "Sprawdź rozkład do swojego kurortu; bilet online albo przy stanowisku."
+          },
+          "car-rental": {
+            "type": "Wynajem auta",
+            "description": "Ruch lewostronny. Międzynarodowe prawo jazdy jest honorowane.",
+            "approxCost": "25 do 60 €/dzień",
+            "tip": "Rezerwuj z wyprzedzeniem; duże wypożyczalnie są w hali przylotów."
+          }
+        },
+        "tips": {
+          "0": "Darmowe WiFi w hali przylotów. Weź kawę i spokojnie się ogarnij.",
+          "1": "Karty SIM z UE działają. Lokalne karty na internet kupisz w hali przylotów.",
+          "2": "Tylko euro (€). Bankomaty i kantor w hali przylotów. Małe wiejskie sklepy wolą gotówkę.",
+          "3": "Numer alarmowy 112 · Informacja turystyczna 1460 · Zapisz oba."
+        }
+      },
+      "pfo": {
+        "city": "Pafos",
+        "transport": {
+          "taxi": {
+            "type": "Taksówka",
+            "description": "Kierowca czeka w hali przylotów. Stałe stawki do Pafos, Coral Bay i Limassol.",
+            "approxCost": "25 do 35 € do Pafos, 60 do 80 € do Limassol, 120 do 150 € do Larnaki",
+            "duration": "15 do 90 min",
+            "tip": "Rezerwacja z góry oszczędza kolejek; dostępne całą dobę."
+          },
+          "bus": {
+            "type": "Autobus",
+            "description": "Linia 612 do portu w Pafos i kurortów. Tanio i bez kombinowania.",
+            "approxCost": "2 do 4 €",
+            "duration": "30 do 45 min",
+            "tip": "Kursuje regularnie; sprawdź wieczorne odjazdy."
+          },
+          "car-rental": {
+            "type": "Wynajem auta",
+            "description": "Najlepszy, jeśli planujesz mozaiki, plaże i winne wioski. Zachód wynagradza własne auto.",
+            "approxCost": "25 do 60 €/dzień",
+            "tip": "Mozaiki, wioski, plaża Lara: wszystko w godzinę. Zarezerwuj wcześniej i gotowe."
+          }
+        },
+        "tips": {
+          "0": "Mniejsze niż Larnaka. Zwykle szybciej przez kontrolę.",
+          "1": "Starożytne stanowiska, plaże i winne wioski w zasięgu. Coral Bay, mozaiki, plaża Lara.",
+          "2": "Ruch lewostronny. Numer alarmowy 112 · Informacja turystyczna 1460."
+        }
+      }
     }
   }
 }

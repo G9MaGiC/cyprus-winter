@@ -5519,6 +5519,69 @@
         "coastDesc": "Cald. Unii înoată. Data Paștelui variază; satele prind viață.",
         "troodosDesc": "Muntele verde. Toate traseele deschise. Claritate de primăvară."
       }
+    },
+    "airport": {
+      "lca": {
+        "city": "Larnaca",
+        "transport": {
+          "taxi": {
+            "type": "Taxi",
+            "description": "Șoferul te așteaptă la sosiri, tarife fixe. Cel mai bun pentru sosiri târzii sau grupuri.",
+            "approxCost": "25 până la 45 € spre Larnaca, 50 până la 70 € spre Limassol, 80 până la 100 € spre Paphos",
+            "duration": "15 până la 60 min",
+            "tip": "Rezervă online pentru cele mai bune tarife; șoferii te așteaptă la sosiri."
+          },
+          "bus": {
+            "type": "Autobuz",
+            "description": "Shuttle Kapnos spre principalele stațiuni. Confortabil și ieftin.",
+            "approxCost": "8 până la 15 € pe sens",
+            "duration": "30 până la 90 min",
+            "tip": "Verifică orarele pentru stațiunea ta; bilete online sau la ghișeu."
+          },
+          "car-rental": {
+            "type": "Închiriere auto",
+            "description": "Se conduce pe stânga. Permisul internațional este acceptat.",
+            "approxCost": "25 până la 60 €/zi",
+            "tip": "Rezervă din timp; marile companii sunt la sosiri."
+          }
+        },
+        "tips": {
+          "0": "WiFi gratuit la sosiri. Ia o cafea și organizează-te în liniște.",
+          "1": "Cartelele SIM din UE funcționează. SIM-uri locale pentru date, la sosiri.",
+          "2": "Doar euro (€). Bancomate și schimb valutar la sosiri. Micile magazine din sate preferă numerar.",
+          "3": "Urgențe 112 · Informații turistice 1460 · Salvează-le pe amândouă."
+        }
+      },
+      "pfo": {
+        "city": "Paphos",
+        "transport": {
+          "taxi": {
+            "type": "Taxi",
+            "description": "Șoferul te așteaptă la sosiri. Tarife fixe spre Paphos, Coral Bay, Limassol.",
+            "approxCost": "25 până la 35 € spre Paphos, 60 până la 80 € spre Limassol, 120 până la 150 € spre Larnaca",
+            "duration": "15 până la 90 min",
+            "tip": "Rezervarea din timp evită cozile; disponibil non-stop."
+          },
+          "bus": {
+            "type": "Autobuz",
+            "description": "Linia 612 spre portul Paphos și zonele de stațiune. Ieftin și simplu.",
+            "approxCost": "2 până la 4 €",
+            "duration": "30 până la 45 min",
+            "tip": "Circulă regulat; verifică orarele de seară."
+          },
+          "car-rental": {
+            "type": "Închiriere auto",
+            "description": "Cea mai bună alegere dacă vrei mozaicuri, plaje și sate viticole. Vestul răsplătește mașina.",
+            "approxCost": "25 până la 60 €/zi",
+            "tip": "Mozaicuri, sate, plaja Lara: totul la o oră distanță. Rezervă din timp și ești gata."
+          }
+        },
+        "tips": {
+          "0": "Mai mic decât Larnaca. De obicei treci mai repede de control.",
+          "1": "Situri antice, plaje și sate viticole la îndemână. Coral Bay, mozaicuri, plaja Lara.",
+          "2": "Se conduce pe stânga. Urgențe 112 · Informații turistice 1460."
+        }
+      }
     }
   }
 }
