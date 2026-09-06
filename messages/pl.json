@@ -5717,6 +5717,86 @@
       "cy-rc18-traditional-villages": {
         "description": "Pętla po zapleczu Limassol przez kamienne wioski i dróżki winnego kraju. Kultura i wspinaczka w jednej trasie."
       }
+    },
+    "events": {
+      "limassol-carnival": {
+        "name": "Karnawał w Limassol",
+        "description": "Największy karnawał Cypru trwa dwa tygodnie przed Wielkim Postem. Król Karnawału prowadzi Wielką Paradę przez stare miasto; bale maskowe wypełniają teatry, a ulice ożywają platformami, kostiumami i muzyką. Karnawał ma korzenie w tradycjach weneckich i bizantyjskich — ostatnia zabawa przed postem. Miejscowi miesiącami przygotowują kostiumy. Jeśli jesteś na Cyprze pod koniec lutego lub na początku marca, warto zaplanować pobyt wokół niego. Nadmorska promenada wypełnia się platformami i kostiumami, a całe miasto się bawi.",
+        "dates": "2 tygodnie przed Wielkim Postem (koniec lut. / początek mar.)",
+        "venue": "Stare miasto i nabrzeże Limassol"
+      },
+      "nicosia-winter-festival": {
+        "name": "Zimowy Festiwal w Nikozji",
+        "description": "Plac Eleftheria zmienia się w grudniu: plenerowe koncerty, stragany z jedzeniem i świetlne instalacje przyciągają rodziny i przyjaciół. Wstęp jest bezpłatny. Atmosfera jest świąteczna, ale nie przytłacza — weź gorący napój, posłuchaj muzyki na żywo i patrz, jak stolica ożywa po zmroku. Festiwal trwa w weekendy przez cały miesiąc. Ubierz się ciepło i dołącz do tłumu.",
+        "dates": "Weekendy w grudniu",
+        "venue": "Plac Eleftheria"
+      },
+      "pafos-xmas-market": {
+        "name": "Jarmark Bożonarodzeniowy w Pafos",
+        "description": "Port każdego grudnia wypełnia się straganami. Rękodzieło, lokalny miód, oliwa i ręcznie robione prezenty. Grzane wino paruje w zimnym powietrzu. Kolędnicy zbierają się przy zamku. To rodzinna impreza: dzieci ustawiają się w kolejce do Mikołaja, rodzice buszują po straganach, a zapach pieczonych kasztanów niesie się nad nabrzeżem. Weekendy od pierwszego grudnia do tuż przed świętami. Zamek jest podświetlony. Morze ciemne. Czuć święta tak, jak nigdy nie potrafią tego słoneczne plaże.",
+        "dates": "Weekendy 1–22 grudnia",
+        "venue": "Port w Pafos"
+      },
+      "commandaria-festival": {
+        "name": "Festiwal Commandarii",
+        "description": "Festiwal Commandarii świętuje najstarsze wino Cypru — słodkie wino z suszonych na słońcu winogron, robione w tych wzgórzach od czasów krucjat. Główne wydarzenia gości zwykle Koilani; degustacje i muzyka rozlewają się po Krasochorii i wioskach strefy UNESCO Commandarii, takich jak Louvaras, Silikou, Doros i Monagri. Spróbuj win od producentów, dowiedz się, jak powstaje Commandaria, i ciesz się górskim powietrzem. Zwykle pierwszy weekend grudnia, gdy winorośle są nagie. Sprawdzaj daty co roku.",
+        "dates": "Pierwszy weekend grudnia (sprawdzaj co roku)",
+        "venue": "Koilani i wioski Krasochorii / Commandarii"
+      },
+      "troodos-ski-season": {
+        "name": "Sezon narciarski w Troodos",
+        "description": "Cypr ma jeden ośrodek narciarski — na górze Olimp. Cztery wyciągi, wypożyczalnia sprzętu i górskie kawiarnie. Sezon trwa od stycznia do marca, zależnie od śniegu; jedne zimy są obfite, inne chude. Nawet gdy trasy są cienkie, sam wjazd nagradza, a kawiarnie serwują gorącą czekoladę z widokiem. Sprawdź warunki przed wyjazdem; droga bywa oblodzona. Rano narty, po południu kąpiel w morzu — wyspa robi z tej osobliwości, co się da.",
+        "dates": "Sty.–mar. (zależnie od pogody)",
+        "venue": "Ośrodek narciarski Troodos, Olimp"
+      },
+      "lefkara-lace-festival": {
+        "name": "Festiwal Koronki w Lefkarze",
+        "description": "Wioska świętuje swoje najsłynniejsze rzemiosło. Koronczarki pokazują na placu technikę lefkaritiko — klekot klocków, krzyżujące się nici. Na warsztatach spróbujesz własnych sił. Stragany sprzedają gotowe prace. Zwykle druga niedziela marca, gdy światło już łagodnieje, a górskie powietrze jest łagodne. Wioska wypełnia się gośćmi, ale nastrój jest dumny, nie komercyjny. Te kobiety doskonaliły swoje rzemiosło przez dekady — i chętnie je pokażą. Zostań na obiad; tawerny mają pełne ręce roboty.",
+        "dates": "Zwykle druga niedziela marca",
+        "venue": "Wioska Lefkara"
+      },
+      "bellapais-concerts": {
+        "name": "Koncerty w opactwie Bellapais",
+        "description": "Bellapais leży na północy Cypru — przekroczenie z południa wymaga zwykłych formalności granicznych; sprawdź dostęp przed podróżą. Muzyka w gotyckich ruinach. Klasyka, folk, czasem jedno i drugie. Refektarz opactwa staje się salą koncertową; łuki odbijają dźwięk. Siedzisz pod gwiazdami z górą za plecami. Program zmienia się co roku; sprawdź zimowe terminy z wyprzedzeniem. Nawet bez koncertu opactwo nocą jest warte drogi, gdy dostęp na to pozwala.",
+        "dates": "Wybrane terminy gru.–sty.",
+        "venue": "Opactwo Bellapais"
+      },
+      "agros-rose-festival-prep": {
+        "name": "Wydarzenia w wiosce Agros",
+        "description": "Róże kwitną w kwietniu i maju. Zimą Agros pracuje na zapasach: woda różana, loukoumi, przetwory. W styczniu i lutym wioska organizuje warsztaty i degustacje. Dowiesz się, jak powstaje woda różana, spróbujesz słodyczy i wypełnisz torbę pamiątkami. Górskie powietrze jest zimne; tawerny ciepłe. Agros zbudowało reputację na kwiatowym dziedzictwie. Nawet poza sezonem warto tu zajrzeć. Fabryka prowadzi wycieczki. Widoki są zawsze.",
+        "dates": "Różne weekendy sty.–lut.",
+        "venue": "Wioska Agros"
+      },
+      "larnaca-xmas-village": {
+        "name": "Świąteczna Wioska w Larnace",
+        "description": "Promenada Finikoudes zmienia się w zimową wioskę. Lodowisko nad morzem — surrealistyczne i zabawne. Grota Mikołaja dla dzieci. Stragany z rękodziełem, jedzeniem i gorącymi napojami. Palmy zostają zielone; zapalają się światełka. Trwa od połowy listopada do stycznia, więc okazji nie zabraknie. Promenada to nadmorski deptak Larnaki. Latem jest zatłoczony, zimą łagodniejszy, a świąteczna wioska dokłada warstwę radości. Ubierz się ciepło i spaceruj. Morze jest tuż obok.",
+        "dates": "Połowa lis. – początek sty.",
+        "venue": "Promenada Finikoudes"
+      },
+      "cyprus-marathon": {
+        "name": "Maraton Cypru",
+        "description": "Biegacze z całej Europy zbierają się w grudniu na nabrzeżu Limassol. Maraton, półmaraton i 10 km. Trasa biegnie wzdłuż wybrzeża; pogoda jest chłodna, widoki to morze i niebo. Nawet jeśli nie biegniesz, atmosfera jest warta przeżycia. Miasto budzi się wcześnie. Promenada wypełnia się kibicami — doping, muzyka, miarowy rytm kroków. Zwykle pierwsza niedziela grudnia. Jeśli jedziesz autem, zaplanuj trasę; drogi są zamykane na czas biegu. Albo dołącz do tłumu i patrz. Twarze na mecie mówią wszystko.",
+        "dates": "Zwykle pierwsza niedziela grudnia",
+        "venue": "Nabrzeże Limassol"
+      },
+      "kakopetria-christmas-village": {
+        "name": "Świąteczna Wioska Kakopetria",
+        "description": "Jedna z ośmiu oficjalnych świątecznych wiosek Cypru. Wioska w dolinie Solea stroi się na sezon: girlandy, wieczorna muzyka, grzane wino, kiermasze rękodzieła i plenerowe koncerty. Kamienne domy, rzeka Karkotis i zapach melomakarona i kourabiedes. Weekendy od końca listopada; codziennie od 22 grudnia. Połącz z obiadem z pstrągiem albo spacerem do Agios Nikolaos tis Stegis. Górskie powietrze zaostrza apetyt.",
+        "dates": "Weekendy koniec lis. – 6 sty.; codziennie od 22 gru.",
+        "venue": "Wioska Kakopetria"
+      },
+      "kyperounta-christmas-village": {
+        "name": "Świąteczna Wioska Kyperounta",
+        "description": "Wysokogórski jarmark świąteczny w regionie Pitsilia. Winnice i sosnowe lasy okalają wioskę. Tradycyjne przysmaki, degustacje winiarni Kyperounta, rękodzieło i koncerty. I górskie powietrze. Zwykle 10:00–19:00; krócej 25 grudnia. Około 50 minut z Limassol. Ubierz się ciepło; tam na górze jest zimno. Sprawdzaj daty co roku.",
+        "dates": "Weekendy koniec lis. – 6 sty.",
+        "venue": "Wioska Kyperounta"
+      },
+      "ayia-napa-cultural-winter": {
+        "name": "Kulturalna Zima w Agia Napie",
+        "description": "Cotygodniowe czwartkowe wydarzenia od stycznia do marca. Grecki i międzynarodowy jazz, tradycyjny cypryjski taniec, rebetiko i występy kulturalne. Cichy sezon kurortu staje się sceną dla muzyki i dziedzictwa. Sprawdź program gminy — terminy i miejsca zmieniają się co roku. Inna twarz Agia Napy.",
+        "dates": "Sty.–mar., czwartki 19:30",
+        "venue": "Gmina Agia Napa"
+      }
     }
   }
 }

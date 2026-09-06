@@ -5717,6 +5717,86 @@
       "cy-rc18-traditional-villages": {
         "description": "Boucle dans l’arrière-pays de Limassol par les villages de pierre et les chemins du vignoble. Culture et grimpée en une seule sortie."
       }
+    },
+    "events": {
+      "limassol-carnival": {
+        "name": "Carnaval de Limassol",
+        "description": "Le plus grand carnaval de Chypre dure deux semaines avant le Carême. Le Roi Carnaval mène la Grande Parade à travers la vieille ville ; les bals masqués remplissent les théâtres ; et les rues s’animent de chars, de costumes et de musique. Le carnaval puise dans les traditions vénitiennes et byzantines — un dernier éclat de fête avant le jeûne. Les habitants préparent leurs costumes pendant des mois. Si vous êtes à Chypre fin février ou début mars, cela vaut la peine d’organiser votre séjour autour. La promenade du front de mer se remplit de chars et de costumes, et toute la ville s’y met.",
+        "dates": "2 semaines avant le Carême (fin fév. / début mars)",
+        "venue": "Vieille ville et front de mer de Limassol"
+      },
+      "nicosia-winter-festival": {
+        "name": "Festival d’hiver de Nicosie",
+        "description": "La place Eleftheria se transforme en décembre : concerts en plein air, stands de nourriture et installations lumineuses attirent familles et amis. L’entrée est gratuite. L’ambiance est festive sans être écrasante — prenez une boisson chaude, écoutez la musique live et regardez la capitale s’animer à la nuit tombée. Le festival a lieu les week-ends tout au long du mois. Couvrez-vous et rejoignez la foule.",
+        "dates": "Les week-ends de décembre",
+        "venue": "Place Eleftheria"
+      },
+      "pafos-xmas-market": {
+        "name": "Marché de Noël de Paphos",
+        "description": "Le port se remplit d’étals chaque décembre. Artisanat, miel local, huile d’olive et cadeaux faits main. Le vin chaud fume dans l’air froid. Les chanteurs de Noël se rassemblent près du château. C’est une affaire de famille : les enfants font la queue pour le Père Noël, les parents chinent aux étals, et l’odeur des châtaignes grillées flotte sur le front de mer. Les week-ends du premier décembre jusqu’à la veille de Noël. Le château est illuminé. La mer est sombre. On y sent les fêtes comme les plages ensoleillées n’y parviennent jamais tout à fait.",
+        "dates": "Week-ends du 1er au 22 décembre",
+        "venue": "Port de Paphos"
+      },
+      "commandaria-festival": {
+        "name": "Fête du Commandaria",
+        "description": "La fête célèbre le plus ancien vin de Chypre — le vin doux, aux raisins séchés au soleil, produit dans ces collines depuis les croisades. Koilani accueille en général les événements principaux ; dégustations et musique essaiment dans les Krasochoria et les villages UNESCO du Commandaria comme Louvaras, Silikou, Doros et Monagri. Goûtez chez les producteurs, apprenez comment naît le Commandaria et profitez de l’air de la montagne. En général le premier week-end de décembre, quand les vignes sont nues. Vérifiez les dates chaque année.",
+        "dates": "Premier week-end de décembre (vérifier chaque année)",
+        "venue": "Koilani et villages des Krasochoria / du Commandaria"
+      },
+      "troodos-ski-season": {
+        "name": "Saison de ski du Troodos",
+        "description": "Chypre compte une station de ski, sur le mont Olympe. Quatre remontées, location de matériel et cafés d’altitude. La saison court de janvier à mars, selon la neige ; certains hivers sont fastes, d’autres maigres. Même quand les pistes sont maigres, la montée en vaut la peine et les cafés servent un chocolat chaud avec vue. Vérifiez les conditions avant de partir ; la route peut être verglacée. Skier le matin et se baigner l’après-midi — l’île tire le meilleur de cette curiosité.",
+        "dates": "Janv. à mars (selon la météo)",
+        "venue": "Station de ski du Troodos, mont Olympe"
+      },
+      "lefkara-lace-festival": {
+        "name": "Fête de la dentelle de Lefkara",
+        "description": "Le village célèbre son artisanat le plus célèbre. Les dentellières démontrent la technique du lefkaritiko sur la place — fuseaux qui cliquettent, fils qui se croisent. Des ateliers vous laissent essayer. Les étals vendent des pièces finies. En général le deuxième dimanche de mars, quand la lumière s’adoucit déjà et que l’air de la montagne est doux. Le village se remplit de visiteurs, mais l’ambiance est fière plutôt que commerciale. Ces femmes perfectionnent leur art depuis des décennies — et le montrent volontiers. Restez déjeuner ; les tavernes tournent à plein.",
+        "dates": "En général le deuxième dimanche de mars",
+        "venue": "Village de Lefkara"
+      },
+      "bellapais-concerts": {
+        "name": "Concerts de l’abbaye de Bellapais",
+        "description": "Bellapais se trouve au nord de Chypre — la traversée depuis le sud passe par les formalités habituelles ; vérifiez l’accès avant de partir. De la musique dans les ruines gothiques. Classique, folk, parfois les deux. Le réfectoire de l’abbaye devient salle de concert ; les arches renvoient le son. Vous êtes assis sous les étoiles, la montagne dans le dos. Le programme change chaque année ; vérifiez les dates d’hiver à l’avance. Même sans concert, l’abbaye de nuit vaut la route, quand l’accès le permet.",
+        "dates": "Dates choisies déc.–janv.",
+        "venue": "Abbaye de Bellapais"
+      },
+      "agros-rose-festival-prep": {
+        "name": "Événements du village d’Agros",
+        "description": "Les roses fleurissent en avril et mai. L’hiver, Agros travaille avec ses réserves : eau de rose, loukoumi, confitures. Le village organise ateliers et dégustations en janvier et février. Vous apprenez comment se fait l’eau de rose, goûtez les douceurs et remplissez un sac de souvenirs. L’air de la montagne est froid ; les tavernes sont chaudes. Agros a bâti sa réputation sur son héritage floral. Même hors saison, la visite vaut le détour. L’usine propose des visites. Les vues, elles, sont toujours là.",
+        "dates": "Divers week-ends janv.–fév.",
+        "venue": "Village d’Agros"
+      },
+      "larnaca-xmas-village": {
+        "name": "Village de Noël de Larnaca",
+        "description": "La promenade Finikoudes devient un village d’hiver. Une patinoire au bord de la mer — surréaliste et réjouissant. La grotte du Père Noël pour les enfants. Des étals d’artisanat, de nourriture et de boissons chaudes. Les palmiers restent verts ; les lumières s’allument. De la mi-novembre à janvier — les occasions ne manquent pas. La promenade est le front de mer de Larnaca. L’été, elle est bondée. L’hiver, elle est plus douce, et le village de Noël y ajoute une couche de gaieté. Couvrez-vous et flânez. La mer est juste là.",
+        "dates": "Mi-nov. à début janv.",
+        "venue": "Promenade Finikoudes"
+      },
+      "cyprus-marathon": {
+        "name": "Marathon de Chypre",
+        "description": "Des coureurs de toute l’Europe se retrouvent en décembre sur le front de mer de Limassol. Marathon, semi et 10 km. Le parcours suit la côte ; le temps est frais, les vues sont mer et ciel. Même sans courir, l’ambiance vaut le déplacement. La ville se réveille tôt. La promenade se remplit de supporters — encouragements, musique, le rythme régulier des foulées. En général le premier dimanche de décembre. Prévoyez votre itinéraire si vous conduisez ; des routes ferment pour la course. Ou joignez-vous à la foule et regardez. Les visages à l’arrivée disent tout.",
+        "dates": "En général le premier dimanche de décembre",
+        "venue": "Front de mer de Limassol"
+      },
+      "kakopetria-christmas-village": {
+        "name": "Village de Noël de Kakopetria",
+        "description": "L’un des huit villages de Noël officiels de Chypre. Le village de la vallée de Solea se pare pour la saison : guirlandes, musique en soirée, vin chaud, foires artisanales et concerts en plein air. Maisons de pierre, la rivière Karkotis, et le parfum des melomakarona et des kourabiedes. Les week-ends dès fin novembre ; tous les jours à partir du 22 décembre. À combiner avec un déjeuner de truite ou une marche vers Agios Nikolaos tis Stegis. L’air de la montagne aiguise l’appétit.",
+        "dates": "Week-ends fin nov. – 6 janv. ; tous les jours dès le 22 déc.",
+        "venue": "Village de Kakopetria"
+      },
+      "kyperounta-christmas-village": {
+        "name": "Village de Noël de Kyperounta",
+        "description": "Marché de Noël d’altitude dans la région de Pitsilia. Vignes et forêts de pins encadrent le village. Douceurs traditionnelles, dégustations de la cave de Kyperounta, artisanat et concerts. Et l’air de la montagne. En général 10:00–19:00 ; horaires réduits le 25 décembre. À environ 50 minutes de Limassol. Couvrez-vous ; il fait froid là-haut. Vérifiez les dates chaque année.",
+        "dates": "Week-ends fin nov. – 6 janv.",
+        "venue": "Village de Kyperounta"
+      },
+      "ayia-napa-cultural-winter": {
+        "name": "Hiver culturel d’Agia Napa",
+        "description": "Des rendez-vous hebdomadaires le jeudi, de janvier à mars. Jazz grec et international, danse traditionnelle chypriote, rebetiko et spectacles culturels. La saison calme de la station devient une scène pour la musique et le patrimoine. Consultez le programme de la municipalité pour les dates et les lieux — ils changent chaque année. Un autre visage d’Agia Napa.",
+        "dates": "Janv. à mars, le jeudi à 19:30",
+        "venue": "Municipalité d’Agia Napa"
+      }
     }
   }
 }

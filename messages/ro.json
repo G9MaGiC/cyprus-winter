@@ -5717,6 +5717,86 @@
       "cy-rc18-traditional-villages": {
         "description": "Buclă prin interiorul Limassolului, prin sate de piatră și ulițe din ținutul vinului. Cultură și urcuș într-o singură tură."
       }
+    },
+    "events": {
+      "limassol-carnival": {
+        "name": "Carnavalul din Limassol",
+        "description": "Cel mai mare carnaval al Ciprului ține două săptămâni înainte de Postul Mare. Regele Carnaval conduce Marea Paradă prin orașul vechi; balurile mascate umplu teatrele, iar străzile prind viață cu care alegorice, costume și muzică. Carnavalul are rădăcini în tradiții venețiene și bizantine — o ultimă petrecere înainte de post. Localnicii își pregătesc costumele luni întregi. Dacă ești în Cipru la sfârșitul lui februarie sau începutul lui martie, merită să-ți planifici sejurul în jurul lui. Faleza se umple de care și costume, iar tot orașul participă.",
+        "dates": "2 săptămâni înainte de Postul Mare (sfârșit de feb. / început de mar.)",
+        "venue": "Orașul vechi și faleza din Limassol"
+      },
+      "nicosia-winter-festival": {
+        "name": "Festivalul de Iarnă din Nicosia",
+        "description": "Piața Eleftheria se transformă în decembrie: concerte în aer liber, tarabe cu mâncare și instalații de lumini atrag familii și prieteni. Intrarea e liberă. Atmosfera e festivă fără să copleșească — ia o băutură caldă, ascultă muzică live și privește capitala cum prinde viață după lăsarea întunericului. Ține în weekenduri pe tot parcursul lunii. Îmbracă-te gros și intră în atmosferă.",
+        "dates": "Weekenduri în decembrie",
+        "venue": "Piața Eleftheria"
+      },
+      "pafos-xmas-market": {
+        "name": "Târgul de Crăciun din Paphos",
+        "description": "Portul se umple de tarabe în fiecare decembrie. Artizanat, miere locală, ulei de măsline și cadouri lucrate manual. Vinul fiert aburește în aerul rece. Colindătorii se adună lângă castel. E o sărbătoare de familie: copiii stau la rând la Moș Crăciun, părinții răscolesc tarabele, iar mirosul de castane coapte plutește peste faleză. Weekenduri de la 1 decembrie până chiar înainte de Crăciun. Castelul e luminat. Marea e întunecată. Se simte a sărbători cum plajele însorite nu reușesc niciodată.",
+        "dates": "Weekenduri 1–22 decembrie",
+        "venue": "Portul Paphos"
+      },
+      "commandaria-festival": {
+        "name": "Festivalul Commandaria",
+        "description": "Festivalul celebrează cel mai vechi vin al Ciprului — vinul dulce, din struguri uscați la soare, făcut în aceste dealuri de pe vremea cruciadelor. Koilani găzduiește de obicei evenimentele principale; degustările și muzica se întind prin Krasochoria și satele UNESCO ale Commandariei, precum Louvaras, Silikou, Doros și Monagri. Gustă de la producători, află cum se face Commandaria și bucură-te de aerul de munte. De obicei în primul weekend din decembrie, când viile sunt desfrunzite. Verifică datele în fiecare an.",
+        "dates": "Primul weekend din decembrie (verifică anual)",
+        "venue": "Koilani și satele Krasochoria / Commandaria"
+      },
+      "troodos-ski-season": {
+        "name": "Sezonul de schi din Troodos",
+        "description": "Ciprul are o singură pârtie, pe muntele Olimp. Patru teleschiuri, închiriere de echipament și cafenele montane. Sezonul ține din ianuarie până în martie, în funcție de zăpadă; unele ierni sunt bogate, altele sărace. Chiar și când pârtiile sunt subțiri, drumul până sus răsplătește, iar cafenelele servesc ciocolată caldă cu priveliște. Verifică condițiile înainte de plecare; drumul poate fi înghețat. Schi dimineața și baie în mare după-amiaza — insula profită din plin de această ciudățenie.",
+        "dates": "Ian.–mar. (în funcție de vreme)",
+        "venue": "Pârtia Troodos, muntele Olimp"
+      },
+      "lefkara-lace-festival": {
+        "name": "Festivalul Dantelei din Lefkara",
+        "description": "Satul își sărbătorește meșteșugul cel mai faimos. Dantelăresele demonstrează în piață tehnica lefkaritiko — bobinele clincăne, firele se încrucișează. La ateliere poți încerca și tu. Tarabele vând piese finite. De obicei a doua duminică din martie, când lumina se îmblânzește deja și aerul de munte e blând. Satul se umple de vizitatori, dar atmosfera e mândră, nu comercială. Femeile acestea și-au șlefuit meșteșugul decenii întregi — și îl arată cu drag. Rămâi la prânz; tavernele au treabă.",
+        "dates": "De obicei a doua duminică din martie",
+        "venue": "Satul Lefkara"
+      },
+      "bellapais-concerts": {
+        "name": "Concertele de la abația Bellapais",
+        "description": "Bellapais e în nordul Ciprului — trecerea dinspre sud cere formalitățile obișnuite de frontieră; verifică accesul înainte de călătorie. Muzică în ruinele gotice. Clasică, folk, uneori amândouă. Refectoriul abației devine sală de concert; arcadele întorc sunetul. Stai sub stele cu muntele în spate. Programul se schimbă în fiecare an; verifică din timp datele de iarnă. Chiar dacă ratezi un concert, abația noaptea merită drumul, când accesul o permite.",
+        "dates": "Date selectate dec.–ian.",
+        "venue": "Abația Bellapais"
+      },
+      "agros-rose-festival-prep": {
+        "name": "Evenimente în satul Agros",
+        "description": "Trandafirii înfloresc în aprilie și mai. Iarna, Agros lucrează cu ce a pus deoparte: apă de trandafiri, loukoumi, dulcețuri. În ianuarie și februarie satul găzduiește ateliere și degustări. Afli cum se face apa de trandafiri, guști dulciurile și umpli o sacoșă de suveniruri. Aerul de munte e rece; tavernele sunt calde. Agros și-a clădit reputația pe moștenirea sa florală. Chiar și în extrasezon merită vizita. Fabrica organizează tururi. Priveliștile sunt mereu acolo.",
+        "dates": "Diverse weekenduri ian.–feb.",
+        "venue": "Satul Agros"
+      },
+      "larnaca-xmas-village": {
+        "name": "Satul de Crăciun din Larnaca",
+        "description": "Promenada Finikoudes devine un sat de iarnă. Un patinoar lângă mare — suprarealist și amuzant. Grota lui Moș Crăciun pentru copii. Tarabe cu artizanat, mâncare și băuturi calde. Palmierii rămân verzi; luminițele se aprind. Ține de la mijlocul lui noiembrie până în ianuarie, deci ai destule ocazii. Promenada e fâșia de coastă a Larnacăi. Vara e ticsită. Iarna e mai blândă, iar satul de Crăciun adaugă un strat de voie bună. Îmbracă-te gros și plimbă-te. Marea e chiar acolo.",
+        "dates": "Mijloc de nov. – început de ian.",
+        "venue": "Promenada Finikoudes"
+      },
+      "cyprus-marathon": {
+        "name": "Maratonul Ciprului",
+        "description": "Alergători din toată Europa se adună în decembrie pe faleza din Limassol. Maraton, semimaraton și 10 km. Traseul urmează coasta; vremea e răcoroasă, priveliștea — mare și cer. Chiar dacă nu alergi, atmosfera merită trăită. Orașul se trezește devreme. Promenada se umple de susținători — urale, muzică, ritmul constant al pașilor. De obicei în prima duminică din decembrie. Dacă conduci, planifică-ți ruta; drumurile se închid pentru cursă. Sau alătură-te mulțimii și privește. Fețele de la finish spun tot.",
+        "dates": "De obicei prima duminică din decembrie",
+        "venue": "Faleza din Limassol"
+      },
+      "kakopetria-christmas-village": {
+        "name": "Satul de Crăciun Kakopetria",
+        "description": "Unul dintre cele opt sate de Crăciun oficiale ale Ciprului. Satul din valea Solea se gătește de sărbătoare: ghirlande, muzică de seară, vin fiert, târguri de artizanat și concerte în aer liber. Case de piatră, râul Karkotis și mirosul de melomakarona și kourabiedes. Weekenduri de la sfârșitul lui noiembrie; zilnic din 22 decembrie. Combină cu un prânz cu păstrăv sau o plimbare până la Agios Nikolaos tis Stegis. Aerul de munte ascute pofta de mâncare.",
+        "dates": "Weekenduri sfârșit de nov. – 6 ian.; zilnic din 22 dec.",
+        "venue": "Satul Kakopetria"
+      },
+      "kyperounta-christmas-village": {
+        "name": "Satul de Crăciun Kyperounta",
+        "description": "Târg de Crăciun la altitudine, în regiunea Pitsilia. Vii și păduri de pini încadrează satul. Bunătăți tradiționale, degustări la crama Kyperounta, artizanat și concerte. Și aerul de munte. De obicei 10:00–19:00; program scurt pe 25 decembrie. Cam 50 de minute din Limassol. Îmbracă-te gros; sus e frig. Verifică datele în fiecare an.",
+        "dates": "Weekenduri sfârșit de nov. – 6 ian.",
+        "venue": "Satul Kyperounta"
+      },
+      "ayia-napa-cultural-winter": {
+        "name": "Iarna culturală din Agia Napa",
+        "description": "Evenimente săptămânale, în fiecare joi, din ianuarie până în martie. Jazz grecesc și internațional, dans tradițional cipriot, rebetiko și spectacole culturale. Sezonul liniștit al stațiunii devine scenă pentru muzică și moștenire. Verifică programul primăriei pentru date și locații — se schimbă de la an la an. O altă față a Agiei Napa.",
+        "dates": "Ian.–mar., joia la 19:30",
+        "venue": "Primăria Agia Napa"
+      }
     }
   }
 }

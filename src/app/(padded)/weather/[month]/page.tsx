@@ -8,6 +8,7 @@ import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
 import { localizeWeatherRow } from "@/lib/weather-content";
 import { winterEvents } from "@/data/events";
+import { localizeEvents } from "@/lib/event-content";
 import WeatherMonthFooter from "@/components/WeatherMonthFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import { getTranslations } from "next-intl/server";
@@ -103,7 +104,7 @@ export default async function WeatherMonthPage({ params }: Props) {
   const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
   const baseRow = weatherByMonth.find((r) => r.month === monthName);
   const eventMonth = SLUG_TO_EVENT_MONTH[slug];
-  const events = winterEvents.filter((e) => e.month === eventMonth);
+  const events = await localizeEvents(winterEvents.filter((e) => e.month === eventMonth));
 
   if (!baseRow) notFound();
   const row = await localizeWeatherRow(baseRow);

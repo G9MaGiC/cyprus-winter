@@ -5717,6 +5717,86 @@
       "cy-rc18-traditional-villages": {
         "description": "Runde durchs Hinterland von Limassol, durch Steindörfer und Sträßchen im Weinland. Kultur und Anstiege in einer Tour."
       }
+    },
+    "events": {
+      "limassol-carnival": {
+        "name": "Karneval von Limassol",
+        "description": "Zyperns größter Karneval läuft zwei Wochen vor der Fastenzeit. König Karneval führt die große Parade durch die Altstadt; Maskenbälle füllen die Theater; die Straßen leben auf mit Wagen, Kostümen und Musik. Der Karneval wurzelt in venezianischen und byzantinischen Traditionen — ein letztes Fest vor dem Fasten. Die Einheimischen bereiten ihre Kostüme monatelang vor. Wer Ende Februar oder Anfang März auf Zypern ist, sollte darum herum planen. Die Uferpromenade füllt sich mit Wagen und Kostümen, und die ganze Stadt macht mit.",
+        "dates": "2 Wochen vor der Fastenzeit (Ende Feb. / Anfang März)",
+        "venue": "Altstadt und Seafront von Limassol"
+      },
+      "nicosia-winter-festival": {
+        "name": "Winterfestival Nikosia",
+        "description": "Der Eleftheria-Platz verwandelt sich im Dezember: Open-Air-Konzerte, Essensstände und Lichtinstallationen ziehen Familien und Freunde an. Der Eintritt ist frei. Die Stimmung ist festlich, ohne zu überwältigen — holen Sie sich ein heißes Getränk, hören Sie Livemusik und sehen Sie zu, wie die Hauptstadt nach Einbruch der Dunkelheit auflebt. Läuft an den Wochenenden den ganzen Monat. Warm anziehen und mitfeiern.",
+        "dates": "Wochenenden im Dezember",
+        "venue": "Eleftheria-Platz"
+      },
+      "pafos-xmas-market": {
+        "name": "Weihnachtsmarkt Paphos",
+        "description": "Der Hafen füllt sich jeden Dezember mit Ständen. Kunsthandwerk, lokaler Honig, Olivenöl und handgemachte Geschenke. Glühwein dampft in der kalten Luft. Weihnachtssänger sammeln sich an der Burg. Ein Familienfest: Kinder stehen beim Weihnachtsmann an, Eltern stöbern an den Ständen, und der Duft gerösteter Kastanien zieht über die Uferpromenade. An den Wochenenden vom 1. Dezember bis kurz vor Weihnachten. Die Burg ist beleuchtet. Das Meer ist dunkel. Es fühlt sich nach Feiertagen an, wie es sonnige Strände nie ganz schaffen.",
+        "dates": "Wochenenden 1. bis 22. Dezember",
+        "venue": "Hafen von Paphos"
+      },
+      "commandaria-festival": {
+        "name": "Commandaria-Fest",
+        "description": "Das Commandaria-Fest feiert Zyperns ältesten Wein — den süßen, sonnengetrockneten Wein, der seit den Kreuzzügen in diesen Hügeln entsteht. Koilani richtet meist die Hauptveranstaltungen aus; Verkostungen und Musik verteilen sich über die Krasochoria und UNESCO-Commandaria-Dörfer wie Louvaras, Silikou, Doros und Monagri. Probieren Sie die Erzeuger, erfahren Sie, wie Commandaria entsteht, und genießen Sie die Bergluft. Meist am ersten Dezemberwochenende, wenn die Reben kahl sind. Termine jährlich prüfen.",
+        "dates": "Erstes Dezemberwochenende (jährlich prüfen)",
+        "venue": "Koilani und Krasochoria-/Commandaria-Dörfer"
+      },
+      "troodos-ski-season": {
+        "name": "Skisaison im Troodos",
+        "description": "Zypern hat ein Skigebiet, und es liegt auf dem Olymp. Vier Lifte, Ausrüstungsverleih und Bergcafés. Die Saison läuft je nach Schnee von Januar bis März; manche Winter sind üppig, andere mager. Selbst wenn die Pisten dünn sind, lohnt die Auffahrt, und die Cafés servieren heiße Schokolade mit Aussicht. Prüfen Sie vorher die Bedingungen — die Straße kann vereist sein. Morgens Ski, nachmittags schwimmen: Die Insel macht das Beste aus dieser Kuriosität.",
+        "dates": "Jan. bis März (wetterabhängig)",
+        "venue": "Troodos-Skigebiet, Olymp"
+      },
+      "lefkara-lace-festival": {
+        "name": "Spitzenfest von Lefkara",
+        "description": "Das Dorf feiert sein berühmtestes Handwerk. Klöpplerinnen zeigen die Lefkaritiko-Technik auf dem Platz — Klöppel klicken, Fäden kreuzen sich. In Workshops dürfen Sie es selbst probieren. Stände verkaufen fertige Stücke. Meist am zweiten Sonntag im März, wenn das Licht schon weicher wird und die Bergluft mild ist. Das Dorf füllt sich mit Besuchern, doch die Stimmung ist stolz, nicht kommerziell. Diese Frauen haben ihr Handwerk über Jahrzehnte perfektioniert und zeigen es gern. Bleiben Sie zum Mittagessen — die Tavernen haben gut zu tun.",
+        "dates": "Meist am zweiten Sonntag im März",
+        "venue": "Dorf Lefkara"
+      },
+      "bellapais-concerts": {
+        "name": "Konzerte in der Abtei Bellapais",
+        "description": "Bellapais liegt in Nordzypern — die Überquerung von Süden erfordert die üblichen Grenzformalitäten; klären Sie den Zugang vor der Reise. Musik in den gotischen Ruinen. Klassik, Folk, manchmal beides. Das Refektorium der Abtei wird zum Konzertsaal; die Bögen werfen den Klang zurück. Sie sitzen unter den Sternen, den Berg im Rücken. Das Programm wechselt jährlich; prüfen Sie die Wintertermine vorab. Selbst ohne Konzert lohnt die Abtei bei Nacht die Fahrt, wenn der Zugang möglich ist.",
+        "dates": "Ausgewählte Termine Dez. bis Jan.",
+        "venue": "Abtei Bellapais"
+      },
+      "agros-rose-festival-prep": {
+        "name": "Dorfveranstaltungen in Agros",
+        "description": "Die Rosen blühen im April und Mai. Im Winter arbeitet Agros mit den Vorräten: Rosenwasser, Loukoumi, Eingemachtes. Das Dorf bietet im Januar und Februar Workshops und Verkostungen. Sie erfahren, wie Rosenwasser entsteht, probieren die Süßigkeiten und füllen eine Tüte mit Mitbringseln. Die Bergluft ist kalt, die Tavernen sind warm. Agros hat seinen Ruf auf seinem Blütenerbe aufgebaut. Auch außerhalb der Saison lohnt der Besuch. Die Fabrik bietet Führungen. Die Aussicht ist immer da.",
+        "dates": "Verschiedene Wochenenden Jan. bis Feb.",
+        "venue": "Dorf Agros"
+      },
+      "larnaca-xmas-village": {
+        "name": "Weihnachtsdorf Larnaka",
+        "description": "Die Finikoudes-Promenade wird zum Winterdorf. Eine Eisbahn am Meer — surreal und vergnüglich. Eine Weihnachtsmann-Grotte für die Kinder. Stände mit Kunsthandwerk, Essen und heißen Getränken. Die Palmen bleiben grün, die Lichter gehen an. Läuft von Mitte November bis in den Januar — Gelegenheiten gibt es also genug. Die Promenade ist Larnakas Uferstreifen. Im Sommer ist sie voll, im Winter milder, und das Weihnachtsdorf legt eine Schicht Fröhlichkeit darüber. Warm anziehen und flanieren. Das Meer ist gleich da.",
+        "dates": "Mitte Nov. bis Anfang Jan.",
+        "venue": "Finikoudes-Promenade"
+      },
+      "cyprus-marathon": {
+        "name": "Zypern-Marathon",
+        "description": "Läuferinnen und Läufer aus ganz Europa versammeln sich im Dezember an der Seafront von Limassol. Marathon, Halbmarathon und 10 km. Die Strecke folgt der Küste; das Wetter ist kühl, der Blick geht auf Meer und Himmel. Auch ohne Startnummer lohnt die Atmosphäre. Die Stadt wacht früh auf. Die Promenade füllt sich mit Fans — Jubel, Musik, der stete Rhythmus der Schritte. Meist am ersten Sonntag im Dezember. Planen Sie Ihre Route, wenn Sie fahren; für das Rennen werden Straßen gesperrt. Oder stellen Sie sich zur Menge und schauen Sie zu. Die Gesichter im Ziel sagen alles.",
+        "dates": "Meist am ersten Sonntag im Dezember",
+        "venue": "Seafront von Limassol"
+      },
+      "kakopetria-christmas-village": {
+        "name": "Weihnachtsdorf Kakopetria",
+        "description": "Eines der acht offiziellen Weihnachtsdörfer Zyperns. Das Dorf im Solea-Tal schmückt sich zur Saison: Girlanden, Abendmusik, Glühwein, Handwerksmärkte und Open-Air-Konzerte. Steinhäuser, der Fluss Karkotis und der Duft von Melomakarona und Kourabiedes. An den Wochenenden ab Ende November, täglich ab dem 22. Dezember. Kombinieren Sie mit einem Forellen-Mittagessen oder einem Spaziergang zu Agios Nikolaos tis Stegis. Die Bergluft macht Appetit.",
+        "dates": "Wochenenden Ende Nov. bis 6. Jan.; täglich ab 22. Dez.",
+        "venue": "Dorf Kakopetria"
+      },
+      "kyperounta-christmas-village": {
+        "name": "Weihnachtsdorf Kyperounta",
+        "description": "Hochgelegener Weihnachtsmarkt in der Region Pitsilia. Weinberge und Kiefernwälder rahmen das Dorf. Traditionelle Leckereien, Verkostungen der Kyperounta-Kellerei, Kunsthandwerk und Konzerte. Und die Bergluft. Meist 10:00–19:00 Uhr; am 25. Dezember kürzer. Etwa 50 Minuten von Limassol. Ziehen Sie sich warm an — dort oben ist es kalt. Termine jährlich prüfen.",
+        "dates": "Wochenenden Ende Nov. bis 6. Jan.",
+        "venue": "Dorf Kyperounta"
+      },
+      "ayia-napa-cultural-winter": {
+        "name": "Kulturwinter in Agia Napa",
+        "description": "Wöchentliche Donnerstagsveranstaltungen von Januar bis März. Griechischer und internationaler Jazz, traditioneller zyprischer Tanz, Rebetiko und Kulturaufführungen. Die stille Saison des Badeorts wird zur Bühne für Musik und Erbe. Prüfen Sie das Programm der Gemeinde für Termine und Orte — die Pläne wechseln jährlich. Eine andere Seite von Agia Napa.",
+        "dates": "Jan. bis März, donnerstags 19:30 Uhr",
+        "venue": "Gemeinde Agia Napa"
+      }
     }
   }
 }
