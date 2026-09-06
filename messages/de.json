@@ -5875,6 +5875,95 @@
         "dates": "6. Januar",
         "venue": "Küstenstädte"
       }
+    },
+    "restaurants": {
+      "zygi-tavernas": {
+        "description": "Zwischen Larnaka und Limassol. Keine Ruinen, keine Spitze. Nur Fisch. Die Tavernen säumen den Hafen; serviert wird, was die Boote am Morgen gebracht haben. Hier essen Einheimische. Winterlunch am Wasser — Oktopus, Dorade, Calamari. Das Tempo ist langsam. Der Kaffee danach ist Pflicht. Nach Zygi fahren Zyprer für den Sonntagsfisch. Kombinieren Sie mit Choirokoitia, Lefkara oder dem Cape-Greco-Pfad.",
+        "winterTip": "Die Tavernen säumen den Hafen. Bestellen Sie, was die Boote gebracht haben. Sonntag ist der Tag der Einheimischen. Kombinieren Sie mit Choirokoitia oder Lefkara.",
+        "bestTimeToVisit": "Mittags; sonntags besonders voll mit Einheimischen",
+        "localSecret": "Zwischen Larnaka und Limassol. Keine Ruinen, keine Spitze. Nur Fisch. Das Tempo ist langsam. Der Kaffee danach ist Pflicht.",
+        "openingHours": "Tavernen meist 12–15:30, 19–23",
+        "transport": "Hafen von Zygi, zwischen Larnaka und Limassol. ~25 Min. von Larnaka.",
+        "parking": "Am Hafen."
+      },
+      "governors-beach-tavernas": {
+        "description": "Weiße Klippen über dunklem Vulkansand. Die Tavernen thronen auf den Klippen; serviert werden frischer Fisch und Meze. An einem milden Dezembernachmittag sitzt man draußen mit einer Decke. Der Fisch ist frisch, der Wein fließt. Einer der besten Winter-Lunchplätze der Küste. Der Kontrast — weiße Klippen, dunkler Sand — ist im Winterlicht frappierend. Kombinieren Sie Kourion oder Kolossi am Morgen, Fisch zum Mittag. Der Cape-Greco-Pfad oder Choirokoitia liegen für einen vollen Tag in Reichweite.",
+        "winterTip": "Sitzen Sie an milden Dezembertagen draußen mit einer Decke. Die Klippen-Tavernen bleiben offen. Ruinen am Morgen, Fisch zum Mittag.",
+        "bestTimeToVisit": "Mittags; nach Kourion oder Kolossi",
+        "localSecret": "Finden Sie eine Bucht. Oder lassen Sie sich in einer Taverne nieder. Die weißen Klippen und der dunkle Sand. An einem milden Dezembernachmittag draußen sitzen. Aufs Meer schauen. Fünfzehn Minuten von Kourion.",
+        "openingHours": "Tavernen meist 12–15:30, 19–23",
+        "transport": "Governor's Beach, zwischen Limassol und Larnaka. ~20 Min. von Limassol.",
+        "parking": "Parken an Klippe und Strand."
+      },
+      "the-polo": {
+        "description": "Wiz 50 Best Nr. 1 für 2025. Mediterranes Fine Dining im Alasia Boutique Hotel. Küchenchef Pavlos Kyriakis. Ausgewogene Aromen, makellose Technik, außergewöhnlicher Service. Reservieren Sie voraus; Dresscode elegant. Winterabende sind behaglich. Eine Adresse für besondere Anlässe und anspruchsvolle Gäste.",
+        "winterTip": "Reservieren Sie voraus. Dresscode elegant. Winterabende sind behaglich. Wiz 50 Best Nr. 1 — zwei Jahre in Folge.",
+        "bestTimeToVisit": "Abendessen; weit im Voraus buchen",
+        "localSecret": "The Polo hält die Spitze zwei Jahre in Folge. Ausgewogene Aromen, makellose Technik."
+      },
+      "the-farmyard": {
+        "description": "Wiz 50 Best Top 5. Asiatische Comfort-Küche in Kathikas, Paphos. Chefkoch Savvas Iakovides. Farm-to-Table-Ethos. Auf dem Akamas-Rundweg — gehen Sie morgens Adonis oder Aphrodite, dann reservieren Sie zum Mittag. Dorfkulisse und Küche machen es zum eigenen Ziel. Reservieren Sie voraus; es füllt sich. Winter: morgens der Pfad, dieses Essen als Belohnung.",
+        "winterTip": "Auf dem Akamas-Rundweg. Morgens Adonis oder Aphrodite, dann Mittagessen reservieren. 1–2 Tage im Voraus buchen; Wochenenden füllen sich.",
+        "bestTimeToVisit": "Mittags; Ankunft 13–14 Uhr nach dem Morgenpfad",
+        "localSecret": "Das Dorf Kathikas. Asiatische Comfort-Küche. Die Akamas-Pfade verdienen Ihnen dieses Essen. Die Weingüter Vasilikon und Sygkrasi sind Minuten entfernt.",
+        "openingHours": "Mittag- und Abendessen; vorab reservieren",
+        "transport": "Dorf Kathikas. Auf dem Akamas-Laona-Rundweg. ~35 Min. von Paphos.",
+        "parking": "Dorfparkplätze; vorab buchen."
+      },
+      "psilo-dendro": {
+        "description": "Die Taverne am Fluss. Der Wirt kennt jeden Wanderer. Bestellen Sie die Forelle mit Mandeln — Psaróvrasto, in Wein und Kräutern pochiert. Der Kamin, die Bergluft, das Rauschen des Kryos Potamos. Es ist die Kombination, die Einheimische nach Artemis oder den Caledonia-Fällen machen. Morgens den Pfad; gegen 13 Uhr fertig sein. Nach Platres fahren. Nicht auslassen.",
+        "winterTip": "Nach Artemis oder den Caledonia-Fällen. Forelle mit Mandeln. Der Kamin. Pfad bis 13 Uhr beenden, dann nach Platres fahren.",
+        "bestTimeToVisit": "Mittags; nach dem Morgenpfad (Ankunft bis 13–13:30 Uhr)",
+        "localSecret": "Die am Fluss. Forelle mit Mandeln. Der Wirt kennt jeden Wanderer. Psilo Dendro ist der Klassiker; weitere säumen den Kryos Potamos.",
+        "openingHours": "Meist 12–15:30, 19–22; im Winter anrufen",
+        "transport": "Dorf Platres, am Kryos Potamos. ~45 Min. von Limassol.",
+        "parking": "Dorfparkplätze; zu Fuß zum Fluss."
+      },
+      "polis-harbour": {
+        "description": "Nach dem Adonis- oder Aphrodite-Pfad. Die Hafentavernen servieren Fisch, der frisch ist — was die Boote gebracht haben. Das Weingut Vasilikon liegt auf dem Akamas-Rückweg. Oder lassen Sie den Wein und essen Sie einfach. Der Pfad verdient Ihnen das Mahl. Polis weiß, wie man Wanderer verköstigt. Hafenblick, entspanntes Tempo. Keine Hochhäuser, kein Neon — nur Fisch, Wein und die Bucht.",
+        "winterTip": "Morgens den Pfad. Bis 13 Uhr fertig. Polis zum Mittag. Weingut Vasilikon auf dem Rückweg. Zwei Tage, wenn möglich: wandern, essen, schlafen, wiederholen.",
+        "bestTimeToVisit": "Mittags; nach dem Morgenpfad",
+        "localSecret": "Der Pfad verdient Ihnen das Mahl. Zum Hafen von Polis fahren Zyprer für Fisch. Bestellen Sie, was frisch ist. Der Hafenblick ist inklusive.",
+        "openingHours": "Tavernen meist 12–15:30, 19–23; einige schließen Mo oder Di",
+        "transport": "Hafen von Polis, Tor zum Akamas. ~45 Min. von Paphos.",
+        "parking": "Am Hafen; füllt sich am Wochenendmittag."
+      },
+      "cor-gastronomy": {
+        "description": "Wiz 50 Best Nr. 2. Internationales Casual Fine Dining. Französisch inspirierte Küche mit mediterraner Fusion von Chef Christodoros Theofanou. Preisgekrönt. Winterterrasse bei mildem Wetter. Reservieren Sie voraus. Eine Stufe legerer als The Polo, in der Ausführung Spitzenklasse.",
+        "winterTip": "Preisgekrönt. Winterterrasse bei mildem Wetter. Vorab reservieren.",
+        "bestTimeToVisit": "Abendessen; vorab buchen",
+        "localSecret": "Französisch inspiriert mit mediterraner Fusion. Spitzenklasse in der Ausführung. Winterterrasse."
+      },
+      "sentio": {
+        "description": "Wiz 50 Best Top 5. Mediterrane Küche in Nikosia. Zeitgemäß, kreativ. Die Zuflucht für Regentage in Nikosia. Kombinieren Sie mit dem Leventis-Museum oder einem Spaziergang durch die Altstadt. Reservieren Sie voraus. Eine Hauptstadt-Option, wenn Küste und Berge nicht rufen.",
+        "winterTip": "Regentag in Nikosia. Mit dem Leventis-Museum kombinieren. Vorab reservieren.",
+        "bestTimeToVisit": "Mittag- oder Abendessen; mit Museum kombinieren",
+        "localSecret": "Wenn die Küste nicht ruft: Nikosia hat seine eigene Szene. Sentio führt sie an."
+      },
+      "kakopetria-trout": {
+        "description": "Flusskulisse. Psaróvrasto — Forelle, in Wein und Kräutern pochiert. Kakopetrias Forellentavernen säumen den Kryos Potamos. Morgens Caledonia-Fälle, Kryos-Potamos-Runde oder Kampos tou Livadiou; Kakopetria zum Mittag. Das Dorf kennt Wanderer. Kamin, Bergluft, das Rauschen des Flusses. Winter: drinnen ist es behaglich.",
+        "winterTip": "Morgens Caledonia oder Kryos Potamos. Kakopetria zum Mittag. Psaróvrasto — Forelle, in Wein und Kräutern pochiert.",
+        "bestTimeToVisit": "Mittags; nach dem Morgenpfad",
+        "localSecret": "Psaróvrasto. Forelle, Wein, Kräuter. Der Fluss zieht vorbei. Kakopetria kennt Wanderer. Die bemalten UNESCO-Kirchen von Galata sind Minuten entfernt — planen Sie Zeit zum Bummeln ein.",
+        "openingHours": "Meist 12–15:30, 19–22; im Winter anrufen",
+        "transport": "Dorf Kakopetria, Solea-Tal. ~55 Min. von Limassol.",
+        "parking": "Dorfparkplätze; einige Tavernen am Fluss."
+      },
+      "santo-restaurant": {
+        "description": "Weingut-Lunch mit Meerblick. Santo thront über Limassol; das Restaurant hat ganzjährig geöffnet. An einem milden Wintertag sitzt man draußen mit einer Decke. Ihr roter Ayios Onoufrios begleitet zypriotische Meze. Fragen Sie nach einem weinbegleiteten Mittagessen. Heizstrahler im Winter. Sonnenuntergang im Dezember gegen fünf.",
+        "winterTip": "Buchen Sie mittags für den Meerblick. Heizstrahler im Winter. Sonnenuntergang im Dezember gegen 17 Uhr.",
+        "bestTimeToVisit": "Mittags; 12–14 Uhr oder zum Sonnenuntergang",
+        "localSecret": "Ihr roter Ayios Onoufrios begleitet zypriotische Meze. Fragen Sie nach einem weinbegleiteten Mittagessen."
+      },
+      "kouklia-cafe": {
+        "description": "Ruinen über der Schulter. Das Dorf Kouklia liegt neben Palaipafos, dem antiken Heiligtum der Aphrodite. Cafés und Tavernen des Dorfes bieten einfache zypriotische Küche mit Blick auf Geschichte. Kaffee, Meze, ein langsames Mittagessen. Der Winter ist still; Stätte und Dorf gehören denen, die sich Zeit nehmen. Kombinieren Sie Palaipafos am Morgen, Kouklia zum Mittag. Der Küstenpfad Petra tou Romiou ist nah.",
+        "winterTip": "Still im Winter. Palaipafos am Morgen, Kouklia für Kaffee oder Mittagessen. Einfache Küche, antike Kulisse.",
+        "bestTimeToVisit": "Mittags; nach dem Morgen in Palaipafos",
+        "localSecret": "Die Ruinen über der Schulter. Einfache Küche, antike Kulisse. Kouklia belohnt die Geduldigen. Königsgräber und Pafos-Mosaike sind eine kurze Fahrt entfernt.",
+        "openingHours": "Cafés und Tavernen; meist 9–18 oder Mittagszeit",
+        "transport": "Dorf Kouklia, bei Palaipafos. ~25 Min. von Paphos.",
+        "parking": "Im Dorf; nahe der antiken Stätte."
+      }
     }
   }
 }

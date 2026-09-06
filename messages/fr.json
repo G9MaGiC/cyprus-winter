@@ -5875,6 +5875,95 @@
         "dates": "6 janvier",
         "venue": "Villes côtières"
       }
+    },
+    "restaurants": {
+      "zygi-tavernas": {
+        "description": "Entre Larnaca et Limassol. Ni ruines, ni dentelle. Rien que du poisson. Les tavernes bordent le port ; on y sert ce que les bateaux ont rapporté le matin. Les gens du coin mangent ici. Déjeuner d’hiver face à l’eau — poulpe, daurade, calamars. Le rythme est lent. Le café d’après est obligatoire. C’est à Zygi que les Chypriotes viennent pour le poisson du dimanche. Combinez avec Choirokoitia, Lefkara ou le sentier du cap Greco.",
+        "winterTip": "Les tavernes bordent le port. Commandez ce que les bateaux ont rapporté. Le dimanche est le jour des gens du coin. Combinez avec Choirokoitia ou Lefkara.",
+        "bestTimeToVisit": "Déjeuner ; le dimanche, plein de gens du coin",
+        "localSecret": "Entre Larnaca et Limassol. Ni ruines, ni dentelle. Rien que du poisson. Le rythme est lent. Le café d’après est obligatoire.",
+        "openingHours": "Tavernes en général 12–15:30, 19–23",
+        "transport": "Port de Zygi, entre Larnaca et Limassol. ~25 min de Larnaca.",
+        "parking": "Autour du port."
+      },
+      "governors-beach-tavernas": {
+        "description": "Falaises blanches au-dessus d’un sable volcanique sombre. Les tavernes se perchent sur les falaises ; on y sert poisson frais et mezze. Par un doux après-midi de décembre, on s’assoit dehors avec une couverture. Le poisson est frais, le vin coule. L’un des meilleurs déjeuners d’hiver de la côte. Le contraste — falaises blanches, sable sombre — est saisissant dans la lumière d’hiver. Combinez Kourion ou Kolossi le matin, poisson à midi. Le sentier du cap Greco ou Choirokoitia complètent la journée.",
+        "winterTip": "Asseyez-vous dehors avec une couverture les doux jours de décembre. Les tavernes des falaises restent ouvertes. Ruines le matin, poisson à midi.",
+        "bestTimeToVisit": "Déjeuner ; après Kourion ou Kolossi",
+        "localSecret": "Trouvez une crique. Ou installez-vous dans une taverne. Les falaises blanches et le sable sombre. Par un doux après-midi de décembre, asseyez-vous dehors. Regardez la mer. À quinze minutes de Kourion.",
+        "openingHours": "Tavernes en général 12–15:30, 19–23",
+        "transport": "Governor's Beach, entre Limassol et Larnaca. ~20 min de Limassol.",
+        "parking": "Stationnement falaise et plage."
+      },
+      "the-polo": {
+        "description": "N° 1 du Wiz 50 Best pour 2025. Gastronomie méditerranéenne à l’Alasia Boutique Hotel. Chef exécutif Pavlos Kyriakis. Saveurs équilibrées, technique impeccable, service exceptionnel. Réservez à l’avance ; tenue élégante. Les soirées d’hiver sont feutrées. Une adresse d’occasion spéciale pour voyageurs exigeants.",
+        "winterTip": "Réservez à l’avance. Tenue élégante. Les soirées d’hiver sont feutrées. N° 1 du Wiz 50 Best deux années de suite.",
+        "bestTimeToVisit": "Dîner ; réservez longtemps à l’avance",
+        "localSecret": "The Polo tient la première place deux années de suite. Saveurs équilibrées, technique impeccable."
+      },
+      "the-farmyard": {
+        "description": "Top 5 du Wiz 50 Best. Cuisine asiatique de réconfort à Kathikas, Paphos. Chef Savvas Iakovides. Éthique farm-to-table. Sur la boucle de l’Akamas — faites Adonis ou Aphrodite le matin, puis réservez le déjeuner. Le village et la cuisine en font une destination à part entière. Réservez à l’avance ; ça se remplit. L’hiver : sentier le matin, ce repas en récompense.",
+        "winterTip": "Sur la boucle de l’Akamas. Adonis ou Aphrodite le matin, puis réservez le déjeuner. Réservez 1–2 jours à l’avance ; les week-ends se remplissent.",
+        "bestTimeToVisit": "Déjeuner ; arrivez à 13–14 h après le sentier du matin",
+        "localSecret": "Le village de Kathikas. Cuisine asiatique de réconfort. Les sentiers de l’Akamas vous valent ce repas. Les domaines Vasilikon et Sygkrasi sont à quelques minutes.",
+        "openingHours": "Déjeuner et dîner ; réservez à l’avance",
+        "transport": "Village de Kathikas. Sur la boucle Akamas–Laona. ~35 min de Paphos.",
+        "parking": "Parking du village ; réservez à l’avance."
+      },
+      "psilo-dendro": {
+        "description": "La taverne au bord de la rivière. Le patron connaît chaque randonneur. Commandez la truite aux amandes — psaróvrasto, pochée au vin et aux herbes. La cheminée, l’air de la montagne, le bruit du Kryos Potamos. C’est l’enchaînement que font les gens du coin après Artemis ou les chutes de Caledonia. Le sentier le matin ; finissez pour 13 h. Roulez jusqu’à Platres. Ne le manquez pas.",
+        "winterTip": "Après Artemis ou les chutes de Caledonia. Truite aux amandes. La cheminée. Finissez le sentier pour 13 h, puis roulez jusqu’à Platres.",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin (arrivez pour 13–13:30)",
+        "localSecret": "Celle au bord de la rivière. Truite aux amandes. Le patron connaît chaque randonneur. Psilo Dendro est le classique ; d’autres bordent le Kryos Potamos.",
+        "openingHours": "En général 12–15:30, 19–22 ; l’hiver, téléphonez",
+        "transport": "Village de Platres, au bord du Kryos Potamos. ~45 min de Limassol.",
+        "parking": "Parking du village ; rivière à pied."
+      },
+      "polis-harbour": {
+        "description": "Après le sentier Adonis ou Aphrodite. Les tavernes du port servent un poisson vraiment frais — ce que les bateaux ont rapporté. Le domaine Vasilikon est sur la boucle de l’Akamas au retour. Ou laissez le vin et mangez, tout simplement. Le sentier vous vaut le repas. Polis sait nourrir les randonneurs. Vue sur le port, rythme détendu. Pas de tours, pas de néons — rien que le poisson, le vin et la baie.",
+        "winterTip": "Le sentier le matin. Finissez pour 13 h. Polis pour déjeuner. Le domaine Vasilikon au retour. Deux jours si vous pouvez : marcher, manger, dormir, recommencer.",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin",
+        "localSecret": "Le sentier vous vaut le repas. C’est au port de Polis que les Chypriotes viennent pour le poisson. Commandez ce qui est frais. La vue sur le port est comprise.",
+        "openingHours": "Tavernes en général 12–15:30, 19–23 ; certaines ferment lundi ou mardi",
+        "transport": "Port de Polis, porte de l’Akamas. ~45 min de Paphos.",
+        "parking": "Autour du port ; se remplit le week-end à midi."
+      },
+      "cor-gastronomy": {
+        "description": "N° 2 du Wiz 50 Best. Casual fine dining international. Cuisine d’inspiration française à la fusion méditerranéenne, par le chef Christodoros Theofanou. Primée. Terrasse d’hiver par temps doux. Réservez à l’avance. Un cran moins formel que The Polo, une exécution de premier ordre.",
+        "winterTip": "Primée. Terrasse d’hiver par temps doux. Réservez à l’avance.",
+        "bestTimeToVisit": "Dîner ; réservez à l’avance",
+        "localSecret": "Inspiration française, fusion méditerranéenne. Exécution de premier ordre. Terrasse d’hiver."
+      },
+      "sentio": {
+        "description": "Top 5 du Wiz 50 Best. Cuisine méditerranéenne à Nicosie. Contemporaine, créative. Le refuge des jours de pluie à Nicosie. Combinez avec le musée Leventis ou une flânerie dans la vieille ville. Réservez à l’avance. L’option capitale quand la côte et les montagnes n’appellent pas.",
+        "winterTip": "Jour de pluie à Nicosie. Combinez avec le musée Leventis. Réservez à l’avance.",
+        "bestTimeToVisit": "Déjeuner ou dîner ; combinez avec un musée",
+        "localSecret": "Quand la côte n’appelle pas : Nicosie a sa propre scène. Sentio la mène."
+      },
+      "kakopetria-trout": {
+        "description": "Décor de rivière. Psaróvrasto — truite pochée au vin et aux herbes. Les tavernes à truite de Kakopetria bordent le Kryos Potamos. Le matin, chutes de Caledonia, boucle du Kryos Potamos ou Kampos tou Livadiou ; Kakopetria pour déjeuner. Le village connaît les randonneurs. Cheminée, air de la montagne, bruit de la rivière. L’hiver : douillet à l’intérieur.",
+        "winterTip": "Le matin, Caledonia ou Kryos Potamos. Kakopetria pour déjeuner. Psaróvrasto — truite pochée au vin et aux herbes.",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin",
+        "localSecret": "Psaróvrasto. Truite, vin, herbes. La rivière passe à côté. Kakopetria connaît les randonneurs. Les églises peintes UNESCO de Galata sont à quelques minutes — gardez du temps pour flâner.",
+        "openingHours": "En général 12–15:30, 19–22 ; l’hiver, téléphonez",
+        "transport": "Village de Kakopetria, vallée de Solea. ~55 min de Limassol.",
+        "parking": "Parking du village ; quelques tavernes au bord de la rivière."
+      },
+      "santo-restaurant": {
+        "description": "Déjeuner de domaine viticole avec vue sur la mer. Santo domine Limassol ; le restaurant reste ouvert toute l’année. Par une douce journée d’hiver, on s’assoit dehors avec une couverture. Leur rouge Ayios Onoufrios accompagne les mezze chypriotes. Demandez un déjeuner en accord mets-vins. Chauffages l’hiver. Coucher de soleil vers cinq heures en décembre.",
+        "winterTip": "Réservez à déjeuner pour la vue sur la mer. Chauffages l’hiver. Coucher de soleil vers 17 h en décembre.",
+        "bestTimeToVisit": "Déjeuner ; 12–14 h ou au coucher du soleil",
+        "localSecret": "Leur rouge Ayios Onoufrios accompagne les mezze chypriotes. Demandez un déjeuner en accord mets-vins."
+      },
+      "kouklia-cafe": {
+        "description": "Des ruines par-dessus l’épaule. Le village de Kouklia jouxte Palaipafos, l’antique sanctuaire d’Aphrodite. Les cafés et tavernes du village offrent une cuisine chypriote simple avec vue sur l’histoire. Café, mezze, un déjeuner lent. L’hiver est calme ; le site et le village appartiennent à ceux qui prennent leur temps. Combinez Palaipafos le matin, Kouklia pour déjeuner. Le sentier côtier de Petra tou Romiou est tout près.",
+        "winterTip": "Calme l’hiver. Palaipafos le matin, Kouklia pour un café ou un déjeuner. Cuisine simple, décor antique.",
+        "bestTimeToVisit": "Déjeuner ; après la matinée à Palaipafos",
+        "localSecret": "Les ruines par-dessus l’épaule. Cuisine simple, décor antique. Kouklia récompense les patients. Les Tombeaux des Rois et les mosaïques de Paphos sont à un court trajet.",
+        "openingHours": "Cafés et tavernes ; en général 9–18 ou aux heures du déjeuner",
+        "transport": "Village de Kouklia, près de Palaipafos. ~25 min de Paphos.",
+        "parking": "Dans le village ; près du site antique."
+      }
     }
   }
 }

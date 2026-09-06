@@ -9,6 +9,7 @@ import { WINE_ROUTES } from "@/data/wine-routes";
 import { weatherByMonth } from "@/data/weather";
 import { localizeWeatherRow } from "@/lib/weather-content";
 import { localizeWineRoute } from "@/lib/wine-route-content";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
@@ -49,8 +50,12 @@ function trailDifficultyLabel(
 }
 
 export async function discoverDetailMetadata(id: string, locale: string): Promise<Metadata> {
-  const a = getDiscoverPlaceById(id);
-  if (!a) notFound();
+  const found = getDiscoverPlaceById(id);
+  if (!found) notFound();
+  // Overlay before building the snippet — covered places (wineries,
+  // attractions, restaurants) otherwise splice their EN description into a
+  // localized SERP frame.
+  const a = await localizeDiscoverContent(found, locale);
   const tDiscoverDetail = await getTranslations({ locale, namespace: "discover.detail" });
   const typeLabel = discoverTypeLabel(a.type, tDiscoverDetail);
   const prefix = `${a.region}. ${typeLabel}. `;

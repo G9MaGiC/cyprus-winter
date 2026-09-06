@@ -12,6 +12,9 @@ export type Restaurant = {
   winterOpen?: boolean;
   /** e.g. "12–15:30, 19–23" */
   openingHours?: string;
+  /** Decided on the EN base by the content overlay before translation, so
+      the badge survives translation (mirrors Winery.hoursCallAhead). */
+  hoursCallAhead?: boolean;
   /** International format */
   contactPhone?: string;
   /** Reserve online */

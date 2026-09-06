@@ -57,8 +57,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id, locale = "en" } = await params;
   const tDetail = await getTranslations({ locale, namespace: "discover.detail" });
-  const a = getDiscoverPlaceById(id);
-  if (!a) notFound();
+  const found = getDiscoverPlaceById(id);
+  if (!found) notFound();
+  // The description feeds the SERP snippet inside a localized frame — overlay
+  // it per locale so covered places don't ship mixed-language metadata.
+  const a = await localizeDiscoverContent(found, locale);
   const typeLabel =
     a.type === "winery"
       ? tDetail("metadata.typeWinery")

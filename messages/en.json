@@ -5875,6 +5875,95 @@
         "dates": "6 January",
         "venue": "Coastal towns"
       }
+    },
+    "restaurants": {
+      "zygi-tavernas": {
+        "description": "Between Larnaca and Limassol. No ruins, no lace. Just fish. The tavernas line the harbour; they serve what the boats brought in that morning. Locals eat here. Winter lunch on the waterfront—octopus, sea bream, calamari. The pace is slow. The coffee after is obligatory. Zygi is where Cypriots go for Sunday fish. Combine with Choirokoitia, Lefkara, or Cape Greco trail.",
+        "winterTip": "The tavernas line the harbour. Order what the boats brought in. Sunday is locals' day. Combine with Choirokoitia or Lefkara.",
+        "bestTimeToVisit": "Lunch; Sundays especially busy with locals",
+        "localSecret": "Between Larnaca and Limassol. No ruins, no lace. Just fish. The pace is slow. The coffee after is obligatory.",
+        "openingHours": "Tavernas typically 12–15:30, 19–23",
+        "transport": "Zygi harbour, between Larnaca and Limassol. ~25 min from Larnaca.",
+        "parking": "Harbour area."
+      },
+      "governors-beach-tavernas": {
+        "description": "White cliffs above dark volcanic sand. The tavernas perch on the cliffs; they serve fresh fish and meze. On a mild December afternoon you can sit outside with a blanket. The fish is fresh, the wine flows. One of the best winter lunch spots on the coast. The contrast—white cliffs, dark sand—is striking in winter light. Combine with Kourion or Kolossi in the morning, fish at lunch. Cape Greco trail or Choirokoitia are within reach for a full day.",
+        "winterTip": "Sit outside with a blanket on mild December days. The cliff tavernas stay open. Ruins in the morning, fish at lunch.",
+        "bestTimeToVisit": "Lunch; after Kourion or Kolossi",
+        "localSecret": "Find a cove. Or settle at a taverna. The white cliffs and dark sand. On a mild December afternoon, sit outside. Watch the sea. Fifteen minutes from Kourion.",
+        "openingHours": "Tavernas typically 12–15:30, 19–23",
+        "transport": "Governor's Beach, between Limassol and Larnaca. ~20 min from Limassol.",
+        "parking": "Cliff and beach parking."
+      },
+      "the-polo": {
+        "description": "Wiz 50 Best #1 for 2025. Mediterranean fine dining at Alasia Boutique Hotel. Executive chef Pavlos Kyriakis. Balanced flavours, impeccable technique, exceptional service. Reserve ahead; dress smart. Winter evenings are cosy. A special-occasion spot for discerning travellers.",
+        "winterTip": "Reserve ahead. Dress smart. Winter evenings are cosy. Wiz 50 Best #1 two years running.",
+        "bestTimeToVisit": "Dinner; book well ahead",
+        "localSecret": "The Polo has held the top spot for two consecutive years. Balanced flavours, impeccable technique."
+      },
+      "the-farmyard": {
+        "description": "Wiz 50 Best top 5. Ethnic Asian comfort cuisine in Kathikas, Paphos. Head Chef Savvas Iakovides. Farm-to-table ethos. On the Akamas loop—do Adonis or Aphrodite in the morning, then book lunch. The village setting and the food make it a destination. Reserve ahead; it fills. Winter: trail in the morning, this meal as the reward.",
+        "winterTip": "On the Akamas loop. Do Adonis or Aphrodite in the morning, then book lunch. Reserve 1–2 days ahead; weekends fill.",
+        "bestTimeToVisit": "Lunch; arrive 1–2pm after morning trail",
+        "localSecret": "Kathikas village. Ethnic Asian comfort. The Akamas trails earn you this meal. Vasilikon and Sygkrasi wineries are minutes away.",
+        "openingHours": "Lunch and dinner; reserve ahead",
+        "transport": "Kathikas village. On the Akamas–Laona loop. ~35 min from Paphos.",
+        "parking": "Village parking; book ahead."
+      },
+      "psilo-dendro": {
+        "description": "The taverna by the river. The owner knows every hiker. Order the trout with almonds—psaróvrasto, poached in wine and herbs. The fireplace, the mountain air, the sound of the Kryos Potamos. It's the pairing locals do after Artemis or Caledonia Falls. Do the trail in the morning; finish by 1pm. Drive to Platres. Don't skip it.",
+        "winterTip": "Post-Artemis or Caledonia Falls. Trout with almonds. The fireplace. Finish trail by 1pm, then drive to Platres.",
+        "bestTimeToVisit": "Lunch; after morning trail (arrive by 1–1:30pm)",
+        "localSecret": "The one by the river. Trout with almonds. The owner knows every hiker. Psilo Dendro is the classic; others line the Kryos Potamos.",
+        "openingHours": "Typically 12–15:30, 19–22; call in winter",
+        "transport": "Platres village, by the Kryos Potamos. ~45 min from Limassol.",
+        "parking": "Village parking; walk to the river."
+      },
+      "polis-harbour": {
+        "description": "Post-Adonis or Aphrodite trail. The harbour tavernas serve fish that's fresh—what the boats brought in. Vasilikon winery is on the Akamas loop back. Or skip the wine and just eat. The trail earns you the meal. Polis knows how to feed hikers. Harbour views, relaxed pace. No high-rises, no neon—just fish, wine, and the bay.",
+        "winterTip": "Do the trail in the morning. Finish by 1pm. Polis for lunch. Vasilikon winery on the loop back. Two days if you can: hike, eat, sleep, repeat.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "The trail earns you the meal. Polis harbour is where Cypriots go for fish. Order what's fresh. The harbour view is included.",
+        "openingHours": "Tavernas typically 12–15:30, 19–23; some close Mon or Tue",
+        "transport": "Polis harbour, Akamas gateway. ~45 min from Paphos.",
+        "parking": "Harbour area; fills at weekend lunch."
+      },
+      "cor-gastronomy": {
+        "description": "Wiz 50 Best #2. International casual fine dining. French-inspired cuisine with Mediterranean fusion by Chef Christodoros Theofanou. Award-winning. Winter terrace when it's mild. Reserve ahead. A notch below The Polo in formality but top-tier in execution.",
+        "winterTip": "Award-winning. Winter terrace when mild. Reserve ahead.",
+        "bestTimeToVisit": "Dinner; book ahead",
+        "localSecret": "French-inspired with Mediterranean fusion. Top-tier execution. Winter terrace."
+      },
+      "sentio": {
+        "description": "Wiz 50 Best top 5. Mediterranean cuisine in Nicosia. Contemporary, creative. Rainy-day Nicosia escape. Combine with the Leventis Museum or a stroll through the old town. Reserve ahead. A capital-city option when the coast or mountains don't call.",
+        "winterTip": "Rainy-day Nicosia. Combine with Leventis Museum. Reserve ahead.",
+        "bestTimeToVisit": "Lunch or dinner; combine with museum",
+        "localSecret": "When the coast doesn't call. Nicosia has its own scene. Sentio leads it."
+      },
+      "kakopetria-trout": {
+        "description": "River setting. Psaróvrasto—trout poached in wine and herbs. Kakopetria's trout tavernas line the Kryos Potamos. Do Caledonia Falls, Kryos Potamos loop, or Kampos tou Livadiou in the morning; Kakopetria for lunch. The village knows hikers. Fireplace, mountain air, the sound of the river. Winter: cosy inside.",
+        "winterTip": "Do Caledonia or Kryos Potamos in the morning. Kakopetria for lunch. Psaróvrasto—trout poached in wine and herbs.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "Psaróvrasto. Trout, wine, herbs. The river runs past. Kakopetria knows hikers. Galata's UNESCO painted churches are minutes away—allow time to wander.",
+        "openingHours": "Typically 12–15:30, 19–22; call in winter",
+        "transport": "Kakopetria village, Solea Valley. ~55 min from Limassol.",
+        "parking": "Village parking; some tavernas by the river."
+      },
+      "santo-restaurant": {
+        "description": "Winery lunch with sea views. Santo perches above Limassol; the restaurant stays open year-round. On a mild winter day you can sit outside with a blanket. Their Ayios Onoufrios red pairs with Cypriot meze. Ask for a wine-paired lunch. Heaters in winter. Sunset in December around five.",
+        "winterTip": "Book lunch for sea views. Heaters in winter. Sunset around 5pm in December.",
+        "bestTimeToVisit": "Lunch; 12 to 2pm or sunset",
+        "localSecret": "Their Ayios Onoufrios red pairs with Cypriot meze. Ask for a wine-paired lunch."
+      },
+      "kouklia-cafe": {
+        "description": "Ruins over your shoulder. Kouklia village sits beside Palaipafos, the ancient sanctuary of Aphrodite. The village cafés and tavernas offer simple Cypriot fare with a view of history. Coffee, meze, a slow lunch. Winter is quiet; the site and the village belong to those who take their time. Combine Palaipafos in the morning, Kouklia for lunch. Petra tou Romiou coastal path is nearby.",
+        "winterTip": "Quiet in winter. Palaipafos in the morning, Kouklia for coffee or lunch. Simple fare, ancient setting.",
+        "bestTimeToVisit": "Lunch; after morning at Palaipafos",
+        "localSecret": "The ruins over your shoulder. Simple fare, ancient setting. Kouklia rewards the patient. Tomb of Kings and Pafos mosaics are a short drive.",
+        "openingHours": "Cafés and tavernas; typically 9–18 or lunch hours",
+        "transport": "Kouklia village, near Palaipafos. ~25 min from Paphos.",
+        "parking": "Village; near ancient site."
+      }
     }
   }
 }
