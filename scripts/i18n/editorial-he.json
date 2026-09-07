@@ -347,7 +347,6 @@
   "book.guideForm.success.title": "הבקשה נשלחה",
   "book.guideForm.success.body": "בקשת ההליכה שלכם ל{guideName} בדרך. יאשרו באימייל. אם אין תשובה תוך יום־יומיים, התקשרו.",
   "book.guideForm.success.crossDevicePrefix": "הזינו את האימייל בעמוד",
-  "book.guideForm.success.crossDeviceLink": "ההזמנות שלי",
   "book.guideForm.success.crossDeviceSuffix": "כדי לראות את הבקשה בכל המכשירים.",
   "book.guideForm.success.tip": "קחו שכבות ומים. ספרו למישהו את המסלול.",
   "book.guideForm.success.emailDelayed": "הבקשה נשמרה. מייל האישור עשוי לקחת כמה דקות — בדקו בספאם או פנו למדריך אם הוא לא מגיע.",
@@ -557,8 +556,6 @@
   "home.insiderTips.drive-left.body": "מורשת בריטית. שכרו רכב להגיע לכפרים ושבילים. הכבישים טובים. פניות בהרים צרות. קחו את הזמן. הנוף שווה.",
   "home.insiderTips.emergency.title": "מספרי חירום",
   "home.insiderTips.emergency.body": "112 לחירום EU. 1460 למידע תיירות. 199 לאמבולנס. שמרו. מקווים שלא תצטרכו.",
-  "plan.share.placesCount": "{count, plural, one {מקום #} other {# מקומות}}",
-  "plan.share.daysCount": "{count, plural, one {יום #} other {# ימים}}",
   "plan.share.ogNamedTitle": "{places} — Cyprus Winter",
   "plan.daySelector.unknownPlace": "…",
   "plan.daySelector.summarySeparator": " → "

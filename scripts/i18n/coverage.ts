@@ -94,13 +94,12 @@ function findNamespacesInFile(content: string): Map<string, string> {
   while ((m = promiseAllBlock.exec(content)) !== null) {
     const varNames = m[1].split(",").map((s) => s.trim()).filter(Boolean);
     const elements = splitTopLevelComma(m[2]);
-    const nsList: string[] = [];
-    for (const el of elements) {
-      const ns = extractNamespaceFromElement(el);
-      if (ns !== null) nsList.push(ns);
-    }
-    for (let i = 0; i < varNames.length && i < nsList.length; i++) {
-      map.set(varNames[i], nsList[i]);
+    // Keep positional alignment: a Promise.all can mix getTranslations with
+    // other awaits (e.g. [data, tHome, tCommon]) — filtering the nulls would
+    // shift every later variable onto the wrong namespace.
+    for (let i = 0; i < varNames.length && i < elements.length; i++) {
+      const ns = extractNamespaceFromElement(elements[i]);
+      if (ns !== null) map.set(varNames[i], ns);
     }
   }
   return map;
@@ -161,12 +160,19 @@ function findDynamicKeyPrefixesInFile(
  */
 function findRegistryNamespacePrefixes(content: string): Set<string> {
   const prefixes = new Set<string>();
-  const re = /namespace\s*:\s*["']([^"']+)["']/g;
+  // A `namespace:` may be a TS union type (`namespace: "a" | "b"`) — every
+  // alternative is a possible runtime namespace, so register them all.
+  const re = /namespace\s*:\s*["']([^"']+)["']((?:\s*\|\s*["'][^"']+["'])*)/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(content)) !== null) {
     const before = content.slice(Math.max(0, m.index - 80), m.index);
     if (/getTranslations\s*\(\s*\{[^}]*$/.test(before)) continue;
     prefixes.add(`${m[1]}.`);
+    const unionRe = /["']([^"']+)["']/g;
+    let u: RegExpExecArray | null;
+    while ((u = unionRe.exec(m[2] ?? "")) !== null) {
+      prefixes.add(`${u[1]}.`);
+    }
   }
   return prefixes;
 }

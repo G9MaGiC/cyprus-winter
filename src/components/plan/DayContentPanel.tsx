@@ -16,11 +16,15 @@ function EmptyDayState({
   onBrowseAll,
   onScrollToQuickStart,
   readOnly,
+  planIsEmpty = false,
 }: {
   activeDay: number;
   onBrowseAll: () => void;
   onScrollToQuickStart: () => void;
   readOnly?: boolean;
+  /** Whole plan has zero places — show the first-run copy instead of the
+      generic per-day empty state (plan.addFirstPlace / plan.emptyDay). */
+  planIsEmpty?: boolean;
 }) {
   const tPlan = useTranslations("plan");
   return (
@@ -29,7 +33,7 @@ function EmptyDayState({
         {tPlan("dayEmptyTitle", { day: activeDay })}
       </p>
       <p className="text-sm text-muted-ink mb-6 leading-relaxed max-w-sm mx-auto">
-        {tPlan("dayEmptyBody")}
+        {planIsEmpty ? tPlan("emptyDay") : tPlan("dayEmptyBody")}
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
         <button
@@ -37,9 +41,9 @@ function EmptyDayState({
           onClick={onBrowseAll}
           disabled={readOnly}
           className={`${CTA.primaryCompact} active:scale-[0.98] motion-reduce:active:scale-100 transition-transform duration-150 hover:border-terracotta/20 disabled:opacity-50 disabled:cursor-not-allowed`}
-          aria-label={tPlan("aria.browsePlacesToAddDay")}
+          aria-label={planIsEmpty ? undefined : tPlan("aria.browsePlacesToAddDay")}
         >
-          {tPlan("browsePlaces")}
+          {planIsEmpty ? tPlan("addFirstPlace") : tPlan("browsePlaces")}
         </button>
         <button
           type="button"
@@ -139,6 +143,7 @@ type DayContentPanelProps = {
   /** Hide inline quick-add when empty plan already shows chips in Quick Start */
   hideInlineAdd?: boolean;
   readOnly?: boolean;
+  planIsEmpty?: boolean;
 };
 
 export default function DayContentPanel({
@@ -154,6 +159,7 @@ export default function DayContentPanel({
   onScrollToQuickStart,
   hideInlineAdd = false,
   readOnly = false,
+  planIsEmpty = false,
 }: DayContentPanelProps) {
   const tPlan = useTranslations("plan");
   const locale = useLocale();
@@ -235,6 +241,7 @@ export default function DayContentPanel({
                 onBrowseAll={onBrowseAll}
                 onScrollToQuickStart={onScrollToQuickStart}
                 readOnly={readOnly}
+                planIsEmpty={planIsEmpty}
               />
             ) : (
               <div className="space-y-0">

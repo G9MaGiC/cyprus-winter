@@ -240,7 +240,6 @@ async function extractLib(out: Record<string, string>): Promise<void> {
   add(out, "common.skipToContent", "Skip to main content");
   add(out, "common.footer.discover", "Discover");
   add(out, "common.footer.plan", "Plan");
-  add(out, "common.footer.airport", "Arriving");
   add(out, "common.footer.weather", "Weather");
   add(out, "common.footer.bookings", "Bookings");
   add(out, "common.footer.tagline", "Whether you found us from a Google search or at the airport: trails, villages, heritage. Olive groves, kafenions, Commandaria. Emergency 112 · Tourist info 1460 · Ambulance 199.");

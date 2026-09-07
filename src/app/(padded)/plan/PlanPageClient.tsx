@@ -351,6 +351,7 @@ export default function PlanPageClient() {
             onScrollToQuickStart={scrollToQuickStart}
             hideInlineAdd={!hasContent}
             readOnly={planReadOnly}
+            planIsEmpty={!hasContent}
           />
 
           {hasContent && hydrated && <PlanMapCollapsibleSection />}

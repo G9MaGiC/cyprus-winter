@@ -36,6 +36,9 @@ export async function buildPlanPageMetadata(
 
   const title = copy?.title ?? tMeta("title");
   const description = copy?.description ?? tMeta("description");
+  // House convention (translated-page-meta.ts): social cards carry the short
+  // ogDescription; the long description stays on <meta name=description>.
+  const ogDescription = copy?.description ?? tMeta("ogDescription");
   const sharePath = encoded && preview ? `/plan?plan=${encodeURIComponent(encoded)}` : "/plan";
   const ogImage = preview?.firstPlaceId
     ? `${SITE_URL}${
@@ -53,13 +56,13 @@ export async function buildPlanPageMetadata(
     openGraph: {
       type: "website",
       title,
-      description,
+      description: ogDescription,
       images: [{ url: ogImage, width: 1200, height: 630, alt: ogAlt }],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: ogDescription,
       images: [ogImage],
     },
   };
