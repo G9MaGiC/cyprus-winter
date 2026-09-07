@@ -6048,6 +6048,82 @@
         "description": "Hafen und Kastellviertel von Pafos. Fisch, Meze, Hafenblick. Wintersonnenuntergänge. Kombinieren Sie mit den Pafos-Mosaiken, den Königsgräbern oder Coral Bay. Das Kastell leuchtet in der Dämmerung. Für Plätze am Wasser reservieren.",
         "winterTip": "Hafenblick. Wintersonnenuntergänge. Kastelllichter in der Dämmerung.",
         "localSecret": "Hafen und Kastell. Fisch, Meze. Die Dämmerung ist die Stunde."
+      },
+      "agros-tavernas": {
+        "description": "Das Dorf Agros. Rosenprodukte, Loukoumi, Berg-Meze. Das Dorf ist berühmt für Rosen und Süßes. Die Tavernen servieren lokale Küche. Kombinieren Sie mit dem Machairas-Waldpfad, dem Xyliatos-Stausee oder der Kykkos-Straße. Winter: behaglich, Bergcharakter. Rosenlikör und Loukoumi vor oder nach dem Essen.",
+        "winterTip": "Rosenprodukte, Loukoumi. Morgens Machairas-Wald oder Xyliatos, Agros zum Mittag. Behaglich im Winter.",
+        "bestTimeToVisit": "Mittags; nach dem Morgenpfad",
+        "localSecret": "Erst Rosen und Süßes. Dann Berg-Meze. Agros hat seinen eigenen Rhythmus.",
+        "openingHours": "Tavernen meist 12–15:30, 19–22",
+        "transport": "Dorf Agros, Pitsilia. ~50 Min. von Limassol.",
+        "parking": "Dorfparkplätze."
+      },
+      "lefkara-tavernas": {
+        "description": "Das Spitzendorf. UNESCO-anerkanntes Lefkaritiko seit den Venezianern. Tavernen in Steinhäusern, Silberwerkstätten, Spitzenklöpplerinnen in Türrahmen. Meze, lokaler Wein, Dorftempo. Pano und Kato Lefkara — zwei Dörfer, eine Tradition. Winterlicht auf dem Pflaster; weniger Reisebusse; das Handwerk kommt zuerst.",
+        "winterTip": "Der Winter ist ideal: mild, still, Klöpplerinnen in den Türrahmen. Im März kommt das Lefkara-Spitzenfest — der Platz füllt sich mit Vorführungen, Workshops, Ständen. Reservieren Sie dann fürs Mittagessen. Sonst sind Wochentagvormittage ruhig.",
+        "bestTimeToVisit": "Mittagessen nach dem Spitzenkauf; werktags vormittags weniger voll. Im März zum Spitzenfest.",
+        "localSecret": "Beginnen Sie in Kato Lefkara. Ruhiger. Gleiche Spitze, oft bessere Preise. Hinauf nach Pano, wenn Sie bereit sind. Beide haben Tavernen. Der Stein belohnt langsames Schlendern.",
+        "openingHours": "Tavernen meist 12–15:30, 19–22; einige schließen Mo oder Di",
+        "transport": "30 Min. von Larnaka. Bus 429 nach Lefkara.",
+        "parking": "Kostenlos am Dorfeingang; füllt sich am Wochenende und während des Spitzenfests.",
+        "backstory": "Lefkaritiko-Spitze wird in diesen Hügeln seit venezianischer Zeit geklöppelt. Die UNESCO nahm sie 2009 als Immaterielles Kulturerbe auf. Die Legende sagt, Leonardo da Vinci habe hier ein Altartuch für den Mailänder Dom gekauft. Wahr oder nicht — das Handwerk ist alt: Großmütter lehren Enkelinnen dieselben geometrischen Muster, Stich für Stich. Das Dorf liegt auf 700 m, Steinhäuser klettern den Hang hinauf, der Blick geht übers Tal. Pano Lefkara ist das Hauptdorf; Kato Lefkara darunter teilt die Tradition, bleibt aber stiller. Die Tavernen fügen sich in den Rhythmus — Meze, lokaler Wein, Steinmauern, keine Eile. Spitze am Morgen, Mittagessen um zwölf. So funktioniert Lefkara.",
+        "culturalNote": "Ti kánis? (Τι κάνεις) — wie geht's? Das ist der übliche Gruß, bevor man stöbert. Fragen Sie ruhig, wie die Spitze entsteht; die Kunsthandwerkerinnen sind stolz und erklären es gern. Kalí órexi vor dem Essen — guten Appetit."
+      },
+      "kathikas-tavernas": {
+        "description": "Das Dorf Kathikas auf dem Akamas-Rundweg. Traditionelle Tavernen; Meze, lokaler Wein. The Farmyard ist der Star — vorab buchen; andere bieten Schlichteres. Kombinieren Sie Adonis, Aphrodite oder Smigies am Morgen; Kathikas zum Mittag. Die Weingüter Vasilikon und Sygkrasi sind Minuten entfernt. Winter: morgens der Pfad, danach Mittagessen im Dorf.",
+        "winterTip": "Akamas-Rundweg. Morgens der Pfad, Kathikas zum Mittag. The Farmyard ist schnell ausgebucht; 1–2 Tage vorher reservieren.",
+        "bestTimeToVisit": "Mittags; nach dem Morgenpfad",
+        "localSecret": "Kathikas liegt auf dem Rundweg. Meze, Wein. The Farmyard oder schlichtere Adressen. Die Weingüter Vasilikon und Sterna sind nah.",
+        "openingHours": "Tavernen meist 12–15:30, 19–22",
+        "transport": "Dorf Kathikas. Auf dem Akamas-Laona-Rundweg. ~35 Min. von Paphos.",
+        "parking": "Dorfparkplätze."
+      },
+      "limassol-old-town": {
+        "description": "Limassols Altstadt und der Saripolou-Platz. Tavernen, Meze, Souvlaki. Das Kastellviertel. Winter: mild; die Altstadt hat einen anderen Puls. Kombinieren Sie mit Kolossi, Kourion oder der Marina. Urbanes Zypern.",
+        "winterTip": "Der Puls der Altstadt. Milde Winterabende. Kolossi und Kourion sind nah.",
+        "localSecret": "Saripolou, Kastell, Meze. Urbanes Zypern. Der Rhythmus der Altstadt."
+      },
+      "kyrenia-tavernas": {
+        "description": "Der Hafen von Kyrenia. Fischtavernen mit Kastellblick. Der Hafen ist das Herz. Winter: milder als die Berge; Hafenspaziergang, Fisch zum Mittag. Hinweis: Zugang aus dem Süden Zyperns; aktuelle Wege prüfen. Kombinieren Sie mit Bellapais, St. Hilarion.",
+        "winterTip": "Hafen und Kastell. Mild im Winter. Zugang prüfen.",
+        "localSecret": "Das Herz ist der Hafen. Fisch, Ausblicke. Bellapais und St. Hilarion sind nah."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Agia Napa jenseits der Clubs. Tavernen am Dorfplatz, Fischadressen am Hafen. Winter: der Badeort wird still; echte zypriotische Küche tritt hervor. Kombinieren Sie mit den Meereshöhlen, Kap Greco, Nissi Beach. Die Nebensaison zeigt eine andere Seite.",
+        "winterTip": "Agia Napa außerhalb der Saison. Dorfplatz, Hafen. Eine andere Seite.",
+        "localSecret": "Jenseits der Clubs. Dorfplatz, Fisch. Der Winter zeigt das Echte."
+      },
+      "troodos-square": {
+        "description": "Der Troodos-Platz und das Besucherzentrum. Cafés, einfache Mittagessen, heiße Schokolade. Nach Artemis, Atalante oder Persephone. Winter: die unverzichtbare Wärme nach der Wanderung. Schnee möglich; der Platz ist der Knotenpunkt. Nichts Feines — Kaffee, Sandwiches, Wärme. Die Berge leisten die Arbeit; der Troodos-Platz stellt Sie wieder her.",
+        "winterTip": "Wärme nach der Wanderung. Heiße Schokolade, Kaffee. Schnee möglich — drinnen behaglich. Unverzichtbar nach Artemis oder Atalante.",
+        "bestTimeToVisit": "Mittags oder zur Kaffeepause; nach dem Morgenpfad",
+        "localSecret": "Der Troodos-Knotenpunkt. Nach Artemis oder Atalante. Hier aufwärmen. Das Skigebiet am Olymp ist nah, wenn Schnee fällt.",
+        "openingHours": "Besucherzentrum und Cafés; meist 9–17 oder 18 Uhr",
+        "transport": "Troodos-Platz, 1.750 m. ~1 Std. von Limassol.",
+        "parking": "Platz und Besucherzentrum; füllt sich am Wochenende."
+      },
+      "solea-valley": {
+        "description": "Die Dörfer des Solea-Tals — Kakopetria, Galata, Kalopanagiotis. Forelle, Meze, Bergküche. Flusskulissen, Kamine. Kombinieren Sie mit dem Mylikouri-Pfad, Kampos tou Livadiou, dem Kryos Potamos oder Agios Nikolaos tis Stegis. Winter: das Tal ist behaglich. Psaróvrasto (Forelle) ist der Klassiker.",
+        "winterTip": "Solea-Tal. Forelle, Kamine. Morgens Mylikouri oder Kampos, Kakopetria oder Galata zum Mittag.",
+        "bestTimeToVisit": "Mittags; nach dem Morgenpfad",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. Fluss und Berg. Behaglich im Winter. Das Tal belohnt langsame Fahrten.",
+        "openingHours": "Dorftavernen meist 12–15:30, 19–22",
+        "transport": "Solea-Tal. Kakopetria ~55 Min. von Limassol.",
+        "parking": "Dorfparkplätze."
+      },
+      "zygi-mikri": {
+        "description": "Zygis kleinere Marina und die Adressen in den Seitengassen. Weniger touristisch als der Haupthafen. Frischer Fisch, Meze. Winterlicher Sonntagslunch — das Ritual der Einheimischen. Kombinieren Sie mit Choirokoitia, Lefkara oder Governor's Beach. Das Tempo ist langsam.",
+        "winterTip": "Das Zygi der Seitengassen. Der Sonntag der Einheimischen. Weniger touristisch.",
+        "localSecret": "Die Mikri-Marina. Das Zygi der Einheimischen. Langsames Tempo, frischer Fisch."
+      },
+      "kourion-tavernas": {
+        "description": "Das Dorf Episkopi bei Kourion. Tavernen mit Blick auf die antike Stätte. Meze, lokaler Wein. Morgens die Ruinen von Kourion; Episkopi zum Mittag. Kombinieren Sie mit Kolossi, Governor's Beach oder dem Weingut Zambartas. Winter: mild; die Ruinen glühen im Nachmittagslicht. Das Theater blickt aufs Meer.",
+        "winterTip": "Morgens Kourion. Episkopi zum Mittag. Ruinen im Nachmittagslicht. Kolossi und Governor's Beach sind nah.",
+        "bestTimeToVisit": "Mittags; nach dem Morgen in Kourion",
+        "localSecret": "Kourion vom Tisch aus. Das Dorf Episkopi. Ruinen und Meze. Am äußersten Rand des Theaters steht eine Bank — 16 Uhr im Dezember trifft das Licht die Ruinen.",
+        "openingHours": "Tavernen meist 12–15:30, 19–22",
+        "transport": "Dorf Episkopi, bei Kourion. ~25 Min. von Limassol.",
+        "parking": "Im Dorf und bei Kourion."
       }
     }
   }

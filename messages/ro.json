@@ -6048,6 +6048,82 @@
         "description": "Portul și zona castelului din Pafos. Pește, meze, vedere la port. Apusuri de iarnă. Combină cu mozaicurile din Pafos, Mormintele Regilor sau Coral Bay. Castelul se aprinde la asfințit. Rezervă locurile de la apă.",
         "winterTip": "Vedere la port. Apusuri de iarnă. Luminile castelului la asfințit.",
         "localSecret": "Portul și castelul. Pește, meze. Asfințitul e ora potrivită."
+      },
+      "agros-tavernas": {
+        "description": "Satul Agros. Produse din trandafiri, loukoumi, meze de munte. Satul e faimos pentru trandafiri și dulciuri. Tavernele servesc bucate locale. Combină cu traseul din pădurea Machairas, barajul Xyliatos sau drumul spre Kykkos. Iarna: intim, caracter montan. Lichior de trandafiri și loukoumi înainte sau după masă.",
+        "winterTip": "Produse din trandafiri, loukoumi. Dimineața pădurea Machairas sau Xyliatos, Agros la prânz. Intim iarna.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Întâi trandafirii și dulciurile. Apoi meze de munte. Agros are ritmul lui.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Agros, Pitsilia. ~50 min din Limassol.",
+        "parking": "Parcarea satului."
+      },
+      "lefkara-tavernas": {
+        "description": "Satul dantelei. Lefkaritiko, recunoscut de UNESCO, de pe vremea venețienilor. Taverne în case de piatră, ateliere de argint, dantelărese în praguri. Meze, vin local, ritm de sat. Pano și Kato Lefkara — două sate, o singură tradiție. Lumina iernii pe caldarâm; mai puține autocare; meșteșugul e pe primul loc.",
+        "winterTip": "Iarna e ideală: blândă, liniștită, dantelărese în praguri. În martie vine Festivalul Dantelei din Lefkara — piața se umple de demonstrații, ateliere, tarabe. Rezervă prânzul dacă vii atunci. Altfel, diminețile din timpul săptămânii sunt tihnite.",
+        "bestTimeToVisit": "Prânz după cumpărăturile de dantelă; dimineți în timpul săptămânii pentru mai puțină lume. În martie, la Festivalul Dantelei.",
+        "localSecret": "Începe cu Kato Lefkara. Mai liniștit. Aceeași dantelă, adesea prețuri mai bune. Urcă la Pano când ești gata. Ambele au taverne. Piatra răsplătește hoinăreala lentă.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22; unele închid lunea sau marțea",
+        "transport": "30 min din Larnaca. Autobuzul 429 spre Lefkara.",
+        "parking": "Gratuită la intrarea în sat; se umple în weekend și în timpul Festivalului Dantelei.",
+        "backstory": "Dantela lefkaritiko se lucrează pe aceste dealuri de când Ciprul era sub venețieni. UNESCO a înscris-o în 2009 ca Patrimoniu Cultural Imaterial. Legenda spune că Leonardo da Vinci ar fi cumpărat de aici o față de altar pentru Domul din Milano. Adevărat sau nu, meșteșugul e străvechi: bunicile învață nepoatele aceleași modele geometrice, împunsătură cu împunsătură. Satul stă la 700 m, case de piatră urcă panta, priveliștea se deschide peste vale. Pano Lefkara e satul principal; Kato Lefkara, mai jos, împarte tradiția, dar rămâne mai tăcut. Tavernele se potrivesc ritmului — meze, vin local, ziduri de piatră, fără grabă. Dantelă dimineața, prânz la amiază. Așa funcționează Lefkara.",
+        "culturalNote": "Ti kánis? (Τι κάνεις) — ce mai faci? E salutul obișnuit înainte să te uiți la marfă. Nu te sfii să întrebi cum se face dantela; meșteșugarele sunt mândre și explică adesea cu drag. Kalí órexi înainte de masă — poftă bună."
+      },
+      "kathikas-tavernas": {
+        "description": "Satul Kathikas pe bucla Akamas. Taverne tradiționale; meze, vin local. The Farmyard e vedeta — rezervă din timp; altele oferă bucate mai simple. Combină dimineața Adonis, Afrodita sau Smigies; Kathikas la prânz. Cramele Vasilikon și Sygkrasi sunt la câteva minute. Iarna: traseul dimineața, apoi prânz în sat.",
+        "winterTip": "Bucla Akamas. Traseul dimineața, prânz la Kathikas. The Farmyard se umple; rezervă cu 1–2 zile înainte.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Kathikas stă pe buclă. Meze, vin. The Farmyard sau locuri mai simple. Cramele Vasilikon și Sterna în apropiere.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Kathikas. Pe bucla Akamas–Laona. ~35 min din Paphos.",
+        "parking": "Parcarea satului."
+      },
+      "limassol-old-town": {
+        "description": "Orașul vechi din Limassol și piața Saripolou. Taverne, meze, souvlaki. Zona castelului. Iarna: blândă; orașul vechi are alt puls. Combină cu Kolossi, Kourion sau marina. Ciprul urban.",
+        "winterTip": "Pulsul orașului vechi. Seri blânde de iarnă. Kolossi și Kourion în apropiere.",
+        "localSecret": "Saripolou, castelul, meze. Ciprul urban. Ritmul orașului vechi."
+      },
+      "kyrenia-tavernas": {
+        "description": "Portul Kyrenia. Taverne cu pește și vedere la castel. Portul e inima. Iarna: mai blând decât munții; plimbare prin port, pește la prânz. Notă: acces dinspre sudul Ciprului; verifică rutele curente. Combină cu Bellapais, St Hilarion.",
+        "winterTip": "Port și castel. Blând iarna. Verifică accesul.",
+        "localSecret": "Inima e portul. Pește, priveliști. Bellapais și St Hilarion în apropiere."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Ayia Napa dincolo de cluburi. Taverne în piața satului, localuri cu pește în port. Iarna: stațiunea se liniștește; iese la iveală masa cipriotă autentică. Combină cu Peșterile Marine, Cape Greco, plaja Nissi. Extrasezonul arată o altă față.",
+        "winterTip": "Ayia Napa în extrasezon. Piața satului, portul. O altă față.",
+        "localSecret": "Dincolo de cluburi. Piața, peștele. Iarna scoate la iveală autenticul."
+      },
+      "troodos-square": {
+        "description": "Piața Troodos și zona centrului de vizitare. Cafenele, prânzuri simple, ciocolată caldă. După Artemis, Atalante sau Persefona. Iarna: căldura de după drumeție e esențială. Posibil zăpadă; piața e nodul central. Nimic pretențios — cafea, sandvișuri, căldură. Munții fac treaba; piața Troodos te pune pe picioare.",
+        "winterTip": "Căldură după drumeție. Ciocolată caldă, cafea. Posibil zăpadă — intim înăuntru. Esențial după Artemis sau Atalante.",
+        "bestTimeToVisit": "Prânz sau pauză de cafea; după traseul de dimineață",
+        "localSecret": "Nodul Troodos. După Artemis sau Atalante. Încălzește-te aici. Pârtia de pe Olimp e aproape când ninge.",
+        "openingHours": "Centrul de vizitare și cafenelele; de obicei 9–17 sau 18",
+        "transport": "Piața Troodos, 1.750 m. ~1 oră din Limassol.",
+        "parking": "Piața și centrul de vizitare; se umple în weekend."
+      },
+      "solea-valley": {
+        "description": "Satele văii Solea — Kakopetria, Galata, Kalopanagiotis. Păstrăv, meze, bucate de munte. Decoruri de râu, șeminee. Combină cu traseul Mylikouri, Kampos tou Livadiou, Kryos Potamos sau Agios Nikolaos tis Stegis. Iarna: valea e intimă. Psaróvrasto (păstrăvul) e clasicul.",
+        "winterTip": "Valea Solea. Păstrăv, șeminee. Dimineața Mylikouri sau Kampos, Kakopetria sau Galata la prânz.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. Râu și munte. Intim iarna. Valea răsplătește drumurile lente.",
+        "openingHours": "Tavernele satelor de obicei 12–15:30, 19–22",
+        "transport": "Valea Solea. Kakopetria ~55 min din Limassol.",
+        "parking": "Parcările satelor."
+      },
+      "zygi-mikri": {
+        "description": "Marina mai mică din Zygi și localurile de pe străduțele din spate. Mai puțin turistic decât portul principal. Pește proaspăt, meze. Prânzul de duminică iarna — ritualul localnicilor. Combină cu Choirokoitia, Lefkara sau Governor's Beach. Ritmul e lent.",
+        "winterTip": "Zygi al străduțelor. Duminica localnicilor. Mai puțin turistic.",
+        "localSecret": "Marina mikri. Zygi al localnicilor. Ritm lent, pește proaspăt."
+      },
+      "kourion-tavernas": {
+        "description": "Satul Episkopi, lângă Kourion. Taverne cu vedere spre situl antic. Meze, vin local. Dimineața ruinele Kourion; Episkopi la prânz. Combină cu Kolossi, Governor's Beach sau crama Zambartas. Iarna: blândă; ruinele strălucesc în lumina după-amiezii. Teatrul privește marea.",
+        "winterTip": "Dimineața Kourion. Episkopi la prânz. Ruinele în lumina după-amiezii. Kolossi și Governor's Beach în apropiere.",
+        "bestTimeToVisit": "La prânz; după dimineața la Kourion",
+        "localSecret": "Kourion văzut de la masă. Satul Episkopi. Ruine și meze. La marginea îndepărtată a teatrului e o bancă — la 16, în decembrie, lumina cade pe ruine.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Episkopi, lângă Kourion. ~25 min din Limassol.",
+        "parking": "În sat și lângă Kourion."
       }
     }
   }

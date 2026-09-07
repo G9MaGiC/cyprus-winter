@@ -6048,6 +6048,82 @@
         "description": "Le port et le quartier du château de Paphos. Poisson, mezze, vue sur le port. Couchers de soleil d’hiver. Combinez avec les mosaïques de Paphos, les Tombeaux des Rois ou Coral Bay. Le château s’illumine au crépuscule. Réservez les places au bord de l’eau.",
         "winterTip": "Vue sur le port. Couchers de soleil d’hiver. Les lumières du château au crépuscule.",
         "localSecret": "Le port et le château. Poisson, mezze. Le crépuscule est l’heure."
+      },
+      "agros-tavernas": {
+        "description": "Le village d’Agros. Produits à la rose, loukoumi, mezze de montagne. Le village est célèbre pour ses roses et ses douceurs. Les tavernes servent une cuisine locale. Combinez avec le sentier de la forêt de Machairas, le barrage de Xyliatos ou la route de Kykkos. L’hiver : douillet, caractère montagnard. Liqueur de rose et loukoumi avant ou après le déjeuner.",
+        "winterTip": "Produits à la rose, loukoumi. Le matin, la forêt de Machairas ou Xyliatos, Agros pour déjeuner. Douillet l’hiver.",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin",
+        "localSecret": "Les roses et les douceurs d’abord. Puis les mezze de montagne. Agros a son propre rythme.",
+        "openingHours": "Tavernes en général 12–15:30, 19–22",
+        "transport": "Village d’Agros, Pitsilia. ~50 min de Limassol.",
+        "parking": "Parking du village."
+      },
+      "lefkara-tavernas": {
+        "description": "Le village de la dentelle. Le lefkaritiko, reconnu par l’UNESCO, depuis les Vénitiens. Tavernes dans des maisons de pierre, ateliers d’argenterie, dentellières sur le pas des portes. Mezze, vin local, rythme de village. Pano et Kato Lefkara — deux villages, une tradition. La lumière d’hiver sur les pavés ; moins de cars ; l’artisanat d’abord.",
+        "winterTip": "L’hiver est idéal : doux, calme, les dentellières sur le pas des portes. En mars vient le festival de la dentelle de Lefkara — la place se remplit de démonstrations, d’ateliers, d’étals. Réservez le déjeuner si vous venez alors. Sinon, les matinées de semaine sont paisibles.",
+        "bestTimeToVisit": "Déjeuner après les achats de dentelle ; matinées de semaine pour moins de monde. En mars pour le festival de la dentelle.",
+        "localSecret": "Commencez par Kato Lefkara. Plus calme. La même dentelle, souvent de meilleurs prix. Montez à Pano quand vous êtes prêt. Les deux ont des tavernes. La pierre récompense la flânerie lente.",
+        "openingHours": "Tavernes en général 12–15:30, 19–22 ; certaines ferment lundi ou mardi",
+        "transport": "30 min de Larnaca. Bus 429 pour Lefkara.",
+        "parking": "Gratuit à l’entrée du village ; se remplit le week-end et pendant le festival de la dentelle.",
+        "backstory": "La dentelle lefkaritiko se fait dans ces collines depuis que les Vénitiens régnaient sur Chypre. L’UNESCO l’a inscrite en 2009 au patrimoine culturel immatériel. La légende veut que Léonard de Vinci ait acheté ici une nappe d’autel pour la cathédrale de Milan. Vrai ou non, l’artisanat est ancien : les grands-mères enseignent aux petites-filles les mêmes motifs géométriques, point après point. Le village est à 700 m, les maisons de pierre grimpent la pente, la vue s’ouvre sur la vallée. Pano Lefkara est le village principal ; Kato Lefkara, en contrebas, partage la tradition mais reste plus discret. Les tavernes épousent le rythme — mezze, vin local, murs de pierre, aucune hâte. La dentelle le matin, le déjeuner à midi. C’est ainsi que Lefkara fonctionne.",
+        "culturalNote": "Ti kánis ? (Τι κάνεις) — comment ça va ? C’est le salut d’usage avant de flâner. N’hésitez pas à demander comment se fait la dentelle ; les artisanes en sont fières et expliquent volontiers. Kalí órexi avant de manger — bon appétit."
+      },
+      "kathikas-tavernas": {
+        "description": "Le village de Kathikas sur la boucle de l’Akamas. Tavernes traditionnelles ; mezze, vin local. The Farmyard est la vedette — réservez à l’avance ; d’autres offrent une table plus simple. Combinez Adonis, Aphrodite ou Smigies le matin ; Kathikas pour déjeuner. Les domaines Vasilikon et Sygkrasi sont à quelques minutes. L’hiver : sentier le matin, déjeuner de village ensuite.",
+        "winterTip": "Boucle de l’Akamas. Sentier le matin, déjeuner à Kathikas. The Farmyard affiche vite complet ; réservez 1–2 jours à l’avance.",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin",
+        "localSecret": "Kathikas est posé sur la boucle. Mezze, vin. The Farmyard ou des adresses plus simples. Les domaines Vasilikon et Sterna tout près.",
+        "openingHours": "Tavernes en général 12–15:30, 19–22",
+        "transport": "Village de Kathikas. Sur la boucle Akamas–Laona. ~35 min de Paphos.",
+        "parking": "Parking du village."
+      },
+      "limassol-old-town": {
+        "description": "La vieille ville de Limassol et la place Saripolou. Tavernes, mezze, souvlaki. Le quartier du château. L’hiver : doux ; la vieille ville a un autre pouls. Combinez avec Kolossi, Kourion ou la marina. La Chypre urbaine.",
+        "winterTip": "Le pouls de la vieille ville. Douces soirées d’hiver. Kolossi et Kourion tout près.",
+        "localSecret": "Saripolou, le château, les mezze. La Chypre urbaine. Le rythme de la vieille ville."
+      },
+      "kyrenia-tavernas": {
+        "description": "Le port de Kyrenia. Tavernes à poisson avec vue sur le château. Le port est le cœur. L’hiver : plus doux que les montagnes ; balade sur le port, poisson à midi. À noter : accès depuis le sud de Chypre ; vérifiez les itinéraires du moment. Combinez avec Bellapais, Saint-Hilarion.",
+        "winterTip": "Port et château. Doux l’hiver. Vérifiez l’accès.",
+        "localSecret": "Le cœur, c’est le port. Poisson, panoramas. Bellapais et Saint-Hilarion tout près."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Ayia Napa au-delà des clubs. Tavernes de la place du village, adresses à poisson du port. L’hiver : la station s’apaise ; la table chypriote authentique refait surface. Combinez avec les grottes marines, le cap Greco, la plage de Nissi. La basse saison révèle un autre visage.",
+        "winterTip": "Ayia Napa hors saison. Place du village, port. Un autre visage.",
+        "localSecret": "Au-delà des clubs. La place, le poisson. L’hiver révèle l’authentique."
+      },
+      "troodos-square": {
+        "description": "La place de Troodos et le centre des visiteurs. Cafés, déjeuners simples, chocolat chaud. Après Artemis, Atalante ou Perséphone. L’hiver : la chaleur d’après-randonnée est essentielle. Neige possible ; la place est le carrefour. Rien de chic — café, sandwichs, chaleur. Les montagnes font le travail ; la place de Troodos vous remet d’aplomb.",
+        "winterTip": "Chaleur d’après-randonnée. Chocolat chaud, café. Neige possible — douillet à l’intérieur. Essentiel après Artemis ou Atalante.",
+        "bestTimeToVisit": "Déjeuner ou pause café ; après le sentier du matin",
+        "localSecret": "Le carrefour du Troodos. Après Artemis ou Atalante. Réchauffez-vous ici. La station de ski de l’Olympe est tout près quand la neige tombe.",
+        "openingHours": "Centre des visiteurs et cafés ; en général 9–17 ou 18 h",
+        "transport": "Place de Troodos, 1 750 m. ~1 h de Limassol.",
+        "parking": "Place et centre des visiteurs ; se remplit le week-end."
+      },
+      "solea-valley": {
+        "description": "Les villages de la vallée de Solea — Kakopetria, Galata, Kalopanagiotis. Truite, mezze, cuisine de montagne. Décors de rivière, cheminées. Combinez avec le sentier de Mylikouri, Kampos tou Livadiou, le Kryos Potamos ou Agios Nikolaos tis Stegis. L’hiver : la vallée est douillette. Le psaróvrasto (truite) est le classique.",
+        "winterTip": "Vallée de Solea. Truite, cheminées. Le matin, Mylikouri ou Kampos, Kakopetria ou Galata pour déjeuner.",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. Rivière et montagne. Douillet l’hiver. La vallée récompense les routes lentes.",
+        "openingHours": "Tavernes de village en général 12–15:30, 19–22",
+        "transport": "Vallée de Solea. Kakopetria ~55 min de Limassol.",
+        "parking": "Parkings des villages."
+      },
+      "zygi-mikri": {
+        "description": "La petite marina de Zygi et les adresses des ruelles. Moins touristique que le port principal. Poisson frais, mezze. Le déjeuner du dimanche en hiver — le rituel des gens du coin. Combinez avec Choirokoitia, Lefkara ou Governor's Beach. Le rythme est lent.",
+        "winterTip": "Le Zygi des ruelles. Le dimanche des gens du coin. Moins touristique.",
+        "localSecret": "La marina mikri. Le Zygi des gens du coin. Rythme lent, poisson frais."
+      },
+      "kourion-tavernas": {
+        "description": "Le village d’Episkopi, près de Kourion. Des tavernes avec vue sur le site antique. Mezze, vin local. Les ruines de Kourion le matin ; Episkopi pour déjeuner. Combinez avec Kolossi, Governor's Beach ou le domaine Zambartas. L’hiver : doux ; les ruines rougeoient dans la lumière de l’après-midi. Le théâtre fait face à la mer.",
+        "winterTip": "Kourion le matin. Episkopi pour déjeuner. Les ruines dans la lumière de l’après-midi. Kolossi et Governor's Beach tout près.",
+        "bestTimeToVisit": "Déjeuner ; après la matinée à Kourion",
+        "localSecret": "Kourion depuis votre table. Le village d’Episkopi. Ruines et mezze. Il y a un banc au bord du théâtre — à 16 h en décembre, la lumière frappe les ruines.",
+        "openingHours": "Tavernes en général 12–15:30, 19–22",
+        "transport": "Village d’Episkopi, près de Kourion. ~25 min de Limassol.",
+        "parking": "Au village et près de Kourion."
       }
     }
   }

@@ -6048,6 +6048,82 @@
         "description": "Port i zamek w Pafos. Ryby, meze, widok na port. Zimowe zachody słońca. Połącz z mozaikami Pafos, Grobami Królewskimi albo Coral Bay. Zamek rozświetla się o zmierzchu. Na miejsca przy wodzie rezerwuj.",
         "winterTip": "Widok na port. Zimowe zachody słońca. Światła zamku o zmierzchu.",
         "localSecret": "Port i zamek. Ryby, meze. Zmierzch to ta godzina."
+      },
+      "agros-tavernas": {
+        "description": "Wioska Agros. Produkty różane, loukoumi, górskie meze. Wioska słynie z róż i słodyczy. Tawerny serwują lokalną kuchnię. Połącz ze szlakiem lasu Machairas, zaporą Xyliatos albo drogą na Kykkos. Zima: przytulnie, górski charakter. Likier różany i loukoumi przed obiadem albo po nim.",
+        "winterTip": "Produkty różane, loukoumi. Rano las Machairas albo Xyliatos, Agros na obiad. Przytulnie zimą.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Najpierw róże i słodycze. Potem górskie meze. Agros ma własny rytm.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Agros, Pitsilia. ~50 min z Limassol.",
+        "parking": "Parking wiejski."
+      },
+      "lefkara-tavernas": {
+        "description": "Wioska koronek. Lefkaritiko z listy UNESCO, tkane od czasów Wenecjan. Tawerny w kamiennych domach, pracownie srebra, koronczarki w progach. Meze, lokalne wino, wiejskie tempo. Pano i Kato Lefkara — dwie wioski, jedna tradycja. Zimowe światło na bruku; mniej autokarów; rzemiosło jest najważniejsze.",
+        "winterTip": "Zima jest idealna: łagodnie, cicho, koronczarki w progach. W marcu Festiwal Koronki z Lefkary — plac wypełniają pokazy, warsztaty, stragany. Jeśli przyjeżdżasz wtedy, rezerwuj obiad. Poza tym spokojne są przedpołudnia w tygodniu.",
+        "bestTimeToVisit": "Obiad po zakupach koronek; przedpołudnia w tygodniu na mniejszy tłum. W marcu na Festiwal Koronki.",
+        "localSecret": "Zacznij od Kato Lefkary. Ciszej. Ta sama koronka, często lepsze ceny. Do Pano wejdź, gdy będziesz gotów. Obie mają tawerny. Kamień nagradza powolne błądzenie.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22; część zamknięta w pon. lub wt.",
+        "transport": "30 min z Larnaki. Autobus 429 do Lefkary.",
+        "parking": "Bezpłatny przy wjeździe do wioski; zapełnia się w weekendy i podczas Festiwalu Koronki.",
+        "backstory": "Koronkę lefkaritiko wyplata się na tych wzgórzach od czasów, gdy Cyprem rządzili Wenecjanie. W 2009 roku UNESCO wpisało ją na listę niematerialnego dziedzictwa kulturowego. Legenda głosi, że Leonardo da Vinci kupił tu obrus ołtarzowy dla katedry w Mediolanie. Prawda czy nie — rzemiosło jest stare: babcie uczą wnuczki tych samych geometrycznych wzorów, ścieg po ściegu. Wioska leży na 700 m, kamienne domy wspinają się po zboczu, widok biegnie przez dolinę. Pano Lefkara to główna wioska; Kato Lefkara poniżej dzieli tę samą tradycję, ale pozostaje cichsza. Tawerny pasują do rytmu — meze, lokalne wino, kamienne mury, bez pośpiechu. Koronka rano, obiad w południe. Tak działa Lefkara.",
+        "culturalNote": "Ti kánis? (Τι κάνεις) — jak się masz? To zwyczajowe powitanie, zanim zaczniesz oglądać. Śmiało pytaj, jak powstaje koronka; rzemieślniczki są dumne i chętnie tłumaczą. Kalí órexi przed jedzeniem — smacznego."
+      },
+      "kathikas-tavernas": {
+        "description": "Wioska Kathikas na pętli Akamas. Tradycyjne tawerny; meze, lokalne wino. The Farmyard to gwiazda — rezerwuj wcześniej; inne oferują prostsze dania. Połącz rano z Adonisem, Afrodytą albo Smigies; Kathikas na obiad. Winnice Vasilikon i Sygkrasi są kilka minut stąd. Zimą: szlak rano, potem wiejski obiad.",
+        "winterTip": "Pętla Akamas. Szlak rano, obiad w Kathikas. The Farmyard szybko się zapełnia; rezerwuj 1–2 dni wcześniej.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Kathikas siedzi na pętli. Meze, wino. The Farmyard albo prostsze miejsca. Winnice Vasilikon i Sterna obok.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Kathikas. Na pętli Akamas–Laona. ~35 min z Pafos.",
+        "parking": "Parking wiejski."
+      },
+      "limassol-old-town": {
+        "description": "Stare miasto Limassol i plac Saripolou. Tawerny, meze, souvlaki. Okolice zamku. Zima: łagodna; stare miasto ma inny puls. Połącz z Kolossi, Kourion albo mariną. Miejski Cypr.",
+        "winterTip": "Puls starego miasta. Łagodne zimowe wieczory. Kolossi i Kourion obok.",
+        "localSecret": "Saripolou, zamek, meze. Miejski Cypr. Rytm starego miasta."
+      },
+      "kyrenia-tavernas": {
+        "description": "Port w Kirenii. Rybne tawerny z widokiem na zamek. Port jest sercem. Zima: łagodniej niż w górach; spacer po porcie, ryba na obiad. Uwaga: dojazd z południa Cypru; sprawdź aktualne trasy. Połącz z Bellapais, St Hilarion.",
+        "winterTip": "Port i zamek. Łagodnie zimą. Sprawdź dojazd.",
+        "localSecret": "Serce to port. Ryby, widoki. Bellapais i St Hilarion obok."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Ayia Napa poza klubami. Tawerny przy wiejskim placu, rybne miejsca w porcie. Zima: kurort cichnie; wyłania się autentyczna cypryjska kuchnia. Połącz z Morskimi Jaskiniami, Cape Greco, plażą Nissi. Poza sezonem widać drugą stronę.",
+        "winterTip": "Ayia Napa poza sezonem. Wiejski plac, port. Druga strona.",
+        "localSecret": "Poza klubami. Plac, ryby. Zima odsłania autentyczność."
+      },
+      "troodos-square": {
+        "description": "Plac Troodos i okolice centrum turystycznego. Kawiarnie, proste obiady, gorąca czekolada. Po Artemis, Atalante albo Persefonie. Zima: niezbędne ciepło po wędrówce. Możliwy śnieg; plac jest węzłem. Nic wykwintnego — kawa, kanapki, ciepło. Góry robią swoje; plac Troodos stawia cię na nogi.",
+        "winterTip": "Ciepło po wędrówce. Gorąca czekolada, kawa. Możliwy śnieg — przytulnie w środku. Niezbędne po Artemis albo Atalante.",
+        "bestTimeToVisit": "Obiad lub przerwa na kawę; po porannym szlaku",
+        "localSecret": "Węzeł Troodos. Po Artemis albo Atalante. Ogrzej się tutaj. Gdy spadnie śnieg, obok jest ośrodek narciarski na Olimpie.",
+        "openingHours": "Centrum turystyczne i kawiarnie; zwykle 9–17 lub 18",
+        "transport": "Plac Troodos, 1750 m. ~1 godz. z Limassol.",
+        "parking": "Plac i centrum turystyczne; w weekendy się zapełnia."
+      },
+      "solea-valley": {
+        "description": "Wioski doliny Solea — Kakopetria, Galata, Kalopanagiotis. Pstrąg, meze, górska kuchnia. Sceneria rzeki, kominki. Połącz ze szlakiem Mylikouri, Kampos tou Livadiou, Kryos Potamos albo Agios Nikolaos tis Stegis. Zima: w dolinie przytulnie. Psaróvrasto (pstrąg) to klasyk.",
+        "winterTip": "Dolina Solea. Pstrąg, kominki. Rano Mylikouri albo Kampos, Kakopetria albo Galata na obiad.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. Rzeka i góry. Przytulnie zimą. Dolina nagradza powolną jazdę.",
+        "openingHours": "Wiejskie tawerny zwykle 12–15:30, 19–22",
+        "transport": "Dolina Solea. Kakopetria ~55 min z Limassol.",
+        "parking": "Parkingi wiejskie."
+      },
+      "zygi-mikri": {
+        "description": "Mniejsza marina Zygi i miejsca w bocznych uliczkach. Mniej turystycznie niż główny port. Świeże ryby, meze. Zimowy niedzielny obiad — rytuał miejscowych. Połącz z Chirokitią, Lefkarą albo Governor's Beach. Tempo jest powolne.",
+        "winterTip": "Zygi bocznych uliczek. Niedziela miejscowych. Mniej turystycznie.",
+        "localSecret": "Marina Mikri. Zygi miejscowych. Wolne tempo, świeża ryba."
+      },
+      "kourion-tavernas": {
+        "description": "Wioska Episkopi przy Kourion. Tawerny z widokiem na starożytne stanowisko. Meze, lokalne wino. Rano ruiny Kourion; Episkopi na obiad. Połącz z Kolossi, Governor's Beach albo winnicą Zambartas. Zima: łagodna; ruiny płoną w popołudniowym świetle. Teatr patrzy na morze.",
+        "winterTip": "Rano Kourion. Episkopi na obiad. Ruiny w popołudniowym świetle. Kolossi i Governor's Beach obok.",
+        "bestTimeToVisit": "Pora obiadowa; po poranku w Kourion",
+        "localSecret": "Kourion prosto od stolika. Wioska Episkopi. Ruiny i meze. Na dalekim skraju teatru jest ławka — o 16 w grudniu światło pada na ruiny.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Episkopi, przy Kourion. ~25 min z Limassol.",
+        "parking": "W wiosce i przy Kourion."
       }
     }
   }

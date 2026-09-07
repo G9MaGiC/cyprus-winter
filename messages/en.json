@@ -6048,6 +6048,82 @@
         "description": "Pafos harbour and castle area. Fish, meze, harbour views. Winter sunsets. Combine with Pafos mosaics, Tomb of Kings, or Coral Bay. The castle lights up at dusk. Reserve for waterfront spots.",
         "winterTip": "Harbour views. Winter sunsets. Castle lights at dusk.",
         "localSecret": "Harbour and castle. Fish, meze. Dusk is the hour."
+      },
+      "agros-tavernas": {
+        "description": "Agros village. Rose products, loukoumi, mountain meze. The village is famous for roses and sweets. Tavernas serve local fare. Combine with Machairas Forest trail, Xyliatos Dam, or the Kykkos road. Winter: cosy, mountain character. Rose liqueur and loukoumi before or after lunch.",
+        "winterTip": "Rose products, loukoumi. Do Machairas Forest or Xyliatos in the morning, Agros for lunch. Cosy in winter.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "Roses and sweets first. Then mountain meze. Agros has its own rhythm.",
+        "openingHours": "Tavernas typically 12–15:30, 19–22",
+        "transport": "Agros village, Pitsilia. ~50 min from Limassol.",
+        "parking": "Village parking."
+      },
+      "lefkara-tavernas": {
+        "description": "The lace village. UNESCO-recognised Lefkaritiko since the Venetians. Tavernas in stone buildings, silver workshops, lacemakers in doorways. Meze, local wine, village pace. Pano and Kato Lefkara—two villages, one tradition. Winter light on the cobbles; fewer tour buses; the craft comes first.",
+        "winterTip": "Winter is ideal: mild, quiet, lacemakers in doorways. March brings the Lefkara Lace Festival—the square fills with demonstrations, workshops, stalls. Book lunch if you come then. Otherwise, weekday mornings are tranquil.",
+        "bestTimeToVisit": "Lunch after lace shopping; weekday mornings for fewer crowds. March for the Lace Festival.",
+        "localSecret": "Start in Kato Lefkara. Quieter. Same lace, often better prices. Walk up to Pano when ready. Both have tavernas. The stone rewards slow wandering.",
+        "openingHours": "Tavernas typically 12–15:30, 19–22; some close Mon or Tue",
+        "transport": "30 min from Larnaca. Bus 429 to Lefkara.",
+        "parking": "Free at village entrance; fills on weekends and during the Lace Festival.",
+        "backstory": "Lefkaritiko lace has been made in these hills since the Venetians ruled Cyprus. UNESCO inscribed it in 2009 as Intangible Cultural Heritage. Legend says Leonardo da Vinci bought an altar cloth here for Milan Cathedral. Whether true or not, the craft is ancient: grandmothers teach granddaughters the same geometric patterns, stitch by stitch. The village sits at 700m, stone houses climbing the slope, views across the valley. Pano Lefkara is the main village; Kato Lefkara below shares the tradition but stays quieter. The tavernas fit the rhythm—meze, local wine, stone walls, no rush. Lace in the morning, lunch at noon. That's how Lefkara works.",
+        "culturalNote": "Ti kánis? (Τι κάνεις); how are you? It's the customary greeting before you browse. Don't be shy about asking how the lace is made; the artisans are proud and often happy to explain. Kalí órexi before you eat—enjoy your meal."
+      },
+      "kathikas-tavernas": {
+        "description": "Kathikas village on the Akamas loop. Traditional tavernas; meze, local wine. The Farmyard is the star—book ahead; others offer simpler fare. Combine with Adonis, Aphrodite, or Smigies in the morning; Kathikas for lunch. Vasilikon and Sygkrasi wineries are minutes away. Winter: trail in the morning, village lunch after.",
+        "winterTip": "Akamas loop. Trail in the morning, Kathikas lunch. The Farmyard books up; reserve 1–2 days ahead.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "Kathikas sits on the loop. Meze, wine. The Farmyard or simpler spots. Vasilikon and Sterna wineries nearby.",
+        "openingHours": "Tavernas typically 12–15:30, 19–22",
+        "transport": "Kathikas village. On the Akamas–Laona loop. ~35 min from Paphos.",
+        "parking": "Village parking."
+      },
+      "limassol-old-town": {
+        "description": "Limassol old town and Saripolou Square. Tavernas, meze, souvlaki. The castle area. Winter: mild; the old town has a different pulse. Combine with Kolossi, Kourion, or the marina. Urban Cyprus.",
+        "winterTip": "Old town pulse. Mild winter evenings. Kolossi and Kourion nearby.",
+        "localSecret": "Saripolou, castle, meze. Urban Cyprus. The old town rhythm."
+      },
+      "kyrenia-tavernas": {
+        "description": "Kyrenia harbour. Fish tavernas with castle views. The harbour is the heart. Winter: milder than the mountains; harbour stroll, fish lunch. Note: access from south Cyprus; check current routes. Combine with Bellapais, St Hilarion.",
+        "winterTip": "Harbour and castle. Mild in winter. Check access.",
+        "localSecret": "Harbour heart. Fish, views. Bellapais and St Hilarion nearby."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Ayia Napa beyond the clubs. Village square tavernas, harbour fish spots. Winter: the resort quietens; authentic Cypriot dining emerges. Combine with Sea Caves, Cape Greco, Nissi Beach. The off-season reveals another side.",
+        "winterTip": "Off-season Ayia Napa. Village square, harbour. Another side.",
+        "localSecret": "Beyond the clubs. Village square, fish. Winter reveals authenticity."
+      },
+      "troodos-square": {
+        "description": "Troodos Square and the visitor centre area. Cafés, simple lunches, hot chocolate. After Artemis, Atalante, or Persephone. Winter: essential post-hike warmth. Snow possible; the square is the hub. Not fancy—coffee, sandwiches, warmth. The mountains do the work; Troodos Square restores you.",
+        "winterTip": "Post-hike warmth. Hot chocolate, coffee. Snow possible—cosy inside. Essential after Artemis or Atalante.",
+        "bestTimeToVisit": "Lunch or coffee break; after morning trail",
+        "localSecret": "The Troodos hub. After Artemis or Atalante. Warm up here. Olympus ski resort is nearby when snow falls.",
+        "openingHours": "Visitor centre and cafés; typically 9–17 or 18",
+        "transport": "Troodos Square, 1,750m. ~1hr from Limassol.",
+        "parking": "Square and visitor centre; fills at weekends."
+      },
+      "solea-valley": {
+        "description": "Solea Valley villages—Kakopetria, Galata, Kalopanagiotis. Trout, meze, mountain fare. River settings, fireplaces. Combine with Mylikouri trail, Kampos tou Livadiou, Kryos Potamos, or Agios Nikolaos tis Stegis. Winter: the valley is cosy. Psaróvrasto (trout) is the classic.",
+        "winterTip": "Solea Valley. Trout, fireplaces. Do Mylikouri or Kampos in the morning, Kakopetria or Galata for lunch.",
+        "bestTimeToVisit": "Lunch; after morning trail",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. River and mountain. Cosy in winter. The valley rewards slow drives.",
+        "openingHours": "Village tavernas typically 12–15:30, 19–22",
+        "transport": "Solea Valley. Kakopetria ~55 min from Limassol.",
+        "parking": "Village parking."
+      },
+      "zygi-mikri": {
+        "description": "Zygi's smaller marina and back-street spots. Less touristy than the main harbour. Fresh fish, meze. Winter Sunday lunch—locals' ritual. Combine with Choirokoitia, Lefkara, or Governor's Beach. The pace is slow.",
+        "winterTip": "Back-street Zygi. Locals' Sunday. Less touristy.",
+        "localSecret": "Mikri marina. The locals' Zygi. Slow pace, fresh fish."
+      },
+      "kourion-tavernas": {
+        "description": "Episkopi village near Kourion. Tavernas with views of the ancient site. Meze, local wine. Do Kourion ruins in the morning; Episkopi for lunch. Combine with Kolossi, Governor's Beach, or Zambartas winery. Winter: mild; the ruins glow in afternoon light. The theatre faces the sea.",
+        "winterTip": "Do Kourion in the morning. Episkopi for lunch. Ruins in afternoon light. Kolossi and Governor's Beach nearby.",
+        "bestTimeToVisit": "Lunch; after morning at Kourion",
+        "localSecret": "Kourion from your table. Episkopi village. Ruins and meze. There's a bench at the far edge of the theatre—4pm in December, the light hits the ruins.",
+        "openingHours": "Tavernas typically 12–15:30, 19–22",
+        "transport": "Episkopi village, near Kourion. ~25 min from Limassol.",
+        "parking": "Village and near Kourion."
       }
     }
   }

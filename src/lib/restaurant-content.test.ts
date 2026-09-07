@@ -8,13 +8,12 @@ import {
 } from "@/lib/restaurant-content-ids";
 
 /**
- * Guard for the restaurant overlay — mirrors event-content.test.ts while
- * the class is still slicing: every registry id must exist in the data,
- * every locale's catalog must cover exactly the registry ids, each covered
- * id must carry a catalog key exactly where the base record has the field,
- * every value must be non-empty in all 7 catalogs, and EN must mirror the
- * base record verbatim. The final slice upgrades the first check to full
- * set equality (the class-completion lock, as with events).
+ * Guard for the restaurant overlay — mirrors event-content.test.ts:
+ * registry, data and all 7 catalogs must cover exactly the same ids (the
+ * class is complete — a new restaurant must ship with coverage), each
+ * covered id must carry a catalog key exactly where the base record has
+ * the field, every value must be non-empty in all 7 catalogs, and EN must
+ * mirror the base record verbatim.
  */
 
 const LOCALES = ["en", "de", "el", "pl", "ro", "fr", "he"] as const;
@@ -35,11 +34,8 @@ function restaurantsNs(locale: string): Record<string, Record<string, string>> {
 }
 
 describe("restaurant content overlay (data-layer arc, class 7)", () => {
-  it("every registry id exists in the data and every catalog covers exactly the registry ids", () => {
-    const dataIds = new Set(restaurants.map((r) => r.id));
-    for (const id of LOCALIZED_RESTAURANT_IDS) {
-      expect(dataIds.has(id), `registry id ${id} missing from data`).toBe(true);
-    }
+  it("registry, data and catalogs cover exactly the same ids (the class is complete — a new restaurant must ship with coverage)", () => {
+    expect(new Set(restaurants.map((r) => r.id))).toEqual(LOCALIZED_RESTAURANT_IDS);
     for (const locale of LOCALES) {
       expect(new Set(Object.keys(restaurantsNs(locale)))).toEqual(
         LOCALIZED_RESTAURANT_IDS

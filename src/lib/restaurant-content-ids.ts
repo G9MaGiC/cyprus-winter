@@ -1,9 +1,9 @@
 /**
  * Explicit coverage for the restaurant overlay (data-layer arc, class 7 —
- * the last one). Only ids listed here carry `data.restaurants.{id}.*`
- * catalog keys (guarded by restaurant-content.test.ts across all 7
- * locales); everything else falls back to the EN base record until its
- * slice lands.
+ * the last one). The class is COMPLETE: all 32 restaurants carry
+ * `data.restaurants.{id}.*` catalog keys, and the guard asserts full set
+ * equality with the data — a new restaurant cannot ship without catalog
+ * coverage.
  */
 
 export const LOCALIZED_RESTAURANT_FIELDS = [
@@ -45,4 +45,15 @@ export const LOCALIZED_RESTAURANT_IDS: ReadonlySet<string> = new Set([
   "protaras-tavernas",
   "larnaca-old-town",
   "pafos-harbour",
+  // Slice 3 (batch 64): the final 10 — the class completes.
+  "agros-tavernas",
+  "lefkara-tavernas",
+  "kathikas-tavernas",
+  "limassol-old-town",
+  "kyrenia-tavernas",
+  "ayia-napa-tavernas",
+  "troodos-square",
+  "solea-valley",
+  "zygi-mikri",
+  "kourion-tavernas",
 ]);
