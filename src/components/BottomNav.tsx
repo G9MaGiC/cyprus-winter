@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
 import { useTranslations } from "next-intl";
 import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
@@ -79,7 +80,7 @@ export default function BottomNav() {
     if (!moreOpen) return;
     const menu = moreMenuRef.current;
     if (!menu) return;
-    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    const focusables = menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
     if (focusables.length === 0) return;
     (focusables[0] as HTMLElement).focus();
 

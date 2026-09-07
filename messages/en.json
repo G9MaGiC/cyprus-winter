@@ -292,12 +292,6 @@
     "askAIAria": "Ask AI for trails, wineries, and trip ideas",
     "askAITrailsAria": "Ask AI for trail suggestions",
     "askAIRecommendationsAria": "Ask AI for recommendations",
-    "hubFooter": {
-      "prompt": "Add places to your plan—or ask the AI for ideas.",
-      "aria": {
-        "actions": "Page actions"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Your trip plan summary",
       "places": "{count, plural, one {# place in your plan} other {# places in your plan}}",
@@ -772,11 +766,6 @@
     "shortcuts": {
       "rightNowDescription": "What's good near you — weather and location-based suggestions"
     }
-  },
-  "error": {
-    "title": "A small glitch",
-    "body": "A small glitch. Try again or head home—the trails, villages, and tastings are still there.",
-    "hint": "Use the menu for Discover, Trails, or Plan. Or tap Ask AI—we'll point you to Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -3517,11 +3506,6 @@
     "homeTitle": "Cyprus Winter | Trails, Villages, Wineries, and Slow Days",
     "homeDescription": "A quieter Cyprus in winter. Discover mild coastlines, mountain villages, open trails, wineries, and local places worth slowing down for.",
     "ogImageAlt": "Kourion ancient theatre above Mediterranean coast, Cyprus winter"
-  },
-  "ui": {
-    "hero": {
-      "imageAlt": "Kourion ancient theatre, Mediterranean coast, Cyprus winter"
-    }
   },
   "cycling": {
     "page": {

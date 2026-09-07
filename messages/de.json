@@ -271,12 +271,6 @@
     "askAIAria": "KI nach Wanderwegen, Weingütern und Reiseideen fragen",
     "askAITrailsAria": "KI nach Trail-Vorschlägen fragen",
     "askAIRecommendationsAria": "KI nach Empfehlungen fragen",
-    "hubFooter": {
-      "prompt": "Orte zu Ihrem Plan hinzufügen—oder die KI nach Ideen fragen.",
-      "aria": {
-        "actions": "Seitenaktionen"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Zusammenfassung Ihres Reiseplans",
       "places": "{count, plural, one {# Ort in Ihrem Plan} other {# Orte in Ihrem Plan}}",
@@ -772,11 +766,6 @@
     "shortcuts": {
       "rightNowDescription": "Was sich in der Nähe lohnt — Vorschläge nach Wetter und Standort"
     }
-  },
-  "error": {
-    "title": "Ein kleines Problem",
-    "body": "Ein kleines Problem. Versuchen Sie es erneut oder gehen Sie zur Startseite—Wanderwege, Dörfer und Verkostungen warten auf Sie.",
-    "hint": "Nutzen Sie das Menü für Entdecken, Wanderwege oder Plan. Oder tippen Sie auf Ask AI—wir zeigen Ihnen Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -3414,11 +3403,6 @@
     "homeTitle": "Cyprus Winter | Wanderwege, Dörfer, Weingüter und ruhige Tage",
     "homeDescription": "Ein ruhigeres Zypern im Winter. Entdecken Sie milde Küsten, Bergdörfer, offene Wanderwege, Weingüter und lokale Orte, für die es sich lohnt, langsamer zu machen.",
     "ogImageAlt": "Antikes Kourion-Theater über der Mittelmeerküste, Zypern im Winter"
-  },
-  "ui": {
-    "hero": {
-      "imageAlt": "Antikes Theater von Kourion, Mittelmeerküste, Zypern Winter"
-    }
   },
   "regions": {
     "page": {

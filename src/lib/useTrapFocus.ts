@@ -3,6 +3,16 @@
  */
 import { useCallback } from "react";
 
+/**
+ * The one focusable-element selector every trap shares (hook and the
+ * hand-rolled menu/panel traps in Nav, BottomNav, AIAssistant). Excludes
+ * disabled controls — trapping Tab onto a disabled button strands the
+ * cycle — and includes inputs and positive-tabindex elements, which the
+ * menus' old `a[href], button` selector silently skipped.
+ */
+export const FOCUSABLE_SELECTOR =
+  'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export function useTrapFocus() {
   return useCallback((e: React.KeyboardEvent, container: HTMLElement | null, onEscape?: () => void) => {
     if (e.key === "Escape") {
@@ -11,9 +21,7 @@ export function useTrapFocus() {
       return;
     }
     if (e.key !== "Tab" || !container) return;
-    const focusable = container.querySelectorAll<HTMLElement>(
-      'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
+    const focusable = container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (e.shiftKey) {

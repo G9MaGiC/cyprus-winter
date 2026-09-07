@@ -1,6 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
+import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
@@ -57,7 +58,7 @@ export default function Nav() {
   useEffect(() => {
     if (!moreOpen || !moreMenuRef.current) return;
     const menu = moreMenuRef.current;
-    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    const focusables = menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
     if (focusables.length === 0) return;
     (focusables[0] as HTMLElement).focus();
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -88,7 +89,7 @@ export default function Nav() {
   useEffect(() => {
     if (!open || !mobileMenuRef.current) return;
     const menu = mobileMenuRef.current;
-    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button');
+    const focusables = menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
     if (focusables.length === 0) return;
     (focusables[0] as HTMLElement).focus();
     const handleKeyDown = (e: KeyboardEvent) => {

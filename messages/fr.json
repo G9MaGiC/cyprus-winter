@@ -291,12 +291,6 @@
     "askAIAria": "Demander à l'IA pour des sentiers, domaines et idées de voyage",
     "askAITrailsAria": "Demander à l'IA pour des suggestions de sentiers",
     "askAIRecommendationsAria": "Demander à l'IA pour des recommandations",
-    "hubFooter": {
-      "prompt": "Ajoutez des lieux à votre plan — ou demandez des idées à l'IA.",
-      "aria": {
-        "actions": "Actions de page"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Résumé de votre plan de voyage",
       "places": "{count, plural, one {# lieu dans votre plan} other {# lieux dans votre plan}}",
@@ -772,11 +766,6 @@
     "shortcuts": {
       "rightNowDescription": "Ce qui vaut le coup près de vous — suggestions selon météo et lieu"
     }
-  },
-  "error": {
-    "title": "Un petit contretemps",
-    "body": "Un petit contretemps. Réessayez ou revenez à l'accueil — sentiers, villages et dégustations vous attendent.",
-    "hint": "Utilisez le menu pour Découvrir, Sentiers ou Plan. Ou touchez Ask AI — on vous oriente vers Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -3517,11 +3506,6 @@
     "homeTitle": "Cyprus Winter | Sentiers, villages, domaines et jours paisibles",
     "homeDescription": "Un Chypre plus paisible en hiver. Découvrez des côtes douces, des villages de montagne, des sentiers ouverts, des domaines viticoles et des lieux qui invitent à ralentir.",
     "ogImageAlt": "Théâtre antique de Kourion au-dessus de la côte méditerranéenne, Chypre en hiver"
-  },
-  "ui": {
-    "hero": {
-      "imageAlt": "Théâtre antique de Kourion, côte méditerranéenne, Chypre en hiver"
-    }
   },
   "cycling": {
     "page": {

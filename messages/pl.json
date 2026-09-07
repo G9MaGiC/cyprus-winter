@@ -271,12 +271,6 @@
     "askAIAria": "Zapytaj AI o szlaki, winnice i pomysły na wycieczkę",
     "askAITrailsAria": "Zapytaj AI o propozycje szlaków",
     "askAIRecommendationsAria": "Zapytaj AI o rekomendacje",
-    "hubFooter": {
-      "prompt": "Dodaj miejsca do planu—lub zapytaj AI o pomysły.",
-      "aria": {
-        "actions": "Akcje strony"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Podsumowanie planu podróży",
       "places": "{count, plural, one {# miejsce w planie} few {# miejsca w planie} many {# miejsc w planie} other {# miejsca w planie}}",
@@ -772,11 +766,6 @@
     "shortcuts": {
       "rightNowDescription": "Co warto blisko Ciebie — propozycje według pogody i lokalizacji"
     }
-  },
-  "error": {
-    "title": "Drobna usterka",
-    "body": "Drobna usterka. Spróbuj ponownie lub wróć na stronę główną—szlaki, wioski i degustacje nadal na Ciebie czekają.",
-    "hint": "Użyj menu Odkrywaj, Szlaki lub Plan. Lub naciśnij Ask AI—wskażemy Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -3414,11 +3403,6 @@
     "homeTitle": "Cyprus Winter | Szlaki, wioski, winnice i spokojne dni",
     "homeDescription": "Spokojniejszy Cypr zimą. Odkryj łagodne wybrzeża, górskie wioski, otwarte szlaki, winnice i lokalne miejsca, dla których warto zwolnić.",
     "ogImageAlt": "Antyczny teatr w Kourion nad wybrzeżem Morza Śródziemnego, zima na Cyprze"
-  },
-  "ui": {
-    "hero": {
-      "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
-    }
   },
   "regions": {
     "page": {

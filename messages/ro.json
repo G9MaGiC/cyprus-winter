@@ -291,12 +291,6 @@
     "askAIAria": "Întreabă AI despre trasee, crame și idei de călătorie",
     "askAITrailsAria": "Întreabă AI pentru sugestii de trasee",
     "askAIRecommendationsAria": "Întreabă AI pentru recomandări",
-    "hubFooter": {
-      "prompt": "Adaugă locuri în plan — sau întreabă AI-ul pentru idei.",
-      "aria": {
-        "actions": "Acțiuni pagină"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Rezumatul planului tău de călătorie",
       "places": "{count, plural, one {# loc în plan} other {# locuri în plan}}",
@@ -772,11 +766,6 @@
     "shortcuts": {
       "rightNowDescription": "Ce merită aproape de tine — sugestii după vreme și locație"
     }
-  },
-  "error": {
-    "title": "O mică problemă",
-    "body": "O mică problemă. Încearcă din nou sau mergi acasă — traseele, satele și degustările te așteaptă.",
-    "hint": "Folosește meniul pentru Descoperă, Trasee sau Plan. Sau atinge Ask AI — te ghidăm spre Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -3517,11 +3506,6 @@
     "homeTitle": "Cyprus Winter | Trasee, sate, crame și zile tihnite",
     "homeDescription": "Un Cipru mai liniștit iarna. Descoperă coaste blânde, sate de munte, trasee deschise, crame și locuri autentice pentru care merită să încetinești.",
     "ogImageAlt": "Teatrul antic Kourion deasupra coastei Mediteranei, iarnă în Cipru"
-  },
-  "ui": {
-    "hero": {
-      "imageAlt": "Teatrul antic Kourion, coasta Mediteranei, iarnă în Cipru"
-    }
   },
   "cycling": {
     "page": {

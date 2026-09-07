@@ -157,7 +157,8 @@ src/
 ├── data/                 # Curated content: attractions, trails, wineries, events,
 │                         # regions, itinerary-templates, secret-gems, weather, ...
 ├── i18n/                 # next-intl routing (7 locales, `he` RTL, beta: fr/he/ro)
-└── lib/                  # design-tokens, nav-links, rate-limit, site-url, SEO helpers
+└── lib/                  # design-tokens, nav-links, rate-limit, site-url, SEO helpers,
+                          # and the content-overlay layer (*-content.ts + *-content-ids.ts + guards)
 ```
 
 Routing: `src/app/(padded)/<route>/page.tsx` is the single implementation; `src/app/[locale]/<route>/page.tsx` re-exports it and adds locale-aware `generateMetadata`. When adding a route, create both.
@@ -227,9 +228,9 @@ type TeamMember = {
 
 7 locales via next-intl: `en` (base), `el`, `de`, `pl`, plus beta `fr`, `he`, `ro` (`he` is RTL). Routing in `src/i18n/routing.ts` (`localePrefix: "as-needed"` — en unprefixed); messages in `messages/{locale}.json`.
 
-- **No hardcoded user-facing strings in components.** Server: `const t = await getTranslations("namespace")`. Client: `const t = useTranslations("namespace")`. CI runs `npm run i18n:scan --fail` and rejects violations.
+- **No hardcoded user-facing strings in components.** Server: `const t = await getTranslations("namespace")`. Client: `const t = useTranslations("namespace")`. CI runs `npm run i18n:scan -- --fail` and rejects violations (the `--` is required — without it npm swallows the flag and the scan cannot fail).
 - Add every new key to **all 7** `messages/*.json` files (`npm run i18n:validate` fails on missing keys; `en` is the base).
-- Curated content in `src/data/` is English by design (localized via editorial maps — see `docs/I18N_GUIDE.md`); component chrome around it must use translations.
+- Curated content in `src/data/` stays EN in the TS records, but renders natively ×7 through per-class **message overlays**: `src/lib/<class>-content.ts` reads `data.<class>.<id>.<field>` from the catalogs, coverage is declared in `src/lib/<class>-content-ids.ts`, and a guard test locks each class (a new record cannot ship without ×7 catalog coverage). JSON-LD/search/concierge stay on the EN base by contract. Editorial maps (`scripts/i18n/editorial-*.json`) are a separate drift-pinning mechanism for reviewed tier-1 strings — not the localization path.
 - RSC boundary rule (from `AGENTS.md`): do not pass `Link` or `t` across server/client boundaries; use `*-data.ts` loaders + `*View.tsx` client leaves as in `src/app/_home/`.
 
 ## Adding New Content

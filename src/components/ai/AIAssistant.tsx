@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { AIChatMessages } from "./AIChatMessages";
@@ -104,9 +105,7 @@ export function AIAssistant() {
         return;
       }
       if (e.key !== "Tab" || !panelRef.current) return;
-      const focusables = panelRef.current.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
+      const focusables = panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
       if (focusables.length === 0) return;
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
