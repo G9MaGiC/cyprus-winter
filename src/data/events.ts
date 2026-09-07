@@ -58,7 +58,7 @@ export const winterEvents: WinterEvent[] = [
   {
     id: "commandaria-festival",
     name: "Commandaria Festival",
-    nameEl: "Γιορτή Κουμανταριά",
+    nameEl: "Γιορτή Κουμανταρίας",
     region: "Limassol",
     description:
       "The Commandaria Festival celebrates Cyprus's oldest wine—the sweet, sun-dried wine made in these hills since the Crusades. Koilani usually hosts the main events; tastings and music spread across Krasochoria and UNESCO Commandaria villages such as Louvaras, Silikou, Doros, and Monagri. Sample producers, learn how Commandaria is made, and enjoy the mountain air. Usually the first weekend of December, when the vines are bare. Check dates annually.",
@@ -204,7 +204,7 @@ export const winterEvents: WinterEvent[] = [
   {
     id: "kalopanagiotis-christmas-village",
     name: "Kalopanagiotis Christmas Village",
-    nameEl: "Χριστουγεννιάτικο Χωριό Καλοπαναγιώτης",
+    nameEl: "Χριστουγεννιάτικο Χωριό Καλοπαναγιώτη",
     region: "Troodos",
     description:
       "The Marathasa Valley village hosts one of the island's most atmospheric Christmas markets. Stone houses, cobbled lanes, and the UNESCO monastery of Agios Ioannis Lampadistis as a backdrop. Local products, traditional foods, music, workshops, and winter entertainment. Runs weekends from late November; daily from 23 December. Thermal springs and Byzantine frescoes nearby. A quieter alternative to Kakopetria.",

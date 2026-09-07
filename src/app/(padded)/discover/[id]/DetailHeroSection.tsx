@@ -2,7 +2,6 @@ import DetailHero from "@/components/DetailHero";
 import { CARD, CALLOUT, SECTION, TYPE } from "@/lib/design-tokens";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { getLocalizedName } from "@/lib/localize";
-import { isBufferZoneCulturalNote } from "@/lib/discover-place-utils";
 import Image from "next/image";
 import type { Attraction } from "@/data/attractions";
 import type { Restaurant } from "@/data/restaurants";
@@ -14,6 +13,10 @@ type DetailHeroSectionProps = {
   tDetail: (key: string, values?: Record<string, string>) => string;
   /** Localized, pre-joined bestFor pair for the whyNow sentence (AUD-99). */
   bestForTypes: string;
+  /** Decided on the EN base record — culturalNote is a localized field, so
+      matching the literal phrase against the overlaid value would miss on
+      every non-EN locale. */
+  bufferZoneNote: boolean;
 };
 
 export default function DetailHeroSection({
@@ -22,6 +25,7 @@ export default function DetailHeroSection({
   typeLabel,
   tDetail,
   bestForTypes,
+  bufferZoneNote,
 }: DetailHeroSectionProps) {
   const seasonTags = "seasonTags" in a ? (a.seasonTags as string[] | undefined) : undefined;
   const indoorOutdoor = "indoorOutdoor" in a ? (a.indoorOutdoor as string | undefined) : undefined;
@@ -116,7 +120,7 @@ export default function DetailHeroSection({
           </ul>
         </section>
 
-        {"culturalNote" in a && isBufferZoneCulturalNote(a.culturalNote) && (
+        {bufferZoneNote && (
           <div className={`${CALLOUT.tip} ${CARD.content}`} role="note">
             <p className="text-sm font-medium text-charcoal flex items-start gap-2">
               <span className="text-golden-ink shrink-0" aria-hidden>{"⚠︎"}</span>

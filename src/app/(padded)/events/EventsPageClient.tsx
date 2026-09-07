@@ -2,11 +2,11 @@
 
 import { useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { winterEvents } from "@/data/events";
 // The server page localizes the list (data-layer overlay) and passes it
-// down; filtering runs over the prop. The base import above stays only for
-// the module-level REGIONS_LIST (region keys are locale-independent data
-// values used as filter identifiers).
+// down; filtering runs over the prop. Region filter keys derive from the
+// prop too — region is not a localized field, so the set matches the base
+// data — which keeps the EN data module out of the client bundle (same
+// reasoning as cycling-route-types / nature-excursion-types).
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
 import HubFooter from "@/components/HubFooter";
 import HubSkipNav from "@/components/HubSkipNav";
@@ -33,17 +33,20 @@ const HIGHLIGHT_IDS = ["epiphany-cyprus", "limassol-carnival"];
 
 const EVENT_TYPES = ["festival", "market", "concert", "food", "culture", "sport"] as const;
 
-const REGIONS_LIST = Array.from(new Set(winterEvents.map((e) => e.region)))
-  .filter((r) => r !== "All")
-  .sort();
-
 export default function EventsPage({
   seasonAnchor = null,
-  events = winterEvents,
+  events,
 }: {
   seasonAnchor?: SeasonMonth | null;
-  events?: WinterEvent[];
+  events: WinterEvent[];
 }) {
+  const regionsList = useMemo(
+    () =>
+      Array.from(new Set(events.map((e) => e.region)))
+        .filter((r) => r !== "All")
+        .sort(),
+    [events]
+  );
   // Cold-load hash navigation: the route skeleton streams before this client
   // tree mounts, so the browser's native #anchor jump has already been lost —
   // re-run it once content is on screen (AUD A2-01 / plan→event deep links).
@@ -69,7 +72,7 @@ export default function EventsPage({
   const regionFromUrl = searchParams.get("region") ?? "";
 
   const typeFilter = ["festival", "market", "concert", "food", "culture", "sport"].includes(typeFromUrl) ? typeFromUrl : "";
-  const regionFilter = REGIONS_LIST.includes(regionFromUrl) ? regionFromUrl : "";
+  const regionFilter = regionsList.includes(regionFromUrl) ? regionFromUrl : "";
 
   const filtered = useMemo(() => {
     return events.filter((e) => {
@@ -118,7 +121,7 @@ export default function EventsPage({
   ];
   const regionChips = [
     { id: "", label: tPage("filters.toggleAll") },
-    ...REGIONS_LIST.map((r) => ({ id: r, label: r })),
+    ...regionsList.map((r) => ({ id: r, label: r })),
   ];
 
   return (

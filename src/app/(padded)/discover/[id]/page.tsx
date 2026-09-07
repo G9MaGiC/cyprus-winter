@@ -132,6 +132,9 @@ export default async function AttractionPage({
   const bestForTypes = formatBestForSentence(a.bestFor.slice(0, 2).map(localizeBestFor), locale);
   const placeSecrets = await localizeSecretGems(getSecretsForPlace(a.id), locale);
   const showInlineLocalSecret = Boolean(a.localSecret) && placeSecrets.length === 0;
+  // Buffer-zone detection matches the literal EN phrase — decide on the EN
+  // base record so the warning survives translation of culturalNote.
+  const bufferZoneNote = "culturalNote" in base && isBufferZoneCulturalNote(base.culturalNote);
 
   const canonicalUrl = `${SITE_URL}/discover/${id}`;
   const imageUrl = toAbsoluteUrl(getAttractionImage(a.id, a.type));
@@ -208,6 +211,7 @@ export default async function AttractionPage({
             typeLabel={typeLabel}
             tDetail={tDetail}
             bestForTypes={bestForTypes}
+            bufferZoneNote={bufferZoneNote}
           />
 
           <div className="space-y-10 sm:space-y-14 mt-10 sm:mt-14">
@@ -380,7 +384,7 @@ export default async function AttractionPage({
               </section>
             )}
 
-            {"culturalNote" in a && a.culturalNote && !isBufferZoneCulturalNote(a.culturalNote) && (
+            {"culturalNote" in a && a.culturalNote && !bufferZoneNote && (
               <p className="text-muted-ink text-base italic break-words">
                 {a.culturalNote}
               </p>

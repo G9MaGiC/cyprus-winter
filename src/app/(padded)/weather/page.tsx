@@ -102,7 +102,7 @@ export default async function WeatherPage() {
                 <div className="flex flex-col">
                   <span className={`${TYPE.cardTitleCompact} text-olive`}>{monthLabel(row.month)}</span>
                   <span className="mt-1 text-xs text-muted-ink">
-                    {tWeather("table.coast")} {row.coastMinC}–{row.coastMaxC}° · {tWeather("table.troodos")} {row.troodosMinC}–{row.troodosMaxC}°
+                    {tWeather("table.coast")} <bdi>{row.coastMinC}–{row.coastMaxC}°</bdi> · {tWeather("table.troodos")} <bdi>{row.troodosMinC}–{row.troodosMaxC}°</bdi>
                   </span>
                 </div>
               </AppLink>
@@ -130,14 +130,14 @@ export default async function WeatherPage() {
                     <p className="text-muted-ink text-xs">
                       {tWeather("table.coast")}
                     </p>
-                    <p className="text-olive font-medium">{row.coastMinC}–{row.coastMaxC}°C</p>
+                    <p className="text-olive font-medium"><bdi>{row.coastMinC}–{row.coastMaxC}°C</bdi></p>
                     <p className={mobileClampClass}>{shortSentence(row.coastDesc)}</p>
                   </div>
                   <div>
                     <p className="text-muted-ink text-xs">
                       {tWeather("table.troodos")}
                     </p>
-                    <p className="text-olive font-medium">{row.troodosMinC}–{row.troodosMaxC}°C</p>
+                    <p className="text-olive font-medium"><bdi>{row.troodosMinC}–{row.troodosMaxC}°C</bdi></p>
                     <p className={mobileClampClass}>{shortSentence(row.troodosDesc)}</p>
                   </div>
                 </div>
@@ -205,13 +205,13 @@ export default async function WeatherPage() {
                   )}
                 </td>
                 <td className="py-4 px-4 text-olive/90">
-                  {row.coastMinC}–{row.coastMaxC}°C
+                  <bdi>{row.coastMinC}–{row.coastMaxC}°C</bdi>
                 </td>
                 <td className="py-4 px-4 text-sm text-muted-ink max-w-xs">
                   {shortSentence(row.coastDesc)}
                 </td>
                 <td className="py-4 px-4 text-olive/90">
-                  {row.troodosMinC}–{row.troodosMaxC}°C
+                  <bdi>{row.troodosMinC}–{row.troodosMaxC}°C</bdi>
                 </td>
                 <td className="py-4 px-4 text-sm text-muted-ink max-w-xs">
                   {shortSentence(row.troodosDesc)}

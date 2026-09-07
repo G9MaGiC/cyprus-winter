@@ -54,7 +54,10 @@ export default function EventCard({
       </div>
       <h3 className={`${TYPE.cardTitle} break-words`}>
         {event.name}
-        {event.nameEl && (
+        {/* The Greek-name hint repeats the title on el, where the overlay
+            guarantees name === nameEl — suppress it there (same dedup as
+            the airport city names). */}
+        {event.nameEl && event.nameEl !== event.name && (
           <span
             className="ms-2 text-muted-ink font-normal text-base break-words"
             lang="el"

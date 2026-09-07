@@ -5825,7 +5825,7 @@
         "name": "Lundi Vert",
         "description": "Le premier jour du Carême orthodoxe. Les familles sortent pique-niquer avec des mets de jeûne — pain lagana, olives, tahini, fruits de mer. Les cerfs-volants remplissent le ciel ; la coutume veut qu’ils emportent les péchés. Parcs, collines et littoraux se remplissent de Chypriotes. Polis-Latchi et d’autres villes organisent des fêtes. C’est un jour férié. Même sans jeûner, le rituel et les cerfs-volants valent le détour. La date suit Pâques ; typiquement fin février ou début mars.",
         "dates": "Premier jour du Carême (varie avec Pâques)",
-        "venue": "Parcs, plages et collines dans tout Chypre"
+        "venue": "Parcs, plages et collines dans toute Chypre"
       },
       "famagusta-carnival": {
         "name": "Carnaval de Famagouste",
@@ -5913,7 +5913,7 @@
       "psilo-dendro": {
         "description": "La taverne au bord de la rivière. Le patron connaît chaque randonneur. Commandez la truite aux amandes — psaróvrasto, pochée au vin et aux herbes. La cheminée, l’air de la montagne, le bruit du Kryos Potamos. C’est l’enchaînement que font les gens du coin après Artemis ou les chutes de Caledonia. Le sentier le matin ; finissez pour 13 h. Roulez jusqu’à Platres. Ne le manquez pas.",
         "winterTip": "Après Artemis ou les chutes de Caledonia. Truite aux amandes. La cheminée. Finissez le sentier pour 13 h, puis roulez jusqu’à Platres.",
-        "bestTimeToVisit": "Déjeuner ; après le sentier du matin (arrivez pour 13–13:30)",
+        "bestTimeToVisit": "Déjeuner ; après le sentier du matin (arrivez pour 13 h–13 h 30)",
         "localSecret": "Celle au bord de la rivière. Truite aux amandes. Le patron connaît chaque randonneur. Psilo Dendro est le classique ; d’autres bordent le Kryos Potamos.",
         "openingHours": "En général 12–15:30, 19–22 ; l’hiver, téléphonez",
         "transport": "Village de Platres, au bord du Kryos Potamos. ~45 min de Limassol.",

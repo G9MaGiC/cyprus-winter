@@ -207,8 +207,12 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
 
   const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
   const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
-  const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
-  const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
+  // In the RTL description the en dash between digit runs takes the
+  // paragraph direction and reverses the range — isolate it (LRI…PDI),
+  // matching the he catalog's own literal ranges.
+  const isolateRtl = (s: string) => (locale === "he" ? `⁦${s}⁩` : s);
+  const coastRange = isolateRtl(`${row.coastMinC}–${row.coastMaxC}°C`);
+  const troodosRange = isolateRtl(`${row.troodosMinC}–${row.troodosMaxC}°C`);
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
   const path = `/weather/${slug}`;

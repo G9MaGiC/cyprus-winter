@@ -563,7 +563,7 @@ export const restaurants: Restaurant[] = [
   {
     id: "lefkara-tavernas",
     name: "Lefkara Village Tavernas",
-    nameEl: "Λεύκαρα",
+    nameEl: "Ταβέρνες Λευκάρων",
     region: "Larnaca",
     description:
       "The lace village. UNESCO-recognised Lefkaritiko since the Venetians. Tavernas in stone buildings, silver workshops, lacemakers in doorways. Meze, local wine, village pace. Pano and Kato Lefkara—two villages, one tradition. Winter light on the cobbles; fewer tour buses; the craft comes first.",

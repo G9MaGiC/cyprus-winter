@@ -191,7 +191,7 @@ export default async function WeatherMonthPage({ params }: Props) {
                 <div className="flex flex-col">
                   <span className={`${TYPE.cardTitleCompact} ${isCurrent ? "text-terracotta" : "text-olive"}`}>{label}</span>
                   <span className={`mt-1 text-xs ${isCurrent ? "text-terracotta" : "text-muted-ink"}`}>
-                    {tWeatherPage("table.coast")} {monthRow.coastMinC}–{monthRow.coastMaxC}° · {tWeatherPage("table.troodos")} {monthRow.troodosMinC}–{monthRow.troodosMaxC}°
+                    {tWeatherPage("table.coast")} <bdi>{monthRow.coastMinC}–{monthRow.coastMaxC}°</bdi> · {tWeatherPage("table.troodos")} <bdi>{monthRow.troodosMinC}–{monthRow.troodosMaxC}°</bdi>
                   </span>
                 </div>
               </AppLink>
@@ -213,7 +213,7 @@ export default async function WeatherMonthPage({ params }: Props) {
               </h3>
               <p className={clampedDescClass}>{row.coastDesc}</p>
               <p className="text-olive font-medium mt-1">
-                {row.coastMinC}–{row.coastMaxC}°C
+                <bdi>{row.coastMinC}–{row.coastMaxC}°C</bdi>
               </p>
             </div>
             <div>
@@ -222,7 +222,7 @@ export default async function WeatherMonthPage({ params }: Props) {
               </h3>
               <p className={clampedDescClass}>{row.troodosDesc}</p>
               <p className="text-olive font-medium mt-1">
-                {row.troodosMinC}–{row.troodosMaxC}°C
+                <bdi>{row.troodosMinC}–{row.troodosMaxC}°C</bdi>
               </p>
             </div>
             </div>

@@ -28,6 +28,16 @@ function unisolatedRanges(value: string): boolean {
       /\d/.test(value[i + 2] ?? "")
     ) {
       return true;
+    } else if (
+      // An ICU placeholder range like {min}–{max} fills in as digits at
+      // render time and reverses exactly the same way — treat the tight
+      // }–{ boundary as a range (spaced " — " separators stay exempt).
+      depth === 0 &&
+      c === "}" &&
+      /[–—-]/.test(value[i + 1] ?? "") &&
+      (value[i + 2] ?? "") === "{"
+    ) {
+      return true;
     }
   }
   return false;
@@ -43,9 +53,10 @@ describe("Hebrew catalog bidi ranges", () => {
       for (const [key, value] of Object.entries(obj)) {
         const p = prefix ? `${prefix}.${key}` : key;
         if (typeof value === "string") {
-          // Strings without Hebrew script form a single LTR run — the range
-          // resolves correctly there without isolates.
-          if (/[֐-׿]/.test(value) && unisolatedRanges(value)) {
+          // Every he.json string renders inside the dir="rtl" page paragraph
+          // (src/app/layout.tsx), so even a Hebrew-free string's range takes
+          // the RTL direction under UAX#9 N1 — scan all of them.
+          if (unisolatedRanges(value)) {
             offenders.push(p);
           }
         } else if (value && typeof value === "object") {

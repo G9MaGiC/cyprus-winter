@@ -1466,7 +1466,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "lefkara-tavernas",
     "name": "Lefkara Village Tavernas",
-    "nameEl": "Λεύκαρα",
+    "nameEl": "Ταβέρνες Λευκάρων",
     "region": "Larnaca",
     "type": "restaurant"
   },
@@ -2180,7 +2180,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "commandaria-festival",
     "name": "Commandaria Festival",
-    "nameEl": "Γιορτή Κουμανταριά",
+    "nameEl": "Γιορτή Κουμανταρίας",
     "region": "Limassol",
     "type": "event"
   },
@@ -2249,7 +2249,7 @@ export const PLAN_ITEMS: PlanItem[] = [
   {
     "id": "kalopanagiotis-christmas-village",
     "name": "Kalopanagiotis Christmas Village",
-    "nameEl": "Χριστουγεννιάτικο Χωριό Καλοπαναγιώτης",
+    "nameEl": "Χριστουγεννιάτικο Χωριό Καλοπαναγιώτη",
     "region": "Troodos",
     "type": "event"
   },
