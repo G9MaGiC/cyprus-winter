@@ -97,11 +97,6 @@
     "skipToContent": "Skip to main content",
     "languageLabel": "Language:",
     "localeBeta": "beta",
-    "nextOnPlan": {
-      "aria": "Next on your plan",
-      "prefix": "Next up",
-      "navigate": "Navigate"
-    },
     "noscript": {
       "title": "JavaScript is required",
       "body": "for full functionality. You can still browse trails and places, but features like the plan builder and chat require JavaScript."
@@ -371,7 +366,8 @@
       "cta": "Switch to English",
       "dismiss": "Dismiss",
       "aria": "Language suggestion"
-    }
+    },
+    "navigate": "Navigate"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2751,13 +2747,6 @@
     "tipFirstAdd": "In your plan. Add more or share your plan.",
     "tipDiscoverFilter": "Filter by villages, wineries, or trails.",
     "savePlan": "Save your plan — create account to sync"
-  },
-  "help": {
-    "planEmpty": "Tap “Add places” to start building your plan from Discover or Trails.",
-    "planFirstItem": "Great start. Add more places or switch days to plan your whole trip.",
-    "discoverFilter": "Use filters to find exactly what you're looking for—wineries, trails, beaches, and more.",
-    "bookingForm": "Fill in your details and the winery will confirm by email. Most respond within 24 hours.",
-    "aiAssistant": "Ask me anything—best trails, winery recommendations, or help planning your day."
   },
   "auth": {
     "password": {

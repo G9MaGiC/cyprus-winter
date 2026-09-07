@@ -96,11 +96,6 @@
     },
     "skipToContent": "Aller au contenu",
     "languageLabel": "Langue :",
-    "nextOnPlan": {
-      "aria": "Suite de votre plan",
-      "prefix": "Ensuite",
-      "navigate": "Naviguer"
-    },
     "noscript": {
       "title": "JavaScript est requis",
       "body": "pour toutes les fonctions. Vous pouvez parcourir sentiers et lieux, mais le plan et le chat nécessitent JavaScript."
@@ -371,7 +366,8 @@
       "cta": "Passer au français",
       "dismiss": "Fermer",
       "aria": "Suggestion de langue"
-    }
+    },
+    "navigate": "Naviguer"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2751,13 +2747,6 @@
     "tipFirstAdd": "Dans votre plan. Ajoutez ou partagez votre plan.",
     "tipDiscoverFilter": "Filtrez par villages, domaines ou sentiers.",
     "savePlan": "Enregistrez votre plan — créez un compte pour synchroniser"
-  },
-  "help": {
-    "planEmpty": "Touchez « Ajouter des lieux » pour commencer votre plan depuis Découvrir ou Sentiers.",
-    "planFirstItem": "Bon début. Ajoutez d'autres lieux ou changez de jour pour planifier tout le voyage.",
-    "discoverFilter": "Utilisez les filtres pour trouver exactement ce que vous cherchez — domaines, sentiers, plages, et plus.",
-    "bookingForm": "Remplissez vos coordonnées et le domaine confirmera par e-mail. La plupart répondent sous 24 heures.",
-    "aiAssistant": "Demandez-moi n'importe quoi — meilleurs sentiers, recommandations de domaines ou aide pour planifier votre journée."
   },
   "auth": {
     "layout": {

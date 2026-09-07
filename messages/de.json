@@ -97,11 +97,6 @@
     "skipToContent": "Zum Hauptinhalt",
     "languageLabel": "Sprache:",
     "localeBeta": "Beta",
-    "nextOnPlan": {
-      "aria": "Als Nächstes in deinem Plan",
-      "prefix": "Als Nächstes",
-      "navigate": "Navigation"
-    },
     "noscript": {
       "title": "JavaScript ist erforderlich",
       "body": "für volle Funktionalität. Sie können weiterhin Trails und Orte ansehen, aber Funktionen wie der Routenplaner und der Chat benötigen JavaScript."
@@ -371,7 +366,8 @@
       "cta": "Zu Deutsch wechseln",
       "dismiss": "Ausblenden",
       "aria": "Sprachvorschlag"
-    }
+    },
+    "navigate": "Navigation"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2648,13 +2644,6 @@
     "tipFirstAdd": "In Ihrem Plan. Mehr hinzufügen oder Ihre Reise teilen.",
     "tipDiscoverFilter": "Filtern nach Dörfern, Weingütern oder Wanderwegen.",
     "savePlan": "Plan speichern — Konto erstellen zum Synchronisieren"
-  },
-  "help": {
-    "planEmpty": "Tippen Sie auf „Orte hinzufügen“, um Ihren Reiseplan aus Entdecken oder Wanderwegen zu starten.",
-    "planFirstItem": "Guter Start. Fügen Sie weitere Orte hinzu oder wechseln Sie die Tage, um die ganze Reise zu planen.",
-    "discoverFilter": "Nutzen Sie Filter, um genau das zu finden, was Sie suchen—Weingüter, Wanderwege, Strände und mehr.",
-    "bookingForm": "Geben Sie Ihre Daten ein und das Weingut bestätigt per E‑Mail. Die meisten antworten innerhalb von 24 Stunden.",
-    "aiAssistant": "Fragen Sie mich alles—beste Wanderwege, Weingut-Empfehlungen oder Hilfe bei der Tagesplanung."
   },
   "auth": {
     "layout": {

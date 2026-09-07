@@ -97,11 +97,6 @@
     "skipToContent": "Przejdź do treści",
     "languageLabel": "Język:",
     "localeBeta": "beta",
-    "nextOnPlan": {
-      "aria": "Następne w Twoim planie",
-      "prefix": "Następne",
-      "navigate": "Nawiguj"
-    },
     "noscript": {
       "title": "Wymagany jest JavaScript",
       "body": "dla pełnej funkcjonalności. Nadal możesz przeglądać szlaki i miejsca, ale funkcje takie jak planer trasy i chat wymagają JavaScriptu."
@@ -371,7 +366,8 @@
       "cta": "Przełącz na polski",
       "dismiss": "Zamknij",
       "aria": "Propozycja języka"
-    }
+    },
+    "navigate": "Nawiguj"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2648,13 +2644,6 @@
     "tipFirstAdd": "W twoim planie. Dodaj więcej lub udostępnij trasę.",
     "tipDiscoverFilter": "Filtruj według wiosek, winnic lub szlaków.",
     "savePlan": "Zapisz plan — załóż konto, aby synchronizować"
-  },
-  "help": {
-    "planEmpty": "Kliknij „Dodaj miejsca”, aby zacząć budować plan z Odkrywaj lub Szlaków.",
-    "planFirstItem": "Dobry start. Dodaj kolejne miejsca lub zmień dzień, żeby zaplanować całą podróż.",
-    "discoverFilter": "Użyj filtrów, aby znaleźć dokładnie to, czego szukasz—winnice, szlaki, plaże i więcej.",
-    "bookingForm": "Uzupełnij dane, a winnica potwierdzi mailem. Zwykle odpowiadają w ciągu 24 godzin.",
-    "aiAssistant": "Pytaj o wszystko—najlepsze szlaki, winnice albo pomoc w ułożeniu dnia."
   },
   "auth": {
     "layout": {

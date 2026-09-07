@@ -97,20 +97,3 @@ export function RecentlyViewedStrip() {
     </section>
   );
 }
-
-// Hook to track viewed items
-export function useTrackView(item: { id: string; name: string; type: string; region: string } | null) {
-  useEffect(() => {
-    if (!item) return;
-    
-    // Debounce to avoid tracking rapid navigation
-    const timer = setTimeout(() => {
-      import("@/lib/recently-viewed").then(({ addToRecentlyViewed }) => {
-        addToRecentlyViewed(item);
-      });
-    }, 1000);
-    
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item?.id]);
-}

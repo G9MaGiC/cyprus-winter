@@ -56,7 +56,6 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | Links | Secondary/contextual links on light backgrounds | `SECTION.aegeanLink`, "Pair with", "See also" |
 | Pair with / contextual suggestions | SuggestedForDay, QuickStart, related places | `text-aegean`, `bg-aegean/5` |
 | Opt-in / secondary actions | PushOptIn, TemplateChoiceModal | `bg-aegean`, `border-aegean` |
-| Navigation bars / contextual strips | NextOnPlanBar | `bg-aegean/95` |
 | Status / badges | Open, confirmed, trail difficulty easy | TrailBadges, bookings status |
 | Navigate / wayfinding | NavigateButton (default), Add to plan variant | Border aegean |
 
@@ -65,9 +64,7 @@ Apply the lens in `.cursor/UX_PERSONA.md`: Cyprus Winter as a premium, secret-ap
 | Component | Current | Semantic role |
 |-----------|---------|---------------|
 | NavigateButton (default) | `text-aegean border-aegean/30` | Navigation/wayfinding helper — aegean for secondary navigation |
-| NavigateButton (light) | `text-white border-white/50` | On dark bar (NextOnPlanBar) — light variant for dark context |
 | PushOptIn | `bg-aegean` CTA | Opt-in, non-primary — aegean for secondary/opt-in actions |
-| NextOnPlanBar | `bg-aegean/95` | Contextual "next on plan" strip — aegean for contextual nav bar |
 
 ### Flex / grid alignment
 

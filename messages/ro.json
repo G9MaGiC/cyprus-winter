@@ -96,11 +96,6 @@
     },
     "skipToContent": "Sari la conținut",
     "languageLabel": "Limbă:",
-    "nextOnPlan": {
-      "aria": "Următorul din plan",
-      "prefix": "Urmează",
-      "navigate": "Navighează"
-    },
     "noscript": {
       "title": "Este necesar JavaScript",
       "body": "pentru toate funcțiile. Poți răsfoi trasee și locuri, dar planul și chatul cer JavaScript."
@@ -371,7 +366,8 @@
       "cta": "Treci la română",
       "dismiss": "Închide",
       "aria": "Sugestie de limbă"
-    }
+    },
+    "navigate": "Navighează"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -2751,13 +2747,6 @@
     "tipFirstAdd": "În planul tău. Adaugă mai multe sau distribuie planul.",
     "tipDiscoverFilter": "Filtrează după sate, crame sau trasee.",
     "savePlan": "Salvează planul — creează cont pentru sincronizare"
-  },
-  "help": {
-    "planEmpty": "Atinge „Adaugă locuri” ca să începi planul din Descoperă sau Trasee.",
-    "planFirstItem": "Start bun. Adaugă mai multe locuri sau schimbă zilele ca să planifici întreaga călătorie.",
-    "discoverFilter": "Folosește filtrele ca să găsești exact ce cauți — crame, trasee, plaje și altele.",
-    "bookingForm": "Completează datele și crama va confirma prin email. Majoritatea răspund în 24 de ore.",
-    "aiAssistant": "Întreabă-mă orice — trasee recomandate, crame sau ajutor la planificarea zilei."
   },
   "auth": {
     "layout": {
