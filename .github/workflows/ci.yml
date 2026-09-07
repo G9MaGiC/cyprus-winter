@@ -68,7 +68,10 @@ jobs:
         run: npm run i18n:validate
 
       - name: i18n coverage
-        run: npm run i18n:coverage
+        # Strict since batch 69: the detector is precise (batches 67-68 took
+        # the report from 2,131 false positives to a clean 0/0), so an unused
+        # or missing key is now a real defect worth failing the build over.
+        run: npm run i18n:coverage -- --strict
 
       - name: i18n hardcoded scan
         run: npm run i18n:scan -- --fail
