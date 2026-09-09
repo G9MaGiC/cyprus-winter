@@ -68,7 +68,12 @@ jobs:
         run: npm run i18n:validate
 
       - name: i18n coverage
-        run: npm run i18n:coverage
+        # Strict since batch 69: batches 67-68 took the report from 2,131
+        # false positives to 0/0, so a reported unused or missing key is a
+        # real defect worth failing the build over. Scope caveat (batch 72):
+        # keys under dynamic/indirect namespaces (~55% of the catalog) are
+        # exempt from per-key tracking; the script prints the count each run.
+        run: npm run i18n:coverage -- --strict
 
       - name: i18n hardcoded scan
         run: npm run i18n:scan -- --fail
@@ -77,9 +82,8 @@ jobs:
         run: npm run i18n:editorial-drift
 
       # The committed native-review sheets (docs/i18n-review) must match the
-      # catalogs. The script needs real history to find the merge-base with
-      # origin/main (checkout is shallow), and skips itself when HEAD *is*
-      # the merge-base (post-merge on main there is no diff basis).
+      # catalogs. The script diffs against the pinned audit baseline
+      # (main@ca827e6), so it needs real history (checkout is shallow).
       - name: i18n review sheets freshness
         run: |
           git fetch origin main --unshallow 2>/dev/null || git fetch origin main

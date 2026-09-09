@@ -33,7 +33,9 @@ npm run lint
 npm run typecheck
 npm run test
 npm run i18n:validate
-npm run i18n:scan --fail
+npm run i18n:scan -- --fail
+npm run i18n:coverage -- --strict
+npm run check:conflict-markers
 npm run data:validate
 npm run build
 ```

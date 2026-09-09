@@ -54,6 +54,7 @@ export default function WineryBookingForm({
       providerId: wineryId,
       providerName: wineryName,
       schema: wineryBookingSchema,
+      errorFields: ["date", "partySize", "guestName", "guestEmail"],
       analyticsExtra: { wineryId },
       validationLabels: {
         date: t("validation.dateRequired"),

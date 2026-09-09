@@ -26,6 +26,37 @@ test("home shows hero entry points, search, and skip links", async ({ page }) =>
   /** Skip nav is off-screen until tab focus (`-translate-y-full`); assert presence in DOM. */
   await expect(page.locator('a[href="#this-week-heading"]')).toHaveCount(1);
   await expect(page.locator('a[href="#editors-picks-heading"]')).toHaveCount(1);
+
+  /** A fresh visitor has no history — the recently-viewed strip must not render (batch 66). */
+  await expect(page.locator("#recently-viewed-heading")).toHaveCount(0);
+});
+
+test("home shows the recently-viewed strip for a returning visitor", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("cyprus-winter-onboarded", "true");
+    localStorage.setItem("cyprus-winter:cookie-consent", "all");
+    localStorage.setItem(
+      "cyprus-recently-viewed",
+      JSON.stringify([
+        {
+          id: "omodos",
+          name: "Omodos",
+          type: "village",
+          region: "Limassol",
+          viewedAt: new Date().toISOString(),
+        },
+      ])
+    );
+  });
+
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Recently viewed" })).toBeVisible({
+    timeout: 10_000,
+  });
+  // Scoped to the strip: editors' picks can legitimately feature the same
+  // place, and an unscoped name locator trips strict mode on the duplicate.
+  const strip = page.locator('section[aria-labelledby="recently-viewed-heading"]');
+  await expect(strip.getByRole("link", { name: /Omodos/ })).toBeVisible();
 });
 
 test("home hides editors picks when plan already has items", async ({ page }) => {

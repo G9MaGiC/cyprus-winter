@@ -186,6 +186,14 @@ test.describe("Visual QA gate", () => {
         linkName: "גילוי",
         menuButton: "פתחו תפריט",
       },
+      {
+        // The tallest RTL hub (78 gem cards, AUD-68 facets) — a long flat
+        // list is exactly where a sideways wobble hides from spot checks.
+        path: "/he/secrets",
+        navName: "ניווט ראשי",
+        linkName: "גילוי",
+        menuButton: "פתחו תפריט",
+      },
     ];
 
     for (const { path, navName, linkName, menuButton } of rtlRoutes) {
@@ -222,6 +230,25 @@ test.describe("Visual QA gate", () => {
       await gotoAndSettle(page, "/he/discover/tsiakkas");
       await expectRtlDocument(page);
       await expect(page.locator("main img").first()).toBeVisible({ timeout: 15_000 });
+      await expectNoHorizontalOverflow(page);
+    });
+
+    test("/he home with recently-viewed strip — RTL scroller without overflow", async ({ page }) => {
+      // The strip is storage-gated, so the plain /he shot above never renders
+      // it — seed a visit history so the horizontal scroller (border-s-4
+      // cards, batch 66) gets RTL overflow coverage at all (batch 72).
+      await page.addInitScript(() => {
+        localStorage.setItem(
+          "cyprus-recently-viewed",
+          JSON.stringify([
+            { id: "omodos", name: "Omodos", type: "village", region: "Limassol", viewedAt: new Date().toISOString() },
+            { id: "lefkara", name: "Lefkara", type: "village", region: "Larnaca", viewedAt: new Date().toISOString() },
+          ])
+        );
+      });
+      await gotoAndSettle(page, "/he");
+      await expectRtlDocument(page);
+      await expect(page.locator("#recently-viewed-heading")).toBeVisible({ timeout: 15_000 });
       await expectNoHorizontalOverflow(page);
     });
 

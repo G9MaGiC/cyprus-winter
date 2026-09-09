@@ -2,7 +2,6 @@
   "footer": {
     "discover": "Descoperă",
     "plan": "Planificare",
-    "airport": "Aeroport",
     "arriving": "La sosire",
     "weather": "Vreme",
     "bookings": "Rezervări",
@@ -13,13 +12,10 @@
     "paphos": "Paphos",
     "tagline": "Un Cipru mai liniștit. Trasee, sate, crame, zile lente.",
     "practical": "Se circulă pe stânga. Luați straturi. Verificați condițiile înainte de Troodos.",
-    "emergency": "Urgență",
-    "touristInfo": "Info turiști",
-    "ambulance": "Ambulanță",
-    "planYourTrip": "Planifică-ți călătoria",
     "privacy": "Confidențialitate",
     "terms": "Termeni",
-    "cycling": "Ciclism"
+    "cycling": "Ciclism",
+    "install": "Instalează aplicația"
   },
   "travelTrust": {
     "aria": "Informații oficiale de călătorie",
@@ -56,7 +52,8 @@
     "mainNavigation": "Navigare principală",
     "cycling": "Ciclism",
     "askAIBlockedAria": "Finalizează mai întâi onboarding-ul sau alegerea cookie-urilor",
-    "nature": "Natură"
+    "nature": "Natură",
+    "install": "Instalează aplicația"
   },
   "common": {
     "nav": {
@@ -94,11 +91,6 @@
     },
     "skipToContent": "Sari la conținut",
     "languageLabel": "Limbă:",
-    "nextOnPlan": {
-      "aria": "Următorul din plan",
-      "prefix": "Urmează",
-      "navigate": "Navighează"
-    },
     "noscript": {
       "title": "Este necesar JavaScript",
       "body": "pentru toate funcțiile. Poți răsfoi trasee și locuri, dar planul și chatul cer JavaScript."
@@ -294,12 +286,6 @@
     "askAIAria": "Întreabă AI despre trasee, crame și idei de călătorie",
     "askAITrailsAria": "Întreabă AI pentru sugestii de trasee",
     "askAIRecommendationsAria": "Întreabă AI pentru recomandări",
-    "hubFooter": {
-      "prompt": "Adaugă locuri în plan — sau întreabă AI-ul pentru idei.",
-      "aria": {
-        "actions": "Acțiuni pagină"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Rezumatul planului tău de călătorie",
       "places": "{count, plural, one {# loc în plan} other {# locuri în plan}}",
@@ -369,7 +355,8 @@
       "cta": "Treci la română",
       "dismiss": "Închide",
       "aria": "Sugestie de limbă"
-    }
+    },
+    "navigate": "Navighează"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -774,11 +761,6 @@
     "shortcuts": {
       "rightNowDescription": "Ce merită aproape de tine — sugestii după vreme și locație"
     }
-  },
-  "error": {
-    "title": "O mică problemă",
-    "body": "O mică problemă. Încearcă din nou sau mergi acasă — traseele, satele și degustările te așteaptă.",
-    "hint": "Folosește meniul pentru Descoperă, Trasee sau Plan. Sau atinge Ask AI — te ghidăm spre Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -1957,11 +1939,8 @@
       "daysLabel": "zile",
       "downloadIcs": "Adaugă în calendar",
       "icsDownloaded": "Descărcat",
-      "placesCount": "{count, plural, one {# loc} other {# locuri}}",
-      "daysCount": "{count, plural, one {# zi} other {# zile}}",
       "copyLink": "Copiază linkul",
       "linkCopied": "Link copiat",
-      "copyItinerary": "Copiază planul (text)",
       "copyItineraryShort": "Copiază text",
       "copied": "Copiat",
       "shareTextPrefix": "Planul meu Cyprus Winter —",
@@ -2195,10 +2174,7 @@
   "bookings": {
     "title": "Rezervările mele",
     "empty": "Încă nu ai rezervări",
-    "emptyBody": "Rezervă o degustare din Descoperă sau încarcă rezervări de pe alt dispozitiv.",
     "browseWineries": "Vezi crame",
-    "loadFromEmail": "Încarcă rezervări de pe alt dispozitiv",
-    "noMatch": "Nicio rezervare pentru acel email. Încearcă altul sau rezervă din Descoperă.",
     "bookMore": "Rezervă o degustare sau drumeție ghidată din Descoperă și Trasee. Sau încarcă rezervări de pe alt dispozitiv.",
     "status": {
       "confirmed": "confirmată",
@@ -2731,7 +2707,6 @@
     "description": "Trasee, sate, crame. Planifică pe parcurs — fără cont.",
     "cta": "Explorează",
     "skip": "Omite",
-    "intentQuestion": "Ce contează cel mai mult acum?",
     "intentLabel": "Sau spune-ne de ce ești aici",
     "intentPlanning": "Planific tripul",
     "intentExploring": "Explorez locuri",
@@ -2749,13 +2724,6 @@
     "tipFirstAdd": "În planul tău. Adaugă mai multe sau distribuie planul.",
     "tipDiscoverFilter": "Filtrează după sate, crame sau trasee.",
     "savePlan": "Salvează planul — creează cont pentru sincronizare"
-  },
-  "help": {
-    "planEmpty": "Atinge „Adaugă locuri” ca să începi planul din Descoperă sau Trasee.",
-    "planFirstItem": "Start bun. Adaugă mai multe locuri sau schimbă zilele ca să planifici întreaga călătorie.",
-    "discoverFilter": "Folosește filtrele ca să găsești exact ce cauți — crame, trasee, plaje și altele.",
-    "bookingForm": "Completează datele și crama va confirma prin email. Majoritatea răspund în 24 de ore.",
-    "aiAssistant": "Întreabă-mă orice — trasee recomandate, crame sau ajutor la planificarea zilei."
   },
   "auth": {
     "layout": {
@@ -2917,7 +2885,6 @@
         "title": "Cerere trimisă",
         "body": "Cererea ta de drumeție cu {guideName} e pe drum. Va confirma pe email. Dacă nu auzi nimic într-o zi sau două, sună.",
         "crossDevicePrefix": "Introdu emailul pe",
-        "crossDeviceLink": "Rezervările mele",
         "crossDeviceSuffix": "ca să vezi cererea pe toate dispozitivele.",
         "tip": "Ia straturi și apă. Spune-i cuiva traseul.",
         "emailDelayed": "Cererea e salvată. Emailul de confirmare poate dura câteva minute — verifică spamul sau contactează ghidul dacă nu îl vezi.",
@@ -3527,11 +3494,6 @@
     "homeDescription": "Un Cipru mai liniștit iarna. Descoperă coaste blânde, sate de munte, trasee deschise, crame și locuri autentice pentru care merită să încetinești.",
     "ogImageAlt": "Teatrul antic Kourion deasupra coastei Mediteranei, iarnă în Cipru"
   },
-  "ui": {
-    "hero": {
-      "imageAlt": "Teatrul antic Kourion, coasta Mediteranei, iarnă în Cipru"
-    }
-  },
   "cycling": {
     "page": {
       "meta": {
@@ -3593,7 +3555,8 @@
       "body": "Instalează pentru trasee offline și planul tău în mișcare.",
       "install": "Instalează",
       "dismiss": "Nu acum",
-      "iosHint": "Atinge Partajare, apoi Adaugă pe ecranul principal pentru a salva ghidul."
+      "iosHint": "Atinge Partajare, apoi Adaugă pe ecranul principal pentru a salva ghidul.",
+      "guideLink": "Vezi ghidul complet"
     }
   },
   "nature": {
@@ -5489,6 +5452,638 @@
       "athalassa-botanical-first": {
         "title": "Athalassa: grădina, apoi bucla lacului",
         "body": "Grădina botanică gratuită de la poarta principală — întâi acolo. Apoi poteca lacului în sens invers acelor de ceas. Cei mai mulți se opresc la cafenea. Tu câștigi o oră de pini liniștiți înainte ca traficul Nicosiei să te cheme înapoi."
+      }
+    },
+    "weather": {
+      "november": {
+        "coastDesc": "Încă blând. O geacă subțire pentru seri. Plaje goale, ruinele în cea mai bună lumină.",
+        "troodosDesc": "Dimineți răcoroase. Trasee curate. Sezonul de schi n-a început; ideal pentru drumeții."
+      },
+      "december": {
+        "coastDesc": "Zile blânde, nopți reci. Îmbracă-te în straturi. Târguri de Crăciun și vin fiert.",
+        "troodosDesc": "Posibil ninsoare la altitudine din mijlocul lunii. Pârtia se deschide de obicei când zăpada permite — verifică înainte să pleci."
+      },
+      "january": {
+        "coastDesc": "Cea mai rece lună. Tot însorită. Ruine și sate; ia un strat călduros.",
+        "troodosDesc": "Vârful sezonului de schi pe Olimp cât ține zăpada. Traseele joase pot fi înghețate după ger — rezervă degustări; cramele sunt calde înăuntru."
+      },
+      "february": {
+        "coastDesc": "Asemănătoare cu ianuarie. Migdalii înfloresc de la sfârșitul lui februarie. Zile mai lungi.",
+        "troodosDesc": "Schiul ține adesea până la începutul primăverii; cotele joase se topesc primele. Brândușe și ciclame."
+      },
+      "march": {
+        "coastDesc": "Lumină de primăvară. Flori sălbatice în interior. Marea încă rece; plimbările pe plajă merg de minune.",
+        "troodosDesc": "Cea mai bună lună de drumeții. Zăpada se topește, traseele se deschid. Traseul Persefona înflorește."
+      },
+      "april": {
+        "coastDesc": "Cald. Unii înoată. Data Paștelui variază; satele prind viață.",
+        "troodosDesc": "Muntele verde. Toate traseele deschise. Claritate de primăvară."
+      }
+    },
+    "airport": {
+      "lca": {
+        "city": "Larnaca",
+        "transport": {
+          "taxi": {
+            "type": "Taxi",
+            "description": "Șoferul te așteaptă la sosiri, tarife fixe. Cel mai bun pentru sosiri târzii sau grupuri.",
+            "approxCost": "25 până la 45 € spre Larnaca, 50 până la 70 € spre Limassol, 80 până la 100 € spre Paphos",
+            "duration": "15 până la 60 min",
+            "tip": "Rezervă online pentru cele mai bune tarife; șoferii te așteaptă la sosiri."
+          },
+          "bus": {
+            "type": "Autobuz",
+            "description": "Shuttle Kapnos spre principalele stațiuni. Confortabil și ieftin.",
+            "approxCost": "8 până la 15 € pe sens",
+            "duration": "30 până la 90 min",
+            "tip": "Verifică orarele pentru stațiunea ta; bilete online sau la ghișeu."
+          },
+          "car-rental": {
+            "type": "Închiriere auto",
+            "description": "Se conduce pe stânga. Permisul internațional este acceptat.",
+            "approxCost": "25 până la 60 €/zi",
+            "tip": "Rezervă din timp; marile companii sunt la sosiri."
+          }
+        },
+        "tips": {
+          "0": "WiFi gratuit la sosiri. Ia o cafea și organizează-te în liniște.",
+          "1": "Cartelele SIM din UE funcționează. SIM-uri locale pentru date, la sosiri.",
+          "2": "Doar euro (€). Bancomate și schimb valutar la sosiri. Micile magazine din sate preferă numerar.",
+          "3": "Urgențe 112 · Informații turistice 1460 · Salvează-le pe amândouă."
+        }
+      },
+      "pfo": {
+        "city": "Paphos",
+        "transport": {
+          "taxi": {
+            "type": "Taxi",
+            "description": "Șoferul te așteaptă la sosiri. Tarife fixe spre Paphos, Coral Bay, Limassol.",
+            "approxCost": "25 până la 35 € spre Paphos, 60 până la 80 € spre Limassol, 120 până la 150 € spre Larnaca",
+            "duration": "15 până la 90 min",
+            "tip": "Rezervarea din timp evită cozile; disponibil non-stop."
+          },
+          "bus": {
+            "type": "Autobuz",
+            "description": "Linia 612 spre portul Paphos și zonele de stațiune. Ieftin și simplu.",
+            "approxCost": "2 până la 4 €",
+            "duration": "30 până la 45 min",
+            "tip": "Circulă regulat; verifică orarele de seară."
+          },
+          "car-rental": {
+            "type": "Închiriere auto",
+            "description": "Cea mai bună alegere dacă vrei mozaicuri, plaje și sate viticole. Vestul răsplătește mașina.",
+            "approxCost": "25 până la 60 €/zi",
+            "tip": "Mozaicuri, sate, plaja Lara: totul la o oră distanță. Rezervă din timp și ești gata."
+          }
+        },
+        "tips": {
+          "0": "Mai mic decât Larnaca. De obicei treci mai repede de control.",
+          "1": "Situri antice, plaje și sate viticole la îndemână. Coral Bay, mozaicuri, plaja Lara.",
+          "2": "Se conduce pe stânga. Urgențe 112 · Informații turistice 1460."
+        }
+      }
+    },
+    "wineRoutes": {
+      "krasochoria": {
+        "title": "Krasochoria",
+        "description": "Satele viticole din Limassol — Omodos, Koilani, Louvaras, Pera Pedi, Pelendri. Priveliști montane, soiuri autohtone, vinuri dulci în stil Commandaria. Noiembrie–martie sună înainte.",
+        "winterTip": "Majoritatea cramelor deschid iarna doar în weekend. Sună cu o zi înainte — de multe ori toarnă chiar vinificatorul."
+      },
+      "laona": {
+        "title": "Laona",
+        "description": "Satele de deal din Paphos — Panayia, Lemona, Stroumbi, Statos. Degustări tihnite, vii bătrâne, foc de șemineu iarna. Diferită de zona UNESCO a Commandariei.",
+        "winterTip": "Iarna primești degustări lângă șemineu și tururi fără grabă. Vouni Panayia și Tsangarides sunt opririle de bază."
+      },
+      "akamas": {
+        "title": "Akamas",
+        "description": "Kathikas și peninsula Akamas. Vinuri albe seci și rosé cu vedere la mare. Combină cu traseul Adonis sau Afrodita și Băile Afroditei.",
+        "winterTip": "Îmbină o drumeție de dimineață pe traseul Afroditei cu o degustare de după-amiază în Kathikas — la douăzeci de minute distanță."
+      },
+      "commandaria": {
+        "title": "Commandaria",
+        "description": "Cel mai vechi vin al Ciprului — dulce, din struguri uscați la soare. Cele paisprezece sate numite de UNESCO: Silikou, Doros, Monagri, Louvaras, Lania, Agios Mamas și altele. Nu Omodos sau Koilani (Krasochoria, dar în afara zonei).",
+        "winterTip": "Producătorii de Commandaria primesc iarna mai ușor vizite neanunțate. Monagri și Lania au cele mai accesibile crame."
+      }
+    },
+    "natureExcursions": {
+      "akrotiri-salt-lake": {
+        "description": "Cea mai mare zonă umedă interioară a Ciprului — flamingo, cocori și răpitoare noiembrie–martie, când ploile de iarnă umplu lacul. Stufăriș și apă mică; vara adesea seacă.",
+        "winterNote": "Vârful migrației păsărilor; ia binoclul și încălțăminte silențioasă."
+      },
+      "larnaca-salt-lake": {
+        "description": "Flamingo și Hala Sultan Tekke la marginea Larnacăi. Poteci plate; unul dintre punctele emblematice de birdwatching de iarnă ale insulei.",
+        "winterNote": "Combină cu bucla lacului sărat din secțiunea noastră Trasee."
+      },
+      "athalassa-visitor-centre": {
+        "description": "Pini și tufăriș la marginea de sud-est a Nicosiei — centru de vizitare, grădină botanică și o pistă de biciclete de 16 km prin centura verde a capitalei.",
+        "winterNote": "Evadare rapidă când Troodos e înghețat; după ploaie rămâi pe drumurile principale."
+      },
+      "cape-gkreko-park": {
+        "description": "Faleze, pini pitici și poteci de coastă la vârful estic al Ciprului. Soare de iarnă fără frigul din Troodos.",
+        "winterNote": "Combină cu traseul nostru Cape Greco pentru o dimineață întreagă pe coastă."
+      },
+      "cedar-valley": {
+        "description": "Cedrii endemici ai Ciprului într-o vale din Troodos — acces pe un drum forestier liniștit; ianuarie–februarie posibilă zăpadă pe drum.",
+        "winterNote": "Verifică starea drumului înainte de plecare; în zilele senine de iarnă merită ocolul."
+      },
+      "troodos-botanic-garden": {
+        "description": "Plante alpine și endemice la Piața Troodos — mică, la obiect și caldă înăuntru când afară e frig.",
+        "winterNote": "Programul centrului se scurtează în extrasezon; combină cu un traseu de altitudine mai mică dacă zăpada închide drumurile."
+      },
+      "troodos-environmental-centre": {
+        "description": "Centrul Departamentului Silvic din Geoparcul Troodos — geologie, istoria mineritului și contextul muntelui iarna, înainte de traseu."
+      },
+      "akamas-geology-centre": {
+        "description": "Centru în Pano Arodes, la marginea Akamasului — fosile, geologie și context pentru traseele și coasta peninsulei."
+      },
+      "akamas-avifauna-kathikas": {
+        "description": "Centrul regional din Kathikas pentru păsările și plantele endemice din Akamas — începe de aici înainte de traseele Adonis sau Afrodita."
+      },
+      "akrotiri-env-centre": {
+        "description": "Centru educațional lângă zonele umede Akrotiri — expoziții despre ecologia lacului sărat și păsările migratoare."
+      },
+      "cape-gkreko-env-centre": {
+        "description": "Expoziții de ecologie costieră la Cape Gkreko — context util înainte de potecile de pe faleză și peșterile marine."
+      },
+      "episkopi-env-centre": {
+        "description": "Centrul de mediu al districtului Paphos, deasupra satului Episkopi — priveliști spre valea Ezousa și interpretarea habitatelor locale."
+      }
+    },
+    "cyclingRoutes": {
+      "athalassa-forest-park": {
+        "description": "Șaisprezece kilometri de pistă asfaltată în centura verde a Nicosiei. Localnicii o parcurg tot anul; ploaia de iarnă ține pinii proaspeți și parcarea liberă în timpul săptămânii.",
+        "winterNote": "Cea mai ușoară buclă de iarnă a capitalei când Troodos e sub zăpadă."
+      },
+      "cy-rc06-divine-coast": {
+        "description": "De la Governor's Beach la golful Pissouri și înapoi de-a lungul coastei Limassol — teatrul Kourion, marina și kilometri lungi de plat între urcușuri.",
+        "winterNote": "Iarnă blândă pe coastă; pleacă devreme ca să prinzi lumina pentru bucla întreagă."
+      },
+      "cy-rc04-heart-of-koumandaria": {
+        "description": "Satele de vin ale Commandariei și drumurile ondulate din Krasochoria. Cătune de piatră, terase de viță și opriri la mănăstiri printre dealurile Limassolului.",
+        "winterNote": "Vii desfrunzite și lumină aurie — una dintre cele mai frumoase ture de șosea de iarnă de pe insulă."
+      },
+      "cy-rc15-sea-of-green-coast": {
+        "description": "Tochni, situl UNESCO Choirokoitia, Vavla și dealurile joase ale Limassolului — ulițe de sat și urcușuri prin valea portocalilor, fără asprimea din Troodos.",
+        "winterNote": "Drumuri goale în timpul săptămânii; combină cu un prânz cu pește la Zygi."
+      },
+      "cy-rc19-kornos-lefkara": {
+        "description": "Satele dantelei și priveliști montane deasupra Larnacăi. Argint și dantelă de Lefkara; în ianuarie aer mai răcoros decât pe coastă."
+      },
+      "pafos-1-castle-loop": {
+        "description": "Livezi de portocali, biserica din stâncă de la Episkopi și priveliști spre valea Ezousa. Urcuș cu vederi spre Troodos; întoarcere mai mult la vale spre portul Pafos.",
+        "winterNote": "Coasta rămâne blândă; urcușul prin vale poate fi răcoros — ia un strat pentru vârf."
+      },
+      "pafos-3-akamas-lara": {
+        "description": "Marginea Akamasului: Agios Georgios, golful Lara, Fontana Amorosa și Băile Afroditei. Pietriș și asfalt; coastă de iarnă spectaculoasă."
+      },
+      "polis-argaka-loop": {
+        "description": "Drumul de coastă al golfului Chrysochou, prin portul Polis și satul Argaka. Kilometri liniștiți de iarnă pe țărmul de nord-vest al insulei."
+      },
+      "main-11-troodos-pafos": {
+        "description": "Coborâre montană din Troodos spre Pafos — pădure de pini, serpentine și vale lungă până la coastă, când condițiile permit.",
+        "winterNote": "Verifică zăpada și gheața pe drumurile de creastă din Troodos înainte să pornești."
+      },
+      "main-3-solea-valley": {
+        "description": "Din capitală spre valea Solea și poalele Troodosului. Tură lungă de o zi prin Kakopetria, pădure de pini și sate de munte.",
+        "winterNote": "E nevoie de toată lumina zilei; Solea de sus poate fi rece și pe alocuri înghețată."
+      },
+      "lemesos-1-amathous": {
+        "description": "Buclă scurtă de coastă din Limassol până la situl arheologic Amathus. Plată, asfaltată, ideală pentru o tură de dimineață iarna."
+      },
+      "lemesos-3-fasouri-pachna": {
+        "description": "Tură circulară prin suburbiile Limassolului spre ținutul viilor de la Pachna. Dealuri ondulate; mai liniște decât vara."
+      },
+      "agia-napa-xylofagou": {
+        "description": "Traseu pe coasta de est care leagă Agia Napa de Xylofagou și interiorul districtului Famagusta. Kilometri plați de iarnă."
+      },
+      "eurovelo-8": {
+        "description": "Secțiunea cipriotă a coridorului ciclist mediteranean european. Legături de coastă între orașele mari."
+      },
+      "cy-rc08-ancient-vasilikos": {
+        "description": "Dealurile districtului Larnaca prin satele peninsulei Vasilikos. Ulițe rurale deasupra coastei de sud-est."
+      },
+      "amathus-mtb-basic": {
+        "description": "Buclă off-road de inițiere lângă anticul Amathus. Drumuri forestiere și urcușuri blânde deasupra coastei Limassol."
+      },
+      "alaminos-mtb-moderate": {
+        "description": "Poteci înguste și drumuri forestiere pe dealurile Larnacăi. Pedalare moderat tehnică; noroi de iarnă după ploaie."
+      },
+      "alaminos-mtb-demanding": {
+        "description": "Varianta Alaminos mai lungă și mai abruptă, pentru bicicliști montani experimentați. Verifică starea potecilor după furtuni."
+      },
+      "lefkosia-3-asinou": {
+        "description": "Tură în districtul Nicosia spre pădurea Adelfoi și zona Asinou. Urcușuri cu parfum de pin, fără vârful Troodos."
+      },
+      "cy-rc18-traditional-villages": {
+        "description": "Buclă prin interiorul Limassolului, prin sate de piatră și ulițe din ținutul vinului. Cultură și urcuș într-o singură tură."
+      }
+    },
+    "events": {
+      "limassol-carnival": {
+        "name": "Carnavalul din Limassol",
+        "description": "Cel mai mare carnaval al Ciprului ține două săptămâni înainte de Postul Mare. Regele Carnaval conduce Marea Paradă prin orașul vechi; balurile mascate umplu teatrele, iar străzile prind viață cu care alegorice, costume și muzică. Carnavalul are rădăcini în tradiții venețiene și bizantine — o ultimă petrecere înainte de post. Localnicii își pregătesc costumele luni întregi. Dacă ești în Cipru la sfârșitul lui februarie sau începutul lui martie, merită să-ți planifici sejurul în jurul lui. Faleza se umple de care și costume, iar tot orașul participă.",
+        "dates": "2 săptămâni înainte de Postul Mare (sfârșit de feb. / început de mar.)",
+        "venue": "Orașul vechi și faleza din Limassol"
+      },
+      "nicosia-winter-festival": {
+        "name": "Festivalul de Iarnă din Nicosia",
+        "description": "Piața Eleftheria se transformă în decembrie: concerte în aer liber, tarabe cu mâncare și instalații de lumini atrag familii și prieteni. Intrarea e liberă. Atmosfera e festivă fără să copleșească — ia o băutură caldă, ascultă muzică live și privește capitala cum prinde viață după lăsarea întunericului. Ține în weekenduri pe tot parcursul lunii. Îmbracă-te gros și intră în atmosferă.",
+        "dates": "Weekenduri în decembrie",
+        "venue": "Piața Eleftheria"
+      },
+      "pafos-xmas-market": {
+        "name": "Târgul de Crăciun din Paphos",
+        "description": "Portul se umple de tarabe în fiecare decembrie. Artizanat, miere locală, ulei de măsline și cadouri lucrate manual. Vinul fiert aburește în aerul rece. Colindătorii se adună lângă castel. E o sărbătoare de familie: copiii stau la rând la Moș Crăciun, părinții răscolesc tarabele, iar mirosul de castane coapte plutește peste faleză. Weekenduri de la 1 decembrie până chiar înainte de Crăciun. Castelul e luminat. Marea e întunecată. Se simte a sărbători cum plajele însorite nu reușesc niciodată.",
+        "dates": "Weekenduri 1–22 decembrie",
+        "venue": "Portul Paphos"
+      },
+      "commandaria-festival": {
+        "name": "Festivalul Commandaria",
+        "description": "Festivalul celebrează cel mai vechi vin al Ciprului — vinul dulce, din struguri uscați la soare, făcut în aceste dealuri de pe vremea cruciadelor. Koilani găzduiește de obicei evenimentele principale; degustările și muzica se întind prin Krasochoria și satele UNESCO ale Commandariei, precum Louvaras, Silikou, Doros și Monagri. Gustă de la producători, află cum se face Commandaria și bucură-te de aerul de munte. De obicei în primul weekend din decembrie, când viile sunt desfrunzite. Verifică datele în fiecare an.",
+        "dates": "Primul weekend din decembrie (verifică anual)",
+        "venue": "Koilani și satele Krasochoria / Commandaria"
+      },
+      "troodos-ski-season": {
+        "name": "Sezonul de schi din Troodos",
+        "description": "Ciprul are o singură pârtie, pe muntele Olimp. Patru teleschiuri, închiriere de echipament și cafenele montane. Sezonul ține din ianuarie până în martie, în funcție de zăpadă; unele ierni sunt bogate, altele sărace. Chiar și când pârtiile sunt subțiri, drumul până sus răsplătește, iar cafenelele servesc ciocolată caldă cu priveliște. Verifică condițiile înainte de plecare; drumul poate fi înghețat. Schi dimineața și baie în mare după-amiaza — insula profită din plin de această ciudățenie.",
+        "dates": "Ian.–mar. (în funcție de vreme)",
+        "venue": "Pârtia Troodos, muntele Olimp"
+      },
+      "lefkara-lace-festival": {
+        "name": "Festivalul Dantelei din Lefkara",
+        "description": "Satul își sărbătorește meșteșugul cel mai faimos. Dantelăresele demonstrează în piață tehnica lefkaritiko — bobinele clincăne, firele se încrucișează. La ateliere poți încerca și tu. Tarabele vând piese finite. De obicei a doua duminică din martie, când lumina se îmblânzește deja și aerul de munte e blând. Satul se umple de vizitatori, dar atmosfera e mândră, nu comercială. Femeile acestea și-au șlefuit meșteșugul decenii întregi — și îl arată cu drag. Rămâi la prânz; tavernele au treabă.",
+        "dates": "De obicei a doua duminică din martie",
+        "venue": "Satul Lefkara"
+      },
+      "bellapais-concerts": {
+        "name": "Concertele de la abația Bellapais",
+        "description": "Bellapais e în nordul Ciprului — trecerea dinspre sud cere formalitățile obișnuite de frontieră; verifică accesul înainte de călătorie. Muzică în ruinele gotice. Clasică, folk, uneori amândouă. Refectoriul abației devine sală de concert; arcadele întorc sunetul. Stai sub stele cu muntele în spate. Programul se schimbă în fiecare an; verifică din timp datele de iarnă. Chiar dacă ratezi un concert, abația noaptea merită drumul, când accesul o permite.",
+        "dates": "Date selectate dec.–ian.",
+        "venue": "Abația Bellapais"
+      },
+      "agros-rose-festival-prep": {
+        "name": "Evenimente în satul Agros",
+        "description": "Trandafirii înfloresc în aprilie și mai. Iarna, Agros lucrează cu ce a pus deoparte: apă de trandafiri, loukoumi, dulcețuri. În ianuarie și februarie satul găzduiește ateliere și degustări. Afli cum se face apa de trandafiri, guști dulciurile și umpli o sacoșă de suveniruri. Aerul de munte e rece; tavernele sunt calde. Agros și-a clădit reputația pe moștenirea sa florală. Chiar și în extrasezon merită vizita. Fabrica organizează tururi. Priveliștile sunt mereu acolo.",
+        "dates": "Diverse weekenduri ian.–feb.",
+        "venue": "Satul Agros"
+      },
+      "larnaca-xmas-village": {
+        "name": "Satul de Crăciun din Larnaca",
+        "description": "Promenada Finikoudes devine un sat de iarnă. Un patinoar lângă mare — suprarealist și amuzant. Grota lui Moș Crăciun pentru copii. Tarabe cu artizanat, mâncare și băuturi calde. Palmierii rămân verzi; luminițele se aprind. Ține de la mijlocul lui noiembrie până în ianuarie, deci ai destule ocazii. Promenada e fâșia de coastă a Larnacăi. Vara e ticsită. Iarna e mai blândă, iar satul de Crăciun adaugă un strat de voie bună. Îmbracă-te gros și plimbă-te. Marea e chiar acolo.",
+        "dates": "Mijloc de nov. – început de ian.",
+        "venue": "Promenada Finikoudes"
+      },
+      "cyprus-marathon": {
+        "name": "Maratonul Ciprului",
+        "description": "Alergători din toată Europa se adună în decembrie pe faleza din Limassol. Maraton, semimaraton și 10 km. Traseul urmează coasta; vremea e răcoroasă, priveliștea — mare și cer. Chiar dacă nu alergi, atmosfera merită trăită. Orașul se trezește devreme. Promenada se umple de susținători — urale, muzică, ritmul constant al pașilor. De obicei în prima duminică din decembrie. Dacă conduci, planifică-ți ruta; drumurile se închid pentru cursă. Sau alătură-te mulțimii și privește. Fețele de la finish spun tot.",
+        "dates": "De obicei prima duminică din decembrie",
+        "venue": "Faleza din Limassol"
+      },
+      "kakopetria-christmas-village": {
+        "name": "Satul de Crăciun Kakopetria",
+        "description": "Unul dintre cele opt sate de Crăciun oficiale ale Ciprului. Satul din valea Solea se gătește de sărbătoare: ghirlande, muzică de seară, vin fiert, târguri de artizanat și concerte în aer liber. Case de piatră, râul Karkotis și mirosul de melomakarona și kourabiedes. Weekenduri de la sfârșitul lui noiembrie; zilnic din 22 decembrie. Combină cu un prânz cu păstrăv sau o plimbare până la Agios Nikolaos tis Stegis. Aerul de munte ascute pofta de mâncare.",
+        "dates": "Weekenduri sfârșit de nov. – 6 ian.; zilnic din 22 dec.",
+        "venue": "Satul Kakopetria"
+      },
+      "kyperounta-christmas-village": {
+        "name": "Satul de Crăciun Kyperounta",
+        "description": "Târg de Crăciun la altitudine, în regiunea Pitsilia. Vii și păduri de pini încadrează satul. Bunătăți tradiționale, degustări la crama Kyperounta, artizanat și concerte. Și aerul de munte. De obicei 10:00–19:00; program scurt pe 25 decembrie. Cam 50 de minute din Limassol. Îmbracă-te gros; sus e frig. Verifică datele în fiecare an.",
+        "dates": "Weekenduri sfârșit de nov. – 6 ian.",
+        "venue": "Satul Kyperounta"
+      },
+      "ayia-napa-cultural-winter": {
+        "name": "Iarna culturală din Agia Napa",
+        "description": "Evenimente săptămânale, în fiecare joi, din ianuarie până în martie. Jazz grecesc și internațional, dans tradițional cipriot, rebetiko și spectacole culturale. Sezonul liniștit al stațiunii devine scenă pentru muzică și moștenire. Verifică programul primăriei pentru date și locații — se schimbă de la an la an. O altă față a Agiei Napa.",
+        "dates": "Ian.–mar., joia la 19:30",
+        "venue": "Primăria Agia Napa"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Festivalul de Înot de Iarnă din Agia Napa",
+        "description": "Înotători de iarnă din toată lumea se adună pe plaja Nissi sau Makronissos. În ianuarie înfruntă marea rece. Chiar dacă nu sari în apă, spectacolul merită — înotători cu căști de baie, lumina de iarnă, uralele. Datele variază; verifică din timp. O amintire că Ciprul nu hibernează niciodată de tot.",
+        "dates": "Mijlocul lui ianuarie (verifică anual)",
+        "venue": "Plaja Nissi sau Makronissos"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Satul de Crăciun Kalopanagiotis",
+        "description": "Satul din valea Marathasa găzduiește unul dintre cele mai atmosferice târguri de Crăciun ale insulei. Case de piatră, ulițe pietruite și mănăstirea UNESCO Agios Ioannis Lampadistis drept fundal. Produse locale, mâncăruri tradiționale, muzică, ateliere și distracții de iarnă. Weekenduri de la sfârșitul lui noiembrie; zilnic din 23 decembrie. Izvoare termale și fresce bizantine în apropiere. Alternativa mai liniștită la Kakopetria.",
+        "dates": "Weekenduri sfârșit de nov. – 22 dec.; zilnic 23 dec. – 6 ian.",
+        "venue": "Satul Kalopanagiotis"
+      },
+      "omodos-christmas-market": {
+        "name": "Târgul de Crăciun din Omodos",
+        "description": "Satul viticol Omodos organizează la sfârșitul lui decembrie un târg de Crăciun festiv. Parcul comunal se umple de tarabe, muzică live — colinde, rebetiko, jazz, folk — și ateliere. Mega Santa îi întâmpină pe copii. Produse locale, vin cald și cadouri lucrate manual. Piața pietruită și mănăstirea oferă un decor memorabil. De obicei 26–28 decembrie, de la 16:00. Satul se pricepe la vin; așteaptă-te la ospitalitate pe măsură.",
+        "dates": "De obicei 26–28 decembrie",
+        "venue": "Piața satului Omodos"
+      },
+      "lania-christmas": {
+        "name": "Crăciunul la Lania",
+        "description": "Satul ulițelor și al viței de vie se luminează la începutul lui decembrie. Artizanat, bunătăți și o atmosferă de Crăciun la scară mică. Lania e unul dintre cele paisprezece sate autorizate ale Commandariei — combină cu Vasa pentru o zi în ținutul vinului, sau cu Omodos pentru Krasochoria (în afara zonei Commandaria). Mai liniștit decât marile sate de Crăciun. Arhitectura și priveliștile montane sunt atracția. Verifică datele; de obicei primul weekend din decembrie.",
+        "dates": "De obicei primul weekend din decembrie",
+        "venue": "Satul Lania"
+      },
+      "green-monday": {
+        "name": "Lunea Verde",
+        "description": "Prima zi a Postului Mare ortodox. Familiile ies la picnic cu bucate de post — pâine lagana, măsline, tahini, fructe de mare. Zmeiele umplu cerul; obiceiul spune că zmeul duce păcatele departe. Parcurile, dealurile și coastele se umplu de ciprioți. Polis-Latchi și alte orașe organizează serbări. E zi liberă. Chiar dacă nu ții post, ritualul și zmeiele merită trăite. Data se mută odată cu Paștele; de regulă sfârșit de februarie sau început de martie.",
+        "dates": "Prima zi de post (variază cu Paștele)",
+        "venue": "Parcuri, plaje și dealuri în tot Ciprul"
+      },
+      "famagusta-carnival": {
+        "name": "Carnavalul din Famagusta",
+        "description": "Carnavalul Paralimni–Dherynia aduce care alegorice, costume și mii de petrecăreți pe coasta de est. Marea paradă străbate Paralimni în duminica dinaintea Postului. Mai puțin agitat decât Limassol, dar nu mai puțin colorat. Familiile se înșiră de-a lungul traseului; regele carnavalului conduce alaiul. O instituție a regiunii. De obicei la început de martie. Vino devreme pentru un loc bun.",
+        "dates": "Duminica dinaintea Postului (început de mar.)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Satul de Crăciun Deryneia",
+        "description": "Țara Căpșunilor de Crăciun. Deryneia — capitala căpșunilor din Cipru — găzduiește unul dintre cele opt sate de Crăciun oficiale. Bucătărie tradițională, artizanat, muzică live și ateliere pentru copii. Muzeul de Artă Populară și câmpurile roșiatice încadrează satul. Weekenduri de la sfârșitul lui noiembrie; zilnic din 23 decembrie. Răspunsul coastei de est la satele de munte. Combină cu Paralimni sau Protaras.",
+        "dates": "Weekenduri sfârșit de nov. – 22 dec.; zilnic 23 dec. – 6 ian.",
+        "venue": "Satul Deryneia"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Satul de Crăciun Statos–Agios Fotios",
+        "description": "Sus, în munții din Paphos, la 950 m. Unul dintre cele opt sate de Crăciun oficiale. Ținut de mere și struguri; satul produce vin, stafide, nuci, migdale. Case de piatră, produse locale și o atmosferă montană liniștită. Mănăstirile Chrysorrogiatissa și Agia Moni în apropiere. De la sfârșitul lui noiembrie până la Bobotează. Alternativa din Paphos la satele din Troodos.",
+        "dates": "Sfârșit de nov. – 6 ian.",
+        "venue": "Satul Statos-Agios Fotios"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Trei zile de jazz cipriot și internațional la Teatrul Rialto. În jur de 15 ansambluri; muzică cipriotă contemporană, ateliere, jam sessions și after-party-uri. Vitrina promovează muzicienii locali în industrie și oferă publicului o doză concentrată din scena de jazz a insulei. De obicei la început de decembrie. Bilete de la 8 € pe zi. Obligatoriu pentru iubitorii de jazz.",
+        "dates": "De obicei primul weekend din decembrie",
+        "venue": "Teatrul Rialto, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Festivalul Vinurilor din Pelopones",
+        "description": "Terroiruri grecești în Cipru. În jur de 25 de crame din Pelopones toarnă vinuri DOP și IGP la Carob Mill Restaurants. Masterclassuri, degustări deschise și somelieri profesioniști. O ocazie să guști Nemea, Mantinia și alte regiuni grecești fără să părăsești insula. De obicei la început de februarie. Bilete de la circa 10 €. Iubitorii de vin să-și noteze.",
+        "dates": "De obicei la început de februarie",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "Un weekend de vin serios la Technopolis 20. Peste 100 de vinuri alese din Cipru, Grecia, Italia și Franța; zeci de producători. Cândva doar pentru profesioniști, acum deschis pasionaților. Două zile la sfârșitul lui ianuarie. Răspunsul Paphosului la marile degustări din Limassol. Rezervă devreme; se umple.",
+        "dates": "Sfârșit de ianuarie (2 zile)",
+        "venue": "Technopolis 20, Paphos"
+      },
+      "protaras-christmas": {
+        "name": "Sărbătorile de Crăciun din Protaras",
+        "description": "Fig Tree Bay și faleza din Protaras se luminează în decembrie. Colindători, tarabe festive și evenimente de Anul Nou. Mai liniștit decât vara; palmierii și marea dau sezonului o notă mediteraneeană. Combină cu Cape Greco sau Konnos pentru o zi pe coastă.",
+        "dates": "Tot decembrie, până la început de ian.",
+        "venue": "Faleza din Protaras"
+      },
+      "epiphany-cyprus": {
+        "name": "Boboteaza (Theophania)",
+        "description": "Pe 6 ianuarie, Ciprul sărbătorește Boboteaza — botezul lui Hristos. Preoții aruncă în mare o cruce de lemn; tineri sar din bărci și de pe digul portului ca să o scoată. Cine o găsește primește binecuvântarea anului. Ceremonia are loc în porturi și pe plaje din toată insula — Larnaca, Limassol, Paphos și alte orașe de coastă. Mulțimile se adună, se cântă imnuri, iar chiar și iarna cei mai curajoși se aruncă în apă. E zi liberă, iar atmosfera e deopotrivă solemnă și de sărbătoare. Îmbracă-te gros și vino devreme pentru un loc bun.",
+        "dates": "6 ianuarie",
+        "venue": "Orașele de coastă"
+      }
+    },
+    "restaurants": {
+      "zygi-tavernas": {
+        "description": "Între Larnaca și Limassol. Fără ruine, fără dantelă. Doar pește. Tavernele se înșiră de-a lungul portului; servesc ce au adus bărcile dimineața. Aici mănâncă localnicii. Prânz de iarnă pe malul apei — caracatiță, doradă, calamar. Ritmul e lent. Cafeaua de după e obligatorie. La Zygi vin ciprioții pentru peștele de duminică. Combină cu Choirokoitia, Lefkara sau traseul Cape Greco.",
+        "winterTip": "Tavernele se înșiră de-a lungul portului. Comandă ce au adus bărcile. Duminica e ziua localnicilor. Combină cu Choirokoitia sau Lefkara.",
+        "bestTimeToVisit": "La prânz; duminica e plin de localnici",
+        "localSecret": "Între Larnaca și Limassol. Fără ruine, fără dantelă. Doar pește. Ritmul e lent. Cafeaua de după e obligatorie.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Portul Zygi, între Larnaca și Limassol. ~25 min din Larnaca.",
+        "parking": "Zona portului."
+      },
+      "governors-beach-tavernas": {
+        "description": "Faleze albe deasupra nisipului vulcanic întunecat. Tavernele stau cocoțate pe faleze; servesc pește proaspăt și meze. Într-o după-amiază blândă de decembrie poți sta afară cu o pătură. Peștele e proaspăt, vinul curge. Unul dintre cele mai bune locuri de prânz de iarnă de pe coastă. Contrastul — faleze albe, nisip întunecat — e izbitor în lumina iernii. Combină Kourion sau Kolossi dimineața, pește la prânz. Traseul Cape Greco sau Choirokoitia întregesc ziua.",
+        "winterTip": "Stai afară cu o pătură în zilele blânde de decembrie. Tavernele de pe faleze rămân deschise. Ruine dimineața, pește la prânz.",
+        "bestTimeToVisit": "La prânz; după Kourion sau Kolossi",
+        "localSecret": "Găsește un golfuleț. Sau așază-te la o tavernă. Falezele albe și nisipul întunecat. Într-o după-amiază blândă de decembrie, stai afară. Privește marea. Cincisprezece minute de la Kourion.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Governor's Beach, între Limassol și Larnaca. ~20 min din Limassol.",
+        "parking": "Parcare la faleză și la plajă."
+      },
+      "the-polo": {
+        "description": "Nr. 1 în Wiz 50 Best pentru 2025. Fine dining mediteranean la Alasia Boutique Hotel. Chef executiv Pavlos Kyriakis. Arome echilibrate, tehnică impecabilă, serviciu excepțional. Rezervă din timp; ținută elegantă. Serile de iarnă sunt intime. Un loc pentru ocazii speciale, pentru călători pretențioși.",
+        "winterTip": "Rezervă din timp. Ținută elegantă. Serile de iarnă sunt intime. Nr. 1 în Wiz 50 Best doi ani la rând.",
+        "bestTimeToVisit": "Cină; rezervă cu mult timp înainte",
+        "localSecret": "The Polo ține vârful de doi ani la rând. Arome echilibrate, tehnică impecabilă."
+      },
+      "the-farmyard": {
+        "description": "Top 5 în Wiz 50 Best. Bucătărie asiatică de confort în Kathikas, Paphos. Head chef Savvas Iakovides. Etos farm-to-table. Pe bucla Akamas — fă dimineața Adonis sau Afrodita, apoi rezervă prânzul. Satul și mâncarea îl fac o destinație în sine. Rezervă din timp; se umple. Iarna: traseul dimineața, masa aceasta ca răsplată.",
+        "winterTip": "Pe bucla Akamas. Adonis sau Afrodita dimineața, apoi rezervă prânzul. Rezervă cu 1–2 zile înainte; weekendurile se umplu.",
+        "bestTimeToVisit": "La prânz; ajungi 13–14 după traseul de dimineață",
+        "localSecret": "Satul Kathikas. Bucătărie asiatică de confort. Traseele din Akamas îți câștigă masa aceasta. Cramele Vasilikon și Sygkrasi sunt la câteva minute.",
+        "openingHours": "Prânz și cină; rezervă din timp",
+        "transport": "Satul Kathikas. Pe bucla Akamas–Laona. ~35 min din Paphos.",
+        "parking": "Parcarea satului; rezervă din timp."
+      },
+      "psilo-dendro": {
+        "description": "Taverna de lângă râu. Patronul cunoaște fiecare drumeț. Comandă păstrăvul cu migdale — psaróvrasto, fiert ușor în vin și ierburi. Șemineul, aerul de munte, susurul râului Kryos Potamos. E combinația pe care o fac localnicii după Artemis sau cascadele Caledonia. Traseul dimineața; termină până la 13. Condu până la Platres. Nu-l rata.",
+        "winterTip": "După Artemis sau cascadele Caledonia. Păstrăv cu migdale. Șemineul. Termină traseul până la 13, apoi condu până la Platres.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață (ajungi până la 13–13:30)",
+        "localSecret": "Cea de lângă râu. Păstrăv cu migdale. Patronul cunoaște fiecare drumeț. Psilo Dendro e clasicul; altele se înșiră pe Kryos Potamos.",
+        "openingHours": "De obicei 12–15:30, 19–22; iarna sună înainte",
+        "transport": "Satul Platres, lângă Kryos Potamos. ~45 min din Limassol.",
+        "parking": "Parcarea satului; până la râu pe jos."
+      },
+      "polis-harbour": {
+        "description": "După traseul Adonis sau Afrodita. Tavernele din port servesc pește cu adevărat proaspăt — ce au adus bărcile. Crama Vasilikon e pe bucla Akamas la întoarcere. Sau lasă vinul și doar mănâncă. Traseul îți câștigă masa. Polis știe să hrănească drumeții. Vedere la port, ritm relaxat. Fără blocuri, fără neoane — doar pește, vin și golful.",
+        "winterTip": "Traseul dimineața. Termină până la 13. Polis la prânz. Crama Vasilikon la întoarcere. Două zile dacă poți: drumeție, masă, somn, repetă.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Traseul îți câștigă masa. În portul Polis vin ciprioții pentru pește. Comandă ce e proaspăt. Vederea la port e inclusă.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23; unele închid lunea sau marțea",
+        "transport": "Portul Polis, poarta spre Akamas. ~45 min din Paphos.",
+        "parking": "Zona portului; se umple la prânz în weekend."
+      },
+      "cor-gastronomy": {
+        "description": "Nr. 2 în Wiz 50 Best. Casual fine dining internațional. Bucătărie de inspirație franceză cu fuziune mediteraneană, de la chef Christodoros Theofanou. Premiată. Terasă de iarnă când vremea e blândă. Rezervă din timp. Cu o treaptă sub The Polo la formalitate, dar execuție de top.",
+        "winterTip": "Premiată. Terasă de iarnă când vremea e blândă. Rezervă din timp.",
+        "bestTimeToVisit": "Cină; rezervă din timp",
+        "localSecret": "Inspirație franceză cu fuziune mediteraneană. Execuție de top. Terasă de iarnă."
+      },
+      "sentio": {
+        "description": "Top 5 în Wiz 50 Best. Bucătărie mediteraneană în Nicosia. Contemporană, creativă. Refugiul din Nicosia pentru zilele ploioase. Combină cu Muzeul Leventis sau cu o plimbare prin orașul vechi. Rezervă din timp. Opțiunea capitalei când coasta și munții nu te cheamă.",
+        "winterTip": "Zi ploioasă în Nicosia. Combină cu Muzeul Leventis. Rezervă din timp.",
+        "bestTimeToVisit": "Prânz sau cină; combină cu muzeul",
+        "localSecret": "Când coasta nu te cheamă: Nicosia are scena ei. Sentio o conduce."
+      },
+      "kakopetria-trout": {
+        "description": "Decor de râu. Psaróvrasto — păstrăv fiert ușor în vin și ierburi. Tavernele cu păstrăv din Kakopetria se înșiră pe Kryos Potamos. Dimineața cascadele Caledonia, bucla Kryos Potamos sau Kampos tou Livadiou; Kakopetria la prânz. Satul cunoaște drumeții. Șemineu, aer de munte, susurul râului. Iarna: cald înăuntru.",
+        "winterTip": "Dimineața Caledonia sau Kryos Potamos. Kakopetria la prânz. Psaróvrasto — păstrăv fiert în vin și ierburi.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Psaróvrasto. Păstrăv, vin, ierburi. Râul curge alături. Kakopetria cunoaște drumeții. Bisericile pictate UNESCO din Galata sunt la câteva minute — lasă-ți timp de hoinărit.",
+        "openingHours": "De obicei 12–15:30, 19–22; iarna sună înainte",
+        "transport": "Satul Kakopetria, valea Solea. ~55 min din Limassol.",
+        "parking": "Parcarea satului; unele taverne chiar lângă râu."
+      },
+      "santo-restaurant": {
+        "description": "Prânz la cramă cu vedere la mare. Santo stă cocoțat deasupra Limassolului; restaurantul rămâne deschis tot anul. Într-o zi blândă de iarnă poți sta afară cu o pătură. Roșul lor Ayios Onoufrios se potrivește cu meze cipriot. Cere un prânz cu vinuri asortate. Încălzitoare iarna. Apusul în decembrie, pe la cinci.",
+        "winterTip": "Rezervă prânzul pentru vederea la mare. Încălzitoare iarna. Apusul pe la 17 în decembrie.",
+        "bestTimeToVisit": "La prânz; 12–14 sau la apus",
+        "localSecret": "Roșul lor Ayios Onoufrios se potrivește cu meze cipriot. Cere un prânz cu vinuri asortate."
+      },
+      "kouklia-cafe": {
+        "description": "Ruine peste umăr. Satul Kouklia stă lângă Palaipafos, anticul sanctuar al Afroditei. Cafenelele și tavernele satului oferă bucate cipriote simple cu vedere spre istorie. Cafea, meze, un prânz lent. Iarna e liniștită; situl și satul aparțin celor care nu se grăbesc. Combină Palaipafos dimineața, Kouklia la prânz. Poteca de coastă Petra tou Romiou e aproape.",
+        "winterTip": "Liniște iarna. Palaipafos dimineața, Kouklia pentru cafea sau prânz. Bucate simple, decor antic.",
+        "bestTimeToVisit": "La prânz; după dimineața la Palaipafos",
+        "localSecret": "Ruinele peste umăr. Bucate simple, decor antic. Kouklia îi răsplătește pe cei răbdători. Mormintele Regilor și mozaicurile din Pafos sunt la un scurt drum cu mașina.",
+        "openingHours": "Cafenele și taverne; de obicei 9–18 sau la orele prânzului",
+        "transport": "Satul Kouklia, lângă Palaipafos. ~25 min din Paphos.",
+        "parking": "În sat; lângă situl antic."
+      },
+      "seasons-oriental": {
+        "description": "Top 5 în Wiz 50 Best pentru 2025. Bucătărie asiatică la hotelul Four Seasons, Limassol. Bază cantoneză, sub head chef Guan Ruijiong. Meniu de iarnă și terasă. Rezervă din timp. O treaptă de rafinament pentru seri speciale. Combină cu Kourion sau Kolossi pentru o zi pe coastă, apoi cină.",
+        "winterTip": "Rezervă din timp. Terasă de iarnă când vremea e blândă. Top 5 în Wiz 50 Best.",
+        "bestTimeToVisit": "Cină; rezervă cu mult timp înainte",
+        "localSecret": "Bază cantoneză, head chef Guan Ruijiong. Un alt gust decât Ciprul mediteranean."
+      },
+      "kiti-tavernas": {
+        "description": "După biserica Angeloktisti. Biserica bizantină Angeloktisti din Kiti atrage vizitatorii; prânzul îl fac tavernele satului. Bucate cipriote simple, meze, ritm de sat. Întâi biserica — mozaicul din secolul al VI-lea e printre cele mai vechi din estul Mediteranei —, apoi masa. Combină cu Zygi pentru pește sau Lefkara pentru dantelă. Lacul Sărat din Larnaca și Cape Greco sunt în apropiere.",
+        "winterTip": "Întâi biserica, apoi prânzul. Lasă 40 de minute pentru biserică. Combină cu Zygi sau Lefkara pentru o zi întreagă.",
+        "bestTimeToVisit": "La prânz; după dimineața la biserică",
+        "localSecret": "Mozaicurile de la Angeloktisti, apoi prânz în sat. Kiti îi răsplătește pe cei fără grabă. Mai toate autocarele îl ocolesc.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Kiti, lângă aeroportul Larnaca. ~15 min din Larnaca.",
+        "parking": "În sat; lângă biserică."
+      },
+      "platres-trout": {
+        "description": "Tavernele cu păstrăv din Platres. Comandă psaróvrasto — păstrăv fiert ușor în vin și ierburi. Șemineu, aer de munte, susurul râului Kryos Potamos. După Artemis, Caledonia sau Kampos tou Livadiou. Satul cunoaște drumeții. Psilo Dendro e clasicul; altele se înșiră pe râu. Prânz de iarnă lângă foc.",
+        "winterTip": "Păstrăv lângă foc. După Artemis, Caledonia sau Atalante. Termină traseul până la 13, Platres la prânz.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Psilo Dendro, de lângă râu, e clasicul. Psaróvrasto — păstrăv, vin, ierburi. Muntele face restul.",
+        "openingHours": "De obicei 12–15:30, 19–22; Psilo Dendro și altele",
+        "transport": "Satul Platres. ~45 min din Limassol.",
+        "parking": "Parcarea satului; până la tavernele de pe râu pe jos."
+      },
+      "latsi-harbour": {
+        "description": "Pește de port la marginea Akamasului. Latsi servește ce aduc bărcile — mai simplu decât Polis, mai aproape de startul traseului de la Băile Afroditei. Prânz de iarnă lângă apă. Combină dimineața Adonis, Afrodita sau Smigies; Latsi la prânz înainte de drumul înapoi. Șoseaua de coastă e parte din zi. Mai puțină lume decât în portul Polis.",
+        "winterTip": "Mai aproape de Băile Afroditei decât Polis. Întâi traseul, Latsi la prânz. Mai simplu, mai liniștit decât portul Polis.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Pe bucla Akamas. Pește proaspăt, vedere la port. Latsi e alternativa liniștită la Polis. Drumul de coastă răsplătește.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Portul Latsi, la nord de Polis. ~40 min din Paphos.",
+        "parking": "Zona portului."
+      },
+      "nicosia-tavernas": {
+        "description": "Laiki Geitonia și orașul vechi. Taverne ascunse pe străduțe pietruite. Meze, souvlaki, halloumi. Serile de iarnă sunt intime. Combină cu Muzeul Leventis, Muzeul Ciprului sau o explorare a capitalei pe ploaie. Orașul vechi are alt ritm. Rezervă la localurile căutate.",
+        "winterTip": "Laiki Geitonia. Intim iarna. Combină cu muzeele.",
+        "bestTimeToVisit": "Prânz sau cină; rezervă la localurile căutate",
+        "localSecret": "Ritmul orașului vechi. Meze, halloumi, tempoul capitalei."
+      },
+      "pissouri-tavernas": {
+        "description": "Taverne pe faleză deasupra golfului Pissouri. Vedere spre apus peste arcul coastei. Meze, pește, vin local. Apusuri de iarnă pe la cinci. Golful rămâne blând când munții sunt reci. Combină cu poteca de coastă Petra tou Romiou, ruinele Kourion sau cheile Avakas. Prânz sau cină în vestul Limassolului.",
+        "winterTip": "Taverne pe faleză. Iarna apusul e pe la 17. Golf blând. Dimineața Avakas sau Petra tou Romiou.",
+        "bestTimeToVisit": "Prânz târziu sau cină devreme, pentru apus",
+        "localSecret": "Arcul golfului. Locuri pe faleză. Apus cu un pahar. Pissouri e mai liniștit decât Limassol — golful răsplătește.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Golful Pissouri. ~35 min din Limassol, ~25 min din Paphos.",
+        "parking": "La golf și pe faleză."
+      },
+      "omodos-tavernas": {
+        "description": "Piața pietruită din Omodos. Taverne sub platani. Meze, kleftiko, halloumi, vin local. După o buclă a cramelor din Krasochoria — Tsiakkas, Oenou Yi, Lania, Loukas — sau traseul Artemis, Omodos e oprirea firească de prânz. Mănăstirea veghează satul. Soare de iarnă în piață. Ritmul e lent. Rezervă în weekend.",
+        "winterTip": "Piață pietruită. Soare de iarnă. După Tsiakkas, Lania sau traseul Artemis. Rezervă în weekend.",
+        "bestTimeToVisit": "La prânz; rezervă în weekend",
+        "localSecret": "Oprirea firească pe bucla Krasochoria. Meze, vin, ritmul satului. Un kafenion are ușa albastră — acolo stau vinificatorii.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22; cafenelele din piață toată ziua",
+        "transport": "Satul Omodos, Krasochoria. ~40 min din Limassol.",
+        "parking": "Piața satului; se umple în weekend."
+      },
+      "limassol-marina-restaurants": {
+        "description": "Superyachturi. Promenadă pietruită. Marina stă între orașul vechi și mare — mediteranean, pește, italian, sushi. Iarna mulțimile se răresc, iar lumina de pe apă devine aurie. Cafenelele și restaurantele rămân deschise; stai afară cu o pătură în serile blânde de decembrie. Acesta e Ciprul urban în cea mai bună formă. Nu satele — pulsul orașului, forfota marinei, plimbarea pe promenadă. Rezervă mesele de la apă; localurile căutate se umplu. Combină cu Kolossi sau Kourion dimineața, apoi vino aici la cină. Contrastul își face efectul.",
+        "winterTip": "Mai puțină lume decât vara. Seri blânde de decembrie: stai afară cu o pătură. Lumina de pe apă la asfințit. Rezervă mesele de la apă la localurile căutate.",
+        "bestTimeToVisit": "Cină; apusul de pe promenadă. Rezervă din timp mesele de la apă în weekend.",
+        "localSecret": "Capătul îndepărtat al promenadei, spre vechiul fort. Mai puțini turiști, aceleași priveliști. Comandă întâi o cafea. Dă ocol marinei. Apoi mănâncă. Nu grăbi apropierea.",
+        "openingHours": "Majoritatea localurilor 10–23; unele închid la 22. Diferă de la un restaurant la altul — verifică fiecare în parte.",
+        "transport": "Pe jos din orașul vechi (10 min). Autobuzul 30 până la marina; taxi din centru.",
+        "parking": "Parcare subterană la marina; locuri de-a lungul promenadei."
+      },
+      "protaras-tavernas": {
+        "description": "Malul din Protaras și interiorul. Taverne cu pește la mare; localuri cu meze în sat. Iarna: mai puțină lume, seri blânde. Dimineața traseul Cape Greco, Protaras la prânz. Fig Tree Bay și Konnos sunt alături. Ritmul e mai lent decât vara. Rezervă la localurile căutate.",
+        "winterTip": "Mai puțină lume decât vara. Dimineața traseul Cape Greco, Protaras la prânz. Seri blânde.",
+        "bestTimeToVisit": "La prânz; după traseul Cape Greco",
+        "localSecret": "Protarasul de iarnă e mai liniștit. Pește și meze. Ritmul scade. Traseul Cape Greco îți câștigă masa.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–23",
+        "transport": "Malul din Protaras. ~45 min din Larnaca.",
+        "parking": "Pe mal și în sat."
+      },
+      "larnaca-old-town": {
+        "description": "Faleza și orașul vechi din Larnaca. Meze, pește, souvlaki. Promenada Finikoudes și străduțele din spate. Iarna: blândă; stai afară cu o pătură. Combină cu Lacul Sărat, Kiti, Choirokoitia sau Zygi. Orașul are ritmul lui.",
+        "winterTip": "Iarnă blândă. Finikoudes și străduțele. Flamingii Lacului Sărat sunt aproape.",
+        "localSecret": "Faleza și orașul vechi. Meze, pește. Ritmul orașului."
+      },
+      "pafos-harbour": {
+        "description": "Portul și zona castelului din Pafos. Pește, meze, vedere la port. Apusuri de iarnă. Combină cu mozaicurile din Pafos, Mormintele Regilor sau Coral Bay. Castelul se aprinde la asfințit. Rezervă locurile de la apă.",
+        "winterTip": "Vedere la port. Apusuri de iarnă. Luminile castelului la asfințit.",
+        "localSecret": "Portul și castelul. Pește, meze. Asfințitul e ora potrivită."
+      },
+      "agros-tavernas": {
+        "description": "Satul Agros. Produse din trandafiri, loukoumi, meze de munte. Satul e faimos pentru trandafiri și dulciuri. Tavernele servesc bucate locale. Combină cu traseul din pădurea Machairas, barajul Xyliatos sau drumul spre Kykkos. Iarna: intim, caracter montan. Lichior de trandafiri și loukoumi înainte sau după masă.",
+        "winterTip": "Produse din trandafiri, loukoumi. Dimineața pădurea Machairas sau Xyliatos, Agros la prânz. Intim iarna.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Întâi trandafirii și dulciurile. Apoi meze de munte. Agros are ritmul lui.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Agros, Pitsilia. ~50 min din Limassol.",
+        "parking": "Parcarea satului."
+      },
+      "lefkara-tavernas": {
+        "description": "Satul dantelei. Lefkaritiko, recunoscut de UNESCO, de pe vremea venețienilor. Taverne în case de piatră, ateliere de argint, dantelărese în praguri. Meze, vin local, ritm de sat. Pano și Kato Lefkara — două sate, o singură tradiție. Lumina iernii pe caldarâm; mai puține autocare; meșteșugul e pe primul loc.",
+        "winterTip": "Iarna e ideală: blândă, liniștită, dantelărese în praguri. În martie vine Festivalul Dantelei din Lefkara — piața se umple de demonstrații, ateliere, tarabe. Rezervă prânzul dacă vii atunci. Altfel, diminețile din timpul săptămânii sunt tihnite.",
+        "bestTimeToVisit": "Prânz după cumpărăturile de dantelă; dimineți în timpul săptămânii pentru mai puțină lume. În martie, la Festivalul Dantelei.",
+        "localSecret": "Începe cu Kato Lefkara. Mai liniștit. Aceeași dantelă, adesea prețuri mai bune. Urcă la Pano când ești gata. Ambele au taverne. Piatra răsplătește hoinăreala lentă.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22; unele închid lunea sau marțea",
+        "transport": "30 min din Larnaca. Autobuzul 429 spre Lefkara.",
+        "parking": "Gratuită la intrarea în sat; se umple în weekend și în timpul Festivalului Dantelei.",
+        "backstory": "Dantela lefkaritiko se lucrează pe aceste dealuri de când Ciprul era sub venețieni. UNESCO a înscris-o în 2009 ca Patrimoniu Cultural Imaterial. Legenda spune că Leonardo da Vinci ar fi cumpărat de aici o față de altar pentru Domul din Milano. Adevărat sau nu, meșteșugul e străvechi: bunicile învață nepoatele aceleași modele geometrice, împunsătură cu împunsătură. Satul stă la 700 m, case de piatră urcă panta, priveliștea se deschide peste vale. Pano Lefkara e satul principal; Kato Lefkara, mai jos, împarte tradiția, dar rămâne mai tăcut. Tavernele se potrivesc ritmului — meze, vin local, ziduri de piatră, fără grabă. Dantelă dimineața, prânz la amiază. Așa funcționează Lefkara.",
+        "culturalNote": "Ti kánis? (Τι κάνεις) — ce mai faci? E salutul obișnuit înainte să te uiți la marfă. Nu te sfii să întrebi cum se face dantela; meșteșugarele sunt mândre și explică adesea cu drag. Kalí órexi înainte de masă — poftă bună."
+      },
+      "kathikas-tavernas": {
+        "description": "Satul Kathikas pe bucla Akamas. Taverne tradiționale; meze, vin local. The Farmyard e vedeta — rezervă din timp; altele oferă bucate mai simple. Combină dimineața Adonis, Afrodita sau Smigies; Kathikas la prânz. Cramele Vasilikon și Sygkrasi sunt la câteva minute. Iarna: traseul dimineața, apoi prânz în sat.",
+        "winterTip": "Bucla Akamas. Traseul dimineața, prânz la Kathikas. The Farmyard se umple; rezervă cu 1–2 zile înainte.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Kathikas stă pe buclă. Meze, vin. The Farmyard sau locuri mai simple. Cramele Vasilikon și Sterna în apropiere.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Kathikas. Pe bucla Akamas–Laona. ~35 min din Paphos.",
+        "parking": "Parcarea satului."
+      },
+      "limassol-old-town": {
+        "description": "Orașul vechi din Limassol și piața Saripolou. Taverne, meze, souvlaki. Zona castelului. Iarna: blândă; orașul vechi are alt puls. Combină cu Kolossi, Kourion sau marina. Ciprul urban.",
+        "winterTip": "Pulsul orașului vechi. Seri blânde de iarnă. Kolossi și Kourion în apropiere.",
+        "localSecret": "Saripolou, castelul, meze. Ciprul urban. Ritmul orașului vechi."
+      },
+      "kyrenia-tavernas": {
+        "description": "Portul Kyrenia. Taverne cu pește și vedere la castel. Portul e inima. Iarna: mai blând decât munții; plimbare prin port, pește la prânz. Notă: acces dinspre sudul Ciprului; verifică rutele curente. Combină cu Bellapais, St Hilarion.",
+        "winterTip": "Port și castel. Blând iarna. Verifică accesul.",
+        "localSecret": "Inima e portul. Pește, priveliști. Bellapais și St Hilarion în apropiere."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Ayia Napa dincolo de cluburi. Taverne în piața satului, localuri cu pește în port. Iarna: stațiunea se liniștește; iese la iveală masa cipriotă autentică. Combină cu Peșterile Marine, Cape Greco, plaja Nissi. Extrasezonul arată o altă față.",
+        "winterTip": "Ayia Napa în extrasezon. Piața satului, portul. O altă față.",
+        "localSecret": "Dincolo de cluburi. Piața, peștele. Iarna scoate la iveală autenticul."
+      },
+      "troodos-square": {
+        "description": "Piața Troodos și zona centrului de vizitare. Cafenele, prânzuri simple, ciocolată caldă. După Artemis, Atalante sau Persefona. Iarna: căldura de după drumeție e esențială. Posibil zăpadă; piața e nodul central. Nimic pretențios — cafea, sandvișuri, căldură. Munții fac treaba; piața Troodos te pune pe picioare.",
+        "winterTip": "Căldură după drumeție. Ciocolată caldă, cafea. Posibil zăpadă — intim înăuntru. Esențial după Artemis sau Atalante.",
+        "bestTimeToVisit": "Prânz sau pauză de cafea; după traseul de dimineață",
+        "localSecret": "Nodul Troodos. După Artemis sau Atalante. Încălzește-te aici. Pârtia de pe Olimp e aproape când ninge.",
+        "openingHours": "Centrul de vizitare și cafenelele; de obicei 9–17 sau 18",
+        "transport": "Piața Troodos, 1.750 m. ~1 oră din Limassol.",
+        "parking": "Piața și centrul de vizitare; se umple în weekend."
+      },
+      "solea-valley": {
+        "description": "Satele văii Solea — Kakopetria, Galata, Kalopanagiotis. Păstrăv, meze, bucate de munte. Decoruri de râu, șeminee. Combină cu traseul Mylikouri, Kampos tou Livadiou, Kryos Potamos sau Agios Nikolaos tis Stegis. Iarna: valea e intimă. Psaróvrasto (păstrăvul) e clasicul.",
+        "winterTip": "Valea Solea. Păstrăv, șeminee. Dimineața Mylikouri sau Kampos, Kakopetria sau Galata la prânz.",
+        "bestTimeToVisit": "La prânz; după traseul de dimineață",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. Râu și munte. Intim iarna. Valea răsplătește drumurile lente.",
+        "openingHours": "Tavernele satelor de obicei 12–15:30, 19–22",
+        "transport": "Valea Solea. Kakopetria ~55 min din Limassol.",
+        "parking": "Parcările satelor."
+      },
+      "zygi-mikri": {
+        "description": "Marina mai mică din Zygi și localurile de pe străduțele din spate. Mai puțin turistic decât portul principal. Pește proaspăt, meze. Prânzul de duminică iarna — ritualul localnicilor. Combină cu Choirokoitia, Lefkara sau Governor's Beach. Ritmul e lent.",
+        "winterTip": "Zygi al străduțelor. Duminica localnicilor. Mai puțin turistic.",
+        "localSecret": "Marina mikri. Zygi al localnicilor. Ritm lent, pește proaspăt."
+      },
+      "kourion-tavernas": {
+        "description": "Satul Episkopi, lângă Kourion. Taverne cu vedere spre situl antic. Meze, vin local. Dimineața ruinele Kourion; Episkopi la prânz. Combină cu Kolossi, Governor's Beach sau crama Zambartas. Iarna: blândă; ruinele strălucesc în lumina după-amiezii. Teatrul privește marea.",
+        "winterTip": "Dimineața Kourion. Episkopi la prânz. Ruinele în lumina după-amiezii. Kolossi și Governor's Beach în apropiere.",
+        "bestTimeToVisit": "La prânz; după dimineața la Kourion",
+        "localSecret": "Kourion văzut de la masă. Satul Episkopi. Ruine și meze. La marginea îndepărtată a teatrului e o bancă — la 16, în decembrie, lumina cade pe ruine.",
+        "openingHours": "Tavernele de obicei 12–15:30, 19–22",
+        "transport": "Satul Episkopi, lângă Kourion. ~25 min din Limassol.",
+        "parking": "În sat și lângă Kourion."
       }
     }
   }

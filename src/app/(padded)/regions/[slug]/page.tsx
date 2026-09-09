@@ -11,6 +11,7 @@ import {
 import { wineries } from "@/data/wineries";
 import { trails } from "@/data/trails";
 import { winterEvents } from "@/data/events";
+import { localizeEvents } from "@/lib/event-content";
 import { REGION_CONFIGS, filterByRegion, wineryMatchesRegion, type RegionSlug } from "@/data/regions";
 import { HOME, LAYOUT, CARD, TYPE, SECTION, MEDIA } from "@/lib/design-tokens";
 import HubFooter from "@/components/HubFooter";
@@ -136,8 +137,8 @@ export default async function RegionPage({ params }: Props) {
   const regionEvents =
     eventRegion === null
       ? []
-      : winterEvents.filter(
-          (e) => e.region === eventRegion || e.region === "All"
+      : await localizeEvents(
+          winterEvents.filter((e) => e.region === eventRegion || e.region === "All")
         );
 
   return (

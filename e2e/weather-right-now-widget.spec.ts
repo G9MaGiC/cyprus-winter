@@ -1,5 +1,12 @@
 import { test, expect, type Page } from "@playwright/test";
 
+// The widget can render a CSS-hidden responsive twin, so a bare testid
+// locator trips strict mode (b73 flake) — same cure as the month-detail
+// sibling spec: only the visible instance counts.
+function visibleTestId(page: Page, testId: string) {
+  return page.locator(`[data-testid="${testId}"]:visible`);
+}
+
 async function gotoStable(page: Page, url: string) {
   let lastError: unknown;
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -34,8 +41,8 @@ test.describe("Weather -> Right now widget", () => {
     await expect(page.getByRole("main")).toBeVisible();
 
     // RightNowNearYou uses LocationActionButtons with these test ids.
-    await expect(page.getByTestId("right-now-primary")).toBeVisible();
-    await expect(page.getByTestId("right-now-pick-region")).toBeVisible();
+    await expect(visibleTestId(page, "right-now-primary")).toBeVisible();
+    await expect(visibleTestId(page, "right-now-pick-region")).toBeVisible();
   });
 });
 

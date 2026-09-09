@@ -22,11 +22,17 @@ test.describe("Plan offline read-only", () => {
     await expect(page.getByRole("main")).toBeVisible();
 
     // Sticky add bar appears once the add sentinel scrolls out of view (not at page bottom — footer hides it).
-    await page.locator("#plan-add-sentinel").waitFor({ state: "attached" });
-    await page.evaluate(() => {
-      const sentinel = document.getElementById("plan-add-sentinel");
-      if (!sentinel) return;
-      window.scrollTo(0, sentinel.offsetTop + 120);
+    // Scoped to the itinerary region: during streaming promotion the raw id
+    // transiently resolves to two nodes (BUG-353 class) and a bare locator
+    // aborts on strict mode; only the live copy is in the a11y tree.
+    const sentinel = page
+      .getByRole("region", { name: "Your plan" })
+      .locator("#plan-add-sentinel");
+    await sentinel.waitFor({ state: "attached" });
+    // Scroll via the same region-scoped handle — a raw getElementById here
+    // could still read offsetTop off a staged duplicate (BUG-353 class).
+    await sentinel.evaluate((el) => {
+      window.scrollTo(0, (el as HTMLElement).offsetTop + 120);
     });
     await expect(page.getByRole("complementary", { name: /add place/i })).toBeVisible({
       timeout: 10000,
@@ -34,7 +40,11 @@ test.describe("Plan offline read-only", () => {
 
     await page.context().setOffline(true);
 
-    await expect(page.getByRole("status").filter({ hasText: /offline|read-only/i })).toBeVisible();
+    // The banner hinges on one Chromium "offline" event — useOnlineStatus has
+    // no poll or retry — so give it the same 10s the add-bar assert gets.
+    await expect(
+      page.getByRole("status").filter({ hasText: /offline|read-only/i })
+    ).toBeVisible({ timeout: 10000 });
     await expect(page.getByRole("complementary", { name: /add place/i })).toHaveCount(0);
   });
 });

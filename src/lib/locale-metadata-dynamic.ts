@@ -7,6 +7,9 @@ import { guides } from "@/data/guides";
 import { REGION_CONFIGS } from "@/data/regions";
 import { WINE_ROUTES } from "@/data/wine-routes";
 import { weatherByMonth } from "@/data/weather";
+import { localizeWeatherRow } from "@/lib/weather-content";
+import { localizeWineRoute } from "@/lib/wine-route-content";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import { getAttractionImage } from "@/lib/cyprus-images";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { applyLocaleToMetadata } from "@/lib/locale-seo";
@@ -47,8 +50,12 @@ function trailDifficultyLabel(
 }
 
 export async function discoverDetailMetadata(id: string, locale: string): Promise<Metadata> {
-  const a = getDiscoverPlaceById(id);
-  if (!a) notFound();
+  const found = getDiscoverPlaceById(id);
+  if (!found) notFound();
+  // Overlay before building the snippet — covered places (wineries,
+  // attractions, restaurants) otherwise splice their EN description into a
+  // localized SERP frame.
+  const a = await localizeDiscoverContent(found, locale);
   const tDiscoverDetail = await getTranslations({ locale, namespace: "discover.detail" });
   const typeLabel = discoverTypeLabel(a.type, tDiscoverDetail);
   const prefix = `${a.region}. ${typeLabel}. `;
@@ -171,8 +178,11 @@ export async function regionSlugMetadata(slug: string, locale: string): Promise<
 }
 
 export async function wineRouteSlugMetadata(slug: string, locale: string): Promise<Metadata> {
-  const route = WINE_ROUTES.find((r) => r.slug === slug);
-  if (!route) notFound();
+  const baseRoute = WINE_ROUTES.find((r) => r.slug === slug);
+  if (!baseRoute) notFound();
+  // Localize the title before it splices into the localized ICU frames —
+  // route names are Greek place-words that take native forms on el/he.
+  const route = await localizeWineRoute(baseRoute, locale);
   // Combined labels ("Laona–Akamas") count on both routes (AUD-71); localized
   // via the same keys the page uses instead of hardcoded EN.
   const count = wineriesForRoute(slug).length;
@@ -190,13 +200,19 @@ export async function weatherMonthMetadata(month: string, locale: string): Promi
   if (!MONTH_SLUGS.includes(slug)) notFound();
 
   const monthName = SLUG_TO_WEATHER[slug];
-  const row = weatherByMonth.find((r) => r.month === monthName);
-  if (!row) notFound();
+  const baseRow = weatherByMonth.find((r) => r.month === monthName);
+  if (!baseRow) notFound();
+  // Localize the spliced coastDesc so the SERP snippet is single-language.
+  const row = await localizeWeatherRow(baseRow, locale);
 
   const tWeatherMonth = await getTranslations({ locale, namespace: "weather.month" });
   const monthLabel = tWeatherMonth(`monthNames.${slug}` as "monthNames.december");
-  const coastRange = `${row.coastMinC}–${row.coastMaxC}°C`;
-  const troodosRange = `${row.troodosMinC}–${row.troodosMaxC}°C`;
+  // In the RTL description the en dash between digit runs takes the
+  // paragraph direction and reverses the range — isolate it (LRI…PDI),
+  // matching the he catalog's own literal ranges.
+  const isolateRtl = (s: string) => (locale === "he" ? `⁦${s}⁩` : s);
+  const coastRange = isolateRtl(`${row.coastMinC}–${row.coastMaxC}°C`);
+  const troodosRange = isolateRtl(`${row.troodosMinC}–${row.troodosMaxC}°C`);
   const ogImage = `${SITE_URL}/images/cyprus/cyprus-ancient-kourion.jpg`;
 
   const path = `/weather/${slug}`;

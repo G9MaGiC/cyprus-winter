@@ -25,6 +25,12 @@ export type BookingFormConfig = {
   extraFields?: Record<string, string | undefined>;
   analyticsExtra?: Record<string, string | number | undefined>;
   validationLabels?: BookingValidationLabels;
+  /** Fields this form renders an inline error node for — the only fields a
+      server-named VALIDATION_ERROR may mark and focus. Request-only fields
+      (notes, trailId) must stay off this list: focusing an input that shows
+      no error would strand the guest on an unmarked field with the banner
+      off-screen. */
+  errorFields?: readonly string[];
 };
 
 export type BookingFormState = {
@@ -45,6 +51,11 @@ export type BookingFormState = {
   validateFieldOnBlur: (name: string, value: string) => void;
 };
 
+/** An error whose message is already localized copy safe to render — raw
+    runtime messages (fetch failures, JSON parse errors) are EN-only and must
+    never reach the banner. */
+class LocalizedMessageError extends Error {}
+
 type ErrorStrings = {
   failed: string;
   fallback: string;
@@ -61,7 +72,7 @@ export function useBookingForm(
   config: BookingFormConfig,
   tErrors: ErrorStrings
 ): BookingFormState {
-  const { type, providerId, schema, extraFields, validationLabels } = config;
+  const { type, providerId, schema, extraFields, validationLabels, errorFields } = config;
 
   const locale = useLocale();
   const [loading, setLoading] = useState(false);
@@ -75,6 +86,11 @@ export function useBookingForm(
   const [retryAfterSeconds, setRetryAfterSeconds] = useState(0);
   const idempotencyKeyRef = useRef<string | null>(null);
   const queuedOfflineRef = useRef(false);
+  // A field the server rejected, with the exact value it rejected: the client
+  // schema is looser than the server's, so a blur with the value unchanged
+  // must not clear the server's marker (it would pass client Zod and wipe the
+  // only visible signal without the guest fixing anything).
+  const serverFlaggedRef = useRef<{ field: string; value: string } | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
 
@@ -159,6 +175,7 @@ export function useBookingForm(
     e.preventDefault();
     setError(null);
     setFieldErrors({});
+    serverFlaggedRef.current = null;
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -225,14 +242,7 @@ export function useBookingForm(
     // input this form actually renders — lets the catch path mark and focus
     // the field itself instead of only the banner (AUD-80 residual).
     let serverInvalidField: string | null = null;
-    const knownFields = new Set([
-      "date",
-      "partySize",
-      "guestName",
-      "guestEmail",
-      "notes",
-      ...(extraFields ? Object.keys(extraFields) : []),
-    ]);
+    const knownFields = new Set(errorFields ?? []);
 
     try {
       const res = await fetch("/api/bookings", {
@@ -264,7 +274,7 @@ export function useBookingForm(
         // Never surface the server's message text: it is English-only, so any
         // unmapped code must fall back to the localized generic instead.
         const msg = (code ? tErrors.apiByCode?.[code] : undefined) ?? tErrors.failed;
-        throw new Error(msg);
+        throw new LocalizedMessageError(msg);
       }
 
       // The honeypot path answers 200 with stored:false and no booking —
@@ -272,7 +282,7 @@ export function useBookingForm(
       // field) their request was saved when nothing was stored anywhere.
       if (data.stored === false) {
         idempotencyKeyRef.current = null;
-        throw new Error(tErrors.failed);
+        throw new LocalizedMessageError(tErrors.failed);
       }
 
       setDone(true);
@@ -287,16 +297,27 @@ export function useBookingForm(
       }
       idempotencyKeyRef.current = null;
     } catch (err) {
-      const msg = err instanceof Error ? err.message : "";
-      const isNetworkError = /failed to fetch|network error/i.test(msg);
-      if (isNetworkError && typeof navigator !== "undefined") {
+      // Every browser rejects a failed fetch with a TypeError, but the message
+      // differs (WebKit says "Load failed", which a message regex missed —
+      // Safari bookings were never queued). Detect network failures by type
+      // and by the browser's own connectivity signal, never by message text.
+      const isLocalized = err instanceof LocalizedMessageError;
+      const isNetworkError =
+        !isLocalized &&
+        (err instanceof TypeError ||
+          (typeof navigator !== "undefined" && !navigator.onLine));
+      if (isNetworkError) {
         addMutation({ type: mutationType, url: "/api/bookings", method: "POST", body });
         queuedOfflineRef.current = true;
         setError(tErrors.offlineQueued);
       } else {
         idempotencyKeyRef.current = null;
-        setError(msg || tErrors.fallback);
+        setError(isLocalized && err.message ? err.message : tErrors.fallback);
         if (serverInvalidField) {
+          serverFlaggedRef.current = {
+            field: serverInvalidField,
+            value: String(formData.get(serverInvalidField) ?? ""),
+          };
           setFieldErrors({ [serverInvalidField]: tErrors.serverField ?? tErrors.failed });
         }
       }
@@ -324,6 +345,13 @@ export function useBookingForm(
 
   const validateFieldOnBlur = useCallback(
     (name: string, value: string) => {
+      const flagged = serverFlaggedRef.current;
+      if (flagged && flagged.field === name) {
+        // The server rejected this exact value, so re-passing the looser
+        // client schema proves nothing — keep the marker until it changes.
+        if (value === flagged.value) return;
+        serverFlaggedRef.current = null;
+      }
       const partial: Record<string, string> = { [name]: value };
       const result = schema.safeParse({
         date: "2099-01-01",

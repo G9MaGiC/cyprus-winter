@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { airports } from "@/data/airport";
+import { localizeAirports } from "@/lib/airport-content";
 import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { winterTipsPractical } from "@/data/winter-tips";
@@ -35,9 +36,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const CITY_GREEK: Record<string, string> = {
-  Larnaca: "Λάρνακα",
-  Paphos: "Πάφος",
+// Keyed by airport code (the display city is localized per request): the
+// Greek name is a helpful locals'-name touch on Latin/Hebrew locales, and
+// suppressed where it would duplicate the displayed city (/el).
+const CITY_GREEK_BY_CODE: Record<string, string> = {
+  LCA: "Λάρνακα",
+  PFO: "Πάφος",
 };
 
 export default async function AirportPage() {
@@ -45,6 +49,10 @@ export default async function AirportPage() {
     getTranslations("nav"),
     getTranslations("airport.page"),
   ]);
+  // Data-layer overlay: transport prose, tips and the display city render
+  // natively; code and name stay the EN base (proper names), figures carry
+  // over verbatim from src/data/airport.ts.
+  const localizedAirports = await localizeAirports(airports);
   const FIRST_HOUR_STEPS = [
     { step: "1", label: tAirport("firstHour.steps.arrivals") },
     { step: "2", label: tAirport("firstHour.steps.baggage") },
@@ -152,7 +160,7 @@ export default async function AirportPage() {
             {tAirport("picker.title")}
           </h2>
           <nav aria-label={tAirport("picker.aria")} className="flex gap-3">
-            {airports.map((airport) => (
+            {localizedAirports.map((airport) => (
               <a
                 key={airport.code}
                 href={`#airport-${airport.code}`}
@@ -167,7 +175,7 @@ export default async function AirportPage() {
 
         {/* Airport sections */}
         <div className="space-y-10">
-          {airports.map((airport) => (
+          {localizedAirports.map((airport) => (
             <section
               key={airport.code}
               id={`airport-${airport.code}`}
@@ -183,9 +191,10 @@ export default async function AirportPage() {
                 </h2>
                 <p className="text-white text-sm break-words mt-1">
                   {airport.city}
-                  {CITY_GREEK[airport.city] && (
-                    <span className="ms-1.5 text-white">({CITY_GREEK[airport.city]})</span>
-                  )}
+                  {CITY_GREEK_BY_CODE[airport.code] &&
+                    CITY_GREEK_BY_CODE[airport.code] !== airport.city && (
+                      <span className="ms-1.5 text-white">({CITY_GREEK_BY_CODE[airport.code]})</span>
+                    )}
                 </p>
               </div>
 

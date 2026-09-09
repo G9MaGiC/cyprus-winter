@@ -20,23 +20,18 @@ export default function NavigateButton({
   place,
   className = "",
   label,
-  variant = "default",
 }: {
   place: PlanItem;
   className?: string;
   label?: string;
-  variant?: "default" | "light";
 }) {
   const tCommon = useTranslations("common");
   const url = buildMapsUrl(place);
   if (!url) return null;
 
-  const resolvedLabel = label ?? tCommon("nextOnPlan.navigate");
+  const resolvedLabel = label ?? tCommon("navigate");
 
-  const base =
-    variant === "light"
-      ? "text-white border-white/50 hover:bg-white/20 focus-visible:ring-white/50"
-      : "text-aegean border-aegean/30 hover:bg-aegean/10 focus-visible:ring-aegean/50";
+  const base = "text-aegean border-aegean/30 hover:bg-aegean/10 focus-visible:ring-aegean/50";
 
   return (
     <a

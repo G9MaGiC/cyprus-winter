@@ -12,6 +12,9 @@ export type Restaurant = {
   winterOpen?: boolean;
   /** e.g. "12–15:30, 19–23" */
   openingHours?: string;
+  /** Decided on the EN base by the content overlay before translation, so
+      the badge survives translation (mirrors Winery.hoursCallAhead). */
+  hoursCallAhead?: boolean;
   /** International format */
   contactPhone?: string;
   /** Reserve online */
@@ -283,13 +286,13 @@ export const restaurants: Restaurant[] = [
     name: "Seasons Oriental",
     region: "Limassol",
     description:
-      "Wiz 50 Best #2 for 2025. Ethnic Asian cuisine at Four Seasons Hotel, Limassol. Cantonese-based cuisine under Head Chef Guan Ruijiong. Winter menu and terrace. Reserve ahead. A notch of sophistication for special evenings. Combine with Kourion or Kolossi for a coastal day, then dinner.",
+      "Wiz 50 Best top 5 for 2025. Ethnic Asian cuisine at Four Seasons Hotel, Limassol. Cantonese-based cuisine under Head Chef Guan Ruijiong. Winter menu and terrace. Reserve ahead. A notch of sophistication for special evenings. Combine with Kourion or Kolossi for a coastal day, then dinner.",
     type: "restaurant",
     cuisine: "Asian fusion",
-    highlights: ["Wiz #2", "Cantonese", "Four Seasons"],
+    highlights: ["Wiz top 5", "Cantonese", "Four Seasons"],
     bestFor: ["Special occasions", "Asian cuisine", "Fine dining"],
     winterOpen: true,
-    winterTip: "Reserve ahead. Winter terrace when mild. Wiz 50 Best top 3.",
+    winterTip: "Reserve ahead. Winter terrace when mild. Wiz 50 Best top 5.",
     bestTimeToVisit: "Dinner; book well ahead",
     localSecret: "Cantonese-based, head chef Guan Ruijiong. A different flavour to Mediterranean Cyprus.",
     combineWith: ["kourion", "kolossi", "governors-beach"],
@@ -560,7 +563,7 @@ export const restaurants: Restaurant[] = [
   {
     id: "lefkara-tavernas",
     name: "Lefkara Village Tavernas",
-    nameEl: "Λεύκαρα",
+    nameEl: "Ταβέρνες Λευκάρων",
     region: "Larnaca",
     description:
       "The lace village. UNESCO-recognised Lefkaritiko since the Venetians. Tavernas in stone buildings, silver workshops, lacemakers in doorways. Meze, local wine, village pace. Pano and Kato Lefkara—two villages, one tradition. Winter light on the cobbles; fewer tour buses; the craft comes first.",

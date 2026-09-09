@@ -16,13 +16,27 @@ type RecentlyViewedItem = {
 const STORAGE_KEY = "cyprus-recently-viewed";
 const MAX_ITEMS = 10;
 
+function isValidItem(v: unknown): v is RecentlyViewedItem {
+  if (typeof v !== "object" || v === null) return false;
+  const item = v as Record<string, unknown>;
+  return (
+    typeof item.id === "string" &&
+    typeof item.name === "string" &&
+    typeof item.type === "string" &&
+    typeof item.region === "string"
+  );
+}
+
 export function getRecentlyViewed(): RecentlyViewedItem[] {
   if (typeof window === "undefined") return [];
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return [];
-    const parsed = JSON.parse(stored) as RecentlyViewedItem[];
-    return Array.isArray(parsed) ? parsed : [];
+    const parsed: unknown = JSON.parse(stored);
+    if (!Array.isArray(parsed)) return [];
+    // The write path caps and shapes entries, but storage is user-editable —
+    // validate and cap on read too, like the chat loader does (b74).
+    return parsed.filter(isValidItem).slice(0, MAX_ITEMS);
   } catch {
     return [];
   }

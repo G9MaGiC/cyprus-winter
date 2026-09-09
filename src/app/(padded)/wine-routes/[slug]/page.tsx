@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AppLink from "@/components/AppLink";
 import { notFound } from "next/navigation";
 import { WINE_ROUTES } from "@/data/wine-routes";
+import { localizeWineRoute } from "@/lib/wine-route-content";
 import { wineriesForRoute } from "@/lib/wine-route-stops";
 import { localizeWineryContent } from "@/lib/winery-content";
 import { applyPartnerOpeningHours } from "@/lib/partner-overlay";
@@ -27,9 +28,12 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const route = WINE_ROUTES.find((r) => r.slug === slug);
+  const baseRoute = WINE_ROUTES.find((r) => r.slug === slug);
   const t = await getTranslations("wineRoutes.page");
-  if (!route) notFound();
+  if (!baseRoute) notFound();
+  // The title splices into localized ICU frames — overlay first so the
+  // meta/OG strings come out single-language (data-layer arc).
+  const route = await localizeWineRoute(baseRoute);
 
   const count = wineriesForRoute(slug).length;
   const alternates = buildStrategyAAlternates(`/wine-routes/${slug}`);
@@ -56,8 +60,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function WineRoutePage({ params }: Props) {
   const { slug } = await params;
-  const route = WINE_ROUTES.find((r) => r.slug === slug);
-  if (!route) notFound();
+  const baseRoute = WINE_ROUTES.find((r) => r.slug === slug);
+  if (!baseRoute) notFound();
+  const route = await localizeWineRoute(baseRoute);
   const [tNav, tCommon, tPage, tDiscover] = await Promise.all([
     getTranslations("nav"),
     getTranslations("common"),

@@ -34,7 +34,9 @@ const typePaths: Record<string, string> = {
 };
 
 function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string {
-  const base = typePaths[item.type] || "/discover";
+  // item.type comes from localStorage — own-property check keeps a crafted
+  // value ("__proto__", "constructor") off the prototype chain.
+  const base = Object.hasOwn(typePaths, item.type) ? typePaths[item.type] : "/discover";
   return `${base}/${item.id}`;
 }
 
@@ -96,21 +98,4 @@ export function RecentlyViewedStrip() {
       </div>
     </section>
   );
-}
-
-// Hook to track viewed items
-export function useTrackView(item: { id: string; name: string; type: string; region: string } | null) {
-  useEffect(() => {
-    if (!item) return;
-    
-    // Debounce to avoid tracking rapid navigation
-    const timer = setTimeout(() => {
-      import("@/lib/recently-viewed").then(({ addToRecentlyViewed }) => {
-        addToRecentlyViewed(item);
-      });
-    }, 1000);
-    
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item?.id]);
 }

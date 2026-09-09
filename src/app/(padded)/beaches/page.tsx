@@ -5,6 +5,7 @@ import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { beaches } from "@/data/attractions";
 import { HOME, LAYOUT, CTA } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import PageHeader from "@/components/PageHeader";
 import HubFooter from "@/components/HubFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -40,6 +41,9 @@ export default async function BeachesPage() {
     getTranslations("beaches.page"),
   ]);
   const tDiscover = await getTranslations("discover");
+  // AUD-10 overlay for the card grid (id-gated no-op off coverage); the
+  // JSON-LD below keeps reading the EN base per the register contract.
+  const localizedBeaches = await Promise.all(beaches.map((b) => localizeDiscoverContent(b)));
   const beachesItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -83,7 +87,7 @@ export default async function BeachesPage() {
           {tBeaches("srHeading")}
         </h2>
         <ul role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-          {beaches.map((beach) => (
+          {localizedBeaches.map((beach) => (
             <li key={beach.id}><AttractionCard a={beach} /></li>
           ))}
         </ul>

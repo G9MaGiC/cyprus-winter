@@ -12,7 +12,7 @@
 
 | Area | Path |
 |------|------|
-| Pages | `src/app/(padded)/`, `src/app/_home/` |
+| Pages | `src/app/(padded)/` (implementation), `src/app/[locale]/` (mandatory re-export wrappers), `src/app/_home/` |
 | Data | `src/data/` |
 | i18n | `messages/{en,el,de,pl,ro,fr,he}.json`, `src/i18n/routing.ts` (7 locales; `he` RTL) |
 | API | `src/app/api/` |
@@ -22,7 +22,7 @@
 
 ## Standards
 
-- **i18n**: No hardcoded user-facing strings in components; `getTranslations` (server) or `useTranslations` (client). Run `npm run i18n:scan --fail` in CI.
+- **i18n**: No hardcoded user-facing strings in components; `getTranslations` (server) or `useTranslations` (client). Run `npm run i18n:scan -- --fail` in CI (the `--` is required — without it npm swallows the flag and the scan cannot fail).
 - **RSC**: Do not pass `Link` or `t` across server/client boundaries; use `*-data.ts` loaders + `*View.tsx` client leaves for home sections.
 - **Hub footers**: Use `HubFooter` via page-specific `*Footer.tsx` clients — see `docs/UX_PATTERNS.md`.
 - **Rate limits**: Production requires `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` (see `src/lib/rate-limit.ts`).
@@ -34,8 +34,9 @@ npm run lint
 npm run typecheck
 npm run test
 npm run i18n:validate
-npm run i18n:scan --fail
+npm run i18n:scan -- --fail
 npm run i18n:editorial-drift
+npm run i18n:coverage -- --strict
 npm run data:validate
 npm run check:conflict-markers
 npm run build

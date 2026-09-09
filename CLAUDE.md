@@ -25,11 +25,11 @@ npm run lint
 npm run typecheck
 npm run test
 npm run i18n:validate
-npm run i18n:scan --fail
+npm run i18n:scan -- --fail
 npm run i18n:editorial-drift
 npm run data:validate
+npm run check:conflict-markers
+npm run i18n:coverage -- --strict
 npm run build
 npm run test:e2e:gate:ci
 ```
-
-Rebased from PR #11. The original March 2026 UX sprint in that PR is already superseded by later `main` work; do not re-apply it.

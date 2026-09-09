@@ -28,6 +28,7 @@ import {
 import { TripModeChipsSkeleton } from "@/app/_home/TripModeChipsSkeleton";
 import TripReminderBanner from "@/components/TripReminderBanner";
 import HomeSectionReveal from "@/app/_home/HomeSectionReveal";
+import { RecentlyViewedStrip } from "@/components/RecentlyViewed";
 
 type HomePageContentProps = {
   sharePath?: string;
@@ -73,6 +74,10 @@ export default async function HomePageContent({
       </HomeSectionReveal>
       <HomePlaceOfDay />
       <TripPlanSummaryChip />
+      {/* Storage-gated: renders only for visitors with tracked views
+          (TrackView on /discover/[id]) — completes the recently-viewed
+          loop the settings clear button already exposes (batch 66). */}
+      <RecentlyViewedStrip />
 
       <HomeSection
         id="this-week-heading"

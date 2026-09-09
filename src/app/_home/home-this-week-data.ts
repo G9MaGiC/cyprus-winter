@@ -1,6 +1,7 @@
 import "server-only";
 
 import { winterEvents } from "@/data/events";
+import { localizeEvents } from "@/lib/event-content";
 import { trails } from "@/data/trails";
 import { getTrailImage } from "@/lib/cyprus-images";
 import { pickDailyWithKey } from "@/lib/daily-rotator";
@@ -90,7 +91,13 @@ export async function getHomeThisWeekGridProps(locale?: string): Promise<HomeThi
     : Math.round((w.troodosMinC + w.troodosMaxC) / 2);
 
   const weatherTip = t(`weatherStrip.prompts.${getWeatherPromptKey(w)}`);
-  const eventHighlight = getEventHighlight();
+  // The daily pick localizes through the event overlay (id-gated no-op off
+  // coverage); getLocalizedName below still supplies nameEl for uncovered
+  // ids on /el, and matches the overlay for covered ones (guard-tested).
+  const pickedEvent = getEventHighlight();
+  const eventHighlight = pickedEvent
+    ? (await localizeEvents([pickedEvent], resolvedLocale))[0]
+    : null;
   const trailIdsWithData = trailSummary
     ? FEATURED_TRAIL_IDS.filter((id) => trailSummary[id])
     : ["artemis"];

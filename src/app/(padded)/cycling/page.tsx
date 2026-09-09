@@ -4,8 +4,11 @@ import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import { getCyclingHubContent } from "@/lib/cycling-hub";
 import CyclingOfficialRoutes from "@/components/cycling/CyclingOfficialRoutes";
+import { cyclingRoutes } from "@/data/cycling-routes";
+import { localizeCyclingRoutes } from "@/lib/cycling-route-content";
 import { HOME, LAYOUT, CTA, TYPE, SECTION } from "@/lib/design-tokens";
 import AttractionCard from "@/components/AttractionCard";
+import { localizeDiscoverContent } from "@/lib/discover-content";
 import PageHeader from "@/components/PageHeader";
 import CyclingFooter from "@/app/(padded)/cycling/CyclingFooter";
 import StickyPlanBarBlock from "@/components/StickyPlanBarBlock";
@@ -41,6 +44,12 @@ export default async function CyclingPage() {
     getTranslations("cycling.page"),
   ]);
   const { places, trailLinks } = getCyclingHubContent();
+  // AUD-10 overlay for the card grid (id-gated no-op off coverage); the
+  // JSON-LD below keeps reading the EN base per the register contract.
+  const localizedPlaces = await Promise.all(places.map((p) => localizeDiscoverContent(p)));
+  // Official-route prose localizes server-side and crosses the client
+  // boundary as a prop (data-layer arc).
+  const localizedRoutes = await localizeCyclingRoutes(cyclingRoutes);
   const cyclingItemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -85,7 +94,7 @@ export default async function CyclingPage() {
           {tCycling("srHeading")}
         </h2>
         <ul role="list" className={`grid sm:grid-cols-2 lg:grid-cols-3 ${HOME.gridGap}`}>
-          {places.map((place) => (
+          {localizedPlaces.map((place) => (
             <li key={place.id}>
               <AttractionCard a={place} />
             </li>
@@ -110,7 +119,7 @@ export default async function CyclingPage() {
         </section>
       )}
 
-      <CyclingOfficialRoutes />
+      <CyclingOfficialRoutes routes={localizedRoutes} />
 
       <span id="cycling-plan-sentinel" className="h-px block pointer-events-none" aria-hidden />
       <CyclingFooter />

@@ -38,7 +38,10 @@ export function decodeItinerary(param: string | null): ItineraryDays | null {
     const colon = part.indexOf(":");
     if (colon < 1) continue;
     const day = parseInt(part.slice(0, colon), 10);
-    if (day < 1 || day > MAX_DAYS) continue;
+    // NaN passes both range comparisons and would mint a phantom "NaN" day
+    // bucket, inflating the OG card's counts (b74 security review); mirror
+    // the integer guard the storage loader already has.
+    if (!Number.isInteger(day) || day < 1 || day > MAX_DAYS) continue;
     const ids = part
       .slice(colon + 1)
       .split(",")

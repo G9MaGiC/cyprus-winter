@@ -58,6 +58,7 @@ export default function GuideBookingForm({
       providerName: guide.name,
       schema: guideBookingSchema,
       extraFields: { trailId: undefined },
+      errorFields: ["date", "partySize", "guestName", "guestEmail"],
       analyticsExtra: { guideId: guide.id },
       validationLabels: {
         date: t("validation.dateRequired"),

@@ -2,7 +2,12 @@ import { cyclingRoutes } from "@/data/cycling-routes";
 import type { CyclingRoute, CyclingRouteRegion } from "@/lib/cycling-route-types";
 
 export type { CyclingRoute, CyclingRouteRegion } from "@/lib/cycling-route-types";
-export { CYCLING_ROUTE_REGIONS, VC_CYCLING_INDEX_URL, VC_CYCLING_NATURE_URL } from "@/lib/cycling-route-types";
+export {
+  CYCLING_ROUTE_REGIONS,
+  formatRouteDistance,
+  VC_CYCLING_INDEX_URL,
+  VC_CYCLING_NATURE_URL,
+} from "@/lib/cycling-route-types";
 
 export function cyclingRouteCount(): number {
   return cyclingRoutes.length;
@@ -23,9 +28,4 @@ export function filterCyclingRoutes(options: {
     }
     return true;
   });
-}
-
-export function formatRouteDistance(km: number | null): string | null {
-  if (km == null) return null;
-  return km % 1 === 0 ? `${km} km` : `${km.toFixed(1)} km`;
 }

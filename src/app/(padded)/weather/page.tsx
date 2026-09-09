@@ -9,6 +9,7 @@ import { SITE_URL } from "@/lib/site-url";
 import { buildStrategyAAlternates } from "@/lib/seo-locale-urls";
 import PageHeader from "@/components/PageHeader";
 import { weatherByMonth } from "@/data/weather";
+import { localizeWeatherByMonth } from "@/lib/weather-content";
 import { getTranslations } from "next-intl/server";
 
 export const dynamic = "force-dynamic";
@@ -60,6 +61,9 @@ export default async function WeatherPage() {
     const slug = MONTH_TO_SLUG[m];
     return slug ? tWeatherMonth(`monthNames.${slug}` as "monthNames.december") : m;
   };
+  // Data-layer overlay: the two prose descriptions per month render natively;
+  // temperatures stay numeric fields straight off the record.
+  const rows = await localizeWeatherByMonth(weatherByMonth);
 
   const monthSelectorSectionClassName = `${SECTION.blockTop} hidden md:block`;
   const mobileClampClass = "text-muted-ink text-xs mt-0.5 line-clamp-1";
@@ -86,7 +90,7 @@ export default async function WeatherPage() {
       {/* Month selector (hybrid UI) */}
       <section className={monthSelectorSectionClassName} aria-label={tWeather("monthSelector.aria")}>
         <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:-mx-0 sm:px-0 sm:overflow-visible scroll-smooth scroll-touch [-webkit-overflow-scrolling:touch] overscroll-x-contain">
-          {weatherByMonth.map((row) => {
+          {rows.map((row) => {
             const slug = MONTH_TO_SLUG[row.month];
             if (!slug) return null;
             return (
@@ -98,7 +102,7 @@ export default async function WeatherPage() {
                 <div className="flex flex-col">
                   <span className={`${TYPE.cardTitleCompact} text-olive`}>{monthLabel(row.month)}</span>
                   <span className="mt-1 text-xs text-muted-ink">
-                    {tWeather("table.coast")} {row.coastMinC}–{row.coastMaxC}° · {tWeather("table.troodos")} {row.troodosMinC}–{row.troodosMaxC}°
+                    {tWeather("table.coast")} <bdi>{row.coastMinC}–{row.coastMaxC}°</bdi> · {tWeather("table.troodos")} <bdi>{row.troodosMinC}–{row.troodosMaxC}°</bdi>
                   </span>
                 </div>
               </AppLink>
@@ -109,7 +113,7 @@ export default async function WeatherPage() {
 
       {/* Mobile: card layout avoids horizontal scroll */}
       <div className="md:hidden space-y-3">
-        {weatherByMonth.map((row) => {
+        {rows.map((row) => {
           const slug = MONTH_TO_SLUG[row.month];
           const content = (
               <div className="rounded-xl border border-sand-200/80 bg-white/90 p-4 shadow-sm">
@@ -126,14 +130,14 @@ export default async function WeatherPage() {
                     <p className="text-muted-ink text-xs">
                       {tWeather("table.coast")}
                     </p>
-                    <p className="text-olive font-medium">{row.coastMinC}–{row.coastMaxC}°C</p>
+                    <p className="text-olive font-medium"><bdi>{row.coastMinC}–{row.coastMaxC}°C</bdi></p>
                     <p className={mobileClampClass}>{shortSentence(row.coastDesc)}</p>
                   </div>
                   <div>
                     <p className="text-muted-ink text-xs">
                       {tWeather("table.troodos")}
                     </p>
-                    <p className="text-olive font-medium">{row.troodosMinC}–{row.troodosMaxC}°C</p>
+                    <p className="text-olive font-medium"><bdi>{row.troodosMinC}–{row.troodosMaxC}°C</bdi></p>
                     <p className={mobileClampClass}>{shortSentence(row.troodosDesc)}</p>
                   </div>
                 </div>
@@ -184,7 +188,7 @@ export default async function WeatherPage() {
             </tr>
           </thead>
           <tbody>
-            {weatherByMonth.map((row) => {
+            {rows.map((row) => {
               const slug = MONTH_TO_SLUG[row.month];
               return (
               <tr key={row.month} className="border-b border-sand-100">
@@ -201,13 +205,13 @@ export default async function WeatherPage() {
                   )}
                 </td>
                 <td className="py-4 px-4 text-olive/90">
-                  {row.coastMinC}–{row.coastMaxC}°C
+                  <bdi>{row.coastMinC}–{row.coastMaxC}°C</bdi>
                 </td>
                 <td className="py-4 px-4 text-sm text-muted-ink max-w-xs">
                   {shortSentence(row.coastDesc)}
                 </td>
                 <td className="py-4 px-4 text-olive/90">
-                  {row.troodosMinC}–{row.troodosMaxC}°C
+                  <bdi>{row.troodosMinC}–{row.troodosMaxC}°C</bdi>
                 </td>
                 <td className="py-4 px-4 text-sm text-muted-ink max-w-xs">
                   {shortSentence(row.troodosDesc)}

@@ -2,7 +2,6 @@
   "footer": {
     "discover": "Odkrywaj",
     "plan": "Planuj",
-    "airport": "Lotnisko",
     "arriving": "Przylot",
     "weather": "Pogoda",
     "bookings": "Rezerwacje",
@@ -13,13 +12,10 @@
     "paphos": "Pafos",
     "tagline": "Łagodny, spokojny, autentyczny. Szlaki, wioski, dziedzictwo. Wyspa nagradza ciekawskich.",
     "practical": "Ruch lewostronny. Zapakuj warstwy. Wyspa nagradza ciekawskich. Naciśnij Ask AI.",
-    "emergency": "Nagły wypadek",
-    "touristInfo": "Informacja turystyczna",
-    "ambulance": "Pogotowie",
-    "planYourTrip": "Zaplanuj wycieczkę",
     "privacy": "Prywatność",
     "terms": "Regulamin",
-    "cycling": "Kolarstwo"
+    "cycling": "Kolarstwo",
+    "install": "Zainstaluj aplikację"
   },
   "travelTrust": {
     "aria": "Oficjalne informacje podróżne",
@@ -56,7 +52,8 @@
     "mainNavigation": "Nawigacja główna",
     "cycling": "Kolarstwo",
     "askAIBlockedAria": "Najpierw dokończ onboarding lub wybór cookies",
-    "nature": "Natura"
+    "nature": "Natura",
+    "install": "Zainstaluj aplikację"
   },
   "common": {
     "nav": {
@@ -95,11 +92,6 @@
     "skipToContent": "Przejdź do treści",
     "languageLabel": "Język:",
     "localeBeta": "beta",
-    "nextOnPlan": {
-      "aria": "Następne w Twoim planie",
-      "prefix": "Następne",
-      "navigate": "Nawiguj"
-    },
     "noscript": {
       "title": "Wymagany jest JavaScript",
       "body": "dla pełnej funkcjonalności. Nadal możesz przeglądać szlaki i miejsca, ale funkcje takie jak planer trasy i chat wymagają JavaScriptu."
@@ -274,12 +266,6 @@
     "askAIAria": "Zapytaj AI o szlaki, winnice i pomysły na wycieczkę",
     "askAITrailsAria": "Zapytaj AI o propozycje szlaków",
     "askAIRecommendationsAria": "Zapytaj AI o rekomendacje",
-    "hubFooter": {
-      "prompt": "Dodaj miejsca do planu—lub zapytaj AI o pomysły.",
-      "aria": {
-        "actions": "Akcje strony"
-      }
-    },
     "tripPlanSummary": {
       "aria": "Podsumowanie planu podróży",
       "places": "{count, plural, one {# miejsce w planie} few {# miejsca w planie} many {# miejsc w planie} other {# miejsca w planie}}",
@@ -369,7 +355,8 @@
       "cta": "Przełącz na polski",
       "dismiss": "Zamknij",
       "aria": "Propozycja języka"
-    }
+    },
+    "navigate": "Nawiguj"
   },
   "home": {
     "title": "Cyprus Winter",
@@ -774,11 +761,6 @@
     "shortcuts": {
       "rightNowDescription": "Co warto blisko Ciebie — propozycje według pogody i lokalizacji"
     }
-  },
-  "error": {
-    "title": "Drobna usterka",
-    "body": "Drobna usterka. Spróbuj ponownie lub wróć na stronę główną—szlaki, wioski i degustacje nadal na Ciebie czekają.",
-    "hint": "Użyj menu Odkrywaj, Szlaki lub Plan. Lub naciśnij Ask AI—wskażemy Nissi, Troodos, Lefkara."
   },
   "errors": {
     "common": {
@@ -1945,11 +1927,8 @@
       "daysLabel": "dni",
       "downloadIcs": "Dodaj do kalendarza",
       "icsDownloaded": "Pobrano",
-      "placesCount": "{count, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsc}}",
-      "daysCount": "{count, plural, one {# dzień} few {# dni} many {# dni} other {# dni}}",
       "copyLink": "Kopiuj link",
       "linkCopied": "Link skopiowany",
-      "copyItinerary": "Kopiuj plan (tekst)",
       "copyItineraryShort": "Kopiuj tekst",
       "copied": "Skopiowano",
       "shareTextPrefix": "Mój zimowy plan na Cyprze —",
@@ -2195,10 +2174,7 @@
   "bookings": {
     "title": "Moje rezerwacje",
     "empty": "Brak rezerwacji",
-    "emptyBody": "Zarezerwuj degustację w Odkrywaj lub wczytaj rezerwacje z innego urządzenia.",
     "browseWineries": "Przeglądaj winnice",
-    "loadFromEmail": "Wczytaj rezerwacje z innego urządzenia",
-    "noMatch": "Brak rezerwacji dla tego adresu. Spróbuj inny lub zarezerwuj w Odkrywaj.",
     "bookMore": "Zarezerwuj degustację lub wycieczkę z przewodnikiem w Odkrywaj i Szlaki. Lub wczytaj rezerwacje z innego urządzenia.",
     "status": {
       "confirmed": "potwierdzona",
@@ -2628,7 +2604,6 @@
     "description": "Szlaki, wioski, winnice. Planuj w drodze — bez konta.",
     "cta": "Odkrywaj",
     "skip": "Pomiń",
-    "intentQuestion": "Co jest teraz najważniejsze?",
     "intentLabel": "Lub powiedz, po co tutaj jesteś",
     "intentPlanning": "Planowanie podróży",
     "intentExploring": "Odkrywanie miejsc",
@@ -2646,13 +2621,6 @@
     "tipFirstAdd": "W twoim planie. Dodaj więcej lub udostępnij trasę.",
     "tipDiscoverFilter": "Filtruj według wiosek, winnic lub szlaków.",
     "savePlan": "Zapisz plan — załóż konto, aby synchronizować"
-  },
-  "help": {
-    "planEmpty": "Kliknij „Dodaj miejsca”, aby zacząć budować plan z Odkrywaj lub Szlaków.",
-    "planFirstItem": "Dobry start. Dodaj kolejne miejsca lub zmień dzień, żeby zaplanować całą podróż.",
-    "discoverFilter": "Użyj filtrów, aby znaleźć dokładnie to, czego szukasz—winnice, szlaki, plaże i więcej.",
-    "bookingForm": "Uzupełnij dane, a winnica potwierdzi mailem. Zwykle odpowiadają w ciągu 24 godzin.",
-    "aiAssistant": "Pytaj o wszystko—najlepsze szlaki, winnice albo pomoc w ułożeniu dnia."
   },
   "auth": {
     "layout": {
@@ -2789,7 +2757,6 @@
         "title": "Wysłano prośbę",
         "body": "Twoja prośba o wędrówkę z {guideName} jest w drodze. Potwierdzą mailem. Jeśli nie odezwą się w ciągu dnia lub dwóch, zadzwoń do nich.",
         "crossDevicePrefix": "Wpisz swój email w",
-        "crossDeviceLink": "Moje rezerwacje",
         "crossDeviceSuffix": "aby zobaczyć prośbę na różnych urządzeniach.",
         "tip": "Zabierz warstwy i wodę. Powiedz komuś, jaką trasę wybierasz.",
         "emailDelayed": "Twoja prośba została zapisana. E-mail potwierdzający może potrwać kilka minut — sprawdź spam lub skontaktuj się z przewodnikiem.",
@@ -3424,11 +3391,6 @@
     "homeDescription": "Spokojniejszy Cypr zimą. Odkryj łagodne wybrzeża, górskie wioski, otwarte szlaki, winnice i lokalne miejsca, dla których warto zwolnić.",
     "ogImageAlt": "Antyczny teatr w Kourion nad wybrzeżem Morza Śródziemnego, zima na Cyprze"
   },
-  "ui": {
-    "hero": {
-      "imageAlt": "Antyczny teatr w Kourion, wybrzeże Morza Śródziemnego, Cypr zimą"
-    }
-  },
   "regions": {
     "page": {
       "footer": {
@@ -3593,7 +3555,8 @@
       "body": "Zainstaluj, by mieć szlaki offline i plan pod ręką.",
       "install": "Zainstaluj",
       "dismiss": "Nie teraz",
-      "iosHint": "Dotknij Udostępnij, potem Dodaj do ekranu początkowego, aby zapisać przewodnik."
+      "iosHint": "Dotknij Udostępnij, potem Dodaj do ekranu początkowego, aby zapisać przewodnik.",
+      "guideLink": "Zobacz pełny przewodnik"
     }
   },
   "nature": {
@@ -5489,6 +5452,638 @@
       "athalassa-botanical-first": {
         "title": "Athalassa: ogród, potem pętla jeziora",
         "body": "Darmowy ogród botaniczny przy głównej bramie — najpierw tam. Potem szlak wokół jeziora przeciwnie do wskazówek zegara. Większość kończy przy kawiarni. Ty dostajesz godzinę cichej sosny, zanim ruch Nikozji zawoła cię z powrotem."
+      }
+    },
+    "weather": {
+      "november": {
+        "coastDesc": "Wciąż łagodnie. Lekka kurtka na wieczory. Plaże puste, ruiny w najlepszym wydaniu.",
+        "troodosDesc": "Chłodne poranki. Szlaki czyste. Sezon narciarski jeszcze nie ruszył; najlepszy czas na wędrówki."
+      },
+      "december": {
+        "coastDesc": "Łagodne dni, chłodne noce. Ubierz się warstwowo. Jarmarki świąteczne i grzane wino.",
+        "troodosDesc": "Od połowy miesiąca wysoko możliwy śnieg. Ośrodek narciarski zwykle otwiera się, gdy śnieg pozwoli — sprawdź przed wyjazdem."
+      },
+      "january": {
+        "coastDesc": "Najchłodniejszy miesiąc. Wciąż słonecznie. Ruiny i wioski; zabierz coś ciepłego.",
+        "troodosDesc": "Szczyt sezonu narciarskiego na Olimpie, póki śnieg się trzyma. Niższe szlaki po przymrozkach bywają oblodzone — zarezerwuj degustacje; w winiarniach jest ciepło."
+      },
+      "february": {
+        "coastDesc": "Podobnie jak w styczniu. Migdałowce kwitną od końca lutego. Dłuższe dni.",
+        "troodosDesc": "Narty często trzymają do wczesnej wiosny; niższe partie topnieją pierwsze. Krokusy i cyklameny."
+      },
+      "march": {
+        "coastDesc": "Wiosenne światło. Dzikie kwiaty w głębi lądu. Morze wciąż zimne; spacery po plaży jak najbardziej.",
+        "troodosDesc": "Najlepszy miesiąc na wędrówki. Śnieg topnieje, szlaki się otwierają. Szlak Persefony kwitnie."
+      },
+      "april": {
+        "coastDesc": "Ciepło. Niektórzy pływają. Termin Wielkanocy się zmienia; wioski budzą się do życia.",
+        "troodosDesc": "Góry zielone. Wszystkie szlaki otwarte. Wiosenna przejrzystość."
+      }
+    },
+    "airport": {
+      "lca": {
+        "city": "Larnaka",
+        "transport": {
+          "taxi": {
+            "type": "Taksówka",
+            "description": "Kierowca czeka z tabliczką, stałe stawki. Najlepsza przy późnych przylotach i dla grup.",
+            "approxCost": "25 do 45 € do Larnaki, 50 do 70 € do Limassol, 80 do 100 € do Pafos",
+            "duration": "15 do 60 min",
+            "tip": "Zarezerwuj online — wyjdzie taniej; kierowcy czekają w hali przylotów."
+          },
+          "bus": {
+            "type": "Autobus",
+            "description": "Shuttle Kapnos do głównych kurortów. Wygodnie i tanio.",
+            "approxCost": "8 do 15 € w jedną stronę",
+            "duration": "30 do 90 min",
+            "tip": "Sprawdź rozkład do swojego kurortu; bilet online albo przy stanowisku."
+          },
+          "car-rental": {
+            "type": "Wynajem auta",
+            "description": "Ruch lewostronny. Międzynarodowe prawo jazdy jest honorowane.",
+            "approxCost": "25 do 60 €/dzień",
+            "tip": "Rezerwuj z wyprzedzeniem; duże wypożyczalnie są w hali przylotów."
+          }
+        },
+        "tips": {
+          "0": "Darmowe WiFi w hali przylotów. Weź kawę i spokojnie się ogarnij.",
+          "1": "Karty SIM z UE działają. Lokalne karty na internet kupisz w hali przylotów.",
+          "2": "Tylko euro (€). Bankomaty i kantor w hali przylotów. Małe wiejskie sklepy wolą gotówkę.",
+          "3": "Numer alarmowy 112 · Informacja turystyczna 1460 · Zapisz oba."
+        }
+      },
+      "pfo": {
+        "city": "Pafos",
+        "transport": {
+          "taxi": {
+            "type": "Taksówka",
+            "description": "Kierowca czeka w hali przylotów. Stałe stawki do Pafos, Coral Bay i Limassol.",
+            "approxCost": "25 do 35 € do Pafos, 60 do 80 € do Limassol, 120 do 150 € do Larnaki",
+            "duration": "15 do 90 min",
+            "tip": "Rezerwacja z góry oszczędza kolejek; dostępne całą dobę."
+          },
+          "bus": {
+            "type": "Autobus",
+            "description": "Linia 612 do portu w Pafos i kurortów. Tanio i bez kombinowania.",
+            "approxCost": "2 do 4 €",
+            "duration": "30 do 45 min",
+            "tip": "Kursuje regularnie; sprawdź wieczorne odjazdy."
+          },
+          "car-rental": {
+            "type": "Wynajem auta",
+            "description": "Najlepszy, jeśli planujesz mozaiki, plaże i winne wioski. Zachód wynagradza własne auto.",
+            "approxCost": "25 do 60 €/dzień",
+            "tip": "Mozaiki, wioski, plaża Lara: wszystko w godzinę. Zarezerwuj wcześniej i gotowe."
+          }
+        },
+        "tips": {
+          "0": "Mniejsze niż Larnaka. Zwykle szybciej przez kontrolę.",
+          "1": "Starożytne stanowiska, plaże i winne wioski w zasięgu. Coral Bay, mozaiki, plaża Lara.",
+          "2": "Ruch lewostronny. Numer alarmowy 112 · Informacja turystyczna 1460."
+        }
+      }
+    },
+    "wineRoutes": {
+      "krasochoria": {
+        "title": "Krasochoria",
+        "description": "Winne wioski Limassol — Omodos, Koilani, Louvaras, Pera Pedi, Pelendri. Górskie widoki, rodzime odmiany, słodkie wina w stylu Commandarii. Od listopada do marca dzwoń przed wizytą.",
+        "winterTip": "Większość piwnic zimą otwiera się tylko w weekendy. Zadzwoń dzień wcześniej — często nalewa sam winiarz."
+      },
+      "laona": {
+        "title": "Laona",
+        "description": "Wioski na wzgórzach Pafos — Panayia, Lemona, Stroumbi, Statos. Kameralne degustacje, stare winorośle, zimą kominek. To nie strefa UNESCO Commandarii.",
+        "winterTip": "Zimowi goście dostają degustacje przy kominku i zwiedzanie bez pośpiechu. Vouni Panayia i Tsangarides to główne przystanki."
+      },
+      "akamas": {
+        "title": "Akamas",
+        "description": "Kathikas i półwysep Akamas. Wytrawne białe i różowe z widokiem na morze. Połącz ze szlakiem Adonisa lub Afrodyty i Kąpieliskiem Afrodyty.",
+        "winterTip": "Połącz poranną wędrówkę szlakiem Afrodyty z popołudniową degustacją w Kathikas — dzieli je dwadzieścia minut."
+      },
+      "commandaria": {
+        "title": "Commandaria",
+        "description": "Najstarsze wino Cypru — słodkie, z suszonych na słońcu winogron. Czternaście wiosek z listy UNESCO: Silikou, Doros, Monagri, Louvaras, Lania, Agios Mamas i inne. Bez Omodos i Koilani (Krasochoria, ale poza strefą).",
+        "winterTip": "Producenci Commandarii chętniej przyjmują zimą gości bez zapowiedzi. Monagri i Lania mają najbardziej dostępne piwnice."
+      }
+    },
+    "natureExcursions": {
+      "akrotiri-salt-lake": {
+        "description": "Największe śródlądowe mokradło Cypru — flamingi, żurawie i ptaki drapieżne od listopada do marca, gdy zimowe deszcze napełniają jezioro. Trzcinowiska i płytka woda; latem często wysycha.",
+        "winterNote": "Szczyt ptasich migracji; weź lornetkę i ciche buty."
+      },
+      "larnaca-salt-lake": {
+        "description": "Flamingi i meczet Hala Sultan Tekke na skraju Larnaki. Płaskie ścieżki; jedno z kultowych zimowych miejsc do obserwacji ptaków.",
+        "winterNote": "Połącz z pętlą wokół słonego jeziora w naszej sekcji Szlaki."
+      },
+      "athalassa-visitor-centre": {
+        "description": "Sosny i makia na południowo-wschodnim skraju Nikozji — centrum dla odwiedzających, ogród botaniczny i 16 km ścieżki rowerowej przez zielony pas stolicy.",
+        "winterNote": "Szybka ucieczka, gdy Troodos jest oblodzony; po deszczu trzymaj się głównych dróg."
+      },
+      "cape-gkreko-park": {
+        "description": "Morskie klify, sosnowe zarośla i nadmorskie ścieżki na wschodnim krańcu Cypru. Zimowe słońce bez chłodu Troodos.",
+        "winterNote": "Połącz z naszym szlakiem Cape Greco na całe nadmorskie przedpołudnie."
+      },
+      "cedar-valley": {
+        "description": "Endemiczne cypryjskie cedry w dolinie Troodos — dojazd cichą leśną drogą; w styczniu i lutym na trasie możliwy śnieg.",
+        "winterNote": "Sprawdź stan drogi przed wyjazdem; w pogodne zimowe dni warto nadłożyć drogi."
+      },
+      "troodos-botanic-garden": {
+        "description": "Alpejskie i endemiczne rośliny przy placu Troodos — mały, konkretny i ciepły w środku, gdy na zewnątrz zimno.",
+        "winterNote": "Poza sezonem centrum jest czynne krócej; jeśli śnieg zamknie drogi, wybierz niżej położony szlak."
+      },
+      "troodos-environmental-centre": {
+        "description": "Ośrodek Wydziału Leśnictwa przy Geoparku Troodos — geologia, historia górnictwa i zimowy górski kontekst przed szlakiem."
+      },
+      "akamas-geology-centre": {
+        "description": "Ośrodek w Pano Arodes na skraju Akamas — skamieniałości, geologia i kontekst dla szlaków i wybrzeża półwyspu."
+      },
+      "akamas-avifauna-kathikas": {
+        "description": "Regionalne centrum w Kathikas poświęcone ptakom i endemicznym roślinom Akamas — zacznij tutaj przed szlakiem Adonisa lub Afrodyty."
+      },
+      "akrotiri-env-centre": {
+        "description": "Centrum edukacyjne przy mokradłach Akrotiri — wystawy o ekologii słonego jeziora i ptakach wędrownych."
+      },
+      "cape-gkreko-env-centre": {
+        "description": "Ekspozycje o ekologii wybrzeża na Cape Gkreko — przydatny kontekst przed ścieżkami klifowymi i morskimi jaskiniami."
+      },
+      "episkopi-env-centre": {
+        "description": "Centrum środowiskowe dystryktu Pafos nad Episkopi — widoki na dolinę Ezousy i opowieść o lokalnych siedliskach."
+      }
+    },
+    "cyclingRoutes": {
+      "athalassa-forest-park": {
+        "description": "Szesnaście kilometrów utwardzonej ścieżki w zielonym pasie Nikozji. Miejscowi jeżdżą tu cały rok; zimowy deszcz odświeża sosny, a parking w tygodniu jest pusty.",
+        "winterNote": "Najłatwiejsza zimowa pętla stolicy, gdy Troodos jest zasypany."
+      },
+      "cy-rc06-divine-coast": {
+        "description": "Z Governor's Beach do zatoki Pissouri i z powrotem wzdłuż wybrzeża Limassol — teatr Kourion, marina i długie płaskie kilometry między podjazdami.",
+        "winterNote": "Łagodna nadmorska zima; wystartuj wcześnie, by zdążyć z pełną pętlą za dnia."
+      },
+      "cy-rc04-heart-of-koumandaria": {
+        "description": "Winne wioski Commandarii i faliste drogi Krasochorii. Kamienne osady, tarasy winorośli i przystanki przy klasztorach wśród wzgórz Limassol.",
+        "winterNote": "Nagie winorośle i złote światło — jedna z najlepszych zimowych tras szosowych na wyspie."
+      },
+      "cy-rc15-sea-of-green-coast": {
+        "description": "Tochni, wpisana na listę UNESCO Choirokoitia, Vavla i podnóża Limassol — wiejskie dróżki i podjazdy przez pomarańczową dolinę bez surowości Troodos.",
+        "winterNote": "Puste drogi w tygodniu; połącz z rybnym obiadem w Zygi."
+      },
+      "cy-rc19-kornos-lefkara": {
+        "description": "Wioski koronki i górskie widoki nad Larnaką. Srebro i koronka z Lefkary; w styczniu powietrze chłodniejsze niż na wybrzeżu."
+      },
+      "pafos-1-castle-loop": {
+        "description": "Gaje pomarańczowe, skalny kościół w Episkopi i widoki na dolinę Ezousy. Podjazd z widokami na Troodos; powrót do portu w Pafos głównie w dół.",
+        "winterNote": "Wybrzeże pozostaje łagodne; podjazd doliną bywa chłodny — weź warstwę na górę."
+      },
+      "pafos-3-akamas-lara": {
+        "description": "Skraj Akamas: Agios Georgios, zatoka Lara, Fontana Amorosa i Kąpielisko Afrodyty. Szuter i asfalt; spektakularne zimowe wybrzeże."
+      },
+      "polis-argaka-loop": {
+        "description": "Nadmorska droga zatoki Chrysochou przez port w Polis i wioskę Argaka. Spokojne zimowe kilometry na północno-zachodnim brzegu wyspy."
+      },
+      "main-11-troodos-pafos": {
+        "description": "Górski zjazd z Troodos w stronę Pafos — sosnowy las, serpentyny i długi zjazd do wybrzeża, gdy pozwalają warunki.",
+        "winterNote": "Sprawdź śnieg i lód na szczytowych drogach Troodos, zanim się zdecydujesz."
+      },
+      "main-3-solea-valley": {
+        "description": "Ze stolicy do doliny Solea i podnóży Troodos. Długa całodniowa trasa przez Kakopetrię, sosnowy las i górskie wioski.",
+        "winterNote": "Potrzebny pełny dzień światła; górna Solea bywa zimna i miejscami oblodzona."
+      },
+      "lemesos-1-amathous": {
+        "description": "Krótka nadmorska pętla z Limassol do stanowiska archeologicznego Amathus. Płasko, po asfalcie, idealnie na zimową poranną przejażdżkę."
+      },
+      "lemesos-3-fasouri-pachna": {
+        "description": "Okrężna trasa przez przedmieścia Limassol w winne okolice Pachny. Faliste wzgórza; ciszej niż latem."
+      },
+      "agia-napa-xylofagou": {
+        "description": "Trasa wschodniego wybrzeża łącząca Agia Napę z Xylofagou i zapleczem dystryktu Famagusta. Płaskie zimowe kilometry."
+      },
+      "eurovelo-8": {
+        "description": "Cypryjski odcinek europejskiego śródziemnomorskiego korytarza rowerowego. Nadmorskie połączenia między większymi miastami."
+      },
+      "cy-rc08-ancient-vasilikos": {
+        "description": "Wzgórza dystryktu Larnaka przez wioski półwyspu Vasilikos. Wiejskie dróżki nad południowo-wschodnim wybrzeżem."
+      },
+      "amathus-mtb-basic": {
+        "description": "Wprowadzająca pętla terenowa przy starożytnym Amathus. Leśne drogi i łagodne podjazdy nad wybrzeżem Limassol."
+      },
+      "alaminos-mtb-moderate": {
+        "description": "Singletracki i drogi pożarowe na pogórzu Larnaki. Umiarkowanie techniczna jazda; zimą błoto po deszczu."
+      },
+      "alaminos-mtb-demanding": {
+        "description": "Dłuższy, bardziej stromy wariant Alaminos dla doświadczonych kolarzy górskich. Po burzach sprawdź stan szlaków."
+      },
+      "lefkosia-3-asinou": {
+        "description": "Trasa w dystrykcie Nikozji w stronę lasu Adelfoi i okolic Asinou. Pachnące sosną podjazdy bez szczytu Troodos."
+      },
+      "cy-rc18-traditional-villages": {
+        "description": "Pętla po zapleczu Limassol przez kamienne wioski i dróżki winnego kraju. Kultura i wspinaczka w jednej trasie."
+      }
+    },
+    "events": {
+      "limassol-carnival": {
+        "name": "Karnawał w Limassol",
+        "description": "Największy karnawał Cypru trwa dwa tygodnie przed Wielkim Postem. Król Karnawału prowadzi Wielką Paradę przez stare miasto; bale maskowe wypełniają teatry, a ulice ożywają platformami, kostiumami i muzyką. Karnawał ma korzenie w tradycjach weneckich i bizantyjskich — ostatnia zabawa przed postem. Miejscowi miesiącami przygotowują kostiumy. Jeśli jesteś na Cyprze pod koniec lutego lub na początku marca, warto zaplanować pobyt wokół niego. Nadmorska promenada wypełnia się platformami i kostiumami, a całe miasto się bawi.",
+        "dates": "2 tygodnie przed Wielkim Postem (koniec lut. / początek mar.)",
+        "venue": "Stare miasto i nabrzeże Limassol"
+      },
+      "nicosia-winter-festival": {
+        "name": "Zimowy Festiwal w Nikozji",
+        "description": "Plac Eleftheria zmienia się w grudniu: plenerowe koncerty, stragany z jedzeniem i świetlne instalacje przyciągają rodziny i przyjaciół. Wstęp jest bezpłatny. Atmosfera jest świąteczna, ale nie przytłacza — weź gorący napój, posłuchaj muzyki na żywo i patrz, jak stolica ożywa po zmroku. Festiwal trwa w weekendy przez cały miesiąc. Ubierz się ciepło i dołącz do tłumu.",
+        "dates": "Weekendy w grudniu",
+        "venue": "Plac Eleftheria"
+      },
+      "pafos-xmas-market": {
+        "name": "Jarmark Bożonarodzeniowy w Pafos",
+        "description": "Port każdego grudnia wypełnia się straganami. Rękodzieło, lokalny miód, oliwa i ręcznie robione prezenty. Grzane wino paruje w zimnym powietrzu. Kolędnicy zbierają się przy zamku. To rodzinna impreza: dzieci ustawiają się w kolejce do Mikołaja, rodzice buszują po straganach, a zapach pieczonych kasztanów niesie się nad nabrzeżem. Weekendy od pierwszego grudnia do tuż przed świętami. Zamek jest podświetlony. Morze ciemne. Czuć święta tak, jak nigdy nie potrafią tego słoneczne plaże.",
+        "dates": "Weekendy 1–22 grudnia",
+        "venue": "Port w Pafos"
+      },
+      "commandaria-festival": {
+        "name": "Festiwal Commandarii",
+        "description": "Festiwal Commandarii świętuje najstarsze wino Cypru — słodkie wino z suszonych na słońcu winogron, robione w tych wzgórzach od czasów krucjat. Główne wydarzenia gości zwykle Koilani; degustacje i muzyka rozlewają się po Krasochorii i wioskach strefy UNESCO Commandarii, takich jak Louvaras, Silikou, Doros i Monagri. Spróbuj win od producentów, dowiedz się, jak powstaje Commandaria, i ciesz się górskim powietrzem. Zwykle pierwszy weekend grudnia, gdy winorośle są nagie. Sprawdzaj daty co roku.",
+        "dates": "Pierwszy weekend grudnia (sprawdzaj co roku)",
+        "venue": "Koilani i wioski Krasochorii / Commandarii"
+      },
+      "troodos-ski-season": {
+        "name": "Sezon narciarski w Troodos",
+        "description": "Cypr ma jeden ośrodek narciarski — na górze Olimp. Cztery wyciągi, wypożyczalnia sprzętu i górskie kawiarnie. Sezon trwa od stycznia do marca, zależnie od śniegu; jedne zimy są obfite, inne chude. Nawet gdy trasy są cienkie, sam wjazd nagradza, a kawiarnie serwują gorącą czekoladę z widokiem. Sprawdź warunki przed wyjazdem; droga bywa oblodzona. Rano narty, po południu kąpiel w morzu — wyspa robi z tej osobliwości, co się da.",
+        "dates": "Sty.–mar. (zależnie od pogody)",
+        "venue": "Ośrodek narciarski Troodos, Olimp"
+      },
+      "lefkara-lace-festival": {
+        "name": "Festiwal Koronki w Lefkarze",
+        "description": "Wioska świętuje swoje najsłynniejsze rzemiosło. Koronczarki pokazują na placu technikę lefkaritiko — klekot klocków, krzyżujące się nici. Na warsztatach spróbujesz własnych sił. Stragany sprzedają gotowe prace. Zwykle druga niedziela marca, gdy światło już łagodnieje, a górskie powietrze jest łagodne. Wioska wypełnia się gośćmi, ale nastrój jest dumny, nie komercyjny. Te kobiety doskonaliły swoje rzemiosło przez dekady — i chętnie je pokażą. Zostań na obiad; tawerny mają pełne ręce roboty.",
+        "dates": "Zwykle druga niedziela marca",
+        "venue": "Wioska Lefkara"
+      },
+      "bellapais-concerts": {
+        "name": "Koncerty w opactwie Bellapais",
+        "description": "Bellapais leży na północy Cypru — przekroczenie z południa wymaga zwykłych formalności granicznych; sprawdź dostęp przed podróżą. Muzyka w gotyckich ruinach. Klasyka, folk, czasem jedno i drugie. Refektarz opactwa staje się salą koncertową; łuki odbijają dźwięk. Siedzisz pod gwiazdami z górą za plecami. Program zmienia się co roku; sprawdź zimowe terminy z wyprzedzeniem. Nawet bez koncertu opactwo nocą jest warte drogi, gdy dostęp na to pozwala.",
+        "dates": "Wybrane terminy gru.–sty.",
+        "venue": "Opactwo Bellapais"
+      },
+      "agros-rose-festival-prep": {
+        "name": "Wydarzenia w wiosce Agros",
+        "description": "Róże kwitną w kwietniu i maju. Zimą Agros pracuje na zapasach: woda różana, loukoumi, przetwory. W styczniu i lutym wioska organizuje warsztaty i degustacje. Dowiesz się, jak powstaje woda różana, spróbujesz słodyczy i wypełnisz torbę pamiątkami. Górskie powietrze jest zimne; tawerny ciepłe. Agros zbudowało reputację na kwiatowym dziedzictwie. Nawet poza sezonem warto tu zajrzeć. Fabryka prowadzi wycieczki. Widoki są zawsze.",
+        "dates": "Różne weekendy sty.–lut.",
+        "venue": "Wioska Agros"
+      },
+      "larnaca-xmas-village": {
+        "name": "Świąteczna Wioska w Larnace",
+        "description": "Promenada Finikoudes zmienia się w zimową wioskę. Lodowisko nad morzem — surrealistyczne i zabawne. Grota Mikołaja dla dzieci. Stragany z rękodziełem, jedzeniem i gorącymi napojami. Palmy zostają zielone; zapalają się światełka. Trwa od połowy listopada do stycznia, więc okazji nie zabraknie. Promenada to nadmorski deptak Larnaki. Latem jest zatłoczony, zimą łagodniejszy, a świąteczna wioska dokłada warstwę radości. Ubierz się ciepło i spaceruj. Morze jest tuż obok.",
+        "dates": "Połowa lis. – początek sty.",
+        "venue": "Promenada Finikoudes"
+      },
+      "cyprus-marathon": {
+        "name": "Maraton Cypru",
+        "description": "Biegacze z całej Europy zbierają się w grudniu na nabrzeżu Limassol. Maraton, półmaraton i 10 km. Trasa biegnie wzdłuż wybrzeża; pogoda jest chłodna, widoki to morze i niebo. Nawet jeśli nie biegniesz, atmosfera jest warta przeżycia. Miasto budzi się wcześnie. Promenada wypełnia się kibicami — doping, muzyka, miarowy rytm kroków. Zwykle pierwsza niedziela grudnia. Jeśli jedziesz autem, zaplanuj trasę; drogi są zamykane na czas biegu. Albo dołącz do tłumu i patrz. Twarze na mecie mówią wszystko.",
+        "dates": "Zwykle pierwsza niedziela grudnia",
+        "venue": "Nabrzeże Limassol"
+      },
+      "kakopetria-christmas-village": {
+        "name": "Świąteczna Wioska Kakopetria",
+        "description": "Jedna z ośmiu oficjalnych świątecznych wiosek Cypru. Wioska w dolinie Solea stroi się na sezon: girlandy, wieczorna muzyka, grzane wino, kiermasze rękodzieła i plenerowe koncerty. Kamienne domy, rzeka Karkotis i zapach melomakarona i kourabiedes. Weekendy od końca listopada; codziennie od 22 grudnia. Połącz z obiadem z pstrągiem albo spacerem do Agios Nikolaos tis Stegis. Górskie powietrze zaostrza apetyt.",
+        "dates": "Weekendy koniec lis. – 6 sty.; codziennie od 22 gru.",
+        "venue": "Wioska Kakopetria"
+      },
+      "kyperounta-christmas-village": {
+        "name": "Świąteczna Wioska Kyperounta",
+        "description": "Wysokogórski jarmark świąteczny w regionie Pitsilia. Winnice i sosnowe lasy okalają wioskę. Tradycyjne przysmaki, degustacje winiarni Kyperounta, rękodzieło i koncerty. I górskie powietrze. Zwykle 10:00–19:00; krócej 25 grudnia. Około 50 minut z Limassol. Ubierz się ciepło; tam na górze jest zimno. Sprawdzaj daty co roku.",
+        "dates": "Weekendy koniec lis. – 6 sty.",
+        "venue": "Wioska Kyperounta"
+      },
+      "ayia-napa-cultural-winter": {
+        "name": "Kulturalna Zima w Agia Napie",
+        "description": "Cotygodniowe czwartkowe wydarzenia od stycznia do marca. Grecki i międzynarodowy jazz, tradycyjny cypryjski taniec, rebetiko i występy kulturalne. Cichy sezon kurortu staje się sceną dla muzyki i dziedzictwa. Sprawdź program gminy — terminy i miejsca zmieniają się co roku. Inna twarz Agia Napy.",
+        "dates": "Sty.–mar., czwartki 19:30",
+        "venue": "Gmina Agia Napa"
+      },
+      "ayia-napa-winter-swimming": {
+        "name": "Festiwal Zimowego Pływania w Agia Napie",
+        "description": "Międzynarodowi zimowi pływacy zbierają się na plaży Nissi lub Makronissos. W styczniu stawiają czoła chłodnemu morzu. Nawet jeśli nie wskoczysz, widowisko jest tego warte — pływacy w czepkach, zimowe światło, doping. Terminy się zmieniają; sprawdź wcześniej. Przypomnienie, że Cypr nigdy w pełni nie zapada w sen zimowy.",
+        "dates": "Połowa stycznia (sprawdzaj co roku)",
+        "venue": "Plaża Nissi lub Makronissos"
+      },
+      "kalopanagiotis-christmas-village": {
+        "name": "Świąteczna Wioska Kalopanagiotis",
+        "description": "Wioska w dolinie Marathasa gości jeden z najbardziej klimatycznych jarmarków świątecznych na wyspie. Kamienne domy, brukowane uliczki i klasztor UNESCO Agios Ioannis Lampadistis w tle. Lokalne produkty, tradycyjne potrawy, muzyka, warsztaty i zimowe atrakcje. Weekendy od końca listopada; codziennie od 23 grudnia. Obok termalne źródła i bizantyjskie freski. Spokojniejsza alternatywa dla Kakopetrii.",
+        "dates": "Weekendy koniec lis. – 22 gru.; codziennie 23 gru. – 6 sty.",
+        "venue": "Wioska Kalopanagiotis"
+      },
+      "omodos-christmas-market": {
+        "name": "Jarmark Bożonarodzeniowy w Omodos",
+        "description": "Winna wioska Omodos urządza pod koniec grudnia świąteczny jarmark. Park Gminny wypełnia się straganami, muzyką na żywo — kolędy, rebetiko, jazz, folk — i warsztatami. Mega Santa wita dzieci. Lokalne produkty, grzane wino i ręcznie robione prezenty. Brukowany plac i klasztor tworzą niezapomnianą scenerię. Zwykle 26–28 grudnia, od 16:00. Wioska zna się na winie; spodziewaj się dobrej gościnności.",
+        "dates": "Zwykle 26–28 grudnia",
+        "venue": "Plac wioski Omodos"
+      },
+      "lania-christmas": {
+        "name": "Boże Narodzenie w Lanii",
+        "description": "Wioska uliczek i winorośli rozświetla się na początku grudnia. Rękodzieło, przysmaki i kameralny świąteczny klimat. Lania to jedna z czternastu uznanych wiosek Commandarii — połącz z Vasą na winny dzień albo z Omodos i Krasochorią (poza strefą Commandarii). Ciszej niż w wielkich świątecznych wioskach. Architektura i górskie widoki to główny magnes. Sprawdź daty; zwykle pierwszy weekend grudnia.",
+        "dates": "Zwykle pierwszy weekend grudnia",
+        "venue": "Wioska Lania"
+      },
+      "green-monday": {
+        "name": "Zielony Poniedziałek",
+        "description": "Pierwszy dzień prawosławnego Wielkiego Postu. Rodziny ruszają na piknik z postnym jedzeniem — chleb lagana, oliwki, tahini, owoce morza. Niebo wypełniają latawce; zwyczaj mówi, że latawiec unosi grzechy. Parki, wzgórza i wybrzeża pełne są Cypryjczyków. Polis-Latchi i inne miasta urządzają festyny. To dzień wolny od pracy. Nawet bez postu rytuał i latawce warte są przeżycia. Data wędruje z Wielkanocą; zwykle koniec lutego lub początek marca.",
+        "dates": "Pierwszy dzień postu (zależnie od Wielkanocy)",
+        "venue": "Parki, plaże i wzgórza w całym Cyprze"
+      },
+      "famagusta-carnival": {
+        "name": "Karnawał Famagusty",
+        "description": "Karnawał Paralimni–Dherynia sprowadza platformy, kostiumy i tysiące bawiących się na wschodnie wybrzeże. Wielka parada przechodzi przez Paralimni w niedzielę przed Wielkim Postem. Mniej gorączkowo niż w Limassol, ale nie mniej kolorowo. Rodziny ustawiają się wzdłuż trasy; pochód prowadzi król karnawału. Regionalna instytucja. Zwykle początek marca. Przyjdź wcześnie na dobre miejsce.",
+        "dates": "Niedziela przed Wielkim Postem (początek mar.)",
+        "venue": "Paralimni"
+      },
+      "deryneia-christmas-village": {
+        "name": "Świąteczna Wioska Deryneia",
+        "description": "Świąteczna Kraina Truskawek. Deryneia — truskawkowa stolica Cypru — gości jedną z ośmiu oficjalnych świątecznych wiosek. Tradycyjna kuchnia, rękodzieło, muzyka na żywo i warsztaty dla dzieci. Muzeum Sztuki Ludowej i czerwone pola okalają wioskę. Weekendy od końca listopada; codziennie od 23 grudnia. Odpowiedź wschodniego wybrzeża na górskie wioski. Połącz z Paralimni lub Protaras.",
+        "dates": "Weekendy koniec lis. – 22 gru.; codziennie 23 gru. – 6 sty.",
+        "venue": "Wioska Deryneia"
+      },
+      "statos-agios-fotios-christmas": {
+        "name": "Świąteczna Wioska Statos–Agios Fotios",
+        "description": "Wysoko w górach Pafos, na 950 m. Jedna z ośmiu oficjalnych świątecznych wiosek. Kraina jabłek i winogron; wioska produkuje wino, rodzynki, orzechy włoskie, migdały. Kamienne domy, lokalne produkty i cicha górska atmosfera. Obok klasztory Chrysorrogiatissa i Agia Moni. Od końca listopada do Trzech Króli. Pafoska alternatywa dla wiosek Troodos.",
+        "dates": "Koniec lis. – 6 sty.",
+        "venue": "Wioska Statos-Agios Fotios"
+      },
+      "cyprus-jazz-world-music-showcase": {
+        "name": "Cyprus Jazz & World Music Showcase",
+        "description": "Trzy dni cypryjskiego i międzynarodowego jazzu w Teatrze Rialto. Około 15 zespołów; współczesna cypryjska muzyka, warsztaty, jam sessions i afterparty. Przegląd promuje lokalnych muzyków w branży i daje publiczności skondensowaną dawkę wyspiarskiej sceny jazzowej. Zwykle początek grudnia. Bilety od 8 € za dzień. Obowiązkowy dla fanów jazzu.",
+        "dates": "Zwykle pierwszy weekend grudnia",
+        "venue": "Teatr Rialto, Limassol"
+      },
+      "peloponnese-wine-festival": {
+        "name": "Festiwal Win Peloponezu",
+        "description": "Greckie terroir na Cyprze. Około 25 winiarni z Peloponezu nalewa wina PDO i PGI w Carob Mill Restaurants. Masterclassy, otwarte degustacje i zawodowi sommelierzy. Okazja, by spróbować Nemei, Mantinii i innych greckich regionów bez opuszczania wyspy. Zwykle początek lutego. Bilety od około 10 €. Miłośnicy wina, notujcie.",
+        "dates": "Zwykle początek lutego",
+        "venue": "Carob Mill Restaurants, Limassol"
+      },
+      "portfolio-wine-tasting": {
+        "name": "Portfolio Wine Tasting",
+        "description": "Weekend poważnego wina w Technopolis 20. Ponad 100 starannie wybranych win z Cypru, Grecji, Włoch i Francji; dziesiątki producentów. Kiedyś tylko dla branży, dziś otwarte dla entuzjastów. Dwa dni pod koniec stycznia. Pafoska odpowiedź na wielkie degustacje Limassol. Rezerwuj wcześnie; miejsca znikają.",
+        "dates": "Koniec stycznia (2 dni)",
+        "venue": "Technopolis 20, Pafos"
+      },
+      "protaras-christmas": {
+        "name": "Świąteczne Obchody w Protaras",
+        "description": "Fig Tree Bay i nabrzeże Protaras rozświetlają się w grudniu. Kolędnicy, świąteczne stragany i sylwestrowe wydarzenia. Ciszej niż latem; palmy i morze nadają świętom śródziemnomorski rys. Połącz z Cape Greco lub Konnos na nadmorski dzień.",
+        "dates": "Przez grudzień do początku sty.",
+        "venue": "Nabrzeże Protaras"
+      },
+      "epiphany-cyprus": {
+        "name": "Epifania (Teofania)",
+        "description": "6 stycznia Cypr obchodzi Epifanię — chrzest Chrystusa. Kapłani rzucają do morza drewniany krzyż; młodzi mężczyźni skaczą z łodzi i falochronu, by go wydobyć. Kto go znajdzie, otrzymuje błogosławieństwo na cały rok. Ceremonia odbywa się w portach i na plażach całej wyspy — Larnaka, Limassol, Pafos i inne nadmorskie miasta. Zbierają się tłumy, brzmią hymny, a nawet zimą najodważniejsi pływacy dają nura. To dzień świąteczny, a atmosfera jest zarazem podniosła i radosna. Ubierz się ciepło i przyjdź wcześnie na dobre miejsce.",
+        "dates": "6 stycznia",
+        "venue": "Miasta nadmorskie"
+      }
+    },
+    "restaurants": {
+      "zygi-tavernas": {
+        "description": "Między Larnaką a Limassol. Żadnych ruin, żadnych koronek. Tylko ryby. Tawerny ciągną się wzdłuż portu; serwują to, co łodzie przywiozły rano. Jadają tu miejscowi. Zimowy obiad nad wodą — ośmiornica, dorada, kalmary. Tempo jest powolne. Kawa po posiłku — obowiązkowa. Do Zygi Cypryjczycy jeżdżą na niedzielną rybę. Połącz z Chirokitią, Lefkarą albo szlakiem Cape Greco.",
+        "winterTip": "Tawerny ciągną się wzdłuż portu. Zamów to, co przywiozły łodzie. Niedziela to dzień miejscowych. Połącz z Chirokitią albo Lefkarą.",
+        "bestTimeToVisit": "Pora obiadowa; w niedziele tłum miejscowych",
+        "localSecret": "Między Larnaką a Limassol. Żadnych ruin, żadnych koronek. Tylko ryby. Tempo jest powolne. Kawa po posiłku — obowiązkowa.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–23",
+        "transport": "Port Zygi, między Larnaką a Limassol. ~25 min z Larnaki.",
+        "parking": "Przy porcie."
+      },
+      "governors-beach-tavernas": {
+        "description": "Białe klify nad ciemnym wulkanicznym piaskiem. Tawerny przycupnęły na klifach; serwują świeże ryby i meze. W łagodne grudniowe popołudnie posiedzisz na zewnątrz pod kocem. Ryba świeża, wino się leje. Jedno z najlepszych miejsc na zimowy obiad na wybrzeżu. Kontrast — białe klify, ciemny piasek — uderza w zimowym świetle. Połącz Kourion albo Kolossi rano, rybę w porze obiadu. Szlak Cape Greco albo Chirokitia dopełnią dzień.",
+        "winterTip": "W łagodne grudniowe dni siadaj na zewnątrz pod kocem. Tawerny na klifach są otwarte. Ruiny rano, ryba na obiad.",
+        "bestTimeToVisit": "Pora obiadowa; po Kourion albo Kolossi",
+        "localSecret": "Znajdź zatoczkę. Albo usiądź w tawernie. Białe klify i ciemny piasek. W łagodne grudniowe popołudnie posiedź na zewnątrz. Patrz na morze. Piętnaście minut od Kourion.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–23",
+        "transport": "Governor's Beach, między Limassol a Larnaką. ~20 min z Limassol.",
+        "parking": "Parking przy klifie i plaży."
+      },
+      "the-polo": {
+        "description": "Nr 1 listy Wiz 50 Best za 2025. Śródziemnomorskie fine dining w Alasia Boutique Hotel. Szef kuchni Pavlos Kyriakis. Wyważone smaki, nienaganna technika, wyjątkowa obsługa. Rezerwuj z wyprzedzeniem; ubierz się elegancko. Zimowe wieczory są przytulne. Miejsce na wyjątkowe okazje dla wymagających.",
+        "winterTip": "Rezerwuj z wyprzedzeniem. Ubierz się elegancko. Zimowe wieczory są przytulne. Nr 1 Wiz 50 Best drugi rok z rzędu.",
+        "bestTimeToVisit": "Kolacja; rezerwuj z dużym wyprzedzeniem",
+        "localSecret": "The Polo trzyma szczyt drugi rok z rzędu. Wyważone smaki, nienaganna technika."
+      },
+      "the-farmyard": {
+        "description": "Top 5 listy Wiz 50 Best. Azjatycka kuchnia comfort w Kathikas koło Pafos. Szef kuchni Savvas Iakovides. Filozofia farm-to-table. Na pętli Akamas — przejdź rano Adonisa albo Afrodytę, potem zarezerwuj obiad. Wioska i jedzenie czynią z niego cel sam w sobie. Rezerwuj z wyprzedzeniem; zapełnia się. Zimą: szlak rano, ten posiłek w nagrodę.",
+        "winterTip": "Na pętli Akamas. Rano Adonis albo Afrodyta, potem rezerwuj obiad. Rezerwuj 1–2 dni wcześniej; weekendy się zapełniają.",
+        "bestTimeToVisit": "Pora obiadowa; przyjdź 13–14 po porannym szlaku",
+        "localSecret": "Wioska Kathikas. Azjatycki comfort food. Szlaki Akamas zapracują na ten posiłek. Winnice Vasilikon i Sygkrasi są kilka minut stąd.",
+        "openingHours": "Obiad i kolacja; rezerwuj z wyprzedzeniem",
+        "transport": "Wioska Kathikas. Na pętli Akamas–Laona. ~35 min z Pafos.",
+        "parking": "Parking wiejski; rezerwuj wcześniej."
+      },
+      "psilo-dendro": {
+        "description": "Tawerna nad rzeką. Właściciel zna każdego wędrowca. Zamów pstrąga z migdałami — psaróvrasto, duszonego w winie z ziołami. Kominek, górskie powietrze, szum Kryos Potamos. To zestaw, który miejscowi robią po Artemis albo wodospadach Kaledonia. Szlak rano; skończ do 13. Dojedź do Platres. Nie odpuszczaj.",
+        "winterTip": "Po Artemis albo wodospadach Kaledonia. Pstrąg z migdałami. Kominek. Skończ szlak do 13, potem jedź do Platres.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku (dotrzyj do 13–13:30)",
+        "localSecret": "Ta nad rzeką. Pstrąg z migdałami. Właściciel zna każdego wędrowca. Psilo Dendro to klasyk; inne ciągną się wzdłuż Kryos Potamos.",
+        "openingHours": "Zwykle 12–15:30, 19–22; zimą zadzwoń",
+        "transport": "Wioska Platres, nad Kryos Potamos. ~45 min z Limassol.",
+        "parking": "Parking wiejski; nad rzekę dojdziesz pieszo."
+      },
+      "polis-harbour": {
+        "description": "Po szlaku Adonisa albo Afrodyty. Tawerny portowe serwują rybę naprawdę świeżą — to, co przywiozły łodzie. Winnica Vasilikon leży na pętli Akamas w drodze powrotnej. Albo odpuść wino i po prostu jedz. Szlak zapracował na ten posiłek. Polis wie, jak karmić wędrowców. Widok na port, spokojne tempo. Żadnych wieżowców, żadnego neonu — tylko ryba, wino i zatoka.",
+        "winterTip": "Szlak rano. Skończ do 13. Polis na obiad. Winnica Vasilikon w drodze powrotnej. Dwa dni, jeśli możesz: szlak, jedzenie, sen, powtórz.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Szlak zapracował na ten posiłek. Do portu Polis Cypryjczycy jeżdżą na ryby. Zamów to, co świeże. Widok na port w cenie.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–23; część zamknięta w pon. lub wt.",
+        "transport": "Port Polis, brama Akamas. ~45 min z Pafos.",
+        "parking": "Przy porcie; zapełnia się w weekendowe południa."
+      },
+      "cor-gastronomy": {
+        "description": "Nr 2 listy Wiz 50 Best. Międzynarodowe casual fine dining. Kuchnia inspirowana Francją ze śródziemnomorską fuzją, szef Christodoros Theofanou. Nagradzana. Zimowy taras przy łagodnej pogodzie. Rezerwuj z wyprzedzeniem. Oczko niżej od The Polo w formalności, w wykonaniu — najwyższa półka.",
+        "winterTip": "Nagradzana kuchnia. Zimowy taras przy łagodnej pogodzie. Rezerwuj wcześniej.",
+        "bestTimeToVisit": "Kolacja; rezerwuj wcześniej",
+        "localSecret": "Francuska inspiracja ze śródziemnomorską fuzją. Najwyższa półka wykonania. Zimowy taras."
+      },
+      "sentio": {
+        "description": "Top 5 listy Wiz 50 Best. Kuchnia śródziemnomorska w Nikozji. Współczesna, kreatywna. Ucieczka na deszczowy dzień w Nikozji. Połącz z Muzeum Leventisa albo spacerem po starym mieście. Rezerwuj z wyprzedzeniem. Stołeczna opcja, gdy wybrzeże i góry nie wołają.",
+        "winterTip": "Deszczowa Nikozja. Połącz z Muzeum Leventisa. Rezerwuj wcześniej.",
+        "bestTimeToVisit": "Obiad lub kolacja; połącz z muzeum",
+        "localSecret": "Gdy wybrzeże nie woła: Nikozja ma własną scenę. Sentio jej przewodzi."
+      },
+      "kakopetria-trout": {
+        "description": "Sceneria rzeki. Psaróvrasto — pstrąg duszony w winie z ziołami. Pstrągowe tawerny Kakopetrii ciągną się wzdłuż Kryos Potamos. Rano wodospady Kaledonia, pętla Kryos Potamos albo Kampos tou Livadiou; Kakopetria na obiad. Wioska zna wędrowców. Kominek, górskie powietrze, szum rzeki. Zimą: przytulnie w środku.",
+        "winterTip": "Rano Kaledonia albo Kryos Potamos. Kakopetria na obiad. Psaróvrasto — pstrąg duszony w winie z ziołami.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Psaróvrasto. Pstrąg, wino, zioła. Rzeka płynie obok. Kakopetria zna wędrowców. Malowane kościoły UNESCO w Galacie są kilka minut stąd — zostaw czas na spacer.",
+        "openingHours": "Zwykle 12–15:30, 19–22; zimą zadzwoń",
+        "transport": "Wioska Kakopetria, dolina Solea. ~55 min z Limassol.",
+        "parking": "Parking wiejski; część tawern nad rzeką."
+      },
+      "santo-restaurant": {
+        "description": "Obiad w winnicy z widokiem na morze. Santo góruje nad Limassol; restauracja jest otwarta cały rok. W łagodny zimowy dzień posiedzisz na zewnątrz pod kocem. Ich czerwone Ayios Onoufrios gra z cypryjskim meze. Poproś o obiad w parze z winami. Zimą grzejniki. Zachód słońca w grudniu około piątej.",
+        "winterTip": "Rezerwuj obiad dla widoku na morze. Zimą grzejniki. Zachód słońca w grudniu około 17.",
+        "bestTimeToVisit": "Pora obiadowa; 12–14 albo o zachodzie",
+        "localSecret": "Ich czerwone Ayios Onoufrios gra z cypryjskim meze. Poproś o obiad w parze z winami."
+      },
+      "kouklia-cafe": {
+        "description": "Ruiny za ramieniem. Wioska Kouklia leży tuż przy Palaipafos, starożytnym sanktuarium Afrodyty. Wiejskie kawiarnie i tawerny serwują prostą cypryjską kuchnię z widokiem na historię. Kawa, meze, powolny obiad. Zima jest cicha; stanowisko i wioska należą do tych, którzy się nie spieszą. Połącz Palaipafos rano, Kouklię na obiad. Nadmorska ścieżka Petra tou Romiou jest niedaleko.",
+        "winterTip": "Zimą cicho. Palaipafos rano, Kouklia na kawę albo obiad. Prosta kuchnia, starożytna sceneria.",
+        "bestTimeToVisit": "Pora obiadowa; po poranku w Palaipafos",
+        "localSecret": "Ruiny za ramieniem. Prosta kuchnia, starożytna sceneria. Kouklia nagradza cierpliwych. Groby Królewskie i mozaiki Pafos są krótką jazdą stąd.",
+        "openingHours": "Kawiarnie i tawerny; zwykle 9–18 albo pory obiadowe",
+        "transport": "Wioska Kouklia, przy Palaipafos. ~25 min z Pafos.",
+        "parking": "W wiosce; przy stanowisku archeologicznym."
+      },
+      "seasons-oriental": {
+        "description": "Top 5 listy Wiz 50 Best za 2025. Kuchnia azjatycka w hotelu Four Seasons w Limassol. Kantońska baza, szef kuchni Guan Ruijiong. Zimowe menu i taras. Rezerwuj z wyprzedzeniem. Stopień wyrafinowania na wyjątkowe wieczory. Połącz z Kourion albo Kolossi na dzień na wybrzeżu, potem kolacja.",
+        "winterTip": "Rezerwuj z wyprzedzeniem. Zimowy taras przy łagodnej pogodzie. Top 5 Wiz 50 Best.",
+        "bestTimeToVisit": "Kolacja; rezerwuj z dużym wyprzedzeniem",
+        "localSecret": "Kantońska baza, szef kuchni Guan Ruijiong. Inny smak niż śródziemnomorski Cypr."
+      },
+      "kiti-tavernas": {
+        "description": "Po kościele Angeloktisti. Bizantyjski kościół Angeloktisti w Kiti przyciąga zwiedzających; obiad robią wiejskie tawerny. Prosta cypryjska kuchnia, meze, wiejskie tempo. Najpierw kościół — mozaika z VI wieku to jedna z najstarszych we wschodniej części Morza Śródziemnego — potem obiad. Połącz z Zygi na ryby albo Lefkarą na koronki. Słone Jezioro w Larnace i Cape Greco są w zasięgu.",
+        "winterTip": "Najpierw kościół, potem obiad. Na kościół zarezerwuj 40 minut. Połącz z Zygi albo Lefkarą na pełny dzień.",
+        "bestTimeToVisit": "Pora obiadowa; po poranku w kościele",
+        "localSecret": "Mozaiki Angeloktisti, potem wiejski obiad. Kiti nagradza powolnych. Większość autokarów je omija.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Kiti, przy lotnisku Larnaka. ~15 min z Larnaki.",
+        "parking": "W wiosce; przy kościele."
+      },
+      "platres-trout": {
+        "description": "Pstrągowe tawerny Platres. Zamów psaróvrasto — pstrąga duszonego w winie z ziołami. Kominek, górskie powietrze, szum Kryos Potamos. Po Artemis, Kaledonii albo Kampos tou Livadiou. Wioska zna wędrowców. Psilo Dendro to klasyk; inne ciągną się wzdłuż rzeki. Zimowy obiad przy ogniu.",
+        "winterTip": "Pstrąg przy ogniu. Po Artemis, Kaledonii albo Atalante. Skończ szlak do 13, Platres na obiad.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Psilo Dendro nad rzeką to klasyk. Psaróvrasto — pstrąg, wino, zioła. Góra robi resztę.",
+        "openingHours": "Zwykle 12–15:30, 19–22; Psilo Dendro i inne",
+        "transport": "Wioska Platres. ~45 min z Limassol.",
+        "parking": "Parking wiejski; do tawern nad rzeką pieszo."
+      },
+      "latsi-harbour": {
+        "description": "Portowa ryba na skraju Akamas. Latsi serwuje to, co przywożą łodzie — prościej niż w Polis, bliżej startu szlaku przy Kąpielisku Afrodyty. Zimowy obiad nad wodą. Połącz rano z Adonisem, Afrodytą albo Smigies; Latsi na obiad przed drogą powrotną. Jazda wzdłuż wybrzeża to część dnia. Mniej tłoczno niż w porcie Polis.",
+        "winterTip": "Bliżej Kąpieliska Afrodyty niż Polis. Najpierw szlak, Latsi na obiad. Prościej i ciszej niż port Polis.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Na pętli Akamas. Świeża ryba, widok na port. Latsi to cicha alternatywa dla Polis. Jazda wzdłuż wybrzeża nagradza.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–23",
+        "transport": "Port Latsi, na północ od Polis. ~40 min z Pafos.",
+        "parking": "Przy porcie."
+      },
+      "nicosia-tavernas": {
+        "description": "Laiki Geitonia i stare miasto. Tawerny wciśnięte w brukowane uliczki. Meze, souvlaki, halloumi. Zimowe wieczory są przytulne. Połącz z Muzeum Leventisa, Muzeum Cypru albo deszczowym zwiedzaniem stolicy. Stare miasto ma inny rytm. W popularnych miejscach rezerwuj.",
+        "winterTip": "Laiki Geitonia. Przytulnie zimą. Połącz z muzeami.",
+        "bestTimeToVisit": "Obiad lub kolacja; w popularnych miejscach rezerwuj",
+        "localSecret": "Rytm starego miasta. Meze, halloumi, tempo stolicy."
+      },
+      "pissouri-tavernas": {
+        "description": "Tawerny na klifach nad zatoką Pissouri. Widok na zachód słońca nad łukiem wybrzeża. Meze, ryby, lokalne wino. Zimowe zachody około piątej. Zatoka pozostaje łagodna, gdy w górach zimno. Połącz z nadmorską ścieżką Petra tou Romiou, ruinami Kourion albo wąwozem Avakas. Obiad lub kolacja na zachód od Limassol.",
+        "winterTip": "Tawerny na klifach. Zimą zachód słońca około 17. Łagodna zatoka. Rano Avakas albo Petra tou Romiou.",
+        "bestTimeToVisit": "Późny obiad lub wczesna kolacja na zachód słońca",
+        "localSecret": "Łuk zatoki. Miejsca na klifie. Zachód słońca z kieliszkiem. Pissouri jest cichsze niż Limassol — zatoka nagradza.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–23",
+        "transport": "Zatoka Pissouri. ~35 min z Limassol, ~25 min z Pafos.",
+        "parking": "Zatoka i klif."
+      },
+      "omodos-tavernas": {
+        "description": "Brukowany plac Omodos. Tawerny pod platanami. Meze, kleftiko, halloumi, lokalne wino. Po winiarskiej pętli Krasochorii — Tsiakkas, Oenou Yi, Lania, Loukas — albo szlaku Artemis, Omodos to naturalny przystanek na obiad. Nad wioską czuwa klasztor. Zimowe słońce na placu. Tempo jest powolne. W weekendy rezerwuj.",
+        "winterTip": "Brukowany plac. Zimowe słońce. Po Tsiakkas, Lanii albo szlaku Artemis. W weekendy rezerwuj.",
+        "bestTimeToVisit": "Pora obiadowa; w weekendy rezerwuj",
+        "localSecret": "Naturalny przystanek na pętli Krasochorii. Meze, wino, tempo wioski. Jeden kafenion ma niebieskie drzwi — siadają tam winiarze.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22; kawiarnie na placu cały dzień",
+        "transport": "Wioska Omodos, Krasochoria. ~40 min z Limassol.",
+        "parking": "Plac wiejski; w weekendy się zapełnia."
+      },
+      "limassol-marina-restaurants": {
+        "description": "Superjachty. Brukowana promenada. Marina leży między starym miastem a morzem — kuchnia śródziemnomorska, ryby, włoska, sushi. Zimą tłumy rzedną, a światło na wodzie robi się złote. Kawiarnie i restauracje są otwarte; w łagodne grudniowe wieczory siadaj na zewnątrz pod kocem. To miejski Cypr w najlepszym wydaniu. Nie wioski — puls miasta, gwar mariny, spacer promenadą. Rezerwuj stoliki przy wodzie; popularne miejsca się zapełniają. Połącz z Kolossi albo Kourion rano, a tu przyjdź na kolację. Kontrast robi swoje.",
+        "winterTip": "Mniej tłumów niż latem. Łagodne grudniowe wieczory: siadaj na zewnątrz pod kocem. Światło na wodzie o zmierzchu. Rezerwuj stoliki przy wodzie w popularnych miejscach.",
+        "bestTimeToVisit": "Kolacja; zachód słońca z promenady. Na weekendowe stoliki przy wodzie rezerwuj wcześniej.",
+        "localSecret": "Daleki koniec promenady, w stronę starego fortu. Mniej turystów, te same widoki. Najpierw zamów kawę. Obejdź marinę. Potem jedz. Nie spiesz się z podejściem.",
+        "openingHours": "Większość lokali 10–23; część zamyka o 22. Zależnie od restauracji — sprawdź poszczególne miejsca.",
+        "transport": "Pieszo ze starego miasta (10 min). Autobus 30 do mariny; taksówka z centrum.",
+        "parking": "Podziemny parking mariny; miejsca wzdłuż promenady."
+      },
+      "protaras-tavernas": {
+        "description": "Nabrzeże Protaras i zaplecze. Rybne tawerny nad morzem; meze w głębi. Zima: mniej tłumów, łagodne wieczory. Rano szlak Cape Greco, Protaras na obiad. Fig Tree Bay i Konnos są obok. Tempo wolniejsze niż latem. W popularnych miejscach rezerwuj.",
+        "winterTip": "Mniej tłumów niż latem. Rano szlak Cape Greco, Protaras na obiad. Łagodne wieczory.",
+        "bestTimeToVisit": "Pora obiadowa; po szlaku Cape Greco",
+        "localSecret": "Zimowy Protaras jest cichszy. Ryby i meze. Tempo spada. Szlak Cape Greco zapracował na ten posiłek.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–23",
+        "transport": "Nabrzeże Protaras. ~45 min z Larnaki.",
+        "parking": "Nabrzeże i wioska."
+      },
+      "larnaca-old-town": {
+        "description": "Nadmorska promenada i stare miasto Larnaki. Meze, ryby, souvlaki. Promenada Finikoudes i boczne uliczki. Zima: łagodna; posiedzisz na zewnątrz pod kocem. Połącz ze Słonym Jeziorem, Kiti, Chirokitią albo Zygi. Miasto ma własny rytm.",
+        "winterTip": "Łagodna zima. Finikoudes i boczne uliczki. Flamingi Słonego Jeziora obok.",
+        "localSecret": "Promenada i stare miasto. Meze, ryby. Rytm miasta."
+      },
+      "pafos-harbour": {
+        "description": "Port i zamek w Pafos. Ryby, meze, widok na port. Zimowe zachody słońca. Połącz z mozaikami Pafos, Grobami Królewskimi albo Coral Bay. Zamek rozświetla się o zmierzchu. Na miejsca przy wodzie rezerwuj.",
+        "winterTip": "Widok na port. Zimowe zachody słońca. Światła zamku o zmierzchu.",
+        "localSecret": "Port i zamek. Ryby, meze. Zmierzch to ta godzina."
+      },
+      "agros-tavernas": {
+        "description": "Wioska Agros. Produkty różane, loukoumi, górskie meze. Wioska słynie z róż i słodyczy. Tawerny serwują lokalną kuchnię. Połącz ze szlakiem lasu Machairas, zaporą Xyliatos albo drogą na Kykkos. Zima: przytulnie, górski charakter. Likier różany i loukoumi przed obiadem albo po nim.",
+        "winterTip": "Produkty różane, loukoumi. Rano las Machairas albo Xyliatos, Agros na obiad. Przytulnie zimą.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Najpierw róże i słodycze. Potem górskie meze. Agros ma własny rytm.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Agros, Pitsilia. ~50 min z Limassol.",
+        "parking": "Parking wiejski."
+      },
+      "lefkara-tavernas": {
+        "description": "Wioska koronek. Lefkaritiko z listy UNESCO, tkane od czasów Wenecjan. Tawerny w kamiennych domach, pracownie srebra, koronczarki w progach. Meze, lokalne wino, wiejskie tempo. Pano i Kato Lefkara — dwie wioski, jedna tradycja. Zimowe światło na bruku; mniej autokarów; rzemiosło jest najważniejsze.",
+        "winterTip": "Zima jest idealna: łagodnie, cicho, koronczarki w progach. W marcu Festiwal Koronki z Lefkary — plac wypełniają pokazy, warsztaty, stragany. Jeśli przyjeżdżasz wtedy, rezerwuj obiad. Poza tym spokojne są przedpołudnia w tygodniu.",
+        "bestTimeToVisit": "Obiad po zakupach koronek; przedpołudnia w tygodniu na mniejszy tłum. W marcu na Festiwal Koronki.",
+        "localSecret": "Zacznij od Kato Lefkary. Ciszej. Ta sama koronka, często lepsze ceny. Do Pano wejdź, gdy będziesz gotów. Obie mają tawerny. Kamień nagradza powolne błądzenie.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22; część zamknięta w pon. lub wt.",
+        "transport": "30 min z Larnaki. Autobus 429 do Lefkary.",
+        "parking": "Bezpłatny przy wjeździe do wioski; zapełnia się w weekendy i podczas Festiwalu Koronki.",
+        "backstory": "Koronkę lefkaritiko wyplata się na tych wzgórzach od czasów, gdy Cyprem rządzili Wenecjanie. W 2009 roku UNESCO wpisało ją na listę niematerialnego dziedzictwa kulturowego. Legenda głosi, że Leonardo da Vinci kupił tu obrus ołtarzowy dla katedry w Mediolanie. Prawda czy nie — rzemiosło jest stare: babcie uczą wnuczki tych samych geometrycznych wzorów, ścieg po ściegu. Wioska leży na 700 m, kamienne domy wspinają się po zboczu, widok biegnie przez dolinę. Pano Lefkara to główna wioska; Kato Lefkara poniżej dzieli tę samą tradycję, ale pozostaje cichsza. Tawerny pasują do rytmu — meze, lokalne wino, kamienne mury, bez pośpiechu. Koronka rano, obiad w południe. Tak działa Lefkara.",
+        "culturalNote": "Ti kánis? (Τι κάνεις) — jak się masz? To zwyczajowe powitanie, zanim zaczniesz oglądać. Śmiało pytaj, jak powstaje koronka; rzemieślniczki są dumne i chętnie tłumaczą. Kalí órexi przed jedzeniem — smacznego."
+      },
+      "kathikas-tavernas": {
+        "description": "Wioska Kathikas na pętli Akamas. Tradycyjne tawerny; meze, lokalne wino. The Farmyard to gwiazda — rezerwuj wcześniej; inne oferują prostsze dania. Połącz rano z Adonisem, Afrodytą albo Smigies; Kathikas na obiad. Winnice Vasilikon i Sygkrasi są kilka minut stąd. Zimą: szlak rano, potem wiejski obiad.",
+        "winterTip": "Pętla Akamas. Szlak rano, obiad w Kathikas. The Farmyard szybko się zapełnia; rezerwuj 1–2 dni wcześniej.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Kathikas siedzi na pętli. Meze, wino. The Farmyard albo prostsze miejsca. Winnice Vasilikon i Sterna obok.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Kathikas. Na pętli Akamas–Laona. ~35 min z Pafos.",
+        "parking": "Parking wiejski."
+      },
+      "limassol-old-town": {
+        "description": "Stare miasto Limassol i plac Saripolou. Tawerny, meze, souvlaki. Okolice zamku. Zima: łagodna; stare miasto ma inny puls. Połącz z Kolossi, Kourion albo mariną. Miejski Cypr.",
+        "winterTip": "Puls starego miasta. Łagodne zimowe wieczory. Kolossi i Kourion obok.",
+        "localSecret": "Saripolou, zamek, meze. Miejski Cypr. Rytm starego miasta."
+      },
+      "kyrenia-tavernas": {
+        "description": "Port w Kirenii. Rybne tawerny z widokiem na zamek. Port jest sercem. Zima: łagodniej niż w górach; spacer po porcie, ryba na obiad. Uwaga: dojazd z południa Cypru; sprawdź aktualne trasy. Połącz z Bellapais, St Hilarion.",
+        "winterTip": "Port i zamek. Łagodnie zimą. Sprawdź dojazd.",
+        "localSecret": "Serce to port. Ryby, widoki. Bellapais i St Hilarion obok."
+      },
+      "ayia-napa-tavernas": {
+        "description": "Ayia Napa poza klubami. Tawerny przy wiejskim placu, rybne miejsca w porcie. Zima: kurort cichnie; wyłania się autentyczna cypryjska kuchnia. Połącz z Morskimi Jaskiniami, Cape Greco, plażą Nissi. Poza sezonem widać drugą stronę.",
+        "winterTip": "Ayia Napa poza sezonem. Wiejski plac, port. Druga strona.",
+        "localSecret": "Poza klubami. Plac, ryby. Zima odsłania autentyczność."
+      },
+      "troodos-square": {
+        "description": "Plac Troodos i okolice centrum turystycznego. Kawiarnie, proste obiady, gorąca czekolada. Po Artemis, Atalante albo Persefonie. Zima: niezbędne ciepło po wędrówce. Możliwy śnieg; plac jest węzłem. Nic wykwintnego — kawa, kanapki, ciepło. Góry robią swoje; plac Troodos stawia cię na nogi.",
+        "winterTip": "Ciepło po wędrówce. Gorąca czekolada, kawa. Możliwy śnieg — przytulnie w środku. Niezbędne po Artemis albo Atalante.",
+        "bestTimeToVisit": "Obiad lub przerwa na kawę; po porannym szlaku",
+        "localSecret": "Węzeł Troodos. Po Artemis albo Atalante. Ogrzej się tutaj. Gdy spadnie śnieg, obok jest ośrodek narciarski na Olimpie.",
+        "openingHours": "Centrum turystyczne i kawiarnie; zwykle 9–17 lub 18",
+        "transport": "Plac Troodos, 1750 m. ~1 godz. z Limassol.",
+        "parking": "Plac i centrum turystyczne; w weekendy się zapełnia."
+      },
+      "solea-valley": {
+        "description": "Wioski doliny Solea — Kakopetria, Galata, Kalopanagiotis. Pstrąg, meze, górska kuchnia. Sceneria rzeki, kominki. Połącz ze szlakiem Mylikouri, Kampos tou Livadiou, Kryos Potamos albo Agios Nikolaos tis Stegis. Zima: w dolinie przytulnie. Psaróvrasto (pstrąg) to klasyk.",
+        "winterTip": "Dolina Solea. Pstrąg, kominki. Rano Mylikouri albo Kampos, Kakopetria albo Galata na obiad.",
+        "bestTimeToVisit": "Pora obiadowa; po porannym szlaku",
+        "localSecret": "Kakopetria, Galata, Kalopanagiotis. Rzeka i góry. Przytulnie zimą. Dolina nagradza powolną jazdę.",
+        "openingHours": "Wiejskie tawerny zwykle 12–15:30, 19–22",
+        "transport": "Dolina Solea. Kakopetria ~55 min z Limassol.",
+        "parking": "Parkingi wiejskie."
+      },
+      "zygi-mikri": {
+        "description": "Mniejsza marina Zygi i miejsca w bocznych uliczkach. Mniej turystycznie niż główny port. Świeże ryby, meze. Zimowy niedzielny obiad — rytuał miejscowych. Połącz z Chirokitią, Lefkarą albo Governor's Beach. Tempo jest powolne.",
+        "winterTip": "Zygi bocznych uliczek. Niedziela miejscowych. Mniej turystycznie.",
+        "localSecret": "Marina Mikri. Zygi miejscowych. Wolne tempo, świeża ryba."
+      },
+      "kourion-tavernas": {
+        "description": "Wioska Episkopi przy Kourion. Tawerny z widokiem na starożytne stanowisko. Meze, lokalne wino. Rano ruiny Kourion; Episkopi na obiad. Połącz z Kolossi, Governor's Beach albo winnicą Zambartas. Zima: łagodna; ruiny płoną w popołudniowym świetle. Teatr patrzy na morze.",
+        "winterTip": "Rano Kourion. Episkopi na obiad. Ruiny w popołudniowym świetle. Kolossi i Governor's Beach obok.",
+        "bestTimeToVisit": "Pora obiadowa; po poranku w Kourion",
+        "localSecret": "Kourion prosto od stolika. Wioska Episkopi. Ruiny i meze. Na dalekim skraju teatru jest ławka — o 16 w grudniu światło pada na ruiny.",
+        "openingHours": "Tawerny zwykle 12–15:30, 19–22",
+        "transport": "Wioska Episkopi, przy Kourion. ~25 min z Limassol.",
+        "parking": "W wiosce i przy Kourion."
       }
     }
   }

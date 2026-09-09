@@ -30,7 +30,7 @@ export default async function InstallPage() {
         description={t("header.description")}
         breadcrumbItems={[
           { label: tNav("home"), href: "/" },
-          { label: t("header.title"), href: "/install", isCurrent: true },
+          { label: tNav("install"), href: "/install", isCurrent: true },
         ]}
       />
 
