@@ -31,6 +31,13 @@ describe("buildDiscoverMapPlaces", () => {
     expect(places.find((p) => p.id === "omodos")?.kind).toBe("village");
     expect(places.find((p) => p.id === "tsiakkas")?.kind).toBe("winery");
   });
+
+  it("carries nameEl through the projection so popups can localize (b82)", () => {
+    const omodos = buildDiscoverMapPlaces(["omodos"])[0];
+    expect(omodos.nameEl).toBe("Όμοδος");
+    const capeGreco = buildTrailMapPlaces(["cape-greco"])[0];
+    expect(capeGreco.nameEl).toBe("Ακρωτήρι Γκρέκο");
+  });
 });
 
 describe("buildTrailMapPlaces", () => {

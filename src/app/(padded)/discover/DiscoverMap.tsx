@@ -9,8 +9,9 @@ import "leaflet/dist/leaflet.css";
 import AppLink from "@/components/AppLink";
 import { TOKENS, MAP_ICON_SHADOW, MAP_ICON_SHADOW_SM, TYPE, LAYER } from "@/lib/design-tokens";
 import AddToItineraryButton from "@/components/AddToItineraryButton";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
+import { getLocalizedName } from "@/lib/localize";
 import type { MapBounds } from "@/lib/discover-map-focus";
 
 export type DiscoverMapPinKind =
@@ -27,6 +28,8 @@ export type DiscoverMapPinKind =
 export type DiscoverMapPlace = {
   id: string;
   name: string;
+  /** Greek-first popup titles, same contract as the cards (AUD-100 / batch 82). */
+  nameEl?: string;
   href: string;
   region: string;
   lat: number;
@@ -105,6 +108,7 @@ export default function DiscoverMap({
   dimUnhighlighted = false,
   showFooter = true,
 }: DiscoverMapProps) {
+  const locale = useLocale();
   const tCommon = useTranslations("common");
   const tDiscover = useTranslations("discover");
   const [interactive, setInteractive] = useState(true);
@@ -194,7 +198,7 @@ export default function DiscoverMap({
                     {tDiscover(`map.legend.${p.kind}`)}
                   </p>
                   <AppLink href={p.href} className={`${TYPE.cardTitle} block mb-1`}>
-                    {p.name}
+                    {getLocalizedName(p, locale)}
                   </AppLink>
                   <p className="text-xs text-muted-ink mb-3">{p.region}</p>
                   <div className="flex flex-col gap-2">

@@ -30,4 +30,14 @@ describe("activity-catalog", () => {
       expect(countActivityOptions(key), `${key} total options`).toBeGreaterThanOrEqual(3);
     }
   });
+
+  it("trailLinks carry nameEl so chip renderers can localize (b82)", () => {
+    const climbing = buildActivitySection("climbing", allDiscoverItems);
+    const capeGreco = climbing?.trailLinks?.find((t) => t.id === "cape-greco");
+    expect(capeGreco?.nameEl).toBe("Ακρωτήρι Γκρέκο");
+    // A trail without a native name stays EN via getLocalizedName's fallback.
+    const pentadaktylos = climbing?.trailLinks?.find((t) => t.id === "pentadaktylos");
+    expect(pentadaktylos?.name.length).toBeGreaterThan(0);
+    expect(pentadaktylos?.nameEl).toBeUndefined();
+  });
 });

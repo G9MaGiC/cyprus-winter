@@ -25,7 +25,7 @@ export type DiscoverSection = {
   id: string;
   title: string;
   items: DiscoverItem[];
-  trailLinks?: { id: string; name: string; href: string }[];
+  trailLinks?: { id: string; name: string; nameEl?: string; href: string }[];
   seeMore?: { href: string; labelKey: string };
 };
 
@@ -220,8 +220,15 @@ export function buildDiscoverSections(
   const familyItems = pinFamilyLead(allDiscoverItems.filter(isFamilyFriendly));
   const familyTrailLinks = FAMILY_TRAIL_IDS.map((id) => {
     const t = trails.find((tr) => tr.id === id);
-    return t ? { id: t.id, name: t.name, href: `/trails/${t.id}` } : null;
-  }).filter((link): link is { id: string; name: string; href: string } => link != null);
+    if (!t) return null;
+    const link: { id: string; name: string; nameEl?: string; href: string } = {
+      id: t.id,
+      name: t.name,
+      nameEl: t.nameEl,
+      href: `/trails/${t.id}`,
+    };
+    return link;
+  }).filter((link): link is NonNullable<typeof link> => link != null);
   const accessibleItems = allDiscoverItems.filter(isAccessibleFriendly);
   const localWinterItems = allDiscoverItems.filter((item) =>
     (LOCAL_WINTER_PICK_IDS as readonly string[]).includes(item.id)

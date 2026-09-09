@@ -7,7 +7,8 @@ import AskAIButton from "@/components/AskAIButton";
 import { SECTION, CTA, EMPTY_STATE, HOME, HUB, LAYOUT, TYPE } from "@/lib/design-tokens";
 import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
-import { useTranslations } from "next-intl";
+import { getLocalizedName } from "@/lib/localize";
+import { useLocale, useTranslations } from "next-intl";
 
 type DiscoverSectionListProps = {
   sections: DiscoverCardSection[];
@@ -22,6 +23,7 @@ type DiscoverSectionListProps = {
 
 const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListProps>(
   function DiscoverSectionList({ sections, capPerSection }, ref) {
+    const locale = useLocale();
     const tCommon = useTranslations("common");
     const tDiscover = useTranslations("discover");
     const [shouldAnimate, setShouldAnimate] = useState(true);
@@ -114,7 +116,7 @@ const DiscoverSectionList = forwardRef<HTMLElement | null, DiscoverSectionListPr
                           href={trail.href}
                           className={CTA.chipSecondary}
                         >
-                          {trail.name}
+                          {getLocalizedName(trail, locale)}
                         </AppLink>
                       </li>
                     ))}
