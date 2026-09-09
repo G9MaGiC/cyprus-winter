@@ -30,7 +30,10 @@ describe("beta locale chrome", () => {
     const mustDiffer = [
       "footer.discover",
       "footer.tagline",
-      "footer.planYourTrip",
+      // common.planYourTrip is the live "Plan your trip" chrome key;
+      // footer.planYourTrip was an orphan this fixture alone kept credited
+      // as used (PR #236 review finding) — deleted with the fixture swapped.
+      "common.planYourTrip",
       "nav.signIn",
       "nav.secrets",
       "nav.openMenu",

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  isScannedSourceFile,
   findDynamicKeyPrefixesInFile,
   findIndirectNamespacePrefixes,
   findNamespaceBindingsInFile,
@@ -123,6 +124,17 @@ describe("coverage detector", () => {
     const used = findUsedKeysInFile(content, findNamespaceBindingsInFile(content));
     expect(used).toContain("home.hero.title");
     expect(used).toContain("common.addPlace");
+  });
+
+  it("scans application sources only — a test fixture cannot keep a dead key credited", () => {
+    // PR #236 review finding: footer.planYourTrip stayed "used" through a
+    // single full-key literal in a test fixture. Test files are data about
+    // the app, not consumption by it.
+    expect(isScannedSourceFile("SiteFooter.tsx")).toBe(true);
+    expect(isScannedSourceFile("recently-viewed.ts")).toBe(true);
+    expect(isScannedSourceFile("SiteFooter.test.tsx")).toBe(false);
+    expect(isScannedSourceFile("beta-locale-chrome.test.ts")).toBe(false);
+    expect(isScannedSourceFile("notes.md")).toBe(false);
   });
 
   it("resolveNamespaceAt falls back to the first binding for uses above it", () => {

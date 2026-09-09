@@ -55,7 +55,21 @@ export function flattenKeys(
   return out;
 }
 
-function walkDir(dir: string, ext: string[]): string[] {
+/**
+ * Only application sources count as consumption. A test fixture quoting a
+ * catalog-shaped key would otherwise keep a production-dead key alive in
+ * the strict gate (PR #236 review finding; same exclusion the extract walk
+ * gained in batch 76).
+ */
+export function isScannedSourceFile(name: string): boolean {
+  return (
+    (name.endsWith(".ts") || name.endsWith(".tsx")) &&
+    !name.endsWith(".test.ts") &&
+    !name.endsWith(".test.tsx")
+  );
+}
+
+function walkDir(dir: string): string[] {
   const files: string[] = [];
   if (!fs.existsSync(dir)) return files;
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -63,9 +77,9 @@ function walkDir(dir: string, ext: string[]): string[] {
     const full = path.join(dir, e.name);
     if (e.isDirectory()) {
       if (e.name !== "node_modules" && !e.name.startsWith(".")) {
-        files.push(...walkDir(full, ext));
+        files.push(...walkDir(full));
       }
-    } else if (ext.some((x) => e.name.endsWith(x))) {
+    } else if (isScannedSourceFile(e.name)) {
       files.push(full);
     }
   }
@@ -313,7 +327,7 @@ function collectUsedKeys(messageKeys: Set<string>): {
 } {
   const used = new Set<string>();
   const dynamicPrefixes = new Set<string>();
-  const files = walkDir(SRC_DIR, [".tsx", ".ts"]);
+  const files = walkDir(SRC_DIR);
 
   for (const file of files) {
     const content = fs.readFileSync(file, "utf8");
