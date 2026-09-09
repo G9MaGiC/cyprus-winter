@@ -2,6 +2,14 @@
 
 *Companion to `docs/UX_UI_PERSONA_AUDIT_2026-08-31.md` (batch 75). As of batches 56–74, every code-shaped item in the audit register is shipped, reviewed (two adversarial code passes, a claims audit, three full e2e battery runs, a security sweep) and gated in CI. What remains is listed here as one answerable decision each — with a recommendation, and with what ships the moment it's decided. Ordered by how much each decision unblocks.*
 
+## D0 — Restore GitHub Actions (discovered during PR #236; blocks all CI value)
+
+**Blocked today:** every Actions run in the repository has ended in `startup_failure` since at least August 31 — on main and every branch, including the five previously merged audit PRs. Jobs never start; runs land on a nameless "BuildFailed" pseudo-workflow. The workflow file is valid, so this is account-level: typically a reached Actions spending limit or a failed payment method (GitHub → Settings → Billing and plans), or Actions disabled under the repository's Settings → Actions.
+
+**The decision:** check those two settings pages and restore Actions.
+
+**Until then:** the only real verification is the local pre-push battery every commit on this branch went through (three full 117-test suite runs included). Once restored, re-run the workflow on the latest commit to get the first server-side green since August.
+
 ## D1 — Provision the real mailbox (AUD-67; unblocks AUD-81 residual)
 
 **Blocked today:** `cypruswinter.com` has no MX record, so the legal/GDPR contact addresses in privacy/terms advertise unreachable mailboxes, and `/partner/join` deliberately publishes **no** onboarding contact (the no-dead-channels rule, batch 48) — B2B partners have no direct way in.
