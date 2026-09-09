@@ -113,17 +113,22 @@ async function extractData(out: Record<string, string>): Promise<void> {
     for (const t of trails) extractItem(t as Record<string, unknown>, "data.trails", TRAIL_FIELDS);
     for (const e of winterEvents) extractItem(e as Record<string, unknown>, "data.events", ATTR_FIELDS);
 
+    // Mirror the runtime scheme in airport-content.ts exactly (PR #236
+    // Codex finding): lowercase code, slug-keyed transport (its
+    // transportSlug), no .name row (proper names stay EN by contract).
+    // airport-content.ts imports "server-only", so the slug stays inline.
     for (const a of airports) {
-      const base = `data.airport.${a.code}`;
-      add(out, `${base}.name`, a.name);
+      const base = `data.airport.${String(a.code).toLowerCase()}`;
       add(out, `${base}.city`, a.city);
       (a.tips || []).forEach((tip: string, i: number) => add(out, `${base}.tips.${i}`, tip));
-      (a.transport || []).forEach((trans: { type?: string; description?: string; approxCost?: string; duration?: string; tip?: string }, i: number) => {
-        if (trans.type) add(out, `${base}.transport.${i}.type`, trans.type);
-        if (trans.description) add(out, `${base}.transport.${i}.description`, trans.description);
-        if (trans.approxCost) add(out, `${base}.transport.${i}.approxCost`, trans.approxCost);
-        if (trans.duration) add(out, `${base}.transport.${i}.duration`, trans.duration);
-        if (trans.tip) add(out, `${base}.transport.${i}.tip`, trans.tip);
+      (a.transport || []).forEach((trans: { type?: string; description?: string; approxCost?: string; duration?: string; tip?: string }) => {
+        if (!trans.type) return;
+        const slug = trans.type.toLowerCase().replace(/\s+/g, "-");
+        add(out, `${base}.transport.${slug}.type`, trans.type);
+        if (trans.description) add(out, `${base}.transport.${slug}.description`, trans.description);
+        if (trans.approxCost) add(out, `${base}.transport.${slug}.approxCost`, trans.approxCost);
+        if (trans.duration) add(out, `${base}.transport.${slug}.duration`, trans.duration);
+        if (trans.tip) add(out, `${base}.transport.${slug}.tip`, trans.tip);
       });
     }
 

@@ -187,7 +187,10 @@ export default async function AttractionPage({
       <div className={`${LAYOUT.detail} mx-auto ${LAYOUT.safeAreaX} ${LAYOUT.pagePyDetail} ${LAYOUT.detailMobileStickyClearance}`}>
         <TrackView
           id={base.id}
-          name={base.name}
+          // Store the name the visitor actually saw: the recently-viewed
+          // strip renders it verbatim, and the EN base name on a localized
+          // home page was PR #236's Codex finding.
+          name={getLocalizedName(base, locale)}
           type={getPlaceById(a.id)?.type ?? a.type}
           region={a.region}
         />
