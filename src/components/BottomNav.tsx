@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
+import { useFocusTrap } from "@/lib/useTrapFocus";
 import { useTranslations } from "next-intl";
 import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
@@ -76,39 +76,9 @@ export default function BottomNav() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [moreOpen]);
 
-  useEffect(() => {
-    if (!moreOpen) return;
-    const menu = moreMenuRef.current;
-    if (!menu) return;
-    const focusables = menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-    if (focusables.length === 0) return;
-    (focusables[0] as HTMLElement).focus();
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        closeMore();
-        return;
-      }
-      if (e.key !== "Tab") return;
-      const first = focusables[0] as HTMLElement;
-      const last = focusables[focusables.length - 1] as HTMLElement;
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-
-    menu.addEventListener("keydown", onKeyDown);
-    return () => menu.removeEventListener("keydown", onKeyDown);
-  }, [moreOpen, closeMore]);
+  // Escape restores focus to the trigger (closeMore); the outside-tap effect
+  // above deliberately closes without it.
+  useFocusTrap({ active: moreOpen, containerRef: moreMenuRef, onEscape: closeMore });
 
   return (
     <nav

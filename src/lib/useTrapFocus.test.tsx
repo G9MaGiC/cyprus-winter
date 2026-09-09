@@ -3,8 +3,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 afterEach(cleanup);
-import { useRef } from "react";
-import { FOCUSABLE_SELECTOR, useTrapFocus } from "@/lib/useTrapFocus";
+import { useRef, useState } from "react";
+import { FOCUSABLE_SELECTOR, useFocusTrap, useTrapFocus } from "@/lib/useTrapFocus";
 
 /**
  * First coverage for the shared focus trap (batch 67, the safe slice of the
@@ -26,6 +26,26 @@ function Dialog({ onEscape }: { onEscape?: () => void }) {
       <a href="https://example.com">middle</a>
       <button disabled>disabled</button>
       <button>last</button>
+    </div>
+  );
+}
+
+function Sheet({ onEscape }: { onEscape: () => void }) {
+  const [open, setOpen] = useState(false);
+  const [extra, setExtra] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useFocusTrap({ active: open, containerRef: ref, onEscape });
+  return (
+    <div>
+      <button onClick={() => setOpen(true)}>open</button>
+      <button onClick={() => setExtra(true)}>add</button>
+      {open && (
+        <div role="group" aria-label="sheet" ref={ref}>
+          <button>first</button>
+          <button>last</button>
+          {extra && <button>extra</button>}
+        </div>
+      )}
     </div>
   );
 }
@@ -67,6 +87,50 @@ describe("useTrapFocus", () => {
     render(<Dialog onEscape={onEscape} />);
     fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
     expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it("useFocusTrap: focuses the first focusable on activation and wraps Tab both ways", () => {
+    render(<Sheet onEscape={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "open" }));
+    const first = screen.getByRole("button", { name: "first" });
+    const last = screen.getByRole("button", { name: "last" });
+    expect(document.activeElement).toBe(first);
+
+    last.focus();
+    fireEvent.keyDown(document, { key: "Tab" });
+    expect(document.activeElement).toBe(first);
+
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(document.activeElement).toBe(last);
+  });
+
+  it("useFocusTrap: re-queries focusables per keypress, so content mounted after open joins the cycle", () => {
+    render(<Sheet onEscape={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "open" }));
+    fireEvent.click(screen.getByRole("button", { name: "add" }));
+    const extra = screen.getByRole("button", { name: "extra" });
+
+    extra.focus();
+    fireEvent.keyDown(document, { key: "Tab" });
+    // A snapshot taken at open (the old Nav/BottomNav shape) would still
+    // treat "last" as the cycle edge and leave Tab on "extra" to the browser.
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "first" }));
+  });
+
+  it("useFocusTrap: Escape reaches onEscape even with focus outside the container", () => {
+    const onEscape = vi.fn();
+    render(<Sheet onEscape={onEscape} />);
+    fireEvent.click(screen.getByRole("button", { name: "open" }));
+    (document.activeElement as HTMLElement).blur();
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(onEscape).toHaveBeenCalledTimes(1);
+  });
+
+  it("useFocusTrap: attaches no listener while inactive (the BUG-359 shape)", () => {
+    const onEscape = vi.fn();
+    render(<Sheet onEscape={onEscape} />);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(onEscape).not.toHaveBeenCalled();
   });
 
   it("the shared selector excludes disabled controls and includes inputs", () => {

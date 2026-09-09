@@ -1,7 +1,7 @@
 "use client";
 
 import AppLink from "@/components/AppLink";
-import { FOCUSABLE_SELECTOR } from "@/lib/useTrapFocus";
+import { useFocusTrap } from "@/lib/useTrapFocus";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
@@ -26,6 +26,10 @@ export default function Nav() {
     setOpen(false);
     requestAnimationFrame(() => mobileMenuButtonRef.current?.focus());
   }, []);
+  const closeMoreMenu = useCallback(() => {
+    setMoreOpen(false);
+    requestAnimationFrame(() => moreButtonRef.current?.focus());
+  }, []);
   const { user } = useAuth();
   const moreLinksResolved = useMemo(
     () =>
@@ -38,72 +42,14 @@ export default function Nav() {
   );
   const allLinks = [...navPrimaryLinks, ...moreLinksResolved];
 
-  useEffect(() => {
-    // Only act when one of our menus is actually open — an unconditional handler
-    // steals focus from every modal's own Escape restore (BUG-359 / AUD-05).
-    if (!open && !moreOpen) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        if (open) closeMobileMenu();
-        if (moreOpen) {
-          setMoreOpen(false);
-          requestAnimationFrame(() => moreButtonRef.current?.focus());
-        }
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [closeMobileMenu, open, moreOpen]);
-
-  useEffect(() => {
-    if (!moreOpen || !moreMenuRef.current) return;
-    const menu = moreMenuRef.current;
-    const focusables = menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-    if (focusables.length === 0) return;
-    (focusables[0] as HTMLElement).focus();
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== "Tab") return;
-      const first = focusables[0] as HTMLElement;
-      const last = focusables[focusables.length - 1] as HTMLElement;
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-    menu.addEventListener("keydown", handleKeyDown);
-    return () => menu.removeEventListener("keydown", handleKeyDown);
-  }, [moreOpen]);
+  // Shared trap: listeners exist only while a menu is open — an unconditional
+  // handler steals focus from every modal's own Escape restore (BUG-359 / AUD-05).
+  useFocusTrap({ active: moreOpen, containerRef: moreMenuRef, onEscape: closeMoreMenu });
+  useFocusTrap({ active: open, containerRef: mobileMenuRef, onEscape: closeMobileMenu });
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open || !mobileMenuRef.current) return;
-    const menu = mobileMenuRef.current;
-    const focusables = menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-    if (focusables.length === 0) return;
-    (focusables[0] as HTMLElement).focus();
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== "Tab") return;
-      const first = focusables[0] as HTMLElement;
-      const last = focusables[focusables.length - 1] as HTMLElement;
-      if (e.shiftKey) {
-        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-      } else {
-        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    };
-    menu.addEventListener("keydown", handleKeyDown);
-    return () => menu.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
   return (
