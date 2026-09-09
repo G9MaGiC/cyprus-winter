@@ -13,6 +13,19 @@ type PlanStickyAddBarProps = {
   onAddPlaceClick?: () => void;
 };
 
+// During streaming promotion an id can transiently resolve to two nodes — the
+// staged copy inside a hidden container plus the live one (BUG-353 class).
+// getElementById takes the first match, and observing a staged [hidden] copy
+// would pin the bar on forever (it never intersects, and the effect never
+// re-queries). Prefer the last match outside any [hidden] subtree.
+function liveElementById(id: string): HTMLElement | null {
+  const nodes = document.querySelectorAll<HTMLElement>(`#${CSS.escape(id)}`);
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    if (!nodes[i].closest("[hidden]")) return nodes[i];
+  }
+  return nodes[0] ?? null;
+}
+
 /**
  * Shows a sticky bottom bar with "Add place" on mobile when the add-places
  * section scrolls out of view. Clicking opens the add flow (modal) or scrolls to add area.
@@ -26,8 +39,8 @@ export default function PlanStickyAddBar({ sentinelId, scrollTargetId, onAddPlac
   const tCommon = useTranslations("common");
 
   useEffect(() => {
-    const sentinel = document.getElementById(sentinelId);
-    const footerSentinel = document.getElementById(FOOTER_SENTINEL_ID);
+    const sentinel = liveElementById(sentinelId);
+    const footerSentinel = liveElementById(FOOTER_SENTINEL_ID);
     if (!sentinel) return;
 
     let addBarVisible = false;

@@ -88,9 +88,7 @@ export function AIAssistant() {
     const raf = requestAnimationFrame(() => {
       const panel = panelRef.current;
       if (!panel) return;
-      const first = panel.querySelector<HTMLElement>(
-        'button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
+      const first = panel.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
       (first ?? panel).focus?.();
     });
     return () => cancelAnimationFrame(raf);
