@@ -49,7 +49,10 @@ export default function DiscoverMapPanel({
   const places = useMemo(
     () =>
       buildDiscoverMapPlacesFromSections(sections, {
-        includeTrailLinks: isActivityFilter,
+        // Any single-section (filtered) view plots its trailLinks — the
+        // family lane carries them too (batch 81); the unfiltered
+        // multi-section map stays trail-free as before.
+        includeTrailLinks: isActivityFilter || sections.length === 1,
       }),
     [sections, isActivityFilter]
   );

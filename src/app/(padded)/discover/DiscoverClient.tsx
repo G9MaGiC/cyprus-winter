@@ -11,7 +11,7 @@ import RightNowNearYou from "@/app/_home/RightNowNearYou";
 import { CTA, EMPTY_STATE, LAYOUT } from "@/lib/design-tokens";
 import { useUserPreferences } from "@/hooks/useUserPreferences";
 import { sortDiscoverItemsByInterests } from "@/lib/personalization";
-import { filterToSectionId } from "@/lib/discover-sections";
+import { filterToSectionId, pinFamilyLead } from "@/lib/discover-sections";
 import type { DiscoverCardSection } from "@/lib/discover-sections";
 import { isActivityFilterKey } from "@/lib/activity-catalog";
 import { getPlanDayIndex, getPlanDayMapFocus } from "@/lib/discover-map-focus";
@@ -81,10 +81,15 @@ export default function DiscoverClient({
         : sections.filter((s) => s.id === filter)
       : sections;
     if (!hydrated || prefs.interests.length === 0 || isActivity) return raw;
-    return raw.map((section) => ({
-      ...section,
-      items: sortDiscoverItemsByInterests(section.items, prefs.interests),
-    }));
+    return raw.map((section) => {
+      const personalized = sortDiscoverItemsByInterests(section.items, prefs.interests);
+      // The family lane's lead is editorial (D6): re-pin it so interest
+      // sorting only reorders the unranked remainder.
+      return {
+        ...section,
+        items: section.id === "family" ? pinFamilyLead(personalized) : personalized,
+      };
+    });
   }, [sections, activitySection, filter, sectionExists, isActivity, hydrated, prefs.interests]);
 
   const [viewMode, setViewMode] = useState<"list" | "map">(urlViewMap ? "map" : "list");

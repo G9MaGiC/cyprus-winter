@@ -9,6 +9,7 @@ import {
   isAccessibleFriendly,
   isFamilyFriendly,
   isOffBeatenPath,
+  pinFamilyLead,
   PRACTICAL_DISCOVER_FILTERS,
   toDiscoverCardItem,
 } from "@/lib/discover-sections";
@@ -61,6 +62,34 @@ describe("buildDiscoverSections", () => {
       "choirokoitia",
       "fig-tree-bay",
     ]);
+  });
+
+  it("pinFamilyLead restores the curated lead over a personalization-shuffled list", () => {
+    // The client re-sorts sections by interest score after hydration (PR #237
+    // Codex finding); the family section re-pins afterwards. Simulate a
+    // culture-heavy shuffle that pushed the lead items down.
+    const shuffled = [
+      { id: "choirokoitia" },
+      { id: "kalopanagiotis" },
+      { id: "omodos" },
+      { id: "larnaca-aliki" },
+      { id: "limassol-marina" },
+      { id: "nissi-beach" },
+      { id: "fig-tree-bay" },
+    ];
+    const pinned = pinFamilyLead(shuffled).map((i) => i.id);
+    expect(pinned).toEqual([
+      "larnaca-aliki",
+      "choirokoitia",
+      "fig-tree-bay",
+      "nissi-beach",
+      // Unranked remainder keeps its (personalized) relative order.
+      "kalopanagiotis",
+      "omodos",
+      "limassol-marina",
+    ]);
+    // Pure: the input list is not mutated.
+    expect(shuffled[0].id).toBe("choirokoitia");
   });
 
   it("family lane carries easy short trails via the trailLinks slot", () => {

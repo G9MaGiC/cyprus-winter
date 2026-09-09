@@ -196,19 +196,28 @@ const FAMILY_LEAD_IDS = [
     the lane itself). */
 const FAMILY_TRAIL_IDS = ["kavos-trail", "livadi-trail", "dwarf-oaks"];
 
+const familyLeadRank = (id: string) => {
+  const i = FAMILY_LEAD_IDS.indexOf(id);
+  return i === -1 ? FAMILY_LEAD_IDS.length : i;
+};
+
+/**
+ * Re-applies the curated family lead as a stable sort — the single source of
+ * truth for the lane's order. The client's interest personalization re-sorts
+ * sections after hydration; the family section must call this afterwards so
+ * personalization only reorders the unranked remainder.
+ */
+export function pinFamilyLead<T extends { id: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => familyLeadRank(a.id) - familyLeadRank(b.id));
+}
+
 export function buildDiscoverSections(
   allDiscoverItems: DiscoverItem[]
 ): DiscoverSection[] {
   const coastNature = natureSites.filter((item) => !ACTIVITY_PLACE_IDS_SET.has(item.id));
   const coastsItems = [...beaches, ...coastNature];
   const wineAndFoodItems = [...wineries, ...restaurants];
-  const familyLeadRank = (id: string) => {
-    const i = FAMILY_LEAD_IDS.indexOf(id);
-    return i === -1 ? FAMILY_LEAD_IDS.length : i;
-  };
-  const familyItems = allDiscoverItems
-    .filter(isFamilyFriendly)
-    .sort((a, b) => familyLeadRank(a.id) - familyLeadRank(b.id));
+  const familyItems = pinFamilyLead(allDiscoverItems.filter(isFamilyFriendly));
   const familyTrailLinks = FAMILY_TRAIL_IDS.map((id) => {
     const t = trails.find((tr) => tr.id === id);
     return t ? { id: t.id, name: t.name, href: `/trails/${t.id}` } : null;
