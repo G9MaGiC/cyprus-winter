@@ -36,6 +36,43 @@ describe("buildDiscoverSections", () => {
     }
   });
 
+  it("family lane is curated: audience tokens only, wineries out, villages in (AUD-58)", () => {
+    const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
+    const ids = new Set(family.items.map((i) => i.id));
+
+    // Craft villages + the Christmas Village host join via the "Families" tag.
+    expect(ids.has("lefkara")).toBe(true);
+    expect(ids.has("omodos")).toBe(true);
+    expect(ids.has("kalopanagiotis")).toBe(true);
+
+    // Ownership tokens ("Family-run", "Family heritage") are not audience
+    // claims — the old substring predicate put these tasting rooms in the
+    // children's lane; sterna-boutique's tag edit removes the fourth.
+    expect(ids.has("kalamos")).toBe(false);
+    expect(ids.has("hadjipavlou")).toBe(false);
+    expect(ids.has("adege")).toBe(false);
+    expect(ids.has("sterna-boutique")).toBe(false);
+  });
+
+  it("family lane leads with the curated order, rest in catalog order", () => {
+    const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
+    expect(family.items.slice(0, 3).map((i) => i.id)).toEqual([
+      "larnaca-aliki",
+      "choirokoitia",
+      "fig-tree-bay",
+    ]);
+  });
+
+  it("family lane carries easy short trails via the trailLinks slot", () => {
+    const family = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "family")!;
+    const trailIds = family.trailLinks?.map((t) => t.id) ?? [];
+    expect(trailIds).toContain("kavos-trail");
+    for (const link of family.trailLinks ?? []) {
+      expect(link.href).toBe(`/trails/${link.id}`);
+      expect(link.name.length).toBeGreaterThan(0);
+    }
+  });
+
   it("accessible section is non-empty and only accessible-friendly places", () => {
     const accessible = buildDiscoverSections(allDiscoverItems).find((s) => s.id === "accessible");
     expect(accessible?.items.length).toBeGreaterThan(0);
