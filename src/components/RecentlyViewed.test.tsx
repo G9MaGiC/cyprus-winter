@@ -60,6 +60,27 @@ describe("RecentlyViewedStrip", () => {
     await waitFor(() => expect(container.innerHTML).toBe(""));
   });
 
+  it("caps and filters hostile storage on read: at most 10 items, malformed entries dropped", async () => {
+    const valid = Array.from({ length: 12 }, (_, i) => ({
+      id: `place-${i}`,
+      name: `Place ${i}`,
+      type: "village",
+      region: "Limassol",
+      viewedAt: new Date().toISOString(),
+    }));
+    const malformed = [{ id: 42, name: null }, "not-an-object", { type: "village" }];
+    localStorage.setItem(
+      "cyprus-recently-viewed",
+      JSON.stringify([...malformed, ...valid])
+    );
+    render(<RecentlyViewedStrip />);
+    await waitFor(() => expect(screen.getByText("Place 0")).toBeDefined());
+    // 12 valid entries after 3 malformed ones: the read path must drop the
+    // malformed and cap at MAX_ITEMS, whatever the write path promised.
+    expect(screen.getAllByRole("link").length).toBe(10);
+    expect(screen.queryByText("Place 10")).toBeNull();
+  });
+
   it("clear empties the strip and the storage", async () => {
     seed();
     render(<RecentlyViewedStrip />);

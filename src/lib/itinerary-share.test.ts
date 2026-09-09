@@ -32,6 +32,14 @@ describe("decodeItinerary", () => {
     expect(result).toEqual({ ...emptyDays(), 1: ["kourion"] });
   });
 
+  it("ignores non-numeric day labels (NaN passes range comparisons)", () => {
+    // Without the integer guard, "abc" parses to NaN and mints a phantom
+    // "NaN" bucket that inflates the OG card's counts (b74 security review).
+    const result = decodeItinerary("abc:kourion|1:omodos");
+    expect(result).toEqual({ ...emptyDays(), 1: ["omodos"] });
+    expect(Object.keys(result!)).not.toContain("NaN");
+  });
+
   it("ignores invalid place ids", () => {
     const result = decodeItinerary("1:unknown-xyz|2:kourion");
     expect(result).toEqual({ ...emptyDays(), 2: ["kourion"] });

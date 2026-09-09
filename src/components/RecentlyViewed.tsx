@@ -34,7 +34,9 @@ const typePaths: Record<string, string> = {
 };
 
 function getItemPath(item: ReturnType<typeof getRecentlyViewed>[number]): string {
-  const base = typePaths[item.type] || "/discover";
+  // item.type comes from localStorage — own-property check keeps a crafted
+  // value ("__proto__", "constructor") off the prototype chain.
+  const base = Object.hasOwn(typePaths, item.type) ? typePaths[item.type] : "/discover";
   return `${base}/${item.id}`;
 }
 

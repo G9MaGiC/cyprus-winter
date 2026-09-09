@@ -53,8 +53,14 @@ function readBaseCatalog(base, locale) {
   return flatten(JSON.parse(git("show", `${base}:messages/${locale}.json`)));
 }
 
-// Quote every field; double internal quotes (RFC 4180).
-const csvField = (v) => `"${v.replace(/"/g, '""')}"`;
+// Quote every field; double internal quotes (RFC 4180). Reviewers open these
+// sheets in spreadsheet apps, so also neutralize formula-leading characters
+// (=, +, -, @, tab, CR) with a leading apostrophe — defence in depth against
+// a hostile string landing in the catalogs (b74 security review).
+const csvField = (v) => {
+  const escaped = v.replace(/"/g, '""');
+  return /^[=+\-@\t\r]/.test(escaped) ? `"'${escaped}"` : `"${escaped}"`;
+};
 const csvRow = (cells) => cells.map(csvField).join(",");
 
 // The audit's fixed baseline: main@ca827e6 (PR #225), the commit the persona
